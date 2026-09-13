@@ -119,7 +119,7 @@ async function loadNextQuestion() {
 }
 
 function renderQuestion(data) {
-  const { skill, item } = data;
+  const { skill, item, progress } = data;
   $("skillCode").textContent = skill.code;
   $("skillLayer").textContent = layerLabels[skill.layer] ?? skill.layer;
   $("difficulty").textContent = `${item.difficulty}/5`;
@@ -128,7 +128,21 @@ function renderQuestion(data) {
   $("prompt").textContent = item.promptHy;
   renderStimulus(item.stimulus);
   renderAnswerInput(item);
+  renderCurrentProgress(progress);
   submitBtn.disabled = false;
+}
+
+function renderCurrentProgress(progress) {
+  if (!progress) {
+    $("masteryText").textContent = "Տվյալներ դեռ չկան";
+    $("masteryStatus").textContent = "—";
+    $("masteryBar").style.width = "0%";
+    return;
+  }
+  const pct = Math.max(0, Math.min(100, Math.round(Number(progress.score) * 100)));
+  $("masteryText").textContent = `${pct}% · ${progress.evidenceCount ?? 0} պատասխան`;
+  $("masteryStatus").textContent = statusLabels[progress.status] ?? progress.status ?? "—";
+  $("masteryBar").style.width = `${pct}%`;
 }
 
 function renderAnswerInput(item) {
