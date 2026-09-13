@@ -4,27 +4,52 @@ A supplementary learning platform aligned to Armenia's general education system.
 
 ## Current milestone
 
-Sprint 1 is now building the first real curriculum slice:
+The project now has a working Chapter I learning-engine slice for:
 
 **Grade 7 Physics → Chapter I: Բնության ուսումնասիրության ֆիզիկական մեթոդները**
 
 The live Supabase database currently contains:
 
 - 1 Grade 7 Physics Chapter I unit
-- 5 draft/review topics
-- 10 draft/review micro-skills
+- 5 topics
+- 10 provisional micro-skills
 - 9 prerequisite links
+- 60 provisional development items
+- 60 server-side answer keys
+- 140 multiple-choice option records
+- 14 structured visual/stimulus items
 - 0 current official learning-outcome records for this unit pending exact verification of the 2026 Grade 7 programme appendix
 
-The micro-skill graph covers physical phenomena; body/material/phenomenon distinctions; physicists; observation vs experiment; scientific inquiry; quantities/units/instruments; unit conversion; instrument scales; measurement error/precision; and an integrated irregular-volume measurement investigation.
+The micro-skill graph covers physical phenomena; body/material/phenomenon distinctions; physicists; observation vs experiment; scientific inquiry; quantities/units/instruments; unit conversion; instrument scales; measurement error/precision; and integrated measurement investigations.
 
-## Core backend objective
+Content is intentionally marked `provisional_no_sme_review` and `pilot_ready=false`. Physics-SME review was deferred for development speed, not treated as completed validation.
 
-Prove the complete learning loop:
+## Working learning loop
 
-`item -> student answer -> deterministic grading -> attempt record -> mastery update -> prerequisite diagnosis -> recommendation`
+The backend implements:
 
-The backend is intentionally **AI-optional**. Routine grading, mastery tracking, prerequisite logic, and recommendations are deterministic. AI can later be added through a controlled gateway for open-ended reasoning and feedback.
+`authenticated student -> adaptive item selection -> student answer -> deterministic grading -> attempt record -> mastery update -> prerequisite diagnosis -> recommendation`
+
+Two JWT-protected Supabase Edge Functions are live:
+
+- `get-practice-item`
+- `submit-answer`
+
+The scheduler avoids the learner's most recent items, considers prerequisite mastery, and selects an item difficulty near the learner's current estimated mastery.
+
+The backend remains **AI-optional**. Routine grading, unit conversion, mastery tracking, prerequisite logic, and recommendations are deterministic. AI can later be added through a controlled gateway for open-ended reasoning and feedback.
+
+## Student web prototype
+
+`web/` contains the first Armenian-language browser interface. It supports:
+
+- Supabase email/password authentication
+- multiple-choice, true/false, numeric and quantity responses
+- browser-rendered measurement scales and displacement/measurement stimuli
+- server-side grading without exposing answer keys to the browser
+- mastery progress and recommendation feedback
+
+The repository includes `vercel.json`, configured to deploy the static `web/` directory.
 
 ## Repository structure
 
@@ -34,6 +59,7 @@ The backend is intentionally **AI-optional**. Routine grading, mastery tracking,
 - `supabase/functions/` — Supabase Edge Functions
 - `supabase/seed/` — controlled curriculum/content seed data
 - `tests/` — automated tests for the learning-engine core
+- `web/` — first student-facing browser prototype
 
 ## Key curriculum documents
 
@@ -41,11 +67,14 @@ The backend is intentionally **AI-optional**. Routine grading, mastery tracking,
 - `docs/curriculum-sources.md`
 - `docs/grade7-physics-chapter1-curriculum-architecture.md`
 
-## Local checks
+## Automated checks
+
+GitHub Actions runs the core test suite, TypeScript typecheck and JavaScript syntax validation on pushes to `main` and pull requests.
 
 ```bash
 npm test
 npm run typecheck
+node --check web/app.js
 ```
 
 ## Supabase project
@@ -56,4 +85,4 @@ The Supabase project is active in `eu-central-1`.
 
 ## Provenance rule
 
-The current Armenian General Education State Standard and current 2026 Physics programme are authoritative. The 2023 textbook provides the classroom/textbook mapping. We do not publish repealed programme wording as current official outcomes. Internal micro-skills may be developed in `review` status before official-outcome verification and Physics-SME validation.
+The current Armenian General Education State Standard and current 2026 Physics programme are authoritative. The 2023 textbook provides the classroom/textbook mapping. We do not publish repealed programme wording as current official outcomes. Internal micro-skills and items may be developed provisionally before official-outcome verification and Physics-SME validation, but they cannot be treated as validated pilot content until those gates are completed.
