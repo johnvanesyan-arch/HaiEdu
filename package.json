@@ -1,0 +1,11 @@
+{
+  "name": "armenian-mastery-platform",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build:core": "rm -rf dist && tsc -p tsconfig.json",
+    "test": "npm run build:core && node --test tests/*.test.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit"
+  }
+}
