@@ -25,3 +25,6 @@ jobs:
 
       - name: Typecheck
         run: npm run typecheck
+
+      - name: Check student web app syntax
+        run: node --check web/app.js
