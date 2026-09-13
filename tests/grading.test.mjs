@@ -22,6 +22,40 @@ test("converts km/h to m/s", () => {
   assert.deepEqual(result.normalizedResponse, { value: 10, unit: "m/s" });
 });
 
+test("accepts Armenian speed unit alias", () => {
+  const result = gradeAnswer(
+    { type: "quantity", answer: 10, canonicalUnit: "m/s", acceptedUnits: ["km/h"], tolerance: 0.0001 },
+    { value: 36, unit: "կմ/ժ" }
+  );
+  assert.equal(result.correct, true);
+});
+
+test("converts millilitres to litres", () => {
+  const result = gradeAnswer(
+    { type: "quantity", answer: 2.5, canonicalUnit: "L", acceptedUnits: ["mL", "L"], tolerance: 0.0001 },
+    { value: 2500, unit: "մլ" }
+  );
+  assert.equal(result.correct, true);
+  assert.deepEqual(result.normalizedResponse, { value: 2.5, unit: "L" });
+});
+
+test("accepts Armenian litre alias", () => {
+  const result = gradeAnswer(
+    { type: "quantity", answer: 2.5, canonicalUnit: "L", acceptedUnits: ["L", "լ"], tolerance: 0.0001 },
+    { value: 2.5, unit: "լ" }
+  );
+  assert.equal(result.correct, true);
+});
+
+test("treats mL and cm3 as equivalent volume units", () => {
+  const result = gradeAnswer(
+    { type: "quantity", answer: 250, canonicalUnit: "cm3", acceptedUnits: ["mL", "cm³"], tolerance: 0.0001 },
+    { value: 250, unit: "մլ" }
+  );
+  assert.equal(result.correct, true);
+  assert.deepEqual(result.normalizedResponse, { value: 250, unit: "cm3" });
+});
+
 test("rejects unsupported unit", () => {
   const result = gradeAnswer(
     { type: "quantity", answer: 10, canonicalUnit: "m/s", acceptedUnits: ["km/h"], tolerance: 0.01 },
