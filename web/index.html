@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ֆիզիկա 7 — Mastery Prototype</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ARMENIAN CURRICULUM MASTERY PLATFORM</p>
+        <h1>Ֆիզիկա 7</h1>
+        <p class="subtle">Գլուխ I — Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
+      </div>
+      <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
+    </header>
+
+    <section class="notice">
+      <strong>Զարգացման նախատիպ</strong>
+      <span>Բովանդակությունը դեռևս փորձնական է և չի անցել վերջնական առարկայական փորձագիտական ստուգում։</span>
+    </section>
+
+    <section id="authPanel" class="card auth-card">
+      <h2>Մուտք</h2>
+      <p class="subtle">Օգտագործեք էլ. հասցե և գաղտնաբառ՝ փորձնական ուսանողական հաշիվ ստեղծելու կամ մուտք գործելու համար։</p>
+      <label>
+        Էլ. հասցե
+        <input id="emailInput" type="email" autocomplete="email" placeholder="student@example.com" />
+      </label>
+      <label>
+        Գաղտնաբառ
+        <input id="passwordInput" type="password" autocomplete="current-password" placeholder="Առնվազն 6 նիշ" />
+      </label>
+      <div class="row">
+        <button id="signInBtn">Մուտք գործել</button>
+        <button id="signUpBtn" class="secondary">Գրանցվել</button>
+      </div>
+      <p id="authMessage" class="message"></p>
+    </section>
+
+    <section id="practicePanel" class="hidden">
+      <div class="dashboard-row">
+        <div class="stat card compact">
+          <span class="stat-label">Հմտություն</span>
+          <strong id="skillCode">—</strong>
+        </div>
+        <div class="stat card compact">
+          <span class="stat-label">Մակարդակ</span>
+          <strong id="skillLayer">—</strong>
+        </div>
+        <div class="stat card compact">
+          <span class="stat-label">Դժվարություն</span>
+          <strong id="difficulty">—</strong>
+        </div>
+      </div>
+
+      <section class="card question-card">
+        <div class="question-heading">
+          <div>
+            <p id="skillName" class="skill-name">—</p>
+            <p id="itemCode" class="item-code">—</p>
+          </div>
+          <button id="nextBtn" class="ghost">Հաջորդ հարց</button>
+        </div>
+
+        <div id="stimulus" class="stimulus hidden"></div>
+        <h2 id="prompt">Սեղմեք «Հաջորդ հարց»։</h2>
+        <form id="answerForm">
+          <div id="answerArea"></div>
+          <button id="submitBtn" type="submit" disabled>Պատասխանել</button>
+        </form>
+
+        <div id="feedback" class="feedback hidden"></div>
+      </section>
+
+      <section class="card mastery-card">
+        <div class="mastery-head">
+          <div>
+            <span class="stat-label">Ընթացիկ հմտության mastery</span>
+            <strong id="masteryText">Տվյալներ դեռ չկան</strong>
+          </div>
+          <span id="masteryStatus" class="pill">—</span>
+        </div>
+        <div class="progress-track">
+          <div id="masteryBar" class="progress-bar" style="width:0%"></div>
+        </div>
+        <p id="recommendation" class="subtle">Համակարգը կթարմացնի առաջարկությունը պատասխանից հետո։</p>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
