@@ -16,7 +16,6 @@ function json(body: unknown, status = 200) {
 }
 
 type AttemptRow = { skill_id: string; item_id: string; correct: boolean; created_at: string };
-
 type Band = "strong" | "developing" | "needs_support" | "not_assessed";
 
 function band(correct: number, total: number): Band {
@@ -70,36 +69,18 @@ Deno.serve(async (req) => {
 
   const skillIds = skills.map((s) => s.id);
 
-  const [{ data: masteryRows }, { data: attemptRows }, { data: activeRows }, { data: diagnosticRows }] = await Promise.all([
-    admin
-      .from("student_skill_mastery")
-      .select("skill_id, mastery_score, evidence_count, status")
-      .eq("student_id", studentId)
-      .in("skill_id", skillIds),
-    admin
-      .from("attempts")
-      .select("skill_id, item_id, correct, created_at")
-      .eq("student_id", studentId)
-      .in("skill_id", skillIds)
-      .order("created_at", { ascending: false })
-      .limit(500),
-    admin
-      .from("learning_sessions")
-      .select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, started_at")
-      .eq("student_id", studentId)
-      .eq("unit_code", UNIT_CODE)
-      .eq("status", "active")
-      .order("started_at", { ascending: false })
-      .limit(1),
-    admin
-      .from("learning_sessions")
-      .select("id, mode, status, planned_item_count, answered_count, correct_count, completed_at, started_at")
-      .eq("student_id", studentId)
-      .eq("unit_code", UNIT_CODE)
-      .eq("mode", "diagnostic")
-      .eq("status", "completed")
-      .order("completed_at", { ascending: false })
-      .limit(1),
+  const [
+    { data: masteryRows },
+    { data: attemptRows },
+    { data: activeRows },
+    { data: diagnosticRows },
+    { data: prerequisiteRows },
+  ] = await Promise.all([
+    admin.from("student_skill_mastery").select("skill_id, mastery_score, evidence_count, status").eq("student_id", studentId).in("skill_id", skillIds),
+    admin.from("attempts").select("skill_id, item_id, correct, created_at").eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(500),
+    admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
+    admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, completed_at, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "diagnostic").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
+    admin.from("skill_prerequisites").select("skill_id, prerequisite_skill_id").in("skill_id", skillIds),
   ]);
 
   const attempts = (attemptRows ?? []) as AttemptRow[];
@@ -107,6 +88,13 @@ Deno.serve(async (req) => {
     r.skill_id,
     { score: Number(r.mastery_score), evidenceCount: Number(r.evidence_count), status: String(r.status) },
   ]));
+
+  const prerequisiteMap = new Map<string, string[]>();
+  for (const row of prerequisiteRows ?? []) {
+    const values = prerequisiteMap.get(row.skill_id) ?? [];
+    values.push(row.prerequisite_skill_id);
+    prerequisiteMap.set(row.skill_id, values);
+  }
 
   const latestDiagnostic = diagnosticRows?.[0] ?? null;
   const diagnosticBySkill = new Map<string, { correct: number; total: number }>();
@@ -136,6 +124,7 @@ Deno.serve(async (req) => {
       nameHy: skill.name_hy,
       layer: skill.layer,
       sequenceOrder: Number(skill.sequence_order),
+      prerequisiteIds: prerequisiteMap.get(skill.id) ?? [],
       diagnostic: {
         correct: diagnostic.correct,
         total: diagnostic.total,
@@ -150,16 +139,27 @@ Deno.serve(async (req) => {
     };
   });
 
-  let recommended = null as null | (typeof skillMap)[number];
-  if (latestDiagnostic) {
-    recommended = skillMap.find((s) => s.diagnostic.band === "needs_support")
-      ?? skillMap.find((s) => s.diagnostic.band === "developing")
-      ?? skillMap.find((s) => !s.complete)
-      ?? null;
-  } else {
-    recommended = skillMap.find((s) => !s.complete) ?? null;
-  }
+  const byId = new Map(skillMap.map((s) => [s.id, s]));
+  const unfinished = skillMap.filter((s) => !s.complete);
+  const baseRecommendation = latestDiagnostic
+    ? unfinished.find((s) => s.diagnostic.band === "needs_support")
+      ?? unfinished.find((s) => s.diagnostic.band === "developing")
+      ?? unfinished[0]
+      ?? null
+    : unfinished[0] ?? null;
 
+  const resolvePrerequisite = (skill: (typeof skillMap)[number], visited = new Set<string>()): (typeof skillMap)[number] => {
+    if (visited.has(skill.id)) return skill;
+    visited.add(skill.id);
+    const prerequisites = skill.prerequisiteIds
+      .map((id) => byId.get(id))
+      .filter((value): value is (typeof skillMap)[number] => Boolean(value))
+      .sort((a, b) => a.sequenceOrder - b.sequenceOrder);
+    const unmet = prerequisites.find((p) => !p.complete && p.diagnostic.band !== "strong");
+    return unmet ? resolvePrerequisite(unmet, visited) : skill;
+  };
+
+  const recommended = baseRecommendation ? resolvePrerequisite(baseRecommendation) : null;
   const active = activeRows?.[0] ?? null;
   const activeTarget = active?.target_skill_id ? skillMap.find((s) => s.id === active.target_skill_id) : null;
   const completedSkills = skillMap.filter((s) => s.complete).length;
@@ -205,7 +205,7 @@ Deno.serve(async (req) => {
         : recommendedAction === "take_diagnostic"
           ? "Սկսեք ախտորոշիչից, որպեսզի համակարգը կազմի հմտությունների քարտեզ։"
           : recommendedAction === "practice_skill"
-            ? `Խորհուրդ է տրվում սկսել ${recommended?.code} հմտությունից։`
+            ? `Խորհուրդ է տրվում սկսել ${recommended?.code} հմտությունից՝ հաշվի առնելով ախտորոշիչ արդյունքը և նախապայմանները։`
             : "Այս բաժնի ընթացիկ հմտությունները ամրապնդված են։",
     },
   });
