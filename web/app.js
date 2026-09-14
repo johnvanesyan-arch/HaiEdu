@@ -204,7 +204,7 @@ function renderAnswerInput(item) {
   }
 
   if (item.type === "numeric") {
-    answerArea.innerHTML = `<label>Պատասխան<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Թվային արժեք"></label>`;
+    answerArea.innerHTML = `<label>Պատասխան<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Մուտքագրեք թիվը"></label>`;
     return;
   }
 
@@ -212,8 +212,8 @@ function renderAnswerInput(item) {
     const suggestedUnit = item.stimulus?.to_unit ?? "";
     answerArea.innerHTML = `
       <div class="quantity-row">
-        <label>Թվային արժեք<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Օր.՝ 2.5"></label>
-        <label>Միավոր<input id="unitAnswer" autocomplete="off" value="${escapeHtml(suggestedUnit)}" placeholder="Օր.՝ L"></label>
+        <label>Թվային արժեք<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Մուտքագրեք թիվը"></label>
+        <label>Միավոր<input id="unitAnswer" autocomplete="off" value="${escapeHtml(suggestedUnit)}" placeholder="Մուտքագրեք միավորը"></label>
       </div>`;
   }
 }
