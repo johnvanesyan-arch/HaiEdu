@@ -5,6 +5,7 @@ export interface DashboardSkillSignal {
   sequenceOrder: number;
   diagnosticBand: DiagnosticBand;
   complete: boolean;
+  prerequisiteIds?: string[];
 }
 
 export function diagnosticBand(correct: number, total: number): DiagnosticBand {
@@ -17,10 +18,24 @@ export function diagnosticBand(correct: number, total: number): DiagnosticBand {
 
 export function chooseRecommendedSkill(skills: DashboardSkillSignal[]): DashboardSkillSignal | null {
   const ordered = [...skills].sort((a, b) => a.sequenceOrder - b.sequenceOrder);
-  return (
-    ordered.find((s) => s.diagnosticBand === "needs_support") ??
-    ordered.find((s) => s.diagnosticBand === "developing") ??
-    ordered.find((s) => !s.complete) ??
-    null
-  );
+  const byId = new Map(ordered.map((s) => [s.id, s]));
+  const unfinished = ordered.filter((s) => !s.complete);
+  const base = unfinished.find((s) => s.diagnosticBand === "needs_support")
+    ?? unfinished.find((s) => s.diagnosticBand === "developing")
+    ?? unfinished[0]
+    ?? null;
+  if (!base) return null;
+
+  const resolvePrerequisite = (skill: DashboardSkillSignal, visited = new Set<string>()): DashboardSkillSignal => {
+    if (visited.has(skill.id)) return skill;
+    visited.add(skill.id);
+    const prerequisites = (skill.prerequisiteIds ?? [])
+      .map((id) => byId.get(id))
+      .filter((value): value is DashboardSkillSignal => Boolean(value))
+      .sort((a, b) => a.sequenceOrder - b.sequenceOrder);
+    const unmet = prerequisites.find((p) => !p.complete && p.diagnosticBand !== "strong");
+    return unmet ? resolvePrerequisite(unmet, visited) : skill;
+  };
+
+  return resolvePrerequisite(base);
 }
