@@ -2,195 +2,140 @@
 
 ## Objective
 
-Make the Chapter I prototype safe enough to enter a controlled school-pilot preparation phase by adding explicit role administration, privacy controls, child-data minimization, account lifecycle controls, audit logging, deletion procedures, and stronger teacher/student access boundaries.
+Make the prototype safe enough for a controlled real-school pilot by strengthening role boundaries, account status, privacy controls, child-data minimization, account administration, audit logging, and deletion procedures.
 
-This sprint implements technical controls. It is **not** a legal-compliance certification and does not replace school agreements, parental/guardian consent where applicable, a formal privacy notice, data-processing agreements, incident procedures, or legal review before a real minor-student pilot.
+This sprint is **technical pilot hardening**, not a legal-compliance certification.
 
-## Roles
+## Roles and account status
 
-The existing `user_role` model remains:
+Supported roles:
 
 - `student`
 - `teacher`
 - `content_admin`
 - `admin`
-- `parent` (reserved; no parent product workflow yet)
+- `parent` remains reserved in the enum but is not a pilot workflow yet.
 
-New role routing separates the operational consoles:
-
-- student → learning interface
-- teacher → `/teacher.html`
-- content administrator → `/content.html`
-- administrator → `/admin.html`
-
-Role changes are admin-only, audited, cannot be performed on the acting administrator's own account, and cannot demote the last active administrator.
-
-## Account status
-
-`profiles.account_status` now supports:
+Supported account states:
 
 - `active`
 - `suspended`
 - `deletion_pending`
 
-Core RLS read policies require the current account to be active. Admin suspension also applies a Supabase Auth ban to prevent new sign-ins/refreshes. Direct browser access to protected Postgres data therefore remains constrained by RLS even if an old browser state exists.
-
-### Residual JWT limitation
-
-Supabase access tokens are stateless JWTs. Revoking sessions or banning an account cannot retroactively invalidate an already-issued access token until its expiry. Existing service-role Edge Functions created before Sprint 10 authenticate the JWT but do not yet all perform a second `profiles.account_status` check. This is a known residual window and must be closed before an institutional/public release by either:
-
-1. adding active-account/session validation to every service-role Edge Function, or
-2. validating `session_id` against `auth.sessions` for sensitive operations and configuring a suitably short access-token lifetime.
-
-For the controlled pilot, admin/privacy endpoints added in this sprint check active account status, and RLS-protected direct data access checks it as well. This residual is explicitly tracked rather than treated as solved.
+Normal learner/teacher RLS reads require an active account.
 
 ## Child-data minimization
 
-The platform profile does not add fields for:
+The platform application profile intentionally does not collect or duplicate:
 
-- date of birth
-- home address
-- phone number
-- parent/guardian email
-- government identifier
+- date of birth;
+- home address;
+- phone number;
+- parent email;
+- government ID.
 
-The application profile stores only the account role, optional display name, account status, and learning-related identifiers. Authentication email remains in Supabase Auth rather than being duplicated into the application profile.
-
-The `/privacy.html` page shows the learner a simple inventory of their learning records rather than exposing raw database content.
+The profile stores role, optional display name, account status, and timestamps. Authentication email remains in Supabase Auth. Learning records are limited to what the mastery system requires: class relationships, sessions, attempts, mastery state and remediation evidence.
 
 ## Privacy preferences
 
-`privacy_preferences` stores explicit opt-in preferences for:
+`privacy_preferences` stores explicit optional preferences:
 
-- optional product analytics
-- optional research use
+- product analytics opt-in — default `false`;
+- research-use opt-in — default `false`.
 
-Both default to `false`.
+These fields record preferences only. They do not themselves establish legal or ethical authorization for research involving minors.
 
-These fields record preference only. They do not imply that a separate analytics/research pipeline is active. Any future research use still requires an approved purpose, governance process, appropriate notices/consent, and minimization.
+## User privacy surface
 
-## Self-service account controls
+`/privacy.html` allows the authenticated user to:
 
-`/privacy.html` and the JWT-protected privacy Edge Functions support:
+- inspect a high-level data inventory;
+- edit an optional display name;
+- change analytics/research preferences;
+- submit an account deletion request;
+- cancel an open deletion request.
 
-- viewing account role/status/email
-- viewing a high-level personal data inventory
-- updating an optional display name
-- saving optional analytics/research preferences
-- requesting account deletion
-- cancelling a pending deletion request
+The inventory returns counts, not raw internal tables.
 
-Sensitive changes are written to `security_audit_log` without storing passwords or student answer content in the audit record.
+## Administration surface
 
-## Administration console
+`/admin.html` allows an active administrator to:
 
-`/admin.html` provides active administrators with:
+- inspect account roles and status;
+- change another user's role;
+- suspend/reactivate accounts;
+- reassign teacher-owned classes;
+- review deletion requests;
+- approve a deletion request into a reversible processing state;
+- perform a separate explicit irreversible erasure action;
+- inspect recent security/privacy audit events.
 
-- account inventory
-- role changes
-- suspend/reactivate controls
-- deletion-request queue
-- student deletion approval/rejection
-- class-owner reassignment
-- recent security/privacy audit events
+Safeguards:
 
-The UI cannot change the current administrator's own role/status and the backend protects the last active administrator.
+- an admin cannot change their own role;
+- an admin cannot suspend their own account;
+- the last active admin is protected;
+- staff accounts are not eligible for automatic student erasure;
+- teacher/admin offboarding must transfer or archive owned resources first.
 
-## Secure teacher/student access
+## Two-stage deletion runbook
 
-Existing teacher authorization remains relationship-based: detailed student learning information is available only when the student belongs to a class owned by that teacher. Sprint 10 adds active-account gating to core RLS policies and keeps protected answer keys server-side.
+Deletion is intentionally separated into a reversible approval step and an irreversible execution step.
 
-The content-admin role is routed to the content console rather than to the student or teacher product.
+1. The student submits a deletion request. Status becomes `pending`.
+2. An administrator reviews and approves it. Status becomes `processing`; the application profile becomes `deletion_pending`.
+3. The student may still cancel at this point. Cancellation restores the request to `cancelled` and the profile to `active`.
+4. If deletion should proceed, the administrator chooses the separate permanent-delete action and must explicitly confirm it, including typing `DELETE` in the admin UI.
+5. The service-role-only erasure procedure removes student learning data and the application profile.
+6. Only after learning-data erasure succeeds is the Supabase Auth user deleted.
+7. The deletion request is retained in sanitized completed form with `resolution_code = student_erased`; direct identifiers are null after profile deletion.
+8. A sanitized audit event records the completion and erased row counts without storing answer content or credentials.
 
-## Audit coverage
+The user-facing cancellation path applies to both `pending` and `processing` requests. Once the final erasure action has completed, the deletion is irreversible.
 
-Sprint 10 audits the following sensitive changes:
+## Live deletion QA
 
-- privacy preference changes
-- display-name changes
-- deletion request/cancellation
-- admin role changes
-- admin account suspension/reactivation
-- class ownership reassignment
-- deletion rejection
-- completed student-account erasure
-- direct authenticated profile role/status changes through a database trigger
+Live QA verified both critical branches of the corrected workflow:
 
-This is **security/action auditing**, not full read-access telemetry. Ordinary page views and every historical teacher workflow are not yet written to this log. Broader institutional audit requirements belong in production hardening.
+- `request -> admin approval -> processing -> student cancellation -> active` passed;
+- `request -> admin approval -> processing -> explicit execute deletion -> completed` passed.
 
-## Student deletion procedure
+The corrected final hard-delete test produced `admin.student_account_erased` with `authDeleted: true`. The completed request no longer references an application profile or Auth user.
 
-A student deletion request follows this sequence:
+An earlier QA run exposed that the first implementation erased on approval, which made cancellation impossible. That implementation was replaced by the two-stage workflow above and regression tests were added.
 
-1. student submits request;
-2. administrator verifies the request in the deletion queue;
-3. request enters `processing` and account becomes `deletion_pending`;
-4. Auth account is blocked from normal sign-in;
-5. service-role-only `erase_student_data(uuid)` removes the application profile and cascading learner records;
-6. Supabase Auth user is hard-deleted;
-7. deletion request is retained in sanitized form with its user references cleared by foreign-key behavior / workflow fields;
-8. a sanitized audit event records completion and counts of erased record classes, not the erased learning content.
+## Post-deletion browser state
 
-The erasure RPC refuses non-student accounts.
+Deleting the server-side Auth user can leave a cached browser access token until the client notices that the user no longer exists. The shared frontend UX layer now validates the live Auth user, clears a dead local session, redirects to the login surface, and displays an Armenian explanation instead of leaving a student dashboard showing the raw `Edge Function returned a non-2xx status code` message.
 
-## Staff offboarding
+This is a targeted safety/usability fix. A broader visual/product frontend redesign remains separate work.
 
-Teacher/admin accounts are not hard-deleted automatically because staff can own resources such as classes and assignments. `classes.teacher_id` and existing creator references can restrict deletion. Staff deletion therefore requires explicit offboarding, including resource ownership transfer, before account removal. Sprint 10 includes class reassignment as the first administration control for this process.
+## Audit logging
 
-## Database controls
+`security_audit_log` captures sensitive administrative/privacy mutations such as:
 
-Migration: `supabase/migrations/0011_security_privacy_administration.sql`
+- role changes;
+- account suspension/reactivation;
+- class ownership transfer;
+- privacy preference changes;
+- deletion request/cancellation;
+- deletion approval;
+- deletion rejection;
+- final student erasure.
 
-Key additions:
+Audit records intentionally do not store passwords or student answer content.
 
-- `profiles.account_status`
-- `privacy_preferences`
-- `account_deletion_requests`
-- `security_audit_log`
-- `private.current_user_active()`
-- active-account RLS updates for profiles/classes/memberships/attempts/mastery/sessions
-- service-role-only `erase_student_data(uuid)`
-- profile security-change audit trigger
+## Student erasure RPC
 
-RLS is enabled on all Sprint 10 privacy/audit tables. Authenticated clients have no direct insert/update/delete policy on the audit log.
+`public.erase_student_data(uuid)` is executable only by the service role and refuses non-student profiles. It deletes via the profile cascade after first collecting a compact inventory of affected learning records.
 
-## Edge Functions
+The administrator Edge Function deletes the Supabase Auth account only after this erasure succeeds.
 
-New JWT-protected functions:
+## Security residuals before pilot closure
 
-- `get-my-privacy`
-- `manage-my-privacy`
-- `get-admin-dashboard`
-- `manage-admin-account`
+Two technical gates remain before Sprint 10 can be closed:
 
-All four validate the authenticated user server-side. Admin functions additionally require an active `admin` profile.
+1. Supabase Auth **Leaked Password Protection** must be enabled.
+2. Legacy pre-Sprint-10 service-role Edge Functions must all perform an active-account or live-session validation in addition to validating the JWT, so suspension/revocation is respected immediately rather than waiting for an already-issued access token to expire.
 
-## QA
-
-Automated tests cover:
-
-- opt-out defaults
-- service-role-only erasure RPC
-- admin-only audit-log RLS
-- own-account / last-active-admin protection
-- erasure ordering
-- role-routing separation
-- absence of service-role credentials in browser configuration
-
-Browser JavaScript CI checks include the new admin/privacy clients.
-
-## Supabase security advisor
-
-After the Sprint 10 migration, the only current Supabase security-advisor warning is **Leaked Password Protection Disabled**. This is an Auth project setting and should be enabled before a real school pilot if available for the project configuration.
-
-## Remaining pilot gates
-
-Before declaring Sprint 10 fully QA-complete:
-
-- provision a dedicated test `admin` account;
-- browser-test `/admin.html` and `/privacy.html`;
-- verify role change and suspend/reactivate against disposable test accounts;
-- verify deletion request/cancel with a disposable student;
-- verify end-to-end deletion only with a disposable student account whose data may be permanently removed;
-- enable Supabase leaked-password protection;
-- close the residual service-role Edge Function JWT/account-status window described above or explicitly accept it only for a tightly controlled internal pilot.
+Direct database RLS is already active-account-gated, and the Sprint 10 privacy/admin functions enforce active account state.
