@@ -52,7 +52,7 @@ Deno.serve(async (req) => {
   if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
   const studentId = userData.user.id;
 
-  let body: { mode?: "diagnostic" | "practice" } = {};
+  let body: { mode?: "diagnostic" | "practice"; targetSkillId?: string | null } = {};
   try { body = await req.json(); } catch { /* handled below */ }
   if (body.mode !== "diagnostic" && body.mode !== "practice") return json({ error: "invalid_mode" }, 400);
 
@@ -148,7 +148,14 @@ Deno.serve(async (req) => {
     .limit(500);
   const attempts = (attemptRows ?? []) as AttemptRow[];
 
-  const target = skills.find((skill) => !isComplete(mastery.get(skill.id), attempts, skill.id));
+  let target = null as (typeof skills)[number] | null;
+  if (body.targetSkillId) {
+    target = skills.find((skill) => skill.id === body.targetSkillId) ?? null;
+    if (!target) return json({ error: "invalid_target_skill" }, 400);
+  } else {
+    target = skills.find((skill) => !isComplete(mastery.get(skill.id), attempts, skill.id)) ?? null;
+  }
+
   if (!target) {
     return json({ unitComplete: true, unitCode: UNIT_CODE, messageHy: "Այս բաժնի բոլոր հմտություններն արդեն ավարտված են։" });
   }
@@ -161,7 +168,7 @@ Deno.serve(async (req) => {
       mode: "practice",
       target_skill_id: target.id,
       planned_item_count: PRACTICE_SESSION_LENGTH,
-      metadata: { targetSkillCode: target.code, bounded: true },
+      metadata: { targetSkillCode: target.code, bounded: true, recommendedTarget: Boolean(body.targetSkillId) },
     })
     .select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count")
     .single();
