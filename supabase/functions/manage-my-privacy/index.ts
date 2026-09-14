@@ -47,6 +47,10 @@ Deno.serve(async (req) => {
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
     const action = String(body.action ?? "");
 
+    if (profile.account_status === "deletion_pending" && action !== "cancel_deletion") {
+      return json({ error: "deletion_pending_cancel_or_wait" }, 409);
+    }
+
     if (action === "save_preferences") {
       const productAnalytics = body.productAnalytics === true;
       const researchUse = body.researchUse === true;
@@ -97,23 +101,36 @@ Deno.serve(async (req) => {
     }
 
     if (action === "cancel_deletion") {
-      const { data: pending } = await admin.from("account_deletion_requests")
+      const { data: openRequest } = await admin.from("account_deletion_requests")
         .select("id, status")
         .eq("user_id", userId)
-        .eq("status", "pending")
+        .in("status", ["pending", "processing"])
         .order("requested_at", { ascending: false })
         .limit(1)
         .maybeSingle();
-      if (!pending) return json({ error: "no_pending_deletion_request" }, 409);
+      if (!openRequest) return json({ error: "no_cancellable_deletion_request" }, 409);
+
       const { data, error } = await admin.from("account_deletion_requests").update({
         status: "cancelled",
         resolved_at: new Date().toISOString(),
         resolution_code: "cancelled_by_user",
         auth_user_id: null,
-      }).eq("id", pending.id).select("id, status, resolved_at, resolution_code").single();
+      }).eq("id", openRequest.id).select("id, status, resolved_at, resolution_code").single();
       if (error) return json({ error: "deletion_cancel_failed", detail: error.message }, 500);
-      await audit(admin, userId, String(profile.role), "privacy.deletion_cancelled", { requestId: pending.id });
-      return json({ request: data });
+
+      if (profile.account_status === "deletion_pending") {
+        await admin.from("profiles").update({
+          account_status: "active",
+          status_changed_at: new Date().toISOString(),
+          updated_at: new Date().toISOString(),
+        }).eq("id", userId).eq("account_status", "deletion_pending");
+      }
+
+      await audit(admin, userId, String(profile.role), "privacy.deletion_cancelled", {
+        requestId: openRequest.id,
+        previousRequestStatus: openRequest.status,
+      });
+      return json({ request: data, accountStatus: "active" });
     }
 
     return json({ error: "invalid_action" }, 400);
