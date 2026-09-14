@@ -34,6 +34,8 @@ create table if not exists public.remediation_events (
 create index if not exists idx_remediation_guides_skill on public.skill_remediation_guides(skill_id, status);
 create index if not exists idx_remediation_events_student_created on public.remediation_events(student_id, created_at desc);
 create index if not exists idx_remediation_events_session on public.remediation_events(session_id, session_item_id);
+create index if not exists idx_learning_session_items_hint_level on public.learning_session_items(session_id, hint_level_used);
+create index if not exists idx_learning_session_items_selection_reason on public.learning_session_items(session_id, selection_reason);
 
 alter table public.skill_remediation_guides enable row level security;
 alter table public.remediation_events enable row level security;
