@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Content Quality — Armenian Mastery Platform</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./content.css" />
+</head>
+<body>
+  <main class="content-shell">
+    <header class="content-topbar">
+      <div>
+        <p class="eyebrow">SPRINT 8 · CONTENT QUALITY</p>
+        <h1>Բովանդակության որակի համակարգ</h1>
+        <p class="subtle">Question bank metadata, QA, review, versioning and retirement workflow.</p>
+      </div>
+      <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
+    </header>
+
+    <section id="authPanel" class="card content-auth">
+      <h2>Content admin մուտք</h2>
+      <p class="subtle">Այս բաժինը հասանելի է միայն admin/content_admin դերերով հաշիվներին։</p>
+      <label>Էլ. հասցե<input id="emailInput" type="email" autocomplete="email" /></label>
+      <label>Գաղտնաբառ<input id="passwordInput" type="password" autocomplete="current-password" /></label>
+      <button id="signInBtn">Մուտք գործել</button>
+      <p id="authMessage" class="message"></p>
+    </section>
+
+    <section id="console" class="hidden">
+      <div id="stats" class="quality-stats"></div>
+
+      <section class="card filter-card">
+        <input id="searchInput" type="search" placeholder="Փնտրել item code, skill կամ prompt…" />
+        <select id="skillFilter"><option value="">Բոլոր հմտությունները</option></select>
+        <select id="reviewFilter">
+          <option value="">Բոլոր review վիճակները</option>
+          <option value="unreviewed">unreviewed</option>
+          <option value="needs_review">needs_review</option>
+          <option value="in_review">in_review</option>
+          <option value="changes_requested">changes_requested</option>
+          <option value="approved">approved</option>
+        </select>
+        <select id="qaFilter">
+          <option value="">QA՝ բոլորը</option>
+          <option value="pass">QA pass</option>
+          <option value="fail">QA fail</option>
+          <option value="missing">QA missing</option>
+        </select>
+        <button id="refreshBtn" class="ghost">Թարմացնել</button>
+      </section>
+
+      <div class="quality-layout">
+        <section class="card bank-card">
+          <div class="section-heading"><div><h2>Question bank</h2><p id="resultCount" class="subtle small"></p></div></div>
+          <div class="table-wrap">
+            <table class="quality-table">
+              <thead><tr><th>Item</th><th>Skill</th><th>Difficulty</th><th>Family</th><th>Review</th><th>QA</th><th>Version</th><th>Lifecycle</th></tr></thead>
+              <tbody id="itemRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside id="detailPanel" class="card detail-panel">
+          <h2>Ընտրեք հարց</h2>
+          <p class="subtle">Ձախ աղյուսակից ընտրեք item՝ metadata-ն և workflow-ը տեսնելու համար։</p>
+        </aside>
+      </div>
+      <p id="consoleMessage" class="message"></p>
+    </section>
+  </main>
+  <script type="module" src="./content.js"></script>
+</body>
+</html>
