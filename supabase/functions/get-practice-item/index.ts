@@ -97,13 +97,20 @@ Deno.serve(async (req) => {
     status: "insufficient_evidence",
   };
 
-  const { data: recentAttempts } = await admin
+  // Avoid recently seen items. This must use attempts.created_at; the table
+  // does not have an attempted_at column. We fail loudly if this query breaks
+  // so the scheduler cannot silently fall back to repeating the same item.
+  const { data: recentAttempts, error: recentAttemptsError } = await admin
     .from("attempts")
-    .select("item_id")
+    .select("item_id, created_at")
     .eq("student_id", studentId)
     .eq("skill_id", target.id)
-    .order("attempted_at", { ascending: false })
-    .limit(3);
+    .order("created_at", { ascending: false })
+    .limit(4);
+  if (recentAttemptsError) {
+    console.error("recent attempts query failed", recentAttemptsError);
+    return json({ error: "recent_attempts_query_failed" }, 500);
+  }
   const recentIds = new Set((recentAttempts ?? []).map((r) => r.item_id));
 
   const { data: candidateItems, error: itemError } = await admin
@@ -113,14 +120,40 @@ Deno.serve(async (req) => {
     .eq("status", "published");
   if (itemError || !candidateItems?.length) return json({ error: "no_item_for_skill", skillCode: target.code }, 404);
 
+  // Count how often each candidate has been served to this learner. Among
+  // otherwise suitable items, prefer less-used items so the learner gets
+  // broader evidence across the skill instead of cycling through one prompt.
+  const candidateIds = candidateItems.map((item) => item.id);
+  const { data: skillAttempts, error: skillAttemptsError } = await admin
+    .from("attempts")
+    .select("item_id")
+    .eq("student_id", studentId)
+    .eq("skill_id", target.id)
+    .in("item_id", candidateIds);
+  if (skillAttemptsError) {
+    console.error("skill attempts query failed", skillAttemptsError);
+    return json({ error: "skill_attempts_query_failed" }, 500);
+  }
+
+  const attemptCounts = new Map<string, number>();
+  for (const attempt of skillAttempts ?? []) {
+    attemptCounts.set(attempt.item_id, (attemptCounts.get(attempt.item_id) ?? 0) + 1);
+  }
+
   const goalDifficulty = desiredDifficulty(targetMastery.score);
   const sorted = [...candidateItems].sort((a, b) => {
     const aRecent = recentIds.has(a.id) ? 1 : 0;
     const bRecent = recentIds.has(b.id) ? 1 : 0;
     if (aRecent !== bRecent) return aRecent - bRecent;
+
+    const aCount = attemptCounts.get(a.id) ?? 0;
+    const bCount = attemptCounts.get(b.id) ?? 0;
+    if (aCount !== bCount) return aCount - bCount;
+
     const aDistance = Math.abs(Number(a.difficulty) - goalDifficulty);
     const bDistance = Math.abs(Number(b.difficulty) - goalDifficulty);
     if (aDistance !== bDistance) return aDistance - bDistance;
+
     return String(a.code).localeCompare(String(b.code));
   });
   const item = sorted[0];
@@ -142,6 +175,7 @@ Deno.serve(async (req) => {
     scheduler: {
       desiredDifficulty: goalDifficulty,
       recentItemsAvoided: recentIds.size,
+      selectedItemPriorAttempts: attemptCounts.get(item.id) ?? 0,
     },
     item: {
       id: item.id,
