@@ -23,14 +23,14 @@ function roleLabel(role) {
 }
 
 function statusLabel(status) {
-  return ({ active: "Ակտիվ", suspended: "Կասեցված", deletion_pending: "Ջնջման փուլում" })[status] || status;
+  return ({ active: "Ակտիվ", suspended: "Կասեցված", deletion_pending: "Ջնջման հաստատման փուլում" })[status] || status;
 }
 
 function deletionLabel(request) {
   if (!request) return "Ակտիվ ջնջման հարցում չկա։";
   const labels = {
-    pending: "Հարցումն ուղարկված է և սպասում է ադմինի ստուգմանը։",
-    processing: "Հարցումը մշակվում է։",
+    pending: "Հարցումն ուղարկված է և սպասում է ադմինի ստուգմանը։ Մինչև վերջնական ջնջումը կարող եք չեղարկել այն։",
+    processing: "Ադմինը հաստատել է հարցումը, բայց վերջնական ջնջումը դեռ չի իրականացվել։ Դուք դեռ կարող եք չեղարկել այն։",
     completed: "Վերջին ջնջման հարցումն ավարտվել է։",
     rejected: "Վերջին ջնջման հարցումը մերժվել է։",
     cancelled: "Վերջին ջնջման հարցումը չեղարկվել է։",
@@ -66,10 +66,16 @@ function render(data) {
 
   const request = data.latestDeletionRequest;
   $("deletionState").textContent = deletionLabel(request);
-  const pending = request && request.status === "pending";
-  const processing = request && request.status === "processing";
-  $("requestDeletionBtn").classList.toggle("hidden", Boolean(pending || processing));
-  $("cancelDeletionBtn").classList.toggle("hidden", !pending);
+  const cancellable = request && ["pending", "processing"].includes(request.status);
+  $("requestDeletionBtn").classList.toggle("hidden", Boolean(cancellable));
+  $("cancelDeletionBtn").classList.toggle("hidden", !cancellable);
+
+  const deletionPending = data.account.status === "deletion_pending";
+  $("displayNameInput").disabled = deletionPending;
+  $("saveNameBtn").disabled = deletionPending;
+  $("analyticsOptIn").disabled = deletionPending;
+  $("researchOptIn").disabled = deletionPending;
+  $("savePrivacyBtn").disabled = deletionPending;
 }
 
 async function refresh() {
@@ -109,7 +115,7 @@ $("savePrivacyBtn").addEventListener("click", async () => {
 });
 
 $("requestDeletionBtn").addEventListener("click", async () => {
-  if (!confirm("Ուղարկե՞լ հաշվի ջնջման հարցում։ Այն նախ կստուգվի ադմինի կողմից։")) return;
+  if (!confirm("Ուղարկե՞լ հաշվի ջնջման հարցում։ Այն նախ կստուգվի ադմինի կողմից, և մինչև վերջնական ջնջումը դուք կարող եք չեղարկել հարցումը։")) return;
   try {
     setMessage("deletionMessage", "Հարցումն ուղարկվում է…");
     await invoke("manage-my-privacy", { action: "request_deletion" });
@@ -119,6 +125,7 @@ $("requestDeletionBtn").addEventListener("click", async () => {
 });
 
 $("cancelDeletionBtn").addEventListener("click", async () => {
+  if (!confirm("Չեղարկե՞լ հաշվի ջնջման հարցումը։")) return;
   try {
     setMessage("deletionMessage", "Հարցումը չեղարկվում է…");
     await invoke("manage-my-privacy", { action: "cancel_deletion" });
