@@ -1,6 +1,11 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
+const styleLink = document.createElement("link");
+styleLink.rel = "stylesheet";
+styleLink.href = "./remediation.css";
+document.head.appendChild(styleLink);
+
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 
@@ -8,6 +13,7 @@ const practicePanel = $("practicePanel");
 const sessionMode = $("sessionMode");
 const itemCode = $("itemCode");
 const submitBtn = $("submitBtn");
+const feedback = $("feedback");
 const helpControls = $("helpControls");
 const helpBtn = $("helpBtn");
 const helpPanel = $("helpPanel");
@@ -18,8 +24,10 @@ const helpNote = $("helpNote");
 
 let lastItemCode = null;
 let loading = false;
+let helpOpenedForCurrentItem = false;
 
 function resetHelp() {
+  helpOpenedForCurrentItem = false;
   helpPanel.classList.add("hidden");
   helpTitle.textContent = "Օգնություն";
   helpStrategy.textContent = "";
@@ -33,13 +41,23 @@ function syncHelpVisibility() {
   const practiceVisible = !practicePanel.classList.contains("hidden");
   const isPractice = sessionMode.textContent.trim() === "Վարժանք";
   const unanswered = !submitBtn.disabled;
+  const incorrectAnswered = feedback.classList.contains("bad") && !feedback.classList.contains("hidden");
   const hasQuestion = itemCode.textContent.trim() && itemCode.textContent.trim() !== "—";
-  helpControls.classList.toggle("hidden", !(practiceVisible && isPractice && unanswered && hasQuestion));
+  helpControls.classList.toggle(
+    "hidden",
+    !(practiceVisible && isPractice && hasQuestion && (unanswered || incorrectAnswered)),
+  );
 
   const currentCode = itemCode.textContent.trim();
   if (currentCode !== lastItemCode) {
     lastItemCode = currentCode;
     resetHelp();
+  }
+
+  if (!helpOpenedForCurrentItem && incorrectAnswered) {
+    helpBtn.textContent = "Բացատրել սխալը";
+  } else if (!helpOpenedForCurrentItem && unanswered) {
+    helpBtn.textContent = "Օգնություն";
   }
 }
 
@@ -63,6 +81,7 @@ async function requestHelp() {
     return;
   }
 
+  helpOpenedForCurrentItem = true;
   helpPanel.classList.remove("hidden");
   helpTitle.textContent = data.titleHy ?? "Օգնություն";
   helpStrategy.textContent = data.strategyHy ?? "";
@@ -76,5 +95,11 @@ async function requestHelp() {
 helpBtn.addEventListener("click", requestHelp);
 
 const observer = new MutationObserver(syncHelpVisibility);
-observer.observe(practicePanel, { subtree: true, childList: true, characterData: true, attributes: true, attributeFilter: ["class", "disabled"] });
+observer.observe(practicePanel, {
+  subtree: true,
+  childList: true,
+  characterData: true,
+  attributes: true,
+  attributeFilter: ["class", "disabled"],
+});
 syncHelpVisibility();
