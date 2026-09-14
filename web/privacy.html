@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Գաղտնիություն և հաշիվ — Armenian Mastery Platform</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./privacy.css" />
+</head>
+<body>
+  <main class="shell privacy-shell" id="mainContent">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ ԵՎ ԳԱՂՏՆԻՈՒԹՅՈՒՆ</p>
+        <h1>Իմ հաշիվն ու տվյալները</h1>
+        <p class="subtle">Տեսեք, թե ինչ տվյալներ են պահվում, կառավարեք ընտրովի օգտագործումները և ուղարկեք ջնջման հարցում։</p>
+      </div>
+      <div class="row">
+        <a class="ghost button-link" href="./index.html">← Վերադառնալ</a>
+        <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
+      </div>
+    </header>
+
+    <section id="loading" class="card privacy-card">Տվյալները բեռնվում են…</section>
+    <section id="signedOut" class="card privacy-card hidden">
+      <h2>Նախ մուտք գործեք</h2>
+      <p class="subtle">Գաղտնիության էջը հասանելի է միայն ձեր հաշվից։</p>
+      <a class="button-link" href="./index.html">Մուտք գործել</a>
+    </section>
+
+    <div id="content" class="hidden">
+      <section class="privacy-grid">
+        <article class="card privacy-card">
+          <span class="mode-kicker">Հաշիվ</span>
+          <h2 id="accountTitle">—</h2>
+          <dl class="privacy-list">
+            <div><dt>Դեր</dt><dd id="accountRole">—</dd></div>
+            <div><dt>Կարգավիճակ</dt><dd id="accountStatus">—</dd></div>
+            <div><dt>Էլ. հասցե</dt><dd id="accountEmail">—</dd></div>
+          </dl>
+          <label>Ցուցադրվող անուն
+            <input id="displayNameInput" maxlength="80" autocomplete="name" placeholder="Ընտրովի" />
+          </label>
+          <button id="saveNameBtn" type="button">Պահել անունը</button>
+          <p id="nameMessage" class="message" aria-live="polite"></p>
+        </article>
+
+        <article class="card privacy-card">
+          <span class="mode-kicker">Տվյալների նվազեցում</span>
+          <h2>Ինչ ենք պահում</h2>
+          <p>Ուսումնական պրոֆիլում պահվում են միայն դերը, ընտրովի ցուցադրվող անունը, հաշվի կարգավիճակը և ուսուցման համար անհրաժեշտ առաջընթացի տվյալները։</p>
+          <p class="subtle">Ծննդյան ամսաթիվ, տան հասցե, հեռախոսահամար, ծնողի էլ. հասցե և պետական նույնականացուցիչ չենք ավելացրել այս պրոֆիլին։ Հաշվի էլ. հասցեն պահվում է Supabase Auth-ում։</p>
+          <dl id="inventory" class="privacy-list"></dl>
+        </article>
+      </section>
+
+      <section class="card privacy-card">
+        <span class="mode-kicker">Ընտրովի օգտագործումներ</span>
+        <h2>Գաղտնիության ընտրություններ</h2>
+        <p class="subtle">Այս երկու ընտրությունները լռելյայն անջատված են։ Դրանք պահում են ձեր համաձայնության նախապատվությունը և չեն նշանակում, որ առանձին վերլուծական կամ հետազոտական համակարգ արդեն ակտիվ է։</p>
+        <label class="privacy-toggle"><input id="analyticsOptIn" type="checkbox" /> <span><strong>Ընտրովի արտադրանքի վերլուծություն</strong><small>Թույլատրել ապագայում հաստատված պիլոտային վերլուծության համար ոչ անհրաժեշտ օգտագործումը։</small></span></label>
+        <label class="privacy-toggle"><input id="researchOptIn" type="checkbox" /> <span><strong>Ընտրովի հետազոտական օգտագործում</strong><small>Թույլատրել առանձին հաստատված հետազոտական օգտագործումը՝ համապատասխան ընթացակարգերի դեպքում։</small></span></label>
+        <button id="savePrivacyBtn" type="button">Պահել ընտրությունները</button>
+        <p id="privacyMessage" class="message" aria-live="polite"></p>
+      </section>
+
+      <section class="card privacy-card danger-zone">
+        <span class="mode-kicker">Հաշվի ջնջում</span>
+        <h2>Ջնջման հարցում</h2>
+        <p>Ուսանողական հաշվի հաստատված ջնջումը հեռացնում է ուսումնական փորձերը, սեսիաները, mastery-ի տվյալները և դասարանային անդամակցությունները, ապա ջնջում է մուտքի հաշիվը։</p>
+        <p class="subtle">Ուսուցչի կամ ադմինի հաշիվների համար պահանջվում է առանձին offboarding, որովհետև կարող են լինել դասարաններ կամ այլ պատասխանատվություններ, որոնք նախ պետք է փոխանցվեն։</p>
+        <div id="deletionState" class="privacy-state">—</div>
+        <div class="row">
+          <button id="requestDeletionBtn" type="button" class="danger-btn">Ուղարկել ջնջման հարցում</button>
+          <button id="cancelDeletionBtn" type="button" class="secondary hidden">Չեղարկել հարցումը</button>
+        </div>
+        <p id="deletionMessage" class="message" aria-live="polite"></p>
+      </section>
+    </div>
+  </main>
+  <script type="module" src="./privacy.js"></script>
+  <script type="module" src="./ux.js"></script>
+</body>
+</html>
