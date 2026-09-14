@@ -1,5 +1,10 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+
+const uxSupabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const path = location.pathname.toLowerCase();
 const isStudentPage = /(?:^|\/)(?:index\.html|mastery\.html|join\.html)?$/.test(path) || path.endsWith("/");
+const terminalAuthMessageKey = "amp-terminal-auth-message";
 
 const terminology = [
   [/Mastery check/gi, "Յուրացման ստուգում"],
@@ -18,6 +23,7 @@ const friendlyErrors = new Map([
   ["Email not confirmed", "Էլ. հասցեն դեռ հաստատված չէ։"],
   ["User already registered", "Այս էլ. հասցեով հաշիվ արդեն կա։"],
   ["Failed to fetch", "Կապի խնդիր առաջացավ։ Ստուգեք ինտերնետը և կրկին փորձեք։"],
+  ["Edge Function returned a non-2xx status code", "Չհաջողվեց բեռնել տվյալները։ Եթե հաշիվը ջնջվել կամ կասեցվել է, նորից մուտք գործեք։"],
 ]);
 
 function localizeText(text) {
@@ -72,6 +78,44 @@ function announce(text, error = false) {
   status.classList.remove("hidden");
   clearTimeout(announce.timer);
   announce.timer = setTimeout(() => status.classList.add("hidden"), 5000);
+}
+
+async function handleTerminalAuthFailure() {
+  const { data: sessionData } = await uxSupabase.auth.getSession();
+  if (!sessionData.session) return false;
+
+  const { data: userData, error } = await uxSupabase.auth.getUser();
+  if (!error && userData.user) return false;
+
+  try {
+    await uxSupabase.auth.signOut({ scope: "local" });
+  } catch {
+    try {
+      localStorage.removeItem(`sb-${new URL(SUPABASE_URL).hostname.split(".")[0]}-auth-token`);
+    } catch { /* best-effort local cleanup */ }
+  }
+
+  sessionStorage.setItem(terminalAuthMessageKey, "Հաշիվը այլևս հասանելի չէ։ Եթե այն ջնջվել է, տվյալներն արդեն հեռացվել են։ Մուտք գործեք այլ հաշվով։");
+  if (!location.pathname.endsWith("/index.html") && location.pathname !== "/") {
+    location.replace("./index.html");
+  } else {
+    location.reload();
+  }
+  return true;
+}
+
+function showTerminalAuthMessage() {
+  const message = sessionStorage.getItem(terminalAuthMessageKey);
+  if (!message) return;
+  sessionStorage.removeItem(terminalAuthMessageKey);
+  const authMessage = document.getElementById("authMessage");
+  if (authMessage) {
+    authMessage.textContent = message;
+    authMessage.style.color = "#8a3342";
+    authMessage.setAttribute("role", "alert");
+    return;
+  }
+  announce(message, true);
 }
 
 function normalizeDecimal(value) {
@@ -329,6 +373,8 @@ window.addEventListener("unhandledrejection", (event) => {
 ensureSkipLink();
 ensureGlobalStatus();
 configurePage();
+showTerminalAuthMessage();
+void handleTerminalAuthFailure();
 
 const observer = new MutationObserver((records) => {
   let shouldConfigure = false;
