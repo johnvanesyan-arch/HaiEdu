@@ -26,7 +26,9 @@ Deno.serve(async (req) => {
   if (!supabaseUrl || !serviceRoleKey) return json({ error: "server_not_configured" }, 500);
   if (!authHeader) return json({ error: "unauthorized" }, 401);
 
-  const admin = createClient(supabaseUrl, serviceRoleKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  const admin = createClient(supabaseUrl, serviceRoleKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
   const token = authHeader.replace(/^Bearer\s+/i, "");
   const { data: userData, error: userError } = await admin.auth.getUser(token);
   if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
@@ -40,29 +42,45 @@ Deno.serve(async (req) => {
     responseTimeMs?: number;
     hintUsed?: boolean;
   };
-  try { payload = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
-  if (!payload.itemId || !payload.response) return json({ error: "itemId_and_response_required" }, 400);
+  try {
+    payload = await req.json();
+  } catch {
+    return json({ error: "invalid_json" }, 400);
+  }
+  if (!payload.itemId || !payload.response) {
+    return json({ error: "itemId_and_response_required" }, 400);
+  }
 
   let session: any = null;
+  let sessionItem: any = null;
   if (payload.sessionId || payload.sessionItemId) {
-    if (!payload.sessionId || !payload.sessionItemId) return json({ error: "sessionId_and_sessionItemId_required" }, 400);
+    if (!payload.sessionId || !payload.sessionItemId) {
+      return json({ error: "sessionId_and_sessionItemId_required" }, 400);
+    }
     const { data: sessionData, error: sessionError } = await admin
       .from("learning_sessions")
       .select("id, mode, status, planned_item_count, answered_count, correct_count")
       .eq("id", payload.sessionId)
       .eq("student_id", studentId)
       .single();
-    if (sessionError || !sessionData || sessionData.status !== "active") return json({ error: "session_not_active" }, 409);
+    if (sessionError || !sessionData || sessionData.status !== "active") {
+      return json({ error: "session_not_active" }, 409);
+    }
 
-    const { data: sessionItem, error: sessionItemError } = await admin
+    const { data: sessionItemData, error: sessionItemError } = await admin
       .from("learning_session_items")
-      .select("id, item_id, answered_at")
+      .select("id, item_id, answered_at, hint_level_used")
       .eq("id", payload.sessionItemId)
       .eq("session_id", payload.sessionId)
       .single();
-    if (sessionItemError || !sessionItem || sessionItem.item_id !== payload.itemId) return json({ error: "session_item_mismatch" }, 409);
-    if (sessionItem.answered_at) return json({ error: "session_item_already_answered" }, 409);
+    if (sessionItemError || !sessionItemData || sessionItemData.item_id !== payload.itemId) {
+      return json({ error: "session_item_mismatch" }, 409);
+    }
+    if (sessionItemData.answered_at) {
+      return json({ error: "session_item_already_answered" }, 409);
+    }
     session = sessionData;
+    sessionItem = sessionItemData;
   }
 
   const { data: item, error: itemError } = await admin
@@ -70,7 +88,9 @@ Deno.serve(async (req) => {
     .select("id, skill_id, item_type, difficulty, status")
     .eq("id", payload.itemId)
     .single();
-  if (itemError || !item || item.status !== "published") return json({ error: "item_not_found" }, 404);
+  if (itemError || !item || item.status !== "published") {
+    return json({ error: "item_not_found" }, 404);
+  }
 
   const { data: answerRow, error: answerError } = await admin
     .from("item_answer_keys")
@@ -92,8 +112,9 @@ Deno.serve(async (req) => {
   };
 
   let grade;
-  try { grade = gradeAnswer(key, payload.response); }
-  catch (err) {
+  try {
+    grade = gradeAnswer(key, payload.response);
+  } catch (err) {
     console.error("grade_error", err);
     return json({ error: "grading_failed" }, 500);
   }
@@ -104,18 +125,26 @@ Deno.serve(async (req) => {
     .eq("student_id", studentId)
     .eq("skill_id", item.skill_id)
     .maybeSingle();
-  const prior: MasteryState = priorRow ? {
-    alpha: Number(priorRow.alpha_evidence),
-    beta: Number(priorRow.beta_evidence),
-    masteryScore: Number(priorRow.mastery_score),
-    evidenceCount: priorRow.evidence_count,
-    status: priorRow.status,
-  } : initialMasteryState();
+  const prior: MasteryState = priorRow
+    ? {
+        alpha: Number(priorRow.alpha_evidence),
+        beta: Number(priorRow.beta_evidence),
+        masteryScore: Number(priorRow.mastery_score),
+        evidenceCount: priorRow.evidence_count,
+        status: priorRow.status,
+      }
+    : initialMasteryState();
+
+  // For session attempts, help use is determined from server-side session state.
+  // The client cannot claim that a hinted answer was independent.
+  const serverHintUsed = sessionItem
+    ? Number(sessionItem.hint_level_used ?? 0) > 0
+    : Boolean(payload.hintUsed);
 
   const updated = updateMastery(prior, {
     score: grade.score,
     difficulty: item.difficulty,
-    hintUsed: payload.hintUsed ?? false,
+    hintUsed: serverHintUsed,
   });
   const now = new Date().toISOString();
 
@@ -132,7 +161,7 @@ Deno.serve(async (req) => {
       p_score: grade.score,
       p_correct: grade.correct,
       p_error_code: grade.errorCode,
-      p_hint_used: payload.hintUsed ?? false,
+      p_hint_used: serverHintUsed,
       p_response_time_ms: payload.responseTimeMs ?? null,
       p_alpha: updated.alpha,
       p_beta: updated.beta,
@@ -156,7 +185,7 @@ Deno.serve(async (req) => {
       p_score: grade.score,
       p_correct: grade.correct,
       p_error_code: grade.errorCode,
-      p_hint_used: payload.hintUsed ?? false,
+      p_hint_used: serverHintUsed,
       p_response_time_ms: payload.responseTimeMs ?? null,
       p_alpha: updated.alpha,
       p_beta: updated.beta,
@@ -196,9 +225,15 @@ Deno.serve(async (req) => {
       .eq("skill_id", prereq.prerequisite_skill_id)
       .maybeSingle();
     const score = prereqMastery ? Number(prereqMastery.mastery_score) : 0;
-    if (!prereqMastery || score < Number(prereq.required_mastery)) unmet.push(prereq.prerequisite_skill_id);
+    if (!prereqMastery || score < Number(prereq.required_mastery)) {
+      unmet.push(prereq.prerequisite_skill_id);
+    }
   }
-  const recommendation = recommendNext({ mastery: updated, unmetPrerequisiteIds: unmet, hasNextSkill: false });
+  const recommendation = recommendNext({
+    mastery: updated,
+    unmetPrerequisiteIds: unmet,
+    hasNextSkill: false,
+  });
 
   const response: Record<string, unknown> = {
     attemptId,
@@ -209,6 +244,7 @@ Deno.serve(async (req) => {
       score: grade.score,
       errorCode: grade.errorCode,
       feedbackCode: answerRow.feedback_code ?? null,
+      usedHelp: serverHintUsed,
     },
     mastery: {
       score: updated.masteryScore,
@@ -216,6 +252,18 @@ Deno.serve(async (req) => {
       status: updated.status,
     },
     recommendation,
+    remediation: session?.mode === "practice"
+      ? {
+          helpWasUsed: serverHintUsed,
+          independentCheckNeeded: grade.correct && serverHintUsed,
+          helpAvailableAfterMistake: !grade.correct,
+          messageHy: !grade.correct
+            ? "Սխալը գրանցվեց։ Օգտագործեք օգնությունը կամ անցեք հաջորդ՝ հարմարեցված հարցին։"
+            : serverHintUsed
+              ? "Պատասխանը ճիշտ է օգնությամբ։ Հմտությունը հետագայում կստուգվի նաև առանց օգնության։"
+              : "Պատասխանը ճիշտ է ինքնուրույն։",
+        }
+      : null,
   };
 
   if (session) {
