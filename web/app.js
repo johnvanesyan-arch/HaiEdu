@@ -22,6 +22,7 @@ const masteryCard = $("masteryCard");
 let currentSession = null;
 let current = null;
 let questionStartedAt = null;
+let dashboardData = null;
 
 const layerLabels = {
   knowledge: "Գիտելիք",
@@ -29,12 +30,21 @@ const layerLabels = {
   reasoning: "Դատողություն",
   transfer: "Փոխանցում"
 };
+
 const statusLabels = {
   insufficient_evidence: "Տվյալները քիչ են",
   needs_support: "Աջակցություն է պետք",
   developing: "Զարգացող",
   secure: "Կայուն mastery"
 };
+
+const bandLabels = {
+  strong: "Ուժեղ",
+  developing: "Զարգացող",
+  needs_support: "Աջակցություն է պետք",
+  not_assessed: "Չի գնահատվել"
+};
+
 const recommendationLabels = {
   review_prerequisite: "Համակարգը խորհուրդ է տալիս վերադառնալ անհրաժեշտ նախապայման հմտությանը։",
   continue_current_skill: "Շարունակեք աշխատել ընթացիկ հմտության վրա։",
@@ -55,19 +65,11 @@ function setModeMessage(message, isError = false) {
 function setAuthenticated(isAuthenticated) {
   authPanel.classList.toggle("hidden", isAuthenticated);
   signOutBtn.classList.toggle("hidden", !isAuthenticated);
-  if (isAuthenticated) showModeSelection();
+  if (isAuthenticated) showDashboard();
   else {
     modePanel.classList.add("hidden");
     practicePanel.classList.add("hidden");
   }
-}
-
-function showModeSelection() {
-  current = null;
-  currentSession = null;
-  practicePanel.classList.add("hidden");
-  modePanel.classList.remove("hidden");
-  setModeMessage("");
 }
 
 async function signIn() {
@@ -93,16 +95,132 @@ async function signOut() {
   await supabase.auth.signOut();
   current = null;
   currentSession = null;
+  dashboardData = null;
   clearQuestion();
 }
 
-async function startSession(mode) {
+async function showDashboard() {
+  current = null;
+  currentSession = null;
+  practicePanel.classList.add("hidden");
+  modePanel.classList.remove("hidden");
+  $("dashboardLoading").classList.remove("hidden");
+  $("dashboardContent").classList.add("hidden");
+  setModeMessage("");
+
+  const { data, error } = await supabase.functions.invoke("get-student-dashboard", { body: {} });
+  if (error) {
+    $("dashboardLoading").textContent = "Չհաջողվեց բեռնել առաջընթացը։";
+    return setModeMessage(error.message, true);
+  }
+
+  dashboardData = data;
+  renderDashboard(data);
+  $("dashboardLoading").classList.add("hidden");
+  $("dashboardContent").classList.remove("hidden");
+}
+
+function renderDashboard(data) {
+  const diagnostic = data.latestDiagnostic;
+  $("diagnosticScore").textContent = diagnostic ? `${diagnostic.correct} / ${diagnostic.answered} · ${diagnostic.percent}%` : "Դեռ չկա";
+  $("diagnosticMeta").textContent = diagnostic
+    ? "Վերջին ավարտված 20-հարցանոց ախտորոշիչ"
+    : "Անցեք ախտորոշիչը՝ հմտությունների քարտեզ ստանալու համար";
+
+  const progress = data.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
+  $("completedSkills").textContent = `${progress.completedSkills} / ${progress.totalSkills}`;
+  $("overallProgressBar").style.width = `${progress.percent}%`;
+
+  const recommendation = data.recommendation ?? {};
+  const skill = recommendation.skill;
+  const actionText = {
+    resume_session: "Շարունակել սեսիան",
+    take_diagnostic: "Անցնել ախտորոշիչ",
+    practice_skill: "Սկսել առաջարկվող վարժանքը",
+    unit_complete: "Բաժինը ամրապնդված է"
+  }[recommendation.action] ?? "Հաջորդ քայլ";
+
+  $("nextStepLabel").textContent = actionText;
+  $("nextStepSkill").textContent = skill ? `${skill.code} · ${skill.nameHy}` : "—";
+  $("recommendationTitle").textContent = skill ? `${skill.code} — ${skill.nameHy}` : actionText;
+  $("recommendationText").textContent = recommendation.reasonHy ?? "—";
+
+  const resumeBtn = $("resumeLearningBtn");
+  resumeBtn.disabled = recommendation.action === "unit_complete";
+  resumeBtn.textContent = actionText;
+
+  if (recommendation.action === "resume_session" && data.activeSession) {
+    const active = data.activeSession;
+    $("recommendationTitle").textContent = active.mode === "diagnostic" ? "Շարունակել ախտորոշիչը" : "Շարունակել վարժանքը";
+    $("recommendationText").textContent = `${active.answered} / ${active.planned} հարց արդեն պատասխանված է։`;
+  }
+
+  if (skill) {
+    $("practiceCardText").textContent = `Առաջարկվող մեկնարկ՝ ${skill.code} — ${skill.nameHy}`;
+  } else {
+    $("practiceCardText").textContent = "Սկսեք սահմանափակ adaptive practice սեսիա։";
+  }
+
+  $("startDiagnosticBtn").textContent = diagnostic ? "Կրկնել ախտորոշիչը" : "Սկսել ախտորոշիչը";
+  renderSkillMap(data.skills ?? [], skill?.id ?? null);
+}
+
+function renderSkillMap(skills, recommendedSkillId) {
+  const container = $("skillMap");
+  container.innerHTML = "";
+  for (const skill of skills) {
+    const tile = document.createElement("article");
+    tile.className = `skill-tile${skill.id === recommendedSkillId ? " recommended" : ""}`;
+    const diag = skill.diagnostic ?? { band: "not_assessed", correct: 0, total: 0, percent: null };
+    const mastery = skill.mastery;
+    const diagnosticText = diag.total ? `${diag.correct}/${diag.total}` : "—";
+    const masteryText = mastery ? `${mastery.percent}% mastery` : "mastery տվյալներ չկան";
+    tile.innerHTML = `
+      <div class="skill-top">
+        <div>
+          <div class="skill-code">${escapeHtml(skill.code)}</div>
+          <div class="skill-title">${escapeHtml(skill.nameHy)}</div>
+        </div>
+        ${skill.complete ? '<span class="check-chip">✓ ամրապնդված</span>' : ""}
+      </div>
+      <div class="skill-meta">
+        <span class="band-badge ${escapeHtml(diag.band)}">${escapeHtml(bandLabels[diag.band] ?? diag.band)} · ${escapeHtml(diagnosticText)}</span>
+        <span class="mastery-chip">${escapeHtml(masteryText)}</span>
+        <span class="mastery-chip">${escapeHtml(layerLabels[skill.layer] ?? skill.layer)}</span>
+      </div>`;
+    container.appendChild(tile);
+  }
+}
+
+async function resumeRecommendedAction() {
+  if (!dashboardData?.recommendation) return;
+  const action = dashboardData.recommendation.action;
+  if (action === "resume_session" && dashboardData.activeSession) {
+    return resumeSession(dashboardData.activeSession);
+  }
+  if (action === "take_diagnostic") return startSession("diagnostic");
+  if (action === "practice_skill") return startSession("practice", dashboardData.recommendation.skill?.id ?? null);
+}
+
+async function resumeSession(session) {
+  currentSession = session;
+  modePanel.classList.add("hidden");
+  practicePanel.classList.remove("hidden");
+  await loadSessionItem();
+}
+
+async function startSession(mode, targetSkillId = null) {
   setModeMessage(mode === "diagnostic" ? "Ախտորոշիչը պատրաստվում է…" : "Վարժանքը պատրաստվում է…");
   $("startDiagnosticBtn").disabled = true;
   $("startPracticeBtn").disabled = true;
-  const { data, error } = await supabase.functions.invoke("start-learning-session", { body: { mode } });
+  $("resumeLearningBtn").disabled = true;
+
+  const body = mode === "practice" && targetSkillId ? { mode, targetSkillId } : { mode };
+  const { data, error } = await supabase.functions.invoke("start-learning-session", { body });
+
   $("startDiagnosticBtn").disabled = false;
   $("startPracticeBtn").disabled = false;
+  $("resumeLearningBtn").disabled = false;
 
   if (error) return setModeMessage(`Չհաջողվեց սկսել․ ${error.message}`, true);
   if (data?.unitComplete) {
@@ -134,11 +252,13 @@ function clearQuestion() {
   feedback.innerHTML = "";
   submitBtn.disabled = true;
   nextBtn.disabled = true;
+  nextBtn.dataset.action = "next";
 }
 
 async function loadSessionItem() {
   if (!currentSession?.id) return;
   nextBtn.disabled = true;
+  nextBtn.dataset.action = "next";
   submitBtn.disabled = true;
   feedback.className = "feedback hidden";
   feedback.innerHTML = "";
@@ -184,6 +304,8 @@ function renderQuestion(data) {
   renderAnswerInput(item);
   submitBtn.disabled = false;
   nextBtn.disabled = true;
+  nextBtn.textContent = "Հաջորդ հարց";
+  nextBtn.dataset.action = "next";
 }
 
 function renderAnswerInput(item) {
@@ -274,7 +396,7 @@ async function submitAnswer(event) {
   const total = current.session.total;
   $("sessionProgressBar").style.width = `${Math.min(100, (current.session.position / total) * 100)}%`;
   nextBtn.disabled = false;
-  nextBtn.textContent = data.session?.status === "completed" ? "Տեսնել արդյունքը" : "Հաջորդ հարց";
+  nextBtn.textContent = data.session?.status === "completed" ? "Ավարտել" : "Հաջորդ հարց";
 
   if (current.session.mode === "diagnostic") {
     feedback.className = "feedback neutral";
@@ -284,7 +406,7 @@ async function submitAnswer(event) {
 
   const correct = data.grading?.correct;
   feedback.className = `feedback ${correct ? "good" : "bad"}`;
-  feedback.innerHTML = `<strong>${correct ? "Ճիշտ է։" : "Սխալ է։"}</strong><div>${correct ? "Mastery-ի ապացույցը թարմացվեց։" : "Սխալը գրանցվեց։ Այս սեսիան ունի հստակ հարցերի սահման և անվերջ չի շարունակվի։"}</div>`;
+  feedback.innerHTML = `<strong>${correct ? "Ճիշտ է։" : "Սխալ է։"}</strong><div>${correct ? "Mastery-ի ապացույցը թարմացվեց։" : "Սխալը գրանցվեց։ Սեսիան սահմանափակ է և անվերջ չի շարունակվի։"}</div>`;
   updateMastery(data.mastery, data.recommendation);
 }
 
@@ -314,16 +436,18 @@ function renderSessionCompletion(data) {
   $("difficulty").textContent = "—";
   $("sessionProgressBar").style.width = "100%";
   $("prompt").textContent = diagnostic
-    ? "Ստուգումը ավարտվեց հստակ սահմանված հարցերի քանակով։ Սխալ պատասխանները չեն երկարացրել այն։"
-    : "Այս վարժանքի սեսիան ավարտվեց։ Կարող եք վերադառնալ և սկսել հաջորդ սահմանափակ սեսիան։";
+    ? "Արդյունքները պատրաստ են։ Վերադարձեք առաջընթացի էջ՝ հմտություն առ հմտություն քարտեզը տեսնելու համար։"
+    : "Այս վարժանքի սեսիան ավարտվեց։ Առաջընթացի էջը կթարմացնի հաջորդ առաջարկվող քայլը։";
   answerArea.innerHTML = "";
   stimulusEl.innerHTML = "";
   stimulusEl.classList.add("hidden");
   submitBtn.disabled = true;
-  nextBtn.disabled = true;
   masteryCard.classList.add("hidden");
   feedback.className = "feedback good";
-  feedback.innerHTML = `<strong>${correct} / ${answered} ճիշտ (${percent}%)</strong><div>${diagnostic ? "Հաջորդ sprint-ում այս արդյունքը կվերածվի հմտություն առ հմտություն diagnostic map-ի։" : "Սեսիայի սահմանը հասել է ավարտին. անվերջ remediation չկա։"}</div>`;
+  feedback.innerHTML = `<strong>${correct} / ${answered} ճիշտ (${percent}%)</strong><div>${diagnostic ? "Հմտությունների քարտեզը հաշվարկվել է վերջին ախտորոշիչից։" : "Սեսիայի արդյունքը պահպանվել է ընդհանուր առաջընթացում։"}</div>`;
+  nextBtn.disabled = false;
+  nextBtn.textContent = diagnostic ? "Դիտել արդյունքները" : "Վերադառնալ առաջընթացին";
+  nextBtn.dataset.action = "dashboard";
 }
 
 function renderUnitComplete(data) {
@@ -337,6 +461,14 @@ function renderUnitComplete(data) {
   feedback.className = "feedback good";
   feedback.innerHTML = "<strong>Այս պահին նոր remediation սեսիա պետք չէ։</strong>";
   masteryCard.classList.add("hidden");
+  nextBtn.disabled = false;
+  nextBtn.textContent = "Վերադառնալ առաջընթացին";
+  nextBtn.dataset.action = "dashboard";
+}
+
+async function handleNext() {
+  if (nextBtn.dataset.action === "dashboard") return showDashboard();
+  return loadSessionItem();
 }
 
 function renderStimulus(stimulus) {
@@ -376,14 +508,17 @@ function renderScale(spec) {
     tick.setAttribute("x1", x); tick.setAttribute("x2", x); tick.setAttribute("y1", y - 15); tick.setAttribute("y2", y + 15); tick.setAttribute("stroke", "#495668"); tick.setAttribute("stroke-width", i === 0 || i === divisions ? "3" : "1.5"); svg.appendChild(tick);
   }
   for (const [x, text] of [[x1, String(lower)], [x2, String(upper)]]) {
-    const label = document.createElementNS(svgNS, "text"); label.setAttribute("x", x); label.setAttribute("y", 100); label.setAttribute("text-anchor", "middle"); label.textContent = text; svg.appendChild(label);
+    const label = document.createElementNS(svgNS, "text");
+    label.setAttribute("x", x); label.setAttribute("y", 100); label.setAttribute("text-anchor", "middle"); label.textContent = text; svg.appendChild(label);
   }
   if (spec.mark_offset !== undefined) {
     const x = x1 + (x2 - x1) * (Number(spec.mark_offset) / divisions);
     const marker = document.createElementNS(svgNS, "polygon"); marker.setAttribute("points", `${x - 9},18 ${x + 9},18 ${x},38`); marker.setAttribute("fill", "#263a55"); svg.appendChild(marker);
   }
-  const unitText = document.createElementNS(svgNS, "text"); unitText.setAttribute("x", 320); unitText.setAttribute("y", 116); unitText.setAttribute("text-anchor", "middle"); unitText.textContent = spec.unit ?? ""; svg.appendChild(unitText);
-  wrap.appendChild(svg); return wrap;
+  const unitText = document.createElementNS(svgNS, "text");
+  unitText.setAttribute("x", 320); unitText.setAttribute("y", 116); unitText.setAttribute("text-anchor", "middle"); unitText.textContent = spec.unit ?? ""; svg.appendChild(unitText);
+  wrap.appendChild(svg);
+  return wrap;
 }
 
 function renderDisplacement(spec) {
@@ -397,31 +532,51 @@ function renderDisplacement(spec) {
 
 function cylinder(label, value, max, unit) {
   const box = document.createElement("div");
-  const vessel = document.createElement("div"); vessel.className = "cylinder";
-  const water = document.createElement("div"); water.className = "water"; water.style.height = `${Math.max(15, Math.min(90, (value / max) * 82))}%`; vessel.appendChild(water);
-  const caption = document.createElement("div"); caption.className = "cylinder-label"; caption.textContent = `${label} = ${value} ${unit ?? ""}`; box.append(vessel, caption); return box;
+  const vessel = document.createElement("div");
+  vessel.className = "cylinder";
+  const water = document.createElement("div");
+  water.className = "water";
+  water.style.height = `${Math.max(15, Math.min(90, (value / max) * 82))}%`;
+  vessel.appendChild(water);
+  const caption = document.createElement("div");
+  caption.className = "cylinder-label";
+  caption.textContent = `${label} = ${value} ${unit ?? ""}`;
+  box.append(vessel, caption);
+  return box;
 }
 
 function renderStack(spec) {
   const outer = document.createElement("div");
-  const stack = document.createElement("div"); stack.className = "stack";
+  const stack = document.createElement("div");
+  stack.className = "stack";
   const visualCount = Math.min(10, Number(spec.count ?? 8));
   for (let i = 0; i < visualCount; i++) stack.appendChild(document.createElement("div"));
   outer.appendChild(stack);
-  const caption = document.createElement("p"); caption.className = "cylinder-label"; caption.textContent = spec.count ? `${spec.count} հատ · ընդհանուր հաստություն ${spec.total_thickness} ${spec.unit}` : "Անուղղակի չափում՝ մի քանի նույնական շերտ միասին"; outer.appendChild(caption); return outer;
+  const caption = document.createElement("p");
+  caption.className = "cylinder-label";
+  caption.textContent = spec.count ? `${spec.count} հատ · ընդհանուր հաստություն ${spec.total_thickness} ${spec.unit}` : "Անուղղակի չափում՝ մի քանի նույնական շերտ միասին";
+  outer.appendChild(caption);
+  return outer;
 }
 
 function escapeHtml(value) {
-  return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
 }
 
 $("signInBtn").addEventListener("click", signIn);
 $("signUpBtn").addEventListener("click", signUp);
 $("startDiagnosticBtn").addEventListener("click", () => startSession("diagnostic"));
-$("startPracticeBtn").addEventListener("click", () => startSession("practice"));
+$("startPracticeBtn").addEventListener("click", () => startSession("practice", dashboardData?.recommendation?.skill?.id ?? null));
+$("resumeLearningBtn").addEventListener("click", resumeRecommendedAction);
+$("refreshDashboardBtn").addEventListener("click", showDashboard);
 signOutBtn.addEventListener("click", signOut);
-backBtn.addEventListener("click", showModeSelection);
-nextBtn.addEventListener("click", loadSessionItem);
+backBtn.addEventListener("click", showDashboard);
+nextBtn.addEventListener("click", handleNext);
 answerForm.addEventListener("submit", submitAnswer);
 
 supabase.auth.onAuthStateChange((_event, session) => setAuthenticated(Boolean(session)));
