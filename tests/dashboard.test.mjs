@@ -9,17 +9,25 @@ test("diagnostic bands map two-item evidence to learner guidance", () => {
   assert.equal(diagnosticBand(0, 0), "not_assessed");
 });
 
-test("recommendation prioritizes earliest support need, then developing, then incomplete", () => {
+test("recommendation prioritizes unfinished support needs", () => {
   const selected = chooseRecommendedSkill([
     { id: "s1", sequenceOrder: 1, diagnosticBand: "strong", complete: true },
     { id: "s2", sequenceOrder: 2, diagnosticBand: "developing", complete: false },
     { id: "s3", sequenceOrder: 3, diagnosticBand: "needs_support", complete: false },
   ]);
   assert.equal(selected?.id, "s3");
+});
 
-  const prerequisiteEarlier = chooseRecommendedSkill([
-    { id: "s1", sequenceOrder: 1, diagnosticBand: "needs_support", complete: false },
-    { id: "s2", sequenceOrder: 2, diagnosticBand: "needs_support", complete: false },
+test("recommendation resolves an unmet prerequisite before the downstream gap", () => {
+  const selected = chooseRecommendedSkill([
+    { id: "s8", sequenceOrder: 8, diagnosticBand: "developing", complete: false },
+    { id: "s9", sequenceOrder: 9, diagnosticBand: "needs_support", complete: false, prerequisiteIds: ["s8"] },
   ]);
-  assert.equal(prerequisiteEarlier?.id, "s1");
+  assert.equal(selected?.id, "s8");
+
+  const afterRepair = chooseRecommendedSkill([
+    { id: "s8", sequenceOrder: 8, diagnosticBand: "developing", complete: true },
+    { id: "s9", sequenceOrder: 9, diagnosticBand: "needs_support", complete: false, prerequisiteIds: ["s8"] },
+  ]);
+  assert.equal(afterRepair?.id, "s9");
 });
