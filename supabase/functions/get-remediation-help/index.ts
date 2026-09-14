@@ -66,24 +66,40 @@ Deno.serve(async (req) => {
   if (body.sessionItemId) {
     const { data } = await admin
       .from("learning_session_items")
-      .select("id, session_id, skill_id, item_id, answered_at, hint_level_used")
+      .select("id, session_id, skill_id, item_id, answered_at, correct, hint_level_used, ordinal")
       .eq("id", body.sessionItemId)
       .eq("session_id", session.id)
       .single();
     sessionItem = data;
   } else {
-    const { data: rows } = await admin
+    const { data: pendingRows } = await admin
       .from("learning_session_items")
-      .select("id, session_id, skill_id, item_id, answered_at, hint_level_used, ordinal")
+      .select("id, session_id, skill_id, item_id, answered_at, correct, hint_level_used, ordinal")
       .eq("session_id", session.id)
       .is("answered_at", null)
       .order("ordinal", { ascending: true })
       .limit(1);
-    sessionItem = rows?.[0] ?? null;
+    sessionItem = pendingRows?.[0] ?? null;
+
+    // If the current item has just been answered incorrectly, allow explanatory
+    // remediation before the learner moves to the next question.
+    if (!sessionItem) {
+      const { data: answeredRows } = await admin
+        .from("learning_session_items")
+        .select("id, session_id, skill_id, item_id, answered_at, correct, hint_level_used, ordinal")
+        .eq("session_id", session.id)
+        .not("answered_at", "is", null)
+        .order("ordinal", { ascending: false })
+        .limit(1);
+      sessionItem = answeredRows?.[0] ?? null;
+    }
   }
 
   if (!sessionItem) return json({ error: "session_item_not_found" }, 404);
-  if (sessionItem.answered_at) return json({ error: "question_already_answered" }, 409);
+  const postAnswer = Boolean(sessionItem.answered_at);
+  if (postAnswer && sessionItem.correct === true) {
+    return json({ error: "help_not_needed_after_correct_answer" }, 409);
+  }
 
   const { data: guide, error: guideError } = await admin
     .from("skill_remediation_guides")
@@ -125,6 +141,9 @@ Deno.serve(async (req) => {
     contentHy,
     misconceptionCode: guide.misconception_code,
     moreHelpAvailable: nextLevel < 3,
-    noteHy: "Օգնության օգտագործումը գրանցվում է, և mastery-ն ավելի ուշ պետք է հաստատվի նաև ինքնուրույն պատասխաններով։",
+    postAnswer,
+    noteHy: postAnswer
+      ? "Այս բացատրությունը տրվում է սխալ պատասխանից հետո։ Հաջորդ հարցը կլինի հարմարեցված, որպեսզի կարողանաք նորից փորձել նույն հմտությունը այլ ձևով։"
+      : "Օգնության օգտագործումը գրանցվում է, և mastery-ն ավելի ուշ պետք է հաստատվի նաև ինքնուրույն պատասխաններով։",
   });
 });
