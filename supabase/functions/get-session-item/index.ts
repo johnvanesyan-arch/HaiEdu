@@ -1,4 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { choosePracticeItem } from "../_shared/practice.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -14,16 +15,18 @@ function json(body: unknown, status = 200) {
   });
 }
 
-function desiredDifficulty(mastery: number) {
-  if (mastery < 0.35) return 1;
-  if (mastery < 0.55) return 2;
-  if (mastery < MASTERY_THRESHOLD) return 3;
-  return 4;
-}
-
 async function completeSession(admin: any, session: any, reason: string) {
   const now = new Date().toISOString();
-  await admin.from("learning_sessions").update({ status: "completed", completed_at: now, updated_at: now, metadata: { ...(session.metadata ?? {}), completionReason: reason } }).eq("id", session.id);
+  await admin
+    .from("learning_sessions")
+    .update({
+      status: "completed",
+      completed_at: now,
+      updated_at: now,
+      metadata: { ...(session.metadata ?? {}), completionReason: reason },
+    })
+    .eq("id", session.id);
+
   return {
     complete: true,
     session: { ...session, status: "completed" },
@@ -31,7 +34,9 @@ async function completeSession(admin: any, session: any, reason: string) {
       answered: Number(session.answered_count),
       correct: Number(session.correct_count),
       planned: Number(session.planned_item_count),
-      percent: session.answered_count ? Math.round((Number(session.correct_count) / Number(session.answered_count)) * 100) : 0,
+      percent: session.answered_count
+        ? Math.round((Number(session.correct_count) / Number(session.answered_count)) * 100)
+        : 0,
       reason,
     },
   };
@@ -70,7 +75,9 @@ async function itemPayload(admin: any, session: any, sessionItem: any) {
       feedbackMode: session.mode === "diagnostic" ? "deferred" : "immediate",
     },
     sessionItemId: sessionItem.id,
-    skill: skill ? { id: skill.id, code: skill.code, nameHy: skill.name_hy, layer: skill.layer } : null,
+    skill: skill
+      ? { id: skill.id, code: skill.code, nameHy: skill.name_hy, layer: skill.layer }
+      : null,
     item: {
       id: item.id,
       code: item.code,
@@ -79,6 +86,11 @@ async function itemPayload(admin: any, session: any, sessionItem: any) {
       stimulus: item.stimulus,
       difficulty: item.difficulty,
       options: options ?? [],
+    },
+    remediation: {
+      available: session.mode === "practice",
+      hintLevelUsed: Number(sessionItem.hint_level_used ?? 0),
+      selectionReason: sessionItem.selection_reason ?? null,
     },
   };
 }
@@ -93,14 +105,20 @@ Deno.serve(async (req) => {
   if (!supabaseUrl || !serviceRoleKey) return json({ error: "server_not_configured" }, 500);
   if (!authHeader) return json({ error: "unauthorized" }, 401);
 
-  const admin = createClient(supabaseUrl, serviceRoleKey, { auth: { persistSession: false, autoRefreshToken: false } });
+  const admin = createClient(supabaseUrl, serviceRoleKey, {
+    auth: { persistSession: false, autoRefreshToken: false },
+  });
   const token = authHeader.replace(/^Bearer\s+/i, "");
   const { data: userData, error: userError } = await admin.auth.getUser(token);
   if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
   const studentId = userData.user.id;
 
   let body: { sessionId?: string } = {};
-  try { body = await req.json(); } catch { /* handled below */ }
+  try {
+    body = await req.json();
+  } catch {
+    /* handled below */
+  }
   if (!body.sessionId) return json({ error: "sessionId_required" }, 400);
 
   const { data: session, error: sessionError } = await admin
@@ -119,7 +137,9 @@ Deno.serve(async (req) => {
         answered: Number(session.answered_count),
         correct: Number(session.correct_count),
         planned: Number(session.planned_item_count),
-        percent: session.answered_count ? Math.round((Number(session.correct_count) / Number(session.answered_count)) * 100) : 0,
+        percent: session.answered_count
+          ? Math.round((Number(session.correct_count) / Number(session.answered_count)) * 100)
+          : 0,
         reason: session.metadata?.completionReason ?? "completed",
       },
     });
@@ -127,7 +147,7 @@ Deno.serve(async (req) => {
 
   const { data: pendingRows } = await admin
     .from("learning_session_items")
-    .select("id, ordinal, skill_id, item_id, answered_at, correct")
+    .select("id, ordinal, skill_id, item_id, answered_at, correct, hint_level_used, selection_reason")
     .eq("session_id", session.id)
     .is("answered_at", null)
     .order("ordinal", { ascending: true })
@@ -144,7 +164,7 @@ Deno.serve(async (req) => {
   if (session.mode === "diagnostic") {
     const { data: nextRows } = await admin
       .from("learning_session_items")
-      .select("id, ordinal, skill_id, item_id, answered_at, correct")
+      .select("id, ordinal, skill_id, item_id, answered_at, correct, hint_level_used, selection_reason")
       .eq("session_id", session.id)
       .is("answered_at", null)
       .order("ordinal", { ascending: true })
@@ -167,17 +187,20 @@ Deno.serve(async (req) => {
 
   const { data: sessionRows } = await admin
     .from("learning_session_items")
-    .select("id, ordinal, item_id, correct, answered_at")
+    .select("id, ordinal, item_id, correct, answered_at, hint_level_used, selection_reason")
     .eq("session_id", session.id)
     .order("ordinal", { ascending: false });
   const answeredRows = (sessionRows ?? []).filter((r) => r.answered_at);
   const recentFive = answeredRows.slice(0, 5);
   const uniqueSeen = new Set(answeredRows.map((r) => r.item_id)).size;
-  const recovered = uniqueSeen >= 4 && recentFive.length >= 5 && recentFive.filter((r) => r.correct).length >= 4;
+  const independentCorrect = recentFive.filter(
+    (r) => r.correct === true && Number(r.hint_level_used ?? 0) === 0,
+  ).length;
+  const recovered = uniqueSeen >= 4 && recentFive.length >= 5 && independentCorrect >= 4;
   const mastered = evidenceCount >= 3 && masteryScore >= MASTERY_THRESHOLD;
 
   if (mastered || recovered) {
-    return json(await completeSession(admin, session, mastered ? "mastery_reached" : "recent_recovery"));
+    return json(await completeSession(admin, session, mastered ? "mastery_reached" : "independent_recovery"));
   }
 
   const { data: candidates, error: itemError } = await admin
@@ -187,49 +210,41 @@ Deno.serve(async (req) => {
     .eq("status", "published");
   if (itemError || !candidates?.length) return json({ error: "no_item_for_skill" }, 404);
 
-  const servedCounts = new Map<string, number>();
-  const latestByItem = new Map<string, any>();
-  for (const row of answeredRows) {
-    servedCounts.set(row.item_id, (servedCounts.get(row.item_id) ?? 0) + 1);
-    if (!latestByItem.has(row.item_id)) latestByItem.set(row.item_id, row);
-  }
-  const unseen = candidates.filter((item) => !latestByItem.has(item.id));
-  const recentIds = new Set(answeredRows.slice(0, 2).map((r) => r.item_id));
-  const unresolved = candidates.filter((item) => latestByItem.get(item.id)?.correct === false);
+  const selection = choosePracticeItem(
+    candidates.map((item) => ({ id: item.id, difficulty: Number(item.difficulty) })),
+    answeredRows.map((row) => ({ itemId: row.item_id, correct: row.correct === true })),
+    masteryScore,
+  );
+  if (!selection) return json({ error: "practice_selection_failed" }, 500);
 
-  let pool = unseen;
-  let selectionMode = "new_item";
-  if (!pool.length) {
-    const nonRecentUnresolved = unresolved.filter((item) => !recentIds.has(item.id));
-    pool = nonRecentUnresolved.length ? nonRecentUnresolved : unresolved;
-    selectionMode = "remediation";
-  }
-  if (!pool.length) {
-    const nonRecent = candidates.filter((item) => !recentIds.has(item.id));
-    pool = nonRecent.length ? nonRecent : candidates;
-    selectionMode = "review";
-  }
-
-  const goalDifficulty = desiredDifficulty(masteryScore);
-  pool.sort((a, b) => {
-    const aCount = servedCounts.get(a.id) ?? 0;
-    const bCount = servedCounts.get(b.id) ?? 0;
-    if (aCount !== bCount) return aCount - bCount;
-    const distance = Math.abs(Number(a.difficulty) - goalDifficulty) - Math.abs(Number(b.difficulty) - goalDifficulty);
-    if (distance !== 0) return distance;
-    return String(a.code).localeCompare(String(b.code));
-  });
-  const selected = pool[0];
-  const maxOrdinal = (sessionRows ?? []).reduce((max, row) => Math.max(max, Number(row.ordinal)), 0);
+  const selected = candidates.find((item) => item.id === selection.selectedId);
+  if (!selected) return json({ error: "practice_selection_missing" }, 500);
+  const maxOrdinal = (sessionRows ?? []).reduce(
+    (max, row) => Math.max(max, Number(row.ordinal)),
+    0,
+  );
 
   const { data: created, error: createError } = await admin
     .from("learning_session_items")
-    .insert({ session_id: session.id, ordinal: maxOrdinal + 1, skill_id: session.target_skill_id, item_id: selected.id })
-    .select("id, ordinal, skill_id, item_id, answered_at, correct")
+    .insert({
+      session_id: session.id,
+      ordinal: maxOrdinal + 1,
+      skill_id: session.target_skill_id,
+      item_id: selected.id,
+      selection_reason: selection.selectionMode,
+    })
+    .select("id, ordinal, skill_id, item_id, answered_at, correct, hint_level_used, selection_reason")
     .single();
   if (createError || !created) return json({ error: "practice_item_create_failed" }, 500);
 
   const payload = await itemPayload(admin, session, created);
   if (!payload) return json({ error: "session_item_not_found" }, 500);
-  return json({ ...payload, scheduler: { selectionMode, desiredDifficulty: goalDifficulty, unseenItemsRemaining: unseen.length } });
+  return json({
+    ...payload,
+    scheduler: {
+      selectionMode: selection.selectionMode,
+      desiredDifficulty: selection.desiredDifficulty,
+      consecutiveWrong: selection.consecutiveWrong,
+    },
+  });
 });
