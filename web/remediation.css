@@ -1,0 +1,25 @@
+.help-controls {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin: 0 0 16px;
+}
+
+.help-controls button.secondary {
+  background: #eef3f9;
+  color: #234f82;
+  border: 1px solid #c7d6e8;
+}
+
+.help-panel {
+  margin: 0 0 18px;
+  padding: 16px;
+  border-radius: 13px;
+  background: #f4f8fd;
+  border: 1px solid #c9d9ec;
+}
+
+.help-panel h3 { margin: 8px 0 6px; }
+.help-strategy { margin: 0 0 10px; color: #42556d; font-weight: 600; }
+.help-content { margin: 0 0 10px; font-size: 1.02rem; line-height: 1.55; }
