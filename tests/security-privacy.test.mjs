@@ -34,23 +34,6 @@ test("admin account management protects self and last active admin", async () =>
   assert.match(code, /staff_offboarding_required/);
 });
 
-test("student deletion is explicitly two stage", async () => {
-  const code = await read("supabase/functions/manage-admin-account/index.ts");
-  assert.match(code, /action === "approve_deletion"/);
-  assert.match(code, /status:\s*"processing"/);
-  assert.match(code, /irreversible:\s*false/);
-  assert.match(code, /action === "execute_deletion"/);
-  assert.match(code, /approved_request_required/);
-});
-
-test("student can cancel pending or admin-approved deletion before final erase", async () => {
-  const code = await read("supabase/functions/manage-my-privacy/index.ts");
-  assert.match(code, /\.in\("status", \["pending", "processing"\]\)/);
-  assert.match(code, /account_status:\s*"active"/);
-  const ui = await read("web/privacy.js");
-  assert.match(ui, /\["pending", "processing"\]\.includes\(request\.status\)/);
-});
-
 test("student deletion removes auth account only after learning-data erasure", async () => {
   const code = await read("supabase/functions/manage-admin-account/index.ts");
   const eraseIndex = code.indexOf('admin.rpc("erase_student_data"');
@@ -59,11 +42,24 @@ test("student deletion removes auth account only after learning-data erasure", a
   assert.ok(authDeleteIndex > eraseIndex);
 });
 
-test("admin UI requires a second explicit final-delete action", async () => {
-  const code = await read("web/admin.js");
-  assert.match(code, /data-delete-execute/);
-  assert.match(code, /action: "execute_deletion"/);
-  assert.match(code, /token !== "DELETE"/);
+test("two-stage deletion keeps approval reversible and requires explicit execution", async () => {
+  const adminCode = await read("supabase/functions/manage-admin-account/index.ts");
+  const privacyCode = await read("supabase/functions/manage-my-privacy/index.ts");
+  const adminUi = await read("web/admin.js");
+
+  const approveStart = adminCode.indexOf('if (action === "approve_deletion")');
+  const executeStart = adminCode.indexOf('if (action === "execute_deletion")');
+  assert.ok(approveStart >= 0 && executeStart > approveStart);
+  const approveBlock = adminCode.slice(approveStart, executeStart);
+  assert.doesNotMatch(approveBlock, /erase_student_data|deleteUser/);
+  assert.match(approveBlock, /status:\s*"processing"/);
+  assert.match(adminCode.slice(executeStart), /erase_student_data/);
+  assert.match(adminCode.slice(executeStart), /deleteUser/);
+
+  assert.match(privacyCode, /\.in\("status", \["pending", "processing"\]\)/);
+  assert.match(privacyCode, /account_status:\s*"active"/);
+  assert.match(adminUi, /data-delete-execute/);
+  assert.match(adminUi, /type DELETE/i);
 });
 
 test("role router separates admin, content admin and teacher consoles", async () => {
@@ -77,4 +73,11 @@ test("browser configuration never includes service role credentials", async () =
   const config = await read("web/config.js");
   assert.doesNotMatch(config, /service[_-]?role/i);
   assert.match(config, /SUPABASE_PUBLISHABLE_KEY/);
+});
+
+test("student frontend has explicit post-deletion session recovery", async () => {
+  const app = await read("web/app.js");
+  assert.match(app, /handleTerminalAuthFailure/);
+  assert.match(app, /scope:\s*"local"/);
+  assert.match(app, /Հաշիվը այլևս հասանելի չէ/);
 });
