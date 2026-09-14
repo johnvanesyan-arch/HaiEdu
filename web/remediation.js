@@ -3,7 +3,7 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
 const styleLink = document.createElement("link");
 styleLink.rel = "stylesheet";
-styleLink.href = "./remediation.css";
+styleLink.href = "./remediation.css?v=5.1";
 document.head.appendChild(styleLink);
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
@@ -26,14 +26,18 @@ let lastItemCode = null;
 let loading = false;
 let helpOpenedForCurrentItem = false;
 
+function setText(el, value) {
+  if (el.textContent !== value) el.textContent = value;
+}
+
 function resetHelp() {
   helpOpenedForCurrentItem = false;
   helpPanel.classList.add("hidden");
-  helpTitle.textContent = "Օգնություն";
-  helpStrategy.textContent = "";
-  helpContent.textContent = "";
-  helpNote.textContent = "";
-  helpBtn.textContent = "Օգնություն";
+  setText(helpTitle, "Օգնություն");
+  setText(helpStrategy, "");
+  setText(helpContent, "");
+  setText(helpNote, "");
+  setText(helpBtn, "Օգնություն");
   helpBtn.disabled = false;
 }
 
@@ -42,22 +46,23 @@ function syncHelpVisibility() {
   const isPractice = sessionMode.textContent.trim() === "Վարժանք";
   const unanswered = !submitBtn.disabled;
   const incorrectAnswered = feedback.classList.contains("bad") && !feedback.classList.contains("hidden");
-  const hasQuestion = itemCode.textContent.trim() && itemCode.textContent.trim() !== "—";
+  const currentCode = itemCode.textContent.trim();
+  const hasQuestion = Boolean(currentCode && currentCode !== "—");
+
   helpControls.classList.toggle(
     "hidden",
     !(practiceVisible && isPractice && hasQuestion && (unanswered || incorrectAnswered)),
   );
 
-  const currentCode = itemCode.textContent.trim();
   if (currentCode !== lastItemCode) {
     lastItemCode = currentCode;
     resetHelp();
   }
 
   if (!helpOpenedForCurrentItem && incorrectAnswered) {
-    helpBtn.textContent = "Բացատրել սխալը";
+    setText(helpBtn, "Բացատրել սխալը");
   } else if (!helpOpenedForCurrentItem && unanswered) {
-    helpBtn.textContent = "Օգնություն";
+    setText(helpBtn, "Օգնություն");
   }
 }
 
@@ -65,41 +70,43 @@ async function requestHelp() {
   if (loading) return;
   loading = true;
   helpBtn.disabled = true;
-  helpBtn.textContent = "Բեռնվում է…";
+  setText(helpBtn, "Բեռնվում է…");
 
   const { data, error } = await supabase.functions.invoke("get-remediation-help", { body: {} });
   loading = false;
 
   if (error) {
     helpPanel.classList.remove("hidden");
-    helpTitle.textContent = "Օգնությունը չբեռնվեց";
-    helpStrategy.textContent = "";
-    helpContent.textContent = error.message;
-    helpNote.textContent = "";
+    setText(helpTitle, "Օգնությունը չբեռնվեց");
+    setText(helpStrategy, "");
+    setText(helpContent, error.message);
+    setText(helpNote, "");
     helpBtn.disabled = false;
-    helpBtn.textContent = "Կրկին փորձել";
+    setText(helpBtn, "Կրկին փորձել");
     return;
   }
 
   helpOpenedForCurrentItem = true;
   helpPanel.classList.remove("hidden");
-  helpTitle.textContent = data.titleHy ?? "Օգնություն";
-  helpStrategy.textContent = data.strategyHy ?? "";
-  helpContent.textContent = data.contentHy ?? "";
-  helpNote.textContent = data.noteHy ?? "";
+  setText(helpTitle, data.titleHy ?? "Օգնություն");
+  setText(helpStrategy, data.strategyHy ?? "");
+  setText(helpContent, data.contentHy ?? "");
+  setText(helpNote, data.noteHy ?? "");
   helpBtn.disabled = false;
-  helpBtn.textContent = data.moreHelpAvailable ? "Ավելի շատ օգնություն" : "Օրինակը տեսել եք";
+  setText(helpBtn, data.moreHelpAvailable ? "Ավելի շատ օգնություն" : "Օրինակը տեսել եք");
   if (!data.moreHelpAvailable) helpBtn.disabled = true;
 }
 
 helpBtn.addEventListener("click", requestHelp);
 
+// Observe only application state elements. Do not observe the help UI itself,
+// because syncHelpVisibility mutates it. Observing our own mutations created a
+// MutationObserver feedback loop that starved timers and made the page appear frozen.
 const observer = new MutationObserver(syncHelpVisibility);
-observer.observe(practicePanel, {
-  subtree: true,
-  childList: true,
-  characterData: true,
-  attributes: true,
-  attributeFilter: ["class", "disabled"],
-});
+observer.observe(practicePanel, { attributes: true, attributeFilter: ["class"] });
+observer.observe(sessionMode, { childList: true, characterData: true, subtree: true });
+observer.observe(itemCode, { childList: true, characterData: true, subtree: true });
+observer.observe(submitBtn, { attributes: true, attributeFilter: ["disabled"] });
+observer.observe(feedback, { attributes: true, attributeFilter: ["class"] });
+
 syncHelpVisibility();
