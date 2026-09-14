@@ -1,0 +1,23 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Միանալ դասարանին</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell" style="max-width:760px">
+    <header class="topbar">
+      <div><p class="eyebrow">ՖԻԶԻԿԱ 7</p><h1>Միանալ դասարանին</h1><p class="subtle">Մուտքագրեք ուսուցչի տրամադրած join code-ը։</p></div>
+      <a class="ghost" style="text-decoration:none" href="./index.html">Իմ առաջընթացը</a>
+    </header>
+    <section class="card">
+      <label>Join code<input id="joinCode" maxlength="8" autocomplete="off" placeholder="A7K9M2QX" style="text-transform:uppercase" /></label>
+      <button id="joinBtn" type="button">Միանալ</button>
+      <p id="message" class="message"></p>
+    </section>
+  </main>
+  <script type="module" src="./join.js"></script>
+</body>
+</html>
