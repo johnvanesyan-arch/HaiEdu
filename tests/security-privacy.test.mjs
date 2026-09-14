@@ -20,8 +20,10 @@ test("student erasure RPC is not executable by authenticated clients", async () 
 test("audit log is admin read only under RLS", async () => {
   const sql = await read("supabase/migrations/0011_security_privacy_administration.sql");
   assert.match(sql, /alter table public\.security_audit_log enable row level security/i);
-  assert.match(sql, /security_audit_admin_read/i);
-  assert.doesNotMatch(sql, /security_audit_.*insert.*authenticated/is);
+  assert.match(sql, /create policy security_audit_admin_read on public\.security_audit_log\s+for select to authenticated[\s\S]*?current_user_role\(\) = 'admin'/i);
+  assert.doesNotMatch(sql, /create policy\s+\S+\s+on public\.security_audit_log\s+for insert to authenticated/i);
+  assert.doesNotMatch(sql, /create policy\s+\S+\s+on public\.security_audit_log\s+for update to authenticated/i);
+  assert.doesNotMatch(sql, /create policy\s+\S+\s+on public\.security_audit_log\s+for delete to authenticated/i);
 });
 
 test("admin account management protects self and last active admin", async () => {
