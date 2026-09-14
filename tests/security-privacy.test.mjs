@@ -76,8 +76,8 @@ test("browser configuration never includes service role credentials", async () =
 });
 
 test("student frontend has explicit post-deletion session recovery", async () => {
-  const app = await read("web/app.js");
-  assert.match(app, /handleTerminalAuthFailure/);
-  assert.match(app, /scope:\s*"local"/);
-  assert.match(app, /Հաշիվը այլևս հասանելի չէ/);
+  const ux = await read("web/ux.js");
+  assert.match(ux, /handleTerminalAuthFailure/);
+  assert.match(ux, /scope:\s*"local"/);
+  assert.match(ux, /Հաշիվը այլևս հասանելի չէ/);
 });
