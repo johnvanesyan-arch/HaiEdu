@@ -196,7 +196,11 @@ function validateKnownInput(input) {
 function syncAnswerSubmit() {
   const form = document.getElementById("answerForm");
   const submit = document.getElementById("submitBtn");
-  if (!form || !submit || submit.dataset.serverLocked === "true") return;
+  if (!form || !submit) return;
+  const next = document.getElementById("nextBtn");
+  const responseAccepted = next && !next.classList.contains("hidden") && next.disabled === false;
+  if (responseAccepted) return;
+
   const radios = [...form.querySelectorAll('input[type="radio"][name="answer"]')];
   if (radios.length) {
     submit.disabled = !radios.some((radio) => radio.checked);
