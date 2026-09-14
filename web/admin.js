@@ -64,17 +64,23 @@ function renderDeletionRequests() {
   const requests = dashboard?.deletionRequests ?? [];
   $("deletionRows").innerHTML = requests.length ? requests.map((r) => {
     const user = userById(r.user_id);
-    const open = ["pending", "processing"].includes(r.status);
+    let actions = "—";
+    if (r.status === "pending") {
+      actions = `<div class="admin-actions"><button data-delete-approve="${r.id}">Հաստատել հարցումը</button><button class="secondary" data-delete-reject="${r.id}">Մերժել</button></div>`;
+    } else if (r.status === "processing") {
+      actions = `<div class="admin-actions"><button class="danger-btn" data-delete-execute="${r.id}">Ջնջել վերջնականապես</button><button class="secondary" data-delete-reject="${r.id}">Մերժել / վերադարձնել</button></div>`;
+    }
     return `<tr>
       <td><code>${esc(r.id.slice(0, 8))}</code></td>
       <td>${esc(displayUser(user))}</td>
       <td><span class="status-chip ${esc(r.status)}">${esc(r.status)}</span>${r.resolution_code ? `<div class="subtle small">${esc(r.resolution_code)}</div>` : ""}</td>
       <td>${esc(new Date(r.requested_at).toLocaleString("hy-AM"))}</td>
-      <td>${open ? `<div class="admin-actions"><button class="danger-btn" data-delete-approve="${r.id}">Հաստատել ջնջումը</button><button class="secondary" data-delete-reject="${r.id}">Մերժել</button></div>` : "—"}</td>
+      <td>${actions}</td>
     </tr>`;
   }).join("") : '<tr><td colspan="5" class="empty-row">Ջնջման հարցում չկա։</td></tr>';
 
   $("deletionRows").querySelectorAll("[data-delete-approve]").forEach((btn) => btn.addEventListener("click", () => approveDeletion(btn.dataset.deleteApprove)));
+  $("deletionRows").querySelectorAll("[data-delete-execute]").forEach((btn) => btn.addEventListener("click", () => executeDeletion(btn.dataset.deleteExecute)));
   $("deletionRows").querySelectorAll("[data-delete-reject]").forEach((btn) => btn.addEventListener("click", () => rejectDeletion(btn.dataset.deleteReject)));
 }
 
@@ -155,12 +161,27 @@ async function handleUserAction(action, userId) {
 }
 
 async function approveDeletion(requestId) {
-  if (!confirm("Հաստատե՞լ այս ջնջման հարցումը։ Ուսանողական տվյալների և մուտքի հաշվի ջնջումը հետադարձելի չէ։")) return;
+  if (!confirm("Հաստատե՞լ ջնջման հարցումը։ Այս քայլը դեռ չի ջնջում տվյալները․ ուսանողը կարող է չեղարկել մինչև վերջնական ջնջումը։")) return;
   try {
-    setMessage("Ջնջումն իրականացվում է…");
+    setMessage("Հարցումը հաստատվում է…");
     await invoke("manage-admin-account", { action: "approve_deletion", requestId });
     await refresh();
-    setMessage("Ջնջման հարցումն ավարտվեց։");
+    setMessage("Հարցումը հաստատված է։ Վերջնական ջնջման համար պահանջվում է առանձին քայլ։");
+  } catch (err) { setMessage(err.message, true); }
+}
+
+async function executeDeletion(requestId) {
+  if (!confirm("Վերջնականապե՞ս ջնջել այս ուսանողի տվյալներն ու մուտքի հաշիվը։ Այս գործողությունը հետադարձելի չէ։")) return;
+  const token = prompt('Անվտանգության համար մուտքագրեք DELETE՝ վերջնական ջնջումը հաստատելու համար։', "");
+  if (token !== "DELETE") {
+    setMessage("Վերջնական ջնջումը չեղարկվեց։", true);
+    return;
+  }
+  try {
+    setMessage("Վերջնական ջնջումն իրականացվում է…");
+    await invoke("manage-admin-account", { action: "execute_deletion", requestId });
+    await refresh();
+    setMessage("Ուսանողի հաշիվն ու ուսուցման տվյալները վերջնականապես ջնջվեցին։");
   } catch (err) { setMessage(err.message, true); }
 }
 
