@@ -59,7 +59,7 @@ test("two-stage deletion keeps approval reversible and requires explicit executi
   assert.match(privacyCode, /\.in\("status", \["pending", "processing"\]\)/);
   assert.match(privacyCode, /account_status:\s*"active"/);
   assert.match(adminUi, /data-delete-execute/);
-  assert.match(adminUi, /type DELETE/i);
+  assert.match(adminUi, /մուտքագրեք DELETE/i);
 });
 
 test("role router separates admin, content admin and teacher consoles", async () => {
