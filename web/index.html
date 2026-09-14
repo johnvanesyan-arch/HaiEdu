@@ -35,35 +35,81 @@
     </section>
 
     <section id="modePanel" class="hidden">
-      <div class="section-heading">
+      <div class="section-heading dashboard-heading">
         <div>
-          <p class="eyebrow">SPRINT 3</p>
-          <h2>Ընտրեք աշխատանքային ռեժիմը</h2>
-          <p class="subtle">Ախտորոշիչ ստուգումն ու վարժանքը այժմ առանձին են և երկուսն էլ ունեն հստակ ավարտ։</p>
+          <p class="eyebrow">SPRINT 4</p>
+          <h2>Իմ առաջընթացը</h2>
+          <p class="subtle">Ախտորոշիչ արդյունքները, հմտությունների քարտեզը և հաջորդ առաջարկվող քայլը։</p>
         </div>
+        <button id="refreshDashboardBtn" class="ghost">Թարմացնել</button>
       </div>
-      <div class="mode-grid">
-        <article class="card mode-card">
-          <span class="mode-kicker">Ախտորոշում</span>
-          <h3>20 հարց</h3>
-          <p>2 հարց յուրաքանչյուր հմտությունից։ Հարցերը չեն կրկնվում, իսկ սխալ պատասխանը չի երկարացնում ստուգումը։</p>
-          <p class="subtle">Ճիշտ/սխալ հետադարձ կապը չի ցուցադրվում մինչև ավարտը։</p>
-          <button id="startDiagnosticBtn">Սկսել ախտորոշիչը</button>
-        </article>
-        <article class="card mode-card">
-          <span class="mode-kicker">Վարժանք</span>
-          <h3>Մինչև 8 հարց</h3>
-          <p>Համակարգը ընտրում է առաջին դեռ չամրապնդված հմտությունը և առաջարկում սահմանափակ adaptive practice։</p>
-          <p class="subtle">Նոր հարցերը առաջնահերթ են, իսկ սխալները կարող են վերադառնալ որպես նպատակային վերականգնում։</p>
-          <button id="startPracticeBtn">Սկսել վարժանքը</button>
-        </article>
+
+      <div id="dashboardLoading" class="card dashboard-loading">Առաջընթացը բեռնվում է…</div>
+
+      <div id="dashboardContent" class="hidden">
+        <div class="dashboard-summary">
+          <div class="stat card compact">
+            <span class="stat-label">Վերջին ախտորոշիչ</span>
+            <strong id="diagnosticScore">—</strong>
+            <span id="diagnosticMeta" class="subtle small">—</span>
+          </div>
+          <div class="stat card compact">
+            <span class="stat-label">Ամրապնդված հմտություններ</span>
+            <strong id="completedSkills">—</strong>
+            <div class="mini-progress"><div id="overallProgressBar" class="mini-progress-bar" style="width:0%"></div></div>
+          </div>
+          <div class="stat card compact">
+            <span class="stat-label">Հաջորդ քայլ</span>
+            <strong id="nextStepLabel">—</strong>
+            <span id="nextStepSkill" class="subtle small">—</span>
+          </div>
+        </div>
+
+        <section class="card recommendation-card">
+          <div>
+            <span class="mode-kicker">Անձնական առաջարկություն</span>
+            <h3 id="recommendationTitle">—</h3>
+            <p id="recommendationText" class="subtle">—</p>
+          </div>
+          <button id="resumeLearningBtn">Շարունակել</button>
+        </section>
+
+        <section class="card skill-map-card">
+          <div class="skill-map-heading">
+            <div>
+              <h3>Հմտությունների քարտեզ</h3>
+              <p class="subtle">Ախտորոշիչը ցույց է տալիս վերջին ստուգման պատկերը, իսկ mastery-ն՝ ընդհանուր ուսուցման առաջընթացը։</p>
+            </div>
+            <div class="legend">
+              <span class="band-dot strong"></span> Ուժեղ
+              <span class="band-dot developing"></span> Զարգացող
+              <span class="band-dot support"></span> Աջակցություն է պետք
+            </div>
+          </div>
+          <div id="skillMap" class="skill-map"></div>
+        </section>
+
+        <div class="mode-grid actions-grid">
+          <article class="card mode-card">
+            <span class="mode-kicker">Ախտորոշում</span>
+            <h3>20 հարց</h3>
+            <p>Չափեք Chapter I-ի բոլոր 10 հմտությունները՝ առանց հարցերի կրկնության։</p>
+            <button id="startDiagnosticBtn">Սկսել նոր ախտորոշիչ</button>
+          </article>
+          <article class="card mode-card">
+            <span class="mode-kicker">Վարժանք</span>
+            <h3>Մինչև 8 հարց</h3>
+            <p id="practiceCardText">Սկսեք առաջարկվող հմտությունից կամ շարունակեք ընթացիկ ուսուցումը։</p>
+            <button id="startPracticeBtn">Սկսել առաջարկվող վարժանքը</button>
+          </article>
+        </div>
       </div>
       <p id="modeMessage" class="message"></p>
     </section>
 
     <section id="practicePanel" class="hidden">
       <div class="session-toolbar">
-        <button id="backBtn" class="ghost">← Ռեժիմների ընտրություն</button>
+        <button id="backBtn" class="ghost">← Իմ առաջընթացը</button>
       </div>
 
       <div class="dashboard-row">
