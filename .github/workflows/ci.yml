@@ -37,3 +37,6 @@ jobs:
           node --check web/teacher.js
           node --check web/content.js
           node --check web/ux.js
+          node --check web/role-router.js
+          node --check web/privacy.js
+          node --check web/admin.js
