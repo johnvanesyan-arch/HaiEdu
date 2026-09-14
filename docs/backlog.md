@@ -38,3 +38,25 @@
 - [ ] Mastery display
 - [ ] Teacher class matrix
 - [ ] Small closed pilot
+
+## Sprint 10.5 — Student Experience & Front-End Redesign
+**Placement:** after Sprint 10 and before Sprint 11 Closed Physics Pilot.
+
+**Reference direction:** IXL-inspired information architecture and interaction model, while preserving an original Armenian-platform visual identity and avoiding a pixel/brand clone.
+
+- [ ] Create a unified authenticated application shell and navigation.
+- [ ] Make the student dashboard the post-login landing page.
+- [ ] Surface active session, recommended next skill, assessment status and chapter progress on Home.
+- [ ] Build a Physics 7 chapter/topic/skill browser.
+- [ ] Redesign practice around a focused question card and integrated three-stage remediation.
+- [ ] Redesign diagnostic as a distinct assessment flow with deferred feedback.
+- [ ] Redesign Mastery Check locked/ready/active/result states.
+- [ ] Add a student-friendly Progress page distinguishing diagnostic, practice mastery and verified completion.
+- [ ] Introduce reusable design tokens/components rather than page-specific styling.
+- [ ] Complete Armenian-first responsive QA for desktop, tablet and mobile.
+- [ ] Complete basic accessibility QA: keyboard, focus, contrast, labels and touch targets.
+- [ ] Preserve existing deterministic grading, mastery, recommendation, session and security semantics.
+- [ ] Preserve the Sprint 5 practice/remediation freeze regression fix.
+- [ ] Pass CI and live student-account browser QA before Sprint 11.
+
+Detailed scope: `docs/sprint-10-5-front-end-redesign.md`.
