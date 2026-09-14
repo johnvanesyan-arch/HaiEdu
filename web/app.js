@@ -2,19 +2,24 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-
 const $ = (id) => document.getElementById(id);
+
 const authPanel = $("authPanel");
+const modePanel = $("modePanel");
 const practicePanel = $("practicePanel");
 const authMessage = $("authMessage");
+const modeMessage = $("modeMessage");
 const signOutBtn = $("signOutBtn");
 const answerForm = $("answerForm");
 const submitBtn = $("submitBtn");
 const nextBtn = $("nextBtn");
+const backBtn = $("backBtn");
 const answerArea = $("answerArea");
 const feedback = $("feedback");
 const stimulusEl = $("stimulus");
+const masteryCard = $("masteryCard");
 
+let currentSession = null;
 let current = null;
 let questionStartedAt = null;
 
@@ -24,14 +29,12 @@ const layerLabels = {
   reasoning: "Դատողություն",
   transfer: "Փոխանցում"
 };
-
 const statusLabels = {
   insufficient_evidence: "Տվյալները քիչ են",
   needs_support: "Աջակցություն է պետք",
   developing: "Զարգացող",
   secure: "Կայուն mastery"
 };
-
 const recommendationLabels = {
   review_prerequisite: "Համակարգը խորհուրդ է տալիս վերադառնալ անհրաժեշտ նախապայման հմտությանը։",
   continue_current_skill: "Շարունակեք աշխատել ընթացիկ հմտության վրա։",
@@ -44,11 +47,27 @@ function setAuthMessage(message, isError = false) {
   authMessage.style.color = isError ? "#8a3342" : "#356246";
 }
 
+function setModeMessage(message, isError = false) {
+  modeMessage.textContent = message;
+  modeMessage.style.color = isError ? "#8a3342" : "#356246";
+}
+
 function setAuthenticated(isAuthenticated) {
   authPanel.classList.toggle("hidden", isAuthenticated);
-  practicePanel.classList.toggle("hidden", !isAuthenticated);
   signOutBtn.classList.toggle("hidden", !isAuthenticated);
-  if (isAuthenticated && !current) loadNextQuestion();
+  if (isAuthenticated) showModeSelection();
+  else {
+    modePanel.classList.add("hidden");
+    practicePanel.classList.add("hidden");
+  }
+}
+
+function showModeSelection() {
+  current = null;
+  currentSession = null;
+  practicePanel.classList.add("hidden");
+  modePanel.classList.remove("hidden");
+  setModeMessage("");
 }
 
 async function signIn() {
@@ -66,35 +85,59 @@ async function signUp() {
   setAuthMessage("Հաշիվը ստեղծվում է…");
   const { data, error } = await supabase.auth.signUp({ email, password });
   if (error) return setAuthMessage(error.message, true);
-  if (!data.session) {
-    setAuthMessage("Հաշիվը ստեղծվել է։ Եթե համակարգը պահանջում է էլ. փոստի հաստատում, հաստատեք նամակը, ապա մուտք գործեք։");
-  } else {
-    setAuthMessage("");
-  }
+  if (!data.session) setAuthMessage("Հաշիվը ստեղծվել է։ Եթե պահանջվում է էլ. փոստի հաստատում, հաստատեք նամակը, ապա մուտք գործեք։");
+  else setAuthMessage("");
 }
 
 async function signOut() {
   await supabase.auth.signOut();
   current = null;
+  currentSession = null;
   clearQuestion();
 }
 
+async function startSession(mode) {
+  setModeMessage(mode === "diagnostic" ? "Ախտորոշիչը պատրաստվում է…" : "Վարժանքը պատրաստվում է…");
+  $("startDiagnosticBtn").disabled = true;
+  $("startPracticeBtn").disabled = true;
+  const { data, error } = await supabase.functions.invoke("start-learning-session", { body: { mode } });
+  $("startDiagnosticBtn").disabled = false;
+  $("startPracticeBtn").disabled = false;
+
+  if (error) return setModeMessage(`Չհաջողվեց սկսել․ ${error.message}`, true);
+  if (data?.unitComplete) {
+    modePanel.classList.add("hidden");
+    practicePanel.classList.remove("hidden");
+    renderUnitComplete(data);
+    return;
+  }
+
+  currentSession = data.session;
+  modePanel.classList.add("hidden");
+  practicePanel.classList.remove("hidden");
+  await loadSessionItem();
+}
+
 function clearQuestion() {
+  $("sessionMode").textContent = "—";
+  $("sessionProgress").textContent = "—";
   $("skillCode").textContent = "—";
-  $("skillLayer").textContent = "—";
-  $("difficulty").textContent = "—";
   $("skillName").textContent = "—";
   $("itemCode").textContent = "—";
-  $("prompt").textContent = "Սեղմեք «Հաջորդ հարց»։";
+  $("difficulty").textContent = "—";
+  $("sessionProgressBar").style.width = "0%";
+  $("prompt").textContent = "Ընտրեք ռեժիմ և սկսեք։";
   answerArea.innerHTML = "";
   stimulusEl.innerHTML = "";
   stimulusEl.classList.add("hidden");
   feedback.className = "feedback hidden";
   feedback.innerHTML = "";
   submitBtn.disabled = true;
+  nextBtn.disabled = true;
 }
 
-async function loadNextQuestion() {
+async function loadSessionItem() {
+  if (!currentSession?.id) return;
   nextBtn.disabled = true;
   submitBtn.disabled = true;
   feedback.className = "feedback hidden";
@@ -104,9 +147,8 @@ async function loadNextQuestion() {
   stimulusEl.innerHTML = "";
   stimulusEl.classList.add("hidden");
 
-  const { data, error } = await supabase.functions.invoke("get-practice-item", { body: {} });
+  const { data, error } = await supabase.functions.invoke("get-session-item", { body: { sessionId: currentSession.id } });
   if (error) {
-    nextBtn.disabled = false;
     $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
     feedback.className = "feedback bad";
     feedback.textContent = error.message;
@@ -116,72 +158,36 @@ async function loadNextQuestion() {
   if (data?.complete) {
     current = null;
     questionStartedAt = null;
-    renderCompletion(data);
+    renderSessionCompletion(data);
     return;
   }
 
-  nextBtn.disabled = false;
   current = data;
+  currentSession = { ...currentSession, ...data.session };
   questionStartedAt = performance.now();
   renderQuestion(data);
 }
 
-function renderCompletion(data) {
-  $("skillCode").textContent = data.unitCode ?? "PHY7-U01";
-  $("skillLayer").textContent = "Ավարտված";
-  $("difficulty").textContent = "—";
-  $("skillName").textContent = "Բաժնի ամփոփում";
-  $("itemCode").textContent = "—";
-  $("prompt").textContent = data.messageHy ?? "Բաժինն ավարտված է։";
-  answerArea.innerHTML = "";
-  stimulusEl.innerHTML = "";
-  stimulusEl.classList.add("hidden");
-  submitBtn.disabled = true;
-  nextBtn.disabled = true;
-
-  const completedSkills = Array.isArray(data.summary) ? data.summary.length : 10;
-  $("masteryText").textContent = `${completedSkills} հմտություն ավարտված`;
-  $("masteryStatus").textContent = "Բաժինն ավարտված է";
-  $("masteryBar").style.width = "100%";
-  $("recommendation").textContent = "Կարելի է անցնել հաջորդ բաժնին կամ կատարել ամփոփիչ վերանայում։";
-
-  feedback.className = "feedback good";
-  feedback.innerHTML = "<strong>Ավարտված է։</strong><div>Այս բաժնի adaptive practice-ը այլևս նոր հարց չի պահանջում։</div>";
-}
-
 function renderQuestion(data) {
-  const { skill, item, progress } = data;
-  $("skillCode").textContent = skill.code;
-  $("skillLayer").textContent = layerLabels[skill.layer] ?? skill.layer;
-  $("difficulty").textContent = `${item.difficulty}/5`;
-  $("skillName").textContent = skill.nameHy;
+  const { skill, item, session } = data;
+  const isDiagnostic = session.mode === "diagnostic";
+  $("sessionMode").textContent = isDiagnostic ? "Ախտորոշիչ" : "Վարժանք";
+  $("sessionProgress").textContent = `${session.position} / ${session.total}`;
+  $("skillCode").textContent = skill?.code ?? "—";
+  $("skillName").textContent = skill?.nameHy ?? "—";
   $("itemCode").textContent = item.code;
+  $("difficulty").textContent = `${item.difficulty}/5`;
   $("prompt").textContent = item.promptHy;
+  $("sessionProgressBar").style.width = `${Math.max(0, ((session.position - 1) / session.total) * 100)}%`;
+  masteryCard.classList.toggle("hidden", isDiagnostic);
   renderStimulus(item.stimulus);
   renderAnswerInput(item);
-  renderCurrentProgress(progress);
   submitBtn.disabled = false;
-}
-
-function renderCurrentProgress(progress) {
-  if (!progress) {
-    $("masteryText").textContent = "Տվյալներ դեռ չկան";
-    $("masteryStatus").textContent = "—";
-    $("masteryBar").style.width = "0%";
-    return;
-  }
-  const pct = Math.max(0, Math.min(100, Math.round(Number(progress.score) * 100)));
-  const recent = progress.recentWindow
-    ? ` · վերջին ${progress.recentWindow}-ից ${progress.recentCorrect ?? 0} ճիշտ`
-    : "";
-  $("masteryText").textContent = `${pct}% · ${progress.evidenceCount ?? 0} պատասխան${recent}`;
-  $("masteryStatus").textContent = statusLabels[progress.status] ?? progress.status ?? "—";
-  $("masteryBar").style.width = `${pct}%`;
+  nextBtn.disabled = true;
 }
 
 function renderAnswerInput(item) {
   answerArea.innerHTML = "";
-
   if (item.type === "single_choice") {
     for (const option of item.options ?? []) {
       const label = document.createElement("label");
@@ -191,10 +197,8 @@ function renderAnswerInput(item) {
     }
     return;
   }
-
   if (item.type === "true_false") {
-    const values = [["true", "Ճիշտ է"], ["false", "Սխալ է"]];
-    for (const [value, text] of values) {
+    for (const [value, text] of [["true", "Ճիշտ է"], ["false", "Սխալ է"]]) {
       const label = document.createElement("label");
       label.className = "option";
       label.innerHTML = `<input type="radio" name="answer" value="${value}" required><span>${text}</span>`;
@@ -202,18 +206,15 @@ function renderAnswerInput(item) {
     }
     return;
   }
-
   if (item.type === "numeric") {
     answerArea.innerHTML = `<label>Պատասխան<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Մուտքագրեք թիվը"></label>`;
     return;
   }
-
   if (item.type === "quantity") {
-    const suggestedUnit = item.stimulus?.to_unit ?? "";
     answerArea.innerHTML = `
       <div class="quantity-row">
         <label>Թվային արժեք<input id="numericAnswer" inputmode="decimal" autocomplete="off" placeholder="Մուտքագրեք թիվը"></label>
-        <label>Միավոր<input id="unitAnswer" autocomplete="off" value="${escapeHtml(suggestedUnit)}" placeholder="Մուտքագրեք միավորը"></label>
+        <label>Միավոր<input id="unitAnswer" autocomplete="off" placeholder="Մուտքագրեք միավորը"></label>
       </div>`;
   }
 }
@@ -226,8 +227,7 @@ function collectResponse() {
   }
   if (type === "true_false") {
     const selected = document.querySelector('input[name="answer"]:checked');
-    if (!selected) return null;
-    return { value: selected.value === "true" };
+    return selected ? { value: selected.value === "true" } : null;
   }
   if (type === "numeric") {
     const value = $("numericAnswer")?.value?.trim();
@@ -243,7 +243,7 @@ function collectResponse() {
 
 async function submitAnswer(event) {
   event.preventDefault();
-  if (!current) return;
+  if (!current || !currentSession) return;
   const response = collectResponse();
   if (!response) {
     feedback.className = "feedback bad";
@@ -255,6 +255,8 @@ async function submitAnswer(event) {
   const responseTimeMs = questionStartedAt ? Math.round(performance.now() - questionStartedAt) : null;
   const { data, error } = await supabase.functions.invoke("submit-answer", {
     body: {
+      sessionId: currentSession.id,
+      sessionItemId: current.sessionItemId,
       itemId: current.item.id,
       response,
       responseTimeMs,
@@ -269,9 +271,20 @@ async function submitAnswer(event) {
     return;
   }
 
+  const total = current.session.total;
+  $("sessionProgressBar").style.width = `${Math.min(100, (current.session.position / total) * 100)}%`;
+  nextBtn.disabled = false;
+  nextBtn.textContent = data.session?.status === "completed" ? "Տեսնել արդյունքը" : "Հաջորդ հարց";
+
+  if (current.session.mode === "diagnostic") {
+    feedback.className = "feedback neutral";
+    feedback.innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Ճիշտ/սխալ արդյունքը կերևա ախտորոշիչի ավարտից հետո։</div>";
+    return;
+  }
+
   const correct = data.grading?.correct;
   feedback.className = `feedback ${correct ? "good" : "bad"}`;
-  feedback.innerHTML = `<strong>${correct ? "Ճիշտ է։" : "Սխալ է։"}</strong><div>${correct ? "Mastery-ի ապացույցը թարմացվեց։" : "Պատասխանը գրանցվեց, և համակարգը կօգտագործի այն հաջորդ քայլը ընտրելիս։"}</div>`;
+  feedback.innerHTML = `<strong>${correct ? "Ճիշտ է։" : "Սխալ է։"}</strong><div>${correct ? "Mastery-ի ապացույցը թարմացվեց։" : "Սխալը գրանցվեց։ Այս սեսիան ունի հստակ հարցերի սահման և անվերջ չի շարունակվի։"}</div>`;
   updateMastery(data.mastery, data.recommendation);
 }
 
@@ -284,6 +297,48 @@ function updateMastery(mastery, recommendation) {
   $("recommendation").textContent = recommendationLabels[recommendation?.action] ?? recommendation?.reason ?? "—";
 }
 
+function renderSessionCompletion(data) {
+  const mode = data.session?.mode ?? currentSession?.mode;
+  const diagnostic = mode === "diagnostic";
+  const summary = data.summary ?? {};
+  const answered = Number(summary.answered ?? data.session?.answered_count ?? 0);
+  const planned = Number(summary.planned ?? data.session?.planned_item_count ?? answered);
+  const correct = Number(summary.correct ?? data.session?.correct_count ?? 0);
+  const percent = Number(summary.percent ?? (answered ? Math.round((correct / answered) * 100) : 0));
+
+  $("sessionMode").textContent = diagnostic ? "Ախտորոշիչ" : "Վարժանք";
+  $("sessionProgress").textContent = `${answered} / ${planned}`;
+  $("skillCode").textContent = "Ավարտված";
+  $("skillName").textContent = diagnostic ? "Ախտորոշիչ ստուգումն ավարտված է" : "Վարժանքի սեսիան ավարտված է";
+  $("itemCode").textContent = "—";
+  $("difficulty").textContent = "—";
+  $("sessionProgressBar").style.width = "100%";
+  $("prompt").textContent = diagnostic
+    ? "Ստուգումը ավարտվեց հստակ սահմանված հարցերի քանակով։ Սխալ պատասխանները չեն երկարացրել այն։"
+    : "Այս վարժանքի սեսիան ավարտվեց։ Կարող եք վերադառնալ և սկսել հաջորդ սահմանափակ սեսիան։";
+  answerArea.innerHTML = "";
+  stimulusEl.innerHTML = "";
+  stimulusEl.classList.add("hidden");
+  submitBtn.disabled = true;
+  nextBtn.disabled = true;
+  masteryCard.classList.add("hidden");
+  feedback.className = "feedback good";
+  feedback.innerHTML = `<strong>${correct} / ${answered} ճիշտ (${percent}%)</strong><div>${diagnostic ? "Հաջորդ sprint-ում այս արդյունքը կվերածվի հմտություն առ հմտություն diagnostic map-ի։" : "Սեսիայի սահմանը հասել է ավարտին. անվերջ remediation չկա։"}</div>`;
+}
+
+function renderUnitComplete(data) {
+  clearQuestion();
+  $("sessionMode").textContent = "Վարժանք";
+  $("sessionProgress").textContent = "Ավարտված";
+  $("skillCode").textContent = data.unitCode ?? "PHY7-U01";
+  $("skillName").textContent = "Բաժնի հմտությունները ավարտված են";
+  $("prompt").textContent = data.messageHy ?? "Բաժինն ավարտված է։";
+  $("sessionProgressBar").style.width = "100%";
+  feedback.className = "feedback good";
+  feedback.innerHTML = "<strong>Այս պահին նոր remediation սեսիա պետք չէ։</strong>";
+  masteryCard.classList.add("hidden");
+}
+
 function renderStimulus(stimulus) {
   stimulusEl.innerHTML = "";
   if (!stimulus || Object.keys(stimulus).length === 0) {
@@ -291,28 +346,14 @@ function renderStimulus(stimulus) {
     return;
   }
   stimulusEl.classList.remove("hidden");
-
   switch (stimulus.kind) {
-    case "scale_spec":
-      stimulusEl.appendChild(renderScale(stimulus));
-      break;
-    case "displacement":
-      stimulusEl.appendChild(renderDisplacement(stimulus));
-      break;
-    case "unit_conversion":
-      stimulusEl.innerHTML = `<div class="conversion"><span>${escapeHtml(stimulus.from_value)} ${escapeHtml(stimulus.from_unit)}</span><span>→</span><span>? ${escapeHtml(stimulus.to_unit)}</span></div>`;
-      break;
-    case "measurement_result":
-      stimulusEl.innerHTML = `<div class="conversion"><span>${escapeHtml(stimulus.value)} ± ${escapeHtml(stimulus.error)} ${escapeHtml(stimulus.unit)}</span></div>`;
-      break;
-    case "stack_measurement":
-      stimulusEl.appendChild(renderStack(stimulus));
-      break;
-    case "displacement_procedure":
-      stimulusEl.innerHTML = `<div class="conversion"><span>V₁</span><span>→</span><span>մարմինը ջրում</span><span>→</span><span>V₂</span><span>→</span><span>V₂ − V₁</span></div>`;
-      break;
-    default:
-      stimulusEl.innerHTML = `<pre>${escapeHtml(JSON.stringify(stimulus, null, 2))}</pre>`;
+    case "scale_spec": stimulusEl.appendChild(renderScale(stimulus)); break;
+    case "displacement": stimulusEl.appendChild(renderDisplacement(stimulus)); break;
+    case "unit_conversion": stimulusEl.innerHTML = `<div class="conversion"><span>${escapeHtml(stimulus.from_value)} ${escapeHtml(stimulus.from_unit)}</span><span>→</span><span>? ${escapeHtml(stimulus.to_unit)}</span></div>`; break;
+    case "measurement_result": stimulusEl.innerHTML = `<div class="conversion"><span>${escapeHtml(stimulus.value)} ± ${escapeHtml(stimulus.error)} ${escapeHtml(stimulus.unit)}</span></div>`; break;
+    case "stack_measurement": stimulusEl.appendChild(renderStack(stimulus)); break;
+    case "displacement_procedure": stimulusEl.innerHTML = `<div class="conversion"><span>V₁</span><span>→</span><span>մարմինը ջրում</span><span>→</span><span>V₂</span><span>→</span><span>V₂ − V₁</span></div>`; break;
+    default: stimulusEl.innerHTML = `<pre>${escapeHtml(JSON.stringify(stimulus, null, 2))}</pre>`;
   }
 }
 
@@ -323,50 +364,26 @@ function renderScale(spec) {
   const svg = document.createElementNS(svgNS, "svg");
   svg.setAttribute("viewBox", "0 0 640 120");
   svg.setAttribute("class", "scale-svg");
-
   const x1 = 50, x2 = 590, y = 58;
   const lower = Number(spec.lower ?? spec.base ?? 0);
   const divisions = Number(spec.divisions ?? Math.max(5, Number(spec.mark_offset ?? 0) + 2));
   const upper = spec.upper !== undefined ? Number(spec.upper) : lower + Number(spec.division_value ?? 1) * divisions;
-
   const axis = document.createElementNS(svgNS, "line");
-  axis.setAttribute("x1", x1); axis.setAttribute("x2", x2); axis.setAttribute("y1", y); axis.setAttribute("y2", y);
-  axis.setAttribute("stroke", "#495668"); axis.setAttribute("stroke-width", "3");
-  svg.appendChild(axis);
-
+  axis.setAttribute("x1", x1); axis.setAttribute("x2", x2); axis.setAttribute("y1", y); axis.setAttribute("y2", y); axis.setAttribute("stroke", "#495668"); axis.setAttribute("stroke-width", "3"); svg.appendChild(axis);
   for (let i = 0; i <= divisions; i++) {
     const x = x1 + (x2 - x1) * (i / divisions);
     const tick = document.createElementNS(svgNS, "line");
-    tick.setAttribute("x1", x); tick.setAttribute("x2", x); tick.setAttribute("y1", y - 15); tick.setAttribute("y2", y + 15);
-    tick.setAttribute("stroke", "#495668"); tick.setAttribute("stroke-width", i === 0 || i === divisions ? "3" : "1.5");
-    svg.appendChild(tick);
+    tick.setAttribute("x1", x); tick.setAttribute("x2", x); tick.setAttribute("y1", y - 15); tick.setAttribute("y2", y + 15); tick.setAttribute("stroke", "#495668"); tick.setAttribute("stroke-width", i === 0 || i === divisions ? "3" : "1.5"); svg.appendChild(tick);
   }
-
-  const lowerText = document.createElementNS(svgNS, "text");
-  lowerText.setAttribute("x", x1); lowerText.setAttribute("y", 100); lowerText.setAttribute("text-anchor", "middle");
-  lowerText.textContent = String(lower);
-  svg.appendChild(lowerText);
-
-  const upperText = document.createElementNS(svgNS, "text");
-  upperText.setAttribute("x", x2); upperText.setAttribute("y", 100); upperText.setAttribute("text-anchor", "middle");
-  upperText.textContent = String(upper);
-  svg.appendChild(upperText);
-
+  for (const [x, text] of [[x1, String(lower)], [x2, String(upper)]]) {
+    const label = document.createElementNS(svgNS, "text"); label.setAttribute("x", x); label.setAttribute("y", 100); label.setAttribute("text-anchor", "middle"); label.textContent = text; svg.appendChild(label);
+  }
   if (spec.mark_offset !== undefined) {
     const x = x1 + (x2 - x1) * (Number(spec.mark_offset) / divisions);
-    const marker = document.createElementNS(svgNS, "polygon");
-    marker.setAttribute("points", `${x - 9},18 ${x + 9},18 ${x},38`);
-    marker.setAttribute("fill", "#263a55");
-    svg.appendChild(marker);
+    const marker = document.createElementNS(svgNS, "polygon"); marker.setAttribute("points", `${x - 9},18 ${x + 9},18 ${x},38`); marker.setAttribute("fill", "#263a55"); svg.appendChild(marker);
   }
-
-  const unitText = document.createElementNS(svgNS, "text");
-  unitText.setAttribute("x", 320); unitText.setAttribute("y", 116); unitText.setAttribute("text-anchor", "middle");
-  unitText.textContent = spec.unit ?? "";
-  svg.appendChild(unitText);
-
-  wrap.appendChild(svg);
-  return wrap;
+  const unitText = document.createElementNS(svgNS, "text"); unitText.setAttribute("x", 320); unitText.setAttribute("y", 116); unitText.setAttribute("text-anchor", "middle"); unitText.textContent = spec.unit ?? ""; svg.appendChild(unitText);
+  wrap.appendChild(svg); return wrap;
 }
 
 function renderDisplacement(spec) {
@@ -380,46 +397,31 @@ function renderDisplacement(spec) {
 
 function cylinder(label, value, max, unit) {
   const box = document.createElement("div");
-  const vessel = document.createElement("div");
-  vessel.className = "cylinder";
-  const water = document.createElement("div");
-  water.className = "water";
-  water.style.height = `${Math.max(15, Math.min(90, (value / max) * 82))}%`;
-  vessel.appendChild(water);
-  const caption = document.createElement("div");
-  caption.className = "cylinder-label";
-  caption.textContent = `${label} = ${value} ${unit ?? ""}`;
-  box.append(vessel, caption);
-  return box;
+  const vessel = document.createElement("div"); vessel.className = "cylinder";
+  const water = document.createElement("div"); water.className = "water"; water.style.height = `${Math.max(15, Math.min(90, (value / max) * 82))}%`; vessel.appendChild(water);
+  const caption = document.createElement("div"); caption.className = "cylinder-label"; caption.textContent = `${label} = ${value} ${unit ?? ""}`; box.append(vessel, caption); return box;
 }
 
 function renderStack(spec) {
   const outer = document.createElement("div");
-  const stack = document.createElement("div");
-  stack.className = "stack";
+  const stack = document.createElement("div"); stack.className = "stack";
   const visualCount = Math.min(10, Number(spec.count ?? 8));
   for (let i = 0; i < visualCount; i++) stack.appendChild(document.createElement("div"));
   outer.appendChild(stack);
-  const caption = document.createElement("p");
-  caption.className = "cylinder-label";
-  caption.textContent = spec.count ? `${spec.count} հատ · ընդհանուր հաստություն ${spec.total_thickness} ${spec.unit}` : "Անուղղակի չափում՝ մի քանի նույնական շերտ միասին";
-  outer.appendChild(caption);
-  return outer;
+  const caption = document.createElement("p"); caption.className = "cylinder-label"; caption.textContent = spec.count ? `${spec.count} հատ · ընդհանուր հաստություն ${spec.total_thickness} ${spec.unit}` : "Անուղղակի չափում՝ մի քանի նույնական շերտ միասին"; outer.appendChild(caption); return outer;
 }
 
 function escapeHtml(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+  return String(value ?? "").replaceAll("&", "&amp;").replaceAll("<", "&lt;").replaceAll(">", "&gt;").replaceAll('"', "&quot;").replaceAll("'", "&#039;");
 }
 
 $("signInBtn").addEventListener("click", signIn);
 $("signUpBtn").addEventListener("click", signUp);
+$("startDiagnosticBtn").addEventListener("click", () => startSession("diagnostic"));
+$("startPracticeBtn").addEventListener("click", () => startSession("practice"));
 signOutBtn.addEventListener("click", signOut);
-nextBtn.addEventListener("click", loadNextQuestion);
+backBtn.addEventListener("click", showModeSelection);
+nextBtn.addEventListener("click", loadSessionItem);
 answerForm.addEventListener("submit", submitAnswer);
 
 supabase.auth.onAuthStateChange((_event, session) => setAuthenticated(Boolean(session)));
