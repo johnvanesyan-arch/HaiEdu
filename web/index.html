@@ -37,7 +37,7 @@
     <section id="modePanel" class="hidden">
       <div class="section-heading dashboard-heading">
         <div>
-          <p class="eyebrow">SPRINT 4</p>
+          <p class="eyebrow">SPRINT 5</p>
           <h2>Իմ առաջընթացը</h2>
           <p class="subtle">Ախտորոշիչ արդյունքները, հմտությունների քարտեզը և հաջորդ առաջարկվող քայլը։</p>
         </div>
@@ -142,6 +142,19 @@
         <div class="session-progress-track"><div id="sessionProgressBar" class="session-progress-bar" style="width:0%"></div></div>
         <div id="stimulus" class="stimulus hidden"></div>
         <h2 id="prompt">Ընտրեք ռեժիմ և սկսեք։</h2>
+
+        <div id="helpControls" class="help-controls hidden">
+          <button id="helpBtn" type="button" class="secondary">Օգնություն</button>
+          <span class="subtle small">Վարժանքի ժամանակ կարող եք ստանալ աստիճանական հուշում՝ առանց ընթացիկ հարցի պատասխանը բացահայտելու։</span>
+        </div>
+        <section id="helpPanel" class="help-panel hidden" aria-live="polite">
+          <span class="mode-kicker">Ուսուցման օգնություն</span>
+          <h3 id="helpTitle">Օգնություն</h3>
+          <p id="helpStrategy" class="help-strategy"></p>
+          <p id="helpContent" class="help-content"></p>
+          <p id="helpNote" class="subtle small"></p>
+        </section>
+
         <form id="answerForm">
           <div id="answerArea"></div>
           <button id="submitBtn" type="submit" disabled>Պատասխանել</button>
@@ -164,5 +177,6 @@
   </main>
 
   <script type="module" src="./app.js"></script>
+  <script type="module" src="./remediation.js"></script>
 </body>
 </html>
