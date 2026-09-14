@@ -26,6 +26,21 @@ function ensureCard() {
   return card;
 }
 
+async function startRequiredRemediation(skillId) {
+  const { data, error } = await supabase.functions.invoke("start-learning-session", {
+    body: { mode: "practice", targetSkillId: skillId },
+  });
+  if (error) {
+    alert(`Չհաջողվեց սկսել remediation վարժանքը․ ${error.message}`);
+    return;
+  }
+  if (!data?.session) {
+    alert(data?.messageHy ?? "Չհաջողվեց սկսել remediation վարժանքը։");
+    return;
+  }
+  window.location.reload();
+}
+
 function render(data) {
   lastStatus = data;
   ensureCard();
@@ -33,6 +48,12 @@ function render(data) {
   const text = $("masteryCheckText");
   const btn = $("masteryCheckBtn");
   if (!title || !text || !btn) return;
+
+  const resume = $("resumeLearningBtn");
+  if (resume) {
+    resume.dataset.masteryRoute = "false";
+    delete resume.dataset.masteryRemediationSkill;
+  }
 
   if (data.unitComplete) {
     title.textContent = `Անցած է · ${data.latestCheck?.percent ?? 0}%`;
@@ -66,6 +87,20 @@ function render(data) {
   text.textContent = `${data.messageHy ?? "Նախ շարունակեք վարժանքը։"}${required ? ` Պետք է աշխատել՝ ${required}.` : ""}`;
   btn.disabled = true;
   btn.textContent = "Դեռ հասանելի չէ";
+
+  if (data.retryBlocked && data.requiredSkills?.length) {
+    const first = data.requiredSkills[0];
+    patchRecommendation(
+      `Վարժանք՝ ${first.code}`,
+      "Mastery check-ի կրկնակի փորձից առաջ պետք է ավարտել պահանջվող remediation սեսիաները։",
+      false,
+    );
+    if (resume) {
+      resume.disabled = false;
+      resume.textContent = `Սկսել ${first.code} remediation-ը`;
+      resume.dataset.masteryRemediationSkill = first.id;
+    }
+  }
 }
 
 function patchRecommendation(title, text, routeToMastery) {
@@ -111,6 +146,12 @@ resume?.addEventListener("click", (event) => {
     event.preventDefault();
     event.stopImmediatePropagation();
     window.location.href = "./mastery.html";
+    return;
+  }
+  if (resume.dataset.masteryRemediationSkill) {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    startRequiredRemediation(resume.dataset.masteryRemediationSkill);
   }
 }, true);
 
