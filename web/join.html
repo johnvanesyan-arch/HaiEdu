@@ -3,21 +3,25 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
   <title>Միանալ դասարանին</title>
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
 </head>
 <body>
-  <main class="shell" style="max-width:760px">
+  <main class="shell" id="mainContent" style="max-width:760px">
     <header class="topbar">
-      <div><p class="eyebrow">ՖԻԶԻԿԱ 7</p><h1>Միանալ դասարանին</h1><p class="subtle">Մուտքագրեք ուսուցչի տրամադրած join code-ը։</p></div>
+      <div><p class="eyebrow">ՖԻԶԻԿԱ 7</p><h1>Միանալ դասարանին</h1><p class="subtle">Մուտքագրեք ուսուցչի տրամադրած 8-նիշ միանալու կոդը։</p></div>
       <a class="ghost" style="text-decoration:none" href="./index.html">Իմ առաջընթացը</a>
     </header>
-    <section class="card">
-      <label>Join code<input id="joinCode" maxlength="8" autocomplete="off" placeholder="A7K9M2QX" style="text-transform:uppercase" /></label>
+    <section class="card" aria-labelledby="joinTitle">
+      <h2 id="joinTitle">Դասարանի կոդ</h2>
+      <label>Միանալու կոդ<input id="joinCode" maxlength="8" minlength="8" autocomplete="off" autocapitalize="characters" pattern="[A-Za-z0-9]{8}" placeholder="A7K9M2QX" style="text-transform:uppercase" required /></label>
       <button id="joinBtn" type="button">Միանալ</button>
-      <p id="message" class="message"></p>
+      <p id="message" class="message" aria-live="polite"></p>
     </section>
   </main>
   <script type="module" src="./join.js"></script>
+  <script type="module" src="./ux.js"></script>
 </body>
 </html>
