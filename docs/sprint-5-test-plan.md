@@ -53,16 +53,28 @@ A live S08 session was observed at 0/8 after clicking **Շարունակել ս�
 
 Database inspection showed that the session itself was healthy and had one pending item. The scheduler was therefore not looping; question retrieval/runtime loading had stalled.
 
-Fix applied:
+Backend fix applied:
 
 - `get-session-item` v3 now contains its scheduler logic directly instead of depending on a runtime-relative shared import;
 - explicit query/runtime errors are returned as JSON rather than leaving the interface in an ambiguous loading state;
 - `web/session-watchdog.js` converts a loading state longer than 12 seconds into a visible retry action.
 
+A second live test showed the entire page becoming unresponsive: the pending question remained on **Հարցը բեռնվում է…**, the watchdog timer did not fire, and even navigation buttons could not be clicked.
+
+Root cause: `web/remediation.js` observed the whole practice-panel subtree, including its own help button/text/class mutations. `syncHelpVisibility()` then wrote back into the observed subtree, producing a self-sustaining `MutationObserver` microtask loop. That starved timers and user interaction on the browser main thread.
+
+Frontend fix applied:
+
+- the remediation observer now watches only source application-state elements (`practicePanel`, `sessionMode`, `itemCode`, `submitBtn`, `feedback`);
+- it no longer observes the help UI that it mutates;
+- help text is written only when the value actually changes.
+
 Retest:
 
-1. Hard-refresh the deployed site.
+1. Hard-refresh the deployed site after the newest frontend deployment.
 2. Click **Շարունակել սեսիան** for the existing S08 0/8 session.
-3. Confirm the pending question loads instead of remaining on **Հարցը բեռնվում է…**.
-4. If retrieval fails, confirm the interface offers **Կրկին փորձել** rather than appearing to loop forever.
-5. Answer the item and verify the session changes from 0/8 to 1/8.
+3. Confirm the page remains responsive while the pending question loads.
+4. Confirm **Իմ առաջընթացը** remains clickable during loading.
+5. Confirm the pending question loads instead of remaining on **Հարցը բեռնվում է…**.
+6. If retrieval genuinely fails, confirm the watchdog offers **Կրկին փորձել** after about 12 seconds.
+7. Answer the item and verify the session changes from 0/8 to 1/8.
