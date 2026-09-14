@@ -1,0 +1,30 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const joinBtn = document.getElementById("joinBtn");
+const joinCode = document.getElementById("joinCode");
+const message = document.getElementById("message");
+
+function setMessage(text, bad = false) {
+  message.textContent = text;
+  message.style.color = bad ? "#8a3342" : "#356246";
+}
+
+const { data: sessionData } = await supabase.auth.getSession();
+if (!sessionData.session) {
+  joinBtn.disabled = true;
+  setMessage("Նախ մուտք գործեք ուսանողի էջում, ապա վերադարձեք այստեղ։", true);
+}
+
+joinBtn.addEventListener("click", async () => {
+  const code = joinCode.value.trim().toUpperCase();
+  if (!code) return setMessage("Մուտքագրեք join code-ը։", true);
+  joinBtn.disabled = true;
+  setMessage("Միանում ենք…");
+  const { data, error } = await supabase.functions.invoke("join-class", { body: { joinCode: code } });
+  joinBtn.disabled = false;
+  if (error) return setMessage("Չհաջողվեց միանալ։ Ստուգեք կոդը կամ դասարանի ակտիվությունը։", true);
+  joinCode.value = "";
+  setMessage(data.alreadyMember ? `Դուք արդեն ${data.class.name} դասարանի անդամ եք։` : `Միացաք ${data.class.name} դասարանին։`);
+});
