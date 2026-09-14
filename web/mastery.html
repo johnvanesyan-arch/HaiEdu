@@ -1,0 +1,70 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ֆիզիկա 7 — Mastery Check</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <main class="shell">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">SPRINT 6 · MASTERY CHECK</p>
+        <h1>Ֆիզիկա 7</h1>
+        <p class="subtle">Գլուխ I — անկախ mastery ստուգում</p>
+      </div>
+      <a class="ghost" href="./">← Իմ առաջընթացը</a>
+    </header>
+
+    <section class="notice">
+      <strong>Անկախ ստուգում</strong>
+      <span>20 հարց · օգնություն չկա · ճիշտ/սխալ պատասխանը չի ցուցադրվում մինչև ավարտը · անցողիկ շեմը փորձնական է։</span>
+    </section>
+
+    <section id="stateCard" class="card">
+      <h2 id="stateTitle">Mastery check-ը պատրաստվում է…</h2>
+      <p id="stateText" class="subtle">Ստուգվում է ձեր պատրաստվածությունը։</p>
+      <div id="requiredSkills"></div>
+      <button id="startBtn" class="hidden">Սկսել mastery check-ը</button>
+    </section>
+
+    <section id="questionPanel" class="hidden">
+      <div class="dashboard-row">
+        <div class="stat card compact"><span class="stat-label">Ռեժիմ</span><strong>Mastery check</strong></div>
+        <div class="stat card compact"><span class="stat-label">Առաջընթաց</span><strong id="progressText">—</strong></div>
+        <div class="stat card compact"><span class="stat-label">Հմտություն</span><strong id="skillCode">—</strong></div>
+      </div>
+
+      <section class="card question-card">
+        <div class="question-heading">
+          <div><p id="skillName" class="skill-name">—</p><p id="itemCode" class="item-code">—</p></div>
+          <span id="difficulty" class="pill">—</span>
+        </div>
+        <div class="session-progress-track"><div id="progressBar" class="session-progress-bar" style="width:0%"></div></div>
+        <div id="stimulus" class="stimulus hidden"></div>
+        <h2 id="prompt">Հարցը բեռնվում է…</h2>
+        <form id="answerForm">
+          <div id="answerArea"></div>
+          <button id="submitBtn" type="submit">Պատասխանել</button>
+        </form>
+        <div id="feedback" class="feedback hidden"></div>
+        <button id="nextBtn" class="ghost hidden">Հաջորդ հարց</button>
+      </section>
+    </section>
+
+    <section id="resultPanel" class="card hidden">
+      <span class="mode-kicker">Mastery check-ի արդյունք</span>
+      <h2 id="resultTitle">—</h2>
+      <p id="resultScore"></p>
+      <p id="resultRule" class="subtle"></p>
+      <div id="resultSkills" class="skill-map"></div>
+      <div class="row">
+        <a class="ghost" href="./">Վերադառնալ առաջընթացին</a>
+        <button id="retryBtn" class="hidden">Կրկին փորձել</button>
+      </div>
+    </section>
+  </main>
+  <script type="module" src="./mastery.js"></script>
+</body>
+</html>
