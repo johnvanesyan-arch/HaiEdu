@@ -46,3 +46,23 @@ Use an authenticated student account in a bounded practice session.
 2. Confirm hinted correctness does not independently satisfy the recent-recovery rule.
 3. Produce four independent correct answers within the last five attempts across at least four unique items.
 4. Confirm the session may end by independent recovery.
+
+## Case G — resume-session regression
+
+A live S08 session was observed at 0/8 after clicking **Շարունակել սեսիան** while the question view remained indefinitely on **Հարցը բեռնվում է…**.
+
+Database inspection showed that the session itself was healthy and had one pending item. The scheduler was therefore not looping; question retrieval/runtime loading had stalled.
+
+Fix applied:
+
+- `get-session-item` v3 now contains its scheduler logic directly instead of depending on a runtime-relative shared import;
+- explicit query/runtime errors are returned as JSON rather than leaving the interface in an ambiguous loading state;
+- `web/session-watchdog.js` converts a loading state longer than 12 seconds into a visible retry action.
+
+Retest:
+
+1. Hard-refresh the deployed site.
+2. Click **Շարունակել սեսիան** for the existing S08 0/8 session.
+3. Confirm the pending question loads instead of remaining on **Հարցը բեռնվում է…**.
+4. If retrieval fails, confirm the interface offers **Կրկին փորձել** rather than appearing to loop forever.
+5. Answer the item and verify the session changes from 0/8 to 1/8.
