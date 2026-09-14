@@ -34,29 +34,55 @@ Deno.serve(async (req) => {
   try {
     body = await req.json();
   } catch {
-    return json({ error: "invalid_json" }, 400);
-  }
-  if (!body.sessionId || !body.sessionItemId) {
-    return json({ error: "sessionId_and_sessionItemId_required" }, 400);
+    body = {};
   }
 
-  const { data: session, error: sessionError } = await admin
-    .from("learning_sessions")
-    .select("id, student_id, mode, status")
-    .eq("id", body.sessionId)
-    .eq("student_id", studentId)
-    .single();
-  if (sessionError || !session) return json({ error: "session_not_found" }, 404);
+  let session: any = null;
+  if (body.sessionId) {
+    const { data } = await admin
+      .from("learning_sessions")
+      .select("id, student_id, mode, status")
+      .eq("id", body.sessionId)
+      .eq("student_id", studentId)
+      .single();
+    session = data;
+  } else {
+    const { data: rows } = await admin
+      .from("learning_sessions")
+      .select("id, student_id, mode, status, started_at")
+      .eq("student_id", studentId)
+      .eq("mode", "practice")
+      .eq("status", "active")
+      .order("started_at", { ascending: false })
+      .limit(1);
+    session = rows?.[0] ?? null;
+  }
+
+  if (!session) return json({ error: "session_not_found" }, 404);
   if (session.status !== "active") return json({ error: "session_not_active" }, 409);
   if (session.mode !== "practice") return json({ error: "help_not_available_in_diagnostic" }, 409);
 
-  const { data: sessionItem, error: itemError } = await admin
-    .from("learning_session_items")
-    .select("id, session_id, skill_id, item_id, answered_at, hint_level_used")
-    .eq("id", body.sessionItemId)
-    .eq("session_id", body.sessionId)
-    .single();
-  if (itemError || !sessionItem) return json({ error: "session_item_not_found" }, 404);
+  let sessionItem: any = null;
+  if (body.sessionItemId) {
+    const { data } = await admin
+      .from("learning_session_items")
+      .select("id, session_id, skill_id, item_id, answered_at, hint_level_used")
+      .eq("id", body.sessionItemId)
+      .eq("session_id", session.id)
+      .single();
+    sessionItem = data;
+  } else {
+    const { data: rows } = await admin
+      .from("learning_session_items")
+      .select("id, session_id, skill_id, item_id, answered_at, hint_level_used, ordinal")
+      .eq("session_id", session.id)
+      .is("answered_at", null)
+      .order("ordinal", { ascending: true })
+      .limit(1);
+    sessionItem = rows?.[0] ?? null;
+  }
+
+  if (!sessionItem) return json({ error: "session_item_not_found" }, 404);
   if (sessionItem.answered_at) return json({ error: "question_already_answered" }, 409);
 
   const { data: guide, error: guideError } = await admin
