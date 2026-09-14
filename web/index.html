@@ -3,48 +3,50 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ֆիզիկա 7 — Mastery Prototype</title>
+  <meta name="color-scheme" content="light" />
+  <title>Ֆիզիկա 7 — Իմ առաջընթացը</title>
   <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
 </head>
 <body>
-  <main class="shell">
+  <main class="shell" id="mainContent">
     <header class="topbar">
       <div>
-        <p class="eyebrow">ARMENIAN CURRICULUM MASTERY PLATFORM</p>
+        <p class="eyebrow">ՀԱՅԿԱԿԱՆ ՈՒՍՈՒՄՆԱԿԱՆ ԾՐԱԳՐԻ ՅՈՒՐԱՑՄԱՆ ՀԱՐԹԱԿ</p>
         <h1>Ֆիզիկա 7</h1>
         <p class="subtle">Գլուխ I — Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
       </div>
       <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
     </header>
 
-    <section class="notice">
-      <strong>Զարգացման նախատիպ</strong>
+    <section class="notice" aria-label="Բովանդակության կարգավիճակ">
+      <strong>Փորձնական տարբերակ</strong>
       <span>Բովանդակությունը դեռևս փորձնական է և չի անցել վերջնական առարկայական փորձագիտական ստուգում։</span>
     </section>
 
-    <section id="authPanel" class="card auth-card">
-      <h2>Մուտք</h2>
+    <section id="authPanel" class="card auth-card" aria-labelledby="loginTitle">
+      <h2 id="loginTitle">Մուտք</h2>
       <p class="subtle">Օգտագործեք էլ. հասցե և գաղտնաբառ՝ փորձնական ուսանողական հաշիվ ստեղծելու կամ մուտք գործելու համար։</p>
-      <label>Էլ. հասցե<input id="emailInput" type="email" autocomplete="email" placeholder="student@example.com" /></label>
-      <label>Գաղտնաբառ<input id="passwordInput" type="password" autocomplete="current-password" placeholder="Առնվազն 6 նիշ" /></label>
+      <label>Էլ. հասցե<input id="emailInput" type="email" autocomplete="email" placeholder="student@example.com" required /></label>
+      <label>Գաղտնաբառ<input id="passwordInput" type="password" autocomplete="current-password" placeholder="Առնվազն 6 նիշ" minlength="6" required /></label>
       <div class="row">
         <button id="signInBtn">Մուտք գործել</button>
         <button id="signUpBtn" class="secondary">Գրանցվել</button>
       </div>
-      <p id="authMessage" class="message"></p>
+      <p id="authMessage" class="message" aria-live="polite"></p>
     </section>
 
-    <section id="modePanel" class="hidden">
+    <section id="modePanel" class="hidden" aria-labelledby="progressTitle">
       <div class="section-heading dashboard-heading">
         <div>
-          <p class="eyebrow">SPRINT 5</p>
-          <h2>Իմ առաջընթացը</h2>
+          <p class="eyebrow">ԻՄ ՈՒՍՈՒՑՈՒՄԸ</p>
+          <h2 id="progressTitle">Իմ առաջընթացը</h2>
           <p class="subtle">Ախտորոշիչ արդյունքները, հմտությունների քարտեզը և հաջորդ առաջարկվող քայլը։</p>
         </div>
         <button id="refreshDashboardBtn" class="ghost">Թարմացնել</button>
       </div>
 
-      <div id="dashboardLoading" class="card dashboard-loading">Առաջընթացը բեռնվում է…</div>
+      <div id="dashboardLoading" class="card dashboard-loading" aria-live="polite">Առաջընթացը բեռնվում է…</div>
 
       <div id="dashboardContent" class="hidden">
         <div class="dashboard-summary">
@@ -65,7 +67,7 @@
           </div>
         </div>
 
-        <section class="card recommendation-card">
+        <section class="card recommendation-card" aria-labelledby="recommendationTitle">
           <div>
             <span class="mode-kicker">Անձնական առաջարկություն</span>
             <h3 id="recommendationTitle">—</h3>
@@ -74,16 +76,16 @@
           <button id="resumeLearningBtn">Շարունակել</button>
         </section>
 
-        <section class="card skill-map-card">
+        <section class="card skill-map-card" aria-labelledby="skillMapTitle">
           <div class="skill-map-heading">
             <div>
-              <h3>Հմտությունների քարտեզ</h3>
-              <p class="subtle">Ախտորոշիչը ցույց է տալիս վերջին ստուգման պատկերը, իսկ mastery-ն՝ ընդհանուր ուսուցման առաջընթացը։</p>
+              <h3 id="skillMapTitle">Հմտությունների քարտեզ</h3>
+              <p class="subtle">Ախտորոշիչը ցույց է տալիս վերջին ստուգման պատկերը, իսկ յուրացման մակարդակը՝ ընդհանուր ուսուցման առաջընթացը։</p>
             </div>
-            <div class="legend">
-              <span class="band-dot strong"></span> Ուժեղ
-              <span class="band-dot developing"></span> Զարգացող
-              <span class="band-dot support"></span> Աջակցություն է պետք
+            <div class="legend" aria-label="Հմտության վիճակների բացատրություն">
+              <span class="band-dot strong" aria-hidden="true"></span> Ուժեղ
+              <span class="band-dot developing" aria-hidden="true"></span> Զարգացող
+              <span class="band-dot support" aria-hidden="true"></span> Աջակցություն է պետք
             </div>
           </div>
           <div id="skillMap" class="skill-map"></div>
@@ -93,7 +95,7 @@
           <article class="card mode-card">
             <span class="mode-kicker">Ախտորոշում</span>
             <h3>20 հարց</h3>
-            <p>Չափեք Chapter I-ի բոլոր 10 հմտությունները՝ առանց հարցերի կրկնության։</p>
+            <p>Ստուգեք Գլուխ I-ի բոլոր 10 հմտությունները՝ առանց հարցերի կրկնության։</p>
             <button id="startDiagnosticBtn">Սկսել նոր ախտորոշիչ</button>
           </article>
           <article class="card mode-card">
@@ -104,10 +106,10 @@
           </article>
         </div>
       </div>
-      <p id="modeMessage" class="message"></p>
+      <p id="modeMessage" class="message" aria-live="polite"></p>
     </section>
 
-    <section id="practicePanel" class="hidden">
+    <section id="practicePanel" class="hidden" aria-labelledby="prompt">
       <div class="session-toolbar">
         <button id="backBtn" class="ghost">← Իմ առաջընթացը</button>
       </div>
@@ -141,7 +143,7 @@
 
         <div class="session-progress-track"><div id="sessionProgressBar" class="session-progress-bar" style="width:0%"></div></div>
         <div id="stimulus" class="stimulus hidden"></div>
-        <h2 id="prompt">Ընտրեք ռեժիմ և սկսեք։</h2>
+        <h2 id="prompt" aria-live="polite">Ընտրեք ռեժիմ և սկսեք։</h2>
 
         <div id="helpControls" class="help-controls hidden">
           <button id="helpBtn" type="button" class="secondary">Օգնություն</button>
@@ -155,23 +157,23 @@
           <p id="helpNote" class="subtle small"></p>
         </section>
 
-        <form id="answerForm">
+        <form id="answerForm" novalidate>
           <div id="answerArea"></div>
           <button id="submitBtn" type="submit" disabled>Պատասխանել</button>
         </form>
-        <div id="feedback" class="feedback hidden"></div>
+        <div id="feedback" class="feedback hidden" aria-live="polite"></div>
       </section>
 
       <section id="masteryCard" class="card mastery-card">
         <div class="mastery-head">
           <div>
-            <span class="stat-label">Ընթացիկ հմտության mastery</span>
+            <span class="stat-label">Ընթացիկ հմտության յուրացման մակարդակ</span>
             <strong id="masteryText">Տվյալներ դեռ չկան</strong>
           </div>
           <span id="masteryStatus" class="pill">—</span>
         </div>
         <div class="progress-track"><div id="masteryBar" class="progress-bar" style="width:0%"></div></div>
-        <p id="recommendation" class="subtle">Վարժանքի ընթացքում այստեղ կերևա mastery-ի թարմացումը։</p>
+        <p id="recommendation" class="subtle">Վարժանքի ընթացքում այստեղ կերևա յուրացման մակարդակի թարմացումը։</p>
       </section>
     </section>
   </main>
@@ -179,5 +181,6 @@
   <script type="module" src="./app.js"></script>
   <script type="module" src="./remediation.js"></script>
   <script type="module" src="./session-watchdog.js"></script>
+  <script type="module" src="./ux.js"></script>
 </body>
 </html>
