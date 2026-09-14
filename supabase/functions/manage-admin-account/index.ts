@@ -158,29 +158,61 @@ Deno.serve(async (req) => {
       const { data: request } = await admin.from("account_deletion_requests")
         .select("id, user_id, auth_user_id, status")
         .eq("id", requestId).maybeSingle();
-      if (!request || !["pending", "processing"].includes(request.status)) return json({ error: "request_not_open" }, 409);
+      if (!request || request.status !== "pending") return json({ error: "pending_request_required" }, 409);
+
+      const targetUserId = request.user_id as string | null;
+      if (!targetUserId) return json({ error: "deletion_target_missing" }, 409);
+      const { data: target } = await admin.from("profiles").select("role, account_status").eq("id", targetUserId).maybeSingle();
+      if (!target) return json({ error: "target_profile_missing" }, 404);
+      if (String(target.role) !== "student") {
+        return json({ error: "staff_offboarding_required", detail: "Transfer or archive staff-owned resources before deleting this account." }, 409);
+      }
+
+      const { data: staged, error: stageError } = await admin.from("account_deletion_requests").update({
+        status: "processing",
+      }).eq("id", requestId).eq("status", "pending").select("id, status, requested_at").single();
+      if (stageError || !staged) return json({ error: "deletion_approval_failed", detail: stageError?.message }, 500);
+
+      const { error: profileError } = await admin.from("profiles").update({
+        account_status: "deletion_pending",
+        status_changed_at: new Date().toISOString(),
+        updated_at: new Date().toISOString(),
+      }).eq("id", targetUserId);
+      if (profileError) return json({ error: "deletion_pending_status_failed", detail: profileError.message }, 500);
+
+      await writeAudit(admin, {
+        actor_user_id: actorId, actor_role: "admin", action: "admin.deletion_approved", outcome: "success",
+        target_user_id: targetUserId, target_type: "deletion_request", target_key: requestId,
+        details: { previousRequestStatus: request.status, newRequestStatus: "processing", irreversible: false },
+      });
+      return json({ request: staged, readyForExecution: true, irreversible: false });
+    }
+
+    if (action === "execute_deletion") {
+      const requestId = String(body.requestId ?? "");
+      if (!requestId) return json({ error: "request_id_required" }, 400);
+      const { data: request } = await admin.from("account_deletion_requests")
+        .select("id, user_id, auth_user_id, status")
+        .eq("id", requestId).maybeSingle();
+      if (!request || request.status !== "processing") return json({ error: "approved_request_required" }, 409);
 
       const targetUserId = request.user_id as string | null;
       const authUserId = (request.auth_user_id ?? request.user_id) as string | null;
-      if (!authUserId) return json({ error: "deletion_target_missing" }, 409);
+      if (!targetUserId || !authUserId) return json({ error: "deletion_target_missing" }, 409);
 
-      let inventory: Record<string, unknown> | null = null;
-      if (targetUserId) {
-        const { data: target } = await admin.from("profiles").select("role, account_status").eq("id", targetUserId).maybeSingle();
-        if (!target) return json({ error: "target_profile_missing" }, 404);
-        if (String(target.role) !== "student") {
-          return json({ error: "staff_offboarding_required", detail: "Transfer or archive staff-owned resources before deleting this account." }, 409);
-        }
-
-        await admin.from("account_deletion_requests").update({ status: "processing" }).eq("id", requestId);
-        await admin.from("profiles").update({ account_status: "deletion_pending", status_changed_at: new Date().toISOString() }).eq("id", targetUserId);
-        const ban = await admin.auth.admin.updateUserById(authUserId, { ban_duration: "876000h" });
-        if (ban.error) return json({ error: "deletion_ban_failed", detail: ban.error.message }, 500);
-
-        const erased = await admin.rpc("erase_student_data", { p_student_id: targetUserId });
-        if (erased.error) return json({ error: "student_data_erasure_failed", detail: erased.error.message }, 500);
-        inventory = erased.data ?? null;
+      const { data: target } = await admin.from("profiles").select("role, account_status").eq("id", targetUserId).maybeSingle();
+      if (!target) return json({ error: "target_profile_missing" }, 404);
+      if (String(target.role) !== "student") {
+        return json({ error: "staff_offboarding_required", detail: "Transfer or archive staff-owned resources before deleting this account." }, 409);
       }
+      if (target.account_status !== "deletion_pending") return json({ error: "deletion_pending_status_required" }, 409);
+
+      const ban = await admin.auth.admin.updateUserById(authUserId, { ban_duration: "876000h" });
+      if (ban.error) return json({ error: "deletion_ban_failed", detail: ban.error.message }, 500);
+
+      const erased = await admin.rpc("erase_student_data", { p_student_id: targetUserId });
+      if (erased.error) return json({ error: "student_data_erasure_failed", detail: erased.error.message }, 500);
+      const inventory = erased.data ?? null;
 
       const deleted = await admin.auth.admin.deleteUser(authUserId, false);
       if (deleted.error) return json({ error: "auth_user_delete_failed", detail: deleted.error.message, retryable: true }, 500);
