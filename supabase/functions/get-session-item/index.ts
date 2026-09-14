@@ -1,5 +1,4 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
-import { choosePracticeItem } from "../_shared/practice.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -8,11 +7,79 @@ const corsHeaders = {
 
 const MASTERY_THRESHOLD = 0.72;
 
+type Candidate = { id: string; code: string; item_type: string; prompt_hy: string; stimulus: unknown; difficulty: number; skill_id: string };
+type PracticeHistory = { item_id: string; correct: boolean | null; answered_at: string | null; hint_level_used?: number | null };
+
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
     status,
     headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
+}
+
+function desiredDifficulty(mastery: number, consecutiveWrong = 0) {
+  let base = mastery < 0.35 ? 1 : mastery < 0.55 ? 2 : mastery < MASTERY_THRESHOLD ? 3 : 4;
+  if (consecutiveWrong >= 2) base -= 2;
+  else if (consecutiveWrong === 1) base -= 1;
+  return Math.max(1, Math.min(5, base));
+}
+
+function choosePracticeItem(candidates: Candidate[], history: PracticeHistory[], mastery: number) {
+  if (!candidates.length) return null;
+
+  const answered = history.filter((row) => row.answered_at);
+  let consecutiveWrong = 0;
+  for (const row of answered) {
+    if (row.correct === false) consecutiveWrong += 1;
+    else break;
+  }
+
+  const targetDifficulty = desiredDifficulty(mastery, consecutiveWrong);
+  const recentIds = new Set(answered.slice(0, 2).map((row) => row.item_id));
+  const latestByItem = new Map<string, PracticeHistory>();
+  const counts = new Map<string, number>();
+  for (const row of answered) {
+    counts.set(row.item_id, (counts.get(row.item_id) ?? 0) + 1);
+    if (!latestByItem.has(row.item_id)) latestByItem.set(row.item_id, row);
+  }
+
+  const unseen = candidates.filter((item) => !latestByItem.has(item.id));
+  const unresolved = candidates.filter((item) => latestByItem.get(item.id)?.correct === false);
+  const underRepeatCap = (items: Candidate[]) => {
+    const capped = items.filter((item) => (counts.get(item.id) ?? 0) < 2);
+    return capped.length ? capped : items;
+  };
+
+  let pool: Candidate[] = unseen;
+  let selectionMode = consecutiveWrong >= 2 ? "bridge" : "new_item";
+
+  if (!pool.length && unresolved.length) {
+    const spaced = unresolved.filter((item) => !recentIds.has(item.id));
+    pool = underRepeatCap(spaced.length ? spaced : unresolved);
+    selectionMode = consecutiveWrong >= 2 ? "bridge" : "remediation";
+  }
+
+  if (!pool.length) {
+    const spaced = candidates.filter((item) => !recentIds.has(item.id));
+    pool = underRepeatCap(spaced.length ? spaced : candidates);
+    selectionMode = "spaced_review";
+  }
+
+  pool.sort((a, b) => {
+    const aCount = counts.get(a.id) ?? 0;
+    const bCount = counts.get(b.id) ?? 0;
+    if (aCount !== bCount) return aCount - bCount;
+    const diffDistance = Math.abs(Number(a.difficulty) - targetDifficulty) - Math.abs(Number(b.difficulty) - targetDifficulty);
+    if (diffDistance !== 0) return diffDistance;
+    return String(a.code).localeCompare(String(b.code));
+  });
+
+  return {
+    selectedId: pool[0].id,
+    selectionMode,
+    desiredDifficulty: targetDifficulty,
+    consecutiveWrong,
+  };
 }
 
 async function completeSession(admin: any, session: any, reason: string) {
@@ -34,7 +101,7 @@ async function completeSession(admin: any, session: any, reason: string) {
       answered: Number(session.answered_count),
       correct: Number(session.correct_count),
       planned: Number(session.planned_item_count),
-      percent: session.answered_count
+      percent: Number(session.answered_count)
         ? Math.round((Number(session.correct_count) / Number(session.answered_count)) * 100)
         : 0,
       reason,
@@ -48,19 +115,21 @@ async function itemPayload(admin: any, session: any, sessionItem: any) {
     .select("id, code, item_type, prompt_hy, stimulus, difficulty, skill_id")
     .eq("id", sessionItem.item_id)
     .single();
-  if (itemError || !item) return null;
+  if (itemError || !item) throw new Error(`item_load_failed:${itemError?.message ?? "missing"}`);
 
-  const { data: skill } = await admin
+  const { data: skill, error: skillError } = await admin
     .from("skills")
     .select("id, code, name_hy, layer")
     .eq("id", item.skill_id)
     .single();
+  if (skillError || !skill) throw new Error(`skill_load_failed:${skillError?.message ?? "missing"}`);
 
-  const { data: options } = await admin
+  const { data: options, error: optionsError } = await admin
     .from("item_options")
     .select("option_key, content_hy, display_order")
     .eq("item_id", item.id)
     .order("display_order", { ascending: true });
+  if (optionsError) throw new Error(`options_load_failed:${optionsError.message}`);
 
   return {
     complete: false,
@@ -68,23 +137,21 @@ async function itemPayload(admin: any, session: any, sessionItem: any) {
       id: session.id,
       mode: session.mode,
       status: session.status,
-      position: sessionItem.ordinal,
-      total: session.planned_item_count,
-      answered: session.answered_count,
-      correct: session.correct_count,
+      position: Number(sessionItem.ordinal),
+      total: Number(session.planned_item_count),
+      answered: Number(session.answered_count),
+      correct: Number(session.correct_count),
       feedbackMode: session.mode === "diagnostic" ? "deferred" : "immediate",
     },
     sessionItemId: sessionItem.id,
-    skill: skill
-      ? { id: skill.id, code: skill.code, nameHy: skill.name_hy, layer: skill.layer }
-      : null,
+    skill: { id: skill.id, code: skill.code, nameHy: skill.name_hy, layer: skill.layer },
     item: {
       id: item.id,
       code: item.code,
       type: item.item_type,
       promptHy: item.prompt_hy,
       stimulus: item.stimulus,
-      difficulty: item.difficulty,
+      difficulty: Number(item.difficulty),
       options: options ?? [],
     },
     remediation: {
@@ -96,155 +163,130 @@ async function itemPayload(admin: any, session: any, sessionItem: any) {
 }
 
 Deno.serve(async (req) => {
-  if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
-  if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405);
-
-  const supabaseUrl = Deno.env.get("SUPABASE_URL");
-  const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
-  const authHeader = req.headers.get("Authorization");
-  if (!supabaseUrl || !serviceRoleKey) return json({ error: "server_not_configured" }, 500);
-  if (!authHeader) return json({ error: "unauthorized" }, 401);
-
-  const admin = createClient(supabaseUrl, serviceRoleKey, {
-    auth: { persistSession: false, autoRefreshToken: false },
-  });
-  const token = authHeader.replace(/^Bearer\s+/i, "");
-  const { data: userData, error: userError } = await admin.auth.getUser(token);
-  if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
-  const studentId = userData.user.id;
-
-  let body: { sessionId?: string } = {};
   try {
-    body = await req.json();
-  } catch {
-    /* handled below */
-  }
-  if (!body.sessionId) return json({ error: "sessionId_required" }, 400);
+    if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
+    if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405);
 
-  const { data: session, error: sessionError } = await admin
-    .from("learning_sessions")
-    .select("id, student_id, unit_code, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, metadata")
-    .eq("id", body.sessionId)
-    .eq("student_id", studentId)
-    .single();
-  if (sessionError || !session) return json({ error: "session_not_found" }, 404);
+    const supabaseUrl = Deno.env.get("SUPABASE_URL");
+    const serviceRoleKey = Deno.env.get("SUPABASE_SERVICE_ROLE_KEY");
+    const authHeader = req.headers.get("Authorization");
+    if (!supabaseUrl || !serviceRoleKey) return json({ error: "server_not_configured" }, 500);
+    if (!authHeader) return json({ error: "unauthorized" }, 401);
 
-  if (session.status !== "active") {
-    return json({
-      complete: true,
-      session,
-      summary: {
-        answered: Number(session.answered_count),
-        correct: Number(session.correct_count),
-        planned: Number(session.planned_item_count),
-        percent: session.answered_count
-          ? Math.round((Number(session.correct_count) / Number(session.answered_count)) * 100)
-          : 0,
-        reason: session.metadata?.completionReason ?? "completed",
-      },
+    const admin = createClient(supabaseUrl, serviceRoleKey, {
+      auth: { persistSession: false, autoRefreshToken: false },
     });
-  }
+    const token = authHeader.replace(/^Bearer\s+/i, "");
+    const { data: userData, error: userError } = await admin.auth.getUser(token);
+    if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
+    const studentId = userData.user.id;
 
-  const { data: pendingRows } = await admin
-    .from("learning_session_items")
-    .select("id, ordinal, skill_id, item_id, answered_at, correct, hint_level_used, selection_reason")
-    .eq("session_id", session.id)
-    .is("answered_at", null)
-    .order("ordinal", { ascending: true })
-    .limit(1);
-  if (pendingRows?.length) {
-    const payload = await itemPayload(admin, session, pendingRows[0]);
-    return payload ? json(payload) : json({ error: "session_item_not_found" }, 500);
-  }
+    let body: { sessionId?: string } = {};
+    try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
+    if (!body.sessionId) return json({ error: "sessionId_required" }, 400);
 
-  if (Number(session.answered_count) >= Number(session.planned_item_count)) {
-    return json(await completeSession(admin, session, "item_limit_reached"));
-  }
+    const { data: session, error: sessionError } = await admin
+      .from("learning_sessions")
+      .select("id, student_id, unit_code, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, metadata")
+      .eq("id", body.sessionId)
+      .eq("student_id", studentId)
+      .single();
+    if (sessionError || !session) return json({ error: "session_not_found" }, 404);
 
-  if (session.mode === "diagnostic") {
-    const { data: nextRows } = await admin
+    if (session.status !== "active") return json(await completeSession(admin, session, session.metadata?.completionReason ?? "completed"));
+
+    const { data: pendingRows, error: pendingError } = await admin
       .from("learning_session_items")
       .select("id, ordinal, skill_id, item_id, answered_at, correct, hint_level_used, selection_reason")
       .eq("session_id", session.id)
       .is("answered_at", null)
       .order("ordinal", { ascending: true })
       .limit(1);
-    if (!nextRows?.length) return json(await completeSession(admin, session, "diagnostic_complete"));
-    const payload = await itemPayload(admin, session, nextRows[0]);
-    return payload ? json(payload) : json({ error: "session_item_not_found" }, 500);
+    if (pendingError) return json({ error: "pending_item_query_failed", detail: pendingError.message }, 500);
+
+    if (pendingRows?.length) {
+      return json(await itemPayload(admin, session, pendingRows[0]));
+    }
+
+    if (Number(session.answered_count) >= Number(session.planned_item_count)) {
+      return json(await completeSession(admin, session, "item_limit_reached"));
+    }
+
+    if (session.mode === "diagnostic") {
+      return json(await completeSession(admin, session, "diagnostic_complete"));
+    }
+
+    if (!session.target_skill_id) return json({ error: "practice_target_missing" }, 500);
+
+    const { data: masteryRow, error: masteryError } = await admin
+      .from("student_skill_mastery")
+      .select("mastery_score, evidence_count, status")
+      .eq("student_id", studentId)
+      .eq("skill_id", session.target_skill_id)
+      .maybeSingle();
+    if (masteryError) return json({ error: "mastery_query_failed", detail: masteryError.message }, 500);
+
+    const masteryScore = masteryRow ? Number(masteryRow.mastery_score) : 0;
+    const evidenceCount = masteryRow ? Number(masteryRow.evidence_count) : 0;
+
+    const { data: sessionRows, error: historyError } = await admin
+      .from("learning_session_items")
+      .select("id, ordinal, item_id, correct, answered_at, hint_level_used, selection_reason")
+      .eq("session_id", session.id)
+      .order("ordinal", { ascending: false });
+    if (historyError) return json({ error: "session_history_query_failed", detail: historyError.message }, 500);
+
+    const answeredRows = (sessionRows ?? []).filter((row) => row.answered_at);
+    const recentFive = answeredRows.slice(0, 5);
+    const uniqueSeen = new Set(answeredRows.map((row) => row.item_id)).size;
+    const independentCorrect = recentFive.filter(
+      (row) => row.correct === true && Number(row.hint_level_used ?? 0) === 0,
+    ).length;
+    const recovered = uniqueSeen >= 4 && recentFive.length >= 5 && independentCorrect >= 4;
+    const mastered = evidenceCount >= 3 && masteryScore >= MASTERY_THRESHOLD;
+
+    if (mastered || recovered) {
+      return json(await completeSession(admin, session, mastered ? "mastery_reached" : "independent_recovery"));
+    }
+
+    const { data: candidates, error: itemError } = await admin
+      .from("items")
+      .select("id, code, item_type, prompt_hy, stimulus, difficulty, skill_id")
+      .eq("skill_id", session.target_skill_id)
+      .eq("status", "published");
+    if (itemError || !candidates?.length) return json({ error: "no_item_for_skill", detail: itemError?.message ?? null }, 404);
+
+    const selection = choosePracticeItem(candidates as Candidate[], answeredRows as PracticeHistory[], masteryScore);
+    if (!selection) return json({ error: "practice_selection_failed" }, 500);
+
+    const selected = candidates.find((item) => item.id === selection.selectedId);
+    if (!selected) return json({ error: "practice_selection_missing" }, 500);
+
+    const maxOrdinal = (sessionRows ?? []).reduce((max, row) => Math.max(max, Number(row.ordinal)), 0);
+    const { data: created, error: createError } = await admin
+      .from("learning_session_items")
+      .insert({
+        session_id: session.id,
+        ordinal: maxOrdinal + 1,
+        skill_id: session.target_skill_id,
+        item_id: selected.id,
+        selection_reason: selection.selectionMode,
+      })
+      .select("id, ordinal, skill_id, item_id, answered_at, correct, hint_level_used, selection_reason")
+      .single();
+    if (createError || !created) return json({ error: "practice_item_create_failed", detail: createError?.message ?? null }, 500);
+
+    const payload = await itemPayload(admin, session, created);
+    return json({
+      ...payload,
+      scheduler: {
+        selectionMode: selection.selectionMode,
+        desiredDifficulty: selection.desiredDifficulty,
+        consecutiveWrong: selection.consecutiveWrong,
+      },
+    });
+  } catch (err) {
+    console.error("get-session-item fatal", err);
+    return json({ error: "get_session_item_failed", detail: err instanceof Error ? err.message : String(err) }, 500);
   }
-
-  if (!session.target_skill_id) return json({ error: "practice_target_missing" }, 500);
-
-  const { data: masteryRow } = await admin
-    .from("student_skill_mastery")
-    .select("mastery_score, evidence_count, status")
-    .eq("student_id", studentId)
-    .eq("skill_id", session.target_skill_id)
-    .maybeSingle();
-  const masteryScore = masteryRow ? Number(masteryRow.mastery_score) : 0;
-  const evidenceCount = masteryRow ? Number(masteryRow.evidence_count) : 0;
-
-  const { data: sessionRows } = await admin
-    .from("learning_session_items")
-    .select("id, ordinal, item_id, correct, answered_at, hint_level_used, selection_reason")
-    .eq("session_id", session.id)
-    .order("ordinal", { ascending: false });
-  const answeredRows = (sessionRows ?? []).filter((r) => r.answered_at);
-  const recentFive = answeredRows.slice(0, 5);
-  const uniqueSeen = new Set(answeredRows.map((r) => r.item_id)).size;
-  const independentCorrect = recentFive.filter(
-    (r) => r.correct === true && Number(r.hint_level_used ?? 0) === 0,
-  ).length;
-  const recovered = uniqueSeen >= 4 && recentFive.length >= 5 && independentCorrect >= 4;
-  const mastered = evidenceCount >= 3 && masteryScore >= MASTERY_THRESHOLD;
-
-  if (mastered || recovered) {
-    return json(await completeSession(admin, session, mastered ? "mastery_reached" : "independent_recovery"));
-  }
-
-  const { data: candidates, error: itemError } = await admin
-    .from("items")
-    .select("id, code, item_type, prompt_hy, stimulus, difficulty, skill_id")
-    .eq("skill_id", session.target_skill_id)
-    .eq("status", "published");
-  if (itemError || !candidates?.length) return json({ error: "no_item_for_skill" }, 404);
-
-  const selection = choosePracticeItem(
-    candidates.map((item) => ({ id: item.id, difficulty: Number(item.difficulty) })),
-    answeredRows.map((row) => ({ itemId: row.item_id, correct: row.correct === true })),
-    masteryScore,
-  );
-  if (!selection) return json({ error: "practice_selection_failed" }, 500);
-
-  const selected = candidates.find((item) => item.id === selection.selectedId);
-  if (!selected) return json({ error: "practice_selection_missing" }, 500);
-  const maxOrdinal = (sessionRows ?? []).reduce(
-    (max, row) => Math.max(max, Number(row.ordinal)),
-    0,
-  );
-
-  const { data: created, error: createError } = await admin
-    .from("learning_session_items")
-    .insert({
-      session_id: session.id,
-      ordinal: maxOrdinal + 1,
-      skill_id: session.target_skill_id,
-      item_id: selected.id,
-      selection_reason: selection.selectionMode,
-    })
-    .select("id, ordinal, skill_id, item_id, answered_at, correct, hint_level_used, selection_reason")
-    .single();
-  if (createError || !created) return json({ error: "practice_item_create_failed" }, 500);
-
-  const payload = await itemPayload(admin, session, created);
-  if (!payload) return json({ error: "session_item_not_found" }, 500);
-  return json({
-    ...payload,
-    scheduler: {
-      selectionMode: selection.selectionMode,
-      desiredDifficulty: selection.desiredDifficulty,
-      consecutiveWrong: selection.consecutiveWrong,
-    },
-  });
 });
