@@ -105,17 +105,48 @@ async function loadNextQuestion() {
   stimulusEl.classList.add("hidden");
 
   const { data, error } = await supabase.functions.invoke("get-practice-item", { body: {} });
-  nextBtn.disabled = false;
   if (error) {
+    nextBtn.disabled = false;
     $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
     feedback.className = "feedback bad";
     feedback.textContent = error.message;
     return;
   }
 
+  if (data?.complete) {
+    current = null;
+    questionStartedAt = null;
+    renderCompletion(data);
+    return;
+  }
+
+  nextBtn.disabled = false;
   current = data;
   questionStartedAt = performance.now();
   renderQuestion(data);
+}
+
+function renderCompletion(data) {
+  $("skillCode").textContent = data.unitCode ?? "PHY7-U01";
+  $("skillLayer").textContent = "Ավարտված";
+  $("difficulty").textContent = "—";
+  $("skillName").textContent = "Բաժնի ամփոփում";
+  $("itemCode").textContent = "—";
+  $("prompt").textContent = data.messageHy ?? "Բաժինն ավարտված է։";
+  answerArea.innerHTML = "";
+  stimulusEl.innerHTML = "";
+  stimulusEl.classList.add("hidden");
+  submitBtn.disabled = true;
+  nextBtn.disabled = true;
+
+  const completedSkills = Array.isArray(data.summary) ? data.summary.length : 10;
+  $("masteryText").textContent = `${completedSkills} հմտություն ավարտված`;
+  $("masteryStatus").textContent = "Բաժինն ավարտված է";
+  $("masteryBar").style.width = "100%";
+  $("recommendation").textContent = "Կարելի է անցնել հաջորդ բաժնին կամ կատարել ամփոփիչ վերանայում։";
+
+  feedback.className = "feedback good";
+  feedback.innerHTML = "<strong>Ավարտված է։</strong><div>Այս բաժնի adaptive practice-ը այլևս նոր հարց չի պահանջում։</div>";
 }
 
 function renderQuestion(data) {
@@ -140,7 +171,10 @@ function renderCurrentProgress(progress) {
     return;
   }
   const pct = Math.max(0, Math.min(100, Math.round(Number(progress.score) * 100)));
-  $("masteryText").textContent = `${pct}% · ${progress.evidenceCount ?? 0} պատասխան`;
+  const recent = progress.recentWindow
+    ? ` · վերջին ${progress.recentWindow}-ից ${progress.recentCorrect ?? 0} ճիշտ`
+    : "";
+  $("masteryText").textContent = `${pct}% · ${progress.evidenceCount ?? 0} պատասխան${recent}`;
   $("masteryStatus").textContent = statusLabels[progress.status] ?? progress.status ?? "—";
   $("masteryBar").style.width = `${pct}%`;
 }
