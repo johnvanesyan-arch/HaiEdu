@@ -3,15 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
   <title>Ֆիզիկա 7 — Ուսուցչի վահանակ</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./teacher.css" />
+  <link rel="stylesheet" href="./ux.css" />
 </head>
 <body>
-  <main class="shell teacher-shell">
+  <main class="shell teacher-shell" id="mainContent">
     <header class="topbar">
       <div>
-        <p class="eyebrow">SPRINT 7 · TEACHER DASHBOARD V1</p>
+        <p class="eyebrow">ՈՒՍՈՒՑՉԻ ՎԱՀԱՆԱԿ</p>
         <h1>Ուսուցչի վահանակ</h1>
         <p class="subtle">Ֆիզիկա 7 · Գլուխ I — դասարանների, աշակերտների և հմտությունների առաջընթաց</p>
       </div>
@@ -21,18 +23,18 @@
       </div>
     </header>
 
-    <section class="notice">
+    <section class="notice" aria-label="Փորձնական կարգավիճակ">
       <strong>Փորձնական ուսուցչական միջավայր</strong>
-      <span>Mastery շեմերը և միջամտության առաջարկությունները դեռևս provisional են և պետք է վավերացվեն պիլոտի ընթացքում։</span>
+      <span>Յուրացման շեմերը և միջամտության առաջարկությունները դեռևս փորձնական են և պետք է վավերացվեն պիլոտի ընթացքում։</span>
     </section>
 
-    <section id="authPanel" class="card auth-card">
-      <h2>Ուսուցչի մուտք</h2>
-      <p class="subtle">Մուտք գործեք teacher դեր ունեցող հաշվով։</p>
-      <label>Էլ. հասցե<input id="emailInput" type="email" autocomplete="email" /></label>
-      <label>Գաղտնաբառ<input id="passwordInput" type="password" autocomplete="current-password" /></label>
+    <section id="authPanel" class="card auth-card" aria-labelledby="teacherLoginTitle">
+      <h2 id="teacherLoginTitle">Ուսուցչի մուտք</h2>
+      <p class="subtle">Մուտք գործեք ուսուցչի դեր ունեցող հաշվով։</p>
+      <label>Էլ. հասցե<input id="emailInput" type="email" autocomplete="email" required /></label>
+      <label>Գաղտնաբառ<input id="passwordInput" type="password" autocomplete="current-password" minlength="6" required /></label>
       <button id="signInBtn">Մուտք գործել</button>
-      <p id="authMessage" class="message"></p>
+      <p id="authMessage" class="message" aria-live="polite"></p>
     </section>
 
     <section id="dashboardPanel" class="hidden">
@@ -40,7 +42,7 @@
         <div>
           <p class="eyebrow">ՖԻԶԻԿԱ 7 · PHY7-U01</p>
           <h2 id="teacherName">Ուսուցիչ</h2>
-          <p class="subtle">Ընտրեք դասարան՝ skill matrix-ը և roster-ը տեսնելու համար։</p>
+          <p class="subtle">Ընտրեք դասարան՝ հմտությունների մատրիցան և աշակերտների ցուցակը տեսնելու համար։</p>
         </div>
         <button id="refreshBtn" class="ghost">Թարմացնել</button>
       </div>
@@ -54,15 +56,15 @@
       <section class="card teacher-create-card">
         <div>
           <span class="mode-kicker">Դասարանի կառավարում</span>
-          <h3>Ստեղծել Grade 7 Physics դասարան</h3>
+          <h3>Ստեղծել 7-րդ դասարանի ֆիզիկայի դասարան</h3>
           <p class="subtle">Համակարգը կստեղծի միանալու կոդ, որը կարող եք տալ աշակերտներին։</p>
         </div>
         <div class="teacher-create-form">
-          <input id="classNameInput" placeholder="Օր.՝ 7Ա Ֆիզիկա" />
+          <input id="classNameInput" placeholder="Օր.՝ 7Ա Ֆիզիկա" aria-label="Դասարանի անուն" />
           <input id="academicYearInput" value="2026-2027" aria-label="Ուսումնական տարի" />
           <button id="createClassBtn">Ստեղծել</button>
         </div>
-        <p id="classMessage" class="message"></p>
+        <p id="classMessage" class="message" aria-live="polite"></p>
       </section>
 
       <div class="teacher-layout">
@@ -74,7 +76,7 @@
         <section class="teacher-main">
           <div id="emptyClass" class="card teacher-empty">
             <h3>Ընտրեք դասարան</h3>
-            <p class="subtle">Այստեղ կերևան roster-ը, skill matrix-ը և միջամտության առաջարկությունները։</p>
+            <p class="subtle">Այստեղ կերևան աշակերտների ցուցակը, հմտությունների մատրիցան և միջամտության առաջարկությունները։</p>
           </div>
 
           <div id="classView" class="hidden">
@@ -95,7 +97,7 @@
               <div class="skill-map-heading">
                 <div>
                   <h3>Հմտությունների մատրիցա</h3>
-                  <p class="subtle">Կանաչ՝ secure, դեղին՝ developing, կարմիր՝ needs support, մոխրագույն՝ դեռ տվյալ չկա։</p>
+                  <p class="subtle">Կանաչ՝ կայուն, դեղին՝ զարգացող, կարմիր՝ աջակցություն է պետք, մոխրագույն՝ դեռ տվյալ չկա։</p>
                 </div>
               </div>
               <div id="matrixWrap" class="matrix-wrap"></div>
@@ -104,8 +106,8 @@
             <section class="card roster-card">
               <div class="skill-map-heading">
                 <div>
-                  <h3>Աշակերտների roster</h3>
-                  <p class="subtle">Սեղմեք աշակերտի վրա՝ անհատական profile-ը բացելու համար։</p>
+                  <h3>Աշակերտների ցուցակ</h3>
+                  <p class="subtle">Սեղմեք աշակերտի վրա՝ անհատական առաջընթացը բացելու համար։</p>
                 </div>
               </div>
               <div id="roster" class="roster"></div>
@@ -117,7 +119,7 @@
 
     <div id="studentDrawer" class="student-drawer hidden" aria-hidden="true">
       <div class="student-drawer-backdrop" id="drawerBackdrop"></div>
-      <aside class="student-drawer-panel">
+      <aside class="student-drawer-panel" aria-labelledby="studentDrawerName">
         <div class="drawer-head">
           <div><span class="mode-kicker">Անհատական առաջընթաց</span><h2 id="studentDrawerName">—</h2></div>
           <button id="closeDrawerBtn" class="ghost">Փակել</button>
@@ -127,5 +129,6 @@
     </div>
   </main>
   <script type="module" src="./teacher.js"></script>
+  <script type="module" src="./ux.js"></script>
 </body>
 </html>
