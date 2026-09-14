@@ -26,5 +26,14 @@ jobs:
       - name: Typecheck
         run: npm run typecheck
 
-      - name: Check student web app syntax
-        run: node --check web/app.js
+      - name: Check browser JavaScript syntax
+        run: |
+          node --check web/app.js
+          node --check web/mastery.js
+          node --check web/remediation.js
+          node --check web/mastery-dashboard.js
+          node --check web/session-watchdog.js
+          node --check web/join.js
+          node --check web/teacher.js
+          node --check web/content.js
+          node --check web/ux.js
