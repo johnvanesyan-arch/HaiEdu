@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Ֆիզիկա 7 — Գլուխ I-ի ախտորոշիչ</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./components.css" />
+  <link rel="stylesheet" href="./student-shell.css" />
+  <link rel="stylesheet" href="./assessment-task.css" />
+</head>
+<body data-student-page="assessment" data-shell-auth="always">
+  <main class="shell assessment-task-shell" id="mainContent">
+    <header class="topbar assessment-task-header">
+      <div>
+        <p class="eyebrow">ՖԻԶԻԿԱ 7 · ԳԼՈՒԽ I</p>
+        <h1>Ախտորոշիչ</h1>
+        <p class="subtle">Ուժեղ և թույլ կողմերի քարտեզ՝ հաջորդ ուսուցման քայլը որոշելու համար։</p>
+      </div>
+      <a class="ghost button-link" href="./assessment.html">← Գնահատում</a>
+    </header>
+
+    <section id="stateCard" class="card" aria-labelledby="stateTitle">
+      <span class="mode-kicker">ԳԼՈՒԽ I-Ի ԱԽՏՈՐՈՇԻՉ</span>
+      <h2 id="stateTitle">Ախտորոշիչը պատրաստվում է…</h2>
+      <p id="stateText" class="subtle" aria-live="polite">Ստուգվում է ընթացիկ սեսիան։</p>
+      <div class="assessment-task-rules">
+        <div class="assessment-rule"><strong>20 հարց</strong><span>2 հարց յուրաքանչյուր 10 հմտությունից</span></div>
+        <div class="assessment-rule"><strong>Առանց օգնության</strong><span>Հուշումներ և worked example-ներ չեն ցուցադրվում</span></div>
+        <div class="assessment-rule"><strong>Հետաձգված արդյունք</strong><span>Ճիշտ/սխալ պատասխանը կտեսնեք միայն ավարտից հետո</span></div>
+      </div>
+      <div class="row" style="margin-top:1.5rem">
+        <button id="startBtn" class="hidden">Սկսել ախտորոշիչը</button>
+        <a id="blockingLink" class="button-link secondary hidden" href="./index.html">Շարունակել ընթացիկ սեսիան</a>
+      </div>
+    </section>
+
+    <section id="questionPanel" class="hidden" aria-labelledby="prompt">
+      <div class="assessment-question-meta">
+        <div>
+          <span class="mode-kicker">ԳԼՈՒԽ I-Ի ԱԽՏՈՐՈՇԻՉ</span>
+          <strong id="skillCode">—</strong>
+        </div>
+        <strong id="progressText">—</strong>
+      </div>
+      <div class="session-progress-track" role="progressbar" aria-label="Ախտորոշիչի առաջընթաց" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="progressBar" class="session-progress-bar" style="width:0%"></div>
+      </div>
+
+      <section class="card question-card assessment-question-card">
+        <div class="question-heading">
+          <div><p id="skillName" class="skill-name">—</p><p id="itemCode" class="item-code">—</p></div>
+          <span id="difficulty" class="pill">—</span>
+        </div>
+        <div id="stimulus" class="stimulus hidden"></div>
+        <h2 id="prompt" aria-live="polite">Հարցը բեռնվում է…</h2>
+        <form id="answerForm" novalidate>
+          <div id="answerArea"></div>
+          <button id="submitBtn" type="submit" disabled>Գրանցել պատասխանը</button>
+        </form>
+        <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+        <button id="nextBtn" class="ghost hidden">Հաջորդ հարց</button>
+      </section>
+    </section>
+
+    <section id="resultPanel" class="card hidden" aria-labelledby="resultTitle">
+      <div class="assessment-result-hero">
+        <div>
+          <span class="mode-kicker">ԱԽՏՈՐՈՇԻՉԻ ԱՐԴՅՈՒՆՔ</span>
+          <h2 id="resultTitle">Գլուխ I-ի հմտությունների քարտեզ</h2>
+          <p id="resultText" class="subtle">—</p>
+        </div>
+        <div id="resultScore" class="assessment-score">—</div>
+      </div>
+      <div id="resultSkills" class="assessment-skill-results"></div>
+      <div class="assessment-result-actions">
+        <a id="recommendedAction" class="button-link" href="./physics-7.html">Տեսնել հաջորդ քայլը</a>
+        <button id="retakeBtn" class="secondary">Կրկնել ախտորոշիչը</button>
+        <a class="ghost button-link" href="./assessment.html">Վերադառնալ գնահատմանը</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./role-router.js"></script>
+  <script type="module" src="./diagnostic.js"></script>
+  <script type="module" src="./session-watchdog.js"></script>
+  <script type="module" src="./ux.js"></script>
+  <script type="module" src="./student-shell.js"></script>
+</body>
+</html>
