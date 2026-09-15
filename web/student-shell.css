@@ -4,6 +4,70 @@
   display: none;
 }
 
+.role-access-panel {
+  margin: var(--amp-space-5) 0;
+  padding: var(--amp-space-5);
+  border-color: #c9d9eb;
+  background: linear-gradient(135deg, #ffffff 0%, #f7faff 100%);
+}
+.role-access-heading h2 {
+  margin: .25rem 0 .35rem;
+}
+.role-access-grid {
+  margin-top: var(--amp-space-4);
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0,1fr));
+  gap: var(--amp-space-3);
+}
+.role-access-card {
+  min-width: 0;
+  min-height: 92px;
+  display: grid;
+  grid-template-columns: 42px minmax(0,1fr) auto;
+  gap: var(--amp-space-3);
+  align-items: center;
+  padding: var(--amp-space-4);
+  border: 1px solid var(--amp-color-border);
+  border-radius: var(--amp-radius-md);
+  background: #fff;
+  color: var(--amp-color-text);
+  text-decoration: none;
+  box-shadow: var(--amp-shadow-low);
+}
+.role-access-card:hover {
+  border-color: #9bbbd9;
+  box-shadow: var(--amp-shadow-medium);
+  transform: translateY(-1px);
+}
+.role-access-card:focus-visible {
+  outline: 3px solid var(--amp-color-focus);
+  outline-offset: 3px;
+}
+.role-access-card .role-access-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 12px;
+  background: var(--amp-color-primary-soft);
+  color: var(--amp-color-primary);
+  font-weight: 900;
+  font-size: 1.15rem;
+}
+.role-access-card strong,
+.role-access-card small {
+  display: block;
+}
+.role-access-card small {
+  margin-top: 4px;
+  color: var(--amp-color-text-muted);
+  line-height: 1.35;
+}
+.role-access-card b {
+  color: var(--amp-color-primary);
+  font-size: 1.2rem;
+}
+
 body.amp-student-shell-active {
   background: var(--amp-color-bg);
 }
@@ -80,6 +144,8 @@ body.amp-student-shell-active .amp-side-nav {
   margin-top: auto;
   padding-top: var(--amp-space-3);
   border-top: 1px solid rgba(255,255,255,.12);
+  display: grid;
+  gap: .55rem;
 }
 .amp-nav-utility a {
   color: #c7d5e6;
@@ -142,6 +208,7 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
 }
 
 @media (max-width: 820px) {
+  .role-access-grid { grid-template-columns: 1fr; }
   body.amp-student-shell-active .amp-side-nav { display: none; }
 
   body.amp-student-shell-active > main.shell {
@@ -196,9 +263,16 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
 }
 
 @media (max-width: 520px) {
+  .role-access-panel { padding: var(--amp-space-4); }
+  .role-access-card { grid-template-columns: 38px minmax(0,1fr) auto; padding: var(--amp-space-3); }
+  .role-access-card .role-access-icon { width: 38px; height: 38px; }
   body.amp-student-shell-active > main.shell {
     padding-left: var(--amp-space-3);
     padding-right: var(--amp-space-3);
   }
   .amp-mobile-link { font-size: 0.64rem; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .role-access-card:hover { transform: none; }
 }
