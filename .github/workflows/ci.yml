@@ -37,6 +37,7 @@ jobs:
           node --check web/assessment.js
           node --check web/diagnostic.js
           node --check web/mastery.js
+          node --check web/progress.js
           node --check web/remediation.js
           node --check web/mastery-dashboard.js
           node --check web/session-watchdog.js
