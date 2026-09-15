@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Ֆիզիկա 7 — Հարմարվող վարժանք</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./components.css" />
+  <link rel="stylesheet" href="./student-shell.css" />
+  <link rel="stylesheet" href="./practice.css" />
+</head>
+<body data-student-page="physics" data-focused-task="true">
+  <main class="shell practice-shell" id="mainContent">
+    <header class="practice-topbar">
+      <a class="ghost button-link" href="./physics-7.html">← Ֆիզիկա 7</a>
+      <div class="practice-topbar-copy">
+        <p class="eyebrow">ՀԱՐՄԱՐՎՈՂ ՎԱՐԺԱՆՔ</p>
+        <h1>Ֆիզիկա 7 · Գլուխ I</h1>
+      </div>
+      <a class="ghost button-link" href="./index.html">Դուրս գալ դեպի Գլխավոր</a>
+    </header>
+
+    <section class="notice practice-notice" aria-label="Վարժանքի կանոններ">
+      <strong>Ուսուցման ռեժիմ</strong>
+      <span>Մինչև 8 հարց · անմիջական արձագանք · հուշումներ հասանելի են · հարցերը հարմարեցվում են ձեր պատասխաններին։</span>
+    </section>
+
+    <section id="practiceGate" class="card practice-gate" aria-live="polite">
+      <div class="amp-loading-state">
+        <strong>Վարժանքը պատրաստվում է…</strong>
+        <p class="subtle">Ստուգվում է ընթացիկ սեսիան և առաջարկվող հմտությունը։</p>
+      </div>
+    </section>
+
+    <section id="practicePanel" class="hidden" aria-labelledby="prompt">
+      <div class="practice-context">
+        <div class="practice-context-copy">
+          <div class="skill-browser-meta">
+            <span id="skillCode" class="skill-code">—</span>
+            <span id="adaptiveBadge" class="status-badge info">Հարմարվող հարց</span>
+          </div>
+          <h2 id="skillName">—</h2>
+          <p id="adaptiveNote" class="subtle">Հաջորդ հարցը ընտրվում է ձեր ընթացիկ աշխատանքի հիման վրա։</p>
+        </div>
+        <div class="practice-progress-copy" aria-label="Սեսիայի առաջընթաց">
+          <span class="stat-label">Առաջընթաց</span>
+          <strong id="sessionProgress">—</strong>
+        </div>
+      </div>
+
+      <div class="session-progress-track practice-session-track" role="progressbar" aria-label="Վարժանքի առաջընթաց" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="sessionProgressBar" class="session-progress-bar" style="width:0%"></div>
+      </div>
+
+      <section class="card question-card practice-question-card">
+        <div class="question-heading practice-question-heading">
+          <div>
+            <span class="stat-label">Հարց</span>
+            <p id="itemCode" class="item-code">—</p>
+          </div>
+          <div class="question-actions">
+            <span id="difficulty" class="pill">—</span>
+          </div>
+        </div>
+
+        <div id="stimulus" class="stimulus hidden"></div>
+        <h2 id="prompt" class="practice-prompt" aria-live="polite">Հարցը բեռնվում է…</h2>
+
+        <form id="answerForm" novalidate>
+          <div id="answerArea"></div>
+          <div class="practice-answer-actions">
+            <div id="helpControls" class="help-controls hidden">
+              <button id="helpBtn" type="button" class="secondary">Օգնություն</button>
+              <span class="subtle small">Հուշումը չի բացահայտում ընթացիկ հարցի պատրաստ պատասխանը։</span>
+            </div>
+            <button id="submitBtn" type="submit" disabled>Ստուգել պատասխանը</button>
+          </div>
+        </form>
+
+        <section id="helpPanel" class="help-panel hidden" aria-live="polite">
+          <span class="mode-kicker">Ուսուցման օգնություն</span>
+          <h3 id="helpTitle">Օգնություն</h3>
+          <p id="helpStrategy" class="help-strategy"></p>
+          <p id="helpContent" class="help-content"></p>
+          <p id="helpNote" class="subtle small"></p>
+        </section>
+
+        <div id="feedback" class="feedback hidden" aria-live="polite"></div>
+
+        <div class="practice-next-row">
+          <span id="nextExplanation" class="subtle small">Պատասխանելուց հետո համակարգը կընտրի հաջորդ համապատասխան հարցը։</span>
+          <button id="nextBtn" class="ghost" type="button" disabled>Հաջորդ հարց</button>
+        </div>
+      </section>
+
+      <aside id="masteryCard" class="card mastery-card practice-mastery-card" aria-label="Ընթացիկ հմտության յուրացման վիճակ">
+        <div class="mastery-head">
+          <div>
+            <span class="stat-label">Յուրացման ընթացիկ գնահատում</span>
+            <strong id="masteryText">Տվյալներ դեռ չկան</strong>
+          </div>
+          <span id="masteryStatus" class="pill">—</span>
+        </div>
+        <div class="progress-track" role="progressbar" aria-label="Յուրացման ընթացիկ գնահատում" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+          <div id="masteryBar" class="progress-bar" style="width:0%"></div>
+        </div>
+        <p id="recommendation" class="subtle">Այս ցուցանիշը ուսուցման ընթացիկ ապացույցն է, ոչ վերջնական հաստատում։</p>
+      </aside>
+    </section>
+
+    <section id="completionPanel" class="card practice-completion hidden" aria-labelledby="completionTitle">
+      <span class="mode-kicker">Սեսիան ավարտված է</span>
+      <h2 id="completionTitle">Վարժանքն ավարտվեց</h2>
+      <p id="completionText" class="subtle">Արդյունքը պահպանվել է ձեր ընդհանուր առաջընթացում։</p>
+      <div class="practice-completion-stats">
+        <div class="stat compact">
+          <span class="stat-label">Պատասխանված</span>
+          <strong id="completionAnswered">—</strong>
+        </div>
+        <div class="stat compact">
+          <span class="stat-label">Ճիշտ</span>
+          <strong id="completionCorrect">—</strong>
+        </div>
+        <div class="stat compact">
+          <span class="stat-label">Սեսիայի արդյունք</span>
+          <strong id="completionPercent">—</strong>
+        </div>
+      </div>
+      <p id="completionReason" class="subtle small"></p>
+      <div class="row practice-completion-actions">
+        <a class="button-link" href="./index.html">Տեսնել հաջորդ քայլը</a>
+        <a class="ghost button-link" href="./physics-7.html">Վերադառնալ Ֆիզիկա 7</a>
+      </div>
+    </section>
+  </main>
+
+  <span id="sessionMode" class="hidden">Վարժանք</span>
+
+  <script type="module" src="./role-router.js"></script>
+  <script type="module" src="./practice.js"></script>
+  <script type="module" src="./remediation.js"></script>
+  <script type="module" src="./session-watchdog.js"></script>
+  <script type="module" src="./ux.js"></script>
+  <script type="module" src="./student-shell.js"></script>
+</body>
+</html>
