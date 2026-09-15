@@ -21,6 +21,46 @@ function ensureQaStylesheet() {
   document.head.appendChild(link);
 }
 
+function ensureRoleAccess() {
+  if (page !== "home" || document.getElementById("roleAccessPanel")) return;
+  const authPanel = document.getElementById("authPanel");
+  if (!authPanel) return;
+
+  const section = document.createElement("section");
+  section.id = "roleAccessPanel";
+  section.className = "card role-access-panel";
+  section.setAttribute("aria-labelledby", "roleAccessTitle");
+  section.innerHTML = `
+    <div class="role-access-heading">
+      <span class="mode-kicker">ՀԱՐԹԱԿԻ ՄՈՒՏՔ</span>
+      <h2 id="roleAccessTitle">Ընտրեք ձեր դերը</h2>
+      <p class="subtle">Յուրաքանչյուր բաժին ունի իր առանձին աշխատասեղանը և մուտքի վերահսկումը։</p>
+    </div>
+    <div class="role-access-grid">
+      <a class="role-access-card student" href="#authPanel">
+        <span class="role-access-icon" aria-hidden="true">◉</span>
+        <span><strong>Աշակերտ</strong><small>Սովորել, վարժվել և հետևել առաջընթացին</small></span>
+        <b aria-hidden="true">→</b>
+      </a>
+      <a class="role-access-card teacher" href="./teacher.html">
+        <span class="role-access-icon" aria-hidden="true">▦</span>
+        <span><strong>Ուսուցիչ</strong><small>Կառավարել դասարանները և հետևել աշակերտներին</small></span>
+        <b aria-hidden="true">→</b>
+      </a>
+      <a class="role-access-card content" href="./content.html">
+        <span class="role-access-icon" aria-hidden="true">✓</span>
+        <span><strong>Բովանդակության ադմին</strong><small>QA, review և հարցերի բանկի կառավարում</small></span>
+        <b aria-hidden="true">→</b>
+      </a>
+      <a class="role-access-card admin" href="./admin.html">
+        <span class="role-access-icon" aria-hidden="true">⚙</span>
+        <span><strong>Ադմին</strong><small>Հաշիվներ, դերեր, անվտանգություն և կառավարում</small></span>
+        <b aria-hidden="true">→</b>
+      </a>
+    </div>`;
+  authPanel.parentNode.insertBefore(section, authPanel);
+}
+
 function navItem(item, mobile = false) {
   const current = item.key === page ? ' aria-current="page"' : "";
   const className = mobile ? "amp-mobile-link" : "amp-nav-link";
@@ -86,9 +126,12 @@ function syncShellState() {
   const authenticated = inferAuthenticated();
   document.body.classList.toggle("amp-student-shell-active", authenticated);
   document.body.classList.toggle("amp-focused-task", authenticated && inferFocusedTask());
+  const roleAccess = document.getElementById("roleAccessPanel");
+  if (roleAccess) roleAccess.classList.toggle("hidden", authenticated);
 }
 
 ensureQaStylesheet();
+ensureRoleAccess();
 ensureNavigation();
 syncShellState();
 
