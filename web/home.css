@@ -32,6 +32,12 @@
 .home-next-card .home-next-copy {
   min-width: 0;
 }
+.home-next-card .skill-browser-meta {
+  display: flex;
+  gap: var(--amp-space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
 .home-next-card #resumeLearningBtn {
   min-width: 150px;
 }
