@@ -43,13 +43,13 @@ test("student shell does not own educational truth", async () => {
   assert.match(code, /questionPanel/);
 });
 
-test("Home, Physics 7 and Assessment routes are enabled while Progress remains safely disabled", async () => {
+test("all four permanent student routes are enabled after Sprint 10.5F", async () => {
   const code = await read("web/student-shell.js");
   assert.match(code, /key: "home"[\s\S]*enabled: true/);
   assert.match(code, /key: "physics"[\s\S]*enabled: true/);
   assert.match(code, /key: "assessment"[\s\S]*enabled: true/);
-  assert.match(code, /key: "progress"[\s\S]*enabled: false/);
-  assert.match(code, /aria-disabled="true"/);
+  assert.match(code, /key: "progress"[\s\S]*enabled: true/);
+  assert.match(code, /href: "\.\/progress\.html"/);
 });
 
 test("design tokens include spacing, semantic state, focus and layout primitives", async () => {
