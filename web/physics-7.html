@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Ֆիզիկա 7 — Հմտություններ</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./components.css" />
+  <link rel="stylesheet" href="./student-shell.css" />
+  <link rel="stylesheet" href="./physics-7.css" />
+</head>
+<body data-student-page="physics">
+  <main class="shell" id="mainContent">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ԱՌԱՐԿԱՅԻ ՀՄՏՈՒԹՅՈՒՆՆԵՐ</p>
+        <h1>Ֆիզիկա 7</h1>
+        <p class="subtle">Գլուխներ, թեմաներ և հմտություններ՝ ըստ ընթացիկ ուսումնական կառուցվածքի։</p>
+      </div>
+      <div class="row">
+        <a class="ghost button-link" href="./privacy.html">Գաղտնիություն</a>
+        <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
+      </div>
+    </header>
+
+    <section class="notice" aria-label="Բովանդակության կարգավիճակ">
+      <strong>Փորձնական բովանդակություն</strong>
+      <span>Գլուխ I-ի հմտությունները դեռևս պահանջում են վերջնական առարկայական փորձագիտական ստուգում։ Գլուխներ II–VI-ը դեռ չեն ակտիվացվել հարթակում։</span>
+    </section>
+
+    <section id="authPanel" class="card auth-card subject-auth" aria-live="polite">
+      <h2>Հաշիվը ստուգվում է…</h2>
+      <p class="subtle">Խնդրում ենք սպասել։</p>
+    </section>
+
+    <section id="subjectPanel" class="hidden" aria-labelledby="subjectTitle">
+      <div class="section-heading subject-heading">
+        <div>
+          <p class="eyebrow">7-ՐԴ ԴԱՍԱՐԱՆ</p>
+          <h2 id="subjectTitle">Իմ ֆիզիկայի ուղին</h2>
+          <p class="subtle">Ընտրեք հմտություն վարժանքի համար կամ շարունակեք ընթացիկ սեսիան։</p>
+        </div>
+        <button id="refreshSubjectBtn" class="ghost">Թարմացնել</button>
+      </div>
+
+      <div id="subjectLoading" class="card dashboard-loading" aria-live="polite">Հմտությունները բեռնվում են…</div>
+      <p id="subjectMessage" class="message" aria-live="polite"></p>
+
+      <div id="subjectContent" class="hidden">
+        <section id="activeSessionBanner" class="card active-session-banner hidden" aria-live="polite">
+          <div>
+            <span class="mode-kicker">Ընթացիկ սեսիա</span>
+            <h3 id="activeSessionTitle">—</h3>
+            <p id="activeSessionText" class="subtle">—</p>
+          </div>
+          <a id="activeSessionLink" class="button-link" href="./index.html?resume=1">Շարունակել</a>
+        </section>
+
+        <div class="subject-summary">
+          <section class="card subject-stat">
+            <span class="stat-label">Գլուխ I</span>
+            <strong id="chapterProgressText">—</strong>
+            <div class="mini-progress" role="progressbar" aria-label="Գլուխ I-ի առաջընթաց" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+              <div id="chapterProgressBar" class="mini-progress-bar" style="width:0%"></div>
+            </div>
+            <span id="chapterProgressMeta" class="subtle small">—</span>
+          </section>
+          <section class="card subject-stat">
+            <span class="stat-label">Ախտորոշիչ</span>
+            <strong id="subjectDiagnostic">—</strong>
+            <span id="subjectDiagnosticMeta" class="subtle small">—</span>
+          </section>
+          <section class="card subject-stat">
+            <span class="stat-label">Յուրացման ստուգում</span>
+            <strong id="subjectAssessment">—</strong>
+            <span id="subjectAssessmentMeta" class="subtle small">—</span>
+            <a class="text-link" href="./mastery.html">Դիտել կարգավիճակը</a>
+          </section>
+        </div>
+
+        <section class="card chapter-card chapter-active" aria-labelledby="chapterOneTitle">
+          <div class="chapter-header">
+            <div>
+              <span class="mode-kicker">Գլուխ I · ակտիվ</span>
+              <h2 id="chapterOneTitle">Բնության ուսումնասիրության ֆիզիկական մեթոդները</h2>
+              <p class="subtle">5 թեմա · 10 հմտություն</p>
+            </div>
+            <span id="chapterStateBadge" class="status-badge neutral">Բեռնվում է</span>
+          </div>
+          <div id="topicList" class="topic-list"></div>
+        </section>
+
+        <section class="future-chapters" aria-labelledby="futureChaptersTitle">
+          <div class="section-heading">
+            <h2 id="futureChaptersTitle">Հաջորդ գլուխները</h2>
+            <p class="subtle">Դասագրքի կառուցվածքը ցուցադրվում է կողմնորոշման համար։ Այս գլուխների հմտությունների բանկը դեռ չի հրապարակվել։</p>
+          </div>
+          <div class="future-chapter-grid">
+            <article class="card future-chapter"><span>Գլուխ II</span><h3>Նյութի կառուցվածքը</h3><span class="status-badge neutral">Հետագայում</span></article>
+            <article class="card future-chapter"><span>Գլուխ III</span><h3>Մեխանիկական շարժում</h3><span class="status-badge neutral">Հետագայում</span></article>
+            <article class="card future-chapter"><span>Գլուխ IV</span><h3>Մարմինների փոխազդեցությունը</h3><span class="status-badge neutral">Հետագայում</span></article>
+            <article class="card future-chapter"><span>Գլուխ V</span><h3>Աշխատանք և հզորություն</h3><span class="status-badge neutral">Հետագայում</span></article>
+            <article class="card future-chapter"><span>Գլուխ VI</span><h3>Ճնշում. ճնշումն առօրյա կյանքում և տեխնիկայում</h3><span class="status-badge neutral">Հետագայում</span></article>
+          </div>
+        </section>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./role-router.js"></script>
+  <script type="module" src="./physics-7.js"></script>
+  <script type="module" src="./ux.js"></script>
+  <script type="module" src="./student-shell.js"></script>
+</body>
+</html>
