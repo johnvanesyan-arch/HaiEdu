@@ -42,13 +42,15 @@ test("Join Class utility page uses the shared student design system", async () =
   assert.match(html, /Վերադառնալ գլխավոր/);
 });
 
-test("teacher dashboard supports copying and rotating a class join code", async () => {
+test("teacher dashboard supports copying and rotating class invitations", async () => {
   const html = await read("web/teacher.html");
   const js = await read("web/teacher.js");
   assert.match(html, /id="copyCodeBtn"/);
+  assert.match(html, /id="copyInviteBtn"/);
   assert.match(html, /id="rotateCodeBtn"/);
   assert.match(html, /id="copyCodeStatus"/);
-  assert.match(js, /navigator\.clipboard\.writeText\(code\)/);
+  assert.match(js, /navigator\.clipboard\.writeText\(value\)/);
   assert.match(js, /copyJoinCode/);
+  assert.match(js, /copyInviteLink/);
   assert.match(js, /rotate_join_code/);
 });
