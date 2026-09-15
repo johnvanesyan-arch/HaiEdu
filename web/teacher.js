@@ -85,6 +85,7 @@ function selectClass(id) {
   $("selectedClassName").textContent = klass.name;
   $("selectedClassMeta").textContent = `${klass.academicYear ?? ""} · ${klass.studentCount} աշակերտ · ${klass.needingSupport} աջակցություն է պետք`;
   $("joinCode").textContent = klass.joinCode ?? "—";
+  $("copyCodeStatus").textContent = "";
   renderMatrix(klass);
   renderRoster(klass);
 }
@@ -104,7 +105,7 @@ function renderMatrix(klass) {
     </tr>`).join("");
   $("matrixWrap").innerHTML = klass.students.length
     ? `<table class="skill-matrix"><thead><tr><th>Աշակերտ</th>${header}</tr></thead><tbody>${rows}</tbody></table>`
-    : '<p class="subtle">Այս դասարանում դեռ աշակերտ չկա։ Տվեք նրանց join code-ը։</p>';
+    : '<p class="subtle">Այս դասարանում դեռ աշակերտ չկա։ Տվեք նրանց միանալու կոդը։</p>';
   $("matrixWrap").querySelectorAll("[data-student]").forEach((el) => el.addEventListener("click", () => openStudent(el.dataset.student)));
 }
 
@@ -171,8 +172,29 @@ async function createClass() {
   if (error) return setMessage("classMessage", error.message, true);
   selectedClassId = data.class.id;
   $("classNameInput").value = "";
-  setMessage("classMessage", `Դասարանը ստեղծվեց։ Join code՝ ${data.class.join_code}`);
+  setMessage("classMessage", `Դասարանը ստեղծվեց։ Միանալու կոդ՝ ${data.class.join_code}`);
   await loadDashboard();
+}
+
+async function copyJoinCode() {
+  const code = $("joinCode").textContent.trim();
+  if (!code || code === "—") return;
+  const status = $("copyCodeStatus");
+  try {
+    await navigator.clipboard.writeText(code);
+    status.textContent = "Կոդը պատճենված է։";
+  } catch {
+    const textarea = document.createElement("textarea");
+    textarea.value = code;
+    textarea.setAttribute("readonly", "");
+    textarea.style.position = "fixed";
+    textarea.style.opacity = "0";
+    document.body.appendChild(textarea);
+    textarea.select();
+    const copied = document.execCommand("copy");
+    textarea.remove();
+    status.textContent = copied ? "Կոդը պատճենված է։" : "Չհաջողվեց պատճենել։ Ընտրեք կոդը ձեռքով։";
+  }
 }
 
 async function rotateCode() {
@@ -182,6 +204,7 @@ async function rotateCode() {
   $("rotateCodeBtn").disabled = false;
   if (error) return alert(error.message);
   $("joinCode").textContent = data.class.join_code;
+  $("copyCodeStatus").textContent = "Նոր կոդը պատրաստ է։";
   const klass = dashboard.classes.find((c) => c.id === selectedClassId);
   if (klass) klass.joinCode = data.class.join_code;
 }
@@ -190,6 +213,7 @@ $("signInBtn").addEventListener("click", signIn);
 $("signOutBtn").addEventListener("click", signOut);
 $("refreshBtn").addEventListener("click", loadDashboard);
 $("createClassBtn").addEventListener("click", createClass);
+$("copyCodeBtn").addEventListener("click", copyJoinCode);
 $("rotateCodeBtn").addEventListener("click", rotateCode);
 $("closeDrawerBtn").addEventListener("click", closeDrawer);
 $("drawerBackdrop").addEventListener("click", closeDrawer);
