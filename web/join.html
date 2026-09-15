@@ -5,19 +5,38 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light" />
   <title>Միանալ դասարանին</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./components.css" />
+  <link rel="stylesheet" href="./responsive-qa.css" />
 </head>
 <body>
   <main class="shell" id="mainContent" style="max-width:760px">
     <header class="topbar">
-      <div><p class="eyebrow">ՖԻԶԻԿԱ 7</p><h1>Միանալ դասարանին</h1><p class="subtle">Մուտքագրեք ուսուցչի տրամադրած 8-նիշ միանալու կոդը։</p></div>
-      <a class="ghost" style="text-decoration:none" href="./index.html">Իմ առաջընթացը</a>
+      <div>
+        <p class="eyebrow">ՖԻԶԻԿԱ 7 · ԴԱՍԱՐԱՆ</p>
+        <h1>Միանալ ուսուցչի դասարանին</h1>
+        <p class="subtle">Ուսուցիչը ստեղծում է դասարան և տրամադրում 8-նիշ միանալու կոդ։ Մուտքագրեք այն այստեղ։</p>
+      </div>
+      <a class="ghost button-link" href="./index.html">Վերադառնալ գլխավոր</a>
     </header>
+
+    <section class="notice" aria-label="Դասարանի միացման բացատրություն">
+      <strong>Ինչ է փոխվում միանալուց հետո</strong>
+      <span>Ուսուցիչը կկարողանա իր վահանակում տեսնել ձեր Ֆիզիկա 7 · Գլուխ I առաջընթացը և հմտությունների վիճակը։</span>
+    </section>
+
     <section class="card" aria-labelledby="joinTitle">
+      <span class="mode-kicker">8-նիշ կոդ</span>
       <h2 id="joinTitle">Դասարանի կոդ</h2>
-      <label>Միանալու կոդ<input id="joinCode" maxlength="8" minlength="8" autocomplete="off" autocapitalize="characters" pattern="[A-Za-z0-9]{8}" placeholder="A7K9M2QX" style="text-transform:uppercase" required /></label>
-      <button id="joinBtn" type="button">Միանալ</button>
+      <label for="joinCode">Միանալու կոդ</label>
+      <input id="joinCode" maxlength="8" minlength="8" autocomplete="off" autocapitalize="characters" pattern="[A-Za-z0-9]{8}" placeholder="A7K9M2QX" style="text-transform:uppercase" required />
+      <div class="row" style="margin-top:var(--amp-space-4)">
+        <button id="joinBtn" type="button">Միանալ դասարանին</button>
+        <a class="ghost button-link" href="./index.html">Չեղարկել</a>
+      </div>
       <p id="message" class="message" aria-live="polite"></p>
     </section>
   </main>
