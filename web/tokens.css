@@ -1,0 +1,61 @@
+:root {
+  /* Sprint 10.5B design tokens — Armenian Mastery Platform */
+  --amp-color-bg: #f5f7fb;
+  --amp-color-bg-subtle: #eef3f8;
+  --amp-color-surface: #ffffff;
+  --amp-color-surface-raised: #ffffff;
+  --amp-color-text: #172235;
+  --amp-color-text-muted: #66758a;
+  --amp-color-text-soft: #7d8999;
+  --amp-color-border: #dce3ec;
+  --amp-color-border-strong: #c8d3e0;
+  --amp-color-primary: #245b96;
+  --amp-color-primary-hover: #1c4b80;
+  --amp-color-primary-soft: #eaf2fb;
+  --amp-color-focus: #0b63ce;
+  --amp-color-success: #2f7650;
+  --amp-color-success-soft: #eaf6ef;
+  --amp-color-warning: #8a641f;
+  --amp-color-warning-soft: #fff5df;
+  --amp-color-danger: #963944;
+  --amp-color-danger-soft: #fff0f1;
+  --amp-color-info: #315f91;
+  --amp-color-info-soft: #edf4fb;
+
+  --amp-space-1: 0.25rem;
+  --amp-space-2: 0.5rem;
+  --amp-space-3: 0.75rem;
+  --amp-space-4: 1rem;
+  --amp-space-5: 1.5rem;
+  --amp-space-6: 2rem;
+  --amp-space-7: 3rem;
+  --amp-space-8: 4rem;
+
+  --amp-font-size-xs: 0.75rem;
+  --amp-font-size-sm: 0.875rem;
+  --amp-font-size-md: 1rem;
+  --amp-font-size-lg: 1.125rem;
+  --amp-font-size-xl: 1.35rem;
+  --amp-font-size-2xl: clamp(1.7rem, 4vw, 2.35rem);
+  --amp-font-size-3xl: clamp(2.1rem, 5vw, 3.2rem);
+  --amp-line-tight: 1.25;
+  --amp-line-normal: 1.55;
+
+  --amp-radius-sm: 0.6rem;
+  --amp-radius-md: 0.9rem;
+  --amp-radius-lg: 1.15rem;
+  --amp-radius-xl: 1.4rem;
+  --amp-radius-pill: 999px;
+
+  --amp-shadow-low: 0 4px 14px rgba(22, 34, 51, 0.055);
+  --amp-shadow-medium: 0 12px 30px rgba(22, 34, 51, 0.09);
+
+  --amp-content-max: 1180px;
+  --amp-nav-width: 232px;
+  --amp-header-height: 72px;
+  --amp-mobile-nav-height: 68px;
+  --amp-control-min: 44px;
+
+  --amp-motion-fast: 140ms;
+  --amp-motion-normal: 220ms;
+}
