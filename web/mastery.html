@@ -11,48 +11,60 @@
   <link rel="stylesheet" href="./ux.css" />
   <link rel="stylesheet" href="./components.css" />
   <link rel="stylesheet" href="./student-shell.css" />
+  <link rel="stylesheet" href="./assessment-task.css" />
 </head>
 <body data-student-page="assessment" data-shell-auth="always">
-  <main class="shell" id="mainContent">
-    <header class="topbar">
+  <main class="shell assessment-task-shell" id="mainContent">
+    <header class="topbar assessment-task-header">
       <div>
-        <p class="eyebrow">ՅՈՒՐԱՑՄԱՆ ՍՏՈՒԳՈՒՄ</p>
-        <h1>Ֆիզիկա 7</h1>
-        <p class="subtle">Գլուխ I — անկախ յուրացման ստուգում</p>
+        <p class="eyebrow">ՖԻԶԻԿԱ 7 · ԳԼՈՒԽ I</p>
+        <h1>Յուրացման ստուգում</h1>
+        <p class="subtle">Անկախ ստուգում՝ տեսնելու համար՝ կարողանո՞ւմ եք հմտությունները կիրառել առանց օգնության։</p>
       </div>
-      <a class="ghost" href="./">← Իմ առաջընթացը</a>
+      <a class="ghost button-link" href="./assessment.html">← Գնահատում</a>
     </header>
 
-    <section class="notice" aria-label="Ստուգման կանոններ">
-      <strong>Անկախ ստուգում</strong>
-      <span>20 հարց · օգնություն չկա · ճիշտ/սխալ պատասխանը չի ցուցադրվում մինչև ավարտը · անցողիկ շեմը փորձնական է։</span>
-    </section>
-
     <section id="stateCard" class="card" aria-labelledby="stateTitle">
+      <div class="assessment-question-meta">
+        <span class="mode-kicker">ԳԼՈՒԽ I-Ի ՅՈՒՐԱՑՄԱՆ ՍՏՈՒԳՈՒՄ</span>
+        <span id="masteryStateBadge" class="status-badge neutral">Բեռնվում է</span>
+      </div>
       <h2 id="stateTitle">Յուրացման ստուգումը պատրաստվում է…</h2>
       <p id="stateText" class="subtle" aria-live="polite">Ստուգվում է ձեր պատրաստվածությունը։</p>
+      <div class="assessment-task-rules">
+        <div class="assessment-rule"><strong>20 հարց</strong><span>2 հարց յուրաքանչյուր հմտությունից</span></div>
+        <div class="assessment-rule"><strong>Առանց օգնության</strong><span>Հուշումներ և բացատրություններ չկան</span></div>
+        <div class="assessment-rule"><strong>Փորձնական անցողիկ կանոն</strong><span>≥80% ընդհանուր և առնվազն 1/2 յուրաքանչյուր հմտությունից</span></div>
+      </div>
       <div id="requiredSkills"></div>
-      <button id="startBtn" class="hidden">Սկսել յուրացման ստուգումը</button>
+      <div class="row" style="margin-top:1.5rem">
+        <button id="startBtn" class="hidden">Սկսել յուրացման ստուգումը</button>
+        <a id="blockingLink" class="button-link secondary hidden" href="./index.html">Շարունակել ընթացիկ սեսիան</a>
+      </div>
     </section>
 
     <section id="questionPanel" class="hidden" aria-labelledby="prompt">
-      <div class="dashboard-row">
-        <div class="stat card compact"><span class="stat-label">Ռեժիմ</span><strong>Յուրացման ստուգում</strong></div>
-        <div class="stat card compact"><span class="stat-label">Առաջընթաց</span><strong id="progressText">—</strong></div>
-        <div class="stat card compact"><span class="stat-label">Հմտություն</span><strong id="skillCode">—</strong></div>
+      <div class="assessment-question-meta">
+        <div>
+          <span class="mode-kicker">ԱՆԿԱԽ ՍՏՈՒԳՈՒՄ</span>
+          <strong id="skillCode">—</strong>
+        </div>
+        <strong id="progressText">—</strong>
+      </div>
+      <div class="session-progress-track" role="progressbar" aria-label="Յուրացման ստուգման առաջընթաց" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+        <div id="progressBar" class="session-progress-bar" style="width:0%"></div>
       </div>
 
-      <section class="card question-card">
+      <section class="card question-card assessment-question-card">
         <div class="question-heading">
           <div><p id="skillName" class="skill-name">—</p><p id="itemCode" class="item-code">—</p></div>
           <span id="difficulty" class="pill">—</span>
         </div>
-        <div class="session-progress-track"><div id="progressBar" class="session-progress-bar" style="width:0%"></div></div>
         <div id="stimulus" class="stimulus hidden"></div>
         <h2 id="prompt" aria-live="polite">Հարցը բեռնվում է…</h2>
         <form id="answerForm" novalidate>
           <div id="answerArea"></div>
-          <button id="submitBtn" type="submit">Պատասխանել</button>
+          <button id="submitBtn" type="submit">Գրանցել պատասխանը</button>
         </form>
         <div id="feedback" class="feedback hidden" aria-live="polite"></div>
         <button id="nextBtn" class="ghost hidden">Հաջորդ հարց</button>
@@ -60,18 +72,25 @@
     </section>
 
     <section id="resultPanel" class="card hidden" aria-labelledby="resultTitle">
-      <span class="mode-kicker">Յուրացման ստուգման արդյունք</span>
-      <h2 id="resultTitle">—</h2>
-      <p id="resultScore"></p>
-      <p id="resultRule" class="subtle"></p>
-      <div id="resultSkills" class="skill-map"></div>
-      <div class="row">
-        <a class="ghost" href="./">Վերադառնալ առաջընթացին</a>
-        <button id="retryBtn" class="hidden">Կրկին փորձել</button>
+      <div class="assessment-result-hero">
+        <div>
+          <span class="mode-kicker">ՅՈՒՐԱՑՄԱՆ ՍՏՈՒԳՄԱՆ ԱՐԴՅՈՒՆՔ</span>
+          <h2 id="resultTitle">—</h2>
+          <p id="resultRule" class="subtle"></p>
+        </div>
+        <div id="resultScore" class="assessment-score">—</div>
+      </div>
+      <div id="resultSkills" class="assessment-skill-results"></div>
+      <div class="assessment-result-actions">
+        <a id="resultPrimaryAction" class="button-link" href="./assessment.html">Վերադառնալ գնահատմանը</a>
+        <a class="ghost button-link" href="./physics-7.html">Դիտել Ֆիզիկա 7-ը</a>
       </div>
     </section>
   </main>
+
+  <script type="module" src="./role-router.js"></script>
   <script type="module" src="./mastery.js"></script>
+  <script type="module" src="./session-watchdog.js"></script>
   <script type="module" src="./ux.js"></script>
   <script type="module" src="./student-shell.js"></script>
 </body>
