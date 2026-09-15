@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { getEligiblePoolItemIds } from "../_shared/assessment-integrity.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -133,9 +134,19 @@ Deno.serve(async (req) => {
   const attempts = (attemptRows ?? []) as AttemptRow[];
 
   if (body.mode === "diagnostic") {
+    let eligibleIds: string[];
+    try {
+      eligibleIds = await getEligiblePoolItemIds(admin, "diagnostic");
+    } catch (err) {
+      console.error("diagnostic pool unavailable", err);
+      return json({ error: "diagnostic_pool_unavailable" }, 500);
+    }
+    if (!eligibleIds.length) return json({ error: "diagnostic_pool_empty" }, 409);
+
     const { data: items, error: itemsError } = await admin
       .from("items")
       .select("id, code, skill_id, difficulty")
+      .in("id", eligibleIds)
       .in("skill_id", skillIds)
       .eq("status", "published");
     if (itemsError) return json({ error: "items_query_failed" }, 500);
@@ -157,7 +168,7 @@ Deno.serve(async (req) => {
       unit_code: UNIT_CODE,
       mode: "diagnostic",
       planned_item_count: ordered.length,
-      metadata: { itemsPerSkill: DIAGNOSTIC_ITEMS_PER_SKILL, noRepeats: true },
+      metadata: { itemsPerSkill: DIAGNOSTIC_ITEMS_PER_SKILL, noRepeats: true, poolCode: "PHY7-U01-DIAGNOSTIC-BASELINE" },
     }).select("id, mode, status, planned_item_count, answered_count, correct_count").single();
     if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
 
@@ -220,9 +231,19 @@ Deno.serve(async (req) => {
       }
     }
 
+    let eligibleIds: string[];
+    try {
+      eligibleIds = await getEligiblePoolItemIds(admin, "mastery_check");
+    } catch (err) {
+      console.error("mastery pool unavailable", err);
+      return json({ error: "mastery_pool_unavailable" }, 500);
+    }
+    if (!eligibleIds.length) return json({ error: "mastery_pool_empty" }, 409);
+
     const { data: items, error: itemsError } = await admin
       .from("items")
       .select("id, code, skill_id, difficulty")
+      .in("id", eligibleIds)
       .in("skill_id", skillIds)
       .eq("status", "published");
     if (itemsError) return json({ error: "items_query_failed" }, 500);
@@ -249,6 +270,8 @@ Deno.serve(async (req) => {
         passPercent: MASTERY_PASS_PERCENT,
         minCorrectPerSkill: MASTERY_MIN_CORRECT_PER_SKILL,
         attemptNumber,
+        poolCode: "PHY7-U01-MASTERY-PROTECTED-A",
+        protectedPool: true,
       },
     }).select("id, mode, status, planned_item_count, answered_count, correct_count, metadata").single();
     if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
@@ -278,7 +301,7 @@ Deno.serve(async (req) => {
     mode: "practice",
     target_skill_id: target.id,
     planned_item_count: PRACTICE_SESSION_LENGTH,
-    metadata: { targetSkillCode: target.code, bounded: true, recommendedTarget: Boolean(body.targetSkillId) },
+    metadata: { targetSkillCode: target.code, bounded: true, recommendedTarget: Boolean(body.targetSkillId), poolCode: "PHY7-U01-PRACTICE-BASELINE" },
   }).select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count").single();
   if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
 
