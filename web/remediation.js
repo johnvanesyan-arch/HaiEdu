@@ -110,4 +110,3 @@ observer.observe(submitBtn, { attributes: true, attributeFilter: ["disabled"] })
 observer.observe(feedback, { attributes: true, attributeFilter: ["class"] });
 
 syncHelpVisibility();
-import("./mastery-dashboard.js");
