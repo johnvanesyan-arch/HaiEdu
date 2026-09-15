@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { getEligiblePoolItemIds, recordSessionItemExposure } from "../_shared/assessment-integrity.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -110,7 +111,7 @@ async function completeSession(admin: any, session: any, reason: string) {
   };
 }
 
-async function itemPayload(admin: any, session: any, sessionItem: any) {
+async function itemPayload(admin: any, studentId: string, session: any, sessionItem: any) {
   const { data: item, error: itemError } = await admin
     .from("items")
     .select("id, code, item_type, prompt_hy, stimulus, difficulty, skill_id")
@@ -131,6 +132,8 @@ async function itemPayload(admin: any, session: any, sessionItem: any) {
     .eq("item_id", item.id)
     .order("display_order", { ascending: true });
   if (optionsError) throw new Error(`options_load_failed:${optionsError.message}`);
+
+  await recordSessionItemExposure(admin, studentId, session.id, sessionItem.id, item.id);
 
   return {
     complete: false,
@@ -207,7 +210,7 @@ Deno.serve(async (req) => {
     if (pendingError) return json({ error: "pending_item_query_failed", detail: pendingError.message }, 500);
 
     if (pendingRows?.length) {
-      return json(await itemPayload(admin, session, pendingRows[0]));
+      return json(await itemPayload(admin, studentId, session, pendingRows[0]));
     }
 
     if (Number(session.answered_count) >= Number(session.planned_item_count)) {
@@ -251,9 +254,19 @@ Deno.serve(async (req) => {
       return json(await completeSession(admin, session, mastered ? "mastery_reached" : "independent_recovery"));
     }
 
+    let eligibleIds: string[];
+    try {
+      eligibleIds = await getEligiblePoolItemIds(admin, "practice");
+    } catch (err) {
+      console.error("practice pool unavailable", err);
+      return json({ error: "practice_pool_unavailable" }, 500);
+    }
+    if (!eligibleIds.length) return json({ error: "practice_pool_empty" }, 409);
+
     const { data: candidates, error: itemError } = await admin
       .from("items")
       .select("id, code, item_type, prompt_hy, stimulus, difficulty, skill_id")
+      .in("id", eligibleIds)
       .eq("skill_id", session.target_skill_id)
       .eq("status", "published");
     if (itemError || !candidates?.length) return json({ error: "no_item_for_skill", detail: itemError?.message ?? null }, 404);
@@ -278,7 +291,7 @@ Deno.serve(async (req) => {
       .single();
     if (createError || !created) return json({ error: "practice_item_create_failed", detail: createError?.message ?? null }, 500);
 
-    const payload = await itemPayload(admin, session, created);
+    const payload = await itemPayload(admin, studentId, session, created);
     return json({
       ...payload,
       scheduler: {
