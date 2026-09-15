@@ -30,6 +30,7 @@ jobs:
         run: |
           node --check web/app.js
           node --check web/home-dashboard.js
+          node --check web/home-class.js
           node --check web/home-practice-router.js
           node --check web/home-assessment-router.js
           node --check web/physics-7.js
