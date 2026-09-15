@@ -8,36 +8,11 @@ let masteryStatus = null;
 let busySkillId = null;
 
 const topics = [
-  {
-    code: "PHY7-U01-T01",
-    title: "Ֆիզիկայի ուսումնասիրման առարկան և ֆիզիկական երևույթները",
-    sections: "§1",
-    skillCodes: ["PHY7-U01-S01", "PHY7-U01-S02"],
-  },
-  {
-    code: "PHY7-U01-T02",
-    title: "Ֆիզիկոսներ և հայ անվանի ֆիզիկոսներ",
-    sections: "§2",
-    skillCodes: ["PHY7-U01-S03"],
-  },
-  {
-    code: "PHY7-U01-T03",
-    title: "Դիտումներ, փորձեր և գիտական հետազոտություն",
-    sections: "§3",
-    skillCodes: ["PHY7-U01-S04", "PHY7-U01-S05"],
-  },
-  {
-    code: "PHY7-U01-T04",
-    title: "Ֆիզիկական մեծություններ և չափումներ",
-    sections: "§4",
-    skillCodes: ["PHY7-U01-S06", "PHY7-U01-S07", "PHY7-U01-S08", "PHY7-U01-S09"],
-  },
-  {
-    code: "PHY7-U01-T05",
-    title: "Չափման փորձ և խնդիրների լուծում",
-    sections: "§5–§6",
-    skillCodes: ["PHY7-U01-S10"],
-  },
+  { code: "PHY7-U01-T01", title: "Ֆիզիկայի ուսումնասիրման առարկան և ֆիզիկական երևույթները", sections: "§1", skillCodes: ["PHY7-U01-S01", "PHY7-U01-S02"] },
+  { code: "PHY7-U01-T02", title: "Ֆիզիկոսներ և հայ անվանի ֆիզիկոսներ", sections: "§2", skillCodes: ["PHY7-U01-S03"] },
+  { code: "PHY7-U01-T03", title: "Դիտումներ, փորձեր և գիտական հետազոտություն", sections: "§3", skillCodes: ["PHY7-U01-S04", "PHY7-U01-S05"] },
+  { code: "PHY7-U01-T04", title: "Ֆիզիկական մեծություններ և չափումներ", sections: "§4", skillCodes: ["PHY7-U01-S06", "PHY7-U01-S07", "PHY7-U01-S08", "PHY7-U01-S09"] },
+  { code: "PHY7-U01-T05", title: "Չափման փորձ և խնդիրների լուծում", sections: "§5–§6", skillCodes: ["PHY7-U01-S10"] },
 ];
 
 const layerLabels = {
@@ -98,14 +73,11 @@ function renderSummary() {
     ? "Գլուխ I-ի յուրացումը հաստատված է անկախ ստուգմամբ։"
     : "Ամրապնդված հմտություններ";
   $("chapterProgressBar").style.width = `${progress.percent}%`;
-  const progressbar = $("chapterProgressBar")?.parentElement;
-  progressbar?.setAttribute("aria-valuenow", String(progress.percent));
+  $("chapterProgressBar")?.parentElement?.setAttribute("aria-valuenow", String(progress.percent));
 
   const diagnostic = dashboard?.latestDiagnostic;
   $("subjectDiagnostic").textContent = diagnostic ? `${diagnostic.correct}/${diagnostic.answered} · ${diagnostic.percent}%` : "Դեռ չկա";
-  $("subjectDiagnosticMeta").textContent = diagnostic
-    ? "Գլուխ I-ի վերջին ախտորոշիչ"
-    : "Սկսեք ախտորոշիչը Գլխավոր էջից";
+  $("subjectDiagnosticMeta").textContent = diagnostic ? "Գլուխ I-ի վերջին ախտորոշիչ" : "Սկսեք ախտորոշիչը Գլխավոր էջից";
 
   let assessmentTitle = "Դեռ փակ է";
   let assessmentMeta = masteryStatus?.messageHy ?? "Ամրապնդեք բոլոր հմտությունները։";
@@ -164,7 +136,7 @@ function renderActiveSession() {
   const planned = Number(session.planned ?? session.planned_item_count ?? 0);
   $("activeSessionTitle").textContent = session.mode === "diagnostic" ? "Շարունակել ախտորոշիչը" : "Շարունակել վարժանքը";
   $("activeSessionText").textContent = `${answered}/${planned} հարց արդեն պատասխանված է։`;
-  link.href = "./index.html?resume=1";
+  link.href = session.mode === "practice" ? "./practice.html" : "./index.html?resume=1";
   link.textContent = "Շարունակել";
 }
 
@@ -183,21 +155,11 @@ function activeBlocksNewPractice(skill) {
 
 function renderSkillAction(skill, state) {
   const active = activeBlocksNewPractice(skill);
-  if (active.same) {
-    return `<a class="button-link skill-browser-action" href="./index.html?resume=1">Շարունակել</a>`;
-  }
-  if (active.blocked) {
-    return `<button class="secondary skill-browser-action" disabled title="${escapeHtml(active.reason)}">Սեսիա ընթացքի մեջ</button>`;
-  }
-  if (state === "verified") {
-    return `<button class="secondary skill-browser-action" disabled>Հաստատված</button>`;
-  }
-  if (state === "secure" && masteryStatus?.eligible) {
-    return `<a class="button-link skill-browser-action" href="./mastery.html">Պատրաստ է ստուգման</a>`;
-  }
-  if (state === "secure") {
-    return `<button class="secondary skill-browser-action" disabled>Ամրապնդված</button>`;
-  }
+  if (active.same) return `<a class="button-link skill-browser-action" href="./practice.html">Շարունակել</a>`;
+  if (active.blocked) return `<button class="secondary skill-browser-action" disabled title="${escapeHtml(active.reason)}">Սեսիա ընթացքի մեջ</button>`;
+  if (state === "verified") return `<button class="secondary skill-browser-action" disabled>Հաստատված</button>`;
+  if (state === "secure" && masteryStatus?.eligible) return `<a class="button-link skill-browser-action" href="./mastery.html">Պատրաստ է ստուգման</a>`;
+  if (state === "secure") return `<button class="secondary skill-browser-action" disabled>Ամրապնդված</button>`;
   const label = state === "not_started" ? "Սկսել" : "Վարժվել";
   return `<button class="skill-browser-action" data-practice-skill="${escapeHtml(skill.id)}">${label}</button>`;
 }
@@ -259,21 +221,10 @@ function renderTopics() {
   });
 }
 
-async function startPractice(skillId) {
+function startPractice(skillId) {
   if (!skillId || busySkillId) return;
   busySkillId = skillId;
-  setMessage("Վարժանքը պատրաստվում է…");
-  document.querySelectorAll("[data-practice-skill]").forEach((button) => { button.disabled = true; });
-  const { data, error } = await supabase.functions.invoke("start-learning-session", {
-    body: { mode: "practice", targetSkillId: skillId },
-  });
-  busySkillId = null;
-  if (error || !data?.session) {
-    setMessage(error?.message ?? data?.messageHy ?? "Չհաջողվեց սկսել վարժանքը։", true);
-    document.querySelectorAll("[data-practice-skill]").forEach((button) => { button.disabled = false; });
-    return;
-  }
-  window.location.href = "./index.html?resume=1";
+  window.location.href = `./practice.html?skill=${encodeURIComponent(skillId)}`;
 }
 
 async function loadSubject() {
