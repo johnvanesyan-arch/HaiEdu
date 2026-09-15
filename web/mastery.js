@@ -16,6 +16,19 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
+function setStateBadge(text, tone = "neutral") {
+  const badge = $("masteryStateBadge");
+  if (!badge) return;
+  badge.textContent = text;
+  badge.className = `status-badge ${tone}`;
+}
+
+function routeForActive(active) {
+  if (active?.mode === "diagnostic") return "./diagnostic.html";
+  if (active?.mode === "practice") return "./practice.html";
+  return "./mastery.html";
+}
+
 async function status() {
   const { data, error } = await supabase.functions.invoke("get-mastery-check-status", { body: {} });
   if (error) throw error;
@@ -24,51 +37,83 @@ async function status() {
 
 function renderRequired(skills = []) {
   $("requiredSkills").innerHTML = skills.length
-    ? `<div class="skill-map">${skills.map((s) => `<article class="skill-tile"><div class="skill-code">${escapeHtml(s.code)}</div><div class="skill-title">${escapeHtml(s.nameHy)}</div></article>`).join("")}</div>`
+    ? `<div class="assessment-skill-results" style="margin-top:1rem">${skills.map((s) => `<article class="assessment-skill-result"><div class="skill-code">${escapeHtml(s.code)}</div><div class="skill-title">${escapeHtml(s.nameHy)}</div></article>`).join("")}</div>`
     : "";
 }
 
 async function prepare() {
   const { data: sessionData } = await supabase.auth.getSession();
   if (!sessionData.session) {
-    window.location.href = "./";
+    window.location.href = "./index.html";
     return;
   }
 
   try {
     const s = await status();
+    const active = s.activeSession;
+
     if (s.unitComplete && s.latestCheck) {
       return renderStoredResult(s.latestCheck, true);
     }
-    if (s.activeSession?.mode === "mastery_check") {
-      currentSession = s.activeSession;
+
+    if (active?.mode === "mastery_check") {
+      setStateBadge("Ընթացքի մեջ", "info");
+      currentSession = active;
       return openQuestionPanel();
     }
-    if (s.retryBlocked) {
-      $("stateTitle").textContent = "Կրկնակի փորձը դեռ փակ է";
-      $("stateText").textContent = s.messageHy;
-      renderRequired(s.requiredSkills);
-      return;
-    }
-    if (!s.eligible) {
-      $("stateTitle").textContent = "Mastery check-ը դեռ հասանելի չէ";
-      $("stateText").textContent = s.messageHy;
-      renderRequired(s.requiredSkills);
+
+    if (active) {
+      setStateBadge("Ժամանակավորապես փակ", "warning");
+      $("stateTitle").textContent = "Նախ ավարտեք ընթացիկ սեսիան";
+      $("stateText").textContent = "Յուրացման ստուգումը չի սկսվի, որպեսզի ընթացիկ ուսուցման կամ ախտորոշիչ սեսիան չփոխարինվի։";
+      $("blockingLink").href = routeForActive(active);
+      $("blockingLink").textContent = active.mode === "diagnostic" ? "Շարունակել ախտորոշիչը" : "Շարունակել վարժանքը";
+      $("blockingLink").classList.remove("hidden");
       return;
     }
 
-    $("stateTitle").textContent = "Պատրաստ եք mastery check-ին";
-    $("stateText").textContent = "20 հարց։ Անցնելու համար պետք է առնվազն 80% ընդհանուր արդյունք և յուրաքանչյուր հմտությունից առնվազն 1 ճիշտ պատասխան 2-ից։";
+    if (s.retryBlocked) {
+      setStateBadge("Վերականգնում է պետք", "warning");
+      $("stateTitle").textContent = "Կրկնակի փորձը դեռ փակ է";
+      $("stateText").textContent = s.messageHy;
+      renderRequired(s.requiredSkills);
+      const first = s.requiredSkills?.[0];
+      if (first?.id) {
+        $("blockingLink").href = `./practice.html?skill=${encodeURIComponent(first.id)}`;
+        $("blockingLink").textContent = `Սկսել ${first.code} վարժանքը`;
+        $("blockingLink").classList.remove("hidden");
+      }
+      return;
+    }
+
+    if (!s.eligible) {
+      setStateBadge("Դեռ փակ է", "neutral");
+      $("stateTitle").textContent = "Յուրացման ստուգումը դեռ հասանելի չէ";
+      $("stateText").textContent = s.messageHy;
+      renderRequired(s.requiredSkills);
+      if (s.requiredSkills?.[0]?.id) {
+        const first = s.requiredSkills[0];
+        $("blockingLink").href = `./practice.html?skill=${encodeURIComponent(first.id)}`;
+        $("blockingLink").textContent = `Վարժվել ${first.code}`;
+        $("blockingLink").classList.remove("hidden");
+      }
+      return;
+    }
+
+    setStateBadge("Պատրաստ է", "info");
+    $("stateTitle").textContent = "Պատրաստ եք յուրացման ստուգմանը";
+    $("stateText").textContent = "20 հարց։ Արդյունքը կբացահայտվի միայն ավարտից հետո։ Անցողիկ կանոնը փորձնական է՝ առնվազն 80% ընդհանուր և յուրաքանչյուր հմտությունից առնվազն 1 ճիշտ պատասխան 2-ից։";
     $("startBtn").classList.remove("hidden");
   } catch (err) {
+    setStateBadge("Սխալ", "danger");
     $("stateTitle").textContent = "Չհաջողվեց ստուգել պատրաստվածությունը";
-    $("stateText").textContent = err.message ?? String(err);
+    $("stateText").textContent = err?.message ?? String(err);
   }
 }
 
 async function startCheck() {
   $("startBtn").disabled = true;
-  $("stateText").textContent = "Mastery check-ը կազմվում է…";
+  $("stateText").textContent = "Յուրացման ստուգումը կազմվում է…";
   const { data, error } = await supabase.functions.invoke("start-learning-session", { body: { mode: "mastery_check" } });
   $("startBtn").disabled = false;
   if (error) {
@@ -77,7 +122,8 @@ async function startCheck() {
   }
   if (data.unitComplete) return prepare();
   if (data.masteryEligible === false) {
-    $("stateTitle").textContent = "Mastery check-ը դեռ հասանելի չէ";
+    setStateBadge("Դեռ փակ է", "neutral");
+    $("stateTitle").textContent = "Յուրացման ստուգումը դեռ հասանելի չէ";
     $("stateText").textContent = data.messageHy ?? "Նախ անհրաժեշտ է լրացուցիչ վարժանք։";
     renderRequired(data.requiredSkills ?? []);
     return;
@@ -106,6 +152,8 @@ async function loadItem() {
     $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
     $("feedback").className = "feedback bad";
     $("feedback").textContent = error.message;
+    $("nextBtn").textContent = "Կրկին փորձել";
+    $("nextBtn").classList.remove("hidden");
     return;
   }
   if (data?.complete) {
@@ -125,7 +173,9 @@ function renderQuestion(data) {
   $("skillName").textContent = skill?.nameHy ?? "—";
   $("itemCode").textContent = item.code;
   $("difficulty").textContent = `${item.difficulty}/5`;
-  $("progressBar").style.width = `${Math.max(0, ((session.position - 1) / session.total) * 100)}%`;
+  const progress = Math.max(0, ((session.position - 1) / session.total) * 100);
+  $("progressBar").style.width = `${progress}%`;
+  $("progressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(progress)));
   $("prompt").textContent = item.promptHy;
   renderStimulus(item.stimulus);
   renderAnswer(item);
@@ -159,13 +209,10 @@ function renderAnswer(item) {
 
 function collectResponse() {
   const type = current?.item?.type;
-  if (type === "single_choice") {
+  if (type === "single_choice" || type === "true_false") {
     const selected = document.querySelector('input[name="answer"]:checked');
-    return selected ? { value: selected.value } : null;
-  }
-  if (type === "true_false") {
-    const selected = document.querySelector('input[name="answer"]:checked');
-    return selected ? { value: selected.value === "true" } : null;
+    if (!selected) return null;
+    return { value: type === "true_false" ? selected.value === "true" : selected.value };
   }
   if (type === "numeric") {
     const value = $("numericAnswer")?.value?.trim();
@@ -184,7 +231,7 @@ async function submit(event) {
   const response = collectResponse();
   if (!response) {
     $("feedback").className = "feedback bad";
-    $("feedback").textContent = "Նախ մուտքագրեք պատասխանը։";
+    $("feedback").textContent = "Նախ ընտրեք կամ մուտքագրեք պատասխանը։";
     return;
   }
   $("submitBtn").disabled = true;
@@ -207,11 +254,14 @@ async function submit(event) {
 
   const position = current.session.position;
   const total = current.session.total;
-  $("progressBar").style.width = `${Math.min(100, (position / total) * 100)}%`;
+  const progress = Math.min(100, (position / total) * 100);
+  $("progressBar").style.width = `${progress}%`;
+  $("progressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(progress)));
   if (data.finalResult) return renderFinalResult(data.finalResult);
 
   $("feedback").className = "feedback neutral";
-  $("feedback").innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Արդյունքը չի ցուցադրվում մինչև mastery check-ի ավարտը։</div>";
+  $("feedback").innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Արդյունքը չի ցուցադրվում մինչև յուրացման ստուգման ավարտը։</div>";
+  $("nextBtn").textContent = "Հաջորդ հարց";
   $("nextBtn").classList.remove("hidden");
 }
 
@@ -219,13 +269,20 @@ function renderFinalResult(result) {
   $("questionPanel").classList.add("hidden");
   $("stateCard").classList.add("hidden");
   $("resultPanel").classList.remove("hidden");
-  $("resultTitle").textContent = result.passed ? "Mastery check-ը անցել եք" : "Mastery check-ը դեռ չի անցել";
-  $("resultScore").innerHTML = `<strong>${result.score.correct} / ${result.score.answered} · ${result.score.percent}%</strong>`;
+  $("resultTitle").textContent = result.passed ? "Գլուխ I-ը հաստատված է" : "Դեռ պետք է լրացուցիչ վարժանք";
+  $("resultScore").textContent = `${result.score.correct}/${result.score.answered} · ${result.score.percent}%`;
   $("resultRule").textContent = "Փորձնական անցողիկ կանոն՝ ≥80% ընդհանուր արդյունք և յուրաքանչյուր հմտությունից առնվազն 1/2։";
   renderSkillResults(result.skillResults ?? []);
-  if (!result.passed) {
-    const failed = result.failedSkills ?? [];
-    $("resultRule").textContent += ` Կրկին փորձելուց առաջ պետք է ավարտել remediation վարժանք՝ ${failed.map((s) => s.code).join(", ") || "առաջարկվող հմտությունների"} համար։`;
+
+  const primary = $("resultPrimaryAction");
+  if (result.passed) {
+    primary.href = "./assessment.html";
+    primary.textContent = "Վերադառնալ գնահատմանը";
+  } else {
+    const first = result.failedSkills?.[0];
+    $("resultRule").textContent += ` Կրկին փորձելուց առաջ պետք է ավարտել վերականգնողական վարժանք՝ ${result.failedSkills?.map((s) => s.code).join(", ") || "առաջարկվող հմտությունների"} համար։`;
+    primary.href = first?.skillId ? `./practice.html?skill=${encodeURIComponent(first.skillId)}` : "./physics-7.html";
+    primary.textContent = first?.code ? `Սկսել ${first.code} վարժանքը` : "Դիտել առաջարկվող վարժանքը";
   }
 }
 
@@ -233,19 +290,27 @@ function renderStoredResult(check, passed) {
   $("stateCard").classList.add("hidden");
   $("questionPanel").classList.add("hidden");
   $("resultPanel").classList.remove("hidden");
-  $("resultTitle").textContent = passed ? "Mastery check-ը անցել եք" : "Վերջին mastery check-ը չի անցել";
-  $("resultScore").innerHTML = `<strong>${check.correct} / ${check.answered} · ${check.percent ?? 0}%</strong>`;
+  $("resultTitle").textContent = passed ? "Գլուխ I-ը հաստատված է" : "Վերջին յուրացման ստուգումը չի անցել";
+  $("resultScore").textContent = `${check.correct}/${check.answered} · ${check.percent ?? 0}%`;
   $("resultRule").textContent = passed
-    ? "Այս բաժնի unit-completion չափանիշը կատարված է։"
-    : "Կրկնակի փորձը բացվում է միայն պահանջվող remediation վարժանքներից հետո։";
+    ? "Այս բաժնի անկախ յուրացման չափանիշը կատարված է։ Անցողիկ կանոնը դեռ փորձնական է։"
+    : "Կրկնակի փորձը բացվում է միայն պահանջվող վերականգնողական վարժանքներից հետո։";
   renderSkillResults(check.skillResults ?? []);
+  const primary = $("resultPrimaryAction");
+  primary.href = "./assessment.html";
+  primary.textContent = "Վերադառնալ գնահատմանը";
 }
 
 function renderSkillResults(results) {
-  $("resultSkills").innerHTML = results.map((r) => `
-    <article class="skill-tile">
-      <div class="skill-top"><div><div class="skill-code">${escapeHtml(r.code)}</div><div class="skill-title">${escapeHtml(r.nameHy)}</div></div><strong>${r.correct}/${r.total}</strong></div>
-    </article>`).join("");
+  $("resultSkills").innerHTML = results.map((r) => {
+    const passed = Number(r.correct) >= 1;
+    return `<article class="assessment-skill-result">
+      <div class="skill-top">
+        <div><div class="skill-code">${escapeHtml(r.code)}</div><div class="skill-title">${escapeHtml(r.nameHy)}</div></div>
+        <span class="status-badge ${passed ? "success" : "danger"}">${r.correct}/${r.total}</span>
+      </div>
+    </article>`;
+  }).join("");
 }
 
 function renderStimulus(stimulus) {
@@ -267,6 +332,10 @@ function renderStimulus(stimulus) {
     el.innerHTML = `<div class="conversion"><span>V₁ = ${escapeHtml(v1)} ${escapeHtml(stimulus.unit ?? "")}</span><span>→</span><span>V₂ = ${escapeHtml(v2)} ${escapeHtml(stimulus.unit ?? "")}</span></div>`;
     return;
   }
+  if (stimulus.kind === "stack_measurement") {
+    el.innerHTML = `<div class="conversion"><span>${escapeHtml(stimulus.count ?? "")} հատ</span><span>→</span><span>${escapeHtml(stimulus.total_thickness ?? "?")} ${escapeHtml(stimulus.unit ?? "")}</span></div>`;
+    return;
+  }
   if (stimulus.kind === "scale_spec") {
     el.appendChild(renderScale(stimulus));
     return;
@@ -283,7 +352,7 @@ function renderScale(spec) {
   svg.setAttribute("class", "scale-svg");
   const x1 = 50, x2 = 590, y = 58;
   const lower = Number(spec.lower ?? spec.base ?? 0);
-  const divisions = Number(spec.divisions ?? 5);
+  const divisions = Number(spec.divisions ?? Math.max(5, Number(spec.mark_offset ?? 0) + 2));
   const upper = spec.upper !== undefined ? Number(spec.upper) : lower + Number(spec.division_value ?? 1) * divisions;
   const axis = document.createElementNS(svgNS, "line");
   axis.setAttribute("x1", x1); axis.setAttribute("x2", x2); axis.setAttribute("y1", y); axis.setAttribute("y2", y); axis.setAttribute("stroke", "#495668"); axis.setAttribute("stroke-width", "3"); svg.appendChild(axis);
@@ -295,6 +364,13 @@ function renderScale(spec) {
   for (const [x, text] of [[x1, String(lower)], [x2, String(upper)]]) {
     const label = document.createElementNS(svgNS, "text");
     label.setAttribute("x", x); label.setAttribute("y", 100); label.setAttribute("text-anchor", "middle"); label.textContent = text; svg.appendChild(label);
+  }
+  if (spec.mark_offset !== undefined) {
+    const x = x1 + (x2 - x1) * (Number(spec.mark_offset) / divisions);
+    const marker = document.createElementNS(svgNS, "polygon");
+    marker.setAttribute("points", `${x - 9},18 ${x + 9},18 ${x},38`);
+    marker.setAttribute("fill", "#263a55");
+    svg.appendChild(marker);
   }
   const unit = document.createElementNS(svgNS, "text");
   unit.setAttribute("x", 320); unit.setAttribute("y", 116); unit.setAttribute("text-anchor", "middle"); unit.textContent = spec.unit ?? ""; svg.appendChild(unit);
