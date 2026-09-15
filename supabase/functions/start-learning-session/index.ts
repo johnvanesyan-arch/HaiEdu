@@ -1,6 +1,13 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
-import { getEligiblePoolItemIds } from "../_shared/assessment-integrity.ts";
+import {
+  CHAPTER_I_POOLS,
+  chooseMasteryByExposure,
+  chooseRotatingDiagnosticForm,
+  getEligiblePoolItemIds,
+  getStudentExposureHistory,
+  type SelectableItem,
+} from "../_shared/assessment-integrity.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -17,6 +24,8 @@ const MASTERY_MIN_CORRECT_PER_SKILL = 1;
 
 type Mode = "diagnostic" | "practice" | "mastery_check";
 type AttemptRow = { skill_id: string; item_id: string; correct: boolean; hint_used: boolean; created_at: string };
+
+type PoolItem = SelectableItem & { skill_id: string };
 
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), {
@@ -45,28 +54,6 @@ function shuffle<T>(values: T[]): T[] {
     [arr[i], arr[j]] = [arr[j], arr[i]];
   }
   return arr;
-}
-
-function chooseLeastRecent(
-  pool: Array<{ id: string; code: string; difficulty: number }>,
-  attempts: AttemptRow[],
-  count: number,
-) {
-  const latestSeen = new Map<string, number>();
-  for (const attempt of attempts) {
-    if (!latestSeen.has(attempt.item_id)) latestSeen.set(attempt.item_id, new Date(attempt.created_at).getTime());
-  }
-  return [...pool]
-    .sort((a, b) => {
-      const aSeen = latestSeen.get(a.id);
-      const bSeen = latestSeen.get(b.id);
-      if (aSeen === undefined && bSeen !== undefined) return -1;
-      if (aSeen !== undefined && bSeen === undefined) return 1;
-      if (aSeen !== bSeen) return Number(aSeen ?? 0) - Number(bSeen ?? 0);
-      const diff = Math.abs(Number(a.difficulty) - 3) - Math.abs(Number(b.difficulty) - 3);
-      return diff || String(a.code).localeCompare(String(b.code));
-    })
-    .slice(0, count);
 }
 
 Deno.serve(async (req) => {
@@ -143,23 +130,71 @@ Deno.serve(async (req) => {
     }
     if (!eligibleIds.length) return json({ error: "diagnostic_pool_empty" }, 409);
 
+    const { data: diagnosticPool, error: poolError } = await admin
+      .from("assessment_pools")
+      .select("id")
+      .eq("code", CHAPTER_I_POOLS.diagnostic)
+      .eq("status", "active")
+      .single();
+    if (poolError || !diagnosticPool) return json({ error: "diagnostic_pool_unavailable" }, 500);
+
+    const { data: formsData, error: formsError } = await admin
+      .from("assessment_forms")
+      .select("id, code, form_version")
+      .eq("pool_id", diagnosticPool.id)
+      .eq("status", "active")
+      .order("code", { ascending: true });
+    if (formsError || !formsData?.length) return json({ error: "diagnostic_forms_unavailable" }, 500);
+
+    const { data: priorDiagnosticSessions, error: historyError } = await admin
+      .from("learning_sessions")
+      .select("metadata, started_at")
+      .eq("student_id", studentId)
+      .eq("unit_code", UNIT_CODE)
+      .eq("mode", "diagnostic")
+      .neq("status", "active")
+      .order("started_at", { ascending: false })
+      .limit(20);
+    if (historyError) return json({ error: "diagnostic_history_failed" }, 500);
+
+    const priorFormCodes = (priorDiagnosticSessions ?? [])
+      .map((row) => typeof row.metadata?.formCode === "string" ? row.metadata.formCode : null)
+      .filter((value): value is string => Boolean(value));
+    const rotation = chooseRotatingDiagnosticForm(formsData, priorFormCodes);
+    if (!rotation) return json({ error: "diagnostic_form_selection_failed" }, 500);
+
+    const { data: formMemberships, error: formItemsError } = await admin
+      .from("assessment_form_items")
+      .select("item_id, slot_order")
+      .eq("form_id", rotation.form.id)
+      .order("slot_order", { ascending: true });
+    if (formItemsError || !formMemberships?.length) return json({ error: "diagnostic_form_empty" }, 409);
+
+    const eligibleSet = new Set(eligibleIds);
+    const formItemIds = formMemberships.map((row) => String(row.item_id)).filter((id) => eligibleSet.has(id));
     const { data: items, error: itemsError } = await admin
       .from("items")
       .select("id, code, skill_id, difficulty")
-      .in("id", eligibleIds)
+      .in("id", formItemIds)
       .in("skill_id", skillIds)
       .eq("status", "published");
     if (itemsError) return json({ error: "items_query_failed" }, 500);
 
-    const selected: Array<{ item_id: string; skill_id: string }> = [];
+    const selected: Array<{ item_id: string; skill_id: string; selection_reason: string }> = [];
     for (const skill of skills) {
       const pool = (items ?? [])
         .filter((item) => item.skill_id === skill.id)
-        .sort((a, b) => Number(a.difficulty) - Number(b.difficulty) || String(a.code).localeCompare(String(b.code)));
-      if (pool.length < DIAGNOSTIC_ITEMS_PER_SKILL) return json({ error: "insufficient_diagnostic_items", skillCode: skill.code }, 409);
-      const first = pool[0];
-      const second = pool[Math.min(pool.length - 1, Math.max(1, Math.floor(pool.length / 2)))];
-      selected.push({ item_id: first.id, skill_id: skill.id }, { item_id: second.id, skill_id: skill.id });
+        .sort((a, b) => String(a.code).localeCompare(String(b.code)));
+      if (pool.length !== DIAGNOSTIC_ITEMS_PER_SKILL) {
+        return json({ error: "invalid_diagnostic_form_skill_coverage", skillCode: skill.code, count: pool.length }, 409);
+      }
+      for (const item of pool) {
+        selected.push({
+          item_id: item.id,
+          skill_id: skill.id,
+          selection_reason: `diagnostic_${rotation.reason}:${rotation.form.code}`,
+        });
+      }
     }
 
     const ordered = shuffle(selected);
@@ -168,17 +203,33 @@ Deno.serve(async (req) => {
       unit_code: UNIT_CODE,
       mode: "diagnostic",
       planned_item_count: ordered.length,
-      metadata: { itemsPerSkill: DIAGNOSTIC_ITEMS_PER_SKILL, noRepeats: true, poolCode: "PHY7-U01-DIAGNOSTIC-BASELINE" },
-    }).select("id, mode, status, planned_item_count, answered_count, correct_count").single();
+      metadata: {
+        itemsPerSkill: DIAGNOSTIC_ITEMS_PER_SKILL,
+        noRepeats: true,
+        poolCode: CHAPTER_I_POOLS.diagnostic,
+        selectionPolicyVersion: "11B-v1",
+        formCode: rotation.form.code,
+        formVersion: Number(rotation.form.form_version),
+        formSelectionReason: rotation.reason,
+        priorFormCode: priorFormCodes[0] ?? null,
+        provisionalParallelism: true,
+      },
+    }).select("id, mode, status, planned_item_count, answered_count, correct_count, metadata").single();
     if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
 
-    const rows = ordered.map((row, index) => ({ session_id: session.id, ordinal: index + 1, skill_id: row.skill_id, item_id: row.item_id }));
+    const rows = ordered.map((row, index) => ({
+      session_id: session.id,
+      ordinal: index + 1,
+      skill_id: row.skill_id,
+      item_id: row.item_id,
+      selection_reason: row.selection_reason,
+    }));
     const { error: itemInsertError } = await admin.from("learning_session_items").insert(rows);
     if (itemInsertError) {
       await admin.from("learning_sessions").delete().eq("id", session.id);
       return json({ error: "session_items_create_failed" }, 500);
     }
-    return json({ session, resumed: false });
+    return json({ session, resumed: false, diagnosticForm: rotation.form.code });
   }
 
   if (body.mode === "mastery_check") {
@@ -240,20 +291,53 @@ Deno.serve(async (req) => {
     }
     if (!eligibleIds.length) return json({ error: "mastery_pool_empty" }, 409);
 
-    const { data: items, error: itemsError } = await admin
+    const { data: itemsData, error: itemsError } = await admin
       .from("items")
-      .select("id, code, skill_id, difficulty")
+      .select("id, code, skill_id, difficulty, item_template_id, variant_key")
       .in("id", eligibleIds)
       .in("skill_id", skillIds)
       .eq("status", "published");
     if (itemsError) return json({ error: "items_query_failed" }, 500);
+    const items = (itemsData ?? []) as PoolItem[];
 
-    const selected: Array<{ item_id: string; skill_id: string }> = [];
+    let exposureHistory;
+    try {
+      exposureHistory = await getStudentExposureHistory(admin, studentId, eligibleIds);
+    } catch (err) {
+      console.error("mastery exposure history unavailable", err);
+      return json({ error: "mastery_exposure_history_failed" }, 500);
+    }
+
+    const previousItemIds = new Set<string>();
+    if (latestCheck?.assessment_result === "failed") {
+      const { data: priorItems, error: priorItemsError } = await admin
+        .from("learning_session_items")
+        .select("item_id")
+        .eq("session_id", latestCheck.id);
+      if (priorItemsError) return json({ error: "mastery_previous_form_failed" }, 500);
+      for (const row of priorItems ?? []) previousItemIds.add(String(row.item_id));
+    }
+
+    const selected: Array<{ item_id: string; skill_id: string; selection_reason: string }> = [];
+    let overlapCount = 0;
+    let poolExhausted = false;
     for (const skill of skills) {
-      const pool = (items ?? []).filter((item) => item.skill_id === skill.id);
+      const pool = items.filter((item) => item.skill_id === skill.id);
       if (pool.length < MASTERY_ITEMS_PER_SKILL) return json({ error: "insufficient_mastery_items", skillCode: skill.code }, 409);
-      const chosen = chooseLeastRecent(pool, attempts.filter((a) => a.skill_id === skill.id), MASTERY_ITEMS_PER_SKILL);
-      for (const item of chosen) selected.push({ item_id: item.id, skill_id: skill.id });
+      const choice = chooseMasteryByExposure({
+        candidates: pool,
+        exposures: exposureHistory,
+        previousItemIds,
+        count: MASTERY_ITEMS_PER_SKILL,
+      });
+      if (choice.selected.length < MASTERY_ITEMS_PER_SKILL) {
+        return json({ error: "mastery_selection_exhausted", skillCode: skill.code }, 409);
+      }
+      overlapCount += choice.overlapCount;
+      poolExhausted = poolExhausted || choice.poolExhausted;
+      for (const entry of choice.selected) {
+        selected.push({ item_id: entry.item.id, skill_id: skill.id, selection_reason: entry.reason });
+      }
     }
 
     const ordered = shuffle(selected);
@@ -265,24 +349,41 @@ Deno.serve(async (req) => {
       planned_item_count: ordered.length,
       metadata: {
         itemsPerSkill: MASTERY_ITEMS_PER_SKILL,
-        noRepeats: true,
         noHints: true,
         passPercent: MASTERY_PASS_PERCENT,
         minCorrectPerSkill: MASTERY_MIN_CORRECT_PER_SKILL,
         attemptNumber,
-        poolCode: "PHY7-U01-MASTERY-PROTECTED-A",
+        poolCode: CHAPTER_I_POOLS.mastery_check,
         protectedPool: true,
+        selectionPolicyVersion: "11B-v1",
+        formType: attemptNumber > 1 ? "alternate_retest" : "initial_unseen_first",
+        alternateFromSessionId: latestCheck?.assessment_result === "failed" ? latestCheck.id : null,
+        previousFormItemCount: previousItemIds.size,
+        overlapCount,
+        poolExhausted,
+        exactRepeatFallbackUsed: overlapCount > 0,
       },
     }).select("id, mode, status, planned_item_count, answered_count, correct_count, metadata").single();
     if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
 
-    const rows = ordered.map((row, index) => ({ session_id: session.id, ordinal: index + 1, skill_id: row.skill_id, item_id: row.item_id }));
+    const rows = ordered.map((row, index) => ({
+      session_id: session.id,
+      ordinal: index + 1,
+      skill_id: row.skill_id,
+      item_id: row.item_id,
+      selection_reason: row.selection_reason,
+    }));
     const { error: itemInsertError } = await admin.from("learning_session_items").insert(rows);
     if (itemInsertError) {
       await admin.from("learning_sessions").delete().eq("id", session.id);
       return json({ error: "session_items_create_failed" }, 500);
     }
-    return json({ session, resumed: false, masteryEligible: true });
+    return json({
+      session,
+      resumed: false,
+      masteryEligible: true,
+      selection: { overlapCount, poolExhausted, exactRepeatFallbackUsed: overlapCount > 0 },
+    });
   }
 
   let target = null as (typeof skills)[number] | null;
@@ -301,8 +402,15 @@ Deno.serve(async (req) => {
     mode: "practice",
     target_skill_id: target.id,
     planned_item_count: PRACTICE_SESSION_LENGTH,
-    metadata: { targetSkillCode: target.code, bounded: true, recommendedTarget: Boolean(body.targetSkillId), poolCode: "PHY7-U01-PRACTICE-BASELINE" },
-  }).select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count").single();
+    metadata: {
+      targetSkillCode: target.code,
+      bounded: true,
+      recommendedTarget: Boolean(body.targetSkillId),
+      poolCode: CHAPTER_I_POOLS.practice,
+      selectionPolicyVersion: "11B-v1",
+      exactRepeatFallbackOnly: true,
+    },
+  }).select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, metadata").single();
   if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
 
   return json({ session, resumed: false, targetSkill: { id: target.id, code: target.code, nameHy: target.name_hy } });
