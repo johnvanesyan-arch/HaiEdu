@@ -1,4 +1,4 @@
-/* Sprint 10.5B–10.5E — authenticated student navigation shell.
+/* Sprint 10.5B–10.5F — authenticated student navigation shell.
    Presentation/navigation only. It does not own authentication, mastery,
    recommendation, grading, session eligibility, or authorization truth. */
 
@@ -9,8 +9,17 @@ const destinations = [
   { key: "home", href: "./index.html", label: "Գլխավոր", icon: "⌂", enabled: true },
   { key: "physics", href: "./physics-7.html", label: "Ֆիզիկա 7", icon: "Φ", enabled: true },
   { key: "assessment", href: "./assessment.html", label: "Գնահատում", icon: "✓", enabled: true },
-  { key: "progress", href: "./progress.html", label: "Առաջընթաց", icon: "↗", enabled: false }
+  { key: "progress", href: "./progress.html", label: "Առաջընթաց", icon: "↗", enabled: true }
 ];
+
+function ensureQaStylesheet() {
+  if (document.querySelector('link[data-amp-responsive-qa="true"]')) return;
+  const link = document.createElement("link");
+  link.rel = "stylesheet";
+  link.href = "./responsive-qa.css";
+  link.dataset.ampResponsiveQa = "true";
+  document.head.appendChild(link);
+}
 
 function navItem(item, mobile = false) {
   const current = item.key === page ? ' aria-current="page"' : "";
@@ -78,6 +87,7 @@ function syncShellState() {
   document.body.classList.toggle("amp-focused-task", authenticated && inferFocusedTask());
 }
 
+ensureQaStylesheet();
 ensureNavigation();
 syncShellState();
 
@@ -88,7 +98,8 @@ const observed = [
   document.getElementById("questionPanel"),
   document.getElementById("resultPanel"),
   document.getElementById("subjectPanel"),
-  document.getElementById("assessmentContent")
+  document.getElementById("assessmentContent"),
+  document.getElementById("progressContent")
 ].filter(Boolean);
 
 if (observed.length) {
