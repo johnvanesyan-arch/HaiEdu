@@ -1,0 +1,127 @@
+/* Sprint 10.5F — shared pilot responsive/accessibility hardening */
+
+/* Long Armenian text must wrap instead of forcing layout overflow. */
+.amp-nav-link,
+.amp-mobile-link,
+.button-link,
+button,
+.status-badge,
+.mode-kicker,
+.skill-name,
+.skill-title,
+.skill-browser-row,
+.assessment-card,
+.question-card,
+.card {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+.card,
+.question-card,
+.skill-browser-row,
+.assessment-card,
+.topbar > *,
+.row > *,
+.section-heading > * {
+  min-width: 0;
+}
+
+img,
+svg,
+canvas {
+  max-width: 100%;
+}
+
+.scale-wrap,
+.table-wrap,
+.matrix-wrap {
+  max-width: 100%;
+  overflow-x: auto;
+}
+
+/* Keep primary layouts stable under text zoom and Armenian wrapping. */
+.topbar,
+.section-heading,
+.question-heading,
+.assessment-question-meta,
+.assessment-result-hero,
+.assessment-result-actions,
+.row {
+  flex-wrap: wrap;
+}
+
+button,
+a.button-link,
+a.ghost,
+.amp-nav-link,
+.amp-mobile-link {
+  touch-action: manipulation;
+}
+
+/* Allow bottom navigation to coexist with iOS/Android safe areas. */
+@media (max-width: 820px) {
+  body.amp-student-shell-active > main.shell {
+    padding-bottom: calc(var(--amp-mobile-nav-height) + var(--amp-space-5) + env(safe-area-inset-bottom, 0px));
+  }
+
+  body.amp-student-shell-active .amp-mobile-nav {
+    padding-bottom: env(safe-area-inset-bottom, 0px);
+  }
+
+  .amp-mobile-link > span:last-child {
+    max-width: 100%;
+    white-space: normal;
+    overflow-wrap: anywhere;
+  }
+
+  .topbar > .row,
+  .assessment-result-actions,
+  .row {
+    width: 100%;
+  }
+}
+
+@media (max-width: 560px) {
+  .topbar,
+  .section-heading,
+  .question-heading,
+  .assessment-question-meta,
+  .assessment-result-hero {
+    align-items: stretch;
+  }
+
+  .topbar > a,
+  .topbar > button,
+  .topbar > .row,
+  .assessment-result-actions > a,
+  .assessment-result-actions > button {
+    width: 100%;
+  }
+
+  .status-badge,
+  .mode-kicker {
+    max-width: 100%;
+    white-space: normal;
+  }
+}
+
+/* High contrast/forced-color users must still see focus and status boundaries. */
+@media (forced-colors: active) {
+  .legend-mark,
+  .band-dot,
+  .status-badge,
+  .mode-kicker,
+  .amp-nav-link[aria-current="page"] {
+    forced-color-adjust: auto;
+    border: 1px solid CanvasText;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .progress-bar,
+  .session-progress-bar,
+  .mini-progress-bar {
+    transition: none !important;
+  }
+}
