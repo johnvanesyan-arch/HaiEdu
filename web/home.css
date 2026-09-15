@@ -57,6 +57,35 @@
   align-items: center;
   flex-wrap: wrap;
 }
+.home-class-card {
+  margin-top: var(--amp-space-4);
+  padding: var(--amp-space-5);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--amp-space-4);
+  align-items: center;
+}
+.home-class-card h3 {
+  margin: var(--amp-space-1) 0 var(--amp-space-1);
+}
+.home-class-copy {
+  min-width: 0;
+}
+.home-class-list {
+  display: flex;
+  gap: var(--amp-space-2);
+  flex-wrap: wrap;
+  margin-top: var(--amp-space-3);
+}
+.home-class-item {
+  display: grid;
+  gap: 2px;
+  min-width: min(240px, 100%);
+  padding: var(--amp-space-3);
+  border: 1px solid var(--amp-color-border);
+  border-radius: var(--amp-radius-medium);
+  background: var(--amp-color-surface-subtle, #f8fafc);
+}
 .home-browser-card {
   margin-top: var(--amp-space-4);
   padding: var(--amp-space-5);
@@ -95,8 +124,10 @@
 
 @media (max-width: 900px) {
   .home-skill-preview .skill-map { grid-template-columns: 1fr; }
-  .home-next-card { grid-template-columns: 1fr; }
-  .home-next-card #resumeLearningBtn { width: 100%; }
+  .home-next-card,
+  .home-class-card { grid-template-columns: 1fr; }
+  .home-next-card #resumeLearningBtn,
+  .home-class-card .button-link { width: 100%; }
 }
 
 @media (max-width: 760px) {
