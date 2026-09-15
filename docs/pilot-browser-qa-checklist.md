@@ -1,6 +1,8 @@
-# Pre-Sprint-11 Live Browser QA Checklist
+# Sprint 11F Live Browser / Production Smoke Checklist
 
-This checklist is the final operational gate after Sprint 10.5F source-level QA. It must be executed with a real authenticated student account in an interactive browser before Sprint 11 begins.
+This checklist was originally the final operational gate for Sprint 10.5F. By product-owner decision, Sprint 10.5F is closed without executing this live authenticated matrix. The checklist is retained as a **Sprint 11F production/pilot smoke requirement** rather than a blocker to beginning Sprint 11.
+
+The unchecked items below therefore mean **deferred**, not failed.
 
 ## Desktop Chromium
 
@@ -73,6 +75,6 @@ Check at 320–390 px and 200% text zoom:
 - [ ] Active Mastery Check is not replaced by Practice or Diagnostic.
 - [ ] Resume returns to the existing session.
 
-## Completion gate
+## Sprint 11F completion gate
 
-Sprint 11 may begin only after every blocking item above passes or has a documented accepted defect/workaround.
+Before the closed Chapter I pilot is treated as fully completed, every blocking item above must pass or have a documented accepted defect/workaround. This checklist no longer blocks Sprint 11A–11E engineering work from starting.
