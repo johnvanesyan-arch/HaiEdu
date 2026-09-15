@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { getEligiblePoolItemIds } from "../_shared/assessment-integrity.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -209,9 +210,19 @@ Deno.serve(async (req) => {
   const targetStats = statsForSkill(allAttempts, target.id);
   const recentIds = new Set(targetStats.attempts.slice(0, RECENT_ITEM_BLOCK).map((r) => r.item_id));
 
+  let eligibleIds: string[];
+  try {
+    eligibleIds = await getEligiblePoolItemIds(admin, "practice");
+  } catch (err) {
+    console.error("practice pool unavailable", err);
+    return json({ error: "practice_pool_unavailable" }, 500);
+  }
+  if (!eligibleIds.length) return json({ error: "practice_pool_empty" }, 409);
+
   const { data: candidateItems, error: itemError } = await admin
     .from("items")
     .select("id, code, item_type, prompt_hy, stimulus, difficulty")
+    .in("id", eligibleIds)
     .eq("skill_id", target.id)
     .eq("status", "published");
   if (itemError || !candidateItems?.length) return json({ error: "no_item_for_skill", skillCode: target.code }, 404);
@@ -287,6 +298,7 @@ Deno.serve(async (req) => {
       selectedItemPriorAttempts: attemptCounts.get(item.id) ?? 0,
       unseenItemsRemaining: unseen.length,
       unresolvedItems: unresolved.length,
+      assessmentPool: "practice",
     },
     item: {
       id: item.id,
