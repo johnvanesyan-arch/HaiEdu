@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Ֆիզիկա 7 — Գնահատում</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./components.css" />
+  <link rel="stylesheet" href="./student-shell.css" />
+  <link rel="stylesheet" href="./assessment.css" />
+</head>
+<body data-student-page="assessment" data-shell-auth="always">
+  <main class="shell" id="mainContent">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ՖԻԶԻԿԱ 7 · ԳԼՈՒԽ I</p>
+        <h1>Գնահատում</h1>
+        <p class="subtle">Ախտորոշիչը ցույց է տալիս ուժեղ ու թույլ կողմերը, իսկ յուրացման ստուգումը հաստատում է ինքնուրույն կատարումը։</p>
+      </div>
+      <a class="ghost button-link" href="./physics-7.html">← Ֆիզիկա 7</a>
+    </header>
+
+    <section class="notice assessment-intro" aria-label="Գնահատման տարբերակների բացատրություն">
+      <strong>Երկու տարբեր նպատակ</strong>
+      <span>Ախտորոշիչը ուղղորդում է ուսուցումը։ Յուրացման ստուգումը անկախ վերջնական ստուգում է։ Դրանք չեն փոխարինում միմյանց։</span>
+    </section>
+
+    <section id="assessmentLoading" class="card" aria-live="polite">Գնահատման վիճակը բեռնվում է…</section>
+    <p id="assessmentMessage" class="message" aria-live="polite"></p>
+
+    <section id="assessmentContent" class="hidden">
+      <section id="assessmentActiveBanner" class="card assessment-active-banner hidden" aria-labelledby="assessmentActiveTitle">
+        <div>
+          <span class="mode-kicker">ԸՆԹԱՑԻԿ ՍԵՍԻԱ</span>
+          <h2 id="assessmentActiveTitle">—</h2>
+          <p id="assessmentActiveText" class="subtle">—</p>
+        </div>
+        <a id="assessmentActiveLink" class="button-link" href="./index.html">Շարունակել</a>
+      </section>
+
+      <div class="assessment-grid">
+        <article class="card assessment-card" aria-labelledby="diagnosticCardTitle">
+          <div class="assessment-card-top">
+            <div>
+              <span class="mode-kicker">ԳԼՈՒԽ I-Ի ԱԽՏՈՐՈՇԻՉ</span>
+              <h3 id="diagnosticCardTitle">Ուժեղ և թույլ կողմերի քարտեզ</h3>
+            </div>
+            <span id="diagnosticStatus" class="status-badge neutral">—</span>
+          </div>
+          <p id="diagnosticSummary" class="subtle">—</p>
+          <ul class="assessment-rules">
+            <li>20 հարց՝ 2 հարց յուրաքանչյուր հմտությունից</li>
+            <li>Օգնություն և հուշումներ չկան</li>
+            <li>Հարցից հետո ճիշտ/սխալ արդյունք չի ցուցադրվում</li>
+            <li>Արդյունքը նախատեսված է հաջորդ ուսուցման քայլը որոշելու համար</li>
+          </ul>
+          <div class="assessment-card-footer">
+            <a id="diagnosticAction" class="button-link" href="./diagnostic.html">Բացել ախտորոշիչը</a>
+            <span id="diagnosticMeta" class="subtle small"></span>
+          </div>
+        </article>
+
+        <article class="card assessment-card" aria-labelledby="masteryCardTitle">
+          <div class="assessment-card-top">
+            <div>
+              <span class="mode-kicker">ԳԼՈՒԽ I-Ի ՅՈՒՐԱՑՄԱՆ ՍՏՈՒԳՈՒՄ</span>
+              <h3 id="masteryCardTitle">Անկախ կատարողականի հաստատում</h3>
+            </div>
+            <span id="masteryStatus" class="status-badge neutral">—</span>
+          </div>
+          <p id="masterySummary" class="subtle">—</p>
+          <ul class="assessment-rules">
+            <li>20 հարց՝ առանց օգնության</li>
+            <li>Յուրաքանչյուր հարցից հետո արդյունքը չի բացահայտվում</li>
+            <li>Բացվում է միայն անհրաժեշտ հմտությունների ամրապնդումից հետո</li>
+            <li>Անցողիկ կանոնը փորձնական է՝ ≥80% ընդհանուր և առնվազն 1/2 յուրաքանչյուր հմտությունից</li>
+          </ul>
+          <div class="assessment-card-footer">
+            <a id="masteryAction" class="button-link" href="./mastery.html">Բացել յուրացման ստուգումը</a>
+            <span id="masteryMeta" class="subtle small"></span>
+          </div>
+        </article>
+      </div>
+
+      <section class="card assessment-history" aria-labelledby="historyTitle">
+        <h2 id="historyTitle">Վերջին արդյունքները</h2>
+        <div class="dashboard-summary">
+          <div class="stat card compact">
+            <span class="stat-label">Վերջին ախտորոշիչ</span>
+            <strong id="latestDiagnosticScore">—</strong>
+            <span id="latestDiagnosticDate" class="subtle small">—</span>
+          </div>
+          <div class="stat card compact">
+            <span class="stat-label">Վերջին յուրացման ստուգում</span>
+            <strong id="latestMasteryScore">—</strong>
+            <span id="latestMasteryDate" class="subtle small">—</span>
+          </div>
+        </div>
+      </section>
+    </section>
+  </main>
+
+  <script type="module" src="./role-router.js"></script>
+  <script type="module" src="./assessment.js"></script>
+  <script type="module" src="./ux.js"></script>
+  <script type="module" src="./student-shell.js"></script>
+</body>
+</html>
