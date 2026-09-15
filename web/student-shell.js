@@ -6,19 +6,22 @@ const page = document.body.dataset.studentPage || "";
 const focusedByPage = document.body.dataset.focusedTask === "true";
 
 const destinations = [
-  { key: "home", href: "./index.html", label: "Գլխավոր", icon: "⌂" },
-  { key: "physics", href: "./physics-7.html", label: "Ֆիզիկա 7", icon: "Φ" },
-  { key: "assessment", href: "./assessment.html", label: "Գնահատում", icon: "✓" },
-  { key: "progress", href: "./progress.html", label: "Առաջընթաց", icon: "↗" }
+  { key: "home", href: "./index.html", label: "Գլխավոր", icon: "⌂", enabled: true },
+  { key: "physics", href: "./physics-7.html", label: "Ֆիզիկա 7", icon: "Φ", enabled: false },
+  { key: "assessment", href: "./assessment.html", label: "Գնահատում", icon: "✓", enabled: false },
+  { key: "progress", href: "./progress.html", label: "Առաջընթաց", icon: "↗", enabled: false }
 ];
 
-function navLink(item, mobile = false) {
+function navItem(item, mobile = false) {
   const current = item.key === page ? ' aria-current="page"' : "";
   const className = mobile ? "amp-mobile-link" : "amp-nav-link";
-  return `<a class="${className}" href="${item.href}"${current}>
-    <span class="amp-nav-icon" aria-hidden="true">${item.icon}</span>
-    <span>${item.label}</span>
-  </a>`;
+  const contents = `<span class="amp-nav-icon" aria-hidden="true">${item.icon}</span><span>${item.label}</span>`;
+
+  if (!item.enabled) {
+    return `<span class="${className} amp-nav-disabled" aria-disabled="true" title="Կհասանելի լինի հաջորդ Sprint 10.5 փուլերում">${contents}</span>`;
+  }
+
+  return `<a class="${className}" href="${item.href}"${current}>${contents}</a>`;
 }
 
 function ensureNavigation() {
@@ -33,7 +36,7 @@ function ensureNavigation() {
       <span>Հայկական հանրակրթական ծրագիր</span>
     </div>
     <div class="amp-nav-list">
-      ${destinations.map((item) => navLink(item)).join("")}
+      ${destinations.map((item) => navItem(item)).join("")}
     </div>
     <div class="amp-nav-utility">
       <a href="./privacy.html">Գաղտնիություն և հաշիվ</a>
@@ -42,7 +45,7 @@ function ensureNavigation() {
   const mobile = document.createElement("nav");
   mobile.className = "amp-mobile-nav";
   mobile.setAttribute("aria-label", "Բջջային ուսումնական նավարկում");
-  mobile.innerHTML = destinations.map((item) => navLink(item, true)).join("");
+  mobile.innerHTML = destinations.map((item) => navItem(item, true)).join("");
 
   document.body.prepend(side);
   document.body.append(mobile);
