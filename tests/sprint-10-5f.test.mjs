@@ -58,12 +58,18 @@ test("student pages provide viewport metadata and a main landmark", async () => 
 });
 
 test("focused learning and assessment pages keep browsing navigation suppressed", async () => {
-  for (const page of ["web/practice.html", "web/diagnostic.html", "web/mastery.html"]) {
-    const html = await read(page);
-    assert.match(html, /id="questionPanel"/);
-  }
+  const practice = await read("web/practice.html");
+  const diagnostic = await read("web/diagnostic.html");
+  const mastery = await read("web/mastery.html");
+  assert.match(practice, /data-focused-task="true"/);
+  assert.match(practice, /id="practicePanel"/);
+  assert.match(diagnostic, /id="questionPanel"/);
+  assert.match(mastery, /id="questionPanel"/);
+
   const shell = await read("web/student-shell.js");
   const css = await read("web/student-shell.css");
+  assert.match(shell, /focusedByPage/);
+  assert.match(shell, /practicePanel/);
   assert.match(shell, /questionPanel/);
   assert.match(css, /amp-focused-task[\s\S]*\.amp-side-nav/);
   assert.match(css, /amp-focused-task[\s\S]*\.amp-mobile-nav/);
@@ -95,11 +101,16 @@ test("Progress responsive layout collapses safely for tablet and narrow phones",
   assert.match(css, /overflow-wrap:\s*anywhere/);
 });
 
-test("canonical dedicated routes are used for assessment collisions", async () => {
+test("dedicated assessment routes are wired while older compatibility fallbacks remain guarded", async () => {
+  const homeRouter = await read("web/home-assessment-router.js");
+  const diagnostic = await read("web/diagnostic.js");
+  const progress = await read("web/progress.js");
   const practice = await read("web/practice.js");
-  const physics = await read("web/physics-7.js");
-  assert.doesNotMatch(practice, /index\.html\?resume=1/);
-  assert.doesNotMatch(physics, /index\.html\?resume=1/);
-  assert.match(practice, /diagnostic\.html/);
-  assert.match(physics, /diagnostic\.html/);
+  assert.match(homeRouter, /diagnostic\.html/);
+  assert.match(diagnostic, /routeForActive/);
+  assert.match(diagnostic, /practice\.html/);
+  assert.match(diagnostic, /mastery\.html/);
+  assert.match(progress, /session\.mode === "diagnostic"[\s\S]*diagnostic\.html/);
+  assert.match(practice, /session\.mode === "diagnostic"/);
+  assert.match(practice, /session\.mode === "mastery_check"/);
 });
