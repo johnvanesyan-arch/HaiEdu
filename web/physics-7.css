@@ -1,0 +1,184 @@
+/* Sprint 10.5C — Physics 7 chapter/topic/skill browser */
+.subject-auth { max-width: 520px; }
+.subject-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: var(--amp-space-4);
+}
+.subject-heading h2 {
+  margin: 0.2rem 0 0.35rem;
+  font-size: var(--amp-font-size-2xl);
+}
+.subject-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--amp-space-3);
+  margin-bottom: var(--amp-space-4);
+}
+.subject-stat {
+  padding: var(--amp-space-4);
+  display: grid;
+  gap: var(--amp-space-1);
+}
+.subject-stat strong {
+  font-size: var(--amp-font-size-xl);
+}
+.text-link {
+  width: fit-content;
+  font-size: var(--amp-font-size-sm);
+  font-weight: 700;
+}
+.active-session-banner {
+  margin-bottom: var(--amp-space-4);
+  padding: var(--amp-space-5);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--amp-space-4);
+  border-color: #b9cee5;
+  background: linear-gradient(135deg, #fff, #f3f8ff);
+}
+.active-session-banner h3 { margin: var(--amp-space-2) 0; }
+.chapter-card {
+  padding: var(--amp-space-5);
+}
+.chapter-active {
+  border-color: #c9d8e8;
+  box-shadow: var(--amp-shadow-medium);
+}
+.chapter-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--amp-space-4);
+  padding-bottom: var(--amp-space-4);
+  border-bottom: 1px solid var(--amp-color-border);
+}
+.chapter-header h2 {
+  margin: var(--amp-space-2) 0 var(--amp-space-1);
+  font-size: var(--amp-font-size-xl);
+}
+.topic-list {
+  display: grid;
+  gap: var(--amp-space-5);
+  margin-top: var(--amp-space-5);
+}
+.topic-block {
+  display: grid;
+  gap: var(--amp-space-3);
+}
+.topic-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: var(--amp-space-3);
+}
+.topic-head h3 {
+  margin: 0;
+  font-size: var(--amp-font-size-lg);
+}
+.topic-code {
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
+  color: var(--amp-color-text-muted);
+  font-size: var(--amp-font-size-xs);
+  font-weight: 700;
+}
+.skill-browser-list {
+  display: grid;
+  gap: var(--amp-space-2);
+}
+.skill-browser-row {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(180px, 230px) auto;
+  align-items: center;
+  gap: var(--amp-space-4);
+  padding: var(--amp-space-4);
+  border: 1px solid var(--amp-color-border);
+  border-radius: var(--amp-radius-md);
+  background: var(--amp-color-surface);
+}
+.skill-browser-row.recommended {
+  border-color: #9dbde0;
+  box-shadow: inset 4px 0 0 var(--amp-color-primary);
+  background: #f8fbff;
+}
+.skill-browser-copy {
+  min-width: 0;
+}
+.skill-browser-copy h4 {
+  margin: 0.2rem 0 0.25rem;
+  font-size: var(--amp-font-size-md);
+  line-height: 1.4;
+}
+.skill-browser-meta {
+  display: flex;
+  gap: var(--amp-space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.skill-browser-state {
+  display: grid;
+  gap: var(--amp-space-2);
+}
+.skill-browser-state .mini-progress { margin-top: 0; }
+.skill-browser-score {
+  color: var(--amp-color-text-muted);
+  font-size: var(--amp-font-size-sm);
+}
+.skill-browser-action {
+  min-width: 122px;
+}
+.skill-browser-action[disabled] {
+  white-space: normal;
+}
+.future-chapters {
+  margin-top: var(--amp-space-7);
+}
+.future-chapter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--amp-space-3);
+}
+.future-chapter {
+  padding: var(--amp-space-4);
+  display: grid;
+  gap: var(--amp-space-2);
+  opacity: 0.76;
+}
+.future-chapter > span:first-child {
+  color: var(--amp-color-text-muted);
+  font-size: var(--amp-font-size-xs);
+  font-weight: 800;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+.future-chapter h3 {
+  margin: 0;
+  font-size: var(--amp-font-size-md);
+}
+
+@media (max-width: 920px) {
+  .subject-summary { grid-template-columns: 1fr; }
+  .skill-browser-row {
+    grid-template-columns: minmax(0, 1fr) auto;
+  }
+  .skill-browser-state {
+    grid-column: 1 / -1;
+    grid-row: 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .subject-heading,
+  .chapter-header,
+  .active-session-banner,
+  .topic-head {
+    align-items: stretch;
+    flex-direction: column;
+  }
+  .skill-browser-row { grid-template-columns: 1fr; }
+  .skill-browser-state { grid-column: auto; grid-row: auto; }
+  .skill-browser-action { width: 100%; }
+  .future-chapter-grid { grid-template-columns: 1fr; }
+}
