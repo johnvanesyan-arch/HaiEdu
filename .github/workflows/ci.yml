@@ -40,3 +40,4 @@ jobs:
           node --check web/role-router.js
           node --check web/privacy.js
           node --check web/admin.js
+          node --check web/student-shell.js
