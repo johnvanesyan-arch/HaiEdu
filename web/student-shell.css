@@ -4,8 +4,24 @@
   display: none;
 }
 
+.pre-auth-layout {
+  margin: var(--amp-space-5) 0 0;
+  display: grid;
+  grid-template-columns: minmax(340px, .9fr) minmax(0, 1.25fr);
+  gap: var(--amp-space-5);
+  align-items: stretch;
+}
+.pre-auth-layout > .auth-card,
+.pre-auth-layout > .role-access-panel {
+  margin: 0;
+  min-width: 0;
+  height: 100%;
+}
+.pre-auth-layout > .auth-card {
+  align-self: stretch;
+}
+
 .role-access-panel {
-  margin: var(--amp-space-5) 0;
   padding: var(--amp-space-5);
   border-color: #c9d9eb;
   background: linear-gradient(135deg, #ffffff 0%, #f7faff 100%);
@@ -21,7 +37,7 @@
 }
 .role-access-card {
   min-width: 0;
-  min-height: 92px;
+  min-height: 96px;
   display: grid;
   grid-template-columns: 42px minmax(0,1fr) auto;
   gap: var(--amp-space-3);
@@ -66,6 +82,14 @@
 .role-access-card b {
   color: var(--amp-color-primary);
   font-size: 1.2rem;
+}
+.role-access-note {
+  margin: var(--amp-space-4) 0 0;
+  padding-top: var(--amp-space-3);
+  border-top: 1px solid var(--amp-color-border);
+  color: var(--amp-color-text-muted);
+  font-size: var(--amp-font-size-sm);
+  line-height: 1.45;
 }
 
 body.amp-student-shell-active {
@@ -199,6 +223,9 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
 }
 
 @media (max-width: 1080px) {
+  .pre-auth-layout {
+    grid-template-columns: 1fr;
+  }
   body.amp-student-shell-active > main.shell {
     margin-left: calc(var(--amp-nav-width) + 14px);
     margin-right: 14px;
@@ -263,6 +290,7 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
 }
 
 @media (max-width: 520px) {
+  .pre-auth-layout { gap: var(--amp-space-3); }
   .role-access-panel { padding: var(--amp-space-4); }
   .role-access-card { grid-template-columns: 38px minmax(0,1fr) auto; padding: var(--amp-space-3); }
   .role-access-card .role-access-icon { width: 38px; height: 38px; }
