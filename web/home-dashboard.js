@@ -135,7 +135,7 @@ async function startRequiredRemediation(skillId) {
     }
     return;
   }
-  window.location.href = "./index.html?resume=1";
+  window.location.href = "./practice.html";
 }
 
 function handleRequestedResume() {
@@ -188,3 +188,5 @@ supabase.auth.onAuthStateChange((_event, session) => {
   if (session) setTimeout(refreshAssessment, 250);
 });
 setTimeout(refreshAssessment, 500);
+
+import("./home-practice-router.js");
