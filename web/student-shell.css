@@ -63,6 +63,12 @@ body.amp-student-shell-active .amp-side-nav {
   background: rgba(118, 172, 231, .2);
   box-shadow: inset 3px 0 0 #8fc0f3;
 }
+.amp-nav-disabled {
+  cursor: default;
+  opacity: 0.48;
+  user-select: none;
+}
+.amp-nav-disabled:hover { background: transparent; color: #dfe8f3; }
 .amp-nav-icon {
   width: 1.2rem;
   flex: 0 0 1.2rem;
@@ -177,6 +183,11 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
   .amp-mobile-link[aria-current="page"] {
     color: var(--amp-color-primary);
     background: var(--amp-color-primary-soft);
+  }
+  .amp-mobile-link.amp-nav-disabled {
+    opacity: 0.42;
+    background: transparent;
+    color: var(--amp-color-text-muted);
   }
 
   body.amp-student-shell-active.amp-focused-task > main.shell {
