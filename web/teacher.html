@@ -4,21 +4,27 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light" />
-  <title>Ֆիզիկա 7 — Ուսուցչի վահանակ</title>
+  <title>Ուսուցչի աշխատասեղան — Armenian Mastery Platform</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
   <link rel="stylesheet" href="./styles.css" />
-  <link rel="stylesheet" href="./teacher.css" />
   <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./components.css" />
+  <link rel="stylesheet" href="./teacher.css" />
+  <link rel="stylesheet" href="./responsive-qa.css" />
 </head>
 <body>
+  <a class="skip-link" href="#mainContent">Անցնել հիմնական բովանդակությանը</a>
   <main class="shell teacher-shell" id="mainContent">
-    <header class="topbar">
+    <header class="topbar teacher-topbar">
       <div>
-        <p class="eyebrow">ՈՒՍՈՒՑՉԻ ՎԱՀԱՆԱԿ</p>
-        <h1>Ուսուցչի վահանակ</h1>
-        <p class="subtle">Ֆիզիկա 7 · Գլուխ I — դասարանների, աշակերտների և հմտությունների առաջընթաց</p>
+        <p class="eyebrow">ՈՒՍՈՒՑՉԻ ԱՇԽԱՏԱՍԵՂԱՆ</p>
+        <h1>Դասարանների կառավարում</h1>
+        <p class="subtle">Ֆիզիկա 7 · Գլուխ I — դասարան, աշակերտներ, առաջընթաց և միջամտության առաջարկություններ</p>
       </div>
-      <div class="row">
-        <a class="ghost button-link" href="./index.html">Ուսանողի էջ</a>
+      <div class="teacher-header-actions">
+        <a class="ghost button-link" href="./index.html">Հարթակի գլխավոր էջ</a>
+        <a class="ghost button-link" href="./privacy.html">Հաշիվ և գաղտնիություն</a>
         <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
       </div>
     </header>
@@ -28,9 +34,10 @@
       <span>Յուրացման շեմերը և միջամտության առաջարկությունները դեռևս փորձնական են և պետք է վավերացվեն պիլոտի ընթացքում։</span>
     </section>
 
-    <section id="authPanel" class="card auth-card" aria-labelledby="teacherLoginTitle">
-      <h2 id="teacherLoginTitle">Ուսուցչի մուտք</h2>
-      <p class="subtle">Մուտք գործեք ուսուցչի դեր ունեցող հաշվով։</p>
+    <section id="authPanel" class="card auth-card teacher-auth" aria-labelledby="teacherLoginTitle">
+      <span class="mode-kicker">Ուսուցիչ</span>
+      <h2 id="teacherLoginTitle">Մուտք գործեք ձեր աշխատասեղան</h2>
+      <p class="subtle">Օգտագործեք teacher դեր ունեցող հաշիվը։ Մուտքից հետո կտեսնեք միայն ձեր դասարաններն ու դրանց աշակերտներին։</p>
       <label>Էլ. հասցե<input id="emailInput" type="email" autocomplete="email" required /></label>
       <label>Գաղտնաբառ<input id="passwordInput" type="password" autocomplete="current-password" minlength="6" required /></label>
       <button id="signInBtn">Մուտք գործել</button>
@@ -38,83 +45,136 @@
     </section>
 
     <section id="dashboardPanel" class="hidden">
-      <div class="section-heading dashboard-heading">
-        <div>
-          <p class="eyebrow">ՖԻԶԻԿԱ 7 · PHY7-U01</p>
-          <h2 id="teacherName">Ուսուցիչ</h2>
-          <p class="subtle">Ընտրեք դասարան՝ հմտությունների մատրիցան և աշակերտների ցուցակը տեսնելու համար։</p>
+      <section class="card teacher-welcome-card" aria-labelledby="teacherName">
+        <div class="teacher-welcome-copy">
+          <span class="mode-kicker">ԻՄ ԱՇԽԱՏԱՍԵՂԱՆԸ</span>
+          <h2>Բարի գալուստ, <span id="teacherName">Ուսուցիչ</span></h2>
+          <p class="subtle">Սկսեք դասարանի ստեղծումից, տվեք աշակերտներին միանալու կոդը, ապա հետևեք նրանց առաջընթացին այստեղից։</p>
         </div>
-        <button id="refreshBtn" class="ghost">Թարմացնել</button>
+        <div class="teacher-quick-actions">
+          <a class="button-link" href="#createClassCard">+ Նոր դասարան</a>
+          <a class="secondary button-link" href="#profileCard">Իմ պրոֆիլը</a>
+          <button id="refreshBtn" class="ghost">Թարմացնել տվյալները</button>
+        </div>
+      </section>
+
+      <div id="summaryCards" class="dashboard-summary teacher-summary">
+        <div class="stat card compact"><span class="stat-label">Իմ դասարանները</span><strong id="classCount">—</strong><span class="subtle small">ստեղծված դասարան</span></div>
+        <div class="stat card compact"><span class="stat-label">Աշակերտներ</span><strong id="studentCount">—</strong><span class="subtle small">բոլոր դասարաններում</span></div>
+        <div class="stat card compact"><span class="stat-label">Ուշադրություն է պետք</span><strong id="supportCount">—</strong><span class="subtle small">աջակցության կարիք ունեցող աշակերտ</span></div>
       </div>
 
-      <div id="summaryCards" class="dashboard-summary">
-        <div class="stat card compact"><span class="stat-label">Դասարաններ</span><strong id="classCount">—</strong></div>
-        <div class="stat card compact"><span class="stat-label">Աշակերտներ</span><strong id="studentCount">—</strong></div>
-        <div class="stat card compact"><span class="stat-label">Աջակցություն է պետք</span><strong id="supportCount">—</strong></div>
-      </div>
-
-      <section class="card teacher-create-card">
+      <section class="card teacher-onboarding-card" aria-labelledby="teacherStartTitle">
         <div>
-          <span class="mode-kicker">Դասարանի կառավարում</span>
+          <span class="mode-kicker">ԱՐԱԳ ՄԵԿՆԱՐԿ</span>
+          <h3 id="teacherStartTitle">4 քայլով պատրաստեք ձեր դասարանը</h3>
+        </div>
+        <ol class="teacher-onboarding-steps">
+          <li><span>1</span><div><strong>Լրացրեք ձեր անունը</strong><small>Աշխատասեղանում և հետագա հաղորդակցությունում օգտագործվող անունը։</small></div></li>
+          <li><span>2</span><div><strong>Ստեղծեք դասարան</strong><small>Օրինակ՝ «7Ա Ֆիզիկա» և ընտրեք ուսումնական տարին։</small></div></li>
+          <li><span>3</span><div><strong>Տվեք միանալու կոդը</strong><small>Կոդը կամ հրավերի հղումը ուղարկեք աշակերտներին։</small></div></li>
+          <li><span>4</span><div><strong>Հետևեք առաջընթացին</strong><small>Բացեք աշակերտի քարտը՝ հմտություններն ու առաջարկվող քայլերը տեսնելու համար։</small></div></li>
+        </ol>
+      </section>
+
+      <section id="profileCard" class="card teacher-profile-card" aria-labelledby="teacherProfileTitle">
+        <div class="teacher-card-copy">
+          <span class="mode-kicker">ԻՄ ՊՐՈՖԻԼԸ</span>
+          <h3 id="teacherProfileTitle">Ուսուցչի անուն</h3>
+          <p class="subtle">Այս անունը երևում է ձեր ուսուցչական աշխատասեղանում։</p>
+        </div>
+        <div class="teacher-profile-form">
+          <label>Անուն և ազգանուն<input id="teacherDisplayNameInput" maxlength="100" autocomplete="name" placeholder="Օր.՝ Աննա Մարտիրոսյան" /></label>
+          <label>Էլ. հասցե<input id="teacherEmail" type="email" readonly aria-readonly="true" /></label>
+          <button id="saveProfileBtn" type="button">Պահպանել անունը</button>
+        </div>
+        <p id="profileMessage" class="message" aria-live="polite"></p>
+      </section>
+
+      <section id="createClassCard" class="card teacher-create-card">
+        <div class="teacher-card-copy">
+          <span class="mode-kicker">ՆՈՐ ԴԱՍԱՐԱՆ</span>
           <h3>Ստեղծել 7-րդ դասարանի ֆիզիկայի դասարան</h3>
-          <p class="subtle">Համակարգը կստեղծի միանալու կոդ, որը կարող եք տալ աշակերտներին։</p>
+          <p class="subtle">Դասարանը ստեղծելուց հետո համակարգը կստեղծի 8-նիշ միանալու կոդ։</p>
         </div>
         <div class="teacher-create-form">
-          <input id="classNameInput" placeholder="Օր.՝ 7Ա Ֆիզիկա" aria-label="Դասարանի անուն" />
-          <input id="academicYearInput" value="2026-2027" aria-label="Ուսումնական տարի" />
-          <button id="createClassBtn">Ստեղծել</button>
+          <label>Դասարանի անուն<input id="classNameInput" placeholder="Օր.՝ 7Ա Ֆիզիկա" /></label>
+          <label>Ուսումնական տարի<input id="academicYearInput" value="2026-2027" /></label>
+          <button id="createClassBtn">Ստեղծել դասարան</button>
         </div>
         <p id="classMessage" class="message" aria-live="polite"></p>
       </section>
 
       <div class="teacher-layout">
-        <aside class="card teacher-sidebar">
-          <h3>Իմ դասարանները</h3>
+        <aside class="card teacher-sidebar" aria-labelledby="myClassesTitle">
+          <div class="teacher-sidebar-heading">
+            <div><span class="mode-kicker">ԴԱՍԱՐԱՆՆԵՐ</span><h3 id="myClassesTitle">Իմ դասարանները</h3></div>
+          </div>
           <div id="classList" class="teacher-class-list"></div>
         </aside>
 
         <section class="teacher-main">
           <div id="emptyClass" class="card teacher-empty">
-            <h3>Ընտրեք դասարան</h3>
-            <p class="subtle">Այստեղ կերևան աշակերտների ցուցակը, հմտությունների մատրիցան և միջամտության առաջարկությունները։</p>
+            <div class="teacher-empty-icon" aria-hidden="true">▦</div>
+            <h3>Ընտրեք կամ ստեղծեք դասարան</h3>
+            <p class="subtle">Այստեղ կերևան դասարանի միանալու կոդը, աշակերտների ցուցակը, հմտությունների մատրիցան և առաջարկվող միջամտությունները։</p>
+            <a class="button-link" href="#createClassCard">Ստեղծել դասարան</a>
           </div>
 
           <div id="classView" class="hidden">
             <section class="card class-header-card">
-              <div>
-                <span class="mode-kicker">Ընտրված դասարան</span>
+              <div class="class-header-main">
+                <div class="class-title-row">
+                  <span class="mode-kicker">ԸՆՏՐՎԱԾ ԴԱՍԱՐԱՆ</span>
+                  <span id="classStatusBadge" class="status-badge success">Ակտիվ</span>
+                </div>
                 <h2 id="selectedClassName">—</h2>
                 <p id="selectedClassMeta" class="subtle">—</p>
+                <button id="toggleClassBtn" class="ghost small-button" type="button">Արխիվացնել դասարանը</button>
               </div>
               <div class="join-code-box">
-                <span class="stat-label">Միանալու կոդ</span>
+                <span class="stat-label">ԱՇԱԿԵՐՏՆԵՐԻ ՄԻԱՆԱԼՈՒ ԿՈԴ</span>
                 <strong id="joinCode">—</strong>
+                <p class="subtle small">Ուղարկեք կոդը կամ հրավերի հղումը ձեր աշակերտներին։</p>
                 <div class="join-code-actions">
-                  <button id="copyCodeBtn" class="ghost small-button" type="button">Պատճենել կոդը</button>
-                  <button id="rotateCodeBtn" class="ghost small-button" type="button">Նոր կոդ</button>
+                  <button id="copyCodeBtn" class="secondary small-button" type="button">Պատճենել կոդը</button>
+                  <button id="copyInviteBtn" class="secondary small-button" type="button">Պատճենել հղումը</button>
+                  <a id="openJoinBtn" class="ghost button-link small-button" href="./join.html" target="_blank" rel="noopener">Բացել միանալու էջը</a>
+                  <button id="rotateCodeBtn" class="ghost small-button" type="button">Ստեղծել նոր կոդ</button>
                 </div>
                 <span id="copyCodeStatus" class="subtle small" aria-live="polite"></span>
               </div>
             </section>
 
-            <section class="card matrix-card">
-              <div class="skill-map-heading">
+            <section class="card roster-card">
+              <div class="teacher-section-heading">
                 <div>
-                  <h3>Հմտությունների մատրիցա</h3>
-                  <p class="subtle">Կանաչ՝ կայուն, դեղին՝ զարգացող, կարմիր՝ աջակցություն է պետք, մոխրագույն՝ դեռ տվյալ չկա։</p>
+                  <span class="mode-kicker">ԱՇԱԿԵՐՏՆԵՐ</span>
+                  <h3>Դասարանի ցուցակ</h3>
+                  <p class="subtle">Բացեք աշակերտի առաջընթացը կամ հեռացրեք նրան այս դասարանից։</p>
                 </div>
+                <label class="teacher-search-label">Փնտրել աշակերտ<input id="studentSearchInput" type="search" placeholder="Անուն…" /></label>
               </div>
-              <div id="matrixWrap" class="matrix-wrap"></div>
+              <p id="rosterCount" class="subtle small" aria-live="polite"></p>
+              <div id="roster" class="roster"></div>
             </section>
 
-            <section class="card roster-card">
-              <div class="skill-map-heading">
+            <section class="card matrix-card">
+              <div class="teacher-section-heading">
                 <div>
-                  <h3>Աշակերտների ցուցակ</h3>
-                  <p class="subtle">Սեղմեք աշակերտի վրա՝ անհատական առաջընթացը բացելու համար։</p>
+                  <span class="mode-kicker">ՀՄՏՈՒԹՅՈՒՆՆԵՐ</span>
+                  <h3>Հմտությունների մատրիցա</h3>
+                  <p class="subtle">Յուրաքանչյուր սյունակ մեկ հմտություն է։ Սեղմեք աշակերտի անունը՝ մանրամասները բացելու համար։</p>
+                </div>
+                <div class="teacher-legend" aria-label="Հմտության վիճակների բացատրություն">
+                  <span><i class="legend-swatch secure"></i>Կայուն</span>
+                  <span><i class="legend-swatch developing"></i>Զարգացող</span>
+                  <span><i class="legend-swatch needs-support"></i>Աջակցություն է պետք</span>
+                  <span><i class="legend-swatch not-assessed"></i>Տվյալ չկա</span>
                 </div>
               </div>
-              <div id="roster" class="roster"></div>
+              <p class="subtle small matrix-help">Փոքր էկրանին աղյուսակը կարելի է շարժել հորիզոնական։</p>
+              <div id="matrixWrap" class="matrix-wrap" tabindex="0" aria-label="Հմտությունների մատրիցա"></div>
             </section>
           </div>
         </section>
@@ -123,9 +183,9 @@
 
     <div id="studentDrawer" class="student-drawer hidden" aria-hidden="true">
       <div class="student-drawer-backdrop" id="drawerBackdrop"></div>
-      <aside class="student-drawer-panel" aria-labelledby="studentDrawerName">
+      <aside class="student-drawer-panel" role="dialog" aria-modal="true" aria-labelledby="studentDrawerName">
         <div class="drawer-head">
-          <div><span class="mode-kicker">Անհատական առաջընթաց</span><h2 id="studentDrawerName">—</h2></div>
+          <div><span class="mode-kicker">ԱՆՀԱՏԱԿԱՆ ԱՌԱՋԸՆԹԱՑ</span><h2 id="studentDrawerName">—</h2></div>
           <button id="closeDrawerBtn" class="ghost">Փակել</button>
         </div>
         <div id="studentDrawerContent"><p class="subtle">Բեռնվում է…</p></div>
