@@ -11,15 +11,22 @@ function setMessage(text, bad = false) {
   message.style.color = bad ? "#8a3342" : "#356246";
 }
 
+const inviteCode = new URLSearchParams(window.location.search).get("code")?.trim().toUpperCase() ?? "";
+if (/^[A-Z0-9]{8}$/.test(inviteCode)) {
+  joinCode.value = inviteCode;
+}
+
 const { data: sessionData } = await supabase.auth.getSession();
 if (!sessionData.session) {
   joinBtn.disabled = true;
-  setMessage("Նախ մուտք գործեք ուսանողի էջում, ապա վերադարձեք այստեղ։", true);
+  setMessage("Նախ մուտք գործեք ուսանողի էջում, ապա վերադարձեք այստեղ։ Կոդը պահպանված է այս հղման մեջ։", true);
+} else if (inviteCode) {
+  setMessage("Ուսուցչի հրավերի կոդը լրացված է։ Սեղմեք «Միանալ»։");
 }
 
 joinBtn.addEventListener("click", async () => {
   const code = joinCode.value.trim().toUpperCase();
-  if (!code) return setMessage("Մուտքագրեք join code-ը։", true);
+  if (!code) return setMessage("Մուտքագրեք միանալու կոդը։", true);
   joinBtn.disabled = true;
   setMessage("Միանում ենք…");
   const { data, error } = await supabase.functions.invoke("join-class", { body: { joinCode: code } });
