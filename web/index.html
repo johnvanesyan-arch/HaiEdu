@@ -4,21 +4,22 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light" />
-  <title>Ֆիզիկա 7 — Իմ առաջընթացը</title>
+  <title>Ուսուցման հարթակ — Գլխավոր</title>
   <link rel="stylesheet" href="./tokens.css" />
   <link rel="stylesheet" href="./base.css" />
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
   <link rel="stylesheet" href="./components.css" />
   <link rel="stylesheet" href="./student-shell.css" />
+  <link rel="stylesheet" href="./home.css" />
 </head>
 <body data-student-page="home">
   <main class="shell" id="mainContent">
     <header class="topbar">
       <div>
         <p class="eyebrow">ՀԱՅԿԱԿԱՆ ՈՒՍՈՒՄՆԱԿԱՆ ԾՐԱԳՐԻ ՅՈՒՐԱՑՄԱՆ ՀԱՐԹԱԿ</p>
-        <h1>Ֆիզիկա 7</h1>
-        <p class="subtle">Գլուխ I — Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
+        <h1>Գլխավոր</h1>
+        <p class="subtle">Ֆիզիկա 7 · Գլուխ I — Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
       </div>
       <div class="row">
         <a class="ghost button-link" href="./privacy.html">Գաղտնիություն</a>
@@ -44,11 +45,11 @@
     </section>
 
     <section id="modePanel" class="hidden" aria-labelledby="progressTitle">
-      <div class="section-heading dashboard-heading">
+      <div class="section-heading dashboard-heading home-heading">
         <div>
           <p class="eyebrow">ԻՄ ՈՒՍՈՒՑՈՒՄԸ</p>
-          <h2 id="progressTitle">Իմ առաջընթացը</h2>
-          <p class="subtle">Ախտորոշիչ արդյունքները, հմտությունների քարտեզը և հաջորդ առաջարկվող քայլը։</p>
+          <h2 id="progressTitle">Ի՞նչ անել հաջորդը</h2>
+          <p class="subtle">Համակարգը համադրում է ընթացիկ սեսիան, ախտորոշիչը, յուրացումը և նախապայմանները՝ հաջորդ քայլը առաջարկելու համար։</p>
         </div>
         <button id="refreshDashboardBtn" class="ghost">Թարմացնել</button>
       </div>
@@ -56,38 +57,54 @@
       <div id="dashboardLoading" class="card dashboard-loading" aria-live="polite">Առաջընթացը բեռնվում է…</div>
 
       <div id="dashboardContent" class="hidden">
-        <div class="dashboard-summary">
+        <section class="card home-next-card" aria-labelledby="recommendationTitle">
+          <div class="home-next-copy">
+            <span class="mode-kicker">Հաջորդ առաջարկվող քայլը</span>
+            <h3 id="recommendationTitle">—</h3>
+            <p id="recommendationText" class="subtle">—</p>
+            <div class="skill-browser-meta">
+              <span id="nextStepLabel" class="status-badge info">—</span>
+              <span id="nextStepSkill" class="subtle small">—</span>
+            </div>
+          </div>
+          <button id="resumeLearningBtn">Շարունակել</button>
+        </section>
+
+        <div class="dashboard-summary home-summary">
+          <div class="stat card compact">
+            <span class="stat-label">Գլուխ I-ի առաջընթաց</span>
+            <strong id="completedSkills">—</strong>
+            <div class="mini-progress"><div id="overallProgressBar" class="mini-progress-bar" style="width:0%"></div></div>
+            <span class="subtle small">Ամրապնդված հմտություններ</span>
+          </div>
           <div class="stat card compact">
             <span class="stat-label">Վերջին ախտորոշիչ</span>
             <strong id="diagnosticScore">—</strong>
             <span id="diagnosticMeta" class="subtle small">—</span>
           </div>
-          <div class="stat card compact">
-            <span class="stat-label">Ամրապնդված հմտություններ</span>
-            <strong id="completedSkills">—</strong>
-            <div class="mini-progress"><div id="overallProgressBar" class="mini-progress-bar" style="width:0%"></div></div>
-          </div>
-          <div class="stat card compact">
-            <span class="stat-label">Հաջորդ քայլ</span>
-            <strong id="nextStepLabel">—</strong>
-            <span id="nextStepSkill" class="subtle small">—</span>
+          <div class="stat card compact home-assessment-card">
+            <span class="stat-label">Յուրացման ստուգում</span>
+            <div class="home-assessment-state"><span id="homeAssessmentBadge" class="status-badge neutral">Բեռնվում է</span></div>
+            <strong id="homeAssessmentTitle">—</strong>
+            <span id="homeAssessmentText" class="subtle small">Կարգավիճակը բեռնվում է…</span>
+            <a id="homeAssessmentLink" class="text-link" href="./mastery.html">Դիտել ստուգումը</a>
           </div>
         </div>
 
-        <section class="card recommendation-card" aria-labelledby="recommendationTitle">
+        <section class="card home-browser-card" aria-labelledby="physicsBrowserTitle">
           <div>
-            <span class="mode-kicker">Անձնական առաջարկություն</span>
-            <h3 id="recommendationTitle">—</h3>
-            <p id="recommendationText" class="subtle">—</p>
+            <span class="mode-kicker">Ֆիզիկա 7</span>
+            <h3 id="physicsBrowserTitle">Բացեք գլուխների և հմտությունների քարտեզը</h3>
+            <p class="subtle">Գլուխ I-ում տեսեք 5 թեմաները, բոլոր 10 հմտությունները, դրանց վիճակը և հասանելի հաջորդ գործողությունը։</p>
           </div>
-          <button id="resumeLearningBtn">Շարունակել</button>
+          <a class="button-link" href="./physics-7.html">Բացել Ֆիզիկա 7-ը</a>
         </section>
 
-        <section class="card skill-map-card" aria-labelledby="skillMapTitle">
+        <section class="card skill-map-card home-skill-preview" aria-labelledby="skillMapTitle">
           <div class="skill-map-heading">
             <div>
-              <h3 id="skillMapTitle">Հմտությունների քարտեզ</h3>
-              <p class="subtle">Ախտորոշիչը ցույց է տալիս վերջին ստուգման պատկերը, իսկ յուրացման մակարդակը՝ ընդհանուր ուսուցման առաջընթացը։</p>
+              <h3 id="skillMapTitle">Հմտությունների արագ դիտում</h3>
+              <p class="subtle">Ցուցադրվում են առաջին երեք հմտությունները։ Ամբողջ քարտեզը հասանելի է Ֆիզիկա 7 էջում։</p>
             </div>
             <div class="legend" aria-label="Հմտության վիճակների բացատրություն">
               <span class="band-dot strong" aria-hidden="true"></span> Ուժեղ
@@ -96,17 +113,18 @@
             </div>
           </div>
           <div id="skillMap" class="skill-map"></div>
+          <div class="home-preview-footer"><a class="ghost button-link" href="./physics-7.html">Դիտել բոլոր հմտությունները</a></div>
         </section>
 
-        <div class="mode-grid actions-grid">
+        <div class="mode-grid actions-grid home-actions">
           <article class="card mode-card">
-            <span class="mode-kicker">Ախտորոշում</span>
+            <span class="mode-kicker">Գլուխ I-ի ախտորոշիչ</span>
             <h3>20 հարց</h3>
-            <p>Ստուգեք Գլուխ I-ի բոլոր 10 հմտությունները՝ առանց հարցերի կրկնության։</p>
+            <p>Ստուգեք Գլուխ I-ի բոլոր 10 հմտությունները՝ առանց հարցերի կրկնության և առանց յուրաքանչյուր հարցից հետո ճիշտ/սխալ արձագանքի։</p>
             <button id="startDiagnosticBtn">Սկսել նոր ախտորոշիչ</button>
           </article>
           <article class="card mode-card">
-            <span class="mode-kicker">Վարժանք</span>
+            <span class="mode-kicker">Հարմարվող վարժանք</span>
             <h3>Մինչև 8 հարց</h3>
             <p id="practiceCardText">Սկսեք առաջարկվող հմտությունից կամ շարունակեք ընթացիկ ուսուցումը։</p>
             <button id="startPracticeBtn">Սկսել առաջարկվող վարժանքը</button>
@@ -118,34 +136,19 @@
 
     <section id="practicePanel" class="hidden" aria-labelledby="prompt">
       <div class="session-toolbar">
-        <button id="backBtn" class="ghost">← Իմ առաջընթացը</button>
+        <button id="backBtn" class="ghost">← Գլխավոր</button>
       </div>
 
       <div class="dashboard-row">
-        <div class="stat card compact">
-          <span class="stat-label">Ռեժիմ</span>
-          <strong id="sessionMode">—</strong>
-        </div>
-        <div class="stat card compact">
-          <span class="stat-label">Առաջընթաց</span>
-          <strong id="sessionProgress">—</strong>
-        </div>
-        <div class="stat card compact">
-          <span class="stat-label">Հմտություն</span>
-          <strong id="skillCode">—</strong>
-        </div>
+        <div class="stat card compact"><span class="stat-label">Ռեժիմ</span><strong id="sessionMode">—</strong></div>
+        <div class="stat card compact"><span class="stat-label">Առաջընթաց</span><strong id="sessionProgress">—</strong></div>
+        <div class="stat card compact"><span class="stat-label">Հմտություն</span><strong id="skillCode">—</strong></div>
       </div>
 
       <section class="card question-card">
         <div class="question-heading">
-          <div>
-            <p id="skillName" class="skill-name">—</p>
-            <p id="itemCode" class="item-code">—</p>
-          </div>
-          <div class="question-actions">
-            <span id="difficulty" class="pill">—</span>
-            <button id="nextBtn" class="ghost" disabled>Հաջորդ հարց</button>
-          </div>
+          <div><p id="skillName" class="skill-name">—</p><p id="itemCode" class="item-code">—</p></div>
+          <div class="question-actions"><span id="difficulty" class="pill">—</span><button id="nextBtn" class="ghost" disabled>Հաջորդ հարց</button></div>
         </div>
 
         <div class="session-progress-track"><div id="sessionProgressBar" class="session-progress-bar" style="width:0%"></div></div>
@@ -187,6 +190,7 @@
 
   <script type="module" src="./role-router.js"></script>
   <script type="module" src="./app.js"></script>
+  <script type="module" src="./home-dashboard.js"></script>
   <script type="module" src="./remediation.js"></script>
   <script type="module" src="./session-watchdog.js"></script>
   <script type="module" src="./ux.js"></script>
