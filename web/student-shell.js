@@ -22,43 +22,61 @@ function ensureQaStylesheet() {
 }
 
 function ensureRoleAccess() {
-  if (page !== "home" || document.getElementById("roleAccessPanel")) return;
+  if (page !== "home") return;
   const authPanel = document.getElementById("authPanel");
   if (!authPanel) return;
 
-  const section = document.createElement("section");
-  section.id = "roleAccessPanel";
-  section.className = "card role-access-panel";
-  section.setAttribute("aria-labelledby", "roleAccessTitle");
-  section.innerHTML = `
-    <div class="role-access-heading">
-      <span class="mode-kicker">ՀԱՐԹԱԿԻ ՄՈՒՏՔ</span>
-      <h2 id="roleAccessTitle">Ընտրեք ձեր դերը</h2>
-      <p class="subtle">Յուրաքանչյուր բաժին ունի իր առանձին աշխատասեղանը և մուտքի վերահսկումը։</p>
-    </div>
-    <div class="role-access-grid">
-      <a class="role-access-card student" href="#authPanel">
-        <span class="role-access-icon" aria-hidden="true">◉</span>
-        <span><strong>Աշակերտ</strong><small>Սովորել, վարժվել և հետևել առաջընթացին</small></span>
-        <b aria-hidden="true">→</b>
-      </a>
-      <a class="role-access-card teacher" href="./teacher.html">
-        <span class="role-access-icon" aria-hidden="true">▦</span>
-        <span><strong>Ուսուցիչ</strong><small>Կառավարել դասարանները և հետևել աշակերտներին</small></span>
-        <b aria-hidden="true">→</b>
-      </a>
-      <a class="role-access-card content" href="./content.html">
-        <span class="role-access-icon" aria-hidden="true">✓</span>
-        <span><strong>Բովանդակության ադմին</strong><small>QA, review և հարցերի բանկի կառավարում</small></span>
-        <b aria-hidden="true">→</b>
-      </a>
-      <a class="role-access-card admin" href="./admin.html">
-        <span class="role-access-icon" aria-hidden="true">⚙</span>
-        <span><strong>Ադմին</strong><small>Հաշիվներ, դերեր, անվտանգություն և կառավարում</small></span>
-        <b aria-hidden="true">→</b>
-      </a>
-    </div>`;
-  authPanel.parentNode.insertBefore(section, authPanel);
+  const loginTitle = document.getElementById("loginTitle");
+  if (loginTitle) loginTitle.textContent = "Աշակերտի մուտք";
+  const loginIntro = authPanel.querySelector("p.subtle");
+  if (loginIntro) loginIntro.textContent = "Մուտք գործեք կամ ստեղծեք աշակերտի հաշիվ՝ սովորելու, վարժվելու և առաջընթացին հետևելու համար։";
+
+  let layout = document.getElementById("preAuthLayout");
+  if (!layout) {
+    layout = document.createElement("div");
+    layout.id = "preAuthLayout";
+    layout.className = "pre-auth-layout";
+    authPanel.parentNode.insertBefore(layout, authPanel);
+    layout.appendChild(authPanel);
+  }
+
+  let section = document.getElementById("roleAccessPanel");
+  if (!section) {
+    section = document.createElement("section");
+    section.id = "roleAccessPanel";
+    section.className = "card role-access-panel";
+    section.setAttribute("aria-labelledby", "roleAccessTitle");
+    section.innerHTML = `
+      <div class="role-access-heading">
+        <span class="mode-kicker">ՄՈՒՏՔ ԸՍՏ ԴԵՐԻ</span>
+        <h2 id="roleAccessTitle">Ինչպե՞ս եք օգտագործում հարթակը</h2>
+        <p class="subtle">Ընտրեք ձեր աշխատասեղանը։ Յուրաքանչյուր բաժնի հասանելիությունը շարունակում է վերահսկվել ձեր հաշվին տրված դերով։</p>
+      </div>
+      <div class="role-access-grid">
+        <a class="role-access-card student" href="#authPanel">
+          <span class="role-access-icon" aria-hidden="true">◉</span>
+          <span><strong>Աշակերտ</strong><small>Սովորել, վարժվել և հետևել առաջընթացին</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+        <a class="role-access-card teacher" href="./teacher.html">
+          <span class="role-access-icon" aria-hidden="true">▦</span>
+          <span><strong>Ուսուցիչ</strong><small>Դասարաններ, աշակերտներ և առաջընթաց</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+        <a class="role-access-card content" href="./content.html">
+          <span class="role-access-icon" aria-hidden="true">✓</span>
+          <span><strong>Բովանդակության ադմին</strong><small>Հարցերի բանկ, QA և review</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+        <a class="role-access-card admin" href="./admin.html">
+          <span class="role-access-icon" aria-hidden="true">⚙</span>
+          <span><strong>Ադմին</strong><small>Հաշիվներ, դերեր և համակարգի կառավարում</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+      </div>
+      <p class="role-access-note">Դերի ընտրությունը մուտքի իրավասություն չի տալիս․ անհրաժեշտ է համապատասխան դեր ունեցող հաշիվ։</p>`;
+  }
+  if (!section.parentNode || section.parentNode !== layout) layout.appendChild(section);
 }
 
 function navItem(item, mobile = false) {
@@ -122,12 +140,27 @@ function inferFocusedTask() {
   return false;
 }
 
+function syncHomeHeader(authenticated) {
+  if (page !== "home") return;
+  const heading = document.querySelector(".topbar h1");
+  const subtitle = document.querySelector(".topbar p.subtle");
+  if (heading) heading.textContent = authenticated ? "Գլխավոր" : "Ուսուցման հարթակ";
+  if (subtitle) {
+    subtitle.textContent = authenticated
+      ? "Ֆիզիկա 7 · Գլուխ I — Բնության ուսումնասիրության ֆիզիկական մեթոդները"
+      : "Ընտրեք ձեր դերը կամ մուտք գործեք որպես աշակերտ։";
+  }
+}
+
 function syncShellState() {
   const authenticated = inferAuthenticated();
   document.body.classList.toggle("amp-student-shell-active", authenticated);
   document.body.classList.toggle("amp-focused-task", authenticated && inferFocusedTask());
   const roleAccess = document.getElementById("roleAccessPanel");
   if (roleAccess) roleAccess.classList.toggle("hidden", authenticated);
+  const preAuthLayout = document.getElementById("preAuthLayout");
+  if (preAuthLayout) preAuthLayout.classList.toggle("hidden", authenticated);
+  syncHomeHeader(authenticated);
 }
 
 ensureQaStylesheet();
