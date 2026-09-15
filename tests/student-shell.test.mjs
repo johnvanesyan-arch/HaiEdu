@@ -82,7 +82,7 @@ test("Physics 7 browser exposes chapter-topic-skill hierarchy without privileged
   assert.match(code, /PHY7-U01-S10/);
   assert.match(code, /get-student-dashboard/);
   assert.match(code, /get-mastery-check-status/);
-  assert.match(code, /start-learning-session/);
+  assert.match(code, /practice\.html\?skill=/);
   assert.doesNotMatch(code, /service_role|answer_key|item_answer_keys/i);
 });
 
@@ -94,4 +94,51 @@ test("Physics browser keeps diagnostic, practice mastery and verified completion
   assert.match(code, /verified/);
   assert.match(code, /secure/);
   assert.match(code, /needs_support/);
+});
+
+test("Sprint 10.5D practice page is a focused authenticated task surface", async () => {
+  const html = await read("web/practice.html");
+  assert.match(html, /data-focused-task="true"/);
+  assert.match(html, /id="practicePanel"/);
+  assert.match(html, /id="completionPanel"/);
+  assert.match(html, /id="helpControls"/);
+  assert.match(html, /id="masteryCard"/);
+  assert.match(html, /practice\.js/);
+  assert.match(html, /remediation\.js/);
+  assert.match(html, /session-watchdog\.js/);
+  assert.match(html, /student-shell\.js/);
+});
+
+test("dedicated practice preserves server-owned adaptive, grading and remediation contracts", async () => {
+  const code = await read("web/practice.js");
+  assert.match(code, /start-learning-session/);
+  assert.match(code, /get-session-item/);
+  assert.match(code, /submit-answer/);
+  assert.match(code, /mode:\s*"practice"/);
+  assert.match(code, /selectionMode/);
+  assert.match(code, /usedHelp/);
+  assert.match(code, /mastery_reached/);
+  assert.match(code, /independent_recovery/);
+  assert.match(code, /item_limit_reached/);
+  assert.doesNotMatch(code, /service_role|answer_key|item_answer_keys/i);
+});
+
+test("Home and Physics routes hand practice off to the dedicated page", async () => {
+  const home = await read("web/home-dashboard.js");
+  const router = await read("web/home-practice-router.js");
+  const physics = await read("web/physics-7.js");
+  assert.match(home, /window\.location\.href = "\.\/practice\.html"/);
+  assert.match(home, /home-practice-router\.js/);
+  assert.match(router, /practice\.html\?skill=/);
+  assert.match(router, /active\?\.mode === "practice"/);
+  assert.match(physics, /href="\.\/practice\.html"/);
+  assert.match(physics, /window\.location\.href = `\.\/practice\.html\?skill=/);
+});
+
+test("practice does not silently replace active diagnostic or mastery check", async () => {
+  const code = await read("web/practice.js");
+  assert.match(code, /session\.mode === "diagnostic"/);
+  assert.match(code, /index\.html\?resume=1/);
+  assert.match(code, /session\.mode === "mastery_check"/);
+  assert.match(code, /mastery\.html/);
 });
