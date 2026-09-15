@@ -27,10 +27,11 @@ test("Sprint 11A defines explicit assessment pools and protects Mastery content"
   assert.match(migration, /not private\.item_is_protected\(id\)/);
 });
 
-test("canonical and legacy practice selectors use only the Practice pool", () => {
+test("canonical Practice delivery uses the Practice pool and legacy untracked delivery stays closed", () => {
   assert.match(helper, /practice: "PHY7-U01-PRACTICE-BASELINE"/);
   assert.match(getSessionItem, /getEligiblePoolItemIds\(admin, "practice"\)/);
-  assert.match(legacyPractice, /getEligiblePoolItemIds\(admin, "practice"\)/);
+  assert.match(legacyPractice, /legacy_practice_delivery_retired/);
+  assert.doesNotMatch(legacyPractice, /getEligiblePoolItemIds\(admin, "practice"\)/);
 });
 
 test("Diagnostic and Mastery session creation use separate eligible pools", () => {
