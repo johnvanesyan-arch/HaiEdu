@@ -1,0 +1,100 @@
+/* Sprint 10.5C — student Home dashboard */
+.home-heading {
+  align-items: flex-end;
+}
+.home-heading h2 {
+  margin: 0.2rem 0 0.35rem;
+  font-size: var(--amp-font-size-2xl);
+}
+.home-next-card {
+  position: relative;
+  overflow: hidden;
+  padding: var(--amp-space-6);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--amp-space-5);
+  align-items: center;
+  background: linear-gradient(135deg, #ffffff 0%, #f3f8ff 100%);
+  border-color: #b9cee5;
+  box-shadow: var(--amp-shadow-medium);
+}
+.home-next-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 auto 0 0;
+  width: 5px;
+  background: var(--amp-color-primary);
+}
+.home-next-card h3 {
+  margin: var(--amp-space-2) 0;
+  font-size: var(--amp-font-size-xl);
+}
+.home-next-card .home-next-copy {
+  min-width: 0;
+}
+.home-next-card #resumeLearningBtn {
+  min-width: 150px;
+}
+.home-summary {
+  margin-top: var(--amp-space-4);
+}
+.home-summary .stat strong {
+  font-size: var(--amp-font-size-xl);
+}
+.home-assessment-card {
+  display: grid;
+  gap: var(--amp-space-2);
+}
+.home-assessment-card .home-assessment-state {
+  display: flex;
+  gap: var(--amp-space-2);
+  align-items: center;
+  flex-wrap: wrap;
+}
+.home-browser-card {
+  margin-top: var(--amp-space-4);
+  padding: var(--amp-space-5);
+  display: flex;
+  justify-content: space-between;
+  gap: var(--amp-space-4);
+  align-items: center;
+}
+.home-browser-card h3 {
+  margin: 0 0 var(--amp-space-1);
+}
+.home-browser-card .button-link {
+  flex: 0 0 auto;
+}
+.home-skill-preview {
+  margin-top: var(--amp-space-4);
+}
+.home-skill-preview #skillMap .skill-tile:nth-child(n+4) {
+  display: none;
+}
+.home-skill-preview .skill-map {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+}
+.home-preview-footer {
+  margin-top: var(--amp-space-4);
+  display: flex;
+  justify-content: flex-end;
+}
+.home-actions {
+  margin-top: var(--amp-space-4);
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+}
+.home-actions .mode-card {
+  min-height: 210px;
+}
+
+@media (max-width: 900px) {
+  .home-skill-preview .skill-map { grid-template-columns: 1fr; }
+  .home-next-card { grid-template-columns: 1fr; }
+  .home-next-card #resumeLearningBtn { width: 100%; }
+}
+
+@media (max-width: 760px) {
+  .home-browser-card { align-items: stretch; flex-direction: column; }
+  .home-browser-card .button-link { width: 100%; }
+  .home-actions { grid-template-columns: 1fr; }
+}
