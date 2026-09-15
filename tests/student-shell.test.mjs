@@ -29,6 +29,7 @@ test("mastery check uses shared design primitives and task-aware shell", async (
   const html = await read("web/mastery.html");
   assert.match(html, /tokens\.css/);
   assert.match(html, /components\.css/);
+  assert.match(html, /assessment-task\.css/);
   assert.match(html, /student-shell\.css/);
   assert.match(html, /data-student-page="assessment"/);
   assert.match(html, /student-shell\.js/);
@@ -42,11 +43,11 @@ test("student shell does not own educational truth", async () => {
   assert.match(code, /questionPanel/);
 });
 
-test("Physics 7 route is enabled while later primary routes stay safely disabled", async () => {
+test("Home, Physics 7 and Assessment routes are enabled while Progress remains safely disabled", async () => {
   const code = await read("web/student-shell.js");
   assert.match(code, /key: "home"[\s\S]*enabled: true/);
   assert.match(code, /key: "physics"[\s\S]*enabled: true/);
-  assert.match(code, /key: "assessment"[\s\S]*enabled: false/);
+  assert.match(code, /key: "assessment"[\s\S]*enabled: true/);
   assert.match(code, /key: "progress"[\s\S]*enabled: false/);
   assert.match(code, /aria-disabled="true"/);
 });
@@ -138,7 +139,68 @@ test("Home and Physics routes hand practice off to the dedicated page", async ()
 test("practice does not silently replace active diagnostic or mastery check", async () => {
   const code = await read("web/practice.js");
   assert.match(code, /session\.mode === "diagnostic"/);
-  assert.match(code, /index\.html\?resume=1/);
   assert.match(code, /session\.mode === "mastery_check"/);
   assert.match(code, /mastery\.html/);
+});
+
+test("Sprint 10.5E assessment hub separates diagnostic and mastery purposes", async () => {
+  const html = await read("web/assessment.html");
+  const code = await read("web/assessment.js");
+  assert.match(html, /data-student-page="assessment"/);
+  assert.match(html, /ԳԼՈՒԽ I-Ի ԱԽՏՈՐՈՇԻՉ/);
+  assert.match(html, /ԳԼՈՒԽ I-Ի ՅՈՒՐԱՑՄԱՆ ՍՏՈՒԳՈՒՄ/);
+  assert.match(html, /href="\.\/diagnostic\.html"/);
+  assert.match(html, /href="\.\/mastery\.html"/);
+  assert.match(code, /get-student-dashboard/);
+  assert.match(code, /get-mastery-check-status/);
+  assert.match(code, /active\.mode === "diagnostic"/);
+  assert.match(code, /active\.mode === "mastery_check"/);
+  assert.doesNotMatch(code, /service_role|item_answer_keys|answer_key/i);
+});
+
+test("dedicated diagnostic is Chapter I scoped, help-free and defers correctness", async () => {
+  const html = await read("web/diagnostic.html");
+  const code = await read("web/diagnostic.js");
+  assert.match(html, /ԳԼՈՒԽ I/);
+  assert.match(html, /20 հարց/);
+  assert.doesNotMatch(html, /helpBtn|helpControls|remediation\.js/);
+  assert.match(code, /mode:\s*"diagnostic"/);
+  assert.match(code, /submit-answer/);
+  assert.match(code, /Պատասխանն ընդունվեց/);
+  assert.doesNotMatch(code, /grading\?\.correct|grading\.correct/);
+  assert.match(code, /resultSkills/);
+  assert.match(code, /recommendation\?\.action === "practice_skill"/);
+  assert.doesNotMatch(code, /service_role|item_answer_keys|answer_key/i);
+});
+
+test("diagnostic protects active practice/mastery sessions and can resume itself", async () => {
+  const code = await read("web/diagnostic.js");
+  assert.match(code, /data\.activeSession\?\.mode === "diagnostic"/);
+  assert.match(code, /data\.activeSession/);
+  assert.match(code, /practice\.html/);
+  assert.match(code, /mastery\.html/);
+});
+
+test("redesigned mastery check exposes locked, ready, active and result states without help", async () => {
+  const html = await read("web/mastery.html");
+  const code = await read("web/mastery.js");
+  assert.match(html, /id="masteryStateBadge"/);
+  assert.match(html, /Փորձնական անցողիկ կանոն/);
+  assert.doesNotMatch(html, /helpBtn|helpControls|remediation\.js/);
+  assert.match(code, /retryBlocked/);
+  assert.match(code, /!s\.eligible/);
+  assert.match(code, /active\?\.mode === "mastery_check"/);
+  assert.match(code, /submit-mastery-answer/);
+  assert.match(code, /result\.passed/);
+  assert.match(code, /practice\.html\?skill=/);
+  assert.doesNotMatch(code, /service_role|item_answer_keys|answer_key/i);
+});
+
+test("Home routes assessment summary to hub and dedicated diagnostic adapter", async () => {
+  const home = await read("web/home-dashboard.js");
+  const diagnosticRouter = await read("web/home-assessment-router.js");
+  assert.match(home, /\.\/assessment\.html/);
+  assert.match(home, /home-assessment-router\.js/);
+  assert.match(diagnosticRouter, /window\.location\.href = "\.\/diagnostic\.html"/);
+  assert.match(diagnosticRouter, /activeSession\?\.mode === "diagnostic"/);
 });
