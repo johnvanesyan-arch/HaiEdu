@@ -6,7 +6,7 @@ const $ = (id) => document.getElementById(id);
 let busy = false;
 let resumeHandled = false;
 
-function setAssessment(title, text, tone = "neutral", href = "./mastery.html", cta = "Դիտել ստուգումը") {
+function setAssessment(title, text, tone = "neutral", href = "./assessment.html", cta = "Դիտել գնահատումը") {
   const titleEl = $("homeAssessmentTitle");
   const textEl = $("homeAssessmentText");
   const badge = $("homeAssessmentBadge");
@@ -83,31 +83,31 @@ function renderAssessment(data) {
       "Հաստատված",
       `Գլուխ I-ի յուրացումը հաստատված է${data.latestCheck?.percent != null ? ` · ${data.latestCheck.percent}%` : ""}։`,
       "success",
-      "./mastery.html",
-      "Դիտել արդյունքը",
+      "./assessment.html",
+      "Դիտել գնահատումը",
     );
   } else if (data.activeSession?.mode === "mastery_check") {
     setAssessment(
       "Ընթացքի մեջ",
       `Յուրացման ստուգում՝ ${data.activeSession.answered_count ?? 0}/${data.activeSession.planned_item_count ?? 20} հարց։`,
       "info",
-      "./mastery.html",
-      "Շարունակել",
+      "./assessment.html",
+      "Բացել գնահատումը",
     );
   } else if (data.eligible) {
     setAssessment(
       "Պատրաստ է",
       "Գլուխ I-ի 20-հարցանոց անկախ ստուգումը հասանելի է։ Անցողիկ շեմը փորձնական է։",
       "info",
-      "./mastery.html",
-      "Բացել",
+      "./assessment.html",
+      "Բացել գնահատումը",
     );
   } else if (data.retryBlocked) {
     setAssessment(
       "Վերականգնում է պետք",
       data.messageHy ?? "Կրկնակի փորձից առաջ պետք է ավարտել նշված վարժանքները։",
       "warning",
-      "./mastery.html",
+      "./assessment.html",
       "Դիտել պահանջները",
     );
   } else {
@@ -115,8 +115,8 @@ function renderAssessment(data) {
       "Դեռ փակ է",
       data.messageHy ?? "Ամրապնդեք բոլոր հմտությունները՝ յուրացման ստուգումը բացելու համար։",
       "neutral",
-      "./mastery.html",
-      "Դիտել պահանջները",
+      "./assessment.html",
+      "Դիտել գնահատումը",
     );
   }
   patchPrimaryForMastery(data);
@@ -153,7 +153,7 @@ async function refreshAssessment() {
   const { data, error } = await supabase.functions.invoke("get-mastery-check-status", { body: {} });
   busy = false;
   if (error) {
-    setAssessment("Չհաջողվեց բեռնել", "Յուրացման ստուգման վիճակը հիմա հասանելի չէ։", "danger", "./mastery.html", "Բացել");
+    setAssessment("Չհաջողվեց բեռնել", "Յուրացման ստուգման վիճակը հիմա հասանելի չէ։", "danger", "./assessment.html", "Բացել");
     handleRequestedResume();
     return;
   }
@@ -190,3 +190,4 @@ supabase.auth.onAuthStateChange((_event, session) => {
 setTimeout(refreshAssessment, 500);
 
 import("./home-practice-router.js");
+import("./home-assessment-router.js");
