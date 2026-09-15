@@ -16,10 +16,14 @@ function expectedDifficultyBand(difficulty: number) {
   return "challenge";
 }
 
+function sameJson(a: unknown, b: unknown) {
+  return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
+}
+
 async function loadItem(admin: any, itemId: string) {
   const { data: item, error } = await admin
     .from("items")
-    .select("id, code, skill_id, item_type, prompt_hy, prompt_en, stimulus, difficulty, difficulty_band, item_family, source_reference, validation_state, review_status, version_no, status, retired_at, retired_reason, replacement_item_id, config, updated_at")
+    .select("id, code, skill_id, item_type, prompt_hy, prompt_en, stimulus, difficulty, difficulty_band, item_family, source_reference, validation_state, review_status, version_no, status, retired_at, retired_reason, replacement_item_id, config, updated_at, item_template_id, variant_key, variant_seed, variant_parameters, variant_fingerprint")
     .eq("id", itemId)
     .maybeSingle();
   if (error || !item) throw new Error("item_not_found");
@@ -36,15 +40,20 @@ async function buildSnapshot(admin: any, item: any) {
 }
 
 async function evaluateQa(admin: any, item: any) {
-  const [{ data: options }, { data: key }, { data: mappings }, { data: duplicates }] = await Promise.all([
+  const [{ data: options }, { data: key }, { data: mappings }, { data: duplicates }, { data: template }] = await Promise.all([
     admin.from("item_options").select("option_key, content_hy, display_order").eq("item_id", item.id).order("display_order", { ascending: true }),
     admin.from("item_answer_keys").select("answer, tolerance, canonical_unit, accepted_units, feedback_code").eq("item_id", item.id).maybeSingle(),
     admin.from("item_misconception_mappings").select("misconception_id, response_key").eq("item_id", item.id),
     admin.from("items").select("id, code").eq("skill_id", item.skill_id).eq("prompt_hy", item.prompt_hy).neq("id", item.id).is("retired_at", null),
+    item.item_template_id
+      ? admin.from("item_templates").select("id, code, template_kind, template_version, generation_config").eq("id", item.item_template_id).maybeSingle()
+      : Promise.resolve({ data: null }),
   ]);
 
   const errors: string[] = [];
   const warnings: string[] = [];
+  let generatedVerification: Record<string, unknown> | null = null;
+
   if (!item.code) errors.push("missing_item_code");
   if (!String(item.prompt_hy ?? "").trim()) errors.push("empty_prompt");
   if (!(Number(item.difficulty) >= 1 && Number(item.difficulty) <= 5)) errors.push("invalid_difficulty");
@@ -71,6 +80,44 @@ async function evaluateQa(admin: any, item: any) {
     }
   }
 
+  if (template && ["parameterized", "parallel"].includes(String(template.template_kind))) {
+    if (!item.variant_seed) {
+      errors.push("generated_variant_seed_missing");
+    } else {
+      const { data: preview, error: previewError } = await admin.rpc("service_preview_item_variant", {
+        p_template_code: template.code,
+        p_seed: item.variant_seed,
+      });
+      if (previewError || !preview) {
+        errors.push("generated_variant_preview_failed");
+      } else {
+        const promptMatches = preview.promptHy === item.prompt_hy;
+        const parametersMatch = sameJson(preview.parameters, item.variant_parameters);
+        const fingerprintMatches = preview.semanticFingerprint === item.variant_fingerprint;
+        const answerMatches = key ? sameJson(preview.answer, key.answer) : false;
+        const generatorQaValid = preview.qa?.valid === true;
+
+        if (!promptMatches) errors.push("generated_prompt_not_reproducible");
+        if (!parametersMatch) errors.push("generated_parameters_not_reproducible");
+        if (!fingerprintMatches) errors.push("generated_fingerprint_not_reproducible");
+        if (key && !answerMatches) errors.push("generated_answer_not_reproducible");
+        if (!generatorQaValid) errors.push("generated_variant_generator_qa_failed");
+
+        generatedVerification = {
+          templateCode: template.code,
+          templateKind: template.template_kind,
+          templateVersion: template.template_version,
+          seed: item.variant_seed,
+          promptMatches,
+          parametersMatch,
+          fingerprintMatches,
+          answerMatches,
+          generatorQaValid,
+        };
+      }
+    }
+  }
+
   if (!item.source_reference) warnings.push("source_reference_missing");
   if (!item.item_family || item.item_family === "unspecified") warnings.push("item_family_unspecified");
   if (item.review_status !== "approved") warnings.push("content_review_not_approved");
@@ -87,7 +134,8 @@ async function evaluateQa(admin: any, item: any) {
       misconceptionMappings: (mappings ?? []).length,
       duplicateCodes: (duplicates ?? []).map((d: any) => d.code),
       expectedDifficultyBand: expectedDifficultyBand(Number(item.difficulty)),
-      scope: "technical_structure_and_metadata",
+      generatedVerification,
+      scope: "technical_structure_metadata_and_generated_variant_reproducibility",
     },
   };
 }
@@ -116,6 +164,21 @@ Deno.serve(async (req) => {
     let body: any = {};
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
     const action = String(body.action ?? "");
+
+    if (action === "preview_generated_variant" || action === "materialize_generated_variant") {
+      const templateCode = String(body.templateCode ?? "").trim();
+      const seed = String(body.seed ?? "").trim();
+      if (!templateCode) return json({ error: "template_code_required" }, 400);
+      if (!seed) return json({ error: "variant_seed_required" }, 400);
+
+      const rpc = action === "preview_generated_variant"
+        ? "service_preview_item_variant"
+        : "service_materialize_item_variant";
+      const { data, error } = await admin.rpc(rpc, { p_template_code: templateCode, p_seed: seed });
+      if (error) return json({ error: action === "preview_generated_variant" ? "variant_preview_failed" : "variant_materialization_failed", detail: error.message }, 409);
+      return json({ variant: data });
+    }
+
     const itemId = String(body.itemId ?? "");
     if (!itemId) return json({ error: "item_id_required" }, 400);
 
