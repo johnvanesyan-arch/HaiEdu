@@ -51,6 +51,9 @@ function patchPrimaryForMastery(data) {
     return;
   }
 
+  // An active diagnostic/practice session remains the highest-priority Home action.
+  if (data.activeSession) return;
+
   if (data.eligible) {
     $("nextStepLabel").textContent = "Պատրաստ եք յուրացման ստուգմանը";
     $("nextStepSkill").textContent = "Գլուխ I · 20 հարց";
@@ -125,10 +128,21 @@ async function startRequiredRemediation(skillId) {
   });
   if (error || !data?.session) {
     const message = error?.message ?? data?.messageHy ?? "Չհաջողվեց սկսել վարժանքը։";
-    window.dispatchEvent(new CustomEvent("amp-status", { detail: { message, error: true } }));
+    const messageEl = $("modeMessage");
+    if (messageEl) {
+      messageEl.textContent = message;
+      messageEl.style.color = "#8a3342";
+    }
     return;
   }
   window.location.href = "./index.html?resume=1";
+}
+
+function handleRequestedResume() {
+  if (resumeHandled || new URLSearchParams(window.location.search).get("resume") !== "1") return;
+  resumeHandled = true;
+  history.replaceState({}, "", window.location.pathname);
+  queueMicrotask(() => $("resumeLearningBtn")?.click());
 }
 
 async function refreshAssessment() {
@@ -140,15 +154,11 @@ async function refreshAssessment() {
   busy = false;
   if (error) {
     setAssessment("Չհաջողվեց բեռնել", "Յուրացման ստուգման վիճակը հիմա հասանելի չէ։", "danger", "./mastery.html", "Բացել");
+    handleRequestedResume();
     return;
   }
   renderAssessment(data);
-
-  if (!resumeHandled && new URLSearchParams(window.location.search).get("resume") === "1") {
-    resumeHandled = true;
-    history.replaceState({}, "", window.location.pathname);
-    queueMicrotask(() => $("resumeLearningBtn")?.click());
-  }
+  handleRequestedResume();
 }
 
 const resume = $("resumeLearningBtn");
