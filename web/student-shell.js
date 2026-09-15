@@ -48,6 +48,7 @@ function ensureNavigation() {
       ${destinations.map((item) => navItem(item)).join("")}
     </div>
     <div class="amp-nav-utility">
+      <a href="./join.html">Միանալ դասարանին</a>
       <a href="./privacy.html">Գաղտնիություն և հաշիվ</a>
     </div>`;
 
