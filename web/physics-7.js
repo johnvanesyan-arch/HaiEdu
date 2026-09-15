@@ -1,0 +1,330 @@
+import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
+import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+
+const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const $ = (id) => document.getElementById(id);
+let dashboard = null;
+let masteryStatus = null;
+let busySkillId = null;
+
+const topics = [
+  {
+    code: "PHY7-U01-T01",
+    title: "Ֆիզիկայի ուսումնասիրման առարկան և ֆիզիկական երևույթները",
+    sections: "§1",
+    skillCodes: ["PHY7-U01-S01", "PHY7-U01-S02"],
+  },
+  {
+    code: "PHY7-U01-T02",
+    title: "Ֆիզիկոսներ և հայ անվանի ֆիզիկոսներ",
+    sections: "§2",
+    skillCodes: ["PHY7-U01-S03"],
+  },
+  {
+    code: "PHY7-U01-T03",
+    title: "Դիտումներ, փորձեր և գիտական հետազոտություն",
+    sections: "§3",
+    skillCodes: ["PHY7-U01-S04", "PHY7-U01-S05"],
+  },
+  {
+    code: "PHY7-U01-T04",
+    title: "Ֆիզիկական մեծություններ և չափումներ",
+    sections: "§4",
+    skillCodes: ["PHY7-U01-S06", "PHY7-U01-S07", "PHY7-U01-S08", "PHY7-U01-S09"],
+  },
+  {
+    code: "PHY7-U01-T05",
+    title: "Չափման փորձ և խնդիրների լուծում",
+    sections: "§5–§6",
+    skillCodes: ["PHY7-U01-S10"],
+  },
+];
+
+const layerLabels = {
+  knowledge: "Գիտելիք",
+  application: "Կիրառում",
+  reasoning: "Դատողություն",
+  transfer: "Փոխանցում",
+};
+
+const stateLabels = {
+  not_started: "Չսկսված",
+  needs_support: "Աջակցություն է պետք",
+  developing: "Զարգացող",
+  secure: "Ամրապնդված",
+  verified: "Հաստատված",
+};
+
+const stateTones = {
+  not_started: "neutral",
+  needs_support: "danger",
+  developing: "warning",
+  secure: "success",
+  verified: "success",
+};
+
+function escapeHtml(value) {
+  return String(value ?? "")
+    .replaceAll("&", "&amp;")
+    .replaceAll("<", "&lt;")
+    .replaceAll(">", "&gt;")
+    .replaceAll('"', "&quot;")
+    .replaceAll("'", "&#039;");
+}
+
+function setMessage(message, isError = false) {
+  const el = $("subjectMessage");
+  if (!el) return;
+  el.textContent = message;
+  el.style.color = isError ? "#8a3342" : "#356246";
+}
+
+function skillState(skill) {
+  if (masteryStatus?.unitComplete) return "verified";
+  if (skill.complete) return "secure";
+  if (skill.mastery?.status === "needs_support") return "needs_support";
+  if (skill.mastery?.status === "developing") return "developing";
+  if (skill.mastery?.status === "insufficient_evidence") return skill.mastery.evidenceCount > 0 ? "developing" : "not_started";
+  if (skill.diagnostic?.band === "needs_support") return "needs_support";
+  if (skill.diagnostic?.band === "developing") return "developing";
+  if (skill.diagnostic?.total > 0 || skill.mastery?.evidenceCount > 0) return "developing";
+  return "not_started";
+}
+
+function renderSummary() {
+  const progress = dashboard?.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
+  $("chapterProgressText").textContent = `${progress.completedSkills} / ${progress.totalSkills}`;
+  $("chapterProgressMeta").textContent = masteryStatus?.unitComplete
+    ? "Գլուխ I-ի յուրացումը հաստատված է անկախ ստուգմամբ։"
+    : "Ամրապնդված հմտություններ";
+  $("chapterProgressBar").style.width = `${progress.percent}%`;
+  const progressbar = $("chapterProgressBar")?.parentElement;
+  progressbar?.setAttribute("aria-valuenow", String(progress.percent));
+
+  const diagnostic = dashboard?.latestDiagnostic;
+  $("subjectDiagnostic").textContent = diagnostic ? `${diagnostic.correct}/${diagnostic.answered} · ${diagnostic.percent}%` : "Դեռ չկա";
+  $("subjectDiagnosticMeta").textContent = diagnostic
+    ? "Գլուխ I-ի վերջին ախտորոշիչ"
+    : "Սկսեք ախտորոշիչը Գլխավոր էջից";
+
+  let assessmentTitle = "Դեռ փակ է";
+  let assessmentMeta = masteryStatus?.messageHy ?? "Ամրապնդեք բոլոր հմտությունները։";
+  if (masteryStatus?.unitComplete) {
+    assessmentTitle = "Հաստատված";
+    assessmentMeta = `Mastery check-ը անցած է${masteryStatus.latestCheck?.percent != null ? ` · ${masteryStatus.latestCheck.percent}%` : ""}։`;
+  } else if (masteryStatus?.activeSession?.mode === "mastery_check") {
+    assessmentTitle = "Ընթացքի մեջ";
+    assessmentMeta = `${masteryStatus.activeSession.answered_count ?? 0}/${masteryStatus.activeSession.planned_item_count ?? 20} հարց`;
+  } else if (masteryStatus?.eligible) {
+    assessmentTitle = "Պատրաստ է";
+    assessmentMeta = "Բոլոր հմտությունները պատրաստ են անկախ ստուգման։";
+  } else if (masteryStatus?.retryBlocked) {
+    assessmentTitle = "Վերականգնում է պետք";
+  }
+  $("subjectAssessment").textContent = assessmentTitle;
+  $("subjectAssessmentMeta").textContent = assessmentMeta;
+
+  const chapterBadge = $("chapterStateBadge");
+  if (masteryStatus?.unitComplete) {
+    chapterBadge.textContent = "Հաստատված";
+    chapterBadge.className = "status-badge success";
+  } else if (progress.completedSkills === progress.totalSkills && progress.totalSkills > 0) {
+    chapterBadge.textContent = "Պատրաստ է ստուգման";
+    chapterBadge.className = "status-badge info";
+  } else if (progress.completedSkills > 0) {
+    chapterBadge.textContent = `${progress.completedSkills}/${progress.totalSkills} ամրապնդված`;
+    chapterBadge.className = "status-badge warning";
+  } else {
+    chapterBadge.textContent = "Սկսելու փուլ";
+    chapterBadge.className = "status-badge neutral";
+  }
+}
+
+function renderActiveSession() {
+  const learningSession = dashboard?.activeSession;
+  const masterySession = masteryStatus?.activeSession?.mode === "mastery_check" ? masteryStatus.activeSession : null;
+  const session = masterySession ?? learningSession;
+  const banner = $("activeSessionBanner");
+  if (!session) {
+    banner.classList.add("hidden");
+    return;
+  }
+
+  banner.classList.remove("hidden");
+  const link = $("activeSessionLink");
+  if (session.mode === "mastery_check") {
+    $("activeSessionTitle").textContent = "Շարունակել յուրացման ստուգումը";
+    $("activeSessionText").textContent = `${session.answered_count ?? 0}/${session.planned_item_count ?? 20} հարց արդեն պատասխանված է։`;
+    link.href = "./mastery.html";
+    link.textContent = "Շարունակել ստուգումը";
+    return;
+  }
+
+  const answered = Number(session.answered ?? session.answered_count ?? 0);
+  const planned = Number(session.planned ?? session.planned_item_count ?? 0);
+  $("activeSessionTitle").textContent = session.mode === "diagnostic" ? "Շարունակել ախտորոշիչը" : "Շարունակել վարժանքը";
+  $("activeSessionText").textContent = `${answered}/${planned} հարց արդեն պատասխանված է։`;
+  link.href = "./index.html?resume=1";
+  link.textContent = "Շարունակել";
+}
+
+function activeBlocksNewPractice(skill) {
+  const masterySession = masteryStatus?.activeSession?.mode === "mastery_check" ? masteryStatus.activeSession : null;
+  if (masterySession) return { blocked: true, same: false, reason: "Սկզբում ավարտեք յուրացման ստուգումը" };
+  const active = dashboard?.activeSession;
+  if (!active) return { blocked: false, same: false, reason: "" };
+  const same = active.mode === "practice" && active.targetSkill?.id === skill.id;
+  return {
+    blocked: !same,
+    same,
+    reason: active.mode === "diagnostic" ? "Սկզբում ավարտեք ախտորոշիչը" : "Սկզբում ավարտեք ընթացիկ սեսիան",
+  };
+}
+
+function renderSkillAction(skill, state) {
+  const active = activeBlocksNewPractice(skill);
+  if (active.same) {
+    return `<a class="button-link skill-browser-action" href="./index.html?resume=1">Շարունակել</a>`;
+  }
+  if (active.blocked) {
+    return `<button class="secondary skill-browser-action" disabled title="${escapeHtml(active.reason)}">Սեսիա ընթացքի մեջ</button>`;
+  }
+  if (state === "verified") {
+    return `<button class="secondary skill-browser-action" disabled>Հաստատված</button>`;
+  }
+  if (state === "secure" && masteryStatus?.eligible) {
+    return `<a class="button-link skill-browser-action" href="./mastery.html">Պատրաստ է ստուգման</a>`;
+  }
+  if (state === "secure") {
+    return `<button class="secondary skill-browser-action" disabled>Ամրապնդված</button>`;
+  }
+  const label = state === "not_started" ? "Սկսել" : "Վարժվել";
+  return `<button class="skill-browser-action" data-practice-skill="${escapeHtml(skill.id)}">${label}</button>`;
+}
+
+function renderTopics() {
+  const byCode = new Map((dashboard?.skills ?? []).map((skill) => [skill.code, skill]));
+  const recommendedId = dashboard?.recommendation?.skill?.id ?? null;
+  const list = $("topicList");
+  list.innerHTML = "";
+
+  for (const topic of topics) {
+    const section = document.createElement("section");
+    section.className = "topic-block";
+    const skills = topic.skillCodes.map((code) => byCode.get(code)).filter(Boolean);
+    section.innerHTML = `
+      <div class="topic-head">
+        <div>
+          <div class="topic-code">${escapeHtml(topic.code)} · ${escapeHtml(topic.sections)}</div>
+          <h3>${escapeHtml(topic.title)}</h3>
+        </div>
+        <span class="subtle small">${skills.length} հմտություն</span>
+      </div>
+      <div class="skill-browser-list"></div>`;
+
+    const skillList = section.querySelector(".skill-browser-list");
+    for (const skill of skills) {
+      const state = skillState(skill);
+      const masteryPercent = skill.mastery?.percent ?? 0;
+      const diagnosticText = skill.diagnostic?.total ? `Ախտորոշիչ՝ ${skill.diagnostic.correct}/${skill.diagnostic.total}` : "Ախտորոշիչ տվյալ չկա";
+      const row = document.createElement("article");
+      row.className = `skill-browser-row${skill.id === recommendedId ? " recommended" : ""}`;
+      row.innerHTML = `
+        <div class="skill-browser-copy">
+          <div class="skill-browser-meta">
+            <span class="skill-code">${escapeHtml(skill.code)}</span>
+            <span class="status-badge neutral">${escapeHtml(layerLabels[skill.layer] ?? skill.layer)}</span>
+            ${skill.id === recommendedId ? '<span class="status-badge info">Առաջարկվող հաջորդ քայլ</span>' : ""}
+          </div>
+          <h4>${escapeHtml(skill.nameHy)}</h4>
+          <span class="subtle small">${escapeHtml(diagnosticText)}</span>
+        </div>
+        <div class="skill-browser-state">
+          <div class="skill-browser-meta">
+            <span class="status-badge ${stateTones[state]}">${stateLabels[state]}</span>
+            <span class="skill-browser-score">Յուրացման միավոր՝ ${skill.mastery ? `${masteryPercent}/100` : "դեռ չկա"}</span>
+          </div>
+          <div class="mini-progress" role="progressbar" aria-label="${escapeHtml(skill.code)} յուրացման առաջընթաց" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${masteryPercent}">
+            <div class="mini-progress-bar" style="width:${masteryPercent}%"></div>
+          </div>
+        </div>
+        ${renderSkillAction(skill, state)}`;
+      skillList.appendChild(row);
+    }
+    list.appendChild(section);
+  }
+
+  list.querySelectorAll("[data-practice-skill]").forEach((button) => {
+    button.addEventListener("click", () => startPractice(button.dataset.practiceSkill));
+  });
+}
+
+async function startPractice(skillId) {
+  if (!skillId || busySkillId) return;
+  busySkillId = skillId;
+  setMessage("Վարժանքը պատրաստվում է…");
+  document.querySelectorAll("[data-practice-skill]").forEach((button) => { button.disabled = true; });
+  const { data, error } = await supabase.functions.invoke("start-learning-session", {
+    body: { mode: "practice", targetSkillId: skillId },
+  });
+  busySkillId = null;
+  if (error || !data?.session) {
+    setMessage(error?.message ?? data?.messageHy ?? "Չհաջողվեց սկսել վարժանքը։", true);
+    document.querySelectorAll("[data-practice-skill]").forEach((button) => { button.disabled = false; });
+    return;
+  }
+  window.location.href = "./index.html?resume=1";
+}
+
+async function loadSubject() {
+  setMessage("");
+  $("subjectLoading").classList.remove("hidden");
+  $("subjectContent").classList.add("hidden");
+
+  const [{ data: dash, error: dashError }, { data: status, error: statusError }] = await Promise.all([
+    supabase.functions.invoke("get-student-dashboard", { body: {} }),
+    supabase.functions.invoke("get-mastery-check-status", { body: {} }),
+  ]);
+
+  if (dashError) {
+    $("subjectLoading").textContent = "Չհաջողվեց բեռնել ֆիզիկայի հմտությունները։";
+    setMessage(dashError.message, true);
+    return;
+  }
+  dashboard = dash;
+  masteryStatus = statusError ? null : status;
+  if (statusError) setMessage("Յուրացման ստուգման կարգավիճակը ժամանակավորապես չբեռնվեց։", true);
+
+  renderSummary();
+  renderActiveSession();
+  renderTopics();
+  $("subjectLoading").classList.add("hidden");
+  $("subjectContent").classList.remove("hidden");
+}
+
+async function initialize() {
+  const { data: sessionData } = await supabase.auth.getSession();
+  if (!sessionData.session) {
+    window.location.replace("./index.html");
+    return;
+  }
+  const { data: userData, error: userError } = await supabase.auth.getUser();
+  if (userError || !userData.user) {
+    await supabase.auth.signOut({ scope: "local" });
+    window.location.replace("./index.html");
+    return;
+  }
+
+  $("authPanel").classList.add("hidden");
+  $("subjectPanel").classList.remove("hidden");
+  $("signOutBtn").classList.remove("hidden");
+  await loadSubject();
+}
+
+$("refreshSubjectBtn")?.addEventListener("click", loadSubject);
+$("signOutBtn")?.addEventListener("click", async () => {
+  await supabase.auth.signOut();
+  window.location.replace("./index.html");
+});
+
+initialize();
