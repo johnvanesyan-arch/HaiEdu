@@ -191,3 +191,4 @@ setTimeout(refreshAssessment, 500);
 
 import("./home-practice-router.js");
 import("./home-assessment-router.js");
+import("./home-class.js");
