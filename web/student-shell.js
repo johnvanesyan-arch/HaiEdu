@@ -66,6 +66,9 @@ function inferFocusedTask() {
   const practice = document.getElementById("practicePanel");
   if (practice && !practice.classList.contains("hidden")) return true;
 
+  const questionPanel = document.getElementById("questionPanel");
+  if (questionPanel && !questionPanel.classList.contains("hidden")) return true;
+
   return false;
 }
 
