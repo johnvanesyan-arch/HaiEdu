@@ -105,15 +105,18 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [ ] Add QA rules for invalid parameter combinations, duplicate effective variants and accidental answer leakage.
 
 ### 11D — Grade 7 Physics Unit 1 bank expansion and content QA
+
+**Numeric bank target:** by the 11D exit gate, Chapter I must contain **at least 24 effective, unique concrete variants per skill — 240 across the 10 skills**. The minimum per-skill capacity target is **12 Practice variants + 4 Diagnostic variants (two 2-item forms) + 8 protected Mastery variants**. These are unique-variant counts, not duplicate pool memberships. Generated variants count toward the target only after technical QA and human content review make them eligible for use. More than 24 variants per skill is allowed where construct coverage requires it; 24 is the acceptance floor, not a hard maximum.
+
 - [ ] Re-audit all 60 existing Unit 1 items against the 10 micro-skills, intended layer, misconception and difficulty.
 - [ ] Remove remaining `unspecified` item-family metadata where a defensible family can be assigned.
-- [ ] Expand each skill beyond the current six fixed items using a combination of reviewed fixed items, parameterised variants and parallel scenarios.
-- [ ] Ensure each skill has enough effective practice exposure to complete an 8-item practice session without forced exact repetition.
-- [ ] Create at least two usable diagnostic forms for Chapter I (2 items per skill per form) with controlled parallelism.
-- [ ] Create a protected mastery-check pool sufficient for alternate attempts and unseen-first selection.
+- [ ] Expand each skill to at least 24 effective unique variants using a combination of reviewed fixed items, parameterised variants and parallel scenarios.
+- [ ] Ensure each skill has at least 12 Practice-eligible effective variants so an 8-item practice session can normally complete without forced exact repetition and still preserve cooldown headroom.
+- [ ] Create at least two usable diagnostic forms for Chapter I with 2 distinct items per skill per form; the per-skill Diagnostic capacity floor is 4 reviewed variants.
+- [ ] Create at least 8 protected Mastery variants per skill, sufficient for multiple unseen-first / low-overlap attempts.
 - [ ] Keep factual/knowledge items proportionate so reasoning and transfer are not crowded out by recognition questions.
 - [ ] Retain the current `provisional_no_sme_review` warning until Physics SME validation actually occurs; do not label provisional content as teacher-validated.
-- [ ] Run technical QA and human content review before any new item/variant is pilot eligible.
+- [ ] Run technical QA and human content review before any new item/variant is pilot eligible or counted toward the 24-per-skill target.
 
 ### 11E — Pilot analytics and item-quality evidence
 - [ ] Capture per-item/variant operational statistics needed for later review: exposure count, correctness rate, response time where available, hint/help use, purpose, and omission/abandonment where meaningful.
