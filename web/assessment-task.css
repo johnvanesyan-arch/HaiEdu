@@ -1,0 +1,103 @@
+.assessment-task-shell {
+  max-width: 1040px;
+}
+
+.assessment-task-header {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--amp-space-4);
+  align-items: flex-start;
+}
+
+.assessment-task-rules {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--amp-space-3);
+  margin-top: var(--amp-space-4);
+}
+
+.assessment-rule {
+  padding: var(--amp-space-4);
+  background: var(--amp-color-bg-subtle);
+  border: 1px solid var(--amp-color-border);
+  border-radius: var(--amp-radius-md);
+}
+
+.assessment-rule strong,
+.assessment-rule span { display: block; }
+.assessment-rule span { margin-top: var(--amp-space-1); color: var(--amp-color-text-muted); }
+
+.assessment-question-meta {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: var(--amp-space-3);
+  flex-wrap: wrap;
+  margin-bottom: var(--amp-space-3);
+}
+
+.assessment-question-card {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: var(--amp-space-6);
+}
+
+.assessment-question-card #prompt {
+  margin: var(--amp-space-5) 0;
+  font-size: var(--amp-font-size-xl);
+  line-height: 1.45;
+}
+
+.assessment-neutral-note {
+  margin-top: var(--amp-space-3);
+  padding: var(--amp-space-3) var(--amp-space-4);
+  border-radius: var(--amp-radius-md);
+  background: var(--amp-color-info-soft);
+  color: var(--amp-color-text-muted);
+}
+
+.assessment-result-hero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: var(--amp-space-5);
+  align-items: center;
+  margin-bottom: var(--amp-space-5);
+}
+
+.assessment-score {
+  font-size: var(--amp-font-size-2xl);
+  font-weight: 750;
+}
+
+.assessment-skill-results {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: var(--amp-space-3);
+}
+
+.assessment-skill-result {
+  padding: var(--amp-space-4);
+  border: 1px solid var(--amp-color-border);
+  border-radius: var(--amp-radius-md);
+  background: var(--amp-color-surface);
+}
+
+.assessment-skill-result .skill-top {
+  display: flex;
+  justify-content: space-between;
+  gap: var(--amp-space-3);
+}
+
+.assessment-result-actions {
+  display: flex;
+  gap: var(--amp-space-3);
+  flex-wrap: wrap;
+  margin-top: var(--amp-space-5);
+}
+
+@media (max-width: 760px) {
+  .assessment-task-rules,
+  .assessment-skill-results { grid-template-columns: 1fr; }
+  .assessment-result-hero { grid-template-columns: 1fr; }
+  .assessment-question-card { padding: var(--amp-space-4); }
+}
