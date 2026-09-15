@@ -116,16 +116,19 @@ Required behaviors:
 
 ---
 
-## 5. Cross-page route cleanup
+## 5. Cross-page route compatibility
 
-The final redesign removes transitional route assumptions left from earlier 10.5 phases:
+The intended Sprint 10.5 student flows now use dedicated routes:
 
-- active Diagnostic links go to `diagnostic.html`, not legacy Home query-state URLs;
-- Assessment and Progress are permanent enabled shell destinations;
-- student terminology/localization detection includes all new student routes;
-- legacy Home question markup may remain temporarily for regression safety, but intended Practice and Diagnostic entry points no longer depend on it.
+- Home and Assessment send Diagnostic work to `diagnostic.html`;
+- Home and Physics 7 send Practice work to `practice.html`;
+- Mastery Check remains on `mastery.html`;
+- Progress resumes active sessions using the appropriate dedicated task route;
+- Assessment and Progress are permanent enabled shell destinations.
 
-This is deliberate: deleting the old Home state machine immediately before pilot QA would create avoidable regression risk without improving the pilot experience.
+Two older compatibility/fallback branches in the pre-extraction Practice/Physics code can still reference the legacy Home resume URL for an already-active diagnostic. They remain session-safe and do not create or replace assessment state. Removing those fallbacks would require a larger rewrite of stable pre-pilot modules, so Sprint 10.5F treats them as compatibility debt rather than a pilot blocker. Intended navigation no longer depends on them.
+
+Legacy Home question markup also remains temporarily for regression safety. Deleting the old Home state machine immediately before pilot QA would create avoidable regression risk without improving the intended pilot experience.
 
 ---
 
@@ -140,7 +143,7 @@ Static regression tests cover:
 - all dedicated assessment/practice pages retain viewport metadata and focused-task semantics where appropriate;
 - Armenian overflow/responsive breakpoints are present;
 - focus-visible, reduced-motion, forced-colors and minimum-control-size rules remain present;
-- Diagnostic/Practice collision links use canonical dedicated routes;
+- dedicated task routes and session-collision guards remain wired;
 - browser JavaScript syntax checking includes `progress.js` and other Sprint 10.5 modules.
 
 ---
@@ -149,7 +152,7 @@ Static regression tests cover:
 
 Repository CI can validate source-level regressions, syntax and deterministic tests. A true cross-browser visual smoke test with a real authenticated student account still requires an interactive browser session. Do not mark that specific gate as passed based only on CI.
 
-Before Sprint 11 begins, perform the live pilot-account matrix documented in this file:
+Before Sprint 11 begins, perform the live pilot-account matrix documented in `docs/pilot-browser-qa-checklist.md`:
 
 | Device/browser class | Required smoke flow |
 | --- | --- |
@@ -182,9 +185,10 @@ No label may overlap another control or be clipped without an accessible full na
 - [x] Responsive layouts defined through narrow phone widths.
 - [x] Armenian overflow protections strengthened.
 - [x] Shared accessibility rules retained/strengthened.
-- [x] Transitional Diagnostic route references cleaned up.
+- [x] Intended task routes use the dedicated Sprint 10.5 surfaces; legacy fallbacks are documented compatibility debt.
 - [x] Automated regression tests expanded.
 - [x] Browser JS syntax checks expanded.
+- [x] Repository CI green after the 10.5F test updates.
 - [ ] Live authenticated cross-browser/device smoke matrix completed.
 
 The final unchecked item is an explicit pre-Sprint-11 operational gate, not something repository CI can prove.
