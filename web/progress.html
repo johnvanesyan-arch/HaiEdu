@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Ֆիզիկա 7 — Իմ առաջընթացը</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./components.css" />
+  <link rel="stylesheet" href="./student-shell.css" />
+  <link rel="stylesheet" href="./progress.css" />
+</head>
+<body data-student-page="progress" data-shell-auth="always">
+  <main class="shell" id="mainContent" tabindex="-1">
+    <header class="topbar progress-topbar">
+      <div>
+        <p class="eyebrow">ԻՄ ԱՌԱՋԸՆԹԱՑԸ</p>
+        <h1>Ֆիզիկա 7</h1>
+        <p class="subtle">Գլուխ I — ախտորոշիչը, վարժանքի յուրացման մակարդակը և անկախ ստուգումը ներկայացված են առանձին։</p>
+      </div>
+      <a class="ghost button-link" href="./physics-7.html">Դիտել հմտությունները</a>
+    </header>
+
+    <section class="notice" aria-label="Առաջընթացի բացատրություն">
+      <strong>Յուրացման միավորը գնահատական չէ։</strong>
+      <span>Այն հարթակի ընթացիկ ուսուցման ցուցիչն է։ «Հաստատված» վիճակը տրվում է միայն անկախ յուրացման ստուգումն անցնելուց հետո։</span>
+    </section>
+
+    <section id="progressLoading" class="card amp-loading-state" role="status" aria-live="polite">Առաջընթացը բեռնվում է…</section>
+    <section id="progressError" class="card amp-error-state hidden" role="alert"></section>
+
+    <div id="progressContent" class="hidden">
+      <section class="progress-summary" aria-label="Գլուխ I-ի ամփոփում">
+        <article class="card progress-summary-card">
+          <span class="stat-label">Գլուխ I</span>
+          <strong id="chapterState">—</strong>
+          <div class="mini-progress" role="progressbar" aria-label="Ամրապնդված հմտությունների բաժին" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0">
+            <div id="chapterProgressBar" class="mini-progress-bar" style="width:0%"></div>
+          </div>
+          <span id="chapterProgressMeta" class="subtle small">—</span>
+        </article>
+
+        <article class="card progress-summary-card">
+          <span class="stat-label">Վերջին ախտորոշիչ</span>
+          <strong id="diagnosticSummary">—</strong>
+          <span id="diagnosticSummaryMeta" class="subtle small">Գլուխ I · 20 հարց</span>
+          <a class="text-link" href="./diagnostic.html">Դիտել / անցնել ախտորոշիչը</a>
+        </article>
+
+        <article class="card progress-summary-card">
+          <span class="stat-label">Յուրացման ստուգում</span>
+          <strong id="masterySummary">—</strong>
+          <span id="masterySummaryMeta" class="subtle small">—</span>
+          <a class="text-link" href="./assessment.html">Դիտել գնահատումը</a>
+        </article>
+      </section>
+
+      <section class="card progress-next" aria-labelledby="progressNextTitle">
+        <div>
+          <span class="mode-kicker">Հաջորդ առաջարկվող քայլը</span>
+          <h2 id="progressNextTitle">—</h2>
+          <p id="progressNextReason" class="subtle">—</p>
+        </div>
+        <a id="progressNextAction" class="button-link" href="./physics-7.html">Բացել</a>
+      </section>
+
+      <section class="card progress-skills" aria-labelledby="progressSkillsTitle">
+        <div class="section-heading progress-section-heading">
+          <div>
+            <h2 id="progressSkillsTitle">Գլուխ I-ի 10 հմտությունները</h2>
+            <p class="subtle">Ախտորոշիչ արդյունքը, վարժանքի յուրացման ցուցիչը և անկախ հաստատումը դիտեք որպես տարբեր ապացույցներ։</p>
+          </div>
+          <button id="refreshProgressBtn" class="ghost" type="button">Թարմացնել</button>
+        </div>
+        <div class="progress-legend" aria-label="Հմտության վիճակների բացատրություն">
+          <span><span class="legend-mark not-started" aria-hidden="true"></span>Չսկսված</span>
+          <span><span class="legend-mark support" aria-hidden="true"></span>Աջակցություն է պետք</span>
+          <span><span class="legend-mark developing" aria-hidden="true"></span>Զարգացող</span>
+          <span><span class="legend-mark secure" aria-hidden="true"></span>Ամրապնդված</span>
+          <span><span class="legend-mark verified" aria-hidden="true"></span>Հաստատված</span>
+        </div>
+        <div id="progressSkillList" class="progress-skill-list"></div>
+      </section>
+    </div>
+  </main>
+
+  <script type="module" src="./progress.js"></script>
+  <script type="module" src="./ux.js"></script>
+  <script type="module" src="./student-shell.js"></script>
+</body>
+</html>
