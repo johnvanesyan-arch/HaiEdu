@@ -97,12 +97,16 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 **Current bank-capacity boundary:** the two Diagnostic forms are structurally non-overlapping but their pedagogical parallelism is still provisional pending Sprint 11D review. The protected Mastery pool currently has exactly 2 items per skill while a full Mastery Check also needs 2 per skill, so a retest can be forced to overlap with the previous form. That overlap is now explicit and auditable (`poolExhausted` / `exactRepeatFallbackUsed`) rather than silent; Sprint 11D must expand the protected pool before overlap becomes exceptional.
 
 ### 11C — Parameterised and parallel item variants
-- [ ] Add deterministic parameterised templates where educationally safe (for example unit conversions, measurement readings and displacement calculations).
-- [ ] Store the generated parameters/seed or rendered-variant identity so the exact question shown to the learner is auditable and reproducible.
-- [ ] Keep answer generation deterministic and server-side; do not rely on live generative AI for routine numerical item creation or grading.
-- [ ] Build parallel-context variants for reasoning/transfer skills where simple number substitution would not test transfer.
-- [ ] Ensure variants preserve the same construct and intended difficulty rather than merely changing wording.
-- [ ] Add QA rules for invalid parameter combinations, duplicate effective variants and accidental answer leakage.
+**Status: ✅ Complete.** Deterministic seed-based generation is live for safe numerical constructs and explicit parallel-context reasoning tasks. Exact prompt/parameter/answer/fingerprint reproduction is QA-checked, generated candidates enter review state only, and content-admin preview/materialisation remains behind the existing role gate. Detailed implementation: `docs/sprint-11c-parameterized-parallel-variants.md`.
+
+- [x] Add deterministic parameterised templates where educationally safe (for example unit conversions, measurement readings and displacement calculations).
+- [x] Store the generated parameters/seed or rendered-variant identity so the exact question shown to the learner is auditable and reproducible.
+- [x] Keep answer generation deterministic and server-side; do not rely on live generative AI for routine numerical item creation or grading.
+- [x] Build parallel-context variants for reasoning/transfer skills where simple number substitution would not test transfer.
+- [x] Ensure variants preserve the same construct and intended difficulty rather than merely changing wording; generated content remains provisional until Sprint 11D human review.
+- [x] Add QA rules for invalid/malformed generation, duplicate effective variants and accidental answer leakage.
+
+**11C proof-set note:** 10 active generation templates are live (8 parameterised + 2 parallel). Twenty concrete proof variants across S04, S05 and S07–S10 are materialised in `review` / `needs_review` state, reproduce exactly from template + seed, have distinct semantic fingerprints, and have zero assessment-pool memberships. They do not count toward the 11D production-bank target until reviewed and approved.
 
 ### 11D — Grade 7 Physics Unit 1 bank expansion and content QA
 
@@ -144,7 +148,7 @@ Sprint 11 is complete only when all of the following are true:
 - [ ] Practice no longer depends on six fixed questions per skill and can normally complete a bounded session without forced exact repetition.
 - [x] Diagnostic uses parallel/rotating forms instead of the same fixed form on every attempt. Structural rotation is live; content parallelism remains provisional until Sprint 11D review.
 - [x] Mastery Check uses protected unseen-first / least-exposed selection and alternate retest logic. Current protected-bank capacity can still force an explicitly flagged overlap fallback until Sprint 11D expands the pool.
-- [ ] Parameterised items are deterministic, reproducible and auditable where used.
+- [x] Parameterised items are deterministic, reproducible and auditable where used.
 - [ ] Unit 1 content has completed the agreed technical/human QA gate; provisional SME status remains explicit until actual SME review.
 - [ ] Deferred authenticated browser/device QA has been completed or remaining defects have an explicit accepted workaround before the pilot is closed.
 - [ ] A closed Chapter I pilot has run end-to-end.
