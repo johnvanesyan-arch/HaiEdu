@@ -1,4 +1,4 @@
-/* Sprint 10.5B — authenticated student navigation shell.
+/* Sprint 10.5B/10.5C — authenticated student navigation shell.
    Presentation/navigation only. It does not own authentication, mastery,
    recommendation, grading, session eligibility, or authorization truth. */
 
@@ -7,7 +7,7 @@ const focusedByPage = document.body.dataset.focusedTask === "true";
 
 const destinations = [
   { key: "home", href: "./index.html", label: "Գլխավոր", icon: "⌂", enabled: true },
-  { key: "physics", href: "./physics-7.html", label: "Ֆիզիկա 7", icon: "Φ", enabled: false },
+  { key: "physics", href: "./physics-7.html", label: "Ֆիզիկա 7", icon: "Φ", enabled: true },
   { key: "assessment", href: "./assessment.html", label: "Գնահատում", icon: "✓", enabled: false },
   { key: "progress", href: "./progress.html", label: "Առաջընթաց", icon: "↗", enabled: false }
 ];
@@ -86,7 +86,8 @@ const observed = [
   document.getElementById("modePanel"),
   document.getElementById("practicePanel"),
   document.getElementById("questionPanel"),
-  document.getElementById("resultPanel")
+  document.getElementById("resultPanel"),
+  document.getElementById("subjectPanel")
 ].filter(Boolean);
 
 if (observed.length) {
