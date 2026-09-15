@@ -71,12 +71,16 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 **Entry gate:** Sprint 10.5F is formally closed. Sprint 11 may begin. The deferred authenticated cross-browser/device smoke matrix remains required in Sprint 11F before the closed pilot is treated as fully completed. Sprint 11 does not change the deterministic grading/mastery principle; it strengthens the evidence on which mastery decisions are based.
 
 ### 11A — Item-bank architecture and exposure model
-- [ ] Introduce explicit item-family / variant identity so the system can distinguish a skill, an item family, a template, and a concrete rendered variant.
-- [ ] Add assessment-use eligibility metadata for `practice`, `diagnostic`, and `mastery_check`.
-- [ ] Protect mastery-check content from ordinary practice exposure.
-- [ ] Add student-level cross-session exposure tracking, including at minimum: item/template/variant seen, times seen, last seen, purpose, correctness, and help/hint use where applicable.
-- [ ] Preserve attempt history and existing item versioning/retirement semantics.
-- [ ] Add regression tests proving exposure data cannot leak another student's history.
+**Status: ✅ Complete.** Normalized item identity, explicit assessment pools, protected Mastery content, learner-level exposure provenance, help/hint instrumentation, RLS isolation, regression coverage, and live database/Edge Function deployment are in place. Detailed implementation: `docs/sprint-11a-item-identity-exposure-model.md`.
+
+- [x] Introduce explicit item-family / variant identity so the system can distinguish a skill, an item family, a template, and a concrete rendered variant.
+- [x] Add assessment-use eligibility metadata for `practice`, `diagnostic`, and `mastery_check`.
+- [x] Protect mastery-check content from ordinary practice exposure.
+- [x] Add student-level cross-session exposure tracking, including at minimum: item/template/variant seen, times seen, last seen, purpose, correctness, and help/hint use where applicable.
+- [x] Preserve attempt history and existing item versioning/retirement semantics.
+- [x] Add regression tests proving exposure data cannot leak another student's history.
+
+**Transitional bank note:** the current 60 fixed items are conservatively backfilled as singleton family/template identities until Sprint 11D content review. For each Chapter I skill, the current baseline split is 4 Practice/Diagnostic-eligible items and 2 protected Mastery-only items. This establishes the integrity boundary now but does **not** solve repetition pressure; Sprint 11B defines exposure-aware selection/cooldowns and Sprint 11C/11D expands the effective variant bank.
 
 ### 11B — Repetition and selection policy
 - [ ] Practice: prefer unseen concrete variants first, then unresolved errors after spacing, then least-recently-seen review.
@@ -129,7 +133,7 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 ### Sprint 11 exit criteria
 Sprint 11 is complete only when all of the following are true:
 
-- [ ] Cross-session exposure tracking is live and covered by tests.
+- [x] Cross-session exposure tracking is live and covered by tests.
 - [ ] Practice no longer depends on six fixed questions per skill and can normally complete a bounded session without forced exact repetition.
 - [ ] Diagnostic uses parallel/rotating forms instead of the same fixed form on every attempt.
 - [ ] Mastery Check uses protected unseen-first / least-exposed selection and alternate retest forms.
