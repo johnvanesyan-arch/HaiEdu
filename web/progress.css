@@ -1,0 +1,206 @@
+/* Sprint 10.5F — student progress page */
+.progress-summary {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: var(--amp-space-4);
+  margin: var(--amp-space-5) 0;
+}
+
+.progress-summary-card {
+  min-width: 0;
+  display: grid;
+  align-content: start;
+  gap: var(--amp-space-2);
+  padding: var(--amp-space-4);
+}
+
+.progress-summary-card > strong {
+  font-size: var(--amp-font-size-xl);
+  line-height: var(--amp-line-tight);
+  overflow-wrap: anywhere;
+}
+
+.progress-summary-card .mini-progress {
+  height: 9px;
+  margin-top: var(--amp-space-1);
+}
+
+.progress-summary-card .mini-progress-bar { height: 100%; }
+
+.progress-next {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--amp-space-5);
+  padding: var(--amp-space-5);
+  margin-bottom: var(--amp-space-5);
+  border-color: #b8cee5;
+  box-shadow: var(--amp-shadow-medium);
+}
+
+.progress-next > div { min-width: 0; }
+.progress-next h2 { margin: var(--amp-space-2) 0; }
+.progress-next .button-link { flex: 0 0 auto; }
+
+.progress-skills {
+  padding: var(--amp-space-5);
+}
+
+.progress-section-heading {
+  display: flex;
+  align-items: start;
+  justify-content: space-between;
+  gap: var(--amp-space-4);
+  margin-bottom: var(--amp-space-4);
+}
+
+.progress-section-heading > div { min-width: 0; }
+.progress-section-heading h2 { margin: 0 0 var(--amp-space-1); }
+
+.progress-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--amp-space-2) var(--amp-space-4);
+  margin-bottom: var(--amp-space-4);
+  color: var(--amp-color-text-muted);
+  font-size: var(--amp-font-size-sm);
+}
+
+.progress-legend > span {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+
+.legend-mark {
+  width: 0.75rem;
+  height: 0.75rem;
+  border-radius: 999px;
+  border: 2px solid transparent;
+  background: var(--amp-color-bg-subtle);
+}
+.legend-mark.not-started { background: #d8dee6; }
+.legend-mark.support { background: #d76b76; }
+.legend-mark.developing { background: #d49a35; }
+.legend-mark.secure { background: #4b9b70; }
+.legend-mark.verified { background: #276d4a; border-color: #a9d2ba; }
+
+.progress-skill-list {
+  display: grid;
+  gap: var(--amp-space-3);
+}
+
+.progress-skill-row {
+  min-width: 0;
+  display: grid;
+  grid-template-columns: minmax(220px, 1.5fr) minmax(165px, 0.85fr) minmax(165px, 0.85fr) auto;
+  align-items: center;
+  gap: var(--amp-space-4);
+  padding: var(--amp-space-4);
+  border: 1px solid var(--amp-color-border);
+  border-radius: var(--amp-radius-md);
+  background: var(--amp-color-surface);
+}
+
+.progress-skill-row.recommended {
+  border-color: #9ebcda;
+  box-shadow: inset 4px 0 0 var(--amp-color-primary);
+}
+
+.progress-skill-copy,
+.progress-skill-evidence,
+.progress-skill-mastery {
+  min-width: 0;
+}
+
+.progress-skill-meta {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--amp-space-2);
+  margin-bottom: 0.3rem;
+}
+
+.progress-skill-copy h3 {
+  margin: 0 0 0.3rem;
+  font-size: var(--amp-font-size-md);
+  line-height: 1.4;
+  overflow-wrap: anywhere;
+}
+
+.progress-skill-label {
+  display: block;
+  margin-bottom: 0.25rem;
+  color: var(--amp-color-text-muted);
+  font-size: var(--amp-font-size-xs);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.progress-skill-evidence strong,
+.progress-skill-mastery strong {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.progress-skill-mastery .mini-progress {
+  height: 8px;
+  margin-top: 0.45rem;
+}
+.progress-skill-mastery .mini-progress-bar { height: 100%; }
+
+.progress-skill-action {
+  min-width: 118px;
+  justify-self: end;
+}
+
+.progress-topbar > * { min-width: 0; }
+
+@media (max-width: 1080px) {
+  .progress-skill-row {
+    grid-template-columns: minmax(220px, 1.4fr) minmax(150px, 0.8fr) minmax(160px, 0.8fr);
+  }
+  .progress-skill-action {
+    grid-column: 1 / -1;
+    justify-self: start;
+  }
+}
+
+@media (max-width: 820px) {
+  .progress-summary {
+    grid-template-columns: 1fr;
+    gap: var(--amp-space-3);
+  }
+
+  .progress-next,
+  .progress-section-heading {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .progress-next .button-link,
+  .progress-section-heading > button {
+    width: 100%;
+  }
+
+  .progress-skill-row {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--amp-space-3);
+  }
+  .progress-skill-copy { grid-column: 1 / -1; }
+  .progress-skill-action { grid-column: 1 / -1; width: 100%; }
+}
+
+@media (max-width: 560px) {
+  .progress-skills { padding: var(--amp-space-4); }
+  .progress-skill-row { grid-template-columns: 1fr; }
+  .progress-skill-copy,
+  .progress-skill-action { grid-column: auto; }
+  .progress-skill-action { justify-self: stretch; }
+  .progress-legend { display: grid; grid-template-columns: 1fr 1fr; }
+}
+
+@media (max-width: 390px) {
+  .progress-legend { grid-template-columns: 1fr; }
+}
