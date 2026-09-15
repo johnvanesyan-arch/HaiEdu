@@ -1,0 +1,58 @@
+/* Sprint 10.5B — shared document foundations */
+html {
+  color-scheme: light;
+  background: var(--amp-color-bg);
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: var(--amp-color-bg);
+  color: var(--amp-color-text);
+  font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  font-size: var(--amp-font-size-md);
+  line-height: var(--amp-line-normal);
+  -webkit-text-size-adjust: 100%;
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+h1, h2, h3, p { overflow-wrap: anywhere; }
+h1, h2, h3 { color: var(--amp-color-text); }
+h1 { font-size: var(--amp-font-size-3xl); line-height: var(--amp-line-tight); }
+h2 { font-size: var(--amp-font-size-2xl); line-height: 1.3; }
+h3 { font-size: var(--amp-font-size-xl); line-height: 1.35; }
+
+button, input, select, textarea { font: inherit; }
+button, a, input, select, textarea { -webkit-tap-highlight-color: transparent; }
+button { cursor: pointer; }
+button:disabled { cursor: not-allowed; }
+
+a { color: var(--amp-color-primary); text-underline-offset: 0.15em; }
+a:hover { color: var(--amp-color-primary-hover); }
+
+button:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible,
+a:focus-visible,
+[tabindex]:focus-visible {
+  outline: 3px solid var(--amp-color-focus);
+  outline-offset: 3px;
+}
+
+::selection { background: #d8e8fa; color: var(--amp-color-text); }
+
+.hidden { display: none !important; }
+.subtle { color: var(--amp-color-text-muted); }
+.small { font-size: var(--amp-font-size-sm); }
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+}
