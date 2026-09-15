@@ -1,5 +1,9 @@
 # Sprint 10.5F — Progress + Responsive / Accessibility QA
 
+**Status: ✅ Complete.**
+
+Sprint 10.5F is formally closed. Code implementation, automated QA, CI, and production deployment are complete. By product-owner decision, the live authenticated cross-browser/device smoke matrix is **deferred to Sprint 11F** and is not a blocker for beginning Sprint 11. This is an accepted QA deferral, not a claim that the live matrix has already been executed.
+
 ## Objective
 
 Finish the student-facing redesign before the closed Physics pilot by adding a dedicated Progress page and hardening the student experience for Armenian text, mobile/tablet layouts, keyboard navigation, focus visibility, touch interaction and regression safety.
@@ -148,13 +152,15 @@ Static regression tests cover:
 
 ---
 
-## 7. Validation boundary
+## 7. Validation boundary and accepted deferral
 
-Repository CI can validate source-level regressions, syntax and deterministic tests. A true cross-browser visual smoke test with a real authenticated student account still requires an interactive browser session. Do not mark that specific gate as passed based only on CI.
+Repository CI validates source-level regressions, syntax and deterministic tests. Production deployment status is also verified separately.
 
-Before Sprint 11 begins, perform the live pilot-account matrix documented in `docs/pilot-browser-qa-checklist.md`:
+A true cross-browser visual smoke test with a live authenticated student session remains valuable, but by product-owner decision it is **not an entry gate for Sprint 11**. The checklist in `docs/pilot-browser-qa-checklist.md` is retained and moved to Sprint 11F as part of the final production/pilot smoke test.
 
-| Device/browser class | Required smoke flow |
+The deferred live matrix still covers:
+
+| Device/browser class | Smoke flow |
 | --- | --- |
 | Desktop Chromium | sign in -> Home -> Physics 7 -> Practice -> Assessment -> Diagnostic/Mastery state -> Progress |
 | Desktop Firefox/Safari-class browser | Home/nav + one Practice question + Progress |
@@ -164,7 +170,7 @@ Before Sprint 11 begins, perform the live pilot-account matrix documented in `do
 
 ### Armenian text checks
 
-Verify particularly long labels and names at 320–390 px widths:
+Verify particularly long labels and names at 320–390 px widths during the deferred live smoke:
 
 - `Բնության ուսումնասիրության ֆիզիկական մեթոդները`
 - `Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր`
@@ -176,7 +182,7 @@ No label may overlap another control or be clipped without an accessible full na
 
 ---
 
-## 8. Definition of done for code implementation
+## 8. Definition of done
 
 - [x] Dedicated Progress route added.
 - [x] Diagnostic / practice mastery / verified completion visually distinct.
@@ -189,6 +195,7 @@ No label may overlap another control or be clipped without an accessible full na
 - [x] Automated regression tests expanded.
 - [x] Browser JS syntax checks expanded.
 - [x] Repository CI green after the 10.5F test updates.
-- [ ] Live authenticated cross-browser/device smoke matrix completed.
+- [x] Production deployment completed successfully.
+- [x] Live authenticated cross-browser/device matrix formally dispositioned: deferred to Sprint 11F by product-owner decision and accepted as a non-blocking QA risk.
 
-The final unchecked item is an explicit pre-Sprint-11 operational gate, not something repository CI can prove.
+**Sprint 10.5F is complete. Sprint 11 may begin.**
