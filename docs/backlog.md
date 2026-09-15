@@ -83,14 +83,18 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 **Transitional bank note:** the current 60 fixed items are conservatively backfilled as singleton family/template identities until Sprint 11D content review. For each Chapter I skill, the current baseline split is 4 Practice/Diagnostic-eligible items and 2 protected Mastery-only items. This establishes the integrity boundary now but does **not** solve repetition pressure; Sprint 11B defines exposure-aware selection/cooldowns and Sprint 11C/11D expands the effective variant bank.
 
 ### 11B — Repetition and selection policy
-- [ ] Practice: prefer unseen concrete variants first, then unresolved errors after spacing, then least-recently-seen review.
-- [ ] Practice: no exact rendered variant repeats inside a session unless the pool is genuinely exhausted and remediation explicitly requires it.
-- [ ] Practice: introduce an exact-variant cooldown across sessions rather than resetting repetition control whenever a new session starts.
-- [ ] Diagnostic: stop serving the same deterministic 20-question form on every attempt; rotate parallel forms / least-exposed diagnostic variants.
-- [ ] Diagnostic: record form/variant exposure and avoid exact-item reuse on an immediate retake when alternatives exist.
-- [ ] Mastery Check: strongly prefer items/variants the learner has never seen; otherwise choose least recently exposed protected variants.
-- [ ] Mastery Check: after a failed attempt and required remediation, use an alternate assessment form with minimal overlap with the previous attempt.
-- [ ] Add explicit pool-exhaustion behavior so the system degrades predictably rather than silently over-serving familiar items.
+**Status: ✅ Complete.** Selection is now cross-session exposure-aware. Practice follows unseen variant → spaced unresolved error → least-recent review → explicit pool-exhaustion fallback. Diagnostic rotates two explicit non-overlapping 20-item baseline forms. Mastery uses the protected pool with unseen-first/least-exposed selection and alternate-retest logic after failure/remediation. Detailed implementation: `docs/sprint-11b-repetition-selection-policy.md`.
+
+- [x] Practice: prefer unseen concrete variants first, then unresolved errors after spacing, then least-recently-seen review.
+- [x] Practice: no exact rendered variant repeats inside a session unless the pool is genuinely exhausted and remediation explicitly requires it.
+- [x] Practice: introduce an exact-variant cooldown across sessions rather than resetting repetition control whenever a new session starts.
+- [x] Diagnostic: stop serving the same deterministic 20-question form on every attempt; rotate parallel forms / least-exposed diagnostic variants.
+- [x] Diagnostic: record form/variant exposure and avoid exact-item reuse on an immediate retake when alternatives exist.
+- [x] Mastery Check: strongly prefer items/variants the learner has never seen; otherwise choose least recently exposed protected variants.
+- [x] Mastery Check: after a failed attempt and required remediation, use an alternate assessment form with minimal overlap with the previous attempt.
+- [x] Add explicit pool-exhaustion behavior so the system degrades predictably rather than silently over-serving familiar items.
+
+**Current bank-capacity boundary:** the two Diagnostic forms are structurally non-overlapping but their pedagogical parallelism is still provisional pending Sprint 11D review. The protected Mastery pool currently has exactly 2 items per skill while a full Mastery Check also needs 2 per skill, so a retest can be forced to overlap with the previous form. That overlap is now explicit and auditable (`poolExhausted` / `exactRepeatFallbackUsed`) rather than silent; Sprint 11D must expand the protected pool before overlap becomes exceptional.
 
 ### 11C — Parameterised and parallel item variants
 - [ ] Add deterministic parameterised templates where educationally safe (for example unit conversions, measurement readings and displacement calculations).
@@ -135,8 +139,8 @@ Sprint 11 is complete only when all of the following are true:
 
 - [x] Cross-session exposure tracking is live and covered by tests.
 - [ ] Practice no longer depends on six fixed questions per skill and can normally complete a bounded session without forced exact repetition.
-- [ ] Diagnostic uses parallel/rotating forms instead of the same fixed form on every attempt.
-- [ ] Mastery Check uses protected unseen-first / least-exposed selection and alternate retest forms.
+- [x] Diagnostic uses parallel/rotating forms instead of the same fixed form on every attempt. Structural rotation is live; content parallelism remains provisional until Sprint 11D review.
+- [x] Mastery Check uses protected unseen-first / least-exposed selection and alternate retest logic. Current protected-bank capacity can still force an explicitly flagged overlap fallback until Sprint 11D expands the pool.
 - [ ] Parameterised items are deterministic, reproducible and auditable where used.
 - [ ] Unit 1 content has completed the agreed technical/human QA gate; provisional SME status remains explicit until actual SME review.
 - [ ] Deferred authenticated browser/device QA has been completed or remaining defects have an explicit accepted workaround before the pilot is closed.
