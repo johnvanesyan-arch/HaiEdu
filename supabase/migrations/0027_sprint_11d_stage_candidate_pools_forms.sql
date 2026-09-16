@@ -20,6 +20,42 @@ where i.config->>'phase'='11D' and i.retired_at is null
 on conflict (pool_id,item_id) do update
 set enabled=false,metadata=excluded.metadata;
 
+-- Draft forms are allowed to reference explicitly staged disabled 11D candidate
+-- memberships. Active forms still require enabled parent-pool membership.
+create or replace function private.validate_assessment_form_item_membership()
+returns trigger
+language plpgsql
+security definer
+set search_path=public,private
+as $$
+declare
+  v_pool_id uuid;
+  v_form_status text;
+begin
+  select pool_id,status into v_pool_id,v_form_status
+  from public.assessment_forms where id=new.form_id;
+  if v_pool_id is null then raise exception 'assessment_form_not_found'; end if;
+
+  if v_form_status='draft' then
+    if not exists(
+      select 1 from public.assessment_pool_items api
+      where api.pool_id=v_pool_id and api.item_id=new.item_id
+        and (api.enabled=true or (api.enabled=false and api.metadata->>'phase'='11D' and coalesce((api.metadata->>'candidate')::boolean,false)=true))
+    ) then
+      raise exception 'draft_assessment_form_item_not_staged_in_parent_pool';
+    end if;
+  else
+    if not exists(
+      select 1 from public.assessment_pool_items api
+      where api.pool_id=v_pool_id and api.item_id=new.item_id and api.enabled=true
+    ) then
+      raise exception 'assessment_form_item_not_in_parent_pool';
+    end if;
+  end if;
+  return new;
+end;
+$$;
+
 -- Draft Diagnostic v2 forms. They are deliberately not active until human review.
 insert into public.assessment_forms(pool_id,code,name,form_version,status,metadata)
 select p.id,v.code,v.name,2,'draft',jsonb_build_object(
