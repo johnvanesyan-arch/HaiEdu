@@ -39,8 +39,8 @@ test("client task routes retain opposite-mode collision guards", async () => {
 test("11F checklist continues to require real browser, keyboard and collision QA", async () => {
   const checklist = await read("docs/pilot-browser-qa-checklist.md");
   assert.match(checklist, /Desktop Chromium/);
-  assert.match(checklist, /Firefox\/Safari-class/);
+  assert.match(checklist, /Desktop Firefox \/ Safari-class browser/);
   assert.match(checklist, /Keyboard-only/);
-  assert.match(checklist, /Armenian overflow/);
-  assert.match(checklist, /Session-collision checks/);
+  assert.match(checklist, /Armenian overflow stress strings/);
+  assert.match(checklist, /Session collision regression/);
 });
