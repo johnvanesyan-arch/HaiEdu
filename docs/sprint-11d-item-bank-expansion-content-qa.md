@@ -2,163 +2,198 @@
 
 ## Status
 
-**Repository implementation complete; production database finalisation and independent human Physics SME sign-off remain open.**
+**Technical candidate-bank construction is complete in production. Human content review remains the final 11D activation gate.**
 
-The Chapter I bank contract is fixed at **24 purpose-exclusive effective variants per skill** across the 10 skills:
+The live database now contains the full structural Chapter I target:
 
-- **12 Practice** variants per skill;
-- **4 Diagnostic** variants per skill, split across two 2-item-per-skill forms;
-- **8 protected Mastery** variants per skill;
-- **240 pilot-eligible variants** when the review-safe migrations are fully applied.
+- **60 fixed anchors** — 6 per skill;
+- **180 new Sprint 11D candidates** — 18 per skill;
+- **240 structural variants total** — exactly 24 per skill;
+- intended final allocation per skill: **12 Practice + 4 Diagnostic + 8 protected Mastery**.
 
-This is an acceptance floor, not a hard maximum.
+The 180 new variants are deliberately **not pilot-ready yet**. All remain:
 
-The existing `provisional_no_sme_review` state is intentionally retained. `review_status='approved'` in the Sprint 11D migrations means that the item passed the platform's structured internal content workflow and technical checks. It **does not** mean an independent teacher or Physics subject-matter expert has validated the item.
+- `status='review'`;
+- `review_status='needs_review'`;
+- `technicalQaStatus='passed'`;
+- `humanReviewStatus='pending'`;
+- `pilot_ready=false`;
+- `validation_state='provisional_no_sme_review'`.
 
-## Source boundary
+No new 11D candidate is enabled in a learner-facing pool. The currently active production pools remain the known-safe 11A/11B baseline: **40 Practice, 40 Diagnostic, 20 protected Mastery**.
 
-The re-audit uses the project's existing Chapter I curriculum architecture and development-bank source basis:
+## Numeric contract
 
-- Գ. Մելիքյան, Ս. Մաիլյան, *Ֆիզիկա 7*, Էդիթ Պրինտ, 2023, Chapter I §§1–6;
-- the existing 10-skill Chapter I architecture;
-- the existing Sprint 5 misconception/remediation taxonomy;
-- the original 60 fixed items and their answer keys/options.
+The final intended Chapter I allocation is:
 
-The project still records official 2026 outcome wording and independent SME validation as separate unresolved evidence tasks. Sprint 11D does not silently convert development content into officially validated curriculum content.
+| Source | Practice | Diagnostic | Mastery | Total |
+|---|---:|---:|---:|---:|
+| Existing fixed anchors | 4 | 0 | 2 | 6 |
+| New 11D variants | 8 | 4 | 6 | 18 |
+| **Per skill** | **12** | **4** | **8** | **24** |
+| **Across 10 skills** | **120** | **40** | **80** | **240** |
 
-## Original 60-item re-audit
+The 24-per-skill figure is an acceptance floor, not a hard maximum.
 
-The original six fixed items per skill are retained as stable anchors. Sprint 11D reclassifies the legacy `unspecified` family tags and records review evidence without changing the underlying answer-key semantics.
+## Fixed-bank re-audit
 
-The audit rule is:
+All 60 original Unit 1 items were re-audited without changing their answer semantics. The audit removed the remaining `unspecified` family classifications and preserved the stronger labels already present where appropriate.
 
-| Skill | Fixed-item family interpretation | Difficulty treatment |
-|---|---|---|
-| S01 Physical phenomena | I01–I02 knowledge; I03–I06 application/classification | Existing 1–2 range retained |
-| S02 Body / material / phenomenon | I01–I02 and I05 knowledge; I03–I04 and I06 application | Existing 1–3 range retained |
-| S03 Scientists / Armenian physicists | knowledge | Existing 1–2 range retained |
-| S04 Observation vs experiment | I02 knowledge; I05 reasoning; other fixed items application | Existing 1–3 range retained |
-| S05 Inquiry chain | I01–I02 knowledge; I03–I06 reasoning | Existing 1–4 range retained |
-| S06 Quantity / unit / instrument | I01–I04 knowledge; I05–I06 application | Existing 1–2 range retained |
-| S07 Unit conversions | application | Existing 1–3 range retained |
-| S08 Scale reading | I03 knowledge; remaining fixed items application | Existing 1–3 range retained |
-| S09 Error / precision | I02/I04/I05/I06 reasoning; I01/I03 application | Existing 2–3 range retained |
-| S10 Measurement planning / displacement | I02 reasoning; I01/I03/I04/I05/I06 transfer | Existing 2–4 range retained |
+| Skill | Fixed-item family interpretation |
+|---|---|
+| S01 Physical phenomena | I01–I02 knowledge; I03–I06 application |
+| S02 Body / material / phenomenon | I01–I02 and I05 knowledge; I03–I04 and I06 application |
+| S03 Scientists / Armenian physicists | knowledge |
+| S04 Observation vs experiment | I02 knowledge; I05 reasoning; remaining items application |
+| S05 Inquiry chain | I01–I02 knowledge; I03–I06 reasoning |
+| S06 Quantity / unit / instrument | I01–I04 knowledge; I05–I06 application |
+| S07 Unit conversions | application |
+| S08 Scale reading | I03 knowledge; remaining items application |
+| S09 Error / precision | I02/I04/I05/I06 reasoning; I01/I03 application |
+| S10 Measurement planning / displacement | I02 reasoning; remaining items transfer |
 
-Every Chapter I item is also linked to the active skill-level misconception taxonomy. Response-specific misconception refinement remains an SME/content-editor task.
+All 60 fixed anchors are published and internally re-audited, while still retaining `provisional_no_sme_review`.
 
-## Bank expansion design
+## New candidate-bank construction
 
 ### Authored parallel catalogues
 
-S01–S06 use reviewed authored parallel scenarios to broaden context rather than merely reword a single fixed question. S09 also uses authored reasoning variants to supplement its finite numerical generator domain.
+S01–S06 use authored parallel scenarios. S09 also uses authored reasoning scenarios because its deterministic numerical domain is finite.
 
-These authored scenarios are represented as **concrete variants in a shared authored-parallel catalogue**, not as fake deterministic generators. Migration `0023` marks their templates accordingly so the content-admin QA path will not attempt to regenerate them through the Sprint 11C numerical/parallel generator RPC.
+The original 0017 catalogue was recovered after the partial-production incident and normalized so authored parallel content is represented as a **fixed authored catalogue**, not as a deterministic generator. Authored candidates no longer carry generator seeds.
 
-### Deterministic numerical variants
+### Deterministic candidates
 
-S07, S08, S09 and S10 use the deterministic Sprint 11C generator architecture where mathematically safe:
+S07, S08, S09 and S10 use the Sprint 11C deterministic generator framework:
 
-- S07: length, time and volume conversion;
-- S08: scale division value and scale reading;
-- S09: measurement error using the current half-division rule;
-- S10: displacement volume and indirect sheet-thickness measurement.
+- S07 — length, time and volume conversion;
+- S08 — scale division and scale reading;
+- S09 — measurement-error variants;
+- S10 — displacement volume and indirect sheet-thickness measurement.
 
-Seed, parameters, answer and semantic fingerprint remain reproducible and auditable.
+Every deterministic 11D candidate was reproduced from its stored template + seed and checked against the stored prompt, parameters, answer and semantic fingerprint.
 
-The S09 measurement-error template has **10 genuinely distinct effective outputs** in its current safe parameter domain. Sprint 11D does not manufacture duplicates to hit a numerical quota. Instead, two reviewed reasoning variants complete its four-item Diagnostic capacity.
+The S09 numerical generator has only **10 unique safe outputs** in its current parameter domain. Sprint 11D therefore uses those 10 deterministic variants plus two authored reasoning candidates to complete S09's Practice/Diagnostic capacity instead of manufacturing duplicates.
 
-## S01 scope correction
+## S01 recovery correction
 
-The first authored proof catalogue included sound examples. The current Chapter I architecture explicitly establishes the classification set used by the existing bank around mechanical, thermal, electrical, magnetic and optical phenomena. Before assessment eligibility, Sprint 11D replaces the sound examples and rebalances the S01 Diagnostic/Mastery catalogue around those source-supported categories.
+The first partially applied catalogue introduced an unsupported sixth physical-phenomenon category, **Sound**. Migration `0024` corrected production by:
 
-This correction is deliberately performed through a later migration rather than rewriting already-applied migration history.
+- removing the Sound option from every S01 11D candidate;
+- replacing the three affected protected candidates with source-aligned thermal/electrical/optical examples;
+- correcting the answer keys;
+- recalculating semantic fingerprints from the corrected prompt, answer and option set.
 
-## Purpose-exclusive assessment pools
+There are now zero remaining Sound-option rows in the S01 11D candidate catalogue.
 
-After the bank passes its internal review/technical gates, pool membership is rebuilt as follows for **every skill**:
+## Technical QA
 
-| Source | Practice | Diagnostic | Mastery |
-|---|---:|---:|---:|
-| Original fixed anchors | 4 | 0 | 2 |
-| New 11D variants | 8 | 4 | 6 |
-| **Total per skill** | **12** | **4** | **8** |
+All 180 new 11D candidates currently pass the technical gate:
 
-An item may be enabled in only one of the three Chapter I purpose pools. A database trigger rejects cross-purpose reuse and prevents unpublished, unreviewed, retired, `unspecified`, or non-pilot-ready items from being newly enabled in the Chapter I pools.
+- non-`unspecified` item family;
+- answer key present;
+- valid single-choice answer/option relationship where applicable;
+- numeric/quantity tolerance present where applicable;
+- active skill-level misconception mapping present;
+- no duplicate active semantic fingerprints inside the 11D candidate bank;
+- deterministic items reproduce exactly from template + seed;
+- all candidates remain isolated from learner-facing pools.
 
-The Mastery pool remains explicitly protected.
+Technical QA is explicitly **not** treated as human content approval or Physics SME validation.
 
-## Diagnostic forms v2
+## Staged assessment structure
 
-Sprint 11D preserves the Sprint 11B forms as historical definitions and introduces active **Form A v2** and **Form B v2**:
+Every new candidate has exactly one **disabled** intended-purpose membership:
 
-- 20 questions per form;
-- exactly 2 questions per skill;
-- 10 skills represented;
-- zero exact-item overlap between A and B;
-- all questions originate from the purpose-exclusive Diagnostic pool.
+- 80 staged Practice candidates;
+- 40 staged Diagnostic candidates;
+- 60 staged protected-Mastery candidates.
 
-The forms remain labelled `provisionalParallelism=true`. Structural balance and non-overlap do **not** constitute psychometric equivalence.
+The database activation guard rejects any attempt to enable an 11D candidate unless all of the following are true:
 
-## Practice and Mastery capacity
+1. `technicalQaStatus='passed'`;
+2. `humanReviewStatus='approved'`;
+3. `pilot_ready=true`;
+4. `status='published'`;
+5. `review_status='approved'`;
+6. the destination pool matches the candidate's intended purpose;
+7. Mastery candidates are assigned only to a protected Mastery pool.
 
-A skill now has 12 Practice variants for an 8-question bounded session. This gives four items of headroom beyond one full session and makes exact-repeat fallback exceptional rather than structurally inevitable.
+This prevents a future migration or admin action from accidentally bypassing the human review gate.
 
-A skill has 8 protected Mastery variants while one full Mastery Check uses 2 per skill. The bank can therefore support multiple unseen-first / low-overlap attempts before protected-pool exhaustion becomes necessary.
+## Diagnostic v2 candidates
+
+Two new Chapter I Diagnostic forms are staged as **drafts**, not active forms:
+
+- `PHY7-U01-DIAG-A`, version 2 — 20 candidates;
+- `PHY7-U01-DIAG-B`, version 2 — 20 candidates.
+
+Each draft contains:
+
+- exactly 2 items per skill;
+- all 10 skills;
+- zero exact-item overlap between A and B.
+
+The existing version-1 forms remain active until the 11D human-review/activation step. Draft-form validation was tightened so only explicitly staged 11D candidate memberships may be referenced while disabled; active forms still require enabled parent-pool membership.
+
+`provisionalParallelism=true` remains explicit. Structural balance and non-overlap are not claims of psychometric equivalence.
 
 ## Review-trigger safety
 
-During implementation, the Sprint 8 revision triggers were re-checked. They correctly force an item back to `needs_review` / `review` whenever assessable item metadata, an answer key, or answer options change.
+The Sprint 8 revision triggers are preserved. Any assessable content change forces an item back into review. The final workflow therefore remains:
 
-The final 11D migration sequence therefore follows this order:
+1. author/materialise candidate;
+2. update answer/options if required;
+3. map misconception taxonomy;
+4. run technical QA;
+5. keep the candidate in `review / needs_review`;
+6. obtain real human content approval;
+7. set `humanReviewStatus='approved'`, `pilot_ready=true`, and publish;
+8. activate the staged purpose-exclusive pool membership;
+9. activate Diagnostic v2 only after all its items are approved.
 
-1. mutate/reclassify/materialise content;
-2. update answer keys/options where required;
-3. map misconceptions;
-4. record technical QA;
-5. record structured internal content-review evidence;
-6. only then set workflow status to `approved` / `published`;
-7. rebuild assessment pools;
-8. run hard acceptance assertions.
+## Migration history
 
-Earlier draft migrations `0018` and `0019` are intentionally no-op placeholders because they did not correctly respect all of those review-trigger semantics. The corrected implementation is in `0020+`.
+- `0017_sprint_11d_conceptual_bank_expansion.sql` — partially applied authored catalogue; later recovered safely.
+- `0018`–`0019` — superseded no-op drafts.
+- `0020`–`0023` — superseded no-op finalisation drafts; intentionally never used for production finalisation.
+- `0024_sprint_11d_partial_state_recovery.sql` — restored all partial 11D content to review-only, corrected S01 scope/options/fingerprints and normalized authored-template semantics.
+- `0025_sprint_11d_fixed_audit_and_candidate_gate.sql` — re-audited all 60 fixed anchors, mapped misconceptions, technically checked recovered authored candidates, and installed the fail-closed activation guard.
+- `0026_sprint_11d_complete_candidate_bank.sql` — completed the missing S07/S08/S09/S10 candidates and established the exact 18-new-variants-per-skill candidate bank.
+- `0027_sprint_11d_stage_candidate_pools_forms.sql` — staged disabled purpose memberships and draft Diagnostic v2 forms without changing current production delivery.
+- `0028_sprint_11d_seed_index_search_path.sql` — fixed the deterministic seed helper's mutable `search_path` warning found by the post-DDL security advisor.
 
-## Hard acceptance checks
+## Current production verification
 
-The migrations fail rather than silently continuing if any of the following is false:
+Live verification currently shows:
 
-- each skill has exactly six original fixed anchors and 18 new purpose-tagged variants;
-- every pilot-eligible item has a non-`unspecified` family;
-- every pilot-eligible item is published and internally workflow-approved;
-- every pilot-eligible item has an answer key and misconception mapping;
-- every single-choice answer exists among its options;
-- every numeric/quantity item has tolerance metadata;
-- each skill has exactly 12 Practice, 4 Diagnostic and 8 protected Mastery items;
-- there is zero enabled cross-purpose item overlap;
-- Diagnostic A v2 and B v2 each contain 20 items;
-- each form contains exactly two items per skill;
-- Diagnostic A/B have zero exact-item overlap.
+```text
+Fixed anchors                     60
+Fixed anchors with unspecified     0
+Fixed anchors published/approved  60
 
-## Migration sequence
+New Sprint 11D candidates        180
+Technical QA passed              180
+Human review pending             180
+Pilot-ready candidates             0
+Learner-enabled 11D candidates     0
+Duplicate 11D fingerprints         0
 
-- `0017_sprint_11d_conceptual_bank_expansion.sql` — authored conceptual/reasoning catalogue; already applied to production during 11D implementation.
-- `0018_sprint_11d_numeric_pool_rebuild.sql` — superseded/no-op.
-- `0019_sprint_11d_numeric_pool_rebuild_v2.sql` — superseded/no-op after review-trigger audit.
-- `0020_sprint_11d_review_safe_bank_expansion.sql` — corrected fixed-bank audit, deterministic expansion, S01 correction, S09 supplement, misconception mapping and review-safe publication.
-- `0021_sprint_11d_purpose_exclusive_pools.sql` — exact 12/4/8 pools, Diagnostic v2 and database eligibility guard.
-- `0022_sprint_11d_family_audit_corrections.sql` — fine-grained preservation of stronger original family labels.
-- `0023_sprint_11d_authored_parallel_template_semantics.sql` — distinguishes authored parallel catalogues from deterministic generators.
+Structural bank                  240
+Per skill                         24
+Intended Practice / skill         12
+Intended Diagnostic / skill        4
+Intended Mastery / skill           8
+```
 
-## Outstanding gates
+## Remaining 11D gate
 
-### Production database finalisation
+The remaining blocker is **real human content review of the 180 new candidates**. Until that occurs:
 
-The Supabase connector began returning persistent upstream HTTP 502 errors while the corrected migrations were being prepared. Repository implementation and CI can proceed independently, but Sprint 11D must not be represented as fully live until migrations `0020`–`0023` are confirmed in the production project and the live 12/4/8 + Diagnostic-form verification queries pass.
+- they do not count as pilot-eligible variants under the Sprint 11D acceptance rule;
+- the expanded 12/4/8 pools remain staged rather than active;
+- Diagnostic v2 remains draft;
+- the active platform continues using the previous 40/40/20 production pools;
+- `provisional_no_sme_review` remains in place even after internal human review until an actual Physics SME signs off.
 
-### Independent human review
-
-The repository still contains the dedicated Chapter I SME review sheet. It has not been signed off. Therefore:
-
-- `provisional_no_sme_review` stays in place;
-- no item is described as teacher-validated or SME-validated;
-- the independent human content/Physics review gate remains open unless the product owner explicitly accepts another disposition.
+The next 11D operation is therefore a controlled human-review/approval pass followed by a small activation migration, not further item generation.
