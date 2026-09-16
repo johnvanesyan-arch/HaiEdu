@@ -26,6 +26,7 @@ const stateLabels = {
   not_started: "Չսկսված",
   needs_support: "Աջակցություն է պետք",
   developing: "Զարգացող",
+  recovered: "Վերջին փորձերում կայուն",
   secure: "Ամրապնդված",
   verified: "Հաստատված",
 };
@@ -34,6 +35,7 @@ const stateTones = {
   not_started: "neutral",
   needs_support: "danger",
   developing: "warning",
+  recovered: "info",
   secure: "success",
   verified: "success",
 };
@@ -56,10 +58,12 @@ function setMessage(message, isError = false) {
 
 function skillState(skill) {
   if (masteryStatus?.unitComplete) return "verified";
-  if (skill.complete) return "secure";
+  if (skill.complete && skill.completionSource === "mastery") return "secure";
+  if (skill.complete && skill.completionSource === "recent_recovery") return "recovered";
   if (skill.mastery?.status === "needs_support") return "needs_support";
   if (skill.mastery?.status === "developing") return "developing";
   if (skill.mastery?.status === "insufficient_evidence") return skill.mastery.evidenceCount > 0 ? "developing" : "not_started";
+  if (skill.complete) return "secure";
   if (skill.diagnostic?.band === "needs_support") return "needs_support";
   if (skill.diagnostic?.band === "developing") return "developing";
   if (skill.diagnostic?.total > 0 || skill.mastery?.evidenceCount > 0) return "developing";
@@ -71,7 +75,7 @@ function renderSummary() {
   $("chapterProgressText").textContent = `${progress.completedSkills} / ${progress.totalSkills}`;
   $("chapterProgressMeta").textContent = masteryStatus?.unitComplete
     ? "Գլուխ I-ի յուրացումը հաստատված է անկախ ստուգմամբ։"
-    : "Ամրապնդված հմտություններ";
+    : "Ընթացիկ առաջընթացի չափանիշը բավարարած հմտություններ";
   $("chapterProgressBar").style.width = `${progress.percent}%`;
   $("chapterProgressBar")?.parentElement?.setAttribute("aria-valuenow", String(progress.percent));
 
@@ -104,7 +108,7 @@ function renderSummary() {
     chapterBadge.textContent = "Պատրաստ է ստուգման";
     chapterBadge.className = "status-badge info";
   } else if (progress.completedSkills > 0) {
-    chapterBadge.textContent = `${progress.completedSkills}/${progress.totalSkills} ամրապնդված`;
+    chapterBadge.textContent = `${progress.completedSkills}/${progress.totalSkills} ընթացիկ չափանիշը բավարարած`;
     chapterBadge.className = "status-badge warning";
   } else {
     chapterBadge.textContent = "Սկսելու փուլ";
@@ -158,8 +162,9 @@ function renderSkillAction(skill, state) {
   if (active.same) return `<a class="button-link skill-browser-action" href="./practice.html">Շարունակել</a>`;
   if (active.blocked) return `<button class="secondary skill-browser-action" disabled title="${escapeHtml(active.reason)}">Սեսիա ընթացքի մեջ</button>`;
   if (state === "verified") return `<button class="secondary skill-browser-action" disabled>Հաստատված</button>`;
-  if (state === "secure" && masteryStatus?.eligible) return `<a class="button-link skill-browser-action" href="./mastery.html">Պատրաստ է ստուգման</a>`;
+  if ((state === "secure" || state === "recovered") && masteryStatus?.eligible) return `<a class="button-link skill-browser-action" href="./mastery.html">Պատրաստ է ստուգման</a>`;
   if (state === "secure") return `<button class="secondary skill-browser-action" disabled>Ամրապնդված</button>`;
+  if (state === "recovered") return `<button class="secondary skill-browser-action" disabled>Վերջին փորձերում կայուն</button>`;
   const label = state === "not_started" ? "Սկսել" : "Վարժվել";
   return `<button class="skill-browser-action" data-practice-skill="${escapeHtml(skill.id)}">${label}</button>`;
 }
