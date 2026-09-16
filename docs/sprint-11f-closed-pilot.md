@@ -75,28 +75,54 @@ The following four matrix items were **not executed in authenticated state becau
 
 These four items are **accepted deferrals, not PASS results**. Public responsive/zoom/accessibility coverage exists, and authenticated desktop student/teacher rendering passed. The accepted limitation applies only to the missing authenticated repetitions of those checks.
 
-State-changing workflow assertions such as answer submission, remediation completion, full Diagnostic/Mastery completion, and destructive account/privacy operations remain intentionally outside 11F.2 and belong to the disposable-account workflow smoke in 11F.3.
+State-changing workflow assertions such as answer submission, remediation completion, full Diagnostic/Mastery completion, and destructive account/privacy operations remain intentionally outside 11F.2 and belong to the workflow smoke in 11F.3.
 
 Detailed operational checklist: `docs/pilot-browser-qa-checklist.md`.
 
 ## 11F.3 — Final production workflow smoke
 
-**Status: ⏳ Pending.**
+**Status: 🟡 In progress.**
 
-Before introducing a real cohort, execute one controlled end-to-end workflow covering:
+The original plan required a disposable test/pilot learner account. During execution, the prepared browser profile still resolved to the existing Hovhannes Vanesyan student account. On 2026-09-16 the product owner explicitly authorized continued use of that account for the state-changing 11F.3 smoke. This is an accepted exception to the disposable-account requirement; resulting learning evidence must therefore be treated as QA-modified evidence rather than untouched learner history.
 
-- student authentication/onboarding;
-- teacher class creation and invite/join code;
-- student class joining;
-- Diagnostic start/resume/completion;
-- adaptive Practice and remediation;
+### Executed successfully
+
+Teacher-side setup through the production UI:
+
+- teacher authentication confirmed;
+- created one disposable class named `QA 11F3 E2E` for academic year `2026-2027`;
+- generated join code `YKVXYDSB`;
+- class verified active with 0 students immediately after creation;
+- no existing non-QA class was intentionally modified during class creation.
+
+Student-side workflow through the production UI:
+
+- Hovhannes Vanesyan joined `QA 11F3 E2E` using the normal join-code flow;
+- join success message rendered correctly;
+- an existing active Practice session was resumed rather than replaced;
+- Help/remediation UI was exercised during Practice;
+- the bounded Practice session completed through the designed `mastery_reached` early-completion path after 5/5 correct responses, ending at 5 of 8 planned items rather than forcing unnecessary additional questions;
+- one full 20-item Chapter I Diagnostic completed successfully;
+- production database state confirms that completed Diagnostic recorded 20/20 answered and 13 correct (65%);
+- no per-item correctness feedback was observed before the Diagnostic completion state.
+
+### Current unresolved state
+
+After the completed 20-item Diagnostic, the browser automation continued navigating and a **second Diagnostic session was started**. Production currently shows that second session as active at 4/20. The long browser run then timed out at the automation layer.
+
+This active second Diagnostic requires disposition before the remaining 11F.3 workflow can be considered cleanly complete. At present it is not yet established whether the second-session start was solely an automation-navigation artifact or whether it reveals a product-flow issue worth fixing.
+
+Still pending:
+
+- resolve/disposition the currently active second Diagnostic session;
+- final Home/Progress verification after the completed Diagnostic;
 - Mastery Check eligibility/start/resume/completion;
-- Progress state after learning evidence changes;
-- teacher dashboard/student detail visibility;
-- account suspension/session-revocation behavior;
-- privacy preferences and deletion-request surface.
+- teacher dashboard/student-detail verification of the newly generated learning evidence;
+- account suspension and session-revocation behavior;
+- privacy preference behavior;
+- deletion-request surface/flow.
 
-The smoke account must be disposable test/pilot data. Do not use production student learning evidence merely to exercise the flow.
+Accordingly, **11F.3 is not complete** and the overall Sprint 11F gate remains open.
 
 ## 11F.4 — Pilot privacy and participation gate
 
@@ -117,7 +143,7 @@ This sprint is not a legal-compliance certification.
 
 ## 11F.5 — Closed cohort run
 
-**Status: ⏳ Deferred until the disposable-account workflow gate passes.**
+**Status: ⏳ Deferred until the 11F.3 workflow gate passes.**
 
 When the cohort is run, collect operational evidence without changing the learning engine mid-pilot unless a blocking defect requires intervention.
 
@@ -138,13 +164,13 @@ Human feedback may be collected later in this phase. It is deliberately not part
 Sprint 11 may close only after:
 
 - the authenticated browser/device/keyboard matrix passes or each remaining issue has an explicit accepted workaround;
-- the final production workflow smoke passes;
-- a controlled Chapter I cohort has completed the pilot;
+- the final production workflow smoke passes or each remaining workflow item has an explicit accepted disposition;
+- a controlled Chapter I cohort has completed the pilot, unless that criterion is explicitly changed by the product owner and the limitation is documented;
 - repeat/exposure and item-level operational evidence have been reviewed;
 - critical defects are resolved or explicitly accepted;
 - a pilot report records defects, content findings, learning-engine findings, usability observations, and the disposition for Sprint 12 calibration.
 
-The first closure criterion is now satisfied by the executed 11F.2 rendered evidence plus the explicit four-item accepted limitation documented above.
+The first closure criterion is satisfied by the executed 11F.2 rendered evidence plus the explicit four-item accepted limitation documented above. The 11F.3 criterion remains open.
 
 ## Current residuals
 
@@ -158,4 +184,12 @@ Supabase performance lint still reports optimization opportunities such as unind
 
 ## Immediate next action
 
-Run **11F.3 — disposable-account end-to-end production workflow smoke**. Only after that gate passes should a real controlled cohort be introduced.
+Continue **11F.3** from the current production state:
+
+1. disposition the active second Diagnostic session;
+2. verify Progress/Home state from the completed 13/20 Diagnostic;
+3. exercise Mastery eligibility and, when legitimately available, the Mastery workflow;
+4. re-check teacher visibility of the resulting student evidence;
+5. complete suspension/session-revocation and privacy/deletion workflow checks.
+
+Only after 11F.3 is closed should the real controlled-cohort phase begin.
