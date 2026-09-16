@@ -137,7 +137,7 @@ function renderDashboard(data) {
     resume_session: "Շարունակել սեսիան",
     take_diagnostic: "Անցնել ախտորոշիչ",
     practice_skill: "Սկսել առաջարկվող վարժանքը",
-    unit_complete: "Բաժինը ամրապնդված է"
+    unit_complete: "Բաժնի ընթացիկ չափանիշները բավարարված են"
   }[recommendation.action] ?? "Հաջորդ քայլ";
 
   $("nextStepLabel").textContent = actionText;
@@ -165,6 +165,17 @@ function renderDashboard(data) {
   renderSkillMap(data.skills ?? [], skill?.id ?? null);
 }
 
+function completionBadge(skill) {
+  if (!skill.complete) return "";
+  if (skill.completionSource === "recent_recovery") {
+    return '<span class="check-chip recent-recovery">✓ Վերջին փորձերում կայուն</span>';
+  }
+  if (skill.completionSource === "mastery") {
+    return '<span class="check-chip">✓ Ամրապնդված</span>';
+  }
+  return '<span class="check-chip completion-neutral">✓ Ընթացիկ չափանիշը բավարարված է</span>';
+}
+
 function renderSkillMap(skills, recommendedSkillId) {
   const container = $("skillMap");
   container.innerHTML = "";
@@ -174,17 +185,19 @@ function renderSkillMap(skills, recommendedSkillId) {
     const diag = skill.diagnostic ?? { band: "not_assessed", correct: 0, total: 0, percent: null };
     const mastery = skill.mastery;
     const diagnosticText = diag.total ? `${diag.correct}/${diag.total}` : "—";
-    const masteryText = mastery ? `${mastery.percent}% mastery` : "mastery տվյալներ չկան";
+    const masteryText = mastery
+      ? `Յուրացում՝ ${mastery.percent}% · ${statusLabels[mastery.status] ?? mastery.status}`
+      : "Յուրացման տվյալներ չկան";
     tile.innerHTML = `
       <div class="skill-top">
         <div>
           <div class="skill-code">${escapeHtml(skill.code)}</div>
           <div class="skill-title">${escapeHtml(skill.nameHy)}</div>
         </div>
-        ${skill.complete ? '<span class="check-chip">✓ ամրապնդված</span>' : ""}
+        ${completionBadge(skill)}
       </div>
       <div class="skill-meta">
-        <span class="band-badge ${escapeHtml(diag.band)}">${escapeHtml(bandLabels[diag.band] ?? diag.band)} · ${escapeHtml(diagnosticText)}</span>
+        <span class="band-badge ${escapeHtml(diag.band)}">Ախտորոշիչ՝ ${escapeHtml(bandLabels[diag.band] ?? diag.band)} · ${escapeHtml(diagnosticText)}</span>
         <span class="mastery-chip">${escapeHtml(masteryText)}</span>
         <span class="mastery-chip">${escapeHtml(layerLabels[skill.layer] ?? skill.layer)}</span>
       </div>`;
