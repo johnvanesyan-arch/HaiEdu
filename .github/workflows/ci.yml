@@ -33,6 +33,7 @@ jobs:
           node --check web/home-class.js
           node --check web/home-practice-router.js
           node --check web/home-assessment-router.js
+          node --check web/course-gate.js
           node --check web/physics-7.js
           node --check web/practice.js
           node --check web/assessment.js
