@@ -12,6 +12,30 @@ const destinations = [
   { key: "progress", href: "./progress.html", label: "Առաջընթաց", icon: "↗", enabled: true }
 ];
 
+function ensureBrandAssets() {
+  if (!document.querySelector('link[data-haiedu-favicon="true"]')) {
+    const icon = document.createElement("link");
+    icon.rel = "icon";
+    icon.type = "image/svg+xml";
+    icon.href = "./assets/haiedu-icon.svg";
+    icon.dataset.haieduFavicon = "true";
+    document.head.appendChild(icon);
+  }
+}
+
+function ensurePublicBrand() {
+  if (page !== "home") return;
+  const topbarCopy = document.querySelector(".topbar > div:first-child");
+  if (!topbarCopy || topbarCopy.querySelector(".haiedu-public-brand")) return;
+
+  const brand = document.createElement("a");
+  brand.className = "haiedu-public-brand";
+  brand.href = "./index.html";
+  brand.setAttribute("aria-label", "HaiEdu գլխավոր էջ");
+  brand.innerHTML = '<img src="./assets/haiedu-primary.svg" alt="HaiEdu" />';
+  topbarCopy.prepend(brand);
+}
+
 function ensureQaStylesheet() {
   if (document.querySelector('link[data-amp-responsive-qa="true"]')) return;
   const link = document.createElement("link");
@@ -99,7 +123,9 @@ function ensureNavigation() {
   side.setAttribute("aria-label", "Հիմնական ուսումնական նավարկում");
   side.innerHTML = `
     <div class="amp-nav-brand">
-      <strong>Ուսուցման հարթակ</strong>
+      <a class="amp-brand-link" href="./index.html" aria-label="HaiEdu գլխավոր էջ">
+        <img src="./assets/haiedu-primary.svg" alt="HaiEdu" />
+      </a>
       <span>Հայկական հանրակրթական ծրագիր</span>
     </div>
     <div class="amp-nav-list">
@@ -163,6 +189,8 @@ function syncShellState() {
   syncHomeHeader(authenticated);
 }
 
+ensureBrandAssets();
+ensurePublicBrand();
 ensureQaStylesheet();
 ensureRoleAccess();
 ensureNavigation();
