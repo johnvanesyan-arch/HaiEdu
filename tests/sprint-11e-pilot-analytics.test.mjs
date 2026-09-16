@@ -16,8 +16,8 @@ test("11D activation is fail-closed and enforces 12/4/8 capacity", () => {
   has(activation, /11D_activation_gate_not_satisfied/, "activation must fail if review/QA gate is incomplete");
   has(activation, /r\.practice_n<>12 or r\.diagnostic_n<>4 or r\.mastery_n<>8/, "every skill must end at 12/4/8");
   has(activation, /11D_cross_purpose_overlap/, "purpose overlap must be rejected");
-  has(activation, /form_version=1.*status='retired'/s, "Diagnostic v1 must be retired");
-  has(activation, /form_version=2.*status='active'/s, "Diagnostic v2 must be active");
+  has(activation, /set status='retired'.*form_version=1/s, "Diagnostic v1 must be retired");
+  has(activation, /set status='active'.*form_version=2/s, "Diagnostic v2 must be active");
 });
 
 test("11E analytics preserves the operational-not-psychometric boundary", () => {
