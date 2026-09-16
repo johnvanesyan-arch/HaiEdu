@@ -134,6 +134,9 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [x] Add a basic assessment-integrity report showing exact-repeat rates and protected-pool usage.
 
 ### 11F — Closed Grade 7 Physics Chapter I pilot
+**Status: 🟡 In progress.** Technical preflight is complete and documented in `docs/pre-sprint-11f-qa.md`; Sprint 11F is now open. The next gate is authenticated rendered browser/device/keyboard smoke, followed by a disposable-account end-to-end production workflow smoke. Real student/teacher feedback remains deferred until those technical gates pass. Detailed execution plan: `docs/sprint-11f-closed-pilot.md`.
+
+- [x] Complete automated/source, live-database, active-bank, diagnostic-form, security/RLS and session-collision preflight QA; fix blocking defects discovered by that gate.
 - [ ] Execute the deferred authenticated browser/device QA matrix from `docs/pilot-browser-qa-checklist.md` or document accepted defects/workarounds.
 - [ ] Final production smoke test: student onboarding, teacher class creation/invite, class joining, diagnostic, adaptive practice, remediation, mastery check, progress, and teacher dashboard.
 - [ ] Use a small controlled student cohort before broader rollout.
