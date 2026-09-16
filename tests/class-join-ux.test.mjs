@@ -21,15 +21,20 @@ test("Home class card distinguishes no-class and joined-class states", async () 
   assert.doesNotMatch(classes, /service_role|answer_key|item_answer_keys/i);
 });
 
-test("student class membership endpoint returns only authenticated student's active classes", async () => {
+test("student class membership endpoint returns authenticated student's enriched active class entitlements", async () => {
   const fn = await read("supabase/functions/get-student-classes/index.ts");
+  const access = await read("supabase/functions/_shared/course-access.ts");
   assert.match(fn, /hasActiveLiveSession/);
   assert.match(fn, /student_role_required/);
-  assert.match(fn, /from\("class_memberships"\)/);
-  assert.match(fn, /eq\("student_id", studentId\)/);
-  assert.match(fn, /from\("classes"\)/);
-  assert.match(fn, /eq\("is_active", true\)/);
-  assert.match(fn, /return json\(\{ classes: result \}\)/);
+  assert.match(fn, /getStudentCourseEntitlements/);
+  assert.match(fn, /subjectCode/);
+  assert.match(fn, /gradeNumber/);
+  assert.match(fn, /courseKey/);
+  assert.match(fn, /return json\(\{ classes \}\)/);
+  assert.match(access, /from\("class_memberships"\)/);
+  assert.match(access, /eq\("student_id", studentId\)/);
+  assert.match(access, /from\("classes"\)/);
+  assert.match(access, /eq\("is_active", true\)/);
 });
 
 test("Join Class utility page uses the shared student design system", async () => {
