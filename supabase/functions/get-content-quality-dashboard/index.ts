@@ -31,13 +31,39 @@ Deno.serve(async (req) => {
     const { data: profile } = await admin.from("profiles").select("role, display_name").eq("id", actorId).maybeSingle();
     if (!profile || !["admin", "content_admin"].includes(String(profile.role))) return json({ error: "content_admin_required" }, 403);
 
-    const { data: items, error: itemError } = await admin
-      .from("items")
-      .select("id, code, skill_id, item_type, prompt_hy, difficulty, difficulty_band, item_family, source_reference, validation_state, review_status, version_no, status, retired_at, retired_reason, replacement_item_id, updated_at, skills(code, name_hy)")
-      .order("code", { ascending: true });
-    if (itemError) return json({ error: "items_query_failed", detail: itemError.message }, 500);
+    const [itemResult, gradeResult, subjectResult, frameworkResult, programResult, unitResult, scopeResult] = await Promise.all([
+      admin.from("items")
+        .select("id, code, skill_id, item_type, prompt_hy, difficulty, difficulty_band, item_family, source_reference, validation_state, review_status, version_no, status, retired_at, retired_reason, replacement_item_id, updated_at, skills(code, name_hy, subject_id, grade_id)")
+        .order("code", { ascending: true }),
+      admin.from("grades").select("id, grade_number, label_hy, label_en").order("grade_number", { ascending: true }),
+      admin.from("subjects").select("id, code, name_hy, name_en, status").order("name_en", { ascending: true }),
+      admin.from("curriculum_frameworks").select("id, title, version_label, effective_from, effective_to, status").order("effective_from", { ascending: false }),
+      admin.from("subject_programs").select("id, curriculum_framework_id, subject_id, grade_id, version_label, effective_from, effective_to, status"),
+      admin.from("units").select("id, subject_program_id, code, title_hy, title_en, sequence_order, status").order("sequence_order", { ascending: true }),
+      admin.from("item_curriculum_scopes").select("item_id, subject_program_id, unit_id, is_primary").eq("is_primary", true),
+    ]);
 
-    const itemIds = (items ?? []).map((i: any) => i.id);
+    if (itemResult.error) return json({ error: "items_query_failed", detail: itemResult.error.message }, 500);
+    for (const [name, result] of [["grades", gradeResult], ["subjects", subjectResult], ["frameworks", frameworkResult], ["programs", programResult], ["units", unitResult], ["scopes", scopeResult]] as const) {
+      if (result.error) return json({ error: `${name}_query_failed`, detail: result.error.message }, 500);
+    }
+
+    const items = itemResult.data ?? [];
+    const grades = gradeResult.data ?? [];
+    const subjects = subjectResult.data ?? [];
+    const frameworks = frameworkResult.data ?? [];
+    const programs = programResult.data ?? [];
+    const units = unitResult.data ?? [];
+    const scopes = scopeResult.data ?? [];
+
+    const gradeById = new Map(grades.map((row: any) => [row.id, row]));
+    const subjectById = new Map(subjects.map((row: any) => [row.id, row]));
+    const frameworkById = new Map(frameworks.map((row: any) => [row.id, row]));
+    const programById = new Map(programs.map((row: any) => [row.id, row]));
+    const unitById = new Map(units.map((row: any) => [row.id, row]));
+    const primaryScopeByItem = new Map(scopes.map((row: any) => [row.item_id, row]));
+
+    const itemIds = items.map((i: any) => i.id);
     const [qaResult, reviewResult, mappingResult, versionResult] = await Promise.all([
       itemIds.length ? admin.from("item_qa_runs").select("item_id, version_no, passed, errors, warnings, created_at").in("item_id", itemIds).order("created_at", { ascending: false }) : Promise.resolve({ data: [] as any[] }),
       itemIds.length ? admin.from("item_reviews").select("item_id, version_no, review_type, decision, notes, created_at").in("item_id", itemIds).order("created_at", { ascending: false }) : Promise.resolve({ data: [] as any[] }),
@@ -60,16 +86,36 @@ Deno.serve(async (req) => {
       misconceptions.set(row.item_id, list);
     }
 
-    const rows = (items ?? []).map((item: any) => {
+    const rows = items.map((item: any) => {
       const qaRaw = latestQa.get(item.id) ?? null;
       const reviewRaw = latestReview.get(item.id) ?? null;
       const qa = qaRaw && Number(qaRaw.version_no) === Number(item.version_no) ? qaRaw : null;
       const review = reviewRaw && Number(reviewRaw.version_no) === Number(item.version_no) ? reviewRaw : null;
       const version = latestVersion.get(item.id) ?? null;
+      const scope: any = primaryScopeByItem.get(item.id) ?? null;
+      const program: any = scope ? programById.get(scope.subject_program_id) : null;
+      const unit: any = scope ? unitById.get(scope.unit_id) : null;
+      const subject: any = program ? subjectById.get(program.subject_id) : null;
+      const grade: any = program ? gradeById.get(program.grade_id) : null;
+      const framework: any = program ? frameworkById.get(program.curriculum_framework_id) : null;
+
       return {
         id: item.id,
         code: item.code,
-        skill: { id: item.skill_id, code: item.skills?.code ?? null, nameHy: item.skills?.name_hy ?? null },
+        skill: {
+          id: item.skill_id,
+          code: item.skills?.code ?? null,
+          nameHy: item.skills?.name_hy ?? null,
+          subjectId: item.skills?.subject_id ?? null,
+          gradeId: item.skills?.grade_id ?? null,
+        },
+        curriculum: scope ? {
+          subject: subject ? { id: subject.id, code: subject.code, nameHy: subject.name_hy, nameEn: subject.name_en } : null,
+          grade: grade ? { id: grade.id, number: Number(grade.grade_number), labelHy: grade.label_hy, labelEn: grade.label_en } : null,
+          program: program ? { id: program.id, versionLabel: program.version_label, frameworkId: program.curriculum_framework_id } : null,
+          framework: framework ? { id: framework.id, title: framework.title, versionLabel: framework.version_label } : null,
+          unit: unit ? { id: unit.id, code: unit.code, titleHy: unit.title_hy, titleEn: unit.title_en } : null,
+        } : null,
         type: item.item_type,
         promptHy: item.prompt_hy,
         difficulty: Number(item.difficulty),
@@ -92,8 +138,33 @@ Deno.serve(async (req) => {
     });
 
     const active = rows.filter((r: any) => !r.retiredAt);
+    const programCatalog = programs.map((program: any) => {
+      const subject: any = subjectById.get(program.subject_id);
+      const grade: any = gradeById.get(program.grade_id);
+      const framework: any = frameworkById.get(program.curriculum_framework_id);
+      return {
+        id: program.id,
+        subjectId: program.subject_id,
+        gradeId: program.grade_id,
+        versionLabel: program.version_label,
+        status: program.status,
+        subjectNameHy: subject?.name_hy ?? null,
+        subjectNameEn: subject?.name_en ?? null,
+        gradeNumber: grade ? Number(grade.grade_number) : null,
+        gradeLabelHy: grade?.label_hy ?? null,
+        gradeLabelEn: grade?.label_en ?? null,
+        framework: framework ? { id: framework.id, title: framework.title, versionLabel: framework.version_label } : null,
+      };
+    });
+
     return json({
       actor: { id: actorId, role: profile.role, displayName: profile.display_name || "Content admin" },
+      catalog: {
+        grades: grades.map((g: any) => ({ id: g.id, number: Number(g.grade_number), labelHy: g.label_hy, labelEn: g.label_en })),
+        subjects: subjects.map((s: any) => ({ id: s.id, code: s.code, nameHy: s.name_hy, nameEn: s.name_en, status: s.status })),
+        programs: programCatalog,
+        units: units.map((u: any) => ({ id: u.id, programId: u.subject_program_id, code: u.code, titleHy: u.title_hy, titleEn: u.title_en, sequenceOrder: u.sequence_order, status: u.status })),
+      },
       stats: {
         totalItems: rows.length,
         published: active.filter((r: any) => r.lifecycleStatus === "published").length,
@@ -103,6 +174,7 @@ Deno.serve(async (req) => {
         qaMissing: active.filter((r: any) => !r.latestQa).length,
         retired: rows.filter((r: any) => Boolean(r.retiredAt)).length,
         provisionalSme: active.filter((r: any) => r.validationState === "provisional_no_sme_review").length,
+        unscoped: rows.filter((r: any) => !r.curriculum).length,
       },
       items: rows,
     });
