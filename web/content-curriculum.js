@@ -181,20 +181,25 @@ function scopeSummary() {
 function addContextToDetail() {
   const panel = $("detailPanel");
   const selected = document.querySelector("#itemRows tr.selected");
-  if (!panel || !selected || !data) return;
-  panel.querySelector("#curriculumContextCard")?.remove();
+  if (!panel || !selected || !data || !panel.querySelector(".detail-heading")) return;
   const item = data.items.find((row) => row.id === selected.dataset.id);
-  if (!item?.curriculum) return;
+  const existing = panel.querySelector("#curriculumContextCard");
+  if (!item?.curriculum) {
+    existing?.remove();
+    return;
+  }
+  if (existing?.dataset.itemId === item.id) return;
+  existing?.remove();
   const context = item.curriculum;
   const card = document.createElement("div");
   card.id = "curriculumContextCard";
+  card.dataset.itemId = item.id;
   card.className = "curriculum-context-card";
   card.innerHTML = `
     <div><span class="curriculum-context-kicker">Curriculum</span><strong>${esc(context.subject?.nameEn || context.subject?.nameHy || "—")} · ${esc(context.grade?.labelEn || `Grade ${context.grade?.number ?? "—"}`)}</strong></div>
     <div><span class="curriculum-context-kicker">Program</span><span>${esc(context.program?.versionLabel || "—")}</span></div>
     <div><span class="curriculum-context-kicker">Unit</span><span>${esc(context.unit?.code || "—")} · ${esc(context.unit?.titleEn || context.unit?.titleHy || "—")}</span></div>`;
-  const anchor = panel.querySelector(".detail-heading");
-  anchor?.insertAdjacentElement("afterend", card);
+  panel.querySelector(".detail-heading")?.insertAdjacentElement("afterend", card);
 }
 
 function applyScope({ ensureSelection = false } = {}) {
