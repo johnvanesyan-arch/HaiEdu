@@ -19,7 +19,7 @@ if (/^[A-Z0-9]{8}$/.test(inviteCode)) {
 const { data: sessionData } = await supabase.auth.getSession();
 if (!sessionData.session) {
   joinBtn.disabled = true;
-  setMessage("Նախ մուտք գործեք ուսանողի էջում, ապա վերադարձեք այստեղ։ Կոդը պահպանված է այս հղման մեջ։", true);
+  setMessage("Նախ մուտք գործեք աշակերտի էջում, ապա վերադարձեք այստեղ։ Կոդը պահպանված է այս հղման մեջ։", true);
 } else if (inviteCode) {
   setMessage("Ուսուցչի հրավերի կոդը լրացված է։ Սեղմեք «Միանալ»։");
 }
@@ -30,8 +30,11 @@ joinBtn.addEventListener("click", async () => {
   joinBtn.disabled = true;
   setMessage("Միանում ենք…");
   const { data, error } = await supabase.functions.invoke("join-class", { body: { joinCode: code } });
-  joinBtn.disabled = false;
-  if (error) return setMessage("Չհաջողվեց միանալ։ Ստուգեք կոդը կամ դասարանի ակտիվությունը։", true);
+  if (error) {
+    joinBtn.disabled = false;
+    return setMessage("Չհաջողվեց միանալ։ Ստուգեք կոդը կամ դասարանի ակտիվությունը։", true);
+  }
   joinCode.value = "";
-  setMessage(data.alreadyMember ? `Դուք արդեն ${data.class.name} դասարանի անդամ եք։` : `Միացաք ${data.class.name} դասարանին։`);
+  setMessage(data.alreadyMember ? `Դուք արդեն ${data.class.name} դասարանի անդամ եք։ Վերադառնում ենք գլխավոր էջ…` : `Միացաք ${data.class.name} դասարանին։ Բացվում են ձեր հասանելի դասընթացները…`);
+  setTimeout(() => window.location.replace("./index.html"), 900);
 });
