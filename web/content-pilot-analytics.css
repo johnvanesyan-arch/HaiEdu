@@ -1,0 +1,131 @@
+.pilot-evidence-card {
+  margin: 0 0 18px;
+  padding: 20px 22px;
+}
+
+.pilot-evidence-heading {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 14px;
+}
+
+.pilot-evidence-heading h2 {
+  margin: 2px 0 4px;
+}
+
+.pilot-metric-grid {
+  display: grid;
+  grid-template-columns: repeat(6, minmax(110px, 1fr));
+  gap: 10px;
+}
+
+.pilot-metric-grid > div,
+.pilot-item-grid > div {
+  border: 1px solid #e5ebf2;
+  border-radius: 10px;
+  padding: 11px 12px;
+  background: #fafbfd;
+}
+
+.pilot-metric-grid span,
+.pilot-item-grid span {
+  display: block;
+  color: #6e7886;
+  font-size: .76rem;
+  margin-bottom: 4px;
+}
+
+.pilot-metric-grid strong,
+.pilot-item-grid strong {
+  font-size: 1.12rem;
+}
+
+.pilot-pool-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.pilot-pool-row > span {
+  border-radius: 999px;
+  padding: 5px 10px;
+  background: #eef3f8;
+  font-size: .8rem;
+}
+
+.pilot-flagged-block {
+  border-top: 1px solid #e7edf4;
+  margin-top: 16px;
+  padding-top: 14px;
+}
+
+.pilot-flag-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 8px;
+  margin-top: 8px;
+}
+
+.pilot-flag-item {
+  text-align: left;
+  background: #fff8f5;
+  border: 1px solid #e7b4a7;
+  color: #3b2b27;
+  padding: 9px 11px;
+  min-height: 48px;
+}
+
+.pilot-flag-item span,
+.pilot-flag-item small {
+  display: block;
+}
+
+.pilot-flag-item small {
+  color: #744b40;
+  margin-top: 2px;
+}
+
+.pilot-ok { color: #1f7a45; }
+.pilot-alert { color: #a62f37; }
+
+.pilot-item-evidence {
+  background: #fbfcfe;
+}
+
+.pilot-item-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 8px;
+  margin: 10px 0 12px;
+}
+
+.pilot-item-flags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.pilot-item-flags span {
+  border-radius: 999px;
+  padding: 5px 9px;
+  background: #fff2ed;
+  border: 1px solid #e7b4a7;
+  color: #7c3524;
+  font-size: .76rem;
+}
+
+@media (max-width: 1280px) {
+  .pilot-metric-grid { grid-template-columns: repeat(3, 1fr); }
+  .pilot-item-grid { grid-template-columns: repeat(2, 1fr); }
+}
+
+@media (max-width: 760px) {
+  .pilot-evidence-heading { flex-direction: column; }
+  .pilot-metric-grid,
+  .pilot-item-grid,
+  .pilot-flag-list { grid-template-columns: 1fr; }
+}
