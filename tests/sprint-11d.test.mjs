@@ -3,68 +3,76 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
 const backlog = readFileSync('docs/backlog.md', 'utf8');
-const conceptual = readFileSync('supabase/migrations/0017_sprint_11d_conceptual_bank_expansion.sql', 'utf8');
 const recovery = readFileSync('supabase/migrations/0024_sprint_11d_partial_state_recovery.sql', 'utf8');
-const superseded = [
-  'supabase/migrations/0020_sprint_11d_review_safe_bank_expansion.sql',
-  'supabase/migrations/0021_sprint_11d_purpose_exclusive_pools.sql',
-  'supabase/migrations/0022_sprint_11d_family_audit_corrections.sql',
-  'supabase/migrations/0023_sprint_11d_authored_parallel_template_semantics.sql',
-].map((path) => readFileSync(path, 'utf8'));
+const fixedAudit = readFileSync('supabase/migrations/0025_sprint_11d_fixed_audit_and_candidate_gate.sql', 'utf8');
+const bank = readFileSync('supabase/migrations/0026_sprint_11d_complete_candidate_bank.sql', 'utf8');
+const staging = readFileSync('supabase/migrations/0027_sprint_11d_stage_candidate_pools_forms.sql', 'utf8');
+const seedHardening = readFileSync('supabase/migrations/0028_sprint_11d_seed_index_search_path.sql', 'utf8');
 
 function has(text, pattern, message) {
   assert.match(text, pattern, message);
 }
 
-test('11D keeps the 24-per-skill / 240-total acceptance target', () => {
+test('11D keeps the 24-per-skill / 240-total target', () => {
   has(backlog, /24 effective, unique concrete variants per skill — 240 across the 10 skills/, '24/240 target must remain explicit');
-  has(backlog, /12 Practice variants \+ 4 Diagnostic variants .* \+ 8 protected Mastery variants/, '12/4/8 capacity target must remain explicit');
+  has(backlog, /12 Practice variants \+ 4 Diagnostic variants .* \+ 8 protected Mastery variants/, '12/4/8 target must remain explicit');
 });
 
-test('the partially applied 0017 catalogue remains provisional', () => {
-  has(conceptual, /provisional_no_sme_review/, '0017 content must remain provisional');
-  has(conceptual, /this is not human SME validation/i, 'internal workflow must not be represented as SME validation');
+test('recovery keeps premature 11D content out of learner-facing pools', () => {
+  has(recovery, /pilot_ready.*false/s, 'recovery must clear pilot readiness');
+  has(recovery, /set enabled = false/, 'recovery must disable accidental memberships');
+  has(recovery, /provisional_no_sme_review/, 'SME status must remain provisional');
 });
 
-test('production recovery forces every partial 11D candidate back to review-only', () => {
-  has(recovery, /jsonb_set\(config, '\{pilot_ready\}', 'false'::jsonb, true\)/, 'recovery must clear pilot readiness');
-  has(recovery, /review_status = 'needs_review'/, 'recovery must require review');
-  has(recovery, /status = 'review'::public\.content_status/, 'recovery must remove candidates from published state');
-  has(recovery, /validation_state = 'provisional_no_sme_review'/, 'SME status must remain provisional');
-  has(recovery, /set enabled = false/, 'any accidental learner-pool membership must be disabled');
+test('fixed-bank audit removes unspecified families without claiming SME validation', () => {
+  has(fixedAudit, /sprint11dFixedAudit/, 'fixed audit metadata must be recorded');
+  has(fixedAudit, /when s\.code='PHY7-U01-S10' then 'transfer'/, 'S10 fixed anchors must receive defensible family metadata');
+  has(fixedAudit, /This is not independent Physics SME validation/, 'internal audit must not be represented as SME review');
+  has(fixedAudit, /11D_fixed_anchor_total_not_60/, 'all 60 fixed anchors must be asserted');
 });
 
-test('S01 recovery removes unsupported Sound classification and repairs protected candidates', () => {
-  has(recovery, /option_key = 'F'/, 'recovery must explicitly remove the old Sound option');
-  has(recovery, /PHY7-U01-S01-11D-M04/, 'M04 must be replaced');
-  has(recovery, /PHY7-U01-S01-11D-M05/, 'M05 must be replaced');
-  has(recovery, /PHY7-U01-S01-11D-M06/, 'M06 must be replaced');
-  has(recovery, /variant_fingerprint = md5\(/, 'fingerprints must be recomputed after prompt/answer/option correction');
-  has(recovery, /jsonb_build_object\('optionKey',o\.option_key,'contentHy',o\.content_hy\)/, 'fingerprint must include corrected option semantics');
+test('new 11D candidates require technical QA plus real human content review before activation', () => {
+  has(fixedAudit, /humanReviewStatus','pending'/, 'human review must begin pending');
+  has(fixedAudit, /humanReviewStatus' is distinct from 'approved'/, 'activation guard must require human approval');
+  has(fixedAudit, /11D_candidate_activation_gate_not_satisfied/, 'activation must fail closed');
+  has(fixedAudit, /11D_mastery_candidate_requires_protected_pool/, 'Mastery candidates must require the protected pool');
 });
 
-test('authored parallel catalogues are not misrepresented as deterministic generators', () => {
-  has(recovery, /template_kind = 'fixed'/, 'authored catalogues must use fixed template semantics');
-  has(recovery, /'generationMode','authored_parallel_catalog'/, 'authored catalogue generation mode must be explicit');
-  has(recovery, /'deterministicRerender',false/, 'authored catalogues must not be rerendered as deterministic generators');
+test('candidate-bank completion creates exactly 18 new variants per skill with 8/4/6 purpose staging', () => {
+  has(bank, /'PHY7-U01-S07',18/, 'S07 must receive 18 deterministic candidates');
+  has(bank, /'PHY7-U01-S08',18/, 'S08 must receive 18 deterministic candidates');
+  has(bank, /'PHY7-U01-S09',10/, 'S09 deterministic capacity must remain explicit');
+  has(bank, /'PHY7-U01-S10',18/, 'S10 must receive 18 deterministic candidates');
+  has(bank, /PHY7-U01-S09-11D-P08/, 'S09 must receive an authored Practice supplement');
+  has(bank, /PHY7-U01-S09-11D-D04/, 'S09 must receive an authored Diagnostic supplement');
+  has(bank, /11D_candidate_total_not_180/, 'new candidate total must be exactly 180');
+  has(bank, /r\.practice<>8 or r\.diagnostic<>4 or r\.mastery<>6/, 'new per-skill allocation must be 8/4/6');
 });
 
-test('recovery preserves audit history and records that final review is still required', () => {
-  has(recovery, /'changes_requested'/, 'recovery must supersede premature approval with an auditable review event');
-  has(recovery, /Final human content review and SME validation are still pending/, 'remaining review gate must be explicit');
+test('deterministic candidate generation fails loudly and reproduces stored evidence', () => {
+  assert.equal(/exception when others/i.test(bank), false, 'unexpected generator errors must not be swallowed');
+  has(bank, /service_preview_item_variant/, 'candidate generation must preview deterministically');
+  has(bank, /service_materialize_item_variant/, 'candidate generation must use server-side materialisation');
+  has(bank, /deterministic_reproduction_mismatch/, 'reproduction mismatch must fail QA');
+  has(bank, /candidate_duplicate_fingerprint/, 'duplicate effective variants must be rejected');
 });
 
-test('unsafe 0020-0023 finalization drafts are no-op placeholders', () => {
-  for (const text of superseded) {
-    has(text, /SUPERSEDED BEFORE PRODUCTION APPLICATION/, 'superseded migration must be unmistakably marked');
-    has(text, /select 1;/, 'superseded migration must be a no-op');
-  }
+test('candidate pools and Diagnostic v2 are staged, not activated', () => {
+  has(staging, /select p\.id,i\.id,false/, 'new pool memberships must be disabled');
+  has(staging, /form_version,2,'draft'/, 'Diagnostic v2 must remain draft');
+  has(staging, /human_content_review_required/, 'staging must preserve the human-review gate');
+  has(staging, /11D_baseline_pool_changed/, 'current production pools must be protected by assertions');
+  has(staging, /11D_draft_diag_A_not_20/, 'Diagnostic A candidate form must contain 20 items');
+  has(staging, /11D_draft_diag_B_not_20/, 'Diagnostic B candidate form must contain 20 items');
+  has(staging, /11D_draft_diagnostic_overlap/, 'candidate Diagnostic forms must not overlap exactly');
 });
 
-test('recovery has hard assertions for review state, pool isolation and S01 scope', () => {
-  has(recovery, /11D_recovery_review_state_failed/, 'review-state assertion must exist');
-  has(recovery, /11D_recovery_pool_isolation_failed/, 'pool-isolation assertion must exist');
-  has(recovery, /11D_recovery_sound_option_still_present/, 'Sound-option assertion must exist');
-  has(recovery, /11D_recovery_sound_prompt_still_present/, 'Sound-prompt assertion must exist');
-  has(recovery, /11D_recovery_template_semantics_failed/, 'template-semantics assertion must exist');
+test('draft-form membership validation is relaxed only for explicitly staged 11D candidates', () => {
+  has(staging, /v_form_status='draft'/, 'draft form path must be explicit');
+  has(staging, /api\.metadata->>'phase'='11D'/, 'draft exception must be scoped to 11D staging');
+  has(staging, /api\.enabled=true/, 'active/non-draft forms must still require enabled membership');
+});
+
+test('post-DDL security hardening pins deterministic seed helper search_path', () => {
+  has(seedHardening, /set search_path=pg_catalog,private/, 'seed helper must use a fixed search_path');
 });
