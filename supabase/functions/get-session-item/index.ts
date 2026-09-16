@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { hasPhysics7Access } from "../_shared/course-access.ts";
 import {
   choosePracticeByExposure,
   getEligiblePoolItemIds,
@@ -137,6 +138,10 @@ Deno.serve(async (req) => {
     if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
     if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
     const studentId = userData.user.id;
+
+    if (!(await hasPhysics7Access(admin, studentId))) {
+      return json({ error: "course_access_required", courseKey: "physics:7" }, 403);
+    }
 
     let body: { sessionId?: string } = {};
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
