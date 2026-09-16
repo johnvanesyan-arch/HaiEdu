@@ -39,6 +39,83 @@ async function buildSnapshot(admin: any, item: any) {
   return { item, options: options ?? [], answerKey: answerKey ?? null, misconceptions: mappings ?? [] };
 }
 
+async function loadEditorDetail(admin: any, item: any) {
+  const [snapshot, templateResult, misconceptionResult, poolResult] = await Promise.all([
+    buildSnapshot(admin, item),
+    admin.from("item_templates").select("id, code, template_kind, template_version, generation_config, item_families(code, skill_id)").eq("id", item.item_template_id).maybeSingle(),
+    admin.from("misconceptions").select("id, code, title_hy, description_hy, status").eq("skill_id", item.skill_id).eq("status", "active").order("code", { ascending: true }),
+    admin.from("assessment_pool_items").select("enabled, metadata, assessment_pools(code, purpose, is_protected, status)").eq("item_id", item.id),
+  ]);
+
+  const template = templateResult.data ?? null;
+  const generatedLocked = Boolean(item.variant_seed) && ["parameterized", "parallel"].includes(String(template?.template_kind ?? ""));
+  const misconceptions = (snapshot.misconceptions ?? []).map((row: any) => ({
+    code: row.misconceptions?.code ?? null,
+    titleHy: row.misconceptions?.title_hy ?? null,
+    responseKey: row.response_key ?? "*",
+    mappingNote: row.mapping_note ?? null,
+  }));
+  const pools = (poolResult.data ?? []).map((row: any) => ({
+    code: row.assessment_pools?.code ?? null,
+    purpose: row.assessment_pools?.purpose ?? null,
+    protected: Boolean(row.assessment_pools?.is_protected),
+    poolStatus: row.assessment_pools?.status ?? null,
+    enabled: Boolean(row.enabled),
+    metadata: row.metadata ?? {},
+  }));
+
+  return {
+    item: {
+      id: item.id,
+      code: item.code,
+      type: item.item_type,
+      promptHy: item.prompt_hy,
+      promptEn: item.prompt_en,
+      stimulus: item.stimulus ?? {},
+      difficulty: Number(item.difficulty),
+      difficultyBand: item.difficulty_band,
+      itemFamily: item.item_family,
+      sourceReference: item.source_reference,
+      validationState: item.validation_state,
+      reviewStatus: item.review_status,
+      versionNo: Number(item.version_no),
+      lifecycleStatus: item.status,
+      retiredAt: item.retired_at,
+      config: item.config ?? {},
+      variantKey: item.variant_key,
+      variantSeed: item.variant_seed,
+      variantParameters: item.variant_parameters ?? {},
+      variantFingerprint: item.variant_fingerprint,
+    },
+    options: (snapshot.options ?? []).map((o: any) => ({ key: o.option_key, contentHy: o.content_hy, contentEn: o.content_en, displayOrder: o.display_order })),
+    answerKey: snapshot.answerKey ? {
+      answer: snapshot.answerKey.answer,
+      tolerance: snapshot.answerKey.tolerance,
+      canonicalUnit: snapshot.answerKey.canonical_unit,
+      acceptedUnits: snapshot.answerKey.accepted_units ?? [],
+      feedbackCode: snapshot.answerKey.feedback_code,
+    } : null,
+    misconceptions,
+    availableMisconceptions: misconceptionResult.data ?? [],
+    pools,
+    template: template ? {
+      id: template.id,
+      code: template.code,
+      kind: template.template_kind,
+      version: template.template_version,
+      generationConfig: template.generation_config ?? {},
+      familyCode: template.item_families?.code ?? null,
+    } : null,
+    editing: {
+      contentEditable: !generatedLocked && !item.retired_at,
+      reason: item.retired_at ? "retired_item_not_editable" : generatedLocked ? "generated_variant_requires_template_edit" : null,
+      itemCodeImmutable: true,
+      skillImmutable: true,
+      itemTypeImmutable: true,
+    },
+  };
+}
+
 async function evaluateQa(admin: any, item: any) {
   const [{ data: options }, { data: key }, { data: mappings }, { data: duplicates }, { data: template }] = await Promise.all([
     admin.from("item_options").select("option_key, content_hy, display_order").eq("item_id", item.id).order("display_order", { ascending: true }),
@@ -171,9 +248,7 @@ Deno.serve(async (req) => {
       if (!templateCode) return json({ error: "template_code_required" }, 400);
       if (!seed) return json({ error: "variant_seed_required" }, 400);
 
-      const rpc = action === "preview_generated_variant"
-        ? "service_preview_item_variant"
-        : "service_materialize_item_variant";
+      const rpc = action === "preview_generated_variant" ? "service_preview_item_variant" : "service_materialize_item_variant";
       const { data, error } = await admin.rpc(rpc, { p_template_code: templateCode, p_seed: seed });
       if (error) return json({ error: action === "preview_generated_variant" ? "variant_preview_failed" : "variant_materialization_failed", detail: error.message }, 409);
       return json({ variant: data });
@@ -181,8 +256,23 @@ Deno.serve(async (req) => {
 
     const itemId = String(body.itemId ?? "");
     if (!itemId) return json({ error: "item_id_required" }, 400);
-
     let item = await loadItem(admin, itemId);
+
+    if (action === "get_item_detail") {
+      return json({ detail: await loadEditorDetail(admin, item) });
+    }
+
+    if (action === "save_content_revision") {
+      const payload = body.payload && typeof body.payload === "object" ? body.payload : null;
+      if (!payload) return json({ error: "revision_payload_required" }, 400);
+      const { data, error } = await admin.rpc("service_save_item_content_revision", {
+        p_item_id: item.id,
+        p_actor_id: actorId,
+        p_payload: payload,
+      });
+      if (error) return json({ error: "content_revision_failed", detail: error.message }, 409);
+      return json({ revision: data });
+    }
 
     if (action === "run_qa") {
       const result = await evaluateQa(admin, item);
