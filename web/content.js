@@ -7,6 +7,8 @@ let dashboard = null;
 let selectedId = null;
 let selectedDetail = null;
 let detailLoadToken = 0;
+let editorDirty = false;
+let workflowBusy = false;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -80,6 +82,14 @@ function renderLoadingDetail() {
 }
 
 async function selectItem(id) {
+  if (id !== selectedId && editorDirty) {
+    const discard = confirm("This question has unsaved changes. Discard them and open another item?");
+    if (!discard) {
+      renderRows();
+      return;
+    }
+  }
+  editorDirty = false;
   selectedId = id;
   selectedDetail = null;
   renderRows();
@@ -155,6 +165,7 @@ function renderDetail() {
     </div>
     <div class="immutable-summary"><span><strong>Type:</strong> ${esc(item.type)}</span><span><strong>Skill:</strong> ${esc(item.skill?.code)}</span><span><strong>Purpose:</strong> ${esc(purposes)}</span></div>
     ${generatedWarning}
+    ${editable ? `<div id="unsavedChangesNotice" class="editor-warning hidden" role="status"><strong>Unsaved changes.</strong> Save the revision before leaving this item, or use the review buttons below; QA/Submit/Approve will save the edited version first.</div>` : ""}
 
     <section class="detail-section editor-section">
       <div class="section-heading"><div><h3>Question content</h3><p class="subtle tiny">Item code, skill and item type are immutable here.</p></div></div>
@@ -212,10 +223,11 @@ function renderDetail() {
       Latest review: ${item.latestReview ? `${esc(item.latestReview.decision)} · ${esc(item.latestReview.type)}` : "—"}
     </section>`;
 
-  $("runQaBtn")?.addEventListener("click", () => action("run_qa"));
-  $("submitReviewBtn")?.addEventListener("click", () => action("submit_review", { reviewType: "content" }));
-  $("approveBtn")?.addEventListener("click", () => action("approve", { reviewType: "content" }));
+  $("runQaBtn")?.addEventListener("click", runQaCurrent);
+  $("submitReviewBtn")?.addEventListener("click", submitReviewCurrent);
+  $("approveBtn")?.addEventListener("click", approveCurrent);
   $("changesBtn")?.addEventListener("click", () => {
+    if (editorDirty) return setMessage("Save or discard the unsaved edits before requesting changes.", true);
     const notes = prompt("Ի՞նչ փոփոխություն է պահանջվում։") ?? "";
     if (notes.trim()) action("request_changes", { reviewType: "content", notes });
   });
@@ -226,17 +238,42 @@ function renderDetail() {
   $("addMisconceptionBtn")?.addEventListener("click", addMisconceptionRow);
   wireEditorRows();
   syncSingleChoiceAnswer(detail.answerKey?.answer);
+  wireEditorDirtyTracking();
+  editorDirty = false;
+  updateEditorDirtyUi();
+}
+
+function updateEditorDirtyUi() {
+  $("unsavedChangesNotice")?.classList.toggle("hidden", !editorDirty);
+  if ($("approveBtn")) $("approveBtn").textContent = editorDirty ? "Save, QA & approve" : "Approve";
+  if ($("submitReviewBtn")) $("submitReviewBtn").textContent = editorDirty ? "Save, QA & submit" : "Submit review";
+  if ($("runQaBtn")) $("runQaBtn").textContent = editorDirty ? "Save & run QA" : "Run QA";
+}
+
+function markEditorDirty() {
+  if (!selectedDetail?.editing?.contentEditable || workflowBusy) return;
+  editorDirty = true;
+  updateEditorDirtyUi();
+}
+
+function wireEditorDirtyTracking() {
+  document.querySelectorAll(".editor-section input, .editor-section textarea, .editor-section select").forEach((control) => {
+    control.addEventListener("input", markEditorDirty);
+    control.addEventListener("change", markEditorDirty);
+  });
 }
 
 function wireEditorRows() {
   document.querySelectorAll(".remove-option-btn").forEach((button) => button.addEventListener("click", () => {
     button.closest("[data-option-row]")?.remove();
     syncSingleChoiceAnswer();
+    markEditorDirty();
   }));
   document.querySelectorAll(".option-key").forEach((input) => input.addEventListener("input", () => syncSingleChoiceAnswer()));
   document.querySelectorAll(".remove-misconception-btn").forEach((button) => button.addEventListener("click", () => {
     button.closest("[data-misconception-row]")?.remove();
     if (!document.querySelector("[data-misconception-row]")) $("misconceptionEditor").innerHTML = `<p class="subtle tiny">No mappings.</p>`;
+    markEditorDirty();
   }));
 }
 
@@ -256,6 +293,7 @@ function addOptionRow() {
   host.appendChild(wrapper.firstElementChild);
   wireEditorRows();
   syncSingleChoiceAnswer();
+  markEditorDirty();
 }
 
 function syncSingleChoiceAnswer(initialValue) {
@@ -277,6 +315,7 @@ function addMisconceptionRow() {
   wrapper.innerHTML = misconceptionRowsHtml({ ...detail, misconceptions: [{ code: first.code, responseKey: "*", mappingNote: "" }] }, false);
   host.appendChild(wrapper.firstElementChild);
   wireEditorRows();
+  markEditorDirty();
 }
 
 function collectOptions() {
@@ -313,36 +352,126 @@ function collectAnswerKey(type) {
   return { answer, tolerance, feedbackCode };
 }
 
+function buildRevisionPayload(item, defaultSummary = "Content editor revision") {
+  let stimulus;
+  try { stimulus = JSON.parse($("editStimulus").value || "{}"); }
+  catch { throw new Error("Stimulus JSON is not valid JSON."); }
+
+  const payload = {
+    promptHy: $("editPromptHy").value.trim(),
+    promptEn: $("editPromptEn").value.trim() || null,
+    stimulus,
+    difficulty: Number($("metaDifficulty").value),
+    itemFamily: $("metaFamily").value.trim(),
+    sourceReference: $("metaSource").value.trim() || null,
+    validationState: $("metaValidation").value.trim(),
+    options: item.type === "single_choice" ? collectOptions() : [],
+    answerKey: collectAnswerKey(item.type),
+    misconceptions: collectMisconceptions(),
+    changeSummary: $("changeSummary")?.value.trim() || defaultSummary,
+  };
+  if (!payload.promptHy) throw new Error("Armenian question text is required.");
+  if (!payload.itemFamily) throw new Error("Item family is required.");
+  return payload;
+}
+
+async function persistCurrentRevision(defaultSummary = "Content editor revision") {
+  const item = dashboard.items.find((i) => i.id === selectedId);
+  if (!item || !selectedDetail?.editing?.contentEditable) return false;
+  const payload = buildRevisionPayload(item, defaultSummary);
+  await invoke("manage-content-quality", { action: "save_content_revision", itemId: selectedId, payload });
+  editorDirty = false;
+  updateEditorDirtyUi();
+  return true;
+}
+
 async function saveRevision() {
   const item = dashboard.items.find((i) => i.id === selectedId);
-  if (!item || !selectedDetail?.editing?.contentEditable) return;
+  if (!item || !selectedDetail?.editing?.contentEditable || workflowBusy) return;
   try {
-    let stimulus;
-    try { stimulus = JSON.parse($("editStimulus").value || "{}"); }
-    catch { throw new Error("Stimulus JSON is not valid JSON."); }
-
-    const payload = {
-      promptHy: $("editPromptHy").value.trim(),
-      promptEn: $("editPromptEn").value.trim() || null,
-      stimulus,
-      difficulty: Number($("metaDifficulty").value),
-      itemFamily: $("metaFamily").value.trim(),
-      sourceReference: $("metaSource").value.trim() || null,
-      validationState: $("metaValidation").value.trim(),
-      options: item.type === "single_choice" ? collectOptions() : [],
-      answerKey: collectAnswerKey(item.type),
-      misconceptions: collectMisconceptions(),
-      changeSummary: $("changeSummary").value.trim() || "Content editor revision",
-    };
-    if (!payload.promptHy) throw new Error("Armenian question text is required.");
-    if (!payload.itemFamily) throw new Error("Item family is required.");
-
+    workflowBusy = true;
     setMessage("Revision is being saved…");
-    await invoke("manage-content-quality", { action: "save_content_revision", itemId: selectedId, payload });
+    await persistCurrentRevision();
     await refresh(selectedId);
     setMessage(`${item.code}: saved as a new version. Run QA, then submit/approve the review.`);
   } catch (err) {
     setMessage(err.message, true);
+  } finally {
+    workflowBusy = false;
+  }
+}
+
+async function ensureQaPassed({ force = false } = {}) {
+  const item = dashboard.items.find((i) => i.id === selectedId);
+  if (!item) throw new Error("Item is not selected.");
+  if (!force && item.latestQa?.passed === true) return true;
+  const result = await invoke("manage-content-quality", { action: "run_qa", itemId: selectedId });
+  return result.qa?.passed === true;
+}
+
+async function runQaCurrent() {
+  if (workflowBusy) return;
+  const item = dashboard.items.find((i) => i.id === selectedId);
+  if (!item) return;
+  try {
+    workflowBusy = true;
+    const saved = editorDirty ? await persistCurrentRevision("Saved before technical QA") : false;
+    setMessage(saved ? "Changes saved. Technical QA is running…" : "Technical QA is running…");
+    const passed = await ensureQaPassed({ force: true });
+    await refresh(selectedId);
+    setMessage(passed ? `${item.code}: QA passed${saved ? " on the saved revision" : ""}.` : `${item.code}: changes were saved, but QA failed. Review the QA errors before approval.`, !passed);
+  } catch (err) {
+    setMessage(err.message, true);
+  } finally {
+    workflowBusy = false;
+  }
+}
+
+async function submitReviewCurrent() {
+  if (workflowBusy) return;
+  const item = dashboard.items.find((i) => i.id === selectedId);
+  if (!item) return;
+  try {
+    workflowBusy = true;
+    const saved = editorDirty ? await persistCurrentRevision("Saved before review submission") : false;
+    setMessage(saved ? "Changes saved. Checking technical QA…" : "Checking technical QA…");
+    const passed = await ensureQaPassed({ force: saved || item.latestQa?.passed !== true });
+    if (!passed) {
+      await refresh(selectedId);
+      setMessage(`${item.code}: changes were saved, but QA failed. The item was not submitted for review.`, true);
+      return;
+    }
+    await invoke("manage-content-quality", { action: "submit_review", itemId: selectedId, reviewType: "content" });
+    await refresh(selectedId);
+    setMessage(`${item.code}: ${saved ? "changes saved, QA passed, and " : ""}submitted for review.`);
+  } catch (err) {
+    setMessage(err.message, true);
+  } finally {
+    workflowBusy = false;
+  }
+}
+
+async function approveCurrent() {
+  if (workflowBusy) return;
+  const item = dashboard.items.find((i) => i.id === selectedId);
+  if (!item) return;
+  try {
+    workflowBusy = true;
+    const saved = editorDirty ? await persistCurrentRevision("Saved during approval") : false;
+    setMessage(saved ? "Changes saved. Checking technical QA before approval…" : "Checking technical QA before approval…");
+    const passed = await ensureQaPassed({ force: saved || item.latestQa?.passed !== true });
+    if (!passed) {
+      await refresh(selectedId);
+      setMessage(`${item.code}: the edited version was saved, but QA failed, so it was not approved.`, true);
+      return;
+    }
+    await invoke("manage-content-quality", { action: "approve", itemId: selectedId, reviewType: "content" });
+    await refresh(selectedId);
+    setMessage(`${item.code}: ${saved ? "changes saved, QA passed, and " : ""}approved.`);
+  } catch (err) {
+    setMessage(err.message, true);
+  } finally {
+    workflowBusy = false;
   }
 }
 
@@ -385,6 +514,7 @@ async function refresh(reselect = selectedId) {
 
 async function showForSession(session) {
   if (!session) {
+    editorDirty = false;
     $("authPanel").classList.remove("hidden");
     $("console").classList.add("hidden");
     $("signOutBtn").classList.add("hidden");
@@ -402,8 +532,18 @@ $("signInBtn").addEventListener("click", async () => {
   if (error) $("authMessage").textContent = error.message;
 });
 $("signOutBtn").addEventListener("click", () => supabase.auth.signOut());
-$("refreshBtn").addEventListener("click", () => refresh());
+$("refreshBtn").addEventListener("click", () => {
+  if (editorDirty && !confirm("Discard unsaved changes and refresh the question bank?")) return;
+  editorDirty = false;
+  refresh();
+});
 ["searchInput","skillFilter","reviewFilter","qaFilter"].forEach((id) => $(id).addEventListener(id === "searchInput" ? "input" : "change", renderRows));
+
+window.addEventListener("beforeunload", (event) => {
+  if (!editorDirty) return;
+  event.preventDefault();
+  event.returnValue = "";
+});
 
 supabase.auth.onAuthStateChange((_event, session) => setTimeout(() => showForSession(session), 0));
 const { data: { session } } = await supabase.auth.getSession();
