@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { hasPhysics7Access } from "../_shared/course-access.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -31,6 +32,10 @@ Deno.serve(async (req) => {
   if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
   if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
   const studentId = userData.user.id;
+
+  if (!(await hasPhysics7Access(admin, studentId))) {
+    return json({ error: "course_access_required", courseKey: "physics:7" }, 403);
+  }
 
   let body: { sessionId?: string; sessionItemId?: string } = {};
   try {
@@ -83,8 +88,6 @@ Deno.serve(async (req) => {
       .limit(1);
     sessionItem = pendingRows?.[0] ?? null;
 
-    // If the current item has just been answered incorrectly, allow explanatory
-    // remediation before the learner moves to the next question.
     if (!sessionItem) {
       const { data: answeredRows } = await admin
         .from("learning_session_items")
