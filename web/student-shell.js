@@ -7,9 +7,9 @@ const focusedByPage = document.body.dataset.focusedTask === "true";
 
 const destinations = [
   { key: "home", href: "./index.html", label: "Գլխավոր", icon: "⌂", enabled: true },
-  { key: "physics", href: "./physics-7.html", label: "Ֆիզիկա 7", icon: "Φ", enabled: true },
-  { key: "assessment", href: "./assessment.html", label: "Գնահատում", icon: "✓", enabled: true },
-  { key: "progress", href: "./progress.html", label: "Առաջընթաց", icon: "↗", enabled: true }
+  { key: "physics", href: "./physics-7.html", label: "Ֆիզիկա 7", icon: "Φ", enabled: true, courseProtected: true },
+  { key: "assessment", href: "./assessment.html", label: "Գնահատում", icon: "✓", enabled: true, courseProtected: true },
+  { key: "progress", href: "./progress.html", label: "Առաջընթաց", icon: "↗", enabled: true, courseProtected: true }
 ];
 
 function ensureBrandAssets() {
@@ -105,7 +105,8 @@ function ensureRoleAccess() {
 
 function navItem(item, mobile = false) {
   const current = item.key === page ? ' aria-current="page"' : "";
-  const className = mobile ? "amp-mobile-link" : "amp-nav-link";
+  const hidden = item.courseProtected ? " hidden" : "";
+  const className = `${mobile ? "amp-mobile-link" : "amp-nav-link"}${hidden}`;
   const contents = `<span class="amp-nav-icon" aria-hidden="true">${item.icon}</span><span>${item.label}</span>`;
 
   if (!item.enabled) {
@@ -172,9 +173,13 @@ function syncHomeHeader(authenticated) {
   const subtitle = document.querySelector(".topbar p.subtle");
   if (heading) heading.textContent = authenticated ? "Գլխավոր" : "Ուսուցման հարթակ";
   if (subtitle) {
-    subtitle.textContent = authenticated
-      ? "Ֆիզիկա 7 · Գլուխ I — Բնության ուսումնասիրության ֆիզիկական մեթոդները"
-      : "Ընտրեք ձեր դերը կամ մուտք գործեք որպես աշակերտ։";
+    subtitle.textContent = !authenticated
+      ? "Ընտրեք ձեր դերը կամ մուտք գործեք որպես աշակերտ։"
+      : document.body.dataset.physics7Access === "false"
+        ? "Միացեք դասարանին՝ ձեր դասընթացները բացելու համար։"
+        : document.body.dataset.physics7Access === "true"
+          ? "Ֆիզիկա 7 · Գլուխ I — Բնության ուսումնասիրության ֆիզիկական մեթոդները"
+          : "Բեռնվում են ձեր դասընթացները…";
   }
 }
 
@@ -212,6 +217,7 @@ if (observed.length) {
   observed.forEach((node) => observer.observe(node, { attributes: true, attributeFilter: ["class"] }));
 }
 
+window.addEventListener("haiedu-course-access", syncShellState);
 window.addEventListener("pageshow", syncShellState);
 
 import("./course-gate.js");
