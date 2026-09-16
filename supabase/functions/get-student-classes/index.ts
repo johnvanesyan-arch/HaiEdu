@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { getStudentCourseEntitlements } from "../_shared/course-access.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -39,39 +40,22 @@ Deno.serve(async (req) => {
     const { data: profile } = await admin.from("profiles").select("role").eq("id", studentId).maybeSingle();
     if (!profile || String(profile.role) !== "student") return json({ error: "student_role_required" }, 403);
 
-    const { data: memberships, error: membershipError } = await admin
-      .from("class_memberships")
-      .select("class_id, joined_at")
-      .eq("student_id", studentId)
-      .order("joined_at", { ascending: false });
+    const entitlements = await getStudentCourseEntitlements(admin, studentId);
+    const classes = entitlements.map((course) => ({
+      id: course.classId,
+      name: course.className,
+      academicYear: course.academicYear,
+      joinedAt: course.joinedAt,
+      subjectId: course.subjectId,
+      subjectCode: course.subjectCode,
+      subjectNameHy: course.subjectNameHy,
+      gradeId: course.gradeId,
+      gradeNumber: course.gradeNumber,
+      gradeLabelHy: course.gradeLabelHy,
+      courseKey: `${course.subjectCode}:${course.gradeNumber}`,
+    }));
 
-    if (membershipError) return json({ error: "class_memberships_unavailable" }, 500);
-    if (!memberships?.length) return json({ classes: [] });
-
-    const classIds = [...new Set(memberships.map((row) => row.class_id))];
-    const { data: classes, error: classesError } = await admin
-      .from("classes")
-      .select("id, name, academic_year, is_active")
-      .in("id", classIds)
-      .eq("is_active", true);
-
-    if (classesError) return json({ error: "classes_unavailable" }, 500);
-
-    const byId = new Map((classes ?? []).map((klass) => [klass.id, klass]));
-    const result = memberships
-      .map((membership) => {
-        const klass = byId.get(membership.class_id);
-        if (!klass) return null;
-        return {
-          id: klass.id,
-          name: klass.name,
-          academicYear: klass.academic_year,
-          joinedAt: membership.joined_at,
-        };
-      })
-      .filter(Boolean);
-
-    return json({ classes: result });
+    return json({ classes });
   } catch (err) {
     console.error("get-student-classes", err);
     return json({ error: "get_student_classes_failed" }, 500);
