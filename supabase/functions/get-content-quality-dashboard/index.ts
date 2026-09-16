@@ -61,8 +61,10 @@ Deno.serve(async (req) => {
     }
 
     const rows = (items ?? []).map((item: any) => {
-      const qa = latestQa.get(item.id) ?? null;
-      const review = latestReview.get(item.id) ?? null;
+      const qaRaw = latestQa.get(item.id) ?? null;
+      const reviewRaw = latestReview.get(item.id) ?? null;
+      const qa = qaRaw && Number(qaRaw.version_no) === Number(item.version_no) ? qaRaw : null;
+      const review = reviewRaw && Number(reviewRaw.version_no) === Number(item.version_no) ? reviewRaw : null;
       const version = latestVersion.get(item.id) ?? null;
       return {
         id: item.id,
