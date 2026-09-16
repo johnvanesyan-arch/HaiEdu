@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { hasPhysics7Access } from "../_shared/course-access.ts";
 import { gradeAnswer } from "../_shared/grading.ts";
 import { initialMasteryState, updateMastery } from "../_shared/mastery.ts";
 import { recommendNext } from "../_shared/recommendation.ts";
@@ -35,6 +36,10 @@ Deno.serve(async (req) => {
   if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
   if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
   const studentId = userData.user.id;
+
+  if (!(await hasPhysics7Access(admin, studentId))) {
+    return json({ error: "course_access_required", courseKey: "physics:7" }, 403);
+  }
 
   let payload: {
     itemId?: string;
@@ -137,8 +142,6 @@ Deno.serve(async (req) => {
       }
     : initialMasteryState();
 
-  // For session attempts, help use is determined from server-side session state.
-  // The client cannot claim that a hinted answer was independent.
   const serverHintUsed = sessionItem
     ? Number(sessionItem.hint_level_used ?? 0) > 0
     : Boolean(payload.hintUsed);
