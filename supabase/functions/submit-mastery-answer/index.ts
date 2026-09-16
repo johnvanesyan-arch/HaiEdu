@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { hasPhysics7Access } from "../_shared/course-access.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -94,6 +95,9 @@ Deno.serve(async (req) => {
     const { data: userData, error: userError } = await admin.auth.getUser(token);
     if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
     if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
+    if (!(await hasPhysics7Access(admin, userData.user.id))) {
+      return json({ error: "course_access_required", courseKey: "physics:7" }, 403);
+    }
 
     const body = await req.json();
     if (!body?.sessionId || !body?.sessionItemId || !body?.itemId || !body?.response) {
