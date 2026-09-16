@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { hasPhysics7Access } from "../_shared/course-access.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -39,6 +40,14 @@ Deno.serve(async (req) => {
     if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
     if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
     const studentId = userData.user.id;
+
+    if (!(await hasPhysics7Access(admin, studentId))) {
+      return json({
+        error: "course_access_required",
+        courseKey: "physics:7",
+        messageHy: "Յուրացման ստուգումը հասանելի կդառնա Ֆիզիկա 7 դասարանին միանալուց հետո։",
+      }, 403);
+    }
 
     const { data: skills, error: skillsError } = await admin
       .from("skills")
@@ -87,6 +96,7 @@ Deno.serve(async (req) => {
 
     return json({
       unitCode: UNIT_CODE,
+      courseKey: "physics:7",
       passCriteria: { overallPercent: 80, minCorrectPerSkill: 1, questions: 20, hints: false },
       unitComplete,
       eligible,
