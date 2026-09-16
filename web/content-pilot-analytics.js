@@ -132,16 +132,45 @@ function focusItem(itemId) {
   row.scrollIntoView({ behavior: "smooth", block: "center" });
 }
 
+function itemEvidenceSignature(item) {
+  return [
+    item.versionNo,
+    item.exposureCount,
+    item.distinctStudents,
+    item.correctnessRate,
+    item.medianResponseTimeMs,
+    item.helpUseRate,
+    item.exactRepeatRate,
+    item.unansweredCount,
+    item.abandonedUnansweredCount,
+    item.practiceExposures,
+    item.diagnosticExposures,
+    item.masteryExposures,
+    item.replacementItemId ?? "",
+    ...(item.flags ?? []),
+  ].join("|");
+}
+
 function renderItemEvidence() {
   const panel = $("detailPanel");
   const itemId = selectedItemId();
   if (!panel || !itemId || !panel.querySelector(".detail-heading")) return;
-  panel.querySelector("#pilotItemEvidence")?.remove();
+
+  const existing = panel.querySelector("#pilotItemEvidence");
   const item = (analytics?.items ?? []).find((row) => row.itemId === itemId);
-  if (!item) return;
+  if (!item) {
+    existing?.remove();
+    return;
+  }
+
+  const signature = itemEvidenceSignature(item);
+  if (existing?.dataset.itemId === itemId && existing.dataset.signature === signature) return;
+  existing?.remove();
 
   const section = document.createElement("section");
   section.id = "pilotItemEvidence";
+  section.dataset.itemId = itemId;
+  section.dataset.signature = signature;
   section.className = "detail-section pilot-item-evidence";
   const flags = item.flags ?? [];
   section.innerHTML = `
