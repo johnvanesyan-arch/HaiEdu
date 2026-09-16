@@ -2,67 +2,69 @@ import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 
+const backlog = readFileSync('docs/backlog.md', 'utf8');
 const conceptual = readFileSync('supabase/migrations/0017_sprint_11d_conceptual_bank_expansion.sql', 'utf8');
-const bank = readFileSync('supabase/migrations/0020_sprint_11d_review_safe_bank_expansion.sql', 'utf8');
-const pools = readFileSync('supabase/migrations/0021_sprint_11d_purpose_exclusive_pools.sql', 'utf8');
+const recovery = readFileSync('supabase/migrations/0024_sprint_11d_partial_state_recovery.sql', 'utf8');
+const superseded = [
+  'supabase/migrations/0020_sprint_11d_review_safe_bank_expansion.sql',
+  'supabase/migrations/0021_sprint_11d_purpose_exclusive_pools.sql',
+  'supabase/migrations/0022_sprint_11d_family_audit_corrections.sql',
+  'supabase/migrations/0023_sprint_11d_authored_parallel_template_semantics.sql',
+].map((path) => readFileSync(path, 'utf8'));
 
 function has(text, pattern, message) {
   assert.match(text, pattern, message);
 }
 
-test('11D fixes a 24-variant per-skill purpose-exclusive target', () => {
-  has(pools, /12 Practice \+ 4 Diagnostic \+ 8 protected Mastery = 24/, 'target must be documented as 12/4/8');
-  has(pools, /r\.practice<>12\s+or\s+r\.diagnostic<>4\s+or\s+r\.mastery<>8/, 'pool acceptance target must be 12/4/8');
-  has(pools, /11D_cross_pool_overlap/, 'cross-purpose overlap must be a hard failure');
-  has(bank, /new_bucketed_count<>18/, 'each skill must add 18 reviewed variants to six fixed anchors');
+test('11D keeps the 24-per-skill / 240-total acceptance target', () => {
+  has(backlog, /24 effective, unique concrete variants per skill — 240 across the 10 skills/, '24/240 target must remain explicit');
+  has(backlog, /12 Practice variants \+ 4 Diagnostic variants .* \+ 8 protected Mastery variants/, '12/4/8 capacity target must remain explicit');
 });
 
-test('11D keeps Mastery protected and purpose-exclusive', () => {
-  has(pools, /PHY7-U01-MASTERY-PROTECTED-A/, 'protected Mastery pool must remain explicit');
-  has(pools, /purposeExclusive',true/, 'pools must advertise purpose exclusivity');
-  has(pools, /chapter1_item_already_enabled_in_other_purpose_pool/, 'database trigger must reject cross-purpose reuse');
-  has(pools, /chapter1_mastery_pool_must_be_protected/, 'Mastery pool must be protected');
+test('the partially applied 0017 catalogue remains provisional', () => {
+  has(conceptual, /provisional_no_sme_review/, '0017 content must remain provisional');
+  has(conceptual, /this is not human SME validation/i, 'internal workflow must not be represented as SME validation');
 });
 
-test('11D creates versioned non-overlapping Diagnostic forms', () => {
-  has(pools, /form_version=2/, 'Diagnostic v2 must be explicit');
-  has(pools, /11D_diag_A_not_20/, 'Form A must contain 20 items');
-  has(pools, /11D_diag_B_not_20/, 'Form B must contain 20 items');
-  has(pools, /11D_diagnostic_form_overlap/, 'A/B overlap must fail the migration');
-  has(pools, /11D_diagnostic_skill_distribution_invalid/, 'each form must contain two items per skill');
+test('production recovery forces every partial 11D candidate back to review-only', () => {
+  has(recovery, /jsonb_set\(config, '\{pilot_ready\}', 'false'::jsonb, true\)/, 'recovery must clear pilot readiness');
+  has(recovery, /review_status = 'needs_review'/, 'recovery must require review');
+  has(recovery, /status = 'review'::public\.content_status/, 'recovery must remove candidates from published state');
+  has(recovery, /validation_state = 'provisional_no_sme_review'/, 'SME status must remain provisional');
+  has(recovery, /set enabled = false/, 'any accidental learner-pool membership must be disabled');
 });
 
-test('11D expands conceptual skills and preserves provisional SME status', () => {
-  for (const skill of ['S01','S02','S03','S04','S05','S06','S09']) {
-    assert.ok(conceptual.includes(`PHY7-U01-${skill}`), `${skill} must have 11D parallel content`);
+test('S01 recovery removes unsupported Sound classification and repairs protected candidates', () => {
+  has(recovery, /option_key = 'F'/, 'recovery must explicitly remove the old Sound option');
+  has(recovery, /PHY7-U01-S01-11D-M04/, 'M04 must be replaced');
+  has(recovery, /PHY7-U01-S01-11D-M05/, 'M05 must be replaced');
+  has(recovery, /PHY7-U01-S01-11D-M06/, 'M06 must be replaced');
+  has(recovery, /variant_fingerprint = md5\(/, 'fingerprints must be recomputed after prompt/answer/option correction');
+  has(recovery, /jsonb_build_object\('optionKey',o\.option_key,'contentHy',o\.content_hy\)/, 'fingerprint must include corrected option semantics');
+});
+
+test('authored parallel catalogues are not misrepresented as deterministic generators', () => {
+  has(recovery, /template_kind = 'fixed'/, 'authored catalogues must use fixed template semantics');
+  has(recovery, /'generationMode','authored_parallel_catalog'/, 'authored catalogue generation mode must be explicit');
+  has(recovery, /'deterministicRerender',false/, 'authored catalogues must not be rerendered as deterministic generators');
+});
+
+test('recovery preserves audit history and records that final review is still required', () => {
+  has(recovery, /'changes_requested'/, 'recovery must supersede premature approval with an auditable review event');
+  has(recovery, /Final human content review and SME validation are still pending/, 'remaining review gate must be explicit');
+});
+
+test('unsafe 0020-0023 finalization drafts are no-op placeholders', () => {
+  for (const text of superseded) {
+    has(text, /SUPERSEDED BEFORE PRODUCTION APPLICATION/, 'superseded migration must be unmistakably marked');
+    has(text, /select 1;/, 'superseded migration must be a no-op');
   }
-  has(conceptual, /provisional_no_sme_review/, 'new content must retain provisional SME status');
-  has(bank, /not independent human Physics SME validation/i, 'internal workflow approval must not be represented as SME validation');
 });
 
-test('11D corrects S01 source scope before pool eligibility', () => {
-  has(bank, /sourceScopeCorrection','11D_textbook_architecture_alignment/, 'S01 proof catalogue must be source-scope corrected');
-  assert.equal(/Ձայնային/.test(bank), false, 'review-safe final migration must not introduce the unsupported sound category');
-});
-
-test('11D uses deterministic generation and handles finite S09 capacity explicitly', () => {
-  has(bank, /PHY7-U01-S07',18/, 'S07 must receive 18 deterministic variants');
-  has(bank, /PHY7-U01-S08',18/, 'S08 must receive 18 deterministic variants');
-  has(bank, /PHY7-U01-S09',10/, 'S09 numerical generator capacity must be explicit');
-  has(bank, /PHY7-U01-S10',18/, 'S10 must receive 18 deterministic variants');
-  has(bank, /PHY7-U01-S09-11D-D03/, 'S09 needs a reviewed Diagnostic supplement');
-  has(bank, /PHY7-U01-S09-11D-D04/, 'S09 needs a second reviewed Diagnostic supplement');
-});
-
-test('11D is safe with the existing revision triggers', () => {
-  has(bank, /mutates\s+content first[\s\S]*records QA\/review evidence second[\s\S]*only then publishes\/approves/i, 'review-safe ordering must be documented');
-  has(bank, /set review_status='approved',status='published'/, 'final approval must happen after assessable edits');
-});
-
-test('11D audits misconception coverage and structural QA', () => {
-  has(bank, /item_misconception_mappings/, 'new variants need misconception mapping');
-  has(bank, /11D_review_gate_failed/, 'review gate must be present');
-  has(bank, /11D_single_choice_gate_failed/, 'single-choice answer/option validation must be present');
-  has(bank, /11D_numeric_tolerance_gate_failed/, 'numeric tolerance validation must be present');
-  has(pools, /11D_ineligible_pool_members/, 'pool members must pass the eligibility gate');
+test('recovery has hard assertions for review state, pool isolation and S01 scope', () => {
+  has(recovery, /11D_recovery_review_state_failed/, 'review-state assertion must exist');
+  has(recovery, /11D_recovery_pool_isolation_failed/, 'pool-isolation assertion must exist');
+  has(recovery, /11D_recovery_sound_option_still_present/, 'Sound-option assertion must exist');
+  has(recovery, /11D_recovery_sound_prompt_still_present/, 'Sound-prompt assertion must exist');
+  has(recovery, /11D_recovery_template_semantics_failed/, 'template-semantics assertion must exist');
 });
