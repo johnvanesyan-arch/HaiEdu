@@ -59,7 +59,7 @@ test('deterministic candidate generation fails loudly and reproduces stored evid
 
 test('candidate pools and Diagnostic v2 are staged, not activated', () => {
   has(staging, /select p\.id,i\.id,false/, 'new pool memberships must be disabled');
-  has(staging, /form_version,2,'draft'/, 'Diagnostic v2 must remain draft');
+  has(staging, /select p\.id,v\.code,v\.name,2,'draft'/, 'Diagnostic v2 must remain draft');
   has(staging, /human_content_review_required/, 'staging must preserve the human-review gate');
   has(staging, /11D_baseline_pool_changed/, 'current production pools must be protected by assertions');
   has(staging, /11D_draft_diag_A_not_20/, 'Diagnostic A candidate form must contain 20 items');
