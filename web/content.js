@@ -5,6 +5,8 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 let dashboard = null;
 let selectedId = null;
+let selectedDetail = null;
+let detailLoadToken = 0;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -73,33 +75,118 @@ function renderRows() {
   document.querySelectorAll("#itemRows tr[data-id]").forEach((row) => row.addEventListener("click", () => selectItem(row.dataset.id)));
 }
 
-function selectItem(id) {
+function renderLoadingDetail() {
+  $("detailPanel").innerHTML = `<h2>Loading…</h2><p class="subtle">Հարցի ամբողջական խմբագրիչը բեռնվում է։</p>`;
+}
+
+async function selectItem(id) {
   selectedId = id;
+  selectedDetail = null;
   renderRows();
-  renderDetail();
+  renderLoadingDetail();
+  const token = ++detailLoadToken;
+  try {
+    const data = await invoke("manage-content-quality", { action: "get_item_detail", itemId: id });
+    if (token !== detailLoadToken || selectedId !== id) return;
+    selectedDetail = data.detail;
+    renderDetail();
+  } catch (err) {
+    if (token !== detailLoadToken) return;
+    $("detailPanel").innerHTML = `<h2>Load failed</h2><p class="message bad">${esc(err.message)}</p>`;
+  }
+}
+
+function optionRowsHtml(options, disabled) {
+  return (options ?? []).map((o) => `<div class="option-editor-row" data-option-row>
+    <label class="option-key-field">Key<input class="option-key" value="${esc(o.key)}" ${disabled ? "disabled" : ""} /></label>
+    <label>Հայերեն<textarea class="option-hy" rows="2" ${disabled ? "disabled" : ""}>${esc(o.contentHy ?? "")}</textarea></label>
+    <label>English<input class="option-en" value="${esc(o.contentEn ?? "")}" ${disabled ? "disabled" : ""} /></label>
+    <button type="button" class="ghost remove-option-btn" ${disabled ? "disabled" : ""}>Remove</button>
+  </div>`).join("");
+}
+
+function misconceptionRowsHtml(detail, disabled) {
+  const available = detail.availableMisconceptions ?? [];
+  const rows = detail.misconceptions ?? [];
+  return rows.map((m) => `<div class="misconception-editor-row" data-misconception-row>
+    <label>Code<select class="misconception-code" ${disabled ? "disabled" : ""}>${available.map((x) => `<option value="${esc(x.code)}" ${x.code === m.code ? "selected" : ""}>${esc(x.code)} — ${esc(x.title_hy)}</option>`).join("")}</select></label>
+    <label>Response key<input class="misconception-response" value="${esc(m.responseKey ?? "*")}" ${disabled ? "disabled" : ""} /></label>
+    <label class="wide">Note<input class="misconception-note" value="${esc(m.mappingNote ?? "")}" ${disabled ? "disabled" : ""} /></label>
+    <button type="button" class="ghost remove-misconception-btn" ${disabled ? "disabled" : ""}>Remove</button>
+  </div>`).join("");
+}
+
+function answerEditorHtml(detail, disabled) {
+  const item = detail.item;
+  const key = detail.answerKey ?? {};
+  if (item.type === "single_choice") {
+    return `<div class="answer-grid"><label>Correct option<select id="answerSingleChoice" ${disabled ? "disabled" : ""}></select></label><label>Feedback code<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label></div>`;
+  }
+  if (item.type === "true_false") {
+    return `<div class="answer-grid"><label>Correct answer<select id="answerTrueFalse" ${disabled ? "disabled" : ""}><option value="true" ${key.answer === true ? "selected" : ""}>True</option><option value="false" ${key.answer === false ? "selected" : ""}>False</option></select></label><label>Feedback code<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label></div>`;
+  }
+  const quantity = item.type === "quantity";
+  return `<div class="answer-grid">
+    <label>Correct value<input id="answerNumeric" type="number" step="any" value="${esc(key.answer ?? "")}" ${disabled ? "disabled" : ""} /></label>
+    <label>Tolerance<input id="answerTolerance" type="number" min="0" step="any" value="${esc(key.tolerance ?? 0)}" ${disabled ? "disabled" : ""} /></label>
+    ${quantity ? `<label>Canonical unit<input id="answerCanonicalUnit" value="${esc(key.canonicalUnit ?? "")}" ${disabled ? "disabled" : ""} /></label><label>Accepted units<input id="answerAcceptedUnits" value="${esc((key.acceptedUnits ?? []).join(", "))}" placeholder="m, cm, mm" ${disabled ? "disabled" : ""} /></label>` : ""}
+    <label class="wide">Feedback code<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label>
+  </div>`;
 }
 
 function renderDetail() {
   const item = dashboard?.items?.find((i) => i.id === selectedId);
-  if (!item) return;
+  const detail = selectedDetail;
+  if (!item || !detail) return;
+
+  const editable = detail.editing?.contentEditable === true;
+  const disabled = !editable;
   const qaErrors = item.latestQa?.errors ?? [];
   const qaWarnings = item.latestQa?.warnings ?? [];
+  const purposes = (detail.pools ?? []).map((p) => `${p.purpose}${p.protected ? " (protected)" : ""}${p.enabled ? "" : " · staged"}`).join(" · ") || detail.item.config?.sprint11dBucket || "—";
+  const generatedWarning = detail.editing?.reason === "generated_variant_requires_template_edit"
+    ? `<div class="editor-warning"><strong>Generated variant.</strong> This concrete item is reproducible from template + seed, so rendered question/answer editing is locked. Edit/regenerate the source template instead; metadata/review actions remain available.</div>`
+    : detail.item.retiredAt ? `<div class="editor-warning"><strong>Retired item.</strong> Restore it before editing.</div>` : "";
+
   $("detailPanel").innerHTML = `
-    <div><p class="eyebrow">${esc(item.skill?.code)}</p><h2>${esc(item.code)}</h2><p class="prompt-preview">${esc(item.promptHy)}</p></div>
-    <section class="detail-section">
+    <div class="detail-heading">
+      <div><p class="eyebrow">${esc(item.skill?.code)}</p><h2>${esc(item.code)}</h2></div>
+      <span class="review-chip">v${esc(item.versionNo)}</span>
+    </div>
+    <div class="immutable-summary"><span><strong>Type:</strong> ${esc(item.type)}</span><span><strong>Skill:</strong> ${esc(item.skill?.code)}</span><span><strong>Purpose:</strong> ${esc(purposes)}</span></div>
+    ${generatedWarning}
+
+    <section class="detail-section editor-section">
+      <div class="section-heading"><div><h3>Question content</h3><p class="subtle tiny">Item code, skill and item type are immutable here.</p></div></div>
+      <label>Armenian question<textarea id="editPromptHy" rows="4" ${disabled ? "disabled" : ""}>${esc(detail.item.promptHy ?? "")}</textarea></label>
+      <label>English question <span class="subtle tiny">optional</span><textarea id="editPromptEn" rows="3" ${disabled ? "disabled" : ""}>${esc(detail.item.promptEn ?? "")}</textarea></label>
+      <label>Stimulus JSON <span class="subtle tiny">advanced</span><textarea id="editStimulus" class="code-field" rows="3" spellcheck="false" ${disabled ? "disabled" : ""}>${esc(JSON.stringify(detail.item.stimulus ?? {}, null, 2))}</textarea></label>
+    </section>
+
+    ${item.type === "single_choice" ? `<section class="detail-section editor-section"><div class="section-heading"><div><h3>Answer options</h3><p class="subtle tiny">Keys must be unique and every option needs Armenian text.</p></div>${editable ? `<button type="button" id="addOptionBtn" class="ghost">Add option</button>` : ""}</div><div id="optionEditor">${optionRowsHtml(detail.options, disabled)}</div></section>` : ""}
+
+    <section class="detail-section editor-section"><h3>Correct answer</h3>${answerEditorHtml(detail, disabled)}</section>
+
+    <section class="detail-section editor-section">
       <h3>Metadata</h3>
       <div class="metadata-grid">
-        <label>Difficulty<select id="metaDifficulty">${[1,2,3,4,5].map((n)=>`<option value="${n}" ${n===item.difficulty?"selected":""}>${n}</option>`).join("")}</select></label>
-        <label>Family<input id="metaFamily" value="${esc(item.itemFamily)}" /></label>
-        <label class="wide">Source reference<input id="metaSource" value="${esc(item.sourceReference ?? "")}" /></label>
-        <div class="wide"><span class="stat-label">Validation</span><div>${esc(item.validationState)}</div></div>
-        <div class="wide"><span class="stat-label">Misconception codes</span><div>${(item.misconceptions ?? []).map((m)=>`<code>${esc(m.code)}</code>`).join(" · ") || "—"}</div></div>
+        <label>Difficulty<select id="metaDifficulty" ${disabled ? "disabled" : ""}>${[1,2,3,4,5].map((n)=>`<option value="${n}" ${n===item.difficulty?"selected":""}>${n}</option>`).join("")}</select></label>
+        <label>Family<input id="metaFamily" value="${esc(item.itemFamily)}" ${disabled ? "disabled" : ""} /></label>
+        <label class="wide">Source reference<input id="metaSource" value="${esc(item.sourceReference ?? "")}" ${disabled ? "disabled" : ""} /></label>
+        <label class="wide">Validation state<input id="metaValidation" value="${esc(item.validationState ?? "")}" ${disabled ? "disabled" : ""} /></label>
       </div>
-      <div class="workflow-actions" style="margin-top:10px"><button id="saveRevisionBtn">Պահել որպես նոր version</button></div>
     </section>
+
+    <section class="detail-section editor-section">
+      <div class="section-heading"><div><h3>Misconception mapping</h3><p class="subtle tiny">Mappings are restricted to active misconceptions for ${esc(item.skill?.code)}.</p></div>${editable && (detail.availableMisconceptions ?? []).length ? `<button type="button" id="addMisconceptionBtn" class="ghost">Add mapping</button>` : ""}</div>
+      <div id="misconceptionEditor">${misconceptionRowsHtml(detail, disabled) || `<p class="subtle tiny">No mappings.</p>`}</div>
+    </section>
+
+    ${editable ? `<section class="detail-section save-revision-section"><label>Revision summary<input id="changeSummary" placeholder="e.g. Clarified wording and corrected distractor B" /></label><div class="workflow-actions"><button id="saveRevisionBtn">Save as new version</button></div><p class="subtle tiny">Saving is atomic. The item immediately returns to <strong>needs_review</strong>; current-version QA and approval must be run again before publication/activation.</p></section>` : ""}
+
     <section class="detail-section">
       <h3>Technical QA</h3>
-      <p><strong>${!item.latestQa ? "Not run" : item.latestQa.passed ? "PASS" : "FAIL"}</strong>${item.latestQa ? ` · v${esc(item.latestQa.versionNo)}` : ""}</p>
+      <p><strong>${!item.latestQa ? "Not run for current version" : item.latestQa.passed ? "PASS" : "FAIL"}</strong>${item.latestQa ? ` · v${esc(item.latestQa.versionNo)}` : ""}</p>
       ${qaErrors.length ? `<ul class="error-list">${qaErrors.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       ${qaWarnings.length ? `<ul class="warning-list">${qaWarnings.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       <div class="workflow-actions"><button id="runQaBtn" class="secondary">Run QA</button></div>
@@ -119,6 +206,8 @@ function renderDetail() {
       <div class="workflow-actions">${item.retiredAt ? `<button id="restoreBtn" class="secondary">Restore to review</button>` : `<button id="retireBtn" class="danger-btn">Retire / replace</button>`}</div>
     </section>
     <section class="detail-section tiny subtle">
+      Template: ${esc(detail.template?.code ?? "—")} · ${esc(detail.template?.kind ?? "—")}<br/>
+      Variant: ${esc(detail.item.variantKey ?? "—")}${detail.item.variantSeed ? ` · seed ${esc(detail.item.variantSeed)}` : ""}<br/>
       Latest snapshot: ${item.latestSnapshot ? `v${esc(item.latestSnapshot.versionNo)} · ${esc(item.latestSnapshot.changeSummary || "")}` : "—"}<br/>
       Latest review: ${item.latestReview ? `${esc(item.latestReview.decision)} · ${esc(item.latestReview.type)}` : "—"}
     </section>`;
@@ -133,21 +222,128 @@ function renderDetail() {
   $("saveRevisionBtn")?.addEventListener("click", saveRevision);
   $("retireBtn")?.addEventListener("click", retireItem);
   $("restoreBtn")?.addEventListener("click", () => action("restore"));
+  $("addOptionBtn")?.addEventListener("click", addOptionRow);
+  $("addMisconceptionBtn")?.addEventListener("click", addMisconceptionRow);
+  wireEditorRows();
+  syncSingleChoiceAnswer(detail.answerKey?.answer);
+}
+
+function wireEditorRows() {
+  document.querySelectorAll(".remove-option-btn").forEach((button) => button.addEventListener("click", () => {
+    button.closest("[data-option-row]")?.remove();
+    syncSingleChoiceAnswer();
+  }));
+  document.querySelectorAll(".option-key").forEach((input) => input.addEventListener("input", () => syncSingleChoiceAnswer()));
+  document.querySelectorAll(".remove-misconception-btn").forEach((button) => button.addEventListener("click", () => {
+    button.closest("[data-misconception-row]")?.remove();
+    if (!document.querySelector("[data-misconception-row]")) $("misconceptionEditor").innerHTML = `<p class="subtle tiny">No mappings.</p>`;
+  }));
+}
+
+function nextOptionKey() {
+  const used = new Set([...document.querySelectorAll(".option-key")].map((x) => x.value.trim()));
+  for (let code = 65; code <= 90; code += 1) {
+    const key = String.fromCharCode(code);
+    if (!used.has(key)) return key;
+  }
+  return `O${used.size + 1}`;
+}
+
+function addOptionRow() {
+  const host = $("optionEditor");
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = optionRowsHtml([{ key: nextOptionKey(), contentHy: "", contentEn: "" }], false);
+  host.appendChild(wrapper.firstElementChild);
+  wireEditorRows();
+  syncSingleChoiceAnswer();
+}
+
+function syncSingleChoiceAnswer(initialValue) {
+  const select = $("answerSingleChoice");
+  if (!select) return;
+  const previous = initialValue ?? select.value;
+  const keys = [...document.querySelectorAll(".option-key")].map((x) => x.value.trim()).filter(Boolean);
+  select.innerHTML = keys.map((key) => `<option value="${esc(key)}">${esc(key)}</option>`).join("");
+  if (keys.includes(String(previous))) select.value = String(previous);
+}
+
+function addMisconceptionRow() {
+  const detail = selectedDetail;
+  if (!detail?.availableMisconceptions?.length) return;
+  const host = $("misconceptionEditor");
+  if (host.querySelector("p")) host.innerHTML = "";
+  const first = detail.availableMisconceptions[0];
+  const wrapper = document.createElement("div");
+  wrapper.innerHTML = misconceptionRowsHtml({ ...detail, misconceptions: [{ code: first.code, responseKey: "*", mappingNote: "" }] }, false);
+  host.appendChild(wrapper.firstElementChild);
+  wireEditorRows();
+}
+
+function collectOptions() {
+  return [...document.querySelectorAll("[data-option-row]")].map((row) => ({
+    key: row.querySelector(".option-key").value.trim(),
+    contentHy: row.querySelector(".option-hy").value.trim(),
+    contentEn: row.querySelector(".option-en").value.trim() || null,
+  }));
+}
+
+function collectMisconceptions() {
+  return [...document.querySelectorAll("[data-misconception-row]")].map((row) => ({
+    code: row.querySelector(".misconception-code").value,
+    responseKey: row.querySelector(".misconception-response").value.trim() || "*",
+    mappingNote: row.querySelector(".misconception-note").value.trim() || null,
+  }));
+}
+
+function collectAnswerKey(type) {
+  const feedbackCode = $("answerFeedbackCode")?.value.trim() || null;
+  if (type === "single_choice") return { answer: $("answerSingleChoice").value, feedbackCode };
+  if (type === "true_false") return { answer: $("answerTrueFalse").value === "true", feedbackCode };
+  const answer = Number($("answerNumeric").value);
+  const tolerance = Number($("answerTolerance").value);
+  if (!Number.isFinite(answer)) throw new Error("Correct numeric value is required.");
+  if (!Number.isFinite(tolerance) || tolerance < 0) throw new Error("Tolerance must be zero or greater.");
+  if (type === "quantity") {
+    const canonicalUnit = $("answerCanonicalUnit").value.trim();
+    const acceptedUnits = $("answerAcceptedUnits").value.split(",").map((x) => x.trim()).filter(Boolean);
+    if (!canonicalUnit) throw new Error("Canonical unit is required.");
+    if (!acceptedUnits.includes(canonicalUnit)) throw new Error("Accepted units must include the canonical unit.");
+    return { answer, tolerance, canonicalUnit, acceptedUnits, feedbackCode };
+  }
+  return { answer, tolerance, feedbackCode };
 }
 
 async function saveRevision() {
   const item = dashboard.items.find((i) => i.id === selectedId);
+  if (!item || !selectedDetail?.editing?.contentEditable) return;
   try {
-    setMessage("Պահվում է…");
-    await invoke("manage-content-quality", {
-      action: "update_metadata", itemId: selectedId,
-      difficulty: Number($("metaDifficulty").value), itemFamily: $("metaFamily").value, sourceReference: $("metaSource").value,
-    });
-    const summary = prompt("Version change summary", "Metadata revision") ?? "Metadata revision";
-    await invoke("manage-content-quality", { action: "snapshot_revision", itemId: selectedId, changeSummary: summary });
+    let stimulus;
+    try { stimulus = JSON.parse($("editStimulus").value || "{}"); }
+    catch { throw new Error("Stimulus JSON is not valid JSON."); }
+
+    const payload = {
+      promptHy: $("editPromptHy").value.trim(),
+      promptEn: $("editPromptEn").value.trim() || null,
+      stimulus,
+      difficulty: Number($("metaDifficulty").value),
+      itemFamily: $("metaFamily").value.trim(),
+      sourceReference: $("metaSource").value.trim() || null,
+      validationState: $("metaValidation").value.trim(),
+      options: item.type === "single_choice" ? collectOptions() : [],
+      answerKey: collectAnswerKey(item.type),
+      misconceptions: collectMisconceptions(),
+      changeSummary: $("changeSummary").value.trim() || "Content editor revision",
+    };
+    if (!payload.promptHy) throw new Error("Armenian question text is required.");
+    if (!payload.itemFamily) throw new Error("Item family is required.");
+
+    setMessage("Revision is being saved…");
+    await invoke("manage-content-quality", { action: "save_content_revision", itemId: selectedId, payload });
     await refresh(selectedId);
-    setMessage(`${item.code}: նոր version ստեղծվեց։`);
-  } catch (err) { setMessage(err.message, true); }
+    setMessage(`${item.code}: saved as a new version. Run QA, then submit/approve the review.`);
+  } catch (err) {
+    setMessage(err.message, true);
+  }
 }
 
 async function retireItem() {
@@ -177,9 +373,11 @@ async function refresh(reselect = selectedId) {
     dashboard = await invoke("get-content-quality-dashboard", {});
     renderStats(dashboard.stats);
     populateSkillFilter(dashboard.items);
-    selectedId = dashboard.items.some((i) => i.id === reselect) ? reselect : dashboard.items[0]?.id ?? null;
+    const nextId = dashboard.items.some((i) => i.id === reselect) ? reselect : dashboard.items[0]?.id ?? null;
+    selectedId = nextId;
     renderRows();
-    if (selectedId) renderDetail();
+    if (selectedId) await selectItem(selectedId);
+    else $("detailPanel").innerHTML = `<h2>Ընտրեք հարց</h2><p class="subtle">Հարցերի բանկը դատարկ է։</p>`;
   } catch (err) {
     setMessage(err.message, true);
   }
