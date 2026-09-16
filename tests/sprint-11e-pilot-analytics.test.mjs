@@ -44,3 +44,9 @@ test("content console surfaces integrity and per-item pilot evidence", () => {
   has(ui, /Pilot evidence/, "selected items must show per-item evidence");
   has(ui, /not validated psychometrics/, "UI must preserve evidence caveat");
 });
+
+test("pilot item evidence rendering is idempotent under MutationObserver", () => {
+  has(ui, /function itemEvidenceSignature/, "item evidence must have a stable render signature");
+  has(ui, /existing\?\.dataset\.itemId === itemId && existing\.dataset\.signature === signature/, "observer-driven rerenders must stop when evidence is unchanged");
+  has(ui, /section\.dataset\.signature = signature/, "rendered evidence must retain its signature");
+});
