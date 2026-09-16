@@ -32,6 +32,23 @@
     <section id="console" class="hidden">
       <div id="stats" class="quality-stats"></div>
 
+      <section class="card curriculum-card" aria-labelledby="curriculumBankTitle">
+        <div class="section-heading curriculum-heading">
+          <div>
+            <p class="eyebrow">CURRICULUM SCOPE</p>
+            <h2 id="curriculumBankTitle">Հարցերի բանկի բաժին</h2>
+            <p id="curriculumSummary" class="subtle small">Ընտրեք դասարան, առարկա, ծրագիր և բաժին։</p>
+          </div>
+          <button id="allContentBtn" type="button" class="ghost">All content</button>
+        </div>
+        <div class="curriculum-filter-grid">
+          <label>Grade<select id="gradeFilter" aria-label="Filter question bank by grade"></select></label>
+          <label>Subject<select id="subjectFilter" aria-label="Filter question bank by subject"></select></label>
+          <label>Program<select id="programFilter" aria-label="Filter question bank by curriculum program"></select></label>
+          <label>Unit / Chapter<select id="unitFilter" aria-label="Filter question bank by unit or chapter"></select></label>
+        </div>
+      </section>
+
       <section class="card filter-card" aria-label="Հարցերի ֆիլտրեր">
         <input id="searchInput" type="search" placeholder="Փնտրել հարցի կոդ, հմտություն կամ տեքստ…" aria-label="Փնտրել հարցերի բանկում" />
         <select id="skillFilter" aria-label="Ֆիլտրել ըստ հմտության"><option value="">Բոլոր հմտությունները</option></select>
@@ -72,6 +89,7 @@
     </section>
   </main>
   <script type="module" src="./content.js"></script>
+  <script type="module" src="./content-curriculum.js"></script>
   <script type="module" src="./content-review-workflow.js"></script>
   <script type="module" src="./ux.js"></script>
 </body>
