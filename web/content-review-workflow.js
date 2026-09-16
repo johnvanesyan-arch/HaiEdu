@@ -5,6 +5,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 let renderToken = 0;
 let scheduled = null;
+let initialized = false;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -188,7 +189,9 @@ function watchConsole() {
 }
 
 function initWhenReady() {
+  if (initialized) return;
   if ($("detailPanel") && $("itemRows") && $("reviewFilter")) {
+    initialized = true;
     watchConsole();
     return;
   }
