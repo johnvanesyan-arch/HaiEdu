@@ -213,3 +213,5 @@ if (observed.length) {
 }
 
 window.addEventListener("pageshow", syncShellState);
+
+import("./course-gate.js");
