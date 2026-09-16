@@ -134,10 +134,10 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [x] Add a basic assessment-integrity report showing exact-repeat rates and protected-pool usage.
 
 ### 11F — Closed Grade 7 Physics Chapter I pilot
-**Status: 🟡 In progress.** Technical preflight is complete and documented in `docs/pre-sprint-11f-qa.md`; Sprint 11F is now open. The next gate is authenticated rendered browser/device/keyboard smoke, followed by a disposable-account end-to-end production workflow smoke. Real student/teacher feedback remains deferred until those technical gates pass. Detailed execution plan: `docs/sprint-11f-closed-pilot.md`.
+**Status: 🟡 In progress.** Technical preflight and the rendered browser-production gate are complete. 11F.2 used real rendered production browser runs with authenticated student and teacher profiles. Four authenticated repetitions — tablet/phone viewport, keyboard-only focus traversal, 200% zoom, and Firefox/Safari-class browser — were not executable with the available automation controls and were explicitly accepted by the product owner on 2026-09-16 as QA limitations rather than PASS results. The next gate is the disposable-account end-to-end production workflow smoke. Detailed execution plan: `docs/sprint-11f-closed-pilot.md`.
 
 - [x] Complete automated/source, live-database, active-bank, diagnostic-form, security/RLS and session-collision preflight QA; fix blocking defects discovered by that gate.
-- [ ] Execute the deferred authenticated browser/device QA matrix from `docs/pilot-browser-qa-checklist.md` or document accepted defects/workarounds.
+- [x] Execute/disposition the deferred authenticated browser/device QA matrix from `docs/pilot-browser-qa-checklist.md`; rendered student/teacher desktop checks passed and the four remaining authenticated tool-coverage gaps have explicit product-owner acceptance.
 - [ ] Final production smoke test: student onboarding, teacher class creation/invite, class joining, diagnostic, adaptive practice, remediation, mastery check, progress, and teacher dashboard.
 - [ ] Use a small controlled student cohort before broader rollout.
 - [ ] Verify privacy/consent/role boundaries for the pilot cohort and teachers.
@@ -157,7 +157,7 @@ Sprint 11 is complete only when all of the following are true:
 - [x] Mastery Check uses protected unseen-first / least-exposed selection and alternate retest logic, backed by 8 protected variants per skill.
 - [x] Parameterised items are deterministic, reproducible and auditable where used.
 - [x] Unit 1 content has completed the agreed technical/human QA gate; provisional SME status remains explicit until actual SME review.
-- [ ] Deferred authenticated browser/device QA has been completed or remaining defects have an explicit accepted workaround before the pilot is closed.
+- [x] Deferred authenticated browser/device QA has been executed where supported; the four remaining authenticated browser-control limitations have explicit accepted disposition and are not represented as passing tests.
 - [ ] A closed Chapter I pilot has run end-to-end.
 - [ ] Pilot data has been reviewed for repetition/memorisation risk, usability, content defects and learning-engine behavior.
 - [ ] Critical defects are resolved or explicitly accepted before expanding to Chapter II / another subject slice.
