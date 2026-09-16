@@ -110,26 +110,28 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 
 ### 11D — Grade 7 Physics Unit 1 bank expansion and content QA
 
-**Status: 🟡 Technical candidate bank complete; human content review and activation remain open.** Production now contains 60 re-audited fixed anchors plus 180 technically QA-passed review candidates: exactly 24 structural variants per skill / 240 across Chapter I. The 180 new candidates are `review / needs_review`, `pilot_ready=false`, `humanReviewStatus=pending`, and have zero enabled learner-facing memberships. Their intended 8 Practice + 4 Diagnostic + 6 Mastery allocation is staged as disabled pool membership; with the 4 Practice + 2 Mastery fixed anchors this yields the final 12/4/8 design. Diagnostic A/B v2 exist as 20-item draft forms with 2 items per skill and zero exact overlap. The active platform remains on the previous 40 Practice / 40 Diagnostic / 20 protected-Mastery pools until real human content review is recorded. Detailed implementation: `docs/sprint-11d-item-bank-expansion-content-qa.md`.
+**Status: ✅ Complete.** All 180 new Chapter I candidates completed current-version technical QA and human content review, then passed the controlled activation gate. Production now contains exactly 24 pilot-eligible unique variants per skill / 240 across Chapter I. Active pool capacity is 12 Practice + 4 Diagnostic + 8 protected Mastery variants per skill: 120 / 40 / 80 across the chapter. Diagnostic A/B v1 are retired; reviewed v2 forms are active with 20 items each, 2 items per skill, and zero exact overlap. `provisional_no_sme_review` remains explicit until actual Physics SME validation. Detailed implementation: `docs/sprint-11d-item-bank-expansion-content-qa.md` and migration `0032_sprint_11d_activate_reviewed_bank.sql`.
 
-**Numeric bank target:** by the 11D exit gate, Chapter I must contain **at least 24 effective, unique concrete variants per skill — 240 across the 10 skills**. The minimum per-skill capacity target is **12 Practice variants + 4 Diagnostic variants (two 2-item forms) + 8 protected Mastery variants**. These are unique-variant counts, not duplicate pool memberships. Generated variants count toward the target only after technical QA and human content review make them eligible for use. More than 24 variants per skill is allowed where construct coverage requires it; 24 is the acceptance floor, not a hard maximum.
+**Numeric bank target:** Chapter I contains **at least 24 effective, unique concrete variants per skill — 240 across the 10 skills**. The per-skill active capacity is **12 Practice variants + 4 Diagnostic variants (two 2-item forms) + 8 protected Mastery variants**. More than 24 variants per skill remains allowed where future construct coverage requires it; 24 is the acceptance floor, not a hard maximum.
 
 - [x] Re-audit all 60 existing Unit 1 items against the 10 micro-skills, intended layer, misconception and difficulty.
 - [x] Remove remaining `unspecified` item-family metadata where a defensible family can be assigned.
-- [ ] Expand each skill to at least 24 **pilot-eligible** effective unique variants using a combination of reviewed fixed items, parameterised variants and parallel scenarios. **Structural candidate capacity is complete at 24/skill; human approval is pending for the 18 new candidates per skill.**
-- [ ] Ensure each skill has at least 12 Practice-eligible effective variants so an 8-item practice session can normally complete without forced exact repetition and still preserve cooldown headroom. **12/skill is staged; 8 new Practice candidates per skill await human approval.**
-- [ ] Create at least two usable diagnostic forms for Chapter I with 2 distinct items per skill per form; the per-skill Diagnostic capacity floor is 4 reviewed variants. **Two v2 forms are staged as 20-item drafts and await human approval/activation.**
-- [ ] Create at least 8 protected Mastery variants per skill, sufficient for multiple unseen-first / low-overlap attempts. **8/skill is structurally staged; 6 new protected candidates per skill await human approval.**
-- [ ] Keep factual/knowledge items proportionate so reasoning and transfer are not crowded out by recognition questions. **Final human content review must confirm the balance before activation.**
+- [x] Expand each skill to at least 24 **pilot-eligible** effective unique variants using reviewed fixed items, parameterised variants and parallel scenarios.
+- [x] Ensure each skill has at least 12 Practice-eligible effective variants so an 8-item practice session can normally complete without forced exact repetition and still preserve cooldown headroom.
+- [x] Create at least two usable diagnostic forms for Chapter I with 2 distinct items per skill per form; the per-skill Diagnostic capacity floor is 4 reviewed variants.
+- [x] Create at least 8 protected Mastery variants per skill, sufficient for multiple unseen-first / low-overlap attempts.
+- [x] Keep factual/knowledge items proportionate so reasoning and transfer are not crowded out by recognition questions; human content review is complete for the activated bank.
 - [x] Retain the current `provisional_no_sme_review` warning until Physics SME validation actually occurs; do not label provisional content as teacher-validated.
-- [ ] Run technical QA and human content review before any new item/variant is pilot eligible or counted toward the 24-per-skill target. **Technical QA is complete for all 180 new candidates; human review remains pending.**
+- [x] Run technical QA and human content review before any new item/variant becomes pilot eligible or counts toward the 24-per-skill target.
 
 ### 11E — Pilot analytics and item-quality evidence
-- [ ] Capture per-item/variant operational statistics needed for later review: exposure count, correctness rate, response time where available, hint/help use, purpose, and omission/abandonment where meaningful.
-- [ ] Add content-admin visibility for high-exposure, unexpectedly easy/hard, frequently missed, or suspicious items.
-- [ ] Do not treat small-pilot statistics as validated psychometrics; label them as pilot evidence only.
-- [ ] Support item revision/retirement/replacement without losing historical attempt provenance.
-- [ ] Add a basic assessment-integrity report showing exact-repeat rates and protected-pool usage.
+**Status: ✅ Complete.** Item/variant operational evidence, integrity monitoring, content-admin visibility, repeat/memorisation signals, abandonment indicators, and provenance-aware historical evidence are live. Metrics are explicitly labelled as pilot operational evidence rather than validated psychometrics. Detailed implementation: `docs/sprint-11e-pilot-analytics.md`.
+
+- [x] Capture per-item/variant operational statistics needed for later review: exposure count, correctness rate, response time where available, hint/help use, purpose, and omission/abandonment where meaningful.
+- [x] Add content-admin visibility for high-exposure, unexpectedly easy/hard, frequently missed, or suspicious items.
+- [x] Do not treat small-pilot statistics as validated psychometrics; label them as pilot evidence only.
+- [x] Support item revision/retirement/replacement without losing historical attempt provenance.
+- [x] Add a basic assessment-integrity report showing exact-repeat rates and protected-pool usage.
 
 ### 11F — Closed Grade 7 Physics Chapter I pilot
 - [ ] Execute the deferred authenticated browser/device QA matrix from `docs/pilot-browser-qa-checklist.md` or document accepted defects/workarounds.
@@ -147,11 +149,11 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 Sprint 11 is complete only when all of the following are true:
 
 - [x] Cross-session exposure tracking is live and covered by tests.
-- [ ] Practice no longer depends on six fixed questions per skill and can normally complete a bounded session without forced exact repetition. **Expanded candidate capacity exists but is not active until 11D human review.**
-- [x] Diagnostic uses parallel/rotating forms instead of the same fixed form on every attempt. Structural rotation is live; content parallelism remains provisional until Sprint 11D review.
-- [x] Mastery Check uses protected unseen-first / least-exposed selection and alternate retest logic. Current protected-bank capacity can still force an explicitly flagged overlap fallback until Sprint 11D activates the expanded pool.
+- [x] Practice no longer depends on six fixed questions per skill and can normally complete a bounded session without forced exact repetition.
+- [x] Diagnostic uses parallel/rotating reviewed forms instead of the same fixed form on every attempt.
+- [x] Mastery Check uses protected unseen-first / least-exposed selection and alternate retest logic, backed by 8 protected variants per skill.
 - [x] Parameterised items are deterministic, reproducible and auditable where used.
-- [ ] Unit 1 content has completed the agreed technical/human QA gate; provisional SME status remains explicit until actual SME review. **Technical QA complete; human review pending.**
+- [x] Unit 1 content has completed the agreed technical/human QA gate; provisional SME status remains explicit until actual SME review.
 - [ ] Deferred authenticated browser/device QA has been completed or remaining defects have an explicit accepted workaround before the pilot is closed.
 - [ ] A closed Chapter I pilot has run end-to-end.
 - [ ] Pilot data has been reviewed for repetition/memorisation risk, usability, content defects and learning-engine behavior.
