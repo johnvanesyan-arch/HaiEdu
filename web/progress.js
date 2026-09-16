@@ -19,6 +19,7 @@ const stateLabels = {
   not_started: "Չսկսված",
   needs_support: "Աջակցություն է պետք",
   developing: "Զարգացող",
+  recovered: "Վերջին փորձերում կայուն",
   secure: "Ամրապնդված",
   verified: "Հաստատված",
 };
@@ -27,6 +28,7 @@ const stateTones = {
   not_started: "neutral",
   needs_support: "danger",
   developing: "warning",
+  recovered: "info",
   secure: "success",
   verified: "success",
 };
@@ -49,12 +51,14 @@ function escapeHtml(value) {
 
 function skillState(skill) {
   if (masteryStatus?.unitComplete) return "verified";
-  if (skill.complete) return "secure";
+  if (skill.complete && skill.completionSource === "mastery") return "secure";
+  if (skill.complete && skill.completionSource === "recent_recovery") return "recovered";
   if (skill.mastery?.status === "needs_support") return "needs_support";
   if (skill.mastery?.status === "developing") return "developing";
   if (skill.mastery?.status === "insufficient_evidence") {
     return Number(skill.mastery?.evidenceCount ?? 0) > 0 ? "developing" : "not_started";
   }
+  if (skill.complete) return "secure";
   if (skill.diagnostic?.band === "needs_support") return "needs_support";
   if (skill.diagnostic?.band === "developing") return "developing";
   if (Number(skill.diagnostic?.total ?? 0) > 0 || Number(skill.mastery?.evidenceCount ?? 0) > 0) return "developing";
@@ -79,8 +83,8 @@ function renderSummary() {
     $("chapterState").textContent = "Հաստատված";
     $("chapterProgressMeta").textContent = "Գլուխ I-ի յուրացումը հաստատված է անկախ ստուգմամբ։";
   } else {
-    $("chapterState").textContent = `${progress.completedSkills} / ${progress.totalSkills} ամրապնդված`;
-    $("chapterProgressMeta").textContent = `${progress.percent}% հմտություն հասել է ընթացիկ ամրապնդման չափանիշին։`;
+    $("chapterState").textContent = `${progress.completedSkills} / ${progress.totalSkills} ընթացիկ չափանիշը բավարարած`;
+    $("chapterProgressMeta").textContent = `${progress.percent}% հմտություն բավարարել է ընթացիկ առաջընթացի չափանիշը։`;
   }
 
   const diagnostic = dashboard?.latestDiagnostic;
@@ -198,8 +202,8 @@ function skillAction(skill, state) {
     return samePractice ? { href: "./practice.html", label: "Շարունակել" } : route;
   }
 
-  if (state === "secure" && masteryStatus?.eligible) return { href: "./mastery.html", label: "Բացել ստուգումը" };
-  if (state === "secure") return { href: "./physics-7.html", label: "Դիտել հմտությունը" };
+  if ((state === "secure" || state === "recovered") && masteryStatus?.eligible) return { href: "./mastery.html", label: "Բացել ստուգումը" };
+  if (state === "secure" || state === "recovered") return { href: "./physics-7.html", label: "Դիտել հմտությունը" };
   return { href: `./practice.html?skill=${encodeURIComponent(skill.id)}`, label: state === "not_started" ? "Սկսել" : "Վարժվել" };
 }
 
