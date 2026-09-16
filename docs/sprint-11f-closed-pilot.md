@@ -50,23 +50,34 @@ These are readiness/test-state counts, not a claim that a real pilot cohort has 
 
 ## 11F.2 — Authenticated browser/device production smoke
 
-**Status: ⏳ Pending.**
+**Status: ✅ Complete via executed rendered QA plus explicit product-owner acceptance of four remaining tool-coverage limitations.**
 
-Execute `docs/pilot-browser-qa-checklist.md` against production using authenticated pilot/test accounts.
+The production application was tested in a real rendered browser against `https://armenian-mastery-platform.vercel.app/` using strict browser automation and prepared authenticated student and teacher Browser Context Profiles.
 
-Required coverage:
+Executed rendered evidence:
 
-- Desktop Chromium;
-- Firefox or Safari-class browser;
-- tablet-width layout;
-- phone-width layout;
-- keyboard-only navigation;
-- 200% text zoom and long-Armenian overflow checks;
-- Practice, Diagnostic, Mastery, Progress and Teacher surfaces;
-- real rendered SVG/stimulus inspection;
-- session-collision regression in the browser.
+- public landing/login and role-entry surfaces rendered successfully;
+- public desktop, tablet-width and phone-width responsive layouts rendered without blocking defects;
+- public 200% zoom/text-scaling and long-Armenian wrapping checks passed;
+- public keyboard-accessibility surface checks passed;
+- authenticated student Home, Physics 7, Progress, Practice, Diagnostic, Mastery and Privacy surfaces rendered successfully without submitting answers or intentionally changing learner evidence;
+- an existing active Practice session remained intact while Diagnostic correctly presented the collision guard instead of replacing the active session;
+- authenticated teacher dashboard, class list, populated and empty class details, authorized student detail/progress, skill matrix and intervention signals rendered successfully;
+- teacher-visible counts and skill data were internally consistent across the inspected views;
+- no confirmed blocking rendered defect remained after verification. A browser-agent OCR/paraphrase report of an incorrect recovery label was cross-checked against the rendered Progress state and production source; the actual recovery label is `Վերջին փորձերում կայուն`, while `Ամրապնդված` remains reserved for mastery completion.
 
-This phase must be executed in a real rendered browser environment. Source inspection or CI does not substitute for it.
+The following four matrix items were **not executed in authenticated state because the browser automation did not expose the required controls**. On 2026-09-16 the product owner explicitly accepted them as QA limitations/workarounds for Sprint 11F.2 rather than requiring further execution:
+
+1. authenticated tablet/phone viewport run;
+2. authenticated keyboard-only focus traversal;
+3. authenticated 200% zoom/text-scaling run;
+4. authenticated Firefox/Safari-class browser run.
+
+These four items are **accepted deferrals, not PASS results**. Public responsive/zoom/accessibility coverage exists, and authenticated desktop student/teacher rendering passed. The accepted limitation applies only to the missing authenticated repetitions of those checks.
+
+State-changing workflow assertions such as answer submission, remediation completion, full Diagnostic/Mastery completion, and destructive account/privacy operations remain intentionally outside 11F.2 and belong to the disposable-account workflow smoke in 11F.3.
+
+Detailed operational checklist: `docs/pilot-browser-qa-checklist.md`.
 
 ## 11F.3 — Final production workflow smoke
 
@@ -106,7 +117,7 @@ This sprint is not a legal-compliance certification.
 
 ## 11F.5 — Closed cohort run
 
-**Status: ⏳ Deferred until the technical/browser gates pass.**
+**Status: ⏳ Deferred until the disposable-account workflow gate passes.**
 
 When the cohort is run, collect operational evidence without changing the learning engine mid-pilot unless a blocking defect requires intervention.
 
@@ -133,6 +144,8 @@ Sprint 11 may close only after:
 - critical defects are resolved or explicitly accepted;
 - a pilot report records defects, content findings, learning-engine findings, usability observations, and the disposition for Sprint 12 calibration.
 
+The first closure criterion is now satisfied by the executed 11F.2 rendered evidence plus the explicit four-item accepted limitation documented above.
+
 ## Current residuals
 
 ### Supabase Auth hardening
@@ -145,4 +158,4 @@ Supabase performance lint still reports optimization opportunities such as unind
 
 ## Immediate next action
 
-Run **11F.2 — authenticated browser/device production smoke**. After that passes, run the disposable-account end-to-end workflow smoke in 11F.3. Only then introduce the real controlled cohort.
+Run **11F.3 — disposable-account end-to-end production workflow smoke**. Only after that gate passes should a real controlled cohort be introduced.
