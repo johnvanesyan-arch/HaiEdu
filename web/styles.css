@@ -60,7 +60,9 @@ button.ghost { background: transparent; color: #274a75; border: 1px solid #ccd7e
 .band-badge.needs_support { background: #fff0f1; color: #9a3944; }
 .band-badge.not_assessed { background: #eef2f7; color: #687385; }
 .mastery-chip { font-size: .78rem; color: #596779; }
-.check-chip { font-size: .75rem; color: #2f7149; font-weight: 700; }
+.check-chip { font-size: .75rem; color: #2f7149; font-weight: 700; text-align: right; line-height: 1.3; }
+.check-chip.recent-recovery { color: #8a641f; }
+.check-chip.completion-neutral { color: #596779; }
 .mini-progress { height: 7px; margin-top: 8px; border-radius: 999px; overflow: hidden; background: #e8edf2; }
 .mini-progress-bar { height: 100%; background: #355f91; transition: width .25s ease; }
 
