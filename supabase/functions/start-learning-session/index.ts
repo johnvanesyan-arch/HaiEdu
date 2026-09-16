@@ -91,7 +91,12 @@ Deno.serve(async (req) => {
   const active = activeSessions?.[0];
   if (active?.mode === body.mode) return json({ session: active, resumed: true });
   if (active) {
-    await admin.from("learning_sessions").update({ status: "abandoned", completed_at: new Date().toISOString() }).eq("id", active.id);
+    return json({
+      error: "active_session_conflict",
+      requestedMode: body.mode,
+      activeSession: active,
+      messageHy: "Սկզբում շարունակեք կամ ավարտեք արդեն ընթացիկ ուսուցման գործողությունը։",
+    }, 409);
   }
 
   const { data: skills, error: skillsError } = await admin
