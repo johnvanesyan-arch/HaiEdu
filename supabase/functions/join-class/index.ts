@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { getStudentCourseEntitlements } from "../_shared/course-access.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -38,7 +39,7 @@ Deno.serve(async (req) => {
 
     const { data: klass, error: classError } = await admin
       .from("classes")
-      .select("id, name, academic_year, is_active")
+      .select("id, name, academic_year, is_active, subject_id, grade_id")
       .eq("join_code", joinCode)
       .maybeSingle();
     if (classError || !klass || !klass.is_active) return json({ error: "invalid_or_inactive_join_code" }, 404);
@@ -49,12 +50,43 @@ Deno.serve(async (req) => {
       .eq("class_id", klass.id)
       .eq("student_id", studentId)
       .maybeSingle();
-    if (existing) return json({ joined: true, alreadyMember: true, class: { id: klass.id, name: klass.name, academicYear: klass.academic_year } });
 
-    const { error: insertError } = await admin.from("class_memberships").insert({ class_id: klass.id, student_id: studentId });
-    if (insertError) return json({ error: "join_failed", detail: insertError.message }, 500);
+    let alreadyMember = Boolean(existing);
+    if (!existing) {
+      const { data: inserted, error: insertError } = await admin
+        .from("class_memberships")
+        .insert({ class_id: klass.id, student_id: studentId })
+        .select("class_id, student_id, joined_at")
+        .single();
+      if (insertError || !inserted) {
+        return json({ error: "join_failed", detail: insertError?.message ?? "membership_not_created" }, 500);
+      }
+    }
 
-    return json({ joined: true, alreadyMember: false, class: { id: klass.id, name: klass.name, academicYear: klass.academic_year } });
+    // Do not report success until the persisted membership is visible through the
+    // same entitlement resolver used by the learning APIs.
+    const entitlements = await getStudentCourseEntitlements(admin, studentId);
+    const entitlement = entitlements.find((course) => course.classId === String(klass.id));
+    if (!entitlement) {
+      return json({ error: "membership_verification_failed", classId: klass.id }, 500);
+    }
+
+    return json({
+      joined: true,
+      alreadyMember,
+      class: {
+        id: entitlement.classId,
+        name: entitlement.className,
+        academicYear: entitlement.academicYear,
+      },
+      course: {
+        subjectCode: entitlement.subjectCode,
+        subjectNameHy: entitlement.subjectNameHy,
+        gradeNumber: entitlement.gradeNumber,
+        gradeLabelHy: entitlement.gradeLabelHy,
+        courseKey: `${entitlement.subjectCode}:${entitlement.gradeNumber}`,
+      },
+    });
   } catch (err) {
     console.error("join-class", err);
     return json({ error: "join_class_failed", detail: err instanceof Error ? err.message : String(err) }, 500);
