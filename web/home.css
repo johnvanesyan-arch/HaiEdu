@@ -1,4 +1,4 @@
-/* Sprint 10.5C — student Home dashboard */
+/* Sprint 10.5C + 11H — student Home dashboard */
 .home-heading {
   align-items: flex-end;
 }
@@ -40,6 +40,7 @@
 }
 .home-next-card #resumeLearningBtn {
   min-width: 150px;
+  max-width: 100%;
 }
 .home-summary {
   margin-top: var(--amp-space-4);
@@ -81,10 +82,12 @@
   display: grid;
   gap: 2px;
   min-width: min(240px, 100%);
+  max-width: 100%;
   padding: var(--amp-space-3);
   border: 1px solid var(--amp-color-border);
-  border-radius: var(--amp-radius-medium);
+  border-radius: var(--amp-radius-md);
   background: var(--amp-color-surface-subtle, #f8fafc);
+  overflow-wrap: anywhere;
 }
 .home-browser-card {
   margin-top: var(--amp-space-4);
@@ -94,11 +97,16 @@
   gap: var(--amp-space-4);
   align-items: center;
 }
+.home-browser-card > * {
+  min-width: 0;
+  max-width: 100%;
+}
 .home-browser-card h3 {
   margin: 0 0 var(--amp-space-1);
 }
 .home-browser-card .button-link {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
+  max-width: 100%;
 }
 .home-skill-preview {
   margin-top: var(--amp-space-4);
