@@ -13,11 +13,10 @@ function isPhysics7Class(klass) {
 function syncCourseNavigation(hasPhysics7) {
   const selectors = [
     '.amp-nav-link[href="./physics-7.html"]',
-    '.amp-nav-link[href="./assessment.html"]',
-    '.amp-nav-link[href="./progress.html"]',
+    '.amp-course-sublink[href="./physics-7.html"]',
+    '.amp-course-sublink[href="./assessment.html"]',
+    '.amp-course-sublink[href="./progress.html"]',
     '.amp-mobile-link[href="./physics-7.html"]',
-    '.amp-mobile-link[href="./assessment.html"]',
-    '.amp-mobile-link[href="./progress.html"]',
   ];
   for (const selector of selectors) {
     for (const link of document.querySelectorAll(selector)) {
@@ -29,7 +28,7 @@ function syncCourseNavigation(hasPhysics7) {
   }
 }
 
-function ensureEmptyState(classes) {
+function ensureEmptyState() {
   if (page !== "home") return;
   const modePanel = document.getElementById("modePanel");
   if (!modePanel) return;
@@ -47,19 +46,13 @@ function ensureEmptyState(classes) {
     else modePanel.appendChild(panel);
   }
 
-  const hasOtherClasses = classes.length > 0;
   panel.innerHTML = `
     <div class="home-next-copy">
-      <span class="mode-kicker">ԻՄ ԴԱՍԸՆԹԱՑՆԵՐԸ</span>
-      <h2>${hasOtherClasses ? "Այս պահին հասանելի դասընթաց չկա" : "Դեռ դասընթացներ չունեք"}</h2>
-      <p class="subtle">${hasOtherClasses
-        ? "Դուք միացված եք դասարանի, սակայն այդ դասարանի դասընթացը դեռ հասանելի չէ հարթակում։ Կարող եք միանալ մեկ այլ դասարանի ուսուցչի կոդով։"
-        : "Դասընթաց սկսելու համար միացեք ձեր ուսուցչի դասարանին։ Դասարանի առարկան և դասարանը կորոշեն, թե որ դասընթացները կբացվեն ձեզ համար։"}</p>
+      <span class="mode-kicker">ԻՄ ԱՌԱՐԿԱՆԵՐԸ</span>
+      <h2>Դեռ դասընթացներ չունեք</h2>
+      <p class="subtle">Դասընթաց սկսելու համար միացեք ձեր ուսուցչի դասարանին։ Դասարանի առարկան և դասարանը կորոշեն, թե որ դասընթացները կբացվեն ձեզ համար։</p>
     </div>
     <a class="button-link" href="./join.html">Միանալ դասարանին</a>`;
-
-  const subtitle = document.querySelector(".topbar p.subtle");
-  if (subtitle) subtitle.textContent = "Միացեք դասարանին՝ ձեր դասընթացները բացելու համար։";
 }
 
 function clearEmptyState() {
@@ -89,8 +82,8 @@ async function refreshCourseAccess() {
     syncCourseNavigation(hasPhysics7);
 
     if (page === "home") {
-      if (hasPhysics7) clearEmptyState();
-      else ensureEmptyState(classes);
+      if (classes.length) clearEmptyState();
+      else ensureEmptyState();
     } else if (protectedPages.has(page) && !hasPhysics7) {
       window.location.replace("./index.html?course=required");
       return;
