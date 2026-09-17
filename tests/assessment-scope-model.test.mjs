@@ -11,7 +11,7 @@ test("architecture defines diagnostics and mastery checks as unit-bound", async 
   assert.match(architecture, /Diagnostic = unit-bound learning guidance/);
   assert.match(architecture, /Mastery check = unit-bound verification/);
   assert.match(architecture, /There is no invariant that every unit has 10 skills/);
-  assert.match(architecture, /course progress aggregates unit evidence/i);
+  assert.match(architecture, /Course progress aggregates evidence from its units/);
   assert.match(decisions, /ADR-008 — Unit-bound learning guidance and mastery verification/);
 });
 
