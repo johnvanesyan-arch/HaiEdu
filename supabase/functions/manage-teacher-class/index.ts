@@ -35,7 +35,7 @@ Deno.serve(async (req) => {
     const teacherId = userData.user.id;
 
     const { data: profile } = await admin.from("profiles").select("role").eq("id", teacherId).maybeSingle();
-    if (!profile || !["teacher", "admin"].includes(String(profile.role))) return json({ error: "teacher_role_required" }, 403);
+    if (!profile || profile.role !== "teacher") return json({ error: "teacher_role_required" }, 403);
 
     let body: { action?: string; classId?: string; name?: string; academicYear?: string; studentId?: string } = {};
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
@@ -70,7 +70,7 @@ Deno.serve(async (req) => {
 
     if (!body.classId) return json({ error: "class_id_required" }, 400);
     const { data: klass } = await admin.from("classes").select("id, teacher_id, name, join_code, is_active").eq("id", body.classId).maybeSingle();
-    if (!klass || (klass.teacher_id !== teacherId && String(profile.role) !== "admin")) return json({ error: "class_not_owned" }, 403);
+    if (!klass || klass.teacher_id !== teacherId) return json({ error: "class_not_owned" }, 403);
 
     if (body.action === "rotate_join_code") {
       for (let attempt = 0; attempt < 5; attempt++) {

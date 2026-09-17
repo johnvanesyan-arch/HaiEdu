@@ -35,7 +35,7 @@ Deno.serve(async (req) => {
     const teacherId = userData.user.id;
 
     const { data: teacherProfile } = await admin.from("profiles").select("id, role, display_name").eq("id", teacherId).maybeSingle();
-    if (!teacherProfile || !["teacher", "admin"].includes(String(teacherProfile.role))) {
+    if (!teacherProfile || teacherProfile.role !== "teacher") {
       return json({ error: "teacher_role_required" }, 403);
     }
 

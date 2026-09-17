@@ -31,7 +31,7 @@ Deno.serve(async (req) => {
     const teacherId = userData.user.id;
 
     const { data: teacherProfile } = await admin.from("profiles").select("role").eq("id", teacherId).maybeSingle();
-    if (!teacherProfile || !["teacher", "admin"].includes(String(teacherProfile.role))) return json({ error: "teacher_role_required" }, 403);
+    if (!teacherProfile || teacherProfile.role !== "teacher") return json({ error: "teacher_role_required" }, 403);
 
     let body: { studentId?: string; classId?: string } = {};
     try { body = await req.json(); } catch { /* handled below */ }
@@ -44,7 +44,7 @@ Deno.serve(async (req) => {
     if (body.classId) classQuery = classQuery.eq("class_id", body.classId);
     const { data: memberships, error: membershipError } = await classQuery;
     if (membershipError) return json({ error: "membership_query_failed" }, 500);
-    const allowed = (memberships ?? []).some((m: any) => m.classes?.teacher_id === teacherId) || String(teacherProfile.role) === "admin";
+    const allowed = (memberships ?? []).some((m: any) => m.classes?.teacher_id === teacherId);
     if (!allowed) return json({ error: "student_not_in_teacher_class" }, 403);
 
     const { data: profile } = await admin.from("profiles").select("id, display_name, created_at").eq("id", body.studentId).single();

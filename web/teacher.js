@@ -7,6 +7,7 @@ const $ = (id) => document.getElementById(id);
 let dashboard = null;
 let selectedClassId = null;
 let rosterQuery = "";
+let dashboardLoadVersion = 0;
 
 function escapeHtml(value) {
   return String(value ?? "")
@@ -51,8 +52,43 @@ async function signOut() {
 }
 
 async function loadDashboard() {
+  const version = ++dashboardLoadVersion;
+  $("dashboardPanel").classList.add("hidden");
+  try {
+    const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+    if (version !== dashboardLoadVersion) return;
+    if (sessionError || !sessionData?.session?.user) {
+      $("authPanel").classList.remove("hidden");
+      return;
+    }
+    const { data: profile, error: profileError } = await supabase
+      .from("profiles").select("role, account_status")
+      .eq("id", sessionData.session.user.id).maybeSingle();
+    if (version !== dashboardLoadVersion) return;
+    if (profileError || !profile) throw new Error("profile_lookup_failed");
+    if (profile.account_status !== "active") {
+      window.location.replace("./privacy.html");
+      return;
+    }
+    if (profile.role !== "teacher") {
+      const destinations = { admin: "./admin.html", content_admin: "./content.html", student: "./index.html" };
+      const destination = destinations[profile.role];
+      if (destination) window.location.replace(destination);
+      else {
+        $("authPanel").classList.remove("hidden");
+        setMessage("authMessage", "Այս հաշիվը ուսուցչի դեր չունի։", true);
+      }
+      return;
+    }
+  } catch {
+    if (version !== dashboardLoadVersion) return;
+    $("authPanel").classList.remove("hidden");
+    setMessage("authMessage", "Չհաջողվեց ստուգել հաշվի դերը։ Փորձեք կրկին։", true);
+    return;
+  }
   setMessage("classMessage", "");
   const { data, error } = await supabase.functions.invoke("get-teacher-dashboard", { body: {} });
+  if (version !== dashboardLoadVersion) return;
   if (error) {
     $("dashboardPanel").classList.add("hidden");
     $("authPanel").classList.remove("hidden");
@@ -364,8 +400,10 @@ document.addEventListener("keydown", (event) => {
 });
 
 supabase.auth.onAuthStateChange((_event, session) => {
-  if (session) loadDashboard();
+  if (session) setTimeout(() => loadDashboard(), 0);
   else {
+    dashboardLoadVersion++;
+    dashboard = null;
     $("dashboardPanel").classList.add("hidden");
     $("authPanel").classList.remove("hidden");
     $("signOutBtn").classList.add("hidden");

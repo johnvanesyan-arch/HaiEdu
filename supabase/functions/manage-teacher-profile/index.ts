@@ -40,7 +40,7 @@ Deno.serve(async (req) => {
       .select("role, display_name")
       .eq("id", teacherId)
       .maybeSingle();
-    if (!profile || !["teacher", "admin"].includes(String(profile.role))) {
+    if (!profile || profile.role !== "teacher") {
       return json({ error: "teacher_role_required" }, 403);
     }
 
