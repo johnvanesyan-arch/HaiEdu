@@ -1,4 +1,4 @@
-# Architecture — v0.1
+# Architecture — v0.2
 
 ## Principle
 
@@ -21,6 +21,23 @@ submit-answer Edge Function
    +--> optional AI gateway (future; only when needed)
 ```
 
+## Learning scope model
+
+```text
+Course / subject program
+  -> Unit
+      -> Diagnostic          = learning guidance for that unit
+      -> Skills
+          -> Practice        = learning activity for one skill
+      -> Mastery check       = independent verification of that unit
+```
+
+Course-level progress aggregates the states of its units. A future cumulative/final course assessment is a separate explicit assessment type; it must not be represented as a unit diagnostic or unit mastery check.
+
+The number of skills in a unit is variable. Assessment blueprints derive their coverage from the unit's skill set/form definition. The current `PHY7-U01` configuration happens to contain 10 skills and 2 assessment items per skill; those values are not global architecture constants.
+
+For the existing learning-session modes, `unit_code` is the authoritative assessment/learning scope. Practice may additionally target one `target_skill_id` within that unit.
+
 ## Backend responsibilities
 
 ### Grading engine
@@ -42,6 +59,8 @@ Returns one of:
 - `continue_current_skill`
 - `advance_skill`
 - `collect_more_evidence`
+
+Recommendations must remain resolvable to the relevant course/program, unit and skill rather than relying on a single-course assumption.
 
 ### AI gateway
 Not included in the first student-facing loop. Future AI calls must occur server-side and receive the minimum educational context required; student identity should not be sent unless strictly necessary.
