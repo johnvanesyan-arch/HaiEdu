@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.1  
-**Updated:** 2026-09-16  
-**Current programme status:** Sprint 11 in progress; Sprint 11F.3 production workflow smoke is active.
+**Roadmap version:** 2.2  
+**Updated:** 2026-09-17  
+**Current programme status:** Sprint 11 in progress; Sprint 11F final pilot workflow remains open and Sprint 11G multi-subject learner-shell implementation is complete with authenticated rendered QA pending.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -29,17 +29,17 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 | 9 | UX, Accessibility & Armenian Localization QA | ✅ | Armenian-first UX, accessibility and responsive hardening completed at source/QA level. |
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
-| 11 | Assessment Integrity, Item-Bank Expansion & Closed Physics Pilot | 🟡 | 11A–11E complete. 11F.1 and 11F.2 complete. 11F.3 is in progress. |
+| 11 | Assessment Integrity, Item-Bank Expansion & Closed Physics Pilot | 🟡 | 11A–11E complete. 11F remains open. 11G was added to prevent further one-subject learner-shell assumptions before pilot/product work continues. |
 | 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior from pilot operational evidence; thresholds remain provisional until evidence supports changes. |
 | 13 | Chapter I Production Release | ⏳ | Promote Chapter I from controlled-pilot state after Sprint 11 closure and Sprint 12 disposition. |
-| 14 | Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize curriculum, class, assignment and learner architecture without introducing one-grade/one-subject assumptions. |
+| 14 | Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize curriculum, class, assignment and learner architecture without introducing one-grade/one-subject assumptions. Sprint 11G provides only the learner-shell containment contract, not this full generalization. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Extend curriculum, item banks and learning workflows across the remaining Grade 7 Physics chapters. |
 | 16 | Full Grade 7 Physics MVP | ⏳ | Integrate all Grade 7 Physics chapters into a coherent full-course MVP. |
 | 17 | School Pilot v2 | ⏳ | Run a broader controlled school-level pilot with real teacher/student operational evidence. |
 | 18 | Production Hardening | ⏳ | Address scale, performance, security hardening, observability, supportability and operational resilience. |
 | 19 | Public / Institutional Beta | ⏳ | Controlled broader beta for schools/institutions after production-hardening gates. |
 | 20 | Physics Grade Expansion — Physics 8–12 | ⏳ | Expand the Physics subject vertically across grades. |
-| 21 | Second-Subject Implementation | ⏳ | Implement a second subject using the generalized academic architecture. |
+| 21 | Second-Subject Implementation | ⏳ | Implement a real second subject using the generalized academic architecture; the Sprint 11G Mathematics fixture is not production curriculum. |
 | 22 | Multi-Subject Expansion Across Grades | ⏳ | Expand the subject catalogue across multiple grades. |
 | 23 | Cross-Grade / Cross-Subject Learner Profile | ⏳ | Build longitudinal learner state that is not tied to one class, grade or subject. |
 | 24 | Advanced Teacher & School Analytics | ⏳ | Add higher-level instructional, cohort and school analytics on top of validated evidence models. |
@@ -76,48 +76,61 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 |---|---:|---|
 | 11F.1 Technical preflight | ✅ | Automated/source, database, active-bank, security/RLS and session-collision preflight completed. |
 | 11F.2 Authenticated rendered production smoke | ✅ | Student and teacher authenticated production rendering passed where executable. Four authenticated browser-control repetitions were explicitly accepted as limitations, not PASS results. |
-| 11F.3 Final production workflow smoke | 🟡 | Partially executed; details below. |
+| 11F.3 Final production workflow smoke | 🟡 | Substantially executed; remaining workflow/security/privacy items still require disposition. |
 | 11F.4 Pilot privacy and participation gate | ⏳ | Required before a real controlled cohort. |
 | 11F.5 Closed cohort run | ⏳ | Starts only after 11F.3 and participation gate disposition. |
 | 11F.6 Evidence review / Sprint 11 closure | ⏳ | Requires pilot evidence review, critical-defect disposition and Sprint 11 pilot report. |
 
-### 11F.3 evidence as of 2026-09-16
+Recent 11F.3 production work also surfaced and corrected course-entitlement, class-join verification, course-loading and authentication-state-flash defects. Teacher-side rendering of generated Diagnostic evidence has been manually verified. These corrections do not by themselves close 11F.3.
 
-Completed through the live production UI:
+### 11G — Multi-Subject Learner Shell Architecture Spike
 
-- teacher authentication confirmed;
-- disposable class `QA 11F3 E2E` created for academic year `2026-2027`;
-- generated join code verified;
-- student class join flow succeeded;
-- product owner explicitly authorized use of the Hovhannes Vanesyan student account for the state-changing smoke, replacing the original disposable-student-only requirement for this run;
-- one existing bounded Practice session was resumed and completed normally;
-- Practice ended through the designed `mastery_reached` early-completion path after 5 correct responses rather than forcing all 8 planned items;
-- Help/remediation UI was exercised during Practice;
-- one full 20-item Chapter I Diagnostic was completed in production with 13 correct answers (65%);
-- no per-item correctness feedback was observed during the Diagnostic before completion.
+**Status: 🟡 Implementation complete; authenticated rendered QA pending.**
 
-Current unresolved state:
+Sprint 11G was inserted before Sprint 12 because the global learner Home and navigation still structurally assumed one subject. Continuing with that assumption would make later multi-subject expansion unnecessarily expensive.
 
-- after the full Diagnostic completed, a second Diagnostic session was started during the browser-automation run and is currently active at 4/20; whether this was purely agent navigation or exposed a product-flow issue still requires disposition;
-- the long Diagnostic browser run timed out at the automation layer after substantial progress, so later workflow assertions must not be inferred from that run;
-- final Progress verification after the completed Diagnostic is pending;
-- Mastery Check eligibility/start/resume/completion is pending;
-- teacher dashboard verification of the newly generated learning evidence is pending;
-- account suspension/session-revocation behavior is pending;
-- privacy-preference and deletion-request flow is pending.
+Implemented:
 
-Sprint 11F.3 is therefore **not complete**.
+- global Home now has a cross-subject information hierarchy rather than exposing a full Physics-only dashboard as the primary learner Home;
+- learner navigation is generated from actual active class/course entitlements;
+- subject cards are grouped by `courseKey` (`subject + grade`);
+- Physics 7 keeps its existing subject-specific course, assessment and progress routes;
+- a generic entitled-course workspace exists for subjects whose learning module is not yet implemented;
+- a draft Grade 7 Mathematics QA fixture and class were added solely to create a real two-subject learner state;
+- `bestenglishac@gmail.com` has active Grade 7 Physics and Grade 7 Mathematics QA memberships for this architecture test;
+- regression tests pass on the implemented head and Vercel deployment reports success.
+
+Pending before Sprint 11G can be marked fully complete:
+
+- authenticated rendered production QA of the two-subject Home;
+- rendered confirmation that Physics 7 continues to open normally from the new shell;
+- rendered confirmation that Mathematics 7 opens only its generic placeholder and receives no Physics evidence.
+
+The connected browser automation context currently has no usable saved student credentials/session, so those rendered checks remain pending rather than being marked PASS.
+
+See `docs/sprint-11g-multi-subject-learner-shell.md` for the detailed contract and evidence.
 
 ## Sprint 11 closure gate
 
 Sprint 11 may close only after all of the following are true:
 
 1. 11F.3 final production workflow smoke is completed or each remaining item has an explicit accepted disposition.
-2. Pilot privacy/participation responsibilities are defined for the real cohort.
-3. A controlled Chapter I cohort completes the pilot, unless the product owner explicitly changes that exit criterion and documents the resulting limitation.
-4. Repeat/exposure and item-level operational evidence are reviewed.
-5. Critical defects are fixed or explicitly accepted.
-6. A Sprint 11 pilot report records defects, content findings, learning-engine findings, usability observations and the disposition for Sprint 12.
+2. Sprint 11G rendered multi-subject QA is completed or explicitly dispositioned.
+3. Pilot privacy/participation responsibilities are defined for the real cohort.
+4. A controlled Chapter I cohort completes the pilot, unless the product owner explicitly changes that exit criterion and documents the resulting limitation.
+5. Repeat/exposure and item-level operational evidence are reviewed.
+6. Critical defects are fixed or explicitly accepted.
+7. A Sprint 11 pilot report records defects, content findings, learning-engine findings, usability observations and the disposition for Sprint 12.
+
+## Architectural invariant from Sprint 11G onward
+
+The learner-facing shell must not assume that:
+
+- a learner is always Grade 7;
+- the platform is always Physics;
+- a learner takes only one course;
+- global Home owns subject-specific diagnostics, practice, assessments or mastery;
+- course visibility can be inferred without an active entitlement.
 
 ## Architectural invariant from Sprint 14 onward
 
