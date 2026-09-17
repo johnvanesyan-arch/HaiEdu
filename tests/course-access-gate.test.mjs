@@ -59,8 +59,10 @@ test("student shell starts course navigation hidden and resolves it from enrollm
   assert.match(gate, /window\.location\.replace\("\.\/index\.html\?course=required"\)/);
 });
 
-test("successful class join returns home so new entitlements are reloaded", async () => {
+test("successful class join is verified through the entitlement endpoint before returning home", async () => {
   const source = await read("web/join.js");
   assert.match(source, /join-class/);
-  assert.match(source, /window\.location\.replace\("\.\/index\.html"\)/);
+  assert.match(source, /get-student-classes/);
+  assert.match(source, /classes\.some/);
+  assert.match(source, /window\.location\.replace\("\.\/index\.html\?joined=1"\)/);
 });
