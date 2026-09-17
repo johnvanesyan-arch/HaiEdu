@@ -1,4 +1,4 @@
-/* Sprint 10.5B–10.5F — authenticated student navigation shell.
+/* Sprint 10.5B–11G — authenticated student navigation shell.
    Presentation/navigation only. It does not own authentication, mastery,
    recommendation, grading, session eligibility, or authorization truth. */
 
@@ -6,10 +6,7 @@ const page = document.body.dataset.studentPage || "";
 const focusedByPage = document.body.dataset.focusedTask === "true";
 
 const destinations = [
-  { key: "home", href: "./index.html", label: "Գլխավոր", icon: "⌂", enabled: true },
-  { key: "physics", href: "./physics-7.html", label: "Ֆիզիկա 7", icon: "Φ", enabled: true, courseProtected: true },
-  { key: "assessment", href: "./assessment.html", label: "Գնահատում", icon: "✓", enabled: true, courseProtected: true },
-  { key: "progress", href: "./progress.html", label: "Առաջընթաց", icon: "↗", enabled: true, courseProtected: true }
+  { key: "home", href: "./index.html", label: "Գլխավոր", icon: "⌂", enabled: true }
 ];
 
 function ensureBrandAssets() {
@@ -105,12 +102,11 @@ function ensureRoleAccess() {
 
 function navItem(item, mobile = false) {
   const current = item.key === page ? ' aria-current="page"' : "";
-  const hidden = item.courseProtected ? " hidden" : "";
-  const className = `${mobile ? "amp-mobile-link" : "amp-nav-link"}${hidden}`;
+  const className = mobile ? "amp-mobile-link" : "amp-nav-link";
   const contents = `<span class="amp-nav-icon" aria-hidden="true">${item.icon}</span><span>${item.label}</span>`;
 
   if (!item.enabled) {
-    return `<span class="${className} amp-nav-disabled" aria-disabled="true" title="Կհասանելի լինի հաջորդ Sprint 10.5 փուլերում">${contents}</span>`;
+    return `<span class="${className} amp-nav-disabled" aria-disabled="true">${contents}</span>`;
   }
 
   return `<a class="${className}" href="${item.href}"${current}>${contents}</a>`;
@@ -175,11 +171,7 @@ function syncHomeHeader(authenticated) {
   if (subtitle) {
     subtitle.textContent = !authenticated
       ? "Ընտրեք ձեր դերը կամ մուտք գործեք որպես աշակերտ։"
-      : document.body.dataset.physics7Access === "false"
-        ? "Միացեք դասարանին՝ ձեր դասընթացները բացելու համար։"
-        : document.body.dataset.physics7Access === "true"
-          ? "Ֆիզիկա 7 · Գլուխ I — Բնության ուսումնասիրության ֆիզիկական մեթոդները"
-          : "Բեռնվում են ձեր դասընթացները…";
+      : "Ձեր առարկաները, առաջընթացը և հաջորդ առաջարկվող քայլերը մեկ վայրում։";
   }
 }
 
@@ -220,4 +212,4 @@ if (observed.length) {
 window.addEventListener("haiedu-course-access", syncShellState);
 window.addEventListener("pageshow", syncShellState);
 
-import("./course-gate.js");
+import("./student-courses.js").then(() => import("./course-gate.js"));
