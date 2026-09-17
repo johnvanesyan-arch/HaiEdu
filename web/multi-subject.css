@@ -1,4 +1,4 @@
-/* Sprint 11G — multi-subject learner shell spike */
+/* Sprint 11G + 11H — multi-subject learner shell and containment hardening */
 
 .amp-nav-section-label {
   margin: .7rem .75rem .15rem;
@@ -17,11 +17,16 @@
 
 .amp-course-sublink {
   display: block;
+  min-width: 0;
+  max-width: 100%;
   padding: .4rem .6rem;
   border-radius: .45rem;
   color: #b8c6d8;
   font-size: var(--amp-font-size-xs);
+  line-height: 1.3;
   text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .amp-course-sublink:hover,
@@ -40,6 +45,8 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
 .amp-multisubject-home {
   display: grid;
   gap: var(--amp-space-5);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .amp-global-next {
@@ -47,7 +54,15 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
   grid-template-columns: minmax(0,1fr) auto;
   gap: var(--amp-space-4);
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  padding: var(--amp-space-5);
   border-left: 4px solid var(--amp-color-primary);
+}
+
+.amp-global-next > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .amp-global-next h3 {
@@ -55,16 +70,24 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
   font-size: var(--amp-font-size-xl);
 }
 
+.amp-global-next .button-link {
+  justify-self: end;
+  width: fit-content;
+  max-width: min(100%, 22rem);
+}
+
 .amp-global-next-meta {
   display: flex;
   flex-wrap: wrap;
   gap: .45rem;
   margin-top: .7rem;
+  min-width: 0;
 }
 
 .amp-course-chip {
   display: inline-flex;
   align-items: center;
+  max-width: 100%;
   min-height: 28px;
   padding: .25rem .65rem;
   border-radius: var(--amp-radius-pill);
@@ -72,6 +95,9 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
   color: var(--amp-color-primary);
   font-size: var(--amp-font-size-xs);
   font-weight: 800;
+  line-height: 1.25;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .amp-subjects-heading,
@@ -81,6 +107,15 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
   gap: var(--amp-space-4);
   align-items: end;
   margin-bottom: var(--amp-space-3);
+  min-width: 0;
+  max-width: 100%;
+  flex-wrap: wrap;
+}
+
+.amp-subjects-heading > *,
+.amp-attention-heading > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .amp-subjects-heading h2,
@@ -90,14 +125,24 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
 
 .amp-subject-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit,minmax(260px,1fr));
+  grid-template-columns: repeat(auto-fit,minmax(min(260px,100%),1fr));
   gap: var(--amp-space-4);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .amp-subject-card {
   display: grid;
   gap: var(--amp-space-3);
   min-width: 0;
+  max-width: 100%;
+  padding: var(--amp-space-5);
+  overflow: hidden;
+}
+
+.amp-subject-card > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .amp-subject-card-head {
@@ -105,6 +150,12 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
   justify-content: space-between;
   gap: var(--amp-space-3);
   align-items: start;
+  min-width: 0;
+}
+
+.amp-subject-card-head > div {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .amp-subject-card h3 {
@@ -115,6 +166,7 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
 .amp-subject-icon {
   width: 42px;
   height: 42px;
+  flex: 0 0 42px;
   display: grid;
   place-items: center;
   border-radius: 12px;
@@ -127,10 +179,12 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
   display: grid;
   grid-template-columns: repeat(2,minmax(0,1fr));
   gap: var(--amp-space-2);
+  min-width: 0;
 }
 
 .amp-subject-stat {
-  padding: .7rem;
+  min-width: 0;
+  padding: .8rem;
   border-radius: var(--amp-radius-sm);
   background: var(--amp-color-bg-subtle);
 }
@@ -138,6 +192,9 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
 .amp-subject-stat span,
 .amp-subject-stat strong {
   display: block;
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
 }
 
 .amp-subject-stat span {
@@ -146,23 +203,35 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
 }
 
 .amp-subject-stat strong {
-  margin-top: .15rem;
+  margin-top: .2rem;
+  line-height: 1.35;
 }
 
 .amp-subject-class-list {
   display: grid;
   gap: .2rem;
+  min-width: 0;
+  max-width: 100%;
   color: var(--amp-color-text-muted);
   font-size: var(--amp-font-size-sm);
 }
 
+.amp-subject-class-list span {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
 .amp-subject-card .button-link {
   justify-self: start;
+  width: fit-content;
+  max-width: 100%;
 }
 
 .amp-attention-list {
   display: grid;
   gap: var(--amp-space-2);
+  min-width: 0;
 }
 
 .amp-attention-item {
@@ -170,15 +239,23 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
   grid-template-columns: auto minmax(0,1fr);
   gap: var(--amp-space-3);
   align-items: start;
+  min-width: 0;
+  max-width: 100%;
   padding: var(--amp-space-3);
   border: 1px solid var(--amp-color-border);
   border-radius: var(--amp-radius-md);
   background: var(--amp-color-surface);
 }
 
+.amp-attention-item > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .amp-attention-item strong,
 .amp-attention-item span {
   display: block;
+  overflow-wrap: anywhere;
 }
 
 .amp-attention-item span {
@@ -192,15 +269,34 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
   grid-template-columns: minmax(0,1fr) auto;
   gap: var(--amp-space-4);
   align-items: center;
+  min-width: 0;
+  max-width: 100%;
+  padding: var(--amp-space-5);
+}
+
+.amp-no-courses > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .amp-course-shell {
   display: grid;
   gap: var(--amp-space-5);
+  min-width: 0;
+  max-width: 100%;
 }
 
 .amp-course-placeholder {
+  min-width: 0;
+  max-width: 100%;
+  padding: var(--amp-space-5);
   border-left: 4px solid var(--amp-color-primary);
+  overflow: hidden;
+}
+
+.amp-course-placeholder > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .amp-course-placeholder h2 {
@@ -211,15 +307,31 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
   .amp-global-next,
   .amp-no-courses {
     grid-template-columns: 1fr;
+    padding: var(--amp-space-4);
   }
   .amp-global-next .button-link,
-  .amp-no-courses .button-link {
-    justify-self: start;
+  .amp-no-courses .button-link,
+  .amp-subject-card .button-link {
+    justify-self: stretch;
+    width: 100%;
   }
   .amp-subject-grid {
     grid-template-columns: 1fr;
   }
+  .amp-subject-card,
+  .amp-course-placeholder {
+    padding: var(--amp-space-4);
+  }
   .amp-subject-stats {
     grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 480px) {
+  .amp-subject-stats {
+    grid-template-columns: 1fr;
+  }
+  .amp-subject-card-head {
+    align-items: center;
   }
 }
