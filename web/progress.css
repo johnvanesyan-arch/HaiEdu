@@ -1,4 +1,4 @@
-/* Sprint 10.5F — student progress page */
+/* Student progress page — evidence-first, not a practice launcher */
 .progress-summary {
   display: grid;
   grid-template-columns: repeat(3, minmax(0, 1fr));
@@ -93,7 +93,7 @@
 .progress-skill-row {
   min-width: 0;
   display: grid;
-  grid-template-columns: minmax(220px, 1.5fr) minmax(165px, 0.85fr) minmax(165px, 0.85fr) auto;
+  grid-template-columns: minmax(260px, 1.6fr) minmax(165px, 0.8fr) minmax(190px, 0.9fr);
   align-items: center;
   gap: var(--amp-space-4);
   padding: var(--amp-space-4);
@@ -111,6 +111,7 @@
 .progress-skill-evidence,
 .progress-skill-mastery {
   min-width: 0;
+  max-width: 100%;
 }
 
 .progress-skill-meta {
@@ -126,6 +127,13 @@
   font-size: var(--amp-font-size-md);
   line-height: 1.4;
   overflow-wrap: anywhere;
+}
+
+.progress-skill-detail {
+  display: inline-block;
+  margin-top: var(--amp-space-2);
+  font-size: var(--amp-font-size-sm);
+  font-weight: 700;
 }
 
 .progress-skill-label {
@@ -150,20 +158,11 @@
 }
 .progress-skill-mastery .mini-progress-bar { height: 100%; }
 
-.progress-skill-action {
-  min-width: 118px;
-  justify-self: end;
-}
-
 .progress-topbar > * { min-width: 0; }
 
 @media (max-width: 1080px) {
   .progress-skill-row {
-    grid-template-columns: minmax(220px, 1.4fr) minmax(150px, 0.8fr) minmax(160px, 0.8fr);
-  }
-  .progress-skill-action {
-    grid-column: 1 / -1;
-    justify-self: start;
+    grid-template-columns: minmax(220px, 1.35fr) minmax(150px, 0.8fr) minmax(165px, 0.85fr);
   }
 }
 
@@ -189,15 +188,12 @@
     gap: var(--amp-space-3);
   }
   .progress-skill-copy { grid-column: 1 / -1; }
-  .progress-skill-action { grid-column: 1 / -1; width: 100%; }
 }
 
 @media (max-width: 560px) {
   .progress-skills { padding: var(--amp-space-4); }
   .progress-skill-row { grid-template-columns: 1fr; }
-  .progress-skill-copy,
-  .progress-skill-action { grid-column: auto; }
-  .progress-skill-action { justify-self: stretch; }
+  .progress-skill-copy { grid-column: auto; }
   .progress-legend { display: grid; grid-template-columns: 1fr 1fr; }
 }
 
