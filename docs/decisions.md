@@ -20,3 +20,13 @@
 
 ## ADR-007 — Mastery v0.1 is provisional
 **Decision:** Use a transparent Beta-evidence update model for the MVP. Validate and revise after pilot data rather than claiming psychometric validity prematurely.
+
+## ADR-008 — Unit-bound learning guidance and mastery verification
+**Decision:** Diagnostics are unit-bound learning-guidance assessments; mastery checks are unit-bound verification assessments; practice is skill-bound inside a unit; course progress aggregates unit evidence. A future cumulative/final course assessment must be a separate explicit assessment type.
+
+**Consequences:**
+- every diagnostic and mastery-check session must resolve to a `unit_code`;
+- a diagnostic does not pass/fail and does not verify the course;
+- a mastery check verifies one unit, not the whole course;
+- unit skill counts are variable and must not be globally hardcoded to 10;
+- the current PHY7-U01 10-skill / 20-item blueprint is a Unit I configuration, not a platform-wide rule.
