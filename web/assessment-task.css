@@ -7,6 +7,36 @@
   justify-content: space-between;
   gap: var(--amp-space-4);
   align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.assessment-task-header > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+#stateCard,
+#resultPanel {
+  padding: var(--amp-space-6);
+  min-width: 0;
+  max-width: 100%;
+  overflow: hidden;
+}
+
+#stateCard > *,
+#resultPanel > *,
+.assessment-task-rules > *,
+.assessment-question-meta > *,
+.assessment-result-hero > *,
+.assessment-result-actions > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+#stateCard h2,
+#resultPanel h2 {
+  margin: var(--amp-space-4) 0 var(--amp-space-2);
+  overflow-wrap: anywhere;
 }
 
 .assessment-task-rules {
@@ -17,10 +47,13 @@
 }
 
 .assessment-rule {
+  min-width: 0;
+  max-width: 100%;
   padding: var(--amp-space-4);
   background: var(--amp-color-bg-subtle);
   border: 1px solid var(--amp-color-border);
   border-radius: var(--amp-radius-md);
+  overflow-wrap: anywhere;
 }
 
 .assessment-rule strong,
@@ -37,15 +70,22 @@
 }
 
 .assessment-question-card {
+  width: 100%;
   max-width: 880px;
   margin: 0 auto;
   padding: var(--amp-space-6);
+}
+
+.assessment-question-card > * {
+  min-width: 0;
+  max-width: 100%;
 }
 
 .assessment-question-card #prompt {
   margin: var(--amp-space-5) 0;
   font-size: var(--amp-font-size-xl);
   line-height: 1.45;
+  overflow-wrap: anywhere;
 }
 
 .assessment-neutral-note {
@@ -65,8 +105,10 @@
 }
 
 .assessment-score {
+  max-width: 100%;
   font-size: var(--amp-font-size-2xl);
   font-weight: 750;
+  overflow-wrap: anywhere;
 }
 
 .assessment-skill-results {
@@ -76,16 +118,20 @@
 }
 
 .assessment-skill-result {
+  min-width: 0;
+  max-width: 100%;
   padding: var(--amp-space-4);
   border: 1px solid var(--amp-color-border);
   border-radius: var(--amp-radius-md);
   background: var(--amp-color-surface);
+  overflow-wrap: anywhere;
 }
 
 .assessment-skill-result .skill-top {
   display: flex;
   justify-content: space-between;
   gap: var(--amp-space-3);
+  flex-wrap: wrap;
 }
 
 .assessment-result-actions {
@@ -95,9 +141,31 @@
   margin-top: var(--amp-space-5);
 }
 
+.assessment-result-actions .button-link,
+#stateCard .button-link,
+#stateCard button {
+  max-width: 100%;
+  white-space: normal;
+}
+
+@media (max-width: 900px) {
+  .assessment-task-rules {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
 @media (max-width: 760px) {
+  #stateCard,
+  #resultPanel {
+    padding: var(--amp-space-4);
+  }
   .assessment-task-rules,
   .assessment-skill-results { grid-template-columns: 1fr; }
   .assessment-result-hero { grid-template-columns: 1fr; }
   .assessment-question-card { padding: var(--amp-space-4); }
+  .assessment-result-actions .button-link,
+  #stateCard .button-link,
+  #stateCard button {
+    width: 100%;
+  }
 }
