@@ -15,14 +15,19 @@ test("student home loads the shared design system in cascade order", async () =>
   assert.match(html, /home-dashboard\.js/);
 });
 
-test("Home prioritizes the backend next action before secondary dashboard summaries", async () => {
+test("Home retains its legacy Physics renderer as a hidden compatibility layer while multi-subject Home owns presentation", async () => {
   const html = await read("web/index.html");
+  const shell = await read("web/student-courses.js");
+  const multi = await read("web/multi-subject-home.js");
   const next = html.indexOf("home-next-card");
   const summary = html.indexOf("dashboard-summary home-summary");
   assert.ok(next >= 0 && summary > next);
   assert.match(html, /id="resumeLearningBtn"/);
   assert.match(html, /href="\.\/physics-7\.html"/);
   assert.match(html, /id="homeAssessmentTitle"/);
+  assert.match(shell, /multi-subject-home\.js/);
+  assert.match(multi, /amp-multisubject-ready/);
+  assert.match(multi, /ԻՄ ԱՌԱՐԿԱՆԵՐԸ/);
 });
 
 test("mastery check uses shared design primitives and task-aware shell", async () => {
@@ -43,13 +48,17 @@ test("student shell does not own educational truth", async () => {
   assert.match(code, /questionPanel/);
 });
 
-test("all four permanent student routes are enabled after Sprint 10.5F", async () => {
-  const code = await read("web/student-shell.js");
-  assert.match(code, /key: "home"[\s\S]*enabled: true/);
-  assert.match(code, /key: "physics"[\s\S]*enabled: true/);
-  assert.match(code, /key: "assessment"[\s\S]*enabled: true/);
-  assert.match(code, /key: "progress"[\s\S]*enabled: true/);
-  assert.match(code, /href: "\.\/progress\.html"/);
+test("student navigation is entitlement-driven while Physics routes remain subject-scoped", async () => {
+  const shell = await read("web/student-shell.js");
+  const courses = await read("web/student-courses.js");
+  assert.match(shell, /key: "home"[\s\S]*enabled: true/);
+  assert.match(shell, /student-courses\.js/);
+  assert.match(courses, /courseKey/);
+  assert.match(courses, /Իմ առարկաները/);
+  assert.match(courses, /physics-7\.html/);
+  assert.match(courses, /assessment\.html/);
+  assert.match(courses, /progress\.html/);
+  assert.match(courses, /active && key === "physics:7"/);
 });
 
 test("design tokens include spacing, semantic state, focus and layout primitives", async () => {
