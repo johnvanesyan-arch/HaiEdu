@@ -130,7 +130,7 @@ function renderActiveSession() {
   const link = $("activeSessionLink");
   if (session.mode === "mastery_check") {
     $("activeSessionTitle").textContent = "Շարունակել յուրացման ստուգումը";
-    $("activeSessionText").textContent = `${session.answered_count ?? 0}/${session.planned_item_count ?? 20} հարց արդեն պատասխանված է։`;
+    $("activeSessionText").textContent = `${session.answered_count ?? 0}/${session.planned_item_count ?? 20} հարց արդեն պատասխանված է։ Մինչև ավարտելը նոր վարժանք սկսել հնարավոր չէ։`;
     link.href = "./mastery.html";
     link.textContent = "Շարունակել ստուգումը";
     return;
@@ -139,28 +139,45 @@ function renderActiveSession() {
   const answered = Number(session.answered ?? session.answered_count ?? 0);
   const planned = Number(session.planned ?? session.planned_item_count ?? 0);
   $("activeSessionTitle").textContent = session.mode === "diagnostic" ? "Շարունակել ախտորոշիչը" : "Շարունակել վարժանքը";
-  $("activeSessionText").textContent = `${answered}/${planned} հարց արդեն պատասխանված է։`;
+  $("activeSessionText").textContent = `${answered}/${planned} հարց արդեն պատասխանված է։ Մինչև ավարտելը այլ հմտության նոր վարժանք սկսել հնարավոր չէ։`;
   link.href = session.mode === "practice" ? "./practice.html" : "./index.html?resume=1";
   link.textContent = "Շարունակել";
 }
 
 function activeBlocksNewPractice(skill) {
   const masterySession = masteryStatus?.activeSession?.mode === "mastery_check" ? masteryStatus.activeSession : null;
-  if (masterySession) return { blocked: true, same: false, reason: "Սկզբում ավարտեք յուրացման ստուգումը" };
+  if (masterySession) {
+    return {
+      blocked: true,
+      same: false,
+      reason: "Սկզբում ավարտեք յուրացման ստուգումը",
+      label: "Ավարտեք ստուգումը",
+    };
+  }
   const active = dashboard?.activeSession;
-  if (!active) return { blocked: false, same: false, reason: "" };
+  if (!active) return { blocked: false, same: false, reason: "", label: "" };
   const same = active.mode === "practice" && active.targetSkill?.id === skill.id;
+  if (same) return { blocked: false, same: true, reason: "", label: "" };
+  if (active.mode === "diagnostic") {
+    return {
+      blocked: true,
+      same: false,
+      reason: "Սկզբում ավարտեք ընթացիկ ախտորոշիչը",
+      label: "Ավարտեք ախտորոշիչը",
+    };
+  }
   return {
-    blocked: !same,
-    same,
-    reason: active.mode === "diagnostic" ? "Սկզբում ավարտեք ախտորոշիչը" : "Սկզբում ավարտեք ընթացիկ սեսիան",
+    blocked: true,
+    same: false,
+    reason: "Սկզբում ավարտեք ընթացիկ վարժանքը",
+    label: "Ավարտեք ընթացիկ վարժանքը",
   };
 }
 
 function renderSkillAction(skill, state) {
   const active = activeBlocksNewPractice(skill);
   if (active.same) return `<a class="button-link skill-browser-action" href="./practice.html">Շարունակել</a>`;
-  if (active.blocked) return `<button class="secondary skill-browser-action" disabled title="${escapeHtml(active.reason)}">Սեսիա ընթացքի մեջ</button>`;
+  if (active.blocked) return `<button class="secondary skill-browser-action" disabled title="${escapeHtml(active.reason)}">${escapeHtml(active.label)}</button>`;
   if (state === "verified") return `<button class="secondary skill-browser-action" disabled>Հաստատված</button>`;
   if ((state === "secure" || state === "recovered") && masteryStatus?.eligible) return `<a class="button-link skill-browser-action" href="./mastery.html">Պատրաստ է ստուգման</a>`;
   if (state === "secure") return `<button class="secondary skill-browser-action" disabled>Ամրապնդված</button>`;
@@ -195,6 +212,8 @@ function renderTopics() {
       const masteryPercent = skill.mastery?.percent ?? 0;
       const diagnosticText = skill.diagnostic?.total ? `Ախտորոշիչ՝ ${skill.diagnostic.correct}/${skill.diagnostic.total}` : "Ախտորոշիչ տվյալ չկա";
       const row = document.createElement("article");
+      row.id = `skill-${skill.code}`;
+      row.tabIndex = -1;
       row.className = `skill-browser-row${skill.id === recommendedId ? " recommended" : ""}`;
       row.innerHTML = `
         <div class="skill-browser-copy">
@@ -223,6 +242,23 @@ function renderTopics() {
 
   list.querySelectorAll("[data-practice-skill]").forEach((button) => {
     button.addEventListener("click", () => startPractice(button.dataset.practiceSkill));
+  });
+}
+
+function focusRequestedSkill() {
+  if (!window.location.hash) return;
+  let targetId = "";
+  try {
+    targetId = decodeURIComponent(window.location.hash.slice(1));
+  } catch {
+    targetId = window.location.hash.slice(1);
+  }
+  if (!targetId.startsWith("skill-")) return;
+  const target = document.getElementById(targetId);
+  if (!target) return;
+  requestAnimationFrame(() => {
+    target.scrollIntoView({ block: "center", behavior: "smooth" });
+    target.focus({ preventScroll: true });
   });
 }
 
@@ -256,6 +292,7 @@ async function loadSubject() {
   renderTopics();
   $("subjectLoading").classList.add("hidden");
   $("subjectContent").classList.remove("hidden");
+  focusRequestedSkill();
 }
 
 async function initialize() {
