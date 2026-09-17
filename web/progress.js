@@ -133,7 +133,7 @@ function recommendedAction() {
   if (activeDestination) {
     return {
       title: active.mode === "practice" ? "Շարունակեք ընթացիկ վարժանքը" : active.mode === "diagnostic" ? "Շարունակեք Գլուխ I-ի ախտորոշիչը" : "Շարունակեք յուրացման ստուգումը",
-      reason: "Դուք ունեք չավարտված սեսիա։ Հաջորդ քայլը այն շարունակելն է, ոչ թե նոր ուսումնական գործողություն սկսելը։",
+      reason: "Դուք ունեք չավարտված սեսիա։ Այս էջի հմտությունների ցանկը միայն ցույց է տալիս ապացույցները, իսկ ընթացիկ սեսիան շարունակվում է այստեղից մեկ ընդհանուր գործողությամբ։",
       ...activeDestination,
     };
   }
@@ -192,21 +192,6 @@ function renderRecommendedAction() {
   $("progressNextAction").textContent = action.label;
 }
 
-function skillAction(skill, state) {
-  if (masteryStatus?.unitComplete) return { href: "./mastery.html", label: "Դիտել հաստատումը" };
-
-  const active = masteryStatus?.activeSession?.mode === "mastery_check" ? masteryStatus.activeSession : dashboard?.activeSession;
-  const route = activeRoute(active);
-  if (route) {
-    const samePractice = active.mode === "practice" && dashboard?.activeSession?.targetSkill?.id === skill.id;
-    return samePractice ? { href: "./practice.html", label: "Շարունակել" } : route;
-  }
-
-  if ((state === "secure" || state === "recovered") && masteryStatus?.eligible) return { href: "./mastery.html", label: "Բացել ստուգումը" };
-  if (state === "secure" || state === "recovered") return { href: "./physics-7.html", label: "Դիտել հմտությունը" };
-  return { href: `./practice.html?skill=${encodeURIComponent(skill.id)}`, label: state === "not_started" ? "Սկսել" : "Վարժվել" };
-}
-
 function renderSkills() {
   const list = $("progressSkillList");
   const recommendedId = dashboard?.recommendation?.skill?.id ?? null;
@@ -217,7 +202,6 @@ function renderSkills() {
     const masteryPercent = Number(skill.mastery?.percent ?? 0);
     const diagnostic = skill.diagnostic ?? { correct: 0, total: 0, band: "not_assessed" };
     const historyCount = Number(skill.mastery?.evidenceCount ?? 0);
-    const action = skillAction(skill, state);
     const row = document.createElement("article");
     row.className = `progress-skill-row${skill.id === recommendedId && !masteryStatus?.unitComplete ? " recommended" : ""}`;
     row.innerHTML = `
@@ -230,6 +214,7 @@ function renderSkills() {
         </div>
         <h3>${escapeHtml(skill.nameHy)}</h3>
         <span class="subtle small">Վարժանքի գրանցված պատասխաններ՝ ${historyCount}</span>
+        <a class="text-link progress-skill-detail" href="./physics-7.html#skill-${encodeURIComponent(skill.code)}">Դիտել դասընթացում</a>
       </div>
       <div class="progress-skill-evidence">
         <span class="progress-skill-label">Ախտորոշիչ</span>
@@ -242,8 +227,7 @@ function renderSkills() {
         <div class="mini-progress" role="progressbar" aria-label="${escapeHtml(skill.code)} յուրացման միավոր" aria-valuemin="0" aria-valuemax="100" aria-valuenow="${masteryPercent}">
           <div class="mini-progress-bar" style="width:${masteryPercent}%"></div>
         </div>
-      </div>
-      <a class="ghost button-link progress-skill-action" href="${escapeHtml(action.href)}">${escapeHtml(action.label)}</a>`;
+      </div>`;
     list.appendChild(row);
   }
 }
