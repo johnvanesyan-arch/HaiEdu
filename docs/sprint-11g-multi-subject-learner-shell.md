@@ -1,7 +1,8 @@
 # Sprint 11G — Multi-Subject Learner Shell Architecture Spike
 
-**Status:** 🟡 Implementation/QA in progress  
+**Status:** 🟡 Implementation complete; authenticated rendered QA pending  
 **Introduced:** 2026-09-17  
+**Last updated:** 2026-09-17  
 **Reason:** the student Home and navigation were still structurally centered on Physics 7. Before further pilot/product work, the learner shell needs to demonstrate that multiple enrolled subjects remain separate and understandable.
 
 ## Goal
@@ -61,6 +62,16 @@ This sprint does **not**:
 
 The Mathematics fixture is architecture QA data, not production curriculum.
 
+## Implemented architecture
+
+- `web/student-courses.js` builds desktop/mobile course navigation from the authenticated learner's actual class entitlements.
+- `web/multi-subject-home.js` replaces the learner-facing Physics-only Home presentation with a global Home hierarchy: primary next action, subject cards, and bounded attention signals.
+- `web/course.html` + `web/course-page.js` provide a generic entitled-course workspace for subjects whose learning engine is not implemented.
+- Physics 7 retains the existing `physics-7.html`, `assessment.html`, and `progress.html` subject-specific routes.
+- `web/course-gate.js` now treats zero active classes as the global no-course condition while preserving Physics-specific authorization on Physics routes.
+- Legacy Physics Home elements remain in the DOM as compatibility adapters for existing handlers but are hidden from the learner-facing Home after the multi-subject shell resolves.
+- Existing Physics APIs continue to enforce the shared Physics 7 server-side entitlement guard.
+
 ## QA fixture
 
 Production QA fixture used for this spike:
@@ -72,11 +83,13 @@ Production QA fixture used for this spike:
 - academic year: `2026-2027`;
 - join code: `MATH7QA1`;
 - QA student: `bestenglishac@gmail.com`;
-- existing Physics 7 enrollment on the same QA student remains available so the Home can be tested with two simultaneous subjects.
+- the same QA student has an active `7A Physics` membership, producing the intended simultaneous Mathematics 7 + Physics 7 entitlement state.
+
+The Mathematics fixture contains no Mathematics item bank, diagnostic, practice, mastery or learner evidence. Its purpose is only to pressure-test course separation and learner-shell scaling.
 
 ## Acceptance criteria
 
-- [x] Global Home no longer visually exposes the full Physics-only dashboard as the primary learner Home.
+- [x] Global Home no longer visually exposes the full Physics-only dashboard as the primary learner Home at source/implementation level.
 - [x] Home renders one subject card per distinct entitled subject/grade pair.
 - [x] Desktop navigation is generated from actual learner course entitlements.
 - [x] Mobile navigation scales through Home/Subjects plus current-course context instead of listing every subject workflow globally.
@@ -85,10 +98,17 @@ Production QA fixture used for this spike:
 - [x] A student with no classes still receives the join-class empty state.
 - [x] Course entitlement remains based on active class membership.
 - [x] Mathematics QA fixture is isolated from the Physics learning engine.
-- [ ] CI regression suite passes on final Sprint 11G head.
+- [x] CI regression suite passes on the implemented Sprint 11G head (`5c594ff5280261bf6e895e7234a148862ec16e40`, CI #402).
+- [x] Vercel deployment for the implemented head reports success.
 - [ ] Rendered production QA confirms the two-subject Home for the QA student.
 - [ ] Rendered production QA confirms Physics 7 still opens normally from the new shell.
 - [ ] Rendered production QA confirms Mathematics 7 opens only the generic placeholder workspace and does not show Physics evidence.
+
+### Rendered QA disposition
+
+Two non-mutating browser attempts were made after deployment. The connected browser context had no usable saved student authentication session or credentials for the production domain, so authenticated two-subject rendering could not be executed without improvising credentials or altering account state. This is a **pending QA item, not a PASS**.
+
+The database state needed for the rendered test has been verified: `bestenglishac@gmail.com` has active memberships in both `7A Physics` (`physics`, Grade 7) and `QA 11G Math 7` (`mathematics`, Grade 7).
 
 ## Home information hierarchy
 
