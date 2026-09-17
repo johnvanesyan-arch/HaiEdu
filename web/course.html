@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Առարկա — HaiEdu</title>
+  <link rel="stylesheet" href="./tokens.css" />
+  <link rel="stylesheet" href="./base.css" />
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./components.css" />
+  <link rel="stylesheet" href="./student-shell.css" />
+  <link rel="stylesheet" href="./multi-subject.css" />
+</head>
+<body data-student-page="course" data-shell-auth="always">
+  <main class="shell amp-course-shell" id="mainContent">
+    <header class="topbar">
+      <div>
+        <p class="eyebrow">ԻՄ ԱՌԱՐԿԱՆԵՐԸ</p>
+        <h1 id="courseTitle">Առարկան բեռնվում է…</h1>
+        <p id="courseSubtitle" class="subtle">Ստուգվում է դասընթացի հասանելիությունը։</p>
+      </div>
+      <div class="row">
+        <a class="ghost button-link" href="./index.html">Գլխավոր</a>
+        <a class="ghost button-link" href="./privacy.html">Գաղտնիություն</a>
+      </div>
+    </header>
+
+    <section id="courseLoading" class="card">Դասընթացը բեռնվում է…</section>
+
+    <section id="courseContent" class="card amp-course-placeholder hidden" aria-labelledby="courseContentTitle">
+      <span class="mode-kicker">ԴԱՍԸՆԹԱՑԻ ԱՇԽԱՏԱՎԱՅՐ</span>
+      <h2 id="courseContentTitle">Բովանդակությունը պատրաստման փուլում է</h2>
+      <p id="courseMessage" class="subtle">Այս առարկան արդեն ճիշտ կերպով առանձնացված է որպես առանձին դասընթաց, սակայն ուսումնական մոդուլը դեռ չի ակտիվացվել։</p>
+      <div id="courseClasses" class="amp-subject-class-list"></div>
+      <div class="row" style="margin-top:1rem">
+        <a class="button-link" href="./index.html#mySubjects">Վերադառնալ իմ առարկաներին</a>
+      </div>
+    </section>
+  </main>
+
+  <script type="module" src="./student-shell.js"></script>
+  <script type="module" src="./course-page.js"></script>
+  <script type="module" src="./ux.js"></script>
+</body>
+</html>
