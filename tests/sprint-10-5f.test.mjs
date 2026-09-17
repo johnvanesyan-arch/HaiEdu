@@ -14,12 +14,15 @@ const studentPages = [
   "web/progress.html",
 ];
 
-test("Sprint 10.5F enables all four permanent student destinations", async () => {
+test("Sprint 10.5F student routes remain available inside the entitlement-driven subject workspace", async () => {
   const shell = await read("web/student-shell.js");
+  const courses = await read("web/student-courses.js");
   assert.match(shell, /key: "home"[\s\S]*enabled: true/);
-  assert.match(shell, /key: "physics"[\s\S]*enabled: true/);
-  assert.match(shell, /key: "assessment"[\s\S]*enabled: true/);
-  assert.match(shell, /key: "progress"[\s\S]*enabled: true/);
+  assert.match(shell, /student-courses\.js/);
+  assert.match(courses, /physics-7\.html/);
+  assert.match(courses, /assessment\.html/);
+  assert.match(courses, /progress\.html/);
+  assert.match(courses, /active && key === "physics:7"/);
   assert.match(shell, /responsive-qa\.css/);
 });
 
