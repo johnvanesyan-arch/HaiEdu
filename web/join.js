@@ -27,14 +27,34 @@ if (!sessionData.session) {
 joinBtn.addEventListener("click", async () => {
   const code = joinCode.value.trim().toUpperCase();
   if (!code) return setMessage("Մուտքագրեք միանալու կոդը։", true);
+
   joinBtn.disabled = true;
   setMessage("Միանում ենք…");
+
   const { data, error } = await supabase.functions.invoke("join-class", { body: { joinCode: code } });
-  if (error) {
+  if (error || !data?.joined || !data?.class?.id) {
     joinBtn.disabled = false;
-    return setMessage("Չհաջողվեց միանալ։ Ստուգեք կոդը կամ դասարանի ակտիվությունը։", true);
+    return setMessage("Չհաջողվեց հաստատել դասարանին միացումը։ Ստուգեք կոդը և փորձեք կրկին։", true);
   }
+
+  // Double-check through the read endpoint used by the course gate. A learner
+  // should never see a success message for a membership that the dashboard
+  // cannot resolve immediately afterwards.
+  const { data: classData, error: classError } = await supabase.functions.invoke("get-student-classes", { body: {} });
+  const classes = Array.isArray(classData?.classes) ? classData.classes : [];
+  const verified = !classError && classes.some((klass) => String(klass.id) === String(data.class.id));
+  if (!verified) {
+    joinBtn.disabled = false;
+    return setMessage("Դասարանին միացումը դեռ չի հաստատվել համակարգում։ Խնդրում ենք փորձել կրկին։", true);
+  }
+
   joinCode.value = "";
-  setMessage(data.alreadyMember ? `Դուք արդեն ${data.class.name} դասարանի անդամ եք։ Վերադառնում ենք գլխավոր էջ…` : `Միացաք ${data.class.name} դասարանին։ Բացվում են ձեր հասանելի դասընթացները…`);
-  setTimeout(() => window.location.replace("./index.html"), 900);
+  const courseName = data.course?.subjectNameHy && data.course?.gradeLabelHy
+    ? `${data.course.subjectNameHy} · ${data.course.gradeLabelHy}`
+    : "դասընթացը";
+  setMessage(data.alreadyMember
+    ? `Դուք արդեն ${data.class.name} դասարանի անդամ եք։ Բացվում է ${courseName}։`
+    : `Միացաք ${data.class.name} դասարանին։ Բացվում է ${courseName}։`);
+
+  setTimeout(() => window.location.replace("./index.html?joined=1"), 500);
 });
