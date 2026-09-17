@@ -14,7 +14,7 @@
 
 .content-topbar h1 {
   margin: .15rem 0;
-  font-size: clamp(2rem, 4vw, 4rem);
+  font-size: clamp(2rem, 3.2vw, 3.25rem);
 }
 
 .content-auth { max-width: 520px; }
@@ -251,6 +251,66 @@
 .detail-panel textarea:disabled { background: #f5f6f8; color: #5d6673; cursor: not-allowed; }
 .remove-option-btn,
 .remove-misconception-btn { align-self: end; }
+
+
+/* Content portal sign-in: keep the entry form focused and readable. */
+#authPanel.content-auth {
+  width: min(100%, 640px);
+  max-width: 640px;
+  margin: var(--amp-space-7, 3rem) auto 0;
+  padding: clamp(1.25rem, 3vw, 2rem);
+}
+
+#authPanel.content-auth h2 {
+  margin: 0 0 var(--amp-space-2, .5rem);
+  font-size: clamp(1.45rem, 2.4vw, 1.9rem);
+  line-height: 1.3;
+}
+
+#authPanel.content-auth > .subtle {
+  max-width: 56ch;
+  margin: 0 0 var(--amp-space-5, 1.5rem);
+}
+
+#authPanel.content-auth label {
+  display: grid;
+  gap: var(--amp-space-2, .5rem);
+  margin-top: var(--amp-space-4, 1rem);
+  color: #334155;
+  font-weight: 700;
+}
+
+#authPanel.content-auth input {
+  width: 100%;
+  min-height: 48px;
+}
+
+#authPanel.content-auth #signInBtn {
+  width: auto;
+  min-width: 150px;
+  margin-top: var(--amp-space-5, 1.5rem);
+  padding-inline: var(--amp-space-5, 1.5rem);
+}
+
+#authPanel.content-auth .message {
+  min-height: 1.4em;
+  margin: var(--amp-space-3, .75rem) 0 0;
+}
+
+@media (max-width: 760px) {
+  .content-topbar h1 {
+    font-size: clamp(1.9rem, 9vw, 2.6rem);
+  }
+
+  #authPanel.content-auth {
+    margin-top: var(--amp-space-5, 1.5rem);
+    padding: var(--amp-space-5, 1.5rem);
+  }
+
+  #authPanel.content-auth #signInBtn {
+    width: 100%;
+  }
+}
 
 @media (max-width: 1500px) {
   .content-shell { padding-inline: 20px; }
