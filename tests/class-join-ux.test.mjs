@@ -4,10 +4,17 @@ import { readFile } from "node:fs/promises";
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
-test("student utility navigation exposes Join Class without changing primary learning nav", async () => {
+test("student utility navigation keeps Join Class while primary learning nav is entitlement-driven", async () => {
   const shell = await read("web/student-shell.js");
+  const courses = await read("web/student-courses.js");
   assert.match(shell, /href="\.\/join\.html">Միանալ դասարանին/);
-  assert.match(shell, /key: "home"[\s\S]*key: "physics"[\s\S]*key: "assessment"[\s\S]*key: "progress"/);
+  assert.match(shell, /key: "home"[\s\S]*enabled: true/);
+  assert.match(shell, /student-courses\.js/);
+  assert.match(courses, /Իմ առարկաները/);
+  assert.match(courses, /courseKey/);
+  assert.match(courses, /physics-7\.html/);
+  assert.match(courses, /assessment\.html/);
+  assert.match(courses, /progress\.html/);
 });
 
 test("Home class card distinguishes no-class and joined-class states", async () => {
