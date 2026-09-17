@@ -1,5 +1,7 @@
-/* Sprint 10.5B — reusable visual components */
+/* Sprint 10.5B + 11H — reusable visual components */
 .card {
+  min-width: 0;
+  max-width: 100%;
   background: var(--amp-color-surface);
   border: 1px solid var(--amp-color-border);
   border-radius: var(--amp-radius-lg);
@@ -7,6 +9,8 @@
 }
 
 .notice {
+  min-width: 0;
+  max-width: 100%;
   border: 1px solid #ead59d;
   background: #fff9ea;
   border-radius: var(--amp-radius-md);
@@ -17,14 +21,29 @@
 button,
 a.button-link,
 a.ghost {
+  min-width: 0;
+  max-width: 100%;
   min-height: var(--amp-control-min);
   border-radius: var(--amp-radius-sm);
   font-weight: 700;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
   transition: background-color var(--amp-motion-fast) ease,
               border-color var(--amp-motion-fast) ease,
               color var(--amp-motion-fast) ease,
               box-shadow var(--amp-motion-fast) ease,
               transform var(--amp-motion-fast) ease;
+}
+
+a.button-link,
+a.ghost {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var(--amp-space-3) var(--amp-space-4);
 }
 
 button:not(.secondary):not(.ghost) {
@@ -58,6 +77,8 @@ button:disabled { opacity: 0.48; }
 input,
 select,
 textarea {
+  min-width: 0;
+  max-width: 100%;
   min-height: var(--amp-control-min);
   border: 1px solid var(--amp-color-border-strong);
   border-radius: var(--amp-radius-sm);
@@ -70,8 +91,11 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
 .pill,
 .band-badge,
 .mode-kicker {
+  max-width: 100%;
   border-radius: var(--amp-radius-pill);
   font-weight: 700;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 
 .pill {
@@ -106,9 +130,11 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
 
 .feedback,
 .feedback-banner {
+  max-width: 100%;
   border-radius: var(--amp-radius-md);
   padding: var(--amp-space-4);
   border: 1px solid var(--amp-color-border);
+  overflow-wrap: anywhere;
 }
 .feedback.good,
 .feedback-banner.success {
@@ -134,12 +160,15 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
   display: inline-flex;
   align-items: center;
   width: fit-content;
+  max-width: 100%;
   min-height: 28px;
   padding: 0.25rem 0.6rem;
   border-radius: var(--amp-radius-pill);
   font-size: var(--amp-font-size-xs);
   font-weight: 800;
   line-height: 1.2;
+  white-space: normal;
+  overflow-wrap: anywhere;
 }
 .amp-status-badge[data-state="secure"],
 .amp-status-badge[data-state="verified"],
@@ -155,9 +184,11 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
 .amp-empty-state,
 .amp-error-state,
 .amp-loading-state {
+  max-width: 100%;
   padding: var(--amp-space-6);
   text-align: center;
   color: var(--amp-color-text-muted);
+  overflow-wrap: anywhere;
 }
 .amp-error-state { color: var(--amp-color-danger); }
 
