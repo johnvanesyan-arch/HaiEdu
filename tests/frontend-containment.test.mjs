@@ -35,6 +35,18 @@ test("multi-subject Home cards have internal spacing and bounded actions", async
   assert.match(css, /@media \(max-width: 760px\)[\s\S]*\.amp-subject-card \.button-link[\s\S]*width:\s*100%/);
 });
 
+test("assessment and mastery cards preserve internal spacing and text containment", async () => {
+  const assessment = await read("web/assessment.css");
+  const task = await read("web/assessment-task.css");
+
+  assert.match(assessment, /\.assessment-history[\s\S]*padding:\s*var\(--amp-space-6\)/);
+  assert.match(assessment, /\.assessment-history \.stat\s*>\s*\*[\s\S]*overflow-wrap:\s*anywhere/);
+  assert.match(assessment, /\.assessment-card-top\s*>\s*\*[\s\S]*min-width:\s*0/);
+  assert.match(task, /#stateCard,[\s\S]*padding:\s*var\(--amp-space-6\)/);
+  assert.match(task, /#stateCard\s*>\s*\*[\s\S]*max-width:\s*100%/);
+  assert.match(task, /\.assessment-rule[\s\S]*overflow-wrap:\s*anywhere/);
+});
+
 test("major student, teacher, content, admin and privacy surfaces load the shared UX layer", async () => {
   const paths = [
     "web/index.html",
