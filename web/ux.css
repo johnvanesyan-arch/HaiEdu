@@ -1,12 +1,97 @@
-/* Sprint 9 — shared UX/accessibility layer */
+/* Sprint 9 + 11H — shared UX/accessibility and layout-containment layer */
 :root { color-scheme: light; }
 html { scroll-behavior: smooth; }
 body { line-height: 1.55; -webkit-text-size-adjust: 100%; }
 main { outline: none; }
 a { color: #1f4f8a; }
-a.ghost, .button-link { min-height: 44px; display: inline-flex; align-items: center; justify-content: center; }
+
+/* Shared control contract: Armenian labels must stay inside their visual bounds. */
+a.ghost,
+.button-link {
+  min-height: 44px;
+  min-width: 0;
+  max-width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: .65rem 1rem;
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+button,
+input,
+select,
+textarea,
+a.ghost,
+.button-link {
+  min-height: 44px;
+  min-width: 0;
+  max-width: 100%;
+}
+
+button {
+  line-height: 1.25;
+  text-align: center;
+  white-space: normal;
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
+/* Prevent flex/grid children from forcing cards, headers, or action rows wider than their container. */
+.card,
+.question-card,
+.mastery-card,
+.mode-card,
+.notice,
+.topbar,
+.content-topbar,
+.admin-topbar,
+.section-heading,
+.dashboard-heading,
+.recommendation-card,
+.skill-map-heading,
+.question-heading,
+.mastery-head,
+.row {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.card > *,
+.question-card > *,
+.mastery-card > *,
+.mode-card > *,
+.notice > *,
+.topbar > *,
+.content-topbar > *,
+.admin-topbar > *,
+.section-heading > *,
+.dashboard-heading > *,
+.recommendation-card > *,
+.skill-map-heading > *,
+.question-heading > *,
+.mastery-head > *,
+.row > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
+.row,
+.topbar,
+.content-topbar,
+.admin-topbar,
+.section-heading,
+.dashboard-heading,
+.question-heading,
+.mastery-head {
+  flex-wrap: wrap;
+}
+
 button, input, select, textarea { font: inherit; }
-button, input, select, textarea, a.ghost, .button-link { min-height: 44px; }
 button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, a:focus-visible, [tabindex]:focus-visible {
   outline: 3px solid #0b63ce;
   outline-offset: 3px;
