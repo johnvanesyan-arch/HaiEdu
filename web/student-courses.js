@@ -127,5 +127,6 @@ window.addEventListener("pageshow", () => {
 });
 
 ensureStylesheet();
+if (page === "home") import("./multi-subject-home.js");
 const initial = window.HaiEduCourseAccess?.classes;
 if (Array.isArray(initial)) render(initial);
