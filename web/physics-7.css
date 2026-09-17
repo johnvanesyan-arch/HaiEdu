@@ -103,6 +103,11 @@
   box-shadow: inset 4px 0 0 var(--amp-color-primary);
   background: #f8fbff;
 }
+.skill-browser-row:target {
+  border-color: var(--amp-color-primary);
+  box-shadow: inset 4px 0 0 var(--amp-color-primary), var(--amp-shadow-medium);
+  background: #f8fbff;
+}
 .skill-browser-copy {
   min-width: 0;
 }
@@ -128,9 +133,10 @@
 }
 .skill-browser-action {
   min-width: 122px;
-}
-.skill-browser-action[disabled] {
+  max-width: 220px;
   white-space: normal;
+  text-align: center;
+  overflow-wrap: anywhere;
 }
 .future-chapters {
   margin-top: var(--amp-space-7);
@@ -179,6 +185,6 @@
   }
   .skill-browser-row { grid-template-columns: 1fr; }
   .skill-browser-state { grid-column: auto; grid-row: auto; }
-  .skill-browser-action { width: 100%; }
+  .skill-browser-action { width: 100%; max-width: 100%; }
   .future-chapter-grid { grid-template-columns: 1fr; }
 }
