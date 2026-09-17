@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.2  
+**Roadmap version:** 2.3  
 **Updated:** 2026-09-17  
-**Current programme status:** Sprint 11 in progress; Sprint 11F final pilot workflow remains open and Sprint 11G multi-subject learner-shell implementation is complete with authenticated rendered QA pending.
+**Current programme status:** Sprint 11 in progress; Sprint 11F final pilot workflow remains open, Sprint 11G multi-subject shell implementation is complete with route-level rendered QA pending, and Sprint 11H platform-wide layout containment is implemented with post-deployment visual confirmation pending.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -29,7 +29,7 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 | 9 | UX, Accessibility & Armenian Localization QA | ✅ | Armenian-first UX, accessibility and responsive hardening completed at source/QA level. |
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
-| 11 | Assessment Integrity, Item-Bank Expansion & Closed Physics Pilot | 🟡 | 11A–11E complete. 11F remains open. 11G was added to prevent further one-subject learner-shell assumptions before pilot/product work continues. |
+| 11 | Assessment Integrity, Item-Bank Expansion & Closed Physics Pilot | 🟡 | 11A–11E complete. 11F remains open. 11G contains multi-subject shell assumptions; 11H hardens platform-wide text/card/control containment before further pilot use. |
 | 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior from pilot operational evidence; thresholds remain provisional until evidence supports changes. |
 | 13 | Chapter I Production Release | ⏳ | Promote Chapter I from controlled-pilot state after Sprint 11 closure and Sprint 12 disposition. |
 | 14 | Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize curriculum, class, assignment and learner architecture without introducing one-grade/one-subject assumptions. Sprint 11G provides only the learner-shell containment contract, not this full generalization. |
@@ -85,7 +85,7 @@ Recent 11F.3 production work also surfaced and corrected course-entitlement, cla
 
 ### 11G — Multi-Subject Learner Shell Architecture Spike
 
-**Status: 🟡 Implementation complete; authenticated rendered QA pending.**
+**Status: 🟡 Implementation complete; route-level authenticated rendered QA pending.**
 
 Sprint 11G was inserted before Sprint 12 because the global learner Home and navigation still structurally assumed one subject. Continuing with that assumption would make later multi-subject expansion unnecessarily expensive.
 
@@ -98,29 +98,57 @@ Implemented:
 - a generic entitled-course workspace exists for subjects whose learning module is not yet implemented;
 - a draft Grade 7 Mathematics QA fixture and class were added solely to create a real two-subject learner state;
 - `bestenglishac@gmail.com` has active Grade 7 Physics and Grade 7 Mathematics QA memberships for this architecture test;
-- regression tests pass on the implemented head and Vercel deployment reports success.
+- regression tests pass and Vercel deployment reports success.
+
+Rendered evidence:
+
+- user-provided authenticated production screenshots on 2026-09-17 confirm that the global Home renders both `Մաթեմատիկա 7` and `Ֆիզիկա 7` simultaneously and presents a cross-subject Home rather than the old full Physics-only dashboard.
 
 Pending before Sprint 11G can be marked fully complete:
 
-- authenticated rendered production QA of the two-subject Home;
 - rendered confirmation that Physics 7 continues to open normally from the new shell;
 - rendered confirmation that Mathematics 7 opens only its generic placeholder and receives no Physics evidence.
 
-The connected browser automation context currently has no usable saved student credentials/session, so those rendered checks remain pending rather than being marked PASS.
-
 See `docs/sprint-11g-multi-subject-learner-shell.md` for the detailed contract and evidence.
+
+### 11H — Platform-wide Front-End Containment & Layout Polish
+
+**Status: 🟡 Implementation complete; post-deployment authenticated visual confirmation pending.**
+
+Sprint 11H was added after the first authenticated two-subject screenshots exposed visual containment defects: Armenian labels touching or crossing button borders, insufficient internal card spacing, and flex/grid children capable of forcing content outside component boundaries.
+
+Implemented:
+
+- shared controls now enforce `min-width: 0`, `max-width: 100%`, wrapping and bounded line-height;
+- button-like links have consistent internal padding;
+- shared cards, headers, rows and their direct children use explicit width containment;
+- top/header/action rows can wrap instead of overflowing;
+- multi-subject next-action, subject, empty-state and generic-course cards now have explicit internal padding;
+- subject-card statistics, metadata and CTA controls are responsive and contained;
+- multi-subject cards collapse safely on narrow screens;
+- legacy Home invalid radius token was corrected;
+- regression coverage was added in `tests/frontend-containment.test.mjs`;
+- implementation head `9f0a753c8ed829e3dccd019289a50fc9903a1035` passed CI #409 and deployed successfully to Vercel.
+
+Pending:
+
+- reload the authenticated production UI and confirm the reported Home/card/button defects are visually resolved;
+- quick rendered spot-check of teacher/admin/content surfaces for regressions under the shared containment rules.
+
+See `docs/sprint-11h-frontend-containment-polish.md`.
 
 ## Sprint 11 closure gate
 
 Sprint 11 may close only after all of the following are true:
 
 1. 11F.3 final production workflow smoke is completed or each remaining item has an explicit accepted disposition.
-2. Sprint 11G rendered multi-subject QA is completed or explicitly dispositioned.
-3. Pilot privacy/participation responsibilities are defined for the real cohort.
-4. A controlled Chapter I cohort completes the pilot, unless the product owner explicitly changes that exit criterion and documents the resulting limitation.
-5. Repeat/exposure and item-level operational evidence are reviewed.
-6. Critical defects are fixed or explicitly accepted.
-7. A Sprint 11 pilot report records defects, content findings, learning-engine findings, usability observations and the disposition for Sprint 12.
+2. Sprint 11G remaining route-level rendered QA is completed or explicitly dispositioned.
+3. Sprint 11H post-deployment visual containment check is completed or explicitly dispositioned.
+4. Pilot privacy/participation responsibilities are defined for the real cohort.
+5. A controlled Chapter I cohort completes the pilot, unless the product owner explicitly changes that exit criterion and documents the resulting limitation.
+6. Repeat/exposure and item-level operational evidence are reviewed.
+7. Critical defects are fixed or explicitly accepted.
+8. A Sprint 11 pilot report records defects, content findings, learning-engine findings, usability observations and the disposition for Sprint 12.
 
 ## Architectural invariant from Sprint 11G onward
 
@@ -131,6 +159,16 @@ The learner-facing shell must not assume that:
 - a learner takes only one course;
 - global Home owns subject-specific diagnostics, practice, assessments or mastery;
 - course visibility can be inferred without an active entitlement.
+
+## UI invariant from Sprint 11H onward
+
+Shared role surfaces must not assume that:
+
+- Armenian labels fit on one line;
+- flex/grid children can rely on intrinsic width without `min-width: 0`;
+- button borders may hug text without internal padding;
+- cards can omit explicit internal spacing when they contain generated/dynamic content;
+- desktop-only width assumptions are acceptable for learner-facing actions and status text.
 
 ## Architectural invariant from Sprint 14 onward
 
