@@ -156,8 +156,8 @@ test("Sprint 10.5E assessment hub separates diagnostic and mastery purposes", as
   const html = await read("web/assessment.html");
   const code = await read("web/assessment.js");
   assert.match(html, /data-student-page="assessment"/);
-  assert.match(html, /ԳԼՈՒԽ I-Ի ԱԽՏՈՐՈՇԻՉ/);
-  assert.match(html, /ԳԼՈՒԽ I-Ի ՅՈՒՐԱՑՄԱՆ ՍՏՈՒԳՈՒՄ/);
+  assert.match(html, /ԳԼՈՒԽ I · ՈՒՍՈՒՑՄԱՆ ՈՒՂՂՈՐԴՈՒՄ/);
+  assert.match(html, /ԳԼՈՒԽ I · ՅՈՒՐԱՑՄԱՆ ՀԱՍՏԱՏՈՒՄ/);
   assert.match(html, /href="\.\/diagnostic\.html"/);
   assert.match(html, /href="\.\/mastery\.html"/);
   assert.match(code, /get-student-dashboard/);
