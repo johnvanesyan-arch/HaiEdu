@@ -1,6 +1,6 @@
 # Sprint 11G — Multi-Subject Learner Shell Architecture Spike
 
-**Status:** 🟡 Implementation complete; authenticated rendered QA pending  
+**Status:** 🟡 Implementation complete; route-level authenticated rendered QA pending  
 **Introduced:** 2026-09-17  
 **Last updated:** 2026-09-17  
 **Reason:** the student Home and navigation were still structurally centered on Physics 7. Before further pilot/product work, the learner shell needs to demonstrate that multiple enrolled subjects remain separate and understandable.
@@ -100,15 +100,19 @@ The Mathematics fixture contains no Mathematics item bank, diagnostic, practice,
 - [x] Mathematics QA fixture is isolated from the Physics learning engine.
 - [x] CI regression suite passes on the implemented Sprint 11G head (`5c594ff5280261bf6e895e7234a148862ec16e40`, CI #402).
 - [x] Vercel deployment for the implemented head reports success.
-- [ ] Rendered production QA confirms the two-subject Home for the QA student.
+- [x] Authenticated rendered production evidence confirms the two-subject Home for the QA student.
 - [ ] Rendered production QA confirms Physics 7 still opens normally from the new shell.
 - [ ] Rendered production QA confirms Mathematics 7 opens only the generic placeholder workspace and does not show Physics evidence.
 
 ### Rendered QA disposition
 
-Two non-mutating browser attempts were made after deployment. The connected browser context had no usable saved student authentication session or credentials for the production domain, so authenticated two-subject rendering could not be executed without improvising credentials or altering account state. This is a **pending QA item, not a PASS**.
+Two initial non-mutating browser-automation attempts were made after deployment. The connected automation context had no usable saved student authentication session or credentials for the production domain, so route-level authenticated rendering could not be executed through that tool without improvising credentials or altering account state.
 
-The database state needed for the rendered test has been verified: `bestenglishac@gmail.com` has active memberships in both `7A Physics` (`physics`, Grade 7) and `QA 11G Math 7` (`mathematics`, Grade 7).
+On 2026-09-17 the product owner then supplied authenticated production screenshots from the prepared QA student. Those screenshots confirm that the global learner Home renders both `Մաթեմատիկա 7` and `Ֆիզիկա 7` simultaneously and that the primary Home presentation is cross-subject rather than the legacy full Physics-only dashboard. This satisfies the two-subject Home rendered criterion.
+
+The screenshots do not show navigation into the Physics course or the Mathematics placeholder, so those two route-level rendered criteria remain pending rather than being inferred as PASS.
+
+The same screenshots also surfaced text/card/control containment defects. Those presentation defects are handled separately in Sprint 11H and do not invalidate the successful multi-subject architecture evidence.
 
 ## Home information hierarchy
 
