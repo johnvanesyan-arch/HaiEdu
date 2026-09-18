@@ -2,6 +2,7 @@
 
 **Status: 🟡 In progress.**  
 **Opened:** 2026-09-16  
+**Last updated:** 2026-09-18  
 **Scope:** final production/browser smoke, controlled pilot execution, operational evidence review, and Sprint 11 closure. Real student/teacher feedback is intentionally not required for the initial technical preflight phase.
 
 ## Objective
@@ -106,21 +107,37 @@ Student-side workflow through the production UI:
 - production database state confirms that completed Diagnostic recorded 20/20 answered and 13 correct (65%);
 - no per-item correctness feedback was observed before the Diagnostic completion state.
 
-### Current unresolved state
+### Disposition of the second Diagnostic
 
-After the completed 20-item Diagnostic, the browser automation continued navigating and a **second Diagnostic session was started**. Production currently shows that second session as active at 4/20. The long browser run then timed out at the automation layer.
+On 2026-09-18 the stale second Diagnostic session was explicitly classified as an automation-navigation artifact and changed from `active` to `abandoned`.
 
-This active second Diagnostic requires disposition before the remaining 11F.3 workflow can be considered cleanly complete. At present it is not yet established whether the second-session start was solely an automation-navigation artifact or whether it reveals a product-flow issue worth fixing.
+The disposition preserved the session and all four recorded responses. It added a QA disposition reason rather than deleting or rewriting the evidence. Post-disposition production verification confirmed:
+
+- no active Chapter I learning session remained for the learner;
+- the valid completed Diagnostic remained 20/20 answered, 13 correct (65%);
+- Home and Progress both showed the same 13/20 result and the same 5/10 current-skill summary;
+- Physics 7 opened normally from the learner shell;
+- the learner account was denied the teacher route and returned to the learner Home.
+
+### Mastery eligibility verification
+
+The production Mastery route rendered normally and correctly remained closed. The gate identified five unfinished skills:
+
+- `PHY7-U01-S02`;
+- `PHY7-U01-S04`;
+- `PHY7-U01-S07`;
+- `PHY7-U01-S08`;
+- `PHY7-U01-S09`.
+
+No Mastery session was started or completed because eligibility was not legitimately available. This is a PASS for the ineligible-state gate, not evidence for Mastery start/resume/completion.
 
 Still pending:
 
-- resolve/disposition the currently active second Diagnostic session;
-- final Home/Progress verification after the completed Diagnostic;
-- Mastery Check eligibility/start/resume/completion;
+- Mastery Check start/resume/completion when legitimately eligible, or an explicit pilot disposition;
 - teacher dashboard/student-detail verification of the newly generated learning evidence;
 - account suspension and session-revocation behavior;
 - privacy preference behavior;
-- deletion-request surface/flow.
+- deletion-request workflow beyond confirming that the authenticated surface renders and no active request exists.
 
 Accordingly, **11F.3 is not complete** and the overall Sprint 11F gate remains open.
 
@@ -184,12 +201,12 @@ Supabase performance lint still reports optimization opportunities such as unind
 
 ## Immediate next action
 
-Continue **11F.3** from the current production state:
+Continue **11F.3** from the verified production state:
 
-1. disposition the active second Diagnostic session;
-2. verify Progress/Home state from the completed 13/20 Diagnostic;
-3. exercise Mastery eligibility and, when legitimately available, the Mastery workflow;
-4. re-check teacher visibility of the resulting student evidence;
-5. complete suspension/session-revocation and privacy/deletion workflow checks.
+1. re-check teacher visibility of the completed Diagnostic and current skill evidence;
+2. complete or explicitly disposition the Mastery start/resume/completion check after eligibility is legitimately available;
+3. complete suspension/session-revocation behavior;
+4. complete privacy-preference behavior;
+5. execute or explicitly disposition the deletion-request workflow without deleting the retained QA account unintentionally.
 
-Only after 11F.3 is closed should the real controlled-cohort phase begin.
+Only curriculum-compatible cohort evidence gathered after the Sprint 11I–11K standards/versioning baseline is eligible for the final cohort closure gate in Sprint 11L.

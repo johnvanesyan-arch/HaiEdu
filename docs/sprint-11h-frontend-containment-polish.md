@@ -1,7 +1,8 @@
 # Sprint 11H — Platform-wide Front-End Containment & Layout Polish
 
-**Status:** 🟡 Implementation complete; post-deployment authenticated visual confirmation pending  
+**Status:** 🟡 Implementation complete; authenticated single-subject learner visual QA passed; two-subject and staff-surface visual QA pending  
 **Introduced:** 2026-09-17  
+**Last updated:** 2026-09-18  
 **Trigger:** authenticated learner screenshots exposed controls whose Armenian labels touched or crossed borders, cards with insufficient internal spacing, and grid/flex children that could visually overrun their containers.
 
 ## Goal
@@ -68,4 +69,8 @@ A dedicated regression file, `tests/frontend-containment.test.mjs`, checks:
 
 ## QA boundary
 
-The user-provided screenshots are valid pre-fix defect evidence. They are not post-fix PASS evidence. Because the connected browser automation context currently lacks a usable authenticated student session, the final authenticated visual confirmation remains pending until the deployed UI is reloaded under an authenticated account.
+The user-provided screenshots remain valid pre-fix defect evidence.
+
+On 2026-09-18 the deployed learner Home was reloaded under an authenticated Physics learner at a 1350 × 926 desktop viewport. The next-action card, single Physics subject card, headings, badges, controls and sidebar remained inside their boundaries with no observed horizontal overflow. The Physics workspace and Progress evidence views also rendered without an obvious containment regression.
+
+This satisfies the authenticated single-subject learner spot-check only. It does **not** close the two-subject Home/Mathematics-card check, and it does not substitute for the pending teacher/admin/content surface spot-checks.

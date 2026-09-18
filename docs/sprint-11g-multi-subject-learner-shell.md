@@ -1,8 +1,8 @@
 # Sprint 11G — Multi-Subject Learner Shell Architecture Spike
 
-**Status:** 🟡 Implementation complete; route-level authenticated rendered QA pending  
+**Status:** 🟡 Implementation complete; Physics route QA passed; Mathematics placeholder route QA pending  
 **Introduced:** 2026-09-17  
-**Last updated:** 2026-09-17  
+**Last updated:** 2026-09-18  
 **Reason:** the student Home and navigation were still structurally centered on Physics 7. Before further pilot/product work, the learner shell needs to demonstrate that multiple enrolled subjects remain separate and understandable.
 
 ## Goal
@@ -101,7 +101,7 @@ The Mathematics fixture contains no Mathematics item bank, diagnostic, practice,
 - [x] CI regression suite passes on the implemented Sprint 11G head (`5c594ff5280261bf6e895e7234a148862ec16e40`, CI #402).
 - [x] Vercel deployment for the implemented head reports success.
 - [x] Authenticated rendered production evidence confirms the two-subject Home for the QA student.
-- [ ] Rendered production QA confirms Physics 7 still opens normally from the new shell.
+- [x] Rendered production QA confirms Physics 7 still opens normally from the new shell.
 - [ ] Rendered production QA confirms Mathematics 7 opens only the generic placeholder workspace and does not show Physics evidence.
 
 ### Rendered QA disposition
@@ -110,9 +110,13 @@ Two initial non-mutating browser-automation attempts were made after deployment.
 
 On 2026-09-17 the product owner then supplied authenticated production screenshots from the prepared QA student. Those screenshots confirm that the global learner Home renders both `Մաթեմատիկա 7` and `Ֆիզիկա 7` simultaneously and that the primary Home presentation is cross-subject rather than the legacy full Physics-only dashboard. This satisfies the two-subject Home rendered criterion.
 
-The screenshots do not show navigation into the Physics course or the Mathematics placeholder, so those two route-level rendered criteria remain pending rather than being inferred as PASS.
+The screenshots do not show navigation into the Physics course or the Mathematics placeholder, so those two route-level rendered criteria initially remained pending rather than being inferred as PASS.
 
-The same screenshots also surfaced text/card/control containment defects. Those presentation defects are handled separately in Sprint 11H and do not invalidate the successful multi-subject architecture evidence.
+On 2026-09-18 authenticated production QA with the retained Physics learner account confirmed that the Physics 7 course route opens normally from the new learner shell, preserves subject-scoped navigation, and renders the Chapter I skill workspace. That criterion is now satisfied.
+
+The Mathematics placeholder criterion remains pending because the authenticated account used for this check has no Mathematics entitlement. It must still be executed with the two-subject QA learner; no separation claim is inferred from the Physics-only account.
+
+The earlier screenshots also surfaced text/card/control containment defects. Those presentation defects are handled separately in Sprint 11H and do not invalidate the successful multi-subject architecture evidence.
 
 ## Home information hierarchy
 

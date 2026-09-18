@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.4  
+**Roadmap version:** 2.5  
 **Updated:** 2026-09-18  
-**Current programme status:** Sprint 11 in progress. Sprint 11A–11E are complete; 11F technical/production pilot readiness remains open; 11G multi-subject shell implementation is complete with route-level rendered QA pending; 11H platform-wide layout containment is implemented with post-deployment visual confirmation pending. New standards-governance work is now sequenced as 11I–11K, followed by 11L re-baselined pilot closure before Sprint 12 calibration.
+**Current programme status:** Sprint 11 in progress. Sprint 11A–11E are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. New standards-governance work is now sequenced as 11I–11K, followed by 11L re-baselined pilot closure before Sprint 12 calibration.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -78,15 +78,15 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 |---|---:|---|
 | 11F.1 Technical preflight | ✅ | Automated/source, database, active-bank, security/RLS and session-collision preflight completed. |
 | 11F.2 Authenticated rendered production smoke | ✅ | Student and teacher authenticated production rendering passed where executable. Four authenticated browser-control repetitions were explicitly accepted as limitations, not PASS results. |
-| 11F.3 Final production workflow smoke | 🟡 | Substantially executed; remaining workflow/security/privacy items still require disposition. |
+| 11F.3 Final production workflow smoke | 🟡 | Stale second Diagnostic dispositioned as an automation artifact; Home/Progress, Physics routing, role isolation and the legitimate Mastery-ineligible state verified. Teacher/account/privacy workflow items remain. |
 | 11F.4 Pilot privacy and participation design | ⏳ | Define the privacy/participation requirements consumed by 11L. |
 | 11F.5 Technical pilot-readiness report | ⏳ | Summarize technical readiness, accepted limitations and defects before standards reconciliation and real-cohort execution. |
 
-Recent 11F.3 production work also surfaced and corrected course-entitlement, class-join verification, course-loading and authentication-state-flash defects. Teacher-side rendering of generated Diagnostic evidence has been manually verified. These corrections do not by themselves close 11F.
+Recent 11F.3 production work also surfaced and corrected course-entitlement, class-join verification, course-loading and authentication-state-flash defects. Teacher-side rendering of generated Diagnostic evidence has been manually verified. On 2026-09-18 the stale second Diagnostic was preserved and marked abandoned with an explicit QA disposition; Home and Progress retained the valid 13/20 result, Physics routing passed, and Mastery correctly remained closed for five unfinished skills. These checks do not by themselves close 11F.
 
 ### 11G — Multi-Subject Learner Shell Architecture Spike
 
-**Status: 🟡 Implementation complete; route-level authenticated rendered QA pending.**
+**Status: 🟡 Implementation complete; Physics route QA passed; Mathematics placeholder route QA pending.**
 
 Sprint 11G was inserted before Sprint 12 because the global learner Home and navigation still structurally assumed one subject. Continuing with that assumption would make later multi-subject expansion unnecessarily expensive.
 
@@ -105,16 +105,19 @@ Rendered evidence:
 
 - user-provided authenticated production screenshots on 2026-09-17 confirm that the global Home renders both `Մաթեմատիկա 7` and `Ֆիզիկա 7` simultaneously and presents a cross-subject Home rather than the old full Physics-only dashboard.
 
+Additional rendered evidence:
+
+- on 2026-09-18 an authenticated Physics learner opened the Physics 7 course normally from the new shell.
+
 Pending before Sprint 11G can be marked fully complete:
 
-- rendered confirmation that Physics 7 continues to open normally from the new shell;
 - rendered confirmation that Mathematics 7 opens only its generic placeholder and receives no Physics evidence.
 
 See `docs/sprint-11g-multi-subject-learner-shell.md` for the detailed contract and evidence.
 
 ### 11H — Platform-wide Front-End Containment & Layout Polish
 
-**Status: 🟡 Implementation complete; post-deployment authenticated visual confirmation pending.**
+**Status: 🟡 Implementation complete; authenticated single-subject learner visual QA passed; two-subject and staff-surface visual QA pending.**
 
 Sprint 11H was added after the first authenticated two-subject screenshots exposed visual containment defects: Armenian labels touching or crossing button borders, insufficient internal card spacing, and flex/grid children capable of forcing content outside component boundaries.
 
@@ -133,9 +136,13 @@ Implemented:
 - diagnostics and mastery checks are now explicitly defined as unit-bound, while course progress aggregates unit evidence;
 - regression coverage was added for containment and assessment-scope semantics.
 
+Rendered evidence:
+
+- on 2026-09-18 the authenticated single-subject learner Home, Physics workspace and Progress view showed no observed containment regression at a 1350 × 926 desktop viewport.
+
 Pending:
 
-- reload the authenticated production UI and confirm the reported Home/card/button defects are visually resolved;
+- repeat the containment confirmation on the authenticated two-subject Home and Mathematics placeholder;
 - quick rendered spot-check of teacher/admin/content surfaces for regressions under the shared containment rules.
 
 See `docs/sprint-11h-frontend-containment-polish.md` and `docs/assessment-scope-model.md`.
