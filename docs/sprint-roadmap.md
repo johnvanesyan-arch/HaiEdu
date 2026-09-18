@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.6  
+**Roadmap version:** 2.7  
 **Updated:** 2026-09-18  
-**Current programme status:** Sprint 11 in progress. Sprint 11A–11E and 11I are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. Standards reconciliation and versioning continue in 11J–11K, followed by 11L re-baselined pilot closure before Sprint 12 calibration.
+**Current programme status:** Sprint 11 in progress. Sprint 11A–11E and 11I–11J are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. Curriculum versioning continues in 11K, followed by 11L re-baselined pilot closure before Sprint 12 calibration.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -29,7 +29,7 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 | 9 | UX, Accessibility & Armenian Localization QA | ✅ | Armenian-first UX, accessibility and responsive hardening completed at source/QA level. |
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
-| 11 | Assessment Integrity, Standards Integrity & Closed Physics Pilot | 🟡 | 11A–11E and 11I complete; 11F–11H remain partly open; 11J–11K continue standards reconciliation/versioning; 11L closes the pilot on a reconciled curriculum baseline. |
+| 11 | Assessment Integrity, Standards Integrity & Closed Physics Pilot | 🟡 | 11A–11E and 11I–11J complete; 11F–11H remain partly open; 11K adds curriculum versioning/provenance; 11L closes the pilot on the reconciled baseline. |
 | 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior only from curriculum-compatible, version-aware pilot evidence. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize academic, institutional, authorization and enrollment architecture: schools, academic years, memberships, school admins, teacher boundaries, centrally governed content and controlled learner enrollment. |
@@ -173,42 +173,36 @@ See `docs/sprint-11i-standards-source-registry.md`.
 
 ### 11J — Physics 7 Current-Standard Reconciliation
 
-**Status: ⏳ Planned.**
+**Status: ✅ Complete.**
 
-Purpose: re-audit the existing Physics 7 Chapter I architecture against the currently applicable official framework, Physics subject standard and Grade 7 programme before treating Chapter I as a reference implementation.
+The current ARLIS programme appendix was extracted and verified, resolving the prior official-outcome blocker.
 
-Crosswalk:
+Implemented:
 
-```text
-current national framework
-  -> current Physics subject standard
-      -> Physics 7 programme
-          -> official outcome
-              -> HaiEdu learning outcome / micro-skill
-                  -> items and assessment blueprint
-```
+- stored the six current Grade 7 Physics Theme 1 outcomes verbatim: five mandatory and one additional;
+- recorded the framework and Physics-standard context for every official outcome;
+- reconciled all 10 existing Chapter I micro-skills without changing stable skill IDs;
+- classified direct versus justified derived-supporting mappings explicitly;
+- recorded a disposition for all 77 registered item families;
+- recomputed the active Practice, Diagnostic and protected Mastery blueprints through the actual pool → item → template → family → outcome graph;
+- verified all 240 active variants retain a Chapter I curriculum scope and a current programme trace;
+- added RLS-protected reconciliation/provenance tables plus fail-closed completeness assertions;
+- preserved all item, session, attempt and learner-history-bearing identifiers.
 
-For every existing skill/outcome/item family, record one of:
+Disposition summary:
 
-- unchanged;
-- mapping updated;
-- wording updated;
-- scope changed;
-- merge required;
-- split required;
-- no longer applicable;
-- new official outcome missing.
+- 6 official outcomes: `new_official_outcome_missing` gap discovered and resolved;
+- 10 skills: `mapping_updated`;
+- 77 item families: `mapping_updated`;
+- no wording change, material scope change, merge, split, removal or retirement required.
 
-Rules:
+Post-migration read-back shows zero unmapped skills, zero unreconciled families and zero active items without traceability. Fresh reconciliation indexes produce only expected unused-index informational notices; there is no new-table security or actionable performance finding.
 
-- do not destroy learner history merely because a standard changes;
-- retain stable identifiers where semantics are unchanged;
-- create a new curriculum version or mapping when meaning changes materially;
-- platform-derived micro-skills are allowed only when traceably supportive of an official outcome.
+Skills remain in `review` status because standards reconciliation does not substitute for external Physics SME approval.
 
-Exit criterion:
+Exit criterion satisfied: every current Chapter I skill and assessment family is traceable to the current Physics 7 programme directly or as an explicitly justified derived micro-skill.
 
-- every Chapter I skill and assessment family is traceable to the current Physics 7 programme or explicitly documented as a justified derived micro-skill.
+See `docs/sprint-11j-physics7-current-standard-reconciliation.md`.
 
 ### 11K — Curriculum Versioning, Provenance & Release Gates
 

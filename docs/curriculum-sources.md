@@ -51,6 +51,16 @@ All official Grade 7 outcomes must be taken from the current incorporated progra
 
 The complete chapter/section map is recorded in `docs/grade7-physics-textbook-map.md`.
 
+## 5. Sprint 11J extraction and reconciliation record
+
+On 2026-09-18, Sprint 11J extracted the current ARLIS-linked DOCX appendices, verified their hashes and stored the six exact Grade 7 Theme 1 outcomes.
+
+- standard attachment SHA-256: `619a30f43ca972d138e738dbfff0797d17f8bb12ff533894490b88af99537397`;
+- programme attachment SHA-256: `966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478`;
+- reconciliation key: `physics7_u01_2026_08_14`.
+
+The detailed outcome/skill/item-family/blueprint crosswalk is in `docs/sprint-11j-physics7-current-standard-reconciliation.md`.
+
 ## Source hierarchy
 
 1. Armenian General Education State Standard

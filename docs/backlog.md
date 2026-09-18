@@ -21,13 +21,13 @@
 - [ ] Run live answer -> attempt -> mastery integration test
 
 ## Sprint 1 — Grade 7 Physics curriculum slice
-- [ ] Obtain/map current official Grade 7 Physics programme
-- [ ] Identify current approved textbook used in pilot class
-- [ ] Select first unit
-- [ ] Map official outcomes
-- [ ] Decompose 5–10 micro-skills
+- [x] Obtain/map current official Grade 7 Physics programme
+- [x] Identify current approved textbook used in pilot class
+- [x] Select first unit
+- [x] Map official outcomes
+- [x] Decompose 5–10 micro-skills
 - [ ] Validate prerequisites with Physics SME
-- [ ] Draft 20–40 deterministic items
+- [x] Draft 20–40 deterministic items
 - [ ] Teacher QA
 
 ## Sprint 2 — First live learning loop

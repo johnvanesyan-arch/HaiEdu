@@ -1,6 +1,6 @@
 # Grade 7 Physics — Chapter I Curriculum Architecture
 
-Status: **DRAFT / SME REVIEW REQUIRED**
+Status: **CURRENT-STANDARD RECONCILED / EXTERNAL SME REVIEW REQUIRED**
 
 This document defines the first real curriculum slice for the Armenian Curriculum Mastery Platform. It is intentionally conservative about what is called an **official 2026 learning outcome**.
 
@@ -10,20 +10,17 @@ This document defines the first real curriculum slice for the Armenian Curriculu
 
 1. **Armenian General Education State Standard** — current 2026 incorporation of Government Decision N 439-N, amended 21 May 2026 by N 699-N.
    - Source: https://www.arlis.am/hy/acts/225446
-2. **Physics subject standard, Grades 7–12** — N 42-N, amended 28 July 2026 by N 37-N.
-   - Current incorporation/source: https://old.arlis.am/DocumentView.aspx?docid=229335
+2. **Physics subject standard, Grades 7–12** — N 42-N, with its appendix replaced on 28 July 2026 by N 37-N, effective 14 August 2026.
+   - Current amendment and replacement appendix: https://www.arlis.am/hy/acts/229259
 3. **Physics programmes, Grades 7–12** — N 40-N as amended 28 July 2026 by N 36-N; current incorporation effective 14 August 2026.
    - Source: https://www.arlis.am/hy/acts/229331
 4. **Pilot textbook** — Գագիկ Մելիքյան, Սոս Մաիլյան, *Ֆիզիկա 7*, Էդիթ Պրինտ, 2023.
 
 ### Important provenance rule
 
-The 2026 order replaced the programme appendix. The currently accessible ARLIS rendering confirms the replacement and current legal status, but the body of the new Grade 7 appendix was not exposed through the retrieval route used during this sprint. Therefore:
+Sprint 11J extracted the current ARLIS DOCX appendices and stored their SHA-256 fingerprints in the live reconciliation record. The exact current 2026 Grade 7 Theme 1 outcomes are now present in `learning_outcomes`; the repealed 2022 programme remains historical context only.
 
-- this document **does not publish the repealed 2022 wording as if it were the current 2026 wording**;
-- the 2022 Grade 7 programme is used only as a **legacy crosswalk/continuity check** because it directly underpinned the 2023 textbook and contains the same Chapter I structure;
-- database `learning_outcomes` remain empty for this unit until the exact current 2026 Grade 7 statements are independently extracted/verified;
-- internal micro-skills may proceed because they are grounded in the current textbook and the platform's own instructional design, but remain `review` status until SME validation.
+The internal micro-skills are not represented as official wording. Each one is classified as either a direct operationalization or a traceable derived-supporting micro-skill, and external Physics SME validation remains pending.
 
 ## 2. First MVP unit
 
@@ -43,19 +40,20 @@ The 2026 order replaced the programme appendix. The currently accessible ARLIS r
 | PHY7-U01-T04 | §4 Ֆիզիկական մեծություններ։ Ֆիզիկական մեծությունների չափումը | 15–19 | Quantities, units, instruments, scales, error, direct/indirect measurement |
 | PHY7-U01-T05 | §5 Լաբորատոր աշխատանք 1 + §6 Խնդիրների լուծում | 19–22 | Measurement procedure, displacement volume, integrated problem solving |
 
-## 3. Legacy programme crosswalk — NOT current 2026 legal wording
+## 3. Current 2026 programme crosswalk
 
-The repealed 2022 Grade 7 programme listed the following Theme 1 outcomes. These are retained only to help us see continuity with the 2023 textbook while we await direct verification of the 2026 appendix:
+The current N 40-Ն / N 36-Ն programme defines these Theme 1 outcomes:
 
-1. present the subject matter of physics;
-2. present notable Armenian physicists;
-3. give examples of physical phenomena;
-4. present SI units for time, distance, volume and mass;
-5. perform simple observations, measurements and experiments;
-6. demonstrate responsibility, consistency and precision while measuring;
-7. solve problems requiring knowledge and justification corresponding to the theme outcomes.
+| Locator | Level | Exact Armenian statement |
+|---|---|---|
+| Պարտադիր 1(1) | Mandatory | ներկայացնել ֆիզիկայի ուսումնասիրության առարկան (Հ9) |
+| Պարտադիր 1(2) | Mandatory | ներկայացնել հայ անվանի ֆիզիկոսներին (Հ30) |
+| Պարտադիր 1(3) | Mandatory | բերել ֆիզիկական երևույթների օրինակներ (Հ9) |
+| Պարտադիր 1(4) | Mandatory | կատարել պարզագույն դիտումներ, չափումներ և փորձեր (Հ4, Հ28) |
+| Պարտադիր 1(5) | Mandatory | չափումներ կատարելիս դրսևորել պատասխանատու վերաբերմունք, անհրաժեշտ հետևողականություն և ճշգրտություն (Հ4, Հ28) |
+| Լրացուցիչ 2(1) | Additional | ներկայացնել ժամանակի, հեռավորության, ծավալի, զանգվածի չափման միավորները ՄՀ համակարգում |
 
-No row in the live `learning_outcomes` table should be created from this legacy list until the current 2026 wording is verified.
+The live mapping and per-family dispositions are documented in `docs/sprint-11j-physics7-current-standard-reconciliation.md`.
 
 ## 4. Micro-skill graph v0.1
 
@@ -224,8 +222,14 @@ The Physics SME must review:
 
 Only after this review should skills move from `review` to `published`.
 
-## 11. Open blocker: exact current 2026 official outcomes
+## 11. Current-standard reconciliation status
 
-The current 2026 programme source has been identified and versioned, but the exact Grade 7 appendix text must still be extracted from an authoritative copy before we populate `learning_outcomes` and `skill_outcomes` in production.
+Sprint 11J resolved the official-outcome blocker:
 
-Until then, the platform may build and test its **internal skill graph**, but it must not represent the legacy 2022 outcome wording as current 2026 legal text.
+- six current Theme 1 outcomes are stored verbatim;
+- all ten micro-skills have explicit direct or derived-supporting programme mappings;
+- all 77 registered item families have a disposition and primary official-outcome trace;
+- all 240 active variants are traceable through their family and existing unit scope;
+- stable skills, items, sessions, attempts and learner evidence were not rewritten.
+
+External Physics SME review remains a separate publication-quality gate. Until that review is complete, the internal skill graph remains in `review` status even though its current standards traceability is complete.
