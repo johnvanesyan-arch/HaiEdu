@@ -12,17 +12,17 @@ The live Supabase database currently contains:
 
 - 1 Grade 7 Physics Chapter I unit
 - 5 topics
-- 10 provisional micro-skills
+- 6 exact current official programme outcomes: 5 mandatory and 1 additional
+- 10 standards-reconciled micro-skills, still in `review` pending external Physics SME approval
 - 9 prerequisite links
-- 60 provisional development items
-- 60 server-side answer keys
-- 140 multiple-choice option records
-- 14 structured visual/stimulus items
-- 0 current official learning-outcome records for this unit pending exact verification of the 2026 Grade 7 programme appendix
+- 77 registered item families
+- 260 current non-retired variants, including 240 active pilot-eligible variants
+- active capacity of 120 Practice, 40 Diagnostic and 80 protected Mastery variants
+- an auditable framework → subject standard → programme → official outcome → skill → item-family reconciliation
 
 The micro-skill graph covers physical phenomena; body/material/phenomenon distinctions; physicists; observation vs experiment; scientific inquiry; quantities/units/instruments; unit conversion; instrument scales; measurement error/precision; and integrated measurement investigations.
 
-Content is intentionally marked `provisional_no_sme_review` and `pilot_ready=false`. Physics-SME review was deferred for development speed, not treated as completed validation.
+All active variants have completed internal content review and are pilot-eligible. `provisional_no_sme_review` remains explicit because internal review and current-standard reconciliation do not substitute for external Physics SME approval.
 
 ## Working learning loop
 
@@ -85,4 +85,4 @@ The Supabase project is active in `eu-central-1`.
 
 ## Provenance rule
 
-The current Armenian General Education State Standard and current 2026 Physics programme are authoritative. The 2023 textbook provides the classroom/textbook mapping. We do not publish repealed programme wording as current official outcomes. Internal micro-skills and items may be developed provisionally before official-outcome verification and Physics-SME validation, but they cannot be treated as validated pilot content until those gates are completed.
+The current Armenian General Education State Standard, current Physics subject standard and current 2026 Physics programme are authoritative. The 2023 textbook provides the classroom/navigation mapping. Sprint 11J stores the six current Theme 1 outcomes verbatim and classifies every implemented skill and registered family as directly mapped or derived-supporting. External Physics SME approval remains a separate release-quality gate.
