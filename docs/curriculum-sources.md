@@ -38,7 +38,7 @@ N 36-Ն amended N 40-Ն, replaced its appendix with programmes for Grades 7–12
 
 ### Implementation rule
 
-All official Grade 7 outcomes must be taken from the current incorporated programme. Earlier programme versions may be used only as historical/reference material, with that status made explicit.
+All official Grade 7 outcomes must be taken from the current incorporated programme. Earlier programme versions may be used only as historical/reference material, with that status made explicit.\n\nThe current programme appendix prints mandatory outcome 1(5)'s cross-reference as `(Հ4, 28)`. The database and crosswalk preserve that form exactly and attach an editorial transcription note rather than inferring a missing `Հ`.
 
 ## 4. Pilot-class textbook
 
