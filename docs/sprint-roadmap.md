@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.5  
+**Roadmap version:** 2.6  
 **Updated:** 2026-09-18  
-**Current programme status:** Sprint 11 in progress. Sprint 11A–11E are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. New standards-governance work is now sequenced as 11I–11K, followed by 11L re-baselined pilot closure before Sprint 12 calibration.
+**Current programme status:** Sprint 11 in progress. Sprint 11A–11E and 11I are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. Standards reconciliation and versioning continue in 11J–11K, followed by 11L re-baselined pilot closure before Sprint 12 calibration.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -29,7 +29,7 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 | 9 | UX, Accessibility & Armenian Localization QA | ✅ | Armenian-first UX, accessibility and responsive hardening completed at source/QA level. |
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
-| 11 | Assessment Integrity, Standards Integrity & Closed Physics Pilot | 🟡 | 11A–11E complete; 11F–11H remain partly open; 11I–11K establish standards provenance/versioning; 11L closes the pilot on a reconciled curriculum baseline. |
+| 11 | Assessment Integrity, Standards Integrity & Closed Physics Pilot | 🟡 | 11A–11E and 11I complete; 11F–11H remain partly open; 11J–11K continue standards reconciliation/versioning; 11L closes the pilot on a reconciled curriculum baseline. |
 | 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior only from curriculum-compatible, version-aware pilot evidence. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize academic, institutional, authorization and enrollment architecture: schools, academic years, memberships, school admins, teacher boundaries, centrally governed content and controlled learner enrollment. |
@@ -149,34 +149,27 @@ See `docs/sprint-11h-frontend-containment-polish.md` and `docs/assessment-scope-
 
 ### 11I — National Standards Baseline & Source Registry
 
-**Status: ⏳ Planned.**
+**Status: ✅ Complete.**
 
-Purpose: establish the authoritative curriculum-source hierarchy before calibration or multi-subject expansion.
+Sprint 11I now provides a database-backed standards registry and subject-programme applicability matrix.
 
-Canonical hierarchy:
+Implemented:
 
-```text
-National General Education State Standard
-  -> Subject / Subject-Area Standard
-      -> Grade-Specific Programme
-          -> Units / Themes
-              -> Official Learning Outcomes
-                  -> HaiEdu Skills
-```
+- registered the current national framework: N 439-Ն as amended by N 699-Ն, current revision effective 22 May 2026;
+- registered the current Physics subject standard: N 42-Ն with its appendix replaced by N 37-Ն, effective 14 August 2026;
+- registered the current Physics programme source: N 40-Ն as amended and reissued by N 36-Ն, effective 14 August 2026;
+- stored base legal identifiers separately from amendment identifiers;
+- added authorities, source class/type, subject/grade applicability, official URLs, dates, verification/revision state and supersession support;
+- bound Physics 7 to a complete national framework → Physics standard → Grade 7 programme chain;
+- classified the Sprint 11G Mathematics 7 navigation fixture as `fixture_exempt`, with no standards-alignment claim;
+- added RLS, admin/content-admin write boundaries, integrity constraints and foreign-key indexes;
+- documented an event-driven and per-term source-review procedure.
 
-Required work:
+Post-migration verification found zero unbound subject programmes. Supabase advisor checks report no security or actionable performance finding on the new registry tables; newly created indexes appear only in the expected unused-index informational list.
 
-- register the current overarching national standard;
-- register applicable subject/subject-area standards;
-- register grade-specific programmes and applicability by grade;
-- record issuing authority, legal/order identifier, source URL, approval/effective dates where available, revision status and supersession relationships;
-- create a subject-standard applicability matrix;
-- distinguish authoritative curriculum sources from textbooks and supplementary references;
-- establish a source-review procedure so future curriculum changes are not handled ad hoc.
+Exit criterion satisfied: every current subject-programme row resolves either to a complete governing source set or to an explicit non-curriculum fixture exemption.
 
-Exit criterion:
-
-- the platform team can answer, from the registry, which official standard/programme governs any implemented subject-grade combination and which version a curriculum release was built against.
+See `docs/sprint-11i-standards-source-registry.md`.
 
 ### 11J — Physics 7 Current-Standard Reconciliation
 

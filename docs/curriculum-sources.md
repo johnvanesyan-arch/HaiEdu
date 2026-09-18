@@ -1,32 +1,46 @@
 # Curriculum Sources — Grade 7 Physics
 
-This document records authoritative and classroom sources used for the Grade 7 Physics implementation.
+This document records authoritative and classroom sources used for the Grade 7 Physics implementation. The database-backed registry and applicability matrix are defined in `docs/sprint-11i-standards-source-registry.md`.
 
-## 1. Current official Physics programme
+## 1. Current national framework
 
-**Authority:** Ministry of Education, Science, Culture and Sport of the Republic of Armenia  
-**Order:** N 36-N  
-**Date:** 28 July 2026  
-**Official publication:** 13 August 2026  
-**Effect:** The order reissued the Physics programmes for Grades 7–12 and repealed the earlier 2022 Grade 7 / Grade 10 programme order.
+**Authority:** Government of the Republic of Armenia  
+**Base decision:** N 439-Ն, 8 April 2010  
+**Current amendment:** N 699-Ն, 21 May 2026  
+**Current incorporated revision effective:** 22 May 2026
 
-ARLIS incorporated record: `https://old.arlis.am/DocumentView.aspx?docID=229331`
-
-### Implementation rule
-
-All official Grade 7 outcomes must be taken from the incorporated 2026 programme. The older 2022 Grade 7 programme may be used only as historical/reference material until a point is verified against the 2026 version.
+ARLIS official incorporation: `https://www.arlis.am/hy/acts/225446`
 
 ## 2. Current Physics subject standard
 
 **Authority:** Ministry of Education, Science, Culture and Sport of the Republic of Armenia  
-**Order:** N 37-N  
-**Date:** 28 July 2026  
-**Official publication:** 13 August 2026  
-**Scope:** Physics subject standard for Grades 7–12.
+**Base order:** N 42-Ն, 30 March 2023  
+**Current amendment:** N 37-Ն, 28 July 2026  
+**Official publication of current amendment:** 13 August 2026  
+**Current replacement appendix effective:** 14 August 2026  
+**Scope:** Physics subject standard for Grades 7–12
 
-ARLIS record: `https://www.arlis.am/hy/acts/229259`
+ARLIS current amendment record and replacement appendix: `https://www.arlis.am/hy/acts/229259`
 
-## 3. Pilot-class textbook
+The registry stores N 42-Ն as the base legal identifier and N 37-Ն as the current amendment. N 37-Ն replaced the full appendix; it is not mislabeled as the original standard order.
+
+## 3. Current Physics programme
+
+**Authority:** Ministry of Education, Science, Culture and Sport of the Republic of Armenia  
+**Base order:** N 40-Ն, 7 May 2024  
+**Current amendment:** N 36-Ն, 28 July 2026  
+**Official publication of current amendment:** 13 August 2026  
+**Current incorporated programme effective:** 14 August 2026
+
+ARLIS official incorporation: `https://www.arlis.am/hy/acts/229331`
+
+N 36-Ն amended N 40-Ն, replaced its appendix with programmes for Grades 7–12 and repealed the earlier N 51-Ն and N 85-Ն programme orders.
+
+### Implementation rule
+
+All official Grade 7 outcomes must be taken from the current incorporated programme. Earlier programme versions may be used only as historical/reference material, with that status made explicit.
+
+## 4. Pilot-class textbook
 
 **Title:** Ֆիզիկա 7  
 **Authors:** Գագիկ Մելիքյան, Սոս Մաիլյան  
@@ -47,4 +61,4 @@ The complete chapter/section map is recorded in `docs/grade7-physics-textbook-ma
 6. Platform skill decomposition and item design
 7. PISA-inspired application / transfer / reasoning design
 
-If a textbook sequence differs from an official programme outcome, the official programme remains authoritative while the textbook remains the classroom-navigation layer.
+The first three layers are normative. The textbook is instructional/navigation material; SME knowledge and other references are supplementary. If any lower layer differs from an official programme outcome, the normative source remains authoritative.
