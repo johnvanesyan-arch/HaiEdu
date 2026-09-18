@@ -31,16 +31,16 @@ The current programme defines five mandatory outcomes and one additional outcome
 
 | Locator | Level | Exact Armenian statement |
 |---|---|---|
-| Պարտադիր 1(1) | Mandatory | ներկայացնել ֆիզիկայի ուսումնասիրության առարկան (Հ9) |
-| Պարտադիր 1(2) | Mandatory | ներկայացնել հայ անվանի ֆիզիկոսներին (Հ30) |
-| Պարտադիր 1(3) | Mandatory | բերել ֆիզիկական երևույթների օրինակներ (Հ9) |
-| Պարտադիր 1(4) | Mandatory | կատարել պարզագույն դիտումներ, չափումներ և փորձեր (Հ4, Հ28) |
-| Պարտադիր 1(5) | Mandatory | չափումներ կատարելիս դրսևորել պատասխանատու վերաբերմունք, անհրաժեշտ հետևողականություն և ճշգրտություն (Հ4, Հ28) |
+| Պարտադիր 1(1) | Mandatory | ներկայացնել ֆիզիկայի ուսումնասիրության առարկան (Հ9), |
+| Պարտադիր 1(2) | Mandatory | ներկայացնել հայ անվանի ֆիզիկոսներին (Հ30), |
+| Պարտադիր 1(3) | Mandatory | բերել ֆիզիկական երևույթների օրինակներ (Հ9), |
+| Պարտադիր 1(4) | Mandatory | կատարել պարզագույն դիտումներ, չափումներ և փորձեր,(Հ4, Հ28), |
+| Պարտադիր 1(5) | Mandatory | չափումներ կատարելիս դրսևորել պատասխանատու վերաբերմունք, անհրաժեշտ հետևողականություն և ճշգրտություն,(Հ4, 28), |
 | Լրացուցիչ 2(1) | Additional | ներկայացնել ժամանակի, հեռավորության, ծավալի, զանգվածի չափման միավորները ՄՀ համակարգում |
 
 The programme also explicitly includes physical quantities and their measurement, simple measuring instruments, laboratory measurement of volume/mass/length/temperature, and problems involving instrument scale division and measurement error.
 
-All six rows were absent from `learning_outcomes` before 11J. They are now stored verbatim with the disposition `new_official_outcome_missing`, meaning a discovered baseline gap that this sprint resolved—not a remaining open gap.
+All six rows were absent from `learning_outcomes` before 11J. They are now stored verbatim with the disposition `new_official_outcome_missing`, meaning a discovered baseline gap that this sprint resolved—not a remaining open gap.\n\nThe current appendix prints mandatory outcome 1(5)'s final reference as `(Հ4, 28)`. Sprint 11J preserves that printed form and records a transcription note; it does not infer a missing `Հ` or silently normalize official text.
 
 ## Skill reconciliation
 
@@ -97,7 +97,7 @@ Migration `0036_sprint_11j_physics7_current_standard_reconciliation.sql`:
 - enables RLS with completed-run read access and admin/content-admin writes;
 - fails closed unless all six outcomes, ten skills, every current family, all three active pools and every active item are traceable.
 
-Migration `0037_sprint_11j_reconciliation_advisor_hardening.sql` adds the foreign-key access-path indexes identified during the post-DDL advisor pass.
+Migration `0037_sprint_11j_reconciliation_advisor_hardening.sql` adds the foreign-key access-path indexes identified during the post-DDL advisor pass.\n\nMigration `0038_sprint_11j_preserve_official_outcome_wording.sql` preserves the programme's exact printed punctuation and records the `(Հ4, 28)` source anomaly without editorial repair.
 
 Reconciliation key: `physics7_u01_2026_08_14`.
 
@@ -106,7 +106,7 @@ Reconciliation key: `physics7_u01_2026_08_14`.
 Live post-migration assertions and independent read-back confirmed:
 
 - reconciliation status: `complete`;
-- current official outcomes: 6;
+- current official outcomes: 6;\n- exact printed form for mandatory 1(5): preserved with an explicit transcription note;
 - reconciled skills: 10 / 10;
 - reconciled item families: 77 / 77;
 - active assessment pools: 3 / 3;
