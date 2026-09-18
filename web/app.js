@@ -96,6 +96,8 @@ async function signOut() {
   current = null;
   currentSession = null;
   dashboardData = null;
+  window.__HAIEDU_DASHBOARD__ = null;
+  sessionStorage.removeItem("amp:practice-bootstrap");
   clearQuestion();
 }
 
@@ -115,6 +117,8 @@ async function showDashboard() {
   }
 
   dashboardData = data;
+  window.__HAIEDU_DASHBOARD__ = data;
+  window.dispatchEvent(new CustomEvent("amp-dashboard-ready", { detail: data }));
   renderDashboard(data);
   $("dashboardLoading").classList.add("hidden");
   $("dashboardContent").classList.remove("hidden");

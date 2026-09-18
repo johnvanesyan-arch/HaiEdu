@@ -11,6 +11,30 @@ let current = null;
 let questionStartedAt = null;
 let starting = false;
 
+const PRACTICE_BOOTSTRAP_KEY = "amp:practice-bootstrap";
+
+function readPracticeBootstrap(userId) {
+  try {
+    const raw = sessionStorage.getItem(PRACTICE_BOOTSTRAP_KEY);
+    sessionStorage.removeItem(PRACTICE_BOOTSTRAP_KEY);
+    if (!raw) return null;
+
+    const cached = JSON.parse(raw);
+    if (
+      cached?.userId !== userId
+      || !cached?.dashboard
+      || !Number.isFinite(cached?.expiresAt)
+      || cached.expiresAt < Date.now()
+    ) {
+      return null;
+    }
+    return cached.dashboard;
+  } catch {
+    sessionStorage.removeItem(PRACTICE_BOOTSTRAP_KEY);
+    return null;
+  }
+}
+
 const statusLabels = {
   insufficient_evidence: "Տվյալները քիչ են",
   needs_support: "Աջակցություն է պետք",
@@ -575,6 +599,13 @@ async function initialize() {
   const { data: sessionData } = await supabase.auth.getSession();
   if (!sessionData.session) {
     window.location.replace("./index.html");
+    return;
+  }
+
+  const cachedDashboard = readPracticeBootstrap(sessionData.session.user.id);
+  if (cachedDashboard) {
+    dashboard = cachedDashboard;
+    await startOrResumePractice();
     return;
   }
 

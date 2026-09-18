@@ -10,15 +10,37 @@ const resumeBtn = document.getElementById("resumeLearningBtn");
 const practiceBtn = document.getElementById("startPracticeBtn");
 const dashboardContent = document.getElementById("dashboardContent");
 
-let dashboard = null;
+const PRACTICE_BOOTSTRAP_KEY = "amp:practice-bootstrap";
+const PRACTICE_BOOTSTRAP_TTL_MS = 60_000;
+
+let dashboard = window.__HAIEDU_DASHBOARD__ ?? null;
+let currentUserId = null;
 let loading = null;
 let bypassResumeOnce = false;
+
+function setDashboard(data) {
+  dashboard = data;
+}
+
+function rememberPracticeBootstrap(data) {
+  if (!data || !currentUserId) return;
+  try {
+    sessionStorage.setItem(PRACTICE_BOOTSTRAP_KEY, JSON.stringify({
+      savedAt: Date.now(),
+      expiresAt: Date.now() + PRACTICE_BOOTSTRAP_TTL_MS,
+      userId: currentUserId,
+      dashboard: data,
+    }));
+  } catch {
+    // The destination page keeps a complete network fallback.
+  }
+}
 
 async function loadDashboard() {
   if (loading) return loading;
   loading = supabase.functions.invoke("get-student-dashboard", { body: {} })
     .then(({ data, error }) => {
-      if (!error) dashboard = data;
+      if (!error) setDashboard(data);
       return { data, error };
     })
     .finally(() => { loading = null; });
@@ -37,6 +59,7 @@ function practiceHref(data) {
 practiceBtn?.addEventListener("click", (event) => {
   event.preventDefault();
   event.stopImmediatePropagation();
+  rememberPracticeBootstrap(dashboard);
   window.location.href = practiceHref(dashboard);
 }, true);
 
@@ -69,6 +92,7 @@ resumeBtn?.addEventListener("click", async (event) => {
   if (practiceOwned) {
     event.preventDefault();
     event.stopImmediatePropagation();
+    rememberPracticeBootstrap(data);
     window.location.href = practiceHref(data);
     return;
   }
@@ -80,15 +104,18 @@ resumeBtn?.addEventListener("click", async (event) => {
   }
 }, true);
 
-if (dashboardContent) {
-  const sync = () => {
-    if (!dashboardContent.classList.contains("hidden")) queueMicrotask(loadDashboard);
-  };
-  const observer = new MutationObserver(sync);
-  observer.observe(dashboardContent, { attributes: true, attributeFilter: ["class"] });
-  sync();
-}
+window.addEventListener("amp-dashboard-ready", (event) => {
+  if (event.detail) setDashboard(event.detail);
+});
+
+supabase.auth.getSession().then(({ data }) => {
+  currentUserId = data.session?.user?.id ?? null;
+});
 
 supabase.auth.onAuthStateChange((_event, session) => {
-  if (session) setTimeout(loadDashboard, 200);
+  currentUserId = session?.user?.id ?? null;
+  if (!session) {
+    dashboard = null;
+    sessionStorage.removeItem(PRACTICE_BOOTSTRAP_KEY);
+  }
 });
