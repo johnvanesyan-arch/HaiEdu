@@ -8,7 +8,6 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const resumeBtn = document.getElementById("resumeLearningBtn");
 const practiceBtn = document.getElementById("startPracticeBtn");
-const dashboardContent = document.getElementById("dashboardContent");
 
 const PRACTICE_BOOTSTRAP_KEY = "amp:practice-bootstrap";
 const PRACTICE_BOOTSTRAP_TTL_MS = 60_000;
