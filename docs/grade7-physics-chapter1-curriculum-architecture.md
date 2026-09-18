@@ -46,14 +46,14 @@ The current N 40-Ն / N 36-Ն programme defines these Theme 1 outcomes:
 
 | Locator | Level | Exact Armenian statement |
 |---|---|---|
-| Պարտադիր 1(1) | Mandatory | ներկայացնել ֆիզիկայի ուսումնասիրության առարկան (Հ9) |
-| Պարտադիր 1(2) | Mandatory | ներկայացնել հայ անվանի ֆիզիկոսներին (Հ30) |
-| Պարտադիր 1(3) | Mandatory | բերել ֆիզիկական երևույթների օրինակներ (Հ9) |
-| Պարտադիր 1(4) | Mandatory | կատարել պարզագույն դիտումներ, չափումներ և փորձեր (Հ4, Հ28) |
-| Պարտադիր 1(5) | Mandatory | չափումներ կատարելիս դրսևորել պատասխանատու վերաբերմունք, անհրաժեշտ հետևողականություն և ճշգրտություն (Հ4, Հ28) |
+| Պարտադիր 1(1) | Mandatory | ներկայացնել ֆիզիկայի ուսումնասիրության առարկան (Հ9), |
+| Պարտադիր 1(2) | Mandatory | ներկայացնել հայ անվանի ֆիզիկոսներին (Հ30), |
+| Պարտադիր 1(3) | Mandatory | բերել ֆիզիկական երևույթների օրինակներ (Հ9), |
+| Պարտադիր 1(4) | Mandatory | կատարել պարզագույն դիտումներ, չափումներ և փորձեր,(Հ4, Հ28), |
+| Պարտադիր 1(5) | Mandatory | չափումներ կատարելիս դրսևորել պատասխանատու վերաբերմունք, անհրաժեշտ հետևողականություն և ճշգրտություն,(Հ4, 28), |
 | Լրացուցիչ 2(1) | Additional | ներկայացնել ժամանակի, հեռավորության, ծավալի, զանգվածի չափման միավորները ՄՀ համակարգում |
 
-The live mapping and per-family dispositions are documented in `docs/sprint-11j-physics7-current-standard-reconciliation.md`.
+The current appendix prints mandatory outcome 1(5)'s final reference as `(Հ4, 28)`. The platform preserves that printed form and records a transcription note instead of inferring a missing `Հ`.\n\nThe live mapping and per-family dispositions are documented in `docs/sprint-11j-physics7-current-standard-reconciliation.md`.
 
 ## 4. Micro-skill graph v0.1
 
