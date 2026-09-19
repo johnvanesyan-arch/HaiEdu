@@ -6,6 +6,7 @@ const read = (path) => readFileSync(path, "utf8");
 
 const migration = read("supabase/migrations/0014_sprint_11b_repetition_selection_policy.sql");
 const integrity = read("supabase/functions/_shared/assessment-integrity.ts");
+const curriculumRelease = read("supabase/functions/_shared/curriculum-release.ts");
 const startSession = read("supabase/functions/start-learning-session/index.ts");
 const getSessionItem = read("supabase/functions/get-session-item/index.ts");
 const legacyPractice = read("supabase/functions/get-practice-item/index.ts");
@@ -42,7 +43,8 @@ test("Diagnostic rotates forms and persists form identity", () => {
 });
 
 test("Mastery is protected, unseen-first and alternate-retest aware", () => {
-  assert.match(startSession, /getEligiblePoolItemIds\(admin, "mastery_check"\)/);
+  assert.match(curriculumRelease, /\.eq\("purpose", mode\)/);
+  assert.match(startSession, /eligibleIds = curriculumContext\.itemIds/);
   assert.match(startSession, /chooseMasteryByExposure/);
   assert.match(startSession, /alternate_retest/);
   assert.match(startSession, /alternateFromSessionId/);

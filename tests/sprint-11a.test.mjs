@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 
 const migration = readFileSync("supabase/migrations/0013_sprint_11a_item_identity_exposure_pools.sql", "utf8");
 const helper = readFileSync("supabase/functions/_shared/assessment-integrity.ts", "utf8");
+const curriculumRelease = readFileSync("supabase/functions/_shared/curriculum-release.ts", "utf8");
 const startSession = readFileSync("supabase/functions/start-learning-session/index.ts", "utf8");
 const getSessionItem = readFileSync("supabase/functions/get-session-item/index.ts", "utf8");
 const legacyPractice = readFileSync("supabase/functions/get-practice-item/index.ts", "utf8");
@@ -27,16 +28,18 @@ test("Sprint 11A defines explicit assessment pools and protects Mastery content"
   assert.match(migration, /not private\.item_is_protected\(id\)/);
 });
 
-test("canonical Practice delivery uses the Practice pool and legacy untracked delivery stays closed", () => {
+test("canonical Practice delivery uses the frozen release blueprint and legacy untracked delivery stays closed", () => {
   assert.match(helper, /practice: "PHY7-U01-PRACTICE-BASELINE"/);
-  assert.match(getSessionItem, /getEligiblePoolItemIds\(admin, "practice"\)/);
+  assert.match(curriculumRelease, /from\("assessment_blueprint_items"\)/);
+  assert.match(getSessionItem, /getBlueprintItemIds\(admin, session\.assessment_blueprint_id\)/);
   assert.match(legacyPractice, /legacy_practice_delivery_retired/);
   assert.doesNotMatch(legacyPractice, /getEligiblePoolItemIds\(admin, "practice"\)/);
 });
 
-test("Diagnostic and Mastery session creation use separate eligible pools", () => {
-  assert.match(startSession, /getEligiblePoolItemIds\(admin, "diagnostic"\)/);
-  assert.match(startSession, /getEligiblePoolItemIds\(admin, "mastery_check"\)/);
+test("Diagnostic and Mastery session creation use purpose-specific release blueprints", () => {
+  assert.match(curriculumRelease, /\.eq\("purpose", mode\)/);
+  assert.match(startSession, /resolveCurriculumBlueprint\(admin, UNIT_CODE, body\.mode\)/);
+  assert.match(startSession, /eligibleIds = curriculumContext\.itemIds/g);
   assert.match(startSession, /protectedPool: true/);
 });
 
