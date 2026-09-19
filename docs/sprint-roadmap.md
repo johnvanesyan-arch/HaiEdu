@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.8  
+**Roadmap version:** 2.9  
 **Updated:** 2026-09-19  
-**Current programme status:** Sprint 11 in progress. Sprint 11A–11E and 11I–11K are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. Sprint 11L now closes the pilot against the exact reconciled release baseline before Sprint 12 calibration.
+**Current programme status:** Sprint 11 in progress. Sprint 11A–11E and 11I–11K are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. Sprint 11L evidence classification and pilot-entry control are now live; the controlled cohort has not started.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -29,7 +29,7 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 | 9 | UX, Accessibility & Armenian Localization QA | ✅ | Armenian-first UX, accessibility and responsive hardening completed at source/QA level. |
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
-| 11 | Assessment Integrity, Standards Integrity & Closed Physics Pilot | 🟡 | 11A–11E and 11I–11K complete; 11F–11H remain partly open; 11L closes the pilot on the exact reconciled release baseline. |
+| 11 | Assessment Integrity, Standards Integrity & Closed Physics Pilot | 🟡 | 11A–11E and 11I–11K complete; 11F–11H remain partly open; 11L evidence classification and entry control are live, while privacy authorization and the controlled cohort remain open. |
 | 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior only from curriculum-compatible, version-aware pilot evidence. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize academic, institutional, authorization and enrollment architecture: schools, academic years, memberships, school admins, teacher boundaries, centrally governed content and controlled learner enrollment. |
@@ -234,29 +234,31 @@ See `docs/sprint-11k-curriculum-versioning-provenance-release-gates.md`.
 
 ### 11L — Re-baselined Chapter I Pilot Closure
 
-**Status: ⏳ Planned.**
+**Status: 🟡 In progress — evidence compatibility and pilot-entry control live; controlled cohort not started.**
 
-Purpose: complete the real Chapter I pilot only after 11I–11K establish what curriculum version the pilot is actually validating.
+The first 11L slice is implemented against `physics7_u01_2026_08_14_pilot_r1`:
 
-Before the cohort run, classify existing pilot evidence as:
+- created a controlled pilot-run identity bound to the exact current curriculum release;
+- classified all 11 existing sessions: 10 are partially compatible legacy context and one abandoned automation artifact is incompatible;
+- derived zero closure-eligible sessions, attempts or exposures;
+- kept the exact-release baseline at 0 sessions, 0 attempts, 0 exposures and 0 mastery rows;
+- added six entry gates and five closure gates with technical, human or shared ownership;
+- added RLS-protected governance tables and security-invoker reporting views;
+- added a status guard that blocks advancement to entry-ready/running/observing/closed while required gates remain open.
 
-- compatible with the reconciled curriculum;
-- partially compatible;
-- incompatible.
+Current entry state: 1/6 entry gates passed and 5/6 open. Closure remains 0/5 passed.
 
-Compatible evidence may be retained. Materially changed skills/items/assessment blueprints require new evidence.
+Open before cohort entry:
 
-Required work:
+- finish or disposition remaining 11F teacher/account/privacy/deletion and mastery-path checks;
+- complete 11G two-subject Mathematics placeholder isolation QA;
+- complete 11H two-subject and staff-surface visual QA;
+- name the operational participation-authorization owner and approve participant/guardian scope, withdrawal, suspension and deletion handling;
+- enroll the authorized class/cohort.
 
-- close remaining 11F technical-readiness items or explicitly disposition them;
-- complete 11G route-level QA and 11H visual confirmation or explicitly disposition them;
-- execute the privacy/participation gate;
-- run the controlled real cohort;
-- observe diagnostic → practice → mastery workflow;
-- collect teacher observations and usability findings;
-- review item exposure/repetition evidence;
-- review standards-alignment defects alongside technical/content defects;
-- produce the Sprint 11 pilot report.
+Analytics or research opt-in is not treated as operational participant/guardian authorization. The controlled cohort has not run, and no legacy evidence is counted as validation of the exact 11K release.
+
+See `docs/sprint-11l-pilot-closure.md` and migration `0041_sprint_11l_pilot_evidence_classification.sql`.
 
 ## Sprint 11 closure gate
 
