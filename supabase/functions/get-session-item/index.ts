@@ -1,9 +1,9 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
+import { getBlueprintItemIds } from "../_shared/curriculum-release.ts";
 import {
   choosePracticeByExposure,
-  getEligiblePoolItemIds,
   getStudentExposureHistory,
   recordSessionItemExposure,
   type SelectableItem,
@@ -149,7 +149,7 @@ Deno.serve(async (req) => {
 
     const { data: session, error: sessionError } = await admin
       .from("learning_sessions")
-      .select("id, student_id, unit_code, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, metadata")
+      .select("id, student_id, unit_code, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, metadata")
       .eq("id", body.sessionId)
       .eq("student_id", studentId)
       .single();
@@ -181,8 +181,9 @@ Deno.serve(async (req) => {
     if (!session.target_skill_id) return json({ error: "practice_target_missing" }, 500);
 
     const { data: masteryRow, error: masteryError } = await admin
-      .from("student_skill_mastery")
+      .from("student_skill_mastery_by_release")
       .select("mastery_score, evidence_count, status")
+      .eq("curriculum_release_id", session.curriculum_release_id)
       .eq("student_id", studentId)
       .eq("skill_id", session.target_skill_id)
       .maybeSingle();
@@ -213,7 +214,7 @@ Deno.serve(async (req) => {
 
     let eligibleIds: string[];
     try {
-      eligibleIds = await getEligiblePoolItemIds(admin, "practice");
+      eligibleIds = await getBlueprintItemIds(admin, session.assessment_blueprint_id);
     } catch (err) {
       console.error("practice pool unavailable", err);
       return json({ error: "practice_pool_unavailable" }, 500);

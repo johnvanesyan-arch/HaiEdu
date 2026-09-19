@@ -1,6 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
+import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -80,6 +81,14 @@ Deno.serve(async (req) => {
 
   const skillIds = skills.map((s) => s.id);
 
+  let curriculumReleaseId: string;
+  try {
+    curriculumReleaseId = await resolveActiveCurriculumRelease(admin, UNIT_CODE);
+  } catch (err) {
+    console.error("curriculum release unavailable", err);
+    return json({ error: "curriculum_release_unavailable" }, 503);
+  }
+
   const [
     { data: masteryRows },
     { data: attemptRows },
@@ -87,10 +96,10 @@ Deno.serve(async (req) => {
     { data: diagnosticRows },
     { data: prerequisiteRows },
   ] = await Promise.all([
-    admin.from("student_skill_mastery").select("skill_id, mastery_score, evidence_count, status").eq("student_id", studentId).in("skill_id", skillIds),
-    admin.from("attempts").select("skill_id, item_id, correct, created_at").eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(500),
+    admin.from("student_skill_mastery_by_release").select("skill_id, mastery_score, evidence_count, status").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds),
+    admin.from("attempts").select("skill_id, item_id, correct, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(500),
     admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
-    admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, completed_at, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "diagnostic").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
+    admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, completed_at, started_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "diagnostic").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
     admin.from("skill_prerequisites").select("skill_id, prerequisite_skill_id").in("skill_id", skillIds),
   ]);
 
@@ -183,6 +192,7 @@ Deno.serve(async (req) => {
 
   return json({
     unitCode: UNIT_CODE,
+    curriculumReleaseId,
     courseKey: "physics:7",
     activeSession: active ? {
       id: active.id,

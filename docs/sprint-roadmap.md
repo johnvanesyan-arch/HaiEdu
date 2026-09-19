@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.7  
-**Updated:** 2026-09-18  
-**Current programme status:** Sprint 11 in progress. Sprint 11A–11E and 11I–11J are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. Curriculum versioning continues in 11K, followed by 11L re-baselined pilot closure before Sprint 12 calibration.
+**Roadmap version:** 2.8  
+**Updated:** 2026-09-19  
+**Current programme status:** Sprint 11 in progress. Sprint 11A–11E and 11I–11K are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. Sprint 11L now closes the pilot against the exact reconciled release baseline before Sprint 12 calibration.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -29,7 +29,7 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 | 9 | UX, Accessibility & Armenian Localization QA | ✅ | Armenian-first UX, accessibility and responsive hardening completed at source/QA level. |
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
-| 11 | Assessment Integrity, Standards Integrity & Closed Physics Pilot | 🟡 | 11A–11E and 11I–11J complete; 11F–11H remain partly open; 11K adds curriculum versioning/provenance; 11L closes the pilot on the reconciled baseline. |
+| 11 | Assessment Integrity, Standards Integrity & Closed Physics Pilot | 🟡 | 11A–11E and 11I–11K complete; 11F–11H remain partly open; 11L closes the pilot on the exact reconciled release baseline. |
 | 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior only from curriculum-compatible, version-aware pilot evidence. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize academic, institutional, authorization and enrollment architecture: schools, academic years, memberships, school admins, teacher boundaries, centrally governed content and controlled learner enrollment. |
@@ -206,23 +206,31 @@ See `docs/sprint-11j-physics7-current-standard-reconciliation.md`.
 
 ### 11K — Curriculum Versioning, Provenance & Release Gates
 
-**Status: ⏳ Planned.**
+**Status: ✅ Complete.**
 
-Purpose: make standards provenance and curriculum change history first-class platform architecture.
+Curriculum releases and assessment blueprints are now immutable, first-class identities. The active Physics 7 Unit 1 pilot release freezes 6 official outcomes, 10 skills, 77 item families, and exact 40/120/80 diagnostic/practice/mastery item memberships.
 
-Required capabilities:
+Implemented:
 
-- version identity for curriculum frameworks, subject standards and subject programmes;
-- normative-source metadata such as authority, document identifier, version, effective dates, source URL and supersession relationships;
-- curriculum-release identity for implemented subject programmes/units;
-- learner sessions and assessment results resolvable to the curriculum release/blueprint under which they occurred;
-- item/outcome/skill mappings that remain historically interpretable after curriculum updates;
-- content-admin provenance visibility;
-- production release gates requiring official programme identification, source/version registration, outcome mapping, skill mapping, assessment scoping and content QA.
+- an explicit legacy release for pre-11K evidence and an exact current pilot release for the reconciled 2026 baseline;
+- release snapshots for units, outcomes, skills, item-family mappings, sources, reconciliation identity and content fingerprints;
+- immutable assessment blueprints with exact item/version membership;
+- non-null release, blueprint and provenance identity on sessions, attempts and exposure events;
+- release-scoped mastery state and runtime reads;
+- automatic session/evidence binding with cross-release mismatch protection;
+- content-admin visibility for releases, gates and blueprints;
+- fail-closed pilot/production activation gates, with external Physics SME approval required for production;
+- RLS, governance write boundaries, composite foreign-key indexes and advisor hardening.
 
-Invariant:
+Historical evidence was not relabelled as current-standard evidence: 11 sessions, 94 attempts and 56 exposure events are bound to `physics7_u01_legacy_pre_11k`. New work resolves to `physics7_u01_2026_08_14_pilot_r1`.
+
+Six pilot gates pass. `external_sme_approved` remains pending and blocks production promotion by design.
+
+Invariant enforced:
 
 > A curriculum update must create an auditable new version/release when semantics change; it must never silently reinterpret historical learner evidence.
+
+See `docs/sprint-11k-curriculum-versioning-provenance-release-gates.md`.
 
 ### 11L — Re-baselined Chapter I Pilot Closure
 

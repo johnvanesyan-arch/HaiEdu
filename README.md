@@ -18,6 +18,8 @@ The live Supabase database currently contains:
 - 77 registered item families
 - 260 current non-retired variants, including 240 active pilot-eligible variants
 - active capacity of 120 Practice, 40 Diagnostic and 80 protected Mastery variants
+- an exact pilot curriculum release with immutable outcome/skill/family snapshots and 40/120/80 frozen assessment blueprints
+- explicit legacy provenance for all evidence created before curriculum-release identity existed
 - an auditable framework → subject standard → programme → official outcome → skill → item-family reconciliation
 
 The micro-skill graph covers physical phenomena; body/material/phenomenon distinctions; physicists; observation vs experiment; scientific inquiry; quantities/units/instruments; unit conversion; instrument scales; measurement error/precision; and integrated measurement investigations.
@@ -85,4 +87,4 @@ The Supabase project is active in `eu-central-1`.
 
 ## Provenance rule
 
-The current Armenian General Education State Standard, current Physics subject standard and current 2026 Physics programme are authoritative. The 2023 textbook provides the classroom/navigation mapping. Sprint 11J stores the six current Theme 1 outcomes verbatim and classifies every implemented skill and registered family as directly mapped or derived-supporting. External Physics SME approval remains a separate release-quality gate.
+The current Armenian General Education State Standard, current Physics subject standard and current 2026 Physics programme are authoritative. The 2023 textbook provides the classroom/navigation mapping. Sprint 11J stores the six current Theme 1 outcomes verbatim and classifies every implemented skill and registered family as directly mapped or derived-supporting. Sprint 11K freezes that reconciled baseline as an immutable curriculum release and binds every new session, attempt, exposure event and mastery record to its exact assessment blueprint. Pre-11K evidence remains explicitly legacy; it is never silently reinterpreted against the current release. External Physics SME approval remains a separate production gate.

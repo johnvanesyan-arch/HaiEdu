@@ -1,6 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
+import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
 import { gradeAnswer } from "../_shared/grading.ts";
 import { initialMasteryState, updateMastery } from "../_shared/mastery.ts";
 import { recommendNext } from "../_shared/recommendation.ts";
@@ -66,7 +67,7 @@ Deno.serve(async (req) => {
     }
     const { data: sessionData, error: sessionError } = await admin
       .from("learning_sessions")
-      .select("id, mode, status, planned_item_count, answered_count, correct_count")
+      .select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status")
       .eq("id", payload.sessionId)
       .eq("student_id", studentId)
       .single();
@@ -88,6 +89,16 @@ Deno.serve(async (req) => {
     }
     session = sessionData;
     sessionItem = sessionItemData;
+  }
+
+  let curriculumReleaseId: string;
+  try {
+    curriculumReleaseId = session?.curriculum_release_id
+      ? String(session.curriculum_release_id)
+      : await resolveActiveCurriculumRelease(admin, "PHY7-U01");
+  } catch (err) {
+    console.error("curriculum release unavailable", err);
+    return json({ error: "curriculum_release_unavailable" }, 503);
   }
 
   const { data: item, error: itemError } = await admin
@@ -127,8 +138,9 @@ Deno.serve(async (req) => {
   }
 
   const { data: priorRow } = await admin
-    .from("student_skill_mastery")
+    .from("student_skill_mastery_by_release")
     .select("alpha_evidence, beta_evidence, mastery_score, evidence_count, status")
+    .eq("curriculum_release_id", curriculumReleaseId)
     .eq("student_id", studentId)
     .eq("skill_id", item.skill_id)
     .maybeSingle();
@@ -213,6 +225,9 @@ Deno.serve(async (req) => {
       accepted: true,
       revealCorrect: false,
       attemptId,
+      curriculumReleaseId,
+      assessmentBlueprintId: session.assessment_blueprint_id,
+      provenanceStatus: session.provenance_status,
       session: refreshed,
     });
   }
@@ -224,8 +239,9 @@ Deno.serve(async (req) => {
   const unmet: string[] = [];
   for (const prereq of prereqRows ?? []) {
     const { data: prereqMastery } = await admin
-      .from("student_skill_mastery")
+      .from("student_skill_mastery_by_release")
       .select("mastery_score")
+      .eq("curriculum_release_id", curriculumReleaseId)
       .eq("student_id", studentId)
       .eq("skill_id", prereq.prerequisite_skill_id)
       .maybeSingle();
@@ -242,6 +258,9 @@ Deno.serve(async (req) => {
 
   const response: Record<string, unknown> = {
     attemptId,
+    curriculumReleaseId,
+    assessmentBlueprintId: session?.assessment_blueprint_id ?? null,
+    provenanceStatus: session?.provenance_status ?? "exact",
     itemId: item.id,
     skillId: item.skill_id,
     grading: {

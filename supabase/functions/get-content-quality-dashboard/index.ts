@@ -137,6 +137,21 @@ Deno.serve(async (req) => {
       };
     });
 
+    const [releaseResult, gateResult, blueprintResult] = await Promise.all([
+      admin.from("curriculum_releases")
+        .select("id, release_key, version_label, release_number, status, provenance_quality, content_fingerprint, effective_from, effective_to, activated_at, reconciliation_id")
+        .order("created_at", { ascending: false }),
+      admin.from("curriculum_release_gate_checks")
+        .select("curriculum_release_id, gate_code, status, evidence, notes, checked_at")
+        .order("gate_code", { ascending: true }),
+      admin.from("assessment_blueprints")
+        .select("id, blueprint_key, curriculum_release_id, unit_id, assessment_pool_id, purpose, version_number, status, selection_policy_version, item_set_fingerprint, published_at")
+        .order("blueprint_key", { ascending: true }),
+    ]);
+    for (const [name, result] of [["curriculum_releases", releaseResult], ["curriculum_release_gates", gateResult], ["assessment_blueprints", blueprintResult]] as const) {
+      if (result.error) return json({ error: `${name}_query_failed`, detail: result.error.message }, 500);
+    }
+
     const active = rows.filter((r: any) => !r.retiredAt);
     const programCatalog = programs.map((program: any) => {
       const subject: any = subjectById.get(program.subject_id);
@@ -159,6 +174,11 @@ Deno.serve(async (req) => {
 
     return json({
       actor: { id: actorId, role: profile.role, displayName: profile.display_name || "Content admin" },
+      curriculumProvenance: {
+        releases: releaseResult.data ?? [],
+        gates: gateResult.data ?? [],
+        blueprints: blueprintResult.data ?? [],
+      },
       catalog: {
         grades: grades.map((g: any) => ({ id: g.id, number: Number(g.grade_number), labelHy: g.label_hy, labelEn: g.label_en })),
         subjects: subjects.map((s: any) => ({ id: s.id, code: s.code, nameHy: s.name_hy, nameEn: s.name_en, status: s.status })),

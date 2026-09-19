@@ -1,6 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
+import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -57,11 +58,19 @@ Deno.serve(async (req) => {
     if (skillsError || !skills?.length) return json({ error: "skills_not_found" }, 404);
     const skillIds = skills.map((s) => s.id);
 
+    let curriculumReleaseId: string;
+    try {
+      curriculumReleaseId = await resolveActiveCurriculumRelease(admin, UNIT_CODE);
+    } catch (err) {
+      console.error("curriculum release unavailable", err);
+      return json({ error: "curriculum_release_unavailable" }, 503);
+    }
+
     const [{ data: masteryRows }, { data: attemptRows }, { data: activeRows }, { data: checkRows }] = await Promise.all([
-      admin.from("student_skill_mastery").select("skill_id, mastery_score, evidence_count").eq("student_id", studentId).in("skill_id", skillIds),
-      admin.from("attempts").select("skill_id, item_id, correct, hint_used, created_at").eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(1000),
+      admin.from("student_skill_mastery_by_release").select("skill_id, mastery_score, evidence_count").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds),
+      admin.from("attempts").select("skill_id, item_id, correct, hint_used, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(1000),
       admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
-      admin.from("learning_sessions").select("id, assessment_result, score_percent, completed_at, metadata, answered_count, correct_count, planned_item_count").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "mastery_check").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
+      admin.from("learning_sessions").select("id, assessment_result, score_percent, completed_at, metadata, answered_count, correct_count, planned_item_count").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "mastery_check").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
     ]);
 
     const mastery = new Map((masteryRows ?? []).map((r) => [r.skill_id, { score: Number(r.mastery_score), evidenceCount: Number(r.evidence_count) }]));
@@ -78,6 +87,7 @@ Deno.serve(async (req) => {
         const { data: remediation } = await admin
           .from("learning_sessions")
           .select("target_skill_id, completed_at")
+          .eq("curriculum_release_id", curriculumReleaseId)
           .eq("student_id", studentId)
           .eq("unit_code", UNIT_CODE)
           .eq("mode", "practice")
@@ -96,6 +106,7 @@ Deno.serve(async (req) => {
 
     return json({
       unitCode: UNIT_CODE,
+      curriculumReleaseId,
       courseKey: "physics:7",
       passCriteria: { overallPercent: 80, minCorrectPerSkill: 1, questions: 20, hints: false },
       unitComplete,

@@ -1,11 +1,11 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
+import { resolveCurriculumBlueprint } from "../_shared/curriculum-release.ts";
 import {
   CHAPTER_I_POOLS,
   chooseMasteryByExposure,
   chooseRotatingDiagnosticForm,
-  getEligiblePoolItemIds,
   getStudentExposureHistory,
   type SelectableItem,
 } from "../_shared/assessment-integrity.ts";
@@ -90,7 +90,7 @@ Deno.serve(async (req) => {
 
   const { data: activeSessions } = await admin
     .from("learning_sessions")
-    .select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count")
+    .select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status")
     .eq("student_id", studentId)
     .eq("unit_code", UNIT_CODE)
     .eq("status", "active")
@@ -106,6 +106,14 @@ Deno.serve(async (req) => {
       activeSession: active,
       messageHy: "Սկզբում շարունակեք կամ ավարտեք արդեն ընթացիկ ուսուցման գործողությունը։",
     }, 409);
+  }
+
+  let curriculumContext;
+  try {
+    curriculumContext = await resolveCurriculumBlueprint(admin, UNIT_CODE, body.mode);
+  } catch (err) {
+    console.error("curriculum release or blueprint unavailable", err);
+    return json({ error: "curriculum_release_unavailable" }, 503);
   }
 
   const { data: skills, error: skillsError } = await admin
@@ -137,7 +145,7 @@ Deno.serve(async (req) => {
   if (body.mode === "diagnostic") {
     let eligibleIds: string[];
     try {
-      eligibleIds = await getEligiblePoolItemIds(admin, "diagnostic");
+      eligibleIds = curriculumContext.itemIds;
     } catch (err) {
       console.error("diagnostic pool unavailable", err);
       return json({ error: "diagnostic_pool_unavailable" }, 500);
@@ -214,6 +222,8 @@ Deno.serve(async (req) => {
     const ordered = shuffle(selected);
     const { data: session, error: sessionError } = await admin.from("learning_sessions").insert({
       student_id: studentId,
+      curriculum_release_id: curriculumContext.releaseId,
+      assessment_blueprint_id: curriculumContext.blueprintId,
       unit_code: UNIT_CODE,
       mode: "diagnostic",
       planned_item_count: ordered.length,
@@ -228,7 +238,7 @@ Deno.serve(async (req) => {
         priorFormCode: priorFormCodes[0] ?? null,
         provisionalParallelism: true,
       },
-    }).select("id, mode, status, planned_item_count, answered_count, correct_count, metadata").single();
+    }).select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, metadata").single();
     if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
 
     const rows = ordered.map((row, index) => ({
@@ -298,7 +308,7 @@ Deno.serve(async (req) => {
 
     let eligibleIds: string[];
     try {
-      eligibleIds = await getEligiblePoolItemIds(admin, "mastery_check");
+      eligibleIds = curriculumContext.itemIds;
     } catch (err) {
       console.error("mastery pool unavailable", err);
       return json({ error: "mastery_pool_unavailable" }, 500);
@@ -358,6 +368,8 @@ Deno.serve(async (req) => {
     const attemptNumber = (priorChecks?.length ?? 0) + 1;
     const { data: session, error: sessionError } = await admin.from("learning_sessions").insert({
       student_id: studentId,
+      curriculum_release_id: curriculumContext.releaseId,
+      assessment_blueprint_id: curriculumContext.blueprintId,
       unit_code: UNIT_CODE,
       mode: "mastery_check",
       planned_item_count: ordered.length,
@@ -377,7 +389,7 @@ Deno.serve(async (req) => {
         poolExhausted,
         exactRepeatFallbackUsed: overlapCount > 0,
       },
-    }).select("id, mode, status, planned_item_count, answered_count, correct_count, metadata").single();
+    }).select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, metadata").single();
     if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
 
     const rows = ordered.map((row, index) => ({
@@ -412,6 +424,8 @@ Deno.serve(async (req) => {
 
   const { data: session, error: sessionError } = await admin.from("learning_sessions").insert({
     student_id: studentId,
+    curriculum_release_id: curriculumContext.releaseId,
+    assessment_blueprint_id: curriculumContext.blueprintId,
     unit_code: UNIT_CODE,
     mode: "practice",
     target_skill_id: target.id,
@@ -424,7 +438,7 @@ Deno.serve(async (req) => {
       selectionPolicyVersion: "11B-v1",
       exactRepeatFallbackOnly: true,
     },
-  }).select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, metadata").single();
+  }).select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, metadata").single();
   if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
 
   return json({ session, resumed: false, targetSkill: { id: target.id, code: target.code, nameHy: target.name_hy } });

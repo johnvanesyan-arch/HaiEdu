@@ -148,6 +148,20 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [ ] Review item-level pilot evidence and flag questions for revision, retirement or expansion.
 - [ ] Produce a Sprint 11 pilot report with defects, content findings, learning-engine findings and go/no-go recommendations for the next unit.
 
+### 11K — Curriculum Versioning, Provenance & Release Gates
+**Status: ✅ Complete.** Detailed implementation: `docs/sprint-11k-curriculum-versioning-provenance-release-gates.md`.
+
+- [x] Add immutable curriculum-release identity and source/reconciliation fingerprints.
+- [x] Freeze unit, outcome, skill and item-family mappings per release.
+- [x] Freeze assessment blueprints and exact item/version membership.
+- [x] Bind sessions, attempts, exposure events and mastery to a release.
+- [x] Preserve pre-11K evidence as explicit legacy provenance.
+- [x] Scope learning-engine reads and item selection to the current release/blueprint.
+- [x] Expose provenance, gates and blueprints to content admins.
+- [x] Enforce pilot and production activation gates.
+- [x] Apply RLS, governance write boundaries and advisor hardening.
+- [ ] Record external Physics SME approval before production promotion.
+
 ### Sprint 11 exit criteria
 Sprint 11 is complete only when all of the following are true:
 
