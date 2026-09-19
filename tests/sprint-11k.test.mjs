@@ -54,7 +54,7 @@ test("11K exposes governance and retains the external SME production gate", () =
   assert.match(contentDashboard, /from\("curriculum_release_gate_checks"\)/);
   assert.match(contentDashboard, /from\("assessment_blueprints"\)/);
   assert.match(migration, /external_sme_approved/);
-  assert.match(migration, /production activation requires external SME approval/);
+  assert.match(migration, /production additionally requires external SME approval/);
 });
 
 test("11K advisor hardening covers composite provenance foreign keys", () => {
