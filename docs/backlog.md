@@ -204,7 +204,7 @@ Informal QA/usability testing may occur after Sprint 11 handoff, but it must not
 - [x] Inventory deployed mastery, recovery, diagnostic, recommendation, practice and Mastery Check constants.
 - [x] Confirm current exact-release QA activity is not formal calibration evidence.
 - [x] Identify first cross-surface consistency defect: dashboard recent recovery currently ignores hint use while session/mastery eligibility requires independent correct answers.
-- [ ] Fix the hint-aware recent-recovery inconsistency and add regression coverage.
+- [x] Fix the hint-aware recent-recovery inconsistency and add regression coverage.
 - [ ] Freeze/name the post-fix baseline model configuration.
 - [ ] Define the formal calibration evidence contract.
 - [ ] Define calibration metrics and minimum sample-size reporting rules.
