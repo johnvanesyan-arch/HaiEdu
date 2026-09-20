@@ -55,15 +55,16 @@ function hasDraftAnswer() {
 function syncHelpVisibility() {
   const practiceVisible = !practicePanel.classList.contains("hidden");
   const isPractice = sessionMode.textContent.trim() === "Վարժանք";
-  const unanswered = !submitBtn.disabled;
-  const draftAnswerPresent = unanswered && hasDraftAnswer();
-  const incorrectAnswered = feedback.classList.contains("bad") && !feedback.classList.contains("hidden");
+  const answerSubmitted = !feedback.classList.contains("hidden");
+  const preSubmit = !answerSubmitted;
+  const draftAnswerPresent = preSubmit && hasDraftAnswer();
+  const incorrectAnswered = answerSubmitted && feedback.classList.contains("bad");
   const currentCode = itemCode.textContent.trim();
   const hasQuestion = Boolean(currentCode && currentCode !== "—");
 
   helpControls.classList.toggle(
     "hidden",
-    !(practiceVisible && isPractice && hasQuestion && ((unanswered && !draftAnswerPresent) || incorrectAnswered)),
+    !(practiceVisible && isPractice && hasQuestion && ((preSubmit && !draftAnswerPresent) || incorrectAnswered)),
   );
 
   if (currentCode !== lastItemCode) {
@@ -73,7 +74,7 @@ function syncHelpVisibility() {
 
   if (!helpOpenedForCurrentItem && incorrectAnswered) {
     setText(helpBtn, "Բացատրել սխալը");
-  } else if (!helpOpenedForCurrentItem && unanswered) {
+  } else if (!helpOpenedForCurrentItem && preSubmit) {
     setText(helpBtn, "Օգնություն");
   }
 }
