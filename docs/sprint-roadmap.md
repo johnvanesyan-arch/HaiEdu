@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.19  
+**Roadmap version:** 2.20  
 **Updated:** 2026-09-20  
-**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A Calibration Readiness is now 🟡 in progress. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
+**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A.4 is complete and 12A.5 remains next. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -379,13 +379,13 @@ Sprint 12 is split into two phases so technical preparation does not stall while
 - the learning-model baseline remains immutable as `baseline-2026-09-20-r1`;
 - every future learning session is fail-closed stamped with its exact immutable learning-model configuration; prior sessions remain explicitly `unbound_legacy` rather than guessed;
 - remediation guides have immutable version snapshots, and future help events preserve the exact rendered Armenian help text;
-- learner recommendations have append-only issued/shown/followed telemetry with dashboard and after-attempt policies kept distinct;
+- learner recommendations have append-only issued/shown/clicked/action_started telemetry with dashboard and after-attempt policies kept distinct;
 - the operative evidence contract is `contract-2026-09-20-r2`, using metric-specific eligibility and exact curriculum/blueprint/model provenance;
 - the operative metric set is `metrics-2026-09-20-r2`, using learner-cluster-aware reporting, right-censoring where appropriate, expanded Hinting v2 analysis and no universal sample-size/interval rule;
 - r1 contract/metric records remain immutable historical drafts;
 - no learning parameter was changed.
 
-**Next bounded slice:** 12A.4 — build the provenance-aware read-only calibration analysis pipeline. It has not been started by the audit-correction slice.
+**12A.4 is complete:** six read-only, service-role-only analysis views now separate formal/context/excluded evidence, preserve release/blueprint/model/runtime provenance, expose all 11 r2 metric samples, and reconcile to underlying session/attempt/exposure/hint/recommendation rows. Current formal metric observations remain 0. **Next bounded slice:** 12A.5 — the calibration decision protocol; 12B remains evidence-gated.
 
 See `docs/sprint-12a-methodology-audit-corrections.md` for the audit implementation evidence.
 

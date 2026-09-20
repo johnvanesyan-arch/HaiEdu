@@ -1,6 +1,6 @@
 # Sprint 12 — Learning-Model Calibration
 
-**Status:** 🟡 12A calibration readiness in progress; 12B empirical calibration blocked pending suitable Sprint 11.5 learner evidence.  
+**Status:** 🟡 12A.4 analysis pipeline complete; 12A.5 decision protocol remains next; 12B empirical calibration blocked pending suitable Sprint 11.5 learner evidence.  
 **Opened:** 2026-09-20
 
 ## Purpose
@@ -89,13 +89,17 @@ Metric-set fingerprint: `7a12d19d62fbfc95c52b7f7952aaa235`. Operative migration:
 
 #### 12A.4 — Analysis pipeline
 
-Recommendation-event telemetry and the model/hint provenance prerequisites are now implemented. Build read-only, provenance-aware analysis views or queries that:
+**Status: ✅ Complete.**
 
-- separate QA/context from formal calibration evidence;
-- preserve curriculum release and blueprint identity;
-- do not rewrite learner evidence;
-- can reproduce every aggregate from underlying attempts/sessions/exposures;
-- make sample size visible alongside every metric.
+Migration `0055_sprint_12a4_calibration_analysis_views.sql` implements six service-role-only, invoker-security views covering session eligibility, attempt/exposure evidence, immutable hint evidence, recommendation paths, normalized metric observations and per-metric sample summaries.
+
+The pipeline keeps all evidence visible but separates `core_calibration`, `context_only` and `excluded` rows with explicit reasons. It preserves curriculum release, blueprint, model and runtime provenance; handles incomplete trajectories according to the r2 metric contract; requires exact rendered guide snapshots for formal hint analysis; and treats only server-confirmed `action_started` events as recommendation learning actions.
+
+Every summary is traceable through the observation ledger to the underlying session, attempt/exposure, remediation event or recommendation path. All 11 r2 metrics appear even when their observation count is zero, alongside learner, learner-skill, session, item/template, time-window and censoring counts.
+
+Mechanical verification currently reconciles 16/16 sessions, 139/139 attempts, 26/26 remediation events and 92/92 issued recommendation paths. Formal metric observations remain **0**, as required while the participation gates are blocked. No learning parameter changed.
+
+Detailed implementation: `docs/sprint-12a4-analysis-pipeline.md`.
 
 #### 12A.5 — Calibration decision protocol
 
@@ -230,23 +234,9 @@ Migrations: `0044_sprint_12a_freeze_learning_model_baseline.sql` and `0045_sprin
 
 ## Current evidence snapshot — not calibration evidence
 
-Exact current release currently contains QA activity:
+The 12A.4 pipeline currently reconciles 16 sessions, 139 attempts, 26 remediation events and 92 issued recommendation paths. All 11 r2 metrics are represented, including zero-observation metrics.
 
-- 3 exact-release sessions: 1 completed Diagnostic, 1 completed Practice, 1 active Practice;
-- 30 attempts;
-- 3 hinted attempts;
-- 19 correct attempts;
-- 17 independent correct attempts;
-- 10 release-scoped mastery rows.
-
-Formal pilot/calibration eligibility remains:
-
-- **0 compatible formal-pilot sessions**;
-- **0 closure-eligible sessions**;
-- **0 eligible attempts**;
-- **0 eligible exposure events**.
-
-These QA counts may be used to validate the analysis pipeline mechanically, but not to tune model parameters.
+Formal calibration eligibility remains **0 observations** because the human participation gates are blocked. QA/context rows validate pipeline mechanics only and cannot tune model parameters.
 
 ## First consistency defect — fixed in 12A.1
 
@@ -298,13 +288,13 @@ The regular-chat audit of 12A.1–12A.3 identified provenance and methodological
 - future learning sessions are fail-closed stamped with the exact immutable learning-model configuration;
 - prior sessions remain explicitly `unbound_legacy` rather than being guessed/backfilled;
 - remediation guides now have immutable version snapshots, and future help events retain exact rendered Armenian text;
-- learner recommendations now have append-only issued/shown/followed telemetry with separate dashboard-orchestration and core-after-attempt policy scopes;
+- learner recommendations now have append-only issued/shown/clicked/action_started telemetry with separate dashboard-orchestration and core-after-attempt policy scopes;
 - the evidence contract and metric set are superseded by audited **r2** versions with metric-specific eligibility, right-censoring for non-secure trajectories, learner-cluster-aware reporting, expanded Hinting v2 analysis, and no universal sample-size/interval rule;
 - learning parameters themselves were not changed.
 
 Detailed implementation/evidence: `docs/sprint-12a-methodology-audit-corrections.md`.
 
-**12A.4 has not started.** It remains the next bounded slice.
+**12A.4 is complete.** 12A.5 is the next bounded slice; 12B remains evidence-gated.
 
 ## Sprint 12 gating rule
 
