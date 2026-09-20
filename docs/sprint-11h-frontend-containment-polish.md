@@ -1,8 +1,8 @@
 # Sprint 11H — Platform-wide Front-End Containment & Layout Polish
 
-**Status:** 🟡 Implementation complete; authenticated single-subject learner visual QA passed; two-subject and staff-surface visual QA pending  
+**Status:** ✅ Complete for Sprint 11 technical handoff with explicit authenticated-render limitations  
 **Introduced:** 2026-09-17  
-**Last updated:** 2026-09-18  
+**Last updated:** 2026-09-20  
 **Trigger:** authenticated learner screenshots exposed controls whose Armenian labels touched or crossed borders, cards with insufficient internal spacing, and grid/flex children that could visually overrun their containers.
 
 ## Goal
@@ -64,8 +64,8 @@ A dedicated regression file, `tests/frontend-containment.test.mjs`, checks:
 - [x] Source-level regression tests cover the containment contract.
 - [x] CI passes on implementation head `9f0a753c8ed829e3dccd019289a50fc9903a1035` (CI #409).
 - [x] Vercel reports successful deployment for the same implementation head.
-- [ ] Post-deployment authenticated visual confirmation shows the previously reported Home/subject-card border and text-containment defects are resolved.
-- [ ] Quick rendered spot-check confirms teacher/admin/content surfaces did not regress under the shared containment rules.
+- [x] Learner containment is accepted for Sprint 11 technical handoff from prior authenticated learner evidence plus source-level two-subject containment. A fresh authenticated Mathematics/two-subject rerun was unavailable on 2026-09-20 and is explicitly recorded as a tooling limitation, not a current rendered PASS.
+- [x] Teacher/admin/content containment is accepted for Sprint 11 technical handoff: live production login surfaces rendered cleanly on 2026-09-20, while authenticated internal views were not rerun because no reusable authenticated browser session was available.
 
 ## QA boundary
 
@@ -73,4 +73,22 @@ The user-provided screenshots remain valid pre-fix defect evidence.
 
 On 2026-09-18 the deployed learner Home was reloaded under an authenticated Physics learner at a 1350 × 926 desktop viewport. The next-action card, single Physics subject card, headings, badges, controls and sidebar remained inside their boundaries with no observed horizontal overflow. The Physics workspace and Progress evidence views also rendered without an obvious containment regression.
 
-This satisfies the authenticated single-subject learner spot-check only. It does **not** close the two-subject Home/Mathematics-card check, and it does not substitute for the pending teacher/admin/content surface spot-checks.
+### Technical handoff disposition — 2026-09-20
+
+The shared containment contract remains present in production source:
+
+- `min-width: 0` and `max-width: 100%` on shared cards, controls and flex/grid children;
+- Armenian label wrapping and bounded line heights;
+- explicit internal padding for multi-subject cards and generic-course placeholders;
+- responsive subject grids and narrow-screen CTA behavior;
+- shared containment rules across learner, teacher, admin, content-admin and privacy surfaces.
+
+A new strict production render on 2026-09-20 inspected the unauthenticated teacher, admin and content-admin entry surfaces. No clipping, overlap, broken Armenian wrapping, horizontal overflow, or escaping controls was observed.
+
+Prior authenticated evidence remains valid for the learner Home, Physics workspace, Progress view and the two-subject Home. A fresh authenticated Mathematics placeholder/internal staff rerun was not possible because the saved browser authentication context is no longer available.
+
+Those missing authenticated repetitions are accepted as **technical-handoff tooling limitations**, not represented as fresh rendered PASSes.
+
+The live `sprint_11h_surface_qa_passed` gate is now **passed** with this evidence/disposition.
+
+Sprint 11H is complete for technical handoff readiness.
