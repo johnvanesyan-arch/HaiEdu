@@ -59,13 +59,9 @@ Detailed implementation: `docs/sprint-12a-hinting-remediation-v2.md`.
 
 **Status: ✅ Complete.**
 
-The immutable contract `haiedu_formal_calibration_evidence / contract-2026-09-20-r1` is stored in `public.calibration_evidence_contracts` and linked to `baseline-2026-09-20-r1` plus the exact current Physics 7 release.
+The operative audited contract is `haiedu_formal_calibration_evidence / contract-2026-09-20-r2`, linked to `baseline-2026-09-20-r1` and the exact current Physics 7 release. The original r1 contract is retained unchanged as an immutable historical draft.
 
-Evidence tiers are explicit:
-
-- **core_calibration** — parameter fitting is allowed only after the Sprint 11.5 entry gates are passed, the pilot is operating in an evidence-bearing state, the session is exact-release/exact-blueprint, formally classified `compatible / exact_release_completed`, completed, and represents normal authorized learner behavior;
-- **descriptive_only** — exact-release authorized but noncompleted evidence may describe burden, abandonment or workflow behavior, but may never fit parameters;
-- **excluded** — legacy, release-mismatch, QA/artifact, participation-not-authorized, outside-cohort, unresolved manual-review and deliberate reviewer/automation behavior may not fit parameters.
+Evidence governance is now **metric-specific** rather than controlled by one global completed-session rule. Formal evidence still requires the Sprint 11.5 human gates plus exact curriculum, blueprint and **learning-model** provenance. Authorized incomplete/abandoned trajectories may contribute to metrics such as Practice burden, hint behavior or right-censored time-to-secure analyses where methodologically appropriate; Diagnostic/Mastery metrics retain their relevant completion requirements. QA, reviewer, automation, outside-cohort, unauthorized, legacy, release-mismatch and unbound-model evidence remain excluded from parameter analysis.
 
 The contract retains attempt purpose, hint/help use, response time and item/family/template/variant exposure provenance. Hinted attempts are **not silently discarded**; they remain distinguishable from independent performance for later analysis.
 
@@ -73,7 +69,7 @@ Frozen blueprint membership and session provenance govern historical eligibility
 
 Current mechanical validation: **14/14 classified sessions are excluded; 0 core-calibration sessions; 0 descriptive-only sessions.** The three exact-release QA sessions remain excluded because they are outside the authorized cohort.
 
-Migration: `0046_sprint_12a_calibration_evidence_contract.sql`. Contract fingerprint: `bfecf64896a9d6fa7b349d7fc21ad267`.
+Operative r2 migration: `0051_sprint_12a_audited_calibration_r2.sql`. Contract fingerprint: `158dddfe255ccf0a333eafd2f1d97558`. r1 (`bfecf64896a9d6fa7b349d7fc21ad267`) remains preserved for audit history.
 
 Human participation authorization is not performed by this contract; it remains a Sprint 11.5 responsibility.
 
@@ -81,19 +77,19 @@ Human participation authorization is not performed by this contract; it remains 
 
 **Status: ✅ Complete.**
 
-The immutable metric set `haiedu_learning_model_calibration_metrics / metrics-2026-09-20-r1` defines release-aware metrics for mastery evidence-to-secure, practice burden, recovery stability, assisted versus independent performance, diagnostic predictive alignment, Mastery Check outcomes/failure patterns, recommendation-path accuracy, item difficulty/response time, repeat/pool-exhaustion influence and threshold sensitivity.
+The operative audited metric set is `haiedu_learning_model_calibration_metrics / metrics-2026-09-20-r2`. The original r1 metric set remains immutable as the historical draft.
 
-Every metric must expose sample provenance and denominators. The initial candidate-change discussion floor is **10 distinct learners + 30 relevant observations**; meeting that floor is **not** sufficient for approval or psychometric validity. Sparse item/comparison/band/check cells are explicitly labelled and cannot justify tuning. Proportions should report numerator/denominator and Wilson 95% intervals when computed; continuous metrics use median/IQR as primary summaries.
+Every metric must expose learner count, learner-skill trajectories where relevant, sessions/observations, skill coverage, provenance and the distribution of observations across learners. Raw attempts are not treated as independent learners. There is **no universal 10+30 floor** and no universal Wilson-interval rule; sufficiency and uncertainty reporting are metric-specific and must respect learner clustering. No single numeric count authorizes tuning.
 
-Learner-count reporting bands are governance labels only: 1–4 trace-only, 5–9 exploratory descriptive, 10–29 pilot descriptive, and 30+ expanded-pilot descriptive. None is a validation claim.
+Hint analysis now distinguishes Hint 1/2/worked example, pre-answer vs post-error, template vs skill fallback, task-specific vs fallback, and guide version. Response time remains an operational signal rather than a direct cognitive-difficulty measure.
 
-**Known instrumentation gap:** recommendation-path accuracy cannot yet be measured because issued recommendations are not durably recorded with learner-state context. The metric is frozen as `instrumentation_gap`; 12A.4 must close or explicitly disposition this before formal recommendation-quality analysis.
+Recommendation-path analysis is now prospectively measurable for evidence created after recommendation telemetry activation. Pre-telemetry history must not be reconstructed as though the recommendation shown were known.
 
-Metric-set fingerprint: `a25c51a8273dba313ecce9787a89b2dc`. Migration: `0047_sprint_12a_calibration_metric_set.sql`.
+Metric-set fingerprint: `7a12d19d62fbfc95c52b7f7952aaa235`. Operative migration: `0051_sprint_12a_audited_calibration_r2.sql`. r1 (`a25c51a8273dba313ecce9787a89b2dc`) remains preserved for audit history.
 
 #### 12A.4 — Analysis pipeline
 
-Before building final read-only analysis views, close or explicitly disposition the known recommendation-event telemetry gap. Then build read-only, provenance-aware analysis views or queries that:
+Recommendation-event telemetry and the model/hint provenance prerequisites are now implemented. Build read-only, provenance-aware analysis views or queries that:
 
 - separate QA/context from formal calibration evidence;
 - preserve curriculum release and blueprint identity;
@@ -294,6 +290,21 @@ This preserves a clean evidence boundary: **entered answer → independent submi
 GitHub implementation: `76ff5b6dc8430c83c345f63d2c27d4e7f69b98a3`  
 UX copy: `9b08490794f29ad6417740fb8d67d6eb52a8ccdf`  
 Regression test: `a9961993361d1fb84a104b2c9cef4f4842dd199b`
+
+## Methodology audit corrections — complete
+
+The regular-chat audit of 12A.1–12A.3 identified provenance and methodological weaknesses before 12A.4. The approved corrections are now implemented:
+
+- future learning sessions are fail-closed stamped with the exact immutable learning-model configuration;
+- prior sessions remain explicitly `unbound_legacy` rather than being guessed/backfilled;
+- remediation guides now have immutable version snapshots, and future help events retain exact rendered Armenian text;
+- learner recommendations now have append-only issued/shown/followed telemetry with separate dashboard-orchestration and core-after-attempt policy scopes;
+- the evidence contract and metric set are superseded by audited **r2** versions with metric-specific eligibility, right-censoring for non-secure trajectories, learner-cluster-aware reporting, expanded Hinting v2 analysis, and no universal sample-size/interval rule;
+- learning parameters themselves were not changed.
+
+Detailed implementation/evidence: `docs/sprint-12a-methodology-audit-corrections.md`.
+
+**12A.4 has not started.** It remains the next bounded slice.
 
 ## Sprint 12 gating rule
 
