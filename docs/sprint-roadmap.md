@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.13  
+**Roadmap version:** 2.14  
 **Updated:** 2026-09-20  
 **Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A Calibration Readiness is now 🟡 in progress. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
 
@@ -373,6 +373,14 @@ Sprint 12 is split into two phases so technical preparation does not stall while
 An informal reviewer using the student-facing platform to inspect questions may generate useful content/UX QA evidence, but that activity is excluded from empirical calibration because it is deliberate review behavior rather than normal learner behavior.
 
 The first 12A consistency defect is already identified: recent-recovery completion is hint-aware in session/mastery eligibility paths but the student dashboard currently counts hinted correct answers toward the same 4/5 recovery rule. The dashboard must be aligned with the independent-answer rule before calibration analysis.
+
+### 12A — Hinting & Remediation v2 foundation
+
+The Practice help layer now supports deterministic task-aware scaffolding while retaining the existing skill-level fallback. The initial v2 rollout covers all 8 parameterized Chapter I templates (80 published variants) with progressive **orient → strategy → analogous worked example** help, safe raw-parameter interpolation and richer remediation telemetry.
+
+Diagnostic and Mastery Check remain hint-free. The learning-model thresholds and assisted-positive evidence multiplier are unchanged. Fixed/authored templates receive specific guides selectively where they add pedagogical value rather than through mechanical full-bank duplication.
+
+See `docs/sprint-12a-hinting-remediation-v2.md`.
 
 ### 12B — Empirical Calibration
 
