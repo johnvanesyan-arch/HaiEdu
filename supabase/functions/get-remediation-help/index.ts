@@ -14,6 +14,22 @@ function json(body: unknown, status = 200) {
   });
 }
 
+function renderTemplate(
+  value: string,
+  allowedKeys: string[],
+  params: Record<string, unknown>,
+): string {
+  const allowed = new Set(allowedKeys);
+  return value.replace(/\{\{([A-Za-z0-9_]+)\}\}/g, (match, key: string) => {
+    if (!allowed.has(key)) return match;
+    const raw = params[key];
+    if (typeof raw === "string" || typeof raw === "number" || typeof raw === "boolean") {
+      return String(raw);
+    }
+    return match;
+  });
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405);
@@ -73,7 +89,7 @@ Deno.serve(async (req) => {
   if (body.sessionItemId) {
     const { data } = await admin
       .from("learning_session_items")
-      .select("id, session_id, skill_id, item_id, answered_at, correct, hint_level_used, ordinal")
+      .select("id, session_id, skill_id, item_id, attempt_id, answered_at, correct, hint_level_used, ordinal")
       .eq("id", body.sessionItemId)
       .eq("session_id", session.id)
       .single();
@@ -81,7 +97,7 @@ Deno.serve(async (req) => {
   } else {
     const { data: pendingRows } = await admin
       .from("learning_session_items")
-      .select("id, session_id, skill_id, item_id, answered_at, correct, hint_level_used, ordinal")
+      .select("id, session_id, skill_id, item_id, attempt_id, answered_at, correct, hint_level_used, ordinal")
       .eq("session_id", session.id)
       .is("answered_at", null)
       .order("ordinal", { ascending: true })
@@ -91,7 +107,7 @@ Deno.serve(async (req) => {
     if (!sessionItem) {
       const { data: answeredRows } = await admin
         .from("learning_session_items")
-        .select("id, session_id, skill_id, item_id, answered_at, correct, hint_level_used, ordinal")
+        .select("id, session_id, skill_id, item_id, attempt_id, answered_at, correct, hint_level_used, ordinal")
         .eq("session_id", session.id)
         .not("answered_at", "is", null)
         .order("ordinal", { ascending: false })
@@ -106,22 +122,71 @@ Deno.serve(async (req) => {
     return json({ error: "help_not_needed_after_correct_answer" }, 409);
   }
 
-  const { data: guide, error: guideError } = await admin
-    .from("skill_remediation_guides")
-    .select("misconception_code, title_hy, strategy_hy, hint_1_hy, hint_2_hy, worked_example_hy")
-    .eq("skill_id", sessionItem.skill_id)
-    .eq("status", "published")
-    .limit(1)
-    .maybeSingle();
-  if (guideError || !guide) return json({ error: "remediation_guide_missing" }, 404);
+  const { data: item, error: itemError } = await admin
+    .from("items")
+    .select("id, item_template_id, variant_parameters")
+    .eq("id", sessionItem.item_id)
+    .single();
+  if (itemError || !item) return json({ error: "item_not_found" }, 404);
+
+  let errorCode: string | null = null;
+  if (postAnswer && sessionItem.attempt_id) {
+    const { data: attempt } = await admin
+      .from("attempts")
+      .select("error_code")
+      .eq("id", sessionItem.attempt_id)
+      .maybeSingle();
+    errorCode = typeof attempt?.error_code === "string" ? attempt.error_code : null;
+  }
+
+  const { data: templateGuides, error: templateGuideError } = await admin
+    .from("item_template_remediation_guides")
+    .select("id, trigger_error_code, guide_version, title_hy, strategy_hy, hint_1_hy, hint_2_hy, worked_example_hy, allowed_parameter_keys")
+    .eq("item_template_id", item.item_template_id)
+    .eq("status", "published");
+  if (templateGuideError) {
+    console.error("template remediation guide lookup failed", templateGuideError);
+  }
+
+  const templateGuide = (templateGuides ?? []).find((g: any) =>
+    postAnswer && errorCode && g.trigger_error_code === errorCode
+  ) ?? (templateGuides ?? []).find((g: any) => g.trigger_error_code === null);
+
+  let guide: any = templateGuide ?? null;
+  let guideScope: "template" | "skill" = "template";
+  let guideVersion = templateGuide ? Number(templateGuide.guide_version) : 1;
+
+  if (!guide) {
+    const { data: skillGuide, error: skillGuideError } = await admin
+      .from("skill_remediation_guides")
+      .select("id, misconception_code, title_hy, strategy_hy, hint_1_hy, hint_2_hy, worked_example_hy")
+      .eq("skill_id", sessionItem.skill_id)
+      .eq("status", "published")
+      .limit(1)
+      .maybeSingle();
+    if (skillGuideError || !skillGuide) return json({ error: "remediation_guide_missing" }, 404);
+    guide = skillGuide;
+    guideScope = "skill";
+    guideVersion = 1;
+  }
+
+  const params = item.variant_parameters && typeof item.variant_parameters === "object"
+    ? item.variant_parameters as Record<string, unknown>
+    : {};
+  const allowedKeys = guideScope === "template" && Array.isArray(guide.allowed_parameter_keys)
+    ? guide.allowed_parameter_keys.map(String)
+    : [];
+  const render = (value: string) => guideScope === "template"
+    ? renderTemplate(String(value ?? ""), allowedKeys, params)
+    : String(value ?? "");
 
   const nextLevel = Math.min(3, Number(sessionItem.hint_level_used ?? 0) + 1);
   const stage = nextLevel === 1 ? "hint_1" : nextLevel === 2 ? "hint_2" : "worked_example";
   const contentHy = nextLevel === 1
-    ? guide.hint_1_hy
+    ? render(guide.hint_1_hy)
     : nextLevel === 2
-      ? guide.hint_2_hy
-      : guide.worked_example_hy;
+      ? render(guide.hint_2_hy)
+      : render(guide.worked_example_hy);
 
   const { error: updateError } = await admin
     .from("learning_session_items")
@@ -136,15 +201,30 @@ Deno.serve(async (req) => {
     skill_id: sessionItem.skill_id,
     item_id: sessionItem.item_id,
     stage,
+    context: postAnswer ? "post_error" : "pre_answer",
+    hint_level: nextLevel,
+    guide_scope: guideScope,
+    guide_source_id: guide.id,
+    guide_version: guideVersion,
+    item_template_id: item.item_template_id,
+    error_code: errorCode,
+    metadata: {
+      taskSpecific: guideScope === "template",
+      triggerErrorCode: guide.trigger_error_code ?? null,
+    },
   });
 
   return json({
     stage,
     level: nextLevel,
-    titleHy: guide.title_hy,
-    strategyHy: guide.strategy_hy,
+    titleHy: render(guide.title_hy),
+    strategyHy: render(guide.strategy_hy),
     contentHy,
-    misconceptionCode: guide.misconception_code,
+    misconceptionCode: guide.misconception_code ?? null,
+    guideScope,
+    guideVersion,
+    taskSpecific: guideScope === "template",
+    errorCode,
     moreHelpAvailable: nextLevel < 3,
     postAnswer,
     noteHy: postAnswer
