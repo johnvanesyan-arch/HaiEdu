@@ -1,6 +1,6 @@
-# Sprint 11L — Re-baselined Chapter I Pilot Closure
+# Sprint 11L — Re-baselined Chapter I Handoff & Pilot Controls
 
-Status: in progress. This document covers the first 11L slice: evidence compatibility and pilot-entry control.
+Status: in progress. This document covers evidence compatibility, technical handoff controls, and the fail-closed pilot governance that is carried into Sprint 11.5.
 
 ## Confirmed baseline (2026-09-19)
 
@@ -52,14 +52,23 @@ All three tables use RLS. Only `admin` and `content_admin` roles can read or mut
 
 ## Operational sequence
 
+### Sprint 11 — technical handoff
+
 1. Complete or explicitly disposition the remaining 11F checks.
-2. Run 11G and 11H with a two-subject learner and the required teacher/admin/content personas.
-3. Name the operational participation-authorization owner and approve participant/guardian information, scope, withdrawal, suspension, and deletion handling.
-4. Assign the approved class and cohort to the pilot run.
-5. Record only exact target-release cohort evidence as compatible.
-6. Observe the full learner lifecycle and collect teacher/usability evidence.
-7. Review exposure/repetition and standards-alignment findings.
-8. Approve the Sprint 11 pilot report only after all closure gates pass.
+2. Run 11G and 11H with the two-subject learner and the required teacher/admin/content personas.
+3. Confirm the exact-release evidence baseline and pilot governance remain fail-closed.
+4. Produce the Sprint 11 technical handoff report.
+
+Sprint 11 may then close as **technically handoff-ready** even though the `pilot_runs` record remains blocked. Closing Sprint 11 does not override, bypass, or mark any human pilot gate as passed.
+
+### Sprint 11.5 — controlled external tester pilot
+
+5. Name the operational participation-authorization owner and approve participant/guardian information, scope, withdrawal, suspension, and deletion handling where applicable.
+6. Assign the approved class/tester cohort to the pilot run.
+7. Record only exact target-release authorized cohort evidence as compatible.
+8. Observe the full learner lifecycle and collect teacher/usability evidence.
+9. Review exposure/repetition and standards-alignment findings.
+10. Approve the formal pilot/test report only after all pilot closure gates pass.
 
 ## Phase 2 execution packet — 11F–11H closure punch-list
 
@@ -123,11 +132,20 @@ Check for blocking containment defects: overflow, clipping, overlap, broken Arme
 After all three gates have PASS evidence or explicit accepted dispositions:
 
 - update the Sprint 11F/11G/11H implementation records;
-- update the 11L pilot gate records;
-- synchronize the GitHub roadmap and Notion mirror if sprint status text changes;
-- do **not** advance the pilot to `entry_ready` yet unless the human participation-authorization and cohort-enrollment gates also pass.
+- update the technical gate states in the 11L pilot records where appropriate;
+- synchronize the GitHub roadmap and Notion mirror;
+- produce the Sprint 11 technical handoff report;
+- do **not** advance the pilot to `entry_ready` unless the human participation-authorization and cohort-enrollment gates also pass.
 
-If 11F, 11G and 11H all close successfully, the expected entry-gate state becomes **4/6 passed**: evidence baseline + 11F + 11G + 11H. The remaining two entry gates are human participation authorization and cohort enrollment.
+If 11F, 11G and 11H all close successfully, the pilot record is expected to show **4/6 entry gates passed**: evidence baseline + 11F + 11G + 11H. That is sufficient for **Sprint 11 technical handoff closure**, but not for pilot entry. The remaining two entry gates—human participation authorization and cohort enrollment—are Sprint 11.5 work.
+
+## Sprint boundary decision — 2026-09-20
+
+Human participation authorization and real tester/cohort execution are explicitly deferred from Sprint 11 to **Sprint 11.5 — Controlled External Tester Pilot**.
+
+This changes the **project sprint closure criterion**, not the pilot governance model. The database pilot gates remain fail-closed exactly as implemented. Sprint 11 can close when the product is technically handoff-ready while the pilot itself remains `blocked` until human gates pass.
+
+Informal QA/usability testing after technical handoff may help find defects, but it must not be counted as formal pilot or Sprint 12 calibration evidence unless it satisfies the Sprint 11.5 authorization/cohort requirements.
 
 ## Deliberate non-claims
 
