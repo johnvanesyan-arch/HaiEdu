@@ -18,7 +18,7 @@ function json(body: unknown, status = 200) {
   });
 }
 
-type AttemptRow = { skill_id: string; item_id: string; correct: boolean; created_at: string };
+type AttemptRow = { skill_id: string; item_id: string; correct: boolean; hint_used: boolean; created_at: string };
 type Band = "strong" | "developing" | "needs_support" | "not_assessed";
 
 function band(correct: number, total: number): Band {
@@ -40,7 +40,7 @@ function completionState(
   const rows = attempts.filter((a) => a.skill_id === skillId);
   const unique = new Set(rows.map((a) => a.item_id)).size;
   const recent = rows.slice(0, 5);
-  const recovered = unique >= 4 && recent.length >= 5 && recent.filter((a) => a.correct).length >= 4;
+  const recovered = unique >= 4 && recent.length >= 5 && recent.filter((a) => a.correct && !a.hint_used).length >= 4;
   return { complete: recovered, source: recovered ? "recent_recovery" : null };
 }
 
@@ -97,7 +97,7 @@ Deno.serve(async (req) => {
     { data: prerequisiteRows },
   ] = await Promise.all([
     admin.from("student_skill_mastery_by_release").select("skill_id, mastery_score, evidence_count, status").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds),
-    admin.from("attempts").select("skill_id, item_id, correct, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(500),
+    admin.from("attempts").select("skill_id, item_id, correct, hint_used, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(500),
     admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
     admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, completed_at, started_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "diagnostic").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
     admin.from("skill_prerequisites").select("skill_id, prerequisite_skill_id").in("skill_id", skillIds),
