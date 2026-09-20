@@ -2,7 +2,7 @@
 
 **Roadmap version:** 2.13  
 **Updated:** 2026-09-20  
-**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. 11F–11H are closed by live evidence and explicit documented dispositions; 11L evidence classification and fail-closed pilot controls remain intact. The controlled pilot remains blocked at 4/6 entry gates until Sprint 11.5 participation authorization and cohort enrollment are completed.
+**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A Calibration Readiness is now 🟡 in progress. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
