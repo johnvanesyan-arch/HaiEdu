@@ -133,20 +133,17 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [x] Support item revision/retirement/replacement without losing historical attempt provenance.
 - [x] Add a basic assessment-integrity report showing exact-repeat rates and protected-pool usage.
 
-### 11F — Closed Grade 7 Physics Chapter I pilot
-**Status: 🟡 In progress.** Technical preflight and the rendered browser-production gate are complete. 11F.2 used real rendered production browser runs with authenticated student and teacher profiles. Four authenticated repetitions — tablet/phone viewport, keyboard-only focus traversal, 200% zoom, and Firefox/Safari-class browser — were not executable with the available automation controls and were explicitly accepted by the product owner on 2026-09-16 as QA limitations rather than PASS results. The next gate is the disposable-account end-to-end production workflow smoke. Detailed execution plan: `docs/sprint-11f-closed-pilot.md`.
+### 11F — Closed Grade 7 Physics Chapter I technical handoff readiness
+**Status: 🟡 In progress.** Technical preflight and the rendered browser-production gate are complete. 11F.2 used real rendered production browser runs with authenticated student and teacher profiles. Four authenticated repetitions — tablet/phone viewport, keyboard-only focus traversal, 200% zoom, and Firefox/Safari-class browser — were not executable with the available automation controls and were explicitly accepted by the product owner on 2026-09-16 as QA limitations rather than PASS results. The remaining gate is the finite production-workflow closure punch-list. Human cohort execution and real-user feedback are deferred to Sprint 11.5. Detailed execution plan: `docs/sprint-11f-closed-pilot.md`.
 
 - [x] Complete automated/source, live-database, active-bank, diagnostic-form, security/RLS and session-collision preflight QA; fix blocking defects discovered by that gate.
 - [x] Execute/disposition the deferred authenticated browser/device QA matrix from `docs/pilot-browser-qa-checklist.md`; rendered student/teacher desktop checks passed and the four remaining authenticated tool-coverage gaps have explicit product-owner acceptance.
-- [ ] Final production smoke test: student onboarding, teacher class creation/invite, class joining, diagnostic, adaptive practice, remediation, mastery check, progress, and teacher dashboard.
-- [ ] Use a small controlled student cohort before broader rollout.
-- [ ] Verify privacy/consent/role boundaries for the pilot cohort and teachers.
-- [ ] Observe whether students understand what to do without developer intervention.
-- [ ] Collect teacher feedback on usefulness of the skill matrix, recommendations and intervention signals.
-- [ ] Collect student feedback on clarity, repetition, difficulty, hints and perceived fairness.
-- [ ] Review repeat/exposure logs to confirm that improved scores are not primarily explained by exact-item memorisation.
-- [ ] Review item-level pilot evidence and flag questions for revision, retirement or expansion.
-- [ ] Produce a Sprint 11 pilot report with defects, content findings, learning-engine findings and go/no-go recommendations for the next unit.
+- [ ] Complete or explicitly disposition the finite production-workflow residuals: teacher evidence verification, legitimate Mastery-path disposition, suspension/session revocation, privacy-preference behavior, and safe deletion-request workflow.
+- [ ] Complete 11G Mathematics placeholder/isolation QA and 11H two-subject/staff-surface containment QA.
+- [ ] Produce a Sprint 11 **technical handoff report** recording implemented capability, accepted limitations, unresolved non-handoff blockers, and safe tester handoff conditions.
+- [ ] Preserve the 11L pilot governance gates in a fail-closed state; do not represent technical handoff readiness as a completed human pilot.
+
+**Deferred to Sprint 11.5:** participant/guardian authorization where applicable, real tester/cohort enrollment, observed learner behavior, teacher/student feedback, repetition/exposure review from authorized real-user evidence, item-level pilot review, and the formal pilot/test report used for Sprint 12 calibration.
 
 ### 11K — Curriculum Versioning, Provenance & Release Gates
 **Status: ✅ Complete.** Detailed implementation: `docs/sprint-11k-curriculum-versioning-provenance-release-gates.md`.
@@ -162,7 +159,7 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [x] Apply RLS, governance write boundaries and advisor hardening.
 - [ ] Record external Physics SME approval before production promotion.
 
-### Sprint 11 exit criteria
+### Sprint 11 exit criteria — technical handoff readiness
 Sprint 11 is complete only when all of the following are true:
 
 - [x] Cross-session exposure tracking is live and covered by tests.
@@ -172,8 +169,27 @@ Sprint 11 is complete only when all of the following are true:
 - [x] Parameterised items are deterministic, reproducible and auditable where used.
 - [x] Unit 1 content has completed the agreed technical/human QA gate; provisional SME status remains explicit until actual SME review.
 - [x] Deferred authenticated browser/device QA has been executed where supported; the four remaining authenticated browser-control limitations have explicit accepted disposition and are not represented as passing tests.
-- [ ] A closed Chapter I pilot has run end-to-end.
-- [ ] Pilot data has been reviewed for repetition/memorisation risk, usability, content defects and learning-engine behavior.
-- [ ] Critical defects are resolved or explicitly accepted before expanding to Chapter II / another subject slice.
+- [ ] 11F production-workflow residuals are PASS or explicitly dispositioned.
+- [ ] 11G final Mathematics placeholder/isolation QA is PASS or explicitly dispositioned.
+- [ ] 11H remaining two-subject/staff-surface containment QA is PASS or explicitly dispositioned.
+- [ ] 11L evidence classification and fail-closed pilot controls remain intact and no false claim is made that a human pilot has run.
+- [ ] Critical technical, privacy, security, curriculum or scope defects are resolved or explicitly accepted for handoff.
+- [ ] A Sprint 11 technical handoff report records safe tester conditions and accepted limitations.
 
-**Non-goal for Sprint 11:** psychometric validation of mastery cut scores. Current thresholds remain provisional engineering defaults until sufficient empirical evidence exists.
+**Non-goal for Sprint 11:** completion of the human pilot or psychometric validation of mastery cut scores. Current thresholds remain provisional engineering defaults until sufficient authorized empirical evidence exists.
+
+### Sprint 11.5 — Controlled External Tester Pilot
+**Status: ⏳ Planned after Sprint 11 technical handoff readiness.**
+
+- [ ] Name the operational participation-authorization owner.
+- [ ] Approve participant/guardian information and authorization workflow where applicable.
+- [ ] Define tester/cohort scope, dates, teacher scope, identity minimization, withdrawal, suspension and deletion handling.
+- [ ] Enroll only authorized testers/participants on the exact target release.
+- [ ] Observe the Diagnostic → Practice → Mastery lifecycle.
+- [ ] Collect teacher/usability evidence.
+- [ ] Review repetition/exposure behavior and item/content defects.
+- [ ] Review standards-alignment observations and operational defects.
+- [ ] Produce the formal pilot/test report.
+- [ ] Decide whether the evidence is sufficient for Sprint 12 calibration.
+
+Informal QA/usability testing may occur after Sprint 11 handoff, but it must not be counted as formal pilot/calibration evidence unless the Sprint 11.5 authorization and cohort gates are satisfied.
