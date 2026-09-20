@@ -1,9 +1,9 @@
-# Sprint 11F — Closed Grade 7 Physics Chapter I Pilot
+# Sprint 11F — Grade 7 Physics Chapter I Technical Handoff Readiness
 
 **Status: 🟡 In progress.**  
 **Opened:** 2026-09-16  
 **Last updated:** 2026-09-18  
-**Scope:** final production/browser smoke, controlled pilot execution, operational evidence review, and Sprint 11 closure. Real student/teacher feedback is intentionally not required for the initial technical preflight phase.
+**Scope:** final production/browser smoke and technical handoff readiness for Sprint 11. Human tester/cohort execution and formal real-user evidence review are deferred to Sprint 11.5.
 
 ## Objective
 
@@ -141,13 +141,13 @@ Still pending:
 
 Accordingly, **11F.3 is not complete** and the overall Sprint 11F gate remains open.
 
-## 11F.4 — Pilot privacy and participation gate
+## 11F.4 — Privacy/participation readiness boundary
 
-**Status: ⏳ Pending real cohort.**
+**Status: ⚪ Deferred to Sprint 11.5 for human execution.**
 
 Technical role/privacy controls are already present, but real participant authorization is an operational requirement and is not equivalent to `research_use_opt_in` or `product_analytics_opt_in`.
 
-Before a real minor/student cohort is enrolled:
+Before a formal real-user cohort is enrolled in Sprint 11.5:
 
 - define who is responsible for participant/guardian authorization where required;
 - document the pilot purpose and what data will be collected;
@@ -158,9 +158,9 @@ Before a real minor/student cohort is enrolled:
 
 This sprint is not a legal-compliance certification.
 
-## 11F.5 — Closed cohort run
+## 11F.5 — Controlled tester cohort
 
-**Status: ⏳ Deferred until the 11F.3 workflow gate passes.**
+**Status: ⚪ Deferred to Sprint 11.5 after Sprint 11 technical handoff closure.**
 
 When the cohort is run, collect operational evidence without changing the learning engine mid-pilot unless a blocking defect requires intervention.
 
@@ -176,18 +176,20 @@ Observe:
 
 Human feedback may be collected later in this phase. It is deliberately not part of the initial technical QA gate.
 
-## 11F.6 — Evidence review and Sprint 11 closure
+## 11F.6 — Sprint 11 technical handoff closure
 
-Sprint 11 may close only after:
+Sprint 11 may close after:
 
 - the authenticated browser/device/keyboard matrix passes or each remaining issue has an explicit accepted workaround;
 - the final production workflow smoke passes or each remaining workflow item has an explicit accepted disposition;
-- a controlled Chapter I cohort has completed the pilot, unless that criterion is explicitly changed by the product owner and the limitation is documented;
-- repeat/exposure and item-level operational evidence have been reviewed;
-- critical defects are resolved or explicitly accepted;
-- a pilot report records defects, content findings, learning-engine findings, usability observations, and the disposition for Sprint 12 calibration.
+- 11G Mathematics placeholder/isolation QA and 11H remaining surface-containment QA pass or are explicitly dispositioned;
+- critical technical, privacy, security, curriculum or scope defects are resolved or explicitly accepted for handoff;
+- a technical handoff report records implemented capability, accepted limitations and safe tester conditions;
+- the 11L pilot-governance controls remain fail-closed, with no claim that a human cohort has run.
 
 The first closure criterion is satisfied by the executed 11F.2 rendered evidence plus the explicit four-item accepted limitation documented above. The 11F.3 criterion remains open.
+
+Formal tester/cohort evidence, usability feedback, repetition/exposure review and the pilot/test report used for Sprint 12 calibration are Sprint 11.5 work.
 
 ## Current residuals
 
@@ -209,4 +211,4 @@ Continue **11F.3** from the verified production state:
 4. complete privacy-preference behavior;
 5. execute or explicitly disposition the deletion-request workflow without deleting the retained QA account unintentionally.
 
-Only curriculum-compatible cohort evidence gathered after the Sprint 11I–11K standards/versioning baseline is eligible for the final cohort closure gate in Sprint 11L.
+Only curriculum-compatible, authorized cohort evidence gathered after the Sprint 11I–11K standards/versioning baseline is eligible for formal pilot review and Sprint 12 calibration in Sprint 11.5.
