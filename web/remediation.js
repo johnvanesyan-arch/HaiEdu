@@ -38,7 +38,7 @@ function resetHelp() {
   setText(helpStrategy, "");
   setText(helpContent, "");
   setText(helpNote, "");
-  setText(helpBtn, "Օգնություն");
+  setText(helpBtn, "Հուշում");
   helpBtn.disabled = false;
 }
 
@@ -75,7 +75,7 @@ function syncHelpVisibility() {
   if (!helpOpenedForCurrentItem && incorrectAnswered) {
     setText(helpBtn, "Բացատրել սխալը");
   } else if (!helpOpenedForCurrentItem && preSubmit) {
-    setText(helpBtn, "Օգնություն");
+    setText(helpBtn, "Հուշում");
   }
 }
 
@@ -106,7 +106,13 @@ async function requestHelp() {
   setText(helpContent, data.contentHy ?? "");
   setText(helpNote, data.noteHy ?? "");
   helpBtn.disabled = false;
-  setText(helpBtn, data.moreHelpAvailable ? "Ավելի շատ օգնություն" : "Օրինակը տեսել եք");
+  if (Number(data.level) === 1) {
+    setText(helpBtn, "Հաջորդ հուշումը");
+  } else if (Number(data.level) === 2) {
+    setText(helpBtn, "Տեսնել նման օրինակ");
+  } else {
+    setText(helpBtn, "Օրինակը տեսել եք");
+  }
   if (!data.moreHelpAvailable) helpBtn.disabled = true;
 }
 
