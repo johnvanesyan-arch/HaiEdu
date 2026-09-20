@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.10  
+**Roadmap version:** 2.11  
 **Updated:** 2026-09-20  
-**Current programme status:** Sprint 11 in progress. Sprint 11A–11E and 11I–11K are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. Sprint 11L evidence classification and pilot-entry control are now live; the controlled cohort has not started.
+**Current programme status:** Sprint 11 is being closed as a technical handoff-readiness sprint. Sprint 11A–11E and 11I–11K are complete; 11F–11H closure QA remains open; 11L evidence classification and fail-closed pilot controls are live. Human participation authorization and the real tester cohort are explicitly deferred to Sprint 11.5 and are no longer Sprint 11 closure blockers.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -42,6 +42,7 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 10 | Hybrid | Privacy/security policy in chat; RLS/auth/admin/deletion implementation in Work. |
 | 10.5 | Work | Front-end implementation and cross-device/browser verification. |
 | 11 | Hybrid | Governance/standards/evidence decisions in chat; residual QA, migrations and technical execution in Work. |
+| 11.5 | Hybrid | Tester/pilot authorization and evidence rules in chat; cohort setup, operational QA and evidence collection in Work. |
 | 12 | Hybrid | Calibration interpretation and decision rules in chat; data extraction/implementation in Work. |
 | 13 | Work | Release checklist, deployment, migrations, regression and evidence reconciliation. |
 | 14 | Hybrid | Multi-tenant academic architecture first in chat; bounded implementation slices in Work. |
@@ -61,10 +62,11 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 ### Sprint 11 current routing
 
 For the current Sprint 11 state:
-- remaining **11F–11H** QA/disposition execution defaults to **Work mode** once the finite checklist is defined;
-- **11L participation/guardian authorization, cohort rules, evidence sufficiency and closure decisions** stay in **regular chat**;
-- cohort setup, exact-release technical verification and evidence synchronization use **Work mode** after human authorization decisions are complete;
-- final evidence review and the Sprint 12 disposition return to **regular chat**.
+- remaining **11F–11H** QA/disposition execution defaults to **Work mode** using the frozen closure punch-list;
+- **Sprint 11 closes at technical handoff readiness**, not at completion of a human cohort;
+- the existing 11L pilot authorization/cohort gates remain fail-closed and are carried forward intact into **Sprint 11.5**;
+- informal/external testing may begin only within the permissions and safeguards available for that tester, but such evidence does not count as formal pilot/calibration evidence unless the Sprint 11.5 authorization gates are satisfied;
+- final Sprint 11 technical evidence review happens in **regular chat** before declaring handoff readiness.
 
 ## Status legend
 
@@ -89,8 +91,9 @@ For the current Sprint 11 state:
 | 9 | UX, Accessibility & Armenian Localization QA | ✅ | Armenian-first UX, accessibility and responsive hardening completed at source/QA level. |
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
-| 11 | Assessment Integrity, Standards Integrity & Closed Physics Pilot | 🟡 | 11A–11E and 11I–11K complete; 11F–11H remain partly open; 11L evidence classification and entry control are live, while privacy authorization and the controlled cohort remain open. |
-| 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior only from curriculum-compatible, version-aware pilot evidence. |
+| 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | 🟡 | 11A–11E and 11I–11K complete; 11F–11H remain partly open. 11L evidence classification and fail-closed pilot controls are live. Human participation/cohort execution is deferred to 11.5. |
+| 11.5 | Controlled External Tester Pilot | ⏳ | Authorize and run a small real-user test cohort on the exact current release, then collect usable operational evidence for Sprint 12. |
+| 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior only from curriculum-compatible, version-aware evidence produced in Sprint 11.5; if evidence is insufficient, document a no-change/defer disposition rather than inventing calibration. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize academic, institutional, authorization and enrollment architecture: schools, academic years, memberships, school admins, teacher boundaries, centrally governed content and controlled learner enrollment. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
@@ -292,9 +295,9 @@ Invariant enforced:
 
 See `docs/sprint-11k-curriculum-versioning-provenance-release-gates.md`.
 
-### 11L — Re-baselined Chapter I Pilot Closure
+### 11L — Re-baselined Chapter I Handoff & Pilot Controls
 
-**Status: 🟡 In progress — evidence compatibility and pilot-entry control live; controlled cohort not started.**
+**Status: 🟡 In progress — evidence compatibility and fail-closed pilot-entry controls live; human cohort execution deferred to Sprint 11.5.**
 
 The first 11L slice is implemented against `physics7_u01_2026_08_14_pilot_r1`:
 
@@ -308,36 +311,63 @@ The first 11L slice is implemented against `physics7_u01_2026_08_14_pilot_r1`:
 
 Current entry state: 1/6 entry gates passed and 5/6 open. Closure remains 0/5 passed.
 
-Open before cohort entry:
+Open before **Sprint 11 technical handoff closure**:
 
 - finish or disposition remaining 11F teacher/account/privacy/deletion and mastery-path checks;
 - complete 11G two-subject Mathematics placeholder isolation QA;
 - complete 11H two-subject and staff-surface visual QA;
-- name the operational participation-authorization owner and approve participant/guardian scope, withdrawal, suspension and deletion handling;
-- enroll the authorized class/cohort.
+- preserve the 11L pilot controls in a fail-closed state with no false claim that a human cohort has run.
 
-Analytics or research opt-in is not treated as operational participant/guardian authorization. The controlled cohort has not run, and no legacy evidence is counted as validation of the exact 11K release.
+The following are intentionally deferred to **Sprint 11.5**: naming the operational participation-authorization owner, approving participant/guardian scope and handling, enrolling the cohort, and collecting real-user evidence. Analytics or research opt-in is not treated as operational participant/guardian authorization. No legacy evidence is counted as validation of the exact 11K release.
 
 See `docs/sprint-11l-pilot-closure.md` and migration `0041_sprint_11l_pilot_evidence_classification.sql`.
 
-## Sprint 11 closure gate
+## Sprint 11 closure gate — technical handoff readiness
 
-Sprint 11 may close only after all of the following are true:
+Sprint 11 may close when all of the following are true:
 
 1. 11F technical/production readiness is completed or each remaining item has an explicit accepted disposition.
 2. Sprint 11G remaining route-level rendered QA is completed or explicitly dispositioned.
-3. Sprint 11H post-deployment visual containment check is completed or explicitly dispositioned.
+3. Sprint 11H post-deployment visual containment QA is completed or explicitly dispositioned.
 4. 11I establishes the authoritative standards/source registry for the current implementation.
 5. 11J reconciles Physics 7 Chapter I against the applicable current standard/programme.
-6. 11K establishes curriculum-version/provenance rules sufficient to interpret pilot evidence historically.
-7. 11L executes the privacy/participation gate and controlled Chapter I cohort unless the product owner explicitly changes that exit criterion and documents the limitation.
-8. Repeat/exposure, item-level, usability and standards-alignment evidence are reviewed.
-9. Critical defects are fixed or explicitly accepted.
-10. A Sprint 11 pilot report records technical, content, curriculum, learning-engine and usability findings and the disposition for Sprint 12.
+6. 11K establishes curriculum-version/provenance rules sufficient to preserve historical interpretation and exact-release identity.
+7. 11L confirms that historical evidence is classified, the exact-release pilot baseline is explicit, and pilot governance remains fail-closed until human gates are satisfied.
+8. Critical technical, privacy, security, curriculum or scope defects discovered during handoff QA are fixed or explicitly accepted.
+9. A **Sprint 11 technical handoff report** records implemented capability, accepted limitations, unresolved non-handoff blockers, and the exact conditions under which another person may begin testing.
+
+Sprint 11 closure **does not claim** that a controlled human pilot has run, that participant/guardian authorization exists, or that the learning model is empirically calibrated.
+
+## Sprint 11.5 — Controlled External Tester Pilot
+
+Sprint 11.5 begins only after Sprint 11 is technically handoff-ready.
+
+Purpose: let one or more real users/testers use the exact current release under a controlled operating process, while preserving the fail-closed governance already implemented in 11L.
+
+Required before evidence can count toward formal pilot review or Sprint 12 calibration:
+
+- name the operational participation-authorization owner;
+- approve the participant/guardian information and authorization workflow where applicable;
+- define cohort/tester scope, dates, teacher scope, identity minimization, withdrawal, suspension and deletion handling;
+- enroll only authorized participants into the controlled cohort;
+- preserve exact curriculum-release and blueprint provenance.
+
+Then observe and record:
+
+- Diagnostic → Practice → Mastery lifecycle;
+- teacher/usability evidence;
+- repetition/exposure behavior;
+- item/content defects;
+- standards-alignment observations;
+- operational defects and accepted limitations.
+
+A person may perform **informal QA/usability testing** after Sprint 11 handoff, but their activity must not be represented as formal pilot/calibration evidence unless the Sprint 11.5 authorization and cohort gates are satisfied. If the tester is a minor, any applicable participant/guardian authorization remains part of Sprint 11.5 rather than being bypassed.
+
+Sprint 11.5 closes with an approved pilot/test report and an evidence sufficiency decision for Sprint 12.
 
 ## Sprint 12 — Learning-Model Calibration
 
-Calibration remains immediately after Sprint 11 because the current mastery threshold, recovery rules and related learning-model constants remain provisional engineering assumptions.
+Calibration follows Sprint 11.5 because the current mastery threshold, recovery rules and related learning-model constants remain provisional engineering assumptions.
 
 Sprint 12 analyzes curriculum-compatible pilot behavior:
 
@@ -779,12 +809,13 @@ Quality, UX, privacy, administration and production QA foundations are in place.
 
 ### Milestone D — Trustworthy, standards-aligned learning evidence
 
-**Sprints 11–13**
+**Sprints 11–13, including Sprint 11.5**
 
 Assessment integrity  
 → standards/source integrity  
 → curriculum versioning  
-→ real pilot  
+→ technical handoff readiness  
+→ controlled external tester pilot  
 → calibration  
 → first standards-verified production unit.
 
