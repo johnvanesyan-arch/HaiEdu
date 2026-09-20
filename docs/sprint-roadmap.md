@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.12  
+**Roadmap version:** 2.13  
 **Updated:** 2026-09-20  
 **Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. 11F–11H are closed by live evidence and explicit documented dispositions; 11L evidence classification and fail-closed pilot controls remain intact. The controlled pilot remains blocked at 4/6 entry gates until Sprint 11.5 participation authorization and cohort enrollment are completed.
 
@@ -93,7 +93,7 @@ For the current Sprint 11 state:
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
 | 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; 11L records 4/6 entry gates passed and keeps the pilot blocked on the two human Sprint 11.5 gates. |
 | 11.5 | Controlled External Tester Pilot | ⏳ | Authorize and run a small real-user test cohort on the exact current release, then collect usable operational evidence for Sprint 12. |
-| 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior only from curriculum-compatible, version-aware evidence produced in Sprint 11.5; if evidence is insufficient, document a no-change/defer disposition rather than inventing calibration. |
+| 12 | Learning-Model Calibration | 🟡 | 12A calibration readiness can proceed in parallel with asynchronous review; 12B empirical tuning remains blocked until suitable formal Sprint 11.5 learner evidence exists. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize academic, institutional, authorization and enrollment architecture: schools, academic years, memberships, school admins, teacher boundaries, centrally governed content and controlled learner enrollment. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
@@ -362,9 +362,23 @@ See `docs/sprint-11-5-controlled-external-tester-pilot.md` for the execution pla
 
 ## Sprint 12 — Learning-Model Calibration
 
-Calibration follows Sprint 11.5 because the current mastery threshold, recovery rules and related learning-model constants remain provisional engineering assumptions.
+**Status: 🟡 12A calibration readiness in progress; 12B empirical calibration evidence-gated.**
 
-Sprint 12 analyzes curriculum-compatible pilot behavior:
+Sprint 12 is split into two phases so technical preparation does not stall while informal review continues.
+
+### 12A — Calibration Readiness
+
+12A may run now, in parallel with asynchronous informal content/usability review. It inventories the current model, removes internal rule inconsistencies, defines the evidence contract and metrics, and builds a provenance-aware analysis pipeline.
+
+An informal reviewer using the student-facing platform to inspect questions may generate useful content/UX QA evidence, but that activity is excluded from empirical calibration because it is deliberate review behavior rather than normal learner behavior.
+
+The first 12A consistency defect is already identified: recent-recovery completion is hint-aware in session/mastery eligibility paths but the student dashboard currently counts hinted correct answers toward the same 4/5 recovery rule. The dashboard must be aligned with the independent-answer rule before calibration analysis.
+
+### 12B — Empirical Calibration
+
+12B begins only when suitable formal Sprint 11.5 learner evidence is explicitly judged sufficient.
+
+Sprint 12 then analyzes curriculum-compatible learner behavior:
 
 - are students classified as mastered too early or too late?
 - do some skills require excessive practice?
@@ -377,7 +391,9 @@ Sprint 12 analyzes curriculum-compatible pilot behavior:
 
 Calibration evidence must be curriculum-version aware. Evidence from materially different skill definitions or blueprints must not be pooled as though it were one construct.
 
-Where calibration settings change, model/configuration versioning should preserve the meaning of historical evidence.
+Where calibration settings change, model/configuration versioning must preserve the meaning of historical evidence. If evidence is insufficient, record a no-change/defer disposition rather than forcing a parameter change.
+
+See `docs/sprint-12-learning-model-calibration.md` for the implementation plan and deployed-model baseline.
 
 ## Sprint 13 — Chapter I Standards-Verified Production Release
 
