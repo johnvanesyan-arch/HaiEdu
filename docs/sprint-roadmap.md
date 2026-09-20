@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.18  
+**Roadmap version:** 2.19  
 **Updated:** 2026-09-20  
 **Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A Calibration Readiness is now 🟡 in progress. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
 
@@ -95,7 +95,7 @@ For the current Sprint 11 state:
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
 | 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; 11L records 4/6 entry gates passed and keeps the pilot blocked on the two human Sprint 11.5 gates. |
 | 11.5 | Controlled External Tester Pilot | ⏳ | Authorize and run a small real-user test cohort on the exact current release, then collect usable operational evidence for Sprint 12. |
-| 12 | Learning-Model Calibration | 🟡 | 12A.1–12A.3 are complete; next is 12A.4 provenance-aware analysis pipeline, including disposition of the recommendation-telemetry gap. 12B empirical tuning remains blocked until suitable formal Sprint 11.5 learner evidence exists. |
+| 12 | Learning-Model Calibration | 🟡 | 12A.1–12A.3 are complete and methodology-audited. Exact session model provenance, immutable hint provenance and prospective recommendation telemetry are live; audited r2 evidence/metric definitions supersede r1. Next is 12A.4 read-only analysis pipeline. 12B remains evidence-gated. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize schools, academic years, time-aware memberships, IAM/permissions, tenant isolation, audit scope, teacher continuity foundations, controlled enrollment and centrally governed content. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
@@ -372,11 +372,22 @@ Sprint 12 is split into two phases so technical preparation does not stall while
 
 ### 12A — Calibration Readiness
 
-12A may run now, in parallel with asynchronous informal content/usability review. It inventories the current model, removes internal rule inconsistencies, defines the evidence contract and metrics, and builds a provenance-aware analysis pipeline.
+12A may run now, in parallel with asynchronous informal content/usability review. Informal reviewer activity remains QA/context only and is excluded from empirical calibration.
 
-An informal reviewer using the student-facing platform to inspect questions may generate useful content/UX QA evidence, but that activity is excluded from empirical calibration because it is deliberate review behavior rather than normal learner behavior.
+**12A.1–12A.3 are complete and have passed a methodology audit.** The audit corrections are now implemented:
 
-The first 12A consistency defect is already identified: recent-recovery completion is hint-aware in session/mastery eligibility paths but the student dashboard currently counts hinted correct answers toward the same 4/5 recovery rule. The dashboard must be aligned with the independent-answer rule before calibration analysis.
+- the learning-model baseline remains immutable as `baseline-2026-09-20-r1`;
+- every future learning session is fail-closed stamped with its exact immutable learning-model configuration; prior sessions remain explicitly `unbound_legacy` rather than guessed;
+- remediation guides have immutable version snapshots, and future help events preserve the exact rendered Armenian help text;
+- learner recommendations have append-only issued/shown/followed telemetry with dashboard and after-attempt policies kept distinct;
+- the operative evidence contract is `contract-2026-09-20-r2`, using metric-specific eligibility and exact curriculum/blueprint/model provenance;
+- the operative metric set is `metrics-2026-09-20-r2`, using learner-cluster-aware reporting, right-censoring where appropriate, expanded Hinting v2 analysis and no universal sample-size/interval rule;
+- r1 contract/metric records remain immutable historical drafts;
+- no learning parameter was changed.
+
+**Next bounded slice:** 12A.4 — build the provenance-aware read-only calibration analysis pipeline. It has not been started by the audit-correction slice.
+
+See `docs/sprint-12a-methodology-audit-corrections.md` for the audit implementation evidence.
 
 ### 12A — Hinting & Remediation v2 foundation
 
