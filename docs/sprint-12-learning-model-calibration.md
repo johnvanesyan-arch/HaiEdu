@@ -57,22 +57,25 @@ Detailed implementation: `docs/sprint-12a-hinting-remediation-v2.md`.
 
 #### 12A.2 — Calibration evidence contract
 
-Define which evidence may enter calibration analyses.
+**Status: ✅ Complete.**
 
-Required dimensions:
+The immutable contract `haiedu_formal_calibration_evidence / contract-2026-09-20-r1` is stored in `public.calibration_evidence_contracts` and linked to `baseline-2026-09-20-r1` plus the exact current Physics 7 release.
 
-- exact curriculum release;
-- exact assessment blueprint where applicable;
-- formal authorized cohort/tester scope;
-- normal learner behavior rather than deliberate content-review behavior;
-- attempt purpose (diagnostic/practice/mastery);
-- hint/help use;
-- item/variant exposure history;
-- session completion/disposition;
-- item/content QA state;
-- learner/sample inclusion/exclusion reason.
+Evidence tiers are explicit:
 
-QA, outside-cohort, abandoned/automation-artifact and deliberate reviewer sessions must be excluded from empirical parameter fitting.
+- **core_calibration** — parameter fitting is allowed only after the Sprint 11.5 entry gates are passed, the pilot is operating in an evidence-bearing state, the session is exact-release/exact-blueprint, formally classified `compatible / exact_release_completed`, completed, and represents normal authorized learner behavior;
+- **descriptive_only** — exact-release authorized but noncompleted evidence may describe burden, abandonment or workflow behavior, but may never fit parameters;
+- **excluded** — legacy, release-mismatch, QA/artifact, participation-not-authorized, outside-cohort, unresolved manual-review and deliberate reviewer/automation behavior may not fit parameters.
+
+The contract retains attempt purpose, hint/help use, response time and item/family/template/variant exposure provenance. Hinted attempts are **not silently discarded**; they remain distinguishable from independent performance for later analysis.
+
+Frozen blueprint membership and session provenance govern historical eligibility. Later mutable item status must not silently reinterpret historical evidence; a material content defect requires an explicit disposition while raw history remains preserved.
+
+Current mechanical validation: **14/14 classified sessions are excluded; 0 core-calibration sessions; 0 descriptive-only sessions.** The three exact-release QA sessions remain excluded because they are outside the authorized cohort.
+
+Migration: `0046_sprint_12a_calibration_evidence_contract.sql`. Contract fingerprint: `bfecf64896a9d6fa7b349d7fc21ad267`.
+
+Human participation authorization is not performed by this contract; it remains a Sprint 11.5 responsibility.
 
 #### 12A.3 — Calibration metrics
 
