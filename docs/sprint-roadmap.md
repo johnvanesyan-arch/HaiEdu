@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.11  
+**Roadmap version:** 2.12  
 **Updated:** 2026-09-20  
-**Current programme status:** Sprint 11 is being closed as a technical handoff-readiness sprint. Sprint 11A–11E and 11I–11K are complete; 11F–11H closure QA remains open; 11L evidence classification and fail-closed pilot controls are live. Human participation authorization and the real tester cohort are explicitly deferred to Sprint 11.5 and are no longer Sprint 11 closure blockers.
+**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. 11F–11H are closed by live evidence and explicit documented dispositions; 11L evidence classification and fail-closed pilot controls remain intact. The controlled pilot remains blocked at 4/6 entry gates until Sprint 11.5 participation authorization and cohort enrollment are completed.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -91,7 +91,7 @@ For the current Sprint 11 state:
 | 9 | UX, Accessibility & Armenian Localization QA | ✅ | Armenian-first UX, accessibility and responsive hardening completed at source/QA level. |
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
-| 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | 🟡 | 11A–11E and 11I–11K complete; 11F–11H remain partly open. 11L evidence classification and fail-closed pilot controls are live. Human participation/cohort execution is deferred to 11.5. |
+| 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; 11L records 4/6 entry gates passed and keeps the pilot blocked on the two human Sprint 11.5 gates. |
 | 11.5 | Controlled External Tester Pilot | ⏳ | Authorize and run a small real-user test cohort on the exact current release, then collect usable operational evidence for Sprint 12. |
 | 12 | Learning-Model Calibration | ⏳ | Calibrate thresholds and model behavior only from curriculum-compatible, version-aware evidence produced in Sprint 11.5; if evidence is insufficient, document a no-change/defer disposition rather than inventing calibration. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
@@ -133,7 +133,7 @@ For the current Sprint 11 state:
 
 ### 11F — Closed Grade 7 Physics Chapter I pilot readiness and production workflow
 
-**Status: 🟡 In progress.**
+**Status: ✅ Complete for technical handoff.**
 
 11F now represents the technical/production readiness portion of the pilot. The real-cohort closure gate is moved to 11L so that the final cohort runs against a standards-reconciled curriculum baseline.
 
@@ -141,15 +141,15 @@ For the current Sprint 11 state:
 |---|---:|---|
 | 11F.1 Technical preflight | ✅ | Automated/source, database, active-bank, security/RLS and session-collision preflight completed. |
 | 11F.2 Authenticated rendered production smoke | ✅ | Student and teacher authenticated production rendering passed where executable. Four authenticated browser-control repetitions were explicitly accepted as limitations, not PASS results. |
-| 11F.3 Final production workflow smoke | 🟡 | Stale second Diagnostic dispositioned as an automation artifact; Home/Progress, Physics routing, role isolation and the legitimate Mastery-ineligible state verified. Teacher/account/privacy workflow items remain. |
-| 11F.4 Privacy/participation readiness boundary | ⚪ | Human participation authorization is explicitly deferred to Sprint 11.5; Sprint 11 only preserves the fail-closed pilot controls. |
-| 11F.5 Technical handoff report | ⏳ | Summarize technical readiness, accepted limitations, remaining non-handoff blockers and safe tester conditions. |
+| 11F.3 Final production workflow smoke | ✅ | Teacher evidence, suspension/session revocation, privacy and deletion behavior are closed by live production/database evidence; Mastery full lifecycle is explicitly deferred rather than forced. |
+| 11F.4 Privacy/participation readiness boundary | ⚪ | Human participation authorization is explicitly deferred to Sprint 11.5; Sprint 11 preserves the fail-closed pilot controls. |
+| 11F.5 Technical handoff report | ✅ | Consolidated report: `docs/sprint-11-technical-handoff-report.md`. |
 
-Recent 11F.3 production work also surfaced and corrected course-entitlement, class-join verification, course-loading and authentication-state-flash defects. Teacher-side rendering of generated Diagnostic evidence has been manually verified. On 2026-09-18 the stale second Diagnostic was preserved and marked abandoned with an explicit QA disposition; Home and Progress retained the valid 13/20 result, Physics routing passed, and Mastery correctly remained closed for five unfinished skills. These checks do not by themselves close 11F. Human cohort execution is not an 11F closure requirement; it is Sprint 11.5 work.
+Recent 11F.3 production work also surfaced and corrected course-entitlement, class-join verification, course-loading and authentication-state-flash defects. Teacher-side rendering of generated Diagnostic evidence has been manually verified. On 2026-09-18 the stale second Diagnostic was preserved and marked abandoned with an explicit QA disposition; Home and Progress retained the valid 13/20 result, Physics routing passed, and Mastery correctly remained closed for five unfinished skills. The remaining 11F residuals were closed on 2026-09-20 from live production/database evidence plus explicit accepted dispositions. Human cohort execution is not an 11F closure requirement; it is Sprint 11.5 work.
 
 ### 11G — Multi-Subject Learner Shell Architecture Spike
 
-**Status: 🟡 Implementation complete; Physics route QA passed; Mathematics placeholder route QA pending.**
+**Status: ✅ Complete for technical handoff; Mathematics isolation accepted with an explicit current-render tooling limitation.**
 
 Sprint 11G was inserted before Sprint 12 because the global learner Home and navigation still structurally assumed one subject. Continuing with that assumption would make later multi-subject expansion unnecessarily expensive.
 
@@ -172,15 +172,13 @@ Additional rendered evidence:
 
 - on 2026-09-18 an authenticated Physics learner opened the Physics 7 course normally from the new shell.
 
-Pending before Sprint 11G can be marked fully complete:
-
-- rendered confirmation that Mathematics 7 opens only its generic placeholder and receives no Physics evidence.
+Final disposition: live two-subject entitlement state plus source-level route/API isolation proves that Mathematics uses the generic workspace and does not invoke Physics evidence APIs. A fresh authenticated Mathematics render could not be rerun because the saved browser session was unavailable; this is recorded as an accepted tooling limitation, not a fresh rendered PASS.
 
 See `docs/sprint-11g-multi-subject-learner-shell.md` for the detailed contract and evidence.
 
 ### 11H — Platform-wide Front-End Containment & Layout Polish
 
-**Status: 🟡 Implementation complete; authenticated single-subject learner visual QA passed; two-subject and staff-surface visual QA pending.**
+**Status: ✅ Complete for technical handoff with explicit authenticated-render limitations.**
 
 Sprint 11H was added after the first authenticated two-subject screenshots exposed visual containment defects: Armenian labels touching or crossing button borders, insufficient internal card spacing, and flex/grid children capable of forcing content outside component boundaries.
 
@@ -203,10 +201,7 @@ Rendered evidence:
 
 - on 2026-09-18 the authenticated single-subject learner Home, Physics workspace and Progress view showed no observed containment regression at a 1350 × 926 desktop viewport.
 
-Pending:
-
-- repeat the containment confirmation on the authenticated two-subject Home and Mathematics placeholder;
-- quick rendered spot-check of teacher/admin/content surfaces for regressions under the shared containment rules.
+Final disposition: shared containment rules remain verified in source; prior authenticated learner/two-subject evidence is retained; fresh production rendering on 2026-09-20 found no containment defects on teacher/admin/content entry surfaces. Fresh authenticated Mathematics/internal staff reruns were unavailable because no reusable authenticated browser session remained and are recorded as tooling limitations, not fresh rendered PASSes.
 
 See `docs/sprint-11h-frontend-containment-polish.md` and `docs/assessment-scope-model.md`.
 
@@ -297,26 +292,22 @@ See `docs/sprint-11k-curriculum-versioning-provenance-release-gates.md`.
 
 ### 11L — Re-baselined Chapter I Handoff & Pilot Controls
 
-**Status: 🟡 In progress — evidence compatibility and fail-closed pilot-entry controls live; human cohort execution deferred to Sprint 11.5.**
+**Status: ✅ Complete for Sprint 11 handoff controls; controlled pilot remains blocked and continues in Sprint 11.5.**
 
 The first 11L slice is implemented against `physics7_u01_2026_08_14_pilot_r1`:
 
 - created a controlled pilot-run identity bound to the exact current curriculum release;
-- classified all 11 existing sessions: 10 are partially compatible legacy context and one abandoned automation artifact is incompatible;
-- derived zero closure-eligible sessions, attempts or exposures;
-- kept the exact-release baseline at 0 sessions, 0 attempts, 0 exposures and 0 mastery rows;
+- classified the original 11 sessions and then reconciled three later exact-release QA sessions;
+- current classification: 14 sessions total — 10 partially compatible legacy context and 4 incompatible sessions;
+- the three later exact-release sessions are classified `outside_cohort` and excluded from formal pilot/calibration evidence;
+- derived zero compatible/closure-eligible sessions, attempts or exposures;
 - added six entry gates and five closure gates with technical, human or shared ownership;
 - added RLS-protected governance tables and security-invoker reporting views;
 - added a status guard that blocks advancement to entry-ready/running/observing/closed while required gates remain open.
 
-Current entry state: 1/6 entry gates passed and 5/6 open. Closure remains 0/5 passed.
+Current pilot state at Sprint 11 handoff: **4/6 entry gates passed, 2/6 open; 0/5 closure gates passed**. The recorded pilot status remains `blocked`, with `entry_ready = false` and `closure_ready = false`.
 
-Open before **Sprint 11 technical handoff closure**:
-
-- finish or disposition remaining 11F teacher/account/privacy/deletion and mastery-path checks;
-- complete 11G two-subject Mathematics placeholder isolation QA;
-- complete 11H two-subject and staff-surface visual QA;
-- preserve the 11L pilot controls in a fail-closed state with no false claim that a human cohort has run.
+Sprint 11 technical handoff closure is satisfied: 11F, 11G and 11H are passed/dispositioned, the evidence baseline is reconciled, and the pilot remains fail-closed with no false claim that a human cohort has run.
 
 The following are intentionally deferred to **Sprint 11.5**: naming the operational participation-authorization owner, approving participant/guardian scope and handling, enrolling the cohort, and collecting real-user evidence. Analytics or research opt-in is not treated as operational participant/guardian authorization. No legacy evidence is counted as validation of the exact 11K release.
 
@@ -324,7 +315,7 @@ See `docs/sprint-11l-pilot-closure.md` and migration `0041_sprint_11l_pilot_evid
 
 ## Sprint 11 closure gate — technical handoff readiness
 
-Sprint 11 may close when all of the following are true:
+Sprint 11 closure criteria are satisfied as of 2026-09-20:
 
 1. 11F technical/production readiness is completed or each remaining item has an explicit accepted disposition.
 2. Sprint 11G remaining route-level rendered QA is completed or explicitly dispositioned.
@@ -334,7 +325,9 @@ Sprint 11 may close when all of the following are true:
 6. 11K establishes curriculum-version/provenance rules sufficient to preserve historical interpretation and exact-release identity.
 7. 11L confirms that historical evidence is classified, the exact-release pilot baseline is explicit, and pilot governance remains fail-closed until human gates are satisfied.
 8. Critical technical, privacy, security, curriculum or scope defects discovered during handoff QA are fixed or explicitly accepted.
-9. A **Sprint 11 technical handoff report** records implemented capability, accepted limitations, unresolved non-handoff blockers, and the exact conditions under which another person may begin testing.
+9. A **Sprint 11 technical handoff report** records implemented capability, accepted limitations, unresolved non-handoff blockers, and the exact conditions under which another person may begin testing. ✅ See `docs/sprint-11-technical-handoff-report.md`.
+
+**Sprint 11 status: ✅ Complete for technical handoff readiness.**
 
 Sprint 11 closure **does not claim** that a controlled human pilot has run, that participant/guardian authorization exists, or that the learning model is empirically calibrated.
 
