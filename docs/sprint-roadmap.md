@@ -365,6 +365,8 @@ A person may perform **informal QA/usability testing** after Sprint 11 handoff, 
 
 Sprint 11.5 closes with an approved pilot/test report and an evidence sufficiency decision for Sprint 12.
 
+See `docs/sprint-11-5-controlled-external-tester-pilot.md` for the execution plan.
+
 ## Sprint 12 — Learning-Model Calibration
 
 Calibration follows Sprint 11.5 because the current mastery threshold, recovery rules and related learning-model constants remain provisional engineering assumptions.
