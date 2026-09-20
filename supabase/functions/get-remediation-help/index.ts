@@ -188,37 +188,35 @@ Deno.serve(async (req) => {
       ? render(guide.hint_2_hy)
       : render(guide.worked_example_hy);
 
-  const { error: updateError } = await admin
-    .from("learning_session_items")
-    .update({ hint_level_used: nextLevel })
-    .eq("id", sessionItem.id);
-  if (updateError) return json({ error: "hint_state_update_failed" }, 500);
-
   const renderedTitleHy = render(guide.title_hy);
   const renderedStrategyHy = render(guide.strategy_hy);
 
-  await admin.from("remediation_events").insert({
-    student_id: studentId,
-    session_id: session.id,
-    session_item_id: sessionItem.id,
-    skill_id: sessionItem.skill_id,
-    item_id: sessionItem.item_id,
-    stage,
-    context: postAnswer ? "post_error" : "pre_answer",
-    hint_level: nextLevel,
-    guide_scope: guideScope,
-    guide_source_id: guide.id,
-    guide_version: guideVersion,
-    item_template_id: item.item_template_id,
-    error_code: errorCode,
-    rendered_title_hy: renderedTitleHy,
-    rendered_strategy_hy: renderedStrategyHy,
-    rendered_content_hy: contentHy,
-    metadata: {
+  const { error: recordError } = await admin.rpc("record_remediation_help_atomic", {
+    p_student_id: studentId,
+    p_session_id: session.id,
+    p_session_item_id: sessionItem.id,
+    p_skill_id: sessionItem.skill_id,
+    p_item_id: sessionItem.item_id,
+    p_stage: stage,
+    p_context: postAnswer ? "post_error" : "pre_answer",
+    p_hint_level: nextLevel,
+    p_guide_scope: guideScope,
+    p_guide_source_id: guide.id,
+    p_guide_version: guideVersion,
+    p_item_template_id: item.item_template_id,
+    p_error_code: errorCode,
+    p_rendered_title_hy: renderedTitleHy,
+    p_rendered_strategy_hy: renderedStrategyHy,
+    p_rendered_content_hy: contentHy,
+    p_metadata: {
       taskSpecific: guideScope === "template",
       triggerErrorCode: guide.trigger_error_code ?? null,
     },
   });
+  if (recordError) {
+    console.error("atomic remediation recording failed", recordError);
+    return json({ error: "hint_recording_failed" }, 500);
+  }
 
   return json({
     stage,
@@ -238,3 +236,4 @@ Deno.serve(async (req) => {
       : "Օգնության օգտագործումը գրանցվում է, և mastery-ն ավելի ուշ պետք է հաստատվի նաև ինքնուրույն պատասխաններով։",
   });
 });
+

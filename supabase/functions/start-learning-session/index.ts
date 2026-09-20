@@ -1,6 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
+import { confirmRecommendationActionStarted } from "../_shared/recommendation-telemetry.ts";
 import { resolveCurriculumBlueprint } from "../_shared/curriculum-release.ts";
 import {
   CHAPTER_I_POOLS,
@@ -82,7 +83,7 @@ Deno.serve(async (req) => {
     }, 403);
   }
 
-  let body: { mode?: Mode; targetSkillId?: string | null } = {};
+  let body: { mode?: Mode; targetSkillId?: string | null; recommendationInstanceId?: string | null } = {};
   try { body = await req.json(); } catch { /* handled below */ }
   if (!body.mode || !["diagnostic", "practice", "mastery_check"].includes(body.mode)) {
     return json({ error: "invalid_mode" }, 400);
@@ -98,7 +99,17 @@ Deno.serve(async (req) => {
     .limit(1);
 
   const active = activeSessions?.[0];
-  if (active?.mode === body.mode) return json({ session: active, resumed: true });
+  if (active?.mode === body.mode) {
+    await confirmRecommendationActionStarted({
+      admin,
+      studentId,
+      recommendationInstanceId: body.recommendationInstanceId,
+      learningSessionId: active.id,
+      mode: body.mode,
+      targetSkillId: active.target_skill_id,
+    });
+    return json({ session: active, resumed: true });
+  }
   if (active) {
     return json({
       error: "active_session_conflict",
@@ -253,6 +264,14 @@ Deno.serve(async (req) => {
       await admin.from("learning_sessions").delete().eq("id", session.id);
       return json({ error: "session_items_create_failed" }, 500);
     }
+    await confirmRecommendationActionStarted({
+      admin,
+      studentId,
+      recommendationInstanceId: body.recommendationInstanceId,
+      learningSessionId: session.id,
+      mode: "diagnostic",
+      targetSkillId: null,
+    });
     return json({ session, resumed: false, diagnosticForm: rotation.form.code });
   }
 
@@ -441,5 +460,13 @@ Deno.serve(async (req) => {
   }).select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, metadata").single();
   if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
 
-  return json({ session, resumed: false, targetSkill: { id: target.id, code: target.code, nameHy: target.name_hy } });
+  await confirmRecommendationActionStarted({
+      admin,
+      studentId,
+      recommendationInstanceId: body.recommendationInstanceId,
+      learningSessionId: session.id,
+      mode: "practice",
+      targetSkillId: target.id,
+    });
+    return json({ session, resumed: false, targetSkill: { id: target.id, code: target.code, nameHy: target.name_hy } });
 });

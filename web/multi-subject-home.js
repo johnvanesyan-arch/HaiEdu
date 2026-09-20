@@ -289,9 +289,10 @@ async function render(classes = []) {
       await recordRecommendationTelemetry(
         supabase,
         visibleRecommendation,
-        "followed",
+        "clicked",
         "home",
       );
+      sessionStorage.setItem("pendingRecommendationInstanceId", visibleRecommendation.instanceId);
       window.location.assign(href);
     });
   }

@@ -300,9 +300,10 @@ $("progressNextAction")?.addEventListener("click", async (event) => {
   await recordRecommendationTelemetry(
     supabase,
     visibleRecommendation,
-    "followed",
+    "clicked",
     "progress",
   );
+  sessionStorage.setItem("pendingRecommendationInstanceId", visibleRecommendation.instanceId);
   window.location.assign(href);
 });
 initialize();

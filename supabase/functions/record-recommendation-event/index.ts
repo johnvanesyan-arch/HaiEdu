@@ -45,7 +45,7 @@ Deno.serve(async (req) => {
 
   let body: {
     recommendationInstanceId?: string;
-    eventType?: "shown" | "followed";
+    eventType?: "shown" | "clicked";
     surface?: string;
   } = {};
   try {
@@ -57,7 +57,7 @@ Deno.serve(async (req) => {
   if (!body.recommendationInstanceId || !body.eventType || !body.surface) {
     return json({ error: "recommendationInstanceId_eventType_surface_required" }, 400);
   }
-  if (!["shown", "followed"].includes(body.eventType)) {
+  if (!["shown", "clicked"].includes(body.eventType)) {
     return json({ error: "invalid_event_type" }, 400);
   }
   if (!allowedSurfaces.has(body.surface)) {
@@ -105,3 +105,4 @@ Deno.serve(async (req) => {
 
   return json({ recorded: true, duplicate: false });
 });
+

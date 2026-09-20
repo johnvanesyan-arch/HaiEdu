@@ -202,6 +202,7 @@ async function startOrResumePractice() {
     return;
   }
 
+  let automaticRecommendationInstanceId = null;
   if (!targetSkill && dashboard?.recommendation?.action === "practice_skill") {
     targetSkill = dashboard.recommendation.skill ?? null;
     if (targetSkill?.id && dashboard.recommendation.instanceId) {
@@ -214,17 +215,25 @@ async function startOrResumePractice() {
       await recordRecommendationTelemetry(
         supabase,
         dashboard.recommendation,
-        "followed",
+        "clicked",
         "practice_auto_target",
       );
+      automaticRecommendationInstanceId = dashboard.recommendation.instanceId;
     }
   }
 
+  const recommendationInstanceId =
+    automaticRecommendationInstanceId ??
+    sessionStorage.getItem("pendingRecommendationInstanceId");
   const body = targetSkill?.id
-    ? { mode: "practice", targetSkillId: targetSkill.id }
-    : { mode: "practice" };
+    ? { mode: "practice", targetSkillId: targetSkill.id, recommendationInstanceId }
+    : { mode: "practice", recommendationInstanceId };
   const { data, error } = await supabase.functions.invoke("start-learning-session", { body });
   starting = false;
+
+  if (!error && recommendationInstanceId) {
+    sessionStorage.removeItem("pendingRecommendationInstanceId");
+  }
 
   if (error) {
     showGate("Չհաջողվեց սկսել վարժանքը", error.message, [

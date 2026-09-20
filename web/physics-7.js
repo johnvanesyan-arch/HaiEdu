@@ -248,9 +248,10 @@ function renderTopics() {
         await recordRecommendationTelemetry(
           supabase,
           dashboard.recommendation,
-          "followed",
+          "clicked",
           "physics_course",
         );
+        sessionStorage.setItem("pendingRecommendationInstanceId", dashboard.recommendation.instanceId);
       }
       startPractice(skillId);
     });
@@ -341,3 +342,4 @@ $("signOutBtn")?.addEventListener("click", async () => {
 });
 
 initialize();
+

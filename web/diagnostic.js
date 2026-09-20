@@ -389,9 +389,10 @@ $("recommendedAction")?.addEventListener("click", async (event) => {
   await recordRecommendationTelemetry(
     supabase,
     recommendation,
-    "followed",
+    "clicked",
     "diagnostic_result",
   );
+  sessionStorage.setItem("pendingRecommendationInstanceId", recommendation.instanceId);
   window.location.assign(href);
 });
 prepare();
