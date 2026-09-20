@@ -13,6 +13,7 @@ const practicePanel = $("practicePanel");
 const sessionMode = $("sessionMode");
 const itemCode = $("itemCode");
 const submitBtn = $("submitBtn");
+const answerArea = $("answerArea");
 const feedback = $("feedback");
 const helpControls = $("helpControls");
 const helpBtn = $("helpBtn");
@@ -41,17 +42,28 @@ function resetHelp() {
   helpBtn.disabled = false;
 }
 
+function hasDraftAnswer() {
+  const controls = [...answerArea.querySelectorAll("input, select, textarea")];
+  return controls.some((control) => {
+    if (control instanceof HTMLInputElement && (control.type === "radio" || control.type === "checkbox")) {
+      return control.checked;
+    }
+    return String(control.value ?? "").trim().length > 0;
+  });
+}
+
 function syncHelpVisibility() {
   const practiceVisible = !practicePanel.classList.contains("hidden");
   const isPractice = sessionMode.textContent.trim() === "Վարժանք";
   const unanswered = !submitBtn.disabled;
+  const draftAnswerPresent = unanswered && hasDraftAnswer();
   const incorrectAnswered = feedback.classList.contains("bad") && !feedback.classList.contains("hidden");
   const currentCode = itemCode.textContent.trim();
   const hasQuestion = Boolean(currentCode && currentCode !== "—");
 
   helpControls.classList.toggle(
     "hidden",
-    !(practiceVisible && isPractice && hasQuestion && (unanswered || incorrectAnswered)),
+    !(practiceVisible && isPractice && hasQuestion && ((unanswered && !draftAnswerPresent) || incorrectAnswered)),
   );
 
   if (currentCode !== lastItemCode) {
@@ -98,6 +110,13 @@ async function requestHelp() {
 }
 
 helpBtn.addEventListener("click", requestHelp);
+
+// Pre-submit help is available only before the learner enters an answer.
+// This prevents an accidental hint click from converting an already-entered
+// independent response into assisted evidence. Clearing the draft answer
+// makes help available again. Post-error remediation remains available.
+answerArea.addEventListener("input", syncHelpVisibility);
+answerArea.addEventListener("change", syncHelpVisibility);
 
 // Observe only application state elements. Do not observe the help UI itself,
 // because syncHelpVisibility mutates it. Observing our own mutations created a
