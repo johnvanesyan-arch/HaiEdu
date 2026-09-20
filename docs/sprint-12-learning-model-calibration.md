@@ -39,7 +39,7 @@ Goal: make the learning model measurable, internally consistent and versionable 
 - [x] Inventory the currently deployed learning-model constants.
 - [x] Confirm exact-release QA evidence exists but formal-pilot eligible evidence remains zero.
 - [x] Identify duplicated model rules and cross-surface inconsistencies.
-- [ ] Fix blocking consistency defects before calibration analysis.
+- [x] Fix the first blocking consistency defect before calibration analysis: dashboard recent recovery now requires independent (hint-free) correct answers, matching session/mastery eligibility.
 - [ ] Freeze the resulting baseline as a named model configuration/version.
 
 #### 12A.2 — Calibration evidence contract
@@ -220,7 +220,7 @@ Formal pilot/calibration eligibility remains:
 
 These QA counts may be used to validate the analysis pipeline mechanically, but not to tune model parameters.
 
-## First consistency defect — blocking 12A.1
+## First consistency defect — fixed in 12A.1
 
 The deployed learning logic is inconsistent about hinted answers in the recent-recovery path:
 
@@ -230,9 +230,13 @@ The deployed learning logic is inconsistent about hinted answers in the recent-r
 
 Result: the dashboard can mark a skill complete while the session eligibility logic still treats it as incomplete.
 
-**Required fix:** make dashboard completion use the same hint-aware independent-recovery rule as the session/mastery eligibility logic, then add regression coverage so the three paths cannot drift silently again.
+**Resolution — 2026-09-20:** `get-student-dashboard` now loads `hint_used` and counts only `correct && !hint_used` answers in the recent-recovery rule. A dedicated regression test locks the dashboard, practice-completion and Mastery-eligibility paths to the same hint-aware contract.
 
-This is a consistency fix, not a change to the 4/5 recovery threshold.
+GitHub fix: `c8f5dc82bccbd5fefc49d34a772778f46c48199f`  
+Regression test: `e44f6e97bd6dda9042a4f9c29eb7c224722e376f`  
+Supabase: `get-student-dashboard` deployed as version **16**.
+
+This was a consistency fix only; the **4/5** recovery threshold itself was not changed.
 
 ## Sprint 12 gating rule
 
