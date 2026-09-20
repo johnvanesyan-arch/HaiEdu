@@ -1,11 +1,11 @@
 # Sprint 11L — Re-baselined Chapter I Handoff & Pilot Controls
 
-Status: in progress. This document covers evidence compatibility, technical handoff controls, and the fail-closed pilot governance that is carried into Sprint 11.5.
+Status: ✅ complete for Sprint 11 technical handoff controls. The controlled pilot itself remains blocked and continues in Sprint 11.5.
 
 ## Confirmed baseline (2026-09-19)
 
 - Target release: `physics7_u01_2026_08_14_pilot_r1` (`exact`, `pilot`).
-- Target-release evidence: 0 sessions, 0 attempts, 0 exposure events, 0 mastery rows.
+- At the original 11L baseline there were 0 target-release sessions/attempts/exposures/mastery rows. Three later exact-release QA sessions were created before cohort authorization and are now classified `outside_cohort`; they remain ineligible for formal pilot closure.
 - Legacy evidence: 11 sessions, 94 attempts, 56 exposure events, 10 mastery rows.
 - All legacy evidence is bound to `physics7_u01_legacy_pre_11k` and marked `legacy_inferred`.
 - One abandoned diagnostic is explicitly dispositioned as an automation-navigation artifact.
@@ -83,7 +83,7 @@ This is a closure punch-list, not a redesign phase. Do not introduce new archite
 2. **Mastery lifecycle disposition**
    - Preserve the already-verified legitimate Mastery-ineligible state.
    - Do **not** manipulate learner evidence or force eligibility merely to start a Mastery Check.
-   - If legitimate eligibility is still unavailable, formally disposition Mastery start/resume/completion to the authorized exact-release 11L cohort, where the full Diagnostic → Practice → Mastery lifecycle is already a closure gate.
+   - If legitimate eligibility is still unavailable, formally disposition Mastery start/resume/completion to the authorized exact-release Sprint 11.5 cohort, where the full Diagnostic → Practice → Mastery lifecycle remains a closure gate.
    - If legitimate eligibility exists naturally, execute the normal start/resume/completion path without bypassing gates.
 
 3. **Suspension and session revocation**
@@ -127,17 +127,21 @@ Run rendered spot checks for the already-defined pending surfaces only:
 
 Check for blocking containment defects: overflow, clipping, overlap, broken Armenian wrapping, malformed card/button spacing, or subject-scope leakage. Reuse the established desktop rendered-QA baseline; do not reopen the already-dispositioned browser/device matrix unless a newly observed defect specifically requires it.
 
-### Phase 2 completion rule
+### Phase 2 completion — 2026-09-20
 
-After all three gates have PASS evidence or explicit accepted dispositions:
+All three technical handoff gates are closed:
 
-- update the Sprint 11F/11G/11H implementation records;
-- update the technical gate states in the 11L pilot records where appropriate;
-- synchronize the GitHub roadmap and Notion mirror;
-- produce the Sprint 11 technical handoff report;
-- do **not** advance the pilot to `entry_ready` unless the human participation-authorization and cohort-enrollment gates also pass.
+- **11F — passed** from live production/database evidence plus the explicit non-forced Mastery disposition;
+- **11G — passed/dispositioned** from live two-subject entitlement state, source isolation and retained prior authenticated evidence; the fresh Mathematics render remains an explicit tooling limitation, not a rendered PASS;
+- **11H — passed/dispositioned** from source containment, prior authenticated learner evidence and fresh rendered public teacher/admin/content checks; fresh authenticated internal views remain an explicit tooling limitation.
 
-If 11F, 11G and 11H all close successfully, the pilot record is expected to show **4/6 entry gates passed**: evidence baseline + 11F + 11G + 11H. That is sufficient for **Sprint 11 technical handoff closure**, but not for pilot entry. The remaining two entry gates—human participation authorization and cohort enrollment—are Sprint 11.5 work.
+The live pilot record now shows **4/6 entry gates passed** and **2/6 open**. The two open gates are `participation_authorized` and `cohort_enrolled`.
+
+The pilot remains correctly `blocked` with `entry_ready = false` and `closure_ready = false`.
+
+The Sprint 11 technical handoff report is `docs/sprint-11-technical-handoff-report.md`.
+
+This is sufficient for **Sprint 11 technical handoff closure**, but not for pilot entry.
 
 ## Sprint boundary decision — 2026-09-20
 
@@ -146,6 +150,16 @@ Human participation authorization and real tester/cohort execution are explicitl
 This changes the **project sprint closure criterion**, not the pilot governance model. The database pilot gates remain fail-closed exactly as implemented. Sprint 11 can close when the product is technically handoff-ready while the pilot itself remains `blocked` until human gates pass.
 
 Informal QA/usability testing after technical handoff may help find defects, but it must not be counted as formal pilot or Sprint 12 calibration evidence unless it satisfies the Sprint 11.5 authorization/cohort requirements.
+
+## Current evidence state at Sprint 11 handoff
+
+- Classified sessions: **14**.
+- Partially compatible legacy-context sessions: **10**.
+- Incompatible sessions: **4**.
+- Compatible formal-pilot sessions: **0**.
+- Closure-eligible sessions: **0**.
+- Eligible attempts/exposures: **0 / 0**.
+- Three post-baseline exact-release QA sessions are explicitly classified as `outside_cohort` and cannot silently become pilot evidence.
 
 ## Deliberate non-claims
 
