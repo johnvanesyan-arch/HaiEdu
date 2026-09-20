@@ -44,11 +44,10 @@ test("pre-submit hinting is disabled once a draft answer exists", async () => {
   );
 });
 
-test("practice UI explains the independent-answer hint boundary", async () => {
+test("practice UI explains the progressive scaffold and independent-answer boundary", async () => {
   const html = await read("web/practice.html");
 
-  assert.match(
-    html,
-    /Հուշումը հասանելի է մինչև պատասխանը մուտքագրելը կամ սխալ պատասխանից հետո/,
-  );
+  assert.match(html, /ուղղություն → ռազմավարություն → նման օրինակ/);
+  assert.match(html, /Դրանք չեն լուծում ընթացիկ հարցը/);
+  assert.match(html, /հմտությունը հետագայում պետք է հաստատվի ինքնուրույն/);
 });
