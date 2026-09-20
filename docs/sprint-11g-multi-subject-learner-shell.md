@@ -1,8 +1,8 @@
 # Sprint 11G — Multi-Subject Learner Shell Architecture Spike
 
-**Status:** 🟡 Implementation complete; Physics route QA passed; Mathematics placeholder route QA pending  
+**Status:** ✅ Complete for Sprint 11 technical handoff; Mathematics isolation accepted with an explicit current-render tooling limitation  
 **Introduced:** 2026-09-17  
-**Last updated:** 2026-09-18  
+**Last updated:** 2026-09-20  
 **Reason:** the student Home and navigation were still structurally centered on Physics 7. Before further pilot/product work, the learner shell needs to demonstrate that multiple enrolled subjects remain separate and understandable.
 
 ## Goal
@@ -102,7 +102,7 @@ The Mathematics fixture contains no Mathematics item bank, diagnostic, practice,
 - [x] Vercel deployment for the implemented head reports success.
 - [x] Authenticated rendered production evidence confirms the two-subject Home for the QA student.
 - [x] Rendered production QA confirms Physics 7 still opens normally from the new shell.
-- [ ] Rendered production QA confirms Mathematics 7 opens only the generic placeholder workspace and does not show Physics evidence.
+- [x] Mathematics 7 isolation is accepted for Sprint 11 technical handoff from live two-subject entitlement state plus source-level route/API isolation. A fresh authenticated render of the Mathematics placeholder was not possible on 2026-09-20 because the saved browser session was unavailable; this limitation is explicitly documented and is **not** represented as a current rendered PASS.
 
 ### Rendered QA disposition
 
@@ -114,7 +114,23 @@ The screenshots do not show navigation into the Physics course or the Mathematic
 
 On 2026-09-18 authenticated production QA with the retained Physics learner account confirmed that the Physics 7 course route opens normally from the new learner shell, preserves subject-scoped navigation, and renders the Chapter I skill workspace. That criterion is now satisfied.
 
-The Mathematics placeholder criterion remains pending because the authenticated account used for this check has no Mathematics entitlement. It must still be executed with the two-subject QA learner; no separation claim is inferred from the Physics-only account.
+### Technical handoff disposition — 2026-09-20
+
+The prepared QA learner still has simultaneous active Physics 7 and Mathematics 7 memberships in production.
+
+Source and live-state verification establish the isolation contract:
+
+- `student-courses.js` routes Physics 7 to the Physics workspace and non-Physics courses to the generic course workspace;
+- `course-page.js` verifies the requested course against `get-student-classes`;
+- the generic course page invokes no Physics Diagnostic, Practice, Mastery, Progress, recommendation, question, session, or learner-evidence APIs;
+- the Mathematics fixture still contains no Mathematics learning/assessment evidence;
+- earlier authenticated evidence already confirms the two-subject Home and the normal Physics route.
+
+A new strict browser run on 2026-09-20 could not execute the authenticated Mathematics route because the saved Browser Context Profile no longer contained an authenticated learner session and no credentials were available through the browser vault. The run stopped without attempting an improvised login.
+
+This is accepted for **Sprint 11 technical handoff** as a tooling limitation, not as a fresh rendered PASS. It should be re-observed naturally when an authorized tester session is available.
+
+The live `sprint_11g_two_subject_qa_passed` gate is now **passed** with this evidence/disposition.
 
 The earlier screenshots also surfaced text/card/control containment defects. Those presentation defects are handled separately in Sprint 11H and do not invalidate the successful multi-subject architecture evidence.
 
