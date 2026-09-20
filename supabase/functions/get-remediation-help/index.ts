@@ -159,7 +159,7 @@ Deno.serve(async (req) => {
   if (!guide) {
     const { data: skillGuide, error: skillGuideError } = await admin
       .from("skill_remediation_guides")
-      .select("id, misconception_code, title_hy, strategy_hy, hint_1_hy, hint_2_hy, worked_example_hy")
+      .select("id, guide_version, misconception_code, title_hy, strategy_hy, hint_1_hy, hint_2_hy, worked_example_hy")
       .eq("skill_id", sessionItem.skill_id)
       .eq("status", "published")
       .limit(1)
@@ -167,7 +167,7 @@ Deno.serve(async (req) => {
     if (skillGuideError || !skillGuide) return json({ error: "remediation_guide_missing" }, 404);
     guide = skillGuide;
     guideScope = "skill";
-    guideVersion = 1;
+    guideVersion = Number(skillGuide.guide_version);
   }
 
   const params = item.variant_parameters && typeof item.variant_parameters === "object"
@@ -194,6 +194,9 @@ Deno.serve(async (req) => {
     .eq("id", sessionItem.id);
   if (updateError) return json({ error: "hint_state_update_failed" }, 500);
 
+  const renderedTitleHy = render(guide.title_hy);
+  const renderedStrategyHy = render(guide.strategy_hy);
+
   await admin.from("remediation_events").insert({
     student_id: studentId,
     session_id: session.id,
@@ -208,6 +211,9 @@ Deno.serve(async (req) => {
     guide_version: guideVersion,
     item_template_id: item.item_template_id,
     error_code: errorCode,
+    rendered_title_hy: renderedTitleHy,
+    rendered_strategy_hy: renderedStrategyHy,
+    rendered_content_hy: contentHy,
     metadata: {
       taskSpecific: guideScope === "template",
       triggerErrorCode: guide.trigger_error_code ?? null,
@@ -217,8 +223,8 @@ Deno.serve(async (req) => {
   return json({
     stage,
     level: nextLevel,
-    titleHy: render(guide.title_hy),
-    strategyHy: render(guide.strategy_hy),
+    titleHy: renderedTitleHy,
+    strategyHy: renderedStrategyHy,
     contentHy,
     misconceptionCode: guide.misconception_code ?? null,
     guideScope,
