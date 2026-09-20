@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { recordRecommendationTelemetry } from "./recommendation-telemetry.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -203,6 +204,20 @@ async function startOrResumePractice() {
 
   if (!targetSkill && dashboard?.recommendation?.action === "practice_skill") {
     targetSkill = dashboard.recommendation.skill ?? null;
+    if (targetSkill?.id && dashboard.recommendation.instanceId) {
+      await recordRecommendationTelemetry(
+        supabase,
+        dashboard.recommendation,
+        "shown",
+        "practice_auto_target",
+      );
+      await recordRecommendationTelemetry(
+        supabase,
+        dashboard.recommendation,
+        "followed",
+        "practice_auto_target",
+      );
+    }
   }
 
   const body = targetSkill?.id
@@ -430,6 +445,14 @@ async function submitAnswer(event) {
   }
 
   updateMastery(data.mastery, data.recommendation);
+  if (data.recommendation?.instanceId) {
+    void recordRecommendationTelemetry(
+      supabase,
+      data.recommendation,
+      "shown",
+      "practice_feedback",
+    );
+  }
 }
 
 function updateMastery(mastery, recommendation) {
