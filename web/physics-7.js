@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { recordRecommendationTelemetry } from "./recommendation-telemetry.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -241,7 +242,18 @@ function renderTopics() {
   }
 
   list.querySelectorAll("[data-practice-skill]").forEach((button) => {
-    button.addEventListener("click", () => startPractice(button.dataset.practiceSkill));
+    button.addEventListener("click", async () => {
+      const skillId = button.dataset.practiceSkill;
+      if (skillId && skillId === dashboard?.recommendation?.skill?.id) {
+        await recordRecommendationTelemetry(
+          supabase,
+          dashboard.recommendation,
+          "followed",
+          "physics_course",
+        );
+      }
+      startPractice(skillId);
+    });
   });
 }
 
@@ -290,6 +302,14 @@ async function loadSubject() {
   renderSummary();
   renderActiveSession();
   renderTopics();
+  if (dashboard?.recommendation?.instanceId) {
+    await recordRecommendationTelemetry(
+      supabase,
+      dashboard.recommendation,
+      "shown",
+      "physics_course",
+    );
+  }
   $("subjectLoading").classList.add("hidden");
   $("subjectContent").classList.remove("hidden");
   focusRequestedSkill();
