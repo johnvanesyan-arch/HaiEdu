@@ -42,6 +42,19 @@ Goal: make the learning model measurable, internally consistent and versionable 
 - [x] Fix the first blocking consistency defect before calibration analysis: dashboard recent recovery now requires independent (hint-free) correct answers, matching session/mastery eligibility.
 - [ ] Freeze the resulting baseline as a named model configuration/version.
 
+#### 12A.1b — Hinting & Remediation v2
+
+- [x] Add versioned item-template remediation guides with skill-level fallback.
+- [x] Standardize progressive Practice scaffolding: orient → strategy → analogous worked example.
+- [x] Add safe raw-parameter interpolation with no derived-answer evaluation.
+- [x] Add post-error routing from structured grader error codes where informative.
+- [x] Expand remediation telemetry with context, hint level, guide scope/version, template identity and error code.
+- [x] Deploy task-specific guides for all 8 current parameterized Chapter I templates, covering 80 published variants.
+- [x] Preserve Diagnostic and Mastery Check as hint-free.
+- [x] Preserve mastery thresholds and the 0.65 assisted-positive evidence multiplier.
+
+Detailed implementation: `docs/sprint-12a-hinting-remediation-v2.md`.
+
 #### 12A.2 — Calibration evidence contract
 
 Define which evidence may enter calibration analyses.
