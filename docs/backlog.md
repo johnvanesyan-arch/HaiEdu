@@ -208,8 +208,8 @@ Informal QA/usability testing may occur after Sprint 11 handoff, but it must not
 - [x] Implement Hinting & Remediation v2 foundation: template-aware progressive scaffolding, safe parameter interpolation, skill fallback, enriched telemetry, and task-specific coverage for 8 parameterized templates / 80 published variants.
 - [x] Freeze/name the post-fix baseline model configuration as immutable `haiedu_core_learning_model` / `baseline-2026-09-20-r1`.
 - [x] Define the immutable formal calibration evidence contract with core-calibration, descriptive-only and excluded tiers.
-- [ ] Define calibration metrics and minimum sample-size reporting rules.
-- [ ] Build provenance-aware read-only calibration analysis views/queries.
+- [x] Define immutable calibration metrics and sample-size reporting rules (`metrics-2026-09-20-r1`); recommendation-path accuracy is explicitly flagged as an instrumentation gap.
+- [ ] Close/disposition the recommendation-event telemetry gap, then build provenance-aware read-only calibration analysis views/queries.
 - [ ] Define the parameter-change decision/versioning protocol.
 
 ### 12B — Empirical Calibration
