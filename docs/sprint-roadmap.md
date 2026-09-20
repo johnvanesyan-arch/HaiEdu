@@ -142,10 +142,10 @@ For the current Sprint 11 state:
 | 11F.1 Technical preflight | ✅ | Automated/source, database, active-bank, security/RLS and session-collision preflight completed. |
 | 11F.2 Authenticated rendered production smoke | ✅ | Student and teacher authenticated production rendering passed where executable. Four authenticated browser-control repetitions were explicitly accepted as limitations, not PASS results. |
 | 11F.3 Final production workflow smoke | 🟡 | Stale second Diagnostic dispositioned as an automation artifact; Home/Progress, Physics routing, role isolation and the legitimate Mastery-ineligible state verified. Teacher/account/privacy workflow items remain. |
-| 11F.4 Pilot privacy and participation design | ⏳ | Define the privacy/participation requirements consumed by 11L. |
-| 11F.5 Technical pilot-readiness report | ⏳ | Summarize technical readiness, accepted limitations and defects before standards reconciliation and real-cohort execution. |
+| 11F.4 Privacy/participation readiness boundary | ⚪ | Human participation authorization is explicitly deferred to Sprint 11.5; Sprint 11 only preserves the fail-closed pilot controls. |
+| 11F.5 Technical handoff report | ⏳ | Summarize technical readiness, accepted limitations, remaining non-handoff blockers and safe tester conditions. |
 
-Recent 11F.3 production work also surfaced and corrected course-entitlement, class-join verification, course-loading and authentication-state-flash defects. Teacher-side rendering of generated Diagnostic evidence has been manually verified. On 2026-09-18 the stale second Diagnostic was preserved and marked abandoned with an explicit QA disposition; Home and Progress retained the valid 13/20 result, Physics routing passed, and Mastery correctly remained closed for five unfinished skills. These checks do not by themselves close 11F.
+Recent 11F.3 production work also surfaced and corrected course-entitlement, class-join verification, course-loading and authentication-state-flash defects. Teacher-side rendering of generated Diagnostic evidence has been manually verified. On 2026-09-18 the stale second Diagnostic was preserved and marked abandoned with an explicit QA disposition; Home and Progress retained the valid 13/20 result, Physics routing passed, and Mastery correctly remained closed for five unfinished skills. These checks do not by themselves close 11F. Human cohort execution is not an 11F closure requirement; it is Sprint 11.5 work.
 
 ### 11G — Multi-Subject Learner Shell Architecture Spike
 
