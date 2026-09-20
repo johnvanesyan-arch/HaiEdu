@@ -40,7 +40,7 @@ Goal: make the learning model measurable, internally consistent and versionable 
 - [x] Confirm exact-release QA evidence exists but formal-pilot eligible evidence remains zero.
 - [x] Identify duplicated model rules and cross-surface inconsistencies.
 - [x] Fix the first blocking consistency defect before calibration analysis: dashboard recent recovery now requires independent (hint-free) correct answers, matching session/mastery eligibility.
-- [ ] Freeze the resulting baseline as a named model configuration/version.
+- [x] Freeze the resulting baseline as a named model configuration/version.
 
 #### 12A.1b — Hinting & Remediation v2
 
@@ -211,7 +211,25 @@ There are currently two related recommendation layers:
 - `recommendation.ts` chooses among prerequisite review, more evidence, advance skill, and continue current skill from mastery state + prerequisites;
 - the student dashboard prioritizes unfinished skills using diagnostic band + prerequisite resolution and active-session state.
 
-Sprint 12A must document whether these are intentionally different scopes or need a shared policy abstraction before calibration.
+Baseline disposition: these are currently frozen as **intentionally separate scopes** rather than silently merged. The immutable baseline records this as `dual_scope_baseline`. A later policy-abstraction change, if any, must be proposed and versioned explicitly rather than treated as calibration cleanup.
+
+
+## Frozen learning-model baseline — 12A.1 complete
+
+The post-consistency-fix model is now frozen in `public.learning_model_configurations` as:
+
+- model key: `haiedu_core_learning_model`;
+- version: `baseline-2026-09-20-r1`;
+- kind: `baseline`;
+- reference curriculum release: `physics7_u01_2026_08_14_pilot_r1`;
+- source commit: `2b926195d967612ef1a41be3938c7cb0c57fd5c9`;
+- snapshot fingerprint: `6ab5f3e50694f8f4105f87569905c5ac`.
+
+The registry is append-only: UPDATE and DELETE are blocked by trigger. Future candidate/approved configurations must be inserted as new versions so historical interpretation remains reproducible.
+
+The snapshot records the deployed versions of the learning functions used by the baseline: `submit-answer` v10, `start-learning-session` v12, `get-session-item` v11, `get-student-dashboard` v16, `submit-mastery-answer` v4, `get-mastery-check-status` v6 and `get-remediation-help` v5.
+
+Migrations: `0044_sprint_12a_freeze_learning_model_baseline.sql` and `0045_sprint_12a_learning_model_baseline_indexes.sql`.
 
 ## Current evidence snapshot — not calibration evidence
 
