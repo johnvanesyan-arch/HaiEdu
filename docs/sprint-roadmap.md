@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.14  
+**Roadmap version:** 2.15  
 **Updated:** 2026-09-20  
 **Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A Calibration Readiness is now 🟡 in progress. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
 
@@ -49,13 +49,15 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 15 | Hybrid | Curriculum/outcome/skill design in chat; bulk ingestion and technical QA in Work. |
 | 16 | Work | Full-course integration and regression. |
 | 17 | Hybrid | Pilot design and interpretation in chat; operational setup/QA/evidence handling in Work. |
-| 18 | Work | Performance, observability, backups, CI/CD, security and curriculum-change operations. |
-| 19 | Work | Institutional beta release, onboarding and operational verification. |
+| 18 | Work | Performance, observability, backups, CI/CD, security, data-integrity and curriculum-change operations. |
+| 18.5 | Hybrid | Academic-year lifecycle/rollover rules in chat; lifecycle, handover and rollover implementation in Work. |
+| 19 | Work | Institutional beta release, onboarding, support and operational verification. |
 | 20 | Hybrid | Grade-specific curriculum modelling in chat; bulk implementation/QA in Work. |
 | 21 | Hybrid | Second-subject disciplinary model in chat; generalized implementation in Work. |
 | 22 | Work | Repeated standards-driven subject onboarding once the framework is stable. |
 | 23 | Hybrid | Longitudinal data model in chat; cross-grade/cross-subject implementation in Work. |
-| 24 | Hybrid | Metric definitions and interpretation in chat; analytics queries/dashboards in Work. |
+| 24 | Hybrid | Metric definitions, confidence/explainability and interpretation in chat; analytics queries/dashboards in Work. |
+| 24.5 | Hybrid | Teacher intervention/assessment/remediation policy in chat; workflow implementation in Work. |
 | 25 | Hybrid | AI boundaries/evaluation in chat; integrations, tests and telemetry in Work. |
 | 26 | Hybrid | National-scale governance/architecture in chat; scale/security implementation in Work. |
 
@@ -95,18 +97,20 @@ For the current Sprint 11 state:
 | 11.5 | Controlled External Tester Pilot | ⏳ | Authorize and run a small real-user test cohort on the exact current release, then collect usable operational evidence for Sprint 12. |
 | 12 | Learning-Model Calibration | 🟡 | 12A calibration readiness can proceed in parallel with asynchronous review; 12B empirical tuning remains blocked until suitable formal Sprint 11.5 learner evidence exists. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
-| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize academic, institutional, authorization and enrollment architecture: schools, academic years, memberships, school admins, teacher boundaries, centrally governed content and controlled learner enrollment. |
+| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize schools, academic years, time-aware memberships, IAM/permissions, tenant isolation, audit scope, teacher continuity foundations, controlled enrollment and centrally governed content. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
 | 16 | Full Grade 7 Physics MVP | ⏳ | Integrate all Grade 7 Physics units with course-level progress aggregation while keeping diagnostics/mastery checks unit-bound. |
 | 17 | School Pilot v2 | ⏳ | Run a broader controlled school-level pilot across the complete Physics 7 product, including progression between units and school administration workflows. |
-| 18 | Production Hardening & Curriculum-Change Operations | ⏳ | Address scale, performance, security, observability and recovery plus safe curriculum-version migration, impact analysis and rollback operations. |
-| 19 | Public / Institutional Beta | ⏳ | Controlled external beta for schools/institutions using tenant-isolated administration, controlled enrollment and explicit curriculum-release identity. |
+| 18 | Production Hardening & Curriculum-Change Operations | ⏳ | Address scale, performance, security, observability, incident response, backup/restore, data-integrity checks, controlled rollout and safe curriculum-version migration/rollback. |
+| 18.5 | Academic-Year Lifecycle, Rollover & Continuity | ⏳ | Implement the operational academic-year lifecycle: prepare/activate/close/archive, student progression, teacher/class handover, validated rollover and historical preservation. |
+| 19 | Public / Institutional Beta | ⏳ | Controlled external beta with repeatable school onboarding, support/escalation, tenant-isolated administration, controlled enrollment and explicit curriculum-release identity. |
 | 20 | Physics Grade Expansion — Physics 8–12 | ⏳ | Expand Physics vertically by mapping each grade to its applicable current programme rather than copying Physics 7 upward. |
 | 21 | Second-Subject Implementation | ⏳ | Implement one genuinely different subject from its own official standard/programme and test whether the platform abstractions generalize beyond Physics. |
 | 22 | Multi-Subject Expansion Across Grades | ⏳ | Apply a repeatable standards-driven subject-onboarding pipeline across multiple subjects and valid grade combinations. |
 | 23 | Cross-Grade / Cross-Subject Learner Profile | ⏳ | Build longitudinal, curriculum-version-aware learner state that survives grade/school changes and can support cross-grade/cross-subject prerequisites. |
-| 24 | Advanced Teacher, School & Curriculum Analytics | ⏳ | Add instructional, cohort, school and standards-implementation analytics on top of validated evidence models. |
-| 25 | Controlled AI Layer | ⏳ | Introduce bounded AI assistance while keeping official curriculum identity, grading, mastery evidence, permissions and progress deterministic/auditable. |
+| 24 | Advanced Teacher, School & Curriculum Analytics | ⏳ | Add evidence-confidence-aware instructional, cohort, school, curriculum-implementation, growth, engagement, question-quality and explainable analytics. |
+| 24.5 | Teacher Assessment, Intervention & Remediation Workflows | ⏳ | Turn trusted analytics into teacher-controlled assessments, interventions, reassessment/retention queues, notifications and targeted remediation/homework. |
+| 25 | Controlled AI Layer | ⏳ | Introduce provider-independent, bounded AI assistance while keeping official curriculum identity, grading, mastery evidence, permissions and progress deterministic/auditable. |
 | 26 | National-Scale Readiness | ⏳ | Prepare multi-school governance, large-scale operations, curriculum-update governance, regional/national administration, security and support for national deployment. |
 
 ## Current sprint — Sprint 11
@@ -399,7 +403,7 @@ Sprint 12 then analyzes curriculum-compatible learner behavior:
 
 Calibration evidence must be curriculum-version aware. Evidence from materially different skill definitions or blueprints must not be pooled as though it were one construct.
 
-Where calibration settings change, model/configuration versioning must preserve the meaning of historical evidence. If evidence is insufficient, record a no-change/defer disposition rather than forcing a parameter change.
+Where calibration settings change, model/configuration versioning must preserve the meaning of historical evidence. Material mastery/confidence outputs must retain the model/configuration version that produced them. Calibration must explicitly support **Insufficient Evidence** rather than forcing a mastery conclusion, and consequential classifications/recommendations must be explainable from the evidence actually used. If evidence is insufficient, record a no-change/defer disposition rather than forcing a parameter change.
 
 See `docs/sprint-12-learning-model-calibration.md` for the implementation plan and deployed-model baseline.
 
@@ -493,9 +497,13 @@ Schools/teachers may control local delivery context such as:
 
 Locally created content must not silently enter the canonical national assessment bank.
 
-### Time-aware identity
+### Time-aware identity and lifecycle foundation
 
-Learner identity persists across academic years and school changes while institutional memberships are historical, time-bounded relationships.
+Learner identity persists across academic years and school changes while institutional memberships are historical, time-bounded relationships. The data model must support Academic Year as a first-class entity; time-bounded student enrollments, classroom memberships and teacher assignments; teacher/classroom handover without rewriting historical authorship; and later rollover without renaming/overwriting prior-year structures.
+
+### IAM, audit and accommodation foundations
+
+Account, role and membership remain separate. Privileged access follows an authorized chain of trust, protected requests are authorized server-side, and significant role/membership/admin actions retain actor + institutional scope in the audit trail. The architecture must also permit private, authorized learner accommodations without changing the curriculum standard being assessed.
 
 ### Tenant-isolation release gate
 
@@ -524,6 +532,10 @@ Verify:
 - audit events preserve actor, scope and institutional context.
 
 This is a Sprint 14 release gate.
+
+### Architecture readiness checkpoint
+
+Before Sprint 14 closes, verify that the implemented foundations can support curriculum/question versioning, evidence confidence/uncertainty and model provenance, multi-tenant IAM/audit, academic-year rollover/teacher handover, and historical data-integrity checks **without redesigning the core identity/evidence model**. This is a release checkpoint inside Sprint 14, not a separate sprint.
 
 ## Sprint 15 — Grade 7 Physics Expansion — Chapters II–VI
 
@@ -556,6 +568,8 @@ The complete Physics 7 product includes:
 - remediation;
 - unit mastery checks;
 - recommendations;
+- prerequisite-aware remediation where the curriculum model supports it;
+- student-facing mastery states that distinguish Secure / Practising / Needs Work / Not Attempted or equivalent evidence-aware states;
 - progress;
 - teacher dashboard;
 - course-level aggregation across units.
@@ -576,7 +590,11 @@ Test the complete Physics 7 product under real classroom conditions:
 - retention;
 - usability;
 - operational support;
-- student behavior over time.
+- student behavior over time;
+- engagement/active-learning telemetry;
+- teacher intervention recording;
+- actionable early-warning/notification behavior;
+- approved assessment accommodations where configured.
 
 ## Sprint 18 — Production Hardening & Curriculum-Change Operations
 
@@ -592,7 +610,12 @@ Engineering hardening:
 - database optimization;
 - security regression;
 - tenant-isolation regression;
-- capacity testing.
+- capacity testing;
+- operational data-quality/integrity checks;
+- incident-response procedures and security-event handling;
+- tested backup **and restore** procedures;
+- feature flags / controlled rollout and rollback for material platform/model changes;
+- localization architecture so UI/content-language behavior is not hard-coded.
 
 Curriculum-change operations:
 
@@ -607,7 +630,28 @@ new official standard/programme/amendment
                           -> preserve historical evidence
 ```
 
-Bad curriculum releases must be reversible without corrupting historical learner evidence.
+Bad curriculum releases must be reversible without corrupting historical learner evidence. Content corrections/disputes must preserve question provenance and prior versions rather than silently editing validated production history.
+
+## Sprint 18.5 — Academic-Year Lifecycle, Rollover & Continuity
+
+Implement the operational lifecycle whose data foundations are established in Sprint 14.
+
+Core invariant: **students persist; academic structures change; history is never overwritten.**
+
+Support:
+
+- Prepare → Preview → Validate → Confirm → Activate for a new academic year;
+- active-year operation followed by Close → Archive;
+- progression states: Promote, Repeat grade, Internal transfer/reassignment, Leaving institution, Pending/Unknown;
+- new class instances and teacher assignments for the new year rather than renaming old ones;
+- archived prior-year classrooms with preserved assessments, evidence, interventions and authorship;
+- teacher/classroom continuity and authorized handover when staff change;
+- validation for duplicate/missing enrollments, unassigned students, inactive/missing teachers, invalid transitions and missing curriculum versions;
+- auditable rollover identity, counts, exceptions and activation;
+- prior-year evidence available as prerequisite/contextual evidence without automatically satisfying new-year mastery;
+- mid-year membership changes represented as time-bounded historical memberships rather than overwritten class history.
+
+Inter-school transfer remains privacy/tenant controlled: a school losing membership must not see the learner's later activity elsewhere, and a receiving school does not automatically inherit another school's institutional records.
 
 ## Sprint 19 — Public / Institutional Beta
 
@@ -622,7 +666,9 @@ Controlled external institutions may begin adoption only after:
 - privacy documentation;
 - support processes;
 - explicit academic-year/programme/curriculum-release identity;
-- stable production deployment.
+- stable production deployment;
+- repeatable school onboarding/configuration;
+- structured support and issue-escalation workflow.
 
 ## Sprint 20 — Physics Grade Expansion — Physics 8–12
 
@@ -685,26 +731,50 @@ Build a longitudinal profile in which historical evidence persists across:
 - school transfers where policy permits continuity;
 - curriculum versions.
 
-Cross-grade and eventual cross-subject prerequisite relationships become structurally possible without rewriting historical learner evidence.
+Cross-grade and eventual cross-subject prerequisite relationships become structurally possible without rewriting historical learner evidence. Retention-of-learning/reassessment history can span years while remaining curriculum-version aware.
 
 ## Sprint 24 — Advanced Teacher, School & Curriculum Analytics
 
 Add analytics only after sufficient longitudinal/multi-course evidence exists:
 
 - class progress trends;
+- engagement, usage and retention analytics with active-learning time separated from simple tab-open duration;
+- baseline-diagnostic and learning-growth indicators;
 - intervention groups;
 - skill-gap clusters;
+- misconception patterns and prerequisite-linked gap hypotheses;
+- mastery evidence confidence and explicit Insufficient Evidence states;
+- inspectable explanations for consequential analytics/recommendations;
 - cohort progression;
 - teacher-facing recommendations;
 - curriculum coverage;
 - official-outcome coverage;
+- assessment/question quality analytics;
 - standards-implementation gaps;
 - school leadership reporting;
-- export/reporting.
+- export/reporting and authorized data portability;
+- privacy-preserving benchmarking only when cohort size, privacy thresholds and statistical validity are sufficient;
+- assessment-integrity/anti-gaming signals as review indicators, never automatic cheating determinations.
 
-Analytics must respect tenant, class/course and role boundaries.
+Analytics must respect tenant, class/course and role boundaries. Metric definitions must be governed so terms such as mastery, coverage, active learner and growth have stable, documented meanings.
+
+## Sprint 24.5 — Teacher Assessment, Intervention & Remediation Workflows
+
+Turn trusted evidence into teacher-controlled action:
+
+- teacher assessment builder using validated-bank items and explicit assessment blueprints;
+- intervention tracking and teacher override-with-reason while preserving raw/system evidence;
+- early-warning and prioritized teacher notification workflows;
+- retention-of-learning / reassessment queue;
+- analytics-driven homework/remediation proposed from diagnosed gaps, prerequisite relationships and evidence confidence;
+- teacher preview/edit/approve/reject/assign before automated recommendations become learner work;
+- resulting practice/reassessment evidence feeds the same evidence model.
+
+AI-generated assessment items or remediation content remain unreviewed unless explicitly approved under content governance.
 
 ## Sprint 25 — Controlled AI Layer
+
+Implement a provider-independent AI service/model gateway so platform functions are not coupled throughout the codebase to one vendor/model. AI receives only task-relevant context and remains subordinate to curriculum, evidence, permissions and deterministic governance.
 
 Potential uses:
 
@@ -747,7 +817,9 @@ National-scale preparation includes:
 - security at scale;
 - privacy/compliance processes;
 - high-volume analytics;
-- operational support and escalation.
+- operational support and escalation;
+- centrally governed state-standard configuration as the default for every school;
+- Master Admin-controlled approval for legitimate school-specific additions/exceptions without allowing schools to redefine the national curriculum baseline.
 
 ## Architectural invariant from Sprint 11G onward
 
@@ -852,10 +924,11 @@ The first complete subject/grade product exists.
 
 ### Milestone G — Real-school validation and institutional readiness
 
-**Sprints 17–19**
+**Sprints 17–19, including Sprint 18.5**
 
 Full-product school testing  
 → production/curriculum-change hardening  
+→ academic-year lifecycle/rollover continuity  
 → controlled external adoption.
 
 ### Milestone H — Multi-grade Physics
@@ -874,8 +947,9 @@ Second subject
 
 ### Milestone J — Institutional intelligence and national scale
 
-**Sprints 24–26**
+**Sprints 24–26, including Sprint 24.5**
 
 Advanced analytics  
+→ teacher assessment/intervention/remediation workflows  
 → controlled AI  
 → national-scale governance and operations.
