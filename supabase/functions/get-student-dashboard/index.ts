@@ -2,6 +2,8 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
+import { resolveRuntimeLearningModel } from "../_shared/learning-model.ts";
+import { issueRecommendationEvent } from "../_shared/recommendation-telemetry.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -82,11 +84,13 @@ Deno.serve(async (req) => {
   const skillIds = skills.map((s) => s.id);
 
   let curriculumReleaseId: string;
+  let learningModel: { id: string; provenanceStatus: "exact" };
   try {
     curriculumReleaseId = await resolveActiveCurriculumRelease(admin, UNIT_CODE);
+    learningModel = await resolveRuntimeLearningModel(admin, curriculumReleaseId, UNIT_CODE);
   } catch (err) {
-    console.error("curriculum release unavailable", err);
-    return json({ error: "curriculum_release_unavailable" }, 503);
+    console.error("curriculum release or learning-model binding unavailable", err);
+    return json({ error: "curriculum_or_model_unavailable" }, 503);
   }
 
   const [
@@ -190,6 +194,54 @@ Deno.serve(async (req) => {
   else if (recommended) recommendedAction = "practice_skill";
   else recommendedAction = "unit_complete";
 
+  const reasonHy = recommendedAction === "resume_session"
+    ? "Դուք ունեք չավարտված սեսիա։ Շարունակեք այնտեղից, որտեղ կանգ եք առել։"
+    : recommendedAction === "take_diagnostic"
+      ? "Սկսեք ախտորոշիչից, որպեսզի համակարգը կազմի հմտությունների քարտեզ։"
+      : recommendedAction === "practice_skill"
+        ? `Խորհուրդ է տրվում սկսել ${recommended?.code} հմտությունից՝ հաշվի առնելով ախտորոշիչ արդյունքը և նախապայմանները։`
+        : "Այս բաժնի ընթացիկ հմտությունները ամրապնդված են։";
+
+  const recommendationSnapshot = {
+    action: recommendedAction,
+    skill: recommended ? {
+      id: recommended.id,
+      code: recommended.code,
+      nameHy: recommended.nameHy,
+      band: recommended.diagnostic.band,
+    } : null,
+    reasonHy,
+  };
+
+  const recommendationInstanceId = await issueRecommendationEvent({
+    admin,
+    studentId,
+    policyScope: "dashboard_orchestration",
+    surface: "student_dashboard_api",
+    action: recommendedAction,
+    targetSkillId: recommended?.id ?? active?.target_skill_id ?? null,
+    curriculumReleaseId,
+    learningModelConfigurationId: learningModel.id,
+    modelProvenanceStatus: learningModel.provenanceStatus,
+    learningSessionId: active?.id ?? null,
+    stateSnapshot: {
+      activeSession: active ? {
+        id: active.id,
+        mode: active.mode,
+        targetSkillId: active.target_skill_id ?? null,
+        answered: Number(active.answered_count),
+        planned: Number(active.planned_item_count),
+      } : null,
+      latestDiagnosticId: latestDiagnostic?.id ?? null,
+      completedSkills,
+      totalSkills: skillMap.length,
+      recommendedSkillId: recommended?.id ?? null,
+      recommendedSkillBand: recommended?.diagnostic.band ?? null,
+      recommendedSkillMastery: recommended?.mastery?.score ?? null,
+    },
+    recommendationSnapshot,
+  });
+
   return json({
     unitCode: UNIT_CODE,
     curriculumReleaseId,
@@ -220,15 +272,11 @@ Deno.serve(async (req) => {
     },
     skills: skillMap,
     recommendation: {
-      action: recommendedAction,
-      skill: recommended ? { id: recommended.id, code: recommended.code, nameHy: recommended.nameHy, band: recommended.diagnostic.band } : null,
-      reasonHy: recommendedAction === "resume_session"
-        ? "Դուք ունեք չավարտված սեսիա։ Շարունակեք այնտեղից, որտեղ կանգ եք առել։"
-        : recommendedAction === "take_diagnostic"
-          ? "Սկսեք ախտորոշիչից, որպեսզի համակարգը կազմի հմտությունների քարտեզ։"
-          : recommendedAction === "practice_skill"
-            ? `Խորհուրդ է տրվում սկսել ${recommended?.code} հմտությունից՝ հաշվի առնելով ախտորոշիչ արդյունքը և նախապայմանները։`
-            : "Այս բաժնի ընթացիկ հմտությունները ամրապնդված են։",
+      ...recommendationSnapshot,
+      instanceId: recommendationInstanceId,
+      policyScope: "dashboard_orchestration",
+      modelConfigurationId: learningModel.id,
+      modelProvenanceStatus: learningModel.provenanceStatus,
     },
   });
 });
