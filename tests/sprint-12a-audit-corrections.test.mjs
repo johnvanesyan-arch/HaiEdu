@@ -1,4 +1,4 @@
-+import test from "node:test";
+import test from "node:test";
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 
@@ -99,3 +99,4 @@ test("audited metric set r2 respects clustering and removes universal sample/int
   assert.match(sql, /'template_vs_skill_guide'/);
   assert.match(sql, /'responseTimeInterpretation', 'operational_signal_only_not_direct_cognitive_difficulty'/);
 });
+
