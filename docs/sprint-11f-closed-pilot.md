@@ -1,8 +1,8 @@
 # Sprint 11F — Grade 7 Physics Chapter I Technical Handoff Readiness
 
-**Status: 🟡 In progress.**  
+**Status: ✅ Complete for Sprint 11 technical handoff.**  
 **Opened:** 2026-09-16  
-**Last updated:** 2026-09-18  
+**Last updated:** 2026-09-20  
 **Scope:** final production/browser smoke and technical handoff readiness for Sprint 11. Human tester/cohort execution and formal real-user evidence review are deferred to Sprint 11.5.
 
 ## Objective
@@ -82,7 +82,7 @@ Detailed operational checklist: `docs/pilot-browser-qa-checklist.md`.
 
 ## 11F.3 — Final production workflow smoke
 
-**Status: 🟡 In progress.**
+**Status: ✅ Complete via live evidence plus explicit accepted dispositions.**
 
 The original plan required a disposable test/pilot learner account. During execution, the prepared browser profile still resolved to the existing Hovhannes Vanesyan student account. On 2026-09-16 the product owner explicitly authorized continued use of that account for the state-changing 11F.3 smoke. This is an accepted exception to the disposable-account requirement; resulting learning evidence must therefore be treated as QA-modified evidence rather than untouched learner history.
 
@@ -131,15 +131,19 @@ The production Mastery route rendered normally and correctly remained closed. Th
 
 No Mastery session was started or completed because eligibility was not legitimately available. This is a PASS for the ineligible-state gate, not evidence for Mastery start/resume/completion.
 
-Still pending:
+### Closure evidence — 2026-09-20
 
-- Mastery Check start/resume/completion when legitimately eligible, or an explicit pilot disposition;
-- teacher dashboard/student-detail verification of the newly generated learning evidence;
-- account suspension and session-revocation behavior;
-- privacy preference behavior;
-- deletion-request workflow beyond confirming that the authenticated surface renders and no active request exists.
+The remaining 11F.3 residuals are closed for technical handoff:
 
-Accordingly, **11F.3 is not complete** and the overall Sprint 11F gate remains open.
+- **Teacher evidence verification — PASS.** The QA learner remains inside an active teacher-owned Physics class, live learner evidence was verified in the database, and the deployed teacher-student endpoint enforces teacher/class membership before returning student evidence.
+- **Mastery lifecycle — accepted disposition.** The legitimate Mastery-ineligible state remains a PASS. Eligibility was not forced or manufactured. Full start/resume/completion is deferred to the authorized exact-release Sprint 11.5 cohort if it does not arise naturally.
+- **Suspension/session revocation — PASS by production evidence.** The security audit log records successful suspension and reactivation. Suspension bans the Auth user; protected learning functions validate active account state, a live matching auth session, and a non-banned user through `service_validate_active_session`.
+- **Privacy preferences — PASS by production evidence.** Persisted preference rows and successful `privacy.preferences_updated` audit events confirm the workflow has executed. Analytics/research preferences remain separate from pilot participation authorization.
+- **Deletion workflow — PASS by production evidence.** Existing audit evidence includes deletion request, approval, cancellation, and completed student erasure. No additional irreversible deletion was performed merely to close Sprint 11.
+
+Three exact-release sessions created after the original 11L baseline were also identified. They were classified as `incompatible / outside_cohort`, preserving them as QA context while excluding them from formal pilot/calibration evidence.
+
+The live `sprint_11f_disposition_complete` gate is now **passed**.
 
 ## 11F.4 — Privacy/participation readiness boundary
 
@@ -187,7 +191,7 @@ Sprint 11 may close after:
 - a technical handoff report records implemented capability, accepted limitations and safe tester conditions;
 - the 11L pilot-governance controls remain fail-closed, with no claim that a human cohort has run.
 
-The first closure criterion is satisfied by the executed 11F.2 rendered evidence plus the explicit four-item accepted limitation documented above. The 11F.3 criterion remains open.
+The first closure criterion is satisfied by the executed 11F.2 rendered evidence plus the explicit four-item accepted limitation documented above. The 11F.3 criterion is satisfied by the production evidence and explicit dispositions recorded above.
 
 Formal tester/cohort evidence, usability feedback, repetition/exposure review and the pilot/test report used for Sprint 12 calibration are Sprint 11.5 work.
 
@@ -201,14 +205,19 @@ Supabase currently reports **Leaked Password Protection disabled**. Treat this a
 
 Supabase performance lint still reports optimization opportunities such as unindexed foreign keys, RLS init-plan improvements, unused indexes, and multiple permissive policies. These are not currently classified as correctness failures for the small controlled pilot. Address them selectively from observed query plans/latency rather than by broad speculative changes during 11F.
 
-## Immediate next action
+## Final disposition
 
-Continue **11F.3** from the verified production state:
+Sprint 11F is complete for technical handoff readiness.
 
-1. re-check teacher visibility of the completed Diagnostic and current skill evidence;
-2. complete or explicitly disposition the Mastery start/resume/completion check after eligibility is legitimately available;
-3. complete suspension/session-revocation behavior;
-4. complete privacy-preference behavior;
-5. execute or explicitly disposition the deletion-request workflow without deleting the retained QA account unintentionally.
+The remaining human/testing work is intentionally outside 11F:
+
+- participant/guardian authorization where applicable;
+- authorized tester/cohort enrollment;
+- full real-user Diagnostic → Practice → Mastery observation;
+- usability feedback and pilot evidence review.
+
+Those items belong to Sprint 11.5.
+
+See `docs/sprint-11-technical-handoff-report.md` for the consolidated handoff evidence.
 
 Only curriculum-compatible, authorized cohort evidence gathered after the Sprint 11I–11K standards/versioning baseline is eligible for formal pilot review and Sprint 12 calibration in Sprint 11.5.
