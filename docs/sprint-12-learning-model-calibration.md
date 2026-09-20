@@ -238,6 +238,31 @@ Supabase: `get-student-dashboard` deployed as version **16**.
 
 This was a consistency fix only; the **4/5** recovery threshold itself was not changed.
 
+## Hinting evidence boundary — fixed 2026-09-20
+
+A second 12A consistency/UX issue was identified in Practice:
+
+- previously, the Help button remained available after a learner had already entered or selected an answer but before submission;
+- opening Help at that point set `hint_level_used > 0`;
+- a subsequently correct submission was therefore treated as assisted positive evidence and received the current 0.65 positive-evidence multiplier.
+
+That created an avoidable accidental-penalty path.
+
+**Resolution:**
+
+- pre-submit Help is available only while the answer is still blank;
+- once the learner types a value or selects an option, pre-submit Help is hidden/disabled;
+- clearing the draft answer makes Help available again;
+- after an incorrect submitted answer, `Բացատրել սխալը` remains available as before;
+- the existing assisted-evidence weighting is unchanged;
+- regression tests cover text/numeric and choice-input state changes.
+
+This preserves a clean evidence boundary: **entered answer → independent submission**, while **Help first → assisted submission**.
+
+GitHub implementation: `76ff5b6dc8430c83c345f63d2c27d4e7f69b98a3`  
+UX copy: `9b08490794f29ad6417740fb8d67d6eb52a8ccdf`  
+Regression test: `a9961993361d1fb84a104b2c9cef4f4842dd199b`
+
 ## Sprint 12 gating rule
 
 - 12A may proceed now.
