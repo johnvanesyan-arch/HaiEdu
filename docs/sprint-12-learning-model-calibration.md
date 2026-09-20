@@ -79,23 +79,21 @@ Human participation authorization is not performed by this contract; it remains 
 
 #### 12A.3 — Calibration metrics
 
-Specify release-aware metrics for:
+**Status: ✅ Complete.**
 
-- time/evidence needed to reach secure status;
-- practice burden per skill;
-- recovery frequency and stability;
-- hint-assisted versus independent performance;
-- diagnostic band versus later independent performance;
-- Mastery Check pass/fail behavior;
-- Mastery Check skill-level failure patterns;
-- recommendation path accuracy;
-- item difficulty and response-time behavior;
-- exact-repeat/pool-exhaustion influence;
-- threshold sensitivity.
+The immutable metric set `haiedu_learning_model_calibration_metrics / metrics-2026-09-20-r1` defines release-aware metrics for mastery evidence-to-secure, practice burden, recovery stability, assisted versus independent performance, diagnostic predictive alignment, Mastery Check outcomes/failure patterns, recommendation-path accuracy, item difficulty/response time, repeat/pool-exhaustion influence and threshold sensitivity.
+
+Every metric must expose sample provenance and denominators. The initial candidate-change discussion floor is **10 distinct learners + 30 relevant observations**; meeting that floor is **not** sufficient for approval or psychometric validity. Sparse item/comparison/band/check cells are explicitly labelled and cannot justify tuning. Proportions should report numerator/denominator and Wilson 95% intervals when computed; continuous metrics use median/IQR as primary summaries.
+
+Learner-count reporting bands are governance labels only: 1–4 trace-only, 5–9 exploratory descriptive, 10–29 pilot descriptive, and 30+ expanded-pilot descriptive. None is a validation claim.
+
+**Known instrumentation gap:** recommendation-path accuracy cannot yet be measured because issued recommendations are not durably recorded with learner-state context. The metric is frozen as `instrumentation_gap`; 12A.4 must close or explicitly disposition this before formal recommendation-quality analysis.
+
+Metric-set fingerprint: `a25c51a8273dba313ecce9787a89b2dc`. Migration: `0047_sprint_12a_calibration_metric_set.sql`.
 
 #### 12A.4 — Analysis pipeline
 
-Build read-only, provenance-aware analysis views or queries that:
+Before building final read-only analysis views, close or explicitly disposition the known recommendation-event telemetry gap. Then build read-only, provenance-aware analysis views or queries that:
 
 - separate QA/context from formal calibration evidence;
 - preserve curriculum release and blueprint identity;
