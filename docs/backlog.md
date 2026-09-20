@@ -195,3 +195,29 @@ Sprint 11 is complete only when all of the following are true:
 - [ ] Decide whether the evidence is sufficient for Sprint 12 calibration.
 
 Informal QA/usability testing may occur after Sprint 11 handoff, but it must not be counted as formal pilot/calibration evidence unless the Sprint 11.5 authorization and cohort gates are satisfied.
+
+
+## Sprint 12 — Learning-Model Calibration
+**Status: 🟡 12A calibration readiness in progress; 12B empirical calibration blocked pending suitable formal Sprint 11.5 learner evidence.**
+
+### 12A — Calibration Readiness
+- [x] Inventory deployed mastery, recovery, diagnostic, recommendation, practice and Mastery Check constants.
+- [x] Confirm current exact-release QA activity is not formal calibration evidence.
+- [x] Identify first cross-surface consistency defect: dashboard recent recovery currently ignores hint use while session/mastery eligibility requires independent correct answers.
+- [ ] Fix the hint-aware recent-recovery inconsistency and add regression coverage.
+- [ ] Freeze/name the post-fix baseline model configuration.
+- [ ] Define the formal calibration evidence contract.
+- [ ] Define calibration metrics and minimum sample-size reporting rules.
+- [ ] Build provenance-aware read-only calibration analysis views/queries.
+- [ ] Define the parameter-change decision/versioning protocol.
+
+### 12B — Empirical Calibration
+- [ ] Review formal Sprint 11.5 evidence sufficiency.
+- [ ] If sufficient, test current thresholds/rules against observed learner behavior.
+- [ ] Compare candidate parameter changes against the frozen baseline.
+- [ ] Version and deploy only approved changes.
+- [ ] If evidence is insufficient, record an explicit no-change/defer disposition.
+
+Informal external question/content review may continue without a deadline, but that reviewer activity is QA/context only and must not be used to fit or justify model parameters.
+
+Detailed plan: `docs/sprint-12-learning-model-calibration.md`.
