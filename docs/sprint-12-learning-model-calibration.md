@@ -91,13 +91,13 @@ Metric-set fingerprint: `7a12d19d62fbfc95c52b7f7952aaa235`. Operative migration:
 
 **Status: ✅ Complete.**
 
-Migration `0055_sprint_12a4_calibration_analysis_views.sql` implements six service-role-only, invoker-security views covering session eligibility, attempt/exposure evidence, immutable hint evidence, recommendation paths, normalized metric observations and per-metric sample summaries.
+Migrations `0055_sprint_12a4_calibration_analysis_views.sql` and `0056_sprint_12a4_audit_corrections.sql` implement a service-role-only, invoker-security evidence and analysis layer.
 
 The pipeline keeps all evidence visible but separates `core_calibration`, `context_only` and `excluded` rows with explicit reasons. It preserves curriculum release, blueprint, model and runtime provenance; handles incomplete trajectories according to the r2 metric contract; requires exact rendered guide snapshots for formal hint analysis; and treats only server-confirmed `action_started` events as recommendation learning actions.
 
-Every summary is traceable through the observation ledger to the underlying session, attempt/exposure, remediation event or recommendation path. All 11 r2 metrics appear even when their observation count is zero, alongside learner, learner-skill, session, item/template, time-window and censoring counts.
+Every summary is traceable through the observation ledger to source evidence. The closure-audit correction pins contract/metric/pilot identity immutably, enforces the complete r2 entry gate and allowed pilot status, exposes all exclusion reasons, models the actual first 4/5 independent recent-recovery event with follow-up, and adds analysis-ready mastery replay/trajectory, Practice burden, hint follow-up, item and repetition views. All 11 metric keys now exactly match the immutable r2 registry.
 
-Mechanical verification currently reconciles 16/16 sessions, 139/139 attempts, 26/26 remediation events and 92/92 issued recommendation paths. Formal metric observations remain **0**, as required while the participation gates are blocked. No learning parameter changed.
+Mechanical verification currently reconciles 17/17 sessions, 142/142 attempts and 29/29 remediation events. Formal metric observations remain **0**, as required while the participation gates are blocked. No learning parameter changed.
 
 Detailed implementation: `docs/sprint-12a4-analysis-pipeline.md`.
 
@@ -234,7 +234,7 @@ Migrations: `0044_sprint_12a_freeze_learning_model_baseline.sql` and `0045_sprin
 
 ## Current evidence snapshot — not calibration evidence
 
-The 12A.4 pipeline currently reconciles 16 sessions, 139 attempts, 26 remediation events and 92 issued recommendation paths. All 11 r2 metrics are represented, including zero-observation metrics.
+The corrected 12A.4 pipeline currently reconciles 17 sessions, 142 attempts and 29 remediation events. All 11 r2 metrics are represented, including zero-observation metrics.
 
 Formal calibration eligibility remains **0 observations** because the human participation gates are blocked. QA/context rows validate pipeline mechanics only and cannot tune model parameters.
 

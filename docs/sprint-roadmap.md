@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.20  
+**Roadmap version:** 2.21  
 **Updated:** 2026-09-20  
 **Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A.4 is complete and 12A.5 remains next. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
 
@@ -385,7 +385,7 @@ Sprint 12 is split into two phases so technical preparation does not stall while
 - r1 contract/metric records remain immutable historical drafts;
 - no learning parameter was changed.
 
-**12A.4 is complete:** six read-only, service-role-only analysis views now separate formal/context/excluded evidence, preserve release/blueprint/model/runtime provenance, expose all 11 r2 metric samples, and reconcile to underlying session/attempt/exposure/hint/recommendation rows. Current formal metric observations remain 0. **Next bounded slice:** 12A.5 — the calibration decision protocol; 12B remains evidence-gated.
+**12A.4 is complete after closure-audit correction:** the read-only, service-role-only pipeline is pinned to an immutable pilot scope, enforces the full r2 entry/pilot-state boundary, models the actual 4/5 recovery event, provides analysis-ready learner/learner-skill outputs, preserves provenance, and exposes all 11 exact r2 metric keys. Current formal metric observations remain 0. **Next bounded slice:** 12A.5 — the calibration decision protocol; 12B remains evidence-gated.
 
 See `docs/sprint-12a-methodology-audit-corrections.md` for the audit implementation evidence.
 

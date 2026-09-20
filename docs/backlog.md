@@ -210,7 +210,7 @@ Informal QA/usability testing may occur after Sprint 11 handoff, but it must not
 - [x] Define and audit the immutable formal calibration evidence contract; operative version is `contract-2026-09-20-r2` with metric-specific eligibility and exact model provenance.
 - [x] Define and audit immutable calibration metrics; operative version is `metrics-2026-09-20-r2`, with learner-cluster-aware reporting, right-censoring, expanded hint analysis and no universal sample-size threshold.
 - [x] Close the recommendation-event telemetry gap prospectively; add exact session model provenance and immutable remediation-guide provenance.
-- [ ] Build provenance-aware read-only calibration analysis views/queries (12A.4).
+- [x] Build and closure-audit provenance-aware read-only calibration analysis views/queries (12A.4), including immutable pilot binding, full r2 entry-state enforcement, actual 4/5 recovery events and analysis-ready metric outputs.
 - [ ] Define the parameter-change decision/versioning protocol.
 
 ### 12B — Empirical Calibration
