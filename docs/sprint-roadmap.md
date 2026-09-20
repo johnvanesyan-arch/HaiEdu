@@ -1,10 +1,70 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.9  
-**Updated:** 2026-09-19  
+**Roadmap version:** 2.10  
+**Updated:** 2026-09-20  
 **Current programme status:** Sprint 11 in progress. Sprint 11A–11E and 11I–11K are complete; 11F technical/production pilot readiness remains open; 11G Physics route QA has passed while Mathematics placeholder QA remains; 11H authenticated single-subject learner visual QA has passed while two-subject and staff-surface confirmation remain pending. Sprint 11L evidence classification and pilot-entry control are now live; the controlled cohort has not started.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
+
+## ChatGPT execution-mode routing
+
+This roadmap also governs how ChatGPT should be used for each sprint. The mode is a default routing rule, not a substitute for judgment about a specific task.
+
+### Mode definitions
+
+- **Regular chat** — architecture, curriculum/standards reasoning, policy and governance decisions, metric definitions, acceptance criteria, evidence interpretation, disposition decisions and implementation planning.
+- **Work mode** — multi-step execution across GitHub, Supabase, Vercel, Notion and browser QA; code changes; migrations; deployment; repetitive cross-role/cross-browser checks; evidence collection and synchronization.
+- **Hybrid** — define and approve the slice in regular chat first, execute it in Work mode, then return to regular chat to audit evidence and decide the next slice.
+
+### Routing invariant
+
+1. Before substantial work starts, classify the requested slice as **Regular chat**, **Work mode**, or **Hybrid**.
+2. A broad request such as "continue Sprint 14" must **not** be sent directly into open-ended Work mode. First define the next bounded slice, invariants, acceptance criteria and exclusions in regular chat unless those are already explicit in the roadmap/implementation plan.
+3. Once a slice is execution-ready, use Work mode for repository/database/deployment/browser work rather than manually coordinating many implementation calls in regular chat.
+4. After Work mode completes a material slice, review the evidence in regular chat before expanding scope or declaring the sprint complete.
+5. Human authorization, curriculum interpretation, SME judgment, privacy-policy decisions and acceptance/disposition decisions are never delegated to Work mode as autonomous product decisions.
+6. QA-only or implementation-only residuals should be treated as closure punch-list work, not as invitations to redesign the architecture unless testing reveals a genuine architectural defect.
+
+### Default mode by sprint
+
+| Sprint | Default mode | Routing rule |
+|---|---|---|
+| 0 | Work | Repository, Supabase, RLS, CI/CD and deployment execution. |
+| 1 | Hybrid | Curriculum architecture in chat; structured implementation in Work. |
+| 2 | Work | End-to-end vertical-slice implementation and verification. |
+| 3 | Hybrid | Diagnostic/session rules in chat; implementation and regression in Work. |
+| 4 | Work | Dashboard, queries, UI and integration testing. |
+| 5 | Hybrid | Adaptive-learning rules in chat; code and regression in Work. |
+| 6 | Hybrid | Mastery semantics in chat; protected workflow implementation in Work. |
+| 7 | Work | Teacher-dashboard implementation and multi-surface verification. |
+| 8 | Hybrid | QA/content-governance framework in chat; workflow implementation in Work. |
+| 9 | Work | Browser/device/accessibility/localization QA and fixes. |
+| 10 | Hybrid | Privacy/security policy in chat; RLS/auth/admin/deletion implementation in Work. |
+| 10.5 | Work | Front-end implementation and cross-device/browser verification. |
+| 11 | Hybrid | Governance/standards/evidence decisions in chat; residual QA, migrations and technical execution in Work. |
+| 12 | Hybrid | Calibration interpretation and decision rules in chat; data extraction/implementation in Work. |
+| 13 | Work | Release checklist, deployment, migrations, regression and evidence reconciliation. |
+| 14 | Hybrid | Multi-tenant academic architecture first in chat; bounded implementation slices in Work. |
+| 15 | Hybrid | Curriculum/outcome/skill design in chat; bulk ingestion and technical QA in Work. |
+| 16 | Work | Full-course integration and regression. |
+| 17 | Hybrid | Pilot design and interpretation in chat; operational setup/QA/evidence handling in Work. |
+| 18 | Work | Performance, observability, backups, CI/CD, security and curriculum-change operations. |
+| 19 | Work | Institutional beta release, onboarding and operational verification. |
+| 20 | Hybrid | Grade-specific curriculum modelling in chat; bulk implementation/QA in Work. |
+| 21 | Hybrid | Second-subject disciplinary model in chat; generalized implementation in Work. |
+| 22 | Work | Repeated standards-driven subject onboarding once the framework is stable. |
+| 23 | Hybrid | Longitudinal data model in chat; cross-grade/cross-subject implementation in Work. |
+| 24 | Hybrid | Metric definitions and interpretation in chat; analytics queries/dashboards in Work. |
+| 25 | Hybrid | AI boundaries/evaluation in chat; integrations, tests and telemetry in Work. |
+| 26 | Hybrid | National-scale governance/architecture in chat; scale/security implementation in Work. |
+
+### Sprint 11 current routing
+
+For the current Sprint 11 state:
+- remaining **11F–11H** QA/disposition execution defaults to **Work mode** once the finite checklist is defined;
+- **11L participation/guardian authorization, cohort rules, evidence sufficiency and closure decisions** stay in **regular chat**;
+- cohort setup, exact-release technical verification and evidence synchronization use **Work mode** after human authorization decisions are complete;
+- final evidence review and the Sprint 12 disposition return to **regular chat**.
 
 ## Status legend
 
