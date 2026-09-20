@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { recordRecommendationTelemetry } from "./recommendation-telemetry.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -274,6 +275,14 @@ function renderResults(data, fresh) {
   }).join("");
 
   const action = $("recommendedAction");
+  if (data.recommendation?.instanceId) {
+    void recordRecommendationTelemetry(
+      supabase,
+      data.recommendation,
+      "shown",
+      "diagnostic_result",
+    );
+  }
   if (data.recommendation?.action === "practice_skill" && data.recommendation.skill?.id) {
     action.href = `./practice.html?skill=${encodeURIComponent(data.recommendation.skill.id)}`;
     action.textContent = `Սկսել ${data.recommendation.skill.code} վարժանքը`;
@@ -372,4 +381,17 @@ $("startBtn").addEventListener("click", startDiagnostic);
 $("answerForm").addEventListener("submit", submit);
 $("nextBtn").addEventListener("click", loadItem);
 $("retakeBtn").addEventListener("click", retake);
+$("recommendedAction")?.addEventListener("click", async (event) => {
+  const recommendation = dashboard?.recommendation;
+  if (!recommendation?.instanceId) return;
+  event.preventDefault();
+  const href = event.currentTarget.href;
+  await recordRecommendationTelemetry(
+    supabase,
+    recommendation,
+    "followed",
+    "diagnostic_result",
+  );
+  window.location.assign(href);
+});
 prepare();
