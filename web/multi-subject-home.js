@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { recordRecommendationTelemetry } from "./recommendation-telemetry.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const modePanel = document.getElementById("modePanel");
@@ -94,6 +95,7 @@ function nextAction(physicsData, masteryData, courses) {
         text: `${active.answered_count ?? active.answered ?? 0}/${active.planned_item_count ?? active.planned ?? 20} հարց պատասխանված է։`,
         href: "./mastery.html",
         cta: "Շարունակել",
+        telemetryRecommendation: physicsData?.recommendation?.action === "resume_session" ? physicsData.recommendation : null,
       };
     }
     const diagnostic = active.mode === "diagnostic";
@@ -103,6 +105,7 @@ function nextAction(physicsData, masteryData, courses) {
       text: `${active.answered ?? active.answered_count ?? 0}/${active.planned ?? active.planned_item_count ?? "—"} հարց պատասխանված է։`,
       href: "./index.html?resume=1",
       cta: "Շարունակել",
+      telemetryRecommendation: physicsData?.recommendation?.action === "resume_session" ? physicsData.recommendation : null,
     };
   }
 
@@ -129,7 +132,7 @@ function nextAction(physicsData, masteryData, courses) {
   const rec = physicsData?.recommendation;
   if (rec) {
     if (rec.action === "take_diagnostic") {
-      return { subject: "Ֆիզիկա 7", title: "Անցնել ախտորոշիչը", text: rec.reasonHy || "Սկսեք Գլուխ I-ի ախտորոշիչը։", href: "./index.html?resume=1", cta: "Սկսել" };
+      return { subject: "Ֆիզիկա 7", title: "Անցնել ախտորոշիչը", text: rec.reasonHy || "Սկսեք Գլուխ I-ի ախտորոշիչը։", href: "./index.html?resume=1", cta: "Սկսել", telemetryRecommendation: rec };
     }
     if (rec.action === "practice_skill") {
       const skill = rec.skill;
@@ -139,10 +142,11 @@ function nextAction(physicsData, masteryData, courses) {
         text: rec.reasonHy || "Շարունակեք առաջարկվող վարժանքը։",
         href: "./index.html?resume=1",
         cta: "Սկսել վարժանքը",
+        telemetryRecommendation: rec,
       };
     }
     if (rec.action === "unit_complete") {
-      return { subject: "Ֆիզիկա 7", title: "Ընթացիկ չափանիշները բավարարված են", text: rec.reasonHy || "Բացեք առարկան՝ հաջորդ քայլը տեսնելու համար։", href: "./physics-7.html", cta: "Բացել Ֆիզիկան" };
+      return { subject: "Ֆիզիկա 7", title: "Ընթացիկ չափանիշները բավարարված են", text: rec.reasonHy || "Բացեք առարկան՝ հաջորդ քայլը տեսնելու համար։", href: "./physics-7.html", cta: "Բացել Ֆիզիկան", telemetryRecommendation: rec };
     }
   }
 
@@ -269,6 +273,28 @@ async function render(classes = []) {
     <div class="amp-attention-heading"><div><span class="mode-kicker">ՈՒՇԱԴՐՈՒԹՅՈՒՆ Է ՊԵՏՔ</span><h2 id="attentionTitle">Առաջնահերթ հմտություններ</h2></div></div>
     <div class="amp-attention-list">${weak.map((skill) => `<div class="amp-attention-item"><span class="amp-course-chip">Ֆիզիկա 7</span><div><strong>${escapeHtml(`${skill.code} — ${skill.nameHy}`)}</strong><span>${skill.diagnostic?.percent == null ? "Ավելի շատ տվյալ է պետք" : `Ախտորոշիչ՝ ${skill.diagnostic.percent}%`}</span></div></div>`).join("")}</div>
   </section>` : ""}`;
+
+  const visibleRecommendation = next?.telemetryRecommendation ?? null;
+  if (visibleRecommendation?.instanceId) {
+    await recordRecommendationTelemetry(
+      supabase,
+      visibleRecommendation,
+      "shown",
+      "home",
+    );
+    const nextLink = root.querySelector(".amp-global-next a.button-link");
+    nextLink?.addEventListener("click", async (event) => {
+      event.preventDefault();
+      const href = event.currentTarget.href;
+      await recordRecommendationTelemetry(
+        supabase,
+        visibleRecommendation,
+        "followed",
+        "home",
+      );
+      window.location.assign(href);
+    });
+  }
 
   rendering = false;
 }
