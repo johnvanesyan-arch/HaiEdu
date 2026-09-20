@@ -1,6 +1,6 @@
 # Sprint 12A — Hinting & Remediation v2
 
-**Status:** 🟡 Implementation in progress  
+**Status:** ✅ Foundation implemented; fixed-template expansion remains selective content work  
 **Opened:** 2026-09-20
 
 ## Goal
@@ -92,12 +92,36 @@ The UI tells the learner that help use is recorded and later independent confirm
 
 ## Acceptance criteria
 
-- [ ] database supports versioned template-level guides and richer remediation telemetry;
-- [ ] 8 parameterized templates have published task-specific guides;
-- [ ] `get-remediation-help` resolves template-specific guide first and skill guide fallback second;
-- [ ] safe raw-parameter interpolation works without derived-answer computation;
-- [ ] post-error help records grader error code when available;
-- [ ] Practice UI exposes the three pedagogically distinct levels clearly;
-- [ ] existing skill fallback still works for templates without v2 guides;
-- [ ] regression tests cover resolver precedence, parameter safety, fallback and UI copy;
-- [ ] Supabase deployment and database advisors verified.
+- [x] database supports versioned template-level guides and richer remediation telemetry;
+- [x] 8 parameterized templates have published task-specific guides (9 published guide records including one error-specific repair);
+- [x] `get-remediation-help` resolves error-specific template → default template → skill fallback;
+- [x] safe raw-parameter interpolation works without derived-answer computation;
+- [x] post-error help records grader error code when available;
+- [x] Practice UI exposes the three pedagogically distinct levels clearly;
+- [x] existing skill fallback remains the default for templates without v2 guides;
+- [x] regression tests cover resolver precedence, parameter safety, fallback and UI copy;
+- [x] Supabase deployment and database advisors verified; duplicate index introduced by the slice was removed in migration 0043.
+
+
+## Implementation record — 2026-09-20
+
+- Database migration: `0042_sprint_12a_hinting_remediation_v2.sql`.
+- Cleanup migration: `0043_sprint_12a_hinting_v2_index_cleanup.sql`.
+- Runtime: `get-remediation-help` deployed as Supabase Edge Function version **5**.
+- Published v2 guide records: **9**.
+- Covered item templates: **8**.
+- Covered published parameterized variants: **80**.
+- Error-specific guide records: **1** (`missing_unit` for volume-to-litres).
+- Historical remediation events backfilled with context/template metadata where derivable: **21/21**.
+- Existing mastery thresholds and the **0.65** assisted-positive evidence multiplier were not changed.
+- No live AI/LLM call was added.
+
+### Security/advisor disposition
+
+`item_template_remediation_guides` is intentionally server-only: RLS is enabled, client grants are revoked, and the service role is used by the authenticated Edge Function. Supabase therefore reports the table as **RLS enabled with no policy** at INFO level; this is an intentional deny-by-default posture rather than an exposed table.
+
+Other advisor findings (leaked-password protection, legacy unindexed foreign keys, auth RLS init-plan warnings, multiple permissive policies, unused indexes) predate this slice and remain in the broader hardening backlog.
+
+### Content expansion rule
+
+Do not mechanically add template-level guides to every fixed question. Add them where the task structure, likely error modes, or transfer demand benefits from more specific scaffolding. Otherwise retain the reviewed skill-level fallback.
