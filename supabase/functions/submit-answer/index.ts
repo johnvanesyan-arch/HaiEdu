@@ -2,6 +2,8 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
+import { resolveRuntimeLearningModel } from "../_shared/learning-model.ts";
+import { issueRecommendationEvent } from "../_shared/recommendation-telemetry.ts";
 import { gradeAnswer } from "../_shared/grading.ts";
 import { initialMasteryState, updateMastery } from "../_shared/mastery.ts";
 import { recommendNext } from "../_shared/recommendation.ts";
@@ -67,7 +69,7 @@ Deno.serve(async (req) => {
     }
     const { data: sessionData, error: sessionError } = await admin
       .from("learning_sessions")
-      .select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status")
+      .select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, learning_model_configuration_id, model_provenance_status")
       .eq("id", payload.sessionId)
       .eq("student_id", studentId)
       .single();
@@ -256,6 +258,56 @@ Deno.serve(async (req) => {
     hasNextSkill: false,
   });
 
+  let recommendationModelConfigurationId: string | null = session?.learning_model_configuration_id
+    ? String(session.learning_model_configuration_id)
+    : null;
+  let recommendationModelProvenanceStatus: "exact" | "unbound_legacy" =
+    session?.model_provenance_status === "exact" ? "exact" : "unbound_legacy";
+
+  if (!session) {
+    try {
+      const runtimeModel = await resolveRuntimeLearningModel(admin, curriculumReleaseId, "PHY7-U01");
+      recommendationModelConfigurationId = runtimeModel.id;
+      recommendationModelProvenanceStatus = runtimeModel.provenanceStatus;
+    } catch (err) {
+      console.error("learning-model binding unavailable for recommendation telemetry", err);
+    }
+  }
+
+  const recommendationInstanceId = await issueRecommendationEvent({
+    admin,
+    studentId,
+    policyScope: "core_after_attempt",
+    surface: "submit_answer_api",
+    action: recommendation.action,
+    targetSkillId: recommendation.targetSkillId ?? null,
+    curriculumReleaseId,
+    assessmentBlueprintId: session?.assessment_blueprint_id ?? null,
+    learningModelConfigurationId: recommendationModelConfigurationId,
+    modelProvenanceStatus: recommendationModelProvenanceStatus,
+    learningSessionId: session?.id ?? null,
+    attemptId,
+    stateSnapshot: {
+      skillId: item.skill_id,
+      masteryBefore: {
+        score: prior.masteryScore,
+        evidenceCount: prior.evidenceCount,
+        status: prior.status,
+      },
+      masteryAfter: {
+        score: updated.masteryScore,
+        evidenceCount: updated.evidenceCount,
+        status: updated.status,
+      },
+      unmetPrerequisiteIds: unmet,
+      answerCorrect: grade.correct,
+      hintUsed: serverHintUsed,
+    },
+    recommendationSnapshot: {
+      ...recommendation,
+    },
+  });
+
   const response: Record<string, unknown> = {
     attemptId,
     curriculumReleaseId,
@@ -275,7 +327,13 @@ Deno.serve(async (req) => {
       evidenceCount: updated.evidenceCount,
       status: updated.status,
     },
-    recommendation,
+    recommendation: {
+      ...recommendation,
+      instanceId: recommendationInstanceId,
+      policyScope: "core_after_attempt",
+      modelConfigurationId: recommendationModelConfigurationId,
+      modelProvenanceStatus: recommendationModelProvenanceStatus,
+    },
     remediation: session?.mode === "practice"
       ? {
           helpWasUsed: serverHintUsed,
