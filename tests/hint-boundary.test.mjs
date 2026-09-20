@@ -14,13 +14,23 @@ test("pre-submit hinting is disabled once a draft answer exists", async () => {
   );
   assert.match(
     remediation,
-    /const draftAnswerPresent = unanswered && hasDraftAnswer\(\)/,
+    /const answerSubmitted = !feedback\.classList\.contains\("hidden"\)/,
+    "hint visibility must use actual submission state rather than submit-button enabled state",
+  );
+  assert.match(
+    remediation,
+    /const draftAnswerPresent = preSubmit && hasDraftAnswer\(\)/,
     "draft answers must be detected before showing pre-submit help",
   );
   assert.match(
     remediation,
-    /\(unanswered && !draftAnswerPresent\) \|\| incorrectAnswered/,
-    "pre-submit help must disappear when an answer is present while post-error help remains available",
+    /\(preSubmit && !draftAnswerPresent\) \|\| incorrectAnswered/,
+    "pre-submit help must be visible for a blank unanswered question, hidden for a draft answer, and available after an incorrect submission",
+  );
+  assert.doesNotMatch(
+    remediation,
+    /const unanswered = !submitBtn\.disabled/,
+    "submit-button state must not control hint visibility",
   );
   assert.match(
     remediation,
