@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { recordRecommendationTelemetry } from "./recommendation-telemetry.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -7,6 +8,7 @@ const $ = (id) => document.getElementById(id);
 let dashboard = null;
 let masteryStatus = null;
 let loading = false;
+let visibleRecommendation = null;
 
 const layerLabels = {
   knowledge: "Գիտելիք",
@@ -121,6 +123,7 @@ function recommendedAction() {
   if (masteryStatus?.unitComplete) {
     return {
       title: "Գլուխ I-ը հաստատված է",
+      telemetryRecommendation: dashboard?.recommendation?.action === "unit_complete" ? dashboard.recommendation : null,
       reason: "Անկախ յուրացման ստուգումը հաջողությամբ անցել եք։ Կարող եք դիտել արդյունքը կամ վերանայել հմտությունները։",
       href: "./mastery.html",
       label: "Դիտել արդյունքը",
@@ -133,6 +136,7 @@ function recommendedAction() {
   if (activeDestination) {
     return {
       title: active.mode === "practice" ? "Շարունակեք ընթացիկ վարժանքը" : active.mode === "diagnostic" ? "Շարունակեք Գլուխ I-ի ախտորոշիչը" : "Շարունակեք յուրացման ստուգումը",
+      telemetryRecommendation: dashboard?.recommendation?.action === "resume_session" ? dashboard.recommendation : null,
       reason: "Դուք ունեք չավարտված սեսիա։ Այս էջի հմտությունների ցանկը միայն ցույց է տալիս ապացույցները, իսկ ընթացիկ սեսիան շարունակվում է այստեղից մեկ ընդհանուր գործողությամբ։",
       ...activeDestination,
     };
@@ -141,6 +145,7 @@ function recommendedAction() {
   if (!dashboard?.latestDiagnostic) {
     return {
       title: "Սկսեք Գլուխ I-ի ախտորոշիչից",
+      telemetryRecommendation: dashboard?.recommendation?.action === "take_diagnostic" ? dashboard.recommendation : null,
       reason: "Ախտորոշիչը կստեղծի 10 հմտությունների սկզբնական քարտեզ և կօգնի ընտրել առաջին վարժանքի հմտությունը։",
       href: "./diagnostic.html",
       label: "Սկսել ախտորոշիչը",
@@ -170,6 +175,7 @@ function recommendedAction() {
   if (dashboard?.recommendation?.action === "practice_skill" && skill?.id) {
     return {
       title: `${skill.code} — ${skill.nameHy}`,
+      telemetryRecommendation: dashboard.recommendation,
       reason: dashboard.recommendation.reasonHy ?? "Սա ձեր հաջորդ առաջարկվող հմտությունն է։",
       href: `./practice.html?skill=${encodeURIComponent(skill.id)}`,
       label: "Սկսել վարժանքը",
@@ -178,6 +184,7 @@ function recommendedAction() {
 
   return {
     title: "Դիտեք Գլուխ I-ի հմտությունները",
+    telemetryRecommendation: dashboard?.recommendation ?? null,
     reason: dashboard?.recommendation?.reasonHy ?? "Ընտրեք հաջորդ հասանելի ուսումնական քայլը։",
     href: "./physics-7.html",
     label: "Բացել Ֆիզիկա 7-ը",
@@ -186,6 +193,7 @@ function recommendedAction() {
 
 function renderRecommendedAction() {
   const action = recommendedAction();
+  visibleRecommendation = action.telemetryRecommendation ?? null;
   $("progressNextTitle").textContent = action.title;
   $("progressNextReason").textContent = action.reason;
   $("progressNextAction").href = action.href;
@@ -256,6 +264,14 @@ async function loadProgress() {
   masteryStatus = statusError ? null : status;
   renderSummary();
   renderRecommendedAction();
+  if (visibleRecommendation?.instanceId) {
+    await recordRecommendationTelemetry(
+      supabase,
+      visibleRecommendation,
+      "shown",
+      "progress",
+    );
+  }
   renderSkills();
   $("progressLoading").classList.add("hidden");
   $("progressContent").classList.remove("hidden");
@@ -277,4 +293,16 @@ async function initialize() {
 }
 
 $("refreshProgressBtn")?.addEventListener("click", loadProgress);
+$("progressNextAction")?.addEventListener("click", async (event) => {
+  if (!visibleRecommendation?.instanceId) return;
+  event.preventDefault();
+  const href = event.currentTarget.href;
+  await recordRecommendationTelemetry(
+    supabase,
+    visibleRecommendation,
+    "followed",
+    "progress",
+  );
+  window.location.assign(href);
+});
 initialize();
