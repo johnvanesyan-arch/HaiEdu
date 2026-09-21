@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.23  
+**Roadmap version:** 2.24  
 **Updated:** 2026-09-21  
-**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 is 🟡 running as a prospective one-adult feasibility pilot through 2026-10-05, while Sprint 12A calibration readiness is complete through 12A.5. Historical reviewer activity remains QA/context only; Sprint 12B empirical tuning stays evidence-gated.
+**Current programme status:** Sprints 11, 11.5 and 12 are ✅ complete. The one-adult feasibility pilot closed with eight prospective sessions, an explicit pre-authorization Diagnostic limitation, and an immutable `deferred` calibration decision. No learning parameter changed. Sprint 13 is next.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -94,7 +94,7 @@ For the current Sprint 11 state:
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
 | 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; the carried-forward 11L entry gates are now satisfied by the prospective Sprint 11.5 pilot. |
-| 11.5 | Controlled External Tester Pilot | 🟡 | One adult tester is prospectively enrolled for a feasibility run through 2026-10-05. Prior sessions remain excluded; new genuine learner sessions may validate workflow and generate hypotheses, not independently authorize tuning. |
+| 11.5 | Controlled External Tester Pilot | ✅ | Closed one-adult feasibility run: eight eligible prospective sessions, smooth experience, no substantive content defects, historical Diagnostic excluded, and all closure gates passed. |
 | 12 | Learning-Model Calibration | 🟡 | 12A.1–12A.3 are complete and methodology-audited. Exact session model provenance, immutable hint provenance and prospective recommendation telemetry are live; audited r2 evidence/metric definitions supersede r1. Next is 12A.4 read-only analysis pipeline. 12B remains evidence-gated. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize schools, academic years, time-aware memberships, IAM/permissions, tenant isolation, audit scope, teacher continuity foundations, controlled enrollment and centrally governed content. |
@@ -366,7 +366,7 @@ See `docs/sprint-11-5-controlled-external-tester-pilot.md` for the execution pla
 
 ## Sprint 12 — Learning-Model Calibration
 
-**Status: ✅ 12A calibration readiness complete; 12B empirical calibration evidence-gated.**
+**Status: ✅ Complete — 12A readiness complete; 12B closed with deferred/no-change disposition.**
 
 Sprint 12 is split into two phases so technical preparation does not stall while informal review continues.
 
@@ -401,7 +401,7 @@ See `docs/sprint-12a-hinting-remediation-v2.md`.
 
 ### 12B — Empirical Calibration
 
-12B begins only when suitable formal Sprint 11.5 learner evidence is explicitly judged sufficient.
+12B reviewed the formal Sprint 11.5 feasibility evidence on 2026-09-21. The evidence was judged insufficient for tuning and the immutable decision `physics7-u01-feasibility-2026-09-21-deferred` was recorded. No parameter changed.
 
 Sprint 12 then analyzes curriculum-compatible learner behavior:
 
