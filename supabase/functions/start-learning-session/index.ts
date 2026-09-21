@@ -58,6 +58,15 @@ function shuffle<T>(values: T[]): T[] {
   return arr;
 }
 
+function stableRank(seed: string, value: string): number {
+  let hash = 2166136261;
+  for (const char of `${seed}|${value}`) {
+    hash ^= char.charCodeAt(0);
+    hash = Math.imul(hash, 16777619);
+  }
+  return hash >>> 0;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405);
@@ -309,58 +318,149 @@ Deno.serve(async (req) => {
     const failedSkills = new Set(failedSkillIds);
 
     const { data: reviewItems, error: reviewItemsError } = await admin
-      .from("items")
-      .select("id, code, skill_id")
-      .in("id", curriculumContext.itemIds)
-      .in("skill_id", skillIds)
-      .eq("status", "published");
+      .from("chapter_review_item_catalog_v")
+      .select("item_id, item_code, item_version, skill_id, item_template_id, template_code, item_family_id, family_code, variant_key")
+      .in("item_id", curriculumContext.itemIds)
+      .in("skill_id", skillIds);
     if (reviewItemsError || !reviewItems?.length) return json({ error: "chapter_review_pool_empty" }, 409);
 
+    const { data: cycles, error: cyclesError } = await admin
+      .from("chapter_review_cycles")
+      .select("id, cycle_number, eligible_pool_size, status")
+      .eq("chapter_mastery_state_id", lifecycle.id)
+      .order("cycle_number", { ascending: false });
+    if (cyclesError) return json({ error: "chapter_review_cycle_history_failed" }, 500);
+    const activeCycle = (cycles ?? []).find((cycle) => cycle.status === "active") ?? null;
+    const { data: activeCycleExposures, error: cycleExposureError } = activeCycle
+      ? await admin.from("chapter_review_item_exposures")
+        .select("item_id, skill_id")
+        .eq("review_cycle_id", activeCycle.id)
+      : { data: [], error: null };
+    if (cycleExposureError) return json({ error: "chapter_review_cycle_exposure_failed" }, 500);
+
+    const poolSize = reviewItems.length;
+    const activeSeen = new Set((activeCycleExposures ?? []).map((row) => String(row.item_id)));
+    const rotateCycle = Boolean(activeCycle && activeSeen.size >= poolSize);
+    const cycleNumber = rotateCycle || !activeCycle
+      ? Number(cycles?.[0]?.cycle_number ?? 0) + 1
+      : Number(activeCycle.cycle_number);
+    const cycleSeen = rotateCycle ? new Set<string>() : activeSeen;
+    const cycleId = rotateCycle ? null : activeCycle?.id ?? null;
+    const { data: priorCycleSessions, error: cycleSessionsError } = cycleId
+      ? await admin.from("chapter_review_sessions")
+        .select("review_session_number")
+        .eq("review_cycle_id", cycleId)
+        .order("review_session_number", { ascending: false })
+        .limit(1)
+      : { data: [], error: null };
+    if (cycleSessionsError) return json({ error: "chapter_review_session_history_failed" }, 500);
+    const sessionNumber = cycleId ? Number(priorCycleSessions?.[0]?.review_session_number ?? 0) + 1 : 1;
+
+    const { data: evidence, error: evidenceError } = await admin
+      .from("chapter_review_item_evidence_v")
+      .select("item_id, skill_id, item_template_id, item_family_id, selected_at, answered_at, correct, independent")
+      .eq("chapter_mastery_state_id", lifecycle.id)
+      .order("selected_at", { ascending: false })
+      .limit(5000);
+    if (evidenceError) return json({ error: "chapter_review_evidence_failed" }, 500);
+
     const exposureCounts = new Map<string, number>();
-    for (const row of attempts) exposureCounts.set(row.item_id, (exposureCounts.get(row.item_id) ?? 0) + 1);
+    const templateCounts = new Map<string, number>();
+    const familyCounts = new Map<string, number>();
+    const lastSeen = new Map<string, number>();
+    const recentBySkill = new Map<string, Array<{ correct: boolean; independent: boolean }>>();
+    for (const row of evidence ?? []) {
+      const itemId = String(row.item_id);
+      exposureCounts.set(itemId, (exposureCounts.get(itemId) ?? 0) + 1);
+      if (row.item_template_id) templateCounts.set(String(row.item_template_id), (templateCounts.get(String(row.item_template_id)) ?? 0) + 1);
+      if (row.item_family_id) familyCounts.set(String(row.item_family_id), (familyCounts.get(String(row.item_family_id)) ?? 0) + 1);
+      if (!lastSeen.has(itemId)) lastSeen.set(itemId, Date.parse(String(row.selected_at)) || 0);
+      if (row.answered_at && row.independent !== null) {
+        const rows = recentBySkill.get(String(row.skill_id)) ?? [];
+        if (rows.length < 5) rows.push({ correct: Boolean(row.correct), independent: Boolean(row.independent) });
+        recentBySkill.set(String(row.skill_id), rows);
+      }
+    }
+    const weakSkillIds = [...recentBySkill.entries()]
+      .map(([skillId, rows]) => ({
+        skillId,
+        independentCorrect: rows.filter((row) => row.independent && row.correct).length,
+        independentCount: rows.filter((row) => row.independent).length,
+      }))
+      .sort((a, b) => {
+        const aRate = a.independentCount ? a.independentCorrect / a.independentCount : -1;
+        const bRate = b.independentCount ? b.independentCorrect / b.independentCount : -1;
+        return aRate - bRate || a.independentCount - b.independentCount || a.skillId.localeCompare(b.skillId);
+      })
+      .map((row) => row.skillId);
+    const weakRank = new Map(weakSkillIds.map((skillId, index) => [skillId, index]));
+    const candidateOrder = (a: typeof reviewItems[number], b: typeof reviewItems[number]) => {
+      const unseenDelta = Number(cycleSeen.has(String(a.item_id))) - Number(cycleSeen.has(String(b.item_id)));
+      if (unseenDelta) return unseenDelta;
+      const lastDelta = (lastSeen.get(String(a.item_id)) ?? -1) - (lastSeen.get(String(b.item_id)) ?? -1);
+      if (lastDelta) return lastDelta;
+      const templateDelta = (templateCounts.get(String(a.item_template_id ?? "")) ?? 0) - (templateCounts.get(String(b.item_template_id ?? "")) ?? 0);
+      if (templateDelta) return templateDelta;
+      const familyDelta = (familyCounts.get(String(a.item_family_id ?? "")) ?? 0) - (familyCounts.get(String(b.item_family_id ?? "")) ?? 0);
+      if (familyDelta) return familyDelta;
+      const exposureDelta = (exposureCounts.get(String(a.item_id)) ?? 0) - (exposureCounts.get(String(b.item_id)) ?? 0);
+      return exposureDelta || String(a.item_code).localeCompare(String(b.item_code));
+    };
     const orderedPool = [...reviewItems].sort((a, b) => {
-      const failedDelta = Number(failedSkills.has(b.skill_id)) - Number(failedSkills.has(a.skill_id));
+      const unseenDelta = Number(cycleSeen.has(String(a.item_id))) - Number(cycleSeen.has(String(b.item_id)));
+      if (unseenDelta) return unseenDelta;
+      const failedDelta = Number(failedSkills.has(String(b.skill_id))) - Number(failedSkills.has(String(a.skill_id)));
       if (failedDelta) return failedDelta;
-      const exposureDelta = (exposureCounts.get(a.id) ?? 0) - (exposureCounts.get(b.id) ?? 0);
-      return exposureDelta || String(a.code).localeCompare(String(b.code));
+      const weakDelta = (weakRank.get(String(a.skill_id)) ?? Number.MAX_SAFE_INTEGER) -
+        (weakRank.get(String(b.skill_id)) ?? Number.MAX_SAFE_INTEGER);
+      return weakDelta || candidateOrder(a, b);
     });
 
-    const selected: Array<{ item_id: string; skill_id: string; selection_reason: string }> = [];
+    const selected: Array<{ item_id: string; skill_id: string; selection_reason: string; pool_exhausted: boolean }> = [];
     const selectedIds = new Set<string>();
     for (const skill of skills) {
-      const item = orderedPool.find((candidate) => candidate.skill_id === skill.id && !selectedIds.has(candidate.id));
+      const skillPool = reviewItems.filter((candidate) => candidate.skill_id === skill.id).sort(candidateOrder);
+      const item = skillPool.find((candidate) => !selectedIds.has(String(candidate.item_id)));
       if (!item) continue;
+      const exhausted = cycleSeen.has(String(item.item_id)) && skillPool.every((candidate) => cycleSeen.has(String(candidate.item_id)));
       selected.push({
-        item_id: item.id,
+        item_id: item.item_id,
         skill_id: item.skill_id,
         selection_reason: failedSkills.has(item.skill_id)
-          ? "review_whole_chapter_failed_skill_weight"
-          : "review_whole_chapter_coverage",
+          ? "review_failed_skill_weight_whole_chapter"
+          : weakRank.has(String(item.skill_id)) ? "review_weak_independent_whole_chapter" : "review_whole_chapter_coverage",
+        pool_exhausted: exhausted,
       });
-      selectedIds.add(item.id);
+      selectedIds.add(String(item.item_id));
     }
     for (const item of orderedPool) {
       if (selected.length >= targetCount) break;
-      if (selectedIds.has(item.id)) continue;
+      if (selectedIds.has(String(item.item_id))) continue;
+      const skillPool = reviewItems.filter((candidate) => candidate.skill_id === item.skill_id);
+      const exhausted = cycleSeen.has(String(item.item_id)) && skillPool.every((candidate) => cycleSeen.has(String(candidate.item_id)));
       selected.push({
-        item_id: item.id,
+        item_id: item.item_id,
         skill_id: item.skill_id,
         selection_reason: failedSkills.has(item.skill_id)
           ? "review_failed_skill_extra"
-          : "review_least_exposed_fill",
+          : weakRank.has(String(item.skill_id)) ? "review_weak_independent_extra" : "review_least_recent_diverse_fill",
+        pool_exhausted: exhausted,
       });
-      selectedIds.add(item.id);
+      selectedIds.add(String(item.item_id));
     }
     if (selected.length < Math.min(targetCount, reviewItems.length)) {
       return json({ error: "insufficient_chapter_review_items" }, 409);
     }
 
-    const ordered = shuffle(selected.slice(0, Math.min(targetCount, selected.length)));
+    const selectionSeed = `${lifecycle.id}|${cycleNumber}|${sessionNumber}|12.5E-F-v1`;
+    const ordered = selected.slice(0, Math.min(targetCount, selected.length))
+      .sort((a, b) => stableRank(selectionSeed, a.item_id) - stableRank(selectionSeed, b.item_id) || a.item_id.localeCompare(b.item_id));
     const atomicItems = ordered.map((row, index) => ({
       ordinal: index + 1,
       skill_id: row.skill_id,
       item_id: row.item_id,
       selection_reason: row.selection_reason,
+      pool_exhausted: row.pool_exhausted,
     }));
     const { data: reviewLifecycle, error: reviewError } = await admin.rpc("start_chapter_review_atomic", {
       p_student_id: studentId,
@@ -371,10 +471,17 @@ Deno.serve(async (req) => {
         bounded: true,
         wholeChapter: true,
         hintingEnabled: true,
-        selectionPolicyVersion: "12.5C-D-v1",
+        selectionPolicyVersion: "12.5E-F-v1",
         failedSkillIds,
+        weakSkillIds,
+        deterministicSeed: selectionSeed,
+        reviewCycleNumber: cycleNumber,
+        reviewSessionNumber: sessionNumber,
       },
       p_items: atomicItems,
+      p_eligible_pool_size: poolSize,
+      p_expected_cycle_number: cycleNumber,
+      p_expected_session_number: sessionNumber,
     });
     if (reviewError || !reviewLifecycle?.sessionId) {
       const detail = reviewError?.message ?? "chapter_review_start_failed";
@@ -393,6 +500,8 @@ Deno.serve(async (req) => {
       reviewSessionId: reviewLifecycle.reviewSessionId,
       reviewContext: reviewLifecycle.reviewContext,
       required: Boolean(reviewLifecycle.required),
+      reviewCycleNumber: Number(reviewLifecycle.reviewCycleNumber),
+      reviewSessionNumber: Number(reviewLifecycle.reviewSessionNumber),
     });
   }
 
