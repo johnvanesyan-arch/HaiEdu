@@ -66,11 +66,12 @@ Deno.serve(async (req) => {
       return json({ error: "curriculum_release_unavailable" }, 503);
     }
 
-    const [{ data: masteryRows }, { data: attemptRows }, { data: activeRows }, { data: checkRows }] = await Promise.all([
+    const [{ data: masteryRows }, { data: attemptRows }, { data: activeRows }, { data: checkRows }, { data: lifecycleRows }] = await Promise.all([
       admin.from("student_skill_mastery_by_release").select("skill_id, mastery_score, evidence_count").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds),
       admin.from("attempts").select("skill_id, item_id, correct, hint_used, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(1000),
       admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
-      admin.from("learning_sessions").select("id, assessment_result, score_percent, completed_at, metadata, answered_count, correct_count, planned_item_count").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "mastery_check").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
+      admin.from("learning_sessions").select("id, assessment_result, score_percent, completed_at, metadata, answered_count, correct_count, planned_item_count, mastery_attempt_number").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "mastery_check").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
+      admin.from("chapter_mastery_states").select("lifecycle_state, attempts_used, passed_on_attempt, academic_mastery_policy_id, history_provenance").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).limit(1),
     ]);
 
     const mastery = new Map((masteryRows ?? []).map((r) => [r.skill_id, { score: Number(r.mastery_score), evidenceCount: Number(r.evidence_count) }]));
@@ -100,8 +101,17 @@ Deno.serve(async (req) => {
       }
     }
 
-    const unitComplete = latest?.assessment_result === "passed";
-    const eligible = !unitComplete && !active && incompleteSkills.length === 0 && !retryBlocked;
+    const lifecycle = lifecycleRows?.[0] ?? null;
+    const lifecycleState = lifecycle?.lifecycle_state ?? null;
+    const reviewRequired = lifecycleState === "review_required_attempt_2" || lifecycleState === "review_required_attempt_3";
+    const finalFailure = lifecycleState === "mastery_failed_final";
+    if (reviewRequired) retryBlocked = true;
+    const unitComplete = lifecycleState === "mastery_passed" || latest?.assessment_result === "passed";
+    const eligibleState = lifecycleState === null
+      || lifecycleState === "mastery_ready"
+      || lifecycleState === "mastery_retry_2_ready"
+      || lifecycleState === "mastery_retry_3_ready";
+    const eligible = eligibleState && !unitComplete && !finalFailure && !active && incompleteSkills.length === 0 && !retryBlocked;
     const latestSkillResults = Array.isArray(latest?.metadata?.skillResults) ? latest.metadata.skillResults : [];
 
     return json({
@@ -112,6 +122,16 @@ Deno.serve(async (req) => {
       unitComplete,
       eligible,
       retryBlocked,
+      reviewRequired,
+      finalFailure,
+      lifecycle: lifecycle ? {
+        state: lifecycleState,
+        attemptsUsed: Number(lifecycle.attempts_used),
+        attemptsRemaining: Math.max(0, 3 - Number(lifecycle.attempts_used)),
+        passedOnAttempt: lifecycle.passed_on_attempt === null ? null : Number(lifecycle.passed_on_attempt),
+        policyId: lifecycle.academic_mastery_policy_id,
+        historyProvenance: lifecycle.history_provenance,
+      } : null,
       activeSession: active,
       requiredSkills: requiredSkills.map((s) => ({ id: s.id, code: s.code, nameHy: s.name_hy })),
       latestCheck: latest ? {
@@ -122,7 +142,7 @@ Deno.serve(async (req) => {
         answered: Number(latest.answered_count),
         planned: Number(latest.planned_item_count),
         completedAt: latest.completed_at,
-        attemptNumber: Number(latest.metadata?.attemptNumber ?? 1),
+        attemptNumber: Number(latest.mastery_attempt_number ?? latest.metadata?.attemptNumber ?? 1),
         skillResults: latestSkillResults,
       } : null,
       messageHy: unitComplete
@@ -131,9 +151,13 @@ Deno.serve(async (req) => {
           ? "Ունեք չավարտված mastery check։"
           : incompleteSkills.length
             ? "Mastery check-ը կբացվի, երբ բոլոր հմտությունները ամրապնդվեն։"
-            : retryBlocked
-              ? "Կրկնակի փորձից առաջ ավարտեք նշված remediation վարժանքները։"
-              : "Պատրաստ եք mastery check-ին։",
+            : finalFailure
+              ? "Յուրացման ստուգման բոլոր երեք փորձերն ավարտված են։ Գլխի կրկնությունը մնում է հասանելի։"
+              : reviewRequired
+                ? "Յուրացման ստուգումը կրկնելուց առաջ պետք է ավարտեք Գլխի կրկնությունը։"
+                : retryBlocked
+                  ? "Կրկնակի փորձից առաջ ավարտեք պահանջվող Գլխի կրկնությունը։"
+                  : "Պատրաստ եք mastery check-ին։",
     });
   } catch (err) {
     console.error("get-mastery-check-status", err);
