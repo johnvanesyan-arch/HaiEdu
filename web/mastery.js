@@ -26,6 +26,7 @@ function setStateBadge(text, tone = "neutral") {
 function routeForActive(active) {
   if (active?.mode === "diagnostic") return "./diagnostic.html";
   if (active?.mode === "practice") return "./practice.html";
+  if (active?.mode === "chapter_review") return "./practice.html?mode=chapter_review";
   return "./mastery.html";
 }
 
@@ -67,7 +68,7 @@ async function prepare() {
       $("stateTitle").textContent = "Նախ ավարտեք ընթացիկ սեսիան";
       $("stateText").textContent = "Յուրացման ստուգումը չի սկսվի, որպեսզի ընթացիկ ուսուցման կամ ախտորոշիչ սեսիան չփոխարինվի։";
       $("blockingLink").href = routeForActive(active);
-      $("blockingLink").textContent = active.mode === "diagnostic" ? "Շարունակել ախտորոշիչը" : "Շարունակել վարժանքը";
+      $("blockingLink").textContent = active.mode === "diagnostic" ? "Շարունակել ախտորոշիչը" : active.mode === "chapter_review" ? "Շարունակել Գլխի կրկնությունը" : "Շարունակել վարժանքը";
       $("blockingLink").classList.remove("hidden");
       return;
     }
@@ -77,12 +78,9 @@ async function prepare() {
       $("stateTitle").textContent = "Կրկնակի փորձը դեռ փակ է";
       $("stateText").textContent = s.messageHy;
       renderRequired(s.requiredSkills);
-      const first = s.requiredSkills?.[0];
-      if (first?.id) {
-        $("blockingLink").href = `./practice.html?skill=${encodeURIComponent(first.id)}`;
-        $("blockingLink").textContent = `Սկսել ${first.code} վարժանքը`;
-        $("blockingLink").classList.remove("hidden");
-      }
+      $("blockingLink").href = "./practice.html?mode=chapter_review";
+      $("blockingLink").textContent = "Անցնել Գլխի կրկնություն";
+      $("blockingLink").classList.remove("hidden");
       return;
     }
 
@@ -279,10 +277,9 @@ function renderFinalResult(result) {
     primary.href = "./assessment.html";
     primary.textContent = "Վերադառնալ գնահատմանը";
   } else {
-    const first = result.failedSkills?.[0];
-    $("resultRule").textContent += ` Կրկին փորձելուց առաջ պետք է ավարտել վերականգնողական վարժանք՝ ${result.failedSkills?.map((s) => s.code).join(", ") || "առաջարկվող հմտությունների"} համար։`;
-    primary.href = first?.skillId ? `./practice.html?skill=${encodeURIComponent(first.skillId)}` : "./physics-7.html";
-    primary.textContent = first?.code ? `Սկսել ${first.code} վարժանքը` : "Դիտել առաջարկվող վարժանքը";
+    $("resultRule").textContent += ` Կրկին փորձելուց առաջ պետք է ավարտել Գլխի կրկնությունը։ Ավելի շատ ուշադրություն կդարձվի՝ ${result.failedSkills?.map((s) => s.code).join(", ") || "ուշադրություն պահանջող հմտություններին"}։`;
+    primary.href = "./practice.html?mode=chapter_review";
+    primary.textContent = "Անցնել Գլխի կրկնություն";
   }
 }
 
@@ -297,8 +294,8 @@ function renderStoredResult(check, passed) {
     : "Կրկնակի փորձը բացվում է միայն պահանջվող վերականգնողական վարժանքներից հետո։";
   renderSkillResults(check.skillResults ?? []);
   const primary = $("resultPrimaryAction");
-  primary.href = "./assessment.html";
-  primary.textContent = "Վերադառնալ գնահատմանը";
+  primary.href = passed ? "./assessment.html" : "./practice.html?mode=chapter_review";
+  primary.textContent = passed ? "Վերադառնալ գնահատմանը" : "Անցնել Գլխի կրկնություն";
 }
 
 function renderSkillResults(results) {
