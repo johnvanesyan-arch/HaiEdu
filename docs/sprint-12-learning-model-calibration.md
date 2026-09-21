@@ -1,6 +1,6 @@
 # Sprint 12 — Learning-Model Calibration
 
-**Status:** 🟡 12A.4 analysis pipeline complete; 12A.5 decision protocol remains next; 12B empirical calibration blocked pending suitable Sprint 11.5 learner evidence.  
+**Status:** ✅ 12A calibration readiness complete through 12A.5; 12B empirical calibration remains blocked pending suitable Sprint 11.5 learner evidence.  
 **Opened:** 2026-09-20
 
 ## Purpose
@@ -103,18 +103,17 @@ Detailed implementation: `docs/sprint-12a4-analysis-pipeline.md`.
 
 #### 12A.5 — Calibration decision protocol
 
-Before changing a parameter:
+**Status: ✅ Complete.**
 
-1. state the hypothesis;
-2. identify eligible evidence;
-3. show sample size and limitations;
-4. compare current behavior with candidate behavior;
-5. record expected side effects;
-6. approve or reject the change;
-7. version the configuration if changed;
-8. preserve historical interpretation.
+The immutable protocol `haiedu_learning_model_change_decision / protocol-2026-09-21-r1` now enforces the complete decision sequence: hypothesis, exact eligible evidence, learner-aware sample/distribution and limitations, baseline-versus-candidate comparison, expected side effects, explicit disposition, new configuration version for an approved change, and preserved historical interpretation.
 
-If evidence is insufficient, the correct Sprint 12 result is **no-change / defer**, not forced tuning.
+Allowed dispositions are `approved_change`, `rejected_change`, `no_change`, and `deferred`. There is no automatic numeric approval rule. Insufficient evidence must resolve to `no_change` or `deferred`.
+
+An approved change must reference a distinct immutable `approved` model configuration that directly descends from the reviewed baseline and retains the same model/release identity. Approval does not activate a runtime build; deployment remains a separate explicit operation. Historical sessions keep their original model and runtime provenance.
+
+The service-role-only evidence snapshot exposes all 11 r2 metrics and marks every row `human_metric_specific_review_required`; all currently have zero formal observations. No decision record or new model configuration was created, and no parameter changed.
+
+Detailed implementation: `docs/sprint-12a5-calibration-decision-protocol.md`.
 
 ### 12B — Empirical Calibration
 
@@ -294,7 +293,7 @@ The regular-chat audit of 12A.1–12A.3 identified provenance and methodological
 
 Detailed implementation/evidence: `docs/sprint-12a-methodology-audit-corrections.md`.
 
-**12A.4 is complete.** 12A.5 is the next bounded slice; 12B remains evidence-gated.
+**12A is complete through 12A.5.** 12B remains evidence-gated; zero formal observations means no empirical calibration may begin.
 
 ## Sprint 12 gating rule
 
