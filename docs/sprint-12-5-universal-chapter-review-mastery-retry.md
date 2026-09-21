@@ -1,6 +1,6 @@
 # Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status:** 🟡 Active — 12.5A complete; 12.5B atomic lifecycle foundation deployed
+**Status:** 🟡 Active — 12.5A–D deployed; 12.5E–F next
 
 **Placement:** After Sprint 12 calibration work and before Sprint 13 Chapter I production release
 
@@ -1193,3 +1193,41 @@ This is substantial enough to deserve its **own sprint**, rather than being sque
 ### Remaining before 12.5B is fully closed
 
 The retry-ready transitions intentionally remain locked until 12.5C–D introduces first-class `chapter_review` sessions and qualifying Review completion. This prevents the old ordinary-Practice remediation path from unlocking Attempts 2 or 3.
+
+
+---
+
+## Implementation update — 2026-09-21 — 12.5C–D
+
+### Completed: first-class Chapter Review and mandatory completion gate
+
+- Added `chapter_review` as a distinct learning-session and assessment-blueprint purpose.
+- Published a dedicated Chapter Review pool and immutable 120-item blueprint snapshot copied from the eligible Practice membership.
+- Added authoritative `chapter_review_requirements` and `chapter_review_sessions`.
+- Failed Mastery Attempts 1 and 2 now create an open Review requirement inside the Mastery finalization transaction.
+- Starting or abandoning Review does not satisfy the requirement.
+- A required Review qualifies only after all configured questions are answered and the learning session is completed.
+- Qualifying completion transitions only:
+  - `review_required_attempt_2 → mastery_retry_2_ready`
+  - `review_required_attempt_3 → mastery_retry_3_ready`
+- Attempts 2 and 3 retain a foreign-key link to the qualifying Review session.
+- Optional Review after a pass or final failure does not alter the terminal mastery state.
+- Hinting v2 is available in Chapter Review; Mastery Check remains hint-free.
+- Failed Mastery learner routing now points to Chapter Review instead of ordinary Practice.
+- Corrected policy activation architecture by separating immutable policy snapshots from the mutable singleton active-policy binding.
+
+### Verification
+
+Rollback-only lifecycle probes confirmed:
+
+1. opening an incomplete Review cannot unlock retry;
+2. completing 12/12 required Review questions produces `mastery_retry_2_ready`;
+3. Attempt 2 is created only with the qualifying Review foreign-key link;
+4. voluntary post-pass Review remains non-qualifying and preserves `mastery_passed`;
+5. no probe data persisted.
+
+Runtime: `runtime-2026-09-21-r6`.
+
+### Next
+
+12.5E–F will add durable Review cycles, rotational coverage, failed-skill weighting beyond the initial bounded selection, repeat/pool-exhaustion provenance, and per-item Review exposure fields.
