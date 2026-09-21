@@ -13,6 +13,10 @@ let questionStartedAt = null;
 let starting = false;
 
 const PRACTICE_BOOTSTRAP_KEY = "amp:practice-bootstrap";
+const desiredMode = new URLSearchParams(window.location.search).get("mode") === "chapter_review"
+  ? "chapter_review"
+  : "practice";
+const isChapterReview = desiredMode === "chapter_review";
 
 function readPracticeBootstrap(userId) {
   try {
@@ -134,7 +138,13 @@ function renderInitialMastery(skill) {
 
 function blockForActiveNonPractice(session) {
   if (!session) return false;
-  if (session.mode === "practice") return false;
+  if (session.mode === desiredMode) return false;
+  if (session.mode === "practice" && desiredMode === "chapter_review") {
+    showGate("Վարժանքն ընթացքի մեջ է", "Գլխի կրկնությունից առաջ ավարտեք ընթացիկ վարժանքը։", [
+      { href: "./practice.html", label: "Շարունակել վարժանքը", primary: true },
+    ]);
+    return true;
+  }
 
   if (session.mode === "diagnostic") {
     showGate(
@@ -225,9 +235,11 @@ async function startOrResumePractice() {
   const recommendationInstanceId =
     automaticRecommendationInstanceId ??
     sessionStorage.getItem("pendingRecommendationInstanceId");
-  const body = targetSkill?.id
-    ? { mode: "practice", targetSkillId: targetSkill.id, recommendationInstanceId }
-    : { mode: "practice", recommendationInstanceId };
+  const body = desiredMode === "chapter_review"
+    ? { mode: "chapter_review" }
+    : targetSkill?.id
+      ? { mode: "practice", targetSkillId: targetSkill.id, recommendationInstanceId }
+      : { mode: "practice", recommendationInstanceId };
   const { data, error } = await supabase.functions.invoke("start-learning-session", { body });
   starting = false;
 
@@ -255,7 +267,7 @@ async function startOrResumePractice() {
   }
 
   currentSession = data.session;
-  history.replaceState({}, "", "./practice.html");
+  history.replaceState({}, "", isChapterReview ? "./practice.html?mode=chapter_review" : "./practice.html");
   showPractice();
   renderInitialMastery(targetSkill ?? currentTargetSkill());
   await loadSessionItem();
@@ -649,6 +661,11 @@ function renderStack(spec) {
 }
 
 async function initialize() {
+  if (isChapterReview) {
+    document.title = "Ֆիզիկա 7 — Գլխի կրկնություն";
+    const heading = document.querySelector("h1");
+    if (heading) heading.textContent = "Գլխի կրկնություն";
+  }
   const { data: sessionData } = await supabase.auth.getSession();
   if (!sessionData.session) {
     window.location.replace("./index.html");
