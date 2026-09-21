@@ -198,7 +198,7 @@ Informal QA/usability testing may occur after Sprint 11 handoff, but it must not
 
 
 ## Sprint 12 — Learning-Model Calibration
-**Status: 🟡 12A calibration readiness in progress; 12B empirical calibration blocked pending suitable formal Sprint 11.5 learner evidence.**
+**Status: ✅ 12A calibration readiness complete; 12B empirical calibration blocked pending suitable formal Sprint 11.5 learner evidence.**
 
 ### 12A — Calibration Readiness
 - [x] Inventory deployed mastery, recovery, diagnostic, recommendation, practice and Mastery Check constants.
@@ -211,7 +211,7 @@ Informal QA/usability testing may occur after Sprint 11 handoff, but it must not
 - [x] Define and audit immutable calibration metrics; operative version is `metrics-2026-09-20-r2`, with learner-cluster-aware reporting, right-censoring, expanded hint analysis and no universal sample-size threshold.
 - [x] Close the recommendation-event telemetry gap prospectively; add exact session model provenance and immutable remediation-guide provenance.
 - [x] Build and closure-audit provenance-aware read-only calibration analysis views/queries (12A.4), including immutable pilot binding, full r2 entry-state enforcement, actual 4/5 recovery events and analysis-ready metric outputs.
-- [ ] Define the parameter-change decision/versioning protocol.
+- [x] Define and enforce the parameter-change decision/versioning protocol (12A.5): immutable protocol/decision records, learner-aware evidence snapshot, explicit approve/reject/no-change/defer outcomes, and validated approved-successor model versioning.
 
 ### 12B — Empirical Calibration
 - [ ] Review formal Sprint 11.5 evidence sufficiency.
@@ -225,3 +225,5 @@ Informal external question/content review may continue without a deadline, but t
 Detailed plan: `docs/sprint-12-learning-model-calibration.md`.
 
 Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md`.
+
+12A.5 decision protocol: `docs/sprint-12a5-calibration-decision-protocol.md`.
