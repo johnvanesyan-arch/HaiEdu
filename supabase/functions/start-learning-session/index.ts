@@ -24,7 +24,7 @@ const MASTERY_THRESHOLD = 0.72;
 const MASTERY_PASS_PERCENT = 80;
 const MASTERY_MIN_CORRECT_PER_SKILL = 1;
 
-type Mode = "diagnostic" | "practice" | "mastery_check";
+type Mode = "diagnostic" | "practice" | "mastery_check" | "chapter_review";
 type AttemptRow = { skill_id: string; item_id: string; correct: boolean; hint_used: boolean; created_at: string };
 
 type PoolItem = SelectableItem & { skill_id: string };
@@ -85,7 +85,7 @@ Deno.serve(async (req) => {
 
   let body: { mode?: Mode; targetSkillId?: string | null; recommendationInstanceId?: string | null } = {};
   try { body = await req.json(); } catch { /* handled below */ }
-  if (!body.mode || !["diagnostic", "practice", "mastery_check"].includes(body.mode)) {
+  if (!body.mode || !["diagnostic", "practice", "mastery_check", "chapter_review"].includes(body.mode)) {
     return json({ error: "invalid_mode" }, 400);
   }
 
@@ -121,7 +121,7 @@ Deno.serve(async (req) => {
 
   let curriculumContext;
   try {
-    curriculumContext = await resolveCurriculumBlueprint(admin, UNIT_CODE, body.mode);
+    curriculumContext = await resolveCurriculumBlueprint(admin, UNIT_CODE, body.mode === "chapter_review" ? "practice" : body.mode);
   } catch (err) {
     console.error("curriculum release or blueprint unavailable", err);
     return json({ error: "curriculum_release_unavailable" }, 503);
@@ -273,6 +273,127 @@ Deno.serve(async (req) => {
       targetSkillId: null,
     });
     return json({ session, resumed: false, diagnosticForm: rotation.form.code });
+  }
+
+  if (body.mode === "chapter_review") {
+    const { data: lifecycle, error: lifecycleError } = await admin
+      .from("chapter_mastery_states")
+      .select("id, lifecycle_state, academic_mastery_policy_id")
+      .eq("student_id", studentId)
+      .eq("curriculum_release_id", curriculumContext.releaseId)
+      .eq("unit_code", UNIT_CODE)
+      .maybeSingle();
+    if (lifecycleError || !lifecycle) return json({ error: "chapter_review_not_available" }, 409);
+
+    const { data: policy, error: policyError } = await admin
+      .from("academic_mastery_policy_versions")
+      .select("target_review_question_count")
+      .eq("id", lifecycle.academic_mastery_policy_id)
+      .single();
+    if (policyError || !policy) return json({ error: "mastery_policy_unavailable" }, 503);
+    const targetCount = Number(policy.target_review_question_count);
+
+    const { data: latestChecks } = await admin
+      .from("learning_sessions")
+      .select("metadata")
+      .eq("student_id", studentId)
+      .eq("curriculum_release_id", curriculumContext.releaseId)
+      .eq("unit_code", UNIT_CODE)
+      .eq("mode", "mastery_check")
+      .eq("status", "completed")
+      .order("completed_at", { ascending: false })
+      .limit(1);
+    const failedSkillIds = Array.isArray(latestChecks?.[0]?.metadata?.failedSkillIds)
+      ? latestChecks[0].metadata.failedSkillIds as string[]
+      : [];
+    const failedSkills = new Set(failedSkillIds);
+
+    const { data: reviewItems, error: reviewItemsError } = await admin
+      .from("items")
+      .select("id, code, skill_id")
+      .in("id", curriculumContext.itemIds)
+      .in("skill_id", skillIds)
+      .eq("status", "published");
+    if (reviewItemsError || !reviewItems?.length) return json({ error: "chapter_review_pool_empty" }, 409);
+
+    const exposureCounts = new Map<string, number>();
+    for (const row of attempts) exposureCounts.set(row.item_id, (exposureCounts.get(row.item_id) ?? 0) + 1);
+    const orderedPool = [...reviewItems].sort((a, b) => {
+      const failedDelta = Number(failedSkills.has(b.skill_id)) - Number(failedSkills.has(a.skill_id));
+      if (failedDelta) return failedDelta;
+      const exposureDelta = (exposureCounts.get(a.id) ?? 0) - (exposureCounts.get(b.id) ?? 0);
+      return exposureDelta || String(a.code).localeCompare(String(b.code));
+    });
+
+    const selected: Array<{ item_id: string; skill_id: string; selection_reason: string }> = [];
+    const selectedIds = new Set<string>();
+    for (const skill of skills) {
+      const item = orderedPool.find((candidate) => candidate.skill_id === skill.id && !selectedIds.has(candidate.id));
+      if (!item) continue;
+      selected.push({
+        item_id: item.id,
+        skill_id: item.skill_id,
+        selection_reason: failedSkills.has(item.skill_id)
+          ? "review_whole_chapter_failed_skill_weight"
+          : "review_whole_chapter_coverage",
+      });
+      selectedIds.add(item.id);
+    }
+    for (const item of orderedPool) {
+      if (selected.length >= targetCount) break;
+      if (selectedIds.has(item.id)) continue;
+      selected.push({
+        item_id: item.id,
+        skill_id: item.skill_id,
+        selection_reason: failedSkills.has(item.skill_id)
+          ? "review_failed_skill_extra"
+          : "review_least_exposed_fill",
+      });
+      selectedIds.add(item.id);
+    }
+    if (selected.length < Math.min(targetCount, reviewItems.length)) {
+      return json({ error: "insufficient_chapter_review_items" }, 409);
+    }
+
+    const ordered = shuffle(selected.slice(0, Math.min(targetCount, selected.length)));
+    const atomicItems = ordered.map((row, index) => ({
+      ordinal: index + 1,
+      skill_id: row.skill_id,
+      item_id: row.item_id,
+      selection_reason: row.selection_reason,
+    }));
+    const { data: reviewLifecycle, error: reviewError } = await admin.rpc("start_chapter_review_atomic", {
+      p_student_id: studentId,
+      p_curriculum_release_id: curriculumContext.releaseId,
+      p_assessment_blueprint_id: curriculumContext.blueprintId,
+      p_unit_code: UNIT_CODE,
+      p_metadata: {
+        bounded: true,
+        wholeChapter: true,
+        hintingEnabled: true,
+        selectionPolicyVersion: "12.5C-D-v1",
+        failedSkillIds,
+      },
+      p_items: atomicItems,
+    });
+    if (reviewError || !reviewLifecycle?.sessionId) {
+      const detail = reviewError?.message ?? "chapter_review_start_failed";
+      return json({ error: "chapter_review_start_failed", detail }, 409);
+    }
+
+    const { data: session, error: sessionError } = await admin
+      .from("learning_sessions")
+      .select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, metadata, academic_mastery_policy_id")
+      .eq("id", reviewLifecycle.sessionId)
+      .single();
+    if (sessionError || !session) return json({ error: "session_load_failed" }, 500);
+    return json({
+      session,
+      resumed: Boolean(reviewLifecycle.resumed),
+      reviewSessionId: reviewLifecycle.reviewSessionId,
+      reviewContext: reviewLifecycle.reviewContext,
+      required: Boolean(reviewLifecycle.required),
+    });
   }
 
   if (body.mode === "mastery_check") {
