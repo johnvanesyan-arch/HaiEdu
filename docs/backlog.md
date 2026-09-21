@@ -230,10 +230,10 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 
 ## Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
-**Status: 🟡 Active planning and architecture audit. Sprint 13 is on hold.**
+**Status: 🟡 Active implementation. 12.5A complete; 12.5B foundation deployed. Sprint 13 is on hold.**
 
-- [ ] 12.5A: create immutable platform-level Chapter Mastery & Review policy versions.
-- [ ] 12.5B: implement the server-authoritative chapter mastery state machine.
+- [x] 12.5A: create immutable platform-level Chapter Mastery & Review policy versions.
+- [ ] 12.5B: implement the server-authoritative chapter mastery state machine. Atomic foundation deployed; retry-ready transitions close with 12.5C–D.
 - [ ] 12.5C–F: add first-class Chapter Review sessions, requirements, cycles, rotational selection and provenance.
 - [ ] 12.5G–I: enforce pass/final-failure behavior and prohibit Attempt 4.
 - [ ] 12.5J–K: implement natural Armenian learner states and Review experience.
