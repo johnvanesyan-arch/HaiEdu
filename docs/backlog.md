@@ -181,24 +181,24 @@ Sprint 11 is complete only when all of the following are true:
 **Non-goal for Sprint 11:** completion of the human pilot or psychometric validation of mastery cut scores. Current thresholds remain provisional engineering defaults until sufficient authorized empirical evidence exists.
 
 ### Sprint 11.5 — Controlled External Tester Pilot
-**Status: 🟡 Running — one-adult feasibility pilot opened prospectively on 2026-09-21; planned evidence window ends 2026-10-05.**
+**Status: ✅ Closed 2026-09-21 — one-adult feasibility confirmed; calibration tuning deferred; no parameter change.**
 
 - [x] Name the operational participation-authorization owner.
 - [x] Approve participant/guardian information and authorization workflow where applicable.
 - [x] Define tester/cohort scope, dates, teacher scope, identity minimization, withdrawal, suspension and deletion handling.
 - [x] Enroll only authorized testers/participants on the exact target release.
-- [ ] Observe the Diagnostic → Practice → Mastery lifecycle.
-- [ ] Collect teacher/usability evidence.
-- [ ] Review repetition/exposure behavior and item/content defects.
-- [ ] Review standards-alignment observations and operational defects.
-- [ ] Produce the formal pilot/test report.
-- [ ] Decide whether the evidence is sufficient for Sprint 12 calibration.
+- [x] Observe the Diagnostic → Practice → Mastery lifecycle.
+- [x] Collect teacher/usability evidence.
+- [x] Review repetition/exposure behavior and item/content defects.
+- [x] Review standards-alignment observations and operational defects.
+- [x] Produce the formal pilot/test report.
+- [x] Decide whether the evidence is sufficient for Sprint 12 calibration.
 
-One adult tester is enrolled prospectively for feasibility evidence. All sessions before the 2026-09-21 authorization boundary remain excluded. Future genuine learner sessions inside the active window are automatically classified against the exact target release. One learner may validate workflow and generate hypotheses, but cannot alone authorize parameter tuning.
+One adult tester produced eight eligible prospective sessions: seven Practice sessions and one passed Mastery Check. The pre-authorization Diagnostic remains excluded, so the full lifecycle is accepted only with that explicit limitation. The pilot report was approved, all five closure gates passed, and the immutable calibration disposition is `deferred`. See `docs/sprint-11-5-pilot-closure-report.md`.
 
 
 ## Sprint 12 — Learning-Model Calibration
-**Status: ✅ 12A calibration readiness complete; 12B empirical calibration blocked pending suitable formal Sprint 11.5 learner evidence.**
+**Status: ✅ Complete — 12A readiness complete; 12B reviewed and closed with a deferred/no-change disposition.**
 
 ### 12A — Calibration Readiness
 - [x] Inventory deployed mastery, recovery, diagnostic, recommendation, practice and Mastery Check constants.
@@ -214,11 +214,11 @@ One adult tester is enrolled prospectively for feasibility evidence. All session
 - [x] Define and enforce the parameter-change decision/versioning protocol (12A.5): immutable protocol/decision records, learner-aware evidence snapshot, explicit approve/reject/no-change/defer outcomes, and validated approved-successor model versioning.
 
 ### 12B — Empirical Calibration
-- [ ] Review formal Sprint 11.5 evidence sufficiency.
-- [ ] If sufficient, test current thresholds/rules against observed learner behavior.
-- [ ] Compare candidate parameter changes against the frozen baseline.
-- [ ] Version and deploy only approved changes.
-- [ ] If evidence is insufficient, record an explicit no-change/defer disposition.
+- [x] Review formal Sprint 11.5 evidence sufficiency.
+- [x] Determine that one learner, no prospective Diagnostic and inherited learner state are insufficient for tuning.
+- [x] Record immutable `deferred` decision `physics7-u01-feasibility-2026-09-21-deferred`.
+- [x] Confirm no candidate/approved model configuration and no parameter change.
+- [x] Preserve the frozen baseline and historical interpretation.
 
 Informal external question/content review may continue without a deadline, but that reviewer activity is QA/context only and must not be used to fit or justify model parameters.
 
