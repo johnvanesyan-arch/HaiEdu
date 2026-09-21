@@ -1,6 +1,6 @@
 # Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status:** 🟡 Active — architecture audit complete; foundation implementation next
+**Status:** 🟡 Active — 12.5A complete; 12.5B atomic lifecycle foundation deployed
 
 **Placement:** After Sprint 12 calibration work and before Sprint 13 Chapter I production release
 
@@ -1157,3 +1157,39 @@ This is substantial enough to deserve its **own sprint**, rather than being sque
 - Chapter Review evidence never updates the historical fact that a Mastery Check passed.
 - Review evidence remains analytically distinct from pre-mastery Practice.
 - Policy resolution is programme/unit-aware and cannot depend on Physics-specific constants.
+
+
+---
+
+## Implementation update — 2026-09-21
+
+### Completed: 12.5A
+
+- Published immutable platform policy `chapter-mastery-review-2026-r1`.
+- Enforced three attempts, mandatory Review after failures 1 and 2, optional Review after pass, Review availability after final failure, and a 12-question initial Review target.
+- Restricted policy mutation and direct browser-role access.
+- Bound lifecycle records and Mastery Check sessions to the governing policy version.
+
+### Completed foundation: 12.5B
+
+- Added canonical `chapter_mastery_states` and authoritative `mastery_check_attempts`.
+- Added structured immutable `mastery_attempt_number` to Mastery Check sessions.
+- Added advisory transaction locking and uniqueness constraints for duplicate-tab/race protection.
+- Moved Mastery Check session/item creation into `start_mastery_check_atomic`.
+- Moved Mastery result/state finalization into `finalize_mastery_check_atomic`.
+- Enforced Attempt 1–3 constraints in schema and RPC logic; Attempt 4 is rejected.
+- Updated lifecycle status responses and deployed runtime build `runtime-2026-09-21-r4`.
+- Preserved the single historical completed check as an exact Attempt 1 pass; no retry history was fabricated.
+
+### Verification
+
+- GitHub CI: passed.
+- Vercel: passed.
+- Edge Functions: `start-learning-session` v14, `submit-mastery-answer` v5, `get-mastery-check-status` v7.
+- Direct `anon` and `authenticated` execution of lifecycle RPCs: denied.
+- Terminal passed lifecycle cannot create another Mastery Check.
+- Database constraint rejects attempt number 4.
+
+### Remaining before 12.5B is fully closed
+
+The retry-ready transitions intentionally remain locked until 12.5C–D introduces first-class `chapter_review` sessions and qualifying Review completion. This prevents the old ordinary-Practice remediation path from unlocking Attempts 2 or 3.
