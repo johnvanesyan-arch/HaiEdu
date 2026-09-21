@@ -334,7 +334,7 @@ Deno.serve(async (req) => {
       modelConfigurationId: recommendationModelConfigurationId,
       modelProvenanceStatus: recommendationModelProvenanceStatus,
     },
-    remediation: session?.mode === "practice"
+    remediation: session?.mode === "practice" || session?.mode === "chapter_review"
       ? {
           helpWasUsed: serverHintUsed,
           independentCheckNeeded: grade.correct && serverHintUsed,
@@ -349,12 +349,25 @@ Deno.serve(async (req) => {
   };
 
   if (session) {
-    const { data: refreshed } = await admin
+    const { data: refreshed, error: refreshError } = await admin
       .from("learning_sessions")
       .select("status, planned_item_count, answered_count, correct_count")
       .eq("id", session.id)
       .single();
+    if (refreshError || !refreshed) return json({ error: "session_refresh_failed" }, 500);
     response.session = refreshed;
+
+    if (session.mode === "chapter_review" && refreshed.status === "completed") {
+      const { data: reviewLifecycle, error: reviewLifecycleError } = await admin.rpc("finalize_chapter_review_atomic", {
+        p_student_id: studentId,
+        p_session_id: session.id,
+      });
+      if (reviewLifecycleError) {
+        console.error("chapter review finalization failed", reviewLifecycleError);
+        return json({ error: "chapter_review_finalize_failed" }, 500);
+      }
+      response.chapterReview = reviewLifecycle;
+    }
   }
 
   return json(response);
