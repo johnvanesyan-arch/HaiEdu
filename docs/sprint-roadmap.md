@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.24  
+**Roadmap version:** 2.25  
 **Updated:** 2026-09-21  
-**Current programme status:** Sprints 11, 11.5 and 12 are ✅ complete. The one-adult feasibility pilot closed with eight prospective sessions, an explicit pre-authorization Diagnostic limitation, and an immutable `deferred` calibration decision. No learning parameter changed. Sprint 13 is next.
+**Current programme status:** Sprints 11, 11.5 and 12 are ✅ complete. Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle is now the active planned stage. Sprint 13 is explicitly on hold until the universal three-attempt/review lifecycle is implemented and verified.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -44,6 +44,7 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 11 | Hybrid | Governance/standards/evidence decisions in chat; residual QA, migrations and technical execution in Work. |
 | 11.5 | Hybrid | Tester/pilot authorization and evidence rules in chat; cohort setup, operational QA and evidence collection in Work. |
 | 12 | Hybrid | Calibration interpretation and decision rules in chat; data extraction/implementation in Work. |
+| 12.5 | Hybrid | Academic policy and attention-model definitions in chat; state machine, data model, APIs, UI, analytics and QA in Work. |
 | 13 | Work | Release checklist, deployment, migrations, regression and evidence reconciliation. |
 | 14 | Hybrid | Multi-tenant academic architecture first in chat; bounded implementation slices in Work. |
 | 15 | Hybrid | Curriculum/outcome/skill design in chat; bulk ingestion and technical QA in Work. |
@@ -96,7 +97,8 @@ For the current Sprint 11 state:
 | 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; the carried-forward 11L entry gates are now satisfied by the prospective Sprint 11.5 pilot. |
 | 11.5 | Controlled External Tester Pilot | ✅ | Closed one-adult feasibility run: eight eligible prospective sessions, smooth experience, no substantive content defects, historical Diagnostic excluded, and all closure gates passed. |
 | 12 | Learning-Model Calibration | ✅ | 12A.1–12A.5 complete; 12B reviewed the feasibility evidence and recorded an immutable deferred/no-change disposition. No learning parameter changed. |
-| 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
+| 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | 🟡 | Active next stage: versioned platform policy, maximum three Mastery attempts, mandatory Chapter Review between failed retries, permanent optional Review, protected assessment integrity, teacher analytics and evidence separation. |
+| 13 | Chapter I Standards-Verified Production Release | ⏳ | On hold until Sprint 12.5 closes.  Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize schools, academic years, time-aware memberships, IAM/permissions, tenant isolation, audit scope, teacher continuity foundations, controlled enrollment and centrally governed content. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
 | 16 | Full Grade 7 Physics MVP | ⏳ | Integrate all Grade 7 Physics units with course-level progress aggregation while keeping diagnostics/mastery checks unit-bound. |
@@ -419,6 +421,26 @@ Calibration evidence must be curriculum-version aware. Evidence from materially 
 Where calibration settings change, model/configuration versioning must preserve the meaning of historical evidence. Material mastery/confidence outputs must retain the model/configuration version that produced them. Calibration must explicitly support **Insufficient Evidence** rather than forcing a mastery conclusion, and consequential classifications/recommendations must be explainable from the evidence actually used. If evidence is insufficient, record a no-change/defer disposition rather than forcing a parameter change.
 
 See `docs/sprint-12-learning-model-calibration.md` for the implementation plan and deployed-model baseline.
+
+## Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
+
+**Status: 🟡 Active planning and architecture audit. Sprint 13 is on hold until this sprint closes.**
+
+Establish a universal, versioned platform policy for every present and future grade, subject, programme and unit:
+
+- at most three Mastery Check attempts;
+- a completed qualifying Chapter Review is required after failed Attempts 1 and 2;
+- passing any attempt ends the mandatory retry loop;
+- failed Attempt 3 creates final `mastery_failed_final` and prohibits Attempt 4;
+- Chapter Review remains permanently available after pass or final failure;
+- Chapter Review is a first-class session mode with required/voluntary contexts and auditable whole-chapter rotation;
+- later Review evidence never revokes a historical Mastery pass and never contaminates pre-mastery Practice/calibration evidence;
+- recommendations, learner UX and teacher analytics follow the server-authoritative state machine;
+- historical records are migrated without fabricating attempt numbers or policy provenance.
+
+The policy must be cross-subject and cross-grade. No school, teacher or chapter may silently override it. Administrative exceptions are outside the normal learner flow and require separate governance if introduced later.
+
+Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
 ## Sprint 13 — Chapter I Standards-Verified Production Release
 
