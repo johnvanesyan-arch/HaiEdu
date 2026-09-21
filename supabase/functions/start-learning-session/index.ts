@@ -384,49 +384,54 @@ Deno.serve(async (req) => {
     }
 
     const ordered = shuffle(selected);
-    const attemptNumber = (priorChecks?.length ?? 0) + 1;
-    const { data: session, error: sessionError } = await admin.from("learning_sessions").insert({
-      student_id: studentId,
-      curriculum_release_id: curriculumContext.releaseId,
-      assessment_blueprint_id: curriculumContext.blueprintId,
-      unit_code: UNIT_CODE,
-      mode: "mastery_check",
-      planned_item_count: ordered.length,
-      metadata: {
-        itemsPerSkill: MASTERY_ITEMS_PER_SKILL,
-        noHints: true,
-        passPercent: MASTERY_PASS_PERCENT,
-        minCorrectPerSkill: MASTERY_MIN_CORRECT_PER_SKILL,
-        attemptNumber,
-        poolCode: CHAPTER_I_POOLS.mastery_check,
-        protectedPool: true,
-        selectionPolicyVersion: "11B-v1",
-        formType: attemptNumber > 1 ? "alternate_retest" : "initial_unseen_first",
-        alternateFromSessionId: latestCheck?.assessment_result === "failed" ? latestCheck.id : null,
-        previousFormItemCount: previousItemIds.size,
-        overlapCount,
-        poolExhausted,
-        exactRepeatFallbackUsed: overlapCount > 0,
-      },
-    }).select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, metadata").single();
-    if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
-
-    const rows = ordered.map((row, index) => ({
-      session_id: session.id,
+    const creationMetadata = {
+      itemsPerSkill: MASTERY_ITEMS_PER_SKILL,
+      noHints: true,
+      passPercent: MASTERY_PASS_PERCENT,
+      minCorrectPerSkill: MASTERY_MIN_CORRECT_PER_SKILL,
+      poolCode: CHAPTER_I_POOLS.mastery_check,
+      protectedPool: true,
+      selectionPolicyVersion: "11B-v1",
+      formType: (priorChecks?.length ?? 0) > 0 ? "alternate_retest" : "initial_unseen_first",
+      alternateFromSessionId: latestCheck?.assessment_result === "failed" ? latestCheck.id : null,
+      previousFormItemCount: previousItemIds.size,
+      overlapCount,
+      poolExhausted,
+      exactRepeatFallbackUsed: overlapCount > 0,
+    };
+    const atomicItems = ordered.map((row, index) => ({
       ordinal: index + 1,
       skill_id: row.skill_id,
       item_id: row.item_id,
       selection_reason: row.selection_reason,
     }));
-    const { error: itemInsertError } = await admin.from("learning_session_items").insert(rows);
-    if (itemInsertError) {
-      await admin.from("learning_sessions").delete().eq("id", session.id);
-      return json({ error: "session_items_create_failed" }, 500);
+    const { data: lifecycle, error: lifecycleError } = await admin.rpc("start_mastery_check_atomic", {
+      p_student_id: studentId,
+      p_curriculum_release_id: curriculumContext.releaseId,
+      p_assessment_blueprint_id: curriculumContext.blueprintId,
+      p_unit_code: UNIT_CODE,
+      p_planned_item_count: ordered.length,
+      p_metadata: creationMetadata,
+      p_items: atomicItems,
+    });
+    if (lifecycleError || !lifecycle?.sessionId) {
+      const detail = lifecycleError?.message ?? "mastery_lifecycle_start_failed";
+      const blocked = detail.includes("mastery_check_not_allowed") || detail.includes("mastery_attempt_limit_reached");
+      return json({ error: blocked ? "mastery_check_not_allowed" : "session_create_failed", detail }, blocked ? 409 : 500);
     }
+
+    const { data: session, error: sessionError } = await admin
+      .from("learning_sessions")
+      .select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, metadata, academic_mastery_policy_id, mastery_attempt_number")
+      .eq("id", lifecycle.sessionId)
+      .single();
+    if (sessionError || !session) return json({ error: "session_load_failed" }, 500);
+
     return json({
       session,
-      resumed: false,
+      resumed: Boolean(lifecycle.resumed),
       masteryEligible: true,
+      attemptNumber: Number(lifecycle.attemptNumber),
       selection: { overlapCount, poolExhausted, exactRepeatFallbackUsed: overlapCount > 0 },
     });
   }
