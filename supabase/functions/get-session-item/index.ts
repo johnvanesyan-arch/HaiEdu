@@ -112,7 +112,7 @@ async function itemPayload(admin: any, studentId: string, session: any, sessionI
       options: options ?? [],
     },
     remediation: {
-      available: session.mode === "practice",
+      available: session.mode === "practice" || session.mode === "chapter_review",
       hintLevelUsed: Number(sessionItem.hint_level_used ?? 0),
       selectionReason: sessionItem.selection_reason ?? null,
     },
