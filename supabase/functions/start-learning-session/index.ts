@@ -121,7 +121,7 @@ Deno.serve(async (req) => {
 
   let curriculumContext;
   try {
-    curriculumContext = await resolveCurriculumBlueprint(admin, UNIT_CODE, body.mode === "chapter_review" ? "practice" : body.mode);
+    curriculumContext = await resolveCurriculumBlueprint(admin, UNIT_CODE, body.mode);
   } catch (err) {
     console.error("curriculum release or blueprint unavailable", err);
     return json({ error: "curriculum_release_unavailable" }, 503);
