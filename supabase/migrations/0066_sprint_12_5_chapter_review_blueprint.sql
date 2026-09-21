@@ -40,12 +40,12 @@ insert into public.assessment_blueprints(
 select
   regexp_replace(source.blueprint_key,'practice','chapter_review','g'),
   source.curriculum_release_id,source.unit_id,review_pool.id,'chapter_review',
-  1,source.status,'12.5C-D-v1',
+  1,'draft','12.5C-D-v1',
   source.configuration_snapshot||jsonb_build_object(
     'purpose','chapter_review','sourceBlueprintId',source.id,
     'targetQuestions',12,'wholeChapter',true,'hintsAllowed',true
   ),
-  source.item_set_fingerprint,now(),source.published_by
+  source.item_set_fingerprint,null,source.published_by
 from source cross join review_pool
 on conflict (blueprint_key) do nothing;
 
@@ -64,5 +64,23 @@ join public.assessment_blueprints review
  and review.purpose='chapter_review'
 join public.assessment_blueprint_items src_items on src_items.assessment_blueprint_id=source.id
 where source.purpose='practice' and source.status in ('pilot','production')
-  and review.status=source.status
+  and review.status='draft'
 on conflict (assessment_blueprint_id,item_id) do nothing;
+
+
+with source as (
+  select ab.*
+  from public.assessment_blueprints ab
+  join public.curriculum_releases cr on cr.id=ab.curriculum_release_id
+  where ab.purpose='practice' and ab.status in ('pilot','production')
+    and cr.status in ('pilot','production')
+  order by case ab.status when 'production' then 1 else 2 end,ab.published_at desc
+  limit 1
+)
+update public.assessment_blueprints review
+set status=source.status,published_at=now(),updated_at=now()
+from source
+where review.curriculum_release_id=source.curriculum_release_id
+  and review.unit_id=source.unit_id
+  and review.purpose='chapter_review'
+  and review.status='draft';
