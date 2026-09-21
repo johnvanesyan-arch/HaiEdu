@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.21  
-**Updated:** 2026-09-20  
-**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A.4 is complete and 12A.5 remains next. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
+**Roadmap version:** 2.22  
+**Updated:** 2026-09-21  
+**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A calibration readiness is complete through 12A.5. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -366,7 +366,7 @@ See `docs/sprint-11-5-controlled-external-tester-pilot.md` for the execution pla
 
 ## Sprint 12 — Learning-Model Calibration
 
-**Status: 🟡 12A calibration readiness in progress; 12B empirical calibration evidence-gated.**
+**Status: ✅ 12A calibration readiness complete; 12B empirical calibration evidence-gated.**
 
 Sprint 12 is split into two phases so technical preparation does not stall while informal review continues.
 
@@ -385,9 +385,11 @@ Sprint 12 is split into two phases so technical preparation does not stall while
 - r1 contract/metric records remain immutable historical drafts;
 - no learning parameter was changed.
 
-**12A.4 is complete after closure-audit correction:** the read-only, service-role-only pipeline is pinned to an immutable pilot scope, enforces the full r2 entry/pilot-state boundary, models the actual 4/5 recovery event, provides analysis-ready learner/learner-skill outputs, preserves provenance, and exposes all 11 exact r2 metric keys. Current formal metric observations remain 0. **Next bounded slice:** 12A.5 — the calibration decision protocol; 12B remains evidence-gated.
+**12A.4 is complete after closure-audit correction:** the read-only, service-role-only pipeline is pinned to an immutable pilot scope, enforces the full r2 entry/pilot-state boundary, models the actual 4/5 recovery event, provides analysis-ready learner/learner-skill outputs, preserves provenance, and exposes all 11 exact r2 metric keys.
 
-See `docs/sprint-12a-methodology-audit-corrections.md` for the audit implementation evidence.
+**12A.5 is complete:** immutable protocol and decision records enforce hypothesis → eligible evidence → learner-aware sample/limitations → baseline/candidate comparison → side effects → explicit disposition → new approved configuration when changed → preserved history. Allowed outcomes include explicit `no_change` and `deferred`; observation counts never auto-authorize tuning. The current snapshot has zero formal observations for all 11 metrics, so no decision or model version was created and 12B remains evidence-gated.
+
+See `docs/sprint-12a-methodology-audit-corrections.md` and `docs/sprint-12a5-calibration-decision-protocol.md`.
 
 ### 12A — Hinting & Remediation v2 foundation
 
