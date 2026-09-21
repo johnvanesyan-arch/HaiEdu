@@ -71,7 +71,7 @@ Deno.serve(async (req) => {
       admin.from("attempts").select("skill_id, item_id, correct, hint_used, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(1000),
       admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
       admin.from("learning_sessions").select("id, assessment_result, score_percent, completed_at, metadata, answered_count, correct_count, planned_item_count, mastery_attempt_number").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "mastery_check").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
-      admin.from("chapter_mastery_states").select("lifecycle_state, attempts_used, passed_on_attempt, academic_mastery_policy_id, history_provenance").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).limit(1),
+      admin.from("chapter_mastery_states").select("id, lifecycle_state, attempts_used, passed_on_attempt, academic_mastery_policy_id, history_provenance").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).limit(1),
     ]);
 
     const mastery = new Map((masteryRows ?? []).map((r) => [r.skill_id, { score: Number(r.mastery_score), evidenceCount: Number(r.evidence_count) }]));
@@ -113,6 +113,16 @@ Deno.serve(async (req) => {
       || lifecycleState === "mastery_retry_3_ready";
     const eligible = eligibleState && !unitComplete && !finalFailure && !active && incompleteSkills.length === 0 && !retryBlocked;
     const latestSkillResults = Array.isArray(latest?.metadata?.skillResults) ? latest.metadata.skillResults : [];
+    let reviewRequirement = null;
+    if (reviewRequired && lifecycle?.id) {
+      const { data: requirementRows } = await admin
+        .from("chapter_review_requirements")
+        .select("id, required_after_attempt, status, required_at")
+        .eq("chapter_mastery_state_id", lifecycle.id)
+        .eq("status", "required")
+        .limit(1);
+      reviewRequirement = requirementRows?.[0] ?? null;
+    }
 
     return json({
       unitCode: UNIT_CODE,
@@ -123,6 +133,8 @@ Deno.serve(async (req) => {
       eligible,
       retryBlocked,
       reviewRequired,
+      reviewRequirement,
+      reviewAvailable: unitComplete || finalFailure || reviewRequired,
       finalFailure,
       lifecycle: lifecycle ? {
         state: lifecycleState,
