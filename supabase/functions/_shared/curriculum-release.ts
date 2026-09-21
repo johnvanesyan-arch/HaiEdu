@@ -1,6 +1,6 @@
 import type { SupabaseClient } from "npm:@supabase/supabase-js@2";
 
-export type CurriculumMode = "diagnostic" | "practice" | "mastery_check";
+export type CurriculumMode = "diagnostic" | "practice" | "mastery_check" | "chapter_review";
 
 export type CurriculumBlueprintContext = {
   releaseId: string;
