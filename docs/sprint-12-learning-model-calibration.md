@@ -119,11 +119,15 @@ Detailed implementation: `docs/sprint-12a5-calibration-decision-protocol.md`.
 
 One adult tester is prospectively enrolled for a 2026-09-21 through 2026-10-05 feasibility window. The first recommended path is a fresh Diagnostic → Practice → Mastery Check sequence. This cohort may validate mechanics, individual trajectories and generate hypotheses; it cannot by itself establish representative effects or authorize a parameter change.
 
-## 12B — Empirical Calibration
+## 12B — Empirical Calibration — closed with deferral
 
-**Blocked until Sprint 11.5 produces sufficient formal learner evidence.**
+The one-adult feasibility evidence was reviewed on 2026-09-21. Eight prospective sessions were formally eligible: seven Practice sessions and one passed Mastery Check. The participant's Diagnostic preceded authorization and remains excluded.
 
-Potential parameters include:
+The evidence is insufficient for tuning because there is one learner, zero prospective Diagnostic observations, inherited learner state influenced Practice length, and no representative between-learner distribution exists.
+
+Immutable decision: `physics7-u01-feasibility-2026-09-21-deferred` (fingerprint `52015670d04ddf49b10d621be4652aa7`). No candidate configuration, approved successor or parameter change was created.
+
+Parameters retained unchanged include:
 
 - mastery prior;
 - mastery status thresholds;
