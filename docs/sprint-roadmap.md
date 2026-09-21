@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.22  
+**Roadmap version:** 2.23  
 **Updated:** 2026-09-21  
-**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 may continue asynchronously as an external-review/pilot track, while Sprint 12A calibration readiness is complete through 12A.5. Informal question-review activity remains QA/context only; Sprint 12B empirical tuning stays blocked until suitable formal learner evidence exists.
+**Current programme status:** Sprint 11 is ✅ complete for technical handoff readiness. Sprint 11.5 is 🟡 running as a prospective one-adult feasibility pilot through 2026-10-05, while Sprint 12A calibration readiness is complete through 12A.5. Historical reviewer activity remains QA/context only; Sprint 12B empirical tuning stays evidence-gated.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -93,8 +93,8 @@ For the current Sprint 11 state:
 | 9 | UX, Accessibility & Armenian Localization QA | ✅ | Armenian-first UX, accessibility and responsive hardening completed at source/QA level. |
 | 10 | Security, Privacy & Administration | ✅ | Role, status, privacy, deletion and administration controls implemented. |
 | 10.5 | Student Experience & Front-End Redesign | ✅ | Front-end redesign completed; deferred live browser matrix was later dispositioned in 11F.2. |
-| 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; 11L records 4/6 entry gates passed and keeps the pilot blocked on the two human Sprint 11.5 gates. |
-| 11.5 | Controlled External Tester Pilot | ⏳ | Authorize and run a small real-user test cohort on the exact current release, then collect usable operational evidence for Sprint 12. |
+| 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; the carried-forward 11L entry gates are now satisfied by the prospective Sprint 11.5 pilot. |
+| 11.5 | Controlled External Tester Pilot | 🟡 | One adult tester is prospectively enrolled for a feasibility run through 2026-10-05. Prior sessions remain excluded; new genuine learner sessions may validate workflow and generate hypotheses, not independently authorize tuning. |
 | 12 | Learning-Model Calibration | 🟡 | 12A.1–12A.3 are complete and methodology-audited. Exact session model provenance, immutable hint provenance and prospective recommendation telemetry are live; audited r2 evidence/metric definitions supersede r1. Next is 12A.4 read-only analysis pipeline. 12B remains evidence-gated. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize schools, academic years, time-aware memberships, IAM/permissions, tenant isolation, audit scope, teacher continuity foundations, controlled enrollment and centrally governed content. |
@@ -387,7 +387,7 @@ Sprint 12 is split into two phases so technical preparation does not stall while
 
 **12A.4 is complete after closure-audit correction:** the read-only, service-role-only pipeline is pinned to an immutable pilot scope, enforces the full r2 entry/pilot-state boundary, models the actual 4/5 recovery event, provides analysis-ready learner/learner-skill outputs, preserves provenance, and exposes all 11 exact r2 metric keys.
 
-**12A.5 is complete:** immutable protocol and decision records enforce hypothesis → eligible evidence → learner-aware sample/limitations → baseline/candidate comparison → side effects → explicit disposition → new approved configuration when changed → preserved history. Allowed outcomes include explicit `no_change` and `deferred`; observation counts never auto-authorize tuning. The current snapshot has zero formal observations for all 11 metrics, so no decision or model version was created and 12B remains evidence-gated.
+**12A.5 is complete:** immutable protocol and decision records enforce hypothesis → eligible evidence → learner-aware sample/limitations → baseline/candidate comparison → side effects → explicit disposition → new approved configuration when changed → preserved history. Allowed outcomes include explicit `no_change` and `deferred`; observation counts never auto-authorize tuning. The one-adult feasibility pilot is now running prospectively, but its opening snapshot still has zero formal observations for all 11 metrics. No decision or model version was created and 12B remains evidence-gated.
 
 See `docs/sprint-12a-methodology-audit-corrections.md` and `docs/sprint-12a5-calibration-decision-protocol.md`.
 
