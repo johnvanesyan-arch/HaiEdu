@@ -489,20 +489,41 @@ function renderCompletion(data) {
   const percent = Number(summary.percent ?? (answered ? Math.round((correct / answered) * 100) : 0));
   const reason = summary.reason ?? data.session?.metadata?.completionReason ?? "completed";
 
-  $("completionAnswered").textContent = `${answered} / ${planned}`;
+  $("completionAnswered").textContent = `${answered} հարց`;
   $("completionCorrect").textContent = String(correct);
   $("completionPercent").textContent = `${percent}%`;
 
+  const endedEarly = planned > answered;
   const messages = {
-    mastery_reached: ["Հմտությունն ամրապնդվել է", "Սեսիան ավարտվեց շուտ, քանի որ ընթացիկ mastery ապացույցը հասավ փորձնական ամրապնդման շեմին։"],
-    independent_recovery: ["Ինքնուրույն վերականգնում", "Սեսիան ավարտվեց շուտ՝ վերջին բազմազան հարցերում բավարար ինքնուրույն հաջողությունից հետո։"],
-    item_limit_reached: ["Սեսիայի սահմանը հասել է", "8 հարցանոց սահմանը պահպանվել է։ Գլխավոր էջը կորոշի հաջորդ քայլը՝ կուտակված ապացույցի հիման վրա։"],
-    completed: ["Վարժանքն ավարտվեց", "Սեսիայի արդյունքը պահպանվել է ընդհանուր առաջընթացում։"],
+    mastery_reached: {
+      title: "Հմտությունը յուրացված է",
+      text: endedEarly
+        ? `Դուք բավարար արդյունք ցույց տվեցիք այս հմտության վերաբերյալ, ուստի վարժանքն ավարտվեց նախատեսված առավելագույն ${planned} հարցից շուտ։ Ձեր գիտելիքը հետագայում կրկին կստուգվի ինքնուրույն առաջադրանքներով։`
+        : "Դուք բավարար արդյունք ցույց տվեցիք այս հմտության վերաբերյալ։ Ձեր գիտելիքը հետագայում կրկին կստուգվի ինքնուրույն առաջադրանքներով։",
+      reason: "հմտության յուրացումը հաստատվել է։",
+    },
+    independent_recovery: {
+      title: "Հմտությունը կրկին ամրապնդված է",
+      text: endedEarly
+        ? `Դուք վերջին առաջադրանքներում ինքնուրույն կայուն արդյունք ցույց տվեցիք, ուստի վարժանքն ավարտվեց նախատեսված առավելագույն ${planned} հարցից շուտ։`
+        : "Դուք վերջին առաջադրանքներում ինքնուրույն կայուն արդյունք ցույց տվեցիք։",
+      reason: "ինքնուրույն կայուն արդյունք է գրանցվել։",
+    },
+    item_limit_reached: {
+      title: "Վարժանքն ավարտված է",
+      text: `Դուք ավարտեցիք այս վարժանքի համար նախատեսված առավելագույն ${planned} հարցերը։ Հաջորդ քայլը կորոշվի ձեր կուտակված արդյունքների հիման վրա։`,
+      reason: "նախատեսված հարցերի առավելագույն քանակը լրացվել է։",
+    },
+    completed: {
+      title: "Վարժանքն ավարտված է",
+      text: "Արդյունքը պահպանվել է ձեր ընդհանուր առաջընթացում։",
+      reason: "վարժանքն ավարտվել է։",
+    },
   };
-  const [title, text] = messages[reason] ?? messages.completed;
-  $("completionTitle").textContent = title;
-  $("completionText").textContent = text;
-  $("completionReason").textContent = `Ավարտման պատճառ՝ ${reason}`;
+  const message = messages[reason] ?? messages.completed;
+  $("completionTitle").textContent = message.title;
+  $("completionText").textContent = message.text;
+  $("completionReason").textContent = `Ավարտման պատճառ՝ ${message.reason}`;
 }
 
 function renderUnitComplete(data) {
