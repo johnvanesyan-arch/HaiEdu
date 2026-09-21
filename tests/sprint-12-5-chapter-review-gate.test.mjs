@@ -62,3 +62,13 @@ test("policy activation is separate from immutable policy snapshots", () => {
   assert.match(migration, /drop index if exists public\.academic_mastery_policy_one_active_idx/);
   assert.match(migration, /join public\.academic_mastery_policy_versions/);
 });
+
+
+test("Chapter Review has distinct assessment blueprint provenance", () => {
+  const blueprint = read("supabase/migrations/0066_sprint_12_5_chapter_review_blueprint.sql");
+  assert.match(blueprint, /purpose in \('practice','diagnostic','mastery_check','chapter_review'\)/);
+  assert.match(blueprint, /phy7_u01_chapter_review/);
+  assert.match(blueprint, /sourceBlueprintId/);
+  assert.match(blueprint, /assessment_blueprint_items/);
+  assert.doesNotMatch(start, /body\.mode === "chapter_review" \? "practice"/);
+});
