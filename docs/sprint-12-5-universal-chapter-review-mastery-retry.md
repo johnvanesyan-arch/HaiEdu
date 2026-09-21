@@ -1,6 +1,6 @@
 # Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status:** 🟡 Active — 12.5A–D deployed; 12.5E–F next
+**Status:** 🟡 Active — 12.5A–F deployed; 12.5G–K next
 
 **Placement:** After Sprint 12 calibration work and before Sprint 13 Chapter I production release
 
@@ -1231,3 +1231,19 @@ Runtime: `runtime-2026-09-21-r6`.
 ### Next
 
 12.5E–F will add durable Review cycles, rotational coverage, failed-skill weighting beyond the initial bounded selection, repeat/pool-exhaustion provenance, and per-item Review exposure fields.
+
+## Implementation update — 2026-09-21 — 12.5E–F
+
+Deployed whole-chapter Review cycles and reconstructable item-level selection provenance:
+
+- `chapter_review_cycles` assigns a durable learner × chapter cycle number and freezes the eligible pool size for that cycle.
+- `chapter_review_sessions` now records cycle/session numbers, the preceding Mastery attempt, and pool size.
+- `chapter_review_item_exposures` snapshots item/version, template/family, skill, selection reason, prior exposure count, current-cycle repeat state, and pool-exhaustion state.
+- `chapter_review_item_evidence_v` resolves those immutable decisions to canonical hint, response-time, correctness, and independent/assisted evidence.
+- Selection is deterministic and whole-chapter: every available chapter skill receives representation before extra slots are weighted toward latest Mastery failures and weak recent independent Review evidence.
+- Within-skill unseen items are preferred, followed by least-recent exposure and template/family diversity. Exact current-cycle repeats are rejected unless the relevant skill pool is exhausted.
+- Cycle and session numbering are assigned under the existing learner × release × unit advisory lock; stale selectors and duplicate items fail closed.
+
+Verification included focused automated tests plus a rollback-only live lifecycle probe. The probe created Cycle 1 / Session 1 with 12 immutable exposures across all 10 skills and zero repeat/pool-exhaustion flags, then rolled the data back.
+
+Runtime build: `runtime-2026-09-21-r7`; `start-learning-session` v17. Learning parameters remain unchanged.
