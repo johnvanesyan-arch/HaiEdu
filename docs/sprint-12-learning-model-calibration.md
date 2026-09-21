@@ -115,7 +115,11 @@ The service-role-only evidence snapshot exposes all 11 r2 metrics and marks ever
 
 Detailed implementation: `docs/sprint-12a5-calibration-decision-protocol.md`.
 
-### 12B — Empirical Calibration
+### Sprint 11.5 evidence collection now running
+
+One adult tester is prospectively enrolled for a 2026-09-21 through 2026-10-05 feasibility window. The first recommended path is a fresh Diagnostic → Practice → Mastery Check sequence. This cohort may validate mechanics, individual trajectories and generate hypotheses; it cannot by itself establish representative effects or authorize a parameter change.
+
+## 12B — Empirical Calibration
 
 **Blocked until Sprint 11.5 produces sufficient formal learner evidence.**
 
