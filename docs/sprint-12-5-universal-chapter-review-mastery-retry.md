@@ -1,6 +1,6 @@
 # Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status:** ⏳ Planned
+**Status:** 🟡 Active — architecture audit complete; foundation implementation next
 
 **Placement:** After Sprint 12 calibration work and before Sprint 13 Chapter I production release
 
@@ -1087,3 +1087,73 @@ Chapter I Standards-Verified Production Release
 ```
 
 This is substantial enough to deserve its **own sprint**, rather than being squeezed into 12A.5 or treated as a small UI enhancement.
+
+---
+
+# Initial architecture audit — 2026-09-21
+
+## Confirmed current gaps
+
+1. `start-learning-session` is hard-coded to `PHY7-U01`, Chapter I skill codes, fixed item counts and Physics-specific pools.
+2. The session mode type and database constraint currently allow only `diagnostic`, `practice` and `mastery_check`; `chapter_review` does not exist.
+3. Mastery attempt number is derived from completed-session count and stored only in JSON metadata. There is no normalized, policy-bound attempt record.
+4. No server-side maximum of three attempts is enforced. The current logic can continue creating retests after remediation.
+5. Failed-check remediation is represented as ordinary skill Practice, which would contaminate Practice-burden and pre-mastery evidence.
+6. Mastery creation is not protected by a single transactional state transition/row lock, leaving duplicate-tab and concurrent-request risk.
+7. Current remediation checks only verify that a completed Practice session exists after the latest failed check; they do not require a qualifying whole-chapter Review.
+8. Recommendation, learner status and teacher analytics are based on the old binary/latest-check model and do not represent retry/review states.
+9. Existing dashboards and endpoints contain unit-specific assumptions that must be routed through curriculum/programme/unit context rather than copied into new Review logic.
+
+## Approved implementation order
+
+### Slice 12.5A–B — policy and atomic lifecycle foundation
+
+- immutable academic mastery-policy registry;
+- normalized learner × programme/unit mastery state;
+- normalized Mastery attempt identity;
+- Review requirement identity;
+- database-enforced transition function with row locking/idempotency;
+- hard prohibition of Attempt 4;
+- legacy provenance state without fabricated attempt numbering.
+
+### Slice 12.5C–F — Chapter Review evidence model and selection
+
+- first-class `chapter_review` session mode;
+- required and voluntary contexts;
+- Review cycles/sessions;
+- whole-unit rotational selection with failed-skill weighting;
+- exposure and deterministic selection provenance.
+
+### Slice 12.5G–K — learner lifecycle and UX
+
+- pass/final-failure terminal behavior;
+- required Review completion gate;
+- optional Review after pass/final failure;
+- natural Armenian copy;
+- no internal reason-code leakage.
+
+### Slice 12.5L–O — analytics and recommendations
+
+- teacher chapter-review summary and drill-down;
+- Review-specific attention telemetry/model without premature calibrated thresholds;
+- recommendation priority for required Review and Mastery retry;
+- strict evidence separation.
+
+### Slice 12.5P–Y — integrity, migration and closure QA
+
+- protected Mastery exposure after Review;
+- Hinting v2 integration;
+- historical migration;
+- RLS and role/tenant boundaries;
+- direct-API, duplicate, stale-tab and race tests;
+- full lifecycle browser matrix;
+- GitHub/Notion/deployment reconciliation.
+
+## Foundation invariants
+
+- The database is authoritative for attempt number and lifecycle state.
+- A retry unlock and its qualifying Review are linked by immutable identifiers.
+- Creating a Mastery attempt must be an idempotent transactional operation.
+- Chapter Review evidence never updates the historical fact that a Mastery Check passed.
+- Review evidence remains analytically distinct from pre-mastery Practice.
+- Policy resolution is programme/unit-aware and cannot depend on Physics-specific constants.
