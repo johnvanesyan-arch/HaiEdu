@@ -62,13 +62,14 @@ async function evaluate(admin: any, session: any) {
     failedSkillIds,
   };
 
-  const { error: updateError } = await admin.from("learning_sessions").update({
-    assessment_result: passed ? "passed" : "failed",
-    score_percent: percent,
-    metadata,
-    updated_at: new Date().toISOString(),
-  }).eq("id", session.id);
-  if (updateError) throw updateError;
+  const { data: lifecycle, error: lifecycleError } = await admin.rpc("finalize_mastery_check_atomic", {
+    p_student_id: session.student_id,
+    p_session_id: session.id,
+    p_passed: passed,
+    p_score_percent: percent,
+    p_result_metadata: metadata,
+  });
+  if (lifecycleError) throw lifecycleError;
 
   return {
     passed,
@@ -76,6 +77,7 @@ async function evaluate(admin: any, session: any) {
     passCriteria: { overallPercent: PASS_PERCENT, minCorrectPerSkill: MIN_CORRECT_PER_SKILL },
     skillResults,
     failedSkills: skillResults.filter((r) => failedSkillIds.includes(r.skillId)),
+    lifecycle,
   };
 }
 
@@ -135,7 +137,7 @@ Deno.serve(async (req) => {
 
     const { data: refreshed, error: refreshError } = await admin
       .from("learning_sessions")
-      .select("id, status, planned_item_count, answered_count, correct_count, metadata, assessment_result, score_percent")
+      .select("id, student_id, status, planned_item_count, answered_count, correct_count, metadata, assessment_result, score_percent")
       .eq("id", session.id)
       .single();
     if (refreshError || !refreshed) return json({ error: "session_refresh_failed" }, 500);
