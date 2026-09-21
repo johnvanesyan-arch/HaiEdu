@@ -74,7 +74,7 @@ Deno.serve(async (req) => {
       .from("learning_sessions")
       .select("id, student_id, mode, status, started_at")
       .eq("student_id", studentId)
-      .eq("mode", "practice")
+      .in("mode", ["practice", "chapter_review"])
       .eq("status", "active")
       .order("started_at", { ascending: false })
       .limit(1);
@@ -83,7 +83,7 @@ Deno.serve(async (req) => {
 
   if (!session) return json({ error: "session_not_found" }, 404);
   if (session.status !== "active") return json({ error: "session_not_active" }, 409);
-  if (session.mode !== "practice") return json({ error: "help_not_available_in_diagnostic" }, 409);
+  if (!["practice", "chapter_review"].includes(session.mode)) return json({ error: "help_not_available_in_assessment" }, 409);
 
   let sessionItem: any = null;
   if (body.sessionItemId) {
