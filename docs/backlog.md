@@ -227,3 +227,22 @@ Detailed plan: `docs/sprint-12-learning-model-calibration.md`.
 Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md`.
 
 12A.5 decision protocol: `docs/sprint-12a5-calibration-decision-protocol.md`.
+
+
+## Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
+**Status: 🟡 Active planning and architecture audit. Sprint 13 is on hold.**
+
+- [ ] 12.5A: create immutable platform-level Chapter Mastery & Review policy versions.
+- [ ] 12.5B: implement the server-authoritative chapter mastery state machine.
+- [ ] 12.5C–F: add first-class Chapter Review sessions, requirements, cycles, rotational selection and provenance.
+- [ ] 12.5G–I: enforce pass/final-failure behavior and prohibit Attempt 4.
+- [ ] 12.5J–K: implement natural Armenian learner states and Review experience.
+- [ ] 12.5L–M: add teacher Review analytics and define the Review-specific attention model before thresholds.
+- [ ] 12.5N–O: isolate Review evidence and integrate recommendations.
+- [ ] 12.5P–Q: enforce transactional attempt integrity and protected assessment exposure.
+- [ ] 12.5R–S: integrate Hinting v2 and Review coverage analytics.
+- [ ] 12.5T–W: complete normalized schema, RLS, historical migration and reporting invariants.
+- [ ] 12.5X–Y: pass API/UI/race/security/browser QA and synchronize documentation.
+
+Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
+
