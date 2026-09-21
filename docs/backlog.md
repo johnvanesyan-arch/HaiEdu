@@ -181,12 +181,12 @@ Sprint 11 is complete only when all of the following are true:
 **Non-goal for Sprint 11:** completion of the human pilot or psychometric validation of mastery cut scores. Current thresholds remain provisional engineering defaults until sufficient authorized empirical evidence exists.
 
 ### Sprint 11.5 — Controlled External Tester Pilot
-**Status: ⏳ Planned after Sprint 11 technical handoff readiness.**
+**Status: 🟡 Running — one-adult feasibility pilot opened prospectively on 2026-09-21; planned evidence window ends 2026-10-05.**
 
-- [ ] Name the operational participation-authorization owner.
-- [ ] Approve participant/guardian information and authorization workflow where applicable.
-- [ ] Define tester/cohort scope, dates, teacher scope, identity minimization, withdrawal, suspension and deletion handling.
-- [ ] Enroll only authorized testers/participants on the exact target release.
+- [x] Name the operational participation-authorization owner.
+- [x] Approve participant/guardian information and authorization workflow where applicable.
+- [x] Define tester/cohort scope, dates, teacher scope, identity minimization, withdrawal, suspension and deletion handling.
+- [x] Enroll only authorized testers/participants on the exact target release.
 - [ ] Observe the Diagnostic → Practice → Mastery lifecycle.
 - [ ] Collect teacher/usability evidence.
 - [ ] Review repetition/exposure behavior and item/content defects.
@@ -194,7 +194,7 @@ Sprint 11 is complete only when all of the following are true:
 - [ ] Produce the formal pilot/test report.
 - [ ] Decide whether the evidence is sufficient for Sprint 12 calibration.
 
-Informal QA/usability testing may occur after Sprint 11 handoff, but it must not be counted as formal pilot/calibration evidence unless the Sprint 11.5 authorization and cohort gates are satisfied.
+One adult tester is enrolled prospectively for feasibility evidence. All sessions before the 2026-09-21 authorization boundary remain excluded. Future genuine learner sessions inside the active window are automatically classified against the exact target release. One learner may validate workflow and generate hypotheses, but cannot alone authorize parameter tuning.
 
 
 ## Sprint 12 — Learning-Model Calibration
