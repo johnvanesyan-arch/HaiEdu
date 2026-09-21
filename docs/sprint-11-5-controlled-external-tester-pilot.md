@@ -1,6 +1,6 @@
 # Sprint 11.5 — Controlled External Tester Pilot
 
-**Status:** planned after Sprint 11 technical handoff readiness.
+**Status:** 🟡 Running — one-adult feasibility pilot, prospectively enrolled 2026-09-21; planned evidence window ends 2026-10-05.
 
 ## Purpose
 
@@ -8,7 +8,9 @@ Allow one or more real users/testers to use the exact current Physics 7 Chapter 
 
 Sprint 11 closes on **technical handoff readiness**. Sprint 11.5 owns the human/testing work that was previously mixed into Sprint 11L.
 
-The existing Sprint 11L pilot-governance tables and fail-closed status guard remain authoritative. Sprint 11 closure does not mark human gates as passed and does not advance the pilot to `entry_ready`.
+The Sprint 11L pilot-governance tables and fail-closed status guard remain authoritative. On 2026-09-21, the product owner confirmed that the sole tester is an adult, future activity will represent genuine learner behavior, and the product owner will serve as operational owner and supervising teacher. The six entry gates now pass and the pilot is `running`.
+
+Enrollment is strictly prospective. The participant evidence boundary starts at authorization on 2026-09-21; all 17 earlier sessions remain excluded from closure and calibration evidence. The participant registry and lifecycle events enforce authorization, active/suspended/withdrawn state, and the planned evidence window through 2026-10-05.
 
 ## Entry requirements
 
@@ -21,6 +23,8 @@ The existing Sprint 11L pilot-governance tables and fail-closed status guard rem
 - Exact target curriculum release and blueprint provenance preserved.
 
 ## Controlled tester run
+
+Recommended first path: a fresh Diagnostic → Practice → Mastery Check sequence. Prospective sessions are automatically classified against the exact release and pilot window.
 
 Observe and record:
 
@@ -36,6 +40,8 @@ Observe and record:
 Informal QA/usability testing may begin after Sprint 11 technical handoff, but that activity does **not** count as formal pilot or Sprint 12 calibration evidence unless the Sprint 11.5 authorization and cohort gates are satisfied.
 
 If a tester is a minor, any applicable participant/guardian authorization remains required for formal pilot evidence; Sprint 11.5 does not bypass that requirement.
+
+This one-adult cohort is suitable for workflow feasibility, telemetry validation, individual trajectories and hypothesis generation. It is not representative cohort evidence and cannot by itself justify a learning-parameter change. The parameter-change protocol still requires metric-specific sufficiency and learner-aware review.
 
 ## Exit criteria
 
