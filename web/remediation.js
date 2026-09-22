@@ -59,7 +59,7 @@ function syncHelpVisibility() {
   const preSubmit = !answerSubmitted;
   const draftAnswerPresent = preSubmit && hasDraftAnswer();
   const incorrectAnswered = answerSubmitted && feedback.classList.contains("bad");
-  const currentCode = itemCode.textContent.trim();
+  const currentCode = itemCode.dataset.itemCode?.trim() || itemCode.textContent.trim();
   const hasQuestion = Boolean(currentCode && currentCode !== "—");
 
   helpControls.classList.toggle(
@@ -131,7 +131,7 @@ answerArea.addEventListener("change", syncHelpVisibility);
 const observer = new MutationObserver(syncHelpVisibility);
 observer.observe(practicePanel, { attributes: true, attributeFilter: ["class"] });
 observer.observe(sessionMode, { childList: true, characterData: true, subtree: true });
-observer.observe(itemCode, { childList: true, characterData: true, subtree: true });
+observer.observe(itemCode, { attributes: true, attributeFilter: ["data-item-code"], childList: true, characterData: true, subtree: true });
 observer.observe(submitBtn, { attributes: true, attributeFilter: ["disabled"] });
 observer.observe(feedback, { attributes: true, attributeFilter: ["class"] });
 
