@@ -31,15 +31,44 @@ function routeForActive(active) {
 }
 
 async function status() {
-  const { data, error } = await supabase.functions.invoke("get-mastery-check-status", { body: {} });
+  const [{ data, error }, { data: lifecycle, error: lifecycleError }] = await Promise.all([
+    supabase.functions.invoke("get-mastery-check-status", { body: {} }),
+    supabase.functions.invoke("get-chapter-mastery-lifecycle", { body: {} }),
+  ]);
   if (error) throw error;
-  return data;
+  if (lifecycleError) console.warn("mastery lifecycle unavailable", lifecycleError);
+  return { ...data, ...(lifecycle ?? {}) };
 }
 
 function renderRequired(skills = []) {
   $("requiredSkills").innerHTML = skills.length
     ? `<div class="assessment-skill-results" style="margin-top:1rem">${skills.map((s) => `<article class="assessment-skill-result"><div class="skill-code">${escapeHtml(s.code)}</div><div class="skill-title">${escapeHtml(s.nameHy)}</div></article>`).join("")}</div>`
     : "";
+}
+
+function lifecycleState(statusPayload) {
+  return statusPayload?.lifecycleState ?? statusPayload?.masteryState?.lifecycleState ?? statusPayload?.masteryState?.lifecycle_state ?? null;
+}
+
+function attemptNumber(value) {
+  return Number(value?.attemptNumber ?? value?.attempt_number ?? value?.masteryAttemptNumber ?? value?.mastery_attempt_number ?? 0);
+}
+
+function isFinalFailure(value) {
+  return lifecycleState(value) === "mastery_failed_final"
+    || value?.finalFailure === true
+    || (!value?.passed && attemptNumber(value) === 3);
+}
+
+function setResultActions({ primaryHref, primaryText, showReview = false, secondaryHref = "./physics-7.html", secondaryText = "Դիտել արդյունքները" }) {
+  const primary = $("resultPrimaryAction");
+  primary.href = primaryHref;
+  primary.textContent = primaryText;
+  const review = $("resultReviewAction");
+  review.classList.toggle("hidden", !showReview);
+  const secondary = $("resultSecondaryAction");
+  secondary.href = secondaryHref;
+  secondary.textContent = secondaryText;
 }
 
 async function prepare() {
@@ -53,8 +82,12 @@ async function prepare() {
     const s = await status();
     const active = s.activeSession;
 
-    if (s.unitComplete && s.latestCheck) {
-      return renderStoredResult(s.latestCheck, true);
+    if ((s.unitComplete || lifecycleState(s) === "mastery_passed") && s.latestCheck) {
+      return renderStoredResult(s.latestCheck, true, s);
+    }
+
+    if (lifecycleState(s) === "mastery_failed_final" || s.finalFailure) {
+      return renderStoredResult(s.latestCheck ?? {}, false, s);
     }
 
     if (active?.mode === "mastery_check") {
@@ -75,8 +108,8 @@ async function prepare() {
 
     if (s.retryBlocked) {
       setStateBadge("Վերականգնում է պետք", "warning");
-      $("stateTitle").textContent = "Կրկնակի փորձը դեռ փակ է";
-      $("stateText").textContent = s.messageHy;
+      $("stateTitle").textContent = "Յուրացման ստուգումը դեռ հաստատված չէ";
+      $("stateText").textContent = s.messageHy ?? "Հաջորդ փորձից առաջ պետք է ավարտեք Գլխի կրկնությունը։";
       renderRequired(s.requiredSkills);
       $("blockingLink").href = "./practice.html?mode=chapter_review";
       $("blockingLink").textContent = "Անցնել Գլխի կրկնություն";
@@ -99,8 +132,9 @@ async function prepare() {
     }
 
     setStateBadge("Պատրաստ է", "info");
-    $("stateTitle").textContent = "Պատրաստ եք յուրացման ստուգմանը";
-    $("stateText").textContent = "20 հարց։ Արդյունքը կբացահայտվի միայն ավարտից հետո։ Անցողիկ կանոնը փորձնական է՝ առնվազն 80% ընդհանուր և յուրաքանչյուր հմտությունից առնվազն 1 ճիշտ պատասխան 2-ից։";
+    const nextAttempt = Number(s.nextAttemptNumber ?? s.attemptNumber ?? 1);
+    $("stateTitle").textContent = nextAttempt > 1 ? "Կրկին անցնել յուրացման ստուգումը" : "Պատրաստ եք յուրացման ստուգմանը";
+    $("stateText").textContent = `${nextAttempt > 1 ? `Փորձ ${nextAttempt} / 3։ ` : ""}20 հարց։ Արդյունքը կբացահայտվի միայն ավարտից հետո։ Անցողիկ կանոնը փորձնական է՝ առնվազն 80% ընդհանուր և յուրաքանչյուր հմտությունից առնվազն 1 ճիշտ պատասխան 2-ից։`;
     $("startBtn").classList.remove("hidden");
   } catch (err) {
     setStateBadge("Սխալ", "danger");
@@ -156,7 +190,7 @@ async function loadItem() {
   }
   if (data?.complete) {
     const s = await status();
-    if (s.latestCheck) return renderStoredResult(s.latestCheck, s.unitComplete);
+    if (s.latestCheck) return renderStoredResult(s.latestCheck, s.unitComplete, s);
     return;
   }
   current = data;
@@ -255,7 +289,10 @@ async function submit(event) {
   const progress = Math.min(100, (position / total) * 100);
   $("progressBar").style.width = `${progress}%`;
   $("progressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(progress)));
-  if (data.finalResult) return renderFinalResult(data.finalResult);
+  if (data.finalResult) {
+    const currentStatus = await status();
+    return renderFinalResult({ ...data.finalResult, ...currentStatus });
+  }
 
   $("feedback").className = "feedback neutral";
   $("feedback").innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Արդյունքը չի ցուցադրվում մինչև յուրացման ստուգման ավարտը։</div>";
@@ -267,35 +304,46 @@ function renderFinalResult(result) {
   $("questionPanel").classList.add("hidden");
   $("stateCard").classList.add("hidden");
   $("resultPanel").classList.remove("hidden");
-  $("resultTitle").textContent = result.passed ? "Գլուխ I-ը հաստատված է" : "Դեռ պետք է լրացուցիչ վարժանք";
+  const finalFailure = isFinalFailure(result);
+  $("resultTitle").textContent = result.passed
+    ? "Գլխի յուրացումը հաստատված է"
+    : finalFailure ? "Յուրացման ստուգման փորձերն ավարտված են" : "Յուրացման ստուգումը դեռ հաստատված չէ";
   $("resultScore").textContent = `${result.score.correct}/${result.score.answered} · ${result.score.percent}%`;
   $("resultRule").textContent = "Փորձնական անցողիկ կանոն՝ ≥80% ընդհանուր արդյունք և յուրաքանչյուր հմտությունից առնվազն 1/2։";
   renderSkillResults(result.skillResults ?? []);
 
-  const primary = $("resultPrimaryAction");
   if (result.passed) {
-    primary.href = "./assessment.html";
-    primary.textContent = "Վերադառնալ գնահատմանը";
+    $("resultRule").textContent += ` Յուրացումը հաստատվել է ${attemptNumber(result) || 1}-րդ փորձով։ Գլխի կրկնությունն այժմ լրացուցիչ է և չի փոխի հաստատված արդյունքը։`;
+    setResultActions({ primaryHref: "./physics-7.html", primaryText: "Շարունակել", showReview: true });
+  } else if (finalFailure) {
+    $("resultRule").textContent = "Դուք ավարտել եք այս գլխի յուրացման ստուգման բոլոր երեք փորձերը։ Կարող եք շարունակել կրկնել գլուխը և ամրապնդել ուշադրություն պահանջող հմտությունները։";
+    setResultActions({ primaryHref: "./practice.html?mode=chapter_review", primaryText: "Կրկնել գլուխը" });
   } else {
     $("resultRule").textContent += ` Կրկին փորձելուց առաջ պետք է ավարտել Գլխի կրկնությունը։ Ավելի շատ ուշադրություն կդարձվի՝ ${result.failedSkills?.map((s) => s.code).join(", ") || "ուշադրություն պահանջող հմտություններին"}։`;
-    primary.href = "./practice.html?mode=chapter_review";
-    primary.textContent = "Անցնել Գլխի կրկնություն";
+    setResultActions({ primaryHref: "./practice.html?mode=chapter_review", primaryText: "Անցնել Գլխի կրկնություն" });
   }
 }
 
-function renderStoredResult(check, passed) {
+function renderStoredResult(check, passed, statusPayload = {}) {
   $("stateCard").classList.add("hidden");
   $("questionPanel").classList.add("hidden");
   $("resultPanel").classList.remove("hidden");
-  $("resultTitle").textContent = passed ? "Գլուխ I-ը հաստատված է" : "Վերջին յուրացման ստուգումը չի անցել";
+  const finalFailure = !passed && isFinalFailure({ ...check, ...statusPayload });
+  $("resultTitle").textContent = passed
+    ? "Գլխի յուրացումը հաստատված է"
+    : finalFailure ? "Յուրացման ստուգման փորձերն ավարտված են" : "Յուրացման ստուգումը դեռ հաստատված չէ";
   $("resultScore").textContent = `${check.correct}/${check.answered} · ${check.percent ?? 0}%`;
   $("resultRule").textContent = passed
-    ? "Այս բաժնի անկախ յուրացման չափանիշը կատարված է։ Անցողիկ կանոնը դեռ փորձնական է։"
-    : "Կրկնակի փորձը բացվում է միայն պահանջվող վերականգնողական վարժանքներից հետո։";
+    ? `Այս գլխի յուրացումը հաստատված է${attemptNumber(check) ? ` ${attemptNumber(check)}-րդ փորձով` : ""}։ Գլխի կրկնությունը լրացուցիչ է և չի փոխի հաստատված արդյունքը։`
+    : finalFailure
+      ? "Դուք ավարտել եք այս գլխի յուրացման ստուգման բոլոր երեք փորձերը։ Կարող եք շարունակել կրկնել գլուխը և ամրապնդել ուշադրություն պահանջող հմտությունները։"
+      : "Հաջորդ փորձը բացվում է միայն պահանջվող Գլխի կրկնությունն ավարտելուց հետո։";
   renderSkillResults(check.skillResults ?? []);
-  const primary = $("resultPrimaryAction");
-  primary.href = passed ? "./assessment.html" : "./practice.html?mode=chapter_review";
-  primary.textContent = passed ? "Վերադառնալ գնահատմանը" : "Անցնել Գլխի կրկնություն";
+  if (passed) setResultActions({ primaryHref: "./physics-7.html", primaryText: "Շարունակել", showReview: true });
+  else setResultActions({
+    primaryHref: "./practice.html?mode=chapter_review",
+    primaryText: finalFailure ? "Կրկնել գլուխը" : "Անցնել Գլխի կրկնություն",
+  });
 }
 
 function renderSkillResults(results) {
