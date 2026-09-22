@@ -53,7 +53,7 @@ test("coverage reports cycle, lifetime, repeat and pool-exhaustion facts without
   }
   assert.match(submitAnswer, /chapter_review_coverage_v/);
   assert.match(practiceUi, /Սա կրկնության առաջընթացն է, ոչ յուրացման գնահատական/);
-  assert.match(teacherUi, /Ճշգրիտ կրկնություններ/);
+  assert.match(teacherUi, /Նույն հարցի կրկնություններ/);
 });
 
 test("historical ambiguity remains explicit and reporting views are service-only", () => {
