@@ -22,6 +22,7 @@ async function callEndpoint(name, role, active = true, authenticated = true) {
   const source = readFileSync(`supabase/functions/${name}/index.ts`, 'utf8').replace(/^import .*;\n/gm, '');
   vm.runInNewContext(stripTypeScriptTypes(source), {
     createClient: () => client, hasActiveLiveSession: async () => active,
+    resolveActiveCurriculumRelease: async () => 'release-test',
     Deno: { env: { get: () => 'test' }, serve: (fn) => { handler = fn; } },
     Response, console, crypto,
   });
