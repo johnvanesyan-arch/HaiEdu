@@ -35,7 +35,7 @@ const statusLabels = {
   insufficient_evidence: "Տվյալները քիչ են",
   needs_support: "Աջակցություն է պետք",
   developing: "Զարգացող",
-  secure: "Կայուն mastery"
+  secure: "Կայուն յուրացում"
 };
 
 const bandLabels = {
@@ -49,7 +49,7 @@ const recommendationLabels = {
   review_prerequisite: "Համակարգը խորհուրդ է տալիս վերադառնալ անհրաժեշտ նախապայման հմտությանը։",
   continue_current_skill: "Շարունակեք աշխատել ընթացիկ հմտության վրա։",
   advance_skill: "Ընթացիկ հմտությունը կայուն է. կարելի է անցնել հաջորդ հմտությանը։",
-  collect_more_evidence: "Պետք են ևս մի քանի պատասխաններ, որպեսզի համակարգը վստահ գնահատի mastery-ն։"
+  collect_more_evidence: "Պետք են ևս մի քանի պատասխաններ, որպեսզի համակարգը վստահ գնահատի յուրացումը։"
 };
 
 function setAuthMessage(message, isError = false) {
