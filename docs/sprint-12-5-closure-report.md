@@ -49,3 +49,23 @@ Corrected by migrations `0076_sprint_12_5_chapter_review_exposure_integration.sq
 Runtime provenance: `runtime-2026-09-22-r11`. No learning parameter, Review selection rule, mastery threshold or three-attempt lifecycle rule changed.
 
 The authenticated browser matrix remains the closure gate; this defect must be rechecked in the learner browser before Sprint 12.5 is declared complete.
+
+
+## Authenticated desktop browser QA — 2026-09-22
+
+The production learner and teacher flows were exercised at a 1363 × 936 browser viewport.
+
+Passed:
+- optional post-pass Chapter Review opens and serves a real question;
+- atomic Hinting v2 records and renders successive help stages;
+- mastery remains confirmed while an optional Review is active;
+- learner and teacher pages have no page-level horizontal overflow;
+- teacher summary, history, coverage, assistance and skill-evidence views render the active Review correctly;
+- the deployed learner Review now hides internal skill/item identifiers and uses natural Armenian help copy;
+- `get-remediation-help` v9 and the production frontend correction are live; focused Sprint 12.5 tests pass 29/29 and Vercel reports success.
+
+Two gates remain open and are not waived:
+- authenticated mobile-width learner and teacher rendering, because the available browser cannot emulate a mobile viewport;
+- rendered required-Review/retry-unlock and final-failure states, because the available learner is already in the passed/optional-Review branch and no disposable seeded lifecycle account is available.
+
+Browser-extension metadata errors were excluded as harness noise. The application emits repeated Supabase `Multiple GoTrueClient instances` warnings; these did not break the tested workflows but remain a front-end cleanup item. Sprint 13 remains on hold.
