@@ -345,9 +345,11 @@ async function loadSessionItem() {
 
 function renderQuestion(data) {
   const { skill, item, session } = data;
-  $("skillCode").textContent = skill?.code ?? "—";
+  $("skillCode").textContent = isChapterReview ? "" : skill?.code ?? "—";
+  $("skillCode").classList.toggle("hidden", isChapterReview);
   $("skillName").textContent = skill?.nameHy ?? "—";
-  $("itemCode").textContent = item.code;
+  $("itemCode").textContent = isChapterReview ? "" : item.code;
+  $("itemCode").classList.toggle("hidden", isChapterReview);
   $("difficulty").textContent = `Դժվարություն ${item.difficulty}/5`;
   $("prompt").textContent = item.promptHy;
   $("sessionProgress").textContent = `${session.position} / ${session.total}`;
