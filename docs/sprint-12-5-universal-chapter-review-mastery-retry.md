@@ -1,6 +1,6 @@
 # Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status:** 🟡 Active — 12.5A–O deployed; 12.5P–Y next
+**Status:** 🟡 Closure verification — 12.5A–W deployed; 12.5X–Y awaits authenticated browser-matrix QA
 
 **Placement:** After Sprint 12 calibration work and before Sprint 13 Chapter I production release
 
@@ -1281,3 +1281,22 @@ Verification: 22/22 focused Sprint 12.5 tests pass. All three changed Edge endpo
 Runtime build: `runtime-2026-09-22-r9`; `get-student-dashboard` v18, `get-teacher-dashboard` v4 and `get-teacher-student` v4. The active binding records source commit `a6f5586f47e1a65879409705017d25f45ae9cbf5`; learning parameters remain unchanged.
 
 Next: 12.5P–Y completes transactional attempt integrity, protected assessment exposure, Hinting v2 Review integration, normalized schema/RLS and historical migration invariants, then full closure QA and documentation synchronization.
+
+## Implementation update — 2026-09-22 — 12.5P–W and 12.5X partial
+
+Deployed the integrity and reporting closure layer:
+
+- database triggers now validate that Attempts 2 and 3 reference the correct completed, qualifying Review and satisfied requirement, while Attempt 1 cannot reference a Review;
+- Mastery-attempt identity and provenance are immutable after creation, and the existing advisory lock plus uniqueness constraints continue to prevent duplicate attempts and Attempt 4;
+- removed the obsolete API gate that incorrectly required ordinary Practice after a failed Mastery Check—the governed Chapter Review requirement is now the only retry gate;
+- added explicit per-item Practice/Review/Mastery eligibility reporting; the live audit confirms zero Review/Mastery item overlap, while protected Mastery selection remains unseen/least-exposed first;
+- confirmed Chapter Review uses atomic Hinting v2 provenance and Mastery Check remains hint-free;
+- added current-cycle percentage, lifetime unique items, total exposures, exact repeats and pool-exhaustion events without presenting coverage as mastery;
+- added a historical-provenance audit view that preserves `legacy_attempt_history` rather than fabricating attempt numbers;
+- kept all new views service-only and security-invoker.
+
+Verification: focused Sprint 12.5 tests pass, full GitHub CI passes, Vercel deployment succeeds, production asset hashes match, unauthenticated calls to all changed endpoints return `401`, and rollback-only mutation probes confirm attempt identity cannot be rewritten. Live invariants show zero Attempt 4 rows, zero invalid history rows, zero Review/Mastery overlap, one coverage row, zero exact repeats and zero pool-exhaustion events. Supabase advisors report no new actionable finding from this slice.
+
+Runtime build: `runtime-2026-09-22-r10`; `start-learning-session` v18, `submit-answer` v13, `get-teacher-dashboard` v5 and `get-teacher-student` v5. The active binding records source commit `29cb3352680b0ff8e36bc7f63fba78bca2fb758a`; learning parameters remain unchanged.
+
+Closure boundary: an executable browser was unavailable in this Work environment, and no tester credentials were supplied. Authenticated learner and teacher desktop/mobile browser walkthroughs therefore remain unverified. Sprint 12.5 is not declared complete, and Sprint 13 remains on hold until that matrix passes.

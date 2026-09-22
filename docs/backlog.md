@@ -230,7 +230,7 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 
 ## Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
-**Status: 🟡 Active implementation. 12.5A–O deployed; 12.5P–Y next. Sprint 13 is on hold.**
+**Status: 🟡 Closure verification. 12.5A–W deployed; 12.5X–Y awaits authenticated browser-matrix QA. Sprint 13 is on hold.**
 
 - [x] 12.5A: create immutable platform-level Chapter Mastery & Review policy versions.
 - [x] 12.5B: implement the server-authoritative chapter mastery state machine.
@@ -240,9 +240,9 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 - [x] 12.5J–K: implement natural Armenian learner states and Review experience.
 - [x] 12.5L–M: add teacher Review analytics and expose Review-specific attention inputs without inventing ungoverned thresholds.
 - [x] 12.5N–O: isolate Review evidence and integrate lifecycle-aware recommendations.
-- [ ] 12.5P–Q: enforce transactional attempt integrity and protected assessment exposure.
-- [ ] 12.5R–S: integrate Hinting v2 and Review coverage analytics.
-- [ ] 12.5T–W: complete normalized schema, RLS, historical migration and reporting invariants.
-- [ ] 12.5X–Y: pass API/UI/race/security/browser QA and synchronize documentation.
+- [x] 12.5P–Q: enforce transactional attempt integrity and protected assessment exposure.
+- [x] 12.5R–S: integrate Hinting v2 and Review coverage analytics.
+- [x] 12.5T–W: complete normalized schema, RLS, historical migration and reporting invariants.
+- [ ] 12.5X–Y: API/race/security/CI/deployment checks pass and documentation is synchronized; authenticated desktop/mobile learner and teacher browser QA remains required.
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
