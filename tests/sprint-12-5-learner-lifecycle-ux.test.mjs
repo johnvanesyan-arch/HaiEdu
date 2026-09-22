@@ -46,9 +46,9 @@ test("learner copy does not surface internal lifecycle completion codes", () => 
 });
 
 test("Chapter Review hides internal item identifiers and uses natural Armenian hint copy", () => {
-  assert.match(practice, /\\$\\("skillCode"\\)\\.classList\\.toggle\\("hidden", isChapterReview\\)/);
-  assert.match(practice, /\\$\\("itemCode"\\)\\.dataset\\.itemCode = item\\.code/);
-  assert.match(practice, /\\$\\("itemCode"\\)\\.classList\\.toggle\\("hidden", isChapterReview\\)/);
+  assert.match(practice, /\$\("skillCode"\)\.classList\.toggle\("hidden", isChapterReview\)/);
+  assert.match(practice, /\$\("itemCode"\)\.dataset\.itemCode = item\.code/);
+  assert.match(practice, /\$\("itemCode"\)\.classList\.toggle\("hidden", isChapterReview\)/);
   assert.doesNotMatch(remediationHelp, /mastery-ն/);
   assert.match(remediationHelp, /յուրացումը հետագայում պետք է հաստատվի նաև ինքնուրույն պատասխաններով/);
 });
