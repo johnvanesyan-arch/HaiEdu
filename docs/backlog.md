@@ -243,6 +243,6 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 - [x] 12.5P–Q: enforce transactional attempt integrity and protected assessment exposure.
 - [x] 12.5R–S: integrate Hinting v2 and Review coverage analytics.
 - [x] 12.5T–W: complete normalized schema, RLS, historical migration and reporting invariants.
-- [ ] 12.5X–Y: API/race/security/CI/deployment checks pass and documentation is synchronized; authenticated desktop/mobile learner and teacher browser QA remains required.
+- [ ] 12.5X–Y: API/race/security/CI/deployment checks pass. Authenticated desktop optional-Review and teacher reporting QA passes; mobile rendering plus required-Review/retry and final-failure browser branches remain required.
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
