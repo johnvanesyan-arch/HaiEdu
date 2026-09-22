@@ -9,6 +9,7 @@ const mastery = read("web/mastery.js");
 const masteryHtml = read("web/mastery.html");
 const practice = read("web/practice.js");
 const physics = read("web/physics-7.js");
+const remediationHelp = read("supabase/functions/get-remediation-help/index.ts");
 
 test("learner lifecycle API is authenticated and student-scoped", () => {
   assert.match(lifecycle, /admin\.auth\.getUser\(token\)/);
@@ -42,6 +43,13 @@ test("learner copy does not surface internal lifecycle completion codes", () => 
     assert.doesNotMatch(practice, new RegExp(code));
     assert.doesNotMatch(physics, new RegExp(code));
   }
+});
+
+test("Chapter Review hides internal item identifiers and uses natural Armenian hint copy", () => {
+  assert.match(practice, /\\$\\("skillCode"\\)\\.classList\\.toggle\\("hidden", isChapterReview\\)/);
+  assert.match(practice, /\\$\\("itemCode"\\)\\.classList\\.toggle\\("hidden", isChapterReview\\)/);
+  assert.doesNotMatch(remediationHelp, /mastery-ն/);
+  assert.match(remediationHelp, /յուրացումը հետագայում պետք է հաստատվի նաև ինքնուրույն պատասխաններով/);
 });
 
 test("no casual attempt reset or fourth-attempt learner control exists", () => {
