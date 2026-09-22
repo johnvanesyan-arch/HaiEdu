@@ -11,7 +11,7 @@ test("Chapter Review teacher analytics use natural Armenian labels", () => {
     "Տեսած տարբեր հարցեր",
     "Նույն հարցի կրկնություններ",
     "Դեպքեր, երբ նոր հարց չէր մնացել",
-    "Ինքնուրույն ճիշտ պատասխաններ",
+    "Ինքնուրույն ճիշտ պատասխանների տոկոս",
     "Օգնություն օգտագործած պատասխաններ",
   ]) {
     assert.match(teacherUi, new RegExp(label));
