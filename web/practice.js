@@ -542,7 +542,10 @@ function renderCompletion(data) {
     $("completionText").textContent = required
       ? "Դուք ավարտեցիք այս կրկնությունը։ Յուրացման ստուգման հաջորդ փորձն այժմ հասանելի է։"
       : "Արդյունքը պահպանվել է որպես Գլխի կրկնության առանձին ապացույց և չի փոխում արդեն հաստատված յուրացումը։";
-    $("completionReason").textContent = "Շարունակեք հաջորդ քայլով, երբ պատրաստ լինեք։";
+    const coverage = data.reviewCoverage;
+    $("completionReason").textContent = coverage?.current_cycle_coverage_percent == null
+      ? "Շարունակեք հաջորդ քայլով, երբ պատրաստ լինեք։"
+      : `Գլխի կրկնության ընթացիկ ծածկույթ՝ ${coverage.current_cycle_coverage_percent}% (${coverage.current_cycle_unique_items_seen} / ${coverage.current_cycle_eligible_pool_size})։ Սա կրկնության առաջընթացն է, ոչ յուրացման գնահատական։`;
     const primary = $("completionPrimaryAction");
     primary.href = required ? "./mastery.html" : "./physics-7.html";
     primary.textContent = required ? "Կրկին անցնել յուրացման ստուգումը" : "Շարունակել";

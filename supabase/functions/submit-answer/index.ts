@@ -367,6 +367,18 @@ Deno.serve(async (req) => {
         return json({ error: "chapter_review_finalize_failed" }, 500);
       }
       response.chapterReview = reviewLifecycle;
+      const { data: reviewCoverage, error: reviewCoverageError } = await admin
+        .from("chapter_review_coverage_v")
+        .select("current_cycle_number,current_cycle_unique_items_seen,current_cycle_eligible_pool_size,current_cycle_coverage_percent,lifetime_unique_items_seen,exact_repeat_count,pool_exhaustion_event_count")
+        .eq("student_id", studentId)
+        .eq("curriculum_release_id", curriculumReleaseId)
+        .eq("unit_code", "PHY7-U01")
+        .maybeSingle();
+      if (reviewCoverageError) {
+        console.error("chapter review coverage unavailable", reviewCoverageError);
+        return json({ error: "chapter_review_coverage_unavailable" }, 500);
+      }
+      response.reviewCoverage = reviewCoverage;
     }
   }
 

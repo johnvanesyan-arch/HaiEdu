@@ -65,15 +65,17 @@ Deno.serve(async (req) => {
       return json({ error: "curriculum_release_unavailable" }, 503);
     }
 
-    const [{ data: masteryRows }, { data: attempts }, { data: sessions }, reviewSummaryResult, reviewSkillsResult] = await Promise.all([
+    const [{ data: masteryRows }, { data: attempts }, { data: sessions }, reviewSummaryResult, reviewSkillsResult, reviewCoverageResult] = await Promise.all([
       admin.from("student_skill_mastery").select("skill_id, mastery_score, evidence_count, status, last_attempt_at").eq("student_id", body.studentId).in("skill_id", skillIds),
       admin.from("attempts").select("id, skill_id, item_id, correct, score, hint_used, response_time_ms, error_code, created_at, items(code, prompt_hy)").eq("student_id", body.studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(50),
       admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, assessment_result, score_percent, started_at, completed_at").eq("student_id", body.studentId).eq("unit_code", UNIT_CODE).order("started_at", { ascending: false }).limit(30),
       admin.from("chapter_review_summary_v").select("*").eq("student_id", body.studentId).eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).maybeSingle(),
       admin.from("chapter_review_skill_attention_inputs_v").select("*").eq("student_id", body.studentId).eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).order("skill_code", { ascending: true }),
+      admin.from("chapter_review_coverage_v").select("*").eq("student_id", body.studentId).eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).maybeSingle(),
     ]);
-    if (reviewSummaryResult.error || reviewSkillsResult.error) return json({ error: "chapter_review_analytics_unavailable" }, 503);
+    if (reviewSummaryResult.error || reviewSkillsResult.error || reviewCoverageResult.error) return json({ error: "chapter_review_analytics_unavailable" }, 503);
     const review: any = reviewSummaryResult.data ?? null;
+    const coverage: any = reviewCoverageResult.data ?? null;
     const { data: reviewHistory, error: reviewHistoryError } = review
       ? await admin.from("chapter_review_sessions")
         .select("id, review_context, qualifying, status, review_cycle_number, review_session_number, target_question_count, completed_at, created_at")
@@ -144,6 +146,11 @@ Deno.serve(async (req) => {
         currentCycle: review.current_review_cycle == null ? null : Number(review.current_review_cycle),
         currentCycleUniqueSeen: review.current_cycle_unique_seen == null ? null : Number(review.current_cycle_unique_seen),
         currentCycleEligiblePoolSize: review.current_cycle_eligible_pool_size == null ? null : Number(review.current_cycle_eligible_pool_size),
+        currentCycleCoveragePercent: coverage?.current_cycle_coverage_percent == null ? null : Number(coverage.current_cycle_coverage_percent),
+        lifetimeUniqueItemsSeen: Number(coverage?.lifetime_unique_items_seen ?? 0),
+        totalItemExposures: Number(coverage?.total_item_exposures ?? 0),
+        exactRepeatCount: Number(coverage?.exact_repeat_count ?? 0),
+        poolExhaustionEventCount: Number(coverage?.pool_exhaustion_event_count ?? 0),
         independentAccuracyPercent: review.review_independent_accuracy_percent == null ? null : Number(review.review_independent_accuracy_percent),
         hintAssistedResponses: Number(review.hint_assisted_responses),
         attentionPolicyStatus: "thresholds_not_governed",

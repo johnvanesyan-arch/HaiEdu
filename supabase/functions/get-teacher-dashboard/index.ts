@@ -69,7 +69,7 @@ Deno.serve(async (req) => {
     const memberRows = memberships ?? [];
     const studentIds = [...new Set(memberRows.map((m) => m.student_id))];
 
-    const [profilesResult, masteryResult, attemptsResult, sessionsResult, reviewSummaryResult, reviewSkillsResult] = await Promise.all([
+    const [profilesResult, masteryResult, attemptsResult, sessionsResult, reviewSummaryResult, reviewSkillsResult, reviewCoverageResult] = await Promise.all([
       studentIds.length
         ? admin.from("profiles").select("id, display_name, created_at").in("id", studentIds)
         : Promise.resolve({ data: [] as any[] }),
@@ -88,8 +88,11 @@ Deno.serve(async (req) => {
       studentIds.length
         ? admin.from("chapter_review_skill_attention_inputs_v").select("*").eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).in("student_id", studentIds)
         : Promise.resolve({ data: [] as any[] }),
+      studentIds.length
+        ? admin.from("chapter_review_coverage_v").select("*").eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).in("student_id", studentIds)
+        : Promise.resolve({ data: [] as any[] }),
     ]);
-    if ((reviewSummaryResult as any).error || (reviewSkillsResult as any).error) {
+    if ((reviewSummaryResult as any).error || (reviewSkillsResult as any).error || (reviewCoverageResult as any).error) {
       return json({ error: "chapter_review_analytics_unavailable" }, 503);
     }
 
@@ -98,6 +101,7 @@ Deno.serve(async (req) => {
     const attemptRows = attemptsResult.data ?? [];
     const sessionRows = sessionsResult.data ?? [];
     const reviewSummaryByStudent = new Map((reviewSummaryResult.data ?? []).map((row: any) => [row.student_id, row]));
+    const reviewCoverageByStudent = new Map((reviewCoverageResult.data ?? []).map((row: any) => [row.student_id, row]));
     const reviewSkillsByStudent = new Map<string, any[]>();
     for (const row of reviewSkillsResult.data ?? []) {
       const rows = reviewSkillsByStudent.get(row.student_id) ?? [];
@@ -117,6 +121,7 @@ Deno.serve(async (req) => {
       const passedMastery = studentSessions.find((s: any) => s.mode === "mastery_check" && s.status === "completed" && s.assessment_result === "passed") ?? null;
       const latestDiagnostic = studentSessions.find((s: any) => s.mode === "diagnostic" && s.status === "completed") ?? null;
       const review: any = reviewSummaryByStudent.get(studentId) ?? null;
+      const coverage: any = reviewCoverageByStudent.get(studentId) ?? null;
       const reviewSkills = (reviewSkillsByStudent.get(studentId) ?? []).sort((a, b) => a.skill_code.localeCompare(b.skill_code));
 
       const matrix = skillRows.map((skill) => {
@@ -190,6 +195,11 @@ Deno.serve(async (req) => {
           currentCycle: review.current_review_cycle == null ? null : Number(review.current_review_cycle),
           currentCycleUniqueSeen: review.current_cycle_unique_seen == null ? null : Number(review.current_cycle_unique_seen),
           currentCycleEligiblePoolSize: review.current_cycle_eligible_pool_size == null ? null : Number(review.current_cycle_eligible_pool_size),
+          currentCycleCoveragePercent: coverage?.current_cycle_coverage_percent == null ? null : Number(coverage.current_cycle_coverage_percent),
+          lifetimeUniqueItemsSeen: Number(coverage?.lifetime_unique_items_seen ?? 0),
+          totalItemExposures: Number(coverage?.total_item_exposures ?? 0),
+          exactRepeatCount: Number(coverage?.exact_repeat_count ?? 0),
+          poolExhaustionEventCount: Number(coverage?.pool_exhaustion_event_count ?? 0),
           independentAccuracyPercent: review.review_independent_accuracy_percent == null ? null : Number(review.review_independent_accuracy_percent),
           hintAssistedResponses: Number(review.hint_assisted_responses),
           attentionPolicyStatus: "thresholds_not_governed",

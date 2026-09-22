@@ -531,30 +531,6 @@ Deno.serve(async (req) => {
       });
     }
 
-    if (latestCheck?.assessment_result === "failed") {
-      const failedSkillIds = Array.isArray(latestCheck.metadata?.failedSkillIds) ? latestCheck.metadata.failedSkillIds as string[] : [];
-      if (failedSkillIds.length) {
-        const { data: remediationSessions } = await admin
-          .from("learning_sessions")
-          .select("target_skill_id, completed_at")
-          .eq("student_id", studentId)
-          .eq("unit_code", UNIT_CODE)
-          .eq("mode", "practice")
-          .eq("status", "completed")
-          .gt("completed_at", latestCheck.completed_at);
-        const remediated = new Set((remediationSessions ?? []).map((s) => s.target_skill_id).filter(Boolean));
-        const missing = failedSkillIds.filter((id) => !remediated.has(id));
-        if (missing.length) {
-          return json({
-            masteryEligible: false,
-            reason: "remediation_required",
-            requiredSkills: skills.filter((s) => missing.includes(s.id)).map((s) => ({ id: s.id, code: s.code, nameHy: s.name_hy })),
-            messageHy: "Կրկնակի mastery check-ից առաջ ավարտեք առաջարկվող remediation վարժանքները։",
-          });
-        }
-      }
-    }
-
     let eligibleIds: string[];
     try {
       eligibleIds = curriculumContext.itemIds;

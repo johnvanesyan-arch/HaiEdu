@@ -279,6 +279,10 @@ async function openStudent(studentId) {
       <div class="mini-card"><span>Պարտադիր կրկնություններ</span><strong>${review?.requiredReviewsCompleted ?? 0}</strong></div>
       <div class="mini-card"><span>Լրացուցիչ կրկնություններ</span><strong>${review?.optionalReviewsCompleted ?? 0}</strong></div>
       <div class="mini-card"><span>Ընթացիկ ծածկույթ</span><strong>${escapeHtml(coverage)}</strong></div>
+      <div class="mini-card"><span>Ծածկույթի տոկոս</span><strong>${review?.currentCycleCoveragePercent == null ? "—" : `${review.currentCycleCoveragePercent}%`}</strong></div>
+      <div class="mini-card"><span>Եզակի հարցեր՝ ամբողջ ընթացքում</span><strong>${review?.lifetimeUniqueItemsSeen ?? 0}</strong></div>
+      <div class="mini-card"><span>Ճշգրիտ կրկնություններ</span><strong>${review?.exactRepeatCount ?? 0}</strong></div>
+      <div class="mini-card"><span>Բանկի սպառման դեպքեր</span><strong>${review?.poolExhaustionEventCount ?? 0}</strong></div>
       <div class="mini-card"><span>Անկախ ճշգրտություն</span><strong>${review?.independentAccuracyPercent == null ? "—" : `${review.independentAccuracyPercent}%`}</strong></div>
       <div class="mini-card"><span>Օգնությամբ պատասխաններ</span><strong>${review?.hintAssistedResponses ?? 0}</strong></div>
     </section>
