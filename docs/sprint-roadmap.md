@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.28  
+**Roadmap version:** 2.29  
 **Updated:** 2026-09-22  
-**Current programme status:** Sprints 11, 11.5 and 12 are ✅ complete. Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle is in closure verification: 12.5A–W are deployed, the authenticated browser matrix in 12.5X–Y remains open, and a Chapter Review exposure-integration blocker found during learner QA was corrected in runtime r11. Sprint 13 remains explicitly on hold until Sprint 12.5 closes.
+**Current programme status:** Sprints 11, 11.5 and 12 are ✅ complete. Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle is in closure verification: 12.5A–W are deployed and authenticated desktop learner/teacher QA passes after learner-copy corrections. Mobile rendering plus required-Review/retry and final-failure browser branches remain open in 12.5X–Y. Sprint 13 remains explicitly on hold until Sprint 12.5 closes.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
