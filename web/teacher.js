@@ -216,7 +216,7 @@ function renderRoster(klass) {
       <div><button class="link-button roster-name" data-open-student="${student.id}">${escapeHtml(student.displayName)}</button><span class="subtle small">${student.latestActivityAt ? `Վերջին ակտիվություն՝ ${new Date(student.latestActivityAt).toLocaleString("hy-AM")}` : "Գործունեություն դեռ չկա"}</span></div>
       <div><span class="stat-label">Վերջին պատասխանների ընդհանուր ճշգրտություն</span><strong>${student.recentAccuracy === null ? "—" : `${student.recentAccuracy}%`}</strong></div>
       <div><span class="stat-label">Ուշադրության հմտություններ</span><strong>${escapeHtml(weak)}</strong></div>
-      <div><span class="stat-label">Գլխի կրկնություն</span><strong>${escapeHtml(reviewSummary)}</strong></div>
+      <div><span class="stat-label">Գլուխ I-ի կրկնություն</span><strong>${escapeHtml(reviewSummary)}</strong></div>
       <div class="intervention-cell"><span class="stat-label">Հաջորդ առաջարկություն</span><strong>${escapeHtml(student.intervention?.messageHy ?? "—")}</strong></div>
       <div class="roster-actions"><button class="secondary small-button" type="button" data-open-student="${student.id}">Դիտել</button><button class="ghost small-button roster-remove" type="button" data-remove-student="${student.id}" data-student-name="${escapeHtml(student.displayName)}">Հեռացնել</button></div>`;
     roster.appendChild(card);
@@ -274,7 +274,9 @@ async function openStudent(studentId) {
       <div class="mini-card"><span>Յուրացման ստուգում</span><strong>${data.latestMasteryCheck ? `${escapeHtml(masteryResult ?? "—")} · ${data.latestMasteryCheck.percent}%` : "—"}</strong></div>
     </section>
     <section class="teacher-intervention"><strong>Առաջարկվող միջամտություն</strong><p>${escapeHtml(data.recommendation?.messageHy ?? "—")}</p></section>
-    <h3>Գլխի յուրացում և կրկնություն</h3>
+    <p class="mode-kicker">Ֆիզիկա 7 · Գլուխ I</p>
+    <p class="subtle small">Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
+    <h3>Յուրացում և կրկնություն</h3>
     <section class="drawer-summary-grid">
       <div class="mini-card"><span>Յուրացման վիճակ</span><strong>${escapeHtml(masteryStatus)}</strong></div>
       <div class="mini-card"><span>Փորձեր</span><strong>${review ? `${review.attemptsUsed} / ${review.maximumAttempts}` : "—"}</strong></div>
