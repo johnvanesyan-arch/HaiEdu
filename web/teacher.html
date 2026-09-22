@@ -160,11 +160,37 @@
             </section>
 
             <section class="card matrix-card">
-              <div class="teacher-section-heading">
+              <div class="teacher-section-heading matrix-section-heading">
                 <div>
-                  <span class="mode-kicker">ՀՄՏՈՒԹՅՈՒՆՆԵՐ</span>
-                  <h3>Հմտությունների մատրիցա</h3>
-                  <p class="subtle">Յուրաքանչյուր սյունակ մեկ հմտություն է։ Սեղմեք աշակերտի անունը՝ մանրամասները բացելու համար։</p>
+                  <span class="mode-kicker">ՖԻԶԻԿԱ 7 · ԳԼՈՒԽ I</span>
+                  <h3>Հմտությունների վիճակ</h3>
+                  <p class="subtle">Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
+                  <p class="subtle small">Յուրաքանչյուր սյունակ այս գլխի մեկ հմտություն է։ Սեղմեք աշակերտի անունը՝ մանրամասները բացելու համար։</p>
+                </div>
+                <label class="matrix-filter-label">
+                  Ցուցադրել
+                  <select id="matrixStudentFilter">
+                    <option value="all">Բոլոր աշակերտները</option>
+                    <option value="needs_support">Ուշադրություն պահանջող</option>
+                    <option value="required_review">Պարտադիր կրկնություն պահանջող</option>
+                    <option value="mastery_confirmed">Յուրացումը հաստատված</option>
+                    <option value="no_activity">Գործունեություն չունեցող</option>
+                  </select>
+                </label>
+              </div>
+
+              <div class="matrix-summary-grid" aria-label="Գլուխ I-ի դասարանի ամփոփ տվյալներ">
+                <div class="matrix-summary-card"><span>Աշակերտներ</span><strong id="matrixStudentTotal">0</strong></div>
+                <div class="matrix-summary-card"><span>Յուրացումը հաստատված է</span><strong id="matrixMasteredTotal">0</strong></div>
+                <div class="matrix-summary-card"><span>Ուշադրություն է պետք</span><strong id="matrixNeedsSupportTotal">0</strong></div>
+                <div class="matrix-summary-card"><span>Պարտադիր կրկնություն</span><strong id="matrixRequiredReviewTotal">0</strong></div>
+                <div class="matrix-summary-card"><span>Գործունեություն չկա</span><strong id="matrixNoActivityTotal">0</strong></div>
+              </div>
+
+              <div class="matrix-insight-row">
+                <div>
+                  <span class="stat-label">ԴԱՍԱՐԱՆԻ ՈՒՇԱԴՐՈՒԹՅԱՆ ԿԵՆՏՐՈՆՆԵՐԸ</span>
+                  <div id="matrixAttentionSummary" class="matrix-attention-summary"></div>
                 </div>
                 <div class="teacher-legend" aria-label="Հմտության վիճակների բացատրություն">
                   <span><i class="legend-swatch secure"></i>Կայուն</span>
@@ -173,8 +199,12 @@
                   <span><i class="legend-swatch not-assessed"></i>Տվյալ չկա</span>
                 </div>
               </div>
-              <p class="subtle small matrix-help">Փոքր էկրանին աղյուսակը կարելի է շարժել հորիզոնական։</p>
-              <div id="matrixWrap" class="matrix-wrap" tabindex="0" aria-label="Հմտությունների մատրիցա"></div>
+
+              <div class="matrix-table-meta">
+                <p id="matrixVisibleCount" class="subtle small" aria-live="polite"></p>
+                <p class="subtle small matrix-help">Փոքր էկրանին աղյուսակը կարելի է շարժել հորիզոնական։</p>
+              </div>
+              <div id="matrixWrap" class="matrix-wrap" tabindex="0" aria-label="Գլուխ I-ի հմտությունների վիճակ"></div>
             </section>
           </div>
         </section>
