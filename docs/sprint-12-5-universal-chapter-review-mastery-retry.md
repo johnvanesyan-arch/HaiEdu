@@ -1331,3 +1331,61 @@ Two gates remain open and are not waived:
 - rendered required-Review/retry-unlock and final-failure states, because the available learner is already in the passed/optional-Review branch and no disposable seeded lifecycle account is available.
 
 Browser-extension metadata errors were excluded as harness noise. The application emits repeated Supabase `Multiple GoTrueClient instances` warnings; these did not break the tested workflows but remain a front-end cleanup item. Sprint 13 remains on hold.
+
+
+## Authenticated lifecycle closure QA — 2026-09-23
+
+The remaining rendered mastery-retry/final-failure branches were exercised by the John Vanesyan QA learner and independently reconciled against authoritative backend state.
+
+Passed:
+- Attempt 1 failed → required Chapter Review completed and qualifying → Attempt 2 unlocked;
+- Attempt 2 failed → required Chapter Review completed and qualifying → Attempt 3 unlocked;
+- Attempt 3 failed → lifecycle entered `mastery_failed_final`;
+- all three attempts are completed failures with exact provenance;
+- both mandatory Review requirements are `satisfied`;
+- no Attempt 4 is available;
+- Chapter Review remains active after terminal failure as `voluntary_after_final_failure` and is non-qualifying.
+
+The required-Review/retry-unlock and final-failure lifecycle branches are therefore closed. The remaining Sprint 12.5 closure gate is authenticated mobile-width learner and teacher rendering.
+
+## Assessment-integrity correction — 2026-09-23 — 12.5Z
+
+Authenticated QA exposed a platform-wide assessment-integrity defect: learner-facing single-choice options were always returned in canonical authoring order. Repeated exposure could therefore teach a learner a stable answer position/key instead of requiring the answer content to be processed.
+
+### Implementation
+
+A global persisted option-presentation layer is now deployed at the shared `learning_session_items` boundary:
+
+- every new single-choice session item receives a server-generated option permutation under policy `mcq-option-order-v1`;
+- the permutation is stored in `private.learning_session_item_option_orders`, not in learner-readable session rows;
+- presentation order is stable for that session item, so refresh/resume reproduces the same question exactly;
+- if a new random permutation equals the learner's immediately previous permutation for the same item, the order is rotated once so consecutive exposures never repeat the identical order;
+- learner-visible A/B/C… values are presentation-position keys only and do not expose canonical answer keys;
+- `submit-answer` resolves the presentation position back to the stored canonical option identity before existing deterministic grading runs;
+- the raw attempt response preserves what the learner selected, while normalized response provenance records the canonical option identity and presentation-policy version;
+- direct learner/anonymous read policies on `item_options` were removed so canonical option identities/order cannot bypass the mediated item-serving API;
+- active unanswered MCQs that existed before activation were grandfathered with canonical order to avoid changing a question a learner may already have seen;
+- answered historical evidence was deliberately not backfilled with fabricated presentation provenance.
+
+Because the trigger is attached to the canonical session-item table rather than to a Physics-specific endpoint, the mechanism applies to Diagnostic, Practice, Mastery Check and Chapter Review and is designed to carry forward to future subjects, grades and courses that use the same assessment-session contract.
+
+### Verification
+
+- current-bank audit: 119 published MCQs; 0 insufficient-option sets, 0 duplicate option-key sets and 0 answer keys missing from their option set;
+- live eight-exposure probe produced eight valid `mcq-option-order-v1` mappings and zero consecutive identical permutations;
+- the probe rows were deleted; no QA learning evidence remained;
+- `anon` and `authenticated` have no grants on the private presentation tables;
+- the service presentation RPC is executable only by `service_role`/database owner;
+- the public learner/anon `item_options` read policies are absent; content-admin access remains;
+- `get-session-item` v13 and `submit-answer` v14 are active;
+- focused regression coverage is included in `tests/assessment-option-presentation-integrity.test.mjs`;
+- GitHub CI and Vercel passed after activation;
+- Supabase advisor findings introduced by the two new private foreign keys were corrected with covering indexes; remaining no-policy notices on the private tables are intentional fail-closed RLS, and newly-created indexes may temporarily appear as unused until normal traffic accumulates.
+
+Runtime provenance: `runtime-2026-09-23-r15`, source implementation through `6498b893ce6f224765aa6bb24b396cc16f9d8dfe`.
+
+No curriculum content, item-selection rule, score calculation, mastery threshold, Hinting policy, Chapter Review policy or learning-model parameter changed.
+
+### Remaining closure gate
+
+A fresh post-activation browser session should still be used to confirm the presentation behavior visually: a question remains in the same order after refresh/resume, and a later new exposure of the same item can render in a different order while grading remains correct. This is assessment-integrity browser verification, alongside the already-open authenticated mobile-width learner/teacher rendering gate. Sprint 13 remains on hold until Sprint 12.5 closure criteria are satisfied.
