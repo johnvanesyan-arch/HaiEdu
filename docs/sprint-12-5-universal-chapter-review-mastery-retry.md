@@ -1300,3 +1300,14 @@ Verification: focused Sprint 12.5 tests pass, full GitHub CI passes, Vercel depl
 Runtime build: `runtime-2026-09-22-r10`; `start-learning-session` v18, `submit-answer` v13, `get-teacher-dashboard` v5 and `get-teacher-student` v5. The active binding records source commit `29cb3352680b0ff8e36bc7f63fba78bca2fb758a`; learning parameters remain unchanged.
 
 Closure boundary: an executable browser was unavailable in this Work environment, and no tester credentials were supplied. Authenticated learner and teacher desktop/mobile browser walkthroughs therefore remain unverified. Sprint 12.5 is not declared complete, and Sprint 13 remains on hold until that matrix passes.
+
+
+## QA defect correction — 2026-09-22
+
+Authenticated voluntary Chapter Review QA exposed a blocking integration defect: the legacy shared item-exposure pipeline still limited `student_item_exposure_events.purpose` and `service_record_item_exposure` to `practice`, `diagnostic` and `mastery_check`, so the first Review question failed while being recorded as served.
+
+Corrected by migrations `0076_sprint_12_5_chapter_review_exposure_integration.sql` and `0077_sprint_12_5_chapter_review_exposure_runtime.sql`. `chapter_review` is now supported by served-item exposure, answer exposure finalization and help exposure. Focused regression coverage was added. Rollback-only production probes against the active Chapter Review session verified serve → finalize/help exposure and the full graded-attempt transaction without persisting QA evidence.
+
+Runtime provenance: `runtime-2026-09-22-r11`. No learning parameter, Review selection rule, mastery threshold or three-attempt lifecycle rule changed.
+
+The authenticated browser matrix remains the closure gate; this defect must be rechecked in the learner browser before Sprint 12.5 is declared complete.
