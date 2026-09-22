@@ -348,6 +348,7 @@ function renderQuestion(data) {
   $("skillCode").textContent = isChapterReview ? "" : skill?.code ?? "—";
   $("skillCode").classList.toggle("hidden", isChapterReview);
   $("skillName").textContent = skill?.nameHy ?? "—";
+  $("itemCode").dataset.itemCode = item.code;
   $("itemCode").textContent = isChapterReview ? "" : item.code;
   $("itemCode").classList.toggle("hidden", isChapterReview);
   $("difficulty").textContent = `Դժվարություն ${item.difficulty}/5`;
