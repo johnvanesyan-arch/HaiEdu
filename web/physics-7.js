@@ -86,25 +86,36 @@ function renderSummary() {
 
   let assessmentTitle = "Դեռ փակ է";
   let assessmentMeta = masteryStatus?.messageHy ?? "Ամրապնդեք բոլոր հմտությունները։";
-  if (masteryStatus?.unitComplete) {
-    assessmentTitle = "Հաստատված";
-    assessmentMeta = `Mastery check-ը անցած է${masteryStatus.latestCheck?.percent != null ? ` · ${masteryStatus.latestCheck.percent}%` : ""}։`;
+  if (masteryStatus?.unitComplete || masteryStatus?.lifecycleState === "mastery_passed") {
+    assessmentTitle = "Գլխի յուրացումը հաստատված է";
+    assessmentMeta = `Անցած է${masteryStatus.passedOnAttempt ? ` · փորձ ${masteryStatus.passedOnAttempt}/3` : ""}${masteryStatus.latestCheck?.percent != null ? ` · ${masteryStatus.latestCheck.percent}%` : ""}։ Գլխի կրկնությունը լրացուցիչ է։`;
+  } else if (masteryStatus?.finalFailure || masteryStatus?.lifecycleState === "mastery_failed_final") {
+    assessmentTitle = "Փորձերն ավարտված են";
+    assessmentMeta = "Յուրացման ստուգման բոլոր երեք փորձերն ավարտված են։ Գլխի կրկնությունը շարունակում է հասանելի մնալ։";
   } else if (masteryStatus?.activeSession?.mode === "mastery_check") {
     assessmentTitle = "Ընթացքի մեջ";
     assessmentMeta = `${masteryStatus.activeSession.answered_count ?? 0}/${masteryStatus.activeSession.planned_item_count ?? 20} հարց`;
   } else if (masteryStatus?.eligible) {
-    assessmentTitle = "Պատրաստ է";
-    assessmentMeta = "Բոլոր հմտությունները պատրաստ են անկախ ստուգման։";
+    const nextAttempt = Number(masteryStatus.nextAttemptNumber ?? 1);
+    assessmentTitle = nextAttempt > 1 ? `Փորձ ${nextAttempt} / 3` : "Պատրաստ է";
+    assessmentMeta = nextAttempt > 1 ? "Պահանջվող Գլխի կրկնությունն ավարտված է։ Կարող եք կրկին անցնել յուրացման ստուգումը։" : "Բոլոր հմտությունները պատրաստ են անկախ ստուգման։";
   } else if (masteryStatus?.retryBlocked) {
-    assessmentTitle = "Վերականգնում է պետք";
+    assessmentTitle = "Գլխի կրկնություն է պետք";
   }
   $("subjectAssessment").textContent = assessmentTitle;
   $("subjectAssessmentMeta").textContent = assessmentMeta;
+  const reviewLink = $("chapterReviewLink");
+  const reviewAvailable = Boolean(masteryStatus?.reviewAvailable || masteryStatus?.retryBlocked);
+  reviewLink.classList.toggle("hidden", !reviewAvailable);
+  reviewLink.textContent = masteryStatus?.retryBlocked ? "Անցնել Գլխի կրկնություն" : "Կրկնել գլուխը";
 
   const chapterBadge = $("chapterStateBadge");
-  if (masteryStatus?.unitComplete) {
+  if (masteryStatus?.unitComplete || masteryStatus?.lifecycleState === "mastery_passed") {
     chapterBadge.textContent = "Հաստատված";
     chapterBadge.className = "status-badge success";
+  } else if (masteryStatus?.finalFailure || masteryStatus?.lifecycleState === "mastery_failed_final") {
+    chapterBadge.textContent = "Փորձերն ավարտված են";
+    chapterBadge.className = "status-badge warning";
   } else if (progress.completedSkills === progress.totalSkills && progress.totalSkills > 0) {
     chapterBadge.textContent = "Պատրաստ է ստուգման";
     chapterBadge.className = "status-badge info";
@@ -137,6 +148,16 @@ function renderActiveSession() {
     return;
   }
 
+  if (session.mode === "chapter_review") {
+    const answered = Number(session.answered ?? session.answered_count ?? 0);
+    const planned = Number(session.planned ?? session.planned_item_count ?? 12);
+    $("activeSessionTitle").textContent = "Շարունակել Գլխի կրկնությունը";
+    $("activeSessionText").textContent = `${answered}/${planned} հարց արդեն պատասխանված է։`;
+    link.href = "./practice.html?mode=chapter_review";
+    link.textContent = "Շարունակել կրկնությունը";
+    return;
+  }
+
   const answered = Number(session.answered ?? session.answered_count ?? 0);
   const planned = Number(session.planned ?? session.planned_item_count ?? 0);
   $("activeSessionTitle").textContent = session.mode === "diagnostic" ? "Շարունակել ախտորոշիչը" : "Շարունակել վարժանքը";
@@ -165,6 +186,14 @@ function activeBlocksNewPractice(skill) {
       same: false,
       reason: "Սկզբում ավարտեք ընթացիկ ախտորոշիչը",
       label: "Ավարտեք ախտորոշիչը",
+    };
+  }
+  if (active.mode === "chapter_review") {
+    return {
+      blocked: true,
+      same: false,
+      reason: "Սկզբում ավարտեք ընթացիկ Գլխի կրկնությունը",
+      label: "Ավարտեք կրկնությունը",
     };
   }
   return {
@@ -286,9 +315,10 @@ async function loadSubject() {
   $("subjectLoading").classList.remove("hidden");
   $("subjectContent").classList.add("hidden");
 
-  const [{ data: dash, error: dashError }, { data: status, error: statusError }] = await Promise.all([
+  const [{ data: dash, error: dashError }, { data: status, error: statusError }, { data: lifecycle, error: lifecycleError }] = await Promise.all([
     supabase.functions.invoke("get-student-dashboard", { body: {} }),
     supabase.functions.invoke("get-mastery-check-status", { body: {} }),
+    supabase.functions.invoke("get-chapter-mastery-lifecycle", { body: {} }),
   ]);
 
   if (dashError) {
@@ -297,8 +327,9 @@ async function loadSubject() {
     return;
   }
   dashboard = dash;
-  masteryStatus = statusError ? null : status;
+  masteryStatus = statusError ? null : { ...status, ...(lifecycle ?? {}) };
   if (statusError) setMessage("Յուրացման ստուգման կարգավիճակը ժամանակավորապես չբեռնվեց։", true);
+  else if (lifecycleError) setMessage("Յուրացման փորձերի վիճակը ժամանակավորապես չբեռնվեց։", true);
 
   renderSummary();
   renderActiveSession();
@@ -342,4 +373,3 @@ $("signOutBtn")?.addEventListener("click", async () => {
 });
 
 initialize();
-
