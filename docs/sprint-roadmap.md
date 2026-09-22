@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.30  
-**Updated:** 2026-09-22  
-**Current programme status:** Sprints 11, 11.5 and 12 are ✅ complete. Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle is in closure verification: 12.5A–W are deployed and authenticated desktop learner/teacher QA passes after learner-copy corrections. Mobile rendering plus required-Review/retry and final-failure browser branches remain open in 12.5X–Y. Sprint 13 remains explicitly on hold until Sprint 12.5 closes.
+**Roadmap version:** 2.31  
+**Updated:** 2026-09-23  
+**Current programme status:** Sprints 11, 11.5 and 12 are ✅ complete. Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle remains in closure verification: 12.5A–Z are deployed; authenticated desktop learner/teacher QA and the required-Review/retry plus final-failure lifecycle branches have passed. A closure-discovered assessment-integrity defect was corrected in 12.5Z with global persisted MCQ option randomization across Diagnostic, Practice, Mastery Check and Chapter Review. Only authenticated mobile-width learner/teacher rendering remains open. Sprint 13 remains explicitly on hold until Sprint 12.5 closes.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -97,7 +97,7 @@ For the current Sprint 11 state:
 | 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; the carried-forward 11L entry gates are now satisfied by the prospective Sprint 11.5 pilot. |
 | 11.5 | Controlled External Tester Pilot | ✅ | Closed one-adult feasibility run: eight eligible prospective sessions, smooth experience, no substantive content defects, historical Diagnostic excluded, and all closure gates passed. |
 | 12 | Learning-Model Calibration | ✅ | 12A.1–12A.5 complete; 12B reviewed the feasibility evidence and recorded an immutable deferred/no-change disposition. No learning parameter changed. |
-| 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | 🟡 | 12.5A–W deployed. Authenticated browser QA found and corrected a Chapter Review exposure-integration blocker; runtime r11 is active. 12.5X–Y learner/teacher desktop-mobile closure QA remains open. |
+| 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | 🟡 | 12.5A–Z deployed. Desktop learner/teacher QA, required-Review/retry and final-failure lifecycle branches pass. 12.5Z adds global persisted MCQ option-presentation randomization with canonical server grading; runtime r15 is active. Only authenticated mobile-width learner/teacher rendering remains open. |
 | 13 | Chapter I Standards-Verified Production Release | ⏳ | On hold until Sprint 12.5 closes.  Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize schools, academic years, time-aware memberships, IAM/permissions, tenant isolation, audit scope, teacher continuity foundations, controlled enrollment and centrally governed content. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
@@ -424,7 +424,7 @@ See `docs/sprint-12-learning-model-calibration.md` for the implementation plan a
 
 ## Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status: 🟡 Closure verification — 12.5A–W deployed; 12.5X–Y awaits authenticated desktop/mobile learner and teacher browser QA. Sprint 13 remains on hold.**
+**Status: 🟡 Closure verification — 12.5A–Z deployed. Authenticated desktop learner/teacher QA and the required-Review/retry plus final-failure lifecycle branches pass. Only authenticated mobile-width learner/teacher rendering remains open. Sprint 13 remains on hold.**
 
 Establish a universal, versioned platform policy for every present and future grade, subject, programme and unit:
 
@@ -443,6 +443,8 @@ The policy must be cross-subject and cross-grade. No school, teacher or chapter 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
 **QA correction — 2026-09-22:** authenticated voluntary Chapter Review testing exposed that the legacy shared item-exposure pipeline still rejected `chapter_review`. Migration `0076_sprint_12_5_chapter_review_exposure_integration.sql` extends served, answered and help exposure provenance to Chapter Review; rollback-only production probes verified question serving, exposure finalization and answer recording. Runtime provenance is `runtime-2026-09-22-r11`. This correction does not change learning parameters or lifecycle policy.
+
+**Assessment-integrity correction — 2026-09-23 — 12.5Z:** authenticated QA exposed that single-choice options were always serialized in canonical authoring order, allowing repeated exposure to teach answer positions/keys. The shared assessment boundary now persists a private per-session-item option permutation for every single-choice item, randomizes new presentations server-side under `mcq-option-order-v1`, prevents an identical permutation on consecutive exposures of the same item to the same learner, and preserves the stored order across refresh/resume. Learner-visible A/B/C… labels are presentation positions only; canonical option identities remain private and are resolved server-side before grading. The mechanism is attached to `learning_session_items`, so it applies to Diagnostic, Practice, Mastery Check and Chapter Review and is not Physics-7-specific. Existing active unanswered items at rollout were grandfathered in canonical order to avoid changing a question already seen; answered history was not backfilled with fabricated presentation provenance. Direct learner/anonymous canonical option reads were removed. The current bank audit found 119/119 published MCQs structurally valid. An eight-exposure rollback/cleanup probe produced eight valid v1 mappings with no consecutive duplicate order, CI and Vercel are green, and active runtime provenance is `runtime-2026-09-23-r15`. No item-selection rule, score, mastery threshold, Hinting policy, Review policy or learning parameter changed.
 
 ## Sprint 13 — Chapter I Standards-Verified Production Release
 
