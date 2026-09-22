@@ -1263,4 +1263,6 @@ Completed the learner-facing mastery lifecycle and Chapter Review experience:
 
 Verification: 9/9 focused lifecycle and Review-cycle tests pass. The live endpoint rejects an unauthenticated request with `401 unauthorized`. The deployed function uses its own JWT/user, live-session and Physics 7 entitlement checks; legacy gateway JWT verification is disabled consistently with the existing authenticated function pattern.
 
+Runtime build: `runtime-2026-09-22-r8`; `get-chapter-mastery-lifecycle` v1. The active binding records source commit `f7bf36baa11b3ffa691c17bb1f647b4cbdabe2e1`; learning parameters remain unchanged.
+
 Next: 12.5L–O adds teacher Review analytics, defines the Review-specific attention model without premature thresholds, isolates Review evidence, and integrates recommendations.
