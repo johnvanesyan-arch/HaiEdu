@@ -517,12 +517,42 @@ Deno.serve(async (req) => {
     if (priorError) return json({ error: "mastery_history_failed" }, 500);
 
     const latestCheck = priorChecks?.[0] ?? null;
-    if (latestCheck?.assessment_result === "passed") {
+
+    const { data: chapterState, error: chapterStateError } = await admin
+      .from("chapter_mastery_states")
+      .select("lifecycle_state")
+      .eq("student_id", studentId)
+      .eq("curriculum_release_id", curriculumContext.releaseId)
+      .eq("unit_code", UNIT_CODE)
+      .maybeSingle();
+    if (chapterStateError) return json({ error: "mastery_lifecycle_unavailable" }, 500);
+
+    const lifecycleState = chapterState?.lifecycle_state ?? null;
+    const retryReady = lifecycleState === "mastery_retry_2_ready" || lifecycleState === "mastery_retry_3_ready";
+    const reviewRequired = lifecycleState === "review_required_attempt_2" || lifecycleState === "review_required_attempt_3";
+    const finalFailure = lifecycleState === "mastery_failed_final";
+    const unitComplete = lifecycleState === "mastery_passed" || latestCheck?.assessment_result === "passed";
+
+    if (unitComplete) {
       return json({ unitComplete: true, unitCode: UNIT_CODE, messageHy: "Բաժնի mastery check-ը արդեն հաջողությամբ անցել եք։" });
+    }
+    if (finalFailure) {
+      return json({
+        masteryEligible: false,
+        reason: "mastery_failed_final",
+        messageHy: "Յուրացման ստուգման բոլոր երեք փորձերն ավարտված են։ Գլխի կրկնությունը մնում է հասանելի։",
+      }, 409);
+    }
+    if (reviewRequired) {
+      return json({
+        masteryEligible: false,
+        reason: "chapter_review_required",
+        messageHy: "Յուրացման ստուգումը կրկնելուց առաջ պետք է ավարտեք Գլխի կրկնությունը։",
+      }, 409);
     }
 
     const incompleteSkills = skills.filter((skill) => !isComplete(mastery.get(skill.id), attempts, skill.id));
-    if (incompleteSkills.length) {
+    if (!retryReady && incompleteSkills.length) {
       return json({
         masteryEligible: false,
         reason: "skills_not_ready",
