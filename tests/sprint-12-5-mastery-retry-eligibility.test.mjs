@@ -6,6 +6,10 @@ const source = readFileSync(
   new URL("../supabase/functions/get-mastery-check-status/index.ts", import.meta.url),
   "utf8",
 );
+const startSource = readFileSync(
+  new URL("../supabase/functions/start-learning-session/index.ts", import.meta.url),
+  "utf8",
+);
 
 test("Sprint 12.5 retry readiness is governed by lifecycle after qualifying Review", () => {
   assert.match(source, /const retryReady = lifecycleState === "mastery_retry_2_ready" \|\| lifecycleState === "mastery_retry_3_ready";/);
@@ -37,4 +41,19 @@ test("retry-ready UX message outranks initial skill-readiness messaging", () => 
   assert.ok(retryIndex >= 0, "retry-ready message missing");
   assert.ok(incompleteIndex >= 0, "initial readiness message missing");
   assert.ok(retryIndex < incompleteIndex, "retry-ready message must take precedence over initial skill readiness");
+});
+
+
+test("start-learning-session also treats qualified retry lifecycle as authoritative", () => {
+  assert.match(startSource, /const retryReady = lifecycleState === "mastery_retry_2_ready" \|\| lifecycleState === "mastery_retry_3_ready";/);
+  assert.match(startSource, /if \(!retryReady && incompleteSkills\.length\)/);
+  assert.match(startSource, /reason: "chapter_review_required"/);
+  assert.match(startSource, /reason: "mastery_failed_final"/);
+});
+
+test("start-learning-session keeps Attempt 1 skill gate while allowing governed retries", () => {
+  const gateIndex = startSource.indexOf('if (!retryReady && incompleteSkills.length)');
+  const rpcIndex = startSource.indexOf('start_mastery_check_atomic');
+  assert.ok(gateIndex >= 0, "conditional skill gate missing");
+  assert.ok(rpcIndex > gateIndex, "atomic lifecycle start must remain authoritative after the preflight gate");
 });
