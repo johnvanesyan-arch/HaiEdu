@@ -18,6 +18,27 @@ const desiredMode = new URLSearchParams(window.location.search).get("mode") === 
   : "practice";
 const isChapterReview = desiredMode === "chapter_review";
 
+function reviewContext() {
+  return currentSession?.reviewContext
+    ?? currentSession?.review_context
+    ?? currentSession?.metadata?.reviewContext
+    ?? null;
+}
+
+function requiredChapterReview() {
+  return currentSession?.reviewRequired === true
+    || masteryCheckStatus?.reviewRequired === true
+    || (reviewContext()?.startsWith("required_") ?? false);
+}
+
+function renderReviewContext() {
+  if (!isChapterReview) return;
+  $("practiceNoticeTitle").textContent = requiredChapterReview() ? "Պահանջվող Գլխի կրկնություն" : "Լրացուցիչ կրկնություն";
+  $("practiceNoticeText").textContent = requiredChapterReview()
+    ? "Այս կրկնությունը պետք է ավարտեք՝ յուրացման ստուգումը կրկին անցնելու համար։ Հարցերն ընտրվում են ամբողջ գլխից, իսկ ուշադրություն պահանջող հմտությունները կարող են հանդիպել ավելի հաճախ։"
+    : "Հարցերն ընտրվում են ամբողջ գլխից։ Ուշադրություն պահանջող հմտությունները կարող են հանդիպել ավելի հաճախ։";
+}
+
 function readPracticeBootstrap(userId) {
   try {
     const raw = sessionStorage.getItem(PRACTICE_BOOTSTRAP_KEY);
@@ -187,6 +208,7 @@ async function startOrResumePractice() {
       return;
     }
     currentSession = active;
+    renderReviewContext();
     showPractice();
     renderInitialMastery(currentTargetSkill());
     await loadSessionItem();
@@ -266,7 +288,14 @@ async function startOrResumePractice() {
     return;
   }
 
-  currentSession = data.session;
+  currentSession = {
+    ...data.session,
+    reviewContext: data.reviewContext ?? data.session?.metadata?.reviewContext ?? null,
+    reviewCycleNumber: data.reviewCycleNumber ?? data.session?.metadata?.reviewCycleNumber ?? null,
+    reviewSessionNumber: data.reviewSessionNumber ?? data.session?.metadata?.reviewSessionNumber ?? null,
+    reviewRequired: data.required ?? null,
+  };
+  renderReviewContext();
   history.replaceState({}, "", isChapterReview ? "./practice.html?mode=chapter_review" : "./practice.html");
   showPractice();
   renderInitialMastery(targetSkill ?? currentTargetSkill());
@@ -328,7 +357,9 @@ function renderQuestion(data) {
   $("sessionProgressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(before)));
 
   const selectionMode = data.scheduler?.selectionMode ?? data.remediation?.selectionReason ?? "new_item";
-  const [badge, note] = schedulerLabels[selectionMode] ?? schedulerLabels.new_item;
+  const [badge, note] = isChapterReview
+    ? ["Գլխի կրկնություն", "Հարցերն ընտրվում են ամբողջ գլխից։ Ավելի շատ ուշադրություն պահանջող հմտությունները կարող են հանդիպել ավելի հաճախ։"]
+    : schedulerLabels[selectionMode] ?? schedulerLabels.new_item;
   $("adaptiveBadge").textContent = badge;
   $("adaptiveNote").textContent = note;
 
@@ -505,6 +536,22 @@ function renderCompletion(data) {
   $("completionCorrect").textContent = String(correct);
   $("completionPercent").textContent = `${percent}%`;
 
+  if (isChapterReview) {
+    const required = requiredChapterReview();
+    $("completionTitle").textContent = required ? "Պահանջվող Գլխի կրկնությունն ավարտված է" : "Լրացուցիչ կրկնությունն ավարտված է";
+    $("completionText").textContent = required
+      ? "Դուք ավարտեցիք այս կրկնությունը։ Յուրացման ստուգման հաջորդ փորձն այժմ հասանելի է։"
+      : "Արդյունքը պահպանվել է որպես Գլխի կրկնության առանձին ապացույց և չի փոխում արդեն հաստատված յուրացումը։";
+    $("completionReason").textContent = "Շարունակեք հաջորդ քայլով, երբ պատրաստ լինեք։";
+    const primary = $("completionPrimaryAction");
+    primary.href = required ? "./mastery.html" : "./physics-7.html";
+    primary.textContent = required ? "Կրկին անցնել յուրացման ստուգումը" : "Շարունակել";
+    const secondary = $("completionSecondaryAction");
+    secondary.href = required ? "./physics-7.html" : "./practice.html?mode=chapter_review";
+    secondary.textContent = required ? "Դիտել արդյունքները" : "Կրկնել ևս մեկ անգամ";
+    return;
+  }
+
   const endedEarly = planned > answered;
   const messages = {
     mastery_reached: {
@@ -663,8 +710,12 @@ function renderStack(spec) {
 async function initialize() {
   if (isChapterReview) {
     document.title = "Ֆիզիկա 7 — Գլխի կրկնություն";
-    const heading = document.querySelector("h1");
-    if (heading) heading.textContent = "Գլխի կրկնություն";
+    $("practiceEyebrow").textContent = "ԳԼԽԻ ԿՐԿՆՈՒԹՅՈՒՆ";
+    $("practiceHeading").textContent = "Ֆիզիկա 7 · Գլուխ I";
+    $("practiceNoticeTitle").textContent = "Գլխի կրկնություն";
+    $("practiceNoticeText").textContent = "12 հարց ամբողջ գլխից · ուշադրություն պահանջող հմտությունները կարող են հանդիպել ավելի հաճախ · հուշումները հասանելի են։";
+    $("sessionMode").textContent = "Գլխի կրկնություն";
+    $("masteryCard").classList.add("hidden");
   }
   const { data: sessionData } = await supabase.auth.getSession();
   if (!sessionData.session) {
@@ -686,9 +737,10 @@ async function initialize() {
     return;
   }
 
-  const [{ data: dash, error: dashError }, { data: check, error: checkError }] = await Promise.all([
+  const [{ data: dash, error: dashError }, { data: check, error: checkError }, { data: lifecycle, error: lifecycleError }] = await Promise.all([
     supabase.functions.invoke("get-student-dashboard", { body: {} }),
     supabase.functions.invoke("get-mastery-check-status", { body: {} }),
+    supabase.functions.invoke("get-chapter-mastery-lifecycle", { body: {} }),
   ]);
 
   if (dashError) {
@@ -699,8 +751,9 @@ async function initialize() {
   }
 
   dashboard = dash;
-  masteryCheckStatus = checkError ? null : check;
+  masteryCheckStatus = checkError ? lifecycle ?? null : { ...check, ...(lifecycle ?? {}) };
   if (checkError) dispatchStatus("Յուրացման ստուգման վիճակը ժամանակավորապես չբեռնվեց։", true);
+  else if (lifecycleError) dispatchStatus("Յուրացման փորձերի վիճակը ժամանակավորապես չբեռնվեց։", true);
   await startOrResumePractice();
 }
 
