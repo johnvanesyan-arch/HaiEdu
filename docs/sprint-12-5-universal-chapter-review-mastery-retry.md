@@ -1,6 +1,6 @@
 # Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status:** 🟡 Active — 12.5A–K deployed; 12.5L–O next
+**Status:** 🟡 Active — 12.5A–O deployed; 12.5P–Y next
 
 **Placement:** After Sprint 12 calibration work and before Sprint 13 Chapter I production release
 
@@ -1265,4 +1265,19 @@ Verification: 9/9 focused lifecycle and Review-cycle tests pass. The live endpoi
 
 Runtime build: `runtime-2026-09-22-r8`; `get-chapter-mastery-lifecycle` v1. The active binding records source commit `f7bf36baa11b3ffa691c17bb1f647b4cbdabe2e1`; learning parameters remain unchanged.
 
-Next: 12.5L–O adds teacher Review analytics, defines the Review-specific attention model without premature thresholds, isolates Review evidence, and integrates recommendations.
+## Implementation update — 2026-09-22 — 12.5L–O
+
+Deployed teacher Review analytics, explicit evidence-stream separation and lifecycle-aware recommendations:
+
+- added service-only, security-invoker summary and skill-input views for Review completion, coverage, independent accuracy, assistance, repeat errors and latest failed-Mastery skills;
+- kept the Review attention state fail-closed at `insufficient_review_evidence` and recorded `thresholds_not_governed`, because this sprint does not authorize new classification thresholds;
+- separated Diagnostic, pre-mastery Practice, Mastery Check, required post-failure Review, optional post-pass Review and optional post-final-failure Review evidence;
+- added class-scoped Review summary and drilldown data to the teacher dashboard APIs and UI;
+- routed recommendations to required Review after failure, Mastery retry only after qualifying Review, optional Review after a pass, and Review rather than a retry after final failure;
+- kept ordinary Practice from outranking a mandatory Chapter Review.
+
+Verification: 22/22 focused Sprint 12.5 tests pass. All three changed Edge endpoints reject unauthenticated requests with `401 unauthorized`. Live view checks show one chapter summary, 20 Practice sessions and zero Review sessions; therefore the contract and separation are verified, while populated Review-specific analytics correctly await real Review evidence. Direct `anon` and `authenticated` view access remains denied, with service-only access confirmed. Supabase advisors reported no new finding attributable to these views or the runtime stamp.
+
+Runtime build: `runtime-2026-09-22-r9`; `get-student-dashboard` v18, `get-teacher-dashboard` v4 and `get-teacher-student` v4. The active binding records source commit `a6f5586f47e1a65879409705017d25f45ae9cbf5`; learning parameters remain unchanged.
+
+Next: 12.5P–Y completes transactional attempt integrity, protected assessment exposure, Hinting v2 Review integration, normalized schema/RLS and historical migration invariants, then full closure QA and documentation synchronization.
