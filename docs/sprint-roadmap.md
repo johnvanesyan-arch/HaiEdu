@@ -424,7 +424,7 @@ See `docs/sprint-12-learning-model-calibration.md` for the implementation plan a
 
 ## Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status: 🟡 Active implementation — 12.5A–F deployed; 12.5G–K next. Sprint 13 is on hold until this sprint closes.**
+**Status: 🟡 Active implementation — 12.5A–K deployed; 12.5L–O next. Sprint 13 is on hold until this sprint closes.**
 
 Establish a universal, versioned platform policy for every present and future grade, subject, programme and unit:
 
