@@ -37,6 +37,40 @@ function desiredDifficulty(mastery: number, consecutiveWrong = 0) {
   return Math.max(1, Math.min(5, base));
 }
 
+function presentationKey(index: number) {
+  let n = index + 1;
+  let key = "";
+  while (n > 0) {
+    n -= 1;
+    key = String.fromCharCode(65 + (n % 26)) + key;
+    n = Math.floor(n / 26);
+  }
+  return key;
+}
+
+function learnerPresentationOptions(
+  options: Array<{ option_key: string; content_hy: string; display_order: number }>,
+  canonicalOptionOrder: string[],
+) {
+  const byKey = new Map(options.map((option) => [String(option.option_key), option]));
+  if (
+    canonicalOptionOrder.length !== options.length ||
+    new Set(canonicalOptionOrder).size !== options.length ||
+    canonicalOptionOrder.some((key) => !byKey.has(String(key)))
+  ) {
+    throw new Error("option_presentation_invalid");
+  }
+
+  return canonicalOptionOrder.map((canonicalKey, index) => {
+    const option = byKey.get(String(canonicalKey))!;
+    return {
+      option_key: presentationKey(index),
+      content_hy: option.content_hy,
+      display_order: index + 1,
+    };
+  });
+}
+
 async function completeSession(admin: any, session: any, reason: string) {
   const now = new Date().toISOString();
   await admin
@@ -86,6 +120,23 @@ async function itemPayload(admin: any, studentId: string, session: any, sessionI
     .order("display_order", { ascending: true });
   if (optionsError) throw new Error(`options_load_failed:${optionsError.message}`);
 
+  let learnerOptions = options ?? [];
+  let optionPresentationVersion: string | null = null;
+  if (item.item_type === "single_choice") {
+    const { data: presentation, error: presentationError } = await admin.rpc(
+      "service_ensure_session_item_option_order",
+      { p_session_item_id: sessionItem.id },
+    );
+    if (presentationError || !presentation?.canonicalOptionOrder) {
+      throw new Error(`option_presentation_load_failed:${presentationError?.message ?? "missing"}`);
+    }
+    learnerOptions = learnerPresentationOptions(
+      options ?? [],
+      presentation.canonicalOptionOrder.map((key: unknown) => String(key)),
+    );
+    optionPresentationVersion = String(presentation.algorithmVersion ?? "unknown");
+  }
+
   await recordSessionItemExposure(admin, studentId, session.id, sessionItem.id, item.id);
 
   return {
@@ -109,7 +160,8 @@ async function itemPayload(admin: any, studentId: string, session: any, sessionI
       promptHy: item.prompt_hy,
       stimulus: item.stimulus,
       difficulty: Number(item.difficulty),
-      options: options ?? [],
+      options: learnerOptions,
+      optionPresentationVersion,
     },
     remediation: {
       available: session.mode === "practice" || session.mode === "chapter_review",
