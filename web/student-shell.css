@@ -1,3 +1,9 @@
+/* Prevent non-student sessions from painting the student shell before
+   role-router resolves and redirects to the canonical staff surface. */
+body[data-student-page][data-role-routing="pending"] {
+  visibility: hidden;
+}
+
 /* Sprint 10.5B — authenticated student application shell */
 .amp-side-nav,
 .amp-mobile-nav {
