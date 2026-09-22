@@ -12,6 +12,11 @@ test("teacher Review and Mastery labels are fully learner-facing Armenian", () =
   assert.match(teacherUi, /Գլխի կրկնության հմտությունների տվյալներ/);
   assert.match(teacherUi, /Սխալ՝ վերջին յուրացման ստուգման ժամանակ/);
   assert.match(teacherUi, /Վերջին պատասխանների ընդհանուր ճշգրտություն/);
+  assert.match(teacherUi, /Ֆիզիկա 7 · Գլուխ I/);
+  assert.match(teacherUi, /Բնության ուսումնասիրության ֆիզիկական մեթոդները/);
+  assert.match(teacherUi, /<h3>Յուրացում և կրկնություն<\/h3>/);
+  assert.match(teacherUi, /Գլուխ I-ի կրկնություն/);
+  assert.doesNotMatch(teacherUi, /<h3>Գլխի յուրացում և կրկնություն<\/h3>/);
   assert.doesNotMatch(teacherUi, />Review-ի/);
   assert.doesNotMatch(teacherUi, />Վերջին Mastery-ում սխալ/);
   assert.doesNotMatch(teacherUi, /Բավարար Review տվյալ/);
