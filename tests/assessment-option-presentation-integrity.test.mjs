@@ -4,8 +4,10 @@ import { readFileSync } from "node:fs";
 
 const read = (path) => readFileSync(new URL(`../${path}`, import.meta.url), "utf8");
 const migration = read("supabase/migrations/0081_global_mcq_option_presentation_integrity.sql");
+const semanticGuard = read("supabase/migrations/0084_global_mcq_option_semantic_guard.sql");
 const getSessionItem = read("supabase/functions/get-session-item/index.ts");
 const submitAnswer = read("supabase/functions/submit-answer/index.ts");
+const submitMastery = read("supabase/functions/submit-mastery-answer/index.ts");
 const practiceUi = read("web/practice.js");
 const diagnosticUi = read("web/diagnostic.js");
 const masteryUi = read("web/mastery.js");
@@ -52,4 +54,19 @@ test("canonical learner option-order access is removed and clients do not shuffl
     assert.doesNotMatch(ui, /Math\.random\(\)/);
     assert.doesNotMatch(ui, /\.sort\(\(\) => Math\.random/);
   }
+});
+
+
+test("Mastery Check uses the same canonicalized grading path as other session modes", () => {
+  assert.match(submitMastery, /functions\/v1\/submit-answer/);
+  assert.match(submitMastery, /sessionItemId: body\.sessionItemId/);
+  assert.match(submitMastery, /response: body\.response/);
+});
+
+test("fixed-order MCQ exceptions are explicit and fail closed without rationale", () => {
+  assert.match(semanticGuard, /shuffleOptions/);
+  assert.match(semanticGuard, /optionOrderRationale/);
+  assert.match(semanticGuard, /shuffle_disabled_without_option_order_rationale/);
+  assert.match(semanticGuard, /mcq-option-order-fixed-v1/);
+  assert.match(semanticGuard, /coalesce\(\(v_item_config->>'shuffleOptions'\)::boolean,true\)/);
 });
