@@ -38,3 +38,14 @@ Run authenticated learner and teacher workflows at desktop and mobile widths:
 6. keyboard, overflow, console and network-error checks.
 
 The current environment had no executable browser and no tester credentials. Static source checks and production asset verification are not substitutes for this walkthrough. Sprint 13 remains blocked until the matrix is recorded as passed.
+
+
+## QA defect correction — 2026-09-22
+
+Authenticated voluntary Chapter Review QA exposed a blocking integration defect: the legacy shared item-exposure pipeline still limited `student_item_exposure_events.purpose` and `service_record_item_exposure` to `practice`, `diagnostic` and `mastery_check`, so the first Review question failed while being recorded as served.
+
+Corrected by migrations `0076_sprint_12_5_chapter_review_exposure_integration.sql` and `0077_sprint_12_5_chapter_review_exposure_runtime.sql`. `chapter_review` is now supported by served-item exposure, answer exposure finalization and help exposure. Focused regression coverage was added. Rollback-only production probes against the active Chapter Review session verified serve → finalize/help exposure and the full graded-attempt transaction without persisting QA evidence.
+
+Runtime provenance: `runtime-2026-09-22-r11`. No learning parameter, Review selection rule, mastery threshold or three-attempt lifecycle rule changed.
+
+The authenticated browser matrix remains the closure gate; this defect must be rechecked in the learner browser before Sprint 12.5 is declared complete.
