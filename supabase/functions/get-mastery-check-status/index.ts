@@ -80,9 +80,24 @@ Deno.serve(async (req) => {
     const latest = checkRows?.[0] ?? null;
     const active = activeRows?.[0] ?? null;
 
-    let requiredSkills = [...incompleteSkills];
-    let retryBlocked = false;
-    if (!incompleteSkills.length && latest?.assessment_result === "failed") {
+    const lifecycle = lifecycleRows?.[0] ?? null;
+    const lifecycleState = lifecycle?.lifecycle_state ?? null;
+    const reviewRequired = lifecycleState === "review_required_attempt_2" || lifecycleState === "review_required_attempt_3";
+    const retryReady = lifecycleState === "mastery_retry_2_ready" || lifecycleState === "mastery_retry_3_ready";
+    const initialGateState = lifecycleState === null || lifecycleState === "mastery_ready";
+    const finalFailure = lifecycleState === "mastery_failed_final";
+    const unitComplete = lifecycleState === "mastery_passed" || latest?.assessment_result === "passed";
+
+    // Sprint 12.5 governed lifecycle is authoritative once a chapter state exists.
+    // The all-skills-ready gate is an entry condition for Attempt 1 only. After a
+    // failed attempt, a qualifying required Chapter Review is the retry gate.
+    let requiredSkills = initialGateState ? [...incompleteSkills] : [];
+    let retryBlocked = reviewRequired;
+
+    // Preserve the pre-12.5 remediation fallback only for legacy/no-lifecycle
+    // histories. Governed retry states must not be re-blocked by current skill
+    // scores after the required Chapter Review has already qualified.
+    if (lifecycleState === null && !incompleteSkills.length && latest?.assessment_result === "failed") {
       const failedSkillIds = Array.isArray(latest.metadata?.failedSkillIds) ? latest.metadata.failedSkillIds as string[] : [];
       if (failedSkillIds.length) {
         const { data: remediation } = await admin
@@ -101,17 +116,11 @@ Deno.serve(async (req) => {
       }
     }
 
-    const lifecycle = lifecycleRows?.[0] ?? null;
-    const lifecycleState = lifecycle?.lifecycle_state ?? null;
-    const reviewRequired = lifecycleState === "review_required_attempt_2" || lifecycleState === "review_required_attempt_3";
-    const finalFailure = lifecycleState === "mastery_failed_final";
-    if (reviewRequired) retryBlocked = true;
-    const unitComplete = lifecycleState === "mastery_passed" || latest?.assessment_result === "passed";
-    const eligibleState = lifecycleState === null
-      || lifecycleState === "mastery_ready"
-      || lifecycleState === "mastery_retry_2_ready"
-      || lifecycleState === "mastery_retry_3_ready";
-    const eligible = eligibleState && !unitComplete && !finalFailure && !active && incompleteSkills.length === 0 && !retryBlocked;
+    const eligible = !unitComplete
+      && !finalFailure
+      && !active
+      && !retryBlocked
+      && (retryReady || (initialGateState && incompleteSkills.length === 0));
     const latestSkillResults = Array.isArray(latest?.metadata?.skillResults) ? latest.metadata.skillResults : [];
     let reviewRequirement = null;
     if (reviewRequired && lifecycle?.id) {
@@ -161,15 +170,17 @@ Deno.serve(async (req) => {
         ? "Բաժինը ավարտված է․ mastery check-ը հաջողությամբ անցել եք։"
         : active?.mode === "mastery_check"
           ? "Ունեք չավարտված mastery check։"
-          : incompleteSkills.length
-            ? "Mastery check-ը կբացվի, երբ բոլոր հմտությունները ամրապնդվեն։"
-            : finalFailure
-              ? "Յուրացման ստուգման բոլոր երեք փորձերն ավարտված են։ Գլխի կրկնությունը մնում է հասանելի։"
-              : reviewRequired
-                ? "Յուրացման ստուգումը կրկնելուց առաջ պետք է ավարտեք Գլխի կրկնությունը։"
+          : finalFailure
+            ? "Յուրացման ստուգման բոլոր երեք փորձերն ավարտված են։ Գլխի կրկնությունը մնում է հասանելի։"
+            : reviewRequired
+              ? "Յուրացման ստուգումը կրկնելուց առաջ պետք է ավարտեք Գլխի կրկնությունը։"
+              : retryReady
+                ? "Պահանջվող Գլխի կրկնությունն ավարտված է։ Կարող եք կրկին անցնել յուրացման ստուգումը։"
                 : retryBlocked
                   ? "Կրկնակի փորձից առաջ ավարտեք պահանջվող Գլխի կրկնությունը։"
-                  : "Պատրաստ եք mastery check-ին։",
+                  : incompleteSkills.length
+                    ? "Mastery check-ը կբացվի, երբ բոլոր հմտությունները ամրապնդվեն։"
+                    : "Պատրաստ եք mastery check-ին։",
     });
   } catch (err) {
     console.error("get-mastery-check-status", err);
