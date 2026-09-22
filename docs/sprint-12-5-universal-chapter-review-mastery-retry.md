@@ -1364,6 +1364,7 @@ A global persisted option-presentation layer is now deployed at the shared `lear
 - `submit-answer` resolves the presentation position back to the stored canonical option identity before existing deterministic grading runs;
 - the raw attempt response preserves what the learner selected, while normalized response provenance records the canonical option identity and presentation-policy version;
 - direct learner/anonymous read policies on `item_options` were removed so canonical option identities/order cannot bypass the mediated item-serving API;
+- future order-dependent MCQs may opt out only with explicit `shuffleOptions=false` plus a non-empty `optionOrderRationale`; missing rationale fails closed rather than silently restoring static-order exposure;
 - active unanswered MCQs that existed before activation were grandfathered with canonical order to avoid changing a question a learner may already have seen;
 - answered historical evidence was deliberately not backfilled with fabricated presentation provenance.
 
@@ -1372,6 +1373,7 @@ Because the trigger is attached to the canonical session-item table rather than 
 ### Verification
 
 - current-bank audit: 119 published MCQs; 0 insufficient-option sets, 0 duplicate option-key sets and 0 answer keys missing from their option set;
+- position-dependent-language audit: 0 current published MCQs detected with “all/none of the above”, explicit option-letter references or equivalent order-dependent wording;
 - live eight-exposure probe produced eight valid `mcq-option-order-v1` mappings and zero consecutive identical permutations;
 - the probe rows were deleted; no QA learning evidence remained;
 - `anon` and `authenticated` have no grants on the private presentation tables;
@@ -1382,7 +1384,7 @@ Because the trigger is attached to the canonical session-item table rather than 
 - GitHub CI and Vercel passed after activation;
 - Supabase advisor findings introduced by the two new private foreign keys were corrected with covering indexes; remaining no-policy notices on the private tables are intentional fail-closed RLS, and newly-created indexes may temporarily appear as unused until normal traffic accumulates.
 
-Runtime provenance: `runtime-2026-09-23-r15`, source implementation through `6498b893ce6f224765aa6bb24b396cc16f9d8dfe`.
+Runtime provenance: `runtime-2026-09-23-r16`, source implementation through `4b551f6e068457d11e8644fd2f60b95eca8ca2bd`.
 
 No curriculum content, item-selection rule, score calculation, mastery threshold, Hinting policy, Chapter Review policy or learning-model parameter changed.
 
