@@ -21,6 +21,15 @@ function json(body: unknown, status = 200) {
   });
 }
 
+function presentationIndex(value: unknown) {
+  if (typeof value !== "string") return -1;
+  const key = value.trim().toUpperCase();
+  if (!/^[A-Z]+$/.test(key)) return -1;
+  let n = 0;
+  for (const ch of key) n = n * 26 + (ch.charCodeAt(0) - 64);
+  return n - 1;
+}
+
 Deno.serve(async (req) => {
   if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
   if (req.method !== "POST") return json({ error: "method_not_allowed" }, 405);
@@ -112,6 +121,32 @@ Deno.serve(async (req) => {
     return json({ error: "item_not_found" }, 404);
   }
 
+  let gradingResponse: StudentResponse = payload.response;
+  let normalizedPresentationResponse: Record<string, unknown> | null = null;
+  if (item.item_type === "single_choice" && sessionItem) {
+    const { data: presentation, error: presentationError } = await admin.rpc(
+      "service_ensure_session_item_option_order",
+      { p_session_item_id: sessionItem.id },
+    );
+    if (presentationError || !presentation?.canonicalOptionOrder) {
+      return json({ error: "option_presentation_unavailable" }, 500);
+    }
+
+    const order = presentation.canonicalOptionOrder.map((key: unknown) => String(key));
+    const index = presentationIndex(payload.response.value);
+    if (index < 0 || index >= order.length) {
+      return json({ error: "invalid_option_presentation_key" }, 400);
+    }
+
+    const canonicalOptionKey = order[index];
+    gradingResponse = { ...payload.response, value: canonicalOptionKey };
+    normalizedPresentationResponse = {
+      value: canonicalOptionKey,
+      presentationValue: String(payload.response.value).trim().toUpperCase(),
+      optionPresentationVersion: String(presentation.algorithmVersion ?? "unknown"),
+    };
+  }
+
   const { data: answerRow, error: answerError } = await admin
     .from("item_answer_keys")
     .select("answer, tolerance, canonical_unit, accepted_units, feedback_code")
@@ -133,7 +168,7 @@ Deno.serve(async (req) => {
 
   let grade;
   try {
-    grade = gradeAnswer(key, payload.response);
+    grade = gradeAnswer(key, gradingResponse);
   } catch (err) {
     console.error("grade_error", err);
     return json({ error: "grading_failed" }, 500);
@@ -176,7 +211,7 @@ Deno.serve(async (req) => {
       p_item_id: item.id,
       p_skill_id: item.skill_id,
       p_response: payload.response,
-      p_normalized_response: grade.normalizedResponse ?? null,
+      p_normalized_response: normalizedPresentationResponse ?? grade.normalizedResponse ?? null,
       p_score: grade.score,
       p_correct: grade.correct,
       p_error_code: grade.errorCode,
@@ -200,7 +235,7 @@ Deno.serve(async (req) => {
       p_item_id: item.id,
       p_skill_id: item.skill_id,
       p_response: payload.response,
-      p_normalized_response: grade.normalizedResponse ?? null,
+      p_normalized_response: normalizedPresentationResponse ?? grade.normalizedResponse ?? null,
       p_score: grade.score,
       p_correct: grade.correct,
       p_error_code: grade.errorCode,
