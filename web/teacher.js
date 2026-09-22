@@ -283,17 +283,17 @@ async function openStudent(studentId) {
       <div class="mini-card"><span>Լրացուցիչ կրկնություններ</span><strong>${review?.optionalReviewsCompleted ?? 0}</strong></div>
       <div class="mini-card"><span>Ընթացիկ ծածկույթ</span><strong>${escapeHtml(coverage)}</strong></div>
       <div class="mini-card"><span>Ծածկույթի տոկոս</span><strong>${review?.currentCycleCoveragePercent == null ? "—" : `${review.currentCycleCoveragePercent}%`}</strong></div>
-      <div class="mini-card"><span>Եզակի հարցեր՝ ամբողջ ընթացքում</span><strong>${review?.lifetimeUniqueItemsSeen ?? 0}</strong></div>
-      <div class="mini-card"><span>Ճշգրիտ կրկնություններ</span><strong>${review?.exactRepeatCount ?? 0}</strong></div>
-      <div class="mini-card"><span>Բանկի սպառման դեպքեր</span><strong>${review?.poolExhaustionEventCount ?? 0}</strong></div>
-      <div class="mini-card"><span>Անկախ ճշգրտություն</span><strong>${review?.independentAccuracyPercent == null ? "—" : `${review.independentAccuracyPercent}%`}</strong></div>
-      <div class="mini-card"><span>Օգնությամբ պատասխաններ</span><strong>${review?.hintAssistedResponses ?? 0}</strong></div>
+      <div class="mini-card"><span>Տեսած տարբեր հարցեր</span><strong>${review?.lifetimeUniqueItemsSeen ?? 0}</strong></div>
+      <div class="mini-card"><span>Նույն հարցի կրկնություններ</span><strong>${review?.exactRepeatCount ?? 0}</strong></div>
+      <div class="mini-card"><span>Դեպքեր, երբ նոր հարց չէր մնացել</span><strong>${review?.poolExhaustionEventCount ?? 0}</strong></div>
+      <div class="mini-card"><span>Ինքնուրույն ճիշտ պատասխաններ</span><strong>${review?.independentAccuracyPercent == null ? "—" : `${review.independentAccuracyPercent}%`}</strong></div>
+      <div class="mini-card"><span>Օգնություն օգտագործած պատասխաններ</span><strong>${review?.hintAssistedResponses ?? 0}</strong></div>
     </section>
     <p class="subtle small">Գլխի կրկնության «ուշադրության» շեմերը դեռ չեն հաստատվել։ Ստորև ցուցադրվում են միայն դիտարկելի փաստերը, ոչ վերջնական դասակարգում։</p>
     <h3>Կրկնությունների պատմություն</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Տեսակ</th><th>Ցիկլ / սեսիա</th><th>Հարցեր</th><th>Ավարտ</th></tr></thead><tbody>${reviewHistory || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
     <h3>Գլխի կրկնության հմտությունների տվյալներ</h3>
-    <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հմտություն</th><th>Դիտարկումներ</th><th>Անկախ ճիշտ</th><th>Օգնությամբ</th><th>Սխալ՝ վերջին յուրացման ստուգման ժամանակ</th><th>Վիճակ</th></tr></thead><tbody>${reviewSkills || '<tr><td colspan="6">Գլխի կրկնության բավարար տվյալ դեռ չկա</td></tr>'}</tbody></table></div>
+    <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հմտություն</th><th>Դիտարկումներ</th><th>Ինքնուրույն ճիշտ</th><th>Օգնություն օգտագործած</th><th>Սխալ՝ վերջին յուրացման ստուգման ժամանակ</th><th>Վիճակ</th></tr></thead><tbody>${reviewSkills || '<tr><td colspan="6">Գլխի կրկնության բավարար տվյալ դեռ չկա</td></tr>'}</tbody></table></div>
     <h3>Հմտությունների յուրացում</h3><div class="teacher-skill-grid">${skillCards}</div>
     <h3>Վերջին փորձերը</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հարց</th><th>Արդյունք</th><th>Օգնություն</th><th>Ժամանակ</th></tr></thead><tbody>${attempts || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>`;
