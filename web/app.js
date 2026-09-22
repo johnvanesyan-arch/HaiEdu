@@ -141,7 +141,10 @@ function renderDashboard(data) {
     resume_session: "Շարունակել սեսիան",
     take_diagnostic: "Անցնել ախտորոշիչ",
     practice_skill: "Սկսել առաջարկվող վարժանքը",
-    unit_complete: "Բաժնի ընթացիկ չափանիշները բավարարված են"
+    required_chapter_review: "Անցնել պահանջվող Գլխի կրկնություն",
+    mastery_check_retry: "Կրկին անցնել յուրացման ստուգումը",
+    review_chapter: "Կրկնել գլուխը",
+    unit_complete: "Բաժնի ընթացիկ չափանիշները բավարարված են",
   }[recommendation.action] ?? "Հաջորդ քայլ";
 
   $("nextStepLabel").textContent = actionText;
@@ -217,6 +220,13 @@ async function resumeRecommendedAction() {
   }
   if (action === "take_diagnostic") return startSession("diagnostic");
   if (action === "practice_skill") return startSession("practice", dashboardData.recommendation.skill?.id ?? null);
+  if (action === "required_chapter_review" || action === "review_chapter") {
+    window.location.href = "./practice.html?mode=chapter_review";
+    return;
+  }
+  if (action === "mastery_check_retry") {
+    window.location.href = "./mastery.html";
+  }
 }
 
 async function resumeSession(session) {

@@ -1,5 +1,6 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -54,6 +55,12 @@ Deno.serve(async (req) => {
     if (skillsError) return json({ error: "skills_query_failed" }, 500);
     const skillRows = skills ?? [];
     const skillIds = skillRows.map((s) => s.id);
+    let curriculumReleaseId: string;
+    try {
+      curriculumReleaseId = await resolveActiveCurriculumRelease(admin, UNIT_CODE);
+    } catch {
+      return json({ error: "curriculum_release_unavailable" }, 503);
+    }
 
     const classIds = (classes ?? []).map((c) => c.id);
     const { data: memberships } = classIds.length
@@ -62,7 +69,7 @@ Deno.serve(async (req) => {
     const memberRows = memberships ?? [];
     const studentIds = [...new Set(memberRows.map((m) => m.student_id))];
 
-    const [profilesResult, masteryResult, attemptsResult, sessionsResult] = await Promise.all([
+    const [profilesResult, masteryResult, attemptsResult, sessionsResult, reviewSummaryResult, reviewSkillsResult] = await Promise.all([
       studentIds.length
         ? admin.from("profiles").select("id, display_name, created_at").in("id", studentIds)
         : Promise.resolve({ data: [] as any[] }),
@@ -75,12 +82,28 @@ Deno.serve(async (req) => {
       studentIds.length
         ? admin.from("learning_sessions").select("id, student_id, mode, status, target_skill_id, answered_count, planned_item_count, correct_count, assessment_result, score_percent, started_at, completed_at").in("student_id", studentIds).eq("unit_code", UNIT_CODE).order("started_at", { ascending: false }).limit(1000)
         : Promise.resolve({ data: [] as any[] }),
+      studentIds.length
+        ? admin.from("chapter_review_summary_v").select("*").eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).in("student_id", studentIds)
+        : Promise.resolve({ data: [] as any[] }),
+      studentIds.length
+        ? admin.from("chapter_review_skill_attention_inputs_v").select("*").eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).in("student_id", studentIds)
+        : Promise.resolve({ data: [] as any[] }),
     ]);
+    if ((reviewSummaryResult as any).error || (reviewSkillsResult as any).error) {
+      return json({ error: "chapter_review_analytics_unavailable" }, 503);
+    }
 
     const profileMap = new Map((profilesResult.data ?? []).map((p: any) => [p.id, p]));
     const masteryRows = masteryResult.data ?? [];
     const attemptRows = attemptsResult.data ?? [];
     const sessionRows = sessionsResult.data ?? [];
+    const reviewSummaryByStudent = new Map((reviewSummaryResult.data ?? []).map((row: any) => [row.student_id, row]));
+    const reviewSkillsByStudent = new Map<string, any[]>();
+    for (const row of reviewSkillsResult.data ?? []) {
+      const rows = reviewSkillsByStudent.get(row.student_id) ?? [];
+      rows.push(row);
+      reviewSkillsByStudent.set(row.student_id, rows);
+    }
 
     const studentSummaries = studentIds.map((studentId) => {
       const profile: any = profileMap.get(studentId);
@@ -93,6 +116,8 @@ Deno.serve(async (req) => {
       const activeSession = studentSessions.find((s: any) => s.status === "active") ?? null;
       const passedMastery = studentSessions.find((s: any) => s.mode === "mastery_check" && s.status === "completed" && s.assessment_result === "passed") ?? null;
       const latestDiagnostic = studentSessions.find((s: any) => s.mode === "diagnostic" && s.status === "completed") ?? null;
+      const review: any = reviewSummaryByStudent.get(studentId) ?? null;
+      const reviewSkills = (reviewSkillsByStudent.get(studentId) ?? []).sort((a, b) => a.skill_code.localeCompare(b.skill_code));
 
       const matrix = skillRows.map((skill) => {
         const row: any = masteryMap.get(skill.id);
@@ -120,11 +145,17 @@ Deno.serve(async (req) => {
         });
 
       let intervention = { action: "monitor", skillId: null as string | null, code: null as string | null, messageHy: "Շարունակել վերահսկել առաջընթացը։" };
-      if (passedMastery) {
-        intervention = { action: "unit_complete", skillId: null, code: null, messageHy: "Բաժին I-ը ավարտված է. mastery check-ը անցած է։" };
-      } else if (activeSession) {
+      if (activeSession) {
         const target = skillRows.find((s) => s.id === activeSession.target_skill_id);
         intervention = { action: "finish_active_session", skillId: target?.id ?? null, code: target?.code ?? null, messageHy: "Աշակերտն ունի չավարտված սեսիա. նախ ավարտել ընթացիկ աշխատանքը։" };
+      } else if (review?.lifecycle_state === "review_required_attempt_2" || review?.lifecycle_state === "review_required_attempt_3") {
+        intervention = { action: "required_chapter_review", skillId: null, code: null, messageHy: "Առաջնահերթ քայլ՝ ավարտել պահանջվող Գլխի կրկնությունը։" };
+      } else if (review?.lifecycle_state === "mastery_retry_2_ready" || review?.lifecycle_state === "mastery_retry_3_ready") {
+        intervention = { action: "mastery_check_retry", skillId: null, code: null, messageHy: "Պահանջվող կրկնությունն ավարտված է. յուրացման ստուգման հաջորդ փորձը հասանելի է։" };
+      } else if (review?.lifecycle_state === "mastery_failed_final") {
+        intervention = { action: "review_chapter", skillId: null, code: null, messageHy: "Յուրացման երեք փորձերն ավարտված են. շարունակել Գլխի կրկնությունը։" };
+      } else if (review?.lifecycle_state === "mastery_passed" || passedMastery) {
+        intervention = { action: "unit_complete", skillId: null, code: null, messageHy: "Բաժին I-ը ավարտված է. mastery check-ը անցած է։" };
       } else if (!studentAttempts.length) {
         intervention = { action: "take_diagnostic", skillId: null, code: null, messageHy: "Առաջին քայլ՝ անցնել Chapter I ախտորոշիչը։" };
       } else if (weak.length) {
@@ -146,6 +177,36 @@ Deno.serve(async (req) => {
           percent: latestDiagnostic.answered_count ? Math.round(Number(latestDiagnostic.correct_count) / Number(latestDiagnostic.answered_count) * 100) : 0,
         } : null,
         masteryCheck: passedMastery ? { passed: true, percent: Number(passedMastery.score_percent ?? 0) } : null,
+        chapterReview: review ? {
+          masteryStatus: review.lifecycle_state === "mastery_passed" ? "confirmed" : review.lifecycle_state === "mastery_failed_final" ? "not_demonstrated" : "in_progress",
+          lifecycleState: review.lifecycle_state,
+          attemptsUsed: Number(review.attempts_used),
+          maximumAttempts: Number(review.maximum_mastery_attempts),
+          passedOnAttempt: review.passed_on_attempt == null ? null : Number(review.passed_on_attempt),
+          requiredReviewsCompleted: Number(review.required_reviews_completed),
+          optionalReviewsCompleted: Number(review.optional_reviews_completed),
+          totalReviewsCompleted: Number(review.total_reviews_completed),
+          lastReviewAt: review.last_review_at,
+          currentCycle: review.current_review_cycle == null ? null : Number(review.current_review_cycle),
+          currentCycleUniqueSeen: review.current_cycle_unique_seen == null ? null : Number(review.current_cycle_unique_seen),
+          currentCycleEligiblePoolSize: review.current_cycle_eligible_pool_size == null ? null : Number(review.current_cycle_eligible_pool_size),
+          independentAccuracyPercent: review.review_independent_accuracy_percent == null ? null : Number(review.review_independent_accuracy_percent),
+          hintAssistedResponses: Number(review.hint_assisted_responses),
+          attentionPolicyStatus: "thresholds_not_governed",
+          skills: reviewSkills.map((row) => ({
+            skillId: row.skill_id, code: row.skill_code, nameHy: row.skill_name_hy,
+            reviewObservations: Number(row.review_observations),
+            independentObservations: Number(row.independent_observations),
+            independentCorrect: Number(row.independent_correct),
+            hintAssistedResponses: Number(row.hint_assisted_responses),
+            repeatErrors: Number(row.repeat_errors),
+            recentIndependentObservations: Number(row.recent_independent_observations),
+            recentIndependentCorrect: Number(row.recent_independent_correct),
+            failedLatestMastery: Boolean(row.failed_latest_mastery),
+            lastSeenAt: row.last_seen_at,
+            attentionState: row.attention_state,
+          })),
+        } : null,
         weakSkills: weak.slice(0, 3).map((w) => ({ skillId: w.skillId, code: w.code, nameHy: w.nameHy, percent: w.percent, band: w.band })),
         intervention,
         matrix,
@@ -174,6 +235,7 @@ Deno.serve(async (req) => {
     return json({
       teacher: { id: teacherId, displayName: teacherProfile.display_name?.trim() || "Ուսուցիչ" },
       unitCode: UNIT_CODE,
+      curriculumReleaseId,
       skills: skillRows.map((s) => ({ id: s.id, code: s.code, nameHy: s.name_hy })),
       classes: classPayload,
       totals: {

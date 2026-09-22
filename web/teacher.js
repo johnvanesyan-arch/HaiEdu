@@ -208,10 +208,15 @@ function renderRoster(klass) {
     const card = document.createElement("article");
     card.className = "roster-row";
     const weak = student.weakSkills?.map((s) => s.code.replace("PHY7-U01-", "")).join(", ") || "—";
+    const review = student.chapterReview;
+    const reviewSummary = review
+      ? `${review.totalReviewsCompleted} կրկնություն · պարտադիր ${review.requiredReviewsCompleted} · լրացուցիչ ${review.optionalReviewsCompleted}`
+      : "Գլխի կրկնության տվյալ դեռ չկա";
     card.innerHTML = `
       <div><button class="link-button roster-name" data-open-student="${student.id}">${escapeHtml(student.displayName)}</button><span class="subtle small">${student.latestActivityAt ? `Վերջին ակտիվություն՝ ${new Date(student.latestActivityAt).toLocaleString("hy-AM")}` : "Գործունեություն դեռ չկա"}</span></div>
       <div><span class="stat-label">Վերջին ճշգրտություն</span><strong>${student.recentAccuracy === null ? "—" : `${student.recentAccuracy}%`}</strong></div>
       <div><span class="stat-label">Ուշադրության հմտություններ</span><strong>${escapeHtml(weak)}</strong></div>
+      <div><span class="stat-label">Գլխի կրկնություն</span><strong>${escapeHtml(reviewSummary)}</strong></div>
       <div class="intervention-cell"><span class="stat-label">Հաջորդ առաջարկություն</span><strong>${escapeHtml(student.intervention?.messageHy ?? "—")}</strong></div>
       <div class="roster-actions"><button class="secondary small-button" type="button" data-open-student="${student.id}">Դիտել</button><button class="ghost small-button roster-remove" type="button" data-remove-student="${student.id}" data-student-name="${escapeHtml(student.displayName)}">Հեռացնել</button></div>`;
     roster.appendChild(card);
@@ -251,12 +256,37 @@ async function openStudent(studentId) {
     </div>`).join("");
   const attempts = data.recentAttempts.map((a) => `
     <tr><td>${escapeHtml(a.itemCode ?? "—")}</td><td>${a.correct ? "✓" : "✗"}</td><td>${a.hintUsed ? "այո" : "ոչ"}</td><td>${new Date(a.createdAt).toLocaleString("hy-AM")}</td></tr>`).join("");
+  const review = data.chapterReview;
+  const reviewHistory = (review?.history ?? []).map((row) => `
+    <tr><td>${row.qualifying ? "Պարտադիր" : "Լրացուցիչ"}</td><td>${row.cycleNumber ?? "—"} / ${row.sessionNumber ?? "—"}</td><td>${row.targetQuestions}</td><td>${row.completedAt ? new Date(row.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`).join("");
+  const reviewSkills = (review?.skills ?? []).map((s) => `
+    <tr><td>${escapeHtml(s.code.replace("PHY7-U01-", ""))}</td><td>${s.reviewObservations}</td><td>${s.independentCorrect} / ${s.independentObservations}</td><td>${s.hintAssistedResponses}</td><td>${s.failedLatestMastery ? "Այո" : "Ոչ"}</td><td>Շեմերը դեռ սահմանված չեն</td></tr>`).join("");
+  const masteryStatus = review?.masteryStatus === "confirmed" ? "Հաստատված"
+    : review?.masteryStatus === "not_demonstrated" ? "Չի հաստատվել" : "Ընթացքի մեջ";
+  const coverage = review?.currentCycleEligiblePoolSize
+    ? `${review.currentCycleUniqueSeen ?? 0} / ${review.currentCycleEligiblePoolSize}` : "—";
   $("studentDrawerContent").innerHTML = `
     <section class="drawer-summary-grid">
       <div class="mini-card"><span>Ախտորոշիչ</span><strong>${data.latestDiagnostic ? `${data.latestDiagnostic.percent}%` : "—"}</strong></div>
       <div class="mini-card"><span>Յուրացման ստուգում</span><strong>${data.latestMasteryCheck ? `${escapeHtml(data.latestMasteryCheck.result)} · ${data.latestMasteryCheck.percent}%` : "—"}</strong></div>
     </section>
     <section class="teacher-intervention"><strong>Առաջարկվող միջամտություն</strong><p>${escapeHtml(data.recommendation?.messageHy ?? "—")}</p></section>
+    <h3>Գլխի յուրացում և կրկնություն</h3>
+    <section class="drawer-summary-grid">
+      <div class="mini-card"><span>Յուրացման վիճակ</span><strong>${escapeHtml(masteryStatus)}</strong></div>
+      <div class="mini-card"><span>Փորձեր</span><strong>${review ? `${review.attemptsUsed} / ${review.maximumAttempts}` : "—"}</strong></div>
+      <div class="mini-card"><span>Անցած փորձ</span><strong>${review?.passedOnAttempt ?? "—"}</strong></div>
+      <div class="mini-card"><span>Պարտադիր կրկնություններ</span><strong>${review?.requiredReviewsCompleted ?? 0}</strong></div>
+      <div class="mini-card"><span>Լրացուցիչ կրկնություններ</span><strong>${review?.optionalReviewsCompleted ?? 0}</strong></div>
+      <div class="mini-card"><span>Ընթացիկ ծածկույթ</span><strong>${escapeHtml(coverage)}</strong></div>
+      <div class="mini-card"><span>Անկախ ճշգրտություն</span><strong>${review?.independentAccuracyPercent == null ? "—" : `${review.independentAccuracyPercent}%`}</strong></div>
+      <div class="mini-card"><span>Օգնությամբ պատասխաններ</span><strong>${review?.hintAssistedResponses ?? 0}</strong></div>
+    </section>
+    <p class="subtle small">Review-ի «ուշադրության» շեմերը դեռ չեն հաստատվել։ Ստորև ցուցադրվում են միայն դիտարկելի փաստերը, ոչ վերջնական դասակարգում։</p>
+    <h3>Կրկնությունների պատմություն</h3>
+    <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Տեսակ</th><th>Ցիկլ / սեսիա</th><th>Հարցեր</th><th>Ավարտ</th></tr></thead><tbody>${reviewHistory || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
+    <h3>Review-ի հմտությունների ապացույց</h3>
+    <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հմտություն</th><th>Դիտարկումներ</th><th>Անկախ ճիշտ</th><th>Օգնությամբ</th><th>Վերջին Mastery-ում սխալ</th><th>Վիճակ</th></tr></thead><tbody>${reviewSkills || '<tr><td colspan="6">Բավարար Review տվյալ դեռ չկա</td></tr>'}</tbody></table></div>
     <h3>Հմտությունների յուրացում</h3><div class="teacher-skill-grid">${skillCards}</div>
     <h3>Վերջին փորձերը</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հարց</th><th>Արդյունք</th><th>Օգնություն</th><th>Ժամանակ</th></tr></thead><tbody>${attempts || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>`;

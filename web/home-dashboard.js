@@ -29,6 +29,40 @@ function patchPrimaryForMastery(data) {
   resume.dataset.masteryRoute = "false";
   delete resume.dataset.masteryRemediationSkill;
 
+  if (data.lifecycleState === "review_required_attempt_2" || data.lifecycleState === "review_required_attempt_3") {
+    $("nextStepLabel").textContent = "Պահանջվող Գլխի կրկնություն";
+    $("nextStepSkill").textContent = "Յուրացման հաջորդ փորձից առաջ";
+    $("recommendationTitle").textContent = "Ավարտեք Գլխի կրկնությունը";
+    $("recommendationText").textContent = "Այս կրկնությունը պարտադիր է՝ յուրացման ստուգումը կրկին անցնելու համար։";
+    resume.disabled = false;
+    resume.textContent = "Անցնել Գլխի կրկնություն";
+    resume.dataset.masteryRoute = "review";
+    return;
+  }
+
+  if (data.lifecycleState === "mastery_retry_2_ready" || data.lifecycleState === "mastery_retry_3_ready") {
+    const attempt = data.nextAttemptNumber ?? "—";
+    $("nextStepLabel").textContent = "Յուրացման ստուգումը հասանելի է";
+    $("nextStepSkill").textContent = `Փորձ ${attempt} / 3`;
+    $("recommendationTitle").textContent = "Կրկին անցեք յուրացման ստուգումը";
+    $("recommendationText").textContent = "Պահանջվող Գլխի կրկնությունն ավարտված է։";
+    resume.disabled = false;
+    resume.textContent = `Սկսել փորձ ${attempt} / 3`;
+    resume.dataset.masteryRoute = "mastery";
+    return;
+  }
+
+  if (data.lifecycleState === "mastery_failed_final") {
+    $("nextStepLabel").textContent = "Յուրացման փորձերն ավարտված են";
+    $("nextStepSkill").textContent = "Փորձեր՝ 3 / 3";
+    $("recommendationTitle").textContent = "Շարունակեք Գլխի կրկնությունը";
+    $("recommendationText").textContent = "Նոր յուրացման փորձ հասանելի չէ, բայց կրկնությունը միշտ բաց է։";
+    resume.disabled = false;
+    resume.textContent = "Կրկնել գլուխը";
+    resume.dataset.masteryRoute = "review";
+    return;
+  }
+
   if (data.unitComplete) {
     $("nextStepLabel").textContent = "Գլուխ I-ը հաստատված է";
     $("nextStepSkill").textContent = "Mastery check · հաջող";
@@ -78,7 +112,13 @@ function patchPrimaryForMastery(data) {
 }
 
 function renderAssessment(data) {
-  if (data.unitComplete) {
+  if (data.lifecycleState === "mastery_failed_final") {
+    setAssessment("Փորձերն ավարտված են", "Յուրացման երեք փորձերն ավարտված են։ Գլխի կրկնությունը հասանելի է։", "warning", "./practice.html?mode=chapter_review", "Կրկնել գլուխը");
+  } else if (data.lifecycleState === "review_required_attempt_2" || data.lifecycleState === "review_required_attempt_3") {
+    setAssessment("Կրկնություն է պահանջվում", "Ավարտեք Գլխի կրկնությունը՝ հաջորդ փորձը բացելու համար։", "warning", "./practice.html?mode=chapter_review", "Անցնել կրկնություն");
+  } else if (data.lifecycleState === "mastery_retry_2_ready" || data.lifecycleState === "mastery_retry_3_ready") {
+    setAssessment("Հաջորդ փորձը հասանելի է", `Յուրացման ստուգում · Փորձ ${data.nextAttemptNumber ?? "—"} / 3`, "info", "./mastery.html", "Բացել ստուգումը");
+  } else if (data.unitComplete || data.lifecycleState === "mastery_passed") {
     setAssessment(
       "Հաստատված",
       `Գլուխ I-ի յուրացումը հաստատված է${data.latestCheck?.percent != null ? ` · ${data.latestCheck.percent}%` : ""}։`,
@@ -150,20 +190,29 @@ async function refreshAssessment() {
   const content = $("dashboardContent");
   if (!content || content.classList.contains("hidden")) return;
   busy = true;
-  const { data, error } = await supabase.functions.invoke("get-mastery-check-status", { body: {} });
+  const [{ data: statusData, error: statusError }, { data: lifecycleData, error: lifecycleError }] = await Promise.all([
+    supabase.functions.invoke("get-mastery-check-status", { body: {} }),
+    supabase.functions.invoke("get-chapter-mastery-lifecycle", { body: {} }),
+  ]);
   busy = false;
-  if (error) {
+  if (statusError || lifecycleError) {
     setAssessment("Չհաջողվեց բեռնել", "Յուրացման ստուգման վիճակը հիմա հասանելի չէ։", "danger", "./assessment.html", "Բացել");
     handleRequestedResume();
     return;
   }
-  renderAssessment(data);
+  renderAssessment({ ...(statusData ?? {}), ...(lifecycleData ?? {}) });
   handleRequestedResume();
 }
 
 const resume = $("resumeLearningBtn");
 resume?.addEventListener("click", (event) => {
-  if (resume.dataset.masteryRoute === "true") {
+  if (resume.dataset.masteryRoute === "review") {
+    event.preventDefault();
+    event.stopImmediatePropagation();
+    window.location.href = "./practice.html?mode=chapter_review";
+    return;
+  }
+  if (resume.dataset.masteryRoute === "mastery" || resume.dataset.masteryRoute === "true") {
     event.preventDefault();
     event.stopImmediatePropagation();
     window.location.href = "./mastery.html";

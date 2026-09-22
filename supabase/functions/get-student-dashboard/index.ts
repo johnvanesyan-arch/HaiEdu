@@ -99,13 +99,16 @@ Deno.serve(async (req) => {
     { data: activeRows },
     { data: diagnosticRows },
     { data: prerequisiteRows },
+    { data: chapterMasteryRows },
   ] = await Promise.all([
     admin.from("student_skill_mastery_by_release").select("skill_id, mastery_score, evidence_count, status").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds),
     admin.from("attempts").select("skill_id, item_id, correct, hint_used, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(500),
     admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
     admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, completed_at, started_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "diagnostic").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
     admin.from("skill_prerequisites").select("skill_id, prerequisite_skill_id").in("skill_id", skillIds),
+    admin.from("chapter_mastery_states").select("lifecycle_state, attempts_used, passed_on_attempt").eq("student_id", studentId).eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).limit(1),
   ]);
+  const chapterMastery = chapterMasteryRows?.[0] ?? null;
 
   const attempts = (attemptRows ?? []) as AttemptRow[];
   const masteryMap = new Map((masteryRows ?? []).map((r) => [
@@ -188,27 +191,38 @@ Deno.serve(async (req) => {
   const activeTarget = active?.target_skill_id ? skillMap.find((s) => s.id === active.target_skill_id) : null;
   const completedSkills = skillMap.filter((s) => s.complete).length;
 
-  let recommendedAction: "resume_session" | "take_diagnostic" | "practice_skill" | "unit_complete";
+  let recommendedAction: "resume_session" | "take_diagnostic" | "practice_skill" | "unit_complete" | "required_chapter_review" | "mastery_check_retry" | "review_chapter";
   if (active) recommendedAction = "resume_session";
+  else if (chapterMastery?.lifecycle_state === "review_required_attempt_2" || chapterMastery?.lifecycle_state === "review_required_attempt_3") recommendedAction = "required_chapter_review";
+  else if (chapterMastery?.lifecycle_state === "mastery_retry_2_ready" || chapterMastery?.lifecycle_state === "mastery_retry_3_ready") recommendedAction = "mastery_check_retry";
+  else if (chapterMastery?.lifecycle_state === "mastery_failed_final") recommendedAction = "review_chapter";
+  else if (chapterMastery?.lifecycle_state === "mastery_passed") recommendedAction = "unit_complete";
   else if (!latestDiagnostic) recommendedAction = "take_diagnostic";
   else if (recommended) recommendedAction = "practice_skill";
   else recommendedAction = "unit_complete";
 
   const reasonHy = recommendedAction === "resume_session"
     ? "Դուք ունեք չավարտված սեսիա։ Շարունակեք այնտեղից, որտեղ կանգ եք առել։"
+    : recommendedAction === "required_chapter_review"
+      ? "Յուրացման ստուգման հաջորդ փորձից առաջ պետք է ավարտեք պահանջվող Գլխի կրկնությունը։"
+    : recommendedAction === "mastery_check_retry"
+      ? "Պահանջվող Գլխի կրկնությունն ավարտված է։ Յուրացման ստուգման հաջորդ փորձը հասանելի է։"
+    : recommendedAction === "review_chapter"
+      ? "Յուրացման ստուգման երեք փորձերն ավարտված են։ Շարունակեք Գլխի կրկնությունը՝ հմտությունները ամրապնդելու համար։"
     : recommendedAction === "take_diagnostic"
       ? "Սկսեք ախտորոշիչից, որպեսզի համակարգը կազմի հմտությունների քարտեզ։"
       : recommendedAction === "practice_skill"
         ? `Խորհուրդ է տրվում սկսել ${recommended?.code} հմտությունից՝ հաշվի առնելով ախտորոշիչ արդյունքը և նախապայմանները։`
         : "Այս բաժնի ընթացիկ հմտությունները ամրապնդված են։";
 
+  const recommendationSkill = recommendedAction === "practice_skill" ? recommended : null;
   const recommendationSnapshot = {
     action: recommendedAction,
-    skill: recommended ? {
-      id: recommended.id,
-      code: recommended.code,
-      nameHy: recommended.nameHy,
-      band: recommended.diagnostic.band,
+    skill: recommendationSkill ? {
+      id: recommendationSkill.id,
+      code: recommendationSkill.code,
+      nameHy: recommendationSkill.nameHy,
+      band: recommendationSkill.diagnostic.band,
     } : null,
     reasonHy,
   };
@@ -219,7 +233,7 @@ Deno.serve(async (req) => {
     policyScope: "dashboard_orchestration",
     surface: "student_dashboard_api",
     action: recommendedAction,
-    targetSkillId: recommended?.id ?? active?.target_skill_id ?? null,
+    targetSkillId: recommendationSkill?.id ?? active?.target_skill_id ?? null,
     curriculumReleaseId,
     learningModelConfigurationId: learningModel.id,
     modelProvenanceStatus: learningModel.provenanceStatus,
@@ -235,9 +249,11 @@ Deno.serve(async (req) => {
       latestDiagnosticId: latestDiagnostic?.id ?? null,
       completedSkills,
       totalSkills: skillMap.length,
-      recommendedSkillId: recommended?.id ?? null,
-      recommendedSkillBand: recommended?.diagnostic.band ?? null,
-      recommendedSkillMastery: recommended?.mastery?.score ?? null,
+      recommendedSkillId: recommendationSkill?.id ?? null,
+      recommendedSkillBand: recommendationSkill?.diagnostic.band ?? null,
+      recommendedSkillMastery: recommendationSkill?.mastery?.score ?? null,
+      chapterMasteryLifecycleState: chapterMastery?.lifecycle_state ?? null,
+      chapterMasteryAttemptsUsed: chapterMastery?.attempts_used ?? 0,
     },
     recommendationSnapshot,
   });
@@ -277,6 +293,7 @@ Deno.serve(async (req) => {
       policyScope: "dashboard_orchestration",
       modelConfigurationId: learningModel.id,
       modelProvenanceStatus: learningModel.provenanceStatus,
+      secondaryAction: chapterMastery?.lifecycle_state === "mastery_passed" ? "review_chapter" : null,
     },
   });
 });
