@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.29  
+**Roadmap version:** 2.30  
 **Updated:** 2026-09-22  
 **Current programme status:** Sprints 11, 11.5 and 12 are ✅ complete. Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle is in closure verification: 12.5A–W are deployed and authenticated desktop learner/teacher QA passes after learner-copy corrections. Mobile rendering plus required-Review/retry and final-failure browser branches remain open in 12.5X–Y. Sprint 13 remains explicitly on hold until Sprint 12.5 closes.
 
@@ -492,6 +492,49 @@ Institution / School
 ```
 
 The curriculum is shared centrally. Classes are school/teacher-specific delivery instances.
+
+### Teacher analytics context scoping
+
+Teacher analytics must never rely on an implicit or hard-coded "current chapter". Every learner-analytics request and rendered analytics surface must carry an explicit academic context:
+
+```text
+Class / course assignment
+  -> Subject Programme Version
+      -> Unit / Chapter
+          -> Student analytics
+```
+
+The teacher UI must provide an explicit chapter/unit selector within the selected class/course context. A chapter-scoped student drawer must display the subject/grade, chapter sequence/code and localized chapter title immediately above chapter-specific analytics such as mastery attempts, Chapter Review, skill evidence and interventions.
+
+The API contract must expose a canonical context object sufficient to render and authorize that scope, including at least:
+
+- class/course assignment identity;
+- subject and grade identity/display label;
+- subject-programme version;
+- curriculum release/version;
+- unit/chapter ID and code;
+- unit/chapter sequence or display number;
+- localized unit/chapter title.
+
+Teacher-dashboard queries must resolve skills, attempts, learning sessions, mastery checks, Chapter Reviews and recommendations from the selected programme/unit. They must not use global constants such as `UNIT_CODE`, code-prefix filters such as `PHY7-U01-S%`, or UI strings that assume Physics 7 / Chapter I.
+
+The selected academic context must be server-validated against the teacher's legitimate class/course assignment before analytics are returned. Changing the selected chapter must not leak or mix evidence from another unit, subject, grade, class or curriculum release.
+
+The UI should preserve the selected class/course/unit context in stable navigation state (URL/query state or equivalent) so refresh, back-navigation and deep links return to the same scoped analytics view.
+
+Course-level aggregation is a separate presentation layer. Chapter-level mastery/review metrics remain chapter-scoped and must not be silently aggregated across units.
+
+**Sprint 14 acceptance checks for this slice:**
+
+- one teacher can switch between at least two chapters in the same course and see distinct chapter-specific analytics;
+- the same teacher can switch between at least two assigned subject/course contexts without cross-context evidence bleed;
+- student drawer headings and roster analytics identify or inherit an unambiguous selected chapter context;
+- APIs reject a unit/programme context not assigned to the requesting teacher/class;
+- no teacher analytics path depends on `PHY7-U01`, a fixed skill count, or a singleton `UNIT_CODE`;
+- existing Physics 7 Chapter I data remains valid under the generalized context model;
+- regression coverage proves that class/course/chapter context survives refresh/navigation and that records from different units/releases cannot collide.
+
+The current Physics 7 Chapter I heading introduced during Sprint 12.5 is a transitional UX clarification only; Sprint 14 replaces that fixed display context with this data-driven selector and API contract.
 
 ### Authorization architecture
 
