@@ -7,6 +7,7 @@ const $ = (id) => document.getElementById(id);
 let dashboard = null;
 let selectedClassId = null;
 let rosterQuery = "";
+let matrixStudentFilter = "all";
 let dashboardLoadVersion = 0;
 
 function escapeHtml(value) {
@@ -181,17 +182,88 @@ function matrixCell(skill) {
   return `<td class="matrix-cell ${escapeHtml(skill.band)}" title="${escapeHtml(skill.nameHy)}">${escapeHtml(label)}</td>`;
 }
 
+function studentHasNeedsSupport(student) {
+  return (student.matrix ?? []).some((skill) => skill.band === "needs_support");
+}
+
+function studentHasRequiredReview(student) {
+  return ["review_required_attempt_2", "review_required_attempt_3"].includes(student.chapterReview?.lifecycleState);
+}
+
+function studentMasteryConfirmed(student) {
+  return student.chapterReview?.masteryStatus === "confirmed" || student.masteryCheck?.passed === true;
+}
+
+function matchesMatrixFilter(student) {
+  if (matrixStudentFilter === "needs_support") return studentHasNeedsSupport(student);
+  if (matrixStudentFilter === "required_review") return studentHasRequiredReview(student);
+  if (matrixStudentFilter === "mastery_confirmed") return studentMasteryConfirmed(student);
+  if (matrixStudentFilter === "no_activity") return !student.latestActivityAt;
+  return true;
+}
+
+function renderMatrixSummary(klass) {
+  const students = klass.students ?? [];
+  $("matrixStudentTotal").textContent = String(students.length);
+  $("matrixMasteredTotal").textContent = String(students.filter(studentMasteryConfirmed).length);
+  $("matrixNeedsSupportTotal").textContent = String(students.filter(studentHasNeedsSupport).length);
+  $("matrixRequiredReviewTotal").textContent = String(students.filter(studentHasRequiredReview).length);
+  $("matrixNoActivityTotal").textContent = String(students.filter((student) => !student.latestActivityAt).length);
+
+  const skills = dashboard.skills ?? [];
+  const attention = skills.map((skill, index) => {
+    let needsSupport = 0;
+    let developing = 0;
+    for (const student of students) {
+      const cell = student.matrix?.[index];
+      if (cell?.band === "needs_support") needsSupport += 1;
+      if (cell?.band === "developing") developing += 1;
+    }
+    return {
+      code: skill.code.replace("PHY7-U01-", ""),
+      nameHy: skill.nameHy,
+      needsSupport,
+      developing,
+      total: needsSupport + developing,
+    };
+  }).filter((row) => row.total > 0)
+    .sort((a, b) => b.needsSupport - a.needsSupport || b.total - a.total || a.code.localeCompare(b.code))
+    .slice(0, 3);
+
+  $("matrixAttentionSummary").innerHTML = attention.length
+    ? attention.map((row) => `
+        <span class="matrix-attention-chip" title="${escapeHtml(row.nameHy)}">
+          <strong>${escapeHtml(row.code)}</strong>
+          <span>${row.needsSupport} աջակցություն · ${row.developing} զարգացող</span>
+        </span>`).join("")
+    : '<span class="subtle small">Կարմիր կամ դեղին հմտություններ չկան։</span>';
+}
+
 function renderMatrix(klass) {
   const skills = dashboard.skills ?? [];
+  const allStudents = klass.students ?? [];
+  const students = allStudents.filter(matchesMatrixFilter);
+  renderMatrixSummary(klass);
+
   const header = skills.map((s) => `<th title="${escapeHtml(s.nameHy)}">${escapeHtml(s.code.replace("PHY7-U01-", ""))}</th>`).join("");
-  const rows = (klass.students ?? []).map((student) => `
+  const rows = students.map((student) => `
     <tr>
       <th class="student-matrix-name"><button class="link-button" data-student="${student.id}">${escapeHtml(student.displayName)}</button></th>
       ${student.matrix.map(matrixCell).join("")}
     </tr>`).join("");
-  $("matrixWrap").innerHTML = klass.students.length
-    ? `<table class="skill-matrix"><thead><tr><th>Աշակերտ</th>${header}</tr></thead><tbody>${rows}</tbody></table>`
-    : '<div class="teacher-empty-state"><strong>Աշակերտ դեռ չկա</strong><p class="subtle small">Պատճենեք վերևի կոդը կամ հրավերի հղումը և ուղարկեք աշակերտներին։</p></div>';
+
+  $("matrixVisibleCount").textContent = matrixStudentFilter === "all"
+    ? `${students.length} աշակերտ`
+    : `Ցուցադրվում է ${students.length} / ${allStudents.length} աշակերտ`;
+
+  if (!allStudents.length) {
+    $("matrixWrap").innerHTML = '<div class="teacher-empty-state"><strong>Աշակերտ դեռ չկա</strong><p class="subtle small">Պատճենեք վերևի կոդը կամ հրավերի հղումը և ուղարկեք աշակերտներին։</p></div>';
+  } else if (!students.length) {
+    $("matrixWrap").innerHTML = '<div class="matrix-empty-filter">Այս ֆիլտրին համապատասխանող աշակերտ չկա։</div>';
+  } else {
+    $("matrixWrap").innerHTML = `<table class="skill-matrix"><thead><tr><th>Աշակերտ</th>${header}</tr></thead><tbody>${rows}</tbody></table>`;
+  }
+
   $("matrixWrap").querySelectorAll("[data-student]").forEach((el) => el.addEventListener("click", () => openStudent(el.dataset.student)));
 }
 
@@ -432,6 +504,11 @@ $("studentSearchInput").addEventListener("input", (event) => {
   rosterQuery = event.target.value || "";
   const klass = selectedClass();
   if (klass) renderRoster(klass);
+});
+$("matrixStudentFilter").addEventListener("change", (event) => {
+  matrixStudentFilter = event.target.value || "all";
+  const klass = selectedClass();
+  if (klass) renderMatrix(klass);
 });
 
 document.addEventListener("keydown", (event) => {
