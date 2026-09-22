@@ -1,6 +1,6 @@
 # Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status:** 🟡 Active — 12.5A–F deployed; 12.5G–K next
+**Status:** 🟡 Active — 12.5A–K deployed; 12.5L–O next
 
 **Placement:** After Sprint 12 calibration work and before Sprint 13 Chapter I production release
 
@@ -1247,3 +1247,20 @@ Deployed whole-chapter Review cycles and reconstructable item-level selection pr
 Verification included focused automated tests plus a rollback-only live lifecycle probe. The probe created Cycle 1 / Session 1 with 12 immutable exposures across all 10 skills and zero repeat/pool-exhaustion flags, then rolled the data back.
 
 Runtime build: `runtime-2026-09-21-r7`; `start-learning-session` v17. Learning parameters remain unchanged.
+
+## Implementation update — 2026-09-22 — 12.5G–K
+
+Completed the learner-facing mastery lifecycle and Chapter Review experience:
+
+- added an authenticated, student-scoped `get-chapter-mastery-lifecycle` contract backed by the current curriculum release and immutable policy version;
+- exposed authoritative attempts used/remaining, next attempt, pass attempt, mandatory Review, optional Review and final-failure state without adding a reset route;
+- routed failed Attempts 1 and 2 to required whole-chapter Review and exposed Attempts 2 and 3 only after qualifying completion;
+- rendered a distinct permanent final-failure state after Attempt 3, with no Attempt 4 learner control;
+- preserved optional Chapter Review after pass or final failure without altering the terminal mastery state;
+- added natural Armenian pass, retry, required-Review and final-failure copy;
+- clarified that Chapter Review covers the full chapter and that weak skills may recur, without exposing internal selection-reason codes;
+- added focused regression coverage for authentication, student scoping, terminal states, required/optional Review and absence of casual reset controls.
+
+Verification: 9/9 focused lifecycle and Review-cycle tests pass. The live endpoint rejects an unauthenticated request with `401 unauthorized`. The deployed function uses its own JWT/user, live-session and Physics 7 entitlement checks; legacy gateway JWT verification is disabled consistently with the existing authenticated function pattern.
+
+Next: 12.5L–O adds teacher Review analytics, defines the Review-specific attention model without premature thresholds, isolates Review evidence, and integrates recommendations.
