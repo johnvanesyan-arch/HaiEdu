@@ -54,7 +54,7 @@ function hasDraftAnswer() {
 
 function syncHelpVisibility() {
   const practiceVisible = !practicePanel.classList.contains("hidden");
-  const isPractice = sessionMode.textContent.trim() === "Վարժանք";
+  const isHelpEnabledMode = ["Վարժանք", "Գլխի կրկնություն"].includes(sessionMode.textContent.trim());
   const answerSubmitted = !feedback.classList.contains("hidden");
   const preSubmit = !answerSubmitted;
   const draftAnswerPresent = preSubmit && hasDraftAnswer();
@@ -64,7 +64,7 @@ function syncHelpVisibility() {
 
   helpControls.classList.toggle(
     "hidden",
-    !(practiceVisible && isPractice && hasQuestion && ((preSubmit && !draftAnswerPresent) || incorrectAnswered)),
+    !(practiceVisible && isHelpEnabledMode && hasQuestion && ((preSubmit && !draftAnswerPresent) || incorrectAnswered)),
   );
 
   if (currentCode !== lastItemCode) {
