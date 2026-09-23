@@ -34,6 +34,33 @@ test('returns a server-authorized context for the selected second unit', async (
   assert.equal(context.unitSequence, 2);
 });
 
+test('same programme in a second school is visible only to its assigned teacher', async () => {
+  const schoolB = {
+    teacher_assignments: { school_id: 'school-b', class_id: 'class-b', academic_year_id: 'year-b', teacher_membership_id: 'member-b' },
+    institutional_memberships: { id: 'member-b', school_id: 'school-b', person_id: 'teacher-b' },
+    classes: { id: 'class-b', school_id: 'school-b', academic_year_id: 'year-b' },
+    academic_years: { id: 'year-b', school_id: 'school-b' },
+  };
+  assert.equal((await resolve(schoolB, 'teacher-b')).schoolId, 'school-b');
+  await assert.rejects(resolve(schoolB, 'teacher-a'), AcademicContextDenied);
+});
+
+test('another subject and grade can use the same authorized context contract', async () => {
+  const subjectB = {
+    teacher_assignments: { subject_program_id: 'program-b' },
+    classes: { subject_id: 'subject-b', grade_id: 'grade-8' },
+    subject_programs: { id: 'program-b', subject_id: 'subject-b', grade_id: 'grade-8' },
+    curriculum_releases: { subject_program_id: 'program-b' },
+    units: { subject_program_id: 'program-b', code: 'SUB8-U02' },
+    subjects: { id: 'subject-b', code: 'subject-b' },
+    grades: { id: 'grade-8', grade_number: 8 },
+  };
+  const context = await resolve(subjectB);
+  assert.equal(context.subjectCode, 'subject-b');
+  assert.equal(context.gradeNumber, 8);
+  assert.equal(context.unitCode, 'SUB8-U02');
+});
+
 for (const [name, changes, teacher, choice] of [
   ['another teacher', {}, 'teacher-b', selection],
   ['cross-school class', { classes: { school_id: 'school-b' } }, 'teacher-a', selection],
