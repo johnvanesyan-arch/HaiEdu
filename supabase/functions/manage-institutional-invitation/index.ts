@@ -52,18 +52,39 @@ Deno.serve(async (req) => {
     }
     if (body?.action !== "issue") return json({ error: "invalid_action" }, 400);
     const hours = body.expiresInHours ?? 48;
-    if (!asUuid(body.schoolId) || !asUuid(body.recipientUserId) ||
+    const email = typeof body.recipientEmail === "string" ? body.recipientEmail.trim() : null;
+    if (!asUuid(body.schoolId) ||
+        (!asUuid(body.recipientUserId) && (!email || email.length > 320)) ||
+        (body.recipientUserId != null && email != null) ||
         !["student", "teacher"].includes(String(body.role)) ||
         (body.classId != null && !asUuid(body.classId)) ||
         (body.assignmentId != null && !asUuid(body.assignmentId)) ||
         !Number.isInteger(hours) || Number(hours) < 1 || Number(hours) > 168) {
       return json({ error: "invalid_invitation_request" }, 400);
     }
+    const { data: memberships, error: membershipError } = await admin.from("institutional_memberships")
+      .select("role, valid_from, valid_to")
+      .eq("school_id", body.schoolId).eq("person_id", actorId).eq("status", "active");
+    const now = Date.now();
+    if (membershipError || !(memberships ?? []).some((membership: any) =>
+      ["teacher", "school_admin"].includes(membership.role) &&
+      Date.parse(membership.valid_from) <= now &&
+      (membership.valid_to === null || Date.parse(membership.valid_to) > now))) {
+      return json({ error: "invitation_not_authorized" }, 403);
+    }
+    let recipientId = body.recipientUserId;
+    if (email) {
+      const { data: found, error: lookupError } = await admin.rpc("service_lookup_invitee_by_email_14b", {
+        p_email: email, p_role: body.role,
+      });
+      if (lookupError || !found) return json({ error: "invitation_not_authorized" }, 403);
+      recipientId = found;
+    }
     const plaintext = hex(crypto.getRandomValues(new Uint8Array(32)));
     const digest = hex(new Uint8Array(await crypto.subtle.digest("SHA-256", new TextEncoder().encode(plaintext))));
     const expiresAt = new Date(Date.now() + Number(hours) * 60 * 60 * 1000).toISOString();
     const { data: invitationId, error } = await admin.rpc("service_issue_institutional_invitation_14b", {
-      p_actor: actorId, p_recipient: body.recipientUserId, p_school: body.schoolId,
+      p_actor: actorId, p_recipient: recipientId, p_school: body.schoolId,
       p_role: body.role, p_class: body.classId ?? null,
       p_assignment: body.assignmentId ?? null, p_token_digest: digest, p_expires_at: expiresAt,
     });
