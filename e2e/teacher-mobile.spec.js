@@ -6,7 +6,7 @@ test("@mobile teacher dashboard contains overflow inside its intended scroller",
 
   await page.goto("/teacher.html");
 
-  await expect(page).toHaveURL(/\/teacher\.html(?:\?.*)?$/);
+  await expect(page).toHaveURL(/\/teacher(?:\.html)?(?:\?.*)?$/);
   await expect(page.locator("#dashboardPanel")).toBeVisible();
   await expect(page.getByRole("heading", { name: /Բարի գալուստ/ })).toBeVisible();
   await expect(page.getByRole("button", { name: "Դուրս գալ" })).toBeVisible();
@@ -32,4 +32,3 @@ test("@mobile teacher dashboard contains overflow inside its intended scroller",
     fullPage: true,
   });
 });
-
