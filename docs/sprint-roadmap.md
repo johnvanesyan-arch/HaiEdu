@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.35  
+**Roadmap version:** 2.36  
 **Updated:** 2026-09-23  
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 academic architecture planning began on 2026-09-23 with a bounded 14A implementation plan; no tenant migration or release gate has been completed.
 
@@ -99,7 +99,7 @@ For the current Sprint 11 state:
 | 12 | Learning-Model Calibration | ✅ | 12A.1–12A.5 complete; 12B reviewed the feasibility evidence and recorded an immutable deferred/no-change disposition. No learning parameter changed. |
 | 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | 🟡 | 12.5A–Z deployed. Desktop learner/teacher QA, required-Review/retry and final-failure lifecycle branches pass. 12.5Z adds global persisted MCQ option-presentation randomization with canonical server grading; runtime r16 is active. Only authenticated mobile-width learner/teacher rendering remains open. |
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
-| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed; 14B targeted existing-account invitation backend deployed. School bootstrap, registration/provisioning, membership termination, context-scoped learner evidence and two-school isolation release gate remain open. |
+| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed; 14B targeted invitation and audited membership termination backends deployed. School bootstrap, registration/provisioning, UI, context-scoped learner evidence and two-school isolation release gate remain open. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
 | 16 | Full Grade 7 Physics MVP | ⏳ | Integrate all Grade 7 Physics units with course-level progress aggregation while keeping diagnostics/mastery checks unit-bound. |
 | 17 | School Pilot v2 | ⏳ | Run a broader controlled school-level pilot across the complete Physics 7 product, including progression between units and school administration workflows. |
