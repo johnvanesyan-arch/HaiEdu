@@ -11,20 +11,28 @@ const recipient = '323e4567-e89b-42d3-a456-426614174000';
 const classId = '423e4567-e89b-42d3-a456-426614174000';
 const assignment = '523e4567-e89b-42d3-a456-426614174000';
 
-async function invoke(name, body, { active = true, accountStatus = 'active', rpcResult = null } = {}) {
+async function invoke(name, body, { active = true, accountStatus = 'active', rpcResult = null, schoolMember = true } = {}) {
   let handler;
   const calls = [];
   const client = {
     auth: { getUser: async () => ({ data: { user: { id: actor } }, error: null }) },
     from(table) {
-      assert.equal(table, 'profiles');
-      return { select: () => ({ eq: () => ({ maybeSingle: async () => ({
+      if (table === 'profiles') return { select: () => ({ eq: () => ({ maybeSingle: async () => ({
         data: { account_status: accountStatus }, error: null,
       }) }) }) };
+      assert.equal(table, 'institutional_memberships');
+      const query = new Proxy({}, { get(_, key) {
+        if (key === 'then') return done => done({ data: schoolMember ? [{
+          role: 'teacher', valid_from: '2026-01-01T00:00:00Z', valid_to: null,
+        }] : [], error: null });
+        return () => query;
+      } });
+      return query;
     },
     async rpc(method, parameters) {
       calls.push({ method, parameters });
-      return rpcResult ?? { data: method.includes('issue') ? 'invitation-id'
+      return rpcResult ?? { data: method.includes('lookup_invitee') ? recipient
+        : method.includes('issue') ? 'invitation-id'
         : method.includes('revoke') ? true : {
           schoolId: school, membershipId: 'membership-id', classEnrollmentId: 'enrollment-id',
         }, error: null };
@@ -63,6 +71,7 @@ test('invalid request, inactive actor and failed authorization never return a to
     [{ action: 'issue', schoolId: 'wrong', recipientUserId: recipient, role: 'student' }, {}, 400],
     [{ action: 'issue', schoolId: school, recipientUserId: recipient, role: 'student', expiresInHours: 169 }, {}, 400],
     [{ action: 'issue', schoolId: school, recipientUserId: recipient, role: 'student' }, { active: false }, 403],
+    [{ action: 'issue', schoolId: school, recipientUserId: recipient, role: 'student' }, { schoolMember: false }, 403],
     [{ action: 'issue', schoolId: school, recipientUserId: recipient, role: 'student' },
       { rpcResult: { data: null, error: { message: 'deny' } } }, 403],
   ]) {
@@ -70,6 +79,16 @@ test('invalid request, inactive actor and failed authorization never return a to
     assert.equal(result.status, expected);
     assert.equal(result.body.token, undefined);
   }
+});
+
+test('existing-user email resolves inside the service boundary before issue', async () => {
+  const result = await invoke('manage-institutional-invitation', {
+    action: 'issue', schoolId: school, recipientEmail: 'student@example.test', role: 'student',
+  });
+  assert.equal(result.status, 201);
+  assert.equal(result.calls[0].method, 'service_lookup_invitee_by_email_14b');
+  assert.equal(result.calls[1].parameters.p_recipient, recipient);
+  assert.equal(result.body.recipientEmail, undefined);
 });
 
 test('revocation uses the authenticated actor and returns a generic denial', async () => {
