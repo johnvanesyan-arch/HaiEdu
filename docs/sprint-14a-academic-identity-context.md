@@ -5,7 +5,7 @@
 ## Identity and access contract
 
 - `profiles.id` remains the global person ID. `institutional_memberships` records time-bounded school roles.
-- `academic_years` are school-scoped. `classes.academic_year_id` is nullable only for historical/unscoped classes. A teacher assignment binds one school, academic year, class, teacher membership, and canonical subject programme; active periods cannot overlap for the same teacher/class/programme.
+- `academic_years` are school-scoped. `classes.academic_year_id` remains null for unscoped classes, including classes created through the legacy teacher path. A teacher assignment binds one school, academic year, class, teacher membership, and canonical subject programme; active periods cannot overlap for the same teacher/class/programme.
 - New tables have RLS enabled without ordinary-client grants or policies. Server code uses service-role access only after authenticating a live session and validating the teacher's membership and assignment.
 - `get-teacher-academic-context` takes `assignmentId`, `curriculumReleaseId`, and `unitId` as UUIDs. It derives school, class, academic year, programme, subject, grade, and unit from persisted rows, verifies current teacher assignment and membership, and rejects cross-school, cross-programme, inactive, legacy, and forged selections. The endpoint returns metadata only, not learner evidence. A URL can persist these IDs but cannot grant access.
 - Canonical national releases and units remain separate from institution data. The context resolver permits pilot or production releases; it rejects draft, legacy, superseded, and retired releases.
