@@ -72,7 +72,7 @@ export async function resolveAuthorizedTeacherAcademicContext(
       today < year.starts_on || today > year.ends_on ||
       klass.subject_id !== programme.subject_id || klass.grade_id !== programme.grade_id ||
       release.subject_program_id !== programme.id || unit.subject_program_id !== programme.id ||
-      release.status === "draft" || release.status === "retired" || !unit.code) {
+      !["pilot", "production"].includes(release.status) || !unit.code) {
     throw new AcademicContextDenied();
   }
 
