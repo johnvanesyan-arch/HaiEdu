@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.32  
+**Roadmap version:** 2.33  
 **Updated:** 2026-09-23  
-**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 production release remains open pending external Physics SME approval. Sprint 14 academic architecture planning began on 2026-09-23 with a bounded 14A implementation plan; no tenant migration or release gate has been completed.
+**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 academic architecture planning began on 2026-09-23 with a bounded 14A implementation plan; no tenant migration or release gate has been completed.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -98,7 +98,7 @@ For the current Sprint 11 state:
 | 11.5 | Controlled External Tester Pilot | ✅ | Closed one-adult feasibility run: eight eligible prospective sessions, smooth experience, no substantive content defects, historical Diagnostic excluded, and all closure gates passed. |
 | 12 | Learning-Model Calibration | ✅ | 12A.1–12A.5 complete; 12B reviewed the feasibility evidence and recorded an immutable deferred/no-change disposition. No learning parameter changed. |
 | 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | 🟡 | 12.5A–Z deployed. Desktop learner/teacher QA, required-Review/retry and final-failure lifecycle branches pass. 12.5Z adds global persisted MCQ option-presentation randomization with canonical server grading; runtime r16 is active. Only authenticated mobile-width learner/teacher rendering remains open. |
-| 13 | Chapter I Standards-Verified Production Release | 🟡 | Release gate open pending external Physics SME approval; the pilot release remains provisional. |
+| 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | Architecture and bounded 14A plan started 2026-09-23; implementation and two-school isolation gate remain open. Generalize schools, academic years, time-aware memberships, IAM/permissions, tenant isolation, audit scope, teacher continuity foundations, controlled enrollment and centrally governed content. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
 | 16 | Full Grade 7 Physics MVP | ⏳ | Integrate all Grade 7 Physics units with course-level progress aggregation while keeping diagnostics/mastery checks unit-bound. |
@@ -466,7 +466,7 @@ Chapter I then becomes the gold-standard implementation against which later unit
 
 ## Sprint 14 — Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture
 
-**Kickoff status (2026-09-23): 🟡 Architecture in progress.** The bounded 14A implementation plan is recorded in [Notion](https://app.notion.com/p/3e4355a472bf81bca43bd8557727ca7f). Live schema inspection found five historical classes with no school assignment and four class memberships. Preserve these records as unbound legacy evidence; do not infer schools or backfill session identity. Begin with additive school/year/membership identities and a server-authorized academic-context contract, then verify two-school denial and two-chapter/subject coverage before release. Sprint 13's external SME release gate remains open.
+**Kickoff status (2026-09-23): 🟡 Architecture in progress.** The additive 14A identity migrations have been applied, and the server-only context resolver is committed but not wired to teacher endpoints. The bounded 14A implementation plan is recorded in [Notion](https://app.notion.com/p/3e4355a472bf81bca43bd8557727ca7f). Live schema inspection found five historical classes with no school assignment and four class memberships. Preserve these records as unbound legacy evidence; do not infer schools or backfill session identity. Begin with additive school/year/membership identities and a server-authorized academic-context contract, then verify two-school denial and two-chapter/subject coverage before release. Sprint 13's external SME release gate remains open.
 
 
 Sprint 14 generalizes the platform across four coupled domains.
