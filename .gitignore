@@ -5,3 +5,7 @@ node_modules/
 .DS_Store
 coverage/
 .supabase/
+dist/
+playwright/.auth/
+playwright-report/
+test-results/
