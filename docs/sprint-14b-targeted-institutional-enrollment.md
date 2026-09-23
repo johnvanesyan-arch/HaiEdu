@@ -14,7 +14,7 @@
 - `service_issue_institutional_invitation_14b`, `service_redeem_institutional_invitation_14b`, `service_revoke_institutional_invitation_14b`, and `service_lookup_invitee_by_email_14b` are executable only by `service_role`. The Edge Functions authenticate a live session, and the database functions enforce the school and assignment boundary.
 - `institutional_invitations` and `institutional_class_enrollments` have RLS and no ordinary client grants/policies. Even `service_role` has no direct INSERT/UPDATE/DELETE/TRUNCATE on these two tables; their mutations occur through the controlled database functions. Invitation and enrollment mutations enter the protected academic identity audit log.
 - School A actors cannot issue for School B through the DB function. A copied token cannot be redeemed by a different account. Concurrent attempts serialize on the invitation row; consumed and revoked tokens cannot be reused.
-- School registration tokens for new accounts, school-admin bootstrap/delegation, teacher/class UI, membership termination, and institutional course entitlement are outside this bounded slice. A school admin must first be provisioned through a separate governed bootstrap.
+- School registration tokens for new accounts, school-admin bootstrap/delegation, teacher/class UI, and institutional course entitlement are outside this bounded slice. Membership and enrollment termination now use migration 0086 and a separate authenticated endpoint. A school admin must first be provisioned through a separate governed bootstrap.
 
 ## Evidence
 
@@ -23,8 +23,15 @@
 - [Endpoint tests](https://github.com/johnvanesyan-arch/armenian-mastery-platform/blob/main/tests/sprint-14b-invitation-api.test.mjs) cover digest-only persistence, email lookup, input/role denial and redemption response. The broader focused regression is 54/54. GitHub CI [#728](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/35907870332) passed.
 - Active Supabase functions: `manage-institutional-invitation` v2 and `redeem-institutional-invitation` v1, both with JWT gateway checks. Security advisor's no-policy information notices are intentional deny-by-default; no unindexed foreign-key findings on the new tables.
 
+## Membership lifecycle checkpoint (2026-09-23)
+
+- [Migration 0086](https://github.com/johnvanesyan-arch/armenian-mastery-platform/blob/main/supabase/migrations/0086_sprint_14b_membership_termination.sql) records `ended_by`, controlled `end_reason` and bounded `valid_to`. Ending a student membership atomically ends its active institutional class enrollments; ending a teacher membership ends its active assignments. School admins may end memberships other than their own; a currently assigned teacher may end a class enrollment. Existing history remains available in the academic identity audit trail.
+- The enrollment validation trigger locks its parent membership before active insertion to serialize redemption with membership termination. The endpoint `manage-institutional-membership` v1 is active with JWT verification and live-session checks. Only `service_role` can execute the termination RPCs.
+- The [rollback probe](https://github.com/johnvanesyan-arch/armenian-mastery-platform/blob/main/tests/sprint-14b-termination-probe.sql) passed student and teacher cascades, teacher enrollment ending, unauthorized and repeat denial, audit actor, and legacy isolation. [Endpoint tests](https://github.com/johnvanesyan-arch/armenian-mastery-platform/blob/main/tests/sprint-14b-termination-api.test.mjs) passed 2/2; invitation endpoint tests passed 5/5. Production retains zero institutional memberships/enrollments/teacher assignments and four legacy class memberships.
+- The new enrollment table is still outside the learner runtime; school/bootstrap/UI and two-school authenticated browser gate remain open.
+
 ## Remaining Sprint 14B work
 
-- Governed school and first school-admin bootstrap, invitation UI, account creation/roster provisioning for users without an account, membership/enrollment termination, and cross-role authenticated browser tests.
+- Governed school and first school-admin bootstrap, invitation UI, account creation/roster provisioning for users without an account, cross-role authenticated browser tests.
 - Define whether a learner may hold simultaneous school memberships and how transfers affect institutional record visibility before production school onboarding.
 - Wire institutional entitlements and session provenance only after class/programme evidence scoping in the subsequent academic-context slice. Do not remove migration 0082's legacy blocker until that end-to-end gate passes.
