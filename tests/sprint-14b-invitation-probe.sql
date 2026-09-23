@@ -42,6 +42,7 @@ set local role service_role;
 do $$
 declare f record; ia uuid; ib uuid; ic uuid; result jsonb;
   denied boolean := false; wrong_user boolean := false; replay boolean := false;
+  revoked_denied boolean := false;
 begin
   select * into f from _14b_fixture;
   begin
@@ -83,6 +84,11 @@ begin
   if not public.service_revoke_institutional_invitation_14b(f.admin_id,ic) then
     raise exception 'revoke_failed';
   end if;
+  begin
+    perform public.service_redeem_institutional_invitation_14b(f.teacher_id,repeat('c',64));
+  exception when raise_exception then revoked_denied := true;
+  end;
+  if not revoked_denied then raise exception 'revoked_invitation_accepted'; end if;
   if (select count(*) from public.institutional_class_enrollments
       where school_id=f.school_a)<>2 or
      exists(select 1 from public.class_memberships
