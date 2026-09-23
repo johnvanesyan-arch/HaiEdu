@@ -6,7 +6,7 @@ test("@mobile learner Physics 7 remains usable without page overflow", async ({ 
 
   await page.goto("/physics-7.html");
 
-  await expect(page).toHaveURL(/\/physics-7\.html(?:\?.*)?$/);
+  await expect(page).toHaveURL(/\/physics-7(?:\.html)?(?:\?.*)?$/);
   await expect(page.locator("#subjectPanel")).toBeVisible();
   await expect(page.locator("#subjectLoading")).toBeHidden();
   await expect(page.getByRole("heading", { name: "Իմ ֆիզիկայի ուղին" })).toBeVisible();
@@ -27,4 +27,3 @@ test("@mobile learner Physics 7 remains usable without page overflow", async ({ 
     fullPage: true,
   });
 });
-
