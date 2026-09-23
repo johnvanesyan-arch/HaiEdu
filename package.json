@@ -6,9 +6,12 @@
   "scripts": {
     "build:core": "rm -rf dist && tsc -p tsconfig.json",
     "test": "npm run build:core && node --test tests/*.test.mjs",
+    "test:e2e": "playwright test",
+    "test:e2e:mobile": "playwright test --grep @mobile",
     "typecheck": "tsc -p tsconfig.json --noEmit"
   },
   "devDependencies": {
+    "@playwright/test": "^1.63.0",
     "typescript": "^5.9.2"
   }
 }
