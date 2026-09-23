@@ -18,8 +18,10 @@ begin
   if adm is null or teach is null or sa is null or sb is null or prog is null then
     raise exception 'fixture_profiles_or_programme_missing';
   end if;
-  insert into public.schools(name) values ('14B rollback A') returning id into a;
-  insert into public.schools(name) values ('14B rollback B') returning id into b;
+  insert into public.schools(name,school_code,created_by)
+    values ('14B rollback A','QA-14B-TERM-A',adm) returning id into a;
+  insert into public.schools(name,school_code,created_by)
+    values ('14B rollback B','QA-14B-TERM-B',adm) returning id into b;
   insert into public.academic_years(school_id,label,starts_on,ends_on,status)
     values(a,'14B','2026-09-01','2027-08-31','active') returning id into ya;
   insert into public.academic_years(school_id,label,starts_on,ends_on,status)
