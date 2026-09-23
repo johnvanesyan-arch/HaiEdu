@@ -32,8 +32,9 @@ export async function getStudentCourseEntitlements(
   const classIds = [...new Set(memberships.map((row: any) => String(row.class_id)))];
   const { data: classes, error: classesError } = await admin
     .from("classes")
-    .select("id, name, academic_year, is_active, subject_id, grade_id")
+    .select("id, school_id, name, academic_year, is_active, subject_id, grade_id")
     .in("id", classIds)
+    .is("school_id", null)
     .eq("is_active", true);
 
   if (classesError) throw new Error(`classes_unavailable:${classesError.message}`);
