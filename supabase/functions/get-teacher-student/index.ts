@@ -40,12 +40,13 @@ Deno.serve(async (req) => {
 
     let classQuery = admin
       .from("class_memberships")
-      .select("class_id, classes!inner(id, name, teacher_id)")
+      .select("class_id, classes!inner(id, name, teacher_id, school_id)")
       .eq("student_id", body.studentId);
     if (body.classId) classQuery = classQuery.eq("class_id", body.classId);
     const { data: memberships, error: membershipError } = await classQuery;
     if (membershipError) return json({ error: "membership_query_failed" }, 500);
-    const allowed = (memberships ?? []).some((m: any) => m.classes?.teacher_id === teacherId);
+    const allowed = (memberships ?? []).some((m: any) =>
+      m.classes?.teacher_id === teacherId && m.classes?.school_id === null);
     if (!allowed) return json({ error: "student_not_in_teacher_class" }, 403);
 
     const { data: profile } = await admin.from("profiles").select("id, display_name, created_at").eq("id", body.studentId).single();
@@ -120,15 +121,17 @@ Deno.serve(async (req) => {
     else if (review?.lifecycle_state === "mastery_retry_2_ready" || review?.lifecycle_state === "mastery_retry_3_ready") intervention = { action: "mastery_check_retry", code: null, messageHy: "Յուրացման ստուգման հաջորդ փորձը հասանելի է։" };
     else if (review?.lifecycle_state === "mastery_failed_final") intervention = { action: "review_chapter", code: null, messageHy: "Երեք փորձերն ավարտված են. շարունակել Գլխի կրկնությունը։" };
     else if (review?.lifecycle_state === "mastery_passed" || latestMastery?.assessment_result === "passed") intervention = { action: "unit_complete", code: null, messageHy: "Բաժին I-ը ավարտված է։" };
-    else if (!(attempts ?? []).length) intervention = { action: "take_diagnostic", code: null, messageHy: "Անցկացնել Բաժին I-ի ախտորոշիչը։" };
+    else if (!(attempts ?? []).length) intervention = { action: "take_diagnostic", code: null, messageHy: "Անցկացնել Chapter I ախտորոշիչը։" };
     else if (weakSkills.length) intervention = { action: "practice_skill", code: weakSkills[0].code, messageHy: `Առաջնահերթ աշխատել ${weakSkills[0].code} հմտության վրա։` };
-    else intervention = { action: "mastery_check", code: null, messageHy: "Անցկացնել Բաժին I-ի յուրացման ստուգումը։" };
+    else intervention = { action: "mastery_check", code: null, messageHy: "Անցկացնել Chapter I mastery check-ը։" };
 
     return json({
       student: {
         id: profile.id,
         displayName: profile.display_name?.trim() || `Ուսանող ${profile.id.slice(0, 6).toUpperCase()}`,
-        memberOf: (memberships ?? []).filter((m: any) => m.classes?.teacher_id === teacherId).map((m: any) => ({ id: m.class_id, name: m.classes?.name })),
+        memberOf: (memberships ?? []).filter((m: any) =>
+          m.classes?.teacher_id === teacherId && m.classes?.school_id === null)
+          .map((m: any) => ({ id: m.class_id, name: m.classes?.name })),
       },
       unitCode: UNIT_CODE,
       curriculumReleaseId,
