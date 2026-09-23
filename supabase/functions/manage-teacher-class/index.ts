@@ -69,8 +69,8 @@ Deno.serve(async (req) => {
     }
 
     if (!body.classId) return json({ error: "class_id_required" }, 400);
-    const { data: klass } = await admin.from("classes").select("id, teacher_id, name, join_code, is_active").eq("id", body.classId).maybeSingle();
-    if (!klass || klass.teacher_id !== teacherId) return json({ error: "class_not_owned" }, 403);
+    const { data: klass } = await admin.from("classes").select("id, teacher_id, school_id, name, join_code, is_active").eq("id", body.classId).maybeSingle();
+    if (!klass || klass.teacher_id !== teacherId || klass.school_id !== null) return json({ error: "class_not_owned" }, 403);
 
     if (body.action === "rotate_join_code") {
       for (let attempt = 0; attempt < 5; attempt++) {
