@@ -42,6 +42,7 @@ for (const [name, changes, teacher, choice] of [
   ['expired assignment', { teacher_assignments: { valid_to: '2026-09-22T00:00:00Z' } }, 'teacher-a', selection],
   ['legacy class without school', { classes: { school_id: null } }, 'teacher-a', selection],
   ['wrong programme release', { curriculum_releases: { subject_program_id: 'program-b' } }, 'teacher-a', selection],
+  ['legacy release', { curriculum_releases: { status: 'legacy' } }, 'teacher-a', selection],
   ['wrong programme unit', { units: { subject_program_id: 'program-b' } }, 'teacher-a', selection],
   ['forged assignment URL', {}, 'teacher-a', { ...selection, assignmentId: 'other' }],
   ['forged unit URL', {}, 'teacher-a', { ...selection, unitId: 'other' }],
