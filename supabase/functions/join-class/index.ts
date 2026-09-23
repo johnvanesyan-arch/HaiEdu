@@ -39,10 +39,10 @@ Deno.serve(async (req) => {
 
     const { data: klass, error: classError } = await admin
       .from("classes")
-      .select("id, name, academic_year, is_active, subject_id, grade_id")
+      .select("id, school_id, name, academic_year, is_active, subject_id, grade_id")
       .eq("join_code", joinCode)
       .maybeSingle();
-    if (classError || !klass || !klass.is_active) return json({ error: "invalid_or_inactive_join_code" }, 404);
+    if (classError || !klass || !klass.is_active || klass.school_id !== null) return json({ error: "invalid_or_inactive_join_code" }, 404);
 
     const { data: existing } = await admin
       .from("class_memberships")
