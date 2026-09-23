@@ -1,7 +1,7 @@
 # Grade 7 Physics — Chapter I SME Review
 
-Reviewer: ____________________  
-Date: ____________________  
+Reviewer: Hovhannes Vanesyan____________________  
+Date: 9/23/2026____________________  
 Textbook: Գ. Մելիքյան, Ս. Մաիլյան, *Ֆիզիկա 7*, Էդիթ Պրինտ, 2023
 
 ## Purpose
@@ -20,16 +20,16 @@ For each skill, mark:
 
 | Code | Skill | Layer | Decision | Notes |
 |---|---|---|---|---|
-| PHY7-U01-S01 | Ֆիզիկական երևույթների ճանաչում և դասակարգում | Knowledge |  |  |
-| PHY7-U01-S02 | Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը | Knowledge |  |  |
-| PHY7-U01-S03 | Ֆիզիկոսներ և հայ ֆիզիկոսներ | Knowledge |  |  |
-| PHY7-U01-S04 | Դիտումը և փորձը տարբերակելը | Application |  |  |
-| PHY7-U01-S05 | Վարկած–փորձ–տվյալ–եզրակացություն շղթան | Reasoning |  |  |
-| PHY7-U01-S06 | Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր | Knowledge |  |  |
-| PHY7-U01-S07 | Չափման միավորների պարզ փոխարկումներ | Application |  |  |
-| PHY7-U01-S08 | Սանդղակի բաժանման արժեքը, չափման սահմանը և ցուցմունքը | Application |  |  |
-| PHY7-U01-S09 | Չափման սխալ և ճշգրտության գնահատում | Reasoning |  |  |
-| PHY7-U01-S10 | Չափման փորձի պլանավորում և անկանոն մարմնի ծավալի որոշում | Transfer |  |  |
+| PHY7-U01-S01 | Ֆիզիկական երևույթների ճանաչում և դասակարգում | Knowledge | Keep |  |
+| PHY7-U01-S02 | Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը | Knowledge | Keep |  |
+| PHY7-U01-S03 | Ֆիզիկոսներ և հայ ֆիզիկոսներ | Knowledge |Keep|  |
+| PHY7-U01-S04 | Դիտումը և փորձը տարբերակելը | Application |Keep|  |
+| PHY7-U01-S05 | Վարկած–փորձ–տվյալ–եզրակացություն շղթան | Reasoning |Keep|  |
+| PHY7-U01-S06 | Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր | Knowledge |Keep|  |
+| PHY7-U01-S07 | Չափման միավորների պարզ փոխարկումներ | Application |Keep|  |
+| PHY7-U01-S08 | Սանդղակի բաժանման արժեքը, չափման սահմանը և ցուցմունքը | Application |Keep|  |
+| PHY7-U01-S09 | Չափման սխալ և ճշգրտության գնահատում | Reasoning |Keep|  |
+| PHY7-U01-S10 | Չափման փորձի պլանավորում և անկանոն մարմնի ծավալի որոշում | Transfer |Keep|  |
 
 ## Prerequisite review
 
@@ -37,71 +37,71 @@ Please confirm whether these dependencies reflect how students actually learn th
 
 | Target skill | Proposed prerequisite | Keep/change? | Notes |
 |---|---|---|---|
-| S04 Observation vs experiment | S01 Physical phenomena |  |  |
-| S05 Scientific inquiry chain | S04 Observation vs experiment |  |  |
-| S07 Unit conversion | S06 Quantities/units/instruments |  |  |
-| S08 Scale reading | S06 Quantities/units/instruments |  |  |
-| S09 Error/precision | S08 Scale reading |  |  |
-| S10 Integrated measurement investigation | S05 Scientific inquiry |  |  |
-| S10 Integrated measurement investigation | S07 Unit conversion |  |  |
-| S10 Integrated measurement investigation | S08 Scale reading |  |  |
-| S10 Integrated measurement investigation | S09 Error/precision |  |  |
+| S04 Observation vs experiment | S01 Physical phenomena |Keep|  |
+| S05 Scientific inquiry chain | S04 Observation vs experiment |Keep|  |
+| S07 Unit conversion | S06 Quantities/units/instruments |Keep|  |
+| S08 Scale reading | S06 Quantities/units/instruments |Keep|  |
+| S09 Error/precision | S08 Scale reading |Keep|  |
+| S10 Integrated measurement investigation | S05 Scientific inquiry |Keep|  |
+| S10 Integrated measurement investigation | S07 Unit conversion |Keep|  |
+| S10 Integrated measurement investigation | S08 Scale reading |Keep|  |
+| S10 Integrated measurement investigation | S09 Error/precision |Keep|  |
 
 ## Misconception review
 
 For each statement, indicate whether this is a common Grade 7 error in practice and add better examples if needed.
 
 1. Student treats observation and experiment as synonyms.  
-   Common? ___ Notes: __________________________________________
+   Common? yes Notes: __________________________________________
 
 2. Student accepts a hypothesis as true without requiring evidence/testing.  
-   Common? ___ Notes: __________________________________________
+   Common? yes Notes: __________________________________________
 
 3. Student confuses physical quantity, unit and measuring instrument.  
-   Common? ___ Notes: __________________________________________
+   Common? yes Notes: __________________________________________
 
 4. Student converts a unit in the wrong direction or changes the number without correctly changing the unit.  
-   Common? ___ Notes: __________________________________________
+   Common? yes Notes: __________________________________________
 
 5. Student counts scale marks instead of intervals when finding division value.  
-   Common? ___ Notes: __________________________________________
+   Common? yes Notes: __________________________________________
 
 6. Student assumes measurement error equals a full scale division instead of the textbook convention of half a division.  
-   Common? ___ Notes: __________________________________________
+   Common? yes Notes: __________________________________________
 
 7. Student assumes more written decimal places automatically mean a more precise/accurate measurement.  
-   Common? ___ Notes: __________________________________________
+   Common? yes Notes: __________________________________________
 
 8. Student mistakes V2 for the irregular object's volume instead of calculating V2−V1.  
-   Common? ___ Notes: __________________________________________
+   Common? yes Notes: __________________________________________
 
 ## Classroom-fit questions
 
 1. In what order do you actually teach §1–§6? Does it match the textbook order?
-
+   It matches the classroom order.
 2. Which Chapter I idea causes the most student difficulty?
-
+   Scale reading and Unit conversion do.
 3. Which skill usually requires reteaching from earlier Mathematics or Nature/Science study?
-
+   Unit conversions do.
 4. Which concepts do students often appear to know verbally but fail to apply in a problem or practical task?
-
+   N/A
 5. Are any of the proposed **Transfer** or **Reasoning** tasks too advanced for typical Grade 7 students at this point in the school year?
-
+   No
 6. Which measurement instruments do students actually have access to in your school laboratory?
-
+   N/A
 7. Are there specific Armenian terms used in class that should replace any terminology in this skill graph?
-
+   N/A
 8. Which common student errors are missing from our list?
-
+   N/A
 ## Publication decision
 
-- [ ] Approved as written
+- [V] Approved as written
 - [ ] Approved with minor modifications
 - [ ] Requires substantial revision
 
 Reviewer comments:
 
-__________________________________________________________________
+________None for now__________________________________________________________
 
 __________________________________________________________________
 
