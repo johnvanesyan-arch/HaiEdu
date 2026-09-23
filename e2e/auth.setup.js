@@ -39,9 +39,8 @@ setup("authenticate teacher", async ({ page }) => {
     path: "/teacher.html",
     email: requireSecret("QA_TEACHER_EMAIL"),
     password: requireSecret("QA_TEACHER_PASSWORD"),
-    expectedPath: /\/teacher\.html(?:\?.*)?$/,
+    expectedPath: /\/teacher(?:\.html)?(?:\?.*)?$/,
   });
 
   await page.context().storageState({ path: `${authDirectory}/teacher.json` });
 });
-
