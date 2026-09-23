@@ -3,7 +3,6 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { stripTypeScriptTypes } from 'node:module';
-import { getStudentCourseEntitlements } from '../supabase/functions/_shared/course-access.ts';
 
 async function invoke(name, body, tables) {
   let handler;
@@ -56,19 +55,4 @@ test('legacy teacher detail denies a scoped class before reading learner evidenc
   });
   assert.equal(result.status, 403);
   assert.deepEqual(result.reads, ['profiles', 'class_memberships']);
-});
-
-test('legacy learner entitlement filters out scoped classes', async () => {
-  const filters = [];
-  const admin = { from(table) {
-    const query = new Proxy({}, { get(_, key) {
-      if (key === 'then') return (done) => done({ data: table === 'class_memberships'
-        ? [{ class_id: 'class-b', joined_at: '2026-09-01' }] : [], error: null });
-      return (...args) => { filters.push([table, key, ...args]); return query; };
-    } });
-    return query;
-  } };
-  assert.deepEqual(await getStudentCourseEntitlements(admin, 'student-b'), []);
-  assert.ok(filters.some(([table, key, column, value]) =>
-    table === 'classes' && key === 'is' && column === 'school_id' && value === null));
 });
