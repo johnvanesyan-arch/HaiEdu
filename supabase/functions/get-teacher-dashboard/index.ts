@@ -161,14 +161,14 @@ Deno.serve(async (req) => {
       } else if (review?.lifecycle_state === "mastery_failed_final") {
         intervention = { action: "review_chapter", skillId: null, code: null, messageHy: "Յուրացման երեք փորձերն ավարտված են. շարունակել Գլխի կրկնությունը։" };
       } else if (review?.lifecycle_state === "mastery_passed" || passedMastery) {
-        intervention = { action: "unit_complete", skillId: null, code: null, messageHy: "Բաժին I-ը ավարտված է. mastery check-ը անցած է։" };
+        intervention = { action: "unit_complete", skillId: null, code: null, messageHy: "Բաժին I-ն ավարտված է․ յուրացման ստուգումն անցած է։" };
       } else if (!studentAttempts.length) {
-        intervention = { action: "take_diagnostic", skillId: null, code: null, messageHy: "Առաջին քայլ՝ անցնել Chapter I ախտորոշիչը։" };
+        intervention = { action: "take_diagnostic", skillId: null, code: null, messageHy: "Առաջին քայլ՝ անցնել Բաժին I-ի ախտորոշիչը։" };
       } else if (weak.length) {
         const first = weak[0];
         intervention = { action: "practice_skill", skillId: first.skillId, code: first.code, messageHy: `Առաջարկվող միջամտություն՝ աշխատել ${first.code} հմտության վրա։` };
       } else {
-        intervention = { action: "mastery_check", skillId: null, code: null, messageHy: "Հմտությունները կայուն են. պատրաստել Chapter I mastery check-ը։" };
+        intervention = { action: "mastery_check", skillId: null, code: null, messageHy: "Հմտությունները կայուն են․ աշակերտը պատրաստ է Բաժին I-ի յուրացման ստուգմանը։" };
       }
 
       return {
