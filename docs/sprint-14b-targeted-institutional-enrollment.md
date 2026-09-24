@@ -47,6 +47,11 @@
 - The [rollback probe](https://github.com/johnvanesyan-arch/armenian-mastery-platform/blob/main/tests/sprint-14b-staff-provisioning-probe.sql) exercised wrong-recipient denial, first-school/teacher activation, issuer audit, teacher subject grant and revocation/assignment cascade, then removed all fixture data. Focused endpoint tests passed 3/3; syntax checks passed. Public `/account-access` and unauthenticated `/school-admin` pages rendered on production. No live invitation email or password-reset link was sent to a real account in this checkpoint, so deliverability, Auth redirect allow-list and authenticated recipient browser activation remain unverified.
 - Production after verification: 0 schools, 0 staff invitations, 0 institutional memberships and 0 teacher subject grants. No actual staff account was created. Legacy classes and learner evidence remain unassigned to a school.
 
+## Password recovery navigation QA (2026-09-24)
+
+- User screenshots exposed a real cross-role navigation defect: the student, teacher, platform-admin and content-admin “forgot password” links opened `/account-access` in its sign-in state, requiring a second click to reach recovery. All four now link to `/account-access?view=reset`; the access page reads that view on load and preserves it through refresh. Its own forgot/return buttons update the URL consistently. Sign-in guidance now addresses every account role.
+- Production browser QA clicked the links from all four login pages. Each landed on the recovery email form at the direct URL. Reload retained the form, return displayed sign-in, and the in-page forgot button restored recovery. Vercel reported success for the change. No email was sent and no reset token was redeemed during this navigation QA; actual delivery and password-change verification remain gated by a dedicated QA account.
+
 ## Remaining Sprint 14B work
 
 - Complete a real invited email/password-recovery/recipient activation run with dedicated QA recipients, verify Auth redirect allow-list and delivery, and test issuer/recipient failure recovery. Add invitation reissue/revocation operations before operational school onboarding. Complete authenticated two-school cross-role tests.
