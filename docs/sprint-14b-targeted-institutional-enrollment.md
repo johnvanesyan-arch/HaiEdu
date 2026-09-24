@@ -52,6 +52,11 @@
 - User screenshots exposed a real cross-role navigation defect: the student, teacher, platform-admin and content-admin “forgot password” links opened `/account-access` in its sign-in state, requiring a second click to reach recovery. All four now link to `/account-access?view=reset`; the access page reads that view on load and preserves it through refresh. Its own forgot/return buttons update the URL consistently. Sign-in guidance now addresses every account role.
 - Production browser QA clicked the links from all four login pages. Each landed on the recovery email form at the direct URL. Reload retained the form, return displayed sign-in, and the in-page forgot button restored recovery. Vercel reported success for the change. No email was sent and no reset token was redeemed during this navigation QA; actual delivery and password-change verification remain gated by a dedicated QA account.
 
+## Recovery email and action layout checkpoint (2026-09-24)
+
+- The user reports receiving a password-reset email at their student account address. This confirms delivery in that one case by user report. It does not establish that the link returns to the correct page, updates the password, or works for staff invitations and other roles.
+- The account access page now groups each primary and secondary action in a flex row with a 12 px gap and 24 px separation from the fields. At widths of 600 px and below, the actions stack at full width with the same gap. The change is scoped to account access CSS. Production desktop visual inspection confirmed distinct, spaced buttons; returning to sign-in and reopening recovery still work. Vercel succeeded. A rendered mobile-width inspection and reset-token redemption remain outstanding.
+
 ## Remaining Sprint 14B work
 
 - Complete a real invited email/password-recovery/recipient activation run with dedicated QA recipients, verify Auth redirect allow-list and delivery, and test issuer/recipient failure recovery. Add invitation reissue/revocation operations before operational school onboarding. Complete authenticated two-school cross-role tests.
