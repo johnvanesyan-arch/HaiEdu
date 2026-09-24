@@ -64,6 +64,14 @@
 - The [two-school rollback probe](https://github.com/johnvanesyan-arch/armenian-mastery-platform/blob/main/tests/sprint-14b-staff-invitation-management-probe.sql) passed list isolation, cross-school denial, revocation, replay denial and revoker audit; the [endpoint tests](https://github.com/johnvanesyan-arch/armenian-mastery-platform/blob/main/tests/sprint-14b-staff-invitation-management-api.test.mjs) passed 2/2. CI [#792](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/35987385428) passed at `c13f323`. Production remains at zero schools, staff invitations and institutional memberships after the probe.
 - The production signed-out page denies the console and hides invite controls. Authenticated UI and real recipient email behavior remain unverified without dedicated school/admin QA accounts. The user's reported successful password change is evidence for the student recovery path, but not for a staff invite acceptance or cross-role reset.
 
+
+## School account console QA polish checkpoint (2026-09-24)
+
+- Screenshot and source QA of the authenticated `/school-admin` console found sparse card containment, weak form hierarchy, redundant signed-in account navigation, uppercase-only school-code friction, flat pending-invitation presentation, and a school/subject selector mismatch for school admins who can access more than one school.
+- `web/school-admin.css`, `web/school-admin.html` and `web/school-admin.js` now provide page-scoped panel/form spacing, clearer hierarchy, responsive stacking, explicit busy/status states, normalized uppercase school codes, structured pending-invitation rows, and removal of the redundant account-access action once an administrator is authenticated.
+- Teacher subject options now reload through `get-school-subject-options` whenever the selected school changes, keeping the visible subject list aligned with the selected school. This is a presentation/selection fix only; server authorization remains authoritative and no permission boundary was broadened.
+- GitHub CI #797 passed on head `1884db91`. The post-change authenticated production render is still an open QA item; this checkpoint does not close staff-recipient activation, safe reissue, student roster provisioning or the two-school isolation gate.
+
 ## Remaining Sprint 14B work
 
 - Complete a real invited email/password-recovery/recipient activation run with dedicated QA recipients, verify Auth redirect allow-list and delivery, and test issuer/recipient failure recovery. Reissue/resend invitations safely for an existing Auth identity and verify email delivery before operational school onboarding; pending-invite revocation is deployed. Complete authenticated two-school cross-role tests.
