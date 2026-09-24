@@ -46,8 +46,9 @@ $("backBtn").addEventListener("click", () => show("loginPanel"));
 $("resetForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   const button = event.currentTarget.querySelector("button"); button.disabled = true;
-  await supabase.auth.resetPasswordForEmail($("resetEmail").value.trim(), { redirectTo: redirect });
+  const { error } = await supabase.auth.resetPasswordForEmail($("resetEmail").value.trim(), { redirectTo: redirect });
   button.disabled = false;
+  if (error) return message("resetMessage", "Հղումը չուղարկվեց։ Խնդրում ենք փորձել ավելի ուշ։", true);
   message("resetMessage", "Եթե այս էլ. հասցեով հաշիվ կա, ստուգեք փոստը՝ վերականգնման հղման համար։");
 });
 $("passwordForm").addEventListener("submit", async (event) => {
