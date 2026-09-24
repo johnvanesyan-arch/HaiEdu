@@ -1,0 +1,2 @@
+create index teacher_subject_membership_school_idx
+ on public.teacher_subject_authorizations(teacher_membership_id,school_id);
