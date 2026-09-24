@@ -4,13 +4,14 @@ import fs from "node:fs";
 
 const read = (path) => fs.readFileSync(path, "utf8");
 
-test("main landing page exposes role-specific entry points without bypassing auth", () => {
+test("main landing page routes all roles through a shared sign-in and preserves student registration", () => {
   const shell = read("web/student-shell.js");
+  const home = read("web/index.html");
   assert.match(shell, /roleAccessPanel/);
-  assert.match(shell, /\.\/teacher\.html/);
-  assert.match(shell, /\.\/content\.html/);
-  assert.match(shell, /\.\/admin\.html/);
-  assert.match(shell, /href="#authPanel"/);
+  assert.match(shell, /href="\.\/account-access"/);
+  assert.match(shell, /href="\.\/account-access\?view=register"/);
+  assert.match(home, /Ստեղծել աշակերտի հաշիվ/);
+  assert.doesNotMatch(home, /id="passwordInput"/);
   assert.doesNotMatch(shell, /service_role/i);
 });
 

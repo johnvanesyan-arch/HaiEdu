@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { routeSession, roleRoutingReady } from "./role-router.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -64,31 +65,13 @@ function setModeMessage(message, isError = false) {
 
 function setAuthenticated(isAuthenticated) {
   authPanel.classList.toggle("hidden", isAuthenticated);
+  $("privacyLink").classList.toggle("hidden", !isAuthenticated);
   signOutBtn.classList.toggle("hidden", !isAuthenticated);
   if (isAuthenticated) showDashboard();
   else {
     modePanel.classList.add("hidden");
     practicePanel.classList.add("hidden");
   }
-}
-
-async function signIn() {
-  const email = $("emailInput").value.trim();
-  const password = $("passwordInput").value;
-  setAuthMessage("Մուտք ենք գործում…");
-  const { error } = await supabase.auth.signInWithPassword({ email, password });
-  if (error) return setAuthMessage(error.message, true);
-  setAuthMessage("");
-}
-
-async function signUp() {
-  const email = $("emailInput").value.trim();
-  const password = $("passwordInput").value;
-  setAuthMessage("Հաշիվը ստեղծվում է…");
-  const { data, error } = await supabase.auth.signUp({ email, password });
-  if (error) return setAuthMessage(error.message, true);
-  if (!data.session) setAuthMessage("Հաշիվը ստեղծվել է։ Եթե պահանջվում է էլ. փոստի հաստատում, հաստատեք նամակը, ապա մուտք գործեք։");
-  else setAuthMessage("");
 }
 
 async function signOut() {
@@ -595,8 +578,6 @@ function escapeHtml(value) {
     .replaceAll("'", "&#039;");
 }
 
-$("signInBtn").addEventListener("click", signIn);
-$("signUpBtn").addEventListener("click", signUp);
 $("startDiagnosticBtn").addEventListener("click", () => startSession("diagnostic"));
 $("startPracticeBtn").addEventListener("click", () => startSession("practice", dashboardData?.recommendation?.skill?.id ?? null));
 $("resumeLearningBtn").addEventListener("click", resumeRecommendedAction);
@@ -606,6 +587,13 @@ backBtn.addEventListener("click", showDashboard);
 nextBtn.addEventListener("click", handleNext);
 answerForm.addEventListener("submit", submitAnswer);
 
-supabase.auth.onAuthStateChange((_event, session) => setAuthenticated(Boolean(session)));
+supabase.auth.onAuthStateChange((_event, session) => {
+  // Check the active profile before fetching any student data.
+  setTimeout(async () => {
+    const route = await routeSession(session);
+    if (!route.redirected && !route.blocked) setAuthenticated(Boolean(session));
+  }, 0);
+});
 const { data: sessionData } = await supabase.auth.getSession();
-setAuthenticated(Boolean(sessionData.session));
+const route = await roleRoutingReady;
+if (!route.redirected && !route.blocked) setAuthenticated(Boolean(sessionData.session));

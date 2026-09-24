@@ -40,6 +40,18 @@ Deno.serve(async (req) => {
       return json({ error: "teacher_role_required" }, 403);
     }
 
+    // Keep a school teacher out of the legacy, schoolless class and evidence
+    // path until institutional classes have an authorized academic context.
+    const { data: schoolMemberships, error: membershipError } = await admin
+      .from("institutional_memberships").select("id")
+      .eq("person_id", teacherId).eq("role", "teacher").limit(1);
+    if (membershipError) return json({ error: "teacher_membership_check_failed" }, 503);
+    if (schoolMemberships?.length) return json({
+      teacher: { displayName: teacherProfile.display_name?.trim() || "Ուսուցիչ" },
+      institutionalTeacher: true,
+      classes: [], skills: [], totals: { classes: 0, students: 0, studentsNeedingSupport: 0 },
+    });
+
     const { data: classes, error: classesError } = await admin
       .from("classes")
       .select("id, name, academic_year, join_code, is_active, subject_id, grade_id, created_at")

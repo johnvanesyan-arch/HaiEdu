@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { roleDestination } from "./account-roles.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -35,18 +36,6 @@ function friendlyError(error, fallback) {
   return fallback || message || "Գործողությունը չհաջողվեց։";
 }
 
-async function signIn() {
-  setMessage("authMessage", "Մուտք ենք գործում…");
-  $("signInBtn").disabled = true;
-  const { error } = await supabase.auth.signInWithPassword({
-    email: $("emailInput").value.trim(),
-    password: $("passwordInput").value,
-  });
-  $("signInBtn").disabled = false;
-  if (error) return setMessage("authMessage", error.message, true);
-  setMessage("authMessage", "");
-}
-
 async function signOut() {
   await supabase.auth.signOut();
   window.location.reload();
@@ -72,8 +61,7 @@ async function loadDashboard() {
       return;
     }
     if (profile.role !== "teacher") {
-      const destinations = { admin: "./admin.html", content_admin: "./content.html", student: "./index.html" };
-      const destination = destinations[profile.role];
+      const destination = roleDestination(profile.role);
       if (destination) window.location.replace(destination);
       else {
         $("authPanel").classList.remove("hidden");
@@ -100,6 +88,10 @@ async function loadDashboard() {
   $("authPanel").classList.add("hidden");
   $("dashboardPanel").classList.remove("hidden");
   $("signOutBtn").classList.remove("hidden");
+  const institutional = data.institutionalTeacher === true;
+  for (const id of ["createClassShortcut", "teacherLegacyOnboarding", "createClassCard"])
+    $(id).classList.toggle("hidden", institutional);
+  $("institutionalTeacherNotice").classList.toggle("hidden", !institutional);
 
   const displayName = data.teacher?.displayName || "Ուսուցիչ";
   $("teacherName").textContent = displayName;
@@ -119,7 +111,7 @@ async function loadDashboard() {
   if (selected) selectClass(selected.id);
   else {
     selectedClassId = null;
-    $("emptyClass").classList.remove("hidden");
+    $("emptyClass").classList.toggle("hidden", institutional);
     $("classView").classList.add("hidden");
   }
 }
@@ -139,7 +131,9 @@ function renderClassList() {
     list.appendChild(btn);
   }
   if (!list.children.length) {
-    list.innerHTML = '<div class="teacher-empty-state"><strong>Դասարան դեռ չկա</strong><p class="subtle small">Ստեղծեք ձեր առաջին դասարանը, հետո աշակերտներին տվեք միանալու կոդը։</p><a class="button-link" href="#createClassCard">+ Ստեղծել դասարան</a></div>';
+    list.innerHTML = dashboard?.institutionalTeacher
+      ? '<div class="teacher-empty-state"><strong>Դպրոցի դասարանները դեռ հասանելի չեն</strong><p class="subtle small">Դպրոցական դասարանների մուտքը կբացվի համապատասխան թույլտվությունների ստուգումից հետո։</p></div>'
+      : '<div class="teacher-empty-state"><strong>Դասարան դեռ չկա</strong><p class="subtle small">Ստեղծեք ձեր առաջին դասարանը, հետո աշակերտներին տվեք միանալու կոդը։</p><a class="button-link" href="#createClassCard">+ Ստեղծել դասարան</a></div>';
   }
 }
 
@@ -489,7 +483,6 @@ async function removeStudent(studentId, studentName) {
   await loadDashboard();
 }
 
-$("signInBtn").addEventListener("click", signIn);
 $("signOutBtn").addEventListener("click", signOut);
 $("refreshBtn").addEventListener("click", loadDashboard);
 $("saveProfileBtn").addEventListener("click", saveProfile);

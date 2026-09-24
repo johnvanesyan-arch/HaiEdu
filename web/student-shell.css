@@ -4,6 +4,13 @@ body[data-student-page][data-role-routing="pending"] {
   visibility: hidden;
 }
 
+body[data-role-routing="blocked"] .amp-side-nav,
+body[data-role-routing="blocked"] .amp-mobile-nav,
+body[data-role-routing="blocked"] #preAuthLayout,
+body[data-role-routing="blocked"] #modePanel,
+body[data-role-routing="blocked"] #practicePanel,
+body[data-role-routing="blocked"] .notice { display: none !important; }
+
 /* Sprint 10.5B — authenticated student application shell */
 .amp-side-nav,
 .amp-mobile-nav {

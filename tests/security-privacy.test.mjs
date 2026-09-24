@@ -89,9 +89,12 @@ test("two-stage deletion keeps approval reversible and requires explicit executi
 
 test("role router separates admin, content admin and teacher consoles", async () => {
   const code = await read("web/role-router.js");
-  assert.match(code, /teacher:\s*"\.\/teacher\.html"/);
-  assert.match(code, /content_admin:\s*"\.\/content\.html"/);
-  assert.match(code, /admin:\s*"\.\/admin\.html"/);
+  const roles = await read("web/account-roles.js");
+  assert.match(code, /roleDestination\(role\)/);
+  assert.match(roles, /teacher:\s*"\.\/teacher\.html"/);
+  assert.match(roles, /school_admin:\s*"\.\/school-admin"/);
+  assert.match(roles, /content_admin:\s*"\.\/content\.html"/);
+  assert.match(roles, /admin:\s*"\.\/admin\.html"/);
 });
 
 test("browser configuration never includes service role credentials", async () => {

@@ -526,11 +526,6 @@ async function showForSession(session) {
   await refresh();
 }
 
-$("signInBtn").addEventListener("click", async () => {
-  $("authMessage").textContent = "";
-  const { error } = await supabase.auth.signInWithPassword({ email: $("emailInput").value.trim(), password: $("passwordInput").value });
-  if (error) $("authMessage").textContent = error.message;
-});
 $("signOutBtn").addEventListener("click", () => supabase.auth.signOut());
 $("refreshBtn").addEventListener("click", () => {
   if (editorDirty && !confirm("Discard unsaved changes and refresh the question bank?")) return;

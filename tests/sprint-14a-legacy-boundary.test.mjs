@@ -44,7 +44,7 @@ test('legacy class manager cannot mutate a scoped class owned by the same teache
     profiles: { role: 'teacher' }, classes: { id: 'class-b', teacher_id: 'user-a', school_id: 'school-b', is_active: true },
   });
   assert.equal(result.status, 403);
-  assert.deepEqual(result.reads, ['profiles', 'classes']);
+  assert.deepEqual(result.reads, ['profiles', 'institutional_memberships', 'classes']);
 });
 
 test('legacy teacher detail denies a scoped class before reading learner evidence', async () => {

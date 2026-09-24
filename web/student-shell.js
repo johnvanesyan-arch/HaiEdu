@@ -48,9 +48,7 @@ function ensureRoleAccess() {
   if (!authPanel) return;
 
   const loginTitle = document.getElementById("loginTitle");
-  if (loginTitle) loginTitle.textContent = "Աշակերտի մուտք";
-  const loginIntro = authPanel.querySelector("p.subtle");
-  if (loginIntro) loginIntro.textContent = "Մուտք գործեք կամ ստեղծեք աշակերտի հաշիվ՝ սովորելու, վարժվելու և առաջընթացին հետևելու համար։";
+  if (loginTitle) loginTitle.textContent = "Սովորեք ձեր տեմպով";
 
   let layout = document.getElementById("preAuthLayout");
   if (!layout) {
@@ -71,31 +69,36 @@ function ensureRoleAccess() {
       <div class="role-access-heading">
         <span class="mode-kicker">ՄՈՒՏՔ ԸՍՏ ԴԵՐԻ</span>
         <h2 id="roleAccessTitle">Ինչպե՞ս եք օգտագործում հարթակը</h2>
-        <p class="subtle">Ընտրեք ձեր աշխատասեղանը։ Յուրաքանչյուր բաժնի հասանելիությունը շարունակում է վերահսկվել ձեր հաշվին տրված դերով։</p>
+        <p class="subtle">Բոլոր դերերը մուտք են գործում նույն էջից։ Հարթակը կբացի ձեր հաշվին համապատասխան բաժինը։</p>
       </div>
       <div class="role-access-grid">
-        <a class="role-access-card student" href="#authPanel">
+        <a class="role-access-card student" href="./account-access?view=register">
           <span class="role-access-icon" aria-hidden="true">◉</span>
           <span><strong>Աշակերտ</strong><small>Սովորել, վարժվել և հետևել առաջընթացին</small></span>
           <b aria-hidden="true">→</b>
         </a>
-        <a class="role-access-card teacher" href="./teacher.html">
+        <a class="role-access-card teacher" href="./account-access">
           <span class="role-access-icon" aria-hidden="true">▦</span>
           <span><strong>Ուսուցիչ</strong><small>Դասարաններ, աշակերտներ և առաջընթաց</small></span>
           <b aria-hidden="true">→</b>
         </a>
-        <a class="role-access-card content" href="./content.html">
-          <span class="role-access-icon" aria-hidden="true">✓</span>
-          <span><strong>Բովանդակության ադմին</strong><small>Հարցերի բանկ, QA և review</small></span>
+        <a class="role-access-card school" href="./account-access">
+          <span class="role-access-icon" aria-hidden="true">▣</span>
+          <span><strong>Դպրոցի ադմին</strong><small>Դպրոցի հրավերներ և աշխատակիցներ</small></span>
           <b aria-hidden="true">→</b>
         </a>
-        <a class="role-access-card admin" href="./admin.html">
+        <a class="role-access-card content" href="./account-access">
+          <span class="role-access-icon" aria-hidden="true">✓</span>
+          <span><strong>Բովանդակության պատասխանատու</strong><small>Հարցերի բանկ, QA և վերանայում</small></span>
+          <b aria-hidden="true">→</b>
+        </a>
+        <a class="role-access-card admin" href="./account-access">
           <span class="role-access-icon" aria-hidden="true">⚙</span>
           <span><strong>Ադմին</strong><small>Հաշիվներ, դերեր և համակարգի կառավարում</small></span>
           <b aria-hidden="true">→</b>
         </a>
       </div>
-      <p class="role-access-note">Դերի ընտրությունը մուտքի իրավասություն չի տալիս․ անհրաժեշտ է համապատասխան դեր ունեցող հաշիվ։</p>`;
+      <p class="role-access-note">Դպրոցի ադմինները և աշխատակիցները ստանում են հրավեր։ Աշակերտները կարող են ինքնուրույն հաշիվ ստեղծել և հետագայում միանալ դասարանին։</p>`;
   }
   if (!section.parentNode || section.parentNode !== layout) layout.appendChild(section);
 }
@@ -170,7 +173,7 @@ function syncHomeHeader(authenticated) {
   if (heading) heading.textContent = authenticated ? "Գլխավոր" : "Ուսուցման հարթակ";
   if (subtitle) {
     subtitle.textContent = !authenticated
-      ? "Ընտրեք ձեր դերը կամ մուտք գործեք որպես աշակերտ։"
+      ? "Ստեղծեք աշակերտի հաշիվ կամ մուտք գործեք ձեր առկա հաշվով։"
       : "Ձեր առարկաները, առաջընթացը և հաջորդ առաջարկվող քայլերը մեկ վայրում։";
   }
 }

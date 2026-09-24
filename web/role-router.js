@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { roleDestination } from "./account-roles.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 let routed = false;
@@ -12,11 +13,18 @@ function revealStudentRoute() {
   document.body?.removeAttribute("data-role-routing");
 }
 
+function blockStudentRoute() {
+  document.body?.setAttribute("data-role-routing", "blocked");
+  const panel = document.getElementById("roleBlockedPanel");
+  if (panel) panel.classList.remove("hidden");
+}
+
 export async function routeSession(session) {
   if (routed) return { redirected: true, role: null };
 
   if (!session?.user) {
     revealStudentRoute();
+    document.getElementById("roleBlockedPanel")?.classList.add("hidden");
     return { redirected: false, role: null };
   }
 
@@ -25,17 +33,15 @@ export async function routeSession(session) {
   // student UI before a staff role is redirected.
   markRoleRoutingPending();
 
-  const { data } = await supabase
+  const { data, error } = await supabase
     .from("profiles")
     .select("role, account_status")
     .eq("id", session.user.id)
     .maybeSingle();
 
-  // Preserve the existing fallback behavior if profile resolution is unavailable.
-  // The route remains usable rather than trapping the user behind a blank shell.
-  if (!data) {
-    revealStudentRoute();
-    return { redirected: false, role: null };
+  if (error || !data || !roleDestination(data.role)) {
+    blockStudentRoute();
+    return { redirected: false, blocked: true, role: null };
   }
 
   if (data.account_status !== "active") {
@@ -44,14 +50,9 @@ export async function routeSession(session) {
     return { redirected: true, role: String(data.role ?? "") };
   }
 
-  const destinations = {
-    teacher: "./teacher.html",
-    content_admin: "./content.html",
-    admin: "./admin.html",
-  };
   const role = String(data.role ?? "");
-  const destination = destinations[role];
-  if (destination) {
+  const destination = roleDestination(role);
+  if (role !== "student") {
     routed = true;
     window.location.replace(destination);
     return { redirected: true, role };
@@ -60,6 +61,11 @@ export async function routeSession(session) {
   revealStudentRoute();
   return { redirected: false, role };
 }
+
+document.getElementById("blockedSignOutBtn")?.addEventListener("click", async () => {
+  await supabase.auth.signOut();
+  window.location.replace("./account-access");
+});
 
 supabase.auth.onAuthStateChange((_event, session) => {
   void routeSession(session);

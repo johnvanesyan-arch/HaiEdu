@@ -36,12 +36,9 @@
 
     <section id="authPanel" class="card auth-card teacher-auth hidden" aria-labelledby="teacherLoginTitle">
       <span class="mode-kicker">Ուսուցիչ</span>
-      <h2 id="teacherLoginTitle">Մուտք գործեք ձեր աշխատասեղան</h2>
-      <p class="subtle">Օգտագործեք teacher դեր ունեցող հաշիվը։ Մուտքից հետո կտեսնեք միայն ձեր դասարաններն ու դրանց աշակերտներին։</p>
-      <label>Էլ. հասցե<input id="emailInput" type="email" autocomplete="email" required /></label>
-      <label>Գաղտնաբառ<input id="passwordInput" type="password" autocomplete="current-password" minlength="6" required /></label>
-      <button id="signInBtn">Մուտք գործել</button>
-      <a class="button-link secondary" href="./account-access?view=reset">Մոռացե՞լ եք գաղտնաբառը</a>
+      <h2 id="teacherLoginTitle">Ուսուցչի աշխատասեղան</h2>
+      <p class="subtle">Մուտք գործեք ձեր հրավերով ակտիվացված հաշվով։ Հարթակը կբացի ձեր դերին համապատասխան բաժինը։</p>
+      <a class="button-link" href="./account-access">Մուտք գործել</a>
       <p id="authMessage" class="message" aria-live="polite"></p>
     </section>
 
@@ -53,7 +50,7 @@
           <p class="subtle">Սկսեք դասարանի ստեղծումից, տվեք աշակերտներին միանալու կոդը, ապա հետևեք նրանց առաջընթացին այստեղից։</p>
         </div>
         <div class="teacher-quick-actions">
-          <a class="button-link" href="#createClassCard">+ Նոր դասարան</a>
+          <a id="createClassShortcut" class="button-link" href="#createClassCard">+ Նոր դասարան</a>
           <a class="secondary button-link" href="#profileCard">Իմ պրոֆիլը</a>
           <button id="refreshBtn" class="ghost">Թարմացնել տվյալները</button>
         </div>
@@ -65,7 +62,12 @@
         <div class="stat card compact"><span class="stat-label">Ուշադրություն է պետք</span><strong id="supportCount">—</strong><span class="subtle small">աջակցության կարիք ունեցող աշակերտ</span></div>
       </div>
 
-      <section class="card teacher-onboarding-card" aria-labelledby="teacherStartTitle">
+      <section id="institutionalTeacherNotice" class="card hidden" role="status">
+        <h2>Դպրոցի դասարանները դեռ պատրաստ չեն</h2>
+        <p>Ձեր ուսուցչի հաշիվն ակտիվ է, բայց դպրոցի դասարանների և աշակերտների մուտքը դեռ չի գործարկվել։ Դպրոցի դասերին միանալու հղումներ կամ կոդեր այս էջից դեռ մի տարածեք։</p>
+      </section>
+
+      <section id="teacherLegacyOnboarding" class="card teacher-onboarding-card" aria-labelledby="teacherStartTitle">
         <div>
           <span class="mode-kicker">ԱՐԱԳ ՄԵԿՆԱՐԿ</span>
           <h3 id="teacherStartTitle">4 քայլով պատրաստեք ձեր դասարանը</h3>

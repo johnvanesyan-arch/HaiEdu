@@ -3,16 +3,18 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { stripTypeScriptTypes } from 'node:module';
+import { roleDestination } from '../web/account-roles.js';
 
 const functions = ['get-teacher-dashboard', 'get-teacher-student', 'manage-teacher-class', 'manage-teacher-profile'];
-async function callEndpoint(name, role, active = true, authenticated = true) {
+async function callEndpoint(name, role, active = true, authenticated = true, institutional = false) {
   let handler;
   const tables = [];
   const client = {
     auth: { getUser: async () => ({ data: { user: { id: 'test-user' } } }) },
     from(table) {
       tables.push(table);
-      const data = table === 'profiles' ? (role === null ? null : { id: 'test-user', role, display_name: 'Test' }) : [];
+      const data = table === 'profiles' ? (role === null ? null : { id: 'test-user', role, display_name: 'Test' })
+        : table === 'institutional_memberships' && institutional ? [{ id: 'school-membership' }] : [];
       const query = new Proxy({}, { get: (_, key) => key === 'then'
         ? (resolve) => resolve({ data, error: null })
         : () => query });
@@ -31,6 +33,19 @@ async function callEndpoint(name, role, active = true, authenticated = true) {
   }));
   return { status: response.status, body: await response.json(), tables };
 }
+
+test('school teachers cannot create legacy schoolless join codes or read legacy class evidence', async () => {
+  const management = await callEndpoint('manage-teacher-class', 'teacher', true, true, true);
+  assert.equal(management.status, 403);
+  assert.equal(management.body.error, 'institutional_class_flow_required');
+  assert.deepEqual(management.tables, ['profiles', 'institutional_memberships']);
+
+  const dashboard = await callEndpoint('get-teacher-dashboard', 'teacher', true, true, true);
+  assert.equal(dashboard.status, 200);
+  assert.equal(dashboard.body.institutionalTeacher, true);
+  assert.deepEqual(dashboard.body.classes, []);
+  assert.deepEqual(dashboard.tables, ['profiles', 'institutional_memberships']);
+});
 
 for (const name of functions) {
   for (const role of ['admin', 'student', 'content_admin', null]) {
@@ -72,15 +87,15 @@ async function openTeacherPage(profile, profileError = null) {
     functions: { invoke: async () => { calls++; return { error: new Error('stop before rendering') }; } },
   };
   let source = readFileSync('web/teacher.js', 'utf8').replace(/^import .*;\n/gm, '');
-  source = source.slice(0, source.indexOf('$("signInBtn").addEventListener'));
+  source = source.slice(0, source.indexOf('$("signOutBtn").addEventListener'));
   const context = vm.createContext({ createClient: () => client, SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '',
-    document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console });
+    roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console });
   vm.runInContext(source, context);
   await vm.runInContext('loadDashboard()', context);
   return { calls, redirects, hidden: getElement('dashboardPanel').classList.values.has('hidden') };
 }
 
-for (const [role, destination] of Object.entries({ admin: './admin.html', content_admin: './content.html', student: './index.html' })) {
+for (const [role, destination] of Object.entries({ admin: './admin.html', content_admin: './content.html', student: './index.html', school_admin: './school-admin' })) {
   test(`teacher page routes ${role} without fetching teacher data`, async () => {
     const result = await openTeacherPage({ role, account_status: 'active' });
     assert.deepEqual(result.redirects, [destination]);
