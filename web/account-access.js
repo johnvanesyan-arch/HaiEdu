@@ -3,6 +3,7 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
 const flowHint = new URLSearchParams(location.hash.slice(1)).get("type") ||
   new URLSearchParams(location.search).get("type");
+const resetView = new URLSearchParams(location.search).get("view") === "reset";
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 const redirect = `${location.origin}/account-access`;
@@ -40,9 +41,13 @@ $("loginForm").addEventListener("submit", async (event) => {
 });
 $("showResetBtn").addEventListener("click", () => {
   $("resetEmail").value = $("loginEmail").value;
+  history.replaceState(null, "", `${location.pathname}?view=reset`);
   show("resetPanel");
 });
-$("backBtn").addEventListener("click", () => show("loginPanel"));
+$("backBtn").addEventListener("click", () => {
+  history.replaceState(null, "", location.pathname);
+  show("loginPanel");
+});
 $("resetForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   const button = event.currentTarget.querySelector("button"); button.disabled = true;
@@ -81,3 +86,4 @@ supabase.auth.onAuthStateChange((event, session) => {
 });
 const { data: initial } = await supabase.auth.getSession();
 if (initial.session && (flowHint === "invite" || flowHint === "recovery")) show("passwordPanel");
+else if (resetView && !flowHint) show("resetPanel");
