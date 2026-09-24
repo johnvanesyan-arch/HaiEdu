@@ -1,0 +1,23 @@
+.account-access .auth-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  margin-top: 24px;
+}
+
+.account-access .auth-actions > button {
+  flex: 0 1 auto;
+  margin: 0;
+}
+
+@media (max-width: 600px) {
+  .account-access .auth-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .account-access .auth-actions > button {
+    width: 100%;
+  }
+}
