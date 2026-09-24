@@ -6,9 +6,10 @@
   <title>Հաշվի մուտք և գաղտնաբառ — HaiEdu</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./account-access.css" />
 </head>
 <body>
-  <main class="shell" id="mainContent">
+  <main class="shell account-access" id="mainContent">
     <header class="topbar"><div><p class="eyebrow">HAIEDU</p><h1>Հաշվի մուտք</h1></div><a class="ghost button-link" href="./index.html">Գլխավոր</a></header>
     <section id="loginPanel" class="card auth-card">
       <h2>Մուտք գործել</h2>
@@ -16,9 +17,11 @@
       <form id="loginForm">
         <label>Էլ. հասցե<input id="loginEmail" type="email" autocomplete="email" required /></label>
         <label>Գաղտնաբառ<input id="loginPassword" type="password" autocomplete="current-password" required /></label>
-        <button type="submit">Մուտք գործել</button>
+        <div class="auth-actions">
+          <button type="submit">Մուտք գործել</button>
+          <button id="showResetBtn" type="button" class="ghost">Մոռացե՞լ եք գաղտնաբառը</button>
+        </div>
       </form>
-      <button id="showResetBtn" type="button" class="ghost">Մոռացե՞լ եք գաղտնաբառը</button>
       <p id="loginMessage" class="message" role="status" aria-live="polite"></p>
     </section>
     <section id="resetPanel" class="card auth-card hidden">
@@ -26,9 +29,11 @@
       <p class="subtle">Կուղարկենք վերականգնման հղում, եթե այս էլ. հասցեով հաշիվ կա։</p>
       <form id="resetForm">
         <label>Էլ. հասցե<input id="resetEmail" type="email" autocomplete="email" required /></label>
-        <button type="submit">Ուղարկել հղումը</button>
+        <div class="auth-actions">
+          <button type="submit">Ուղարկել հղումը</button>
+          <button id="backBtn" type="button" class="ghost">Վերադառնալ մուտքին</button>
+        </div>
       </form>
-      <button id="backBtn" type="button" class="ghost">Վերադառնալ մուտքին</button>
       <p id="resetMessage" class="message" role="status" aria-live="polite"></p>
     </section>
     <section id="passwordPanel" class="card auth-card hidden">
