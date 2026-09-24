@@ -31,7 +31,7 @@ async function invoke(body, { role = 'admin', active = true, status = 'active', 
   }));
   return { status: res.status, data: await res.json(), calls };
 }
-const request = { name: 'School One', schoolCode: 'SCH-ONE', firstAdminId: candidate };
+const request = { name: 'School One', firstAdminId: candidate };
 
 test('platform admin bootstraps with verified actor and no client supplied authority', async () => {
   const r = await invoke({ ...request, actorId: candidate });
@@ -40,14 +40,15 @@ test('platform admin bootstraps with verified actor and no client supplied autho
   assert.equal(r.calls[0].method, 'service_bootstrap_school_14b');
   assert.equal(r.calls[0].params.p_actor, actor);
   assert.equal(r.calls[0].params.p_first_admin, candidate);
+  assert.equal(r.calls[0].params.p_code, null);
 });
 
 test('existing-account email resolves only after actor authorization', async () => {
-  const r = await invoke({ name: 'School One', schoolCode: 'SCH-ONE', firstAdminEmail: 'admin@example.test' });
+  const r = await invoke({ name: 'School One', firstAdminEmail: 'admin@example.test' });
   assert.equal(r.status, 201);
   assert.equal(r.calls[0].method, 'service_lookup_invitee_by_email_14b');
   assert.equal(r.calls[1].params.p_first_admin, candidate);
-  const denied = await invoke({ name: 'School One', schoolCode: 'SCH-ONE', firstAdminEmail: 'admin@example.test' }, { role: 'school_admin' });
+  const denied = await invoke({ name: 'School One', firstAdminEmail: 'admin@example.test' }, { role: 'school_admin' });
   assert.equal(denied.status, 403);
   assert.equal(denied.calls.length, 0);
 });
@@ -56,7 +57,7 @@ test('inactive and malformed requests are denied without database mutation', asy
   for (const [body, options, expected] of [
     [request, { active: false }, 403],
     [request, { status: 'suspended' }, 403],
-    [{ ...request, schoolCode: 'bad' }, {}, 400],
+    [{ ...request, schoolCode: 'SCH-ONE' }, {}, 400],
     [{ ...request, firstAdminId: 'bad' }, {}, 400],
     [{ ...request, firstAdminEmail: 'admin@example.test' }, {}, 400],
     [request, { rpcError: { message: 'denied' } }, 403],

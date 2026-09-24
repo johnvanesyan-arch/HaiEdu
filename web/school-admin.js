@@ -155,14 +155,10 @@ async function loadTeacherSubjects(schoolId) {
 }
 
 $("refreshInvitesBtn").addEventListener("click", loadPendingInvites);
-$("schoolCode").addEventListener("input", (event) => {
-  event.currentTarget.value = event.currentTarget.value.toUpperCase();
-});
 $("schoolForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   await invite("school_admin", {
     schoolName: $("schoolName").value.trim(),
-    schoolCode: $("schoolCode").value.trim().toUpperCase(),
     email: $("schoolAdminEmail").value.trim(),
   }, "schoolMessage", event.currentTarget);
 });

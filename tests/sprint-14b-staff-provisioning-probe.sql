@@ -31,7 +31,7 @@ begin
      not public.service_authorize_staff_invite_14b(f.platform_admin,'school_admin',null,null) then
     raise exception 'master_invite_authorization_failed'; end if;
   req:=public.service_register_staff_invite_14b(f.platform_admin,f.first_admin,
-    'staff-admin-14b@example.invalid','school_admin',null,null,'QA Staff School','QA-STAFF-14B');
+    'staff-admin-14b@example.invalid','school_admin',null,null,'QA Staff School',null);
   if not exists(select 1 from public.academic_identity_events
        where row_id=req and table_name='staff_account_provisioning'
          and operation='INSERT' and actor_id=f.platform_admin) then
@@ -49,7 +49,10 @@ begin
   select * into f from _staff_fixture;
   activated:=public.service_accept_staff_invite_14b(f.first_admin);
   update _staff_fixture set school_id=(activated->>'schoolId')::uuid;
-  if (select role::text from public.profiles where id=f.first_admin)<>'school_admin' or
+  if activated->>'schoolCode' !~ '^SCH-[A-F0-9]{16}$' or
+     (select school_code from public.schools where id=(activated->>'schoolId')::uuid)<>activated->>'schoolCode' or
+     (select school_code from public.staff_account_provisioning where recipient_id=f.first_admin) is not null or
+     (select role::text from public.profiles where id=f.first_admin)<>'school_admin' or
      not exists(select 1 from public.institutional_memberships
        where id=(activated->>'membershipId')::uuid and person_id=f.first_admin
          and role='school_admin' and status='active') then

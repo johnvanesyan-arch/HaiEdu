@@ -45,7 +45,7 @@ async function invoke(name, body, { active = true, permitted = true, registerErr
 
 const schoolInvite = {
   kind: 'school_admin', email: 'school.admin@example.test',
-  schoolName: 'School One', schoolCode: 'SCHOOL-ONE',
+  schoolName: 'School One',
 };
 test('only verified platform authority can send a first-school invitation', async () => {
   const denied = await invoke('provision-staff-account', schoolInvite, { permitted: false });
@@ -57,6 +57,10 @@ test('only verified platform authority can send a first-school invitation', asyn
   assert.equal(good.calls[1].email, schoolInvite.email);
   assert.equal(good.calls[1].options.redirectTo, 'https://www.haiedu.am/account-access');
   assert.equal(good.calls[2].params.p_recipient, invited);
+  assert.equal(good.calls[2].params.p_school_code, null);
+  const supplied = await invoke('provision-staff-account', { ...schoolInvite, schoolCode: 'SCHOOL-ONE' });
+  assert.equal(supplied.status, 400);
+  assert.equal(supplied.calls.length, 0);
 });
 
 test('teacher invite binds school and subject; registration failure never deletes Auth identity', async () => {

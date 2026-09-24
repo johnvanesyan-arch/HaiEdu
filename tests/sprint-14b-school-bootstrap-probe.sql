@@ -26,22 +26,22 @@ end $$;
 grant select on _bootstrap_ids to service_role,authenticated;
 set local role service_role;
 do $$
-declare f record; one jsonb; two jsonb; denied boolean; duplicate_code boolean;
+declare f record; one jsonb; two jsonb; denied boolean; manual_code boolean;
 begin
   select * into f from _bootstrap_ids;
   denied:=false;
   begin
-    perform public.service_bootstrap_school_14b(f.learner,f.candidate,'Unauthorized School','QA-14B-U');
+    perform public.service_bootstrap_school_14b(f.learner,f.candidate,'Unauthorized School',null);
   exception when raise_exception then denied:=true; end;
   if not denied then raise exception 'learner_bootstrap_allowed'; end if;
 
   denied:=false;
   begin
-    perform public.service_bootstrap_school_14b(f.platform_admin,f.learner,'Historical Student','QA-14B-H');
+    perform public.service_bootstrap_school_14b(f.platform_admin,f.learner,'Historical Student',null);
   exception when raise_exception then denied:=true; end;
   if not denied then raise exception 'historical_learner_promotion_allowed'; end if;
 
-  one:=public.service_bootstrap_school_14b(f.platform_admin,f.candidate,'Fixture School A','QA-14B-A');
+  one:=public.service_bootstrap_school_14b(f.platform_admin,f.candidate,'Fixture School A',null);
   if (select role::text from public.profiles where id=f.candidate)<>'school_admin' or
      not exists(select 1 from public.institutional_memberships
        where id=(one->>'membershipId')::uuid and school_id=(one->>'schoolId')::uuid
@@ -53,21 +53,24 @@ begin
 
   denied:=false;
   begin
-    perform public.service_bootstrap_school_14b(f.candidate,f.learner,'Privilege Escalation','QA-14B-X');
+    perform public.service_bootstrap_school_14b(f.candidate,f.learner,'Privilege Escalation',null);
   exception when raise_exception then denied:=true; end;
   if not denied then raise exception 'school_admin_created_another_school'; end if;
 
-  duplicate_code:=false;
+  manual_code:=false;
   begin
-    perform public.service_bootstrap_school_14b(f.platform_admin,f.candidate,'Duplicate','QA-14B-A');
-  exception when unique_violation then duplicate_code:=true; end;
-  if not duplicate_code then raise exception 'duplicate_school_code_allowed'; end if;
+    perform public.service_bootstrap_school_14b(f.platform_admin,f.candidate,'Manual Code','QA-14B-A');
+  exception when raise_exception then manual_code:=true; end;
+  if not manual_code then raise exception 'manual_school_code_allowed'; end if;
 
-  two:=public.service_bootstrap_school_14b(f.platform_admin,f.second_candidate,'Fixture School B','QA-14B-B');
+  two:=public.service_bootstrap_school_14b(f.platform_admin,f.second_candidate,'Fixture School B',null);
   if (one->>'schoolId')=(two->>'schoolId') or
      (select count(*) from public.institutional_memberships where person_id in(f.candidate,f.second_candidate) and
        school_id in ((one->>'schoolId')::uuid,(two->>'schoolId')::uuid))<>2 or
-     (select count(*) from public.schools where school_code like 'QA-14B-%')<>2 then
+     one->>'schoolCode' !~ '^SCH-[A-F0-9]{16}$' or
+     two->>'schoolCode' !~ '^SCH-[A-F0-9]{16}$' or
+     one->>'schoolCode'=two->>'schoolCode' or
+     (select school_code from public.schools where id=(one->>'schoolId')::uuid)<>one->>'schoolCode' then
     raise exception 'separate_school_identity_failed'; end if;
 end $$;
 set local role authenticated;
@@ -76,15 +79,15 @@ declare f record;
 begin
   select * into f from _bootstrap_ids;
   perform set_config('request.jwt.claim.sub',f.candidate::text,true);
-  if (select count(*) from public.schools where school_code like 'QA-14B-%')<>1 or
-     not exists(select 1 from public.schools where school_code='QA-14B-A') then
+  if (select count(*) from public.schools)<>1 or
+     not exists(select 1 from public.schools where created_by=f.platform_admin and name='Fixture School A') then
     raise exception 'school_a_admin_saw_other_school'; end if;
   perform set_config('request.jwt.claim.sub',f.second_candidate::text,true);
-  if (select count(*) from public.schools where school_code like 'QA-14B-%')<>1 or
-     not exists(select 1 from public.schools where school_code='QA-14B-B') then
+  if (select count(*) from public.schools)<>1 or
+     not exists(select 1 from public.schools where created_by=f.platform_admin and name='Fixture School B') then
     raise exception 'school_b_admin_saw_other_school'; end if;
   perform set_config('request.jwt.claim.sub',f.learner::text,true);
-  if exists(select 1 from public.schools where school_code like 'QA-14B-%') then
+  if exists(select 1 from public.schools) then
     raise exception 'student_saw_school'; end if;
 end $$;
 rollback;

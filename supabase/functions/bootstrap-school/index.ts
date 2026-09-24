@@ -3,7 +3,6 @@ import { hasActiveLiveSession } from "../_shared/auth.ts";
 
 const cors = { "Access-Control-Allow-Origin": "*", "Access-Control-Allow-Headers": "authorization, x-client-info, apikey, content-type" };
 const uuid = /^[0-9a-f]{8}-[0-9a-f]{4}-[1-8][0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/i;
-const code = /^[A-Z0-9][A-Z0-9-]{2,31}$/;
 const json = (body: unknown, status = 200) => new Response(JSON.stringify(body), {
   status, headers: { ...cors, "Content-Type": "application/json" },
 });
@@ -31,9 +30,9 @@ Deno.serve(async (req) => {
     let body: Record<string, unknown>;
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
     const name = typeof body.name === "string" ? body.name.trim().replace(/\s+/g, " ") : "";
-    const schoolCode = typeof body.schoolCode === "string" ? body.schoolCode.trim() : "";
+    const suppliedCode = body.schoolCode;
     const email = typeof body.firstAdminEmail === "string" ? body.firstAdminEmail.trim() : null;
-    if (name.length < 3 || name.length > 160 || !code.test(schoolCode) ||
+    if (name.length < 3 || name.length > 160 || suppliedCode != null ||
         (body.firstAdminId != null && email != null) ||
         (body.firstAdminId == null && (!email || email.length > 320)) ||
         (body.firstAdminId != null && (typeof body.firstAdminId !== "string" || !uuid.test(body.firstAdminId))))
@@ -47,7 +46,7 @@ Deno.serve(async (req) => {
       recipient = data;
     }
     const { data, error } = await admin.rpc("service_bootstrap_school_14b", {
-      p_actor: actor, p_first_admin: recipient, p_name: name, p_code: schoolCode,
+      p_actor: actor, p_first_admin: recipient, p_name: name, p_code: null,
     });
     if (error || !data) return json({ error: "school_bootstrap_unavailable" }, 403);
     return json(data, 201);

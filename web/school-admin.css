@@ -107,66 +107,6 @@
   box-shadow: 0 0 0 3px rgba(31, 79, 138, .11);
 }
 
-#schoolCode {
-  text-transform: uppercase;
-  letter-spacing: .045em;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-weight: 700;
-  background: #fbfcfe;
-}
-
-#schoolCode::placeholder {
-  color: #8b96a6;
-  font-weight: 600;
-  opacity: 1;
-}
-
-.code-field {
-  align-self: start;
-}
-
-.field-label-row {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-}
-
-.field-badge {
-  flex: 0 0 auto;
-  padding: 2px 8px;
-  border: 1px solid #dbe4ef;
-  border-radius: 999px;
-  background: #f4f7fb;
-  color: #62748a;
-  font-size: .72rem;
-  font-weight: 700;
-  line-height: 1.5;
-}
-
-.field-hint {
-  margin-top: 1px;
-  color: #788598;
-  font-size: .8rem;
-  font-weight: 500;
-}
-
-.code-hint {
-  display: flex;
-  justify-content: space-between;
-  gap: 8px 14px;
-  flex-wrap: wrap;
-  margin-top: 2px;
-  color: #748297;
-  line-height: 1.45;
-}
-
-.code-hint strong {
-  color: #52657d;
-  font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
-  font-weight: 700;
-}
-
 .form-actions {
   display: flex;
   align-items: center;
@@ -293,11 +233,6 @@
   .invite-row {
     align-items: stretch;
     flex-direction: column;
-  }
-
-  .field-label-row,
-  .code-hint {
-    align-items: flex-start;
   }
 
   .form-actions button,

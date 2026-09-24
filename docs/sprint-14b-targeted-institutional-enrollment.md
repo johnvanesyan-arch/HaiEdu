@@ -68,7 +68,7 @@
 ## School account console QA polish checkpoint (2026-09-24)
 
 - Screenshot and source QA of the authenticated `/school-admin` console found sparse card containment, weak form hierarchy, redundant signed-in account navigation, uppercase-only school-code friction, flat pending-invitation presentation, and a school/subject selector mismatch for school admins who can access more than one school.
-- `web/school-admin.css`, `web/school-admin.html` and `web/school-admin.js` now provide page-scoped panel/form spacing, clearer hierarchy, responsive stacking, explicit busy/status states, normalized uppercase school codes, structured pending-invitation rows, and removal of the redundant account-access action once an administrator is authenticated.
+- `web/school-admin.css`, `web/school-admin.html` and `web/school-admin.js` now provide page-scoped panel/form spacing, clearer hierarchy, responsive stacking, explicit busy/status states, a clearer school-code field at that checkpoint (superseded by automatic generation below), structured pending-invitation rows, and removal of the redundant account-access action once an administrator is authenticated.
 - Teacher subject options now reload through `get-school-subject-options` whenever the selected school changes, keeping the visible subject list aligned with the selected school. This is a presentation/selection fix only; server authorization remains authoritative and no permission boundary was broadened.
 - GitHub CI #797 passed on head `1884db91`. The post-change authenticated production render is still an open QA item; this checkpoint does not close staff-recipient activation, safe reissue, student roster provisioning or the two-school isolation gate.
 
@@ -78,3 +78,9 @@
 - Extend institutional student roster provisioning and controlled student invite UI for new accounts; existing-account targeted enrollment backend is already available.
 - Define whether a learner may hold simultaneous school memberships and how transfers affect institutional record visibility before production school onboarding.
 - Wire institutional entitlements and session provenance only after class/programme evidence scoping in the subsequent academic-context slice. Do not remove migration 0082's legacy blocker until that end-to-end gate passes.
+
+## Automatic school code checkpoint (2026-09-24)
+
+- The platform-admin form requests only the school name and first administrator email. The code is assigned by `service_bootstrap_school_14b` when the recipient activates the school. Both staff invitation and direct bootstrap APIs reject a caller-supplied code.
+- The database generates `SCH-` plus 16 random hexadecimal characters from `gen_random_uuid()`. The schools table keeps the unique constraint; code collisions retry up to eight times. The activation result includes `schoolCode`, and the stored code is an identifier, not an invitation secret or permission grant.
+- Migration 0102 and both Edge function versions are deployed. Local API tests passed 6/6; rollback-only bootstrap and staff-activation database probes passed, with no retained fixture schools or invitations. Authenticated production browser testing still requires a dedicated administrator and invited recipient.

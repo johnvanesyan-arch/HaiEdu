@@ -36,22 +36,11 @@
           <h2 id="schoolInviteTitle">Դպրոցի և առաջին ադմինիստրատորի հրավեր</h2>
         </div>
       </div>
-      <p class="subtle panel-copy">Հրավիրվող անձն իր էլ. փոստով կստանա հղում և ինքնուրույն կսահմանի գաղտնաբառը։ Դպրոցը կստեղծվի միայն հրավերն ընդունելուց հետո։</p>
+      <p class="subtle panel-copy">Հրավիրվող անձն իր էլ. փոստով կստանա հղում և ինքնուրույն կսահմանի գաղտնաբառը։ Դպրոցը և դրա պատահական կոդը կստեղծվեն միայն հրավերն ընդունելուց հետո։</p>
       <form id="schoolForm" class="admin-form">
-        <label class="form-field">
+        <label class="form-field form-field-wide">
           <span>Դպրոցի անուն</span>
           <input id="schoolName" required minlength="3" maxlength="160" autocomplete="organization" />
-        </label>
-        <label class="form-field code-field">
-          <span class="field-label-row">
-            <span>Դպրոցի կոդ</span>
-            <span class="field-badge">3–32 նիշ</span>
-          </span>
-          <input id="schoolCode" required maxlength="32" pattern="[A-Z0-9][A-Z0-9-]{2,31}" placeholder="EREVAN-001" autocapitalize="characters" spellcheck="false" aria-describedby="schoolCodeHint" />
-          <span id="schoolCodeHint" class="field-hint code-hint">
-            <span>Օրինակ՝ <strong>EREVAN-001</strong></span>
-            <span>Մեծատառ լատինատառեր · թվեր · գծիկ</span>
-          </span>
         </label>
         <label class="form-field form-field-wide">
           <span>Առաջին ադմինիստրատորի էլ. հասցե</span>
