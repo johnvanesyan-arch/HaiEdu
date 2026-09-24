@@ -6,43 +6,97 @@
   <title>Դպրոցների մուտք և հրավերներ — HaiEdu</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./school-admin.css" />
 </head>
-<body>
-  <main class="shell" id="mainContent">
-    <header class="topbar">
-      <div><p class="eyebrow">HAIEDU · ՀԱՇԻՎՆԵՐ</p><h1>Դպրոցական հաշիվներ</h1></div>
-      <div class="row"><a class="ghost button-link" href="./account-access">Հաշվի մուտք</a><button id="signOutBtn" class="ghost hidden">Դուրս գալ</button></div>
+<body class="school-admin-page">
+  <main class="shell school-admin-shell" id="mainContent">
+    <header class="topbar school-admin-header">
+      <div class="page-heading">
+        <p class="eyebrow">HAIEDU · ՀԱՇԻՎՆԵՐ</p>
+        <h1>Դպրոցական հաշիվներ</h1>
+        <p class="page-lede">Դպրոցների և աշխատակիցների հաշիվների կառավարման կենտրոն։</p>
+      </div>
+      <div class="row account-actions">
+        <a id="accountAccessLink" class="ghost button-link" href="./account-access">Հաշվի մուտք</a>
+        <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
+      </div>
     </header>
-    <section id="loading" class="card">Ստուգվում է հասանելիությունը…</section>
-    <section id="denied" class="card hidden"><h2>Մուտքը սահմանափակ է</h2><a href="./account-access">Մուտք գործել</a></section>
-    <section id="masterPanel" class="card hidden">
-      <h2>Դպրոցի և առաջին ադմինիստրատորի հրավեր</h2>
-      <p class="subtle">Հրավիրվող անձն իր էլ. փոստով կստանա հղում և ինքնուրույն կսահմանի գաղտնաբառը։ Դպրոցը կստեղծվի հրավերն ընդունելուց հետո։</p>
-      <form id="schoolForm">
-        <label>Դպրոցի անուն<input id="schoolName" required minlength="3" maxlength="160" /></label>
-        <label>Դպրոցի կոդ<input id="schoolCode" required pattern="[A-Z0-9][A-Z0-9-]{2,31}" placeholder="EREVAN-001" /></label>
-        <label>Առաջին ադմինիստրատորի էլ. հասցե<input id="schoolAdminEmail" type="email" required autocomplete="off" /></label>
-        <button type="submit">Ուղարկել հրավերը</button>
-      </form>
-      <p id="schoolMessage" class="message" role="status" aria-live="polite"></p>
+
+    <section id="loading" class="card admin-panel status-panel">Ստուգվում է հասանելիությունը…</section>
+    <section id="denied" class="card admin-panel status-panel hidden" aria-labelledby="deniedTitle">
+      <h2 id="deniedTitle">Մուտքը սահմանափակ է</h2>
+      <p class="subtle">Այս բաժինը հասանելի է միայն համապատասխան ադմինիստրատորական հաշվով։</p>
+      <a class="button-link ghost" href="./account-access">Մուտք գործել</a>
     </section>
-    <section id="teacherPanel" class="card hidden">
-      <h2>Ուսուցչի հրավեր</h2>
-      <p class="subtle">Ընտրեք ձեր դպրոցը և հրապարակված առարկան։ Հրավերն ընդունելուց հետո ուսուցիչը կստանա միայն այդ դպրոցի և առարկայի թույլտվությունը։</p>
-      <form id="teacherForm">
-        <label>Դպրոց<select id="teacherSchool" required></select></label>
-        <label>Առարկա<select id="teacherSubject" required></select></label>
-        <label>Ուսուցչի էլ. հասցե<input id="teacherEmail" type="email" required autocomplete="off" /></label>
-        <button type="submit">Ուղարկել հրավերը</button>
+
+    <section id="masterPanel" class="card admin-panel hidden" aria-labelledby="schoolInviteTitle">
+      <div class="panel-header">
+        <div>
+          <p class="panel-kicker">Դպրոցի ստեղծում</p>
+          <h2 id="schoolInviteTitle">Դպրոցի և առաջին ադմինիստրատորի հրավեր</h2>
+        </div>
+      </div>
+      <p class="subtle panel-copy">Հրավիրվող անձն իր էլ. փոստով կստանա հղում և ինքնուրույն կսահմանի գաղտնաբառը։ Դպրոցը կստեղծվի միայն հրավերն ընդունելուց հետո։</p>
+      <form id="schoolForm" class="admin-form">
+        <label class="form-field">
+          <span>Դպրոցի անուն</span>
+          <input id="schoolName" required minlength="3" maxlength="160" autocomplete="organization" />
+        </label>
+        <label class="form-field">
+          <span>Դպրոցի կոդ</span>
+          <input id="schoolCode" required maxlength="32" pattern="[A-Z0-9][A-Z0-9-]{2,31}" placeholder="EREVAN-001" autocapitalize="characters" spellcheck="false" aria-describedby="schoolCodeHint" />
+          <span id="schoolCodeHint" class="field-hint">3–32 նիշ՝ միայն լատինատառ մեծատառեր, թվեր և գծիկ։</span>
+        </label>
+        <label class="form-field form-field-wide">
+          <span>Առաջին ադմինիստրատորի էլ. հասցե</span>
+          <input id="schoolAdminEmail" type="email" required autocomplete="email" inputmode="email" />
+        </label>
+        <div class="form-actions">
+          <button type="submit">Ուղարկել հրավերը</button>
+          <p id="schoolMessage" class="message" role="status" aria-live="polite"></p>
+        </div>
       </form>
-      <p id="teacherMessage" class="message" role="status" aria-live="polite"></p>
     </section>
-    <section id="pendingPanel" class="card hidden">
-      <h2>Սպասվող հրավերներ</h2>
-      <p class="subtle">Չեղարկված հրավերի հղումը այլևս չի ակտիվացնի դպրոցական դերը։ Հաշիվը և արդեն հաստատված անդամակցությունները չեն ջնջվում։</p>
-      <button id="refreshInvitesBtn" type="button" class="ghost">Թարմացնել ցանկը</button>
-      <p id="pendingMessage" class="message" role="status" aria-live="polite"></p>
-      <div id="pendingInvites"></div>
+
+    <section id="teacherPanel" class="card admin-panel hidden" aria-labelledby="teacherInviteTitle">
+      <div class="panel-header">
+        <div>
+          <p class="panel-kicker">Ուսուցչի մուտք</p>
+          <h2 id="teacherInviteTitle">Ուսուցչի հրավեր</h2>
+        </div>
+      </div>
+      <p class="subtle panel-copy">Ընտրեք դպրոցը և հրապարակված առարկան։ Հրավերն ընդունելուց հետո ուսուցիչը կստանա միայն այդ դպրոցի և առարկայի թույլտվությունը։</p>
+      <form id="teacherForm" class="admin-form">
+        <label class="form-field">
+          <span>Դպրոց</span>
+          <select id="teacherSchool" required></select>
+        </label>
+        <label class="form-field">
+          <span>Առարկա</span>
+          <select id="teacherSubject" required></select>
+        </label>
+        <label class="form-field form-field-wide">
+          <span>Ուսուցչի էլ. հասցե</span>
+          <input id="teacherEmail" type="email" required autocomplete="email" inputmode="email" />
+        </label>
+        <div class="form-actions">
+          <button type="submit">Ուղարկել հրավերը</button>
+          <p id="teacherMessage" class="message" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+    </section>
+
+    <section id="pendingPanel" class="card admin-panel hidden" aria-labelledby="pendingTitle">
+      <div class="panel-header pending-header">
+        <div>
+          <p class="panel-kicker">Հրավերների վերահսկում</p>
+          <h2 id="pendingTitle">Սպասվող հրավերներ</h2>
+        </div>
+        <button id="refreshInvitesBtn" type="button" class="ghost">Թարմացնել ցանկը</button>
+      </div>
+      <p class="subtle panel-copy">Չեղարկված հրավերի հղումը այլևս չի ակտիվացնի դպրոցական դերը։ Հաշիվը և արդեն հաստատված անդամակցությունները չեն ջնջվում։</p>
+      <p id="pendingMessage" class="message pending-message" role="status" aria-live="polite"></p>
+      <div id="pendingInvites" class="pending-list"></div>
     </section>
   </main>
   <script type="module" src="./school-admin.js"></script>
