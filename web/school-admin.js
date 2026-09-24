@@ -124,7 +124,7 @@ async function loadPendingInvites() {
           return message("pendingMessage", "Վերաուղարկման հարցումը չհաջողվեց։ Ստուգեք էլ. փոստի կարգավորումները կամ փորձեք ավելի ուշ։", true);
         }
         await loadPendingInvites();
-        message("pendingMessage", "Վերաուղարկման հարցումն ընդունվել է։ Ստուգեք նաև Spam բաժինը. նամակի ստացումը դեռ հաստատված չէ։");
+        message("pendingMessage", "Վերաուղարկման հարցումն ընդունվել է։ Բացեք միայն ամենավերջին նամակի հղումը. նախորդ հղումներն այլևս չեն գործում։ Ստուգեք նաև Spam բաժինը։");
       });
       actions.append(resendButton);
     }

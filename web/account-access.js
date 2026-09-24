@@ -1,12 +1,28 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
-const flowHint = new URLSearchParams(location.hash.slice(1)).get("type") ||
-  new URLSearchParams(location.search).get("type");
-const resetView = new URLSearchParams(location.search).get("view") === "reset";
+const hashParams = new URLSearchParams(location.hash.slice(1));
+const searchParams = new URLSearchParams(location.search);
+const flowHint = hashParams.get("type") || searchParams.get("type");
+const linkError = hashParams.get("error_code") || searchParams.get("error_code") ||
+  (hashParams.get("error") === "access_denied" || searchParams.get("error") === "access_denied"
+    ? "access_denied" : null);
+const resetView = searchParams.get("view") === "reset";
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 const redirect = `${location.origin}/account-access`;
+if (linkError) {
+  messageForLinkError();
+  // Drop the one-time error fragment without retaining or exposing any link tokens.
+  history.replaceState(null, "", location.pathname);
+}
+function messageForLinkError() {
+  const notice = $("linkErrorMessage");
+  notice.textContent = linkError === "otp_expired"
+    ? "Էլ. փոստի հղումը չի գործում կամ ժամկետանց է։ Հրավերի դեպքում բացեք ամենավերջին նամակի հղումը. վերաուղարկելուց հետո հինը չի գործում։ Եթե նոր նամակ չկա, խնդրեք հրավիրող ադմինիստրատորին վերաուղարկել հրավերը։"
+    : "Էլ. փոստի հղումը չհաստատվեց։ Հրավերի համար խնդրեք նոր հղում, իսկ գաղտնաբառը վերականգնելու համար նորից ուղարկեք վերականգնման հղումը։";
+  notice.classList.remove("hidden");
+}
 function show(panel) {
   for (const id of ["loginPanel", "resetPanel", "passwordPanel"])
     $(id).classList.toggle("hidden", id !== panel);
@@ -81,9 +97,10 @@ $("passwordForm").addEventListener("submit", async (event) => {
 });
 
 supabase.auth.onAuthStateChange((event, session) => {
-  if ((event === "PASSWORD_RECOVERY" || flowHint === "invite" || flowHint === "recovery") && session)
+  if (!linkError && (event === "PASSWORD_RECOVERY" || flowHint === "invite" || flowHint === "recovery") && session)
     show("passwordPanel");
 });
 const { data: initial } = await supabase.auth.getSession();
-if (initial.session && (flowHint === "invite" || flowHint === "recovery")) show("passwordPanel");
+if (linkError) show("loginPanel");
+else if (initial.session && (flowHint === "invite" || flowHint === "recovery")) show("passwordPanel");
 else if (resetView && !flowHint) show("resetPanel");

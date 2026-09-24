@@ -13,7 +13,8 @@
     <header class="topbar"><div><p class="eyebrow">HAIEDU</p><h1>Հաշվի մուտք</h1></div><a class="ghost button-link" href="./index.html">Գլխավոր</a></header>
     <section id="loginPanel" class="card auth-card">
       <h2>Մուտք գործել</h2>
-      <p class="subtle">Մուտք գործեք ձեր հաշվի էլ. հասցեով։ Եթե հրավեր եք ստացել, նախ հաստատեք այն էլ. փոստում։</p>
+      <p class="subtle">Եթե հրավեր եք ստացել, բացեք ամենավերջին նամակի հղումը և սահմանեք ձեր սեփական գաղտնաբառը։ Նախապես գրանցվել պետք չէ։ Դրանից հետո մուտք գործեք ձեր էլ. հասցեով և նոր գաղտնաբառով։</p>
+      <p id="linkErrorMessage" class="auth-link-error hidden" role="alert"></p>
       <form id="loginForm">
         <label>Էլ. հասցե<input id="loginEmail" type="email" autocomplete="email" required /></label>
         <label>Գաղտնաբառ<input id="loginPassword" type="password" autocomplete="current-password" required /></label>

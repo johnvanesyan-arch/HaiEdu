@@ -11,6 +11,16 @@
   margin: 0;
 }
 
+.account-access .auth-link-error {
+  padding: 14px 16px;
+  margin: 18px 0;
+  border: 1px solid #e7b9be;
+  border-radius: 12px;
+  background: #fff4f3;
+  color: #812a38;
+  line-height: 1.6;
+}
+
 @media (max-width: 600px) {
   .account-access .auth-actions {
     flex-direction: column;
