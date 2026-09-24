@@ -4,6 +4,7 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 let dashboard = null;
+let showArchived = false;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -16,7 +17,11 @@ function setMessage(text, bad = false) {
 
 async function invoke(name, body = {}) {
   const { data, error } = await supabase.functions.invoke(name, { body });
-  if (error) throw new Error(data?.detail || data?.error || error.message);
+  if (error) {
+    const response = error.context;
+    const payload = response instanceof Response ? await response.json().catch(() => null) : null;
+    throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
+  }
   if (data?.error) throw new Error(data.detail || data.error);
   return data;
 }
@@ -31,9 +36,12 @@ function displayUser(user) {
 }
 
 function renderStats(data) {
-  const roleCounts = data.totals?.roleCounts || {};
+  const current = (data.users ?? []).filter((user) => user.accountStatus !== "archived");
+  const roleCounts = Object.fromEntries(["student", "teacher"].map((role) => [
+    role, current.filter((user) => user.role === role).length,
+  ]));
   const cards = [
-    ["Օգտատերեր", data.totals?.users ?? 0],
+    ["Ընթացիկ հաշիվներ", current.length],
     ["Ուսանողներ", roleCounts.student ?? 0],
     ["Ուսուցիչներ", roleCounts.teacher ?? 0],
     ["Բաց ջնջման հարցումներ", data.totals?.pendingDeletionRequests ?? 0],
@@ -42,20 +50,34 @@ function renderStats(data) {
 }
 
 function renderUsers() {
-  const rows = dashboard?.users ?? [];
+  const rows = (dashboard?.users ?? []).filter((user) => (user.accountStatus === "archived") === showArchived);
+  const archivedCount = (dashboard?.users ?? []).filter((user) => user.accountStatus === "archived").length;
+  $("archivedCount").textContent = `(${archivedCount})`;
+  $("activeUsersBtn").setAttribute("aria-pressed", String(!showArchived));
+  $("archivedUsersBtn").setAttribute("aria-pressed", String(showArchived));
+  $("activeUsersBtn").className = showArchived ? "ghost" : "";
+  $("archivedUsersBtn").className = showArchived ? "" : "ghost";
   $("userRows").innerHTML = rows.length ? rows.map((user) => {
     const roleOptions = ["student", "teacher", "content_admin", "admin"].map((role) => `<option value="${role}" ${role === user.role ? "selected" : ""}>${role}</option>`).join("");
-    const statusAction = user.accountStatus === "active"
+    const statusAction = user.accountStatus === "archived"
+      ? `<button class="secondary" data-action="unarchive" data-user="${user.id}">Վերականգնել ցանկում</button>
+         <button class="danger-btn" data-action="${user.role === "student" ? "prepare_account_deletion" : "delete_archived_staff"}" data-user="${user.id}">${user.role === "student" ? "Պատրաստել ջնջումը" : "Ջնջել վերջնականապես"}</button>`
+      : user.accountStatus === "active"
       ? `<button class="secondary" data-action="suspend" data-user="${user.id}">Կասեցնել</button>`
-      : `<button data-action="activate" data-user="${user.id}">Ակտիվացնել</button>`;
+      : user.accountStatus === "suspended"
+      ? `<button data-action="activate" data-user="${user.id}">Ակտիվացնել</button><button class="secondary" data-action="archive" data-user="${user.id}">Արխիվացնել</button>`
+      : "";
+    const roleEditor = user.accountStatus === "archived" || user.accountStatus === "deletion_pending" ||
+      user.role === "school_admin" || user.role === "parent" ? "" :
+      `<select data-role-select="${user.id}">${roleOptions}</select><button class="ghost" data-action="set_role" data-user="${user.id}">Պահել դերը</button>`;
     return `<tr>
       <td><strong>${esc(displayUser(user))}</strong><div class="subtle small">${esc(user.email || "էլ. հասցե չկա")}</div></td>
       <td><span class="role-chip">${esc(user.role)}</span></td>
       <td><span class="status-chip ${esc(user.accountStatus)}">${esc(user.accountStatus)}</span></td>
       <td>${user.lastSignInAt ? esc(new Date(user.lastSignInAt).toLocaleString("hy-AM")) : "—"}</td>
-      <td><div class="admin-actions"><select data-role-select="${user.id}">${roleOptions}</select><button class="ghost" data-action="set_role" data-user="${user.id}">Պահել դերը</button>${statusAction}</div></td>
+      <td><div class="admin-actions">${roleEditor}${statusAction}</div></td>
     </tr>`;
-  }).join("") : '<tr><td colspan="5" class="empty-row">Օգտատեր չկա։</td></tr>';
+  }).join("") : `<tr><td colspan="5" class="empty-row">${showArchived ? "Արխիվացված հաշիվ չկա։" : "Ընթացիկ հաշիվ չկա։"}</td></tr>`;
 
   $("userRows").querySelectorAll("button[data-action]").forEach((btn) => btn.addEventListener("click", () => handleUserAction(btn.dataset.action, btn.dataset.user)));
 }
@@ -150,8 +172,25 @@ async function handleUserAction(action, userId) {
       if (!confirm(`Փոխե՞լ օգտատիրոջ դերը՝ ${role}։`)) return;
       setMessage("Դերը փոխվում է…");
       await invoke("manage-admin-account", { action, targetUserId: userId, role });
+    } else if (action === "delete_archived_staff") {
+      const user = userById(userId);
+      if (!confirm(`Վերջնականապե՞ս ջնջել ${displayUser(user)} հաշիվը։ Կապված դպրոցական կամ դասարանական տվյալների առկայության դեպքում ջնջումը կմերժվի։`)) return;
+      const token = prompt('Մուտքագրեք DELETE՝ ջնջումը հաստատելու համար։', "");
+      if (token !== "DELETE") return;
+      setMessage("Հաշիվը ջնջվում է…");
+      await invoke("manage-admin-account", { action, targetUserId: userId });
+    } else if (action === "prepare_account_deletion") {
+      if (!confirm("Ստեղծե՞լ այս ուսանողի ջնջման հարցումը։ Դեռ ոչինչ չի ջնջվի։ Հաստատումը և վերջնական ջնջումը կատարվում են ներքևի հարցումների բաժնում։")) return;
+      setMessage("Ջնջման հարցումը ստեղծվում է…");
+      await invoke("manage-admin-account", { action, targetUserId: userId });
     } else {
-      if (!confirm(action === "suspend" ? "Կասեցնե՞լ այս հաշիվը։" : "Ակտիվացնե՞լ այս հաշիվը։")) return;
+      const prompts = {
+        suspend: "Կասեցնե՞լ այս հաշիվը։",
+        activate: "Ակտիվացնե՞լ այս հաշիվը։",
+        archive: "Արխիվացնե՞լ այս կասեցված հաշիվը։ Այն կթաքցվի հիմնական ցանկից։",
+        unarchive: "Վերադարձնե՞լ հաշիվը հիմնական ցանկ՝ կասեցված վիճակում։",
+      };
+      if (!prompts[action] || !confirm(prompts[action])) return;
       setMessage("Հաշվի կարգավիճակը փոխվում է…");
       await invoke("manage-admin-account", { action, targetUserId: userId });
     }
@@ -214,6 +253,8 @@ $("signInBtn").addEventListener("click", async () => {
 });
 $("signOutBtn").addEventListener("click", async () => { await supabase.auth.signOut(); window.location.reload(); });
 $("refreshBtn").addEventListener("click", refresh);
+$("activeUsersBtn").addEventListener("click", () => { showArchived = false; renderUsers(); });
+$("archivedUsersBtn").addEventListener("click", () => { showArchived = true; renderUsers(); });
 
 supabase.auth.onAuthStateChange((_event, session) => {
   if (session) refresh();
