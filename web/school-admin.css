@@ -1,0 +1,265 @@
+.school-admin-page {
+  background: #f3f6f9;
+}
+
+.school-admin-shell {
+  max-width: 1120px;
+}
+
+.school-admin-header {
+  align-items: flex-end;
+  margin-bottom: 24px;
+}
+
+.page-heading {
+  min-width: 0;
+}
+
+.page-heading h1 {
+  margin-bottom: 6px;
+  letter-spacing: -.025em;
+}
+
+.page-lede {
+  max-width: 720px;
+  margin: 0;
+  color: #657286;
+  font-size: 1rem;
+}
+
+.account-actions {
+  justify-content: flex-end;
+}
+
+.admin-panel {
+  padding: 28px;
+  margin-bottom: 16px;
+}
+
+.status-panel {
+  min-height: 92px;
+}
+
+.status-panel h2 {
+  margin: 0 0 8px;
+}
+
+.panel-header {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 18px;
+}
+
+.panel-header h2 {
+  margin: 0;
+  font-size: clamp(1.35rem, 2.5vw, 1.75rem);
+}
+
+.panel-kicker {
+  margin: 0 0 4px;
+  color: #315d8d;
+  font-size: .78rem;
+  font-weight: 800;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+}
+
+.panel-copy {
+  max-width: 820px;
+  margin-top: 8px;
+  line-height: 1.65;
+}
+
+.admin-form {
+  display: grid;
+  grid-template-columns: minmax(0, 1.4fr) minmax(220px, .75fr);
+  column-gap: 18px;
+  margin-top: 22px;
+}
+
+.form-field {
+  margin: 0 0 18px;
+}
+
+.form-field-wide,
+.form-actions {
+  grid-column: 1 / -1;
+}
+
+.form-field input,
+.form-field select {
+  border: 1px solid #c7d0dc;
+  border-radius: 12px;
+  background: #fff;
+  padding: 12px 13px;
+  transition: border-color .16s ease, box-shadow .16s ease;
+}
+
+.form-field input:hover,
+.form-field select:hover {
+  border-color: #aebac9;
+}
+
+.form-field input:focus,
+.form-field select:focus {
+  border-color: #6f92bd;
+  box-shadow: 0 0 0 3px rgba(31, 79, 138, .11);
+}
+
+#schoolCode {
+  text-transform: uppercase;
+  letter-spacing: .025em;
+}
+
+.field-hint {
+  margin-top: 1px;
+  color: #788598;
+  font-size: .8rem;
+  font-weight: 500;
+}
+
+.form-actions {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-top: 2px;
+}
+
+.form-actions button {
+  min-width: 190px;
+}
+
+.form-actions .message {
+  min-height: 0;
+  margin: 0;
+}
+
+.message.is-success {
+  color: #356246;
+}
+
+.message.is-error {
+  color: #8a3342;
+}
+
+.pending-header {
+  align-items: center;
+}
+
+.pending-message {
+  margin: 16px 0 0;
+  min-height: 1.4em;
+}
+
+.pending-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 12px;
+}
+
+.invite-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  padding: 14px 16px;
+  border: 1px solid #e0e6ee;
+  border-radius: 13px;
+  background: #fbfcfe;
+}
+
+.invite-row.expired {
+  background: #faf7f7;
+}
+
+.invite-main {
+  min-width: 0;
+}
+
+.invite-title {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex-wrap: wrap;
+}
+
+.invite-role {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 3px 9px;
+  border-radius: 999px;
+  background: #edf3fa;
+  color: #2d527e;
+  font-size: .76rem;
+  font-weight: 800;
+}
+
+.invite-email {
+  overflow-wrap: anywhere;
+}
+
+.invite-meta,
+.invite-expiry {
+  margin: 4px 0 0;
+  color: #6f7c8d;
+  font-size: .88rem;
+}
+
+.invite-row.expired .invite-expiry {
+  color: #8a3342;
+  font-weight: 700;
+}
+
+.danger-ghost {
+  flex: 0 0 auto;
+  color: #8a3342 !important;
+  border-color: #dfc3c8 !important;
+}
+
+@media (max-width: 760px) {
+  .school-admin-header {
+    align-items: stretch;
+  }
+
+  .account-actions {
+    justify-content: flex-start;
+  }
+
+  .admin-panel {
+    padding: 20px;
+  }
+
+  .admin-form {
+    grid-template-columns: 1fr;
+  }
+
+  .form-field-wide,
+  .form-actions {
+    grid-column: auto;
+  }
+
+  .form-actions,
+  .panel-header,
+  .invite-row {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .form-actions button,
+  .pending-header > button,
+  .invite-row > button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .admin-panel {
+    padding: 17px;
+  }
+
+  .page-lede {
+    font-size: .94rem;
+  }
+}
