@@ -41,7 +41,7 @@ Deno.serve(async (req) => {
     const userId = userData.user.id;
     const { data: profile } = await admin.from("profiles").select("role, account_status").eq("id", userId).maybeSingle();
     if (!profile) return json({ error: "profile_not_found" }, 404);
-    if (profile.account_status === "suspended") return json({ error: "account_suspended" }, 403);
+    if (["suspended", "archived"].includes(profile.account_status)) return json({ error: "account_suspended" }, 403);
 
     let body: any = {};
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
@@ -102,13 +102,14 @@ Deno.serve(async (req) => {
 
     if (action === "cancel_deletion") {
       const { data: openRequest } = await admin.from("account_deletion_requests")
-        .select("id, status")
+        .select("id, status, resolution_code")
         .eq("user_id", userId)
         .in("status", ["pending", "processing"])
         .order("requested_at", { ascending: false })
         .limit(1)
         .maybeSingle();
       if (!openRequest) return json({ error: "no_cancellable_deletion_request" }, 409);
+      if (openRequest.resolution_code === "admin_archived_account") return json({ error: "archived_account_admin_review_required" }, 403);
 
       const { data, error } = await admin.from("account_deletion_requests").update({
         status: "cancelled",

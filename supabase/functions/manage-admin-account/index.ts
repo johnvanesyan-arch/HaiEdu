@@ -53,12 +53,16 @@ Deno.serve(async (req) => {
     if (action === "set_role") {
       const targetUserId = String(body.targetUserId ?? "");
       const nextRole = String(body.role ?? "");
+      // School administrator authority is provisioned through a school membership,
+      // never by changing the global profile role in this generic editor.
       const allowedRoles = new Set(["student", "teacher", "content_admin", "admin"]);
       if (!targetUserId || !allowedRoles.has(nextRole)) return json({ error: "invalid_role_change" }, 400);
       if (targetUserId === actorId) return json({ error: "cannot_change_own_role" }, 409);
 
       const { data: target } = await admin.from("profiles").select("role, account_status").eq("id", targetUserId).maybeSingle();
       if (!target) return json({ error: "target_not_found" }, 404);
+      if (target.account_status !== "active" && target.account_status !== "suspended") return json({ error: "account_not_editable" }, 409);
+      if (String(target.role) === "school_admin") return json({ error: "school_membership_required" }, 409);
       if (String(target.role) === "admin" && nextRole !== "admin" && target.account_status === "active" && await activeAdminCount(admin) <= 1) {
         return json({ error: "last_active_admin_protected" }, 409);
       }
@@ -73,35 +77,111 @@ Deno.serve(async (req) => {
       return json({ user: updated });
     }
 
-    if (action === "suspend" || action === "activate") {
+    if (action === "suspend" || action === "activate" || action === "archive" || action === "unarchive") {
       const targetUserId = String(body.targetUserId ?? "");
       if (!targetUserId) return json({ error: "target_user_required" }, 400);
       if (targetUserId === actorId) return json({ error: "cannot_change_own_status" }, 409);
       const { data: target } = await admin.from("profiles").select("role, account_status").eq("id", targetUserId).maybeSingle();
       if (!target) return json({ error: "target_not_found" }, 404);
+      if (action === "archive" && target.account_status !== "suspended") return json({ error: "suspend_before_archiving" }, 409);
+      if (action === "unarchive" && target.account_status !== "archived") return json({ error: "archived_account_required" }, 409);
+      if ((action === "suspend" || action === "activate") && !["active", "suspended"].includes(target.account_status)) {
+        return json({ error: "account_not_editable" }, 409);
+      }
       if (action === "suspend" && String(target.role) === "admin" && target.account_status === "active" && await activeAdminCount(admin) <= 1) {
         return json({ error: "last_active_admin_protected" }, 409);
       }
 
-      const authChange = await admin.auth.admin.updateUserById(targetUserId, {
-        ban_duration: action === "suspend" ? "876000h" : "none",
-      });
-      if (authChange.error) return json({ error: "auth_status_update_failed", detail: authChange.error.message }, 500);
+      if (action === "suspend" || action === "activate") {
+        const authChange = await admin.auth.admin.updateUserById(targetUserId, {
+          ban_duration: action === "suspend" ? "876000h" : "none",
+        });
+        if (authChange.error) return json({ error: "auth_status_update_failed", detail: authChange.error.message }, 500);
+      }
 
-      const nextStatus = action === "suspend" ? "suspended" : "active";
+      // Archive only changes an already banned account; unarchive keeps it banned.
+      const nextStatus = action === "archive" ? "archived" : action === "unarchive" ? "suspended" : action === "suspend" ? "suspended" : "active";
       const { data: updated, error } = await admin.from("profiles").update({
         account_status: nextStatus,
         status_changed_at: new Date().toISOString(),
         updated_at: new Date().toISOString(),
-      }).eq("id", targetUserId).select("id, role, account_status, status_changed_at").single();
-      if (error) return json({ error: "profile_status_update_failed", detail: error.message }, 500);
+      }).eq("id", targetUserId).eq("account_status", target.account_status)
+        .select("id, role, account_status, status_changed_at").maybeSingle();
+      if (error || !updated) return json({ error: "profile_status_update_failed", detail: error?.message }, 500);
 
       await writeAudit(admin, {
-        actor_user_id: actorId, actor_role: "admin", action: action === "suspend" ? "admin.account_suspended" : "admin.account_activated",
+        actor_user_id: actorId, actor_role: "admin", action: ({
+          suspend: "admin.account_suspended", activate: "admin.account_activated",
+          archive: "admin.account_archived", unarchive: "admin.account_unarchived",
+        } as Record<string, string>)[action],
         outcome: "success", target_user_id: targetUserId, target_type: "user",
         details: { previousStatus: target.account_status, newStatus: nextStatus },
       });
       return json({ user: updated });
+    }
+
+    if (action === "prepare_account_deletion") {
+      const targetUserId = String(body.targetUserId ?? "");
+      if (!targetUserId) return json({ error: "target_user_required" }, 400);
+      if (targetUserId === actorId) return json({ error: "cannot_delete_own_account" }, 409);
+      const { data: target } = await admin.from("profiles")
+        .select("role, account_status").eq("id", targetUserId).maybeSingle();
+      if (!target) return json({ error: "target_not_found" }, 404);
+      if (target.account_status !== "archived") return json({ error: "archive_before_deletion" }, 409);
+      if (String(target.role) !== "student") return json({ error: "staff_delete_from_archive" }, 409);
+
+      const { data: existing } = await admin.from("account_deletion_requests")
+        .select("id, status").eq("user_id", targetUserId)
+        .in("status", ["pending", "processing"]).maybeSingle();
+      if (existing) return json({ request: existing, alreadyPending: true });
+      const { data: request, error } = await admin.from("account_deletion_requests").insert({
+        user_id: targetUserId, auth_user_id: targetUserId, requester_user_id: actorId,
+        status: "pending", resolution_code: "admin_archived_account",
+      }).select("id, status").single();
+      if (error) return json({ error: "deletion_request_failed", detail: error.message }, 500);
+      await writeAudit(admin, {
+        actor_user_id: actorId, actor_role: "admin", action: "admin.archived_student_deletion_requested",
+        outcome: "success", target_user_id: targetUserId, target_type: "deletion_request", target_key: request.id,
+        details: {},
+      });
+      return json({ request });
+    }
+
+    if (action === "delete_archived_staff") {
+      const targetUserId = String(body.targetUserId ?? "");
+      if (!targetUserId) return json({ error: "target_user_required" }, 400);
+      if (targetUserId === actorId) return json({ error: "cannot_delete_own_account" }, 409);
+      const { data: target } = await admin.from("profiles")
+        .select("role, account_status").eq("id", targetUserId).maybeSingle();
+      if (!target) return json({ error: "target_not_found" }, 404);
+      if (target.account_status !== "archived") return json({ error: "archive_before_deletion" }, 409);
+      if (String(target.role) === "student") return json({ error: "student_deletion_request_required" }, 409);
+
+      // Roles can change. Catalog-based preflight checks every profile foreign
+      // key that would cascade learner data or reject the deletion.
+      const { data: blockers, error: blockerError } = await admin.rpc("service_account_deletion_blockers", {
+        p_user_id: targetUserId,
+      });
+      if (blockerError) return json({ error: "offboarding_check_failed", detail: blockerError.message }, 500);
+      if (blockers?.length) return json({
+        error: "staff_offboarding_required",
+        detail: `Նախ փոխանցեք կամ կարգավորեք կապված գրառումները՝ ${blockers.join(", ")}`,
+      }, 409);
+      const { data: openRequest } = await admin.from("account_deletion_requests").select("id")
+        .eq("user_id", targetUserId).in("status", ["pending", "processing"]).maybeSingle();
+      if (openRequest) return json({ error: "open_deletion_request_requires_review" }, 409);
+
+      const deleted = await admin.auth.admin.deleteUser(targetUserId, false);
+      if (deleted.error) return json({
+        error: "staff_offboarding_required",
+        detail: "Կապված գրառումները փոխվել են կամ մուտքի ծառայությունը մերժել է ջնջումը։ Թարմացրեք ցանկը և ստուգեք հաշիվը։",
+      }, 409);
+      await writeAudit(admin, {
+        actor_user_id: actorId, actor_role: "admin", action: "admin.staff_account_erased",
+        outcome: "success", target_user_id: null, target_type: "user",
+        details: { formerRole: target.role },
+      });
+      return json({ deleted: true });
     }
 
     if (action === "reassign_class") {
@@ -132,7 +212,7 @@ Deno.serve(async (req) => {
       const resolutionCode = String(body.resolutionCode ?? "not_verified");
       const allowedCodes = new Set(["not_verified", "staff_offboarding_required", "legal_hold", "duplicate_request"]);
       if (!requestId || !allowedCodes.has(resolutionCode)) return json({ error: "invalid_rejection" }, 400);
-      const { data: request } = await admin.from("account_deletion_requests").select("id, user_id, status")
+      const { data: request } = await admin.from("account_deletion_requests").select("id, user_id, status, resolution_code")
         .eq("id", requestId).maybeSingle();
       if (!request || !["pending", "processing"].includes(request.status)) return json({ error: "request_not_open" }, 409);
       const { data: updated, error } = await admin.from("account_deletion_requests").update({
@@ -141,7 +221,10 @@ Deno.serve(async (req) => {
       }).eq("id", requestId).select("id, status, resolution_code, resolved_at").single();
       if (error) return json({ error: "deletion_reject_failed", detail: error.message }, 500);
       if (request.user_id) {
-        await admin.from("profiles").update({ account_status: "active", status_changed_at: new Date().toISOString() })
+        await admin.from("profiles").update({
+          account_status: request.resolution_code === "admin_archived_account" ? "archived" : "active",
+          status_changed_at: new Date().toISOString(),
+        })
           .eq("id", request.user_id).eq("account_status", "deletion_pending");
       }
       await writeAudit(admin, {

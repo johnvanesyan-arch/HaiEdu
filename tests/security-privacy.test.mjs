@@ -36,10 +36,35 @@ test("admin account management protects self and last active admin", async () =>
 
 test("student deletion removes auth account only after learning-data erasure", async () => {
   const code = await read("supabase/functions/manage-admin-account/index.ts");
-  const eraseIndex = code.indexOf('admin.rpc("erase_student_data"');
-  const authDeleteIndex = code.indexOf("admin.auth.admin.deleteUser");
+  const executeBlock = code.slice(code.indexOf('if (action === "execute_deletion")'));
+  const eraseIndex = executeBlock.indexOf('admin.rpc("erase_student_data"');
+  const authDeleteIndex = executeBlock.indexOf("admin.auth.admin.deleteUser");
   assert.ok(eraseIndex >= 0);
   assert.ok(authDeleteIndex > eraseIndex);
+});
+
+test("archived roles stay blocked and visible on demand", async () => {
+  const sql = await read("supabase/migrations/0104_admin_account_archiving.sql");
+  const endpoint = await read("supabase/functions/manage-admin-account/index.ts");
+  const ui = await read("web/admin.js");
+  assert.match(sql, /'suspended', 'archived', 'deletion_pending'/);
+  assert.match(endpoint, /suspend_before_archiving/);
+  assert.match(endpoint, /unarchive.*"suspended"/s);
+  assert.match(endpoint, /cannot_change_own_status/);
+  assert.match(ui, /accountStatus === "archived"/);
+  assert.match(ui, /archivedUsersBtn/);
+});
+
+test("permanent deletion checks academic links and keeps student review separate", async () => {
+  const sql = await read("supabase/migrations/0104_admin_account_archiving.sql");
+  const endpoint = await read("supabase/functions/manage-admin-account/index.ts");
+  assert.match(sql, /c\.confdeltype in \('a', 'r', 'c'\)/);
+  assert.match(sql, /guard_archived_staff_deletion/);
+  assert.match(sql, /revoke all on function public\.service_account_deletion_blockers\(uuid\) from public, anon, authenticated/);
+  assert.match(endpoint, /archive_before_deletion/);
+  assert.match(endpoint, /service_account_deletion_blockers/);
+  assert.match(endpoint, /status: "pending", resolution_code: "admin_archived_account"/);
+  assert.match(endpoint, /if \(action === "execute_deletion"\)/);
 });
 
 test("two-stage deletion keeps approval reversible and requires explicit execution", async () => {
