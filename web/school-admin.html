@@ -1,0 +1,43 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Դպրոցների մուտք և հրավերներ — HaiEdu</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+</head>
+<body>
+  <main class="shell" id="mainContent">
+    <header class="topbar">
+      <div><p class="eyebrow">HAIEDU · ՀԱՇԻՎՆԵՐ</p><h1>Դպրոցական հաշիվներ</h1></div>
+      <div class="row"><a class="ghost button-link" href="./account-access">Հաշվի մուտք</a><button id="signOutBtn" class="ghost hidden">Դուրս գալ</button></div>
+    </header>
+    <section id="loading" class="card">Ստուգվում է հասանելիությունը…</section>
+    <section id="denied" class="card hidden"><h2>Մուտքը սահմանափակ է</h2><a href="./account-access">Մուտք գործել</a></section>
+    <section id="masterPanel" class="card hidden">
+      <h2>Դպրոցի և առաջին ադմինիստրատորի հրավեր</h2>
+      <p class="subtle">Հրավիրվող անձն իր էլ. փոստով կստանա հղում և ինքնուրույն կսահմանի գաղտնաբառը։ Դպրոցը կստեղծվի հրավերն ընդունելուց հետո։</p>
+      <form id="schoolForm">
+        <label>Դպրոցի անուն<input id="schoolName" required minlength="3" maxlength="160" /></label>
+        <label>Դպրոցի կոդ<input id="schoolCode" required pattern="[A-Z0-9][A-Z0-9-]{2,31}" placeholder="EREVAN-001" /></label>
+        <label>Առաջին ադմինիստրատորի էլ. հասցե<input id="schoolAdminEmail" type="email" required autocomplete="off" /></label>
+        <button type="submit">Ուղարկել հրավերը</button>
+      </form>
+      <p id="schoolMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+    <section id="teacherPanel" class="card hidden">
+      <h2>Ուսուցչի հրավեր</h2>
+      <p class="subtle">Ընտրեք ձեր դպրոցը և հրապարակված առարկան։ Հրավերն ընդունելուց հետո ուսուցիչը կստանա միայն այդ դպրոցի և առարկայի թույլտվությունը։</p>
+      <form id="teacherForm">
+        <label>Դպրոց<select id="teacherSchool" required></select></label>
+        <label>Առարկա<select id="teacherSubject" required></select></label>
+        <label>Ուսուցչի էլ. հասցե<input id="teacherEmail" type="email" required autocomplete="off" /></label>
+        <button type="submit">Ուղարկել հրավերը</button>
+      </form>
+      <p id="teacherMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script type="module" src="./school-admin.js"></script>
+</body>
+</html>
