@@ -4,12 +4,15 @@ import fs from "node:fs";
 
 const read = (path) => fs.readFileSync(path, "utf8");
 
-test("main landing page routes all roles through a shared sign-in and preserves student registration", () => {
+test("public entry shows three roles with a shared sign-in and student registration", () => {
   const shell = read("web/student-shell.js");
   const home = read("web/index.html");
-  assert.match(shell, /roleAccessPanel/);
-  assert.match(shell, /href="\.\/account-access"/);
-  assert.match(shell, /href="\.\/account-access\?view=register"/);
+  const publicEntry = home.split('<main class="shell"')[0];
+  assert.match(shell, /publicEntry/);
+  for (const role of ["Աշակերտ", "Ուսուցիչ", "Դպրոցի ադմին"]) assert.match(publicEntry, new RegExp(role));
+  assert.doesNotMatch(publicEntry, /Բովանդակության պատասխանատու|Հարթակի ադմին|Մաստեր ադմին/);
+  assert.match(publicEntry, /href="\.\/account-access"/);
+  assert.match(publicEntry, /href="\.\/account-access\?view=register"/);
   assert.match(home, /Ստեղծել աշակերտի հաշիվ/);
   assert.doesNotMatch(home, /id="passwordInput"/);
   assert.doesNotMatch(shell, /service_role/i);
