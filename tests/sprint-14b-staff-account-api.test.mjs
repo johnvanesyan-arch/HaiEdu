@@ -20,7 +20,6 @@ async function invoke(name, body, { active = true, permitted = true, registerErr
           calls.push({ method: 'email_invite', email, options });
           return { data: { user: { id: invited } }, error: inviteError };
         },
-        deleteUser: async (id) => { calls.push({ method: 'delete_unprivileged_user', id }); return { error: null }; },
       },
     },
     rpc: async (method, params) => {
@@ -60,7 +59,7 @@ test('only verified platform authority can send a first-school invitation', asyn
   assert.equal(good.calls[2].params.p_recipient, invited);
 });
 
-test('teacher invite binds school and subject; registration failure cleans up new Auth account', async () => {
+test('teacher invite binds school and subject; registration failure never deletes Auth identity', async () => {
   const payload = { kind: 'teacher', email: 'teacher@example.test', schoolId: school, subjectId: subject };
   const denied = await invoke('provision-staff-account', { ...payload, schoolName: 'Wrong' });
   assert.equal(denied.status, 400);
@@ -69,7 +68,7 @@ test('teacher invite binds school and subject; registration failure cleans up ne
   assert.equal(result.status, 403);
   assert.equal(result.calls[2].params.p_school, school);
   assert.equal(result.calls[2].params.p_subject, subject);
-  assert.equal(result.calls[3].method, 'delete_unprivileged_user');
+  assert.equal(result.calls.some(x => x.method === 'delete_unprivileged_user'), false);
 });
 
 test('acceptance derives the recipient from the live session', async () => {
