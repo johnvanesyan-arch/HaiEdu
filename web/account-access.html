@@ -24,6 +24,21 @@
         </div>
       </form>
       <p id="loginMessage" class="message" role="status" aria-live="polite"></p>
+      <p class="subtle">Դեռ աշակերտի հաշիվ չունե՞ք։ <a href="./account-access?view=register">Ստեղծել հաշիվ</a></p>
+    </section>
+    <section id="registerPanel" class="card auth-card hidden">
+      <h2>Ստեղծել աշակերտի հաշիվ</h2>
+      <p class="subtle">Գրանցվելուց հետո ձեր հաշիվը սկզբում դատարկ կլինի։ Դասերն ու վարժանքները կհայտնվեն ուսուցչի հղումով կամ կոդով միանալուց հետո։ Դպրոցի աշխատակիցներն օգտագործում են իրենց ստացած հրավերը։</p>
+      <form id="registerForm">
+        <label>Էլ. հասցե<input id="registerEmail" type="email" autocomplete="email" required /></label>
+        <label>Գաղտնաբառ<input id="registerPassword" type="password" autocomplete="new-password" minlength="12" required /></label>
+        <label>Կրկնել գաղտնաբառը<input id="registerConfirm" type="password" autocomplete="new-password" minlength="12" required /></label>
+        <div class="auth-actions">
+          <button type="submit">Ստեղծել հաշիվ</button>
+          <button id="registerBackBtn" type="button" class="ghost">Արդեն հաշիվ ունե՞ք։ Մուտք գործել</button>
+        </div>
+      </form>
+      <p id="registerMessage" class="message" role="status" aria-live="polite"></p>
     </section>
     <section id="resetPanel" class="card auth-card hidden">
       <h2>Վերականգնել գաղտնաբառը</h2>

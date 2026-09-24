@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { roleDestination } from "./account-roles.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -35,18 +36,6 @@ function friendlyError(error, fallback) {
   return fallback || message || "Գործողությունը չհաջողվեց։";
 }
 
-async function signIn() {
-  setMessage("authMessage", "Մուտք ենք գործում…");
-  $("signInBtn").disabled = true;
-  const { error } = await supabase.auth.signInWithPassword({
-    email: $("emailInput").value.trim(),
-    password: $("passwordInput").value,
-  });
-  $("signInBtn").disabled = false;
-  if (error) return setMessage("authMessage", error.message, true);
-  setMessage("authMessage", "");
-}
-
 async function signOut() {
   await supabase.auth.signOut();
   window.location.reload();
@@ -72,8 +61,7 @@ async function loadDashboard() {
       return;
     }
     if (profile.role !== "teacher") {
-      const destinations = { admin: "./admin.html", content_admin: "./content.html", student: "./index.html" };
-      const destination = destinations[profile.role];
+      const destination = roleDestination(profile.role);
       if (destination) window.location.replace(destination);
       else {
         $("authPanel").classList.remove("hidden");
@@ -489,7 +477,6 @@ async function removeStudent(studentId, studentName) {
   await loadDashboard();
 }
 
-$("signInBtn").addEventListener("click", signIn);
 $("signOutBtn").addEventListener("click", signOut);
 $("refreshBtn").addEventListener("click", loadDashboard);
 $("saveProfileBtn").addEventListener("click", saveProfile);

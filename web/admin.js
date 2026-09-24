@@ -246,11 +246,6 @@ async function reassignClass(classId) {
   } catch (err) { setMessage(err.message, true); }
 }
 
-$("signInBtn").addEventListener("click", async () => {
-  $("authMessage").textContent = "Մուտք ենք գործում…";
-  const { error } = await supabase.auth.signInWithPassword({ email: $("emailInput").value.trim(), password: $("passwordInput").value });
-  if (error) $("authMessage").textContent = error.message;
-});
 $("signOutBtn").addEventListener("click", async () => { await supabase.auth.signOut(); window.location.reload(); });
 $("refreshBtn").addEventListener("click", refresh);
 $("activeUsersBtn").addEventListener("click", () => { showArchived = false; renderUsers(); });

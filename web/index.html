@@ -22,7 +22,7 @@
         <p class="subtle">Ֆիզիկա 7 · Գլուխ I — Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
       </div>
       <div class="row">
-        <a class="ghost button-link" href="./privacy.html">Գաղտնիություն</a>
+        <a id="privacyLink" class="ghost button-link hidden" href="./privacy.html">Գաղտնիություն</a>
         <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
       </div>
     </header>
@@ -33,16 +33,20 @@
     </section>
 
     <section id="authPanel" class="card auth-card hidden" aria-labelledby="loginTitle">
-      <h2 id="loginTitle">Մուտք</h2>
-      <p class="subtle">Օգտագործեք էլ. հասցե և գաղտնաբառ՝ փորձնական ուսանողական հաշիվ ստեղծելու կամ մուտք գործելու համար։</p>
-      <label>Էլ. հասցե<input id="emailInput" type="email" autocomplete="email" placeholder="student@example.com" required /></label>
-      <label>Գաղտնաբառ<input id="passwordInput" type="password" autocomplete="current-password" placeholder="Առնվազն 6 նիշ" minlength="6" required /></label>
+      <span class="mode-kicker">ՍԿՍԵՔ ԱՅՍՏԵՂԻՑ</span>
+      <h2 id="loginTitle">Սովորեք ձեր տեմպով</h2>
+      <p class="subtle">Ստեղծեք աշակերտի հաշիվ։ Դասերը կհայտնվեն, երբ միանաք ուսուցչի տրամադրած հղումով կամ կոդով։ Եթե արդեն հաշիվ ունեք, մուտք գործեք նույն էջից։</p>
       <div class="row">
-        <button id="signInBtn">Մուտք գործել</button>
-      <a class="button-link secondary" href="./account-access?view=reset">Մոռացե՞լ եք գաղտնաբառը</a>
-        <button id="signUpBtn" class="secondary">Գրանցվել</button>
+        <a class="button-link" href="./account-access?view=register">Ստեղծել աշակերտի հաշիվ</a>
+        <a class="button-link secondary" href="./account-access">Մուտք գործել</a>
       </div>
       <p id="authMessage" class="message" aria-live="polite"></p>
+    </section>
+
+    <section id="roleBlockedPanel" class="card auth-card hidden" role="alert">
+      <h2>Չհաջողվեց հաստատել հաշվի հասանելիությունը</h2>
+      <p>Փորձեք նորից կամ կապվեք հարթակի ադմինիստրատորի հետ։</p>
+      <button id="blockedSignOutBtn" type="button">Դուրս գալ</button>
     </section>
 
     <section id="modePanel" class="hidden" aria-labelledby="progressTitle">

@@ -5,6 +5,15 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const joinBtn = document.getElementById("joinBtn");
 const joinCode = document.getElementById("joinCode");
 const message = document.getElementById("message");
+const loginLink = document.getElementById("joinLoginLink");
+const registerLink = document.getElementById("joinRegisterLink");
+
+function updateAuthLinks() {
+  const code = joinCode.value.trim().toUpperCase();
+  const suffix = /^[A-Z0-9]{8}$/.test(code) ? `&code=${code}` : "";
+  loginLink.href = `./account-access?next=join${suffix}`;
+  registerLink.href = `./account-access?view=register&next=join${suffix}`;
+}
 
 function setMessage(text, bad = false) {
   message.textContent = text;
@@ -15,11 +24,14 @@ const inviteCode = new URLSearchParams(window.location.search).get("code")?.trim
 if (/^[A-Z0-9]{8}$/.test(inviteCode)) {
   joinCode.value = inviteCode;
 }
+joinCode.addEventListener("input", updateAuthLinks);
+updateAuthLinks();
 
 const { data: sessionData } = await supabase.auth.getSession();
 if (!sessionData.session) {
   joinBtn.disabled = true;
-  setMessage("Նախ մուտք գործեք աշակերտի էջում, ապա վերադարձեք այստեղ։ Կոդը պահպանված է այս հղման մեջ։", true);
+  document.getElementById("joinAuthLinks").classList.remove("hidden");
+  setMessage("Նախ ստեղծեք աշակերտի հաշիվ կամ մուտք գործեք։ Այնուհետև կարող եք միանալ դասարանին։");
 } else if (inviteCode) {
   setMessage("Ուսուցչի հրավերի կոդը լրացված է։ Սեղմեք «Միանալ»։");
 }

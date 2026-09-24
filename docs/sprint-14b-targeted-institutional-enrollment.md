@@ -1,6 +1,6 @@
 # Sprint 14B — Targeted institutional enrollment foundation
 
-**Status:** Invitation, membership, bootstrap and staff-account provisioning foundations deployed through 2026-09-24. One real school-admin invitation is pending for the test school; no school or institutional enrollment has been created. Authenticated recipient delivery and the two-school tenant release remain gated.
+**Status:** Invitation, membership, bootstrap and staff-account provisioning foundations deployed through 2026-09-24. The user reports a school admin and teacher account activated after an invitation resend and SMTP setup. This recipient report supersedes the earlier zero-school snapshot below; authenticated production verification and the two-school tenant release remain gated. A shared sign-in and student self-registration layout is proposed in the current change set, while school-scoped learner entitlement is not yet connected.
 
 ## Flow
 
