@@ -34,6 +34,9 @@ begin
     values(a,adm,'school_admin',now()-interval '1 day','active');
   insert into public.institutional_memberships(school_id,person_id,role,valid_from,status)
     values(a,teach,'teacher',now()-interval '1 day','active') returning id into tm;
+  insert into public.teacher_subject_authorizations
+    (school_id,teacher_membership_id,subject_id,created_by)
+    values(a,tm,subj,adm);
   insert into public.teacher_assignments
     (school_id,academic_year_id,class_id,teacher_membership_id,subject_program_id,valid_from,status)
     values(a,ya,ca,tm,prog,now()-interval '1 hour','active') returning id into ta;
