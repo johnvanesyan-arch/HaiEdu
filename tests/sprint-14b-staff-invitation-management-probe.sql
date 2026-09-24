@@ -29,24 +29,30 @@ do $$
 declare f record; result jsonb; v_school_a uuid; v_school_b uuid; a uuid; b uuid; m uuid;
 begin
   select * into f from _staff_manage_fixture;
-  result:=public.service_bootstrap_school_14b(f.actor,f.admin_a,'QA Manage A','QA-MANAGE-A');
+  result:=public.service_bootstrap_school_14b(f.actor,f.admin_a,'QA Manage A',null);
   v_school_a:=(result->>'schoolId')::uuid;
-  result:=public.service_bootstrap_school_14b(f.actor,f.admin_b,'QA Manage B','QA-MANAGE-B');
+  result:=public.service_bootstrap_school_14b(f.actor,f.admin_b,'QA Manage B',null);
   v_school_b:=(result->>'schoolId')::uuid;
   a:=public.service_register_staff_invite_14b(f.admin_a,f.teacher_a,'teacher-a-manage@example.invalid',
     'teacher',v_school_a,f.subject_id,null,null);
   b:=public.service_register_staff_invite_14b(f.admin_b,f.teacher_b,'teacher-b-manage@example.invalid',
     'teacher',v_school_b,f.subject_id,null,null);
   m:=public.service_register_staff_invite_14b(f.actor,f.school_admin_invitee,'admin-manage@example.invalid',
-    'school_admin',null,null,'QA Manage C','QA-MANAGE-C');
+    'school_admin',null,null,'QA Manage C',null);
   update _staff_manage_fixture set school_a=v_school_a,school_b=v_school_b,
     invite_a=a,invite_b=b,invite_master=m;
 end $$;
 reset role;
+update public.staff_account_provisioning
+  set created_at=now()-interval '3 minutes',expires_at=now()+interval '6 days'
+  where id in (select invite_a from _staff_manage_fixture
+    union all select invite_b from _staff_manage_fixture
+    union all select invite_master from _staff_manage_fixture);
 do $$
 begin
   if has_function_privilege('authenticated','public.service_list_staff_invites_14b(uuid)','execute')
-     or has_function_privilege('authenticated','public.service_revoke_staff_invite_14b(uuid,uuid)','execute') then
+     or has_function_privilege('authenticated','public.service_revoke_staff_invite_14b(uuid,uuid)','execute')
+     or has_function_privilege('authenticated','public.service_claim_staff_invite_resend_14b(uuid,uuid)','execute') then
     raise exception 'ordinary_client_rpc_access';
   end if;
 end $$;
@@ -57,15 +63,31 @@ begin
   select * into f from _staff_manage_fixture;
   if (select count(*) from public.service_list_staff_invites_14b(f.admin_a))<>1
      or (select count(*) from public.service_list_staff_invites_14b(f.admin_b))<>1
-     or (select count(*) from public.service_list_staff_invites_14b(f.actor))<>3
+     or (select count(*) from public.service_list_staff_invites_14b(f.actor)
+       where invitation_id in (f.invite_a,f.invite_b,f.invite_master))<>3
      or (select count(*) from public.service_list_staff_invites_14b(f.teacher_a))<>0 then
     raise exception 'staff_invite_list_scope_failed'; end if;
+  -- Each claim changes only the existing invitation and is limited by school,
+  -- confirmation state, expiration, count and a 15-minute cooldown.
+  if (select count(*) from public.service_claim_staff_invite_resend_14b(f.admin_b,f.invite_a))<>0
+     or (select count(*) from public.service_claim_staff_invite_resend_14b(f.admin_a,f.invite_master))<>0 then
+    raise exception 'staff_invite_cross_school_resend_allowed'; end if;
+  if (select count(*) from public.service_claim_staff_invite_resend_14b(f.admin_a,f.invite_a))<>1 then
+    raise exception 'staff_invite_authorized_resend_denied'; end if;
+  if (select count(*) from public.service_claim_staff_invite_resend_14b(f.admin_a,f.invite_a))<>0 then
+    raise exception 'staff_invite_resend_cooldown_failed'; end if;
+  if (select count(*) from public.service_claim_staff_invite_resend_14b(f.actor,f.invite_master))<>1
+     or not exists(select 1 from public.academic_identity_events
+       where row_id=f.invite_a and operation='RESEND_REQUESTED' and actor_id=f.admin_a)
+     or (select resend_attempts from public.staff_account_provisioning where id=f.invite_a)<>1 then
+    raise exception 'staff_invite_resend_audit_failed'; end if;
   if public.service_revoke_staff_invite_14b(f.admin_b,f.invite_a)
      or public.service_revoke_staff_invite_14b(f.admin_a,f.invite_master)
      or not public.service_revoke_staff_invite_14b(f.admin_a,f.invite_a)
      or public.service_revoke_staff_invite_14b(f.admin_a,f.invite_a) then
     raise exception 'staff_invite_revoke_scope_failed'; end if;
-  if exists(select 1 from public.service_list_staff_invites_14b(f.admin_a))
+  if (select count(*) from public.service_claim_staff_invite_resend_14b(f.admin_a,f.invite_a))<>0
+     or exists(select 1 from public.service_list_staff_invites_14b(f.admin_a))
      or not exists(select 1 from public.academic_identity_events
        where row_id=f.invite_a and operation='UPDATE' and actor_id=f.admin_a)
      or (select revoked_by from public.staff_account_provisioning where id=f.invite_a) is distinct from f.admin_a then
@@ -78,5 +100,17 @@ begin
   end;
   if not public.service_revoke_staff_invite_14b(f.actor,f.invite_master) then
     raise exception 'platform_admin_revoke_failed'; end if;
+end $$;
+reset role;
+update public.staff_account_provisioning
+  set resend_attempts=3,last_resend_attempt_at=now()-interval '1 hour'
+  where id=(select invite_b from _staff_manage_fixture);
+set local role service_role;
+do $$
+declare f record;
+begin
+  select * into f from _staff_manage_fixture;
+  if (select count(*) from public.service_claim_staff_invite_resend_14b(f.admin_b,f.invite_b))<>0 then
+    raise exception 'staff_invite_resend_cap_failed'; end if;
 end $$;
 rollback;

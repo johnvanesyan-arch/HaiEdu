@@ -1,6 +1,6 @@
 # Sprint 14B — Targeted institutional enrollment foundation
 
-**Status:** Invitation, membership, bootstrap and staff-account provisioning foundations deployed through 2026-09-24. No school, invitation or institutional enrollment has been persisted. Authenticated email delivery and two-school tenant release remain gated.
+**Status:** Invitation, membership, bootstrap and staff-account provisioning foundations deployed through 2026-09-24. One real school-admin invitation is pending for the test school; no school or institutional enrollment has been created. Authenticated recipient delivery and the two-school tenant release remain gated.
 
 ## Flow
 
@@ -84,3 +84,9 @@
 - The platform-admin form requests only the school name and first administrator email. The code is assigned by `service_bootstrap_school_14b` when the recipient activates the school. Both staff invitation and direct bootstrap APIs reject a caller-supplied code.
 - The database generates `SCH-` plus 16 random hexadecimal characters from `gen_random_uuid()`. The schools table keeps the unique constraint; code collisions retry up to eight times. The activation result includes `schoolCode`, and the stored code is an identifier, not an invitation secret or permission grant.
 - Migration 0102 and both Edge function versions are deployed. Local API tests passed 6/6; rollback-only bootstrap and staff-activation database probes passed, with no retained fixture schools or invitations. Authenticated production browser testing still requires a dedicated administrator and invited recipient.
+
+## Staff invite delivery and resend checkpoint (2026-09-24)
+
+- A real school-admin invitation for the test school was accepted by the Auth `/invite` endpoint at 12:02 UTC. Auth recorded `mail.send` from Supabase's default sender to the entered address, but the recipient found no message in Gmail, including Spam and Trash. Delivery was not confirmed, and the pending invitation remains unaccepted. The default sender is unsuitable for production onboarding; configuring a verified custom SMTP provider is required before relying on school invitation email.
+- Migration 0103 adds a service-only, row-locked resend claim to the existing pending invitation. A currently authorized platform admin (for the first school admin) or school admin (for a teacher in their school) can request a resend only while the original issuer is still authorized and the recipient is unconfirmed. The claim is limited to three attempts, at least two minutes after creation and fifteen minutes between attempts; it records the actor in an audit event without logging recipient email. The request targets the same unconfirmed Auth account; a mismatched Auth user ID is treated as a failure, and no second institutional invitation is created.
+- The school account console offers “Վերաուղարկել” for non-expired invitations and describes the outcome as a *send request*, not confirmed delivery. Auth must still send a fresh invite link to the existing unconfirmed account. The two-school rollback probe passed, and four targeted endpoint tests passed. A real resent message must be verified after SMTP is configured. Do not delete the existing Auth user or bypass recipient email confirmation to recover delivery.

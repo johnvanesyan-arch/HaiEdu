@@ -200,6 +200,13 @@
   font-weight: 700;
 }
 
+.invite-actions {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  flex: 0 0 auto;
+}
+
 .danger-ghost {
   flex: 0 0 auto;
   color: #8a3342 !important;
@@ -235,9 +242,15 @@
     flex-direction: column;
   }
 
+  .invite-actions {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
   .form-actions button,
   .pending-header > button,
-  .invite-row > button {
+  .invite-actions,
+  .invite-actions > button {
     width: 100%;
   }
 }

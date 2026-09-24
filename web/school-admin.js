@@ -40,7 +40,7 @@ async function invite(kind, values, messageId, form) {
   }
 
   form.reset();
-  message(messageId, "Հրավերն ուղարկվել է։ Հաշիվը կակտիվանա միայն ստացողի հաստատումից հետո։");
+  message(messageId, "Հրավերի հարցումն ընդունվել է։ Ստուգեք նաև Spam բաժինը. նամակի ստացումը դեռ հաստատված չէ։");
   await loadPendingInvites();
 }
 
@@ -101,6 +101,34 @@ async function loadPendingInvites() {
     title.append(roleBadge, email);
     main.append(title, scope, expiry);
 
+    const actions = document.createElement("div");
+    actions.className = "invite-actions";
+
+    if (!invite.expired) {
+      const resendButton = document.createElement("button");
+      resendButton.type = "button";
+      resendButton.className = "ghost";
+      resendButton.textContent = "Վերաուղարկել";
+      resendButton.addEventListener("click", async () => {
+        setButtonBusy(resendButton, true, "Ուղարկվում է…");
+        let result, resendError;
+        try {
+          ({ data: result, error: resendError } = await supabase.functions.invoke("manage-staff-invitation", {
+            body: { action: "resend", invitationId: invite.invitation_id },
+          }));
+        } catch (requestError) {
+          resendError = requestError;
+        }
+        if (resendError || result?.resendRequested !== true) {
+          setButtonBusy(resendButton, false, "Ուղարկվում է…");
+          return message("pendingMessage", "Վերաուղարկման հարցումը չհաջողվեց։ Ստուգեք էլ. փոստի կարգավորումները կամ փորձեք ավելի ուշ։", true);
+        }
+        await loadPendingInvites();
+        message("pendingMessage", "Վերաուղարկման հարցումն ընդունվել է։ Ստուգեք նաև Spam բաժինը. նամակի ստացումը դեռ հաստատված չէ։");
+      });
+      actions.append(resendButton);
+    }
+
     const button = document.createElement("button");
     button.type = "button";
     button.className = "ghost danger-ghost";
@@ -119,7 +147,8 @@ async function loadPendingInvites() {
       message("pendingMessage", "Հրավերը չեղարկված է։");
     });
 
-    row.append(main, button);
+    actions.append(button);
+    row.append(main, actions);
     list.append(row);
   }
 }

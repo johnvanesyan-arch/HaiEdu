@@ -6,15 +6,25 @@ import vm from 'node:vm';
 
 const actor = '123e4567-e89b-42d3-a456-426614174000';
 const invitation = '223e4567-e89b-42d3-a456-426614174000';
+const recipient = '323e4567-e89b-42d3-a456-426614174000';
 
-async function invoke(body, { active = true, revoked = true } = {}) {
+async function invoke(body, { active = true, revoked = true,
+  claim = [{ recipient_id: recipient, recipient_email: 'invitee@example.test' }],
+  inviteError = null, invitedId = recipient } = {}) {
   let handler;
   const calls = [];
   const admin = {
-    auth: { getUser: async () => ({ data: { user: { id: actor } }, error: null }) },
+    auth: {
+      getUser: async () => ({ data: { user: { id: actor } }, error: null }),
+      admin: { inviteUserByEmail: async (email, options) => {
+        calls.push({ method: 'email_invite', email, options });
+        return { data: { user: { id: invitedId } }, error: inviteError };
+      } },
+    },
     rpc: async (method, params) => {
       calls.push({ method, params });
-      return { data: method === 'service_list_staff_invites_14b' ? [] : revoked, error: null };
+      return { data: method === 'service_list_staff_invites_14b' ? []
+        : method === 'service_claim_staff_invite_resend_14b' ? claim : revoked, error: null };
     },
   };
   const source = readFileSync('supabase/functions/manage-staff-invitation/index.ts', 'utf8')
@@ -49,4 +59,36 @@ test('inactive session and invalid invitation cannot reach privileged RPC', asyn
   assert.equal(invalid.calls.length, 0);
   const denied = await invoke({ action: 'revoke', invitationId: invitation }, { revoked: false });
   assert.equal(denied.status, 403);
+});
+
+
+test('resend uses the verified actor and ledger recipient, not a client email', async () => {
+  const result = await invoke({ action: 'resend', invitationId: invitation,
+    recipient_email: 'attacker@example.test', p_actor: recipient });
+  assert.equal(result.status, 200);
+  assert.equal(result.body.resendRequested, true);
+  assert.equal(result.calls[0].method, 'service_claim_staff_invite_resend_14b');
+  assert.equal(result.calls[0].params.p_actor, actor);
+  assert.equal(result.calls[0].params.p_invitation, invitation);
+  assert.equal(result.calls[1].email, 'invitee@example.test');
+  assert.equal(result.calls[1].options.redirectTo, 'https://www.haiedu.am/account-access');
+});
+
+test('resend denies invalid, unauthorized and failed deliveries without claiming success', async () => {
+  const malformed = await invoke({ action: 'resend', invitationId: 'bad' });
+  assert.equal(malformed.status, 400);
+  assert.equal(malformed.calls.length, 0);
+  const inactive = await invoke({ action: 'resend', invitationId: invitation }, { active: false });
+  assert.equal(inactive.status, 403);
+  assert.equal(inactive.calls.length, 0);
+  const denied = await invoke({ action: 'resend', invitationId: invitation }, { claim: [] });
+  assert.equal(denied.status, 409);
+  assert.equal(denied.calls.some(x => x.method === 'email_invite'), false);
+  const error = await invoke({ action: 'resend', invitationId: invitation },
+    { inviteError: { code: 'email_exists', status: 422 } });
+  assert.equal(error.status, 503);
+  assert.equal(error.body.resendRequested, undefined);
+  const mismatch = await invoke({ action: 'resend', invitationId: invitation },
+    { invitedId: actor });
+  assert.equal(mismatch.status, 503);
 });

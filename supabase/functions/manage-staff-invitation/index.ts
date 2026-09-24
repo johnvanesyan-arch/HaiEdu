@@ -30,6 +30,27 @@ Deno.serve(async (req) => {
       if (error) throw error;
       return json({ invitations: data ?? [] });
     }
+    if (body.action === "resend") {
+      if (typeof body.invitationId !== "string" || !uuid.test(body.invitationId))
+        return json({ error: "invalid_invitation_id" }, 400);
+      const { data: claims, error: claimError } = await admin.rpc("service_claim_staff_invite_resend_14b", {
+        p_actor: actor, p_invitation: body.invitationId,
+      });
+      if (claimError) throw claimError;
+      const claim = Array.isArray(claims) ? claims[0] : null;
+      if (!claim || typeof claim.recipient_email !== "string" || !uuid.test(claim.recipient_id))
+        return json({ error: "resend_unavailable" }, 409);
+      // Auth issues a fresh link for the same unconfirmed identity; never trust
+      // a client-supplied email or create a second institutional invitation.
+      const { data: invited, error: inviteError } = await admin.auth.admin.inviteUserByEmail(
+        claim.recipient_email, { redirectTo: "https://www.haiedu.am/account-access" },
+      );
+      if (inviteError || invited.user?.id !== claim.recipient_id) {
+        console.error("staff_invite_resend_failed", { code: inviteError?.code, status: inviteError?.status });
+        return json({ error: "resend_delivery_unavailable" }, 503);
+      }
+      return json({ resendRequested: true });
+    }
     if (body.action === "revoke") {
       if (typeof body.invitationId !== "string" || !uuid.test(body.invitationId))
         return json({ error: "invalid_invitation_id" }, 400);
