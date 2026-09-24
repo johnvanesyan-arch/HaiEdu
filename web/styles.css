@@ -20,7 +20,7 @@ h3 { margin: 8px 0; font-size: 1.35rem; }
 .hidden { display: none !important; }
 
 /* Account controls should appear only when the session's sign-out control is available. */
-.topbar:has(#signOutBtn.hidden) a[href="./privacy.html"] { display: none; }
+:is(.topbar, .admin-topbar):has(#signOutBtn.hidden) a[href="./privacy.html"] { display: none; }
 
 .notice { border: 1px solid #d8dde5; background: #fff8e7; padding: 12px 14px; border-radius: 12px; display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 18px; }
 .card { background: white; border: 1px solid #e1e5eb; border-radius: 16px; box-shadow: 0 5px 18px rgba(20, 30, 45, .05); }
