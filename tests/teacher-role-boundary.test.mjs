@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { stripTypeScriptTypes } from 'node:module';
+import { roleDestination } from '../web/account-roles.js';
 
 const functions = ['get-teacher-dashboard', 'get-teacher-student', 'manage-teacher-class', 'manage-teacher-profile'];
 async function callEndpoint(name, role, active = true, authenticated = true) {
@@ -72,15 +73,15 @@ async function openTeacherPage(profile, profileError = null) {
     functions: { invoke: async () => { calls++; return { error: new Error('stop before rendering') }; } },
   };
   let source = readFileSync('web/teacher.js', 'utf8').replace(/^import .*;\n/gm, '');
-  source = source.slice(0, source.indexOf('$("signInBtn").addEventListener'));
+  source = source.slice(0, source.indexOf('$("signOutBtn").addEventListener'));
   const context = vm.createContext({ createClient: () => client, SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '',
-    document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console });
+    roleDestination, document: { getElementById: getElement }, window: { location: { replace: (url) => redirects.push(url) } }, console });
   vm.runInContext(source, context);
   await vm.runInContext('loadDashboard()', context);
   return { calls, redirects, hidden: getElement('dashboardPanel').classList.values.has('hidden') };
 }
 
-for (const [role, destination] of Object.entries({ admin: './admin.html', content_admin: './content.html', student: './index.html' })) {
+for (const [role, destination] of Object.entries({ admin: './admin.html', content_admin: './content.html', student: './index.html', school_admin: './school-admin' })) {
   test(`teacher page routes ${role} without fetching teacher data`, async () => {
     const result = await openTeacherPage({ role, account_status: 'active' });
     assert.deepEqual(result.redirects, [destination]);
