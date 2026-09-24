@@ -75,6 +75,16 @@ test('teacher invite binds school and subject; registration failure never delete
   assert.equal(result.calls.some(x => x.method === 'delete_unprivileged_user'), false);
 });
 
+test('email quota failure is reported without registering a teacher invitation', async () => {
+  const payload = { kind: 'teacher', email: 'teacher@example.test', schoolId: school, subjectId: subject };
+  const result = await invoke('provision-staff-account', payload, {
+    inviteError: { code: 'over_email_send_rate_limit', status: 429 },
+  });
+  assert.equal(result.status, 429);
+  assert.equal(result.body.error, 'email_rate_limited');
+  assert.deepEqual(result.calls.map(x => x.method), ['service_authorize_staff_invite_14b', 'email_invite']);
+});
+
 test('acceptance derives the recipient from the live session', async () => {
   const result = await invoke('accept-staff-account', { p_recipient: invited });
   assert.equal(result.status, 200);

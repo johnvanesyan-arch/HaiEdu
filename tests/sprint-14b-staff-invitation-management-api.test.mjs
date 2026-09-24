@@ -88,6 +88,11 @@ test('resend denies invalid, unauthorized and failed deliveries without claiming
     { inviteError: { code: 'email_exists', status: 422 } });
   assert.equal(error.status, 503);
   assert.equal(error.body.resendRequested, undefined);
+  const quota = await invoke({ action: 'resend', invitationId: invitation },
+    { inviteError: { code: 'over_email_send_rate_limit', status: 429 } });
+  assert.equal(quota.status, 429);
+  assert.equal(quota.body.error, 'email_rate_limited');
+  assert.equal(quota.body.resendRequested, undefined);
   const mismatch = await invoke({ action: 'resend', invitationId: invitation },
     { invitedId: actor });
   assert.equal(mismatch.status, 503);

@@ -45,6 +45,8 @@ Deno.serve(async (req) => {
       const { data: invited, error: inviteError } = await admin.auth.admin.inviteUserByEmail(
         claim.recipient_email, { redirectTo: "https://www.haiedu.am/account-access" },
       );
+      if (inviteError?.code === "over_email_send_rate_limit")
+        return json({ error: "email_rate_limited" }, 429);
       if (inviteError || invited.user?.id !== claim.recipient_id) {
         console.error("staff_invite_resend_failed", { code: inviteError?.code, status: inviteError?.status });
         return json({ error: "resend_delivery_unavailable" }, 503);

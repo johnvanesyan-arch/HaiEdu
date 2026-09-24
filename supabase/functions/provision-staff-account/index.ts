@@ -46,6 +46,8 @@ Deno.serve(async (req) => {
     const { data: invited, error: inviteError } = await admin.auth.admin.inviteUserByEmail(email, {
       redirectTo: "https://www.haiedu.am/account-access",
     });
+    if (inviteError?.code === "over_email_send_rate_limit")
+      return json({ error: "email_rate_limited" }, 429);
     if (inviteError || !invited.user?.id) return json({ error: "staff_invitation_unavailable" }, 403);
     const { data: requestId, error: registerError } = await admin.rpc('service_register_staff_invite_14b', {
       p_actor: actor, p_recipient: invited.user.id, p_email: email, p_kind: kind,

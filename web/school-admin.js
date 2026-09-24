@@ -11,6 +11,12 @@ function message(id, text, error = false) {
   element.classList.toggle("is-success", Boolean(text) && !error);
 }
 
+async function emailLimitExceeded(error) {
+  if (error?.context?.status !== 429) return false;
+  try { return (await error.context.json())?.error === "email_rate_limited"; }
+  catch { return false; }
+}
+
 function setButtonBusy(button, busy, busyText) {
   if (!button.dataset.defaultLabel) button.dataset.defaultLabel = button.textContent;
   button.disabled = busy;
@@ -35,6 +41,9 @@ async function invite(kind, values, messageId, form) {
   }
 
   if (error) {
+    if (await emailLimitExceeded(error))
+      return message(messageId,
+        "Հրավերը չուղարկվեց․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։", true);
     return message(messageId,
       "Հրավերը չուղարկվեց։ Ստուգեք թույլտվությունը, հասցեն և կրկնվող հաշիվները։", true);
   }
@@ -121,6 +130,8 @@ async function loadPendingInvites() {
         }
         if (resendError || result?.resendRequested !== true) {
           setButtonBusy(resendButton, false, "Ուղարկվում է…");
+          if (await emailLimitExceeded(resendError))
+            return message("pendingMessage", "Վերաուղարկումը սահմանափակվել է․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։", true);
           return message("pendingMessage", "Վերաուղարկման հարցումը չհաջողվեց։ Ստուգեք էլ. փոստի կարգավորումները կամ փորձեք ավելի ուշ։", true);
         }
         await loadPendingInvites();
