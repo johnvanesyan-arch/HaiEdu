@@ -17,7 +17,51 @@ async function invite(kind, values, messageId, form) {
     "Հրավերը չուղարկվեց։ Ստուգեք թույլտվությունը, հասցեն և կրկնվող հաշիվները։", true);
   form.reset();
   message(messageId, "Հրավերն ուղարկվել է։ Հաշիվը կակտիվանա միայն ստացողի հաստատումից հետո։");
+  await loadPendingInvites();
 }
+async function loadPendingInvites() {
+  const list = $("pendingInvites");
+  list.replaceChildren();
+  message("pendingMessage", "Բեռնվում է…");
+  const { data, error } = await supabase.functions.invoke("manage-staff-invitation", {
+    body: { action: "list" },
+  });
+  if (error || !Array.isArray(data?.invitations)) {
+    message("pendingMessage", "Հրավերների ցանկը հասանելի չէ։ Փորձեք ավելի ուշ։", true);
+    return;
+  }
+  const invitations = data.invitations;
+  message("pendingMessage", invitations.length ? "" : "Սպասվող հրավերներ չկան։");
+  for (const invite of invitations) {
+    const row = document.createElement("div");
+    row.className = "row";
+    const description = document.createElement("p");
+    const role = invite.kind === "teacher" ? "Ուսուցիչ" : "Դպրոցի ադմինիստրատոր";
+    const scope = [invite.school_name, invite.subject_name].filter(Boolean).join(" · ");
+    const expires = new Date(invite.expires_at).toLocaleString("hy-AM");
+    description.textContent = `${role} · ${invite.recipient_email} · ${scope} · ${invite.expired ? "Ժամկետանց" : `Վավեր է մինչև ${expires}`}`;
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "ghost";
+    button.textContent = "Չեղարկել";
+    button.addEventListener("click", async () => {
+      if (!window.confirm("Չեղարկե՞լ այս հրավերը։")) return;
+      button.disabled = true;
+      const { data: result, error: revokeError } = await supabase.functions.invoke("manage-staff-invitation", {
+        body: { action: "revoke", invitationId: invite.invitation_id },
+      });
+      if (revokeError || result?.revoked !== true) {
+        button.disabled = false;
+        return message("pendingMessage", "Հրավերը չչեղարկվեց։ Թարմացրեք ցանկը։", true);
+      }
+      await loadPendingInvites();
+      message("pendingMessage", "Հրավերը չեղարկված է։");
+    });
+    row.append(description, button);
+    list.append(row);
+  }
+}
+$("refreshInvitesBtn").addEventListener("click", loadPendingInvites);
 $("schoolForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   await invite("school_admin", {
@@ -60,5 +104,9 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
       for (const subject of subjects) $("teacherSubject").add(new Option(subject.nameHy || subject.code, subject.id));
       $("teacherPanel").classList.remove("hidden");
     }
+  }
+  if (profile.role === "admin" || !$("teacherPanel").classList.contains("hidden")) {
+    $("pendingPanel").classList.remove("hidden");
+    await loadPendingInvites();
   }
 }

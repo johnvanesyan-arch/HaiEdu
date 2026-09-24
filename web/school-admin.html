@@ -37,6 +37,13 @@
       </form>
       <p id="teacherMessage" class="message" role="status" aria-live="polite"></p>
     </section>
+    <section id="pendingPanel" class="card hidden">
+      <h2>Սպասվող հրավերներ</h2>
+      <p class="subtle">Չեղարկված հրավերի հղումը այլևս չի ակտիվացնի դպրոցական դերը։ Հաշիվը և արդեն հաստատված անդամակցությունները չեն ջնջվում։</p>
+      <button id="refreshInvitesBtn" type="button" class="ghost">Թարմացնել ցանկը</button>
+      <p id="pendingMessage" class="message" role="status" aria-live="polite"></p>
+      <div id="pendingInvites"></div>
+    </section>
   </main>
   <script type="module" src="./school-admin.js"></script>
 </body>
