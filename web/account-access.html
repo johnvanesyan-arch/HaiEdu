@@ -10,10 +10,15 @@
 </head>
 <body>
   <main class="shell account-access" id="mainContent">
-    <header class="topbar"><div><p class="eyebrow">HAIEDU</p><h1>Հաշվի մուտք</h1></div><a class="ghost button-link" href="./index.html">Գլխավոր</a></header>
+    <header class="topbar"><a class="access-brand" href="./index.html" aria-label="HaiEdu գլխավոր էջ"><img src="./assets/haiedu-primary.svg" alt="HaiEdu" /></a><a class="access-home" href="./index.html">← Գլխավոր էջ</a></header>
+    <section class="account-copy" aria-label="Մուտքի տեղեկություն">
+      <p class="eyebrow">ՄԻԱՍՆԱԿԱՆ ՄՈՒՏՔ</p>
+      <h1>Բարի վերադարձ</h1>
+      <p>Մուտք գործեք ձեր հաշվով։ Համակարգը կբացի ձեր դերին և դպրոցին համապատասխան աշխատասեղանը։</p>
+      <div class="account-invite-note"><strong>Հրավե՞ր եք ստացել</strong><span>Բացեք ամենավերջին հրավերի հղումը և սահմանեք ձեր գաղտնաբառը։ Առանձին գրանցում պետք չէ։</span></div>
+    </section>
     <section id="loginPanel" class="card auth-card">
       <h2>Մուտք գործել</h2>
-      <p class="subtle">Եթե հրավեր եք ստացել, բացեք ամենավերջին նամակի հղումը և սահմանեք ձեր սեփական գաղտնաբառը։ Նախապես գրանցվել պետք չէ։ Դրանից հետո մուտք գործեք ձեր էլ. հասցեով և նոր գաղտնաբառով։</p>
       <p id="linkErrorMessage" class="auth-link-error hidden" role="alert"></p>
       <form id="loginForm">
         <label>Էլ. հասցե<input id="loginEmail" type="email" autocomplete="email" required /></label>
