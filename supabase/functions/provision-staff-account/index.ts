@@ -53,10 +53,9 @@ Deno.serve(async (req) => {
       p_school: schoolId, p_subject: subjectId, p_school_name: name, p_school_code: schoolCode ?? null,
     });
     if (registerError || !requestId) {
-      // Registration failed after Auth created the user. Remove the unprivileged
-      // new account; a sent email link can no longer be used.
-      const { error: cleanupError } = await admin.auth.admin.deleteUser(invited.user.id);
-      if (cleanupError) console.error("staff_invite_cleanup_failed", cleanupError);
+      // No institutional privilege is granted. Keep the Auth user for explicit
+      // reconciliation: the invite API must never delete an existing identity.
+      console.error("staff_invite_registration_failed", registerError);
       return json({ error: "staff_invitation_unavailable" }, 403);
     }
     return json({ requestId, delivery: "email" }, 201);
