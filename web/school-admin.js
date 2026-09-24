@@ -3,81 +3,185 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
+
 function message(id, text, error = false) {
-  $(id).textContent = text;
-  $(id).style.color = error ? "#8a3342" : "#356246";
+  const element = $(id);
+  element.textContent = text;
+  element.classList.toggle("is-error", error);
+  element.classList.toggle("is-success", Boolean(text) && !error);
 }
+
+function setButtonBusy(button, busy, busyText) {
+  if (!button.dataset.defaultLabel) button.dataset.defaultLabel = button.textContent;
+  button.disabled = busy;
+  button.toggleAttribute("aria-busy", busy);
+  button.textContent = busy ? busyText : button.dataset.defaultLabel;
+}
+
 async function invite(kind, values, messageId, form) {
-  const button = form.querySelector("button[type=submit]"); button.disabled = true;
-  const { error } = await supabase.functions.invoke("provision-staff-account", {
-    body: { kind, ...values },
-  });
-  button.disabled = false;
-  if (error) return message(messageId,
-    "Հրավերը չուղարկվեց։ Ստուգեք թույլտվությունը, հասցեն և կրկնվող հաշիվները։", true);
+  const button = form.querySelector("button[type=submit]");
+  setButtonBusy(button, true, "Ուղարկվում է…");
+  message(messageId, "");
+
+  let error = null;
+  try {
+    ({ error } = await supabase.functions.invoke("provision-staff-account", {
+      body: { kind, ...values },
+    }));
+  } catch (requestError) {
+    error = requestError;
+  } finally {
+    setButtonBusy(button, false, "Ուղարկվում է…");
+  }
+
+  if (error) {
+    return message(messageId,
+      "Հրավերը չուղարկվեց։ Ստուգեք թույլտվությունը, հասցեն և կրկնվող հաշիվները։", true);
+  }
+
   form.reset();
   message(messageId, "Հրավերն ուղարկվել է։ Հաշիվը կակտիվանա միայն ստացողի հաստատումից հետո։");
   await loadPendingInvites();
 }
+
 async function loadPendingInvites() {
   const list = $("pendingInvites");
+  const refreshButton = $("refreshInvitesBtn");
   list.replaceChildren();
   message("pendingMessage", "Բեռնվում է…");
-  const { data, error } = await supabase.functions.invoke("manage-staff-invitation", {
-    body: { action: "list" },
-  });
+  setButtonBusy(refreshButton, true, "Թարմացվում է…");
+
+  let data;
+  let error = null;
+  try {
+    ({ data, error } = await supabase.functions.invoke("manage-staff-invitation", {
+      body: { action: "list" },
+    }));
+  } catch (requestError) {
+    error = requestError;
+  } finally {
+    setButtonBusy(refreshButton, false, "Թարմացվում է…");
+  }
+
   if (error || !Array.isArray(data?.invitations)) {
     message("pendingMessage", "Հրավերների ցանկը հասանելի չէ։ Փորձեք ավելի ուշ։", true);
     return;
   }
+
   const invitations = data.invitations;
   message("pendingMessage", invitations.length ? "" : "Սպասվող հրավերներ չկան։");
+
   for (const invite of invitations) {
-    const row = document.createElement("div");
-    row.className = "row";
-    const description = document.createElement("p");
-    const role = invite.kind === "teacher" ? "Ուսուցիչ" : "Դպրոցի ադմինիստրատոր";
-    const scope = [invite.school_name, invite.subject_name].filter(Boolean).join(" · ");
-    const expires = new Date(invite.expires_at).toLocaleString("hy-AM");
-    description.textContent = `${role} · ${invite.recipient_email} · ${scope} · ${invite.expired ? "Ժամկետանց" : `Վավեր է մինչև ${expires}`}`;
+    const row = document.createElement("article");
+    row.className = `invite-row${invite.expired ? " expired" : ""}`;
+
+    const main = document.createElement("div");
+    main.className = "invite-main";
+
+    const title = document.createElement("div");
+    title.className = "invite-title";
+
+    const roleBadge = document.createElement("span");
+    roleBadge.className = "invite-role";
+    roleBadge.textContent = invite.kind === "teacher" ? "Ուսուցիչ" : "Դպրոցի ադմինիստրատոր";
+
+    const email = document.createElement("strong");
+    email.className = "invite-email";
+    email.textContent = invite.recipient_email;
+
+    const scope = document.createElement("p");
+    scope.className = "invite-meta";
+    scope.textContent = [invite.school_name, invite.subject_name].filter(Boolean).join(" · ") || "Դպրոցական հրավեր";
+
+    const expiry = document.createElement("p");
+    expiry.className = "invite-expiry";
+    const expiresAt = new Date(invite.expires_at).toLocaleString("hy-AM");
+    expiry.textContent = invite.expired ? "Ժամկետանց հրավեր" : `Վավեր է մինչև ${expiresAt}`;
+
+    title.append(roleBadge, email);
+    main.append(title, scope, expiry);
+
     const button = document.createElement("button");
     button.type = "button";
-    button.className = "ghost";
+    button.className = "ghost danger-ghost";
     button.textContent = "Չեղարկել";
     button.addEventListener("click", async () => {
       if (!window.confirm("Չեղարկե՞լ այս հրավերը։")) return;
-      button.disabled = true;
+      setButtonBusy(button, true, "Չեղարկվում է…");
       const { data: result, error: revokeError } = await supabase.functions.invoke("manage-staff-invitation", {
         body: { action: "revoke", invitationId: invite.invitation_id },
       });
       if (revokeError || result?.revoked !== true) {
-        button.disabled = false;
+        setButtonBusy(button, false, "Չեղարկվում է…");
         return message("pendingMessage", "Հրավերը չչեղարկվեց։ Թարմացրեք ցանկը։", true);
       }
       await loadPendingInvites();
       message("pendingMessage", "Հրավերը չեղարկված է։");
     });
-    row.append(description, button);
+
+    row.append(main, button);
     list.append(row);
   }
 }
+
+async function loadTeacherSubjects(schoolId) {
+  const subjectSelect = $("teacherSubject");
+  subjectSelect.replaceChildren();
+  subjectSelect.disabled = true;
+  const loadingOption = new Option("Բեռնվում է…", "");
+  loadingOption.disabled = true;
+  loadingOption.selected = true;
+  subjectSelect.add(loadingOption);
+
+  const { data: options, error } = await supabase.functions.invoke("get-school-subject-options", {
+    body: { schoolId },
+  });
+  const subjects = options?.subjects;
+  subjectSelect.replaceChildren();
+
+  if (error || !Array.isArray(subjects) || !subjects.length) {
+    const emptyOption = new Option("Հասանելի առարկաներ չկան", "");
+    emptyOption.disabled = true;
+    emptyOption.selected = true;
+    subjectSelect.add(emptyOption);
+    return false;
+  }
+
+  for (const subject of subjects) {
+    subjectSelect.add(new Option(subject.nameHy || subject.code, subject.id));
+  }
+  subjectSelect.disabled = false;
+  return true;
+}
+
 $("refreshInvitesBtn").addEventListener("click", loadPendingInvites);
+$("schoolCode").addEventListener("input", (event) => {
+  event.currentTarget.value = event.currentTarget.value.toUpperCase();
+});
 $("schoolForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   await invite("school_admin", {
-    schoolName: $("schoolName").value, schoolCode: $("schoolCode").value.trim(),
-    email: $("schoolAdminEmail").value,
+    schoolName: $("schoolName").value.trim(),
+    schoolCode: $("schoolCode").value.trim().toUpperCase(),
+    email: $("schoolAdminEmail").value.trim(),
   }, "schoolMessage", event.currentTarget);
 });
 $("teacherForm").addEventListener("submit", async (event) => {
   event.preventDefault();
   await invite("teacher", {
-    schoolId: $("teacherSchool").value, subjectId: $("teacherSubject").value,
-    email: $("teacherEmail").value,
+    schoolId: $("teacherSchool").value,
+    subjectId: $("teacherSubject").value,
+    email: $("teacherEmail").value.trim(),
   }, "teacherMessage", event.currentTarget);
 });
+$("teacherSchool").addEventListener("change", async (event) => {
+  message("teacherMessage", "");
+  const loaded = await loadTeacherSubjects(event.currentTarget.value);
+  if (!loaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
+});
 $("signOutBtn").addEventListener("click", async () => {
-  await supabase.auth.signOut(); location.replace("./account-access");
+  await supabase.auth.signOut();
+  location.replace("./account-access");
 });
 
 const { data: auth } = await supabase.auth.getUser();
@@ -85,26 +189,32 @@ const id = auth.user?.id;
 const { data: profile } = id ? await supabase.from("profiles")
   .select("role,account_status").eq("id", id).maybeSingle() : { data: null };
 $("loading").classList.add("hidden");
+
 if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(profile?.role)) {
   $("denied").classList.remove("hidden");
 } else {
+  $("accountAccessLink").classList.add("hidden");
   $("signOutBtn").classList.remove("hidden");
+
   if (profile.role === "admin") $("masterPanel").classList.remove("hidden");
+
   if (profile.role === "school_admin") {
     const { data: schools, error: schoolError } = await supabase.from("schools")
       .select("id,name,school_code").order("name");
-    const { data: options, error: subjectError } = schools?.length
-      ? await supabase.functions.invoke("get-school-subject-options", { body: { schoolId: schools[0].id } })
-      : { data: null, error: true };
-    const subjects = options?.subjects;
-    if (schoolError || subjectError || !schools?.length || !subjects?.length) {
+
+    if (schoolError || !schools?.length) {
       $("denied").classList.remove("hidden");
     } else {
       for (const school of schools) $("teacherSchool").add(new Option(school.name, school.id));
-      for (const subject of subjects) $("teacherSubject").add(new Option(subject.nameHy || subject.code, subject.id));
-      $("teacherPanel").classList.remove("hidden");
+      const subjectsLoaded = await loadTeacherSubjects(schools[0].id);
+      if (subjectsLoaded) {
+        $("teacherPanel").classList.remove("hidden");
+      } else {
+        $("denied").classList.remove("hidden");
+      }
     }
   }
+
   if (profile.role === "admin" || !$("teacherPanel").classList.contains("hidden")) {
     $("pendingPanel").classList.remove("hidden");
     await loadPendingInvites();
