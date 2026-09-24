@@ -28,3 +28,11 @@ test("staff workspaces no longer collect credentials", async () => {
     assert.doesNotMatch(html, /id="passwordInput"|id="signInBtn"/);
   }
 });
+
+test("school teachers see a bounded notice instead of legacy class creation", async () => {
+  const html = await read("web/teacher.html");
+  const code = await read("web/teacher.js");
+  assert.match(html, /id="institutionalTeacherNotice"/);
+  assert.match(code, /data\.institutionalTeacher === true/);
+  assert.match(code, /"createClassCard"[\s\S]*classList\.toggle\("hidden", institutional\)/);
+});

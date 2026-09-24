@@ -6,14 +6,15 @@ import { stripTypeScriptTypes } from 'node:module';
 import { roleDestination } from '../web/account-roles.js';
 
 const functions = ['get-teacher-dashboard', 'get-teacher-student', 'manage-teacher-class', 'manage-teacher-profile'];
-async function callEndpoint(name, role, active = true, authenticated = true) {
+async function callEndpoint(name, role, active = true, authenticated = true, institutional = false) {
   let handler;
   const tables = [];
   const client = {
     auth: { getUser: async () => ({ data: { user: { id: 'test-user' } } }) },
     from(table) {
       tables.push(table);
-      const data = table === 'profiles' ? (role === null ? null : { id: 'test-user', role, display_name: 'Test' }) : [];
+      const data = table === 'profiles' ? (role === null ? null : { id: 'test-user', role, display_name: 'Test' })
+        : table === 'institutional_memberships' && institutional ? [{ id: 'school-membership' }] : [];
       const query = new Proxy({}, { get: (_, key) => key === 'then'
         ? (resolve) => resolve({ data, error: null })
         : () => query });
@@ -32,6 +33,19 @@ async function callEndpoint(name, role, active = true, authenticated = true) {
   }));
   return { status: response.status, body: await response.json(), tables };
 }
+
+test('school teachers cannot create legacy schoolless join codes or read legacy class evidence', async () => {
+  const management = await callEndpoint('manage-teacher-class', 'teacher', true, true, true);
+  assert.equal(management.status, 403);
+  assert.equal(management.body.error, 'institutional_class_flow_required');
+  assert.deepEqual(management.tables, ['profiles', 'institutional_memberships']);
+
+  const dashboard = await callEndpoint('get-teacher-dashboard', 'teacher', true, true, true);
+  assert.equal(dashboard.status, 200);
+  assert.equal(dashboard.body.institutionalTeacher, true);
+  assert.deepEqual(dashboard.body.classes, []);
+  assert.deepEqual(dashboard.tables, ['profiles', 'institutional_memberships']);
+});
 
 for (const name of functions) {
   for (const role of ['admin', 'student', 'content_admin', null]) {

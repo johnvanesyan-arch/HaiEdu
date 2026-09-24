@@ -37,6 +37,14 @@ Deno.serve(async (req) => {
     const { data: profile } = await admin.from("profiles").select("role").eq("id", teacherId).maybeSingle();
     if (!profile || profile.role !== "teacher") return json({ error: "teacher_role_required" }, 403);
 
+    // Legacy join codes have no school identity. An institutional teacher may
+    // never create or administer one, even after their school membership ends.
+    const { data: schoolMemberships, error: membershipError } = await admin
+      .from("institutional_memberships").select("id")
+      .eq("person_id", teacherId).eq("role", "teacher").limit(1);
+    if (membershipError) return json({ error: "teacher_membership_check_failed" }, 503);
+    if (schoolMemberships?.length) return json({ error: "institutional_class_flow_required" }, 403);
+
     let body: { action?: string; classId?: string; name?: string; academicYear?: string; studentId?: string } = {};
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
 
