@@ -1,0 +1,47 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Հաշվի մուտք և գաղտնաբառ — HaiEdu</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+</head>
+<body>
+  <main class="shell" id="mainContent">
+    <header class="topbar"><div><p class="eyebrow">HAIEDU</p><h1>Հաշվի մուտք</h1></div><a class="ghost button-link" href="./index.html">Գլխավոր</a></header>
+    <section id="loginPanel" class="card auth-card">
+      <h2>Մուտք գործել</h2>
+      <p class="subtle">Դպրոցի ադմինիստրատորներն ու ուսուցիչները օգտագործում են իրենց հրավերով ակտիվացված էլ. հասցեն։</p>
+      <form id="loginForm">
+        <label>Էլ. հասցե<input id="loginEmail" type="email" autocomplete="email" required /></label>
+        <label>Գաղտնաբառ<input id="loginPassword" type="password" autocomplete="current-password" required /></label>
+        <button type="submit">Մուտք գործել</button>
+      </form>
+      <button id="showResetBtn" type="button" class="ghost">Մոռացե՞լ եք գաղտնաբառը</button>
+      <p id="loginMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+    <section id="resetPanel" class="card auth-card hidden">
+      <h2>Վերականգնել գաղտնաբառը</h2>
+      <p class="subtle">Կուղարկենք վերականգնման հղում, եթե այս էլ. հասցեով հաշիվ կա։</p>
+      <form id="resetForm">
+        <label>Էլ. հասցե<input id="resetEmail" type="email" autocomplete="email" required /></label>
+        <button type="submit">Ուղարկել հղումը</button>
+      </form>
+      <button id="backBtn" type="button" class="ghost">Վերադառնալ մուտքին</button>
+      <p id="resetMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+    <section id="passwordPanel" class="card auth-card hidden">
+      <h2>Սահմանել գաղտնաբառ</h2>
+      <p class="subtle">Մուտքագրեք ձեր սեփական նոր գաղտնաբառը։ Դպրոցի աշխատակիցները այն չեն տեսնի։</p>
+      <form id="passwordForm">
+        <label>Նոր գաղտնաբառ<input id="newPassword" type="password" autocomplete="new-password" minlength="12" required /></label>
+        <label>Կրկնել գաղտնաբառը<input id="confirmPassword" type="password" autocomplete="new-password" minlength="12" required /></label>
+        <button type="submit">Պահպանել և շարունակել</button>
+      </form>
+      <p id="passwordMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
+  </main>
+  <script type="module" src="./account-access.js"></script>
+</body>
+</html>
