@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.40  
-**Updated:** 2026-09-24  
-**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 academic architecture planning began on 2026-09-23 with a bounded 14A implementation plan; no tenant migration or release gate has been completed.
+**Roadmap version:** 2.41  
+**Updated:** 2026-09-25  
+**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed and 14B account/provisioning/recovery controls are on `main`; rendered production re-verification, context-scoped learner evidence and the two-school isolation gate remain open. The formal Grade 7 MVP is now a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -48,13 +48,17 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 13 | Work | Release checklist, deployment, migrations, regression and evidence reconciliation. |
 | 14 | Hybrid | Multi-tenant academic architecture first in chat; bounded implementation slices in Work. |
 | 15 | Hybrid | Curriculum/outcome/skill design in chat; bulk ingestion and technical QA in Work. |
-| 16 | Work | Full-course integration and regression. |
-| 17 | Hybrid | Pilot design and interpretation in chat; operational setup/QA/evidence handling in Work. |
+| 16 | Work | Physics reference-course integration and regression. |
+| 16.1 | Hybrid | Mathematics curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
+| 16.2 | Hybrid | Armenian-language curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
+| 16.3 | Hybrid | English curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
+| 16.4 | Work | Four-subject Grade 7 integration, regression and MVP-readiness verification. |
+| 17 | Hybrid | Four-subject pilot design and interpretation in chat; operational setup/QA/evidence handling in Work. |
 | 18 | Work | Performance, observability, backups, CI/CD, security, data-integrity and curriculum-change operations. |
 | 18.5 | Hybrid | Academic-year lifecycle/rollover rules in chat; lifecycle, handover and rollover implementation in Work. |
 | 19 | Work | Institutional beta release, onboarding, support and operational verification. |
 | 20 | Hybrid | Grade-specific curriculum modelling in chat; bulk implementation/QA in Work. |
-| 21 | Hybrid | Second-subject disciplinary model in chat; generalized implementation in Work. |
+| 21 | Hybrid | Post-MVP subject/grade selection and disciplinary modelling in chat; generalized implementation in Work. |
 | 22 | Work | Repeated standards-driven subject onboarding once the framework is stable. |
 | 23 | Hybrid | Longitudinal data model in chat; cross-grade/cross-subject implementation in Work. |
 | 24 | Hybrid | Metric definitions, confidence/explainability and interpretation in chat; analytics queries/dashboards in Work. |
@@ -97,17 +101,21 @@ For the current Sprint 11 state:
 | 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; the carried-forward 11L entry gates are now satisfied by the prospective Sprint 11.5 pilot. |
 | 11.5 | Controlled External Tester Pilot | ✅ | Closed one-adult feasibility run: eight eligible prospective sessions, smooth experience, no substantive content defects, historical Diagnostic excluded, and all closure gates passed. |
 | 12 | Learning-Model Calibration | ✅ | 12A.1–12A.5 complete; 12B reviewed the feasibility evidence and recorded an immutable deferred/no-change disposition. No learning parameter changed. |
-| 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | 🟡 | 12.5A–Z deployed. Desktop learner/teacher QA, required-Review/retry and final-failure lifecycle branches pass. 12.5Z adds global persisted MCQ option-presentation randomization with canonical server grading; runtime r16 is active. Only authenticated mobile-width learner/teacher rendering remains open. |
+| 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | ✅ | Complete. 12.5A–Z, lifecycle branches, persisted MCQ randomization, authenticated desktop QA and authenticated mobile learner/teacher QA at 390 px and 430 px all pass. Production Mobile browser QA #2 passed on GitHub head `0c56fa8`. |
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
-| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed; 14B staff-account provisioning, shared sign-in and standalone student registration are live. The user reports activating a school admin and teacher after SMTP setup. Institutional teachers are fenced from legacy schoolless class creation. School-scoped student course access, live-session and role-change hardening, last-admin protection and the two-school isolation gate remain open. |
+| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed; 14B staff-account/subject provisioning, recovery, invitation controls and school-account-console QA polish are on `main`. The user reports a successful student password change. Authenticated production re-render, staff recipient QA, safe reissue, student roster provisioning, context-scoped learner evidence and the two-school gate remain open. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
-| 16 | Full Grade 7 Physics MVP | ⏳ | Integrate all Grade 7 Physics units with course-level progress aggregation while keeping diagnostics/mastery checks unit-bound. |
-| 17 | School Pilot v2 | ⏳ | Run a broader controlled school-level pilot across the complete Physics 7 product, including progression between units and school administration workflows. |
+| 16 | Physics 7 Reference Course Integration | ⏳ | Integrate the complete Physics 7 reference course and preserve unit-bound diagnostics/mastery with course-level aggregation. |
+| 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
+| 16.2 | Armenian Language 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Armenian Language 7 unit through the complete learner, teacher, governance and QA pipeline. |
+| 16.3 | English 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived English 7 unit through the complete learner, teacher, governance and QA pipeline. |
+| 16.4 | Grade 7 Four-Subject MVP Integration | ⏳ | Integrate Physics, Mathematics, Armenian Language and English; verify subject isolation, shared workflows, analytics, assignments, tenant controls and release provenance. |
+| 17 | Grade 7 Four-Subject School MVP Pilot | ⏳ | Run the formal school-level MVP pilot only after all four subject gates pass; technical QA may continue earlier. |
 | 18 | Production Hardening & Curriculum-Change Operations | ⏳ | Address scale, performance, security, observability, incident response, backup/restore, data-integrity checks, controlled rollout and safe curriculum-version migration/rollback. |
 | 18.5 | Academic-Year Lifecycle, Rollover & Continuity | ⏳ | Implement the operational academic-year lifecycle: prepare/activate/close/archive, student progression, teacher/class handover, validated rollover and historical preservation. |
 | 19 | Public / Institutional Beta | ⏳ | Controlled external beta with repeatable school onboarding, support/escalation, tenant-isolated administration, controlled enrollment and explicit curriculum-release identity. |
 | 20 | Physics Grade Expansion — Physics 8–12 | ⏳ | Expand Physics vertically by mapping each grade to its applicable current programme rather than copying Physics 7 upward. |
-| 21 | Second-Subject Implementation | ⏳ | Implement one genuinely different subject from its own official standard/programme and test whether the platform abstractions generalize beyond Physics. |
+| 21 | Post-MVP Subject / Grade Expansion | ⏳ | Onboard the next priority subject/grade combination using the four-subject Grade 7 evidence model and verify repeatability beyond the MVP bundle. |
 | 22 | Multi-Subject Expansion Across Grades | ⏳ | Apply a repeatable standards-driven subject-onboarding pipeline across multiple subjects and valid grade combinations. |
 | 23 | Cross-Grade / Cross-Subject Learner Profile | ⏳ | Build longitudinal, curriculum-version-aware learner state that survives grade/school changes and can support cross-grade/cross-subject prerequisites. |
 | 24 | Advanced Teacher, School & Curriculum Analytics | ⏳ | Add evidence-confidence-aware instructional, cohort, school, curriculum-implementation, growth, engagement, question-quality and explainable analytics. |
@@ -649,9 +657,9 @@ current Physics 7 programme
 
 No invariant requires every unit to contain 10 skills. Assessment blueprints derive from the unit's actual skill structure.
 
-## Sprint 16 — Full Grade 7 Physics MVP
+## Sprint 16 — Physics 7 Reference Course Integration
 
-The complete Physics 7 product includes:
+The complete Physics 7 reference product includes:
 
 - all curriculum units;
 - unit diagnostics;
@@ -667,15 +675,64 @@ The complete Physics 7 product includes:
 
 Course-level progress summarizes unit evidence. A future cumulative/final course assessment, if added, remains a separate assessment type.
 
-## Sprint 17 — School Pilot v2
+## Grade 7 four-subject MVP gate
 
-Test the complete Physics 7 product under real classroom conditions:
+Technical, content and browser QA may continue before this gate. The **formal school MVP pilot must not start** until the production-qualified Grade 7 bundle contains:
 
+1. Physics;
+2. Mathematics;
+3. Armenian Language;
+4. English.
+
+For Mathematics, Armenian Language and English, the minimum MVP scope is one **production-ready vertical slice per subject**, not a shell, navigation fixture or unreviewed placeholder. Each slice must include:
+
+- an applicable current official standard/programme source chain and immutable curriculum-release identity;
+- reviewed outcomes, skills and subject-appropriate evidence design;
+- one coherent unit with sufficient reviewed items/content to exercise Diagnostic, Practice, Review/remediation and Mastery Check;
+- deterministic or explicitly governed scoring appropriate to the supported task types;
+- learner progress, teacher assignment/visibility and school analytics;
+- role, tenant, grade, subject, programme and release isolation;
+- desktop/mobile, accessibility, localization and end-to-end regression evidence;
+- an explicit content/SME release disposition.
+
+This is the minimum gate for testing a multi-subject institutional MVP. It does **not** claim full-year Mathematics 7, Armenian Language 7 or English 7 parity with the complete Physics 7 reference course. Requiring full-year parity for all four subjects is a separate product-owner scope decision.
+
+## Sprint 16.1 — Mathematics 7 MVP Vertical Slice
+
+Model and implement one representative Mathematics 7 unit from the applicable official programme. The slice must test mathematics-specific skill structure, answer representation and deterministic grading rather than reusing the existing Mathematics navigation fixture as curriculum.
+
+## Sprint 16.2 — Armenian Language 7 MVP Vertical Slice
+
+Model and implement one representative Armenian Language 7 unit from the applicable official programme. The slice must test language-appropriate outcomes, content and evidence while preserving the distinction between automatically scored evidence and any human-reviewed work.
+
+## Sprint 16.3 — English 7 MVP Vertical Slice
+
+Model and implement one representative English 7 unit from the applicable official programme. The slice must test language-appropriate outcomes, content, localization boundaries and evidence while preserving deterministic/auditable mastery decisions.
+
+## Sprint 16.4 — Grade 7 Four-Subject MVP Integration
+
+Verify the four subjects as one institutional product:
+
+- entitlement and navigation behavior across all four subjects;
+- no collision of learner state, sessions, attempts, mastery or recommendations across subjects;
+- assignments, rosters and teacher visibility scoped to valid teacher/subject/class relationships;
+- subject-aware dashboards and course progress;
+- curriculum-release, blueprint, runtime and learning-model provenance;
+- shared Review/mastery lifecycle behavior where applicable, with explicit subject-specific differences;
+- two-school tenant isolation;
+- authenticated desktop and mobile browser QA;
+- production deployment and rollback readiness.
+
+## Sprint 17 — Grade 7 Four-Subject School MVP Pilot
+
+Run the formal Grade 7 MVP under controlled school conditions only after the Sprint 16.4 gate passes:
+
+- all four MVP subjects represented;
 - several classes;
-- multiple teachers;
+- multiple teachers, including valid subject assignments;
 - school-admin workflows;
 - controlled student enrollment;
-- progression between units;
+- progression between units and subjects;
 - standards-aligned curriculum coverage;
 - teacher interventions;
 - retention;
@@ -686,6 +743,8 @@ Test the complete Physics 7 product under real classroom conditions:
 - teacher intervention recording;
 - actionable early-warning/notification behavior;
 - approved assessment accommodations where configured.
+
+Pilot reporting must keep subject, unit, curriculum release and evidence model visible. Results from one subject must not be generalized to the other three without evidence.
 
 ## Sprint 18 — Production Hardening & Curriculum-Change Operations
 
@@ -776,11 +835,9 @@ current Physics subject standard
 
 This phase should primarily require curriculum mapping, skill modelling, content development, assessment development and QA—not another architecture redesign.
 
-## Sprint 21 — Second-Subject Implementation
+## Sprint 21 — Post-MVP Subject / Grade Expansion
 
-Select one subject substantially different from Physics.
-
-The implementation begins with:
+Select the next priority subject/grade combination after the four-subject Grade 7 MVP. Begin with:
 
 ```text
 applicable subject / subject-area standard
@@ -790,9 +847,9 @@ applicable subject / subject-area standard
               -> subject-appropriate assessment design
 ```
 
-The objective is to test whether the platform truly generalizes across different disciplinary evidence models, item types, teacher workflows and content structures.
+The objective is to prove that the standards-driven onboarding and evidence model are repeatable beyond the Grade 7 MVP bundle, across different disciplinary evidence models, item types, teacher workflows and content structures.
 
-The existing Mathematics QA fixture does not satisfy this sprint; it is architecture/navigation test data only.
+Architecture/navigation fixtures do not satisfy this sprint; the selected course must carry real curriculum provenance, reviewed content and an explicit release disposition.
 
 ## Sprint 22 — Multi-Subject Expansion Across Grades
 
@@ -1007,17 +1064,17 @@ Assessment integrity
 
 The architecture stops being Grade-7-Physics-specific and single-institution operationally.
 
-### Milestone F — Complete standards-aligned Grade 7 Physics
+### Milestone F — Grade 7 four-subject MVP bundle
 
-**Sprints 15–16**
+**Sprints 15–16.4**
 
-The first complete subject/grade product exists.
+Physics 7 becomes the complete reference course; Mathematics 7, Armenian Language 7 and English 7 each add a production-ready vertical slice; the four subjects pass integrated MVP readiness.
 
-### Milestone G — Real-school validation and institutional readiness
+### Milestone G — Four-subject school validation and institutional readiness
 
 **Sprints 17–19, including Sprint 18.5**
 
-Full-product school testing  
+Four-subject Grade 7 school testing  
 → production/curriculum-change hardening  
 → academic-year lifecycle/rollover continuity  
 → controlled external adoption.
@@ -1028,11 +1085,11 @@ Full-product school testing
 
 Physics expands through Grades 8–12 using applicable official programmes.
 
-### Milestone I — Genuine multi-subject platform
+### Milestone I — Multi-grade, multi-subject expansion
 
 **Sprints 21–23**
 
-Second subject  
+Next subject/grade onboarding  
 → broader standards-driven expansion  
 → longitudinal cross-grade/cross-subject learner model.
 
