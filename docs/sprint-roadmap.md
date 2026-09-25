@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.25  
-**Updated:** 2026-09-21  
-**Current programme status:** Sprints 11, 11.5 and 12 are ✅ complete. Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle is now the active planned stage. Sprint 13 is explicitly on hold until the universal three-attempt/review lifecycle is implemented and verified.
+**Roadmap version:** 2.46  
+**Updated:** 2026-09-25  
+**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. A controlled invitation-and-acceptance run, remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence and the later 14C evidence UI/API work remain open. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -48,13 +48,17 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 13 | Work | Release checklist, deployment, migrations, regression and evidence reconciliation. |
 | 14 | Hybrid | Multi-tenant academic architecture first in chat; bounded implementation slices in Work. |
 | 15 | Hybrid | Curriculum/outcome/skill design in chat; bulk ingestion and technical QA in Work. |
-| 16 | Work | Full-course integration and regression. |
-| 17 | Hybrid | Pilot design and interpretation in chat; operational setup/QA/evidence handling in Work. |
+| 16 | Work | Physics reference-course integration and regression. |
+| 16.1 | Hybrid | Mathematics curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
+| 16.2 | Hybrid | Armenian-language curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
+| 16.3 | Hybrid | English curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
+| 16.4 | Work | Four-subject Grade 7 integration, regression and MVP-readiness verification. |
+| 17 | Hybrid | Four-subject pilot design and interpretation in chat; operational setup/QA/evidence handling in Work. |
 | 18 | Work | Performance, observability, backups, CI/CD, security, data-integrity and curriculum-change operations. |
 | 18.5 | Hybrid | Academic-year lifecycle/rollover rules in chat; lifecycle, handover and rollover implementation in Work. |
 | 19 | Work | Institutional beta release, onboarding, support and operational verification. |
 | 20 | Hybrid | Grade-specific curriculum modelling in chat; bulk implementation/QA in Work. |
-| 21 | Hybrid | Second-subject disciplinary model in chat; generalized implementation in Work. |
+| 21 | Hybrid | Post-MVP subject/grade selection and disciplinary modelling in chat; generalized implementation in Work. |
 | 22 | Work | Repeated standards-driven subject onboarding once the framework is stable. |
 | 23 | Hybrid | Longitudinal data model in chat; cross-grade/cross-subject implementation in Work. |
 | 24 | Hybrid | Metric definitions, confidence/explainability and interpretation in chat; analytics queries/dashboards in Work. |
@@ -97,17 +101,21 @@ For the current Sprint 11 state:
 | 11 | Assessment Integrity, Standards Integrity & Technical Handoff Readiness | ✅ | Technical handoff complete. 11F–11H are passed/dispositioned; the carried-forward 11L entry gates are now satisfied by the prospective Sprint 11.5 pilot. |
 | 11.5 | Controlled External Tester Pilot | ✅ | Closed one-adult feasibility run: eight eligible prospective sessions, smooth experience, no substantive content defects, historical Diagnostic excluded, and all closure gates passed. |
 | 12 | Learning-Model Calibration | ✅ | 12A.1–12A.5 complete; 12B reviewed the feasibility evidence and recorded an immutable deferred/no-change disposition. No learning parameter changed. |
-| 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | 🟡 | Active next stage: versioned platform policy, maximum three Mastery attempts, mandatory Chapter Review between failed retries, permanent optional Review, protected assessment integrity, teacher analytics and evidence separation. |
-| 13 | Chapter I Standards-Verified Production Release | ⏳ | On hold until Sprint 12.5 closes.  Promote Chapter I as the first reference-quality production unit after standards reconciliation, pilot closure and Sprint 12 disposition. |
-| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ⏳ | Generalize schools, academic years, time-aware memberships, IAM/permissions, tenant isolation, audit scope, teacher continuity foundations, controlled enrollment and centrally governed content. |
+| 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | ✅ | Complete. 12.5A–Z, lifecycle branches, persisted MCQ randomization, authenticated desktop QA and authenticated mobile learner/teacher QA at 390 px and 430 px all pass. Production Mobile browser QA #2 passed on GitHub head `0c56fa8`. |
+| 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
+| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed. 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed. The approved Teachers workflow exposes authoritative teacher → class → student structure. The 14C school-scoped invitation/enrollment, exact learning-session context and assigned-class roster foundation is deployed; controlled invitation acceptance, remaining offboarding/last-admin controls, authenticated two-school mutual denial and later evidence UI/API work remain open. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
-| 16 | Full Grade 7 Physics MVP | ⏳ | Integrate all Grade 7 Physics units with course-level progress aggregation while keeping diagnostics/mastery checks unit-bound. |
-| 17 | School Pilot v2 | ⏳ | Run a broader controlled school-level pilot across the complete Physics 7 product, including progression between units and school administration workflows. |
+| 16 | Physics 7 Reference Course Integration | ⏳ | Integrate the complete Physics 7 reference course and preserve unit-bound diagnostics/mastery with course-level aggregation. |
+| 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
+| 16.2 | Armenian Language 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Armenian Language 7 unit through the complete learner, teacher, governance and QA pipeline. |
+| 16.3 | English 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived English 7 unit through the complete learner, teacher, governance and QA pipeline. |
+| 16.4 | Grade 7 Four-Subject MVP Integration | ⏳ | Integrate Physics, Mathematics, Armenian Language and English; verify subject isolation, shared workflows, analytics, assignments, tenant controls and release provenance. |
+| 17 | Grade 7 Four-Subject School MVP Pilot | ⏳ | Run the formal school-level MVP pilot only after all four subject gates pass; technical QA may continue earlier. |
 | 18 | Production Hardening & Curriculum-Change Operations | ⏳ | Address scale, performance, security, observability, incident response, backup/restore, data-integrity checks, controlled rollout and safe curriculum-version migration/rollback. |
 | 18.5 | Academic-Year Lifecycle, Rollover & Continuity | ⏳ | Implement the operational academic-year lifecycle: prepare/activate/close/archive, student progression, teacher/class handover, validated rollover and historical preservation. |
 | 19 | Public / Institutional Beta | ⏳ | Controlled external beta with repeatable school onboarding, support/escalation, tenant-isolated administration, controlled enrollment and explicit curriculum-release identity. |
 | 20 | Physics Grade Expansion — Physics 8–12 | ⏳ | Expand Physics vertically by mapping each grade to its applicable current programme rather than copying Physics 7 upward. |
-| 21 | Second-Subject Implementation | ⏳ | Implement one genuinely different subject from its own official standard/programme and test whether the platform abstractions generalize beyond Physics. |
+| 21 | Post-MVP Subject / Grade Expansion | ⏳ | Onboard the next priority subject/grade combination using the four-subject Grade 7 evidence model and verify repeatability beyond the MVP bundle. |
 | 22 | Multi-Subject Expansion Across Grades | ⏳ | Apply a repeatable standards-driven subject-onboarding pipeline across multiple subjects and valid grade combinations. |
 | 23 | Cross-Grade / Cross-Subject Learner Profile | ⏳ | Build longitudinal, curriculum-version-aware learner state that survives grade/school changes and can support cross-grade/cross-subject prerequisites. |
 | 24 | Advanced Teacher, School & Curriculum Analytics | ⏳ | Add evidence-confidence-aware instructional, cohort, school, curriculum-implementation, growth, engagement, question-quality and explainable analytics. |
@@ -424,7 +432,7 @@ See `docs/sprint-12-learning-model-calibration.md` for the implementation plan a
 
 ## Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status: 🟡 Closure verification — 12.5A–W deployed; 12.5X–Y awaits authenticated desktop/mobile learner and teacher browser QA. Sprint 13 remains on hold.**
+**Status: 🟡 Closure verification — 12.5A–Z deployed. Authenticated desktop learner/teacher QA and the required-Review/retry plus final-failure lifecycle branches pass. Only authenticated mobile-width learner/teacher rendering remains open. Sprint 13 remains on hold.**
 
 Establish a universal, versioned platform policy for every present and future grade, subject, programme and unit:
 
@@ -441,6 +449,10 @@ Establish a universal, versioned platform policy for every present and future gr
 The policy must be cross-subject and cross-grade. No school, teacher or chapter may silently override it. Administrative exceptions are outside the normal learner flow and require separate governance if introduced later.
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
+
+**QA correction — 2026-09-22:** authenticated voluntary Chapter Review testing exposed that the legacy shared item-exposure pipeline still rejected `chapter_review`. Migration `0076_sprint_12_5_chapter_review_exposure_integration.sql` extends served, answered and help exposure provenance to Chapter Review; rollback-only production probes verified question serving, exposure finalization and answer recording. Runtime provenance is `runtime-2026-09-22-r11`. This correction does not change learning parameters or lifecycle policy.
+
+**Assessment-integrity correction — 2026-09-23 — 12.5Z:** authenticated QA exposed that single-choice options were always serialized in canonical authoring order, allowing repeated exposure to teach answer positions/keys. The shared assessment boundary now persists a private per-session-item option permutation for every single-choice item, randomizes new presentations server-side under `mcq-option-order-v1`, prevents an identical permutation on consecutive exposures of the same item to the same learner, and preserves the stored order across refresh/resume. Learner-visible A/B/C… labels are presentation positions only; canonical option identities remain private and are resolved server-side before grading. The mechanism is attached to `learning_session_items`, so it applies to Diagnostic, Practice, Mastery Check and Chapter Review and is not Physics-7-specific. Existing active unanswered items at rollout were grandfathered in canonical order to avoid changing a question already seen; answered history was not backfilled with fabricated presentation provenance. Direct learner/anonymous canonical option reads were removed. The current bank audit found 119/119 published MCQs structurally valid. A position-dependent-language audit found no current MCQ requiring fixed order; future fixed-order exceptions must explicitly set `shuffleOptions=false` with a non-empty `optionOrderRationale` or serving fails closed. An eight-exposure rollback/cleanup probe produced eight valid v1 mappings with no consecutive duplicate order, CI and Vercel are green, and active runtime provenance is `runtime-2026-09-23-r16`. No item-selection rule, score, mastery threshold, Hinting policy, Review policy or learning parameter changed.
 
 ## Sprint 13 — Chapter I Standards-Verified Production Release
 
@@ -461,6 +473,15 @@ Chapter I becomes the first reference-quality production unit only when all appl
 Chapter I then becomes the gold-standard implementation against which later units are built.
 
 ## Sprint 14 — Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture
+
+**14B checkpoint (2026-09-24): 🟡 Targeted enrollment, termination, guarded first-school bootstrap and staff-account provisioning deployed.** [Implementation record](./sprint-14b-targeted-institutional-enrollment.md). The platform admin issues the first school-admin invitation; an active school admin invites teachers to their own school and published subject. Recipients confirm email and set their own passwords; self-service reset uses an email link. The user reports successfully activating a school admin and teacher and receiving the teacher invitation after setting up SMTP. These are recipient reports; authenticated production verification remains pending. Pending staff invitations can be listed and revoked under current school/platform authority, with revoker audit. The school account console QA polish is on main; GitHub CI #797 passed at `1884db91`.
+
+**Shared entry and learner account checkpoint (deployed 2026-09-24):** [PR #21](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/21) was merged at `ed08789e52ffb0ae3643a34082ce858d9d6b98bb`; [CI](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/36048661361) and Vercel passed. One `/account-access` password form routes active known roles to their own workspaces, including school admin. The public home offers student self-registration and staff invitation guidance. A new student still starts with no classes; the existing eight-character legacy teacher code or link can enroll them only in an unscoped class. The sign-in return to `/join.html` accepts only a validated code. Unknown/missing profiles fail closed in the student home. Staff workspaces link to shared entry rather than collecting a second set of credentials. `manage-teacher-class` v5 rejects institutional teachers from legacy schoolless class actions; `get-teacher-dashboard` v8 returns their bounded dashboard state, and the UI shows a clear notice. Production public browser QA passed home, registration, class-code return and teacher sign-in link. Authenticated cross-role and two-school QA remain pending. A school-scoped institutional enrollment is still separate from legacy course entitlement: implement academic-context-scoped learner reads, assignment and evidence isolation, and a bounded school class invitation before claiming school student course access. Never write institutional memberships into `class_memberships` or infer a school for historical records.
+
+**Next 14B gate:** Require a live session for every privileged action; tighten role transitions and prevent losing a school's last active admin; verify with two schools that admins, teachers and students cannot read or mutate the other school's private records. Then validate school-scoped learner enrollment and course evidence end to end. Keep admin MFA and teacher offboarding in the following security work; permanent deletion remains Sprint 18. No institutional rollout or legacy evidence reassignment is authorized.
+
+**14A status (2026-09-23): 🟡 Identity and authorization foundation deployed.** Migrations 0080–0082 are applied. The server-only context resolver is exposed through an authenticated, read-only teacher endpoint; legacy class management, join codes and teacher evidence endpoints are fenced to school-unscoped classes. The database blocks legacy membership in a scoped class and freezes existing class school/year identity. Teacher analytics still assumes `PHY7-U01` and does not yet consume the new context; institutional enrollment, evidence scoping and the complete two-school release gate remain open. The bounded 14A implementation plan is recorded in [Notion](https://app.notion.com/p/3e4355a472bf81bca43bd8557727ca7f). Live schema inspection found five historical classes with no school assignment and four class memberships. Preserve these records as unbound legacy evidence; do not infer schools or backfill session identity. Begin with additive school/year/membership identities and a server-authorized academic-context contract, then verify two-school denial and two-chapter/subject coverage before release. Sprint 13's external SME release gate remains open.
+
 
 Sprint 14 generalizes the platform across four coupled domains.
 
@@ -490,6 +511,49 @@ Institution / School
 ```
 
 The curriculum is shared centrally. Classes are school/teacher-specific delivery instances.
+
+### Teacher analytics context scoping
+
+Teacher analytics must never rely on an implicit or hard-coded "current chapter". Every learner-analytics request and rendered analytics surface must carry an explicit academic context:
+
+```text
+Class / course assignment
+  -> Subject Programme Version
+      -> Unit / Chapter
+          -> Student analytics
+```
+
+The teacher UI must provide an explicit chapter/unit selector within the selected class/course context. A chapter-scoped student drawer must display the subject/grade, chapter sequence/code and localized chapter title immediately above chapter-specific analytics such as mastery attempts, Chapter Review, skill evidence and interventions.
+
+The API contract must expose a canonical context object sufficient to render and authorize that scope, including at least:
+
+- class/course assignment identity;
+- subject and grade identity/display label;
+- subject-programme version;
+- curriculum release/version;
+- unit/chapter ID and code;
+- unit/chapter sequence or display number;
+- localized unit/chapter title.
+
+Teacher-dashboard queries must resolve skills, attempts, learning sessions, mastery checks, Chapter Reviews and recommendations from the selected programme/unit. They must not use global constants such as `UNIT_CODE`, code-prefix filters such as `PHY7-U01-S%`, or UI strings that assume Physics 7 / Chapter I.
+
+The selected academic context must be server-validated against the teacher's legitimate class/course assignment before analytics are returned. Changing the selected chapter must not leak or mix evidence from another unit, subject, grade, class or curriculum release.
+
+The UI should preserve the selected class/course/unit context in stable navigation state (URL/query state or equivalent) so refresh, back-navigation and deep links return to the same scoped analytics view.
+
+Course-level aggregation is a separate presentation layer. Chapter-level mastery/review metrics remain chapter-scoped and must not be silently aggregated across units.
+
+**Sprint 14 acceptance checks for this slice:**
+
+- one teacher can switch between at least two chapters in the same course and see distinct chapter-specific analytics;
+- the same teacher can switch between at least two assigned subject/course contexts without cross-context evidence bleed;
+- student drawer headings and roster analytics identify or inherit an unambiguous selected chapter context;
+- APIs reject a unit/programme context not assigned to the requesting teacher/class;
+- no teacher analytics path depends on `PHY7-U01`, a fixed skill count, or a singleton `UNIT_CODE`;
+- existing Physics 7 Chapter I data remains valid under the generalized context model;
+- regression coverage proves that class/course/chapter context survives refresh/navigation and that records from different units/releases cannot collide.
+
+The current Physics 7 Chapter I heading introduced during Sprint 12.5 is a transitional UX clarification only; Sprint 14 replaces that fixed display context with this data-driven selector and API contract.
 
 ### Authorization architecture
 
@@ -584,6 +648,25 @@ This is a Sprint 14 release gate.
 
 Before Sprint 14 closes, verify that the implemented foundations can support curriculum/question versioning, evidence confidence/uncertainty and model provenance, multi-tenant IAM/audit, academic-year rollover/teacher handover, and historical data-integrity checks **without redesigning the core identity/evidence model**. This is a release checkpoint inside Sprint 14, not a separate sprint.
 
+### 14B school-admin operational overview checkpoint — 2026-09-25
+
+**Status: ✅ deployed and authenticated production-render verified; Sprint 14 remains open.**
+
+- GitHub implementation merges: `de9720c1ce4607dfe45efc546e3a7bedde421116` (PR #23) and `5b24cbadcd26c67d98fa95eebbf6cdbc91c78083` (PR #24 sidebar correction).
+- Added read-only `get-school-admin-overview` Edge Function v1 with live-session validation and role/tenant-derived authorization.
+- Preserved the approved HaiEdu school overview—brand sidebar, header, summary cards and quick actions—and removed the teacher hierarchy from that page.
+- The approved `Ուսուցիչներ` view remains the teacher directory. Active teacher names now open a dedicated teacher page; assigned classes/grades are shown there, and each class expands to its tenant-scoped student roster.
+- CI #852 and #854 passed, both Vercel deployments succeeded, and authenticated production QA passed the complete overview → Teachers → teacher → class accordion flow.
+- Production evidence currently contains 1 teacher, 1 class, 0 enrolled students and 1 authorized subject; the expanded class correctly shows the empty-roster state.
+- Performance analytics remain explicitly gated. No score, progress or intervention metric is shown until Sprint 14C establishes trustworthy context-scoped learner evidence.
+- Existing test data needs cleanup: class name `Math 7A` is currently paired with the authoritative Physics subject assignment.
+- 14C foundation deployed in PRs #25–#27: email-only school-admin learner invitation, exact school/year/class/teacher-assignment/subject-programme enrollment, assigned-class teacher roster, immutable institutional session context, and automated negative cross-school authorization coverage.
+- Historical evidence remains explicit: all 58 pre-existing sessions are `unbound_legacy`; no legacy row was falsely backfilled.
+- Automated suite passes 106/106; production migrations `0108`–`0110`, Edge Functions and Vercel deployments are live.
+- The narrow Supabase Auth student-invitation return URL is allow-listed; no invitation email or learner account was created during deployment verification.
+- Next closure action: send one user-approved controlled invitation, complete acceptance, verify assigned-teacher-only roster visibility and verify exact context on the first post-enrollment session.
+- Still open after that closure action: remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence, teacher chapter selection, student evidence drawer/API work and later trustworthy analytics.
+
 ## Sprint 15 — Grade 7 Physics Expansion — Chapters II–VI
 
 Every remaining Physics 7 unit follows the same controlled pipeline:
@@ -605,9 +688,9 @@ current Physics 7 programme
 
 No invariant requires every unit to contain 10 skills. Assessment blueprints derive from the unit's actual skill structure.
 
-## Sprint 16 — Full Grade 7 Physics MVP
+## Sprint 16 — Physics 7 Reference Course Integration
 
-The complete Physics 7 product includes:
+The complete Physics 7 reference product includes:
 
 - all curriculum units;
 - unit diagnostics;
@@ -623,15 +706,64 @@ The complete Physics 7 product includes:
 
 Course-level progress summarizes unit evidence. A future cumulative/final course assessment, if added, remains a separate assessment type.
 
-## Sprint 17 — School Pilot v2
+## Grade 7 four-subject MVP gate
 
-Test the complete Physics 7 product under real classroom conditions:
+Technical, content and browser QA may continue before this gate. The **formal school MVP pilot must not start** until the production-qualified Grade 7 bundle contains:
 
+1. Physics;
+2. Mathematics;
+3. Armenian Language;
+4. English.
+
+For Mathematics, Armenian Language and English, the minimum MVP scope is one **production-ready vertical slice per subject**, not a shell, navigation fixture or unreviewed placeholder. Each slice must include:
+
+- an applicable current official standard/programme source chain and immutable curriculum-release identity;
+- reviewed outcomes, skills and subject-appropriate evidence design;
+- one coherent unit with sufficient reviewed items/content to exercise Diagnostic, Practice, Review/remediation and Mastery Check;
+- deterministic or explicitly governed scoring appropriate to the supported task types;
+- learner progress, teacher assignment/visibility and school analytics;
+- role, tenant, grade, subject, programme and release isolation;
+- desktop/mobile, accessibility, localization and end-to-end regression evidence;
+- an explicit content/SME release disposition.
+
+This is the minimum gate for testing a multi-subject institutional MVP. It does **not** claim full-year Mathematics 7, Armenian Language 7 or English 7 parity with the complete Physics 7 reference course. Requiring full-year parity for all four subjects is a separate product-owner scope decision.
+
+## Sprint 16.1 — Mathematics 7 MVP Vertical Slice
+
+Model and implement one representative Mathematics 7 unit from the applicable official programme. The slice must test mathematics-specific skill structure, answer representation and deterministic grading rather than reusing the existing Mathematics navigation fixture as curriculum.
+
+## Sprint 16.2 — Armenian Language 7 MVP Vertical Slice
+
+Model and implement one representative Armenian Language 7 unit from the applicable official programme. The slice must test language-appropriate outcomes, content and evidence while preserving the distinction between automatically scored evidence and any human-reviewed work.
+
+## Sprint 16.3 — English 7 MVP Vertical Slice
+
+Model and implement one representative English 7 unit from the applicable official programme. The slice must test language-appropriate outcomes, content, localization boundaries and evidence while preserving deterministic/auditable mastery decisions.
+
+## Sprint 16.4 — Grade 7 Four-Subject MVP Integration
+
+Verify the four subjects as one institutional product:
+
+- entitlement and navigation behavior across all four subjects;
+- no collision of learner state, sessions, attempts, mastery or recommendations across subjects;
+- assignments, rosters and teacher visibility scoped to valid teacher/subject/class relationships;
+- subject-aware dashboards and course progress;
+- curriculum-release, blueprint, runtime and learning-model provenance;
+- shared Review/mastery lifecycle behavior where applicable, with explicit subject-specific differences;
+- two-school tenant isolation;
+- authenticated desktop and mobile browser QA;
+- production deployment and rollback readiness.
+
+## Sprint 17 — Grade 7 Four-Subject School MVP Pilot
+
+Run the formal Grade 7 MVP under controlled school conditions only after the Sprint 16.4 gate passes:
+
+- all four MVP subjects represented;
 - several classes;
-- multiple teachers;
+- multiple teachers, including valid subject assignments;
 - school-admin workflows;
 - controlled student enrollment;
-- progression between units;
+- progression between units and subjects;
 - standards-aligned curriculum coverage;
 - teacher interventions;
 - retention;
@@ -642,6 +774,8 @@ Test the complete Physics 7 product under real classroom conditions:
 - teacher intervention recording;
 - actionable early-warning/notification behavior;
 - approved assessment accommodations where configured.
+
+Pilot reporting must keep subject, unit, curriculum release and evidence model visible. Results from one subject must not be generalized to the other three without evidence.
 
 ## Sprint 18 — Production Hardening & Curriculum-Change Operations
 
@@ -732,11 +866,9 @@ current Physics subject standard
 
 This phase should primarily require curriculum mapping, skill modelling, content development, assessment development and QA—not another architecture redesign.
 
-## Sprint 21 — Second-Subject Implementation
+## Sprint 21 — Post-MVP Subject / Grade Expansion
 
-Select one subject substantially different from Physics.
-
-The implementation begins with:
+Select the next priority subject/grade combination after the four-subject Grade 7 MVP. Begin with:
 
 ```text
 applicable subject / subject-area standard
@@ -746,9 +878,9 @@ applicable subject / subject-area standard
               -> subject-appropriate assessment design
 ```
 
-The objective is to test whether the platform truly generalizes across different disciplinary evidence models, item types, teacher workflows and content structures.
+The objective is to prove that the standards-driven onboarding and evidence model are repeatable beyond the Grade 7 MVP bundle, across different disciplinary evidence models, item types, teacher workflows and content structures.
 
-The existing Mathematics QA fixture does not satisfy this sprint; it is architecture/navigation test data only.
+Architecture/navigation fixtures do not satisfy this sprint; the selected course must carry real curriculum provenance, reviewed content and an explicit release disposition.
 
 ## Sprint 22 — Multi-Subject Expansion Across Grades
 
@@ -963,17 +1095,17 @@ Assessment integrity
 
 The architecture stops being Grade-7-Physics-specific and single-institution operationally.
 
-### Milestone F — Complete standards-aligned Grade 7 Physics
+### Milestone F — Grade 7 four-subject MVP bundle
 
-**Sprints 15–16**
+**Sprints 15–16.4**
 
-The first complete subject/grade product exists.
+Physics 7 becomes the complete reference course; Mathematics 7, Armenian Language 7 and English 7 each add a production-ready vertical slice; the four subjects pass integrated MVP readiness.
 
-### Milestone G — Real-school validation and institutional readiness
+### Milestone G — Four-subject school validation and institutional readiness
 
 **Sprints 17–19, including Sprint 18.5**
 
-Full-product school testing  
+Four-subject Grade 7 school testing  
 → production/curriculum-change hardening  
 → academic-year lifecycle/rollover continuity  
 → controlled external adoption.
@@ -984,11 +1116,11 @@ Full-product school testing
 
 Physics expands through Grades 8–12 using applicable official programmes.
 
-### Milestone I — Genuine multi-subject platform
+### Milestone I — Multi-grade, multi-subject expansion
 
 **Sprints 21–23**
 
-Second subject  
+Next subject/grade onboarding  
 → broader standards-driven expansion  
 → longitudinal cross-grade/cross-subject learner model.
 
