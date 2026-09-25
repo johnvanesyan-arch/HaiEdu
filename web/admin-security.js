@@ -109,7 +109,6 @@ async function enter(session) {
     return;
   }
   $("securityConsole").classList.remove("hidden");
-  $("signOutBtn").classList.remove("hidden");
   await loadSecurityState();
 }
 
