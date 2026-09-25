@@ -88,7 +88,10 @@ body.hm-has-role-sidebar .quality-layout { grid-template-columns: minmax(0,1fr);
 body.hm-has-role-sidebar .quality-layout .table-wrap { overflow-x: auto; }
 body.hm-has-role-sidebar .quality-layout .detail-panel { position: static; max-height: none; }
 
-@media (max-width: 900px) {
+@media (min-width: 1840px) {
+  body.hm-has-role-sidebar .quality-layout { grid-template-columns: minmax(720px,1.2fr) minmax(620px,1fr); }
+}
+@media (max-width: 1100px) {
   .hm-role-sidebar { position: static; width: auto; padding: 12px 16px; border-right: 0; border-bottom: 1px solid var(--hm-line); }
   .hm-role-brand { border: 0; padding: 0; }
   .hm-role-brand img { width: 120px; }
