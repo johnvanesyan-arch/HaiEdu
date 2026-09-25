@@ -82,7 +82,7 @@
           <h2 id="teacherInviteTitle">Ուսուցչի հրավեր</h2>
         </div>
       </div>
-      <p class="subtle panel-copy">Ընտրեք դպրոցը և հրապարակված առարկան։ Հրավերն ընդունելուց հետո ուսուցիչը կստանա միայն այդ դպրոցի և առարկայի թույլտվությունը։</p>
+      <p class="subtle panel-copy">Ընտրեք դպրոցը և հրապարակված առարկան։ Հրավերն ընդունելուց հետո ուսուցիչը կստանա միայն այդ դպրոցի և առարկայի թույլտվությունը։ Ցանկում հայտնվում են միայն հրապարակված ծրագրով առարկաները. մյուսները հասանելի կլինեն բովանդակության հրապարակումից հետո։</p>
       <form id="teacherForm" class="admin-form">
         <label class="form-field">
           <span>Դպրոց</span>
@@ -101,6 +101,20 @@
           <p id="teacherMessage" class="message" role="status" aria-live="polite"></p>
         </div>
       </form>
+    </section>
+
+    <section id="teachersPanel" class="card admin-panel hidden" aria-labelledby="teachersTitle">
+      <div class="panel-header pending-header">
+        <div>
+          <p class="panel-kicker">Դպրոցի աշխատակիցներ</p>
+          <h2 id="teachersTitle">Ուսուցիչներ</h2>
+        </div>
+        <button id="refreshTeachersBtn" type="button" class="ghost">Թարմացնել ցանկը</button>
+      </div>
+      <p class="subtle panel-copy">Հրավերն ընդունած ուսուցիչների հաշիվները, առարկաների թույլտվությունները և դասարանները։ Դեռ չընդունված հրավերները տեսեք «Սպասվող հրավերներ» բաժնում։</p>
+      <label class="form-field roster-school-field"><span>Դպրոց</span><select id="rosterSchool"></select></label>
+      <p id="rosterMessage" class="message" role="status" aria-live="polite"></p>
+      <div id="teacherRoster" class="teacher-roster"></div>
     </section>
 
     <section id="pendingPanel" class="card admin-panel hidden" aria-labelledby="pendingTitle">
