@@ -21,7 +21,7 @@
       <div>
         <p class="eyebrow">ՈՒՍՈՒՑՉԻ ԱՇԽԱՏԱՍԵՂԱՆ</p>
         <h1>Դասարանների կառավարում</h1>
-        <p class="subtle">Ֆիզիկա 7 · Գլուխ I — դասարան, աշակերտներ, առաջընթաց և միջամտության առաջարկություններ</p>
+        <p class="subtle">Դասարաններ, աշակերտներ, առաջընթաց և միջամտության առաջարկություններ</p>
       </div>
       <div class="teacher-header-actions">
         <a class="ghost button-link" href="./index.html">Հարթակի գլխավոր էջ</a>
@@ -75,7 +75,7 @@
         </div>
         <ol class="teacher-onboarding-steps">
           <li><span>1</span><div><strong>Լրացրեք ձեր անունը</strong><small>Աշխատասեղանում և հետագա հաղորդակցությունում օգտագործվող անունը։</small></div></li>
-          <li><span>2</span><div><strong>Ստեղծեք դասարան</strong><small>Օրինակ՝ «7Ա Ֆիզիկա» և ընտրեք ուսումնական տարին։</small></div></li>
+          <li><span>2</span><div><strong>Ստեղծեք դասարան</strong><small>Օրինակ՝ «7Ա» կամ «7Ա Ֆիզիկա», ապա ընտրեք ուսումնական տարին։</small></div></li>
           <li><span>3</span><div><strong>Տվեք միանալու կոդը</strong><small>Կոդը կամ հրավերի հղումը ուղարկեք աշակերտներին։</small></div></li>
           <li><span>4</span><div><strong>Հետևեք առաջընթացին</strong><small>Բացեք աշակերտի քարտը՝ հմտություններն ու առաջարկվող քայլերը տեսնելու համար։</small></div></li>
         </ol>
@@ -98,11 +98,11 @@
       <section id="createClassCard" class="card teacher-create-card">
         <div class="teacher-card-copy">
           <span class="mode-kicker">ՆՈՐ ԴԱՍԱՐԱՆ</span>
-          <h3>Ստեղծել 7-րդ դասարանի ֆիզիկայի դասարան</h3>
+          <h3>Ստեղծել դասարան</h3>
           <p class="subtle">Դասարանը ստեղծելուց հետո համակարգը կստեղծի 8-նիշ միանալու կոդ։</p>
         </div>
         <div class="teacher-create-form">
-          <label>Դասարանի անուն<input id="classNameInput" placeholder="Օր.՝ 7Ա Ֆիզիկա" /></label>
+          <label>Դասարանի անուն<input id="classNameInput" placeholder="Օր.՝ 7Ա կամ 7Ա Ֆիզիկա" /></label>
           <label>Ուսումնական տարի<input id="academicYearInput" value="2026-2027" /></label>
           <button id="createClassBtn">Ստեղծել դասարան</button>
         </div>
@@ -115,6 +115,10 @@
             <div><span class="mode-kicker">ԴԱՍԱՐԱՆՆԵՐ</span><h3 id="myClassesTitle">Իմ դասարանները</h3></div>
           </div>
           <div id="classList" class="teacher-class-list"></div>
+          <details id="archivedClasses" class="teacher-archive hidden">
+            <summary>Արխիվացված դասարաններ <span id="archivedClassCount" class="teacher-archive-count">0</span></summary>
+            <div id="archivedClassList" class="teacher-class-list"></div>
+          </details>
         </aside>
 
         <section class="teacher-main">
@@ -143,7 +147,6 @@
                 <div class="join-code-actions">
                   <button id="copyCodeBtn" class="secondary small-button" type="button">Պատճենել կոդը</button>
                   <button id="copyInviteBtn" class="secondary small-button" type="button">Պատճենել հղումը</button>
-                  <a id="openJoinBtn" class="ghost button-link small-button" href="./join.html" target="_blank" rel="noopener">Բացել միանալու էջը</a>
                   <button id="rotateCodeBtn" class="ghost small-button" type="button">Ստեղծել նոր կոդ</button>
                 </div>
                 <span id="copyCodeStatus" class="subtle small" aria-live="polite"></span>
@@ -155,7 +158,7 @@
                 <div>
                   <span class="mode-kicker">ԱՇԱԿԵՐՏՆԵՐ</span>
                   <h3>Դասարանի ցուցակ</h3>
-                  <p class="subtle">Բացեք աշակերտի առաջընթացը կամ հեռացրեք նրան այս դասարանից։</p>
+                  <p class="subtle">Բացեք աշակերտի առաջընթացը կամ հեռացրեք նրան այս դասարանից։ Նույն հաշվով կրկին միանալիս նրա նախկին տվյալները կպահպանվեն։</p>
                 </div>
                 <label class="teacher-search-label">Փնտրել աշակերտ<input id="studentSearchInput" type="search" placeholder="Անուն…" /></label>
               </div>
