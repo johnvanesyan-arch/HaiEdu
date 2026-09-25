@@ -39,12 +39,12 @@ begin
         and subject_program_id=v_program and status='active') then
     raise exception 'class_assignment_not_atomic';
   end if;
-  if not public.service_set_teacher_class_active_14b(v_teacher,v_class,false) or
-     not exists(select 1 from public.classes where id=v_class and is_active=false) then
+  perform public.service_set_teacher_class_active_14b(v_teacher,v_class,false);
+  if not exists(select 1 from public.classes where id=v_class and is_active=false) then
     raise exception 'archive_failed';
   end if;
-  if not public.service_set_teacher_class_active_14b(v_teacher,v_class,true) or
-     not exists(select 1 from public.classes where id=v_class and is_active=true) then
+  perform public.service_set_teacher_class_active_14b(v_teacher,v_class,true);
+  if not exists(select 1 from public.classes where id=v_class and is_active=true) then
     raise exception 'activation_failed';
   end if;
 
