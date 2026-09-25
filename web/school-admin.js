@@ -7,14 +7,6 @@ const dashboardState = {
   schools: [], invitations: [], years: new Map(), teachers: new Map(),
 };
 
-let operationalOverview = null;
-let selectedOperationalTeacherMembershipId = null;
-
-function escapeHtml(value) {
-  return String(value ?? "").replace(/[&<>'"]/g, (character) => ({
-    "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;",
-  }[character]));
-}
 
 function message(id, text, error = false) {
   const element = $(id);
@@ -66,110 +58,6 @@ function renderOverview() {
   if (teachers && !teachers.some((teacher) => teacher.membership_status === "active"))
     return message("overviewMessage", "Ուսումնական տարին բաց է։ Այժմ կարող եք հրավիրել ուսուցիչների։");
   message("overviewMessage", "Դպրոցի հիմնական կարգավորումները պատրաստ են։");
-}
-
-function operationalSchool() {
-  const schoolId = $("overviewSchool")?.value;
-  return operationalOverview?.schools?.find((school) => school.id === schoolId) ?? null;
-}
-
-function operationalTeacherStudentCount(teacher) {
-  return new Set((teacher.classes ?? []).flatMap(
-    (klass) => (klass.students ?? []).map((student) => student.id),
-  )).size;
-}
-
-function renderOperationalTeacherDetail(school) {
-  const teacher = (school.teachers ?? []).find(
-    (item) => item.membershipId === selectedOperationalTeacherMembershipId,
-  );
-  if (!teacher) {
-    $("teacherDetail").innerHTML = '<div class="hierarchy-empty">Ընտրեք ուսուցչին՝ դասարանները տեսնելու համար։</div>';
-    return;
-  }
-
-  const subjects = teacher.subjects?.length
-    ? teacher.subjects.map((subject) =>
-      `<span class="subject-chip">${escapeHtml(subject.name)}</span>`).join("")
-    : '<span class="subject-chip">Առարկա չի նշված</span>';
-
-  const classes = teacher.classes?.length ? teacher.classes.map((klass) => {
-    const context = [klass.grade?.label, klass.subject?.name, klass.academicYear]
-      .filter(Boolean).join(" · ");
-    const students = klass.students?.length
-      ? `<ul class="student-list">${klass.students.map((student) => `
-          <li><strong>${escapeHtml(student.displayName)}</strong><span>${escapeHtml(student.email || "Էլ. հասցեն հասանելի չէ")}</span></li>`).join("")}</ul>`
-      : '<p class="subtle">Այս դասարանում հաստատված աշակերտ դեռ չկա։</p>';
-    return `<article class="class-card">
-      <div class="class-card-header">
-        <div><h5>${escapeHtml(klass.name)}</h5><p class="class-context">${escapeHtml(context || "Համատեքստը լրացվում է")}</p></div>
-        <span class="student-count">${escapeHtml(klass.students?.length ?? 0)} աշակերտ</span>
-      </div>
-      ${students}
-    </article>`;
-  }).join("") : '<div class="hierarchy-empty">Այս ուսուցչին ակտիվ դասարան դեռ չի վերագրվել։</div>';
-
-  $("teacherDetail").innerHTML = `
-    <div class="operational-teacher-header">
-      <h4>${escapeHtml(teacher.displayName)}</h4>
-      <p class="operational-teacher-email">${escapeHtml(teacher.email || "Էլ. հասցեն հասանելի չէ")}</p>
-      <div class="subject-chips">${subjects}</div>
-    </div>
-    <div class="operational-class-list">${classes}</div>`;
-}
-
-function renderOperationalHierarchy() {
-  const school = operationalSchool();
-  const list = $("teacherList");
-  if (!school) {
-    list.innerHTML = '<div class="hierarchy-empty">Այս դպրոցի կառուցվածքը հասանելի չէ։</div>';
-    $("teacherDetail").innerHTML = "";
-    return;
-  }
-
-  const teachers = school.teachers ?? [];
-  if (!teachers.length) {
-    selectedOperationalTeacherMembershipId = null;
-    list.innerHTML = '<div class="hierarchy-empty">Ակտիվ ուսուցիչ դեռ չկա։</div>';
-    $("teacherDetail").innerHTML = school.unassignedClasses?.length
-      ? `<div class="hierarchy-empty">Կան ${escapeHtml(school.unassignedClasses.length)} դասարան, սակայն ակտիվ ուսուցիչ–դասարան կապ դեռ չկա։</div>`
-      : '<div class="hierarchy-empty">Դասարանների կառուցվածքը կհայտնվի հաստատված կապից հետո։</div>';
-    return;
-  }
-
-  if (!teachers.some((teacher) => teacher.membershipId === selectedOperationalTeacherMembershipId)) {
-    selectedOperationalTeacherMembershipId = teachers[0].membershipId;
-  }
-
-  list.innerHTML = teachers.map((teacher) => `
-    <button type="button" class="teacher-card" data-operational-teacher="${escapeHtml(teacher.membershipId)}"
-      aria-current="${teacher.membershipId === selectedOperationalTeacherMembershipId}">
-      <strong>${escapeHtml(teacher.displayName)}</strong>
-      <span>${escapeHtml(teacher.email || "Էլ. հասցեն հասանելի չէ")}</span>
-      <span class="teacher-card-meta">${escapeHtml(teacher.classes?.length ?? 0)} դասարան · ${escapeHtml(operationalTeacherStudentCount(teacher))} աշակերտ</span>
-    </button>`).join("");
-
-  list.querySelectorAll("[data-operational-teacher]").forEach((button) => {
-    button.addEventListener("click", () => {
-      selectedOperationalTeacherMembershipId = button.dataset.operationalTeacher;
-      renderOperationalHierarchy();
-    });
-  });
-  renderOperationalTeacherDetail(school);
-}
-
-async function loadOperationalOverview() {
-  message("hierarchyMessage", "Կառուցվածքը թարմացվում է…");
-  const { data, error } = await supabase.functions.invoke("get-school-admin-overview", { body: {} });
-  if (error || !Array.isArray(data?.schools)) {
-    operationalOverview = null;
-    renderOperationalHierarchy();
-    message("hierarchyMessage", "Կառուցվածքը չբեռնվեց։ Փորձեք ավելի ուշ։", true);
-    return;
-  }
-  operationalOverview = data;
-  renderOperationalHierarchy();
-  message("hierarchyMessage", "");
 }
 
 async function invite(kind, values, messageId, form) {
@@ -333,11 +221,22 @@ function rosterField(label, value) {
 function teacherCard(teacher, schoolId) {
     const card = document.createElement("article");
     card.className = "roster-card";
+    const active = teacher.membership_status === "active" && teacher.account_status === "active";
     const head = document.createElement("div");
     head.className = "roster-card-head";
     const identity = document.createElement("div");
     const name = document.createElement("h3");
-    name.textContent = teacher.display_name || "Ուսուցչի անունը նշված չէ";
+    const nameText = teacher.display_name || "Ուսուցչի անունը նշված չէ";
+    if (active) {
+      const detailLink = document.createElement("a");
+      detailLink.className = "roster-teacher-link";
+      detailLink.href = `./school-teacher.html?school=${encodeURIComponent(schoolId)}&membership=${encodeURIComponent(teacher.membership_id)}`;
+      detailLink.textContent = nameText;
+      detailLink.setAttribute("aria-label", `${nameText}՝ բացել դասարանները`);
+      name.append(detailLink);
+    } else {
+      name.textContent = nameText;
+    }
     const email = document.createElement("p");
     email.className = "roster-email";
     email.textContent = teacher.email || "Էլ. հասցեն անհասանելի է";
@@ -345,7 +244,6 @@ function teacherCard(teacher, schoolId) {
     const stateBox = document.createElement("div");
     stateBox.className = "roster-state-actions";
     const state = document.createElement("span");
-    const active = teacher.membership_status === "active" && teacher.account_status === "active";
     state.className = `roster-status${active ? "" : " roster-status-ended"}`;
     state.textContent = active ? "Ակտիվ"
       : teacher.membership_status === "archived" ? "Արխիվացված"
@@ -575,8 +473,6 @@ $("overviewSchool").addEventListener("change", async (event) => {
     loadTeacherSubjects(schoolId), loadYears(), loadTeacherRoster(),
   ]);
   if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
-  selectedOperationalTeacherMembershipId = null;
-  renderOperationalHierarchy();
   renderOverview();
 });
 $("yearSchool").addEventListener("change", () => { message("yearMessage", ""); loadYears(); });
@@ -602,10 +498,7 @@ $("yearForm").addEventListener("submit", async (event) => {
   await loadYears();
 });
 
-$("refreshTeachersBtn").addEventListener("click", async () => {
-  await loadTeacherRoster();
-  await loadOperationalOverview();
-});
+$("refreshTeachersBtn").addEventListener("click", loadTeacherRoster);
 $("rosterSchool").addEventListener("change", loadTeacherRoster);
 $("refreshInvitesBtn").addEventListener("click", loadPendingInvites);
 $("schoolForm").addEventListener("submit", async (event) => {
@@ -675,7 +568,6 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
       $("teacherPanel").classList.remove("hidden");
       $("teachersPanel").classList.remove("hidden");
       await loadTeacherRoster();
-      await loadOperationalOverview();
       if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
     }
   }

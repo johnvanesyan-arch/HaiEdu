@@ -19,6 +19,15 @@ const configs = {
       ["Սպասվող հրավերներ", "#pendingPanel"]
     ]
   },
+  schoolTeacher: {
+    gate: "teacherDetailPanel", label: "Դպրոցի ադմին", links: [
+      ["Գլխավոր", "./school-admin.html"],
+      ["Ուսումնական տարի", "./school-admin.html#yearPanel"],
+      ["Ուսուցիչներ", "./school-admin.html#teachersPanel", "home"],
+      ["Ուսուցչի հրավեր", "./school-admin.html#teacherPanel"],
+      ["Սպասվող հրավերներ", "./school-admin.html#pendingPanel"]
+    ]
+  },
   platformSchools: {
     gate: "masterPanel", label: "Հարթակի ադմին", links: [
       ["Գլխավոր", "./admin.html"],
