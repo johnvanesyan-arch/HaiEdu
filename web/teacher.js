@@ -89,9 +89,15 @@ async function loadDashboard() {
   $("dashboardPanel").classList.remove("hidden");
   $("signOutBtn").classList.remove("hidden");
   const institutional = data.institutionalTeacher === true;
-  for (const id of ["createClassShortcut", "teacherLegacyOnboarding", "createClassCard"])
+  for (const id of ["teacherLegacyOnboarding", "createClassCard"])
     $(id).classList.toggle("hidden", institutional);
+  $("institutionalCreateCard").classList.toggle("hidden", !institutional);
   $("institutionalTeacherNotice").classList.toggle("hidden", !institutional);
+  $("createClassShortcut").href = institutional ? "#institutionalCreateCard" : "#createClassCard";
+  $("teacherWelcomeText").textContent = institutional
+    ? "Ստեղծեք դպրոցի դասարան ձեզ թույլատրված առարկայով և ընթացիկ ուսումնական տարով։"
+    : "Սկսեք դասարանի ստեղծումից, տվեք աշակերտներին միանալու կոդը, ապա հետևեք նրանց առաջընթացին այստեղից։";
+  if (institutional) renderInstitutionalOptions(data.institutionalOptions ?? []);
 
   const displayName = data.teacher?.displayName || "Ուսուցիչ";
   $("teacherName").textContent = displayName;
@@ -101,7 +107,7 @@ async function loadDashboard() {
 
   $("classCount").textContent = data.totals?.classes ?? 0;
   $("studentCount").textContent = data.totals?.students ?? 0;
-  $("supportCount").textContent = data.totals?.studentsNeedingSupport ?? 0;
+  $("supportCount").textContent = institutional ? "—" : data.totals?.studentsNeedingSupport ?? 0;
 
   renderClassList();
   const selected = data.classes?.find((c) => c.id === selectedClassId)
@@ -112,6 +118,8 @@ async function loadDashboard() {
   else {
     selectedClassId = null;
     $("emptyClass").classList.toggle("hidden", institutional);
+    $("institutionalEmpty").classList.toggle("hidden", !institutional);
+    $("institutionalClassView").classList.add("hidden");
     $("classView").classList.add("hidden");
   }
 }
@@ -139,7 +147,7 @@ function renderClassList() {
   }
   if (!classes.length) {
     list.innerHTML = dashboard?.institutionalTeacher
-      ? '<div class="teacher-empty-state"><strong>Դպրոցի դասարանները դեռ հասանելի չեն</strong><p class="subtle small">Դպրոցական դասարանների մուտքը կբացվի համապատասխան թույլտվությունների ստուգումից հետո։</p></div>'
+      ? '<div class="teacher-empty-state"><strong>Դասարան դեռ չկա</strong><p class="subtle small">Ընթացիկ տարվա դասարան ստեղծելու համար ընտրեք ձեր առարկայի ծրագիրը։</p><a class="button-link" href="#institutionalCreateCard">+ Ստեղծել դասարան</a></div>'
       : '<div class="teacher-empty-state"><strong>Դասարան դեռ չկա</strong><p class="subtle small">Ստեղծեք ձեր առաջին դասարանը, հետո աշակերտներին տվեք միանալու կոդը։</p><a class="button-link" href="#createClassCard">+ Ստեղծել դասարան</a></div>';
   } else if (!list.children.length) {
     list.innerHTML = '<p class="subtle small">Ակտիվ դասարաններ չկան։ Ընտրեք արխիվացված դասարան կամ ստեղծեք նորը։</p>';
@@ -159,6 +167,23 @@ function selectClass(id) {
   if (!klass) return;
 
   $("emptyClass").classList.add("hidden");
+  $("institutionalEmpty").classList.add("hidden");
+  if (dashboard?.institutionalTeacher) {
+    $("classView").classList.add("hidden");
+    $("institutionalClassView").classList.remove("hidden");
+    $("institutionalSelectedName").textContent = klass.name;
+    $("institutionalSelectedMeta").textContent = [
+      klass.schoolName, klass.academicYear, klass.subjectName,
+      klass.gradeNumber ? `${klass.gradeNumber}-րդ դասարան` : "",
+      `${klass.studentCount} աշակերտ`,
+    ].filter(Boolean).join(" · ");
+    $("institutionalClassBadge").textContent = klass.isActive ? "Ակտիվ" : "Արխիվացված";
+    $("institutionalClassBadge").className = `status-badge ${klass.isActive ? "success" : "neutral"}`;
+    $("institutionalClassToggle").textContent = klass.isActive ? "Արխիվացնել դասարանը" : "Վերակտիվացնել դասարանը";
+    setMessage("institutionalClassMessage", "");
+    return;
+  }
+  $("institutionalClassView").classList.add("hidden");
   $("classView").classList.remove("hidden");
   $("selectedClassName").textContent = klass.name;
   $("selectedClassMeta").textContent = `${klass.academicYear ?? ""} · ${klass.studentCount} աշակերտ · ${klass.needingSupport} աջակցություն է պետք`;
@@ -396,6 +421,65 @@ async function saveProfile() {
   setMessage("profileMessage", "Անունը պահպանված է։");
 }
 
+function renderInstitutionalOptions(options) {
+  const select = $("institutionalClassOption");
+  const previous = select.value;
+  select.replaceChildren();
+  const placeholder = new Option(options.length ? "Ընտրեք ծրագիրը" : "Հասանելի ծրագիր կամ ընթացիկ ուսումնական տարի չկա", "");
+  placeholder.disabled = true;
+  placeholder.selected = true;
+  select.add(placeholder);
+  for (const [index, option] of options.entries()) {
+    select.add(new Option(
+      `${option.schoolName} · ${option.academicYearLabel} · ${option.subjectName} · ${option.gradeNumber}-րդ դասարան`,
+      String(index),
+    ));
+  }
+  if (previous && Number(previous) < options.length) select.value = previous;
+  select.disabled = !options.length;
+  $("institutionalCreateBtn").disabled = !options.length;
+  $("institutionalTeacherNoticeText").textContent = options.length
+    ? "Ձեր դպրոցում կա ընթացիկ ուսումնական տարի և առարկայի հաստատված ծրագիր։ Այժմ կարող եք ստեղծել դասարան։"
+    : "Դասարան ստեղծելու համար դպրոցի ադմինիստրատորը նախ պետք է բացի ընթացիկ տարին, իսկ ձեր առարկայի ծրագիրը պետք է հրապարակված լինի։";
+}
+
+async function createInstitutionalClass(event) {
+  event.preventDefault();
+  const index = Number($("institutionalClassOption").value);
+  const option = dashboard?.institutionalOptions?.[index];
+  const name = $("institutionalClassName").value.trim();
+  if (!option || name.length < 2) return setMessage("institutionalCreateMessage", "Ընտրեք ծրագիր և մուտքագրեք դասարանի անունը։", true);
+  const button = $("institutionalCreateBtn");
+  button.disabled = true;
+  setMessage("institutionalCreateMessage", "Դասարանը ստեղծվում է…");
+  const { data, error } = await supabase.functions.invoke("manage-institutional-teacher-class", {
+    body: {
+      action: "create", membershipId: option.teacherMembershipId,
+      academicYearId: option.academicYearId, subjectProgramId: option.subjectProgramId, name,
+    },
+  });
+  button.disabled = false;
+  if (error || !data?.classId) return setMessage("institutionalCreateMessage", "Դասարանը չստեղծվեց։ Թարմացրեք տվյալները և ստուգեք դպրոցի և առարկայի թույլտվությունը։", true);
+  selectedClassId = data.classId;
+  $("institutionalClassName").value = "";
+  await loadDashboard();
+}
+
+async function toggleInstitutionalClassStatus() {
+  const klass = selectedClass();
+  if (!dashboard?.institutionalTeacher || !klass) return;
+  const action = klass.isActive ? "archive" : "activate";
+  if (klass.isActive && !window.confirm("Արխիվացնե՞լ դպրոցի դասարանը։")) return;
+  const button = $("institutionalClassToggle");
+  button.disabled = true;
+  const { error } = await supabase.functions.invoke("manage-institutional-teacher-class", {
+    body: { action, classId: klass.id },
+  });
+  button.disabled = false;
+  if (error) return setMessage("institutionalClassMessage", "Դասարանի կարգավիճակը չփոխվեց։ Ստուգեք դպրոցի և ուսումնական տարվա թույլտվությունը։", true);
+  await loadDashboard();
+}
+
 async function createClass() {
   const name = $("classNameInput").value.trim();
   if (!name) return setMessage("classMessage", "Մուտքագրեք դասարանի անունը։", true);
@@ -495,6 +579,8 @@ $("signOutBtn").addEventListener("click", signOut);
 $("refreshBtn").addEventListener("click", loadDashboard);
 $("saveProfileBtn").addEventListener("click", saveProfile);
 $("createClassBtn").addEventListener("click", createClass);
+$("institutionalCreateForm").addEventListener("submit", createInstitutionalClass);
+$("institutionalClassToggle").addEventListener("click", toggleInstitutionalClassStatus);
 $("copyCodeBtn").addEventListener("click", copyJoinCode);
 $("copyInviteBtn").addEventListener("click", copyInviteLink);
 $("rotateCodeBtn").addEventListener("click", rotateCode);
