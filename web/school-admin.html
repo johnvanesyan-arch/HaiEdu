@@ -54,6 +54,27 @@
       </form>
     </section>
 
+    <section id="yearPanel" class="card admin-panel hidden" aria-labelledby="yearTitle">
+      <div class="panel-header">
+        <div>
+          <p class="panel-kicker">Դպրոցի ուսումնական տարի</p>
+          <h2 id="yearTitle">Բացել ընթացիկ ուսումնական տարին</h2>
+        </div>
+      </div>
+      <p class="subtle panel-copy">Դպրոցի ադմինիստրատորը նախ նշում է տարին և դրա ամսաթվերը։ Դրանից հետո ուսուցիչները կարող են ստեղծել դասարաններ միայն իրենց հաստատված առարկաներով և հրապարակված ծրագրերով։</p>
+      <form id="yearForm" class="admin-form">
+        <label class="form-field form-field-wide"><span>Դպրոց</span><select id="yearSchool" required></select></label>
+        <label class="form-field"><span>Ուսումնական տարվա անվանում</span><input id="yearLabel" required maxlength="32" placeholder="Օր.՝ 2026–2027" /></label>
+        <label class="form-field"><span>Սկիզբ</span><input id="yearStart" type="date" required /></label>
+        <label class="form-field"><span>Ավարտ</span><input id="yearEnd" type="date" required /></label>
+        <div class="form-actions">
+          <button type="submit">Բացել տարին</button>
+          <p id="yearMessage" class="message" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      <div id="yearList" class="year-list"></div>
+    </section>
+
     <section id="teacherPanel" class="card admin-panel hidden" aria-labelledby="teacherInviteTitle">
       <div class="panel-header">
         <div>
