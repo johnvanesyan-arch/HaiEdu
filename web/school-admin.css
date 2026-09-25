@@ -213,6 +213,44 @@
   border-color: #dfc3c8 !important;
 }
 
+.overview-header { align-items: flex-end; }
+.overview-school-field { min-width: min(100%, 300px); margin: 0; }
+.overview-school-code { margin: 9px 0 0; color: #52667f; font-size: .9rem; }
+.overview-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 22px;
+}
+.overview-stat {
+  min-width: 0;
+  padding: 17px;
+  border: 1px solid #dfe6ef;
+  border-radius: 13px;
+  background: #f8fbff;
+}
+.overview-stat span { display: block; min-height: 2.6em; color: #60738c; font-size: .86rem; line-height: 1.35; }
+.overview-stat strong { display: block; margin-top: 8px; color: #203a5f; font-size: 1.35rem; overflow-wrap: anywhere; }
+.overview-actions {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 18px;
+}
+.overview-actions a {
+  display: grid;
+  gap: 4px;
+  padding: 15px 17px;
+  border: 1px solid #d7e3f3;
+  border-radius: 12px;
+  color: #244f88;
+  background: #fff;
+  text-decoration: none;
+}
+.overview-actions a:hover { border-color: #9db9dc; background: #f8fbff; }
+.overview-actions span { color: #60738c; font-size: .87rem; line-height: 1.45; }
+.overview-message { margin: 16px 0 0; }
+
 /* The sidebar hash selects one section without changing authorization gates. */
 .school-admin-page section[hidden] { display: none !important; }
 
@@ -223,7 +261,10 @@
   margin: 16px 0 0;
 }
 #rosterMessage { margin: 12px 0 0; }
-.teacher-roster { display: grid; gap: 12px; margin-top: 14px; }
+.teacher-roster { display: grid; gap: 18px; margin-top: 14px; }
+.roster-group { display: grid; gap: 12px; }
+.roster-group-title, .year-group-title { margin: 0; color: #294d79; font-size: 1rem; }
+.roster-group-archived { padding-top: 16px; border-top: 1px solid #e0e6ee; }
 .roster-card {
   min-width: 0;
   padding: 18px;
@@ -238,6 +279,8 @@
   gap: 14px;
   flex-wrap: wrap;
 }
+.roster-state-actions { display: flex; align-items: center; justify-content: flex-end; gap: 9px; flex-wrap: wrap; }
+.roster-archive-button { min-width: 112px; }
 .roster-card h3 { margin: 0; font-size: 1.12rem; }
 .roster-email { margin: 5px 0 0; color: #52667f; overflow-wrap: anywhere; }
 .roster-status {
@@ -292,6 +335,9 @@
     align-items: stretch;
   }
 
+  .overview-header { align-items: stretch; }
+  .overview-stats, .overview-actions { grid-template-columns: 1fr 1fr; }
+
   .form-actions button,
   .pending-header > button,
   .invite-actions,
@@ -311,3 +357,25 @@
 }
 
 .year-list{margin-top:16px;display:grid;gap:8px}.year-list p{margin:0;padding:10px 12px;border:1px solid #dfe6ef;border-radius:10px;background:#f8fbff}
+.year-group { display: grid; gap: 10px; }
+.year-group + .year-group { margin-top: 10px; padding-top: 16px; border-top: 1px solid #e0e6ee; }
+.year-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 12px 14px;
+  border: 1px solid #dfe6ef;
+  border-radius: 11px;
+  background: #f8fbff;
+}
+.year-row > div { display: grid; gap: 4px; }
+.year-row span { color: #60738c; font-size: .88rem; }
+.year-row button { flex: 0 0 auto; }
+
+@media (max-width: 560px) {
+  .overview-stats, .overview-actions { grid-template-columns: 1fr; }
+  .year-row { align-items: stretch; flex-direction: column; }
+  .year-row button { width: 100%; }
+  .roster-state-actions { justify-content: flex-start; }
+}

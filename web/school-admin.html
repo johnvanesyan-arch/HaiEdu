@@ -30,6 +30,34 @@
       <a class="button-link ghost" href="./account-access">Մուտք գործել</a>
     </section>
 
+    <section id="overviewPanel" class="card admin-panel overview-panel hidden" aria-labelledby="overviewTitle">
+      <div class="panel-header overview-header">
+        <div>
+          <p class="panel-kicker">Ամփոփում</p>
+          <h2 id="overviewTitle">Դպրոցի աշխատանքային պատկերը</h2>
+          <p class="subtle panel-copy">Այստեղ երևում են հիմնական թվերը և այն գործողությունները, որոնք հիմա ուշադրություն են պահանջում։</p>
+        </div>
+        <label class="form-field overview-school-field">
+          <span>Դպրոց</span>
+          <select id="overviewSchool"></select>
+        </label>
+      </div>
+      <p id="overviewSchoolCode" class="overview-school-code"></p>
+      <div class="overview-stats" aria-label="Դպրոցի ամփոփ ցուցանիշներ">
+        <article class="overview-stat"><span>Ակտիվ ուսումնական տարի</span><strong id="overviewYear">—</strong></article>
+        <article class="overview-stat"><span>Ակտիվ ուսուցիչներ</span><strong id="overviewTeachers">—</strong></article>
+        <article class="overview-stat"><span>Ակտիվ դասարաններ</span><strong id="overviewClasses">—</strong></article>
+        <article class="overview-stat"><span>Սպասվող հրավերներ</span><strong id="overviewInvites">—</strong></article>
+      </div>
+      <div class="overview-actions" aria-label="Արագ գործողություններ">
+        <a href="#yearPanel"><strong>Ուսումնական տարիներ</strong><span>Բացել, արխիվացնել կամ վերականգնել տարին</span></a>
+        <a href="#teachersPanel"><strong>Ուսուցիչներ</strong><span>Դիտել հաշիվները, առարկաները և դասարանները</span></a>
+        <a href="#teacherPanel"><strong>Հրավիրել ուսուցչի</strong><span>Տալ դպրոցի և հրապարակված առարկայի մուտք</span></a>
+        <a href="#pendingPanel"><strong>Սպասվող հրավերներ</strong><span>Վերաուղարկել կամ չեղարկել հրավերը</span></a>
+      </div>
+      <p id="overviewMessage" class="message overview-message" role="status" aria-live="polite"></p>
+    </section>
+
     <section id="masterPanel" class="card admin-panel hidden" aria-labelledby="schoolInviteTitle">
       <div class="panel-header">
         <div>
@@ -58,10 +86,10 @@
       <div class="panel-header">
         <div>
           <p class="panel-kicker">Դպրոցի ուսումնական տարի</p>
-          <h2 id="yearTitle">Բացել ընթացիկ ուսումնական տարին</h2>
+          <h2 id="yearTitle">Ուսումնական տարիներ</h2>
         </div>
       </div>
-      <p class="subtle panel-copy">Դպրոցի ադմինիստրատորը նախ նշում է տարին և դրա ամսաթվերը։ Դրանից հետո ուսուցիչները կարող են ստեղծել դասարաններ միայն իրենց հաստատված առարկաներով և հրապարակված ծրագրերով։</p>
+      <p class="subtle panel-copy">Բացեք ընթացիկ տարին, որպեսզի ուսուցիչները կարողանան ստեղծել դասարաններ։ Արխիվացումը կդադարեցնի այդ տարվա դասարանների հասանելիությունը՝ առանց պատմական տվյալները ջնջելու։</p>
       <form id="yearForm" class="admin-form">
         <label class="form-field form-field-wide"><span>Դպրոց</span><select id="yearSchool" required></select></label>
         <label class="form-field"><span>Ուսումնական տարվա անվանում</span><input id="yearLabel" required maxlength="32" placeholder="Օր.՝ 2026–2027" /></label>
@@ -111,7 +139,7 @@
         </div>
         <button id="refreshTeachersBtn" type="button" class="ghost">Թարմացնել ցանկը</button>
       </div>
-      <p class="subtle panel-copy">Հրավերն ընդունած ուսուցիչների հաշիվները, առարկաների թույլտվությունները և դասարանները։ Դեռ չընդունված հրավերները տեսեք «Սպասվող հրավերներ» բաժնում։</p>
+      <p class="subtle panel-copy">Հրավերն ընդունած ուսուցիչների հաշիվները, առարկաների թույլտվությունները և դասարանները։ Ուսուցչի արխիվացումը կդադարեցնի միայն այս դպրոցի մուտքը՝ պահպանելով հաշիվն ու պատմությունը։ Դեռ չընդունված հրավերները տեսեք «Սպասվող հրավերներ» բաժնում։</p>
       <label class="form-field roster-school-field"><span>Դպրոց</span><select id="rosterSchool"></select></label>
       <p id="rosterMessage" class="message" role="status" aria-live="polite"></p>
       <div id="teacherRoster" class="teacher-roster"></div>

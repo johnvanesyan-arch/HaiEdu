@@ -74,6 +74,8 @@ body.amp-student-shell-active .mode-kicker { background: var(--hm-soft); color: 
 .hm-role-foot { margin-top: auto; padding: 16px 10px 2px; border-top: 1px solid var(--hm-line); display: grid; gap: 12px; }
 .hm-role-foot span { color: var(--hm-muted); font-size: .8rem; }
 .hm-role-foot a { color: var(--hm-blue); font-weight: 600; }
+.hm-sidebar-signout { width: 100%; text-align: left; color: #7b4350 !important; border-color: #dfc3c8 !important; }
+.school-admin-page.hm-has-role-sidebar .school-admin-header #signOutBtn { display: none !important; }
 .hm-role-chip {
   display: inline-block; align-self: flex-start; white-space: nowrap;
   padding: 7px 11px; border: 1px solid var(--hm-line);
@@ -106,12 +108,15 @@ body.hm-has-role-sidebar .quality-layout .detail-panel { position: static; max-h
   body.hm-has-role-sidebar .quality-layout { grid-template-columns: minmax(720px,1.2fr) minmax(620px,1fr); }
 }
 @media (max-width: 1100px) {
-  .hm-role-sidebar { position: static; width: auto; padding: 12px 16px; border-right: 0; border-bottom: 1px solid var(--hm-line); }
+  .hm-role-sidebar { position: static; width: auto; padding: 12px 16px; border-right: 0; border-bottom: 1px solid var(--hm-line); flex-direction: row; align-items: center; }
   .hm-role-brand { border: 0; padding: 0; }
   .hm-role-brand img { width: 120px; }
-  .hm-workspace-label, .hm-role-foot { display: none; }
-  .hm-role-nav { display: flex; overflow-x: auto; white-space: nowrap; }
+  .hm-workspace-label { display: none; }
+  .hm-role-nav { display: flex; overflow-x: auto; white-space: nowrap; min-width: 0; }
   .hm-role-nav a { flex: 0 0 auto; }
+  .hm-role-foot { margin: 0; padding: 0; border: 0; flex: 0 0 auto; }
+  .hm-role-foot > span, .hm-role-foot > a { display: none; }
+  .hm-sidebar-signout { width: auto; text-align: center; }
   body.hm-has-role-sidebar > main { margin: 0; padding: 16px 18px 32px; }
   body.hm-has-role-sidebar .teacher-topbar,
   body.hm-has-role-sidebar .school-admin-header,

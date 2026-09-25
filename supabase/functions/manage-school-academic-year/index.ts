@@ -52,6 +52,25 @@ Deno.serve(async (req) => {
       if (error) return json({ error: "school_years_unavailable" }, 503);
       return json({ years: data ?? [] });
     }
+    if ((body.action === "archive" || body.action === "restore")
+      && typeof body.yearId === "string" && uuid.test(body.yearId)) {
+      const archived = body.action === "archive";
+      const { data, error } = await admin.rpc("service_set_school_year_archived_14b", {
+        p_actor: actor, p_school: body.schoolId, p_year: body.yearId,
+        p_archived: archived,
+      });
+      if (error) {
+        if (error.message.includes("school_year_overlap"))
+          return json({ error: "school_year_overlap" }, 409);
+        if (error.message.includes("school_year_restore_unavailable"))
+          return json({ error: "school_year_restore_unavailable" }, 409);
+        if (error.message.includes("school_year_unavailable"))
+          return json({ error: "school_year_unavailable" }, 403);
+        console.error("manage-school-academic-year", error);
+        return json({ error: "school_year_update_failed" }, 503);
+      }
+      return json({ updated: data === true, archived });
+    }
     if (body.action !== "create" || typeof body.label !== "string" ||
       typeof body.startsOn !== "string" || typeof body.endsOn !== "string" ||
       !/^\d{4}-\d{2}-\d{2}$/.test(body.startsOn) ||

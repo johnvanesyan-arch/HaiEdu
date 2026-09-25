@@ -11,7 +11,7 @@ const configs = {
     ]
   },
   school: {
-    gate: "teacherPanel", label: "Դպրոցի ադմին", links: [
+    gate: "overviewPanel", label: "Դպրոցի ադմին", links: [
       ["Գլխավոր", "./school-admin.html", "home"],
       ["Ուսումնական տարի", "#yearPanel"],
       ["Ուսուցիչներ", "#teachersPanel"],
@@ -57,16 +57,17 @@ function syncSchoolSections() {
   if (page !== "school") return;
   const sidebar = document.querySelector(".hm-role-sidebar");
   if (sidebar?.dataset.workspace !== configs.school.label) return;
-  const views = ["yearPanel", "teachersPanel", "teacherPanel", "pendingPanel"];
+  const views = ["overviewPanel", "yearPanel", "teachersPanel", "teacherPanel", "pendingPanel"];
   const requested = window.location.hash.slice(1);
-  const selected = views.includes(requested) ? requested : null;
+  const selected = views.includes(requested) ? requested : "overviewPanel";
   for (const id of views) {
     const section = document.getElementById(id);
-    if (section) section.hidden = Boolean(selected && selected !== id);
+    if (section) section.hidden = selected !== id;
   }
   for (const link of sidebar.querySelectorAll(".hm-role-nav a")) {
-    const current = selected ? link.getAttribute("href") === `#${selected}`
-      : link.getAttribute("href") === "./school-admin.html";
+    const current = selected === "overviewPanel"
+      ? link.getAttribute("href") === "./school-admin.html"
+      : link.getAttribute("href") === `#${selected}`;
     if (current) link.setAttribute("aria-current", "page");
     else link.removeAttribute("aria-current");
   }
@@ -118,6 +119,15 @@ function syncRoleSidebar() {
   account.href = "./privacy.html";
   account.textContent = "Հաշիվ և գաղտնիություն";
   footer.append(pilot, account);
+  const existingSignOut = document.getElementById("signOutBtn");
+  if (existingSignOut) {
+    const signOut = document.createElement("button");
+    signOut.type = "button";
+    signOut.className = "ghost hm-sidebar-signout";
+    signOut.textContent = "Դուրս գալ";
+    signOut.addEventListener("click", () => existingSignOut.click());
+    footer.append(signOut);
+  }
   sidebar.append(brand, caption, nav, footer);
   document.body.prepend(sidebar);
   document.body.classList.add("hm-has-role-sidebar");
@@ -129,7 +139,7 @@ function syncRoleSidebar() {
   syncSchoolSections();
 }
 
-const gates = ["dashboardPanel", "masterPanel", "teacherPanel", "console"]
+const gates = ["dashboardPanel", "masterPanel", "overviewPanel", "teacherPanel", "console"]
   .map(id => document.getElementById(id)).filter(Boolean);
 const observer = new MutationObserver(syncRoleSidebar);
 gates.forEach(gate => observer.observe(gate, { attributes: true, attributeFilter: ["class"] }));

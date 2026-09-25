@@ -113,8 +113,10 @@ export async function getInstitutionalTeacherDashboard(
       klass.teacher_id !== teacherId ||
       klass.subject_id !== programme.subject_id ||
       klass.grade_id !== programme.grade_id) return [];
+    const yearIsActive = year.status === "active"
+      && year.starts_on <= today && today <= year.ends_on;
     return [{
-      id: klass.id, name: klass.name, isActive: klass.is_active,
+      id: klass.id, name: klass.name, isActive: klass.is_active && yearIsActive,
       academicYear: year.label, schoolName: schoolById.get(klass.school_id)?.name ?? "",
       subjectName: subjectById.get(klass.subject_id)?.name_hy ?? "",
       gradeNumber: Number(gradeById.get(klass.grade_id)?.grade_number ?? 0),
