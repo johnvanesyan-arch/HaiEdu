@@ -10,10 +10,13 @@ const linkError = hashParams.get("error_code") || searchParams.get("error_code")
     ? "access_denied" : null);
 const resetView = searchParams.get("view") === "reset";
 const registerView = searchParams.get("view") === "register";
+const studentInvitationFromUrl = searchParams.get("student_invitation");
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 const redirect = `${location.origin}/account-access`;
+const studentInvitationKey = "haiedu:student-invitation";
 if (linkError) {
+  sessionStorage.removeItem(studentInvitationKey);
   messageForLinkError();
   // Drop the one-time error fragment without retaining or exposing any link tokens.
   history.replaceState(null, "", location.pathname);
@@ -26,7 +29,7 @@ function messageForLinkError() {
   notice.classList.remove("hidden");
 }
 function show(panel) {
-  for (const id of ["loginPanel", "registerPanel", "resetPanel", "passwordPanel"])
+  for (const id of ["loginPanel", "registerPanel", "studentInvitePanel", "resetPanel", "passwordPanel"])
     $(id).classList.toggle("hidden", id !== panel);
 }
 function message(id, text, error = false) {
@@ -46,6 +49,36 @@ async function routeByRole(messageId = "loginMessage") {
     message(messageId, "Հաշիվն ակտիվ չէ։ Կապվեք ադմինիստրատորի հետ։", true); return;
   }
   location.replace(profile.role === "student" ? studentDestination(location.search) : roleDestination(profile.role));
+}
+
+function storeAndHideStudentInvitation() {
+  if (studentInvitationFromUrl) sessionStorage.setItem(studentInvitationKey, studentInvitationFromUrl);
+  const clean = new URL(location.href);
+  clean.searchParams.delete("student_invitation");
+  clean.hash = "";
+  history.replaceState(null, "", `${clean.pathname}${clean.search}`);
+}
+
+async function prepareStudentInvitation() {
+  const enrollmentToken = studentInvitationFromUrl || sessionStorage.getItem(studentInvitationKey);
+  if (!enrollmentToken) return false;
+  const { data: auth, error: authError } = await supabase.auth.getUser();
+  if (authError || !auth.user) return false;
+  const { data: profile, error: profileError } = await supabase.from("profiles")
+    .select("role,account_status,display_name").eq("id", auth.user.id).maybeSingle();
+  if (profileError || profile?.role !== "student" || profile.account_status !== "active") {
+    show("loginPanel");
+    message("loginMessage", "Այս հրավերը կարող է ընդունել միայն ակտիվ աշակերտի հաշիվը։", true);
+    return true;
+  }
+  storeAndHideStudentInvitation();
+  $("studentDisplayName").value = profile.display_name || "";
+  const requiresPassword = flowHint === "invite";
+  $("studentPasswordFields").classList.toggle("hidden", !requiresPassword);
+  $("studentPassword").required = requiresPassword;
+  $("studentPasswordConfirm").required = requiresPassword;
+  show("studentInvitePanel");
+  return true;
 }
 
 $("loginForm").addEventListener("submit", async (event) => {
@@ -77,6 +110,44 @@ $("registerBackBtn").addEventListener("click", () => {
   searchParams.delete("view");
   history.replaceState(null, "", `${location.pathname}${searchParams.size ? `?${searchParams}` : ""}`);
   show("loginPanel");
+});
+$("studentInviteForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const enrollmentToken = sessionStorage.getItem(studentInvitationKey);
+  const displayName = $("studentDisplayName").value.trim().replace(/\s+/g, " ");
+  if (!enrollmentToken || displayName.length < 2 || displayName.length > 80 || !$("studentConsent").checked) {
+    return message("studentInviteMessage", "Լրացրեք անունը և հաստատեք հաշվի պայմանները։", true);
+  }
+  const requiresPassword = !$("studentPasswordFields").classList.contains("hidden");
+  if (requiresPassword) {
+    const password = $("studentPassword").value;
+    if (password.length < 12 || password !== $("studentPasswordConfirm").value) {
+      return message("studentInviteMessage", "Գաղտնաբառերը պետք է համընկնեն և պարունակեն առնվազն 12 նիշ։", true);
+    }
+  }
+  const button = event.currentTarget.querySelector('button[type="submit"]');
+  button.disabled = true;
+  message("studentInviteMessage", "Հրավերը հաստատվում է…");
+  if (requiresPassword) {
+    const { error: passwordError } = await supabase.auth.updateUser({ password: $("studentPassword").value });
+    if (passwordError) {
+      button.disabled = false;
+      return message("studentInviteMessage", "Գաղտնաբառը չպահպանվեց։ Փորձեք կրկին։", true);
+    }
+  }
+  const { data, error } = await supabase.functions.invoke("complete-student-invitation", {
+    body: {
+      token: enrollmentToken,
+      displayName,
+      acceptanceVersion: "student-school-access-v1",
+    },
+  });
+  if (error || data?.completed !== true) {
+    button.disabled = false;
+    return message("studentInviteMessage", "Հրավերը չի գործում, ժամկետանց է կամ արդեն օգտագործվել է։ Խնդրեք դպրոցին ուղարկել նոր հրավեր։", true);
+  }
+  sessionStorage.removeItem(studentInvitationKey);
+  await routeByRole("studentInviteMessage");
 });
 $("showResetBtn").addEventListener("click", () => {
   $("resetEmail").value = $("loginEmail").value;
@@ -120,11 +191,17 @@ $("passwordForm").addEventListener("submit", async (event) => {
 });
 
 supabase.auth.onAuthStateChange((event, session) => {
-  if (!linkError && (event === "PASSWORD_RECOVERY" || flowHint === "invite" || flowHint === "recovery") && session)
-    show("passwordPanel");
+  if (!linkError && session) {
+    if (studentInvitationFromUrl || sessionStorage.getItem(studentInvitationKey)) {
+      setTimeout(() => prepareStudentInvitation(), 0);
+    } else if (event === "PASSWORD_RECOVERY" || flowHint === "invite" || flowHint === "recovery") {
+      show("passwordPanel");
+    }
+  }
 });
 const { data: initial } = await supabase.auth.getSession();
 if (linkError) show("loginPanel");
+else if (initial.session && (studentInvitationFromUrl || sessionStorage.getItem(studentInvitationKey))) await prepareStudentInvitation();
 else if (initial.session && (flowHint === "invite" || flowHint === "recovery")) show("passwordPanel");
 else if (resetView && !flowHint) show("resetPanel");
 else if (initial.session) await routeByRole();

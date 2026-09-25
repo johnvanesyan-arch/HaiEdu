@@ -58,13 +58,18 @@ export async function getInstitutionalTeacherDashboard(
       .select("id,school_id,academic_year_id,teacher_id,name,is_active,subject_id,grade_id")
       .in("id", classIds) : Promise.resolve({ data: [] }),
     classIds.length ? admin.from("institutional_class_enrollments")
-      .select("class_id,student_id,status,valid_from,valid_to")
+      .select("school_id,academic_year_id,class_id,student_id,subject_program_id,status,valid_from,valid_to")
       .in("class_id", classIds).eq("status", "active") : Promise.resolve({ data: [] }),
   ]);
   const programmes = requireRows(programmesResult);
   const subjects = requireRows(subjectsResult);
   const classes = requireRows(classesResult);
   const enrollments = requireRows(enrollmentsResult).filter((e) => activeAt(e, now));
+  const studentIds = [...new Set(enrollments.map((e) => e.student_id))];
+  const studentProfiles = studentIds.length
+    ? requireRows(await admin.from("profiles")
+      .select("id,display_name,account_status").in("id", studentIds))
+    : [];
   const gradeIds = [...new Set(programmes.map((p) => p.grade_id))];
   const grades = gradeIds.length
     ? requireRows(await admin.from("grades").select("id,grade_number").in("id", gradeIds))
@@ -75,6 +80,7 @@ export async function getInstitutionalTeacherDashboard(
   const programmeById = new Map(programmes.map((p) => [p.id, p]));
   const gradeById = new Map(grades.map((g) => [g.id, g]));
   const classById = new Map(classes.map((c) => [c.id, c]));
+  const studentById = new Map<string, any>(studentProfiles.map((profile) => [profile.id, profile]));
 
   const options = [];
   for (const membership of memberships) {
@@ -115,14 +121,25 @@ export async function getInstitutionalTeacherDashboard(
       klass.grade_id !== programme.grade_id) return [];
     const yearIsActive = year.status === "active"
       && year.starts_on <= today && today <= year.ends_on;
+    const classEnrollments = enrollments.filter((e) =>
+      e.class_id === klass.id && e.school_id === assignment.school_id
+      && e.academic_year_id === assignment.academic_year_id
+      && e.subject_program_id === assignment.subject_program_id
+      && studentById.get(e.student_id)?.account_status === "active");
     return [{
       id: klass.id, name: klass.name, isActive: klass.is_active && yearIsActive,
       academicYear: year.label, schoolName: schoolById.get(klass.school_id)?.name ?? "",
       subjectName: subjectById.get(klass.subject_id)?.name_hy ?? "",
       gradeNumber: Number(gradeById.get(klass.grade_id)?.grade_number ?? 0),
       joinCode: null,
-      studentCount: enrollments.filter((e) => e.class_id === klass.id).length,
-      students: [],
+      studentCount: classEnrollments.length,
+      students: classEnrollments.map((enrollment) => {
+        const profile = studentById.get(enrollment.student_id);
+        return {
+          id: enrollment.student_id,
+          displayName: profile?.display_name?.trim() || "Աշակերտ",
+        };
+      }),
     }];
   });
   return {
@@ -130,7 +147,7 @@ export async function getInstitutionalTeacherDashboard(
     institutionalTeacher: true, institutionalOptions: options, classes: classPayload,
     totals: {
       classes: classPayload.length,
-      students: new Set(enrollments.map((e) => e.student_id)).size,
+      students: new Set(classPayload.flatMap((klass) => klass.students.map((student) => student.id))).size,
       studentsNeedingSupport: 0,
     },
   };

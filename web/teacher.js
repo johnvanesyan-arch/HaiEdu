@@ -101,7 +101,7 @@ async function loadDashboard() {
 
   $("classCount").textContent = data.totals?.classes ?? 0;
   $("studentCount").textContent = data.totals?.students ?? 0;
-  $("supportCount").textContent = data.totals?.studentsNeedingSupport ?? 0;
+  $("supportCount").textContent = institutional ? "—" : (data.totals?.studentsNeedingSupport ?? 0);
 
   renderClassList();
   const selected = data.classes?.find((c) => c.id === selectedClassId)
@@ -112,6 +112,8 @@ async function loadDashboard() {
   else {
     selectedClassId = null;
     $("emptyClass").classList.toggle("hidden", institutional);
+    $("institutionalEmpty").classList.toggle("hidden", !institutional);
+    $("institutionalClassView").classList.add("hidden");
     $("classView").classList.add("hidden");
   }
 }
@@ -132,7 +134,7 @@ function renderClassList() {
   }
   if (!list.children.length) {
     list.innerHTML = dashboard?.institutionalTeacher
-      ? '<div class="teacher-empty-state"><strong>Դպրոցի դասարանները դեռ հասանելի չեն</strong><p class="subtle small">Դպրոցական դասարանների մուտքը կբացվի համապատասխան թույլտվությունների ստուգումից հետո։</p></div>'
+      ? '<div class="teacher-empty-state"><strong>Դպրոցի դասարան դեռ չկա</strong><p class="subtle small">Դպրոցի ադմինիստրատորը պետք է բացի ընթացիկ տարին, իսկ դուք՝ ստեղծեք ձեզ թույլատրված դասարանը։</p></div>'
       : '<div class="teacher-empty-state"><strong>Դասարան դեռ չկա</strong><p class="subtle small">Ստեղծեք ձեր առաջին դասարանը, հետո աշակերտներին տվեք միանալու կոդը։</p><a class="button-link" href="#createClassCard">+ Ստեղծել դասարան</a></div>';
   }
 }
@@ -149,7 +151,28 @@ function selectClass(id) {
   const klass = selectedClass();
   if (!klass) return;
 
+  if (dashboard?.institutionalTeacher) {
+    $("emptyClass").classList.add("hidden");
+    $("institutionalEmpty").classList.add("hidden");
+    $("classView").classList.add("hidden");
+    $("institutionalClassView").classList.remove("hidden");
+    $("institutionalSelectedName").textContent = klass.name;
+    $("institutionalSelectedMeta").textContent = [
+      klass.schoolName,
+      klass.academicYear,
+      klass.gradeNumber ? `${klass.gradeNumber}-րդ դասարան` : "",
+      klass.subjectName,
+    ].filter(Boolean).join(" · ");
+    $("institutionalClassBadge").textContent = klass.isActive ? "Ակտիվ" : "Արխիվացված";
+    $("institutionalClassBadge").className = `status-badge ${klass.isActive ? "success" : "neutral"}`;
+    $("institutionalClassToggle").textContent = klass.isActive ? "Արխիվացնել դասարանը" : "Վերակտիվացնել դասարանը";
+    renderInstitutionalRoster(klass);
+    return;
+  }
+
   $("emptyClass").classList.add("hidden");
+  $("institutionalEmpty").classList.add("hidden");
+  $("institutionalClassView").classList.add("hidden");
   $("classView").classList.remove("hidden");
   $("selectedClassName").textContent = klass.name;
   $("selectedClassMeta").textContent = `${klass.academicYear ?? ""} · ${klass.studentCount} աշակերտ · ${klass.needingSupport} աջակցություն է պետք`;
@@ -169,6 +192,27 @@ function selectClass(id) {
 
   renderMatrix(klass);
   renderRoster(klass);
+}
+
+function renderInstitutionalRoster(klass) {
+  const students = Array.isArray(klass.students) ? klass.students : [];
+  $("institutionalRosterCount").textContent = `${students.length} աշակերտ`;
+  const list = $("institutionalRoster");
+  list.replaceChildren();
+  if (!students.length) {
+    const empty = document.createElement("li");
+    empty.className = "institutional-student-empty";
+    empty.textContent = "Այս դասարանում հաստատված աշակերտ դեռ չկա։";
+    list.append(empty);
+    return;
+  }
+  for (const student of students) {
+    const item = document.createElement("li");
+    const name = document.createElement("strong");
+    name.textContent = student.displayName || "Աշակերտ";
+    item.append(name);
+    list.append(item);
+  }
 }
 
 function matrixCell(skill) {
@@ -472,6 +516,24 @@ async function toggleClassStatus() {
   await loadDashboard();
 }
 
+async function toggleInstitutionalClassStatus() {
+  const klass = selectedClass();
+  if (!klass || !dashboard?.institutionalTeacher) return;
+  const action = klass.isActive ? "archive" : "activate";
+  if (klass.isActive && !window.confirm("Արխիվացնե՞լ դպրոցի այս դասարանը։ Աշակերտների և դասարանի պատմությունը կպահպանվի։")) return;
+  $("institutionalClassToggle").disabled = true;
+  setMessage("institutionalClassMessage", action === "archive" ? "Արխիվացվում է…" : "Վերակտիվացվում է…");
+  const { data, error } = await supabase.functions.invoke("manage-institutional-teacher-class", {
+    body: { action, classId: klass.id },
+  });
+  $("institutionalClassToggle").disabled = false;
+  if (error || data?.updated !== true) {
+    return setMessage("institutionalClassMessage", "Դասարանի կարգավիճակը չփոխվեց։ Ստուգեք թույլտվությունները և ուսումնական տարին։", true);
+  }
+  setMessage("institutionalClassMessage", action === "archive" ? "Դասարանն արխիվացված է։" : "Դասարանը վերակտիվացված է։");
+  await loadDashboard();
+}
+
 async function removeStudent(studentId, studentName) {
   if (!studentId || !selectedClassId) return;
   const name = studentName || "այս աշակերտին";
@@ -491,6 +553,7 @@ $("copyCodeBtn").addEventListener("click", copyJoinCode);
 $("copyInviteBtn").addEventListener("click", copyInviteLink);
 $("rotateCodeBtn").addEventListener("click", rotateCode);
 $("toggleClassBtn").addEventListener("click", toggleClassStatus);
+$("institutionalClassToggle").addEventListener("click", toggleInstitutionalClassStatus);
 $("closeDrawerBtn").addEventListener("click", closeDrawer);
 $("drawerBackdrop").addEventListener("click", closeDrawer);
 $("studentSearchInput").addEventListener("input", (event) => {

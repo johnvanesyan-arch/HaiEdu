@@ -52,6 +52,7 @@
       <div class="overview-actions" aria-label="Արագ գործողություններ">
         <a href="#yearPanel"><strong>Ուսումնական տարիներ</strong><span>Բացել, արխիվացնել կամ վերականգնել տարին</span></a>
         <a href="#teachersPanel"><strong>Ուսուցիչներ</strong><span>Դիտել հաշիվները, առարկաները և դասարանները</span></a>
+        <a href="#studentPanel"><strong>Հրավիրել աշակերտի</strong><span>Ավելացնել աշակերտին ընտրված դասարանում</span></a>
         <a href="#teacherPanel"><strong>Հրավիրել ուսուցչի</strong><span>Տալ դպրոցի և հրապարակված առարկայի մուտք</span></a>
         <a href="#pendingPanel"><strong>Սպասվող հրավերներ</strong><span>Վերաուղարկել կամ չեղարկել հրավերը</span></a>
       </div>
@@ -116,6 +117,34 @@
         </div>
       </form>
       <div id="yearList" class="year-list"></div>
+    </section>
+
+    <section id="studentPanel" class="card admin-panel hidden" aria-labelledby="studentInviteTitle">
+      <div class="panel-header">
+        <div>
+          <p class="panel-kicker">Դասարանի աշակերտներ</p>
+          <h2 id="studentInviteTitle">Աշակերտի հրավեր</h2>
+        </div>
+      </div>
+      <p class="subtle panel-copy">Մուտքագրեք միայն աշակերտի էլ. հասցեն և ընտրեք դասարանը։ Եթե հաշիվ դեռ չկա, աշակերտն ինքնուրույն կնշի անունը, կսահմանի գաղտնաբառը և կհաստատի հաշվի պայմանները։ Ուսումնական տարին, դասարանի աստիճանը և առարկայի ծրագիրը վերցվում են ընտրված դասարանից։</p>
+      <form id="studentForm" class="admin-form">
+        <label class="form-field">
+          <span>Դպրոց</span>
+          <select id="studentSchool" required></select>
+        </label>
+        <label class="form-field">
+          <span>Դասարան</span>
+          <select id="studentClass" required></select>
+        </label>
+        <label class="form-field form-field-wide">
+          <span>Աշակերտի էլ. հասցե</span>
+          <input id="studentEmail" type="email" required autocomplete="off" inputmode="email" />
+        </label>
+        <div class="form-actions">
+          <button type="submit">Ուղարկել հրավերը</button>
+          <p id="studentMessage" class="message" role="status" aria-live="polite"></p>
+        </div>
+      </form>
     </section>
 
     <section id="teacherPanel" class="card admin-panel hidden" aria-labelledby="teacherInviteTitle">

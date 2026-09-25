@@ -11,6 +11,32 @@
   margin: 0;
 }
 
+.account-access .student-consent {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  align-items: start;
+  gap: 10px;
+  margin: 18px 0;
+  color: #42546d;
+  font-weight: 500;
+  line-height: 1.5;
+}
+
+.account-access .student-consent input {
+  width: 20px;
+  height: 20px;
+  margin-top: 2px;
+}
+
+.account-access #studentPasswordFields {
+  display: grid;
+  gap: 14px;
+}
+
+.account-access #studentPasswordFields.hidden {
+  display: none;
+}
+
 .account-access .auth-link-error {
   padding: 14px 16px;
   margin: 18px 0;
