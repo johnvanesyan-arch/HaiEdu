@@ -176,3 +176,10 @@ test('migration keeps old evidence unbound and stamps only new unambiguous sessi
   assert.match(sql, /learning session identity and provenance are immutable after insert/);
   assert.match(sql, /private\.active_school_admin_14b\(p_actor,p_school\)/);
 });
+
+test('student onboarding options preserve the declared integer grade contract', () => {
+  const sql = readFileSync('supabase/migrations/0110_sprint_14c_onboarding_grade_type.sql', 'utf8');
+  assert.match(sql, /g\.grade_number::integer/);
+  assert.match(sql, /student_onboarding_unavailable/);
+  assert.match(sql, /grant execute on function public\.service_list_student_onboarding_classes_14c/);
+});
