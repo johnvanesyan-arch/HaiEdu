@@ -56,6 +56,40 @@
         <a href="#pendingPanel"><strong>Սպասվող հրավերներ</strong><span>Վերաուղարկել կամ չեղարկել հրավերը</span></a>
       </div>
       <p id="overviewMessage" class="message overview-message" role="status" aria-live="polite"></p>
+
+      <div class="overview-extension-grid">
+        <section class="operational-hierarchy" aria-labelledby="hierarchyTitle">
+          <div class="hierarchy-heading">
+            <div>
+              <p class="panel-kicker">Գործառնական կառուցվածք</p>
+              <h3 id="hierarchyTitle">Ուսուցիչ → դասարան → աշակերտ</h3>
+              <p class="subtle">Ընտրեք ուսուցչին՝ նրա ակտիվ դասարաններն ու հաստատված աշակերտներին տեսնելու համար։</p>
+            </div>
+          </div>
+          <div class="hierarchy-layout">
+            <div id="teacherList" class="operational-teacher-list" aria-label="Ակտիվ ուսուցիչներ">
+              <div class="hierarchy-empty">Կառուցվածքը բեռնվում է…</div>
+            </div>
+            <div id="teacherDetail" class="operational-teacher-detail">
+              <div class="hierarchy-empty">Ընտրեք ուսուցչին՝ դասարանները տեսնելու համար։</div>
+            </div>
+          </div>
+          <p id="hierarchyMessage" class="message hierarchy-message" role="status" aria-live="polite"></p>
+        </section>
+
+        <aside class="analytics-gate" aria-labelledby="analyticsGateTitle">
+          <span class="analytics-lock">14C / 14D</span>
+          <p class="panel-kicker">Հաջորդ փուլ</p>
+          <h3 id="analyticsGateTitle">Վերլուծական վահանակը դեռ չի ակտիվացվել</h3>
+          <p>Միավորների, առաջընթացի և համեմատությունների ցուցադրումը կբացվի միայն այն բանից հետո, երբ աշակերտի դպրոցական համատեքստը և ապացույցների իրավասությունը հաստատված լինեն։</p>
+          <div class="analytics-preview" aria-hidden="true">
+            <span>Դասարանի առաջընթաց</span>
+            <span>Հմտությունների վիճակ</span>
+            <span>Միջամտության ազդակներ</span>
+          </div>
+          <p class="analytics-note">Այստեղ ցուցադրական տոկոսներ կամ ենթադրյալ արդյունքներ չեն օգտագործվում։</p>
+        </aside>
+      </div>
     </section>
 
     <section id="masterPanel" class="card admin-panel hidden" aria-labelledby="schoolInviteTitle">
