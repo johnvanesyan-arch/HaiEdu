@@ -45,6 +45,23 @@
       </form>
       <p id="registerMessage" class="message" role="status" aria-live="polite"></p>
     </section>
+    <section id="studentInvitePanel" class="card auth-card hidden">
+      <h2>Ավարտել դպրոցի հրավերը</h2>
+      <p class="subtle">Ձեր անունը և գաղտնաբառը լրացնում եք միայն դուք։ Հրավերն ընդունելուց հետո հաշիվը կմիանա նամակում նշված դպրոցի դասարանին։</p>
+      <form id="studentInviteForm">
+        <label>Անուն և ազգանուն<input id="studentDisplayName" type="text" autocomplete="name" minlength="2" maxlength="80" required /></label>
+        <div id="studentPasswordFields">
+          <label>Նոր գաղտնաբառ<input id="studentPassword" type="password" autocomplete="new-password" minlength="12" /></label>
+          <label>Կրկնել գաղտնաբառը<input id="studentPasswordConfirm" type="password" autocomplete="new-password" minlength="12" /></label>
+        </div>
+        <label class="student-consent">
+          <input id="studentConsent" type="checkbox" required />
+          <span>Կարդացել եմ <a href="./privacy.html" target="_blank" rel="noopener">գաղտնիության տեղեկությունը</a> և համաձայն եմ, որ այս հաշիվը միացվի հրավերում նշված դպրոցի դասարանին։</span>
+        </label>
+        <button type="submit">Ընդունել և միանալ դասարանին</button>
+      </form>
+      <p id="studentInviteMessage" class="message" role="status" aria-live="polite"></p>
+    </section>
     <section id="resetPanel" class="card auth-card hidden">
       <h2>Վերականգնել գաղտնաբառը</h2>
       <p class="subtle">Կուղարկենք վերականգնման հղում, եթե այս էլ. հասցեով հաշիվ կա։</p>

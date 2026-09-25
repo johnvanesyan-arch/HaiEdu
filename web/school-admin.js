@@ -385,6 +385,37 @@ async function loadTeacherSubjects(schoolId) {
   return true;
 }
 
+async function loadStudentClasses(schoolId) {
+  const classSelect = $("studentClass");
+  classSelect.replaceChildren();
+  classSelect.disabled = true;
+  const loading = new Option("Բեռնվում է…", "");
+  loading.disabled = true;
+  loading.selected = true;
+  classSelect.add(loading);
+  const { data, error } = await supabase.functions.invoke("get-student-onboarding-options", {
+    body: { schoolId },
+  });
+  classSelect.replaceChildren();
+  if (error || !Array.isArray(data?.classes) || !data.classes.length) {
+    const empty = new Option("Ակտիվ դասարաններ չկան", "");
+    empty.disabled = true;
+    empty.selected = true;
+    classSelect.add(empty);
+    return false;
+  }
+  for (const klass of data.classes) {
+    const context = [
+      klass.grade_number ? `${klass.grade_number}-րդ դասարան` : "",
+      klass.subject_name,
+      klass.academic_year_label,
+    ].filter(Boolean).join(" · ");
+    classSelect.add(new Option(`${klass.class_name}${context ? ` — ${context}` : ""}`, klass.class_id));
+  }
+  classSelect.disabled = false;
+  return true;
+}
+
 async function loadYears() {
   const schoolId = $("yearSchool").value;
   const list = $("yearList");
@@ -467,12 +498,13 @@ async function loadYears() {
 
 $("overviewSchool").addEventListener("change", async (event) => {
   const schoolId = event.currentTarget.value;
-  for (const id of ["yearSchool", "rosterSchool", "teacherSchool"]) $(id).value = schoolId;
+  for (const id of ["yearSchool", "rosterSchool", "teacherSchool", "studentSchool"]) $(id).value = schoolId;
   message("overviewMessage", "Թարմացվում է…");
-  const [subjectsLoaded] = await Promise.all([
-    loadTeacherSubjects(schoolId), loadYears(), loadTeacherRoster(),
+  const [subjectsLoaded, classesLoaded] = await Promise.all([
+    loadTeacherSubjects(schoolId), loadStudentClasses(schoolId), loadYears(), loadTeacherRoster(),
   ]);
   if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
+  if (!classesLoaded) message("studentMessage", "Այս դպրոցի համար հրավիրման ենթակա ակտիվ դասարան չկա։", true);
   renderOverview();
 });
 $("yearSchool").addEventListener("change", () => { message("yearMessage", ""); loadYears(); });
@@ -500,6 +532,41 @@ $("yearForm").addEventListener("submit", async (event) => {
 
 $("refreshTeachersBtn").addEventListener("click", loadTeacherRoster);
 $("rosterSchool").addEventListener("change", loadTeacherRoster);
+$("studentSchool").addEventListener("change", async (event) => {
+  message("studentMessage", "");
+  const loaded = await loadStudentClasses(event.currentTarget.value);
+  if (!loaded) message("studentMessage", "Այս դպրոցի համար հրավիրման ենթակա ակտիվ դասարան չկա։", true);
+});
+$("studentForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const button = event.currentTarget.querySelector("button[type=submit]");
+  setButtonBusy(button, true, "Ուղարկվում է…");
+  message("studentMessage", "");
+  let data, error;
+  try {
+    ({ data, error } = await supabase.functions.invoke("provision-student-account", {
+      body: {
+        schoolId: $("studentSchool").value,
+        classId: $("studentClass").value,
+        email: $("studentEmail").value.trim(),
+      },
+    }));
+  } catch (requestError) {
+    error = requestError;
+  } finally {
+    setButtonBusy(button, false, "Ուղարկվում է…");
+  }
+  if (error) {
+    if (await emailLimitExceeded(error)) {
+      return message("studentMessage", "Հրավերը չուղարկվեց․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։", true);
+    }
+    return message("studentMessage", "Հրավերը չուղարկվեց։ Ստուգեք հասցեն, դասարանը և ձեր թույլտվությունը։", true);
+  }
+  $("studentEmail").value = "";
+  message("studentMessage", data?.accountState === "existing"
+    ? "Հրավերն ուղարկվել է աշակերտի գործող հաշվին։ Հաշիվը դասարանում կհայտնվի հրավերն ընդունելուց հետո։"
+    : "Նոր հաշվի հրավերն ուղարկվել է։ Աշակերտը ինքնուրույն կավարտի հաշվի ստեղծումն ու կմիանա դասարանին։");
+});
 $("refreshInvitesBtn").addEventListener("click", loadPendingInvites);
 $("schoolForm").addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -560,15 +627,19 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
         $("teacherSchool").add(new Option(school.name, school.id));
         $("yearSchool").add(new Option(school.name, school.id));
         $("rosterSchool").add(new Option(school.name, school.id));
+        $("studentSchool").add(new Option(school.name, school.id));
       }
       $("overviewPanel").classList.remove("hidden");
       $("yearPanel").classList.remove("hidden");
       await loadYears();
       const subjectsLoaded = await loadTeacherSubjects(schools[0].id);
+      const classesLoaded = await loadStudentClasses(schools[0].id);
+      $("studentPanel").classList.remove("hidden");
       $("teacherPanel").classList.remove("hidden");
       $("teachersPanel").classList.remove("hidden");
       await loadTeacherRoster();
       if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
+      if (!classesLoaded) message("studentMessage", "Այս դպրոցի համար հրավիրման ենթակա ակտիվ դասարան չկա։", true);
     }
   }
 

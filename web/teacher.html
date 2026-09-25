@@ -66,7 +66,7 @@
       <section id="institutionalTeacherNotice" class="card hidden" role="status">
         <h2>Դպրոցական դասարանների կառավարում</h2>
         <p id="institutionalTeacherNoticeText">Դպրոցի ադմինիստրատորը նախ պետք է բացի ընթացիկ ուսումնական տարին։ Այնուհետև կարող եք դասարան ստեղծել ձեր հաստատված առարկայով և հրապարակված ծրագրով։</p>
-        <p class="subtle">Դպրոցի աշակերտների միացումը և դասարանային առաջընթացի վերլուծությունը դեռ չեն գործարկվել։ Այս դասարանների համար միանալու կոդ չի տրվում։</p>
+        <p class="subtle">Դպրոցի ադմինիստրատորը հրավիրում և դասարանին է միացնում աշակերտներին։ Դուք տեսնում եք միայն ձեզ վերագրված դասարանների հաստատված ցուցակները։ Առաջընթացի վերլուծությունը դեռ չի գործարկվել։</p>
       </section>
 
       <section id="teacherLegacyOnboarding" class="card teacher-onboarding-card" aria-labelledby="teacherStartTitle">
@@ -161,8 +161,19 @@
               <p id="institutionalClassMessage" class="message" role="status" aria-live="polite"></p>
             </div>
             <div class="join-code-box">
-              <strong>Աշակերտների միացումը հաջորդ փուլում է</strong>
-              <p class="subtle small">Միանալու հղումները, աշակերտների ցուցակը և առաջընթացի վերլուծությունը կհայտնվեն դպրոցական տվյալների սահմանների հաստատումից հետո։</p>
+              <strong>Հրավերները կառավարում է դպրոցի ադմինիստրատորը</strong>
+              <p class="subtle small">Այս դասարանի համար հանրային միանալու կոդ չի տրվում։</p>
+            </div>
+            <div class="institutional-roster-block">
+              <div class="teacher-section-heading">
+                <div>
+                  <span class="mode-kicker">ԱՇԱԿԵՐՏՆԵՐ</span>
+                  <h3>Դասարանի ցուցակ</h3>
+                  <p class="subtle">Ցուցադրվում են միայն այս դասարանում հաստատված աշակերտները։ Ուսումնական արդյունքների վերլուծություն այս փուլում չի ցուցադրվում։</p>
+                </div>
+                <strong id="institutionalRosterCount">0 աշակերտ</strong>
+              </div>
+              <ul id="institutionalRoster" class="institutional-student-list"></ul>
             </div>
           </section>
           <div id="classView" class="hidden">
