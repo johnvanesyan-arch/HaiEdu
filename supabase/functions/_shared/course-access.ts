@@ -20,14 +20,52 @@ export async function getStudentCourseEntitlements(
   admin: any,
   studentId: string,
 ): Promise<StudentCourseEntitlement[]> {
-  const { data: memberships, error: membershipError } = await admin
-    .from("class_memberships")
-    .select("class_id, joined_at")
-    .eq("student_id", studentId)
-    .order("joined_at", { ascending: false });
+  const now = new Date().toISOString();
+  const [institutionalResult, legacyResult] = await Promise.all([
+    admin
+      .from("institutional_class_enrollments")
+      .select("class_id, valid_from")
+      .eq("student_id", studentId)
+      .eq("status", "active")
+      .lte("valid_from", now)
+      .or(`valid_to.is.null,valid_to.gt.${now}`)
+      .order("valid_from", { ascending: false }),
+    admin
+      .from("class_memberships")
+      .select("class_id, joined_at")
+      .eq("student_id", studentId)
+      .order("joined_at", { ascending: false }),
+  ]);
 
-  if (membershipError) throw new Error(`class_memberships_unavailable:${membershipError.message}`);
-  if (!memberships?.length) return [];
+  if (institutionalResult.error) {
+    throw new Error(`institutional_enrollments_unavailable:${institutionalResult.error.message}`);
+  }
+  if (legacyResult.error) {
+    throw new Error(`class_memberships_unavailable:${legacyResult.error.message}`);
+  }
+
+  const membershipsByClass = new Map<string, { class_id: string; joined_at: string }>();
+  for (const enrollment of institutionalResult.data ?? []) {
+    const classId = String(enrollment.class_id);
+    if (!membershipsByClass.has(classId)) {
+      membershipsByClass.set(classId, {
+        class_id: classId,
+        joined_at: String(enrollment.valid_from),
+      });
+    }
+  }
+  for (const membership of legacyResult.data ?? []) {
+    const classId = String(membership.class_id);
+    if (!membershipsByClass.has(classId)) {
+      membershipsByClass.set(classId, {
+        class_id: classId,
+        joined_at: String(membership.joined_at),
+      });
+    }
+  }
+
+  const memberships = [...membershipsByClass.values()];
+  if (!memberships.length) return [];
 
   const classIds = [...new Set(memberships.map((row: any) => String(row.class_id)))];
   const { data: classes, error: classesError } = await admin
