@@ -1,0 +1,108 @@
+/* Shared visual language for the authenticated HaiEdu workspaces. */
+:root {
+  --hm-bg: #f5f9ff;
+  --hm-surface: #fff;
+  --hm-soft: #eaf2fd;
+  --hm-text: #202c40;
+  --hm-muted: #5e708a;
+  --hm-line: #d7e3f3;
+  --hm-blue: #244f88;
+  --hm-warm: #fff7e7;
+  --hm-sidebar-width: 232px;
+}
+body { background: var(--hm-bg); color: var(--hm-text); }
+body .card { background: var(--hm-surface); border-color: var(--hm-line); border-radius: 14px; box-shadow: 0 9px 27px #203a5910; }
+body .subtle, body .page-lede { color: var(--hm-muted); }
+body .eyebrow, body .mode-kicker, body .panel-kicker { color: var(--hm-blue); letter-spacing: .055em; }
+body button:not(.ghost):not(.secondary):not(.danger-btn), body .button-link:not(.ghost):not(.secondary) { border-radius: 10px; }
+body a:focus-visible, body button:focus-visible, body input:focus-visible, body select:focus-visible { outline: 3px solid #8db7ed; outline-offset: 2px; }
+
+/* The existing student navigation supplies enrolled classes and permitted links. */
+body.amp-student-shell-active .amp-side-nav {
+  background: var(--hm-surface); color: var(--hm-text);
+  border-right: 1px solid var(--hm-line); box-shadow: 3px 0 18px #203a590a;
+}
+body.amp-student-shell-active .amp-nav-brand { border-bottom-color: var(--hm-line); }
+body.amp-student-shell-active .amp-brand-link { background: transparent; box-shadow: none; padding-left: 0; }
+body.amp-student-shell-active .amp-brand-link:focus-visible { outline-color: #8db7ed; }
+body.amp-student-shell-active .amp-nav-brand span { color: var(--hm-muted); }
+body.amp-student-shell-active .amp-nav-link { color: var(--hm-muted); }
+body.amp-student-shell-active .amp-nav-link:hover { background: var(--hm-bg); color: var(--hm-blue); }
+body.amp-student-shell-active .amp-nav-link[aria-current="page"] { background: var(--hm-soft); color: var(--hm-blue); box-shadow: none; }
+body.amp-student-shell-active .amp-nav-disabled:hover { color: var(--hm-muted); background: transparent; }
+body.amp-student-shell-active .amp-nav-utility { border-top-color: var(--hm-line); }
+body.amp-student-shell-active .amp-nav-utility a { color: var(--hm-blue); }
+body.amp-student-shell-active .topbar {
+  background: var(--hm-surface); border: 1px solid var(--hm-line);
+  border-radius: 13px; padding: 18px 22px; margin-bottom: 20px;
+}
+body.amp-student-shell-active .recommendation-card { background: var(--hm-surface); border-color: #bdcfe6; }
+body.amp-student-shell-active .mode-kicker { background: var(--hm-soft); color: var(--hm-blue); }
+
+/* Staff navigation is created only after the page's existing authorization check. */
+.hm-role-sidebar {
+  position: fixed; inset: 0 auto 0 0; z-index: 40;
+  width: var(--hm-sidebar-width); padding: 25px 14px 18px;
+  display: flex; flex-direction: column; gap: 16px;
+  background: var(--hm-surface); border-right: 1px solid var(--hm-line);
+  box-shadow: 3px 0 18px #203a590a;
+}
+.hm-role-brand { display: block; padding: 0 10px 22px; border-bottom: 1px solid var(--hm-line); }
+.hm-role-brand img { display: block; width: min(100%, 162px); height: auto; }
+.hm-workspace-label { color: var(--hm-muted); font-size: .74rem; font-weight: 700; letter-spacing: .08em; margin: 2px 10px 0; }
+.hm-role-nav { display: grid; gap: 4px; }
+.hm-role-nav a {
+  display: block; padding: 11px 12px; border-radius: 9px;
+  color: var(--hm-muted); text-decoration: none; font-weight: 650; line-height: 1.3;
+}
+.hm-role-nav a:hover { color: var(--hm-blue); background: var(--hm-bg); }
+.hm-role-nav a[aria-current="page"] { color: var(--hm-blue); background: var(--hm-soft); }
+.hm-role-foot { margin-top: auto; padding: 16px 10px 2px; border-top: 1px solid var(--hm-line); display: grid; gap: 12px; }
+.hm-role-foot span { color: var(--hm-muted); font-size: .8rem; }
+.hm-role-foot a { color: var(--hm-blue); font-weight: 600; }
+.hm-role-chip {
+  display: inline-block; align-self: flex-start; white-space: nowrap;
+  padding: 7px 11px; border: 1px solid var(--hm-line);
+  border-radius: 999px; color: var(--hm-blue); background: var(--hm-soft);
+  font-size: .84rem; font-weight: 700;
+}
+body.hm-has-role-sidebar > main { box-sizing: border-box; width: auto; max-width: none; margin: 0 0 0 var(--hm-sidebar-width); padding: 24px clamp(16px,3vw,42px) 48px; min-width: 0; }
+body.hm-has-role-sidebar .teacher-topbar,
+body.hm-has-role-sidebar .school-admin-header,
+body.hm-has-role-sidebar .admin-topbar,
+body.hm-has-role-sidebar .content-topbar {
+  background: var(--hm-surface); border: 1px solid var(--hm-line);
+  border-radius: 14px; padding: 20px 24px; margin: 0 0 20px;
+  display: flex; align-items: flex-start; justify-content: space-between; gap: 18px;
+}
+body.hm-has-role-sidebar .teacher-topbar h1,
+body.hm-has-role-sidebar .school-admin-header h1,
+body.hm-has-role-sidebar .admin-topbar h1,
+body.hm-has-role-sidebar .content-topbar h1 { font-size: clamp(1.8rem,2.5vw,2.8rem); line-height: 1.15; }
+body.hm-has-role-sidebar .teacher-welcome-card { background: var(--hm-surface); border-color: var(--hm-line); }
+body.hm-has-role-sidebar .admin-panel,
+body.hm-has-role-sidebar .admin-card,
+body.hm-has-role-sidebar .curriculum-card,
+body.hm-has-role-sidebar .bank-card { border-color: var(--hm-line); }
+body.hm-has-role-sidebar .quality-layout { grid-template-columns: minmax(0,1fr); }
+body.hm-has-role-sidebar .quality-layout .table-wrap { overflow-x: auto; }
+body.hm-has-role-sidebar .quality-layout .detail-panel { position: static; max-height: none; }
+
+@media (max-width: 900px) {
+  .hm-role-sidebar { position: static; width: auto; padding: 12px 16px; border-right: 0; border-bottom: 1px solid var(--hm-line); }
+  .hm-role-brand { border: 0; padding: 0; }
+  .hm-role-brand img { width: 120px; }
+  .hm-workspace-label, .hm-role-foot { display: none; }
+  .hm-role-nav { display: flex; overflow-x: auto; white-space: nowrap; }
+  .hm-role-nav a { flex: 0 0 auto; }
+  body.hm-has-role-sidebar > main { margin: 0; padding: 16px 18px 32px; }
+  body.hm-has-role-sidebar .teacher-topbar,
+  body.hm-has-role-sidebar .school-admin-header,
+  body.hm-has-role-sidebar .admin-topbar,
+  body.hm-has-role-sidebar .content-topbar { flex-wrap: wrap; padding: 17px; }
+}
+@media (max-width: 560px) {
+  body.hm-has-role-sidebar > main { padding: 12px; }
+  .hm-role-sidebar { padding: 12px; gap: 8px; }
+  body.amp-student-shell-active .topbar { padding: 15px; }
+}

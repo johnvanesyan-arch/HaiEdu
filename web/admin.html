@@ -7,8 +7,9 @@
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
   <link rel="stylesheet" href="./admin.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
 </head>
-<body>
+<body data-role-workspace="platform">
   <main class="admin-shell" id="mainContent">
     <header class="admin-topbar">
       <div>
@@ -38,7 +39,7 @@
     <section id="console" class="hidden">
       <div id="stats" class="admin-stats"></div>
 
-      <section class="card admin-card">
+      <section id="usersSection" class="card admin-card">
         <div class="admin-heading"><div><span class="mode-kicker">Հաշիվներ</span><h2>Օգտատերեր և դերեր</h2><p class="subtle">Կասեցված հաշիվը կարող եք արխիվացնել։ Արխիվացվածները թաքցված են հիմնական ցանկից և չեն կարող մուտք գործել։ Ջնջումը վերջնական է և կարող է պահանջել նախապես փոխանցել կապված տվյալները։</p></div><button id="refreshBtn" class="ghost">Թարմացնել</button></div>
         <div class="admin-actions" role="group" aria-label="Հաշիվների ցանկ">
           <button id="activeUsersBtn" type="button" aria-pressed="true">Ընթացիկ հաշիվներ</button>
@@ -47,21 +48,21 @@
         <div class="table-wrap"><table class="admin-table"><thead><tr><th>Օգտատեր</th><th>Դեր</th><th>Կարգավիճակ</th><th>Վերջին մուտք</th><th>Գործողություններ</th></tr></thead><tbody id="userRows"></tbody></table></div>
       </section>
 
-      <section class="card admin-card">
+      <section id="deletionsSection" class="card admin-card">
         <span class="mode-kicker">Գաղտնիություն</span>
         <h2>Ջնջման հարցումներ</h2>
         <p class="subtle">Ուսանողի ջնջումն ունի առանձին հաստատման և վերջնական ջնջման քայլեր։ Անձնակազմի կապված դասարանները, դպրոցները և հրավերները նախ պետք է կարգավորել։</p>
         <div class="table-wrap"><table class="admin-table"><thead><tr><th>Հարցում</th><th>Օգտատեր</th><th>Կարգավիճակ</th><th>Ամսաթիվ</th><th>Գործողություններ</th></tr></thead><tbody id="deletionRows"></tbody></table></div>
       </section>
 
-      <section class="card admin-card">
+      <section id="transferSection" class="card admin-card">
         <span class="mode-kicker">Դասարաններ</span>
         <h2>Պատասխանատվության փոխանցում</h2>
         <p class="subtle">Ուսուցչի հաշիվը ջնջելուց առաջ դասարանները պետք է փոխանցվեն այլ ակտիվ ուսուցչի կամ ադմինի։</p>
         <div class="table-wrap"><table class="admin-table"><thead><tr><th>Դասարան</th><th>Ուսուցիչ</th><th>Աշակերտներ</th><th>Կարգավիճակ</th><th>Փոխանցում</th></tr></thead><tbody id="classRows"></tbody></table></div>
       </section>
 
-      <section class="card admin-card">
+      <section id="auditSection" class="card admin-card">
         <span class="mode-kicker">Աուդիտ</span>
         <h2>Վերջին անվտանգության իրադարձությունները</h2>
         <p class="subtle">Լոգը չի պահում ուսանողների պատասխանների բովանդակությունը կամ գաղտնաբառերը։</p>
@@ -72,5 +73,6 @@
   </main>
   <script type="module" src="./admin.js"></script>
   <script type="module" src="./ux.js"></script>
+  <script type="module" src="./role-layout.js"></script>
 </body>
 </html>

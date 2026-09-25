@@ -507,23 +507,34 @@ async function refresh(reselect = selectedId) {
     renderRows();
     if (selectedId) await selectItem(selectedId);
     else $("detailPanel").innerHTML = `<h2>Ընտրեք հարց</h2><p class="subtle">Հարցերի բանկը դատարկ է։</p>`;
+    return true;
   } catch (err) {
     setMessage(err.message, true);
+    return false;
   }
 }
 
+let sessionCheck = 0;
 async function showForSession(session) {
+  const check = ++sessionCheck;
+  $("console").classList.add("hidden");
   if (!session) {
     editorDirty = false;
     $("authPanel").classList.remove("hidden");
-    $("console").classList.add("hidden");
     $("signOutBtn").classList.add("hidden");
     return;
   }
   $("authPanel").classList.add("hidden");
-  $("console").classList.remove("hidden");
   $("signOutBtn").classList.remove("hidden");
-  await refresh();
+  const allowed = await refresh();
+  if (check !== sessionCheck) return;
+  if (!allowed) {
+    $("authMessage").textContent = "Այս հաշվին բովանդակության բաժնի հասանելիություն տրված չէ։";
+    $("authPanel").classList.remove("hidden");
+    return;
+  }
+  $("authMessage").textContent = "";
+  $("console").classList.remove("hidden");
 }
 
 $("signOutBtn").addEventListener("click", () => supabase.auth.signOut());
