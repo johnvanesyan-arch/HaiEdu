@@ -9,8 +9,11 @@ const actor = '123e4567-e89b-42d3-a456-426614174000';
 const school = '223e4567-e89b-42d3-a456-426614174000';
 const classId = '323e4567-e89b-42d3-a456-426614174000';
 const recipient = '423e4567-e89b-42d3-a456-426614174000';
+const assignment = '523e4567-e89b-42d3-a456-426614174000';
 
-async function invokeProvision({ existing = recipient, allowed = true, deliveryError = null } = {}) {
+async function invokeProvision({
+  existing = recipient, allowed = true, deliveryError = null, profileRole = 'teacher',
+} = {}) {
   let handler;
   const calls = [];
   const service = {
@@ -27,7 +30,7 @@ async function invokeProvision({ existing = recipient, allowed = true, deliveryE
     from(table) {
       assert.equal(table, 'profiles');
       return { select: () => ({ eq: () => ({ maybeSingle: async () => ({
-        data: { role: 'school_admin', account_status: 'active' }, error: null,
+        data: { role: profileRole, account_status: 'active' }, error: null,
       }) }) }) };
     },
     async rpc(method, parameters) {
@@ -53,7 +56,9 @@ async function invokeProvision({ existing = recipient, allowed = true, deliveryE
   });
   const response = await handler(new Request('https://test.invalid', {
     method: 'POST', headers: { Authorization: 'Bearer test' },
-    body: JSON.stringify({ schoolId: school, classId, email: 'student@example.test' }),
+    body: JSON.stringify({
+      schoolId: school, classId, assignmentId: assignment, email: 'student@example.test',
+    }),
   }));
   return { status: response.status, body: await response.json(), calls };
 }
@@ -67,6 +72,7 @@ test('existing student receives a magic enrollment link without exposing its one
   const delivery = result.calls.find((call) => call.method === 'signInWithOtp');
   assert.equal(issue.parameters.p_school, school);
   assert.equal(issue.parameters.p_class, classId);
+  assert.equal(issue.parameters.p_assignment, assignment);
   assert.equal(issue.parameters.p_recipient, recipient);
   assert.equal(delivery.payload.options.shouldCreateUser, false);
   const redirect = new URL(delivery.payload.options.emailRedirectTo);
@@ -93,6 +99,13 @@ test('cross-school or unassigned class denial happens before account or email mu
   assert.equal(result.body.error, 'student_invitation_unavailable');
   assert.equal(result.calls.some((call) => ['inviteUserByEmail', 'signInWithOtp',
     'service_issue_institutional_invitation_14b'].includes(call.method)), false);
+});
+
+test('school admin is denied before lookup, account creation, or email delivery', async () => {
+  const result = await invokeProvision({ profileRole: 'school_admin' });
+  assert.equal(result.status, 403);
+  assert.equal(result.body.error, 'student_invitation_unavailable');
+  assert.equal(result.calls.length, 0);
 });
 
 test('failed existing-account delivery revokes the issued invitation', async () => {
@@ -139,11 +152,20 @@ test('student acceptance hashes the token and uses the atomic database contract'
     createHash('sha256').update(token).digest('hex'));
 });
 
-test('front-end collects only email from admin and private identity fields from student', () => {
+test('front-end places student invitation inside the teacher class and removes it from school admin', () => {
   const adminHtml = readFileSync('web/school-admin.html', 'utf8');
+  const adminJs = readFileSync('web/school-admin.js', 'utf8');
+  const teacherHtml = readFileSync('web/teacher.html', 'utf8');
+  const teacherJs = readFileSync('web/teacher.js', 'utf8');
   const accessHtml = readFileSync('web/account-access.html', 'utf8');
   const accessJs = readFileSync('web/account-access.js', 'utf8');
-  assert.match(adminHtml, /id="studentEmail"/);
+  assert.doesNotMatch(adminHtml, /id="studentPanel"|id="studentEmail"/);
+  assert.doesNotMatch(adminJs, /provision-student-account|get-student-onboarding-options/);
+  assert.match(teacherHtml, /id="institutionalStudentInviteForm"/);
+  assert.match(teacherHtml, /id="institutionalStudentEmail"/);
+  assert.match(teacherHtml, /id="institutionalPendingInvites"/);
+  assert.match(teacherJs, /provision-student-account/);
+  assert.match(teacherJs, /manage-student-invitation/);
   assert.doesNotMatch(adminHtml, /id="studentDisplayName"/);
   assert.match(accessHtml, /id="studentDisplayName"/);
   assert.match(accessHtml, /id="studentPassword"/);
@@ -157,6 +179,7 @@ test('institutional teacher response is roster-only and class-scoped', () => {
   const js = readFileSync('web/teacher.js', 'utf8');
   assert.match(helper, /e\.school_id === assignment\.school_id/);
   assert.match(helper, /e\.subject_program_id === assignment\.subject_program_id/);
+  assert.match(helper, /assignmentId: assignment\.id/);
   assert.match(helper, /displayName/);
   assert.match(html, /id="institutionalRoster"/);
   assert.match(js, /renderInstitutionalRoster/);
@@ -174,7 +197,6 @@ test('migration keeps old evidence unbound and stamps only new unambiguous sessi
   assert.match(sql, /v_active_context_count>0/);
   assert.match(sql, /new\.academic_context_status:='exact'/);
   assert.match(sql, /learning session identity and provenance are immutable after insert/);
-  assert.match(sql, /private\.active_school_admin_14b\(p_actor,p_school\)/);
 });
 
 test('student onboarding options preserve the declared integer grade contract', () => {
@@ -182,4 +204,40 @@ test('student onboarding options preserve the declared integer grade contract', 
   assert.match(sql, /g\.grade_number::integer/);
   assert.match(sql, /student_onboarding_unavailable/);
   assert.match(sql, /grant execute on function public\.service_list_student_onboarding_classes_14c/);
+});
+
+test('teacher-owned invitation correction enforces exact assignment and role boundaries', () => {
+  const sql = readFileSync(
+    'supabase/migrations/20260925214539_sprint_14c_teacher_owned_student_invitations.sql',
+    'utf8',
+  );
+  assert.match(sql, /service_authorize_student_invite_14c\([\s\S]*p_assignment uuid/);
+  assert.match(sql, /a\.id=p_assignment/);
+  assert.match(sql, /tm\.person_id=p_actor/);
+  assert.match(sql, /p\.role='teacher'/);
+  assert.match(sql, /if p_role='student'/);
+  assert.match(sql, /if p_class is null or p_assignment is null/);
+  assert.match(sql, /if p_role='student'[\s\S]*invitation_not_authorized/);
+  assert.match(sql, /v_inv\.invited_role='student' and not v_issuer_teacher/);
+  assert.match(sql, /v_inv\.invited_role='teacher' and not v_issuer_admin/);
+  assert.doesNotMatch(sql, /active_school_admin_14b\(p_actor,p_school\)[\s\S]{0,300}p_role='student'/);
+});
+
+test('teacher invitation manager lists no tokens and revokes only within the exact assignment', () => {
+  const source = readFileSync('supabase/functions/manage-student-invitation/index.ts', 'utf8');
+  assert.match(source, /profile\?\.role !== "teacher"/);
+  assert.match(source, /service_authorize_student_invite_14c/);
+  assert.match(source, /p_assignment: assignmentId/);
+  assert.match(source, /\.eq\("issued_by", actor\)/);
+  assert.match(source, /\.eq\("teacher_assignment_id", assignmentId\)/);
+  assert.match(source, /service_revoke_institutional_invitation_14b/);
+  assert.doesNotMatch(source, /token_digest|token:/);
+});
+
+test('canonical roadmap records the teacher-owned student invitation boundary', () => {
+  const roadmap = readFileSync('docs/sprint-roadmap.md', 'utf8');
+  assert.match(roadmap, /Student invitation actor boundary/);
+  assert.match(roadmap, /school admin invites and authorizes teachers/);
+  assert.match(roadmap, /teacher issues student invitations from inside the exact assigned class/);
+  assert.match(roadmap, /school admin may inspect tenant-scoped institutional rosters but does not issue ordinary student invitations/);
 });

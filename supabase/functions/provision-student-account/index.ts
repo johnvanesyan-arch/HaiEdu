@@ -39,7 +39,7 @@ Deno.serve(async (req) => {
     }
     const { data: profile, error: profileError } = await admin.from("profiles")
       .select("role,account_status").eq("id", actor).maybeSingle();
-    if (profileError || profile?.role !== "school_admin" || profile.account_status !== "active") {
+    if (profileError || profile?.role !== "teacher" || profile.account_status !== "active") {
       return json({ error: "student_invitation_unavailable" }, 403);
     }
 
@@ -47,14 +47,16 @@ Deno.serve(async (req) => {
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
     const schoolId = body.schoolId;
     const classId = body.classId;
+    const assignmentId = body.assignmentId;
     const email = typeof body.email === "string" ? body.email.trim().toLowerCase() : "";
     if (!uuid.test(String(schoolId)) || !uuid.test(String(classId))
+        || !uuid.test(String(assignmentId))
         || email.length < 3 || email.length > 320 || !emailPattern.test(email)) {
       return json({ error: "invalid_student_invitation" }, 400);
     }
     const { data: allowed, error: allowedError } = await admin.rpc(
       "service_authorize_student_invite_14c",
-      { p_actor: actor, p_school: schoolId, p_class: classId },
+      { p_actor: actor, p_school: schoolId, p_class: classId, p_assignment: assignmentId },
     );
     if (allowedError || allowed !== true) {
       return json({ error: "student_invitation_unavailable" }, 403);
@@ -90,7 +92,7 @@ Deno.serve(async (req) => {
     const { data: issued, error: issueError } = await admin.rpc(
       "service_issue_institutional_invitation_14b", {
         p_actor: actor, p_recipient: recipientId, p_school: schoolId,
-        p_role: "student", p_class: classId, p_assignment: null,
+        p_role: "student", p_class: classId, p_assignment: assignmentId,
         p_token_digest: digest, p_expires_at: expiresAt,
       },
     );

@@ -66,7 +66,7 @@
       <section id="institutionalTeacherNotice" class="card hidden" role="status">
         <h2>Դպրոցական դասարանների կառավարում</h2>
         <p id="institutionalTeacherNoticeText">Դպրոցի ադմինիստրատորը նախ պետք է բացի ընթացիկ ուսումնական տարին։ Այնուհետև կարող եք դասարան ստեղծել ձեր հաստատված առարկայով և հրապարակված ծրագրով։</p>
-        <p class="subtle">Դպրոցի ադմինիստրատորը հրավիրում և դասարանին է միացնում աշակերտներին։ Դուք տեսնում եք միայն ձեզ վերագրված դասարանների հաստատված ցուցակները։ Առաջընթացի վերլուծությունը դեռ չի գործարկվել։</p>
+        <p class="subtle">Դուք կարող եք աշակերտ հրավիրել միայն ձեզ վերագրված ակտիվ դասարան։ Դպրոցի ադմինիստրատորը տեսնում է հաստատված ցուցակները, բայց աշակերտների սովորական հրավերներ չի ուղարկում։ Առաջընթացի վերլուծությունը դեռ չի գործարկվել։</p>
       </section>
 
       <section id="teacherLegacyOnboarding" class="card teacher-onboarding-card" aria-labelledby="teacherStartTitle">
@@ -160,9 +160,27 @@
               <button id="institutionalClassToggle" type="button" class="ghost small-button">Արխիվացնել դասարանը</button>
               <p id="institutionalClassMessage" class="message" role="status" aria-live="polite"></p>
             </div>
-            <div class="join-code-box">
-              <strong>Հրավերները կառավարում է դպրոցի ադմինիստրատորը</strong>
-              <p class="subtle small">Այս դասարանի համար հանրային միանալու կոդ չի տրվում։</p>
+            <div class="join-code-box institutional-invite-box">
+              <span class="stat-label">ԱՇԱԿԵՐՏԻ ՀՐԱՎԵՐ</span>
+              <strong>Հրավիրել այս դասարան</strong>
+              <p class="subtle small">Մուտքագրեք միայն աշակերտի էլ. հասցեն։ Հրավերը մեկանգամյա է, ժամկետային և կապված է հենց այս դասարանի ու առարկայի հետ։</p>
+              <form id="institutionalStudentInviteForm" class="institutional-invite-form">
+                <label>Աշակերտի էլ. հասցե
+                  <input id="institutionalStudentEmail" type="email" required autocomplete="off" inputmode="email" />
+                </label>
+                <button id="institutionalStudentInviteBtn" type="submit">Ուղարկել հրավերը</button>
+              </form>
+              <p id="institutionalStudentInviteMessage" class="message" role="status" aria-live="polite"></p>
+            </div>
+            <div class="institutional-pending-block">
+              <div class="teacher-section-heading">
+                <div>
+                  <span class="mode-kicker">ՍՊԱՍՎՈՂ ՀՐԱՎԵՐՆԵՐ</span>
+                  <h3>Չընդունված հրավերներ</h3>
+                </div>
+                <button id="refreshInstitutionalInvites" type="button" class="ghost small-button">Թարմացնել</button>
+              </div>
+              <ul id="institutionalPendingInvites" class="institutional-invitation-list"></ul>
             </div>
             <div class="institutional-roster-block">
               <div class="teacher-section-heading">

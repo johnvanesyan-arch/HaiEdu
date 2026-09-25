@@ -166,7 +166,14 @@ function selectClass(id) {
     $("institutionalClassBadge").textContent = klass.isActive ? "Ակտիվ" : "Արխիվացված";
     $("institutionalClassBadge").className = `status-badge ${klass.isActive ? "success" : "neutral"}`;
     $("institutionalClassToggle").textContent = klass.isActive ? "Արխիվացնել դասարանը" : "Վերակտիվացնել դասարանը";
+    $("institutionalStudentInviteBtn").disabled = !klass.isActive;
+    $("institutionalStudentEmail").disabled = !klass.isActive;
+    $("institutionalStudentEmail").value = "";
+    setMessage("institutionalStudentInviteMessage", klass.isActive
+      ? ""
+      : "Արխիվացված դասարանին նոր աշակերտ հրավիրել հնարավոր չէ։", !klass.isActive);
     renderInstitutionalRoster(klass);
+    void loadInstitutionalStudentInvitations(klass);
     return;
   }
 
@@ -213,6 +220,107 @@ function renderInstitutionalRoster(klass) {
     item.append(name);
     list.append(item);
   }
+}
+
+function renderInstitutionalStudentInvitations(invitations) {
+  const list = $("institutionalPendingInvites");
+  list.replaceChildren();
+  if (!invitations.length) {
+    const empty = document.createElement("li");
+    empty.className = "institutional-invitation-empty";
+    empty.textContent = "Այս դասարանի համար սպասվող հրավեր չկա։";
+    list.append(empty);
+    return;
+  }
+  const dateFormat = new Intl.DateTimeFormat("hy-AM", {
+    dateStyle: "medium", timeStyle: "short",
+  });
+  for (const invitation of invitations) {
+    const item = document.createElement("li");
+    const copy = document.createElement("div");
+    copy.className = "institutional-invitation-copy";
+    const email = document.createElement("strong");
+    email.textContent = invitation.email || "Աշակերտի էլ. հասցեն անհասանելի է";
+    const expiry = document.createElement("span");
+    expiry.className = "subtle small";
+    expiry.textContent = `Վավեր է մինչև ${dateFormat.format(new Date(invitation.expiresAt))}`;
+    const revoke = document.createElement("button");
+    revoke.type = "button";
+    revoke.className = "ghost small-button";
+    revoke.textContent = "Չեղարկել";
+    revoke.dataset.revokeInstitutionalInvite = invitation.id;
+    copy.append(email, expiry);
+    item.append(copy, revoke);
+    list.append(item);
+  }
+  list.querySelectorAll("[data-revoke-institutional-invite]").forEach((button) => {
+    button.addEventListener("click", () => revokeInstitutionalStudentInvitation(button));
+  });
+}
+
+async function loadInstitutionalStudentInvitations(klass = selectedClass()) {
+  if (!klass || !dashboard?.institutionalTeacher) return;
+  const requestedClassId = klass.id;
+  const list = $("institutionalPendingInvites");
+  list.innerHTML = '<li class="institutional-invitation-empty">Բեռնվում է…</li>';
+  const { data, error } = await supabase.functions.invoke("manage-student-invitation", {
+    body: {
+      action: "list", schoolId: klass.schoolId, classId: klass.id,
+      assignmentId: klass.assignmentId,
+    },
+  });
+  if (selectedClassId !== requestedClassId) return;
+  if (error || !Array.isArray(data?.invitations)) {
+    list.innerHTML = '<li class="institutional-invitation-empty">Հրավերների ցանկը հասանելի չէ։</li>';
+    return;
+  }
+  renderInstitutionalStudentInvitations(data.invitations);
+}
+
+async function submitInstitutionalStudentInvitation(event) {
+  event.preventDefault();
+  const klass = selectedClass();
+  if (!klass || !dashboard?.institutionalTeacher || !klass.isActive) return;
+  const button = $("institutionalStudentInviteBtn");
+  const email = $("institutionalStudentEmail").value.trim();
+  button.disabled = true;
+  setMessage("institutionalStudentInviteMessage", "Հրավերն ուղարկվում է…");
+  const { data, error } = await supabase.functions.invoke("provision-student-account", {
+    body: {
+      schoolId: klass.schoolId, classId: klass.id,
+      assignmentId: klass.assignmentId, email,
+    },
+  });
+  button.disabled = false;
+  if (error) {
+    return setMessage("institutionalStudentInviteMessage",
+      "Հրավերը չուղարկվեց։ Ստուգեք հասցեն և դասարանի ձեր գործող նշանակումը։", true);
+  }
+  $("institutionalStudentEmail").value = "";
+  setMessage("institutionalStudentInviteMessage", data?.accountState === "existing"
+    ? "Հրավերն ուղարկվել է աշակերտի գործող հաշվին։"
+    : "Հրավերն ուղարկվել է։ Աշակերտը ինքնուրույն կսահմանի իր գաղտնաբառը։");
+  await loadInstitutionalStudentInvitations(klass);
+}
+
+async function revokeInstitutionalStudentInvitation(button) {
+  const klass = selectedClass();
+  const invitationId = button?.dataset?.revokeInstitutionalInvite;
+  if (!klass || !invitationId || !klass.isActive) return;
+  if (!window.confirm("Չեղարկե՞լ այս աշակերտի սպասվող հրավերը։")) return;
+  button.disabled = true;
+  const { data, error } = await supabase.functions.invoke("manage-student-invitation", {
+    body: {
+      action: "revoke", invitationId, schoolId: klass.schoolId,
+      classId: klass.id, assignmentId: klass.assignmentId,
+    },
+  });
+  if (error || data?.revoked !== true) {
+    button.disabled = false;
+    return setMessage("institutionalStudentInviteMessage", "Հրավերը չեղարկելը չհաջողվեց։", true);
+  }
+  setMessage("institutionalStudentInviteMessage", "Հրավերը չեղարկված է։");
+  await loadInstitutionalStudentInvitations(klass);
 }
 
 function matrixCell(skill) {
@@ -554,6 +662,8 @@ $("copyInviteBtn").addEventListener("click", copyInviteLink);
 $("rotateCodeBtn").addEventListener("click", rotateCode);
 $("toggleClassBtn").addEventListener("click", toggleClassStatus);
 $("institutionalClassToggle").addEventListener("click", toggleInstitutionalClassStatus);
+$("institutionalStudentInviteForm").addEventListener("submit", submitInstitutionalStudentInvitation);
+$("refreshInstitutionalInvites").addEventListener("click", () => loadInstitutionalStudentInvitations());
 $("closeDrawerBtn").addEventListener("click", closeDrawer);
 $("drawerBackdrop").addEventListener("click", closeDrawer);
 $("studentSearchInput").addEventListener("input", (event) => {

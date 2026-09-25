@@ -128,6 +128,9 @@ export async function getInstitutionalTeacherDashboard(
       && studentById.get(e.student_id)?.account_status === "active");
     return [{
       id: klass.id, name: klass.name, isActive: klass.is_active && yearIsActive,
+      schoolId: assignment.school_id,
+      assignmentId: assignment.id,
+      subjectProgramId: assignment.subject_program_id,
       academicYear: year.label, schoolName: schoolById.get(klass.school_id)?.name ?? "",
       subjectName: subjectById.get(klass.subject_id)?.name_hy ?? "",
       gradeNumber: Number(gradeById.get(klass.grade_id)?.grade_number ?? 0),
