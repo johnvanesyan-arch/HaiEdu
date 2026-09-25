@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.42  
+**Roadmap version:** 2.43  
 **Updated:** 2026-09-25  
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed, and 14B now includes account/provisioning/recovery controls plus an authenticated school-admin operational overview backed by authoritative tenant-scoped data. Student roster provisioning, context-scoped learner evidence, remaining offboarding/last-admin controls and the two-school isolation gate remain open. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
@@ -640,9 +640,10 @@ Before Sprint 14 closes, verify that the implemented foundations can support cur
 
 **Status: ✅ deployed and authenticated production-render verified; Sprint 14 remains open.**
 
-- GitHub implementation commit: `5fabdb415c98d557bc5bfc5641d571bf549e9d4a`.
+- GitHub merge commit: `e95cce0034fe8e737b64bbd3c833c729063482a5` (approved workspace PR #22).
 - Added read-only `get-school-admin-overview` Edge Function v1 with live-session validation and role/tenant-derived authorization.
-- Rebuilt the school-admin surface around real operational counts and a teacher → class → student hierarchy.
+- Restored the approved HaiEdu school workspace—brand sidebar, header, summary cards and quick actions—and placed the teacher → class → student hierarchy in the intended lower overview area. The operational hierarchy is an extension of the approved dashboard, not a replacement shell.
+- CI #849 passed all 391 checks and the Vercel production deployment succeeded.
 - Authenticated production rendering passed with the live school-admin account: 1 teacher, 1 class, 0 enrolled students and 1 authorized subject.
 - Performance analytics remain explicitly gated. No score, progress or intervention metric is shown until Sprint 14C establishes trustworthy context-scoped learner evidence.
 - Existing test data needs cleanup: class name `Math 7A` is currently paired with the authoritative Physics subject assignment.
