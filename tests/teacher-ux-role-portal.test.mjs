@@ -14,7 +14,7 @@ test("public entry shows three roles with a shared sign-in and student registrat
   assert.match(publicEntry, /href="\.\/account-access"/);
   assert.match(publicEntry, /href="\.\/account-access\?view=register"/);
   const studentCard = publicEntry.match(/<article><span>01<\/span>[\s\S]*?<\/article>/)?.[0] ?? "";
-  assert.match(studentCard, /href="\\.\\/account-access">Մուտք գործել<\\/a>/);
+  assert.match(studentCard, /href="\.\/account-access">Մուտք գործել<\/a>/);
   assert.ok(studentCard.indexOf('href="./account-access"') < studentCard.indexOf('href="./account-access?view=register"'), "returning student sign-in should be shown before registration");
   assert.match(home, /Նոր աշակերտի հաշիվ ստեղծել/);
   assert.doesNotMatch(home, /id="passwordInput"/);
