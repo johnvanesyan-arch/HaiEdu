@@ -264,3 +264,5 @@
     font-size: .94rem;
   }
 }
+
+.year-list{margin-top:16px;display:grid;gap:8px}.year-list p{margin:0;padding:10px 12px;border:1px solid #dfe6ef;border-radius:10px;background:#f8fbff}
