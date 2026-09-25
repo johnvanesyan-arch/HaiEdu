@@ -52,7 +52,7 @@ test("archived roles stay blocked and visible on demand", async () => {
   assert.match(endpoint, /unarchive.*"suspended"/s);
   assert.match(endpoint, /cannot_change_own_status/);
   assert.match(ui, /accountStatus === "archived"/);
-  assert.match(ui, /archivedUsersBtn/);
+  assert.match(ui, /archiveSection/);
 });
 
 test("permanent deletion checks academic links and keeps student review separate", async () => {

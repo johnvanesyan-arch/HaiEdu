@@ -27,5 +27,6 @@ test("each auth surface reveals the correct state after session resolution", asy
   assert.match(app, /getSession\(\)[\s\S]*setAuthenticated\(Boolean\(sessionData\.session\)\)/);
   assert.match(teacher, /onAuthStateChange[\s\S]*authPanel[\s\S]*classList\.remove\("hidden"\)/);
   assert.match(content, /showForSession\(session\)[\s\S]*authPanel[\s\S]*classList\.remove\("hidden"\)/);
-  assert.match(admin, /onAuthStateChange[\s\S]*authPanel[\s\S]*classList\.remove\("hidden"\)/);
+  assert.match(admin, /async function enterConsole[\s\S]*!session[\s\S]*authPanel[\s\S]*classList\.remove\("hidden"\)/);
+  assert.match(admin, /onAuthStateChange[\s\S]*enterConsole\(session\)/);
 });

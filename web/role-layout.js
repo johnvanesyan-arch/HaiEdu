@@ -22,18 +22,37 @@ const configs = {
   platformSchools: {
     gate: "masterPanel", label: "Հարթակի ադմին", links: [
       ["Գլխավոր", "./admin.html"],
-      ["Դպրոցներ", "./school-admin.html", "home"],
-      ["Հաշիվներ և դերեր", "./admin.html#usersSection"],
-      ["Աուդիտ", "./admin.html#auditSection"]
+      ["Դպրոցի հրավեր", "./school-admin.html", "home"],
+      ["Դպրոցների կառավարում", "./admin.html#schoolsSection"],
+      ["Հաշիվներ և դերեր", "./admin.html#accountsSection"],
+      ["Արխիվ", "./admin.html#archiveSection"],
+      ["Ջնջման հարցումներ", "./admin.html#deletionsSection"],
+      ["Աուդիտ", "./admin.html#auditSection"],
+      ["Անվտանգություն", "./admin-security.html"]
     ]
   },
   platform: {
     gate: "console", label: "Հարթակի ադմին", links: [
       ["Գլխավոր", "./admin.html", "home"],
-      ["Դպրոցներ", "./school-admin.html"],
-      ["Հաշիվներ և դերեր", "#usersSection"],
+      ["Դպրոցի հրավեր", "./school-admin.html"],
+      ["Դպրոցների կառավարում", "#schoolsSection"],
+      ["Հաշիվներ և դերեր", "#accountsSection"],
+      ["Արխիվ", "#archiveSection"],
       ["Ջնջման հարցումներ", "#deletionsSection"],
-      ["Աուդիտ", "#auditSection"]
+      ["Աուդիտ", "#auditSection"],
+      ["Անվտանգություն", "./admin-security.html"]
+    ]
+  },
+  platformSecurity: {
+    gate: "securityConsole", label: "Հարթակի ադմին", links: [
+      ["Գլխավոր", "./admin.html"],
+      ["Դպրոցի հրավեր", "./school-admin.html"],
+      ["Դպրոցների կառավարում", "./admin.html#schoolsSection"],
+      ["Հաշիվներ և դերեր", "./admin.html#accountsSection"],
+      ["Արխիվ", "./admin.html#archiveSection"],
+      ["Ջնջման հարցումներ", "./admin.html#deletionsSection"],
+      ["Աուդիտ", "./admin.html#auditSection"],
+      ["Անվտանգություն", "./admin-security.html", "home"]
     ]
   },
   content: {
@@ -73,6 +92,25 @@ function syncSchoolSections() {
   }
 }
 
+function syncPlatformSections() {
+  if (page !== "platform") return;
+  const sidebar = document.querySelector(".hm-role-sidebar");
+  if (sidebar?.dataset.workspace !== configs.platform.label) return;
+  const views = ["overviewSection", "schoolsSection", "accountsSection", "archiveSection", "deletionsSection", "auditSection"];
+  const requested = window.location.hash.slice(1);
+  const selected = views.includes(requested) ? requested : "overviewSection";
+  for (const id of views) {
+    const section = document.getElementById(id);
+    if (section) section.hidden = selected !== id;
+  }
+  for (const link of sidebar.querySelectorAll(".hm-role-nav a")) {
+    const href = link.getAttribute("href");
+    const current = selected === "overviewSection" ? href === "./admin.html" : href === `#${selected}`;
+    if (current) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  }
+}
+
 function syncRoleSidebar() {
   const config = currentConfig();
   const gate = config && document.getElementById(config.gate);
@@ -84,7 +122,7 @@ function syncRoleSidebar() {
     document.querySelector(".hm-role-chip")?.remove();
     return;
   }
-  if (sidebar?.dataset.workspace === config.label) { syncSchoolSections(); return; }
+  if (sidebar?.dataset.workspace === config.label) { syncSchoolSections(); syncPlatformSections(); return; }
   sidebar?.remove();
   document.querySelector(".hm-role-chip")?.remove();
   sidebar = document.createElement("aside");
@@ -137,16 +175,19 @@ function syncRoleSidebar() {
   const topbar = document.querySelector(".teacher-topbar, .school-admin-header, .admin-topbar, .content-topbar");
   topbar?.append(chip);
   syncSchoolSections();
+  syncPlatformSections();
 }
 
-const gates = ["dashboardPanel", "masterPanel", "overviewPanel", "teacherPanel", "console"]
+const gates = ["dashboardPanel", "masterPanel", "overviewPanel", "teacherPanel", "console", "securityConsole"]
   .map(id => document.getElementById(id)).filter(Boolean);
 const observer = new MutationObserver(syncRoleSidebar);
 gates.forEach(gate => observer.observe(gate, { attributes: true, attributeFilter: ["class"] }));
 syncRoleSidebar();
 window.addEventListener("hashchange", () => {
   syncSchoolSections();
+  syncPlatformSections();
   if (page === "school" && document.querySelector(".hm-role-sidebar")?.dataset.workspace === configs.school.label) {
     window.scrollTo({ top: 0, behavior: "auto" });
   }
+  if (page === "platform") window.scrollTo({ top: 0, behavior: "auto" });
 });

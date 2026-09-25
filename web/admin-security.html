@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Master admin անվտանգություն — HaiEdu</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./admin.css" />
+  <link rel="stylesheet" href="./admin-security.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
+</head>
+<body data-role-workspace="platformSecurity">
+  <main class="admin-shell" id="mainContent">
+    <header class="admin-topbar">
+      <div><p class="eyebrow">MASTER ADMIN · ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ</p><h1>Մուտք և վերականգնում</h1><p class="subtle">Երկրորդ գործոնը պաշտպանում է դպրոցների և հաշիվների կառավարման գործողությունները։</p></div>
+      <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
+    </header>
+
+    <section id="authPanel" class="card admin-auth hidden">
+      <h2>Մուտք գործեք master admin հաշվով</h2>
+      <a class="button-link" href="./account-access.html">Մուտք գործել</a>
+      <p id="authMessage" class="message" aria-live="polite"></p>
+    </section>
+
+    <section id="securityConsole" class="security-layout hidden">
+      <section class="card security-status-card">
+        <div><span class="mode-kicker">ԸՆԹԱՑԻԿ ՊԱՇՏՊԱՆՈՒԹՅՈՒՆ</span><h2 id="securityState">Ստուգվում է…</h2><p id="securitySummary" class="subtle"></p></div>
+        <span id="aalBadge" class="security-badge">—</span>
+      </section>
+
+      <section id="challengePanel" class="card admin-card hidden">
+        <span class="mode-kicker">ՄՈՒՏՔԻ ՀԱՍՏԱՏՈՒՄ</span>
+        <h2>Մուտքագրեք authenticator-ի կոդը</h2>
+        <p class="subtle">Գաղտնաբառով մուտքն ավարտված է։ Կառավարման աշխատասեղանը բացելու համար հաստատեք երկրորդ գործոնը։</p>
+        <form id="challengeForm" class="security-form">
+          <label><span>Գործոն</span><select id="challengeFactor"></select></label>
+          <label><span>6-նիշ կոդ</span><input id="challengeCode" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required /></label>
+          <button type="submit">Հաստատել և բացել աշխատասեղանը</button>
+        </form>
+      </section>
+
+      <section id="enrollPanel" class="card admin-card hidden">
+        <span class="mode-kicker">ՆՈՐ ՊԱՇՏՊԱՆՈՒԹՅԱՆ ԳՈՐԾՈՆ</span>
+        <h2 id="enrollTitle">Կապել authenticator հավելվածը</h2>
+        <p class="subtle">Օգտագործեք առանձին authenticator հավելված կամ գաղտնաբառերի պաշտպանված կառավարիչ։ Երկրորդ գործոնը պետք է պահվի հիմնականից առանձին վայրում։</p>
+        <button id="startEnrollBtn" type="button">Ստեղծել QR կոդ</button>
+        <div id="enrollmentDetails" class="enrollment-details hidden">
+          <img id="enrollmentQr" alt="Authenticator-ի QR կոդ" />
+          <div><p class="subtle small">Եթե չեք կարող սկանավորել, ձեռքով մուտքագրեք այս գաղտնիքը.</p><code id="enrollmentSecret"></code></div>
+          <form id="enrollVerifyForm" class="security-form compact-form">
+            <label><span>Հավելվածի 6-նիշ կոդ</span><input id="enrollCode" inputmode="numeric" autocomplete="one-time-code" pattern="[0-9]{6}" maxlength="6" required /></label>
+            <button type="submit">Հաստատել գործոնը</button>
+          </form>
+        </div>
+      </section>
+
+      <section id="factorPanel" class="card admin-card hidden">
+        <div class="admin-heading"><div><span class="mode-kicker">ՎԵՐԱԿԱՆԳՆՄԱՆ ՊԱՏՐԱՍՏՎԱԾՈՒԹՅՈՒՆ</span><h2>Կապված գործոններ</h2></div><button id="addBackupBtn" type="button" class="ghost">Ավելացնել պահուստային գործոն</button></div>
+        <p class="subtle">Supabase Auth-ը վերականգնման կոդեր չի տրամադրում։ Պահուստային երկրորդ գործոնը master admin-ի վերականգնման հիմնական միջոցն է։</p>
+        <div id="factorList" class="factor-list"></div>
+      </section>
+
+      <section class="card admin-card recovery-card">
+        <span class="mode-kicker">ՎԵՐԱԿԱՆԳՆՄԱՆ ԿԱՆՈՆՆԵՐ</span>
+        <h2>Հաշվի կորուստ կամ փոխարինում</h2>
+        <ol>
+          <li>Գաղտնաբառը վերականգնվում է միայն հաստատված էլ. հասցեով, ապա պահանջվում է MFA։</li>
+          <li>Կորած հիմնական գործոնի դեպքում օգտագործվում է պահուստային գործոնը։</li>
+          <li>Բոլոր գործոնների կորստի դեպքում վերականգնումը կատարում է երկրորդ ակտիվ master admin-ը կամ փաստաթղթավորված Supabase owner ընթացակարգը։</li>
+          <li>Վերականգնումից հետո հին սեսիաները չեղարկվում են, գաղտնաբառը փոխվում է և MFA-ն վերակապվում է։</li>
+          <li>Master admin հաշիվը չի ջնջվում. պատասխանատվությունը փոխանցելուց հետո այն կարող է միայն դադարեցվել կամ փոխել դերը։</li>
+        </ol>
+        <a class="ghost button-link" href="./account-access.html">Գաղտնաբառի վերականգնում</a>
+      </section>
+      <p id="securityMessage" class="message" aria-live="polite"></p>
+    </section>
+  </main>
+  <script type="module" src="./admin-security.js"></script>
+  <script type="module" src="./ux.js"></script>
+  <script type="module" src="./role-layout.js"></script>
+</body>
+</html>

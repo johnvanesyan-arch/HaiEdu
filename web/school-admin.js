@@ -16,8 +16,13 @@ function message(id, text, error = false) {
 
 async function emailLimitExceeded(error) {
   if (error?.context?.status !== 429) return false;
-  try { return (await error.context.json())?.error === "email_rate_limited"; }
+  try { return (await error.context.clone().json())?.error === "email_rate_limited"; }
   catch { return false; }
+}
+
+async function functionErrorCode(error) {
+  try { return (await error?.context?.clone().json())?.error || ""; }
+  catch { return ""; }
 }
 
 function setButtonBusy(button, busy, busyText) {
@@ -71,6 +76,11 @@ async function invite(kind, values, messageId, form) {
   }
 
   if (error) {
+    if (await functionErrorCode(error) === "mfa_required") {
+      message(messageId, "Master admin գործողությունների համար անհրաժեշտ է հաստատել MFA-ն։", true);
+      window.setTimeout(() => location.assign("./admin-security.html"), 700);
+      return;
+    }
     if (await emailLimitExceeded(error))
       return message(messageId,
         "Հրավերը չուղարկվեց․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։", true);
@@ -517,7 +527,14 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
   $("accountAccessLink").classList.add("hidden");
   $("signOutBtn").classList.remove("hidden");
 
-  if (profile.role === "admin") $("masterPanel").classList.remove("hidden");
+  if (profile.role === "admin") {
+    const { data: assurance } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+    if (assurance?.currentLevel !== "aal2") {
+      location.replace("./admin-security.html");
+    } else {
+      $("masterPanel").classList.remove("hidden");
+    }
+  }
 
   if (profile.role === "school_admin") {
     const { data: schools, error: schoolError } = await supabase.from("schools")
