@@ -194,6 +194,54 @@ async function loadTeacherSubjects(schoolId) {
   return true;
 }
 
+async function loadYears() {
+  const schoolId = $("yearSchool").value;
+  const list = $("yearList");
+  list.replaceChildren();
+  if (!schoolId) return;
+  const { data, error } = await supabase.functions.invoke("manage-school-academic-year", {
+    body: { action: "list", schoolId },
+  });
+  if (error || !Array.isArray(data?.years)) {
+    message("yearMessage", "Ուսումնական տարիների ցանկը հասանելի չէ։", true);
+    return;
+  }
+  if (!data.years.length) {
+    const empty = document.createElement("p");
+    empty.className = "subtle";
+    empty.textContent = "Դեռ բացված ուսումնական տարի չկա։";
+    list.append(empty);
+  }
+  for (const year of data.years) {
+    const item = document.createElement("p");
+    item.textContent = `${year.label} · ${year.starts_on} – ${year.ends_on} · ${year.status === "active" ? "Ակտիվ" : "Փակված"}`;
+    list.append(item);
+  }
+}
+
+$("yearSchool").addEventListener("change", () => { message("yearMessage", ""); loadYears(); });
+$("yearForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const button = event.currentTarget.querySelector("button[type=submit]");
+  setButtonBusy(button, true, "Բացվում է…");
+  message("yearMessage", "");
+  const { data, error } = await supabase.functions.invoke("manage-school-academic-year", {
+    body: {
+      action: "create", schoolId: $("yearSchool").value,
+      label: $("yearLabel").value.trim(), startsOn: $("yearStart").value, endsOn: $("yearEnd").value,
+    },
+  });
+  setButtonBusy(button, false, "Բացվում է…");
+  if (error || !data?.yearId) {
+    message("yearMessage", data?.error === "school_year_overlap"
+      ? "Այս դպրոցի համար այդ ժամանակահատվածում արդեն ակտիվ տարի կա։"
+      : "Ուսումնական տարին չբացվեց։ Ստուգեք ամսաթվերը և թույլտվությունը։", true);
+    return;
+  }
+  message("yearMessage", "Ուսումնական տարին բացվեց։ Ուսուցիչները կարող են ստեղծել համապատասխան դասարաններ։");
+  await loadYears();
+});
+
 $("refreshInvitesBtn").addEventListener("click", loadPendingInvites);
 $("schoolForm").addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -241,13 +289,15 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
     if (schoolError || !schools?.length) {
       $("denied").classList.remove("hidden");
     } else {
-      for (const school of schools) $("teacherSchool").add(new Option(school.name, school.id));
-      const subjectsLoaded = await loadTeacherSubjects(schools[0].id);
-      if (subjectsLoaded) {
-        $("teacherPanel").classList.remove("hidden");
-      } else {
-        $("denied").classList.remove("hidden");
+      for (const school of schools) {
+        $("teacherSchool").add(new Option(school.name, school.id));
+        $("yearSchool").add(new Option(school.name, school.id));
       }
+      $("yearPanel").classList.remove("hidden");
+      await loadYears();
+      const subjectsLoaded = await loadTeacherSubjects(schools[0].id);
+      $("teacherPanel").classList.remove("hidden");
+      if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
     }
   }
 
