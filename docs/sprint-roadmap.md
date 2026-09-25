@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.41  
+**Roadmap version:** 2.42  
 **Updated:** 2026-09-25  
-**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed and 14B account/provisioning/recovery controls are on `main`; rendered production re-verification, context-scoped learner evidence and the two-school isolation gate remain open. The formal Grade 7 MVP is now a four-subject gate: Physics, Mathematics, Armenian Language and English.
+**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed, and 14B now includes account/provisioning/recovery controls plus an authenticated school-admin operational overview backed by authoritative tenant-scoped data. Student roster provisioning, context-scoped learner evidence, remaining offboarding/last-admin controls and the two-school isolation gate remain open. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -103,7 +103,7 @@ For the current Sprint 11 state:
 | 12 | Learning-Model Calibration | ✅ | 12A.1–12A.5 complete; 12B reviewed the feasibility evidence and recorded an immutable deferred/no-change disposition. No learning parameter changed. |
 | 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | ✅ | Complete. 12.5A–Z, lifecycle branches, persisted MCQ randomization, authenticated desktop QA and authenticated mobile learner/teacher QA at 390 px and 430 px all pass. Production Mobile browser QA #2 passed on GitHub head `0c56fa8`. |
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
-| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed; 14B staff-account/subject provisioning, recovery, invitation controls and school-account-console QA polish are on `main`. The user reports a successful student password change. Authenticated production re-render, staff recipient QA, safe reissue, student roster provisioning, context-scoped learner evidence and the two-school gate remain open. |
+| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed. 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed. The overview renders authoritative teacher → class → student structure without exposing untrusted performance analytics. Student roster provisioning, context-scoped learner evidence, remaining offboarding/last-admin controls and the two-school isolation gate remain open. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
 | 16 | Physics 7 Reference Course Integration | ⏳ | Integrate the complete Physics 7 reference course and preserve unit-bound diagnostics/mastery with course-level aggregation. |
 | 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
@@ -635,6 +635,18 @@ This is a Sprint 14 release gate.
 ### Architecture readiness checkpoint
 
 Before Sprint 14 closes, verify that the implemented foundations can support curriculum/question versioning, evidence confidence/uncertainty and model provenance, multi-tenant IAM/audit, academic-year rollover/teacher handover, and historical data-integrity checks **without redesigning the core identity/evidence model**. This is a release checkpoint inside Sprint 14, not a separate sprint.
+
+### 14B school-admin operational overview checkpoint — 2026-09-25
+
+**Status: ✅ deployed and authenticated production-render verified; Sprint 14 remains open.**
+
+- GitHub implementation commit: `5fabdb415c98d557bc5bfc5641d571bf549e9d4a`.
+- Added read-only `get-school-admin-overview` Edge Function v1 with live-session validation and role/tenant-derived authorization.
+- Rebuilt the school-admin surface around real operational counts and a teacher → class → student hierarchy.
+- Authenticated production rendering passed with the live school-admin account: 1 teacher, 1 class, 0 enrolled students and 1 authorized subject.
+- Performance analytics remain explicitly gated. No score, progress or intervention metric is shown until Sprint 14C establishes trustworthy context-scoped learner evidence.
+- Existing test data needs cleanup: class name `Math 7A` is currently paired with the authoritative Physics subject assignment.
+- Next slice: student roster provisioning plus class/subject/year-bound learner evidence and negative tenant-isolation tests.
 
 ## Sprint 15 — Grade 7 Physics Expansion — Chapters II–VI
 
