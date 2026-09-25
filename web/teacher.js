@@ -119,7 +119,14 @@ async function loadDashboard() {
 function renderClassList() {
   const list = $("classList");
   list.innerHTML = "";
-  for (const klass of dashboard?.classes ?? []) {
+  const archivedList = $("archivedClassList");
+  archivedList.innerHTML = "";
+  const classes = dashboard?.classes ?? [];
+  const archived = classes.filter((klass) => !klass.isActive);
+  $("archivedClasses").classList.toggle("hidden", archived.length === 0);
+  $("archivedClassCount").textContent = String(archived.length);
+  if (archived.some((klass) => klass.id === selectedClassId)) $("archivedClasses").open = true;
+  for (const klass of classes) {
     const btn = document.createElement("button");
     btn.className = `teacher-class-button${klass.id === selectedClassId ? " active" : ""}${klass.isActive ? "" : " archived"}`;
     btn.type = "button";
@@ -128,12 +135,14 @@ function renderClassList() {
       <span>${escapeHtml(klass.academicYear ?? "")}</span>
       <span class="class-list-meta"><span>${klass.studentCount} աշակերտ</span><span class="class-list-status">${klass.isActive ? "Ակտիվ" : "Արխիվացված"}</span></span>`;
     btn.addEventListener("click", () => selectClass(klass.id));
-    list.appendChild(btn);
+    (klass.isActive ? list : archivedList).appendChild(btn);
   }
-  if (!list.children.length) {
+  if (!classes.length) {
     list.innerHTML = dashboard?.institutionalTeacher
       ? '<div class="teacher-empty-state"><strong>Դպրոցի դասարանները դեռ հասանելի չեն</strong><p class="subtle small">Դպրոցական դասարանների մուտքը կբացվի համապատասխան թույլտվությունների ստուգումից հետո։</p></div>'
       : '<div class="teacher-empty-state"><strong>Դասարան դեռ չկա</strong><p class="subtle small">Ստեղծեք ձեր առաջին դասարանը, հետո աշակերտներին տվեք միանալու կոդը։</p><a class="button-link" href="#createClassCard">+ Ստեղծել դասարան</a></div>';
+  } else if (!list.children.length) {
+    list.innerHTML = '<p class="subtle small">Ակտիվ դասարաններ չկան։ Ընտրեք արխիվացված դասարան կամ ստեղծեք նորը։</p>';
   }
 }
 
@@ -161,8 +170,6 @@ function selectClass(id) {
   badge.className = `status-badge ${klass.isActive ? "success" : "neutral"}`;
   $("toggleClassBtn").textContent = klass.isActive ? "Արխիվացնել դասարանը" : "Վերակտիվացնել դասարանը";
 
-  const invite = buildInviteUrl(klass.joinCode);
-  $("openJoinBtn").href = invite || "./join.html";
   $("copyCodeBtn").disabled = !klass.isActive || !klass.joinCode;
   $("copyInviteBtn").disabled = !klass.isActive || !klass.joinCode;
   $("rotateCodeBtn").disabled = !klass.isActive;
@@ -363,8 +370,10 @@ async function openStudent(studentId) {
     <h3>Գլխի կրկնության հմտությունների տվյալներ</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հմտություն</th><th>Դիտարկումներ</th><th>Ինքնուրույն ճիշտ</th><th>Օգնություն օգտագործած</th><th>Սխալ՝ վերջին յուրացման ստուգման ժամանակ</th><th>Վիճակ</th></tr></thead><tbody>${reviewSkills || '<tr><td colspan="6">Գլխի կրկնության բավարար տվյալ դեռ չկա</td></tr>'}</tbody></table></div>
     <h3>Հմտությունների յուրացում</h3><div class="teacher-skill-grid">${skillCards}</div>
-    <h3>Վերջին փորձերը</h3>
-    <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հարց</th><th>Արդյունք</th><th>Օգնություն</th><th>Ժամանակ</th></tr></thead><tbody>${attempts || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>`;
+    <details class="teacher-attempt-details">
+      <summary>Վերջին փորձերը <span class="subtle small">(${data.recentAttempts.length})</span></summary>
+      <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հարց</th><th>Արդյունք</th><th>Օգնություն</th><th>Ժամանակ</th></tr></thead><tbody>${attempts || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
+    </details>`;
 }
 
 function closeDrawer() {
@@ -456,7 +465,6 @@ async function rotateCode() {
   if (error) return setMessage("copyCodeStatus", "Չհաջողվեց ստեղծել նոր կոդ։", true);
   if (klass) klass.joinCode = data.class.join_code;
   $("joinCode").textContent = data.class.join_code;
-  $("openJoinBtn").href = buildInviteUrl(data.class.join_code);
   $("copyCodeStatus").textContent = "Նոր կոդը պատրաստ է։";
 }
 
