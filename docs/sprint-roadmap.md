@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.45  
+**Roadmap version:** 2.46  
 **Updated:** 2026-09-25  
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. A controlled invitation-and-acceptance run, remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence and the later 14C evidence UI/API work remain open. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
@@ -581,6 +581,18 @@ Production-compatible enrollment must support controlled paths such as:
 - school-membership requirement before joining restricted classes where configured.
 
 Open account creation, if retained, must not grant school or course access automatically.
+
+### Student invitation actor boundary
+
+The authorized chain is platform admin → school admin → teacher → student:
+
+- the school admin invites and authorizes teachers;
+- an actively assigned teacher issues student invitations from inside the exact assigned class;
+- each student invitation is bound to that teacher's active school, academic year, class and subject programme assignment;
+- invitations remain single-use, expiring and revocable, and the student chooses their own password;
+- the school admin may inspect tenant-scoped institutional rosters but does not issue ordinary student invitations.
+
+Any change to this actor boundary requires an explicit approved roadmap decision before implementation.
 
 ### Central content governance
 
