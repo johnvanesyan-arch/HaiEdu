@@ -13,7 +13,9 @@ const configs = {
   school: {
     gate: "teacherPanel", label: "Դպրոցի ադմին", links: [
       ["Գլխավոր", "./school-admin.html", "home"],
-      ["Ուսուցիչների հրավերներ", "#teacherPanel"],
+      ["Ուսումնական տարի", "#yearPanel"],
+      ["Ուսուցիչներ", "#teachersPanel"],
+      ["Ուսուցչի հրավեր", "#teacherPanel"],
       ["Սպասվող հրավերներ", "#pendingPanel"]
     ]
   },
@@ -51,6 +53,25 @@ function currentConfig() {
   return configs[page];
 }
 
+function syncSchoolSections() {
+  if (page !== "school") return;
+  const sidebar = document.querySelector(".hm-role-sidebar");
+  if (sidebar?.dataset.workspace !== configs.school.label) return;
+  const views = ["yearPanel", "teachersPanel", "teacherPanel", "pendingPanel"];
+  const requested = window.location.hash.slice(1);
+  const selected = views.includes(requested) ? requested : null;
+  for (const id of views) {
+    const section = document.getElementById(id);
+    if (section) section.hidden = Boolean(selected && selected !== id);
+  }
+  for (const link of sidebar.querySelectorAll(".hm-role-nav a")) {
+    const current = selected ? link.getAttribute("href") === `#${selected}`
+      : link.getAttribute("href") === "./school-admin.html";
+    if (current) link.setAttribute("aria-current", "page");
+    else link.removeAttribute("aria-current");
+  }
+}
+
 function syncRoleSidebar() {
   const config = currentConfig();
   const gate = config && document.getElementById(config.gate);
@@ -62,7 +83,7 @@ function syncRoleSidebar() {
     document.querySelector(".hm-role-chip")?.remove();
     return;
   }
-  if (sidebar?.dataset.workspace === config.label) return;
+  if (sidebar?.dataset.workspace === config.label) { syncSchoolSections(); return; }
   sidebar?.remove();
   document.querySelector(".hm-role-chip")?.remove();
   sidebar = document.createElement("aside");
@@ -105,6 +126,7 @@ function syncRoleSidebar() {
   chip.textContent = config.label;
   const topbar = document.querySelector(".teacher-topbar, .school-admin-header, .admin-topbar, .content-topbar");
   topbar?.append(chip);
+  syncSchoolSections();
 }
 
 const gates = ["dashboardPanel", "masterPanel", "teacherPanel", "console"]
@@ -112,3 +134,9 @@ const gates = ["dashboardPanel", "masterPanel", "teacherPanel", "console"]
 const observer = new MutationObserver(syncRoleSidebar);
 gates.forEach(gate => observer.observe(gate, { attributes: true, attributeFilter: ["class"] }));
 syncRoleSidebar();
+window.addEventListener("hashchange", () => {
+  syncSchoolSections();
+  if (page === "school" && document.querySelector(".hm-role-sidebar")?.dataset.workspace === configs.school.label) {
+    window.scrollTo({ top: 0, behavior: "auto" });
+  }
+});
