@@ -30,6 +30,20 @@ body.amp-student-shell-active .amp-nav-link { color: var(--hm-muted); }
 body.amp-student-shell-active .amp-nav-link:hover { background: var(--hm-bg); color: var(--hm-blue); }
 body.amp-student-shell-active .amp-nav-link[aria-current="page"] { background: var(--hm-soft); color: var(--hm-blue); box-shadow: none; }
 body.amp-student-shell-active .amp-nav-disabled:hover { color: var(--hm-muted); background: transparent; }
+body.amp-student-shell-active .amp-nav-section-label { color: var(--hm-muted); }
+body.amp-student-shell-active .amp-course-sublink {
+  color: #46607c;
+  font-weight: 600;
+}
+body.amp-student-shell-active .amp-course-sublink:hover {
+  color: var(--hm-blue);
+  background: var(--hm-bg);
+}
+body.amp-student-shell-active .amp-course-sublink[aria-current="page"] {
+  color: var(--hm-blue);
+  background: var(--hm-soft);
+  font-weight: 750;
+}
 body.amp-student-shell-active .amp-nav-utility { border-top-color: var(--hm-line); }
 body.amp-student-shell-active .amp-nav-utility a { color: var(--hm-blue); }
 body.amp-student-shell-active .topbar {
