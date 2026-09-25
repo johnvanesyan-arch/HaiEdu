@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.44  
+**Roadmap version:** 2.45  
 **Updated:** 2026-09-25  
-**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed, and 14B now includes account/provisioning/recovery controls plus an authenticated school-admin operational overview backed by authoritative tenant-scoped data. Student roster provisioning, context-scoped learner evidence, remaining offboarding/last-admin controls and the two-school isolation gate remain open. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
+**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. A controlled invitation-and-acceptance run, remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence and the later 14C evidence UI/API work remain open. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -103,7 +103,7 @@ For the current Sprint 11 state:
 | 12 | Learning-Model Calibration | ✅ | 12A.1–12A.5 complete; 12B reviewed the feasibility evidence and recorded an immutable deferred/no-change disposition. No learning parameter changed. |
 | 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | ✅ | Complete. 12.5A–Z, lifecycle branches, persisted MCQ randomization, authenticated desktop QA and authenticated mobile learner/teacher QA at 390 px and 430 px all pass. Production Mobile browser QA #2 passed on GitHub head `0c56fa8`. |
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
-| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed. 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed. The approved Teachers workflow exposes authoritative teacher → class → student structure without embedding it in the overview or exposing untrusted performance analytics. Student roster provisioning, context-scoped learner evidence, remaining offboarding/last-admin controls and the two-school isolation gate remain open. |
+| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed. 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed. The approved Teachers workflow exposes authoritative teacher → class → student structure. The 14C school-scoped invitation/enrollment, exact learning-session context and assigned-class roster foundation is deployed; controlled invitation acceptance, remaining offboarding/last-admin controls, authenticated two-school mutual denial and later evidence UI/API work remain open. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
 | 16 | Physics 7 Reference Course Integration | ⏳ | Integrate the complete Physics 7 reference course and preserve unit-bound diagnostics/mastery with course-level aggregation. |
 | 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
@@ -648,7 +648,12 @@ Before Sprint 14 closes, verify that the implemented foundations can support cur
 - Production evidence currently contains 1 teacher, 1 class, 0 enrolled students and 1 authorized subject; the expanded class correctly shows the empty-roster state.
 - Performance analytics remain explicitly gated. No score, progress or intervention metric is shown until Sprint 14C establishes trustworthy context-scoped learner evidence.
 - Existing test data needs cleanup: class name `Math 7A` is currently paired with the authoritative Physics subject assignment.
-- Next slice: student roster provisioning plus class/subject/year-bound learner evidence and negative tenant-isolation tests.
+- 14C foundation deployed in PRs #25–#27: email-only school-admin learner invitation, exact school/year/class/teacher-assignment/subject-programme enrollment, assigned-class teacher roster, immutable institutional session context, and automated negative cross-school authorization coverage.
+- Historical evidence remains explicit: all 58 pre-existing sessions are `unbound_legacy`; no legacy row was falsely backfilled.
+- Automated suite passes 106/106; production migrations `0108`–`0110`, Edge Functions and Vercel deployments are live.
+- The narrow Supabase Auth student-invitation return URL is allow-listed; no invitation email or learner account was created during deployment verification.
+- Next closure action: send one user-approved controlled invitation, complete acceptance, verify assigned-teacher-only roster visibility and verify exact context on the first post-enrollment session.
+- Still open after that closure action: remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence, teacher chapter selection, student evidence drawer/API work and later trustworthy analytics.
 
 ## Sprint 15 — Grade 7 Physics Expansion — Chapters II–VI
 
