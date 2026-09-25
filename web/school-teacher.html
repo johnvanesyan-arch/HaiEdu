@@ -1,0 +1,60 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ուսուցչի դասարանները — HaiEdu</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./school-admin.css" />
+  <link rel="stylesheet" href="./school-teacher.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
+</head>
+<body class="school-admin-page" data-role-workspace="schoolTeacher">
+  <main class="shell school-admin-shell" id="mainContent">
+    <header class="topbar school-admin-header">
+      <div class="page-heading">
+        <p class="eyebrow">HAIEDU · ՀԱՇԻՎՆԵՐ</p>
+        <h1>Դպրոցական հաշիվներ</h1>
+        <p class="page-lede">Ուսուցչի դասարանների և աշակերտների դիտում։</p>
+      </div>
+      <div class="row account-actions">
+        <a id="accountAccessLink" class="ghost button-link" href="./account-access">Հաշվի մուտք</a>
+        <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
+      </div>
+    </header>
+
+    <section id="loading" class="card admin-panel status-panel">Բեռնվում է ուսուցչի էջը…</section>
+    <section id="denied" class="card admin-panel status-panel hidden" aria-labelledby="deniedTitle">
+      <h2 id="deniedTitle">Էջը հասանելի չէ</h2>
+      <p id="deniedMessage" class="subtle">Այս ուսուցչի տվյալները հասանելի չեն ձեր դպրոցի հաշվին։</p>
+      <a class="button-link ghost" href="./school-admin.html#teachersPanel">Վերադառնալ ուսուցիչների ցանկին</a>
+    </section>
+
+    <section id="teacherDetailPanel" class="card admin-panel teacher-detail-panel hidden" aria-labelledby="teacherName">
+      <a class="teacher-back-link" href="./school-admin.html#teachersPanel">← Ուսուցիչներ</a>
+      <div class="teacher-profile-header">
+        <div>
+          <p class="panel-kicker">Ուսուցչի էջ</p>
+          <h2 id="teacherName">Ուսուցիչ</h2>
+          <p id="teacherEmail" class="teacher-profile-email"></p>
+          <div id="teacherSubjects" class="teacher-subjects" aria-label="Հաստատված առարկաներ"></div>
+        </div>
+        <span id="schoolName" class="teacher-school-badge"></span>
+      </div>
+
+      <div class="teacher-classes-heading">
+        <div>
+          <p class="panel-kicker">Դասավանդման կառուցվածք</p>
+          <h3>Ուսուցչի դասարանները</h3>
+        </div>
+        <p class="subtle">Սեղմեք դասարանի կամ դասարանի մակարդակի վրա՝ աշակերտների ցանկը բացելու համար։</p>
+      </div>
+      <p id="detailMessage" class="message" role="status" aria-live="polite"></p>
+      <div id="teacherClasses" class="teacher-class-accordions"></div>
+    </section>
+  </main>
+  <script type="module" src="./school-teacher.js"></script>
+  <script type="module" src="./role-layout.js"></script>
+</body>
+</html>
