@@ -102,3 +102,10 @@ test("platform navigation separates school invitation, management and archive", 
   assert.match(layout, /Արխիվ/);
   assert.match(layout, /Անվտանգություն/);
 });
+
+test("role surfaces share one browser auth client", async () => {
+  for (const path of ["web/admin.js", "web/admin-security.js", "web/school-admin.js", "web/ux.js"]) {
+    const code = await read(path);
+    assert.match(code, /window\.__haieduSupabaseClient \|\|= createClient/);
+  }
+});

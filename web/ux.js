@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
-const uxSupabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const uxSupabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const path = location.pathname.toLowerCase();
 const isStudentPage = /(?:^|\/)(?:index\.html|mastery\.html|join\.html)?$/.test(path) || path.endsWith("/");
 const terminalAuthMessageKey = "amp-terminal-auth-message";
