@@ -159,12 +159,17 @@ function syncRoleSidebar() {
   footer.append(pilot, account);
   const existingSignOut = document.getElementById("signOutBtn");
   if (existingSignOut) {
-    const signOut = document.createElement("button");
-    signOut.type = "button";
-    signOut.className = "ghost hm-sidebar-signout";
-    signOut.textContent = "Դուրս գալ";
-    signOut.addEventListener("click", () => existingSignOut.click());
-    footer.append(signOut);
+    if (page === "platform") {
+      existingSignOut.classList.add("hm-sidebar-signout");
+      footer.append(existingSignOut);
+    } else {
+      const signOut = document.createElement("button");
+      signOut.type = "button";
+      signOut.className = "ghost hm-sidebar-signout";
+      signOut.textContent = "Դուրս գալ";
+      signOut.addEventListener("click", () => existingSignOut.click());
+      footer.append(signOut);
+    }
   }
   sidebar.append(brand, caption, nav, footer);
   document.body.prepend(sidebar);
