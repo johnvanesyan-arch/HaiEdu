@@ -1,6 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
+import { getInstitutionalTeacherDashboard } from "../_shared/institutional-teacher-dashboard.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -46,11 +47,16 @@ Deno.serve(async (req) => {
       .from("institutional_memberships").select("id")
       .eq("person_id", teacherId).eq("role", "teacher").limit(1);
     if (membershipError) return json({ error: "teacher_membership_check_failed" }, 503);
-    if (schoolMemberships?.length) return json({
-      teacher: { displayName: teacherProfile.display_name?.trim() || "Ուսուցիչ" },
-      institutionalTeacher: true,
-      classes: [], skills: [], totals: { classes: 0, students: 0, studentsNeedingSupport: 0 },
-    });
+    if (schoolMemberships?.length) {
+      try {
+        return json(await getInstitutionalTeacherDashboard(
+          admin, teacherId, teacherProfile.display_name?.trim() || "Ուսուցիչ",
+        ));
+      } catch (error) {
+        console.error("get-institutional-teacher-dashboard", error);
+        return json({ error: "institutional_dashboard_unavailable" }, 503);
+      }
+    }
 
     const { data: classes, error: classesError } = await admin
       .from("classes")
