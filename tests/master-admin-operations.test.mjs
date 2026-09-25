@@ -75,15 +75,19 @@ test("master identities remain deletion-protected after role transfer", async ()
   assert.match(endpoint, /target\.master_admin_protected_at/);
 });
 
-test("generic role changes cannot manufacture institutional staff identities", async () => {
-  const migration = await read("supabase/migrations/20260925121942_protect_master_admin_identity.sql");
+test("role changes are limited to existing platform identities", async () => {
+  const migration = await read("supabase/migrations/20260925133000_lock_profile_account_types.sql");
   const endpoint = await read("supabase/functions/manage-admin-account/index.ts");
   const ui = await read("web/admin.js");
   assert.match(endpoint, /new Set\(\["content_admin", "admin"\]\)/);
-  assert.match(endpoint, /institutional_role_change_forbidden/);
-  assert.match(endpoint, /service_platform_role_change_allowed_14c/);
-  assert.match(migration, /not exists\(select 1 from public\.institutional_memberships where person_id=p_user\)/);
-  assert.doesNotMatch(ui, /const options = \["student", "teacher", "content_admin", "admin"\]/);
+  assert.match(endpoint, /!\["content_admin", "admin"\]\.includes\(String\(target\.role\)\)/);
+  assert.match(endpoint, /account_type_immutable/);
+  assert.match(ui, /!\["content_admin", "admin"\]\.includes\(user\.role\)/);
+  assert.doesNotMatch(ui, /user\.role === "student"/);
+  assert.match(migration, /v_old_role in \('content_admin', 'admin'\)/);
+  assert.match(migration, /v_new_role in \('teacher', 'school_admin'\)/);
+  assert.match(migration, /staff_account_provisioning invitation/);
+  assert.match(migration, /raise exception 'account_type_immutable'/);
 });
 
 test("a school cannot lose its last active administrator", async () => {

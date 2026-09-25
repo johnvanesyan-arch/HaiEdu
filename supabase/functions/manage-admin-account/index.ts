@@ -73,17 +73,7 @@ Deno.serve(async (req) => {
       const { data: target } = await admin.from("profiles").select("role, account_status").eq("id", targetUserId).maybeSingle();
       if (!target) return json({ error: "target_not_found" }, 404);
       if (target.account_status !== "active" && target.account_status !== "suspended") return json({ error: "account_not_editable" }, 409);
-      if (!["student", "content_admin", "admin"].includes(String(target.role))) return json({ error: "institutional_role_change_forbidden" }, 409);
-      if (String(target.role) === "student") {
-        if (target.account_status !== "active") return json({ error: "active_pristine_account_required" }, 409);
-        const [{ data: allowed, error: blockerError }, candidateAuth] = await Promise.all([
-          admin.rpc("service_platform_role_change_allowed_14c", { p_user: targetUserId }),
-          admin.auth.admin.getUserById(targetUserId),
-        ]);
-        if (blockerError || allowed !== true || candidateAuth.error || !candidateAuth.data.user?.email_confirmed_at) {
-          return json({ error: "active_pristine_account_required" }, 409);
-        }
-      }
+      if (!["content_admin", "admin"].includes(String(target.role))) return json({ error: "account_type_immutable" }, 409);
       if (String(target.role) === "admin" && nextRole !== "admin" && target.account_status === "active" && await activeAdminCount(admin) <= 1) {
         return json({ error: "last_active_admin_protected" }, 409);
       }

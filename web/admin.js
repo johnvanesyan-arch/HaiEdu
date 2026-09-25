@@ -61,6 +61,7 @@ function friendlyError(error) {
     master_admin_deletion_forbidden: "Master admin հաշիվը վերջնականապես ջնջել չի կարելի։",
     cannot_change_own_role: "Չեք կարող փոխել ձեր սեփական master admin դերը։",
     cannot_change_own_status: "Չեք կարող փոխել ձեր սեփական հաշվի վիճակը։",
+    account_type_immutable: "Աշակերտի, ուսուցչի և դպրոցի ադմինի հաշվի տեսակը չի կարող փոխվել։ Platform staff դերերը կառավարվում են միայն առանձին platform հաշիվների միջև։",
     institutional_role_change_forbidden: "Ուսուցչի և դպրոցի ադմինի դերը կառավարվում է միայն համապատասխան հրավերի ու դպրոցի անդամակցության միջոցով։",
     active_pristine_account_required: "Platform staff դերի համար անհրաժեշտ է հաստատված, ակտիվ և ուսումնական պատմություն չունեցող առանձին հաշիվ։",
     suspend_before_archiving: "Հաշիվը նախ պետք է կասեցնել, հետո՝ արխիվացնել։",
@@ -214,8 +215,8 @@ function renderAccounts(data, archived = false) {
 }
 
 function renderRoleEditor(user) {
-  if (user.id === actor?.id || !["student", "content_admin", "admin"].includes(user.role) || user.accountStatus !== "active") return "";
-  const roles = user.role === "student" ? ["content_admin", "admin"] : ["content_admin", "admin"];
+  if (user.id === actor?.id || !["content_admin", "admin"].includes(user.role) || user.accountStatus !== "active") return "";
+  const roles = ["content_admin", "admin"];
   const options = roles.map((role) => `<option value="${role}" ${role === user.role ? "selected" : ""}>${esc(roleLabel(role))}</option>`).join("");
   return `<select data-role-select="${esc(user.id)}" aria-label="Փոխել դերը">${options}</select><button type="button" class="ghost" data-set-role="${esc(user.id)}">Պահել դերը</button>`;
 }
