@@ -379,3 +379,282 @@
   .year-row button { width: 100%; }
   .roster-state-actions { justify-content: flex-start; }
 }
+
+
+/* Sprint 14B operational hierarchy, contained within the approved dashboard shell. */
+.overview-extension-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1.7fr) minmax(250px, .68fr);
+  gap: 16px;
+  align-items: start;
+  margin-top: 24px;
+  padding-top: 24px;
+  border-top: 1px solid #e2e8ef;
+}
+
+.operational-hierarchy,
+.analytics-gate {
+  min-width: 0;
+  border: 1px solid #dfe6ee;
+  border-radius: 16px;
+  background: #f9fbfd;
+  padding: 20px;
+}
+
+.hierarchy-heading h3,
+.analytics-gate h3,
+.operational-teacher-detail h4,
+.class-card h5 {
+  margin: 0;
+}
+
+.hierarchy-heading .subtle {
+  margin: 6px 0 0;
+  line-height: 1.55;
+}
+
+.hierarchy-layout {
+  display: grid;
+  grid-template-columns: minmax(210px, .72fr) minmax(0, 1.35fr);
+  gap: 18px;
+  margin-top: 18px;
+}
+
+.operational-teacher-list {
+  display: grid;
+  align-content: start;
+  gap: 8px;
+}
+
+.teacher-card {
+  width: 100%;
+  border: 1px solid #d8e2ec;
+  border-radius: 12px;
+  background: #fff;
+  color: #15243a;
+  padding: 12px 13px;
+  text-align: left;
+  box-shadow: none;
+}
+
+.teacher-card:hover {
+  border-color: #aabed3;
+  background: #f5f8fc;
+  transform: none;
+}
+
+.teacher-card[aria-current="true"] {
+  border-color: #6e94bd;
+  background: #edf4fb;
+  box-shadow: 0 0 0 3px rgba(31, 79, 138, .08);
+}
+
+.teacher-card strong,
+.teacher-card span {
+  display: block;
+}
+
+.teacher-card span {
+  margin-top: 3px;
+  color: #68778a;
+  font-size: .78rem;
+  overflow-wrap: anywhere;
+}
+
+.teacher-card .teacher-card-meta {
+  margin-top: 8px;
+  color: #405974;
+  font-weight: 750;
+}
+
+.operational-teacher-detail {
+  min-width: 0;
+}
+
+.operational-teacher-header {
+  padding-bottom: 13px;
+  border-bottom: 1px solid #e4eaf0;
+}
+
+.operational-teacher-email {
+  margin: 4px 0 0;
+  color: #68778a;
+  font-size: .84rem;
+  overflow-wrap: anywhere;
+}
+
+.subject-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-top: 10px;
+}
+
+.subject-chip {
+  display: inline-flex;
+  align-items: center;
+  min-height: 26px;
+  padding: 4px 9px;
+  border-radius: 999px;
+  background: #eaf5f3;
+  color: #27655e;
+  font-size: .73rem;
+  font-weight: 800;
+}
+
+.operational-class-list {
+  display: grid;
+  gap: 10px;
+  margin-top: 13px;
+}
+
+.class-card {
+  border: 1px solid #e0e7ee;
+  border-radius: 12px;
+  padding: 13px;
+  background: #fff;
+}
+
+.class-card-header {
+  display: flex;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.class-context {
+  margin: 4px 0 0;
+  color: #6b798b;
+  font-size: .79rem;
+}
+
+.student-count {
+  color: #245b9b;
+  font-size: .77rem;
+  font-weight: 800;
+  white-space: nowrap;
+}
+
+.student-list {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 7px;
+  margin: 11px 0 0;
+  padding: 11px 0 0;
+  border-top: 1px solid #edf1f5;
+  list-style: none;
+}
+
+.student-list li {
+  min-width: 0;
+  padding: 8px 9px;
+  border-radius: 9px;
+  background: #f5f8fb;
+}
+
+.student-list strong,
+.student-list span {
+  display: block;
+  overflow-wrap: anywhere;
+}
+
+.student-list span {
+  margin-top: 2px;
+  color: #6d7a8b;
+  font-size: .71rem;
+}
+
+.hierarchy-empty {
+  padding: 20px 14px;
+  border: 1px dashed #ccd7e2;
+  border-radius: 12px;
+  background: #fff;
+  color: #68778a;
+  text-align: center;
+}
+
+.hierarchy-message {
+  min-height: 0;
+  margin: 12px 0 0;
+}
+
+.analytics-gate {
+  background: linear-gradient(155deg, #fff, #f4f7fa);
+}
+
+.analytics-lock {
+  display: inline-flex;
+  margin-bottom: 15px;
+  padding: 5px 9px;
+  border-radius: 999px;
+  background: #fff4d9;
+  color: #795814;
+  font-size: .73rem;
+  font-weight: 900;
+  letter-spacing: .05em;
+}
+
+.analytics-gate > p:not(.panel-kicker):not(.analytics-note) {
+  color: #556477;
+  line-height: 1.58;
+}
+
+.analytics-preview {
+  display: grid;
+  gap: 7px;
+  margin: 16px 0;
+}
+
+.analytics-preview span {
+  display: block;
+  padding: 10px 11px;
+  border: 1px solid #e0e7ee;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, .78);
+  color: #758194;
+  font-size: .78rem;
+}
+
+.analytics-note {
+  margin: 0;
+  padding-top: 12px;
+  border-top: 1px solid #e2e8ee;
+  color: #69778a;
+  font-size: .77rem;
+  line-height: 1.5;
+}
+
+@media (max-width: 900px) {
+  .overview-extension-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 700px) {
+  .hierarchy-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .operational-teacher-list {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .operational-hierarchy,
+  .analytics-gate {
+    padding: 16px;
+  }
+
+  .operational-teacher-list,
+  .student-list {
+    grid-template-columns: 1fr;
+  }
+
+  .class-card-header {
+    flex-direction: column;
+  }
+
+  .student-count {
+    white-space: normal;
+  }
+}
