@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 let dashboard = null;
 let selectedId = null;
@@ -507,23 +507,34 @@ async function refresh(reselect = selectedId) {
     renderRows();
     if (selectedId) await selectItem(selectedId);
     else $("detailPanel").innerHTML = `<h2>Ընտրեք հարց</h2><p class="subtle">Հարցերի բանկը դատարկ է։</p>`;
+    return true;
   } catch (err) {
     setMessage(err.message, true);
+    return false;
   }
 }
 
+let sessionCheck = 0;
 async function showForSession(session) {
+  const check = ++sessionCheck;
+  $("console").classList.add("hidden");
   if (!session) {
     editorDirty = false;
     $("authPanel").classList.remove("hidden");
-    $("console").classList.add("hidden");
     $("signOutBtn").classList.add("hidden");
     return;
   }
   $("authPanel").classList.add("hidden");
-  $("console").classList.remove("hidden");
   $("signOutBtn").classList.remove("hidden");
-  await refresh();
+  const allowed = await refresh();
+  if (check !== sessionCheck) return;
+  if (!allowed) {
+    $("authMessage").textContent = "Չհաջողվեց հաստատել այս բաժնի հասանելիությունը։ Թարմացրեք էջը կամ մուտք գործեք համապատասխան հաշվով։";
+    $("authPanel").classList.remove("hidden");
+    return;
+  }
+  $("authMessage").textContent = "";
+  $("console").classList.remove("hidden");
 }
 
 $("signOutBtn").addEventListener("click", () => supabase.auth.signOut());

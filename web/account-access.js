@@ -10,7 +10,7 @@ const linkError = hashParams.get("error_code") || searchParams.get("error_code")
     ? "access_denied" : null);
 const resetView = searchParams.get("view") === "reset";
 const registerView = searchParams.get("view") === "register";
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 const redirect = `${location.origin}/account-access`;
 if (linkError) {

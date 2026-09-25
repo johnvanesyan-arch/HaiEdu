@@ -3,18 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Դպրոցի կառավարման վահանակ — HaiEdu</title>
+  <title>Դպրոցների մուտք և հրավերներ — HaiEdu</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
   <link rel="stylesheet" href="./school-admin.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
 </head>
-<body class="school-admin-page">
+<body class="school-admin-page" data-role-workspace="school">
   <main class="shell school-admin-shell" id="mainContent">
     <header class="topbar school-admin-header">
       <div class="page-heading">
-        <p class="eyebrow">HAIEDU · ԴՊՐՈՑ</p>
-        <h1 id="pageTitle">Դպրոցի կառավարման վահանակ</h1>
-        <p id="pageLede" class="page-lede">Ուսուցիչներ, դասարաններ, աշակերտներ և հաշիվների կառավարում՝ մեկ վայրում։</p>
+        <p class="eyebrow">HAIEDU · ՀԱՇԻՎՆԵՐ</p>
+        <h1>Դպրոցական հաշիվներ</h1>
+        <p class="page-lede">Դպրոցների և աշխատակիցների հաշիվների կառավարման կենտրոն։</p>
       </div>
       <div class="row account-actions">
         <a id="accountAccessLink" class="ghost button-link" href="./account-access">Հաշվի մուտք</a>
@@ -29,62 +30,67 @@
       <a class="button-link ghost" href="./account-access">Մուտք գործել</a>
     </section>
 
-    <section id="overviewPanel" class="hidden" aria-labelledby="overviewTitle">
-      <div class="overview-toolbar">
+    <section id="overviewPanel" class="card admin-panel overview-panel hidden" aria-labelledby="overviewTitle">
+      <div class="panel-header overview-header">
         <div>
-          <p class="panel-kicker">Գործառնական պատկեր</p>
-          <h2 id="overviewTitle">Դպրոցի կառուցվածք</h2>
-          <p class="subtle overview-copy">Տվյալները հիմնված են միայն հաստատված անդամակցությունների, առարկայական թույլտվությունների, դասարանների և ընդգրկումների վրա։</p>
+          <p class="panel-kicker">Ամփոփում</p>
+          <h2 id="overviewTitle">Դպրոցի աշխատանքային պատկերը</h2>
+          <p class="subtle panel-copy">Այստեղ երևում են հիմնական թվերը և այն գործողությունները, որոնք հիմա ուշադրություն են պահանջում։</p>
         </div>
-        <div class="overview-controls">
-          <label id="overviewSchoolField" class="compact-field hidden">
-            <span>Դպրոց</span>
-            <select id="overviewSchool"></select>
-          </label>
-          <button id="refreshOverviewBtn" type="button" class="ghost">Թարմացնել</button>
-        </div>
+        <label class="form-field overview-school-field">
+          <span>Դպրոց</span>
+          <select id="overviewSchool"></select>
+        </label>
       </div>
-      <p id="overviewMessage" class="message" role="status" aria-live="polite"></p>
+      <p id="overviewSchoolCode" class="overview-school-code"></p>
+      <div class="overview-stats" aria-label="Դպրոցի ամփոփ ցուցանիշներ">
+        <article class="overview-stat"><span>Ակտիվ ուսումնական տարի</span><strong id="overviewYear">—</strong></article>
+        <article class="overview-stat"><span>Ակտիվ ուսուցիչներ</span><strong id="overviewTeachers">—</strong></article>
+        <article class="overview-stat"><span>Ակտիվ դասարաններ</span><strong id="overviewClasses">—</strong></article>
+        <article class="overview-stat"><span>Սպասվող հրավերներ</span><strong id="overviewInvites">—</strong></article>
+      </div>
+      <div class="overview-actions" aria-label="Արագ գործողություններ">
+        <a href="#yearPanel"><strong>Ուսումնական տարիներ</strong><span>Բացել, արխիվացնել կամ վերականգնել տարին</span></a>
+        <a href="#teachersPanel"><strong>Ուսուցիչներ</strong><span>Դիտել հաշիվները, առարկաները և դասարանները</span></a>
+        <a href="#teacherPanel"><strong>Հրավիրել ուսուցչի</strong><span>Տալ դպրոցի և հրապարակված առարկայի մուտք</span></a>
+        <a href="#pendingPanel"><strong>Սպասվող հրավերներ</strong><span>Վերաուղարկել կամ չեղարկել հրավերը</span></a>
+      </div>
+      <p id="overviewMessage" class="message overview-message" role="status" aria-live="polite"></p>
 
-      <div id="overviewStats" class="overview-stats" aria-label="Դպրոցի գործառնական ցուցանիշներ"></div>
-
-      <div class="overview-grid">
-        <section class="card hierarchy-panel" aria-labelledby="hierarchyTitle">
-          <div class="section-heading">
+      <div class="overview-extension-grid">
+        <section class="operational-hierarchy" aria-labelledby="hierarchyTitle">
+          <div class="hierarchy-heading">
             <div>
-              <p class="panel-kicker">Ուսուցիչ → դասարան → աշակերտ</p>
-              <h3 id="hierarchyTitle">Դպրոցի կառուցվածք</h3>
+              <p class="panel-kicker">Գործառնական կառուցվածք</p>
+              <h3 id="hierarchyTitle">Ուսուցիչ → դասարան → աշակերտ</h3>
+              <p class="subtle">Ընտրեք ուսուցչին՝ նրա ակտիվ դասարաններն ու հաստատված աշակերտներին տեսնելու համար։</p>
             </div>
-            <span id="schoolCodeBadge" class="school-code"></span>
           </div>
           <div class="hierarchy-layout">
-            <nav id="teacherList" class="teacher-list" aria-label="Ուսուցիչների ցանկ"></nav>
-            <div id="teacherDetail" class="teacher-detail" aria-live="polite"></div>
+            <div id="teacherList" class="operational-teacher-list" aria-label="Ակտիվ ուսուցիչներ">
+              <div class="hierarchy-empty">Կառուցվածքը բեռնվում է…</div>
+            </div>
+            <div id="teacherDetail" class="operational-teacher-detail">
+              <div class="hierarchy-empty">Ընտրեք ուսուցչին՝ դասարանները տեսնելու համար։</div>
+            </div>
           </div>
+          <p id="hierarchyMessage" class="message hierarchy-message" role="status" aria-live="polite"></p>
         </section>
 
-        <aside class="card analytics-gate" aria-labelledby="analyticsTitle">
-          <div class="analytics-lock">14C / 14D</div>
-          <p class="panel-kicker">Կատարողականի վերլուծություն</p>
-          <h3 id="analyticsTitle">Վերլուծական վահանակը դեռ չի ակտիվացվել</h3>
-          <p>Գնահատականներ և առաջադիմության տոկոսներ չեն ցուցադրվի, մինչև ուսուցման ապացույցները չկապվեն դպրոցի, դասարանի, առարկայի, ծրագրի և թողարկման հաստատված համատեքստին։</p>
+        <aside class="analytics-gate" aria-labelledby="analyticsGateTitle">
+          <span class="analytics-lock">14C / 14D</span>
+          <p class="panel-kicker">Հաջորդ փուլ</p>
+          <h3 id="analyticsGateTitle">Վերլուծական վահանակը դեռ չի ակտիվացվել</h3>
+          <p>Միավորների, առաջընթացի և համեմատությունների ցուցադրումը կբացվի միայն այն բանից հետո, երբ աշակերտի դպրոցական համատեքստը և ապացույցների իրավասությունը հաստատված լինեն։</p>
           <div class="analytics-preview" aria-hidden="true">
-            <span>Դպրոցի ընդհանուր պատկեր</span>
-            <span>Դասարանների համեմատություն</span>
-            <span>Աշակերտի առարկայական առաջընթաց</span>
+            <span>Դասարանի առաջընթաց</span>
+            <span>Հմտությունների վիճակ</span>
+            <span>Միջամտության ազդակներ</span>
           </div>
-          <p class="analytics-note">Այս սահմանափակումը կանխում է սխալ կամ այլ դպրոցից փոխանցված տվյալների ցուցադրումը։</p>
+          <p class="analytics-note">Այստեղ ցուցադրական տոկոսներ կամ ենթադրյալ արդյունքներ չեն օգտագործվում։</p>
         </aside>
       </div>
     </section>
-
-    <div id="managementHeading" class="section-divider hidden">
-      <div>
-        <p class="panel-kicker">Հաշիվների կառավարում</p>
-        <h2>Հրավերներ և հասանելիություն</h2>
-      </div>
-      <p class="subtle">Ստեղծեք կամ վերահսկեք դպրոցական հաշիվների հրավերները։ Գաղտնաբառը սահմանում է միայն հրավիրված անձը։</p>
-    </div>
 
     <section id="masterPanel" class="card admin-panel hidden" aria-labelledby="schoolInviteTitle">
       <div class="panel-header">
@@ -110,6 +116,27 @@
       </form>
     </section>
 
+    <section id="yearPanel" class="card admin-panel hidden" aria-labelledby="yearTitle">
+      <div class="panel-header">
+        <div>
+          <p class="panel-kicker">Դպրոցի ուսումնական տարի</p>
+          <h2 id="yearTitle">Ուսումնական տարիներ</h2>
+        </div>
+      </div>
+      <p class="subtle panel-copy">Բացեք ընթացիկ տարին, որպեսզի ուսուցիչները կարողանան ստեղծել դասարաններ։ Արխիվացումը կդադարեցնի այդ տարվա դասարանների հասանելիությունը՝ առանց պատմական տվյալները ջնջելու։</p>
+      <form id="yearForm" class="admin-form">
+        <label class="form-field form-field-wide"><span>Դպրոց</span><select id="yearSchool" required></select></label>
+        <label class="form-field"><span>Ուսումնական տարվա անվանում</span><input id="yearLabel" required maxlength="32" placeholder="Օր.՝ 2026–2027" /></label>
+        <label class="form-field"><span>Սկիզբ</span><input id="yearStart" type="date" required /></label>
+        <label class="form-field"><span>Ավարտ</span><input id="yearEnd" type="date" required /></label>
+        <div class="form-actions">
+          <button type="submit">Բացել տարին</button>
+          <p id="yearMessage" class="message" role="status" aria-live="polite"></p>
+        </div>
+      </form>
+      <div id="yearList" class="year-list"></div>
+    </section>
+
     <section id="teacherPanel" class="card admin-panel hidden" aria-labelledby="teacherInviteTitle">
       <div class="panel-header">
         <div>
@@ -117,7 +144,7 @@
           <h2 id="teacherInviteTitle">Ուսուցչի հրավեր</h2>
         </div>
       </div>
-      <p class="subtle panel-copy">Ընտրեք դպրոցը և հրապարակված առարկան։ Հրավերն ընդունելուց հետո ուսուցիչը կստանա միայն այդ դպրոցի և առարկայի թույլտվությունը։</p>
+      <p class="subtle panel-copy">Ընտրեք դպրոցը և հրապարակված առարկան։ Հրավերն ընդունելուց հետո ուսուցիչը կստանա միայն այդ դպրոցի և առարկայի թույլտվությունը։ Ցանկում հայտնվում են միայն հրապարակված առարկաները․ նախագծային փուլում գտնվողները դեռ հասանելի չեն հրավիրելու համար։</p>
       <form id="teacherForm" class="admin-form">
         <label class="form-field">
           <span>Դպրոց</span>
@@ -138,6 +165,20 @@
       </form>
     </section>
 
+    <section id="teachersPanel" class="card admin-panel hidden" aria-labelledby="teachersTitle">
+      <div class="panel-header pending-header">
+        <div>
+          <p class="panel-kicker">Դպրոցի աշխատակիցներ</p>
+          <h2 id="teachersTitle">Ուսուցիչներ</h2>
+        </div>
+        <button id="refreshTeachersBtn" type="button" class="ghost">Թարմացնել ցանկը</button>
+      </div>
+      <p class="subtle panel-copy">Հրավերն ընդունած ուսուցիչների հաշիվները, առարկաների թույլտվությունները և դասարանները։ Ուսուցչի արխիվացումը կդադարեցնի միայն այս դպրոցի մուտքը՝ պահպանելով հաշիվն ու պատմությունը։ Դեռ չընդունված հրավերները տեսեք «Սպասվող հրավերներ» բաժնում։</p>
+      <label class="form-field roster-school-field"><span>Դպրոց</span><select id="rosterSchool"></select></label>
+      <p id="rosterMessage" class="message" role="status" aria-live="polite"></p>
+      <div id="teacherRoster" class="teacher-roster"></div>
+    </section>
+
     <section id="pendingPanel" class="card admin-panel hidden" aria-labelledby="pendingTitle">
       <div class="panel-header pending-header">
         <div>
@@ -146,11 +187,12 @@
         </div>
         <button id="refreshInvitesBtn" type="button" class="ghost">Թարմացնել ցանկը</button>
       </div>
-      <p class="subtle panel-copy">Վերաուղարկելուց հետո գործում է միայն ամենավերջին նամակի հղումը։ Չեղարկված հրավերը այլևս չի ակտիվացնի դպրոցական դերը։</p>
+      <p class="subtle panel-copy">Նամակը չստանալու դեպքում կարող եք կրկին խնդրել ուղարկումը։ Բացեք միայն ամենավերջին նամակի հղումը. վերաուղարկելուց հետո նախորդը չի գործում։ Կրկնակի հարցումները սահմանափակված են։ Չեղարկված հրավերի հղումը այլևս չի ակտիվացնի դպրոցական դերը։ Հաշիվը և արդեն հաստատված անդամակցությունները չեն ջնջվում։</p>
       <p id="pendingMessage" class="message pending-message" role="status" aria-live="polite"></p>
       <div id="pendingInvites" class="pending-list"></div>
     </section>
   </main>
   <script type="module" src="./school-admin.js"></script>
+  <script type="module" src="./role-layout.js"></script>
 </body>
 </html>

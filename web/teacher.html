@@ -12,15 +12,16 @@
   <link rel="stylesheet" href="./components.css" />
   <link rel="stylesheet" href="./teacher.css" />
   <link rel="stylesheet" href="./responsive-qa.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
 </head>
-<body>
+<body data-role-workspace="teacher">
   <a class="skip-link" href="#mainContent">Անցնել հիմնական բովանդակությանը</a>
   <main class="shell teacher-shell" id="mainContent">
     <header class="topbar teacher-topbar">
       <div>
         <p class="eyebrow">ՈՒՍՈՒՑՉԻ ԱՇԽԱՏԱՍԵՂԱՆ</p>
         <h1>Դասարանների կառավարում</h1>
-        <p class="subtle">Ֆիզիկա 7 · Գլուխ I — դասարան, աշակերտներ, առաջընթաց և միջամտության առաջարկություններ</p>
+        <p class="subtle">Դասարաններ, աշակերտներ, առաջընթաց և միջամտության առաջարկություններ</p>
       </div>
       <div class="teacher-header-actions">
         <a class="ghost button-link" href="./index.html">Հարթակի գլխավոր էջ</a>
@@ -47,7 +48,7 @@
         <div class="teacher-welcome-copy">
           <span class="mode-kicker">ԻՄ ԱՇԽԱՏԱՍԵՂԱՆԸ</span>
           <h2>Բարի գալուստ, <span id="teacherName">Ուսուցիչ</span></h2>
-          <p class="subtle">Սկսեք դասարանի ստեղծումից, տվեք աշակերտներին միանալու կոդը, ապա հետևեք նրանց առաջընթացին այստեղից։</p>
+          <p id="teacherWelcomeText" class="subtle">Սկսեք դասարանի ստեղծումից, տվեք աշակերտներին միանալու կոդը, ապա հետևեք նրանց առաջընթացին այստեղից։</p>
         </div>
         <div class="teacher-quick-actions">
           <a id="createClassShortcut" class="button-link" href="#createClassCard">+ Նոր դասարան</a>
@@ -63,8 +64,9 @@
       </div>
 
       <section id="institutionalTeacherNotice" class="card hidden" role="status">
-        <h2>Դպրոցի դասարանները դեռ պատրաստ չեն</h2>
-        <p>Ձեր ուսուցչի հաշիվն ակտիվ է, բայց դպրոցի դասարանների և աշակերտների մուտքը դեռ չի գործարկվել։ Դպրոցի դասերին միանալու հղումներ կամ կոդեր այս էջից դեռ մի տարածեք։</p>
+        <h2>Դպրոցական դասարանների կառավարում</h2>
+        <p id="institutionalTeacherNoticeText">Դպրոցի ադմինիստրատորը նախ պետք է բացի ընթացիկ ուսումնական տարին։ Այնուհետև կարող եք դասարան ստեղծել ձեր հաստատված առարկայով և հրապարակված ծրագրով։</p>
+        <p class="subtle">Դպրոցի աշակերտների միացումը և դասարանային առաջընթացի վերլուծությունը դեռ չեն գործարկվել։ Այս դասարանների համար միանալու կոդ չի տրվում։</p>
       </section>
 
       <section id="teacherLegacyOnboarding" class="card teacher-onboarding-card" aria-labelledby="teacherStartTitle">
@@ -74,7 +76,7 @@
         </div>
         <ol class="teacher-onboarding-steps">
           <li><span>1</span><div><strong>Լրացրեք ձեր անունը</strong><small>Աշխատասեղանում և հետագա հաղորդակցությունում օգտագործվող անունը։</small></div></li>
-          <li><span>2</span><div><strong>Ստեղծեք դասարան</strong><small>Օրինակ՝ «7Ա Ֆիզիկա» և ընտրեք ուսումնական տարին։</small></div></li>
+          <li><span>2</span><div><strong>Ստեղծեք դասարան</strong><small>Օրինակ՝ «7Ա» կամ «7Ա Ֆիզիկա», ապա ընտրեք ուսումնական տարին։</small></div></li>
           <li><span>3</span><div><strong>Տվեք միանալու կոդը</strong><small>Կոդը կամ հրավերի հղումը ուղարկեք աշակերտներին։</small></div></li>
           <li><span>4</span><div><strong>Հետևեք առաջընթացին</strong><small>Բացեք աշակերտի քարտը՝ հմտություններն ու առաջարկվող քայլերը տեսնելու համար։</small></div></li>
         </ol>
@@ -97,15 +99,33 @@
       <section id="createClassCard" class="card teacher-create-card">
         <div class="teacher-card-copy">
           <span class="mode-kicker">ՆՈՐ ԴԱՍԱՐԱՆ</span>
-          <h3>Ստեղծել 7-րդ դասարանի ֆիզիկայի դասարան</h3>
+          <h3>Ստեղծել դասարան</h3>
           <p class="subtle">Դասարանը ստեղծելուց հետո համակարգը կստեղծի 8-նիշ միանալու կոդ։</p>
         </div>
         <div class="teacher-create-form">
-          <label>Դասարանի անուն<input id="classNameInput" placeholder="Օր.՝ 7Ա Ֆիզիկա" /></label>
+          <label>Դասարանի անուն<input id="classNameInput" placeholder="Օր.՝ 7Ա կամ 7Ա Ֆիզիկա" /></label>
           <label>Ուսումնական տարի<input id="academicYearInput" value="2026-2027" /></label>
           <button id="createClassBtn">Ստեղծել դասարան</button>
         </div>
         <p id="classMessage" class="message" aria-live="polite"></p>
+      </section>
+
+      <section id="institutionalCreateCard" class="card teacher-create-card hidden" aria-labelledby="institutionalCreateTitle">
+        <div class="teacher-card-copy">
+          <span class="mode-kicker">ԴՊՐՈՑԻ ՆՈՐ ԴԱՍԱՐԱՆ</span>
+          <h3 id="institutionalCreateTitle">Ստեղծել դպրոցի դասարան</h3>
+          <p class="subtle">Ընտրեք ձեր դպրոցը, ընթացիկ տարին և ձեզ թույլատրված առարկայի դասարանը։</p>
+        </div>
+        <form id="institutionalCreateForm" class="teacher-create-form">
+          <label>Դպրոց · տարի · առարկա · դասարան
+            <select id="institutionalClassOption" required></select>
+          </label>
+          <label>Դասարանի անուն
+            <input id="institutionalClassName" required minlength="2" maxlength="120" placeholder="Օր.՝ 7Ա" />
+          </label>
+          <button id="institutionalCreateBtn" type="submit">Ստեղծել դասարան</button>
+        </form>
+        <p id="institutionalCreateMessage" class="message" role="status" aria-live="polite"></p>
       </section>
 
       <div class="teacher-layout">
@@ -114,6 +134,10 @@
             <div><span class="mode-kicker">ԴԱՍԱՐԱՆՆԵՐ</span><h3 id="myClassesTitle">Իմ դասարանները</h3></div>
           </div>
           <div id="classList" class="teacher-class-list"></div>
+          <details id="archivedClasses" class="teacher-archive hidden">
+            <summary>Արխիվացված դասարաններ <span id="archivedClassCount" class="teacher-archive-count">0</span></summary>
+            <div id="archivedClassList" class="teacher-class-list"></div>
+          </details>
         </aside>
 
         <section class="teacher-main">
@@ -124,6 +148,23 @@
             <a class="button-link" href="#createClassCard">Ստեղծել դասարան</a>
           </div>
 
+          <section id="institutionalEmpty" class="card teacher-empty hidden">
+            <h3>Ընտրեք կամ ստեղծեք դպրոցի դասարան</h3>
+            <p class="subtle">Դասարանի ստեղծման համար անհրաժեշտ է դպրոցի ադմինի բացած ընթացիկ ուսումնական տարին և ձեր առարկայի հաստատված թույլտվությունը։</p>
+          </section>
+          <section id="institutionalClassView" class="card class-header-card hidden" aria-labelledby="institutionalSelectedName">
+            <div class="class-header-main">
+              <div class="class-title-row"><span class="mode-kicker">ԴՊՐՈՑԻ ԴԱՍԱՐԱՆ</span><span id="institutionalClassBadge" class="status-badge">Ակտիվ</span></div>
+              <h2 id="institutionalSelectedName">—</h2>
+              <p id="institutionalSelectedMeta" class="subtle">—</p>
+              <button id="institutionalClassToggle" type="button" class="ghost small-button">Արխիվացնել դասարանը</button>
+              <p id="institutionalClassMessage" class="message" role="status" aria-live="polite"></p>
+            </div>
+            <div class="join-code-box">
+              <strong>Աշակերտների միացումը հաջորդ փուլում է</strong>
+              <p class="subtle small">Միանալու հղումները, աշակերտների ցուցակը և առաջընթացի վերլուծությունը կհայտնվեն դպրոցական տվյալների սահմանների հաստատումից հետո։</p>
+            </div>
+          </section>
           <div id="classView" class="hidden">
             <section class="card class-header-card">
               <div class="class-header-main">
@@ -142,7 +183,6 @@
                 <div class="join-code-actions">
                   <button id="copyCodeBtn" class="secondary small-button" type="button">Պատճենել կոդը</button>
                   <button id="copyInviteBtn" class="secondary small-button" type="button">Պատճենել հղումը</button>
-                  <a id="openJoinBtn" class="ghost button-link small-button" href="./join.html" target="_blank" rel="noopener">Բացել միանալու էջը</a>
                   <button id="rotateCodeBtn" class="ghost small-button" type="button">Ստեղծել նոր կոդ</button>
                 </div>
                 <span id="copyCodeStatus" class="subtle small" aria-live="polite"></span>
@@ -154,7 +194,7 @@
                 <div>
                   <span class="mode-kicker">ԱՇԱԿԵՐՏՆԵՐ</span>
                   <h3>Դասարանի ցուցակ</h3>
-                  <p class="subtle">Բացեք աշակերտի առաջընթացը կամ հեռացրեք նրան այս դասարանից։</p>
+                  <p class="subtle">Բացեք աշակերտի առաջընթացը կամ հեռացրեք նրան այս դասարանից։ Նույն հաշվով կրկին միանալիս նրա նախկին տվյալները կպահպանվեն։</p>
                 </div>
                 <label class="teacher-search-label">Փնտրել աշակերտ<input id="studentSearchInput" type="search" placeholder="Անուն…" /></label>
               </div>
@@ -227,5 +267,6 @@
   </main>
   <script type="module" src="./teacher.js"></script>
   <script type="module" src="./ux.js"></script>
+  <script type="module" src="./role-layout.js"></script>
 </body>
 </html>

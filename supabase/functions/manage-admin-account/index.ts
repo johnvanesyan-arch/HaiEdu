@@ -1,4 +1,5 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
+import { hasActiveLiveSession } from "../_shared/auth.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -7,6 +8,14 @@ const corsHeaders = {
 
 function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
+}
+
+function jwtPayload(token: string): Record<string, unknown> {
+  try {
+    const encoded = token.split(".")[1] || "";
+    const normalized = encoded.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(encoded.length / 4) * 4, "=");
+    return JSON.parse(atob(normalized));
+  } catch { return {}; }
 }
 
 async function writeAudit(admin: any, row: Record<string, unknown>) {
@@ -40,11 +49,13 @@ Deno.serve(async (req) => {
     if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
 
     const actorId = userData.user.id;
+    if (!(await hasActiveLiveSession(admin, token, actorId))) return json({ error: "account_or_session_inactive" }, 403);
     const { data: actor } = await admin.from("profiles")
       .select("role, account_status")
       .eq("id", actorId)
       .maybeSingle();
     if (!actor || String(actor.role) !== "admin" || actor.account_status !== "active") return json({ error: "admin_required" }, 403);
+    if (jwtPayload(token).aal !== "aal2") return json({ error: "mfa_required" }, 403);
 
     let body: any = {};
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
@@ -55,14 +66,14 @@ Deno.serve(async (req) => {
       const nextRole = String(body.role ?? "");
       // School administrator authority is provisioned through a school membership,
       // never by changing the global profile role in this generic editor.
-      const allowedRoles = new Set(["student", "teacher", "content_admin", "admin"]);
+      const allowedRoles = new Set(["content_admin", "admin"]);
       if (!targetUserId || !allowedRoles.has(nextRole)) return json({ error: "invalid_role_change" }, 400);
       if (targetUserId === actorId) return json({ error: "cannot_change_own_role" }, 409);
 
       const { data: target } = await admin.from("profiles").select("role, account_status").eq("id", targetUserId).maybeSingle();
       if (!target) return json({ error: "target_not_found" }, 404);
       if (target.account_status !== "active" && target.account_status !== "suspended") return json({ error: "account_not_editable" }, 409);
-      if (String(target.role) === "school_admin") return json({ error: "school_membership_required" }, 409);
+      if (!["content_admin", "admin"].includes(String(target.role))) return json({ error: "account_type_immutable" }, 409);
       if (String(target.role) === "admin" && nextRole !== "admin" && target.account_status === "active" && await activeAdminCount(admin) <= 1) {
         return json({ error: "last_active_admin_protected" }, 409);
       }
@@ -90,6 +101,16 @@ Deno.serve(async (req) => {
       }
       if (action === "suspend" && String(target.role) === "admin" && target.account_status === "active" && await activeAdminCount(admin) <= 1) {
         return json({ error: "last_active_admin_protected" }, 409);
+      }
+      if (action === "suspend" && String(target.role) === "school_admin") {
+        const { data: blockers, error: blockerError } = await admin.rpc("service_school_admin_suspension_blockers_14c", {
+          p_user: targetUserId,
+        });
+        if (blockerError) return json({ error: "school_admin_suspension_check_failed" }, 500);
+        if (blockers?.length) return json({
+          error: "last_active_school_admin_protected",
+          detail: blockers.map((row: any) => row.school_name).join(", "),
+        }, 409);
       }
 
       if (action === "suspend" || action === "activate") {
@@ -152,9 +173,10 @@ Deno.serve(async (req) => {
       if (!targetUserId) return json({ error: "target_user_required" }, 400);
       if (targetUserId === actorId) return json({ error: "cannot_delete_own_account" }, 409);
       const { data: target } = await admin.from("profiles")
-        .select("role, account_status").eq("id", targetUserId).maybeSingle();
+        .select("role, account_status, master_admin_protected_at").eq("id", targetUserId).maybeSingle();
       if (!target) return json({ error: "target_not_found" }, 404);
       if (target.account_status !== "archived") return json({ error: "archive_before_deletion" }, 409);
+      if (target.master_admin_protected_at || String(target.role) === "admin") return json({ error: "master_admin_deletion_forbidden" }, 409);
       if (String(target.role) === "student") return json({ error: "student_deletion_request_required" }, 409);
 
       // Roles can change. Catalog-based preflight checks every profile foreign

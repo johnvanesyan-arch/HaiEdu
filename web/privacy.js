@@ -76,6 +76,9 @@ function render(data) {
   $("analyticsOptIn").disabled = deletionPending;
   $("researchOptIn").disabled = deletionPending;
   $("savePrivacyBtn").disabled = deletionPending;
+  $("newEmailInput").disabled = deletionPending;
+  $("changeEmailBtn").disabled = deletionPending;
+  $("changePasswordBtn").disabled = deletionPending;
 }
 
 async function refresh() {
@@ -100,6 +103,50 @@ $("saveNameBtn").addEventListener("click", async () => {
     setMessage("nameMessage", "Անունը պահպանվեց։");
     if (state) state.account.displayName = result.profile.display_name;
   } catch (err) { setMessage("nameMessage", err.message, true); }
+});
+
+$("changeEmailForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const email = $("newEmailInput").value.trim();
+  const button = $("changeEmailBtn");
+  if (!email || email.toLowerCase() === state?.account?.email?.toLowerCase()) {
+    setMessage("emailChangeMessage", "Մուտքագրեք նոր էլ. հասցե։", true);
+    return;
+  }
+  button.disabled = true;
+  setMessage("emailChangeMessage", "Հաստատման նամակն ուղարկվում է…");
+  try {
+    const { error } = await supabase.auth.updateUser(
+      { email },
+      { emailRedirectTo: `${location.origin}/account-access` },
+    );
+    if (error) throw error;
+    $("newEmailInput").value = "";
+    setMessage("emailChangeMessage", "Ստուգեք նոր և ներկայիս էլ. հասցեների փոստարկղերը և հաստատեք փոփոխությունը։ Մինչ այդ մուտք գործեք ներկայիս հասցեով։");
+  } catch (err) {
+    setMessage("emailChangeMessage", err.message || "Չհաջողվեց ուղարկել հաստատման նամակը։", true);
+  } finally {
+    button.disabled = false;
+  }
+});
+
+$("changePasswordBtn").addEventListener("click", async () => {
+  const button = $("changePasswordBtn");
+  button.disabled = true;
+  setMessage("passwordChangeMessage", "Հղումն ուղարկվում է…");
+  try {
+    const { data, error: userError } = await supabase.auth.getUser();
+    if (userError || !data.user?.email) throw userError || new Error("Մուտքի էլ. հասցեն չի գտնվել։");
+    const { error } = await supabase.auth.resetPasswordForEmail(data.user.email, {
+      redirectTo: `${location.origin}/account-access`,
+    });
+    if (error) throw error;
+    setMessage("passwordChangeMessage", "Հղումն ուղարկվեց ձեր ընթացիկ էլ. հասցեին։ Ստուգեք վերջին նամակը։");
+  } catch (err) {
+    setMessage("passwordChangeMessage", err.message || "Հղումը չուղարկվեց։ Փորձեք կրկին։", true);
+  } finally {
+    button.disabled = false;
+  }
 });
 
 $("savePrivacyBtn").addEventListener("click", async () => {

@@ -10,9 +10,10 @@ const recipient = '323e4567-e89b-42d3-a456-426614174000';
 
 async function invoke(body, { active = true, revoked = true,
   claim = [{ recipient_id: recipient, recipient_email: 'invitee@example.test' }],
-  inviteError = null, invitedId = recipient } = {}) {
+  inviteError = null, invitedId = recipient, actorRole = 'school_admin', aal = 'aal2' } = {}) {
   let handler;
   const calls = [];
+  const token = `x.${Buffer.from(JSON.stringify({ aal })).toString('base64url')}.x`;
   const admin = {
     auth: {
       getUser: async () => ({ data: { user: { id: actor } }, error: null }),
@@ -26,16 +27,27 @@ async function invoke(body, { active = true, revoked = true,
       return { data: method === 'service_list_staff_invites_14b' ? []
         : method === 'service_claim_staff_invite_resend_14b' ? claim : revoked, error: null };
     },
+    from: table => {
+      assert.equal(table, 'profiles');
+      const query = {
+        select: () => query,
+        eq: () => query,
+        maybeSingle: async () => ({
+          data: { role: actorRole, account_status: 'active' }, error: null,
+        }),
+      };
+      return query;
+    },
   };
   const source = readFileSync('supabase/functions/manage-staff-invitation/index.ts', 'utf8')
     .replace(/^import .*;\n/gm, '');
   vm.runInNewContext(stripTypeScriptTypes(source), {
     createClient: () => admin, hasActiveLiveSession: async () => active,
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
-    Response, console,
+    Response, console, atob,
   });
   const response = await handler(new Request('https://test.invalid', {
-    method: 'POST', headers: { Authorization: 'Bearer test' }, body: JSON.stringify(body),
+    method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(body),
   }));
   return { status: response.status, body: await response.json(), calls };
 }
@@ -59,6 +71,10 @@ test('inactive session and invalid invitation cannot reach privileged RPC', asyn
   assert.equal(invalid.calls.length, 0);
   const denied = await invoke({ action: 'revoke', invitationId: invitation }, { revoked: false });
   assert.equal(denied.status, 403);
+  const weakMaster = await invoke({ action: 'list' }, { actorRole: 'admin', aal: 'aal1' });
+  assert.equal(weakMaster.status, 403);
+  assert.equal(weakMaster.body.error, 'mfa_required');
+  assert.equal(weakMaster.calls.length, 0);
 });
 
 

@@ -1,13 +1,16 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
-let overview = null;
-let selectedSchoolId = null;
-let selectedTeacherMembershipId = null;
+const dashboardState = {
+  schools: [], invitations: [], years: new Map(), teachers: new Map(),
+};
 
-function esc(value) {
+let operationalOverview = null;
+let selectedOperationalTeacherMembershipId = null;
+
+function escapeHtml(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (character) => ({
     "&": "&amp;", "<": "&lt;", ">": "&gt;", "'": "&#39;", '"': "&quot;",
   }[character]));
@@ -20,18 +23,15 @@ function message(id, text, error = false) {
   element.classList.toggle("is-success", Boolean(text) && !error);
 }
 
-async function invoke(name, body = {}) {
-  const { data, error } = await supabase.functions.invoke(name, { body });
-  if (!error && !data?.error) return data;
-  const response = error?.context;
-  const payload = response instanceof Response ? await response.json().catch(() => null) : null;
-  throw new Error(payload?.error || data?.error || error?.message || "request_failed");
-}
-
 async function emailLimitExceeded(error) {
   if (error?.context?.status !== 429) return false;
-  try { return (await error.context.json())?.error === "email_rate_limited"; }
+  try { return (await error.context.clone().json())?.error === "email_rate_limited"; }
   catch { return false; }
+}
+
+async function functionErrorCode(error) {
+  try { return (await error?.context?.clone().json())?.error || ""; }
+  catch { return ""; }
 }
 
 function setButtonBusy(button, busy, busyText) {
@@ -41,138 +41,135 @@ function setButtonBusy(button, busy, busyText) {
   button.textContent = busy ? busyText : button.dataset.defaultLabel;
 }
 
-function selectedSchool() {
-  return overview?.schools?.find((school) => school.id === selectedSchoolId) ?? null;
+function renderOverview() {
+  const schoolId = $("overviewSchool")?.value;
+  const school = dashboardState.schools.find((item) => item.id === schoolId);
+  const years = dashboardState.years.get(schoolId);
+  const teachers = dashboardState.teachers.get(schoolId);
+  const invitations = dashboardState.invitations.filter((invite) => invite.school_id === schoolId);
+  $("overviewSchoolCode").textContent = school?.school_code ? `Դպրոցի կոդ՝ ${school.school_code}` : "";
+  $("overviewYear").textContent = years
+    ? (years.find((year) => year.status === "active")?.label || "Չկա") : "—";
+  $("overviewTeachers").textContent = teachers
+    ? String(teachers.filter((teacher) => teacher.membership_status === "active"
+      && teacher.account_status === "active").length) : "—";
+  $("overviewClasses").textContent = teachers
+    ? String(teachers.filter((teacher) => teacher.membership_status === "active"
+      && teacher.account_status === "active")
+      .flatMap((teacher) => Array.isArray(teacher.classes) ? teacher.classes : [])
+      .filter((klass) => klass.isActive).length) : "—";
+  $("overviewInvites").textContent = dashboardState.invitations.length
+    ? String(invitations.length) : (schoolId ? "0" : "—");
+  if (!schoolId) return message("overviewMessage", "Դպրոց ընտրեք ամփոփումը տեսնելու համար։", true);
+  if (years && !years.some((year) => year.status === "active"))
+    return message("overviewMessage", "Առաջին քայլը՝ բացեք ընթացիկ ուսումնական տարին։");
+  if (teachers && !teachers.some((teacher) => teacher.membership_status === "active"))
+    return message("overviewMessage", "Ուսումնական տարին բաց է։ Այժմ կարող եք հրավիրել ուսուցիչների։");
+  message("overviewMessage", "Դպրոցի հիմնական կարգավորումները պատրաստ են։");
 }
 
-function renderStats(school) {
-  const cards = [
-    ["Ուսուցիչներ", school.counts.teachers, "Հաստատված ակտիվ անդամակցություններ", "blue"],
-    ["Դասարաններ", school.counts.classes, `${school.counts.activeAssignments} ակտիվ դասավանդման կապ`, "teal"],
-    ["Աշակերտներ", school.counts.students, "Հաստատված ակտիվ ընդգրկումներ", "amber"],
-    ["Առարկաներ", school.counts.subjects, "Ուսուցիչներին թույլատրված առարկաներ", "violet"],
-  ];
-  $("overviewStats").innerHTML = cards.map(([label, value, detail, tone]) => `
-    <article class="overview-stat" data-tone="${tone}">
-      <span class="stat-label">${esc(label)}</span>
-      <strong>${esc(value)}</strong>
-      <span class="stat-detail">${esc(detail)}</span>
-    </article>`).join("");
+function operationalSchool() {
+  const schoolId = $("overviewSchool")?.value;
+  return operationalOverview?.schools?.find((school) => school.id === schoolId) ?? null;
 }
 
-function teacherClassCount(teacher) {
-  return teacher.classes?.length ?? 0;
+function operationalTeacherStudentCount(teacher) {
+  return new Set((teacher.classes ?? []).flatMap(
+    (klass) => (klass.students ?? []).map((student) => student.id),
+  )).size;
 }
 
-function teacherStudentCount(teacher) {
-  return new Set((teacher.classes ?? []).flatMap((klass) => (klass.students ?? []).map((student) => student.id))).size;
-}
-
-function renderTeacherList(school) {
-  const teachers = school.teachers ?? [];
-  if (!teachers.length) {
-    $("teacherList").innerHTML = '<div class="empty-state">Ակտիվ ուսուցիչ դեռ չկա։</div>';
-    $("teacherDetail").innerHTML = school.unassignedClasses?.length
-      ? `<div class="empty-state">Կան ${esc(school.unassignedClasses.length)} դասարան, սակայն ակտիվ ուսուցիչ-դասարան կապ դեռ չկա։</div>`
-      : '<div class="empty-state">Դասարանների կառուցվածքը կհայտնվի ուսուցչի և դասարանի հաստատված կապից հետո։</div>';
+function renderOperationalTeacherDetail(school) {
+  const teacher = (school.teachers ?? []).find(
+    (item) => item.membershipId === selectedOperationalTeacherMembershipId,
+  );
+  if (!teacher) {
+    $("teacherDetail").innerHTML = '<div class="hierarchy-empty">Ընտրեք ուսուցչին՝ դասարանները տեսնելու համար։</div>';
     return;
   }
 
-  if (!teachers.some((teacher) => teacher.membershipId === selectedTeacherMembershipId)) {
-    selectedTeacherMembershipId = teachers[0].membershipId;
-  }
-
-  $("teacherList").innerHTML = teachers.map((teacher) => `
-    <button type="button" class="teacher-card" data-teacher="${esc(teacher.membershipId)}"
-      aria-current="${teacher.membershipId === selectedTeacherMembershipId}">
-      <strong>${esc(teacher.displayName)}</strong>
-      <span>${esc(teacher.email || "Էլ. հասցեն հասանելի չէ")}</span>
-      <span class="teacher-card-meta">${teacherClassCount(teacher)} դասարան · ${teacherStudentCount(teacher)} աշակերտ</span>
-    </button>`).join("");
-
-  $("teacherList").querySelectorAll("[data-teacher]").forEach((button) => {
-    button.addEventListener("click", () => {
-      selectedTeacherMembershipId = button.dataset.teacher;
-      renderTeacherList(school);
-      renderTeacherDetail(school);
-    });
-  });
-}
-
-function renderTeacherDetail(school) {
-  const teacher = (school.teachers ?? []).find((item) => item.membershipId === selectedTeacherMembershipId);
-  if (!teacher) return;
-
   const subjects = teacher.subjects?.length
-    ? teacher.subjects.map((subject) => `<span class="subject-chip">${esc(subject.name)}</span>`).join("")
+    ? teacher.subjects.map((subject) =>
+      `<span class="subject-chip">${escapeHtml(subject.name)}</span>`).join("")
     : '<span class="subject-chip">Առարկա չի նշված</span>';
 
   const classes = teacher.classes?.length ? teacher.classes.map((klass) => {
-    const context = [klass.grade?.label, klass.subject?.name, klass.academicYear].filter(Boolean).join(" · ");
+    const context = [klass.grade?.label, klass.subject?.name, klass.academicYear]
+      .filter(Boolean).join(" · ");
     const students = klass.students?.length
       ? `<ul class="student-list">${klass.students.map((student) => `
-          <li><strong>${esc(student.displayName)}</strong><span>${esc(student.email || "Էլ. հասցեն հասանելի չէ")}</span></li>`).join("")}</ul>`
-      : '<p class="empty-inline">Այս դասարանում հաստատված աշակերտ դեռ չկա։</p>';
+          <li><strong>${escapeHtml(student.displayName)}</strong><span>${escapeHtml(student.email || "Էլ. հասցեն հասանելի չէ")}</span></li>`).join("")}</ul>`
+      : '<p class="subtle">Այս դասարանում հաստատված աշակերտ դեռ չկա։</p>';
     return `<article class="class-card">
       <div class="class-card-header">
-        <div><h5>${esc(klass.name)}</h5><p class="class-context">${esc(context || "Համատեքստը լրացվում է")}</p></div>
-        <span class="student-count">${esc(klass.students?.length ?? 0)} աշակերտ</span>
+        <div><h5>${escapeHtml(klass.name)}</h5><p class="class-context">${escapeHtml(context || "Համատեքստը լրացվում է")}</p></div>
+        <span class="student-count">${escapeHtml(klass.students?.length ?? 0)} աշակերտ</span>
       </div>
       ${students}
     </article>`;
-  }).join("") : '<div class="empty-state">Այս ուսուցչին ակտիվ դասարան դեռ չի վերագրվել։</div>';
+  }).join("") : '<div class="hierarchy-empty">Այս ուսուցչին ակտիվ դասարան դեռ չի վերագրվել։</div>';
 
   $("teacherDetail").innerHTML = `
-    <div class="teacher-detail-header">
-      <div>
-        <h4>${esc(teacher.displayName)}</h4>
-        <p class="teacher-email">${esc(teacher.email || "Էլ. հասցեն հասանելի չէ")}</p>
-        <div class="subject-chips">${subjects}</div>
-      </div>
+    <div class="operational-teacher-header">
+      <h4>${escapeHtml(teacher.displayName)}</h4>
+      <p class="operational-teacher-email">${escapeHtml(teacher.email || "Էլ. հասցեն հասանելի չէ")}</p>
+      <div class="subject-chips">${subjects}</div>
     </div>
-    <div class="class-list">${classes}</div>`;
+    <div class="operational-class-list">${classes}</div>`;
 }
 
-function renderSchool(school) {
-  selectedSchoolId = school.id;
-  $("overviewSchool").value = school.id;
-  $("schoolCodeBadge").textContent = school.schoolCode ? `Կոդ՝ ${school.schoolCode}` : "Դպրոցի կոդ չկա";
-  renderStats(school);
-  renderTeacherList(school);
-  renderTeacherDetail(school);
-}
-
-function renderOverview(data) {
-  overview = data;
-  const schools = data.schools ?? [];
-  if (!schools.length) {
-    $("overviewPanel").classList.add("hidden");
-    return false;
+function renderOperationalHierarchy() {
+  const school = operationalSchool();
+  const list = $("teacherList");
+  if (!school) {
+    list.innerHTML = '<div class="hierarchy-empty">Այս դպրոցի կառուցվածքը հասանելի չէ։</div>';
+    $("teacherDetail").innerHTML = "";
+    return;
   }
 
-  $("overviewPanel").classList.remove("hidden");
-  $("overviewSchool").replaceChildren(...schools.map((school) => new Option(school.name, school.id)));
-  $("overviewSchoolField").classList.toggle("hidden", schools.length < 2);
-  const school = schools.find((item) => item.id === selectedSchoolId) ?? schools[0];
-  renderSchool(school);
-  return true;
+  const teachers = school.teachers ?? [];
+  if (!teachers.length) {
+    selectedOperationalTeacherMembershipId = null;
+    list.innerHTML = '<div class="hierarchy-empty">Ակտիվ ուսուցիչ դեռ չկա։</div>';
+    $("teacherDetail").innerHTML = school.unassignedClasses?.length
+      ? `<div class="hierarchy-empty">Կան ${escapeHtml(school.unassignedClasses.length)} դասարան, սակայն ակտիվ ուսուցիչ–դասարան կապ դեռ չկա։</div>`
+      : '<div class="hierarchy-empty">Դասարանների կառուցվածքը կհայտնվի հաստատված կապից հետո։</div>';
+    return;
+  }
+
+  if (!teachers.some((teacher) => teacher.membershipId === selectedOperationalTeacherMembershipId)) {
+    selectedOperationalTeacherMembershipId = teachers[0].membershipId;
+  }
+
+  list.innerHTML = teachers.map((teacher) => `
+    <button type="button" class="teacher-card" data-operational-teacher="${escapeHtml(teacher.membershipId)}"
+      aria-current="${teacher.membershipId === selectedOperationalTeacherMembershipId}">
+      <strong>${escapeHtml(teacher.displayName)}</strong>
+      <span>${escapeHtml(teacher.email || "Էլ. հասցեն հասանելի չէ")}</span>
+      <span class="teacher-card-meta">${escapeHtml(teacher.classes?.length ?? 0)} դասարան · ${escapeHtml(operationalTeacherStudentCount(teacher))} աշակերտ</span>
+    </button>`).join("");
+
+  list.querySelectorAll("[data-operational-teacher]").forEach((button) => {
+    button.addEventListener("click", () => {
+      selectedOperationalTeacherMembershipId = button.dataset.operationalTeacher;
+      renderOperationalHierarchy();
+    });
+  });
+  renderOperationalTeacherDetail(school);
 }
 
-async function loadOverview() {
-  const button = $("refreshOverviewBtn");
-  setButtonBusy(button, true, "Թարմացվում է…");
-  message("overviewMessage", "Բեռնվում է…");
-  try {
-    const data = await invoke("get-school-admin-overview");
-    const available = renderOverview(data);
-    message("overviewMessage", available ? "" : "Դպրոցական կառուցվածք դեռ չի ստեղծվել։");
-    return data.schools ?? [];
-  } catch {
-    message("overviewMessage", "Դպրոցի գործառնական պատկերը չի բեռնվել։ Փորձեք կրկին։", true);
-    return [];
-  } finally {
-    setButtonBusy(button, false, "Թարմացվում է…");
+async function loadOperationalOverview() {
+  message("hierarchyMessage", "Կառուցվածքը թարմացվում է…");
+  const { data, error } = await supabase.functions.invoke("get-school-admin-overview", { body: {} });
+  if (error || !Array.isArray(data?.schools)) {
+    operationalOverview = null;
+    renderOperationalHierarchy();
+    message("hierarchyMessage", "Կառուցվածքը չբեռնվեց։ Փորձեք ավելի ուշ։", true);
+    return;
   }
+  operationalOverview = data;
+  renderOperationalHierarchy();
+  message("hierarchyMessage", "");
 }
 
 async function invite(kind, values, messageId, form) {
@@ -192,6 +189,11 @@ async function invite(kind, values, messageId, form) {
   }
 
   if (error) {
+    if (await functionErrorCode(error) === "mfa_required") {
+      message(messageId, "Master admin գործողությունների համար անհրաժեշտ է հաստատել MFA-ն։", true);
+      window.setTimeout(() => location.assign("./admin-security.html"), 700);
+      return;
+    }
     if (await emailLimitExceeded(error))
       return message(messageId,
         "Հրավերը չուղարկվեց․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։", true);
@@ -201,7 +203,7 @@ async function invite(kind, values, messageId, form) {
 
   form.reset();
   message(messageId, "Հրավերի հարցումն ընդունվել է։ Ստուգեք նաև Spam բաժինը. նամակի ստացումը դեռ հաստատված չէ։");
-  await Promise.all([loadPendingInvites(), loadOverview()]);
+  await loadPendingInvites();
 }
 
 async function loadPendingInvites() {
@@ -229,6 +231,8 @@ async function loadPendingInvites() {
   }
 
   const invitations = data.invitations;
+  dashboardState.invitations = invitations;
+  renderOverview();
   message("pendingMessage", invitations.length ? "" : "Սպասվող հրավերներ չկան։");
 
   for (const invite of invitations) {
@@ -237,26 +241,33 @@ async function loadPendingInvites() {
 
     const main = document.createElement("div");
     main.className = "invite-main";
+
     const title = document.createElement("div");
     title.className = "invite-title";
+
     const roleBadge = document.createElement("span");
     roleBadge.className = "invite-role";
     roleBadge.textContent = invite.kind === "teacher" ? "Ուսուցիչ" : "Դպրոցի ադմինիստրատոր";
+
     const email = document.createElement("strong");
     email.className = "invite-email";
     email.textContent = invite.recipient_email;
+
     const scope = document.createElement("p");
     scope.className = "invite-meta";
     scope.textContent = [invite.school_name, invite.subject_name].filter(Boolean).join(" · ") || "Դպրոցական հրավեր";
+
     const expiry = document.createElement("p");
     expiry.className = "invite-expiry";
     const expiresAt = new Date(invite.expires_at).toLocaleString("hy-AM");
     expiry.textContent = invite.expired ? "Ժամկետանց հրավեր" : `Վավեր է մինչև ${expiresAt}`;
+
     title.append(roleBadge, email);
     main.append(title, scope, expiry);
 
     const actions = document.createElement("div");
     actions.className = "invite-actions";
+
     if (!invite.expired) {
       const resendButton = document.createElement("button");
       resendButton.type = "button";
@@ -264,42 +275,186 @@ async function loadPendingInvites() {
       resendButton.textContent = "Վերաուղարկել";
       resendButton.addEventListener("click", async () => {
         setButtonBusy(resendButton, true, "Ուղարկվում է…");
+        let result, resendError;
         try {
-          const result = await invoke("manage-staff-invitation", { action: "resend", invitationId: invite.invitation_id });
-          if (result?.resendRequested !== true) throw new Error("resend_unavailable");
-          await loadPendingInvites();
-          message("pendingMessage", "Վերաուղարկման հարցումն ընդունվել է։ Բացեք միայն ամենավերջին նամակի հղումը։");
-        } catch (error) {
-          setButtonBusy(resendButton, false, "Ուղարկվում է…");
-          message("pendingMessage", error.message === "email_rate_limited"
-            ? "Էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։"
-            : "Վերաուղարկման հարցումը չհաջողվեց։ Փորձեք ավելի ուշ։", true);
+          ({ data: result, error: resendError } = await supabase.functions.invoke("manage-staff-invitation", {
+            body: { action: "resend", invitationId: invite.invitation_id },
+          }));
+        } catch (requestError) {
+          resendError = requestError;
         }
+        if (resendError || result?.resendRequested !== true) {
+          setButtonBusy(resendButton, false, "Ուղարկվում է…");
+          if (await emailLimitExceeded(resendError))
+            return message("pendingMessage", "Վերաուղարկումը սահմանափակվել է․ էլ. նամակների ժամային սահմանաչափը սպառվել է։ Փորձեք ավելի ուշ։", true);
+          return message("pendingMessage", "Վերաուղարկման հարցումը չհաջողվեց։ Ստուգեք էլ. փոստի կարգավորումները կամ փորձեք ավելի ուշ։", true);
+        }
+        await loadPendingInvites();
+        message("pendingMessage", "Վերաուղարկման հարցումն ընդունվել է։ Բացեք միայն ամենավերջին նամակի հղումը. նախորդ հղումներն այլևս չեն գործում։ Ստուգեք նաև Spam բաժինը։");
       });
       actions.append(resendButton);
     }
 
-    const revokeButton = document.createElement("button");
-    revokeButton.type = "button";
-    revokeButton.className = "ghost danger-ghost";
-    revokeButton.textContent = "Չեղարկել";
-    revokeButton.addEventListener("click", async () => {
+    const button = document.createElement("button");
+    button.type = "button";
+    button.className = "ghost danger-ghost";
+    button.textContent = "Չեղարկել";
+    button.addEventListener("click", async () => {
       if (!window.confirm("Չեղարկե՞լ այս հրավերը։")) return;
-      setButtonBusy(revokeButton, true, "Չեղարկվում է…");
-      try {
-        const result = await invoke("manage-staff-invitation", { action: "revoke", invitationId: invite.invitation_id });
-        if (result?.revoked !== true) throw new Error("revoke_unavailable");
-        await loadPendingInvites();
-        message("pendingMessage", "Հրավերը չեղարկված է։");
-      } catch {
-        setButtonBusy(revokeButton, false, "Չեղարկվում է…");
-        message("pendingMessage", "Հրավերը չչեղարկվեց։ Թարմացրեք ցանկը։", true);
+      setButtonBusy(button, true, "Չեղարկվում է…");
+      const { data: result, error: revokeError } = await supabase.functions.invoke("manage-staff-invitation", {
+        body: { action: "revoke", invitationId: invite.invitation_id },
+      });
+      if (revokeError || result?.revoked !== true) {
+        setButtonBusy(button, false, "Չեղարկվում է…");
+        return message("pendingMessage", "Հրավերը չչեղարկվեց։ Թարմացրեք ցանկը։", true);
       }
+      await loadPendingInvites();
+      message("pendingMessage", "Հրավերը չեղարկված է։");
     });
-    actions.append(revokeButton);
+
+    actions.append(button);
     row.append(main, actions);
     list.append(row);
   }
+}
+
+function rosterField(label, value) {
+  const line = document.createElement("p");
+  line.className = "roster-field";
+  const heading = document.createElement("strong");
+  heading.textContent = label;
+  const text = document.createElement("span");
+  text.textContent = value;
+  line.append(heading, text);
+  return line;
+}
+
+function teacherCard(teacher, schoolId) {
+    const card = document.createElement("article");
+    card.className = "roster-card";
+    const head = document.createElement("div");
+    head.className = "roster-card-head";
+    const identity = document.createElement("div");
+    const name = document.createElement("h3");
+    name.textContent = teacher.display_name || "Ուսուցչի անունը նշված չէ";
+    const email = document.createElement("p");
+    email.className = "roster-email";
+    email.textContent = teacher.email || "Էլ. հասցեն անհասանելի է";
+    identity.append(name, email);
+    const stateBox = document.createElement("div");
+    stateBox.className = "roster-state-actions";
+    const state = document.createElement("span");
+    const active = teacher.membership_status === "active" && teacher.account_status === "active";
+    state.className = `roster-status${active ? "" : " roster-status-ended"}`;
+    state.textContent = active ? "Ակտիվ"
+      : teacher.membership_status === "archived" ? "Արխիվացված"
+        : teacher.account_status !== "active" ? "Հաշիվը դադարեցված է" : "Մուտքը դադարեցված է";
+    stateBox.append(state);
+    if (teacher.membership_status === "active" || teacher.membership_status === "archived") {
+      const archiveButton = document.createElement("button");
+      const archived = teacher.membership_status === "archived";
+      archiveButton.type = "button";
+      archiveButton.className = `ghost roster-archive-button${archived ? "" : " danger-ghost"}`;
+      archiveButton.textContent = archived ? "Վերականգնել" : "Արխիվացնել";
+      archiveButton.disabled = archived && teacher.account_status !== "active";
+      if (archiveButton.disabled) archiveButton.title = "Հաշիվը նախ պետք է ակտիվացնի հարթակի ադմինիստրատորը։";
+      archiveButton.addEventListener("click", async () => {
+        if (!archived && !window.confirm(
+          "Արխիվացնե՞լ այս ուսուցչին։ Այս դպրոցի մուտքը կդադարեցվի, իսկ հաշիվը, առարկաները, դասարաններն ու պատմությունը կպահպանվեն։",
+        )) return;
+        setButtonBusy(archiveButton, true, archived ? "Վերականգնվում է…" : "Արխիվացվում է…");
+        const { data, error } = await supabase.functions.invoke("manage-school-teacher", {
+          body: { action: archived ? "restore" : "archive", schoolId, membershipId: teacher.membership_id },
+        });
+        if (error || data?.updated !== true) {
+          setButtonBusy(archiveButton, false, "");
+          return message("rosterMessage", archived
+            ? "Ուսուցիչը չվերականգնվեց։ Ստուգեք հաշվի վիճակը կամ փորձեք ավելի ուշ։"
+            : "Ուսուցիչը չարխիվացվեց։ Թարմացրեք ցանկը և կրկին փորձեք։", true);
+        }
+        await loadTeacherRoster();
+        message("rosterMessage", archived
+          ? "Ուսուցչի մուտքն այս դպրոցում վերականգնված է։"
+          : "Ուսուցիչն արխիվացված է։ Հաշիվն ու ամբողջ պատմությունը պահպանված են։");
+      });
+      stateBox.append(archiveButton);
+    }
+    head.append(identity, stateBox);
+    card.append(head);
+
+    const subjects = Array.isArray(teacher.subjects) ? teacher.subjects : [];
+    card.append(rosterField("Հաստատված առարկաներ", subjects.length
+      ? subjects.map((subject) => subject.nameHy).filter(Boolean).join(" · ")
+      : "Ակտիվ առարկայի թույլտվություն չկա"));
+
+    const classes = Array.isArray(teacher.classes) ? teacher.classes : [];
+    const classList = document.createElement("div");
+    classList.className = "roster-classes";
+    const title = document.createElement("strong");
+    title.textContent = "Դասարաններ";
+    classList.append(title);
+    if (!classes.length) {
+      const empty = document.createElement("p");
+      empty.textContent = "Դասարան դեռ չի ստեղծվել։";
+      classList.append(empty);
+    } else {
+      const listElement = document.createElement("ul");
+      for (const klass of classes) {
+        const item = document.createElement("li");
+        const scope = [klass.subjectName, klass.gradeNumber ? `${klass.gradeNumber}-րդ դասարան` : ""]
+          .filter(Boolean).join(" · ");
+        item.textContent = `${klass.name || "Դասարան"}${scope ? ` — ${scope}` : ""}${klass.isActive ? "" : " · Արխիվացված"}`;
+        listElement.append(item);
+      }
+      classList.append(listElement);
+    }
+    card.append(classList);
+    return card;
+}
+
+function appendRosterGroup(container, titleText, teachers, schoolId, archived = false) {
+  if (!teachers.length) return;
+  const group = document.createElement("section");
+  group.className = `roster-group${archived ? " roster-group-archived" : ""}`;
+  const title = document.createElement("h3");
+  title.className = "roster-group-title";
+  title.textContent = titleText;
+  group.append(title);
+  for (const teacher of teachers) group.append(teacherCard(teacher, schoolId));
+  container.append(group);
+}
+
+async function loadTeacherRoster() {
+  const schoolId = $("rosterSchool").value;
+  const list = $("teacherRoster");
+  const refresh = $("refreshTeachersBtn");
+  list.replaceChildren();
+  if (!schoolId) return;
+  message("rosterMessage", "Բեռնվում է…");
+  setButtonBusy(refresh, true, "Թարմացվում է…");
+  let data, error;
+  try {
+    ({ data, error } = await supabase.functions.invoke("get-school-teachers", {
+      body: { schoolId },
+    }));
+  } catch (requestError) {
+    error = requestError;
+  } finally {
+    setButtonBusy(refresh, false, "Թարմացվում է…");
+  }
+  if ($("rosterSchool").value !== schoolId) return;
+  if (error || !Array.isArray(data?.teachers)) {
+    message("rosterMessage", "Ուսուցիչների ցանկը հասանելի չէ։ Փորձեք ավելի ուշ։", true);
+    return;
+  }
+  dashboardState.teachers.set(schoolId, data.teachers);
+  renderOverview();
+  message("rosterMessage", data.teachers.length ? "" : "Այս դպրոցի համար հաստատված ուսուցիչներ չկան։");
+  appendRosterGroup(list, "Ակտիվ ուսուցիչներ",
+    data.teachers.filter((teacher) => teacher.membership_status === "active"), schoolId);
+  appendRosterGroup(list, "Արխիվացված ուսուցիչներ",
+    data.teachers.filter((teacher) => teacher.membership_status !== "active"), schoolId, true);
 }
 
 async function loadTeacherSubjects(schoolId) {
@@ -316,6 +471,7 @@ async function loadTeacherSubjects(schoolId) {
   });
   const subjects = options?.subjects;
   subjectSelect.replaceChildren();
+
   if (error || !Array.isArray(subjects) || !subjects.length) {
     const emptyOption = new Option("Հասանելի առարկաներ չկան", "");
     emptyOption.disabled = true;
@@ -323,17 +479,134 @@ async function loadTeacherSubjects(schoolId) {
     subjectSelect.add(emptyOption);
     return false;
   }
-  for (const subject of subjects) subjectSelect.add(new Option(subject.nameHy || subject.code, subject.id));
+
+  for (const subject of subjects) {
+    subjectSelect.add(new Option(subject.nameHy || subject.code, subject.id));
+  }
   subjectSelect.disabled = false;
   return true;
 }
 
-$("refreshOverviewBtn").addEventListener("click", loadOverview);
-$("overviewSchool").addEventListener("change", (event) => {
-  selectedTeacherMembershipId = null;
-  const school = overview?.schools?.find((item) => item.id === event.currentTarget.value);
-  if (school) renderSchool(school);
+async function loadYears() {
+  const schoolId = $("yearSchool").value;
+  const list = $("yearList");
+  list.replaceChildren();
+  if (!schoolId) return;
+  const { data, error } = await supabase.functions.invoke("manage-school-academic-year", {
+    body: { action: "list", schoolId },
+  });
+  if (error || !Array.isArray(data?.years)) {
+    message("yearMessage", "Ուսումնական տարիների ցանկը հասանելի չէ։", true);
+    return;
+  }
+  dashboardState.years.set(schoolId, data.years);
+  renderOverview();
+  if (!data.years.length) {
+    const empty = document.createElement("p");
+    empty.className = "subtle";
+    empty.textContent = "Դեռ բացված ուսումնական տարի չկա։";
+    list.append(empty);
+  }
+  const groups = [
+    ["Ակտիվ ուսումնական տարիներ", data.years.filter((year) => year.status === "active"), false],
+    ["Արխիվացված տարիներ", data.years.filter((year) => year.status !== "active"), true],
+  ];
+  const today = new Date().toISOString().slice(0, 10);
+  for (const [titleText, years, archived] of groups) {
+    if (!years.length) continue;
+    const group = document.createElement("section");
+    group.className = `year-group${archived ? " year-group-archived" : ""}`;
+    const title = document.createElement("h3");
+    title.className = "year-group-title";
+    title.textContent = titleText;
+    group.append(title);
+    for (const year of years) {
+      const item = document.createElement("article");
+      item.className = "year-row";
+      const details = document.createElement("div");
+      const name = document.createElement("strong");
+      name.textContent = year.label;
+      const dates = document.createElement("span");
+      dates.textContent = `${year.starts_on} – ${year.ends_on}`;
+      details.append(name, dates);
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = `ghost${archived ? "" : " danger-ghost"}`;
+      button.textContent = archived ? "Վերականգնել" : "Արխիվացնել";
+      const canRestore = year.starts_on <= today && today <= year.ends_on;
+      button.disabled = archived && !canRestore;
+      if (button.disabled) button.title = "Անցած ուսումնական տարին պահպանվում է որպես պատմություն և այլևս չի կարող ակտիվացվել։";
+      button.addEventListener("click", async () => {
+        if (!archived && !window.confirm(
+          "Արխիվացնե՞լ ուսումնական տարին։ Այդ տարվա դասարանները կդառնան անհասանելի, բայց բոլոր տվյալները կպահպանվեն։",
+        )) return;
+        setButtonBusy(button, true, archived ? "Վերականգնվում է…" : "Արխիվացվում է…");
+        const { data: result, error: updateError } = await supabase.functions.invoke("manage-school-academic-year", {
+          body: { action: archived ? "restore" : "archive", schoolId, yearId: year.id },
+        });
+        if (updateError || result?.updated !== true) {
+          setButtonBusy(button, false, "");
+          return message("yearMessage", archived
+            ? "Տարին չվերականգնվեց։ Համոզվեք, որ այն ընթացիկ է և չի համընկնում մեկ այլ ակտիվ տարվա հետ։"
+            : "Տարին չարխիվացվեց։ Թարմացրեք ցանկը և կրկին փորձեք։", true);
+        }
+        await loadYears();
+        if ($("rosterSchool").value === schoolId) await loadTeacherRoster();
+        else {
+          dashboardState.teachers.delete(schoolId);
+          renderOverview();
+        }
+        message("yearMessage", archived
+          ? "Ուսումնական տարին և դրա նախկինում ակտիվ դասարանները կրկին հասանելի են։"
+          : "Ուսումնական տարին արխիվացված է։ Դասարանների պատմությունը պահպանված է։");
+      });
+      item.append(details, button);
+      group.append(item);
+    }
+    list.append(group);
+  }
+}
+
+$("overviewSchool").addEventListener("change", async (event) => {
+  const schoolId = event.currentTarget.value;
+  for (const id of ["yearSchool", "rosterSchool", "teacherSchool"]) $(id).value = schoolId;
+  message("overviewMessage", "Թարմացվում է…");
+  const [subjectsLoaded] = await Promise.all([
+    loadTeacherSubjects(schoolId), loadYears(), loadTeacherRoster(),
+  ]);
+  if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
+  selectedOperationalTeacherMembershipId = null;
+  renderOperationalHierarchy();
+  renderOverview();
 });
+$("yearSchool").addEventListener("change", () => { message("yearMessage", ""); loadYears(); });
+$("yearForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+  const button = event.currentTarget.querySelector("button[type=submit]");
+  setButtonBusy(button, true, "Բացվում է…");
+  message("yearMessage", "");
+  const { data, error } = await supabase.functions.invoke("manage-school-academic-year", {
+    body: {
+      action: "create", schoolId: $("yearSchool").value,
+      label: $("yearLabel").value.trim(), startsOn: $("yearStart").value, endsOn: $("yearEnd").value,
+    },
+  });
+  setButtonBusy(button, false, "Բացվում է…");
+  if (error || !data?.yearId) {
+    message("yearMessage", data?.error === "school_year_overlap"
+      ? "Այս դպրոցի համար այդ ժամանակահատվածում արդեն ակտիվ տարի կա։"
+      : "Ուսումնական տարին չբացվեց։ Ստուգեք ամսաթվերը և թույլտվությունը։", true);
+    return;
+  }
+  message("yearMessage", "Ուսումնական տարին բացվեց։ Ուսուցիչները կարող են ստեղծել համապատասխան դասարաններ։");
+  await loadYears();
+});
+
+$("refreshTeachersBtn").addEventListener("click", async () => {
+  await loadTeacherRoster();
+  await loadOperationalOverview();
+});
+$("rosterSchool").addEventListener("change", loadTeacherRoster);
 $("refreshInvitesBtn").addEventListener("click", loadPendingInvites);
 $("schoolForm").addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -371,27 +644,43 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
 } else {
   $("accountAccessLink").classList.add("hidden");
   $("signOutBtn").classList.remove("hidden");
-  $("managementHeading").classList.remove("hidden");
 
   if (profile.role === "admin") {
-    $("pageTitle").textContent = "Դպրոցների կառավարում";
-    $("pageLede").textContent = "Դպրոցների գործառնական պատկերը, առաջին ադմինիստրատորների հրավերները և սպասվող հարցումները։";
-    $("masterPanel").classList.remove("hidden");
-  }
-
-  const schools = await loadOverview();
-  if (profile.role === "school_admin") {
-    if (!schools.length) {
-      $("denied").classList.remove("hidden");
+    const { data: assurance } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+    if (assurance?.currentLevel !== "aal2") {
+      location.replace("./admin-security.html");
     } else {
-      $("teacherSchool").replaceChildren(...schools.map((school) => new Option(school.name, school.id)));
-      const subjectsLoaded = await loadTeacherSubjects(schools[0].id);
-      if (subjectsLoaded) $("teacherPanel").classList.remove("hidden");
-      else message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
+      $("masterPanel").classList.remove("hidden");
     }
   }
 
-  if (profile.role === "admin" || schools.length) {
+  if (profile.role === "school_admin") {
+    const { data: schools, error: schoolError } = await supabase.from("schools")
+      .select("id,name,school_code").order("name");
+
+    if (schoolError || !schools?.length) {
+      $("denied").classList.remove("hidden");
+    } else {
+      dashboardState.schools = schools;
+      for (const school of schools) {
+        $("overviewSchool").add(new Option(school.name, school.id));
+        $("teacherSchool").add(new Option(school.name, school.id));
+        $("yearSchool").add(new Option(school.name, school.id));
+        $("rosterSchool").add(new Option(school.name, school.id));
+      }
+      $("overviewPanel").classList.remove("hidden");
+      $("yearPanel").classList.remove("hidden");
+      await loadYears();
+      const subjectsLoaded = await loadTeacherSubjects(schools[0].id);
+      $("teacherPanel").classList.remove("hidden");
+      $("teachersPanel").classList.remove("hidden");
+      await loadTeacherRoster();
+      await loadOperationalOverview();
+      if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
+    }
+  }
+
+  if (profile.role === "admin" || !$("teacherPanel").classList.contains("hidden")) {
     $("pendingPanel").classList.remove("hidden");
     await loadPendingInvites();
   }

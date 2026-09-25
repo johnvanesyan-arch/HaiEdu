@@ -7,6 +7,7 @@
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
   <link rel="stylesheet" href="./privacy.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
 </head>
 <body>
   <main class="shell privacy-shell" id="mainContent">
@@ -14,7 +15,7 @@
       <div>
         <p class="eyebrow">ԱՆՎՏԱՆԳՈՒԹՅՈՒՆ ԵՎ ԳԱՂՏՆԻՈՒԹՅՈՒՆ</p>
         <h1>Իմ հաշիվն ու տվյալները</h1>
-        <p class="subtle">Տեսեք, թե ինչ տվյալներ են պահվում, կառավարեք ընտրովի օգտագործումները և ուղարկեք ջնջման հարցում։</p>
+        <p class="subtle">Կառավարեք ձեր մուտքի տվյալները, գաղտնիության ընտրությունները և հաշվի տվյալները։</p>
       </div>
       <div class="row">
         <a class="ghost button-link" href="./index.html">← Վերադառնալ</a>
@@ -53,6 +54,27 @@
           <p class="subtle">Ծննդյան ամսաթիվ, տան հասցե, հեռախոսահամար, ծնողի էլ. հասցե և պետական նույնականացուցիչ չենք ավելացրել այս պրոֆիլին։ Հաշվի էլ. հասցեն պահվում է Supabase Auth-ում։</p>
           <dl id="inventory" class="privacy-list"></dl>
         </article>
+      </section>
+
+      <section class="card privacy-card" aria-labelledby="accountSecurityTitle">
+        <span class="mode-kicker">Մուտքի տվյալներ</span>
+        <h2 id="accountSecurityTitle">Էլ. հասցե և գաղտնաբառ</h2>
+        <div class="privacy-security-grid">
+          <form id="changeEmailForm" class="privacy-security-form">
+            <h3>Փոխել մուտքի էլ. հասցեն</h3>
+            <p class="subtle small">Մուտքի հասցեն փոխվում է հաստատման նամակների միջոցով։ Մինչև հաստատելը օգտագործեք ձեր ներկայիս հասցեն։</p>
+            <label for="newEmailInput">Նոր էլ. հասցե</label>
+            <input id="newEmailInput" type="email" autocomplete="email" required placeholder="name@example.com" />
+            <button id="changeEmailBtn" type="submit">Ուղարկել հաստատման նամակ</button>
+            <p id="emailChangeMessage" class="message" role="status" aria-live="polite"></p>
+          </form>
+          <div class="privacy-security-form">
+            <h3>Փոխել գաղտնաբառը</h3>
+            <p class="subtle small">Վերականգնման հղումը կուղարկվի ձեր ներկայիս էլ. հասցեին։ Հղումով սահմանեք նոր գաղտնաբառ։</p>
+            <button id="changePasswordBtn" type="button">Ուղարկել գաղտնաբառի փոփոխման հղումը</button>
+            <p id="passwordChangeMessage" class="message" role="status" aria-live="polite"></p>
+          </div>
+        </div>
       </section>
 
       <section class="card privacy-card">

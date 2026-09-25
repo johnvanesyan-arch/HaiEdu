@@ -7,6 +7,14 @@ const json = (body: unknown, status = 200) => new Response(JSON.stringify(body),
   status, headers: { ...cors, "Content-Type": "application/json" },
 });
 
+function jwtPayload(token: string): Record<string, unknown> {
+  try {
+    const encoded = token.split(".")[1] || "";
+    const normalized = encoded.replace(/-/g, "+").replace(/_/g, "/").padEnd(Math.ceil(encoded.length / 4) * 4, "=");
+    return JSON.parse(atob(normalized));
+  } catch { return {}; }
+}
+
 Deno.serve(async (req) => {
   try {
     if (req.method === "OPTIONS") return new Response("ok", { headers: cors });
@@ -23,6 +31,12 @@ Deno.serve(async (req) => {
     const actor = userData.user.id;
     if (!(await hasActiveLiveSession(admin, token, actor)))
       return json({ error: "account_or_session_inactive" }, 403);
+    const { data: actorProfile, error: actorProfileError } = await admin.from("profiles")
+      .select("role,account_status").eq("id", actor).maybeSingle();
+    if (actorProfileError || !actorProfile || actorProfile.account_status !== "active")
+      return json({ error: "account_or_session_inactive" }, 403);
+    if (actorProfile.role === "admin" && jwtPayload(token).aal !== "aal2")
+      return json({ error: "mfa_required" }, 403);
     let body: Record<string, unknown>;
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
     const kind = body.kind;

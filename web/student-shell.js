@@ -42,67 +42,6 @@ function ensureQaStylesheet() {
   document.head.appendChild(link);
 }
 
-function ensureRoleAccess() {
-  if (page !== "home") return;
-  const authPanel = document.getElementById("authPanel");
-  if (!authPanel) return;
-
-  const loginTitle = document.getElementById("loginTitle");
-  if (loginTitle) loginTitle.textContent = "Սովորեք ձեր տեմպով";
-
-  let layout = document.getElementById("preAuthLayout");
-  if (!layout) {
-    layout = document.createElement("div");
-    layout.id = "preAuthLayout";
-    layout.className = "pre-auth-layout";
-    authPanel.parentNode.insertBefore(layout, authPanel);
-    layout.appendChild(authPanel);
-  }
-
-  let section = document.getElementById("roleAccessPanel");
-  if (!section) {
-    section = document.createElement("section");
-    section.id = "roleAccessPanel";
-    section.className = "card role-access-panel";
-    section.setAttribute("aria-labelledby", "roleAccessTitle");
-    section.innerHTML = `
-      <div class="role-access-heading">
-        <span class="mode-kicker">ՄՈՒՏՔ ԸՍՏ ԴԵՐԻ</span>
-        <h2 id="roleAccessTitle">Ինչպե՞ս եք օգտագործում հարթակը</h2>
-        <p class="subtle">Բոլոր դերերը մուտք են գործում նույն էջից։ Հարթակը կբացի ձեր հաշվին համապատասխան բաժինը։</p>
-      </div>
-      <div class="role-access-grid">
-        <a class="role-access-card student" href="./account-access?view=register">
-          <span class="role-access-icon" aria-hidden="true">◉</span>
-          <span><strong>Աշակերտ</strong><small>Սովորել, վարժվել և հետևել առաջընթացին</small></span>
-          <b aria-hidden="true">→</b>
-        </a>
-        <a class="role-access-card teacher" href="./account-access">
-          <span class="role-access-icon" aria-hidden="true">▦</span>
-          <span><strong>Ուսուցիչ</strong><small>Դասարաններ, աշակերտներ և առաջընթաց</small></span>
-          <b aria-hidden="true">→</b>
-        </a>
-        <a class="role-access-card school" href="./account-access">
-          <span class="role-access-icon" aria-hidden="true">▣</span>
-          <span><strong>Դպրոցի ադմին</strong><small>Դպրոցի հրավերներ և աշխատակիցներ</small></span>
-          <b aria-hidden="true">→</b>
-        </a>
-        <a class="role-access-card content" href="./account-access">
-          <span class="role-access-icon" aria-hidden="true">✓</span>
-          <span><strong>Բովանդակության պատասխանատու</strong><small>Հարցերի բանկ, QA և վերանայում</small></span>
-          <b aria-hidden="true">→</b>
-        </a>
-        <a class="role-access-card admin" href="./account-access">
-          <span class="role-access-icon" aria-hidden="true">⚙</span>
-          <span><strong>Ադմին</strong><small>Հաշիվներ, դերեր և համակարգի կառավարում</small></span>
-          <b aria-hidden="true">→</b>
-        </a>
-      </div>
-      <p class="role-access-note">Դպրոցի ադմինները և աշխատակիցները ստանում են հրավեր։ Աշակերտները կարող են ինքնուրույն հաշիվ ստեղծել և հետագայում միանալ դասարանին։</p>`;
-  }
-  if (!section.parentNode || section.parentNode !== layout) layout.appendChild(section);
-}
-
 function navItem(item, mobile = false) {
   const current = item.key === page ? ' aria-current="page"' : "";
   const className = mobile ? "amp-mobile-link" : "amp-nav-link";
@@ -182,17 +121,14 @@ function syncShellState() {
   const authenticated = inferAuthenticated();
   document.body.classList.toggle("amp-student-shell-active", authenticated);
   document.body.classList.toggle("amp-focused-task", authenticated && inferFocusedTask());
-  const roleAccess = document.getElementById("roleAccessPanel");
-  if (roleAccess) roleAccess.classList.toggle("hidden", authenticated);
-  const preAuthLayout = document.getElementById("preAuthLayout");
-  if (preAuthLayout) preAuthLayout.classList.toggle("hidden", authenticated);
+  const publicEntry = document.getElementById("publicEntry");
+  if (publicEntry) publicEntry.classList.toggle("hidden", authenticated);
   syncHomeHeader(authenticated);
 }
 
 ensureBrandAssets();
 ensurePublicBrand();
 ensureQaStylesheet();
-ensureRoleAccess();
 ensureNavigation();
 syncShellState();
 

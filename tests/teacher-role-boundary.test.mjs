@@ -25,6 +25,10 @@ async function callEndpoint(name, role, active = true, authenticated = true, ins
   vm.runInNewContext(stripTypeScriptTypes(source), {
     createClient: () => client, hasActiveLiveSession: async () => active,
     resolveActiveCurriculumRelease: async () => 'release-test',
+    getInstitutionalTeacherDashboard: async () => ({
+      institutionalTeacher: true, institutionalOptions: [], classes: [],
+      totals: { classes: 0, students: 0, studentsNeedingSupport: 0 },
+    }),
     Deno: { env: { get: () => 'test' }, serve: (fn) => { handler = fn; } },
     Response, console, crypto,
   });

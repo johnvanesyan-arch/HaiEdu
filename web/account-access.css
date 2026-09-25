@@ -31,3 +31,40 @@
     width: 100%;
   }
 }
+
+/* Shared account form styled to match the approved entry mockup. */
+body:has(.account-access) { background: #f7faff; }
+.account-access { max-width: 1120px; padding: 0 24px 56px; }
+.account-access .topbar { padding: 20px 0; margin: 0 0 42px; border-bottom: 1px solid #d7e3f3; }
+.account-access .access-brand { display: inline-flex; width: 176px; }
+.account-access .access-brand img { width: 100%; height: auto; display: block; }
+.account-access .access-home { text-decoration: none; color: #244f88; font-weight: 600; }
+.account-access .access-home:hover { text-decoration: underline; }
+.account-access:has(#loginPanel:not(.hidden)) { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); column-gap: clamp(30px, 6vw, 85px); align-items: center; }
+.account-access:has(#loginPanel:not(.hidden)) .topbar { grid-column: 1 / -1; width: 100%; }
+.account-access .account-copy .eyebrow { color: #244f88; }
+.account-access .account-copy h1 { font-size: clamp(2.3rem, 4.2vw, 3.5rem); line-height: 1.16; margin: 16px 0; }
+.account-access .account-copy > p:not(.eyebrow) { color: #607087; font-size: 1.08rem; line-height: 1.6; }
+.account-access .account-invite-note { display: grid; gap: 8px; margin-top: 25px; padding: 20px; background: #eef4fd; border-radius: 10px; line-height: 1.55; }
+.account-access .account-invite-note span { color: #607087; }
+.account-access #loginPanel { width: 100%; max-width: none; padding: 30px; border-color: #d7e3f3; box-shadow: 0 14px 35px #263b501a; }
+.account-access #loginPanel h2 { margin: 0 0 18px; }
+.account-access #loginPanel label { margin: 14px 0; }
+.account-access #loginPanel input { background: #f7faff; }
+.account-access #loginPanel .auth-actions { display: grid; gap: 12px; }
+.account-access #loginPanel .auth-actions button[type="submit"] { width: 100%; }
+.account-access #loginPanel .auth-actions button.ghost { justify-self: start; border: 0; padding-left: 0; }
+.account-access:has(#loginPanel.hidden) .account-copy { display: none; }
+.account-access:has(#loginPanel.hidden) > .auth-card:not(.hidden) { margin: 0 auto; }
+.account-access a:focus-visible { outline: 3px solid #9bc5ff; outline-offset: 3px; }
+@media (max-width: 760px) {
+  .account-access:has(#loginPanel:not(.hidden)) { grid-template-columns: 1fr; }
+  .account-access:has(#loginPanel:not(.hidden)) .topbar { grid-column: 1; margin-bottom: 25px; }
+  .account-access #loginPanel { margin-top: 24px; }
+}
+@media (max-width: 600px) {
+  .account-access { padding: 0 18px 36px; }
+  .account-access .topbar { flex-direction: row; align-items: center; gap: 10px; }
+  .account-access .access-brand { width: 142px; }
+  .account-access #loginPanel { padding: 22px; }
+}

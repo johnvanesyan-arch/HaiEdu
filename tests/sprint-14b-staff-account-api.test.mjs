@@ -9,9 +9,12 @@ const school = '223e4567-e89b-42d3-a456-426614174000';
 const subject = '323e4567-e89b-42d3-a456-426614174000';
 const invited = '423e4567-e89b-42d3-a456-426614174000';
 
-async function invoke(name, body, { active = true, permitted = true, registerError = null, inviteError = null } = {}) {
+async function invoke(name, body, { active = true, permitted = true, registerError = null,
+  inviteError = null, actorRole = body.kind === 'school_admin' ? 'admin' : 'school_admin',
+  aal = 'aal2' } = {}) {
   let handler;
   const calls = [];
+  const token = `x.${Buffer.from(JSON.stringify({ aal })).toString('base64url')}.x`;
   const client = {
     auth: {
       getUser: async () => ({ data: { user: { id: actor } }, error: null }),
@@ -29,16 +32,27 @@ async function invoke(name, body, { active = true, permitted = true, registerErr
       if (method === 'service_accept_staff_invite_14b') return { data: { schoolId: school, membershipId: subject }, error: null };
       return { data: true, error: null };
     },
+    from: table => {
+      assert.equal(table, 'profiles');
+      const query = {
+        select: () => query,
+        eq: () => query,
+        maybeSingle: async () => ({
+          data: { role: actorRole, account_status: 'active' }, error: null,
+        }),
+      };
+      return query;
+    },
   };
   const source = readFileSync(`supabase/functions/${name}/index.ts`, 'utf8')
     .replace(/^import .*;\n/gm, '');
   vm.runInNewContext(stripTypeScriptTypes(source), {
     createClient: () => client, hasActiveLiveSession: async () => active,
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
-    Response, console,
+    Response, console, atob,
   });
   const response = await handler(new Request('https://test.invalid', {
-    method: 'POST', headers: { Authorization: 'Bearer test' }, body: JSON.stringify(body),
+    method: 'POST', headers: { Authorization: `Bearer ${token}` }, body: JSON.stringify(body),
   }));
   return { status: response.status, body: await response.json(), calls };
 }
@@ -61,6 +75,10 @@ test('only verified platform authority can send a first-school invitation', asyn
   const supplied = await invoke('provision-staff-account', { ...schoolInvite, schoolCode: 'SCHOOL-ONE' });
   assert.equal(supplied.status, 400);
   assert.equal(supplied.calls.length, 0);
+  const weakSession = await invoke('provision-staff-account', schoolInvite, { aal: 'aal1' });
+  assert.equal(weakSession.status, 403);
+  assert.equal(weakSession.body.error, 'mfa_required');
+  assert.equal(weakSession.calls.length, 0);
 });
 
 test('teacher invite binds school and subject; registration failure never deletes Auth identity', async () => {

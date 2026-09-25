@@ -12,8 +12,50 @@
   <link rel="stylesheet" href="./components.css" />
   <link rel="stylesheet" href="./student-shell.css" />
   <link rel="stylesheet" href="./home.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
 </head>
 <body data-student-page="home" data-role-routing="pending">
+  <main id="publicEntry" class="public-entry hidden">
+    <header class="public-header">
+      <a href="./index.html" class="public-brand" aria-label="HaiEdu գլխավոր էջ"><img src="./assets/haiedu-primary.svg" alt="HaiEdu" /></a>
+      <nav aria-label="Հանրային նավարկում">
+        <a href="#howItWorks">Ինչպես է աշխատում</a>
+        <a href="#access">Դպրոցների համար</a>
+        <a class="public-button" href="./account-access">Մուտք գործել</a>
+      </nav>
+    </header>
+    <div class="public-body">
+      <section class="public-hero" aria-labelledby="publicTitle">
+        <div class="public-hero-copy">
+          <p class="public-kicker">ՀԱՅԿԱԿԱՆ ՈՒՍՈՒՄՆԱԿԱՆ ԾՐԱԳՐԻ ՀԱՐԹԱԿ</p>
+          <h1 id="publicTitle">Ուսուցման ընթացքը՝ տեսանելի դպրոցին</h1>
+          <p>Աշակերտի վարժանքն ու առաջընթացը, ուսուցչի դասարանները և դպրոցի աշխատանքը՝ յուրաքանչյուրին իր աշխատասեղանում։</p>
+          <div class="public-actions">
+            <a class="public-button" href="./account-access">Մուտք գործել</a>
+            <a class="public-text-link" href="#access">Ինչպե՞ս ստանալ մուտք <span aria-hidden="true">→</span></a>
+          </div>
+          <p class="public-pilot"><strong>Փորձնական տարբերակ</strong> · Առարկայական ստուգումը շարունակվում է։</p>
+        </div>
+        <div class="public-preview" aria-label="Աշխատասեղանների ընդհանուր պատկերը">
+          <div class="public-preview-header"><span aria-hidden="true"></span> ՀայԷդու · Աշխատասեղան</div>
+          <div class="public-preview-content">
+            <span class="public-kicker">ԴԱՍԱՐԱՆԻ ՊԱՏԿԵՐԸ</span>
+            <strong>Մի տեղում՝ ուսուցումը և առաջընթացը</strong>
+            <div><span>Աշակերտ</span><span>Իմ ուսուցումը</span></div>
+            <div><span>Ուսուցիչ</span><span>Իմ դասարանները</span></div>
+            <div><span>Դպրոց</span><span>Իմ աշխատակիցները</span></div>
+          </div>
+        </div>
+      </section>
+      <section class="public-steps" id="howItWorks" aria-label="Հարթակի դերերը">
+        <article><span>01</span><h2>Աշակերտ</h2><p>Սովորում է, ստուգում գիտելիքները և հետևում սեփական առաջընթացին։</p><div><a href="./account-access">Մուտք գործել</a><a href="./account-access?view=register">Նոր աշակերտ ե՞ք։ Ստեղծել հաշիվ</a></div></article>
+        <article><span>02</span><h2>Ուսուցիչ</h2><p>Կառավարում է իրեն վստահված դասարանները և տեսնում ուսուցման բացերը։</p><a href="./account-access">Մուտք գործել</a></article>
+        <article><span>03</span><h2>Դպրոցի ադմին</h2><p>Հրավիրում է ուսուցիչներին և կառավարում սեփական դպրոցի հաշիվները։</p><a href="./account-access">Մուտք գործել</a></article>
+      </section>
+      <section class="public-access" id="access"><h2>Ինչպե՞ս ստանալ մուտք</h2><p>Դպրոցի ադմինիստրատորը և ուսուցիչները մուտք են գործում հրավերից հետո։ Աշակերտը կարող է <a href="./account-access?view=register">ստեղծել հաշիվ</a> և ապա միանալ դասարանին ուսուցչի տրամադրած հղումով կամ կոդով։</p></section>
+    </div>
+    <footer class="public-footer">© HaiEdu · Փորձնական հարթակ</footer>
+  </main>
   <main class="shell" id="mainContent">
     <header class="topbar">
       <div>
@@ -35,10 +77,10 @@
     <section id="authPanel" class="card auth-card hidden" aria-labelledby="loginTitle">
       <span class="mode-kicker">ՍԿՍԵՔ ԱՅՍՏԵՂԻՑ</span>
       <h2 id="loginTitle">Սովորեք ձեր տեմպով</h2>
-      <p class="subtle">Ստեղծեք աշակերտի հաշիվ։ Դասերը կհայտնվեն, երբ միանաք ուսուցչի տրամադրած հղումով կամ կոդով։ Եթե արդեն հաշիվ ունեք, մուտք գործեք նույն էջից։</p>
+      <p class="subtle">Արդեն հաշիվ ունե՞ք։ Մուտք գործեք՝ ձեր դասերն ու առաջընթացը տեսնելու համար։ Նոր աշակերտները կարող են հաշիվ ստեղծել և ապա միանալ դասարանին ուսուցչի տրամադրած հղումով կամ կոդով։</p>
       <div class="row">
-        <a class="button-link" href="./account-access?view=register">Ստեղծել աշակերտի հաշիվ</a>
-        <a class="button-link secondary" href="./account-access">Մուտք գործել</a>
+        <a class="button-link" href="./account-access">Մուտք գործել</a>
+        <a class="button-link secondary" href="./account-access?view=register">Նոր աշակերտի հաշիվ ստեղծել</a>
       </div>
       <p id="authMessage" class="message" aria-live="polite"></p>
     </section>
@@ -54,7 +96,7 @@
         <div>
           <p class="eyebrow">ԻՄ ՈՒՍՈՒՑՈՒՄԸ</p>
           <h2 id="progressTitle">Ի՞նչ անել հաջորդը</h2>
-          <p class="subtle">Համակարգը համադրում է ընթացիկ սեսիան, ախտորոշիչը, յուրացումը և նախապայմանները՝ հաջորդ քայլը առաջարկելու համար։</p>
+          <p class="subtle">Այս պահին համակարգը տարբեր առարկաների առաջադիմությունը չի համեմատում։ Ֆիզիկա 7-ի առաջարկությունները հիմնվում են այդ դասընթացի սեսիայի, ախտորոշիչի, յուրացման և հմտությունների նախապայմանների վրա։</p>
         </div>
         <button id="refreshDashboardBtn" class="ghost">Թարմացնել</button>
       </div>

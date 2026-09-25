@@ -3,74 +3,162 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Administration — Armenian Mastery Platform</title>
+  <title>Հարթակի կառավարում — HaiEdu</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./ux.css" />
   <link rel="stylesheet" href="./admin.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
 </head>
-<body>
+<body data-role-workspace="platform">
   <main class="admin-shell" id="mainContent">
     <header class="admin-topbar">
       <div>
-        <p class="eyebrow">SPRINT 10 · SECURITY / PRIVACY / ADMIN</p>
+        <p class="eyebrow">ՀԱՐԹԱԿԻ ԿԱՌԱՎԱՐՈՒՄ</p>
         <h1>Ադմինիստրացիա</h1>
-        <p class="subtle">Հաշիվներ, դերեր, կասեցումներ, ջնջման հարցումներ, դասարանների պատասխանատվություն և աուդիտ։</p>
+        <p class="subtle">Դպրոցների, դերերի, հաշիվների և անվտանգության կենտրոնացված կառավարում։</p>
       </div>
-      <div class="row">
-        <a class="ghost button-link" href="./privacy.html">Իմ գաղտնիությունը</a>
-        <a class="ghost button-link" href="./school-admin">Դպրոցների հրավերներ</a>
-        <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
-      </div>
+      <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
     </header>
 
-    <section class="notice">
-      <strong>Պիլոտային ադմին միջավայր</strong>
-      <span>Այս էջը չի հանդիսանում իրավական համապատասխանության հավաստագիր։ Այն իրականացնում է պիլոտի համար նախատեսված տեխնիկական վերահսկումներ և ջնջման ընթացակարգ։</span>
+    <section class="notice admin-pilot-note">
+      <strong>Փորձնական կառավարման միջավայր</strong>
+      <span>Մշտական ջնջումը առանձին վերահսկվող գործընթաց է։ Արխիվացումը պահպանում է պատմական և աուդիտի տվյալները։</span>
     </section>
 
     <section id="authPanel" class="card admin-auth hidden">
-      <h2>Ադմինի աշխատասեղան</h2>
-      <p class="subtle">Մուտք գործեք ձեր հաշվով։ Հարթակը կստուգի դերը և կբացի համապատասխան բաժինը։</p>
+      <h2>Պաշտպանված աշխատասեղան</h2>
+      <p class="subtle">Մուտք գործեք master admin հաշվով։ Հարթակը կստուգի դերը, հաշվի վիճակը և անվտանգության երկրորդ քայլը։</p>
       <a class="button-link" href="./account-access">Մուտք գործել</a>
-      <p id="authMessage" class="message"></p>
+      <p id="authMessage" class="message" aria-live="polite"></p>
+    </section>
+
+    <section id="mfaPanel" class="card admin-auth hidden">
+      <span class="mode-kicker">Անվտանգության պարտադիր քայլ</span>
+      <h2>Հաստատեք master admin մուտքը</h2>
+      <p class="subtle">Կառավարման տվյալները և գործողությունները հասանելի են միայն MFA-ով հաստատված սեսիայից։</p>
+      <a class="button-link" href="./admin-security.html">Շարունակել անվտանգության ստուգումը</a>
     </section>
 
     <section id="console" class="hidden">
-      <div id="stats" class="admin-stats"></div>
-
-      <section class="card admin-card">
-        <div class="admin-heading"><div><span class="mode-kicker">Հաշիվներ</span><h2>Օգտատերեր և դերեր</h2><p class="subtle">Կասեցված հաշիվը կարող եք արխիվացնել։ Արխիվացվածները թաքցված են հիմնական ցանկից և չեն կարող մուտք գործել։ Ջնջումը վերջնական է և կարող է պահանջել նախապես փոխանցել կապված տվյալները։</p></div><button id="refreshBtn" class="ghost">Թարմացնել</button></div>
-        <div class="admin-actions" role="group" aria-label="Հաշիվների ցանկ">
-          <button id="activeUsersBtn" type="button" aria-pressed="true">Ընթացիկ հաշիվներ</button>
-          <button id="archivedUsersBtn" type="button" class="ghost" aria-pressed="false">Արխիվացվածներ <span id="archivedCount"></span></button>
+      <section id="overviewSection" class="admin-view" aria-labelledby="overviewTitle">
+        <div class="admin-view-heading">
+          <div>
+            <span class="mode-kicker">ԳԼԽԱՎՈՐ</span>
+            <h2 id="overviewTitle">Գործառնական պատկեր</h2>
+            <p class="subtle">Առաջնահերթ խնդիրները, ոչ թե ամբողջական հաշիվների ցանկը։</p>
+          </div>
+          <button type="button" class="ghost" data-refresh-view>Թարմացնել</button>
         </div>
-        <div class="table-wrap"><table class="admin-table"><thead><tr><th>Օգտատեր</th><th>Դեր</th><th>Կարգավիճակ</th><th>Վերջին մուտք</th><th>Գործողություններ</th></tr></thead><tbody id="userRows"></tbody></table></div>
+        <div id="stats" class="admin-stats" aria-live="polite"></div>
+        <div class="admin-overview-grid">
+          <section class="card admin-card admin-attention-card">
+            <span class="mode-kicker">ՈՒՇԱԴՐՈՒԹՅՈՒՆ Է ՊԱՀԱՆՋՈՒՄ</span>
+            <h3>Գործողությունների հերթ</h3>
+            <div id="attentionList" class="admin-list"></div>
+          </section>
+          <section class="card admin-card">
+            <span class="mode-kicker">ԱՐԱԳ ԳՈՐԾՈՂՈՒԹՅՈՒՆՆԵՐ</span>
+            <h3>Աշխատանքային հղումներ</h3>
+            <div class="admin-quick-actions">
+              <a class="button-link" href="./school-admin.html">Հրավիրել դպրոց</a>
+              <a class="ghost button-link" href="#schoolsSection">Գտնել դպրոց</a>
+              <a class="ghost button-link" href="#archiveSection">Դիտել արխիվը</a>
+              <a class="ghost button-link" href="./admin-security.html">Անվտանգություն և վերականգնում</a>
+            </div>
+          </section>
+          <section class="card admin-card admin-wide-card">
+            <div class="admin-heading">
+              <div><span class="mode-kicker">ՎԵՐՋԻՆ ԳՈՐԾՈՂՈՒԹՅՈՒՆՆԵՐ</span><h3>Աուդիտի ամփոփում</h3></div>
+              <a class="text-link" href="#auditSection">Բացել ամբողջ աուդիտը</a>
+            </div>
+            <div id="recentActivity" class="admin-activity-list"></div>
+          </section>
+        </div>
       </section>
 
-      <section class="card admin-card">
-        <span class="mode-kicker">Գաղտնիություն</span>
-        <h2>Ջնջման հարցումներ</h2>
-        <p class="subtle">Ուսանողի ջնջումն ունի առանձին հաստատման և վերջնական ջնջման քայլեր։ Անձնակազմի կապված դասարանները, դպրոցները և հրավերները նախ պետք է կարգավորել։</p>
+      <section id="schoolsSection" class="admin-view" hidden aria-labelledby="schoolsTitle">
+        <div class="admin-view-heading">
+          <div>
+            <span class="mode-kicker">ԴՊՐՈՑՆԵՐԻ ԿԱՌԱՎԱՐՈՒՄ</span>
+            <h2 id="schoolsTitle">Դպրոցների ցանկ</h2>
+            <p class="subtle">Սկզբում ընտրեք դպրոցը, ապա բացեք նրա ադմիններին, ուսուցիչներին, դասարաններն ու աշակերտներին։</p>
+          </div>
+          <button type="button" class="ghost" data-refresh-view>Թարմացնել</button>
+        </div>
+        <form id="schoolSearchForm" class="admin-filter-bar">
+          <label><span>Որոնել դպրոց</span><input id="schoolSearch" type="search" placeholder="Անուն կամ դպրոցական կոդ" autocomplete="off" /></label>
+          <button type="submit">Որոնել</button>
+        </form>
+        <div id="schoolDirectory" class="school-directory"></div>
+        <div id="schoolPager" class="admin-pager"></div>
+        <section id="schoolDetail" class="card admin-card school-detail hidden" aria-live="polite"></section>
+      </section>
+
+      <section id="accountsSection" class="admin-view" hidden aria-labelledby="accountsTitle">
+        <div class="admin-view-heading">
+          <div>
+            <span class="mode-kicker">ՀԱՇԻՎՆԵՐ</span>
+            <h2 id="accountsTitle">Հաշիվներ և դերեր</h2>
+            <p class="subtle">Գլոբալ որոնում և հաշվի վիճակի կառավարում։ Դպրոցական կապերը կառավարվում են դպրոցի էջից։</p>
+          </div>
+          <button type="button" class="ghost" data-refresh-view>Թարմացնել</button>
+        </div>
+        <form id="accountFilterForm" class="admin-filter-bar admin-filter-grid">
+          <label><span>Որոնում</span><input id="accountSearch" type="search" placeholder="Անուն կամ էլ. հասցե" autocomplete="off" /></label>
+          <label><span>Դեր</span><select id="accountRole"><option value="">Բոլոր դերերը</option><option value="admin">Master admin</option><option value="content_admin">Content reviewer</option><option value="school_admin">School admin</option><option value="teacher">Teacher</option><option value="student">Student</option></select></label>
+          <label><span>Վիճակ</span><select id="accountStatus"><option value="">Բոլոր ընթացիկները</option><option value="active">Ակտիվ</option><option value="suspended">Կասեցված</option><option value="deletion_pending">Ջնջման սպասող</option></select></label>
+          <button type="submit">Կիրառել</button>
+        </form>
+        <div class="table-wrap"><table class="admin-table"><thead><tr><th>Օգտատեր</th><th>Դեր</th><th>Կարգավիճակ</th><th>Վերջին մուտք</th><th>Գործողություններ</th></tr></thead><tbody id="userRows"></tbody></table></div>
+        <div id="accountPager" class="admin-pager"></div>
+      </section>
+
+      <section id="archiveSection" class="admin-view" hidden aria-labelledby="archiveTitle">
+        <div class="admin-view-heading">
+          <div>
+            <span class="mode-kicker">ԱՐԽԻՎ</span>
+            <h2 id="archiveTitle">Արխիվացված հաշիվներ</h2>
+            <p class="subtle">Արխիվացումը հետադարձելի է։ Master admin հաշիվները երբեք վերջնականապես չեն ջնջվում։</p>
+          </div>
+          <button type="button" class="ghost" data-refresh-view>Թարմացնել</button>
+        </div>
+        <form id="archiveFilterForm" class="admin-filter-bar">
+          <label><span>Որոնում</span><input id="archiveSearch" type="search" placeholder="Անուն կամ էլ. հասցե" autocomplete="off" /></label>
+          <button type="submit">Որոնել</button>
+        </form>
+        <div class="table-wrap"><table class="admin-table"><thead><tr><th>Օգտատեր</th><th>Դեր</th><th>Արխիվացման ամսաթիվ</th><th>Գործողություններ</th></tr></thead><tbody id="archiveRows"></tbody></table></div>
+        <div id="archivePager" class="admin-pager"></div>
+      </section>
+
+      <section id="deletionsSection" class="admin-view" hidden aria-labelledby="deletionsTitle">
+        <div class="admin-view-heading">
+          <div>
+            <span class="mode-kicker">ԳԱՂՏՆԻՈՒԹՅՈՒՆ</span>
+            <h2 id="deletionsTitle">Ջնջման հարցումներ</h2>
+            <p class="subtle">Վերջնական ջնջումը առանձին հաստատվող գործընթաց է։ Master admin հաշիվների ջնջումը արգելված է։</p>
+          </div>
+          <button type="button" class="ghost" data-refresh-view>Թարմացնել</button>
+        </div>
         <div class="table-wrap"><table class="admin-table"><thead><tr><th>Հարցում</th><th>Օգտատեր</th><th>Կարգավիճակ</th><th>Ամսաթիվ</th><th>Գործողություններ</th></tr></thead><tbody id="deletionRows"></tbody></table></div>
       </section>
 
-      <section class="card admin-card">
-        <span class="mode-kicker">Դասարաններ</span>
-        <h2>Պատասխանատվության փոխանցում</h2>
-        <p class="subtle">Ուսուցչի հաշիվը ջնջելուց առաջ դասարանները պետք է փոխանցվեն այլ ակտիվ ուսուցչի կամ ադմինի։</p>
-        <div class="table-wrap"><table class="admin-table"><thead><tr><th>Դասարան</th><th>Ուսուցիչ</th><th>Աշակերտներ</th><th>Կարգավիճակ</th><th>Փոխանցում</th></tr></thead><tbody id="classRows"></tbody></table></div>
+      <section id="auditSection" class="admin-view" hidden aria-labelledby="auditTitle">
+        <div class="admin-view-heading">
+          <div>
+            <span class="mode-kicker">ԱՈՒԴԻՏ</span>
+            <h2 id="auditTitle">Անվտանգության իրադարձություններ</h2>
+            <p class="subtle">Գրանցվում են դերերի, կարգավիճակների և կառավարման գործողությունները՝ առանց գաղտնաբառերի կամ պատասխանների բովանդակության։</p>
+          </div>
+          <button type="button" class="ghost" data-refresh-view>Թարմացնել</button>
+        </div>
+        <div class="table-wrap"><table class="admin-table"><thead><tr><th>Ժամանակ</th><th>Գործողություն</th><th>Կատարող</th><th>Թիրախ</th><th>Արդյունք</th></tr></thead><tbody id="auditRows"></tbody></table></div>
       </section>
 
-      <section class="card admin-card">
-        <span class="mode-kicker">Աուդիտ</span>
-        <h2>Վերջին անվտանգության իրադարձությունները</h2>
-        <p class="subtle">Լոգը չի պահում ուսանողների պատասխանների բովանդակությունը կամ գաղտնաբառերը։</p>
-        <div class="table-wrap"><table class="admin-table"><thead><tr><th>Ժամանակ</th><th>Գործողություն</th><th>Actor</th><th>Target</th><th>Արդյունք</th></tr></thead><tbody id="auditRows"></tbody></table></div>
-      </section>
-      <p id="consoleMessage" class="message" aria-live="polite"></p>
+      <p id="consoleMessage" class="message admin-console-message" aria-live="polite"></p>
     </section>
   </main>
   <script type="module" src="./admin.js"></script>
   <script type="module" src="./ux.js"></script>
+  <script type="module" src="./role-layout.js"></script>
 </body>
 </html>
