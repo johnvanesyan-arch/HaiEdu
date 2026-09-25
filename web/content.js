@@ -529,7 +529,7 @@ async function showForSession(session) {
   const allowed = await refresh();
   if (check !== sessionCheck) return;
   if (!allowed) {
-    $("authMessage").textContent = "Այս հաշվին բովանդակության բաժնի հասանելիություն տրված չէ։";
+    $("authMessage").textContent = "Չհաջողվեց հաստատել այս բաժնի հասանելիությունը։ Թարմացրեք էջը կամ մուտք գործեք համապատասխան հաշվով։";
     $("authPanel").classList.remove("hidden");
     return;
   }
