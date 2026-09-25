@@ -164,6 +164,91 @@ async function loadPendingInvites() {
   }
 }
 
+function rosterField(label, value) {
+  const line = document.createElement("p");
+  line.className = "roster-field";
+  const heading = document.createElement("strong");
+  heading.textContent = label;
+  const text = document.createElement("span");
+  text.textContent = value;
+  line.append(heading, text);
+  return line;
+}
+
+async function loadTeacherRoster() {
+  const schoolId = $("rosterSchool").value;
+  const list = $("teacherRoster");
+  const refresh = $("refreshTeachersBtn");
+  list.replaceChildren();
+  if (!schoolId) return;
+  message("rosterMessage", "Բեռնվում է…");
+  setButtonBusy(refresh, true, "Թարմացվում է…");
+  let data, error;
+  try {
+    ({ data, error } = await supabase.functions.invoke("get-school-teachers", {
+      body: { schoolId },
+    }));
+  } catch (requestError) {
+    error = requestError;
+  } finally {
+    setButtonBusy(refresh, false, "Թարմացվում է…");
+  }
+  if ($("rosterSchool").value !== schoolId) return;
+  if (error || !Array.isArray(data?.teachers)) {
+    message("rosterMessage", "Ուսուցիչների ցանկը հասանելի չէ։ Փորձեք ավելի ուշ։", true);
+    return;
+  }
+  message("rosterMessage", data.teachers.length ? "" : "Այս դպրոցի համար հաստատված ուսուցիչներ չկան։");
+  for (const teacher of data.teachers) {
+    const card = document.createElement("article");
+    card.className = "roster-card";
+    const head = document.createElement("div");
+    head.className = "roster-card-head";
+    const identity = document.createElement("div");
+    const name = document.createElement("h3");
+    name.textContent = teacher.display_name || "Ուսուցչի անունը նշված չէ";
+    const email = document.createElement("p");
+    email.className = "roster-email";
+    email.textContent = teacher.email || "Էլ. հասցեն անհասանելի է";
+    identity.append(name, email);
+    const state = document.createElement("span");
+    const active = teacher.membership_status === "active" && teacher.account_status === "active";
+    state.className = `roster-status${active ? "" : " roster-status-ended"}`;
+    state.textContent = active ? "Ակտիվ" : "Մուտքը դադարեցված է";
+    head.append(identity, state);
+    card.append(head);
+
+    const subjects = Array.isArray(teacher.subjects) ? teacher.subjects : [];
+    card.append(rosterField("Հաստատված առարկաներ", subjects.length
+      ? subjects.map((subject) => subject.nameHy).filter(Boolean).join(" · ")
+      : "Ակտիվ առարկայի թույլտվություն չկա"));
+
+    const classes = Array.isArray(teacher.classes) ? teacher.classes : [];
+    const classList = document.createElement("div");
+    classList.className = "roster-classes";
+    const title = document.createElement("strong");
+    title.textContent = "Դասարաններ";
+    classList.append(title);
+    if (!classes.length) {
+      const empty = document.createElement("p");
+      empty.textContent = "Դասարան դեռ չի ստեղծվել։";
+      classList.append(empty);
+    } else {
+      const listElement = document.createElement("ul");
+      for (const klass of classes) {
+        const item = document.createElement("li");
+        const scope = [klass.subjectName, klass.gradeNumber ? `${klass.gradeNumber}-րդ դասարան` : ""]
+          .filter(Boolean).join(" · ");
+        item.textContent = `${klass.name || "Դասարան"}${scope ? ` — ${scope}` : ""}${klass.isActive ? "" : " · Արխիվացված"}`;
+        listElement.append(item);
+      }
+      classList.append(listElement);
+    }
+    card.append(classList);
+    list.append(card);
+  }
+}
+
 async function loadTeacherSubjects(schoolId) {
   const subjectSelect = $("teacherSubject");
   subjectSelect.replaceChildren();
@@ -242,6 +327,8 @@ $("yearForm").addEventListener("submit", async (event) => {
   await loadYears();
 });
 
+$("refreshTeachersBtn").addEventListener("click", loadTeacherRoster);
+$("rosterSchool").addEventListener("change", loadTeacherRoster);
 $("refreshInvitesBtn").addEventListener("click", loadPendingInvites);
 $("schoolForm").addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -292,11 +379,14 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
       for (const school of schools) {
         $("teacherSchool").add(new Option(school.name, school.id));
         $("yearSchool").add(new Option(school.name, school.id));
+        $("rosterSchool").add(new Option(school.name, school.id));
       }
       $("yearPanel").classList.remove("hidden");
       await loadYears();
       const subjectsLoaded = await loadTeacherSubjects(schools[0].id);
       $("teacherPanel").classList.remove("hidden");
+      $("teachersPanel").classList.remove("hidden");
+      await loadTeacherRoster();
       if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
     }
   }
