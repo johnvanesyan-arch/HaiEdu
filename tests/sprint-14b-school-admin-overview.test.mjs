@@ -141,5 +141,6 @@ test('teacher hierarchy is confined to the sanctioned teacher drill-down', () =>
   assert.match(detailJs, /teacher\.classes/);
   assert.match(detailJs, /document\.createElement\("details"\)/);
   assert.match(detailCss, /@media \(max-width: 560px\)/);
+  assert.match(readFileSync('web/role-layout.js', 'utf8'), /"teacherDetailPanel"/);
   assert.doesNotMatch(overviewHtml, /\b(?:75|80|90)%\b/);
 });
