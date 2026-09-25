@@ -127,14 +127,19 @@ test('inactive live sessions are rejected before protected data is queried', asy
   assert.equal(result.body.error, 'account_or_session_inactive');
 });
 
-test('front end presents operational hierarchy and an explicit analytics gate', () => {
-  const html = readFileSync('web/school-admin.html', 'utf8');
-  const js = readFileSync('web/school-admin.js', 'utf8');
-  const css = readFileSync('web/school-admin.css', 'utf8');
-  assert.match(html, /Ուսուցիչ → դասարան → աշակերտ/);
-  assert.match(html, /Վերլուծական վահանակը դեռ չի ակտիվացվել/);
-  assert.match(js, /get-school-admin-overview/);
-  assert.match(js, /teacher\.classes/);
-  assert.match(css, /@media \(max-width: 560px\)/);
-  assert.doesNotMatch(html, /\b(?:75|80|90)%\b/);
+test('teacher hierarchy is confined to the sanctioned teacher drill-down', () => {
+  const overviewHtml = readFileSync('web/school-admin.html', 'utf8');
+  const overviewJs = readFileSync('web/school-admin.js', 'utf8');
+  const detailHtml = readFileSync('web/school-teacher.html', 'utf8');
+  const detailJs = readFileSync('web/school-teacher.js', 'utf8');
+  const detailCss = readFileSync('web/school-teacher.css', 'utf8');
+  assert.doesNotMatch(overviewHtml, /Ուսուցիչ → դասարան → աշակերտ/);
+  assert.match(overviewHtml, /Վերլուծական վահանակը դեռ չի ակտիվացվել/);
+  assert.match(overviewJs, /school-teacher\.html\?school=/);
+  assert.match(detailHtml, /Ուսուցչի դասարանները/);
+  assert.match(detailJs, /get-school-admin-overview/);
+  assert.match(detailJs, /teacher\.classes/);
+  assert.match(detailJs, /document\.createElement\("details"\)/);
+  assert.match(detailCss, /@media \(max-width: 560px\)/);
+  assert.doesNotMatch(overviewHtml, /\b(?:75|80|90)%\b/);
 });
