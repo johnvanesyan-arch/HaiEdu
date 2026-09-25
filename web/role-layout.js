@@ -192,7 +192,7 @@ function syncRoleSidebar() {
   syncPlatformSections();
 }
 
-const gates = ["dashboardPanel", "masterPanel", "overviewPanel", "teacherPanel", "console", "securityConsole"]
+const gates = ["dashboardPanel", "masterPanel", "overviewPanel", "teacherPanel", "teacherDetailPanel", "console", "securityConsole"]
   .map(id => document.getElementById(id)).filter(Boolean);
 const observer = new MutationObserver(syncRoleSidebar);
 gates.forEach(gate => observer.observe(gate, { attributes: true, attributeFilter: ["class"] }));
