@@ -213,6 +213,51 @@
   border-color: #dfc3c8 !important;
 }
 
+/* The sidebar hash selects one section without changing authorization gates. */
+.school-admin-page section[hidden] { display: none !important; }
+
+.roster-school-field {
+  display: grid;
+  gap: 6px;
+  max-width: 360px;
+  margin: 16px 0 0;
+}
+#rosterMessage { margin: 12px 0 0; }
+.teacher-roster { display: grid; gap: 12px; margin-top: 14px; }
+.roster-card {
+  min-width: 0;
+  padding: 18px;
+  border: 1px solid #dfe6ef;
+  border-radius: 13px;
+  background: #fbfcfe;
+}
+.roster-card-head {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.roster-card h3 { margin: 0; font-size: 1.12rem; }
+.roster-email { margin: 5px 0 0; color: #52667f; overflow-wrap: anywhere; }
+.roster-status {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #28583b;
+  background: #e6f4e9;
+  font-size: .81rem;
+  font-weight: 750;
+}
+.roster-status-ended { color: #7b4350; background: #fbebee; }
+.roster-field { display: flex; flex-wrap: wrap; gap: 5px 10px; margin: 14px 0 0; }
+.roster-field strong, .roster-classes > strong { color: #243e63; }
+.roster-field span { color: #52667f; overflow-wrap: anywhere; }
+.roster-classes { margin-top: 12px; }
+.roster-classes p { margin: 5px 0 0; color: #52667f; }
+.roster-classes ul { margin: 6px 0 0; padding-left: 22px; color: #52667f; }
+.roster-classes li { margin-top: 4px; overflow-wrap: anywhere; }
+
 @media (max-width: 760px) {
   .school-admin-header {
     align-items: stretch;
