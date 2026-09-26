@@ -9,6 +9,12 @@ async function invoke(name, body, tables) {
   const reads = [];
   const client = {
     auth: { getUser: async () => ({ data: { user: { id: 'user-a' } }, error: null }) },
+    async rpc(name) {
+      if (name === 'service_redeem_institutional_join_code_14c') {
+        return { data: null, error: null };
+      }
+      throw new Error(`unexpected RPC: ${name}`);
+    },
     from(table) {
       reads.push(table);
       const query = new Proxy({}, { get(_, key) {
