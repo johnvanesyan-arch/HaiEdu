@@ -11,6 +11,39 @@ let rosterQuery = "";
 let matrixStudentFilter = "all";
 let dashboardLoadVersion = 0;
 
+function navigationSelection() {
+  if (typeof window.location?.search !== "string") return { classId: null, selection: null };
+  const params = new URLSearchParams(window.location.search);
+  const assignmentId = params.get("assignment");
+  const curriculumReleaseId = params.get("release");
+  const unitId = params.get("unit");
+  return {
+    classId: params.get("class"),
+    selection: assignmentId && curriculumReleaseId && unitId
+      ? { assignmentId, curriculumReleaseId, unitId }
+      : null,
+  };
+}
+
+function syncNavigation(klass, push = false) {
+  if (!klass) return;
+  const url = new URL(window.location.href);
+  url.searchParams.set("class", klass.id);
+  if (dashboard?.institutionalTeacher && klass.selectedUnit) {
+    url.searchParams.set("assignment", klass.assignmentId);
+    url.searchParams.set("release", klass.selectedUnit.curriculumReleaseId);
+    url.searchParams.set("unit", klass.selectedUnit.unitId);
+  } else {
+    url.searchParams.delete("assignment");
+    url.searchParams.delete("release");
+    url.searchParams.delete("unit");
+  }
+  const next = `${url.pathname}${url.search}${url.hash}`;
+  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
+  if (next === current) return;
+  window.history[push ? "pushState" : "replaceState"]({}, "", next);
+}
+
 function escapeHtml(value) {
   return String(value ?? "")
     .replaceAll("&", "&amp;")
@@ -76,7 +109,11 @@ async function loadDashboard() {
     return;
   }
   setMessage("classMessage", "");
-  const { data, error } = await supabase.functions.invoke("get-teacher-dashboard", { body: {} });
+  const navigation = navigationSelection();
+  if (navigation.classId) selectedClassId = navigation.classId;
+  const { data, error } = await supabase.functions.invoke("get-teacher-dashboard", {
+    body: navigation.selection ? { selection: navigation.selection } : {},
+  });
   if (version !== dashboardLoadVersion) return;
   if (error) {
     $("dashboardPanel").classList.add("hidden");
@@ -101,7 +138,7 @@ async function loadDashboard() {
 
   $("classCount").textContent = data.totals?.classes ?? 0;
   $("studentCount").textContent = data.totals?.students ?? 0;
-  $("supportCount").textContent = institutional ? "—" : (data.totals?.studentsNeedingSupport ?? 0);
+  $("supportCount").textContent = data.totals?.studentsNeedingSupport ?? 0;
 
   renderClassList();
   const selected = data.classes?.find((c) => c.id === selectedClassId)
@@ -129,7 +166,7 @@ function renderClassList() {
       <strong>${escapeHtml(klass.name)}</strong>
       <span>${escapeHtml(klass.academicYear ?? "")}</span>
       <span class="class-list-meta"><span>${klass.studentCount} աշակերտ</span><span class="class-list-status">${klass.isActive ? "Ակտիվ" : "Արխիվացված"}</span></span>`;
-    btn.addEventListener("click", () => selectClass(klass.id));
+    btn.addEventListener("click", () => selectClass(klass.id, { pushNavigation: true }));
     list.appendChild(btn);
   }
   if (!list.children.length) {
@@ -143,18 +180,20 @@ function selectedClass() {
   return dashboard?.classes?.find((c) => c.id === selectedClassId) ?? null;
 }
 
-function selectClass(id) {
+function selectClass(id, { pushNavigation = false } = {}) {
   selectedClassId = id;
   rosterQuery = "";
   if ($("studentSearchInput")) $("studentSearchInput").value = "";
   renderClassList();
   const klass = selectedClass();
   if (!klass) return;
+  syncNavigation(klass, pushNavigation);
 
   if (dashboard?.institutionalTeacher) {
     $("emptyClass").classList.add("hidden");
     $("institutionalEmpty").classList.add("hidden");
-    $("classView").classList.add("hidden");
+    $("classView").classList.remove("hidden");
+    $("legacyClassHeader").classList.add("hidden");
     $("institutionalClassView").classList.remove("hidden");
     $("institutionalSelectedName").textContent = klass.name;
     $("institutionalSelectedMeta").textContent = [
@@ -172,7 +211,28 @@ function selectClass(id) {
     setMessage("institutionalStudentInviteMessage", klass.isActive
       ? ""
       : "Արխիվացված դասարանին նոր աշակերտ հրավիրել հնարավոր չէ։", !klass.isActive);
-    renderInstitutionalRoster(klass);
+    $("rosterDescription").textContent = "Բացեք աշակերտի առաջընթացը՝ ախտորոշիչի, վարժությունների, կրկնության և յուրացման ստուգման ճշգրիտ տվյալները տեսնելու համար։";
+    const unitFilter = $("teacherUnitFilter");
+    unitFilter.replaceChildren(...(klass.unitOptions ?? []).map((unit) => {
+      const option = document.createElement("option");
+      option.value = `${unit.curriculumReleaseId}:${unit.unitId}`;
+      option.textContent = `${unit.unitSequence}. ${unit.unitTitleHy}`;
+      option.selected = unit.unitId === klass.selectedUnit?.unitId
+        && unit.curriculumReleaseId === klass.selectedUnit?.curriculumReleaseId;
+      return option;
+    }));
+    $("teacherUnitFilterLabel").classList.toggle("hidden", !(klass.unitOptions?.length));
+    unitFilter.disabled = (klass.unitOptions?.length ?? 0) < 2;
+    const analyticsAvailable = klass.analyticsAvailable === true;
+    $("teacherAnalyticsUnavailable").classList.toggle("hidden", analyticsAvailable);
+    $("rosterAnalyticsCard").classList.toggle("hidden", !analyticsAvailable);
+    $("matrixAnalyticsCard").classList.toggle("hidden", !analyticsAvailable);
+    if (analyticsAvailable) {
+      $("matrixContextKicker").textContent = [klass.subjectName, klass.gradeNumber ? `${klass.gradeNumber}-րդ դասարան` : "", klass.selectedUnit?.unitSequence ? `Գլուխ ${klass.selectedUnit.unitSequence}` : ""].filter(Boolean).join(" · ");
+      $("matrixUnitTitle").textContent = klass.selectedUnit?.unitTitleHy ?? "—";
+      renderMatrix(klass);
+      renderRoster(klass);
+    }
     void loadInstitutionalStudentInvitations(klass);
     return;
   }
@@ -181,6 +241,14 @@ function selectClass(id) {
   $("institutionalEmpty").classList.add("hidden");
   $("institutionalClassView").classList.add("hidden");
   $("classView").classList.remove("hidden");
+  $("legacyClassHeader").classList.remove("hidden");
+  $("teacherAnalyticsUnavailable").classList.add("hidden");
+  $("rosterAnalyticsCard").classList.remove("hidden");
+  $("matrixAnalyticsCard").classList.remove("hidden");
+  $("teacherUnitFilterLabel").classList.add("hidden");
+  $("rosterDescription").textContent = "Բացեք աշակերտի առաջընթացը կամ հեռացրեք նրան այս դասարանից։ Նույն հաշվով կրկին միանալիս նրա նախկին տվյալները կպահպանվեն։";
+  $("matrixContextKicker").textContent = "ՖԻԶԻԿԱ 7 · ԳԼՈՒԽ I";
+  $("matrixUnitTitle").textContent = "Բնության ուսումնասիրության ֆիզիկական մեթոդները";
   $("selectedClassName").textContent = klass.name;
   $("selectedClassMeta").textContent = `${klass.academicYear ?? ""} · ${klass.studentCount} աշակերտ · ${klass.needingSupport} աջակցություն է պետք`;
   $("joinCode").textContent = klass.joinCode ?? "—";
@@ -199,6 +267,38 @@ function selectClass(id) {
 
   renderMatrix(klass);
   renderRoster(klass);
+}
+
+async function changeInstitutionalUnit(event) {
+  const klass = selectedClass();
+  if (!dashboard?.institutionalTeacher || !klass) return;
+  const option = (klass.unitOptions ?? []).find((unit) =>
+    `${unit.curriculumReleaseId}:${unit.unitId}` === event.target.value);
+  if (!option || (option.unitId === klass.selectedUnit?.unitId
+    && option.curriculumReleaseId === klass.selectedUnit?.curriculumReleaseId)) return;
+  event.target.disabled = true;
+  setMessage("institutionalClassMessage", "Գլխի տվյալները բեռնվում են…");
+  const { data, error } = await supabase.functions.invoke("get-teacher-dashboard", {
+    body: { selection: {
+      assignmentId: klass.assignmentId,
+      curriculumReleaseId: option.curriculumReleaseId,
+      unitId: option.unitId,
+    } },
+  });
+  event.target.disabled = false;
+  if (error || !data?.institutionalTeacher) {
+    setMessage("institutionalClassMessage", "Ընտրված գլխի տվյալները չբեռնվեցին։", true);
+    event.target.value = `${klass.selectedUnit?.curriculumReleaseId}:${klass.selectedUnit?.unitId}`;
+    return;
+  }
+  dashboard = data;
+  selectedClassId = klass.id;
+  $("classCount").textContent = data.totals?.classes ?? 0;
+  $("studentCount").textContent = data.totals?.students ?? 0;
+  $("supportCount").textContent = data.totals?.studentsNeedingSupport ?? 0;
+  renderClassList();
+  selectClass(selectedClassId, { pushNavigation: true });
+  setMessage("institutionalClassMessage", "");
 }
 
 function renderInstitutionalRoster(klass) {
@@ -328,6 +428,11 @@ function matrixCell(skill) {
   return `<td class="matrix-cell ${escapeHtml(skill.band)}" title="${escapeHtml(skill.nameHy)}">${escapeHtml(label)}</td>`;
 }
 
+function shortSkillCode(code, unitCode = selectedClass()?.selectedUnit?.unitCode || dashboard?.unitCode || "") {
+  const prefix = unitCode ? `${unitCode}-` : "";
+  return prefix && String(code).startsWith(prefix) ? String(code).slice(prefix.length) : String(code);
+}
+
 function studentHasNeedsSupport(student) {
   return (student.matrix ?? []).some((skill) => skill.band === "needs_support");
 }
@@ -356,7 +461,7 @@ function renderMatrixSummary(klass) {
   $("matrixRequiredReviewTotal").textContent = String(students.filter(studentHasRequiredReview).length);
   $("matrixNoActivityTotal").textContent = String(students.filter((student) => !student.latestActivityAt).length);
 
-  const skills = dashboard.skills ?? [];
+  const skills = klass.skills ?? dashboard.skills ?? [];
   const attention = skills.map((skill, index) => {
     let needsSupport = 0;
     let developing = 0;
@@ -366,7 +471,7 @@ function renderMatrixSummary(klass) {
       if (cell?.band === "developing") developing += 1;
     }
     return {
-      code: skill.code.replace("PHY7-U01-", ""),
+      code: shortSkillCode(skill.code, klass.selectedUnit?.unitCode),
       nameHy: skill.nameHy,
       needsSupport,
       developing,
@@ -386,12 +491,12 @@ function renderMatrixSummary(klass) {
 }
 
 function renderMatrix(klass) {
-  const skills = dashboard.skills ?? [];
+  const skills = klass.skills ?? dashboard.skills ?? [];
   const allStudents = klass.students ?? [];
   const students = allStudents.filter(matchesMatrixFilter);
   renderMatrixSummary(klass);
 
-  const header = skills.map((s) => `<th title="${escapeHtml(s.nameHy)}">${escapeHtml(s.code.replace("PHY7-U01-", ""))}</th>`).join("");
+  const header = skills.map((s) => `<th title="${escapeHtml(s.nameHy)}">${escapeHtml(shortSkillCode(s.code, klass.selectedUnit?.unitCode))}</th>`).join("");
   const rows = students.map((student) => `
     <tr>
       <th class="student-matrix-name"><button class="link-button" data-student="${student.id}">${escapeHtml(student.displayName)}</button></th>
@@ -403,7 +508,9 @@ function renderMatrix(klass) {
     : `Ցուցադրվում է ${students.length} / ${allStudents.length} աշակերտ`;
 
   if (!allStudents.length) {
-    $("matrixWrap").innerHTML = '<div class="teacher-empty-state"><strong>Աշակերտ դեռ չկա</strong><p class="subtle small">Պատճենեք վերևի կոդը կամ հրավերի հղումը և ուղարկեք աշակերտներին։</p></div>';
+    $("matrixWrap").innerHTML = dashboard?.institutionalTeacher
+      ? '<div class="teacher-empty-state"><strong>Աշակերտ դեռ չկա</strong><p class="subtle small">Աշակերտին հրավիրեք այս դասարանի հրավերի ձևով։</p></div>'
+      : '<div class="teacher-empty-state"><strong>Աշակերտ դեռ չկա</strong><p class="subtle small">Պատճենեք վերևի կոդը կամ հրավերի հղումը և ուղարկեք աշակերտներին։</p></div>';
   } else if (!students.length) {
     $("matrixWrap").innerHTML = '<div class="matrix-empty-filter">Այս ֆիլտրին համապատասխանող աշակերտ չկա։</div>';
   } else {
@@ -425,7 +532,7 @@ function renderRoster(klass) {
   for (const student of students) {
     const card = document.createElement("article");
     card.className = "roster-row";
-    const weak = student.weakSkills?.map((s) => s.code.replace("PHY7-U01-", "")).join(", ") || "—";
+    const weak = student.weakSkills?.map((s) => shortSkillCode(s.code, klass.selectedUnit?.unitCode)).join(", ") || "—";
     const review = student.chapterReview;
     const reviewSummary = review
       ? `${review.totalReviewsCompleted} կրկնություն · պարտադիր ${review.requiredReviewsCompleted} · լրացուցիչ ${review.optionalReviewsCompleted}`
@@ -436,7 +543,7 @@ function renderRoster(klass) {
       <div><span class="stat-label">Ուշադրության հմտություններ</span><strong>${escapeHtml(weak)}</strong></div>
       <div><span class="stat-label">Գլուխ I-ի կրկնություն</span><strong>${escapeHtml(reviewSummary)}</strong></div>
       <div class="intervention-cell"><span class="stat-label">Հաջորդ առաջարկություն</span><strong>${escapeHtml(student.intervention?.messageHy ?? "—")}</strong></div>
-      <div class="roster-actions"><button class="secondary small-button" type="button" data-open-student="${student.id}">Դիտել</button><button class="ghost small-button roster-remove" type="button" data-remove-student="${student.id}" data-student-name="${escapeHtml(student.displayName)}">Հեռացնել</button></div>`;
+      <div class="roster-actions"><button class="secondary small-button" type="button" data-open-student="${student.id}">Դիտել</button>${dashboard?.institutionalTeacher ? "" : `<button class="ghost small-button roster-remove" type="button" data-remove-student="${student.id}" data-student-name="${escapeHtml(student.displayName)}">Հեռացնել</button>`}</div>`;
     roster.appendChild(card);
   }
 
@@ -459,7 +566,15 @@ async function openStudent(studentId) {
   $("studentDrawerName").textContent = "Բեռնվում է…";
   $("studentDrawerContent").innerHTML = '<p class="subtle">Տվյալները բեռնվում են…</p>';
 
-  const { data, error } = await supabase.functions.invoke("get-teacher-student", { body: { studentId, classId: selectedClassId } });
+  const klass = selectedClass();
+  const institutionalContext = dashboard?.institutionalTeacher ? {
+    assignmentId: klass?.assignmentId,
+    curriculumReleaseId: klass?.selectedUnit?.curriculumReleaseId,
+    unitId: klass?.selectedUnit?.unitId,
+  } : {};
+  const { data, error } = await supabase.functions.invoke("get-teacher-student", {
+    body: { studentId, classId: selectedClassId, ...institutionalContext },
+  });
   if (error) {
     $("studentDrawerContent").innerHTML = `<p class="message bad">${escapeHtml(friendlyError(error, "Չհաջողվեց բեռնել աշակերտի տվյալները։"))}</p>`;
     return;
@@ -468,7 +583,7 @@ async function openStudent(studentId) {
   $("studentDrawerName").textContent = data.student.displayName;
   const skillCards = data.skills.map((s) => `
     <div class="teacher-skill ${s.band}">
-      <strong>${escapeHtml(s.code.replace("PHY7-U01-", ""))}</strong>
+      <strong>${escapeHtml(shortSkillCode(s.code, data.unitCode))}</strong>
       <span>${escapeHtml(s.nameHy)}</span>
       <b>${s.percent === null ? "—" : `${s.percent}%`}</b>
     </div>`).join("");
@@ -478,7 +593,7 @@ async function openStudent(studentId) {
   const reviewHistory = (review?.history ?? []).map((row) => `
     <tr><td>${row.qualifying ? "Պարտադիր" : "Լրացուցիչ"}</td><td>${row.cycleNumber ?? "—"} / ${row.sessionNumber ?? "—"}</td><td>${row.targetQuestions}</td><td>${row.completedAt ? new Date(row.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`).join("");
   const reviewSkills = (review?.skills ?? []).map((s) => `
-    <tr><td>${escapeHtml(s.code.replace("PHY7-U01-", ""))}</td><td>${s.reviewObservations}</td><td>${s.independentCorrect} / ${s.independentObservations}</td><td>${s.hintAssistedResponses}</td><td>${s.failedLatestMastery ? "Այո" : "Ոչ"}</td><td>Շեմերը դեռ սահմանված չեն</td></tr>`).join("");
+    <tr><td>${escapeHtml(shortSkillCode(s.code, data.unitCode))}</td><td>${s.reviewObservations}</td><td>${s.independentCorrect} / ${s.independentObservations}</td><td>${s.hintAssistedResponses}</td><td>${s.failedLatestMastery ? "Այո" : "Ոչ"}</td><td>Շեմերը դեռ սահմանված չեն</td></tr>`).join("");
   const masteryStatus = review?.masteryStatus === "confirmed" ? "Հաստատված"
     : review?.masteryStatus === "not_demonstrated" ? "Չի հաստատվել" : "Ընթացքի մեջ";
   const masteryResult = data.latestMasteryCheck?.result === "passed" ? "Անցած է"
@@ -486,14 +601,25 @@ async function openStudent(studentId) {
     : data.latestMasteryCheck?.result ?? null;
   const coverage = review?.currentCycleEligiblePoolSize
     ? `${review.currentCycleUniqueSeen ?? 0} / ${review.currentCycleEligiblePoolSize}` : "—";
+  const modeSummary = data.modeSummary ?? {};
+  const recentSessions = (data.sessions ?? []).map((session) => {
+    const labels = { diagnostic: "Ախտորոշիչ", practice: "Վարժություն", chapter_review: "Գլխի կրկնություն", mastery_check: "Յուրացման ստուգում" };
+    return `<tr><td>${escapeHtml(labels[session.mode] ?? session.mode)}</td><td>${escapeHtml(session.status)}</td><td>${session.correct} / ${session.answered}</td><td>${session.completedAt ? new Date(session.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`;
+  }).join("");
+  const unitTitle = data.selectedUnit?.unitTitleHy ?? klass?.selectedUnit?.unitTitleHy ?? "—";
+  const contextKicker = dashboard?.institutionalTeacher
+    ? [klass?.subjectName, klass?.gradeNumber ? `${klass.gradeNumber}-րդ դասարան` : "", klass?.selectedUnit?.unitSequence ? `Գլուխ ${klass.selectedUnit.unitSequence}` : ""].filter(Boolean).join(" · ")
+    : "Ֆիզիկա 7 · Գլուխ I";
   $("studentDrawerContent").innerHTML = `
     <section class="drawer-summary-grid">
       <div class="mini-card"><span>Ախտորոշիչ</span><strong>${data.latestDiagnostic ? `${data.latestDiagnostic.percent}%` : "—"}</strong></div>
+      <div class="mini-card"><span>Վարժություն</span><strong>${modeSummary.practice?.completed ?? 0} ավարտված</strong></div>
+      <div class="mini-card"><span>Գլխի կրկնություն</span><strong>${modeSummary.chapter_review?.completed ?? review?.totalReviewsCompleted ?? 0} ավարտված</strong></div>
       <div class="mini-card"><span>Յուրացման ստուգում</span><strong>${data.latestMasteryCheck ? `${escapeHtml(masteryResult ?? "—")} · ${data.latestMasteryCheck.percent}%` : "—"}</strong></div>
     </section>
     <section class="teacher-intervention"><strong>Առաջարկվող միջամտություն</strong><p>${escapeHtml(data.recommendation?.messageHy ?? "—")}</p></section>
-    <p class="mode-kicker">Ֆիզիկա 7 · Գլուխ I</p>
-    <p class="subtle small">Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
+    <p class="mode-kicker">${escapeHtml(contextKicker)}</p>
+    <p class="subtle small">${escapeHtml(unitTitle)}</p>
     <h3>Յուրացում և կրկնություն</h3>
     <section class="drawer-summary-grid">
       <div class="mini-card"><span>Յուրացման վիճակ</span><strong>${escapeHtml(masteryStatus)}</strong></div>
@@ -505,7 +631,7 @@ async function openStudent(studentId) {
       <div class="mini-card"><span>Ծածկույթի տոկոս</span><strong>${review?.currentCycleCoveragePercent == null ? "—" : `${review.currentCycleCoveragePercent}%`}</strong></div>
       <div class="mini-card"><span>Տեսած տարբեր հարցեր</span><strong>${review?.lifetimeUniqueItemsSeen ?? 0}</strong></div>
       <div class="mini-card"><span>Նույն հարցի կրկնություններ</span><strong>${review?.exactRepeatCount ?? 0}</strong></div>
-      <div class="mini-card"><span>Դեպքեր, երբ նոր հարց չէր մնացել</span><strong>${review?.poolExhaustionEventCount ?? 0}</strong></div>
+      <div class="mini-card"><span>Դեպքեր, երբ նոր հարց չէր մնացել</span><strong>${review?.poolExhaustionEventCount ?? "—"}</strong></div>
       <div class="mini-card"><span>Ինքնուրույն ճիշտ պատասխանների տոկոս</span><strong>${review?.independentAccuracyPercent == null ? "—" : `${review.independentAccuracyPercent}%`}</strong></div>
       <div class="mini-card"><span>Օգնություն օգտագործած պատասխաններ</span><strong>${review?.hintAssistedResponses ?? 0}</strong></div>
     </section>
@@ -515,6 +641,8 @@ async function openStudent(studentId) {
     <h3>Գլխի կրկնության հմտությունների տվյալներ</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հմտություն</th><th>Դիտարկումներ</th><th>Ինքնուրույն ճիշտ</th><th>Օգնություն օգտագործած</th><th>Սխալ՝ վերջին յուրացման ստուգման ժամանակ</th><th>Վիճակ</th></tr></thead><tbody>${reviewSkills || '<tr><td colspan="6">Գլխի կրկնության բավարար տվյալ դեռ չկա</td></tr>'}</tbody></table></div>
     <h3>Հմտությունների յուրացում</h3><div class="teacher-skill-grid">${skillCards}</div>
+    <h3>Սեսիաների պատմություն</h3>
+    <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Տեսակ</th><th>Վիճակ</th><th>Ճիշտ / պատասխանած</th><th>Ավարտ</th></tr></thead><tbody>${recentSessions || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
     <h3>Վերջին փորձերը</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հարց</th><th>Արդյունք</th><th>Օգնություն</th><th>Ժամանակ</th></tr></thead><tbody>${attempts || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>`;
 }
@@ -676,10 +804,12 @@ $("matrixStudentFilter").addEventListener("change", (event) => {
   const klass = selectedClass();
   if (klass) renderMatrix(klass);
 });
+$("teacherUnitFilter").addEventListener("change", changeInstitutionalUnit);
 
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !$("studentDrawer").classList.contains("hidden")) closeDrawer();
 });
+window.addEventListener("popstate", () => loadDashboard());
 
 supabase.auth.onAuthStateChange((_event, session) => {
   if (session) setTimeout(() => loadDashboard(), 0);
