@@ -66,7 +66,60 @@ function friendlyError(error, fallback) {
   if (message.includes("display_name_too_short")) return "Անունը պետք է պարունակի առնվազն 2 նիշ։";
   if (message.includes("display_name_too_long")) return "Անունը չափազանց երկար է։";
   if (message.includes("class_name_required")) return "Մուտքագրեք դասարանի անունը։";
+  if (message.includes("school_year_unavailable")) return "Դպրոցի ընթացիկ ուսումնական տարին հասանելի չէ։";
+  if (message.includes("subject_program_unavailable")) return "Ընտրված առարկայի ծրագիրը հասանելի չէ։";
+  if (message.includes("teacher_subject_unavailable")) return "Այս առարկայի ձեր թույլտվությունը հասանելի չէ։";
+  if (message.includes("teacher_class_unavailable")) return "Դպրոցի դասարանի ստեղծումը հասանելի չէ այս հաշվին։";
   return fallback || message || "Գործողությունը չհաջողվեց։";
+}
+
+function institutionalOptionKey(option) {
+  return [
+    option?.teacherMembershipId,
+    option?.academicYearId,
+    option?.subjectProgramId,
+  ].filter(Boolean).join(":");
+}
+
+function renderInstitutionalClassCreator(data, institutional) {
+  $("teacherLegacyOnboarding").classList.toggle("hidden", institutional);
+  $("createClassCard").classList.toggle("hidden", institutional);
+  $("institutionalTeacherNotice").classList.toggle("hidden", !institutional);
+  $("institutionalCreateCard").classList.toggle("hidden", !institutional);
+
+  const shortcut = $("createClassShortcut");
+  shortcut.classList.remove("hidden");
+  shortcut.href = institutional ? "#institutionalCreateCard" : "#createClassCard";
+
+  if (!institutional) return;
+  const options = Array.isArray(data.institutionalOptions) ? data.institutionalOptions : [];
+  const select = $("institutionalClassOption");
+  select.replaceChildren();
+  for (const option of options) {
+    const item = document.createElement("option");
+    item.value = institutionalOptionKey(option);
+    item.textContent = [
+      option.schoolName,
+      option.academicYearLabel,
+      option.gradeNumber ? `${option.gradeNumber}-րդ դասարան` : "",
+      option.subjectName,
+    ].filter(Boolean).join(" · ");
+    select.appendChild(item);
+  }
+  if (!options.length) {
+    const item = document.createElement("option");
+    item.value = "";
+    item.textContent = "Հասանելի ուսումնական համատեքստ չկա";
+    item.disabled = true;
+    item.selected = true;
+    select.appendChild(item);
+  }
+  select.disabled = !options.length;
+  $("institutionalCreateBtn").disabled = !options.length;
+  setMessage("institutionalCreateMessage", options.length
+    ? ""
+    : "Դասարան ստեղծելու համար դպրոցը պետք է ունենա ընթացիկ ուսումնական տարի, իսկ ձեր առարկան՝ հրապարակված ծրագիր։",
+    !options.length);
 }
 
 async function signOut() {
@@ -126,9 +179,7 @@ async function loadDashboard() {
   $("dashboardPanel").classList.remove("hidden");
   $("signOutBtn").classList.remove("hidden");
   const institutional = data.institutionalTeacher === true;
-  for (const id of ["createClassShortcut", "teacherLegacyOnboarding", "createClassCard"])
-    $(id).classList.toggle("hidden", institutional);
-  $("institutionalTeacherNotice").classList.toggle("hidden", !institutional);
+  renderInstitutionalClassCreator(data, institutional);
 
   const displayName = data.teacher?.displayName || "Ուսուցիչ";
   $("teacherName").textContent = displayName;
@@ -684,6 +735,45 @@ async function createClass() {
   document.getElementById("classView")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
+async function createInstitutionalClass(event) {
+  event.preventDefault();
+  if (!dashboard?.institutionalTeacher) return;
+  const options = Array.isArray(dashboard.institutionalOptions) ? dashboard.institutionalOptions : [];
+  const selectedKey = $("institutionalClassOption").value;
+  const option = options.find((candidate) => institutionalOptionKey(candidate) === selectedKey);
+  const name = $("institutionalClassName").value.trim();
+  if (!option) {
+    return setMessage("institutionalCreateMessage", "Ընտրեք հասանելի դպրոցական համատեքստը։", true);
+  }
+  if (name.length < 2) {
+    return setMessage("institutionalCreateMessage", "Դասարանի անունը պետք է պարունակի առնվազն 2 նիշ։", true);
+  }
+
+  const button = $("institutionalCreateBtn");
+  button.disabled = true;
+  setMessage("institutionalCreateMessage", "Դպրոցի դասարանը ստեղծվում է…");
+  const { data, error } = await supabase.functions.invoke("manage-institutional-teacher-class", {
+    body: {
+      action: "create",
+      membershipId: option.teacherMembershipId,
+      academicYearId: option.academicYearId,
+      subjectProgramId: option.subjectProgramId,
+      name,
+    },
+  });
+  button.disabled = false;
+  if (error || !data?.classId) {
+    return setMessage("institutionalCreateMessage",
+      friendlyError(error, "Չհաջողվեց ստեղծել դպրոցի դասարանը։"), true);
+  }
+
+  selectedClassId = data.classId;
+  $("institutionalClassName").value = "";
+  setMessage("institutionalCreateMessage", "Դպրոցի դասարանը ստեղծված է։ Այժմ կարող եք հրավիրել աշակերտներին։");
+  await loadDashboard();
+  $("institutionalClassView")?.scrollIntoView({ behavior: "smooth", block: "start" });
+}
+
 function buildInviteUrl(code) {
   if (!code) return "";
   const url = new URL("./join.html", window.location.href);
@@ -785,6 +875,7 @@ $("signOutBtn").addEventListener("click", signOut);
 $("refreshBtn").addEventListener("click", loadDashboard);
 $("saveProfileBtn").addEventListener("click", saveProfile);
 $("createClassBtn").addEventListener("click", createClass);
+$("institutionalCreateForm").addEventListener("submit", createInstitutionalClass);
 $("copyCodeBtn").addEventListener("click", copyJoinCode);
 $("copyInviteBtn").addEventListener("click", copyInviteLink);
 $("rotateCodeBtn").addEventListener("click", rotateCode);
