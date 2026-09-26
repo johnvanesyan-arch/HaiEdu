@@ -173,6 +173,27 @@
               </form>
               <p id="institutionalStudentInviteMessage" class="message" role="status" aria-live="polite"></p>
               <ul id="institutionalStudentInviteResults" class="institutional-batch-results hidden" aria-live="polite"></ul>
+
+              <details id="institutionalCodeOption" class="institutional-code-option">
+                <summary>Այլ տարբերակ՝ մեկանգամյա միանալու կոդ</summary>
+                <div class="institutional-code-option-body">
+                  <p class="subtle small">Կոդը պարտադիր չէ։ Ստեղծեք այն միայն այն աշակերտի համար, ով արդեն ունի հաշիվ և չի օգտվելու էլ. փոստի հրավերից։ Կոդը գործում է 72 ժամ և կարող է օգտագործվել միայն մեկ անգամ։</p>
+                  <button id="institutionalGenerateJoinCodeBtn" class="secondary small-button" type="button">Ստեղծել մեկանգամյա կոդ</button>
+                  <div id="institutionalGeneratedJoinCode" class="institutional-generated-code hidden">
+                    <span class="stat-label">ՆՈՐ ԿՈԴ · ՑՈՒՑԱԴՐՎՈՒՄ Է ՄԻԱՅՆ ԱՅՍ ԱՆԳԱՄ</span>
+                    <strong id="institutionalJoinCodeValue">—</strong>
+                    <div class="join-code-actions">
+                      <button id="institutionalCopyJoinCodeBtn" class="secondary small-button" type="button">Պատճենել կոդը</button>
+                      <button id="institutionalCopyJoinLinkBtn" class="ghost small-button" type="button">Պատճենել հղումը</button>
+                    </div>
+                  </div>
+                  <p id="institutionalJoinCodeMessage" class="message" role="status" aria-live="polite"></p>
+                  <div class="institutional-active-codes">
+                    <span class="stat-label">ՉՕԳՏԱԳՈՐԾՎԱԾ ԿՈԴԵՐ</span>
+                    <ul id="institutionalJoinCodeList" class="institutional-invitation-list"></ul>
+                  </div>
+                </div>
+              </details>
             </div>
             <div class="institutional-pending-block">
               <div class="teacher-section-heading">

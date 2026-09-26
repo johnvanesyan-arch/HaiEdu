@@ -10,6 +10,7 @@ let selectedClassId = null;
 let rosterQuery = "";
 let matrixStudentFilter = "all";
 let dashboardLoadVersion = 0;
+let latestInstitutionalJoinCode = "";
 const MAX_STUDENT_INVITE_BATCH = 20;
 const institutionalStudentEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
@@ -261,6 +262,13 @@ function selectClass(id, { pushNavigation = false } = {}) {
     $("institutionalStudentInviteBtn").disabled = !klass.isActive;
     $("institutionalStudentEmail").disabled = !klass.isActive;
     $("institutionalStudentEmail").value = "";
+    $("institutionalGenerateJoinCodeBtn").disabled = !klass.isActive;
+    latestInstitutionalJoinCode = "";
+    $("institutionalJoinCodeValue").textContent = "—";
+    $("institutionalGeneratedJoinCode").classList.add("hidden");
+    setMessage("institutionalJoinCodeMessage", klass.isActive
+      ? ""
+      : "Արխիվացված դասարանի համար նոր կոդ ստեղծել հնարավոր չէ։", !klass.isActive);
     updateInstitutionalStudentEmailCount();
     renderInstitutionalStudentInviteResults([]);
     setMessage("institutionalStudentInviteMessage", klass.isActive
@@ -417,7 +425,9 @@ async function loadInstitutionalStudentInvitations(klass = selectedClass()) {
   if (!klass || !dashboard?.institutionalTeacher) return;
   const requestedClassId = klass.id;
   const list = $("institutionalPendingInvites");
+  const codeList = $("institutionalJoinCodeList");
   list.innerHTML = '<li class="institutional-invitation-empty">Բեռնվում է…</li>';
+  codeList.innerHTML = '<li class="institutional-invitation-empty">Բեռնվում է…</li>';
   const { data, error } = await supabase.functions.invoke("manage-student-invitation", {
     body: {
       action: "list", schoolId: klass.schoolId, classId: klass.id,
@@ -425,11 +435,13 @@ async function loadInstitutionalStudentInvitations(klass = selectedClass()) {
     },
   });
   if (selectedClassId !== requestedClassId) return;
-  if (error || !Array.isArray(data?.invitations)) {
+  if (error || !Array.isArray(data?.invitations) || !Array.isArray(data?.joinCodes)) {
     list.innerHTML = '<li class="institutional-invitation-empty">Հրավերների ցանկը հասանելի չէ։</li>';
+    codeList.innerHTML = '<li class="institutional-invitation-empty">Կոդերի ցանկը հասանելի չէ։</li>';
     return;
   }
   renderInstitutionalStudentInvitations(data.invitations);
+  renderInstitutionalJoinCodes(data.joinCodes);
 }
 
 function parseInstitutionalStudentEmails(value) {
@@ -547,6 +559,98 @@ async function revokeInstitutionalStudentInvitation(button) {
     return setMessage("institutionalStudentInviteMessage", "Հրավերը չեղարկելը չհաջողվեց։", true);
   }
   setMessage("institutionalStudentInviteMessage", "Հրավերը չեղարկված է։");
+  await loadInstitutionalStudentInvitations(klass);
+}
+
+function renderInstitutionalJoinCodes(codes) {
+  const list = $("institutionalJoinCodeList");
+  list.replaceChildren();
+  if (!codes.length) {
+    const empty = document.createElement("li");
+    empty.className = "institutional-invitation-empty";
+    empty.textContent = "Չօգտագործված կոդ չկա։";
+    list.append(empty);
+    return;
+  }
+  const dateFormat = new Intl.DateTimeFormat("hy-AM", {
+    dateStyle: "medium", timeStyle: "short",
+  });
+  for (const code of codes) {
+    const item = document.createElement("li");
+    const copy = document.createElement("div");
+    copy.className = "institutional-invitation-copy";
+    const title = document.createElement("strong");
+    title.textContent = "Մեկանգամյա կոդ";
+    const expiry = document.createElement("span");
+    expiry.className = "subtle small";
+    expiry.textContent = `Ստեղծվել է ${dateFormat.format(new Date(code.createdAt))} · վավեր է մինչև ${dateFormat.format(new Date(code.expiresAt))}`;
+    const revoke = document.createElement("button");
+    revoke.type = "button";
+    revoke.className = "ghost small-button";
+    revoke.textContent = "Չեղարկել";
+    revoke.dataset.revokeInstitutionalCode = code.id;
+    copy.append(title, expiry);
+    item.append(copy, revoke);
+    list.append(item);
+  }
+  list.querySelectorAll("[data-revoke-institutional-code]").forEach((button) => {
+    button.addEventListener("click", () => revokeInstitutionalJoinCode(button));
+  });
+}
+
+async function generateInstitutionalJoinCode() {
+  const klass = selectedClass();
+  if (!klass || !dashboard?.institutionalTeacher || !klass.isActive) return;
+  const button = $("institutionalGenerateJoinCodeBtn");
+  button.disabled = true;
+  setMessage("institutionalJoinCodeMessage", "Մեկանգամյա կոդը ստեղծվում է…");
+  const { data, error } = await supabase.functions.invoke("manage-student-invitation", {
+    body: {
+      action: "create_code", schoolId: klass.schoolId, classId: klass.id,
+      assignmentId: klass.assignmentId,
+    },
+  });
+  button.disabled = false;
+  if (error || typeof data?.joinCode !== "string") {
+    return setMessage("institutionalJoinCodeMessage",
+      "Կոդը չստեղծվեց։ Ստուգեք դասարանի ձեր գործող նշանակումը։", true);
+  }
+  latestInstitutionalJoinCode = data.joinCode;
+  $("institutionalJoinCodeValue").textContent = latestInstitutionalJoinCode;
+  $("institutionalGeneratedJoinCode").classList.remove("hidden");
+  setMessage("institutionalJoinCodeMessage",
+    "Կոդը պատրաստ է։ Այն ցուցադրվում է միայն հիմա, գործում է 72 ժամ և կարող է օգտագործվել մեկ անգամ։");
+  await loadInstitutionalStudentInvitations(klass);
+}
+
+async function copyInstitutionalJoinCode() {
+  if (!latestInstitutionalJoinCode) return;
+  await copyText(latestInstitutionalJoinCode, "Կոդը պատճենված է։", "institutionalJoinCodeMessage");
+}
+
+async function copyInstitutionalJoinLink() {
+  const invite = buildInviteUrl(latestInstitutionalJoinCode);
+  if (!invite) return;
+  await copyText(invite, "Հղումը պատճենված է։", "institutionalJoinCodeMessage");
+}
+
+async function revokeInstitutionalJoinCode(button) {
+  const klass = selectedClass();
+  const codeId = button?.dataset?.revokeInstitutionalCode;
+  if (!klass || !codeId || !klass.isActive) return;
+  if (!window.confirm("Չեղարկե՞լ այս չօգտագործված կոդը։")) return;
+  button.disabled = true;
+  const { data, error } = await supabase.functions.invoke("manage-student-invitation", {
+    body: {
+      action: "revoke_code", codeId, schoolId: klass.schoolId,
+      classId: klass.id, assignmentId: klass.assignmentId,
+    },
+  });
+  if (error || data?.revoked !== true) {
+    button.disabled = false;
+    return setMessage("institutionalJoinCodeMessage", "Կոդը չեղարկելը չհաջողվեց։", true);
+  }
+  setMessage("institutionalJoinCodeMessage", "Կոդը չեղարկված է։");
   await loadInstitutionalStudentInvitations(klass);
 }
 
@@ -857,11 +961,11 @@ function buildInviteUrl(code) {
   return url.toString();
 }
 
-async function copyText(value, successMessage) {
+async function copyText(value, successMessage, statusElementId = "copyCodeStatus") {
   if (!value) return false;
   try {
     await navigator.clipboard.writeText(value);
-    $("copyCodeStatus").textContent = successMessage;
+    setMessage(statusElementId, successMessage);
     return true;
   } catch {
     const textarea = document.createElement("textarea");
@@ -873,7 +977,8 @@ async function copyText(value, successMessage) {
     textarea.select();
     const copied = document.execCommand("copy");
     textarea.remove();
-    $("copyCodeStatus").textContent = copied ? successMessage : "Չհաջողվեց պատճենել։ Ընտրեք արժեքը ձեռքով։";
+    setMessage(statusElementId,
+      copied ? successMessage : "Չհաջողվեց պատճենել։ Ընտրեք արժեքը ձեռքով։", !copied);
     return copied;
   }
 }
@@ -960,6 +1065,9 @@ $("institutionalClassToggle").addEventListener("click", toggleInstitutionalClass
 $("institutionalStudentInviteForm").addEventListener("submit", submitInstitutionalStudentInvitation);
 $("institutionalStudentEmail").addEventListener("input", updateInstitutionalStudentEmailCount);
 $("refreshInstitutionalInvites").addEventListener("click", () => loadInstitutionalStudentInvitations());
+$("institutionalGenerateJoinCodeBtn").addEventListener("click", generateInstitutionalJoinCode);
+$("institutionalCopyJoinCodeBtn").addEventListener("click", copyInstitutionalJoinCode);
+$("institutionalCopyJoinLinkBtn").addEventListener("click", copyInstitutionalJoinLink);
 $("closeDrawerBtn").addEventListener("click", closeDrawer);
 $("drawerBackdrop").addEventListener("click", closeDrawer);
 $("studentSearchInput").addEventListener("input", (event) => {

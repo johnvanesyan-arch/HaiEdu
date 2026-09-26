@@ -11,6 +11,33 @@ function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 }
 
+const digestJoinCode = async (value: string) => Array.from(
+  new Uint8Array(await crypto.subtle.digest(
+    "SHA-256", new TextEncoder().encode(value),
+  )),
+  (byte) => byte.toString(16).padStart(2, "0"),
+).join("");
+
+function joinedResponse(entitlement: any, alreadyMember: boolean, institutional: boolean) {
+  return {
+    joined: true,
+    alreadyMember,
+    institutional,
+    class: {
+      id: entitlement.classId,
+      name: entitlement.className,
+      academicYear: entitlement.academicYear,
+    },
+    course: {
+      subjectCode: entitlement.subjectCode,
+      subjectNameHy: entitlement.subjectNameHy,
+      gradeNumber: entitlement.gradeNumber,
+      gradeLabelHy: entitlement.gradeLabelHy,
+      courseKey: `${entitlement.subjectCode}:${entitlement.gradeNumber}`,
+    },
+  };
+}
+
 Deno.serve(async (req) => {
   try {
     if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
@@ -29,20 +56,51 @@ Deno.serve(async (req) => {
     if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
     const studentId = userData.user.id;
 
-    const { data: profile } = await admin.from("profiles").select("role").eq("id", studentId).maybeSingle();
-    if (!profile || String(profile.role) !== "student") return json({ error: "student_role_required" }, 403);
+    const { data: profile } = await admin.from("profiles")
+      .select("role,account_status").eq("id", studentId).maybeSingle();
+    if (!profile || String(profile.role) !== "student" || profile.account_status !== "active") {
+      return json({ error: "student_role_required" }, 403);
+    }
 
     let body: { joinCode?: string } = {};
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
     const joinCode = String(body.joinCode ?? "").trim().toUpperCase();
-    if (!joinCode) return json({ error: "join_code_required" }, 400);
+    if (!/^[A-Z0-9]{8}$/.test(joinCode)) return json({ error: "join_code_required" }, 400);
+
+    const codeDigest = await digestJoinCode(joinCode);
+    const { data: institutionalJoin, error: institutionalError } = await admin.rpc(
+      "service_redeem_institutional_join_code_14c",
+      { p_recipient: studentId, p_code_digest: codeDigest },
+    );
+    if (institutionalError) {
+      if (String(institutionalError.message).includes("institutional_join_code_unavailable")) {
+        return json({ error: "invalid_or_inactive_join_code" }, 404);
+      }
+      return json({ error: "join_code_verification_failed" }, 503);
+    }
+    if (institutionalJoin?.classId) {
+      const entitlements = await getStudentCourseEntitlements(admin, studentId);
+      const entitlement = entitlements.find((course) =>
+        course.classId === String(institutionalJoin.classId));
+      if (!entitlement) {
+        return json({
+          error: "membership_verification_failed",
+          classId: institutionalJoin.classId,
+        }, 500);
+      }
+      return json(joinedResponse(
+        entitlement, Boolean(institutionalJoin.alreadyEnrolled), true,
+      ));
+    }
 
     const { data: klass, error: classError } = await admin
       .from("classes")
       .select("id, school_id, name, academic_year, is_active, subject_id, grade_id")
       .eq("join_code", joinCode)
       .maybeSingle();
-    if (classError || !klass || !klass.is_active || klass.school_id !== null) return json({ error: "invalid_or_inactive_join_code" }, 404);
+    if (classError || !klass || !klass.is_active || klass.school_id !== null) {
+      return json({ error: "invalid_or_inactive_join_code" }, 404);
+    }
 
     const { data: existing } = await admin
       .from("class_memberships")
@@ -51,7 +109,7 @@ Deno.serve(async (req) => {
       .eq("student_id", studentId)
       .maybeSingle();
 
-    let alreadyMember = Boolean(existing);
+    const alreadyMember = Boolean(existing);
     if (!existing) {
       const { data: inserted, error: insertError } = await admin
         .from("class_memberships")
@@ -63,30 +121,13 @@ Deno.serve(async (req) => {
       }
     }
 
-    // Do not report success until the persisted membership is visible through the
-    // same entitlement resolver used by the learning APIs.
     const entitlements = await getStudentCourseEntitlements(admin, studentId);
     const entitlement = entitlements.find((course) => course.classId === String(klass.id));
     if (!entitlement) {
       return json({ error: "membership_verification_failed", classId: klass.id }, 500);
     }
 
-    return json({
-      joined: true,
-      alreadyMember,
-      class: {
-        id: entitlement.classId,
-        name: entitlement.className,
-        academicYear: entitlement.academicYear,
-      },
-      course: {
-        subjectCode: entitlement.subjectCode,
-        subjectNameHy: entitlement.subjectNameHy,
-        gradeNumber: entitlement.gradeNumber,
-        gradeLabelHy: entitlement.gradeLabelHy,
-        courseKey: `${entitlement.subjectCode}:${entitlement.gradeNumber}`,
-      },
-    });
+    return json(joinedResponse(entitlement, alreadyMember, false));
   } catch (err) {
     console.error("join-class", err);
     return json({ error: "join_class_failed", detail: err instanceof Error ? err.message : String(err) }, 500);
