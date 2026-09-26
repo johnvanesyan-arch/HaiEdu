@@ -84,7 +84,8 @@ test('server and client contracts fail closed on exact assignment and release co
   assert.match(student, /context\.classId !== body\.classId/);
   assert.match(student, /\.eq\("teacher_assignment_id", context\.assignmentId\)/);
   assert.match(resolver, /curriculum_release_units/);
-  assert.match(resolver, /releaseUnitRow\.unit_code_snapshot !== unit\.code/);
+  assert.match(resolver, /unitCode: releaseUnitRow\.unit_code_snapshot/);
+  assert.match(resolver, /unitTitleHy: releaseUnitRow\.title_hy_snapshot/);
   for (const field of ['school_id', 'academic_year_id', 'class_id', 'teacher_assignment_id',
     'subject_program_id', 'curriculum_release_id', 'unit_code']) {
     assert.match(analytics, new RegExp(`\\.eq\\("${field}"`));
