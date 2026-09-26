@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.46  
-**Updated:** 2026-09-25  
-**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. A controlled invitation-and-acceptance run, remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence and the later 14C evidence UI/API work remain open. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
+**Roadmap version:** 2.47  
+**Updated:** 2026-09-26  
+**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. The controlled teacher-issued invitation, acceptance, assigned-teacher roster and first post-enrollment exact-context run passed. Remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence and the later 14C evidence UI/API work remain open. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -103,7 +103,7 @@ For the current Sprint 11 state:
 | 12 | Learning-Model Calibration | ✅ | 12A.1–12A.5 complete; 12B reviewed the feasibility evidence and recorded an immutable deferred/no-change disposition. No learning parameter changed. |
 | 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | ✅ | Complete. 12.5A–Z, lifecycle branches, persisted MCQ randomization, authenticated desktop QA and authenticated mobile learner/teacher QA at 390 px and 430 px all pass. Production Mobile browser QA #2 passed on GitHub head `0c56fa8`. |
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
-| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed. 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed. The approved Teachers workflow exposes authoritative teacher → class → student structure. The 14C school-scoped invitation/enrollment, exact learning-session context and assigned-class roster foundation is deployed; controlled invitation acceptance, remaining offboarding/last-admin controls, authenticated two-school mutual denial and later evidence UI/API work remain open. |
+| 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed. 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed. The approved Teachers workflow exposes authoritative teacher → class → student structure. The 14C school-scoped invitation/enrollment, exact learning-session context and assigned-class roster foundation is deployed; its controlled teacher-issued invitation, acceptance, roster and first post-enrollment session run passed. Remaining offboarding/last-admin controls, authenticated two-school mutual denial and later evidence UI/API work remain open. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
 | 16 | Physics 7 Reference Course Integration | ⏳ | Integrate the complete Physics 7 reference course and preserve unit-bound diagnostics/mastery with course-level aggregation. |
 | 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
@@ -660,12 +660,24 @@ Before Sprint 14 closes, verify that the implemented foundations can support cur
 - Production evidence currently contains 1 teacher, 1 class, 0 enrolled students and 1 authorized subject; the expanded class correctly shows the empty-roster state.
 - Performance analytics remain explicitly gated. No score, progress or intervention metric is shown until Sprint 14C establishes trustworthy context-scoped learner evidence.
 - Existing test data needs cleanup: class name `Math 7A` is currently paired with the authoritative Physics subject assignment.
-- 14C foundation deployed in PRs #25–#27: email-only school-admin learner invitation, exact school/year/class/teacher-assignment/subject-programme enrollment, assigned-class teacher roster, immutable institutional session context, and automated negative cross-school authorization coverage.
+- 14C foundation deployed in PRs #25–#27 and corrected in PR #30 to the sanctioned actor boundary: only the actively assigned teacher issues a student invitation from the exact assigned class; the School Admin retains roster visibility but does not issue ordinary student invitations. Exact school/year/class/teacher-assignment/subject-programme enrollment, assigned-class teacher roster, immutable institutional session context and negative authorization coverage are preserved.
 - Historical evidence remains explicit: all 58 pre-existing sessions are `unbound_legacy`; no legacy row was falsely backfilled.
-- Automated suite passes 106/106; production migrations `0108`–`0110`, Edge Functions and Vercel deployments are live.
-- The narrow Supabase Auth student-invitation return URL is allow-listed; no invitation email or learner account was created during deployment verification.
-- Next closure action: send one user-approved controlled invitation, complete acceptance, verify assigned-teacher-only roster visibility and verify exact context on the first post-enrollment session.
-- Still open after that closure action: remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence, teacher chapter selection, student evidence drawer/API work and later trustworthy analytics.
+- Automated suite passed 115/115 after the teacher-owned invitation correction; production migrations `0108`–`0110` plus `20260925214539`, Edge Functions and Vercel deployments are live.
+- The narrow Supabase Auth student-invitation return URL is allow-listed. A controlled invitation to an existing learner account was accepted successfully on 2026-09-26.
+- Controlled closure passed on 2026-09-26: the assigned teacher issued the invitation, the learner accepted it, the pending invitation cleared, the assigned class roster increased from two to three learners, and the first newly created post-enrollment session was stamped with exact institutional context.
+- Still open: remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence, teacher chapter selection, student evidence drawer/API work and later trustworthy analytics.
+
+
+### 14C controlled production closure verification — 2026-09-26
+
+**Status: ✅ student onboarding and exact-context session stamping passed; Sprint 14 remains open.**
+
+- The actively assigned teacher issued invitation `a379cdf2-9ce3-4a33-a761-497575b193d9` inside the exact Test School / 2026–2027 / Math 7A / Physics assignment. Acceptance `7898d74f-2f13-425a-9c9f-a0f8faf64326` created active enrollment `83e94781-c436-4a1c-b8a0-2d344d9fd682`.
+- Authenticated production teacher QA passed after refresh: the pending invitation disappeared, the class count changed from two to three, and Hovhannes Vanesyan appeared in the assigned class roster.
+- Historical Review session `a94ea905-7515-4404-9c79-b862ba829081` remained correctly `unbound_legacy`; no historical evidence was rewritten.
+- The first newly created post-enrollment session `b3ad7e27-bae2-4345-8282-eb2f6169c048` completed 12/12 with 11 correct and `academic_context_status=exact`. It retains the exact enrollment, school, academic year, class, teacher assignment, subject programme, curriculum release, assessment blueprint, learning-model configuration and runtime build.
+- The rollback-only authorization probe passed again: the actively assigned teacher could issue/revoke within the exact assignment, the School Admin was denied ordinary student-invitation authority, and no probe data persisted.
+- This closes the controlled production action for onboarding and session stamping only. Tenant-isolated evidence APIs, authenticated two-school mutual denial, teacher chapter selection and the student evidence drawer remain separate open 14C work.
 
 ## Sprint 15 — Grade 7 Physics Expansion — Chapters II–VI
 
