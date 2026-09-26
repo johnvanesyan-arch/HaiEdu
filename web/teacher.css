@@ -43,3 +43,14 @@
   .teacher-collection-card{padding:18px}
   .teacher-class-grid{grid-template-columns:1fr}
 }
+
+
+.class-management-actions{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-top:14px}
+.class-rename-form{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:end;margin-top:16px;padding:16px;border:1px solid #cfddeb;border-radius:14px;background:#f8fbff}
+.class-rename-form label{min-width:0}
+.class-rename-form input{width:100%}
+.class-rename-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap}
+@media (max-width:640px){
+  .class-rename-form{grid-template-columns:1fr}
+  .class-rename-actions{justify-content:flex-start}
+}

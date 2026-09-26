@@ -134,10 +134,12 @@ function friendlyError(error, fallback) {
   if (message.includes("display_name_too_short")) return "Անունը պետք է պարունակի առնվազն 2 նիշ։";
   if (message.includes("display_name_too_long")) return "Անունը չափազանց երկար է։";
   if (message.includes("class_name_required")) return "Մուտքագրեք դասարանի անունը։";
+  if (message.includes("class_name_too_short")) return "Դասարանի անունը պետք է պարունակի առնվազն 2 նիշ։";
+  if (message.includes("class_name_too_long")) return "Դասարանի անունը կարող է պարունակել առավելագույնը 120 նիշ։";
   if (message.includes("school_year_unavailable")) return "Դպրոցի ընթացիկ ուսումնական տարին հասանելի չէ։";
   if (message.includes("subject_program_unavailable")) return "Ընտրված առարկայի ծրագիրը հասանելի չէ։";
   if (message.includes("teacher_subject_unavailable")) return "Այս առարկայի ձեր թույլտվությունը հասանելի չէ։";
-  if (message.includes("teacher_class_unavailable")) return "Դպրոցի դասարանի ստեղծումը հասանելի չէ այս հաշվին։";
+  if (message.includes("teacher_class_unavailable")) return "Այս դասարանի կառավարումը հասանելի չէ այս հաշվին։";
   return fallback || message || "Գործողությունը չհաջողվեց։";
 }
 
@@ -319,9 +321,73 @@ function selectedClass() {
   return dashboard?.classes?.find((c) => c.id === selectedClassId) ?? null;
 }
 
+function setClassRenameEditor(kind, open) {
+  const institutional = kind === "institutional";
+  const form = $(institutional ? "institutionalRenameClassForm" : "renameClassForm");
+  const button = $(institutional ? "institutionalRenameClassBtn" : "renameClassBtn");
+  const input = $(institutional ? "institutionalRenameClassNameInput" : "renameClassNameInput");
+  const messageId = institutional ? "institutionalRenameClassMessage" : "renameClassMessage";
+  form.classList.toggle("hidden", !open);
+  button.setAttribute("aria-expanded", String(open));
+  if (!open) return;
+  input.value = selectedClass()?.name ?? "";
+  setMessage(messageId, "");
+  requestAnimationFrame(() => {
+    input.focus();
+    input.select();
+  });
+}
+
+function closeClassRenameEditors() {
+  setClassRenameEditor("legacy", false);
+  setClassRenameEditor("institutional", false);
+}
+
+async function renameSelectedClass(event, institutional) {
+  event.preventDefault();
+  const klass = selectedClass();
+  if (!klass || Boolean(dashboard?.institutionalTeacher) !== institutional) return;
+  const inputId = institutional ? "institutionalRenameClassNameInput" : "renameClassNameInput";
+  const saveId = institutional ? "institutionalRenameClassSaveBtn" : "renameClassSaveBtn";
+  const messageId = institutional ? "institutionalRenameClassMessage" : "renameClassMessage";
+  const name = $(inputId).value.trim();
+  if (name.length < 2) return setMessage(messageId, "Դասարանի անունը պետք է պարունակի առնվազն 2 նիշ։", true);
+  if (name.length > 120) return setMessage(messageId, "Դասարանի անունը կարող է պարունակել առավելագույնը 120 նիշ։", true);
+  if (name === klass.name) {
+    setClassRenameEditor(institutional ? "institutional" : "legacy", false);
+    return setMessage(messageId, "Անունը չի փոխվել։");
+  }
+
+  const button = $(saveId);
+  button.disabled = true;
+  setMessage(messageId, "Անունը պահպանվում է…");
+  const functionName = institutional ? "manage-institutional-teacher-class" : "manage-teacher-class";
+  const { data, error } = await supabase.functions.invoke(functionName, {
+    body: { action: "rename", classId: klass.id, name },
+  });
+  button.disabled = false;
+  if (error) {
+    return setMessage(messageId, friendlyError(error, "Դասարանի անունը չհաջողվեց փոխել։"), true);
+  }
+  const savedName = data?.class?.name ?? data?.name;
+  if (typeof savedName !== "string" || !savedName.trim()) {
+    return setMessage(messageId, "Դասարանի անունը չհաջողվեց փոխել։", true);
+  }
+
+  klass.name = savedName;
+  if (institutional) $("institutionalSelectedName").textContent = savedName;
+  else $("selectedClassName").textContent = savedName;
+  renderClassList();
+  setClassRenameEditor(institutional ? "institutional" : "legacy", false);
+  setMessage(messageId, "Դասարանի անունը փոխված է։");
+}
+
 function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
   selectedClassId = id;
   rosterQuery = "";
+  closeClassRenameEditors();
+  setMessage("renameClassMessage", "");
+  setMessage("institutionalRenameClassMessage", "");
   if ($("studentSearchInput")) $("studentSearchInput").value = "";
   renderClassList();
   const klass = selectedClass();
@@ -340,6 +406,7 @@ function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
     $("legacyClassHeader").classList.add("hidden");
     $("institutionalClassView").classList.remove("hidden");
     $("institutionalSelectedName").textContent = klass.name;
+    $("institutionalRenameClassNameInput").value = klass.name;
     $("institutionalSelectedMeta").textContent = [
       klass.schoolName,
       klass.academicYear,
@@ -403,6 +470,7 @@ function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
   $("matrixContextKicker").textContent = "ՖԻԶԻԿԱ 7 · ԳԼՈՒԽ I";
   $("matrixUnitTitle").textContent = "Բնության ուսումնասիրության ֆիզիկական մեթոդները";
   $("selectedClassName").textContent = klass.name;
+  $("renameClassNameInput").value = klass.name;
   $("selectedClassMeta").textContent = `${klass.academicYear ?? ""} · ${klass.studentCount} աշակերտ · ${klass.needingSupport} աջակցություն է պետք`;
   $("joinCode").textContent = klass.joinCode ?? "—";
   $("copyCodeStatus").textContent = "";
@@ -1152,6 +1220,12 @@ $("copyInviteBtn").addEventListener("click", copyInviteLink);
 $("rotateCodeBtn").addEventListener("click", rotateCode);
 $("toggleClassBtn").addEventListener("click", toggleClassStatus);
 $("institutionalClassToggle").addEventListener("click", toggleInstitutionalClassStatus);
+$("renameClassBtn").addEventListener("click", () => setClassRenameEditor("legacy", true));
+$("renameClassCancelBtn").addEventListener("click", () => setClassRenameEditor("legacy", false));
+$("renameClassForm").addEventListener("submit", (event) => renameSelectedClass(event, false));
+$("institutionalRenameClassBtn").addEventListener("click", () => setClassRenameEditor("institutional", true));
+$("institutionalRenameClassCancelBtn").addEventListener("click", () => setClassRenameEditor("institutional", false));
+$("institutionalRenameClassForm").addEventListener("submit", (event) => renameSelectedClass(event, true));
 $("institutionalStudentInviteForm").addEventListener("submit", submitInstitutionalStudentInvitation);
 $("institutionalStudentEmail").addEventListener("input", updateInstitutionalStudentEmailCount);
 $("refreshInstitutionalInvites").addEventListener("click", () => loadInstitutionalStudentInvitations());
@@ -1173,7 +1247,9 @@ $("matrixStudentFilter").addEventListener("change", (event) => {
 $("teacherUnitFilter").addEventListener("change", changeInstitutionalUnit);
 
 document.addEventListener("keydown", (event) => {
-  if (event.key === "Escape" && !$("studentDrawer").classList.contains("hidden")) closeDrawer();
+  if (event.key !== "Escape") return;
+  if (!$("studentDrawer").classList.contains("hidden")) closeDrawer();
+  closeClassRenameEditors();
 });
 document.addEventListener("click", (event) => {
   const link = event.target.closest('a[href^="?view="]');

@@ -80,6 +80,17 @@ Deno.serve(async (req) => {
     const { data: klass } = await admin.from("classes").select("id, teacher_id, school_id, name, join_code, is_active").eq("id", body.classId).maybeSingle();
     if (!klass || klass.teacher_id !== teacherId || klass.school_id !== null) return json({ error: "class_not_owned" }, 403);
 
+    if (body.action === "rename") {
+      const name = String(body.name ?? "").trim();
+      if (name.length < 2) return json({ error: "class_name_too_short" }, 400);
+      if (name.length > 120) return json({ error: "class_name_too_long" }, 400);
+      const { data: updated, error } = await admin.from("classes")
+        .update({ name }).eq("id", klass.id).eq("teacher_id", teacherId)
+        .is("school_id", null).select("id, name").single();
+      if (error || !updated) return json({ error: "class_rename_failed" }, 500);
+      return json({ class: updated });
+    }
+
     if (body.action === "rotate_join_code") {
       for (let attempt = 0; attempt < 5; attempt++) {
         const joinCode = generateJoinCode();
