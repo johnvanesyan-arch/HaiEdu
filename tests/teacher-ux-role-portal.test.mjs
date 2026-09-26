@@ -48,3 +48,14 @@ test("teacher invite link prefills the join code", () => {
   assert.match(join, /get\("code"\)/);
   assert.match(join, /joinCode\.value = inviteCode/);
 });
+
+
+test("teacher roster wraps six Armenian data blocks without collapsing words", () => {
+  const css = read("web/teacher.css");
+  assert.match(css, /\.roster-row\{display:flex;flex-wrap:wrap;/);
+  assert.match(css, /\.roster-row>div\{[^}]*flex:1 1 150px[^}]*overflow-wrap:break-word;word-break:normal/);
+  assert.match(css, /\.roster-row>\.intervention-cell\{flex:2 1 260px/);
+  assert.match(css, /\.roster-row>\.roster-actions\{flex:0 0 auto;min-width:max-content/);
+  assert.match(css, /\.roster-actions \.small-button\{white-space:nowrap;overflow-wrap:normal/);
+  assert.doesNotMatch(css, /\.roster-row\{[^}]*grid-template-columns/);
+});
