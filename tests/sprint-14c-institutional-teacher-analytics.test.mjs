@@ -103,6 +103,8 @@ test('institutional UI reuses the sanctioned roster, matrix and drawer without l
   assert.match(html, /id="rosterAnalyticsCard"/);
   assert.match(html, /id="matrixAnalyticsCard"/);
   assert.match(html, /id="studentDrawer"/);
+  assert.match(html, /Առաջընթացի վերլուծությունը հասանելի է ստորև/);
+  assert.doesNotMatch(html, /Առաջընթացի վերլուծությունը դեռ չի գործարկվել/);
   assert.match(html, /id="teacherUnitFilter"/);
   assert.match(js, /\$\("classView"\)\.classList\.remove\("hidden"\)/);
   assert.match(js, /dashboard\?\.institutionalTeacher \? "" : `<button class="ghost small-button roster-remove"/);
