@@ -9,6 +9,93 @@ function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 }
 
+async function countRows(query: any, label: string) {
+  const { count, error } = await query;
+  if (error) throw new Error(`${label}: ${error.message}`);
+  return count ?? 0;
+}
+
+async function getDataInventory(admin: any, role: string, userId: string) {
+  if (role === "student") {
+    const [
+      legacyMemberships,
+      institutionalEnrollments,
+      receivedInvitations,
+      attempts,
+      sessions,
+      mastery,
+      remediation,
+    ] = await Promise.all([
+      countRows(admin.from("class_memberships").select("class_id", { count: "exact", head: true }).eq("student_id", userId), "class_memberships_count_failed"),
+      countRows(admin.from("institutional_class_enrollments").select("id", { count: "exact", head: true }).eq("student_id", userId), "institutional_enrollments_count_failed"),
+      countRows(admin.from("institutional_invitations").select("id", { count: "exact", head: true }).eq("recipient_user_id", userId), "received_invitations_count_failed"),
+      countRows(admin.from("attempts").select("id", { count: "exact", head: true }).eq("student_id", userId), "attempts_count_failed"),
+      countRows(admin.from("learning_sessions").select("id", { count: "exact", head: true }).eq("student_id", userId), "learning_sessions_count_failed"),
+      countRows(admin.from("student_skill_mastery").select("skill_id", { count: "exact", head: true }).eq("student_id", userId), "mastery_count_failed"),
+      countRows(admin.from("remediation_events").select("id", { count: "exact", head: true }).eq("student_id", userId), "remediation_count_failed"),
+    ]);
+    return {
+      kind: "student",
+      classMemberships: legacyMemberships + institutionalEnrollments,
+      invitationsReceived: receivedInvitations,
+      attempts,
+      learningSessions: sessions,
+      masteryRows: mastery,
+      remediationEvents: remediation,
+    };
+  }
+
+  const auditEvents = await countRows(
+    admin.from("security_audit_log").select("id", { count: "exact", head: true }).eq("actor_user_id", userId),
+    "audit_events_count_failed",
+  );
+
+  if (role === "teacher") {
+    const { data: membershipRows, error: membershipError } = await admin
+      .from("institutional_memberships")
+      .select("id")
+      .eq("person_id", userId);
+    if (membershipError) throw new Error(`institutional_memberships_failed: ${membershipError.message}`);
+    const membershipIds = (membershipRows ?? []).map((row: any) => row.id);
+    const teachingAssignments = membershipIds.length
+      ? await countRows(
+        admin.from("teacher_assignments").select("id", { count: "exact", head: true }).in("teacher_membership_id", membershipIds),
+        "teacher_assignments_count_failed",
+      )
+      : 0;
+    const [emailInvitations, joinCodes] = await Promise.all([
+      countRows(admin.from("institutional_invitations").select("id", { count: "exact", head: true }).eq("issued_by", userId), "issued_invitations_count_failed"),
+      countRows(admin.from("institutional_join_codes").select("id", { count: "exact", head: true }).eq("issued_by", userId), "issued_join_codes_count_failed"),
+    ]);
+    return {
+      kind: "teacher",
+      institutionalMemberships: membershipIds.length,
+      teachingAssignments,
+      invitationRecords: emailInvitations + joinCodes,
+      auditEvents,
+    };
+  }
+
+  if (role === "school_admin") {
+    const [institutionalMemberships, invitationRecords] = await Promise.all([
+      countRows(admin.from("institutional_memberships").select("id", { count: "exact", head: true }).eq("person_id", userId), "institutional_memberships_count_failed"),
+      countRows(admin.from("institutional_invitations").select("id", { count: "exact", head: true }).eq("issued_by", userId), "issued_invitations_count_failed"),
+    ]);
+    return { kind: "school_admin", institutionalMemberships, invitationRecords, auditEvents };
+  }
+
+  if (role === "content_admin") {
+    const contentReviews = await countRows(
+      admin.from("item_reviews").select("id", { count: "exact", head: true }).eq("reviewer_id", userId),
+      "content_reviews_count_failed",
+    );
+    return { kind: "content_admin", contentReviews, auditEvents };
+  }
+
+  if (role === "admin") return { kind: "admin", auditEvents };
+  return { kind: "account", auditEvents };
+}
+
 Deno.serve(async (req) => {
   try {
     if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
@@ -47,13 +134,7 @@ Deno.serve(async (req) => {
       .limit(1)
       .maybeSingle();
 
-    const [membership, attempts, sessions, mastery, remediation] = await Promise.all([
-      admin.from("class_memberships").select("class_id", { count: "exact", head: true }).eq("student_id", userId),
-      admin.from("attempts").select("id", { count: "exact", head: true }).eq("student_id", userId),
-      admin.from("learning_sessions").select("id", { count: "exact", head: true }).eq("student_id", userId),
-      admin.from("student_skill_mastery").select("skill_id", { count: "exact", head: true }).eq("student_id", userId),
-      admin.from("remediation_events").select("id", { count: "exact", head: true }).eq("student_id", userId),
-    ]);
+    const dataInventory = await getDataInventory(admin, String(profile.role), userId);
 
     return json({
       account: {
@@ -71,13 +152,7 @@ Deno.serve(async (req) => {
         updated_at: null,
       },
       latestDeletionRequest: deletionRequest ?? null,
-      dataInventory: {
-        classMemberships: membership.count ?? 0,
-        attempts: attempts.count ?? 0,
-        learningSessions: sessions.count ?? 0,
-        masteryRows: mastery.count ?? 0,
-        remediationEvents: remediation.count ?? 0,
-      },
+      dataInventory,
       minimization: {
         storedInProfile: ["role", "optional display name", "account status"],
         notCollectedByPlatformProfile: ["date of birth", "home address", "phone number", "parent email", "government ID"],
