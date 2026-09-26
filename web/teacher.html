@@ -161,16 +161,18 @@
               <p id="institutionalClassMessage" class="message" role="status" aria-live="polite"></p>
             </div>
             <div class="join-code-box institutional-invite-box">
-              <span class="stat-label">ԱՇԱԿԵՐՏԻ ՀՐԱՎԵՐ</span>
+              <span class="stat-label">ԱՇԱԿԵՐՏՆԵՐԻ ՀՐԱՎԵՐ</span>
               <strong>Հրավիրել այս դասարան</strong>
-              <p class="subtle small">Մուտքագրեք միայն աշակերտի էլ. հասցեն։ Հրավերը մեկանգամյա է, ժամկետային և կապված է հենց այս դասարանի ու առարկայի հետ։</p>
+              <p class="subtle small">Մուտքագրեք մինչև 20 էլ. հասցե՝ յուրաքանչյուրն առանձին տողով կամ բաժանված ստորակետով։ Յուրաքանչյուր աշակերտ կստանա իր մեկանգամյա, ժամկետային հրավերը՝ կապված հենց այս դասարանի ու առարկայի հետ։</p>
               <form id="institutionalStudentInviteForm" class="institutional-invite-form">
-                <label>Աշակերտի էլ. հասցե
-                  <input id="institutionalStudentEmail" type="email" required autocomplete="off" inputmode="email" />
+                <label>Աշակերտների էլ. հասցեներ
+                  <textarea id="institutionalStudentEmail" rows="5" required autocomplete="off" inputmode="email" placeholder="student1@example.com&#10;student2@example.com"></textarea>
                 </label>
-                <button id="institutionalStudentInviteBtn" type="submit">Ուղարկել հրավերը</button>
+                <span id="institutionalStudentEmailCount" class="institutional-email-count">0 / 20</span>
+                <button id="institutionalStudentInviteBtn" type="submit">Ուղարկել հրավերները</button>
               </form>
               <p id="institutionalStudentInviteMessage" class="message" role="status" aria-live="polite"></p>
+              <ul id="institutionalStudentInviteResults" class="institutional-batch-results hidden" aria-live="polite"></ul>
             </div>
             <div class="institutional-pending-block">
               <div class="teacher-section-heading">
