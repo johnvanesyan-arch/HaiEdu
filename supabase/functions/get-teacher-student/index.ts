@@ -1,6 +1,8 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
+import { AcademicContextDenied, resolveAuthorizedTeacherAcademicContext, type TeacherAcademicSelection } from "../_shared/academic-context.ts";
+import { loadExactInstitutionalClassAnalytics } from "../_shared/institutional-teacher-analytics.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -34,9 +36,79 @@ Deno.serve(async (req) => {
     const { data: teacherProfile } = await admin.from("profiles").select("role").eq("id", teacherId).maybeSingle();
     if (!teacherProfile || teacherProfile.role !== "teacher") return json({ error: "teacher_role_required" }, 403);
 
-    let body: { studentId?: string; classId?: string } = {};
+    let body: {
+      studentId?: string;
+      classId?: string;
+      assignmentId?: string;
+      curriculumReleaseId?: string;
+      unitId?: string;
+    } = {};
     try { body = await req.json(); } catch { /* handled below */ }
     if (!body.studentId) return json({ error: "student_id_required" }, 400);
+
+    const hasInstitutionalSelection = Boolean(
+      body.assignmentId || body.curriculumReleaseId || body.unitId,
+    );
+    if (hasInstitutionalSelection) {
+      if (!body.assignmentId || !body.curriculumReleaseId || !body.unitId || !body.classId) {
+        return json({ error: "academic_selection_incomplete" }, 400);
+      }
+      const selection: TeacherAcademicSelection = {
+        assignmentId: body.assignmentId,
+        curriculumReleaseId: body.curriculumReleaseId,
+        unitId: body.unitId,
+      };
+      try {
+        const context = await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selection);
+        if (context.classId !== body.classId) throw new AcademicContextDenied();
+        const { data: enrollmentRows, error: enrollmentError } = await admin
+          .from("institutional_class_enrollments")
+          .select("id,student_id,status,valid_from,valid_to,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id")
+          .eq("student_id", body.studentId).eq("school_id", context.schoolId)
+          .eq("academic_year_id", context.academicYearId).eq("class_id", context.classId)
+          .eq("teacher_assignment_id", context.assignmentId)
+          .eq("subject_program_id", context.subjectProgramId).eq("status", "active");
+        if (enrollmentError) return json({ error: "membership_query_failed" }, 500);
+        const now = Date.now();
+        const activeEnrollments = (enrollmentRows ?? []).filter((row: any) => {
+          const start = Date.parse(String(row.valid_from));
+          const end = row.valid_to == null ? Infinity : Date.parse(String(row.valid_to));
+          return Number.isFinite(start) && start <= now && now < end;
+        });
+        if (activeEnrollments.length !== 1) return json({ error: "student_not_in_teacher_class" }, 403);
+        const [{ data: profile }, { data: klass }] = await Promise.all([
+          admin.from("profiles").select("id,display_name,account_status")
+            .eq("id", body.studentId).maybeSingle(),
+          admin.from("classes").select("id,name").eq("id", context.classId).maybeSingle(),
+        ]);
+        if (!profile || profile.account_status !== "active" || !klass) {
+          return json({ error: "student_not_found" }, 404);
+        }
+        const analytics = await loadExactInstitutionalClassAnalytics(admin, context, [{
+          id: profile.id, displayName: profile.display_name,
+          enrollmentId: activeEnrollments[0].id,
+        }]);
+        const detail = analytics.students[0];
+        return json({
+          ...detail,
+          student: {
+            id: profile.id,
+            displayName: detail.displayName,
+            memberOf: [{ id: klass.id, name: klass.name }],
+          },
+          unitCode: context.unitCode,
+          curriculumReleaseId: context.curriculumReleaseId,
+          selectedUnit: {
+            unitId: context.unitId, unitCode: context.unitCode,
+            unitTitleHy: context.unitTitleHy, unitSequence: context.unitSequence,
+          },
+        });
+      } catch (error) {
+        if (error instanceof AcademicContextDenied) return json({ error: "academic_context_unavailable" }, 403);
+        console.error("get-institutional-teacher-student", error);
+        return json({ error: "institutional_student_analytics_unavailable" }, 503);
+      }
+    }
 
     let classQuery = admin
       .from("class_memberships")
@@ -121,9 +193,9 @@ Deno.serve(async (req) => {
     else if (review?.lifecycle_state === "mastery_retry_2_ready" || review?.lifecycle_state === "mastery_retry_3_ready") intervention = { action: "mastery_check_retry", code: null, messageHy: "Յուրացման ստուգման հաջորդ փորձը հասանելի է։" };
     else if (review?.lifecycle_state === "mastery_failed_final") intervention = { action: "review_chapter", code: null, messageHy: "Երեք փորձերն ավարտված են. շարունակել Գլխի կրկնությունը։" };
     else if (review?.lifecycle_state === "mastery_passed" || latestMastery?.assessment_result === "passed") intervention = { action: "unit_complete", code: null, messageHy: "Բաժին I-ը ավարտված է։" };
-    else if (!(attempts ?? []).length) intervention = { action: "take_diagnostic", code: null, messageHy: "Անցկացնել Բաժին I-ի ախտորոշիչը։" };
+    else if (!(attempts ?? []).length) intervention = { action: "take_diagnostic", code: null, messageHy: "Անցկացնել Chapter I ախտորոշիչը։" };
     else if (weakSkills.length) intervention = { action: "practice_skill", code: weakSkills[0].code, messageHy: `Առաջնահերթ աշխատել ${weakSkills[0].code} հմտության վրա։` };
-    else intervention = { action: "mastery_check", code: null, messageHy: "Անցկացնել Բաժին I-ի յուրացման ստուգումը։" };
+    else intervention = { action: "mastery_check", code: null, messageHy: "Անցկացնել Chapter I mastery check-ը։" };
 
     return json({
       student: {
