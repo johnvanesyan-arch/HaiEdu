@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.48  
+**Roadmap version:** 2.49  
 **Updated:** 2026-09-26  
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. The controlled teacher-issued invitation, acceptance, assigned-teacher roster and first post-enrollment exact-context run passed. Remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence and production verification of the current 14C teacher-analytics restoration remain open. School-wide administrative analytics remain a separate 14D gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
@@ -520,6 +520,7 @@ This distinction is binding for planning, implementation and closure claims:
 - **School-wide analytics are later administrative aggregation and remain gated behind Sprint 14D.** School-wide, cross-class and administrative roll-ups must not delay, replace or redefine the teacher analytics required in 14C.
 - Institutional teacher analytics must resolve the teacher's active assignment and exact school, academic year, class, subject programme, curriculum release and unit on the server. Client or URL state may preserve a selection but never grant access.
 - Only evidence stamped `academic_context_status=exact` for that complete context may enter institutional class/student aggregates. `unbound_legacy` evidence remains excluded unless a separately approved legacy view explicitly identifies it.
+- For any active `pilot` or `production` curriculum release, the immutable `curriculum_release_units` snapshot is authoritative for the unit code, title and sequence used by analytics. A mutable authoring record's editorial status or later metadata change must neither hide that released context nor silently rewrite its identity.
 - The 14C teacher surface must expose class performance summary, skill matrix, support/review/inactivity filters and a student drill-down covering Diagnostic, Practice, Chapter Review and Mastery Check. Empty and partial data must remain visible and honest.
 - Undefined cross-subject ability scores, school-wide roll-ups, bulk import and academic-year rollover are not part of the 14C teacher-analytics slice.
 
