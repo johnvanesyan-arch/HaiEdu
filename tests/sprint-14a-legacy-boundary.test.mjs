@@ -4,6 +4,7 @@ import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { stripTypeScriptTypes } from 'node:module';
 import { webcrypto as crypto } from 'node:crypto';
+import { TextEncoder } from 'node:util';
 
 async function invoke(name, body, tables) {
   let handler;
@@ -30,7 +31,7 @@ async function invoke(name, body, tables) {
     createClient: () => client, hasActiveLiveSession: async () => true,
     getStudentCourseEntitlements: async () => { throw new Error('unexpected entitlement read'); },
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
-    Response, console, crypto,
+    Response, console, crypto, TextEncoder,
   });
   const response = await handler(new Request('https://test.invalid', {
     method: 'POST', headers: { Authorization: 'Bearer test' }, body: JSON.stringify(body),
