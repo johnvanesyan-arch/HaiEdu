@@ -29,10 +29,14 @@ test("staff workspaces no longer collect credentials", async () => {
   }
 });
 
-test("school teachers see a bounded notice instead of legacy class creation", async () => {
+test("school teachers use the institutional class creator instead of the legacy path", async () => {
   const html = await read("web/teacher.html");
   const code = await read("web/teacher.js");
   assert.match(html, /id="institutionalTeacherNotice"/);
+  assert.match(html, /id="institutionalCreateForm"/);
   assert.match(code, /data\.institutionalTeacher === true/);
   assert.match(code, /"createClassCard"[\s\S]*classList\.toggle\("hidden", institutional\)/);
+  assert.match(code, /renderInstitutionalClassCreator\(data, institutional\)/);
+  assert.match(code, /institutionalCreateForm"\)\.addEventListener\("submit", createInstitutionalClass\)/);
+  assert.match(code, /functions\.invoke\("manage-institutional-teacher-class",[\s\S]*action: "create",[\s\S]*membershipId: option\.teacherMembershipId,[\s\S]*academicYearId: option\.academicYearId,[\s\S]*subjectProgramId: option\.subjectProgramId/);
 });
