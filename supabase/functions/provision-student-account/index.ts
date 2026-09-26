@@ -121,7 +121,7 @@ Deno.serve(async (req) => {
     const delivery = createClient(url, anonKey, {
       auth: { persistSession: false, autoRefreshToken: false },
     });
-    const token = header.replace(/^Bearer\\s+/i, "");
+    const token = header.replace(/^Bearer\s+/i, "");
     const { data: userData, error: authError } = await admin.auth.getUser(token);
     if (authError || !userData.user) return json({ error: "unauthorized" }, 401);
     const actor = userData.user.id;
