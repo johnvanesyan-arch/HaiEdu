@@ -17,6 +17,23 @@ body .eyebrow, body .mode-kicker, body .panel-kicker { color: var(--hm-blue); le
 body button:not(.ghost):not(.secondary):not(.danger-btn), body .button-link:not(.ghost):not(.secondary) { border-radius: 10px; }
 body a:focus-visible, body button:focus-visible, body input:focus-visible, body select:focus-visible { outline: 3px solid #8db7ed; outline-offset: 2px; }
 
+/* Final cross-workspace text contract: Armenian copy wraps at word boundaries. */
+body :is(h1, h2, h3, p, li, dt, dd, label, legend),
+body :is(button, a.button-link, a.ghost),
+body :is(.subtle, .page-lede, .message, .feedback, .feedback-banner, .status-badge, .amp-status-badge, .pill, .mode-kicker),
+body :is([class$="-card"], [class*="-card "], [class$="-label"], [class*="-label "]) {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+/* Only technical tokens may split without a natural word boundary. */
+body :is(code, pre, .code-field, .item-code, .skill-code, .invite-email, .roster-email, [data-technical-token]),
+body a[href^="http"],
+body a[href^="mailto:"] {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+
 /* The existing student navigation supplies enrolled classes and permitted links. */
 body.amp-student-shell-active .amp-side-nav {
   background: var(--hm-surface); color: var(--hm-text);
@@ -82,7 +99,8 @@ body.amp-student-shell-active .mode-kicker { background: var(--hm-soft); color: 
   border-radius: 999px; color: var(--hm-blue); background: var(--hm-soft);
   font-size: .84rem; font-weight: 700;
 }
-body.hm-has-role-sidebar > main { box-sizing: border-box; width: auto; max-width: none; margin: 0 0 0 var(--hm-sidebar-width); padding: 24px clamp(16px,3vw,42px) 48px; min-width: 0; }
+body.hm-has-role-sidebar > main { box-sizing: border-box; width: auto; max-width: none; margin: 0 0 0 var(--hm-sidebar-width); padding: 24px clamp(16px,3vw,42px) 48px; min-width: 0; container-type: inline-size; container-name: hm-workspace; }
+body.amp-student-shell-active > main { container-type: inline-size; container-name: hm-student-workspace; }
 body.hm-has-role-sidebar .teacher-topbar,
 body.hm-has-role-sidebar .school-admin-header,
 body.hm-has-role-sidebar .admin-topbar,
@@ -103,6 +121,39 @@ body.hm-has-role-sidebar .bank-card { border-color: var(--hm-line); }
 body.hm-has-role-sidebar .quality-layout { grid-template-columns: minmax(0,1fr); }
 body.hm-has-role-sidebar .quality-layout .table-wrap { overflow-x: auto; }
 body.hm-has-role-sidebar .quality-layout .detail-panel { position: static; max-height: none; }
+
+/* Container queries respond to the usable dashboard width after sidebars, not only the viewport. */
+@container hm-workspace (max-width: 70rem) {
+  .teacher-onboarding-steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .matrix-summary-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .overview-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .admin-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .quality-stats { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .class-header-card,
+  .admin-overview-grid { grid-template-columns: 1fr; }
+}
+
+@container hm-workspace (max-width: 44rem) {
+  .teacher-onboarding-steps,
+  .teacher-profile-card,
+  .teacher-create-card,
+  .teacher-profile-form,
+  .teacher-create-form,
+  .overview-stats,
+  .admin-stats { grid-template-columns: 1fr; }
+  .matrix-summary-grid,
+  .quality-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+
+@container hm-student-workspace (max-width: 48rem) {
+  .dashboard-summary,
+  .dashboard-row,
+  .mode-grid,
+  .skill-map { grid-template-columns: 1fr; }
+  .dashboard-heading,
+  .recommendation-card,
+  .skill-map-heading { align-items: stretch; flex-direction: column; }
+}
 
 @media (min-width: 1840px) {
   body.hm-has-role-sidebar .quality-layout { grid-template-columns: minmax(720px,1.2fr) minmax(620px,1fr); }
