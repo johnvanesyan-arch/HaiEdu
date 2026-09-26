@@ -7,7 +7,7 @@ const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 test("student utility navigation keeps Join Class while primary learning nav is entitlement-driven", async () => {
   const shell = await read("web/student-shell.js");
   const courses = await read("web/student-courses.js");
-  assert.match(shell, /href="\.\/join\.html">Միանալ դասարանին/);
+  assert.match(shell, /href="\.\/join\.html">Միանալ դասարանին՝ կոդով/);
   assert.match(shell, /key: "home"[\s\S]*enabled: true/);
   assert.match(shell, /student-courses\.js/);
   assert.match(courses, /Իմ առարկաները/);
@@ -61,7 +61,11 @@ test("teacher dashboard supports copying and rotating class invitations", async 
   assert.match(html, /id="copyInviteBtn"/);
   assert.match(html, /id="rotateCodeBtn"/);
   assert.match(html, /id="copyCodeStatus"/);
+  assert.match(html, /id="institutionalGenerateJoinCodeBtn"/);
+  assert.match(html, /id="institutionalJoinCodeList"/);
   assert.match(js, /navigator\.clipboard\.writeText\(value\)/);
+  assert.match(js, /create_code/);
+  assert.match(js, /revoke_code/);
   assert.match(js, /copyJoinCode/);
   assert.match(js, /copyInviteLink/);
   assert.match(js, /rotate_join_code/);
