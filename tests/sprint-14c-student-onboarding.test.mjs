@@ -173,17 +173,25 @@ test('front-end places student invitation inside the teacher class and removes i
   assert.match(accessJs, /complete-student-invitation/);
 });
 
-test('institutional teacher response is roster-only and class-scoped', () => {
+test('institutional teacher response restores exact-context teacher analytics', () => {
   const helper = readFileSync('supabase/functions/_shared/institutional-teacher-dashboard.ts', 'utf8');
+  const analytics = readFileSync('supabase/functions/_shared/institutional-teacher-analytics.ts', 'utf8');
   const html = readFileSync('web/teacher.html', 'utf8');
   const js = readFileSync('web/teacher.js', 'utf8');
-  assert.match(helper, /e\.school_id === assignment\.school_id/);
-  assert.match(helper, /e\.subject_program_id === assignment\.subject_program_id/);
+  assert.match(helper, /enrollment\.school_id === assignment\.school_id/);
+  assert.match(helper, /enrollment\.subject_program_id === assignment\.subject_program_id/);
+  assert.match(helper, /enrollment\.teacher_assignment_id === assignment\.id/);
   assert.match(helper, /assignmentId: assignment\.id/);
-  assert.match(helper, /displayName/);
-  assert.match(html, /id="institutionalRoster"/);
-  assert.match(js, /renderInstitutionalRoster/);
-  assert.match(html, /Առաջընթացի վերլուծությունը դեռ չի գործարկվել/);
+  assert.match(analytics, /\.eq\("academic_context_status", "exact"\)/);
+  assert.match(analytics, /\.eq\("school_id", context\.schoolId\)/);
+  assert.match(analytics, /\.eq\("teacher_assignment_id", context\.assignmentId\)/);
+  assert.match(analytics, /\.eq\("curriculum_release_id", context\.curriculumReleaseId\)/);
+  assert.doesNotMatch(analytics, /student_skill_mastery|chapter_review_summary_v/);
+  assert.match(html, /id="teacherUnitFilter"/);
+  assert.match(html, /id="matrixAnalyticsCard"/);
+  assert.match(js, /get-teacher-student/);
+  assert.match(js, /curriculumReleaseId: klass\?\.selectedUnit\?\.curriculumReleaseId/);
+  assert.doesNotMatch(html, /Ուսումնական արդյունքների վերլուծություն այս փուլում չի ցուցադրվում/);
 });
 
 test('migration keeps old evidence unbound and stamps only new unambiguous sessions', () => {

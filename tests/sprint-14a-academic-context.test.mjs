@@ -9,8 +9,9 @@ const rows = {
   classes: { id: 'class-a', school_id: 'school-a', academic_year_id: 'year-a', subject_id: 'subject-a', grade_id: 'grade-7', is_active: true },
   academic_years: { id: 'year-a', school_id: 'school-a', status: 'active', starts_on: '2026-09-01', ends_on: '2027-08-31' },
   subject_programs: { id: 'program-a', subject_id: 'subject-a', grade_id: 'grade-7' },
-  curriculum_releases: { id: 'release-a', subject_program_id: 'program-a', status: 'pilot' },
-  units: { id: 'unit-2', subject_program_id: 'program-a', code: 'PHY7-U02', sequence_order: 2, title_hy: 'Գլուխ II' },
+  curriculum_releases: { id: 'release-a', subject_program_id: 'program-a', status: 'pilot', effective_from: '2026-09-01', effective_to: null },
+  units: { id: 'unit-2', subject_program_id: 'program-a', code: 'PHY7-U02', sequence_order: 2, title_hy: 'Գլուխ II', status: 'published' },
+  curriculum_release_units: { curriculum_release_id: 'release-a', unit_id: 'unit-2', unit_code_snapshot: 'PHY7-U02', title_hy_snapshot: 'Գլուխ II', sequence_order_snapshot: 2 },
   subjects: { id: 'subject-a', code: 'physics', name_hy: 'Ֆիզիկա' },
   grades: { id: 'grade-7', grade_number: 7, label_hy: '7-րդ դասարան' },
 };
@@ -18,9 +19,20 @@ const selection = { assignmentId: 'a', curriculumReleaseId: 'release-a', unitId:
 function mock(overrides = {}) {
   const data = Object.fromEntries(Object.entries(rows).map(([key, value]) => [key, { ...value, ...overrides[key] }]));
   return { from(table) {
-    return { select() { return { eq(_, id) { return { async maybeSingle() {
-      return { data: data[table]?.id === id ? data[table] : null, error: null };
-    } }; } }; } };
+    return { select() {
+      const filters = [];
+      const query = {
+        eq(column, value) { filters.push([column, value]); return query; },
+        async maybeSingle() {
+          const candidate = data[table];
+          return {
+            data: candidate && filters.every(([column, value]) => candidate[column] === value) ? candidate : null,
+            error: null,
+          };
+        },
+      };
+      return query;
+    } };
   } };
 }
 const resolve = (changes = {}, teacher = 'teacher-a', choice = selection) =>
@@ -52,6 +64,7 @@ test('another subject and grade can use the same authorized context contract', a
     subject_programs: { id: 'program-b', subject_id: 'subject-b', grade_id: 'grade-8' },
     curriculum_releases: { subject_program_id: 'program-b' },
     units: { subject_program_id: 'program-b', code: 'SUB8-U02' },
+    curriculum_release_units: { unit_code_snapshot: 'SUB8-U02' },
     subjects: { id: 'subject-b', code: 'subject-b' },
     grades: { id: 'grade-8', grade_number: 8 },
   };
@@ -71,6 +84,8 @@ for (const [name, changes, teacher, choice] of [
   ['wrong programme release', { curriculum_releases: { subject_program_id: 'program-b' } }, 'teacher-a', selection],
   ['legacy release', { curriculum_releases: { status: 'legacy' } }, 'teacher-a', selection],
   ['wrong programme unit', { units: { subject_program_id: 'program-b' } }, 'teacher-a', selection],
+  ['unit missing from release snapshot', { curriculum_release_units: { unit_id: 'unit-1' } }, 'teacher-a', selection],
+  ['retired unit', { units: { status: 'retired' } }, 'teacher-a', selection],
   ['forged assignment URL', {}, 'teacher-a', { ...selection, assignmentId: 'other' }],
   ['forged unit URL', {}, 'teacher-a', { ...selection, unitId: 'other' }],
 ]) {

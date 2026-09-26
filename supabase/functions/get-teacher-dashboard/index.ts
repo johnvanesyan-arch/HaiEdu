@@ -2,6 +2,7 @@ import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
 import { getInstitutionalTeacherDashboard } from "../_shared/institutional-teacher-dashboard.ts";
+import { AcademicContextDenied, resolveAuthorizedTeacherAcademicContext, type TeacherAcademicSelection } from "../_shared/academic-context.ts";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -41,6 +42,15 @@ Deno.serve(async (req) => {
       return json({ error: "teacher_role_required" }, 403);
     }
 
+    let requestBody: { selection?: Partial<TeacherAcademicSelection> } = {};
+    try { requestBody = await req.json(); } catch { /* an empty body uses the default authorized unit */ }
+    const rawSelection = requestBody.selection;
+    const hasSelection = Boolean(rawSelection?.assignmentId || rawSelection?.curriculumReleaseId || rawSelection?.unitId);
+    if (hasSelection && (!rawSelection?.assignmentId || !rawSelection.curriculumReleaseId || !rawSelection.unitId)) {
+      return json({ error: "academic_selection_incomplete" }, 400);
+    }
+    const selection = hasSelection ? rawSelection as TeacherAcademicSelection : null;
+
     // Keep a school teacher out of the legacy, schoolless class and evidence
     // path until institutional classes have an authorized academic context.
     const { data: schoolMemberships, error: membershipError } = await admin
@@ -49,10 +59,13 @@ Deno.serve(async (req) => {
     if (membershipError) return json({ error: "teacher_membership_check_failed" }, 503);
     if (schoolMemberships?.length) {
       try {
+        if (selection) await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selection);
         return json(await getInstitutionalTeacherDashboard(
           admin, teacherId, teacherProfile.display_name?.trim() || "Ուսուցիչ",
+          selection,
         ));
       } catch (error) {
+        if (error instanceof AcademicContextDenied) return json({ error: "academic_context_unavailable" }, 403);
         console.error("get-institutional-teacher-dashboard", error);
         return json({ error: "institutional_dashboard_unavailable" }, 503);
       }
