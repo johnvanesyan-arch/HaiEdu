@@ -33,6 +33,17 @@ create index if not exists institutional_join_codes_pending_scope_idx
   on public.institutional_join_codes
   (issued_by,school_id,class_id,teacher_assignment_id,created_at desc)
   where used_at is null and revoked_at is null;
+create index if not exists institutional_join_codes_class_scope_idx
+  on public.institutional_join_codes(class_id,school_id,academic_year_id);
+create index if not exists institutional_join_codes_school_idx
+  on public.institutional_join_codes(school_id);
+create index if not exists institutional_join_codes_assignment_idx
+  on public.institutional_join_codes(teacher_assignment_id);
+create index if not exists institutional_join_codes_program_idx
+  on public.institutional_join_codes(subject_program_id);
+create index if not exists institutional_join_codes_used_by_idx
+  on public.institutional_join_codes(used_by)
+  where used_by is not null;
 
 alter table public.institutional_join_codes enable row level security;
 revoke all on table public.institutional_join_codes from public,anon,authenticated;
