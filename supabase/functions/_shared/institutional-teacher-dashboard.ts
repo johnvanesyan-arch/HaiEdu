@@ -98,7 +98,7 @@ export async function getInstitutionalTeacherDashboard(
   const units = programmeIds.length
     ? requireRows(await admin.from("units")
       .select("id,subject_program_id,code,title_hy,sequence_order,status")
-      .in("subject_program_id", programmeIds).eq("status", "published"))
+      .in("subject_program_id", programmeIds))
     : [];
   const releaseUnits = releaseIds.length
     ? requireRows(await admin.from("curriculum_release_units")
@@ -168,7 +168,9 @@ export async function getInstitutionalTeacherDashboard(
       const release = releaseById.get(link.curriculum_release_id);
       const unit = unitById.get(link.unit_id);
       if (!release || !unit || release.subject_program_id !== assignment.subject_program_id
-        || unit.subject_program_id !== assignment.subject_program_id || link.unit_code_snapshot !== unit.code) continue;
+        || unit.subject_program_id !== assignment.subject_program_id
+        || !link.unit_code_snapshot || !link.title_hy_snapshot
+        || !Number.isFinite(Number(link.sequence_order_snapshot))) continue;
       const candidate = {
         assignmentId: assignment.id, curriculumReleaseId: release.id,
         unitId: unit.id, unitCode: link.unit_code_snapshot,

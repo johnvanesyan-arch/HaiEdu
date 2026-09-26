@@ -71,7 +71,7 @@ export async function resolveAuthorizedTeacherAcademicContext(
     row(admin, "academic_years", "id, school_id, status, starts_on, ends_on", assignment.academic_year_id),
     row(admin, "subject_programs", "id, subject_id, grade_id", assignment.subject_program_id),
     row(admin, "curriculum_releases", "id, subject_program_id, status, effective_from, effective_to", selection.curriculumReleaseId),
-    row(admin, "units", "id, subject_program_id, code, sequence_order, title_hy, status", selection.unitId),
+    row(admin, "units", "id, subject_program_id", selection.unitId),
     releaseUnit(admin, selection.curriculumReleaseId, selection.unitId),
   ]);
 
@@ -81,11 +81,11 @@ export async function resolveAuthorizedTeacherAcademicContext(
       today < year.starts_on || today > year.ends_on ||
       klass.subject_id !== programme.subject_id || klass.grade_id !== programme.grade_id ||
       release.subject_program_id !== programme.id || unit.subject_program_id !== programme.id ||
-      !["pilot", "production"].includes(release.status) || unit.status !== "published" ||
+      !["pilot", "production"].includes(release.status) ||
       (release.effective_from && today < release.effective_from) ||
       (release.effective_to && today > release.effective_to) ||
-      releaseUnitRow.unit_code_snapshot !== unit.code ||
-      Number(releaseUnitRow.sequence_order_snapshot) !== Number(unit.sequence_order) || !unit.code) {
+      !releaseUnitRow.unit_code_snapshot || !releaseUnitRow.title_hy_snapshot ||
+      !Number.isFinite(Number(releaseUnitRow.sequence_order_snapshot))) {
     throw new AcademicContextDenied();
   }
 
@@ -97,7 +97,9 @@ export async function resolveAuthorizedTeacherAcademicContext(
     assignmentId: assignment.id, classId: klass.id, schoolId: assignment.school_id,
     academicYearId: year.id, subjectProgramId: programme.id,
     curriculumReleaseId: release.id, unitId: unit.id,
-    unitCode: unit.code, unitSequence: Number(unit.sequence_order), unitTitleHy: unit.title_hy,
+    unitCode: releaseUnitRow.unit_code_snapshot,
+    unitSequence: Number(releaseUnitRow.sequence_order_snapshot),
+    unitTitleHy: releaseUnitRow.title_hy_snapshot,
     subjectCode: subject.code, subjectNameHy: subject.name_hy,
     gradeNumber: Number(grade.grade_number), gradeLabelHy: grade.label_hy,
   };
