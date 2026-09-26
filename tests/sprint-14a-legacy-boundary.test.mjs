@@ -39,7 +39,7 @@ async function invoke(name, body, tables) {
 
 test('legacy join code cannot enroll into a scoped class', async () => {
   const result = await invoke('join-class', { joinCode: 'ABCDEFGH' }, {
-    profiles: { role: 'student' }, classes: { id: 'class-b', school_id: 'school-b', is_active: true },
+    profiles: { role: 'student', account_status: 'active' }, classes: { id: 'class-b', school_id: 'school-b', is_active: true },
   });
   assert.equal(result.status, 404);
   assert.deepEqual(result.reads, ['profiles', 'classes']);
