@@ -10,6 +10,8 @@ let selectedClassId = null;
 let rosterQuery = "";
 let matrixStudentFilter = "all";
 let dashboardLoadVersion = 0;
+const MAX_STUDENT_INVITE_BATCH = 20;
+const institutionalStudentEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
 
 function navigationSelection() {
   if (typeof window.location?.search !== "string") return { classId: null, selection: null };
@@ -259,6 +261,8 @@ function selectClass(id, { pushNavigation = false } = {}) {
     $("institutionalStudentInviteBtn").disabled = !klass.isActive;
     $("institutionalStudentEmail").disabled = !klass.isActive;
     $("institutionalStudentEmail").value = "";
+    updateInstitutionalStudentEmailCount();
+    renderInstitutionalStudentInviteResults([]);
     setMessage("institutionalStudentInviteMessage", klass.isActive
       ? ""
       : "Արխիվացված դասարանին նոր աշակերտ հրավիրել հնարավոր չէ։", !klass.isActive);
@@ -428,30 +432,102 @@ async function loadInstitutionalStudentInvitations(klass = selectedClass()) {
   renderInstitutionalStudentInvitations(data.invitations);
 }
 
+function parseInstitutionalStudentEmails(value) {
+  const seen = new Set();
+  return String(value ?? "")
+    .split(/[\s,;]+/)
+    .map((email) => email.trim().toLowerCase())
+    .filter((email) => {
+      if (!email || seen.has(email)) return false;
+      seen.add(email);
+      return true;
+    });
+}
+
+function updateInstitutionalStudentEmailCount() {
+  const emails = parseInstitutionalStudentEmails($("institutionalStudentEmail")?.value);
+  const counter = $("institutionalStudentEmailCount");
+  if (!counter) return emails;
+  counter.textContent = `${emails.length} / ${MAX_STUDENT_INVITE_BATCH}`;
+  counter.style.color = emails.length > MAX_STUDENT_INVITE_BATCH ? "#8a3342" : "#607087";
+  return emails;
+}
+
+function renderInstitutionalStudentInviteResults(results) {
+  const list = $("institutionalStudentInviteResults");
+  if (!list) return;
+  list.replaceChildren();
+  list.classList.toggle("hidden", !Array.isArray(results) || results.length === 0);
+  for (const result of results ?? []) {
+    const item = document.createElement("li");
+    item.className = String(result.status ?? "failed").replaceAll("_", "-");
+    const email = document.createElement("span");
+    email.textContent = result.email || "—";
+    const status = document.createElement("span");
+    status.textContent = result.status === "sent"
+      ? "Ուղարկված է"
+      : result.status === "not_attempted" ? "Չի փորձարկվել" : "Չի ուղարկվել";
+    item.append(email, status);
+    list.append(item);
+  }
+}
+
 async function submitInstitutionalStudentInvitation(event) {
   event.preventDefault();
   const klass = selectedClass();
   if (!klass || !dashboard?.institutionalTeacher || !klass.isActive) return;
   const button = $("institutionalStudentInviteBtn");
-  const email = $("institutionalStudentEmail").value.trim();
+  const emailInput = $("institutionalStudentEmail");
+  const emails = updateInstitutionalStudentEmailCount();
+  renderInstitutionalStudentInviteResults([]);
+  if (!emails.length) {
+    return setMessage("institutionalStudentInviteMessage", "Մուտքագրեք առնվազն մեկ էլ. հասցե։", true);
+  }
+  if (emails.length > MAX_STUDENT_INVITE_BATCH) {
+    return setMessage("institutionalStudentInviteMessage", "Մեկ խմբով կարելի է ուղարկել առավելագույնը 20 հրավեր։", true);
+  }
+  const invalidEmails = emails.filter((email) => email.length > 320
+    || !institutionalStudentEmailPattern.test(email));
+  if (invalidEmails.length) {
+    return setMessage("institutionalStudentInviteMessage",
+      `Սխալ էլ. հասցե՝ ${invalidEmails.join(", ")}։ Ոչ մի հրավեր չի ուղարկվել։`, true);
+  }
   button.disabled = true;
-  setMessage("institutionalStudentInviteMessage", "Հրավերն ուղարկվում է…");
+  setMessage("institutionalStudentInviteMessage", `${emails.length} հրավեր է ուղարկվում…`);
   const { data, error } = await supabase.functions.invoke("provision-student-account", {
     body: {
       schoolId: klass.schoolId, classId: klass.id,
-      assignmentId: klass.assignmentId, email,
+      assignmentId: klass.assignmentId, emails,
     },
   });
   button.disabled = false;
   if (error) {
     return setMessage("institutionalStudentInviteMessage",
-      "Հրավերը չուղարկվեց։ Ստուգեք հասցեն և դասարանի ձեր գործող նշանակումը։", true);
+      "Հրավերները չուղարկվեցին։ Ստուգեք հասցեները և դասարանի ձեր գործող նշանակումը։", true);
   }
-  $("institutionalStudentEmail").value = "";
-  setMessage("institutionalStudentInviteMessage", data?.accountState === "existing"
-    ? "Հրավերն ուղարկվել է աշակերտի գործող հաշվին։"
-    : "Հրավերն ուղարկվել է։ Աշակերտը ինքնուրույն կսահմանի իր գաղտնաբառը։");
-  await loadInstitutionalStudentInvitations(klass);
+  const results = Array.isArray(data?.results) ? data.results : [];
+  renderInstitutionalStudentInviteResults(results);
+  const retryEmails = results
+    .filter((result) => result.status !== "sent")
+    .map((result) => result.email)
+    .filter(Boolean);
+  emailInput.value = retryEmails.join("\n");
+  updateInstitutionalStudentEmailCount();
+  const succeeded = Number(data?.succeeded ?? 0);
+  const failed = Number(data?.failed ?? 0);
+  const notAttempted = Number(data?.notAttempted ?? 0);
+  if (failed || notAttempted) {
+    const quotaNote = data?.rateLimited
+      ? " Էլ. փոստի ուղարկման սահմանաչափը սպառվել է. փորձեք մնացածը ավելի ուշ։"
+      : " Չուղարկված հասցեները մնացել են դաշտում։";
+    setMessage("institutionalStudentInviteMessage",
+      `${succeeded} ուղարկվեց, ${failed} չուղարկվեց, ${notAttempted} չփորձարկվեց։${quotaNote}`, true);
+  } else {
+    const duplicateNote = Number(data?.duplicatesRemoved ?? 0) > 0
+      ? ` ${data.duplicatesRemoved} կրկնվող հասցե բաց է թողնվել։` : "";
+    setMessage("institutionalStudentInviteMessage", `${succeeded} հրավեր ուղարկվեց։${duplicateNote}`);
+  }
+  if (succeeded > 0) await loadInstitutionalStudentInvitations(klass);
 }
 
 async function revokeInstitutionalStudentInvitation(button) {
@@ -882,6 +958,7 @@ $("rotateCodeBtn").addEventListener("click", rotateCode);
 $("toggleClassBtn").addEventListener("click", toggleClassStatus);
 $("institutionalClassToggle").addEventListener("click", toggleInstitutionalClassStatus);
 $("institutionalStudentInviteForm").addEventListener("submit", submitInstitutionalStudentInvitation);
+$("institutionalStudentEmail").addEventListener("input", updateInstitutionalStudentEmailCount);
 $("refreshInstitutionalInvites").addEventListener("click", () => loadInstitutionalStudentInvitations());
 $("closeDrawerBtn").addEventListener("click", closeDrawer);
 $("drawerBackdrop").addEventListener("click", closeDrawer);
