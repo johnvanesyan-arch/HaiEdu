@@ -10,7 +10,7 @@ test("shared controls wrap Armenian labels inside their visual bounds", async ()
 
   assert.match(ux, /\.button-link[\s\S]*max-width:\s*100%/);
   assert.match(ux, /\.button-link[\s\S]*white-space:\s*normal/);
-  assert.match(ux, /button[\s\S]*overflow-wrap:\s*anywhere/);
+  assert.match(ux, /button[\s\S]*overflow-wrap:\s*break-word/);
   assert.match(components, /a\.button-link[\s\S]*padding:\s*var\(--amp-space-3\)\s+var\(--amp-space-4\)/);
   assert.match(components, /button,[\s\S]*max-width:\s*100%/);
 });
@@ -22,7 +22,7 @@ test("shared cards and layout children cannot force horizontal overflow", async 
   assert.match(ux, /\.card,[\s\S]*min-width:\s*0/);
   assert.match(ux, /\.card\s*>\s*\*[\s\S]*max-width:\s*100%/);
   assert.match(ux, /\.topbar,[\s\S]*flex-wrap:\s*wrap/);
-  assert.match(responsive, /overflow-wrap:\s*anywhere/);
+  assert.match(responsive, /overflow-wrap:\s*break-word/);
 });
 
 test("multi-subject Home cards have internal spacing and bounded actions", async () => {
