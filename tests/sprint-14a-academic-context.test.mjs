@@ -10,7 +10,7 @@ const rows = {
   academic_years: { id: 'year-a', school_id: 'school-a', status: 'active', starts_on: '2026-09-01', ends_on: '2027-08-31' },
   subject_programs: { id: 'program-a', subject_id: 'subject-a', grade_id: 'grade-7' },
   curriculum_releases: { id: 'release-a', subject_program_id: 'program-a', status: 'pilot', effective_from: '2026-09-01', effective_to: null },
-  units: { id: 'unit-2', subject_program_id: 'program-a', code: 'PHY7-U02', sequence_order: 2, title_hy: 'Գլուխ II', status: 'published' },
+  units: { id: 'unit-2', subject_program_id: 'program-a', code: 'DRAFT-CODE', sequence_order: 99, title_hy: 'Խմբագրական տարբերակ', status: 'review' },
   curriculum_release_units: { curriculum_release_id: 'release-a', unit_id: 'unit-2', unit_code_snapshot: 'PHY7-U02', title_hy_snapshot: 'Գլուխ II', sequence_order_snapshot: 2 },
   subjects: { id: 'subject-a', code: 'physics', name_hy: 'Ֆիզիկա' },
   grades: { id: 'grade-7', grade_number: 7, label_hy: '7-րդ դասարան' },
@@ -44,6 +44,14 @@ test('returns a server-authorized context for the selected second unit', async (
   assert.equal(context.classId, 'class-a');
   assert.equal(context.unitCode, 'PHY7-U02');
   assert.equal(context.unitSequence, 2);
+  assert.equal(context.unitTitleHy, 'Գլուխ II');
+});
+
+test('uses the immutable release-unit snapshot while the mutable unit remains in editorial review', async () => {
+  const context = await resolve({ units: { status: 'review', code: 'CHANGED', sequence_order: 42 } });
+  assert.equal(context.unitCode, 'PHY7-U02');
+  assert.equal(context.unitSequence, 2);
+  assert.equal(context.unitTitleHy, 'Գլուխ II');
 });
 
 test('same programme in a second school is visible only to its assigned teacher', async () => {
@@ -63,7 +71,7 @@ test('another subject and grade can use the same authorized context contract', a
     classes: { subject_id: 'subject-b', grade_id: 'grade-8' },
     subject_programs: { id: 'program-b', subject_id: 'subject-b', grade_id: 'grade-8' },
     curriculum_releases: { subject_program_id: 'program-b' },
-    units: { subject_program_id: 'program-b', code: 'SUB8-U02' },
+    units: { subject_program_id: 'program-b' },
     curriculum_release_units: { unit_code_snapshot: 'SUB8-U02' },
     subjects: { id: 'subject-b', code: 'subject-b' },
     grades: { id: 'grade-8', grade_number: 8 },
@@ -85,7 +93,8 @@ for (const [name, changes, teacher, choice] of [
   ['legacy release', { curriculum_releases: { status: 'legacy' } }, 'teacher-a', selection],
   ['wrong programme unit', { units: { subject_program_id: 'program-b' } }, 'teacher-a', selection],
   ['unit missing from release snapshot', { curriculum_release_units: { unit_id: 'unit-1' } }, 'teacher-a', selection],
-  ['retired unit', { units: { status: 'retired' } }, 'teacher-a', selection],
+  ['release snapshot without a code', { curriculum_release_units: { unit_code_snapshot: '' } }, 'teacher-a', selection],
+  ['release snapshot without a title', { curriculum_release_units: { title_hy_snapshot: '' } }, 'teacher-a', selection],
   ['forged assignment URL', {}, 'teacher-a', { ...selection, assignmentId: 'other' }],
   ['forged unit URL', {}, 'teacher-a', { ...selection, unitId: 'other' }],
 ]) {
