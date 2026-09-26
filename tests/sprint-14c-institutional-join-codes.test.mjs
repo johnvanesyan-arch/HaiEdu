@@ -12,6 +12,9 @@ test("institutional join-code migration keeps codes exact-scope, expiring, one-u
   assert.match(sql, /subject_program_id uuid not null/);
   assert.match(sql, /expires_at>created_at/);
   assert.match(sql, /used_at is not null and used_by is not null/);
+  assert.match(sql, /institutional_join_codes_class_scope_idx/);
+  assert.match(sql, /institutional_join_codes_assignment_idx/);
+  assert.match(sql, /institutional_join_codes_program_idx/);
   assert.match(sql, /alter table public\.institutional_join_codes enable row level security/);
   assert.match(sql, /revoke all on table public\.institutional_join_codes from public,anon,authenticated/);
   assert.match(sql, /grant select,insert,update on table public\.institutional_join_codes to service_role/);
