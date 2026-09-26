@@ -196,7 +196,20 @@
               <div class="class-title-row"><span class="mode-kicker">ԴՊՐՈՑԻ ԴԱՍԱՐԱՆ</span><span id="institutionalClassBadge" class="status-badge">Ակտիվ</span></div>
               <h2 id="institutionalSelectedName">—</h2>
               <p id="institutionalSelectedMeta" class="subtle">—</p>
-              <button id="institutionalClassToggle" type="button" class="ghost small-button">Արխիվացնել դասարանը</button>
+              <div class="class-management-actions">
+                <button id="institutionalRenameClassBtn" type="button" class="secondary small-button" aria-expanded="false" aria-controls="institutionalRenameClassForm">Փոխել անունը</button>
+                <button id="institutionalClassToggle" type="button" class="ghost small-button">Արխիվացնել դասարանը</button>
+              </div>
+              <form id="institutionalRenameClassForm" class="class-rename-form hidden">
+                <label>Դասարանի նոր անուն
+                  <input id="institutionalRenameClassNameInput" minlength="2" maxlength="120" required autocomplete="off" />
+                </label>
+                <div class="class-rename-actions">
+                  <button id="institutionalRenameClassSaveBtn" type="submit" class="small-button">Պահպանել</button>
+                  <button id="institutionalRenameClassCancelBtn" type="button" class="ghost small-button">Չեղարկել</button>
+                </div>
+              </form>
+              <p id="institutionalRenameClassMessage" class="message" role="status" aria-live="polite"></p>
               <p id="institutionalClassMessage" class="message" role="status" aria-live="polite"></p>
             </div>
             <div class="join-code-box institutional-invite-box">
@@ -265,7 +278,20 @@
                 </div>
                 <h2 id="selectedClassName">—</h2>
                 <p id="selectedClassMeta" class="subtle">—</p>
-                <button id="toggleClassBtn" class="ghost small-button" type="button">Արխիվացնել դասարանը</button>
+                <div class="class-management-actions">
+                  <button id="renameClassBtn" class="secondary small-button" type="button" aria-expanded="false" aria-controls="renameClassForm">Փոխել անունը</button>
+                  <button id="toggleClassBtn" class="ghost small-button" type="button">Արխիվացնել դասարանը</button>
+                </div>
+                <form id="renameClassForm" class="class-rename-form hidden">
+                  <label>Դասարանի նոր անուն
+                    <input id="renameClassNameInput" minlength="2" maxlength="120" required autocomplete="off" />
+                  </label>
+                  <div class="class-rename-actions">
+                    <button id="renameClassSaveBtn" type="submit" class="small-button">Պահպանել</button>
+                    <button id="renameClassCancelBtn" type="button" class="ghost small-button">Չեղարկել</button>
+                  </div>
+                </form>
+                <p id="renameClassMessage" class="message" role="status" aria-live="polite"></p>
               </div>
               <div class="join-code-box">
                 <span class="stat-label">ԱՇԱԿԵՐՏՆԵՐԻ ՄԻԱՆԱԼՈՒ ԿՈԴ</span>

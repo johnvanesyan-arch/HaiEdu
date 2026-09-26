@@ -53,6 +53,22 @@ Deno.serve(async (req) => {
       }
       return json({ classId });
     }
+    if (body.action === "rename" &&
+      typeof body.classId === "string" && uuid.test(body.classId) &&
+      typeof body.name === "string") {
+      const name = body.name.trim();
+      if (name.length < 2) return json({ error: "class_name_too_short" }, 400);
+      if (name.length > 120) return json({ error: "class_name_too_long" }, 400);
+      const { data: renamed, error } = await admin.rpc("service_rename_teacher_class_14b", {
+        p_actor: actor, p_class: body.classId, p_name: name,
+      });
+      if (error) {
+        if (error.message.includes("teacher_class_unavailable"))
+          return json({ error: "teacher_class_unavailable" }, 403);
+        return json({ error: "teacher_class_rename_failed" }, 500);
+      }
+      return json({ name: renamed });
+    }
     if ((body.action === "archive" || body.action === "activate") &&
       typeof body.classId === "string" && uuid.test(body.classId)) {
       const { data: updated, error } = await admin.rpc("service_set_teacher_class_active_14b", {
