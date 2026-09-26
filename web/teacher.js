@@ -13,25 +13,75 @@ let dashboardLoadVersion = 0;
 let latestInstitutionalJoinCode = "";
 const MAX_STUDENT_INVITE_BATCH = 20;
 const institutionalStudentEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+const TEACHER_VIEWS = new Set(["home", "profile", "classes", "archive", "create", "class"]);
+const TEACHER_VIEW_META = {
+  home: ["Ուսուցչի գլխավոր", "Այսօրվա ամփոփ պատկերը, արագ գործողությունները և աշխատանքի հաջորդ քայլերը։"],
+  profile: ["Իմ պրոֆիլը", "Ցուցադրվող անունը և մուտքի պաշտպանված կարգավորումները։"],
+  classes: ["Իմ դասարանները", "Միայն ակտիվ դասարանները՝ աշակերտներով, հրավերներով և առաջընթացով։"],
+  archive: ["Արխիվացված դասարաններ", "Ավարտված դասարանների պատմությունը՝ ընթացիկ աշխատանքից առանձին։"],
+  create: ["Նոր դասարան", "Ստեղծեք դասարան ձեր թույլատրված դպրոցի, տարվա և առարկայի շրջանակում։"],
+  class: ["Դասարանի աշխատատարածք", "Աշակերտներ, հրավերներ և իրական առաջընթացի տվյալներ մեկ տեղում։"],
+};
 
 function navigationSelection() {
-  if (typeof window.location?.search !== "string") return { classId: null, selection: null };
+  if (typeof window.location?.search !== "string") {
+    return { view: "home", source: "classes", classId: null, selection: null };
+  }
   const params = new URLSearchParams(window.location.search);
   const assignmentId = params.get("assignment");
   const curriculumReleaseId = params.get("release");
   const unitId = params.get("unit");
+  const requested = params.get("view");
+  const classId = params.get("class");
   return {
-    classId: params.get("class"),
+    view: requested === "class" || classId
+      ? "class"
+      : (TEACHER_VIEWS.has(requested) ? requested : "home"),
+    source: params.get("source") === "archive" ? "archive" : "classes",
+    classId,
     selection: assignmentId && curriculumReleaseId && unitId
       ? { assignmentId, curriculumReleaseId, unitId }
       : null,
   };
 }
 
+function teacherViewUrl(view) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("view", TEACHER_VIEWS.has(view) ? view : "home");
+  if (view !== "class") {
+    ["class", "assignment", "release", "unit", "source"].forEach((key) => url.searchParams.delete(key));
+  }
+  url.hash = "";
+  return `${url.pathname}${url.search}`;
+}
+
+function renderTeacherView(view = navigationSelection().view) {
+  const selected = TEACHER_VIEWS.has(view) ? view : "home";
+  document.querySelectorAll("[data-teacher-view]").forEach((section) => {
+    section.classList.toggle("hidden", section.dataset.teacherView !== selected);
+  });
+  const [title, subtitle] = TEACHER_VIEW_META[selected];
+  if ($("teacherPageTitle")) $("teacherPageTitle").textContent = title;
+  if ($("teacherPageSubtitle")) $("teacherPageSubtitle").textContent = subtitle;
+  document.title = `${title} · HaiEdu`;
+  window.dispatchEvent(new CustomEvent("haiedu:teacher-view", { detail: { view: selected } }));
+  window.scrollTo({ top: 0, behavior: "auto" });
+}
+
+function navigateTeacherView(view, push = true) {
+  const next = teacherViewUrl(view);
+  const current = `${window.location.pathname}${window.location.search}`;
+  if (next !== current) window.history[push ? "pushState" : "replaceState"]({}, "", next);
+  renderTeacherView(view);
+}
+
 function syncNavigation(klass, push = false) {
   if (!klass) return;
   const url = new URL(window.location.href);
+  url.searchParams.set("view", "class");
   url.searchParams.set("class", klass.id);
+  url.searchParams.set("source", klass.isActive ? "classes" : "archive");
+  url.hash = "";
   if (dashboard?.institutionalTeacher && klass.selectedUnit) {
     url.searchParams.set("assignment", klass.assignmentId);
     url.searchParams.set("release", klass.selectedUnit.curriculumReleaseId);
@@ -41,10 +91,25 @@ function syncNavigation(klass, push = false) {
     url.searchParams.delete("release");
     url.searchParams.delete("unit");
   }
-  const next = `${url.pathname}${url.search}${url.hash}`;
-  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
-  if (next === current) return;
-  window.history[push ? "pushState" : "replaceState"]({}, "", next);
+  const next = `${url.pathname}${url.search}`;
+  const current = `${window.location.pathname}${window.location.search}`;
+  if (next !== current) window.history[push ? "pushState" : "replaceState"]({}, "", next);
+  if ($("classDetailBackLink")) {
+    $("classDetailBackLink").href = klass.isActive ? "?view=classes" : "?view=archive";
+    $("classDetailBackLink").textContent = klass.isActive
+      ? "Վերադառնալ ակտիվ դասարաններին"
+      : "Վերադառնալ արխիվին";
+  }
+}
+
+function showTeacherClassAfterMutation(classId) {
+  const url = new URL(window.location.href);
+  url.searchParams.set("view", "class");
+  url.searchParams.set("class", classId);
+  url.searchParams.set("source", "classes");
+  ["assignment", "release", "unit"].forEach((key) => url.searchParams.delete(key));
+  url.hash = "";
+  window.history.replaceState({}, "", `${url.pathname}${url.search}`);
 }
 
 function escapeHtml(value) {
@@ -92,7 +157,7 @@ function renderInstitutionalClassCreator(data, institutional) {
 
   const shortcut = $("createClassShortcut");
   shortcut.classList.remove("hidden");
-  shortcut.href = institutional ? "#institutionalCreateCard" : "#createClassCard";
+  shortcut.href = "?view=create";
 
   if (!institutional) return;
   const options = Array.isArray(data.institutionalOptions) ? data.institutionalOptions : [];
@@ -190,43 +255,63 @@ async function loadDashboard() {
   const { data: sessionData } = await supabase.auth.getSession();
   $("teacherEmail").value = sessionData.session?.user?.email ?? "";
 
-  $("classCount").textContent = data.totals?.classes ?? 0;
+  const classes = Array.isArray(data.classes) ? data.classes : [];
+  $("classCount").textContent = classes.filter((klass) => klass.isActive).length;
   $("studentCount").textContent = data.totals?.students ?? 0;
   $("supportCount").textContent = data.totals?.studentsNeedingSupport ?? 0;
 
   renderClassList();
-  const selected = data.classes?.find((c) => c.id === selectedClassId)
-    ?? data.classes?.find((c) => c.isActive)
-    ?? data.classes?.[0]
+  const selected = classes.find((klass) => klass.id === selectedClassId)
+    ?? classes.find((klass) => klass.isActive)
+    ?? classes[0]
     ?? null;
-  if (selected) selectClass(selected.id);
-  else {
+  if (selected) {
+    selectClass(selected.id, { navigate: navigation.view === "class" });
+  } else {
     selectedClassId = null;
     $("emptyClass").classList.toggle("hidden", institutional);
     $("institutionalEmpty").classList.toggle("hidden", !institutional);
     $("institutionalClassView").classList.add("hidden");
     $("classView").classList.add("hidden");
   }
+  renderTeacherView(navigation.view === "class" && !selected
+    ? (navigation.source === "archive" ? "archive" : "classes")
+    : navigation.view);
+}
+
+function createClassListButton(klass) {
+  const btn = document.createElement("button");
+  btn.className = `teacher-class-button${klass.id === selectedClassId ? " active" : ""}${klass.isActive ? "" : " archived"}`;
+  btn.type = "button";
+  btn.innerHTML = `
+    <strong>${escapeHtml(klass.name)}</strong>
+    <span>${escapeHtml(klass.academicYear ?? "")}</span>
+    <span class="class-list-meta"><span>${klass.studentCount} աշակերտ</span><span class="class-list-status">${klass.isActive ? "Ակտիվ" : "Արխիվացված"}</span></span>`;
+  btn.addEventListener("click", () => selectClass(klass.id, { pushNavigation: true, navigate: true }));
+  return btn;
 }
 
 function renderClassList() {
-  const list = $("classList");
-  list.innerHTML = "";
-  for (const klass of dashboard?.classes ?? []) {
-    const btn = document.createElement("button");
-    btn.className = `teacher-class-button${klass.id === selectedClassId ? " active" : ""}${klass.isActive ? "" : " archived"}`;
-    btn.type = "button";
-    btn.innerHTML = `
-      <strong>${escapeHtml(klass.name)}</strong>
-      <span>${escapeHtml(klass.academicYear ?? "")}</span>
-      <span class="class-list-meta"><span>${klass.studentCount} աշակերտ</span><span class="class-list-status">${klass.isActive ? "Ակտիվ" : "Արխիվացված"}</span></span>`;
-    btn.addEventListener("click", () => selectClass(klass.id, { pushNavigation: true }));
-    list.appendChild(btn);
+  const activeList = $("classList");
+  const archivedList = $("archivedClassList");
+  activeList.innerHTML = "";
+  archivedList.innerHTML = "";
+  const classes = Array.isArray(dashboard?.classes) ? dashboard.classes : [];
+  const activeClasses = classes.filter((klass) => klass.isActive);
+  const archivedClasses = classes.filter((klass) => !klass.isActive);
+
+  activeClasses.forEach((klass) => activeList.appendChild(createClassListButton(klass)));
+  archivedClasses.forEach((klass) => archivedList.appendChild(createClassListButton(klass)));
+  $("activeClassCount").textContent = activeClasses.length;
+  $("archivedClassCount").textContent = archivedClasses.length;
+
+  if (!activeClasses.length) {
+    activeList.innerHTML = dashboard?.institutionalTeacher
+      ? '<div class="teacher-empty-state"><strong>Ակտիվ դասարան դեռ չկա</strong><p class="subtle small">Ստեղծեք դասարան ձեր հասանելի դպրոցի, ուսումնական տարվա և առարկայի շրջանակում։</p><a class="button-link" href="?view=create">+ Ստեղծել դասարան</a></div>'
+      : '<div class="teacher-empty-state"><strong>Ակտիվ դասարան դեռ չկա</strong><p class="subtle small">Ստեղծեք ձեր առաջին դասարանը, հետո աշակերտներին տվեք միանալու կոդը։</p><a class="button-link" href="?view=create">+ Ստեղծել դասարան</a></div>';
   }
-  if (!list.children.length) {
-    list.innerHTML = dashboard?.institutionalTeacher
-      ? '<div class="teacher-empty-state"><strong>Դպրոցի դասարան դեռ չկա</strong><p class="subtle small">Դպրոցի ադմինիստրատորը պետք է բացի ընթացիկ տարին, իսկ դուք՝ ստեղծեք ձեզ թույլատրված դասարանը։</p></div>'
-      : '<div class="teacher-empty-state"><strong>Դասարան դեռ չկա</strong><p class="subtle small">Ստեղծեք ձեր առաջին դասարանը, հետո աշակերտներին տվեք միանալու կոդը։</p><a class="button-link" href="#createClassCard">+ Ստեղծել դասարան</a></div>';
+  if (!archivedClasses.length) {
+    archivedList.innerHTML = '<div class="teacher-empty-state"><strong>Արխիվացված դասարաններ չկան</strong><p class="subtle small">Արխիվացված դասարանները կհայտնվեն միայն այս էջում և չեն ծանրաբեռնի ակտիվ դասարանների ցանկը։</p></div>';
   }
 }
 
@@ -234,14 +319,19 @@ function selectedClass() {
   return dashboard?.classes?.find((c) => c.id === selectedClassId) ?? null;
 }
 
-function selectClass(id, { pushNavigation = false } = {}) {
+function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
   selectedClassId = id;
   rosterQuery = "";
   if ($("studentSearchInput")) $("studentSearchInput").value = "";
   renderClassList();
   const klass = selectedClass();
   if (!klass) return;
-  syncNavigation(klass, pushNavigation);
+  if (navigate) {
+    syncNavigation(klass, pushNavigation);
+    renderTeacherView("class");
+  } else if ($("classDetailBackLink")) {
+    $("classDetailBackLink").href = klass.isActive ? "?view=classes" : "?view=archive";
+  }
 
   if (dashboard?.institutionalTeacher) {
     $("emptyClass").classList.add("hidden");
@@ -323,7 +413,7 @@ function selectClass(id, { pushNavigation = false } = {}) {
   $("toggleClassBtn").textContent = klass.isActive ? "Արխիվացնել դասարանը" : "Վերակտիվացնել դասարանը";
 
   const invite = buildInviteUrl(klass.joinCode);
-  $("openJoinBtn").href = invite || "./join.html";
+  if ($("openJoinBtn")) $("openJoinBtn").href = invite || "./join.html";
   $("copyCodeBtn").disabled = !klass.isActive || !klass.joinCode;
   $("copyInviteBtn").disabled = !klass.isActive || !klass.joinCode;
   $("rotateCodeBtn").disabled = !klass.isActive;
@@ -911,8 +1001,8 @@ async function createClass() {
   selectedClassId = data.class.id;
   $("classNameInput").value = "";
   setMessage("classMessage", `Դասարանը ստեղծվեց։ Միանալու կոդ՝ ${data.class.join_code}`);
+  showTeacherClassAfterMutation(data.class.id);
   await loadDashboard();
-  document.getElementById("classView")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 async function createInstitutionalClass(event) {
@@ -950,8 +1040,8 @@ async function createInstitutionalClass(event) {
   selectedClassId = data.classId;
   $("institutionalClassName").value = "";
   setMessage("institutionalCreateMessage", "Դպրոցի դասարանը ստեղծված է։ Այժմ կարող եք հրավիրել աշակերտներին։");
+  showTeacherClassAfterMutation(data.classId);
   await loadDashboard();
-  $("institutionalClassView")?.scrollIntoView({ behavior: "smooth", block: "start" });
 }
 
 function buildInviteUrl(code) {
@@ -1007,7 +1097,7 @@ async function rotateCode() {
   if (error) return setMessage("copyCodeStatus", "Չհաջողվեց ստեղծել նոր կոդ։", true);
   if (klass) klass.joinCode = data.class.join_code;
   $("joinCode").textContent = data.class.join_code;
-  $("openJoinBtn").href = buildInviteUrl(data.class.join_code);
+  if ($("openJoinBtn")) $("openJoinBtn").href = buildInviteUrl(data.class.join_code);
   $("copyCodeStatus").textContent = "Նոր կոդը պատրաստ է։";
 }
 
@@ -1085,6 +1175,17 @@ $("teacherUnitFilter").addEventListener("change", changeInstitutionalUnit);
 document.addEventListener("keydown", (event) => {
   if (event.key === "Escape" && !$("studentDrawer").classList.contains("hidden")) closeDrawer();
 });
+document.addEventListener("click", (event) => {
+  const link = event.target.closest('a[href^="?view="]');
+  if (!link || !dashboard || event.defaultPrevented || event.button !== 0
+    || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+  const url = new URL(link.href, window.location.href);
+  const view = url.searchParams.get("view");
+  if (!TEACHER_VIEWS.has(view) || view === "class") return;
+  event.preventDefault();
+  navigateTeacherView(view, true);
+});
+
 window.addEventListener("popstate", () => loadDashboard());
 
 supabase.auth.onAuthStateChange((_event, session) => {
