@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.47  
+**Roadmap version:** 2.48  
 **Updated:** 2026-09-26  
-**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. The controlled teacher-issued invitation, acceptance, assigned-teacher roster and first post-enrollment exact-context run passed. Remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence and the later 14C evidence UI/API work remain open. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
+**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. The controlled teacher-issued invitation, acceptance, assigned-teacher roster and first post-enrollment exact-context run passed. Remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence and production verification of the current 14C teacher-analytics restoration remain open. School-wide administrative analytics remain a separate 14D gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -511,6 +511,21 @@ Institution / School
 ```
 
 The curriculum is shared centrally. Classes are school/teacher-specific delivery instances.
+
+### Analytics scope boundary — Sprint 14C vs 14D
+
+This distinction is binding for planning, implementation and closure claims:
+
+- **Teacher analytics are core product functionality and a blocking Sprint 14C deliverable.** Teachers must be able to inspect authorized grade/class/student performance for everyday instructional decisions. Sprint 14C restores the already sanctioned teacher roster, skill matrix, filters and student drawer inside institutional classes; it does not invent a replacement dashboard.
+- **School-wide analytics are later administrative aggregation and remain gated behind Sprint 14D.** School-wide, cross-class and administrative roll-ups must not delay, replace or redefine the teacher analytics required in 14C.
+- Institutional teacher analytics must resolve the teacher's active assignment and exact school, academic year, class, subject programme, curriculum release and unit on the server. Client or URL state may preserve a selection but never grant access.
+- Only evidence stamped `academic_context_status=exact` for that complete context may enter institutional class/student aggregates. `unbound_legacy` evidence remains excluded unless a separately approved legacy view explicitly identifies it.
+- The 14C teacher surface must expose class performance summary, skill matrix, support/review/inactivity filters and a student drill-down covering Diagnostic, Practice, Chapter Review and Mastery Check. Empty and partial data must remain visible and honest.
+- Undefined cross-subject ability scores, school-wide roll-ups, bulk import and academic-year rollover are not part of the 14C teacher-analytics slice.
+
+**14C acceptance:** an actively assigned teacher can select an authorized class/course/unit, inspect only that exact context's evidence, preserve the selection across refresh/back/deep-link navigation, and cannot cross school/class/assignment/programme/release/unit boundaries by changing identifiers.
+
+**14D acceptance:** authorized school administrators receive separately verified school-wide aggregation only after the 14C evidence and isolation gate passes.
 
 ### Teacher analytics context scoping
 
