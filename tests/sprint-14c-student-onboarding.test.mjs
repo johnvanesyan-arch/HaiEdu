@@ -12,7 +12,8 @@ const recipient = '423e4567-e89b-42d3-a456-426614174000';
 const assignment = '523e4567-e89b-42d3-a456-426614174000';
 
 async function invokeProvision({
-  existing = recipient, allowed = true, deliveryError = null, profileRole = 'teacher',
+  existing = recipient, allowed = true, deliveryError = null, inviteError = null,
+  profileRole = 'teacher', emails = null,
 } = {}) {
   let handler;
   const calls = [];
@@ -22,7 +23,8 @@ async function invokeProvision({
       admin: {
         inviteUserByEmail: async (email, options) => {
           calls.push({ method: 'inviteUserByEmail', email, options });
-          return { data: { user: { id: recipient } }, error: null };
+          const error = typeof inviteError === 'function' ? inviteError(email) : inviteError;
+          return { data: error ? { user: null } : { user: { id: recipient } }, error };
         },
         deleteUser: async (id) => { calls.push({ method: 'deleteUser', id }); return { error: null }; },
       },
@@ -36,15 +38,21 @@ async function invokeProvision({
     async rpc(method, parameters) {
       calls.push({ method, parameters });
       if (method === 'service_authorize_student_invite_14c') return { data: allowed, error: null };
-      if (method === 'service_lookup_invitee_by_email_14b') return { data: existing, error: null };
-      if (method === 'service_issue_institutional_invitation_14b') return { data: 'invite-id', error: null };
+      if (method === 'service_lookup_invitee_by_email_14b') {
+        return { data: typeof existing === 'function' ? existing(parameters.p_email) : existing, error: null };
+      }
+      if (method === 'service_issue_institutional_invitation_14b') {
+        const issued = calls.filter((call) => call.method === method).length;
+        return { data: `invite-${issued}`, error: null };
+      }
       if (method === 'service_revoke_institutional_invitation_14b') return { data: true, error: null };
       throw new Error(`unexpected rpc ${method}`);
     },
   };
   const delivery = { auth: { signInWithOtp: async (payload) => {
     calls.push({ method: 'signInWithOtp', payload });
-    return { error: deliveryError };
+    return { error: typeof deliveryError === 'function'
+      ? deliveryError(payload.email) : deliveryError };
   } } };
   const source = readFileSync('supabase/functions/provision-student-account/index.ts', 'utf8')
     .replace(/^import .*;\n/gm, '');
@@ -56,9 +64,8 @@ async function invokeProvision({
   });
   const response = await handler(new Request('https://test.invalid', {
     method: 'POST', headers: { Authorization: 'Bearer test' },
-    body: JSON.stringify({
-      schoolId: school, classId, assignmentId: assignment, email: 'student@example.test',
-    }),
+    body: JSON.stringify({ schoolId: school, classId, assignmentId: assignment,
+      ...(Array.isArray(emails) ? { emails } : { email: 'student@example.test' }) }),
   }));
   return { status: response.status, body: await response.json(), calls };
 }
@@ -114,6 +121,56 @@ test('failed existing-account delivery revokes the issued invitation', async () 
   assert.ok(result.calls.some((call) => call.method === 'service_revoke_institutional_invitation_14b'));
 });
 
+test('bulk student invitations deduplicate addresses and issue separate one-time tokens', async () => {
+  const result = await invokeProvision({
+    emails: ['First@Example.test', ' second@example.test ', 'first@example.test'],
+  });
+  assert.equal(result.status, 201);
+  assert.equal(result.body.requested, 2);
+  assert.equal(result.body.succeeded, 2);
+  assert.equal(result.body.duplicatesRemoved, 1);
+  assert.deepEqual(result.body.results.map((entry) => entry.status), ['sent', 'sent']);
+  const deliveries = result.calls.filter((call) => call.method === 'signInWithOtp');
+  const issues = result.calls.filter((call) => call.method === 'service_issue_institutional_invitation_14b');
+  assert.equal(deliveries.length, 2);
+  assert.equal(issues.length, 2);
+  assert.notEqual(issues[0].parameters.p_token_digest, issues[1].parameters.p_token_digest);
+  assert.equal(result.body.results.some((entry) => 'token' in entry), false);
+});
+
+test('bulk student invitations reject every invalid batch before authorization or delivery', async () => {
+  const invalid = await invokeProvision({ emails: ['valid@example.test', 'not-an-email'] });
+  assert.equal(invalid.status, 400);
+  assert.equal(invalid.body.error, 'invalid_student_emails');
+  assert.deepEqual(invalid.body.invalidEmails, ['not-an-email']);
+  assert.equal(invalid.calls.length, 0);
+
+  const tooLarge = await invokeProvision({
+    emails: Array.from({ length: 21 }, (_, index) => `student${index}@example.test`),
+  });
+  assert.equal(tooLarge.status, 400);
+  assert.equal(tooLarge.body.error, 'student_invitation_batch_too_large');
+  assert.equal(tooLarge.calls.length, 0);
+});
+
+test('bulk student invitations stop after the project email quota is reached', async () => {
+  const result = await invokeProvision({
+    existing: null,
+    emails: ['one@example.test', 'two@example.test', 'three@example.test'],
+    inviteError: (email) => email === 'two@example.test'
+      ? { code: 'over_email_send_rate_limit', status: 429 } : null,
+  });
+  assert.equal(result.status, 207);
+  assert.equal(result.body.succeeded, 1);
+  assert.equal(result.body.failed, 1);
+  assert.equal(result.body.notAttempted, 1);
+  assert.equal(result.body.rateLimited, true);
+  assert.deepEqual(result.body.results.map((entry) => entry.status),
+    ['sent', 'failed', 'not_attempted']);
+  assert.deepEqual(result.calls.filter((call) => call.method === 'inviteUserByEmail')
+    .map((call) => call.email), ['one@example.test', 'two@example.test']);
+});
+
 async function invokeCompletion(body) {
   let handler;
   const calls = [];
@@ -162,9 +219,13 @@ test('front-end places student invitation inside the teacher class and removes i
   assert.doesNotMatch(adminHtml, /id="studentPanel"|id="studentEmail"/);
   assert.doesNotMatch(adminJs, /provision-student-account|get-student-onboarding-options/);
   assert.match(teacherHtml, /id="institutionalStudentInviteForm"/);
-  assert.match(teacherHtml, /id="institutionalStudentEmail"/);
+  assert.match(teacherHtml, /<textarea id="institutionalStudentEmail"/);
+  assert.match(teacherHtml, /id="institutionalStudentEmailCount"/);
+  assert.match(teacherHtml, /id="institutionalStudentInviteResults"/);
   assert.match(teacherHtml, /id="institutionalPendingInvites"/);
   assert.match(teacherJs, /provision-student-account/);
+  assert.match(teacherJs, /MAX_STUDENT_INVITE_BATCH = 20/);
+  assert.match(teacherJs, /assignmentId: klass\.assignmentId, emails/);
   assert.match(teacherJs, /manage-student-invitation/);
   assert.doesNotMatch(adminHtml, /id="studentDisplayName"/);
   assert.match(accessHtml, /id="studentDisplayName"/);
