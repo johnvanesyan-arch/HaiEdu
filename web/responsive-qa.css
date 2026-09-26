@@ -13,7 +13,7 @@ button,
 .assessment-card,
 .question-card,
 .card {
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: normal;
 }
 
@@ -72,7 +72,7 @@ a.ghost,
   .amp-mobile-link > span:last-child {
     max-width: 100%;
     white-space: normal;
-    overflow-wrap: anywhere;
+    overflow-wrap: break-word;
   }
 
   .topbar > .row,
