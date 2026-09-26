@@ -39,9 +39,9 @@ function renderClasses(classes) {
   list.innerHTML = "";
   if (!classes.length) {
     title.textContent = "Միացեք ձեր ուսուցչի դասարանին";
-    text.textContent = "Մուտքագրեք ուսուցչի տրամադրած 8-նիշ կոդը, որպեսզի նա տեսնի ձեր առաջընթացը իր դասարանի վահանակում։";
+    text.textContent = "Ընդունեք ուսուցչի էլ. փոստով ուղարկած հրավերը կամ, եթե ստացել եք մեկանգամյա կոդ, մուտքագրեք այն այստեղ։";
     list.classList.add("hidden");
-    action.textContent = "Միանալ դասարանին";
+    action.textContent = "Միանալ դասարանին՝ կոդով";
     action.href = "./join.html";
     return;
   }
@@ -62,7 +62,7 @@ function renderClasses(classes) {
     list.appendChild(item);
   }
 
-  action.textContent = "Միանալ այլ դասարանի";
+  action.textContent = "Միանալ այլ դասարանի՝ կոդով";
   action.href = "./join.html";
 }
 
