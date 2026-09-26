@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.49  
+**Roadmap version:** 2.50  
 **Updated:** 2026-09-26  
-**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. The controlled teacher-issued invitation, acceptance, assigned-teacher roster and first post-enrollment exact-context run passed. Remaining offboarding/last-admin controls, authenticated two-school mutual-denial evidence and production verification of the current 14C teacher-analytics restoration remain open. School-wide administrative analytics remain a separate 14D gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
+**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls and the authenticated school-admin operational overview are deployed; and the 14C school-scoped learner onboarding, exact-context stamping and assigned-class teacher roster foundation is deployed. The controlled teacher-issued invitation, acceptance, assigned-teacher roster and first post-enrollment exact-context run passed. The sanctioned 14C teacher roster, skill matrix, filters and student drill-down now pass authenticated production verification for the current exact-context Chapter I fixture. Remaining Sprint 14 gates are offboarding/last-admin controls, authenticated two-school mutual-denial evidence, and live multi-unit/multi-context switching once a second authorized release exists. School-wide administrative analytics remain a separate 14D gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
 
@@ -527,6 +527,15 @@ This distinction is binding for planning, implementation and closure claims:
 **14C acceptance:** an actively assigned teacher can select an authorized class/course/unit, inspect only that exact context's evidence, preserve the selection across refresh/back/deep-link navigation, and cannot cross school/class/assignment/programme/release/unit boundaries by changing identifiers.
 
 **14D acceptance:** authorized school administrators receive separately verified school-wide aggregation only after the 14C evidence and isolation gate passes.
+
+### 14C teacher-analytics production checkpoint — 2026-09-26
+
+- The sanctioned institutional teacher experience is live without a replacement dashboard: the existing roster, class summary, skill matrix, support/review/inactivity filters and student drawer now consume server-authorized exact-context evidence.
+- Authenticated production QA on the assigned Physics 7 class showed three rostered students: one learner with exact-context activity and two honest empty states. The learner drawer showed the single exact Chapter Review session (11/12 correct, 12 item attempts) and did not surface the learner's unbound legacy session.
+- Stable navigation preserved the exact class, assignment, curriculum release and unit identifiers across refresh. The drawer identified Physics, Grade 7 and Chapter I before chapter-specific Review and skill evidence.
+- A production-only gate mismatch was corrected: active pilot/production analytics now use the immutable release-unit snapshot even while the mutable authoring unit remains in editorial review. No curriculum content or lifecycle status was changed.
+- GitHub PR [#31](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/31) delivered the restoration and CI #872 passed. PR [#32](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/32) delivered the release-snapshot correction and CI #874 passed. Vercel is green; Supabase runs `get-teacher-dashboard` v14 and `get-teacher-student` v9.
+- Open before the complete Sprint 14 evidence/isolation gate: authenticated two-school mutual denial and live switching across a second authorized unit/course context. School-wide administrative aggregation remains 14D and is not activated by this checkpoint.
 
 ### Teacher analytics context scoping
 
