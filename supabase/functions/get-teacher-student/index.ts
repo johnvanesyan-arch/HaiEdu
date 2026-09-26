@@ -193,9 +193,9 @@ Deno.serve(async (req) => {
     else if (review?.lifecycle_state === "mastery_retry_2_ready" || review?.lifecycle_state === "mastery_retry_3_ready") intervention = { action: "mastery_check_retry", code: null, messageHy: "Յուրացման ստուգման հաջորդ փորձը հասանելի է։" };
     else if (review?.lifecycle_state === "mastery_failed_final") intervention = { action: "review_chapter", code: null, messageHy: "Երեք փորձերն ավարտված են. շարունակել Գլխի կրկնությունը։" };
     else if (review?.lifecycle_state === "mastery_passed" || latestMastery?.assessment_result === "passed") intervention = { action: "unit_complete", code: null, messageHy: "Բաժին I-ը ավարտված է։" };
-    else if (!(attempts ?? []).length) intervention = { action: "take_diagnostic", code: null, messageHy: "Անցկացնել Chapter I ախտորոշիչը։" };
+    else if (!(attempts ?? []).length) intervention = { action: "take_diagnostic", code: null, messageHy: "Անցկացնել Բաժին I-ի ախտորոշիչը։" };
     else if (weakSkills.length) intervention = { action: "practice_skill", code: weakSkills[0].code, messageHy: `Առաջնահերթ աշխատել ${weakSkills[0].code} հմտության վրա։` };
-    else intervention = { action: "mastery_check", code: null, messageHy: "Անցկացնել Chapter I mastery check-ը։" };
+    else intervention = { action: "mastery_check", code: null, messageHy: "Անցկացնել Բաժին I-ի յուրացման ստուգումը։" };
 
     return json({
       student: {
