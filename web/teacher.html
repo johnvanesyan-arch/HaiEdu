@@ -182,12 +182,12 @@
               </div>
               <ul id="institutionalPendingInvites" class="institutional-invitation-list"></ul>
             </div>
-            <div class="institutional-roster-block">
+            <div class="institutional-roster-block hidden" aria-hidden="true">
               <div class="teacher-section-heading">
                 <div>
                   <span class="mode-kicker">ԱՇԱԿԵՐՏՆԵՐ</span>
                   <h3>Դասարանի ցուցակ</h3>
-                  <p class="subtle">Ցուցադրվում են միայն այս դասարանում հաստատված աշակերտները։ Ուսումնական արդյունքների վերլուծություն այս փուլում չի ցուցադրվում։</p>
+                  <p class="subtle">Ցուցադրվում են միայն այս դասարանում հաստատված աշակերտները։</p>
                 </div>
                 <strong id="institutionalRosterCount">0 աշակերտ</strong>
               </div>
@@ -195,7 +195,7 @@
             </div>
           </section>
           <div id="classView" class="hidden">
-            <section class="card class-header-card">
+            <section id="legacyClassHeader" class="card class-header-card">
               <div class="class-header-main">
                 <div class="class-title-row">
                   <span class="mode-kicker">ԸՆՏՐՎԱԾ ԴԱՍԱՐԱՆ</span>
@@ -218,12 +218,17 @@
               </div>
             </section>
 
-            <section class="card roster-card">
+            <section id="teacherAnalyticsUnavailable" class="card teacher-empty hidden">
+              <h3>Այս առարկայի համար վերլուծության գլուխ դեռ հրապարակված չէ</h3>
+              <p class="subtle">Դասարանի ցուցակը պահպանվում է, իսկ ուսումնական վերլուծությունը կբացվի հրապարակված գլխի և ճշգրիտ համատեքստով տվյալների առկայության դեպքում։</p>
+            </section>
+
+            <section id="rosterAnalyticsCard" class="card roster-card">
               <div class="teacher-section-heading">
                 <div>
                   <span class="mode-kicker">ԱՇԱԿԵՐՏՆԵՐ</span>
                   <h3>Դասարանի ցուցակ</h3>
-                  <p class="subtle">Բացեք աշակերտի առաջընթացը կամ հեռացրեք նրան այս դասարանից։ Նույն հաշվով կրկին միանալիս նրա նախկին տվյալները կպահպանվեն։</p>
+                  <p id="rosterDescription" class="subtle">Բացեք աշակերտի առաջընթացը կամ հեռացրեք նրան այս դասարանից։ Նույն հաշվով կրկին միանալիս նրա նախկին տվյալները կպահպանվեն։</p>
                 </div>
                 <label class="teacher-search-label">Փնտրել աշակերտ<input id="studentSearchInput" type="search" placeholder="Անուն…" /></label>
               </div>
@@ -231,24 +236,30 @@
               <div id="roster" class="roster"></div>
             </section>
 
-            <section class="card matrix-card">
+            <section id="matrixAnalyticsCard" class="card matrix-card">
               <div class="teacher-section-heading matrix-section-heading">
                 <div>
-                  <span class="mode-kicker">ՖԻԶԻԿԱ 7 · ԳԼՈՒԽ I</span>
+                  <span id="matrixContextKicker" class="mode-kicker">ՖԻԶԻԿԱ 7 · ԳԼՈՒԽ I</span>
                   <h3>Հմտությունների վիճակ</h3>
-                  <p class="subtle">Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
+                  <p id="matrixUnitTitle" class="subtle">Բնության ուսումնասիրության ֆիզիկական մեթոդները</p>
                   <p class="subtle small">Յուրաքանչյուր սյունակ այս գլխի մեկ հմտություն է։ Սեղմեք աշակերտի անունը՝ մանրամասները բացելու համար։</p>
                 </div>
-                <label class="matrix-filter-label">
-                  Ցուցադրել
-                  <select id="matrixStudentFilter">
-                    <option value="all">Բոլոր աշակերտները</option>
-                    <option value="needs_support">Ուշադրություն պահանջող</option>
-                    <option value="required_review">Պարտադիր կրկնություն պահանջող</option>
-                    <option value="mastery_confirmed">Յուրացումը հաստատված</option>
-                    <option value="no_activity">Գործունեություն չունեցող</option>
-                  </select>
-                </label>
+                <div class="matrix-controls">
+                  <label id="teacherUnitFilterLabel" class="matrix-filter-label hidden">
+                    Գլուխ
+                    <select id="teacherUnitFilter"></select>
+                  </label>
+                  <label class="matrix-filter-label">
+                    Ցուցադրել
+                    <select id="matrixStudentFilter">
+                      <option value="all">Բոլոր աշակերտները</option>
+                      <option value="needs_support">Ուշադրություն պահանջող</option>
+                      <option value="required_review">Պարտադիր կրկնություն պահանջող</option>
+                      <option value="mastery_confirmed">Յուրացումը հաստատված</option>
+                      <option value="no_activity">Գործունեություն չունեցող</option>
+                    </select>
+                  </label>
+                </div>
               </div>
 
               <div class="matrix-summary-grid" aria-label="Գլուխ I-ի դասարանի ամփոփ տվյալներ">
