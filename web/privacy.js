@@ -19,11 +19,67 @@ async function invoke(name, body = {}) {
 }
 
 function roleLabel(role) {
-  return ({ student: "Ուսանող", teacher: "Ուսուցիչ", content_admin: "Բովանդակության ադմին", admin: "Ադմին", parent: "Ծնող" })[role] || role;
+  return ({ student: "Աշակերտ", teacher: "Ուսուցիչ", school_admin: "Դպրոցի ադմին", content_admin: "Բովանդակության ստուգող", admin: "Master admin", parent: "Ծնող" })[role] || role;
 }
 
 function statusLabel(status) {
   return ({ active: "Ակտիվ", suspended: "Կասեցված", deletion_pending: "Ջնջման հաստատման փուլում" })[status] || status;
+}
+
+function inventoryPresentation(role, inventory) {
+  const minimization = "Ծննդյան ամսաթիվ, տան հասցե, հեռախոսահամար, ծնողի էլ. հասցե և պետական նույնականացուցիչ այս պրոֆիլում չենք պահում։ Հաշվի էլ. հասցեն պահվում է Supabase Auth-ում։";
+  const views = {
+    student: {
+      title: "Ինչ տվյալներ ենք պահում աշակերտի մասին",
+      description: "Աշակերտի պրոֆիլում պահվում են հաշվի տվյալները և ուսուցման համար անհրաժեշտ դասարանային, հրավերների ու առաջընթացի գրառումները։",
+      rows: [
+        ["Դասարանային անդամակցություններ", inventory.classMemberships ?? 0],
+        ["Ստացված հրավերների գրառումներ", inventory.invitationsReceived ?? 0],
+        ["Պատասխանների փորձեր", inventory.attempts ?? 0],
+        ["Ուսուցման սեսիաներ", inventory.learningSessions ?? 0],
+        ["Հմտությունների առաջընթացի գրառումներ", inventory.masteryRows ?? 0],
+        ["Ամրապնդման իրադարձություններ", inventory.remediationEvents ?? 0],
+      ],
+    },
+    teacher: {
+      title: "Ինչ տվյալներ ենք պահում ուսուցչի մասին",
+      description: "Ուսուցչի պրոֆիլում պահվում են հաշվի տվյալները, դպրոցի անդամակցության պատմությունը, դասավանդման նշանակումները, ստեղծված հրավերներն ու կոդերը և գործողությունների աուդիտը։ Աշակերտների արդյունքները այստեղ չեն ներկայացվում։",
+      rows: [
+        ["Դպրոցի անդամակցության գրառումներ", inventory.institutionalMemberships ?? 0],
+        ["Դասավանդման նշանակումներ", inventory.teachingAssignments ?? 0],
+        ["Ստեղծված հրավերներ և կոդեր", inventory.invitationRecords ?? 0],
+        ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
+      ],
+    },
+    school_admin: {
+      title: "Ինչ տվյալներ ենք պահում դպրոցի ադմինի մասին",
+      description: "Դպրոցի ադմինի պրոֆիլում պահվում են հաշվի տվյալները, դպրոցի անդամակցության պատմությունը, ուղարկված հրավերները և վարչական գործողությունների աուդիտը։",
+      rows: [
+        ["Դպրոցի անդամակցության գրառումներ", inventory.institutionalMemberships ?? 0],
+        ["Ուղարկված հրավերներ", inventory.invitationRecords ?? 0],
+        ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
+      ],
+    },
+    content_admin: {
+      title: "Ինչ տվյալներ ենք պահում բովանդակության ստուգողի մասին",
+      description: "Բովանդակության ստուգողի պրոֆիլում պահվում են հաշվի տվյալները, կատարված ստուգումների և գործողությունների աուդիտային գրառումները։",
+      rows: [
+        ["Բովանդակության ստուգումներ", inventory.contentReviews ?? 0],
+        ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
+      ],
+    },
+    admin: {
+      title: "Ինչ տվյալներ ենք պահում Master admin-ի մասին",
+      description: "Master admin-ի պրոֆիլում պահվում են հաշվի տվյալները և անվտանգության ու վարչական գործողությունների աուդիտային գրառումները։",
+      rows: [["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
+    },
+  };
+  return views[role] || {
+    title: "Ինչ տվյալներ ենք պահում հաշվի մասին",
+    description: "Պահվում են հաշվի հիմնական տվյալները և անվտանգության համար անհրաժեշտ աուդիտային գրառումները։",
+    rows: [["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
+    minimization,
+  };
 }
 
 function deletionLabel(request) {
@@ -55,14 +111,11 @@ function render(data) {
   $("researchOptIn").checked = data.preferences?.research_use_opt_in === true;
 
   const inventory = data.dataInventory || {};
-  const rows = [
-    ["Դասարանային անդամակցություններ", inventory.classMemberships ?? 0],
-    ["Պատասխանների փորձեր", inventory.attempts ?? 0],
-    ["Ուսուցման սեսիաներ", inventory.learningSessions ?? 0],
-    ["Հմտությունների առաջընթացի գրառումներ", inventory.masteryRows ?? 0],
-    ["Ամրապնդման իրադարձություններ", inventory.remediationEvents ?? 0],
-  ];
-  $("inventory").innerHTML = rows.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("");
+  const presentation = inventoryPresentation(data.account.role, inventory);
+  $("inventoryTitle").textContent = presentation.title;
+  $("inventoryDescription").textContent = presentation.description;
+  $("inventoryMinimization").textContent = presentation.minimization || "Ծննդյան ամսաթիվ, տան հասցե, հեռախոսահամար, ծնողի էլ. հասցե և պետական նույնականացուցիչ այս պրոֆիլում չենք պահում։ Հաշվի էլ. հասցեն պահվում է Supabase Auth-ում։";
+  $("inventory").innerHTML = presentation.rows.map(([label, value]) => `<div><dt>${label}</dt><dd>${value}</dd></div>`).join("");
 
   const request = data.latestDeletionRequest;
   $("deletionState").textContent = deletionLabel(request);
