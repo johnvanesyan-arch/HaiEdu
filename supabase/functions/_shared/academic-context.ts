@@ -32,6 +32,14 @@ async function row(admin: any, table: string, columns: string, id: string): Prom
   return data;
 }
 
+async function releaseUnit(admin: any, releaseId: string, unitId: string): Promise<any> {
+  const { data, error } = await admin.from("curriculum_release_units")
+    .select("curriculum_release_id,unit_id,unit_code_snapshot,title_hy_snapshot,sequence_order_snapshot")
+    .eq("curriculum_release_id", releaseId).eq("unit_id", unitId).maybeSingle();
+  if (error || !data) throw new AcademicContextDenied();
+  return data;
+}
+
 function activeAt(record: any, now: Date): boolean {
   const start = Date.parse(String(record.valid_from));
   const end = record.valid_to == null ? Infinity : Date.parse(String(record.valid_to));
@@ -58,12 +66,13 @@ export async function resolveAuthorizedTeacherAcademicContext(
   if (membership.person_id !== teacherId || membership.school_id !== assignment.school_id ||
       membership.role !== "teacher" || !activeAt(membership, now)) throw new AcademicContextDenied();
 
-  const [klass, year, programme, release, unit] = await Promise.all([
+  const [klass, year, programme, release, unit, releaseUnitRow] = await Promise.all([
     row(admin, "classes", "id, school_id, academic_year_id, subject_id, grade_id, is_active", assignment.class_id),
     row(admin, "academic_years", "id, school_id, status, starts_on, ends_on", assignment.academic_year_id),
     row(admin, "subject_programs", "id, subject_id, grade_id", assignment.subject_program_id),
-    row(admin, "curriculum_releases", "id, subject_program_id, status", selection.curriculumReleaseId),
-    row(admin, "units", "id, subject_program_id, code, sequence_order, title_hy", selection.unitId),
+    row(admin, "curriculum_releases", "id, subject_program_id, status, effective_from, effective_to", selection.curriculumReleaseId),
+    row(admin, "units", "id, subject_program_id, code, sequence_order, title_hy, status", selection.unitId),
+    releaseUnit(admin, selection.curriculumReleaseId, selection.unitId),
   ]);
 
   const today = now.toISOString().slice(0, 10);
@@ -72,7 +81,11 @@ export async function resolveAuthorizedTeacherAcademicContext(
       today < year.starts_on || today > year.ends_on ||
       klass.subject_id !== programme.subject_id || klass.grade_id !== programme.grade_id ||
       release.subject_program_id !== programme.id || unit.subject_program_id !== programme.id ||
-      !["pilot", "production"].includes(release.status) || !unit.code) {
+      !["pilot", "production"].includes(release.status) || unit.status !== "published" ||
+      (release.effective_from && today < release.effective_from) ||
+      (release.effective_to && today > release.effective_to) ||
+      releaseUnitRow.unit_code_snapshot !== unit.code ||
+      Number(releaseUnitRow.sequence_order_snapshot) !== Number(unit.sequence_order) || !unit.code) {
     throw new AcademicContextDenied();
   }
 
