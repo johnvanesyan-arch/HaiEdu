@@ -18,7 +18,7 @@ a.ghost,
   line-height: 1.25;
   text-align: center;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: normal;
 }
 
@@ -37,7 +37,7 @@ button {
   line-height: 1.25;
   text-align: center;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: normal;
 }
 
@@ -104,15 +104,67 @@ input[aria-invalid="true"], select[aria-invalid="true"], textarea[aria-invalid="
 .ux-status.error { background: #7d2530; }
 [aria-busy="true"] { cursor: progress; }
 [role="progressbar"] { position: relative; }
-.message, .feedback, #dashboardLoading, #stateText, #consoleMessage, #classMessage { overflow-wrap: anywhere; }
+.message, .feedback, #dashboardLoading, #stateText, #consoleMessage, #classMessage { overflow-wrap: break-word; }
 .option { min-height: 48px; cursor: pointer; }
 .option:has(input:focus-visible) { outline: 3px solid #0b63ce; outline-offset: 2px; }
 .option input { min-height: 20px; min-width: 20px; accent-color: #1f4f8a; }
-.question-card, .card { overflow-wrap: anywhere; }
-pre { white-space: pre-wrap; overflow-wrap: anywhere; }
+.question-card, .card { overflow-wrap: break-word; }
+/* Technical strings may break at any character; prose and controls may not. */
+:where(
+  code,
+  pre,
+  .code-field,
+  .item-code,
+  .skill-code,
+  .invite-email,
+  .roster-email,
+  [data-technical-token]
+) {
+  overflow-wrap: anywhere;
+  word-break: normal;
+}
+pre { white-space: pre-wrap; }
 .table-wrap, .matrix-wrap, .scale-wrap { -webkit-overflow-scrolling: touch; }
 .quality-table tr[data-id][tabindex="0"]:focus-visible { outline: 3px solid #0b63ce; outline-offset: -3px; }
 .student-drawer-panel[role="dialog"] { outline: none; }
+
+/* Action groups size from their labels and wrap before controls become unreadably narrow. */
+:where(
+  .row,
+  .workflow-actions,
+  .teacher-header-actions,
+  .teacher-quick-actions,
+  .join-code-actions,
+  .roster-actions,
+  .account-actions,
+  .form-actions,
+  .invite-actions,
+  .roster-state-actions,
+  .admin-actions,
+  .public-actions
+) {
+  min-width: 0;
+  flex-wrap: wrap;
+}
+
+:where(
+  .row,
+  .workflow-actions,
+  .teacher-header-actions,
+  .teacher-quick-actions,
+  .join-code-actions,
+  .roster-actions,
+  .account-actions,
+  .form-actions,
+  .invite-actions,
+  .roster-state-actions,
+  .admin-actions,
+  .public-actions
+) > :is(button, a.button-link, a.ghost) {
+  flex: 0 1 auto;
+  inline-size: fit-content;
+  max-inline-size: 100%;
+}
 
 @media (max-width: 1024px) {
   .shell, .content-shell { width: 100%; max-width: none; padding-left: 16px; padding-right: 16px; }

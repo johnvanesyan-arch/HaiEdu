@@ -29,7 +29,7 @@ a.ghost {
   line-height: 1.25;
   text-align: center;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
   word-break: normal;
   transition: background-color var(--amp-motion-fast) ease,
               border-color var(--amp-motion-fast) ease,
@@ -95,7 +95,7 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
   border-radius: var(--amp-radius-pill);
   font-weight: 700;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 
 .pill {
@@ -134,7 +134,7 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
   border-radius: var(--amp-radius-md);
   padding: var(--amp-space-4);
   border: 1px solid var(--amp-color-border);
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 .feedback.good,
 .feedback-banner.success {
@@ -168,7 +168,7 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
   font-weight: 800;
   line-height: 1.2;
   white-space: normal;
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 .amp-status-badge[data-state="secure"],
 .amp-status-badge[data-state="verified"],
@@ -188,7 +188,7 @@ input:hover, select:hover, textarea:hover { border-color: #aebdcd; }
   padding: var(--amp-space-6);
   text-align: center;
   color: var(--amp-color-text-muted);
-  overflow-wrap: anywhere;
+  overflow-wrap: break-word;
 }
 .amp-error-state { color: var(--amp-color-danger); }
 

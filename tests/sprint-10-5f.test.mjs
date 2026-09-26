@@ -89,7 +89,7 @@ test("shared accessibility layer retains focus, reduced motion, forced colors an
   assert.match(ux, /min-height:\s*44px/);
   assert.match(components, /forced-colors:\s*active/);
   assert.match(responsive, /env\(safe-area-inset-bottom/);
-  assert.match(responsive, /overflow-wrap:\s*anywhere/);
+  assert.match(responsive, /overflow-wrap:\s*break-word/);
   assert.match(responsive, /@media \(max-width: 560px\)/);
   assert.match(responsive, /@media \(max-width: 820px\)/);
 });

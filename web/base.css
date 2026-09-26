@@ -18,7 +18,18 @@ body {
 
 *, *::before, *::after { box-sizing: border-box; }
 
-h1, h2, h3, p { overflow-wrap: anywhere; }
+h1,
+h2,
+h3,
+p,
+li,
+dt,
+dd,
+label,
+legend {
+  overflow-wrap: break-word;
+  word-break: normal;
+}
 h1, h2, h3 { color: var(--amp-color-text); }
 h1 { font-size: var(--amp-font-size-3xl); line-height: var(--amp-line-tight); }
 h2 { font-size: var(--amp-font-size-2xl); line-height: 1.3; }
