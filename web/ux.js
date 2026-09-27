@@ -123,7 +123,9 @@ async function handleTerminalAuthFailure() {
     } catch { /* best-effort local cleanup */ }
   }
 
-  sessionStorage.setItem(terminalAuthMessageKey, "Մուտքի աշխատաշրջանն այլևս վավեր չէ։ Կրկին մուտք գործեք։");
+  sessionStorage.setItem(terminalAuthMessageKey, error.code === "user_not_found"
+    ? "Հաշիվը այլևս հասանելի չէ։ Մուտք գործեք այլ հաշվով։"
+    : "Մուտքի աշխատաշրջանն այլևս վավեր չէ։ Կրկին մուտք գործեք։");
   if (!location.pathname.endsWith("/index.html") && location.pathname !== "/") {
     location.replace("./index.html");
   } else {

@@ -45,6 +45,7 @@ test('thrown network failures preserve login',async()=>{
 for(const code of ['user_not_found','user_banned','session_not_found','session_expired','refresh_token_not_found','refresh_token_already_used','bad_jwt'])
  test(`confirmed terminal Auth error still clears local session: ${code}`,async()=>{
   const r=await check({error:{code}});assert.equal(r.result,true);assert.deepEqual(r.signOut,[{scope:'local'}]);assert.deepEqual(r.redirects,['./index.html']);assert.equal(r.stored.length,1);
+  assert.match(r.stored[0][1],code==='user_not_found'?/Հաշիվը այլևս հասանելի չէ/:/աշխատաշրջանն այլևս վավեր չէ/);
  });
 test('a stale Auth response cannot clear a newer session',async()=>{
  for(const nextSession of [{user:{id:'teacher-test'},access_token:'refreshed-token'},{user:{id:'another-account'},access_token:'synthetic-access-token'},null]){
