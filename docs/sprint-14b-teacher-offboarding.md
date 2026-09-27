@@ -1,6 +1,6 @@
 # Sprint 14B — Teacher offboarding and final school-administrator protection
 
-Status: implementation prepared on 2026-09-27; merge, concurrency CI and production verification pending.
+Status: deployed and read-only production-verified on 2026-09-27. [PR #47](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/47), merge `5be0464d9c665d1c088cf5c67171d785a1f19f92`. Authenticated end-to-end action QA remains open; no real teacher was offboarded.
 
 ## Bounded behavior
 
@@ -22,10 +22,20 @@ Invitation/code issue and redemption acquire the same teacher-membership advisor
 
 - `node --test tests/sprint-14b-offboarding.test.mjs`: actual migration executed in PGlite against synthetic relational fixtures; 24 tests passed locally.
 - `node --test tests/sprint-14b-offboarding-api.test.mjs tests/sprint-14b-termination-api.test.mjs`: 9 tests passed locally for authentication, actor derivation, validation, stale revision errors, final-admin rejection before Auth, partial Auth failure/retry, activation order, cancellation and school-context changes.
-- `tests/sprint-14b-offboarding-concurrency.py`: isolated PostgreSQL tests for three competing administrator-removal paths, five offboarding-versus-credential paths, and redemption-first evidence preservation. Runs in the dedicated CI job; the local execution environment cannot switch OS users to start PostgreSQL.
+- `tests/sprint-14b-offboarding-concurrency.py`: isolated PostgreSQL tests for three competing administrator-removal paths, five offboarding-versus-credential paths, and redemption-first evidence preservation. All nine scenarios passed in the dedicated CI #914 job. The local execution environment cannot switch OS users to start PostgreSQL.
 - Browser script syntax and whitespace checks passed locally.
 
 The relational fixture isolates this migration and is not a substitute for full production schema or authenticated UI QA. No real accounts are offboarded and no invitations are sent for these tests.
+
+## Production verification
+
+- CI #914 passed all 512 tests, typecheck, browser script syntax and the separate nine-scenario PostgreSQL concurrency job.
+- Migration `sprint_14b_teacher_offboarding_closure` applied successfully. Both final-admin triggers are enabled; the new offboarding RPC denies anon/authenticated execution and permits service_role. All five credential functions contain the shared serialization lock.
+- `manage-school-teacher` v2, `manage-institutional-membership` v2 and `manage-admin-account` v6 are active with JWT verification; retrieved source matches the tested source. All three reject unauthenticated requests with HTTP 401.
+- Vercel production deployment `FfBbuTjfEbhpNHp8H5YT4TVQXT4P` succeeded. The production school-admin script returned HTTP 200 and matched the merged source exactly.
+- Read-only production preview succeeded: two active assignments, one subject grant, zero unused student invitations and two unused join codes. This was preview only.
+- Before/after counts were unchanged: 7 profiles, 3 memberships, 2 assignments, 1 institutional invitation, 2 join codes, 1 enrolment.
+- Security advisor findings are unchanged: 34 informational RLS-without-policy findings on service-only tables and the existing [leaked-password-protection warning](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection). No new finding was introduced.
 
 ## Deployment sequence and limits
 

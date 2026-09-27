@@ -340,7 +340,7 @@ function teacherCard(teacher, schoolId) {
     classList.append(title);
     if (!classes.length) {
       const empty = document.createElement("p");
-      empty.textContent = "Դասարան դեռ չի ստեղծվել։";
+      empty.textContent = "Ակտիվ դասարանային նշանակում չկա։";
       classList.append(empty);
     } else {
       const listElement = document.createElement("ul");
