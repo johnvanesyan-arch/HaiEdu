@@ -1,6 +1,7 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { chromium, expect as baseExpect } from '@playwright/test';
 import { validateFixture, roles, sides, runIsolation } from './sprint-14-isolation.mjs';
+import { allowedBrowserManagement } from './sprint-14-action-guards.mjs';
 
 // Production acceptance: only newly created empty classes and memberships may be changed.
 const site = 'https://www.haiedu.am';
@@ -78,10 +79,7 @@ async function pageFor(actor, pathname, width = 1365) {
     const req = route.request(), fn = new URL(req.url()).pathname.split('/').pop();
     if (req.method() !== 'POST' || !fn.startsWith('manage-')) return route.continue();
     let b; try { b = req.postDataJSON(); } catch { return route.abort(); }
-    const safeClass = fn === 'manage-institutional-teacher-class' && ['rename','archive','activate'].includes(b.action) && classes.some(c => c.id === b.classId);
-    const safeMember = fn === 'manage-school-teacher' && ['preview_offboard','offboard'].includes(b.action) && memberships.some(m => m.id === b.membershipId && m.schoolId === b.schoolId && !m.originalIds.includes(m.id));
-    const safeList = fn === 'manage-student-invitation' && b.action === 'list';
-    if (!safeClass && !safeMember && !safeList) { report.checks.push({ label: 'browser mutation safety guard', status: 'failed' }); return route.abort(); }
+    if (!allowedBrowserManagement(fn, b, { classes, memberships })) { report.checks.push({ label: 'browser mutation safety guard', status: 'failed' }); return route.abort(); }
     return route.continue();
   });
   const page = await context.newPage();
