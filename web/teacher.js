@@ -39,7 +39,7 @@ function navigationSelection() {
       : (TEACHER_VIEWS.has(requested) ? requested : "home"),
     source: params.get("source") === "archive" ? "archive" : "classes",
     classId,
-    selection: assignmentId && curriculumReleaseId && unitId
+    selection: params.get("source") !== "archive" && assignmentId && curriculumReleaseId && unitId
       ? { assignmentId, curriculumReleaseId, unitId }
       : null,
   };
@@ -82,7 +82,7 @@ function syncNavigation(klass, push = false) {
   url.searchParams.set("class", klass.id);
   url.searchParams.set("source", klass.isActive ? "classes" : "archive");
   url.hash = "";
-  if (dashboard?.institutionalTeacher && klass.selectedUnit) {
+  if (dashboard?.institutionalTeacher && klass.isActive && klass.selectedUnit) {
     url.searchParams.set("assignment", klass.assignmentId);
     url.searchParams.set("release", klass.selectedUnit.curriculumReleaseId);
     url.searchParams.set("unit", klass.selectedUnit.unitId);
@@ -1196,6 +1196,9 @@ async function toggleInstitutionalClassStatus() {
     return setMessage("institutionalClassMessage", "Դասարանի կարգավիճակը չփոխվեց։ Ստուգեք թույլտվությունները և ուսումնական տարին։", true);
   }
   setMessage("institutionalClassMessage", action === "archive" ? "Դասարանն արխիվացված է։" : "Դասարանը վերակտիվացված է։");
+  // Archived classes have no active evidence context. Update the URL before reload.
+  klass.isActive = action === "activate";
+  syncNavigation(klass);
   await loadDashboard();
 }
 
@@ -1277,4 +1280,5 @@ supabase.auth.onAuthStateChange((_event, session) => {
 
 const { data: sessionData } = await supabase.auth.getSession();
 if (sessionData.session) loadDashboard();
+
 
