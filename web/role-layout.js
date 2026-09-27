@@ -161,8 +161,9 @@ function syncRoleSidebar() {
   sidebar.dataset.workspace = config.label;
   const brand = document.createElement("a");
   brand.className = "hm-role-brand";
-  brand.href = "./index.html";
-  brand.setAttribute("aria-label", "HaiEdu գլխավոր էջ");
+  // Staff logos return to the same workspace without loading the student entry page.
+  brand.href = config.links[0][1];
+  brand.setAttribute("aria-label", `${config.label}՝ գլխավոր էջ`);
   const logo = document.createElement("img");
   logo.src = "./assets/haiedu-primary.svg";
   logo.alt = "HaiEdu";
