@@ -224,11 +224,15 @@ try {
     const page=await pageFor(admin,'school-admin.html#teachersPanel');
     await page.locator('#rosterSchool').selectOption(schoolId);
     const button=()=>page.locator('.roster-card').filter({has:page.locator(`a[href*="membership=${member.id}"]`)}).getByRole('button',{name:'Դադարեցնել աշխատանքը',exact:true});
-    let cancelledPreview = false;
-    page.once('dialog',async d=>{ cancelledPreview = d.type() === 'confirm'; await d.dismiss(); });
+    // Wait for the actual dialog: a concurrent roster refresh can replace the
+    // busy button with an enabled one before the preview request completes.
+    const cancelDialog = page.waitForEvent('dialog');
     await button().click();
+    const shownDialog = await cancelDialog;
+    check(`${s}: offboarding preview displays confirmation`,shownDialog.type()==='confirm');
+    await shownDialog.dismiss();
     await expect(button()).toBeEnabled();
-    check(`${s}: offboarding confirmation was shown and cancelled`,cancelledPreview);
+    check(`${s}: offboarding confirmation cancelled`,true);
     const afterCancel=await call(admin,'get-school-teachers',{schoolId},`${s}: read after cancel`);
     check(`${s}: offboarding cancel preserves new membership`,afterCancel.teachers.some(t=>t.membership_id===member.id && t.membership_status==='active'));
     page.once('dialog',d=>d.accept());
