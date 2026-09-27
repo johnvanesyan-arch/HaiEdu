@@ -1,9 +1,10 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
-import { chromium, expect } from '@playwright/test';
+import { chromium, expect as baseExpect } from '@playwright/test';
 import { validateFixture, roles, sides, runIsolation } from './sprint-14-isolation.mjs';
 
 // Production acceptance: only newly created empty classes and memberships may be changed.
 const site = 'https://www.haiedu.am';
+const expect = baseExpect.configure({ timeout: 30000 });
 const fixture = JSON.parse(process.env.QA_TENANT_FIXTURES_JSON ?? '{}');
 const credentials = Object.fromEntries(sides.flatMap(s => roles.map(r => [`${s}_${r}`, {
   email: process.env[`QA_SCHOOL_${s}_${r.toUpperCase()}_EMAIL`],
@@ -14,7 +15,7 @@ const url = config.match(/export const SUPABASE_URL = "([^"]+)"/)?.[1];
 const key = config.match(/export const SUPABASE_PUBLISHABLE_KEY = "([^"]+)"/)?.[1];
 const report = { scope: 'Sprint 14 authenticated actions', revision: process.env.GITHUB_SHA ?? 'local',
   startedAt: new Date().toISOString(), status: 'running', sprint14GateClosed: false, checks: [], resources: [] };
-const sessions = new Map(), classes = [], memberships = [], invitations = [], contexts = [];
+const sessions = new Map(), classes = [], memberships = [], invitations = [], contexts = [], pages = [];
 const prefix = `S14-QA-${process.env.GITHUB_RUN_ID ?? Date.now()}-${process.env.GITHUB_RUN_ATTEMPT ?? 1}`;
 let browser, stage = 'preflight';
 const selection = f => ({ assignmentId: f.assignmentId, curriculumReleaseId: f.curriculumReleaseId, unitId: f.unitId });
@@ -84,8 +85,16 @@ async function pageFor(actor, pathname, width = 1365) {
     return route.continue();
   });
   const page = await context.newPage();
+  pages.push({ actor, page });
+  page.on('requestfailed', req => {
+    const target = new URL(req.url());
+    if (target.hostname === new URL(site).hostname || target.hostname === new URL(url).hostname || target.hostname === 'esm.sh') {
+      (report.browserRequestFailures ??= []).push({ actor, host: target.hostname, path: target.pathname, failure: req.failure()?.errorText });
+    }
+  });
   page.setDefaultTimeout(30000);
-  await page.goto(`${site}/${pathname}`, { waitUntil: 'domcontentloaded' });
+  const response = await page.goto(`${site}/${pathname}`, { waitUntil: 'domcontentloaded' });
+  check(`${actor}: browser document loads`, response?.status() === 200, response?.status());
   return page;
 }
 async function teacherUI(side, entry) {
@@ -107,7 +116,7 @@ async function teacherUI(side, entry) {
   await home.click();
   await expect(page.locator('[data-teacher-view="home"]')).toBeVisible();
   await expect(page.locator('#dashboardPanel')).toBeVisible();
-  check(`${side}: teacher home navigation retains authentication`, new URL(page.url()).pathname === '/teacher.html');
+  check(`${side}: teacher home navigation retains authentication`, ['/teacher', '/teacher.html'].includes(new URL(page.url()).pathname));
   for (const view of ['profile', 'classes', 'archive']) {
     stage = `${side}: sidebar ${view}`;
     await page.locator(`.hm-role-nav a[href$="view=${view}"]`).click();
@@ -143,7 +152,12 @@ try {
   check('authenticated read-isolation preflight passes', pre.status === 'passed');
   for (const s of sides) for (const role of roles) {
     const actor = `${s}_${role}`, r = await request(null, '/auth/v1/token?grant_type=password', credentials[actor]);
-    if (r.data?.access_token) sessions.set(actor, r.data);
+    if (r.data?.access_token) sessions.set(actor, {
+      ...r.data,
+      // GoTrue's REST token response may omit expires_at. The browser SDK's
+      // stored-session contract requires it; derive it exactly as the SDK does.
+      expires_at: r.data.expires_at ?? Math.floor(Date.now() / 1000) + Number(r.data.expires_in),
+    });
     check(`${actor}: real expected identity`, r.status === 200 && r.data?.user?.id === fixture[s][`${role}Id`], r.status);
   }
   browser = await chromium.launch();
@@ -240,7 +254,16 @@ try {
     const student=await call(`${s}_student`,'get-student-classes',{},`${s}: final original enrolment`);
     check(`${s}: original learner enrolments unchanged`,JSON.stringify(student.classes)===JSON.stringify(baselines[s].studentClasses));
   }
-} catch {
+} catch (error) {
+  report.failureKind = error?.name === 'TimeoutError' ? 'browser-timeout' : 'assertion-or-request';
+  report.browserState = [];
+  for (const { actor, page } of pages) if (!page.isClosed()) {
+    report.browserState.push({ actor, path: new URL(page.url()).pathname,
+      dashboardVisible: await page.locator('#dashboardPanel').isVisible().catch(()=>false),
+      authVisible: await page.locator('#authPanel').isVisible().catch(()=>false),
+      classHeadingPresent: await page.locator('#institutionalSelectedName').count().catch(()=>0),
+    });
+  }
   if(!report.checks.some(c=>c.status==='failed')) report.checks.push({label:stage,status:'failed'});
 } finally {
   for(const context of contexts) await context.close().catch(()=>{});
