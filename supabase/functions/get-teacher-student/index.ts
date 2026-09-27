@@ -1,3 +1,4 @@
+import { loadInitialDiagnostics } from "../_shared/initial-diagnostic.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
@@ -184,7 +185,7 @@ Deno.serve(async (req) => {
 
     const sessionRows = sessions ?? [];
     const active = sessionRows.find((s: any) => s.status === "active") ?? null;
-    const latestDiagnostic = sessionRows.find((s: any) => s.mode === "diagnostic" && s.status === "completed") ?? null;
+    const latestDiagnostic = (await loadInitialDiagnostics(admin, [body.studentId], UNIT_CODE)).get(body.studentId) ?? null;
     const latestMastery = sessionRows.find((s: any) => s.mode === "mastery_check" && s.status === "completed") ?? null;
 
     let intervention = { action: "monitor", code: null as string | null, messageHy: "Շարունակել վերահսկել առաջընթացը։" };
@@ -278,3 +279,4 @@ Deno.serve(async (req) => {
     return json({ error: "teacher_student_failed", detail: err instanceof Error ? err.message : String(err) }, 500);
   }
 });
+

@@ -111,7 +111,7 @@ function renderDashboard(data) {
   const diagnostic = data.latestDiagnostic;
   $("diagnosticScore").textContent = diagnostic ? `${diagnostic.correct} / ${diagnostic.answered} · ${diagnostic.percent}%` : "Դեռ չկա";
   $("diagnosticMeta").textContent = diagnostic
-    ? "Վերջին ավարտված 20-հարցանոց ախտորոշիչ"
+    ? "Սկզբնական 20-հարցանոց ախտորոշիչ"
     : "Անցեք ախտորոշիչը՝ հմտությունների քարտեզ ստանալու համար";
 
   const progress = data.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
@@ -151,7 +151,7 @@ function renderDashboard(data) {
     $("practiceCardText").textContent = "Սկսեք սահմանափակ adaptive practice սեսիա։";
   }
 
-  $("startDiagnosticBtn").textContent = diagnostic ? "Կրկնել ախտորոշիչը" : "Սկսել ախտորոշիչը";
+  $("startDiagnosticBtn").textContent = diagnostic ? "Դիտել սկզբնական արդյունքը" : "Սկսել ախտորոշիչը";
   renderSkillMap(data.skills ?? [], skill?.id ?? null);
 }
 
@@ -220,6 +220,7 @@ async function resumeSession(session) {
 }
 
 async function startSession(mode, targetSkillId = null) {
+  if (mode === "diagnostic") return window.location.assign("./diagnostic.html");
   setModeMessage(mode === "diagnostic" ? "Ախտորոշիչը պատրաստվում է…" : "Վարժանքը պատրաստվում է…");
   $("startDiagnosticBtn").disabled = true;
   $("startPracticeBtn").disabled = true;
@@ -454,7 +455,7 @@ function renderSessionCompletion(data) {
   submitBtn.disabled = true;
   masteryCard.classList.add("hidden");
   feedback.className = "feedback good";
-  feedback.innerHTML = `<strong>${correct} / ${answered} ճիշտ (${percent}%)</strong><div>${diagnostic ? "Հմտությունների քարտեզը հաշվարկվել է վերջին ախտորոշիչից։" : "Սեսիայի արդյունքը պահպանվել է ընդհանուր առաջընթացում։"}</div>`;
+  feedback.innerHTML = `<strong>${correct} / ${answered} ճիշտ (${percent}%)</strong><div>${diagnostic ? "Հմտությունների քարտեզը հաշվարկվել է սկզբնական ախտորոշիչից։" : "Սեսիայի արդյունքը պահպանվել է ընդհանուր առաջընթացում։"}</div>`;
   nextBtn.disabled = false;
   nextBtn.textContent = diagnostic ? "Դիտել արդյունքները" : "Վերադառնալ առաջընթացին";
   nextBtn.dataset.action = "dashboard";
@@ -597,3 +598,4 @@ supabase.auth.onAuthStateChange((_event, session) => {
 const { data: sessionData } = await supabase.auth.getSession();
 const route = await roleRoutingReady;
 if (!route.redirected && !route.blocked) setAuthenticated(Boolean(sessionData.session));
+

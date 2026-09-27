@@ -97,17 +97,19 @@ Deno.serve(async (req) => {
     { data: masteryRows },
     { data: attemptRows },
     { data: activeRows },
-    { data: diagnosticRows },
+    { data: diagnosticRows, error: diagnosticError },
     { data: prerequisiteRows },
     { data: chapterMasteryRows },
   ] = await Promise.all([
     admin.from("student_skill_mastery_by_release").select("skill_id, mastery_score, evidence_count, status").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds),
     admin.from("attempts").select("skill_id, item_id, correct, hint_used, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(500),
     admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
-    admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, completed_at, started_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "diagnostic").eq("status", "completed").order("completed_at", { ascending: false }).limit(1),
+    admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, completed_at, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "diagnostic").eq("status", "completed").order("completed_at", { ascending: true }).order("id", { ascending: true }).limit(1),
     admin.from("skill_prerequisites").select("skill_id, prerequisite_skill_id").in("skill_id", skillIds),
     admin.from("chapter_mastery_states").select("lifecycle_state, attempts_used, passed_on_attempt").eq("student_id", studentId).eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).limit(1),
   ]);
+  if (diagnosticError) return json({ error: "diagnostic_history_failed" }, 503);
+  // Compatibility field latestDiagnostic now always contains the initial baseline.
   const chapterMastery = chapterMasteryRows?.[0] ?? null;
 
   const attempts = (attemptRows ?? []) as AttemptRow[];
@@ -297,3 +299,4 @@ Deno.serve(async (req) => {
     },
   });
 });
+
