@@ -212,9 +212,11 @@ try {
     const page=await pageFor(admin,'school-admin.html#teachersPanel');
     await page.locator('#rosterSchool').selectOption(schoolId);
     const button=()=>page.locator('.roster-card').filter({has:page.locator(`a[href*="membership=${member.id}"]`)}).getByRole('button',{name:'Դադարեցնել աշխատանքը',exact:true});
-    page.once('dialog',d=>d.dismiss());
+    let cancelledPreview = false;
+    page.once('dialog',async d=>{ cancelledPreview = d.type() === 'confirm'; await d.dismiss(); });
     await button().click();
     await expect(button()).toBeEnabled();
+    check(`${s}: offboarding confirmation was shown and cancelled`,cancelledPreview);
     const afterCancel=await call(admin,'get-school-teachers',{schoolId},`${s}: read after cancel`);
     check(`${s}: offboarding cancel preserves new membership`,afterCancel.teachers.some(t=>t.membership_id===member.id && t.membership_status==='active'));
     page.once('dialog',d=>d.accept());
