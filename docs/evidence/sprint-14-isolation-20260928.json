@@ -1,0 +1,281 @@
+{
+  "scope": "Sprint 14 authenticated read isolation",
+  "revision": "500d792f7d3457597ee98f503a5c120bb6e34f74",
+  "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+  "startedAt": "2026-09-27T21:14:53.460Z",
+  "status": "passed",
+  "sprint14GateClosed": false,
+  "checks": [
+    {
+      "label": "A_admin: authenticated expected QA identity",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: authenticated expected QA identity",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_student: authenticated expected QA identity",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_admin: authenticated expected QA identity",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: authenticated expected QA identity",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_student: authenticated expected QA identity",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: admin own school",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: admin own teacher directory",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: teacher own context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: teacher own class evidence",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: teacher own learner detail",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: student own enrolment",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: admin own school",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: admin own teacher directory",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: teacher own context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: teacher own class evidence",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: teacher own learner detail",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: student own enrolment",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: admin cannot read other directory",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: admin cannot select other overview",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: teacher cannot select other context",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: teacher cannot select other dashboard",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: teacher cannot read other learner context",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: other learner cannot be substituted into own class",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: other class cannot be substituted into own assignment",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: omitted context cannot expose other learner through legacy path",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: student supplied identity cannot change enrolment reads",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: student cannot use teacher evidence API",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: student cannot use school directory API",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: teacher cannot use school directory API",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A_admin: direct other-school enrolment read denied or empty",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A_teacher: direct other-school enrolment read denied or empty",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A_student: direct other-school enrolment read denied or empty",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: admin cannot read other directory",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: admin cannot select other overview",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: teacher cannot select other context",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: teacher cannot select other dashboard",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: teacher cannot read other learner context",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: other learner cannot be substituted into own class",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: other class cannot be substituted into own assignment",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: omitted context cannot expose other learner through legacy path",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: student supplied identity cannot change enrolment reads",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: student cannot use teacher evidence API",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: student cannot use school directory API",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: teacher cannot use school directory API",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B_admin: direct other-school enrolment read denied or empty",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B_teacher: direct other-school enrolment read denied or empty",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B_student: direct other-school enrolment read denied or empty",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A_admin: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_teacher: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_student: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_admin: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_teacher: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_student: close only this QA session",
+      "status": "passed",
+      "httpStatus": 204
+    }
+  ],
+  "finishedAt": "2026-09-27T21:15:55.530Z"
+}

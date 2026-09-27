@@ -1,10 +1,24 @@
 # Sprint 14 authenticated two-school isolation
 
-Status (2026-09-28): runner implemented; live acceptance BLOCKED on a second school and configured QA identities. This is test preparation, not a passed tenant-isolation gate.
+Status (2026-09-28): authenticated production read-isolation passed 54/54 checks. The broader tenant-isolation and Sprint 14 gates remain open as detailed below.
 
-## Current prerequisite check
+## Authenticated production read-isolation result — 2026-09-28
 
-Read-only production inventory found one school, one active school-admin membership, one active teacher membership, and one active student enrolment. The executor has no QA credentials. Existing mobile QA expects only one teacher and learner; it cannot establish two-school or school-admin isolation. Its stored secrets were not read or assumed valid.
+[Workflow run](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/36350990655) passed **54/54 checks** against production at repository revision `500d792f7d3457597ee98f503a5c120bb6e34f74`, from 01:14:53 to 01:15:55 Asia/Yerevan. Reviewed redacted evidence is preserved in [the repository](evidence/sprint-14-isolation-20260928.json), beyond the Actions artifact's 14-day retention.
+
+- All six expected administrator/teacher/student identities authenticated successfully.
+- Twelve positive controls confirmed legitimate school, class, academic-context and learner access before denial checks ran.
+- Thirty reciprocal checks passed: other-school directory/context/evidence access, mixed identifiers, legacy fallback, client-supplied student/school identity, cross-role access and direct enrolment-table reads. Scope-filtered overview and enrolment endpoints returned only the caller's own data; protected foreign-resource endpoints returned the expected 403.
+- All six newly created QA sessions were signed out locally (HTTP 204).
+- No provisioning, invitation, rename, offboarding, learner session, answer, exposure or release mutation was performed by the runner.
+
+This closes the **authenticated two-school read-isolation subgate** for the tested school/class contexts. The checks use generic context IDs and apply the shared authorization contracts; the current live fixtures exercise Physics 7 Chapter I, not every future subject/grade release. Authenticated mutation denials, teacher navigation/rename/offboarding action QA, second-authorized-context switching, 14D and final readiness remain open. The report correctly retains `sprint14GateClosed: false`.
+
+
+
+## Initial prerequisite check (historical; resolved)
+
+Before the second fixture was created, read-only production inventory found one school, one active school-admin membership, one active teacher membership, and one active student enrolment. The executor has no QA credentials. Existing mobile QA expects only one teacher and learner; it cannot establish two-school or school-admin isolation. Its stored secrets were not read or assumed valid.
 
 Do not fabricate authenticated acceptance using service-role impersonation, synthetic JWTs, disabled session checks, or mocked database calls. The seven runner regression tests use simulated responses solely to test the runner itself.
 
