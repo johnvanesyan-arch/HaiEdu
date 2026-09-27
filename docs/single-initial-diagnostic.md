@@ -30,3 +30,9 @@ Focused tests exercise both forms, stable assignment, saved progress, first-base
 Release order: database migration; updated start/student-dashboard/teacher-dashboard/teacher-student functions with their shared dependencies; runtime provenance binding; production frontend. Do not remove database protections when rolling back a frontend. Retain already-completed baselines and use a forward fix for policy changes.
 
 This release is separate from PR #43's pending Chapter Review selection revision and does not close Sprint 14's outstanding authenticated or school-wide analytics gates.
+
+## Deployment verification — 2026-09-27
+
+Backend functions: start-learning-session v21, get-student-dashboard v20, get-teacher-dashboard v15, get-teacher-student v10. Runtime binding: runtime-2026-09-27-initial-diagnostic-v1, implementation source ba043ad63fd6f1e28cafe014df12d62d7ff648c6. Database checks confirm both unique indexes, service-only RPC execution and completed-baseline responses. Live inventory confirms 20 questions and two questions for each of ten skills in both forms.
+
+The isolated SQL/UI regression tests cover new-session creation and resume. A live rollback-only new-session probe could not run because no enrolled Physics 7 learner was eligible without an existing session or diagnostic; it persisted no changes. Authenticated learner end-to-end verification remains a separate QA item.
