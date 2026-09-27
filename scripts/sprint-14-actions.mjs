@@ -226,15 +226,20 @@ try {
     const button=()=>page.locator('.roster-card').filter({has:page.locator(`a[href*="membership=${member.id}"]`)}).getByRole('button',{name:'Դադարեցնել աշխատանքը',exact:true});
     // Wait for the actual dialog: a concurrent roster refresh can replace the
     // busy button with an enabled one before the preview request completes.
+    await expect(button()).toHaveCount(1);
+    stage = `${s}: offboarding cancel dialog`;
     const cancelDialog = page.waitForEvent('dialog');
     await button().click();
     const shownDialog = await cancelDialog;
     check(`${s}: offboarding preview displays confirmation`,shownDialog.type()==='confirm');
     await shownDialog.dismiss();
+    stage = `${s}: single usable offboarding button after cancel`;
+    await expect(button()).toHaveCount(1);
     await expect(button()).toBeEnabled();
     check(`${s}: offboarding confirmation cancelled`,true);
     const afterCancel=await call(admin,'get-school-teachers',{schoolId},`${s}: read after cancel`);
     check(`${s}: offboarding cancel preserves new membership`,afterCancel.teachers.some(t=>t.membership_id===member.id && t.membership_status==='active'));
+    stage = `${s}: offboarding UI confirmation`;
     page.once('dialog',d=>d.accept());
     const response=page.waitForResponse(r=>r.url().endsWith('/manage-school-teacher') && r.request().postDataJSON()?.action==='offboard');
     await button().click();
@@ -257,13 +262,14 @@ try {
     check(`${s}: original learner enrolments unchanged`,JSON.stringify(student.classes)===JSON.stringify(baselines[s].studentClasses));
   }
 } catch (error) {
-  report.failureKind = error?.name === 'TimeoutError' ? 'browser-timeout' : 'assertion-or-request';
+  report.failureKind = /strict mode violation/.test(error?.message ?? '') ? 'ambiguous-browser-locator' : error?.name === 'TimeoutError' ? 'browser-timeout' : 'assertion-or-request';
   report.browserState = [];
   for (const { actor, page } of pages) if (!page.isClosed()) {
     report.browserState.push({ actor, path: new URL(page.url()).pathname,
       dashboardVisible: await page.locator('#dashboardPanel').isVisible().catch(()=>false),
       authVisible: await page.locator('#authPanel').isVisible().catch(()=>false),
       classHeadingPresent: await page.locator('#institutionalSelectedName').count().catch(()=>0),
+      rosterCards: await page.locator('.roster-card').count().catch(()=>0),
     });
   }
   if(!report.checks.some(c=>c.status==='failed')) report.checks.push({label:stage,status:'failed'});
