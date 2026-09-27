@@ -55,7 +55,18 @@ export async function runIsolation({ fixture, credentials, url, key, fetchImpl =
     let passed = false;
     try {
       const other = fixture[actor.startsWith('A_') ? 'B' : 'A'];
-      const bodyText = JSON.stringify(result.data);
+      // Own-school directories legitimately retain ended guest-teacher audit rows.
+      // Mask only the known guest's person ID on a bounded ended row; never mask
+      // foreign schools/classes/assignments or any active guest membership.
+      const ownDirectory = fn === 'get-school-teachers' && body.schoolId === fixture[actor.startsWith('A_') ? 'A' : 'B'].schoolId;
+      const scanned = ownDirectory && Array.isArray(result.data?.teachers) ? { ...result.data,
+        teachers: result.data.teachers.map(t => t.person_id === other.teacherId
+          && uuid.test(t.membership_id ?? '') && t.membership_status === 'ended'
+          && Array.isArray(t.subjects) && t.subjects.length === 0
+          && Array.isArray(t.classes) && t.classes.length === 0
+          ? { ...t, person_id: 'ended-own-school-guest' } : t),
+      } : result.data;
+      const bodyText = JSON.stringify(scanned);
       const foreignIdentity = ['schoolId', 'classId', 'assignmentId', 'adminId', 'teacherId', 'studentId']
         .some(field => bodyText?.includes(other[field]));
       passed = predicate(result) && !foreignIdentity;
