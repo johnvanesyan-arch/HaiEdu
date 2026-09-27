@@ -9,29 +9,29 @@ const item = (id, skill, last = 0) => ({ item_id: id, skill_id: skill, last });
 const choose = (items, seen, target, overrides = {}) => selectReviewCoverageFirst({
   items,
   skillIds: [...new Set(items.map((x) => x.skill_id))],
-  seenInCycle: new Set(seen),
+  answeredInCycle: new Set(seen),
   targetCount: target,
   candidateOrder: (a, b) => a.last - b.last || a.item_id.localeCompare(b.item_id),
   priorityOrder: (a, b) => a.item_id.localeCompare(b.item_id),
-  // Deliberately reverses lexical order to catch repeats shuffled ahead of fresh items.
+  // Deliberately reverses lexical order to catch repeats shuffled ahead of unanswered items.
   presentationOrder: (a, b) => b.item_id.localeCompare(a.item_id),
   ...overrides,
 });
 
-test("an exhausted skill cannot repeat while other skills have enough unseen questions", () => {
+test("an exhausted skill cannot repeat while other skills have enough unanswered questions", () => {
   const bank = [item("a", "A"), ...[1, 2, 3, 4].map((n) => item(`b${n}`, "B"))];
   const result = choose(bank, ["a"], 3);
   assert.equal(result.length, 3);
   assert.ok(result.every((x) => x.item.skill_id === "B" && !x.repeated));
 });
 
-test("weak-skill weighting cannot promote a seen question ahead of unseen work", () => {
+test("weak-skill weighting cannot promote an answered question ahead of unanswered work", () => {
   const bank = [item("weak", "A"), item("fresh1", "B"), item("fresh2", "B")];
   const result = choose(bank, ["weak"], 2, { priorityOrder: (a, b) => Number(b.skill_id === "A") - Number(a.skill_id === "A") });
   assert.deepEqual(new Set(result.map((x) => x.item.item_id)), new Set(["fresh1", "fresh2"]));
 });
 
-test("a boundary session presents every remaining unseen item before least-recent repeat fill", () => {
+test("a boundary session presents every remaining unanswered item before least-recent repeat fill", () => {
   const bank = [item("z-old", "A", 1), item("y-recent", "B", 9), item("a-fresh", "C")];
   const result = choose(bank, ["z-old", "y-recent"], 2);
   assert.deepEqual(result.map((x) => x.item.item_id), ["a-fresh", "z-old"]);
