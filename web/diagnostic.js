@@ -52,6 +52,11 @@ async function prepare() {
 
   try {
     const data = await loadDashboard();
+    if (data.latestDiagnostic) {
+      renderResults(data, false);
+      return;
+    }
+
     if (data.activeSession?.mode === "diagnostic") {
       currentSession = data.activeSession;
       $("stateTitle").textContent = "Շարունակեք չավարտված ախտորոշիչը";
@@ -69,13 +74,9 @@ async function prepare() {
       return;
     }
 
-    if (data.latestDiagnostic) {
-      renderResults(data, false);
-      return;
-    }
 
     $("stateTitle").textContent = "Պատրաստ եք Գլուխ I-ի ախտորոշիչին";
-    $("stateText").textContent = "Ախտորոշիչը ունի 20 հարց և նախատեսված է միայն Գլուխ I-ի հմտությունների քարտեզ կազմելու համար։";
+    $("stateText").textContent = "Ախտորոշիչն ունի 20 հարց և կատարվում է մեկ անգամ։ Փորձեք պատասխանել, նույնիսկ եթե դեռ չեք սովորել նյութը։ Սա անցնել/չանցնել ստուգում չէ․ այն ցույց է տալիս ձեր մեկնարկային գիտելիքները։";
     $("startBtn").textContent = "Սկսել ախտորոշիչը";
     $("startBtn").classList.remove("hidden");
   } catch (err) {
@@ -89,7 +90,11 @@ async function startDiagnostic() {
   $("startBtn").disabled = true;
   $("stateText").textContent = "Ախտորոշիչը կազմվում է…";
 
-  const latest = dashboard ?? await loadDashboard();
+  const latest = await loadDashboard();
+  if (latest.latestDiagnostic) {
+    $("startBtn").disabled = false;
+    return renderResults(latest, false);
+  }
   if (latest.activeSession && latest.activeSession.mode !== "diagnostic") {
     $("startBtn").disabled = false;
     $("stateTitle").textContent = "Նախ ավարտեք ընթացիկ սեսիան";
@@ -101,6 +106,7 @@ async function startDiagnostic() {
 
   const { data, error } = await supabase.functions.invoke("start-learning-session", { body: { mode: "diagnostic" } });
   $("startBtn").disabled = false;
+  if (data?.diagnosticCompleted) return showFreshResults();
   if (error || !data?.session) {
     $("stateText").textContent = error?.message ?? data?.messageHy ?? "Չհաջողվեց սկսել ախտորոշիչը։";
     return;
@@ -261,7 +267,7 @@ function renderResults(data, fresh) {
   $("resultScore").textContent = `${latest.correct}/${latest.answered} · ${latest.percent}%`;
   $("resultText").textContent = fresh
     ? "Ախտորոշիչն ավարտված է։ Ստորև երևում են Գլուխ I-ի 10 հմտությունների արդյունքները։"
-    : "Սա ձեր վերջին ավարտված Գլուխ I-ի ախտորոշիչն է։";
+    : "Սա Գլուխ I-ի ձեր սկզբնական ախտորոշիչն է։ Այն կատարվում է մեկ անգամ և պահպանվում է որպես ելակետ։";
 
   $("resultSkills").innerHTML = (data.skills ?? []).map((skill) => {
     const diag = skill.diagnostic ?? { band: "not_assessed", correct: 0, total: 0 };
@@ -290,25 +296,6 @@ function renderResults(data, fresh) {
     action.href = "./physics-7.html";
     action.textContent = "Տեսնել Ֆիզիկա 7 հմտությունները";
   }
-}
-
-async function retake() {
-  currentSession = null;
-  current = null;
-  dashboard = await loadDashboard();
-  if (dashboard.activeSession) {
-    if (dashboard.activeSession.mode === "diagnostic") {
-      currentSession = dashboard.activeSession;
-      return openQuestionPanel();
-    }
-    return window.location.assign(routeForActive(dashboard.activeSession));
-  }
-  $("resultPanel").classList.add("hidden");
-  $("stateCard").classList.remove("hidden");
-  $("stateTitle").textContent = "Կրկնել Գլուխ I-ի ախտորոշիչը";
-  $("stateText").textContent = "Նոր 20-հարցանոց սեսիան կփոխարինի միայն նախորդ ավարտված ախտորոշիչին որպես վերջին արդյունք։";
-  $("startBtn").textContent = "Սկսել նոր ախտորոշիչ";
-  $("startBtn").classList.remove("hidden");
 }
 
 function renderStimulus(stimulus) {
@@ -380,7 +367,6 @@ function renderScale(spec) {
 $("startBtn").addEventListener("click", startDiagnostic);
 $("answerForm").addEventListener("submit", submit);
 $("nextBtn").addEventListener("click", loadItem);
-$("retakeBtn").addEventListener("click", retake);
 $("recommendedAction")?.addEventListener("click", async (event) => {
   const recommendation = dashboard?.recommendation;
   if (!recommendation?.instanceId) return;
@@ -396,3 +382,4 @@ $("recommendedAction")?.addEventListener("click", async (event) => {
   window.location.assign(href);
 });
 prepare();
+

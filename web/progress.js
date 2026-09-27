@@ -92,7 +92,7 @@ function renderSummary() {
   const diagnostic = dashboard?.latestDiagnostic;
   if (diagnostic) {
     $("diagnosticSummary").textContent = `${diagnostic.correct}/${diagnostic.answered} · ${diagnostic.percent}%`;
-    $("diagnosticSummaryMeta").textContent = "Գլուխ I-ի վերջին ախտորոշիչ · սա գնահատական կամ վերջնական յուրացման հաստատում չէ։";
+    $("diagnosticSummaryMeta").textContent = "Գլուխ I-ի սկզբնական ախտորոշիչ · սա գնահատական կամ վերջնական յուրացման հաստատում չէ։";
   } else {
     $("diagnosticSummary").textContent = "Դեռ չկա";
     $("diagnosticSummaryMeta").textContent = "Գլուխ I-ի հմտությունների սկզբնական քարտեզ դեռ չկա։";
@@ -307,3 +307,4 @@ $("progressNextAction")?.addEventListener("click", async (event) => {
   window.location.assign(href);
 });
 initialize();
+

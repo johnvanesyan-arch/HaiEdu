@@ -52,7 +52,12 @@ function renderDiagnostic(dashboard, mastery) {
   const masteryActive = mastery?.activeSession?.mode === "mastery_check" ? mastery.activeSession : null;
   const action = $("diagnosticAction");
 
-  if (active?.mode === "diagnostic") {
+  if (latest) {
+    setBadge("diagnosticStatus", "Ավարտված", "success");
+    $("diagnosticSummary").textContent = `Սկզբնական արդյունքը՝ ${latest.correct}/${latest.answered} (${latest.percent}%)։ Ախտորոշիչը կատարվում է մեկ անգամ և պահպանվում է որպես ելակետ։`;
+    action.textContent = "Դիտել սկզբնական արդյունքը";
+    action.href = "./diagnostic.html";
+  } else if (active?.mode === "diagnostic") {
     setBadge("diagnosticStatus", "Ընթացքի մեջ", "info");
     $("diagnosticSummary").textContent = `${active.answered}/${active.planned} հարց պատասխանված է։ Շարունակեք նույն սեսիան։`;
     action.textContent = "Շարունակել ախտորոշիչը";
@@ -62,11 +67,6 @@ function renderDiagnostic(dashboard, mastery) {
     $("diagnosticSummary").textContent = "Նախ ավարտեք ընթացիկ ուսումնական կամ գնահատման սեսիան։";
     action.textContent = "Տեսնել ընթացիկ սեսիան";
     action.href = activeRoute(masteryActive ?? active);
-  } else if (latest) {
-    setBadge("diagnosticStatus", "Ավարտված", "success");
-    $("diagnosticSummary").textContent = `Վերջին արդյունքը՝ ${latest.correct}/${latest.answered} (${latest.percent}%)։ Կարող եք դիտել արդյունքները կամ կրկնել Գլուխ I-ի ախտորոշիչը։`;
-    action.textContent = "Բացել ախտորոշիչը";
-    action.href = "./diagnostic.html";
   } else {
     setBadge("diagnosticStatus", "Հասանելի", "info");
     $("diagnosticSummary").textContent = "Սկսեք այստեղից, եթե դեռ չունեք Գլուխ I-ի հմտությունների ախտորոշիչ քարտեզ։";
@@ -74,7 +74,7 @@ function renderDiagnostic(dashboard, mastery) {
     action.href = "./diagnostic.html";
   }
 
-  $("diagnosticMeta").textContent = latest ? `Վերջին փորձ՝ ${fmtDate(latest.completedAt)}` : "Դեռ փորձ չկա";
+  $("diagnosticMeta").textContent = latest ? `Սկզբնական փորձ՝ ${fmtDate(latest.completedAt)}` : "Դեռ փորձ չկա";
   $("latestDiagnosticScore").textContent = latest ? `${latest.correct}/${latest.answered} · ${latest.percent}%` : "Դեռ չկա";
   $("latestDiagnosticDate").textContent = latest ? fmtDate(latest.completedAt) : "Գլուխ I-ի ախտորոշիչ դեռ չի ավարտվել";
 }
@@ -136,3 +136,4 @@ async function initialize() {
 }
 
 initialize();
+

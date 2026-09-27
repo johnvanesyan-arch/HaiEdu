@@ -35,11 +35,11 @@ test("canonical session delivery uses cross-session exposure policy", () => {
   assert.match(getSessionItem, /policyVersion:\s*"11B-v1"/);
 });
 
-test("Diagnostic rotates forms and persists form identity", () => {
-  assert.match(startSession, /chooseRotatingDiagnosticForm/);
-  assert.match(startSession, /formCode:\s*rotation\.form\.code/);
-  assert.match(startSession, /priorFormCode/);
-  assert.match(startSession, /diagnostic_\$\{rotation\.reason\}/);
+test("Diagnostic assigns one stable form; its identity is persisted atomically", () => {
+  assert.match(startSession, /chooseInitialDiagnosticForm/);
+  assert.match(startSession, /start_initial_diagnostic_atomic/);
+  assert.match(startSession, /p_form_id: assignedForm.id/);
+  assert.doesNotMatch(startSession, /chooseRotatingDiagnosticForm|priorFormCode/);
 });
 
 test("Mastery is protected, unseen-first and alternate-retest aware", () => {
@@ -57,3 +57,4 @@ test("legacy untracked practice delivery is retired", () => {
   assert.match(legacyPractice, /start-learning-session \+ get-session-item/);
   assert.match(legacyPractice, /410/);
 });
+

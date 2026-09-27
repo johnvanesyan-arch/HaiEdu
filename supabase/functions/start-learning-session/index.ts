@@ -1,3 +1,4 @@
+import { chooseInitialDiagnosticForm } from "../_shared/initial-diagnostic.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
@@ -6,7 +7,6 @@ import { resolveCurriculumBlueprint } from "../_shared/curriculum-release.ts";
 import {
   CHAPTER_I_POOLS,
   chooseMasteryByExposure,
-  chooseRotatingDiagnosticForm,
   getStudentExposureHistory,
   type SelectableItem,
 } from "../_shared/assessment-integrity.ts";
@@ -96,6 +96,15 @@ Deno.serve(async (req) => {
   try { body = await req.json(); } catch { /* handled below */ }
   if (!body.mode || !["diagnostic", "practice", "mastery_check", "chapter_review"].includes(body.mode)) {
     return json({ error: "invalid_mode" }, 400);
+  }
+
+  if (body.mode === "diagnostic") {
+    const { data: baseline, error: baselineError } = await admin.from("learning_sessions")
+      .select("id").eq("student_id", studentId).eq("unit_code", UNIT_CODE)
+      .eq("mode", "diagnostic").eq("status", "completed")
+      .order("completed_at", { ascending: true }).order("id", { ascending: true }).limit(1).maybeSingle();
+    if (baselineError) return json({ error: "diagnostic_history_failed" }, 503);
+    if (baseline) return json({ diagnosticCompleted: true, baselineSessionId: baseline.id });
   }
 
   const { data: activeSessions } = await admin
@@ -188,27 +197,13 @@ Deno.serve(async (req) => {
       .order("code", { ascending: true });
     if (formsError || !formsData?.length) return json({ error: "diagnostic_forms_unavailable" }, 500);
 
-    const { data: priorDiagnosticSessions, error: historyError } = await admin
-      .from("learning_sessions")
-      .select("metadata, started_at")
-      .eq("student_id", studentId)
-      .eq("unit_code", UNIT_CODE)
-      .eq("mode", "diagnostic")
-      .neq("status", "active")
-      .order("started_at", { ascending: false })
-      .limit(20);
-    if (historyError) return json({ error: "diagnostic_history_failed" }, 500);
-
-    const priorFormCodes = (priorDiagnosticSessions ?? [])
-      .map((row) => typeof row.metadata?.formCode === "string" ? row.metadata.formCode : null)
-      .filter((value): value is string => Boolean(value));
-    const rotation = chooseRotatingDiagnosticForm(formsData, priorFormCodes);
-    if (!rotation) return json({ error: "diagnostic_form_selection_failed" }, 500);
+    const assignedForm = chooseInitialDiagnosticForm(formsData, studentId, UNIT_CODE);
+    if (!assignedForm) return json({ error: "diagnostic_form_selection_failed" }, 500);
 
     const { data: formMemberships, error: formItemsError } = await admin
       .from("assessment_form_items")
       .select("item_id, slot_order")
-      .eq("form_id", rotation.form.id)
+      .eq("form_id", assignedForm.id)
       .order("slot_order", { ascending: true });
     if (formItemsError || !formMemberships?.length) return json({ error: "diagnostic_form_empty" }, 409);
 
@@ -234,45 +229,27 @@ Deno.serve(async (req) => {
         selected.push({
           item_id: item.id,
           skill_id: skill.id,
-          selection_reason: `diagnostic_${rotation.reason}:${rotation.form.code}`,
+          selection_reason: `diagnostic_initial_assignment:${assignedForm.code}`,
         });
       }
     }
 
     const ordered = shuffle(selected);
-    const { data: session, error: sessionError } = await admin.from("learning_sessions").insert({
-      student_id: studentId,
-      curriculum_release_id: curriculumContext.releaseId,
-      assessment_blueprint_id: curriculumContext.blueprintId,
-      unit_code: UNIT_CODE,
-      mode: "diagnostic",
-      planned_item_count: ordered.length,
-      metadata: {
-        itemsPerSkill: DIAGNOSTIC_ITEMS_PER_SKILL,
-        noRepeats: true,
-        poolCode: CHAPTER_I_POOLS.diagnostic,
-        selectionPolicyVersion: "11B-v1",
-        formCode: rotation.form.code,
-        formVersion: Number(rotation.form.form_version),
-        formSelectionReason: rotation.reason,
-        priorFormCode: priorFormCodes[0] ?? null,
-        provisionalParallelism: true,
-      },
-    }).select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, metadata").single();
-    if (sessionError || !session) return json({ error: "session_create_failed" }, 500);
-
-    const rows = ordered.map((row, index) => ({
-      session_id: session.id,
-      ordinal: index + 1,
-      skill_id: row.skill_id,
-      item_id: row.item_id,
-      selection_reason: row.selection_reason,
-    }));
-    const { error: itemInsertError } = await admin.from("learning_session_items").insert(rows);
-    if (itemInsertError) {
-      await admin.from("learning_sessions").delete().eq("id", session.id);
-      return json({ error: "session_items_create_failed" }, 500);
-    }
+    const { data: diagnosticStart, error: sessionError } = await admin.rpc("start_initial_diagnostic_atomic", {
+      p_student_id: studentId,
+      p_unit_code: UNIT_CODE,
+      p_curriculum_release_id: curriculumContext.releaseId,
+      p_assessment_blueprint_id: curriculumContext.blueprintId,
+      p_form_id: assignedForm.id,
+      p_items: ordered,
+    });
+    if (sessionError || !diagnosticStart) return json({ error: "diagnostic_start_failed" }, 409);
+    if (diagnosticStart.diagnosticCompleted) return json(diagnosticStart);
+    if (diagnosticStart.activeSession) return json({ ...diagnosticStart,
+      error: "active_session_conflict", messageHy: "Նախ ավարտեք ընթացիկ սեսիան։",
+    }, 409);
+    const session = diagnosticStart.session;
+    if (!session) return json({ error: "session_create_failed" }, 500);
     await confirmRecommendationActionStarted({
       admin,
       studentId,
@@ -281,7 +258,7 @@ Deno.serve(async (req) => {
       mode: "diagnostic",
       targetSkillId: null,
     });
-    return json({ session, resumed: false, diagnosticForm: rotation.form.code });
+    return json({ session, resumed: diagnosticStart.resumed, diagnosticForm: session.metadata?.formCode });
   }
 
   if (body.mode === "chapter_review") {
@@ -711,3 +688,4 @@ Deno.serve(async (req) => {
     });
     return json({ session, resumed: false, targetSkill: { id: target.id, code: target.code, nameHy: target.name_hy } });
 });
+

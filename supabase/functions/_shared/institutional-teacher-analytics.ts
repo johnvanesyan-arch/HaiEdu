@@ -1,3 +1,4 @@
+import { firstCompletedDiagnostic } from "./initial-diagnostic.ts";
 import type { AuthorizedTeacherAcademicContext } from "./academic-context.ts";
 import { initialMasteryState, updateMastery } from "./mastery.ts";
 
@@ -185,7 +186,7 @@ export function buildExactInstitutionalStudentAnalytics(args: {
     return rank(a.band) - rank(b.band) || (a.percent ?? -1) - (b.percent ?? -1) || a.code.localeCompare(b.code);
   });
   const activeSession = studentSessions.find((row) => row.status === "active") ?? null;
-  const latestDiagnostic = studentSessions.find((row) => row.mode === "diagnostic" && row.status === "completed") ?? null;
+  const latestDiagnostic = firstCompletedDiagnostic(studentSessions);
   const masterySessions = studentSessions.filter((row) => row.mode === "mastery_check" && row.status === "completed");
   const latestMastery = masterySessions[0] ?? null;
   const passedMastery = masterySessions.find((row) => row.assessment_result === "passed") ?? null;
@@ -304,3 +305,4 @@ export async function loadExactInstitutionalClassAnalytics(
     })),
   };
 }
+

@@ -82,7 +82,7 @@ function renderSummary() {
 
   const diagnostic = dashboard?.latestDiagnostic;
   $("subjectDiagnostic").textContent = diagnostic ? `${diagnostic.correct}/${diagnostic.answered} · ${diagnostic.percent}%` : "Դեռ չկա";
-  $("subjectDiagnosticMeta").textContent = diagnostic ? "Գլուխ I-ի վերջին ախտորոշիչ" : "Սկսեք ախտորոշիչը Գլխավոր էջից";
+  $("subjectDiagnosticMeta").textContent = diagnostic ? "Գլուխ I-ի սկզբնական ախտորոշիչ" : "Սկսեք ախտորոշիչը Գլխավոր էջից";
 
   let assessmentTitle = "Դեռ փակ է";
   let assessmentMeta = masteryStatus?.messageHy ?? "Ամրապնդեք բոլոր հմտությունները։";
@@ -373,3 +373,4 @@ $("signOutBtn")?.addEventListener("click", async () => {
 });
 
 initialize();
+

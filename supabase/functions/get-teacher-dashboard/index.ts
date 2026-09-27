@@ -1,3 +1,4 @@
+import { loadInitialDiagnostics } from "../_shared/initial-diagnostic.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
@@ -141,6 +142,7 @@ Deno.serve(async (req) => {
       reviewSkillsByStudent.set(row.student_id, rows);
     }
 
+    const initialDiagnostics = await loadInitialDiagnostics(admin, studentIds, UNIT_CODE);
     const studentSummaries = studentIds.map((studentId) => {
       const profile: any = profileMap.get(studentId);
       const studentMastery = masteryRows.filter((m: any) => m.student_id === studentId);
@@ -151,7 +153,7 @@ Deno.serve(async (req) => {
       const recentCorrect = recentAttempts.filter((a: any) => a.correct === true).length;
       const activeSession = studentSessions.find((s: any) => s.status === "active") ?? null;
       const passedMastery = studentSessions.find((s: any) => s.mode === "mastery_check" && s.status === "completed" && s.assessment_result === "passed") ?? null;
-      const latestDiagnostic = studentSessions.find((s: any) => s.mode === "diagnostic" && s.status === "completed") ?? null;
+      const latestDiagnostic = initialDiagnostics.get(studentId) ?? null;
       const review: any = reviewSummaryByStudent.get(studentId) ?? null;
       const coverage: any = reviewCoverageByStudent.get(studentId) ?? null;
       const reviewSkills = (reviewSkillsByStudent.get(studentId) ?? []).sort((a, b) => a.skill_code.localeCompare(b.skill_code));
@@ -291,3 +293,4 @@ Deno.serve(async (req) => {
     return json({ error: "teacher_dashboard_failed", detail: err instanceof Error ? err.message : String(err) }, 500);
   }
 });
+

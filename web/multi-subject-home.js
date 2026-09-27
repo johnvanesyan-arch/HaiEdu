@@ -81,7 +81,7 @@ function assessmentText(physicsData, masteryData) {
   }
   if (masteryData?.unitComplete) return "Գլուխ I-ի յուրացումը հաստատված է";
   if (masteryData?.eligible) return "Յուրացման ստուգումը հասանելի է";
-  if (physicsData?.latestDiagnostic) return `Ախտորոշիչ՝ ${physicsData.latestDiagnostic.percent}%`;
+  if (physicsData?.latestDiagnostic) return `Սկզբնական ախտորոշիչ՝ ${physicsData.latestDiagnostic.percent}%`;
   return "Ախտորոշիչը դեռ չի ավարտվել";
 }
 
@@ -311,3 +311,4 @@ window.addEventListener("haiedu-courses-rendered", () => {
 
 const initial = window.HaiEduCourseAccess?.classes;
 if (Array.isArray(initial)) render(initial);
+

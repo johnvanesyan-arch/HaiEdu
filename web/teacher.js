@@ -1001,7 +1001,7 @@ async function openStudent(studentId) {
     : "Ֆիզիկա 7 · Գլուխ I";
   $("studentDrawerContent").innerHTML = `
     <section class="drawer-summary-grid">
-      <div class="mini-card"><span>Ախտորոշիչ</span><strong>${data.latestDiagnostic ? `${data.latestDiagnostic.percent}%` : "—"}</strong></div>
+      <div class="mini-card"><span>Սկզբնական ախտորոշիչ</span><strong>${data.latestDiagnostic ? `${data.latestDiagnostic.percent}%` : "—"}</strong></div>
       <div class="mini-card"><span>Վարժություն</span><strong>${modeSummary.practice?.completed ?? 0} ավարտված</strong></div>
       <div class="mini-card"><span>Գլխի կրկնություն</span><strong>${modeSummary.chapter_review?.completed ?? review?.totalReviewsCompleted ?? 0} ավարտված</strong></div>
       <div class="mini-card"><span>Յուրացման ստուգում</span><strong>${data.latestMasteryCheck ? `${escapeHtml(masteryResult ?? "—")} · ${data.latestMasteryCheck.percent}%` : "—"}</strong></div>
@@ -1277,3 +1277,4 @@ supabase.auth.onAuthStateChange((_event, session) => {
 
 const { data: sessionData } = await supabase.auth.getSession();
 if (sessionData.session) loadDashboard();
+
