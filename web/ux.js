@@ -80,12 +80,40 @@ function announce(text, error = false) {
   announce.timer = setTimeout(() => status.classList.add("hidden"), 5000);
 }
 
-async function handleTerminalAuthFailure() {
-  const { data: sessionData } = await uxSupabase.auth.getSession();
-  if (!sessionData.session) return false;
+function isTerminalAuthError(error) {
+  // A network failure, timeout, rate limit or unknown server error is not proof
+  // that a stored session is invalid. Keep authorization decisions on the server.
+  return new Set([
+    "user_not_found", "user_banned", "session_not_found", "session_expired",
+    "refresh_token_not_found", "refresh_token_already_used", "bad_jwt",
+  ]).has(error?.code);
+}
 
-  const { data: userData, error } = await uxSupabase.auth.getUser();
-  if (!error && userData.user) return false;
+async function handleTerminalAuthFailure() {
+  let session;
+  let error;
+  try {
+    const { data: sessionData } = await uxSupabase.auth.getSession();
+    session = sessionData?.session;
+    if (!session) return false;
+
+    const result = await uxSupabase.auth.getUser();
+    if (!result.error && result.data?.user) return false;
+    error = result.error;
+    if (!isTerminalAuthError(error)) {
+      announce("Մուտքի ստուգումը ժամանակավորապես անհասանելի է։ Ստուգեք կապը և թարմացրեք էջը։", true);
+      return false;
+    }
+
+    // A delayed failure for an older token must not erase a refreshed session
+    // or another account that signed in while this request was pending.
+    const { data: current } = await uxSupabase.auth.getSession();
+    if (!current?.session || current.session.user?.id !== session.user?.id
+      || current.session.access_token !== session.access_token) return false;
+  } catch {
+    announce("Մուտքի ստուգումը ժամանակավորապես անհասանելի է։ Ստուգեք կապը և թարմացրեք էջը։", true);
+    return false;
+  }
 
   try {
     await uxSupabase.auth.signOut({ scope: "local" });
@@ -95,7 +123,7 @@ async function handleTerminalAuthFailure() {
     } catch { /* best-effort local cleanup */ }
   }
 
-  sessionStorage.setItem(terminalAuthMessageKey, "Հաշիվը այլևս հասանելի չէ։ Եթե այն ջնջվել է, տվյալներն արդեն հեռացվել են։ Մուտք գործեք այլ հաշվով։");
+  sessionStorage.setItem(terminalAuthMessageKey, "Մուտքի աշխատաշրջանն այլևս վավեր չէ։ Կրկին մուտք գործեք։");
   if (!location.pathname.endsWith("/index.html") && location.pathname !== "/") {
     location.replace("./index.html");
   } else {
