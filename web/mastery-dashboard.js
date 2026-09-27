@@ -130,11 +130,22 @@ async function refresh() {
   ensureCard();
   const { data, error } = await supabase.functions.invoke("get-mastery-check-status", { body: {} });
   busy = false;
-  if (error) {
+  if (error || !data) {
+    lastStatus = null;
     const title = $("masteryCheckTitle");
     const text = $("masteryCheckText");
     if (title) title.textContent = "Mastery check-ի վիճակը չբեռնվեց";
-    if (text) text.textContent = error.message;
+    if (text) text.textContent = "Յուրացման ստուգման կարգավիճակը ժամանակավորապես հասանելի չէ։";
+    const btn = $("masteryCheckBtn");
+    if (btn) {
+      btn.disabled = false;
+      btn.textContent = "Կրկին ստուգել պատրաստվածությունը";
+    }
+    const resume = $("resumeLearningBtn");
+    if (resume) {
+      resume.dataset.masteryRoute = "false";
+      delete resume.dataset.masteryRemediationSkill;
+    }
     return;
   }
   render(data);
@@ -167,3 +178,4 @@ supabase.auth.onAuthStateChange((_event, session) => {
   if (session) setTimeout(refresh, 300);
 });
 setTimeout(refresh, 600);
+

@@ -86,7 +86,10 @@ function renderSummary() {
 
   let assessmentTitle = "Դեռ փակ է";
   let assessmentMeta = masteryStatus?.messageHy ?? "Ամրապնդեք բոլոր հմտությունները։";
-  if (masteryStatus?.unitComplete || masteryStatus?.lifecycleState === "mastery_passed") {
+  if (!masteryStatus) {
+    assessmentTitle = "Կարգավիճակը հասանելի չէ";
+    assessmentMeta = "Չհաջողվեց ստուգել պատրաստվածությունը։ Թարմացրեք էջը՝ կրկին փորձելու համար։";
+  } else if (masteryStatus?.unitComplete || masteryStatus?.lifecycleState === "mastery_passed") {
     assessmentTitle = "Գլխի յուրացումը հաստատված է";
     assessmentMeta = `Անցած է${masteryStatus.passedOnAttempt ? ` · փորձ ${masteryStatus.passedOnAttempt}/3` : ""}${masteryStatus.latestCheck?.percent != null ? ` · ${masteryStatus.latestCheck.percent}%` : ""}։ Գլխի կրկնությունը լրացուցիչ է։`;
   } else if (masteryStatus?.finalFailure || masteryStatus?.lifecycleState === "mastery_failed_final") {
@@ -110,7 +113,10 @@ function renderSummary() {
   reviewLink.textContent = masteryStatus?.retryBlocked ? "Անցնել Գլխի կրկնություն" : "Կրկնել գլուխը";
 
   const chapterBadge = $("chapterStateBadge");
-  if (masteryStatus?.unitComplete || masteryStatus?.lifecycleState === "mastery_passed") {
+  if (!masteryStatus) {
+    chapterBadge.textContent = "Կարգավիճակը հասանելի չէ";
+    chapterBadge.className = "status-badge warning";
+  } else if (masteryStatus?.unitComplete || masteryStatus?.lifecycleState === "mastery_passed") {
     chapterBadge.textContent = "Հաստատված";
     chapterBadge.className = "status-badge success";
   } else if (masteryStatus?.finalFailure || masteryStatus?.lifecycleState === "mastery_failed_final") {
@@ -328,7 +334,7 @@ async function loadSubject() {
     return;
   }
   dashboard = dash;
-  masteryStatus = statusError ? null : { ...status, ...(lifecycle ?? {}) };
+  masteryStatus = statusError || !status ? null : { ...status, ...(lifecycle ?? {}) };
   if (statusError) setMessage("Յուրացման ստուգման կարգավիճակը ժամանակավորապես չբեռնվեց։", true);
   else if (lifecycleError) setMessage("Յուրացման փորձերի վիճակը ժամանակավորապես չբեռնվեց։", true);
 
@@ -374,3 +380,4 @@ $("signOutBtn")?.addEventListener("click", async () => {
 });
 
 initialize();
+

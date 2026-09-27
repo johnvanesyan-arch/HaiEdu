@@ -76,6 +76,11 @@ function ensureRoot() {
 }
 
 function assessmentText(physicsData, masteryData) {
+  if (!masteryData) {
+    const diagnostic = physicsData?.latestDiagnostic;
+    return `${diagnostic ? `Սկզբնական ախտորոշիչ՝ ${diagnostic.percent}% · ` : ""}Յուրացման կարգավիճակը հասանելի չէ`;
+  }
+  if (!physicsData) return "Գնահատման տվյալները ժամանակավորապես հասանելի չեն";
   if (masteryData?.activeSession?.mode === "mastery_check") {
     return `Յուրացման ստուգում՝ ${masteryData.activeSession.answered_count ?? 0}/${masteryData.activeSession.planned_item_count ?? 20}`;
   }
@@ -311,4 +316,5 @@ window.addEventListener("haiedu-courses-rendered", () => {
 
 const initial = window.HaiEduCourseAccess?.classes;
 if (Array.isArray(initial)) render(initial);
+
 
