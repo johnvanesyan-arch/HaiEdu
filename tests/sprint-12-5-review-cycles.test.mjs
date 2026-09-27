@@ -30,7 +30,8 @@ test("Review evidence resolves canonical response and assistance facts", () => {
 
 test("selection is deterministic, whole-chapter, weighted, and cycle-aware", () => {
   assert.match(start, /stableRank/);
-  assert.match(start, /12\.5E-F-v1/);
+  assert.match(start, /REVIEW_SELECTION_POLICY_VERSION/);
+  assert.match(start, /selectReviewCoverageFirst/);
   assert.match(start, /review_failed_skill_weight_whole_chapter/);
   assert.match(start, /review_weak_independent_whole_chapter/);
   assert.match(start, /review_whole_chapter_coverage/);

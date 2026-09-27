@@ -1391,3 +1391,44 @@ No curriculum content, item-selection rule, score calculation, mastery threshold
 ### Remaining closure gate
 
 A fresh post-activation browser session should still be used to confirm the presentation behavior visually: a question remains in the same order after refresh/resume, and a later new exposure of the same item can render in a different order while grading remains correct. This is assessment-integrity browser verification, alongside the already-open authenticated mobile-width learner/teacher rendering gate. Sprint 13 remains on hold until Sprint 12.5 closure criteria are satisfied.
+
+
+## Answered-first Review coverage — 2026-09-27
+
+**Status: prepared in PR #43; not merged or deployed.**
+
+Product scope: defer targeted skill retention review and automatic review scheduling. Improve the existing Chapter Review rotation only, without new dashboard pages or a new review mode.
+
+The previous selector forced a question from every skill into each session. A skill could repeat after its own pool was exhausted while questions elsewhere remained uncovered. Coverage also counted every question assigned to a session, including unanswered questions in abandoned sessions.
+
+### Coverage definition
+
+A question is covered when it has at least one canonical graded answer in the learner's current Review cycle. Correct, incorrect and assisted answers all count; merely allocating or displaying a question does not. A timestamp without the linked learner/session/item attempt is insufficient.
+
+The new policy `review-answered-coverage-v2`:
+
+- selects questions not yet answered in the current cycle before answered questions;
+- represents skills with unanswered questions before filling additional slots;
+- applies existing failed/weak-skill weighting only within the unanswered set;
+- if fewer unanswered questions remain than the configured session length, places **all** remaining unanswered questions before least-recent repeat fill;
+- preserves deterministic presentation, within-session unique question IDs and the existing Review length/retry requirements;
+- resumes active sessions with their existing question order;
+- allows unanswered reservations from abandoned sessions to be selected again;
+- rolls a cycle over only after every eligible question has a canonical answer;
+- refuses an unexpected pool-size change instead of falsely marking the old cycle complete.
+
+Whole-chapter coverage is a cycle property; each session need not contain an already-covered skill. The question universe is the authorized release/blueprint's eligible Chapter Review pool, excluding protected Mastery questions and other chapters.
+
+### Database and reporting
+
+Migration `20260927094337_chapter_review_answered_coverage.sql` adds service-only, security-invoker answered-coverage views and a nullable selection-time `answered_in_current_cycle` field. Existing `seen_in_current_cycle`, `exact_repeat` and exposure counts retain their allocation-history meaning. Legacy rows keep NULL for the new flag; no historical answers, exposure records or completed cycles are rewritten.
+
+The locked start procedure recomputes answered coverage and validates question eligibility, order, cycle/session context, and the unanswered-before-repeat rule. It derives repeat eligibility itself instead of trusting caller `pool_exhausted` flags. Previously assigned but unanswered questions can return without pretending their pool is exhausted. The completion trigger and current-cycle coverage/teacher summary views now count canonical answers. Existing `*_seen` current-cycle API names remain compatible; lifetime exposure counters retain their documented allocation meaning.
+
+The selector reads a single aggregated row for the cycle, avoiding Data API row-limit truncation. Already-active sessions are not rebuilt; the stronger selection guarantee applies to newly composed sessions. Existing completed cycles remain historical records under the earlier rule.
+
+### Verification and release
+
+Executable tests run the real old/new Review migrations and procedures in isolated PGlite/Postgres fixtures. They cover zero credit for allocation, resumption, wrong-answer coverage, abandoned-session recovery, cycle completion, boundary ordering, spoofed exhaustion flags, missing/mismatched answer evidence, pool changes, stale selectors, required Review length and service-only access. Selector and existing Review-cycle contract tests are retained. PGlite is a pinned development-only dependency.
+
+Deployment requires the database migration followed by the updated `start-learning-session` function and shared selector, with runtime provenance stamped for the release. The database deliberately rejects the old selection policy for new sessions after migration; active sessions can still resume. Coordinate these release steps, then perform authenticated learner verification. No live migration or function deployment is claimed by this PR checkpoint. Sprint 14's existing open gates remain unchanged.

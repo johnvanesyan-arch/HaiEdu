@@ -1,3 +1,4 @@
+import { REVIEW_SELECTION_POLICY_VERSION, selectReviewCoverageFirst } from "../_shared/chapter-review-selection.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
@@ -331,20 +332,24 @@ Deno.serve(async (req) => {
       .order("cycle_number", { ascending: false });
     if (cyclesError) return json({ error: "chapter_review_cycle_history_failed" }, 500);
     const activeCycle = (cycles ?? []).find((cycle) => cycle.status === "active") ?? null;
-    const { data: activeCycleExposures, error: cycleExposureError } = activeCycle
-      ? await admin.from("chapter_review_item_exposures")
-        .select("item_id, skill_id")
+    const { data: activeCycleAnswers, error: cycleAnswersError } = activeCycle
+      ? await admin.from("chapter_review_answered_totals_v")
+        .select("answered_item_ids")
         .eq("review_cycle_id", activeCycle.id)
-      : { data: [], error: null };
-    if (cycleExposureError) return json({ error: "chapter_review_cycle_exposure_failed" }, 500);
+        .maybeSingle()
+      : { data: null, error: null };
+    if (cycleAnswersError) return json({ error: "chapter_review_cycle_answers_failed" }, 500);
 
     const poolSize = reviewItems.length;
-    const activeSeen = new Set((activeCycleExposures ?? []).map((row) => String(row.item_id)));
-    const rotateCycle = Boolean(activeCycle && activeSeen.size >= poolSize);
+    if (activeCycle && Number(activeCycle.eligible_pool_size) !== poolSize) {
+      return json({ error: "chapter_review_pool_changed" }, 409);
+    }
+    const activeAnswered = new Set<string>((activeCycleAnswers?.answered_item_ids ?? []).map(String));
+    const rotateCycle = Boolean(activeCycle && activeAnswered.size >= poolSize);
     const cycleNumber = rotateCycle || !activeCycle
       ? Number(cycles?.[0]?.cycle_number ?? 0) + 1
       : Number(activeCycle.cycle_number);
-    const cycleSeen = rotateCycle ? new Set<string>() : activeSeen;
+    const cycleAnswered = rotateCycle ? new Set<string>() : activeAnswered;
     const cycleId = rotateCycle ? null : activeCycle?.id ?? null;
     const { data: priorCycleSessions, error: cycleSessionsError } = cycleId
       ? await admin.from("chapter_review_sessions")
@@ -395,8 +400,8 @@ Deno.serve(async (req) => {
       .map((row) => row.skillId);
     const weakRank = new Map(weakSkillIds.map((skillId, index) => [skillId, index]));
     const candidateOrder = (a: typeof reviewItems[number], b: typeof reviewItems[number]) => {
-      const unseenDelta = Number(cycleSeen.has(String(a.item_id))) - Number(cycleSeen.has(String(b.item_id)));
-      if (unseenDelta) return unseenDelta;
+      const answeredDelta = Number(cycleAnswered.has(String(a.item_id))) - Number(cycleAnswered.has(String(b.item_id)));
+      if (answeredDelta) return answeredDelta;
       const lastDelta = (lastSeen.get(String(a.item_id)) ?? -1) - (lastSeen.get(String(b.item_id)) ?? -1);
       if (lastDelta) return lastDelta;
       const templateDelta = (templateCounts.get(String(a.item_template_id ?? "")) ?? 0) - (templateCounts.get(String(b.item_template_id ?? "")) ?? 0);
@@ -406,55 +411,39 @@ Deno.serve(async (req) => {
       const exposureDelta = (exposureCounts.get(String(a.item_id)) ?? 0) - (exposureCounts.get(String(b.item_id)) ?? 0);
       return exposureDelta || String(a.item_code).localeCompare(String(b.item_code));
     };
-    const orderedPool = [...reviewItems].sort((a, b) => {
-      const unseenDelta = Number(cycleSeen.has(String(a.item_id))) - Number(cycleSeen.has(String(b.item_id)));
-      if (unseenDelta) return unseenDelta;
+    const priorityOrder = (a: typeof reviewItems[number], b: typeof reviewItems[number]) => {
       const failedDelta = Number(failedSkills.has(String(b.skill_id))) - Number(failedSkills.has(String(a.skill_id)));
       if (failedDelta) return failedDelta;
       const weakDelta = (weakRank.get(String(a.skill_id)) ?? Number.MAX_SAFE_INTEGER) -
         (weakRank.get(String(b.skill_id)) ?? Number.MAX_SAFE_INTEGER);
       return weakDelta || candidateOrder(a, b);
-    });
+    };
 
-    const selected: Array<{ item_id: string; skill_id: string; selection_reason: string; pool_exhausted: boolean }> = [];
-    const selectedIds = new Set<string>();
-    for (const skill of skills) {
-      const skillPool = reviewItems.filter((candidate) => candidate.skill_id === skill.id).sort(candidateOrder);
-      const item = skillPool.find((candidate) => !selectedIds.has(String(candidate.item_id)));
-      if (!item) continue;
-      const exhausted = cycleSeen.has(String(item.item_id)) && skillPool.every((candidate) => cycleSeen.has(String(candidate.item_id)));
-      selected.push({
-        item_id: item.item_id,
-        skill_id: item.skill_id,
-        selection_reason: failedSkills.has(item.skill_id)
-          ? "review_failed_skill_weight_whole_chapter"
-          : weakRank.has(String(item.skill_id)) ? "review_weak_independent_whole_chapter" : "review_whole_chapter_coverage",
-        pool_exhausted: exhausted,
-      });
-      selectedIds.add(String(item.item_id));
-    }
-    for (const item of orderedPool) {
-      if (selected.length >= targetCount) break;
-      if (selectedIds.has(String(item.item_id))) continue;
-      const skillPool = reviewItems.filter((candidate) => candidate.skill_id === item.skill_id);
-      const exhausted = cycleSeen.has(String(item.item_id)) && skillPool.every((candidate) => cycleSeen.has(String(candidate.item_id)));
-      selected.push({
-        item_id: item.item_id,
-        skill_id: item.skill_id,
-        selection_reason: failedSkills.has(item.skill_id)
-          ? "review_failed_skill_extra"
-          : weakRank.has(String(item.skill_id)) ? "review_weak_independent_extra" : "review_least_recent_diverse_fill",
-        pool_exhausted: exhausted,
-      });
-      selectedIds.add(String(item.item_id));
-    }
-    if (selected.length < Math.min(targetCount, reviewItems.length)) {
+    const selectionSeed = `${lifecycle.id}|${cycleNumber}|${sessionNumber}|${REVIEW_SELECTION_POLICY_VERSION}`;
+    const selection = selectReviewCoverageFirst({
+      items: reviewItems,
+      skillIds: skills.map((skill) => String(skill.id)),
+      answeredInCycle: cycleAnswered,
+      targetCount,
+      candidateOrder,
+      priorityOrder,
+      presentationOrder: (a, b) => stableRank(selectionSeed, a.item_id) - stableRank(selectionSeed, b.item_id) ||
+        a.item_id.localeCompare(b.item_id),
+    });
+    if (selection.length < Math.min(targetCount, reviewItems.length)) {
       return json({ error: "insufficient_chapter_review_items" }, 409);
     }
-
-    const selectionSeed = `${lifecycle.id}|${cycleNumber}|${sessionNumber}|12.5E-F-v1`;
-    const ordered = selected.slice(0, Math.min(targetCount, selected.length))
-      .sort((a, b) => stableRank(selectionSeed, a.item_id) - stableRank(selectionSeed, b.item_id) || a.item_id.localeCompare(b.item_id));
+    const ordered = selection.map(({ item, coverageSlot, repeated }) => ({
+      item_id: item.item_id,
+      skill_id: item.skill_id,
+      selection_reason: repeated ? "review_cycle_covered_repeat_fill"
+        : coverageSlot ? (failedSkills.has(item.skill_id)
+          ? "review_failed_skill_weight_whole_chapter"
+          : weakRank.has(String(item.skill_id)) ? "review_weak_independent_whole_chapter" : "review_whole_chapter_coverage")
+        : failedSkills.has(item.skill_id) ? "review_failed_skill_extra"
+          : weakRank.has(String(item.skill_id)) ? "review_weak_independent_extra" : "review_least_recent_diverse_fill",
+      pool_exhausted: repeated,
+    }));
     const atomicItems = ordered.map((row, index) => ({
       ordinal: index + 1,
       skill_id: row.skill_id,
@@ -471,7 +460,10 @@ Deno.serve(async (req) => {
         bounded: true,
         wholeChapter: true,
         hintingEnabled: true,
-        selectionPolicyVersion: "12.5E-F-v1",
+        selectionPolicyVersion: REVIEW_SELECTION_POLICY_VERSION,
+        coverageScope: "whole_review_cycle",
+        coverageBasis: "answered_once",
+        remainingUnansweredBeforeSession: reviewItems.filter((item) => !cycleAnswered.has(String(item.item_id))).length,
         failedSkillIds,
         weakSkillIds,
         deterministicSeed: selectionSeed,
