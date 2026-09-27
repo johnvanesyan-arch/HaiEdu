@@ -99,7 +99,10 @@ function renderSummary() {
   }
 
   const latestCheck = masteryStatus?.latestCheck;
-  if (masteryStatus?.unitComplete) {
+  if (!masteryStatus) {
+    $("masterySummary").textContent = "Կարգավիճակը հասանելի չէ";
+    $("masterySummaryMeta").textContent = "Չհաջողվեց ստուգել յուրացման կարգավիճակը։ Թարմացրեք էջի տվյալները՝ կրկին փորձելու համար։";
+  } else if (masteryStatus?.unitComplete) {
     $("masterySummary").textContent = "Հաստատված";
     $("masterySummaryMeta").textContent = latestCheck?.percent != null
       ? `Վերջին անկախ ստուգում՝ ${latestCheck.correct}/${latestCheck.answered} · ${latestCheck.percent}%`
@@ -307,4 +310,5 @@ $("progressNextAction")?.addEventListener("click", async (event) => {
   window.location.assign(href);
 });
 initialize();
+
 

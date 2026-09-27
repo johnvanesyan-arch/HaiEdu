@@ -81,7 +81,17 @@ function renderDiagnostic(dashboard, mastery) {
 
 function renderMastery(mastery) {
   const action = $("masteryAction");
-  const latest = mastery?.latestCheck;
+  if (!mastery) {
+    setBadge("masteryStatus", "Կարգավիճակը հասանելի չէ", "warning");
+    $("masterySummary").textContent = "Չհաջողվեց ստուգել պատրաստվածությունը։ Կրկին փորձեք։";
+    action.textContent = "Կրկին փորձել";
+    action.href = "./assessment.html";
+    $("masteryMeta").textContent = "Փորձերի տվյալները չեն բեռնվել։";
+    $("latestMasteryScore").textContent = "—";
+    $("latestMasteryDate").textContent = "Արդյունքի տվյալները ժամանակավորապես հասանելի չեն։";
+    return;
+  }
+  const latest = mastery.latestCheck;
 
   if (mastery?.unitComplete) {
     setBadge("masteryStatus", "Հաստատված", "success");
@@ -136,4 +146,5 @@ async function initialize() {
 }
 
 initialize();
+
 
