@@ -4,9 +4,9 @@ import { readFile } from "node:fs/promises";
 
 const read = (path) => readFile(new URL(`../${path}`, import.meta.url), "utf8");
 
-test("start-learning-session preserves an active different-mode session", async () => {
+test("start-learning-session preserves conflicting sessions except locked pre-diagnostic practice", async () => {
   const code = await read("supabase/functions/start-learning-session/index.ts");
-  const activeGateStart = code.indexOf("const active = activeSessions?.[0]");
+  const activeGateStart = code.indexOf("const active = activeSessions?.find");
   const skillsStart = code.indexOf("const { data: skills", activeGateStart);
   assert.ok(activeGateStart >= 0 && skillsStart > activeGateStart);
 
