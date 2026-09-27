@@ -332,20 +332,24 @@ Deno.serve(async (req) => {
       .order("cycle_number", { ascending: false });
     if (cyclesError) return json({ error: "chapter_review_cycle_history_failed" }, 500);
     const activeCycle = (cycles ?? []).find((cycle) => cycle.status === "active") ?? null;
-    const { data: activeCycleExposures, error: cycleExposureError } = activeCycle
-      ? await admin.from("chapter_review_item_exposures")
-        .select("item_id, skill_id")
+    const { data: activeCycleAnswers, error: cycleAnswersError } = activeCycle
+      ? await admin.from("chapter_review_answered_totals_v")
+        .select("answered_item_ids")
         .eq("review_cycle_id", activeCycle.id)
-      : { data: [], error: null };
-    if (cycleExposureError) return json({ error: "chapter_review_cycle_exposure_failed" }, 500);
+        .maybeSingle()
+      : { data: null, error: null };
+    if (cycleAnswersError) return json({ error: "chapter_review_cycle_answers_failed" }, 500);
 
     const poolSize = reviewItems.length;
-    const activeSeen = new Set((activeCycleExposures ?? []).map((row) => String(row.item_id)));
-    const rotateCycle = Boolean(activeCycle && activeSeen.size >= poolSize);
+    if (activeCycle && Number(activeCycle.eligible_pool_size) !== poolSize) {
+      return json({ error: "chapter_review_pool_changed" }, 409);
+    }
+    const activeAnswered = new Set<string>((activeCycleAnswers?.answered_item_ids ?? []).map(String));
+    const rotateCycle = Boolean(activeCycle && activeAnswered.size >= poolSize);
     const cycleNumber = rotateCycle || !activeCycle
       ? Number(cycles?.[0]?.cycle_number ?? 0) + 1
       : Number(activeCycle.cycle_number);
-    const cycleSeen = rotateCycle ? new Set<string>() : activeSeen;
+    const cycleAnswered = rotateCycle ? new Set<string>() : activeAnswered;
     const cycleId = rotateCycle ? null : activeCycle?.id ?? null;
     const { data: priorCycleSessions, error: cycleSessionsError } = cycleId
       ? await admin.from("chapter_review_sessions")
@@ -396,8 +400,8 @@ Deno.serve(async (req) => {
       .map((row) => row.skillId);
     const weakRank = new Map(weakSkillIds.map((skillId, index) => [skillId, index]));
     const candidateOrder = (a: typeof reviewItems[number], b: typeof reviewItems[number]) => {
-      const unseenDelta = Number(cycleSeen.has(String(a.item_id))) - Number(cycleSeen.has(String(b.item_id)));
-      if (unseenDelta) return unseenDelta;
+      const answeredDelta = Number(cycleAnswered.has(String(a.item_id))) - Number(cycleAnswered.has(String(b.item_id)));
+      if (answeredDelta) return answeredDelta;
       const lastDelta = (lastSeen.get(String(a.item_id)) ?? -1) - (lastSeen.get(String(b.item_id)) ?? -1);
       if (lastDelta) return lastDelta;
       const templateDelta = (templateCounts.get(String(a.item_template_id ?? "")) ?? 0) - (templateCounts.get(String(b.item_template_id ?? "")) ?? 0);
@@ -419,7 +423,7 @@ Deno.serve(async (req) => {
     const selection = selectReviewCoverageFirst({
       items: reviewItems,
       skillIds: skills.map((skill) => String(skill.id)),
-      seenInCycle: cycleSeen,
+      answeredInCycle: cycleAnswered,
       targetCount,
       candidateOrder,
       priorityOrder,
@@ -458,7 +462,8 @@ Deno.serve(async (req) => {
         hintingEnabled: true,
         selectionPolicyVersion: REVIEW_SELECTION_POLICY_VERSION,
         coverageScope: "whole_review_cycle",
-        remainingUnseenBeforeSession: reviewItems.filter((item) => !cycleSeen.has(String(item.item_id))).length,
+        coverageBasis: "answered_once",
+        remainingUnansweredBeforeSession: reviewItems.filter((item) => !cycleAnswered.has(String(item.item_id))).length,
         failedSkillIds,
         weakSkillIds,
         deterministicSeed: selectionSeed,
