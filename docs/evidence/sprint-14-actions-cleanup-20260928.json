@@ -1,0 +1,16 @@
+{
+  "workflowRun": 36354453046,
+  "checkedAt": "2026-09-27T22:20:48.931Z",
+  "method": "Read-only production database verification after both guest offboardings",
+  "results": {
+    "qa_classes": 4,
+    "archived_qa_classes": 4,
+    "ended_guest_memberships": 2,
+    "ended_guest_assignments": 2,
+    "remaining_guest_subject_grants": 0,
+    "revoked_join_codes": 2,
+    "revoked_invitations": 2,
+    "qa_enrolments": 0,
+    "original_teacher_memberships_active": 2
+  }
+}

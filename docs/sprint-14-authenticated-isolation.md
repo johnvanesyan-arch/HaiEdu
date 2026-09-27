@@ -12,7 +12,7 @@ Status (2026-09-28): authenticated production read-isolation passed 54/54 checks
 - All six newly created QA sessions were signed out locally (HTTP 204).
 - No provisioning, invitation, rename, offboarding, learner session, answer, exposure or release mutation was performed by the runner.
 
-This closes the **authenticated two-school read-isolation subgate** for the tested school/class contexts. The checks use generic context IDs and apply the shared authorization contracts; the current live fixtures exercise Physics 7 Chapter I, not every future subject/grade release. Authenticated mutation denials, teacher navigation/rename/offboarding action QA, second-authorized-context switching, 14D and final readiness remain open. The report correctly retains `sprint14GateClosed: false`.
+This closes the **authenticated two-school read-isolation subgate** for the tested school/class contexts. The checks use generic context IDs and apply the shared authorization contracts; the current live fixtures exercise Physics 7 Chapter I, not every future subject/grade release. Authenticated class/staff mutation denials and teacher navigation/rename/offboarding action QA subsequently passed in the [141-check action acceptance run](sprint-14-authenticated-actions.md), with this 54-check suite passing before and after. Second-authorized-context switching, 14D and final readiness remain open. The report correctly retains `sprint14GateClosed: false`.
 
 
 
@@ -74,3 +74,4 @@ Even a passing read-isolation run does not by itself close all Sprint 14 accepta
 - final readiness reconciliation.
 
 No learner evidence, learning criteria, curriculum release or application runtime is changed by this tooling checkpoint.
+
