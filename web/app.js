@@ -145,12 +145,15 @@ function renderDashboard(data) {
     $("recommendationText").textContent = `${active.answered} / ${active.planned} հարց արդեն պատասխանված է։`;
   }
 
-  if (skill) {
+  if (!diagnostic) {
+    $("practiceCardText").textContent = "Նախ ավարտեք գլխի սկզբնական ախտորոշիչը։ Ցանկացած արդյունք բացում է վարժանքները։";
+  } else if (skill) {
     $("practiceCardText").textContent = `Առաջարկվող մեկնարկ՝ ${skill.code} — ${skill.nameHy}`;
   } else {
     $("practiceCardText").textContent = "Սկսեք սահմանափակ adaptive practice սեսիա։";
   }
 
+  $("startPracticeBtn").textContent = diagnostic ? "Սկսել վարժանքը" : "Նախ ավարտեք ախտորոշիչը";
   $("startDiagnosticBtn").textContent = diagnostic ? "Դիտել սկզբնական արդյունքը" : "Սկսել ախտորոշիչը";
   renderSkillMap(data.skills ?? [], skill?.id ?? null);
 }
@@ -220,6 +223,10 @@ async function resumeSession(session) {
 }
 
 async function startSession(mode, targetSkillId = null) {
+  if (["practice", "chapter_review"].includes(mode) && !dashboardData?.latestDiagnostic) {
+    window.location.href = "./diagnostic.html";
+    return;
+  }
   if (mode === "diagnostic") return window.location.assign("./diagnostic.html");
   setModeMessage(mode === "diagnostic" ? "Ախտորոշիչը պատրաստվում է…" : "Վարժանքը պատրաստվում է…");
   $("startDiagnosticBtn").disabled = true;
@@ -598,4 +605,3 @@ supabase.auth.onAuthStateChange((_event, session) => {
 const { data: sessionData } = await supabase.auth.getSession();
 const route = await roleRoutingReady;
 if (!route.redirected && !route.blocked) setAuthenticated(Boolean(sessionData.session));
-

@@ -1,3 +1,4 @@
+import { getPracticeDiagnosticBlock } from "../_shared/practice-diagnostic-gate.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
@@ -64,7 +65,7 @@ Deno.serve(async (req) => {
   if (body.sessionId) {
     const { data } = await admin
       .from("learning_sessions")
-      .select("id, student_id, mode, status")
+      .select("id, student_id, unit_code, mode, status")
       .eq("id", body.sessionId)
       .eq("student_id", studentId)
       .single();
@@ -72,7 +73,7 @@ Deno.serve(async (req) => {
   } else {
     const { data: rows } = await admin
       .from("learning_sessions")
-      .select("id, student_id, mode, status, started_at")
+      .select("id, student_id, unit_code, mode, status, started_at")
       .eq("student_id", studentId)
       .in("mode", ["practice", "chapter_review"])
       .eq("status", "active")
@@ -84,6 +85,9 @@ Deno.serve(async (req) => {
   if (!session) return json({ error: "session_not_found" }, 404);
   if (session.status !== "active") return json({ error: "session_not_active" }, 409);
   if (!["practice", "chapter_review"].includes(session.mode)) return json({ error: "help_not_available_in_assessment" }, 409);
+
+  const practiceBlock = await getPracticeDiagnosticBlock(admin, studentId, session.unit_code, session.mode);
+  if (practiceBlock) return json(practiceBlock.body, practiceBlock.status);
 
   let sessionItem: any = null;
   if (body.sessionItemId) {
@@ -236,4 +240,3 @@ Deno.serve(async (req) => {
       : "Օգնության օգտագործումը գրանցվում է, և յուրացումը հետագայում պետք է հաստատվի նաև ինքնուրույն պատասխաններով։",
   });
 });
-

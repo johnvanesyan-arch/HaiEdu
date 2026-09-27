@@ -1,3 +1,4 @@
+import { getPracticeDiagnosticBlock } from "../_shared/practice-diagnostic-gate.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
@@ -206,6 +207,9 @@ Deno.serve(async (req) => {
       .eq("student_id", studentId)
       .single();
     if (sessionError || !session) return json({ error: "session_not_found" }, 404);
+
+    const practiceBlock = await getPracticeDiagnosticBlock(admin, studentId, session.unit_code, session.mode);
+    if (practiceBlock) return json(practiceBlock.body, practiceBlock.status);
 
     if (session.status !== "active") return json(await completeSession(admin, session, session.metadata?.completionReason ?? "completed"));
 

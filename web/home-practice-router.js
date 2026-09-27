@@ -47,6 +47,7 @@ async function loadDashboard() {
 }
 
 function practiceHref(data) {
+  if (!data?.latestDiagnostic) return "./diagnostic.html";
   const active = data?.activeSession;
   if (active?.mode === "practice") return "./practice.html";
   if (data?.recommendation?.action === "practice_skill" && data.recommendation.skill?.id) {

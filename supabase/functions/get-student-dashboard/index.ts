@@ -103,7 +103,7 @@ Deno.serve(async (req) => {
   ] = await Promise.all([
     admin.from("student_skill_mastery_by_release").select("skill_id, mastery_score, evidence_count, status").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds),
     admin.from("attempts").select("skill_id, item_id, correct, hint_used, created_at").eq("curriculum_release_id", curriculumReleaseId).eq("student_id", studentId).in("skill_id", skillIds).order("created_at", { ascending: false }).limit(500),
-    admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }).limit(1),
+    admin.from("learning_sessions").select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("status", "active").order("started_at", { ascending: false }),
     admin.from("learning_sessions").select("id, mode, status, planned_item_count, answered_count, correct_count, completed_at, started_at").eq("student_id", studentId).eq("unit_code", UNIT_CODE).eq("mode", "diagnostic").eq("status", "completed").order("completed_at", { ascending: true }).order("id", { ascending: true }).limit(1),
     admin.from("skill_prerequisites").select("skill_id, prerequisite_skill_id").in("skill_id", skillIds),
     admin.from("chapter_mastery_states").select("lifecycle_state, attempts_used, passed_on_attempt").eq("student_id", studentId).eq("curriculum_release_id", curriculumReleaseId).eq("unit_code", UNIT_CODE).limit(1),
@@ -189,17 +189,17 @@ Deno.serve(async (req) => {
   };
 
   const recommended = baseRecommendation ? resolvePrerequisite(baseRecommendation) : null;
-  const active = activeRows?.[0] ?? null;
+  const active = activeRows?.find((row) => latestDiagnostic || !["practice", "chapter_review"].includes(row.mode)) ?? null;
   const activeTarget = active?.target_skill_id ? skillMap.find((s) => s.id === active.target_skill_id) : null;
   const completedSkills = skillMap.filter((s) => s.complete).length;
 
   let recommendedAction: "resume_session" | "take_diagnostic" | "practice_skill" | "unit_complete" | "required_chapter_review" | "mastery_check_retry" | "review_chapter";
   if (active) recommendedAction = "resume_session";
+  else if (!latestDiagnostic) recommendedAction = "take_diagnostic";
   else if (chapterMastery?.lifecycle_state === "review_required_attempt_2" || chapterMastery?.lifecycle_state === "review_required_attempt_3") recommendedAction = "required_chapter_review";
   else if (chapterMastery?.lifecycle_state === "mastery_retry_2_ready" || chapterMastery?.lifecycle_state === "mastery_retry_3_ready") recommendedAction = "mastery_check_retry";
   else if (chapterMastery?.lifecycle_state === "mastery_failed_final") recommendedAction = "review_chapter";
   else if (chapterMastery?.lifecycle_state === "mastery_passed") recommendedAction = "unit_complete";
-  else if (!latestDiagnostic) recommendedAction = "take_diagnostic";
   else if (recommended) recommendedAction = "practice_skill";
   else recommendedAction = "unit_complete";
 
@@ -264,6 +264,7 @@ Deno.serve(async (req) => {
     unitCode: UNIT_CODE,
     curriculumReleaseId,
     courseKey: "physics:7",
+    practiceAccess: { unlocked: Boolean(latestDiagnostic), reason: latestDiagnostic ? null : "chapter_diagnostic_required", unitCode: UNIT_CODE },
     activeSession: active ? {
       id: active.id,
       mode: active.mode,
@@ -295,8 +296,7 @@ Deno.serve(async (req) => {
       policyScope: "dashboard_orchestration",
       modelConfigurationId: learningModel.id,
       modelProvenanceStatus: learningModel.provenanceStatus,
-      secondaryAction: chapterMastery?.lifecycle_state === "mastery_passed" ? "review_chapter" : null,
+      secondaryAction: latestDiagnostic && chapterMastery?.lifecycle_state === "mastery_passed" ? "review_chapter" : null,
     },
   });
 });
-
