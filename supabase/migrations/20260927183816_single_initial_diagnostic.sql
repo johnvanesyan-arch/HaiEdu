@@ -22,6 +22,7 @@ begin
     end if;
   end if;
   if new.mode = 'diagnostic' and new.status in ('active', 'completed') then
+    perform pg_advisory_xact_lock(hashtextextended('initial-diagnostic:' || new.student_id::text || ':' || new.unit_code, 0));
     if exists (select 1 from public.learning_sessions s
       where s.student_id = new.student_id and s.unit_code = new.unit_code
         and s.mode = 'diagnostic' and s.status = 'completed' and s.id <> new.id) then
