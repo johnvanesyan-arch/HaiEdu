@@ -83,8 +83,8 @@ function renderDesktop(courses) {
 
     if (active && key === "physics:7") {
       items.push(`<div class="amp-course-sublinks" aria-label="Ֆիզիկա 7 բաժիններ">
-        <a class="amp-course-sublink" href="./physics-7.html"${page === "physics" ? ' aria-current="page"' : ""}>Դասընթաց</a>
         <a class="amp-course-sublink" href="./assessment.html"${page === "assessment" ? ' aria-current="page"' : ""}>Գնահատումներ</a>
+        <a class="amp-course-sublink" href="./physics-7.html"${page === "physics" ? ' aria-current="page"' : ""}>Դասընթաց</a>
         <a class="amp-course-sublink" href="./progress.html"${page === "progress" ? ' aria-current="page"' : ""}>Առաջընթաց</a>
       </div>`);
     }
