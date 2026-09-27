@@ -51,3 +51,16 @@ jobs:
           node --check web/student-shell.js
           node --check web/privacy.js
           node --check web/admin.js
+
+
+  institutional-concurrency:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - name: Install isolated PostgreSQL test tools
+        run: python -m pip install pgserver==0.1.4 'psycopg[binary]==3.2.6'
+      - name: Verify administrator and teacher offboarding races
+        run: python tests/sprint-14b-offboarding-concurrency.py

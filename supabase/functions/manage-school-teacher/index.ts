@@ -35,10 +35,32 @@ Deno.serve(async (req) => {
 
     let body: Record<string, unknown>;
     try { body = await req.json(); } catch { return json({ error: "invalid_json" }, 400); }
-    if ((body.action !== "archive" && body.action !== "restore")
+    if (!["archive", "restore", "preview_offboard", "offboard"].includes(String(body.action))
       || typeof body.schoolId !== "string" || !uuid.test(body.schoolId)
       || typeof body.membershipId !== "string" || !uuid.test(body.membershipId))
       return json({ error: "invalid_teacher_request" }, 400);
+
+    if (body.action === "preview_offboard" || body.action === "offboard") {
+      const reason = body.reason ?? "administrative";
+      if (!["withdrawn", "transfer", "year_end", "role_change", "administrative"].includes(String(reason))
+        || (body.action === "offboard" && (typeof body.revision !== "string" || !/^[0-9a-f]{32}$/.test(body.revision)))) {
+        return json({ error: "invalid_offboarding_request" }, 400);
+      }
+      const { data, error } = await admin.rpc("service_offboard_school_teacher_14b", {
+        p_actor: actor, p_school: body.schoolId, p_membership: body.membershipId,
+        p_action: body.action === "preview_offboard" ? "preview" : "offboard",
+        p_reason: reason, p_expected_revision: body.revision ?? null,
+      });
+      if (error) {
+        if (error.message.includes("teacher_offboarding_preview_changed"))
+          return json({ error: "teacher_offboarding_preview_changed" }, 409);
+        if (error.message.includes("school_teacher_unavailable"))
+          return json({ error: "school_teacher_unavailable" }, 403);
+        console.error("teacher_offboarding", error);
+        return json({ error: "teacher_offboarding_failed" }, 503);
+      }
+      return json({ offboarding: data });
+    }
 
     const archived = body.action === "archive";
     const { data, error } = await admin.rpc("service_set_school_teacher_archived_14b", {

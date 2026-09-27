@@ -23,6 +23,11 @@ async function writeAudit(admin: any, row: Record<string, unknown>) {
   if (error) console.error("audit_write_failed", error.message);
 }
 
+function protectedAdminError(error: any): string | null {
+  return ["last_active_school_admin_protected", "last_active_admin_protected"]
+    .find((code) => String(error?.message ?? "").includes(code)) ?? null;
+}
+
 async function activeAdminCount(admin: any) {
   const { count, error } = await admin.from("profiles")
     .select("id", { count: "exact", head: true })
@@ -80,7 +85,7 @@ Deno.serve(async (req) => {
 
       const { data: updated, error } = await admin.from("profiles").update({ role: nextRole, updated_at: new Date().toISOString() })
         .eq("id", targetUserId).select("id, role, account_status").single();
-      if (error) return json({ error: "role_update_failed", detail: error.message }, 500);
+      if (error) return json({ error: protectedAdminError(error) ?? "role_update_failed", detail: error.message }, protectedAdminError(error) ? 409 : 500);
       await writeAudit(admin, {
         actor_user_id: actorId, actor_role: "admin", action: "admin.role_changed", outcome: "success",
         target_user_id: targetUserId, target_type: "user", details: { oldRole: target.role, newRole: nextRole },
@@ -113,9 +118,10 @@ Deno.serve(async (req) => {
         }, 409);
       }
 
-      if (action === "suspend" || action === "activate") {
+      // Unban while the profile still denies access; activate it only after Auth succeeds.
+      if (action === "activate") {
         const authChange = await admin.auth.admin.updateUserById(targetUserId, {
-          ban_duration: action === "suspend" ? "876000h" : "none",
+          ban_duration: "none",
         });
         if (authChange.error) return json({ error: "auth_status_update_failed", detail: authChange.error.message }, 500);
       }
@@ -128,7 +134,22 @@ Deno.serve(async (req) => {
         updated_at: new Date().toISOString(),
       }).eq("id", targetUserId).eq("account_status", target.account_status)
         .select("id, role, account_status, status_changed_at").maybeSingle();
-      if (error || !updated) return json({ error: "profile_status_update_failed", detail: error?.message }, 500);
+      if (error || !updated) return json({ error: protectedAdminError(error) ?? "profile_status_update_failed", detail: error?.message }, protectedAdminError(error) ? 409 : 500);
+
+      // The authoritative profile guard must accept suspension BEFORE Auth is banned.
+      // If Auth fails, keep the profile suspended (all protected APIs deny access),
+      // report the partial outcome, and allow a repeated suspend request to retry the ban.
+      if (action === "suspend") {
+        const authChange = await admin.auth.admin.updateUserById(targetUserId, { ban_duration: "876000h" });
+        if (authChange.error) {
+          await writeAudit(admin, {
+            actor_user_id: actorId, actor_role: "admin", action: "admin.auth_suspension_sync_failed", outcome: "failed",
+            target_user_id: targetUserId, target_type: "user",
+            details: { previousStatus: target.account_status, newStatus: nextStatus, profileSuspended: true },
+          });
+          return json({ error: "auth_suspension_sync_failed", profileSuspended: true, retryable: true }, 503);
+        }
+      }
 
       await writeAudit(admin, {
         actor_user_id: actorId, actor_role: "admin", action: ({
