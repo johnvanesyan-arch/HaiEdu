@@ -1391,3 +1391,29 @@ No curriculum content, item-selection rule, score calculation, mastery threshold
 ### Remaining closure gate
 
 A fresh post-activation browser session should still be used to confirm the presentation behavior visually: a question remains in the same order after refresh/resume, and a later new exposure of the same item can render in a different order while grading remains correct. This is assessment-integrity browser verification, alongside the already-open authenticated mobile-width learner/teacher rendering gate. Sprint 13 remains on hold until Sprint 12.5 closure criteria are satisfied.
+
+
+## Coverage-first Review correction — 2026-09-27
+
+**Status: implementation prepared on a separate branch; not deployed.**
+
+Product scope: defer targeted skill retention review and automatic review scheduling. Improve the existing Chapter Review rotation only; no dashboard redesign or new review mode.
+
+The previous selector forced a question from every skill into each session. Once one skill's questions were exhausted, this could repeat those questions while unseen questions remained elsewhere in the chapter. Weak-skill extra slots could make this imbalance more visible.
+
+The revised policy `review-coverage-first-v1` gives full eligible-pool coverage precedence:
+
+- select questions not yet allocated in the learner's current Review cycle;
+- represent each skill with remaining unseen questions before filling extra slots;
+- use failed/weak-skill weighting only among unseen candidates;
+- do not repeat from an exhausted skill while enough unseen questions remain in other skills;
+- if fewer unseen questions remain than the configured session length, include **all** of them first, then fill the remaining positions with least-recent previously selected questions;
+- deterministic presentation preserves the unseen-before-repeat ordering;
+- keep distinct question IDs within a session and retain the existing cycle rollover and immutable exposure history.
+
+This boundary-session rule preserves the configured Review length and existing required-Review retry gate. Whole-chapter coverage is a **cycle** property; each individual session need not contain a skill whose questions are already exhausted. The question universe remains the authorized release/blueprint's eligible Chapter Review pool, not protected Mastery questions or other chapters.
+
+Coverage retains the existing selection-time definition: an item allocated to a Review session counts in that cycle. It is not a claim that every allocated question was answered or mastered. In-progress sessions resume with their existing item order; historical sessions and exposure records are not rewritten.
+
+Verification: focused executable selector tests cover uneven skill pools, weighting, chronological unseen-before-repeat ordering, successive sessions through exhaustion, new cycles, uniqueness, deterministic selection and skill representation. The existing Review-cycle contract tests are also retained. Production deployment, runtime-provenance stamping and authenticated confirmation are release steps; none is claimed by this source-only checkpoint.
+
