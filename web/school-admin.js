@@ -218,6 +218,46 @@ function rosterField(label, value) {
   return line;
 }
 
+async function offboardTeacher(teacher, schoolId, button) {
+  setButtonBusy(button, true, "Ստուգվում է…");
+  try {
+    const body = { schoolId, membershipId: teacher.membership_id, reason: "administrative" };
+    const preview = await supabase.functions.invoke("manage-school-teacher", {
+      body: { ...body, action: "preview_offboard" },
+    });
+    const impact = preview.data?.offboarding;
+    if (preview.error || !impact?.revision) throw new Error("preview_failed");
+    if ($("rosterSchool").value !== schoolId) return;
+    const confirmed = window.confirm(
+      `Դադարեցնե՞լ ${teacher.display_name || "այս ուսուցչի"} աշխատանքը այս դպրոցում։\n\n`
+      + `Կավարտվեն ${impact.activeAssignments} դասարանային նշանակումներ և ${impact.activeSubjectGrants} առարկայի թույլտվություններ։\n`
+      + `Կչեղարկվեն ${impact.unusedInvitations} չօգտագործված հրավերներ և ${impact.unusedJoinCodes} մուտքի կոդեր։\n\n`
+      + "Հաշիվը, դասարանները, աշակերտներն ու արդյունքները կպահպանվեն։ Դասարանների ուսուցումը կարող է դադարել մինչև նոր ուսուցչի նշանակումը։ Այս գործողությունը չի վերականգնվում «Վերականգնել» կոճակով։",
+    );
+    if (!confirmed || $("rosterSchool").value !== schoolId) return;
+    setButtonBusy(button, true, "Դադարեցվում է…");
+    const result = await supabase.functions.invoke("manage-school-teacher", {
+      body: { ...body, action: "offboard", revision: impact.revision },
+    });
+    if (result.error || result.data?.offboarding?.ended !== true) {
+      let code = result.data?.error;
+      try { code = (await result.error?.context?.clone().json())?.error ?? code; } catch { /* Fall back to general message. */ }
+      if (code === "teacher_offboarding_preview_changed") {
+        return message("rosterMessage", "Ուսուցչի նշանակումները կամ հրավերները փոխվել են։ Թարմացրեք ցանկը և կրկին ստուգեք գործողությունը։", true);
+      }
+      throw new Error("offboarding_failed");
+    }
+    if ($("rosterSchool").value !== schoolId) return;
+    await loadTeacherRoster();
+    message("rosterMessage", "Ուսուցչի աշխատանքն այս դպրոցում դադարեցված է։ Դասարաններն ու ուսուցման պատմությունը պահպանված են։");
+  } catch {
+    if ($("rosterSchool").value === schoolId)
+      message("rosterMessage", "Գործողությունը չհաջողվեց հաստատել։ Թարմացրեք ցանկը և ստուգեք ուսուցչի վիճակը։", true);
+  } finally {
+    setButtonBusy(button, false, "");
+  }
+}
+
 function teacherCard(teacher, schoolId) {
     const card = document.createElement("article");
     card.className = "roster-card";
@@ -277,6 +317,12 @@ function teacherCard(teacher, schoolId) {
           : "Ուսուցիչն արխիվացված է։ Հաշիվն ու ամբողջ պատմությունը պահպանված են։");
       });
       stateBox.append(archiveButton);
+      const offboardButton = document.createElement("button");
+      offboardButton.type = "button";
+      offboardButton.className = "ghost danger-ghost roster-archive-button";
+      offboardButton.textContent = "Դադարեցնել աշխատանքը";
+      offboardButton.addEventListener("click", () => offboardTeacher(teacher, schoolId, offboardButton));
+      stateBox.append(offboardButton);
     }
     head.append(identity, stateBox);
     card.append(head);
@@ -352,7 +398,9 @@ async function loadTeacherRoster() {
   appendRosterGroup(list, "Ակտիվ ուսուցիչներ",
     data.teachers.filter((teacher) => teacher.membership_status === "active"), schoolId);
   appendRosterGroup(list, "Արխիվացված ուսուցիչներ",
-    data.teachers.filter((teacher) => teacher.membership_status !== "active"), schoolId, true);
+    data.teachers.filter((teacher) => teacher.membership_status === "archived"), schoolId, true);
+  appendRosterGroup(list, "Աշխատանքն ավարտած ուսուցիչներ",
+    data.teachers.filter((teacher) => !["active", "archived"].includes(teacher.membership_status)), schoolId, true);
 }
 
 async function loadTeacherSubjects(schoolId) {

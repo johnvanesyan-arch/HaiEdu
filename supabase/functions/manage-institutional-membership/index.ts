@@ -40,7 +40,14 @@ Deno.serve(async (req) => {
       p_actor: actor, ...(method.includes("enrollment") ? { p_enrollment: id } : { p_membership: id }),
       p_reason: body.reason,
     });
-    if (error) { console.error("institutional_termination_rpc", error); return json({ error: "termination_failed" }, 500); }
+    if (error) {
+      if (error.message.includes("last_active_school_admin_protected"))
+        return json({ error: "last_active_school_admin_protected" }, 409);
+      if (error.message.includes("school_teacher_unavailable"))
+        return json({ error: "termination_unavailable" }, 403);
+      console.error("institutional_termination_rpc", error);
+      return json({ error: "termination_failed" }, 500);
+    }
     if (data !== true) return json({ error: "termination_unavailable" }, 403);
     return json({ ended: true });
   } catch (error) {
