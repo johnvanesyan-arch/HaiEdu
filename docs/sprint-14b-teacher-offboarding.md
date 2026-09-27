@@ -1,6 +1,6 @@
 # Sprint 14B — Teacher offboarding and final school-administrator protection
 
-Status: deployed and read-only production-verified on 2026-09-27. [PR #47](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/47), merge `5be0464d9c665d1c088cf5c67171d785a1f19f92`. Authenticated end-to-end action QA remains open; no real teacher was offboarded.
+Status: deployed and read-only production-verified on 2026-09-27. [PR #47](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/47), merge `5be0464d9c665d1c088cf5c67171d785a1f19f92`. Authenticated action acceptance subsequently passed on 2026-09-28: both school admins cancelled and confirmed offboarding of newly created QA memberships through the live UI. Original school memberships, class rosters and learner enrolments were preserved. Unused invitations and join codes were revoked. See [the acceptance report and database cleanup verification](sprint-14-authenticated-actions.md). No original membership or final school administrator was removed.
 
 ## Bounded behavior
 
@@ -47,3 +47,4 @@ The relational fixture isolates this migration and is not a substitute for full 
 The additive migration rewrites functions and installs guards; it does not backfill or terminate production memberships. If an API/frontend rollback is needed, preserve the database guards and full termination behavior. Do not weaken them merely to restore an older UI.
 
 Sprint 14 remains open for authenticated two-school mutual denial, authenticated teacher navigation/rename execution, multi-unit/context switching after a second authorized release, and separately gated 14D school-wide analytics. This checkpoint does not promote curriculum content or authorize institutional rollout.
+
