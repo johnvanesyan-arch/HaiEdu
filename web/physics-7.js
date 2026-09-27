@@ -129,7 +129,7 @@ function renderSummary() {
 }
 
 function renderActiveSession() {
-  const learningSession = dashboard?.activeSession;
+  const learningSession = dashboard?.latestDiagnostic || dashboard?.activeSession?.mode === "diagnostic" ? dashboard?.activeSession : null;
   const masterySession = masteryStatus?.activeSession?.mode === "mastery_check" ? masteryStatus.activeSession : null;
   const session = masterySession ?? learningSession;
   const banner = $("activeSessionBanner");
@@ -205,6 +205,7 @@ function activeBlocksNewPractice(skill) {
 }
 
 function renderSkillAction(skill, state) {
+  if (!dashboard?.latestDiagnostic) return `<a class="button-link secondary skill-browser-action" href="./diagnostic.html">Նախ ավարտեք ախտորոշիչը</a>`;
   const active = activeBlocksNewPractice(skill);
   if (active.same) return `<a class="button-link skill-browser-action" href="./practice.html">Շարունակել</a>`;
   if (active.blocked) return `<button class="secondary skill-browser-action" disabled title="${escapeHtml(active.reason)}">${escapeHtml(active.label)}</button>`;
@@ -373,4 +374,3 @@ $("signOutBtn")?.addEventListener("click", async () => {
 });
 
 initialize();
-

@@ -1,3 +1,4 @@
+import { getPracticeDiagnosticBlock } from "../_shared/practice-diagnostic-gate.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
@@ -78,7 +79,7 @@ Deno.serve(async (req) => {
     }
     const { data: sessionData, error: sessionError } = await admin
       .from("learning_sessions")
-      .select("id, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, learning_model_configuration_id, model_provenance_status")
+      .select("id, unit_code, mode, status, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status, learning_model_configuration_id, model_provenance_status")
       .eq("id", payload.sessionId)
       .eq("student_id", studentId)
       .single();
@@ -101,6 +102,9 @@ Deno.serve(async (req) => {
     session = sessionData;
     sessionItem = sessionItemData;
   }
+
+  const practiceBlock = await getPracticeDiagnosticBlock(admin, studentId, session?.unit_code ?? "PHY7-U01", session?.mode ?? "practice");
+  if (practiceBlock) return json(practiceBlock.body, practiceBlock.status);
 
   let curriculumReleaseId: string;
   try {

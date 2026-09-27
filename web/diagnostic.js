@@ -66,7 +66,7 @@ async function prepare() {
       return;
     }
 
-    if (data.activeSession) {
+    if (data.activeSession && !["practice", "chapter_review"].includes(data.activeSession.mode)) {
       $("stateTitle").textContent = "Նախ ավարտեք ընթացիկ սեսիան";
       $("stateText").textContent = "Նոր ախտորոշիչը չի սկսվի, որպեսզի ընթացիկ ուսուցման սեսիան չփոխարինվի։";
       $("blockingLink").href = routeForActive(data.activeSession);
@@ -95,7 +95,7 @@ async function startDiagnostic() {
     $("startBtn").disabled = false;
     return renderResults(latest, false);
   }
-  if (latest.activeSession && latest.activeSession.mode !== "diagnostic") {
+  if (latest.activeSession && !["diagnostic", "practice", "chapter_review"].includes(latest.activeSession.mode)) {
     $("startBtn").disabled = false;
     $("stateTitle").textContent = "Նախ ավարտեք ընթացիկ սեսիան";
     $("stateText").textContent = "Ընթացիկ սեսիան չի փոխարինվել։";
@@ -382,4 +382,3 @@ $("recommendedAction")?.addEventListener("click", async (event) => {
   window.location.assign(href);
 });
 prepare();
-

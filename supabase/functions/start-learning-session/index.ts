@@ -1,3 +1,4 @@
+import { getPracticeDiagnosticBlock } from "../_shared/practice-diagnostic-gate.ts";
 import { chooseInitialDiagnosticForm } from "../_shared/initial-diagnostic.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
@@ -107,16 +108,19 @@ Deno.serve(async (req) => {
     if (baseline) return json({ diagnosticCompleted: true, baselineSessionId: baseline.id });
   }
 
-  const { data: activeSessions } = await admin
+  const practiceBlock = await getPracticeDiagnosticBlock(admin, studentId, UNIT_CODE, body.mode);
+  if (practiceBlock) return json(practiceBlock.body, practiceBlock.status);
+
+  const { data: activeSessions, error: activeError } = await admin
     .from("learning_sessions")
     .select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status")
     .eq("student_id", studentId)
     .eq("unit_code", UNIT_CODE)
     .eq("status", "active")
-    .order("created_at", { ascending: false })
-    .limit(1);
-
-  const active = activeSessions?.[0];
+    .order("created_at", { ascending: false });
+  if (activeError) return json({ error: "active_session_query_failed" }, 503);
+  // Pre-diagnostic practice stays saved, but cannot trap the learner outside the diagnostic.
+  const active = activeSessions?.find((s) => body.mode !== "diagnostic" || !["practice", "chapter_review"].includes(s.mode));
   if (active?.mode === body.mode) {
     await confirmRecommendationActionStarted({
       admin,
@@ -688,4 +692,3 @@ Deno.serve(async (req) => {
     });
     return json({ session, resumed: false, targetSkill: { id: target.id, code: target.code, nameHy: target.name_hy } });
 });
-

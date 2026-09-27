@@ -197,9 +197,29 @@ function blockForActiveNonPractice(session) {
   return true;
 }
 
+async function handleDiagnosticGateError(error, data) {
+  let detail = data;
+  if (error?.context?.json) {
+    try { detail = await error.context.clone().json(); } catch { /* Use the normal error display. */ }
+  }
+  if (detail?.error !== "chapter_diagnostic_required") return false;
+  showGate("Նախ ավարտեք գլխի ախտորոշիչը", detail.messageHy, [
+    { href: "./diagnostic.html", label: "Բացել ախտորոշիչը", primary: true },
+  ]);
+  return true;
+}
+
 async function startOrResumePractice() {
   if (starting) return;
   starting = true;
+
+  if (!dashboard?.latestDiagnostic) {
+    showGate("Նախ ավարտեք գլխի ախտորոշիչը", "Վարժանքները կբացվեն այս գլխի սկզբնական ախտորոշիչն ավարտելուց հետո՝ անկախ արդյունքից։", [
+      { href: "./diagnostic.html", label: "Բացել ախտորոշիչը", primary: true },
+    ]);
+    starting = false;
+    return;
+  }
 
   const active = dashboard?.activeSession ?? null;
   if (active) {
@@ -269,6 +289,7 @@ async function startOrResumePractice() {
     sessionStorage.removeItem("pendingRecommendationInstanceId");
   }
 
+  if (await handleDiagnosticGateError(error, data)) return;
   if (error) {
     showGate("Չհաջողվեց սկսել վարժանքը", error.message, [
       { href: "./physics-7.html", label: "Վերադառնալ Ֆիզիկա 7", primary: true },
@@ -320,6 +341,7 @@ async function loadSessionItem() {
     body: { sessionId: currentSession.id },
   });
 
+  if (await handleDiagnosticGateError(error, data)) return;
   if (error) {
     $("prompt").textContent = "Չհաջողվեց բեռնել հարցը։";
     $("feedback").className = "feedback bad";
@@ -464,6 +486,7 @@ async function submitAnswer(event) {
     },
   });
 
+  if (await handleDiagnosticGateError(error, data)) return;
   if (error) {
     $("submitBtn").disabled = false;
     $("feedback").className = "feedback bad";
@@ -730,7 +753,7 @@ async function initialize() {
   }
 
   const cachedDashboard = readPracticeBootstrap(sessionData.session.user.id);
-  if (cachedDashboard) {
+  if (cachedDashboard?.latestDiagnostic) {
     dashboard = cachedDashboard;
     await startOrResumePractice();
     return;
