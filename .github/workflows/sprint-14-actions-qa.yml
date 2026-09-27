@@ -6,6 +6,7 @@ on:
     branches: [main]
     paths:
       - scripts/sprint-14-actions.mjs
+      - scripts/sprint-14-action-guards.mjs
       - .github/workflows/sprint-14-actions-qa.yml
 
 permissions:

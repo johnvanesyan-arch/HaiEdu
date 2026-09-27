@@ -1,6 +1,7 @@
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { chromium, expect as baseExpect } from '@playwright/test';
 import { validateFixture, roles, sides, runIsolation } from './sprint-14-isolation.mjs';
+import { allowedBrowserManagement } from './sprint-14-action-guards.mjs';
 
 // Production acceptance: only newly created empty classes and memberships may be changed.
 const site = 'https://www.haiedu.am';
@@ -78,10 +79,7 @@ async function pageFor(actor, pathname, width = 1365) {
     const req = route.request(), fn = new URL(req.url()).pathname.split('/').pop();
     if (req.method() !== 'POST' || !fn.startsWith('manage-')) return route.continue();
     let b; try { b = req.postDataJSON(); } catch { return route.abort(); }
-    const safeClass = fn === 'manage-institutional-teacher-class' && ['rename','archive','activate'].includes(b.action) && classes.some(c => c.id === b.classId);
-    const safeMember = fn === 'manage-school-teacher' && ['preview_offboard','offboard'].includes(b.action) && memberships.some(m => m.id === b.membershipId && m.schoolId === b.schoolId && !m.originalIds.includes(m.id));
-    const safeList = fn === 'manage-student-invitation' && b.action === 'list';
-    if (!safeClass && !safeMember && !safeList) { report.checks.push({ label: 'browser mutation safety guard', status: 'failed' }); return route.abort(); }
+    if (!allowedBrowserManagement(fn, b, { classes, memberships })) { report.checks.push({ label: 'browser mutation safety guard', status: 'failed' }); return route.abort(); }
     return route.continue();
   });
   const page = await context.newPage();
@@ -226,11 +224,15 @@ try {
     const page=await pageFor(admin,'school-admin.html#teachersPanel');
     await page.locator('#rosterSchool').selectOption(schoolId);
     const button=()=>page.locator('.roster-card').filter({has:page.locator(`a[href*="membership=${member.id}"]`)}).getByRole('button',{name:'Դադարեցնել աշխատանքը',exact:true});
-    let cancelledPreview = false;
-    page.once('dialog',async d=>{ cancelledPreview = d.type() === 'confirm'; await d.dismiss(); });
+    // Wait for the actual dialog: a concurrent roster refresh can replace the
+    // busy button with an enabled one before the preview request completes.
+    const cancelDialog = page.waitForEvent('dialog');
     await button().click();
+    const shownDialog = await cancelDialog;
+    check(`${s}: offboarding preview displays confirmation`,shownDialog.type()==='confirm');
+    await shownDialog.dismiss();
     await expect(button()).toBeEnabled();
-    check(`${s}: offboarding confirmation was shown and cancelled`,cancelledPreview);
+    check(`${s}: offboarding confirmation cancelled`,true);
     const afterCancel=await call(admin,'get-school-teachers',{schoolId},`${s}: read after cancel`);
     check(`${s}: offboarding cancel preserves new membership`,afterCancel.teachers.some(t=>t.membership_id===member.id && t.membership_status==='active'));
     page.once('dialog',d=>d.accept());
