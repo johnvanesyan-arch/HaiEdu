@@ -6,6 +6,7 @@ const $ = (id) => document.getElementById(id);
 const dashboardState = {
   schools: [], invitations: [], years: new Map(), teachers: new Map(),
 };
+let teacherRosterLoadVersion = 0;
 
 
 function message(id, text, error = false) {
@@ -370,11 +371,15 @@ function appendRosterGroup(container, titleText, teachers, schoolId, archived = 
 }
 
 async function loadTeacherRoster() {
+  const version = ++teacherRosterLoadVersion;
   const schoolId = $("rosterSchool").value;
   const list = $("teacherRoster");
   const refresh = $("refreshTeachersBtn");
   list.replaceChildren();
-  if (!schoolId) return;
+  if (!schoolId) {
+    setButtonBusy(refresh, false, "");
+    return;
+  }
   message("rosterMessage", "Բեռնվում է…");
   setButtonBusy(refresh, true, "Թարմացվում է…");
   let data, error;
@@ -385,8 +390,9 @@ async function loadTeacherRoster() {
   } catch (requestError) {
     error = requestError;
   } finally {
-    setButtonBusy(refresh, false, "Թարմացվում է…");
+    if (version === teacherRosterLoadVersion) setButtonBusy(refresh, false, "Թարմացվում է…");
   }
+  if (version !== teacherRosterLoadVersion) return;
   if ($("rosterSchool").value !== schoolId) return;
   if (error || !Array.isArray(data?.teachers)) {
     message("rosterMessage", "Ուսուցիչների ցանկը հասանելի չէ։ Փորձեք ավելի ուշ։", true);
@@ -625,3 +631,4 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
     await loadPendingInvites();
   }
 }
+
