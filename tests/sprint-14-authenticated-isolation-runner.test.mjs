@@ -98,3 +98,13 @@ test('network failure and failed cleanup are reported without tokens', async () 
   const report=await runIsolation({...input,fetchImpl});
   assert.equal(report.status,'failed'); assert.doesNotMatch(JSON.stringify(report),/PRIVATE|token-/);
 });
+
+test('ended own-school guest history is allowed, live or evidence-bearing foreign rows fail', async () => {
+  for (const [status, classes, expected] of [['ended', [], 'passed'], ['active', [], 'failed'], ['ended', [{id: id(555)}], 'failed']]) {
+    const input=inputs(), mock=server(input,(u,o,b,actor)=>
+      u.pathname.endsWith('get-school-teachers') && actor==='A_admin' && b.schoolId===input.fixture.A.schoolId
+      ? {status:200,data:{teachers:[{person_id:input.fixture.A.teacherId}, {person_id:input.fixture.B.teacherId,
+        membership_id:id(888),membership_status:status,subjects:[],classes}]}} : null);
+    assert.equal((await runIsolation({...input,...mock})).status,expected);
+  }
+});
