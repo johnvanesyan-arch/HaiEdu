@@ -23,6 +23,9 @@ jobs:
       - name: Check mirrored core parity
         run: npm run check:core-parity
 
+      - name: Check platform favicon
+        run: npm run check:favicon
+
       - name: Run tests
         run: npm test
 
@@ -56,6 +59,7 @@ jobs:
           node --check web/admin.js
           node --check web/admin-security.js
           node --check scripts/check-core-parity.mjs
+          node --check scripts/check-favicon-coverage.mjs
 
 
   institutional-concurrency:

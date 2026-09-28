@@ -10,11 +10,12 @@ const destinations = [
 ];
 
 function ensureBrandAssets() {
-  if (!document.querySelector('link[data-haiedu-favicon="true"]')) {
+  if (!document.querySelector('link[rel~="icon"]')) {
     const icon = document.createElement("link");
     icon.rel = "icon";
     icon.type = "image/svg+xml";
-    icon.href = "./assets/haiedu-icon.svg";
+    icon.sizes = "any";
+    icon.href = "/assets/haiedu-icon.svg?v=20260928";
     icon.dataset.haieduFavicon = "true";
     document.head.appendChild(icon);
   }

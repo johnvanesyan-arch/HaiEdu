@@ -9,7 +9,8 @@
     "test:e2e": "playwright test",
     "test:e2e:mobile": "playwright test --grep @mobile",
     "typecheck": "tsc -p tsconfig.json --noEmit",
-    "check:core-parity": "node scripts/check-core-parity.mjs"
+    "check:core-parity": "node scripts/check-core-parity.mjs",
+    "check:favicon": "node scripts/check-favicon-coverage.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",

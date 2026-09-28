@@ -1,3 +1,21 @@
+function ensurePlatformFavicon() {
+  if (document.querySelector('link[data-haiedu-platform-favicon="true"]')) return;
+  const existing = document.querySelector('link[rel~="icon"]');
+  if (existing) {
+    existing.dataset.haieduPlatformFavicon = "true";
+    return;
+  }
+  const icon = document.createElement("link");
+  icon.rel = "icon";
+  icon.type = "image/svg+xml";
+  icon.sizes = "any";
+  icon.href = "/assets/haiedu-icon.svg?v=20260928";
+  icon.dataset.haieduPlatformFavicon = "true";
+  document.head.appendChild(icon);
+}
+
+ensurePlatformFavicon();
+
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
