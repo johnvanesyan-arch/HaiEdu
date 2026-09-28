@@ -77,7 +77,6 @@ export function choosePracticeItem(
     }
   }
 
-  // Avoid serving the same item more than twice when alternatives exist.
   const underRepeatCap = pool.filter((item) => (counts.get(item.id) ?? 0) < 2);
   if (underRepeatCap.length) pool = underRepeatCap;
 
