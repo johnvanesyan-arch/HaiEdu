@@ -1,10 +1,14 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.54
+**Roadmap version:** 2.55
 **Updated:** 2026-09-28
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls, the authenticated school-admin operational overview and the teacher workspace operations are deployed; and the 14C school-scoped learner onboarding, exact-context stamping, assigned-class teacher roster and teacher evidence views are deployed. Institutional teachers can create assigned classrooms, send bounded bulk email invitations, issue optional one-use join codes, separate active and archived classrooms, and rename authorized classrooms without changing their identity or evidence. Role-scoped privacy inventories and Armenian-safe responsive layouts are deployed across role dashboards. Teacher offboarding and database-enforced final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 live checks on 2026-09-28. Authenticated action acceptance also passed 141/141 checks across both schools, with 54/54 read-isolation checks before and after. Teacher navigation/rename/archive, reciprocal class/staff mutation denials and temporary-membership offboarding UI acceptance are complete for these fixtures. Live multi-unit/multi-context switching remains open once a second authorized release exists. School-wide administrative analytics remain a separate 14D gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
+
+## Bounded code-review maintenance — 2026-09-28
+
+Three immediate review actions are implemented as one bounded slice: CI parity for mirrored core modules with import-extension normalization, DOM-safe MFA factor rendering, and README correction for the live session-bound learning loop and retired HTTP-410 endpoint. [Implementation and verification record](qa-review-three-actions.md). This checkpoint does not close Sprint 14 or change authorization, curriculum/release gates, learning criteria or the remaining institutional acceptance scope. Hosted CI and delivery status are recorded with the implementation PR and Notion checkpoint.
 
 ## ChatGPT execution-mode routing
 

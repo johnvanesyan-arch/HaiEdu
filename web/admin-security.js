@@ -33,15 +33,45 @@ async function loadSecurityState() {
   $("enrollPanel").classList.toggle("hidden", Boolean(factors.length));
   $("factorPanel").classList.toggle("hidden", !ready);
   if (!ready && factors.length) {
-    $("challengeFactor").innerHTML = factors.map((factor, index) => `<option value="${factor.id}">${factorName(factor, index)}</option>`).join("");
+    $("challengeFactor").replaceChildren(...factors.map((factor, index) => {
+      const option = document.createElement("option");
+      option.value = factor.id;
+      option.textContent = factorName(factor, index);
+      return option;
+    }));
   }
   if (ready) renderFactors();
   setMessage("");
 }
 
 function renderFactors() {
-  $("factorList").innerHTML = factors.map((factor, index) => `<article class="factor-row"><div><strong>${factorName(factor, index)}</strong><p class="subtle small">${factor.factor_type === "totp" ? "Authenticator հավելված" : "Հեռախոս"} · հաստատված</p></div>${factors.length > 1 ? `<button type="button" class="ghost" data-remove-factor="${factor.id}">Հեռացնել</button>` : '<span class="protected-note">Միակ գործոնը պաշտպանված է</span>'}</article>`).join("");
-  $("factorList").querySelectorAll("[data-remove-factor]").forEach((button) => button.addEventListener("click", () => removeFactor(button.dataset.removeFactor)));
+  $("factorList").replaceChildren(...factors.map((factor, index) => {
+    const row = document.createElement("article");
+    row.className = "factor-row";
+    const details = document.createElement("div");
+    const name = document.createElement("strong");
+    name.textContent = factorName(factor, index);
+    const description = document.createElement("p");
+    description.className = "subtle small";
+    description.textContent = `${factor.factor_type === "totp" ? "Authenticator հավելված" : "Հեռախոս"} · հաստատված`;
+    details.append(name, description);
+    row.append(details);
+    if (factors.length > 1) {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "ghost";
+      button.dataset.removeFactor = factor.id;
+      button.textContent = "Հեռացնել";
+      button.addEventListener("click", () => removeFactor(button.dataset.removeFactor));
+      row.append(button);
+    } else {
+      const note = document.createElement("span");
+      note.className = "protected-note";
+      note.textContent = "Միակ գործոնը պաշտպանված է";
+      row.append(note);
+    }
+    return row;
+  }));
 }
 
 async function beginEnrollment() {

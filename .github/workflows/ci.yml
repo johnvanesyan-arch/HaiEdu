@@ -20,6 +20,9 @@ jobs:
       - name: Install dependencies
         run: npm install
 
+      - name: Check mirrored core parity
+        run: npm run check:core-parity
+
       - name: Run tests
         run: npm test
 
@@ -51,6 +54,8 @@ jobs:
           node --check web/student-shell.js
           node --check web/privacy.js
           node --check web/admin.js
+          node --check web/admin-security.js
+          node --check scripts/check-core-parity.mjs
 
 
   institutional-concurrency:

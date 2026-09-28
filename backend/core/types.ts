@@ -1,5 +1,4 @@
 export type ItemType = "single_choice" | "true_false" | "numeric" | "quantity";
-
 export type CompetencyLayer = "knowledge" | "application" | "transfer" | "reasoning";
 
 export interface ItemDefinition {

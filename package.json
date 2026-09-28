@@ -8,7 +8,8 @@
     "test": "npm run build:core && node --test tests/*.test.mjs",
     "test:e2e": "playwright test",
     "test:e2e:mobile": "playwright test --grep @mobile",
-    "typecheck": "tsc -p tsconfig.json --noEmit"
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "check:core-parity": "node scripts/check-core-parity.mjs"
   },
   "devDependencies": {
     "@electric-sql/pglite": "0.5.8",

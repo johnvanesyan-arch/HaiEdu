@@ -30,12 +30,15 @@ All active variants have completed internal content review and are pilot-eligibl
 
 The backend implements:
 
-`authenticated student -> adaptive item selection -> student answer -> deterministic grading -> attempt record -> mastery update -> prerequisite diagnosis -> recommendation`
+`authenticated student -> start/resume a learning session -> session-bound item delivery and exposure record -> student answer -> deterministic grading -> attempt record -> mastery update -> prerequisite diagnosis -> recommendation`
 
-Two JWT-protected Supabase Edge Functions are live:
+The live student-facing learning loop uses these JWT-protected Supabase Edge Functions:
 
-- `get-practice-item`
-- `submit-answer`
+1. `start-learning-session` — start or resume a bounded learning session under the existing student, course-access and curriculum-release checks.
+2. `get-session-item` — retrieve an item for that session with session-bound exposure provenance.
+3. `submit-answer` — submit the session-bound response for server-side grading and evidence updates.
+
+`get-practice-item` is retired. Authenticated POST requests that pass its existing live-session checks receive **HTTP 410 Gone** (`legacy_practice_delivery_retired`), with `start-learning-session + get-session-item` as the replacement. It no longer serves assessable content; unauthenticated or inactive-session requests still receive their existing authorization errors.
 
 The scheduler avoids the learner's most recent items, considers prerequisite mastery, and selects an item difficulty near the learner's current estimated mastery.
 
@@ -71,13 +74,16 @@ The repository includes `vercel.json`, configured to deploy the static `web/` di
 
 ## Automated checks
 
-GitHub Actions runs the core test suite, TypeScript typecheck and JavaScript syntax validation on pushes to `main` and pull requests.
+GitHub Actions runs a core-parity check, the test suite, TypeScript typecheck and JavaScript syntax validation on pushes to `main` and pull requests.
 
 ```bash
+npm run check:core-parity
 npm test
 npm run typecheck
 node --check web/app.js
 ```
+
+The parity check compares mirrored modules in `backend/core/` and `supabase/functions/_shared/`, normalizing only relative `.js`/`.ts` import extensions. Other source differences and missing required mirrors fail CI; runtime-only and core-only helpers remain separate.
 
 ## Supabase project
 
