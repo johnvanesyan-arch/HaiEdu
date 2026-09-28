@@ -2,7 +2,7 @@
 @media(max-width:1180px){.teacher-onboarding-steps{grid-template-columns:repeat(2,minmax(0,1fr))}.teacher-profile-card,.teacher-create-card{grid-template-columns:1fr}.teacher-profile-form,.teacher-create-form{grid-template-columns:repeat(2,minmax(0,1fr))}}
 @media(max-width:1000px){.teacher-layout{grid-template-columns:1fr}.teacher-sidebar{position:static}.teacher-class-list{grid-template-columns:repeat(2,minmax(0,1fr))}.teacher-welcome-card{grid-template-columns:1fr}.class-header-card{grid-template-columns:1fr}.teacher-section-heading{align-items:stretch}.teacher-search-label{min-width:220px}}
 @media(max-width:760px){.teacher-header-actions,.teacher-quick-actions{width:100%}.teacher-header-actions>*{flex:1 1 160px}.teacher-quick-actions>*{flex:1 1 160px}.teacher-onboarding-steps{grid-template-columns:1fr}.teacher-profile-form,.teacher-create-form{grid-template-columns:1fr}.teacher-class-list{grid-template-columns:1fr}.teacher-section-heading{flex-direction:column}.teacher-search-label{width:100%;min-width:0}.roster-row>.roster-actions{flex-basis:100%;min-width:0;justify-content:flex-start}.join-code-actions>*{flex:1 1 150px}.drawer-summary-grid,.teacher-skill-grid{grid-template-columns:1fr}.student-drawer-panel{width:100vw}.join-code-box>strong{letter-spacing:.09em}}
-@media(max-width:520px){.teacher-welcome-card,.teacher-profile-card,.teacher-create-card,.class-header-card,.matrix-card,.roster-card{padding:16px}.teacher-onboarding-card{padding:16px}.join-code-actions>*{width:100%;flex:1 1 100%}}
+@media(max-width:520px){.teacher-welcome-card,.teacher-profile-card,.teacher-create-card,.teacher-account-card,#institutionalTeacherNotice,.class-header-card,.matrix-card,.roster-card{padding:16px}.teacher-onboarding-card{padding:16px}.join-code-actions>*{width:100%;flex:1 1 100%}}
 
 @media(max-width:1180px){.matrix-summary-grid{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.matrix-section-heading,.matrix-insight-row,.matrix-table-meta{align-items:stretch;flex-direction:column}.matrix-filter-label{min-width:100%}.matrix-summary-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.matrix-summary-card:last-child{grid-column:1/-1}.teacher-legend{justify-content:flex-start}}
@@ -25,8 +25,13 @@
 .teacher-view-heading h2{margin:5px 0 8px}
 .teacher-view-heading p{margin:0}
 .teacher-view-heading>.button-link{flex:0 0 auto;max-width:100%}
-.teacher-account-card{display:flex;align-items:center;justify-content:space-between;gap:28px}
+#institutionalTeacherNotice{padding:22px 24px;display:grid;gap:8px}
+#institutionalTeacherNotice h2{margin:0;font-size:clamp(1.35rem,2vw,1.75rem)}
+#institutionalTeacherNotice p{margin:0;line-height:1.6}
+.teacher-account-card{display:flex;align-items:center;justify-content:space-between;gap:28px;margin-top:18px;padding:22px 24px}
 .teacher-account-card>div{min-width:0}
+.teacher-account-card h3{margin:.35rem 0 .35rem}
+.teacher-account-card p{margin:0;line-height:1.6}
 .teacher-account-card .button-link{flex:0 0 auto}
 .teacher-collection-card{padding:24px}
 .teacher-collection-heading{display:flex;align-items:center;justify-content:space-between;gap:16px;margin-bottom:18px}
