@@ -1,10 +1,14 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.55
-**Updated:** 2026-09-28
+**Roadmap version:** 2.56
+**Updated:** 2026-09-29
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls, the authenticated school-admin operational overview and the teacher workspace operations are deployed; and the 14C school-scoped learner onboarding, exact-context stamping, assigned-class teacher roster and teacher evidence views are deployed. Institutional teachers can create assigned classrooms, send bounded bulk email invitations, issue optional one-use join codes, separate active and archived classrooms, and rename authorized classrooms without changing their identity or evidence. Role-scoped privacy inventories and Armenian-safe responsive layouts are deployed across role dashboards. Teacher offboarding and database-enforced final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 live checks on 2026-09-28. Authenticated action acceptance also passed 141/141 checks across both schools, with 54/54 read-isolation checks before and after. Teacher navigation/rename/archive, reciprocal class/staff mutation denials and temporary-membership offboarding UI acceptance are complete for these fixtures. Live multi-unit/multi-context switching remains open once a second authorized release exists. School-wide administrative analytics remain a separate 14D gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
+
+## Sprint 15A authoring-tool decision — 2026-09-29
+
+By product-owner approval, Sprint 15 begins with **15A — Content and Hint Authoring Tools**. It is a mandatory entry slice before bulk hint production or publication for Physics 7 Chapters II–VI. Curriculum/source mapping may proceed in parallel, but scaling the hint bank must wait until the governed reviewer workflow passes its acceptance gate. The editor is deterministic content-governance infrastructure; live AI hint generation and teacher editing remain outside this slice.
 
 ## Bounded code-review maintenance — 2026-09-28
 
@@ -51,7 +55,7 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 12.5 | Hybrid | Academic policy and attention-model definitions in chat; state machine, data model, APIs, UI, analytics and QA in Work. |
 | 13 | Work | Release checklist, deployment, migrations, regression and evidence reconciliation. |
 | 14 | Hybrid | Multi-tenant academic architecture first in chat; bounded implementation slices in Work. |
-| 15 | Hybrid | Curriculum/outcome/skill design in chat; bulk ingestion and technical QA in Work. |
+| 15 | Hybrid | Content-governance and curriculum design in chat; reviewer editor, bulk ingestion and technical QA in Work. |
 | 16 | Work | Physics reference-course integration and regression. |
 | 16.1 | Hybrid | Mathematics curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
 | 16.2 | Hybrid | Armenian-language curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
@@ -108,7 +112,7 @@ For the current Sprint 11 state:
 | 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | ✅ | Complete. 12.5A–Z, lifecycle branches, persisted MCQ randomization, authenticated desktop QA and authenticated mobile learner/teacher QA at 390 px and 430 px all pass. Production Mobile browser QA #2 passed on GitHub head `0c56fa8`. |
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed. 14B account/provisioning/recovery controls, school-admin operations and teacher workspace operations are deployed. Institutional classroom creation, class-bound bulk invitations, optional secure join codes, dedicated active/archive views, and authorized classroom renaming are complete. The 14C school-scoped learner onboarding, exact-context session stamping and teacher roster/evidence views pass their current controlled production checks. Teacher offboarding and final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 checks. Authenticated class/staff mutation-denial and teacher navigation/rename/offboarding action acceptance passed 141/141 checks, with read isolation passing 54/54 before and after. Multi-context switching remains open after a second authorized release; school-wide analytics remains the separate 14D gate. |
-| 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Build remaining Physics 7 units from the current official programme through the same standards → outcomes → skills → assessment → QA pipeline. |
+| 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Begin with mandatory 15A Content and Hint Authoring Tools, then build remaining Physics 7 units through standards → outcomes → skills → assessment → QA. |
 | 16 | Physics 7 Reference Course Integration | ⏳ | Integrate the complete Physics 7 reference course and preserve unit-bound diagnostics/mastery with course-level aggregation. |
 | 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
 | 16.2 | Armenian Language 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Armenian Language 7 unit through the complete learner, teacher, governance and QA pipeline. |
@@ -730,7 +734,36 @@ Before Sprint 14 closes, verify that the implemented foundations can support cur
 
 ## Sprint 15 — Grade 7 Physics Expansion — Chapters II–VI
 
-Every remaining Physics 7 unit follows the same controlled pipeline:
+### 15A — Content and Hint Authoring Tools — mandatory entry slice
+
+Before bulk hint production or publication for Chapters II–VI, implement a protected Content Reviewer authoring workspace that works across subjects, grades, programmes, units, skills and item templates even though Physics 7 is its first production use.
+
+Required capabilities:
+
+- browse, search and filter skill-level and item-template remediation guides by subject, grade, programme, unit/chapter, skill, template, guide scope and lifecycle status;
+- edit the Armenian title, strategy, Hint 1, Hint 2, analogous worked example, optional error-code specialization, allowed raw-parameter placeholders and source/reference metadata;
+- preview parameterized guides against real item variants without evaluating derived answers;
+- support draft → review → publish → archive, with only authorized Content Reviewer/Content Admin or bounded Platform Admin sessions able to publish or archive;
+- require server-side authorization for every read/write action and AAL2/step-up protection for publish/archive actions;
+- preserve immutable guide versions, exact rendered-text snapshots, actor, timestamp and change rationale; production content must never be silently overwritten;
+- validate missing/disallowed placeholders, fallback resolution and obvious answer leakage; analogous examples must use different values or context from the live item;
+- retain the runtime resolver order: error-specific template guide → default template guide → skill fallback;
+- regression-test permissions, version history, preview/rendering, placeholder safety, fallback behavior and authenticated browser workflows.
+
+Entry gate:
+
+- Chapters II–VI curriculum and textbook mapping may proceed in parallel.
+- Bulk hint authoring, import or publication for Chapters II–VI must not begin until 15A passes.
+- The existing Chapter I hints remain operational and editable through the governed backend until the UI is deployed.
+
+Explicit exclusions:
+
+- no live AI/LLM hint generation;
+- no teacher authority to edit or publish canonical hints;
+- no change to mastery thresholds, assisted-evidence weighting, diagnostic or Mastery Check hint policy;
+- teacher-facing hint reporting/dispute intake may be added later through the governed content-correction workflow.
+
+After the 15A gate, every remaining Physics 7 unit follows the same controlled pipeline:
 
 ```text
 current Physics 7 programme
