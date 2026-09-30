@@ -66,6 +66,12 @@ The repository includes `vercel.json`, configured to deploy the static `web/` di
 - `tests/` — automated tests for the learning-engine core
 - `web/` — first student-facing browser prototype
 
+## Key architecture documents
+
+- `docs/subject-neutral-core.md` — normative boundary between the subject-neutral platform core and versioned subject-aware extensions
+- `docs/architecture.md`
+- `docs/decisions.md`
+
 ## Key curriculum documents
 
 - `docs/grade7-physics-textbook-map.md`

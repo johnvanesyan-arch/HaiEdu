@@ -1,8 +1,10 @@
-# Architecture — v0.2
+# Architecture — v0.3
 
 ## Principle
 
 The platform's core learning engine must not depend on generative AI.
+
+The platform core is subject-neutral. Identity, tenancy, enrollment, curriculum versioning, learning sessions, evidence provenance, authorization, navigation and shared analytics must operate from governed data and stable contracts rather than assumptions about Physics or any other subject. Subject-specific content models, response renderers, scoring strategies, mastery policies and terminology belong in explicit, versioned extensions. The normative boundary and acceptance criteria are defined in `docs/subject-neutral-core.md`.
 
 ```text
 Student UI

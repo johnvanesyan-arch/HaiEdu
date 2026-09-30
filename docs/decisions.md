@@ -3,8 +3,17 @@
 ## ADR-001 — Physics first
 **Decision:** First developed subject is Grade 7 Physics.
 
-## ADR-002 — Subject-neutral backend
-**Decision:** Database and learning engine remain generic so Mathematics, Armenian, Chemistry, Biology, etc. can be added without schema redesign.
+## ADR-002 — Subject-neutral core and subject-aware extensions
+**Decision:** The whole platform core remains subject-neutral. Subject-specific behavior is implemented through explicit, versioned configuration or extension points so Mathematics, Armenian Language, English, Biology, Chemistry and later subjects can be added without redesigning shared identity, tenancy, enrollment, curriculum versioning, sessions, provenance, authorization, navigation or analytics.
+
+**Consequences:**
+- shared schemas, services, APIs and UI shells derive subject, grade, scope, counts, labels and capabilities from governed data;
+- response formats, content models, renderers, scoring strategies, mastery policies and subject terminology may vary only behind declared extension contracts;
+- a subject extension cannot weaken tenant isolation, authorization, evidence provenance or curriculum-release binding;
+- existing Physics-specific implementation is an extension or migration concern, not a platform default;
+- exceptions require an explicit architecture decision with scope, owner, migration plan and expiry/review condition.
+
+The normative acceptance standard is `docs/subject-neutral-core.md`.
 
 ## ADR-003 — Deterministic core
 **Decision:** Routine grading, mastery, prerequisite checks, and recommendations do not require generative AI.
