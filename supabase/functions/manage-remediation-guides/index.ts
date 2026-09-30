@@ -292,7 +292,13 @@ Deno.serve(async (req) => {
       p_actor_role: role,
       p_actor_aal: aal,
     });
-    if (error) return json({ error: "guide_workflow_failed", detail: error.message }, 409);
+    if (error) {
+      console.error("manage-remediation-guides lifecycle RPC failed", JSON.stringify({
+        code: error.code,
+        message: error.message,
+      }));
+      return json({ error: "guide_workflow_failed", detail: error.message }, 409);
+    }
     return json({ result: data, validation });
   } catch (error) {
     const message = error instanceof Error ? error.message : String(error);
