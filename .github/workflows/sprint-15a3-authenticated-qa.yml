@@ -1,0 +1,51 @@
+name: Sprint 15A.3 authenticated closure QA
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - scripts/sprint-15a3-authenticated-qa.mjs
+      - .github/workflows/sprint-15a3-authenticated-qa.yml
+      - supabase/functions/manage-remediation-guides/index.ts
+      - supabase/migrations/20260930204139_sprint_15a_authoring_role_cast.sql
+      - tests/sprint-15a-remediation-authoring-db.test.mjs
+      - tests/sprint-15a-remediation-authoring.test.mjs
+  push:
+    branches: [main]
+    paths:
+      - scripts/sprint-15a3-authenticated-qa.mjs
+      - .github/workflows/sprint-15a3-authenticated-qa.yml
+      - supabase/functions/manage-remediation-guides/index.ts
+      - supabase/migrations/20260930204139_sprint_15a_authoring_role_cast.sql
+      - tests/sprint-15a-remediation-authoring-db.test.mjs
+      - tests/sprint-15a-remediation-authoring.test.mjs
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sprint-15a3-authenticated-qa
+  cancel-in-progress: false
+
+jobs:
+  negative-authorization:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Run wrong-role and stale-session checks
+        run: node scripts/sprint-15a3-authenticated-qa.mjs
+        env:
+          QA_SCHOOL_A_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_A_ADMIN_EMAIL }}
+          QA_SCHOOL_A_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_A_ADMIN_PASSWORD }}
+      - name: Upload redacted acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sprint-15a3-authenticated-evidence
+          path: qa-results/sprint-15a3-authenticated.json
+          if-no-files-found: error
+          retention-days: 14
