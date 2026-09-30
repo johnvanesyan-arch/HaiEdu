@@ -11,7 +11,7 @@ HaiEdu is a multi-subject platform. The platform core must be subject-neutral; s
 
 The platform must support Mathematics, Armenian Language, English, Physics and later subjects such as Biology and Chemistry without redesigning shared identity, tenancy, enrollment, curriculum versioning, learning sessions, evidence provenance, authorization, navigation or analytics.
 
-A Physics-first implementation may provide the first production reference, but it does not define platform defaults.
+All subjects have equal architectural and product status. Physics is one subject taught and assessed through the platform. No subject may be designated the platform default, reference course, reference implementation or privileged path. Differences in current content coverage or implementation sequence record delivery status only; they create no architectural or product precedence.
 
 ## Shared core responsibilities
 
@@ -74,7 +74,7 @@ Subject-specific screens may exist, but they must enter through the same entitle
 
 A change satisfies this invariant only when the relevant criteria can be demonstrated:
 
-1. A new subject or grade can be onboarded without redesigning shared identity, tenancy, enrollment, curriculum versioning, session, provenance, authorization, navigation or analytics contracts.
+1. The platform designates no default, reference or privileged subject, and a new subject or grade can be onboarded without redesigning shared identity, tenancy, enrollment, curriculum versioning, session, provenance, authorization, navigation or analytics contracts.
 2. Shared code contains no hard-coded subject, grade, course code, unit size, skill/item count, language, response format, scoring rule or mastery rule used as a platform default.
 3. Counts, labels, available actions and assessment coverage are derived from governed programme, release, blueprint or capability data.
 4. Subject-specific renderers, response types, graders, rubrics and policies are selected through declared capability or extension contracts.
@@ -99,6 +99,6 @@ Any temporary exception requires an explicit architecture decision that records:
 
 ## Adoption and current compliance
 
-This invariant is effective immediately for new work and for modifications to shared platform surfaces. Existing Physics-first routes, content and assessment behavior remain valid only as the current subject implementation; they do not establish platform defaults.
+This invariant is effective immediately for new work and for modifications to shared platform surfaces. Existing subject routes, content and assessment behavior remain valid only within their declared subject extensions; none establishes a platform default or reference model.
 
 Adoption of this document is a governance and architecture milestone. It is not a claim that all historical code already satisfies every acceptance criterion. Existing subject-coupled assumptions must be inventoried and resolved in bounded, tested migration slices before the platform or a milestone is described as fully compliant.
