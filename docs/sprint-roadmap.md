@@ -831,6 +831,8 @@ The review found that `PHY7-U02-S01` duplicated the existing Chapter I body/subs
 
 The first family, `PHY7-U02-S02-F01-PARTICULATE-EVIDENCE`, contains four source-backed parallel single-choice drafts, explicit answer keys, unit scopes, version-1 snapshots, draft misconception mappings and one append-only draft remediation guide. It is specified in [Sprint 15B.2 — Chapter II skill review and first item family](sprint-15b2-physics7-chapter-ii-first-item-family.md). No assessment pool or blueprint was created, the successor release remains draft, and the learner resolver has no active `PHY7-U02` release.
 
+[PR #74](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/74) merged this slice as `e316317262126e41fbc4ca90364a42cdb34567f1`; pre-merge CI #982 passed and the production migration completed successfully. Production verification found 8 current Chapter II skills, the `PHY7-U01-S02 → PHY7-U02-S02` prerequisite at `0.72`, 1 draft family, 1 draft template, 4 versioned learner-inactive items, 16 options, 4 answer keys, 4 unit scopes, 3 draft misconceptions, 12 response mappings and 1 versioned draft guide. Chapter II still has zero assessment pools, zero assessment blueprints and no active release; the Chapter I pilot remains unchanged. The final advisor pass found no new high-severity issue, with only the already-known RLS/no-policy information notices, leaked-password-protection warning and pre-existing performance suggestions remaining.
+
 ## Sprint 16 — Physics 7 Course Integration
 
 The Physics 7 course includes:
