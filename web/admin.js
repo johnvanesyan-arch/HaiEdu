@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { schoolMembershipStatus } from "./school-membership-status.js";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -37,6 +38,14 @@ function roleLabel(role) {
 
 function statusLabel(status) {
   return ({ active:"Ակտիվ", suspended:"Կասեցված", archived:"Արխիվացված", deletion_pending:"Ջնջման սպասող", ended:"Ավարտված", revoked:"Չեղարկված" })[status] || status || "—";
+}
+
+function schoolStatusMarkup(user) {
+  const membership = schoolMembershipStatus(user?.membershipStatus);
+  const accountWarning = user?.accountStatus && user.accountStatus !== "active"
+    ? `<span class="status-chip ${esc(user.accountStatus)}">Հաշիվը՝ ${esc(statusLabel(user.accountStatus))}</span>`
+    : "";
+  return `<div class="school-status-stack"><span class="status-chip school-${membership.key}">${esc(membership.label)}</span>${accountWarning}</div>`;
 }
 
 function displayUser(user) {
@@ -174,10 +183,10 @@ function renderSchoolDetail(data) {
     <div class="school-detail-stats"><span>${esc(admins.length)} ադմին</span><span>${esc(teachers.length)} ուսուցիչ</span><span>${esc(data.classCount || 0)} դասարան</span><span>${esc(data.studentCount || 0)} աշակերտ</span></div>
   </div>
   <section class="school-branch"><div class="school-branch-heading"><h4>Դպրոցի ադմիններ</h4><span class="subtle small">Ուսուցիչները չեն պատկանում որևէ մեկ ադմինի հաշվին։</span></div>
-    <div class="person-list">${admins.length ? admins.map((user) => `<article class="person-card"><div class="person-card-static"><div><span class="person-name">${esc(displayUser(user))}</span><div class="person-meta">${esc(user.email || "էլ. հասցե չկա")}</div></div><span class="status-chip ${esc(user.accountStatus)}">${esc(statusLabel(user.accountStatus))}</span><div class="admin-actions">${actionButtons(user, true)}</div></div></article>`).join("") : '<div class="admin-empty">Ակտիվ դպրոցի ադմին չկա։ Սա պահանջում է անհապաղ գործողություն։</div>'}</div>
+    <div class="person-list">${admins.length ? admins.map((user) => `<article class="person-card"><div class="person-card-static"><div><span class="person-name">${esc(displayUser(user))}</span><div class="person-meta">${esc(user.email || "էլ. հասցե չկա")}</div></div>${schoolStatusMarkup(user)}<div class="admin-actions">${actionButtons(user, true)}</div></div></article>`).join("") : '<div class="admin-empty">Ակտիվ դպրոցի ադմին չկա։ Սա պահանջում է անհապաղ գործողություն։</div>'}</div>
   </section>
   <section class="school-branch"><div class="school-branch-heading"><h4>Ուսուցիչներ և դասարաններ</h4><span class="subtle small">Դասարանների աշակերտները բացվում են ըստ պահանջի։</span></div>
-    <div class="person-list">${teachers.length ? teachers.map((teacher) => `<details class="person-card"><summary><div><span class="person-name">${esc(displayUser(teacher))}</span><div class="person-meta">${esc(teacher.email || "էլ. հասցե չկա")} · ${esc((teacher.subjects || []).join(", ") || "Առարկա նշված չէ")}</div></div><span class="status-chip ${esc(teacher.accountStatus)}">${esc(statusLabel(teacher.accountStatus))}</span><div class="admin-actions">${actionButtons(teacher, true)}</div></summary><div class="class-assignment-list">${renderTeacherClasses(teacher.classes || [], school.id)}</div></details>`).join("") : '<div class="admin-empty">Ուսուցիչ դեռ չկա։</div>'}</div>
+    <div class="person-list">${teachers.length ? teachers.map((teacher) => `<details class="person-card"><summary><div><span class="person-name">${esc(displayUser(teacher))}</span><div class="person-meta">${esc(teacher.email || "էլ. հասցե չկա")} · ${esc((teacher.subjects || []).join(", ") || "Առարկա նշված չէ")}</div></div>${schoolStatusMarkup(teacher)}<div class="admin-actions">${actionButtons(teacher, true)}</div></summary><div class="class-assignment-list">${renderTeacherClasses(teacher.classes || [], school.id)}</div></details>`).join("") : '<div class="admin-empty">Ուսուցիչ դեռ չկա։</div>'}</div>
   </section>`;
   target.classList.remove("hidden");
   bindAccountActions(target);

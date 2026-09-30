@@ -292,7 +292,31 @@
   font-size: .81rem;
   font-weight: 750;
 }
+.roster-status-active { color: #28583b; background: #e6f4e9; }
+.roster-status-archived { color: #52606f; background: #eef1f5; }
 .roster-status-ended { color: #7b4350; background: #fbebee; }
+.roster-account-status {
+  display: inline-flex;
+  padding: 5px 10px;
+  border-radius: 999px;
+  color: #8a3342;
+  background: #fff0f1;
+  font-size: .78rem;
+  font-weight: 750;
+}
+.roster-history {
+  padding-top: 16px;
+  border-top: 1px solid #e0e6ee;
+}
+.roster-history > summary {
+  cursor: pointer;
+  color: #294d79;
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 1.45;
+}
+.roster-history > summary:focus-visible { outline: 2px solid #245b96; outline-offset: 4px; }
+.roster-history-body { display: grid; gap: 12px; margin-top: 12px; }
 .roster-field { display: flex; flex-wrap: wrap; gap: 5px 10px; margin: 14px 0 0; }
 .roster-field strong, .roster-classes > strong { color: #243e63; }
 .roster-field span { color: #52667f; overflow-wrap: anywhere; }

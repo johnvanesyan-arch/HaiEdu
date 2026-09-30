@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { schoolMembershipStatus } from "./school-membership-status.js";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -347,7 +348,7 @@ async function offboardTeacher(teacher, schoolId, button) {
     }
     if ($("rosterSchool").value !== schoolId) return;
     await loadTeacherRoster();
-    message("rosterMessage", "Ուսուցչի աշխատանքն այս դպրոցում դադարեցված է։ Դասարաններն ու ուսուցման պատմությունը պահպանված են։");
+    message("rosterMessage", "Անդամակցությունն այս դպրոցում ավարտված է։ Դասարաններն ու ուսուցման պատմությունը պահպանված են։");
   } catch {
     if ($("rosterSchool").value === schoolId)
       message("rosterMessage", "Գործողությունը չհաջողվեց հաստատել։ Թարմացրեք ցանկը և ստուգեք ուսուցչի վիճակը։", true);
@@ -359,7 +360,8 @@ async function offboardTeacher(teacher, schoolId, button) {
 function teacherCard(teacher, schoolId) {
     const card = document.createElement("article");
     card.className = "roster-card";
-    const active = teacher.membership_status === "active" && teacher.account_status === "active";
+    const membership = schoolMembershipStatus(teacher.membership_status);
+    const active = membership.key === "active" && teacher.account_status === "active";
     const head = document.createElement("div");
     head.className = "roster-card-head";
     const identity = document.createElement("div");
@@ -382,11 +384,19 @@ function teacherCard(teacher, schoolId) {
     const stateBox = document.createElement("div");
     stateBox.className = "roster-state-actions";
     const state = document.createElement("span");
-    state.className = `roster-status${active ? "" : " roster-status-ended"}`;
-    state.textContent = active ? "Ակտիվ"
-      : teacher.membership_status === "archived" ? "Արխիվացված"
-        : teacher.account_status !== "active" ? "Հաշիվը դադարեցված է" : "Մուտքը դադարեցված է";
+    state.className = `roster-status roster-status-${membership.key}`;
+    state.textContent = membership.label;
     stateBox.append(state);
+    if (teacher.account_status !== "active") {
+      const accountState = document.createElement("span");
+      accountState.className = "roster-account-status";
+      accountState.textContent = teacher.account_status === "suspended"
+        ? "Հաշիվը կասեցված է"
+        : teacher.account_status === "archived"
+          ? "Հաշիվը արխիվացված է"
+          : "Հաշիվը ակտիվ չէ";
+      stateBox.append(accountState);
+    }
     if (teacher.membership_status === "active" || teacher.membership_status === "archived") {
       const archiveButton = document.createElement("button");
       const archived = teacher.membership_status === "archived";
@@ -411,8 +421,8 @@ function teacherCard(teacher, schoolId) {
         }
         await loadTeacherRoster();
         message("rosterMessage", archived
-          ? "Ուսուցչի մուտքն այս դպրոցում վերականգնված է։"
-          : "Ուսուցիչն արխիվացված է։ Հաշիվն ու ամբողջ պատմությունը պահպանված են։");
+          ? "Ուսուցիչը կրկին ակտիվ է այս դպրոցում։"
+          : "Ուսուցիչն արխիվացված է այս դպրոցում։ Հաշիվն ու ամբողջ պատմությունը պահպանված են։");
       });
       stateBox.append(archiveButton);
       const offboardButton = document.createElement("button");
@@ -467,6 +477,19 @@ function appendRosterGroup(container, titleText, teachers, schoolId, archived = 
   container.append(group);
 }
 
+function appendRosterHistory(container, teachers, schoolId) {
+  if (!teachers.length) return;
+  const details = document.createElement("details");
+  details.className = "roster-history";
+  const summary = document.createElement("summary");
+  summary.textContent = `Նախկին ուսուցիչներ · ավարտված անդամակցություններ (${teachers.length})`;
+  const body = document.createElement("div");
+  body.className = "roster-history-body";
+  for (const teacher of teachers) body.append(teacherCard(teacher, schoolId));
+  details.append(summary, body);
+  container.append(details);
+}
+
 async function loadTeacherRoster() {
   const version = ++teacherRosterLoadVersion;
   const schoolId = $("rosterSchool").value;
@@ -502,8 +525,8 @@ async function loadTeacherRoster() {
     data.teachers.filter((teacher) => teacher.membership_status === "active"), schoolId);
   appendRosterGroup(list, "Արխիվացված ուսուցիչներ",
     data.teachers.filter((teacher) => teacher.membership_status === "archived"), schoolId, true);
-  appendRosterGroup(list, "Աշխատանքն ավարտած ուսուցիչներ",
-    data.teachers.filter((teacher) => !["active", "archived"].includes(teacher.membership_status)), schoolId, true);
+  appendRosterHistory(list,
+    data.teachers.filter((teacher) => !["active", "archived"].includes(teacher.membership_status)), schoolId);
 }
 
 async function loadTeacherSubjects(schoolId) {
