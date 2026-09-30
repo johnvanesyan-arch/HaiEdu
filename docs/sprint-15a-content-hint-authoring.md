@@ -2,7 +2,7 @@
 
 ## Status
 
-**15A.1 governed authoring foundation: implementation candidate.**
+**15A.1 governed authoring foundation: deployed and technically verified.**
 
 Sprint 15A remains open until the full authenticated closure gate passes. Bulk Chapters II–VI hint authoring, import and publication remain blocked.
 
@@ -66,12 +66,20 @@ Draft and review actions append authoring records only. The learner-facing runti
 - inline MFA step-up for actors who already have a verified factor;
 - immutable version history.
 
-## Verification completed before deployment
+## Verification and deployment evidence
 
 - targeted source/security suite: 7/7 passed;
 - PGlite lifecycle transaction test: passed;
 - browser JavaScript syntax check: passed;
 - Edge Function TypeScript parse check: passed.
+- PR #65 full CI and institutional-concurrency jobs passed and merged as `ce78a1861c9bdd8fc3cc070191a54dd866ed23bb`;
+- advisor correction PR #66 passed and merged as `78b9c438ecca4fb14e29cc9d2efc73aee862f251`;
+- migrations `sprint_15a_remediation_authoring_foundation` and `sprint_15a_authoring_parent_index` applied successfully;
+- `manage-remediation-guides` v1 is active with JWT verification;
+- production backfill contains exactly 19 current published authoring versions for the existing 10 skill guides and 9 template guides;
+- anon/authenticated roles cannot read authoring history or execute the lifecycle procedure; service role access and the immutable trigger are active;
+- the database advisor's missing parent-FK-index finding was corrected;
+- Vercel reported a successful production deployment, and the signed-out production render at `/content-guides` showed the protected Armenian entry surface.
 
 The database test proves that draft and review do not change runtime content, changed content cannot bypass review, AAL1 publication is denied, AAL2 publication updates the runtime exactly once, actor/rationale provenance is retained and authoring history rejects mutation.
 
