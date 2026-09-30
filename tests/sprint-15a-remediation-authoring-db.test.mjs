@@ -6,6 +6,7 @@ import { PGlite } from "@electric-sql/pglite";
 const fixture = readFileSync("tests/fixtures/sprint-15a-remediation-authoring.sql", "utf8");
 const migration = readFileSync("supabase/migrations/20260930120000_sprint_15a_remediation_authoring_foundation.sql", "utf8");
 const roleCastMigration = readFileSync("supabase/migrations/20260930204139_sprint_15a_authoring_role_cast.sql", "utf8");
+const governedCreationMigration = readFileSync("supabase/migrations/20261001000000_sprint_15b_governed_guide_creation.sql", "utf8");
 const actor = "10000000-0000-4000-8000-000000000010";
 const guide = "10000000-0000-4000-8000-000000000011";
 
@@ -69,5 +70,79 @@ test("15A database workflow preserves runtime until reviewed AAL2 publish", asyn
   assert.equal(runtimeSnapshot.rows[0].lifecycle_action, "published");
 
   await assert.rejects(() => db.query("update remediation_guide_authoring_versions set change_rationale='փոփոխված' where guide_source_id=$1", [guide]), /append-only/);
+  await db.close();
+});
+
+test("15B creates a new guide as runtime-inactive draft with authoring version one", async () => {
+  const db = new PGlite();
+  await db.waitReady;
+  await db.exec(fixture);
+  await db.exec(migration);
+  await db.exec(roleCastMigration);
+  await db.exec(governedCreationMigration);
+
+  const draftContent = JSON.stringify({
+    skillId: "10000000-0000-4000-8000-000000000007",
+    itemTemplateId: null,
+    misconceptionCode: "new_candidate_misconception",
+    triggerErrorCode: null,
+    titleHy: "Նոր թեկնածու ուղեցույց",
+    strategyHy: "Վերլուծիր տրված տեղեկությունը և ընտրիր համապատասխան գաղափարը։",
+    hint1Hy: "Առանձնացրու տրված փաստերը։",
+    hint2Hy: "Կապիր փաստերը ուսումնասիրվող հասկացության հետ։",
+    workedExampleHy: "Դիտարկիր մեկ այլ իրավիճակ և կիրառիր նույն դատողությունը։",
+    allowedParameterKeys: [],
+    metadata: {},
+  });
+
+  const created = await db.query(`select public.service_create_remediation_guide_draft(
+    $1,$2,$3,$4,$5::jsonb,$6::jsonb,$7,$8,$9,$10
+  ) as result`, [
+    "skill",
+    "10000000-0000-4000-8000-000000000007",
+    null,
+    "new_candidate_misconception",
+    draftContent,
+    references,
+    "Նոր ուղեցույցի սկզբնական սևագիր",
+    actor,
+    "content_admin",
+    "aal1",
+  ]);
+  const sourceId = created.rows[0].result.guideSourceId;
+
+  const runtime = await db.query(
+    "select status, guide_version from skill_remediation_guides where id=$1",
+    [sourceId],
+  );
+  assert.deepEqual(runtime.rows[0], { status: "draft", guide_version: 1 });
+
+  const authored = await db.query(
+    "select lifecycle_status, authoring_version, actor_id, actor_aal, published_runtime_version from remediation_guide_authoring_versions where guide_source_id=$1",
+    [sourceId],
+  );
+  assert.deepEqual(authored.rows[0], {
+    lifecycle_status: "draft",
+    authoring_version: 1,
+    actor_id: actor,
+    actor_aal: "aal1",
+    published_runtime_version: null,
+  });
+
+  await assert.rejects(() => db.query(`select public.service_create_remediation_guide_draft(
+    $1,$2,$3,$4,$5::jsonb,$6::jsonb,$7,$8,$9,$10
+  )`, [
+    "skill",
+    "10000000-0000-4000-8000-000000000007",
+    null,
+    "new_candidate_misconception",
+    draftContent,
+    references,
+    "Կրկնվող սևագիր",
+    actor,
+    "content_admin",
+    "aal1",
+  ]), /guide_already_exists/);
+
   await db.close();
 });
