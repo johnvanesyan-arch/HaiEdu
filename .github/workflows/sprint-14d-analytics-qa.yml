@@ -1,0 +1,54 @@
+name: Sprint 14D authenticated analytics QA
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      - scripts/sprint-14d-analytics-qa.mjs
+      - web/school-admin.html
+      - web/school-admin.css
+      - web/school-admin.js
+      - supabase/functions/get-school-performance-analytics/**
+      - supabase/functions/_shared/school-performance-analytics.ts
+      - supabase/functions/_shared/auth.ts
+      - .github/workflows/sprint-14d-analytics-qa.yml
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sprint-14-isolation-qa
+  cancel-in-progress: false
+
+jobs:
+  authenticated-school-analytics:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - name: Require reviewed main branch
+        run: test "$GITHUB_REF" = refs/heads/main
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Run read-only two-school analytics acceptance
+        run: node scripts/sprint-14d-analytics-qa.mjs
+        env:
+          QA_WEB_ORIGIN: https://www.haiedu.am
+          QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
+          QA_SCHOOL_A_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_A_ADMIN_EMAIL }}
+          QA_SCHOOL_A_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_A_ADMIN_PASSWORD }}
+          QA_SCHOOL_B_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_B_ADMIN_EMAIL }}
+          QA_SCHOOL_B_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_B_ADMIN_PASSWORD }}
+      - name: Upload redacted acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: sprint-14d-analytics-evidence
+          path: qa-results/sprint-14d-analytics.json
+          if-no-files-found: warn
+          retention-days: 14
+
