@@ -778,7 +778,7 @@ Entry gate:
 
 - Chapters II–VI curriculum and textbook mapping may proceed in parallel.
 - Bulk hint authoring, import or publication for Chapters II–VI must not begin until 15A passes.
-- The existing Chapter I hints remain operational and editable through the governed backend until the UI is deployed.
+- The existing Chapter I hints remain operational through the unchanged learner resolver and are now editable through the deployed governed 15A.1 workspace; full authenticated closure still belongs to 15A.3.
 
 Explicit exclusions:
 
