@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 const read = (path) => readFileSync(path, "utf8");
 const migration = read("supabase/migrations/20260930120000_sprint_15a_remediation_authoring_foundation.sql");
 const advisorCorrection = read("supabase/migrations/20260930195500_sprint_15a_authoring_parent_index.sql");
+const roleCastCorrection = read("supabase/migrations/20260930204139_sprint_15a_authoring_role_cast.sql");
 const endpoint = read("supabase/functions/manage-remediation-guides/index.ts");
 const validation = read("supabase/functions/_shared/remediation-authoring-validation.mjs");
 const resolver = read("supabase/functions/get-remediation-help/index.ts");
@@ -39,6 +40,12 @@ test("publish and archive are server-only, active-role and AAL2 protected", () =
   assert.match(endpoint, /hasActiveLiveSession/);
   assert.match(endpoint, /\["content_admin", "admin"\]\.includes\(role\)/);
   assert.match(endpoint, /\["publish", "archive"\]\.includes\(action\) && aal !== "aal2"/);
+});
+
+test("production enum roles are compared to asserted text roles explicitly", () => {
+  assert.match(roleCastCorrection, /v_profile\.role::text <> p_actor_role/);
+  assert.doesNotMatch(roleCastCorrection, /v_profile\.role <> p_actor_role/);
+  assert.match(roleCastCorrection, /notify pgrst, 'reload schema'/);
 });
 
 test("preview interpolates allow-listed raw parameters without answer evaluation", () => {
