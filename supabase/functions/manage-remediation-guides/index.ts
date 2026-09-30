@@ -203,6 +203,54 @@ Deno.serve(async (req) => {
     }
 
     const scope = String(body.guideScope ?? "") as GuideScope;
+    if (action === "create") {
+      if (!(["skill", "template"] as string[]).includes(scope)) {
+        return json({ error: "guide_scope_required" }, 400);
+      }
+
+      const skillId = scope === "skill" ? String(body.skillId ?? "") : null;
+      const itemTemplateId = scope === "template" ? String(body.itemTemplateId ?? "") : null;
+      if ((scope === "skill" && !skillId) || (scope === "template" && !itemTemplateId)) {
+        return json({ error: "guide_target_required" }, 400);
+      }
+
+      const content = guideContent(body.content);
+      const referenceMetadata = plainObject(body.referenceMetadata);
+      const rationale = String(body.changeRationale ?? "").trim();
+      if (rationale.length < 3) return json({ error: "change_rationale_required" }, 400);
+
+      const specializationCode = scope === "skill"
+        ? String(content.misconceptionCode ?? "").trim()
+        : String(content.triggerErrorCode ?? "").trim() || null;
+      const targetContent = {
+        ...content,
+        skillId: scope === "skill" ? skillId : null,
+        itemTemplateId: scope === "template" ? itemTemplateId : null,
+      };
+      const validation = validateGuideContent(scope, targetContent, referenceMetadata, null);
+
+      const { data, error } = await admin.rpc("service_create_remediation_guide_draft", {
+        p_guide_scope: scope,
+        p_skill_id: scope === "skill" ? skillId : null,
+        p_item_template_id: scope === "template" ? itemTemplateId : null,
+        p_specialization_code: specializationCode,
+        p_content_snapshot: targetContent,
+        p_reference_metadata: referenceMetadata,
+        p_change_rationale: rationale,
+        p_actor_id: userData.user.id,
+        p_actor_role: role,
+        p_actor_aal: aal,
+      });
+      if (error) {
+        console.error("manage-remediation-guides create RPC failed", JSON.stringify({
+          code: error.code,
+          message: error.message,
+        }));
+        return json({ error: "guide_create_failed", detail: error.message }, 409);
+      }
+      return json({ result: data, validation }, 201);
+    }
+
     const sourceId = String(body.guideSourceId ?? "");
     if (!(["skill", "template"] as string[]).includes(scope) || !sourceId) {
       return json({ error: "guide_identity_required" }, 400);

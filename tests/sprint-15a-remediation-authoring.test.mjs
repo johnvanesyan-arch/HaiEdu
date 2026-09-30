@@ -6,6 +6,7 @@ const read = (path) => readFileSync(path, "utf8");
 const migration = read("supabase/migrations/20260930120000_sprint_15a_remediation_authoring_foundation.sql");
 const advisorCorrection = read("supabase/migrations/20260930195500_sprint_15a_authoring_parent_index.sql");
 const roleCastCorrection = read("supabase/migrations/20260930204139_sprint_15a_authoring_role_cast.sql");
+const governedCreation = read("supabase/migrations/20261001000000_sprint_15b_governed_guide_creation.sql");
 const endpoint = read("supabase/functions/manage-remediation-guides/index.ts");
 const validation = read("supabase/functions/_shared/remediation-authoring-validation.mjs");
 const resolver = read("supabase/functions/get-remediation-help/index.ts");
@@ -101,4 +102,17 @@ test("authoring history parent foreign key has a covering index", () => {
   assert.match(advisorCorrection, /remediation_guide_authoring_parent_idx/);
   assert.match(advisorCorrection, /\(parent_version_id\)/);
   assert.match(advisorCorrection, /where parent_version_id is not null/);
+});
+
+test("new guides begin as governed drafts instead of bypassing authoring history", () => {
+  assert.match(governedCreation, /service_create_remediation_guide_draft/);
+  assert.match(governedCreation, /v_profile\.role::text <> p_actor_role/);
+  assert.match(governedCreation, /'draft'/);
+  assert.match(governedCreation, /remediation_guide_authoring_versions/);
+  assert.match(governedCreation, /authoring_version, lifecycle_status/);
+  assert.match(governedCreation, /revoke all on function public\.service_create_remediation_guide_draft[\s\S]*from public, anon, authenticated/);
+  assert.match(governedCreation, /grant execute on function public\.service_create_remediation_guide_draft[\s\S]*to service_role/);
+  assert.match(endpoint, /action === "create"/);
+  assert.match(endpoint, /service_create_remediation_guide_draft/);
+  assert.doesNotMatch(governedCreation, /status\s*=\s*'published'/);
 });
