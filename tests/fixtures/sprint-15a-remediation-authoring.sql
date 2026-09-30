@@ -3,9 +3,17 @@ create role anon;
 create role authenticated;
 create role service_role;
 
+create type public.user_role as enum (
+  'student',
+  'teacher',
+  'admin',
+  'content_admin',
+  'school_admin'
+);
+
 create table public.profiles (
   id uuid primary key,
-  role text not null,
+  role public.user_role not null,
   account_status text not null
 );
 
