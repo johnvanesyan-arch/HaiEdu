@@ -58,18 +58,48 @@
       <p id="overviewMessage" class="message overview-message" role="status" aria-live="polite"></p>
 
       <div class="overview-extension-grid">
-        <aside class="analytics-gate" aria-labelledby="analyticsGateTitle">
-          <span class="analytics-lock">14C / 14D</span>
-          <p class="panel-kicker">Հաջորդ փուլ</p>
-          <h3 id="analyticsGateTitle">Վերլուծական վահանակը դեռ չի ակտիվացվել</h3>
-          <p>Միավորների, առաջընթացի և համեմատությունների ցուցադրումը կբացվի միայն այն բանից հետո, երբ աշակերտի դպրոցական համատեքստը և ապացույցների իրավասությունը հաստատված լինեն։</p>
-          <div class="analytics-preview" aria-hidden="true">
-            <span>Դասարանի առաջընթաց</span>
-            <span>Հմտությունների վիճակ</span>
-            <span>Միջամտության ազդակներ</span>
+        <section class="analytics-board" aria-labelledby="analyticsTitle">
+          <div class="analytics-heading">
+            <div>
+              <p class="panel-kicker">Դպրոցի առաջընթաց</p>
+              <h3 id="analyticsTitle">Ուսումնական արդյունքների վերլուծություն</h3>
+              <p>Տվյալները հաշվարկվում են միայն ընտրված դպրոցի ստույգ ուսումնական համատեքստով հաստատված աշխատանքներից։</p>
+            </div>
+            <button id="refreshAnalyticsBtn" type="button" class="ghost">Թարմացնել տվյալները</button>
           </div>
-          <p class="analytics-note">Այստեղ ցուցադրական տոկոսներ կամ ենթադրյալ արդյունքներ չեն օգտագործվում։</p>
-        </aside>
+          <div class="analytics-filters" aria-label="Վերլուծության զտիչներ">
+            <label class="form-field"><span>Ուսումնական տարի</span><select id="analyticsYearFilter"></select></label>
+            <label class="form-field"><span>Առարկա և դասարան</span><select id="analyticsProgrammeFilter"></select></label>
+            <label class="form-field"><span>Դասարան</span><select id="analyticsClassFilter"></select></label>
+          </div>
+          <p id="analyticsMessage" class="message analytics-message" role="status" aria-live="polite"></p>
+          <div class="analytics-metrics" aria-live="polite">
+            <article class="analytics-metric">
+              <span>Մասնակցած աշակերտներ</span>
+              <strong id="analyticsParticipation">—</strong>
+              <progress id="analyticsParticipationBar" max="100" value="0" hidden></progress>
+              <small id="analyticsParticipationDetail">Տվյալ չկա</small>
+            </article>
+            <article class="analytics-metric">
+              <span>Ավարտված ախտորոշիչներ</span>
+              <strong id="analyticsDiagnostic">—</strong>
+              <progress id="analyticsDiagnosticBar" max="100" value="0" hidden></progress>
+              <small id="analyticsDiagnosticDetail">Տվյալ չկա</small>
+            </article>
+            <article class="analytics-metric">
+              <span>Անցած յուրացման ստուգումներ</span>
+              <strong id="analyticsMastery">—</strong>
+              <progress id="analyticsMasteryBar" max="100" value="0" hidden></progress>
+              <small id="analyticsMasteryDetail">Տվյալ չկա</small>
+            </article>
+            <article class="analytics-metric">
+              <span>Ավարտված գլխի կրկնություններ</span>
+              <strong id="analyticsReview">—</strong>
+              <small id="analyticsReviewDetail">Տվյալ չկա</small>
+            </article>
+          </div>
+          <p class="analytics-note">Դատարկ համատեքստում տոկոս չի հաշվարկվում։ Ցուցադրվում են միայն իրական, հաստատված տվյալները՝ առանց ցուցադրական թվերի։</p>
+        </section>
       </div>
     </section>
 

@@ -4,9 +4,10 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 const dashboardState = {
-  schools: [], invitations: [], years: new Map(), teachers: new Map(),
+  schools: [], invitations: [], years: new Map(), teachers: new Map(), analyticsOptions: null,
 };
 let teacherRosterLoadVersion = 0;
+let analyticsLoadVersion = 0;
 
 
 function message(id, text, error = false) {
@@ -59,6 +60,102 @@ function renderOverview() {
   if (teachers && !teachers.some((teacher) => teacher.membership_status === "active"))
     return message("overviewMessage", "Ուսումնական տարին բաց է։ Այժմ կարող եք հրավիրել ուսուցիչների։");
   message("overviewMessage", "Դպրոցի հիմնական կարգավորումները պատրաստ են։");
+}
+
+function displayPercent(value) {
+  return value !== null && value !== undefined && Number.isFinite(Number(value))
+    ? `${Number(value).toLocaleString("hy-AM", { maximumFractionDigits: 1 })}%` : "—";
+}
+
+function renderRateMetric(valueId, detailId, progressId, rate, detail) {
+  const numeric = Number(rate);
+  const available = rate !== null && rate !== undefined && Number.isFinite(numeric);
+  $(valueId).textContent = available ? displayPercent(numeric) : "—";
+  $(detailId).textContent = detail;
+  const progress = $(progressId);
+  if (!progress) return;
+  progress.hidden = !available;
+  progress.value = available ? Math.min(100, Math.max(0, numeric)) : 0;
+}
+
+function replaceAnalyticsOptions(select, rows, allLabel, selectedValue = "") {
+  select.replaceChildren();
+  if (allLabel) select.add(new Option(allLabel, ""));
+  for (const row of rows) select.add(new Option(row.label || row.name, row.id));
+  const available = [...select.options].some((option) => option.value === selectedValue);
+  select.value = available ? selectedValue : "";
+}
+
+function renderSchoolAnalytics(payload) {
+  const analytics = payload?.analytics;
+  if (!analytics) return;
+  const enrolledStudents = Number(analytics.enrollment?.students ?? 0);
+  const enrollmentContexts = Number(analytics.enrollment?.contexts ?? 0);
+  renderRateMetric("analyticsParticipation", "analyticsParticipationDetail", "analyticsParticipationBar",
+    analytics.participation?.rate,
+    `${Number(analytics.participation?.students ?? 0)} մասնակցած · ${enrolledStudents} ընդգրկված աշակերտ`);
+  const diagnosticAccuracy = analytics.diagnostic?.averageAccuracy;
+  renderRateMetric("analyticsDiagnostic", "analyticsDiagnosticDetail", "analyticsDiagnosticBar",
+    analytics.diagnostic?.completionRate,
+    `${Number(analytics.diagnostic?.completedContexts ?? 0)}/${Number(analytics.diagnostic?.eligibleContexts ?? enrollmentContexts)} համատեքստ${diagnosticAccuracy !== null && diagnosticAccuracy !== undefined && Number.isFinite(Number(diagnosticAccuracy)) ? ` · պատասխանների ճշտությունը՝ ${displayPercent(diagnosticAccuracy)}` : ""}`);
+  renderRateMetric("analyticsMastery", "analyticsMasteryDetail", "analyticsMasteryBar",
+    analytics.mastery?.passRate,
+    `${Number(analytics.mastery?.passedContexts ?? 0)}/${Number(analytics.mastery?.attemptedContexts ?? 0)} ավարտված համատեքստ`);
+  $("analyticsReview").textContent = String(Number(analytics.chapterReview?.completedSessions ?? 0));
+  $("analyticsReviewDetail").textContent = `${Number(analytics.chapterReview?.students ?? 0)} աշակերտ · ${Number(analytics.chapterReview?.qualifyingSessions ?? 0)} պարտադիր կրկնություն`;
+
+  if (!enrollmentContexts) message("analyticsMessage", "Ընտրված համատեքստում ընդգրկված աշակերտ չկա։");
+  else if (!Number(analytics.evidence?.exactSessions ?? 0)) message("analyticsMessage", "Ընտրված համատեքստում դեռ հաստատված ուսումնական աշխատանք չկա։");
+  else message("analyticsMessage", "");
+}
+
+async function loadSchoolAnalytics({ resetFilters = false } = {}) {
+  const version = ++analyticsLoadVersion;
+  const schoolId = $("overviewSchool")?.value;
+  if (!schoolId) return;
+  const refresh = $("refreshAnalyticsBtn");
+  if (resetFilters) {
+    for (const id of ["analyticsYearFilter", "analyticsProgrammeFilter", "analyticsClassFilter"]) $(id).replaceChildren();
+    dashboardState.analyticsOptions = null;
+  }
+  const requestedYearId = resetFilters ? "" : $("analyticsYearFilter").value;
+  const requestedProgrammeId = resetFilters ? "" : $("analyticsProgrammeFilter").value;
+  const requestedClassId = resetFilters ? "" : $("analyticsClassFilter").value;
+  message("analyticsMessage", "Տվյալները բեռնվում են…");
+  setButtonBusy(refresh, true, "Թարմացվում է…");
+
+  let data, error;
+  try {
+    ({ data, error } = await supabase.functions.invoke("get-school-performance-analytics", {
+      body: {
+        schoolId,
+        academicYearId: requestedYearId || undefined,
+        subjectProgramId: requestedProgrammeId || undefined,
+        classId: requestedClassId || undefined,
+      },
+    }));
+  } catch (requestError) {
+    error = requestError;
+  } finally {
+    if (version === analyticsLoadVersion) setButtonBusy(refresh, false, "Թարմացվում է…");
+  }
+  if (version !== analyticsLoadVersion || $("overviewSchool").value !== schoolId) return;
+  if (error || !data?.analytics || !data?.options) {
+    const code = await functionErrorCode(error);
+    message("analyticsMessage", code === "analytics_scope_unavailable"
+      ? "Ընտրված վերլուծական համատեքստը հասանելի չէ։"
+      : "Վերլուծական տվյալները չբեռնվեցին։ Փորձեք ավելի ուշ։", true);
+    return;
+  }
+
+  dashboardState.analyticsOptions = data.options;
+  replaceAnalyticsOptions($("analyticsYearFilter"), data.options.academicYears ?? [], null, data.scope?.academicYearId ?? "");
+  replaceAnalyticsOptions($("analyticsProgrammeFilter"), data.options.programmes ?? [], "Բոլոր առարկաները և դասարանները", data.scope?.subjectProgramId ?? "");
+  const selectedProgrammeId = data.scope?.subjectProgramId ?? "";
+  const classRows = (data.options.classes ?? []).filter((row) =>
+    !selectedProgrammeId || row.subjectProgramIds?.includes(selectedProgrammeId));
+  replaceAnalyticsOptions($("analyticsClassFilter"), classRows, "Բոլոր դասարանները", data.scope?.classId ?? "");
+  renderSchoolAnalytics(data);
 }
 
 async function invite(kind, values, messageId, form) {
@@ -508,6 +605,7 @@ async function loadYears() {
           dashboardState.teachers.delete(schoolId);
           renderOverview();
         }
+        if ($("overviewSchool").value === schoolId) await loadSchoolAnalytics({ resetFilters: true });
         message("yearMessage", archived
           ? "Ուսումնական տարին և դրա նախկինում ակտիվ դասարանները կրկին հասանելի են։"
           : "Ուսումնական տարին արխիվացված է։ Դասարանների պատմությունը պահպանված է։");
@@ -524,11 +622,22 @@ $("overviewSchool").addEventListener("change", async (event) => {
   for (const id of ["yearSchool", "rosterSchool", "teacherSchool"]) $(id).value = schoolId;
   message("overviewMessage", "Թարմացվում է…");
   const [subjectsLoaded] = await Promise.all([
-    loadTeacherSubjects(schoolId), loadYears(), loadTeacherRoster(),
+    loadTeacherSubjects(schoolId), loadYears(), loadTeacherRoster(), loadSchoolAnalytics({ resetFilters: true }),
   ]);
   if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
   renderOverview();
 });
+$("refreshAnalyticsBtn").addEventListener("click", () => loadSchoolAnalytics());
+$("analyticsYearFilter").addEventListener("change", () => {
+  $("analyticsProgrammeFilter").value = "";
+  $("analyticsClassFilter").value = "";
+  loadSchoolAnalytics();
+});
+$("analyticsProgrammeFilter").addEventListener("change", () => {
+  $("analyticsClassFilter").value = "";
+  loadSchoolAnalytics();
+});
+$("analyticsClassFilter").addEventListener("change", () => loadSchoolAnalytics());
 $("yearSchool").addEventListener("change", () => { message("yearMessage", ""); loadYears(); });
 $("yearForm").addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -550,6 +659,7 @@ $("yearForm").addEventListener("submit", async (event) => {
   }
   message("yearMessage", "Ուսումնական տարին բացվեց։ Ուսուցիչները կարող են ստեղծել համապատասխան դասարաններ։");
   await loadYears();
+  if ($("overviewSchool").value === $("yearSchool").value) await loadSchoolAnalytics({ resetFilters: true });
 });
 
 $("refreshTeachersBtn").addEventListener("click", loadTeacherRoster);
@@ -622,6 +732,7 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
       $("teacherPanel").classList.remove("hidden");
       $("teachersPanel").classList.remove("hidden");
       await loadTeacherRoster();
+      await loadSchoolAnalytics({ resetFilters: true });
       if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
     }
   }
@@ -631,4 +742,3 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
     await loadPendingInvites();
   }
 }
-

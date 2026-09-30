@@ -134,7 +134,11 @@ test('teacher hierarchy is confined to the sanctioned teacher drill-down', () =>
   const detailJs = readFileSync('web/school-teacher.js', 'utf8');
   const detailCss = readFileSync('web/school-teacher.css', 'utf8');
   assert.doesNotMatch(overviewHtml, /Ուսուցիչ → դասարան → աշակերտ/);
-  assert.match(overviewHtml, /Վերլուծական վահանակը դեռ չի ակտիվացվել/);
+  assert.match(overviewHtml, /Ուսումնական արդյունքների վերլուծություն/);
+  assert.match(overviewHtml, /id="analyticsYearFilter"/);
+  assert.match(overviewHtml, /id="analyticsProgrammeFilter"/);
+  assert.match(overviewHtml, /id="analyticsClassFilter"/);
+  assert.match(overviewJs, /get-school-performance-analytics/);
   assert.match(overviewJs, /school-teacher\.html\?school=/);
   assert.match(detailHtml, /Ուսուցչի դասարանները/);
   assert.match(detailJs, /get-school-admin-overview/);
