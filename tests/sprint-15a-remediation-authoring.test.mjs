@@ -6,6 +6,7 @@ const read = (path) => readFileSync(path, "utf8");
 const migration = read("supabase/migrations/20260930120000_sprint_15a_remediation_authoring_foundation.sql");
 const advisorCorrection = read("supabase/migrations/20260930195500_sprint_15a_authoring_parent_index.sql");
 const endpoint = read("supabase/functions/manage-remediation-guides/index.ts");
+const validation = read("supabase/functions/_shared/remediation-authoring-validation.mjs");
 const resolver = read("supabase/functions/get-remediation-help/index.ts");
 const html = read("web/content-guides.html");
 const ui = read("web/content-guides.js");
@@ -42,13 +43,14 @@ test("publish and archive are server-only, active-role and AAL2 protected", () =
 
 test("preview interpolates allow-listed raw parameters without answer evaluation", () => {
   assert.match(endpoint, /renderRawTemplate/);
-  assert.match(endpoint, /allowed\.has\(key\)/);
+  assert.match(validation, /allowed\.has\(key\)/);
   assert.match(endpoint, /variant_parameters/);
-  assert.doesNotMatch(endpoint, /item_answer_keys/);
-  assert.doesNotMatch(endpoint, /\beval\s*\(/);
-  assert.match(endpoint, /worked_example_reuses_live_numeric_value/);
-  assert.match(endpoint, /answer_like_placeholder_forbidden/);
-  assert.match(endpoint, /hint_1_obvious_answer_leakage/);
+  assert.doesNotMatch(`${endpoint}\n${validation}`, /item_answer_keys/);
+  assert.doesNotMatch(`${endpoint}\n${validation}`, /\beval\s*\(/);
+  assert.match(validation, /worked_example_reuses_live_numeric_value/);
+  assert.match(validation, /worked_example_too_similar_to_live_item/);
+  assert.match(validation, /answer_like_placeholder_forbidden/);
+  assert.match(validation, /hint_1_obvious_answer_leakage/);
 });
 
 test("existing resolver order and assessment boundary remain unchanged", () => {
@@ -61,7 +63,7 @@ test("existing resolver order and assessment boundary remain unchanged", () => {
 });
 
 test("dedicated Armenian authoring workspace exposes required filters and lifecycle", () => {
-  for (const id of ["subjectFilter", "gradeFilter", "programmeFilter", "unitFilter", "skillFilter", "scopeFilter", "statusFilter"]) {
+  for (const id of ["subjectFilter", "gradeFilter", "programmeFilter", "unitFilter", "skillFilter", "templateFilter", "scopeFilter", "statusFilter"]) {
     assert.match(html, new RegExp(`id="${id}"`));
   }
   for (const id of ["guideTitleHy", "guideStrategyHy", "guideHint1Hy", "guideHint2Hy", "guideWorkedExampleHy", "allowedParameterKeys"]) {
@@ -72,6 +74,13 @@ test("dedicated Armenian authoring workspace exposes required filters and lifecy
   assert.match(ui, /publish/);
   assert.match(ui, /archive/);
   assert.match(ui, /challengeAndVerify/);
+  assert.match(ui, /mfa\.enroll/);
+  assert.match(ui, /replaceChildren/);
+  assert.doesNotMatch(ui, /\bprompt\s*\(/);
+  assert.match(ui, /historyVersionA/);
+  assert.match(ui, /historyVersionB/);
+  assert.match(endpoint, /content_snapshot, reference_metadata/);
+  assert.match(endpoint, /\.range\(offset, offset \+ pageSize - 1\)/);
   assert.match(nav, /Օգնության ուղեցույցներ/);
 });
 
