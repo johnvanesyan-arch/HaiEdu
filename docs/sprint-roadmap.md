@@ -1,10 +1,16 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.56
-**Updated:** 2026-09-29
+**Roadmap version:** 2.57
+**Updated:** 2026-09-30
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls, the authenticated school-admin operational overview and the teacher workspace operations are deployed; and the 14C school-scoped learner onboarding, exact-context stamping, assigned-class teacher roster and teacher evidence views are deployed. Institutional teachers can create assigned classrooms, send bounded bulk email invitations, issue optional one-use join codes, separate active and archived classrooms, and rename authorized classrooms without changing their identity or evidence. Role-scoped privacy inventories and Armenian-safe responsive layouts are deployed across role dashboards. Teacher offboarding and database-enforced final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 live checks on 2026-09-28. Authenticated action acceptance also passed 141/141 checks across both schools, with 54/54 read-isolation checks before and after. Teacher navigation/rename/archive, reciprocal class/staff mutation denials and temporary-membership offboarding UI acceptance are complete for these fixtures. Live multi-unit/multi-context switching remains open once a second authorized release exists. School-wide administrative analytics remain a separate 14D gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
 This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
+
+## Subject-Neutral Core and Subject-Aware Extension Invariant — 2026-09-30
+
+**Status: ✅ Adopted as a core project requirement.** The platform core must be subject-neutral; subject-specific behavior must use explicit, versioned configuration or extension points. The invariant now governs project policy, architecture decisions and future acceptance gates. Its canonical requirements and ten acceptance criteria are in `docs/subject-neutral-core.md`.
+
+Adoption establishes the rule for all new work and creates a bounded migration obligation for existing subject-coupled behavior. It does not certify that every historical Physics-first implementation is already compliant. A four-subject integration gate must demonstrate that Physics, Mathematics, Armenian Language and English coexist without subject leakage or redesign of shared platform capabilities before the Grade 7 MVP is declared complete.
 
 ## Sprint 15A authoring-tool decision — 2026-09-29
 
@@ -1103,6 +1109,14 @@ The learner-facing shell must not assume that:
 - a learner takes only one course;
 - global Home owns subject-specific diagnostics, practice, assessments or mastery;
 - course visibility can be inferred without an active entitlement.
+
+## Subject-neutral core invariant from 2026-09-30 onward
+
+The platform core must be subject-neutral. Subject-specific behavior belongs in explicit, versioned configuration or extension points.
+
+Shared identity, tenancy, enrollment, curriculum versioning, sessions, evidence provenance, authorization, navigation and analytics must not assume a subject, grade, course code, skill/item count, response format, mastery rule, language or content model. Existing Physics-specific behavior is treated as an extension or migration concern rather than a platform default.
+
+The complete boundary, exception rule and acceptance criteria are defined in `docs/subject-neutral-core.md`. Future subject onboarding and the Grade 7 four-subject MVP gate must verify subject isolation and prove that new subjects do not require redesign of the shared core.
 
 ## Assessment-scope invariant from Sprint 11H onward
 
