@@ -2,7 +2,7 @@
 
 ## Status
 
-**15A.1 governed authoring foundation: deployed and technically verified.**
+**15A.1 governed authoring foundation and 15A.2 reviewer ergonomics: deployed and technically verified.**
 
 Sprint 15A remains open until the full authenticated closure gate passes. Bulk Chapters II–VI hint authoring, import and publication remain blocked.
 
@@ -66,31 +66,52 @@ Draft and review actions append authoring records only. The learner-facing runti
 - inline MFA step-up for actors who already have a verified factor;
 - immutable version history.
 
+## 15A.2 implementation
+
+### Complete catalogue and real-variant selection
+
+- Cascading subject → grade → programme → unit → skill → template filters keep the catalogue usable without assuming Physics or Grade 7.
+- Every published stored variant is loaded in bounded 500-row pages rather than silently stopping at 50.
+- Reviewers can search and filter real variants by assessment context, inspect the exact prompt and raw parameters, and explicitly select the variant used for preview.
+- Diagnostic and Mastery variants remain preview-only; the authoring tool does not enable learner hints in those contexts.
+
+### Reviewer comparison and MFA
+
+- Any two immutable authoring snapshots can be compared side by side, with changed fields highlighted and reference metadata included.
+- Publication and archive use a guided TOTP dialog: reviewers can enroll a first factor, step up with an existing verified factor, cancel incomplete enrollment safely and retain unsaved editor state during MFA token events.
+- Factor labels are rendered with DOM-safe text nodes rather than interpolated HTML.
+
+### Stronger content QA
+
+- Shared server-tested validation rejects hard-coded reuse of live numeric parameters in analogous examples.
+- Near-copy conceptual examples are rejected when token similarity is high and there is no genuine numeric variation.
+- Hint validation rejects direct-answer phrases, option-letter leakage and obvious numeric conclusions.
+- Reference URLs are restricted to safe HTTP(S) values for reviewer warnings.
+- The Edge Function and tests share the same pure validation module; the learner resolver still receives only reviewed, published runtime content.
+
 ## Verification and deployment evidence
 
-- targeted source/security suite: 7/7 passed;
+- 15A.1 targeted source/security suite: 7/7 passed;
+- 15A.2 authoring-validation and workspace suite: 14/14 passed;
 - PGlite lifecycle transaction test: passed;
 - browser JavaScript syntax check: passed;
 - Edge Function TypeScript parse check: passed.
 - PR #65 full CI and institutional-concurrency jobs passed and merged as `ce78a1861c9bdd8fc3cc070191a54dd866ed23bb`;
 - advisor correction PR #66 passed and merged as `78b9c438ecca4fb14e29cc9d2efc73aee862f251`;
+- 15A.2 PR #69 passed the full CI and institutional-concurrency jobs and merged as `f71dc0fe95e0eb573f4f0880fe8a81968a94e024`;
 - migrations `sprint_15a_remediation_authoring_foundation` and `sprint_15a_authoring_parent_index` applied successfully;
-- `manage-remediation-guides` v1 is active with JWT verification;
+- `manage-remediation-guides` v2 is active with JWT verification and the shared 15A.2 validation module;
 - production backfill contains exactly 19 current published authoring versions for the existing 10 skill guides and 9 template guides;
 - anon/authenticated roles cannot read authoring history or execute the lifecycle procedure; service role access and the immutable trigger are active;
 - the database advisor's missing parent-FK-index finding was corrected;
-- Vercel reported a successful production deployment, and the signed-out production render at `/content-guides` showed the protected Armenian entry surface.
+- Vercel reported success for merge commit `f71dc0fe95e0eb573f4f0880fe8a81968a94e024`;
+- production-delivered HTML, JavaScript and CSS contain the template filter, complete variant selector, immutable version comparison and guided MFA enrollment assets, with no browser `prompt()` fallback;
+- the signed-out production render at `/content-guides` showed the protected Armenian entry surface with no application console errors;
+- the production authoring inventory remained unchanged at exactly 10 skill guides and 9 template guides, all published at authoring version 1.
 
 The database test proves that draft and review do not change runtime content, changed content cannot bypass review, AAL1 publication is denied, AAL2 publication updates the runtime exactly once, actor/rationale provenance is retained and authoring history rejects mutation.
 
 ## Remaining 15A work
-
-### 15A.2
-
-- richer version comparison and explicit reviewer approval ergonomics;
-- Content Reviewer MFA enrollment/recovery flow, not only step-up for an existing factor;
-- stronger semantic analogous-example and answer-leakage QA;
-- scale-oriented server pagination/search as the guide catalog grows.
 
 ### 15A.3
 
