@@ -5,6 +5,7 @@ import { readFileSync } from "node:fs";
 const read = (path) => readFileSync(path, "utf8");
 const multiUnit = read("supabase/migrations/20261001001000_sprint_15b_multi_unit_release_governance.sql");
 const chapter = read("supabase/migrations/20261001002000_sprint_15b1_physics7_chapter_ii_foundation.sql");
+const advisorIndex = read("supabase/migrations/20261001003000_sprint_15b_release_reconciliation_index.sql");
 
 test("Chapter II is introduced as a non-learner-facing review candidate", () => {
   assert.match(chapter, /'PHY7-U02'/);
@@ -47,6 +48,7 @@ test("multi-unit releases require one completed reconciliation and three bluepri
   assert.match(multiUnit, /cross join \(values \('practice'\), \('diagnostic'\), \('mastery_check'\)\)/i);
   assert.match(multiUnit, /1 <> \(/);
   assert.match(multiUnit, /guard_release_snapshot_immutability/);
+  assert.match(advisorIndex, /\(reconciliation_id, unit_id\)/);
 });
 
 test("migration resolves production records by stable natural keys, not generated UUID literals", () => {
