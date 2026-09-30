@@ -7,6 +7,11 @@ const migration = readFileSync(
   "utf8",
 );
 
+const qaFixMigration = readFileSync(
+  "supabase/migrations/20261001005000_sprint_15b2_authored_catalogue_qa_fix.sql",
+  "utf8",
+);
+
 test("skill-map review retires the duplicate and reuses the Chapter I prerequisite", () => {
   assert.match(migration, /set status = 'archived'::public\.content_status[\s\S]*code = 'PHY7-U02-S01'/);
   assert.match(migration, /prerequisite\.code = 'PHY7-U01-S02'/);
@@ -66,4 +71,23 @@ test("migration resolves database records by stable natural keys", () => {
   );
   assert.match(migration, /reconciliation_key = 'physics7_u02_2026_08_14'/);
   assert.match(migration, /release_key = 'physics7_u01_u02_2026_08_14_candidate_r2'/);
+});
+
+test("authored catalogue uses the fixed-template QA contract", () => {
+  assert.match(qaFixMigration, /template_kind = 'fixed'/);
+  assert.match(qaFixMigration, /'generationMode', 'authored_parallel_catalog'/);
+  assert.match(qaFixMigration, /'deterministicRerender', false/);
+  assert.match(qaFixMigration, /'qaContract', 'authored_fixed_catalogue'/);
+  assert.doesNotMatch(qaFixMigration, /variant_seed\s*=/);
+});
+
+test("semantic fingerprints cover skill, prompt, answer and ordered options", () => {
+  assert.match(qaFixMigration, /item\.skill_id::text[\s\S]*regexp_replace\(item\.prompt_hy/);
+  assert.match(qaFixMigration, /answer_key\.answer::text/);
+  assert.match(qaFixMigration, /jsonb_build_object\([\s\S]*'optionKey'[\s\S]*'contentHy'/);
+  assert.match(qaFixMigration, /order by option_row\.display_order, option_row\.option_key/);
+  assert.match(qaFixMigration, /variant_fingerprint = corrected\.semantic_fingerprint/);
+  assert.match(qaFixMigration, /version_no = greatest\(item\.version_no, 2\)/);
+  assert.match(qaFixMigration, /insert into public\.item_versions/);
+  assert.match(qaFixMigration, /version\.version_no = 2/);
 });
