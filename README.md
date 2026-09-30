@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform
 
-A multi-subject supplementary learning platform aligned to Armenia's general education system. Physics, Mathematics, Armenian Language, English and future subjects have equal platform status; each is taught and assessed through the same subject-neutral core.
+A multi-subject supplementary learning platform aligned to Armenia's general education system. Physics, Mathematics, Armenian Language, English and future subjects have equal platform status and use the same subject-neutral core. The currently implemented course-content milestone is Grade 7 Physics; that delivery status gives Physics no architectural or product priority.
 
 ## Current milestone
 
