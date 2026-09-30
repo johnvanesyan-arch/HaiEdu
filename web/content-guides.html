@@ -1,0 +1,99 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Օգնության ուղեցույցներ — HaiEdu</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./content-guides.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
+</head>
+<body data-role-workspace="contentGuides">
+  <main class="guide-shell" id="mainContent">
+    <header class="guide-topbar">
+      <div>
+        <p class="eyebrow">ԲՈՎԱՆԴԱԿՈՒԹՅԱՆ ԹԻՄ</p>
+        <h1>Օգնության ուղեցույցների խմբագրում</h1>
+        <p class="subtle">Կառավարեք վարժանքի հուշումները՝ առանց սովորողին ցուցադրվող գործող տարբերակը լուռ վերագրելու։</p>
+      </div>
+      <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
+    </header>
+
+    <section id="authPanel" class="card guide-auth hidden" aria-labelledby="guideLoginTitle">
+      <h2 id="guideLoginTitle">Պաշտպանված աշխատասեղան</h2>
+      <p class="subtle">Մուտք գործեք բովանդակության ստուգողի կամ հարթակի ադմինիստրատորի ակտիվ հաշվով։</p>
+      <a class="button-link" href="./account-access">Մուտք գործել</a>
+      <p id="authMessage" class="message" aria-live="polite"></p>
+    </section>
+
+    <section id="guideConsole" class="hidden">
+      <section class="guide-overview" aria-label="Ուղեցույցների վիճակագրություն">
+        <div id="guideStats" class="guide-stats"></div>
+        <div class="card assurance-card">
+          <span class="stat-label">Սեսիայի պաշտպանություն</span>
+          <strong id="assuranceLevel">—</strong>
+          <p class="subtle small">Հրապարակելու և արխիվացնելու համար պահանջվում է MFA հաստատում (AAL2)։</p>
+        </div>
+      </section>
+
+      <section class="card guide-filters" aria-label="Ուղեցույցների զտիչներ">
+        <label class="search-field">Փնտրել
+          <input id="guideSearch" type="search" placeholder="Հմտություն, ձևանմուշ կամ վերնագիր…" />
+        </label>
+        <label>Առարկա<select id="subjectFilter"><option value="">Բոլորը</option></select></label>
+        <label>Դասարան<select id="gradeFilter"><option value="">Բոլորը</option></select></label>
+        <label>Ծրագիր<select id="programmeFilter"><option value="">Բոլորը</option></select></label>
+        <label>Բաժին / գլուխ<select id="unitFilter"><option value="">Բոլորը</option></select></label>
+        <label>Հմտություն<select id="skillFilter"><option value="">Բոլորը</option></select></label>
+        <label>Ուղեցույցի մակարդակ
+          <select id="scopeFilter">
+            <option value="">Բոլորը</option>
+            <option value="skill">Հմտության ուղեցույց</option>
+            <option value="template">Հարցի ձևանմուշի ուղեցույց</option>
+          </select>
+        </label>
+        <label>Կենսափուլ
+          <select id="statusFilter">
+            <option value="">Բոլորը</option>
+            <option value="draft">Սևագիր</option>
+            <option value="review">Ստուգման փուլում</option>
+            <option value="published">Հրապարակված</option>
+            <option value="archived">Արխիվացված</option>
+          </select>
+        </label>
+        <button id="refreshGuidesBtn" type="button" class="ghost">Թարմացնել</button>
+      </section>
+
+      <div class="guide-layout">
+        <section class="card guide-bank" aria-labelledby="guideBankTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="guideBankTitle">Ուղեցույցների ցանկ</h2>
+              <p id="guideCount" class="subtle small" aria-live="polite"></p>
+            </div>
+          </div>
+          <div class="guide-table-wrap" tabindex="0">
+            <table class="guide-table">
+              <thead>
+                <tr><th>Մակարդակ</th><th>Հմտություն / ձևանմուշ</th><th>Մասնավորեցում</th><th>Կենսափուլ</th><th>Տարբերակ</th></tr>
+              </thead>
+              <tbody id="guideRows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <aside id="guideEditor" class="card guide-editor" aria-live="polite">
+          <h2>Ընտրեք ուղեցույց</h2>
+          <p class="subtle">Ձախ ցանկից ընտրեք հմտության կամ հարցի ձևանմուշի ուղեցույց։</p>
+        </aside>
+      </div>
+      <p id="guideMessage" class="message" aria-live="polite"></p>
+    </section>
+  </main>
+  <script type="module" src="./content-guides.js"></script>
+  <script type="module" src="./ux.js"></script>
+  <script type="module" src="./role-layout.js"></script>
+</body>
+</html>
