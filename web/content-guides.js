@@ -8,6 +8,8 @@ let selectedId = null;
 let detail = null;
 let loadToken = 0;
 let editorDirty = false;
+let currentActor = null;
+let pendingEnrollmentFactorId = null;
 
 const statusLabels = {
   draft: "Սևագիր",
@@ -16,9 +18,17 @@ const statusLabels = {
   archived: "Արխիվացված",
 };
 
+const variantBucketLabels = {
+  diagnostic: "Ախտորոշիչ",
+  practice: "Վարժանք",
+  mastery_check: "Յուրացման ստուգում",
+  chapter_review: "Բաժնի ամփոփում",
+  fixed: "Ֆիքսված հարց",
+};
+
 const errorLabels = {
   mfa_required: "Այս գործողության համար հաստատեք բազմագործոն մուտքը (MFA)։",
-  stale_authoring_version: "Ուղեցույցը meanwhile փոխվել է։ Թարմացրեք տվյալները և նորից փորձեք։",
+  stale_authoring_version: "Ուղեցույցը մինչ այդ փոխվել է։ Թարմացրեք տվյալները և նորից փորձեք։",
   draft_required_before_review: "Նախ պահպանեք սևագիրը, ապա ուղարկեք ստուգման։",
   review_required_before_publish: "Հրապարակելուց առաջ ուղեցույցը պետք է անցնի ստուգման փուլ։",
   published_content_must_match_review: "Հրապարակվող բովանդակությունը չի համընկնում ստուգված տարբերակին։ Փոփոխությունները նորից պահպանեք որպես սևագիր և ուղարկեք ստուգման։",
@@ -29,6 +39,8 @@ const errorLabels = {
   guide_validation_failed: "Ստուգումը սխալներ է գտել։ Ուղղեք դրանք և նորից փորձեք։",
   account_or_session_inactive: "Հաշիվը կամ սեսիան ակտիվ չէ։ Նորից մուտք գործեք։",
   content_authoring_role_required: "Այս բաժինը հասանելի է միայն բովանդակության ստուգողին կամ հարթակի ադմինիստրատորին։",
+  mfa_enrollment_cancelled: "Բազմագործոն մուտքի կարգավորումը չավարտվեց։",
+  mfa_verification_failed: "Հաստատման կոդը չընդունվեց։ Ստուգեք կոդը և նորից փորձեք։",
 };
 
 function esc(value) {
@@ -84,18 +96,56 @@ function fillSelect(id, values, allLabel = "Բոլորը") {
   if (values.some(([value]) => String(value) === current)) select.value = current;
 }
 
+const academicFilterIds = ["subjectFilter", "gradeFilter", "programmeFilter", "unitFilter", "skillFilter", "templateFilter"];
+
+function matchesAcademicSelection(guide, through = "template") {
+  const positions = { subject: 0, grade: 1, programme: 2, unit: 3, skill: 4, template: 5 };
+  const max = positions[through] ?? positions.template;
+  const subject = $("subjectFilter").value;
+  const grade = $("gradeFilter").value;
+  const programme = $("programmeFilter").value;
+  const unit = $("unitFilter").value;
+  const skill = $("skillFilter").value;
+  const template = $("templateFilter").value;
+  if (max >= 0 && subject && guide.subjectId !== subject) return false;
+  if (max >= 1 && grade && guide.gradeId !== grade) return false;
+  if (max >= 2 && programme && !(guide.programmes ?? []).some((p) => p.id === programme)) return false;
+  if (max >= 3 && unit && !(guide.units ?? []).some((u) => u.id === unit)) return false;
+  if (max >= 4 && skill && guide.skillId !== skill) return false;
+  if (max >= 5 && template && guide.itemTemplateId !== template) return false;
+  return true;
+}
+
 function populateFilters() {
   fillSelect("subjectFilter", uniqueBy(catalog, (g) => g.subjectId, (g) => g.subjectNameHy));
-  fillSelect("gradeFilter", uniqueBy(catalog, (g) => g.gradeId, (g) => g.gradeLabelHy || `${g.gradeNumber}-րդ դասարան`));
-  fillSelect("skillFilter", uniqueBy(catalog, (g) => g.skillId, (g) => `${g.skillCode} — ${g.skillNameHy}`));
+  const bySubject = catalog.filter((g) => matchesAcademicSelection(g, "subject"));
+  fillSelect("gradeFilter", uniqueBy(bySubject, (g) => g.gradeId, (g) => g.gradeLabelHy || `${g.gradeNumber}-րդ դասարան`));
+
+  const byGrade = catalog.filter((g) => matchesAcademicSelection(g, "grade"));
   const programmes = [];
+  for (const guide of byGrade) {
+    for (const programme of guide.programmes ?? []) {
+      programmes.push({ ...programme, context: `${guide.subjectNameHy} · ${guide.gradeLabelHy || `${guide.gradeNumber}-րդ դասարան`}` });
+    }
+  }
+  fillSelect("programmeFilter", uniqueBy(programmes, (p) => p.id, (p) => `${p.context} · ${p.versionLabel || p.id}`));
+
+  const byProgramme = catalog.filter((g) => matchesAcademicSelection(g, "programme"));
   const units = [];
-  for (const guide of catalog) {
-    for (const programme of guide.programmes ?? []) programmes.push(programme);
+  for (const guide of byProgramme) {
     for (const unit of guide.units ?? []) units.push(unit);
   }
-  fillSelect("programmeFilter", uniqueBy(programmes, (p) => p.id, (p) => p.versionLabel || p.id));
   fillSelect("unitFilter", uniqueBy(units, (u) => u.id, (u) => `${u.code || ""} ${u.titleHy || ""}`.trim()));
+
+  const byUnit = catalog.filter((g) => matchesAcademicSelection(g, "unit"));
+  fillSelect("skillFilter", uniqueBy(byUnit, (g) => g.skillId, (g) => `${g.skillCode} — ${g.skillNameHy}`));
+
+  const bySkill = catalog.filter((g) => matchesAcademicSelection(g, "skill"));
+  fillSelect("templateFilter", uniqueBy(
+    bySkill.filter((g) => g.itemTemplateId),
+    (g) => g.itemTemplateId,
+    (g) => g.itemTemplateCode,
+  ));
 }
 
 function filteredGuides() {
@@ -105,38 +155,76 @@ function filteredGuides() {
   const programme = $("programmeFilter").value;
   const unit = $("unitFilter").value;
   const skill = $("skillFilter").value;
+  const template = $("templateFilter").value;
   const scope = $("scopeFilter").value;
   const status = $("statusFilter").value;
   return catalog.filter((guide) => {
-    const haystack = [guide.subjectNameHy, guide.skillCode, guide.skillNameHy, guide.itemTemplateCode,
-      guide.specializationCode, guide.content?.titleHy].join(" ").toLocaleLowerCase("hy");
+    const haystack = [guide.subjectNameHy, guide.gradeLabelHy, guide.skillCode, guide.skillNameHy, guide.itemTemplateCode,
+      guide.specializationCode, guide.content?.titleHy,
+      ...(guide.programmes ?? []).map((p) => p.versionLabel),
+      ...(guide.units ?? []).flatMap((u) => [u.code, u.titleHy]),
+    ].join(" ").toLocaleLowerCase("hy");
     if (query && !haystack.includes(query)) return false;
     if (subject && guide.subjectId !== subject) return false;
     if (grade && guide.gradeId !== grade) return false;
     if (programme && !(guide.programmes ?? []).some((p) => p.id === programme)) return false;
     if (unit && !(guide.units ?? []).some((u) => u.id === unit)) return false;
     if (skill && guide.skillId !== skill) return false;
+    if (template && guide.itemTemplateId !== template) return false;
     if (scope && guide.guideScope !== scope) return false;
     if (status && guide.lifecycleStatus !== status) return false;
     return true;
   });
 }
 
+function selectedFilterLabels() {
+  return academicFilterIds
+    .map((id) => $(id))
+    .filter((select) => select.value)
+    .map((select) => select.options[select.selectedIndex]?.textContent)
+    .filter(Boolean);
+}
+
 function renderStats(actor) {
+  currentActor = actor ?? currentActor;
   const counts = Object.fromEntries(Object.keys(statusLabels).map((status) => [status, catalog.filter((g) => g.lifecycleStatus === status).length]));
   $("guideStats").innerHTML = Object.entries(statusLabels).map(([status, label]) => `<article class="card guide-stat"><span class="stat-label">${esc(label)}</span><strong>${esc(counts[status])}</strong></article>`).join("");
-  $("assuranceLevel").textContent = actor?.aal === "aal2" ? "AAL2 · հաստատված" : "AAL1 · լրացուցիչ հաստատում";
+  renderAssurance();
+}
+
+function renderAssurance() {
+  $("assuranceLevel").textContent = currentActor?.aal === "aal2" ? "AAL2 · հաստատված" : "AAL1 · լրացուցիչ հաստատում";
+  const card = $("assuranceLevel").closest(".assurance-card");
+  let button = $("configureMfaBtn");
+  if (!button) {
+    button = document.createElement("button");
+    button.id = "configureMfaBtn";
+    button.type = "button";
+    button.className = "ghost";
+    card.append(button);
+    button.addEventListener("click", configureMfa);
+  }
+  button.textContent = currentActor?.aal === "aal2" ? "MFA-ն հաստատված է" : "Կարգավորել կամ հաստատել MFA-ն";
+  button.disabled = currentActor?.aal === "aal2";
 }
 
 function renderRows() {
   const guides = filteredGuides();
   $("guideCount").textContent = `${guides.length} ուղեցույց`;
+  const labels = selectedFilterLabels();
+  $("activeScopeSummary").textContent = labels.length
+    ? `Ընտրված ուսումնական շրջանակ՝ ${labels.join(" → ")}`
+    : "Ցուցադրվում են բոլոր հասանելի ուսումնական շրջանակները։";
   $("guideRows").innerHTML = guides.map((guide) => {
     const id = `${guide.guideScope}:${guide.guideSourceId}`;
     const code = guide.guideScope === "template" ? guide.itemTemplateCode : guide.skillCode;
     const scope = guide.guideScope === "template" ? "Ձևանմուշ" : "Հմտություն";
+    const programme = (guide.programmes ?? []).map((entry) => entry.versionLabel).filter(Boolean).join(" · ") || "—";
+    const units = (guide.units ?? []).map((entry) => `${entry.code || ""} ${entry.titleHy || ""}`.trim()).filter(Boolean).join(" · ") || "—";
     return `<tr data-guide-id="${esc(id)}" class="${selectedId === id ? "selected" : ""}">
       <td><span class="guide-chip">${scope}</span></td>
+      <td><strong>${esc(guide.subjectNameHy)}</strong><div class="subtle small">${esc(guide.gradeLabelHy || `${guide.gradeNumber}-րդ դասարան`)}</div></td>
+      <td><strong>${esc(programme)}</strong><div class="subtle small">${esc(units)}</div></td>
       <td><strong>${esc(code)}</strong><div class="subtle small">${esc(guide.content?.titleHy || guide.skillNameHy)}</div></td>
       <td>${esc(guide.specializationCode || "Ընդհանուր")}</td>
       <td><span class="status-chip" data-status="${esc(guide.lifecycleStatus)}">${esc(statusLabels[guide.lifecycleStatus] || guide.lifecycleStatus)}</span></td>
@@ -151,10 +239,12 @@ function validationLabel(code) {
     source_title_missing: "Աղբյուրի վերնագիրը նշված չէ։",
     source_locator_missing: "Աղբյուրի էջը կամ բաժինը նշված չէ։",
     source_url_missing: "Աղբյուրի հղումը նշված չէ։",
+    source_url_invalid: "Աղբյուրի հղումը պետք է սկսվի http:// կամ https:// ձևով։",
     preview_variant_missing: "Նախադիտման համար գործող հարցի տարբերակ չի գտնվել։",
     invalid_placeholder_syntax: "Տեղապահի գրությունը սխալ է։ Օգտագործեք {{parameterName}} ձևը։",
     skill_guide_placeholders_not_allowed: "Հմտության մակարդակի ուղեցույցում տեղապահեր չեն թույլատրվում։",
     worked_example_duplicates_live_item: "Նմանատիպ օրինակը կրկնում է գործող հարցը։",
+    worked_example_too_similar_to_live_item: "Նմանատիպ օրինակը չափազանց նման է գործող հարցին։ Փոխեք արժեքները կամ համատեքստը։",
     hint_1_obvious_answer_leakage: "Առաջին հուշումը ակնհայտորեն հայտնում է պատասխանը։",
     hint_2_obvious_answer_leakage: "Երկրորդ հուշումը ակնհայտորեն հայտնում է պատասխանը։",
     misconception_code_required: "Հմտության ուղեցույցի սխալ պատկերացման կոդը պարտադիր է։",
@@ -206,11 +296,109 @@ function referencesFromEditor() {
 }
 
 function renderHistory(history) {
-  return `<ul class="history-list">${(history ?? []).map((entry) => `<li>
+  const entries = history ?? [];
+  if (!entries.length) return `<p class="subtle">Տարբերակների պատմություն չկա։</p>`;
+  const option = (entry) => `<option value="${esc(entry.authoring_version)}">Տարբերակ ${esc(entry.authoring_version)} · ${esc(statusLabels[entry.lifecycle_status] || entry.lifecycle_status)}</option>`;
+  const leftDefault = entries[1]?.authoring_version ?? entries[0].authoring_version;
+  const rightDefault = entries[0].authoring_version;
+  return `<div class="history-compare-controls">
+      <label>Համեմատվող տարբերակ Ա<select id="historyVersionA">${entries.map(option).join("")}</select></label>
+      <label>Համեմատվող տարբերակ Բ<select id="historyVersionB">${entries.map(option).join("")}</select></label>
+    </div>
+    <p class="subtle small">Համեմատությունը միայն դիտման համար է և չի փոխում խմբագրիչի կամ սովորողին ցուցադրվող տարբերակը։</p>
+    <div id="historyComparison" class="history-comparison" data-left="${esc(leftDefault)}" data-right="${esc(rightDefault)}"></div>
+    <ul class="history-list">${entries.map((entry) => `<li>
     <div class="history-head"><strong>Տարբերակ ${esc(entry.authoring_version)} · ${esc(statusLabels[entry.lifecycle_status] || entry.lifecycle_status)}</strong><span class="subtle small">${esc(new Date(entry.created_at).toLocaleString("hy-AM"))}</span></div>
     <p>${esc(entry.change_rationale)}</p>
     <p class="subtle small">Դեր՝ ${esc(entry.actor_role)} · ${esc(entry.actor_aal)}${entry.published_runtime_version ? ` · գործող տարբերակ ${esc(entry.published_runtime_version)}` : ""}</p>
   </li>`).join("")}</ul>`;
+}
+
+const comparisonFields = [
+  ["titleHy", "Հայերեն վերնագիր"],
+  ["strategyHy", "Ռազմավարություն"],
+  ["hint1Hy", "Հուշում 1"],
+  ["hint2Hy", "Հուշում 2"],
+  ["workedExampleHy", "Նմանատիպ լուծված օրինակ"],
+  ["specialization", "Սխալի / սխալ պատկերացման կոդ"],
+  ["allowedParameterKeys", "Թույլատրելի պարամետրեր"],
+  ["sourceTitle", "Աղբյուրի վերնագիր"],
+  ["sourceLocator", "Էջ / բաժին"],
+  ["sourceUrl", "Աղբյուրի հղում"],
+];
+
+function historyField(entry, key) {
+  const content = entry?.content_snapshot ?? {};
+  const refs = entry?.reference_metadata ?? {};
+  if (key === "specialization") return content.triggerErrorCode || content.misconceptionCode || "—";
+  if (key === "allowedParameterKeys") return (content.allowedParameterKeys ?? []).join(", ") || "—";
+  if (["sourceTitle", "sourceLocator", "sourceUrl"].includes(key)) return refs[key] || "—";
+  return content[key] || "—";
+}
+
+function renderHistoryComparison() {
+  const panel = $("historyComparison");
+  if (!panel) return;
+  const history = detail?.history ?? [];
+  const leftVersion = Number($("historyVersionA").value || panel.dataset.left);
+  const rightVersion = Number($("historyVersionB").value || panel.dataset.right);
+  const left = history.find((entry) => entry.authoring_version === leftVersion);
+  const right = history.find((entry) => entry.authoring_version === rightVersion);
+  if (!left || !right) {
+    panel.innerHTML = `<p class="message bad">Համեմատվող տարբերակները չեն գտնվել։</p>`;
+    return;
+  }
+  panel.innerHTML = `<table class="comparison-table">
+    <thead><tr><th>Դաշտ</th><th>Տարբերակ ${esc(leftVersion)}</th><th>Տարբերակ ${esc(rightVersion)}</th></tr></thead>
+    <tbody>${comparisonFields.map(([key, label]) => {
+      const leftValue = String(historyField(left, key));
+      const rightValue = String(historyField(right, key));
+      const changed = leftValue !== rightValue;
+      return `<tr><th>${esc(label)}</th><td class="comparison-value${changed ? " changed" : ""}">${esc(leftValue)}</td><td class="comparison-value${changed ? " changed" : ""}">${esc(rightValue)}</td></tr>`;
+    }).join("")}</tbody>
+  </table>`;
+}
+
+function variantBucket(variant) {
+  return variant?.variant_parameters?.bucket
+    || (String(variant?.variant_key || "").startsWith("fixed:") ? "fixed" : "other");
+}
+
+function renderVariantOptions() {
+  const select = $("previewVariant");
+  if (!select) return;
+  const current = select.value;
+  const query = $("variantSearch").value.trim().toLocaleLowerCase("hy");
+  const bucket = $("variantBucketFilter").value;
+  const variants = (detail?.variants ?? []).filter((variant) => {
+    if (bucket && variantBucket(variant) !== bucket) return false;
+    const haystack = [variant.code, variant.variant_key, variant.prompt_hy].join(" ").toLocaleLowerCase("hy");
+    return !query || haystack.includes(query);
+  });
+  select.innerHTML = variants.length
+    ? variants.map((variant) => {
+      const prompt = String(variant.prompt_hy || "").replace(/\s+/g, " ").trim();
+      const shortPrompt = prompt.length > 95 ? `${prompt.slice(0, 92)}…` : prompt;
+      return `<option value="${esc(variant.id)}">${esc(variant.code || variant.variant_key)} · ${esc(variantBucketLabels[variantBucket(variant)] || variantBucket(variant))} · ${esc(shortPrompt)}</option>`;
+    }).join("")
+    : `<option value="">Համապատասխան հարցի տարբերակ չկա</option>`;
+  if (variants.some((variant) => variant.id === current)) select.value = current;
+  $("previewGuideBtn").disabled = !select.value;
+  renderVariantDetails();
+}
+
+function renderVariantDetails() {
+  const panel = $("variantDetails");
+  if (!panel) return;
+  const variant = (detail?.variants ?? []).find((entry) => entry.id === $("previewVariant").value);
+  if (!variant) {
+    panel.innerHTML = `<p>Ընտրված զտիչներով իրական հարց չի գտնվել։</p>`;
+    return;
+  }
+  const params = variant.variant_parameters ?? {};
+  panel.innerHTML = `<p><strong>${esc(variant.code || variant.variant_key)}</strong> · ${esc(variantBucketLabels[variantBucket(variant)] || variantBucket(variant))}${variant.difficulty_band ? ` · ${esc(variant.difficulty_band)}` : ""}</p>
+    <p>${esc(variant.prompt_hy || "—")}</p>
+    <p class="variant-parameters"><strong>Սկզբնական պարամետրեր.</strong> <code>${esc(JSON.stringify(params))}</code></p>`;
 }
 
 function renderEditor() {
@@ -223,6 +411,7 @@ function renderEditor() {
   const canPublish = guide.lifecycleStatus === "review";
   const canArchive = guide.lifecycleStatus === "published" && detail.fallback?.available;
   const code = isTemplate ? guide.itemTemplateCode : guide.skillCode;
+  const variantBuckets = [...new Set(variants.map((variant) => variant.variant_parameters?.bucket || (String(variant.variant_key || "").startsWith("fixed:") ? "fixed" : "other")))];
 
   $("guideEditor").innerHTML = `
     <div class="section-heading"><div><p class="eyebrow">${isTemplate ? "ՀԱՐՑԻ ՁԵՎԱՆՄՈՒՇ" : "ՀՄՏՈՒԹՅԱՆ ՈՒՂԵՑՈՒՅՑ"}</p><h2>${esc(code)}</h2></div><span class="status-chip" data-status="${esc(guide.lifecycleStatus)}">${esc(statusLabels[guide.lifecycleStatus])}</span></div>
@@ -254,7 +443,13 @@ function renderEditor() {
 
     <section class="guide-form-section">
       <h3>Իրական հարցով նախադիտում</h3>
-      <label>Հարցի տարբերակ<select id="previewVariant">${variants.map((variant) => `<option value="${esc(variant.id)}">${esc(variant.code || variant.variant_key)}</option>`).join("")}</select></label>
+      <div class="variant-tools">
+        <label>Փնտրել հարցի տարբերակ<input id="variantSearch" type="search" placeholder="Հարցի կոդ կամ տեքստ…" /></label>
+        <label>Հարցի կիրառման փուլ<select id="variantBucketFilter"><option value="">Բոլորը</option>${variantBuckets.map((bucket) => `<option value="${esc(bucket)}">${esc(variantBucketLabels[bucket] || bucket)}</option>`).join("")}</select></label>
+      </div>
+      <label>Հարցի տարբերակ<select id="previewVariant"></select></label>
+      <div id="variantDetails" class="variant-details subtle small"></div>
+      <p class="subtle small">Ախտորոշիչ և յուրացման ստուգման հարցերը կարող են օգտագործվել միայն բովանդակության նախադիտման համար․ այս էջը դրանցում հուշումներ չի ակտիվացնում։</p>
       <button id="previewGuideBtn" type="button" class="ghost">Ստուգել և նախադիտել</button>
       <div id="validationPanel" class="validation-panel"><strong>Գործարկեք նախադիտումը։</strong></div>
       <div id="previewPanel" class="preview-panel hidden"></div>
@@ -272,15 +467,24 @@ function renderEditor() {
       ${guide.lifecycleStatus === "published" && !detail.fallback?.available ? `<p class="subtle small">Արխիվացումը արգելափակված է, քանի դեռ բոլոր գործող հարցերի համար անվտանգ պահուստային ուղի չկա։</p>` : ""}
     </section>
 
-    <section class="guide-form-section"><h3>Անփոփոխ պատմություն</h3>${renderHistory(detail.history)}</section>`;
+    <section class="guide-form-section"><h3>Անփոփոխ պատմություն և տարբերակների համեմատություն</h3>${renderHistory(detail.history)}</section>`;
 
   ["guideTitleHy","guideStrategyHy","guideHint1Hy","guideHint2Hy","guideWorkedExampleHy","specializationCode","allowedParameterKeys","sourceTitle","sourceLocator","sourceUrl","sourceNotes"]
     .forEach((id) => $(id)?.addEventListener("input", () => { editorDirty = true; }));
   $("previewGuideBtn").addEventListener("click", previewGuide);
+  $("variantSearch").addEventListener("input", renderVariantOptions);
+  $("variantBucketFilter").addEventListener("change", renderVariantOptions);
+  $("previewVariant").addEventListener("change", renderVariantDetails);
   $("saveDraftBtn").addEventListener("click", () => runWorkflow("save_draft"));
   $("submitReviewBtn").addEventListener("click", () => runWorkflow("submit_review"));
   $("publishGuideBtn").addEventListener("click", () => runWorkflow("publish"));
   $("archiveGuideBtn").addEventListener("click", () => runWorkflow("archive"));
+  $("historyVersionA")?.addEventListener("change", renderHistoryComparison);
+  $("historyVersionB")?.addEventListener("change", renderHistoryComparison);
+  if ($("historyVersionA")) $("historyVersionA").value = String(detail.history?.[1]?.authoring_version ?? detail.history?.[0]?.authoring_version ?? "");
+  if ($("historyVersionB")) $("historyVersionB").value = String(detail.history?.[0]?.authoring_version ?? "");
+  renderVariantOptions();
+  renderHistoryComparison();
 }
 
 async function selectGuide(id, force = false) {
@@ -307,6 +511,10 @@ async function selectGuide(id, force = false) {
 
 async function previewGuide() {
   try {
+    if (!$("previewVariant").value) {
+      setMessage("Նախ ընտրեք իրական հարցի տարբերակ։", true);
+      return;
+    }
     setMessage("Ուղեցույցը ստուգվում է…");
     const guide = detail.guide;
     const response = await invoke({
@@ -332,20 +540,146 @@ async function previewGuide() {
   }
 }
 
+let resolveMfaDialog = null;
+
+function setMfaDialogMessage(text, bad = false) {
+  $("mfaDialogMessage").textContent = text || "";
+  $("mfaDialogMessage").classList.toggle("bad", Boolean(bad));
+}
+
+function openMfaDialog(title) {
+  $("mfaDialogTitle").textContent = title;
+  setMfaDialogMessage("");
+  if (!$("mfaDialog").open) $("mfaDialog").showModal();
+  return new Promise((resolve) => { resolveMfaDialog = resolve; });
+}
+
+async function finishMfaDialog(result) {
+  if (!result && pendingEnrollmentFactorId) {
+    await supabase.auth.mfa.unenroll({ factorId: pendingEnrollmentFactorId }).catch(() => null);
+  }
+  pendingEnrollmentFactorId = null;
+  if ($("mfaDialog").open) $("mfaDialog").close();
+  const resolve = resolveMfaDialog;
+  resolveMfaDialog = null;
+  resolve?.(result);
+}
+
+function markAal2() {
+  currentActor = { ...(currentActor ?? {}), aal: "aal2" };
+  renderAssurance();
+}
+
+async function challengeVerifiedFactor(verifiedFactors) {
+  const pending = openMfaDialog("Հաստատեք բազմագործոն մուտքը");
+  const body = $("mfaDialogBody");
+  body.className = "mfa-dialog-body";
+  body.innerHTML = `<p>Հրապարակելու կամ արխիվացնելու համար մուտքագրեք ձեր հաստատող հավելվածի ընթացիկ 6-նիշ կոդը։</p>
+    <label>Հաստատման եղանակ<select id="mfaFactorSelect"></select></label>
+    <label>6-նիշ կոդ<input id="mfaVerificationCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" /></label>
+    <div class="mfa-dialog-actions"><button id="verifyMfaBtn" type="button">Հաստատել</button><button id="cancelMfaBtn" type="button" class="ghost">Չեղարկել</button></div>`;
+  const select = $("mfaFactorSelect");
+  select.replaceChildren(...verifiedFactors.map((factor, index) => {
+    const option = document.createElement("option");
+    option.value = factor.id;
+    option.textContent = factor.friendly_name || factor.phone || `Հաստատման եղանակ ${index + 1}`;
+    return option;
+  }));
+  $("verifyMfaBtn").addEventListener("click", async () => {
+    const code = $("mfaVerificationCode").value.trim();
+    if (!/^\d{6,8}$/.test(code)) {
+      setMfaDialogMessage("Մուտքագրեք հաստատող հավելվածում երևացող կոդը։", true);
+      return;
+    }
+    $("verifyMfaBtn").disabled = true;
+    setMfaDialogMessage("Կոդը ստուգվում է…");
+    const { error } = await supabase.auth.mfa.challengeAndVerify({ factorId: select.value, code });
+    if (error) {
+      $("verifyMfaBtn").disabled = false;
+      setMfaDialogMessage(messageFor({ code: "mfa_verification_failed" }), true);
+      return;
+    }
+    markAal2();
+    await finishMfaDialog(true);
+  });
+  $("cancelMfaBtn").addEventListener("click", () => finishMfaDialog(false));
+  $("mfaVerificationCode").focus();
+  return pending;
+}
+
+async function enrollTotpFactor(existingFactors) {
+  const stale = existingFactors.filter((factor) => factor.status !== "verified");
+  for (const factor of stale) {
+    await supabase.auth.mfa.unenroll({ factorId: factor.id }).catch(() => null);
+  }
+  const { data, error } = await supabase.auth.mfa.enroll({
+    factorType: "totp",
+    friendlyName: "HaiEdu բովանդակության աշխատասեղան",
+  });
+  if (error) throw error;
+  pendingEnrollmentFactorId = data.id;
+
+  const pending = openMfaDialog("Կարգավորեք բազմագործոն մուտքը");
+  const body = $("mfaDialogBody");
+  body.className = "mfa-dialog-body";
+  body.innerHTML = `<ol>
+      <li>Բացեք ձեր հաստատող հավելվածը (օրինակ՝ Google Authenticator կամ Microsoft Authenticator)։</li>
+      <li>Սկանավորեք ստորև ներկայացված QR կոդը կամ ձեռքով մուտքագրեք գաղտնի բանալին։</li>
+      <li>Մուտքագրեք հավելվածում երևացող 6-նիշ կոդը։</li>
+    </ol>
+    <img id="mfaQrImage" class="mfa-qr" alt="Բազմագործոն մուտքի QR կոդ" />
+    <span class="subtle small">Ձեռքով մուտքագրվող գաղտնի բանալի</span>
+    <code id="mfaSecret" class="mfa-secret"></code>
+    <label>6-նիշ կոդ<input id="mfaEnrollmentCode" inputmode="numeric" autocomplete="one-time-code" maxlength="8" /></label>
+    <div class="mfa-dialog-actions"><button id="completeMfaEnrollmentBtn" type="button">Ավարտել կարգավորումը</button><button id="cancelMfaBtn" type="button" class="ghost">Չեղարկել</button></div>`;
+  const qr = String(data.totp?.qr_code || "");
+  if (/^data:image\/(?:svg\+xml|png)(?:;[^,]+)?,/i.test(qr)) $("mfaQrImage").src = qr;
+  else $("mfaQrImage").classList.add("hidden");
+  $("mfaSecret").textContent = data.totp?.secret || "—";
+  $("completeMfaEnrollmentBtn").addEventListener("click", async () => {
+    const code = $("mfaEnrollmentCode").value.trim();
+    if (!/^\d{6,8}$/.test(code)) {
+      setMfaDialogMessage("Մուտքագրեք հաստատող հավելվածում երևացող կոդը։", true);
+      return;
+    }
+    $("completeMfaEnrollmentBtn").disabled = true;
+    setMfaDialogMessage("Կարգավորումը հաստատվում է…");
+    const { error: verifyError } = await supabase.auth.mfa.challengeAndVerify({ factorId: data.id, code });
+    if (verifyError) {
+      $("completeMfaEnrollmentBtn").disabled = false;
+      setMfaDialogMessage(messageFor({ code: "mfa_verification_failed" }), true);
+      return;
+    }
+    pendingEnrollmentFactorId = null;
+    markAal2();
+    await finishMfaDialog(true);
+  });
+  $("cancelMfaBtn").addEventListener("click", () => finishMfaDialog(false));
+  $("mfaEnrollmentCode").focus();
+  return pending;
+}
+
 async function ensureAal2() {
   const { data: level, error: levelError } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
   if (levelError) throw levelError;
-  if (level?.currentLevel === "aal2") return true;
+  if (level?.currentLevel === "aal2") {
+    markAal2();
+    return true;
+  }
   const { data: factors, error: factorError } = await supabase.auth.mfa.listFactors();
   if (factorError) throw factorError;
-  const verified = [...(factors?.totp ?? []), ...(factors?.phone ?? [])].filter((factor) => factor.status === "verified");
-  if (!verified.length) throw new Error("mfa_required");
-  const code = prompt("Մուտքագրեք authenticator հավելվածի 6-նիշ կոդը։", "");
-  if (!code?.trim()) return false;
-  const { error } = await supabase.auth.mfa.challengeAndVerify({ factorId: verified[0].id, code: code.trim() });
-  if (error) throw error;
-  await supabase.auth.refreshSession();
-  return true;
+  const allFactors = factors?.all ?? [...(factors?.totp ?? []), ...(factors?.phone ?? [])];
+  const verified = allFactors.filter((factor) => factor.status === "verified");
+  return verified.length ? challengeVerifiedFactor(verified) : enrollTotpFactor(allFactors);
+}
+
+async function configureMfa() {
+  try {
+    const completed = await ensureAal2();
+    if (completed) setMessage("Բազմագործոն մուտքը հաստատված է այս սեսիայի համար։");
+  } catch (error) {
+    setMessage(messageFor(error), true);
+  }
 }
 
 async function runWorkflow(action) {
@@ -419,8 +753,24 @@ $("refreshGuidesBtn").addEventListener("click", () => {
   editorDirty = false;
   refreshCatalog().catch((error) => setMessage(messageFor(error), true));
 });
-["guideSearch","subjectFilter","gradeFilter","programmeFilter","unitFilter","skillFilter","scopeFilter","statusFilter"]
-  .forEach((id) => $(id).addEventListener(id === "guideSearch" ? "input" : "change", renderRows));
+$("guideSearch").addEventListener("input", renderRows);
+academicFilterIds.forEach((id) => $(id).addEventListener("change", () => {
+  populateFilters();
+  renderRows();
+}));
+["scopeFilter", "statusFilter"].forEach((id) => $(id).addEventListener("change", renderRows));
+$("clearGuideFiltersBtn").addEventListener("click", () => {
+  $("guideSearch").value = "";
+  [...academicFilterIds, "scopeFilter", "statusFilter"].forEach((id) => { $(id).value = ""; });
+  populateFilters();
+  renderRows();
+});
+
+$("closeMfaDialogBtn").addEventListener("click", () => finishMfaDialog(false));
+$("mfaDialog").addEventListener("cancel", (event) => {
+  event.preventDefault();
+  finishMfaDialog(false);
+});
 
 window.addEventListener("beforeunload", (event) => {
   if (!editorDirty) return;
@@ -428,6 +778,9 @@ window.addEventListener("beforeunload", (event) => {
   event.returnValue = "";
 });
 
-supabase.auth.onAuthStateChange((_event, session) => setTimeout(() => showForSession(session), 0));
+supabase.auth.onAuthStateChange((event, session) => {
+  if (["SIGNED_IN", "SIGNED_OUT"].includes(event)) setTimeout(() => showForSession(session), 0);
+  if (event === "MFA_CHALLENGE_VERIFIED") markAal2();
+});
 const { data: { session } } = await supabase.auth.getSession();
 await showForSession(session);
