@@ -68,7 +68,16 @@ const configs = {
     gate: "console", label: "Բովանդակության թիմ", links: [
       ["Գլխավոր", "./content.html", "home"],
       ["Հարցերի բանկ", "#bankTitle"],
-      ["Որակի ստուգում", "#detailPanel"]
+      ["Որակի ստուգում", "#detailPanel"],
+      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+    ]
+  },
+  contentGuides: {
+    gate: "guideConsole", label: "Բովանդակության թիմ", links: [
+      ["Գլխավոր", "./content.html"],
+      ["Հարցերի բանկ", "./content.html#bankTitle"],
+      ["Որակի ստուգում", "./content.html#detailPanel"],
+      ["Օգնության ուղեցույցներ", "./content-guides.html", "home"]
     ]
   }
 };
@@ -209,14 +218,14 @@ function syncRoleSidebar() {
   const chip = document.createElement("span");
   chip.className = "hm-role-chip";
   chip.textContent = config.label;
-  const topbar = document.querySelector(".teacher-topbar, .school-admin-header, .admin-topbar, .content-topbar");
+  const topbar = document.querySelector(".teacher-topbar, .school-admin-header, .admin-topbar, .content-topbar, .guide-topbar");
   topbar?.append(chip);
   syncTeacherSections();
   syncSchoolSections();
   syncPlatformSections();
 }
 
-const gates = ["dashboardPanel", "masterPanel", "overviewPanel", "teacherPanel", "teacherDetailPanel", "console", "securityConsole"]
+const gates = ["dashboardPanel", "masterPanel", "overviewPanel", "teacherPanel", "teacherDetailPanel", "console", "guideConsole", "securityConsole"]
   .map(id => document.getElementById(id)).filter(Boolean);
 const observer = new MutationObserver(syncRoleSidebar);
 gates.forEach(gate => observer.observe(gate, { attributes: true, attributeFilter: ["class"] }));
