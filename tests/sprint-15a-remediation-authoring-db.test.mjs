@@ -5,6 +5,7 @@ import { PGlite } from "@electric-sql/pglite";
 
 const fixture = readFileSync("tests/fixtures/sprint-15a-remediation-authoring.sql", "utf8");
 const migration = readFileSync("supabase/migrations/20260930120000_sprint_15a_remediation_authoring_foundation.sql", "utf8");
+const roleCastMigration = readFileSync("supabase/migrations/20260930204139_sprint_15a_authoring_role_cast.sql", "utf8");
 const actor = "10000000-0000-4000-8000-000000000010";
 const guide = "10000000-0000-4000-8000-000000000011";
 
@@ -35,6 +36,7 @@ test("15A database workflow preserves runtime until reviewed AAL2 publish", asyn
   await db.waitReady;
   await db.exec(fixture);
   await db.exec(migration);
+  await db.exec(roleCastMigration);
 
   const initial = await db.query("select count(*)::int count from remediation_guide_authoring_versions");
   assert.equal(initial.rows[0].count, 2);
