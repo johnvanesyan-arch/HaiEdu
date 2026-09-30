@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.58
+**Roadmap version:** 2.59
 **Updated:** 2026-09-30
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls, the authenticated school-admin operational overview and the teacher workspace operations are deployed; and the 14C school-scoped learner onboarding, exact-context stamping, assigned-class teacher roster and teacher evidence views are deployed. Institutional teachers can create assigned classrooms, send bounded bulk email invitations, issue optional one-use join codes, separate active and archived classrooms, and rename authorized classrooms without changing their identity or evidence. Role-scoped privacy inventories and Armenian-safe responsive layouts are deployed across role dashboards. Teacher offboarding and database-enforced final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 live checks on 2026-09-28. Authenticated action acceptance also passed 141/141 checks across both schools, with 54/54 read-isolation checks before and after. Teacher navigation/rename/archive, reciprocal class/staff mutation denials and temporary-membership offboarding UI acceptance are complete for these fixtures. Live multi-unit/multi-context switching remains open once a second authorized release exists. School-wide administrative analytics remain a separate 14D gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
@@ -11,6 +11,16 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 **Status: ✅ Adopted as a core project requirement.** The platform core must be subject-neutral; subject-specific behavior must use explicit, versioned configuration or extension points. The invariant now governs project policy, architecture decisions and future acceptance gates. Its canonical requirements and ten acceptance criteria are in `docs/subject-neutral-core.md`.
 
 All subjects have equal architectural and product status. Physics is one subject taught and assessed through the platform; it is not a default, reference course, reference implementation or privileged path. Implementation sequence and differences in current content coverage record delivery status only and create no subject precedence. Adoption creates a bounded migration obligation for existing subject-coupled behavior. The four-subject integration gate must demonstrate that Physics, Mathematics, Armenian Language and English coexist without subject leakage or redesign of shared platform capabilities before the Grade 7 MVP is declared complete.
+
+## Platform-wide natural Armenian localization policy — 2026-09-30
+
+**Status: ✅ Adopted as a permanent cross-platform release policy.** Every user-facing navigation item, page title, button, form label, instruction, empty state, confirmation, validation/error message, account/invitation/recovery flow, email, notification and analytics explanation must use natural, consistent Armenian across Student, Teacher, School Admin, Master Admin and Content Reviewer surfaces.
+
+The same concept must use one approved Armenian term supplied through a centralized terminology/localization source rather than ad hoc page literals. Backend error codes remain stable and language-neutral; role surfaces map them to reviewed Armenian explanations. Technical identifiers, email addresses, curriculum/item codes and necessary international abbreviations may remain unchanged when translation would reduce accuracy. UI layouts must accommodate Armenian text naturally without letter-by-letter breaks or overflow.
+
+This policy applies immediately to every new or modified interface. **Sprint 18** owns the centralized localization architecture, hard-coded-string removal, shared terminology dictionary and platform-wide localization regression gate. **Sprint 18.5** applies the standard to every rollover surface. Every later sprint must pass Armenian-language review before release. Working labels remain provisional until reviewed in their actual educational and administrative context.
+
+**Canonical policy:** [Academic-Year Rollover, Continuity and Localization Policy](academic-year-rollover-localization-policy.md).
 
 ## Sprint 15A authoring-tool decision — 2026-09-29
 
@@ -125,8 +135,8 @@ For the current Sprint 11 state:
 | 16.3 | English 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived English 7 unit through the complete learner, teacher, governance and QA pipeline. |
 | 16.4 | Grade 7 Four-Subject MVP Integration | ⏳ | Integrate Physics, Mathematics, Armenian Language and English; verify subject isolation, shared workflows, analytics, assignments, tenant controls and release provenance. |
 | 17 | Grade 7 Four-Subject School MVP Pilot | ⏳ | Run the formal school-level MVP pilot only after all four subject gates pass; technical QA may continue earlier. |
-| 18 | Production Hardening & Curriculum-Change Operations | ⏳ | Address scale, performance, security, observability, incident response, backup/restore, data-integrity checks, controlled rollout and safe curriculum-version migration/rollback. |
-| 18.5 | Academic-Year Lifecycle, Rollover & Continuity | ⏳ | Implement the operational academic-year lifecycle: prepare/activate/close/archive, student progression, teacher/class handover, validated rollover and historical preservation. |
+| 18 | Production Hardening & Curriculum-Change Operations | ⏳ | Address scale, performance, security, observability, incident response, backup/restore, data-integrity checks, controlled rollout, safe curriculum-version migration/rollback and centralized Armenian localization architecture. |
+| 18.5 | Academic-Year Lifecycle, Rollover & Continuity | ⏳ | Implement school-admin-controlled, validated bulk rollover with persistent teacher/student accounts, new-year assignments and placements, historical preservation, recovery continuity and role-specific Armenian interfaces. |
 | 19 | Public / Institutional Beta | ⏳ | Controlled external beta with repeatable school onboarding, support/escalation, tenant-isolated administration, controlled enrollment and explicit curriculum-release identity. |
 | 20 | Physics Grade Expansion — Physics 8–12 | ⏳ | Expand Physics vertically by mapping each grade to its applicable current programme rather than copying Physics 7 upward. |
 | 21 | Post-MVP Subject / Grade Expansion | ⏳ | Onboard the next priority subject/grade combination using the four-subject Grade 7 evidence model and verify repeatability beyond the MVP bundle. |
@@ -896,7 +906,11 @@ Engineering hardening:
 - incident-response procedures and security-event handling;
 - tested backup **and restore** procedures;
 - feature flags / controlled rollout and rollback for material platform/model changes;
-- localization architecture so UI/content-language behavior is not hard-coded.
+- centralized localization architecture so UI/content-language behavior is not hard-coded;
+- one reviewed Armenian terminology dictionary shared by browser surfaces, emails and notifications;
+- backend error-code mapping to natural Armenian explanations;
+- automated checks for missing translations, inconsistent terminology, fallback text and Armenian layout overflow;
+- an Armenian-language review gate for every new or modified interface.
 
 Curriculum-change operations:
 
@@ -933,6 +947,53 @@ Support:
 - mid-year membership changes represented as time-bounded historical memberships rather than overwritten class history.
 
 Inter-school transfer remains privacy/tenant controlled: a school losing membership must not see the learner's later activity elsewhere, and a receiving school does not automatically inherit another school's institutional records.
+
+### Approved rollover operating policy
+
+The [Academic-Year Rollover, Continuity and Localization Policy](academic-year-rollover-localization-policy.md) is the canonical Sprint 18.5 implementation standard.
+
+Authority and automation:
+
+- the **School Admin / Headmaster is the sole role authorized to decide and confirm official student rollover**;
+- teachers receive new-year assignments and resulting rosters but do not approve promotion, repetition, transfer, departure or pending placement;
+- the system proposes ordinary promotion, validates dependencies and executes only the school admin's confirmed batch;
+- students take no rollover action and keep the same account, credentials and historical identity;
+- annual progression does not use student invitations; invitations remain for new arrivals, optional classes and corrections.
+
+Mandatory order:
+
+1. create the new academic year in non-public **setup** state; this need not happen months in advance;
+2. create new class instances and verify published programme/curriculum-release availability;
+3. assign existing teachers through year- and class-scoped `teacher_assignments` records without creating new teacher accounts;
+4. generate student progression proposals from the outgoing year;
+5. let the school admin resolve Promote / Repeat / Internal transfer / Leaving / Pending outcomes;
+6. validate duplicate/missing placements, class/programme readiness, teacher authorization and tenant boundaries;
+7. show a before/after preview and obtain explicit school-admin confirmation;
+8. create new year-specific student placements and enrollments through resumable, idempotent batches;
+9. activate the new year only after the approved valid set is reconciled;
+10. close and later archive the outgoing year without rewriting history.
+
+Implementation invariants:
+
+- each student's application is atomic; a large school rollover is resumable rather than one unbounded transaction;
+- retries cannot create duplicate placements, enrollments or assignments;
+- the current year/grade comes from a canonical year-specific student placement, never from a label such as `Ֆիզիկա 7`;
+- unpublished or missing target programmes produce a visible pending/blocked item and cannot be overridden into active delivery;
+- password/email loss never blocks progression because rollover uses the permanent internal identity;
+- inaccessible-email recovery updates the verified existing account, revokes prior sessions/tokens and never creates a duplicate learner;
+- `teacher_assignments` becomes authoritative through additive backfill, dual-read/write verification and controlled retirement of class-level teacher ownership;
+- historical classrooms are read-only and retain roster, assignment/authorship, evidence, interventions, curriculum release, analytics and audit history;
+- school-admin, teacher and student analytics resolve an explicit academic-year context and never mix years by default;
+- prior-year evidence may inform prerequisite context but cannot automatically satisfy new-year mastery;
+- all privileged operations are live-session checked, school-scoped, audited and tested for cross-school denial.
+
+Role surfaces:
+
+- School Admin: academic years, teacher assignments/handover, student rollover, unresolved cases, previous years/year-scoped analytics and audited account-recovery cases;
+- Teacher: current assignments/classes and authorized previous-year classes/analytics only; no rollover controls;
+- Student: prominent active academic year and grade, current classes, placement-pending notice when applicable and a dedicated read-only previous-years/learning-history page; no rollover page.
+
+All rollover navigation, controls, statuses, reports, errors, recovery messages, emails and notifications must pass the platform-wide natural Armenian localization policy before release.
 
 ## Sprint 19 — Public / Institutional Beta
 
