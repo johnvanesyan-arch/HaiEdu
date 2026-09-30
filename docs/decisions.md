@@ -1,7 +1,13 @@
 # Architecture Decision Log
 
-## ADR-001 — Physics first
-**Decision:** First developed subject is Grade 7 Physics.
+## ADR-001 — Subject parity
+**Decision:** Every subject has equal architectural and product status. Physics is one subject taught and assessed through the platform; it is not the platform default, reference course, reference implementation or privileged path.
+
+**Consequences:**
+- shared product language and architecture remain subject-neutral;
+- implementation sequence and differences in current content coverage create no subject precedence;
+- each subject uses the same identity, tenancy, authorization, curriculum-release, session, provenance, navigation and analytics contracts;
+- subject-specific behavior remains inside explicit, versioned extensions.
 
 ## ADR-002 — Subject-neutral core and subject-aware extensions
 **Decision:** The whole platform core remains subject-neutral. Subject-specific behavior is implemented through explicit, versioned configuration or extension points so Mathematics, Armenian Language, English, Biology, Chemistry and later subjects can be added without redesigning shared identity, tenancy, enrollment, curriculum versioning, sessions, provenance, authorization, navigation or analytics.
@@ -10,7 +16,7 @@
 - shared schemas, services, APIs and UI shells derive subject, grade, scope, counts, labels and capabilities from governed data;
 - response formats, content models, renderers, scoring strategies, mastery policies and subject terminology may vary only behind declared extension contracts;
 - a subject extension cannot weaken tenant isolation, authorization, evidence provenance or curriculum-release binding;
-- existing Physics-specific implementation is an extension or migration concern, not a platform default;
+- every existing subject-specific implementation is an extension or migration concern, not a platform default;
 - exceptions require an explicit architecture decision with scope, owner, migration plan and expiry/review condition.
 
 The normative acceptance standard is `docs/subject-neutral-core.md`.

@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform
 
-A supplementary learning platform aligned to Armenia's general education system. The first proof of concept is **Grade 7 Physics**.
+A multi-subject supplementary learning platform aligned to Armenia's general education system. Physics, Mathematics, Armenian Language, English and future subjects have equal platform status; each is taught and assessed through the same subject-neutral core.
 
 ## Current milestone
 

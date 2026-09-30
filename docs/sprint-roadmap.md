@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.57
+**Roadmap version:** 2.58
 **Updated:** 2026-09-30
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls, the authenticated school-admin operational overview and the teacher workspace operations are deployed; and the 14C school-scoped learner onboarding, exact-context stamping, assigned-class teacher roster and teacher evidence views are deployed. Institutional teachers can create assigned classrooms, send bounded bulk email invitations, issue optional one-use join codes, separate active and archived classrooms, and rename authorized classrooms without changing their identity or evidence. Role-scoped privacy inventories and Armenian-safe responsive layouts are deployed across role dashboards. Teacher offboarding and database-enforced final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 live checks on 2026-09-28. Authenticated action acceptance also passed 141/141 checks across both schools, with 54/54 read-isolation checks before and after. Teacher navigation/rename/archive, reciprocal class/staff mutation denials and temporary-membership offboarding UI acceptance are complete for these fixtures. Live multi-unit/multi-context switching remains open once a second authorized release exists. School-wide administrative analytics remain a separate 14D gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English.
 
@@ -10,7 +10,7 @@ This file is the canonical high-level sprint sequence. `docs/backlog.md` remains
 
 **Status: ✅ Adopted as a core project requirement.** The platform core must be subject-neutral; subject-specific behavior must use explicit, versioned configuration or extension points. The invariant now governs project policy, architecture decisions and future acceptance gates. Its canonical requirements and ten acceptance criteria are in `docs/subject-neutral-core.md`.
 
-Adoption establishes the rule for all new work and creates a bounded migration obligation for existing subject-coupled behavior. It does not certify that every historical Physics-first implementation is already compliant. A four-subject integration gate must demonstrate that Physics, Mathematics, Armenian Language and English coexist without subject leakage or redesign of shared platform capabilities before the Grade 7 MVP is declared complete.
+All subjects have equal architectural and product status. Physics is one subject taught and assessed through the platform; it is not a default, reference course, reference implementation or privileged path. Implementation sequence and differences in current content coverage record delivery status only and create no subject precedence. Adoption creates a bounded migration obligation for existing subject-coupled behavior. The four-subject integration gate must demonstrate that Physics, Mathematics, Armenian Language and English coexist without subject leakage or redesign of shared platform capabilities before the Grade 7 MVP is declared complete.
 
 ## Sprint 15A authoring-tool decision — 2026-09-29
 
@@ -62,7 +62,7 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 13 | Work | Release checklist, deployment, migrations, regression and evidence reconciliation. |
 | 14 | Hybrid | Multi-tenant academic architecture first in chat; bounded implementation slices in Work. |
 | 15 | Hybrid | Content-governance and curriculum design in chat; reviewer editor, bulk ingestion and technical QA in Work. |
-| 16 | Work | Physics reference-course integration and regression. |
+| 16 | Work | Physics course integration and regression through the shared subject-neutral contracts. |
 | 16.1 | Hybrid | Mathematics curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
 | 16.2 | Hybrid | Armenian-language curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
 | 16.3 | Hybrid | English curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
@@ -119,7 +119,7 @@ For the current Sprint 11 state:
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed. 14B account/provisioning/recovery controls, school-admin operations and teacher workspace operations are deployed. Institutional classroom creation, class-bound bulk invitations, optional secure join codes, dedicated active/archive views, and authorized classroom renaming are complete. The 14C school-scoped learner onboarding, exact-context session stamping and teacher roster/evidence views pass their current controlled production checks. Teacher offboarding and final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 checks. Authenticated class/staff mutation-denial and teacher navigation/rename/offboarding action acceptance passed 141/141 checks, with read isolation passing 54/54 before and after. Multi-context switching remains open after a second authorized release; school-wide analytics remains the separate 14D gate. |
 | 15 | Grade 7 Physics Expansion — Chapters II–VI | ⏳ | Begin with mandatory 15A Content and Hint Authoring Tools, then build remaining Physics 7 units through standards → outcomes → skills → assessment → QA. |
-| 16 | Physics 7 Reference Course Integration | ⏳ | Integrate the complete Physics 7 reference course and preserve unit-bound diagnostics/mastery with course-level aggregation. |
+| 16 | Physics 7 Course Integration | ⏳ | Integrate the available Physics 7 course units through the same subject-neutral contracts and preserve unit-bound diagnostics/mastery with course-level aggregation. |
 | 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
 | 16.2 | Armenian Language 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Armenian Language 7 unit through the complete learner, teacher, governance and QA pipeline. |
 | 16.3 | English 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived English 7 unit through the complete learner, teacher, governance and QA pipeline. |
@@ -788,9 +788,9 @@ current Physics 7 programme
 
 No invariant requires every unit to contain 10 skills. Assessment blueprints derive from the unit's actual skill structure.
 
-## Sprint 16 — Physics 7 Reference Course Integration
+## Sprint 16 — Physics 7 Course Integration
 
-The complete Physics 7 reference product includes:
+The Physics 7 course includes:
 
 - all curriculum units;
 - unit diagnostics;
@@ -815,7 +815,7 @@ Technical, content and browser QA may continue before this gate. The **formal sc
 3. Armenian Language;
 4. English.
 
-For Mathematics, Armenian Language and English, the minimum MVP scope is one **production-ready vertical slice per subject**, not a shell, navigation fixture or unreviewed placeholder. Each slice must include:
+For each of the four subjects, the minimum MVP scope is one **production-ready vertical slice**, not a shell, navigation fixture or unreviewed placeholder. Each slice must include:
 
 - an applicable current official standard/programme source chain and immutable curriculum-release identity;
 - reviewed outcomes, skills and subject-appropriate evidence design;
@@ -826,7 +826,7 @@ For Mathematics, Armenian Language and English, the minimum MVP scope is one **p
 - desktop/mobile, accessibility, localization and end-to-end regression evidence;
 - an explicit content/SME release disposition.
 
-This is the minimum gate for testing a multi-subject institutional MVP. It does **not** claim full-year Mathematics 7, Armenian Language 7 or English 7 parity with the complete Physics 7 reference course. Requiring full-year parity for all four subjects is a separate product-owner scope decision.
+This is the minimum gate for testing a multi-subject institutional MVP. A subject may have additional released units when the gate is evaluated, but additional coverage does not give that subject reference, default or privileged status and does not reduce the production requirements for any other subject.
 
 ## Sprint 16.1 — Mathematics 7 MVP Vertical Slice
 
@@ -1105,7 +1105,7 @@ National-scale preparation includes:
 The learner-facing shell must not assume that:
 
 - a learner is always Grade 7;
-- the platform is always Physics;
+- the platform has a default or privileged subject;
 - a learner takes only one course;
 - global Home owns subject-specific diagnostics, practice, assessments or mastery;
 - course visibility can be inferred without an active entitlement.
@@ -1114,7 +1114,7 @@ The learner-facing shell must not assume that:
 
 The platform core must be subject-neutral. Subject-specific behavior belongs in explicit, versioned configuration or extension points.
 
-Shared identity, tenancy, enrollment, curriculum versioning, sessions, evidence provenance, authorization, navigation and analytics must not assume a subject, grade, course code, skill/item count, response format, mastery rule, language or content model. Existing Physics-specific behavior is treated as an extension or migration concern rather than a platform default.
+Shared identity, tenancy, enrollment, curriculum versioning, sessions, evidence provenance, authorization, navigation and analytics must not assume a subject, grade, course code, skill/item count, response format, mastery rule, language or content model. No subject is a platform default, reference model or privileged path; existing subject-specific behavior is treated as an extension or migration concern.
 
 The complete boundary, exception rule and acceptance criteria are defined in `docs/subject-neutral-core.md`. Future subject onboarding and the Grade 7 four-subject MVP gate must verify subject isolation and prove that new subjects do not require redesign of the shared core.
 
@@ -1201,13 +1201,13 @@ Assessment integrity
 
 **Sprint 14**
 
-The architecture stops being Grade-7-Physics-specific and single-institution operationally.
+The architecture supports multiple subjects and grades across tenant-isolated institutions.
 
 ### Milestone F — Grade 7 four-subject MVP bundle
 
 **Sprints 15–16.4**
 
-Physics 7 becomes the complete reference course; Mathematics 7, Armenian Language 7 and English 7 each add a production-ready vertical slice; the four subjects pass integrated MVP readiness.
+Physics 7, Mathematics 7, Armenian Language 7 and English 7 each meet the same minimum production-ready vertical-slice gate and pass integrated MVP readiness. Additional coverage in any subject does not change their equal platform status.
 
 ### Milestone G — Four-subject school validation and institutional readiness
 
