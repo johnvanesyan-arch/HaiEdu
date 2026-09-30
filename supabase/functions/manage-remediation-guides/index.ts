@@ -1,5 +1,11 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
+import {
+  plainObject,
+  renderRawTemplate,
+  strings,
+  validateGuideContent,
+} from "../_shared/remediation-authoring-validation.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -15,18 +21,6 @@ function json(body: unknown, status = 200) {
     status,
     headers: { ...corsHeaders, "Content-Type": "application/json" },
   });
-}
-
-function plainObject(value: unknown): PlainObject {
-  return value && typeof value === "object" && !Array.isArray(value)
-    ? value as PlainObject
-    : {};
-}
-
-function strings(value: unknown): string[] {
-  return Array.isArray(value)
-    ? [...new Set(value.map((entry) => String(entry).trim()).filter(Boolean))]
-    : [];
 }
 
 function jwtPayload(token: string): PlainObject {
@@ -55,94 +49,6 @@ function guideContent(value: unknown): PlainObject {
     workedExampleHy: String(source.workedExampleHy ?? "").trim(),
     allowedParameterKeys: strings(source.allowedParameterKeys),
     metadata: plainObject(source.metadata),
-  };
-}
-
-function placeholderKeys(value: string): { keys: string[]; invalid: string[] } {
-  const keys: string[] = [];
-  const invalid: string[] = [];
-  for (const match of value.matchAll(/\{\{\s*([^{}]+?)\s*\}\}/g)) {
-    const key = String(match[1] ?? "").trim();
-    if (/^[A-Za-z0-9_]+$/.test(key)) keys.push(key);
-    else invalid.push(key);
-  }
-  return { keys: [...new Set(keys)], invalid: [...new Set(invalid)] };
-}
-
-function renderRawTemplate(value: string, allowedKeys: string[], params: PlainObject): string {
-  const allowed = new Set(allowedKeys);
-  return value.replace(/\{\{([A-Za-z0-9_]+)\}\}/g, (match, key: string) => {
-    if (!allowed.has(key)) return match;
-    const raw = params[key];
-    return typeof raw === "string" || typeof raw === "number" || typeof raw === "boolean"
-      ? String(raw)
-      : match;
-  });
-}
-
-function validateContent(
-  scope: GuideScope,
-  content: PlainObject,
-  referenceMetadata: PlainObject,
-  variant: PlainObject | null,
-): { errors: string[]; warnings: string[]; placeholders: string[] } {
-  const errors: string[] = [];
-  const warnings: string[] = [];
-  const required = ["titleHy", "strategyHy", "hint1Hy", "hint2Hy", "workedExampleHy"];
-  for (const field of required) {
-    if (String(content[field] ?? "").trim().length < 3) errors.push(`missing_${field}`);
-  }
-  if (scope === "skill" && !String(content.misconceptionCode ?? "").trim()) {
-    errors.push("misconception_code_required");
-  }
-
-  const fields = required.map((field) => String(content[field] ?? ""));
-  const parsed = placeholderKeys(fields.join("\n"));
-  if (parsed.invalid.length) errors.push("invalid_placeholder_syntax");
-  const allowed = strings(content.allowedParameterKeys);
-  const allowedSet = new Set(allowed);
-  const forbiddenNames = /(^|_)(answer|correct|solution|result|expected|resolved)($|_)/i;
-
-  if (scope === "skill" && parsed.keys.length) errors.push("skill_guide_placeholders_not_allowed");
-  if (scope === "template") {
-    for (const key of parsed.keys) {
-      if (!allowedSet.has(key)) errors.push(`placeholder_not_allowed:${key}`);
-      if (forbiddenNames.test(key)) errors.push(`answer_like_placeholder_forbidden:${key}`);
-    }
-    for (const key of allowed) {
-      if (!/^[A-Za-z0-9_]+$/.test(key)) errors.push(`invalid_allowed_parameter:${key}`);
-      if (forbiddenNames.test(key)) errors.push(`answer_like_parameter_forbidden:${key}`);
-    }
-  }
-
-  const params = plainObject(variant?.variant_parameters);
-  if (variant) {
-    for (const key of parsed.keys) {
-      if (!(key in params)) errors.push(`variant_parameter_missing:${key}`);
-    }
-    const worked = String(content.workedExampleHy ?? "");
-    const workedKeys = new Set(placeholderKeys(worked).keys);
-    for (const key of workedKeys) {
-      if (typeof params[key] === "number") errors.push(`worked_example_reuses_live_numeric_value:${key}`);
-    }
-    const prompt = String(variant.prompt_hy ?? "").trim();
-    if (prompt && worked.trim() === prompt) errors.push("worked_example_duplicates_live_item");
-  } else {
-    warnings.push("preview_variant_missing");
-  }
-
-  const directLeakPattern = /(ճիշտ\s+պատասխան(?:ը|ն)|պատասխան(?:ը|ն)\s+է|correct\s+answer|answer\s+is)/iu;
-  if (directLeakPattern.test(String(content.hint1Hy ?? ""))) errors.push("hint_1_obvious_answer_leakage");
-  if (directLeakPattern.test(String(content.hint2Hy ?? ""))) errors.push("hint_2_obvious_answer_leakage");
-
-  if (!String(referenceMetadata.sourceTitle ?? "").trim()) warnings.push("source_title_missing");
-  if (!String(referenceMetadata.sourceLocator ?? "").trim()) warnings.push("source_locator_missing");
-  if (!String(referenceMetadata.sourceUrl ?? "").trim()) warnings.push("source_url_missing");
-
-  return {
-    errors: [...new Set(errors)],
-    warnings: [...new Set(warnings)],
-    placeholders: parsed.keys,
   };
 }
 
@@ -191,18 +97,24 @@ async function loadGuide(admin: any, scope: GuideScope, sourceId: string) {
 }
 
 async function loadVariants(admin: any, guide: PlainObject) {
-  let query = admin
-    .from("items")
-    .select("id, code, prompt_hy, variant_key, variant_parameters, item_template_id, skill_id")
-    .eq("status", "published")
-    .order("code", { ascending: true })
-    .limit(50);
-  query = guide.guide_scope === "template"
-    ? query.eq("item_template_id", guide.item_template_id)
-    : query.eq("skill_id", guide.skill_id);
-  const { data, error } = await query;
-  if (error) throw new Error(error.message);
-  return data ?? [];
+  const pageSize = 500;
+  const rows: PlainObject[] = [];
+  for (let offset = 0; ; offset += pageSize) {
+    let query = admin
+      .from("items")
+      .select("id, code, prompt_hy, variant_key, variant_parameters, difficulty_band, item_type, item_template_id, skill_id")
+      .eq("status", "published")
+      .order("code", { ascending: true })
+      .range(offset, offset + pageSize - 1);
+    query = guide.guide_scope === "template"
+      ? query.eq("item_template_id", guide.item_template_id)
+      : query.eq("skill_id", guide.skill_id);
+    const { data, error } = await query;
+    if (error) throw new Error(error.message);
+    rows.push(...(data ?? []));
+    if ((data ?? []).length < pageSize) break;
+  }
+  return rows;
 }
 
 async function loadFallbackState(admin: any, guide: PlainObject) {
@@ -300,7 +212,7 @@ Deno.serve(async (req) => {
     if (action === "get") {
       const [{ data: history, error: historyError }, variants, fallback] = await Promise.all([
         admin.from("remediation_guide_authoring_versions")
-          .select("id, authoring_version, lifecycle_status, change_rationale, actor_role, actor_aal, published_runtime_version, created_at")
+          .select("id, authoring_version, lifecycle_status, content_snapshot, reference_metadata, change_rationale, actor_role, actor_aal, published_runtime_version, created_at")
           .eq("guide_scope", scope)
           .eq("guide_source_id", sourceId)
           .order("authoring_version", { ascending: false })
@@ -319,7 +231,7 @@ Deno.serve(async (req) => {
     const variant = (variants as PlainObject[]).find((row) => row.id === requestedVariantId)
       ?? (variants[0] as PlainObject | undefined)
       ?? null;
-    const validation = validateContent(scope, content, referenceMetadata, variant);
+    const validation = validateGuideContent(scope, content, referenceMetadata, variant);
 
     if (action === "preview") {
       const params = plainObject(variant?.variant_parameters);

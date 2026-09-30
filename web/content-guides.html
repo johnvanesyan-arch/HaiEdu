@@ -47,6 +47,7 @@
         <label>Ծրագիր<select id="programmeFilter"><option value="">Բոլորը</option></select></label>
         <label>Բաժին / գլուխ<select id="unitFilter"><option value="">Բոլորը</option></select></label>
         <label>Հմտություն<select id="skillFilter"><option value="">Բոլորը</option></select></label>
+        <label>Հարցի ձևանմուշ<select id="templateFilter"><option value="">Բոլորը</option></select></label>
         <label>Ուղեցույցի մակարդակ
           <select id="scopeFilter">
             <option value="">Բոլորը</option>
@@ -64,6 +65,8 @@
           </select>
         </label>
         <button id="refreshGuidesBtn" type="button" class="ghost">Թարմացնել</button>
+        <button id="clearGuideFiltersBtn" type="button" class="ghost">Մաքրել զտիչները</button>
+        <p id="activeScopeSummary" class="scope-summary subtle small" aria-live="polite"></p>
       </section>
 
       <div class="guide-layout">
@@ -77,7 +80,7 @@
           <div class="guide-table-wrap" tabindex="0">
             <table class="guide-table">
               <thead>
-                <tr><th>Մակարդակ</th><th>Հմտություն / ձևանմուշ</th><th>Մասնավորեցում</th><th>Կենսափուլ</th><th>Տարբերակ</th></tr>
+                <tr><th>Մակարդակ</th><th>Առարկա / դասարան</th><th>Ծրագիր / բաժին</th><th>Հմտություն / ձևանմուշ</th><th>Մասնավորեցում</th><th>Կենսափուլ</th><th>Տարբերակ</th></tr>
               </thead>
               <tbody id="guideRows"></tbody>
             </table>
@@ -92,6 +95,20 @@
       <p id="guideMessage" class="message" aria-live="polite"></p>
     </section>
   </main>
+
+  <dialog id="mfaDialog" class="mfa-dialog" aria-labelledby="mfaDialogTitle">
+    <form method="dialog" class="mfa-dialog-card">
+      <div class="section-heading">
+        <div>
+          <p class="eyebrow">ՀԱՇՎԻ ՊԱՇՏՊԱՆՈՒԹՅՈՒՆ</p>
+          <h2 id="mfaDialogTitle">Բազմագործոն հաստատում</h2>
+        </div>
+        <button id="closeMfaDialogBtn" type="button" class="ghost compact" aria-label="Փակել">Փակել</button>
+      </div>
+      <div id="mfaDialogBody"></div>
+      <p id="mfaDialogMessage" class="message" aria-live="polite"></p>
+    </form>
+  </dialog>
   <script type="module" src="./content-guides.js"></script>
   <script type="module" src="./ux.js"></script>
   <script type="module" src="./role-layout.js"></script>
