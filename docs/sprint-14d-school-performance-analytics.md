@@ -2,7 +2,7 @@
 
 ## Status
 
-Implementation is in [PR #62](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/62). GitHub CI #954 passed the full repository suite, TypeScript, browser syntax and institutional concurrency checks. The JWT-protected `get-school-performance-analytics` Edge Function v1 is active and its three deployed files exactly match the reviewed source. Authenticated production browser acceptance remains open and is not claimed by this checkpoint.
+**✅ Complete.** Implementation is in [PR #62](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/62). GitHub CI #954 passed the full repository suite, TypeScript, browser syntax and institutional concurrency checks. The JWT-protected `get-school-performance-analytics` Edge Function v1 is active and its three deployed files exactly match the reviewed source. [PR #63](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/63) added the durable authenticated production gate; [run 36757995069](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/36757995069) passed 10/10 endpoint, tenant, privacy and browser checks across both dedicated QA schools.
 
 ## Purpose
 
@@ -60,7 +60,9 @@ The board does not render demonstration percentages. A missing denominator is sh
 - Endpoint tests cover authorized-school success, cross-school denial and AAL2 enforcement for platform admins.
 - Static contract tests require exact school/year/enrollment evidence filters and reject Physics-specific coupling.
 - Existing school overview tests require the activated analytics board and its three filters.
-- Full repository CI, Supabase deployment readback, unauthenticated denial and authenticated production browser QA must pass before 14D is called complete.
+- Full repository CI, Supabase deployment readback, unauthenticated denial and authenticated production browser QA passed before 14D was called complete.
+
+The production acceptance is read-only. For each of the two dedicated QA schools it authenticates the existing School Admin, verifies the own-school aggregate, denies the reciprocal other-school request, rejects learner-identity fields in the response and renders the deployed analytics board plus all three filters in Chromium. It creates no school, account, membership, class, enrollment, invitation or learning-evidence record and closes only the QA sessions created by the run.
 
 ## Exclusions
 
