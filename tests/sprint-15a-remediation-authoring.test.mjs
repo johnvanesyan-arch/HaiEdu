@@ -4,6 +4,7 @@ import { readFileSync } from "node:fs";
 
 const read = (path) => readFileSync(path, "utf8");
 const migration = read("supabase/migrations/20260930120000_sprint_15a_remediation_authoring_foundation.sql");
+const advisorCorrection = read("supabase/migrations/20260930195500_sprint_15a_authoring_parent_index.sql");
 const endpoint = read("supabase/functions/manage-remediation-guides/index.ts");
 const resolver = read("supabase/functions/get-remediation-help/index.ts");
 const html = read("web/content-guides.html");
@@ -78,4 +79,10 @@ test("catalog is service-only and uses invoker security", () => {
   assert.match(migration, /remediation_guide_authoring_catalog_v\n\+?with \(security_invoker = true\)|remediation_guide_authoring_catalog_v\nwith \(security_invoker = true\)/);
   assert.match(migration, /revoke all on table public\.remediation_guide_authoring_catalog_v from anon, authenticated/);
   assert.match(migration, /grant select on table public\.remediation_guide_authoring_catalog_v to service_role/);
+});
+
+test("authoring history parent foreign key has a covering index", () => {
+  assert.match(advisorCorrection, /remediation_guide_authoring_parent_idx/);
+  assert.match(advisorCorrection, /\(parent_version_id\)/);
+  assert.match(advisorCorrection, /where parent_version_id is not null/);
 });
