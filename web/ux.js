@@ -1,4 +1,5 @@
 function ensurePlatformFavicon() {
+  if (typeof document === "undefined") return;
   if (document.querySelector('link[data-haiedu-platform-favicon="true"]')) return;
   const existing = document.querySelector('link[rel~="icon"]');
   if (existing) {
