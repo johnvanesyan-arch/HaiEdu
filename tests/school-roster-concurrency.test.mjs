@@ -10,6 +10,7 @@ function harness(){
   const context=vm.createContext({$:id=>elements[id],dashboardState:state,message:(_id,text)=>messages.push(text),
     setButtonBusy:(button,busy)=>{button.disabled=busy;},renderOverview:()=>{},
     appendRosterGroup:(_list,_heading,teachers)=>rows.push(...teachers.map(t=>t.person_id)),
+    appendRosterHistory:(_list,teachers)=>rows.push(...teachers.map(t=>t.person_id)),
     supabase:{functions:{invoke:()=>new Promise(resolve=>pending.push(resolve))}},
   });
   vm.runInContext('let teacherRosterLoadVersion=0;\n'+source.slice(source.indexOf('async function loadTeacherRoster()'),source.indexOf('async function loadTeacherSubjects(')),context);
