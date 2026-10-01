@@ -10,6 +10,10 @@ const privilegeMigration = readFileSync(
   "supabase/migrations/20261001072000_sprint_15b3_mapping_trigger_privileges.sql",
   "utf8",
 );
+const activationMigration = readFileSync(
+  "supabase/migrations/20261001120500_sprint_15b3_activate_approved_misconceptions.sql",
+  "utf8",
+);
 const qualityFunction = readFileSync(
   "supabase/functions/manage-content-quality/index.ts",
   "utf8",
@@ -77,4 +81,40 @@ test("mapping trigger functions are not exposed as client-callable RPCs", () => 
   assert.match(privilegeMigration, /from authenticated/);
   assert.match(privilegeMigration, /to service_role/);
   assert.match(privilegeMigration, /15B3_trigger_function_privilege_revoke_failed/);
+});
+
+test("only the three approved first-family misconceptions are activated", () => {
+  for (const code of [
+    "matter_as_continuous",
+    "particle_identity_or_count_changes",
+    "particle_size_increases_on_heating",
+  ]) {
+    assert.match(activationMigration, new RegExp(`misconception\\.code = '${code}'`));
+  }
+  assert.match(activationMigration, /skill\.code = 'PHY7-U02-S02'/);
+  assert.match(activationMigration, /status = 'active'/);
+  assert.match(activationMigration, /v_definition_count <> 3/);
+  assert.doesNotMatch(activationMigration, /update public\.misconceptions[\s\S]*where misconception\.status = 'draft'/);
+});
+
+test("misconception activation is gated on the complete four-item mapping matrix", () => {
+  for (const itemCode of [
+    "PHY7-U02-S02-I01",
+    "PHY7-U02-S02-I02",
+    "PHY7-U02-S02-I03",
+    "PHY7-U02-S02-I04",
+  ]) {
+    assert.match(activationMigration, new RegExp(itemCode));
+  }
+  assert.match(activationMigration, /v_mapping_count <> 12/);
+  assert.match(activationMigration, /having count\(mapping\.item_id\) = 3/);
+  assert.match(activationMigration, /v_item_mapping_count <> 4/);
+});
+
+test("misconception approval does not create learner delivery", () => {
+  assert.doesNotMatch(activationMigration, /insert into public\.assessment_pools\b/i);
+  assert.doesNotMatch(activationMigration, /insert into public\.assessment_pool_items\b/i);
+  assert.doesNotMatch(activationMigration, /insert into public\.assessment_blueprints\b/i);
+  assert.doesNotMatch(activationMigration, /insert into public\.assessment_blueprint_items\b/i);
+  assert.doesNotMatch(activationMigration, /update public\.items\b/i);
 });
