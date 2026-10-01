@@ -118,3 +118,12 @@ button.ghost { background: transparent; color: #274a75; border: 1px solid #ccd7e
   .question-actions { justify-content: space-between; }
   .quantity-row { grid-template-columns: 1fr; }
 }
+
+/* Same-origin navigation can keep the outgoing page visible until the next document paints. */
+@view-transition { navigation: auto; }
+::view-transition-old(root),
+::view-transition-new(root) { animation-duration: 120ms; }
+@media (prefers-reduced-motion: reduce) {
+  ::view-transition-old(root),
+  ::view-transition-new(root) { animation-duration: 0ms; }
+}
