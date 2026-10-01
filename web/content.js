@@ -25,7 +25,11 @@ function setMessage(text, bad = false) {
 
 async function invoke(name, body = {}) {
   const { data, error } = await supabase.functions.invoke(name, { body });
-  if (error) throw new Error(data?.detail || data?.error || error.message);
+  if (error) {
+    const response = error.context;
+    const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
+    throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
+  }
   if (data?.error) throw new Error(data.detail || data.error);
   return data;
 }
@@ -143,12 +147,19 @@ function optionRowsHtml(options, disabled) {
 function misconceptionRowsHtml(detail, disabled) {
   const available = detail.availableMisconceptions ?? [];
   const rows = detail.misconceptions ?? [];
-  return rows.map((m) => `<div class="misconception-editor-row" data-misconception-row>
-    <label>Code<select class="misconception-code" ${disabled ? "disabled" : ""}>${available.map((x) => `<option value="${esc(x.code)}" ${x.code === m.code ? "selected" : ""}>${esc(x.code)} — ${esc(x.title_hy)}</option>`).join("")}</select></label>
+  return rows.map((m) => {
+    const choices = available.some((x) => x.code === m.code)
+      ? available
+      : m.code
+        ? [{ code: m.code, title_hy: m.titleHy || "Ընթացիկ կապակցում", existingOnly: true }, ...available]
+        : available;
+    return `<div class="misconception-editor-row" data-misconception-row>
+    <label>Code<select class="misconception-code" ${disabled ? "disabled" : ""}>${choices.map((x) => `<option value="${esc(x.code)}" ${x.code === m.code ? "selected" : ""}>${esc(x.code)} — ${esc(x.title_hy)}${x.existingOnly ? " · ընթացիկ" : ""}</option>`).join("")}</select></label>
     <label>Response key<input class="misconception-response" value="${esc(m.responseKey ?? "*")}" ${disabled ? "disabled" : ""} /></label>
     <label class="wide">Note<input class="misconception-note" value="${esc(m.mappingNote ?? "")}" ${disabled ? "disabled" : ""} /></label>
     <button type="button" class="ghost remove-misconception-btn" ${disabled ? "disabled" : ""}>Remove</button>
-  </div>`).join("");
+  </div>`;
+  }).join("");
 }
 
 function answerEditorHtml(detail, disabled) {

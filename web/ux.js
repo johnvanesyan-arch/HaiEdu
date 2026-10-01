@@ -42,7 +42,7 @@ const friendlyErrors = new Map([
   ["Email not confirmed", "Էլ. հասցեն դեռ հաստատված չէ։"],
   ["User already registered", "Այս էլ. հասցեով հաշիվ արդեն կա։"],
   ["Failed to fetch", "Կապի խնդիր առաջացավ։ Ստուգեք ինտերնետը և կրկին փորձեք։"],
-  ["Edge Function returned a non-2xx status code", "Չհաջողվեց բեռնել տվյալները։ Եթե հաշիվը ջնջվել կամ կասեցվել է, նորից մուտք գործեք։"],
+  ["Edge Function returned a non-2xx status code", "Գործողությունը չհաջողվեց։ Ստուգեք տվյալները և կրկին փորձեք։"],
 ]);
 
 function localizeText(text) {
