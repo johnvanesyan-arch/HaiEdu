@@ -215,6 +215,16 @@ function wireItemTabs() {
 
 window.addEventListener("haiedu:content-tab-refresh", () => activateItemTab(itemTab));
 
+const QA_MESSAGE_HY = {
+  answer_position_distribution_imbalanced: "Այս հարցի ընտանիքում ճիշտ պատասխանների դիրքերը անհամաչափ են բաշխված։ Վերանայեք տարբերակների հերթականությունը։",
+  answer_position_distribution_check_failed: "Չհաջողվեց ստուգել ճիշտ պատասխանների դիրքերի բաշխումը։ Կրկին գործարկեք QA-ն։",
+  shuffle_disabled_without_option_order_rationale: "Տարբերակների խառնումն անջատված է, սակայն հաստատուն հերթականության պատճառը նշված չէ։",
+};
+
+function qaMessageHy(code) {
+  return QA_MESSAGE_HY[code] || code;
+}
+
 function renderDetail() {
   const item = dashboard?.items?.find((i) => i.id === selectedId);
   const detail = selectedDetail;
@@ -290,8 +300,8 @@ function renderDetail() {
     <section class="detail-section" data-item-tab="review">
       <h3>Տեխնիկական QA</h3>
       <p><strong>${!item.latestQa ? "Ընթացիկ տարբերակի համար QA դեռ չի գործարկվել։" : qaPassed ? "✓ QA անցած" : "✕ QA չի անցել"}</strong>${item.latestQa ? ` · v${esc(item.latestQa.versionNo)}` : ""}</p>
-      ${qaErrors.length ? `<ul class="error-list">${qaErrors.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
-      ${qaWarnings.length ? `<ul class="warning-list">${qaWarnings.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
+      ${qaErrors.length ? `<ul class="error-list">${qaErrors.map((x)=>`<li>${esc(qaMessageHy(x))}</li>`).join("")}</ul>` : ""}
+      ${qaWarnings.length ? `<ul class="warning-list">${qaWarnings.map((x)=>`<li>${esc(qaMessageHy(x))}</li>`).join("")}</ul>` : ""}
       <div class="workflow-actions"><button id="runQaBtn" class="secondary">${item.latestQa ? "Կրկին գործարկել QA" : "Գործարկել QA"}</button></div>
     </section>
     <section class="detail-section governance-status-section" data-item-tab="review">
