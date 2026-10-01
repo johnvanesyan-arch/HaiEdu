@@ -713,8 +713,8 @@ $("signOutBtn").addEventListener("click", async () => {
   location.replace("./account-access");
 });
 
-const { data: auth } = await supabase.auth.getUser();
-const id = auth.user?.id;
+const { data: sessionData } = await supabase.auth.getSession();
+const id = sessionData.session?.user?.id;
 const { data: profile } = id ? await supabase.from("profiles")
   .select("role,account_status").eq("id", id).maybeSingle() : { data: null };
 $("loading").classList.add("hidden");
@@ -750,18 +750,20 @@ if (profile?.account_status !== "active" || !["admin", "school_admin"].includes(
       }
       $("overviewPanel").classList.remove("hidden");
       $("yearPanel").classList.remove("hidden");
-      await loadYears();
-      const subjectsLoaded = await loadTeacherSubjects(schools[0].id);
       $("teacherPanel").classList.remove("hidden");
       $("teachersPanel").classList.remove("hidden");
-      await loadTeacherRoster();
-      await loadSchoolAnalytics({ resetFilters: true });
+      const [, subjectsLoaded] = await Promise.all([
+        loadYears(),
+        loadTeacherSubjects(schools[0].id),
+        loadTeacherRoster(),
+        loadSchoolAnalytics({ resetFilters: true }),
+      ]);
       if (!subjectsLoaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
     }
   }
 
   if (profile.role === "admin" || !$("teacherPanel").classList.contains("hidden")) {
     $("pendingPanel").classList.remove("hidden");
-    await loadPendingInvites();
+    void loadPendingInvites();
   }
 }
