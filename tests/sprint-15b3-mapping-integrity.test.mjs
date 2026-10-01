@@ -6,6 +6,10 @@ const migration = readFileSync(
   "supabase/migrations/20261001071000_sprint_15b3_mapping_integrity_gate.sql",
   "utf8",
 );
+const privilegeMigration = readFileSync(
+  "supabase/migrations/20261001072000_sprint_15b3_mapping_trigger_privileges.sql",
+  "utf8",
+);
 const qualityFunction = readFileSync(
   "supabase/functions/manage-content-quality/index.ts",
   "utf8",
@@ -60,4 +64,17 @@ test("the correction does not create learner assessment delivery", () => {
   assert.doesNotMatch(migration, /insert into public\.assessment_pool_items\b/i);
   assert.doesNotMatch(migration, /insert into public\.assessment_blueprints\b/i);
   assert.doesNotMatch(migration, /insert into public\.assessment_blueprint_items\b/i);
+});
+
+test("mapping trigger functions are not exposed as client-callable RPCs", () => {
+  for (const functionName of [
+    "enforce_item_misconception_mapping_policy",
+    "enforce_published_mapping_mutation_policy",
+  ]) {
+    assert.match(privilegeMigration, new RegExp(`revoke all on function public\\.${functionName}\\(\\)`));
+  }
+  assert.match(privilegeMigration, /from anon/);
+  assert.match(privilegeMigration, /from authenticated/);
+  assert.match(privilegeMigration, /to service_role/);
+  assert.match(privilegeMigration, /15B3_trigger_function_privilege_revoke_failed/);
 });
