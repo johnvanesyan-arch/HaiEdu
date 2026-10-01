@@ -210,6 +210,15 @@ function renderDetail() {
   const disabled = !editable;
   const qaErrors = item.latestQa?.errors ?? [];
   const qaWarnings = item.latestQa?.warnings ?? [];
+  const qaPassed = item.latestQa?.passed === true;
+  const reviewStatusLabel = ({
+    unreviewed: "Չստուգված",
+    needs_review: "Ստուգման է սպասում",
+    in_review: "Ստուգման փուլում",
+    changes_requested: "Փոփոխություն է պահանջվում",
+    approved: "Հաստատված",
+  })[item.reviewStatus] || item.reviewStatus || "—";
+  const canApprove = qaPassed && item.reviewStatus !== "approved" && !item.retiredAt;
   const purposes = (detail.pools ?? []).map((p) => `${p.purpose}${p.protected ? " (protected)" : ""}${p.enabled ? "" : " · staged"}`).join(" · ") || detail.item.config?.sprint11dBucket || "—";
   const generatedWarning = detail.editing?.reason === "generated_variant_requires_template_edit"
     ? `<div class="editor-warning"><strong>Generated variant.</strong> This concrete item is reproducible from template + seed, so rendered question/answer editing is locked. Edit/regenerate the source template instead; metadata/review actions remain available.</div>`
@@ -222,7 +231,7 @@ function renderDetail() {
     </div>
     <div class="immutable-summary"><span><strong>Type:</strong> ${esc(item.type)}</span><span><strong>Skill:</strong> ${esc(item.skill?.code)}</span><span><strong>Purpose:</strong> ${esc(purposes)}</span></div>
     ${generatedWarning}
-    ${editable ? `<div id="unsavedChangesNotice" class="editor-warning hidden" role="status"><strong>Չպահպանված փոփոխություններ։</strong> Պահպանեք տարբերակը կամ օգտագործեք QA/ստուգման գործողությունները։</div>` : ""}
+    ${editable ? `<div id="unsavedChangesNotice" class="editor-warning hidden" role="status"><strong>Չպահպանված փոփոխություններ։</strong> Նախ պահպանեք նոր տարբերակը, ապա գործարկեք QA-ն։</div>` : ""}
     <nav class="item-tab-nav" aria-label="Հարցի աշխատանքային բաժիններ">
       <button type="button" class="item-tab-button" data-item-tab-button="preview">Նախադիտում</button>
       <button type="button" class="item-tab-button" data-item-tab-button="content">Բովանդակություն</button>
@@ -262,18 +271,22 @@ function renderDetail() {
 
     <section class="detail-section" data-item-tab="review">
       <h3>Տեխնիկական QA</h3>
-      <p><strong>${!item.latestQa ? "Not run for current version" : item.latestQa.passed ? "PASS" : "FAIL"}</strong>${item.latestQa ? ` · v${esc(item.latestQa.versionNo)}` : ""}</p>
+      <p><strong>${!item.latestQa ? "Ընթացիկ տարբերակի համար QA դեռ չի գործարկվել։" : qaPassed ? "✓ QA անցած" : "✕ QA չի անցել"}</strong>${item.latestQa ? ` · v${esc(item.latestQa.versionNo)}` : ""}</p>
       ${qaErrors.length ? `<ul class="error-list">${qaErrors.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       ${qaWarnings.length ? `<ul class="warning-list">${qaWarnings.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
-      <div class="workflow-actions"><button id="runQaBtn" class="secondary">Run QA</button></div>
+      <div class="workflow-actions"><button id="runQaBtn" class="secondary">${item.latestQa ? "Կրկին գործարկել QA" : "Գործարկել QA"}</button></div>
     </section>
     <section class="detail-section" data-item-tab="review">
-      <h3>Review workflow</h3>
-      <p>Current: <strong>${esc(item.reviewStatus)}</strong> · version <strong>${esc(item.versionNo)}</strong></p>
+      <h3>Բովանդակային որոշում</h3>
+      <p>Կարգավիճակ՝ <strong>${esc(reviewStatusLabel)}</strong> · տարբերակ <strong>v${esc(item.versionNo)}</strong></p>
+      <p class="subtle">${qaPassed
+        ? (item.reviewStatus === "approved"
+          ? "Այս տարբերակն արդեն հաստատված է։ Նոր բովանդակային փոփոխությունը կստեղծի նոր տարբերակ և նորից կպահանջի QA։"
+          : "Եթե հարցը բովանդակային առումով ճիշտ է, կարող եք հաստատել այն։ Եթե փոփոխություն է պետք, խմբագրեք հարցը և պահպանեք նոր տարբերակ։")
+        : "Հաստատումը հասանելի կլինի միայն ընթացիկ տարբերակի հաջող QA-ից հետո։"}</p>
       <div class="workflow-actions">
-        <button id="submitReviewBtn" class="secondary">Submit review</button>
-        <button id="approveBtn">Approve</button>
-        <button id="changesBtn" class="secondary">Request changes</button>
+        ${editable ? `<button id="editQuestionBtn" class="secondary">Խմբագրել հարցը</button>` : ""}
+        <button id="approveBtn" ${canApprove ? "" : "disabled"}>${item.reviewStatus === "approved" ? "Հաստատված" : "Հաստատել"}</button>
       </div>
     </section>
     <section class="detail-section" data-item-tab="history">
@@ -289,12 +302,10 @@ function renderDetail() {
     </section>`;
 
   $("runQaBtn")?.addEventListener("click", runQaCurrent);
-  $("submitReviewBtn")?.addEventListener("click", submitReviewCurrent);
   $("approveBtn")?.addEventListener("click", approveCurrent);
-  $("changesBtn")?.addEventListener("click", () => {
-    if (editorDirty) return setMessage("Save or discard the unsaved edits before requesting changes.", true);
-    const notes = prompt("Ի՞նչ փոփոխություն է պահանջվում։") ?? "";
-    if (notes.trim()) action("request_changes", { reviewType: "content", notes });
+  $("editQuestionBtn")?.addEventListener("click", () => {
+    activateItemTab("content");
+    $("editPromptHy")?.focus();
   });
   $("saveRevisionBtn")?.addEventListener("click", saveRevision);
   $("retireBtn")?.addEventListener("click", retireItem);
@@ -311,9 +322,18 @@ function renderDetail() {
 
 function updateEditorDirtyUi() {
   $("unsavedChangesNotice")?.classList.toggle("hidden", !editorDirty);
-  if ($("approveBtn")) $("approveBtn").textContent = editorDirty ? "Save, QA & approve" : "Approve";
-  if ($("submitReviewBtn")) $("submitReviewBtn").textContent = editorDirty ? "Save, QA & submit" : "Submit review";
-  if ($("runQaBtn")) $("runQaBtn").textContent = editorDirty ? "Save & run QA" : "Run QA";
+  const item = dashboard?.items?.find((entry) => entry.id === selectedId);
+  const qaPassed = item?.latestQa?.passed === true;
+  if ($("runQaBtn")) {
+    $("runQaBtn").disabled = editorDirty;
+    $("runQaBtn").textContent = editorDirty
+      ? "Նախ պահպանեք փոփոխությունները"
+      : item?.latestQa ? "Կրկին գործարկել QA" : "Գործարկել QA";
+  }
+  if ($("approveBtn")) {
+    $("approveBtn").disabled = editorDirty || !qaPassed || item?.reviewStatus === "approved" || Boolean(item?.retiredAt);
+    $("approveBtn").textContent = item?.reviewStatus === "approved" ? "Հաստատված" : "Հաստատել";
+  }
 }
 
 function markEditorDirty() {
@@ -456,10 +476,10 @@ async function saveRevision() {
   if (!item || !selectedDetail?.editing?.contentEditable || workflowBusy) return;
   try {
     workflowBusy = true;
-    setMessage("Revision is being saved…");
+    setMessage("Նոր տարբերակը պահպանվում է…");
     await persistCurrentRevision();
     await refresh(selectedId);
-    setMessage(`${item.code}: saved as a new version. Run QA, then submit/approve the review.`);
+    setMessage(`${item.code}: պահպանվեց որպես նոր տարբերակ։ Այժմ գործարկեք QA-ն, ապա հաստատեք հարցը։`);
   } catch (err) {
     setMessage(err.message, true);
   } finally {
@@ -479,37 +499,22 @@ async function runQaCurrent() {
   if (workflowBusy) return;
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item) return;
+  if (editorDirty) {
+    activateItemTab("content");
+    setMessage("Նախ պահպանեք փոփոխությունները որպես նոր տարբերակ, ապա գործարկեք QA-ն։", true);
+    return;
+  }
   try {
     workflowBusy = true;
-    const saved = editorDirty ? await persistCurrentRevision("Saved before technical QA") : false;
-    setMessage(saved ? "Changes saved. Technical QA is running…" : "Technical QA is running…");
+    setMessage("Տեխնիկական QA-ն գործարկվում է…");
     const passed = await ensureQaPassed({ force: true });
     await refresh(selectedId);
-    setMessage(passed ? `${item.code}: QA passed${saved ? " on the saved revision" : ""}.` : `${item.code}: changes were saved, but QA failed. Review the QA errors before approval.`, !passed);
-  } catch (err) {
-    setMessage(err.message, true);
-  } finally {
-    workflowBusy = false;
-  }
-}
-
-async function submitReviewCurrent() {
-  if (workflowBusy) return;
-  const item = dashboard.items.find((i) => i.id === selectedId);
-  if (!item) return;
-  try {
-    workflowBusy = true;
-    const saved = editorDirty ? await persistCurrentRevision("Saved before review submission") : false;
-    setMessage(saved ? "Changes saved. Checking technical QA…" : "Checking technical QA…");
-    const passed = await ensureQaPassed({ force: saved || item.latestQa?.passed !== true });
-    if (!passed) {
-      await refresh(selectedId);
-      setMessage(`${item.code}: changes were saved, but QA failed. The item was not submitted for review.`, true);
-      return;
-    }
-    await invoke("manage-content-quality", { action: "submit_review", itemId: selectedId, reviewType: "content" });
-    await refresh(selectedId);
-    setMessage(`${item.code}: ${saved ? "changes saved, QA passed, and " : ""}submitted for review.`);
+    setMessage(
+      passed
+        ? `${item.code}: QA-ն հաջողությամբ անցավ։`
+        : `${item.code}: QA-ն խնդիրներ գտավ։ Ուղղեք բովանդակությունը, պահպանեք նոր տարբերակ և կրկին գործարկեք QA-ն։`,
+      !passed,
+    );
   } catch (err) {
     setMessage(err.message, true);
   } finally {
@@ -521,19 +526,26 @@ async function approveCurrent() {
   if (workflowBusy) return;
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item) return;
+  if (editorDirty) {
+    activateItemTab("content");
+    setMessage("Նախ պահպանեք փոփոխությունները որպես նոր տարբերակ։ Հաստատումը հնարավոր է միայն պահպանված և QA անցած տարբերակի համար։", true);
+    return;
+  }
+  if (item.latestQa?.passed !== true) {
+    activateItemTab("review");
+    setMessage("Հաստատելուց առաջ ընթացիկ տարբերակը պետք է հաջողությամբ անցնի տեխնիկական QA-ն։", true);
+    return;
+  }
+  if (item.reviewStatus === "approved") {
+    setMessage("Այս տարբերակն արդեն հաստատված է։");
+    return;
+  }
   try {
     workflowBusy = true;
-    const saved = editorDirty ? await persistCurrentRevision("Saved during approval") : false;
-    setMessage(saved ? "Changes saved. Checking technical QA before approval…" : "Checking technical QA before approval…");
-    const passed = await ensureQaPassed({ force: saved || item.latestQa?.passed !== true });
-    if (!passed) {
-      await refresh(selectedId);
-      setMessage(`${item.code}: the edited version was saved, but QA failed, so it was not approved.`, true);
-      return;
-    }
+    setMessage("Հարցը հաստատվում է…");
     await invoke("manage-content-quality", { action: "approve", itemId: selectedId, reviewType: "content" });
     await refresh(selectedId);
-    setMessage(`${item.code}: ${saved ? "changes saved, QA passed, and " : ""}approved.`);
+    setMessage(`${item.code}: հարցը հաստատված է։`);
   } catch (err) {
     setMessage(err.message, true);
   } finally {
