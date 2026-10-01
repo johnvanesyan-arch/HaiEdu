@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import { readFileSync } from "node:fs";
 
 const migration = readFileSync(
-  "supabase/migrations/20261001165647_sprint_15b7_fifth_item_family.sql",
+  "supabase/migrations/20261001190000_sprint_15b7_fifth_item_family.sql",
   "utf8",
 );
 
