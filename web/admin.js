@@ -376,6 +376,9 @@ async function rejectDeletion(requestId) {
   catch (error) { setMessage(friendlyError(error), true); }
 }
 
+let adminEntryPromise = null;
+let adminEntryUserId = null;
+
 async function enterConsole(session) {
   $("authPanel").classList.add("hidden");
   $("mfaPanel").classList.add("hidden");
@@ -409,6 +412,21 @@ $("schoolSearchForm").addEventListener("submit", (event) => { event.preventDefau
 $("accountFilterForm").addEventListener("submit", (event) => { event.preventDefault(); accountPage = 1; loadAccounts(); });
 $("archiveFilterForm").addEventListener("submit", (event) => { event.preventDefault(); archivePage = 1; loadArchive(); });
 window.addEventListener("hashchange", loadCurrentView);
-supabase.auth.onAuthStateChange((_event, session) => { setTimeout(() => enterConsole(session), 0); });
+function bootstrapAdminConsole(session, { force = false } = {}) {
+  const userId = session?.user?.id ?? null;
+  if (!session) return enterConsole(null);
+  if (!force && adminEntryPromise && adminEntryUserId === userId) return adminEntryPromise;
+  if (!force && adminEntryUserId === userId && !$("console").classList.contains("hidden")) return Promise.resolve();
+  adminEntryUserId = userId;
+  adminEntryPromise = enterConsole(session).finally(() => { adminEntryPromise = null; });
+  return adminEntryPromise;
+}
+
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === "SIGNED_OUT") return void bootstrapAdminConsole(null);
+  if (!session) return;
+  if (event === "TOKEN_REFRESHED" && !$("console").classList.contains("hidden")) return;
+  if ($("console").classList.contains("hidden") && $("mfaPanel").classList.contains("hidden")) void bootstrapAdminConsole(session);
+});
 const { data: sessionData } = await supabase.auth.getSession();
-await enterConsole(sessionData.session);
+await bootstrapAdminConsole(sessionData.session);
