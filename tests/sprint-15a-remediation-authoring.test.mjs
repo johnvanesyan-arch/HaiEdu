@@ -12,6 +12,7 @@ const validation = read("supabase/functions/_shared/remediation-authoring-valida
 const resolver = read("supabase/functions/get-remediation-help/index.ts");
 const html = read("web/content-guides.html");
 const ui = read("web/content-guides.js");
+const styles = read("web/content-guides.css");
 const nav = read("web/role-layout.js");
 
 test("15A authoring history is append-only and inaccessible to browser roles", () => {
@@ -90,6 +91,32 @@ test("dedicated Armenian authoring workspace exposes required filters and lifecy
   assert.match(endpoint, /content_snapshot, reference_metadata/);
   assert.match(endpoint, /\.range\(offset, offset \+ pageSize - 1\)/);
   assert.match(nav, /Օգնության ուղեցույցներ/);
+});
+
+test("reviewer guide editor uses a focused state-driven workspace", () => {
+  assert.match(html, /guide-console catalog-mode/);
+  assert.match(ui, /function openGuide/);
+  assert.match(ui, /searchParams\.set\("id", id\)/);
+  assert.match(ui, /data-guide-tab-button="content"/);
+  assert.match(ui, /data-guide-tab-button="preview"/);
+  assert.match(ui, /data-guide-tab-button="sources"/);
+  assert.match(ui, /data-guide-tab-button="history"/);
+  assert.match(ui, /Նշել որպես ստուգված/);
+  assert.match(ui, /Պահպանել որպես նոր սևագիր/);
+  assert.match(ui, /guide-more-menu/);
+  assert.match(ui, /publishButton\.disabled = !rationaleReady \|\| editorDirty/);
+  assert.match(styles, /guide-console\.editor-mode \.guide-bank \{ display: none; \}/);
+  assert.match(styles, /\.guide-action-bar \{[\s\S]*position: sticky/);
+});
+
+test("reviewer history and question parameters hide implementation noise", () => {
+  assert.match(ui, /id="historyChangedOnly" type="checkbox" checked/);
+  assert.match(ui, /Ցուցադրել միայն փոփոխված դաշտերը/);
+  assert.match(ui, /comparisonFields\.filter/);
+  assert.match(ui, /parameter-chip-list/);
+  assert.match(ui, /Ընդլայնված կարգավորումներ/);
+  assert.match(styles, /\.parameter-chip-list/);
+  assert.match(styles, /\.changed-only-toggle/);
 });
 
 test("catalog is service-only and uses invoker security", () => {
