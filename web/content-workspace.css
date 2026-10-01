@@ -1,0 +1,58 @@
+.content-home-grid{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:12px;margin-bottom:18px}
+.content-action-card{display:grid;gap:7px;padding:18px;text-decoration:none;color:inherit;transition:border-color .15s ease,transform .15s ease}
+.content-action-card:hover{border-color:#9db9dc;transform:translateY(-1px)}
+.content-action-card span{color:#60738c;font-size:.8rem;font-weight:800}
+.content-action-card strong{font-size:1.8rem;color:#203a5f}
+.content-action-card p{margin:0;color:#64748b;font-size:.86rem;line-height:1.45}
+.content-home-sections{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:16px}
+.content-work-card{padding:22px}
+.content-work-card h2{margin:.15rem 0 .4rem}
+.content-priority-list{display:grid;gap:9px;margin-top:14px}
+.content-priority-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:14px;align-items:center;padding:13px 14px;border:1px solid #e0e7ef;border-radius:12px;background:#fbfdff;text-decoration:none;color:inherit}
+.content-priority-row:hover{border-color:#9db9dc;background:#f8fbff}
+.content-priority-row strong{display:block}
+.content-priority-row small{display:block;margin-top:3px;color:#66788f}
+.content-status-line{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
+.content-chip{display:inline-flex;padding:4px 8px;border-radius:999px;background:#eef3f8;color:#52667f;font-size:.75rem;font-weight:800}
+.content-chip.fail{background:#fff0f1;color:#9a3944}.content-chip.warn{background:#fff6df;color:#8a641f}.content-chip.good{background:#e9f6ee;color:#2f7149}
+.content-quick-links{display:grid;gap:10px;margin-top:12px}
+.content-quick-links a{display:flex;justify-content:space-between;gap:10px;padding:13px 14px;border:1px solid #dfe7f0;border-radius:11px;text-decoration:none;font-weight:750;background:#fff}
+.content-queue-toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap}
+.content-queue-tabs{display:flex;gap:8px;flex-wrap:wrap}
+.content-queue-tabs button{background:#fff;color:#274a75;border:1px solid #ccd7e4}
+.content-queue-tabs button.active{background:#244f88;color:#fff;border-color:#244f88}
+.content-queue-search{min-width:min(100%,340px)}
+.content-list{display:grid;gap:10px}
+.content-list-row{display:grid;grid-template-columns:minmax(0,1.4fr) minmax(180px,.7fr) auto;gap:16px;align-items:center;padding:15px 16px;border:1px solid #dfe7f0;border-radius:13px;background:#fff}
+.content-list-main strong{display:block;font-size:1rem}
+.content-list-main p{margin:4px 0 0;color:#5e708a}
+.content-list-meta{display:grid;gap:5px;color:#52667f;font-size:.83rem}
+.content-list-row .button-link{justify-self:end}
+.content-bank-page .quality-layout{display:block}
+.content-bank-page .bank-card{padding:0}
+.content-bank-page .quality-table{min-width:760px}
+.content-bank-page .filter-card{grid-template-columns:minmax(250px,1.5fr) minmax(180px,.7fr) auto;align-items:end;padding:16px}
+.content-bank-page .advanced-filter-box{grid-column:1/-1;border-top:1px solid #e3eaf2;padding-top:10px}
+.content-bank-page .advanced-filter-box summary{cursor:pointer;color:#274a75;font-weight:750}
+.content-bank-page .advanced-filter-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:10px}
+.content-item-page .detail-panel{position:static;max-height:none;padding:24px 28px 30px}
+.item-tab-nav{display:flex;gap:8px;flex-wrap:wrap;margin:16px 0 18px;padding-bottom:14px;border-bottom:1px solid #e2e8ef}
+.item-tab-button{background:#fff;color:#274a75;border:1px solid #ccd7e4}
+.item-tab-button.active{background:#244f88;color:#fff;border-color:#244f88}
+.learner-preview{padding:20px;border:1px solid #dbe5ef;border-radius:14px;background:#fbfdff}
+.learner-preview h3{margin:0 0 12px}.learner-preview-prompt{font-size:1.08rem;font-weight:750;line-height:1.55}
+.learner-preview-options{display:grid;gap:8px;margin-top:14px}.learner-preview-option{padding:11px 13px;border:1px solid #dfe6ef;border-radius:10px;background:#fff}
+.content-back-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.curriculum-program-list{display:grid;gap:14px}.curriculum-program-card{padding:20px}
+.curriculum-program-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+.curriculum-program-head h2{margin:.2rem 0}.curriculum-units{display:grid;gap:9px;margin-top:15px}
+.curriculum-unit-row{display:grid;grid-template-columns:minmax(0,1fr) repeat(4,minmax(86px,.35fr)) auto;gap:10px;align-items:center;padding:12px 13px;border:1px solid #e0e7ef;border-radius:11px;background:#fbfdff}
+.curriculum-unit-row span{font-size:.82rem;color:#60738c}.curriculum-unit-row strong{font-size:.9rem}
+.evidence-controls{display:grid;grid-template-columns:minmax(260px,1fr) auto;gap:12px;align-items:end;padding:18px;margin-bottom:16px}
+.evidence-metrics{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:10px;margin-bottom:16px}
+.evidence-metric{padding:15px}.evidence-metric span{display:block;min-height:2.7em;color:#60738c;font-size:.78rem}.evidence-metric strong{font-size:1.45rem}
+.evidence-flag-list{display:grid;gap:10px}.evidence-flag-row{display:grid;grid-template-columns:minmax(0,1fr) auto;gap:12px;align-items:center;padding:13px 14px;border:1px solid #e0e7ef;border-radius:11px;background:#fff}
+.evidence-flag-row p{margin:4px 0 0;color:#60738c;font-size:.84rem}
+@media(max-width:1100px){.content-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.content-home-sections{grid-template-columns:1fr}.curriculum-unit-row{grid-template-columns:1fr 1fr}.curriculum-unit-row>a{justify-self:start}.evidence-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}}
+@media(max-width:760px){.content-home-grid,.evidence-metrics{grid-template-columns:1fr 1fr}.content-list-row{grid-template-columns:1fr}.content-list-row .button-link{justify-self:start}.content-bank-page .filter-card{grid-template-columns:1fr}.content-bank-page .advanced-filter-grid{grid-template-columns:1fr}.curriculum-unit-row{grid-template-columns:1fr}.evidence-controls{grid-template-columns:1fr}.item-tab-nav{position:static}}
+@media(max-width:480px){.content-home-grid,.evidence-metrics{grid-template-columns:1fr}.content-work-card{padding:17px}.content-item-page .detail-panel{padding:18px 16px}}
