@@ -171,3 +171,49 @@ Verification:
 - the affected item remained at v2 during diagnosis; no failed-save mutation was committed;
 - production static assets serve the corrected editor/error behavior;
 - GitHub CI #1008 passed.
+
+
+## Remediation-guide provenance compatibility and false-dirty correction — 2026-10-01
+
+A live review of `PHY7-U02-S03-T01-CLASSIFY` showed **Նշել որպես ստուգված** returning `unsaved_changes_must_be_saved` even though the editor itself reported no unsaved edits.
+
+### Root cause
+
+The governed Chapter II guide stores source provenance as:
+
+- `textbookSha256`
+- `textbookLocator`
+- `programmeOutcomeLocator`
+
+The reviewer form historically reconstructed source metadata as:
+
+- `sourceTitle`
+- `sourceLocator`
+- `sourceUrl`
+- `notes`
+
+Submitting those blank alias fields changed the JSON shape, so the server compared two semantically equivalent but structurally different records and rejected the lifecycle transition.
+
+During the same audit, a second latent mismatch was found: the browser submitted the same specialization value into both `misconceptionCode` and `triggerErrorCode`. That is correct for neither model—skill guides use `misconceptionCode`, template guides use `triggerErrorCode`.
+
+### Corrections
+
+- reference edits are merged onto the stored provenance instead of replacing it;
+- new blank alias fields are ignored when they did not exist in the stored record;
+- existing modern fields can still be intentionally edited/cleared;
+- lifecycle comparison uses normalized stored content and merged reference metadata;
+- canonical textbook provenance (`textbookLocator` + `textbookSha256`) satisfies source-traceability warnings even without a public URL;
+- the reviewer Source tab shows the canonical textbook/programme/SHA provenance explicitly;
+- history comparison includes canonical provenance fields;
+- skill/template specialization payloads are canonicalized separately in both browser and server;
+- old/open browser bundles remain compatible because the server performs the same merge and scope normalization.
+
+No existing guide, runtime record or append-only history row was rewritten.
+
+### Verification
+
+- `manage-remediation-guides` Edge Function **v8** is active.
+- The affected guide remains `draft`, authoring version **1**, with exactly one history version; failed attempts caused no mutation.
+- Production static assets serve the provenance-preserving editor.
+- CI #1061 passed **654/654 tests**, typecheck, browser JavaScript syntax checks and institutional concurrency.
+- Dedicated regression coverage verifies canonical provenance preservation, blank-alias compatibility, source-warning behavior and scope-correct specialization payloads.
