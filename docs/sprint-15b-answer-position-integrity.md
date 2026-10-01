@@ -63,9 +63,16 @@ The following seven items return to review and must receive current-version tech
 
 No pool, blueprint, pilot or learner release is created by this checkpoint. The three unchanged `I01` items retain their approved versions.
 
-## Verification
+## Verification and deployment evidence
 
 - focused answer-position and Chapter II regression suite: 40/40 passed;
 - JavaScript syntax validation passed;
-- the full migration executed successfully inside a production transaction and was rolled back, producing `A=1, B=1, C=1, D=1` for each family;
-- post-deployment verification must repeat the distribution, version, review-state, exposure, runtime-configuration, function-authorization and advisor checks.
+- the full migration first executed successfully inside a production transaction and was rolled back, producing `A=1, B=1, C=1, D=1` for each family;
+- production migration `20261001161000_sprint_15b_answer_position_integrity.sql` then applied successfully;
+- production verification found each family at `A=1, B=1, C=1, D=1` and the full chapter at `A=3, B=3, C=3, D=3`;
+- all seven revised items have one current-version snapshot, `review / needs_review`, the expected new key, zero enabled pool links and zero learner-session exposure;
+- the active 131-item bank has 124 published and seven review items, with 12 explicit shuffle opt-ins, 119 inherited secure defaults and zero fixed-order exceptions;
+- `mcq-option-order-v1` remains enabled, and the order RPC is executable by `service_role` but not `authenticated` or `anon`;
+- `manage-content-quality` v7 is active with JWT verification and contains both the distribution warning and fixed-order rationale guard;
+- the post-change advisor counts match the pre-change baseline; no new security or performance finding was introduced. Existing notices remain tracked separately: [RLS/no-policy information](https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy), [leaked-password protection](https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection), [unindexed foreign keys](https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys), [RLS init-plan performance](https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan), [unused indexes](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index) and [multiple permissive policies](https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies);
+- [PR #89](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/89) merged as `00a0ab9918ee669d07f6d159a32c6388bbde4621`; pre-merge CI #1067 and main CI #1068 passed, and the Vercel production deployment completed successfully.
