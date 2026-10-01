@@ -41,3 +41,14 @@ test("dedicated item workspace keeps the editor workflow and separates tabs", ()
   assert.match(editor, /data-item-tab-button="history"/);
   assert.match(editor, /learnerPreviewHtml/);
 });
+
+
+test("dedicated item workspace uses the MVP Model A reviewer decision flow", () => {
+  const editor = read("web/content.js");
+  assert.match(editor, /Բովանդակային որոշում/);
+  assert.match(editor, /id="editQuestionBtn"/);
+  assert.match(editor, /id="approveBtn"/);
+  assert.match(editor, /Հաստատումը հասանելի կլինի միայն ընթացիկ տարբերակի հաջող QA-ից հետո/);
+  assert.doesNotMatch(editor, /id="submitReviewBtn"/);
+  assert.doesNotMatch(editor, /id="changesBtn"/);
+});
