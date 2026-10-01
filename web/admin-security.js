@@ -125,6 +125,9 @@ async function removeFactor(factorId) {
   } catch (error) { setMessage(error.message, true); }
 }
 
+let securityEntryPromise = null;
+let securityEntryUserId = null;
+
 async function enter(session) {
   $("authPanel").classList.add("hidden");
   $("securityConsole").classList.add("hidden");
@@ -147,6 +150,21 @@ $("startEnrollBtn").addEventListener("click", beginEnrollment);
 $("enrollVerifyForm").addEventListener("submit", verifyFactor);
 $("addBackupBtn").addEventListener("click", () => { $("enrollPanel").classList.remove("hidden"); $("enrollTitle").textContent = "Ավելացնել պահուստային authenticator"; $("enrollPanel").scrollIntoView({ behavior:"smooth" }); });
 $("signOutBtn").addEventListener("click", async () => { await supabase.auth.signOut({ scope:"global" }); window.location.assign("./account-access.html"); });
-supabase.auth.onAuthStateChange((_event, session) => setTimeout(() => enter(session), 0));
+function bootstrapSecurity(session) {
+  const userId = session?.user?.id ?? null;
+  if (!session) return enter(null);
+  if (securityEntryPromise && securityEntryUserId === userId) return securityEntryPromise;
+  if (securityEntryUserId === userId && !$("securityConsole").classList.contains("hidden")) return Promise.resolve();
+  securityEntryUserId = userId;
+  securityEntryPromise = enter(session).finally(() => { securityEntryPromise = null; });
+  return securityEntryPromise;
+}
+
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === "SIGNED_OUT") return void bootstrapSecurity(null);
+  if (!session) return;
+  if (event === "TOKEN_REFRESHED" && !$("securityConsole").classList.contains("hidden")) return;
+  if ($("securityConsole").classList.contains("hidden")) void bootstrapSecurity(session);
+});
 const { data:sessionData } = await supabase.auth.getSession();
-await enter(sessionData.session);
+await bootstrapSecurity(sessionData.session);
