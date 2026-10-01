@@ -93,8 +93,8 @@ body.amp-student-shell-active .mode-kicker { background: var(--hm-soft); color: 
 .hm-role-foot a { color: var(--hm-blue); font-weight: 600; }
 .hm-sidebar-signout { width: 100%; text-align: left; color: #7b4350 !important; border-color: #dfc3c8 !important; }
 .school-admin-page.hm-has-role-sidebar .school-admin-header #signOutBtn { display: none !important; }
-body[data-role-workspace^="content"].hm-has-role-sidebar .content-topbar #signOutBtn,
-body[data-role-workspace^="content"].hm-has-role-sidebar .guide-topbar #signOutBtn {
+body[data-role-workspace^="content"] .content-topbar #signOutBtn,
+body[data-role-workspace^="content"] .guide-topbar #signOutBtn {
   display: none !important;
 }
 .hm-role-chip {
