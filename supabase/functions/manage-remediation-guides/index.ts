@@ -1,6 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import {
+  mergeReferenceMetadata,
   plainObject,
   renderRawTemplate,
   strings,
@@ -288,8 +289,13 @@ Deno.serve(async (req) => {
       return json({ guide: normalizeGuide(guide), history: history ?? [], variants, fallback, actor: { role, aal } });
     }
 
-    const content = guideContent(body.content ?? guide.authoring_content);
-    const referenceMetadata = plainObject(body.referenceMetadata ?? guide.reference_metadata);
+    const storedContent = guideContent(guide.authoring_content);
+    const content = guideContent(body.content ?? storedContent);
+    const storedReferenceMetadata = plainObject(guide.reference_metadata);
+    const incomingReferenceMetadata = body.referenceMetadata === undefined
+      ? storedReferenceMetadata
+      : plainObject(body.referenceMetadata);
+    const referenceMetadata = mergeReferenceMetadata(storedReferenceMetadata, incomingReferenceMetadata);
     const variants = await loadVariants(admin, guide);
     const requestedVariantId = String(body.variantId ?? "");
     const variant = (variants as PlainObject[]).find((row) => row.id === requestedVariantId)
@@ -327,8 +333,8 @@ Deno.serve(async (req) => {
     const nextStatus = statusByAction[action];
     if (!nextStatus) return json({ error: "invalid_action" }, 400);
     if (action === "submit_review" && (
-      !sameJson(content, guide.authoring_content)
-      || !sameJson(referenceMetadata, guide.reference_metadata)
+      !sameJson(content, storedContent)
+      || !sameJson(referenceMetadata, storedReferenceMetadata)
     )) {
       return json({ error: "unsaved_changes_must_be_saved" }, 409);
     }
