@@ -18,14 +18,21 @@ export function mergeReferenceMetadata(currentValue, incomingValue) {
 
 export function referenceMetadataPresentation(value) {
   const source = plainObject(value);
+  const firstNonBlank = (...values) => {
+    for (const entry of values) {
+      const text = String(entry ?? "").trim();
+      if (text) return text;
+    }
+    return "";
+  };
   return {
-    sourceTitle: String(source.sourceTitle ?? "").trim(),
-    sourceLocator: String(source.sourceLocator ?? source.textbookLocator ?? source.programmeOutcomeLocator ?? "").trim(),
-    sourceUrl: String(source.sourceUrl ?? "").trim(),
-    notes: String(source.notes ?? "").trim(),
-    textbookLocator: String(source.textbookLocator ?? "").trim(),
-    textbookSha256: String(source.textbookSha256 ?? "").trim(),
-    programmeOutcomeLocator: String(source.programmeOutcomeLocator ?? "").trim(),
+    sourceTitle: firstNonBlank(source.sourceTitle),
+    sourceLocator: firstNonBlank(source.sourceLocator, source.textbookLocator, source.programmeOutcomeLocator),
+    sourceUrl: firstNonBlank(source.sourceUrl),
+    notes: firstNonBlank(source.notes),
+    textbookLocator: firstNonBlank(source.textbookLocator),
+    textbookSha256: firstNonBlank(source.textbookSha256),
+    programmeOutcomeLocator: firstNonBlank(source.programmeOutcomeLocator),
   };
 }
 
