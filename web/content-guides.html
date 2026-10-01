@@ -28,13 +28,13 @@
       <p id="authMessage" class="message" aria-live="polite"></p>
     </section>
 
-    <section id="guideConsole" class="hidden">
+    <section id="guideConsole" class="hidden guide-console catalog-mode">
       <section class="guide-overview" aria-label="Ուղեցույցների վիճակագրություն">
         <div id="guideStats" class="guide-stats"></div>
         <div class="card assurance-card">
           <span class="stat-label">Սեսիայի պաշտպանություն</span>
           <strong id="assuranceLevel">—</strong>
-          <p class="subtle small">Հրապարակելու և արխիվացնելու համար պահանջվում է MFA հաստատում (AAL2)։</p>
+          <p class="subtle small">Հրապարակելիս կամ արխիվացնելիս համակարգը անհրաժեշտության դեպքում կպահանջի լրացուցիչ հաստատում։</p>
         </div>
       </section>
 
@@ -59,7 +59,7 @@
           <select id="statusFilter">
             <option value="">Բոլորը</option>
             <option value="draft">Սևագիր</option>
-            <option value="review">Ստուգման փուլում</option>
+            <option value="review">Ստուգված</option>
             <option value="published">Հրապարակված</option>
             <option value="archived">Արխիվացված</option>
           </select>
@@ -87,10 +87,10 @@
           </div>
         </section>
 
-        <aside id="guideEditor" class="card guide-editor" aria-live="polite">
+        <section id="guideEditor" class="card guide-editor" aria-live="polite">
           <h2>Ընտրեք ուղեցույց</h2>
           <p class="subtle">Ձախ ցանկից ընտրեք հմտության կամ հարցի ձևանմուշի ուղեցույց։</p>
-        </aside>
+        </section>
       </div>
       <p id="guideMessage" class="message" aria-live="polite"></p>
     </section>

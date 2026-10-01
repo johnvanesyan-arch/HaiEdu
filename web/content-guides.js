@@ -10,10 +10,11 @@ let loadToken = 0;
 let editorDirty = false;
 let currentActor = null;
 let pendingEnrollmentFactorId = null;
+let activeGuideTab = "content";
 
 const statusLabels = {
   draft: "Սևագիր",
-  review: "Ստուգման փուլում",
+  review: "Ստուգված",
   published: "Հրապարակված",
   archived: "Արխիվացված",
 };
@@ -194,18 +195,6 @@ function renderStats(actor) {
 
 function renderAssurance() {
   $("assuranceLevel").textContent = currentActor?.aal === "aal2" ? "AAL2 · հաստատված" : "AAL1 · լրացուցիչ հաստատում";
-  const card = $("assuranceLevel").closest(".assurance-card");
-  let button = $("configureMfaBtn");
-  if (!button) {
-    button = document.createElement("button");
-    button.id = "configureMfaBtn";
-    button.type = "button";
-    button.className = "ghost";
-    card.append(button);
-    button.addEventListener("click", configureMfa);
-  }
-  button.textContent = currentActor?.aal === "aal2" ? "MFA-ն հաստատված է" : "Կարգավորել կամ հաստատել MFA-ն";
-  button.disabled = currentActor?.aal === "aal2";
 }
 
 function renderRows() {
@@ -231,7 +220,57 @@ function renderRows() {
       <td>հեղ. ${esc(guide.authoringVersion)} · գործ. ${esc(guide.runtimeVersion)}</td>
     </tr>`;
   }).join("");
-  document.querySelectorAll("#guideRows tr[data-guide-id]").forEach((row) => row.addEventListener("click", () => selectGuide(row.dataset.guideId)));
+  document.querySelectorAll("#guideRows tr[data-guide-id]").forEach((row) => {
+    row.tabIndex = 0;
+    row.setAttribute("role", "link");
+    row.addEventListener("click", () => openGuide(row.dataset.guideId));
+    row.addEventListener("keydown", (event) => {
+      if (!["Enter", " "].includes(event.key)) return;
+      event.preventDefault();
+      openGuide(row.dataset.guideId);
+    });
+  });
+}
+
+function guideIdFromUrl() {
+  return new URLSearchParams(window.location.search).get("id");
+}
+
+function updateGuideUrl(id, replace = false) {
+  const url = new URL(window.location.href);
+  if (id) url.searchParams.set("id", id);
+  else url.searchParams.delete("id");
+  window.history[replace ? "replaceState" : "pushState"]({}, "", url);
+}
+
+function setWorkspaceMode(mode) {
+  const console = $("guideConsole");
+  console.classList.toggle("catalog-mode", mode === "catalog");
+  console.classList.toggle("editor-mode", mode === "editor");
+}
+
+async function openGuide(id, { replace = false, force = false } = {}) {
+  if (!id) return;
+  if (!force && id !== selectedId && editorDirty && !confirm("Չպահպանված փոփոխությունները չեղարկե՞լ։")) {
+    renderRows();
+    return;
+  }
+  setWorkspaceMode("editor");
+  updateGuideUrl(id, replace);
+  activeGuideTab = "content";
+  await selectGuide(id, true);
+  $("guideEditor")?.scrollTo({ top: 0, behavior: "auto" });
+}
+
+function returnToGuideList({ replace = false, force = false } = {}) {
+  if (!force && editorDirty && !confirm("Չպահպանված փոփոխությունները չեղարկե՞լ և վերադառնալ ցանկին։")) return;
+  editorDirty = false;
+  selectedId = null;
+  detail = null;
+  updateGuideUrl(null, replace);
+  setWorkspaceMode("catalog");
+  renderRows();
+  window.scrollTo({ top: 0, behavior: "smooth" });
 }
 
 function validationLabel(code) {
@@ -305,7 +344,8 @@ function renderHistory(history) {
       <label>Համեմատվող տարբերակ Ա<select id="historyVersionA">${entries.map(option).join("")}</select></label>
       <label>Համեմատվող տարբերակ Բ<select id="historyVersionB">${entries.map(option).join("")}</select></label>
     </div>
-    <p class="subtle small">Համեմատությունը միայն դիտման համար է և չի փոխում խմբագրիչի կամ սովորողին ցուցադրվող տարբերակը։</p>
+    <label class="changed-only-toggle"><input id="historyChangedOnly" type="checkbox" checked /> Ցուցադրել միայն փոփոխված դաշտերը</label>
+    <p class="subtle small">Համեմատությունը միայն դիտման համար է և չի փոխում խմբագրվող կամ սովորողին ցուցադրվող տարբերակը։</p>
     <div id="historyComparison" class="history-comparison" data-left="${esc(leftDefault)}" data-right="${esc(rightDefault)}"></div>
     <ul class="history-list">${entries.map((entry) => `<li>
     <div class="history-head"><strong>Տարբերակ ${esc(entry.authoring_version)} · ${esc(statusLabels[entry.lifecycle_status] || entry.lifecycle_status)}</strong><span class="subtle small">${esc(new Date(entry.created_at).toLocaleString("hy-AM"))}</span></div>
@@ -348,9 +388,15 @@ function renderHistoryComparison() {
     panel.innerHTML = `<p class="message bad">Համեմատվող տարբերակները չեն գտնվել։</p>`;
     return;
   }
+  const changedOnly = $("historyChangedOnly")?.checked ?? true;
+  const fields = comparisonFields.filter(([key]) => !changedOnly || String(historyField(left, key)) !== String(historyField(right, key)));
+  if (!fields.length) {
+    panel.innerHTML = `<p class="history-empty">Ընտրված տարբերակների միջև փոփոխված դաշտ չկա։</p>`;
+    return;
+  }
   panel.innerHTML = `<table class="comparison-table">
     <thead><tr><th>Դաշտ</th><th>Տարբերակ ${esc(leftVersion)}</th><th>Տարբերակ ${esc(rightVersion)}</th></tr></thead>
-    <tbody>${comparisonFields.map(([key, label]) => {
+    <tbody>${fields.map(([key, label]) => {
       const leftValue = String(historyField(left, key));
       const rightValue = String(historyField(right, key));
       const changed = leftValue !== rightValue;
@@ -396,12 +442,98 @@ function renderVariantDetails() {
     return;
   }
   const params = variant.variant_parameters ?? {};
+  const parameterEntries = Object.entries(params);
   panel.innerHTML = `<p><strong>${esc(variant.code || variant.variant_key)}</strong> · ${esc(variantBucketLabels[variantBucket(variant)] || variantBucket(variant))}${variant.difficulty_band ? ` · ${esc(variant.difficulty_band)}` : ""}</p>
     <p>${esc(variant.prompt_hy || "—")}</p>
-    <p class="variant-parameters"><strong>Սկզբնական պարամետրեր.</strong> <code>${esc(JSON.stringify(params))}</code></p>`;
+    <div class="variant-parameters"><strong>Սկզբնական պարամետրեր</strong><div class="parameter-chip-list">${parameterEntries.length
+      ? parameterEntries.map(([key, value]) => `<span class="parameter-chip"><span>${esc(key)}</span><strong>${esc(value)}</strong></span>`).join("")
+      : `<span class="subtle small">Պարամետրեր չկան։</span>`}</div></div>`;
 }
 
-function renderEditor() {
+function lifecycleSteps(status) {
+  const steps = [
+    ["draft", "Սևագիր"],
+    ["review", "Ստուգված"],
+    ["published", "Հրապարակված"],
+  ];
+  const activeIndex = steps.findIndex(([key]) => key === status);
+  return `<ol class="lifecycle-steps" aria-label="Ուղեցույցի կենսափուլ">${steps.map(([key, label], index) => {
+    const state = status === "archived" ? "" : index < activeIndex ? "complete" : index === activeIndex ? "current" : "";
+    return `<li class="${state}"${state === "current" ? ` aria-current="step"` : ""}><span>${index + 1}</span>${label}</li>`;
+  }).join("")}</ol>${status === "archived" ? `<p class="archive-state-note">Այս ուղեցույցն արխիվացված է և սովորողներին չի ցուցադրվում։</p>` : ""}`;
+}
+
+function activateGuideTab(tab) {
+  const available = ["content", "preview", "sources", "history"];
+  activeGuideTab = available.includes(tab) ? tab : "content";
+  document.querySelectorAll("[data-guide-tab-button]").forEach((button) => {
+    const active = button.dataset.guideTabButton === activeGuideTab;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-selected", String(active));
+  });
+  document.querySelectorAll("[data-guide-tab]").forEach((panel) => {
+    panel.classList.toggle("hidden", panel.dataset.guideTab !== activeGuideTab);
+  });
+}
+
+function wireGuideTabs() {
+  document.querySelectorAll("[data-guide-tab-button]").forEach((button) => {
+    button.addEventListener("click", () => activateGuideTab(button.dataset.guideTabButton));
+  });
+  activateGuideTab(activeGuideTab);
+}
+
+function updateLifecycleActionState() {
+  if (!detail?.guide) return;
+  const status = detail.guide.lifecycleStatus;
+  const rationale = $("changeRationale")?.value.trim() || "";
+  const rationaleReady = rationale.length >= 3;
+  const saveButton = $("saveDraftBtn");
+  const reviewButton = $("submitReviewBtn");
+  const publishButton = $("publishGuideBtn");
+  const archiveButton = $("archiveGuideBtn");
+  if (saveButton) saveButton.disabled = !rationaleReady || (!editorDirty && status !== "archived");
+  if (reviewButton) reviewButton.disabled = !rationaleReady;
+  if (publishButton) publishButton.disabled = !rationaleReady || editorDirty;
+  if (archiveButton) archiveButton.disabled = !rationaleReady;
+
+  const state = $("editorSaveState");
+  if (!state) return;
+  if (!rationaleReady) state.textContent = "Գործողությունից առաջ կարճ նշեք փոփոխության պատճառը։";
+  else if (status === "review" && editorDirty) state.textContent = "Փոփոխված տարբերակը հրապարակելուց առաջ պահպանեք և նորից նշեք որպես ստուգված։";
+  else if (editorDirty) state.textContent = "Կան չպահպանված փոփոխություններ։";
+  else state.textContent = "Բոլոր փոփոխությունները պահպանված են։";
+  state.classList.toggle("has-unsaved", editorDirty);
+}
+
+function markGuideDirty() {
+  editorDirty = true;
+  updateLifecycleActionState();
+}
+
+function lifecycleActionsHtml(guide) {
+  const status = guide.lifecycleStatus;
+  const fallbackReady = Boolean(detail.fallback?.available);
+  let actions = "";
+  if (status === "draft") {
+    actions = `<button id="saveDraftBtn" type="button" class="ghost">Պահպանել փոփոխությունները</button><button id="submitReviewBtn" type="button">Նշել որպես ստուգված</button>`;
+  } else if (status === "review") {
+    actions = `<button id="saveDraftBtn" type="button" class="ghost">Պահպանել փոփոխությունները</button><button id="publishGuideBtn" type="button">Հրապարակել</button>`;
+  } else if (status === "published") {
+    actions = `<button id="saveDraftBtn" type="button">Պահպանել որպես նոր սևագիր</button>`;
+  } else if (status === "archived") {
+    actions = `<button id="saveDraftBtn" type="button">Վերաբացել որպես սևագիր</button>`;
+  }
+  const archiveMenu = status === "published" ? `<details class="guide-more-menu"><summary>Այլ գործողություններ</summary><div class="guide-more-menu-panel">${fallbackReady
+    ? `<button id="archiveGuideBtn" type="button" class="danger">Արխիվացնել ուղեցույցը</button><p>Արխիվացումը կպահանջի լրացուցիչ հաստատում։</p>`
+    : `<p>Արխիվացումը հասանելի չէ, քանի դեռ գործող հարցերի համար անվտանգ պահուստային ուղի չկա։</p>`}</div></details>` : "";
+  return `<div class="guide-action-bar">
+    <div class="action-rationale"><label>Փոփոխության պատճառ<input id="changeRationale" placeholder="Օրինակ՝ հստակեցվել է երկրորդ հուշումը" /></label><span id="editorSaveState" class="editor-save-state" aria-live="polite"></span></div>
+    <div class="guide-actions">${actions}${archiveMenu}</div>
+  </div>`;
+}
+
+function renderEditorLegacy() {
   const guide = detail.guide;
   const content = guide.content ?? {};
   const refs = guide.referenceMetadata ?? {};
@@ -485,6 +617,118 @@ function renderEditor() {
   if ($("historyVersionB")) $("historyVersionB").value = String(detail.history?.[0]?.authoring_version ?? "");
   renderVariantOptions();
   renderHistoryComparison();
+}
+
+function renderEditor() {
+  const guide = detail.guide;
+  const content = guide.content ?? {};
+  const refs = guide.referenceMetadata ?? {};
+  const variants = detail.variants ?? [];
+  const isTemplate = guide.guideScope === "template";
+  const code = isTemplate ? guide.itemTemplateCode : guide.skillCode;
+  const variantBuckets = [...new Set(variants.map((variant) => variantBucket(variant)))];
+  const archivedDisabled = guide.lifecycleStatus === "archived" ? "disabled" : "";
+
+  $("guideEditor").innerHTML = `
+    <button id="backToGuideListBtn" type="button" class="guide-back-button">← Վերադառնալ ուղեցույցների ցանկին</button>
+    <header class="guide-editor-header">
+      <div>
+        <p class="eyebrow">${isTemplate ? "ՀԱՐՑԻ ՁԵՎԱՆՄՈՒՇ" : "ՀՄՏՈՒԹՅԱՆ ՈՒՂԵՑՈՒՅՑ"}</p>
+        <h2>${esc(code)}</h2>
+        <p class="subtle">${esc(guide.subjectNameHy)} · ${esc(guide.gradeLabelHy || `${guide.gradeNumber}-րդ դասարան`)} · ${esc(guide.skillNameHy)}</p>
+      </div>
+      <span class="status-chip" data-status="${esc(guide.lifecycleStatus)}">${esc(statusLabels[guide.lifecycleStatus])}</span>
+    </header>
+    ${lifecycleSteps(guide.lifecycleStatus)}
+    <div class="editor-summary">
+      <span><strong>Խմբագրվող տարբերակ</strong><br>${esc(guide.authoringVersion)}</span>
+      <span><strong>Հրապարակված տարբերակ</strong><br>${esc(guide.runtimeVersion || "—")}</span>
+      <span><strong>Պահուստային ուղի</strong><br>${detail.fallback?.available ? "Առկա է" : "Պաշտպանված է"}</span>
+    </div>
+
+    <nav class="guide-tab-nav" aria-label="Ուղեցույցի աշխատանքային բաժիններ" role="tablist">
+      <button type="button" data-guide-tab-button="content" role="tab">Բովանդակություն</button>
+      <button type="button" data-guide-tab-button="preview" role="tab">Նախադիտում և ստուգում</button>
+      <button type="button" data-guide-tab-button="sources" role="tab">Աղբյուրներ</button>
+      <button type="button" data-guide-tab-button="history" role="tab">Պատմություն</button>
+    </nav>
+
+    <div class="guide-tab-panel" data-guide-tab="content" role="tabpanel">
+      <section class="guide-form-section guide-content-fields">
+        <div class="section-heading"><div><h3>Ուղեցույցի բովանդակություն</h3><p class="subtle small">Գրեք սովորողին ուղղված կարճ, հստակ և քայլային օգնություն։</p></div></div>
+        <label>Հայերեն վերնագիր<input id="guideTitleHy" value="${esc(content.titleHy)}" ${archivedDisabled} /></label>
+        <label>Ռազմավարություն<textarea id="guideStrategyHy" rows="3" ${archivedDisabled}>${esc(content.strategyHy)}</textarea></label>
+        <label>Հուշում 1<textarea id="guideHint1Hy" rows="3" ${archivedDisabled}>${esc(content.hint1Hy)}</textarea></label>
+        <label>Հուշում 2<textarea id="guideHint2Hy" rows="3" ${archivedDisabled}>${esc(content.hint2Hy)}</textarea></label>
+        <label>Նմանատիպ լուծված օրինակ<textarea id="guideWorkedExampleHy" rows="5" ${archivedDisabled}>${esc(content.workedExampleHy)}</textarea></label>
+      </section>
+      <details class="advanced-settings guide-form-section">
+        <summary>Ընդլայնված կարգավորումներ</summary>
+        <p class="subtle small">Այս դաշտերը փոխեք միայն այն դեպքում, երբ փոխվում է ուղեցույցի կապը հարցի կամ սխալ պատկերացման հետ։</p>
+        <div class="guide-form-grid">
+          <label>${isTemplate ? "Սխալի կոդ (ըստ ցանկության)" : "Սխալ պատկերացման կոդ"}<input id="specializationCode" value="${esc(isTemplate ? (content.triggerErrorCode || "") : content.misconceptionCode)}" ${archivedDisabled} /></label>
+          <label>Թույլատրելի սկզբնական պարամետրեր<input id="allowedParameterKeys" value="${esc((content.allowedParameterKeys ?? []).join(", "))}" ${isTemplate ? archivedDisabled : "disabled"} placeholder="sourceValue, sourceUnit" /></label>
+        </div>
+      </details>
+    </div>
+
+    <div class="guide-tab-panel hidden" data-guide-tab="preview" role="tabpanel">
+      <section class="guide-form-section">
+        <div class="section-heading"><div><h3>Նախադիտում և ստուգում</h3><p class="subtle small">Տեսեք, թե ընտրված հարցի հետ ինչպես կերևա այս ուղեցույցը սովորողին։</p></div></div>
+        <div class="variant-tools">
+          <label>Փնտրել հարց<input id="variantSearch" type="search" placeholder="Հարցի կոդ կամ տեքստ…" /></label>
+          <label>Հարցի կիրառման փուլ<select id="variantBucketFilter"><option value="">Բոլորը</option>${variantBuckets.map((bucket) => `<option value="${esc(bucket)}">${esc(variantBucketLabels[bucket] || bucket)}</option>`).join("")}</select></label>
+        </div>
+        <label>Հարց<select id="previewVariant"></select></label>
+        <div id="variantDetails" class="variant-details subtle small"></div>
+        <p class="subtle small">Ախտորոշիչ և յուրացման ստուգման հարցերը այստեղ օգտագործվում են միայն նախադիտման համար․ հուշումները գնահատման ընթացքում չեն ակտիվանում։</p>
+        <button id="previewGuideBtn" type="button">Նախադիտել և ստուգել</button>
+        <div id="validationPanel" class="validation-panel"><strong>Ստուգումը դեռ չի գործարկվել։</strong></div>
+        <div id="previewPanel" class="preview-panel hidden"></div>
+      </section>
+    </div>
+
+    <div class="guide-tab-panel hidden" data-guide-tab="sources" role="tabpanel">
+      <section class="guide-form-section">
+        <div class="section-heading"><div><h3>Աղբյուրներ և նշումներ</h3><p class="subtle small">Գրանցեք այն աղբյուրը, որի հիման վրա կազմվել կամ ստուգվել է ուղեցույցը։</p></div></div>
+        <div class="guide-form-grid">
+          <label>Աղբյուրի վերնագիր<input id="sourceTitle" value="${esc(refs.sourceTitle)}" ${archivedDisabled} /></label>
+          <label>Էջ կամ բաժին<input id="sourceLocator" value="${esc(refs.sourceLocator)}" ${archivedDisabled} /></label>
+          <label class="wide">Աղբյուրի հղում<input id="sourceUrl" type="url" value="${esc(refs.sourceUrl)}" ${archivedDisabled} /></label>
+          <label class="wide">Նշումներ<textarea id="sourceNotes" rows="4" ${archivedDisabled}>${esc(refs.notes)}</textarea></label>
+        </div>
+      </section>
+    </div>
+
+    <div class="guide-tab-panel hidden" data-guide-tab="history" role="tabpanel">
+      <section class="guide-form-section history-section">
+        <div class="section-heading"><div><h3>Տարբերակների պատմություն</h3><p class="subtle small">Պատմությունը միայն դիտման համար է և չի փոխում հրապարակված տարբերակը։</p></div></div>
+        ${renderHistory(detail.history)}
+      </section>
+    </div>
+    ${lifecycleActionsHtml(guide)}`;
+
+  $("backToGuideListBtn")?.addEventListener("click", () => returnToGuideList());
+  ["guideTitleHy", "guideStrategyHy", "guideHint1Hy", "guideHint2Hy", "guideWorkedExampleHy", "specializationCode", "allowedParameterKeys", "sourceTitle", "sourceLocator", "sourceUrl", "sourceNotes"]
+    .forEach((id) => $(id)?.addEventListener("input", markGuideDirty));
+  $("changeRationale")?.addEventListener("input", updateLifecycleActionState);
+  $("previewGuideBtn")?.addEventListener("click", previewGuide);
+  $("variantSearch")?.addEventListener("input", renderVariantOptions);
+  $("variantBucketFilter")?.addEventListener("change", renderVariantOptions);
+  $("previewVariant")?.addEventListener("change", renderVariantDetails);
+  $("saveDraftBtn")?.addEventListener("click", () => runWorkflow("save_draft"));
+  $("submitReviewBtn")?.addEventListener("click", () => runWorkflow("submit_review"));
+  $("publishGuideBtn")?.addEventListener("click", () => runWorkflow("publish"));
+  $("archiveGuideBtn")?.addEventListener("click", () => runWorkflow("archive"));
+  $("historyVersionA")?.addEventListener("change", renderHistoryComparison);
+  $("historyVersionB")?.addEventListener("change", renderHistoryComparison);
+  $("historyChangedOnly")?.addEventListener("change", renderHistoryComparison);
+  if ($("historyVersionA")) $("historyVersionA").value = String(detail.history?.[1]?.authoring_version ?? detail.history?.[0]?.authoring_version ?? "");
+  if ($("historyVersionB")) $("historyVersionB").value = String(detail.history?.[0]?.authoring_version ?? "");
+  wireGuideTabs();
+  renderVariantOptions();
+  renderHistoryComparison();
+  updateLifecycleActionState();
 }
 
 async function selectGuide(id, force = false) {
@@ -714,13 +958,22 @@ async function refreshCatalog(reselect = selectedId) {
   renderStats(response.actor);
   populateFilters();
   renderRows();
-  if (reselect && catalog.some((g) => `${g.guideScope}:${g.guideSourceId}` === reselect)) {
-    await selectGuide(reselect, true);
-  } else if (catalog[0]) {
-    await selectGuide(`${catalog[0].guideScope}:${catalog[0].guideSourceId}`, true);
+  const requested = reselect || guideIdFromUrl();
+  if (requested && catalog.some((g) => `${g.guideScope}:${g.guideSourceId}` === requested)) {
+    setWorkspaceMode("editor");
+    updateGuideUrl(requested, true);
+    await selectGuide(requested, true);
+  } else if (!catalog.length) {
+    selectedId = null;
+    setWorkspaceMode("catalog");
+    $("guideEditor").innerHTML = `<h2>Ուղեցույց չկա</h2><p class="subtle">Հրապարակված կամ սևագիր ուղեցույցներ չեն գտնվել։</p>`;
   } else {
     selectedId = null;
-    $("guideEditor").innerHTML = `<h2>Ուղեցույց չկա</h2><p class="subtle">Հրապարակված կամ սևագիր ուղեցույցներ չեն գտնվել։</p>`;
+    detail = null;
+    editorDirty = false;
+    updateGuideUrl(null, true);
+    setWorkspaceMode("catalog");
+    renderRows();
   }
 }
 
@@ -770,6 +1023,15 @@ $("closeMfaDialogBtn").addEventListener("click", () => finishMfaDialog(false));
 $("mfaDialog").addEventListener("cancel", (event) => {
   event.preventDefault();
   finishMfaDialog(false);
+});
+
+window.addEventListener("popstate", () => {
+  const requested = guideIdFromUrl();
+  if (requested && catalog.some((guide) => `${guide.guideScope}:${guide.guideSourceId}` === requested)) {
+    openGuide(requested, { replace: true, force: true });
+  } else {
+    returnToGuideList({ replace: true, force: true });
+  }
 });
 
 window.addEventListener("beforeunload", (event) => {
