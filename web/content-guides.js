@@ -326,13 +326,58 @@ function contentFromEditor() {
   };
 }
 
-function referencesFromEditor() {
+function referenceEditorValues(value) {
+  const refs = value && typeof value === "object" && !Array.isArray(value) ? value : {};
+  const firstNonBlank = (...values) => {
+    for (const entry of values) {
+      const text = String(entry ?? "").trim();
+      if (text) return text;
+    }
+    return "";
+  };
   return {
+    sourceTitle: firstNonBlank(refs.sourceTitle),
+    sourceLocator: firstNonBlank(refs.sourceLocator, refs.textbookLocator, refs.programmeOutcomeLocator),
+    sourceUrl: firstNonBlank(refs.sourceUrl),
+    notes: firstNonBlank(refs.notes),
+    textbookLocator: firstNonBlank(refs.textbookLocator),
+    textbookSha256: firstNonBlank(refs.textbookSha256),
+    programmeOutcomeLocator: firstNonBlank(refs.programmeOutcomeLocator),
+  };
+}
+
+function referencesFromEditor() {
+  const original = detail?.guide?.referenceMetadata && typeof detail.guide.referenceMetadata === "object"
+    ? { ...detail.guide.referenceMetadata }
+    : {};
+  const presented = referenceEditorValues(original);
+  const edited = {
     sourceTitle: $("sourceTitle").value.trim(),
     sourceLocator: $("sourceLocator").value.trim(),
     sourceUrl: $("sourceUrl").value.trim(),
     notes: $("sourceNotes").value.trim(),
   };
+  for (const [key, value] of Object.entries(edited)) {
+    if (Object.prototype.hasOwnProperty.call(original, key) || value !== presented[key]) {
+      original[key] = value;
+    }
+  }
+  return original;
+}
+
+function canonicalProvenanceHtml(value) {
+  const refs = referenceEditorValues(value);
+  const rows = [
+    ["Դասագրքի հղում", refs.textbookLocator],
+    ["Ծրագրային վերջնարդյունք", refs.programmeOutcomeLocator],
+    ["Աղբյուրի SHA-256", refs.textbookSha256],
+  ].filter(([, value]) => value);
+  if (!rows.length) return "";
+  return `<div class="guide-provenance-block">
+    <strong>Գրանցված աղբյուրային հետագծելիություն</strong>
+    <dl>${rows.map(([label, value]) => `<div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>`).join("")}</dl>
+    <p class="subtle small">Այս տվյալները պահպանվում են անփոփոխ, եթե դուք դրանք հատուկ չեք փոխում։</p>
+  </div>`;
 }
 
 function renderHistory(history) {
@@ -366,6 +411,9 @@ const comparisonFields = [
   ["sourceTitle", "Աղբյուրի վերնագիր"],
   ["sourceLocator", "Էջ / բաժին"],
   ["sourceUrl", "Աղբյուրի հղում"],
+  ["textbookLocator", "Դասագրքի հղում"],
+  ["programmeOutcomeLocator", "Ծրագրային վերջնարդյունք"],
+  ["textbookSha256", "Աղբյուրի SHA-256"],
 ];
 
 function historyField(entry, key) {
@@ -373,7 +421,10 @@ function historyField(entry, key) {
   const refs = entry?.reference_metadata ?? {};
   if (key === "specialization") return content.triggerErrorCode || content.misconceptionCode || "—";
   if (key === "allowedParameterKeys") return (content.allowedParameterKeys ?? []).join(", ") || "—";
-  if (["sourceTitle", "sourceLocator", "sourceUrl"].includes(key)) return refs[key] || "—";
+  if (["sourceTitle", "sourceLocator", "sourceUrl", "textbookLocator", "programmeOutcomeLocator", "textbookSha256"].includes(key)) {
+    if (key === "sourceLocator") return refs.sourceLocator || refs.textbookLocator || refs.programmeOutcomeLocator || "—";
+    return refs[key] || "—";
+  }
   return content[key] || "—";
 }
 
@@ -648,6 +699,7 @@ function renderEditor() {
   const guide = detail.guide;
   const content = guide.content ?? {};
   const refs = guide.referenceMetadata ?? {};
+  const referenceView = referenceEditorValues(refs);
   const variants = detail.variants ?? [];
   const isTemplate = guide.guideScope === "template";
   const code = isTemplate ? guide.itemTemplateCode : guide.skillCode;
@@ -716,11 +768,12 @@ function renderEditor() {
     <div class="guide-tab-panel hidden" data-guide-tab="sources" role="tabpanel">
       <section class="guide-form-section">
         <div class="section-heading"><div><h3>Աղբյուրներ և նշումներ</h3><p class="subtle small">Գրանցեք այն աղբյուրը, որի հիման վրա կազմվել կամ ստուգվել է ուղեցույցը։</p></div></div>
+        ${canonicalProvenanceHtml(refs)}
         <div class="guide-form-grid">
-          <label>Աղբյուրի վերնագիր<input id="sourceTitle" value="${esc(refs.sourceTitle)}" ${archivedDisabled} /></label>
-          <label>Էջ կամ բաժին<input id="sourceLocator" value="${esc(refs.sourceLocator)}" ${archivedDisabled} /></label>
-          <label class="wide">Աղբյուրի հղում<input id="sourceUrl" type="url" value="${esc(refs.sourceUrl)}" ${archivedDisabled} /></label>
-          <label class="wide">Նշումներ<textarea id="sourceNotes" rows="4" ${archivedDisabled}>${esc(refs.notes)}</textarea></label>
+          <label>Աղբյուրի վերնագիր<input id="sourceTitle" value="${esc(referenceView.sourceTitle)}" ${archivedDisabled} /></label>
+          <label>Էջ կամ բաժին<input id="sourceLocator" value="${esc(referenceView.sourceLocator)}" ${archivedDisabled} /></label>
+          <label class="wide">Աղբյուրի հղում<input id="sourceUrl" type="url" value="${esc(referenceView.sourceUrl)}" ${archivedDisabled} /></label>
+          <label class="wide">Նշումներ<textarea id="sourceNotes" rows="4" ${archivedDisabled}>${esc(referenceView.notes)}</textarea></label>
         </div>
       </section>
     </div>
