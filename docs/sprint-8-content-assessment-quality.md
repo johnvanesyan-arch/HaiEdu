@@ -8,7 +8,7 @@ Every item now has explicit quality metadata and a lifecycle:
 
 `draft/edit → version snapshot → technical QA → review → approved/published → retire/replace`
 
-Technical QA is **not** the same as subject-matter review. An item can pass structural QA while still carrying warnings such as `content_review_not_approved` or `sme_review_pending`.
+Technical QA is **not** the same as subject-matter review. The current reviewer UI now presents content-review and SME-validation states separately from technical QA. Historical QA rows may still contain legacy governance warning codes such as `content_review_not_approved` or `sme_review_pending`, but new technical QA runs do not generate those governance-state warnings.
 
 ## Item metadata
 `items` now stores:
@@ -47,7 +47,8 @@ Checks include:
 - true/false answer is boolean
 - numeric answer is numeric and has tolerance
 - quantity answer has tolerance, canonical unit and accepted units
-- metadata warnings for missing source, unspecified item family, pending content review, pending SME review, missing misconception mapping and exact duplicate prompts
+- metadata warnings for missing source, unspecified item family, missing misconception mapping and exact duplicate prompts
+- content-review status and SME-validation status are shown separately as live governance states rather than technical-QA warnings
 
 Technical errors block approval. Warnings do not automatically fail technical QA.
 

@@ -197,8 +197,6 @@ async function evaluateQa(admin: any, item: any) {
 
   if (!item.source_reference) warnings.push("source_reference_missing");
   if (!item.item_family || item.item_family === "unspecified") warnings.push("item_family_unspecified");
-  if (item.review_status !== "approved") warnings.push("content_review_not_approved");
-  if (item.validation_state === "provisional_no_sme_review") warnings.push("sme_review_pending");
   if (!(mappings ?? []).length) warnings.push("misconception_mapping_missing");
   if ((duplicates ?? []).length) warnings.push("duplicate_prompt_in_skill");
 

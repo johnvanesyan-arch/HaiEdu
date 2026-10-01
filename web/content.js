@@ -209,8 +209,12 @@ function renderDetail() {
   const editable = detail.editing?.contentEditable === true;
   const disabled = !editable;
   const qaErrors = item.latestQa?.errors ?? [];
-  const qaWarnings = item.latestQa?.warnings ?? [];
+  const qaWarnings = (item.latestQa?.warnings ?? []).filter(
+    (warning) => !["content_review_not_approved", "sme_review_pending"].includes(warning),
+  );
   const qaPassed = item.latestQa?.passed === true;
+  const contentReviewApproved = item.reviewStatus === "approved";
+  const smeReviewPending = item.validationState === "provisional_no_sme_review";
   const reviewStatusLabel = ({
     unreviewed: "Չստուգված",
     needs_review: "Ստուգման է սպասում",
@@ -275,6 +279,20 @@ function renderDetail() {
       ${qaErrors.length ? `<ul class="error-list">${qaErrors.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       ${qaWarnings.length ? `<ul class="warning-list">${qaWarnings.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       <div class="workflow-actions"><button id="runQaBtn" class="secondary">${item.latestQa ? "Կրկին գործարկել QA" : "Գործարկել QA"}</button></div>
+    </section>
+    <section class="detail-section governance-status-section" data-item-tab="review">
+      <h3>Կառավարման կարգավիճակ</h3>
+      <div class="governance-status-grid">
+        <div>
+          <span>Բովանդակային հաստատում</span>
+          <strong class="${contentReviewApproved ? "governance-ok" : "governance-pending"}">${contentReviewApproved ? "✓ Հաստատված" : "Սպասում է"}</strong>
+        </div>
+        <div>
+          <span>Մասնագիտական (SME) ստուգում</span>
+          <strong class="${smeReviewPending ? "governance-pending" : "governance-ok"}">${smeReviewPending ? "Սպասում է" : "✓ Գրանցված է"}</strong>
+        </div>
+      </div>
+      <p class="subtle tiny">Այս կարգավիճակները կառավարման փուլեր են և տեխնիկական QA-ի արդյունք չեն։</p>
     </section>
     <section class="detail-section" data-item-tab="review">
       <h3>Բովանդակային որոշում</h3>

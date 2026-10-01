@@ -53,8 +53,6 @@ export function evaluateTechnicalQa(input: QaInput) {
 
   if (!input.sourceReference) warnings.push("source_reference_missing");
   if (!input.itemFamily || input.itemFamily === "unspecified") warnings.push("item_family_unspecified");
-  if (input.reviewStatus !== "approved") warnings.push("content_review_not_approved");
-  if (input.validationState === "provisional_no_sme_review") warnings.push("sme_review_pending");
   if (!input.misconceptionCount) warnings.push("misconception_mapping_missing");
 
   return { passed: errors.length === 0, errors, warnings };

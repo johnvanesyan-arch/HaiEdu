@@ -31,15 +31,15 @@ test("quantity QA requires tolerance and unit metadata", () => {
   assert.ok(result.errors.includes("quantity_unit_metadata_missing"));
 });
 
-test("review and SME gaps are warnings rather than technical-QA failures", () => {
+test("content-review and SME governance states are separate from technical QA", () => {
   const result = evaluateTechnicalQa({
     itemType: "true_false", prompt: "Q", difficulty: 1, difficultyBand: "foundation", answer: true,
     sourceReference: "book", itemFamily: "knowledge", reviewStatus: "unreviewed",
     validationState: "provisional_no_sme_review", misconceptionCount: 1,
   });
   assert.equal(result.passed, true);
-  assert.ok(result.warnings.includes("content_review_not_approved"));
-  assert.ok(result.warnings.includes("sme_review_pending"));
+  assert.equal(result.warnings.includes("content_review_not_approved"), false);
+  assert.equal(result.warnings.includes("sme_review_pending"), false);
 });
 
 test("retirement replacement must be same-skill, published, active and QA-passed", () => {
@@ -51,4 +51,17 @@ test("retirement replacement must be same-skill, published, active and QA-passed
     itemId: "old", itemSkillId: "S08", replacementId: "new", replacementSkillId: "S09",
     replacementPublished: true, replacementRetired: false, replacementQaPassed: true,
   }), false);
+});
+
+
+test("technical QA still reports genuine metadata warnings", () => {
+  const result = evaluateTechnicalQa({
+    itemType: "true_false", prompt: "Q", difficulty: 1, difficultyBand: "foundation", answer: true,
+    sourceReference: null, itemFamily: "unspecified", reviewStatus: "approved",
+    validationState: "sme_reviewed", misconceptionCount: 0,
+  });
+  assert.equal(result.passed, true);
+  assert.ok(result.warnings.includes("source_reference_missing"));
+  assert.ok(result.warnings.includes("item_family_unspecified"));
+  assert.ok(result.warnings.includes("misconception_mapping_missing"));
 });
