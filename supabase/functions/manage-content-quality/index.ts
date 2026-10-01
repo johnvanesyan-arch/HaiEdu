@@ -130,6 +130,7 @@ async function evaluateQa(admin: any, item: any) {
   const errors: string[] = [];
   const warnings: string[] = [];
   let generatedVerification: Record<string, unknown> | null = null;
+  let answerPositionDistribution: Record<string, unknown> | null = null;
 
   if (!item.code) errors.push("missing_item_code");
   if (!String(item.prompt_hy ?? "").trim()) errors.push("empty_prompt");
@@ -142,6 +143,12 @@ async function evaluateQa(admin: any, item: any) {
       if ((options ?? []).length < 2) errors.push("insufficient_options");
       const optionKeys = new Set((options ?? []).map((o: any) => o.option_key));
       if (typeof key.answer !== "string" || !optionKeys.has(key.answer)) errors.push("answer_not_in_options");
+
+      const shuffleOptions = item.config?.shuffleOptions !== false;
+      const optionOrderRationale = String(item.config?.optionOrderRationale ?? "").trim();
+      if (!shuffleOptions && !optionOrderRationale) {
+        errors.push("shuffle_disabled_without_option_order_rationale");
+      }
     } else if (item.item_type === "true_false") {
       if (typeof key.answer !== "boolean") errors.push("true_false_answer_not_boolean");
     } else if (item.item_type === "numeric") {
@@ -154,6 +161,65 @@ async function evaluateQa(admin: any, item: any) {
       if (key.canonical_unit && Array.isArray(key.accepted_units) && !key.accepted_units.includes(key.canonical_unit)) warnings.push("canonical_unit_not_in_accepted_units");
     } else {
       errors.push("unsupported_item_type");
+    }
+  }
+
+  if (item.item_type === "single_choice" && item.item_template_id) {
+    const { data: siblingItems, error: siblingItemsError } = await admin
+      .from("items")
+      .select("id, code")
+      .eq("item_template_id", item.item_template_id)
+      .eq("item_type", "single_choice")
+      .is("retired_at", null);
+
+    if (siblingItemsError) {
+      errors.push("answer_position_distribution_check_failed");
+    } else {
+      const siblingIds = (siblingItems ?? []).map((sibling: any) => String(sibling.id));
+      const { data: siblingAnswerKeys, error: siblingAnswerKeysError } = siblingIds.length
+        ? await admin.from("item_answer_keys").select("item_id, answer").in("item_id", siblingIds)
+        : { data: [], error: null };
+
+      if (siblingAnswerKeysError || (siblingAnswerKeys ?? []).length !== siblingIds.length) {
+        errors.push("answer_position_distribution_check_failed");
+      } else {
+        const optionKeys = [...new Set((options ?? []).map((option: any) => String(option.option_key)))];
+        const counts = Object.fromEntries(optionKeys.map((optionKey) => [optionKey, 0])) as Record<string, number>;
+        const unrecognizedAnswers: string[] = [];
+        for (const siblingKey of siblingAnswerKeys ?? []) {
+          const answer = typeof siblingKey.answer === "string" ? siblingKey.answer : String(siblingKey.answer ?? "");
+          if (!(answer in counts)) unrecognizedAnswers.push(answer);
+          else counts[answer] += 1;
+        }
+
+        const familyItemCount = siblingIds.length;
+        const missingPositions = optionKeys.filter((optionKey) => counts[optionKey] === 0);
+        const maximumPositionCount = Math.max(0, ...Object.values(counts));
+        const maximumPositionShare = familyItemCount ? maximumPositionCount / familyItemCount : 0;
+        const fullRotationExpected = familyItemCount >= optionKeys.length && optionKeys.length >= 2;
+        const imbalanced = unrecognizedAnswers.length > 0 || (
+          familyItemCount >= 4 && (
+            (fullRotationExpected && missingPositions.length > 0) ||
+            maximumPositionShare > 0.5
+          )
+        );
+
+        if (imbalanced) warnings.push("answer_position_distribution_imbalanced");
+        answerPositionDistribution = {
+          scope: "item_template",
+          templateCode: template?.code ?? null,
+          familyItemCount,
+          optionKeys,
+          counts,
+          missingPositions,
+          maximumPositionCount,
+          maximumPositionShare,
+          unrecognizedAnswers,
+          policyVersion: "family-balanced-v1",
+          severity: "warning",
+          imbalanced,
+        };
+      }
     }
   }
 
@@ -223,7 +289,8 @@ async function evaluateQa(admin: any, item: any) {
       duplicateCodes: (duplicates ?? []).map((d: any) => d.code),
       expectedDifficultyBand: expectedDifficultyBand(Number(item.difficulty)),
       generatedVerification,
-      scope: "technical_structure_metadata_and_generated_variant_reproducibility",
+      answerPositionDistribution,
+      scope: "technical_structure_metadata_generated_variant_and_answer_position_quality",
     },
   };
 }
