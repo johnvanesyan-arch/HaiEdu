@@ -144,3 +144,30 @@ Verification:
 - GitHub CI #1005 passed **618/618 tests**, typecheck, browser JavaScript syntax and institutional concurrency.
 - Production static assets serve the governance-status UI.
 - Production Edge Function v5 source contains neither governance warning generator.
+
+
+## Revision-save correction for draft misconception mappings — 2026-10-01
+
+A live wording edit on `PHY7-U02-S02-I01` failed with HTTP 409. Postgres logged `invalid_misconception_code`.
+
+Root cause:
+- Chapter II currently carries governed **draft** misconceptions.
+- The item already had mappings to `particle_identity_or_count_changes`.
+- The editor populated its misconception picker from **active** misconceptions only, so an existing draft mapping rendered without a valid selectable code.
+- The atomic revision RPC then rejected the payload even though the reviewer had changed only wording.
+
+Correction:
+- preserve an already-attached draft misconception during a revision;
+- still reject newly attached draft or retired misconceptions;
+- recover an empty misconception code from the uniquely matching existing response-key mapping for pre-fix browser bundles;
+- render the current non-active mapping in the editor as an existing mapping;
+- surface the actual function error payload in the content editor;
+- replace the global misleading generic Edge Function message that implied account deletion/suspension with a neutral action-failed message.
+
+Migration: `20261001070000_content_revision_preserve_draft_misconceptions.sql`.
+
+Verification:
+- production function definition confirms existing-draft preservation and blank-code recovery;
+- the affected item remained at v2 during diagnosis; no failed-save mutation was committed;
+- production static assets serve the corrected editor/error behavior;
+- GitHub CI #1008 passed.
