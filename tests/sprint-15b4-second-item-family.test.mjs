@@ -28,6 +28,10 @@ test("family contains four source-backed fixed catalogue items", () => {
   assert.match(migration, /'generationMode', 'authored_parallel_catalog'/);
   assert.match(migration, /'qaContract', 'authored_fixed_catalogue'/);
   assert.match(migration, /Ֆիզիկա 7 \(2023\), Գլուխ II, §8, տպագիր էջեր 26-28/);
+  assert.match(
+    migration,
+    /when row\.difficulty <= 1 then 'foundation'[\s\S]*when row\.difficulty <= 3 then 'core'[\s\S]*else 'challenge'/,
+  );
 });
 
 test("all distractors use the strict misconception mapping policy", () => {

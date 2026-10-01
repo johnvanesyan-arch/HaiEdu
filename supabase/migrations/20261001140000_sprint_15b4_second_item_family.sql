@@ -136,7 +136,11 @@ select
   ),
   'draft'::public.content_status,
   row.code,
-  'core',
+  case
+    when row.difficulty <= 1 then 'foundation'
+    when row.difficulty <= 3 then 'core'
+    else 'challenge'
+  end,
   'concept_classification',
   'Գործող Ֆիզիկա 7 ծրագիր՝ Թեմա 2, պարտադիր վերջնարդյունք 1(1), աջակցող հմտություն; Ֆիզիկա 7 (2023), Գլուխ II, §8, տպագիր էջեր 26-28',
   'provisional_no_sme_review',
