@@ -120,3 +120,27 @@ Implementation:
 - `e33307c28e415a2a7604042e72e46fdd4edae2ef`
 
 CI #1002 passed **617/617 tests**, typecheck, browser JavaScript syntax checks and institutional concurrency. Production `/content-item` and `/content.js` serve the Model A workflow copy and behavior.
+
+
+## Technical QA vs governance state — 2026-10-01
+
+A live reviewer check exposed that pre-approval QA runs stored `content_review_not_approved`, which became stale immediately after the reviewer approved the same version. `sme_review_pending` was also being rendered beside technical QA despite representing a separate governance gate.
+
+The corrected model is:
+
+- **Technical QA**: structural/metadata/generated-variant checks only.
+- **Content review**: live item `review_status`.
+- **SME validation**: live item `validation_state`.
+
+Implementation:
+- new QA runs no longer add `content_review_not_approved` or `sme_review_pending`;
+- historical QA rows are preserved unchanged;
+- the UI filters those two legacy governance codes from historical QA warning lists;
+- the QA/Review tab now displays live **Բովանդակային հաստատում** and **Մասնագիտական (SME) ստուգում** status cards;
+- actual technical metadata warnings (for example source, family, misconception mapping, duplicate prompt, unit consistency) remain part of QA;
+- `manage-content-quality` was deployed as Edge Function **v5**.
+
+Verification:
+- GitHub CI #1005 passed **618/618 tests**, typecheck, browser JavaScript syntax and institutional concurrency.
+- Production static assets serve the governance-status UI.
+- Production Edge Function v5 source contains neither governance warning generator.
