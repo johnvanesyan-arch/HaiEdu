@@ -53,3 +53,14 @@ test("same-origin pages opt into browser document transitions where supported", 
   const styles = read("web/styles.css");
   assert.match(styles, /@view-transition\s*\{\s*navigation:\s*auto/);
 });
+
+
+test("student routing and dashboard bootstraps coalesce duplicate auth work", () => {
+  const router = read("web/role-router.js");
+  const app = read("web/app.js");
+  assert.match(router, /routePromise/);
+  assert.match(router, /TOKEN_REFRESHED.*INITIAL_SESSION/);
+  assert.match(app, /dashboardLoadPromise/);
+  assert.match(app, /showDashboard\(\{ force = false \} = \{\}\)/);
+  assert.match(app, /TOKEN_REFRESHED.*INITIAL_SESSION/);
+});
