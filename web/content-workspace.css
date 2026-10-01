@@ -56,3 +56,48 @@
 @media(max-width:1100px){.content-home-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.content-home-sections{grid-template-columns:1fr}.curriculum-unit-row{grid-template-columns:1fr 1fr}.curriculum-unit-row>a{justify-self:start}.evidence-metrics{grid-template-columns:repeat(3,minmax(0,1fr))}}
 @media(max-width:760px){.content-home-grid,.evidence-metrics{grid-template-columns:1fr 1fr}.content-list-row{grid-template-columns:1fr}.content-list-row .button-link{justify-self:start}.content-bank-page .filter-card{grid-template-columns:1fr}.content-bank-page .advanced-filter-grid{grid-template-columns:1fr}.curriculum-unit-row{grid-template-columns:1fr}.evidence-controls{grid-template-columns:1fr}.item-tab-nav{position:static}}
 @media(max-width:480px){.content-home-grid,.evidence-metrics{grid-template-columns:1fr}.content-work-card{padding:17px}.content-item-page .detail-panel{padding:18px 16px}}
+
+
+/* Content Reviewer QA: every bordered work surface needs deliberate inner spacing. */
+.content-bank-page .bank-card > .section-heading {
+  padding: 20px 22px 14px;
+}
+.content-bank-page .bank-card .table-wrap {
+  border-top: 1px solid #e3eaf2;
+}
+.content-bank-page .filter-card,
+.content-bank-page .curriculum-card,
+.content-item-page .detail-panel,
+.content-work-card,
+.curriculum-program-card,
+.evidence-controls,
+.evidence-metric {
+  box-sizing: border-box;
+}
+.content-bank-page .filter-card {
+  padding: 18px 20px;
+}
+.content-bank-page .advanced-filter-box {
+  margin-top: 2px;
+}
+.evidence-controls {
+  padding: 20px 22px;
+}
+.evidence-metric {
+  padding: 17px 18px;
+}
+.curriculum-program-card {
+  padding: 22px;
+}
+
+@media(max-width:760px){
+  .content-bank-page .bank-card > .section-heading,
+  .content-bank-page .filter-card,
+  .evidence-controls,
+  .curriculum-program-card {
+    padding: 16px;
+  }
+  .evidence-metric {
+    padding: 15px 16px;
+  }
+}

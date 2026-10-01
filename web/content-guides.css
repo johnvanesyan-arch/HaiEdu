@@ -253,3 +253,28 @@
   .editor-summary { grid-template-columns: 1fr; }
   .guide-actions button { flex: 1 1 160px; }
 }
+
+
+/* Content Reviewer QA: normalize card padding with the other reviewer workspaces. */
+.guide-filters {
+  padding: 18px 20px;
+}
+.guide-bank > .section-heading {
+  padding: 20px 22px 14px;
+}
+.guide-bank .guide-table-wrap {
+  border-top: 1px solid #e3eaf2;
+}
+.guide-stat,
+.assurance-card,
+.guide-filters,
+.guide-bank,
+.guide-editor {
+  box-sizing: border-box;
+}
+@media (max-width: 760px) {
+  .guide-filters,
+  .guide-bank > .section-heading {
+    padding: 16px;
+  }
+}

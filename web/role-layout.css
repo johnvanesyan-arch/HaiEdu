@@ -93,6 +93,10 @@ body.amp-student-shell-active .mode-kicker { background: var(--hm-soft); color: 
 .hm-role-foot a { color: var(--hm-blue); font-weight: 600; }
 .hm-sidebar-signout { width: 100%; text-align: left; color: #7b4350 !important; border-color: #dfc3c8 !important; }
 .school-admin-page.hm-has-role-sidebar .school-admin-header #signOutBtn { display: none !important; }
+body[data-role-workspace^="content"].hm-has-role-sidebar .content-topbar #signOutBtn,
+body[data-role-workspace^="content"].hm-has-role-sidebar .guide-topbar #signOutBtn {
+  display: none !important;
+}
 .hm-role-chip {
   display: inline-block; align-self: flex-start; white-space: nowrap;
   padding: 7px 11px; border: 1px solid var(--hm-line);
@@ -104,7 +108,8 @@ body.amp-student-shell-active > main { container-type: inline-size; container-na
 body.hm-has-role-sidebar .teacher-topbar,
 body.hm-has-role-sidebar .school-admin-header,
 body.hm-has-role-sidebar .admin-topbar,
-body.hm-has-role-sidebar .content-topbar {
+body.hm-has-role-sidebar .content-topbar,
+body.hm-has-role-sidebar .guide-topbar {
   background: var(--hm-surface); border: 1px solid var(--hm-line);
   border-radius: 14px; padding: 20px 24px; margin: 0 0 20px;
   display: flex; align-items: flex-start; justify-content: space-between; gap: 18px;
@@ -112,7 +117,8 @@ body.hm-has-role-sidebar .content-topbar {
 body.hm-has-role-sidebar .teacher-topbar h1,
 body.hm-has-role-sidebar .school-admin-header h1,
 body.hm-has-role-sidebar .admin-topbar h1,
-body.hm-has-role-sidebar .content-topbar h1 { font-size: clamp(1.8rem,2.5vw,2.8rem); line-height: 1.15; }
+body.hm-has-role-sidebar .content-topbar h1,
+body.hm-has-role-sidebar .guide-topbar h1 { font-size: clamp(1.8rem,2.5vw,2.8rem); line-height: 1.15; }
 body.hm-has-role-sidebar .teacher-welcome-card { background: var(--hm-surface); border-color: var(--hm-line); }
 body.hm-has-role-sidebar .admin-panel,
 body.hm-has-role-sidebar .admin-card,
@@ -172,7 +178,8 @@ body.hm-has-role-sidebar .quality-layout .detail-panel { position: static; max-h
   body.hm-has-role-sidebar .teacher-topbar,
   body.hm-has-role-sidebar .school-admin-header,
   body.hm-has-role-sidebar .admin-topbar,
-  body.hm-has-role-sidebar .content-topbar { flex-wrap: wrap; padding: 17px; }
+  body.hm-has-role-sidebar .content-topbar,
+  body.hm-has-role-sidebar .guide-topbar { flex-wrap: wrap; padding: 17px; }
 }
 @media (max-width: 560px) {
   body.hm-has-role-sidebar > main { padding: 12px; }
