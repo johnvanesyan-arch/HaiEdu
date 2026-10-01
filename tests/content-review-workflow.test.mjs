@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 
 const reviewUi = readFileSync("web/content-review-workflow.js", "utf8");
 const historyFn = readFileSync("supabase/functions/get-content-review-history/index.ts", "utf8");
-const html = readFileSync("web/content.html", "utf8");
+const html = readFileSync("web/content-item.html", "utf8");
 
 function has(text, pattern, message) {
   assert.match(text, pattern, message);
@@ -35,6 +35,6 @@ test("review history endpoint remains content-admin protected", () => {
   has(historyFn, /\["admin", "content_admin"\]/, "history endpoint must require content administration role");
 });
 
-test("content page loads the review workflow enhancement", () => {
-  has(html, /content-review-workflow\.js/, "content console must load the review-workflow module");
+test("dedicated item workspace loads the review workflow enhancement", () => {
+  has(html, /content-review-workflow\.js/, "item workspace must load the review-workflow module");
 });

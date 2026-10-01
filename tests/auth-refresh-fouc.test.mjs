@@ -21,12 +21,15 @@ test("login panels start hidden until Supabase resolves auth state", async () =>
 test("each auth surface reveals the correct state after session resolution", async () => {
   const app = await read("web/app.js");
   const teacher = await read("web/teacher.js");
-  const content = await read("web/content.js");
+  const content = await read("web/content-home.js");
+  const contentWorkspace = await read("web/content-workspace.js");
   const admin = await read("web/admin.js");
 
   assert.match(app, /getSession\(\)[\s\S]*setAuthenticated\(Boolean\(sessionData\.session\)\)/);
   assert.match(teacher, /onAuthStateChange[\s\S]*authPanel[\s\S]*classList\.remove\("hidden"\)/);
-  assert.match(content, /showForSession\(session\)[\s\S]*authPanel[\s\S]*classList\.remove\("hidden"\)/);
+  assert.match(content, /mountContentWorkspace\(render\)/);
+  assert.match(contentWorkspace, /getSession\(\)[\s\S]*show\(data\.session\)/);
+  assert.match(contentWorkspace, /authPanel\?\.classList\.remove\("hidden"\)/);
   assert.match(admin, /async function enterConsole[\s\S]*!session[\s\S]*authPanel[\s\S]*classList\.remove\("hidden"\)/);
   assert.match(admin, /onAuthStateChange[\s\S]*enterConsole\(session\)/);
 });

@@ -4,7 +4,7 @@ import { readFileSync } from "node:fs";
 
 const migration = readFileSync("supabase/migrations/0031_content_curriculum_scopes.sql", "utf8");
 const dashboard = readFileSync("supabase/functions/get-content-quality-dashboard/index.ts", "utf8");
-const html = readFileSync("web/content.html", "utf8");
+const html = readFileSync("web/content-bank.html", "utf8");
 const ui = readFileSync("web/content-curriculum.js", "utf8");
 const css = readFileSync("web/content-curriculum.css", "utf8");
 
@@ -31,7 +31,7 @@ test("dashboard exposes multi-grade multi-subject catalogue and item context", (
   has(dashboard, /curriculum: scope/, "each scoped item must expose curriculum context");
 });
 
-test("content console has hierarchical curriculum selectors", () => {
+test("question bank has hierarchical curriculum selectors", () => {
   for (const id of ["gradeFilter", "subjectFilter", "programFilter", "unitFilter", "allContentBtn"]) {
     has(html, new RegExp(`id="${id}"`), `${id} must be present`);
   }

@@ -5,8 +5,8 @@ import { readFileSync } from "node:fs";
 const activation = readFileSync("supabase/migrations/0032_sprint_11d_activate_reviewed_bank.sql", "utf8");
 const analyticsMigration = readFileSync("supabase/migrations/0033_sprint_11e_pilot_item_analytics.sql", "utf8");
 const endpoint = readFileSync("supabase/functions/get-pilot-item-analytics/index.ts", "utf8");
-const ui = readFileSync("web/content-pilot-analytics.js", "utf8");
-const html = readFileSync("web/content.html", "utf8");
+const ui = readFileSync("web/content-evidence-page.js", "utf8");
+const html = readFileSync("web/content-evidence.html", "utf8");
 
 function has(text, pattern, message) {
   assert.match(text, pattern, message);
@@ -36,17 +36,17 @@ test("11E endpoint is admin-only and service-authoritative", () => {
   has(endpoint, /service_get_pilot_item_analytics/, "endpoint must use the server-side analytics RPC");
 });
 
-test("content console surfaces integrity and per-item pilot evidence", () => {
-  has(html, /content-pilot-analytics\.js/, "content console must load pilot analytics UI");
-  has(ui, /Assessment-integrity monitor/, "integrity summary must be visible");
-  has(ui, /Exact-repeat rate/, "exact-repeat rate must be shown");
-  has(ui, /Protected-pool leaks/, "protected-pool leak count must be shown");
-  has(ui, /Pilot evidence/, "selected items must show per-item evidence");
-  has(ui, /not validated psychometrics/, "UI must preserve evidence caveat");
+test("dedicated evidence page surfaces integrity signals without cluttering review work", () => {
+  has(html, /Փորձնական տվյալներ/, "pilot evidence must have a dedicated page");
+  has(html, /վավերացված հոգեմետրիկ չափումներ չեն/, "page must preserve evidence caveat");
+  has(ui, /Կրկնության տոկոս/, "exact-repeat rate must be shown");
+  has(ui, /Պաշտպանված բանկի արտահոսք/, "protected-pool leak count must be shown");
+  has(ui, /Ազդանշված հարցեր/, "flagged-item count must be shown");
+  has(ui, /content-item\.html\?id=/, "flagged items must open the dedicated item workspace");
 });
 
-test("pilot item evidence rendering is idempotent under MutationObserver", () => {
-  has(ui, /function itemEvidenceSignature/, "item evidence must have a stable render signature");
-  has(ui, /existing\?\.dataset\.itemId === itemId && existing\.dataset\.signature === signature/, "observer-driven rerenders must stop when evidence is unchanged");
-  has(ui, /section\.dataset\.signature = signature/, "rendered evidence must retain its signature");
+test("evidence page reloads only on explicit unit selection or refresh", () => {
+  has(ui, /evidenceUnit.*addEventListener\("change", loadEvidence\)/s, "unit changes must trigger evidence reload");
+  has(ui, /refreshEvidenceBtn.*addEventListener\("click", loadEvidence\)/s, "refresh must be explicit");
 });
+
