@@ -1,12 +1,12 @@
 # Sprint 15B.3 — First-family review and mapping integrity
 
-**Status:** Final human-review gate  
+**Status:** Complete  
 **Date:** 2026-10-01  
 **Scope:** `PHY7-U02-S02-F01-PARTICULATE-EVIDENCE`
 
 ## Decision
 
-The first Chapter II family does not scale until every current question version, distractor mapping and remediation definition has an explicit review disposition. Learner delivery remains fail-closed.
+The first Chapter II family has passed its bounded human-review and mapping-integrity gate. A second learner-inactive family may now begin, while learner delivery remains fail-closed.
 
 ## Reconciled evidence
 
@@ -43,13 +43,18 @@ I03 also contained `Ո՞ր եզրակացությանն է աջակցում այ
 - Chapter II has zero pool links and no non-draft guide.
 - Supabase’s new trigger-function privilege warnings were cleared after the follow-up migration.
 
-## Remaining human gate
+## Closure evidence
 
-Before Sprint 15B.4:
+The product owner approved the three exact Armenian misconception definitions. The production closure check confirms:
 
-1. run QA on I03 version 4 and approve that exact version;
-2. review and disposition the draft remediation guide;
-3. review and disposition the three draft misconception definitions;
-4. confirm the final production matrix: four approved current versions, twelve mappings and zero unmapped distractors.
+1. I01, I02 and I04 are approved with passing QA at version 2;
+2. I03 is approved with passing QA at version 4;
+3. the remediation guide is published at runtime version 2 / authoring version 6;
+4. all three approved misconception definitions are active with their reviewed Armenian text unchanged;
+5. all four items have exactly three response mappings, for twelve total and zero unmapped distractors;
+6. the family has zero assessment-pool links;
+7. the Chapter I–II candidate release remains `draft` and has zero assessment blueprints.
 
-No second family, assessment pool, blueprint, pilot or learner release is authorized by this slice.
+PR [#85](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/85) merged as `26db3f4e6774b9bda690d23735edd9aeb7b3054c`. CI #1025 passed, and migration `20261001120500_sprint_15b3_activate_approved_misconceptions.sql` completed successfully in production.
+
+Sprint 15B.4 may create a second learner-inactive family. No assessment pool, blueprint, pilot or learner release is authorized by this closure.
