@@ -105,11 +105,22 @@ test("reviewer guide editor uses a focused state-driven workspace", () => {
   assert.match(ui, /Պահպանել որպես նոր սևագիր/);
   assert.match(ui, /guide-more-menu/);
   assert.match(ui, /saveButton\.classList\.toggle\("hidden", !showSave\)/);
+  assert.match(ui, /reviewButton\.disabled = editorDirty/);
   assert.match(ui, /publishButton\.disabled = editorDirty/);
-  assert.match(ui, /rationaleInput\.focus\(\)/);
+  assert.match(ui, /rationalePanel\?\.classList\.toggle\("hidden", !showRationale\)/);
+  assert.match(ui, /\["save_draft", "archive"\]\.includes\(action\)/);
+  assert.match(ui, /rationaleInput\?\.focus\(\)/);
   assert.match(styles, /guide-console\.editor-mode \.guide-bank \{ display: none; \}/);
   assert.match(styles, /\.guide-action-bar \{[\s\S]*grid-template-columns: minmax\(0, 1fr\)/);
   assert.match(styles, /\.guide-action-bar \.guide-actions \{ justify-content: flex-start/);
+});
+
+test("review and publish use server audit descriptions without forcing empty reviewer prose", () => {
+  assert.match(endpoint, /submit_review: "Բովանդակության ստուգումն ավարտվել է։"/);
+  assert.match(endpoint, /publish: "Ստուգված տարբերակը հրապարակվել է։"/);
+  assert.match(endpoint, /action === "submit_review"[\s\S]*unsaved_changes_must_be_saved/);
+  assert.match(endpoint, /sameJson\(content, guide\.authoring_content\)/);
+  assert.match(ui, /unsaved_changes_must_be_saved/);
 });
 
 test("reviewer history and question parameters hide implementation noise", () => {

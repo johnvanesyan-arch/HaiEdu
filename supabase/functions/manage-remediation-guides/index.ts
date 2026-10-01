@@ -52,6 +52,22 @@ function guideContent(value: unknown): PlainObject {
   };
 }
 
+function canonicalJson(value: unknown): unknown {
+  if (Array.isArray(value)) return value.map(canonicalJson);
+  if (value && typeof value === "object") {
+    return Object.fromEntries(
+      Object.entries(value as PlainObject)
+        .sort(([left], [right]) => left.localeCompare(right))
+        .map(([key, entry]) => [key, canonicalJson(entry)]),
+    );
+  }
+  return value;
+}
+
+function sameJson(left: unknown, right: unknown) {
+  return JSON.stringify(canonicalJson(left)) === JSON.stringify(canonicalJson(right));
+}
+
 function normalizeGuide(row: PlainObject) {
   return {
     guideScope: row.guide_scope,
@@ -310,6 +326,12 @@ Deno.serve(async (req) => {
     };
     const nextStatus = statusByAction[action];
     if (!nextStatus) return json({ error: "invalid_action" }, 400);
+    if (action === "submit_review" && (
+      !sameJson(content, guide.authoring_content)
+      || !sameJson(referenceMetadata, guide.reference_metadata)
+    )) {
+      return json({ error: "unsaved_changes_must_be_saved" }, 409);
+    }
     if (["submit_review", "publish"].includes(action) && validation.errors.length) {
       return json({ error: "guide_validation_failed", validation }, 409);
     }
@@ -321,7 +343,12 @@ Deno.serve(async (req) => {
       if (!fallback.available) return json({ error: fallback.reason, fallback }, 409);
     }
 
-    const rationale = String(body.changeRationale ?? "").trim();
+    const suppliedRationale = String(body.changeRationale ?? "").trim();
+    const automaticRationale: Record<string, string> = {
+      submit_review: "Բովանդակության ստուգումն ավարտվել է։",
+      publish: "Ստուգված տարբերակը հրապարակվել է։",
+    };
+    const rationale = suppliedRationale || automaticRationale[action] || "";
     const expectedVersion = Number(body.expectedAuthoringVersion);
     if (!Number.isInteger(expectedVersion) || expectedVersion < 1) {
       return json({ error: "expected_authoring_version_required" }, 400);

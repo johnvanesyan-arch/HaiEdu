@@ -33,6 +33,7 @@ const errorLabels = {
   draft_required_before_review: "Նախ պահպանեք սևագիրը, ապա ուղարկեք ստուգման։",
   review_required_before_publish: "Հրապարակելուց առաջ ուղեցույցը պետք է անցնի ստուգման փուլ։",
   published_content_must_match_review: "Հրապարակվող բովանդակությունը չի համընկնում ստուգված տարբերակին։ Փոփոխությունները նորից պահպանեք որպես սևագիր և ուղարկեք ստուգման։",
+  unsaved_changes_must_be_saved: "Ստուգված նշելուց առաջ պահպանեք բովանդակության փոփոխությունները։",
   published_guide_required_before_archive: "Արխիվացվում է միայն հրապարակված ուղեցույցը։",
   skill_fallback_still_required: "Այս հմտության ուղեցույցը դեռ անհրաժեշտ պահուստային ուղի է և չի կարող արխիվացվել։",
   skill_fallback_missing: "Այս ձևանմուշի համար հրապարակված հմտության պահուստային ուղեցույց չկա։",
@@ -488,6 +489,9 @@ function updateLifecycleActionState() {
   const status = detail.guide.lifecycleStatus;
   const rationale = $("changeRationale")?.value.trim() || "";
   const rationaleReady = rationale.length >= 3;
+  const rationalePanel = $("actionRationale");
+  const rationaleLabel = $("changeRationaleLabel");
+  const rationaleInput = $("changeRationale");
   const saveButton = $("saveDraftBtn");
   const reviewButton = $("submitReviewBtn");
   const publishButton = $("publishGuideBtn");
@@ -497,18 +501,34 @@ function updateLifecycleActionState() {
     saveButton.classList.toggle("hidden", !showSave);
     saveButton.disabled = false;
   }
-  if (reviewButton) reviewButton.disabled = false;
+  if (reviewButton) reviewButton.disabled = editorDirty;
   if (publishButton) publishButton.disabled = editorDirty;
   if (archiveButton) archiveButton.disabled = false;
+
+  const showRationale = editorDirty || ["published", "archived"].includes(status);
+  rationalePanel?.classList.toggle("hidden", !showRationale);
+  if (rationaleLabel && rationaleInput) {
+    if (status === "archived") {
+      rationaleLabel.textContent = "Վերաբացման պատճառ (պարտադիր)";
+      rationaleInput.placeholder = "Օրինակ՝ ուղեցույցը պետք է վերանայել և նորից հրապարակել";
+    } else if (status === "published") {
+      rationaleLabel.textContent = "Գործողության պատճառ (պարտադիր)";
+      rationaleInput.placeholder = "Նշեք նոր սևագիր ստեղծելու կամ արխիվացնելու պատճառը";
+    } else {
+      rationaleLabel.textContent = "Փոփոխության պատճառ (պարտադիր)";
+      rationaleInput.placeholder = "Օրինակ՝ հստակեցվել է երկրորդ հուշումը";
+    }
+  }
 
   const state = $("editorSaveState");
   if (!state) return;
   if (status === "review" && editorDirty) state.textContent = "Փոփոխված տարբերակը հրապարակելուց առաջ պահպանեք և նորից նշեք որպես ստուգված։";
+  else if (status === "draft" && editorDirty) state.textContent = "Ստուգված նշելուց առաջ պահպանեք փոփոխությունները։";
   else if (editorDirty) state.textContent = "Կան չպահպանված փոփոխություններ։";
   else if (status === "draft") state.textContent = "Սևագիրը պատրաստ է ստուգված նշելու համար։";
   else state.textContent = "Բոլոր փոփոխությունները պահպանված են։";
   state.classList.toggle("has-unsaved", editorDirty);
-  state.classList.toggle("needs-rationale", !rationaleReady);
+  state.classList.toggle("needs-rationale", showRationale && !rationaleReady);
 }
 
 function markGuideDirty() {
@@ -533,7 +553,7 @@ function lifecycleActionsHtml(guide) {
     ? `<button id="archiveGuideBtn" type="button" class="danger">Արխիվացնել ուղեցույցը</button><p>Արխիվացումը կպահանջի լրացուցիչ հաստատում։</p>`
     : `<p>Արխիվացումը հասանելի չէ, քանի դեռ գործող հարցերի համար անվտանգ պահուստային ուղի չկա։</p>`}</div></details>` : "";
   return `<div class="guide-action-bar">
-    <div class="action-rationale"><label>Փոփոխության պատճառ (պարտադիր)<input id="changeRationale" placeholder="Օրինակ՝ հստակեցվել է երկրորդ հուշումը" /></label><span id="editorSaveState" class="editor-save-state" aria-live="polite"></span></div>
+    <div id="actionRationale" class="action-rationale"><label><span id="changeRationaleLabel">Փոփոխության պատճառ (պարտադիր)</span><input id="changeRationale" placeholder="Օրինակ՝ հստակեցվել է երկրորդ հուշումը" /></label><span id="editorSaveState" class="editor-save-state" aria-live="polite"></span></div>
     <div class="guide-actions">${actions}${archiveMenu}</div>
   </div>`;
 }
@@ -933,15 +953,16 @@ async function configureMfa() {
 
 async function runWorkflow(action) {
   try {
-    const rationale = $("changeRationale").value.trim();
-    if (rationale.length < 3) {
-      const rationaleInput = $("changeRationale");
+    const rationaleInput = $("changeRationale");
+    const rationale = rationaleInput?.value.trim() || "";
+    const rationaleRequired = ["save_draft", "archive"].includes(action);
+    if (rationaleRequired && rationale.length < 3) {
       const state = $("editorSaveState");
       if (state) {
         state.textContent = "Գործողությունը շարունակելու համար նշեք առնվազն 3 նիշից բաղկացած պատճառ։";
         state.classList.add("needs-rationale");
       }
-      rationaleInput.focus();
+      rationaleInput?.focus();
       return;
     }
     if (["publish", "archive"].includes(action) && !(await ensureAal2())) return;
