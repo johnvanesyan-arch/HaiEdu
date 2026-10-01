@@ -38,7 +38,7 @@ Implemented corrections:
 
 Authorization remains server-authoritative. The loading shell contains no protected data, caches are keyed by authenticated user and short-lived, and existing protected endpoints/RLS/session checks remain unchanged.
 
-Production static assets were verified after deployment. CI #1046 passed **647/647 tests**; the dedicated navigation-performance regression suite covers loading shells, content caching, auth-event de-duplication, deferred health checks, School Admin parallel reads and Student bootstrap coalescing.
+Production static assets were verified after deployment. CI #1047 passed **648/648 tests**; the dedicated navigation-performance regression suite covers loading shells, content caching, auth-event de-duplication, deferred health checks, School Admin parallel reads and Student bootstrap coalescing.
 
 **Deferred optimization:** if first-entry latency remains materially high after this correction, the next bounded performance slice is to split the Content Reviewer all-in-one dashboard read into purpose-specific summary/bank/item/curriculum payloads. The current change targets the observed duplicate-request and cross-page-navigation problem first without changing content-governance data contracts.
 
