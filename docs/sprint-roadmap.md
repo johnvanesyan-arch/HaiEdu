@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 2.77
+**Roadmap version:** 2.78
 **Updated:** 2026-10-01
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls, the authenticated school-admin operational overview and the teacher workspace operations are deployed; and the 14C school-scoped learner onboarding, exact-context stamping, assigned-class teacher roster and teacher evidence views are deployed. Institutional teachers can create assigned classrooms, send bounded bulk email invitations, issue optional one-use join codes, separate active and archived classrooms, and rename authorized classrooms without changing their identity or evidence. Role-scoped privacy inventories and Armenian-safe responsive layouts are deployed across role dashboards. Teacher offboarding and database-enforced final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 live checks on 2026-09-28. Authenticated action acceptance also passed 141/141 checks across both schools, with 54/54 read-isolation checks before and after. Teacher navigation/rename/archive, reciprocal class/staff mutation denials and temporary-membership offboarding UI acceptance are complete for these fixtures. Sprint 14D school-wide analytics is ✅ complete: the protected aggregate-only endpoint and School Admin board are deployed, and production run 36757995069 passed 10/10 two-school tenant, privacy and authenticated-browser checks. Live multi-unit/multi-context switching remains blocked until a second authorized release exists and is the remaining Sprint 14 gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English. Sprint 15A is ✅ complete: the protected Armenian authoring workspace passed authenticated Content Reviewer and Platform Admin browser acceptance, AAL1/AAL2 lifecycle checks, draft/review runtime isolation, publish/archive/fallback/history probes, wrong-role and revoked-session denial, full CI and final advisor review. Sprint 15B.1 deployed the review-only Chapter II foundation. Sprint 15B.2 reviewed the skill map, archived one duplicate candidate in favour of the existing cross-unit prerequisite, approved eight Chapter II skills for draft authoring, and added one learner-inactive family with four versioned draft items and one draft remediation guide. Sprint 15B.3 is ✅ complete: all four current question versions have passing QA and approval, the guide is published, all three explicitly approved misconception definitions are active, and the 4-item/12-mapping matrix is intact. Sprint 15B.4 now defines the second learner-inactive family for `PHY7-U02-S03`, with four source-backed draft items, complete distractor mappings and one draft guide awaiting human review. Publication remains blocked by outcome/SME, assessment, content-QA, pilot and release gates. The Content Reviewer workspace has also been restructured into dedicated task pages (home, review queue, question bank, item workspace, curriculum coverage, pilot evidence and remediation guides) without changing the protected content-governance APIs or release gates.
 
@@ -21,6 +21,28 @@ The same concept must use one approved Armenian term supplied through a centrali
 This policy applies immediately to every new or modified interface. **Sprint 18** owns the centralized localization architecture, hard-coded-string removal, shared terminology dictionary and platform-wide localization regression gate. **Sprint 18.5** applies the standard to every rollover surface. Every later sprint must pass Armenian-language review before release. Working labels remain provisional until reviewed in their actual educational and administrative context.
 
 **Canonical policy:** [Academic-Year Rollover, Continuity and Localization Policy](academic-year-rollover-localization-policy.md).
+
+## Authenticated workspace navigation performance — 2026-10-01
+
+**Status: ✅ First platform-wide latency/first-paint correction deployed.** Live Supabase logs showed that `get-content-quality-dashboard` averaged about **2.3 s** in the observed window, with peaks above **7 s**, and the same authenticated user could trigger several identical dashboard requests within fractions of a second during page/auth bootstrap. The visible symptom was a static header followed by a large blank area until authorization and data loading completed.
+
+Implemented corrections:
+- authenticated staff routes now render a stable HaiEdu loading shell/skeleton instead of a naked-header blank state;
+- same-origin document transitions are enabled where the browser supports them;
+- staff sidebar routes prefetch likely next documents during idle/hover;
+- the global terminal-auth health check is deferred off the critical rendering path;
+- Content Reviewer pages reuse a **20-second, user-scoped session cache** for the shared dashboard payload and coalesce in-flight loads; reviewer mutations invalidate the cache before authoritative refresh;
+- Teacher, Master Admin and Security workspaces de-duplicate `getSession` / `onAuthStateChange` bootstrap work and ignore ordinary token refresh as a dashboard-reload trigger;
+- School Admin uses the local session bootstrap instead of an additional remote `getUser` request and begins independent year/subject/roster/analytics reads in parallel;
+- Student role routing coalesces simultaneous routing checks and the Student dashboard keeps one in-flight read instead of starting duplicates from initial auth callbacks.
+
+Authorization remains server-authoritative. The loading shell contains no protected data, caches are keyed by authenticated user and short-lived, and existing protected endpoints/RLS/session checks remain unchanged.
+
+Production static assets were verified after deployment. CI #1046 passed **647/647 tests**; the dedicated navigation-performance regression suite covers loading shells, content caching, auth-event de-duplication, deferred health checks, School Admin parallel reads and Student bootstrap coalescing.
+
+**Deferred optimization:** if first-entry latency remains materially high after this correction, the next bounded performance slice is to split the Content Reviewer all-in-one dashboard read into purpose-specific summary/bank/item/curriculum payloads. The current change targets the observed duplicate-request and cross-page-navigation problem first without changing content-governance data contracts.
+
+[Implementation record](authenticated-workspace-navigation-performance.md).
 
 ## Content Reviewer workspace information architecture — 2026-10-01
 
