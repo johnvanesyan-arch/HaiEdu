@@ -492,18 +492,23 @@ function updateLifecycleActionState() {
   const reviewButton = $("submitReviewBtn");
   const publishButton = $("publishGuideBtn");
   const archiveButton = $("archiveGuideBtn");
-  if (saveButton) saveButton.disabled = !rationaleReady || (!editorDirty && status !== "archived");
-  if (reviewButton) reviewButton.disabled = !rationaleReady;
-  if (publishButton) publishButton.disabled = !rationaleReady || editorDirty;
-  if (archiveButton) archiveButton.disabled = !rationaleReady;
+  if (saveButton) {
+    const showSave = editorDirty || ["published", "archived"].includes(status);
+    saveButton.classList.toggle("hidden", !showSave);
+    saveButton.disabled = false;
+  }
+  if (reviewButton) reviewButton.disabled = false;
+  if (publishButton) publishButton.disabled = editorDirty;
+  if (archiveButton) archiveButton.disabled = false;
 
   const state = $("editorSaveState");
   if (!state) return;
-  if (!rationaleReady) state.textContent = "Գործողությունից առաջ կարճ նշեք փոփոխության պատճառը։";
-  else if (status === "review" && editorDirty) state.textContent = "Փոփոխված տարբերակը հրապարակելուց առաջ պահպանեք և նորից նշեք որպես ստուգված։";
+  if (status === "review" && editorDirty) state.textContent = "Փոփոխված տարբերակը հրապարակելուց առաջ պահպանեք և նորից նշեք որպես ստուգված։";
   else if (editorDirty) state.textContent = "Կան չպահպանված փոփոխություններ։";
+  else if (status === "draft") state.textContent = "Սևագիրը պատրաստ է ստուգված նշելու համար։";
   else state.textContent = "Բոլոր փոփոխությունները պահպանված են։";
   state.classList.toggle("has-unsaved", editorDirty);
+  state.classList.toggle("needs-rationale", !rationaleReady);
 }
 
 function markGuideDirty() {
@@ -528,7 +533,7 @@ function lifecycleActionsHtml(guide) {
     ? `<button id="archiveGuideBtn" type="button" class="danger">Արխիվացնել ուղեցույցը</button><p>Արխիվացումը կպահանջի լրացուցիչ հաստատում։</p>`
     : `<p>Արխիվացումը հասանելի չէ, քանի դեռ գործող հարցերի համար անվտանգ պահուստային ուղի չկա։</p>`}</div></details>` : "";
   return `<div class="guide-action-bar">
-    <div class="action-rationale"><label>Փոփոխության պատճառ<input id="changeRationale" placeholder="Օրինակ՝ հստակեցվել է երկրորդ հուշումը" /></label><span id="editorSaveState" class="editor-save-state" aria-live="polite"></span></div>
+    <div class="action-rationale"><label>Փոփոխության պատճառ (պարտադիր)<input id="changeRationale" placeholder="Օրինակ՝ հստակեցվել է երկրորդ հուշումը" /></label><span id="editorSaveState" class="editor-save-state" aria-live="polite"></span></div>
     <div class="guide-actions">${actions}${archiveMenu}</div>
   </div>`;
 }
@@ -928,9 +933,18 @@ async function configureMfa() {
 
 async function runWorkflow(action) {
   try {
-    if (["publish", "archive"].includes(action) && !(await ensureAal2())) return;
     const rationale = $("changeRationale").value.trim();
-    if (rationale.length < 3) throw new Error("change_rationale_required");
+    if (rationale.length < 3) {
+      const rationaleInput = $("changeRationale");
+      const state = $("editorSaveState");
+      if (state) {
+        state.textContent = "Գործողությունը շարունակելու համար նշեք առնվազն 3 նիշից բաղկացած պատճառ։";
+        state.classList.add("needs-rationale");
+      }
+      rationaleInput.focus();
+      return;
+    }
+    if (["publish", "archive"].includes(action) && !(await ensureAal2())) return;
     setMessage("Գործողությունը կատարվում է…");
     const guide = detail.guide;
     await invoke({
