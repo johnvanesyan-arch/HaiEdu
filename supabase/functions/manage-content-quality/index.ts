@@ -195,9 +195,20 @@ async function evaluateQa(admin: any, item: any) {
     }
   }
 
+  const misconceptionMappingPolicy = String(template?.generation_config?.misconceptionMappingPolicy ?? "");
+  const mappedResponseKeys = new Set((mappings ?? []).map((mapping: any) => String(mapping.response_key ?? "*")));
+  const correctResponseKey = typeof key?.answer === "string" ? key.answer : null;
+  const missingMisconceptionResponseKeys = misconceptionMappingPolicy === "all_distractors" && item.item_type === "single_choice"
+    ? (options ?? [])
+      .map((option: any) => String(option.option_key))
+      .filter((optionKey: string) => optionKey !== correctResponseKey)
+      .filter((optionKey: string) => !mappedResponseKeys.has(optionKey) && !mappedResponseKeys.has("*"))
+    : [];
+
   if (!item.source_reference) warnings.push("source_reference_missing");
   if (!item.item_family || item.item_family === "unspecified") warnings.push("item_family_unspecified");
-  if (!(mappings ?? []).length) warnings.push("misconception_mapping_missing");
+  if (missingMisconceptionResponseKeys.length) errors.push("misconception_mapping_incomplete");
+  else if (!(mappings ?? []).length) warnings.push("misconception_mapping_missing");
   if ((duplicates ?? []).length) warnings.push("duplicate_prompt_in_skill");
 
   return {
@@ -207,6 +218,8 @@ async function evaluateQa(admin: any, item: any) {
     details: {
       optionCount: (options ?? []).length,
       misconceptionMappings: (mappings ?? []).length,
+      misconceptionMappingPolicy: misconceptionMappingPolicy || null,
+      missingMisconceptionResponseKeys,
       duplicateCodes: (duplicates ?? []).map((d: any) => d.code),
       expectedDifficultyBand: expectedDifficultyBand(Number(item.difficulty)),
       generatedVerification,

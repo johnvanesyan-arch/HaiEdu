@@ -471,6 +471,14 @@ function buildRevisionPayload(item, defaultSummary = "Content editor revision") 
   let stimulus;
   try { stimulus = JSON.parse($("editStimulus").value || "{}"); }
   catch { throw new Error("Stimulus JSON is not valid JSON."); }
+  const misconceptions = collectMisconceptions();
+  const removedAllMisconceptions = (selectedDetail?.misconceptions?.length ?? 0) > 0 && misconceptions.length === 0;
+  if (
+    removedAllMisconceptions
+    && !window.confirm("Այս փոփոխությունը կհեռացնի հարցի բոլոր սխալ պատկերացումների կապակցումները։ Շարունակե՞լ։")
+  ) {
+    throw new Error("Սխալ պատկերացումների կապակցումները պահպանվեցին։");
+  }
 
   const payload = {
     promptHy: $("editPromptHy").value.trim(),
@@ -482,7 +490,8 @@ function buildRevisionPayload(item, defaultSummary = "Content editor revision") 
     validationState: $("metaValidation").value.trim(),
     options: item.type === "single_choice" ? collectOptions() : [],
     answerKey: collectAnswerKey(item.type),
-    misconceptions: collectMisconceptions(),
+    misconceptions,
+    confirmEmptyMisconceptions: removedAllMisconceptions,
     changeSummary: $("changeSummary")?.value.trim() || defaultSummary,
   };
   if (!payload.promptHy) throw new Error("Armenian question text is required.");
