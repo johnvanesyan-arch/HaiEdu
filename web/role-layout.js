@@ -144,6 +144,78 @@ function currentConfig() {
   return configs[page];
 }
 
+function visibleElement(id) {
+  const element = document.getElementById(id);
+  return Boolean(element && !element.classList.contains("hidden") && !element.hidden);
+}
+
+function hasTerminalAuthSurface() {
+  return ["authPanel", "denied", "signedOut", "mfaPanel"].some(visibleElement);
+}
+
+function removeWorkspaceLoading() {
+  document.querySelector(".hm-workspace-loading")?.remove();
+  document.body.classList.remove("hm-workspace-booting");
+}
+
+function ensureWorkspaceLoading() {
+  if (hasTerminalAuthSurface()) {
+    removeWorkspaceLoading();
+    return;
+  }
+  if (!document.querySelector(".hm-role-sidebar")) {
+    const sidebar = document.createElement("aside");
+    sidebar.className = "hm-role-sidebar hm-role-sidebar-loading";
+    sidebar.dataset.workspace = "loading";
+    sidebar.innerHTML = `
+      <div class="hm-role-brand"><img src="./assets/haiedu-primary.svg" alt="HaiEdu"></div>
+      <span class="hm-workspace-label">ԱՇԽԱՏԱՍԵՂԱՆ</span>
+      <div class="hm-loading-nav" aria-hidden="true">
+        <span></span><span></span><span></span><span></span><span></span>
+      </div>`;
+    document.body.prepend(sidebar);
+  }
+  document.body.classList.add("hm-has-role-sidebar", "hm-workspace-booting");
+  const main = document.querySelector("main");
+  if (!main || document.querySelector(".hm-workspace-loading")) return;
+  const loading = document.createElement("section");
+  loading.className = "hm-workspace-loading";
+  loading.setAttribute("role", "status");
+  loading.setAttribute("aria-live", "polite");
+  loading.innerHTML = `
+    <span class="sr-only">Տվյալները բեռնվում են</span>
+    <div class="hm-loading-card hm-loading-card-wide"><span></span><span></span><span></span></div>
+    <div class="hm-loading-grid"><div class="hm-loading-card"></div><div class="hm-loading-card"></div><div class="hm-loading-card"></div></div>`;
+  const topbar = main.querySelector(".teacher-topbar, .school-admin-header, .admin-topbar, .content-topbar, .guide-topbar");
+  if (topbar) topbar.insertAdjacentElement("afterend", loading);
+  else main.prepend(loading);
+}
+
+function prefetchWorkspaceLinks(sidebar) {
+  if (!sidebar || sidebar.dataset.prefetchReady === "true") return;
+  sidebar.dataset.prefetchReady = "true";
+  const prefetch = (href) => {
+    if (!href || href.startsWith("#")) return;
+    const url = new URL(href, location.href);
+    if (url.origin !== location.origin || url.pathname === location.pathname) return;
+    if ([...document.querySelectorAll('link[rel="prefetch"]')].some((link) => link.href === url.href)) return;
+    const link = document.createElement("link");
+    link.rel = "prefetch";
+    link.as = "document";
+    link.href = url.href;
+    document.head.append(link);
+  };
+  sidebar.querySelectorAll(".hm-role-nav a").forEach((link) => {
+    link.addEventListener("pointerenter", () => prefetch(link.href), { once: true });
+  });
+  const schedule = window.requestIdleCallback
+    ? (callback) => window.requestIdleCallback(callback, { timeout: 1800 })
+    : (callback) => window.setTimeout(callback, 700);
+  schedule(() => {
+    [...sidebar.querySelectorAll(".hm-role-nav a")].slice(0, 4).forEach((link) => prefetch(link.href));
+  });
+}
+
 function syncTeacherSections() {
   if (page !== "teacher") return;
   const sidebar = document.querySelector(".hm-role-sidebar");
@@ -206,9 +278,15 @@ function syncRoleSidebar() {
   const authorized = gate && !gate.classList.contains("hidden");
   let sidebar = document.querySelector(".hm-role-sidebar");
   if (!authorized) {
-    sidebar?.remove();
-    document.body.classList.remove("hm-has-role-sidebar");
     document.querySelector(".hm-role-chip")?.remove();
+    if (hasTerminalAuthSurface()) {
+      sidebar?.remove();
+      document.body.classList.remove("hm-has-role-sidebar", "hm-workspace-booting");
+      removeWorkspaceLoading();
+    } else {
+      if (sidebar && !sidebar.classList.contains("hm-role-sidebar-loading")) sidebar.remove();
+      ensureWorkspaceLoading();
+    }
     return;
   }
   if (sidebar?.dataset.workspace === config.label) {
@@ -218,6 +296,7 @@ function syncRoleSidebar() {
     return;
   }
   sidebar?.remove();
+  removeWorkspaceLoading();
   document.querySelector(".hm-role-chip")?.remove();
   sidebar = document.createElement("aside");
   sidebar.className = "hm-role-sidebar";
@@ -269,6 +348,8 @@ function syncRoleSidebar() {
   sidebar.append(brand, caption, nav, footer);
   document.body.prepend(sidebar);
   document.body.classList.add("hm-has-role-sidebar");
+  document.body.classList.remove("hm-workspace-booting");
+  prefetchWorkspaceLinks(sidebar);
   const chip = document.createElement("span");
   chip.className = "hm-role-chip";
   chip.textContent = config.label;
@@ -279,10 +360,13 @@ function syncRoleSidebar() {
   syncPlatformSections();
 }
 
-const gates = ["dashboardPanel", "masterPanel", "overviewPanel", "teacherPanel", "teacherDetailPanel", "console", "guideConsole", "securityConsole"]
-  .map(id => document.getElementById(id)).filter(Boolean);
+const observedShellElements = [
+  "dashboardPanel", "masterPanel", "overviewPanel", "teacherPanel", "teacherDetailPanel",
+  "console", "guideConsole", "securityConsole", "authPanel", "denied", "signedOut", "mfaPanel",
+].map(id => document.getElementById(id)).filter(Boolean);
 const observer = new MutationObserver(syncRoleSidebar);
-gates.forEach(gate => observer.observe(gate, { attributes: true, attributeFilter: ["class"] }));
+observedShellElements.forEach((element) => observer.observe(element, { attributes: true, attributeFilter: ["class", "hidden"] }));
+ensureWorkspaceLoading();
 syncRoleSidebar();
 window.addEventListener("haiedu:teacher-view", syncTeacherSections);
 window.addEventListener("popstate", syncTeacherSections);
