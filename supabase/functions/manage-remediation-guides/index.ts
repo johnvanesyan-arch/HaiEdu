@@ -53,6 +53,13 @@ function guideContent(value: unknown): PlainObject {
   };
 }
 
+function guideContentForScope(scope: GuideScope, value: unknown): PlainObject {
+  const content = guideContent(value);
+  if (scope === "skill") content.triggerErrorCode = null;
+  if (scope === "template") content.misconceptionCode = "";
+  return content;
+}
+
 function canonicalJson(value: unknown): unknown {
   if (Array.isArray(value)) return value.map(canonicalJson);
   if (value && typeof value === "object") {
@@ -231,7 +238,7 @@ Deno.serve(async (req) => {
         return json({ error: "guide_target_required" }, 400);
       }
 
-      const content = guideContent(body.content);
+      const content = guideContentForScope(scope, body.content);
       const referenceMetadata = plainObject(body.referenceMetadata);
       const rationale = String(body.changeRationale ?? "").trim();
       if (rationale.length < 3) return json({ error: "change_rationale_required" }, 400);
@@ -289,8 +296,8 @@ Deno.serve(async (req) => {
       return json({ guide: normalizeGuide(guide), history: history ?? [], variants, fallback, actor: { role, aal } });
     }
 
-    const storedContent = guideContent(guide.authoring_content);
-    const content = guideContent(body.content ?? storedContent);
+    const storedContent = guideContentForScope(scope, guide.authoring_content);
+    const content = guideContentForScope(scope, body.content ?? storedContent);
     const storedReferenceMetadata = plainObject(guide.reference_metadata);
     const incomingReferenceMetadata = body.referenceMetadata === undefined
       ? storedReferenceMetadata
