@@ -4,6 +4,11 @@ import { roleDestination } from "./account-roles.js";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 let routed = false;
+let routePromise = null;
+let routePromiseKey = null;
+let lastRouteKey = null;
+let lastRouteResult = null;
+let lastRouteAt = 0;
 
 function markRoleRoutingPending() {
   document.body?.setAttribute("data-role-routing", "pending");
@@ -21,7 +26,12 @@ function blockStudentRoute() {
 
 export async function routeSession(session) {
   if (routed) return { redirected: true, role: null };
+  const key = session?.user?.id ?? "signed-out";
+  if (routePromise && routePromiseKey === key) return routePromise;
+  if (lastRouteKey === key && lastRouteResult && Date.now() - lastRouteAt < 1500) return lastRouteResult;
 
+  routePromiseKey = key;
+  routePromise = (async () => {
   if (!session?.user) {
     revealStudentRoute();
     document.getElementById("roleBlockedPanel")?.classList.add("hidden");
@@ -60,6 +70,20 @@ export async function routeSession(session) {
 
   revealStudentRoute();
   return { redirected: false, role };
+  })();
+
+  try {
+    const result = await routePromise;
+    lastRouteKey = key;
+    lastRouteResult = result;
+    lastRouteAt = Date.now();
+    return result;
+  } finally {
+    if (routePromiseKey === key) {
+      routePromise = null;
+      routePromiseKey = null;
+    }
+  }
 }
 
 document.getElementById("blockedSignOutBtn")?.addEventListener("click", async () => {
@@ -67,7 +91,8 @@ document.getElementById("blockedSignOutBtn")?.addEventListener("click", async ()
   window.location.replace("./account-access");
 });
 
-supabase.auth.onAuthStateChange((_event, session) => {
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === "TOKEN_REFRESHED" || event === "INITIAL_SESSION") return;
   void routeSession(session);
 });
 
