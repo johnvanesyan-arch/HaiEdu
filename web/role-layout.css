@@ -186,3 +186,23 @@ body.hm-has-role-sidebar .quality-layout .detail-panel { position: static; max-h
   .hm-role-sidebar { padding: 12px; gap: 8px; }
   body.amp-student-shell-active .topbar { padding: 15px; }
 }
+
+
+/* Stable authenticated workspace shell while role/data checks are running. */
+.hm-role-sidebar-loading{pointer-events:none}
+.hm-loading-nav{display:grid;gap:10px;padding:0 10px}
+.hm-loading-nav span,
+.hm-loading-card::before,
+.hm-loading-card span{display:block;border-radius:8px;background:linear-gradient(90deg,#edf2f8 25%,#f8fbff 50%,#edf2f8 75%);background-size:220% 100%;animation:hm-loading-shimmer 1.15s linear infinite}
+.hm-loading-nav span{height:38px}
+.hm-loading-nav span:nth-child(2){width:86%}.hm-loading-nav span:nth-child(3){width:92%}.hm-loading-nav span:nth-child(4){width:78%}.hm-loading-nav span:nth-child(5){width:84%}
+.hm-workspace-loading{display:grid;gap:14px;margin:0 0 20px}
+.hm-loading-card{min-height:124px;padding:20px;border:1px solid var(--hm-line);border-radius:14px;background:var(--hm-surface);box-shadow:0 9px 27px #203a5910}
+.hm-loading-card-wide{min-height:150px}
+.hm-loading-card-wide span{height:14px;margin:10px 0}
+.hm-loading-card-wide span:first-child{width:32%;height:20px}.hm-loading-card-wide span:nth-child(2){width:68%}.hm-loading-card-wide span:nth-child(3){width:54%}
+.hm-loading-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:14px}
+.hm-loading-grid .hm-loading-card{min-height:112px}.hm-loading-grid .hm-loading-card::before{content:"";height:100%;min-height:72px}
+@keyframes hm-loading-shimmer{0%{background-position:200% 0}100%{background-position:-20% 0}}
+@media (prefers-reduced-motion:reduce){.hm-loading-nav span,.hm-loading-card::before,.hm-loading-card span{animation:none}}
+@media(max-width:760px){.hm-loading-grid{grid-template-columns:1fr}}
