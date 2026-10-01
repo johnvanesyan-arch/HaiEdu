@@ -64,3 +64,14 @@ test("reviewer editor preserves unknown provenance keys and exposes canonical pr
   assert.match(ui, /textbookSha256/);
   assert.match(ui, /value !== presented\[key\]/);
 });
+
+
+test("reviewer specialization payload is canonical for skill and template scopes", () => {
+  const ui = readFileSync("web/content-guides.js", "utf8");
+  const endpoint = readFileSync("supabase/functions/manage-remediation-guides/index.ts", "utf8");
+  assert.match(ui, /misconceptionCode: guide\.guideScope === "skill" \? specialization : ""/);
+  assert.match(ui, /triggerErrorCode: guide\.guideScope === "template" \? \(specialization \|\| null\) : null/);
+  assert.match(endpoint, /function guideContentForScope/);
+  assert.match(endpoint, /scope === "skill"\) content\.triggerErrorCode = null/);
+  assert.match(endpoint, /scope === "template"\) content\.misconceptionCode = ""/);
+});
