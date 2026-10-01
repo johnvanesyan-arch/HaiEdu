@@ -10,6 +10,7 @@ let selectedClassId = null;
 let rosterQuery = "";
 let matrixStudentFilter = "all";
 let dashboardLoadVersion = 0;
+let dashboardBootstrapPromise = null;
 let latestInstitutionalJoinCode = "";
 const MAX_STUDENT_INVITE_BATCH = 20;
 const institutionalStudentEmailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
@@ -197,11 +198,14 @@ async function signOut() {
   window.location.reload();
 }
 
-async function loadDashboard() {
+async function loadDashboard(sessionOverride = null) {
   const version = ++dashboardLoadVersion;
   $("dashboardPanel").classList.add("hidden");
+  let sessionData;
   try {
-    const { data: sessionData, error: sessionError } = await supabase.auth.getSession();
+    let sessionError = null;
+    if (sessionOverride?.user) sessionData = { session: sessionOverride };
+    else ({ data: sessionData, error: sessionError } = await supabase.auth.getSession());
     if (version !== dashboardLoadVersion) return;
     if (sessionError || !sessionData?.session?.user) {
       $("authPanel").classList.remove("hidden");
@@ -254,7 +258,6 @@ async function loadDashboard() {
   const displayName = data.teacher?.displayName || "Ուսուցիչ";
   $("teacherName").textContent = displayName;
   $("teacherDisplayNameInput").value = displayName === "Ուսուցիչ" ? "" : displayName;
-  const { data: sessionData } = await supabase.auth.getSession();
   $("teacherEmail").value = sessionData.session?.user?.email ?? "";
 
   const classes = Array.isArray(data.classes) ? data.classes : [];
@@ -1267,18 +1270,27 @@ document.addEventListener("click", (event) => {
 
 window.addEventListener("popstate", () => loadDashboard());
 
-supabase.auth.onAuthStateChange((_event, session) => {
-  if (session) setTimeout(() => loadDashboard(), 0);
-  else {
+function bootstrapTeacherDashboard(session) {
+  if (!session) return Promise.resolve();
+  if (dashboardBootstrapPromise) return dashboardBootstrapPromise;
+  dashboardBootstrapPromise = loadDashboard(session).finally(() => { dashboardBootstrapPromise = null; });
+  return dashboardBootstrapPromise;
+}
+
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === "SIGNED_OUT" || !session) {
     dashboardLoadVersion++;
     dashboard = null;
     $("dashboardPanel").classList.add("hidden");
     $("authPanel").classList.remove("hidden");
     $("signOutBtn").classList.add("hidden");
+    return;
   }
+  if (event === "TOKEN_REFRESHED" && !$("dashboardPanel").classList.contains("hidden")) return;
+  if ($("dashboardPanel").classList.contains("hidden")) void bootstrapTeacherDashboard(session);
 });
 
 const { data: sessionData } = await supabase.auth.getSession();
-if (sessionData.session) loadDashboard();
+if (sessionData.session) await bootstrapTeacherDashboard(sessionData.session);
 
 
