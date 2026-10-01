@@ -54,13 +54,17 @@ function rebuildSelectors(source = "") {
   if (!grade || !subject || !program || !unit) return;
 
   if (!initialized) {
-    const firstProgram = programsFor("", "")[0] ?? null;
-    if (firstProgram) {
-      grade.dataset.preferred = firstProgram.gradeId;
-      subject.dataset.preferred = firstProgram.subjectId;
-      program.dataset.preferred = firstProgram.id;
-      const firstUnit = unitsFor([firstProgram.id])[0] ?? null;
-      unit.dataset.preferred = firstUnit?.id ?? "";
+    const params = new URLSearchParams(location.search);
+    const requestedProgram = params.get("program");
+    const requestedUnit = params.get("unit");
+    const preferredProgram = data.catalog.programs.find((row) => row.id === requestedProgram) ?? programsFor("", "")[0] ?? null;
+    if (preferredProgram) {
+      grade.dataset.preferred = preferredProgram.gradeId;
+      subject.dataset.preferred = preferredProgram.subjectId;
+      program.dataset.preferred = preferredProgram.id;
+      const preferredUnit = data.catalog.units.find((row) => row.id === requestedUnit && row.programId === preferredProgram.id)
+        ?? unitsFor([preferredProgram.id])[0] ?? null;
+      unit.dataset.preferred = preferredUnit?.id ?? "";
     }
   }
 
@@ -143,12 +147,12 @@ function contextItems() {
 function scopedStats(items) {
   const active = items.filter((item) => !item.retiredAt);
   return [
-    ["Question bank", items.length],
-    ["Published", active.filter((item) => item.lifecycleStatus === "published").length],
-    ["Review queue", active.filter((item) => ["needs_review", "in_review", "changes_requested", "unreviewed"].includes(item.reviewStatus)).length],
-    ["Approved", active.filter((item) => item.reviewStatus === "approved").length],
-    ["QA failed", active.filter((item) => item.latestQa && !item.latestQa.passed).length],
-    ["Retired", items.filter((item) => Boolean(item.retiredAt)).length],
+    ["Հարցեր", items.length],
+    ["Հրապարակված", active.filter((item) => item.lifecycleStatus === "published").length],
+    ["Ստուգման հերթ", active.filter((item) => ["needs_review", "in_review", "changes_requested", "unreviewed"].includes(item.reviewStatus)).length],
+    ["Հաստատված", active.filter((item) => item.reviewStatus === "approved").length],
+    ["QA խնդիր", active.filter((item) => item.latestQa && !item.latestQa.passed).length],
+    ["Արխիվացված", items.filter((item) => Boolean(item.retiredAt)).length],
   ];
 }
 
@@ -175,7 +179,7 @@ function scopeSummary() {
   const program = $("programFilter");
   const unit = $("unitFilter");
   const labels = [grade, subject, program, unit].filter((select) => select?.value).map((select) => select.options[select.selectedIndex]?.textContent).filter(Boolean);
-  return labels.length ? labels.join("  →  ") : "All grades · All subjects · All programs · All units";
+  return labels.length ? labels.join("  →  ") : "Բոլոր դասարանները · առարկաները · ծրագրերը · բաժինները";
 }
 
 function addContextToDetail() {
@@ -257,7 +261,7 @@ function scheduleRefresh() {
 
 function handleContextChange(source) {
   rebuildSelectors(source);
-  applyScope({ ensureSelection: true });
+  applyScope({ ensureSelection: document.body.dataset.contentMode !== "bank" });
 }
 
 function start() {
@@ -271,7 +275,7 @@ function start() {
   $("allContentBtn").addEventListener("click", () => {
     ["gradeFilter", "subjectFilter", "programFilter", "unitFilter"].forEach((id) => { if ($(id)) $(id).value = ""; });
     rebuildSelectors();
-    applyScope({ ensureSelection: true });
+    applyScope({ ensureSelection: document.body.dataset.contentMode !== "bank" });
   });
   $("refreshBtn")?.addEventListener("click", () => setTimeout(() => refreshData({ rebuild: true }), 150));
 
@@ -281,7 +285,7 @@ function start() {
   }).observe($("itemRows"), { childList: true, subtree: true });
   new MutationObserver(scheduleApply).observe($("detailPanel"), { childList: true, subtree: true });
 
-  refreshData({ ensureSelection: true, rebuild: true });
+  refreshData({ ensureSelection: document.body.dataset.contentMode !== "bank", rebuild: true });
 }
 
 supabase.auth.onAuthStateChange((_event, session) => {

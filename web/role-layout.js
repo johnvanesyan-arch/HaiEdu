@@ -67,16 +67,70 @@ const configs = {
   content: {
     gate: "console", label: "Բովանդակության թիմ", links: [
       ["Գլխավոր", "./content.html", "home"],
-      ["Հարցերի բանկ", "#bankTitle"],
-      ["Որակի ստուգում", "#detailPanel"],
+      ["Ստուգման հերթ", "./content-review.html"],
+      ["Հարցերի բանկ", "./content-bank.html"],
+      ["Ուսումնական ծրագիր", "./content-curriculum.html"],
+      ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+    ]
+  },
+  contentReview: {
+    gate: "console", label: "Բովանդակության թիմ", links: [
+      ["Գլխավոր", "./content.html"],
+      ["Ստուգման հերթ", "./content-review.html", "home"],
+      ["Հարցերի բանկ", "./content-bank.html"],
+      ["Ուսումնական ծրագիր", "./content-curriculum.html"],
+      ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+    ]
+  },
+  contentBank: {
+    gate: "console", label: "Բովանդակության թիմ", links: [
+      ["Գլխավոր", "./content.html"],
+      ["Ստուգման հերթ", "./content-review.html"],
+      ["Հարցերի բանկ", "./content-bank.html", "home"],
+      ["Ուսումնական ծրագիր", "./content-curriculum.html"],
+      ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+    ]
+  },
+  contentItem: {
+    gate: "console", label: "Բովանդակության թիմ", links: [
+      ["Գլխավոր", "./content.html"],
+      ["Ստուգման հերթ", "./content-review.html"],
+      ["Հարցերի բանկ", "./content-bank.html", "home"],
+      ["Ուսումնական ծրագիր", "./content-curriculum.html"],
+      ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+    ]
+  },
+  contentCurriculum: {
+    gate: "console", label: "Բովանդակության թիմ", links: [
+      ["Գլխավոր", "./content.html"],
+      ["Ստուգման հերթ", "./content-review.html"],
+      ["Հարցերի բանկ", "./content-bank.html"],
+      ["Ուսումնական ծրագիր", "./content-curriculum.html", "home"],
+      ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+    ]
+  },
+  contentEvidence: {
+    gate: "console", label: "Բովանդակության թիմ", links: [
+      ["Գլխավոր", "./content.html"],
+      ["Ստուգման հերթ", "./content-review.html"],
+      ["Հարցերի բանկ", "./content-bank.html"],
+      ["Ուսումնական ծրագիր", "./content-curriculum.html"],
+      ["Փորձնական տվյալներ", "./content-evidence.html", "home"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"]
     ]
   },
   contentGuides: {
     gate: "guideConsole", label: "Բովանդակության թիմ", links: [
       ["Գլխավոր", "./content.html"],
-      ["Հարցերի բանկ", "./content.html#bankTitle"],
-      ["Որակի ստուգում", "./content.html#detailPanel"],
+      ["Ստուգման հերթ", "./content-review.html"],
+      ["Հարցերի բանկ", "./content-bank.html"],
+      ["Ուսումնական ծրագիր", "./content-curriculum.html"],
+      ["Փորձնական տվյալներ", "./content-evidence.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html", "home"]
     ]
   }

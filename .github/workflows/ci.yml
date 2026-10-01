@@ -52,6 +52,11 @@ jobs:
           node --check web/join.js
           node --check web/teacher.js
           node --check web/content.js
+          node --check web/content-workspace.js
+          node --check web/content-home.js
+          node --check web/content-review.js
+          node --check web/content-curriculum-map.js
+          node --check web/content-evidence-page.js
           node --check web/ux.js
           node --check web/role-router.js
           node --check web/student-shell.js

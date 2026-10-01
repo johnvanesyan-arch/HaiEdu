@@ -19,7 +19,10 @@ async function invoke(name, body = {}) {
 }
 
 function selectedItemId() {
-  return document.querySelector("#itemRows tr.selected")?.dataset.id ?? null;
+  return document.querySelector("#itemRows tr.selected")?.dataset.id
+    ?? document.body.dataset.contentItemId
+    ?? new URLSearchParams(location.search).get("id")
+    ?? null;
 }
 
 function formatDate(value) {
@@ -42,9 +45,9 @@ function reviewerLabel(review) {
 
 function decisionLabel(decision) {
   const labels = {
-    changes_requested: "Changes requested",
-    submitted: "Submitted for review",
-    approved: "Approved",
+    changes_requested: "Փոփոխություն է պահանջվում",
+    submitted: "Ուղարկվել է ստուգման",
+    approved: "Հաստատված",
   };
   return labels[decision] || decision || "Review event";
 }
@@ -117,11 +120,12 @@ function injectReviewUi(data, expectedItemId) {
     callout.id = "changeRequestCallout";
     callout.className = "change-request-callout";
     callout.setAttribute("role", "status");
+    callout.dataset.itemTab = "review";
     callout.innerHTML = `
-      <div class="change-request-title"><strong>Changes requested</strong><span>v${esc(request.versionNo)}</span></div>
-      <p>${esc(request.notes || "No change note was provided.")}</p>
-      <div class="tiny">Requested by ${esc(reviewerLabel(request))} · ${esc(formatDate(request.createdAt))}</div>
-      <div class="tiny change-request-help">Edit the question above, save a new version, then rerun QA and review. This request remains in the review history below.</div>`;
+      <div class="change-request-title"><strong>Փոփոխություն է պահանջվում</strong><span>v${esc(request.versionNo)}</span></div>
+      <p>${esc(request.notes || "Փոփոխության նշում չի տրամադրվել։")}</p>
+      <div class="tiny">Պահանջել է՝ ${esc(reviewerLabel(request))} · ${esc(formatDate(request.createdAt))}</div>
+      <div class="tiny change-request-help">Ուղղեք հարցը, պահպանեք նոր տարբերակը, ապա կրկին գործարկեք QA-ն և ստուգումը։</div>`;
     const anchor = panel.querySelector(".immutable-summary") || panel.querySelector(".detail-heading");
     anchor.insertAdjacentElement("afterend", callout);
   }
@@ -132,11 +136,13 @@ function injectReviewUi(data, expectedItemId) {
     const history = document.createElement("section");
     history.id = "reviewHistorySection";
     history.className = "detail-section review-history-section";
+    history.dataset.itemTab = "history";
     history.innerHTML = `
-      <div class="section-heading"><div><h3>Review history</h3><p class="subtle tiny">Requested changes, submissions and approvals remain attached to the item across versions.</p></div></div>
+      <div class="section-heading"><div><h3>Ստուգման պատմություն</h3><p class="subtle tiny">Փոփոխության պահանջները, ներկայացումները և հաստատումները պահպանվում են տարբերակների միջև։</p></div></div>
       ${reviewHistoryHtml(data.reviews ?? [])}`;
     workflowSection.insertAdjacentElement("afterend", history);
   }
+  window.dispatchEvent(new CustomEvent("haiedu:content-tab-refresh"));
 }
 
 async function enhanceSelectedItem() {
@@ -190,7 +196,7 @@ function watchConsole() {
 
 function initWhenReady() {
   if (initialized) return;
-  if ($("detailPanel") && $("itemRows") && $("reviewFilter")) {
+  if ($("detailPanel") && selectedItemId()) {
     initialized = true;
     watchConsole();
     return;

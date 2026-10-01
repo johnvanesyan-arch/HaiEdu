@@ -3,6 +3,8 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
+const contentMode = document.body.dataset.contentMode || "legacy";
+let itemTab = "preview";
 let dashboard = null;
 let selectedId = null;
 let selectedDetail = null;
@@ -15,8 +17,10 @@ function esc(value) {
 }
 
 function setMessage(text, bad = false) {
-  $("consoleMessage").textContent = text || "";
-  $("consoleMessage").classList.toggle("bad", Boolean(bad));
+  const target = $("consoleMessage");
+  if (!target) return;
+  target.textContent = text || "";
+  target.classList.toggle("bad", Boolean(bad));
 }
 
 async function invoke(name, body = {}) {
@@ -27,25 +31,29 @@ async function invoke(name, body = {}) {
 }
 
 function renderStats(stats) {
+  const host = $("stats");
+  if (!host) return;
   const cards = [
-    ["Question bank", stats.totalItems], ["Published", stats.published], ["Review queue", stats.reviewQueue],
-    ["Approved", stats.approved], ["QA failed", stats.qaFailed], ["Retired", stats.retired],
+    ["Հարցեր", stats.totalItems], ["Հրապարակված", stats.published], ["Ստուգման հերթ", stats.reviewQueue],
+    ["Հաստատված", stats.approved], ["QA խնդիր", stats.qaFailed], ["Արխիվացված", stats.retired],
   ];
-  $("stats").innerHTML = cards.map(([label, value]) => `<article class="card quality-stat"><span class="stat-label">${esc(label)}</span><strong>${esc(value)}</strong></article>`).join("");
+  host.innerHTML = cards.map(([label, value]) => `<article class="card quality-stat"><span class="stat-label">${esc(label)}</span><strong>${esc(value)}</strong></article>`).join("");
 }
 
 function populateSkillFilter(items) {
-  const current = $("skillFilter").value;
+  const select = $("skillFilter");
+  if (!select) return;
+  const current = select.value;
   const skills = [...new Map(items.map((i) => [i.skill.code, i.skill])).values()].filter((s) => s.code);
-  $("skillFilter").innerHTML = `<option value="">Բոլոր հմտությունները</option>${skills.map((s) => `<option value="${esc(s.code)}">${esc(s.code)}</option>`).join("")}`;
-  if (skills.some((s) => s.code === current)) $("skillFilter").value = current;
+  select.innerHTML = `<option value="">Բոլոր հմտությունները</option>${skills.map((s) => `<option value="${esc(s.code)}">${esc(s.code)}</option>`).join("")}`;
+  if (skills.some((s) => s.code === current)) select.value = current;
 }
 
 function filteredItems() {
-  const q = $("searchInput").value.trim().toLowerCase();
-  const skill = $("skillFilter").value;
-  const review = $("reviewFilter").value;
-  const qa = $("qaFilter").value;
+  const q = ($("searchInput")?.value || "").trim().toLowerCase();
+  const skill = $("skillFilter")?.value || "";
+  const review = $("reviewFilter")?.value || "";
+  const qa = $("qaFilter")?.value || "";
   return (dashboard?.items ?? []).filter((item) => {
     const hay = `${item.code} ${item.skill?.code} ${item.skill?.nameHy} ${item.promptHy}`.toLowerCase();
     if (q && !hay.includes(q)) return false;
@@ -59,10 +67,24 @@ function filteredItems() {
 }
 
 function renderRows() {
+  const body = $("itemRows");
+  if (!body) return;
   const items = filteredItems();
-  $("resultCount").textContent = `${items.length} item`;
-  $("itemRows").innerHTML = items.map((item) => {
-    const qa = !item.latestQa ? `<span class="qa-missing">missing</span>` : item.latestQa.passed ? `<span class="qa-pass">PASS</span>` : `<span class="qa-fail">FAIL</span>`;
+  if ($("resultCount")) $("resultCount").textContent = `${items.length} հարց`;
+  body.innerHTML = items.map((item) => {
+    const qa = !item.latestQa ? '<span class="qa-missing">QA չկա</span>' : item.latestQa.passed ? '<span class="qa-pass">QA անցած</span>' : '<span class="qa-fail">QA խնդիր</span>';
+    if (contentMode === "bank") {
+      const context = [item.curriculum?.grade?.labelHy || (item.curriculum?.grade?.number ? `${item.curriculum.grade.number}-րդ դասարան` : ""), item.curriculum?.subject?.nameHy || item.curriculum?.subject?.nameEn || "", item.curriculum?.unit?.titleHy || item.curriculum?.unit?.code || ""].filter(Boolean).join(" · ") || "Չկապակցված";
+      const review = ({ unreviewed:"Չստուգված", needs_review:"Ստուգման է սպասում", in_review:"Ստուգման փուլում", changes_requested:"Փոփոխություն է պահանջվում", approved:"Հաստատված" })[item.reviewStatus] || item.reviewStatus;
+      return `<tr data-id="${item.id}" class="${item.retiredAt ? "retired-row" : ""}">
+        <td><strong>${esc(item.code)}</strong><div class="subtle tiny">${esc(item.type)}</div></td>
+        <td>${esc(context)}</td>
+        <td>${esc(item.skill?.code || "—")}</td>
+        <td><span class="review-chip">${esc(review)}</span></td>
+        <td>${qa}</td>
+        <td>v${esc(item.versionNo)}</td>
+      </tr>`;
+    }
     return `<tr data-id="${item.id}" class="${item.id === selectedId ? "selected" : ""} ${item.retiredAt ? "retired-row" : ""}">
       <td><strong>${esc(item.code)}</strong><div class="subtle tiny">${esc(item.type)}</div></td>
       <td>${esc(item.skill?.code)}</td>
@@ -74,11 +96,13 @@ function renderRows() {
       <td><span class="life-chip">${item.retiredAt ? "retired" : esc(item.lifecycleStatus)}</span></td>
     </tr>`;
   }).join("");
-  document.querySelectorAll("#itemRows tr[data-id]").forEach((row) => row.addEventListener("click", () => selectItem(row.dataset.id)));
+  body.querySelectorAll("tr[data-id]").forEach((row) => row.addEventListener("click", () => {
+    if (contentMode === "bank") location.assign(`./content-item.html?id=${encodeURIComponent(row.dataset.id)}&from=bank`);
+    else selectItem(row.dataset.id);
+  }));
 }
-
 function renderLoadingDetail() {
-  $("detailPanel").innerHTML = `<h2>Loading…</h2><p class="subtle">Հարցի ամբողջական խմբագրիչը բեռնվում է։</p>`;
+  if ($("detailPanel")) $("detailPanel").innerHTML = `<h2>Բեռնվում է…</h2><p class="subtle">Հարցի աշխատանքային էջը բեռնվում է։</p>`;
 }
 
 async function selectItem(id) {
@@ -91,8 +115,9 @@ async function selectItem(id) {
   }
   editorDirty = false;
   selectedId = id;
+  document.body.dataset.contentItemId = id;
   selectedDetail = null;
-  renderRows();
+  if ($("itemRows")) renderRows();
   renderLoadingDetail();
   const token = ++detailLoadToken;
   try {
@@ -144,6 +169,38 @@ function answerEditorHtml(detail, disabled) {
   </div>`;
 }
 
+function learnerPreviewHtml(detail) {
+  const item = detail.item;
+  const options = item.type === "single_choice"
+    ? (detail.options ?? []).map((option) => `<div class="learner-preview-option"><strong>${esc(option.key)}.</strong> ${esc(option.contentHy || "")}</div>`).join("")
+    : item.type === "true_false"
+      ? '<div class="learner-preview-option">Ճիշտ</div><div class="learner-preview-option">Սխալ</div>'
+      : '<div class="learner-preview-option subtle">Սովորողը այստեղ մուտքագրում է իր պատասխանը։</div>';
+  return `<section class="detail-section learner-preview" data-item-tab="preview"><h3>Սովորողի տեսքը</h3><p class="learner-preview-prompt">${esc(item.promptHy || "Հարցի տեքստ չկա")}</p><div class="learner-preview-options">${options}</div></section>`;
+}
+
+function activateItemTab(tab) {
+  itemTab = tab;
+  document.body.dataset.contentActiveTab = tab;
+  const panel = $("detailPanel");
+  if (!panel) return;
+  panel.querySelectorAll("[data-item-tab]").forEach((section) => { section.hidden = section.dataset.itemTab !== tab; });
+  panel.querySelectorAll("[data-item-tab-button]").forEach((button) => {
+    const active = button.dataset.itemTabButton === tab;
+    button.classList.toggle("active", active);
+    button.setAttribute("aria-selected", String(active));
+  });
+}
+
+function wireItemTabs() {
+  const panel = $("detailPanel");
+  if (!panel) return;
+  panel.querySelectorAll("[data-item-tab-button]").forEach((button) => button.addEventListener("click", () => activateItemTab(button.dataset.itemTabButton)));
+  activateItemTab(itemTab);
+}
+
+window.addEventListener("haiedu:content-tab-refresh", () => activateItemTab(itemTab));
+
 function renderDetail() {
   const item = dashboard?.items?.find((i) => i.id === selectedId);
   const detail = selectedDetail;
@@ -165,21 +222,29 @@ function renderDetail() {
     </div>
     <div class="immutable-summary"><span><strong>Type:</strong> ${esc(item.type)}</span><span><strong>Skill:</strong> ${esc(item.skill?.code)}</span><span><strong>Purpose:</strong> ${esc(purposes)}</span></div>
     ${generatedWarning}
-    ${editable ? `<div id="unsavedChangesNotice" class="editor-warning hidden" role="status"><strong>Unsaved changes.</strong> Save the revision before leaving this item, or use the review buttons below; QA/Submit/Approve will save the edited version first.</div>` : ""}
+    ${editable ? `<div id="unsavedChangesNotice" class="editor-warning hidden" role="status"><strong>Չպահպանված փոփոխություններ։</strong> Պահպանեք տարբերակը կամ օգտագործեք QA/ստուգման գործողությունները։</div>` : ""}
+    <nav class="item-tab-nav" aria-label="Հարցի աշխատանքային բաժիններ">
+      <button type="button" class="item-tab-button" data-item-tab-button="preview">Նախադիտում</button>
+      <button type="button" class="item-tab-button" data-item-tab-button="content">Բովանդակություն</button>
+      <button type="button" class="item-tab-button" data-item-tab-button="metadata">Մետատվյալներ</button>
+      <button type="button" class="item-tab-button" data-item-tab-button="review">QA և ստուգում</button>
+      <button type="button" class="item-tab-button" data-item-tab-button="history">Պատմություն</button>
+    </nav>
+    ${learnerPreviewHtml(detail)}
 
-    <section class="detail-section editor-section">
+    <section class="detail-section editor-section" data-item-tab="content">
       <div class="section-heading"><div><h3>Question content</h3><p class="subtle tiny">Item code, skill and item type are immutable here.</p></div></div>
       <label>Armenian question<textarea id="editPromptHy" rows="4" ${disabled ? "disabled" : ""}>${esc(detail.item.promptHy ?? "")}</textarea></label>
       <label>English question <span class="subtle tiny">optional</span><textarea id="editPromptEn" rows="3" ${disabled ? "disabled" : ""}>${esc(detail.item.promptEn ?? "")}</textarea></label>
       <label>Stimulus JSON <span class="subtle tiny">advanced</span><textarea id="editStimulus" class="code-field" rows="3" spellcheck="false" ${disabled ? "disabled" : ""}>${esc(JSON.stringify(detail.item.stimulus ?? {}, null, 2))}</textarea></label>
     </section>
 
-    ${item.type === "single_choice" ? `<section class="detail-section editor-section"><div class="section-heading"><div><h3>Answer options</h3><p class="subtle tiny">Keys must be unique and every option needs Armenian text.</p></div>${editable ? `<button type="button" id="addOptionBtn" class="ghost">Add option</button>` : ""}</div><div id="optionEditor">${optionRowsHtml(detail.options, disabled)}</div></section>` : ""}
+    ${item.type === "single_choice" ? `<section class="detail-section editor-section" data-item-tab="content"><div class="section-heading"><div><h3>Պատասխանի տարբերակներ</h3><p class="subtle tiny">Keys must be unique and every option needs Armenian text.</p></div>${editable ? `<button type="button" id="addOptionBtn" class="ghost">Add option</button>` : ""}</div><div id="optionEditor">${optionRowsHtml(detail.options, disabled)}</div></section>` : ""}
 
-    <section class="detail-section editor-section"><h3>Correct answer</h3>${answerEditorHtml(detail, disabled)}</section>
+    <section class="detail-section editor-section" data-item-tab="content"><h3>Ճիշտ պատասխան</h3>${answerEditorHtml(detail, disabled)}</section>
 
-    <section class="detail-section editor-section">
-      <h3>Metadata</h3>
+    <section class="detail-section editor-section" data-item-tab="metadata">
+      <h3>Մետատվյալներ</h3>
       <div class="metadata-grid">
         <label>Difficulty<select id="metaDifficulty" ${disabled ? "disabled" : ""}>${[1,2,3,4,5].map((n)=>`<option value="${n}" ${n===item.difficulty?"selected":""}>${n}</option>`).join("")}</select></label>
         <label>Family<input id="metaFamily" value="${esc(item.itemFamily)}" ${disabled ? "disabled" : ""} /></label>
@@ -188,21 +253,21 @@ function renderDetail() {
       </div>
     </section>
 
-    <section class="detail-section editor-section">
-      <div class="section-heading"><div><h3>Misconception mapping</h3><p class="subtle tiny">Mappings are restricted to active misconceptions for ${esc(item.skill?.code)}.</p></div>${editable && (detail.availableMisconceptions ?? []).length ? `<button type="button" id="addMisconceptionBtn" class="ghost">Add mapping</button>` : ""}</div>
+    <section class="detail-section editor-section" data-item-tab="metadata">
+      <div class="section-heading"><div><h3>Սխալ պատկերացումների կապակցում</h3><p class="subtle tiny">Mappings are restricted to active misconceptions for ${esc(item.skill?.code)}.</p></div>${editable && (detail.availableMisconceptions ?? []).length ? `<button type="button" id="addMisconceptionBtn" class="ghost">Add mapping</button>` : ""}</div>
       <div id="misconceptionEditor">${misconceptionRowsHtml(detail, disabled) || `<p class="subtle tiny">No mappings.</p>`}</div>
     </section>
 
-    ${editable ? `<section class="detail-section save-revision-section"><label>Revision summary<input id="changeSummary" placeholder="e.g. Clarified wording and corrected distractor B" /></label><div class="workflow-actions"><button id="saveRevisionBtn">Save as new version</button></div><p class="subtle tiny">Saving is atomic. The item immediately returns to <strong>needs_review</strong>; current-version QA and approval must be run again before publication/activation.</p></section>` : ""}
+    ${editable ? `<section class="detail-section save-revision-section" data-item-tab="content"><label>Revision summary<input id="changeSummary" placeholder="e.g. Clarified wording and corrected distractor B" /></label><div class="workflow-actions"><button id="saveRevisionBtn">Save as new version</button></div><p class="subtle tiny">Saving is atomic. The item immediately returns to <strong>needs_review</strong>; current-version QA and approval must be run again before publication/activation.</p></section>` : ""}
 
-    <section class="detail-section">
-      <h3>Technical QA</h3>
+    <section class="detail-section" data-item-tab="review">
+      <h3>Տեխնիկական QA</h3>
       <p><strong>${!item.latestQa ? "Not run for current version" : item.latestQa.passed ? "PASS" : "FAIL"}</strong>${item.latestQa ? ` · v${esc(item.latestQa.versionNo)}` : ""}</p>
       ${qaErrors.length ? `<ul class="error-list">${qaErrors.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       ${qaWarnings.length ? `<ul class="warning-list">${qaWarnings.map((x)=>`<li>${esc(x)}</li>`).join("")}</ul>` : ""}
       <div class="workflow-actions"><button id="runQaBtn" class="secondary">Run QA</button></div>
     </section>
-    <section class="detail-section">
+    <section class="detail-section" data-item-tab="review">
       <h3>Review workflow</h3>
       <p>Current: <strong>${esc(item.reviewStatus)}</strong> · version <strong>${esc(item.versionNo)}</strong></p>
       <div class="workflow-actions">
@@ -211,12 +276,12 @@ function renderDetail() {
         <button id="changesBtn" class="secondary">Request changes</button>
       </div>
     </section>
-    <section class="detail-section">
-      <h3>Lifecycle</h3>
+    <section class="detail-section" data-item-tab="history">
+      <h3>Կենսափուլ</h3>
       <p>${item.retiredAt ? `Retired: ${esc(item.retiredReason || "—")}` : `Status: ${esc(item.lifecycleStatus)}`}</p>
       <div class="workflow-actions">${item.retiredAt ? `<button id="restoreBtn" class="secondary">Restore to review</button>` : `<button id="retireBtn" class="danger-btn">Retire / replace</button>`}</div>
     </section>
-    <section class="detail-section tiny subtle">
+    <section class="detail-section tiny subtle" data-item-tab="history">
       Template: ${esc(detail.template?.code ?? "—")} · ${esc(detail.template?.kind ?? "—")}<br/>
       Variant: ${esc(detail.item.variantKey ?? "—")}${detail.item.variantSeed ? ` · seed ${esc(detail.item.variantSeed)}` : ""}<br/>
       Latest snapshot: ${item.latestSnapshot ? `v${esc(item.latestSnapshot.versionNo)} · ${esc(item.latestSnapshot.changeSummary || "")}` : "—"}<br/>
@@ -241,6 +306,7 @@ function renderDetail() {
   wireEditorDirtyTracking();
   editorDirty = false;
   updateEditorDirtyUi();
+  wireItemTabs();
 }
 
 function updateEditorDirtyUi() {
@@ -500,20 +566,34 @@ async function action(name, extra = {}) {
 async function refresh(reselect = selectedId) {
   try {
     dashboard = await invoke("get-content-quality-dashboard", {});
+    if (contentMode === "item") {
+      const requested = new URLSearchParams(location.search).get("id") || reselect;
+      if (!requested || !dashboard.items.some((item) => item.id === requested)) {
+        if ($("detailPanel")) $("detailPanel").innerHTML = '<h2>Հարցը չի գտնվել</h2><p class="subtle">Վերադարձեք ստուգման հերթ կամ հարցերի բանկ։</p>';
+        return true;
+      }
+      selectedId = requested;
+      await selectItem(requested);
+      return true;
+    }
     renderStats(dashboard.stats);
     populateSkillFilter(dashboard.items);
+    if (contentMode === "bank") {
+      selectedId = null;
+      renderRows();
+      return true;
+    }
     const nextId = dashboard.items.some((i) => i.id === reselect) ? reselect : dashboard.items[0]?.id ?? null;
     selectedId = nextId;
     renderRows();
     if (selectedId) await selectItem(selectedId);
-    else $("detailPanel").innerHTML = `<h2>Ընտրեք հարց</h2><p class="subtle">Հարցերի բանկը դատարկ է։</p>`;
+    else if ($("detailPanel")) $("detailPanel").innerHTML = '<h2>Ընտրեք հարց</h2><p class="subtle">Հարցերի բանկը դատարկ է։</p>';
     return true;
   } catch (err) {
     setMessage(err.message, true);
     return false;
   }
 }
-
 let sessionCheck = 0;
 async function showForSession(session) {
   const check = ++sessionCheck;
@@ -537,13 +617,13 @@ async function showForSession(session) {
   $("console").classList.remove("hidden");
 }
 
-$("signOutBtn").addEventListener("click", () => supabase.auth.signOut());
-$("refreshBtn").addEventListener("click", () => {
+$("signOutBtn")?.addEventListener("click", () => supabase.auth.signOut());
+$("refreshBtn")?.addEventListener("click", () => {
   if (editorDirty && !confirm("Discard unsaved changes and refresh the question bank?")) return;
   editorDirty = false;
   refresh();
 });
-["searchInput","skillFilter","reviewFilter","qaFilter"].forEach((id) => $(id).addEventListener(id === "searchInput" ? "input" : "change", renderRows));
+["searchInput","skillFilter","reviewFilter","qaFilter"].forEach((id) => $(id)?.addEventListener(id === "searchInput" ? "input" : "change", renderRows));
 
 window.addEventListener("beforeunload", (event) => {
   if (!editorDirty) return;

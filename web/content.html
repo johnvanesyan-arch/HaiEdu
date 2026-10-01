@@ -4,11 +4,10 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <meta name="color-scheme" content="light" />
-  <title>Բովանդակության որակ — Armenian Mastery Platform</title>
+  <title>Բովանդակության աշխատասեղան — HaiEdu</title>
   <link rel="stylesheet" href="./styles.css" />
   <link rel="stylesheet" href="./content.css" />
-  <link rel="stylesheet" href="./content-curriculum.css" />
-  <link rel="stylesheet" href="./content-pilot-analytics.css" />
+  <link rel="stylesheet" href="./content-workspace.css" />
   <link rel="stylesheet" href="./ux.css" />
   <link rel="stylesheet" href="./role-layout.css" />
 </head>
@@ -16,83 +15,57 @@
   <main class="content-shell" id="mainContent">
     <header class="content-topbar">
       <div>
-        <p class="eyebrow">CONTENT QUALITY</p>
-        <h1>Բովանդակության որակի համակարգ</h1>
-        <p class="subtle">Հարցերի բանկի metadata, QA, review, versioning և retirement workflow։</p>
+        <p class="eyebrow">ԲՈՎԱՆԴԱԿՈՒԹՅԱՆ ԹԻՄ</p>
+        <h1>Բովանդակության աշխատասեղան</h1>
+        <p class="subtle">Տեսեք միայն այն, ինչ հիմա ուշադրություն է պահանջում, և անցեք համապատասխան աշխատանքային էջ։</p>
       </div>
       <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
     </header>
 
     <section id="authPanel" class="card content-auth hidden" aria-labelledby="contentLoginTitle">
-      <h2 id="contentLoginTitle">Բովանդակության աշխատասեղան</h2>
-      <p class="subtle">Մուտք գործեք ձեր հաշվով։ Հարթակը կստուգի դերը և կբացի համապատասխան բաժինը։</p>
+      <h2 id="contentLoginTitle">Պաշտպանված աշխատասեղան</h2>
+      <p class="subtle">Մուտք գործեք բովանդակության ստուգողի կամ հարթակի ադմինիստրատորի հաշվով։</p>
       <a class="button-link" href="./account-access">Մուտք գործել</a>
       <p id="authMessage" class="message" aria-live="polite"></p>
     </section>
 
     <section id="console" class="hidden">
-      <div id="stats" class="quality-stats"></div>
+      <div id="homeAttentionStats" class="content-home-grid"></div>
 
-      <section class="card curriculum-card" aria-labelledby="curriculumBankTitle">
-        <div class="section-heading curriculum-heading">
-          <div>
-            <p class="eyebrow">CURRICULUM SCOPE</p>
-            <h2 id="curriculumBankTitle">Հարցերի բանկի բաժին</h2>
-            <p id="curriculumSummary" class="subtle small">Ընտրեք դասարան, առարկա, ծրագիր և բաժին։</p>
+      <div class="content-home-sections">
+        <section class="card content-work-card" aria-labelledby="priorityTitle">
+          <div class="section-heading">
+            <div>
+              <span class="mode-kicker">ԱՌԱՋՆԱՀԵՐԹ</span>
+              <h2 id="priorityTitle">Ինչի վրա աշխատել հիմա</h2>
+              <p class="subtle">Փոփոխություն պահանջող, QA խնդիր ունեցող և ստուգման սպասող հարցերը առաջինն են։</p>
+            </div>
+            <a class="ghost button-link" href="./content-review.html">Բացել ամբողջ հերթը</a>
           </div>
-          <button id="allContentBtn" type="button" class="ghost">All content</button>
-        </div>
-        <div class="curriculum-filter-grid">
-          <label>Grade<select id="gradeFilter" aria-label="Filter question bank by grade"></select></label>
-          <label>Subject<select id="subjectFilter" aria-label="Filter question bank by subject"></select></label>
-          <label>Program<select id="programFilter" aria-label="Filter question bank by curriculum program"></select></label>
-          <label>Unit / Chapter<select id="unitFilter" aria-label="Filter question bank by unit or chapter"></select></label>
-        </div>
-      </section>
-
-      <section class="card filter-card" aria-label="Հարցերի ֆիլտրեր">
-        <input id="searchInput" type="search" placeholder="Փնտրել հարցի կոդ, հմտություն կամ տեքստ…" aria-label="Փնտրել հարցերի բանկում" />
-        <select id="skillFilter" aria-label="Ֆիլտրել ըստ հմտության"><option value="">Բոլոր հմտությունները</option></select>
-        <select id="reviewFilter" aria-label="Ֆիլտրել ըստ review վիճակի">
-          <option value="">Բոլոր review վիճակները</option>
-          <option value="unreviewed">unreviewed</option>
-          <option value="needs_review">needs_review</option>
-          <option value="in_review">in_review</option>
-          <option value="changes_requested">changes_requested</option>
-          <option value="approved">approved</option>
-        </select>
-        <select id="qaFilter" aria-label="Ֆիլտրել ըստ QA վիճակի">
-          <option value="">QA՝ բոլորը</option>
-          <option value="pass">QA pass</option>
-          <option value="fail">QA fail</option>
-          <option value="missing">QA missing</option>
-        </select>
-        <button id="refreshBtn" class="ghost">Թարմացնել</button>
-      </section>
-
-      <div class="quality-layout">
-        <section class="card bank-card" aria-labelledby="bankTitle">
-          <div class="section-heading"><div><h2 id="bankTitle">Հարցերի բանկ</h2><p id="resultCount" class="subtle small" aria-live="polite"></p></div></div>
-          <div class="table-wrap" tabindex="0" aria-label="Հարցերի բանկի աղյուսակ">
-            <table class="quality-table">
-              <thead><tr><th>Item</th><th>Skill</th><th>Difficulty</th><th>Family</th><th>Review</th><th>QA</th><th>Version</th><th>Lifecycle</th></tr></thead>
-              <tbody id="itemRows"></tbody>
-            </table>
-          </div>
+          <div id="priorityList" class="content-priority-list"></div>
         </section>
 
-        <aside id="detailPanel" class="card detail-panel" aria-live="polite">
-          <h2>Ընտրեք հարց</h2>
-          <p class="subtle">Ձախ աղյուսակից ընտրեք item՝ metadata-ն և workflow-ը տեսնելու համար։</p>
-        </aside>
+        <section class="card content-work-card">
+          <span class="mode-kicker">ԱՐԱԳ ՄՈՒՏՔ</span>
+          <h2>Աշխատանքային բաժիններ</h2>
+          <div class="content-quick-links">
+            <a href="./content-review.html"><span>Ստուգման հերթ</span><span>→</span></a>
+            <a href="./content-bank.html"><span>Հարցերի բանկ</span><span>→</span></a>
+            <a href="./content-curriculum.html"><span>Ուսումնական ծրագիր</span><span>→</span></a>
+            <a href="./content-evidence.html"><span>Փորձնական տվյալներ</span><span>→</span></a>
+            <a href="./content-guides.html"><span>Օգնության ուղեցույցներ</span><span>→</span></a>
+          </div>
+          <div class="immutable-summary" style="margin-top:18px">
+            <span><strong id="bankTotal">—</strong><br/>ընդհանուր հարց</span>
+            <span><strong id="bankApproved">—</strong><br/>հաստատված</span>
+            <span><strong id="bankPublished">—</strong><br/>հրապարակված</span>
+          </div>
+          <p class="subtle small">Արխիվացված հարցեր՝ <strong id="bankRetired">—</strong></p>
+        </section>
       </div>
-      <p id="consoleMessage" class="message" aria-live="polite"></p>
     </section>
   </main>
-  <script type="module" src="./content.js"></script>
-  <script type="module" src="./content-curriculum.js"></script>
-  <script type="module" src="./content-review-workflow.js"></script>
-  <script type="module" src="./content-pilot-analytics.js"></script>
+  <script type="module" src="./content-home.js"></script>
   <script type="module" src="./ux.js"></script>
   <script type="module" src="./role-layout.js"></script>
 </body>
