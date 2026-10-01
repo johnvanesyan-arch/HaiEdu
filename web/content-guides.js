@@ -311,11 +311,12 @@ function renderValidation(validation) {
 
 function contentFromEditor() {
   const guide = detail.guide;
+  const specialization = $("specializationCode").value.trim();
   return {
     skillId: guide.skillId,
     itemTemplateId: guide.itemTemplateId,
-    misconceptionCode: $("specializationCode").value.trim(),
-    triggerErrorCode: $("specializationCode").value.trim() || null,
+    misconceptionCode: guide.guideScope === "skill" ? specialization : "",
+    triggerErrorCode: guide.guideScope === "template" ? (specialization || null) : null,
     titleHy: $("guideTitleHy").value.trim(),
     strategyHy: $("guideStrategyHy").value.trim(),
     hint1Hy: $("guideHint1Hy").value.trim(),
