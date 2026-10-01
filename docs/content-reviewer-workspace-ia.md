@@ -57,3 +57,25 @@ Static production delivery returned the new page structures for:
 - `/content-evidence`
 
 Authenticated Content Reviewer interaction remains the next manual product-owner QA step; this record does not claim a signed-in browser acceptance run.
+
+
+## Follow-up visual QA — 2026-10-01
+
+Product-owner screenshot QA identified two cross-page consistency issues after deployment:
+
+1. several bordered reviewer work surfaces inherited the shared card border/shadow without deliberate internal padding;
+2. the original page-header **Դուրս գալ** control remained visible even though the shared role sidebar already supplies sign-out.
+
+The corrective pass:
+- normalized inner spacing for the Question Bank filter card and table heading, Evidence controls/metrics, Curriculum programme cards, and Remediation Guide filters/list heading/editor;
+- brought the Remediation Guide topbar under the same shared reviewer shell treatment;
+- hides the original topbar sign-out on every `data-role-workspace="content*"` page while retaining the hidden action hook used by the single sidebar sign-out;
+- added regression tests for reviewer card spacing and the one-sign-out presentation contract.
+
+Commits:
+- `4cd42d8dc397d193e24325331ea5fb31bd55b698`
+- `19976cb9ac1f99fcb93d1fc7ea3890c8176b02e9`
+
+Verification:
+- CI #996 passed the full suite after the spacing/sign-out change.
+- CI #997 passed after hardening the topbar sign-out rule so it remains hidden independent of sidebar-render timing.
