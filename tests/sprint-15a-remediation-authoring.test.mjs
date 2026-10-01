@@ -119,7 +119,8 @@ test("review and publish use server audit descriptions without forcing empty rev
   assert.match(endpoint, /submit_review: "Բովանդակության ստուգումն ավարտվել է։"/);
   assert.match(endpoint, /publish: "Ստուգված տարբերակը հրապարակվել է։"/);
   assert.match(endpoint, /action === "submit_review"[\s\S]*unsaved_changes_must_be_saved/);
-  assert.match(endpoint, /sameJson\(content, guide\.authoring_content\)/);
+  assert.match(endpoint, /sameJson\(content, storedContent\)/);
+  assert.match(endpoint, /mergeReferenceMetadata\(storedReferenceMetadata, incomingReferenceMetadata\)/);
   assert.match(ui, /unsaved_changes_must_be_saved/);
 });
 
