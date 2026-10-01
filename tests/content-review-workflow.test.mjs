@@ -19,7 +19,7 @@ test("changes-request queue is a first-class filter", () => {
 test("requested-change note is prominently attached to current item", () => {
   has(reviewUi, /changeRequestCallout/, "current change request must render as a callout");
   has(reviewUi, /request\.notes/, "callout must display the reviewer's requested-change note");
-  has(reviewUi, /Edit the question above, save a new version, then rerun QA and review/, "callout must explain the correction workflow");
+  has(reviewUi, /Ուղղեք հարցը, պահպանեք նոր տարբերակը, ապա կրկին գործարկեք QA-ն և ստուգումը/, "callout must explain the correction workflow");
 });
 
 test("review history persists across item versions", () => {
@@ -27,7 +27,7 @@ test("review history persists across item versions", () => {
   has(historyFn, /order\("created_at", \{ ascending: false \}\)/, "review history must be chronological newest-first");
   has(historyFn, /currentVersionChangeRequest/, "endpoint must identify the current-version change request");
   has(reviewUi, /Review history/, "content console must display review history");
-  has(reviewUi, /Requested changes, submissions and approvals remain attached to the item across versions/, "UI must state that review events persist across versions");
+  has(reviewUi, /Փոփոխության պահանջները, ներկայացումները և հաստատումները պահպանվում են տարբերակների միջև/, "UI must state that review events persist across versions");
 });
 
 test("review history endpoint remains content-admin protected", () => {

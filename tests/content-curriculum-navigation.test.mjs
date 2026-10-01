@@ -48,7 +48,7 @@ test("curriculum navigator scopes questions, skills, stats and item detail", () 
   has(ui, /function renderScopedStats/, "stats must be recalculated for the selected curriculum scope");
   has(ui, /function updateSkillFilter/, "skill choices must be restricted to the selected curriculum scope");
   has(ui, /curriculum-context-card/, "question detail must display explicit curriculum context");
-  has(ui, /All grades · All subjects · All programs · All units/, "admin must retain an explicit all-content mode");
+  has(ui, /Բոլոր դասարանները · առարկաները · ծրագրերը · բաժինները/, "question bank must retain an explicit all-content mode");
 });
 
 test("curriculum navigation remains usable across desktop and mobile", () => {
