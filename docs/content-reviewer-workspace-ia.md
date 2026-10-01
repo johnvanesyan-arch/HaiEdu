@@ -79,3 +79,44 @@ Commits:
 Verification:
 - CI #996 passed the full suite after the spacing/sign-out change.
 - CI #997 passed after hardening the topbar sign-out rule so it remains hidden independent of sidebar-render timing.
+
+
+## MVP Model A reviewer workflow — 2026-10-01
+
+The current MVP has no separate content-author recipient. The Content Reviewer is therefore both the authorized editor and the human reviewer for question items.
+
+The deployed item-review flow is:
+
+```text
+Inspect question
+  ├─ needs correction → Edit question → Save new version → Run QA
+  └─ no correction needed ─────────────────────────────→ Run QA
+                                                     ↓
+                                              QA must pass
+                                                     ↓
+                                                  Approve
+```
+
+### UI changes
+
+- Removed **Submit review** from the question reviewer decision area.
+- Removed **Request changes** from the question reviewer decision area.
+- Added **Խմբագրել հարցը** as the direct correction action.
+- **Հաստատել** is disabled until the current saved version has passing QA.
+- Unsaved edits block both QA and approval; the reviewer must explicitly save a new version first.
+- Running QA no longer silently saves edited content.
+- Approving no longer silently saves content or silently runs QA.
+- Existing review/version/audit history remains preserved.
+
+### Compatibility boundary
+
+The server-side `submit_review` and `request_changes` actions are retained for historical records and future subject-scoped Content Author / independent reviewer workflows. The current Content Reviewer item UI does not call them.
+
+### Verification
+
+Implementation:
+- `57e33394b629da7523c8d0f63637f78d44dcaed9`
+- `0dbfdb449ffcc98b1fb931934c7f626e8decebfd`
+- `e33307c28e415a2a7604042e72e46fdd4edae2ef`
+
+CI #1002 passed **617/617 tests**, typecheck, browser JavaScript syntax checks and institutional concurrency. Production `/content-item` and `/content.js` serve the Model A workflow copy and behavior.
