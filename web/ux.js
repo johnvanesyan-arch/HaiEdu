@@ -423,7 +423,10 @@ ensureSkipLink();
 ensureGlobalStatus();
 configurePage();
 showTerminalAuthMessage();
-void handleTerminalAuthFailure();
+const scheduleAuthHealthCheck = window.requestIdleCallback
+  ? (callback) => window.requestIdleCallback(callback, { timeout: 4500 })
+  : (callback) => window.setTimeout(callback, 2500);
+scheduleAuthHealthCheck(() => { void handleTerminalAuthFailure(); });
 
 const observer = new MutationObserver((records) => {
   let shouldConfigure = false;
