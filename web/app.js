@@ -24,6 +24,7 @@ let currentSession = null;
 let current = null;
 let questionStartedAt = null;
 let dashboardData = null;
+let dashboardLoadPromise = null;
 
 const layerLabels = {
   knowledge: "Գիտելիք",
@@ -67,8 +68,15 @@ function setAuthenticated(isAuthenticated) {
   authPanel.classList.toggle("hidden", isAuthenticated);
   $("privacyLink").classList.toggle("hidden", !isAuthenticated);
   signOutBtn.classList.toggle("hidden", !isAuthenticated);
-  if (isAuthenticated) showDashboard();
-  else {
+  if (isAuthenticated) {
+    if (dashboardData) {
+      renderDashboard(dashboardData);
+      $("dashboardLoading").classList.add("hidden");
+      $("dashboardContent").classList.remove("hidden");
+    } else {
+      void showDashboard();
+    }
+  } else {
     modePanel.classList.add("hidden");
     practicePanel.classList.add("hidden");
   }
@@ -84,7 +92,16 @@ async function signOut() {
   clearQuestion();
 }
 
-async function showDashboard() {
+async function showDashboard({ force = false } = {}) {
+  if (!force && dashboardData) {
+    renderDashboard(dashboardData);
+    $("dashboardLoading").classList.add("hidden");
+    $("dashboardContent").classList.remove("hidden");
+    return dashboardData;
+  }
+  if (dashboardLoadPromise) return dashboardLoadPromise;
+
+  dashboardLoadPromise = (async () => {
   current = null;
   currentSession = null;
   practicePanel.classList.add("hidden");
@@ -105,6 +122,9 @@ async function showDashboard() {
   renderDashboard(data);
   $("dashboardLoading").classList.add("hidden");
   $("dashboardContent").classList.remove("hidden");
+  return data;
+  })().finally(() => { dashboardLoadPromise = null; });
+  return dashboardLoadPromise;
 }
 
 function renderDashboard(data) {
@@ -589,13 +609,14 @@ function escapeHtml(value) {
 $("startDiagnosticBtn").addEventListener("click", () => startSession("diagnostic"));
 $("startPracticeBtn").addEventListener("click", () => startSession("practice", dashboardData?.recommendation?.skill?.id ?? null));
 $("resumeLearningBtn").addEventListener("click", resumeRecommendedAction);
-$("refreshDashboardBtn").addEventListener("click", showDashboard);
+$("refreshDashboardBtn").addEventListener("click", () => showDashboard({ force: true }));
 signOutBtn.addEventListener("click", signOut);
 backBtn.addEventListener("click", showDashboard);
 nextBtn.addEventListener("click", handleNext);
 answerForm.addEventListener("submit", submitAnswer);
 
-supabase.auth.onAuthStateChange((_event, session) => {
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === "TOKEN_REFRESHED" || event === "INITIAL_SESSION") return;
   // Check the active profile before fetching any student data.
   setTimeout(async () => {
     const route = await routeSession(session);
