@@ -2,6 +2,33 @@ export function plainObject(value) {
   return value && typeof value === "object" && !Array.isArray(value) ? value : {};
 }
 
+export function mergeReferenceMetadata(currentValue, incomingValue) {
+  const current = plainObject(currentValue);
+  const incoming = plainObject(incomingValue);
+  const merged = { ...current };
+  for (const [key, value] of Object.entries(incoming)) {
+    // Older editor bundles submitted empty modern source fields for governed
+    // records that used canonical textbook/programme provenance. Do not invent
+    // those empty keys or erase the canonical evidence.
+    if (typeof value === "string" && !value.trim() && !(key in current)) continue;
+    merged[key] = value;
+  }
+  return merged;
+}
+
+export function referenceMetadataPresentation(value) {
+  const source = plainObject(value);
+  return {
+    sourceTitle: String(source.sourceTitle ?? "").trim(),
+    sourceLocator: String(source.sourceLocator ?? source.textbookLocator ?? source.programmeOutcomeLocator ?? "").trim(),
+    sourceUrl: String(source.sourceUrl ?? "").trim(),
+    notes: String(source.notes ?? "").trim(),
+    textbookLocator: String(source.textbookLocator ?? "").trim(),
+    textbookSha256: String(source.textbookSha256 ?? "").trim(),
+    programmeOutcomeLocator: String(source.programmeOutcomeLocator ?? "").trim(),
+  };
+}
+
 export function strings(value) {
   return Array.isArray(value)
     ? [...new Set(value.map((entry) => String(entry).trim()).filter(Boolean))]
@@ -147,11 +174,14 @@ export function validateGuideContent(scope, content, referenceMetadata, variant)
   if (hasObviousAnswerLeakage(content.hint1Hy)) errors.push("hint_1_obvious_answer_leakage");
   if (hasObviousAnswerLeakage(content.hint2Hy)) errors.push("hint_2_obvious_answer_leakage");
 
-  if (!String(referenceMetadata.sourceTitle ?? "").trim()) warnings.push("source_title_missing");
-  if (!String(referenceMetadata.sourceLocator ?? "").trim()) warnings.push("source_locator_missing");
-  const sourceUrl = String(referenceMetadata.sourceUrl ?? "").trim();
-  if (!sourceUrl) warnings.push("source_url_missing");
-  else if (!urlLooksSafe(sourceUrl)) warnings.push("source_url_invalid");
+  const references = referenceMetadataPresentation(referenceMetadata);
+  const hasGovernedTextbookProvenance = Boolean(references.textbookLocator && references.textbookSha256);
+  if (!references.sourceTitle && !hasGovernedTextbookProvenance) warnings.push("source_title_missing");
+  if (!references.sourceLocator && !references.textbookLocator && !references.programmeOutcomeLocator) {
+    warnings.push("source_locator_missing");
+  }
+  if (!references.sourceUrl && !references.textbookSha256) warnings.push("source_url_missing");
+  else if (references.sourceUrl && !urlLooksSafe(references.sourceUrl)) warnings.push("source_url_invalid");
 
   return {
     errors: [...new Set(errors)],
