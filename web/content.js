@@ -80,6 +80,51 @@ function smeValidationLabel(value) {
   })[value] || "Մասնագիտական (SME) կարգավիճակը կառավարվում է առանձին գործընթացով";
 }
 
+const CONTENT_ERROR_HY = {
+  account_or_session_inactive: "Հաշիվը կամ սեսիան ակտիվ չէ։ Նորից մուտք գործեք։",
+  changes_request_failed: "Չհաջողվեց գրանցել փոփոխության պահանջը։",
+  content_admin_required: "Այս բաժինը հասանելի է միայն բովանդակության ստուգողին կամ հարթակի ադմինիստրատորին։",
+  content_revision_failed: "Չհաջողվեց պահպանել հարցի նոր տարբերակը։",
+  invalid_action: "Այս գործողությունը չի աջակցվում։",
+  invalid_difficulty: "Դժվարության արժեքը վավեր չէ։",
+  invalid_json: "Ուղարկված տվյալները վավեր չեն։",
+  invalid_misconception_code: "Սխալ պատկերացման կապակցման կոդը վավեր չէ այս հմտության համար։",
+  item_approval_failed: "Չհաջողվեց հաստատել հարցը։",
+  item_id_required: "Հարցը չի նույնականացվել։ Վերադարձեք ցանկ և նորից բացեք այն։",
+  item_restore_failed: "Չհաջողվեց վերականգնել հարցը։",
+  item_retirement_failed: "Չհաջողվեց արխիվացնել հարցը։",
+  metadata_update_failed: "Չհաջողվեց պահպանել հարցի մետատվյալները։",
+  method_not_allowed: "Այս հարցումը չի աջակցվում։",
+  misconception_mapping_failed: "Չհաջողվեց պահպանել սխալ պատկերացումների կապակցումները։",
+  qa_record_failed: "Տեխնիկական QA-ի արդյունքը չհաջողվեց պահպանել։",
+  replacement_cannot_be_same_item: "Հարցը չի կարող ինքն իրեն փոխարինել։",
+  replacement_not_active_published: "Փոխարինող հարցը պետք է լինի գործող և հրապարակված։",
+  replacement_qa_not_passed: "Փոխարինող հարցի ընթացիկ տարբերակը դեռ չի անցել տեխնիկական QA-ն։",
+  replacement_skill_mismatch: "Փոխարինող հարցը պետք է պատկանի նույն հմտությանը։",
+  retirement_reason_required: "Արխիվացման պատճառը պարտադիր է։",
+  review_submit_failed: "Չհաջողվեց գրանցել հարցի ստուգման իրադարձությունը։",
+  revision_payload_required: "Պահպանվող տարբերակի տվյալները բացակայում են։",
+  server_not_configured: "Սերվերի կարգավորումը թերի է։ Դիմեք հարթակի ադմինիստրատորին։",
+  sme_validation_managed_separately: "Մասնագիտական (SME) կարգավիճակը կառավարվում է առանձին գործընթացով։",
+  technical_qa_must_pass_before_approval: "Հաստատելուց առաջ ընթացիկ տարբերակը պետք է անցնի տեխնիկական QA-ն։",
+  technical_qa_must_pass_before_review: "Ստուգման հաջորդ փուլից առաջ ընթացիկ տարբերակը պետք է անցնի տեխնիկական QA-ն։",
+  template_code_required: "Հարցի ձևանմուշի կոդը բացակայում է։",
+  unauthorized: "Սեսիան վավեր չէ։ Նորից մուտք գործեք։",
+  variant_materialization_failed: "Չհաջողվեց ստեղծել գեներացված հարցի տարբերակը։",
+  variant_preview_failed: "Չհաջողվեց նախադիտել գեներացված հարցի տարբերակը։",
+  variant_seed_required: "Գեներացված հարցի seed-ը բացակայում է։",
+  version_increment_failed: "Չհաջողվեց թարմացնել հարցի տարբերակի համարը։",
+  version_snapshot_failed: "Չհաջողվեց պահպանել հարցի տարբերակի պատմական պատճենը։",
+};
+
+function contentErrorHy(...values) {
+  const raw = values.filter(Boolean).map(String).join(" · ");
+  for (const [code, label] of Object.entries(CONTENT_ERROR_HY)) {
+    if (raw.includes(code)) return label;
+  }
+  return values.find(Boolean) ? String(values.find(Boolean)) : "Գործողությունը չհաջողվեց։";
+}
+
 async function invoke(name, body = {}) {
   const { data, error } = await supabase.functions.invoke(name, { body });
   if (error) {
@@ -95,9 +140,9 @@ async function invoke(name, body = {}) {
       workflowError.requiresQaRerun = true;
       throw workflowError;
     }
-    throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
+    throw new Error(contentErrorHy(payload?.detail, payload?.error, data?.detail, data?.error, error.message));
   }
-  if (data?.error) throw new Error(data.detail || data.error);
+  if (data?.error) throw new Error(contentErrorHy(data.detail, data.error));
   return data;
 }
 
