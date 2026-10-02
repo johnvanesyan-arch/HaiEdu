@@ -22,7 +22,7 @@ test("content reviewer reuses a short-lived dashboard cache across dedicated pag
   assert.match(shared, /sessionStorage\.setItem/);
   assert.match(shared, /dashboardLoads/);
   assert.match(shared, /loadContentDashboard/);
-  assert.match(editor, /readContentDashboardCache/);
+  assert.match(editor, /loadContentDashboard/);
   assert.match(editor, /clearContentDashboardCache/);
 });
 
@@ -63,4 +63,15 @@ test("student routing and dashboard bootstraps coalesce duplicate auth work", ()
   assert.match(app, /dashboardLoadPromise/);
   assert.match(app, /showDashboard\(\{ force = false \} = \{\}\)/);
   assert.match(app, /TOKEN_REFRESHED.*INITIAL_SESSION/);
+});
+
+
+test("Content Reviewer curriculum filters reuse the shared dashboard loader without null observers", () => {
+  const curriculum = read("web/content-curriculum.js");
+  assert.match(curriculum, /contentSupabase, loadContentDashboard/);
+  assert.doesNotMatch(curriculum, /createClient\(/);
+  assert.doesNotMatch(curriculum, /get-content-quality-dashboard/);
+  assert.match(curriculum, /const detailPanel = \$\("detailPanel"\);[\s\S]*if \(detailPanel\) new MutationObserver/);
+  assert.doesNotMatch(curriculum, /scheduleRefresh/);
+  assert.match(curriculum, /haiedu:content-dashboard/);
 });
