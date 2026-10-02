@@ -7,7 +7,7 @@ const publishableKey = config.match(/export const SUPABASE_PUBLISHABLE_KEY = \"(
 const email = process.env.QA_SCHOOL_A_ADMIN_EMAIL;
 const password = process.env.QA_SCHOOL_A_ADMIN_PASSWORD;
 const report = {
-  scope: "Sprint 15A.3 authenticated negative authorization",
+  scope: "Content Reviewer authenticated negative authorization",
   revision: process.env.GITHUB_SHA ?? "local",
   startedAt: new Date().toISOString(),
   status: "running",
@@ -28,8 +28,16 @@ async function json(response) {
   return response.json().catch(() => null);
 }
 
-async function invoke(token) {
-  const response = await fetch(`${supabaseUrl}/functions/v1/manage-remediation-guides`, {
+const reviewerApis = [
+  { name: "manage-remediation-guides", body: { action: "list" }, wrongRoleError: "content_authoring_role_required" },
+  { name: "get-content-quality-dashboard", body: {}, wrongRoleError: "content_admin_required" },
+  { name: "manage-content-quality", body: {}, wrongRoleError: "content_admin_required" },
+  { name: "get-content-review-history", body: {}, wrongRoleError: "content_admin_required" },
+  { name: "get-pilot-item-analytics", body: {}, wrongRoleError: "content_admin_required" },
+];
+
+async function invokeApi(api, token) {
+  const response = await fetch(`${supabaseUrl}/functions/v1/${api.name}`, {
     method: "POST",
     redirect: "error",
     headers: {
@@ -37,7 +45,7 @@ async function invoke(token) {
       ...(token ? { Authorization: `Bearer ${token}` } : {}),
       "Content-Type": "application/json",
     },
-    body: JSON.stringify({ action: "list" }),
+    body: JSON.stringify(api.body),
     signal: AbortSignal.timeout(25000),
   });
   return { status: response.status, data: await json(response) };
@@ -70,32 +78,38 @@ try {
   check("Supabase public configuration present", Boolean(supabaseUrl && publishableKey));
   check("QA School Admin credentials configured", Boolean(email && password));
 
-  const anonymous = await invoke();
-  check(
-    "Anonymous request denied",
-    [401, 403].includes(anonymous.status),
-    anonymous.status,
-    anonymous.data?.error,
-  );
+  for (const api of reviewerApis) {
+    const anonymous = await invokeApi(api);
+    check(
+      `${api.name}: anonymous request denied`,
+      [401, 403].includes(anonymous.status),
+      anonymous.status,
+      anonymous.data?.error,
+    );
+  }
 
   const token = await signIn();
-  const wrongRole = await invoke(token);
-  check(
-    "Authenticated School Admin cannot access Content Reviewer API",
-    wrongRole.status === 403 && wrongRole.data?.error === "content_authoring_role_required",
-    wrongRole.status,
-    wrongRole.data?.error,
-  );
+  for (const api of reviewerApis) {
+    const wrongRole = await invokeApi(api, token);
+    check(
+      `${api.name}: authenticated School Admin denied`,
+      wrongRole.status === 403 && wrongRole.data?.error === api.wrongRoleError,
+      wrongRole.status,
+      wrongRole.data?.error,
+    );
+  }
 
   await signOut(token);
-  const stale = await invoke(token);
-  check(
-    "Revoked session token denied",
-    (stale.status === 403 && stale.data?.error === "account_or_session_inactive")
-      || (stale.status === 401 && stale.data?.error === "unauthorized"),
-    stale.status,
-    stale.data?.error,
-  );
+  for (const api of reviewerApis) {
+    const stale = await invokeApi(api, token);
+    check(
+      `${api.name}: revoked session token denied`,
+      (stale.status === 403 && stale.data?.error === "account_or_session_inactive")
+        || (stale.status === 401 && stale.data?.error === "unauthorized"),
+      stale.status,
+      stale.data?.error,
+    );
+  }
 
   report.status = "passed";
 } catch (error) {
@@ -108,5 +122,5 @@ try {
   report.total = report.checks.length;
   await mkdir("qa-results", { recursive: true });
   await writeFile(reportPath, `${JSON.stringify(report, null, 2)}\n`, "utf8");
-  console.log(`Sprint 15A.3 authenticated QA: ${report.status} (${report.passed}/${report.total})`);
+  console.log(`Content Reviewer authenticated QA: ${report.status} (${report.passed}/${report.total})`);
 }
