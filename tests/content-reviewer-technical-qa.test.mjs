@@ -54,3 +54,19 @@ test("Review-history helper reuses the platform Supabase client and avoids dead 
   assert.doesNotMatch(workflow, /changesQueueBtn|refreshChangesQueueCount/);
   assert.match(workflow, /Intl\.DateTimeFormat\("hy-AM"/);
 });
+
+
+test("every known technical QA code has an Armenian reviewer message", () => {
+  const editor = read("web/content.js");
+  const backend = read("supabase/functions/manage-content-quality/index.ts");
+  const core = read("backend/core/content-quality.ts");
+  const codes = new Set(
+    [...backend.matchAll(/(?:errors|warnings)\.push\("([^"]+)"\)/g), ...core.matchAll(/(?:errors|warnings)\.push\("([^"]+)"\)/g)]
+      .map((match) => match[1]),
+  );
+  assert.ok(codes.size >= 20, "QA-code extraction should cover the technical evaluator");
+  for (const code of codes) {
+    assert.ok(editor.includes(code + ': "'), "missing Armenian QA label for " + code);
+  }
+  assert.match(editor, /Տեխնիկական QA հաղորդագրություն՝/);
+});
