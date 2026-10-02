@@ -1,24 +1,13 @@
-import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
-import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
-
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
-const $ = (id) => document.getElementById(id);
+import { $, contentSupabase, loadContentDashboard } from "./content-workspace.js";
 let data = null;
 let initialized = false;
 let observerStarted = false;
-let refreshTimer = null;
 let applyTimer = null;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
 }
 
-async function invoke(name, body = {}) {
-  const { data, error } = await supabase.functions.invoke(name, { body });
-  if (error) throw new Error(data?.detail || data?.error || error.message);
-  if (data?.error) throw new Error(data.detail || data.error);
-  return data;
-}
 
 function optionHtml(value, label, selected = false) {
   return `<option value="${esc(value)}" ${selected ? "selected" : ""}>${esc(label)}</option>`;
@@ -97,26 +86,26 @@ function rebuildSelectors(source = "") {
   const currentGrade = grade.value || grade.dataset.preferred || "";
   const usedGradeIds = new Set((data.catalog.programs ?? []).map((p) => p.gradeId));
   const gradeRows = (data.catalog.grades ?? []).filter((g) => usedGradeIds.has(g.id));
-  const gradeValue = setOptions(grade, gradeRows, "All grades", currentGrade, (g) => g.labelEn || `Grade ${g.number}`);
+  const gradeValue = setOptions(grade, gradeRows, "Բոլոր դասարանները", currentGrade, (g) => g.labelHy || `${g.number}-րդ դասարան`);
 
   const currentSubject = subject.value || subject.dataset.preferred || "";
   const allowedProgramsForSubjects = programsFor(gradeValue, "");
   const usedSubjectIds = new Set(allowedProgramsForSubjects.map((p) => p.subjectId));
   const subjectRows = (data.catalog.subjects ?? []).filter((s) => usedSubjectIds.has(s.id));
-  const subjectValue = setOptions(subject, subjectRows, "All subjects", currentSubject, (s) => s.nameEn || s.nameHy || s.code);
+  const subjectValue = setOptions(subject, subjectRows, "Բոլոր առարկաները", currentSubject, (s) => s.nameHy || s.nameEn || s.code);
 
   const currentProgram = program.value || program.dataset.preferred || "";
   const programRows = programsFor(gradeValue, subjectValue);
   const programValue = setOptions(program, programRows, "All programs", currentProgram, (p) => {
-    const subjectName = p.subjectNameEn || p.subjectNameHy || "Program";
-    const gradeName = p.gradeLabelEn || `Grade ${p.gradeNumber ?? ""}`;
-    return `${gradeName} · ${subjectName} · ${p.versionLabel || "current"}`;
+    const subjectName = p.subjectNameHy || p.subjectNameEn || "Ծրագիր";
+    const gradeName = p.gradeLabelHy || (p.gradeNumber ? `${p.gradeNumber}-րդ դասարան` : "Դասարան");
+    return `${gradeName} · ${subjectName} · ${p.versionLabel || "գործող"}`;
   });
 
   const currentUnit = unit.value || unit.dataset.preferred || "";
   const eligibleProgramIds = programValue ? [programValue] : programRows.map((p) => p.id);
   const unitRows = unitsFor(eligibleProgramIds);
-  setOptions(unit, unitRows, "All units / chapters", currentUnit, (u) => `${u.code} · ${u.titleEn || u.titleHy || "Unit"}`);
+  setOptions(unit, unitRows, "Բոլոր բաժինները / գլուխները", currentUnit, (u) => `${u.code} · ${u.titleHy || u.titleEn || "Բաժին"}`);
 
   delete grade.dataset.preferred;
   delete subject.dataset.preferred;
@@ -200,9 +189,9 @@ function addContextToDetail() {
   card.dataset.itemId = item.id;
   card.className = "curriculum-context-card";
   card.innerHTML = `
-    <div><span class="curriculum-context-kicker">Curriculum</span><strong>${esc(context.subject?.nameEn || context.subject?.nameHy || "—")} · ${esc(context.grade?.labelEn || `Grade ${context.grade?.number ?? "—"}`)}</strong></div>
-    <div><span class="curriculum-context-kicker">Program</span><span>${esc(context.program?.versionLabel || "—")}</span></div>
-    <div><span class="curriculum-context-kicker">Unit</span><span>${esc(context.unit?.code || "—")} · ${esc(context.unit?.titleEn || context.unit?.titleHy || "—")}</span></div>`;
+    <div><span class="curriculum-context-kicker">Ուսումնական համատեքստ</span><strong>${esc(context.subject?.nameHy || context.subject?.nameEn || "—")} · ${esc(context.grade?.labelHy || (context.grade?.number ? `${context.grade.number}-րդ դասարան` : "—"))}</strong></div>
+    <div><span class="curriculum-context-kicker">Ծրագիր</span><span>${esc(context.program?.versionLabel || "—")}</span></div>
+    <div><span class="curriculum-context-kicker">Բաժին</span><span>${esc(context.unit?.code || "—")} · ${esc(context.unit?.titleEn || context.unit?.titleHy || "—")}</span></div>`;
   panel.querySelector(".detail-heading")?.insertAdjacentElement("afterend", card);
 }
 
@@ -224,7 +213,7 @@ function applyScope({ ensureSelection = false } = {}) {
   });
 
   renderScopedStats(items);
-  if ($("resultCount")) $("resultCount").textContent = `${visibleRendered} shown · ${items.length} in curriculum scope`;
+  if ($("resultCount")) $("resultCount").textContent = `${visibleRendered} ցուցադրված · ${items.length} հարց ընտրված ուսումնական շրջանակում`;
   if ($("curriculumSummary")) $("curriculumSummary").textContent = scopeSummary();
   $("allContentBtn")?.classList.toggle("active", !$("gradeFilter")?.value && !$("subjectFilter")?.value && !$("programFilter")?.value && !$("unitFilter")?.value);
 
@@ -233,7 +222,7 @@ function applyScope({ ensureSelection = false } = {}) {
     if (!selected || selected.hidden) {
       const first = [...document.querySelectorAll("#itemRows tr[data-id]")].find((row) => !row.hidden);
       if (first) first.click();
-      else if ($("detailPanel")) $("detailPanel").innerHTML = `<h2>No questions in this scope</h2><p class="subtle">Choose another grade, subject, program or unit.</p>`;
+      else if ($("detailPanel")) $("detailPanel").innerHTML = `<h2>Այս շրջանակում հարց չկա</h2><p class="subtle">Ընտրեք այլ դասարան, առարկա, ծրագիր կամ բաժին։</p>`;
     }
   }
   addContextToDetail();
@@ -244,19 +233,16 @@ function scheduleApply() {
   applyTimer = setTimeout(() => applyScope(), 80);
 }
 
-async function refreshData({ ensureSelection = false, rebuild = false } = {}) {
+async function refreshData({ ensureSelection = false, rebuild = false, force = false } = {}) {
   try {
-    data = await invoke("get-content-quality-dashboard", {});
+    const { data: sessionData } = await contentSupabase.auth.getSession();
+    if (!sessionData.session) return;
+    data = await loadContentDashboard(sessionData.session, { force });
     if (rebuild || !initialized) rebuildSelectors();
     applyScope({ ensureSelection });
   } catch (err) {
-    if ($("curriculumSummary")) $("curriculumSummary").textContent = `Curriculum catalogue failed: ${err.message}`;
+    if ($("curriculumSummary")) $("curriculumSummary").textContent = `Չհաջողվեց բեռնել ուսումնական կատալոգը․ ${err.message}`;
   }
-}
-
-function scheduleRefresh() {
-  clearTimeout(refreshTimer);
-  refreshTimer = setTimeout(() => refreshData(), 300);
 }
 
 function handleContextChange(source) {
@@ -277,19 +263,26 @@ function start() {
     rebuildSelectors();
     applyScope({ ensureSelection: document.body.dataset.contentMode !== "bank" });
   });
-  $("refreshBtn")?.addEventListener("click", () => setTimeout(() => refreshData({ rebuild: true }), 150));
+  $("refreshBtn")?.addEventListener("click", () => setTimeout(() => refreshData({ rebuild: true, force: true }), 150));
 
-  new MutationObserver(() => {
-    scheduleApply();
-    scheduleRefresh();
-  }).observe($("itemRows"), { childList: true, subtree: true });
-  new MutationObserver(scheduleApply).observe($("detailPanel"), { childList: true, subtree: true });
+  new MutationObserver(scheduleApply).observe($("itemRows"), { childList: true, subtree: true });
+  const detailPanel = $("detailPanel");
+  if (detailPanel) new MutationObserver(scheduleApply).observe(detailPanel, { childList: true, subtree: true });
 
   refreshData({ ensureSelection: document.body.dataset.contentMode !== "bank", rebuild: true });
 }
 
-supabase.auth.onAuthStateChange((_event, session) => {
-  if (session) setTimeout(start, 0);
+window.addEventListener("haiedu:content-dashboard", (event) => {
+  const next = event.detail?.dashboard;
+  if (!next) return;
+  data = next;
+  if (!initialized) rebuildSelectors();
+  applyScope();
 });
-const { data: { session } } = await supabase.auth.getSession();
+
+contentSupabase.auth.onAuthStateChange((event, session) => {
+  if (!session || event === "TOKEN_REFRESHED") return;
+  setTimeout(start, 0);
+});
+const { data: { session } } = await contentSupabase.auth.getSession();
 if (session) start();
