@@ -1,6 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
-import { clearContentDashboardCache, readContentDashboardCache, writeContentDashboardCache } from "./content-workspace.js";
+import { clearContentDashboardCache, loadContentDashboard } from "./content-workspace.js";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -739,12 +739,8 @@ async function action(name, extra = {}) {
 
 async function refresh(reselect = selectedId, { force = false } = {}) {
   try {
-    const userId = activeSession?.user?.id;
-    dashboard = !force ? readContentDashboardCache(userId) : null;
-    if (!dashboard) {
-      dashboard = await invoke("get-content-quality-dashboard", {});
-      writeContentDashboardCache(userId, dashboard);
-    }
+    dashboard = await loadContentDashboard(activeSession, { force });
+    window.dispatchEvent(new CustomEvent("haiedu:content-dashboard", { detail: { dashboard } }));
     if (contentMode === "item") {
       const requested = new URLSearchParams(location.search).get("id") || reselect;
       if (!requested || !dashboard.items.some((item) => item.id === requested)) {
@@ -802,7 +798,8 @@ $("signOutBtn")?.addEventListener("click", () => supabase.auth.signOut());
 $("refreshBtn")?.addEventListener("click", () => {
   if (editorDirty && !confirm("Չեղարկե՞լ չպահպանված փոփոխությունները և թարմացնել հարցերի բանկը։")) return;
   editorDirty = false;
-  refresh();
+  clearContentDashboardCache(activeSession?.user?.id);
+  void refresh(selectedId, { force: true });
 });
 ["searchInput","skillFilter","reviewFilter","qaFilter"].forEach((id) => $(id)?.addEventListener(id === "searchInput" ? "input" : "change", renderRows));
 
