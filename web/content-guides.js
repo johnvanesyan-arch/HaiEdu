@@ -25,6 +25,13 @@ const variantBucketLabels = {
   mastery_check: "Յուրացման ստուգում",
   chapter_review: "Բաժնի ամփոփում",
   fixed: "Ֆիքսված հարց",
+  other: "Այլ",
+};
+
+const difficultyBandLabels = {
+  foundation: "Հիմքային",
+  core: "Հիմնական",
+  challenge: "Առաջադեմ",
 };
 
 const errorLabels = {
@@ -43,6 +50,20 @@ const errorLabels = {
   content_authoring_role_required: "Այս բաժինը հասանելի է միայն բովանդակության ստուգողին կամ հարթակի ադմինիստրատորին։",
   mfa_enrollment_cancelled: "Բազմագործոն մուտքի կարգավորումը չավարտվեց։",
   mfa_verification_failed: "Հաստատման կոդը չընդունվեց։ Ստուգեք կոդը և նորից փորձեք։",
+  expected_authoring_version_required: "Ուղեցույցի խմբագրվող տարբերակի համարը բացակայում է։ Թարմացրեք էջը և կրկին փորձեք։",
+  guide_catalog_failed: "Չհաջողվեց բեռնել ուղեցույցների ցանկը։",
+  guide_create_failed: "Չհաջողվեց ստեղծել ուղեցույցի սևագիրը։",
+  guide_history_failed: "Չհաջողվեց բեռնել ուղեցույցի տարբերակների պատմությունը։",
+  guide_identity_required: "Ուղեցույցը չի նույնականացվել։ Վերադարձեք ցանկ և նորից բացեք այն։",
+  guide_not_found: "Ուղեցույցը չի գտնվել։ Թարմացրեք ցանկը։",
+  guide_scope_required: "Ուղեցույցի մակարդակը նշված չէ։",
+  guide_target_required: "Ուղեցույցի հմտությունը կամ հարցի ձևանմուշը նշված չէ։",
+  guide_workflow_failed: "Ուղեցույցի գործողությունը չհաջողվեց։",
+  invalid_action: "Այս գործողությունը չի աջակցվում։",
+  invalid_json: "Ուղարկված տվյալները վավեր չեն։",
+  method_not_allowed: "Այս հարցումը չի աջակցվում։",
+  server_not_configured: "Սերվերի կարգավորումը թերի է։ Դիմեք հարթակի ադմինիստրատորին։",
+  unauthorized: "Սեսիան վավեր չէ։ Նորից մուտք գործեք։",
 };
 
 function esc(value) {
@@ -496,7 +517,7 @@ function renderVariantDetails() {
   }
   const params = variant.variant_parameters ?? {};
   const parameterEntries = Object.entries(params);
-  panel.innerHTML = `<p><strong>${esc(variant.code || variant.variant_key)}</strong> · ${esc(variantBucketLabels[variantBucket(variant)] || variantBucket(variant))}${variant.difficulty_band ? ` · ${esc(variant.difficulty_band)}` : ""}</p>
+  panel.innerHTML = `<p><strong>${esc(variant.code || variant.variant_key)}</strong> · ${esc(variantBucketLabels[variantBucket(variant)] || variantBucket(variant))}${variant.difficulty_band ? ` · ${esc(difficultyBandLabels[variant.difficulty_band] || variant.difficulty_band)}` : ""}</p>
     <p>${esc(variant.prompt_hy || "—")}</p>
     <div class="variant-parameters"><strong>Սկզբնական պարամետրեր</strong><div class="parameter-chip-list">${parameterEntries.length
       ? parameterEntries.map(([key, value]) => `<span class="parameter-chip"><span>${esc(key)}</span><strong>${esc(value)}</strong></span>`).join("")
