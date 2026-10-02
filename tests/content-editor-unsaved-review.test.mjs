@@ -40,6 +40,6 @@ test("Model A removes ceremonial submit-review and request-changes controls", ()
 });
 
 test("switching items or refreshing warns before discarding unsaved content", () => {
-  has(/Discard them and open another item/, "item switching must guard unsaved edits");
-  has(/Discard unsaved changes and refresh the question bank/, "refresh must guard unsaved edits");
+  has(/Չեղարկե՞լ դրանք և բացել մեկ այլ հարց/, "item switching must guard unsaved edits");
+  has(/Չեղարկե՞լ չպահպանված փոփոխությունները և թարմացնել հարցերի բանկը/, "refresh must guard unsaved edits");
 });
