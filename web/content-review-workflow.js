@@ -13,7 +13,11 @@ function esc(value) {
 
 async function invoke(name, body = {}) {
   const { data, error } = await supabase.functions.invoke(name, { body });
-  if (error) throw new Error(data?.detail || data?.error || error.message);
+  if (error) {
+    const response = error.context;
+    const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
+    throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
+  }
   if (data?.error) throw new Error(data.detail || data.error);
   return data;
 }
@@ -155,7 +159,10 @@ function watchConsole() {
 
 function initWhenReady() {
   if (initialized) return;
-  if ($("detailPanel") && selectedItemId()) {
+  const panel = $("detailPanel");
+  const itemId = selectedItemId();
+  if (!panel || !itemId) return;
+  if (panel.querySelector(".detail-heading")) {
     initialized = true;
     watchConsole();
     return;
