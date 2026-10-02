@@ -7,6 +7,27 @@ let renderToken = 0;
 let scheduled = null;
 let initialized = false;
 
+const REVIEW_HISTORY_ERROR_HY = {
+  account_or_session_inactive: "Հաշիվը կամ սեսիան ակտիվ չէ։ Նորից մուտք գործեք։",
+  content_admin_required: "Այս բաժինը հասանելի է միայն բովանդակության ստուգողին կամ հարթակի ադմինիստրատորին։",
+  content_review_history_failed: "Չհաջողվեց բեռնել հարցի ստուգման պատմությունը։",
+  invalid_json: "Ուղարկված տվյալները վավեր չեն։",
+  item_id_required: "Հարցը չի նույնականացվել։",
+  item_not_found: "Հարցը չի գտնվել։",
+  method_not_allowed: "Այս հարցումը չի աջակցվում։",
+  review_history_failed: "Չհաջողվեց բեռնել հարցի ստուգման պատմությունը։",
+  server_not_configured: "Սերվերի կարգավորումը թերի է։ Դիմեք հարթակի ադմինիստրատորին։",
+  unauthorized: "Սեսիան վավեր չէ։ Նորից մուտք գործեք։",
+};
+
+function reviewHistoryErrorHy(...values) {
+  const raw = values.filter(Boolean).map(String).join(" · ");
+  for (const [code, label] of Object.entries(REVIEW_HISTORY_ERROR_HY)) {
+    if (raw.includes(code)) return label;
+  }
+  return values.find(Boolean) ? String(values.find(Boolean)) : "Չհաջողվեց բեռնել հարցի ստուգման պատմությունը։";
+}
+
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
 }
@@ -16,9 +37,9 @@ async function invoke(name, body = {}) {
   if (error) {
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
-    throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
+    throw new Error(reviewHistoryErrorHy(payload?.detail, payload?.error, data?.detail, data?.error, error.message));
   }
-  if (data?.error) throw new Error(data.detail || data.error);
+  if (data?.error) throw new Error(reviewHistoryErrorHy(data.detail, data.error));
   return data;
 }
 
