@@ -515,6 +515,17 @@ Deno.serve(async (req) => {
     if (action === "approve") {
       const { data: qa } = await admin.from("item_qa_runs").select("passed, version_no, created_at").eq("item_id", item.id).eq("version_no", item.version_no).order("created_at", { ascending: false }).limit(1).maybeSingle();
       if (!qa?.passed) return json({ error: "technical_qa_must_pass_before_approval" }, 409);
+      const liveApprovalQa = await evaluateQa(admin, item);
+      if (!liveApprovalQa.passed) {
+        return json({
+          error: "technical_qa_must_pass_before_approval",
+          detail: "family_state_changed_since_qa",
+          requiresQaRerun: true,
+          errors: liveApprovalQa.errors,
+          warnings: liveApprovalQa.warnings,
+          details: liveApprovalQa.details,
+        }, 409);
+      }
       const now = new Date().toISOString();
       const { error: reviewError } = await admin.from("item_reviews").insert({
         item_id: item.id,
