@@ -141,3 +141,16 @@ test("evidence page localizes every explicit analytics API error", () => {
   }
   assert.match(ui, /Այլ գործառնական ազդակ/);
 });
+
+
+test("review-history helper localizes every explicit endpoint error", () => {
+  const ui = read("web/content-review-workflow.js");
+  const endpoint = read("supabase/functions/get-content-review-history/index.ts");
+  const mapStart = ui.indexOf("const REVIEW_HISTORY_ERROR_HY = {");
+  const mapEnd = ui.indexOf("};", mapStart);
+  const mapBlock = ui.slice(mapStart, mapEnd + 2);
+  const codes = new Set([...endpoint.matchAll(/error:\s*"([a-z0-9_]+)"/g)].map((match) => match[1]));
+  for (const code of codes) {
+    assert.ok(mapBlock.includes(code + ":"), "missing Armenian review-history error label for " + code);
+  }
+});
