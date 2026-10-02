@@ -113,3 +113,17 @@ test("remediation-guide previews localize known difficulty bands", () => {
   assert.match(ui, /challenge: "Առաջադեմ"/);
   assert.match(ui, /difficultyBandLabels\[variant\.difficulty_band\]/);
 });
+
+
+test("question workflow localizes every explicit manage-content-quality error", () => {
+  const ui = read("web/content.js");
+  const endpoint = read("supabase/functions/manage-content-quality/index.ts");
+  const mapStart = ui.indexOf("const CONTENT_ERROR_HY = {");
+  const mapEnd = ui.indexOf("};", mapStart);
+  const mapBlock = ui.slice(mapStart, mapEnd + 2);
+  const codes = new Set([...endpoint.matchAll(/error:\s*"([a-z0-9_]+)"/g)].map((match) => match[1]));
+  for (const code of codes) {
+    assert.ok(mapBlock.includes(code + ":"), "missing Armenian content error label for " + code);
+  }
+  assert.match(ui, /function contentErrorHy/);
+});
