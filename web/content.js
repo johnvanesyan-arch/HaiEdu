@@ -60,6 +60,19 @@ function reviewDecisionLabel(value) {
   })[value] || value || "—";
 }
 
+function reviewTypeLabel(value) {
+  return value === "content" ? "բովանդակային ստուգում" : (value || "—");
+}
+
+function purposeLabel(value) {
+  return ({
+    diagnostic: "Ախտորոշիչ",
+    practice: "Վարժանք",
+    mastery_check: "Յուրացման ստուգում",
+    chapter_review: "Բաժնի կրկնություն",
+  })[value] || value || "—";
+}
+
 async function invoke(name, body = {}) {
   const { data, error } = await supabase.functions.invoke(name, { body });
   if (error) {
@@ -178,13 +191,13 @@ async function selectItem(id) {
     renderDetail();
   } catch (err) {
     if (token !== detailLoadToken) return;
-    $("detailPanel").innerHTML = `<h2>Load failed</h2><p class="message bad">${esc(err.message)}</p>`;
+    $("detailPanel").innerHTML = `<h2>Չհաջողվեց բեռնել</h2><p class="message bad">${esc(err.message)}</p>`;
   }
 }
 
 function optionRowsHtml(options, disabled) {
   return (options ?? []).map((o) => `<div class="option-editor-row" data-option-row>
-    <label class="option-key-field">Key<input class="option-key" value="${esc(o.key)}" ${disabled ? "disabled" : ""} /></label>
+    <label class="option-key-field">Կոդ<input class="option-key" value="${esc(o.key)}" ${disabled ? "disabled" : ""} /></label>
     <label>Հայերեն<textarea class="option-hy" rows="2" ${disabled ? "disabled" : ""}>${esc(o.contentHy ?? "")}</textarea></label>
     <label>Անգլերեն<input class="option-en" value="${esc(o.contentEn ?? "")}" ${disabled ? "disabled" : ""} /></label>
     <button type="button" class="ghost remove-option-btn" ${disabled ? "disabled" : ""}>Հեռացնել</button>
@@ -201,10 +214,10 @@ function misconceptionRowsHtml(detail, disabled) {
         ? [{ code: m.code, title_hy: m.titleHy || "Ընթացիկ կապակցում", existingOnly: true }, ...available]
         : available;
     return `<div class="misconception-editor-row" data-misconception-row>
-    <label>Code<select class="misconception-code" ${disabled ? "disabled" : ""}>${choices.map((x) => `<option value="${esc(x.code)}" ${x.code === m.code ? "selected" : ""}>${esc(x.code)} — ${esc(x.title_hy)}${x.existingOnly ? " · ընթացիկ" : ""}</option>`).join("")}</select></label>
-    <label>Response key<input class="misconception-response" value="${esc(m.responseKey ?? "*")}" ${disabled ? "disabled" : ""} /></label>
-    <label class="wide">Note<input class="misconception-note" value="${esc(m.mappingNote ?? "")}" ${disabled ? "disabled" : ""} /></label>
-    <button type="button" class="ghost remove-misconception-btn" ${disabled ? "disabled" : ""}>Remove</button>
+    <label>Կոդ<select class="misconception-code" ${disabled ? "disabled" : ""}>${choices.map((x) => `<option value="${esc(x.code)}" ${x.code === m.code ? "selected" : ""}>${esc(x.code)} — ${esc(x.title_hy)}${x.existingOnly ? " · ընթացիկ" : ""}</option>`).join("")}</select></label>
+    <label>Պատասխանի կոդ<input class="misconception-response" value="${esc(m.responseKey ?? "*")}" ${disabled ? "disabled" : ""} /></label>
+    <label class="wide">Նշում<input class="misconception-note" value="${esc(m.mappingNote ?? "")}" ${disabled ? "disabled" : ""} /></label>
+    <button type="button" class="ghost remove-misconception-btn" ${disabled ? "disabled" : ""}>Հեռացնել</button>
   </div>`;
   }).join("");
 }
@@ -216,7 +229,7 @@ function answerEditorHtml(detail, disabled) {
     return `<div class="answer-grid"><label>Ճիշտ տարբերակ<select id="answerSingleChoice" ${disabled ? "disabled" : ""}></select></label><label>Հետադարձ կապի կոդ<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label></div>`;
   }
   if (item.type === "true_false") {
-    return `<div class="answer-grid"><label>Ճիշտ պատասխան<select id="answerTrueFalse" ${disabled ? "disabled" : ""}><option value="true" ${key.answer === true ? "selected" : ""}>Ճիշտ է</option><option value="false" ${key.answer === false ? "selected" : ""}>Սխալ է</option></select></label><label>Feedback code<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label></div>`;
+    return `<div class="answer-grid"><label>Ճիշտ պատասխան<select id="answerTrueFalse" ${disabled ? "disabled" : ""}><option value="true" ${key.answer === true ? "selected" : ""}>Ճիշտ է</option><option value="false" ${key.answer === false ? "selected" : ""}>Սխալ է</option></select></label><label>Հետադարձ կապի կոդ<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label></div>`;
   }
   const quantity = item.type === "quantity";
   return `<div class="answer-grid">
@@ -299,7 +312,7 @@ function renderDetail() {
     approved: "Հաստատված",
   })[item.reviewStatus] || item.reviewStatus || "—";
   const canApprove = qaPassed && item.reviewStatus !== "approved" && !item.retiredAt;
-  const purposes = (detail.pools ?? []).map((p) => `${p.purpose}${p.protected ? " (protected)" : ""}${p.enabled ? "" : " · staged"}`).join(" · ") || detail.item.config?.sprint11dBucket || "—";
+  const purposes = (detail.pools ?? []).map((p) => `${purposeLabel(p.purpose)}${p.protected ? " (պաշտպանված)" : ""}${p.enabled ? "" : " · փուլային"}`).join(" · ") || purposeLabel(detail.item.config?.sprint11dBucket) || "—";
   const generatedWarning = detail.editing?.reason === "generated_variant_requires_template_edit"
     ? `<div class="editor-warning"><strong>Գեներացված տարբերակ։</strong> Այս հարցը վերարտադրվում է ձևանմուշից և seed-ից, ուստի հարցի և պատասխանի ուղղակի խմբագրումն արգելափակված է։ Փոխեք կամ վերագեներացրեք սկզբնական ձևանմուշը․ մետատվյալների և ստուգման գործողությունները հասանելի են։</div>`
     : detail.item.retiredAt ? `<div class="editor-warning"><strong>Արխիվացված հարց։</strong> Խմբագրելուց առաջ վերականգնեք այն։</div>` : "";
@@ -392,7 +405,7 @@ function renderDetail() {
       Ձևանմուշ՝ ${esc(detail.template?.code ?? "—")} · ${esc(detail.template?.kind ?? "—")}<br/>
       Տարբերակ՝ ${esc(detail.item.variantKey ?? "—")}${detail.item.variantSeed ? ` · seed ${esc(detail.item.variantSeed)}` : ""}<br/>
       Վերջին տարբերակի գրառում՝ ${item.latestSnapshot ? `v${esc(item.latestSnapshot.versionNo)} · ${esc(item.latestSnapshot.changeSummary || "")}` : "—"}<br/>
-      Վերջին ստուգում՝ ${item.latestReview ? `${esc(reviewDecisionLabel(item.latestReview.decision))} · ${esc(item.latestReview.type || "content")}` : "—"}
+      Վերջին ստուգում՝ ${item.latestReview ? `${esc(reviewDecisionLabel(item.latestReview.decision))} · ${esc(reviewTypeLabel(item.latestReview.type))}` : "—"}
     </section>`;
 
   $("runQaBtn")?.addEventListener("click", runQaCurrent);
@@ -661,9 +674,9 @@ async function approveCurrent() {
 }
 
 async function retireItem() {
-  const reason = prompt("Retirement reason");
+  const reason = prompt("Նշեք արխիվացման պատճառը");
   if (!reason?.trim()) return;
-  const replacementCode = (prompt("Replacement item code (optional)", "") ?? "").trim();
+  const replacementCode = (prompt("Փոխարինող հարցի կոդը (ըստ ցանկության)", "") ?? "").trim();
   let replacementItemId = null;
   if (replacementCode) {
     const replacement = dashboard.items.find((i) => i.code === replacementCode);
