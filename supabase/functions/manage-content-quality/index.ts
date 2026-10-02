@@ -445,8 +445,10 @@ Deno.serve(async (req) => {
     }
 
     if (action === "save_content_revision") {
-      const payload = body.payload && typeof body.payload === "object" ? body.payload : null;
-      if (!payload) return json({ error: "revision_payload_required" }, 400);
+      const incomingPayload = body.payload && typeof body.payload === "object" ? body.payload : null;
+      if (!incomingPayload) return json({ error: "revision_payload_required" }, 400);
+      const payload = { ...incomingPayload };
+      delete payload.validationState;
       const { data, error } = await admin.rpc("service_save_item_content_revision", {
         p_item_id: item.id,
         p_actor_id: actorId,
@@ -472,6 +474,12 @@ Deno.serve(async (req) => {
     }
 
     if (action === "update_metadata") {
+      if (body.validationState !== undefined) {
+        return json({
+          error: "sme_validation_managed_separately",
+          detail: "Մասնագիտական (SME) վավերացման կարգավիճակը Content Reviewer-ի մետատվյալների գործողությամբ չի փոխվում։",
+        }, 409);
+      }
       const patch: Record<string, unknown> = {};
       if (body.difficulty !== undefined) {
         const difficulty = Number(body.difficulty);
@@ -481,7 +489,6 @@ Deno.serve(async (req) => {
       }
       if (body.itemFamily !== undefined) patch.item_family = String(body.itemFamily).trim() || "unspecified";
       if (body.sourceReference !== undefined) patch.source_reference = String(body.sourceReference).trim() || null;
-      if (body.validationState !== undefined) patch.validation_state = String(body.validationState).trim() || "provisional_no_sme_review";
       if (Object.keys(patch).length) {
         const { error } = await admin.from("items").update(patch).eq("id", item.id);
         if (error) return json({ error: "metadata_update_failed", detail: error.message }, 500);
