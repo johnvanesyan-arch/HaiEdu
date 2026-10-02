@@ -49,6 +49,13 @@ test("family QA verifies coverage while allowing justified larger families", () 
   assert.match(uniquePurposeCorrection, /15B8_unique_evidence_template_flag_failed/);
 });
 
+test("approval revalidates the live family instead of trusting stale QA", () => {
+  assert.match(qualityFunction, /const liveApprovalQa = await evaluateQa\(admin, item\)/);
+  assert.match(qualityFunction, /family_state_changed_since_qa/);
+  assert.match(qualityFunction, /requiresQaRerun: true/);
+  assert.match(policy, /Approval re-evaluates the current active family/);
+});
+
 test("sixth family targets the direct S07 programme outcome", () => {
   assert.match(migration, /PHY7-U02-S07-F01-DIFFUSION-RATE-COMPARISON/);
   assert.match(migration, /PHY7-U02-S07-T01-COMPARE-DIFFUSION-RATES/);

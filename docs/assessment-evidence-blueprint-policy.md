@@ -33,6 +33,8 @@ Every new item template must declare:
 
 Every non-retired item attached to that template must declare one valid `evidencePurpose`. Technical QA evaluates the whole active family and fails when a required purpose is absent, an item lacks a purpose, or an unknown purpose is used.
 
+Approval re-evaluates the current active family instead of trusting only a stored per-item QA pass. If a sibling was retired, restored or otherwise changed after that QA run, approval fails closed and requires QA to be run again against the current family state.
+
 Templates may set `enforceUniqueEvidencePurposes = true` when each required purpose must occur exactly once. This is appropriate for the four-item Sprint 15B.8 family. Larger or otherwise justified families may repeat a purpose; they still must cover every declared required purpose.
 
 ## What does not change
@@ -57,4 +59,5 @@ The policy is considered adopted when:
 2. a new unprofiled template is rejected;
 3. an item with no valid evidence purpose is rejected for a profiled template;
 4. QA reports the required purposes, actual counts and any missing/invalid entries;
-5. the first adopted family remains learner-inactive until the ordinary review and release gates are completed.
+5. approval re-checks the current active family and rejects stale passing QA after a family-membership change;
+6. the first adopted family remains learner-inactive until the ordinary review and release gates are completed.
