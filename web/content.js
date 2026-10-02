@@ -160,10 +160,20 @@ function renderRows() {
       <td><span class="life-chip">${item.retiredAt ? "Արխիվացված" : esc(lifecycleLabel(item.lifecycleStatus))}</span></td>
     </tr>`;
   }).join("");
-  body.querySelectorAll("tr[data-id]").forEach((row) => row.addEventListener("click", () => {
-    if (contentMode === "bank") location.assign(`./content-item.html?id=${encodeURIComponent(row.dataset.id)}&from=bank`);
-    else selectItem(row.dataset.id);
-  }));
+  body.querySelectorAll("tr[data-id]").forEach((row) => {
+    row.tabIndex = 0;
+    row.setAttribute("role", "link");
+    const open = () => {
+      if (contentMode === "bank") location.assign(`./content-item.html?id=${encodeURIComponent(row.dataset.id)}&from=bank`);
+      else selectItem(row.dataset.id);
+    };
+    row.addEventListener("click", open);
+    row.addEventListener("keydown", (event) => {
+      if (!["Enter", " "].includes(event.key)) return;
+      event.preventDefault();
+      open();
+    });
+  });
 }
 function renderLoadingDetail() {
   if ($("detailPanel")) $("detailPanel").innerHTML = `<h2>Բեռնվում է…</h2><p class="subtle">Հարցի աշխատանքային էջը բեռնվում է։</p>`;
@@ -259,7 +269,7 @@ function activateItemTab(tab) {
   panel.querySelectorAll("[data-item-tab-button]").forEach((button) => {
     const active = button.dataset.itemTabButton === tab;
     button.classList.toggle("active", active);
-    button.setAttribute("aria-selected", String(active));
+    button.setAttribute("aria-pressed", String(active));
   });
 }
 
