@@ -263,7 +263,6 @@ function start() {
     rebuildSelectors();
     applyScope({ ensureSelection: document.body.dataset.contentMode !== "bank" });
   });
-  $("refreshBtn")?.addEventListener("click", () => setTimeout(() => refreshData({ rebuild: true, force: true }), 150));
 
   new MutationObserver(scheduleApply).observe($("itemRows"), { childList: true, subtree: true });
   const detailPanel = $("detailPanel");
