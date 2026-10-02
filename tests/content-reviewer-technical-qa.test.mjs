@@ -89,3 +89,27 @@ test("Content Reviewer cannot mutate SME validation state through item editing",
   assert.match(endpoint, /sme_validation_managed_separately/, "direct metadata mutation must be rejected");
   assert.doesNotMatch(endpoint, /patch\.validation_state\s*=/, "metadata action must not write SME state");
 });
+
+
+test("remediation-guide frontend localizes every explicit API error code", () => {
+  const ui = read("web/content-guides.js");
+  const endpoint = read("supabase/functions/manage-remediation-guides/index.ts");
+  const mapStart = ui.indexOf("const errorLabels = {");
+  const mapEnd = ui.indexOf("};", mapStart);
+  const mapBlock = ui.slice(mapStart, mapEnd + 2);
+  const codes = new Set([
+    ...[...endpoint.matchAll(/error:\s*"([a-z0-9_]+)"/g)].map((match) => match[1]),
+    ...[...endpoint.matchAll(/throw new Error\("([a-z0-9_]+)"\)/g)].map((match) => match[1]),
+  ]);
+  for (const code of codes) {
+    assert.ok(mapBlock.includes(code + ":"), "missing Armenian guide error label for " + code);
+  }
+});
+
+test("remediation-guide previews localize known difficulty bands", () => {
+  const ui = read("web/content-guides.js");
+  assert.match(ui, /foundation: "Հիմքային"/);
+  assert.match(ui, /core: "Հիմնական"/);
+  assert.match(ui, /challenge: "Առաջադեմ"/);
+  assert.match(ui, /difficultyBandLabels\[variant\.difficulty_band\]/);
+});
