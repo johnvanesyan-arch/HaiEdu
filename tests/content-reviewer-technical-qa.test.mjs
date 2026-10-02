@@ -127,3 +127,17 @@ test("question workflow localizes every explicit manage-content-quality error", 
   }
   assert.match(ui, /function contentErrorHy/);
 });
+
+
+test("evidence page localizes every explicit analytics API error", () => {
+  const ui = read("web/content-evidence-page.js");
+  const endpoint = read("supabase/functions/get-pilot-item-analytics/index.ts");
+  const mapStart = ui.indexOf("const EVIDENCE_ERROR_HY = {");
+  const mapEnd = ui.indexOf("};", mapStart);
+  const mapBlock = ui.slice(mapStart, mapEnd + 2);
+  const codes = new Set([...endpoint.matchAll(/error:\s*"([a-z0-9_]+)"/g)].map((match) => match[1]));
+  for (const code of codes) {
+    assert.ok(mapBlock.includes(code + ":"), "missing Armenian evidence error label for " + code);
+  }
+  assert.match(ui, /Այլ գործառնական ազդակ/);
+});
