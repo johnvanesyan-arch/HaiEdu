@@ -283,6 +283,31 @@ function wireItemTabs() {
 window.addEventListener("haiedu:content-tab-refresh", () => activateItemTab(itemTab));
 
 const QA_MESSAGE_HY = {
+  missing_item_code: "Հարցի կոդը բացակայում է։",
+  empty_prompt: "Հայերեն հարցի տեքստը բացակայում է։",
+  invalid_difficulty: "Դժվարության արժեքը պետք է լինի 1-ից 5 միջակայքում։",
+  difficulty_band_mismatch: "Դժվարության մակարդակը չի համապատասխանում թվային դժվարությանը։",
+  missing_answer_key: "Ճիշտ պատասխանը նշված չէ։",
+  insufficient_options: "Ընտրովի հարցը պետք է ունենա առնվազն երկու պատասխանային տարբերակ։",
+  answer_not_in_options: "Նշված ճիշտ պատասխանը չկա պատասխանային տարբերակների մեջ։",
+  true_false_answer_not_boolean: "Ճիշտ/սխալ հարցի պատասխանը պետք է լինի «ճիշտ է» կամ «սխալ է»։",
+  numeric_answer_not_number: "Թվային հարցի ճիշտ պատասխանը թվային արժեք չէ։",
+  numeric_tolerance_missing: "Թվային հարցի թույլատրելի շեղումը նշված չէ կամ վավեր չէ։",
+  quantity_unit_metadata_missing: "Չափման հարցի համար չափման միավորների տվյալները ամբողջական չեն։",
+  canonical_unit_not_in_accepted_units: "Հիմնական չափման միավորը ներառված չէ ընդունվող միավորների ցանկում։",
+  unsupported_item_type: "Այս հարցի տեսակը տեխնիկական QA-ն դեռ չի սպասարկում։",
+  source_reference_missing: "Հարցի աղբյուրի հղումը կամ նշումը բացակայում է։",
+  item_family_unspecified: "Հարցերի ընտանիքը նշված չէ։",
+  misconception_mapping_missing: "Հարցի համար սխալ պատկերացման կապակցում նշված չէ։",
+  misconception_mapping_incomplete: "Սխալ պատկերացումների կապակցումները ամբողջական չեն։",
+  duplicate_prompt_in_skill: "Նույն հմտության մեջ հայտնաբերվել է նույն կամ կրկնվող հարցի ձևակերպում։",
+  generated_variant_seed_missing: "Գեներացված հարցի seed-ը բացակայում է։",
+  generated_variant_preview_failed: "Չհաջողվեց վերարտադրել գեներացված հարցի նախադիտումը։",
+  generated_variant_generator_qa_failed: "Գեներացված հարցի աղբյուրային ձևանմուշը չի անցել գեներատորի QA-ն։",
+  generated_prompt_not_reproducible: "Գեներացված հարցի ձևակերպումը չի վերարտադրվում նույն ձևանմուշից և seed-ից։",
+  generated_answer_not_reproducible: "Գեներացված հարցի ճիշտ պատասխանը չի վերարտադրվում նույն ձևանմուշից և seed-ից։",
+  generated_parameters_not_reproducible: "Գեներացված հարցի պարամետրերը չեն վերարտադրվում նույն ձևանմուշից և seed-ից։",
+  generated_fingerprint_not_reproducible: "Գեներացված հարցի բովանդակային մատնահետքը չի համընկնում վերարտադրված տարբերակին։",
   answer_position_distribution_imbalanced: "Այս հարցի ընտանիքում ճիշտ պատասխանների դիրքերը անհամաչափ են բաշխված։ Վերանայեք տարբերակների հերթականությունը։",
   answer_position_distribution_check_failed: "Չհաջողվեց ստուգել ճիշտ պատասխանների դիրքերի բաշխումը։ Կրկին գործարկեք QA-ն։",
   shuffle_disabled_without_option_order_rationale: "Տարբերակների խառնումն անջատված է, սակայն հաստատուն հերթականության պատճառը նշված չէ։",
@@ -294,10 +319,10 @@ const QA_MESSAGE_HY = {
   family_evidence_purpose_invalid: "Ընտանիքի առնվազն մեկ հարց ունի անթույլատրելի ապացուցողական նպատակ։",
   family_evidence_blueprint_incomplete: "Ընտանիքում բացակայում է պարտադիր ապացուցողական նպատակներից առնվազն մեկը։",
   family_evidence_purpose_duplicate: "Այս ընտանիքում յուրաքանչյուր պարտադիր ապացուցողական նպատակը պետք է օգտագործվի մեկ անգամ։",
-};
+}
 
 function qaMessageHy(code) {
-  return QA_MESSAGE_HY[code] || code;
+  return QA_MESSAGE_HY[code] || `Տեխնիկական QA հաղորդագրություն՝ ${code}`;
 }
 
 function renderDetail() {
@@ -587,7 +612,7 @@ function buildRevisionPayload(item, defaultSummary = "Content editor revision") 
   return payload;
 }
 
-async function persistCurrentRevision(defaultSummary = "Content editor revision") {
+async function persistCurrentRevision(defaultSummary = "Բովանդակության խմբագրում") {
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item || !selectedDetail?.editing?.contentEditable) return false;
   const payload = buildRevisionPayload(item, defaultSummary);
@@ -616,7 +641,7 @@ async function saveRevision() {
 
 async function ensureQaPassed({ force = false } = {}) {
   const item = dashboard.items.find((i) => i.id === selectedId);
-  if (!item) throw new Error("Item is not selected.");
+  if (!item) throw new Error("Հարց ընտրված չէ։");
   if (!force && item.latestQa?.passed === true) return true;
   const result = await invoke("manage-content-quality", { action: "run_qa", itemId: selectedId });
   return result.qa?.passed === true;
