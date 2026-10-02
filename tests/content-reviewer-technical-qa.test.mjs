@@ -77,3 +77,15 @@ test("review-history enhancer stops polling when no item id exists and preserves
   assert.match(workflow, /if \(!panel \|\| !itemId\) return/);
   assert.match(workflow, /response instanceof Response[\s\S]*response\.clone\(\)\.json/);
 });
+
+
+test("Content Reviewer cannot mutate SME validation state through item editing", () => {
+  const editor = read("web/content.js");
+  const endpoint = read("supabase/functions/manage-content-quality/index.ts");
+  assert.doesNotMatch(editor, /id="metaValidation"/, "SME status must not be an editable field");
+  assert.doesNotMatch(editor, /validationState:\s*\$\("metaValidation"\)/, "revision payload must not carry SME state");
+  assert.match(editor, /Content Reviewer-ը չի փոխում/, "UI must explain the separate SME workflow");
+  assert.match(endpoint, /delete payload\.validationState/, "server must strip legacy/open-tab SME state from revisions");
+  assert.match(endpoint, /sme_validation_managed_separately/, "direct metadata mutation must be rejected");
+  assert.doesNotMatch(endpoint, /patch\.validation_state\s*=/, "metadata action must not write SME state");
+});
