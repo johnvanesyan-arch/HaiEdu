@@ -31,6 +31,16 @@ async function invoke(name, body = {}) {
   if (error) {
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
+    if (payload?.requiresQaRerun) {
+      const problems = Array.isArray(payload.errors)
+        ? payload.errors.map(qaMessageHy).filter(Boolean).join(" ")
+        : "";
+      const workflowError = new Error(
+        `Հարցերի ընտանիքը փոխվել է վերջին QA-ից հետո։ Կրկին գործարկեք QA-ն, ուսումնասիրեք ընթացիկ խնդիրները և միայն դրանից հետո հաստատեք հարցը։${problems ? ` ${problems}` : ""}`,
+      );
+      workflowError.requiresQaRerun = true;
+      throw workflowError;
+    }
     throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
   }
   if (data?.error) throw new Error(data.detail || data.error);
@@ -219,6 +229,14 @@ const QA_MESSAGE_HY = {
   answer_position_distribution_imbalanced: "Այս հարցի ընտանիքում ճիշտ պատասխանների դիրքերը անհամաչափ են բաշխված։ Վերանայեք տարբերակների հերթականությունը։",
   answer_position_distribution_check_failed: "Չհաջողվեց ստուգել ճիշտ պատասխանների դիրքերի բաշխումը։ Կրկին գործարկեք QA-ն։",
   shuffle_disabled_without_option_order_rationale: "Տարբերակների խառնումն անջատված է, սակայն հաստատուն հերթականության պատճառը նշված չէ։",
+  evidence_purpose_missing: "Հարցի ապացուցողական նպատակը նշված չէ։",
+  evidence_purpose_invalid: "Հարցի ապացուցողական նպատակը թույլատրելի չէ։",
+  family_evidence_blueprint_invalid: "Հարցերի ընտանիքի ապացուցողական սխեման վավեր չէ։",
+  family_evidence_blueprint_check_failed: "Չհաջողվեց ստուգել հարցերի ընտանիքի ապացուցողական սխեման։",
+  family_evidence_purpose_missing: "Ընտանիքի առնվազն մեկ հարց չունի ապացուցողական նպատակ։",
+  family_evidence_purpose_invalid: "Ընտանիքի առնվազն մեկ հարց ունի անթույլատրելի ապացուցողական նպատակ։",
+  family_evidence_blueprint_incomplete: "Ընտանիքում բացակայում է պարտադիր ապացուցողական նպատակներից առնվազն մեկը։",
+  family_evidence_purpose_duplicate: "Այս ընտանիքում յուրաքանչյուր պարտադիր ապացուցողական նպատակը պետք է օգտագործվի մեկ անգամ։",
 };
 
 function qaMessageHy(code) {
@@ -601,6 +619,7 @@ async function approveCurrent() {
     await refresh(selectedId, { force: true });
     setMessage(`${item.code}: հարցը հաստատված է։`);
   } catch (err) {
+    if (err.requiresQaRerun) activateItemTab("review");
     setMessage(err.message, true);
   } finally {
     workflowBusy = false;

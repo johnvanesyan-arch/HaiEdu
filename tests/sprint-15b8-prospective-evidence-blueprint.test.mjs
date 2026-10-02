@@ -14,7 +14,12 @@ const uniquePurposeCorrection = readFileSync(
   "supabase/migrations/20261002073000_sprint_15b8_unique_evidence_flag.sql",
   "utf8",
 );
+const atomicApprovalMigration = readFileSync(
+  "supabase/migrations/20261002080000_sprint_15b8_atomic_family_approval.sql",
+  "utf8",
+);
 const policy = readFileSync("docs/assessment-evidence-blueprint-policy.md", "utf8");
+const reviewerUi = readFileSync("web/content.js", "utf8");
 const spec = readFileSync(
   "docs/sprint-15b8-physics7-chapter-ii-sixth-item-family.md",
   "utf8",
@@ -49,11 +54,24 @@ test("family QA verifies coverage while allowing justified larger families", () 
   assert.match(uniquePurposeCorrection, /15B8_unique_evidence_template_flag_failed/);
 });
 
-test("approval revalidates the live family instead of trusting stale QA", () => {
+test("approval revalidates the live family and commits atomically", () => {
   assert.match(qualityFunction, /const liveApprovalQa = await evaluateQa\(admin, item\)/);
+  assert.match(qualityFunction, /familyStateFingerprint/);
+  assert.match(qualityFunction, /approve_item_if_family_qa_current/);
   assert.match(qualityFunction, /family_state_changed_since_qa/);
   assert.match(qualityFunction, /requiresQaRerun: true/);
-  assert.match(policy, /Approval re-evaluates the current active family/);
+  assert.match(atomicApprovalMigration, /pg_advisory_xact_lock/);
+  assert.match(atomicApprovalMigration, /lock_item_family_state_before_profile_change/);
+  assert.match(atomicApprovalMigration, /lock_item_template_state_before_profile_change/);
+  assert.match(atomicApprovalMigration, /v_stored_fingerprint <> v_live_fingerprint/);
+  assert.match(atomicApprovalMigration, /insert into public\.item_reviews/);
+  assert.match(atomicApprovalMigration, /update public\.items/);
+  assert.match(atomicApprovalMigration, /grant execute .* to service_role/);
+  assert.match(policy, /deterministic family-state fingerprint/);
+  assert.match(policy, /one database transaction/);
+  assert.match(reviewerUi, /Հարցերի ընտանիքը փոխվել է վերջին QA-ից հետո/);
+  assert.match(reviewerUi, /Կրկին գործարկեք QA-ն/);
+  assert.match(reviewerUi, /family_evidence_blueprint_incomplete/);
 });
 
 test("sixth family targets the direct S07 programme outcome", () => {
