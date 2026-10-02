@@ -70,3 +70,10 @@ test("every known technical QA code has an Armenian reviewer message", () => {
   }
   assert.match(editor, /Տեխնիկական QA հաղորդագրություն՝/);
 });
+
+
+test("review-history enhancer stops polling when no item id exists and preserves backend error detail", () => {
+  const workflow = read("web/content-review-workflow.js");
+  assert.match(workflow, /if \(!panel \|\| !itemId\) return/);
+  assert.match(workflow, /response instanceof Response[\s\S]*response\.clone\(\)\.json/);
+});
