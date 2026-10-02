@@ -28,6 +28,32 @@ const ALLOWED_EVIDENCE_PURPOSES = new Set([
   "transfer_reasoning",
 ]);
 
+function buildFamilyStateFingerprint(template: any, siblingItems: any[]) {
+  const requiredEvidencePurposes = Array.isArray(template?.generation_config?.requiredEvidencePurposes)
+    ? template.generation_config.requiredEvidencePurposes.map((value: unknown) => String(value))
+    : [];
+  const familyMembers = siblingItems
+    .map((sibling: any) => ({
+      id: String(sibling.id),
+      versionNo: Number(sibling.version_no),
+      evidencePurpose: String(sibling.config?.evidencePurpose ?? ""),
+    }))
+    .sort((a: any, b: any) => a.id < b.id ? -1 : a.id > b.id ? 1 : 0)
+    .map((sibling: any) => `${sibling.id}:${sibling.versionNo}:${sibling.evidencePurpose}`)
+    .join(",");
+
+  return [
+    "haiedu-family-state-v1",
+    String(template?.id ?? ""),
+    String(Number(template?.template_version ?? 0)),
+    String(template?.generation_config?.authoringProfileVersion ?? ""),
+    String(template?.generation_config?.evidenceBlueprintPolicy ?? ""),
+    requiredEvidencePurposes.join(","),
+    template?.generation_config?.enforceUniqueEvidencePurposes === true ? "1" : "0",
+    familyMembers,
+  ].join("|");
+}
+
 async function loadItem(admin: any, itemId: string) {
   const { data: item, error } = await admin
     .from("items")
@@ -191,15 +217,7 @@ async function evaluateQa(admin: any, item: any) {
       const duplicatePurposes = Object.entries(purposeCounts)
         .filter(([, count]) => count > 1)
         .map(([purpose]) => purpose);
-      const familyStateFingerprint = JSON.stringify(
-        (siblingEvidenceItems ?? [])
-          .map((sibling: any) => ({
-            id: String(sibling.id),
-            versionNo: Number(sibling.version_no),
-            evidencePurpose: String(sibling.config?.evidencePurpose ?? ""),
-          }))
-          .sort((a: any, b: any) => a.id.localeCompare(b.id)),
-      );
+      const familyStateFingerprint = buildFamilyStateFingerprint(template, siblingEvidenceItems ?? []);
 
       if (missingPurposeItemCodes.length) errors.push("family_evidence_purpose_missing");
       if (invalidPurposeItemCodes.length) errors.push("family_evidence_purpose_invalid");
@@ -523,14 +541,8 @@ Deno.serve(async (req) => {
     }
 
     if (action === "approve") {
-      const { data: qa } = await admin.from("item_qa_runs").select("passed, version_no, created_at, details").eq("item_id", item.id).eq("version_no", item.version_no).order("created_at", { ascending: false }).limit(1).maybeSingle();
-      if (!qa?.passed) return json({ error: "technical_qa_must_pass_before_approval" }, 409);
       const liveApprovalQa = await evaluateQa(admin, item);
-      const storedFamilyStateFingerprint = qa.details?.evidenceBlueprintVerification?.familyStateFingerprint ?? null;
-      const liveFamilyStateFingerprint = liveApprovalQa.details?.evidenceBlueprintVerification?.familyStateFingerprint ?? null;
-      const profiledFamilyStateChanged = liveFamilyStateFingerprint !== null
-        && storedFamilyStateFingerprint !== liveFamilyStateFingerprint;
-      if (!liveApprovalQa.passed || profiledFamilyStateChanged) {
+      if (!liveApprovalQa.passed) {
         return json({
           error: "technical_qa_must_pass_before_approval",
           detail: "family_state_changed_since_qa",
@@ -540,24 +552,24 @@ Deno.serve(async (req) => {
           details: liveApprovalQa.details,
         }, 409);
       }
-      const now = new Date().toISOString();
-      const { error: reviewError } = await admin.from("item_reviews").insert({
-        item_id: item.id,
-        version_no: item.version_no,
-        reviewer_id: actorId,
-        review_type: body.reviewType ?? "content",
-        decision: "approved",
-        notes: body.notes ?? null,
+      const { data: approval, error: approvalError } = await admin.rpc("approve_item_if_family_qa_current", {
+        p_item_id: item.id,
+        p_actor_id: actorId,
+        p_review_type: body.reviewType ?? "content",
+        p_notes: body.notes ?? null,
       });
-      if (reviewError) return json({ error: "review_approval_failed", detail: reviewError.message }, 500);
-      const { error: itemError } = await admin.from("items").update({
-        review_status: "approved",
-        last_reviewed_at: now,
-        last_reviewed_by: actorId,
-        status: item.retired_at ? "archived" : "published",
-      }).eq("id", item.id);
-      if (itemError) return json({ error: "item_approval_update_failed", detail: itemError.message }, 500);
-      return json({ approved: true, versionNo: item.version_no });
+      if (approvalError) return json({ error: "item_approval_failed", detail: approvalError.message }, 500);
+      if (!approval?.approved) {
+        return json({
+          error: approval?.error ?? "technical_qa_must_pass_before_approval",
+          detail: approval?.detail ?? "family_state_changed_since_qa",
+          requiresQaRerun: Boolean(approval?.requiresQaRerun),
+          errors: liveApprovalQa.errors,
+          warnings: liveApprovalQa.warnings,
+          details: liveApprovalQa.details,
+        }, 409);
+      }
+      return json(approval);
     }
 
     if (action === "request_changes") {
