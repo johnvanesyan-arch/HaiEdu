@@ -73,6 +73,13 @@ function purposeLabel(value) {
   })[value] || value || "—";
 }
 
+function smeValidationLabel(value) {
+  return ({
+    provisional_no_sme_review: "Սպասում է մասնագիտական (SME) ստուգման",
+    sme_reviewed: "✓ Մասնագիտական (SME) ստուգումը գրանցված է",
+  })[value] || "Մասնագիտական (SME) կարգավիճակը կառավարվում է առանձին գործընթացով";
+}
+
 async function invoke(name, body = {}) {
   const { data, error } = await supabase.functions.invoke(name, { body });
   if (error) {
@@ -386,7 +393,7 @@ function renderDetail() {
         <label>Դժվարություն<select id="metaDifficulty" ${disabled ? "disabled" : ""}>${[1,2,3,4,5].map((n)=>`<option value="${n}" ${n===item.difficulty?"selected":""}>${n}</option>`).join("")}</select></label>
         <label>Հարցերի ընտանիք<input id="metaFamily" value="${esc(item.itemFamily)}" ${disabled ? "disabled" : ""} /></label>
         <label class="wide">Աղբյուրի հղում / նշում<input id="metaSource" value="${esc(item.sourceReference ?? "")}" ${disabled ? "disabled" : ""} /></label>
-        <label class="wide">Վավերացման կարգավիճակ<input id="metaValidation" value="${esc(item.validationState ?? "")}" ${disabled ? "disabled" : ""} /></label>
+        <div class="wide metadata-governance-field"><span>Մասնագիտական (SME) կարգավիճակ</span><strong>${esc(smeValidationLabel(item.validationState))}</strong><small>Այս կարգավիճակը Content Reviewer-ը չի փոխում։ Այն գրանցվում է առանձին SME գործընթացով։</small></div>
       </div>
     </section>
 
@@ -600,7 +607,6 @@ function buildRevisionPayload(item, defaultSummary = "Content editor revision") 
     difficulty: Number($("metaDifficulty").value),
     itemFamily: $("metaFamily").value.trim(),
     sourceReference: $("metaSource").value.trim() || null,
-    validationState: $("metaValidation").value.trim(),
     options: item.type === "single_choice" ? collectOptions() : [],
     answerKey: collectAnswerKey(item.type),
     misconceptions,
