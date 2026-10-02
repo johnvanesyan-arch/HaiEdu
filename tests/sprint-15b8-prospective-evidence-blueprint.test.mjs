@@ -10,6 +10,10 @@ const qualityFunction = readFileSync(
   "supabase/functions/manage-content-quality/index.ts",
   "utf8",
 );
+const uniquePurposeCorrection = readFileSync(
+  "supabase/migrations/20261002073000_sprint_15b8_unique_evidence_flag.sql",
+  "utf8",
+);
 const policy = readFileSync("docs/assessment-evidence-blueprint-policy.md", "utf8");
 const spec = readFileSync(
   "docs/sprint-15b8-physics7-chapter-ii-sixth-item-family.md",
@@ -41,6 +45,8 @@ test("family QA verifies coverage while allowing justified larger families", () 
   assert.match(qualityFunction, /family_evidence_purpose_duplicate/);
   assert.match(qualityFunction, /evidenceBlueprintVerification/);
   assert.match(policy, /Larger or otherwise justified families may repeat a purpose/);
+  assert.match(uniquePurposeCorrection, /enforceUniqueEvidencePurposes/);
+  assert.match(uniquePurposeCorrection, /15B8_unique_evidence_template_flag_failed/);
 });
 
 test("sixth family targets the direct S07 programme outcome", () => {
