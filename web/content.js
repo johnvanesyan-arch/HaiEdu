@@ -1,6 +1,5 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
-import { clearContentDashboardCache, readContentDashboardCache, writeContentDashboardCache } from "./content-workspace.js";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -12,8 +11,6 @@ let selectedDetail = null;
 let detailLoadToken = 0;
 let editorDirty = false;
 let workflowBusy = false;
-let activeSession = null;
-let bootstrapPromise = null;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -31,6 +28,16 @@ async function invoke(name, body = {}) {
   if (error) {
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
+    if (payload?.requiresQaRerun) {
+      const problems = Array.isArray(payload.errors)
+        ? payload.errors.map(qaMessageHy).filter(Boolean).join(" ")
+        : "";
+      const workflowError = new Error(
+        `Հարցերի ընտանիքը փոխվել է վերջին QA-ից հետո։ Կրկին գործարկեք QA-ն, ուսումնասիրեք ընթացիկ խնդիրները և միայն դրանից հետո հաստատեք հարցը։${problems ? ` ${problems}` : ""}`,
+      );
+      workflowError.requiresQaRerun = true;
+      throw workflowError;
+    }
     throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
   }
   if (data?.error) throw new Error(data.detail || data.error);
@@ -193,6 +200,24 @@ function learnerPreviewHtml(detail) {
   return `<section class="detail-section learner-preview" data-item-tab="preview"><h3>Սովորողի տեսքը</h3><p class="learner-preview-prompt">${esc(item.promptHy || "Հարցի տեքստ չկա")}</p><div class="learner-preview-options">${options}</div></section>`;
 }
 
+const QA_MESSAGE_HY = {
+  answer_position_distribution_imbalanced: "Այս հարցի ընտանիքում ճիշտ պատասխանների դիրքերը անհամաչափ են բաշխված։ Վերանայեք տարբերակների հերթականությունը։",
+  answer_position_distribution_check_failed: "Չհաջողվեց ստուգել ճիշտ պատասխանների դիրքերի բաշխումը։ Կրկին գործարկեք QA-ն։",
+  shuffle_disabled_without_option_order_rationale: "Տարբերակների խառնումն անջատված է, սակայն հաստատուն հերթականության պատճառը նշված չէ։",
+  evidence_purpose_missing: "Հարցի ապացուցողական նպատակը նշված չէ։",
+  evidence_purpose_invalid: "Հարցի ապացուցողական նպատակը թույլատրելի չէ։",
+  family_evidence_blueprint_invalid: "Հարցերի ընտանիքի ապացուցողական սխեման վավեր չէ։",
+  family_evidence_blueprint_check_failed: "Չհաջողվեց ստուգել հարցերի ընտանիքի ապացուցողական սխեման։",
+  family_evidence_purpose_missing: "Ընտանիքի առնվազն մեկ հարց չունի ապացուցողական նպատակ։",
+  family_evidence_purpose_invalid: "Ընտանիքի առնվազն մեկ հարց ունի անթույլատրելի ապացուցողական նպատակ։",
+  family_evidence_blueprint_incomplete: "Ընտանիքում բացակայում է պարտադիր ապացուցողական նպատակներից առնվազն մեկը։",
+  family_evidence_purpose_duplicate: "Այս ընտանիքում յուրաքանչյուր պարտադիր ապացուցողական նպատակը պետք է օգտագործվի մեկ անգամ։",
+};
+
+function qaMessageHy(code) {
+  return QA_MESSAGE_HY[code] || code;
+}
+
 function activateItemTab(tab) {
   itemTab = tab;
   document.body.dataset.contentActiveTab = tab;
@@ -214,16 +239,6 @@ function wireItemTabs() {
 }
 
 window.addEventListener("haiedu:content-tab-refresh", () => activateItemTab(itemTab));
-
-const QA_MESSAGE_HY = {
-  answer_position_distribution_imbalanced: "Այս հարցի ընտանիքում ճիշտ պատասխանների դիրքերը անհամաչափ են բաշխված։ Վերանայեք տարբերակների հերթականությունը։",
-  answer_position_distribution_check_failed: "Չհաջողվեց ստուգել ճիշտ պատասխանների դիրքերի բաշխումը։ Կրկին գործարկեք QA-ն։",
-  shuffle_disabled_without_option_order_rationale: "Տարբերակների խառնումն անջատված է, սակայն հաստատուն հերթականության պատճառը նշված չէ։",
-};
-
-function qaMessageHy(code) {
-  return QA_MESSAGE_HY[code] || code;
-}
 
 function renderDetail() {
   const item = dashboard?.items?.find((i) => i.id === selectedId);
@@ -529,8 +544,7 @@ async function saveRevision() {
     workflowBusy = true;
     setMessage("Նոր տարբերակը պահպանվում է…");
     await persistCurrentRevision();
-    clearContentDashboardCache(activeSession?.user?.id);
-    await refresh(selectedId, { force: true });
+    await refresh(selectedId);
     setMessage(`${item.code}: պահպանվեց որպես նոր տարբերակ։ Այժմ գործարկեք QA-ն, ապա հաստատեք հարցը։`);
   } catch (err) {
     setMessage(err.message, true);
@@ -560,8 +574,7 @@ async function runQaCurrent() {
     workflowBusy = true;
     setMessage("Տեխնիկական QA-ն գործարկվում է…");
     const passed = await ensureQaPassed({ force: true });
-    clearContentDashboardCache(activeSession?.user?.id);
-    await refresh(selectedId, { force: true });
+    await refresh(selectedId);
     setMessage(
       passed
         ? `${item.code}: QA-ն հաջողությամբ անցավ։`
@@ -597,10 +610,10 @@ async function approveCurrent() {
     workflowBusy = true;
     setMessage("Հարցը հաստատվում է…");
     await invoke("manage-content-quality", { action: "approve", itemId: selectedId, reviewType: "content" });
-    clearContentDashboardCache(activeSession?.user?.id);
-    await refresh(selectedId, { force: true });
+    await refresh(selectedId);
     setMessage(`${item.code}: հարցը հաստատված է։`);
   } catch (err) {
+    if (err.requiresQaRerun) activateItemTab("review");
     setMessage(err.message, true);
   } finally {
     workflowBusy = false;
@@ -624,20 +637,14 @@ async function action(name, extra = {}) {
   try {
     setMessage("Գործողությունը կատարվում է…");
     await invoke("manage-content-quality", { action: name, itemId: selectedId, ...extra });
-    clearContentDashboardCache(activeSession?.user?.id);
-    await refresh(selectedId, { force: true });
+    await refresh(selectedId);
     setMessage("Պատրաստ է։");
   } catch (err) { setMessage(err.message, true); }
 }
 
-async function refresh(reselect = selectedId, { force = false } = {}) {
+async function refresh(reselect = selectedId) {
   try {
-    const userId = activeSession?.user?.id;
-    dashboard = !force ? readContentDashboardCache(userId) : null;
-    if (!dashboard) {
-      dashboard = await invoke("get-content-quality-dashboard", {});
-      writeContentDashboardCache(userId, dashboard);
-    }
+    dashboard = await invoke("get-content-quality-dashboard", {});
     if (contentMode === "item") {
       const requested = new URLSearchParams(location.search).get("id") || reselect;
       if (!requested || !dashboard.items.some((item) => item.id === requested)) {
@@ -667,20 +674,18 @@ async function refresh(reselect = selectedId, { force = false } = {}) {
   }
 }
 let sessionCheck = 0;
-async function showForSession(session, { force = false } = {}) {
+async function showForSession(session) {
   const check = ++sessionCheck;
   $("console").classList.add("hidden");
   if (!session) {
-    activeSession = null;
     editorDirty = false;
     $("authPanel").classList.remove("hidden");
     $("signOutBtn").classList.add("hidden");
     return;
   }
-  activeSession = session;
   $("authPanel").classList.add("hidden");
   $("signOutBtn").classList.remove("hidden");
-  const allowed = await refresh(selectedId, { force });
+  const allowed = await refresh();
   if (check !== sessionCheck) return;
   if (!allowed) {
     $("authMessage").textContent = "Չհաջողվեց հաստատել այս բաժնի հասանելիությունը։ Թարմացրեք էջը կամ մուտք գործեք համապատասխան հաշվով։";
@@ -705,21 +710,6 @@ window.addEventListener("beforeunload", (event) => {
   event.returnValue = "";
 });
 
-supabase.auth.onAuthStateChange((event, session) => {
-  if (event === "SIGNED_OUT") return void showForSession(null);
-  if (!session) return;
-  if (["USER_UPDATED", "MFA_CHALLENGE_VERIFIED"].includes(event)) {
-    clearContentDashboardCache(session.user.id);
-    return void showForSession(session, { force: true });
-  }
-  if ($("console").classList.contains("hidden") && !bootstrapPromise) {
-    bootstrapPromise = showForSession(session).finally(() => { bootstrapPromise = null; });
-  }
-});
+supabase.auth.onAuthStateChange((_event, session) => setTimeout(() => showForSession(session), 0));
 const { data: { session } } = await supabase.auth.getSession();
-if (session) {
-  bootstrapPromise = showForSession(session).finally(() => { bootstrapPromise = null; });
-  await bootstrapPromise;
-} else {
-  await showForSession(null);
-}
+await showForSession(session);

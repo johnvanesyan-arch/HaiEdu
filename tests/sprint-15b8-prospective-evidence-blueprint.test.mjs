@@ -15,6 +15,7 @@ const uniquePurposeCorrection = readFileSync(
   "utf8",
 );
 const policy = readFileSync("docs/assessment-evidence-blueprint-policy.md", "utf8");
+const reviewerUi = readFileSync("web/content.js", "utf8");
 const spec = readFileSync(
   "docs/sprint-15b8-physics7-chapter-ii-sixth-item-family.md",
   "utf8",
@@ -51,9 +52,14 @@ test("family QA verifies coverage while allowing justified larger families", () 
 
 test("approval revalidates the live family instead of trusting stale QA", () => {
   assert.match(qualityFunction, /const liveApprovalQa = await evaluateQa\(admin, item\)/);
+  assert.match(qualityFunction, /familyStateFingerprint/);
+  assert.match(qualityFunction, /storedFamilyStateFingerprint !== liveFamilyStateFingerprint/);
   assert.match(qualityFunction, /family_state_changed_since_qa/);
   assert.match(qualityFunction, /requiresQaRerun: true/);
-  assert.match(policy, /Approval re-evaluates the current active family/);
+  assert.match(policy, /deterministic family-state fingerprint/);
+  assert.match(reviewerUi, /Հարցերի ընտանիքը փոխվել է վերջին QA-ից հետո/);
+  assert.match(reviewerUi, /Կրկին գործարկեք QA-ն/);
+  assert.match(reviewerUi, /family_evidence_blueprint_incomplete/);
 });
 
 test("sixth family targets the direct S07 programme outcome", () => {

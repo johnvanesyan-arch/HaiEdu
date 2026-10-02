@@ -163,7 +163,7 @@ async function evaluateQa(admin: any, item: any) {
 
     const { data: siblingEvidenceItems, error: siblingEvidenceError } = await admin
       .from("items")
-      .select("id, code, config")
+      .select("id, code, version_no, config")
       .eq("item_template_id", item.item_template_id)
       .is("retired_at", null);
 
@@ -191,6 +191,15 @@ async function evaluateQa(admin: any, item: any) {
       const duplicatePurposes = Object.entries(purposeCounts)
         .filter(([, count]) => count > 1)
         .map(([purpose]) => purpose);
+      const familyStateFingerprint = JSON.stringify(
+        (siblingEvidenceItems ?? [])
+          .map((sibling: any) => ({
+            id: String(sibling.id),
+            versionNo: Number(sibling.version_no),
+            evidencePurpose: String(sibling.config?.evidencePurpose ?? ""),
+          }))
+          .sort((a: any, b: any) => a.id.localeCompare(b.id)),
+      );
 
       if (missingPurposeItemCodes.length) errors.push("family_evidence_purpose_missing");
       if (invalidPurposeItemCodes.length) errors.push("family_evidence_purpose_invalid");
@@ -209,6 +218,7 @@ async function evaluateQa(admin: any, item: any) {
         duplicatePurposes,
         missingPurposeItemCodes,
         invalidPurposeItemCodes,
+        familyStateFingerprint,
       };
     }
   }
@@ -513,10 +523,14 @@ Deno.serve(async (req) => {
     }
 
     if (action === "approve") {
-      const { data: qa } = await admin.from("item_qa_runs").select("passed, version_no, created_at").eq("item_id", item.id).eq("version_no", item.version_no).order("created_at", { ascending: false }).limit(1).maybeSingle();
+      const { data: qa } = await admin.from("item_qa_runs").select("passed, version_no, created_at, details").eq("item_id", item.id).eq("version_no", item.version_no).order("created_at", { ascending: false }).limit(1).maybeSingle();
       if (!qa?.passed) return json({ error: "technical_qa_must_pass_before_approval" }, 409);
       const liveApprovalQa = await evaluateQa(admin, item);
-      if (!liveApprovalQa.passed) {
+      const storedFamilyStateFingerprint = qa.details?.evidenceBlueprintVerification?.familyStateFingerprint ?? null;
+      const liveFamilyStateFingerprint = liveApprovalQa.details?.evidenceBlueprintVerification?.familyStateFingerprint ?? null;
+      const profiledFamilyStateChanged = liveFamilyStateFingerprint !== null
+        && storedFamilyStateFingerprint !== liveFamilyStateFingerprint;
+      if (!liveApprovalQa.passed || profiledFamilyStateChanged) {
         return json({
           error: "technical_qa_must_pass_before_approval",
           detail: "family_state_changed_since_qa",
