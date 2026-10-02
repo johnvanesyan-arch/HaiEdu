@@ -20,6 +20,14 @@ function sameJson(a: unknown, b: unknown) {
   return JSON.stringify(a ?? null) === JSON.stringify(b ?? null);
 }
 
+const PROSPECTIVE_AUTHORING_PROFILE = "haiedu-evidence-blueprint-v1";
+const ALLOWED_EVIDENCE_PURPOSES = new Set([
+  "core_understanding",
+  "application",
+  "misconception_diagnosis",
+  "transfer_reasoning",
+]);
+
 async function loadItem(admin: any, itemId: string) {
   const { data: item, error } = await admin
     .from("items")
@@ -131,12 +139,79 @@ async function evaluateQa(admin: any, item: any) {
   const warnings: string[] = [];
   let generatedVerification: Record<string, unknown> | null = null;
   let answerPositionDistribution: Record<string, unknown> | null = null;
+  let evidenceBlueprintVerification: Record<string, unknown> | null = null;
 
   if (!item.code) errors.push("missing_item_code");
   if (!String(item.prompt_hy ?? "").trim()) errors.push("empty_prompt");
   if (!(Number(item.difficulty) >= 1 && Number(item.difficulty) <= 5)) errors.push("invalid_difficulty");
   if (item.difficulty_band !== expectedDifficultyBand(Number(item.difficulty))) errors.push("difficulty_band_mismatch");
   if (!key) errors.push("missing_answer_key");
+
+  const authoringProfileVersion = String(template?.generation_config?.authoringProfileVersion ?? "");
+  if (authoringProfileVersion === PROSPECTIVE_AUTHORING_PROFILE) {
+    const evidencePurpose = String(item.config?.evidencePurpose ?? "");
+    const requiredEvidencePurposes = Array.isArray(template?.generation_config?.requiredEvidencePurposes)
+      ? [...new Set(template.generation_config.requiredEvidencePurposes.map((value: unknown) => String(value)))]
+      : [];
+
+    if (!evidencePurpose) errors.push("evidence_purpose_missing");
+    else if (!ALLOWED_EVIDENCE_PURPOSES.has(evidencePurpose)) errors.push("evidence_purpose_invalid");
+
+    if (!requiredEvidencePurposes.length || requiredEvidencePurposes.some((purpose) => !ALLOWED_EVIDENCE_PURPOSES.has(purpose))) {
+      errors.push("family_evidence_blueprint_invalid");
+    }
+
+    const { data: siblingEvidenceItems, error: siblingEvidenceError } = await admin
+      .from("items")
+      .select("id, code, config")
+      .eq("item_template_id", item.item_template_id)
+      .is("retired_at", null);
+
+    if (siblingEvidenceError) {
+      errors.push("family_evidence_blueprint_check_failed");
+    } else {
+      const purposeCounts: Record<string, number> = {};
+      const missingPurposeItemCodes: string[] = [];
+      const invalidPurposeItemCodes: string[] = [];
+
+      for (const sibling of siblingEvidenceItems ?? []) {
+        const siblingPurpose = String(sibling.config?.evidencePurpose ?? "");
+        if (!siblingPurpose) {
+          missingPurposeItemCodes.push(String(sibling.code ?? sibling.id));
+          continue;
+        }
+        if (!ALLOWED_EVIDENCE_PURPOSES.has(siblingPurpose)) {
+          invalidPurposeItemCodes.push(String(sibling.code ?? sibling.id));
+          continue;
+        }
+        purposeCounts[siblingPurpose] = (purposeCounts[siblingPurpose] ?? 0) + 1;
+      }
+
+      const missingRequiredPurposes = requiredEvidencePurposes.filter((purpose) => !purposeCounts[purpose]);
+      const duplicatePurposes = Object.entries(purposeCounts)
+        .filter(([, count]) => count > 1)
+        .map(([purpose]) => purpose);
+
+      if (missingPurposeItemCodes.length) errors.push("family_evidence_purpose_missing");
+      if (invalidPurposeItemCodes.length) errors.push("family_evidence_purpose_invalid");
+      if (missingRequiredPurposes.length) errors.push("family_evidence_blueprint_incomplete");
+      const enforceUniqueEvidencePurposes = template?.generation_config?.enforceUniqueEvidencePurposes === true;
+      if (enforceUniqueEvidencePurposes && duplicatePurposes.length) errors.push("family_evidence_purpose_duplicate");
+
+      evidenceBlueprintVerification = {
+        policyVersion: PROSPECTIVE_AUTHORING_PROFILE,
+        evidenceBlueprintPolicy: template?.generation_config?.evidenceBlueprintPolicy ?? null,
+        itemEvidencePurpose: evidencePurpose || null,
+        requiredEvidencePurposes,
+        enforceUniqueEvidencePurposes,
+        purposeCounts,
+        missingRequiredPurposes,
+        duplicatePurposes,
+        missingPurposeItemCodes,
+        invalidPurposeItemCodes,
+      };
+    }
+  }
 
   if (key) {
     if (item.item_type === "single_choice") {
@@ -290,7 +365,8 @@ async function evaluateQa(admin: any, item: any) {
       expectedDifficultyBand: expectedDifficultyBand(Number(item.difficulty)),
       generatedVerification,
       answerPositionDistribution,
-      scope: "technical_structure_metadata_generated_variant_and_answer_position_quality",
+      evidenceBlueprintVerification,
+      scope: "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
     },
   };
 }
