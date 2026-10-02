@@ -1,7 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 
-const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
+const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 let renderToken = 0;
 let scheduled = null;
@@ -29,7 +29,7 @@ function formatDate(value) {
   if (!value) return "—";
   const date = new Date(value);
   if (Number.isNaN(date.getTime())) return String(value);
-  return new Intl.DateTimeFormat("en", {
+  return new Intl.DateTimeFormat("hy-AM", {
     year: "numeric",
     month: "short",
     day: "2-digit",
@@ -39,8 +39,8 @@ function formatDate(value) {
 }
 
 function reviewerLabel(review) {
-  if (!review?.reviewer) return "System / historical review";
-  return review.reviewer.displayName || review.reviewer.role || "Reviewer";
+  if (!review?.reviewer) return "Համակարգ / պատմական ստուգում";
+  return review.reviewer.displayName || review.reviewer.role || "Ստուգող";
 }
 
 function decisionLabel(decision) {
@@ -49,59 +49,18 @@ function decisionLabel(decision) {
     submitted: "Ուղարկվել է ստուգման",
     approved: "Հաստատված",
   };
-  return labels[decision] || decision || "Review event";
-}
-
-function ensureChangesQueueButton() {
-  const filterCard = document.querySelector(".filter-card");
-  const refreshButton = $("refreshBtn");
-  if (!filterCard || !refreshButton || $("changesQueueBtn")) return;
-
-  const button = document.createElement("button");
-  button.id = "changesQueueBtn";
-  button.type = "button";
-  button.className = "ghost changes-queue-btn";
-  button.textContent = "Changes requested";
-  button.setAttribute("aria-label", "Show questions with requested changes");
-  button.addEventListener("click", () => {
-    const filter = $("reviewFilter");
-    if (!filter) return;
-    filter.value = "changes_requested";
-    filter.dispatchEvent(new Event("change", { bubbles: true }));
-    button.classList.add("active");
-    document.querySelector(".bank-card")?.scrollIntoView({ behavior: "smooth", block: "start" });
-  });
-
-  filterCard.insertBefore(button, refreshButton);
-  $("reviewFilter")?.addEventListener("change", () => {
-    button.classList.toggle("active", $("reviewFilter")?.value === "changes_requested");
-  });
-}
-
-async function refreshChangesQueueCount() {
-  ensureChangesQueueButton();
-  const button = $("changesQueueBtn");
-  if (!button) return;
-  try {
-    const dashboard = await invoke("get-content-quality-dashboard", {});
-    const count = (dashboard.items ?? []).filter((item) => item.reviewStatus === "changes_requested").length;
-    button.textContent = `Changes requested (${count})`;
-    button.dataset.count = String(count);
-    button.classList.toggle("has-items", count > 0);
-  } catch {
-    button.textContent = "Changes requested";
-  }
+  return labels[decision] || decision || "Ստուգման իրադարձություն";
 }
 
 function reviewHistoryHtml(reviews) {
-  if (!reviews?.length) return `<p class="subtle tiny">No review history yet.</p>`;
+  if (!reviews?.length) return `<p class="subtle tiny">Ստուգման պատմություն դեռ չկա։</p>`;
   return `<ol class="review-history-list">${reviews.map((review) => `
     <li class="review-history-entry ${review.decision === "changes_requested" ? "is-change-request" : ""}">
       <div class="review-history-head">
         <strong>${esc(decisionLabel(review.decision))}</strong>
         <span>v${esc(review.versionNo)} · ${esc(formatDate(review.createdAt))}</span>
       </div>
-      <div class="subtle tiny">${esc(reviewerLabel(review))} · ${esc(review.reviewType || "content")}</div>
+      <div class="subtle tiny">${esc(reviewerLabel(review))} · ${esc(review.reviewType === "content" ? "բովանդակային ստուգում" : (review.reviewType || "բովանդակային ստուգում"))}</div>
       ${review.notes ? `<p class="review-history-note">${esc(review.notes)}</p>` : ""}
     </li>`).join("")}</ol>`;
 }
@@ -130,8 +89,9 @@ function injectReviewUi(data, expectedItemId) {
     anchor.insertAdjacentElement("afterend", callout);
   }
 
-  const workflowHeading = [...panel.querySelectorAll(".detail-section h3")].find((h) => h.textContent.trim() === "Review workflow");
-  const workflowSection = workflowHeading?.closest(".detail-section");
+  const workflowSection = panel.querySelector("#contentDecisionSection")
+    || [...panel.querySelectorAll('.detail-section[data-item-tab="review"]')].find((section) =>
+      section.querySelector("h3")?.textContent.trim() === "Բովանդակային որոշում");
   if (workflowSection) {
     const history = document.createElement("section");
     history.id = "reviewHistorySection";
@@ -157,14 +117,17 @@ async function enhanceSelectedItem() {
     injectReviewUi(data, itemId);
   } catch (err) {
     if (token !== renderToken || selectedItemId() !== itemId) return;
-    const workflowHeading = [...panel.querySelectorAll(".detail-section h3")].find((h) => h.textContent.trim() === "Review workflow");
-    const workflowSection = workflowHeading?.closest(".detail-section");
+    const workflowSection = panel.querySelector("#contentDecisionSection")
+      || [...panel.querySelectorAll('.detail-section[data-item-tab="review"]')].find((section) =>
+        section.querySelector("h3")?.textContent.trim() === "Բովանդակային որոշում");
     if (workflowSection && !$("reviewHistorySection")) {
       const error = document.createElement("section");
       error.id = "reviewHistorySection";
       error.className = "detail-section review-history-section";
-      error.innerHTML = `<h3>Review history</h3><p class="message bad">${esc(err.message)}</p>`;
+      error.dataset.itemTab = "history";
+      error.innerHTML = `<h3>Ստուգման պատմություն</h3><p class="message bad">${esc(err.message)}</p>`;
       workflowSection.insertAdjacentElement("afterend", error);
+      window.dispatchEvent(new CustomEvent("haiedu:content-tab-refresh"));
     }
   }
 }
@@ -173,14 +136,10 @@ function scheduleEnhancement() {
   clearTimeout(scheduled);
   scheduled = setTimeout(() => {
     enhanceSelectedItem();
-    refreshChangesQueueCount();
   }, 120);
 }
 
 function watchConsole() {
-  ensureChangesQueueButton();
-  refreshChangesQueueCount();
-
   const panel = $("detailPanel");
   const rows = $("itemRows");
   if (panel) {
@@ -204,8 +163,9 @@ function initWhenReady() {
   setTimeout(initWhenReady, 100);
 }
 
-supabase.auth.onAuthStateChange((_event, session) => {
-  if (session) setTimeout(initWhenReady, 0);
+supabase.auth.onAuthStateChange((event, session) => {
+  if (!session || event === "TOKEN_REFRESHED") return;
+  setTimeout(initWhenReady, 0);
 });
 const { data: { session } } = await supabase.auth.getSession();
 if (session) initWhenReady();
