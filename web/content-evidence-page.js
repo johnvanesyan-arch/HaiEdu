@@ -3,6 +3,25 @@ import { $, esc, invokeContent, mountContentWorkspace } from "./content-workspac
 let dashboard = null;
 let currentAnalytics = null;
 
+const EVIDENCE_ERROR_HY = {
+  account_or_session_inactive: "Հաշիվը կամ սեսիան ակտիվ չէ։ Նորից մուտք գործեք։",
+  content_admin_required: "Այս բաժինը հասանելի է միայն բովանդակության ստուգողին կամ հարթակի ադմինիստրատորին։",
+  invalid_unit_code: "Ընտրված բաժնի կոդը վավեր չէ։ Թարմացրեք էջը և կրկին ընտրեք բաժինը։",
+  method_not_allowed: "Այս հարցումը չի աջակցվում։",
+  pilot_analytics_failed: "Չհաջողվեց բեռնել փորձնական տվյալները։",
+  pilot_analytics_unavailable: "Այս բաժնի համար փորձնական տվյալներ դեռ հասանելի չեն։",
+  server_not_configured: "Սերվերի կարգավորումը թերի է։ Դիմեք հարթակի ադմինիստրատորին։",
+  unauthorized: "Սեսիան վավեր չէ։ Նորից մուտք գործեք։",
+};
+
+function evidenceErrorHy(error) {
+  const raw = String(error?.message || error || "");
+  for (const [code, label] of Object.entries(EVIDENCE_ERROR_HY)) {
+    if (raw.includes(code)) return label;
+  }
+  return raw || "Չհաջողվեց բեռնել փորձնական տվյալները։";
+}
+
 function pct(value) {
   if (value === null || value === undefined) return "—";
   return `${Math.round(Number(value) * 100)}%`;
@@ -28,7 +47,7 @@ function flagLabel(flag) {
     high_exact_repeat:"Կրկնության բարձր ցուցանիշ",
     possible_memorisation_signal:"Հնարավոր մտապահման ազդակ",
     unanswered_signal:"Չպատասխանված / լքված",
-  })[flag] || flag;
+  })[flag] || `Այլ գործառնական ազդակ (${flag})`;
 }
 
 function renderAnalytics() {
@@ -62,7 +81,7 @@ async function loadEvidence() {
     $("evidenceMessage").textContent = "";
     renderAnalytics();
   } catch (error) {
-    $("evidenceMessage").textContent = error.message;
+    $("evidenceMessage").textContent = evidenceErrorHy(error);
     currentAnalytics = null;
     renderAnalytics();
   }
