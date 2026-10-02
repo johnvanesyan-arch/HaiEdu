@@ -127,3 +127,20 @@
 @media(max-width:760px){
   .governance-status-grid{grid-template-columns:1fr}
 }
+
+
+.metadata-governance-field{
+  display:grid;
+  gap:5px;
+  padding:12px 14px;
+  border:1px solid #dce5ee;
+  border-radius:10px;
+  background:#f8fafc;
+}
+.metadata-governance-field>span{
+  color:#60738c;
+  font-size:.8rem;
+  font-weight:750;
+}
+.metadata-governance-field>strong{color:#334155}
+.metadata-governance-field>small{color:#6b7b8d;line-height:1.45}
