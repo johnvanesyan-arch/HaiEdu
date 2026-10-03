@@ -1080,6 +1080,7 @@ async function configureMfa() {
 }
 
 async function runWorkflow(action) {
+  const check = sessionCheck;
   try {
     const rationaleInput = $("changeRationale");
     const rationale = rationaleInput?.value.trim() || "";
@@ -1094,6 +1095,7 @@ async function runWorkflow(action) {
       return;
     }
     if (["publish", "archive"].includes(action) && !(await ensureAal2())) return;
+    if (check !== sessionCheck) return;
     setMessage("Գործողությունը կատարվում է…");
     const guide = detail.guide;
     await invoke({
@@ -1106,17 +1108,22 @@ async function runWorkflow(action) {
       referenceMetadata: referencesFromEditor(),
       changeRationale: rationale,
     });
+    if (check !== sessionCheck) return;
     editorDirty = false;
     await refreshCatalog(selectedId);
+    if (check !== sessionCheck) return;
     setMessage("Գործողությունը հաջողությամբ ավարտվեց։");
   } catch (error) {
+    if (check !== sessionCheck) return;
     if (error.validation && $("validationPanel")) renderValidation(error.validation);
     setMessage(messageFor(error), true);
   }
 }
 
 async function refreshCatalog(reselect = selectedId) {
+  const check = sessionCheck;
   const response = await invoke({ action: "list" });
+  if (check !== sessionCheck) return;
   catalog = response.guides ?? [];
   renderStats(response.actor);
   populateFilters();
@@ -1145,6 +1152,16 @@ async function showForSession(session) {
   const check = ++sessionCheck;
   $("guideConsole").classList.add("hidden");
   if (!session) {
+    loadToken += 1;
+    previewToken += 1;
+    catalog = [];
+    selectedId = null;
+    detail = null;
+    editorDirty = false;
+    currentActor = null;
+    $("guideEditor").innerHTML = "";
+    $("guideRows").innerHTML = "";
+    $("guideMessage").textContent = "";
     $("authPanel").classList.remove("hidden");
     $("signOutBtn").classList.add("hidden");
     return;
@@ -1209,7 +1226,8 @@ window.addEventListener("beforeunload", (event) => {
 });
 
 supabase.auth.onAuthStateChange((event, session) => {
-  if (["SIGNED_IN", "SIGNED_OUT"].includes(event)) setTimeout(() => showForSession(session), 0);
+  if (event === "SIGNED_OUT") return void showForSession(null);
+  if (event === "SIGNED_IN") setTimeout(() => showForSession(session), 0);
   if (event === "MFA_CHALLENGE_VERIFIED") markAal2();
 });
 const { data: { session } } = await supabase.auth.getSession();

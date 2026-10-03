@@ -6,6 +6,7 @@ const $ = (id) => document.getElementById(id);
 let analytics = null;
 let catalog = null;
 let loadToken = 0;
+let analyticsSessionEnded = false;
 let initialized = false;
 let observerStarted = false;
 
@@ -194,14 +195,18 @@ function renderItemEvidence() {
 }
 
 async function loadCatalog() {
+  const token = loadToken;
   const dashboard = await invoke("get-content-quality-dashboard", {});
+  if (token !== loadToken) return;
   catalog = dashboard.catalog ?? null;
 }
 
 async function loadAnalytics({ forceCatalog = false } = {}) {
+  if (analyticsSessionEnded) return;
   const token = ++loadToken;
   try {
     if (!catalog || forceCatalog) await loadCatalog();
+    if (token !== loadToken) return;
     const unitCode = currentUnitCode();
     if (!unitCode) {
       analytics = null;
@@ -238,8 +243,18 @@ function start() {
   setTimeout(() => loadAnalytics({ forceCatalog: true }), 120);
 }
 
-supabase.auth.onAuthStateChange((_event, session) => {
-  if (session) setTimeout(start, 0);
+supabase.auth.onAuthStateChange((event, session) => {
+  if (event === "SIGNED_OUT") {
+    loadToken += 1;
+    analytics = null;
+    catalog = null;
+    analyticsSessionEnded = true;
+    return;
+  }
+  if (session) {
+    analyticsSessionEnded = false;
+    setTimeout(start, 0);
+  }
 });
 const { data: { session } } = await supabase.auth.getSession();
 if (session) start();

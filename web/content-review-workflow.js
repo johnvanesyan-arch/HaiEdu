@@ -192,6 +192,11 @@ function initWhenReady() {
 }
 
 supabase.auth.onAuthStateChange((event, session) => {
+  if (event === "SIGNED_OUT") {
+    renderToken += 1;
+    clearTimeout(scheduled);
+    return;
+  }
   if (!session || event === "TOKEN_REFRESHED") return;
   setTimeout(initWhenReady, 0);
 });

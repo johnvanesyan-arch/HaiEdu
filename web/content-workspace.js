@@ -7,6 +7,9 @@ export const $ = (id) => document.getElementById(id);
 const CONTENT_DASHBOARD_CACHE_PREFIX = "haiedu:content-dashboard:v1:";
 const CONTENT_DASHBOARD_CACHE_TTL_MS = 20_000;
 const dashboardLoads = new Map();
+const dashboardLoadVersions = new Map();
+const dashboardUsers = new Set();
+let contentSessionVersion = 0;
 
 function contentDashboardCacheKey(userId) {
   return `${CONTENT_DASHBOARD_CACHE_PREFIX}${userId}`;
@@ -14,6 +17,7 @@ function contentDashboardCacheKey(userId) {
 
 export function readContentDashboardCache(userId, maxAgeMs = CONTENT_DASHBOARD_CACHE_TTL_MS) {
   if (!userId) return null;
+  dashboardUsers.add(userId);
   try {
     const raw = sessionStorage.getItem(contentDashboardCacheKey(userId));
     if (!raw) return null;
@@ -38,6 +42,10 @@ export function writeContentDashboardCache(userId, dashboard) {
 }
 
 export function clearContentDashboardCache(userId) {
+  if (userId) {
+    dashboardLoadVersions.set(userId, (dashboardLoadVersions.get(userId) ?? 0) + 1);
+    dashboardLoads.delete(userId);
+  }
   try {
     if (userId) sessionStorage.removeItem(contentDashboardCacheKey(userId));
   } catch { /* best-effort cleanup */ }
@@ -46,17 +54,20 @@ export function clearContentDashboardCache(userId) {
 export async function loadContentDashboard(session, { force = false } = {}) {
   const userId = session?.user?.id;
   if (!userId) throw new Error("unauthorized");
+  dashboardUsers.add(userId);
   if (!force) {
     const cached = readContentDashboardCache(userId);
     if (cached) return cached;
   }
   if (dashboardLoads.has(userId)) return dashboardLoads.get(userId);
+  const loadVersion = dashboardLoadVersions.get(userId) ?? 0;
   const request = invokeContent("get-content-quality-dashboard", {})
     .then((dashboard) => {
+      if (loadVersion !== (dashboardLoadVersions.get(userId) ?? 0)) throw new Error("content_dashboard_load_invalidated");
       writeContentDashboardCache(userId, dashboard);
       return dashboard;
     })
-    .finally(() => dashboardLoads.delete(userId));
+    .finally(() => { if (dashboardLoads.get(userId) === request) dashboardLoads.delete(userId); });
   dashboardLoads.set(userId, request);
   return request;
 }
@@ -66,7 +77,9 @@ export function esc(value) {
 }
 
 export async function invokeContent(name, body = {}) {
+  const version = contentSessionVersion;
   const { data, error } = await contentSupabase.functions.invoke(name, { body });
+  if (version !== contentSessionVersion) throw new Error("content_session_ended");
   if (error) {
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
@@ -115,6 +128,7 @@ export async function mountContentWorkspace(render, { gateId = "console", authPa
     const userId = session?.user?.id ?? null;
     if (!session) {
       version += 1;
+      clearContentDashboardCache(currentUserId);
       currentUserId = null;
       gate?.classList.add("hidden");
       authPanel?.classList.remove("hidden");
@@ -160,6 +174,14 @@ export async function mountContentWorkspace(render, { gateId = "console", authPa
     if (["USER_UPDATED", "MFA_CHALLENGE_VERIFIED"].includes(event)) return void show(session, { force: true });
     if (gate?.classList.contains("hidden")) void show(session);
   });
+  const initialVersion = version;
   const { data } = await contentSupabase.auth.getSession();
-  await show(data.session);
+  if (initialVersion === version) await show(data.session);
 }
+
+contentSupabase.auth.onAuthStateChange((event) => {
+  if (event !== "SIGNED_OUT") return;
+  contentSessionVersion += 1;
+  for (const userId of dashboardUsers) clearContentDashboardCache(userId);
+  dashboardUsers.clear();
+});
