@@ -784,7 +784,12 @@ async function action(name, extra = {}) {
 
 async function refresh(reselect = selectedId, { force = false } = {}) {
   try {
-    dashboard = await loadContentDashboard(activeSession, { force });
+    const nextDashboard = await loadContentDashboard(activeSession, { force });
+    if (editorDirty) {
+      setMessage("Թարմացումը չի կիրառվել․ կան չպահպանված փոփոխություններ։ Պահպանեք կամ չեղարկեք դրանք, ապա նորից թարմացրեք։");
+      return true;
+    }
+    dashboard = nextDashboard;
     window.dispatchEvent(new CustomEvent("haiedu:content-dashboard", { detail: { dashboard } }));
     if (contentMode === "item") {
       const requested = new URLSearchParams(location.search).get("id") || reselect;
