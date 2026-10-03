@@ -1122,7 +1122,13 @@ async function runWorkflow(action) {
 
 async function refreshCatalog(reselect = selectedId) {
   const check = sessionCheck;
-  const response = await invoke({ action: "list" });
+  let response;
+  try {
+    response = await invoke({ action: "list" });
+  } catch (error) {
+    if (check !== sessionCheck) return;
+    throw error;
+  }
   if (check !== sessionCheck) return;
   catalog = response.guides ?? [];
   renderStats(response.actor);
@@ -1227,8 +1233,12 @@ window.addEventListener("beforeunload", (event) => {
 
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_OUT") return void showForSession(null);
-  if (event === "SIGNED_IN") setTimeout(() => showForSession(session), 0);
+  if (event === "SIGNED_IN") {
+    const check = sessionCheck;
+    setTimeout(() => { if (check === sessionCheck) void showForSession(session); }, 0);
+  }
   if (event === "MFA_CHALLENGE_VERIFIED") markAal2();
 });
+const initialSessionCheck = sessionCheck;
 const { data: { session } } = await supabase.auth.getSession();
-await showForSession(session);
+if (initialSessionCheck === sessionCheck) await showForSession(session);

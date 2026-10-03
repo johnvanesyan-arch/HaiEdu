@@ -83,6 +83,7 @@ export async function invokeContent(name, body = {}) {
   if (error) {
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
+    if (version !== contentSessionVersion) throw new Error("content_session_ended");
     throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
   }
   if (data?.error) throw new Error(data.detail || data.error);
