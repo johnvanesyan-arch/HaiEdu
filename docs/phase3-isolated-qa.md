@@ -84,3 +84,14 @@ This migration replaces one read-only function and contains no content DML.
 Deploy only after CI passes; read back the function and Edge bundle, preserve
 the existing JWT setting/shared auth helper, and compare the recorded content
 hashes before and after deployment. Keep P3-15 live browser acceptance pending.
+
+## Same-user guide authentication follow-up
+
+`tests/content-guide-auth-refresh.test.mjs` adds eight executable P3-22 checks
+against the actual guide page code. A repeated same-user `SIGNED_IN` event must
+retain dirty content for both guide scopes and both reviewer roles while still
+performing the authoritative catalogue/access read. Initial reads coalesce;
+same-user revalidation does not cancel a pending save; user changes synchronously
+clear protected state; denied access hides the console and permits recovery.
+These synthetic VM checks do not establish real tab-focus or hosted Auth/MFA
+acceptance. The remaining browser actions are unchanged.
