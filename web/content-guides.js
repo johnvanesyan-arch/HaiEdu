@@ -1120,7 +1120,7 @@ async function runWorkflow(action) {
   }
 }
 
-async function refreshCatalog(reselect = selectedId) {
+async function refreshCatalog(reselect = selectedId, { preserveDirtyEditor = false } = {}) {
   const check = sessionCheck;
   let response;
   try {
@@ -1136,6 +1136,7 @@ async function refreshCatalog(reselect = selectedId) {
   renderRows();
   const requested = reselect || guideIdFromUrl();
   if (requested && catalog.some((g) => `${g.guideScope}:${g.guideSourceId}` === requested)) {
+    if (preserveDirtyEditor && editorDirty && requested === selectedId && detail) return;
     setWorkspaceMode("editor");
     updateGuideUrl(requested, true);
     await selectGuide(requested, true);
@@ -1154,10 +1155,16 @@ async function refreshCatalog(reselect = selectedId) {
 }
 
 let sessionCheck = 0;
+let guideSessionUserId = null;
+let guideSessionLoading = false;
 async function showForSession(session) {
-  const check = ++sessionCheck;
-  $("guideConsole").classList.add("hidden");
-  if (!session) {
+  const nextUserId = session?.user?.id ?? null;
+  const sameUser = nextUserId !== null && nextUserId === guideSessionUserId;
+  if (sameUser && guideSessionLoading) return;
+  const check = sameUser ? sessionCheck : ++sessionCheck;
+  guideSessionUserId = nextUserId;
+  if (!sameUser) {
+    $("guideConsole").classList.add("hidden");
     loadToken += 1;
     previewToken += 1;
     catalog = [];
@@ -1168,21 +1175,28 @@ async function showForSession(session) {
     $("guideEditor").innerHTML = "";
     $("guideRows").innerHTML = "";
     $("guideMessage").textContent = "";
+  }
+  if (!nextUserId) {
+    guideSessionLoading = false;
     $("authPanel").classList.remove("hidden");
     $("signOutBtn").classList.add("hidden");
     return;
   }
+  guideSessionLoading = true;
   $("authPanel").classList.add("hidden");
   $("signOutBtn").classList.remove("hidden");
   try {
-    await refreshCatalog();
+    await refreshCatalog(selectedId, { preserveDirtyEditor: sameUser });
     if (check !== sessionCheck) return;
     $("authMessage").textContent = "";
     $("guideConsole").classList.remove("hidden");
   } catch (error) {
     if (check !== sessionCheck) return;
+    $("guideConsole").classList.add("hidden");
     $("authMessage").textContent = messageFor(error);
     $("authPanel").classList.remove("hidden");
+  } finally {
+    if (check === sessionCheck) guideSessionLoading = false;
   }
 }
 
