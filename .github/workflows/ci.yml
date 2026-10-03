@@ -78,3 +78,5 @@ jobs:
         run: python -m pip install pgserver==0.1.4 'psycopg[binary]==3.2.6'
       - name: Verify administrator and teacher offboarding races
         run: python tests/sprint-14b-offboarding-concurrency.py
+      - name: Verify isolated Phase 3 content races
+        run: python tests/phase3-content-concurrency.py

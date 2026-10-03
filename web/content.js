@@ -664,10 +664,12 @@ function buildRevisionPayload(item, defaultSummary = "Content editor revision") 
 }
 
 async function persistCurrentRevision(defaultSummary = "Բովանդակության խմբագրում") {
+  const check = sessionCheck;
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item || !selectedDetail?.editing?.contentEditable) return false;
   const payload = buildRevisionPayload(item, defaultSummary);
   await invoke("manage-content-quality", { action: "save_content_revision", itemId: selectedId, payload });
+  if (check !== sessionCheck || !activeSession) return false;
   editorDirty = false;
   updateEditorDirtyUi();
   return true;
@@ -676,17 +678,20 @@ async function persistCurrentRevision(defaultSummary = "Բովանդակությ
 async function saveRevision() {
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item || !selectedDetail?.editing?.contentEditable || workflowBusy) return;
+  const check = sessionCheck;
   try {
     workflowBusy = true;
     setMessage("Նոր տարբերակը պահպանվում է…");
-    await persistCurrentRevision();
+    if (!(await persistCurrentRevision())) return;
     clearContentDashboardCache(activeSession?.user?.id);
     await refresh(selectedId, { force: true });
+    if (check !== sessionCheck || !activeSession) return;
     setMessage(`${item.code}: պահպանվեց որպես նոր տարբերակ։ Այժմ գործարկեք QA-ն, ապա հաստատեք հարցը։`);
   } catch (err) {
+    if (check !== sessionCheck || !activeSession) return;
     setMessage(err.message, true);
   } finally {
-    workflowBusy = false;
+    if (check === sessionCheck) workflowBusy = false;
   }
 }
 
@@ -702,6 +707,7 @@ async function runQaCurrent() {
   if (workflowBusy) return;
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item) return;
+  const check = sessionCheck;
   if (editorDirty) {
     activateItemTab("content");
     setMessage("Նախ պահպանեք փոփոխությունները որպես նոր տարբերակ, ապա գործարկեք QA-ն։", true);
@@ -711,8 +717,10 @@ async function runQaCurrent() {
     workflowBusy = true;
     setMessage("Տեխնիկական QA-ն գործարկվում է…");
     const passed = await ensureQaPassed({ force: true });
+    if (check !== sessionCheck || !activeSession) return;
     clearContentDashboardCache(activeSession?.user?.id);
     await refresh(selectedId, { force: true });
+    if (check !== sessionCheck || !activeSession) return;
     setMessage(
       passed
         ? `${item.code}: QA-ն հաջողությամբ անցավ։`
@@ -720,9 +728,10 @@ async function runQaCurrent() {
       !passed,
     );
   } catch (err) {
+    if (check !== sessionCheck || !activeSession) return;
     setMessage(err.message, true);
   } finally {
-    workflowBusy = false;
+    if (check === sessionCheck) workflowBusy = false;
   }
 }
 
@@ -730,6 +739,7 @@ async function approveCurrent() {
   if (workflowBusy) return;
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item) return;
+  const check = sessionCheck;
   if (editorDirty) {
     activateItemTab("content");
     setMessage("Նախ պահպանեք փոփոխությունները որպես նոր տարբերակ։ Հաստատումը հնարավոր է միայն պահպանված և QA անցած տարբերակի համար։", true);
@@ -748,14 +758,17 @@ async function approveCurrent() {
     workflowBusy = true;
     setMessage("Հարցը հաստատվում է…");
     await invoke("manage-content-quality", { action: "approve", itemId: selectedId, reviewType: "content" });
+    if (check !== sessionCheck || !activeSession) return;
     clearContentDashboardCache(activeSession?.user?.id);
     await refresh(selectedId, { force: true });
+    if (check !== sessionCheck || !activeSession) return;
     setMessage(`${item.code}: հարցը հաստատված է։`);
   } catch (err) {
+    if (check !== sessionCheck || !activeSession) return;
     if (err.requiresQaRerun) activateItemTab("review");
     setMessage(err.message, true);
   } finally {
-    workflowBusy = false;
+    if (check === sessionCheck) workflowBusy = false;
   }
 }
 
@@ -773,13 +786,19 @@ async function retireItem() {
 }
 
 async function action(name, extra = {}) {
+  const check = sessionCheck;
   try {
     setMessage("Գործողությունը կատարվում է…");
     await invoke("manage-content-quality", { action: name, itemId: selectedId, ...extra });
+    if (check !== sessionCheck || !activeSession) return;
     clearContentDashboardCache(activeSession?.user?.id);
     await refresh(selectedId, { force: true });
+    if (check !== sessionCheck || !activeSession) return;
     setMessage("Պատրաստ է։");
-  } catch (err) { setMessage(err.message, true); }
+  } catch (err) {
+    if (check !== sessionCheck || !activeSession) return;
+    setMessage(err.message, true);
+  }
 }
 
 async function refresh(reselect = selectedId, { force = false } = {}) {
@@ -825,6 +844,7 @@ async function refresh(reselect = selectedId, { force = false } = {}) {
 let sessionCheck = 0;
 async function showForSession(session, { force = false } = {}) {
   const check = ++sessionCheck;
+  workflowBusy = false;
   $("console").classList.add("hidden");
   if (!session) {
     clearContentDashboardCache(activeSession?.user?.id);
@@ -882,10 +902,11 @@ supabase.auth.onAuthStateChange((event, session) => {
     bootstrapPromise = showForSession(session).finally(() => { bootstrapPromise = null; });
   }
 });
+const initialSessionCheck = sessionCheck;
 const { data: { session } } = await supabase.auth.getSession();
-if (session) {
+if (initialSessionCheck === sessionCheck && session) {
   bootstrapPromise = showForSession(session).finally(() => { bootstrapPromise = null; });
   await bootstrapPromise;
-} else {
+} else if (initialSessionCheck === sessionCheck) {
   await showForSession(null);
 }
