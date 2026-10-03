@@ -80,3 +80,34 @@ jobs:
         run: python tests/sprint-14b-offboarding-concurrency.py
       - name: Verify isolated Phase 3 content races
         run: python tests/phase3-content-concurrency.py
+
+  phase3-postgres-17:
+    runs-on: ubuntu-latest
+    services:
+      postgres:
+        image: postgres:17.6
+        env:
+          POSTGRES_USER: phase3_fixture
+          POSTGRES_PASSWORD: fixture-only
+          POSTGRES_DB: phase3_qa_root
+        ports:
+          - 5432:5432
+        options: >-
+          --health-cmd "pg_isready -U phase3_fixture -d phase3_qa_root"
+          --health-interval 5s --health-timeout 5s --health-retries 12
+    env:
+      PHASE3_POSTGRES_17_CI: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: npm ci
+      - run: python -m pip install 'psycopg[binary]==3.2.6'
+      - name: Verify isolated Phase 3 races on PostgreSQL 17.6
+        run: python tests/phase3-content-concurrency.py
+      - name: Execute analytics SQL, handler and Evidence page with PostgreSQL 17.6
+        run: node --test tests/phase3-analytics-integration.test.mjs

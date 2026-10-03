@@ -1,19 +1,20 @@
 """Phase 3 PostgreSQL races with independent connections and synthetic data.
 
-No URL, credential, or environment connection string is accepted. pgserver creates
-an ephemeral PostgreSQL cluster with Unix sockets only. Auth/MFA inputs remain
+No URL, credential, or environment connection string is accepted. Local pgserver
+uses Unix sockets; CI can use a fixed disposable PostgreSQL 17.6 service. Auth/MFA inputs remain
 fixtures: this suite verifies database controls, not live Supabase authentication.
 Dependencies match the existing isolated concurrency CI job.
 """
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
-from tempfile import TemporaryDirectory
 import time
-import pgserver
+import sys
 import psycopg
 from psycopg.types.json import Jsonb
 
 ROOT = Path(__file__).resolve().parents[1]
+sys.path.insert(0, str(ROOT / 'tests/fixtures'))
+from phase3_postgres import database_uri
 ITEM = '30000000-0000-4000-8000-000000000001'
 SIBLING = '30000000-0000-4000-8000-000000000002'
 ACTOR = '10000000-0000-4000-8000-000000000010'
@@ -143,11 +144,5 @@ def run(uri):
 
 
 if __name__ == '__main__':
-    with TemporaryDirectory(prefix='haiedu-phase3-pg-') as tmp:
-        server = pgserver.get_server(Path(tmp) / 'db', cleanup_mode='stop')
-        uri = server.get_uri()
-        try:
-            assert '?host=' in uri and 'postgresql://postgres:@/' in uri, 'only disposable Unix-socket PostgreSQL is permitted'
-            run(uri)
-        finally:
-            server.cleanup()
+    with database_uri() as uri:
+        run(uri)

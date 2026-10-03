@@ -43,9 +43,9 @@ Deno.serve(async (req) => {
       return json({ error: "content_admin_required" }, 403);
     }
 
-    let body: { unitCode?: string } = {};
-    try { body = await req.json(); } catch { /* default below */ }
-    const unitCode = String(body.unitCode ?? "PHY7-U01").trim();
+    let body: { unitCode?: unknown } | null = null;
+    try { body = await req.json(); } catch { return json({ error: "invalid_unit_code" }, 400); }
+    const unitCode = typeof body?.unitCode === "string" ? body.unitCode.trim() : "";
     if (!/^[A-Z0-9-]{3,40}$/.test(unitCode)) return json({ error: "invalid_unit_code" }, 400);
 
     const { data, error } = await admin.rpc("service_get_pilot_item_analytics", {
