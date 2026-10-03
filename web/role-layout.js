@@ -242,7 +242,9 @@ function syncSchoolSections() {
   const selected = views.includes(requested) ? requested : "overviewPanel";
   for (const id of views) {
     const section = document.getElementById(id);
-    if (section) section.hidden = selected !== id;
+    const shouldHide = selected !== id;
+    // Rewriting an observed hidden attribute can retrigger the sidebar observer forever.
+    if (section && section.hidden !== shouldHide) section.hidden = shouldHide;
   }
   for (const link of sidebar.querySelectorAll(".hm-role-nav a")) {
     const current = selected === "overviewPanel"
@@ -262,7 +264,8 @@ function syncPlatformSections() {
   const selected = views.includes(requested) ? requested : "overviewSection";
   for (const id of views) {
     const section = document.getElementById(id);
-    if (section) section.hidden = selected !== id;
+    const shouldHide = selected !== id;
+    if (section && section.hidden !== shouldHide) section.hidden = shouldHide;
   }
   for (const link of sidebar.querySelectorAll(".hm-role-nav a")) {
     const href = link.getAttribute("href");

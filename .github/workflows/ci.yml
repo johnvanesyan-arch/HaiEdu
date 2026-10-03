@@ -59,12 +59,28 @@ jobs:
           node --check web/content-evidence-page.js
           node --check web/ux.js
           node --check web/role-router.js
+          node --check web/role-layout.js
           node --check web/student-shell.js
           node --check web/privacy.js
           node --check web/admin.js
           node --check web/admin-security.js
           node --check scripts/check-core-parity.mjs
           node --check scripts/check-favicon-coverage.mjs
+
+  role-layout-browser:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Install Chromium
+        run: npx playwright install --with-deps chromium
+      - name: Verify dashboard observer and browser responsiveness
+        run: node --test tests/browser/role-layout.browser.test.mjs
 
 
   institutional-concurrency:
