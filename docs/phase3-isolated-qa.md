@@ -46,3 +46,41 @@ Production changes in this batch are session lifecycle guards in shared reviewer
 code. Server authorization, SQL, QA criteria, version rules, SME states, MFA,
 curriculum releases and learner visibility are unchanged. The new tests exercise
 normal current-session success as well as interrupted and stale completions.
+
+## PostgreSQL 17.6 and executable analytics follow-up
+
+The `phase3-postgres-17` CI job pins `postgres:17.6`, matching the production major
+and minor version. It runs the seven existing Phase 3 lock/commit-order checks,
+then `tests/phase3-analytics-integration.test.mjs`. The latter executes the real
+analytics SQL, actual Edge handler with Auth doubles, and actual Evidence page
+code in a Node VM. This is not browser, genuine Auth/MFA or hosted RLS acceptance.
+Ordinary `npm test` executes the same analytics tests with in-memory PGlite.
+
+`tests/fixtures/phase3_postgres.py` accepts no DSN, project reference or secret.
+CI mode requires `GITHUB_ACTIONS=true`, a fixed loopback service, fixture-only
+credentials, and an exact PostgreSQL 17.6/version/user/root-database identity.
+Each suite/test owns a randomly named disposable child database and drops only
+that database on completion. Local fallback remains Unix-socket pgserver.
+Never enable CI mode against a developer or production database.
+
+The analytics fixture uses four synthetic programme contexts: `QA-A-U01` has
+flagged items, `QA-B-U01` has an unflagged item, and C/D are empty. It covers all
+eight operational flags, sample/rate boundaries, repeat lift, response times,
+unanswered/abandoned/completed counts, protected-pool leakage, fallback reasons,
+pool capacity, diagnostic forms, retirement provenance and service-only grants.
+The Evidence page consumes the handler's actual SQL response and links each
+flagged row to its question. Minimal fixture SQL is local/CI only.
+
+Executable fixtures reproduced two defects: help on unanswered exposures could
+inflate `helpUseRate`, and absent unit scope silently selected Physics. The
+follow-up migration preserves total `helpUsedCount`, adds
+`answeredHelpUsedCount`, and divides answered help by answered exposures.
+The SQL function is strict with a null default; the handler rejects missing or
+invalid unit codes with HTTP 400. Both reviewer consumers already pass selected
+unit codes explicitly. Flag thresholds, role/session checks, service-only grants,
+SME states, MFA, curriculum, versioning and release controls are unchanged.
+
+This migration replaces one read-only function and contains no content DML.
+Deploy only after CI passes; read back the function and Edge bundle, preserve
+the existing JWT setting/shared auth helper, and compare the recorded content
+hashes before and after deployment. Keep P3-15 live browser acceptance pending.
