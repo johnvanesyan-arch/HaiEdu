@@ -1,4 +1,4 @@
-import { $, esc, curriculumContext, mountContentWorkspace, qaLabel, reviewLabel } from "./content-workspace.js";
+import { $, esc, contentSupabase, curriculumContext, mountContentWorkspace, qaLabel, reviewLabel } from "./content-workspace.js";
 
 let dashboard = null;
 let queue = new URLSearchParams(location.search).get("queue") || "all";
@@ -51,4 +51,7 @@ document.querySelectorAll("[data-queue]").forEach((button) => button.addEventLis
   renderRows();
 }));
 $("queueSearch").addEventListener("input", renderRows);
+contentSupabase.auth.onAuthStateChange((event) => {
+  if (event === "SIGNED_OUT") dashboard = null;
+});
 await mountContentWorkspace(render);

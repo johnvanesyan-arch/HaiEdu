@@ -3,6 +3,7 @@ let data = null;
 let initialized = false;
 let observerStarted = false;
 let applyTimer = null;
+let curriculumSessionVersion = 0;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -234,13 +235,18 @@ function scheduleApply() {
 }
 
 async function refreshData({ ensureSelection = false, rebuild = false, force = false } = {}) {
+  const version = curriculumSessionVersion;
   try {
     const { data: sessionData } = await contentSupabase.auth.getSession();
+    if (version !== curriculumSessionVersion) return;
     if (!sessionData.session) return;
-    data = await loadContentDashboard(sessionData.session, { force });
+    const next = await loadContentDashboard(sessionData.session, { force });
+    if (version !== curriculumSessionVersion) return;
+    data = next;
     if (rebuild || !initialized) rebuildSelectors();
     applyScope({ ensureSelection });
   } catch (err) {
+    if (version !== curriculumSessionVersion) return;
     if ($("curriculumSummary")) $("curriculumSummary").textContent = `Չհաջողվեց բեռնել ուսումնական կատալոգը․ ${err.message}`;
   }
 }
@@ -280,6 +286,13 @@ window.addEventListener("haiedu:content-dashboard", (event) => {
 });
 
 contentSupabase.auth.onAuthStateChange((event, session) => {
+  if (event === "SIGNED_OUT") {
+    curriculumSessionVersion += 1;
+    clearTimeout(applyTimer);
+    data = null;
+    initialized = false;
+    return;
+  }
   if (!session || event === "TOKEN_REFRESHED") return;
   setTimeout(start, 0);
 });

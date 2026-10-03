@@ -1,4 +1,4 @@
-import { $, esc, invokeContent, mountContentWorkspace } from "./content-workspace.js";
+import { $, esc, contentSupabase, invokeContent, mountContentWorkspace } from "./content-workspace.js";
 
 let dashboard = null;
 let currentAnalytics = null;
@@ -106,4 +106,13 @@ async function render(data) {
 }
 $("evidenceUnit").addEventListener("change", loadEvidence);
 $("refreshEvidenceBtn").addEventListener("click", loadEvidence);
+contentSupabase.auth.onAuthStateChange((event) => {
+  if (event !== "SIGNED_OUT") return;
+  evidenceRequestId += 1;
+  dashboard = null;
+  currentAnalytics = null;
+  $("evidenceMessage").textContent = "";
+  $("evidenceMetrics").innerHTML = "";
+  $("evidenceFlagList").innerHTML = "";
+});
 await mountContentWorkspace(render);

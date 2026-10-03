@@ -783,8 +783,10 @@ async function action(name, extra = {}) {
 }
 
 async function refresh(reselect = selectedId, { force = false } = {}) {
+  const check = sessionCheck;
   try {
     const nextDashboard = await loadContentDashboard(activeSession, { force });
+    if (check !== sessionCheck || !activeSession) return false;
     if (editorDirty) {
       setMessage("Թարմացումը չի կիրառվել․ կան չպահպանված փոփոխություններ։ Պահպանեք կամ չեղարկեք դրանք, ապա նորից թարմացրեք։");
       return true;
@@ -815,6 +817,7 @@ async function refresh(reselect = selectedId, { force = false } = {}) {
     else if ($("detailPanel")) $("detailPanel").innerHTML = '<h2>Ընտրեք հարց</h2><p class="subtle">Հարցերի բանկը դատարկ է։</p>';
     return true;
   } catch (err) {
+    if (check !== sessionCheck || !activeSession) return false;
     setMessage(err.message, true);
     return false;
   }
@@ -824,8 +827,17 @@ async function showForSession(session, { force = false } = {}) {
   const check = ++sessionCheck;
   $("console").classList.add("hidden");
   if (!session) {
+    clearContentDashboardCache(activeSession?.user?.id);
+    detailLoadToken += 1;
     activeSession = null;
+    dashboard = null;
+    selectedId = null;
+    selectedDetail = null;
     editorDirty = false;
+    delete document.body.dataset.contentItemId;
+    if ($("detailPanel")) $("detailPanel").innerHTML = "";
+    if ($("itemRows")) $("itemRows").innerHTML = "";
+    if ($("consoleMessage")) $("consoleMessage").textContent = "";
     $("authPanel").classList.remove("hidden");
     $("signOutBtn").classList.add("hidden");
     return;

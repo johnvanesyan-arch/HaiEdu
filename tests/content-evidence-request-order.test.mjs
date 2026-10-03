@@ -13,24 +13,38 @@ async function harness() {
   const nodes = Object.fromEntries(["evidenceUnit", "evidenceMessage", "evidenceMetrics", "evidenceFlagList", "refreshEvidenceBtn"]
     .map(id => [id, { value: "", textContent: "", innerHTML: "", addEventListener() {} }]));
   const reads = [];
+  let authListener;
   const source = readFileSync("web/content-evidence-page.js", "utf8").replace(/^import .*;\n/gm, "");
   const api = await vm.runInNewContext(`(async () => { ${source}
     return { loadEvidence, analytics: () => currentAnalytics };
   })()`, {
     $: id => nodes[id], esc: value => String(value),
     mountContentWorkspace: async () => {},
+    contentSupabase: { auth: { onAuthStateChange(callback) { authListener = callback; } } },
     invokeContent(name, body) {
       const request = deferred();
       reads.push({ name, body, ...request });
       return request.promise;
     },
   });
-  return { api, nodes, reads, select(value) { nodes.evidenceUnit.value = value; return api.loadEvidence(); } };
+  return { api, nodes, reads, logout() { authListener("SIGNED_OUT", null); }, select(value) { nodes.evidenceUnit.value = value; return api.loadEvidence(); } };
 }
 
 function analytics(code, count) {
   return { unitCode: code, integrity: { exposureCount: count, distinctStudents: count ? 1 : 0 }, items: [] };
 }
+
+test("sign-out discards pending evidence and clears protected metrics", async () => {
+  const h = await harness();
+  const pending = h.select("UNIT-A");
+  h.logout();
+  h.reads[0].resolve({ analytics: analytics("UNIT-A", 39) });
+  await pending;
+  assert.equal(h.api.analytics(), null);
+  assert.equal(h.nodes.evidenceMetrics.innerHTML, "");
+  assert.equal(h.nodes.evidenceFlagList.innerHTML, "");
+  assert.equal(h.nodes.evidenceMessage.textContent, "");
+});
 
 test("clearing a selection invalidates the pending result and loading message", async () => {
   const h = await harness();
