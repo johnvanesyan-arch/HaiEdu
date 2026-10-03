@@ -96,7 +96,7 @@ function rebuildSelectors(source = "") {
 
   const currentProgram = program.value || program.dataset.preferred || "";
   const programRows = programsFor(gradeValue, subjectValue);
-  const programValue = setOptions(program, programRows, "All programs", currentProgram, (p) => {
+  const programValue = setOptions(program, programRows, "Բոլոր ծրագրերը", currentProgram, (p) => {
     const subjectName = p.subjectNameHy || p.subjectNameEn || "Ծրագիր";
     const gradeName = p.gradeLabelHy || (p.gradeNumber ? `${p.gradeNumber}-րդ դասարան` : "Դասարան");
     return `${gradeName} · ${subjectName} · ${p.versionLabel || "գործող"}`;
