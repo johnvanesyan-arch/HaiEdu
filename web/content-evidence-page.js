@@ -2,6 +2,7 @@ import { $, esc, invokeContent, mountContentWorkspace } from "./content-workspac
 
 let dashboard = null;
 let currentAnalytics = null;
+let evidenceRequestId = 0;
 
 const EVIDENCE_ERROR_HY = {
   account_or_session_inactive: "Հաշիվը կամ սեսիան ակտիվ չէ։ Նորից մուտք գործեք։",
@@ -72,15 +73,26 @@ function renderAnalytics() {
 }
 
 async function loadEvidence() {
+  const requestId = ++evidenceRequestId;
   const unitCode = $("evidenceUnit").value;
-  if (!unitCode) { currentAnalytics = null; renderAnalytics(); return; }
+  if (!unitCode) {
+    $("evidenceMessage").textContent = "";
+    currentAnalytics = null;
+    renderAnalytics();
+    return;
+  }
+  currentAnalytics = null;
+  $("evidenceMetrics").innerHTML = "";
+  $("evidenceFlagList").innerHTML = "";
   $("evidenceMessage").textContent = "Տվյալները բեռնվում են…";
   try {
     const result = await invokeContent("get-pilot-item-analytics", { unitCode });
+    if (requestId !== evidenceRequestId || $("evidenceUnit").value !== unitCode) return;
     currentAnalytics = result.analytics ?? null;
     $("evidenceMessage").textContent = "";
     renderAnalytics();
   } catch (error) {
+    if (requestId !== evidenceRequestId || $("evidenceUnit").value !== unitCode) return;
     $("evidenceMessage").textContent = evidenceErrorHy(error);
     currentAnalytics = null;
     renderAnalytics();
