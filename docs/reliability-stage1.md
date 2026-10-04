@@ -15,13 +15,15 @@ The CI workflow has a stable aggregate named **Platform release checks**. It run
 
 The release-safety tests compare the aggregate with the actual CI job inventory so an added prerequisite cannot silently be omitted. Missing, failed, skipped or cancelled results do not count as a successful release check. Dependency installation uses the committed lockfile.
 
-### Persistent production gate: activation still required
+### Persistent production gate
 
-The CI aggregate is executable and reviewable in the repository. **It does not itself prevent Vercel from assigning production domains.** The persistent GitHub-backed Deployment Check must also be configured for the project and verified before release blocking can be described as enforced.
+On 2026-10-04, the HaiEdu Vercel project was configured with the GitHub Deployment Check **Platform release checks** for **Production**, with deployment behaviour **Blocking**. The setting was read back in the project dashboard. The CI aggregate and this persistent provider setting are both necessary: the repository job alone does not prevent production-domain assignment.
 
-In the HaiEdu Vercel project's Build and Deployment settings, add the GitHub check **Platform release checks** for the production target, blocking deployment alias assignment. Keep the normal automatic production-domain assignment behaviour so successful candidates can proceed. Verify that a candidate remains off the production domains while the check is pending or failing, and receives them only after success.
+Keep normal automatic production-domain assignment enabled so successful candidates can proceed. The activation pull request records verification of a fresh documentation-only production candidate by its main commit SHA and deployment ID: a completed build must remain off both HaiEdu production domains while the aggregate is pending, then receive those domains automatically after the same candidate's aggregate succeeds. Configuration readback and this candidate verification are separate evidence; a successful build alone is not release approval.
 
-The connected Vercel tools available during this change could read/update an existing project check by ID but could not list or create persistent project checks. A deployment-specific check is not an equivalent replacement. No unsupported API field was used and no automatic promotion setting was disabled to work around this capability limit.
+The connected Vercel tools available during this change could read/update an existing project check by ID but could not list or create persistent project checks. Activation used the dashboard after John approved that browser fallback. A deployment-specific check is not an equivalent replacement. No unsupported API field or forced promotion was used.
+
+The live verification observes the pending and successful paths. Failed, skipped, cancelled and missing prerequisite handling is covered by the release-safety tests and the aggregate's observed CI failure path; the activation does not deliberately fail a production release. Keep authenticated production acceptance separate from the aggregate: those workflows wait for the new release to become live, so making them prerequisites would create a circular wait.
 
 Official behaviour: [Vercel Deployment Checks](https://vercel.com/docs/deployment-checks).
 
@@ -70,4 +72,4 @@ Focused Node suites execute actual controllers/functions with deferred network r
 
 Follow-up stages remain necessary for broader all-role authenticated journeys, runtime error monitoring, dependency delivery/caching resilience and a practiced recovery path. The separate watchdog/next-question request ordering risk and guide assurance/enrollment stale-result handling were recorded for bounded follow-up instead of extending this change into an unreviewed session rewrite.
 
-The first-stage code can be verified independently. Persistent Vercel release blocking remains incomplete until the project setting and a withheld-candidate check are recorded.
+The first-stage code can be verified independently. The persistent Vercel setting is enabled; its activation pull request is the record for the first withheld-candidate verification and final production identity.
