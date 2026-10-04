@@ -247,7 +247,13 @@ try {
     const payload=await result.json();
     check(`${s}: actual admin UI offboards only new membership`,result.status()===200 && payload.offboarding?.ended===true,result.status());
     member.ended=true;
-    await expect(page.locator('#rosterMessage')).toContainText('դադարեցված');
+    // Verify the completed UI state independently of the localized message wording.
+    await expect(button()).toHaveCount(0);
+    await expect(page.locator('#refreshTeachersBtn')).toBeEnabled();
+    await expect(page.locator('#teacherRoster .roster-status-ended').first()).toBeAttached();
+    await expect(page.locator('#rosterMessage')).toHaveClass(/\bis-success\b/);
+    await expect(page.locator('#rosterMessage')).not.toHaveClass(/\bis-error\b/);
+    check(`${s}: offboarding refreshes the roster and reports success`,true);
     await page.context().close();
     const ended=await call(admin,'get-school-teachers',{schoolId},`${s}: verify ended membership`);
     check(`${s}: ended membership has no live grants or assignments`,ended.teachers.some(t=>t.membership_id===member.id && t.membership_status==='ended' && t.subjects.length===0 && t.classes.length===0));
