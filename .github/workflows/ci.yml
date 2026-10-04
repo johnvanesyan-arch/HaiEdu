@@ -127,3 +127,5 @@ jobs:
         run: python tests/phase3-content-concurrency.py
       - name: Execute analytics SQL, handler and Evidence page with PostgreSQL 17.6
         run: node --test tests/phase3-analytics-integration.test.mjs
+      - name: Verify atomic answer scoring with independent PostgreSQL 17.6 connections
+        run: python tests/answer-scoring-concurrency.py

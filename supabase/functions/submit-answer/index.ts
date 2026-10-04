@@ -6,7 +6,6 @@ import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts
 import { resolveRuntimeLearningModel } from "../_shared/learning-model.ts";
 import { issueRecommendationEvent } from "../_shared/recommendation-telemetry.ts";
 import { gradeAnswer } from "../_shared/grading.ts";
-import { initialMasteryState, updateMastery } from "../_shared/mastery.ts";
 import { recommendNext } from "../_shared/recommendation.ts";
 import type { AnswerKey, ItemType, MasteryState, StudentResponse } from "../_shared/types.ts";
 
@@ -178,37 +177,16 @@ Deno.serve(async (req) => {
     return json({ error: "grading_failed" }, 500);
   }
 
-  const { data: priorRow } = await admin
-    .from("student_skill_mastery_by_release")
-    .select("alpha_evidence, beta_evidence, mastery_score, evidence_count, status")
-    .eq("curriculum_release_id", curriculumReleaseId)
-    .eq("student_id", studentId)
-    .eq("skill_id", item.skill_id)
-    .maybeSingle();
-  const prior: MasteryState = priorRow
-    ? {
-        alpha: Number(priorRow.alpha_evidence),
-        beta: Number(priorRow.beta_evidence),
-        masteryScore: Number(priorRow.mastery_score),
-        evidenceCount: priorRow.evidence_count,
-        status: priorRow.status,
-      }
-    : initialMasteryState();
-
-  const serverHintUsed = sessionItem
+  let serverHintUsed = sessionItem
     ? Number(sessionItem.hint_level_used ?? 0) > 0
     : Boolean(payload.hintUsed);
 
-  const updated = updateMastery(prior, {
-    score: grade.score,
-    difficulty: item.difficulty,
-    hintUsed: serverHintUsed,
-  });
   const now = new Date().toISOString();
-
+  let prior: MasteryState;
+  let updated: MasteryState;
   let attemptId: string | null = null;
   if (session) {
-    const { data, error } = await admin.rpc("record_session_graded_attempt", {
+    const { data, error } = await admin.rpc("service_record_session_answer_atomic", {
       p_student_id: studentId,
       p_session_id: payload.sessionId,
       p_session_item_id: payload.sessionItemId,
@@ -221,20 +199,22 @@ Deno.serve(async (req) => {
       p_error_code: grade.errorCode,
       p_hint_used: serverHintUsed,
       p_response_time_ms: payload.responseTimeMs ?? null,
-      p_alpha: updated.alpha,
-      p_beta: updated.beta,
-      p_mastery_score: updated.masteryScore,
-      p_evidence_count: updated.evidenceCount,
-      p_status: updated.status,
       p_attempted_at: now,
     });
     if (error) {
       console.error("session attempt record failed", error);
       return json({ error: "attempt_record_failed" }, 500);
     }
-    attemptId = data;
+    if (data?.replayed) return json({ error: "session_item_already_answered" }, 409);
+    if (!data?.attemptId || !data?.masteryBefore || !data?.masteryAfter) {
+      return json({ error: "attempt_record_failed" }, 500);
+    }
+    attemptId = data.attemptId;
+    prior = data.masteryBefore;
+    updated = data.masteryAfter;
+    serverHintUsed = Boolean(data.hintUsed);
   } else {
-    const { data, error } = await admin.rpc("record_graded_attempt", {
+    const { data, error } = await admin.rpc("service_record_answer_atomic", {
       p_student_id: studentId,
       p_item_id: item.id,
       p_skill_id: item.skill_id,
@@ -245,15 +225,16 @@ Deno.serve(async (req) => {
       p_error_code: grade.errorCode,
       p_hint_used: serverHintUsed,
       p_response_time_ms: payload.responseTimeMs ?? null,
-      p_alpha: updated.alpha,
-      p_beta: updated.beta,
-      p_mastery_score: updated.masteryScore,
-      p_evidence_count: updated.evidenceCount,
-      p_status: updated.status,
       p_attempted_at: now,
     });
     if (error) return json({ error: "attempt_record_failed" }, 500);
-    attemptId = data;
+    if (!data?.attemptId || !data?.masteryBefore || !data?.masteryAfter) {
+      return json({ error: "attempt_record_failed" }, 500);
+    }
+    attemptId = data.attemptId;
+    prior = data.masteryBefore;
+    updated = data.masteryAfter;
+    serverHintUsed = Boolean(data.hintUsed);
   }
 
   if (session?.mode === "diagnostic") {
