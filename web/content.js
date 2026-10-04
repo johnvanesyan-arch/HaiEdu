@@ -543,18 +543,27 @@ function wireEditorDirtyTracking() {
   });
 }
 
+function removeOptionRow(event) {
+  event.currentTarget.closest("[data-option-row]")?.remove();
+  syncSingleChoiceAnswer();
+  markEditorDirty();
+}
+
+function updateOptionKey() {
+  syncSingleChoiceAnswer();
+}
+
+function removeMisconceptionRow(event) {
+  event.currentTarget.closest("[data-misconception-row]")?.remove();
+  if (!document.querySelector("[data-misconception-row]")) $("misconceptionEditor").innerHTML = `<p class="subtle tiny">Կապակցումներ չկան։</p>`;
+  markEditorDirty();
+}
+
 function wireEditorRows() {
-  document.querySelectorAll(".remove-option-btn").forEach((button) => button.addEventListener("click", () => {
-    button.closest("[data-option-row]")?.remove();
-    syncSingleChoiceAnswer();
-    markEditorDirty();
-  }));
-  document.querySelectorAll(".option-key").forEach((input) => input.addEventListener("input", () => syncSingleChoiceAnswer()));
-  document.querySelectorAll(".remove-misconception-btn").forEach((button) => button.addEventListener("click", () => {
-    button.closest("[data-misconception-row]")?.remove();
-    if (!document.querySelector("[data-misconception-row]")) $("misconceptionEditor").innerHTML = `<p class="subtle tiny">Կապակցումներ չկան։</p>`;
-    markEditorDirty();
-  }));
+  // Adding rows rewires existing controls; stable handlers are deduplicated by the browser.
+  document.querySelectorAll(".remove-option-btn").forEach((button) => button.addEventListener("click", removeOptionRow));
+  document.querySelectorAll(".option-key").forEach((input) => input.addEventListener("input", updateOptionKey));
+  document.querySelectorAll(".remove-misconception-btn").forEach((button) => button.addEventListener("click", removeMisconceptionRow));
 }
 
 function nextOptionKey() {
@@ -846,7 +855,9 @@ async function showForSession(session, { force = false } = {}) {
   const check = ++sessionCheck;
   workflowBusy = false;
   $("console").classList.add("hidden");
-  if (!session) {
+  const userChanged = activeSession && activeSession.user.id !== session?.user?.id;
+  if (!session || userChanged) {
+    bootstrapPromise = null;
     clearContentDashboardCache(activeSession?.user?.id);
     detailLoadToken += 1;
     activeSession = null;
@@ -858,6 +869,8 @@ async function showForSession(session, { force = false } = {}) {
     if ($("detailPanel")) $("detailPanel").innerHTML = "";
     if ($("itemRows")) $("itemRows").innerHTML = "";
     if ($("consoleMessage")) $("consoleMessage").textContent = "";
+  }
+  if (!session) {
     $("authPanel").classList.remove("hidden");
     $("signOutBtn").classList.add("hidden");
     return;
@@ -874,6 +887,12 @@ async function showForSession(session, { force = false } = {}) {
   }
   $("authMessage").textContent = "";
   $("console").classList.remove("hidden");
+}
+
+function bootstrapSession(session, options) {
+  const pending = showForSession(session, options);
+  bootstrapPromise = pending;
+  return pending.finally(() => { if (bootstrapPromise === pending) bootstrapPromise = null; });
 }
 
 $("signOutBtn")?.addEventListener("click", () => supabase.auth.signOut());
@@ -894,19 +913,19 @@ window.addEventListener("beforeunload", (event) => {
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_OUT") return void showForSession(null);
   if (!session) return;
+  if (activeSession && activeSession.user.id !== session.user.id) return void bootstrapSession(session);
   if (["USER_UPDATED", "MFA_CHALLENGE_VERIFIED"].includes(event)) {
     clearContentDashboardCache(session.user.id);
-    return void showForSession(session, { force: true });
+    return void bootstrapSession(session, { force: true });
   }
   if ($("console").classList.contains("hidden") && !bootstrapPromise) {
-    bootstrapPromise = showForSession(session).finally(() => { bootstrapPromise = null; });
+    void bootstrapSession(session);
   }
 });
 const initialSessionCheck = sessionCheck;
 const { data: { session } } = await supabase.auth.getSession();
 if (initialSessionCheck === sessionCheck && session) {
-  bootstrapPromise = showForSession(session).finally(() => { bootstrapPromise = null; });
-  await bootstrapPromise;
+  await bootstrapSession(session);
 } else if (initialSessionCheck === sessionCheck) {
   await showForSession(null);
 }

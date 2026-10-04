@@ -290,6 +290,11 @@ function syncAnswerSubmit() {
   const form = document.getElementById("answerForm");
   const submit = document.getElementById("submitBtn");
   if (!form || !submit) return;
+  // Input validity must not override the page's active answer request.
+  if (form.dataset.answerSubmitting === "true") {
+    submit.disabled = true;
+    return;
+  }
   const next = document.getElementById("nextBtn");
   const responseAccepted = next && !next.classList.contains("hidden") && next.disabled === false;
   if (responseAccepted) return;
@@ -402,6 +407,7 @@ function validateBeforeAction(event) {
 }
 
 document.addEventListener("click", validateBeforeAction, true);
+document.addEventListener("haiedu-answer-controls-refresh", syncAnswerSubmit);
 document.addEventListener("change", (event) => {
   if (event.target.matches('#answerForm input[type="radio"]')) syncAnswerSubmit();
 });

@@ -5,6 +5,7 @@ const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
 let currentSession = null;
 let current = null;
+let answerSubmission = null;
 let startedAt = null;
 
 function escapeHtml(value) {
@@ -260,44 +261,63 @@ function collectResponse() {
 
 async function submit(event) {
   event.preventDefault();
+  if (answerSubmission || !current || !currentSession?.id) return;
   const response = collectResponse();
   if (!response) {
     $("feedback").className = "feedback bad";
     $("feedback").textContent = "Նախ ընտրեք կամ մուտքագրեք պատասխանը։";
     return;
   }
+  const form = $("answerForm");
+  const submission = { item: current, sessionId: currentSession.id };
+  const isCurrentSubmission = () => answerSubmission === submission
+    && current === submission.item && currentSession?.id === submission.sessionId;
+  answerSubmission = submission;
+  form.dataset.answerSubmitting = "true";
   $("submitBtn").disabled = true;
-  const responseTimeMs = startedAt ? Math.round(performance.now() - startedAt) : null;
-  const { data, error } = await supabase.functions.invoke("submit-mastery-answer", {
-    body: {
-      sessionId: currentSession.id,
-      sessionItemId: current.sessionItemId,
-      itemId: current.item.id,
-      response,
-      responseTimeMs,
-    },
-  });
-  if (error) {
-    $("submitBtn").disabled = false;
-    $("feedback").className = "feedback bad";
-    $("feedback").textContent = error.message;
-    return;
-  }
+  try {
+    const responseTimeMs = startedAt ? Math.round(performance.now() - startedAt) : null;
+    const { data, error } = await supabase.functions.invoke("submit-mastery-answer", {
+      body: {
+        sessionId: submission.sessionId,
+        sessionItemId: submission.item.sessionItemId,
+        itemId: submission.item.item.id,
+        response,
+        responseTimeMs,
+      },
+    }).catch((error) => ({ error }));
+    if (!isCurrentSubmission()) return;
+    if (error) {
+      $("submitBtn").disabled = false;
+      $("feedback").className = "feedback bad";
+      $("feedback").textContent = error.message;
+      return;
+    }
 
-  const position = current.session.position;
-  const total = current.session.total;
-  const progress = Math.min(100, (position / total) * 100);
-  $("progressBar").style.width = `${progress}%`;
-  $("progressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(progress)));
-  if (data.finalResult) {
-    const currentStatus = await status();
-    return renderFinalResult({ ...data.finalResult, ...currentStatus });
-  }
+    const position = current.session.position;
+    const total = current.session.total;
+    const progress = Math.min(100, (position / total) * 100);
+    $("progressBar").style.width = `${progress}%`;
+    $("progressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(progress)));
+    if (data.finalResult) {
+      const currentStatus = await status();
+      if (!isCurrentSubmission()) return;
+      return renderFinalResult({ ...data.finalResult, ...currentStatus });
+    }
 
-  $("feedback").className = "feedback neutral";
-  $("feedback").innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Արդյունքը չի ցուցադրվում մինչև յուրացման ստուգման ավարտը։</div>";
-  $("nextBtn").textContent = "Հաջորդ հարց";
-  $("nextBtn").classList.remove("hidden");
+    $("feedback").className = "feedback neutral";
+    $("feedback").innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Արդյունքը չի ցուցադրվում մինչև յուրացման ստուգման ավարտը։</div>";
+    $("nextBtn").textContent = "Հաջորդ հարց";
+    $("nextBtn").classList.remove("hidden");
+  } finally {
+    if (answerSubmission === submission) {
+      answerSubmission = null;
+      delete form.dataset.answerSubmitting;
+      if (current !== submission.item || currentSession?.id !== submission.sessionId) {
+        form.dispatchEvent(new Event("haiedu-answer-controls-refresh", { bubbles: true }));
+      }
+    }
+  }
 }
 
 function renderFinalResult(result) {

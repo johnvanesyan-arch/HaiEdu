@@ -6,6 +6,14 @@ If a platform-wide change has an exception or cannot safely apply to an affected
 
 For Edge Function shared-code changes, identify every importing function, compare its deployed bundle with the intended repository source, deploy every affected stale runtime dependency, and read back the deployed files. A merged shared helper does not update already-deployed functions. Record affected consumers, verification, and any exceptions in the deployment evidence.
 
+## Release reliability policy
+
+Every dashboard or shared browser-code release must pass the CI workflow, including its isolated Chromium regressions, and the aggregate `Platform release checks` job. Keep every required CI job in that aggregate. A successful build or a Vercel `READY` state alone does not establish that a page is usable. The persistent production Deployment Check must be configured and verified separately; do not describe release blocking as enforced from the CI job alone.
+
+For observer, listener or asynchronous UI fixes, add a regression that reproduces the reported failure and check every affected consumer. Verify that observers settle, repeated initialization does not multiply handlers, pending actions are not submitted twice, and old responses do not update a new item or account where those behaviours are affected. Use native browser coverage for browser event-loop behaviour; describe VM tests and mocked services accurately.
+
+Shared dependency changes must retain the relevant browser QA triggers. Run `node scripts/check-browser-qa-triggers.mjs`, update its entrypoints when an acceptance flow changes, and review computed imports or URLs that its static dependency graph cannot resolve. Production acceptance must verify the intended frontend commit before starting, keep its reviewed-main and designated-fixture guards, and clean up only records created by that run. Isolated PR checks must not acquire production credentials as a shortcut.
+
 ## Subject-neutral core policy
 
 The platform core must be subject-neutral. Put subject-specific behavior in explicit, versioned configuration or extension points; do not add subject, grade, course-code, unit-size, response-format, scoring-rule, language or content-model assumptions to shared schemas, services, APIs, navigation, analytics or authorization logic.

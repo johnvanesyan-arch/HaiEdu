@@ -7,6 +7,41 @@ on:
     paths:
       - scripts/sprint-14-actions.mjs
       - scripts/sprint-14-action-guards.mjs
+      - scripts/sprint-14-isolation.mjs
+      - scripts/wait-for-production-release.mjs
+      - scripts/stamp-release.mjs
+      # The runner exercises both pages; shared dependencies must activate it too.
+      - web/teacher.*
+      - web/school-admin.*
+      - web/role-layout.*
+      - web/ux.*
+      - web/account-roles.js
+      - web/config.js
+      - web/school-membership-status.js
+      - web/tokens.css
+      - web/base.css
+      - web/styles.css
+      - web/components.css
+      - web/responsive-qa.css
+      - supabase/functions/get-school-admin-overview/**
+      - supabase/functions/get-school-teachers/**
+      - supabase/functions/get-student-classes/**
+      - supabase/functions/get-teacher-academic-context/**
+      - supabase/functions/get-teacher-dashboard/**
+      - supabase/functions/get-teacher-student/**
+      - supabase/functions/manage-institutional-invitation/**
+      - supabase/functions/manage-institutional-membership/**
+      - supabase/functions/manage-institutional-teacher-class/**
+      - supabase/functions/manage-school-teacher/**
+      - supabase/functions/manage-school-academic-year/**
+      - supabase/functions/manage-staff-invitation/**
+      - supabase/functions/manage-student-invitation/**
+      - supabase/functions/manage-teacher-subject/**
+      - supabase/functions/redeem-institutional-invitation/**
+      - supabase/functions/_shared/**
+      - package.json
+      - package-lock.json
+      - vercel.json
       - .github/workflows/sprint-14-actions-qa.yml
 
 permissions:
@@ -19,7 +54,7 @@ concurrency:
 jobs:
   authenticated-actions:
     runs-on: ubuntu-latest
-    timeout-minutes: 20
+    timeout-minutes: 30
     steps:
       - name: Require reviewed main branch
         run: test "$GITHUB_REF" = refs/heads/main
@@ -29,6 +64,8 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      - name: Wait for this frontend revision on production
+        run: node scripts/wait-for-production-release.mjs
       - name: Run authenticated actions with disposable records
         run: node scripts/sprint-14-actions.mjs
         env:
@@ -53,4 +90,3 @@ jobs:
           path: qa-results/sprint-14-actions.json
           if-no-files-found: warn
           retention-days: 14
-

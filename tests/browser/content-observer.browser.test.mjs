@@ -1,0 +1,175 @@
+import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
+import { after, before, test } from "node:test";
+import { chromium } from "@playwright/test";
+
+// Native browser regression with real UI modules and offline auth/network doubles.
+// This covers DOM/event lifecycle, not live backend authorization or content workflows.
+const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
+const origin = "https://content-lifecycle.test";
+let browser;
+before(async () => { browser = await chromium.launch({ headless: true }); }, { timeout: 30_000 });
+after(async () => { await browser?.close(); });
+
+async function fixture(t, moduleName = "content-review-workflow.js", initial = "active") {
+  const context = await browser.newContext({ serviceWorkers: "block" });
+  t.after(() => context.close());
+  const page = await context.newPage();
+  page.setDefaultTimeout(5_000);
+  const errors = [];
+  page.on("pageerror", (error) => errors.push(error.message));
+  await page.addInitScript(({ initial }) => {
+    const session = { user: { id: "fixture-user" } };
+    const listeners = [], timers = new Map();
+    const nativeTimeout = window.setTimeout.bind(window);
+    const nativeClearTimeout = window.clearTimeout.bind(window);
+    window.__contentProbe = { requests: [], timers, observerDeliveries: 0, runaway: false };
+    window.setTimeout = (callback, delay, ...args) => {
+      const id = nativeTimeout(() => { timers.delete(id); callback(...args); }, delay);
+      timers.set(id, delay);
+      return id;
+    };
+    window.clearTimeout = (id) => { timers.delete(id); nativeClearTimeout(id); };
+    const NativeMutationObserver = window.MutationObserver;
+    window.__nativeMutationObserver = NativeMutationObserver;
+    window.MutationObserver = class extends NativeMutationObserver {
+      constructor(callback) {
+        super((records, observer) => {
+          if (++window.__contentProbe.observerDeliveries > 64) {
+            window.__contentProbe.runaway = true;
+            observer.disconnect();
+            return;
+          }
+          callback(records, observer);
+        });
+      }
+    };
+    let resolveInitial;
+    const initialRead = new Promise((resolve) => { resolveInitial = resolve; });
+    window.__completeInitial = () => resolveInitial({ data: { session } });
+    window.__authEvent = (event, next = session) => listeners.forEach((callback) => callback(event, next));
+    window.__haieduSupabaseClient = {
+      auth: {
+        getSession: () => initial === "pending" ? initialRead : Promise.resolve({ data: { session: initial === "active" ? session : null } }),
+        onAuthStateChange: (callback) => { listeners.push(callback); window.__authSubscriptions = listeners.length; },
+      },
+      functions: {
+        invoke: async (name, { body }) => {
+          window.__contentProbe.requests.push({ name, body });
+          return { data: { item: { reviewStatus: "approved" }, reviews: [] }, error: null };
+        },
+      },
+    };
+  }, { initial });
+  await context.route("**/*", async (route) => {
+    const url = new URL(route.request().url());
+    let body, contentType = "text/javascript";
+    if (url.origin === origin && url.pathname === "/content-item.html") {
+      contentType = "text/html";
+      body = `<!doctype html><html><head><style>.hidden{display:none}</style></head>
+        <body data-content-mode="item" data-content-item-id="fixture-item"><main>
+          <button id="probe">Probe</button><output id="probeCount">0</output>
+          <button id="signOutBtn">Sign out</button><section id="authPanel"><p id="authMessage"></p></section>
+          <section id="console"><section id="detailPanel"><h2>Loading</h2></section><p id="consoleMessage"></p></section>
+        </main><script type="module" src="./${moduleName}"></script></body></html>`;
+    } else if (url.origin === origin && sources.has(url.pathname.slice(1))) {
+      body = sources.get(url.pathname.slice(1));
+      if (moduleName === "content.js") body += "\nwindow.__editorFixture = { wireEditorRows, addOptionRow };";
+      body += "\nwindow.__moduleReady = true;";
+    } else if (url.origin === origin && url.pathname === "/config.js") {
+      body = 'export const SUPABASE_URL="https://fixture.invalid", SUPABASE_PUBLISHABLE_KEY="fixture-only";';
+    } else if (url.origin === origin && url.pathname === "/content-workspace.js") {
+      body = "export function clearContentDashboardCache() {} export async function loadContentDashboard() { return {items: [], stats: {}}; }";
+    } else if (url.href === "https://esm.sh/@supabase/supabase-js@2") {
+      body = "export function createClient() { return window.__haieduSupabaseClient; }";
+    } else return route.abort("blockedbyclient");
+    await route.fulfill({ status: 200, contentType, headers: { "access-control-allow-origin": "*" }, body });
+  });
+  // A deliberately pending module-level session read must not block the harness.
+  await page.goto(`${origin}/content-item.html?id=fixture-item`, { waitUntil: "commit" });
+  await page.waitForSelector("#probe");
+  await page.waitForFunction(() => window.__authSubscriptions > 0);
+  await page.evaluate(() => {
+    document.getElementById("probe").addEventListener("click", () => {
+      const count = document.getElementById("probeCount");
+      count.textContent = String(Number(count.textContent) + 1);
+    });
+  });
+  if (initial !== "pending") await page.waitForFunction(() => window.__moduleReady);
+  return { page, errors };
+}
+
+async function assertSettled({ page, errors }) {
+  await page.waitForTimeout(300);
+  const result = await page.evaluate(() => ({ pendingTimers: window.__contentProbe.timers.size, runaway: window.__contentProbe.runaway }));
+  assert.equal(result.runaway, false, "Native mutation delivery exceeded its bound");
+  assert.equal(result.pendingTimers, 0, "Content UI work must settle instead of polling indefinitely");
+  const previous = Number(await page.locator("#probeCount").textContent());
+  await page.locator("#probe").click();
+  assert.equal(Number(await page.locator("#probeCount").textContent()), previous + 1);
+  assert.deepEqual(errors, []);
+}
+
+test("review detail loading settles, then enhances one DOM update once", { timeout: 20_000 }, async (t) => {
+  const state = await fixture(t);
+  await assertSettled(state);
+  assert.equal(await state.page.evaluate(() => window.__contentProbe.requests.length), 0);
+  await state.page.evaluate(() => {
+    document.getElementById("detailPanel").innerHTML = '<div class="detail-heading">Fixture item</div><section id="contentDecisionSection"></section>';
+  });
+  await state.page.waitForSelector("#reviewHistorySection");
+  await assertSettled(state);
+  assert.equal(await state.page.evaluate(() => window.__contentProbe.requests.length), 1);
+});
+
+test("review initialization cannot resume from a late session after logout", { timeout: 20_000 }, async (t) => {
+  const state = await fixture(t, "content-review-workflow.js", "pending");
+  await state.page.evaluate(() => { window.__authEvent("SIGNED_OUT", null); window.__completeInitial(); });
+  await state.page.waitForFunction(() => window.__moduleReady);
+  await assertSettled(state);
+  assert.equal(await state.page.evaluate(() => window.__contentProbe.requests.length), 0);
+});
+
+test("review mutations after logout do not restart protected reads", { timeout: 20_000 }, async (t) => {
+  const state = await fixture(t);
+  await state.page.evaluate(() => {
+    window.__authEvent("SIGNED_OUT", null);
+    document.getElementById("detailPanel").innerHTML = '<div class="detail-heading">Late stale detail</div><section id="contentDecisionSection"></section>';
+  });
+  await assertSettled(state);
+  assert.equal(await state.page.evaluate(() => window.__contentProbe.requests.length), 0);
+  assert.equal(await state.page.locator("#reviewHistorySection").count(), 0);
+});
+
+test("adding editor rows keeps native option and removal handlers singular", { timeout: 20_000 }, async (t) => {
+  const state = await fixture(t, "content.js", "none");
+  const { page } = state;
+  await page.evaluate(() => {
+    document.getElementById("console").classList.remove("hidden");
+    document.getElementById("detailPanel").innerHTML = `
+      <div id="optionEditor">
+        <div data-option-row><input class="option-key" value="A"><button class="remove-option-btn">Remove A</button></div>
+        <div data-option-row><input class="option-key" value="B"><button class="remove-option-btn">Remove B</button></div>
+      </div><select id="answerSingleChoice"><option>A</option><option selected>B</option></select>
+      <div id="misconceptionEditor"><div data-misconception-row><button class="remove-misconception-btn">Remove mapping</button></div></div>`;
+    window.__editorFixture.wireEditorRows();
+    window.__editorFixture.addOptionRow();
+    window.__editorFixture.addOptionRow();
+    window.__answerWrites = 0;
+    new window.__nativeMutationObserver((records) => { window.__answerWrites += records.length; })
+      .observe(document.getElementById("answerSingleChoice"), { childList: true });
+    window.__mappingWrites = 0;
+    new window.__nativeMutationObserver((records) => { window.__mappingWrites += records.length; })
+      .observe(document.getElementById("misconceptionEditor"), { childList: true });
+  });
+  await page.locator(".option-key").first().fill("Z");
+  assert.equal(await page.evaluate(() => window.__answerWrites), 1);
+  assert.equal(await page.locator("#answerSingleChoice").inputValue(), "B");
+  await page.evaluate(() => { window.__answerWrites = 0; });
+  await page.locator(".remove-option-btn").first().click();
+  assert.equal(await page.evaluate(() => window.__answerWrites), 1);
+  assert.equal(await page.locator("#answerSingleChoice").inputValue(), "B");
+  await page.locator(".remove-misconception-btn").click();
+  assert.equal(await page.evaluate(() => window.__mappingWrites), 2, "One row removal and one empty-state insertion are expected");
+  await assertSettled(state);
+});

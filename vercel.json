@@ -1,5 +1,13 @@
 {
-  "buildCommand": null,
+  "buildCommand": "node scripts/stamp-release.mjs",
   "outputDirectory": "web",
-  "cleanUrls": true
+  "cleanUrls": true,
+  "headers": [
+    {
+      "source": "/release.json",
+      "headers": [
+        { "key": "Cache-Control", "value": "no-store" }
+      ]
+    }
+  ]
 }
