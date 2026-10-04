@@ -9,6 +9,7 @@ let dashboard = null;
 let masteryCheckStatus = null;
 let currentSession = null;
 let current = null;
+let answerSubmission = null;
 let questionStartedAt = null;
 let starting = false;
 
@@ -197,11 +198,12 @@ function blockForActiveNonPractice(session) {
   return true;
 }
 
-async function handleDiagnosticGateError(error, data) {
+async function handleDiagnosticGateError(error, data, canApply = () => true) {
   let detail = data;
   if (error?.context?.json) {
     try { detail = await error.context.clone().json(); } catch { /* Use the normal error display. */ }
   }
+  if (!canApply()) return true;
   if (detail?.error !== "chapter_diagnostic_required") return false;
   showGate("Նախ ավարտեք գլխի ախտորոշիչը", detail.messageHy, [
     { href: "./diagnostic.html", label: "Բացել ախտորոշիչը", primary: true },
@@ -464,7 +466,7 @@ function lockAnswerControls() {
 
 async function submitAnswer(event) {
   event.preventDefault();
-  if (!current || !currentSession) return;
+  if (answerSubmission || !current || !currentSession?.id) return;
 
   const response = collectResponse();
   if (!response) {
@@ -473,63 +475,81 @@ async function submitAnswer(event) {
     return;
   }
 
+  const form = $("answerForm");
+  const submission = { item: current, sessionId: currentSession.id };
+  const isCurrentSubmission = () => answerSubmission === submission
+    && current === submission.item && currentSession?.id === submission.sessionId;
+  answerSubmission = submission;
+  form.dataset.answerSubmitting = "true";
   $("submitBtn").disabled = true;
-  const responseTimeMs = questionStartedAt ? Math.round(performance.now() - questionStartedAt) : null;
-  const { data, error } = await supabase.functions.invoke("submit-answer", {
-    body: {
-      sessionId: currentSession.id,
-      sessionItemId: current.sessionItemId,
-      itemId: current.item.id,
-      response,
-      responseTimeMs,
-      hintUsed: false,
-    },
-  });
+  try {
+    const responseTimeMs = questionStartedAt ? Math.round(performance.now() - questionStartedAt) : null;
+    const { data, error } = await supabase.functions.invoke("submit-answer", {
+      body: {
+        sessionId: submission.sessionId,
+        sessionItemId: submission.item.sessionItemId,
+        itemId: submission.item.item.id,
+        response,
+        responseTimeMs,
+        hintUsed: false,
+      },
+    }).catch((error) => ({ error }));
+    if (!isCurrentSubmission()) return;
 
-  if (await handleDiagnosticGateError(error, data)) return;
-  if (error) {
-    $("submitBtn").disabled = false;
-    $("feedback").className = "feedback bad";
-    $("feedback").textContent = `Չհաջողվեց ստուգել պատասխանը․ ${error.message}`;
-    return;
-  }
+    if (await handleDiagnosticGateError(error, data, isCurrentSubmission)) return;
+    if (!isCurrentSubmission()) return;
+    if (error) {
+      $("submitBtn").disabled = false;
+      $("feedback").className = "feedback bad";
+      $("feedback").textContent = `Չհաջողվեց ստուգել պատասխանը․ ${error.message}`;
+      return;
+    }
 
-  lockAnswerControls();
-  const total = current.session.total;
-  const done = Math.min(100, (current.session.position / total) * 100);
-  $("sessionProgressBar").style.width = `${done}%`;
-  $("sessionProgressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(done)));
+    lockAnswerControls();
+    const total = current.session.total;
+    const done = Math.min(100, (current.session.position / total) * 100);
+    $("sessionProgressBar").style.width = `${done}%`;
+    $("sessionProgressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(done)));
 
-  const nextBtn = $("nextBtn");
-  nextBtn.disabled = false;
-  nextBtn.textContent = data.session?.status === "completed" ? "Ավարտել սեսիան" : "Հաջորդ հարց";
-  nextBtn.dataset.action = "next";
+    const nextBtn = $("nextBtn");
+    nextBtn.disabled = false;
+    nextBtn.textContent = data.session?.status === "completed" ? "Ավարտել սեսիան" : "Հաջորդ հարց";
+    nextBtn.dataset.action = "next";
 
-  const correct = Boolean(data.grading?.correct);
-  const usedHelp = Boolean(data.grading?.usedHelp);
-  const remediation = data.remediation?.messageHy ?? "";
-  const feedback = $("feedback");
-  feedback.className = `feedback ${correct ? "good" : "bad"}`;
+    const correct = Boolean(data.grading?.correct);
+    const usedHelp = Boolean(data.grading?.usedHelp);
+    const remediation = data.remediation?.messageHy ?? "";
+    const feedback = $("feedback");
+    feedback.className = `feedback ${correct ? "good" : "bad"}`;
 
-  if (correct && usedHelp) {
-    feedback.innerHTML = `<strong>Ճիշտ է՝ օգնությամբ։</strong><div>${escapeHtml(remediation || "Հմտությունը հետագայում պետք է հաստատվի նաև ինքնուրույն պատասխանով։")}</div>`;
-    $("nextExplanation").textContent = "Հաջորդ հարցերը կօգնեն ստուգել՝ կարողանո՞ւմ եք նույն գաղափարը կիրառել նաև առանց օգնության։";
-  } else if (correct) {
-    feedback.innerHTML = `<strong>Ճիշտ է։</strong><div>${escapeHtml(remediation || "Այս պատասխանը գրանցվել է որպես ինքնուրույն դրական ապացույց։")}</div>`;
-    $("nextExplanation").textContent = "Համակարգը կընտրի հաջորդ հարցը՝ հաշվի առնելով այս ինքնուրույն պատասխանը։";
-  } else {
-    feedback.innerHTML = `<strong>Դեռ ոչ։</strong><div>${escapeHtml(remediation || "Կարող եք բացել օգնությունը կամ անցնել հաջորդ հարմարեցված հարցին։")}</div>`;
-    $("nextExplanation").textContent = "Կարող եք նախ բացել սխալի բացատրությունը, ապա շարունակել հաջորդ հարմարեցված հարցին։";
-  }
+    if (correct && usedHelp) {
+      feedback.innerHTML = `<strong>Ճիշտ է՝ օգնությամբ։</strong><div>${escapeHtml(remediation || "Հմտությունը հետագայում պետք է հաստատվի նաև ինքնուրույն պատասխանով։")}</div>`;
+      $("nextExplanation").textContent = "Հաջորդ հարցերը կօգնեն ստուգել՝ կարողանո՞ւմ եք նույն գաղափարը կիրառել նաև առանց օգնության։";
+    } else if (correct) {
+      feedback.innerHTML = `<strong>Ճիշտ է։</strong><div>${escapeHtml(remediation || "Այս պատասխանը գրանցվել է որպես ինքնուրույն դրական ապացույց։")}</div>`;
+      $("nextExplanation").textContent = "Համակարգը կընտրի հաջորդ հարցը՝ հաշվի առնելով այս ինքնուրույն պատասխանը։";
+    } else {
+      feedback.innerHTML = `<strong>Դեռ ոչ։</strong><div>${escapeHtml(remediation || "Կարող եք բացել օգնությունը կամ անցնել հաջորդ հարմարեցված հարցին։")}</div>`;
+      $("nextExplanation").textContent = "Կարող եք նախ բացել սխալի բացատրությունը, ապա շարունակել հաջորդ հարմարեցված հարցին։";
+    }
 
-  updateMastery(data.mastery, data.recommendation);
-  if (data.recommendation?.instanceId) {
-    void recordRecommendationTelemetry(
-      supabase,
-      data.recommendation,
-      "shown",
-      "practice_feedback",
-    );
+    updateMastery(data.mastery, data.recommendation);
+    if (data.recommendation?.instanceId) {
+      void recordRecommendationTelemetry(
+        supabase,
+        data.recommendation,
+        "shown",
+        "practice_feedback",
+      );
+    }
+  } finally {
+    if (answerSubmission === submission) {
+      answerSubmission = null;
+      delete form.dataset.answerSubmitting;
+      if (current !== submission.item || currentSession?.id !== submission.sessionId) {
+        form.dispatchEvent(new Event("haiedu-answer-controls-refresh", { bubbles: true }));
+      }
+    }
   }
 }
 

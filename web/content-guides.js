@@ -7,6 +7,7 @@ let catalog = [];
 let selectedId = null;
 let detail = null;
 let loadToken = 0;
+let catalogLoadToken = 0;
 let editorDirty = false;
 let currentActor = null;
 let pendingEnrollmentFactorId = null;
@@ -1122,18 +1123,23 @@ async function runWorkflow(action) {
 
 async function refreshCatalog(reselect = selectedId, { preserveDirtyEditor = false } = {}) {
   const check = sessionCheck;
+  const token = ++catalogLoadToken;
+  const selectionToken = loadToken;
+  const editorWasDirty = editorDirty;
   let response;
   try {
     response = await invoke({ action: "list" });
   } catch (error) {
-    if (check !== sessionCheck) return;
+    if (check !== sessionCheck || token !== catalogLoadToken) return;
     throw error;
   }
-  if (check !== sessionCheck) return;
+  if (check !== sessionCheck || token !== catalogLoadToken) return;
   catalog = response.guides ?? [];
   renderStats(response.actor);
   populateFilters();
   renderRows();
+  // A catalogue response must not undo navigation or edits made while it loaded.
+  if (selectionToken !== loadToken || (editorDirty && !editorWasDirty)) return;
   const requested = reselect || guideIdFromUrl();
   if (requested && catalog.some((g) => `${g.guideScope}:${g.guideSourceId}` === requested)) {
     if (preserveDirtyEditor && editorDirty && requested === selectedId && detail) return;

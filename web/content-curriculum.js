@@ -4,6 +4,7 @@ let initialized = false;
 let observerStarted = false;
 let applyTimer = null;
 let curriculumSessionVersion = 0;
+let curriculumUserId = null;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -240,6 +241,8 @@ async function refreshData({ ensureSelection = false, rebuild = false, force = f
     const { data: sessionData } = await contentSupabase.auth.getSession();
     if (version !== curriculumSessionVersion) return;
     if (!sessionData.session) return;
+    if (curriculumUserId && curriculumUserId !== sessionData.session.user.id) return;
+    curriculumUserId = sessionData.session.user.id;
     const next = await loadContentDashboard(sessionData.session, { force });
     if (version !== curriculumSessionVersion) return;
     data = next;
@@ -286,15 +289,27 @@ window.addEventListener("haiedu:content-dashboard", (event) => {
 });
 
 contentSupabase.auth.onAuthStateChange((event, session) => {
-  if (event === "SIGNED_OUT") {
+  const userChanged = session && curriculumUserId !== session.user.id;
+  if (event === "SIGNED_OUT" || userChanged) {
     curriculumSessionVersion += 1;
     clearTimeout(applyTimer);
     data = null;
     initialized = false;
-    return;
+    curriculumUserId = null;
   }
-  if (!session || event === "TOKEN_REFRESHED") return;
-  setTimeout(start, 0);
+  if (event === "SIGNED_OUT" || !session) return;
+  curriculumUserId = session.user.id;
+  if (event === "TOKEN_REFRESHED" && !userChanged) return;
+  const version = curriculumSessionVersion;
+  setTimeout(() => {
+    if (version !== curriculumSessionVersion) return;
+    if (observerStarted && (userChanged || !data)) refreshData({ rebuild: true });
+    else start();
+  }, 0);
 });
+const initialSessionVersion = curriculumSessionVersion;
 const { data: { session } } = await contentSupabase.auth.getSession();
-if (session) start();
+if (session && initialSessionVersion === curriculumSessionVersion) {
+  curriculumUserId = session.user.id;
+  start();
+}

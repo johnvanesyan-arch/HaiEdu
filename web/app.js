@@ -22,6 +22,7 @@ const masteryCard = $("masteryCard");
 
 let currentSession = null;
 let current = null;
+let answerSubmission = null;
 let questionStartedAt = null;
 let dashboardData = null;
 let dashboardLoadPromise = null;
@@ -403,7 +404,7 @@ function collectResponse() {
 
 async function submitAnswer(event) {
   event.preventDefault();
-  if (!current || !currentSession) return;
+  if (answerSubmission || !current || !currentSession?.id) return;
   const response = collectResponse();
   if (!response) {
     feedback.className = "feedback bad";
@@ -411,41 +412,57 @@ async function submitAnswer(event) {
     return;
   }
 
+  const submission = { item: current, sessionId: currentSession.id };
+  const isCurrentSubmission = () => answerSubmission === submission
+    && current === submission.item && currentSession?.id === submission.sessionId;
+  answerSubmission = submission;
+  answerForm.dataset.answerSubmitting = "true";
   submitBtn.disabled = true;
-  const responseTimeMs = questionStartedAt ? Math.round(performance.now() - questionStartedAt) : null;
-  const { data, error } = await supabase.functions.invoke("submit-answer", {
-    body: {
-      sessionId: currentSession.id,
-      sessionItemId: current.sessionItemId,
-      itemId: current.item.id,
-      response,
-      responseTimeMs,
-      hintUsed: false
+  try {
+    const responseTimeMs = questionStartedAt ? Math.round(performance.now() - questionStartedAt) : null;
+    const { data, error } = await supabase.functions.invoke("submit-answer", {
+      body: {
+        sessionId: submission.sessionId,
+        sessionItemId: submission.item.sessionItemId,
+        itemId: submission.item.item.id,
+        response,
+        responseTimeMs,
+        hintUsed: false
+      }
+    }).catch((error) => ({ error }));
+    if (!isCurrentSubmission()) return;
+
+    if (error) {
+      submitBtn.disabled = false;
+      feedback.className = "feedback bad";
+      feedback.textContent = `Չհաջողվեց ստուգել պատասխանը․ ${error.message}`;
+      return;
     }
-  });
 
-  if (error) {
-    submitBtn.disabled = false;
-    feedback.className = "feedback bad";
-    feedback.textContent = `Չհաջողվեց ստուգել պատասխանը․ ${error.message}`;
-    return;
+    const total = current.session.total;
+    $("sessionProgressBar").style.width = `${Math.min(100, (current.session.position / total) * 100)}%`;
+    nextBtn.disabled = false;
+    nextBtn.textContent = data.session?.status === "completed" ? "Ավարտել" : "Հաջորդ հարց";
+
+    if (current.session.mode === "diagnostic") {
+      feedback.className = "feedback neutral";
+      feedback.innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Ճիշտ/սխալ արդյունքը կերևա ախտորոշիչի ավարտից հետո։</div>";
+      return;
+    }
+
+    const correct = data.grading?.correct;
+    feedback.className = `feedback ${correct ? "good" : "bad"}`;
+    feedback.innerHTML = `<strong>${correct ? "Ճիշտ է։" : "Սխալ է։"}</strong><div>${correct ? "Mastery-ի ապացույցը թարմացվեց։" : "Սխալը գրանցվեց։ Սեսիան սահմանափակ է և անվերջ չի շարունակվի։"}</div>`;
+    updateMastery(data.mastery, data.recommendation);
+  } finally {
+    if (answerSubmission === submission) {
+      answerSubmission = null;
+      delete answerForm.dataset.answerSubmitting;
+      if (current !== submission.item || currentSession?.id !== submission.sessionId) {
+        answerForm.dispatchEvent(new Event("haiedu-answer-controls-refresh", { bubbles: true }));
+      }
+    }
   }
-
-  const total = current.session.total;
-  $("sessionProgressBar").style.width = `${Math.min(100, (current.session.position / total) * 100)}%`;
-  nextBtn.disabled = false;
-  nextBtn.textContent = data.session?.status === "completed" ? "Ավարտել" : "Հաջորդ հարց";
-
-  if (current.session.mode === "diagnostic") {
-    feedback.className = "feedback neutral";
-    feedback.innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Ճիշտ/սխալ արդյունքը կերևա ախտորոշիչի ավարտից հետո։</div>";
-    return;
-  }
-
-  const correct = data.grading?.correct;
-  feedback.className = `feedback ${correct ? "good" : "bad"}`;
-  feedback.innerHTML = `<strong>${correct ? "Ճիշտ է։" : "Սխալ է։"}</strong><div>${correct ? "Mastery-ի ապացույցը թարմացվեց։" : "Սխալը գրանցվեց։ Սեսիան սահմանափակ է և անվերջ չի շարունակվի։"}</div>`;
-  updateMastery(data.mastery, data.recommendation);
 }
 
 function updateMastery(mastery, recommendation) {

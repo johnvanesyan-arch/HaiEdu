@@ -23,7 +23,8 @@ const helpStrategy = $("helpStrategy");
 const helpContent = $("helpContent");
 const helpNote = $("helpNote");
 
-let lastItemCode = null;
+let lastHelpContext = null;
+let helpRequestId = 0;
 let loading = false;
 let helpOpenedForCurrentItem = false;
 
@@ -32,6 +33,7 @@ function setText(el, value) {
 }
 
 function resetHelp() {
+  helpRequestId += 1;
   helpOpenedForCurrentItem = false;
   helpPanel.classList.add("hidden");
   setText(helpTitle, "Օգնություն");
@@ -39,7 +41,7 @@ function resetHelp() {
   setText(helpContent, "");
   setText(helpNote, "");
   setText(helpBtn, "Հուշում");
-  helpBtn.disabled = false;
+  helpBtn.disabled = loading;
 }
 
 function hasDraftAnswer() {
@@ -67,8 +69,9 @@ function syncHelpVisibility() {
     !(practiceVisible && isHelpEnabledMode && hasQuestion && ((preSubmit && !draftAnswerPresent) || incorrectAnswered)),
   );
 
-  if (currentCode !== lastItemCode) {
-    lastItemCode = currentCode;
+  const helpContext = JSON.stringify([practiceVisible, sessionMode.textContent.trim(), currentCode]);
+  if (helpContext !== lastHelpContext) {
+    lastHelpContext = helpContext;
     resetHelp();
   }
 
@@ -80,40 +83,61 @@ function syncHelpVisibility() {
 }
 
 async function requestHelp() {
-  if (loading) return;
+  syncHelpVisibility();
+  if (loading || helpBtn.disabled || helpControls.classList.contains("hidden")) return;
+  const requestId = helpRequestId;
   loading = true;
   helpBtn.disabled = true;
   setText(helpBtn, "Բեռնվում է…");
 
-  const { data, error } = await supabase.functions.invoke("get-remediation-help", { body: {} });
-  loading = false;
+  let rendered = false;
+  const isCurrent = () => {
+    // Recheck the DOM as well as the request owner: an item can change before
+    // its MutationObserver notification has been delivered.
+    syncHelpVisibility();
+    return requestId === helpRequestId && !helpControls.classList.contains("hidden");
+  };
+  try {
+    const { data, error } = await supabase.functions.invoke("get-remediation-help", { body: {} });
+    if (!isCurrent()) return;
+    if (error) throw error;
+    if (!data) throw new Error("Օգնությունը հիմա հասանելի չէ։");
 
-  if (error) {
+    helpOpenedForCurrentItem = true;
+    helpPanel.classList.remove("hidden");
+    setText(helpTitle, data.titleHy ?? "Օգնություն");
+    setText(helpStrategy, data.strategyHy ?? "");
+    setText(helpContent, data.contentHy ?? "");
+    setText(helpNote, data.noteHy ?? "");
+    helpBtn.disabled = false;
+    if (Number(data.level) === 1) {
+      setText(helpBtn, "Հաջորդ հուշումը");
+    } else if (Number(data.level) === 2) {
+      setText(helpBtn, "Տեսնել նման օրինակ");
+    } else {
+      setText(helpBtn, "Օրինակը տեսել եք");
+    }
+    if (!data.moreHelpAvailable) helpBtn.disabled = true;
+    rendered = true;
+  } catch (error) {
+    if (!isCurrent()) return;
     helpPanel.classList.remove("hidden");
     setText(helpTitle, "Օգնությունը չբեռնվեց");
     setText(helpStrategy, "");
-    setText(helpContent, error.message);
+    setText(helpContent, error?.message ?? "Օգնությունը հիմա հասանելի չէ։");
     setText(helpNote, "");
     helpBtn.disabled = false;
     setText(helpBtn, "Կրկին փորձել");
-    return;
+    rendered = true;
+  } finally {
+    // Keep a single help request in flight, including across item changes.
+    // A stale completion releases the control but never paints its old result.
+    loading = false;
+    if (!rendered) {
+      helpBtn.disabled = false;
+      syncHelpVisibility();
+    }
   }
-
-  helpOpenedForCurrentItem = true;
-  helpPanel.classList.remove("hidden");
-  setText(helpTitle, data.titleHy ?? "Օգնություն");
-  setText(helpStrategy, data.strategyHy ?? "");
-  setText(helpContent, data.contentHy ?? "");
-  setText(helpNote, data.noteHy ?? "");
-  helpBtn.disabled = false;
-  if (Number(data.level) === 1) {
-    setText(helpBtn, "Հաջորդ հուշումը");
-  } else if (Number(data.level) === 2) {
-    setText(helpBtn, "Տեսնել նման օրինակ");
-  } else {
-    setText(helpBtn, "Օրինակը տեսել եք");
-  }
-  if (!data.moreHelpAvailable) helpBtn.disabled = true;
 }
 
 helpBtn.addEventListener("click", requestHelp);

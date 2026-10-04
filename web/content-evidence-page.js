@@ -1,6 +1,7 @@
 import { $, esc, contentSupabase, invokeContent, mountContentWorkspace } from "./content-workspace.js";
 
 let dashboard = null;
+let dashboardUserId = null;
 let currentAnalytics = null;
 let evidenceRequestId = 0;
 
@@ -99,18 +100,25 @@ async function loadEvidence() {
   }
 }
 
-async function render(data) {
+async function render(data, session) {
+  dashboardUserId = session?.user?.id ?? null;
+  evidenceRequestId += 1;
   dashboard = data;
+  currentAnalytics = null;
+  $("evidenceMessage").textContent = "";
   populateUnits();
   renderAnalytics();
 }
 $("evidenceUnit").addEventListener("change", loadEvidence);
 $("refreshEvidenceBtn").addEventListener("click", loadEvidence);
-contentSupabase.auth.onAuthStateChange((event) => {
-  if (event !== "SIGNED_OUT") return;
+contentSupabase.auth.onAuthStateChange((event, session) => {
+  const nextUserId = event === "SIGNED_OUT" ? null : session?.user?.id;
+  if (event !== "SIGNED_OUT" && (!nextUserId || nextUserId === dashboardUserId)) return;
+  dashboardUserId = nextUserId;
   evidenceRequestId += 1;
   dashboard = null;
   currentAnalytics = null;
+  populateUnits();
   $("evidenceMessage").textContent = "";
   $("evidenceMetrics").innerHTML = "";
   $("evidenceFlagList").innerHTML = "";

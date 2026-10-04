@@ -18,13 +18,16 @@ jobs:
           node-version: 22
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Check mirrored core parity
         run: npm run check:core-parity
 
       - name: Check platform favicon
         run: npm run check:favicon
+
+      - name: Check browser QA dependency coverage
+        run: node scripts/check-browser-qa-triggers.mjs
 
       - name: Run tests
         run: npm test
@@ -34,36 +37,7 @@ jobs:
 
       - name: Check browser JavaScript syntax
         run: |
-          node --check web/app.js
-          node --check web/home-dashboard.js
-          node --check web/home-class.js
-          node --check web/home-practice-router.js
-          node --check web/home-assessment-router.js
-          node --check web/course-gate.js
-          node --check web/physics-7.js
-          node --check web/practice.js
-          node --check web/assessment.js
-          node --check web/diagnostic.js
-          node --check web/mastery.js
-          node --check web/progress.js
-          node --check web/remediation.js
-          node --check web/mastery-dashboard.js
-          node --check web/session-watchdog.js
-          node --check web/join.js
-          node --check web/teacher.js
-          node --check web/content.js
-          node --check web/content-workspace.js
-          node --check web/content-home.js
-          node --check web/content-review.js
-          node --check web/content-curriculum-map.js
-          node --check web/content-evidence-page.js
-          node --check web/ux.js
-          node --check web/role-router.js
-          node --check web/role-layout.js
-          node --check web/student-shell.js
-          node --check web/privacy.js
-          node --check web/admin.js
-          node --check web/admin-security.js
+          node scripts/check-web-syntax.mjs
           node --check scripts/check-core-parity.mjs
           node --check scripts/check-favicon-coverage.mjs
 
@@ -79,8 +53,8 @@ jobs:
       - run: npm ci
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
-      - name: Verify dashboard observer and browser responsiveness
-        run: node --test tests/browser/role-layout.browser.test.mjs
+      - name: Verify browser responsiveness and lifecycle regressions
+        run: node --test tests/browser/*.test.mjs
 
 
   institutional-concurrency:
@@ -129,3 +103,18 @@ jobs:
         run: node --test tests/phase3-analytics-integration.test.mjs
       - name: Verify atomic answer scoring with independent PostgreSQL 17.6 connections
         run: python tests/answer-scoring-concurrency.py
+
+  platform-release-checks:
+    name: Platform release checks
+    runs-on: ubuntu-latest
+    if: ${{ always() }}
+    needs: [test, role-layout-browser, institutional-concurrency, phase3-postgres-17]
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Require every platform check to succeed
+        env:
+          RELEASE_JOB_RESULTS: ${{ toJSON(needs) }}
+        run: node scripts/check-release-readiness.mjs

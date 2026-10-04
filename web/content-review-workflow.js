@@ -6,6 +6,9 @@ const $ = (id) => document.getElementById(id);
 let renderToken = 0;
 let scheduled = null;
 let initialized = false;
+let reviewSessionVersion = 0;
+let reviewSessionEnded = false;
+let reviewUserId = null;
 
 const REVIEW_HISTORY_ERROR_HY = {
   account_or_session_inactive: "Հաշիվը կամ սեսիան ակտիվ չէ։ Նորից մուտք գործեք։",
@@ -131,6 +134,7 @@ function injectReviewUi(data, expectedItemId) {
 }
 
 async function enhanceSelectedItem() {
+  if (reviewSessionEnded) return;
   const itemId = selectedItemId();
   const panel = $("detailPanel");
   if (!itemId || !panel?.querySelector(".detail-heading")) return;
@@ -158,8 +162,10 @@ async function enhanceSelectedItem() {
 }
 
 function scheduleEnhancement() {
+  if (reviewSessionEnded) return;
   clearTimeout(scheduled);
   scheduled = setTimeout(() => {
+    scheduled = null;
     enhanceSelectedItem();
   }, 120);
 }
@@ -169,7 +175,7 @@ function watchConsole() {
   const rows = $("itemRows");
   if (panel) {
     new MutationObserver(() => {
-      if (!panel.querySelector("#reviewHistorySection")) scheduleEnhancement();
+      if (panel.querySelector(".detail-heading") && !panel.querySelector("#reviewHistorySection")) scheduleEnhancement();
     }).observe(panel, { childList: true, subtree: true });
   }
   if (rows) {
@@ -179,26 +185,37 @@ function watchConsole() {
 }
 
 function initWhenReady() {
-  if (initialized) return;
+  if (reviewSessionEnded) return;
   const panel = $("detailPanel");
-  const itemId = selectedItemId();
-  if (!panel || !itemId) return;
-  if (panel.querySelector(".detail-heading")) {
+  if (!panel) return;
+  if (!initialized) {
     initialized = true;
     watchConsole();
-    return;
-  }
-  setTimeout(initWhenReady, 100);
+  } else scheduleEnhancement();
 }
 
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_OUT") {
+    reviewSessionVersion += 1;
+    reviewSessionEnded = true;
+    reviewUserId = null;
     renderToken += 1;
     clearTimeout(scheduled);
     return;
   }
-  if (!session || event === "TOKEN_REFRESHED") return;
-  setTimeout(initWhenReady, 0);
+  if (!session || (event === "TOKEN_REFRESHED" && reviewUserId === session.user.id)) return;
+  if (reviewUserId !== session.user.id) {
+    renderToken += 1;
+    clearTimeout(scheduled);
+  }
+  reviewUserId = session.user.id;
+  reviewSessionEnded = false;
+  const version = ++reviewSessionVersion;
+  setTimeout(() => { if (version === reviewSessionVersion) initWhenReady(); }, 0);
 });
+const initialSessionVersion = reviewSessionVersion;
 const { data: { session } } = await supabase.auth.getSession();
-if (session) initWhenReady();
+if (session && initialSessionVersion === reviewSessionVersion) {
+  reviewUserId = session.user.id;
+  initWhenReady();
+}

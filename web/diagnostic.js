@@ -7,6 +7,7 @@ const $ = (id) => document.getElementById(id);
 
 let currentSession = null;
 let current = null;
+let answerSubmission = null;
 let startedAt = null;
 let dashboard = null;
 
@@ -215,6 +216,7 @@ function collectResponse() {
 
 async function submit(event) {
   event.preventDefault();
+  if (answerSubmission || !current || !currentSession?.id) return;
   const response = collectResponse();
   if (!response) {
     $("feedback").className = "feedback bad";
@@ -222,35 +224,52 @@ async function submit(event) {
     return;
   }
 
+  const form = $("answerForm");
+  const submission = { item: current, sessionId: currentSession.id };
+  const isCurrentSubmission = () => answerSubmission === submission
+    && current === submission.item && currentSession?.id === submission.sessionId;
+  answerSubmission = submission;
+  form.dataset.answerSubmitting = "true";
   $("submitBtn").disabled = true;
-  const responseTimeMs = startedAt ? Math.round(performance.now() - startedAt) : null;
-  const { data, error } = await supabase.functions.invoke("submit-answer", {
-    body: {
-      sessionId: currentSession.id,
-      sessionItemId: current.sessionItemId,
-      itemId: current.item.id,
-      response,
-      responseTimeMs,
-      hintUsed: false,
-    },
-  });
+  try {
+    const responseTimeMs = startedAt ? Math.round(performance.now() - startedAt) : null;
+    const { data, error } = await supabase.functions.invoke("submit-answer", {
+      body: {
+        sessionId: submission.sessionId,
+        sessionItemId: submission.item.sessionItemId,
+        itemId: submission.item.item.id,
+        response,
+        responseTimeMs,
+        hintUsed: false,
+      },
+    }).catch((error) => ({ error }));
+    if (!isCurrentSubmission()) return;
 
-  if (error) {
-    $("submitBtn").disabled = false;
-    $("feedback").className = "feedback bad";
-    $("feedback").textContent = error.message;
-    return;
+    if (error) {
+      $("submitBtn").disabled = false;
+      $("feedback").className = "feedback bad";
+      $("feedback").textContent = error.message;
+      return;
+    }
+
+    const position = current.session.position;
+    const total = current.session.total;
+    const progress = Math.min(100, (position / total) * 100);
+    $("progressBar").style.width = `${progress}%`;
+    $("progressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(progress)));
+    $("feedback").className = "feedback neutral";
+    $("feedback").innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Այս փուլում ճիշտ/սխալ արդյունքը չի բացահայտվում։</div>";
+    $("nextBtn").textContent = data.session?.status === "completed" ? "Տեսնել արդյունքները" : "Հաջորդ հարց";
+    $("nextBtn").classList.remove("hidden");
+  } finally {
+    if (answerSubmission === submission) {
+      answerSubmission = null;
+      delete form.dataset.answerSubmitting;
+      if (current !== submission.item || currentSession?.id !== submission.sessionId) {
+        form.dispatchEvent(new Event("haiedu-answer-controls-refresh", { bubbles: true }));
+      }
+    }
   }
-
-  const position = current.session.position;
-  const total = current.session.total;
-  const progress = Math.min(100, (position / total) * 100);
-  $("progressBar").style.width = `${progress}%`;
-  $("progressBar").parentElement?.setAttribute("aria-valuenow", String(Math.round(progress)));
-  $("feedback").className = "feedback neutral";
-  $("feedback").innerHTML = "<strong>Պատասխանն ընդունվեց։</strong><div>Այս փուլում ճիշտ/սխալ արդյունքը չի բացահայտվում։</div>";
-  $("nextBtn").textContent = data.session?.status === "completed" ? "Տեսնել արդյունքները" : "Հաջորդ հարց";
-  $("nextBtn").classList.remove("hidden");
 }
 
 async function showFreshResults() {

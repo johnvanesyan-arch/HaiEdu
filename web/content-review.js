@@ -1,6 +1,7 @@
 import { $, esc, contentSupabase, curriculumContext, mountContentWorkspace, qaLabel, reviewLabel } from "./content-workspace.js";
 
 let dashboard = null;
+let dashboardUserId = null;
 let queue = new URLSearchParams(location.search).get("queue") || "all";
 
 function matchesQueue(item) {
@@ -38,7 +39,8 @@ function renderRows() {
   document.querySelectorAll("[data-queue]").forEach((button) => button.classList.toggle("active", button.dataset.queue === queue));
 }
 
-function render(data) {
+function render(data, session) {
+  dashboardUserId = session?.user?.id ?? null;
   dashboard = data;
   renderRows();
 }
@@ -51,7 +53,12 @@ document.querySelectorAll("[data-queue]").forEach((button) => button.addEventLis
   renderRows();
 }));
 $("queueSearch").addEventListener("input", renderRows);
-contentSupabase.auth.onAuthStateChange((event) => {
-  if (event === "SIGNED_OUT") dashboard = null;
+contentSupabase.auth.onAuthStateChange((event, session) => {
+  const nextUserId = event === "SIGNED_OUT" ? null : session?.user?.id;
+  if (event !== "SIGNED_OUT" && (!nextUserId || nextUserId === dashboardUserId)) return;
+  dashboardUserId = nextUserId;
+  dashboard = null;
+  $("queueList").innerHTML = "";
+  $("queueCount").textContent = "";
 });
 await mountContentWorkspace(render);

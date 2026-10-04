@@ -6,12 +6,24 @@ on:
     branches: [main]
     paths:
       - scripts/sprint-14d-analytics-qa.mjs
+      - scripts/wait-for-production-release.mjs
+      - scripts/stamp-release.mjs
       - web/school-admin.html
       - web/school-admin.css
       - web/school-admin.js
+      # Login, shared navigation and styles can break the same acceptance flow.
+      - web/account-access.*
+      - web/account-roles.js
+      - web/config.js
+      - web/school-membership-status.js
+      - web/role-layout.*
+      - web/styles.css
+      - web/ux.css
       - supabase/functions/get-school-performance-analytics/**
-      - supabase/functions/_shared/school-performance-analytics.ts
-      - supabase/functions/_shared/auth.ts
+      - supabase/functions/_shared/**
+      - package.json
+      - package-lock.json
+      - vercel.json
       - .github/workflows/sprint-14d-analytics-qa.yml
 
 permissions:
@@ -24,7 +36,7 @@ concurrency:
 jobs:
   authenticated-school-analytics:
     runs-on: ubuntu-latest
-    timeout-minutes: 15
+    timeout-minutes: 25
     steps:
       - name: Require reviewed main branch
         run: test "$GITHUB_REF" = refs/heads/main
@@ -34,6 +46,8 @@ jobs:
           node-version: 22
       - run: npm ci
       - run: npx playwright install --with-deps chromium
+      - name: Wait for this frontend revision on production
+        run: node scripts/wait-for-production-release.mjs
       - name: Run read-only two-school analytics acceptance
         run: node scripts/sprint-14d-analytics-qa.mjs
         env:
@@ -51,4 +65,3 @@ jobs:
           path: qa-results/sprint-14d-analytics.json
           if-no-files-found: warn
           retention-days: 14
-

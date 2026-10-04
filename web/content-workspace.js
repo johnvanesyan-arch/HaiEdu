@@ -10,6 +10,17 @@ const dashboardLoads = new Map();
 const dashboardLoadVersions = new Map();
 const dashboardUsers = new Set();
 let contentSessionVersion = 0;
+let contentSessionUserId;
+
+function syncContentSession(userId, { force = false } = {}) {
+  if (!force && userId === contentSessionUserId) return;
+  const hadIdentity = contentSessionUserId !== undefined;
+  contentSessionUserId = userId;
+  if (!hadIdentity && !force) return;
+  contentSessionVersion += 1;
+  for (const previousUserId of dashboardUsers) clearContentDashboardCache(previousUserId);
+  dashboardUsers.clear();
+}
 
 function contentDashboardCacheKey(userId) {
   return `${CONTENT_DASHBOARD_CACHE_PREFIX}${userId}`;
@@ -54,6 +65,9 @@ export function clearContentDashboardCache(userId) {
 export async function loadContentDashboard(session, { force = false } = {}) {
   const userId = session?.user?.id;
   if (!userId) throw new Error("unauthorized");
+  // A pending getSession read must not restore a previous account after an auth event.
+  if (contentSessionUserId === undefined) syncContentSession(userId);
+  if (userId !== contentSessionUserId) throw new Error("content_session_ended");
   dashboardUsers.add(userId);
   if (!force) {
     const cached = readContentDashboardCache(userId);
@@ -78,7 +92,14 @@ export function esc(value) {
 
 export async function invokeContent(name, body = {}) {
   const version = contentSessionVersion;
-  const { data, error } = await contentSupabase.functions.invoke(name, { body });
+  let result;
+  try {
+    result = await contentSupabase.functions.invoke(name, { body });
+  } catch (error) {
+    if (version !== contentSessionVersion) throw new Error("content_session_ended");
+    throw error;
+  }
+  const { data, error } = result;
   if (version !== contentSessionVersion) throw new Error("content_session_ended");
   if (error) {
     const response = error.context;
@@ -127,29 +148,32 @@ export async function mountContentWorkspace(render, { gateId = "console", authPa
 
   async function show(session, { force = false } = {}) {
     const userId = session?.user?.id ?? null;
-    if (!session) {
+    if (!userId) {
       version += 1;
       clearContentDashboardCache(currentUserId);
       currentUserId = null;
       gate?.classList.add("hidden");
       authPanel?.classList.remove("hidden");
+      if (authMessage) authMessage.textContent = "";
       $("signOutBtn")?.classList.add("hidden");
       return;
     }
     if (!force && userId === currentUserId && !gate?.classList.contains("hidden")) return;
     if (!force && showPromise && userId === currentUserId) return showPromise;
 
+    if (userId !== currentUserId) clearContentDashboardCache(currentUserId);
     currentUserId = userId;
     const current = ++version;
     gate?.classList.add("hidden");
     authPanel?.classList.add("hidden");
+    if (authMessage) authMessage.textContent = "";
     $("signOutBtn")?.classList.remove("hidden");
 
     showPromise = (async () => {
       try {
         const dashboard = await loadContentDashboard(session, { force });
         if (current !== version) return;
-        await render(dashboard);
+        await render(dashboard, session);
         if (current !== version) return;
         if (authMessage) authMessage.textContent = "";
         gate?.classList.remove("hidden");
@@ -173,16 +197,14 @@ export async function mountContentWorkspace(render, { gateId = "console", authPa
     if (event === "SIGNED_OUT") return void show(null);
     if (!session) return;
     if (["USER_UPDATED", "MFA_CHALLENGE_VERIFIED"].includes(event)) return void show(session, { force: true });
-    if (gate?.classList.contains("hidden")) void show(session);
+    if (session.user?.id !== currentUserId || gate?.classList.contains("hidden")) void show(session);
   });
   const initialVersion = version;
   const { data } = await contentSupabase.auth.getSession();
   if (initialVersion === version) await show(data.session);
 }
 
-contentSupabase.auth.onAuthStateChange((event) => {
-  if (event !== "SIGNED_OUT") return;
-  contentSessionVersion += 1;
-  for (const userId of dashboardUsers) clearContentDashboardCache(userId);
-  dashboardUsers.clear();
+contentSupabase.auth.onAuthStateChange((event, session) => {
+  if (event === "SIGNED_OUT") return syncContentSession(null, { force: true });
+  if (session?.user?.id) syncContentSession(session.user.id);
 });
