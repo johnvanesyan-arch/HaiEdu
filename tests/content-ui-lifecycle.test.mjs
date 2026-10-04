@@ -3,7 +3,7 @@ import assert from "node:assert/strict";
 import vm from "node:vm";
 import { deferred, moduleSource, node } from "./fixtures/content-session-harness.mjs";
 
-async function reviewHarness({ initialSession = { user: { id: "fixture-user" } }, deferInitial = false, heading = false } = {}) {
+async function reviewHarness({ initialSession = { user: { id: "fixture-user" } }, deferInitial = false, heading = false, itemId = "fixture-item" } = {}) {
   const timers = new Map(), observers = [], requests = [], sessionRead = deferred();
   let listener, nextTimer = 0;
   const state = { heading };
@@ -17,11 +17,11 @@ async function reviewHarness({ initialSession = { user: { id: "fixture-user" } }
   };
   const loading = vm.runInNewContext(`(async () => { ${moduleSource("web/content-review-workflow.js")} })()`, {
     window: { __haieduSupabaseClient: client },
-    document: { body: { dataset: { contentItemId: "fixture-item" } }, getElementById: (id) => id === "detailPanel" ? panel : null, querySelector: () => null },
+    document: { body: { dataset: itemId ? { contentItemId: itemId } : {} }, getElementById: (id) => id === "detailPanel" ? panel : null, querySelector: () => null },
     MutationObserver: class { constructor(callback) { this.callback = callback; observers.push(this); } observe() {} },
     setTimeout(fn) { const id = ++nextTimer; timers.set(id, fn); return id; },
     clearTimeout: (id) => timers.delete(id),
-    URLSearchParams, location: { search: "?id=fixture-item" }, Response,
+    URLSearchParams, location: { search: itemId ? `?id=${encodeURIComponent(itemId)}` : "" }, Response,
   });
   if (!deferInitial) await loading;
   return {
@@ -50,6 +50,18 @@ test("review enhancement waits for detail mutations without recurring polling", 
   h.mutate();
   h.runTimers();
   assert.deepEqual(h.requests, ["get-content-review-history"]);
+});
+
+test("review enhancement without an item ID performs no reads and settles after mutations", async () => {
+  const h = await reviewHarness({ heading: true, itemId: null });
+  h.runTimers();
+  assert.equal(h.timers.size, 0);
+  assert.deepEqual(h.requests, []);
+  h.mutate();
+  h.mutate();
+  h.runTimers();
+  assert.equal(h.timers.size, 0, "A detail heading without an item ID must not sustain background work");
+  assert.deepEqual(h.requests, [], "Neither initialization nor later mutations may read unidentified review history");
 });
 
 test("late initial review session cannot restart initialization after logout", async () => {
