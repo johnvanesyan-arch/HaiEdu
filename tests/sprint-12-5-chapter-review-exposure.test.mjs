@@ -25,7 +25,7 @@ test("Chapter Review serving uses the shared exposure recorder", () => {
 });
 
 test("Chapter Review answer and help paths flow through exposure finalization", () => {
-  assert.match(submitAnswer, /record_session_graded_attempt/);
+  assert.match(submitAnswer, /service_record_session_answer_atomic/);
   assert.match(submitAnswer, /session\.mode === "chapter_review"/);
   assert.match(help, /\["practice", "chapter_review"\]/);
   assert.match(help, /record_remediation_help_atomic/);
