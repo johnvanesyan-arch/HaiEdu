@@ -1,0 +1,274 @@
+{
+  "schema_version": 1,
+  "sprint": "15B.10",
+  "status": "deployed_learner_inactive_drafts",
+  "project_id": "xzyjvwiiibuarpotppid",
+  "source": {
+    "textbook": "Physics 7 (2023)",
+    "printed_pages": [
+      36,
+      37
+    ],
+    "pdf_pages": [
+      37,
+      38
+    ],
+    "section": 12,
+    "figure": 34,
+    "sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "source_pages_visually_inspected": true,
+    "programme_outcome": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)"
+  },
+  "pull_request": 117,
+  "merged_commit": "8d888b48d7bab800a14f2a4fbcfd7105ec07d6a9",
+  "migration": {
+    "version": "20261005090747",
+    "name": "sprint_15b10_eighth_item_family",
+    "sql_sha256": "7d72dc2f2f1b22f5218687e51d42dbc54da49fc0394ff520eb4e892ddb523237",
+    "original_cli_version": "20261005085934"
+  },
+  "ci": {
+    "run_id": 37287686491,
+    "run_number": 1161,
+    "tests": 969,
+    "passed": 969,
+    "failed": 0,
+    "skipped": 0,
+    "jobs": [
+      {
+        "name": "role-layout-browser",
+        "conclusion": "success"
+      },
+      {
+        "name": "phase3-postgres-17",
+        "conclusion": "success"
+      },
+      {
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "name": "institutional-concurrency",
+        "conclusion": "success"
+      },
+      {
+        "name": "Platform release checks",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "rollback_probe": {
+    "passed": true,
+    "readback": {
+      "s09_items": 0,
+      "fingerprints": {
+        "items": "1b0da90fded6909aa6db172dfb914f08",
+        "releases": "572ca0e2f07f612094c7bb279a03422c",
+        "versions": "99824340232297a445018f8167cf8328",
+        "gate_decisions": "e910a6831527003cc0b65e35ac2025cc",
+        "gate_prior_evidence": "4a5fcb58abf8da0573a0a2e27f8da226"
+      },
+      "s09_families": 0,
+      "previous_approved": 28
+    }
+  },
+  "readback": {
+    "items": [
+      {
+        "id": "108a14e9-7460-4491-9454-f8359e1c238f",
+        "key": "A",
+        "code": "PHY7-U02-S09-I01",
+        "status": "draft",
+        "options": 4,
+        "mappings": 3,
+        "versions": 1,
+        "pool_links": 0,
+        "version_no": 1,
+        "fingerprint": "02fee777861e64cb8c826144cce9f8bd",
+        "review_status": "needs_review",
+        "shuffle_options": true,
+        "evidence_purpose": "core_understanding",
+        "validation_state": "provisional_no_sme_review"
+      },
+      {
+        "id": "ab1d35ba-76a4-403d-8d0c-147234aad143",
+        "key": "B",
+        "code": "PHY7-U02-S09-I02",
+        "status": "draft",
+        "options": 4,
+        "mappings": 3,
+        "versions": 1,
+        "pool_links": 0,
+        "version_no": 1,
+        "fingerprint": "e9c2844274a8c1e4972ce5ca8a1c2509",
+        "review_status": "needs_review",
+        "shuffle_options": true,
+        "evidence_purpose": "application",
+        "validation_state": "provisional_no_sme_review"
+      },
+      {
+        "id": "19120410-872d-437c-9f18-229f01c69fcc",
+        "key": "C",
+        "code": "PHY7-U02-S09-I03",
+        "status": "draft",
+        "options": 4,
+        "mappings": 3,
+        "versions": 1,
+        "pool_links": 0,
+        "version_no": 1,
+        "fingerprint": "4e162399129d9d84452075789d19fa00",
+        "review_status": "needs_review",
+        "shuffle_options": true,
+        "evidence_purpose": "misconception_diagnosis",
+        "validation_state": "provisional_no_sme_review"
+      },
+      {
+        "id": "a3aa8e20-aff6-4b18-866a-47e01920a00a",
+        "key": "D",
+        "code": "PHY7-U02-S09-I04",
+        "status": "draft",
+        "options": 4,
+        "mappings": 3,
+        "versions": 1,
+        "pool_links": 0,
+        "version_no": 1,
+        "fingerprint": "b805ddcefccaa9cb33d04d9e46241525",
+        "review_status": "needs_review",
+        "shuffle_options": true,
+        "evidence_purpose": "transfer_reasoning",
+        "validation_state": "provisional_no_sme_review"
+      }
+    ],
+    "guides": [
+      {
+        "id": "36fa403b-dc42-46bb-bbd4-fb21f9d80a97",
+        "status": "draft",
+        "title_hy": "Ինչպե՞ս է աշխատում հեղուկային ջերմաչափը",
+        "guide_version": 1,
+        "authoring_versions": 1
+      }
+    ],
+    "template": {
+      "code": "PHY7-U02-S09-T01-EXPLAIN-LIQUID-THERMOMETER",
+      "status": "draft",
+      "generation_config": {
+        "sprint": "15B.10",
+        "skillCode": "PHY7-U02-S09",
+        "qaContract": "authored_fixed_catalogue",
+        "reviewGate": "content_and_sme_review_pending",
+        "variantCount": 4,
+        "generationMode": "authored_parallel_catalog",
+        "learnerVisible": false,
+        "familySizePolicy": "outcome_appropriate",
+        "deterministicRerender": false,
+        "familySizeRationaleHy": "Չորս հարցերը գնահատում են աշխատանքի սկզբունքը, սառչելու դեպքում դրա կիրառումը, ծավալն ու հեղուկի քանակը տարբերակելը և խողովակի լայնության փոփոխությամբ պայմանավորված արդյունքը հիմնավորելը։",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "answerPositionQaContract": "family-balanced-v1",
+        "requiredEvidencePurposes": [
+          "core_understanding",
+          "application",
+          "misconception_diagnosis",
+          "transfer_reasoning"
+        ],
+        "misconceptionMappingPolicy": "all_distractors",
+        "enforceUniqueEvidencePurposes": true
+      }
+    },
+    "checked_at": "2026-10-05T09:07:58.783899+00:00",
+    "misconceptions": [
+      {
+        "code": "capillary_blocks_liquid",
+        "status": "draft"
+      },
+      {
+        "code": "cooling_causes_liquid_loss",
+        "status": "draft"
+      },
+      {
+        "code": "heating_creates_liquid",
+        "status": "draft"
+      },
+      {
+        "code": "liquid_volume_temperature_independent",
+        "status": "draft"
+      },
+      {
+        "code": "scale_moves_liquid",
+        "status": "draft"
+      },
+      {
+        "code": "thermal_expansion_reversed",
+        "status": "draft"
+      },
+      {
+        "code": "thermometer_requires_boiling",
+        "status": "draft"
+      },
+      {
+        "code": "tube_width_irrelevant",
+        "status": "draft"
+      },
+      {
+        "code": "wider_tube_gives_larger_rise",
+        "status": "draft"
+      }
+    ],
+    "candidate_release": {
+      "status": "draft",
+      "blueprints": 0,
+      "release_key": "physics7_u01_u02_2026_08_14_candidate_r2"
+    },
+    "existing_fingerprints": {
+      "items": "1b0da90fded6909aa6db172dfb914f08",
+      "releases": "572ca0e2f07f612094c7bb279a03422c",
+      "versions": "99824340232297a445018f8167cf8328",
+      "gate_decisions": "e910a6831527003cc0b65e35ac2025cc",
+      "gate_prior_evidence": "4a5fcb58abf8da0573a0a2e27f8da226"
+    },
+    "previous_chapter_ii_approved": 28
+  },
+  "preexisting_fingerprints": {
+    "items": "1b0da90fded6909aa6db172dfb914f08",
+    "releases": "572ca0e2f07f612094c7bb279a03422c",
+    "versions": "99824340232297a445018f8167cf8328",
+    "gate_decisions": "e910a6831527003cc0b65e35ac2025cc",
+    "gate_prior_evidence": "4a5fcb58abf8da0573a0a2e27f8da226"
+  },
+  "preexisting_records_preserved": true,
+  "advisors": {
+    "before": {
+      "security": {
+        "rls_enabled_no_policy": 35,
+        "auth_leaked_password_protection": 1
+      },
+      "performance": {
+        "unindexed_foreign_keys": 39,
+        "auth_rls_initplan": 16,
+        "unused_index": 99,
+        "multiple_permissive_policies": 14
+      }
+    },
+    "after": {
+      "security": {
+        "rls_enabled_no_policy": 35,
+        "auth_leaked_password_protection": 1
+      },
+      "performance": {
+        "unindexed_foreign_keys": 39,
+        "auth_rls_initplan": 16,
+        "unused_index": 99,
+        "multiple_permissive_policies": 14
+      }
+    }
+  },
+  "limits": [
+    "Human question review and protected current-version QA/approval pending.",
+    "Guide and misconception lifecycles remain draft.",
+    "External SME and learner-release gates remain open.",
+    "No new authenticated browser acceptance claimed for this content-only change."
+  ],
+  "shared_schema_changes": false,
+  "shared_runtime_changes": false,
+  "learner_evidence_mutations": false
+}
