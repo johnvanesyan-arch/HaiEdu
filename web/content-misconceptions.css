@@ -1,0 +1,30 @@
+.mc-shell { max-width: 1440px; margin: 0 auto; padding: 24px; }
+.mc-shell header { margin-bottom: 24px; }
+.mc-filters { display: grid; grid-template-columns: repeat(auto-fit,minmax(180px,1fr)); gap: 16px; align-items: end; }
+.mc-shell label { display: grid; gap: 7px; min-width: 0; }
+.mc-shell input,.mc-shell select,.mc-shell textarea { width: 100%; max-width: 100%; box-sizing: border-box; }
+.mc-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
+.mc-filters .mc-actions { margin: 0; }
+.mc-columns { display: grid; grid-template-columns: minmax(250px,.8fr) minmax(0,1.5fr); gap: 20px; align-items: start; }
+.mc-columns > *,#mcDetail > * { min-width: 0; }
+#mcList { display: grid; gap: 10px; margin: 14px 0; }
+.mc-row { text-align: left; white-space: normal; display: grid; gap: 7px; width: 100%; background: #f6f8fc; color: #16344c; border: 1px solid #d7e0e9; border-radius: 10px; padding: 14px; }
+.mc-row[aria-pressed="true"] { border: 2px solid #155d92; background: #edf5fc; }
+.mc-row small { display: block; color: #41596d; }
+.mc-shell h2,.mc-shell h3,.mc-shell p,.mc-shell code,.mc-shell button,.mc-shell summary { overflow-wrap: anywhere; }
+.mc-definition { display: grid; gap: 16px; }
+.mc-check { display: flex !important; align-items: flex-start; gap: 10px; margin-top: 18px; }
+.mc-check input { width: auto; margin-top: 4px; }
+.mc-mapping,.mc-event { border-top: 1px solid #dbe3eb; padding: 14px 0; }
+.mc-mapping p,.mc-event p { margin: 6px 0; white-space: pre-wrap; }
+.mc-identity { color: #506579; font-size: .88rem; }
+#mcDetail textarea { min-height: 145px; resize: vertical; }
+#mcDetail input:read-only,#mcDetail textarea:read-only { background: #f5f7fa; }
+.mc-shell dialog { max-width: min(520px,calc(100vw - 32px)); max-height: 85vh; overflow: auto; padding: 0; border: 1px solid #c8d5e0; border-radius: 14px; }
+.mc-shell dialog::backdrop { background: #162d4f88; }
+.mc-shell dialog .card { margin: 0; }
+.mc-shell dialog img { max-width: 200px; display: block; }
+.mc-shell dialog code { display: block; user-select: all; }
+.mc-shell button:focus-visible,.mc-shell a:focus-visible { outline: 3px solid #1876ad; outline-offset: 3px; }
+@media(max-width:850px) { .mc-columns { grid-template-columns: 1fr; } .mc-shell { padding: 16px; } }
+@media(max-width:480px) { .mc-filters { grid-template-columns: 1fr; } .mc-actions > button { flex: 1 1 140px; white-space: normal; } }
