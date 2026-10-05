@@ -24,7 +24,7 @@ This endpoint is read-only and cannot create sessions, assessments, pools, expos
 
 | Slice | Consumers and required work | Status |
 |---|---|---|
-| 15B.12A | New student context resolver, prospective policy parser and protected read-only endpoint | Implemented; release verification pending |
+| 15B.12A | New student context resolver, prospective policy parser and protected read-only endpoint | Implemented and deployed; PR release checks verified |
 | 15B.12B | Authoritative immutable policy bindings; exact enrollment selection at session insert; release/unit skill scope; pool/form coverage; baseline and session resume queries | Next |
 | 15B.12C | Session start/item/answer/mastery/help/remediation; exposure, readiness, review/retry lifecycle and recommendation telemetry; audit every importing deployed function | Pending |
 | 15B.12D | Student course navigation, dashboards/status/instructions; teacher and school analytics and historical provenance | Pending |
@@ -42,4 +42,8 @@ Question finalization across **all subjects, grades, chapters and assessment mod
 
 53 focused executable tests cover authorized context, two chapters, two subjects, reciprocal school ownership, ended/future enrollment, student/teacher suspension, revoked subject authorization, class/year/programme/release mismatches, frozen labels, blueprint unit isolation, missing/invalid policies, unequal skill allocations, authentication/role failures, revocation during a pending context read and no content/evidence reads or writes. They use isolated in-memory Supabase/Auth query doubles; they are not live authenticated or PostgreSQL acceptance.
 
-Required before completion: full CI, existing native Chromium and PostgreSQL jobs, aggregate Platform release checks; deploy the new endpoint with JWT verification and all dependencies, read back all files, verify signed-out denial and compare content/release preservation evidence. The only runtime importer of the new modules is the new endpoint. Existing deployed consumers are intentionally not changed in 15B.12A. Live second-release switching remains open.
+[PR #127](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/127) merged as `1de1a4b3d322816f30d8ce2d46ad1888729e42ae`. PR CI #1188 passed 1,043 Node tests, 22 native Chromium tests, both PostgreSQL jobs and the aggregate Platform release checks. Main CI #1189 independently verifies the merged source; its live status is tracked in the [run](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/37362254459). The persistent Vercel GitHub Platform release checks setting was separately observed as Production / Blocking.
+
+`get-learning-context` v1 is ACTIVE with JWT verification enabled. All five deployed files match the reviewed repository source exactly. Live OPTIONS boot/preflight returns HTTP 200 and `ok`; a signed-out POST receives HTTP 401 at the JWT gateway. All 18 content/release inventory counts and checksums and baseline advisor counts are unchanged. [Captured deployment evidence](evidence/sprint-15b12a-release-20261005.json).
+
+The only runtime importer of the new modules is the new endpoint. Existing deployed consumers are intentionally not changed in 15B.12A. No new frontend behavior was deployed. The isolated tests do not replace real authenticated student acceptance; live second-release switching and full consumer migration remain open.

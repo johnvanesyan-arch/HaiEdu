@@ -1,0 +1,233 @@
+{
+  "schemaVersion": 1,
+  "sprint": "15B.12A",
+  "capturedAt": "2026-10-05T19:21:13.877Z",
+  "repository": "johnvanesyan-arch/armenian-mastery-platform",
+  "sourceCommit": "1de1a4b3d322816f30d8ce2d46ad1888729e42ae",
+  "pullRequest": 127,
+  "scope": "Read-only authorized student context and prospective assessment policy contract; no consumer migration or Chapter II activation.",
+  "validation": {
+    "isolatedFoundationTests": 53,
+    "prCI": {
+      "runId": 37361874493,
+      "runNumber": 1188,
+      "nodeTests": 1043,
+      "nativeChromiumTests": 22,
+      "postgresJobs": [
+        "institutional-concurrency",
+        "phase3-postgres-17"
+      ],
+      "aggregate": "success"
+    },
+    "mainCI": {
+      "runId": 37362254459,
+      "runNumber": 1189,
+      "statusAtCapture": "Node and institutional concurrency successful; Chromium/PostgreSQL and aggregate not complete at capture. Live run is authoritative."
+    }
+  },
+  "edge": {
+    "project": "xzyjvwiiibuarpotppid",
+    "name": "get-learning-context",
+    "version": 1,
+    "status": "ACTIVE",
+    "verifyJwt": true,
+    "bundleSha256": "d201f33df41b2aa2be465f3c07d3da2cb05ace0056f40f07ad8bb9e965d25dbf",
+    "affectedRuntimeConsumers": [
+      "get-learning-context"
+    ],
+    "sourceParity": [
+      {
+        "path": "supabase/functions/get-learning-context/index.ts",
+        "match": true
+      },
+      {
+        "path": "supabase/functions/_shared/learning-context-handler.mjs",
+        "match": true
+      },
+      {
+        "path": "supabase/functions/_shared/student-learning-context.mjs",
+        "match": true
+      },
+      {
+        "path": "supabase/functions/_shared/assessment-policy.mjs",
+        "match": true
+      },
+      {
+        "path": "supabase/functions/_shared/auth.ts",
+        "match": true
+      }
+    ],
+    "runtimeChecks": {
+      "preflight": {
+        "httpStatus": 200,
+        "body": "ok",
+        "executedIn": "supabase-edge-runtime"
+      },
+      "signedOut": {
+        "httpStatus": 401,
+        "error": "UNAUTHORIZED_NO_AUTH_HEADER"
+      },
+      "authenticatedAcceptance": "Only isolated query/Auth fixtures in 15B.12A; no real student login or second-release switching was performed.",
+      "checkedAt": "2026-10-05T19:18:48.806Z"
+    }
+  },
+  "preservation": {
+    "allUnchanged": true,
+    "tables": [
+      {
+        "entity": "items",
+        "rows": 292,
+        "fingerprint": "0997f48fbfc3e1d0b7ea31e613a38831"
+      },
+      {
+        "entity": "item_versions",
+        "rows": 120,
+        "fingerprint": "5083c16a7c37693a95a4bafc35d68d47"
+      },
+      {
+        "entity": "item_options",
+        "rows": 560,
+        "fingerprint": "5a1ac1694a40c69730c779e2fc39d0c9"
+      },
+      {
+        "entity": "item_answer_keys",
+        "rows": 292,
+        "fingerprint": "4d9e4b9d8d8a266da7365ba5f9984026"
+      },
+      {
+        "entity": "item_misconception_mappings",
+        "rows": 334,
+        "fingerprint": "2aa832471128af644864cf4c82bb19ff"
+      },
+      {
+        "entity": "misconceptions",
+        "rows": 53,
+        "fingerprint": "80e9d09b3c8a4bd2c64952f954702ddb"
+      },
+      {
+        "entity": "misconception_review_events",
+        "rows": 44,
+        "fingerprint": "f7b779fb3466cbc099e2bf41ad04c005"
+      },
+      {
+        "entity": "curriculum_releases",
+        "rows": 3,
+        "fingerprint": "8b4202ac5c5c15adbe92eb3465b11552"
+      },
+      {
+        "entity": "curriculum_release_units",
+        "rows": 4,
+        "fingerprint": "efa6fff20534645d5143dd9ccf210462"
+      },
+      {
+        "entity": "curriculum_release_skills",
+        "rows": 28,
+        "fingerprint": "b92fe9acbe80af6f16905e784669da31"
+      },
+      {
+        "entity": "curriculum_release_item_families",
+        "rows": 162,
+        "fingerprint": "1479787df489ba96786d24d1088ecc95"
+      },
+      {
+        "entity": "curriculum_release_gate_checks",
+        "rows": 14,
+        "fingerprint": "2033e1d1f5b1abac2b82092f5f571f6e"
+      },
+      {
+        "entity": "assessment_pools",
+        "rows": 4,
+        "fingerprint": "ca5d0942fffb2d3c71e022e348e4d06d"
+      },
+      {
+        "entity": "assessment_pool_items",
+        "rows": 280,
+        "fingerprint": "6e4d69bc77934595b66169828cbc795c"
+      },
+      {
+        "entity": "assessment_blueprints",
+        "rows": 7,
+        "fingerprint": "7a34942c597853a9f7809ce90ae7fe35"
+      },
+      {
+        "entity": "assessment_blueprint_items",
+        "rows": 360,
+        "fingerprint": "ec4e2375647ff8fbb2489e44db52ddb3"
+      },
+      {
+        "entity": "assessment_forms",
+        "rows": 4,
+        "fingerprint": "6ed5d022172c6ad6fb3d5ef978d87b6c"
+      },
+      {
+        "entity": "assessment_form_items",
+        "rows": 80,
+        "fingerprint": "6eae3cc9b870cd14d8807d3d5d1af3c6"
+      }
+    ]
+  },
+  "advisors": [
+    {
+      "type": "security",
+      "counts": [
+        {
+          "name": "rls_enabled_no_policy",
+          "count": 35
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "count": 1
+        }
+      ],
+      "unchanged": true
+    },
+    {
+      "type": "performance",
+      "counts": [
+        {
+          "name": "unindexed_foreign_keys",
+          "count": 39
+        },
+        {
+          "name": "auth_rls_initplan",
+          "count": 16
+        },
+        {
+          "name": "unused_index",
+          "count": 99
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "count": 14
+        }
+      ],
+      "unchanged": true
+    }
+  ],
+  "productionGate": {
+    "checkedAt": "2026-10-05T19:15:43.558Z",
+    "provider": "Vercel",
+    "check": "Platform release checks",
+    "source": "GitHub",
+    "environment": "Production",
+    "behavior": "Blocking",
+    "verification": "Existing project setting observed in browser; Blocking menu item contains selected checkmark. No setting change."
+  },
+  "approvals": {
+    "chapterIIMisconceptionDefinitions": {
+      "active": 43,
+      "draft": 0
+    }
+  },
+  "openSlices": [
+    "15B.12B authoritative policy and atomic exact enrollment binding",
+    "15B.12C learning API and deployed dependency migration",
+    "15B.12D navigation dashboards and analytics",
+    "15B.12E complete isolated and authorized second-release acceptance"
+  ],
+  "unchangedBoundaries": [
+    "existing session routes and learner evidence",
+    "Chapter I policies and blueprints",
+    "Chapter II draft release and SME/assessment/content gates"
+  ]
+}
