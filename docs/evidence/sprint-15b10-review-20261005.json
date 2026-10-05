@@ -1,0 +1,310 @@
+{
+  "schema_version": 1,
+  "sprint": "15B.10",
+  "kind": "read_only_question_review_checkpoint",
+  "source_commit": "bc122d70e85884c6191ea7e0a924b243bf30c823",
+  "project_id": "xzyjvwiiibuarpotppid",
+  "items": [
+    {
+      "id": "108a14e9-7460-4491-9454-f8359e1c238f",
+      "code": "PHY7-U02-S09-I01",
+      "qa_at": "2026-10-05T09:14:00.458112+00:00",
+      "errors": [],
+      "passed": true,
+      "status": "published",
+      "warnings": [],
+      "pool_links": 0,
+      "version_no": 1,
+      "review_status": "approved",
+      "last_reviewed_at": "2026-10-05T09:14:21.284187+00:00",
+      "validation_state": "provisional_no_sme_review"
+    },
+    {
+      "id": "ab1d35ba-76a4-403d-8d0c-147234aad143",
+      "code": "PHY7-U02-S09-I02",
+      "qa_at": "2026-10-05T09:15:17.498709+00:00",
+      "errors": [],
+      "passed": true,
+      "status": "published",
+      "warnings": [],
+      "pool_links": 0,
+      "version_no": 1,
+      "review_status": "approved",
+      "last_reviewed_at": "2026-10-05T09:15:22.856867+00:00",
+      "validation_state": "provisional_no_sme_review"
+    },
+    {
+      "id": "19120410-872d-437c-9f18-229f01c69fcc",
+      "code": "PHY7-U02-S09-I03",
+      "qa_at": "2026-10-05T09:15:46.776359+00:00",
+      "errors": [],
+      "passed": true,
+      "status": "published",
+      "warnings": [],
+      "pool_links": 0,
+      "version_no": 1,
+      "review_status": "approved",
+      "last_reviewed_at": "2026-10-05T09:15:52.131428+00:00",
+      "validation_state": "provisional_no_sme_review"
+    },
+    {
+      "id": "a3aa8e20-aff6-4b18-866a-47e01920a00a",
+      "code": "PHY7-U02-S09-I04",
+      "qa_at": "2026-10-05T09:16:26.056174+00:00",
+      "errors": [],
+      "passed": true,
+      "status": "published",
+      "warnings": [],
+      "pool_links": 0,
+      "version_no": 1,
+      "review_status": "approved",
+      "last_reviewed_at": "2026-10-05T09:16:32.111863+00:00",
+      "validation_state": "provisional_no_sme_review"
+    }
+  ],
+  "guides": [
+    {
+      "id": "36fa403b-dc42-46bb-bbd4-fb21f9d80a97",
+      "status": "draft",
+      "title_hy": "Ինչպե՞ս է աշխատում հեղուկային ջերմաչափը"
+    }
+  ],
+  "releases": [
+    {
+      "status": "pilot",
+      "blueprints": 4,
+      "release_key": "physics7_u01_2026_08_14_pilot_r1"
+    },
+    {
+      "status": "draft",
+      "blueprints": 0,
+      "release_key": "physics7_u01_u02_2026_08_14_candidate_r2"
+    }
+  ],
+  "chapter_ii": [
+    {
+      "code": "PHY7-U02-S01",
+      "draft_guides": 0,
+      "approved_questions": 0,
+      "draft_misconceptions": 0
+    },
+    {
+      "code": "PHY7-U02-S02",
+      "draft_guides": 0,
+      "approved_questions": 4,
+      "draft_misconceptions": 0
+    },
+    {
+      "code": "PHY7-U02-S03",
+      "draft_guides": 0,
+      "approved_questions": 4,
+      "draft_misconceptions": 5
+    },
+    {
+      "code": "PHY7-U02-S04",
+      "draft_guides": 0,
+      "approved_questions": 4,
+      "draft_misconceptions": 4
+    },
+    {
+      "code": "PHY7-U02-S05",
+      "draft_guides": 0,
+      "approved_questions": 4,
+      "draft_misconceptions": 4
+    },
+    {
+      "code": "PHY7-U02-S06",
+      "draft_guides": 1,
+      "approved_questions": 4,
+      "draft_misconceptions": 4
+    },
+    {
+      "code": "PHY7-U02-S07",
+      "draft_guides": 1,
+      "approved_questions": 4,
+      "draft_misconceptions": 6
+    },
+    {
+      "code": "PHY7-U02-S08",
+      "draft_guides": 1,
+      "approved_questions": 4,
+      "draft_misconceptions": 8
+    },
+    {
+      "code": "PHY7-U02-S09",
+      "draft_guides": 1,
+      "approved_questions": 4,
+      "draft_misconceptions": 9
+    }
+  ],
+  "checked_at": "2026-10-05T09:17:41.618938+00:00",
+  "misconceptions": [
+    {
+      "code": "thermal_expansion_reversed",
+      "status": "draft"
+    },
+    {
+      "code": "thermometer_requires_boiling",
+      "status": "draft"
+    },
+    {
+      "code": "scale_moves_liquid",
+      "status": "draft"
+    },
+    {
+      "code": "liquid_volume_temperature_independent",
+      "status": "draft"
+    },
+    {
+      "code": "cooling_causes_liquid_loss",
+      "status": "draft"
+    },
+    {
+      "code": "heating_creates_liquid",
+      "status": "draft"
+    },
+    {
+      "code": "wider_tube_gives_larger_rise",
+      "status": "draft"
+    },
+    {
+      "code": "capillary_blocks_liquid",
+      "status": "draft"
+    },
+    {
+      "code": "tube_width_irrelevant",
+      "status": "draft"
+    }
+  ],
+  "chapter_ii_readiness": {
+    "guides": [
+      {
+        "id": "45dadf84-ef72-47d6-805b-791543fa7c03",
+        "skill": "PHY7-U02-S02",
+        "status": "published",
+        "title_hy": "Ինչպե՞ս եզրակացություն անել փորձարարական դիտումից",
+        "guide_version": 2
+      },
+      {
+        "id": "94c4bcef-0ddf-45ec-9368-73dc232c0262",
+        "skill": "PHY7-U02-S03",
+        "status": "published",
+        "title_hy": "Ինչպե՞ս տարբերակել ատոմը, մոլեկուլը և քիմիական տարրը",
+        "guide_version": 2
+      },
+      {
+        "id": "404bad98-2404-4a5c-8f0c-dc716d5a354d",
+        "skill": "PHY7-U02-S04",
+        "status": "published",
+        "title_hy": "Ինչպե՞ս գնահատել և համեմատել մոլեկուլների չափերը",
+        "guide_version": 2
+      },
+      {
+        "id": "72f5367c-8ecd-4200-8d6b-41f1f59fbd8a",
+        "skill": "PHY7-U02-S05",
+        "status": "published",
+        "title_hy": "Ինչպե՞ս նկարագրել մասնիկների անկանոն շարժումը",
+        "guide_version": 2
+      },
+      {
+        "id": "d76553fa-1901-4946-bff8-083fb7ae54e4",
+        "skill": "PHY7-U02-S06",
+        "status": "draft",
+        "title_hy": "Ինչպե՞ս բացատրել դիֆուզիան օրինակով",
+        "guide_version": 1
+      },
+      {
+        "id": "c446e7ed-7b88-46dc-b803-a78f43a025ac",
+        "skill": "PHY7-U02-S07",
+        "status": "draft",
+        "title_hy": "Ինչպե՞ս համեմատել դիֆուզիայի արագությունը նյութի տարբեր վիճակներում",
+        "guide_version": 1
+      },
+      {
+        "id": "2d63deac-50b5-4260-9c16-62e6de09b846",
+        "skill": "PHY7-U02-S08",
+        "status": "draft",
+        "title_hy": "Ինչպե՞ս կապել ջերմաստիճանը մասնիկների շարժման հետ",
+        "guide_version": 1
+      },
+      {
+        "id": "36fa403b-dc42-46bb-bbd4-fb21f9d80a97",
+        "skill": "PHY7-U02-S09",
+        "status": "draft",
+        "title_hy": "Ինչպե՞ս է աշխատում հեղուկային ջերմաչափը",
+        "guide_version": 1
+      }
+    ],
+    "gate_status": [
+      {
+        "notes": "Գլուխ II-ի վեցերորդ ընտանիքը հեռանկարային ապացուցողական սխեմայով ստեղծվել է սևագիր և սովորողին անհասանելի։ Գնահատման ավազան կամ ձևանմուշ չի ստեղծվել։",
+        "status": "pending",
+        "gate_code": "assessment_scope_bound",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-05T09:07:47.714385+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Առաջին հինգ ընտանիքների քսան հարցերը հաստատված են։ 15B.8-ի վեցերորդ ընտանիքի չորս հարցերը, վեց թյուրիմացությունները և օգնության ուղեցույցը սպասում են ստուգման։ 15B.7-ի օգնության ուղեցույցը և նախկին չհաստատված թյուրիմացությունները նույնպես մնում են սևագիր։",
+        "status": "pending",
+        "gate_code": "content_qa_passed",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-05T09:07:47.714385+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Ֆիզիկայի արտաքին մասնագետի հաստատումը դեռ չի ստացվել։",
+        "status": "pending",
+        "gate_code": "external_sme_approved",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-09-30T21:40:31.093879+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Պետական չափորոշիչը, ֆիզիկայի առարկայական չափորոշիչը և 7-րդ դասարանի ծրագիրը գրանցված են որպես ղեկավարող աղբյուրներ։ Դասագիրքը միայն օժանդակ աղբյուր է։",
+        "status": "passed",
+        "gate_code": "normative_sources_registered",
+        "checked_at": "2026-09-30T21:40:31.093879+00:00",
+        "checked_by": null,
+        "updated_at": "2026-09-30T21:40:31.093879+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Գործող N 40-Ն ծրագիրը՝ N 36-Ն փոփոխությամբ, գրանցված և կապված է թողարկման թեկնածուին։",
+        "status": "passed",
+        "gate_code": "official_programme_identified",
+        "checked_at": "2026-09-30T21:40:31.093879+00:00",
+        "checked_by": null,
+        "updated_at": "2026-09-30T21:40:31.093879+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Յոթ պաշտոնական վերջնարդյունքները տառադարձված են, սակայն թեմատիկ և չափորոշչային վերջնական համադրումը սպասում է բովանդակային ու մասնագիտական հաստատմանը։",
+        "status": "pending",
+        "gate_code": "outcomes_reconciled",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-09-30T21:40:31.093879+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Ներքին վերանայմամբ ութ հմտությունների քարտեզը հաստատվել է հարցերի սևագիր հեղինակման համար։ Կրկնվող PHY7-U02-S01 թեկնածուն արխիվացվել է, և գործող PHY7-U01-S02 հմտությունը դարձել է միջգլխային նախապայման։ Սա արտաքին ֆիզիկայի մասնագետի հաստատում կամ թողարկման թույլտվություն չէ։",
+        "status": "passed",
+        "gate_code": "skills_mapped",
+        "checked_at": "2026-09-30T22:07:43.605908+00:00",
+        "checked_by": null,
+        "updated_at": "2026-09-30T22:07:43.605908+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      }
+    ]
+  },
+  "summary": {
+    "approved_questions": 32,
+    "draft_guides": 4,
+    "draft_misconceptions": 40
+  },
+  "database_mutations": false
+}

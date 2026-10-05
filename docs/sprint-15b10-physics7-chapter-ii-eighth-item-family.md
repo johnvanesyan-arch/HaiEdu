@@ -1,6 +1,6 @@
 # Sprint 15B.10 — Ֆիզիկա 7, Գլուխ II-ի ութերորդ հարցերի ընտանիք
 
-**Status:** Deployed as learner-inactive governed draft content on 2026-10-05. Human question review, protected current-version QA and approval remain pending. The guide, misconception definitions and external SME validation have separate gates.
+**Status:** S09 question review, matching-version QA and approval verified complete on 2026-10-05. All four questions remain learner-inactive. The guide and nine misconception definitions remain draft; SME validation and curriculum-release gates remain open.
 
 ## Scope and source
 
@@ -50,9 +50,13 @@ Within that transaction, before/after fingerprints matched for every pre-existin
 
 These database structural checks do not claim protected per-item QA, human content approval, external SME review or a new authenticated browser acceptance run. CI and production read-back will be recorded after completion.
 
-## Reviewer action after deployment
+## Question-review closure — 2026-10-05
 
-Question Bank → Physics 7 → Chapter II → `PHY7-U02-S09`. Review `I01`–`I04`, their options, keys and mappings; save any revisions, run current-version QA, then approve. Review the guide and misconception definitions through their own governed workflows. Chapter II remains learner-inactive.
+Read-only production verification at 09:17:41 UTC on 2026-10-05 confirmed all four `PHY7-U02-S09-I01`–`I04` questions are `published / approved` at version 1. Each has passing latest matching-version QA, zero errors and zero warnings. Approvals span 09:14:21–09:16:32 UTC. All four retain `provisional_no_sme_review` and zero pool links. The S09 guide and nine misconception definitions remain draft. The candidate curriculum release remains draft with zero blueprints; the existing Chapter I release remains pilot.
+
+The eight initial Chapter II families (S02–S09) now contain 32 approved questions. Live guide status is published for S02–S05 (version 2) and draft for S06–S09 (version 1). Forty misconception definitions across S03–S09 remain draft. The next bounded work is to close those content reviews and audit chapter-wide outcome and assessment coverage before defining learner-ready pools/blueprints. The initial family pass does not establish a sufficient protected Diagnostic/Practice/Review/Mastery bank. External SME, content-QA, pilot and release gates remain open.
+
+[Machine-readable review checkpoint](evidence/sprint-15b10-review-20261005.json). Verification recorded existing production state and made no database or learner-data changes. The deployment evidence below preserves the earlier draft checkpoint.
 
 ## Production deployment — 2026-10-05
 
@@ -65,4 +69,4 @@ Question Bank → Physics 7 → Chapter II → `PHY7-U02-S09`. Review `I01`–`I
 - This content-only deployment changes no shared runtime or browser asset and requires no Edge Function redeployment.
 - [Machine-readable deployment evidence](evidence/sprint-15b10-20261005.json).
 
-The next user action is S09 question review and protected QA/approval, with guide and misconception review separately tracked.
+The S09 question review is complete. Review the remaining S06–S09 guides and the draft misconception definitions through their governed workflows; outcome and assessment coverage must still be audited before release.
