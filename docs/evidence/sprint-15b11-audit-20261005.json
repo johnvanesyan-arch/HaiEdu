@@ -1,0 +1,2738 @@
+{
+  "audit_version": "15B.11-readonly-v1",
+  "source_commit": "235021fb27f9bc3e222476fa987eb47031f405ff",
+  "content_checked_at": "2026-10-05T16:00:46.868742+00:00",
+  "guide_checked_at": "2026-10-05T15:53:51.208196+00:00",
+  "changes": {
+    "production_mutations": false,
+    "learner_release": false,
+    "learning_criteria_changed": false
+  },
+  "skills": [
+    {
+      "code": "PHY7-U02-S01",
+      "guides": null,
+      "status": "archived",
+      "name_hy": "Տարբերակել ֆիզիկական մարմինն ու նյութը",
+      "misconceptions": null,
+      "approved_questions": 0
+    },
+    {
+      "code": "PHY7-U02-S02",
+      "guides": [
+        {
+          "id": "45dadf84-ef72-47d6-805b-791543fa7c03",
+          "status": "published",
+          "version": 3,
+          "title_hy": "Ինչպե՞ս եզրակացություն անել փորձարարական դիտումից"
+        }
+      ],
+      "status": "review",
+      "name_hy": "Փորձերով հիմնավորել նյութի մասնիկային կառուցվածքը",
+      "misconceptions": {
+        "active": 3
+      },
+      "approved_questions": 4
+    },
+    {
+      "code": "PHY7-U02-S03",
+      "guides": [
+        {
+          "id": "94c4bcef-0ddf-45ec-9368-73dc232c0262",
+          "status": "published",
+          "version": 3,
+          "title_hy": "Ինչպե՞ս տարբերակել ատոմը, մոլեկուլը և քիմիական տարրը"
+        }
+      ],
+      "status": "review",
+      "name_hy": "Տարբերակել ատոմը, մոլեկուլը և քիմիական տարրը",
+      "misconceptions": {
+        "draft": 5
+      },
+      "approved_questions": 4
+    },
+    {
+      "code": "PHY7-U02-S04",
+      "guides": [
+        {
+          "id": "404bad98-2404-4a5c-8f0c-dc716d5a354d",
+          "status": "published",
+          "version": 3,
+          "title_hy": "Ինչպե՞ս գնահատել և համեմատել մոլեկուլների չափերը"
+        }
+      ],
+      "status": "review",
+      "name_hy": "Մոլեկուլների չափերը համեմատել այլ մարմինների չափերի հետ",
+      "misconceptions": {
+        "draft": 4
+      },
+      "approved_questions": 4
+    },
+    {
+      "code": "PHY7-U02-S05",
+      "guides": [
+        {
+          "id": "72f5367c-8ecd-4200-8d6b-41f1f59fbd8a",
+          "status": "published",
+          "version": 3,
+          "title_hy": "Ինչպե՞ս նկարագրել մասնիկների անկանոն շարժումը"
+        }
+      ],
+      "status": "review",
+      "name_hy": "Նկարագրել ատոմների և մոլեկուլների շարժումը նյութում",
+      "misconceptions": {
+        "draft": 4
+      },
+      "approved_questions": 4
+    },
+    {
+      "code": "PHY7-U02-S06",
+      "guides": [
+        {
+          "id": "d76553fa-1901-4946-bff8-083fb7ae54e4",
+          "status": "published",
+          "version": 3,
+          "title_hy": "Ինչպե՞ս բացատրել դիֆուզիան օրինակով"
+        }
+      ],
+      "status": "review",
+      "name_hy": "Դիֆուզիան բացատրել օրինակներով",
+      "misconceptions": {
+        "draft": 4
+      },
+      "approved_questions": 4
+    },
+    {
+      "code": "PHY7-U02-S07",
+      "guides": [
+        {
+          "id": "c446e7ed-7b88-46dc-b803-a78f43a025ac",
+          "status": "published",
+          "version": 2,
+          "title_hy": "Ինչպե՞ս համեմատել դիֆուզիայի արագությունը նյութի տարբեր վիճակներում"
+        }
+      ],
+      "status": "review",
+      "name_hy": "Համեմատել դիֆուզիայի արագությունը նյութի տարբեր ագրեգատային վիճակներում",
+      "misconceptions": {
+        "draft": 6
+      },
+      "approved_questions": 4
+    },
+    {
+      "code": "PHY7-U02-S08",
+      "guides": [
+        {
+          "id": "2d63deac-50b5-4260-9c16-62e6de09b846",
+          "status": "published",
+          "version": 2,
+          "title_hy": "Ինչպե՞ս կապել ջերմաստիճանը մասնիկների շարժման հետ"
+        }
+      ],
+      "status": "review",
+      "name_hy": "Մարմնի ջերմաստիճանը կապել մասնիկների շարժման արագության հետ",
+      "misconceptions": {
+        "draft": 8
+      },
+      "approved_questions": 4
+    },
+    {
+      "code": "PHY7-U02-S09",
+      "guides": [
+        {
+          "id": "36fa403b-dc42-46bb-bbd4-fb21f9d80a97",
+          "status": "published",
+          "version": 2,
+          "title_hy": "Ինչպե՞ս է աշխատում հեղուկային ջերմաչափը"
+        }
+      ],
+      "status": "review",
+      "name_hy": "Բացատրել ջերմաչափի աշխատանքի սկզբունքը",
+      "misconceptions": {
+        "draft": 9
+      },
+      "approved_questions": 4
+    }
+  ],
+  "releases": [
+    {
+      "key": "physics7_u01_2026_08_14_pilot_r1",
+      "status": "pilot",
+      "blueprints": 4
+    },
+    {
+      "key": "physics7_u01_u02_2026_08_14_candidate_r2",
+      "status": "draft",
+      "blueprints": 0
+    }
+  ],
+  "items": [
+    {
+      "id": "4cef02a0-4f2a-4fc2-9645-380c31fc7825",
+      "code": "PHY7-U02-S02-I01",
+      "skill": "PHY7-U02-S02",
+      "type": "single_choice",
+      "version": 2,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "3ce95a43-1024-4bc2-b9bd-9ea014e645a6",
+      "code": "PHY7-U02-S02-I02",
+      "skill": "PHY7-U02-S02",
+      "type": "single_choice",
+      "version": 2,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "a1c91b20-9b5a-49da-972c-ac0289f1bb0d",
+      "code": "PHY7-U02-S02-I03",
+      "skill": "PHY7-U02-S02",
+      "type": "single_choice",
+      "version": 4,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "8ce98d90-d2ca-416c-acc5-1d814d970766",
+      "code": "PHY7-U02-S02-I04",
+      "skill": "PHY7-U02-S02",
+      "type": "single_choice",
+      "version": 3,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "b36afe62-d479-4464-b839-d7ce0b819ec8",
+      "code": "PHY7-U02-S03-I01",
+      "skill": "PHY7-U02-S03",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "270aebf8-a8fa-4535-8984-0a98b29afdd2",
+      "code": "PHY7-U02-S03-I02",
+      "skill": "PHY7-U02-S03",
+      "type": "single_choice",
+      "version": 2,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "55497027-ec32-4d32-afd4-a35f7d8c08ab",
+      "code": "PHY7-U02-S03-I03",
+      "skill": "PHY7-U02-S03",
+      "type": "single_choice",
+      "version": 2,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "f9865e43-5335-4856-af1f-e0ec484d4c94",
+      "code": "PHY7-U02-S03-I04",
+      "skill": "PHY7-U02-S03",
+      "type": "single_choice",
+      "version": 2,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "f5f7e590-3c12-41c7-9a92-afdf329cc5be",
+      "code": "PHY7-U02-S04-I01",
+      "skill": "PHY7-U02-S04",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "77ae6d0c-5e8b-4d10-a352-e7f3be865a14",
+      "code": "PHY7-U02-S04-I02",
+      "skill": "PHY7-U02-S04",
+      "type": "single_choice",
+      "version": 3,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "e4f2b81e-da40-46e9-a995-f76006c5f011",
+      "code": "PHY7-U02-S04-I03",
+      "skill": "PHY7-U02-S04",
+      "type": "single_choice",
+      "version": 2,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "c5fd7a56-8105-4779-8ecc-a1a66f7bb8bf",
+      "code": "PHY7-U02-S04-I04",
+      "skill": "PHY7-U02-S04",
+      "type": "single_choice",
+      "version": 2,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "8ec57954-3af7-4b88-86cd-5927e461dcba",
+      "code": "PHY7-U02-S05-I01",
+      "skill": "PHY7-U02-S05",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "95a2124c-d2fc-4f9d-ba24-cff282819e4a",
+      "code": "PHY7-U02-S05-I02",
+      "skill": "PHY7-U02-S05",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "c0b26cb9-f020-4fc7-a74f-08cf7ee1a30d",
+      "code": "PHY7-U02-S05-I03",
+      "skill": "PHY7-U02-S05",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "c0ead7e1-32ca-45a1-a5bc-a6f916b084e2",
+      "code": "PHY7-U02-S05-I04",
+      "skill": "PHY7-U02-S05",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "62ff143c-00d3-47dc-ad15-710e528387e6",
+      "code": "PHY7-U02-S06-I01",
+      "skill": "PHY7-U02-S06",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "ee3807ee-567d-480d-b330-80ce11d18efa",
+      "code": "PHY7-U02-S06-I02",
+      "skill": "PHY7-U02-S06",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "8fcb3821-bf6e-4b4f-8027-c5127ed94ca8",
+      "code": "PHY7-U02-S06-I03",
+      "skill": "PHY7-U02-S06",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "660f6de2-cba0-4236-a148-4103cf07897f",
+      "code": "PHY7-U02-S06-I04",
+      "skill": "PHY7-U02-S06",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": null
+    },
+    {
+      "id": "d93a2f4c-8373-4196-be73-d4a171c9af72",
+      "code": "PHY7-U02-S07-I01",
+      "skill": "PHY7-U02-S07",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "core_understanding"
+    },
+    {
+      "id": "bcc7d9b4-e053-4b6a-973b-f03e8eb26166",
+      "code": "PHY7-U02-S07-I02",
+      "skill": "PHY7-U02-S07",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "application"
+    },
+    {
+      "id": "f3ae5421-1bb8-41ee-9e6d-283a6738fd51",
+      "code": "PHY7-U02-S07-I03",
+      "skill": "PHY7-U02-S07",
+      "type": "true_false",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "misconception_diagnosis"
+    },
+    {
+      "id": "0877aecf-2d1c-4917-8ecf-e689154b1694",
+      "code": "PHY7-U02-S07-I04",
+      "skill": "PHY7-U02-S07",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "transfer_reasoning"
+    },
+    {
+      "id": "f0ee7d39-d922-4463-9703-0c8565da31ab",
+      "code": "PHY7-U02-S08-I01",
+      "skill": "PHY7-U02-S08",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "core_understanding"
+    },
+    {
+      "id": "76d5fe46-411e-4b58-b950-03ba3984845d",
+      "code": "PHY7-U02-S08-I02",
+      "skill": "PHY7-U02-S08",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "application"
+    },
+    {
+      "id": "f73aa214-ae3f-4653-a19f-3de251e95102",
+      "code": "PHY7-U02-S08-I03",
+      "skill": "PHY7-U02-S08",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "misconception_diagnosis"
+    },
+    {
+      "id": "f2773a3c-95ce-4b50-85e7-dda5415d5e54",
+      "code": "PHY7-U02-S08-I04",
+      "skill": "PHY7-U02-S08",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "transfer_reasoning"
+    },
+    {
+      "id": "108a14e9-7460-4491-9454-f8359e1c238f",
+      "code": "PHY7-U02-S09-I01",
+      "skill": "PHY7-U02-S09",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "core_understanding"
+    },
+    {
+      "id": "ab1d35ba-76a4-403d-8d0c-147234aad143",
+      "code": "PHY7-U02-S09-I02",
+      "skill": "PHY7-U02-S09",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "application"
+    },
+    {
+      "id": "19120410-872d-437c-9f18-229f01c69fcc",
+      "code": "PHY7-U02-S09-I03",
+      "skill": "PHY7-U02-S09",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "misconception_diagnosis"
+    },
+    {
+      "id": "a3aa8e20-aff6-4b18-866a-47e01920a00a",
+      "code": "PHY7-U02-S09-I04",
+      "skill": "PHY7-U02-S09",
+      "type": "single_choice",
+      "version": 1,
+      "status": "published",
+      "review_status": "approved",
+      "validation_state": "provisional_no_sme_review",
+      "pool_links": 0,
+      "evidence_purpose": "transfer_reasoning"
+    }
+  ],
+  "current_version_qa": [
+    {
+      "qa": {
+        "id": "cea720fb-4a51-447c-9cbd-63436961f27e",
+        "errors": [],
+        "passed": true,
+        "warnings": [
+          "content_review_not_approved",
+          "sme_review_pending"
+        ],
+        "created_at": "2026-10-01T06:26:42.855294+00:00",
+        "version_no": 2
+      },
+      "item": "PHY7-U02-S02-I01",
+      "version": 2,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "e880d069-6887-4973-9e9e-6bedf5f7e6b7",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T06:50:02.683389+00:00",
+        "version_no": 2
+      },
+      "item": "PHY7-U02-S02-I02",
+      "version": 2,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "e49cdac7-7d58-48c1-a2f6-cb41d675a5ac",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T07:51:45.25496+00:00",
+        "version_no": 4
+      },
+      "item": "PHY7-U02-S02-I03",
+      "version": 4,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "7b9a6895-b93f-4d38-8d80-9638463786b2",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:16:07.40178+00:00",
+        "version_no": 3
+      },
+      "item": "PHY7-U02-S02-I04",
+      "version": 3,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "96b40882-b389-4d4f-b136-9dba3af0f901",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T13:21:49.03353+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S03-I01",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "e872c92a-33de-4d10-8d5d-8cce0e5fdde2",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:16:24.677992+00:00",
+        "version_no": 2
+      },
+      "item": "PHY7-U02-S03-I02",
+      "version": 2,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "9033dd30-798f-4a53-b654-3d3cc8acbd77",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:16:52.517009+00:00",
+        "version_no": 2
+      },
+      "item": "PHY7-U02-S03-I03",
+      "version": 2,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "aa7ed420-8114-4daa-afdd-7be291b99988",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:17:12.040341+00:00",
+        "version_no": 2
+      },
+      "item": "PHY7-U02-S03-I04",
+      "version": 2,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "2cee1895-5707-4003-90e1-87103fcb89d2",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T14:56:53.300221+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S04-I01",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "2bcb8feb-65f5-41ad-9654-30967bc60512",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:17:26.310185+00:00",
+        "version_no": 3
+      },
+      "item": "PHY7-U02-S04-I02",
+      "version": 3,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "75e9e3f0-2674-4e61-86f1-13a3b9b5116c",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:17:51.02955+00:00",
+        "version_no": 2
+      },
+      "item": "PHY7-U02-S04-I03",
+      "version": 2,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "4359247e-4ddb-421f-98ed-8935d0eea2eb",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:18:59.000985+00:00",
+        "version_no": 2
+      },
+      "item": "PHY7-U02-S04-I04",
+      "version": 2,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "e1611ad2-0fc2-41f7-b272-60f23b186410",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:44:05.374938+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S05-I01",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "ea468174-ad42-483b-b8cf-d050a4538658",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:45:05.306778+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S05-I02",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "2666fa0b-9ce4-45ea-a5f8-a44c8efc06d2",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:45:47.417941+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S05-I03",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "2527f27b-37fb-4355-b53a-d0498d2e504e",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T16:46:59.305903+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S05-I04",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "b79c2234-b8c0-4d60-94c2-1caea2ad6e85",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T17:40:48.307646+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S06-I01",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "c38aa353-36d7-4b87-9496-c0693461eea7",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T17:41:15.431093+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S06-I02",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "b0803225-5a2f-4a9c-83ea-710d747e2947",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T17:42:00.408385+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S06-I03",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "96d431c7-a451-4f34-bd05-f673fb240c3a",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-01T17:42:22.389864+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S06-I04",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "0c50f741-8ae4-436d-bbb2-0f0a2f1ff2a0",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T07:59:34.969001+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S07-I01",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "018c6091-7581-4c87-afde-f15a5266ad64",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T08:00:16.925907+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S07-I02",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "197b8073-f6c6-490f-bc24-728a10b168ca",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T08:00:39.994177+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S07-I03",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "e42ce95f-74cd-477a-bcd0-862656fd256b",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T08:01:09.336162+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S07-I04",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "4800b052-0d9b-42ed-b4e9-efd82e6052b9",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T08:40:08.024386+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S08-I01",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "ee78a87b-e8dd-4ee8-b092-240703a6357e",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T08:41:46.573129+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S08-I02",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "0320155a-887e-43fc-a1e5-541d616b913f",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T08:43:45.346838+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S08-I03",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "942eeec5-41a5-48f9-8161-dae443ba1463",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T08:48:19.634659+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S08-I04",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "991173f4-2d71-462c-af54-aa13178cc5dd",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T09:14:00.458112+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S09-I01",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "6b02e2c5-b635-4f5f-926f-e63d016ba630",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T09:15:17.498709+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S09-I02",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "86016f82-d695-479d-be2f-d768fb403dc6",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T09:15:46.776359+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S09-I03",
+      "version": 1,
+      "approved": true,
+      "published": true
+    },
+    {
+      "qa": {
+        "id": "5dffe206-d941-4c4e-9dd6-3664a1ca1994",
+        "errors": [],
+        "passed": true,
+        "warnings": [],
+        "created_at": "2026-10-05T09:16:26.056174+00:00",
+        "version_no": 1
+      },
+      "item": "PHY7-U02-S09-I04",
+      "version": 1,
+      "approved": true,
+      "published": true
+    }
+  ],
+  "learner_session_item_links": 0,
+  "misconceptions": [
+    {
+      "id": "a5423059-c0ff-461a-8725-5f40aa984b70",
+      "code": "matter_as_continuous",
+      "skill": "PHY7-U02-S02",
+      "status": "active",
+      "title_hy": "Նյութը որպես հոծ միջավայր պատկերացնելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S02-I02",
+          "note": "Մերժվում է նյութի մասնիկային կառուցվածքը։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S02-I03",
+          "note": "Մերժվում է պինդ նյութի մասնիկային կառուցվածքը։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-01T12:12:29.209974+00:00",
+      "description_hy": "Սովորողը ենթադրում է, որ նյութը հոծ է և մասնիկների միջև ազատ տարածություններ չկան։"
+    },
+    {
+      "id": "5d3fe06f-e9d1-429f-acd0-e36a0f4a0cc9",
+      "code": "particle_identity_or_count_changes",
+      "skill": "PHY7-U02-S02",
+      "status": "active",
+      "title_hy": "Մասնիկների անհետացում, առաջացում կամ փոխակերպում ենթադրելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S02-I01",
+          "note": "Լուծվելը սխալմամբ մեկնաբանվում է որպես նյութի անհետացում։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S02-I01",
+          "note": "Դիտումը սխալմամբ կապվում է նյութի քանակի կորստի հետ։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S02-I01",
+          "note": "Լուծվելը սխալմամբ մեկնաբանվում է որպես մասնիկների փոխակերպում։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S02-I02",
+          "note": "Ծավալի փոփոխությունը սխալմամբ բացատրվում է մասնիկների ոչնչացմամբ։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S02-I02",
+          "note": "Ծավալի փոփոխությունը սխալմամբ կապվում է զանգվածի անհետացման հետ։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S02-I03",
+          "note": "Տաքացումը սխալմամբ մեկնաբանվում է որպես նյութի էության կորուստ։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S02-I03",
+          "note": "Ներթափանցումը սխալմամբ մեկնաբանվում է որպես մասնիկների փոխակերպում։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S02-I04",
+          "note": "Ընդարձակումը սխալմամբ վերագրվում է նոր մասնիկների առաջացմանը։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S02-I04",
+          "note": "Չափի փոփոխությունը սխալմամբ կապվում է զանգվածի կորստի հետ։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-01T12:12:29.209974+00:00",
+      "description_hy": "Սովորողը ծավալի կամ չափի փոփոխությունը բացատրում է մասնիկների անհետացմամբ, առաջացմամբ կամ այլ մասնիկների փոխակերպմամբ։"
+    },
+    {
+      "id": "e97e05cf-938a-4998-8aff-143769087b22",
+      "code": "particle_size_increases_on_heating",
+      "skill": "PHY7-U02-S02",
+      "status": "active",
+      "title_hy": "Տաքացնելիս մասնիկների չափի մեծացում ենթադրելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S02-I04",
+          "note": "Ընդարձակումը սխալմամբ վերագրվում է մասնիկների չափի մեծացմանը։",
+          "response_key": "A"
+        }
+      ],
+      "updated_at": "2026-10-01T12:12:29.209974+00:00",
+      "description_hy": "Սովորողը ջերմային ընդարձակումը վերագրում է մասնիկների չափի, ոչ թե նրանց միջև միջին հեռավորության մեծացմանը։"
+    },
+    {
+      "id": "3bca9b70-479d-4cbb-acdd-69aafb32b321",
+      "code": "atom_element_confusion",
+      "skill": "PHY7-U02-S03",
+      "status": "draft",
+      "title_hy": "Ատոմն ու քիմիական տարրը նույնացնելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S03-I04",
+          "note": "Քիմիական տարրը սխալմամբ նույնացվում է ցանկացած առանձին ատոմի հետ։",
+          "response_key": "A"
+        }
+      ],
+      "updated_at": "2026-10-01T13:14:29.2027+00:00",
+      "description_hy": "Սովորողը առանձին ատոմը նույնացնում է միևնույն տեսակի ատոմներից բաղկացած նյութի՝ քիմիական տարրի հետ։"
+    },
+    {
+      "id": "6ae69b8b-e999-498c-9e71-362edb2db6b2",
+      "code": "atom_identity_changes_in_molecule",
+      "skill": "PHY7-U02-S03",
+      "status": "draft",
+      "title_hy": "Մոլեկուլ կազմելիս ատոմների տեսակը փոխված համարելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S03-I03",
+          "note": "Միանալիս ատոմների տարրային պատկանելությունը սխալմամբ համարվում է փոփոխված։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-01T13:14:29.2027+00:00",
+      "description_hy": "Սովորողը ենթադրում է, որ մոլեկուլ կազմելիս ատոմները կորցնում կամ փոխում են իրենց քիմիական տարրի պատկանելությունը։"
+    },
+    {
+      "id": "154859ad-ce91-448c-a649-fc5749e427d7",
+      "code": "atom_molecule_confusion",
+      "skill": "PHY7-U02-S03",
+      "status": "draft",
+      "title_hy": "Ատոմն ու մոլեկուլը նույնացնելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S03-I01",
+          "note": "Մեկ ատոմը սխալմամբ անվանվում է մոլեկուլ։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S03-I01",
+          "note": "Մեկ ատոմը սխալմամբ նույնացվում է այլ նյութի մոլեկուլի հետ։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S03-I01",
+          "note": "Մեկ ատոմին սխալմամբ վերագրվում է երկու ատոմից կազմված լինելը։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S03-I02",
+          "note": "Երկու միացած ատոմից կազմված մոլեկուլը սխալմամբ համարվում է մեկ ատոմ։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S03-I03",
+          "note": "Մի քանի ատոմից կազմված մոլեկուլը սխալմամբ համարվում է մեկ ատոմ։",
+          "response_key": "A"
+        }
+      ],
+      "updated_at": "2026-10-01T13:14:29.2027+00:00",
+      "description_hy": "Սովորողը չի տարբերակում առանձին ատոմը երկու կամ ավելի միացած ատոմներից կազմված մոլեկուլից։"
+    },
+    {
+      "id": "5870c4da-af57-4d31-9d0f-d956cd76da1b",
+      "code": "element_molecule_confusion",
+      "skill": "PHY7-U02-S03",
+      "status": "draft",
+      "title_hy": "Քիմիական տարրն ու մոլեկուլը նույնացնելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S03-I02",
+          "note": "Ջրածնի մոլեկուլը սխալմամբ նույնացվում է քիմիական տարր հասկացության հետ։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S03-I04",
+          "note": "Քիմիական տարրի սահմանումը սխալմամբ փոխարինվում է մոլեկուլի սահմանմամբ։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S03-I04",
+          "note": "Քիմիական տարրը սխալմամբ նույնացվում է նյութի հատկությունները պահպանող մոլեկուլի հետ։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-01T13:14:29.2027+00:00",
+      "description_hy": "Սովորողը քիմիական տարրը համարում է երկու կամ ավելի ատոմներից կազմված մասնիկ՝ անտեսելով միևնույն տեսակի ատոմներից բաղկացած նյութ լինելու պայմանը։"
+    },
+    {
+      "id": "80c1bee0-1d53-4435-9c73-ec49d6a906ef",
+      "code": "molecule_atom_composition_confusion",
+      "skill": "PHY7-U02-S03",
+      "status": "draft",
+      "title_hy": "Մոլեկուլի ատոմային կազմը սխալ սահմանելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S03-I02",
+          "note": "Նույն տեսակի երկու ատոմները սխալմամբ համարվում են տարբեր տեսակի։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S03-I03",
+          "note": "Մոլեկուլը սխալմամբ սահմանափակվում է միայն նույն տեսակի ատոմներով։",
+          "response_key": "B"
+        }
+      ],
+      "updated_at": "2026-10-01T13:14:29.2027+00:00",
+      "description_hy": "Սովորողը ենթադրում է, որ մոլեկուլները կարող են կազմված լինել միայն նույն կամ միայն տարբեր տեսակի ատոմներից։"
+    },
+    {
+      "id": "21cd7ec7-f088-44dc-94cb-68b41cac2b8a",
+      "code": "angstrom_unit_exponent_confusion",
+      "skill": "PHY7-U02-S04",
+      "status": "draft",
+      "title_hy": "Անգստրեմի միավորի աստիճանը շփոթելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S04-I01",
+          "note": "Սանտիմետրով 10⁻⁸ արտահայտությունը սխալմամբ ընդունվում է որպես մետրով արժեք։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S04-I01",
+          "note": "Անգստրեմի մետրով աստիճանը սխալ է ընտրվում։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S04-I01",
+          "note": "Անգստրեմը սխալմամբ մոտեցվում է միլիմետրի կարգին։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-01T14:50:34.004096+00:00",
+      "description_hy": "Սովորողը 1 Å = 10⁻⁸ սմ հավասարությունը շփոթում է մետրով արտահայտության հետ կամ սխալ է փոխարկում այն՝ 1 Å = 10⁻¹⁰ մ։"
+    },
+    {
+      "id": "d9c18d63-b534-4182-b7e3-dad7c5c0d106",
+      "code": "molecular_scale_analogy_confusion",
+      "skill": "PHY7-U02-S04",
+      "status": "draft",
+      "title_hy": "Ատոմի հարաբերական չափի համեմատությունը սխալ մեկնաբանելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S04-I03",
+          "note": "Մեծացված ատոմի հարաբերական չափը գերագնահատվում է։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S04-I03",
+          "note": "Նույն մեծացման գործակիցը չի կիրառվում ատոմի նկատմամբ։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S04-I03",
+          "note": "Ատոմի չափը սխալմամբ նույնացվում է մեծացված խնձորի չափի հետ։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-01T14:50:34.004096+00:00",
+      "description_hy": "Սովորողը չի պահպանում խնձոր–Երկրագունդ համեմատության նույն մեծացման գործակիցը և սխալ է գնահատում մեծացված ատոմի հարաբերական չափը։"
+    },
+    {
+      "id": "5315dad4-5a0a-40e7-9159-974798839457",
+      "code": "molecular_size_order_confusion",
+      "skill": "PHY7-U02-S04",
+      "status": "draft",
+      "title_hy": "Մոլեկուլների չափերի համեմատության ուղղությունը շփոթելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S04-I02",
+          "note": "Թվերը դասավորվում են մեծից փոքր՝ պահանջված ուղղության հակառակ։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S04-I02",
+          "note": "2,8 Å արժեքը սխալմամբ համարվում է 2,5 Å-ից փոքր։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S04-I02",
+          "note": "3,6 Å արժեքը սխալմամբ համարվում է 2,8 Å-ից փոքր։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-01T14:50:34.004096+00:00",
+      "description_hy": "Սովորողը սխալ է դասավորում նույն միավորով տրված մոլեկուլների տրամագծերը կամ շրջում է «փոքրից մեծ» պահանջը։"
+    },
+    {
+      "id": "ce17ad2f-f501-4dd8-95b2-66ed41a802bb",
+      "code": "particle_row_average_confusion",
+      "skill": "PHY7-U02-S04",
+      "status": "draft",
+      "title_hy": "Մեկ փոքր մասնիկի չափը շարքի ընդհանուր չափի հետ շփոթելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S04-I04",
+          "note": "Մեկ մասնիկի չափը նույնացվում է ամբողջ շարքի երկարության հետ։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S04-I04",
+          "note": "Մասնիկների թիվը բաժանվում է շարքի երկարությանը՝ ճիշտ հարաբերության փոխարեն։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S04-I04",
+          "note": "Մեկ մասնիկի չափը սխալմամբ ընդունվում է շարքի երկարության կեսը։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-01T14:50:34.004096+00:00",
+      "description_hy": "Սովորողը մեկ մասնիկի տրամագիծը գտնելիս շարքի ընդհանուր երկարությունը չի բաժանում մասնիկների թվին կամ բաժանումը կատարում է հակառակ հերթականությամբ։"
+    },
+    {
+      "id": "80aaad79-4b23-4097-8596-5a22f188dee7",
+      "code": "collision_stops_molecular_motion",
+      "skill": "PHY7-U02-S05",
+      "status": "draft",
+      "title_hy": "Բախումը մասնիկի շարժման ավարտ համարելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S05-I02",
+          "note": "Բախումը սխալմամբ համարվում է մասնիկի շարժման վերջնական դադար։",
+          "response_key": "A"
+        }
+      ],
+      "updated_at": "2026-10-01T16:37:11.896953+00:00",
+      "description_hy": "Սովորողը կարծում է, թե այլ մոլեկուլի հետ բախվելուց հետո մասնիկը վերջնականապես կանգ է առնում՝ ուղղությունը փոխելու և շարժումը շարունակելու փոխարեն։"
+    },
+    {
+      "id": "7aaca86f-f8aa-457a-9934-40ac02067594",
+      "code": "instantaneous_speed_equals_net_travel_speed",
+      "skill": "PHY7-U02-S05",
+      "status": "draft",
+      "title_hy": "Ակնթարթային արագությունը ընդհանուր տեղաշարժի արագության հետ նույնացնելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S05-I04",
+          "note": "Ակնթարթային արագությունը նույնացվում է A-ից B ընդհանուր առաջխաղացման արագության հետ։",
+          "response_key": "B"
+        }
+      ],
+      "updated_at": "2026-10-01T16:37:11.896953+00:00",
+      "description_hy": "Սովորողը հաշվի չի առնում բազմաթիվ բախումներով երկար բեկյալ ճանապարհը և մասնիկի մեծ ակնթարթային արագությունը նույնացնում է երկու կետերի միջև արագ առաջխաղացման հետ։"
+    },
+    {
+      "id": "878a47a3-a51d-4f1e-9b82-16093668d2d3",
+      "code": "molecular_motion_ordered_or_predetermined",
+      "skill": "PHY7-U02-S05",
+      "status": "draft",
+      "title_hy": "Մասնիկների շարժումը կարգավորված կամ նպատակաուղղված համարելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S05-I01",
+          "note": "Անկանոն բազմուղղություն շարժումը փոխարինվում է բոլոր մասնիկների միաուղղություն ուղիղ շարժմամբ։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S05-I02",
+          "note": "Օդի ազդեցությունը սխալմամբ ներկայացվում է որպես հաստատուն միաուղղություն մղում։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S05-I02",
+          "note": "Մոլեկուլին վերագրվում է նպատակակետի և ամենակարճ ճանապարհի ընտրություն։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S05-I03",
+          "note": "Բախումներով պայմանավորված ուղղության փոփոխությունները անտեսվում են, և ընտրվում է ուղիղ ճանապարհ։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S05-I03",
+          "note": "Քաոսային ուղին սխալմամբ փոխարինվում է պարբերաբար կրկնվող փակ ուղով։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S05-I04",
+          "note": "Բոլոր մոլեկուլներին վերագրվում է նույն նախապես որոշված ուղղությունների հաջորդականությունը։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-01T16:37:11.896953+00:00",
+      "description_hy": "Սովորողը մասնիկների անկանոն շարժումը փոխարինում է նույն ուղղությամբ, նախապես որոշված, շրջանաձև կամ նպատակակետ ընտրող շարժմամբ։"
+    },
+    {
+      "id": "b8138790-ba1f-4866-b170-f8f0f4332e9d",
+      "code": "particle_motion_requires_external_activation",
+      "skill": "PHY7-U02-S05",
+      "status": "draft",
+      "title_hy": "Մասնիկների շարժումն արտաքին գործողությամբ սկսված համարելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S05-I01",
+          "note": "Մասնիկների շարժումը սխալմամբ կապվում է միայն ամբողջ նյութի արտաքին տեղաշարժի հետ։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S05-I01",
+          "note": "Մասնիկները սխալմամբ համարվում են անշարժ մինչև տաքացնելը։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S05-I03",
+          "note": "Առանձին մոլեկուլի շարժումը սխալմամբ պայմանավորվում է ամբողջ գազի միասնական տեղաշարժով։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S05-I04",
+          "note": "Բենզինի մոլեկուլները սխալմամբ համարվում են սկզբում անշարժ։",
+          "response_key": "A"
+        }
+      ],
+      "updated_at": "2026-10-01T16:37:11.896953+00:00",
+      "description_hy": "Սովորողը կարծում է, թե նյութի մասնիկներն անշարժ են և շարժվում են միայն ամբողջ մարմինը տեղաշարժելուց, տաքացնելուց կամ որոշ ժամանակ սպասելուց հետո։"
+    },
+    {
+      "id": "2953f764-5f61-4da1-b38c-bba500107235",
+      "code": "diffusion_is_bulk_layer_motion",
+      "skill": "PHY7-U02-S06",
+      "status": "draft",
+      "title_hy": "Դիֆուզիան նյութի ամբողջական շերտի տեղաշարժ համարելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S06-I02",
+          "note": "Մասնիկների փոխադարձ ներթափանցումը փոխարինվում է լուծույթի ամբողջ շերտի վեր բարձրանալով։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S06-I02",
+          "note": "Փոխադարձ մասնիկային ներթափանցման փոխարեն ենթադրվում է մեկ շերտի ամբողջական տեղաշարժ։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S06-I03",
+          "note": "Աղի ներթափանցումը սխալմամբ բացատրվում է միայն ծանրության ուժով դեպի անոթի հատակը շարժմամբ։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S06-I04",
+          "note": "Մասնիկների շարժման փոխարեն ենթադրվում է օդի ամբողջ շերտի զանգվածային անցում։",
+          "response_key": "B"
+        }
+      ],
+      "updated_at": "2026-10-01T17:10:21.840085+00:00",
+      "description_hy": "Սովորողը դիֆուզիայի մասնիկային փոխադարձ ներթափանցումը փոխարինում է մի նյութի ամբողջ շերտի միակողմանի տեղաշարժով կամ ծանրության ազդեցությամբ։"
+    },
+    {
+      "id": "55c4551d-afd2-4518-9f39-4645ed20ab2c",
+      "code": "diffusion_is_phase_or_chemical_change",
+      "skill": "PHY7-U02-S06",
+      "status": "draft",
+      "title_hy": "Դիֆուզիան վիճակի կամ քիմիական փոփոխության հետ շփոթելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S06-I01",
+          "note": "Դիֆուզիան սխալմամբ նույնացվում է հալման հետ։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S06-I01",
+          "note": "Դիֆուզիան սխալմամբ նույնացվում է նոր նյութ առաջացնող քիմիական փոխազդեցության հետ։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S06-I03",
+          "note": "Դիֆուզիան սխալմամբ ներկայացվում է որպես բանջարեղենի հալում։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S06-I03",
+          "note": "Ներթափանցած աղի մասնիկների փոխարեն ենթադրվում է նոր նյութի առաջացում։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S06-I04",
+          "note": "Թթվածնի ներթափանցման փոխարեն ենթադրվում է նրա քիմիական առաջացում արյան մեջ։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-01T17:10:21.840085+00:00",
+      "description_hy": "Սովորողը դիֆուզիան նույնացնում է հալման, քիմիական ռեակցիայի կամ նոր նյութի առաջացման հետ։"
+    },
+    {
+      "id": "465e4e58-1685-4cb4-acf1-23307bae35fa",
+      "code": "diffusion_requires_external_mixing",
+      "skill": "PHY7-U02-S06",
+      "status": "draft",
+      "title_hy": "Դիֆուզիան միայն արտաքին խառնումով հնարավոր համարելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S06-I01",
+          "note": "Դիֆուզիան սխալմամբ սահմանվում է որպես միայն արտաքին խառնիչով իրականացվող մեծածավալ տեղաշարժ։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S06-I04",
+          "note": "Թթվածնի անցումը սխալմամբ կապվում է միայն սրտի մեխանիկական խառնման հետ։",
+          "response_key": "A"
+        }
+      ],
+      "updated_at": "2026-10-01T17:10:21.840085+00:00",
+      "description_hy": "Սովորողը կարծում է, թե նյութերը կարող են խառնվել միայն խառնելու, պոմպելու կամ մեկ ամբողջական շերտը տեղաշարժելու միջոցով և անտեսում է մասնիկների ինքնաբերական շարժումը։"
+    },
+    {
+      "id": "fed1a496-d38a-4810-9c95-40b3c4fd5476",
+      "code": "diffusion_without_particle_transfer",
+      "skill": "PHY7-U02-S06",
+      "status": "draft",
+      "title_hy": "Դիֆուզիան առանց մասնիկների տեղափոխության պատկերացնելը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S06-I02",
+          "note": "Գույնի տարածումը սխալմամբ առանձնացվում է այն առաջացնող մոլեկուլների տեղափոխությունից։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-01T17:10:21.840085+00:00",
+      "description_hy": "Սովորողը տեսանելի գույնի կամ սահմանագծի փոփոխությունը համարում է ինքնուրույն երևույթ և չի կապում այն մասնիկների շարժման ու փոխադարձ ներթափանցման հետ։"
+    },
+    {
+      "id": "67967527-c155-4c16-989a-52fb42f0ad83",
+      "code": "diffusion_absent_in_solids",
+      "skill": "PHY7-U02-S07",
+      "status": "draft",
+      "title_hy": "Պինդ մարմիններում դիֆուզիա տեղի չի ունենում",
+      "responses": [
+        {
+          "item": "PHY7-U02-S07-I03",
+          "note": "Պինդ մարմիններում շատ դանդաղ դիֆուզիան սխալմամբ համարվում է բացակա։",
+          "response_key": "true"
+        }
+      ],
+      "updated_at": "2026-10-02T07:29:09.081662+00:00",
+      "description_hy": "Սովորողը շատ դանդաղ ընթացքը սխալմամբ նույնացնում է երևույթի լրիվ բացակայության հետ։"
+    },
+    {
+      "id": "d39d15c2-3640-4bb0-bc30-8573dde607a0",
+      "code": "diffusion_rate_explained_by_unrelated_factor",
+      "skill": "PHY7-U02-S07",
+      "status": "draft",
+      "title_hy": "Դիֆուզիայի արագությունը բացատրվում է անկապ գործոնով",
+      "responses": [
+        {
+          "item": "PHY7-U02-S07-I02",
+          "note": "Ժամանակային տարբերությունը սխալմամբ կապվում է նյութի գույնի հետ։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S07-I04",
+          "note": "Գազերում արագ ընթացքը սխալմամբ կապվում է մոլեկուլների ենթադրյալ մեծ չափի հետ։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S07-I04",
+          "note": "Հեղուկներում միջմոլեկուլային տարածությունների գոյությունը սխալմամբ ժխտվում է։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S07-I04",
+          "note": "Դիֆուզիայի արագությունը սխալմամբ բացատրվում է միայն ծանրության ուժով։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-02T07:29:09.081662+00:00",
+      "description_hy": "Սովորողը մասնիկների միջև հեռավորության փոխարեն արագությունը կապում է նյութի գույնի, մոլեկուլի ենթադրյալ չափի կամ ծանրության ուժի հետ։"
+    },
+    {
+      "id": "7ced38cc-a1b3-49fa-8ed1-c9dd4145fd13",
+      "code": "diffusion_rate_fastest_in_liquids",
+      "skill": "PHY7-U02-S07",
+      "status": "draft",
+      "title_hy": "Դիֆուզիան հեղուկներում ավելի արագ է, քան գազերում",
+      "responses": [
+        {
+          "item": "PHY7-U02-S07-I01",
+          "note": "Հեղուկների հոսունությունը սխալմամբ վերագրվում է դիֆուզիայի առավել մեծ արագությանը։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-02T07:29:09.081662+00:00",
+      "description_hy": "Սովորողը հեղուկի հոսելու հատկությունը սխալմամբ նույնացնում է դիֆուզիայի առավել մեծ արագության հետ։"
+    },
+    {
+      "id": "eb2a3338-73f6-4aea-ac8a-962c92500ebb",
+      "code": "diffusion_rate_fastest_in_solids",
+      "skill": "PHY7-U02-S07",
+      "status": "draft",
+      "title_hy": "Դիֆուզիան ամենաարագն է պինդ մարմիններում",
+      "responses": [
+        {
+          "item": "PHY7-U02-S07-I01",
+          "note": "Ամենաարագ ընթացքը սխալմամբ վերագրվում է պինդ մարմիններին։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S07-I02",
+          "note": "Կապար–ոսկի փորձի շատ դանդաղ ընթացքը մեկնաբանվում է հակառակ ուղղությամբ։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-02T07:29:09.081662+00:00",
+      "description_hy": "Սովորողը մասնիկների մոտ դասավորված լինելը սխալմամբ մեկնաբանում է որպես ավելի արագ փոխադարձ ներթափանցում։"
+    },
+    {
+      "id": "1b9a2764-6613-4b17-959f-8c4eea1c8124",
+      "code": "diffusion_rate_requires_external_mixing",
+      "skill": "PHY7-U02-S07",
+      "status": "draft",
+      "title_hy": "Դիֆուզիան պահանջում է արտաքին խառնում",
+      "responses": [
+        {
+          "item": "PHY7-U02-S07-I02",
+          "note": "Դիտված ինքնաբերական խառնումը սխալմամբ պայմանավորվում է արտաքին ուժով։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-02T07:29:09.081662+00:00",
+      "description_hy": "Սովորողը դիֆուզիայի ինքնաբերական ընթացքը փոխարինում է արտաքին ուժով նյութերի խառնմամբ։"
+    },
+    {
+      "id": "16000704-4c4f-428b-96a2-cade5d65c5e4",
+      "code": "diffusion_rate_same_in_all_states",
+      "skill": "PHY7-U02-S07",
+      "status": "draft",
+      "title_hy": "Դիֆուզիայի արագությունը բոլոր վիճակներում նույնն է",
+      "responses": [
+        {
+          "item": "PHY7-U02-S07-I01",
+          "note": "Երեք վիճակներում դիֆուզիայի արագությունների տարբերությունը չի ճանաչվում։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-02T07:29:09.081662+00:00",
+      "description_hy": "Սովորողը չի տարբերակում մասնիկների դասավորության և շարժման ազատության ազդեցությունը դիֆուզիայի արագության վրա։"
+    },
+    {
+      "id": "f710f03d-3a9b-4a39-8be2-10f0e777ec6e",
+      "code": "different_substances_speed_orders_temperature",
+      "skill": "PHY7-U02-S08",
+      "status": "draft",
+      "title_hy": "Տարբեր նյութերի ջերմաստիճանները որոշվում են միայն մոլեկուլների արագությամբ",
+      "responses": [
+        {
+          "item": "PHY7-U02-S08-I04",
+          "note": "Նույն նյութի համար կիրառվող համեմատությունը առանց հիմնավորման տարածվում է տարբեր նյութերի վրա՝ անտեսելով տրված ջերմաստիճանները։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S08-I04",
+          "note": "Նույն նյութի համար կիրառվող համեմատությունը առանց հիմնավորման տարածվում է տարբեր նյութերի վրա՝ անտեսելով տրված ջերմաստիճանները։",
+          "response_key": "B"
+        }
+      ],
+      "updated_at": "2026-10-05T08:30:17.903344+00:00",
+      "description_hy": "Նույն նյութի համար կիրառվող համեմատությունը առանց հիմնավորման տարածվում է տարբեր նյութերի վրա՝ անտեսելով տրված ջերմաստիճանները։"
+    },
+    {
+      "id": "e3dffb85-8ec9-44eb-8911-36fb083cbb0e",
+      "code": "diffusion_requires_stirring",
+      "skill": "PHY7-U02-S08",
+      "status": "draft",
+      "title_hy": "Դիֆուզիայի համար արտաքին խառնում է անհրաժեշտ",
+      "responses": [
+        {
+          "item": "PHY7-U02-S08-I02",
+          "note": "Մասնիկների անկանոն շարժմամբ պայմանավորված ինքնաբերական խառնումը շփոթվում է արտաքին խառնելու հետ։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-05T08:30:17.903344+00:00",
+      "description_hy": "Մասնիկների անկանոն շարժմամբ պայմանավորված ինքնաբերական խառնումը շփոթվում է արտաքին խառնելու հետ։"
+    },
+    {
+      "id": "84cdd556-e2c2-419a-ae0c-a6a65f37416d",
+      "code": "equal_temperature_implies_equal_speed",
+      "skill": "PHY7-U02-S08",
+      "status": "draft",
+      "title_hy": "Նույն ջերմաստիճանում տարբեր նյութերի մասնիկներն ունեն նույն բնորոշ արագությունը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S08-I04",
+          "note": "Ջերմաստիճանների հավասարությունը շփոթվում է տարբեր նյութերի մոլեկուլների բնորոշ արագությունների հավասարության հետ։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-05T08:30:17.903344+00:00",
+      "description_hy": "Ջերմաստիճանների հավասարությունը շփոթվում է տարբեր նյութերի մոլեկուլների բնորոշ արագությունների հավասարության հետ։"
+    },
+    {
+      "id": "1c6a7008-9bbe-4aff-b0a8-f2e5cb25e1ff",
+      "code": "heating_slows_motion",
+      "skill": "PHY7-U02-S08",
+      "status": "draft",
+      "title_hy": "Տաքացնելիս մասնիկների շարժումը դանդաղում է",
+      "responses": [
+        {
+          "item": "PHY7-U02-S08-I01",
+          "note": "Նույն նյութի ջերմաստիճանի բարձրացման և ջերմային շարժման արագության կապը մեկնաբանվում է հակառակ ուղղությամբ։",
+          "response_key": "B"
+        }
+      ],
+      "updated_at": "2026-10-05T08:30:17.903344+00:00",
+      "description_hy": "Նույն նյութի ջերմաստիճանի բարձրացման և ջերմային շարժման արագության կապը մեկնաբանվում է հակառակ ուղղությամբ։"
+    },
+    {
+      "id": "f36e658d-b429-41cf-a8a4-4b69ce2a0b6b",
+      "code": "temperature_effect_on_diffusion_reversed",
+      "skill": "PHY7-U02-S08",
+      "status": "draft",
+      "title_hy": "Ցածր ջերմաստիճանում դիֆուզիան ավելի արագ է",
+      "responses": [
+        {
+          "item": "PHY7-U02-S08-I02",
+          "note": "Ջերմաստիճանի ազդեցությունը մասնիկների շարժման և դիֆուզիայի վրա մեկնաբանվում է հակառակ ուղղությամբ։",
+          "response_key": "A"
+        }
+      ],
+      "updated_at": "2026-10-05T08:30:17.903344+00:00",
+      "description_hy": "Ջերմաստիճանի ազդեցությունը մասնիկների շարժման և դիֆուզիայի վրա մեկնաբանվում է հակառակ ուղղությամբ։"
+    },
+    {
+      "id": "5da0fe04-151d-4c0c-a72f-4bda0a9eaa7a",
+      "code": "temperature_unrelated_to_motion",
+      "skill": "PHY7-U02-S08",
+      "status": "draft",
+      "title_hy": "Ջերմաստիճանը չի ազդում մասնիկների շարժման վրա",
+      "responses": [
+        {
+          "item": "PHY7-U02-S08-I01",
+          "note": "Նույն նյութի ջերմաստիճանի փոփոխությունը չի կապվում մասնիկների շարժման բնորոշ արագության փոփոխության հետ։",
+          "response_key": "C"
+        },
+        {
+          "item": "PHY7-U02-S08-I02",
+          "note": "Նույն նյութի ջերմաստիճանի փոփոխությունը չի կապվում մասնիկների շարժման բնորոշ արագության փոփոխության հետ։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-05T08:30:17.903344+00:00",
+      "description_hy": "Նույն նյութի ջերմաստիճանի փոփոխությունը չի կապվում մասնիկների շարժման բնորոշ արագության փոփոխության հետ։"
+    },
+    {
+      "id": "0c8bef39-daf4-4bb2-aa04-eac2b28e1667",
+      "code": "thermal_motion_is_directed",
+      "skill": "PHY7-U02-S08",
+      "status": "draft",
+      "title_hy": "Ջերմային շարժումը բոլոր մասնիկների նույն ուղղությամբ շարժումն է",
+      "responses": [
+        {
+          "item": "PHY7-U02-S08-I01",
+          "note": "Մասնիկների անկանոն ջերմային շարժումը շփոթվում է ուղղորդված ընդհանուր շարժման հետ։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S08-I03",
+          "note": "Մասնիկների անկանոն ջերմային շարժումը շփոթվում է ուղղորդված ընդհանուր շարժման հետ։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-05T08:30:17.903344+00:00",
+      "description_hy": "Մասնիկների անկանոն ջերմային շարժումը շփոթվում է ուղղորդված ընդհանուր շարժման հետ։"
+    },
+    {
+      "id": "dc3d4790-1ce9-4282-bf16-767b2bcb906e",
+      "code": "zero_celsius_stops_motion",
+      "skill": "PHY7-U02-S08",
+      "status": "draft",
+      "title_hy": "0 °C-ում մասնիկների ջերմային շարժումը դադարում է",
+      "responses": [
+        {
+          "item": "PHY7-U02-S08-I03",
+          "note": "Ցելսիուսի սանդղակի զրոն սխալմամբ ընդունվում է որպես մոլեկուլների ջերմային շարժման բացակայություն։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S08-I03",
+          "note": "Ցելսիուսի սանդղակի զրոն սխալմամբ ընդունվում է որպես մոլեկուլների ջերմային շարժման բացակայություն։",
+          "response_key": "B"
+        }
+      ],
+      "updated_at": "2026-10-05T08:30:17.903344+00:00",
+      "description_hy": "Ցելսիուսի սանդղակի զրոն սխալմամբ ընդունվում է որպես մոլեկուլների ջերմային շարժման բացակայություն։"
+    },
+    {
+      "id": "2d98470a-b8cc-4dfc-b32b-30d6799b4b22",
+      "code": "capillary_blocks_liquid",
+      "skill": "PHY7-U02-S09",
+      "status": "draft",
+      "title_hy": "Նեղ խողովակը թույլ չի տալիս հեղուկի անցումը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S09-I04",
+          "note": "Մազական խողովակը սխալմամբ համարվում է հեղուկի անցումն ամբողջությամբ արգելակող մաս։",
+          "response_key": "B"
+        }
+      ],
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description_hy": "Մազական խողովակը սխալմամբ համարվում է հեղուկի անցումն ամբողջությամբ արգելակող մաս։"
+    },
+    {
+      "id": "88c9c087-e4f3-4734-9041-bfa8e657576b",
+      "code": "cooling_causes_liquid_loss",
+      "skill": "PHY7-U02-S09",
+      "status": "draft",
+      "title_hy": "Սառչելիս փակ ջերմաչափից հեղուկ է կորչում",
+      "responses": [
+        {
+          "item": "PHY7-U02-S09-I02",
+          "note": "Սյան իջնելը սխալմամբ բացատրվում է անվնաս փակ ջերմաչափից հեղուկի արտահոսքով, ոչ թե ծավալի փոքրացմամբ։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description_hy": "Սյան իջնելը սխալմամբ բացատրվում է անվնաս փակ ջերմաչափից հեղուկի արտահոսքով, ոչ թե ծավալի փոքրացմամբ։"
+    },
+    {
+      "id": "9179bfdf-1bf7-4914-a794-315682df5b52",
+      "code": "heating_creates_liquid",
+      "skill": "PHY7-U02-S09",
+      "status": "draft",
+      "title_hy": "Տաքացնելիս ջերմաչափում նոր հեղուկ է առաջանում",
+      "responses": [
+        {
+          "item": "PHY7-U02-S09-I03",
+          "note": "Նույն հեղուկի ծավալի մեծացումը շփոթվում է լրացուցիչ հեղուկի առաջացման հետ։",
+          "response_key": "A"
+        }
+      ],
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description_hy": "Նույն հեղուկի ծավալի մեծացումը շփոթվում է լրացուցիչ հեղուկի առաջացման հետ։"
+    },
+    {
+      "id": "81faba61-7248-4cff-ba8c-ac75e590a18a",
+      "code": "liquid_volume_temperature_independent",
+      "skill": "PHY7-U02-S09",
+      "status": "draft",
+      "title_hy": "Հեղուկի ծավալը կախված չէ ջերմաստիճանից",
+      "responses": [
+        {
+          "item": "PHY7-U02-S09-I02",
+          "note": "Հեղուկի ծավալը համարվում է անփոփոխ՝ անտեսելով ջերմաչափի աշխատանքի հիմքում ընկած ջերմային ընդարձակումը։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description_hy": "Հեղուկի ծավալը համարվում է անփոփոխ՝ անտեսելով ջերմաչափի աշխատանքի հիմքում ընկած ջերմային ընդարձակումը։"
+    },
+    {
+      "id": "2209cd49-5f2b-47aa-90b2-37fcfef0b81e",
+      "code": "scale_moves_liquid",
+      "skill": "PHY7-U02-S09",
+      "status": "draft",
+      "title_hy": "Սանդղակն է շարժում հեղուկի սյունը",
+      "responses": [
+        {
+          "item": "PHY7-U02-S09-I01",
+          "note": "Սանդղակին վերագրվում է հեղուկը շարժելու դեր, մինչդեռ այն ծառայում է ցուցմունքը կարդալուն։",
+          "response_key": "D"
+        },
+        {
+          "item": "PHY7-U02-S09-I03",
+          "note": "Սանդղակին վերագրվում է հեղուկը շարժելու դեր, մինչդեռ այն ծառայում է ցուցմունքը կարդալուն։",
+          "response_key": "D"
+        }
+      ],
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description_hy": "Սանդղակին վերագրվում է հեղուկը շարժելու դեր, մինչդեռ այն ծառայում է ցուցմունքը կարդալուն։"
+    },
+    {
+      "id": "094ebb0f-4b01-4b7c-aeee-8463910562e6",
+      "code": "thermal_expansion_reversed",
+      "skill": "PHY7-U02-S09",
+      "status": "draft",
+      "title_hy": "Հեղուկը տաքանալիս սեղմվում է, իսկ սառչելիս՝ ընդարձակվում",
+      "responses": [
+        {
+          "item": "PHY7-U02-S09-I01",
+          "note": "Ջերմաչափի աշխատանքային տիրույթում հեղուկի ծավալի ջերմաստիճանային փոփոխության ուղղությունը մեկնաբանվում է հակառակ կերպ։",
+          "response_key": "B"
+        },
+        {
+          "item": "PHY7-U02-S09-I02",
+          "note": "Ջերմաչափի աշխատանքային տիրույթում հեղուկի ծավալի ջերմաստիճանային փոփոխության ուղղությունը մեկնաբանվում է հակառակ կերպ։",
+          "response_key": "A"
+        },
+        {
+          "item": "PHY7-U02-S09-I03",
+          "note": "Ջերմաչափի աշխատանքային տիրույթում հեղուկի ծավալի ջերմաստիճանային փոփոխության ուղղությունը մեկնաբանվում է հակառակ կերպ։",
+          "response_key": "B"
+        }
+      ],
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description_hy": "Ջերմաչափի աշխատանքային տիրույթում հեղուկի ծավալի ջերմաստիճանային փոփոխության ուղղությունը մեկնաբանվում է հակառակ կերպ։"
+    },
+    {
+      "id": "650eb8aa-d9c9-4976-b0a1-16d8f0460e79",
+      "code": "thermometer_requires_boiling",
+      "skill": "PHY7-U02-S09",
+      "status": "draft",
+      "title_hy": "Ջերմաչափն աշխատում է հեղուկի եռալու շնորհիվ",
+      "responses": [
+        {
+          "item": "PHY7-U02-S09-I01",
+          "note": "Հեղուկի սովորական ջերմային ընդարձակումը շփոթվում է եռման և գոլորշու ճնշման ազդեցության հետ։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description_hy": "Հեղուկի սովորական ջերմային ընդարձակումը շփոթվում է եռման և գոլորշու ճնշման ազդեցության հետ։"
+    },
+    {
+      "id": "b959134b-073b-4920-93c7-cef39e2772bc",
+      "code": "tube_width_irrelevant",
+      "skill": "PHY7-U02-S09",
+      "status": "draft",
+      "title_hy": "Խողովակի լայնությունը չի ազդում սյան բարձրության փոփոխության վրա",
+      "responses": [
+        {
+          "item": "PHY7-U02-S09-I04",
+          "note": "Հավասար ծավալային փոփոխությունից եզրակացվում է հավասար բարձրության փոփոխություն՝ անտեսելով խողովակների տարբեր լայնությունները։",
+          "response_key": "C"
+        }
+      ],
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description_hy": "Հավասար ծավալային փոփոխությունից եզրակացվում է հավասար բարձրության փոփոխություն՝ անտեսելով խողովակների տարբեր լայնությունները։"
+    },
+    {
+      "id": "ad04593d-b075-4a72-adbe-c3e5bbea136b",
+      "code": "wider_tube_gives_larger_rise",
+      "skill": "PHY7-U02-S09",
+      "status": "draft",
+      "title_hy": "Լայն խողովակում նույն ծավալը ավելի մեծ բարձրություն է զբաղեցնում",
+      "responses": [
+        {
+          "item": "PHY7-U02-S09-I04",
+          "note": "Տրված նույն ծավալի դեպքում խողովակի լայնության և սյան բարձրության փոփոխության կապը մեկնաբանվում է հակառակ կերպ։",
+          "response_key": "A"
+        }
+      ],
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description_hy": "Տրված նույն ծավալի դեպքում խողովակի լայնության և սյան բարձրության փոփոխության կապը մեկնաբանվում է հակառակ կերպ։"
+    }
+  ],
+  "outcome_snapshot": [
+    {
+      "source_document_id": "7d0c7140-3103-4ded-a670-440ff7a10ebe",
+      "learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "statement_en_snapshot": null,
+      "statement_hy_snapshot": "օրինակներով հիմնավորել նյութի մասնիկային կառուցվածքը (Հ29, Հ30)",
+      "mapping_notes_snapshot": "Պաշտոնական ծրագրի պարտադիր վերջնարդյունքը պահպանված է բառացի։ Առարկայական չափորոշչի կետային համադրումը սպասում է մասնագետի հաստատմանը։",
+      "official_code_snapshot": null,
+      "sequence_order_snapshot": 1,
+      "source_locator_snapshot": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "requirement_level_snapshot": "mandatory",
+      "framework_references_snapshot": [
+        "Հ29",
+        "Հ30"
+      ],
+      "source_transcription_notes_snapshot": null,
+      "subject_standard_references_snapshot": []
+    },
+    {
+      "source_document_id": "7d0c7140-3103-4ded-a670-440ff7a10ebe",
+      "learning_outcome_id": "1c03ef0b-6df7-4376-8b4b-1ebf96ec76bb",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "statement_en_snapshot": null,
+      "statement_hy_snapshot": "ներկայացնել մոլեկուլների չափերը՝ համեմատելով այլ մարմինների չափերի հետ (Հ4, Հ9, Հ28)",
+      "mapping_notes_snapshot": "Պաշտոնական ծրագրի պարտադիր վերջնարդյունքը պահպանված է բառացի։ Առարկայական չափորոշչի կետային համադրումը սպասում է մասնագետի հաստատմանը։",
+      "official_code_snapshot": null,
+      "sequence_order_snapshot": 2,
+      "source_locator_snapshot": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "requirement_level_snapshot": "mandatory",
+      "framework_references_snapshot": [
+        "Հ4",
+        "Հ9",
+        "Հ28"
+      ],
+      "source_transcription_notes_snapshot": null,
+      "subject_standard_references_snapshot": []
+    },
+    {
+      "source_document_id": "7d0c7140-3103-4ded-a670-440ff7a10ebe",
+      "learning_outcome_id": "a70929ea-7b86-4ee3-9dbe-775b227976b4",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "statement_en_snapshot": null,
+      "statement_hy_snapshot": "նկարագրել ատոմների, մոլեկուլների շարժման առանձնահատկությունները նյութում (Հ8, Հ9)",
+      "mapping_notes_snapshot": "Պաշտոնական ծրագրի պարտադիր վերջնարդյունքը պահպանված է բառացի։ Առարկայական չափորոշչի կետային համադրումը սպասում է մասնագետի հաստատմանը։",
+      "official_code_snapshot": null,
+      "sequence_order_snapshot": 3,
+      "source_locator_snapshot": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "requirement_level_snapshot": "mandatory",
+      "framework_references_snapshot": [
+        "Հ8",
+        "Հ9"
+      ],
+      "source_transcription_notes_snapshot": null,
+      "subject_standard_references_snapshot": []
+    },
+    {
+      "source_document_id": "7d0c7140-3103-4ded-a670-440ff7a10ebe",
+      "learning_outcome_id": "40dd963e-2a7f-48b5-9169-2d28574b7e7d",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "statement_en_snapshot": null,
+      "statement_hy_snapshot": "օրինակներով լուսաբանել դիֆուզիայի երևույթը (Հ9)",
+      "mapping_notes_snapshot": "Պաշտոնական ծրագրի պարտադիր վերջնարդյունքը պահպանված է բառացի։ Առարկայական չափորոշչի կետային համադրումը սպասում է մասնագետի հաստատմանը։",
+      "official_code_snapshot": null,
+      "sequence_order_snapshot": 4,
+      "source_locator_snapshot": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "requirement_level_snapshot": "mandatory",
+      "framework_references_snapshot": [
+        "Հ9"
+      ],
+      "source_transcription_notes_snapshot": null,
+      "subject_standard_references_snapshot": []
+    },
+    {
+      "source_document_id": "7d0c7140-3103-4ded-a670-440ff7a10ebe",
+      "learning_outcome_id": "bcfca398-b568-470e-b185-61cc22d54ecf",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "statement_en_snapshot": null,
+      "statement_hy_snapshot": "բացատրել, թե ինչով է պայմանավորված մարմնի ջերմաստիճանը (Հ9, Հ29)",
+      "mapping_notes_snapshot": "Պաշտոնական ծրագրի պարտադիր վերջնարդյունքը պահպանված է բառացի՝ տեսանելի համարակալման բացակայության մասին տառադարձման նշումով։ Առարկայական չափորոշչի կետային համադրումը սպասում է մասնագետի հաստատմանը։",
+      "official_code_snapshot": null,
+      "sequence_order_snapshot": 5,
+      "source_locator_snapshot": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "requirement_level_snapshot": "mandatory",
+      "framework_references_snapshot": [
+        "Հ9",
+        "Հ29"
+      ],
+      "source_transcription_notes_snapshot": "Պաշտոնական հավելվածում այս տողը հաջորդում է պարտադիր 1(4)-ին, սակայն տեսանելի հերթական համարը բացակայում է։ Պահպանվել է որպես պարտադիր ցանկի հինգերորդ վերջնարդյունք։",
+      "subject_standard_references_snapshot": []
+    },
+    {
+      "source_document_id": "7d0c7140-3103-4ded-a670-440ff7a10ebe",
+      "learning_outcome_id": "3078b38b-bf8e-4e3a-a9ce-019fdf13c0fd",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "statement_en_snapshot": null,
+      "statement_hy_snapshot": "բնութագրել դիֆուզիայի արագությունը գազերում, հեղուկներում և պինդ մարմիններում, բերել օրինակներ",
+      "mapping_notes_snapshot": "Պաշտոնական ծրագրի լրացուցիչ վերջնարդյունքը պահպանված է բառացի։ Առարկայական չափորոշչի կետային համադրումը սպասում է մասնագետի հաստատմանը։",
+      "official_code_snapshot": null,
+      "sequence_order_snapshot": 6,
+      "source_locator_snapshot": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "requirement_level_snapshot": "additional",
+      "framework_references_snapshot": [],
+      "source_transcription_notes_snapshot": null,
+      "subject_standard_references_snapshot": []
+    },
+    {
+      "source_document_id": "7d0c7140-3103-4ded-a670-440ff7a10ebe",
+      "learning_outcome_id": "40e20c7c-3f60-4495-b6c7-54c9a5ca3b84",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "statement_en_snapshot": null,
+      "statement_hy_snapshot": "բացատրել ջերմաչափի աշխատանքի սկզբունքը",
+      "mapping_notes_snapshot": "Պաշտոնական ծրագրի լրացուցիչ վերջնարդյունքը պահպանված է բառացի։ Առարկայական չափորոշչի կետային համադրումը սպասում է մասնագետի հաստատմանը։",
+      "official_code_snapshot": null,
+      "sequence_order_snapshot": 7,
+      "source_locator_snapshot": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)",
+      "requirement_level_snapshot": "additional",
+      "framework_references_snapshot": [],
+      "source_transcription_notes_snapshot": null,
+      "subject_standard_references_snapshot": []
+    }
+  ],
+  "family_outcome_mappings": [
+    {
+      "rationale": "Ընտանիքը գնահատում է փորձարարական դիտումներից նյութի մասնիկային կառուցվածքի վերաբերյալ հիմնավորված եզրակացություն անելը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-09-30T22:07:43.605908+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "15e09d92-7586-421e-b1b0-b0c22946668f",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+    },
+    {
+      "rationale": "Ընտանիքը գնահատում է ատոմ–մոլեկուլ–քիմիական տարր հիմնարար տարբերակումը, որն աջակցում է նյութի մասնիկային կառուցվածքի ըմբռնմանը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-01T13:14:29.2027+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "443c2c97-48b9-47b7-a010-4f35aa5436e5",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է մոլեկուլների չափերի ներկայացումն ու համեմատությունը և փոքր նույնական մասնիկների չափի որոշման պարզ եղանակը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-01T14:50:34.004096+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "628431a8-770f-4fe7-86e0-a40844f9657d",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "1c03ef0b-6df7-4376-8b4b-1ebf96ec76bb"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է նյութում ատոմների և մոլեկուլների անընդհատ ու անկանոն շարժման առանձնահատկությունների նկարագրումը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-01T16:37:11.896953+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "3445dd21-4ddb-4578-8cd0-48c70ab6cba5",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "a70929ea-7b86-4ee3-9dbe-775b227976b4"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է դիֆուզիայի երևույթը օրինակներում ճանաչելու և մասնիկների անկանոն շարժմամբ բացատրելու կարողությունը՝ առանց դիֆուզիայի արագությունների կամ ջերմաստիճանային կապի գնահատման։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-01T17:10:21.840085+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "8b9614d9-3ebe-4102-8ade-a5feeef80608",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "40dd963e-2a7f-48b5-9169-2d28574b7e7d"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է գազերում, հեղուկներում և պինդ մարմիններում դիֆուզիայի արագությունների համեմատումը՝ առանց ջերմաստիճանի ազդեցության գնահատման։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-02T07:29:09.081662+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "e05c19e7-07d8-4c50-83ff-e72f6c764665",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "3078b38b-bf8e-4e3a-a9ce-019fdf13c0fd"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է մարմնի ջերմաստիճանի կապը մասնիկների անկանոն շարժման բնորոշ արագության հետ։ Դիֆուզիան ծառայում է որպես կիրառման օրինակ, իսկ տարբեր գազերի տվյալները՝ համեմատության սահմանները հիմնավորելու միջոց։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-05T08:30:17.903344+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "c5e65ada-a56c-4570-a59c-ae1d6e25d508",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "bcfca398-b568-470e-b185-61cc22d54ecf"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է հեղուկային ջերմաչափի աշխատանքի սկզբունքը՝ հեղուկի ծավալի ջերմաստիճանային փոփոխությունը կապելով մազական խողովակում սյան բարձրության փոփոխության հետ։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-05T09:07:47.714385+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "0353798e-419e-4caa-9439-1988b83aa0be",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "40e20c7c-3f60-4495-b6c7-54c9a5ca3b84"
+    }
+  ],
+  "gates": [
+    {
+      "notes": "Գործող N 40-Ն ծրագիրը՝ N 36-Ն փոփոխությամբ, գրանցված և կապված է թողարկման թեկնածուին։",
+      "status": "passed",
+      "evidence": {
+        "programmeDocumentKey": "am_physics_grade7_programme_40n_36n",
+        "programmeAttachmentSha256": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478"
+      },
+      "gate_code": "official_programme_identified",
+      "checked_at": "2026-09-30T21:40:31.093879+00:00",
+      "checked_by": null,
+      "updated_at": "2026-09-30T21:40:31.093879+00:00",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+    },
+    {
+      "notes": "Պետական չափորոշիչը, ֆիզիկայի առարկայական չափորոշիչը և 7-րդ դասարանի ծրագիրը գրանցված են որպես ղեկավարող աղբյուրներ։ Դասագիրքը միայն օժանդակ աղբյուր է։",
+      "status": "passed",
+      "evidence": {
+        "governingLayers": 3,
+        "supportingTextbookChapter": "Գլուխ II, էջեր 23–41"
+      },
+      "gate_code": "normative_sources_registered",
+      "checked_at": "2026-09-30T21:40:31.093879+00:00",
+      "checked_by": null,
+      "updated_at": "2026-09-30T21:40:31.093879+00:00",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+    },
+    {
+      "notes": "Յոթ պաշտոնական վերջնարդյունքները տառադարձված են, սակայն թեմատիկ և չափորոշչային վերջնական համադրումը սպասում է բովանդակային ու մասնագիտական հաստատմանը։",
+      "status": "pending",
+      "evidence": {},
+      "gate_code": "outcomes_reconciled",
+      "checked_at": null,
+      "checked_by": null,
+      "updated_at": "2026-09-30T21:40:31.093879+00:00",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+    },
+    {
+      "notes": "Ներքին վերանայմամբ ութ հմտությունների քարտեզը հաստատվել է հարցերի սևագիր հեղինակման համար։ Կրկնվող PHY7-U02-S01 թեկնածուն արխիվացվել է, և գործող PHY7-U01-S02 հմտությունը դարձել է միջգլխային նախապայման։ Սա արտաքին ֆիզիկայի մասնագետի հաստատում կամ թողարկման թույլտվություն չէ։",
+      "status": "passed",
+      "evidence": {
+        "prerequisiteLinks": 8,
+        "directOutcomeMappings": 7,
+        "externalSmeValidation": "pending",
+        "derivedSupportingSkills": 1,
+        "replacementPrerequisite": "PHY7-U01-S02",
+        "approvedForAuthoringSkills": 8,
+        "archivedDuplicateCandidate": "PHY7-U02-S01"
+      },
+      "gate_code": "skills_mapped",
+      "checked_at": "2026-09-30T22:07:43.605908+00:00",
+      "checked_by": null,
+      "updated_at": "2026-09-30T22:07:43.605908+00:00",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+    },
+    {
+      "notes": "Գլուխ II-ի վեցերորդ ընտանիքը հեռանկարային ապացուցողական սխեմայով ստեղծվել է սևագիր և սովորողին անհասանելի։ Գնահատման ավազան կամ ձևանմուշ չի ստեղծվել։",
+      "status": "pending",
+      "evidence": {
+        "sprint15B9": {
+          "skillCode": "PHY7-U02-S08",
+          "draftGuide": 1,
+          "draftItems": 4,
+          "reviewStatus": "pending",
+          "learnerVisible": false,
+          "draftMisconceptions": 8,
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+        },
+        "sprint15B10": {
+          "skillCode": "PHY7-U02-S09",
+          "draftGuide": 1,
+          "draftItems": 4,
+          "reviewStatus": "pending",
+          "learnerVisible": false,
+          "draftMisconceptions": 9,
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+        },
+        "assessmentPools": 0,
+        "assessmentBlueprints": 0,
+        "chapterIiItemFamilies": 6,
+        "sixthFamilyDraftItems": 4,
+        "sixthFamilyDraftGuides": 1,
+        "prospectiveAuthoringProfile": "haiedu-evidence-blueprint-v1"
+      },
+      "gate_code": "assessment_scope_bound",
+      "checked_at": null,
+      "checked_by": null,
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+    },
+    {
+      "notes": "Ֆիզիկայի արտաքին մասնագետի հաստատումը դեռ չի ստացվել։",
+      "status": "pending",
+      "evidence": {},
+      "gate_code": "external_sme_approved",
+      "checked_at": null,
+      "checked_by": null,
+      "updated_at": "2026-09-30T21:40:31.093879+00:00",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+    },
+    {
+      "notes": "Առաջին հինգ ընտանիքների քսան հարցերը հաստատված են։ 15B.8-ի վեցերորդ ընտանիքի չորս հարցերը, վեց թյուրիմացությունները և օգնության ուղեցույցը սպասում են ստուգման։ 15B.7-ի օգնության ուղեցույցը և նախկին չհաստատված թյուրիմացությունները նույնպես մնում են սևագիր։",
+      "status": "pending",
+      "evidence": {
+        "sprint15B9": {
+          "skillCode": "PHY7-U02-S08",
+          "draftGuide": 1,
+          "draftItems": 4,
+          "reviewStatus": "pending",
+          "learnerVisible": false,
+          "draftMisconceptions": 8,
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+        },
+        "sprint15B10": {
+          "skillCode": "PHY7-U02-S09",
+          "draftGuide": 1,
+          "draftItems": 4,
+          "reviewStatus": "pending",
+          "learnerVisible": false,
+          "draftMisconceptions": 9,
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+        },
+        "approvedItems": 20,
+        "draftItemsAwaitingReview": 4,
+        "draftGuidesAwaitingReview": 2,
+        "draftFamiliesAwaitingReview": 1,
+        "prospectiveAuthoringProfile": "haiedu-evidence-blueprint-v1",
+        "draftMisconceptionsAwaitingReview": 23,
+        "questionFamiliesWithApprovedItems": 5
+      },
+      "gate_code": "content_qa_passed",
+      "checked_at": null,
+      "checked_by": null,
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+    }
+  ],
+  "active_policy": [
+    {
+      "id": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "notes": "Initial universal lifecycle: at most three Mastery Checks; qualifying Chapter Review required after failures 1 and 2.",
+      "status": "active",
+      "created_at": "2026-09-21T20:45:07.829592+00:00",
+      "policy_key": "chapter-mastery-review-2026-r1",
+      "effective_from": "2026-09-21T00:00:00+00:00",
+      "version_number": 1,
+      "maximum_mastery_attempts": 3,
+      "review_optional_after_pass": true,
+      "target_review_question_count": 12,
+      "review_available_after_final_failure": true,
+      "review_required_after_failed_attempts": [
+        1,
+        2
+      ],
+      "additional_attempt_after_final_failure": false
+    }
+  ],
+  "assessment_context": {
+    "pools": [
+      {
+        "code": "phy7_u01_chapter_review",
+        "unit": "PHY7-U01",
+        "status": "active",
+        "purpose": "chapter_review",
+        "metadata": {
+          "hintsAllowed": true,
+          "wholeChapter": true,
+          "sourcePurpose": "practice",
+          "selectionPolicyVersion": "12.5C-D-v1"
+        },
+        "per_skill": null,
+        "protected": false,
+        "enabled_items": 0
+      },
+      {
+        "code": "PHY7-U01-DIAGNOSTIC-BASELINE",
+        "unit": "PHY7-U01",
+        "status": "active",
+        "purpose": "diagnostic",
+        "metadata": {
+          "note": "Parallel forms are added in Sprint 11B/11D.",
+          "phase": "11A"
+        },
+        "per_skill": [
+          {
+            "n": 4,
+            "code": "PHY7-U01-S01"
+          },
+          {
+            "n": 4,
+            "code": "PHY7-U01-S02"
+          },
+          {
+            "n": 4,
+            "code": "PHY7-U01-S03"
+          },
+          {
+            "n": 4,
+            "code": "PHY7-U01-S04"
+          },
+          {
+            "n": 4,
+            "code": "PHY7-U01-S05"
+          },
+          {
+            "n": 4,
+            "code": "PHY7-U01-S06"
+          },
+          {
+            "n": 4,
+            "code": "PHY7-U01-S07"
+          },
+          {
+            "n": 4,
+            "code": "PHY7-U01-S08"
+          },
+          {
+            "n": 4,
+            "code": "PHY7-U01-S09"
+          },
+          {
+            "n": 4,
+            "code": "PHY7-U01-S10"
+          }
+        ],
+        "protected": false,
+        "enabled_items": 40
+      },
+      {
+        "code": "PHY7-U01-MASTERY-PROTECTED-A",
+        "unit": "PHY7-U01",
+        "status": "active",
+        "purpose": "mastery_check",
+        "metadata": {
+          "phase": "11A",
+          "provisionalSelection": true
+        },
+        "per_skill": [
+          {
+            "n": 8,
+            "code": "PHY7-U01-S01"
+          },
+          {
+            "n": 8,
+            "code": "PHY7-U01-S02"
+          },
+          {
+            "n": 8,
+            "code": "PHY7-U01-S03"
+          },
+          {
+            "n": 8,
+            "code": "PHY7-U01-S04"
+          },
+          {
+            "n": 8,
+            "code": "PHY7-U01-S05"
+          },
+          {
+            "n": 8,
+            "code": "PHY7-U01-S06"
+          },
+          {
+            "n": 8,
+            "code": "PHY7-U01-S07"
+          },
+          {
+            "n": 8,
+            "code": "PHY7-U01-S08"
+          },
+          {
+            "n": 8,
+            "code": "PHY7-U01-S09"
+          },
+          {
+            "n": 8,
+            "code": "PHY7-U01-S10"
+          }
+        ],
+        "protected": true,
+        "enabled_items": 80
+      },
+      {
+        "code": "PHY7-U01-PRACTICE-BASELINE",
+        "unit": "PHY7-U01",
+        "status": "active",
+        "purpose": "practice",
+        "metadata": {
+          "phase": "11A"
+        },
+        "per_skill": [
+          {
+            "n": 12,
+            "code": "PHY7-U01-S01"
+          },
+          {
+            "n": 12,
+            "code": "PHY7-U01-S02"
+          },
+          {
+            "n": 12,
+            "code": "PHY7-U01-S03"
+          },
+          {
+            "n": 12,
+            "code": "PHY7-U01-S04"
+          },
+          {
+            "n": 12,
+            "code": "PHY7-U01-S05"
+          },
+          {
+            "n": 12,
+            "code": "PHY7-U01-S06"
+          },
+          {
+            "n": 12,
+            "code": "PHY7-U01-S07"
+          },
+          {
+            "n": 12,
+            "code": "PHY7-U01-S08"
+          },
+          {
+            "n": 12,
+            "code": "PHY7-U01-S09"
+          },
+          {
+            "n": 12,
+            "code": "PHY7-U01-S10"
+          }
+        ],
+        "protected": false,
+        "enabled_items": 120
+      }
+    ],
+    "tables": [
+      "learning_outcomes",
+      "skill_outcomes",
+      "skill_outcome_curriculum_mappings",
+      "learning_outcome_normative_mappings",
+      "curriculum_release_outcomes",
+      "academic_mastery_policy_versions",
+      "academic_mastery_policy_activation"
+    ],
+    "blueprints": [
+      {
+        "key": "physics7_u01_2026_08_14_r1_chapter_review",
+        "policy": "12.5C-D-v1",
+        "status": "pilot",
+        "purpose": "chapter_review",
+        "configuration": {
+          "note": "Immutable snapshot of the active 11J-reconciled pool at Sprint 11K activation.",
+          "purpose": "chapter_review",
+          "poolCode": "PHY7-U01-PRACTICE-BASELINE",
+          "provenance": "exact_snapshot",
+          "hintsAllowed": true,
+          "wholeChapter": true,
+          "targetQuestions": 12,
+          "enabledItemCount": 120,
+          "sourceBlueprintId": "b4e8b982-05d9-4222-a944-2216936fa929"
+        }
+      },
+      {
+        "key": "physics7_u01_2026_08_14_r1_diagnostic",
+        "policy": "11B-v1",
+        "status": "pilot",
+        "purpose": "diagnostic",
+        "configuration": {
+          "note": "Immutable snapshot of the active 11J-reconciled pool at Sprint 11K activation.",
+          "poolCode": "PHY7-U01-DIAGNOSTIC-BASELINE",
+          "provenance": "exact_snapshot",
+          "enabledItemCount": 40
+        }
+      },
+      {
+        "key": "physics7_u01_2026_08_14_r1_mastery_check",
+        "policy": "11B-v1",
+        "status": "pilot",
+        "purpose": "mastery_check",
+        "configuration": {
+          "note": "Immutable snapshot of the active 11J-reconciled pool at Sprint 11K activation.",
+          "poolCode": "PHY7-U01-MASTERY-PROTECTED-A",
+          "provenance": "exact_snapshot",
+          "enabledItemCount": 80
+        }
+      },
+      {
+        "key": "physics7_u01_2026_08_14_r1_practice",
+        "policy": "11B-v1",
+        "status": "pilot",
+        "purpose": "practice",
+        "configuration": {
+          "note": "Immutable snapshot of the active 11J-reconciled pool at Sprint 11K activation.",
+          "poolCode": "PHY7-U01-PRACTICE-BASELINE",
+          "provenance": "exact_snapshot",
+          "enabledItemCount": 120
+        }
+      },
+      {
+        "key": "physics7_u01_legacy_diagnostic",
+        "policy": "pre_11k_unknown",
+        "status": "legacy",
+        "purpose": "diagnostic",
+        "configuration": {
+          "note": "Blueprint identity inferred from historical session mode; exact historical pool membership is not asserted.",
+          "poolCode": "PHY7-U01-DIAGNOSTIC-BASELINE",
+          "provenance": "legacy_inferred",
+          "enabledItemCount": 40
+        }
+      },
+      {
+        "key": "physics7_u01_legacy_mastery_check",
+        "policy": "pre_11k_unknown",
+        "status": "legacy",
+        "purpose": "mastery_check",
+        "configuration": {
+          "note": "Blueprint identity inferred from historical session mode; exact historical pool membership is not asserted.",
+          "poolCode": "PHY7-U01-MASTERY-PROTECTED-A",
+          "provenance": "legacy_inferred",
+          "enabledItemCount": 80
+        }
+      },
+      {
+        "key": "physics7_u01_legacy_practice",
+        "policy": "pre_11k_unknown",
+        "status": "legacy",
+        "purpose": "practice",
+        "configuration": {
+          "note": "Blueprint identity inferred from historical session mode; exact historical pool membership is not asserted.",
+          "poolCode": "PHY7-U01-PRACTICE-BASELINE",
+          "provenance": "legacy_inferred",
+          "enabledItemCount": 120
+        }
+      }
+    ],
+    "chapter_ii_mappings": [
+      {
+        "skill": "PHY7-U02-S02",
+        "outcomes": [
+          {
+            "rationale": "Փորձարարական ապացույցների մեկնաբանումը գնահատում է վերջնարդյունքի հիմնական կառուցույթը։",
+            "mappingType": "direct",
+            "learningOutcomeId": "c244a6e8-8f15-4e99-b209-1035c56971da"
+          }
+        ],
+        "disposition": "mapping_updated"
+      },
+      {
+        "skill": "PHY7-U02-S03",
+        "outcomes": [
+          {
+            "rationale": "Ատոմ–մոլեկուլ–տարր տարբերակումը աջակցում է մասնիկային կառուցվածքի ըմբռնմանը։",
+            "mappingType": "derived_supporting",
+            "learningOutcomeId": "c244a6e8-8f15-4e99-b209-1035c56971da"
+          }
+        ],
+        "disposition": "mapping_updated"
+      },
+      {
+        "skill": "PHY7-U02-S04",
+        "outcomes": [
+          {
+            "rationale": "Համեմատական մասշտաբը և փոքր մասնիկների չափի որոշումը գնահատում են մոլեկուլների չափերի վերջնարդյունքը։",
+            "mappingType": "direct",
+            "learningOutcomeId": "1c03ef0b-6df7-4376-8b4b-1ebf96ec76bb"
+          }
+        ],
+        "disposition": "mapping_updated"
+      },
+      {
+        "skill": "PHY7-U02-S05",
+        "outcomes": [
+          {
+            "rationale": "Հմտությունը գնահատում է նյութում մասնիկների շարժման առանձնահատկությունների նկարագրումը։",
+            "mappingType": "direct",
+            "learningOutcomeId": "a70929ea-7b86-4ee3-9dbe-775b227976b4"
+          }
+        ],
+        "disposition": "mapping_updated"
+      },
+      {
+        "skill": "PHY7-U02-S06",
+        "outcomes": [
+          {
+            "rationale": "Հմտությունը գնահատում է դիֆուզիայի ճանաչումն ու մասնիկային բացատրությունը։",
+            "mappingType": "direct",
+            "learningOutcomeId": "40dd963e-2a7f-48b5-9169-2d28574b7e7d"
+          }
+        ],
+        "disposition": "mapping_updated"
+      },
+      {
+        "skill": "PHY7-U02-S07",
+        "outcomes": [
+          {
+            "rationale": "Հմտությունը գնահատում է դիֆուզիայի արագության համեմատումը երեք ագրեգատային վիճակներում։",
+            "mappingType": "direct",
+            "learningOutcomeId": "3078b38b-bf8e-4e3a-a9ce-019fdf13c0fd"
+          }
+        ],
+        "disposition": "mapping_updated"
+      },
+      {
+        "skill": "PHY7-U02-S08",
+        "outcomes": [
+          {
+            "rationale": "Հմտությունը գնահատում է ջերմաստիճանի կապը մասնիկների շարժման արագության հետ։",
+            "mappingType": "direct",
+            "learningOutcomeId": "bcfca398-b568-470e-b185-61cc22d54ecf"
+          }
+        ],
+        "disposition": "mapping_updated"
+      },
+      {
+        "skill": "PHY7-U02-S09",
+        "outcomes": [
+          {
+            "rationale": "Հմտությունը գնահատում է ջերմաչափի աշխատանքի սկզբունքի բացատրությունը՝ հեղուկային ջերմաչափի օրինակով։",
+            "mappingType": "direct",
+            "learningOutcomeId": "40e20c7c-3f60-4495-b6c7-54c9a5ca3b84"
+          }
+        ],
+        "disposition": "mapping_updated"
+      }
+    ]
+  },
+  "active_diagnostic_forms": [
+    {
+      "code": "PHY7-U01-DIAG-A",
+      "items": 20,
+      "status": "active",
+      "metadata": {
+        "phase": "11D",
+        "unitCode": "PHY7-U01",
+        "activatedAt": "2026-09-16T14:38:09.192274+00:00",
+        "itemsPerSkill": 2,
+        "contentValidation": "human_review_complete",
+        "pilotEvidenceLabel": "operational_not_psychometric",
+        "provisionalParallelism": true
+      },
+      "pool_code": "PHY7-U01-DIAGNOSTIC-BASELINE"
+    },
+    {
+      "code": "PHY7-U01-DIAG-B",
+      "items": 20,
+      "status": "active",
+      "metadata": {
+        "phase": "11D",
+        "unitCode": "PHY7-U01",
+        "activatedAt": "2026-09-16T14:38:09.192274+00:00",
+        "itemsPerSkill": 2,
+        "contentValidation": "human_review_complete",
+        "pilotEvidenceLabel": "operational_not_psychometric",
+        "provisionalParallelism": true
+      },
+      "pool_code": "PHY7-U01-DIAGNOSTIC-BASELINE"
+    }
+  ],
+  "runtime": {
+    "function": "start-learning-session",
+    "version": 22,
+    "verify_jwt": true,
+    "repository_source_identical": true,
+    "unit_scope": "PHY7-U01",
+    "diagnostic_items_per_skill": 2,
+    "mastery_items_per_skill": 2,
+    "practice_session_length": 8,
+    "mastery_pass_percent": 80,
+    "min_correct_per_skill": 1
+  },
+  "proposal": {
+    "status": "unapproved_planning_option",
+    "scope": "PHY7-U02 only; not a platform default",
+    "active_skills": 8,
+    "diagnostic_forms": 2,
+    "diagnostic_per_skill_per_form": 2,
+    "diagnostic_items": 32,
+    "practice_items_per_skill": 12,
+    "practice_items": 96,
+    "mastery_bank_per_skill": 8,
+    "mastery_bank": 64,
+    "assessment_session_items": 16,
+    "total": 192,
+    "existing_items_proposed_for_practice": 32,
+    "additional_items": 160,
+    "additional_outcome_scoring": "decision_required"
+  }
+}
