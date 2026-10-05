@@ -6,7 +6,7 @@
 .mc-shell input,.mc-shell select,.mc-shell textarea { width: 100%; max-width: 100%; box-sizing: border-box; }
  .mc-shell input,.mc-shell select,.mc-shell textarea { border: 1px solid #c8d5e0; border-radius: 9px; padding: 10px 12px; background: #fff; color: #16344c; font: inherit; min-height: 44px; }
 .mc-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
-.mc-filters .mc-actions { grid-column: 1 / -1; margin: 4px 0 0; padding-top: 18px; border-top: 1px solid #dbe3eb; flex-wrap: nowrap; }
+.mc-filters .mc-actions { grid-column: 1 / -1; margin: 4px 0 0; padding-top: 18px; border-top: 1px solid #dbe3eb; flex-wrap: nowrap; align-items: stretch; }
 .mc-shell .mc-filters .mc-actions > button { width: auto; min-height: 44px; white-space: normal; }
 .mc-columns { display: grid; grid-template-columns: 1fr; gap: 20px; align-items: start; }
 .mc-columns > *,#mcDetail > * { min-width: 0; }

@@ -38,7 +38,7 @@ async function ready(page){await page.locator('#mcReason').fill('Ստուգել 
 test('review page, navigation and Armenian controls fit desktop and mobile without overflow',async t=>{
  for(const width of [1280,390]){const {page,errors}=await fixture(t,{width});
   const layout=await page.evaluate(()=>{const rect=s=>document.querySelector(s).getBoundingClientRect();const form=rect('#mcFilters'),label=rect('#mcFilters label'),refresh=rect('#mcFilters button[type="submit"]'),clear=rect('#mcClear'),cards=[...document.querySelectorAll('.mc-row')].map(e=>{const r=e.getBoundingClientRect();return {x:r.x,y:r.y};});return {padding:label.x-form.x,sameRow:Math.abs(refresh.y-clear.y)<1,adjacent:clear.x>=refresh.right+8,inside:clear.right<=form.right-12,cards};});
-  assert.ok(layout.padding>=16);assert.ok(layout.sameRow&&layout.adjacent&&layout.inside);
+  assert.ok(layout.padding>=16);assert.ok(layout.sameRow&&layout.adjacent&&layout.inside,JSON.stringify({width,...layout}));
   assert.equal(await page.locator('#mcDetail').isHidden(),true);
   if(width===1280)assert.ok(layout.cards[1].x>layout.cards[0].x);else assert.ok(layout.cards[1].y>layout.cards[0].y);
   await openFirst(page);assert.equal(await page.locator('#mcDetail').isVisible(),true);assert.equal(await page.locator('.hm-role-sidebar a[href="./content-misconceptions.html"]').count(),1);assert.equal(await page.locator('#mcApprove').isDisabled(),true);
