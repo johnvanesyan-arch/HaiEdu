@@ -309,6 +309,7 @@ function validationLabel(code) {
     invalid_placeholder_syntax: "Տեղապահի գրությունը սխալ է։ Օգտագործեք {{parameterName}} ձևը։",
     skill_guide_placeholders_not_allowed: "Հմտության մակարդակի ուղեցույցում տեղապահեր չեն թույլատրվում։",
     worked_example_duplicates_live_item: "Նմանատիպ օրինակը կրկնում է գործող հարցը։",
+    worked_example_reuses_live_task: "Նմանատիպ օրինակը կրկնում է հարցի տրված արժեքներն ու համատեքստը։ Փոխեք օրինակի տվյալները։",
     worked_example_too_similar_to_live_item: "Նմանատիպ օրինակը չափազանց նման է գործող հարցին։ Փոխեք արժեքները կամ համատեքստը։",
     hint_1_obvious_answer_leakage: "Առաջին հուշումը ակնհայտորեն հայտնում է պատասխանը։",
     hint_2_obvious_answer_leakage: "Երկրորդ հուշումը ակնհայտորեն հայտնում է պատասխանը։",
@@ -332,6 +333,13 @@ function renderValidation(validation) {
   ];
   $("validationPanel").classList.toggle("has-errors", Boolean(errors.length));
   $("validationPanel").innerHTML = `<strong>${errors.length ? "Հրապարակման ստուգումը չի անցել" : "Պարտադիր սխալ չի հայտնաբերվել"}</strong>${items.length ? `<ul>${items.join("")}</ul>` : ""}`;
+  if (Number.isInteger(validation?.checkedVariantCount)) {
+    $("validationPanel").innerHTML += `<p>Ստուգվել է ${esc(validation.checkedVariantCount)} հարցի տարբերակ։</p>`;
+  }
+  const failures = validation?.variantFailures ?? [];
+  if (failures.length) {
+    $("validationPanel").innerHTML += `<details><summary>Խնդիր ունեցող հարցերը՝ ${esc(failures.length)}</summary><ul>${failures.map((failure) => `<li><strong>${esc(failure.itemCode || failure.variantId)}</strong><ul>${(failure.errors ?? []).map((code) => `<li>${esc(validationLabel(code))}</li>`).join("")}</ul></li>`).join("")}</ul></details>`;
+  }
 }
 
 function contentFromEditor() {
