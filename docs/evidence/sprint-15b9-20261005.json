@@ -1,0 +1,188 @@
+{
+  "sprint": "15B.9",
+  "verifiedAt": "2026-10-05",
+  "implementationPr": 114,
+  "implementationMerge": "63ba434aac70e98ccc055ed27dba5ffc4d1998e3",
+  "prCiRun": 37283763441,
+  "prCiTests": 969,
+  "platformReleaseChecks": "passed",
+  "productionMigration": {
+    "name": "sprint_15b9_seventh_item_family",
+    "version": "20261005083017"
+  },
+  "verification": {
+    "guide": [
+      {
+        "id": "2d63deac-50b5-4260-9c16-62e6de09b846",
+        "title": "Ինչպե՞ս կապել ջերմաստիճանը մասնիկների շարժման հետ",
+        "status": "draft",
+        "version": 1
+      }
+    ],
+    "items": [
+      {
+        "id": "f0ee7d39-d922-4463-9703-0c8565da31ab",
+        "code": "PHY7-U02-S08-I01",
+        "answer": "A",
+        "status": "draft",
+        "purpose": "core_understanding",
+        "shuffle": true,
+        "version": 1,
+        "sourceHash": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "review_status": "needs_review"
+      },
+      {
+        "id": "76d5fe46-411e-4b58-b950-03ba3984845d",
+        "code": "PHY7-U02-S08-I02",
+        "answer": "B",
+        "status": "draft",
+        "purpose": "application",
+        "shuffle": true,
+        "version": 1,
+        "sourceHash": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "review_status": "needs_review"
+      },
+      {
+        "id": "f73aa214-ae3f-4653-a19f-3de251e95102",
+        "code": "PHY7-U02-S08-I03",
+        "answer": "C",
+        "status": "draft",
+        "purpose": "misconception_diagnosis",
+        "shuffle": true,
+        "version": 1,
+        "sourceHash": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "review_status": "needs_review"
+      },
+      {
+        "id": "f2773a3c-95ce-4b50-85e7-dda5415d5e54",
+        "code": "PHY7-U02-S08-I04",
+        "answer": "D",
+        "status": "draft",
+        "purpose": "transfer_reasoning",
+        "shuffle": true,
+        "version": 1,
+        "sourceHash": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "review_status": "needs_review"
+      }
+    ],
+    "options": 16,
+    "mappings": 12,
+    "template": {
+      "sprint": "15B.9",
+      "skillCode": "PHY7-U02-S08",
+      "qaContract": "authored_fixed_catalogue",
+      "reviewGate": "content_and_sme_review_pending",
+      "variantCount": 4,
+      "generationMode": "authored_parallel_catalog",
+      "learnerVisible": false,
+      "familySizePolicy": "outcome_appropriate",
+      "deterministicRerender": false,
+      "familySizeRationaleHy": "Չորս հարցերը գնահատում են կապի ճանաչումը, կիրառումը, թյուր պատկերացման տարբերակումը և տվյալներից հիմնավոր եզրակացությունը։",
+      "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+      "evidenceBlueprintPolicy": "distinct-purpose-v1",
+      "answerPositionQaContract": "family-balanced-v1",
+      "requiredEvidencePurposes": [
+        "core_understanding",
+        "application",
+        "misconception_diagnosis",
+        "transfer_reasoning"
+      ],
+      "misconceptionMappingPolicy": "all_distractors",
+      "enforceUniqueEvidencePurposes": true
+    },
+    "versions": 4,
+    "migration": {
+      "name": "sprint_15b9_seventh_item_family",
+      "version": "20261005083017"
+    },
+    "blueprints": 0,
+    "pool_links": 0,
+    "release_status": "draft",
+    "draft_misconceptions": 8
+  },
+  "preservation": {
+    "before": {
+      "prior_approved": 24,
+      "releases_fingerprint": "230374ab922d9aadf9a502b60c8bdabf",
+      "prior_chapter_ii_items": 24,
+      "prior_items_fingerprint": "642858367b3e9a89eff6667ec8af82a6",
+      "prior_versions_fingerprint": "c0b1e5d07966eb349c6646129d556da4"
+    },
+    "after": {
+      "prior_approved": 24,
+      "releases_fingerprint": "230374ab922d9aadf9a502b60c8bdabf",
+      "prior_chapter_ii_items": 24,
+      "prior_items_fingerprint": "642858367b3e9a89eff6667ec8af82a6",
+      "prior_versions_fingerprint": "c0b1e5d07966eb349c6646129d556da4"
+    },
+    "unchanged": true
+  },
+  "advisors": {
+    "security": {
+      "before": [
+        {
+          "name": "auth_leaked_password_protection",
+          "count": 1
+        },
+        {
+          "name": "rls_enabled_no_policy",
+          "count": 35
+        }
+      ],
+      "after": [
+        {
+          "name": "auth_leaked_password_protection",
+          "count": 1
+        },
+        {
+          "name": "rls_enabled_no_policy",
+          "count": 35
+        }
+      ],
+      "unchanged": true
+    },
+    "performance": {
+      "before": [
+        {
+          "name": "auth_rls_initplan",
+          "count": 16
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "count": 14
+        },
+        {
+          "name": "unindexed_foreign_keys",
+          "count": 39
+        },
+        {
+          "name": "unused_index",
+          "count": 100
+        }
+      ],
+      "after": [
+        {
+          "name": "auth_rls_initplan",
+          "count": 16
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "count": 14
+        },
+        {
+          "name": "unindexed_foreign_keys",
+          "count": 39
+        },
+        {
+          "name": "unused_index",
+          "count": 99
+        }
+      ],
+      "unchanged": false
+    }
+  },
+  "learnerReleaseCreated": false,
+  "humanContentApproval": "pending",
+  "protectedCurrentVersionQa": "pending",
+  "smeApproval": "pending"
+}
