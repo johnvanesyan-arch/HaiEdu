@@ -1,0 +1,49 @@
+<!doctype html>
+<html lang="hy">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="color-scheme" content="light" />
+  <title>Թյուր պատկերացումներ — HaiEdu</title>
+  <link rel="stylesheet" href="./styles.css" />
+  <link rel="stylesheet" href="./content-misconceptions.css" />
+  <link rel="stylesheet" href="./ux.css" />
+  <link rel="stylesheet" href="./role-layout.css" />
+</head>
+<body data-role-workspace="contentMisconceptions">
+<main class="mc-shell" id="mainContent">
+  <header><p class="eyebrow">ԲՈՎԱՆԴԱԿՈՒԹՅԱՆ ԹԻՄ</p><h1>Թյուր պատկերացումների ստուգում</h1>
+    <p class="subtle">Ստուգեք սահմանումները և դրանց կապը հարցերի պատասխանների հետ։ Յուրաքանչյուր հաստատում վերաբերում է միայն ընտրված սահմանմանը։</p>
+  </header>
+  <section id="authPanel" class="card hidden">
+    <h2>Պաշտպանված աշխատասեղան</h2><p>Մուտք գործեք բովանդակության ստուգողի կամ հարթակի ադմինիստրատորի ակտիվ հաշվով։</p>
+    <a class="button-link" href="./account-access">Մուտք գործել</a><p id="authMessage" role="status"></p>
+    <button type="button" id="retryAuth" class="ghost">Կրկին փորձել</button>
+  </section>
+  <section id="console" class="hidden">
+    <p id="mcStats" class="subtle" aria-live="polite"></p>
+    <form id="mcFilters" class="card mc-filters">
+      <label>Փնտրել<input id="mcSearch" type="search" maxlength="200" placeholder="Վերնագիր, նկարագրություն կամ հմտություն" /></label>
+      <label>Առարկա<select id="mcSubject"><option value="">Բոլորը</option></select></label>
+      <label>Դասարան<select id="mcGrade"><option value="">Բոլորը</option></select></label>
+      <label>Բաժին / գլուխ<select id="mcUnit"><option value="">Բոլորը</option></select></label>
+      <label>Հմտություն<select id="mcSkill"><option value="">Բոլորը</option></select></label>
+      <label>Կարգավիճակ<select id="mcStatus"><option value="draft">Սևագիր</option><option value="active">Գործող</option><option value="retired">Արխիվացված</option><option value="">Բոլորը</option></select></label>
+      <div class="mc-actions"><button type="submit">Թարմացնել</button><button type="button" id="mcClear" class="ghost">Մաքրել զտիչները</button></div>
+    </form>
+    <p id="mcMessage" class="message" role="status" aria-live="polite"></p>
+    <div class="mc-columns">
+      <section class="card" aria-label="Սահմանումների ցանկ">
+        <p id="mcResultCount" class="subtle"></p><div id="mcList"></div>
+        <div class="mc-actions"><button id="mcPrev" type="button" class="ghost">Նախորդը</button><button id="mcNext" type="button" class="ghost">Հաջորդը</button></div>
+      </section>
+      <section id="mcDetail" class="card" aria-label="Սահմանման ստուգում"><h2>Ընտրեք սահմանում</h2><p class="subtle">Ցանկից ընտրեք թյուր պատկերացումը՝ դրա նկարագրությունն ու կապված պատասխանները դիտելու համար։</p></section>
+    </div>
+  </section>
+  <dialog id="mcMfa" aria-labelledby="mcMfaTitle"><div class="card"><h2 id="mcMfaTitle">Բազմագործոն հաստատում</h2><div id="mcMfaBody"></div><p id="mcMfaMessage" role="status"></p><button id="mcMfaClose" type="button" class="ghost">Փակել</button></div></dialog>
+</main>
+<script type="module" src="./content-misconceptions.js"></script>
+<script type="module" src="./ux.js"></script>
+<script type="module" src="./role-layout.js"></script>
+</body>
+</html>

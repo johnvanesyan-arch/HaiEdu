@@ -1,7 +1,8 @@
 create schema if not exists auth;
-create role anon;
-create role authenticated;
-create role service_role;
+-- Roles are cluster-wide; separate disposable databases share the CI server.
+do $$ begin create role anon; exception when duplicate_object then null; end $$;
+do $$ begin create role authenticated; exception when duplicate_object then null; end $$;
+do $$ begin create role service_role; exception when duplicate_object then null; end $$;
 
 create type public.user_role as enum (
   'student',

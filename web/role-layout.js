@@ -71,7 +71,8 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
-      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+      ["Օգնության ուղեցույցներ", "./content-guides.html"],
+      ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
   },
   contentReview: {
@@ -81,7 +82,8 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
-      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+      ["Օգնության ուղեցույցներ", "./content-guides.html"],
+      ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
   },
   contentBank: {
@@ -91,7 +93,8 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html", "home"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
-      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+      ["Օգնության ուղեցույցներ", "./content-guides.html"],
+      ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
   },
   contentItem: {
@@ -101,7 +104,8 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html", "home"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
-      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+      ["Օգնության ուղեցույցներ", "./content-guides.html"],
+      ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
   },
   contentCurriculum: {
@@ -111,7 +115,8 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html", "home"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
-      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+      ["Օգնության ուղեցույցներ", "./content-guides.html"],
+      ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
   },
   contentEvidence: {
@@ -121,7 +126,19 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html", "home"],
-      ["Օգնության ուղեցույցներ", "./content-guides.html"]
+      ["Օգնության ուղեցույցներ", "./content-guides.html"],
+      ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
+    ]
+  },
+  contentMisconceptions: {
+    gate: "console", label: "Բովանդակության թիմ", links: [
+      ["Գլխավոր", "./content.html"],
+      ["Ստուգման հերթ", "./content-review.html"],
+      ["Հարցերի բանկ", "./content-bank.html"],
+      ["Ուսումնական ծրագիր", "./content-curriculum.html"],
+      ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Օգնության ուղեցույցներ", "./content-guides.html"],
+      ["Թյուր պատկերացումներ", "./content-misconceptions.html", "home"]
     ]
   },
   contentGuides: {
@@ -131,7 +148,8 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
-      ["Օգնության ուղեցույցներ", "./content-guides.html", "home"]
+      ["Օգնության ուղեցույցներ", "./content-guides.html", "home"],
+      ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
   }
 };
