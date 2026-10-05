@@ -229,5 +229,37 @@
     "existing session routes and learner evidence",
     "Chapter I policies and blueprints",
     "Chapter II draft release and SME/assessment/content gates"
-  ]
+  ],
+  "ciRecovery": {
+    "observedAt": "2026-10-05T19:47:31.313Z",
+    "infrastructureFailure": "The job was not acquired by Runner of type hosted even after multiple attempts",
+    "cancelledBeforeExecution": [
+      {
+        "runId": 37362254459,
+        "job": "phase3-postgres-17",
+        "jobId": 111939414699
+      },
+      {
+        "runId": 37363057772,
+        "job": "institutional-concurrency",
+        "jobId": 111941964094
+      }
+    ],
+    "cancellationRequests": {
+      "method": "GitHub workflow UI",
+      "mainRun": 37362254459,
+      "evidenceRun": 37363057772,
+      "stateAfterRequest": "GitHub still reports the workflows queued; API job retry is blocked while run is active."
+    },
+    "providerIncident": {
+      "status": "Active at observation",
+      "url": "https://www.githubstatus.com/",
+      "startedAt": "2026-10-05T19:11:00Z",
+      "latestPublishedUpdateAt": "2026-10-05T19:15:00Z",
+      "summary": "GitHub is investigating delayed assignment of hosted runners across runner configurations."
+    },
+    "nextAttempt": "Fresh complete CI requested by this evidence-only commit; successful aggregate is still required before merge or production promotion.",
+    "applicationFailureReported": false,
+    "gatesBypassed": false
+  }
 }
