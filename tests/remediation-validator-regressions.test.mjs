@@ -55,6 +55,17 @@ test("equal quantities with different unit contexts do not copy the same task", 
   assert.ok(check({ workedExampleHy: "2 ժամ = 7200 վ։" }, task).includes("worked_example_reuses_live_task"));
 });
 
+test("quantity labels use deterministic Unicode casing without a language default", () => {
+  const task = { prompt_hy: "Convert 2 I to the requested scale.", variant_parameters: { sourceValue: 2, sourceUnit: "I" } };
+  assert.ok(check({ workedExampleHy: "2 i = 4 other." }, task).includes("worked_example_reuses_live_task"));
+  assert.ok(check({ workedExampleHy: "2 Ｉ = 4 other." }, task).includes("worked_example_reuses_live_task"));
+  // Distinct Unicode labels stay distinct; the validator cannot infer that
+  // dotted/dotless letters denote equivalent labels in a particular locale.
+  assert.deepEqual(check({ workedExampleHy: "2 ı = 4 other." }, task), []);
+  const dotless = { ...task, prompt_hy: "Convert 2 ı to the requested scale.", variant_parameters: { sourceValue: 2, sourceUnit: "ı" } };
+  assert.ok(check({ workedExampleHy: "2 ı = 4 other." }, dotless).includes("worked_example_reuses_live_task"));
+});
+
 test("decimal comma and period variants still identify exact copied conversions", () => {
   const task = { prompt_hy: "500 մլ-ը արտահայտիր լիտրերով։", variant_parameters: { sourceValue: 500, sourceUnit: "մլ" } };
   assert.ok(check({ workedExampleHy: "500 մլ = 0,5 լ։" }, task).includes("worked_example_reuses_live_task"));

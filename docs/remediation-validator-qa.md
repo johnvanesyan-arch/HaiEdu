@@ -9,6 +9,7 @@ This shared change removes publication false positives without changing learner 
 - Hint checks inspect allow-listed rendered parameters, not just the unrendered template.
 - Worked examples may share an operand or constant. Reusing all live inputs in the same quantity context is blocked. Numeric live placeholders in worked examples remain forbidden.
 - Equal values with different labels supplied by stored variant parameters, such as hours and minutes, are distinct contexts. No subject identifiers, unit-conversion tables, answer keys or arithmetic evaluation are added.
+- Label and token normalization uses NFKC and Unicode default casing, without a hard-coded language or the runtime locale. Labels remain opaque governed data; locale-specific equivalences require an explicit normalization contract and are not inferred by this heuristic.
 - Preview, saved-draft feedback, review and publication validate every published variant in the guide's existing governed template/skill scope. Selecting a safe preview cannot hide a failing variant. The selected question still determines the displayed learner preview.
 - The reviewer receives the checked variant count and codes/reasons for failing questions. Source metadata warnings remain nonblocking.
 
