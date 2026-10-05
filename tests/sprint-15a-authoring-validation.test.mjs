@@ -4,6 +4,7 @@ import {
   renderRawTemplate,
   tokenSimilarity,
   validateGuideContent,
+  validateGuideVariants,
 } from "../supabase/functions/_shared/remediation-authoring-validation.mjs";
 
 const references = {
@@ -45,11 +46,11 @@ test("a genuinely different numeric example passes the stronger analogous-exampl
   assert.deepEqual(validation.errors, []);
 });
 
-test("hard-coded reuse of a live numeric parameter is rejected", () => {
+test("one shared input is allowed when the example has different task data", () => {
   const validation = validateGuideContent("template", content({
     workedExampleHy: "Մեկ այլ մարմին 10 մ ճանապարհն անցնում է 3 վայրկյանում։ Կիրառիր նույն կապը։",
   }), references, liveVariant);
-  assert.ok(validation.errors.includes("worked_example_reuses_live_numeric_value:distance"));
+  assert.deepEqual(validation.errors, []);
 });
 
 test("a near-copy conceptual example without changed values or context is rejected", () => {

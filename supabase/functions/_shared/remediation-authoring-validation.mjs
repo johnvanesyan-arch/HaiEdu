@@ -92,12 +92,58 @@ export function tokenSimilarity(left, right) {
   return overlap / (a.size + b.size - overlap);
 }
 
-function hasObviousAnswerLeakage(value) {
+function numberOccurrences(value) {
   const text = String(value ?? "");
-  const directAnswer = /(ճիշտ\s+պատասխան(?:ը|ն)|պատասխան(?:ը|ն)\s+է|վերջնական\s+պատասխան|correct\s+answer|answer\s+is)/iu;
-  const optionAnswer = /(?:ընտրիր|նշիր|ճիշտ(?:ն|ը)?|պատասխան(?:ը|ն)?)[^։.!?\n]{0,32}(?:տարբերակ\s*)?[ԱԲԳԴA-D](?:\b|\s|[։.!?])/iu;
-  const numericConclusion = /(?:կստանանք|արդյունք(?:ը|ն)?|պատասխան(?:ը|ն)?|հավասար\s+է|=)\s*[+-]?\d+(?:[.,]\d+)?/iu;
-  return directAnswer.test(text) || optionAnswer.test(text) || numericConclusion.test(text);
+  return [...text.matchAll(/[+-]?\d+(?:[.,]\d+)?/g)].map((match) => {
+    const literal = /^[+-]/.test(match[0]) && /\d/.test(text[match.index - 1] ?? "")
+      ? match[0].slice(1) : match[0];
+    const marker = text.slice(match.index + match[0].length).match(/^\s*([\p{L}%°]+)/u)?.[1] ?? "";
+    return { number: normalizeNumber(literal), marker: marker.normalize("NFKC").toLocaleLowerCase("hy") };
+  });
+}
+
+function reusesLiveInputs(value, variant) {
+  if (!variant) return false;
+  const prompt = numberOccurrences(variant.prompt_hy);
+  const example = numberOccurrences(value);
+  const rawNumbers = Object.values(plainObject(variant.variant_parameters))
+    .filter((entry) => typeof entry === "number").map(normalizeNumber);
+  const contextLabels = new Set(Object.values(plainObject(variant.variant_parameters))
+    .filter((entry) => typeof entry === "string").map((entry) => entry.normalize("NFKC").toLocaleLowerCase("hy")));
+  const inputs = rawNumbers.length ? prompt.filter((entry) => rawNumbers.includes(entry.number))
+    .map((entry) => ({ ...entry, marker: contextLabels.has(entry.marker) ? entry.marker : "" })) : prompt;
+  if (!inputs.length) return false;
+  // A shared operand or constant is not a copied task. All input values must
+  // recur; adjacent quantity labels also distinguish, for example, hours from
+  // minutes. No answer key, arithmetic evaluator or subject-specific units.
+  return inputs.every((input) => {
+    const matches = example.filter((entry) => entry.number === input.number);
+    if (!matches.length) return false;
+    const labelled = matches.filter((entry) => entry.marker);
+    return !input.marker || !labelled.length || labelled.some((entry) => input.marker === entry.marker);
+  });
+}
+
+function hasObviousAnswerLeakage(value, variant) {
+  const text = String(value ?? "");
+  const directAnswer = /(?<![\p{L}\p{N}_])(?:ճիշտ\s+պատասխան(?:ը|ն)|պատասխան(?:ը|ն)\s+է|վերջնական\s+պատասխան|correct\s+answer|answer\s+is)(?![\p{L}\p{N}_])/iu;
+  const optionAnswer = /(?<![\p{L}\p{N}_])(?:ընտրիր|ընտրի՛ր|նշիր|նշի՛ր|ճիշտ(?:ն|ը)?|պատասխան(?:ը|ն)?)(?![\p{L}\p{N}_])[^։.!?\n]{0,32}(?<![\p{L}\p{N}_])[ԱԲԳԴA-D](?![\p{L}\p{N}_])/iu;
+  const numericConclusion = /(?<![\p{L}\p{N}_])(?:կստանանք|արդյունք(?:ը|ն)?|պատասխան(?:ը|ն)?)(?![\p{L}\p{N}_])\s*(?:կլինի|է)?\s*[:՝—]?\s*[+-]?\d+(?:[.,]\d+)?/iu;
+  if (directAnswer.test(text) || optionAnswer.test(text) || numericConclusion.test(text)) return true;
+  // Bare numeric conclusions still fail. A quantity-to-quantity relationship
+  // is allowed unless it supplies the active task's own input and result.
+  for (const match of text.matchAll(/(?:=|հավասար\s+է)\s*[+-]?\d+(?:[.,]\d+)?/gu)) {
+    const left = text.slice(0, match.index).match(/[+-]?\d+(?:[.,]\d+)?\s*[\p{L}%°]+\s*$/u);
+    const right = text.slice(match.index + match[0].length).match(/^\s*[\p{L}%°]+/u);
+    const calculation = text.slice(0, match.index).match(/[+-]?\d+(?:[.,]\d+)?(?:\s*[\p{L}%°]*\s*[×*÷/+−-]\s*[+-]?\d+(?:[.,]\d+)?)+\s*$/u);
+    if ((!left || !right) && !calculation) return true;
+    if (calculation && !variant) return true;
+    const sentenceBoundary = /[։!?\n]|(?<!\d)\.|\.(?!\d)/;
+    const clause = text.slice(0, match.index).split(sentenceBoundary).at(-1)
+      + text.slice(match.index).split(sentenceBoundary)[0];
+    if (reusesLiveInputs(clause, variant)) return true;
+  }
+  return false;
 }
 
 function urlLooksSafe(value) {
@@ -157,13 +203,7 @@ export function validateGuideContent(scope, content, referenceMetadata, variant)
     for (const key of workedKeys) {
       if (typeof params[key] === "number") errors.push(`worked_example_reuses_live_numeric_value:${key}`);
     }
-    for (const [key, raw] of Object.entries(params)) {
-      if (typeof raw !== "number") continue;
-      const normalized = normalizeNumber(raw);
-      if (promptNumbers.has(normalized) && workedNumbers.has(normalized)) {
-        errors.push(`worked_example_reuses_live_numeric_value:${key}`);
-      }
-    }
+    if (reusesLiveInputs(renderedWorked, variant)) errors.push("worked_example_reuses_live_task");
 
     const hasNumericVariation = promptNumbers.size > 0
       && workedNumbers.size > 0
@@ -178,8 +218,8 @@ export function validateGuideContent(scope, content, referenceMetadata, variant)
     warnings.push("preview_variant_missing");
   }
 
-  if (hasObviousAnswerLeakage(content.hint1Hy)) errors.push("hint_1_obvious_answer_leakage");
-  if (hasObviousAnswerLeakage(content.hint2Hy)) errors.push("hint_2_obvious_answer_leakage");
+  if (hasObviousAnswerLeakage(renderRawTemplate(content.hint1Hy, allowed, params), variant)) errors.push("hint_1_obvious_answer_leakage");
+  if (hasObviousAnswerLeakage(renderRawTemplate(content.hint2Hy, allowed, params), variant)) errors.push("hint_2_obvious_answer_leakage");
 
   const references = referenceMetadataPresentation(referenceMetadata);
   const hasGovernedTextbookProvenance = Boolean(references.textbookLocator && references.textbookSha256);
@@ -194,5 +234,19 @@ export function validateGuideContent(scope, content, referenceMetadata, variant)
     errors: [...new Set(errors)],
     warnings: [...new Set(warnings)],
     placeholders: parsed.keys,
+  };
+}
+
+export function validateGuideVariants(scope, content, referenceMetadata, variants) {
+  const results = variants.length
+    ? variants.map((variant) => ({ variant, validation: validateGuideContent(scope, content, referenceMetadata, variant) }))
+    : [{ variant: null, validation: validateGuideContent(scope, content, referenceMetadata, null) }];
+  return {
+    errors: [...new Set(results.flatMap(({ validation }) => validation.errors))],
+    warnings: [...new Set(results.flatMap(({ validation }) => validation.warnings))],
+    placeholders: results[0].validation.placeholders,
+    checkedVariantCount: variants.length,
+    variantFailures: results.filter(({ variant, validation }) => variant && validation.errors.length)
+      .map(({ variant, validation }) => ({ variantId: variant.id, itemCode: variant.code, errors: validation.errors })),
   };
 }

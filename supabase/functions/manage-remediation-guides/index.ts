@@ -6,6 +6,7 @@ import {
   renderRawTemplate,
   strings,
   validateGuideContent,
+  validateGuideVariants,
 } from "../_shared/remediation-authoring-validation.mjs";
 
 const corsHeaders = {
@@ -308,7 +309,7 @@ Deno.serve(async (req) => {
     const variant = (variants as PlainObject[]).find((row) => row.id === requestedVariantId)
       ?? (variants[0] as PlainObject | undefined)
       ?? null;
-    const validation = validateGuideContent(scope, content, referenceMetadata, variant);
+    const validation = validateGuideVariants(scope, content, referenceMetadata, variants);
 
     if (action === "preview") {
       const params = plainObject(variant?.variant_parameters);
