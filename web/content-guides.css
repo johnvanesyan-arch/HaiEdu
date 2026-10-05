@@ -51,7 +51,16 @@
 }
 
 .guide-filters .search-field { grid-column: span 2; }
+.guide-filters > label { margin: 0; }
 .guide-filters button { min-height: 44px; }
+.guide-filter-actions {
+  display: flex;
+  flex-wrap: wrap;
+  grid-column: span 2;
+  gap: 10px;
+  min-width: 0;
+}
+.guide-filter-actions button { flex: 1 1 auto; }
 .scope-summary { grid-column: 1 / -1; margin: 2px 0 0; }
 
 .guide-filters label,
@@ -247,7 +256,8 @@
   .guide-form-grid,
   .variant-tools,
   .history-compare-controls { grid-template-columns: 1fr; }
-  .guide-filters .search-field { grid-column: auto; }
+  .guide-filters .search-field,
+  .guide-filter-actions { grid-column: auto; }
   .guide-form-grid .wide { grid-column: auto; }
   .guide-editor { padding: 18px 15px; }
   .editor-summary { grid-template-columns: 1fr; }
