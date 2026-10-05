@@ -1,0 +1,122 @@
+{
+  "schema_version": 1,
+  "sprint": "15B.9",
+  "kind": "read_only_question_review_checkpoint",
+  "project_id": "xzyjvwiiibuarpotppid",
+  "source_commit": "e94c595221e11c8aa3633c2fdb692af51457e2f8",
+  "items": [
+    {
+      "id": "f0ee7d39-d922-4463-9703-0c8565da31ab",
+      "code": "PHY7-U02-S08-I01",
+      "qa_at": "2026-10-05T08:40:08.024386+00:00",
+      "errors": [],
+      "passed": true,
+      "status": "published",
+      "warnings": [],
+      "pool_links": 0,
+      "version_no": 1,
+      "review_status": "approved",
+      "last_reviewed_at": "2026-10-05T08:40:23.320232+00:00",
+      "validation_state": "provisional_no_sme_review"
+    },
+    {
+      "id": "76d5fe46-411e-4b58-b950-03ba3984845d",
+      "code": "PHY7-U02-S08-I02",
+      "qa_at": "2026-10-05T08:41:46.573129+00:00",
+      "errors": [],
+      "passed": true,
+      "status": "published",
+      "warnings": [],
+      "pool_links": 0,
+      "version_no": 1,
+      "review_status": "approved",
+      "last_reviewed_at": "2026-10-05T08:42:24.825624+00:00",
+      "validation_state": "provisional_no_sme_review"
+    },
+    {
+      "id": "f73aa214-ae3f-4653-a19f-3de251e95102",
+      "code": "PHY7-U02-S08-I03",
+      "qa_at": "2026-10-05T08:43:45.346838+00:00",
+      "errors": [],
+      "passed": true,
+      "status": "published",
+      "warnings": [],
+      "pool_links": 0,
+      "version_no": 1,
+      "review_status": "approved",
+      "last_reviewed_at": "2026-10-05T08:45:18.774437+00:00",
+      "validation_state": "provisional_no_sme_review"
+    },
+    {
+      "id": "f2773a3c-95ce-4b50-85e7-dda5415d5e54",
+      "code": "PHY7-U02-S08-I04",
+      "qa_at": "2026-10-05T08:48:19.634659+00:00",
+      "errors": [],
+      "passed": true,
+      "status": "published",
+      "warnings": [],
+      "pool_links": 0,
+      "version_no": 1,
+      "review_status": "approved",
+      "last_reviewed_at": "2026-10-05T08:48:37.98425+00:00",
+      "validation_state": "provisional_no_sme_review"
+    }
+  ],
+  "guides": [
+    {
+      "id": "2d63deac-50b5-4260-9c16-62e6de09b846",
+      "status": "draft",
+      "title_hy": "Ինչպե՞ս կապել ջերմաստիճանը մասնիկների շարժման հետ"
+    }
+  ],
+  "releases": [
+    {
+      "status": "pilot",
+      "blueprints": 4,
+      "release_key": "physics7_u01_2026_08_14_pilot_r1"
+    },
+    {
+      "status": "draft",
+      "blueprints": 0,
+      "release_key": "physics7_u01_u02_2026_08_14_candidate_r2"
+    }
+  ],
+  "checked_at": "2026-10-05T08:52:38.618657+00:00",
+  "misconceptions": [
+    {
+      "code": "heating_slows_motion",
+      "status": "draft"
+    },
+    {
+      "code": "temperature_unrelated_to_motion",
+      "status": "draft"
+    },
+    {
+      "code": "thermal_motion_is_directed",
+      "status": "draft"
+    },
+    {
+      "code": "temperature_effect_on_diffusion_reversed",
+      "status": "draft"
+    },
+    {
+      "code": "diffusion_requires_stirring",
+      "status": "draft"
+    },
+    {
+      "code": "zero_celsius_stops_motion",
+      "status": "draft"
+    },
+    {
+      "code": "different_substances_speed_orders_temperature",
+      "status": "draft"
+    },
+    {
+      "code": "equal_temperature_implies_equal_speed",
+      "status": "draft"
+    }
+  ],
+  "chapter_ii_approved": 28,
+  "scope": "Existing production question approval and matching-version QA only. Guide/misconception, SME and learner-release gates remain separate.",
+  "database_mutations": false
+}

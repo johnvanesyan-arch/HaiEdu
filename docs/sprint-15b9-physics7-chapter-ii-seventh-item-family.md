@@ -1,6 +1,6 @@
 # Sprint 15B.9 — Ֆիզիկա 7, Գլուխ II-ի յոթերորդ հարցերի ընտանիք
 
-**Status:** Deployed as learner-inactive governed draft content on 2026-10-05. Questions, misconception definitions and the remediation guide require the governed human review and current-version QA workflow. External SME validation remains pending.
+**Status:** S08 question review, matching-version QA and approval verified complete on 2026-10-05. All four questions remain learner-inactive. The remediation guide and eight misconception definitions remain draft; external SME validation and curriculum-release gates remain pending.
 
 ## Scope and source
 
@@ -49,9 +49,15 @@ The exact content migration ran inside a production transaction followed by `ROL
 
 These structural checks do not substitute for protected current-version QA, human content approval or SME review. Production deployment and CI evidence are appended after completion.
 
-## Next reviewer action
+## Question-review closure — 2026-10-05
 
-Open the Question Bank and filter to Physics 7 / Chapter II / `PHY7-U02-S08`. Review all four prompts, options, answer keys and response mappings; save any edits, run current-version QA, then approve. Review the guide and misconception definitions under their own governed workflow. None of these actions alone opens the candidate curriculum release to students.
+Read-only production verification at 08:52:38 UTC on 2026-10-05 confirmed all four `PHY7-U02-S08-I01`–`I04` questions are `published / approved` at version 1, each with passing matching-version QA, zero errors and zero warnings. Approval timestamps span 08:40:23–08:48:37 UTC. Chapter II now has 28 approved questions. The S08 guide and all eight misconception definitions remain draft; all four items retain `provisional_no_sme_review` and zero assessment-pool links. The candidate release remains draft with zero blueprints, and the existing Chapter I release remains pilot. Question approval does not close guide, misconception, SME or learner-release gates.
+
+[Machine-readable question-review checkpoint](evidence/sprint-15b9-review-20261005.json). This checkpoint records existing production state; verification made no database or learner-data changes. The earlier deployment evidence below remains a historical record of the draft state at deployment.
+
+## Remaining review and next family
+
+Review the S08 guide and misconception definitions under their own governed workflows. S09 thermometer operation is the next bounded content-authoring family. None of these actions alone opens the candidate curriculum release to students.
 
 ## Production deployment — 2026-10-05
 
