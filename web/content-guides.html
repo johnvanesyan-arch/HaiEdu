@@ -64,8 +64,10 @@
             <option value="archived">Արխիվացված</option>
           </select>
         </label>
-        <button id="refreshGuidesBtn" type="button" class="ghost">Թարմացնել</button>
-        <button id="clearGuideFiltersBtn" type="button" class="ghost">Մաքրել զտիչները</button>
+        <div class="guide-filter-actions" role="group" aria-label="Զտիչների գործողություններ">
+          <button id="refreshGuidesBtn" type="button" class="ghost">Թարմացնել</button>
+          <button id="clearGuideFiltersBtn" type="button" class="ghost">Մաքրել զտիչները</button>
+        </div>
         <p id="activeScopeSummary" class="scope-summary subtle small" aria-live="polite"></p>
       </section>
 
