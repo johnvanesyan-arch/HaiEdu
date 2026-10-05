@@ -1,6 +1,6 @@
 # Dedicated misconception review workspace — 15B.11A
 
-Date: 2026-10-05. Status: implementation complete; hosted release checks and production verification pending.
+Date: 2026-10-05. Status: implemented and deployed through PR #124; session-handling closure is included in the follow-up release.
 
 The 40 Chapter II definitions previously required a Markdown review packet and governed migration to activate. The new **Թյուր պատկերացումներ** page makes each definition and its linked responses reviewable from the Content Reviewer navigation at `/content-misconceptions`.
 
@@ -28,4 +28,14 @@ Before release, verify full CI and aggregate Platform release checks, new native
 
 ## Release evidence
 
-Pending hosted and production results. Forty draft definitions and thirteen active definitions form the pre-release baseline; deployment must not change their status.
+[PR #124](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/124) merged as `cb8141a6dd9ea924310118905856dffc48e06b5c`. PR CI #1181 and main CI #1182 passed: **990/990 Node tests**, **19/19 native Chromium tests**, typecheck, syntax, trigger coverage, both PostgreSQL concurrency jobs and aggregate **Platform release checks**. The first PostgreSQL 17 attempt identified a cluster-wide fixture-role collision; idempotent role creation fixed the fixture without changing production SQL.
+
+The migration is applied under Supabase history version `20261005165520` (repository source timestamp `20261005162651`, same named migration). The new Edge Function is active at version 1 with JWT verification; all three deployed source files match repository content. Service-role catalog reads return exactly 40 drafts and 13 active definitions. History has zero events. Anonymous/authenticated direct mutation and RPC grants are denied; history RLS is enabled.
+
+All 18 before/after content and release table counts and checksums match, including questions, mappings, approval/QA history, guide versions, assessment pools/blueprints and release gates. Supabase advisors remain at the same baseline (2 security, 4 performance notices), with no new findings. [Readback evidence](evidence/misconception-review-release-20261005.json).
+
+The persistent Vercel project setting was independently read in the dashboard: GitHub **Platform release checks**, target **Production**, behavior **Blocking**, visibly selected. The new public route renders its protected signed-out boundary. Existing main-only institutional action and analytics workflows retain exact-frontend and designated-fixture guards.
+
+The automatic review identified two session gaps after the initial CI pass: a missing standard sign-out hook and interrupted MFA-enrollment cleanup. The closure adds the standard sidebar sign-out, keeps only workspace-owned pending factor IDs across identity changes/reloads, and cleans an unverified factor only under its owning session. Verified and unrelated factors are preserved. Three additional native Chromium regressions exercise actual sidebar logout, cross-account interrupted enrollment and preservation of already-verified factors. They run in the same mandatory browser/release gates.
+
+Production definition approval was deliberately not performed: it is John's content decision. Positive reviewer actions/MFA are covered with isolated native-browser auth/service doubles and real SQL fixtures; live production mutation acceptance is not claimed. No content or curriculum gate was opened.

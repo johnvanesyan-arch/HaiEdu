@@ -17,6 +17,29 @@ const errors = {
 let userId = null, authEpoch = 0, listEpoch = 0, detailEpoch = 0, offset = 0, total = 0;
 let detail = null, selectedId = null, busy = false, stale = false, mfaEpoch = 0, mfaBusy = false;
 let enrollment = null;
+let signingOut = false;
+// Only IDs created by this workspace are retained, never QR codes or secrets.
+// A departed identity cannot clean up with another account's session; retry when
+// its own session returns. This also survives reloads during enrollment.
+const pendingFactorKey = 'haiedu:misconception-review:pending-factors';
+let pendingFactors = [];
+try { const saved=JSON.parse(sessionStorage.getItem(pendingFactorKey)||'[]'); if(Array.isArray(saved))pendingFactors=saved.filter(f=>typeof f.id==='string'&&typeof f.userId==='string'); } catch {}
+function persistFactors(){try{sessionStorage.setItem(pendingFactorKey,JSON.stringify(pendingFactors));}catch{}}
+function rememberFactor(f){pendingFactors=pendingFactors.filter(x=>x.id!==f.id);pendingFactors.push(f);persistFactors();}
+function forgetFactor(id){pendingFactors=pendingFactors.filter(f=>f.id!==id);persistFactors();}
+async function cleanupFactors(owner){
+  if(!owner)return;
+  for(const factor of pendingFactors.filter(f=>f.userId===owner)){
+    const {data}=await supabase.auth.getSession();
+    if(data?.session?.user?.id!==owner || userId!==owner)return;
+    const {data:factors,error:factorError}=await supabase.auth.mfa.listFactors();
+    if(factorError || userId!==owner)return;
+    const existing=(factors?.all||factors?.totp||[]).find(f=>f.id===factor.id);
+    if(!existing || existing.status==='verified'){forgetFactor(factor.id);continue;}
+    const {error}=await supabase.auth.mfa.unenroll({factorId:factor.id});
+    if(!error)forgetFactor(factor.id);
+  }
+}
 const ids = ['mcSubject','mcGrade','mcUnit','mcSkill'];
 function message(text = '', bad = false) { $('mcMessage').textContent = text; $('mcMessage').classList.toggle('bad',bad); }
 function dirty() { return Boolean(detail && $('mcTitle') && ($('mcTitle').value !== detail.definition.title_hy || $('mcDescription').value !== (detail.definition.description_hy || ''))); }
@@ -103,14 +126,16 @@ async function mutate(action) {
   finally{if(a===authEpoch){busy=false;controls();}}
 }
 async function closeMfa(){
-  ++mfaEpoch;const pending=enrollment;enrollment=null;mfaBusy=false;
+  ++mfaEpoch;const pending=enrollment,verifying=mfaBusy;enrollment=null;mfaBusy=false;
   if($('mcMfa').open)$('mcMfa').close();$('mcMfaBody').replaceChildren();$('mcMfaMessage').textContent='';
-  if(pending && pending.userId===userId)await supabase.auth.mfa.unenroll({factorId:pending.id}).catch(()=>null);
+  if(!verifying && pending && pending.userId===userId)await cleanupFactors(pending.userId).catch(()=>null);
 }
 async function showMfa(a){
-  const epoch=++mfaEpoch;
+  const epoch=++mfaEpoch, owner=userId;
   $('mcMfaBody').textContent='Բեռնվում է…';$('mcMfaMessage').textContent='';$('mcMfa').showModal();
   try{
+    await cleanupFactors(owner);
+    if(a!==authEpoch || epoch!==mfaEpoch)return;
     const {data,error}=await supabase.auth.mfa.listFactors();if(error)throw error;
     if(a!==authEpoch || epoch!==mfaEpoch)return;
     const verified=(data?.totp||[]).filter(f=>f.status==='verified');
@@ -119,8 +144,9 @@ async function showMfa(a){
     if(!factors.length){
       // Enrol only a new factor owned by this operation; never remove other factors.
       const {data:factor,error:enrollError}=await supabase.auth.mfa.enroll({factorType:'totp',friendlyName:'HaiEdu սահմանումների ստուգում'});if(enrollError)throw enrollError;
-      if(a!==authEpoch || epoch!==mfaEpoch){if(a===authEpoch)await supabase.auth.mfa.unenroll({factorId:factor.id});return;}
-      enrollment={id:factor.id,userId};factors=[factor];
+      rememberFactor({id:factor.id,userId:owner});
+      if(a!==authEpoch || epoch!==mfaEpoch){if(owner===userId)await cleanupFactors(owner);return;}
+      enrollment={id:factor.id,userId:owner};factors=[factor];
       const p=document.createElement('p');p.textContent='Սկանավորեք QR կոդը ձեր հաստատող հավելվածով կամ մուտքագրեք գաղտնի բանալին։';$('mcMfaBody').append(p);
       if(/^data:image\/(?:svg\+xml|png)(?:;[^,]+)?,/i.test(factor.totp?.qr_code||'')){const img=document.createElement('img');img.src=factor.totp.qr_code;img.alt='Բազմագործոն մուտքի QR կոդ';$('mcMfaBody').append(img);}
       const secret=document.createElement('code');secret.textContent=factor.totp?.secret||'';$('mcMfaBody').append(secret);
@@ -129,7 +155,9 @@ async function showMfa(a){
     form.addEventListener('submit',async event=>{
       event.preventDefault();if(mfaBusy || a!==authEpoch || epoch!==mfaEpoch)return;mfaBusy=true;form.querySelector('button').disabled=true;
       try{
-        const {error:verifyError}=await supabase.auth.mfa.challengeAndVerify({factorId:$('mcFactor').value,code:$('mcMfaCode').value.trim()});if(verifyError)throw verifyError;
+        const factorId=$('mcFactor').value;
+        const {error:verifyError}=await supabase.auth.mfa.challengeAndVerify({factorId,code:$('mcMfaCode').value.trim()});if(verifyError)throw verifyError;
+        forgetFactor(factorId);
         if(a!==authEpoch || epoch!==mfaEpoch)return;enrollment=null;await closeMfa();message('Մուտքը հաստատված է։ Այժմ կարող եք հաստատել ընտրված սահմանումը։');
       }catch{if(a===authEpoch && epoch===mfaEpoch)$('mcMfaMessage').textContent='Կոդը չընդունվեց։ Ստուգեք այն և կրկին փորձեք։';}
       finally{if(a===authEpoch && epoch===mfaEpoch){mfaBusy=false;form.querySelector('button').disabled=false;}}
@@ -138,7 +166,7 @@ async function showMfa(a){
 }
 function reset(){
   ++authEpoch;++listEpoch;++detailEpoch;userId=null;detail=null;selectedId=null;busy=false;stale=false;offset=0;total=0;
-  void closeMfa();$('console').classList.add('hidden');$('authPanel').classList.remove('hidden');$('mcList').replaceChildren();$('mcDetail').replaceChildren();$('mcStats').textContent='';message();
+  void closeMfa();$('signOutBtn').classList.add('hidden');$('console').classList.add('hidden');$('authPanel').classList.remove('hidden');$('mcList').replaceChildren();$('mcDetail').replaceChildren();$('mcStats').textContent='';message();
 }
 async function showSession(session,{force=false}={}){
   const next=session?.user?.id;if(!next){reset();return;}
@@ -149,7 +177,7 @@ async function showSession(session,{force=false}={}){
     const probe=await invokeContent(endpoint,{action:'list',filters:filters()});
     if(a!==authEpoch || !userId)return;
     if(!probe?.actor)throw new Error('unauthorized');
-    $('authPanel').classList.add('hidden');$('console').classList.remove('hidden');$('authMessage').textContent='';await list(probe);
+    $('authPanel').classList.add('hidden');$('console').classList.remove('hidden');$('signOutBtn').classList.remove('hidden');$('authMessage').textContent='';await list(probe);
   }catch{if(a===authEpoch){$('authMessage').textContent='Այս բաժինը հասանելի չէ այս հաշվին կամ տվյալները չեն բեռնվում։';userId=null;}}
 }
 $('mcFilters').addEventListener('submit',event=>{event.preventDefault();if(!busy){offset=0;void list();}});
@@ -162,6 +190,12 @@ $('mcPrev').addEventListener('click',()=>{if(!busy&&offset){offset=Math.max(0,of
 $('mcNext').addEventListener('click',()=>{if(!busy&&offset+50<total){offset+=50;void list();}});
 $('mcMfaClose').addEventListener('click',()=>{void closeMfa();});
 $('mcMfa').addEventListener('cancel',event=>{event.preventDefault();void closeMfa();});
+$('signOutBtn').addEventListener('click',async()=>{
+  if(signingOut||!discardOkay())return;signingOut=true;
+  try{await closeMfa();await cleanupFactors(userId).catch(()=>null);const {error}=await supabase.auth.signOut();if(error)throw error;}
+  catch{message('Չհաջողվեց դուրս գալ։ Կրկին փորձեք։',true);}
+  finally{signingOut=false;}
+});
 $('retryAuth').addEventListener('click',async()=>{const {data}=await supabase.auth.getSession();void showSession(data.session,{force:true});});
 window.addEventListener('beforeunload',event=>{if(dirty()){event.preventDefault();event.returnValue='';}});
 supabase.auth.onAuthStateChange((event,session)=>{if(event==='SIGNED_OUT')reset();else if(session?.user?.id && session.user.id!==userId)void showSession(session);});

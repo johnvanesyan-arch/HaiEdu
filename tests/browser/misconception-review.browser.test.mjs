@@ -8,12 +8,12 @@ before(async()=>{browser=await chromium.launch({headless:true});});after(async()
 async function fixture(t,{width=1280,aal='aal2',denied=false}={}){
  const ctx=await browser.newContext({viewport:{width,height:900}});t.after(()=>ctx.close());const page=await ctx.newPage();page.setDefaultTimeout(5000);const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(({aal,denied})=>{
-  let assurance=aal;const listeners=[],id='30000000-0000-4000-8000-000000000021',second='30000000-0000-4000-8000-000000000022';
+  let assurance=aal,sessionUser='fixture-user';const listeners=[],id='30000000-0000-4000-8000-000000000021',second='30000000-0000-4000-8000-000000000022';
   const definition=(key=id)=>({id:key,title_hy:key===id?'Փորձնական թյուր պատկերացում':'Երկրորդ սահմանում',description_hy:'Սահմանման հայերեն նկարագրություն',status:'draft',code:'TEST_CODE',skill_code:'SUBJECT-U02-S03',skill_name_hy:'Փորձնական հմտություն',skill_id:'skill',subject_name_hy:'Փորձնական առարկա',grade_label_hy:'7-րդ դասարան',units:[],mapping_count:1});
   const detail=(key=id)=>({definition:definition(key),mappings:[{itemId:'item',itemCode:'ITEM-01',version:1,promptHy:'Հարցի ձևակերպումը',responseKey:'B',responseText:'Կապված սխալ պատասխանը'}],history:[],expectedToken:'a'.repeat(32)});
-  const state=window.__mc={calls:[],delayDetail:null,pendingDetail:null,delayMutation:false,pendingMutation:null,mutationError:null,id,second,detail,verified:0};
-  window.__authEvent=(event,user='fixture-user')=>listeners.forEach(fn=>fn(event,event==='SIGNED_OUT'?null:{user:{id:user}}));
-  window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:{user:{id:'fixture-user'}}}}),onAuthStateChange:fn=>listeners.push(fn),mfa:{getAuthenticatorAssuranceLevel:async()=>({data:{currentLevel:assurance}}),listFactors:async()=>({data:{totp:[{id:'totp',status:'verified',friendly_name:'Authenticator'}]}}),challengeAndVerify:async()=>{assurance='aal2';state.verified++;return {};}}},functions:{invoke:async(name,{body})=>{
+  const state=window.__mc={calls:[],delayDetail:null,pendingDetail:null,delayMutation:false,pendingMutation:null,mutationError:null,id,second,detail,verified:0,signOuts:0,factors:[{id:'totp',status:'verified',friendly_name:'Authenticator'}],removed:[]};
+  window.__authEvent=(event,user='fixture-user')=>{sessionUser=event==='SIGNED_OUT'?null:user;listeners.forEach(fn=>fn(event,sessionUser?{user:{id:sessionUser}}:null));};
+  window.__haieduSupabaseClient={auth:{getSession:async()=>({data:{session:sessionUser?{user:{id:sessionUser}}:null}}),signOut:async()=>{state.signOuts++;window.__authEvent('SIGNED_OUT');return {};},onAuthStateChange:fn=>listeners.push(fn),mfa:{getAuthenticatorAssuranceLevel:async()=>({data:{currentLevel:assurance}}),listFactors:async()=>({data:{all:state.factors,totp:state.factors}}),enroll:async()=>{const f={id:'owned-pending',status:'unverified',totp:{secret:'fixture-only'}};state.factors.push(f);return {data:f};},unenroll:async({factorId})=>{state.removed.push({factorId,user:sessionUser});state.factors=state.factors.filter(f=>f.id!==factorId);return {};},challengeAndVerify:async()=>{assurance='aal2';state.verified++;return {};}}},functions:{invoke:async(name,{body})=>{
    state.calls.push(body);if(denied)return {data:{error:'content_authoring_role_required'}};
    if(body.action==='list')return {data:{actor:{role:'content_admin',aal:assurance},definitions:[definition(),definition(second)],counts:{draft:40,active:13},filters:{subjects:[],grades:[],units:[],skills:[]},total:2}};
    if(body.action==='detail'){if(state.delayDetail===body.id)return new Promise(resolve=>{state.pendingDetail=()=>resolve({data:detail(body.id)});});return {data:detail(body.id)};}
@@ -57,4 +57,28 @@ test('stale approval keeps edits visible and requires a fresh review',async t=>{
 test('MFA verification does not approve automatically and signed-out/wrong-role users see no definitions',async t=>{
  const {page,errors}=await fixture(t,{aal:'aal1'});await openFirst(page);await ready(page);await page.locator('#mcApprove').click();await page.locator('#mcMfaCode').fill('123456');await page.locator('#mcMfaBody button').click();await page.waitForFunction(()=>!document.getElementById('mcMfa').open);assert.equal(await page.evaluate(()=>__mc.calls.filter(x=>x.action==='approve').length),0);await page.locator('#mcApprove').click();await page.waitForFunction(()=>__mc.calls.some(x=>x.action==='approve'));assert.deepEqual(errors,[]);
  const denied=await fixture(t,{denied:true});assert.equal(await denied.page.locator('#console').isHidden(),true);assert.equal(await denied.page.locator('#mcList').textContent(),'');
+});
+
+test('standard sidebar sign-out ends the session once and removes protected content',async t=>{
+ const {page,errors}=await fixture(t);await openFirst(page);
+ await page.locator('.hm-sidebar-signout').click();
+ await page.waitForFunction(()=>document.getElementById('console').classList.contains('hidden'));
+ assert.equal(await page.evaluate(()=>__mc.signOuts),1);assert.equal(await page.locator('#mcDetail').textContent(),'');assert.deepEqual(errors,[]);
+});
+test('interrupted MFA keeps owned cleanup pending and never removes factors under another identity',async t=>{
+ const {page,errors}=await fixture(t,{aal:'aal1'});await openFirst(page);await ready(page);await page.evaluate(()=>{__mc.factors=[];});
+ await page.locator('#mcApprove').click();await page.locator('#mcMfaCode').waitFor();
+ await page.evaluate(()=>__authEvent('SIGNED_IN','second-user'));await page.waitForFunction(()=>!document.getElementById('mcMfa').open);
+ assert.equal(await page.evaluate(()=>__mc.removed.length),0);
+ assert.equal(await page.evaluate(()=>JSON.parse(sessionStorage.getItem('haiedu:misconception-review:pending-factors'))[0].userId),'fixture-user');
+ await page.evaluate(()=>__authEvent('SIGNED_IN','fixture-user'));await page.locator('[data-mc-id]').first().waitFor();await openFirst(page);await ready(page);await page.locator('#mcApprove').click();await page.locator('#mcMfaCode').waitFor();
+ assert.deepEqual(await page.evaluate(()=>__mc.removed),[{factorId:'owned-pending',user:'fixture-user'}]);
+ await page.locator('#mcMfaClose').click();await page.locator('.hm-sidebar-signout').click();await page.waitForFunction(()=>__mc.signOuts===1);
+ assert.deepEqual(errors,[]);
+});
+test('cleanup preserves an owned factor that completed verification before reload',async t=>{
+ const {page}=await fixture(t,{aal:'aal1'});
+ await page.evaluate(()=>sessionStorage.setItem('haiedu:misconception-review:pending-factors',JSON.stringify([{id:'totp',userId:'fixture-user'}])));
+ await page.reload();await page.locator('[data-mc-id]').first().waitFor();await openFirst(page);await ready(page);await page.locator('#mcApprove').click();await page.locator('#mcMfaCode').waitFor();
+ assert.equal(await page.evaluate(()=>__mc.removed.length),0);assert.equal(await page.evaluate(()=>JSON.parse(sessionStorage.getItem('haiedu:misconception-review:pending-factors')).length),0);
 });

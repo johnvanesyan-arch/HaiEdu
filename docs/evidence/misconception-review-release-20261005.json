@@ -1,0 +1,236 @@
+{
+  "date": "2026-10-05",
+  "featurePr": 124,
+  "featureCommit": "cb8141a6dd9ea924310118905856dffc48e06b5c",
+  "initialCI": {
+    "pullRequest": 1181,
+    "main": 1182,
+    "nodeTests": 990,
+    "browserTests": 19,
+    "postgresqlRunners": [
+      "pgserver",
+      "17.6"
+    ]
+  },
+  "migration": {
+    "repository": "20261005162651_misconception_review_workspace.sql",
+    "appliedVersion": "20261005165520"
+  },
+  "edge": {
+    "name": "manage-misconception-reviews",
+    "version": 1,
+    "verifyJwt": true,
+    "allThreeFilesMatch": true
+  },
+  "contentPreservation": {
+    "before": [
+      {
+        "entity": "misconceptions",
+        "n": 53,
+        "checksum": "2718adaf9a954fc4b2a277eb9e8ffc6f"
+      },
+      {
+        "entity": "item_misconception_mappings",
+        "n": 334,
+        "checksum": "2aa832471128af644864cf4c82bb19ff"
+      },
+      {
+        "entity": "items",
+        "n": 292,
+        "checksum": "0997f48fbfc3e1d0b7ea31e613a38831"
+      },
+      {
+        "entity": "item_options",
+        "n": 560,
+        "checksum": "5a1ac1694a40c69730c779e2fc39d0c9"
+      },
+      {
+        "entity": "item_answer_keys",
+        "n": 292,
+        "checksum": "4d9e4b9d8d8a266da7365ba5f9984026"
+      },
+      {
+        "entity": "item_versions",
+        "n": 120,
+        "checksum": "5083c16a7c37693a95a4bafc35d68d47"
+      },
+      {
+        "entity": "item_reviews",
+        "n": 559,
+        "checksum": "279df78bac339de464b41039ab4c807e"
+      },
+      {
+        "entity": "item_qa_runs",
+        "n": 487,
+        "checksum": "e615895bd543ed71aabfa016ed5acceb"
+      },
+      {
+        "entity": "skill_remediation_guides",
+        "n": 10,
+        "checksum": "924a5a0b56da00c2f2b4b6b8935dee95"
+      },
+      {
+        "entity": "item_template_remediation_guides",
+        "n": 17,
+        "checksum": "0cec37a0bca44c10e46b8b7f2dd10455"
+      },
+      {
+        "entity": "remediation_guide_authoring_versions",
+        "n": 129,
+        "checksum": "fb4ff6cb89383093918323155bf774dc"
+      },
+      {
+        "entity": "remediation_guide_versions",
+        "n": 61,
+        "checksum": "32bccf865694f8800a63da392b5839fb"
+      },
+      {
+        "entity": "assessment_pools",
+        "n": 4,
+        "checksum": "ca5d0942fffb2d3c71e022e348e4d06d"
+      },
+      {
+        "entity": "assessment_pool_items",
+        "n": 280,
+        "checksum": "6e4d69bc77934595b66169828cbc795c"
+      },
+      {
+        "entity": "assessment_blueprints",
+        "n": 7,
+        "checksum": "7a34942c597853a9f7809ce90ae7fe35"
+      },
+      {
+        "entity": "assessment_blueprint_items",
+        "n": 360,
+        "checksum": "ec4e2375647ff8fbb2489e44db52ddb3"
+      },
+      {
+        "entity": "curriculum_releases",
+        "n": 3,
+        "checksum": "8b4202ac5c5c15adbe92eb3465b11552"
+      },
+      {
+        "entity": "curriculum_release_gate_checks",
+        "n": 14,
+        "checksum": "2033e1d1f5b1abac2b82092f5f571f6e"
+      }
+    ],
+    "after": [
+      {
+        "entity": "misconceptions",
+        "n": 53,
+        "checksum": "2718adaf9a954fc4b2a277eb9e8ffc6f"
+      },
+      {
+        "entity": "item_misconception_mappings",
+        "n": 334,
+        "checksum": "2aa832471128af644864cf4c82bb19ff"
+      },
+      {
+        "entity": "items",
+        "n": 292,
+        "checksum": "0997f48fbfc3e1d0b7ea31e613a38831"
+      },
+      {
+        "entity": "item_options",
+        "n": 560,
+        "checksum": "5a1ac1694a40c69730c779e2fc39d0c9"
+      },
+      {
+        "entity": "item_answer_keys",
+        "n": 292,
+        "checksum": "4d9e4b9d8d8a266da7365ba5f9984026"
+      },
+      {
+        "entity": "item_versions",
+        "n": 120,
+        "checksum": "5083c16a7c37693a95a4bafc35d68d47"
+      },
+      {
+        "entity": "item_reviews",
+        "n": 559,
+        "checksum": "279df78bac339de464b41039ab4c807e"
+      },
+      {
+        "entity": "item_qa_runs",
+        "n": 487,
+        "checksum": "e615895bd543ed71aabfa016ed5acceb"
+      },
+      {
+        "entity": "skill_remediation_guides",
+        "n": 10,
+        "checksum": "924a5a0b56da00c2f2b4b6b8935dee95"
+      },
+      {
+        "entity": "item_template_remediation_guides",
+        "n": 17,
+        "checksum": "0cec37a0bca44c10e46b8b7f2dd10455"
+      },
+      {
+        "entity": "remediation_guide_authoring_versions",
+        "n": 129,
+        "checksum": "fb4ff6cb89383093918323155bf774dc"
+      },
+      {
+        "entity": "remediation_guide_versions",
+        "n": 61,
+        "checksum": "32bccf865694f8800a63da392b5839fb"
+      },
+      {
+        "entity": "assessment_pools",
+        "n": 4,
+        "checksum": "ca5d0942fffb2d3c71e022e348e4d06d"
+      },
+      {
+        "entity": "assessment_pool_items",
+        "n": 280,
+        "checksum": "6e4d69bc77934595b66169828cbc795c"
+      },
+      {
+        "entity": "assessment_blueprints",
+        "n": 7,
+        "checksum": "7a34942c597853a9f7809ce90ae7fe35"
+      },
+      {
+        "entity": "assessment_blueprint_items",
+        "n": 360,
+        "checksum": "ec4e2375647ff8fbb2489e44db52ddb3"
+      },
+      {
+        "entity": "curriculum_releases",
+        "n": 3,
+        "checksum": "8b4202ac5c5c15adbe92eb3465b11552"
+      },
+      {
+        "entity": "curriculum_release_gate_checks",
+        "n": 14,
+        "checksum": "2033e1d1f5b1abac2b82092f5f571f6e"
+      }
+    ],
+    "all18TablesUnchanged": true
+  },
+  "reviewCounts": {
+    "draft": 40,
+    "active": 13,
+    "events": 0
+  },
+  "advisors": {
+    "securityBefore": 2,
+    "securityAfter": 2,
+    "performanceBefore": 4,
+    "performanceAfter": 4,
+    "newFindings": 0
+  },
+  "persistentDeploymentCheck": {
+    "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/settings/build-and-deployment",
+    "check": "Platform release checks",
+    "target": "Production",
+    "behavior": "Blocking",
+    "checked": true
+  },
+  "productionUI": {
+    "url": "https://www.haiedu.am/content-misconceptions",
+    "signedOutBoundaryObserved": true,
+    "positiveReviewerMutation": "Not run on real content; browser action tests use isolated service/auth fixtures."
+  }
+}
