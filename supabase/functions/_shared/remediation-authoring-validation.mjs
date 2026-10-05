@@ -75,10 +75,17 @@ function numericLiterals(value) {
     .map((match) => normalizeNumber(match[0]));
 }
 
-function normalizedTokens(value) {
+function normalizeText(value) {
+  // Unicode default casing is deterministic and does not select a content
+  // language or inherit the runtime locale. Labels are opaque governed data;
+  // locale-specific equivalences require an explicit normalization contract.
   return String(value ?? "")
-    .toLocaleLowerCase("hy")
     .normalize("NFKC")
+    .toLowerCase();
+}
+
+function normalizedTokens(value) {
+  return normalizeText(value)
     .match(/[\p{L}\p{N}]+/gu)
     ?.filter((token) => token.length >= 3) ?? [];
 }
@@ -98,7 +105,7 @@ function numberOccurrences(value) {
     const literal = /^[+-]/.test(match[0]) && /\d/.test(text[match.index - 1] ?? "")
       ? match[0].slice(1) : match[0];
     const marker = text.slice(match.index + match[0].length).match(/^\s*([\p{L}%°]+)/u)?.[1] ?? "";
-    return { number: normalizeNumber(literal), marker: marker.normalize("NFKC").toLocaleLowerCase("hy") };
+    return { number: normalizeNumber(literal), marker: normalizeText(marker) };
   });
 }
 
@@ -109,7 +116,7 @@ function reusesLiveInputs(value, variant) {
   const rawNumbers = Object.values(plainObject(variant.variant_parameters))
     .filter((entry) => typeof entry === "number").map(normalizeNumber);
   const contextLabels = new Set(Object.values(plainObject(variant.variant_parameters))
-    .filter((entry) => typeof entry === "string").map((entry) => entry.normalize("NFKC").toLocaleLowerCase("hy")));
+    .filter((entry) => typeof entry === "string").map(normalizeText));
   const inputs = rawNumbers.length ? prompt.filter((entry) => rawNumbers.includes(entry.number))
     .map((entry) => ({ ...entry, marker: contextLabels.has(entry.marker) ? entry.marker : "" })) : prompt;
   if (!inputs.length) return false;
