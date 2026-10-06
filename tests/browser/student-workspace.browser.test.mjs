@@ -53,7 +53,7 @@ async function fixture(t, { width=1280, active=true, player=false, contextIndex=
   const selected=contexts[contextIndex];
   const params=new URLSearchParams({ enrollment:selected.enrollmentId, release:selected.curriculumReleaseId, unit:selected.unitId, tab:'assessment', ...(player?{action:'practice'}:{}) });
   await page.goto(origin+'/course.html?'+params);
-  await page.waitForFunction(()=>document.querySelector('.amp-course-link') && document.getElementById('courseLoading').classList.contains('hidden'));
+  await page.waitForFunction(denied=>(denied || document.querySelector('.amp-course-link')) && document.getElementById('courseLoading').classList.contains('hidden'),denied);
   return {page,errors};
 }
 
@@ -106,10 +106,30 @@ test('governed student player keeps radio controls beside readable options',asyn
   assert.deepEqual(errors,[]);
 });
 
-test('full-shell denied and signed-out states clear student evidence',async t=>{
+test('full-shell signed-out state clears student evidence',async t=>{
   const {page,errors}=await fixture(t);
   await page.evaluate(()=>window.__listeners.forEach(fn=>fn('SIGNED_OUT',null)));
   assert.equal(await page.locator('#courseContent').innerText(),'');
   assert.equal(await page.locator('.amp-course-link').count(),0);
+  assert.deepEqual(errors,[]);
+});
+
+test('an unavailable enrollment exposes no student evidence in the full shell',async t=>{
+  const {page,errors}=await fixture(t,{denied:true});
+  assert.match(await page.locator('#courseContent').innerText(),/Ընտրված դասընթացն այս պահին հասանելի չէ/);
+  assert.equal(await page.locator('#courseContent table').count(),0);
+  assert.equal(await page.evaluate(()=>window.__calls.some(c=>c.name==='get-student-dashboard')),false);
+  assert.deepEqual(errors,[]);
+});
+
+test('expanded provenance stays contained at 200 percent text size',async t=>{
+  const {page,errors}=await fixture(t);
+  await page.addStyleTag({content:'html { font-size: 200%; }'});
+  await page.locator('#courseContent details summary').click();
+  assert.match(await page.locator('#courseContent details').innerText(),/fixture-blueprint/);
+  assert.match(await page.locator('#courseContent details').innerText(),/fixture-runtime/);
+  const metrics=await page.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth}));
+  await capture(page,'assessment-text-200',metrics);
+  assert.ok(metrics.documentWidth<=metrics.viewport+1);
   assert.deepEqual(errors,[]);
 });

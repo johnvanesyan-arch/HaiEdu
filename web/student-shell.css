@@ -172,6 +172,8 @@ body.amp-student-shell-active .amp-side-nav {
 .amp-nav-list {
   display: grid;
   gap: 0.35rem;
+  min-height: 0;
+  overflow-y: auto;
 }
 .amp-nav-link {
   min-height: 46px;
@@ -189,6 +191,7 @@ body.amp-student-shell-active .amp-side-nav {
   color: #fff;
   background: rgba(255,255,255,.09);
 }
+.amp-nav-link > span:last-child { min-width: 0; max-width: 100%; }
 .amp-nav-link[aria-current="page"] {
   color: #fff;
   background: rgba(118, 172, 231, .2);
@@ -294,7 +297,9 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
     z-index: 50;
     min-height: var(--amp-mobile-nav-height);
     display: grid;
-    grid-template-columns: repeat(4, minmax(0,1fr));
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0,1fr);
     background: rgba(255,255,255,.97);
     border-top: 1px solid var(--amp-color-border);
     box-shadow: 0 -8px 24px rgba(22,34,51,.08);
