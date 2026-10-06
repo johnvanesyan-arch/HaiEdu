@@ -2,7 +2,7 @@
 
 **Date:** 2026-10-06. **Sprint:** 15B.13C. **Author:** Codex, automated authoring/review assistance at John's direction; this is not external SME validation or human question approval.
 
-**Status:** I10 v2 deployed and technically validated; human question/misconception review and the existing guide review remain pending. The full-bank review requirement is platform-wide; this content correction is a subject-aware Physics 7 extension.
+**Status:** Human review complete. John revised and approved I10 at v4, activated the new misconception and published his edited guide at runtime v2 on 2026-10-06. The v2 deployment and earlier review handoff below remain historical checkpoints. The full-bank review requirement is platform-wide; this content correction is a subject-aware Physics 7 extension.
 
 ## Finding and correction
 
@@ -71,3 +71,9 @@ Migration `sprint_15b13_s02_i10_diversity_revision` is applied at production ver
 Fresh production readback passes the deployed-identical v11 evaluator for current I09 v2, I10 v2, I11 v1 and I12 v1, with no errors/warnings; the guide validator passes all four. The four append-only QA records carry automated provenance and null `run_by`; this was a fresh production-snapshot evaluator run, **not** an authenticated live Edge call or a human approval. Related-bank final version readback is unchanged. Production Vercel metadata and an independent HTTP 200 `release.json` read confirm implementation main.
 
 Current inventory: **S02 11 approved + I10 v2 awaiting review; Chapter II 39 approved + one awaiting review, 40 authored total**. The new misconception is draft and the existing T03 guide remains draft. I10 v1's approval remains in history. [Machine-readable evidence](evidence/sprint-15b13-s02-diversity-20261006.json).
+
+## Human-review closure
+
+Readback at 18:21:23 UTC on 2026-10-06 confirms I10 **v4** approved/published, the new misconception active and the edited guide published at runtime **v2** (authoring v4). The runtime snapshot matches the user's saved guide. All twelve S02 questions and all 40 authored Chapter II questions are approved. The final I10 prompt changes only the word **գնահատականն** to **պնդումն** relative to deployed v2; answer/options, stimulus and reasoning demand are unchanged. The other eleven S02 content projections are unchanged, so the whole-bank/source disposition above remains applicable.
+
+I10's newer version made the siblings' older QA family fingerprints stale. Four append-only technical QA records now pass for the current v2/v4/v1/v1 family state with explicit automated provenance; the edited guide passes all four variants. No user content, approval, history, model or release was rewritten by this refresh. The S02 practice/review review checkpoint is complete. Next is S03 source/whole-bank planning before its next batch. [Readback and QA evidence](evidence/sprint-15b13-s02-review-complete-20261006.json).
