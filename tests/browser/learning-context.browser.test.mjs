@@ -1,4 +1,58 @@
 import test,{before,after} from 'node:test';
+
+async function teacherFixture(t) {
+ const context=await browser.newContext();t.after(()=>context.close());
+ const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
+ const html=(await readFile(new URL('../../web/teacher.html',import.meta.url),'utf8')).replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</head>','<style>.hidden{display:none!important}</style></head>').replace('</body>','<script type="module" src="./teacher.js"></script></body>');
+ await page.addInitScript(()=>{
+  window.__teacherPending=[];window.__teacherListeners=[];
+  const units=[1,2].map(n=>({assignmentId:'assignment-a',curriculumReleaseId:'release-a',unitId:'unit-'+n,unitSequence:n,unitTitleHy:'Գլուխ '+n,releaseNumber:1}));
+  const dashboard=()=>({teacher:{id:'teacher-a',displayName:'Fixture teacher'},institutionalTeacher:true,institutionalOptions:[],totals:{classes:2,students:0,studentsNeedingSupport:0},classes:['a','b'].map(key=>({id:'class-'+key,name:'Դասարան '+key,isActive:true,schoolId:'school-a',assignmentId:'assignment-'+key,academicYear:'2026',gradeNumber:8,schoolName:'Դպրոց',subjectName:'Առարկա',studentCount:0,students:[],skills:[],unitOptions:units,selectedUnit:units[0],analyticsAvailable:true}))});
+  window.__client={auth:{getSession:async()=>({data:{session:{user:{id:'teacher-a'}}}}),onAuthStateChange:fn=>window.__teacherListeners.push(fn)},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'teacher',account_status:'active'}})})})}),functions:{invoke:async(name,{body})=>{
+   if(name==='get-teacher-dashboard'){
+    if(body.selection?.unitId==='unit-2')return await new Promise(resolve=>window.__teacherPending.push(()=>{const d=dashboard();d.classes[0].selectedUnit=d.classes[0].unitOptions[1];resolve({data:d});}));
+    return {data:dashboard()};
+   }
+   if(name==='manage-student-invitation')return {data:{invitations:[],joinCodes:[]}};
+   throw Error(name);
+  }}};
+ });
+ await page.route('**/*',async route=>{
+  const url=new URL(route.request().url());
+  if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
+  if(url.pathname==='/config.js')return route.fulfill({contentType:'text/javascript',body:'export const SUPABASE_URL="https://fixture.invalid";export const SUPABASE_PUBLISHABLE_KEY="public";'});
+  if(url.pathname==='/teacher.html')return route.fulfill({contentType:'text/html',body:html});
+  if(url.origin===origin&&/\.(mjs|js)$/.test(url.pathname))return route.fulfill({contentType:'text/javascript',body:await readFile(new URL('../../web'+url.pathname,import.meta.url),'utf8')});
+  return route.abort();
+ });
+ await page.goto(origin+'/teacher.html?view=class&class=class-a');
+ await page.waitForFunction(()=>document.getElementById('institutionalSelectedName').textContent==='Դասարան a');
+ return {page,errors};
+}
+test('a late teacher chapter response cannot overwrite a newly selected classroom',async t=>{
+ const {page,errors}=await teacherFixture(t);
+ await page.locator('#teacherUnitFilter').selectOption('release-a:unit-2');
+ await page.waitForFunction(()=>window.__teacherPending.length===1);
+ assert.equal(await page.locator('#matrixAnalyticsCard').isVisible(),false);
+ await page.evaluate(()=>document.querySelectorAll('#classList .teacher-class-button')[1].click());
+ assert.equal(await page.locator('#institutionalSelectedName').innerText(),'Դասարան b');
+ await page.evaluate(()=>window.__teacherPending.shift()());await page.waitForTimeout(60);
+ assert.equal(await page.locator('#institutionalSelectedName').innerText(),'Դասարան b');
+ assert.equal(await page.locator('#teacherUnitFilter').inputValue(),'release-a:unit-1');
+ assert.deepEqual(errors,[]);
+});
+test('teacher sign-out invalidates a pending chapter response and clears the evidence drawer',async t=>{
+ const {page,errors}=await teacherFixture(t);
+ await page.locator('#teacherUnitFilter').selectOption('release-a:unit-2');
+ await page.waitForFunction(()=>window.__teacherPending.length===1);
+ await page.evaluate(()=>{document.getElementById('studentDrawerContent').textContent='Private evidence';document.getElementById('studentDrawer').classList.remove('hidden');window.__teacherListeners.forEach(fn=>fn('SIGNED_OUT',null));});
+ await page.evaluate(()=>window.__teacherPending.shift()());await page.waitForTimeout(60);
+ assert.equal(await page.locator('#dashboardPanel').isVisible(),false);
+ assert.equal(await page.locator('#studentDrawer').isVisible(),false);
+ assert.equal(await page.locator('#studentDrawerContent').textContent(),'');
+ assert.deepEqual(errors,[]);
+});
+
 import assert from 'node:assert/strict';
 import {readFile} from 'node:fs/promises';
 import {chromium} from '@playwright/test';

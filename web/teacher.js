@@ -11,6 +11,7 @@ let selectedClassId = null;
 let rosterQuery = "";
 let matrixStudentFilter = "all";
 let dashboardLoadVersion = 0;
+let institutionalUnitLoadVersion = 0;
 let dashboardBootstrapPromise = null;
 let latestInstitutionalJoinCode = "";
 const MAX_STUDENT_INVITE_BATCH = 20;
@@ -388,6 +389,8 @@ async function renameSelectedClass(event, institutional) {
 }
 
 function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
+  institutionalUnitLoadVersion++;
+  closeDrawer();
   selectedClassId = id;
   rosterQuery = "";
   closeClassRenameEditors();
@@ -502,6 +505,11 @@ async function changeInstitutionalUnit(event) {
     `${unit.curriculumReleaseId}:${unit.unitId}` === event.target.value);
   if (!option || (option.unitId === klass.selectedUnit?.unitId
     && option.curriculumReleaseId === klass.selectedUnit?.curriculumReleaseId)) return;
+  const request = ++institutionalUnitLoadVersion;
+  const dashboardVersion = dashboardLoadVersion;
+  closeDrawer();
+  $("rosterAnalyticsCard").classList.add("hidden");
+  $("matrixAnalyticsCard").classList.add("hidden");
   event.target.disabled = true;
   setMessage("institutionalClassMessage", "Գլխի տվյալները բեռնվում են…");
   const { data, error } = await supabase.functions.invoke("get-teacher-dashboard", {
@@ -511,8 +519,11 @@ async function changeInstitutionalUnit(event) {
       unitId: option.unitId,
     } },
   });
+  if (request !== institutionalUnitLoadVersion || dashboardVersion !== dashboardLoadVersion
+    || selectedClassId !== klass.id || !dashboard) return;
   event.target.disabled = false;
   if (error || !data?.institutionalTeacher) {
+    selectClass(klass.id);
     setMessage("institutionalClassMessage", "Ընտրված գլխի տվյալները չբեռնվեցին։", true);
     event.target.value = `${klass.selectedUnit?.curriculumReleaseId}:${klass.selectedUnit?.unitId}`;
     return;
@@ -1049,6 +1060,7 @@ async function openStudent(studentId) {
 
 function closeDrawer() {
   ++drawerLoadVersion;
+  $("studentDrawerName").textContent = "";
   $("studentDrawerContent").replaceChildren();
   $("studentDrawer").classList.add("hidden");
   $("studentDrawer").setAttribute("aria-hidden", "true");
@@ -1290,6 +1302,7 @@ function bootstrapTeacherDashboard(session) {
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_OUT" || !session) {
     dashboardLoadVersion++;
+    closeDrawer();
     dashboard = null;
     $("dashboardPanel").classList.add("hidden");
     $("authPanel").classList.remove("hidden");
@@ -1302,5 +1315,4 @@ supabase.auth.onAuthStateChange((event, session) => {
 
 const { data: sessionData } = await supabase.auth.getSession();
 if (sessionData.session) await bootstrapTeacherDashboard(sessionData.session);
-
 
