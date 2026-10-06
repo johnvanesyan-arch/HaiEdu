@@ -2,7 +2,7 @@ import { escapeHtml as esc } from './learning-navigation.mjs';
 import { renderLearningStimulus } from './learning-stimulus.mjs';
 // Server-owned counts, option presentation, scoring, help and original bound policy.
 export function mountLearningPlayer({root,supabase,context,mode,targetSkillId,isCurrent,onComplete}) {
-  let live=true, busy=false, session, current, started, serial=0;
+  let live=true, busy=false, session, current, started, serial=0, policy;
   const valid = () => live && isCurrent();
   const invoke = async(name,body) => {
     const {data,error}=await supabase.functions.invoke(name,{body});
@@ -20,7 +20,7 @@ export function mountLearningPlayer({root,supabase,context,mode,targetSkillId,is
     const type=data.item.type;
     if(!['single_choice','true_false'].includes(type))throw new Error('Այս հարցի պատասխանման ձևը դեռ չի աջակցվում։');
     const options=type==='true_false'?[{option_key:'true',content_hy:'Ճիշտ'},{option_key:'false',content_hy:'Սխալ'}]:data.item.options;
-    root.innerHTML=`<section class="card"><h2>Հարց ${data.session.position}/${data.session.total}</h2><p>${esc(data.item.promptHy)}</p><div id="governedStimulus"></div><form><fieldset>${options.map(o=>`<label class="option"><input type="radio" name="answer" value="${esc(o.option_key)}" required> ${esc(o.content_hy)}</label>`).join('')}</fieldset><button type="submit">Ուղարկել պատասխանը</button></form>${data.remediation.available?'<button type="button" data-help>Օգնություն</button>':''}<div data-feedback role="status"></div><div data-help-content></div></section>`;
+    root.innerHTML=`<section class="card"><p>Սեսիայի սկզբնական կանոններ՝ ${policy.plannedQuestionCount} հարց${policy.minimumPercent == null ? "" : ` · անցողիկ շեմ՝ ${policy.minimumPercent}%`}${policy.hintsAllowed ? " · օգնությունը հասանելի է" : " · առանց օգնության"}</p><h2>Հարց ${data.session.position}/${data.session.total}</h2><p>${esc(data.item.promptHy)}</p><div id="governedStimulus"></div><form><fieldset>${options.map(o=>`<label class="option"><input type="radio" name="answer" value="${esc(o.option_key)}" required> ${esc(o.content_hy)}</label>`).join('')}</fieldset><button type="submit">Ուղարկել պատասխանը</button></form>${data.remediation.available?'<button type="button" data-help>Օգնություն</button>':''}<div data-feedback role="status"></div><div data-help-content></div></section>`;
     renderLearningStimulus(root.querySelector('#governedStimulus'),data.item.stimulus, context.extensionKey);
     root.querySelector('form').addEventListener('submit',event=>{event.preventDefault();void answer();});
     root.querySelector('[data-help]')?.addEventListener('click',()=>void help());
@@ -47,6 +47,6 @@ export function mountLearningPlayer({root,supabase,context,mode,targetSkillId,is
   }
   root.innerHTML='<p>Սեսիան բեռնվում է…</p>';
   invoke('start-learning-session',{enrollmentId:context.enrollmentId,curriculumReleaseId:context.curriculumReleaseId,unitId:context.unitId,mode,...(targetSkillId?{targetSkillId}:{})})
-    .then(data=>{session=data.session;return serve();}).catch(fail);
+    .then(async data=>{session=data.session;const status=await invoke('get-mastery-check-status',{sessionId:session.id});policy=status.assessmentPolicy;if(!policy)throw new Error('Սեսիայի սկզբնական կանոնները հասանելի չեն։');return serve();}).catch(fail);
   return ()=>{live=false;++serial;root.replaceChildren();};
 }
