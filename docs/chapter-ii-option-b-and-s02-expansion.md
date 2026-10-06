@@ -19,7 +19,7 @@ This decision approves the scope, lengths, passing rule and authoring budget. It
 
 ## First bounded authoring batch — 15B.13
 
-The new `PHY7-U02-S02-F02-PARTICLE-OBSERVATIONS` family supplies four **practice/review drafts**, I05–I08. They directly address mandatory outcome 1(1), using the prospective evidence-purpose contract. Existing S02 I01–I04, approvals, published guide and active misconception definitions remain intact. This batch does not complete the illustration audit of the 32 previously approved questions; any relevant image added to an older question must create and review a new version before chapter finalization.
+The new `PHY7-U02-S02-F02-PARTICLE-OBSERVATIONS` family supplies four **practice/review questions**, I05–I08, now approved at version 1. They directly address mandatory outcome 1(1), using the prospective evidence-purpose contract. Existing S02 I01–I04, approvals, published guide and active misconception definitions remain intact. This batch does not complete the illustration audit of the 32 previously approved questions; any relevant image added to an older question must create and review a new version before chapter finalization.
 
 | Item | Evidence purpose | Textbook illustration |
 |---|---|---|
@@ -30,21 +30,27 @@ The new `PHY7-U02-S02-F02-PARTICLE-OBSERVATIONS` family supplies four **practice
 
 Figures come from the user's *Physics 7 (2023)* PDF, SHA-256 `d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904`. Extracted PDF artwork retains original labels; explanatory captions are excluded. Armenian alternative text describes the apparatus and visible states without supplying the model explanation. Crop coordinates, source and asset hashes are in [media provenance](evidence/chapter-ii-s02-textbook-media-20261006.json). These are practice stimuli; reuse in protected assessment requires a separate exposure decision.
 
-Each wrong option maps to one of three existing active S02 misconception definitions. The four keys use A/B/C/D once, and runtime option shuffling stays enabled. A new template-specific draft remediation guide explains observation-to-model reasoning. The guide and questions await human review; external SME validation remains pending.
+Each wrong option maps to one of three existing active S02 misconception definitions. The four keys use A/B/C/D once, and runtime option shuffling stays enabled. A new template-specific draft remediation guide explains observation-to-model reasoning. The four questions now have recorded content-review approvals. The guide remains draft and awaits its separate human review; external SME validation remains pending.
 
 The shared reviewer preview now uses the learner's existing image/text stimulus renderer across subjects and grades. Unsupported or invalid media produces an Armenian message while preserving the question and options. Native Chromium tests cover images at desktop/mobile widths, replacement, invalid media, late item responses and logout. This is isolated browser verification with auth/network doubles, not an authenticated production content-review journey.
 
-After this batch, Chapter II has **36 authored questions: 32 approved and four new drafts**. The 192-question target leaves 156 questions un-authored, plus this batch's pending reviews. No pool membership, blueprint, assessment-policy/model binding or learner exposure is created. Chapter II remains draft.
+After the question approvals verified on 2026-10-06, Chapter II has **36 authored and approved questions**. The 192-question target leaves **156 questions un-authored**. The new template guide remains draft. No pool membership, blueprint, assessment-policy/model binding or learner exposure is created. Chapter II remains draft.
 
 ## Deployment and reviewer handoff
 
 [PR #140](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/140) merged as `8d37df4c487d0bec0ed88f8d7857c41eabf1024b`. PR and independent main CI passed all five jobs, including 1,222 Node and 35 native Chromium tests. Migration `sprint_15b13_s02_practice_expansion` is applied at production version `20261006140336`; its recorded source exactly matches the repository SQL. The actual production rollback probe preserved all 100 table hashes. After deployment, existing rows in all 14 appended tables and the other 86 complete tables are unchanged. Advisor findings are unchanged. [Evidence](evidence/sprint-15b13-option-b-20261006.json).
 
-Fresh production catalogue readback passed the actual deployed v11 QA evaluator for all four version-1 questions, with no errors or warnings. Four technical QA records carry explicit automated-system provenance; no human approval was recorded. This evaluator run used a read-only in-memory query adapter, not an authenticated live Edge call.
+Fresh production catalogue readback passed the actual deployed v11 QA evaluator for all four version-1 questions, with no errors or warnings. At the deployment checkpoint, four technical QA records carried explicit automated-system provenance and no human approval had yet been recorded. This evaluator run used a read-only in-memory query adapter, not an authenticated live Edge call.
 
-Review the new questions in the [review queue](https://www.haiedu.am/content-review.html), or open them directly:
+The approved questions remain available in the [review queue](https://www.haiedu.am/content-review.html), or open them directly:
 
 - [S02 I05](https://www.haiedu.am/content-item.html?id=9f3d884d-2e79-4183-8823-4395c9dea482)
 - [S02 I06](https://www.haiedu.am/content-item.html?id=75377509-1dd5-4c0a-b25e-413381325d4f)
 - [S02 I07](https://www.haiedu.am/content-item.html?id=348cfa21-26ca-4352-b7e7-1073408c0a9d)
 - [S02 I08](https://www.haiedu.am/content-item.html?id=cb09d26d-665e-4634-99ec-baf98ea06cb8)
+
+## Question approval checkpoint — 2026-10-06
+
+Read-only production verification at 15:18:59 UTC confirms all four version-1 questions are `published` / `approved`. Matching-version review records contain content approvals with a reviewer recorded, and latest QA passes without errors or warnings. Approval times were 14:21:49 UTC for I05, 15:03:09 for I06, 15:03:46 for I07 and 15:04:26 for I08. This is content approval, not external SME validation. [Readback evidence](evidence/sprint-15b13-question-approvals-20261006.json).
+
+The separate guide **Ինչպե՞ս կապել դիտումը մասնիկային մոդելի հետ** (`d4e0d836-88b8-4c78-a013-7aad68f4d857`) remains authoring version 1 draft, with no published runtime version. Review and publish it through the [remediation-guide workspace](https://www.haiedu.am/content-guides.html) to finish this batch's human review. Question approval does not imply guide approval. Chapter II's candidate release remains draft; this checkpoint performs no database or learner-release mutation.

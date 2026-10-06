@@ -1,0 +1,155 @@
+{
+  "schemaVersion": 1,
+  "checkpoint": "15B.13 S02 I05–I08 content approval",
+  "date": "2026-10-06",
+  "method": "Read-only production catalogue, current-version item review and QA readback; no database mutation or content approval performed by the agent.",
+  "sourceMainAtRead": "6719a48b93cb1ffdad2106444ecf6fc75754747b",
+  "snapshot": {
+    "guide": [
+      {
+        "id": "d4e0d836-88b8-4c78-a013-7aad68f4d857",
+        "status": "draft",
+        "title_hy": "Ինչպե՞ս կապել դիտումը մասնիկային մոդելի հետ",
+        "guide_version": 1
+      }
+    ],
+    "items": [
+      {
+        "id": "9f3d884d-2e79-4183-8823-4395c9dea482",
+        "code": "PHY7-U02-S02-I05",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "last_reviewed_at": "2026-10-06T14:21:49.977003+00:00",
+        "validation_state": "provisional_no_sme_review"
+      },
+      {
+        "id": "75377509-1dd5-4c0a-b25e-413381325d4f",
+        "code": "PHY7-U02-S02-I06",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "last_reviewed_at": "2026-10-06T15:03:09.944319+00:00",
+        "validation_state": "provisional_no_sme_review"
+      },
+      {
+        "id": "348cfa21-26ca-4352-b7e7-1073408c0a9d",
+        "code": "PHY7-U02-S02-I07",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "last_reviewed_at": "2026-10-06T15:03:46.026089+00:00",
+        "validation_state": "provisional_no_sme_review"
+      },
+      {
+        "id": "cb09d26d-665e-4634-99ec-baf98ea06cb8",
+        "code": "PHY7-U02-S02-I08",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "last_reviewed_at": "2026-10-06T15:04:26.168086+00:00",
+        "validation_state": "provisional_no_sme_review"
+      }
+    ],
+    "release": [
+      {
+        "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "status": "draft"
+      }
+    ],
+    "observed_at": "2026-10-06T15:18:59.413808+00:00",
+    "chapter_counts": [
+      {
+        "count": 36,
+        "status": "published",
+        "review_status": "approved"
+      }
+    ],
+    "guide_authoring": [
+      {
+        "created_at": "2026-10-06T14:03:36.096791+00:00",
+        "lifecycle_status": "draft",
+        "authoring_version": 1,
+        "published_runtime_version": null
+      }
+    ]
+  },
+  "reviewEvidence": {
+    "items": [
+      {
+        "code": "PHY7-U02-S02-I05",
+        "latest_qa": {
+          "errors": [],
+          "passed": true,
+          "warnings": [],
+          "created_at": "2026-10-06T14:04:38.185337+00:00"
+        },
+        "version_no": 1,
+        "latest_review": {
+          "decision": "approved",
+          "created_at": "2026-10-06T14:21:49.977003+00:00",
+          "review_type": "content",
+          "reviewer_recorded": true
+        }
+      },
+      {
+        "code": "PHY7-U02-S02-I06",
+        "latest_qa": {
+          "errors": [],
+          "passed": true,
+          "warnings": [],
+          "created_at": "2026-10-06T14:04:38.185337+00:00"
+        },
+        "version_no": 1,
+        "latest_review": {
+          "decision": "approved",
+          "created_at": "2026-10-06T15:03:09.944319+00:00",
+          "review_type": "content",
+          "reviewer_recorded": true
+        }
+      },
+      {
+        "code": "PHY7-U02-S02-I07",
+        "latest_qa": {
+          "errors": [],
+          "passed": true,
+          "warnings": [],
+          "created_at": "2026-10-06T14:04:38.185337+00:00"
+        },
+        "version_no": 1,
+        "latest_review": {
+          "decision": "approved",
+          "created_at": "2026-10-06T15:03:46.026089+00:00",
+          "review_type": "content",
+          "reviewer_recorded": true
+        }
+      },
+      {
+        "code": "PHY7-U02-S02-I08",
+        "latest_qa": {
+          "errors": [],
+          "passed": true,
+          "warnings": [],
+          "created_at": "2026-10-06T14:04:38.185337+00:00"
+        },
+        "version_no": 1,
+        "latest_review": {
+          "decision": "approved",
+          "created_at": "2026-10-06T15:04:26.168086+00:00",
+          "review_type": "content",
+          "reviewer_recorded": true
+        }
+      }
+    ]
+  },
+  "interpretation": {
+    "approvedChapterItems": 36,
+    "plannedChapterItems": 192,
+    "remainingUnauthoredItems": 156,
+    "questionBatchContentReviewComplete": true,
+    "newGuideReviewComplete": false,
+    "externalSmeReviewComplete": false,
+    "chapterReleaseAuthorized": false
+  },
+  "historicalDeploymentEvidence": "sprint-15b13-option-b-20261006.json"
+}
