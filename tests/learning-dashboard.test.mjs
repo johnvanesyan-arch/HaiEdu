@@ -52,6 +52,14 @@ test('read-only learner navigation and dashboards use the real governed context 
    await db.query("update assessment_blueprints set configuration_snapshot='{}' where curriculum_release_id=$1 and unit_id=$2",[id(501),id(scopes[0].unit)]);
    const r=await dashboard(db);assert.equal(r.modes.practice.status,'unconfigured');assert.equal(r.modes.practice.questions,undefined);assert.ok(r.skills.every(s=>s.ready===null));
  });
+ await run('registered legacy navigation reads immutable model counts without synthesizing a new policy',async()=>{
+   await db.query("update assessment_blueprints set configuration_snapshot=jsonb_build_object('targetQuestions',7) where curriculum_release_id=$1 and unit_id=$2",[id(501),id(511)]);
+   await db.query("update learning_model_configurations set configuration=configuration||$2 where id=$1",[id(611),JSON.stringify({diagnostic:{itemsPerSkill:2},masteryCheck:{itemsPerSkill:2,overallPassPercent:80,minimumCorrectPerSkill:1},practice:{plannedSessionLength:8}})]);
+   await db.query("insert into legacy_learning_blueprint_mappings(assessment_blueprint_id,curriculum_release_id,subject_program_id,unit_id,unit_code_snapshot,source_configuration_fingerprint,extension_key) select id,curriculum_release_id,$1,unit_id,'SYN-A-CH1','fixture','legacy-physics7-u01-v1' from assessment_blueprints where curriculum_release_id=$2 and unit_id=$3",[id(201),id(501),id(511)]);
+   const d=await dashboard(db);assert.equal(d.modes.diagnostic.status,'registered_legacy');assert.equal(d.modes.diagnostic.questions,4);assert.equal(d.modes.practice.questions,8);assert.equal(d.modes.chapter_review.questions,7);
+   assert.equal((await navigation(db)).contexts.find(c=>c.unitId===id(511)).extensionKey,'legacy-physics7-u01-v1');
+   assert.equal((await db.query('select count(*) n from assessment_policy_bindings')).rows[0].n,0);
+ });
  await run('client roles cannot execute either privileged read API or its helper',async()=>{
    for(const role of ['anon','authenticated'])for(const fn of ['service_student_learning_navigation(uuid,uuid)','service_student_learning_dashboard(uuid,uuid,uuid,uuid,uuid)','private.assert_student_dashboard_session(uuid,uuid)'])assert.equal((await db.query('select has_function_privilege($1,$2,\'execute\') allowed',[role,fn])).rows[0].allowed,false);
  });

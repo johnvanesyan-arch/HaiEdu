@@ -63,7 +63,7 @@ with database_uri() as uri:
         c.execute(setup['extension'])
         for q in setup['runtimeQueries']:fixture_query(c,q)
         c.execute(setup['migration']);c.execute(setup['dashboardFixtureSQL']);c.execute(setup['dashboardMigration'])
-        def dashboard(conn): return conn.execute('select service_student_learning_dashboard(%s,%s,%s,%s,%s)',[ident(10),ident(401),ident(371),ident(701),ident(101)]).fetchone()[0]
+        def dashboard(conn): return conn.execute('select service_student_learning_dashboard(%s,%s,%s,%s,%s)',[ident(10),ident(401),ident(371),ident(501),ident(511)]).fetchone()[0]
         def navigation(conn): return conn.execute('select service_student_learning_navigation(%s,%s)',[ident(10),ident(401)]).fetchone()[0]
         assert len(navigation(c)['contexts'])==3
         before=c.execute('select count(*) from learning_sessions').fetchone()[0]
