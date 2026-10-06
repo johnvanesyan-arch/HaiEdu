@@ -101,7 +101,7 @@ with database_uri() as uri:
         with psycopg.connect(uri) as a,psycopg.connect(uri) as b:
             first=begin(a,binding)
             with ThreadPoolExecutor(max_workers=1) as pool:
-                pending=pool.submit(lambda:begin(b,binding2));second=pending.result(timeout=5)
+                pending=pool.submit(lambda:begin(b,binding2,unit=1));second=pending.result(timeout=5)
             a.commit();b.commit()
             assert first['session']['unit_code']!=second['session']['unit_code']
         print('PASS: independent chapters do not conflict or share session identity',flush=True)
