@@ -260,6 +260,78 @@
     },
     "nextAttempt": "Fresh complete CI requested by this evidence-only commit; successful aggregate is still required before merge or production promotion.",
     "applicationFailureReported": false,
-    "gatesBypassed": false
+    "gatesBypassed": false,
+    "recoveryVerification": {
+      "observedAt": "2026-10-06T05:11:49.900Z",
+      "providerIncidentResolvedAt": "2026-10-05T22:49:00Z",
+      "providerIncidentUrl": "https://www.githubstatus.com/incidents/3q1yb5m7ltvb",
+      "deletedEarlierRuns": [
+        37362254459,
+        37363057772,
+        37365709936
+      ],
+      "deletionContext": "Owner cancelled then deleted runs #1189, #1190 and #1191; their original errors are preserved above.",
+      "workflow": {
+        "runId": 37368399063,
+        "runNumber": 1192,
+        "runAttempt": 2,
+        "headSha": "43ee0f954099b9ccdceb99de72e3acc10ed6419b",
+        "conclusion": "success",
+        "jobs": [
+          {
+            "id": 112117834853,
+            "name": "phase3-postgres-17",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 112117835019,
+            "name": "test",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 112117836231,
+            "name": "role-layout-browser",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 112117836897,
+            "name": "institutional-concurrency",
+            "status": "completed",
+            "conclusion": "success"
+          },
+          {
+            "id": 112118237441,
+            "name": "Platform release checks",
+            "status": "completed",
+            "conclusion": "success"
+          }
+        ]
+      },
+      "nodeTests": {
+        "tests": 1043,
+        "pass": 1043,
+        "fail": 0,
+        "skipped": 0
+      },
+      "browserTests": {
+        "tests": 22,
+        "pass": 22,
+        "fail": 0,
+        "skipped": 0,
+        "note": "Successful browser result from the same-head original attempt was retained by the failed-jobs rerun."
+      },
+      "productionGate": {
+        "checkedAt": "2026-10-06T05:10:50.651Z",
+        "check": "Platform release checks",
+        "source": "GitHub",
+        "environment": "Production",
+        "behavior": "Blocking",
+        "verification": "Vercel project settings: visible Blocking menu item has SVG checkmark; no settings changed."
+      },
+      "finalMergedMainVerification": "Still required after the evidence PR merge; do not bypass the aggregate or production revision guard."
+    }
   }
 }
