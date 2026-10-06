@@ -15,7 +15,7 @@ async function refresh() {
   if (!auth.session) { publish(); return; }
   const { data, error } = await supabase.functions.invoke('get-student-classes', { body: {} });
   if (request !== version) return;
-  if (error) { publish(); return; }
+  if (error) { publish({contexts:[],accessStatus:'unavailable'}); return; }
   const extension = document.body.dataset.learningExtension;
   if (extension) {
     let selection;
@@ -24,7 +24,7 @@ async function refresh() {
     if (!context || context.extensionKey !== extension) { publish(); location.replace('./index.html?course=required'); return; }
   }
   publish(data);
-  } catch { if(request === version)publish(); }
+  } catch { if(request === version)publish({contexts:[],accessStatus:'unavailable'}); }
 }
 supabase.auth.onAuthStateChange((_event, session) => {
   ++version;

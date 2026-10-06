@@ -55,6 +55,7 @@ function buildReviewSummary(studentSessions: any[], studentAttempts: any[], revi
   let lifecycleState = "evidence_in_progress";
   if (latestMastery?.assessment_result === "passed") lifecycleState = "mastery_passed";
   else if (latestMastery?.assessment_result === "failed" && maximumAttempts !== null && masterySessions.length >= maximumAttempts) lifecycleState = "mastery_failed_final";
+  else if (latestMastery?.assessment_result === "failed" && maximumAttempts === null) lifecycleState = "lifecycle_unavailable";
   else if (latestMastery?.assessment_result === "failed") lifecycleState = qualifyingAfterLatestMastery
     ? `mastery_retry_${masterySessions.length + 1}_ready`
     : `review_required_attempt_${masterySessions.length + 1}`;
@@ -200,6 +201,7 @@ export function buildExactInstitutionalStudentAnalytics(args: {
   const recentAttempts = attemptsDescending.slice(0, 20);
   const recentCorrect = recentAttempts.filter((row) => row.correct === true).length;
 
+  const knownWeak = weak.find(row => ["needs_support","developing"].includes(row.band));
   let intervention = { action: "monitor", skillId: null as string | null, code: null as string | null, messageHy: "Շարունակել վերահսկել առաջընթացը։" };
   if (activeSession) intervention = { action: "finish_active_session", skillId: null, code: null, messageHy: "Աշակերտն ունի չավարտված սեսիա. նախ ավարտել ընթացիկ աշխատանքը։" };
   else if (["review_required_attempt_2", "review_required_attempt_3"].includes(review?.lifecycleState)) intervention = { action: "required_chapter_review", skillId: null, code: null, messageHy: "Առաջնահերթ քայլ՝ ավարտել պահանջվող Գլխի կրկնությունը։" };
@@ -207,7 +209,7 @@ export function buildExactInstitutionalStudentAnalytics(args: {
   else if (review?.lifecycleState === "mastery_failed_final") intervention = { action: "review_chapter", skillId: null, code: null, messageHy: "Յուրացման թույլատրված փորձերն ավարտված են. շարունակել Գլխի կրկնությունը։" };
   else if (review?.lifecycleState === "mastery_passed" || passedMastery) intervention = { action: "unit_complete", skillId: null, code: null, messageHy: "Գլուխն ավարտված է․ յուրացման ստուգումն անցած է։" };
   else if (!latestDiagnostic) intervention = { action: "take_diagnostic", skillId: null, code: null, messageHy: "Առաջին քայլ՝ անցնել ընտրված գլխի ախտորոշիչը։" };
-  else if (weak.some(row => ["needs_support","developing"].includes(row.band))) intervention = { action: "practice_skill", skillId: weak[0].skillId, code: weak[0].code, messageHy: `Առաջարկվող միջամտություն՝ աշխատել ${weak[0].code} հմտության վրա։` };
+  else if (knownWeak) intervention = { action: "practice_skill", skillId: knownWeak.skillId, code: knownWeak.code, messageHy: `Առաջարկվող միջամտություն՝ աշխատել ${knownWeak.code} հմտության վրա։` };
   else intervention = { action: "monitor", skillId: null, code: null, messageHy: "Համեմատեք ընտրված գլխի արդյունքները և ուսումնական ապացույցները։ Յուրացման ստուգման հասանելիությունը որոշվում է ուսումնական կանոններով։" };
 
   const sessionsByMode = Object.fromEntries(["diagnostic", "practice", "chapter_review", "mastery_check"].map((mode) => {
