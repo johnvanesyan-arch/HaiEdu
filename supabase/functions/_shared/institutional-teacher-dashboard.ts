@@ -15,6 +15,22 @@ function requireRows(result: any): any[] {
   return result.data ?? [];
 }
 
+// Independent class reads share no learner evidence. Bound concurrency so a
+// teacher's historical classrooms do not serialize the entire dashboard.
+export async function mapTeacherDashboardAssignments<T, R>(rows: T[], read: (row: T) => Promise<R>): Promise<R[]> {
+  const result: R[] = new Array(rows.length);
+  let next = 0;
+  const workers = await Promise.allSettled(Array.from({ length: Math.min(4, rows.length) }, async () => {
+    while (next < rows.length) {
+      const index = next++;
+      result[index] = await read(rows[index]);
+    }
+  }));
+  const failed = workers.find(worker => worker.status === "rejected");
+  if (failed?.status === "rejected") throw failed.reason;
+  return result;
+}
+
 async function rowsByIds(admin:any,table:string,columns:string,column:string,ids:string[],filter=(query:any)=>query) {
   const data:any[]=[];
   for(let offset=0;offset<ids.length;offset+=100) {
@@ -146,8 +162,7 @@ export async function getInstitutionalTeacherDashboard(
     }
   }
 
-  const classPayload: any[] = [];
-  for (const assignment of assignments) {
+  const classPayload: any[] = (await mapTeacherDashboardAssignments(assignments, async (assignment) => {
     const membership = memberships.find((candidate) => candidate.id === assignment.teacher_membership_id);
     const klass = classById.get(assignment.class_id);
     const year = yearById.get(assignment.academic_year_id);
@@ -155,8 +170,8 @@ export async function getInstitutionalTeacherDashboard(
     if (!membership || !klass || !year || !programme ||
       klass.school_id !== membership.school_id || assignment.school_id !== membership.school_id ||
       klass.academic_year_id !== assignment.academic_year_id ||
-      klass.subject_id !== programme.subject_id || klass.grade_id !== programme.grade_id) continue;
-    if (!grants.some(grant=>grant.teacher_membership_id===membership.id && grant.school_id===assignment.school_id && grant.subject_id===programme.subject_id)) continue;
+      klass.subject_id !== programme.subject_id || klass.grade_id !== programme.grade_id) return null;
+    if (!grants.some(grant=>grant.teacher_membership_id===membership.id && grant.school_id===assignment.school_id && grant.subject_id===programme.subject_id)) return null;
     const yearIsActive = year.status === "active" && year.starts_on <= today && today <= year.ends_on;
     const classEnrollments = enrollments.filter((enrollment) =>
       enrollment.class_id === klass.id && enrollment.school_id === assignment.school_id
@@ -205,7 +220,7 @@ export async function getInstitutionalTeacherDashboard(
     }
     const needingSupport = analytics.students.filter((student: any) =>
       student.weakSkills?.some((skill: any) => skill.band === "needs_support")).length;
-    classPayload.push({
+    return {
       id: klass.id, name: klass.name, isActive: klass.is_active && yearIsActive && activeAt(assignment,now),
       schoolId: assignment.school_id, assignmentId: assignment.id,
       subjectProgramId: assignment.subject_program_id, academicYearId: assignment.academic_year_id,
@@ -217,8 +232,8 @@ export async function getInstitutionalTeacherDashboard(
       needingSupport, students: analytics.students,
       skills: analytics.skills, unitOptions, selectedUnit, academicContext,
       analyticsAvailable: Boolean(academicContext),
-    });
-  }
+    };
+  })).filter(Boolean);
   if (requestedSelection && !classPayload.some(klass=>klass.assignmentId===requestedSelection.assignmentId)) throw new Error("academic_context_unavailable");
   const selectedClass = requestedSelection
     ? classPayload.find((klass) => klass.assignmentId === requestedSelection.assignmentId)

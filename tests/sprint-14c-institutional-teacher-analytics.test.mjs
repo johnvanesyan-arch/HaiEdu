@@ -1,7 +1,8 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
-import { buildExactInstitutionalStudentAnalytics } from '../supabase/functions/_shared/institutional-teacher-analytics.ts';
+import { buildExactInstitutionalStudentAnalytics, loadExactInstitutionalClassAnalytics } from '../supabase/functions/_shared/institutional-teacher-analytics.ts';
+import { mapTeacherDashboardAssignments } from '../supabase/functions/_shared/institutional-teacher-dashboard.ts';
 
 const context = {
   assignmentId: 'assignment-a', classId: 'class-a', schoolId: 'school-a',
@@ -15,6 +16,39 @@ const skills = [
   { id: 'skill-a', code: 'PHY7-U01-S01', nameHy: 'Հմտություն 1', layer: 'core' },
   { id: 'skill-b', code: 'PHY7-U01-S02', nameHy: 'Հմտություն 2', layer: 'core' },
 ];
+
+test('many current and historical classroom reads overlap with bounded concurrency and stable identity order', async () => {
+  const classes = Array.from({length: 19}, (_, index) => ({id: `class-${index}`}));
+  let running = 0, maximum = 0;
+  const result = await mapTeacherDashboardAssignments(classes, async klass => {
+    maximum = Math.max(maximum, ++running);
+    await new Promise(resolve => setTimeout(resolve, 2));
+    running--;
+    return klass.id;
+  });
+  assert.ok(maximum > 1, 'independent classroom reads must overlap');
+  assert.ok(maximum <= 4, 'request concurrency stays bounded');
+  assert.equal(running, 0);
+  assert.deepEqual(result, classes.map(klass => klass.id));
+});
+
+test('a denied classroom read fails the dashboard after all pending readers settle', async () => {
+  let running = 0;
+  await assert.rejects(mapTeacherDashboardAssignments([0,1,2,3,4,5], async index => {
+    running++;
+    await new Promise(resolve => setTimeout(resolve, 2));
+    running--;
+    if (index === 1) throw new Error('academic_context_unavailable');
+    return index;
+  }), /academic_context_unavailable/);
+  assert.equal(running, 0);
+});
+
+test('empty current and historical classrooms load no question bank or learner evidence', async () => {
+  const admin = {from() {throw new Error('empty classroom must not read evidence');}};
+  const result = await loadExactInstitutionalClassAnalytics(admin, context, []);
+  assert.deepEqual(result, {skills: [], students: []});
+});
 
 test('class analytics replay only the exact attempts supplied for the authorized context', () => {
   const sessions = [
