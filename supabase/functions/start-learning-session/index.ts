@@ -1,3 +1,4 @@
+import { routeGovernedLearning } from "../_shared/governed-learning-runtime.mjs";
 import { getPracticeDiagnosticBlock } from "../_shared/practice-diagnostic-gate.ts";
 import { chooseInitialDiagnosticForm } from "../_shared/initial-diagnostic.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
@@ -85,6 +86,9 @@ Deno.serve(async (req) => {
   if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
   const studentId = userData.user.id;
 
+  const governed = await routeGovernedLearning({ admin, studentId: studentId, token, request: req, operation: "start" });
+  if (governed) return json(governed.body, governed.status);
+  // Registered legacy-physics7-u01-v1 adapter; governed requests never enter it.
   if (!(await hasPhysics7Access(admin, studentId))) {
     return json({
       error: "course_access_required",
@@ -102,6 +106,7 @@ Deno.serve(async (req) => {
   if (body.mode === "diagnostic") {
     const { data: baseline, error: baselineError } = await admin.from("learning_sessions")
       .select("id").eq("student_id", studentId).eq("unit_code", UNIT_CODE)
+      .is("assessment_policy_binding_id", null)
       .eq("mode", "diagnostic").eq("status", "completed")
       .order("completed_at", { ascending: true }).order("id", { ascending: true }).limit(1).maybeSingle();
     if (baselineError) return json({ error: "diagnostic_history_failed" }, 503);
@@ -116,6 +121,7 @@ Deno.serve(async (req) => {
     .select("id, mode, status, target_skill_id, planned_item_count, answered_count, correct_count, curriculum_release_id, assessment_blueprint_id, provenance_status")
     .eq("student_id", studentId)
     .eq("unit_code", UNIT_CODE)
+      .is("assessment_policy_binding_id", null)
     .eq("status", "active")
     .order("created_at", { ascending: false });
   if (activeError) return json({ error: "active_session_query_failed" }, 503);
@@ -272,6 +278,7 @@ Deno.serve(async (req) => {
       .eq("student_id", studentId)
       .eq("curriculum_release_id", curriculumContext.releaseId)
       .eq("unit_code", UNIT_CODE)
+      .is("assessment_policy_binding_id", null)
       .maybeSingle();
     if (lifecycleError || !lifecycle) return json({ error: "chapter_review_not_available" }, 409);
 
@@ -289,6 +296,7 @@ Deno.serve(async (req) => {
       .eq("student_id", studentId)
       .eq("curriculum_release_id", curriculumContext.releaseId)
       .eq("unit_code", UNIT_CODE)
+      .is("assessment_policy_binding_id", null)
       .eq("mode", "mastery_check")
       .eq("status", "completed")
       .order("completed_at", { ascending: false })
@@ -492,6 +500,7 @@ Deno.serve(async (req) => {
       .select("id, assessment_result, completed_at, metadata")
       .eq("student_id", studentId)
       .eq("unit_code", UNIT_CODE)
+      .is("assessment_policy_binding_id", null)
       .eq("mode", "mastery_check")
       .eq("status", "completed")
       .order("completed_at", { ascending: false });
@@ -505,6 +514,7 @@ Deno.serve(async (req) => {
       .eq("student_id", studentId)
       .eq("curriculum_release_id", curriculumContext.releaseId)
       .eq("unit_code", UNIT_CODE)
+      .is("assessment_policy_binding_id", null)
       .maybeSingle();
     if (chapterStateError) return json({ error: "mastery_lifecycle_unavailable" }, 500);
 

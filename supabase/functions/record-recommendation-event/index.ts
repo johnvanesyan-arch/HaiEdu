@@ -1,3 +1,4 @@
+import { verifiedSessionClaim } from "../_shared/governed-learning-runtime.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 
@@ -10,6 +11,7 @@ const allowedSurfaces = new Set([
   "home",
   "progress",
   "physics_course",
+  "learning_course",
   "practice_auto_target",
   "practice_feedback",
   "diagnostic_result",
@@ -76,6 +78,16 @@ Deno.serve(async (req) => {
     .maybeSingle();
 
   if (issuedError || !issued) return json({ error: "recommendation_not_found" }, 404);
+
+  if (issued.state_snapshot?.assessmentPolicyBindingId) {
+    const { data, error } = await admin.rpc("service_record_governed_recommendation_event", {
+      p_student_id: studentId, p_auth_session_id: verifiedSessionClaim(token),
+      p_instance_id: body.recommendationInstanceId, p_event_type: body.eventType,
+      p_surface: body.surface, p_started_session_id: null,
+    });
+    if (error || !data) return json({ error: "recommendation_context_unavailable" }, 403);
+    return json({ recorded: true });
+  }
 
   const { error: insertError } = await admin.from("recommendation_events").insert({
     recommendation_instance_id: issued.recommendation_instance_id,

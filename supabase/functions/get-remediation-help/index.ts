@@ -1,3 +1,4 @@
+import { routeGovernedLearning } from "../_shared/governed-learning-runtime.mjs";
 import { getPracticeDiagnosticBlock } from "../_shared/practice-diagnostic-gate.ts";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
@@ -50,6 +51,9 @@ Deno.serve(async (req) => {
   if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
   const studentId = userData.user.id;
 
+  const governed = await routeGovernedLearning({ admin, studentId: studentId, token, request: req, operation: "help" });
+  if (governed) return json(governed.body, governed.status);
+  // Registered legacy-physics7-u01-v1 adapter; governed requests never enter it.
   if (!(await hasPhysics7Access(admin, studentId))) {
     return json({ error: "course_access_required", courseKey: "physics:7" }, 403);
   }
@@ -76,6 +80,8 @@ Deno.serve(async (req) => {
       .select("id, student_id, unit_code, mode, status, started_at")
       .eq("student_id", studentId)
       .in("mode", ["practice", "chapter_review"])
+      .eq("unit_code", "PHY7-U01")
+      .is("assessment_policy_binding_id", null)
       .eq("status", "active")
       .order("started_at", { ascending: false })
       .limit(1);

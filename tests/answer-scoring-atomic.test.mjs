@@ -1,3 +1,4 @@
+import { routeGovernedLearning } from '../supabase/functions/_shared/governed-learning-runtime.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -86,7 +87,7 @@ test('legacy sessionless writes use the same accumulator and retain the diagnost
 });
 test('actual answer handler returns committed progress and telemetry and retains Auth/course guards',async t=>{
  const db=await fixture(t),events=[];
- const bindings={gradeAnswer,recommendNext,getPracticeDiagnosticBlock,hasPhysics7Access:async()=>true,issueRecommendationEvent:async e=>{events.push(e);return 'fixture-event';}};
+ const bindings={routeGovernedLearning,gradeAnswer,recommendNext,getPracticeDiagnosticBlock,hasPhysics7Access:async()=>true,issueRecommendationEvent:async e=>{events.push(e);return 'fixture-event';}};
  const api=await endpoint(db,'submit-answer',bindings);
  const body=n=>({sessionId:id(401),sessionItemId:id(600+n),itemId:id(500+n),response:{value:n===1?5:0}});
  const results=await Promise.all([api.call(body(1)),api.call(body(2))]);assert.ok(results.every(r=>r.status===200));

@@ -1,3 +1,4 @@
+import { routeGovernedLearning } from '../supabase/functions/_shared/governed-learning-runtime.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {readFileSync} from 'node:fs';
@@ -18,7 +19,7 @@ function handler(name,mode='practice',historyError=false){
  const source=readFileSync(new URL(`../supabase/functions/${name}/index.ts`,import.meta.url),'utf8').replace(/^import\s[\s\S]*?from\s+['"][^'"]+['"];?\s*/gm,'');
  const js=ts.transpileModule(source,{compilerOptions:{target:ts.ScriptTarget.ES2022,module:ts.ModuleKind.ESNext}}).outputText;
  vm.runInNewContext(js,{Deno:{env:{get:()=> 'test'},serve:fn=>serve=fn},createClient:()=>admin,
-  hasActiveLiveSession:async()=>true,hasPhysics7Access:async()=>true,getPracticeDiagnosticBlock,Response,console});
+  routeGovernedLearning,hasActiveLiveSession:async()=>true,hasPhysics7Access:async()=>true,getPracticeDiagnosticBlock,Response,console});
  return {serve,tables};
 }
 for(const name of ['start-learning-session','get-session-item','submit-answer','get-remediation-help']){
