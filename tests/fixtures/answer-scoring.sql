@@ -59,3 +59,10 @@ insert into items select ('60000000-0000-4000-8000-'||lpad((500+n)::text,12,'0')
 insert into item_answer_keys select id,'{"value":5}',0.01,null,null,null from items;
 insert into item_curriculum_scopes select id,case when right(id::text,3)::integer<=510 then '60000000-0000-4000-8000-000000000001'::uuid else '60000000-0000-4000-8000-000000000002'::uuid end,true from items;
 insert into learning_session_items(id,session_id,item_id,skill_id,ordinal) select ('60000000-0000-4000-8000-'||lpad((600+n)::text,12,'0'))::uuid,case when n<=10 then '60000000-0000-4000-8000-000000000401'::uuid else '60000000-0000-4000-8000-000000000402'::uuid end,('60000000-0000-4000-8000-'||lpad((500+n)::text,12,'0'))::uuid,'60000000-0000-4000-8000-000000000050'::uuid,n from generate_series(1,20) n;
+
+-- Explicit synthetic legacy catalogue used by the current API routing test.
+alter table public.learning_sessions add column assessment_policy_binding_id uuid;
+create table public.legacy_learning_blueprint_mappings(assessment_blueprint_id uuid primary key,curriculum_release_id uuid,unit_code_snapshot text);
+insert into public.legacy_learning_blueprint_mappings values
+ ('60000000-0000-4000-8000-000000000301','60000000-0000-4000-8000-000000000201','QA-A-U01'),
+ ('60000000-0000-4000-8000-000000000302','60000000-0000-4000-8000-000000000202','QA-B-U01');

@@ -12,6 +12,10 @@ export async function scoringDatabase({baseline=false}={}) {
   const old=readFileSync('supabase/migrations/0039_sprint_11k_curriculum_releases_and_evidence_provenance.sql','utf8');
   await db.exec(old.slice(old.indexOf('create or replace function public.record_session_graded_attempt('),old.indexOf('-- Record and verify the current pilot gates.')));
   if(!baseline) await db.exec(readFileSync(migrationPath,'utf8'));
+  const runtime=readFileSync('supabase/migrations/'+readdirSync('supabase/migrations').find(n=>n.endsWith('_sprint_15b12c_learning_runtime.sql')),'utf8');
+  const start=runtime.indexOf('create function public.service_is_registered_legacy_learning_session(');
+  await db.exec(runtime.slice(start,runtime.indexOf('-- Governed branch',start)));
+
   return db;
  } catch(error){await db.close();throw error;}
 }

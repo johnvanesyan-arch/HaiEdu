@@ -1,3 +1,4 @@
+import { routeGovernedLearning } from '../supabase/functions/_shared/governed-learning-runtime.mjs';
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
@@ -69,7 +70,7 @@ async function endpoint(name, db) {
   let handler;
   const source = (await read(`supabase/functions/${name}/index.ts`)).replace(/^import .*;\n/gm, '');
   vm.runInNewContext(`${accessSource}\n${authSource}\n${stripTypeScriptTypes(source)}`, {
-    createClient: () => db, resolveActiveCurriculumRelease: async () => 'release',
+    routeGovernedLearning, createClient: () => db, resolveActiveCurriculumRelease: async () => 'release',
     Deno: { env: { get: () => 'configured' }, serve: fn => { handler = fn; } },
     Response, atob, console,
   });

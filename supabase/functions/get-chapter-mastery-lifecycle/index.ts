@@ -1,3 +1,5 @@
+import { resolveCurriculumBlueprint } from "../_shared/curriculum-release.ts";
+import { routeGovernedLearning } from "../_shared/governed-learning-runtime.mjs";
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { hasPhysics7Access } from "../_shared/course-access.ts";
@@ -9,21 +11,7 @@ const corsHeaders = {
 const UNIT_CODE = "PHY7-U01";
 
 async function resolveCurriculumRelease(admin: any) {
-  const { data: releaseId, error: releaseError } = await admin.rpc("resolve_active_curriculum_release", {
-    p_unit_code: UNIT_CODE,
-  });
-  if (releaseError || !releaseId) throw new Error("release_unavailable");
-  const { data: blueprint, error: blueprintError } = await admin
-    .from("assessment_blueprints")
-    .select("id")
-    .eq("curriculum_release_id", releaseId)
-    .eq("purpose", "mastery_check")
-    .in("status", ["pilot", "production"])
-    .order("published_at", { ascending: false })
-    .limit(1)
-    .maybeSingle();
-  if (blueprintError || !blueprint) throw new Error("blueprint_unavailable");
-  return String(releaseId);
+  return (await resolveCurriculumBlueprint(admin, UNIT_CODE, "mastery_check")).releaseId;
 }
 
 function json(body: unknown, status = 200) {
@@ -48,6 +36,9 @@ Deno.serve(async (req) => {
   const { data: userData, error: userError } = await admin.auth.getUser(token);
   if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
   if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
+  const governed = await routeGovernedLearning({ admin, studentId: userData.user.id, token, request: req, operation: "lifecycle" });
+  if (governed) return json(governed.body, governed.status);
+  // Registered legacy-physics7-u01-v1 adapter; governed requests never enter it.
   if (!(await hasPhysics7Access(admin, userData.user.id))) return json({ error: "course_access_required" }, 403);
 
   let curriculum;
