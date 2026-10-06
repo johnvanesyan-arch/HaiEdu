@@ -15,6 +15,18 @@ function requireRows(result: any): any[] {
   return result.data ?? [];
 }
 
+async function rowsByIds(admin:any,table:string,columns:string,column:string,ids:string[],filter=(query:any)=>query) {
+  const data:any[]=[];
+  for(let offset=0;offset<ids.length;offset+=100) {
+    const batch=ids.slice(offset,offset+100);
+    for(let from=0;;from+=1000) {
+      const page=requireRows(await filter(admin.from(table).select(columns).in(column,batch)).order("id").range(from,from+999));
+      data.push(...page);if(page.length<1000)break;
+    }
+  }
+  return {data,error:null};
+}
+
 function releaseIsCurrent(release: any, today: string): boolean {
   return ["pilot", "production"].includes(release.status)
     && (!release.effective_from || release.effective_from <= today)
@@ -49,14 +61,12 @@ export async function getInstitutionalTeacherDashboard(
       .select("id,school_id,label,starts_on,ends_on,status")
       .in("school_id", schoolIds),
     admin.from("schools").select("id,name").in("id", schoolIds),
-    admin.from("teacher_assignments")
-      .select("id,school_id,academic_year_id,class_id,teacher_membership_id,subject_program_id,status,valid_from,valid_to")
-      .in("teacher_membership_id", membershipIds).eq("status", "active"),
+    rowsByIds(admin,"teacher_assignments","id,school_id,academic_year_id,class_id,teacher_membership_id,subject_program_id,status,valid_from,valid_to","teacher_membership_id",membershipIds,q=>q.in("status",["active","ended"])),
   ]);
   const grants = requireRows(grantsResult).filter((grant) => activeAt(grant, now));
   const years = requireRows(yearsResult);
   const schools = requireRows(schoolsResult);
-  const assignments = requireRows(assignmentsResult).filter((assignment) => activeAt(assignment, now));
+  const assignments = requireRows(assignmentsResult).filter((assignment) => activeAt(assignment, now) || (assignment.status === "ended" && Date.parse(assignment.valid_from) <= now));
   const subjectIds = [...new Set(grants.map((grant) => grant.subject_id))];
   const classIds = [...new Set(assignments.map((assignment) => assignment.class_id))];
 
@@ -67,21 +77,17 @@ export async function getInstitutionalTeacherDashboard(
       : Promise.resolve({ data: [] }),
     subjectIds.length ? admin.from("subjects")
       .select("id,name_hy,status").in("id", subjectIds) : Promise.resolve({ data: [] }),
-    classIds.length ? admin.from("classes")
-      .select("id,school_id,academic_year_id,teacher_id,name,is_active,subject_id,grade_id")
-      .in("id", classIds) : Promise.resolve({ data: [] }),
-    classIds.length ? admin.from("institutional_class_enrollments")
-      .select("id,school_id,academic_year_id,class_id,student_id,teacher_assignment_id,subject_program_id,status,valid_from,valid_to")
-      .in("class_id", classIds).eq("status", "active") : Promise.resolve({ data: [] }),
+    classIds.length ? rowsByIds(admin,"classes","id,school_id,academic_year_id,teacher_id,name,is_active,subject_id,grade_id","id",classIds) : Promise.resolve({ data: [] }),
+    classIds.length ? rowsByIds(admin,"institutional_class_enrollments","id,school_id,academic_year_id,class_id,student_id,student_membership_id,teacher_assignment_id,subject_program_id,status,valid_from,valid_to","class_id",classIds,q=>q.in("status",["active","ended"])) : Promise.resolve({ data: [] }),
   ]);
   const programmes = requireRows(programmesResult);
   const subjects = requireRows(subjectsResult);
   const classes = requireRows(classesResult);
-  const enrollments = requireRows(enrollmentsResult).filter((enrollment) => activeAt(enrollment, now));
+  const enrollments = requireRows(enrollmentsResult).filter((enrollment) => activeAt(enrollment, now) || (enrollment.status === "ended" && Date.parse(enrollment.valid_from) <= now));
   const studentIds = [...new Set(enrollments.map((enrollment) => enrollment.student_id))];
+  const studentMemberships = studentIds.length ? requireRows(await rowsByIds(admin,"institutional_memberships","id,person_id,school_id,status,valid_from,valid_to","person_id",studentIds,q=>q.eq("role","student"))) : [];
   const studentProfiles = studentIds.length
-    ? requireRows(await admin.from("profiles")
-      .select("id,display_name,account_status").in("id", studentIds))
+    ? requireRows(await rowsByIds(admin,"profiles","id,display_name,account_status,role","id",studentIds,q=>q.eq("role","student")))
     : [];
   const gradeIds = [...new Set(programmes.map((programme) => programme.grade_id))];
   const grades = gradeIds.length
@@ -91,8 +97,7 @@ export async function getInstitutionalTeacherDashboard(
   const releases = programmeIds.length
     ? requireRows(await admin.from("curriculum_releases")
       .select("id,subject_program_id,status,release_number,effective_from,effective_to,activated_at,created_at")
-      .in("subject_program_id", programmeIds).in("status", ["pilot", "production"]))
-      .filter((release) => releaseIsCurrent(release, today))
+      .in("subject_program_id", programmeIds).in("status", ["pilot", "production","retired"]))
     : [];
   const releaseIds = releases.map((release) => release.id);
   const units = programmeIds.length
@@ -149,15 +154,18 @@ export async function getInstitutionalTeacherDashboard(
     const programme = programmeById.get(assignment.subject_program_id);
     if (!membership || !klass || !year || !programme ||
       klass.school_id !== membership.school_id || assignment.school_id !== membership.school_id ||
-      klass.academic_year_id !== assignment.academic_year_id || klass.teacher_id !== teacherId ||
+      klass.academic_year_id !== assignment.academic_year_id ||
       klass.subject_id !== programme.subject_id || klass.grade_id !== programme.grade_id) continue;
+    if (!grants.some(grant=>grant.teacher_membership_id===membership.id && grant.school_id===assignment.school_id && grant.subject_id===programme.subject_id)) continue;
     const yearIsActive = year.status === "active" && year.starts_on <= today && today <= year.ends_on;
     const classEnrollments = enrollments.filter((enrollment) =>
       enrollment.class_id === klass.id && enrollment.school_id === assignment.school_id
       && enrollment.academic_year_id === assignment.academic_year_id
       && enrollment.teacher_assignment_id === assignment.id
       && enrollment.subject_program_id === assignment.subject_program_id
-      && studentById.get(enrollment.student_id)?.account_status === "active");
+      && studentById.get(enrollment.student_id)?.account_status === "active"
+      && studentMemberships.some(member=>member.id===enrollment.student_membership_id && member.person_id===enrollment.student_id && member.school_id===assignment.school_id &&
+        (yearIsActive && activeAt(assignment,now) ? activeAt(member,now) : ["active","ended"].includes(member.status) && member.valid_from.slice(0,10)<=year.ends_on && (!member.valid_to || member.valid_to.slice(0,10)>=year.starts_on))));
     const students = classEnrollments.map((enrollment) => ({
       id: enrollment.student_id,
       enrollmentId: enrollment.id,
@@ -176,29 +184,29 @@ export async function getInstitutionalTeacherDashboard(
         unitId: unit.id, unitCode: link.unit_code_snapshot,
         unitTitleHy: link.title_hy_snapshot || unit.title_hy,
         unitSequence: Number(link.sequence_order_snapshot),
-        releaseNumber: Number(release.release_number ?? 0),
+        releaseNumber: Number(release.release_number), readOnlyHistory: !releaseIsCurrent(release,today),
       };
-      const existing = unitOptionsById.get(unit.id);
-      if (!existing || candidate.releaseNumber > existing.releaseNumber) unitOptionsById.set(unit.id, candidate);
+      unitOptionsById.set(release.id+":"+unit.id, candidate);
     }
     const unitOptions = [...unitOptionsById.values()]
-      .sort((a, b) => a.unitSequence - b.unitSequence || b.releaseNumber - a.releaseNumber)
-      .map(({ releaseNumber: _releaseNumber, ...option }) => option);
+      .sort((a, b) => Number(a.readOnlyHistory)-Number(b.readOnlyHistory) || a.unitSequence - b.unitSequence || b.releaseNumber - a.releaseNumber);
     const requested = requestedSelection?.assignmentId === assignment.id
       ? unitOptions.find((option) => option.curriculumReleaseId === requestedSelection.curriculumReleaseId
         && option.unitId === requestedSelection.unitId) ?? null
       : null;
+    if (requestedSelection?.assignmentId === assignment.id && !requested) throw new Error("academic_context_unavailable");
     const selectedUnit = requested ?? unitOptions[0] ?? null;
     let analytics = { skills: [] as any[], students };
     let academicContext = null;
-    if (selectedUnit && klass.is_active && yearIsActive) {
+    if (selectedUnit) {
       academicContext = await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selectedUnit, new Date(now));
       analytics = await loadExactInstitutionalClassAnalytics(admin, academicContext, students);
+      await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selectedUnit);
     }
     const needingSupport = analytics.students.filter((student: any) =>
       student.weakSkills?.some((skill: any) => skill.band === "needs_support")).length;
     classPayload.push({
-      id: klass.id, name: klass.name, isActive: klass.is_active && yearIsActive,
+      id: klass.id, name: klass.name, isActive: klass.is_active && yearIsActive && activeAt(assignment,now),
       schoolId: assignment.school_id, assignmentId: assignment.id,
       subjectProgramId: assignment.subject_program_id, academicYearId: assignment.academic_year_id,
       academicYear: year.label, schoolName: schoolById.get(klass.school_id)?.name ?? "",
@@ -211,6 +219,7 @@ export async function getInstitutionalTeacherDashboard(
       analyticsAvailable: Boolean(academicContext),
     });
   }
+  if (requestedSelection && !classPayload.some(klass=>klass.assignmentId===requestedSelection.assignmentId)) throw new Error("academic_context_unavailable");
   const selectedClass = requestedSelection
     ? classPayload.find((klass) => klass.assignmentId === requestedSelection.assignmentId)
     : classPayload.find((klass) => klass.isActive) ?? classPayload[0];

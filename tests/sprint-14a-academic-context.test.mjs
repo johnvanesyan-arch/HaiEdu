@@ -4,11 +4,13 @@ import { resolveAuthorizedTeacherAcademicContext, AcademicContextDenied } from '
 
 const now = new Date('2026-09-23T12:00:00Z');
 const rows = {
+  profiles:{id:'teacher-a',role:'teacher',account_status:'active'},
+  teacher_subject_authorizations:{id:'grant-a',school_id:'school-a',teacher_membership_id:'member-a',subject_id:'subject-a',status:'active',valid_from:'2026-09-01T00:00:00Z',valid_to:null},
   teacher_assignments: { id: 'a', school_id: 'school-a', academic_year_id: 'year-a', class_id: 'class-a', teacher_membership_id: 'member-a', subject_program_id: 'program-a', status: 'active', valid_from: '2026-09-01T00:00:00Z', valid_to: null },
   institutional_memberships: { id: 'member-a', school_id: 'school-a', person_id: 'teacher-a', role: 'teacher', status: 'active', valid_from: '2026-09-01T00:00:00Z', valid_to: null },
   classes: { id: 'class-a', school_id: 'school-a', academic_year_id: 'year-a', subject_id: 'subject-a', grade_id: 'grade-7', is_active: true },
   academic_years: { id: 'year-a', school_id: 'school-a', status: 'active', starts_on: '2026-09-01', ends_on: '2027-08-31' },
-  subject_programs: { id: 'program-a', subject_id: 'subject-a', grade_id: 'grade-7' },
+  subject_programs: { status:'published',id: 'program-a', subject_id: 'subject-a', grade_id: 'grade-7' },
   curriculum_releases: { id: 'release-a', subject_program_id: 'program-a', status: 'pilot', effective_from: '2026-09-01', effective_to: null },
   units: { id: 'unit-2', subject_program_id: 'program-a', code: 'DRAFT-CODE', sequence_order: 99, title_hy: 'Խմբագրական տարբերակ', status: 'review' },
   curriculum_release_units: { curriculum_release_id: 'release-a', unit_id: 'unit-2', unit_code_snapshot: 'PHY7-U02', title_hy_snapshot: 'Գլուխ II', sequence_order_snapshot: 2 },
@@ -23,6 +25,7 @@ function mock(overrides = {}) {
       const filters = [];
       const query = {
         eq(column, value) { filters.push([column, value]); return query; },
+        then(resolve,reject) { const candidate=data[table];return Promise.resolve({data:candidate && filters.every(([column,value])=>candidate[column]===value)?[candidate]:[],error:null}).then(resolve,reject); },
         async maybeSingle() {
           const candidate = data[table];
           return {
@@ -56,6 +59,7 @@ test('uses the immutable release-unit snapshot while the mutable unit remains in
 
 test('same programme in a second school is visible only to its assigned teacher', async () => {
   const schoolB = {
+    profiles:{id:'teacher-b'}, teacher_subject_authorizations:{school_id:'school-b',teacher_membership_id:'member-b'},
     teacher_assignments: { school_id: 'school-b', class_id: 'class-b', academic_year_id: 'year-b', teacher_membership_id: 'member-b' },
     institutional_memberships: { id: 'member-b', school_id: 'school-b', person_id: 'teacher-b' },
     classes: { id: 'class-b', school_id: 'school-b', academic_year_id: 'year-b' },
@@ -67,6 +71,7 @@ test('same programme in a second school is visible only to its assigned teacher'
 
 test('another subject and grade can use the same authorized context contract', async () => {
   const subjectB = {
+    teacher_subject_authorizations:{subject_id:'subject-b'},
     teacher_assignments: { subject_program_id: 'program-b' },
     classes: { subject_id: 'subject-b', grade_id: 'grade-8' },
     subject_programs: { id: 'program-b', subject_id: 'subject-b', grade_id: 'grade-8' },
@@ -102,3 +107,15 @@ for (const [name, changes, teacher, choice] of [
     await assert.rejects(resolve(changes, teacher, choice), AcademicContextDenied);
   });
 }
+
+test('closed original year and ended original assignment remain read-only to the same authorized teacher',async()=>{
+ const context=await resolve({teacher_assignments:{status:'ended',valid_to:'2026-09-22T00:00:00Z'},academic_years:{status:'closed'},classes:{is_active:false},curriculum_releases:{status:'retired'}});
+ assert.equal(context.readOnlyHistory,true);
+});
+for(const [name,changes] of [
+ ['suspended teacher',{profiles:{account_status:'suspended'}}],
+ ['revoked subject grant',{teacher_subject_authorizations:{status:'revoked'}}],
+ ['foreign subject grant',{teacher_subject_authorizations:{subject_id:'foreign'}}],
+]) test('historical access does not bypass '+name,async()=>{
+ await assert.rejects(resolve({...changes,teacher_assignments:{status:'ended',valid_to:'2026-09-22T00:00:00Z'},academic_years:{status:'closed'}}),AcademicContextDenied);
+});

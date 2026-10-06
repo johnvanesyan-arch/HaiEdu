@@ -64,17 +64,17 @@ Deno.serve(async (req) => {
         if (context.classId !== body.classId) throw new AcademicContextDenied();
         const { data: enrollmentRows, error: enrollmentError } = await admin
           .from("institutional_class_enrollments")
-          .select("id,student_id,status,valid_from,valid_to,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id")
+          .select("id,student_id,student_membership_id,status,valid_from,valid_to,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id")
           .eq("student_id", body.studentId).eq("school_id", context.schoolId)
           .eq("academic_year_id", context.academicYearId).eq("class_id", context.classId)
           .eq("teacher_assignment_id", context.assignmentId)
-          .eq("subject_program_id", context.subjectProgramId).eq("status", "active");
+          .eq("subject_program_id", context.subjectProgramId).in("status",context.readOnlyHistory ? ["active","ended"] : ["active"]);
         if (enrollmentError) return json({ error: "membership_query_failed" }, 500);
         const now = Date.now();
         const activeEnrollments = (enrollmentRows ?? []).filter((row: any) => {
           const start = Date.parse(String(row.valid_from));
           const end = row.valid_to == null ? Infinity : Date.parse(String(row.valid_to));
-          return Number.isFinite(start) && start <= now && now < end;
+          return Number.isFinite(start) && start <= now && (context.readOnlyHistory || now < end);
         });
         if (activeEnrollments.length !== 1) return json({ error: "student_not_in_teacher_class" }, 403);
         const [{ data: profile }, { data: klass }] = await Promise.all([
@@ -89,7 +89,12 @@ Deno.serve(async (req) => {
           id: profile.id, displayName: profile.display_name,
           enrollmentId: activeEnrollments[0].id,
         }]);
+        await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selection);
+        if (!(await hasActiveLiveSession(admin, token, teacherId))) throw new AcademicContextDenied();
+        const {data: studentMemberships,error: membershipFailure} = await admin.from("institutional_memberships").select("person_id,school_id,status,valid_from,valid_to").eq("id",activeEnrollments[0].student_membership_id).eq("person_id",body.studentId).eq("school_id",context.schoolId).eq("role","student");
+        if (membershipFailure || !studentMemberships?.some((row:any)=>["active",...(context.readOnlyHistory?["ended"]:[])].includes(row.status) && Date.parse(row.valid_from)<=Date.now() && (context.readOnlyHistory || !row.valid_to || Date.parse(row.valid_to)>Date.now()))) throw new AcademicContextDenied();
         const detail = analytics.students[0];
+        if (!detail) throw new AcademicContextDenied();
         return json({
           ...detail,
           student: {

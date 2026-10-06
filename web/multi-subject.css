@@ -335,3 +335,14 @@ body[data-student-page="home"].amp-multisubject-ready #noCoursesPanel {
     align-items: center;
   }
 }
+
+.amp-course-link small { display: block; font-size: .7rem; opacity: .8; }
+#courseContent { display: grid; gap: var(--amp-space-4); min-width: 0; }
+#courseContent .amp-subject-grid { align-items: stretch; }
+#courseContent .card { padding: var(--amp-space-5); }
+#courseContent details, #analyticsEvidenceGroups details, .school-detail details { overflow-wrap: anywhere; }
+#courseContent td, #analyticsEvidenceGroups dd { overflow-wrap: anywhere; }
+#learningPlayer .option { display: flex; gap: .75rem; padding: .75rem; }
+#learningPlayer fieldset { display: grid; gap: .5rem; border: 0; }
+#learningPlayer [data-help-content] { white-space: pre-line; }
+#learningPlayer button { margin: .5rem; }

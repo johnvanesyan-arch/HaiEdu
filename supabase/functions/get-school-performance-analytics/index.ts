@@ -94,6 +94,8 @@ Deno.serve(async (req) => {
     const schoolId = typeof body?.schoolId === "string" ? body.schoolId : "";
     const requestedYearId = typeof body?.academicYearId === "string" ? body.academicYearId : "";
     const requestedProgrammeId = typeof body?.subjectProgramId === "string" ? body.subjectProgramId : "";
+    const requestedReleaseId = typeof body?.curriculumReleaseId === "string" ? body.curriculumReleaseId : "";
+    const requestedUnitId = typeof body?.unitId === "string" ? body.unitId : "";
     const requestedClassId = typeof body?.classId === "string" ? body.classId : "";
     if (!schoolId) return json({ error: "school_required" }, 400);
 
@@ -132,11 +134,14 @@ Deno.serve(async (req) => {
         .select("id,name,subject_id,grade_id,is_active")
         .eq("school_id", schoolId).eq("academic_year_id", selectedYear.id).range(from, to)),
       paged((from, to) => admin.from("institutional_class_enrollments")
-        .select("id,student_id,class_id,teacher_assignment_id,subject_program_id,status,valid_from,valid_to")
+        .select("id,student_id,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id,status,valid_from,valid_to")
         .eq("school_id", schoolId).eq("academic_year_id", selectedYear.id).range(from, to)),
     ]);
-    const currentAssignments = assignmentRows.filter((row: any) => isCurrent(row));
-    const currentEnrollments = enrollmentRows.filter((row: any) => isCurrent(row));
+    // Retain the original year enrollment denominators and evidence after closure.
+    // Revoked and future records do not enter a historical cohort.
+    const inYear = (row: any) => ["active","ended"].includes(row.status) && Number.isFinite(Date.parse(row.valid_from)) && row.valid_from.slice(0,10) <= selectedYear.ends_on && (row.valid_to == null || row.valid_to.slice(0,10) >= selectedYear.starts_on);
+    const currentAssignments = assignmentRows.filter(inYear);
+    const currentEnrollments = enrollmentRows.filter(inYear);
     const programmeIds = unique([
       ...currentAssignments.map((row: any) => row.subject_program_id),
       ...currentEnrollments.map((row: any) => row.subject_program_id),
@@ -166,21 +171,35 @@ Deno.serve(async (req) => {
       if (!pairExists) return json({ error: "analytics_scope_unavailable" }, 403);
     }
 
+    const releases = programmeIds.length ? requireRows(await admin.from("curriculum_releases").select("id,subject_program_id,release_number,status").in("subject_program_id",programmeIds).in("status",["pilot","production","retired"])) : [];
+    const permittedReleases = releases.filter(row => !requestedProgrammeId || row.subject_program_id === requestedProgrammeId);
+    const releasedUnits = permittedReleases.length ? requireRows(await admin.from("curriculum_release_units").select("curriculum_release_id,unit_id,unit_code_snapshot,title_hy_snapshot,sequence_order_snapshot").in("curriculum_release_id",permittedReleases.map(row=>row.id))) : [];
+    if (requestedReleaseId && !permittedReleases.some(row=>row.id===requestedReleaseId)) return json({error:"analytics_scope_unavailable"},403);
+    if (requestedUnitId && (!requestedReleaseId || !releasedUnits.some(row=>row.curriculum_release_id===requestedReleaseId && row.unit_id===requestedUnitId))) return json({error:"analytics_scope_unavailable"},403);
+    const selectedUnit = releasedUnits.find(row=>row.curriculum_release_id===requestedReleaseId && row.unit_id===requestedUnitId);
     const selectedEnrollments = currentEnrollments.filter((row: any) =>
       (!requestedProgrammeId || row.subject_program_id === requestedProgrammeId)
+      && (!requestedReleaseId || releases.some(release=>release.id===requestedReleaseId && release.subject_program_id===row.subject_program_id))
       && (!requestedClassId || row.class_id === requestedClassId));
     const enrollmentIds = selectedEnrollments.map((row: any) => row.id);
     const sessions: any[] = [];
     for (const ids of chunks(enrollmentIds)) {
       sessions.push(...await paged((from, to) => {
         let query = admin.from("learning_sessions")
-          .select("id,institutional_class_enrollment_id,student_id,curriculum_release_id,unit_code,mode,status,answered_count,correct_count,assessment_result,academic_context_status,started_at,completed_at")
+          .select("id,institutional_class_enrollment_id,student_id,curriculum_release_id,unit_code,mode,status,answered_count,correct_count,assessment_result,academic_context_status,started_at,completed_at,governed_unit_id,assessment_blueprint_id,assessment_policy_binding_id,learning_model_configuration_id,academic_mastery_policy_id,runtime_build_id,provenance_status,model_provenance_status,runtime_provenance_status,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id")
           .eq("school_id", schoolId).eq("academic_year_id", selectedYear.id)
           .eq("academic_context_status", "exact").in("institutional_class_enrollment_id", ids);
+        if (requestedReleaseId) query = query.eq("curriculum_release_id",requestedReleaseId);
+        if (selectedUnit) query = query.eq("unit_code",selectedUnit.unit_code_snapshot);
         if (requestedProgrammeId) query = query.eq("subject_program_id", requestedProgrammeId);
         if (requestedClassId) query = query.eq("class_id", requestedClassId);
         return query.order("started_at", { ascending: false }).range(from, to);
       }));
+    }
+    if (selectedUnit) {
+      const selectedBlueprints = requireRows(await admin.from("assessment_blueprints").select("id").eq("curriculum_release_id",requestedReleaseId).eq("unit_id",requestedUnitId));
+      const ids = new Set(selectedBlueprints.map(row=>row.id));
+      for (let index=sessions.length-1;index>=0;index--) if (sessions[index].governed_unit_id !== requestedUnitId && !(sessions[index].governed_unit_id == null && ids.has(sessions[index].assessment_blueprint_id))) sessions.splice(index,1);
     }
     const reviewSessions: any[] = [];
     for (const ids of chunks(sessions.map((row: any) => row.id))) {
@@ -208,6 +227,14 @@ Deno.serve(async (req) => {
       subjectProgramIds: [...(classProgrammeIds.get(row.id) ?? new Set<string>())],
     })).sort((a: any, b: any) => a.name.localeCompare(b.name, "hy"));
 
+    // Revalidate the account, live session and current school entitlement after all reads.
+    if (!(await hasActiveLiveSession(admin, token, actorId))) return json({error:"account_or_session_inactive"},403);
+    const finalActor = await admin.from("profiles").select("role,account_status").eq("id",actorId).maybeSingle();
+    if (finalActor.error || finalActor.data?.role !== actor.role || finalActor.data?.account_status !== "active") return json({error:"analytics_scope_unavailable"},403);
+    if (actor.role === "school_admin") {
+      const finalMemberships = requireRows(await admin.from("institutional_memberships").select("school_id,status,valid_from,valid_to").eq("person_id",actorId).eq("role","school_admin"));
+      if (!finalMemberships.some(row=>row.school_id===schoolId && isCurrent(row))) return json({error:"analytics_scope_unavailable"},403);
+    }
     return json({
       generatedAt: new Date().toISOString(),
       scope: {
@@ -215,11 +242,15 @@ Deno.serve(async (req) => {
         academicYearId: selectedYear.id,
         subjectProgramId: requestedProgrammeId || null,
         classId: requestedClassId || null,
+        curriculumReleaseId: requestedReleaseId || null, unitId: requestedUnitId || null,
+        history: selectedYear.status !== "active", denominator: "enrollments_in_selected_academic_year",
       },
       options: {
         academicYears: years.map((row: any) => ({ id: row.id, label: row.label, status: row.status })),
         programmes: programmeOptions,
         classes: classOptions,
+        releases: permittedReleases.map(row=>({id:row.id,label:`Թողարկում ${row.release_number}`,subjectProgramId:row.subject_program_id,status:row.status})),
+        units: releasedUnits.map(row=>({id:row.unit_id,curriculumReleaseId:row.curriculum_release_id,label:row.title_hy_snapshot,sequenceOrder:row.sequence_order_snapshot})),
       },
       analytics: aggregateSchoolPerformanceAnalytics({
         enrollments: selectedEnrollments,

@@ -3,6 +3,7 @@ import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import vm from 'node:vm';
 import { stripTypeScriptTypes } from 'node:module';
+import { AcademicContextDenied } from '../supabase/functions/_shared/academic-context.ts';
 import { roleDestination } from '../web/account-roles.js';
 import { loadInitialDiagnostics } from '../supabase/functions/_shared/initial-diagnostic.ts';
 
@@ -14,7 +15,7 @@ async function callEndpoint(name, role, active = true, authenticated = true, ins
     auth: { getUser: async () => ({ data: { user: { id: 'test-user' } } }) },
     from(table) {
       tables.push(table);
-      const data = table === 'profiles' ? (role === null ? null : { id: 'test-user', role, display_name: 'Test' })
+      const data = table === 'profiles' ? (role === null ? null : { id: 'test-user', role, account_status:'active', display_name: 'Test' })
         : table === 'institutional_memberships' && institutional ? [{ id: 'school-membership' }] : [];
       const query = new Proxy({}, { get: (_, key) => key === 'then'
         ? (resolve) => resolve({ data, error: null })
@@ -24,7 +25,7 @@ async function callEndpoint(name, role, active = true, authenticated = true, ins
   };
   const source = readFileSync(`supabase/functions/${name}/index.ts`, 'utf8').replace(/^import .*;\n/gm, '');
   vm.runInNewContext(stripTypeScriptTypes(source), {
-    createClient: () => client, hasActiveLiveSession: async () => active,
+    AcademicContextDenied, createClient: () => client, hasActiveLiveSession: async () => active,
     loadInitialDiagnostics,
     resolveActiveCurriculumRelease: async () => 'release-test',
     getInstitutionalTeacherDashboard: async () => ({
@@ -50,7 +51,7 @@ test('school teachers cannot create legacy schoolless join codes or read legacy 
   assert.equal(dashboard.status, 200);
   assert.equal(dashboard.body.institutionalTeacher, true);
   assert.deepEqual(dashboard.body.classes, []);
-  assert.deepEqual(dashboard.tables, ['profiles', 'institutional_memberships']);
+  assert.deepEqual(dashboard.tables, ['profiles', 'institutional_memberships','profiles']);
 });
 
 for (const name of functions) {
@@ -82,7 +83,7 @@ async function openTeacherPage(profile, profileError = null) {
   const redirects = [];
   const elements = new Map();
   const getElement = (id) => {
-    if (!elements.has(id)) elements.set(id, { textContent: '', style: {}, classList: {
+    if (!elements.has(id)) elements.set(id, { textContent: '', style: {}, replaceChildren(){},setAttribute(){}, classList: {
       values: new Set(), add(value) { this.values.add(value); }, remove(value) { this.values.delete(value); },
     } });
     return elements.get(id);

@@ -46,42 +46,24 @@ test("student class endpoint exposes metadata needed to build course navigation"
   assert.match(source, /courseKey/);
 });
 
-test("student shell resolves navigation from actual enrolled courses", async () => {
-  const shell = await read("web/student-shell.js");
-  const courses = await read("web/student-courses.js");
-  const gate = await read("web/course-gate.js");
-  assert.match(shell, /Իմ առարկաները|student-courses/);
-  assert.match(shell, /import\("\.\/student-courses\.js"\)/);
-  assert.match(shell, /import\("\.\/course-gate\.js"\)/);
-  assert.match(courses, /courseKey/);
-  assert.match(courses, /Իմ առարկաները/);
-  assert.match(courses, /mathematics/);
-  assert.match(courses, /course\.html\?course=/);
-  assert.match(gate, /get-student-classes/);
-  assert.match(gate, /classes\.length/);
-  assert.match(gate, /Դեռ դասընթացներ չունեք/);
-  assert.match(gate, /window\.location\.replace\("\.\/index\.html\?course=required"\)/);
+test("student shell resolves navigation from exact authorized contexts", async () => {
+  const shell=await read("web/student-shell.js"), courses=await read("web/student-courses.js"), gate=await read("web/course-gate.js");
+  assert.match(shell,/student-courses\.js/);assert.match(shell,/course-gate\.js/);
+  assert.match(courses,/groupLearningContexts/);assert.match(courses,/contextHref/);
+  assert.doesNotMatch(courses,/physics:7|physics-7|mathematics/);
+  assert.match(gate,/get-student-classes/);assert.match(gate,/resolveNavigationContext/);assert.match(gate,/request !== version/);
 });
 
-test("global Home is explicitly multi-subject and keeps subject detail behind course cards", async () => {
-  const home = await read("web/multi-subject-home.js");
-  assert.match(home, /groupCourses/);
-  assert.match(home, /ՀԱՋՈՐԴ ԱՌԱՋԱՐԿՎՈՂ ՔԱՅԼԸ/);
-  assert.match(home, /ԻՄ ԱՌԱՐԿԱՆԵՐԸ/);
-  assert.match(home, /ՈՒՇԱԴՐՈՒԹՅՈՒՆ Է ՊԵՏՔ/);
-  assert.match(home, /physics:7/);
-  assert.match(home, /mathematics/);
-  assert.match(home, /Դեռ հասանելի չէ/);
+test("global Home keeps every enrollment and release distinct", async () => {
+  const home=await read("web/multi-subject-home.js");
+  assert.match(home,/groupLearningContexts/);assert.match(home,/course\.units/);assert.match(home,/course\.className/);assert.match(home,/course\.schoolName/);
+  assert.doesNotMatch(home,/physics:7|mathematics|get-mastery-check-status/);
 });
 
-test("generic course shell verifies entitlement and never falls through to Physics content", async () => {
-  const page = await read("web/course-page.js");
-  assert.match(page, /get-student-classes/);
-  assert.match(page, /requestedKey/);
-  assert.match(page, /matches\.length/);
-  assert.match(page, /physics:7/);
-  assert.match(page, /physics-7\.html/);
-  assert.match(page, /course=required/);
+test("generic course shell verifies the exact selection before its dashboard", async () => {
+  const page=await read("web/course-page.js");
+  assert.match(page,/readLearningSelection/);assert.match(page,/sameContext/);assert.match(page,/get-student-classes/);assert.match(page,/get-student-dashboard/);
+  assert.match(page,/registeredExtensionHref/);assert.doesNotMatch(page,/physics:7|physics-7\.html/);
 });
 
 test("successful class join is verified through the entitlement endpoint before returning home", async () => {

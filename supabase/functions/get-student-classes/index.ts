@@ -1,6 +1,7 @@
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 import { getStudentCourseEntitlements } from "../_shared/course-access.ts";
+import { verifiedSessionClaim } from "../_shared/governed-learning-runtime.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -55,7 +56,15 @@ Deno.serve(async (req) => {
       courseKey: `${course.subjectCode}:${course.gradeNumber}`,
     }));
 
-    return json({ classes });
+    const authSessionId = verifiedSessionClaim(token);
+    if (!authSessionId) return json({ error: "account_or_session_inactive" }, 403);
+    const { data: navigation, error: navigationError } = await admin.rpc("service_student_learning_navigation", {
+      p_student_id: studentId, p_auth_session_id: authSessionId,
+    });
+    if (navigationError || !navigation) return json({ error: "learning_context_unavailable" }, 403);
+    // Class labels do not grant course access. Exact, live, server-owned contexts
+    // alone control released navigation; keep classes for existing join/roster UI.
+    return json({ classes, ...navigation });
   } catch (err) {
     console.error("get-student-classes", err);
     return json({ error: "get_student_classes_failed" }, 500);

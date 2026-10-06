@@ -1,6 +1,8 @@
+import { evidenceContract, evidenceContractKey } from "./analytics-evidence.mjs";
 export type SchoolAnalyticsEnrollment = {
   id: string;
   student_id: string;
+  school_id?: string; academic_year_id?: string; class_id?: string; teacher_assignment_id?: string; subject_program_id?: string;
 };
 
 export type SchoolAnalyticsSession = {
@@ -17,6 +19,8 @@ export type SchoolAnalyticsSession = {
   academic_context_status: string | null;
   started_at: string | null;
   completed_at: string | null;
+  governed_unit_id?: string; assessment_blueprint_id?: string; assessment_policy_binding_id?: string; learning_model_configuration_id?: string; academic_mastery_policy_id?: string; runtime_build_id?: string; provenance_status?: string; model_provenance_status?: string; runtime_provenance_status?: string;
+  school_id?: string; academic_year_id?: string; class_id?: string; teacher_assignment_id?: string; subject_program_id?: string;
 };
 
 export type SchoolAnalyticsReviewSession = {
@@ -59,13 +63,16 @@ export function aggregateSchoolPerformanceAnalytics(args: {
   reviewSessions: SchoolAnalyticsReviewSession[];
 }) {
   const enrollments = uniqueById(args.enrollments ?? []);
-  const enrollmentIds = new Set(enrollments.map((row) => row.id));
+  const enrollmentById = new Map(enrollments.map((row) => [row.id,row]));
   const enrolledStudentIds = new Set(enrollments.map((row) => row.student_id));
   const sessions = uniqueById(args.sessions ?? []).filter((row) =>
     row.academic_context_status === "exact"
     && Boolean(row.institutional_class_enrollment_id)
-    && enrollmentIds.has(String(row.institutional_class_enrollment_id))
-    && enrolledStudentIds.has(row.student_id));
+    && enrollmentById.get(String(row.institutional_class_enrollment_id))?.student_id === row.student_id
+    && ["school_id","academic_year_id","class_id","teacher_assignment_id","subject_program_id"].every(key => {
+      const enrollment = enrollmentById.get(String(row.institutional_class_enrollment_id)) as any;
+      return enrollment?.[key] == null || enrollment[key] === (row as any)[key];
+    }));
   const sessionById = new Map(sessions.map((row) => [row.id, row]));
   const completed = sessions.filter((row) => row.status === "completed");
   const participatingStudents = new Set(sessions.map((row) => row.student_id));
@@ -74,6 +81,16 @@ export function aggregateSchoolPerformanceAnalytics(args: {
   const diagnosedEnrollmentIds = new Set(completedDiagnostics
     .map((row) => row.institutional_class_enrollment_id)
     .filter((value): value is string => Boolean(value)));
+  const contractGroups = new Map<string, any>();
+  for (const session of completed) {
+    const key = evidenceContractKey(session);
+    const group = contractGroups.get(key) ?? { contract: evidenceContract(session), mode: session.mode, sessions: 0, answered: 0, correct: 0, masteryPassed: 0 };
+    group.sessions++; group.answered += Number(session.answered_count ?? 0); group.correct += Number(session.correct_count ?? 0);
+    if (session.assessment_result === "passed") group.masteryPassed++;
+    contractGroups.set(key,group);
+  }
+  const comparableDiagnostics = new Set(completedDiagnostics.map(row => evidenceContractKey(row))).size === 1
+    && completedDiagnostics.every(row => row.assessment_blueprint_id && row.learning_model_configuration_id);
   const diagnosticAnswered = completedDiagnostics.reduce((sum, row) => sum + Number(row.answered_count ?? 0), 0);
   const diagnosticCorrect = completedDiagnostics.reduce((sum, row) => sum + Number(row.correct_count ?? 0), 0);
 
@@ -107,7 +124,8 @@ export function aggregateSchoolPerformanceAnalytics(args: {
       completedContexts: diagnosedEnrollmentIds.size,
       eligibleContexts: enrollments.length,
       completionRate: percent(diagnosedEnrollmentIds.size, enrollments.length),
-      averageAccuracy: percent(diagnosticCorrect, diagnosticAnswered),
+      averageAccuracy: comparableDiagnostics ? percent(diagnosticCorrect, diagnosticAnswered) : null,
+      comparability: comparableDiagnostics ? "same_original_contract" : "separate_original_contracts",
       answeredQuestions: diagnosticAnswered,
     },
     mastery: {
@@ -120,6 +138,8 @@ export function aggregateSchoolPerformanceAnalytics(args: {
       qualifyingSessions: qualifyingReviews.length,
       students: reviewStudentIds.size,
     },
+    evidenceGroups: [...contractGroups.values()].map(group => ({...group, accuracy: group.contract.blueprintId && group.contract.modelId ? percent(group.correct,group.answered) : null})),
+    comparability: "separate_original_contracts",
     evidence: {
       exactSessions: sessions.length,
       completedSessions: completed.length,

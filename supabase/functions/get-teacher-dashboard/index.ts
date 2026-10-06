@@ -61,10 +61,14 @@ Deno.serve(async (req) => {
     if (schoolMemberships?.length) {
       try {
         if (selection) await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selection);
-        return json(await getInstitutionalTeacherDashboard(
+        const dashboard = await getInstitutionalTeacherDashboard(
           admin, teacherId, teacherProfile.display_name?.trim() || "Ուսուցիչ",
           selection,
-        ));
+        );
+        if (!(await hasActiveLiveSession(admin,token,teacherId))) return json({error:"account_or_session_inactive"},403);
+        const finalProfile=await admin.from("profiles").select("role,account_status").eq("id",teacherId).maybeSingle();
+        if (finalProfile.error || finalProfile.data?.role!=="teacher" || finalProfile.data?.account_status!=="active") throw new AcademicContextDenied();
+        return json(dashboard);
       } catch (error) {
         if (error instanceof AcademicContextDenied) return json({ error: "academic_context_unavailable" }, 403);
         console.error("get-institutional-teacher-dashboard", error);

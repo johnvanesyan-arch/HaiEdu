@@ -12,7 +12,7 @@ test("student home loads the shared design system in cascade order", async () =>
   for (let i = 1; i < order.length; i += 1) assert.ok(order[i] > order[i - 1]);
   assert.match(html, /data-student-page="home"/);
   assert.match(html, /student-shell\.js/);
-  assert.match(html, /home-dashboard\.js/);
+  assert.match(html, /home-class\.js/);
 });
 
 test("Home retains its legacy Physics renderer as a hidden compatibility layer while multi-subject Home owns presentation", async () => {
@@ -53,12 +53,12 @@ test("student navigation is entitlement-driven while Physics routes remain subje
   const courses = await read("web/student-courses.js");
   assert.match(shell, /key: "home"[\s\S]*enabled: true/);
   assert.match(shell, /student-courses\.js/);
-  assert.match(courses, /courseKey/);
+  assert.match(courses, /contextHref/);
   assert.match(courses, /Իմ առարկաները/);
-  assert.match(courses, /physics-7\.html/);
-  assert.match(courses, /assessment\.html/);
-  assert.match(courses, /progress\.html/);
-  assert.match(courses, /active && key === "physics:7"/);
+  assert.doesNotMatch(courses, /physics-7\.html/);
+  assert.match(courses, /assessment/);
+  assert.match(courses, /progress/);
+  assert.match(courses, /selected\.enrollmentId === course\.enrollmentId/);
 });
 
 test("design tokens include spacing, semantic state, focus and layout primitives", async () => {
