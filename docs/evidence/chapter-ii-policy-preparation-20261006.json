@@ -1,0 +1,591 @@
+{
+  "sprint": "15B — Chapter II policy preparation",
+  "date": "2026-10-06",
+  "sourceCommit": "c3007f87c0568573cea8a0f56483915169a9562e",
+  "status": "decision_packet_preparation_only",
+  "productionMutations": [],
+  "inventory": {
+    "items": {
+      "total": 32,
+      "withWarnings": 1,
+      "approvedPublished": 32,
+      "matchingVersionQAPassed": 32
+    },
+    "skills": [
+      {
+        "id": "bfd0b199-55ab-4933-acfd-7eeb4142fd4c",
+        "code": "PHY7-U02-S02",
+        "guides": [
+          {
+            "id": "45dadf84-ef72-47d6-805b-791543fa7c03",
+            "scope": "template",
+            "skill": "PHY7-U02-S02",
+            "runtimeStatus": "published",
+            "runtimeVersion": 3,
+            "authoringStatus": "published",
+            "authoringVersion": 9
+          }
+        ],
+        "status": "review",
+        "approvedItems": 4,
+        "misconceptions": {
+          "draft": 0,
+          "active": 3
+        }
+      },
+      {
+        "id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+        "code": "PHY7-U02-S03",
+        "guides": [
+          {
+            "id": "94c4bcef-0ddf-45ec-9368-73dc232c0262",
+            "scope": "template",
+            "skill": "PHY7-U02-S03",
+            "runtimeStatus": "published",
+            "runtimeVersion": 3,
+            "authoringStatus": "published",
+            "authoringVersion": 6
+          }
+        ],
+        "status": "review",
+        "approvedItems": 4,
+        "misconceptions": {
+          "draft": 0,
+          "active": 5
+        }
+      },
+      {
+        "id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+        "code": "PHY7-U02-S04",
+        "guides": [
+          {
+            "id": "404bad98-2404-4a5c-8f0c-dc716d5a354d",
+            "scope": "template",
+            "skill": "PHY7-U02-S04",
+            "runtimeStatus": "published",
+            "runtimeVersion": 3,
+            "authoringStatus": "published",
+            "authoringVersion": 6
+          }
+        ],
+        "status": "review",
+        "approvedItems": 4,
+        "misconceptions": {
+          "draft": 0,
+          "active": 4
+        }
+      },
+      {
+        "id": "678beb6a-4654-40c2-a5b2-53cc97b2551b",
+        "code": "PHY7-U02-S05",
+        "guides": [
+          {
+            "id": "72f5367c-8ecd-4200-8d6b-41f1f59fbd8a",
+            "scope": "template",
+            "skill": "PHY7-U02-S05",
+            "runtimeStatus": "published",
+            "runtimeVersion": 3,
+            "authoringStatus": "published",
+            "authoringVersion": 6
+          }
+        ],
+        "status": "review",
+        "approvedItems": 4,
+        "misconceptions": {
+          "draft": 0,
+          "active": 4
+        }
+      },
+      {
+        "id": "b7caca8c-d222-4715-a39f-80883f995471",
+        "code": "PHY7-U02-S06",
+        "guides": [
+          {
+            "id": "d76553fa-1901-4946-bff8-083fb7ae54e4",
+            "scope": "template",
+            "skill": "PHY7-U02-S06",
+            "runtimeStatus": "published",
+            "runtimeVersion": 3,
+            "authoringStatus": "published",
+            "authoringVersion": 6
+          }
+        ],
+        "status": "review",
+        "approvedItems": 4,
+        "misconceptions": {
+          "draft": 0,
+          "active": 4
+        }
+      },
+      {
+        "id": "c1e57a2d-d843-45ea-adf1-891837d12d6c",
+        "code": "PHY7-U02-S07",
+        "guides": [
+          {
+            "id": "c446e7ed-7b88-46dc-b803-a78f43a025ac",
+            "scope": "template",
+            "skill": "PHY7-U02-S07",
+            "runtimeStatus": "published",
+            "runtimeVersion": 2,
+            "authoringStatus": "published",
+            "authoringVersion": 3
+          }
+        ],
+        "status": "review",
+        "approvedItems": 4,
+        "misconceptions": {
+          "draft": 0,
+          "active": 6
+        }
+      },
+      {
+        "id": "c2463f0b-9d96-4ae6-a814-0495db8a3872",
+        "code": "PHY7-U02-S08",
+        "guides": [
+          {
+            "id": "2d63deac-50b5-4260-9c16-62e6de09b846",
+            "scope": "template",
+            "skill": "PHY7-U02-S08",
+            "runtimeStatus": "published",
+            "runtimeVersion": 2,
+            "authoringStatus": "published",
+            "authoringVersion": 4
+          }
+        ],
+        "status": "review",
+        "approvedItems": 4,
+        "misconceptions": {
+          "draft": 0,
+          "active": 8
+        }
+      },
+      {
+        "id": "802bce7e-7ede-4138-b2b2-35c4c1b68a32",
+        "code": "PHY7-U02-S09",
+        "guides": [
+          {
+            "id": "36fa403b-dc42-46bb-bbd4-fb21f9d80a97",
+            "scope": "template",
+            "skill": "PHY7-U02-S09",
+            "runtimeStatus": "published",
+            "runtimeVersion": 2,
+            "authoringStatus": "published",
+            "authoringVersion": 4
+          }
+        ],
+        "status": "review",
+        "approvedItems": 4,
+        "misconceptions": {
+          "draft": 0,
+          "active": 9
+        }
+      }
+    ],
+    "checkedAt": "2026-10-06T13:13:04.906651+00:00",
+    "candidateGates": [
+      {
+        "code": "assessment_scope_bound",
+        "status": "pending"
+      },
+      {
+        "code": "content_qa_passed",
+        "status": "pending"
+      },
+      {
+        "code": "external_sme_approved",
+        "status": "pending"
+      },
+      {
+        "code": "normative_sources_registered",
+        "status": "passed"
+      },
+      {
+        "code": "official_programme_identified",
+        "status": "passed"
+      },
+      {
+        "code": "outcomes_reconciled",
+        "status": "pending"
+      },
+      {
+        "code": "skills_mapped",
+        "status": "passed"
+      }
+    ],
+    "activeLifecycle": {
+      "id": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "status": "active",
+      "policy_key": "chapter-mastery-review-2026-r1",
+      "effective_from": "2026-09-21T00:00:00+00:00",
+      "version_number": 1,
+      "maximum_mastery_attempts": 3,
+      "review_optional_after_pass": true,
+      "target_review_question_count": 12,
+      "review_available_after_final_failure": true,
+      "review_required_after_failed_attempts": [
+        1,
+        2
+      ],
+      "additional_attempt_after_final_failure": false
+    },
+    "candidateSkills": [
+      {
+        "code": "PHY7-U02-S02",
+        "disposition": "mapping_updated",
+        "outcomeMapping": [
+          {
+            "rationale": "Փորձարարական ապացույցների մեկնաբանումը գնահատում է վերջնարդյունքի հիմնական կառուցույթը։",
+            "mappingType": "direct",
+            "learningOutcomeId": "c244a6e8-8f15-4e99-b209-1035c56971da"
+          }
+        ]
+      },
+      {
+        "code": "PHY7-U02-S03",
+        "disposition": "mapping_updated",
+        "outcomeMapping": [
+          {
+            "rationale": "Ատոմ–մոլեկուլ–տարր տարբերակումը աջակցում է մասնիկային կառուցվածքի ըմբռնմանը։",
+            "mappingType": "derived_supporting",
+            "learningOutcomeId": "c244a6e8-8f15-4e99-b209-1035c56971da"
+          }
+        ]
+      },
+      {
+        "code": "PHY7-U02-S04",
+        "disposition": "mapping_updated",
+        "outcomeMapping": [
+          {
+            "rationale": "Համեմատական մասշտաբը և փոքր մասնիկների չափի որոշումը գնահատում են մոլեկուլների չափերի վերջնարդյունքը։",
+            "mappingType": "direct",
+            "learningOutcomeId": "1c03ef0b-6df7-4376-8b4b-1ebf96ec76bb"
+          }
+        ]
+      },
+      {
+        "code": "PHY7-U02-S05",
+        "disposition": "mapping_updated",
+        "outcomeMapping": [
+          {
+            "rationale": "Հմտությունը գնահատում է նյութում մասնիկների շարժման առանձնահատկությունների նկարագրումը։",
+            "mappingType": "direct",
+            "learningOutcomeId": "a70929ea-7b86-4ee3-9dbe-775b227976b4"
+          }
+        ]
+      },
+      {
+        "code": "PHY7-U02-S06",
+        "disposition": "mapping_updated",
+        "outcomeMapping": [
+          {
+            "rationale": "Հմտությունը գնահատում է դիֆուզիայի ճանաչումն ու մասնիկային բացատրությունը։",
+            "mappingType": "direct",
+            "learningOutcomeId": "40dd963e-2a7f-48b5-9169-2d28574b7e7d"
+          }
+        ]
+      },
+      {
+        "code": "PHY7-U02-S07",
+        "disposition": "mapping_updated",
+        "outcomeMapping": [
+          {
+            "rationale": "Հմտությունը գնահատում է դիֆուզիայի արագության համեմատումը երեք ագրեգատային վիճակներում։",
+            "mappingType": "direct",
+            "learningOutcomeId": "3078b38b-bf8e-4e3a-a9ce-019fdf13c0fd"
+          }
+        ]
+      },
+      {
+        "code": "PHY7-U02-S08",
+        "disposition": "mapping_updated",
+        "outcomeMapping": [
+          {
+            "rationale": "Հմտությունը գնահատում է ջերմաստիճանի կապը մասնիկների շարժման արագության հետ։",
+            "mappingType": "direct",
+            "learningOutcomeId": "bcfca398-b568-470e-b185-61cc22d54ecf"
+          }
+        ]
+      },
+      {
+        "code": "PHY7-U02-S09",
+        "disposition": "mapping_updated",
+        "outcomeMapping": [
+          {
+            "rationale": "Հմտությունը գնահատում է ջերմաչափի աշխատանքի սկզբունքի բացատրությունը՝ հեղուկային ջերմաչափի օրինակով։",
+            "mappingType": "direct",
+            "learningOutcomeId": "40e20c7c-3f60-4495-b6c7-54c9a5ca3b84"
+          }
+        ]
+      }
+    ],
+    "releaseInventory": [
+      {
+        "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+        "key": "physics7_u01_2026_08_14_pilot_r1",
+        "status": "pilot",
+        "blueprints": 4
+      },
+      {
+        "id": "9f93b58d-e1a2-49ba-ba96-89e76c697884",
+        "key": "physics7_u01_legacy_pre_11k",
+        "status": "legacy",
+        "blueprints": 3
+      },
+      {
+        "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "key": "physics7_u01_u02_2026_08_14_candidate_r2",
+        "status": "draft",
+        "blueprints": 0
+      }
+    ],
+    "candidateOutcomes": [
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "ներկայացնել ֆիզիկայի ուսումնասիրության առարկան (Հ9),"
+      },
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "օրինակներով հիմնավորել նյութի մասնիկային կառուցվածքը (Հ29, Հ30)"
+      },
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "ներկայացնել մոլեկուլների չափերը՝ համեմատելով այլ մարմինների չափերի հետ (Հ4, Հ9, Հ28)"
+      },
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "ներկայացնել հայ անվանի ֆիզիկոսներին (Հ30),"
+      },
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "նկարագրել ատոմների, մոլեկուլների շարժման առանձնահատկությունները նյութում (Հ8, Հ9)"
+      },
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "բերել ֆիզիկական երևույթների օրինակներ (Հ9),"
+      },
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "կատարել պարզագույն դիտումներ, չափումներ և փորձեր,(Հ4, Հ28),"
+      },
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "օրինակներով լուսաբանել դիֆուզիայի երևույթը (Հ9)"
+      },
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "չափումներ կատարելիս դրսևորել պատասխանատու վերաբերմունք, անհրաժեշտ հետևողականություն և ճշգրտություն,(Հ4, 28),"
+      },
+      {
+        "code": null,
+        "level": "mandatory",
+        "statement": "բացատրել, թե ինչով է պայմանավորված մարմնի ջերմաստիճանը (Հ9, Հ29)"
+      },
+      {
+        "code": null,
+        "level": "additional",
+        "statement": "ներկայացնել ժամանակի, հեռավորության, ծավալի, զանգվածի չափման միավորները ՄՀ համակարգում"
+      },
+      {
+        "code": null,
+        "level": "additional",
+        "statement": "բնութագրել դիֆուզիայի արագությունը գազերում, հեղուկներում և պինդ մարմիններում, բերել օրինակներ"
+      },
+      {
+        "code": null,
+        "level": "additional",
+        "statement": "բացատրել ջերմաչափի աշխատանքի սկզբունքը"
+      }
+    ],
+    "protectedPoolLinks": 0,
+    "candidateModelBindings": 0,
+    "learnerSessionItemLinks": 0,
+    "prospectiveAssessmentBindings": 0,
+    "guides": [
+      {
+        "id": "45dadf84-ef72-47d6-805b-791543fa7c03",
+        "scope": "template",
+        "skill": "PHY7-U02-S02",
+        "runtimeStatus": "published",
+        "runtimeVersion": 3,
+        "authoringStatus": "published",
+        "authoringVersion": 9
+      },
+      {
+        "id": "94c4bcef-0ddf-45ec-9368-73dc232c0262",
+        "scope": "template",
+        "skill": "PHY7-U02-S03",
+        "runtimeStatus": "published",
+        "runtimeVersion": 3,
+        "authoringStatus": "published",
+        "authoringVersion": 6
+      },
+      {
+        "id": "404bad98-2404-4a5c-8f0c-dc716d5a354d",
+        "scope": "template",
+        "skill": "PHY7-U02-S04",
+        "runtimeStatus": "published",
+        "runtimeVersion": 3,
+        "authoringStatus": "published",
+        "authoringVersion": 6
+      },
+      {
+        "id": "72f5367c-8ecd-4200-8d6b-41f1f59fbd8a",
+        "scope": "template",
+        "skill": "PHY7-U02-S05",
+        "runtimeStatus": "published",
+        "runtimeVersion": 3,
+        "authoringStatus": "published",
+        "authoringVersion": 6
+      },
+      {
+        "id": "d76553fa-1901-4946-bff8-083fb7ae54e4",
+        "scope": "template",
+        "skill": "PHY7-U02-S06",
+        "runtimeStatus": "published",
+        "runtimeVersion": 3,
+        "authoringStatus": "published",
+        "authoringVersion": 6
+      },
+      {
+        "id": "c446e7ed-7b88-46dc-b803-a78f43a025ac",
+        "scope": "template",
+        "skill": "PHY7-U02-S07",
+        "runtimeStatus": "published",
+        "runtimeVersion": 2,
+        "authoringStatus": "published",
+        "authoringVersion": 3
+      },
+      {
+        "id": "2d63deac-50b5-4260-9c16-62e6de09b846",
+        "scope": "template",
+        "skill": "PHY7-U02-S08",
+        "runtimeStatus": "published",
+        "runtimeVersion": 2,
+        "authoringStatus": "published",
+        "authoringVersion": 4
+      },
+      {
+        "id": "36fa403b-dc42-46bb-bbd4-fb21f9d80a97",
+        "scope": "template",
+        "skill": "PHY7-U02-S09",
+        "runtimeStatus": "published",
+        "runtimeVersion": 2,
+        "authoringStatus": "published",
+        "authoringVersion": 4
+      }
+    ]
+  },
+  "functionReadback": [
+    {
+      "name": "governed_skill_ready",
+      "schema": "private",
+      "bodyMD5": "aba303445406204fb2feec26a7d02bc2"
+    },
+    {
+      "name": "prepare_governed_lifecycle",
+      "schema": "private",
+      "bodyMD5": "4fefbcefe6c6fb56329a7682d71e5eca"
+    },
+    {
+      "name": "service_governed_learning_operation",
+      "schema": "public",
+      "bodyMD5": "b046e598298a41774324d8390ca73647"
+    },
+    {
+      "name": "validate_assessment_policy_v1",
+      "schema": "private",
+      "bodyMD5": "1a6978f0cb38cd2bb653a9efa8c6b27b"
+    }
+  ],
+  "approval": {
+    "assessmentLength": false,
+    "scoringAndReadiness": false,
+    "contentBudget": false,
+    "curriculumActivated": false
+  },
+  "boundaries": [
+    "SQL inventory and current function body hashes only; no learner login or second-release live switching.",
+    "Published template remediation guides are read through the authoring catalogue; the legacy skill fallback table is not their inventory.",
+    "Historical gate notes are retained; fresh observations do not mark a pending gate passed."
+  ],
+  "runtimeCompatibility": {
+    "method": "Executed the actual v1 JavaScript policy parser with isolated synthetic identifiers; read back four deployed SQL body MD5s and compared to latest repository definitions; exhaustively calculated all 65,536 binary response patterns for the 16-slot draft. No governed session was created and no learner login was tested.",
+    "sourceChecks": [
+      {
+        "schema": "private",
+        "name": "governed_skill_ready",
+        "sourceFile": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql",
+        "bodyMD5": "aba303445406204fb2feec26a7d02bc2",
+        "deployedBodyMD5": "aba303445406204fb2feec26a7d02bc2",
+        "match": true
+      },
+      {
+        "schema": "private",
+        "name": "prepare_governed_lifecycle",
+        "sourceFile": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql",
+        "bodyMD5": "4fefbcefe6c6fb56329a7682d71e5eca",
+        "deployedBodyMD5": "4fefbcefe6c6fb56329a7682d71e5eca",
+        "match": true
+      },
+      {
+        "schema": "public",
+        "name": "service_governed_learning_operation",
+        "sourceFile": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql",
+        "bodyMD5": "b046e598298a41774324d8390ca73647",
+        "deployedBodyMD5": "b046e598298a41774324d8390ca73647",
+        "match": true
+      },
+      {
+        "schema": "private",
+        "name": "validate_assessment_policy_v1",
+        "sourceFile": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql",
+        "bodyMD5": "1a6978f0cb38cd2bb653a9efa8c6b27b",
+        "deployedBodyMD5": "1a6978f0cb38cd2bb653a9efa8c6b27b",
+        "match": true
+      }
+    ],
+    "parser": {
+      "optionBAllSixteenAccepted": true,
+      "optionCTenMandatoryAccepted": true,
+      "zeroAdditionalMinimumAccepted": true,
+      "undeclaredScoringAndReadinessFieldsRejected": true
+    },
+    "counterexample": {
+      "correctBySkill": [
+        2,
+        0,
+        2,
+        2,
+        2,
+        0,
+        2,
+        0
+      ],
+      "mandatoryCorrect": 10,
+      "mandatoryTotal": 10,
+      "allCorrect": 10,
+      "allTotal": 16,
+      "displayedAllPercent": 63,
+      "mandatoryPercent": 100,
+      "allSkillV1Pass": false,
+      "zeroAdditionalMinimumV1Pass": false,
+      "proposedScopedPass": true
+    },
+    "arithmetic": {
+      "patterns": 65536,
+      "allEightPass": 577,
+      "v1ZeroAdditionalMinimumPass": 622,
+      "mandatoryOnlyPass": 3264,
+      "mandatoryPassButZeroMinimumV1Fails": 2722
+    }
+  }
+}
