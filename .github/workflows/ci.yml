@@ -55,6 +55,16 @@ jobs:
         run: npx playwright install --with-deps chromium
       - name: Verify browser responsiveness and lifecycle regressions
         run: node --test tests/browser/*.test.mjs
+        env:
+          STUDENT_LAYOUT_SCREENSHOTS_DIR: artifacts/student-workspace
+      - name: Keep isolated student interface evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: student-workspace-browser
+          path: artifacts/student-workspace
+          if-no-files-found: ignore
+          retention-days: 14
 
 
   institutional-concurrency:
