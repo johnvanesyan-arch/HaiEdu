@@ -30,11 +30,11 @@ The new `PHY7-U02-S02-F02-PARTICLE-OBSERVATIONS` family supplies four **practice
 
 Figures come from the user's *Physics 7 (2023)* PDF, SHA-256 `d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904`. Extracted PDF artwork retains original labels; explanatory captions are excluded. Armenian alternative text describes the apparatus and visible states without supplying the model explanation. Crop coordinates, source and asset hashes are in [media provenance](evidence/chapter-ii-s02-textbook-media-20261006.json). These are practice stimuli; reuse in protected assessment requires a separate exposure decision.
 
-Each wrong option maps to one of three existing active S02 misconception definitions. The four keys use A/B/C/D once, and runtime option shuffling stays enabled. A new template-specific draft remediation guide explains observation-to-model reasoning. The four questions now have recorded content-review approvals. The guide remains draft and awaits its separate human review; external SME validation remains pending.
+Each wrong option maps to one of three existing active S02 misconception definitions. The four keys use A/B/C/D once, and runtime option shuffling stays enabled. A new template-specific remediation guide explains observation-to-model reasoning. The four questions have recorded content-review approvals, and the guide is now published at runtime version 2. Human review of this bounded batch is complete; external SME validation remains pending.
 
 The shared reviewer preview now uses the learner's existing image/text stimulus renderer across subjects and grades. Unsupported or invalid media produces an Armenian message while preserving the question and options. Native Chromium tests cover images at desktop/mobile widths, replacement, invalid media, late item responses and logout. This is isolated browser verification with auth/network doubles, not an authenticated production content-review journey.
 
-After the question approvals verified on 2026-10-06, Chapter II has **36 authored and approved questions**. The 192-question target leaves **156 questions un-authored**. The new template guide remains draft. No pool membership, blueprint, assessment-policy/model binding or learner exposure is created. Chapter II remains draft.
+After the question approvals verified on 2026-10-06, Chapter II has **36 authored and approved questions**. The 192-question target leaves **156 questions un-authored**. The new template guide is published at runtime version 2. No pool membership, blueprint, assessment-policy/model binding or learner exposure is created. Chapter II remains draft.
 
 ## Deployment and reviewer handoff
 
@@ -53,4 +53,10 @@ The approved questions remain available in the [review queue](https://www.haiedu
 
 Read-only production verification at 15:18:59 UTC confirms all four version-1 questions are `published` / `approved`. Matching-version review records contain content approvals with a reviewer recorded, and latest QA passes without errors or warnings. Approval times were 14:21:49 UTC for I05, 15:03:09 for I06, 15:03:46 for I07 and 15:04:26 for I08. This is content approval, not external SME validation. [Readback evidence](evidence/sprint-15b13-question-approvals-20261006.json).
 
-The separate guide **Ինչպե՞ս կապել դիտումը մասնիկային մոդելի հետ** (`d4e0d836-88b8-4c78-a013-7aad68f4d857`) remains authoring version 1 draft, with no published runtime version. Review and publish it through the [remediation-guide workspace](https://www.haiedu.am/content-guides.html) to finish this batch's human review. Question approval does not imply guide approval. Chapter II's candidate release remains draft; this checkpoint performs no database or learner-release mutation.
+At this question-approval checkpoint, the separate guide **Ինչպե՞ս կապել դիտումը մասնիկային մոդելի հետ** (`d4e0d836-88b8-4c78-a013-7aad68f4d857`) was still authoring version 1 draft, with no published runtime version. Its subsequent review/publication is recorded below. Question approval does not imply guide approval. Chapter II's candidate release remained draft; this checkpoint performed no database or learner-release mutation.
+
+## Guide publication checkpoint — 2026-10-06
+
+Production readback at 15:36:13 UTC confirms the new template guide is **published at runtime version 2**. Its recorded authoring history progresses through draft version 2, review version 3 and published version 4; publication occurred at 15:34:55 UTC with an actor recorded. Published authoring version 4 references runtime version 2, and the runtime history records the publication. [Readback evidence](evidence/sprint-15b13-guide-publication-20261006.json).
+
+The four-question/one-guide batch's human review is complete. Chapter II still contains **36 approved questions**, leaving **156 to author** toward the 192-question plan. The prior 32-question illustration audit, external SME review, numeric readiness/model approval, protected assessment banks, bindings, pilot and chapter-release gates remain separate. The candidate release is still draft. This verification changes documentation only.

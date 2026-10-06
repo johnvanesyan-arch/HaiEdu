@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "checkpoint": "15B.13 first S02 expansion — question and guide human review complete",
+  "method": "Read-only production catalogue and guide lifecycle/version history readback; no database, content or release mutation performed by the agent.",
+  "sourceMainAtRead": "3018da6673a39dc601c7d9704f1a877a5681c953",
+  "snapshot": {
+    "guide": [
+      {
+        "id": "d4e0d836-88b8-4c78-a013-7aad68f4d857",
+        "status": "published",
+        "title_hy": "Ինչպե՞ս կապել դիտումը մասնիկային մոդելի հետ",
+        "guide_version": 2
+      }
+    ],
+    "observed_at": "2026-10-06T15:36:13.592035+00:00",
+    "chapter_items": [
+      {
+        "count": 36,
+        "status": "published",
+        "review_status": "approved"
+      }
+    ],
+    "runtime_history": [
+      {
+        "guide_version": 1,
+        "lifecycle_action": "draft_created"
+      },
+      {
+        "guide_version": 2,
+        "lifecycle_action": "published"
+      }
+    ],
+    "authoring_history": [
+      {
+        "created_at": "2026-10-06T14:03:36.096791+00:00",
+        "actor_recorded": false,
+        "lifecycle_status": "draft",
+        "authoring_version": 1,
+        "published_runtime_version": null
+      },
+      {
+        "created_at": "2026-10-06T15:34:14.314366+00:00",
+        "actor_recorded": true,
+        "lifecycle_status": "draft",
+        "authoring_version": 2,
+        "published_runtime_version": null
+      },
+      {
+        "created_at": "2026-10-06T15:34:18.368658+00:00",
+        "actor_recorded": true,
+        "lifecycle_status": "review",
+        "authoring_version": 3,
+        "published_runtime_version": null
+      },
+      {
+        "created_at": "2026-10-06T15:34:55.135473+00:00",
+        "actor_recorded": true,
+        "lifecycle_status": "published",
+        "authoring_version": 4,
+        "published_runtime_version": 2
+      }
+    ],
+    "candidate_release": [
+      {
+        "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "status": "draft"
+      }
+    ]
+  },
+  "questionApprovalEvidence": "sprint-15b13-question-approvals-20261006.json",
+  "interpretation": {
+    "boundedBatchHumanReviewComplete": true,
+    "publishedGuideRuntimeVersion": 2,
+    "publishedGuideAuthoringVersion": 4,
+    "approvedChapterItems": 36,
+    "targetChapterItems": 192,
+    "remainingUnauthoredItems": 156,
+    "externalSmeReviewComplete": false,
+    "chapterExpansionComplete": false,
+    "chapterReleaseAuthorized": false
+  }
+}
