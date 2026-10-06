@@ -1,0 +1,748 @@
+{
+  "schemaVersion": 1,
+  "sprint": "15B.12B",
+  "capturedAt": "2026-10-06T06:33:34.796Z",
+  "repository": "johnvanesyan-arch/armenian-mastery-platform",
+  "sourceCommit": "03b51d5fdd455aa06e6b45d24000cb737d7f1d92",
+  "reviewedHead": "267d14eb2720b95c6c8bc9abaa3e014d10acf74d",
+  "pullRequest": 129,
+  "scope": "Shared prospective immutable policy binding and transactional enrollment/session foundation. No policy activation or Edge/dashboard consumer migration.",
+  "validation": {
+    "isolatedPGliteSQLChecks": 82,
+    "independentPostgreSQL17Cases": 16,
+    "prCI": {
+      "runId": 37422880315,
+      "runNumber": 1199,
+      "headSha": "267d14eb2720b95c6c8bc9abaa3e014d10acf74d",
+      "event": "pull_request",
+      "conclusion": "success",
+      "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/37422880315",
+      "nodeTests": 1125,
+      "nativeChromiumTests": 22,
+      "jobs": [
+        {
+          "id": 112135943812,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 112135943977,
+          "name": "institutional-concurrency",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 112135944029,
+          "name": "phase3-postgres-17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 112135944075,
+          "name": "role-layout-browser",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 112136647757,
+          "name": "Platform release checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "mainCI": {
+      "runId": 37423143614,
+      "runNumber": 1200,
+      "headSha": "03b51d5fdd455aa06e6b45d24000cb737d7f1d92",
+      "event": "push",
+      "conclusion": "success",
+      "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/37423143614",
+      "nodeTests": 1125,
+      "nativeChromiumTests": 22,
+      "jobs": [
+        {
+          "id": 112136773094,
+          "name": "role-layout-browser",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 112136773193,
+          "name": "phase3-postgres-17",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 112136773256,
+          "name": "test",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 112136773259,
+          "name": "institutional-concurrency",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "id": 112137178438,
+          "name": "Platform release checks",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "reviewFindingsResolved": [
+      {
+        "commentId": 4192070866,
+        "issue": "Diagnostic identity collision for reused chapter codes",
+        "resolution": "Legacy partial indexes preserve the legacy path; governed unique indexes and lifetime guards use student/programme/frozen unit across releases; start rejects unmapped same-programme history. Isolated and independent PG17 regression coverage."
+      },
+      {
+        "commentId": 4192070877,
+        "issue": "Mutable blueprint moves a diagnostic prerequisite",
+        "resolution": "Governed baseline query uses learning_sessions.governed_unit_id and immutable release provenance; legacy baselines require explicit mapping. Catalogue reassignment regression passes."
+      }
+    ],
+    "acceptanceBoundary": "Synthetic isolated fixtures; no real authenticated learner session or second-release switching test was performed."
+  },
+  "migration": {
+    "project": "xzyjvwiiibuarpotppid",
+    "sourceFile": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql",
+    "sourceSha256": "93330dc3abd354735174151a5d51a2be99bcf35298c4dadf28d33fd28a969137",
+    "appliedName": "sprint_15b12b_policy_session_bindings",
+    "appliedVersion": "20261006062951",
+    "appliedAt": "2026-10-06T06:29:51.794Z",
+    "verifiedAt": "2026-10-06T06:31:16.952Z",
+    "functionParity": [
+      {
+        "name": "private.reject_assessment_policy_binding_mutation",
+        "match": true,
+        "securityDefiner": false,
+        "anon": false,
+        "authenticated": false,
+        "service_role": false,
+        "configuration": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "name": "private.validate_assessment_policy_v1",
+        "match": true,
+        "securityDefiner": false,
+        "anon": false,
+        "authenticated": false,
+        "service_role": false,
+        "configuration": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "name": "public.service_bind_assessment_policy",
+        "match": true,
+        "securityDefiner": true,
+        "anon": false,
+        "authenticated": false,
+        "service_role": true,
+        "configuration": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "name": "private.lock_student_learning_context",
+        "match": true,
+        "securityDefiner": false,
+        "anon": false,
+        "authenticated": false,
+        "service_role": false,
+        "configuration": [
+          "search_path=\"\"",
+          "TimeZone=UTC"
+        ]
+      },
+      {
+        "name": "public.guard_initial_diagnostic",
+        "match": true,
+        "securityDefiner": false,
+        "anon": false,
+        "authenticated": false,
+        "service_role": true,
+        "configuration": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "name": "private.guard_governed_learning_session",
+        "match": true,
+        "securityDefiner": false,
+        "anon": false,
+        "authenticated": false,
+        "service_role": false,
+        "configuration": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "name": "private.scoped_chapter_baseline",
+        "match": true,
+        "securityDefiner": false,
+        "anon": false,
+        "authenticated": false,
+        "service_role": false,
+        "configuration": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "name": "public.service_start_governed_session_atomic",
+        "match": true,
+        "securityDefiner": true,
+        "anon": false,
+        "authenticated": false,
+        "service_role": true,
+        "configuration": [
+          "search_path=\"\""
+        ]
+      },
+      {
+        "name": "public.stamp_learning_session_academic_context_14c",
+        "match": true,
+        "securityDefiner": false,
+        "anon": false,
+        "authenticated": false,
+        "service_role": true,
+        "configuration": [
+          "search_path=public, pg_temp"
+        ]
+      },
+      {
+        "name": "public.stamp_learning_session_model_configuration",
+        "match": true,
+        "securityDefiner": false,
+        "anon": true,
+        "authenticated": true,
+        "service_role": true,
+        "configuration": [
+          "search_path=public"
+        ]
+      }
+    ],
+    "ledgerRls": true,
+    "ledgerPrivileges": [
+      {
+        "role": "anon",
+        "delete": false,
+        "insert": false,
+        "select": false,
+        "update": false
+      },
+      {
+        "role": "authenticated",
+        "delete": false,
+        "insert": false,
+        "select": false,
+        "update": false
+      },
+      {
+        "role": "service_role",
+        "delete": false,
+        "insert": false,
+        "select": true,
+        "update": false
+      }
+    ],
+    "productionPolicyBindings": 0,
+    "governedProductionSessions": 0,
+    "foreignKeys": [
+      {
+        "name": "assessment_policy_bindings_pkey",
+        "definition": "PRIMARY KEY (id)"
+      },
+      {
+        "name": "assessment_policy_bindings_assessment_blueprint_id_key",
+        "definition": "UNIQUE (assessment_blueprint_id)"
+      },
+      {
+        "name": "assessment_policy_bindings_assessment_blueprint_id_fkey",
+        "definition": "FOREIGN KEY (assessment_blueprint_id) REFERENCES assessment_blueprints(id)"
+      },
+      {
+        "name": "assessment_policy_bindings_curriculum_release_id_fkey",
+        "definition": "FOREIGN KEY (curriculum_release_id) REFERENCES curriculum_releases(id)"
+      },
+      {
+        "name": "assessment_policy_bindings_unit_id_fkey",
+        "definition": "FOREIGN KEY (unit_id) REFERENCES units(id)"
+      },
+      {
+        "name": "assessment_policy_bindings_subject_program_id_fkey",
+        "definition": "FOREIGN KEY (subject_program_id) REFERENCES subject_programs(id)"
+      },
+      {
+        "name": "assessment_policy_bindings_learning_model_configuration_id_fkey",
+        "definition": "FOREIGN KEY (learning_model_configuration_id) REFERENCES learning_model_configurations(id)"
+      },
+      {
+        "name": "assessment_policy_bindings_academic_mastery_policy_id_fkey",
+        "definition": "FOREIGN KEY (academic_mastery_policy_id) REFERENCES academic_mastery_policy_versions(id)"
+      },
+      {
+        "name": "learning_sessions_assessment_policy_binding_id_fkey",
+        "definition": "FOREIGN KEY (assessment_policy_binding_id) REFERENCES assessment_policy_bindings(id)"
+      },
+      {
+        "name": "learning_sessions_governed_unit_id_fkey",
+        "definition": "FOREIGN KEY (governed_unit_id) REFERENCES units(id)"
+      }
+    ],
+    "indexes": [
+      {
+        "name": "assessment_policy_bindings_pkey",
+        "definition": "CREATE UNIQUE INDEX assessment_policy_bindings_pkey ON public.assessment_policy_bindings USING btree (id)"
+      },
+      {
+        "name": "assessment_policy_bindings_assessment_blueprint_id_key",
+        "definition": "CREATE UNIQUE INDEX assessment_policy_bindings_assessment_blueprint_id_key ON public.assessment_policy_bindings USING btree (assessment_blueprint_id)"
+      },
+      {
+        "name": "assessment_policy_bindings_release_unit_idx",
+        "definition": "CREATE INDEX assessment_policy_bindings_release_unit_idx ON public.assessment_policy_bindings USING btree (curriculum_release_id, unit_id)"
+      },
+      {
+        "name": "assessment_policy_bindings_unit_idx",
+        "definition": "CREATE INDEX assessment_policy_bindings_unit_idx ON public.assessment_policy_bindings USING btree (unit_id)"
+      },
+      {
+        "name": "assessment_policy_bindings_programme_idx",
+        "definition": "CREATE INDEX assessment_policy_bindings_programme_idx ON public.assessment_policy_bindings USING btree (subject_program_id)"
+      },
+      {
+        "name": "assessment_policy_bindings_model_idx",
+        "definition": "CREATE INDEX assessment_policy_bindings_model_idx ON public.assessment_policy_bindings USING btree (learning_model_configuration_id)"
+      },
+      {
+        "name": "assessment_policy_bindings_lifecycle_idx",
+        "definition": "CREATE INDEX assessment_policy_bindings_lifecycle_idx ON public.assessment_policy_bindings USING btree (academic_mastery_policy_id)"
+      },
+      {
+        "name": "learning_sessions_policy_binding_idx",
+        "definition": "CREATE INDEX learning_sessions_policy_binding_idx ON public.learning_sessions USING btree (assessment_policy_binding_id)"
+      },
+      {
+        "name": "learning_sessions_governed_unit_idx",
+        "definition": "CREATE INDEX learning_sessions_governed_unit_idx ON public.learning_sessions USING btree (governed_unit_id)"
+      },
+      {
+        "name": "learning_sessions_scoped_resume_idx",
+        "definition": "CREATE INDEX learning_sessions_scoped_resume_idx ON public.learning_sessions USING btree (student_id, institutional_class_enrollment_id, curriculum_release_id, unit_code, status, started_at)"
+      },
+      {
+        "name": "learning_sessions_one_completed_diagnostic_idx",
+        "definition": "CREATE UNIQUE INDEX learning_sessions_one_completed_diagnostic_idx ON public.learning_sessions USING btree (student_id, unit_code) WHERE ((mode = 'diagnostic'::text) AND (status = 'completed'::text) AND (assessment_policy_binding_id IS NULL))"
+      },
+      {
+        "name": "learning_sessions_one_active_diagnostic_idx",
+        "definition": "CREATE UNIQUE INDEX learning_sessions_one_active_diagnostic_idx ON public.learning_sessions USING btree (student_id, unit_code) WHERE ((mode = 'diagnostic'::text) AND (status = 'active'::text) AND (assessment_policy_binding_id IS NULL))"
+      },
+      {
+        "name": "learning_sessions_governed_completed_diagnostic_idx",
+        "definition": "CREATE UNIQUE INDEX learning_sessions_governed_completed_diagnostic_idx ON public.learning_sessions USING btree (student_id, subject_program_id, governed_unit_id) WHERE ((mode = 'diagnostic'::text) AND (status = 'completed'::text) AND (assessment_policy_binding_id IS NOT NULL))"
+      },
+      {
+        "name": "learning_sessions_governed_active_diagnostic_idx",
+        "definition": "CREATE UNIQUE INDEX learning_sessions_governed_active_diagnostic_idx ON public.learning_sessions USING btree (student_id, subject_program_id, governed_unit_id) WHERE ((mode = 'diagnostic'::text) AND (status = 'active'::text) AND (assessment_policy_binding_id IS NOT NULL))"
+      }
+    ]
+  },
+  "preservation": {
+    "beforeCapturedAt": "2026-10-06T06:21:55.941Z",
+    "afterVerifiedAt": "2026-10-06T06:31:16.952Z",
+    "allUnchanged": true,
+    "normalization": "For learning_sessions only, exclude the three newly added null provenance columns from the after checksum. All other row JSON is compared unchanged.",
+    "tables": [
+      {
+        "table": "items",
+        "beforeRows": 292,
+        "afterRows": 292,
+        "beforeChecksum": "7976ed245b3fbb67ab7ca953d681ba8e",
+        "afterChecksum": "7976ed245b3fbb67ab7ca953d681ba8e"
+      },
+      {
+        "table": "item_versions",
+        "beforeRows": 120,
+        "afterRows": 120,
+        "beforeChecksum": "f02bc6a3a5c6510763453e9289113871",
+        "afterChecksum": "f02bc6a3a5c6510763453e9289113871"
+      },
+      {
+        "table": "item_options",
+        "beforeRows": 560,
+        "afterRows": 560,
+        "beforeChecksum": "db7051a1895b252c6e789c9a3c0b5c07",
+        "afterChecksum": "db7051a1895b252c6e789c9a3c0b5c07"
+      },
+      {
+        "table": "item_answer_keys",
+        "beforeRows": 292,
+        "afterRows": 292,
+        "beforeChecksum": "56201fe5bab94a6af5ba87353b7d53ea",
+        "afterChecksum": "56201fe5bab94a6af5ba87353b7d53ea"
+      },
+      {
+        "table": "item_misconception_mappings",
+        "beforeRows": 334,
+        "afterRows": 334,
+        "beforeChecksum": "769b4ec2494fe159ac7e89737e007230",
+        "afterChecksum": "769b4ec2494fe159ac7e89737e007230"
+      },
+      {
+        "table": "misconceptions",
+        "beforeRows": 53,
+        "afterRows": 53,
+        "beforeChecksum": "9b113211e4e1988f7a74ca6a2f957dda",
+        "afterChecksum": "9b113211e4e1988f7a74ca6a2f957dda"
+      },
+      {
+        "table": "misconception_review_events",
+        "beforeRows": 44,
+        "afterRows": 44,
+        "beforeChecksum": "b67911dbfe7c2056725b15e9e52da31d",
+        "afterChecksum": "b67911dbfe7c2056725b15e9e52da31d"
+      },
+      {
+        "table": "curriculum_releases",
+        "beforeRows": 3,
+        "afterRows": 3,
+        "beforeChecksum": "a47ffa06d3d0c1e7f438c1c4153b2cce",
+        "afterChecksum": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+      },
+      {
+        "table": "curriculum_release_units",
+        "beforeRows": 4,
+        "afterRows": 4,
+        "beforeChecksum": "f69aedad164621e7739d0ccd6ee18ee9",
+        "afterChecksum": "f69aedad164621e7739d0ccd6ee18ee9"
+      },
+      {
+        "table": "curriculum_release_skills",
+        "beforeRows": 28,
+        "afterRows": 28,
+        "beforeChecksum": "2bdc962e3ce06ad52373af19516a1147",
+        "afterChecksum": "2bdc962e3ce06ad52373af19516a1147"
+      },
+      {
+        "table": "curriculum_release_item_families",
+        "beforeRows": 162,
+        "afterRows": 162,
+        "beforeChecksum": "63c7158c717fd20f0a7e31c71e9a713d",
+        "afterChecksum": "63c7158c717fd20f0a7e31c71e9a713d"
+      },
+      {
+        "table": "curriculum_release_gate_checks",
+        "beforeRows": 14,
+        "afterRows": 14,
+        "beforeChecksum": "e264300d5ca77755f1dab01f403be695",
+        "afterChecksum": "e264300d5ca77755f1dab01f403be695"
+      },
+      {
+        "table": "assessment_pools",
+        "beforeRows": 4,
+        "afterRows": 4,
+        "beforeChecksum": "c957e610a262f61bd1e50d9c715b6973",
+        "afterChecksum": "c957e610a262f61bd1e50d9c715b6973"
+      },
+      {
+        "table": "assessment_pool_items",
+        "beforeRows": 280,
+        "afterRows": 280,
+        "beforeChecksum": "bc60f679991a95387749629e7a2759cd",
+        "afterChecksum": "bc60f679991a95387749629e7a2759cd"
+      },
+      {
+        "table": "assessment_blueprints",
+        "beforeRows": 7,
+        "afterRows": 7,
+        "beforeChecksum": "4c64b14184d45a2b0a74bfed3e15c2ad",
+        "afterChecksum": "4c64b14184d45a2b0a74bfed3e15c2ad"
+      },
+      {
+        "table": "assessment_blueprint_items",
+        "beforeRows": 360,
+        "afterRows": 360,
+        "beforeChecksum": "7a79e5cf149c5b81397dee836722b789",
+        "afterChecksum": "7a79e5cf149c5b81397dee836722b789"
+      },
+      {
+        "table": "assessment_forms",
+        "beforeRows": 4,
+        "afterRows": 4,
+        "beforeChecksum": "261152bab0348edaf4fadca0385c850e",
+        "afterChecksum": "261152bab0348edaf4fadca0385c850e"
+      },
+      {
+        "table": "assessment_form_items",
+        "beforeRows": 80,
+        "afterRows": 80,
+        "beforeChecksum": "02512d79c711fdd1ade10d8b8ba60bd5",
+        "afterChecksum": "02512d79c711fdd1ade10d8b8ba60bd5"
+      },
+      {
+        "table": "learning_sessions",
+        "beforeRows": 7,
+        "afterRows": 7,
+        "beforeChecksum": "508e17f42d4e6edfe15cfc04a52f5ebd",
+        "afterChecksum": "508e17f42d4e6edfe15cfc04a52f5ebd"
+      },
+      {
+        "table": "learning_session_items",
+        "beforeRows": 79,
+        "afterRows": 79,
+        "beforeChecksum": "dbbb19423c945d8f0ccb85d2312a7800",
+        "afterChecksum": "dbbb19423c945d8f0ccb85d2312a7800"
+      },
+      {
+        "table": "attempts",
+        "beforeRows": 42,
+        "afterRows": 42,
+        "beforeChecksum": "34d7f71a2768a1afe6f357721e668393",
+        "afterChecksum": "34d7f71a2768a1afe6f357721e668393"
+      },
+      {
+        "table": "student_skill_mastery",
+        "beforeRows": 13,
+        "afterRows": 13,
+        "beforeChecksum": "46440fe2dcdb54ec21804d679701e8ee",
+        "afterChecksum": "46440fe2dcdb54ec21804d679701e8ee"
+      },
+      {
+        "table": "student_skill_mastery_by_release",
+        "beforeRows": 13,
+        "afterRows": 13,
+        "beforeChecksum": "2f4adfd4245382d10ee42fa849245706",
+        "afterChecksum": "2f4adfd4245382d10ee42fa849245706"
+      },
+      {
+        "table": "learning_model_configurations",
+        "beforeRows": 1,
+        "afterRows": 1,
+        "beforeChecksum": "aa979267d2449ba3a083dfc983f41c7b",
+        "afterChecksum": "aa979267d2449ba3a083dfc983f41c7b"
+      },
+      {
+        "table": "learning_model_runtime_bindings",
+        "beforeRows": 1,
+        "afterRows": 1,
+        "beforeChecksum": "a703d789bf14d49c3056c02aab493854",
+        "afterChecksum": "a703d789bf14d49c3056c02aab493854"
+      },
+      {
+        "table": "academic_mastery_policy_versions",
+        "beforeRows": 1,
+        "afterRows": 1,
+        "beforeChecksum": "33b38545c0070113c573947187bc96ab",
+        "afterChecksum": "33b38545c0070113c573947187bc96ab"
+      },
+      {
+        "table": "runtime_builds",
+        "beforeRows": 18,
+        "afterRows": 18,
+        "beforeChecksum": "9d5d6d0d6770999536cfdbd074cf15a7",
+        "afterChecksum": "9d5d6d0d6770999536cfdbd074cf15a7"
+      },
+      {
+        "table": "chapter_mastery_states",
+        "beforeRows": 1,
+        "afterRows": 1,
+        "beforeChecksum": "9029019bf1569cae15fd93aa8b4ecff0",
+        "afterChecksum": "9029019bf1569cae15fd93aa8b4ecff0"
+      },
+      {
+        "table": "mastery_check_attempts",
+        "beforeRows": 1,
+        "afterRows": 1,
+        "beforeChecksum": "792e2f317f1c2e2ddf41daa4af787800",
+        "afterChecksum": "792e2f317f1c2e2ddf41daa4af787800"
+      },
+      {
+        "table": "chapter_review_cycles",
+        "beforeRows": 0,
+        "afterRows": 0,
+        "beforeChecksum": "d41d8cd98f00b204e9800998ecf8427e",
+        "afterChecksum": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ]
+  },
+  "advisors": [
+    {
+      "type": "security",
+      "before": [
+        {
+          "name": "rls_enabled_no_policy",
+          "count": 35
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "count": 1
+        }
+      ],
+      "after": [
+        {
+          "name": "rls_enabled_no_policy",
+          "count": 35,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "count": 1,
+          "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+        }
+      ],
+      "assessment": "No new security findings.",
+      "newFindings": []
+    },
+    {
+      "type": "performance",
+      "before": [
+        {
+          "name": "unindexed_foreign_keys",
+          "count": 39
+        },
+        {
+          "name": "auth_rls_initplan",
+          "count": 16
+        },
+        {
+          "name": "unused_index",
+          "count": 99
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "count": 14
+        }
+      ],
+      "after": [
+        {
+          "name": "unindexed_foreign_keys",
+          "count": 39,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+        },
+        {
+          "name": "auth_rls_initplan",
+          "count": 16,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+        },
+        {
+          "name": "unused_index",
+          "count": 107,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "count": 14,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies"
+        }
+      ],
+      "assessment": "Eight new unused-index INFO findings are the newly added binding and session-scope indexes, retained for FK/query coverage and the 12C consumer migration. All other categories are unchanged.",
+      "newFindings": [
+        {
+          "detail": "Index \\`assessment_policy_bindings_release_unit_idx\\` on table \\`public.assessment_policy_bindings\\` has not been used",
+          "metadata": {
+            "name": "assessment_policy_bindings",
+            "type": "table",
+            "schema": "public"
+          }
+        },
+        {
+          "detail": "Index \\`assessment_policy_bindings_unit_idx\\` on table \\`public.assessment_policy_bindings\\` has not been used",
+          "metadata": {
+            "name": "assessment_policy_bindings",
+            "type": "table",
+            "schema": "public"
+          }
+        },
+        {
+          "detail": "Index \\`assessment_policy_bindings_programme_idx\\` on table \\`public.assessment_policy_bindings\\` has not been used",
+          "metadata": {
+            "name": "assessment_policy_bindings",
+            "type": "table",
+            "schema": "public"
+          }
+        },
+        {
+          "detail": "Index \\`assessment_policy_bindings_model_idx\\` on table \\`public.assessment_policy_bindings\\` has not been used",
+          "metadata": {
+            "name": "assessment_policy_bindings",
+            "type": "table",
+            "schema": "public"
+          }
+        },
+        {
+          "detail": "Index \\`assessment_policy_bindings_lifecycle_idx\\` on table \\`public.assessment_policy_bindings\\` has not been used",
+          "metadata": {
+            "name": "assessment_policy_bindings",
+            "type": "table",
+            "schema": "public"
+          }
+        },
+        {
+          "detail": "Index \\`learning_sessions_policy_binding_idx\\` on table \\`public.learning_sessions\\` has not been used",
+          "metadata": {
+            "name": "learning_sessions",
+            "type": "table",
+            "schema": "public"
+          }
+        },
+        {
+          "detail": "Index \\`learning_sessions_governed_unit_idx\\` on table \\`public.learning_sessions\\` has not been used",
+          "metadata": {
+            "name": "learning_sessions",
+            "type": "table",
+            "schema": "public"
+          }
+        },
+        {
+          "detail": "Index \\`learning_sessions_scoped_resume_idx\\` on table \\`public.learning_sessions\\` has not been used",
+          "metadata": {
+            "name": "learning_sessions",
+            "type": "table",
+            "schema": "public"
+          }
+        }
+      ]
+    }
+  ],
+  "production": {
+    "deploymentId": "dpl_E73LtgAcUPSczcCcaMgsbHiLFJY6",
+    "domain": "www.haiedu.am",
+    "readyState": "READY",
+    "sourceCommit": "03b51d5fdd455aa06e6b45d24000cb737d7f1d92",
+    "releaseJson": {
+      "schemaVersion": 1,
+      "commit": "03b51d5fdd455aa06e6b45d24000cb737d7f1d92",
+      "verification": "curl -fsS successfully retrieved the public release.json (2xx HTTP response)",
+      "verifiedAt": "2026-10-06T06:32:28.871Z"
+    },
+    "persistentGate": {
+      "checkedAt": "2026-10-06T06:10:48.539Z",
+      "provider": "GitHub",
+      "check": "Platform release checks",
+      "environment": "Production",
+      "behavior": "Blocking",
+      "source": "Vercel signed-in project settings (read-only)",
+      "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/settings/build-and-deployment#deployment-checks"
+    }
+  },
+  "unchangedBoundaries": [
+    "existing learner history, model parameters and assessment criteria",
+    "legacy learning API consumers and dashboard behavior",
+    "Chapter II draft release and separate SME/assessment/content gates",
+    "one lifetime chapter diagnostic across releases/academic years"
+  ],
+  "openSlices": [
+    "15B.12C authenticated learning API and deployed dependency migration, including explicit legacy compatibility mapping",
+    "15B.12D navigation, dashboards and role analytics",
+    "15B.12E full two-unit/two-subject acceptance and authorized live switching after a second release exists"
+  ]
+}
