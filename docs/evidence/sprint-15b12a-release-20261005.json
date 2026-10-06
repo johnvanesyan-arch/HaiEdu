@@ -331,7 +331,28 @@
         "behavior": "Blocking",
         "verification": "Vercel project settings: visible Blocking menu item has SVG checkmark; no settings changed."
       },
-      "finalMergedMainVerification": "Still required after the evidence PR merge; do not bypass the aggregate or production revision guard."
+      "finalMergedMainVerification": {
+        "verified": true,
+        "checkedOn": "2026-10-06",
+        "sourceCommit": "f07af23aafabb648414aa9626611de11ef6cc3e8",
+        "pullRequest": 128,
+        "mainCI": {
+          "runId": 37417579297,
+          "runNumber": 1194,
+          "conclusion": "success",
+          "nodeTests": 1043,
+          "nativeChromiumTests": 22,
+          "requiredJobs": 5
+        },
+        "production": {
+          "deploymentId": "dpl_FM4sxZzsXkvwZFcnWHo6dUp8ctth",
+          "domain": "www.haiedu.am",
+          "sourceCommit": "f07af23aafabb648414aa9626611de11ef6cc3e8",
+          "readyState": "READY",
+          "verification": "Alias/source metadata and HTTP 200 release.json, reconciled with the already-closed Notion tracker."
+        },
+        "persistentGate": "GitHub Platform release checks / Production / Blocking; separately observed, no bypass"
+      }
     }
   }
 }

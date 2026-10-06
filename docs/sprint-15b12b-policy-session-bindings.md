@@ -1,6 +1,6 @@
 # Sprint 15B.12B — immutable policy binding and transactional session context
 
-Started 2026-10-06. Implementation prepared; reviewed CI and production migration verification are required before closure.
+Completed and deployed 2026-10-06. The bounded database foundation is release-verified; 15B.12C is the next consumer migration.
 
 The shared database foundation uses explicit enrollment, programme, release, unit and blueprint identities. It adds no subject, grade, question-count, language or scoring default. It does not activate Chapter II or change an existing learner's assessment rules.
 
@@ -34,8 +34,20 @@ No Edge consumer is switched to the new path in 12B, no shared Edge import chang
 
 ## Verification
 
-82 executable PGlite/PostgreSQL policy and session tests cover three chapters across two programmes, two authorized same-programme classes, exact enrollment ownership, reciprocal subject/school boundaries, incomplete forms/pools, version changes, unsupported contracts, explicit unequal allocations, optional supporting-skill pass requirements, model/lifecycle compatibility, live-session revocation, resume provenance, permissions, atomic rollback and legacy preservation. These are isolated synthetic fixtures, not authenticated production learner acceptance.
+82 executable PGlite SQL policy and session checks cover three chapters across two programmes, two authorized same-programme classes, exact enrollment ownership, reciprocal subject/school boundaries, incomplete forms/pools, version changes, unsupported contracts, explicit unequal allocations, optional supporting-skill pass requirements, model/lifecycle compatibility, live-session revocation, resume provenance, permissions, atomic rollback and legacy preservation. These are isolated synthetic fixtures, not authenticated production learner acceptance.
 
 The PostgreSQL 17 CI job adds 16 independent-connection cases: duplicate starts, rollback, enrollment/membership/teacher/student/year/Auth revocation, existing teacher offboarding, termination after a successful start, item retirement, form removal, expiry during a lock wait independent chapter starts and reused chapter codes across subjects. Existing CI jobs and the aggregate Platform release checks are retained.
 
 Release closure requires all reviewed PR/main checks, production migration readback, function/table privilege checks, before/after content and learner-history inventories, advisor comparison and roadmap reconciliation. Production frontend revision and persistent blocking deployment checks are verified separately from CI success. Final evidence is recorded in `docs/evidence/sprint-15b12b-release-20261006.json`.
+
+## Deployed release checkpoint — 2026-10-06
+
+[PR #129](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/129) merged as `03b51d5fdd455aa06e6b45d24000cb737d7f1d92`. [PR CI #1199](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/37422880315) and independent [main CI #1200](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/37423143614) passed all five required jobs: 1,125 Node checks, 22 native Chromium checks, both PostgreSQL jobs and the aggregate Platform release checks. PostgreSQL 17.6 passed all 16 independent-connection policy/session cases. Review findings concerning repeated chapter labels and mutable blueprint baseline scope were corrected and regression-tested before merge.
+
+Production migration `20261006062951_sprint_15b12b_policy_session_bindings` is applied. All ten new/replaced function bodies match the reviewed SQL. Ledger RLS and service-only RPC privileges pass readback; private helpers deny direct access to client/service roles. The ledger remains empty and no governed learner session was created as a deployment probe. All 30 checked content, release, model, assessment and learner-history table counts and checksums are unchanged, excluding only the three new null session columns from the after comparison.
+
+Security advisor categories and other performance categories are unchanged. Eight new [unused-index INFO findings](https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index) identify the new binding/session-scope indexes; these remain for FK/query coverage and the forthcoming consumer migration. No new unindexed foreign key, RLS, execution-privilege or security warning was introduced.
+
+Production deployment `dpl_E73LtgAcUPSczcCcaMgsbHiLFJY6` serves the implementation SHA on `www.haiedu.am`, verified through alias/source metadata and the public release.json response. The persistent GitHub Platform release checks setting was separately observed as Production / Blocking. The documentation-only evidence release undergoes its own required PR/main checks; its final revision is recorded in the Notion sprint tracker.
+
+[Captured implementation deployment evidence](evidence/sprint-15b12b-release-20261006.json). The current learning APIs remain on their existing runtime contract until their platform-wide migration in 15B.12C. No content release or full multi-context acceptance is implied.
