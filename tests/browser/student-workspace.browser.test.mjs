@@ -86,7 +86,7 @@ for(const width of [1280,768,360]) test(`full student assessment shell is readab
       resumeHref:[...document.querySelectorAll('#courseContent a')].find(el=>el.textContent.startsWith('Շարունակել'))?.href
     };
   });
-  await capture(page,'assessment-'+width,metrics);
+  await capture(page,'shared-assessment-'+width,metrics);
   assert.equal(metrics.tableCollapse,'collapse','History lost its table styling');
   assert.ok(metrics.cellPadding>=10,'History rows need readable cell spacing');
   assert.equal(metrics.rawDateVisible,false,'Student history must format timestamps');
@@ -160,7 +160,7 @@ for(const width of [360,768,1920]) for(const tab of ['course','progress']) test(
     viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,
     tables:[...document.querySelectorAll('#courseContent table')].map(el=>({collapse:getComputedStyle(el).borderCollapse,padding:parseFloat(getComputedStyle(el.querySelector('td')).paddingTop)}))
   }));
-  await capture(page,tab+'-'+width,metrics);
+  await capture(page,'shared-'+tab+'-'+width,metrics);
   assert.ok(metrics.documentWidth<=width+1);
   assert.ok(metrics.tables.every(table=>table.collapse==='collapse' && table.padding>=10));
   assert.equal(await page.evaluate(()=>window.__calls.some(c=>c.name==='start-learning-session')),false);
