@@ -11,6 +11,7 @@ create type public.item_type as enum ('single_choice','true_false','numeric','qu
 alter table public.items alter column item_type type public.item_type using item_type::public.item_type;
 alter table units add column code text;
 alter table curriculum_release_units add unique(curriculum_release_id,unit_code_snapshot);
+alter table curriculum_release_skills add column sequence_order_snapshot integer;
 alter table skills add column code text,add column name_hy text,add column layer text;
 alter table items add column code text,add column difficulty integer default 3,add column prompt_hy text,add column stimulus jsonb,add column item_template_id uuid,add column variant_key text,add column variant_parameters jsonb default '{}';
 alter table learning_sessions add column assessment_result text,add column score_percent numeric;
@@ -64,6 +65,7 @@ export async function seedRuntime(db){
  const model=JSON.parse(readFileSync('tests/fixtures/governed-runtime-model.json','utf8'));
  for(const m of [611,612])await db.query('update learning_model_configurations set configuration=configuration||$2 where id=$1',[id(m),JSON.stringify(model)]);
  for(const s of scopes){await db.query('update units set code=$2 where id=$1',[id(s.unit),s.code]);for(const k of s.skills)await db.query("update skills set code=$2,name_hy=$2,layer='core' where id=$1",[id(k),'SYN-'+k]);}
+ await db.exec("update curriculum_release_skills set sequence_order_snapshot=right(skill_id::text,3)::integer");
  await db.query("insert into item_families values($1,'SYN-F')",[id(901)]);await db.query("insert into item_templates values($1,'SYN-T',$2)",[id(902),id(901)]);
  await db.query("update items set code='SYN-'||id::text,item_template_id=$1,variant_key=id::text,prompt_hy='Synthetic selected response'",[id(902)]);
  await db.exec("insert into item_answer_keys(item_id,answer) select id,case when item_type='true_false' then '{\"value\":true}'::jsonb else '{\"value\":\"A\"}'::jsonb end from items;insert into item_options select id,'A','Correct',1 from items where item_type='single_choice';insert into item_options select id,'B','Wrong',2 from items where item_type='single_choice';");

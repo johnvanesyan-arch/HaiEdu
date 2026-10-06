@@ -466,6 +466,7 @@ declare s public.learning_sessions%rowtype; b public.assessment_policy_bindings%
  choice uuid; desired integer; score numeric; wrong_count integer; band jsonb; practice jsonb; cooldown integer; hint jsonb; guide jsonb; scope text; next_level integer; stage text; post_answer boolean;
  evidence_count integer; recent_count integer; independent_count integer; unique_count integer; completion_reason text;
  title text; strategy text; content text; hint_keys jsonb; params jsonb; recommendation_id uuid; recommendation_action text;
+ prerequisite_target uuid; next_target uuid; recommendation_target uuid; recommendation_target_unit uuid;
 begin
  s:=private.lock_governed_learning_session(p_student_id,p_auth_session_id,p_session_id);
  select * into strict b from public.assessment_policy_bindings where id=s.assessment_policy_binding_id;
@@ -587,23 +588,43 @@ begin
        (select coalesce(jsonb_agg(value->>'skillId'),'[]') from jsonb_array_elements(skill_results) where (value->>'correct')::integer<(value->>'total')::integer),'assessmentPolicyFingerprint',b.snapshot_fingerprint));
      final_result:=jsonb_build_object('passed',passed,'score',jsonb_build_object('correct',s.correct_count,'answered',s.answered_count,'percent',percent),'passCriteria',jsonb_build_object('overallPercent',b.policy_snapshot->'minimumPercent','minimumCorrectBySkill',b.policy_snapshot->'minimumCorrectBySkill'),'skillResults',skill_results,'lifecycle',lifecycle);
    elsif s.status='completed' and s.mode='chapter_review' then lifecycle:=public.finalize_chapter_review_atomic(p_student_id,s.id); end if;
+   if s.status='completed' then select * into strict s from public.learning_sessions where id=s.id; end if;
    if s.mode in ('diagnostic','mastery_check') then
      return private.authorized_governed_result(p_student_id,p_auth_session_id,s.institutional_class_enrollment_id,s.curriculum_release_id,s.governed_unit_id,jsonb_build_object('accepted',true,'revealCorrect',false,'attemptId',result->'attemptId','session',private.learner_governed_session(to_jsonb(s)),'finalResult',final_result,'curriculumReleaseId',s.curriculum_release_id,'assessmentBlueprintId',s.assessment_blueprint_id,'provenanceStatus',s.provenance_status));
    end if;
    hint:=model#>'{recommendation,corePolicy}';
    if not (hint ?& array['default','insufficientEvidence','weakWithUnmetPrerequisite','secureWithNextSkill']) then raise exception 'unsupported_recommendation_contract'; end if;
-   recommendation_action:=case when result#>>'{masteryAfter,status}'='insufficient_evidence' then hint->>'insufficientEvidence'
-     when (result#>>'{masteryAfter,masteryScore}')::numeric<(model#>>'{mastery,secureAtOrAbove}')::numeric and exists(select 1 from public.skill_prerequisites pre
+   select pre.prerequisite_skill_id into prerequisite_target from public.skill_prerequisites pre
        join public.curriculum_release_skills rs on rs.skill_id=pre.prerequisite_skill_id and rs.curriculum_release_id=s.curriculum_release_id
        left join public.student_skill_mastery_by_release m on m.student_id=p_student_id and m.curriculum_release_id=s.curriculum_release_id and m.skill_id=pre.prerequisite_skill_id
-       where pre.skill_id=item.skill_id and (m.mastery_score is null or m.mastery_score<pre.required_mastery)) then hint->>'weakWithUnmetPrerequisite' else hint->>'default' end;
+       where pre.skill_id=item.skill_id and (m.mastery_score is null or m.mastery_score<pre.required_mastery)
+       order by rs.sequence_order_snapshot,rs.skill_id limit 1;
+   select rs.skill_id into next_target from public.curriculum_release_skills rs
+   where rs.curriculum_release_id=s.curriculum_release_id and rs.skill_id=any(b.released_skill_ids)
+   and rs.sequence_order_snapshot>(select sequence_order_snapshot from public.curriculum_release_skills where curriculum_release_id=s.curriculum_release_id and skill_id=item.skill_id)
+   order by rs.sequence_order_snapshot,rs.skill_id limit 1;
+   recommendation_action:=case
+     when result#>>'{masteryAfter,status}' in ('needs_support','developing') and prerequisite_target is not null then hint->>'weakWithUnmetPrerequisite'
+     when result#>>'{masteryAfter,status}'='insufficient_evidence' then hint->>'insufficientEvidence'
+     when result#>>'{masteryAfter,status}'='secure' and next_target is not null then hint->>'secureWithNextSkill'
+     else hint->>'default' end;
+   recommendation_target:=case when recommendation_action=hint->>'weakWithUnmetPrerequisite' then prerequisite_target
+     when recommendation_action=hint->>'secureWithNextSkill' then next_target else item.skill_id end;
+   select min(ic.unit_id::text)::uuid into recommendation_target_unit from public.item_curriculum_scopes ic
+   join public.curriculum_release_units ru on ru.curriculum_release_id=s.curriculum_release_id and ru.unit_id=ic.unit_id
+   join public.items ri on ri.id=ic.item_id
+   where ri.skill_id=recommendation_target and ic.subject_program_id=s.subject_program_id and ic.is_primary
+   having count(distinct ic.unit_id)=1;
+   -- Ambiguous or unreleased action targets remain current-skill practice; no
+   -- implicit chapter choice or catalogue code ordering is introduced.
+   if recommendation_target_unit is null then recommendation_target:=item.skill_id;recommendation_target_unit:=s.governed_unit_id;recommendation_action:=hint->>'default';end if;
    recommendation_id:=gen_random_uuid();
    insert into public.recommendation_events(recommendation_instance_id,student_id,event_type,policy_scope,surface,action,target_skill_id,curriculum_release_id,assessment_blueprint_id,learning_model_configuration_id,model_provenance_status,learning_session_id,attempt_id,state_snapshot,recommendation_snapshot)
-   values(recommendation_id,p_student_id,'issued','core_after_attempt','submit_answer_api',recommendation_action,item.skill_id,s.curriculum_release_id,s.assessment_blueprint_id,s.learning_model_configuration_id,s.model_provenance_status,s.id,(result->>'attemptId')::uuid,
-    jsonb_build_object('unitId',s.governed_unit_id,'enrollmentId',s.institutional_class_enrollment_id,'assessmentPolicyBindingId',b.id,'masteryBefore',result->'masteryBefore','masteryAfter',result->'masteryAfter'),jsonb_build_object('action',recommendation_action));
+   values(recommendation_id,p_student_id,'issued','core_after_attempt','submit_answer_api',recommendation_action,recommendation_target,s.curriculum_release_id,s.assessment_blueprint_id,s.learning_model_configuration_id,s.model_provenance_status,s.id,(result->>'attemptId')::uuid,
+    jsonb_build_object('unitId',s.governed_unit_id,'enrollmentId',s.institutional_class_enrollment_id,'assessmentPolicyBindingId',b.id,'masteryBefore',result->'masteryBefore','masteryAfter',result->'masteryAfter'),jsonb_build_object('action',recommendation_action,'targetUnitId',recommendation_target_unit));
    return private.authorized_governed_result(p_student_id,p_auth_session_id,s.institutional_class_enrollment_id,s.curriculum_release_id,s.governed_unit_id,jsonb_build_object('attemptId',result->'attemptId','session',to_jsonb(s),'curriculumReleaseId',s.curriculum_release_id,'assessmentBlueprintId',s.assessment_blueprint_id,'itemId',item.id,'skillId',item.skill_id,
    'grading',jsonb_build_object('correct',is_correct,'score',case when is_correct then 1 else 0 end,'errorCode',error_code,'feedbackCode',key.feedback_code,'usedHelp',result->'hintUsed'),
-   'mastery',jsonb_build_object('score',result#>'{masteryAfter,masteryScore}','evidenceCount',result#>'{masteryAfter,evidenceCount}','status',result#>'{masteryAfter,status}'),'recommendation',jsonb_build_object('action',recommendation_action,'instanceId',recommendation_id,'policyScope','core_after_attempt','modelConfigurationId',s.learning_model_configuration_id,'modelProvenanceStatus',s.model_provenance_status),'chapterReview',lifecycle));
+   'mastery',jsonb_build_object('score',result#>'{masteryAfter,masteryScore}','evidenceCount',result#>'{masteryAfter,evidenceCount}','status',result#>'{masteryAfter,status}'),'recommendation',jsonb_build_object('action',recommendation_action,'targetSkillId',recommendation_target,'unitId',recommendation_target_unit,'curriculumReleaseId',s.curriculum_release_id,'enrollmentId',s.institutional_class_enrollment_id,'instanceId',recommendation_id,'policyScope','core_after_attempt','modelConfigurationId',s.learning_model_configuration_id,'modelProvenanceStatus',s.model_provenance_status),'chapterReview',lifecycle));
  elsif p_action='help' then
    if not (b.policy_snapshot->>'hintsAllowed')::boolean or s.mode not in ('practice','chapter_review') then raise exception 'help_not_available_in_assessment'; end if;
    hint:=model->'hinting';
@@ -653,10 +674,10 @@ begin
    if p_started_session_id is null then return false; end if;
    started:=private.lock_governed_learning_session(p_student_id,p_auth_session_id,p_started_session_id);
    if (started.curriculum_release_id,started.governed_unit_id,started.institutional_class_enrollment_id)
-   is distinct from (source_session.curriculum_release_id,source_session.governed_unit_id,source_session.institutional_class_enrollment_id)
+   is distinct from (source_session.curriculum_release_id,coalesce((issued.recommendation_snapshot->>'targetUnitId')::uuid,source_session.governed_unit_id),source_session.institutional_class_enrollment_id)
    or started.status<>'active'
    or (issued.action<>'resume_session' and (started.mode<>'practice' or started.target_skill_id is distinct from issued.target_skill_id
-      or issued.action not in ('practice_skill','continue_current_skill','collect_more_evidence')))
+      or issued.action not in ('practice_skill','continue_current_skill','collect_more_evidence','advance_skill','review_prerequisite')))
    then return false; end if;
  end if;
  insert into public.recommendation_events(recommendation_instance_id,student_id,event_type,policy_scope,surface,action,target_skill_id,curriculum_release_id,assessment_blueprint_id,learning_model_configuration_id,model_provenance_status,learning_session_id,attempt_id,state_snapshot,recommendation_snapshot)
