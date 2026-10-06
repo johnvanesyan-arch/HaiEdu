@@ -600,7 +600,7 @@ begin
        where pre.skill_id=item.skill_id and (m.mastery_score is null or m.mastery_score<pre.required_mastery)
        order by rs.sequence_order_snapshot,rs.skill_id limit 1;
    select rs.skill_id into next_target from public.curriculum_release_skills rs
-   where rs.curriculum_release_id=s.curriculum_release_id and rs.skill_id=any(b.released_skill_ids)
+   where rs.curriculum_release_id=s.curriculum_release_id and b.skill_scope_snapshot ? rs.skill_id::text
    and rs.sequence_order_snapshot>(select sequence_order_snapshot from public.curriculum_release_skills where curriculum_release_id=s.curriculum_release_id and skill_id=item.skill_id)
    order by rs.sequence_order_snapshot,rs.skill_id limit 1;
    recommendation_action:=case
