@@ -4,7 +4,7 @@
 
 ## Bounded authoring decision
 
-Prepare **I05–I08**, one four-item practice/review family and a separate draft guide. I05 is an **intentional visual practice variant**; I06–I08 add demands absent from the current S03 bank. These are three additional reasoning demands, not three new official curriculum outcomes. S03 supports mandatory outcome 1(1); Option B makes it consequential for readiness and passing without changing that curriculum mapping.
+Deployed for review: **I05–I08**, one four-item practice/review family and a separate draft guide. I05 is an **intentional visual practice variant**; I06–I08 add demands absent from the current S03 bank. These are three additional reasoning demands, not three new official curriculum outcomes. S03 supports mandatory outcome 1(1); Option B makes it consequential for readiness and passing without changing that curriculum mapping.
 
 This takes S03 from four to eight authored items, not twelve. The remaining four slots are **not filled**. Further expansion needs another defensible source/bank comparison or John's explicit bank-plan decision. No assessment counts, scoring thresholds, model bindings or release gates change. New question, guide and misconception drafts require human review; automated technical QA is not that approval or external SME review.
 
@@ -50,3 +50,14 @@ The migration creates governed drafts only, with immutable v1 snapshots, support
 Review in [the question queue](https://www.haiedu.am/content-review.html), filtering `PHY7-U02-S03-I05`–`I08`; review the five S03 definitions in [Թյուր պատկերացումներ](https://www.haiedu.am/content-misconceptions.html); then review the new template guide in [remediation guides](https://www.haiedu.am/content-guides.html). Final deployed URLs and readback evidence are recorded in [the deployment record](evidence/sprint-15b13-s03-expansion-20261006.json).
 
 Still open: these human reviews, four unfilled S03 planning slots, S04–S09 expansion, protected banks, numeric readiness/model approval, the older 32-item illustration audit, external SME, pilot and release authorization. This batch does not close those gates.
+
+Production readback at **19:01:58 UTC** confirms four v1 drafts with passing current-family technical QA, five draft definitions and one draft guide. All prior rows survive byte-equivalent across the 15 appended tables; the other 85 tables are unchanged. Chapter II now has **44 authored questions: 40 approved and four drafts**, with zero pool/form/learner/exposure links. The candidate is still draft. Implementation [PR #150](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/150) passed all five required CI jobs (1,228 Node / 35 Chromium). Independent main CI #1254 also passed all five jobs (1,228 Node / 35 Chromium). Vercel is READY at `54cb7edaa99da563f66d588845047c3c4317e2dd`; `/release.json` matches, and all three public images return HTTP 200 with exact local SHA-256 matches. Production migration `20261006190037` exactly matches the reviewed SQL. Security/performance advisor groups are unchanged.
+
+| Review item | Direct link |
+|---|---|
+| PHY7-U02-S03-I05 v1 | [Open question](https://www.haiedu.am/content-item.html?id=6b53c545-ff31-4139-87cc-1d2cf2e0b785&from=review) |
+| PHY7-U02-S03-I06 v1 | [Open question](https://www.haiedu.am/content-item.html?id=e027ee39-2b63-4d5f-8ec0-ec66dbe064db&from=review) |
+| PHY7-U02-S03-I07 v1 | [Open question](https://www.haiedu.am/content-item.html?id=fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda&from=review) |
+| PHY7-U02-S03-I08 v1 | [Open question](https://www.haiedu.am/content-item.html?id=7fbf21c8-7e75-422c-a822-3f85a7dd9775&from=review) |
+
+[Open the new draft guide](https://www.haiedu.am/content-guides.html?id=template%3Aca38d70c-8ba6-4b7d-96a4-21bf9ed7e033).
