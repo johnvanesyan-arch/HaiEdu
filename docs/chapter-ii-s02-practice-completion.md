@@ -3,6 +3,8 @@
 **Sprint:** 15B.13, second bounded S02 batch (15B.13B). **Date:** 2026-10-06.
 **Status:** Deployed and technically validated; human review pending.
 
+**2026-10-06 correction:** This is the historical deployment checkpoint. Subsequent user review approved all four questions (I09 at revised v2). The [whole-bank comparison and I10 correction](chapter-ii-s02-whole-bank-review.md) supersedes the novelty claim below: I10 v1 repeated the I04/I07/I08 solution paths and needs a new reviewed version. I11 is intentional misconception practice. Passing structural QA and different evidence-purpose labels did not establish whole-bank distinctness. The separate guide remains draft.
+
 John approved continuing the sprint map after the first S02 expansion's four questions and guide were reviewed. This slice adds **I09–I12**, completing the authored S02 practice/review target of twelve questions, subject to review of these four drafts. The chapter's Option B contract is unchanged: 96 practice/review, 32 diagnostic and 64 protected mastery questions, 192 total. The deployed chapter inventory is **40 authored: 36 approved and four drafts**, with **152 still to author**.
 
 ## Evidence design and textbook grounding
