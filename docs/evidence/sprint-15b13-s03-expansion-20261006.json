@@ -1,6 +1,6 @@
 {
   "sprint": "15B.13D",
-  "state": "predeployment_validation_complete",
+  "state": "deployed_verified_human_review_pending",
   "observedDate": "2026-10-06",
   "baseMain": "115614c776cae45cb6e2cedd2b40761cd14bfeee",
   "migration": {
@@ -40,10 +40,713 @@
       "actionsPaths": 55,
       "analyticsPaths": 31
     },
-    "fixtureLimit": "Real catalogue columns/constraints, pseudonymized reduced corpus and substituted expected corpus hash; excludes live Auth, production triggers and external/self-ancestry FKs. Unchanged production migration separately rollback-tested."
+    "fixtureLimit": "Real catalogue columns/constraints, pseudonymized reduced corpus and substituted expected corpus hash; excludes live Auth, production triggers and external/self-ancestry FKs. Unchanged production migration separately rollback-tested.",
+    "guideValidation": {
+      "guideId": "ca38d70c-8ba6-4b7d-96a4-21bf9ed7e033",
+      "status": "draft",
+      "version": 1,
+      "result": {
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 4,
+        "variantFailures": []
+      }
+    },
+    "mediaVisualCheck": "Original source crops and 320px PDF renders inspected; no new authenticated browser run. Existing Chromium regression suite is CI evidence; optional local Playwright screenshot could not start because its browser binary was not installed."
   },
   "deployment": {
-    "status": "pending"
+    "main": "54cb7edaa99da563f66d588845047c3c4317e2dd",
+    "head": "e1d2b61cfc1ff2eb5359de3a93d7160dda994f71",
+    "pr": 150,
+    "prRun": {
+      "id": 37515126990,
+      "number": 1253,
+      "jobs": [
+        {
+          "id": 112445966045,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112445966463,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112445966524,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112445966693,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112447347471,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "mainRun": {
+      "id": 37515642239,
+      "number": 1254,
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "id": 112447728304,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112447728631,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112447728771,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112447728958,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112449127918,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "nodeTests": 1228,
+      "chromiumTests": 35
+    },
+    "migration": {
+      "version": "20261006190037",
+      "exactSqlMatch": true
+    },
+    "preservation": {
+      "tablesCompared": 100,
+      "changedTables": [
+        {
+          "table": "curriculum_release_item_families",
+          "oldRows": 164,
+          "newRows": 165,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_answer_keys",
+          "oldRows": 300,
+          "newRows": 304,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_curriculum_scopes",
+          "oldRows": 300,
+          "newRows": 304,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_families",
+          "oldRows": 87,
+          "newRows": 88,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_family_curriculum_reconciliations",
+          "oldRows": 87,
+          "newRows": 88,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_misconception_mappings",
+          "oldRows": 358,
+          "newRows": 370,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_options",
+          "oldRows": 592,
+          "newRows": 608,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_qa_runs",
+          "oldRows": 508,
+          "newRows": 512,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_template_remediation_guides",
+          "oldRows": 19,
+          "newRows": 20,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_templates",
+          "oldRows": 87,
+          "newRows": 88,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "item_versions",
+          "oldRows": 132,
+          "newRows": 136,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "items",
+          "oldRows": 300,
+          "newRows": 304,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "misconceptions",
+          "oldRows": 54,
+          "newRows": 59,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "remediation_guide_authoring_versions",
+          "oldRows": 137,
+          "newRows": 138,
+          "missingOld": 0,
+          "changed": true
+        },
+        {
+          "table": "remediation_guide_versions",
+          "oldRows": 65,
+          "newRows": 66,
+          "missingOld": 0,
+          "changed": true
+        }
+      ],
+      "whollyUnchangedTables": 85,
+      "allOldRowsPreserved": true
+    },
+    "qa": {
+      "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+      "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+      "results": [
+        {
+          "itemCode": "PHY7-U02-S03-I05",
+          "itemId": "6b53c545-ff31-4139-87cc-1d2cf2e0b785",
+          "versionNo": 1,
+          "fingerprint": "b1fbf9ff648e31111561f7b3f0fa452c",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S03-T02-ATOMIC-MODELS",
+                "familyItemCount": 4,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 1
+                },
+                "missingPositions": [],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.25,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "core_understanding",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis",
+                  "transfer_reasoning"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "core_understanding": 1,
+                  "application": 1,
+                  "misconception_diagnosis": 1,
+                  "transfer_reasoning": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:1:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:1:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:1:misconception_diagnosis"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        },
+        {
+          "itemCode": "PHY7-U02-S03-I06",
+          "itemId": "e027ee39-2b63-4d5f-8ec0-ec66dbe064db",
+          "versionNo": 1,
+          "fingerprint": "abe51c1bbe47ab042d82b4ab47033413",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S03-T02-ATOMIC-MODELS",
+                "familyItemCount": 4,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 1
+                },
+                "missingPositions": [],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.25,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "application",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis",
+                  "transfer_reasoning"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "core_understanding": 1,
+                  "application": 1,
+                  "misconception_diagnosis": 1,
+                  "transfer_reasoning": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:1:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:1:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:1:misconception_diagnosis"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        },
+        {
+          "itemCode": "PHY7-U02-S03-I07",
+          "itemId": "fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda",
+          "versionNo": 1,
+          "fingerprint": "90ef293c0c62313ae11230362af93adf",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S03-T02-ATOMIC-MODELS",
+                "familyItemCount": 4,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 1
+                },
+                "missingPositions": [],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.25,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "misconception_diagnosis",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis",
+                  "transfer_reasoning"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "core_understanding": 1,
+                  "application": 1,
+                  "misconception_diagnosis": 1,
+                  "transfer_reasoning": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:1:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:1:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:1:misconception_diagnosis"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        },
+        {
+          "itemCode": "PHY7-U02-S03-I08",
+          "itemId": "7fbf21c8-7e75-422c-a822-3f85a7dd9775",
+          "versionNo": 1,
+          "fingerprint": "744fc186b71bd770786ab472a0f1adf1",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S03-T02-ATOMIC-MODELS",
+                "familyItemCount": 4,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 1
+                },
+                "missingPositions": [],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.25,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "transfer_reasoning",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis",
+                  "transfer_reasoning"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "core_understanding": 1,
+                  "application": 1,
+                  "misconception_diagnosis": 1,
+                  "transfer_reasoning": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:1:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:1:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:1:misconception_diagnosis"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        }
+      ]
+    },
+    "governance": {
+      "new_qa": [
+        {
+          "code": "PHY7-U02-S03-I05",
+          "errors": [],
+          "passed": true,
+          "run_by": null,
+          "version": 1,
+          "warnings": [],
+          "created_at": "2026-10-06T19:01:07.928021+00:00",
+          "familyFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:1:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:1:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:1:misconception_diagnosis"
+        },
+        {
+          "code": "PHY7-U02-S03-I06",
+          "errors": [],
+          "passed": true,
+          "run_by": null,
+          "version": 1,
+          "warnings": [],
+          "created_at": "2026-10-06T19:01:07.928021+00:00",
+          "familyFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:1:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:1:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:1:misconception_diagnosis"
+        },
+        {
+          "code": "PHY7-U02-S03-I07",
+          "errors": [],
+          "passed": true,
+          "run_by": null,
+          "version": 1,
+          "warnings": [],
+          "created_at": "2026-10-06T19:01:07.928021+00:00",
+          "familyFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:1:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:1:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:1:misconception_diagnosis"
+        },
+        {
+          "code": "PHY7-U02-S03-I08",
+          "errors": [],
+          "passed": true,
+          "run_by": null,
+          "version": 1,
+          "warnings": [],
+          "created_at": "2026-10-06T19:01:07.928021+00:00",
+          "familyFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:1:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:1:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:1:misconception_diagnosis"
+        }
+      ],
+      "candidate": {
+        "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "status": "draft",
+        "activated_at": null
+      },
+      "observed_at": "2026-10-06T19:01:58.566315+00:00",
+      "chapter_items": {
+        "draft": 4,
+        "approved": 40,
+        "authored": 44
+      },
+      "chapter_exposures": 0,
+      "chapter_form_links": 0,
+      "chapter_pool_links": 0,
+      "s03_misconceptions": [
+        {
+          "code": "atom_molecule_confusion",
+          "status": "active"
+        },
+        {
+          "code": "atom_element_confusion",
+          "status": "active"
+        },
+        {
+          "code": "element_molecule_confusion",
+          "status": "active"
+        },
+        {
+          "code": "molecule_atom_composition_confusion",
+          "status": "active"
+        },
+        {
+          "code": "atom_identity_changes_in_molecule",
+          "status": "active"
+        },
+        {
+          "code": "unjoined_atoms_as_molecule",
+          "status": "draft"
+        },
+        {
+          "code": "different_elements_atoms_identical",
+          "status": "draft"
+        },
+        {
+          "code": "molecular_properties_assigned_to_atom",
+          "status": "draft"
+        },
+        {
+          "code": "each_substance_requires_new_element",
+          "status": "draft"
+        },
+        {
+          "code": "particle_count_levels_confusion",
+          "status": "draft"
+        }
+      ],
+      "chapter_learner_links": 0,
+      "chapter_review_exposures": 0
+    },
+    "newGuide": {
+      "id": "ca38d70c-8ba6-4b7d-96a4-21bf9ed7e033",
+      "status": "draft",
+      "metadata": {
+        "sprint": "15B.13D",
+        "learnerVisible": false,
+        "referenceMetadata": {
+          "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+          "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §8, տպագիր էջեր 27-28, նկարներ 25-27",
+          "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)"
+        },
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+      },
+      "title_hy": "Ինչպե՞ս կարդալ ատոմների և մոլեկուլների մոդելները",
+      "hint_1_hy": "Ի՞նչ է ներկայացնում մեկ գնդիկը, ի՞նչ է ցույց տալիս նրա նշանը, և արդյո՞ք գնդիկները միացած են մեկ մասնիկի մեջ։",
+      "hint_2_hy": "Համեմատի՛ր մասը և ամբողջը. ատոմի տեսակը, մոլեկուլի կազմը և նյութի հատկությունները նույն հարցը չեն։",
+      "created_at": "2026-10-06T19:00:37.944449+00:00",
+      "updated_at": "2026-10-06T19:00:37.944449+00:00",
+      "strategy_hy": "Առանձին դիտարկիր ատոմի տեսակը, ատոմների քանակը և նրանց միացած լինելը։ Մի քանի մոլեկուլի համար նախ որոշիր մեկ մոլեկուլի ատոմների թիվը, ապա՝ ընդհանուր թիվը. ատոմների թիվն ավելանալուց տեսակների թիվը պարտադիր չի ավելանում։ Նկարում նույն խմբում գտնվելը դեռ չի նշանակում մոլեկուլ կազմել։ Միացած ատոմները կազմում են ամբողջական մասնիկ, որի քիմիական հատկությունները չի կարելի ինքնաբերաբար վերագրել առանձին բաղադրիչին։ Ատոմների համադրությունների բազմազանությունը տարբերակիր ատոմների տեսակների բազմազանությունից։",
+      "guide_version": 1,
+      "item_template_id": "f20da9ad-4b9b-47d9-b866-c9dbbfa55406",
+      "worked_example_hy": "Կառուցման խաղում նույն տեսակի մասերը կարելի է միացնել կամուրջ կամ այլ կառուցվածք ստանալու համար։ Մասի տեսակը դրանից չի փոխվում, իսկ մեկ առանձին մասը ամբողջ կամուրջը չէ։ Ատոմների մասին համեմատությունն օգտագործելիս նույնպես պետք է տարբերակել բաղադրիչը և դրանց միավորումից կազմված ամբողջը. սա համեմատություն է, ոչ թե ատոմների բառացի նկարագրություն։",
+      "trigger_error_code": null,
+      "allowed_parameter_keys": []
+    },
+    "newDefinitions": [
+      {
+        "id": "cca81e5f-7d0c-4e0d-9cab-36ab8a2ee777",
+        "code": "unjoined_atoms_as_molecule",
+        "status": "draft",
+        "skill_id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+        "title_hy": "Չմիացած ատոմների խումբը մոլեկուլ համարելը",
+        "created_at": "2026-10-06T19:00:37.944449+00:00",
+        "updated_at": "2026-10-06T19:00:37.944449+00:00",
+        "description_hy": "Սովորողը երկու կամ ավելի ատոմների ներկայությունը կամ նկարում կողք կողքի պատկերված լինելը բավարար է համարում մեկ մոլեկուլ ճանաչելու համար՝ անտեսելով դրանց միացած լինելը։"
+      },
+      {
+        "id": "7f315dec-57ab-482f-a30c-68268f1d8303",
+        "code": "different_elements_atoms_identical",
+        "status": "draft",
+        "skill_id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+        "title_hy": "Տարբեր տարրերի ատոմները նույն տեսակի համարելը",
+        "created_at": "2026-10-06T19:00:37.944449+00:00",
+        "updated_at": "2026-10-06T19:00:37.944449+00:00",
+        "description_hy": "Սովորողը տարբեր քիմիական տարրերի ատոմները նույն տեսակի է համարում միայն այն պատճառով, որ դրանք բոլորը ատոմներ են։"
+      },
+      {
+        "id": "1d8578a8-3957-486f-b47c-7f67b31a59df",
+        "code": "molecular_properties_assigned_to_atom",
+        "status": "draft",
+        "skill_id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+        "title_hy": "Մոլեկուլի քիմիական հատկությունները առանձին ատոմին վերագրելը",
+        "created_at": "2026-10-06T19:00:37.944449+00:00",
+        "updated_at": "2026-10-06T19:00:37.944449+00:00",
+        "description_hy": "Սովորողը նյութի մոլեկուլի քիմիական հատկությունները վերագրում է մոլեկուլի առանձին բաղադրիչ ատոմին՝ այն նույնացնելով ամբողջ մոլեկուլի հետ։"
+      },
+      {
+        "id": "9f483a04-ac1f-4116-b633-72b7f6aef780",
+        "code": "each_substance_requires_new_element",
+        "status": "draft",
+        "skill_id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+        "title_hy": "Ամեն նյութի համար նոր քիմիական տարր պահանջելը",
+        "created_at": "2026-10-06T19:00:37.944449+00:00",
+        "updated_at": "2026-10-06T19:00:37.944449+00:00",
+        "description_hy": "Սովորողը կարծում է, որ ամեն տարբեր նյութ անպայման պահանջում է ատոմի նոր տեսակ՝ անտեսելով արդեն հայտնի տեսակների տարբեր համադրություններով նյութերի բազմազանությունը։"
+      },
+      {
+        "id": "795a73f6-c2b6-4397-a9a5-6316a61e18fb",
+        "code": "particle_count_levels_confusion",
+        "status": "draft",
+        "skill_id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+        "title_hy": "Մոլեկուլների, ատոմների և դրանց տեսակների թվերը շփոթելը",
+        "created_at": "2026-10-06T19:00:37.944449+00:00",
+        "updated_at": "2026-10-06T19:00:37.944449+00:00",
+        "description_hy": "Սովորողը շփոթում է մոլեկուլների թիվը, դրանցում առկա ատոմների ընդհանուր թիվը և ատոմների տեսակների թիվը՝ նույն հաշվարկը վերագրելով տարբեր մակարդակների։"
+      }
+    ],
+    "advisors": {
+      "security": {
+        "groups": 2,
+        "unchanged": true
+      },
+      "performance": {
+        "groups": 4,
+        "unchanged": true
+      }
+    },
+    "vercel": {
+      "id": "dpl_2FzfAswYNpWbE1LokrV9FY6ajZ64",
+      "state": "READY",
+      "commit": "54cb7edaa99da563f66d588845047c3c4317e2dd"
+    },
+    "httpReadback": [
+      {
+        "path": "release.json",
+        "status": 200,
+        "bytes": 72,
+        "sha256": "011205b63f3d8eafe7b98d6a2913259a01b54e728a1d5f98ffccaf9cf333ac4a",
+        "release": {
+          "schemaVersion": 1,
+          "commit": "54cb7edaa99da563f66d588845047c3c4317e2dd"
+        }
+      },
+      {
+        "path": "assets/textbook/physics7-2023/figure-25.png",
+        "status": 200,
+        "bytes": 100476,
+        "sha256": "005c1776e8cc3dfcfe861c91ca968d8977de0787df0e450d58b5d092379e53d6",
+        "exactLocalMatch": true
+      },
+      {
+        "path": "assets/textbook/physics7-2023/figure-26.png",
+        "status": 200,
+        "bytes": 14031,
+        "sha256": "8104d02f0e9160a75aea2185841793720ec5e2fbe4b158b9d68c18d630d105d3",
+        "exactLocalMatch": true
+      },
+      {
+        "path": "assets/textbook/physics7-2023/figure-27.png",
+        "status": 200,
+        "bytes": 38296,
+        "sha256": "1ab9b4366eaadbefa379ed14d1f841bd5d3e25463e62a3ef949dc177078871e4",
+        "exactLocalMatch": true
+      }
+    ],
+    "persistentDeploymentCheck": "Configuration independently verified earlier on 2026-10-06 at 11:27:41 UTC in the preceding sprint evidence; not reconfigured or freshly re-verified in this content-only slice. Main aggregate CI success and observed READY deployment are independently recorded."
   },
   "gates": {
     "candidateRelease": "draft",
