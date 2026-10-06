@@ -122,6 +122,7 @@ body.amp-student-shell-active .haiedu-public-brand {
 }
 
 body.amp-student-shell-active {
+  --amp-nav-width: max(232px, 14.5rem);
   background: var(--amp-color-bg);
 }
 
@@ -171,7 +172,11 @@ body.amp-student-shell-active .amp-side-nav {
 
 .amp-nav-list {
   display: grid;
+  grid-auto-rows: max-content;
+  align-content: start;
   gap: 0.35rem;
+  min-height: 0;
+  overflow-y: auto;
 }
 .amp-nav-link {
   min-height: 46px;
@@ -184,11 +189,13 @@ body.amp-student-shell-active .amp-side-nav {
   text-decoration: none;
   font-weight: 700;
   line-height: 1.25;
+  overflow-wrap: break-word;
 }
 .amp-nav-link:hover {
   color: #fff;
   background: rgba(255,255,255,.09);
 }
+.amp-nav-link > span:last-child { min-width: 0; max-width: 100%; }
 .amp-nav-link[aria-current="page"] {
   color: #fff;
   background: rgba(118, 172, 231, .2);
@@ -206,6 +213,44 @@ body.amp-student-shell-active .amp-side-nav {
   text-align: center;
   font-size: 0.95rem;
 }
+
+/* Enrollment navigation is shared by every student route. */
+.amp-nav-section-label {
+  margin: .7rem .75rem .15rem;
+  color: #8fa4bd;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.amp-course-sublinks {
+  display: grid;
+  gap: .2rem;
+  margin: -.15rem 0 .25rem 1rem;
+}
+
+.amp-course-sublink {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  padding: .4rem .6rem;
+  border-radius: .45rem;
+  color: #b8c6d8;
+  font-size: var(--amp-font-size-xs);
+  line-height: 1.3;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.amp-course-sublink:hover,
+.amp-course-sublink[aria-current="page"] {
+  color: #fff;
+  background: rgba(255,255,255,.08);
+}
+
+.amp-course-link small { display: block; font-size: .7rem; opacity: .8; }
 
 .amp-nav-utility {
   margin-top: auto;
@@ -294,7 +339,9 @@ body.amp-student-shell-active.amp-focused-task > main.shell {
     z-index: 50;
     min-height: var(--amp-mobile-nav-height);
     display: grid;
-    grid-template-columns: repeat(4, minmax(0,1fr));
+    grid-template-columns: none;
+    grid-auto-flow: column;
+    grid-auto-columns: minmax(0,1fr);
     background: rgba(255,255,255,.97);
     border-top: 1px solid var(--amp-color-border);
     box-shadow: 0 -8px 24px rgba(22,34,51,.08);

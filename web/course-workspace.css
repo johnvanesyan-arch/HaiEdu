@@ -1,0 +1,68 @@
+/* Presentation for the governed student workspace. Learning policy stays on the server. */
+body[data-student-page="course"] .amp-course-shell { display: block; }
+body[data-student-page="course"].amp-student-shell-active .topbar h1 {
+  font-size: clamp(1.4rem, 2.3vw, 2rem);
+}
+#courseContent { gap: var(--amp-space-4); }
+#courseContent > p { margin: 0; }
+.course-tabs .button-link[aria-current="page"] {
+  color: var(--amp-color-primary-hover);
+  background: var(--amp-color-primary-soft);
+  border-color: var(--amp-color-primary);
+}
+.course-overview p { margin: 0; }
+.course-overview p + p { margin-top: var(--amp-space-2); }
+.course-active-session {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: var(--amp-space-4);
+  border-left: 4px solid var(--amp-color-primary);
+}
+.course-active-session > div { min-width: 0; }
+.course-active-session h2 { margin: 0 0 var(--amp-space-2); font-size: var(--amp-font-size-xl); }
+.course-active-session p { margin: 0; }
+#courseContent .course-resume {
+  width: fit-content;
+  background: var(--amp-color-primary);
+  color: #fff;
+  border-color: var(--amp-color-primary);
+}
+#courseContent .course-resume:hover { background: var(--amp-color-primary-hover); }
+.course-mode-card { display: flex; flex-direction: column; gap: var(--amp-space-3); }
+.course-mode-card h3, .course-mode-card p { margin: 0; }
+.course-mode-card .button-link { align-self: flex-start; margin-top: auto; }
+.course-data-section h2 { margin: 0 0 var(--amp-space-4); font-size: var(--amp-font-size-xl); }
+.course-table {
+  width: 100%;
+  border-collapse: collapse;
+  table-layout: fixed;
+  font-size: var(--amp-font-size-sm);
+}
+.course-table th, .course-table td {
+  padding: var(--amp-space-3);
+  border-bottom: 1px solid var(--amp-color-border);
+  text-align: left;
+  vertical-align: top;
+}
+.course-table th { background: var(--amp-color-bg-subtle); color: var(--amp-color-text-muted); }
+.course-table tbody tr:last-child td { border-bottom: 0; }
+.course-table time { display: block; }
+.course-table summary { cursor: pointer; color: var(--amp-color-primary); }
+.course-table details p { line-height: 1.6; }
+.course-table code { overflow-wrap: anywhere; font-size: .8em; }
+.course-table .course-skill-name { width: 40%; }
+#learningPlayer:empty { display: none; }
+@media (max-width: 820px) {
+  .course-tabs .button-link { flex: 1 1 auto; }
+  .course-active-session { align-items: stretch; flex-direction: column; }
+  #courseContent .course-resume { width: 100%; }
+  .course-table { min-width: 520px; }
+  #courseContent .course-data-section { padding: var(--amp-space-4); }
+}
+@media (max-width: 480px) {
+  .course-tabs { display: grid; grid-template-columns: repeat(2, minmax(0,1fr)); }
+  .course-tabs .button-link { inline-size: 100%; }
+  .course-tabs .button-link:first-child { grid-column: 1 / -1; }
+}
