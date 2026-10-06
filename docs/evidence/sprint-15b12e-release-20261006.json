@@ -1,0 +1,4061 @@
+{
+  "sprint": "15B.12E",
+  "date": "2026-10-06",
+  "status": "isolated_acceptance_complete_live_multi_context_gate_open",
+  "implementation": {
+    "pullRequest": 137,
+    "reviewedSource": "303446cb06d1dbcc631065f6fea9094c44657a0a",
+    "initialSource": "b907449e949483f2333afdd9b515518eadc531a4",
+    "main": "bb5756f877968b948e56fa81fad0ce3fa9f5e161",
+    "prCI": {
+      "runId": 37456191256,
+      "number": 1227,
+      "jobs": [
+        {
+          "name": "role-layout-browser",
+          "id": 112244285907,
+          "conclusion": "success"
+        },
+        {
+          "name": "phase3-postgres-17",
+          "id": 112244286055,
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "id": 112244286124,
+          "conclusion": "success"
+        },
+        {
+          "name": "institutional-concurrency",
+          "id": 112244286190,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 112245042891,
+          "conclusion": "success"
+        }
+      ]
+    },
+    "mainCI": {
+      "runId": 37456559531,
+      "number": 1228,
+      "jobs": [
+        {
+          "name": "role-layout-browser",
+          "id": 112245492306,
+          "conclusion": "success"
+        },
+        {
+          "name": "institutional-concurrency",
+          "id": 112245492427,
+          "conclusion": "success"
+        },
+        {
+          "name": "phase3-postgres-17",
+          "id": 112245492561,
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "id": 112245492579,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 112246279505,
+          "conclusion": "success"
+        }
+      ]
+    },
+    "nodeTests": 1220,
+    "nativeChromiumTests": 32,
+    "connectedSQLChecks": 13,
+    "postgresVersion": "17.6",
+    "localChecks": [
+      "1220 Node checks",
+      "typecheck",
+      "core parity",
+      "favicon",
+      "browser QA dependency graph",
+      "web syntax",
+      "diff check"
+    ],
+    "firstAttempt": {
+      "runId": 37455952502,
+      "number": 1226,
+      "nativePassed": 31,
+      "nativeTotal": 32,
+      "reason": "Course component harness included global CSS ViewTransition navigation opt-in while omitting the global shell/UX controller; Chromium emitted four native aborted-transition errors after otherwise successful journeys.",
+      "correction": "Disable the global cross-document transition opt-in within this isolated component harness and wait for the exact question position. Keep all application pageerror assertions."
+    }
+  },
+  "isolatedMatrix": {
+    "subjects": 2,
+    "unitsPerSubject": 2,
+    "schools": 2,
+    "grades": [
+      7,
+      8
+    ],
+    "modes": [
+      "diagnostic",
+      "practice",
+      "mastery_check",
+      "chapter_review"
+    ],
+    "assessmentCounts": [
+      3,
+      3,
+      3,
+      5
+    ],
+    "syntheticPassPercent": [
+      80,
+      60
+    ],
+    "productionPolicyApproved": false,
+    "authGetUser": "fixed synthetic credential registry",
+    "sessionAuthorization": "actual Auth helper and SQL live-session gate",
+    "edgeRuntime": "actual TypeScript handler bodies compiled into Node VM; actual shared routers",
+    "postgrest": "SQL-backed fixture adapter",
+    "browser": "native Chromium, actual course markup/workspace/player scripts, local HTTP to actual handler bodies, real PGlite SQL; global shell/UX omitted",
+    "analytics": "actual teacher SQL-backed class loader and shared school/master aggregation on the generated evidence; separately authorized context supplied",
+    "liveSupabaseAuth": false,
+    "liveMultiReleaseAcceptance": false
+  },
+  "database": {
+    "migration": {
+      "localPath": "supabase/migrations/20261006112455_sprint_15b12e_dashboard_uuid_provenance.sql",
+      "productionVersion": "20261006113145",
+      "sourceMatches": true,
+      "sourceSHA256": "d673df4ae282a13497e5d636414e101015f9763cd1a6ec769e7147383fa3f4c0",
+      "isolatedProbe": "One append, original build/model unchanged, corrected manifest, replay denied without partial writes"
+    },
+    "sqlFunctionReadback": {
+      "functions": [
+        {
+          "name": "private.assert_student_dashboard_session",
+          "body_md5": "28b4f9d123ca1fb38056a83e6481fdd5",
+          "args": "p_student uuid, p_auth uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.attach_governed_lifecycle",
+          "body_md5": "abc4a665c685cf0e876533a8be840972",
+          "args": "p_session uuid, p_details jsonb",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.authorized_governed_result",
+          "body_md5": "937c1fa74b6d38c56b919424cb4de5c6",
+          "args": "p_student uuid, p_auth uuid, p_enrollment uuid, p_release uuid, p_unit uuid, p_result jsonb",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.governed_presentation_index",
+          "body_md5": "e6148358f5b403d105e13e3f2076f08d",
+          "args": "p_key text",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.governed_presentation_key",
+          "body_md5": "15cc1513ec9784b69052a8eb39a6360e",
+          "args": "p_ordinal integer",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.governed_skill_ready",
+          "body_md5": "aba303445406204fb2feec26a7d02bc2",
+          "args": "p_student uuid, p_release uuid, p_skill uuid, p_model uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.guard_governed_learning_session",
+          "body_md5": "57bdde1299b861065bfa3ed2a3e3e269",
+          "args": "",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.learner_governed_session",
+          "body_md5": "469f1dcdb3914a2eeb47806b26a096e8",
+          "args": "p_session jsonb",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.lock_governed_learning_session",
+          "body_md5": "3209bccd18ac0e84224728dcaac5e075",
+          "args": "p_student uuid, p_auth uuid, p_session uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.lock_student_learning_context",
+          "body_md5": "a202d96074938268d403406b199a2389",
+          "args": "p_student uuid, p_auth_session uuid, p_enrollment uuid, p_release uuid, p_unit uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.prepare_governed_lifecycle",
+          "body_md5": "4fefbcefe6c6fb56329a7682d71e5eca",
+          "args": "p_student uuid, p_binding uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.reject_assessment_policy_binding_mutation",
+          "body_md5": "60cadad445cb362ab2306352d6a3c8af",
+          "args": "",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.render_governed_hint",
+          "body_md5": "e029f73dce0139dbe044fa50328084d6",
+          "args": "p_text text, p_keys jsonb, p_parameters jsonb",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.scoped_chapter_baseline",
+          "body_md5": "63c6c7ecc8ed6260843394007e792eb6",
+          "args": "p_student uuid, p_release uuid, p_unit uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "private.validate_governed_learning_model",
+          "body_md5": "4e28d5901dd8b22ec6b7daba0288875c",
+          "args": "p_model uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": false
+        },
+        {
+          "name": "public.guard_initial_diagnostic",
+          "body_md5": "8675e91a1adcd6d466ceeb1c7f9cf388",
+          "args": "",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.guard_practice_diagnostic_attempt",
+          "body_md5": "0509c59b024cf04f0ac38cc9267c1f0a",
+          "args": "",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.guard_practice_diagnostic_item",
+          "body_md5": "22b7345abc07f3fc2229b4a9b7319fa9",
+          "args": "",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.guard_practice_diagnostic_session",
+          "body_md5": "e8edd3596323234b6cacef5343fd95ad",
+          "args": "",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.service_bind_assessment_policy",
+          "body_md5": "3c31106d2a6f04dd7371f2cf00af12ee",
+          "args": "p_blueprint_id uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.service_governed_learning_operation",
+          "body_md5": "b046e598298a41774324d8390ca73647",
+          "args": "p_student_id uuid, p_auth_session_id uuid, p_session_id uuid, p_action text, p_payload jsonb",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.service_is_registered_legacy_learning_session",
+          "body_md5": "6e14b8d4c3eaca8558f759b4d8f7b93f",
+          "args": "p_student_id uuid, p_session_id uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.service_launch_governed_learning",
+          "body_md5": "ad0ccf413ad260ff00d61b148c541f53",
+          "args": "p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_blueprint_id uuid, p_target_skill_id uuid, p_recommendation_instance_id uuid, p_read_only boolean",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.service_record_governed_recommendation_event",
+          "body_md5": "46626ede52adaee5f520a6f090ba376a",
+          "args": "p_student_id uuid, p_auth_session_id uuid, p_instance_id uuid, p_event_type text, p_surface text, p_started_session_id uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.service_resume_governed_learning",
+          "body_md5": "45c9364c146f13e47503fadb2b5c7f6d",
+          "args": "p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_release_id uuid, p_unit_id uuid, p_mode text",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.service_start_governed_session_atomic",
+          "body_md5": "2de941272dbc9195e6d1bdc3e1c4fb49",
+          "args": "p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_policy_binding_id uuid, p_form_id uuid, p_target_skill_id uuid, p_item_ids uuid[]",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.service_student_learning_dashboard",
+          "body_md5": "b4d580a5bfd8d8f408adec03ed47e800",
+          "args": "p_student_id uuid, p_auth_session_id uuid, p_enrollment_id uuid, p_release_id uuid, p_unit_id uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        },
+        {
+          "name": "public.service_student_learning_navigation",
+          "body_md5": "60324839516aa5d47b1c8ceeaffc326c",
+          "args": "p_student_id uuid, p_auth_session_id uuid",
+          "anon_execute": false,
+          "authenticated_execute": false,
+          "service_execute": true
+        }
+      ],
+      "sourceFiles": {
+        "private.reject_assessment_policy_binding_mutation": {
+          "md5": "60cadad445cb362ab2306352d6a3c8af",
+          "path": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql"
+        },
+        "public.service_bind_assessment_policy": {
+          "md5": "3c31106d2a6f04dd7371f2cf00af12ee",
+          "path": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql"
+        },
+        "private.lock_student_learning_context": {
+          "md5": "a202d96074938268d403406b199a2389",
+          "path": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql"
+        },
+        "public.guard_initial_diagnostic": {
+          "md5": "8675e91a1adcd6d466ceeb1c7f9cf388",
+          "path": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql"
+        },
+        "private.guard_governed_learning_session": {
+          "md5": "57bdde1299b861065bfa3ed2a3e3e269",
+          "path": "supabase/migrations/20261006053843_sprint_15b12b_policy_session_bindings.sql"
+        },
+        "private.scoped_chapter_baseline": {
+          "md5": "63c6c7ecc8ed6260843394007e792eb6",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "public.service_start_governed_session_atomic": {
+          "md5": "2de941272dbc9195e6d1bdc3e1c4fb49",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.lock_governed_learning_session": {
+          "md5": "3209bccd18ac0e84224728dcaac5e075",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.learner_governed_session": {
+          "md5": "469f1dcdb3914a2eeb47806b26a096e8",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.authorized_governed_result": {
+          "md5": "937c1fa74b6d38c56b919424cb4de5c6",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "public.service_resume_governed_learning": {
+          "md5": "45c9364c146f13e47503fadb2b5c7f6d",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.governed_skill_ready": {
+          "md5": "aba303445406204fb2feec26a7d02bc2",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.validate_governed_learning_model": {
+          "md5": "4e28d5901dd8b22ec6b7daba0288875c",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.prepare_governed_lifecycle": {
+          "md5": "4fefbcefe6c6fb56329a7682d71e5eca",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.attach_governed_lifecycle": {
+          "md5": "abc4a665c685cf0e876533a8be840972",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "public.service_launch_governed_learning": {
+          "md5": "ad0ccf413ad260ff00d61b148c541f53",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.render_governed_hint": {
+          "md5": "e029f73dce0139dbe044fa50328084d6",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.governed_presentation_key": {
+          "md5": "15cc1513ec9784b69052a8eb39a6360e",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.governed_presentation_index": {
+          "md5": "e6148358f5b403d105e13e3f2076f08d",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "public.service_governed_learning_operation": {
+          "md5": "b046e598298a41774324d8390ca73647",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "public.service_record_governed_recommendation_event": {
+          "md5": "46626ede52adaee5f520a6f090ba376a",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "public.service_is_registered_legacy_learning_session": {
+          "md5": "6e14b8d4c3eaca8558f759b4d8f7b93f",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "public.guard_practice_diagnostic_session": {
+          "md5": "e8edd3596323234b6cacef5343fd95ad",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "public.guard_practice_diagnostic_item": {
+          "md5": "22b7345abc07f3fc2229b4a9b7319fa9",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "public.guard_practice_diagnostic_attempt": {
+          "md5": "0509c59b024cf04f0ac38cc9267c1f0a",
+          "path": "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql"
+        },
+        "private.assert_student_dashboard_session": {
+          "md5": "28b4f9d123ca1fb38056a83e6481fdd5",
+          "path": "supabase/migrations/20261006083216_sprint_15b12d_student_dashboard_read.sql"
+        },
+        "public.service_student_learning_navigation": {
+          "md5": "60324839516aa5d47b1c8ceeaffc326c",
+          "path": "supabase/migrations/20261006083216_sprint_15b12d_student_dashboard_read.sql"
+        },
+        "public.service_student_learning_dashboard": {
+          "md5": "b4d580a5bfd8d8f408adec03ed47e800",
+          "path": "supabase/migrations/20261006083216_sprint_15b12d_student_dashboard_read.sql"
+        }
+      },
+      "allBodiesMatch": true,
+      "noAnonOrAuthenticatedExecute": true
+    },
+    "activeBefore": {
+      "id": "c6696133-dd47-43b7-84a5-ae166e4846d5",
+      "curriculum_release_id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+      "unit_code": "PHY7-U01",
+      "runtime_build_id": "60792aff-fe87-440a-bce5-668309802ec5",
+      "build_key": "runtime-2026-10-06-batched-context-v1-c6696133-dd47-43b7-84a5-ae166e4846d5",
+      "source_commit": "f2d70652349f2d4bcf41cd789bf367dbcdf5cd57",
+      "implementation_manifest": {
+        "functions": {
+          "submit-answer": 18,
+          "get-session-item": 16,
+          "get-student-classes": 8,
+          "get-teacher-student": 14,
+          "get-remediation-help": 12,
+          "get-student-dashboard": 23,
+          "get-teacher-dashboard": 19,
+          "submit-mastery-answer": 7,
+          "start-learning-session": 23,
+          "get-mastery-check-status": 11,
+          "record-recommendation-event": 3,
+          "get-teacher-academic-context": 3,
+          "get-chapter-mastery-lifecycle": 3,
+          "get-school-performance-analytics": 2
+        },
+        "answerScoring": {
+          "policyVersion": "atomic-answer-evidence-v1",
+          "legacyRpcCompatibility": true,
+          "sqlMigrationSourceBlob": "77eca0be04ad46e53c57f6410db1ec8e0e9d743b",
+          "serverOwnedHintEvidence": true,
+          "historicalEvidenceRebuilt": false,
+          "learnerSkillTransactionLock": true,
+          "committedResponseAndTelemetry": true,
+          "sessionAndAssignmentTransactionLock": true
+        },
+        "initialDiagnostic": {
+          "scope": "student_chapter",
+          "resumeStable": true,
+          "formsRetained": 2,
+          "policyVersion": "single-initial-diagnostic-v1",
+          "formAssignment": "stable_student_chapter_hash",
+          "questionsPerForm": 20,
+          "questionsPerSkill": 2,
+          "maximumCompletedAttempts": 1,
+          "completionIndependentOfScore": true
+        },
+        "practicePrerequisite": {
+          "modes": [
+            "practice",
+            "chapter_review"
+          ],
+          "scope": "student_chapter",
+          "policyVersion": "chapter-diagnostic-required-v1",
+          "existingPracticePreserved": true,
+          "completionIndependentOfScore": true
+        },
+        "mcqOptionPresentation": {
+          "scope": [
+            "diagnostic",
+            "practice",
+            "mastery_check",
+            "chapter_review"
+          ],
+          "serverRandomized": true,
+          "refreshResumeStable": true,
+          "persistedPrivateOrder": true,
+          "serverCanonicalGrading": true,
+          "globalSessionItemBoundary": true,
+          "immediateSameOrderRepeatPrevented": true,
+          "masteryDelegatesCanonicalizedGrading": true,
+          "answeredHistoricalPresentationFabricated": false,
+          "fixedOrderExceptionRequiresExplicitRationale": true,
+          "learnerPresentationKeysDecoupledFromCanonicalKeys": true,
+          "activePreRolloutUnansweredItemsGrandfatheredCanonical": true
+        },
+        "governedLearningRuntime": {
+          "sourceCommit": "d9919d569c9a1764154d57e0be6a458f3d0536a1",
+          "legacyMapping": "legacy-physics7-u01-v1",
+          "policyVersion": "governed-learning-runtime-v1",
+          "sqlSourceSha256": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314",
+          "explicitEnrollment": true,
+          "functionsFileSha256": {
+            "submit-answer": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/types.ts": "f998bab078e0715096316babb5871ccef56139a693d5bdab9645da6f71a92876",
+              "_shared/grading.ts": "0c317389ef634794a6a97f497caf0c5de672fbf7cecf2681753aca763a968f77",
+              "submit-answer/index.ts": "d385a85ac187beaf6c2ffc9d894f89a412a9fc755f5528fd118a400f85d975b0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+              "_shared/recommendation.ts": "a55dddab18eb4ec72eb91d9da044c83987ac591b1767ddc14d28b11bd544a4d9",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+              "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-session-item": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "get-session-item/index.ts": "14bd9e9f59de8375134de49ad5bdce503598969364edd6a0ab75be3616d13a67",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+              "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-teacher-student": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/types.ts": "f998bab078e0715096316babb5871ccef56139a693d5bdab9645da6f71a92876",
+              "_shared/mastery.ts": "b12ecf3fd870693dd661cf3dbb8994a904bfdf31557fa9fa2d916b422513d2f5",
+              "_shared/academic-context.ts": "8da7682f2ee4bcbb44bdf01b2d13ac2b125706e64894148cd82c69294872dc39",
+              "get-teacher-student/index.ts": "00efb5f949ced07599ec1a93c979b523699323c570cf26862d4680707c518b3e",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "_shared/institutional-teacher-analytics.ts": "08be5cdcac9bb49d6d98a567f426504e8b22dd27966c7c6a1b9f7f3648dc914a"
+            },
+            "get-remediation-help": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "get-remediation-help/index.ts": "223f778b79dc346dc0b421d86edb457279426a2f54c247c5ddb756be0397814f",
+              "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-student-dashboard": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "get-student-dashboard/index.ts": "39598598a88467638facd1d8df0a2e3b77545d833c0e994e1668bd59dcb2dc01",
+              "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e"
+            },
+            "get-teacher-dashboard": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/types.ts": "f998bab078e0715096316babb5871ccef56139a693d5bdab9645da6f71a92876",
+              "_shared/mastery.ts": "b12ecf3fd870693dd661cf3dbb8994a904bfdf31557fa9fa2d916b422513d2f5",
+              "_shared/academic-context.ts": "8da7682f2ee4bcbb44bdf01b2d13ac2b125706e64894148cd82c69294872dc39",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "get-teacher-dashboard/index.ts": "70e3c2b1735a44c6f2e89ea692d9371ea4a90fcab9e2440b11a7798403cf3cf2",
+              "_shared/institutional-teacher-analytics.ts": "08be5cdcac9bb49d6d98a567f426504e8b22dd27966c7c6a1b9f7f3648dc914a",
+              "_shared/institutional-teacher-dashboard.ts": "982f9c3a0d3aab37c804051fc8a01a4717f67e244befe55d5b99b7548481a076"
+            },
+            "submit-mastery-answer": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "submit-mastery-answer/index.ts": "b186abc58ea67452daf63eeb0a6a7a8e9d6dd523f9a037e59b6b3c7079d73671",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "start-learning-session": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+              "start-learning-session/index.ts": "a3ebb9df342d0813711007ddfb4befdb9cf58132ce588aaef288be2c30f108e2",
+              "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+              "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-mastery-check-status": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "get-mastery-check-status/index.ts": "4a1ffbd05b51cbf944242db3ed5158e767a4b803266561282816816ed21d054a",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "record-recommendation-event": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "record-recommendation-event/index.ts": "378c6eb3e8eba7138ce36070389dde7d8f1898572b55997411564ca69af20bc2",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-chapter-mastery-lifecycle": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+              "get-chapter-mastery-lifecycle/index.ts": "21cafb9dfcc52011ed021e37e1398994f9db5e3f2ef88a836c25904a2d179edc"
+            }
+          },
+          "atomicAnswerLifecycle": true,
+          "frozenChapterAndPolicy": true,
+          "finalClockAuthorization": true,
+          "historicalEvidenceRebuilt": false,
+          "prospectivePolicyActivated": false
+        },
+        "learningParametersChanged": false,
+        "governedNavigationAnalytics": {
+          "sourceCommit": "f2d70652349f2d4bcf41cd789bf367dbcdf5cd57",
+          "policyVersion": "governed-navigation-analytics-v1",
+          "sqlSourceSha256": "e5f3e9c414a8b5370bc8b867da3cc92827546eda106464815a72fe46f4355faf",
+          "readOnlyDashboard": true,
+          "functionsFileSha256": {
+            "get-student-classes": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "get-student-classes/index.ts": "7a0611c7b52e777c513384bc83805381c07238f44a2a1b910f9f71df6fb2f281",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-teacher-student": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/academic-context.ts": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+              "get-teacher-student/index.ts": "44b2cb054e586c3a41e6716dac3a7d3dac25f23f3b236f0f565e3124b9b7a65d",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "_shared/analytics-evidence.mjs": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+              "_shared/institutional-teacher-analytics.ts": "d6c14eb175cab64d91abced3e05719ca8fd15a90b19186091a3fe615ab0ab075"
+            },
+            "get-student-dashboard": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "get-student-dashboard/index.ts": "73fba3251eccf15b432cda4e2436fe01fbfa9069c5121b346295a7ea8454652d",
+              "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+              "_shared/student-dashboard-handler.mjs": "837a71ba9bd14673418c8ac8cd78147e779fd581b130c32475a711add6ee0362"
+            },
+            "get-teacher-dashboard": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/academic-context.ts": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "_shared/analytics-evidence.mjs": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+              "get-teacher-dashboard/index.ts": "f60ea655725a88b29306b858c4715a52aa1eba529fed414d55c0dd7f6c8c0f25",
+              "_shared/institutional-teacher-analytics.ts": "d6c14eb175cab64d91abced3e05719ca8fd15a90b19186091a3fe615ab0ab075",
+              "_shared/institutional-teacher-dashboard.ts": "a051a94d1f269fd974090f3a2e29093e974dbd9563530f23cfabff5ca8937593"
+            },
+            "get-teacher-academic-context": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/academic-context.ts": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+              "get-teacher-academic-context/index.ts": "f3c2b12a58645dde6be001414ebd7b5ee29cd68d26ae1249355c42d04aeba660"
+            },
+            "get-school-performance-analytics": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/analytics-evidence.mjs": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+              "_shared/school-performance-analytics.ts": "a711619c5e4e939e3d6145f8a31f388e3bda2c1f038739ff25ed7f0438f9d2f8",
+              "get-school-performance-analytics/index.ts": "77f60a582d5059e139b0e11f3bc81b38e0585fbd2124621b667332ee4284ec22"
+            }
+          },
+          "classReadConcurrency": 4,
+          "contextAuthorization": "shared-current-inventory-final-revalidation-v1",
+          "emptyClassEvidenceQueries": false,
+          "historicalEvidenceRebuilt": false,
+          "originalContractAnalytics": true,
+          "exactEnrollmentReleaseUnit": true,
+          "prospectivePolicyActivated": false,
+          "crossRequestAuthorizationCache": false,
+          "sharedContextReadsFor19Classes": 12
+        },
+        "mcqOptionPresentationPolicyVersion": "mcq-option-order-v1",
+        "chapterMasteryLifecyclePolicyVersion": "chapter-mastery-review-2026-r1"
+      }
+    },
+    "activeAfter": {
+      "id": "c6696133-dd47-43b7-84a5-ae166e4846d5",
+      "curriculum_release_id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+      "unit_code": "PHY7-U01",
+      "runtime_build_id": "a4cabbcc-e8d8-436b-9aaa-8d88b02428f6",
+      "build_key": "runtime-2026-10-06-dashboard-uuid-v1-c6696133-dd47-43b7-84a5-ae166e4846d5",
+      "source_commit": "303446cb06d1dbcc631065f6fea9094c44657a0a",
+      "implementation_manifest": {
+        "functions": {
+          "submit-answer": 18,
+          "get-session-item": 16,
+          "get-student-classes": 8,
+          "get-teacher-student": 14,
+          "get-remediation-help": 12,
+          "get-student-dashboard": 24,
+          "get-teacher-dashboard": 19,
+          "submit-mastery-answer": 7,
+          "start-learning-session": 23,
+          "get-mastery-check-status": 11,
+          "record-recommendation-event": 3,
+          "get-teacher-academic-context": 3,
+          "get-chapter-mastery-lifecycle": 3,
+          "get-school-performance-analytics": 2
+        },
+        "answerScoring": {
+          "policyVersion": "atomic-answer-evidence-v1",
+          "legacyRpcCompatibility": true,
+          "sqlMigrationSourceBlob": "77eca0be04ad46e53c57f6410db1ec8e0e9d743b",
+          "serverOwnedHintEvidence": true,
+          "historicalEvidenceRebuilt": false,
+          "learnerSkillTransactionLock": true,
+          "committedResponseAndTelemetry": true,
+          "sessionAndAssignmentTransactionLock": true
+        },
+        "initialDiagnostic": {
+          "scope": "student_chapter",
+          "resumeStable": true,
+          "formsRetained": 2,
+          "policyVersion": "single-initial-diagnostic-v1",
+          "formAssignment": "stable_student_chapter_hash",
+          "questionsPerForm": 20,
+          "questionsPerSkill": 2,
+          "maximumCompletedAttempts": 1,
+          "completionIndependentOfScore": true
+        },
+        "practicePrerequisite": {
+          "modes": [
+            "practice",
+            "chapter_review"
+          ],
+          "scope": "student_chapter",
+          "policyVersion": "chapter-diagnostic-required-v1",
+          "existingPracticePreserved": true,
+          "completionIndependentOfScore": true
+        },
+        "mcqOptionPresentation": {
+          "scope": [
+            "diagnostic",
+            "practice",
+            "mastery_check",
+            "chapter_review"
+          ],
+          "serverRandomized": true,
+          "refreshResumeStable": true,
+          "persistedPrivateOrder": true,
+          "serverCanonicalGrading": true,
+          "globalSessionItemBoundary": true,
+          "immediateSameOrderRepeatPrevented": true,
+          "masteryDelegatesCanonicalizedGrading": true,
+          "answeredHistoricalPresentationFabricated": false,
+          "fixedOrderExceptionRequiresExplicitRationale": true,
+          "learnerPresentationKeysDecoupledFromCanonicalKeys": true,
+          "activePreRolloutUnansweredItemsGrandfatheredCanonical": true
+        },
+        "governedLearningRuntime": {
+          "sourceCommit": "d9919d569c9a1764154d57e0be6a458f3d0536a1",
+          "legacyMapping": "legacy-physics7-u01-v1",
+          "policyVersion": "governed-learning-runtime-v1",
+          "sqlSourceSha256": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314",
+          "explicitEnrollment": true,
+          "functionsFileSha256": {
+            "submit-answer": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/types.ts": "f998bab078e0715096316babb5871ccef56139a693d5bdab9645da6f71a92876",
+              "_shared/grading.ts": "0c317389ef634794a6a97f497caf0c5de672fbf7cecf2681753aca763a968f77",
+              "submit-answer/index.ts": "d385a85ac187beaf6c2ffc9d894f89a412a9fc755f5528fd118a400f85d975b0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+              "_shared/recommendation.ts": "a55dddab18eb4ec72eb91d9da044c83987ac591b1767ddc14d28b11bd544a4d9",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+              "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-session-item": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "get-session-item/index.ts": "14bd9e9f59de8375134de49ad5bdce503598969364edd6a0ab75be3616d13a67",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+              "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-teacher-student": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/types.ts": "f998bab078e0715096316babb5871ccef56139a693d5bdab9645da6f71a92876",
+              "_shared/mastery.ts": "b12ecf3fd870693dd661cf3dbb8994a904bfdf31557fa9fa2d916b422513d2f5",
+              "_shared/academic-context.ts": "8da7682f2ee4bcbb44bdf01b2d13ac2b125706e64894148cd82c69294872dc39",
+              "get-teacher-student/index.ts": "00efb5f949ced07599ec1a93c979b523699323c570cf26862d4680707c518b3e",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "_shared/institutional-teacher-analytics.ts": "08be5cdcac9bb49d6d98a567f426504e8b22dd27966c7c6a1b9f7f3648dc914a"
+            },
+            "get-remediation-help": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "get-remediation-help/index.ts": "223f778b79dc346dc0b421d86edb457279426a2f54c247c5ddb756be0397814f",
+              "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-student-dashboard": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "get-student-dashboard/index.ts": "39598598a88467638facd1d8df0a2e3b77545d833c0e994e1668bd59dcb2dc01",
+              "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e"
+            },
+            "get-teacher-dashboard": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/types.ts": "f998bab078e0715096316babb5871ccef56139a693d5bdab9645da6f71a92876",
+              "_shared/mastery.ts": "b12ecf3fd870693dd661cf3dbb8994a904bfdf31557fa9fa2d916b422513d2f5",
+              "_shared/academic-context.ts": "8da7682f2ee4bcbb44bdf01b2d13ac2b125706e64894148cd82c69294872dc39",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "get-teacher-dashboard/index.ts": "70e3c2b1735a44c6f2e89ea692d9371ea4a90fcab9e2440b11a7798403cf3cf2",
+              "_shared/institutional-teacher-analytics.ts": "08be5cdcac9bb49d6d98a567f426504e8b22dd27966c7c6a1b9f7f3648dc914a",
+              "_shared/institutional-teacher-dashboard.ts": "982f9c3a0d3aab37c804051fc8a01a4717f67e244befe55d5b99b7548481a076"
+            },
+            "submit-mastery-answer": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "submit-mastery-answer/index.ts": "b186abc58ea67452daf63eeb0a6a7a8e9d6dd523f9a037e59b6b3c7079d73671",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "start-learning-session": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6",
+              "start-learning-session/index.ts": "a3ebb9df342d0813711007ddfb4befdb9cf58132ce588aaef288be2c30f108e2",
+              "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+              "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-mastery-check-status": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "get-mastery-check-status/index.ts": "4a1ffbd05b51cbf944242db3ed5158e767a4b803266561282816816ed21d054a",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "record-recommendation-event": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "record-recommendation-event/index.ts": "378c6eb3e8eba7138ce36070389dde7d8f1898572b55997411564ca69af20bc2",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-chapter-mastery-lifecycle": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+              "get-chapter-mastery-lifecycle/index.ts": "21cafb9dfcc52011ed021e37e1398994f9db5e3f2ef88a836c25904a2d179edc"
+            }
+          },
+          "atomicAnswerLifecycle": true,
+          "frozenChapterAndPolicy": true,
+          "finalClockAuthorization": true,
+          "historicalEvidenceRebuilt": false,
+          "prospectivePolicyActivated": false
+        },
+        "learningParametersChanged": false,
+        "governedLearningAcceptance": {
+          "stage": "isolated_acceptance_complete_live_gate_open",
+          "functions": {
+            "submit-answer": 18,
+            "get-session-item": 16,
+            "get-student-classes": 8,
+            "get-teacher-student": 14,
+            "get-remediation-help": 12,
+            "get-student-dashboard": 24,
+            "get-teacher-dashboard": 19,
+            "submit-mastery-answer": 7,
+            "start-learning-session": 23,
+            "get-mastery-check-status": 11,
+            "record-recommendation-event": 3,
+            "get-teacher-academic-context": 3,
+            "get-chapter-mastery-lifecycle": 3,
+            "get-school-performance-analytics": 2
+          },
+          "sourceCommit": "303446cb06d1dbcc631065f6fea9094c44657a0a",
+          "isolatedMatrix": {
+            "grades": [
+              7,
+              8
+            ],
+            "schools": 2,
+            "subjects": 2,
+            "unitsPerSubject": 2
+          },
+          "edgeFilesSha256": {
+            "get-student-dashboard": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "get-student-dashboard/index.ts": "73fba3251eccf15b432cda4e2436fe01fbfa9069c5121b346295a7ea8454652d",
+              "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+              "_shared/student-dashboard-handler.mjs": "6c6a8cb71a11bee135d5971bee96aba9886d192d282c06e824db4b7847c8dcaf"
+            }
+          },
+          "studentDashboardUuid": "standard-8-4-4-4-12",
+          "learningParametersChanged": false,
+          "productionSecondReleaseActivated": false,
+          "authenticatedGovernedSwitchingPassed": false
+        },
+        "governedNavigationAnalytics": {
+          "sourceCommit": "f2d70652349f2d4bcf41cd789bf367dbcdf5cd57",
+          "policyVersion": "governed-navigation-analytics-v1",
+          "sqlSourceSha256": "e5f3e9c414a8b5370bc8b867da3cc92827546eda106464815a72fe46f4355faf",
+          "readOnlyDashboard": true,
+          "functionsFileSha256": {
+            "get-student-classes": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "get-student-classes/index.ts": "7a0611c7b52e777c513384bc83805381c07238f44a2a1b910f9f71df6fb2f281",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+            },
+            "get-teacher-student": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/academic-context.ts": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+              "get-teacher-student/index.ts": "44b2cb054e586c3a41e6716dac3a7d3dac25f23f3b236f0f565e3124b9b7a65d",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "_shared/analytics-evidence.mjs": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+              "_shared/institutional-teacher-analytics.ts": "d6c14eb175cab64d91abced3e05719ca8fd15a90b19186091a3fe615ab0ab075"
+            },
+            "get-student-dashboard": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+              "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+              "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "get-student-dashboard/index.ts": "73fba3251eccf15b432cda4e2436fe01fbfa9069c5121b346295a7ea8454652d",
+              "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+              "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+              "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+              "_shared/student-dashboard-handler.mjs": "837a71ba9bd14673418c8ac8cd78147e779fd581b130c32475a711add6ee0362"
+            },
+            "get-teacher-dashboard": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/academic-context.ts": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+              "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+              "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+              "_shared/analytics-evidence.mjs": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+              "get-teacher-dashboard/index.ts": "f60ea655725a88b29306b858c4715a52aa1eba529fed414d55c0dd7f6c8c0f25",
+              "_shared/institutional-teacher-analytics.ts": "d6c14eb175cab64d91abced3e05719ca8fd15a90b19186091a3fe615ab0ab075",
+              "_shared/institutional-teacher-dashboard.ts": "a051a94d1f269fd974090f3a2e29093e974dbd9563530f23cfabff5ca8937593"
+            },
+            "get-teacher-academic-context": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/academic-context.ts": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+              "get-teacher-academic-context/index.ts": "f3c2b12a58645dde6be001414ebd7b5ee29cd68d26ae1249355c42d04aeba660"
+            },
+            "get-school-performance-analytics": {
+              "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "_shared/analytics-evidence.mjs": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f",
+              "_shared/school-performance-analytics.ts": "a711619c5e4e939e3d6145f8a31f388e3bda2c1f038739ff25ed7f0438f9d2f8",
+              "get-school-performance-analytics/index.ts": "77f60a582d5059e139b0e11f3bc81b38e0585fbd2124621b667332ee4284ec22"
+            }
+          },
+          "classReadConcurrency": 4,
+          "contextAuthorization": "shared-current-inventory-final-revalidation-v1",
+          "emptyClassEvidenceQueries": false,
+          "historicalEvidenceRebuilt": false,
+          "originalContractAnalytics": true,
+          "exactEnrollmentReleaseUnit": true,
+          "prospectivePolicyActivated": false,
+          "crossRequestAuthorizationCache": false,
+          "sharedContextReadsFor19Classes": 12
+        },
+        "mcqOptionPresentationPolicyVersion": "mcq-option-order-v1",
+        "chapterMasteryLifecyclePolicyVersion": "chapter-mastery-review-2026-r1"
+      }
+    },
+    "preservation": {
+      "before": [
+        {
+          "table_name": "items",
+          "rows": 292,
+          "checksum": "0997f48fbfc3e1d0b7ea31e613a38831"
+        },
+        {
+          "table_name": "item_versions",
+          "rows": 120,
+          "checksum": "5083c16a7c37693a95a4bafc35d68d47"
+        },
+        {
+          "table_name": "item_options",
+          "rows": 560,
+          "checksum": "5a1ac1694a40c69730c779e2fc39d0c9"
+        },
+        {
+          "table_name": "item_answer_keys",
+          "rows": 292,
+          "checksum": "4d9e4b9d8d8a266da7365ba5f9984026"
+        },
+        {
+          "table_name": "item_misconception_mappings",
+          "rows": 334,
+          "checksum": "2aa832471128af644864cf4c82bb19ff"
+        },
+        {
+          "table_name": "misconceptions",
+          "rows": 53,
+          "checksum": "80e9d09b3c8a4bd2c64952f954702ddb"
+        },
+        {
+          "table_name": "misconception_review_events",
+          "rows": 44,
+          "checksum": "f7b779fb3466cbc099e2bf41ad04c005"
+        },
+        {
+          "table_name": "curriculum_releases",
+          "rows": 3,
+          "checksum": "8b4202ac5c5c15adbe92eb3465b11552"
+        },
+        {
+          "table_name": "curriculum_release_units",
+          "rows": 4,
+          "checksum": "efa6fff20534645d5143dd9ccf210462"
+        },
+        {
+          "table_name": "curriculum_release_skills",
+          "rows": 28,
+          "checksum": "b92fe9acbe80af6f16905e784669da31"
+        },
+        {
+          "table_name": "curriculum_release_item_families",
+          "rows": 162,
+          "checksum": "1479787df489ba96786d24d1088ecc95"
+        },
+        {
+          "table_name": "curriculum_release_gate_checks",
+          "rows": 14,
+          "checksum": "2033e1d1f5b1abac2b82092f5f571f6e"
+        },
+        {
+          "table_name": "assessment_pools",
+          "rows": 4,
+          "checksum": "ca5d0942fffb2d3c71e022e348e4d06d"
+        },
+        {
+          "table_name": "assessment_pool_items",
+          "rows": 280,
+          "checksum": "6e4d69bc77934595b66169828cbc795c"
+        },
+        {
+          "table_name": "assessment_blueprints",
+          "rows": 7,
+          "checksum": "7a34942c597853a9f7809ce90ae7fe35"
+        },
+        {
+          "table_name": "assessment_blueprint_items",
+          "rows": 360,
+          "checksum": "ec4e2375647ff8fbb2489e44db52ddb3"
+        },
+        {
+          "table_name": "assessment_forms",
+          "rows": 4,
+          "checksum": "6ed5d022172c6ad6fb3d5ef978d87b6c"
+        },
+        {
+          "table_name": "assessment_form_items",
+          "rows": 80,
+          "checksum": "6eae3cc9b870cd14d8807d3d5d1af3c6"
+        },
+        {
+          "table_name": "learning_sessions",
+          "rows": 7,
+          "checksum": "3e53b85db1689d844db4fa5b1e888b28"
+        },
+        {
+          "table_name": "learning_session_items",
+          "rows": 79,
+          "checksum": "e963bf193696a2faeb8f3dca11655333"
+        },
+        {
+          "table_name": "attempts",
+          "rows": 42,
+          "checksum": "e406815ba4637fe35b45e9ea2085a013"
+        },
+        {
+          "table_name": "student_skill_mastery",
+          "rows": 13,
+          "checksum": "8edd130d706edcc10ca503439ff17c0b"
+        },
+        {
+          "table_name": "student_skill_mastery_by_release",
+          "rows": 13,
+          "checksum": "cc854b433dad5245b13fbb32572bf22a"
+        },
+        {
+          "table_name": "learning_model_configurations",
+          "rows": 1,
+          "checksum": "bbcd10c4936f2bfe4f88c175fb5c3258"
+        },
+        {
+          "table_name": "academic_mastery_policy_versions",
+          "rows": 1,
+          "checksum": "1c69b7132347cd8b67a89268668f27ce"
+        },
+        {
+          "table_name": "chapter_mastery_states",
+          "rows": 1,
+          "checksum": "1b6fb3231d34474d6422795bcb484b2c"
+        },
+        {
+          "table_name": "mastery_check_attempts",
+          "rows": 1,
+          "checksum": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+        },
+        {
+          "table_name": "chapter_review_cycles",
+          "rows": 0,
+          "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "table_name": "chapter_review_requirements",
+          "rows": 1,
+          "checksum": "2e1caa3798ff3b8199f848152602ba13"
+        },
+        {
+          "table_name": "chapter_review_sessions",
+          "rows": 0,
+          "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "table_name": "chapter_review_item_exposures",
+          "rows": 0,
+          "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "table_name": "student_item_exposure_events",
+          "rows": 42,
+          "checksum": "7c42f76bd9c0063e6c96ca310125607b"
+        },
+        {
+          "table_name": "recommendation_events",
+          "rows": 820,
+          "checksum": "51d216d6e9de3833bcbad6e9f87961a0"
+        }
+      ],
+      "after": [
+        {
+          "table_name": "items",
+          "rows": 292,
+          "checksum": "0997f48fbfc3e1d0b7ea31e613a38831"
+        },
+        {
+          "table_name": "item_versions",
+          "rows": 120,
+          "checksum": "5083c16a7c37693a95a4bafc35d68d47"
+        },
+        {
+          "table_name": "item_options",
+          "rows": 560,
+          "checksum": "5a1ac1694a40c69730c779e2fc39d0c9"
+        },
+        {
+          "table_name": "item_answer_keys",
+          "rows": 292,
+          "checksum": "4d9e4b9d8d8a266da7365ba5f9984026"
+        },
+        {
+          "table_name": "item_misconception_mappings",
+          "rows": 334,
+          "checksum": "2aa832471128af644864cf4c82bb19ff"
+        },
+        {
+          "table_name": "misconceptions",
+          "rows": 53,
+          "checksum": "80e9d09b3c8a4bd2c64952f954702ddb"
+        },
+        {
+          "table_name": "misconception_review_events",
+          "rows": 44,
+          "checksum": "f7b779fb3466cbc099e2bf41ad04c005"
+        },
+        {
+          "table_name": "curriculum_releases",
+          "rows": 3,
+          "checksum": "8b4202ac5c5c15adbe92eb3465b11552"
+        },
+        {
+          "table_name": "curriculum_release_units",
+          "rows": 4,
+          "checksum": "efa6fff20534645d5143dd9ccf210462"
+        },
+        {
+          "table_name": "curriculum_release_skills",
+          "rows": 28,
+          "checksum": "b92fe9acbe80af6f16905e784669da31"
+        },
+        {
+          "table_name": "curriculum_release_item_families",
+          "rows": 162,
+          "checksum": "1479787df489ba96786d24d1088ecc95"
+        },
+        {
+          "table_name": "curriculum_release_gate_checks",
+          "rows": 14,
+          "checksum": "2033e1d1f5b1abac2b82092f5f571f6e"
+        },
+        {
+          "table_name": "assessment_pools",
+          "rows": 4,
+          "checksum": "ca5d0942fffb2d3c71e022e348e4d06d"
+        },
+        {
+          "table_name": "assessment_pool_items",
+          "rows": 280,
+          "checksum": "6e4d69bc77934595b66169828cbc795c"
+        },
+        {
+          "table_name": "assessment_blueprints",
+          "rows": 7,
+          "checksum": "7a34942c597853a9f7809ce90ae7fe35"
+        },
+        {
+          "table_name": "assessment_blueprint_items",
+          "rows": 360,
+          "checksum": "ec4e2375647ff8fbb2489e44db52ddb3"
+        },
+        {
+          "table_name": "assessment_forms",
+          "rows": 4,
+          "checksum": "6ed5d022172c6ad6fb3d5ef978d87b6c"
+        },
+        {
+          "table_name": "assessment_form_items",
+          "rows": 80,
+          "checksum": "6eae3cc9b870cd14d8807d3d5d1af3c6"
+        },
+        {
+          "table_name": "learning_sessions",
+          "rows": 7,
+          "checksum": "3e53b85db1689d844db4fa5b1e888b28"
+        },
+        {
+          "table_name": "learning_session_items",
+          "rows": 79,
+          "checksum": "e963bf193696a2faeb8f3dca11655333"
+        },
+        {
+          "table_name": "attempts",
+          "rows": 42,
+          "checksum": "e406815ba4637fe35b45e9ea2085a013"
+        },
+        {
+          "table_name": "student_skill_mastery",
+          "rows": 13,
+          "checksum": "8edd130d706edcc10ca503439ff17c0b"
+        },
+        {
+          "table_name": "student_skill_mastery_by_release",
+          "rows": 13,
+          "checksum": "cc854b433dad5245b13fbb32572bf22a"
+        },
+        {
+          "table_name": "learning_model_configurations",
+          "rows": 1,
+          "checksum": "bbcd10c4936f2bfe4f88c175fb5c3258"
+        },
+        {
+          "table_name": "academic_mastery_policy_versions",
+          "rows": 1,
+          "checksum": "1c69b7132347cd8b67a89268668f27ce"
+        },
+        {
+          "table_name": "chapter_mastery_states",
+          "rows": 1,
+          "checksum": "1b6fb3231d34474d6422795bcb484b2c"
+        },
+        {
+          "table_name": "mastery_check_attempts",
+          "rows": 1,
+          "checksum": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+        },
+        {
+          "table_name": "chapter_review_cycles",
+          "rows": 0,
+          "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "table_name": "chapter_review_requirements",
+          "rows": 1,
+          "checksum": "2e1caa3798ff3b8199f848152602ba13"
+        },
+        {
+          "table_name": "chapter_review_sessions",
+          "rows": 0,
+          "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "table_name": "chapter_review_item_exposures",
+          "rows": 0,
+          "checksum": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "table_name": "student_item_exposure_events",
+          "rows": 42,
+          "checksum": "7c42f76bd9c0063e6c96ca310125607b"
+        },
+        {
+          "table_name": "recommendation_events",
+          "rows": 820,
+          "checksum": "51d216d6e9de3833bcbad6e9f87961a0"
+        }
+      ],
+      "changedTables": [],
+      "olderBuildsBefore": {
+        "count": 22,
+        "checksum": "0df736c74604f02f0d0d3e00993690a4"
+      },
+      "olderBuildsAfter": {
+        "count": 22,
+        "checksum": "0df736c74604f02f0d0d3e00993690a4"
+      }
+    },
+    "advisors": {
+      "security": {
+        "before": 2,
+        "after": 2,
+        "added": [],
+        "removed": [],
+        "counts": {
+          "INFO:rls_enabled_no_policy": 1,
+          "WARN:auth_leaked_password_protection": 1
+        }
+      },
+      "performance": {
+        "before": 4,
+        "after": 4,
+        "added": [],
+        "removed": [],
+        "counts": {
+          "INFO:unindexed_foreign_keys": 1,
+          "WARN:auth_rls_initplan": 1,
+          "INFO:unused_index": 1,
+          "WARN:multiple_permissive_policies": 1
+        }
+      }
+    }
+  },
+  "edgeFunctions": [
+    {
+      "name": "submit-answer",
+      "version": 18,
+      "verify_jwt": true,
+      "fileCount": 12,
+      "filesSha256": {
+        "submit-answer/index.ts": "d385a85ac187beaf6c2ffc9d894f89a412a9fc755f5528fd118a400f85d975b0",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+        "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+        "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+        "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+        "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+        "_shared/grading.ts": "0c317389ef634794a6a97f497caf0c5de672fbf7cecf2681753aca763a968f77",
+        "_shared/recommendation.ts": "a55dddab18eb4ec72eb91d9da044c83987ac591b1767ddc14d28b11bd544a4d9"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-session-item",
+      "version": 16,
+      "verify_jwt": true,
+      "fileCount": 9,
+      "filesSha256": {
+        "get-session-item/index.ts": "14bd9e9f59de8375134de49ad5bdce503598969364edd6a0ab75be3616d13a67",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+        "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+        "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+        "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-remediation-help",
+      "version": 12,
+      "verify_jwt": true,
+      "fileCount": 7,
+      "filesSha256": {
+        "get-remediation-help/index.ts": "223f778b79dc346dc0b421d86edb457279426a2f54c247c5ddb756be0397814f",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+        "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "submit-mastery-answer",
+      "version": 7,
+      "verify_jwt": true,
+      "fileCount": 6,
+      "filesSha256": {
+        "submit-mastery-answer/index.ts": "b186abc58ea67452daf63eeb0a6a7a8e9d6dd523f9a037e59b6b3c7079d73671",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "start-learning-session",
+      "version": 23,
+      "verify_jwt": true,
+      "fileCount": 11,
+      "filesSha256": {
+        "start-learning-session/index.ts": "a3ebb9df342d0813711007ddfb4befdb9cf58132ce588aaef288be2c30f108e2",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+        "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+        "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+        "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+        "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+        "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-mastery-check-status",
+      "version": 11,
+      "verify_jwt": true,
+      "fileCount": 7,
+      "filesSha256": {
+        "get-mastery-check-status/index.ts": "4a1ffbd05b51cbf944242db3ed5158e767a4b803266561282816816ed21d054a",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+        "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "record-recommendation-event",
+      "version": 3,
+      "verify_jwt": true,
+      "fileCount": 5,
+      "filesSha256": {
+        "record-recommendation-event/index.ts": "378c6eb3e8eba7138ce36070389dde7d8f1898572b55997411564ca69af20bc2",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-chapter-mastery-lifecycle",
+      "version": 3,
+      "verify_jwt": true,
+      "fileCount": 7,
+      "filesSha256": {
+        "get-chapter-mastery-lifecycle/index.ts": "21cafb9dfcc52011ed021e37e1398994f9db5e3f2ef88a836c25904a2d179edc",
+        "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-student-classes",
+      "version": 8,
+      "verify_jwt": true,
+      "fileCount": 6,
+      "filesSha256": {
+        "get-student-classes/index.ts": "7a0611c7b52e777c513384bc83805381c07238f44a2a1b910f9f71df6fb2f281",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-student-dashboard",
+      "version": 24,
+      "verify_jwt": true,
+      "fileCount": 10,
+      "filesSha256": {
+        "get-student-dashboard/index.ts": "73fba3251eccf15b432cda4e2436fe01fbfa9069c5121b346295a7ea8454652d",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+        "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+        "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+        "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+        "_shared/student-dashboard-handler.mjs": "6c6a8cb71a11bee135d5971bee96aba9886d192d282c06e824db4b7847c8dcaf",
+        "_shared/governed-learning-runtime.mjs": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-teacher-student",
+      "version": 14,
+      "verify_jwt": false,
+      "fileCount": 7,
+      "filesSha256": {
+        "get-teacher-student/index.ts": "44b2cb054e586c3a41e6716dac3a7d3dac25f23f3b236f0f565e3124b9b7a65d",
+        "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+        "_shared/academic-context.ts": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+        "_shared/institutional-teacher-analytics.ts": "d6c14eb175cab64d91abced3e05719ca8fd15a90b19186091a3fe615ab0ab075",
+        "_shared/analytics-evidence.mjs": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-teacher-dashboard",
+      "version": 19,
+      "verify_jwt": true,
+      "fileCount": 8,
+      "filesSha256": {
+        "get-teacher-dashboard/index.ts": "f60ea655725a88b29306b858c4715a52aa1eba529fed414d55c0dd7f6c8c0f25",
+        "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+        "_shared/institutional-teacher-dashboard.ts": "a051a94d1f269fd974090f3a2e29093e974dbd9563530f23cfabff5ca8937593",
+        "_shared/academic-context.ts": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff",
+        "_shared/institutional-teacher-analytics.ts": "d6c14eb175cab64d91abced3e05719ca8fd15a90b19186091a3fe615ab0ab075",
+        "_shared/analytics-evidence.mjs": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-teacher-academic-context",
+      "version": 3,
+      "verify_jwt": true,
+      "fileCount": 3,
+      "filesSha256": {
+        "get-teacher-academic-context/index.ts": "f3c2b12a58645dde6be001414ebd7b5ee29cd68d26ae1249355c42d04aeba660",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/academic-context.ts": "d08f95db0bf691009a7cd87fcd7092f79909d546e81ae120697b29bec81a0bff"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-school-performance-analytics",
+      "version": 2,
+      "verify_jwt": true,
+      "fileCount": 4,
+      "filesSha256": {
+        "get-school-performance-analytics/index.ts": "77f60a582d5059e139b0e11f3bc81b38e0585fbd2124621b667332ee4284ec22",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/school-performance-analytics.ts": "a711619c5e4e939e3d6145f8a31f388e3bda2c1f038739ff25ed7f0438f9d2f8",
+        "_shared/analytics-evidence.mjs": "b9f395e9ebde18970effd0ef3aa649d88d15911c623b6b250b972b64f7b11d6f"
+      },
+      "mismatches": []
+    },
+    {
+      "name": "get-learning-context",
+      "version": 1,
+      "verify_jwt": true,
+      "fileCount": 5,
+      "filesSha256": {
+        "get-learning-context/index.ts": "07e4bf30c856a0a7a4ff9c23157481ff25effad0d20cbd00948a4ea030aed3cd",
+        "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "_shared/learning-context-handler.mjs": "405f1074ddfc3fb58ae84bf5f95343aae542ff05633a02742d4a103cfe27cc4a",
+        "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+        "_shared/assessment-policy.mjs": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe"
+      },
+      "mismatches": []
+    }
+  ],
+  "bootProbes": [
+    {
+      "method": "OPTIONS",
+      "status": 200,
+      "body": "ok"
+    },
+    {
+      "method": "POST",
+      "status": 401,
+      "body": "{\"code\":\"UNAUTHORIZED_NO_AUTH_HEADER\",\"message\":\"Missing authorization header\"}"
+    }
+  ],
+  "production": {
+    "implementation": {
+      "id": "dpl_CQaTwcSz7hmkJRfUzsL8kfvWGpZJ",
+      "state": "READY",
+      "commit": "bb5756f877968b948e56fa81fad0ce3fa9f5e161",
+      "alias": [
+        "www.haiedu.am",
+        "armenian-mastery-platform.vercel.app",
+        "haiedu.am",
+        "armenian-mastery-platform-kupershtokh-7785.vercel.app",
+        "armenian-mastery-platform-git-main-kupershtokh-7785.vercel.app"
+      ]
+    },
+    "httpRelease": {
+      "url": "https://www.haiedu.am/release.json",
+      "status": 200,
+      "body": {
+        "schemaVersion": 1,
+        "commit": "bb5756f877968b948e56fa81fad0ce3fa9f5e161"
+      }
+    },
+    "persistentDeploymentCheck": {
+      "verifiedAt": "2026-10-06T11:27:41.500Z",
+      "check": "Platform release checks",
+      "provider": "GitHub",
+      "environment": "Production",
+      "behavior": "Blocking",
+      "selectedCheckmark": true,
+      "page": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/settings/build-and-deployment#deployment-checks",
+      "method": "Read-only reload, Production menu, visible selected checkmark; no settings changed"
+    },
+    "publicHTTPMethod": "Direct HTTPS read; Vercel fetch helper could not read its bypass-alias API (403). Public endpoint independently returned HTTP 200 with exact SHA."
+  },
+  "releaseInventory": [
+    {
+      "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+      "release_key": "physics7_u01_2026_08_14_pilot_r1",
+      "status": "pilot",
+      "units": 1,
+      "authorized_blueprints": 4
+    },
+    {
+      "id": "9f93b58d-e1a2-49ba-ba96-89e76c697884",
+      "release_key": "physics7_u01_legacy_pre_11k",
+      "status": "legacy",
+      "units": 1,
+      "authorized_blueprints": 0
+    },
+    {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "release_key": "physics7_u01_u02_2026_08_14_candidate_r2",
+      "status": "draft",
+      "units": 2,
+      "authorized_blueprints": 0
+    }
+  ],
+  "releaseGate": {
+    "authorizedReleaseCount": 1,
+    "secondAuthorizedReleaseExists": false,
+    "draftCandidateAuthorizedBlueprints": 0,
+    "remaining": "Authenticated governed learner switching after a second authorized release is approved and deployed.",
+    "chapterIIActivated": false,
+    "assessmentPolicyApproved": false,
+    "historicalEvidenceReset": false
+  },
+  "authenticatedExistingTwoSchoolRegression": {
+    "actions": {
+      "runId": 37456559507,
+      "number": 15,
+      "status": "passed",
+      "firstAttempt": {
+        "runId": 37456559507,
+        "number": 15,
+        "attempt": 1,
+        "checks": 56,
+        "passed": 54,
+        "failed": [
+          {
+            "label": "B: browser home link",
+            "status": "failed"
+          },
+          {
+            "label": "A_admin: close only QA session",
+            "status": "failed",
+            "httpStatus": 520
+          }
+        ],
+        "cleanup": {
+          "classes": [
+            {
+              "id": "2e6df336-0829-4d93-8a26-69c3bccc3050",
+              "archived": true
+            },
+            {
+              "id": "3d1b3105-216d-4142-8476-804eb579da9f",
+              "archived": true
+            }
+          ],
+          "memberships": []
+        },
+        "browserState": [
+          {
+            "actor": "B_teacher",
+            "path": "/teacher",
+            "dashboardVisible": false,
+            "authVisible": false,
+            "classHeadingPresent": 1,
+            "rosterCards": 1
+          }
+        ],
+        "readIsolationBefore": {
+          "status": "passed",
+          "checks": 54
+        },
+        "failureKind": "assertion-or-request",
+        "report": {
+          "scope": "Sprint 14 authenticated actions",
+          "revision": "bb5756f877968b948e56fa81fad0ce3fa9f5e161",
+          "startedAt": "2026-10-06T11:30:15.215Z",
+          "status": "failed",
+          "sprint14GateClosed": false,
+          "checks": [
+            {
+              "label": "six dedicated QA identities configured",
+              "status": "passed"
+            },
+            {
+              "label": "authenticated read-isolation preflight passes",
+              "status": "passed"
+            },
+            {
+              "label": "A_admin: real expected identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_teacher: real expected identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_student: real expected identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_admin: real expected identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_teacher: real expected identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_student: real expected identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_teacher: authorized dashboard",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: original membership inventory",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: original learner enrolment inventory",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: current authorized class creation option",
+              "status": "passed"
+            },
+            {
+              "label": "B_teacher: authorized dashboard",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: original membership inventory",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: original learner enrolment inventory",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: current authorized class creation option",
+              "status": "passed"
+            },
+            {
+              "label": "A_teacher: create disposable empty class",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_teacher: authorized dashboard",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_teacher: disposable class has no learners",
+              "status": "passed"
+            },
+            {
+              "label": "A: foreign teacher rename denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: foreign teacher archive denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: foreign teacher activate denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: student teacher mutation denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: foreign membership class creation denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: foreign join code issuance denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A_teacher: browser document loads",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: actual rename persists after browser reload",
+              "status": "passed"
+            },
+            {
+              "label": "A: teacher home navigation retains authentication",
+              "status": "passed"
+            },
+            {
+              "label": "A: sidebar profile action",
+              "status": "passed"
+            },
+            {
+              "label": "A: sidebar classes action",
+              "status": "passed"
+            },
+            {
+              "label": "A: sidebar archive action",
+              "status": "passed"
+            },
+            {
+              "label": "A: archive empty class through teacher UI",
+              "status": "passed"
+            },
+            {
+              "label": "A: reactivate empty class through teacher UI",
+              "status": "passed"
+            },
+            {
+              "label": "A: mobile rename cancel retains name",
+              "status": "passed"
+            },
+            {
+              "label": "A: mobile teacher workspace has no horizontal overflow",
+              "status": "passed"
+            },
+            {
+              "label": "A_teacher: archive only run-created class",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_teacher: create disposable empty class",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_teacher: authorized dashboard",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_teacher: disposable class has no learners",
+              "status": "passed"
+            },
+            {
+              "label": "B: foreign teacher rename denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: foreign teacher archive denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: foreign teacher activate denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: student teacher mutation denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: foreign membership class creation denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: foreign join code issuance denied",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B_teacher: browser document loads",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: actual rename persists after browser reload",
+              "status": "passed"
+            },
+            {
+              "label": "B: browser home link",
+              "status": "failed"
+            },
+            {
+              "label": "B_teacher: archive only run-created class",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_admin: close only QA session",
+              "status": "failed",
+              "httpStatus": 520
+            },
+            {
+              "label": "A_teacher: close only QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "A_student: close only QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "B_admin: close only QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "B_teacher: close only QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "B_student: close only QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "authenticated read-isolation restored after cleanup",
+              "status": "passed"
+            }
+          ],
+          "resources": [
+            {
+              "type": "emptyClass",
+              "id": "2e6df336-0829-4d93-8a26-69c3bccc3050"
+            },
+            {
+              "type": "emptyClass",
+              "id": "3d1b3105-216d-4142-8476-804eb579da9f"
+            }
+          ],
+          "readIsolationBefore": {
+            "scope": "Sprint 14 authenticated read isolation",
+            "revision": "bb5756f877968b948e56fa81fad0ce3fa9f5e161",
+            "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+            "startedAt": "2026-10-06T11:30:15.221Z",
+            "status": "passed",
+            "sprint14GateClosed": false,
+            "checks": [
+              {
+                "label": "A_admin: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A_teacher: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A_student: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B_admin: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B_teacher: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B_student: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: admin own school",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: admin own teacher directory",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: teacher own context",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: teacher own class evidence",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: teacher own learner detail",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: student own enrolment",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: admin own school",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: admin own teacher directory",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: teacher own context",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: teacher own class evidence",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: teacher own learner detail",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: student own enrolment",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: admin cannot read other directory",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: admin cannot select other overview",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: teacher cannot select other context",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: teacher cannot select other dashboard",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: teacher cannot read other learner context",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: other learner cannot be substituted into own class",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: other class cannot be substituted into own assignment",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: omitted context cannot expose other learner through legacy path",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: student supplied identity cannot change enrolment reads",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: student cannot use teacher evidence API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: student cannot use school directory API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: teacher cannot use school directory API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A_admin: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A_teacher: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A_student: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: admin cannot read other directory",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: admin cannot select other overview",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: teacher cannot select other context",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: teacher cannot select other dashboard",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: teacher cannot read other learner context",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: other learner cannot be substituted into own class",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: other class cannot be substituted into own assignment",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: omitted context cannot expose other learner through legacy path",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: student supplied identity cannot change enrolment reads",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: student cannot use teacher evidence API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: student cannot use school directory API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: teacher cannot use school directory API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B_admin: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B_teacher: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B_student: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A_admin: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "A_teacher: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "A_student: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "B_admin: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "B_teacher: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "B_student: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              }
+            ],
+            "finishedAt": "2026-10-06T11:32:07.152Z"
+          },
+          "failureKind": "assertion-or-request",
+          "browserState": [
+            {
+              "actor": "B_teacher",
+              "path": "/teacher",
+              "dashboardVisible": false,
+              "authVisible": false,
+              "classHeadingPresent": 1,
+              "rosterCards": 1
+            }
+          ],
+          "readIsolationAfter": {
+            "scope": "Sprint 14 authenticated read isolation",
+            "revision": "bb5756f877968b948e56fa81fad0ce3fa9f5e161",
+            "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+            "startedAt": "2026-10-06T11:35:26.360Z",
+            "status": "passed",
+            "sprint14GateClosed": false,
+            "checks": [
+              {
+                "label": "A_admin: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A_teacher: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A_student: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B_admin: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B_teacher: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B_student: authenticated expected QA identity",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: admin own school",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: admin own teacher directory",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: teacher own context",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: teacher own class evidence",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: teacher own learner detail",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: student own enrolment",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: admin own school",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: admin own teacher directory",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: teacher own context",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: teacher own class evidence",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: teacher own learner detail",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: student own enrolment",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: admin cannot read other directory",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: admin cannot select other overview",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: teacher cannot select other context",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: teacher cannot select other dashboard",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: teacher cannot read other learner context",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: other learner cannot be substituted into own class",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: other class cannot be substituted into own assignment",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: omitted context cannot expose other learner through legacy path",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: student supplied identity cannot change enrolment reads",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "A: student cannot use teacher evidence API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: student cannot use school directory API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A: teacher cannot use school directory API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A_admin: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A_teacher: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A_student: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: admin cannot read other directory",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: admin cannot select other overview",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: teacher cannot select other context",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: teacher cannot select other dashboard",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: teacher cannot read other learner context",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: other learner cannot be substituted into own class",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: other class cannot be substituted into own assignment",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: omitted context cannot expose other learner through legacy path",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: student supplied identity cannot change enrolment reads",
+                "status": "passed",
+                "httpStatus": 200
+              },
+              {
+                "label": "B: student cannot use teacher evidence API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: student cannot use school directory API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B: teacher cannot use school directory API",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B_admin: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B_teacher: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "B_student: direct other-school enrolment read denied or empty",
+                "status": "passed",
+                "httpStatus": 403
+              },
+              {
+                "label": "A_admin: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "A_teacher: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "A_student: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "B_admin: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "B_teacher: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              },
+              {
+                "label": "B_student: close only this QA session",
+                "status": "passed",
+                "httpStatus": 204
+              }
+            ],
+            "finishedAt": "2026-10-06T11:36:50.717Z"
+          },
+          "finishedAt": "2026-10-06T11:36:50.717Z",
+          "cleanup": {
+            "classes": [
+              {
+                "id": "2e6df336-0829-4d93-8a26-69c3bccc3050",
+                "archived": true
+              },
+              {
+                "id": "3d1b3105-216d-4142-8476-804eb579da9f",
+                "archived": true
+              }
+            ],
+            "memberships": []
+          }
+        },
+        "cleanupReadback": [
+          {
+            "id": "2e6df336-0829-4d93-8a26-69c3bccc3050",
+            "is_active": false,
+            "active_enrollments": 0
+          },
+          {
+            "id": "3d1b3105-216d-4142-8476-804eb579da9f",
+            "is_active": false,
+            "active_enrollments": 0
+          }
+        ]
+      },
+      "attempt": 2,
+      "passed": 143,
+      "checks": 143,
+      "readIsolationBefore": 54,
+      "readIsolationAfter": 54,
+      "report": {
+        "scope": "Sprint 14 authenticated actions",
+        "revision": "bb5756f877968b948e56fa81fad0ce3fa9f5e161",
+        "startedAt": "2026-10-06T11:38:53.385Z",
+        "status": "passed",
+        "sprint14GateClosed": false,
+        "checks": [
+          {
+            "label": "six dedicated QA identities configured",
+            "status": "passed"
+          },
+          {
+            "label": "authenticated read-isolation preflight passes",
+            "status": "passed"
+          },
+          {
+            "label": "A_admin: real expected identity",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A_teacher: real expected identity",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A_student: real expected identity",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B_admin: real expected identity",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B_teacher: real expected identity",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B_student: real expected identity",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: original membership inventory",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: original learner enrolment inventory",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: current authorized class creation option",
+            "status": "passed"
+          },
+          {
+            "label": "B_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: original membership inventory",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: original learner enrolment inventory",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: current authorized class creation option",
+            "status": "passed"
+          },
+          {
+            "label": "A_teacher: create disposable empty class",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A_teacher: disposable class has no learners",
+            "status": "passed"
+          },
+          {
+            "label": "A: foreign teacher rename denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: foreign teacher archive denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: foreign teacher activate denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: student teacher mutation denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: foreign membership class creation denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: foreign join code issuance denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A_teacher: browser document loads",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: actual rename persists after browser reload",
+            "status": "passed"
+          },
+          {
+            "label": "A: teacher home navigation retains authentication",
+            "status": "passed"
+          },
+          {
+            "label": "A: sidebar profile action",
+            "status": "passed"
+          },
+          {
+            "label": "A: sidebar classes action",
+            "status": "passed"
+          },
+          {
+            "label": "A: sidebar archive action",
+            "status": "passed"
+          },
+          {
+            "label": "A: archive empty class through teacher UI",
+            "status": "passed"
+          },
+          {
+            "label": "A: reactivate empty class through teacher UI",
+            "status": "passed"
+          },
+          {
+            "label": "A: mobile rename cancel retains name",
+            "status": "passed"
+          },
+          {
+            "label": "A: mobile teacher workspace has no horizontal overflow",
+            "status": "passed"
+          },
+          {
+            "label": "A_teacher: archive only run-created class",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B_teacher: create disposable empty class",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B_teacher: disposable class has no learners",
+            "status": "passed"
+          },
+          {
+            "label": "B: foreign teacher rename denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: foreign teacher archive denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: foreign teacher activate denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: student teacher mutation denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: foreign membership class creation denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: foreign join code issuance denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B_teacher: browser document loads",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: actual rename persists after browser reload",
+            "status": "passed"
+          },
+          {
+            "label": "B: teacher home navigation retains authentication",
+            "status": "passed"
+          },
+          {
+            "label": "B: sidebar profile action",
+            "status": "passed"
+          },
+          {
+            "label": "B: sidebar classes action",
+            "status": "passed"
+          },
+          {
+            "label": "B: sidebar archive action",
+            "status": "passed"
+          },
+          {
+            "label": "B: archive empty class through teacher UI",
+            "status": "passed"
+          },
+          {
+            "label": "B: reactivate empty class through teacher UI",
+            "status": "passed"
+          },
+          {
+            "label": "B: mobile rename cancel retains name",
+            "status": "passed"
+          },
+          {
+            "label": "B: mobile teacher workspace has no horizontal overflow",
+            "status": "passed"
+          },
+          {
+            "label": "B_teacher: archive only run-created class",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: guest teacher has no existing live membership",
+            "status": "passed"
+          },
+          {
+            "label": "A: issue token-only guest invitation",
+            "status": "passed",
+            "httpStatus": 201
+          },
+          {
+            "label": "A: wrong recipient cannot redeem teacher invitation",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: redemption creates a new disposable membership",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: foreign admin archive denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: foreign admin restore denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: foreign admin preview_offboard denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: foreign admin offboard denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: foreign membership termination denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: subject resolved from current enrolment",
+            "status": "passed"
+          },
+          {
+            "label": "A: foreign subject grant denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: grant guest current subject",
+            "status": "passed",
+            "httpStatus": 201
+          },
+          {
+            "label": "B_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: new membership receives own authorized option",
+            "status": "passed"
+          },
+          {
+            "label": "B_teacher: create disposable empty class",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B_teacher: disposable class has no learners",
+            "status": "passed"
+          },
+          {
+            "label": "A: preview new membership",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: create unused code without sending email",
+            "status": "passed",
+            "httpStatus": 201
+          },
+          {
+            "label": "A: create unused token-only learner invitation",
+            "status": "passed",
+            "httpStatus": 201
+          },
+          {
+            "label": "A: stale offboarding preview fails closed",
+            "status": "passed",
+            "httpStatus": 409
+          },
+          {
+            "label": "A: refreshed offboarding impact",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: preview counts only new assignment, grant and unused credentials",
+            "status": "passed"
+          },
+          {
+            "label": "B_teacher: archive only run-created class",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A_admin: browser document loads",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: offboarding preview displays confirmation",
+            "status": "passed"
+          },
+          {
+            "label": "A: offboarding confirmation cancelled",
+            "status": "passed"
+          },
+          {
+            "label": "A: read after cancel",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: offboarding cancel preserves new membership",
+            "status": "passed"
+          },
+          {
+            "label": "A: actual admin UI offboards only new membership",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: offboarding refreshes the roster and reports success",
+            "status": "passed"
+          },
+          {
+            "label": "A: verify ended membership",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: ended membership has no live grants or assignments",
+            "status": "passed"
+          },
+          {
+            "label": "A: offboarding revokes unused invitation",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: ended assignment cannot resolve context",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: guest retains original school access",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: guest teacher has no existing live membership",
+            "status": "passed"
+          },
+          {
+            "label": "B: issue token-only guest invitation",
+            "status": "passed",
+            "httpStatus": 201
+          },
+          {
+            "label": "B: wrong recipient cannot redeem teacher invitation",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: redemption creates a new disposable membership",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: foreign admin archive denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: foreign admin restore denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: foreign admin preview_offboard denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: foreign admin offboard denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: foreign membership termination denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: subject resolved from current enrolment",
+            "status": "passed"
+          },
+          {
+            "label": "B: foreign subject grant denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: grant guest current subject",
+            "status": "passed",
+            "httpStatus": 201
+          },
+          {
+            "label": "A_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: new membership receives own authorized option",
+            "status": "passed"
+          },
+          {
+            "label": "A_teacher: create disposable empty class",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A_teacher: disposable class has no learners",
+            "status": "passed"
+          },
+          {
+            "label": "B: preview new membership",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: create unused code without sending email",
+            "status": "passed",
+            "httpStatus": 201
+          },
+          {
+            "label": "B: create unused token-only learner invitation",
+            "status": "passed",
+            "httpStatus": 201
+          },
+          {
+            "label": "B: stale offboarding preview fails closed",
+            "status": "passed",
+            "httpStatus": 409
+          },
+          {
+            "label": "B: refreshed offboarding impact",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: preview counts only new assignment, grant and unused credentials",
+            "status": "passed"
+          },
+          {
+            "label": "A_teacher: archive only run-created class",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B_admin: browser document loads",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: offboarding preview displays confirmation",
+            "status": "passed"
+          },
+          {
+            "label": "B: offboarding confirmation cancelled",
+            "status": "passed"
+          },
+          {
+            "label": "B: read after cancel",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: offboarding cancel preserves new membership",
+            "status": "passed"
+          },
+          {
+            "label": "B: actual admin UI offboards only new membership",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: offboarding refreshes the roster and reports success",
+            "status": "passed"
+          },
+          {
+            "label": "B: verify ended membership",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: ended membership has no live grants or assignments",
+            "status": "passed"
+          },
+          {
+            "label": "B: offboarding revokes unused invitation",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: ended assignment cannot resolve context",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: guest retains original school access",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: original class identity, state and roster preserved",
+            "status": "passed"
+          },
+          {
+            "label": "A: final original enrolment",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: original learner enrolments unchanged",
+            "status": "passed"
+          },
+          {
+            "label": "B_teacher: authorized dashboard",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: original class identity, state and roster preserved",
+            "status": "passed"
+          },
+          {
+            "label": "B: final original enrolment",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: original learner enrolments unchanged",
+            "status": "passed"
+          },
+          {
+            "label": "A_admin: close only QA session",
+            "status": "passed",
+            "httpStatus": 204
+          },
+          {
+            "label": "A_teacher: close only QA session",
+            "status": "passed",
+            "httpStatus": 204
+          },
+          {
+            "label": "A_student: close only QA session",
+            "status": "passed",
+            "httpStatus": 204
+          },
+          {
+            "label": "B_admin: close only QA session",
+            "status": "passed",
+            "httpStatus": 204
+          },
+          {
+            "label": "B_teacher: close only QA session",
+            "status": "passed",
+            "httpStatus": 204
+          },
+          {
+            "label": "B_student: close only QA session",
+            "status": "passed",
+            "httpStatus": 204
+          },
+          {
+            "label": "authenticated read-isolation restored after cleanup",
+            "status": "passed"
+          }
+        ],
+        "resources": [
+          {
+            "type": "emptyClass",
+            "id": "f979a67d-f221-49ad-af74-dc7605a7c064"
+          },
+          {
+            "type": "emptyClass",
+            "id": "0ce74593-f798-4f48-bb62-0c698ed06d44"
+          },
+          {
+            "type": "temporaryTeacherMembership",
+            "id": "20b93d47-5c21-40e5-b148-8fda89fac6ef",
+            "schoolId": "e88bb74c-ab42-41a5-8943-e33a3ac4c2e6"
+          },
+          {
+            "type": "emptyClass",
+            "id": "5a2f4285-8ecc-45a9-86d9-161cd363de22"
+          },
+          {
+            "type": "temporaryTeacherMembership",
+            "id": "e7d9fb3a-3926-4975-945c-eb5752b12b2f",
+            "schoolId": "dd92dacb-7889-47f3-8f00-ce9144e3ac4a"
+          },
+          {
+            "type": "emptyClass",
+            "id": "4ad15179-5f06-4904-b2ec-98348b3f70c3"
+          }
+        ],
+        "readIsolationBefore": {
+          "scope": "Sprint 14 authenticated read isolation",
+          "revision": "bb5756f877968b948e56fa81fad0ce3fa9f5e161",
+          "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+          "startedAt": "2026-10-06T11:38:53.386Z",
+          "status": "passed",
+          "sprint14GateClosed": false,
+          "checks": [
+            {
+              "label": "A_admin: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_teacher: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_student: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_admin: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_teacher: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_student: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: admin own school",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: admin own teacher directory",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: teacher own context",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: teacher own class evidence",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: teacher own learner detail",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: student own enrolment",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: admin own school",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: admin own teacher directory",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: teacher own context",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: teacher own class evidence",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: teacher own learner detail",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: student own enrolment",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: admin cannot read other directory",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: admin cannot select other overview",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: teacher cannot select other context",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: teacher cannot select other dashboard",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: teacher cannot read other learner context",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: other learner cannot be substituted into own class",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: other class cannot be substituted into own assignment",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: omitted context cannot expose other learner through legacy path",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: student supplied identity cannot change enrolment reads",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: student cannot use teacher evidence API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: student cannot use school directory API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: teacher cannot use school directory API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A_admin: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A_teacher: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A_student: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: admin cannot read other directory",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: admin cannot select other overview",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: teacher cannot select other context",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: teacher cannot select other dashboard",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: teacher cannot read other learner context",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: other learner cannot be substituted into own class",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: other class cannot be substituted into own assignment",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: omitted context cannot expose other learner through legacy path",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: student supplied identity cannot change enrolment reads",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: student cannot use teacher evidence API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: student cannot use school directory API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: teacher cannot use school directory API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B_admin: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B_teacher: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B_student: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A_admin: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "A_teacher: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "A_student: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "B_admin: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "B_teacher: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "B_student: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            }
+          ],
+          "finishedAt": "2026-10-06T11:40:03.162Z"
+        },
+        "readIsolationAfter": {
+          "scope": "Sprint 14 authenticated read isolation",
+          "revision": "bb5756f877968b948e56fa81fad0ce3fa9f5e161",
+          "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+          "startedAt": "2026-10-06T11:44:08.454Z",
+          "status": "passed",
+          "sprint14GateClosed": false,
+          "checks": [
+            {
+              "label": "A_admin: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_teacher: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A_student: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_admin: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_teacher: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B_student: authenticated expected QA identity",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: admin own school",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: admin own teacher directory",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: teacher own context",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: teacher own class evidence",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: teacher own learner detail",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: student own enrolment",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: admin own school",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: admin own teacher directory",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: teacher own context",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: teacher own class evidence",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: teacher own learner detail",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: student own enrolment",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: admin cannot read other directory",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: admin cannot select other overview",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: teacher cannot select other context",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: teacher cannot select other dashboard",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: teacher cannot read other learner context",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: other learner cannot be substituted into own class",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: other class cannot be substituted into own assignment",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: omitted context cannot expose other learner through legacy path",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: student supplied identity cannot change enrolment reads",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "A: student cannot use teacher evidence API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: student cannot use school directory API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A: teacher cannot use school directory API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A_admin: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A_teacher: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A_student: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: admin cannot read other directory",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: admin cannot select other overview",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: teacher cannot select other context",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: teacher cannot select other dashboard",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: teacher cannot read other learner context",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: other learner cannot be substituted into own class",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: other class cannot be substituted into own assignment",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: omitted context cannot expose other learner through legacy path",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: student supplied identity cannot change enrolment reads",
+              "status": "passed",
+              "httpStatus": 200
+            },
+            {
+              "label": "B: student cannot use teacher evidence API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: student cannot use school directory API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B: teacher cannot use school directory API",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B_admin: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B_teacher: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "B_student: direct other-school enrolment read denied or empty",
+              "status": "passed",
+              "httpStatus": 403
+            },
+            {
+              "label": "A_admin: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "A_teacher: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "A_student: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "B_admin: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "B_teacher: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            },
+            {
+              "label": "B_student: close only this QA session",
+              "status": "passed",
+              "httpStatus": 204
+            }
+          ],
+          "finishedAt": "2026-10-06T11:45:15.718Z"
+        },
+        "finishedAt": "2026-10-06T11:45:15.718Z",
+        "cleanup": {
+          "classes": [
+            {
+              "id": "f979a67d-f221-49ad-af74-dc7605a7c064",
+              "archived": true
+            },
+            {
+              "id": "0ce74593-f798-4f48-bb62-0c698ed06d44",
+              "archived": true
+            },
+            {
+              "id": "5a2f4285-8ecc-45a9-86d9-161cd363de22",
+              "archived": true
+            },
+            {
+              "id": "4ad15179-5f06-4904-b2ec-98348b3f70c3",
+              "archived": true
+            }
+          ],
+          "memberships": [
+            {
+              "id": "20b93d47-5c21-40e5-b148-8fda89fac6ef",
+              "ended": true
+            },
+            {
+              "id": "e7d9fb3a-3926-4975-945c-eb5752b12b2f",
+              "ended": true
+            }
+          ]
+        }
+      }
+    },
+    "analytics": {
+      "runId": 37456559388,
+      "number": 13,
+      "status": "passed",
+      "checks": 10,
+      "passed": 10,
+      "report": {
+        "scope": "Sprint 14D authenticated production analytics acceptance",
+        "revision": "bb5756f877968b948e56fa81fad0ce3fa9f5e161",
+        "target": "https://www.haiedu.am",
+        "startedAt": "2026-10-06T11:37:33.260Z",
+        "status": "passed",
+        "sprint14DGateClosed": true,
+        "checks": [
+          {
+            "label": "A: authenticate dedicated school administrator",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: authenticate dedicated school administrator",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: own-school aggregate is available",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: other-school aggregate is denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "B: own-school aggregate is available",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: other-school aggregate is denied",
+            "status": "passed",
+            "httpStatus": 403
+          },
+          {
+            "label": "A: authenticated production board loads real scoped analytics",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "B: authenticated production board loads real scoped analytics",
+            "status": "passed",
+            "httpStatus": 200
+          },
+          {
+            "label": "A: close only this QA session",
+            "status": "passed",
+            "httpStatus": 204
+          },
+          {
+            "label": "B: close only this QA session",
+            "status": "passed",
+            "httpStatus": 204
+          }
+        ],
+        "finishedAt": "2026-10-06T11:37:59.147Z"
+      }
+    },
+    "boundary": "Existing authorized curriculum fixtures; not second-release governed learner switching."
+  }
+}
