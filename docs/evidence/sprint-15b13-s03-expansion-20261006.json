@@ -1,0 +1,58 @@
+{
+  "sprint": "15B.13D",
+  "state": "predeployment_validation_complete",
+  "observedDate": "2026-10-06",
+  "baseMain": "115614c776cae45cb6e2cedd2b40761cd14bfeee",
+  "migration": {
+    "file": "supabase/migrations/20261006184457_sprint_15b13_s03_practice_expansion.sql",
+    "sha256": "f7abc010cf68664d52b994418ba4df9588ce403e90c89d8f9c4e84c7aac21e5a"
+  },
+  "authoring": {
+    "questionCodes": [
+      "PHY7-U02-S03-I05",
+      "PHY7-U02-S03-I06",
+      "PHY7-U02-S03-I07",
+      "PHY7-U02-S03-I08"
+    ],
+    "version": 1,
+    "newDefinitions": 5,
+    "newGuides": 1,
+    "newReasoningDemands": 3,
+    "intentionalPracticeVariants": 1,
+    "reviewStatus": "human_review_pending",
+    "learnerVisible": false,
+    "s03AuthoredAfter": 8,
+    "s03PlanningShortfall": 4,
+    "chapterAuthoredAfter": 44,
+    "chapterApprovedBefore": 40,
+    "planningTarget": 192,
+    "remainingUnauthoredAfter": 148
+  },
+  "validation": {
+    "nodeTests": 1228,
+    "nodeFailed": 0,
+    "isolatedMigrationTests": 2,
+    "realProductionRollback": {
+      "tablesCompared": 100,
+      "changedTables": []
+    },
+    "workflowTriggerCoverage": {
+      "actionsPaths": 55,
+      "analyticsPaths": 31
+    },
+    "fixtureLimit": "Real catalogue columns/constraints, pseudonymized reduced corpus and substituted expected corpus hash; excludes live Auth, production triggers and external/self-ancestry FKs. Unchanged production migration separately rollback-tested."
+  },
+  "deployment": {
+    "status": "pending"
+  },
+  "gates": {
+    "candidateRelease": "draft",
+    "humanQuestionReview": "pending",
+    "humanMisconceptionReview": "pending",
+    "humanGuideReview": "pending",
+    "externalSme": "pending",
+    "protectedPools": "not_created",
+    "readinessModelBinding": "not_changed",
+    "learnerRelease": "not_authorized"
+  }
+}
