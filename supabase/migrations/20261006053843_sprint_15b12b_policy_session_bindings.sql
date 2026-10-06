@@ -299,10 +299,8 @@ alter table public.learning_sessions
   add column assessment_policy_binding_id uuid references public.assessment_policy_bindings(id),
   add column governed_unit_id uuid references public.units(id),
   add column source_auth_session_id uuid;
-create index learning_sessions_policy_binding_idx on public.learning_sessions(assessment_policy_binding_id)
-  where assessment_policy_binding_id is not null;
-create index learning_sessions_governed_unit_idx on public.learning_sessions(governed_unit_id)
-  where governed_unit_id is not null;
+create index learning_sessions_policy_binding_idx on public.learning_sessions(assessment_policy_binding_id);
+create index learning_sessions_governed_unit_idx on public.learning_sessions(governed_unit_id);
 create index learning_sessions_scoped_resume_idx on public.learning_sessions
   (student_id,institutional_class_enrollment_id,curriculum_release_id,unit_code,status,started_at);
 
