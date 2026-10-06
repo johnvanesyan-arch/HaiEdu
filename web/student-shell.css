@@ -171,6 +171,8 @@ body.amp-student-shell-active .amp-side-nav {
 
 .amp-nav-list {
   display: grid;
+  grid-auto-rows: max-content;
+  align-content: start;
   gap: 0.35rem;
   min-height: 0;
   overflow-y: auto;

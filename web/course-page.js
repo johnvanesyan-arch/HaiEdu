@@ -8,9 +8,13 @@ const root = document.getElementById('courseContent');
 let version = 0, disposePlayer = () => {};
 function completionDate(value) {
   const date = new Date(value);
-  return value && Number.isFinite(date.getTime())
-    ? new Intl.DateTimeFormat('hy-AM', { dateStyle:'medium', timeStyle:'short' }).format(date)
-    : '—';
+  if (!value || !Number.isFinite(date.getTime())) return '—';
+  // Numeric parts keep the local date readable even when the browser lacks
+  // Armenian locale data and would otherwise substitute English month names.
+  const parts = Object.fromEntries(new Intl.DateTimeFormat('hy-AM', {
+    year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit', hourCycle:'h23'
+  }).formatToParts(date).map(({type,value}) => [type,value]));
+  return `${parts.day}.${parts.month}.${parts.year} · ${parts.hour}:${parts.minute}`;
 }
 function clear() { disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; }
 async function load() {

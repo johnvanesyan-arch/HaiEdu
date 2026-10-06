@@ -75,6 +75,8 @@ for(const width of [1280,768,360]) test(`full student assessment shell is readab
       rawDateVisible:[...document.querySelectorAll('#courseContent td')].some(el=>/^\d{4}-\d\d-\d\dT/.test(el.textContent.trim())),
       emptyParagraphs:[...document.querySelectorAll('#courseContent > p')].filter(el=>!el.textContent.trim()).length,
       emptyPlayerDisplay:getComputedStyle(document.getElementById('learningPlayer')).display,
+      dateText:document.querySelector('#courseContent time')?.textContent,
+      clippedTabs:[...document.querySelectorAll('.course-tabs a')].filter(el=>el.scrollWidth>el.clientWidth+1).length,
       mobileWidth:nav.clientWidth, mobileLastRight:nav.lastElementChild.getBoundingClientRect().right,
       resumeHref:[...document.querySelectorAll('#courseContent a')].find(el=>el.textContent.startsWith('Շարունակել'))?.href
     };
@@ -83,6 +85,8 @@ for(const width of [1280,768,360]) test(`full student assessment shell is readab
   assert.equal(metrics.tableCollapse,'collapse','History lost its table styling');
   assert.ok(metrics.cellPadding>=10,'History rows need readable cell spacing');
   assert.equal(metrics.rawDateVisible,false,'Student history must format timestamps');
+  assert.match(metrics.dateText,/^\d{2}\.\d{2}\.\d{4} · \d{2}:\d{2}$/,'History must remain readable without Armenian locale data');
+  assert.equal(metrics.clippedTabs,0,'Tab labels must fit their buttons');
   assert.equal(metrics.emptyParagraphs,0,'Empty sections must not add blank grid rows');
   assert.equal(metrics.emptyPlayerDisplay,'none','An inactive player must not occupy layout space');
   assert.ok(metrics.documentWidth<=width+1,'The document must not overflow horizontally');
@@ -128,8 +132,14 @@ test('expanded provenance stays contained at 200 percent text size',async t=>{
   await page.locator('#courseContent details summary').click();
   assert.match(await page.locator('#courseContent details').innerText(),/fixture-blueprint/);
   assert.match(await page.locator('#courseContent details').innerText(),/fixture-runtime/);
-  const metrics=await page.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth}));
+  const metrics=await page.evaluate(()=>({viewport:innerWidth,documentWidth:document.documentElement.scrollWidth,
+    crowdedNavLinks:[...document.querySelectorAll('.amp-nav-link')].filter(el=>{
+      const label=el.lastElementChild.getBoundingClientRect(), link=el.getBoundingClientRect();
+      return label.top<link.top-1 || label.bottom>link.bottom+1;
+    }).length
+  }));
   await capture(page,'assessment-text-200',metrics);
   assert.ok(metrics.documentWidth<=metrics.viewport+1);
+  assert.equal(metrics.crowdedNavLinks,0,'Larger text must not overlap adjacent sidebar links');
   assert.deepEqual(errors,[]);
 });
