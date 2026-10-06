@@ -4,6 +4,7 @@ import { hasPhysics7Access } from "../_shared/course-access.ts";
 import { resolveActiveCurriculumRelease } from "../_shared/curriculum-release.ts";
 import { resolveRuntimeLearningModel } from "../_shared/learning-model.ts";
 import { issueRecommendationEvent } from "../_shared/recommendation-telemetry.ts";
+import { routeStudentDashboard } from "../_shared/student-dashboard-handler.mjs";
 
 const corsHeaders = {
   "Access-Control-Allow-Origin": "*",
@@ -65,6 +66,10 @@ Deno.serve(async (req) => {
   if (userError || !userData.user) return json({ error: "unauthorized" }, 401);
   if (!(await hasActiveLiveSession(admin, token, userData.user.id))) return json({ error: "account_or_session_inactive" }, 403);
   const studentId = userData.user.id;
+
+  const routed = await routeStudentDashboard({ admin, studentId, token, request: req });
+  if (routed) return json(routed.body, routed.status);
+  // Empty-body compatibility belongs only to the registered legacy adapter.
 
   if (!(await hasPhysics7Access(admin, studentId))) {
     return json({

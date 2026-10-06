@@ -8,17 +8,23 @@ on:
       - scripts/sprint-14d-analytics-qa.mjs
       - scripts/wait-for-production-release.mjs
       - scripts/stamp-release.mjs
+      - web/admin.*
+      - web/admin-security.js
+      - web/admin-deletion-confirmation.js
       - web/school-admin.html
       - web/school-admin.css
       - web/school-admin.js
       # Login, shared navigation and styles can break the same acceptance flow.
       - web/account-access.*
       - web/account-roles.js
+      - web/learning-navigation.mjs
+      - web/analytics-provenance.mjs
+      - web/school-analytics-view.mjs
       - web/config.js
       - web/school-membership-status.js
       - web/role-layout.*
       - web/styles.css
-      - web/ux.css
+      - web/ux.*
       - supabase/functions/get-school-performance-analytics/**
       - supabase/functions/_shared/**
       - package.json

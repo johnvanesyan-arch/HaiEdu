@@ -1,3 +1,4 @@
+import { renderEvidenceGroups } from "./analytics-provenance.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { schoolMembershipStatus } from "./school-membership-status.js";
@@ -105,6 +106,7 @@ function renderSchoolAnalytics(payload) {
   $("analyticsReview").textContent = String(Number(analytics.chapterReview?.completedSessions ?? 0));
   $("analyticsReviewDetail").textContent = `${Number(analytics.chapterReview?.students ?? 0)} աշակերտ · ${Number(analytics.chapterReview?.qualifyingSessions ?? 0)} պարտադիր կրկնություն`;
 
+  renderEvidenceGroups($("analyticsEvidenceGroups"),payload);
   if (!enrollmentContexts) message("analyticsMessage", "Ընտրված համատեքստում ընդգրկված աշակերտ չկա։");
   else if (!Number(analytics.evidence?.exactSessions ?? 0)) message("analyticsMessage", "Ընտրված համատեքստում դեռ հաստատված ուսումնական աշխատանք չկա։");
   else message("analyticsMessage", "");
@@ -116,12 +118,17 @@ async function loadSchoolAnalytics({ resetFilters = false } = {}) {
   if (!schoolId) return;
   const refresh = $("refreshAnalyticsBtn");
   if (resetFilters) {
-    for (const id of ["analyticsYearFilter", "analyticsProgrammeFilter", "analyticsClassFilter"]) $(id).replaceChildren();
+    for (const id of ["analyticsYearFilter", "analyticsProgrammeFilter", "analyticsClassFilter","analyticsReleaseFilter","analyticsUnitFilter"]) $(id).replaceChildren();
     dashboardState.analyticsOptions = null;
   }
   const requestedYearId = resetFilters ? "" : $("analyticsYearFilter").value;
   const requestedProgrammeId = resetFilters ? "" : $("analyticsProgrammeFilter").value;
   const requestedClassId = resetFilters ? "" : $("analyticsClassFilter").value;
+  const requestedReleaseId = resetFilters ? "" : $("analyticsReleaseFilter").value;
+  const requestedUnitId = resetFilters ? "" : $("analyticsUnitFilter").value;
+  for (const id of ["analyticsParticipation","analyticsDiagnostic","analyticsMastery","analyticsReview","analyticsParticipationDetail","analyticsDiagnosticDetail","analyticsMasteryDetail","analyticsReviewDetail"]) $(id).textContent = "—";
+  for (const id of ["analyticsParticipationBar","analyticsDiagnosticBar","analyticsMasteryBar"]) $(id).hidden=true;
+  $("analyticsEvidenceGroups").replaceChildren();
   message("analyticsMessage", "Տվյալները բեռնվում են…");
   setButtonBusy(refresh, true, "Թարմացվում է…");
 
@@ -133,6 +140,7 @@ async function loadSchoolAnalytics({ resetFilters = false } = {}) {
         academicYearId: requestedYearId || undefined,
         subjectProgramId: requestedProgrammeId || undefined,
         classId: requestedClassId || undefined,
+        curriculumReleaseId: requestedReleaseId || undefined, unitId: requestedUnitId || undefined,
       },
     }));
   } catch (requestError) {
@@ -143,6 +151,7 @@ async function loadSchoolAnalytics({ resetFilters = false } = {}) {
   if (version !== analyticsLoadVersion || $("overviewSchool").value !== schoolId) return;
   if (error || !data?.analytics || !data?.options) {
     const code = await functionErrorCode(error);
+    if (version !== analyticsLoadVersion || $("overviewSchool").value !== schoolId) return;
     message("analyticsMessage", code === "analytics_scope_unavailable"
       ? "Ընտրված վերլուծական համատեքստը հասանելի չէ։"
       : "Վերլուծական տվյալները չբեռնվեցին։ Փորձեք ավելի ուշ։", true);
@@ -156,6 +165,8 @@ async function loadSchoolAnalytics({ resetFilters = false } = {}) {
   const classRows = (data.options.classes ?? []).filter((row) =>
     !selectedProgrammeId || row.subjectProgramIds?.includes(selectedProgrammeId));
   replaceAnalyticsOptions($("analyticsClassFilter"), classRows, "Բոլոր դասարանները", data.scope?.classId ?? "");
+  replaceAnalyticsOptions($("analyticsReleaseFilter"),data.options.releases ?? [],"Բոլոր թողարկումները",data.scope?.curriculumReleaseId ?? "");
+  replaceAnalyticsOptions($("analyticsUnitFilter"),(data.options.units ?? []).filter(row=>row.curriculumReleaseId===data.scope?.curriculumReleaseId),"Բոլոր գլուխները",data.scope?.unitId ?? "");
   renderSchoolAnalytics(data);
 }
 
@@ -654,13 +665,17 @@ $("refreshAnalyticsBtn").addEventListener("click", () => loadSchoolAnalytics());
 $("analyticsYearFilter").addEventListener("change", () => {
   $("analyticsProgrammeFilter").value = "";
   $("analyticsClassFilter").value = "";
+  $("analyticsReleaseFilter").value = ""; $("analyticsUnitFilter").value = "";
   loadSchoolAnalytics();
 });
 $("analyticsProgrammeFilter").addEventListener("change", () => {
   $("analyticsClassFilter").value = "";
+  $("analyticsReleaseFilter").value = ""; $("analyticsUnitFilter").value = "";
   loadSchoolAnalytics();
 });
-$("analyticsClassFilter").addEventListener("change", () => loadSchoolAnalytics());
+$("analyticsClassFilter").addEventListener("change", () => { $("analyticsReleaseFilter").value="";$("analyticsUnitFilter").value="";loadSchoolAnalytics(); });
+$("analyticsReleaseFilter").addEventListener("change", () => { $("analyticsUnitFilter").value="";loadSchoolAnalytics(); });
+$("analyticsUnitFilter").addEventListener("change", () => loadSchoolAnalytics());
 $("yearSchool").addEventListener("change", () => { message("yearMessage", ""); loadYears(); });
 $("yearForm").addEventListener("submit", async (event) => {
   event.preventDefault();
@@ -707,6 +722,9 @@ $("teacherSchool").addEventListener("change", async (event) => {
   message("teacherMessage", "");
   const loaded = await loadTeacherSubjects(event.currentTarget.value);
   if (!loaded) message("teacherMessage", "Այս դպրոցի համար հրապարակված առարկա չի գտնվել։", true);
+});
+supabase.auth.onAuthStateChange((event) => {
+  if(event === "SIGNED_OUT") { ++analyticsLoadVersion; ++teacherRosterLoadVersion; $("analyticsEvidenceGroups").replaceChildren(); for(const id of ["overviewPanel","teachersPanel","yearPanel","teacherPanel","pendingPanel"]) $(id).classList.add("hidden"); }
 });
 $("signOutBtn").addEventListener("click", async () => {
   await supabase.auth.signOut();

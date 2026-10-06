@@ -1,3 +1,4 @@
+import { mountSchoolAnalytics } from "./school-analytics-view.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { schoolMembershipStatus } from "./school-membership-status.js";
@@ -274,13 +275,20 @@ async function loadSchools() {
   renderSchools(await invoke("get-admin-dashboard", { view: "schools", page: schoolPage, pageSize, search: $("schoolSearch").value.trim() }));
 }
 
+let schoolDetailVersion=0, disposeSchoolAnalytics=()=>{};
 async function loadSchoolDetail(schoolId) {
+  const version=++schoolDetailVersion;
+  disposeSchoolAnalytics();$("schoolDetail").replaceChildren();
   try {
     selectedSchoolId = schoolId;
     setMessage("Դպրոցի տվյալները բեռնվում են…");
-    renderSchoolDetail(await invoke("get-admin-dashboard", { view: "school_detail", schoolId }));
+    const data=await invoke("get-admin-dashboard", { view: "school_detail", schoolId });
+    if(version!==schoolDetailVersion || selectedSchoolId!==schoolId)return;
+    renderSchoolDetail(data);
+    const root=document.createElement("section");root.className="card";$("schoolDetail").appendChild(root);
+    disposeSchoolAnalytics=mountSchoolAnalytics(root,supabase,schoolId);
     setMessage("");
-  } catch (error) { setMessage(friendlyError(error), true); }
+  } catch (error) { if(version===schoolDetailVersion)setMessage(friendlyError(error), true); }
 }
 
 async function loadClassStudents(schoolId, classId, page = 1) {
@@ -408,7 +416,7 @@ async function enterConsole(session) {
 
 $("signOutBtn").addEventListener("click", async () => { await supabase.auth.signOut({ scope:"global" }); window.location.assign("./account-access.html"); });
 document.querySelectorAll("[data-refresh-view]").forEach((button) => button.addEventListener("click", loadCurrentView));
-$("schoolSearchForm").addEventListener("submit", (event) => { event.preventDefault(); schoolPage = 1; selectedSchoolId = null; $("schoolDetail").classList.add("hidden"); loadSchools(); });
+$("schoolSearchForm").addEventListener("submit", (event) => { event.preventDefault(); schoolPage = 1; selectedSchoolId = null; ++schoolDetailVersion; disposeSchoolAnalytics(); $("schoolDetail").classList.add("hidden"); loadSchools(); });
 $("accountFilterForm").addEventListener("submit", (event) => { event.preventDefault(); accountPage = 1; loadAccounts(); });
 $("archiveFilterForm").addEventListener("submit", (event) => { event.preventDefault(); archivePage = 1; loadArchive(); });
 window.addEventListener("hashchange", loadCurrentView);
@@ -423,7 +431,7 @@ function bootstrapAdminConsole(session, { force = false } = {}) {
 }
 
 supabase.auth.onAuthStateChange((event, session) => {
-  if (event === "SIGNED_OUT") return void bootstrapAdminConsole(null);
+  if (event === "SIGNED_OUT") { ++schoolDetailVersion; disposeSchoolAnalytics(); $("schoolDetail").replaceChildren(); return void bootstrapAdminConsole(null); }
   if (!session) return;
   if (event === "TOKEN_REFRESHED" && !$("console").classList.contains("hidden")) return;
   if ($("console").classList.contains("hidden") && $("mfaPanel").classList.contains("hidden")) void bootstrapAdminConsole(session);

@@ -13,7 +13,7 @@ export const browserQaTargets = [
   },
   {
     workflow: ".github/workflows/sprint-14d-analytics-qa.yml",
-    entries: ["web/account-access.html", "web/school-admin.html", "scripts/sprint-14d-analytics-qa.mjs"],
+    entries: ["web/account-access.html", "web/school-admin.html", "web/admin.html", "scripts/sprint-14d-analytics-qa.mjs"],
     runner: "scripts/sprint-14d-analytics-qa.mjs",
   },
 ];

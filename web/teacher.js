@@ -1,3 +1,4 @@
+import { contractMarkup } from "./analytics-provenance.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { roleDestination } from "./account-roles.js";
@@ -200,6 +201,7 @@ async function signOut() {
 
 async function loadDashboard(sessionOverride = null) {
   const version = ++dashboardLoadVersion;
+  closeDrawer();
   $("dashboardPanel").classList.add("hidden");
   let sessionData;
   try {
@@ -439,7 +441,7 @@ function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
     unitFilter.replaceChildren(...(klass.unitOptions ?? []).map((unit) => {
       const option = document.createElement("option");
       option.value = `${unit.curriculumReleaseId}:${unit.unitId}`;
-      option.textContent = `${unit.unitSequence}. ${unit.unitTitleHy}`;
+      option.textContent = `${unit.unitSequence}. ${unit.unitTitleHy} · Թողարկում ${unit.releaseNumber}`;
       option.selected = unit.unitId === klass.selectedUnit?.unitId
         && unit.curriculumReleaseId === klass.selectedUnit?.curriculumReleaseId;
       return option;
@@ -949,7 +951,10 @@ function renderRoster(klass) {
   }
 }
 
+let drawerLoadVersion=0;
 async function openStudent(studentId) {
+  const request=++drawerLoadVersion;
+  const dashboardVersion=dashboardLoadVersion;
   if (!studentId) return;
   const drawer = $("studentDrawer");
   drawer.classList.remove("hidden");
@@ -967,6 +972,7 @@ async function openStudent(studentId) {
   const { data, error } = await supabase.functions.invoke("get-teacher-student", {
     body: { studentId, classId: selectedClassId, ...institutionalContext },
   });
+  if (request!==drawerLoadVersion || dashboardVersion!==dashboardLoadVersion || $("studentDrawer").classList.contains("hidden"))return;
   if (error) {
     $("studentDrawerContent").innerHTML = `<p class="message bad">${escapeHtml(friendlyError(error, "Չհաջողվեց բեռնել աշակերտի տվյալները։"))}</p>`;
     return;
@@ -996,7 +1002,7 @@ async function openStudent(studentId) {
   const modeSummary = data.modeSummary ?? {};
   const recentSessions = (data.sessions ?? []).map((session) => {
     const labels = { diagnostic: "Ախտորոշիչ", practice: "Վարժություն", chapter_review: "Գլխի կրկնություն", mastery_check: "Յուրացման ստուգում" };
-    return `<tr><td>${escapeHtml(labels[session.mode] ?? session.mode)}</td><td>${escapeHtml(session.status)}</td><td>${session.correct} / ${session.answered}</td><td>${session.completedAt ? new Date(session.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`;
+    return `<tr><td>${escapeHtml(labels[session.mode] ?? session.mode)}</td><td>${escapeHtml(session.status)}</td><td>${session.correct ?? "—"} / ${session.answered} ${contractMarkup(session.contract)}</td><td>${session.completedAt ? new Date(session.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`;
   }).join("");
   const unitTitle = data.selectedUnit?.unitTitleHy ?? klass?.selectedUnit?.unitTitleHy ?? "—";
   const contextKicker = dashboard?.institutionalTeacher
@@ -1032,6 +1038,8 @@ async function openStudent(studentId) {
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Տեսակ</th><th>Ցիկլ / սեսիա</th><th>Հարցեր</th><th>Ավարտ</th></tr></thead><tbody>${reviewHistory || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
     <h3>Գլխի կրկնության հմտությունների տվյալներ</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Հմտություն</th><th>Դիտարկումներ</th><th>Ինքնուրույն ճիշտ</th><th>Օգնություն օգտագործած</th><th>Սխալ՝ վերջին յուրացման ստուգման ժամանակ</th><th>Վիճակ</th></tr></thead><tbody>${reviewSkills || '<tr><td colspan="6">Գլխի կրկնության բավարար տվյալ դեռ չկա</td></tr>'}</tbody></table></div>
+    <p class="subtle">Ցուցանիշները ընտրված դասարանի և սկզբնական կանոնների ապացույցներն են։ Տարբեր պայմաններով արդյունքները չեն միավորվում։</p>
+    ${(data.matrix ?? []).filter(row=>row.estimates?.length).map(row=>`<details><summary>${escapeHtml(row.nameHy)} · առանձին ապացույցներ</summary>${row.estimates.map(estimate=>`<p>${estimate.percent == null ? "Տվյալն անբավարար է" : estimate.percent+"%"} · ${estimate.evidenceCount} պատասխան</p>${contractMarkup(estimate.contract)}`).join("")}</details>`).join("")}
     <h3>Հմտությունների յուրացում</h3><div class="teacher-skill-grid">${skillCards}</div>
     <h3>Սեսիաների պատմություն</h3>
     <div class="matrix-wrap"><table class="attempt-table"><thead><tr><th>Տեսակ</th><th>Վիճակ</th><th>Ճիշտ / պատասխանած</th><th>Ավարտ</th></tr></thead><tbody>${recentSessions || '<tr><td colspan="4">Տվյալ չկա</td></tr>'}</tbody></table></div>
@@ -1040,6 +1048,8 @@ async function openStudent(studentId) {
 }
 
 function closeDrawer() {
+  ++drawerLoadVersion;
+  $("studentDrawerContent").replaceChildren();
   $("studentDrawer").classList.add("hidden");
   $("studentDrawer").setAttribute("aria-hidden", "true");
 }

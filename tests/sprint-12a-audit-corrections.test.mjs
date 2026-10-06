@@ -60,7 +60,6 @@ test("current learner surfaces record shown/clicked recommendations", async () =
     "web/practice.js",
     "web/diagnostic.js",
     "web/progress.js",
-    "web/multi-subject-home.js",
   ];
   for (const path of paths) {
     const source = await read(path);

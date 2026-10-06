@@ -10,6 +10,7 @@ const context = {
   unitSequence: 1, unitTitleHy: 'Գլուխ I', subjectCode: 'physics',
   subjectNameHy: 'Ֆիզիկա', gradeNumber: 7, gradeLabelHy: '7-րդ դասարան',
 };
+const model = {id:'model-a',configuration:{mastery:{priorAlpha:2,priorBeta:2,minimumEvidenceCount:3,needsSupportBelow:.45,secureAtOrAbove:.72,hintedPositiveMultiplier:.65,incorrectEvidenceHintReduction:false,difficultyWeight:{formula:'0.8 + 0.1*difficulty',difficultyMin:1,difficultyMax:5}}}};
 const skills = [
   { id: 'skill-a', code: 'PHY7-U01-S01', nameHy: 'Հմտություն 1', layer: 'core' },
   { id: 'skill-b', code: 'PHY7-U01-S02', nameHy: 'Հմտություն 2', layer: 'core' },
@@ -17,7 +18,7 @@ const skills = [
 
 test('class analytics replay only the exact attempts supplied for the authorized context', () => {
   const sessions = [
-    { id: 'session-a', student_id: 'student-a', mode: 'practice', status: 'completed',
+    { id: 'session-a', student_id: 'student-a', institutional_class_enrollment_id:'enrollment-a', curriculum_release_id:'release-a', learning_model_configuration_id:'model-a', academic_mastery_policy_id:'life-a', originalLifecyclePolicy:{maximum_mastery_attempts:3}, mode: 'practice', status: 'completed',
       answered_count: 1, correct_count: 1, planned_item_count: 1,
       score_percent: null, assessment_result: null,
       started_at: '2026-09-26T10:00:00Z', completed_at: '2026-09-26T10:05:00Z' },
@@ -30,7 +31,7 @@ test('class analytics replay only the exact attempts supplied for the authorized
   ];
   const result = buildExactInstitutionalStudentAnalytics({
     student: { id: 'student-a', displayName: 'Անի', enrollmentId: 'enrollment-a' },
-    context, skills, sessions, attempts, reviewSessions: [],
+    context, skills, sessions, attempts: attempts.map(a=>({...a,originalModel:model,originalSession:sessions.find(s=>s.id===a.learning_session_id),frozenItem:a.items})), reviewSessions: [],
   });
   assert.equal(result.matrix[0].evidenceCount, 1);
   assert.equal(result.matrix[0].percent, 60);
@@ -41,10 +42,10 @@ test('class analytics replay only the exact attempts supplied for the authorized
 
 test('review and mastery summaries use only exact-context session IDs', () => {
   const sessions = [
-    { id: 'mastery-a', student_id: 'student-a', mode: 'mastery_check', status: 'completed',
+    { id: 'mastery-a', student_id: 'student-a', institutional_class_enrollment_id:'enrollment-a', curriculum_release_id:'release-a', learning_model_configuration_id:'model-a', academic_mastery_policy_id:'life-a', originalLifecyclePolicy:{maximum_mastery_attempts:3}, mode: 'mastery_check', status: 'completed',
       answered_count: 5, correct_count: 3, planned_item_count: 5, score_percent: 60,
       assessment_result: 'failed', started_at: '2026-09-26T08:00:00Z', completed_at: '2026-09-26T08:10:00Z' },
-    { id: 'review-a', student_id: 'student-a', mode: 'chapter_review', status: 'completed',
+    { id: 'review-a', student_id: 'student-a', institutional_class_enrollment_id:'enrollment-a', curriculum_release_id:'release-a', learning_model_configuration_id:'model-a', academic_mastery_policy_id:'life-a', originalLifecyclePolicy:{maximum_mastery_attempts:3}, mode: 'chapter_review', status: 'completed',
       answered_count: 2, correct_count: 2, planned_item_count: 2, score_percent: null,
       assessment_result: null, started_at: '2026-09-26T09:00:00Z', completed_at: '2026-09-26T09:10:00Z' },
   ];
@@ -64,7 +65,7 @@ test('review and mastery summaries use only exact-context session IDs', () => {
     eligible_pool_size: 8, completed_at: '2026-09-26T09:10:00Z', created_at: '2026-09-26T09:00:00Z' }];
   const result = buildExactInstitutionalStudentAnalytics({
     student: { id: 'student-a', displayName: 'Անի', enrollmentId: 'enrollment-a' },
-    context, skills, sessions, attempts, reviewSessions,
+    context, skills, sessions, attempts: attempts.map(a=>({...a,originalModel:model,originalSession:sessions.find(s=>s.id===a.learning_session_id),frozenItem:a.items})), reviewSessions,
   });
   assert.equal(result.chapterReview.lifecycleState, 'mastery_retry_2_ready');
   assert.equal(result.chapterReview.requiredReviewsCompleted, 1);

@@ -16,6 +16,9 @@ on:
       - web/role-layout.*
       - web/ux.*
       - web/account-roles.js
+      - web/learning-navigation.mjs
+      - web/analytics-provenance.mjs
+      - web/school-analytics-view.mjs
       - web/config.js
       - web/school-membership-status.js
       - web/tokens.css

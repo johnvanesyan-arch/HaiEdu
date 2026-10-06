@@ -20,6 +20,7 @@ export type AuthorizedTeacherAcademicContext = {
   subjectNameHy: string;
   gradeNumber: number;
   gradeLabelHy: string | null;
+  readOnlyHistory: boolean;
 };
 
 export class AcademicContextDenied extends Error {
@@ -59,7 +60,8 @@ export async function resolveAuthorizedTeacherAcademicContext(
   const assignment = await row(admin, "teacher_assignments",
     "id, school_id, academic_year_id, class_id, teacher_membership_id, subject_program_id, status, valid_from, valid_to",
     selection.assignmentId);
-  if (!activeAt(assignment, now)) throw new AcademicContextDenied();
+  const historicalAssignment = assignment.status === "ended" && Number.isFinite(Date.parse(assignment.valid_from)) && Date.parse(assignment.valid_from) <= now.getTime();
+  if (!activeAt(assignment, now) && !historicalAssignment) throw new AcademicContextDenied();
 
   const membership = await row(admin, "institutional_memberships",
     "id, school_id, person_id, role, status, valid_from, valid_to", assignment.teacher_membership_id);
@@ -69,21 +71,27 @@ export async function resolveAuthorizedTeacherAcademicContext(
   const [klass, year, programme, release, unit, releaseUnitRow] = await Promise.all([
     row(admin, "classes", "id, school_id, academic_year_id, subject_id, grade_id, is_active", assignment.class_id),
     row(admin, "academic_years", "id, school_id, status, starts_on, ends_on", assignment.academic_year_id),
-    row(admin, "subject_programs", "id, subject_id, grade_id", assignment.subject_program_id),
+    row(admin, "subject_programs", "id, subject_id, grade_id,status", assignment.subject_program_id),
     row(admin, "curriculum_releases", "id, subject_program_id, status, effective_from, effective_to", selection.curriculumReleaseId),
     row(admin, "units", "id, subject_program_id", selection.unitId),
     releaseUnit(admin, selection.curriculumReleaseId, selection.unitId),
   ]);
 
   const today = now.toISOString().slice(0, 10);
+  const profile = await row(admin,"profiles","id,role,account_status",teacherId);
+  const {data: grants,error: grantError} = await admin.from("teacher_subject_authorizations")
+    .select("id,school_id,teacher_membership_id,subject_id,status,valid_from,valid_to")
+    .eq("teacher_membership_id",membership.id).eq("school_id",assignment.school_id).eq("subject_id",programme.subject_id);
+  if (profile.role !== "teacher" || profile.account_status !== "active" || grantError || grants?.filter((grant:any)=>activeAt(grant,now)).length !== 1 || programme.status !== "published") throw new AcademicContextDenied();
+  const readOnlyHistory = historicalAssignment || !activeAt(assignment,now) || klass.is_active !== true || year.status !== "active" || today < year.starts_on || today > year.ends_on || release.status === "retired" || (release.effective_to && today > release.effective_to);
   if (klass.school_id !== assignment.school_id || klass.academic_year_id !== assignment.academic_year_id ||
-      klass.is_active !== true || year.school_id !== assignment.school_id || year.status !== "active" ||
-      today < year.starts_on || today > year.ends_on ||
+      year.school_id !== assignment.school_id || !["active","closed","archived"].includes(year.status) ||
+      assignment.valid_from.slice(0,10) > year.ends_on || (assignment.valid_to && assignment.valid_to.slice(0,10) < year.starts_on) ||
       klass.subject_id !== programme.subject_id || klass.grade_id !== programme.grade_id ||
       release.subject_program_id !== programme.id || unit.subject_program_id !== programme.id ||
-      !["pilot", "production"].includes(release.status) ||
+      !["pilot", "production", "retired"].includes(release.status) ||
       (release.effective_from && today < release.effective_from) ||
-      (release.effective_to && today > release.effective_to) ||
+
       !releaseUnitRow.unit_code_snapshot || !releaseUnitRow.title_hy_snapshot ||
       !Number.isFinite(Number(releaseUnitRow.sequence_order_snapshot))) {
     throw new AcademicContextDenied();
@@ -101,6 +109,6 @@ export async function resolveAuthorizedTeacherAcademicContext(
     unitSequence: Number(releaseUnitRow.sequence_order_snapshot),
     unitTitleHy: releaseUnitRow.title_hy_snapshot,
     subjectCode: subject.code, subjectNameHy: subject.name_hy,
-    gradeNumber: Number(grade.grade_number), gradeLabelHy: grade.label_hy,
+    gradeNumber: Number(grade.grade_number), gradeLabelHy: grade.label_hy, readOnlyHistory: Boolean(readOnlyHistory),
   };
 }

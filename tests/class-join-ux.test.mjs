@@ -11,10 +11,10 @@ test("student utility navigation keeps Join Class while primary learning nav is 
   assert.match(shell, /key: "home"[\s\S]*enabled: true/);
   assert.match(shell, /student-courses\.js/);
   assert.match(courses, /Իմ առարկաները/);
-  assert.match(courses, /courseKey/);
-  assert.match(courses, /physics-7\.html/);
-  assert.match(courses, /assessment\.html/);
-  assert.match(courses, /progress\.html/);
+  assert.match(courses, /contextHref/);
+  assert.doesNotMatch(courses, /physics-7\.html/);
+  assert.match(courses, /assessment/);
+  assert.match(courses, /progress/);
 });
 
 test("Home class card distinguishes no-class and joined-class states", async () => {
@@ -37,7 +37,7 @@ test("student class membership endpoint returns authenticated student's enriched
   assert.match(fn, /subjectCode/);
   assert.match(fn, /gradeNumber/);
   assert.match(fn, /courseKey/);
-  assert.match(fn, /return json\(\{ classes \}\)/);
+  assert.match(fn, /return json\(\{ classes, \.\.\.navigation \}\)/);
   assert.match(access, /from\("class_memberships"\)/);
   assert.match(access, /eq\("student_id", studentId\)/);
   assert.match(access, /from\("classes"\)/);

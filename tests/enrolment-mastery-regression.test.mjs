@@ -128,12 +128,8 @@ test('course outage shows unknown status even when all practice skills are compl
   assert.equal(document.getElementById('subjectAssessment').textContent, 'Կարգավիճակը հասանելի չէ');
   assert.equal(document.getElementById('chapterStateBadge').textContent, 'Կարգավիճակը հասանելի չէ');
 });
-test('global course card preserves diagnostic score while exposing unavailable mastery', async () => {
-  const document = dom();
-  const source = (await read('web/multi-subject-home.js')).replace(/^import .*;\n/gm, '').split('window.addEventListener')[0];
-  const context = vm.createContext({ document, createClient: () => ({}), SUPABASE_URL: '', SUPABASE_PUBLISHABLE_KEY: '' });
-  vm.runInContext(source, context);
-  const result = vm.runInContext('assessmentText({latestDiagnostic:{percent:80}},null)', context);
-  assert.match(result, /80%/); assert.match(result, /հասանելի չէ/);
-  assert.doesNotMatch(vm.runInContext('assessmentText(null,null)', context), /դեռ չի ավարտվել/);
+test('selected course preserves baseline without inferring mastery from missing evidence', async () => {
+  const source=await read('web/course-page.js');
+  assert.match(source,/data\.baseline\.percent/);assert.match(source,/s\.ready === true/);assert.match(source,/s\.ready === false/);
+  assert.match(source,/Տվյալը հասանելի չէ/);assert.match(source,/policyBindingId/);
 });

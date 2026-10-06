@@ -7,7 +7,7 @@ async function javascriptFiles(directory) {
   for (const entry of await readdir(directory, { withFileTypes: true })) {
     const path = resolve(directory, entry.name);
     if (entry.isDirectory()) files.push(...await javascriptFiles(path));
-    else if (entry.isFile() && entry.name.endsWith(".js")) files.push(path);
+    else if (entry.isFile() && /\.(?:js|mjs)$/.test(entry.name)) files.push(path);
   }
   return files.sort();
 }

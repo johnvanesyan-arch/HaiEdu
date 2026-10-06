@@ -26,6 +26,8 @@ let answerSubmission = null;
 let questionStartedAt = null;
 let dashboardData = null;
 let dashboardLoadPromise = null;
+let dashboardEpoch = 0;
+let authenticatedAccountId = null;
 
 const layerLabels = {
   knowledge: "Գիտելիք",
@@ -73,7 +75,7 @@ function setAuthenticated(isAuthenticated) {
     if (dashboardData) {
       renderDashboard(dashboardData);
       $("dashboardLoading").classList.add("hidden");
-      $("dashboardContent").classList.remove("hidden");
+      $("dashboardContent").classList.toggle("hidden", Boolean(dashboardData?.navigationVersion));
     } else {
       void showDashboard();
     }
@@ -97,12 +99,13 @@ async function showDashboard({ force = false } = {}) {
   if (!force && dashboardData) {
     renderDashboard(dashboardData);
     $("dashboardLoading").classList.add("hidden");
-    $("dashboardContent").classList.remove("hidden");
+    $("dashboardContent").classList.toggle("hidden", Boolean(dashboardData?.navigationVersion));
     return dashboardData;
   }
   if (dashboardLoadPromise) return dashboardLoadPromise;
 
-  dashboardLoadPromise = (async () => {
+  const epoch = dashboardEpoch;
+  const pending = (async () => {
   current = null;
   currentSession = null;
   practicePanel.classList.add("hidden");
@@ -111,7 +114,8 @@ async function showDashboard({ force = false } = {}) {
   $("dashboardContent").classList.add("hidden");
   setModeMessage("");
 
-  const { data, error } = await supabase.functions.invoke("get-student-dashboard", { body: {} });
+  const { data, error } = await supabase.functions.invoke("get-student-dashboard", { body: { navigation: true } });
+  if (epoch !== dashboardEpoch) return;
   if (error) {
     $("dashboardLoading").textContent = "Չհաջողվեց բեռնել առաջընթացը։";
     return setModeMessage(error.message, true);
@@ -122,13 +126,21 @@ async function showDashboard({ force = false } = {}) {
   window.dispatchEvent(new CustomEvent("amp-dashboard-ready", { detail: data }));
   renderDashboard(data);
   $("dashboardLoading").classList.add("hidden");
-  $("dashboardContent").classList.remove("hidden");
+  $("dashboardContent").classList.toggle("hidden", Boolean(dashboardData?.navigationVersion));
   return data;
-  })().finally(() => { dashboardLoadPromise = null; });
-  return dashboardLoadPromise;
+  })().finally(() => { if (dashboardLoadPromise === pending) dashboardLoadPromise = null; });
+  dashboardLoadPromise = pending;
+  return pending;
 }
 
 function renderDashboard(data) {
+  if (data?.navigationVersion) {
+    window.HaiEduCourseAccess = data;
+    window.dispatchEvent(new CustomEvent("haiedu-navigation-ready", { detail: data }));
+    window.dispatchEvent(new CustomEvent("haiedu-course-access", { detail: data }));
+    $("dashboardContent").classList.add("hidden");
+    return;
+  }
   const diagnostic = data.latestDiagnostic;
   $("diagnosticScore").textContent = diagnostic ? `${diagnostic.correct} / ${diagnostic.answered} · ${diagnostic.percent}%` : "Դեռ չկա";
   $("diagnosticMeta").textContent = diagnostic
@@ -633,11 +645,21 @@ nextBtn.addEventListener("click", handleNext);
 answerForm.addEventListener("submit", submitAnswer);
 
 supabase.auth.onAuthStateChange((event, session) => {
+  const accountId = session?.user?.id ?? null;
+  if (authenticatedAccountId !== accountId || event === "SIGNED_OUT") {
+    authenticatedAccountId = accountId; ++dashboardEpoch;
+    dashboardData = null; dashboardLoadPromise = null;
+    window.HaiEduCourseAccess = { contexts: [] };
+    window.__HAIEDU_DASHBOARD__ = null;
+    window.dispatchEvent(new CustomEvent("haiedu-course-access", { detail: { contexts: [] } }));
+    $("dashboardContent").classList.add("hidden");
+  }
+  const authEpoch = dashboardEpoch;
   if (event === "TOKEN_REFRESHED" || event === "INITIAL_SESSION") return;
   // Check the active profile before fetching any student data.
   setTimeout(async () => {
     const route = await routeSession(session);
-    if (!route.redirected && !route.blocked) setAuthenticated(Boolean(session));
+    if (authEpoch === dashboardEpoch && !route.redirected && !route.blocked) setAuthenticated(Boolean(session));
   }, 0);
 });
 const { data: sessionData } = await supabase.auth.getSession();

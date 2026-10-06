@@ -59,7 +59,7 @@ function endpointFixture(role = 'school_admin') {
     subjects: [{ id: 'subject-a', code: 'SUB', name_hy: 'Առարկա', name_en: 'Subject' }],
     grades: [{ id: 'grade-a', grade_number: 7, label_hy: '7-րդ դասարան', label_en: 'Grade 7' }],
     learning_sessions: [session({ id: 'diagnostic-a', mode: 'diagnostic', school_id: schoolA, academic_year_id: yearA,
-      class_id: classA, subject_program_id: programmeA, answered_count: 4, correct_count: 3 })],
+      class_id: classA, teacher_assignment_id:'assignment-a', subject_program_id: programmeA, answered_count: 4, correct_count: 3 })],
     chapter_review_sessions: [],
   };
 }
@@ -95,7 +95,7 @@ const enrollments = [
 
 const session = (values = {}) => ({
   id: 'session-a', institutional_class_enrollment_id: 'enrollment-a', student_id: 'student-a',
-  curriculum_release_id: 'release-a', unit_code: 'UNIT-A', mode: 'practice', status: 'completed',
+  assessment_blueprint_id:'bp-a',learning_model_configuration_id:'model-a',curriculum_release_id: 'release-a', unit_code: 'UNIT-A', mode: 'practice', status: 'completed',
   answered_count: 1, correct_count: 1, assessment_result: null, academic_context_status: 'exact',
   started_at: '2026-09-30T10:00:00Z', completed_at: '2026-09-30T10:05:00Z', ...values,
 });
