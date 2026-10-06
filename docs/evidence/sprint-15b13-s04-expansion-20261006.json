@@ -1,0 +1,607 @@
+{
+  "sprint": "15B.13E",
+  "state": "deployed_verified_human_review_pending",
+  "observedDateUTC": "2026-10-06",
+  "baseMain": "621a0558391564291319a5d079cdcb545ec385d1",
+  "migration": {
+    "file": "supabase/migrations/20261006200559_sprint_15b13_s04_practice_expansion.sql",
+    "sha256": "9629f9d1b0a5f1949df5465907ce89634e138053da22b558af03900b7b4d6fcb"
+  },
+  "authoring": {
+    "questionCodes": [
+      "PHY7-U02-S04-I05",
+      "PHY7-U02-S04-I06",
+      "PHY7-U02-S04-I07"
+    ],
+    "newDefinitions": 4,
+    "newGuides": 1,
+    "newReasoningDemands": 3,
+    "intentionalPracticeVariants": 0,
+    "humanReviewStatus": "pending",
+    "learnerVisible": false,
+    "s04AuthoredAfter": 7,
+    "s04PlanningShortfall": 5,
+    "s03PlanningShortfall": 4,
+    "chapterAuthoredAfter": 47,
+    "chapterApproved": 44,
+    "planningTarget": 192,
+    "remainingUnauthoredAfter": 145
+  },
+  "validation": {
+    "nodeTests": 1230,
+    "nodeFailed": 0,
+    "isolatedMigrationTests": 2,
+    "realProductionRollback": {
+      "observedAt": "2026-10-06T20:12:18.243644Z",
+      "tablesCompared": 100,
+      "changedTables": []
+    },
+    "workflowTriggerCoverage": {
+      "actionsPaths": 55,
+      "analyticsPaths": 31
+    },
+    "fixtureLimit": "Actual catalogue constraints in reduced pseudonymized corpus, expected corpus hash substituted; production triggers/auth/external FKs excluded. Unchanged SQL separately rollback-tested against production.",
+    "mediaVisualCheck": "Both unmodified textbook crops inspected; no screen measurements required, no new authenticated browser run.",
+    "guideValidation": {
+      "guideId": "144c3de5-63ed-4e1f-b7a8-e5831140301e",
+      "status": "draft",
+      "version": 1,
+      "result": {
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 3,
+        "variantFailures": []
+      }
+    }
+  },
+  "deployment": {
+    "head": "56f70f481284b40a528f9fd9758bef56a366154b",
+    "tree": "b77b2f2b7f4fc7c1467eeea1d65fe6bcfad286cb",
+    "pr": 152,
+    "prRun": {
+      "id": 37524896896,
+      "number": 1257,
+      "jobs": [
+        {
+          "id": 112479297064,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112479297332,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112479297526,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112479297661,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112480380814,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "nodeTests": 1230,
+      "chromiumTests": 35
+    },
+    "persistentDeploymentCheck": "Independently verified earlier on 2026-10-06 at 11:27:41 UTC; not reconfigured or freshly re-verified in this content-only slice. Aggregate CI and actual READY/image delivery are recorded separately.",
+    "main": "91e603f20f2454bf514a1e350467878889916ea6",
+    "mainRun": {
+      "id": 37525271493,
+      "number": 1258,
+      "jobs": [
+        {
+          "id": 112480559781,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112480560202,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112480560391,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112480560604,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112482236428,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "nodeTests": 1230,
+      "chromiumTests": 35
+    },
+    "vercel": {
+      "id": "dpl_BNgzsiC3rGicVf9zknXHkZiGoKnu",
+      "state": "READY",
+      "commit": "91e603f20f2454bf514a1e350467878889916ea6"
+    },
+    "qa": {
+      "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+      "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+      "results": [
+        {
+          "itemCode": "PHY7-U02-S04-I05",
+          "itemId": "0344876f-ee7e-4d92-9ef9-db284a223ae0",
+          "versionNo": 1,
+          "fingerprint": "9fe70889d34d9a9aaa88531bf03d1b0c",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S04-T02-SIZE-MEASUREMENT",
+                "familyItemCount": 3,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 0
+                },
+                "missingPositions": [
+                  "D"
+                ],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.3333333333333333,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "misconception_diagnosis",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "misconception_diagnosis": 1,
+                  "application": 1,
+                  "core_understanding": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|9a3694be-2de9-4cb2-8d31-03e1bf06551f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis|1|0344876f-ee7e-4d92-9ef9-db284a223ae0:1:misconception_diagnosis,2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8:1:core_understanding,7ec27342-5cbc-49c0-9625-5698eccf562e:1:application"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        },
+        {
+          "itemCode": "PHY7-U02-S04-I06",
+          "itemId": "7ec27342-5cbc-49c0-9625-5698eccf562e",
+          "versionNo": 1,
+          "fingerprint": "ccf979fa6106dc5f8047736b0c64ced3",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S04-T02-SIZE-MEASUREMENT",
+                "familyItemCount": 3,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 0
+                },
+                "missingPositions": [
+                  "D"
+                ],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.3333333333333333,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "application",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "misconception_diagnosis": 1,
+                  "application": 1,
+                  "core_understanding": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|9a3694be-2de9-4cb2-8d31-03e1bf06551f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis|1|0344876f-ee7e-4d92-9ef9-db284a223ae0:1:misconception_diagnosis,2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8:1:core_understanding,7ec27342-5cbc-49c0-9625-5698eccf562e:1:application"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        },
+        {
+          "itemCode": "PHY7-U02-S04-I07",
+          "itemId": "2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8",
+          "versionNo": 1,
+          "fingerprint": "1065b635aa629bfdc301f8c2bc88cbb8",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S04-T02-SIZE-MEASUREMENT",
+                "familyItemCount": 3,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 0
+                },
+                "missingPositions": [
+                  "D"
+                ],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.3333333333333333,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "core_understanding",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "misconception_diagnosis": 1,
+                  "application": 1,
+                  "core_understanding": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|9a3694be-2de9-4cb2-8d31-03e1bf06551f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis|1|0344876f-ee7e-4d92-9ef9-db284a223ae0:1:misconception_diagnosis,2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8:1:core_understanding,7ec27342-5cbc-49c0-9625-5698eccf562e:1:application"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        }
+      ]
+    },
+    "preservation": {
+      "tablesCompared": 100,
+      "changedTables": [
+        {
+          "table": "curriculum_release_item_families",
+          "oldRows": 165,
+          "newRows": 166,
+          "missingOld": 0
+        },
+        {
+          "table": "item_answer_keys",
+          "oldRows": 304,
+          "newRows": 307,
+          "missingOld": 0
+        },
+        {
+          "table": "item_curriculum_scopes",
+          "oldRows": 304,
+          "newRows": 307,
+          "missingOld": 0
+        },
+        {
+          "table": "item_families",
+          "oldRows": 88,
+          "newRows": 89,
+          "missingOld": 0
+        },
+        {
+          "table": "item_family_curriculum_reconciliations",
+          "oldRows": 88,
+          "newRows": 89,
+          "missingOld": 0
+        },
+        {
+          "table": "item_misconception_mappings",
+          "oldRows": 370,
+          "newRows": 379,
+          "missingOld": 0
+        },
+        {
+          "table": "item_options",
+          "oldRows": 608,
+          "newRows": 620,
+          "missingOld": 0
+        },
+        {
+          "table": "item_qa_runs",
+          "oldRows": 520,
+          "newRows": 523,
+          "missingOld": 0
+        },
+        {
+          "table": "item_template_remediation_guides",
+          "oldRows": 20,
+          "newRows": 21,
+          "missingOld": 0
+        },
+        {
+          "table": "item_templates",
+          "oldRows": 88,
+          "newRows": 89,
+          "missingOld": 0
+        },
+        {
+          "table": "item_versions",
+          "oldRows": 139,
+          "newRows": 142,
+          "missingOld": 0
+        },
+        {
+          "table": "items",
+          "oldRows": 304,
+          "newRows": 307,
+          "missingOld": 0
+        },
+        {
+          "table": "misconceptions",
+          "oldRows": 59,
+          "newRows": 63,
+          "missingOld": 0
+        },
+        {
+          "table": "remediation_guide_authoring_versions",
+          "oldRows": 141,
+          "newRows": 142,
+          "missingOld": 0
+        },
+        {
+          "table": "remediation_guide_versions",
+          "oldRows": 67,
+          "newRows": 68,
+          "missingOld": 0
+        }
+      ],
+      "whollyUnchangedTables": 85,
+      "allOldRowsPreserved": true
+    },
+    "migration": {
+      "version": "20261006202205",
+      "name": "sprint_15b13_s04_practice_expansion",
+      "exactSqlMatch": true
+    },
+    "governance": {
+      "drafts": 3,
+      "approved": 44,
+      "attempts": 0,
+      "candidate": {
+        "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "status": "draft",
+        "activatedAt": null
+      },
+      "formLinks": 0,
+      "poolLinks": 0,
+      "observed_at": "2026-10-06T20:22:56.498593+00:00",
+      "chapterItems": 47,
+      "sessionLinks": 0,
+      "exposureEvents": 0,
+      "reviewExposures": 0
+    },
+    "advisors": {
+      "security": {
+        "groups": 2,
+        "unchanged": true
+      },
+      "performance": {
+        "groups": 4,
+        "unchanged": true
+      }
+    },
+    "httpReadback": [
+      {
+        "path": "release.json",
+        "status": 200,
+        "bytes": 72,
+        "sha256": "d48722a900a4c53890c0bd221834a1715e77da1ffd08c663729158f1e750ac55",
+        "observedAt": "2026-10-06T20:21:41.357430+00:00",
+        "release": {
+          "schemaVersion": 1,
+          "commit": "91e603f20f2454bf514a1e350467878889916ea6"
+        }
+      },
+      {
+        "path": "assets/textbook/physics7-2023/figure-28.png",
+        "status": 200,
+        "bytes": 11678,
+        "sha256": "1321d648a4f0e7412ae182eb1c409815f8ac945889265ba80e5f9b241cf34d4c",
+        "observedAt": "2026-10-06T20:21:41.367109+00:00",
+        "exactLocalMatch": true
+      },
+      {
+        "path": "assets/textbook/physics7-2023/figure-29.png",
+        "status": 200,
+        "bytes": 289557,
+        "sha256": "1cbf4db18a87b276ad2f75a2cdf345752062a0374eb9090e0b4b1b168f058805",
+        "observedAt": "2026-10-06T20:21:41.457962+00:00",
+        "exactLocalMatch": true
+      }
+    ],
+    "newGuide": {
+      "id": "144c3de5-63ed-4e1f-b7a8-e5831140301e",
+      "status": "draft",
+      "metadata": {
+        "sprint": "15B.13E",
+        "learnerVisible": false,
+        "referenceMetadata": {
+          "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+          "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §8-9, տպագիր էջեր 28-30, նկարներ 28-29",
+          "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)"
+        },
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+      },
+      "title_hy": "Ինչպե՞ս կապել պատկերի, մասնիկի և ամբողջ մարմնի չափերը",
+      "hint_1_hy": "Պարզի՛ր՝ չափված երկարությունն ի՞նչ է ներառում, և պատկերի չափն արդյո՞ք նույնն է, ինչ իրական մարմնի չափը։",
+      "hint_2_hy": "Ստուգի՛ր փոփոխության ուղղությունը. ավելացած բացերը մեծացնո՞ւմ են շարքի երկարությունը, իսկ խոշորացված պատկերից իրական չափին անցնելիս չափը մեծանո՞ւմ է, թե՞ փոքրանում։",
+      "created_at": "2026-10-06T20:22:05.725248+00:00",
+      "updated_at": "2026-10-06T20:22:05.725248+00:00",
+      "strategy_hy": "Նախ տարբերակի՛ր՝ տրվածը ամբողջ շարքի՞ երկարությունն է, խոշորացված պատկերի՞ չափը, թե՞ մասնիկների թիվը։ Գնդիկների շարքով տրամագիծ որոշելիս նույնաչափ գնդիկները պետք է հպվեն իրար. բացերով չափված երկարությունը պարունակում է նաև ավելորդ տարածություն։ Խոշորացված պատկերից իրական չափը գտնելու համար պատկերի տրված չափը բաժանի՛ր խոշորացման գործակցին։ Փոքր մարմնում կարող են լինել շատ մասնիկներ, եթե յուրաքանչյուր մասնիկն ամբողջ մարմնի համեմատ չափազանց փոքր է. փոքր չափը զրոյական չափ չէ։",
+      "guide_version": 1,
+      "item_template_id": "9a3694be-2de9-4cb2-8d31-03e1bf06551f",
+      "worked_example_hy": "Օրինակ՝ 50 անգամ խոշորացված պատկերի վրա մանր մարմնի երկարությունը 15 մմ է։ Նրա իրական երկարությունը 15 մմ ÷ 50 = 0,3 մմ է։ Նույն միավորը պահպանվում է, իսկ արդյունքը փոքր է պատկերի չափից։ Շարքով չափման այլ խնդրում էլ նախ ստուգում ենք, որ ընդհանուր երկարության մեջ ավելորդ բացեր չկան։",
+      "trigger_error_code": null,
+      "allowed_parameter_keys": []
+    },
+    "newDefinitions": [
+      {
+        "id": "11bb42ae-15db-4f49-94c5-c60c703a9158",
+        "code": "row_gaps_bias_confusion",
+        "status": "draft",
+        "skill_id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+        "title_hy": "Շարքի բացերի ազդեցությունը չափման վրա սխալ գնահատելը",
+        "created_at": "2026-10-06T20:22:05.725248+00:00",
+        "updated_at": "2026-10-06T20:22:05.725248+00:00",
+        "description_hy": "Սովորողը շարքի ընդհանուր երկարության մեջ ներառված բացերի ազդեցությունը անտեսում է, շրջում է սխալի ուղղությունը կամ կարծում է, որ առանց բացերի ճշգրիտ չափի հնարավոր չէ որոշել գերագնահատման ուղղությունը։"
+      },
+      {
+        "id": "55c111a6-d404-461e-98b6-e86e3b1e40e2",
+        "code": "image_magnification_scale_confusion",
+        "status": "draft",
+        "skill_id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+        "title_hy": "Խոշորացված պատկերից իրական չափին անցումը սխալ կատարելը",
+        "created_at": "2026-10-06T20:22:05.725248+00:00",
+        "updated_at": "2026-10-06T20:22:05.725248+00:00",
+        "description_hy": "Սովորողը իրական չափը որոշելիս պատկերի չափը բազմապատկում է խոշորացման գործակցով, չի փոխում այն կամ բաժանում է սխալ կարգի գործակցի՝ անտեսելով տրված խոշորացումը։"
+      },
+      {
+        "id": "d75f28e2-25a8-4ddc-9627-5e57b8cb4a65",
+        "code": "small_body_few_particles",
+        "status": "draft",
+        "skill_id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+        "title_hy": "Մարմնի փոքր չափից մասնիկների փոքր թիվ եզրակացնելը",
+        "created_at": "2026-10-06T20:22:05.725248+00:00",
+        "updated_at": "2026-10-06T20:22:05.725248+00:00",
+        "description_hy": "Սովորողը մարմնի փոքր չափը նույնացնում է նրա մասնիկների փոքր թվի հետ կամ մասնիկների մեծ թվից պարտադիր մեծ մարմին է ենթադրում՝ անտեսելով մեկ մասնիկի չափազանց փոքր չափը։"
+      },
+      {
+        "id": "2f750697-1c86-4f1f-8047-ba5ce912988d",
+        "code": "molecules_have_zero_size",
+        "status": "draft",
+        "skill_id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+        "title_hy": "Չափազանց փոքր չափը զրոյական չափ համարելը",
+        "created_at": "2026-10-06T20:22:05.725248+00:00",
+        "updated_at": "2026-10-06T20:22:05.725248+00:00",
+        "description_hy": "Սովորողը մոլեկուլների չափազանց փոքր չափերը նույնացնում է զրոյական չափերի հետ՝ դրանց մեծ թիվը բացատրելով չափերի բացակայությամբ։"
+      }
+    ],
+    "itemLinks": [
+      {
+        "code": "PHY7-U02-S04-I05",
+        "id": "0344876f-ee7e-4d92-9ef9-db284a223ae0",
+        "versionNo": 1,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "url": "https://www.haiedu.am/content-item.html?id=0344876f-ee7e-4d92-9ef9-db284a223ae0&from=review"
+      },
+      {
+        "code": "PHY7-U02-S04-I06",
+        "id": "7ec27342-5cbc-49c0-9625-5698eccf562e",
+        "versionNo": 1,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "url": "https://www.haiedu.am/content-item.html?id=7ec27342-5cbc-49c0-9625-5698eccf562e&from=review"
+      },
+      {
+        "code": "PHY7-U02-S04-I07",
+        "id": "2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8",
+        "versionNo": 1,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "url": "https://www.haiedu.am/content-item.html?id=2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8&from=review"
+      }
+    ]
+  },
+  "gates": {
+    "candidateRelease": "draft",
+    "humanQuestionReview": "pending",
+    "humanMisconceptionReview": "pending",
+    "humanGuideReview": "pending",
+    "externalSme": "pending",
+    "protectedPools": "not_created",
+    "readinessModelBinding": "not_changed",
+    "learnerRelease": "not_authorized"
+  }
+}

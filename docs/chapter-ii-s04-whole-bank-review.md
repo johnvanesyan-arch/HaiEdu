@@ -42,4 +42,16 @@ The migration creates three drafts, four draft definitions, a draft guide and im
 
 After deployment, review I05–I07 in the [question queue](https://www.haiedu.am/content-review.html), the four S04 definitions in [Թյուր պատկերացումներ](https://www.haiedu.am/content-misconceptions.html), then the separate guide in [remediation guides](https://www.haiedu.am/content-guides.html). Approve/publish the questions before final guide publication so the guide workspace can load the published variants.
 
-Still open: this batch's human review, five S04 and four S03 planning slots, S05–S09 expansion, protected assessment banks, numeric readiness/model approval, the older 32-item illustration audit, external SME, pilot and release authorization. Chapter II remains learner-inactive. Deployment results and direct review links will be added after verified readback.
+Still open: this batch's human review, five S04 and four S03 planning slots, S05–S09 expansion, protected assessment banks, numeric readiness/model approval, the older 32-item illustration audit, external SME, pilot and release authorization. Chapter II remains learner-inactive. The verified deployment checkpoint follows.
+
+## Deployment checkpoint — 20:22:56 UTC
+
+Implementation [PR #152](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/152) and independent main CI #1258 passed all five required jobs (1,230 Node / 35 Chromium). Main `91e603f20f2454bf514a1e350467878889916ea6` has the exact reviewed tree. Vercel is READY at that commit; `/release.json` matches and both public PNGs return HTTP 200 with exact recorded hashes. Production migration `20261006202205` matches the reviewed SQL verbatim. Fresh current-family technical QA passes all three drafts; the new guide validates all three variants. The migration and QA append rows in 15 tables while preserving every old row; 85 tables are unchanged. Security/performance advisors are unchanged. Chapter II has 47 authored items (44 approved, three drafts), with zero pool/form/session/attempt/exposure links; the candidate remains draft. [Full verification evidence](evidence/sprint-15b13-s04-expansion-20261006.json).
+
+| Review item | Link |
+|---|---|
+| PHY7-U02-S04-I05 v1 | [Open question](https://www.haiedu.am/content-item.html?id=0344876f-ee7e-4d92-9ef9-db284a223ae0&from=review) |
+| PHY7-U02-S04-I06 v1 | [Open question](https://www.haiedu.am/content-item.html?id=7ec27342-5cbc-49c0-9625-5698eccf562e&from=review) |
+| PHY7-U02-S04-I07 v1 | [Open question](https://www.haiedu.am/content-item.html?id=2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8&from=review) |
+
+Review the four S04 definitions in [Թյուր պատկերացումներ](https://www.haiedu.am/content-misconceptions.html), then [the separate draft guide](https://www.haiedu.am/content-guides.html?id=template%3A144c3de5-63ed-4e1f-b7a8-e5831140301e).
