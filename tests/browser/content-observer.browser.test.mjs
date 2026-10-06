@@ -5,7 +5,7 @@ import { chromium } from "@playwright/test";
 
 // Native browser regression with real UI modules and offline auth/network doubles.
 // This covers DOM/event lifecycle, not live backend authorization or content workflows.
-const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
+const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js", "learning-stimulus.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
 const origin = "https://content-lifecycle.test";
 let browser;
 before(async () => { browser = await chromium.launch({ headless: true }); }, { timeout: 30_000 });
@@ -74,7 +74,13 @@ async function fixture(t, moduleName = "content-review-workflow.js", initial = "
         </main><script type="module" src="./${moduleName}"></script></body></html>`;
     } else if (url.origin === origin && sources.has(url.pathname.slice(1))) {
       body = sources.get(url.pathname.slice(1));
-      if (moduleName === "content.js") body += "\nwindow.__editorFixture = { wireEditorRows, addOptionRow };";
+      if (url.pathname === "/content.js") body += `
+window.__editorFixture = { wireEditorRows, addOptionRow, selectItem,
+ preview(detail) {
+   dashboard = {items:[{id:"fixture-item", ...detail.item, skill:{code:"QA-SKILL"}}, {id:"second-item", ...detail.item, skill:{code:"QA-SECOND-SKILL"}}]};
+   selectedId = "fixture-item"; selectedDetail = detail; renderDetail();
+ }
+};`;
       body += "\nwindow.__moduleReady = true;";
     } else if (url.origin === origin && url.pathname === "/config.js") {
       body = 'export const SUPABASE_URL="https://fixture.invalid", SUPABASE_PUBLISHABLE_KEY="fixture-only";';
@@ -171,5 +177,67 @@ test("adding editor rows keeps native option and removal handlers singular", { t
   assert.equal(await page.locator("#answerSingleChoice").inputValue(), "B");
   await page.locator(".remove-misconception-btn").click();
   assert.equal(await page.evaluate(() => window.__mappingWrites), 2, "One row removal and one empty-state insertion are expected");
+  await assertSettled(state);
+});
+
+const mediaDetail = (stimulus) => ({
+  item: { code: "QA-MEDIA", type: "single_choice", promptHy: "Փորձի մասին հարց", stimulus,
+    config: {}, versionNo: 1, difficulty: 2, reviewStatus: "needs_review" },
+  options: [{key: "A", contentHy: "Առաջին տարբերակ"}, {key: "B", contentHy: "Երկրորդ տարբերակ"}],
+  answerKey: {answer: "A"}, editing: {contentEditable: false},
+});
+
+test("reviewer renders the same source image and alternative text on desktop and mobile", { timeout: 20_000 }, async (t) => {
+  const state = await fixture(t, "content.js", "active");
+  const {page} = state;
+  const bytes = await readFile(new URL("../../web/assets/textbook/physics7-2023/figure-24.png", import.meta.url));
+  await page.route("https://www.haiedu.am/assets/textbook/**", route => route.fulfill({status: 200, contentType: "image/png", body: bytes}));
+  const stimulus = {kind: "image", url: "https://www.haiedu.am/assets/textbook/physics7-2023/figure-24.png", altHy: "Ջրի և գազի անոթները տաքացնելիս"};
+  for (const width of [1280, 360]) {
+    await page.setViewportSize({width, height: 900});
+    await page.evaluate(detail => window.__editorFixture.preview(detail), mediaDetail(stimulus));
+    const img = page.locator("#learnerPreviewStimulus img");
+    await img.evaluate(el => el.decode());
+    assert.equal(await img.getAttribute("alt"), stimulus.altHy);
+    assert.equal(await img.getAttribute("src"), stimulus.url);
+    assert.equal(await img.evaluate(el => el.getBoundingClientRect().right <= innerWidth), true);
+    assert.equal(await page.locator(".learner-preview-option").count(), 2);
+  }
+  await assertSettled(state);
+});
+
+test("reviewer clears old media and isolates invalid stimuli without losing the question", { timeout: 20_000 }, async (t) => {
+  const state = await fixture(t, "content.js", "active"), {page} = state;
+  for (const stimulus of [{kind:"image",url:"javascript:window.__injected=true",altHy:"Նկար"}, {kind:"image",url:"http://insecure.test/image.png",altHy:"Նկար"}, {kind:"image",url:"https://example.test/image.png"}, {kind:"unsupported"}]) {
+    await page.evaluate(detail => window.__editorFixture.preview(detail), mediaDetail(stimulus));
+    assert.equal(await page.locator("#learnerPreviewStimulus img").count(), 0);
+    assert.equal(await page.locator("#learnerPreviewStimulus[role=alert]").count(), 1);
+    assert.equal(await page.locator(".learner-preview-option").count(), 2);
+  }
+  await page.evaluate(detail => window.__editorFixture.preview(detail), mediaDetail({kind:"text",contentHy:"Դիտման տվյալներ"}));
+  assert.equal(await page.locator("#learnerPreviewStimulus").textContent(), "Դիտման տվյալներ");
+  await page.evaluate(detail => window.__editorFixture.preview(detail), mediaDetail({}));
+  assert.equal(await page.locator("#learnerPreviewStimulus").textContent(), "");
+  assert.equal(await page.locator("#learnerPreviewStimulus[role=alert]").count(), 0);
+  assert.equal(await page.evaluate(() => Boolean(window.__injected)), false);
+  await assertSettled(state);
+});
+
+test("late item or account responses cannot restore a previous stimulus", { timeout: 20_000 }, async (t) => {
+  const state = await fixture(t, "content.js", "active"), {page} = state;
+  await page.evaluate(detail => {
+    window.__editorFixture.preview(detail);
+    window.__pendingDetails = {};
+    window.__haieduSupabaseClient.functions.invoke = (_name,{body}) => new Promise(resolve => {window.__pendingDetails[body.itemId] = resolve;});
+    window.__editorFixture.selectItem("fixture-item");
+    window.__editorFixture.selectItem("second-item");
+  }, mediaDetail({}));
+  await page.evaluate(detail => window.__pendingDetails["second-item"]({data:{detail},error:null}), mediaDetail({kind:"text",contentHy:"Նոր հարցի տվյալներ"}));
+  await page.waitForFunction(() => document.getElementById("learnerPreviewStimulus")?.textContent === "Նոր հարցի տվյալներ");
+  await page.evaluate(detail => window.__pendingDetails["fixture-item"]({data:{detail},error:null}), mediaDetail({kind:"text",contentHy:"Հին հարցի տվյալներ"}));
+  assert.equal(await page.locator("#learnerPreviewStimulus").textContent(), "Նոր հարցի տվյալներ");
+  await page.evaluate(() => {window.__editorFixture.selectItem("fixture-item"); window.__authEvent("SIGNED_OUT",null);});
+  await page.evaluate(detail => window.__pendingDetails["fixture-item"]({data:{detail},error:null}), mediaDetail({kind:"text",contentHy:"Անջատված հաշվի տվյալներ"}));
+  assert.equal(await page.locator("#learnerPreviewStimulus").count(), 0);
   await assertSettled(state);
 });

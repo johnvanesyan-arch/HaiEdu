@@ -1,7 +1,8 @@
 # Chapter II — assessment policy and content-expansion decision packet
 
 **Prepared:** 2026-10-06  
-**Status:** preparation complete; options and recommendation await John's explicit decision.  
+**Status:** John selected Option B on 2026-10-06; the selected scope, lengths, passing rule and 192-question budget are approved for Chapter II. Model parameters, individual content and release gates remain separate.
+**Decision:** [Option B decision and first expansion batch](chapter-ii-option-b-and-s02-expansion.md).
 **Scope:** Physics 7, Chapter II, candidate release `b83dc4a4-f5c2-486a-82a6-d7489e7e6407`. These are subject-aware proposals, never platform defaults.  
 **Reviewed source:** `c3007f87c0568573cea8a0f56483915169a9562e`.  
 **Evidence:** [fresh read-only inventory and compatibility analysis](evidence/chapter-ii-policy-preparation-20261006.json).
@@ -27,9 +28,9 @@ Chapter II has zero pool memberships and zero learner session-item links. Its ca
 
 S01 stays archived because it duplicated the existing cross-unit prerequisite. No new S01 family is proposed. The supporting treatment of S03 and the consequential treatment of additional outcomes are explicit policy choices requiring approval; their labels alone do not select a scoring rule.
 
-## Decisions for John
+## Prepared alternatives and recorded decision
 
-**Recommended draft: Option A.** Deliver 16 diagnostic questions and 16 mastery questions, two per each of eight skills. Score mastery passing on the ten questions for the five directly mandatory skills: at least 8/10, plus at least one correct answer in each of those five skills. Report S03/S07/S09 independently. They cannot rescue a failed mandatory score or cause a mandatory pass to fail. Initial mastery readiness uses the same five required skills.
+**Historical preparation recommendation (superseded by the selection of B): Option A.** Deliver 16 diagnostic questions and 16 mastery questions, two per each of eight skills. Score mastery passing on the ten questions for the five directly mandatory skills: at least 8/10, plus at least one correct answer in each of those five skills. Report S03/S07/S09 independently. They cannot rescue a failed mandatory score or cause a mandatory pass to fail. Initial mastery readiness uses the same five required skills.
 
 This recommendation is an inference from the governed outcome categories and the intended distinction between required and additional evidence. It is not an approved educational or psychometric rule. The 80% threshold, supporting-skill treatment, readiness scope, lengths and bank budget all require explicit approval.
 
@@ -39,7 +40,7 @@ This recommendation is an inference from the governed outcome categories and the
 | **B — all skills consequential** | 16, two per all eight skills | 16 delivered; at least 13/16 plus one correct in every one of eight skills | All eight skills | **192** | Fits v1's declared capabilities after ordinary policy/model/content binding |
 | **C — mandatory-only mastery** | 16, two per all eight skills | 10 delivered, two per five mandatory skills; at least 8/10 plus one correct in each required skill | Five mandatory skills | **168** | Fits v1 if the mastery blueprint contains only those five skills |
 
-Option B makes the additional outcomes and supporting decomposition compulsory for both readiness and passing; that consequence needs explicit approval. Option C retains their diagnostic/practice evidence but collects no protected mastery evidence for S03/S07/S09. Analytics must show that distinction instead of implying they passed an independent mastery check.
+John selected Option B: the additional outcomes and supporting decomposition are consequential for both readiness and passing. Numeric readiness/model parameters still require the normal approved versioned model. Option C retains their diagnostic/practice evidence but collects no protected mastery evidence for S03/S07/S09. Analytics must show that distinction instead of implying they passed an independent mastery check.
 
 If John prefers 20 questions, the additional four slots need an outcome/evidence allocation before a revised budget can be prepared. Chapter I's 20-question assessments are unchanged by any Chapter II option.
 
@@ -66,7 +67,7 @@ After a policy/budget decision, start with new practice evidence for S02. Plan r
 
 Diagnostic/mastery banks require separate questions and stimuli. Do not repurpose the already-practised 32 questions as protected assessment items or create cosmetic variants that disclose the same protected reasoning/answer. Check item-ID and semantic/stimulus exposure separation.
 
-Relevant illustrations from the applicable source textbook are required platform-wide wherever they support or are necessary for the task. Each authored version must record edition/page/figure, preserve scientific meaning and labels, provide Armenian alternative text and pass desktop/mobile and answer-disclosure checks. No specific figure or crop has been selected by this preparation packet. Protected stimulus reuse needs exposure review. [Illustration policy](question-illustration-policy.md) · [Prospective evidence-purpose contract](assessment-evidence-blueprint-policy.md).
+Relevant illustrations from the applicable source textbook are required platform-wide wherever they support or are necessary for the task. Each authored version must record edition/page/figure, preserve scientific meaning and labels, provide Armenian alternative text and pass desktop/mobile and answer-disclosure checks. This historical preparation selected no crop; the subsequent S02 expansion records its source figures and crop provenance separately. Protected stimulus reuse needs exposure review. [Illustration policy](question-illustration-policy.md) · [Prospective evidence-purpose contract](assessment-evidence-blueprint-policy.md).
 
 ## Runtime and dashboard work after a decision
 
