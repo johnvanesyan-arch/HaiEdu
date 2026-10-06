@@ -2,7 +2,7 @@
 
 **Date:** 2026-10-06. **Sprint:** 15B.13C. **Author:** Codex, automated authoring/review assistance at John's direction; this is not external SME validation or human question approval.
 
-**Status:** Prepared version-2 correction, pending deployment evidence and human review. The full-bank review requirement is platform-wide; this content correction is a subject-aware Physics 7 extension.
+**Status:** I10 v2 deployed and technically validated; human question/misconception review and the existing guide review remain pending. The full-bank review requirement is platform-wide; this content correction is a subject-aware Physics 7 extension.
 
 ## Finding and correction
 
@@ -61,3 +61,13 @@ The correction increments only I10 to v2, resets its current approval, preserves
 After deployment, review the new misconception on [Թյուր պատկերացումներ](https://www.haiedu.am/content-misconceptions.html), then [I10 v2](https://www.haiedu.am/content-item.html?id=1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc). The separate [template guide](https://www.haiedu.am/content-guides.html?id=template%3A3e34388a-f088-4ac9-bdb2-20a2de495d4b) remains draft; its observation/inference strategy is compatible with this task and remains subject to human review. Its existing worked example is an analogy, not a solution to I10.
 
 No pool, form, blueprint, release activation, learner history, dashboard, learning-engine rule or shared Edge/browser source is changed. The prior 32-question illustration audit, external SME, numeric readiness model, whole-chapter content and pilot/release gates remain open.
+
+## Deployment verification
+
+[PR #147](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/147) merged as `4454cbf3443334dae759c5fc600a4ec3d60e7ab7`. PR CI **#1247** and independent main CI **#1248** passed all five required jobs: **1,226 Node tests, 35 native Chromium tests**, both PostgreSQL jobs and aggregate Platform release checks. The two new focused tests exercise actual SQL/content-QA code with isolated auth/query doubles, not a live authenticated reviewer session.
+
+Migration `sprint_15b13_s02_i10_diversity_revision` is applied at production version `20261006171437`, with statements exactly matching the reviewed repository migration (local CLI-generated filename version `20261006164457`). The production rollback preserved all 100 public-table checksums. Deployment plus QA changed only the expected eight tables: ten authorized current rows revised, one new version, one draft misconception and four technical QA records appended. All other existing rows and the other 92 complete tables are unchanged, including all approval/version histories and guides. Security/performance advisor findings are unchanged.
+
+Fresh production readback passes the deployed-identical v11 evaluator for current I09 v2, I10 v2, I11 v1 and I12 v1, with no errors/warnings; the guide validator passes all four. The four append-only QA records carry automated provenance and null `run_by`; this was a fresh production-snapshot evaluator run, **not** an authenticated live Edge call or a human approval. Related-bank final version readback is unchanged. Production Vercel metadata and an independent HTTP 200 `release.json` read confirm implementation main.
+
+Current inventory: **S02 11 approved + I10 v2 awaiting review; Chapter II 39 approved + one awaiting review, 40 authored total**. The new misconception is draft and the existing T03 guide remains draft. I10 v1's approval remains in history. [Machine-readable evidence](evidence/sprint-15b13-s02-diversity-20261006.json).

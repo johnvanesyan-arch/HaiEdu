@@ -1,7 +1,7 @@
 {
   "sprint": "15B.13C",
   "date": "2026-10-06",
-  "status": "prepared_not_deployed",
+  "status": "deployed_pending_human_review",
   "author": "Codex automated author at product-owner direction; no human/SME approval created",
   "policy": "haiedu-whole-skill-review-v1",
   "repositoryBase": "3c29bdb14630d8bd63f7d4721eb7252f1acfb11a",
@@ -314,9 +314,695 @@
     },
     "deployedQaSourceVersion": 11,
     "deployedQaSourceMatchesRepository": true,
-    "browserQaTriggerCheck": "passed: 55 actions / 31 analytics dependency paths; main-only production guards retained"
+    "browserQaTriggerCheck": "passed: 55 actions / 31 analytics dependency paths; main-only production guards retained",
+    "refreshedQa": {
+      "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+      "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+      "results": [
+        {
+          "itemCode": "PHY7-U02-S02-I09",
+          "itemId": "d0586f20-fdea-40fe-8882-2cde615facb5",
+          "versionNo": 2,
+          "fingerprint": "bd5e0f41344939c51c6e1e0e294dbb49",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S02-T03-PARTICLE-MODEL-LIMITS",
+                "familyItemCount": 4,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 1
+                },
+                "missingPositions": [],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.25,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "core_understanding",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis",
+                  "transfer_reasoning"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "core_understanding": 1,
+                  "application": 1,
+                  "misconception_diagnosis": 1,
+                  "transfer_reasoning": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|2|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:2:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:2:core_understanding"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        },
+        {
+          "itemCode": "PHY7-U02-S02-I10",
+          "itemId": "1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc",
+          "versionNo": 2,
+          "fingerprint": "8d1c7318e048d6027ce4c9752dcb901a",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S02-T03-PARTICLE-MODEL-LIMITS",
+                "familyItemCount": 4,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 1
+                },
+                "missingPositions": [],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.25,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "application",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis",
+                  "transfer_reasoning"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "core_understanding": 1,
+                  "application": 1,
+                  "misconception_diagnosis": 1,
+                  "transfer_reasoning": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|2|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:2:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:2:core_understanding"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        },
+        {
+          "itemCode": "PHY7-U02-S02-I11",
+          "itemId": "6934b7b9-21a9-4fa3-97c6-76bc83baa106",
+          "versionNo": 1,
+          "fingerprint": "4452806af4106cd8da5b1101c66c21c0",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S02-T03-PARTICLE-MODEL-LIMITS",
+                "familyItemCount": 4,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 1
+                },
+                "missingPositions": [],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.25,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "misconception_diagnosis",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis",
+                  "transfer_reasoning"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "core_understanding": 1,
+                  "application": 1,
+                  "misconception_diagnosis": 1,
+                  "transfer_reasoning": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|2|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:2:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:2:core_understanding"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        },
+        {
+          "itemCode": "PHY7-U02-S02-I12",
+          "itemId": "cab790d4-0920-4b58-8261-ebd6b215dc62",
+          "versionNo": 1,
+          "fingerprint": "ae91bdad49287b6cf5b9a6ee591e04b4",
+          "result": {
+            "passed": true,
+            "errors": [],
+            "warnings": [],
+            "details": {
+              "optionCount": 4,
+              "misconceptionMappings": 3,
+              "misconceptionMappingPolicy": "all_distractors",
+              "missingMisconceptionResponseKeys": [],
+              "duplicateCodes": [],
+              "expectedDifficultyBand": "core",
+              "generatedVerification": null,
+              "answerPositionDistribution": {
+                "scope": "item_template",
+                "templateCode": "PHY7-U02-S02-T03-PARTICLE-MODEL-LIMITS",
+                "familyItemCount": 4,
+                "optionKeys": [
+                  "A",
+                  "B",
+                  "C",
+                  "D"
+                ],
+                "counts": {
+                  "A": 1,
+                  "B": 1,
+                  "C": 1,
+                  "D": 1
+                },
+                "missingPositions": [],
+                "maximumPositionCount": 1,
+                "maximumPositionShare": 0.25,
+                "unrecognizedAnswers": [],
+                "policyVersion": "family-balanced-v1",
+                "severity": "warning",
+                "imbalanced": false
+              },
+              "evidenceBlueprintVerification": {
+                "policyVersion": "haiedu-evidence-blueprint-v1",
+                "evidenceBlueprintPolicy": "distinct-purpose-v1",
+                "itemEvidencePurpose": "transfer_reasoning",
+                "requiredEvidencePurposes": [
+                  "core_understanding",
+                  "application",
+                  "misconception_diagnosis",
+                  "transfer_reasoning"
+                ],
+                "enforceUniqueEvidencePurposes": true,
+                "purposeCounts": {
+                  "core_understanding": 1,
+                  "application": 1,
+                  "misconception_diagnosis": 1,
+                  "transfer_reasoning": 1
+                },
+                "missingRequiredPurposes": [],
+                "duplicatePurposes": [],
+                "missingPurposeItemCodes": [],
+                "invalidPurposeItemCodes": [],
+                "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|2|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:2:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:2:core_understanding"
+              },
+              "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+            }
+          }
+        }
+      ]
+    },
+    "guide": {
+      "guideId": "3e34388a-f088-4ac9-bdb2-20a2de495d4b",
+      "status": "draft",
+      "version": 1,
+      "result": {
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 4,
+        "variantFailures": []
+      }
+    },
+    "relatedFinalVersions": [
+      {
+        "code": "PHY7-U01-S05-11D-D01",
+        "version_no": 1,
+        "prompt_md5": "466b435e3a51fe14bc5524586d00c621"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-D02",
+        "version_no": 1,
+        "prompt_md5": "af213c77c8cf4bc7ba24d8d6aa0ff0ea"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-D03",
+        "version_no": 1,
+        "prompt_md5": "ba9e2a683da9e96c263c39f4e52f4782"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-D04",
+        "version_no": 1,
+        "prompt_md5": "76933fce812035e564468616a6c599c4"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M01",
+        "version_no": 1,
+        "prompt_md5": "7e1747622ab44627c0e87a963d2fe609"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M02",
+        "version_no": 1,
+        "prompt_md5": "201f43f4e90ce52d8eacc9b9ec4cbc9b"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M03",
+        "version_no": 2,
+        "prompt_md5": "92329f1263cebf1b966fb9420ae2a03c"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M04",
+        "version_no": 1,
+        "prompt_md5": "2c6cdd55ba1afda4cea1ceed784ff28d"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M05",
+        "version_no": 1,
+        "prompt_md5": "fbb34176cd099d74dd62e8662ea67a7d"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M06",
+        "version_no": 1,
+        "prompt_md5": "8135be4358a080a29e5777b7b6de26eb"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P01",
+        "version_no": 1,
+        "prompt_md5": "6df7afe035a11a9ecdadad16cb835559"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P02",
+        "version_no": 1,
+        "prompt_md5": "53c34923ad23f090efdaef81ddfda8d2"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P03",
+        "version_no": 1,
+        "prompt_md5": "3d224a0eabc7d10575c42cef49e794ef"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P04",
+        "version_no": 1,
+        "prompt_md5": "d69258fd6b3f368ab8549cceac53067b"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P05",
+        "version_no": 1,
+        "prompt_md5": "22546de68694746b20ddab6fd04d22d1"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P06",
+        "version_no": 1,
+        "prompt_md5": "f0445def6b416df6b1135a70c0759a2e"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P07",
+        "version_no": 1,
+        "prompt_md5": "49117e6281bb3aeaa3d07394cbfdc591"
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P08",
+        "version_no": 1,
+        "prompt_md5": "5384b0eef2d4aa4bd9bbd523d63d15b8"
+      },
+      {
+        "code": "PHY7-U01-S05-I01",
+        "version_no": 1,
+        "prompt_md5": "2155c2669acec9f2e009ad705f4795cf"
+      },
+      {
+        "code": "PHY7-U01-S05-I02",
+        "version_no": 1,
+        "prompt_md5": "3bebe66ccd93a1727084f44786ec18b2"
+      },
+      {
+        "code": "PHY7-U01-S05-I03",
+        "version_no": 1,
+        "prompt_md5": "98819058dee9938331fc52f64a01c549"
+      },
+      {
+        "code": "PHY7-U01-S05-I04",
+        "version_no": 1,
+        "prompt_md5": "2ddbbfe50133dbddbdc375e5ecd5bdb7"
+      },
+      {
+        "code": "PHY7-U01-S05-I05",
+        "version_no": 1,
+        "prompt_md5": "d14b894403ae416448dd2260e749e07b"
+      },
+      {
+        "code": "PHY7-U01-S05-I06",
+        "version_no": 1,
+        "prompt_md5": "b85a295a8c6e01b6d263980ccad3ae15"
+      },
+      {
+        "code": "PHY7-U01-S05-T-HYPOTHESIS-TEST-PARALLEL-V-5ED306A15B",
+        "version_no": 1,
+        "prompt_md5": "129ae9ac42edd70ac12bac6de62ee20e"
+      },
+      {
+        "code": "PHY7-U01-S05-T-HYPOTHESIS-TEST-PARALLEL-V-E2AEC5A82D",
+        "version_no": 1,
+        "prompt_md5": "17761d0c79b0f8c9b1fa7eb5d341937c"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-D01",
+        "version_no": 1,
+        "prompt_md5": "8e3e18ab55c7af4f7a4b78e0df16b302"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-D02",
+        "version_no": 1,
+        "prompt_md5": "26c7e586e2c41293dd309470994b76bb"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-D03",
+        "version_no": 1,
+        "prompt_md5": "cad7b2d126a599684db6ca08859e2010"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-D04",
+        "version_no": 1,
+        "prompt_md5": "930d71fb1d9c60776a64d6ab7953863b"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M01",
+        "version_no": 1,
+        "prompt_md5": "5189ef7878b3623c57a07f838232f200"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M02",
+        "version_no": 1,
+        "prompt_md5": "fd512ab48a6cd5f60fad68d59aac150a"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M03",
+        "version_no": 1,
+        "prompt_md5": "ca8ca54d8572ca38c189eb3f57a9bfbd"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M04",
+        "version_no": 1,
+        "prompt_md5": "d99f8fd1938bdfb26a79623552f79104"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M05",
+        "version_no": 1,
+        "prompt_md5": "50e3c40ca0e1effd7e38d3e3d4e320d8"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M06",
+        "version_no": 1,
+        "prompt_md5": "02af1076da1fce0d4c8adeed1005f432"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P01",
+        "version_no": 1,
+        "prompt_md5": "f2ae4410fd9913827968dd87d68ede8e"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P02",
+        "version_no": 1,
+        "prompt_md5": "ca10628a3ebfd4efbaa55b0e5c2cf662"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P03",
+        "version_no": 1,
+        "prompt_md5": "6f182572ec395d0ccf0f14e135b31d5d"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P04",
+        "version_no": 1,
+        "prompt_md5": "6012e9c76ef1d44dc9448118d2f3334c"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P05",
+        "version_no": 1,
+        "prompt_md5": "dc37948a17063697f308ea610a1a99d7"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P06",
+        "version_no": 1,
+        "prompt_md5": "6a7f70737169ad62f2bf4465bd9dee24"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P07",
+        "version_no": 2,
+        "prompt_md5": "9a08a007f2ec56a68cda6048ed9aa8dd"
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P08",
+        "version_no": 2,
+        "prompt_md5": "50c42c804c0e80a77dbb92e1207f60a8"
+      },
+      {
+        "code": "PHY7-U01-S06-I01",
+        "version_no": 1,
+        "prompt_md5": "d20bf578642263de3ca61060bd85129c"
+      },
+      {
+        "code": "PHY7-U01-S06-I02",
+        "version_no": 1,
+        "prompt_md5": "0606737f8681e2cb871554242db116dd"
+      },
+      {
+        "code": "PHY7-U01-S06-I03",
+        "version_no": 1,
+        "prompt_md5": "b954f50cd6a786602fdd62bfb6a57ba8"
+      },
+      {
+        "code": "PHY7-U01-S06-I04",
+        "version_no": 1,
+        "prompt_md5": "fdbc20d487df68849c8a603bbc0eb04f"
+      },
+      {
+        "code": "PHY7-U01-S06-I05",
+        "version_no": 1,
+        "prompt_md5": "e9497fefe9a3a86331f27d7f760d9eda"
+      },
+      {
+        "code": "PHY7-U01-S06-I06",
+        "version_no": 1,
+        "prompt_md5": "61af8e3b6ef253fe4ce2e7e4c53ad131"
+      },
+      {
+        "code": "PHY7-U02-S03-I01",
+        "version_no": 1,
+        "prompt_md5": "4ccba532e2daf11d5d77f477e230e693"
+      },
+      {
+        "code": "PHY7-U02-S03-I02",
+        "version_no": 2,
+        "prompt_md5": "626eef7553faae02e0b796ada0be51cb"
+      },
+      {
+        "code": "PHY7-U02-S03-I03",
+        "version_no": 2,
+        "prompt_md5": "aa5541c88e2cdf5d17375b68ab1d3840"
+      },
+      {
+        "code": "PHY7-U02-S03-I04",
+        "version_no": 2,
+        "prompt_md5": "6c4c5be6177fe826ea87758a5dc1c4b5"
+      },
+      {
+        "code": "PHY7-U02-S09-I02",
+        "version_no": 1,
+        "prompt_md5": "a95f323e3f1ed71526bb6b604b55fa55"
+      },
+      {
+        "code": "PHY7-U02-S09-I03",
+        "version_no": 1,
+        "prompt_md5": "a1f87b4be07e3393d4cb10bd4093d550"
+      }
+    ],
+    "automatedQaRecords": {
+      "count": 4,
+      "runKey": "15b13c-i10-revision-20261006",
+      "runBy": null,
+      "humanApprovalCreated": false
+    }
   },
-  "deployment": null,
+  "deployment": {
+    "implementationPr": 147,
+    "head": "7fe7ef25be9c2e24dd1f6f1e21bd5c5ea2ea0657",
+    "main": "4454cbf3443334dae759c5fc600a4ec3d60e7ab7",
+    "tree": "79d73f7cb7f0d115d6db80faf9854656aa25966f",
+    "migration": {
+      "version": "20261006171437",
+      "name": "sprint_15b13_s02_i10_diversity_revision",
+      "exact": true,
+      "sha256": "45a7ef3f718d488254de8c4629a27bd93f561c38e44b4cb8737d9bc872c069df"
+    },
+    "prCi": {
+      "number": 1247,
+      "runId": 37500932747,
+      "allFiveJobs": "success",
+      "nodeTests": 1226,
+      "chromiumTests": 35
+    },
+    "mainCi": {
+      "number": 1248,
+      "runId": 37501339650,
+      "allFiveJobs": "success",
+      "nodeTests": 1226,
+      "chromiumTests": 35
+    },
+    "vercel": {
+      "id": "dpl_9KQbM6Vkym8Ec8W2TLLDFHi8xn1C",
+      "readyState": "READY",
+      "sha": "4454cbf3443334dae759c5fc600a4ec3d60e7ab7"
+    },
+    "changedRuntimeBundles": [],
+    "preservation": {
+      "tableCount": 100,
+      "changes": [
+        {
+          "table": "item_answer_keys",
+          "before": 300,
+          "after": 300,
+          "removed": 1,
+          "added": 1
+        },
+        {
+          "table": "item_misconception_mappings",
+          "before": 358,
+          "after": 358,
+          "removed": 3,
+          "added": 3
+        },
+        {
+          "table": "item_options",
+          "before": 592,
+          "after": 592,
+          "removed": 4,
+          "added": 4
+        },
+        {
+          "table": "item_qa_runs",
+          "before": 499,
+          "after": 503,
+          "removed": 0,
+          "added": 4
+        },
+        {
+          "table": "item_templates",
+          "before": 87,
+          "after": 87,
+          "removed": 1,
+          "added": 1
+        },
+        {
+          "table": "item_versions",
+          "before": 129,
+          "after": 130,
+          "removed": 0,
+          "added": 1
+        },
+        {
+          "table": "items",
+          "before": 300,
+          "after": 300,
+          "removed": 1,
+          "added": 1
+        },
+        {
+          "table": "misconceptions",
+          "before": 53,
+          "after": 54,
+          "removed": 0,
+          "added": 1
+        }
+      ],
+      "violations": []
+    },
+    "securityAdvisors": {
+      "before": 2,
+      "after": 2,
+      "unchanged": true
+    },
+    "performanceAdvisors": {
+      "before": 4,
+      "after": 4,
+      "unchanged": true
+    },
+    "publicRelease": {
+      "url": "https://www.haiedu.am/release.json",
+      "status": 200,
+      "commit": "4454cbf3443334dae759c5fc600a4ec3d60e7ab7"
+    }
+  },
   "openGates": [
     "Human approval of revised I10 v2",
     "Human approval of new draft misconception",
@@ -326,5 +1012,21 @@
     "Approved readiness/model configuration",
     "Protected-bank and pilot/release gates"
   ],
-  "noRuntimeChanges": true
+  "noRuntimeChanges": true,
+  "postDeploymentInventory": {
+    "S02": {
+      "authored": 12,
+      "approved": 11,
+      "needsReview": 1
+    },
+    "chapterII": {
+      "authored": 40,
+      "approved": 39,
+      "needsReview": 1
+    },
+    "newMisconception": "draft",
+    "T03Guide": "draft",
+    "chapterRelease": "draft",
+    "newLearnerExposure": false
+  }
 }
