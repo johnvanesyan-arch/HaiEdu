@@ -1,5 +1,5 @@
 -- 15B.12B: prospective policy/session foundation. No policy or release is activated.
--- Existing sessions and the single lifetime baseline indexes are preserved.
+-- Existing sessions and the single lifetime baseline rule are preserved.
 create table public.assessment_policy_bindings (
   id uuid primary key default gen_random_uuid(),
   assessment_blueprint_id uuid not null unique references public.assessment_blueprints(id),
@@ -306,6 +306,55 @@ create index learning_sessions_governed_unit_idx on public.learning_sessions(gov
 create index learning_sessions_scoped_resume_idx on public.learning_sessions
   (student_id,institutional_class_enrollment_id,curriculum_release_id,unit_code,status,started_at);
 
+-- Keep the legacy constraint for legacy rows. Governed chapters use immutable
+-- programme/unit identities, so two subjects may reuse a display chapter code.
+-- Lifetime means across releases and years, not one new baseline per release.
+drop index public.learning_sessions_one_completed_diagnostic_idx;
+drop index public.learning_sessions_one_active_diagnostic_idx;
+create unique index learning_sessions_one_completed_diagnostic_idx
+  on public.learning_sessions(student_id,unit_code)
+  where mode='diagnostic' and status='completed' and assessment_policy_binding_id is null;
+create unique index learning_sessions_one_active_diagnostic_idx
+  on public.learning_sessions(student_id,unit_code)
+  where mode='diagnostic' and status='active' and assessment_policy_binding_id is null;
+create unique index learning_sessions_governed_completed_diagnostic_idx
+  on public.learning_sessions(student_id,subject_program_id,governed_unit_id)
+  where mode='diagnostic' and status='completed' and assessment_policy_binding_id is not null;
+create unique index learning_sessions_governed_active_diagnostic_idx
+  on public.learning_sessions(student_id,subject_program_id,governed_unit_id)
+  where mode='diagnostic' and status='active' and assessment_policy_binding_id is not null;
+
+create or replace function public.guard_initial_diagnostic()
+returns trigger language plpgsql security invoker set search_path='' as $$
+begin
+  if tg_op='UPDATE' and old.mode='diagnostic' then
+    if (new.student_id,new.unit_code,new.mode) is distinct from
+       (old.student_id,old.unit_code,old.mode) then raise exception 'diagnostic_identity_immutable'; end if;
+    if old.status='completed' and
+       (new.status,new.answered_count,new.correct_count,new.completed_at,new.metadata) is distinct from
+       (old.status,old.answered_count,old.correct_count,old.completed_at,old.metadata)
+    then raise exception 'diagnostic_baseline_immutable'; end if;
+  end if;
+  if new.mode='diagnostic' and new.status in ('active','completed') then
+    if new.assessment_policy_binding_id is null then
+      perform pg_advisory_xact_lock(hashtextextended('initial-diagnostic:'||new.student_id::text||':'||new.unit_code,0));
+      if exists (select 1 from public.learning_sessions s where s.student_id=new.student_id
+        and s.unit_code=new.unit_code and s.assessment_policy_binding_id is null
+        and s.mode='diagnostic' and s.status='completed' and s.id<>new.id)
+      then raise exception 'diagnostic_already_completed'; end if;
+    else
+      perform pg_advisory_xact_lock(hashtextextended('governed-diagnostic:'||new.student_id::text||':'||new.subject_program_id::text||':'||new.governed_unit_id::text,0));
+      if exists (select 1 from public.learning_sessions s where s.student_id=new.student_id
+        and s.subject_program_id=new.subject_program_id and s.governed_unit_id=new.governed_unit_id
+        and s.assessment_policy_binding_id is not null and s.mode='diagnostic'
+        and s.status='completed' and s.id<>new.id)
+      then raise exception 'diagnostic_already_completed'; end if;
+    end if;
+  end if;
+  return new;
+end;
+$$;
+
 create function private.guard_governed_learning_session()
 returns trigger language plpgsql set search_path='' as $$
 declare b public.assessment_policy_bindings%rowtype; e public.institutional_class_enrollments%rowtype;
@@ -364,13 +413,13 @@ $$;
 create trigger learning_sessions_00_governed_context before insert or update on public.learning_sessions
   for each row execute function private.guard_governed_learning_session();
 
--- Exact release/unit baseline identity; one completed lifetime chapter baseline is
--- still enforced by the existing unique indexes. No inferred cross-release carryover.
+-- Never derive governed history from a mutable blueprint catalogue row. Legacy
+-- history requires an explicit 12C compatibility mapping before new consumption.
 create function private.scoped_chapter_baseline(p_student uuid,p_release uuid,p_unit uuid)
 returns uuid language sql stable set search_path='' as $$
-  select s.id from public.learning_sessions s join public.assessment_blueprints b on b.id=s.assessment_blueprint_id
-  where s.student_id=p_student and s.curriculum_release_id=p_release and b.curriculum_release_id=p_release
-    and b.unit_id=p_unit and b.purpose='diagnostic' and s.mode='diagnostic' and s.status='completed'
+  select s.id from public.learning_sessions s
+  where s.student_id=p_student and s.curriculum_release_id=p_release and s.governed_unit_id=p_unit
+    and s.assessment_policy_binding_id is not null and s.mode='diagnostic' and s.status='completed'
   order by s.completed_at,s.id limit 1;
 $$;
 
@@ -386,15 +435,17 @@ begin
   -- Mastery/review attempt/cycle allocation is migrated with its consumers in 12C.
   if v_mode not in ('diagnostic','practice') then raise exception 'governed_mode_runtime_pending'; end if;
   select unit_code_snapshot into code from public.curriculum_release_units where curriculum_release_id=b.curriculum_release_id and unit_id=b.unit_id;
-  -- Share the existing lifetime baseline lock, then serialize exact-context starts.
+  -- Coordinate legacy starts during migration, then lock lifetime governed identity.
   perform pg_advisory_xact_lock(hashtextextended('initial-diagnostic:'||p_student_id::text||':'||code,0));
+  perform pg_advisory_xact_lock(hashtextextended('governed-diagnostic:'||p_student_id::text||':'||b.subject_program_id::text||':'||b.unit_id::text,0));
   perform pg_advisory_xact_lock(hashtextextended('governed-session:'||p_student_id::text||':'||p_enrollment_id::text||':'||b.curriculum_release_id::text||':'||b.unit_id::text,0));
   e:=private.lock_student_learning_context(p_student_id,p_auth_session_id,p_enrollment_id,b.curriculum_release_id,b.unit_id);
   -- Resume is not a policy rewrite: retain the original binding even if a new
   -- blueprint is now selected. Only current authorization is revalidated here.
   select * into s from public.learning_sessions where student_id=p_student_id
     and institutional_class_enrollment_id=p_enrollment_id and curriculum_release_id=b.curriculum_release_id
-    and unit_code=code and status='active'
+    and ((assessment_policy_binding_id is not null and governed_unit_id=b.unit_id)
+      or (assessment_policy_binding_id is null and unit_code=code)) and status='active'
     and (v_mode<>'diagnostic' or learning_sessions.mode not in ('practice','chapter_review'))
     order by started_at,id limit 1 for update;
   if found then return jsonb_build_object('session',to_jsonb(s),'resumed',true,'modeConflict',s.mode<>v_mode,
@@ -402,7 +453,12 @@ begin
   baseline:=private.scoped_chapter_baseline(p_student_id,b.curriculum_release_id,b.unit_id);
   if v_mode='diagnostic' then
     if baseline is not null then return jsonb_build_object('diagnosticCompleted',true,'baselineSessionId',baseline); end if;
-    if exists (select 1 from public.learning_sessions where student_id=p_student_id and unit_code=code and mode='diagnostic' and status='completed') then
+    if exists (select 1 from public.learning_sessions prior where prior.student_id=p_student_id
+      and prior.mode='diagnostic' and prior.status in ('active','completed')
+      and ((prior.assessment_policy_binding_id is not null and prior.subject_program_id=b.subject_program_id and prior.governed_unit_id=b.unit_id)
+        or (prior.assessment_policy_binding_id is null and prior.unit_code=code and (
+          prior.curriculum_release_id is null or exists (
+            select 1 from public.curriculum_releases r where r.id=prior.curriculum_release_id and r.subject_program_id=b.subject_program_id))))) then
       raise exception 'diagnostic_baseline_requires_governed_mapping'; end if;
   elsif baseline is null then raise exception 'chapter_diagnostic_required'; end if;
   policy:=private.validate_assessment_policy_v1(b.assessment_blueprint_id);

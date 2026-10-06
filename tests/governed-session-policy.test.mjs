@@ -145,7 +145,65 @@ test('15B.12B preserves legacy rows, lifetime baseline and stable legacy resumes
   const resume=await start(db,0,'practice');assert.equal(resume.resumed,true);assert.equal(resume.legacySession,true);assert.equal(resume.session.assessment_policy_binding_id,null);assert.equal(resume.session.metadata.historyMarker,'unfinished');
   assert.equal((await db.query('select private.scoped_chapter_baseline($1,$2,$3) id',[id(10),id(502),id(511)])).rows[0].id,null);
   const indexes=(await db.query("select indexdef from pg_indexes where indexname like 'learning_sessions_one_%diagnostic_idx' order by indexname")).rows;
-  assert.equal(indexes.length,2);assert.ok(indexes.every(x=>x.indexdef.includes('(student_id, unit_code)')));
+  assert.equal(indexes.length,2);assert.ok(indexes.every(x=>x.indexdef.includes('(student_id, unit_code)')&&x.indexdef.includes('assessment_policy_binding_id IS NULL')));
+  assert.equal((await db.query("select count(*)::int n from pg_indexes where indexname like 'learning_sessions_governed_%diagnostic_idx'")).rows[0].n,2);
+ }finally{await db.close();}
+});
+
+async function reuseChapterCode(db){
+ await db.query('update curriculum_release_units set unit_code_snapshot=$1 where unit_id=$2',[scopes[0].code,id(scopes[2].unit)]);
+ await db.query('update assessment_pools set unit_code=$1 where id in ($2,$3,$4,$5)',[scopes[0].code,...['diagnostic','practice','mastery_check','chapter_review'].map(m=>id(slot(2,m)))]);
+ await db.query('update learning_model_runtime_bindings set unit_code=$1 where curriculum_release_id=$2',[scopes[0].code,id(scopes[2].release)]);
+}
+
+test('two governed subjects may reuse a chapter code without sharing baselines',async()=>{
+ const db=await database();try{
+  await reuseChapterCode(db);
+  const a=await start(db,0);await db.query("update learning_sessions set status='completed',completed_at=now() where id=$1",[a.session.id]);
+  await assert.rejects(()=>start(db,2,'practice'),/chapter_diagnostic_required/);
+  const b=await start(db,2);assert.equal(b.session.unit_code,a.session.unit_code);assert.notEqual(b.session.governed_unit_id,a.session.governed_unit_id);
+  await db.query("update learning_sessions set status='completed',completed_at=now() where id=$1",[b.session.id]);
+  assert.equal((await start(db,0)).baselineSessionId,a.session.id);assert.equal((await start(db,2)).baselineSessionId,b.session.id);
+  assert.equal((await start(db,2,'practice')).session.subject_program_id,id(202));
+ }finally{await db.close();}
+});
+
+test('a legacy baseline blocks another attempt only in its programme',async()=>{
+ const db=await database({migrated:false});try{
+  await db.query("insert into learning_sessions(student_id,unit_code,mode,status,planned_item_count,completed_at,curriculum_release_id,assessment_blueprint_id) values($1,$2,'diagnostic','completed',3,now(),$3,$4)",[id(10),scopes[0].code,id(501),blueprintId(0)]);
+  await db.exec(readFileSync(migrationPath,'utf8'));await reuseChapterCode(db);
+  await assert.rejects(()=>start(db,0),/diagnostic_baseline_requires_governed_mapping/);
+  await assert.rejects(()=>start(db,0,'practice'),/chapter_diagnostic_required/);
+  const b=await start(db,2);assert.equal(b.session.subject_program_id,id(202));
+  assert.equal((await db.query('select private.scoped_chapter_baseline($1,$2,$3) id',[id(10),id(501),id(511)])).rows[0].id,null);
+ }finally{await db.close();}
+});
+
+test('catalogue reassignment cannot move a governed diagnostic prerequisite',async()=>{
+ const db=await database();try{
+  const a=await start(db,0);await db.query("update learning_sessions set status='completed',completed_at=now() where id=$1",[a.session.id]);
+  await db.query('update assessment_blueprints set unit_id=$1 where id=$2',[id(512),blueprintId(0)]);
+  assert.equal((await db.query('select private.scoped_chapter_baseline($1,$2,$3) id',[id(10),id(501),id(511)])).rows[0].id,a.session.id);
+  assert.equal((await db.query('select private.scoped_chapter_baseline($1,$2,$3) id',[id(10),id(501),id(512)])).rows[0].id,null);
+  await assert.rejects(()=>start(db,1,'practice'),/chapter_diagnostic_required/);
+  assert.equal((await start(db,0,'practice')).session.governed_unit_id,id(511));
+ }finally{await db.close();}
+});
+
+test('governed lifetime baseline identity spans releases without permitting a new attempt',async()=>{
+ const db=await database();try{
+  const a=await start(db,0);await db.query("update learning_sessions set status='completed',completed_at=now() where id=$1",[a.session.id]);
+  const p=policy(scopes[0]);p.curriculumReleaseId=id(503);p.learningModelConfigurationId=id(613);
+  await db.query("insert into curriculum_releases values($1,$2,'pilot','2020-01-01',null)",[id(503),id(201)]);
+  await db.query('insert into curriculum_release_units values($1,$2,$3)',[id(503),id(511),scopes[0].code]);
+  for(const skill of scopes[0].skills)await db.query('insert into curriculum_release_skills values($1,$2)',[id(503),id(skill)]);
+  await db.query("insert into learning_model_configurations values($1,'baseline',$2,$3)",[id(613),id(503),JSON.stringify({assessmentPolicyContracts:[p]})]);
+  await db.query("insert into learning_model_runtime_bindings values($1,$2,$3,$4,'active',$5)",[id(634),id(503),scopes[0].code,id(613),id(621)]);
+  await db.query("insert into assessment_blueprints values($1,$2,$3,$4,'diagnostic','pilot',$5)",[id(1040),id(503),id(511),id(slot(0,'diagnostic')),JSON.stringify({assessmentPolicy:p})]);
+  await db.query('insert into assessment_blueprint_items select $1,item_id,item_version_snapshot from assessment_blueprint_items where assessment_blueprint_id=$2',[id(1040),blueprintId(0)]);
+  const binding=(await db.query('select service_bind_assessment_policy($1) id',[id(1040)])).rows[0].id;
+  await assert.rejects(()=>start(db,0,'diagnostic',{binding}),/diagnostic_baseline_requires_governed_mapping/);
+  assert.equal((await db.query('select count(*)::int n from learning_sessions')).rows[0].n,1);
  }finally{await db.close();}
 });
 

@@ -105,4 +105,18 @@ with database_uri() as uri:
             a.commit();b.commit()
             assert first['session']['unit_code']!=second['session']['unit_code']
         print('PASS: independent chapters do not conflict or share session identity',flush=True)
-print('PASS: 15 independent-connection policy/session cases',flush=True)
+        reset()
+        c.execute("update curriculum_release_units set unit_code_snapshot='SYN-A-CH1' where unit_id=%s",[ident(513)])
+        c.execute("update assessment_pools set unit_code='SYN-A-CH1' where id in (%s,%s,%s,%s)",[ident(900),ident(910),ident(920),ident(930)])
+        c.execute("update learning_model_runtime_bindings set unit_code='SYN-A-CH1' where curriculum_release_id=%s",[ident(502)])
+        binding3=c.execute('select service_bind_assessment_policy(%s)',[ident(940)]).fetchone()[0]
+        def other_subject(conn):
+            return conn.execute(START,[ident(10),ident(401),ident(373),binding3,ident(960),None,[ident(901),ident(902),ident(903)]]).fetchone()[0]
+        first,second=race(uri,lambda a:begin(a,binding),other_subject)
+        assert first['session']['unit_code']==second['session']['unit_code']
+        assert first['session']['governed_unit_id']!=second['session']['governed_unit_id']
+        c.execute("update learning_sessions set status='completed',completed_at=now()")
+        assert begin(c,binding)['baselineSessionId']==first['session']['id']
+        assert other_subject(c)['baselineSessionId']==second['session']['id']
+        print('PASS: reused chapter codes across subjects preserve independent lifetime baselines',flush=True)
+print('PASS: 16 independent-connection policy/session cases',flush=True)
