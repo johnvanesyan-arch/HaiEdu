@@ -1,6 +1,7 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { clearContentDashboardCache, loadContentDashboard } from "./content-workspace.js";
+import { renderLearningStimulus } from "./learning-stimulus.mjs";
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -309,7 +310,7 @@ function learnerPreviewHtml(detail) {
     : item.type === "true_false"
       ? '<div class="learner-preview-option">Ճիշտ</div><div class="learner-preview-option">Սխալ</div>'
       : '<div class="learner-preview-option subtle">Սովորողը այստեղ մուտքագրում է իր պատասխանը։</div>';
-  return `<section class="detail-section learner-preview" data-item-tab="preview"><h3>Սովորողի տեսքը</h3><p class="learner-preview-prompt">${esc(item.promptHy || "Հարցի տեքստ չկա")}</p><div class="learner-preview-options">${options}</div></section>`;
+  return `<section class="detail-section learner-preview" data-item-tab="preview"><h3>Սովորողի տեսքը</h3><p class="learner-preview-prompt">${esc(item.promptHy || "Հարցի տեքստ չկա")}</p><div id="learnerPreviewStimulus"></div><div class="learner-preview-options">${options}</div></section>`;
 }
 
 function activateItemTab(tab) {
@@ -494,6 +495,15 @@ function renderDetail() {
       Վերջին տարբերակի գրառում՝ ${item.latestSnapshot ? `v${esc(item.latestSnapshot.versionNo)} · ${esc(item.latestSnapshot.changeSummary || "")}` : "—"}<br/>
       Վերջին ստուգում՝ ${item.latestReview ? `${esc(reviewDecisionLabel(item.latestReview.decision))} · ${esc(reviewTypeLabel(item.latestReview.type))}` : "—"}
     </section>`;
+
+  const stimulusRoot = $("learnerPreviewStimulus");
+  try {
+    renderLearningStimulus(stimulusRoot, detail.item.stimulus);
+  } catch (err) {
+    stimulusRoot.textContent = err.message;
+    stimulusRoot.classList.add("message", "bad");
+    stimulusRoot.setAttribute("role", "alert");
+  }
 
   $("runQaBtn")?.addEventListener("click", runQaCurrent);
   $("approveBtn")?.addEventListener("click", approveCurrent);
