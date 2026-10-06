@@ -1,7 +1,7 @@
 import { verifiedSessionClaim } from './governed-learning-runtime.mjs';
 import { resolveAuthorizedStudentLearningContext } from './student-learning-context.mjs';
 
-const uuid = x => typeof x === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(x);
+const uuid = x => typeof x === 'string' && /^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i.test(x);
 export async function routeStudentDashboard({ admin, studentId, token, request }) {
   let body;
   try { body = await request.clone().json(); } catch { return { status: 400, body: { error: 'invalid_dashboard_selection' } }; }

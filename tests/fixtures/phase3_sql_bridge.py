@@ -4,12 +4,15 @@ import re
 import sys
 from datetime import date, datetime
 from decimal import Decimal
+from uuid import UUID
 import psycopg
 from psycopg.rows import dict_row
 from phase3_postgres import database_uri
 
 
 def encode(value):
+    if isinstance(value, UUID):
+        return str(value)
     if isinstance(value, Decimal):
         return float(value)
     if isinstance(value, (date, datetime)):

@@ -61,19 +61,19 @@ create trigger exposure_events_bind_provenance before insert or update on studen
  `create trigger trg_remediation_event_exposure after insert on remediation_events for each row execute function private.sync_remediation_event_exposure();`+
  source('0081_global_mcq_option_presentation_integrity.sql').slice(0,source('0081_global_mcq_option_presentation_integrity.sql').indexOf('-- Learning-model'));
 }
-export async function seedRuntime(db){
+export async function seedRuntime(db,curriculumScopes=scopes){
  const model=JSON.parse(readFileSync('tests/fixtures/governed-runtime-model.json','utf8'));
  for(const m of [611,612])await db.query('update learning_model_configurations set configuration=configuration||$2 where id=$1',[id(m),JSON.stringify(model)]);
- for(const s of scopes){await db.query('update units set code=$2 where id=$1',[id(s.unit),s.code]);for(const k of s.skills)await db.query("update skills set code=$2,name_hy=$2,layer='core' where id=$1",[id(k),'SYN-'+k]);}
+ for(const s of curriculumScopes){await db.query('update units set code=$2 where id=$1',[id(s.unit),s.code]);for(const k of s.skills)await db.query("update skills set code=$2,name_hy=$2,layer='core' where id=$1",[id(k),'SYN-'+k]);}
  await db.exec("update curriculum_release_skills set sequence_order_snapshot=right(skill_id::text,3)::integer");
  await db.query("insert into item_families values($1,'SYN-F')",[id(901)]);await db.query("insert into item_templates values($1,'SYN-T',$2)",[id(902),id(901)]);
  await db.query("update items set code='SYN-'||id::text,item_template_id=$1,variant_key=id::text,prompt_hy='Synthetic selected response'",[id(902)]);
  await db.exec("insert into item_answer_keys(item_id,answer) select id,case when item_type='true_false' then '{\"value\":true}'::jsonb else '{\"value\":\"A\"}'::jsonb end from items;insert into item_options select id,'A','Correct',1 from items where item_type='single_choice';insert into item_options select id,'B','Wrong',2 from items where item_type='single_choice';");
  await db.exec("update private.assessment_presentation_configuration set enabled=true where config_key='mcq_option_order'");
 }
-export async function database(){const db=await foundationDatabase();try{
+export async function database(options={}){const db=await foundationDatabase(options);try{
  await db.exec(extensionSQL());
- await seedRuntime(db);
+ await seedRuntime(db,options.curriculumScopes);
  await db.exec(readFileSync(migrationPath,'utf8'));
  return db;
  }catch(e){await db.close();throw e;}}

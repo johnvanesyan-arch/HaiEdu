@@ -20,8 +20,8 @@ update classes set name='Դասարան '||id::text;
 update academic_years set label='2026–2027';
 update curriculum_release_skills rs set skill_code_snapshot=s.code,name_hy_snapshot=s.name_hy,layer_snapshot=s.layer from skills s where s.id=rs.skill_id;
 `;
-export async function database() {
-  const db = await runtimeDatabase();
+export async function database(options={}) {
+  const db = await runtimeDatabase(options);
   try { await db.exec(dashboardFixtureSQL); await db.exec(readFileSync(dashboardMigration,'utf8')); return db; }
   catch(error) { await db.close(); throw error; }
 }
