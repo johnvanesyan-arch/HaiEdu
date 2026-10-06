@@ -111,6 +111,8 @@ The live release-gate evidence still contains historical draft counts from earli
 
 ### Content review and expansion
 
+**Current follow-up — 2026-10-06:** [Chapter II assessment decision packet](chapter-ii-assessment-decision-packet.md) refreshes the inventory and records the deployed v1 scoring/readiness compatibility boundary after 15B.12E isolated acceptance. All 43 misconception definitions are now active and the eight template guides remain published. Counts, scoring/readiness and the expansion budget still await explicit approval. The earlier audit inventory below remains a historical checkpoint.
+
 The product owner/SME resolves the assessment decisions and misconception packet. Then author the approved expansion in reviewable, outcome-specific batches, starting with new practice evidence for S02 and protecting diagnostic/mastery content from reuse. Every new family passes current-version QA, human review, mapping checks, guide applicability checks and the prospective evidence-purpose contract. Broader guide scope must be revalidated when families are added; published guides do not automatically cover arbitrary new content.
 
 Finally create governed pools/forms/blueprints, reconcile outcomes and gate evidence, obtain the required SME/content/pilot/release dispositions, and perform authorized live multi-context acceptance. Sprint 14's remaining live-switching gate and the separate Grade 7 four-subject MVP gate stay open.
