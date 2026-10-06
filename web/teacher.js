@@ -42,7 +42,7 @@ function navigationSelection() {
       : (TEACHER_VIEWS.has(requested) ? requested : "home"),
     source: params.get("source") === "archive" ? "archive" : "classes",
     classId,
-    selection: params.get("source") !== "archive" && assignmentId && curriculumReleaseId && unitId
+    selection: assignmentId && curriculumReleaseId && unitId
       ? { assignmentId, curriculumReleaseId, unitId }
       : null,
   };
@@ -85,7 +85,7 @@ function syncNavigation(klass, push = false) {
   url.searchParams.set("class", klass.id);
   url.searchParams.set("source", klass.isActive ? "classes" : "archive");
   url.hash = "";
-  if (dashboard?.institutionalTeacher && klass.isActive && klass.selectedUnit) {
+  if (dashboard?.institutionalTeacher && klass.selectedUnit) {
     url.searchParams.set("assignment", klass.assignmentId);
     url.searchParams.set("release", klass.selectedUnit.curriculumReleaseId);
     url.searchParams.set("unit", klass.selectedUnit.unitId);
@@ -1315,4 +1315,3 @@ supabase.auth.onAuthStateChange((event, session) => {
 
 const { data: sessionData } = await supabase.auth.getSession();
 if (sessionData.session) await bootstrapTeacherDashboard(sessionData.session);
-

@@ -1,13 +1,13 @@
 import test,{before,after} from 'node:test';
 
-async function teacherFixture(t) {
+async function teacherFixture(t,{history=false}={}) {
  const context=await browser.newContext();t.after(()=>context.close());
  const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  const html=(await readFile(new URL('../../web/teacher.html',import.meta.url),'utf8')).replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</head>','<style>.hidden{display:none!important}</style></head>').replace('</body>','<script type="module" src="./teacher.js"></script></body>');
- await page.addInitScript(()=>{
+ await page.addInitScript(({history})=>{
   window.__teacherPending=[];window.__teacherListeners=[];
   const units=[1,2].map(n=>({assignmentId:'assignment-a',curriculumReleaseId:'release-a',unitId:'unit-'+n,unitSequence:n,unitTitleHy:'Գլուխ '+n,releaseNumber:1}));
-  const dashboard=()=>({teacher:{id:'teacher-a',displayName:'Fixture teacher'},institutionalTeacher:true,institutionalOptions:[],totals:{classes:2,students:0,studentsNeedingSupport:0},classes:['a','b'].map(key=>({id:'class-'+key,name:'Դասարան '+key,isActive:true,schoolId:'school-a',assignmentId:'assignment-'+key,academicYear:'2026',gradeNumber:8,schoolName:'Դպրոց',subjectName:'Առարկա',studentCount:0,students:[],skills:[],unitOptions:units,selectedUnit:units[0],analyticsAvailable:true}))});
+  const dashboard=()=>({teacher:{id:'teacher-a',displayName:'Fixture teacher'},institutionalTeacher:true,institutionalOptions:[],totals:{classes:2,students:0,studentsNeedingSupport:0},classes:['a','b'].map(key=>({id:'class-'+key,name:'Դասարան '+key,isActive:!history,schoolId:'school-a',assignmentId:'assignment-'+key,academicYear:'2026',gradeNumber:8,schoolName:'Դպրոց',subjectName:'Առարկա',studentCount:0,students:[],skills:[],unitOptions:units,selectedUnit:units[0],analyticsAvailable:true}))});
   window.__client={auth:{getSession:async()=>({data:{session:{user:{id:'teacher-a'}}}}),onAuthStateChange:fn=>window.__teacherListeners.push(fn)},from:()=>({select:()=>({eq:()=>({maybeSingle:async()=>({data:{role:'teacher',account_status:'active'}})})})}),functions:{invoke:async(name,{body})=>{
    if(name==='get-teacher-dashboard'){
     if(body.selection?.unitId==='unit-2')return await new Promise(resolve=>window.__teacherPending.push(()=>{const d=dashboard();d.classes[0].selectedUnit=d.classes[0].unitOptions[1];resolve({data:d});}));
@@ -16,7 +16,7 @@ async function teacherFixture(t) {
    if(name==='manage-student-invitation')return {data:{invitations:[],joinCodes:[]}};
    throw Error(name);
   }}};
- });
+ },{history});
  await page.route('**/*',async route=>{
   const url=new URL(route.request().url());
   if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
@@ -50,6 +50,18 @@ test('teacher sign-out invalidates a pending chapter response and clears the evi
  assert.equal(await page.locator('#dashboardPanel').isVisible(),false);
  assert.equal(await page.locator('#studentDrawer').isVisible(),false);
  assert.equal(await page.locator('#studentDrawerContent').textContent(),'');
+ assert.deepEqual(errors,[]);
+});
+test('historical classroom navigation retains the exact release and chapter selection',async t=>{
+ const {page,errors}=await teacherFixture(t,{history:true});
+ await page.locator('#teacherUnitFilter').selectOption('release-a:unit-2');
+ await page.waitForFunction(()=>window.__teacherPending.length===1);
+ await page.evaluate(()=>window.__teacherPending.shift()());
+ await page.waitForFunction(()=>new URL(location.href).searchParams.get('unit')==='unit-2');
+ const selection=new URL(page.url()).searchParams;
+ assert.equal(selection.get('source'),'archive');
+ assert.equal(selection.get('assignment'),'assignment-a');
+ assert.equal(selection.get('release'),'release-a');
  assert.deepEqual(errors,[]);
 });
 
