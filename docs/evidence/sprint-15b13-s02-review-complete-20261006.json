@@ -1,0 +1,284 @@
+{
+  "checkpoint": "15B.13C human review complete",
+  "observedAt": "2026-10-06T18:21:23.554733+00:00",
+  "repositoryBase": "7e41a6d1ea08e440cda84116bf49c0b9205bfe3a",
+  "humanApproval": {
+    "item": {
+      "code": "PHY7-U02-S02-I10",
+      "status": "published",
+      "version": 4,
+      "latestQa": {
+        "errors": [],
+        "passed": true,
+        "version": 4,
+        "warnings": [],
+        "createdAt": "2026-10-06T18:00:44.283566+00:00",
+        "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|2|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:4:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:2:core_understanding"
+      },
+      "reviewStatus": "approved",
+      "lastReviewedAt": "2026-10-06T18:00:51.820758+00:00",
+      "currentApproval": {
+        "version": 4,
+        "decision": "approved",
+        "createdAt": "2026-10-06T18:00:51.820758+00:00",
+        "reviewType": "content"
+      }
+    },
+    "misconception": {
+      "code": "qualitative_model_implies_exact_volume",
+      "status": "active",
+      "titleHy": "Որակական բացատրությունից ճշգրիտ ծավալ որոշելը",
+      "events": [
+        {
+          "revision": 1,
+          "createdAt": "2026-10-06T18:20:11.701522+00:00",
+          "afterStatus": "active",
+          "beforeStatus": "draft"
+        }
+      ]
+    },
+    "guide": {
+      "id": "3e34388a-f088-4ac9-bdb2-20a2de495d4b",
+      "status": "published",
+      "runtimeVersion": 2,
+      "updatedAt": "2026-10-06T18:19:32.98762+00:00",
+      "authoringHistory": [
+        {
+          "status": "draft",
+          "version": 1,
+          "createdAt": "2026-10-06T15:59:42.550267+00:00",
+          "publishedRuntimeVersion": null
+        },
+        {
+          "status": "draft",
+          "version": 2,
+          "createdAt": "2026-10-06T18:19:23.323925+00:00",
+          "publishedRuntimeVersion": null
+        },
+        {
+          "status": "review",
+          "version": 3,
+          "createdAt": "2026-10-06T18:19:28.734298+00:00",
+          "publishedRuntimeVersion": null
+        },
+        {
+          "status": "published",
+          "version": 4,
+          "createdAt": "2026-10-06T18:19:32.98762+00:00",
+          "publishedRuntimeVersion": 2
+        }
+      ],
+      "runtimeSnapshotMatchesCurrent": true,
+      "runtimeFingerprint": "527b118e647ca688b705568cc267817b"
+    }
+  },
+  "skillInventory": [
+    {
+      "code": "PHY7-U02-S02-I01",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I02",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I03",
+      "version": 4,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I04",
+      "version": 3,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I05",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I06",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I07",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I08",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I09",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I10",
+      "version": 4,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I11",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    },
+    {
+      "code": "PHY7-U02-S02-I12",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "currentVersionQaPass": true,
+      "currentVersionApproval": true
+    }
+  ],
+  "chapterInventory": [
+    {
+      "code": "PHY7-U02-S02",
+      "approved": 12,
+      "authored": 12
+    },
+    {
+      "code": "PHY7-U02-S03",
+      "approved": 4,
+      "authored": 4
+    },
+    {
+      "code": "PHY7-U02-S04",
+      "approved": 4,
+      "authored": 4
+    },
+    {
+      "code": "PHY7-U02-S05",
+      "approved": 4,
+      "authored": 4
+    },
+    {
+      "code": "PHY7-U02-S06",
+      "approved": 4,
+      "authored": 4
+    },
+    {
+      "code": "PHY7-U02-S07",
+      "approved": 4,
+      "authored": 4
+    },
+    {
+      "code": "PHY7-U02-S08",
+      "approved": 4,
+      "authored": 4
+    },
+    {
+      "code": "PHY7-U02-S09",
+      "approved": 4,
+      "authored": 4
+    }
+  ],
+  "contentReassessment": {
+    "comparedWith": "docs/chapter-ii-s02-whole-bank-review.md",
+    "onlyChangedItem": "PHY7-U02-S02-I10",
+    "priorVersion": 2,
+    "currentVersion": 4,
+    "change": "Final prompt wording changed from գնահատականն to պնդումն; options, answer, stimulus and solution demand unchanged. Other eleven S02 item content projections match the previous whole-bank corpus.",
+    "disposition": "Existing whole-bank/source reasoning remains valid; no padding or new scenario added."
+  },
+  "qaRefresh": {
+    "runKey": "15b13c-owner-review-complete-20261006",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "deployedVersion": 11,
+    "sourceMatchesRepository": true,
+    "records": 4,
+    "runBy": null,
+    "results": [
+      {
+        "code": "PHY7-U02-S02-I09",
+        "version": 2,
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|2|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:4:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:2:core_understanding"
+      },
+      {
+        "code": "PHY7-U02-S02-I10",
+        "version": 4,
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|2|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:4:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:2:core_understanding"
+      },
+      {
+        "code": "PHY7-U02-S02-I11",
+        "version": 1,
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|2|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:4:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:2:core_understanding"
+      },
+      {
+        "code": "PHY7-U02-S02-I12",
+        "version": 1,
+        "passed": true,
+        "errors": [],
+        "warnings": [],
+        "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|2|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:4:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:2:core_understanding"
+      }
+    ],
+    "guideValidation": {
+      "checkedVariants": 4,
+      "errors": [],
+      "warnings": []
+    },
+    "contentHashBefore": "05278d94aead04a07284cd8ae1bf0cef",
+    "contentHashAfter": "05278d94aead04a07284cd8ae1bf0cef",
+    "guideHashBefore": "35151350ed25335f55aaac28a9150230",
+    "guideHashAfter": "35151350ed25335f55aaac28a9150230",
+    "onlyWrites": "Four append-only technical-QA records; no content, guide, approval, model, pool or release changes."
+  },
+  "release": {
+    "key": "physics7_u01_u02_2026_08_14_candidate_r2",
+    "status": "draft",
+    "activatedAt": null
+  },
+  "poolAssignments": 0,
+  "learnerExposureEvents": 0,
+  "next": "S03 practice/review expansion: source/whole-bank coverage planning before any batch authoring. Chapter II release gates remain open."
+}
