@@ -214,6 +214,44 @@ body.amp-student-shell-active .amp-side-nav {
   font-size: 0.95rem;
 }
 
+/* Enrollment navigation is shared by every student route. */
+.amp-nav-section-label {
+  margin: .7rem .75rem .15rem;
+  color: #8fa4bd;
+  font-size: .68rem;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+}
+
+.amp-course-sublinks {
+  display: grid;
+  gap: .2rem;
+  margin: -.15rem 0 .25rem 1rem;
+}
+
+.amp-course-sublink {
+  display: block;
+  min-width: 0;
+  max-width: 100%;
+  padding: .4rem .6rem;
+  border-radius: .45rem;
+  color: #b8c6d8;
+  font-size: var(--amp-font-size-xs);
+  line-height: 1.3;
+  text-decoration: none;
+  white-space: normal;
+  overflow-wrap: anywhere;
+}
+
+.amp-course-sublink:hover,
+.amp-course-sublink[aria-current="page"] {
+  color: #fff;
+  background: rgba(255,255,255,.08);
+}
+
+.amp-course-link small { display: block; font-size: .7rem; opacity: .8; }
+
 .amp-nav-utility {
   margin-top: auto;
   padding-top: var(--amp-space-3);
