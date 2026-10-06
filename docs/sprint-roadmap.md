@@ -1,6 +1,6 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 3.02
+**Roadmap version:** 3.03
 **Updated:** 2026-10-06
 **Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls, the authenticated school-admin operational overview and the teacher workspace operations are deployed; and the 14C school-scoped learner onboarding, exact-context stamping, assigned-class teacher roster and teacher evidence views are deployed. Institutional teachers can create assigned classrooms, send bounded bulk email invitations, issue optional one-use join codes, separate active and archived classrooms, and rename authorized classrooms without changing their identity or evidence. Role-scoped privacy inventories and Armenian-safe responsive layouts are deployed across role dashboards. Teacher offboarding and database-enforced final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 live checks on 2026-09-28. Authenticated action acceptance also passed 141/141 checks across both schools, with 54/54 read-isolation checks before and after. Teacher navigation/rename/archive, reciprocal class/staff mutation denials and temporary-membership offboarding UI acceptance are complete for these fixtures. Sprint 14D school-wide analytics is ✅ complete: the protected aggregate-only endpoint and School Admin board are deployed, and production run 36757995069 passed 10/10 two-school tenant, privacy and authenticated-browser checks. Live multi-unit/multi-context switching remains blocked until a second authorized release exists and is the remaining Sprint 14 gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English. Sprint 15A is ✅ complete: the protected Armenian authoring workspace passed authenticated Content Reviewer and Platform Admin browser acceptance, AAL1/AAL2 lifecycle checks, draft/review runtime isolation, publish/archive/fallback/history probes, wrong-role and revoked-session denial, full CI and final advisor review. Sprint 15B.1 deployed the review-only Chapter II foundation. Sprint 15B.2 reviewed the skill map, archived one duplicate candidate in favour of the existing cross-unit prerequisite, approved eight Chapter II skills for draft authoring, and added one learner-inactive family with four versioned draft items and one draft remediation guide. Sprint 15B.3 is ✅ complete: all four current question versions have passing QA and approval, the guide is published, all three explicitly approved misconception definitions are active, and the 4-item/12-mapping matrix is intact. Sprint 15B.4 and 15B.5 added the second and third learner-inactive four-item families, and the product owner approved their questions. The answer-position integrity checkpoint is ✅ complete: all seven re-keyed current versions passed technical QA and human approval, each of the three families now uses `A/B/C/D` once, and the shared server-side shuffle remains active for all 131 published single-choice items and all current assessment modes. The second and third families’ remediation guides are published at version 3 at the 15B.11 checkpoint; their misconception definitions remain draft. Sprint 15B.6 question QA is ✅ complete: its four S05 items are approved with passing current-version QA; the remediation guide is published at version 3 at the 15B.11 checkpoint, while misconception definitions remain draft. Sprint 15B.7 question QA is ✅ complete: its four S06 diffusion items are approved with passing current-version QA; its guide is now published at version 3 and misconception definitions still draft; no pool, blueprint, pilot or learner release was created. Sprint 15B.8 question QA is ✅ complete: all four S07 current versions passed technical QA and human approval on 2026-10-05; its guide is now published at version 2 and six misconception definitions remain draft. Sprint 15B.9 question QA is ✅ complete: all four S08 version-1 questions passed current-version technical QA and human approval on 2026-10-05, bringing Chapter II to 28 approved learner-inactive questions. The family uses the prospective evidence-blueprint profile with twelve distractor mappings; its guide is now published at version 2 and eight misconception definitions remain draft. Sprint 15B.10 question QA is ✅ complete: all four S09 version-1 questions passed current-version QA and human approval on 2026-10-05. The eight initial Chapter II families now have 32 approved learner-inactive questions. The 15B.11 read-only audit confirms all eight guides are now published (S02–S06 version 3; S07–S09 version 2), and production readback now confirms all 43 Chapter II misconception definitions are active, with zero drafts. Chapter-wide outcome/assessment coverage and the misconception review packet are documented. John selected Option B on 2026-10-06: Chapter II uses 16-question assessments with two questions per all eight skills; mastery requires 13/16 and at least one correct per skill; all eight skills participate in readiness. The approved 192-question plan has 96 practice/review, 32 diagnostic and 64 protected mastery items. Sprint 15B.13 prepares the first four new S02 practice drafts with textbook figures; human approval and release/model binding remain separate. The audit confirms deployed Chapter I runtime coupling; 15B.12 authorized learning context and assessment policy is in progress: 15B.12A/B foundations and 15B.12C/D learning API, navigation/dashboard/analytics consumers are complete, deployed and verified; 15B.12E isolated connected acceptance and deployed parity are complete; authenticated governed switching remains gated on a second authorized release. Publication remains blocked by outcome/SME, assessment, content-QA, pilot and release gates. The Content Reviewer workspace has also been restructured into dedicated task pages (home, review queue, question bank, item workspace, curriculum coverage, pilot evidence and remediation guides) without changing the protected content-governance APIs or release gates.
 
@@ -134,6 +134,7 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 16.2 | Hybrid | Armenian-language curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
 | 16.3 | Hybrid | English curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
 | 16.4 | Work | Four-subject Grade 7 integration, regression and MVP-readiness verification. |
+| 16.5 | Hybrid | Student dashboard audit and mockup review in chat; reviewed design implementation and browser/release acceptance in Work. |
 | 17 | Hybrid | Four-subject pilot design and interpretation in chat; operational setup/QA/evidence handling in Work. |
 | 18 | Work | Performance, observability, backups, CI/CD, security, data-integrity and curriculum-change operations. |
 | 18.5 | Hybrid | Academic-year lifecycle/rollover rules in chat; lifecycle, handover and rollover implementation in Work. |
@@ -191,7 +192,8 @@ For the current Sprint 11 state:
 | 16.2 | Armenian Language 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Armenian Language 7 unit through the complete learner, teacher, governance and QA pipeline. |
 | 16.3 | English 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived English 7 unit through the complete learner, teacher, governance and QA pipeline. |
 | 16.4 | Grade 7 Four-Subject MVP Integration | ⏳ | Integrate Physics, Mathematics, Armenian Language and English; verify subject isolation, shared workflows, analytics, assignments, tenant controls and release provenance. |
-| 17 | Grade 7 Four-Subject School MVP Pilot | ⏳ | Run the formal school-level MVP pilot only after all four subject gates pass; technical QA may continue earlier. |
+| 16.5 | Student Dashboard Design & Usability Pass | ⏳ | Audit and redesign the shared student home, course/assessment entry points and progress views; review desktop/mobile Armenian mockups before implementation and pass browser/release acceptance before the school pilot. |
+| 17 | Grade 7 Four-Subject School MVP Pilot | ⏳ | Run the formal school-level MVP pilot only after Sprint 16.4 four-subject integration and Sprint 16.5 design/usability acceptance pass; technical QA may continue earlier. |
 | 18 | Production Hardening & Curriculum-Change Operations | ⏳ | Address scale, performance, security, observability, incident response, backup/restore, data-integrity checks, controlled rollout, safe curriculum-version migration/rollback and centralized Armenian localization architecture. |
 | 18.5 | Academic-Year Lifecycle, Rollover & Continuity | ⏳ | Implement school-admin-controlled, validated bulk rollover with persistent teacher/student accounts, new-year assignments and placements, historical preservation, recovery continuity and role-specific Armenian interfaces. |
 | 19 | Public / Institutional Beta | ⏳ | Controlled external beta with repeatable school onboarding, support/escalation, tenant-isolated administration, controlled enrollment and explicit curriculum-release identity. |
@@ -1086,6 +1088,8 @@ For each of the four subjects, the minimum MVP scope is one **production-ready v
 - desktop/mobile, accessibility, localization and end-to-end regression evidence;
 - an explicit content/SME release disposition.
 
+Sprint 16.5 design/usability acceptance is an additional prerequisite for formal school pilot entry.
+
 This is the minimum gate for testing a multi-subject institutional MVP. A subject may have additional released units when the gate is evaluated, but additional coverage does not give that subject reference, default or privileged status and does not reduce the production requirements for any other subject.
 
 ## Sprint 16.1 — Mathematics 7 MVP Vertical Slice
@@ -1114,9 +1118,32 @@ Verify the four subjects as one institutional product:
 - authenticated desktop and mobile browser QA;
 - production deployment and rollback readiness.
 
+## Sprint 16.5 — Student Dashboard Design & Usability Pass
+
+**Status:** ⏳ Planned. Complete after Sprint 16.4 and before the formal Sprint 17 school pilot. This is a new design pass; the completed Sprint 10.5 remains closed.
+
+Improve the shared student experience across authorized subjects, grades and learning contexts, using the existing subject-neutral core and governed learning policies.
+
+### Scope
+
+- Audit the current student home, subject/course overview, assessment entry points and progress views; record observed layout and usability problems before choosing the redesign.
+- Clarify the relationship between home, courses, assessments and progress. Give the authorized next learning action a clear primary position, including diagnostic-required and other blocked states.
+- Standardize visual hierarchy, typography, spacing, card density, colors, button alignment and navigation. Use natural Armenian labels, accommodate long Armenian text and retain the requested assessments-before-course ordering where applicable.
+- Make the selected learning context, progress and mastery states understandable without implying unsupported precision or completion. Year/grade displays and previous-year history must follow the Sprint 18.5 contract when its data is available.
+- Cover desktop and mobile layouts, loading/error/empty states, students without enrollments, multiple subjects, different progress states and unavailable learning actions.
+- Apply shared shell/style changes consistently to every affected consumer while preserving tenant, role, release and evidence boundaries. Keep scoring, diagnostic prerequisites, hint penalties and content/SME gates under their existing governed policies.
+
+### Delivery and acceptance
+
+1. **16.5A — Audit and mockups:** produce an annotated issue list and desktop/mobile mockups with realistic Armenian content and representative states. Obtain product-owner review of the concrete mockups before implementation.
+2. **16.5B — Implementation:** implement the reviewed design across the in-scope student surfaces; use shared design tokens and reusable components rather than subject-specific layout assumptions.
+3. **16.5C — Browser and release acceptance:** verify enrollment/context selection, required diagnostic, next learning action, assessment entry and progress journeys using authorized fixtures across all four MVP subjects. Check 360 px, 768 px and 1280 px layouts, 200% zoom, Armenian wrapping, keyboard/focus behavior and accessible status meaning; require no unintended horizontal overflow or clipped controls. Record before/after screenshots and unresolved issues, pass the required CI/browser/aggregate release checks, and verify the deployed implementation through the established production gate.
+
+Sprint 17 formal pilot entry requires both Sprint 16.4 integration acceptance and Sprint 16.5C design/usability acceptance. Planning or mockup approval alone does not close this sprint. Sprint 18.5 lifecycle work retains its separate implementation gate.
+
 ## Sprint 17 — Grade 7 Four-Subject School MVP Pilot
 
-Run the formal Grade 7 MVP under controlled school conditions only after the Sprint 16.4 gate passes:
+Run the formal Grade 7 MVP under controlled school conditions only after the Sprint 16.4 integration gate and Sprint 16.5C design/usability gate pass:
 
 - all four MVP subjects represented;
 - several classes;
@@ -1522,9 +1549,10 @@ Physics 7, Mathematics 7, Armenian Language 7 and English 7 each meet the same m
 
 ### Milestone G — Four-subject school validation and institutional readiness
 
-**Sprints 17–19, including Sprint 18.5**
+**Sprints 16.5–19, including Sprint 18.5**
 
-Four-subject Grade 7 school testing  
+Reviewed and implemented student dashboard design with browser/release acceptance  
+→ four-subject Grade 7 school testing  
 → production/curriculum-change hardening  
 → academic-year lifecycle/rollover continuity  
 → controlled external adoption.
