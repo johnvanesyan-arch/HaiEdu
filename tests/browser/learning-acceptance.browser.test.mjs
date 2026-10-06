@@ -11,7 +11,9 @@ after(async()=>{await browser?.close();});
 
 async function fixture(t) {
  const f=await acceptanceFixture();t.after(()=>f.close());
- const html=(await readFile('web/course.html','utf8')).replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</body>','<script type="module" src="./course-page.js"></script></body>');
+ // This component harness omits the global shell/UX controller. Disable its
+ // cross-document transition opt-in as well; application errors stay asserted.
+ const html=(await readFile('web/course.html','utf8')).replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</head>','<style>@view-transition { navigation: none; }</style></head>').replace('</body>','<script type="module" src="./course-page.js"></script></body>');
  const server=createServer(async(req,res)=>{
   try{
    const url=new URL(req.url,'http://isolated.invalid');
@@ -48,7 +50,7 @@ test('native course, actual Edge handlers and real SQL complete independent base
   assert.equal(await cards.nth(1).locator('a').count(),0);
   await cards.nth(0).locator('a').click();
   for(let n=0;n<(idx===3?5:3);n++){
-   await page.waitForSelector('#learningPlayer form');
+   await page.waitForFunction(position=>document.querySelector('#learningPlayer h2')?.textContent.startsWith('Հարց '+position+'/'),n+1);
    await page.locator('#learningPlayer input[name=answer]').first().check();
    await page.locator('#learningPlayer button[type=submit]').click();
    await page.locator('#learningPlayer button').filter({hasText:'Հաջորդը'}).click();
