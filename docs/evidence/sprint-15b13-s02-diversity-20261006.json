@@ -1,0 +1,330 @@
+{
+  "sprint": "15B.13C",
+  "date": "2026-10-06",
+  "status": "prepared_not_deployed",
+  "author": "Codex automated author at product-owner direction; no human/SME approval created",
+  "policy": "haiedu-whole-skill-review-v1",
+  "repositoryBase": "3c29bdb14630d8bd63f7d4721eb7252f1acfb11a",
+  "corpus": {
+    "skill": "PHY7-U02-S02",
+    "items": [
+      {
+        "code": "PHY7-U02-S02-I01",
+        "version": 2,
+        "variantFingerprint": "480f6d216baffb0ee2831be7fa0ac216"
+      },
+      {
+        "code": "PHY7-U02-S02-I02",
+        "version": 2,
+        "variantFingerprint": "aa0eeaa73d8739cd9c0343d5a65defd6"
+      },
+      {
+        "code": "PHY7-U02-S02-I03",
+        "version": 4,
+        "variantFingerprint": "07a0af373a06bf15d8ade8dd903d8e8c"
+      },
+      {
+        "code": "PHY7-U02-S02-I04",
+        "version": 3,
+        "variantFingerprint": "7735705e7b68aa9fbcffba37ad0c7a69"
+      },
+      {
+        "code": "PHY7-U02-S02-I05",
+        "version": 1,
+        "variantFingerprint": "f018a00e6640499639082fc531c8065f"
+      },
+      {
+        "code": "PHY7-U02-S02-I06",
+        "version": 1,
+        "variantFingerprint": "c600d557cf848416d9ec77c7ec05ec93"
+      },
+      {
+        "code": "PHY7-U02-S02-I07",
+        "version": 1,
+        "variantFingerprint": "156283ba397a71061e2ad01d16312baa"
+      },
+      {
+        "code": "PHY7-U02-S02-I08",
+        "version": 1,
+        "variantFingerprint": "75ab2c1c8a5c4d82d26d996285484f7e"
+      },
+      {
+        "code": "PHY7-U02-S02-I09",
+        "version": 2,
+        "variantFingerprint": "bd5e0f41344939c51c6e1e0e294dbb49"
+      },
+      {
+        "code": "PHY7-U02-S02-I10",
+        "version": 1,
+        "variantFingerprint": "79c0826688eaeb4bcb2fd4dca293e51c"
+      },
+      {
+        "code": "PHY7-U02-S02-I11",
+        "version": 1,
+        "variantFingerprint": "4452806af4106cd8da5b1101c66c21c0"
+      },
+      {
+        "code": "PHY7-U02-S02-I12",
+        "version": 1,
+        "variantFingerprint": "ae91bdad49287b6cf5b9a6ee591e04b4"
+      }
+    ],
+    "savedVersions": 20,
+    "retiredItems": 0,
+    "poolAssignments": 0,
+    "exposureEvents": 0,
+    "relatedOutcomeSkills": [
+      "PHY7-U02-S02",
+      "PHY7-U02-S03"
+    ],
+    "relatedItemVersionInventory": [
+      {
+        "code": "PHY7-U01-S05-I01",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-I02",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-I06",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P01",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P07",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P08",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P02",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P06",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P03",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P05",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-P04",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-T-HYPOTHESIS-TEST-PARALLEL-V-E2AEC5A82D",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-T-HYPOTHESIS-TEST-PARALLEL-V-5ED306A15B",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-I04",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-I03",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M03",
+        "version": 2
+      },
+      {
+        "code": "PHY7-U01-S05-11D-D01",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-D03",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-D04",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M01",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M06",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M04",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-D02",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M02",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-11D-M05",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S05-I05",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-I03",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-I02",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-I01",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-I04",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P07",
+        "version": 2
+      },
+      {
+        "code": "PHY7-U01-S06-I06",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-I05",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P08",
+        "version": 2
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P01",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P04",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P05",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P06",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P02",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-P03",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M06",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M05",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-D04",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-D01",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-D02",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M02",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M03",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M01",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-D03",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U01-S06-11D-M04",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U02-S09-I02",
+        "version": 1
+      },
+      {
+        "code": "PHY7-U02-S09-I03",
+        "version": 1
+      }
+    ],
+    "protectedWordingOmitted": true
+  },
+  "source": {
+    "edition": "Physics 7 (2023)",
+    "sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "locator": "§7 printed pp24–26; replacement I10 pp25–26 mixing experiment"
+  },
+  "revision": {
+    "itemCode": "PHY7-U02-S02-I10",
+    "fromVersion": 1,
+    "toVersion": 2,
+    "newMisconception": "qualitative_model_implies_exact_volume",
+    "newMisconceptionStatus": "draft",
+    "templateFromVersion": 1,
+    "templateToVersion": 2,
+    "noImageRationale": "Verbal evaluation of a quantitative inference; the former heated-wire image is irrelevant"
+  },
+  "validation": {
+    "isolatedMigrationTests": 2,
+    "method": "Actual SQL and content-QA handler in PGlite with auth/query doubles; not authenticated live browser acceptance",
+    "productionRollback": {
+      "tables": 100,
+      "changed": [],
+      "observedAt": "2026-10-06T17:02:03.217Z"
+    },
+    "deployedQaSourceVersion": 11,
+    "deployedQaSourceMatchesRepository": true,
+    "browserQaTriggerCheck": "passed: 55 actions / 31 analytics dependency paths; main-only production guards retained"
+  },
+  "deployment": null,
+  "openGates": [
+    "Human approval of revised I10 v2",
+    "Human approval of new draft misconception",
+    "Existing T03 guide review/publication",
+    "External SME",
+    "Chapter-wide illustration/content review",
+    "Approved readiness/model configuration",
+    "Protected-bank and pilot/release gates"
+  ],
+  "noRuntimeChanges": true
+}
