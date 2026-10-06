@@ -1,0 +1,1485 @@
+{
+  "sprint": "15B.13",
+  "date": "2026-10-06",
+  "status": "option_b_selected_first_s02_expansion_deployed_awaiting_human_review",
+  "decision": {
+    "productOwnerStatement": "I think option B is better",
+    "scope": "Physics 7 Chapter II; subject-aware, not a platform default",
+    "diagnosticQuestions": 16,
+    "masteryQuestions": 16,
+    "questionsPerSkill": 2,
+    "consequentialSkills": 8,
+    "masteryMinimumTotalCorrect": 13,
+    "masteryMinimumCorrectPerSkill": 1,
+    "bank": {
+      "practiceReview": 96,
+      "diagnostic": 32,
+      "protectedMastery": 64,
+      "total": 192
+    },
+    "numericReadinessModelAdoption": false
+  },
+  "implementation": {
+    "pullRequest": 140,
+    "head": "878a7644b09ce0563c123e431d1504f1d8f0c056",
+    "main": "8d37df4c487d0bec0ed88f8d7857c41eabf1024b",
+    "prCI": {
+      "runId": 37474639252,
+      "number": 1233,
+      "jobs": [
+        {
+          "name": "phase3-postgres-17",
+          "id": 112306744945,
+          "conclusion": "success"
+        },
+        {
+          "name": "role-layout-browser",
+          "id": 112306745171,
+          "conclusion": "success"
+        },
+        {
+          "name": "institutional-concurrency",
+          "id": 112306745222,
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "id": 112306745378,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 112308206506,
+          "conclusion": "success"
+        }
+      ],
+      "nodePassed": 1222,
+      "chromiumPassed": 35
+    },
+    "mainCI": {
+      "runId": 37475145386,
+      "number": 1234,
+      "jobs": [
+        {
+          "name": "role-layout-browser",
+          "id": 112308502968,
+          "conclusion": "success"
+        },
+        {
+          "name": "phase3-postgres-17",
+          "id": 112308503315,
+          "conclusion": "success"
+        },
+        {
+          "name": "institutional-concurrency",
+          "id": 112308503452,
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "id": 112308503485,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 112309917174,
+          "conclusion": "success"
+        }
+      ]
+    },
+    "isolatedTests": {
+      "migrationPreservationAndGuardProbes": 2,
+      "actualQaHandlerPassed": 4,
+      "auth": "Fixture doubles; not authenticated production authorization acceptance",
+      "nativeMedia": "Desktop/mobile source image, invalid stimulus containment, replacement, stale item and logout; actual UI modules with offline auth/network doubles",
+      "localChromium": "Download failed; PR and main native CI passed",
+      "initialLocalFullSuite": "1221/1222 passed; one fixture attempted an activated release without activated_at. Fixture corrected; focused 2/2 rerun and final PR/main CI passed."
+    }
+  },
+  "migration": {
+    "localFilename": "20261006134149_sprint_15b13_s02_practice_expansion.sql",
+    "productionVersion": "20261006140336",
+    "name": "sprint_15b13_s02_practice_expansion",
+    "sourceExactMatches": true,
+    "rollback": {
+      "actualProductionConstraintsExercised": true,
+      "all100PublicTableHashesUnchanged": true
+    }
+  },
+  "technicalQa": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S02-I07",
+        "itemId": "348cfa21-26ca-4352-b7e7-1073408c0a9d",
+        "versionNo": 1,
+        "fingerprint": "156283ba397a71061e2ad01d16312baa",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S02-T02-PARTICLE-OBSERVATIONS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1,
+                "application": 1,
+                "core_understanding": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|b207b366-8ad0-4966-a162-a2068504a989|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|348cfa21-26ca-4352-b7e7-1073408c0a9d:1:misconception_diagnosis,75377509-1dd5-4c0a-b25e-413381325d4f:1:application,9f3d884d-2e79-4183-8823-4395c9dea482:1:core_understanding,cb09d26d-665e-4634-99ec-baf98ea06cb8:1:transfer_reasoning"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S02-I06",
+        "itemId": "75377509-1dd5-4c0a-b25e-413381325d4f",
+        "versionNo": 1,
+        "fingerprint": "c600d557cf848416d9ec77c7ec05ec93",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S02-T02-PARTICLE-OBSERVATIONS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1,
+                "application": 1,
+                "core_understanding": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|b207b366-8ad0-4966-a162-a2068504a989|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|348cfa21-26ca-4352-b7e7-1073408c0a9d:1:misconception_diagnosis,75377509-1dd5-4c0a-b25e-413381325d4f:1:application,9f3d884d-2e79-4183-8823-4395c9dea482:1:core_understanding,cb09d26d-665e-4634-99ec-baf98ea06cb8:1:transfer_reasoning"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S02-I05",
+        "itemId": "9f3d884d-2e79-4183-8823-4395c9dea482",
+        "versionNo": 1,
+        "fingerprint": "f018a00e6640499639082fc531c8065f",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S02-T02-PARTICLE-OBSERVATIONS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "core_understanding",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1,
+                "application": 1,
+                "core_understanding": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|b207b366-8ad0-4966-a162-a2068504a989|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|348cfa21-26ca-4352-b7e7-1073408c0a9d:1:misconception_diagnosis,75377509-1dd5-4c0a-b25e-413381325d4f:1:application,9f3d884d-2e79-4183-8823-4395c9dea482:1:core_understanding,cb09d26d-665e-4634-99ec-baf98ea06cb8:1:transfer_reasoning"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S02-I08",
+        "itemId": "cb09d26d-665e-4634-99ec-baf98ea06cb8",
+        "versionNo": 1,
+        "fingerprint": "75ab2c1c8a5c4d82d26d996285484f7e",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S02-T02-PARTICLE-OBSERVATIONS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "transfer_reasoning",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1,
+                "application": 1,
+                "core_understanding": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|b207b366-8ad0-4966-a162-a2068504a989|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|348cfa21-26ca-4352-b7e7-1073408c0a9d:1:misconception_diagnosis,75377509-1dd5-4c0a-b25e-413381325d4f:1:application,9f3d884d-2e79-4183-8823-4395c9dea482:1:core_understanding,cb09d26d-665e-4634-99ec-baf98ea06cb8:1:transfer_reasoning"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ],
+    "deployedSourceParity": {
+      "version": 11,
+      "sourceMatches": true
+    },
+    "recording": "Four append-only automated-system QA rows, run_by null, explicit evaluator and fresh-readback provenance; not human content approval"
+  },
+  "readback": {
+    "items": [
+      {
+        "id": "9f3d884d-2e79-4183-8823-4395c9dea482",
+        "code": "PHY7-U02-S02-I05",
+        "image": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-22.png",
+        "errors": [],
+        "passed": true,
+        "status": "draft",
+        "purpose": "core_understanding",
+        "version": 1,
+        "warnings": [],
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "75377509-1dd5-4c0a-b25e-413381325d4f",
+        "code": "PHY7-U02-S02-I06",
+        "image": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-24.png",
+        "errors": [],
+        "passed": true,
+        "status": "draft",
+        "purpose": "application",
+        "version": 1,
+        "warnings": [],
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "348cfa21-26ca-4352-b7e7-1073408c0a9d",
+        "code": "PHY7-U02-S02-I07",
+        "image": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-23.png",
+        "errors": [],
+        "passed": true,
+        "status": "draft",
+        "purpose": "misconception_diagnosis",
+        "version": 1,
+        "warnings": [],
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "cb09d26d-665e-4634-99ec-baf98ea06cb8",
+        "code": "PHY7-U02-S02-I08",
+        "image": null,
+        "errors": [],
+        "passed": true,
+        "status": "draft",
+        "purpose": "transfer_reasoning",
+        "version": 1,
+        "warnings": [],
+        "reviewStatus": "needs_review"
+      }
+    ],
+    "release": {
+      "status": "draft",
+      "blueprints": 0,
+      "modelBindings": 0,
+      "policyBindings": 0
+    },
+    "chapterCounts": {
+      "drafts": 4,
+      "approved": 32,
+      "authored": 36
+    },
+    "newGuideVersions": [
+      {
+        "id": "11d22884-77f9-4300-9edf-e1ef039fce37",
+        "actor_id": null,
+        "actor_role": "system",
+        "created_at": "2026-10-06T14:03:36.096791+00:00",
+        "guide_scope": "template",
+        "guide_version": 1,
+        "guide_source_id": "d4e0d836-88b8-4c78-a013-7aad68f4d857",
+        "change_rationale": "15B.13 S02 ընդլայնման առաջին սևագրի ստեղծում",
+        "content_snapshot": {
+          "status": "draft",
+          "hint1Hy": "Ի՞նչն է փոխվել փորձի ընթացքում, և արդյո՞ք նյութ է մտել կամ դուրս եկել համակարգից։",
+          "hint2Hy": "Տարբերակիր նյութի զբաղեցրած ծավալը մասնիկների քանակից ու չափերից։ Մասնիկների միջև տարածությունների փոփոխությունը կարող է փոխել նույն նյութի ծավալը։",
+          "titleHy": "Ինչպե՞ս կապել դիտումը մասնիկային մոդելի հետ",
+          "metadata": {
+            "sprint": "15B.13",
+            "learnerVisible": false,
+            "referenceMetadata": {
+              "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+              "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §7, տպագիր էջեր 24-26, նկարներ 22-24",
+              "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)"
+            },
+            "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+          },
+          "strategyHy": "Սկզբում նկարագրիր՝ ինչ է չափվել կամ դիտվել՝ ծավալ, մխոցի դիրք, լարի երկարություն։ Ապա բացատրությունը կառուցիր մասնիկների միջև միջին հեռավորությունների փոփոխությամբ։ Փակ համակարգում, երբ նյութ չի ավելացվում կամ կորչում և քիմիական փոփոխություն չկա, մասնիկների քանակն ու ինքնությունը պահպանվում են։ Ջերմային ընդարձակման պարզ մոդելում առանձին մասնիկների չափերի մեծացում չենք ենթադրում։ Մակրոսկոպական նկարն ինքնին առանձին մասնիկի չափում չէ։",
+          "itemTemplateId": "b207b366-8ad0-4966-a162-a2068504a989",
+          "workedExampleHy": "Փակ պլաստիկ շշի օդը սեղմում են՝ առանց օդի արտահոսքի։ Պարզ մասնիկային մոդելում օդի մասնիկների քանակն ու ինքնությունը պահպանվում են, իսկ նրանց միջև միջին հեռավորությունները փոքրանում են։ Սա ծավալի փոփոխության բացատրություն է, ոչ թե մասնիկների անհետացման դիտում։",
+          "triggerErrorCode": null,
+          "allowedParameterKeys": []
+        },
+        "lifecycle_action": "draft_created",
+        "content_fingerprint": "a50e653c905babf3b267bf0a4f1030dd"
+      }
+    ],
+    "guideVersionColumns": [
+      "id",
+      "guide_scope",
+      "guide_source_id",
+      "guide_version",
+      "content_snapshot",
+      "content_fingerprint",
+      "created_at",
+      "actor_id",
+      "actor_role",
+      "change_rationale",
+      "lifecycle_action"
+    ]
+  },
+  "preservation": {
+    "before": {
+      "items": {
+        "md5": "801a74ad883b56b7098631a0ce826123",
+        "rows": 292
+      },
+      "units": {
+        "md5": "de3b5b90f69343d51679bdffd6e630e7",
+        "rows": 3
+      },
+      "grades": {
+        "md5": "5603145b47e0304574590e490895f259",
+        "rows": 12
+      },
+      "skills": {
+        "md5": "dc448cfd57bc2b068bf592516515ffc7",
+        "rows": 19
+      },
+      "topics": {
+        "md5": "dbf8cec8527871739ef894a609d6d908",
+        "rows": 10
+      },
+      "classes": {
+        "md5": "85a6270b43990f6204d3dd224a7e4923",
+        "rows": 51
+      },
+      "schools": {
+        "md5": "4fd203206f3f0aa62f0e9f4455632d4a",
+        "rows": 2
+      },
+      "attempts": {
+        "md5": "b9c3d81eb6dfe6455686c6f7830eb6a9",
+        "rows": 42
+      },
+      "profiles": {
+        "md5": "9c2c47017b3e3e904bf1dec3ba6fce5d",
+        "rows": 11
+      },
+      "subjects": {
+        "md5": "0bf2df82578c4a9d55e074d090d13081",
+        "rows": 2
+      },
+      "textbooks": {
+        "md5": "258ed3992a501378efe1e2a2da9ec218",
+        "rows": 1
+      },
+      "pilot_runs": {
+        "md5": "36593273285ffb100f9c772357e22bc5",
+        "rows": 1
+      },
+      "assignments": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "item_options": {
+        "md5": "0dd985ed43255e311b6bf18587685cdc",
+        "rows": 560
+      },
+      "item_qa_runs": {
+        "md5": "6e5c716f202db336c016b105e0587293",
+        "rows": 487
+      },
+      "item_reviews": {
+        "md5": "1b391254023cde61fc1b7a6d2bd16ceb",
+        "rows": 559
+      },
+      "item_families": {
+        "md5": "ca046deec5157a90c24002e6c49b2ed4",
+        "rows": 85
+      },
+      "item_versions": {
+        "md5": "49783b1258c5debc46556ef408a6eead",
+        "rows": 120
+      },
+      "academic_years": {
+        "md5": "1f2283debf0cdc83e6ec8b74c96cf184",
+        "rows": 2
+      },
+      "item_templates": {
+        "md5": "3c60139a2057b50c1d3ac1d622cb20b7",
+        "rows": 85
+      },
+      "misconceptions": {
+        "md5": "ba94532b5a35b20b864805e1618f95c5",
+        "rows": 53
+      },
+      "runtime_builds": {
+        "md5": "0a9107a04b8dd5e3392be1c52a86c369",
+        "rows": 23
+      },
+      "skill_outcomes": {
+        "md5": "84828add6d68a1847e7804a2e2d05d75",
+        "rows": 20
+      },
+      "assessment_forms": {
+        "md5": "848e30c16c3937e5c6497be80ea56651",
+        "rows": 4
+      },
+      "assessment_pools": {
+        "md5": "ee8d96996e8374b05d53e30fe3830380",
+        "rows": 4
+      },
+      "item_answer_keys": {
+        "md5": "626c279e7fe48bc8d7355e3658c57b95",
+        "rows": 292
+      },
+      "subject_programs": {
+        "md5": "07d097b148115f8fb9719a5a9c910afe",
+        "rows": 2
+      },
+      "assignment_skills": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "class_memberships": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "learning_outcomes": {
+        "md5": "d3717ac3b583ec7820c8ad41070475bb",
+        "rows": 13
+      },
+      "learning_sessions": {
+        "md5": "09cc03c61c65f5717ade927108d2f5c6",
+        "rows": 7
+      },
+      "pilot_gate_checks": {
+        "md5": "5f7624556fca3f13b465c7a031943a3c",
+        "rows": 11
+      },
+      "textbook_mappings": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "pilot_participants": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "remediation_events": {
+        "md5": "dbbca57c7adea5004497e9df20851099",
+        "rows": 3
+      },
+      "security_audit_log": {
+        "md5": "726eef749737944172b2ad3be0a14f9a",
+        "rows": 34
+      },
+      "curriculum_releases": {
+        "md5": "230374ab922d9aadf9a502b60c8bdabf",
+        "rows": 3
+      },
+      "privacy_preferences": {
+        "md5": "5e679c1516413b9216da180cb58fcd88",
+        "rows": 2
+      },
+      "skill_prerequisites": {
+        "md5": "a5df0cd920ce1f877ac191735ce23d8d",
+        "rows": 17
+      },
+      "teacher_assignments": {
+        "md5": "7e0f9133857e74dd8c986b05b10dd645",
+        "rows": 51
+      },
+      "assessment_blueprints": {
+        "md5": "7d8aadf92485d45903a9a43b7ec7f4af",
+        "rows": 7
+      },
+      "assessment_form_items": {
+        "md5": "cee5f8b57a5532f305d9ca2810dd4c4a",
+        "rows": 80
+      },
+      "assessment_pool_items": {
+        "md5": "c7204bb98a5833cd7e0be0adde8bf5a3",
+        "rows": 280
+      },
+      "chapter_review_cycles": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "curriculum_frameworks": {
+        "md5": "cc95b05470c26da89674830c44573e7e",
+        "rows": 1
+      },
+      "recommendation_events": {
+        "md5": "c34eec41f5b22aa0050d957adedccb5c",
+        "rows": 820
+      },
+      "student_skill_mastery": {
+        "md5": "8db336f5c92842f55ff202f8e7b2854f",
+        "rows": 13
+      },
+      "chapter_mastery_states": {
+        "md5": "1b6fb3231d34474d6422795bcb484b2c",
+        "rows": 1
+      },
+      "curriculum_authorities": {
+        "md5": "29eee07c69934ad4f8cec6bcc6b157be",
+        "rows": 2
+      },
+      "item_curriculum_scopes": {
+        "md5": "4fd4bace2d8581a9027cc63724d38b3b",
+        "rows": 292
+      },
+      "learning_session_items": {
+        "md5": "190fc3fe04154fc0f4c4a4b2cfb5f6d3",
+        "rows": 79
+      },
+      "mastery_check_attempts": {
+        "md5": "7b51fee77a2d7b6f9c3a6e5c620baf8b",
+        "rows": 1
+      },
+      "calibration_metric_sets": {
+        "md5": "1367dfbce268dca65d0810d1f486e1dd",
+        "rows": 2
+      },
+      "chapter_review_sessions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "academic_identity_events": {
+        "md5": "2e58e96ff9253bd3b56e1fa5d037f7ba",
+        "rows": 494
+      },
+      "curriculum_release_units": {
+        "md5": "d257490cb93f8bdadb06f0a0751cfea6",
+        "rows": 4
+      },
+      "institutional_join_codes": {
+        "md5": "5f9f9f44112706299b8cc6048c54e1b8",
+        "rows": 25
+      },
+      "pilot_participant_events": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "skill_remediation_guides": {
+        "md5": "a66c19dc1e8def9b213cad12942816b3",
+        "rows": 10
+      },
+      "account_deletion_requests": {
+        "md5": "a24744b87772eee8fa27bde10a8325ff",
+        "rows": 3
+      },
+      "curriculum_release_skills": {
+        "md5": "6f54cc05bfdac3c80c9a963f795698e3",
+        "rows": 28
+      },
+      "institutional_invitations": {
+        "md5": "541a9f5a67c6f773d85b790d1381bb40",
+        "rows": 44
+      },
+      "institutional_memberships": {
+        "md5": "0de88e41263e2b9d863960d63eb94724",
+        "rows": 28
+      },
+      "assessment_blueprint_items": {
+        "md5": "27aea0376e4e66fe16985eb21238543f",
+        "rows": 360
+      },
+      "assessment_policy_bindings": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "remediation_guide_versions": {
+        "md5": "d709d9af64e41985490603a9d4ff4a83",
+        "rows": 61
+      },
+      "staff_account_provisioning": {
+        "md5": "8cf7d788bd0b24188e0e19cf283328fd",
+        "rows": 5
+      },
+      "calibration_analysis_scopes": {
+        "md5": "3def5257022777ca535e36ecabd78102",
+        "rows": 1
+      },
+      "chapter_review_requirements": {
+        "md5": "2e1caa3798ff3b8199f848152602ba13",
+        "rows": 1
+      },
+      "curriculum_release_outcomes": {
+        "md5": "9b4654739efc1c6be45f28e496384308",
+        "rows": 19
+      },
+      "curriculum_source_documents": {
+        "md5": "8095813289d71bd06c2fe77ff00ea5ee",
+        "rows": 3
+      },
+      "item_misconception_mappings": {
+        "md5": "3160faf7fa58e55e5dc5b08b7ae8b42f",
+        "rows": 334
+      },
+      "misconception_review_events": {
+        "md5": "f7aca9519bd6de3a1c4152a8d5bac2ef",
+        "rows": 44
+      },
+      "student_account_acceptances": {
+        "md5": "9995220c3e014061be4f59b9b335aca5",
+        "rows": 1
+      },
+      "calibration_change_decisions": {
+        "md5": "e833d4889b70d9253b271418e82e06d9",
+        "rows": 1
+      },
+      "student_item_exposure_events": {
+        "md5": "7c2e7daf99cc49d885496bfb6957232c",
+        "rows": 42
+      },
+      "chapter_review_item_exposures": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "learning_model_configurations": {
+        "md5": "bbcd10c4936f2bfe4f88c175fb5c3258",
+        "rows": 1
+      },
+      "calibration_decision_protocols": {
+        "md5": "525d482855ea5f27dd6aec341e40301c",
+        "rows": 1
+      },
+      "calibration_evidence_contracts": {
+        "md5": "9d007197d3318bbbfe1e5e6c07a68f42",
+        "rows": 2
+      },
+      "curriculum_reconciliation_runs": {
+        "md5": "435a8a6f67e7e5664019dad694f9993e",
+        "rows": 2
+      },
+      "curriculum_release_gate_checks": {
+        "md5": "bc2a47eeabab0dc8fdd2778d2a936b50",
+        "rows": 14
+      },
+      "pilot_evidence_classifications": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "teacher_subject_authorizations": {
+        "md5": "c6938d6d18dada9542f69b648d71408c",
+        "rows": 23
+      },
+      "institutional_class_enrollments": {
+        "md5": "235976a4353edebd1ea40762736b48de",
+        "rows": 3
+      },
+      "learning_model_runtime_bindings": {
+        "md5": "4dac3e2aaa6fb244481d0cd485386cbe",
+        "rows": 1
+      },
+      "subject_program_source_bindings": {
+        "md5": "ae8386f3afa9c50e9c835f601b213267",
+        "rows": 2
+      },
+      "academic_mastery_policy_versions": {
+        "md5": "1c69b7132347cd8b67a89268668f27ce",
+        "rows": 1
+      },
+      "curriculum_release_item_families": {
+        "md5": "c26481391072bbf8f5c20903ab7e696f",
+        "rows": 162
+      },
+      "item_template_remediation_guides": {
+        "md5": "feea3980b1167cc4666af872d053b01e",
+        "rows": 17
+      },
+      "skill_curriculum_reconciliations": {
+        "md5": "b1c2551996a3f69d685c5cf7dd834459",
+        "rows": 18
+      },
+      "student_skill_mastery_by_release": {
+        "md5": "82ba233d551a062d8ff7d89dfb77c596",
+        "rows": 13
+      },
+      "skill_outcome_curriculum_mappings": {
+        "md5": "0edd79aef4796da584077a4deb76d80e",
+        "rows": 20
+      },
+      "academic_mastery_policy_activation": {
+        "md5": "1df4787f0c2eece89b4611327af6aff4",
+        "rows": 1
+      },
+      "curriculum_release_reconciliations": {
+        "md5": "66c9992390e06e2f84aa382a67528a72",
+        "rows": 3
+      },
+      "legacy_learning_blueprint_mappings": {
+        "md5": "6630bbbb7cf081d0d397ad0e99927fe4",
+        "rows": 7
+      },
+      "learning_outcome_normative_mappings": {
+        "md5": "8b8adecb9187860e1bf0c9e12d317e09",
+        "rows": 13
+      },
+      "remediation_guide_authoring_versions": {
+        "md5": "81a9da9fec56a3e46eecfee7cdae480f",
+        "rows": 129
+      },
+      "item_family_curriculum_reconciliations": {
+        "md5": "56c9f34799420ac9cdabe9f5af636a68",
+        "rows": 85
+      },
+      "assessment_pool_curriculum_reconciliations": {
+        "md5": "371101f601419d4bd6135742ad6dc009",
+        "rows": 3
+      }
+    },
+    "after": {
+      "items": {
+        "md5": "ad485b26887f85f3b23392942739e55f",
+        "rows": 296
+      },
+      "units": {
+        "md5": "de3b5b90f69343d51679bdffd6e630e7",
+        "rows": 3
+      },
+      "grades": {
+        "md5": "5603145b47e0304574590e490895f259",
+        "rows": 12
+      },
+      "skills": {
+        "md5": "dc448cfd57bc2b068bf592516515ffc7",
+        "rows": 19
+      },
+      "topics": {
+        "md5": "dbf8cec8527871739ef894a609d6d908",
+        "rows": 10
+      },
+      "classes": {
+        "md5": "85a6270b43990f6204d3dd224a7e4923",
+        "rows": 51
+      },
+      "schools": {
+        "md5": "4fd203206f3f0aa62f0e9f4455632d4a",
+        "rows": 2
+      },
+      "attempts": {
+        "md5": "b9c3d81eb6dfe6455686c6f7830eb6a9",
+        "rows": 42
+      },
+      "profiles": {
+        "md5": "9c2c47017b3e3e904bf1dec3ba6fce5d",
+        "rows": 11
+      },
+      "subjects": {
+        "md5": "0bf2df82578c4a9d55e074d090d13081",
+        "rows": 2
+      },
+      "textbooks": {
+        "md5": "258ed3992a501378efe1e2a2da9ec218",
+        "rows": 1
+      },
+      "pilot_runs": {
+        "md5": "36593273285ffb100f9c772357e22bc5",
+        "rows": 1
+      },
+      "assignments": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "item_options": {
+        "md5": "60625b76e2ec72f490079ed3e038386a",
+        "rows": 576
+      },
+      "item_qa_runs": {
+        "md5": "bf33442328a67496e94732370018803c",
+        "rows": 491
+      },
+      "item_reviews": {
+        "md5": "1b391254023cde61fc1b7a6d2bd16ceb",
+        "rows": 559
+      },
+      "item_families": {
+        "md5": "67ba2fd3fe111a9c5407684ae758bc01",
+        "rows": 86
+      },
+      "item_versions": {
+        "md5": "24aeb35a8cf9884ef6163a966a63765d",
+        "rows": 124
+      },
+      "academic_years": {
+        "md5": "1f2283debf0cdc83e6ec8b74c96cf184",
+        "rows": 2
+      },
+      "item_templates": {
+        "md5": "fd26d2c6f9106a7229cbcdb00d85cd8f",
+        "rows": 86
+      },
+      "misconceptions": {
+        "md5": "ba94532b5a35b20b864805e1618f95c5",
+        "rows": 53
+      },
+      "runtime_builds": {
+        "md5": "0a9107a04b8dd5e3392be1c52a86c369",
+        "rows": 23
+      },
+      "skill_outcomes": {
+        "md5": "84828add6d68a1847e7804a2e2d05d75",
+        "rows": 20
+      },
+      "assessment_forms": {
+        "md5": "848e30c16c3937e5c6497be80ea56651",
+        "rows": 4
+      },
+      "assessment_pools": {
+        "md5": "ee8d96996e8374b05d53e30fe3830380",
+        "rows": 4
+      },
+      "item_answer_keys": {
+        "md5": "11bb05f6ade3c0414e93c5f869389284",
+        "rows": 296
+      },
+      "subject_programs": {
+        "md5": "07d097b148115f8fb9719a5a9c910afe",
+        "rows": 2
+      },
+      "assignment_skills": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "class_memberships": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "learning_outcomes": {
+        "md5": "d3717ac3b583ec7820c8ad41070475bb",
+        "rows": 13
+      },
+      "learning_sessions": {
+        "md5": "09cc03c61c65f5717ade927108d2f5c6",
+        "rows": 7
+      },
+      "pilot_gate_checks": {
+        "md5": "5f7624556fca3f13b465c7a031943a3c",
+        "rows": 11
+      },
+      "textbook_mappings": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "pilot_participants": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "remediation_events": {
+        "md5": "dbbca57c7adea5004497e9df20851099",
+        "rows": 3
+      },
+      "security_audit_log": {
+        "md5": "726eef749737944172b2ad3be0a14f9a",
+        "rows": 34
+      },
+      "curriculum_releases": {
+        "md5": "230374ab922d9aadf9a502b60c8bdabf",
+        "rows": 3
+      },
+      "privacy_preferences": {
+        "md5": "5e679c1516413b9216da180cb58fcd88",
+        "rows": 2
+      },
+      "skill_prerequisites": {
+        "md5": "a5df0cd920ce1f877ac191735ce23d8d",
+        "rows": 17
+      },
+      "teacher_assignments": {
+        "md5": "7e0f9133857e74dd8c986b05b10dd645",
+        "rows": 51
+      },
+      "assessment_blueprints": {
+        "md5": "7d8aadf92485d45903a9a43b7ec7f4af",
+        "rows": 7
+      },
+      "assessment_form_items": {
+        "md5": "cee5f8b57a5532f305d9ca2810dd4c4a",
+        "rows": 80
+      },
+      "assessment_pool_items": {
+        "md5": "c7204bb98a5833cd7e0be0adde8bf5a3",
+        "rows": 280
+      },
+      "chapter_review_cycles": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "curriculum_frameworks": {
+        "md5": "cc95b05470c26da89674830c44573e7e",
+        "rows": 1
+      },
+      "recommendation_events": {
+        "md5": "c34eec41f5b22aa0050d957adedccb5c",
+        "rows": 820
+      },
+      "student_skill_mastery": {
+        "md5": "8db336f5c92842f55ff202f8e7b2854f",
+        "rows": 13
+      },
+      "chapter_mastery_states": {
+        "md5": "1b6fb3231d34474d6422795bcb484b2c",
+        "rows": 1
+      },
+      "curriculum_authorities": {
+        "md5": "29eee07c69934ad4f8cec6bcc6b157be",
+        "rows": 2
+      },
+      "item_curriculum_scopes": {
+        "md5": "3eee88b138c8c6845ba46f2698821cb6",
+        "rows": 296
+      },
+      "learning_session_items": {
+        "md5": "190fc3fe04154fc0f4c4a4b2cfb5f6d3",
+        "rows": 79
+      },
+      "mastery_check_attempts": {
+        "md5": "7b51fee77a2d7b6f9c3a6e5c620baf8b",
+        "rows": 1
+      },
+      "calibration_metric_sets": {
+        "md5": "1367dfbce268dca65d0810d1f486e1dd",
+        "rows": 2
+      },
+      "chapter_review_sessions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "academic_identity_events": {
+        "md5": "2e58e96ff9253bd3b56e1fa5d037f7ba",
+        "rows": 494
+      },
+      "curriculum_release_units": {
+        "md5": "d257490cb93f8bdadb06f0a0751cfea6",
+        "rows": 4
+      },
+      "institutional_join_codes": {
+        "md5": "5f9f9f44112706299b8cc6048c54e1b8",
+        "rows": 25
+      },
+      "pilot_participant_events": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "skill_remediation_guides": {
+        "md5": "a66c19dc1e8def9b213cad12942816b3",
+        "rows": 10
+      },
+      "account_deletion_requests": {
+        "md5": "a24744b87772eee8fa27bde10a8325ff",
+        "rows": 3
+      },
+      "curriculum_release_skills": {
+        "md5": "6f54cc05bfdac3c80c9a963f795698e3",
+        "rows": 28
+      },
+      "institutional_invitations": {
+        "md5": "541a9f5a67c6f773d85b790d1381bb40",
+        "rows": 44
+      },
+      "institutional_memberships": {
+        "md5": "0de88e41263e2b9d863960d63eb94724",
+        "rows": 28
+      },
+      "assessment_blueprint_items": {
+        "md5": "27aea0376e4e66fe16985eb21238543f",
+        "rows": 360
+      },
+      "assessment_policy_bindings": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "remediation_guide_versions": {
+        "md5": "4972102f5d0de63d3ca939b40e8f4c3c",
+        "rows": 62
+      },
+      "staff_account_provisioning": {
+        "md5": "8cf7d788bd0b24188e0e19cf283328fd",
+        "rows": 5
+      },
+      "calibration_analysis_scopes": {
+        "md5": "3def5257022777ca535e36ecabd78102",
+        "rows": 1
+      },
+      "chapter_review_requirements": {
+        "md5": "2e1caa3798ff3b8199f848152602ba13",
+        "rows": 1
+      },
+      "curriculum_release_outcomes": {
+        "md5": "9b4654739efc1c6be45f28e496384308",
+        "rows": 19
+      },
+      "curriculum_source_documents": {
+        "md5": "8095813289d71bd06c2fe77ff00ea5ee",
+        "rows": 3
+      },
+      "item_misconception_mappings": {
+        "md5": "df03faab2a3acd1de7b2ada2326d71d4",
+        "rows": 346
+      },
+      "misconception_review_events": {
+        "md5": "f7aca9519bd6de3a1c4152a8d5bac2ef",
+        "rows": 44
+      },
+      "student_account_acceptances": {
+        "md5": "9995220c3e014061be4f59b9b335aca5",
+        "rows": 1
+      },
+      "calibration_change_decisions": {
+        "md5": "e833d4889b70d9253b271418e82e06d9",
+        "rows": 1
+      },
+      "student_item_exposure_events": {
+        "md5": "7c2e7daf99cc49d885496bfb6957232c",
+        "rows": 42
+      },
+      "chapter_review_item_exposures": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "learning_model_configurations": {
+        "md5": "bbcd10c4936f2bfe4f88c175fb5c3258",
+        "rows": 1
+      },
+      "calibration_decision_protocols": {
+        "md5": "525d482855ea5f27dd6aec341e40301c",
+        "rows": 1
+      },
+      "calibration_evidence_contracts": {
+        "md5": "9d007197d3318bbbfe1e5e6c07a68f42",
+        "rows": 2
+      },
+      "curriculum_reconciliation_runs": {
+        "md5": "435a8a6f67e7e5664019dad694f9993e",
+        "rows": 2
+      },
+      "curriculum_release_gate_checks": {
+        "md5": "bc2a47eeabab0dc8fdd2778d2a936b50",
+        "rows": 14
+      },
+      "pilot_evidence_classifications": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "teacher_subject_authorizations": {
+        "md5": "c6938d6d18dada9542f69b648d71408c",
+        "rows": 23
+      },
+      "institutional_class_enrollments": {
+        "md5": "235976a4353edebd1ea40762736b48de",
+        "rows": 3
+      },
+      "learning_model_runtime_bindings": {
+        "md5": "4dac3e2aaa6fb244481d0cd485386cbe",
+        "rows": 1
+      },
+      "subject_program_source_bindings": {
+        "md5": "ae8386f3afa9c50e9c835f601b213267",
+        "rows": 2
+      },
+      "academic_mastery_policy_versions": {
+        "md5": "1c69b7132347cd8b67a89268668f27ce",
+        "rows": 1
+      },
+      "curriculum_release_item_families": {
+        "md5": "923ab212b06ec445c4cdf9af43461c1d",
+        "rows": 163
+      },
+      "item_template_remediation_guides": {
+        "md5": "6d5c36d72b87382237ddcfa92c8c376b",
+        "rows": 18
+      },
+      "skill_curriculum_reconciliations": {
+        "md5": "b1c2551996a3f69d685c5cf7dd834459",
+        "rows": 18
+      },
+      "student_skill_mastery_by_release": {
+        "md5": "82ba233d551a062d8ff7d89dfb77c596",
+        "rows": 13
+      },
+      "skill_outcome_curriculum_mappings": {
+        "md5": "0edd79aef4796da584077a4deb76d80e",
+        "rows": 20
+      },
+      "academic_mastery_policy_activation": {
+        "md5": "1df4787f0c2eece89b4611327af6aff4",
+        "rows": 1
+      },
+      "curriculum_release_reconciliations": {
+        "md5": "66c9992390e06e2f84aa382a67528a72",
+        "rows": 3
+      },
+      "legacy_learning_blueprint_mappings": {
+        "md5": "6630bbbb7cf081d0d397ad0e99927fe4",
+        "rows": 7
+      },
+      "learning_outcome_normative_mappings": {
+        "md5": "8b8adecb9187860e1bf0c9e12d317e09",
+        "rows": 13
+      },
+      "remediation_guide_authoring_versions": {
+        "md5": "2c82d979df1697e35228ca7f66ea099d",
+        "rows": 130
+      },
+      "item_family_curriculum_reconciliations": {
+        "md5": "7f762fb153acd179a17bdeaae9b95301",
+        "rows": 86
+      },
+      "assessment_pool_curriculum_reconciliations": {
+        "md5": "371101f601419d4bd6135742ad6dc009",
+        "rows": 3
+      }
+    },
+    "oldRowsAfter": {
+      "items": {
+        "md5": "801a74ad883b56b7098631a0ce826123",
+        "rows": 292
+      },
+      "item_options": {
+        "md5": "0dd985ed43255e311b6bf18587685cdc",
+        "rows": 560
+      },
+      "item_qa_runs": {
+        "md5": "6e5c716f202db336c016b105e0587293",
+        "rows": 487
+      },
+      "item_families": {
+        "md5": "ca046deec5157a90c24002e6c49b2ed4",
+        "rows": 85
+      },
+      "item_versions": {
+        "md5": "49783b1258c5debc46556ef408a6eead",
+        "rows": 120
+      },
+      "item_templates": {
+        "md5": "3c60139a2057b50c1d3ac1d622cb20b7",
+        "rows": 85
+      },
+      "item_answer_keys": {
+        "md5": "626c279e7fe48bc8d7355e3658c57b95",
+        "rows": 292
+      },
+      "item_curriculum_scopes": {
+        "md5": "4fd4bace2d8581a9027cc63724d38b3b",
+        "rows": 292
+      },
+      "remediation_guide_versions": {
+        "md5": "d709d9af64e41985490603a9d4ff4a83",
+        "rows": 61
+      },
+      "item_misconception_mappings": {
+        "md5": "3160faf7fa58e55e5dc5b08b7ae8b42f",
+        "rows": 334
+      },
+      "curriculum_release_item_families": {
+        "md5": "c26481391072bbf8f5c20903ab7e696f",
+        "rows": 162
+      },
+      "item_template_remediation_guides": {
+        "md5": "feea3980b1167cc4666af872d053b01e",
+        "rows": 17
+      },
+      "remediation_guide_authoring_versions": {
+        "md5": "81a9da9fec56a3e46eecfee7cdae480f",
+        "rows": 129
+      },
+      "item_family_curriculum_reconciliations": {
+        "md5": "56c9f34799420ac9cdabe9f5af636a68",
+        "rows": 85
+      }
+    },
+    "unchangedWholeTables": 86,
+    "changedTables": 14,
+    "existingRowsPreserved": true,
+    "learnerHistoryUnchanged": true,
+    "releaseGatesUnchanged": true
+  },
+  "advisors": [
+    {
+      "type": "security",
+      "groups": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "before": 36,
+          "after": 36,
+          "added": [],
+          "removed": []
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "level": "WARN",
+          "before": 1,
+          "after": 1,
+          "added": [],
+          "removed": []
+        }
+      ]
+    },
+    {
+      "type": "performance",
+      "groups": [
+        {
+          "name": "unindexed_foreign_keys",
+          "level": "INFO",
+          "before": 39,
+          "after": 39,
+          "added": [],
+          "removed": []
+        },
+        {
+          "name": "auth_rls_initplan",
+          "level": "WARN",
+          "before": 16,
+          "after": 16,
+          "added": [],
+          "removed": []
+        },
+        {
+          "name": "unused_index",
+          "level": "INFO",
+          "before": 103,
+          "after": 103,
+          "added": [],
+          "removed": []
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "level": "WARN",
+          "before": 14,
+          "after": 14,
+          "added": [],
+          "removed": []
+        }
+      ]
+    }
+  ],
+  "production": {
+    "deployment": "dpl_4dxVjCy7pXWzZYzF2qW97oXexCUj",
+    "commit": "8d37df4c487d0bec0ed88f8d7857c41eabf1024b",
+    "http": [
+      {
+        "path": "release.json",
+        "status": 200,
+        "sha256": "572c2b4bf258f5ed51c789b562dc69bd84bc95e0854c29dd49f75b263ed3b3ff",
+        "release": {
+          "schemaVersion": 1,
+          "commit": "8d37df4c487d0bec0ed88f8d7857c41eabf1024b"
+        }
+      },
+      {
+        "path": "content.js",
+        "status": 200,
+        "sha256": "b8a89324d3f894c14efc96e76168434cf1c2251ef7e27b027a7aa8b496fc3f9a",
+        "release": null
+      },
+      {
+        "path": "assets/textbook/physics7-2023/figure-22.png",
+        "status": 200,
+        "sha256": "6b52815c60f5d3324d6c5c44c9896511d7a3e7adc1827edf1e5981c1adf9860b",
+        "release": null
+      },
+      {
+        "path": "assets/textbook/physics7-2023/figure-23.png",
+        "status": 200,
+        "sha256": "538d24ea12db1075815db91bdb6a2fb14f6c2ad6b8a5ba086eb754516aa228d8",
+        "release": null
+      },
+      {
+        "path": "assets/textbook/physics7-2023/figure-24.png",
+        "status": 200,
+        "sha256": "915b9c67b2e20aad3412a34385c5b3b3644873f705824df5c96e26875f89ac94",
+        "release": null
+      }
+    ],
+    "persistentBlockingConfiguration": "Existing Production / Blocking selection independently verified 2026-10-06T11:27:41.500Z in 15B.12E evidence; no settings changed by this slice",
+    "currentPromotionObservation": "New deployment READY with branch aliases while main checks pending; www remained on c339fa9. After all five main CI jobs passed, www resolved to 8d37df4 and asset hashes matched."
+  },
+  "boundaries": {
+    "chapterIIStatus": "draft",
+    "poolMembershipsCreated": 0,
+    "blueprints": 0,
+    "modelBindings": 0,
+    "policyBindings": 0,
+    "learnerActivation": false,
+    "humanApprovalsRecorded": 0,
+    "externalSmeValidation": "pending",
+    "previousApprovedQuestionIllustrationAudit": "Still required before chapter finalization; additions require new reviewed versions.",
+    "unAuthoredQuestionsRemaining": 156
+  }
+}
