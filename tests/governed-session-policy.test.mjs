@@ -148,3 +148,16 @@ test('15B.12B preserves legacy rows, lifetime baseline and stable legacy resumes
   assert.equal(indexes.length,2);assert.ok(indexes.every(x=>x.indexdef.includes('(student_id, unit_code)')));
  }finally{await db.close();}
 });
+
+test('explicit enrollment selection supports two authorized classes for the same programme',async()=>{
+ const db=await database();try{
+  await db.query('insert into classes values($1,$2,$3,$4,$5,true)',[id(323),id(301),id(311),id(101),id(7)]);
+  await db.query("insert into teacher_assignments values($1,$2,$3,$4,$5,$6,'active','2020-01-01',null)",[id(353),id(301),id(311),id(323),id(341),id(201)]);
+  await db.query("insert into institutional_class_enrollments values($1,$2,$3,$4,$5,$6,$7,$8,'active','2020-01-01',null)",[id(374),id(10),id(301),id(311),id(323),id(331),id(353),id(201)]);
+  const diagnostic=await start(db,0);await db.query("update learning_sessions set status='completed',completed_at=now() where id=$1",[diagnostic.session.id]);
+  const first=await start(db,0,'practice');const second=await start(db,0,'practice',{enrollment:id(374)});
+  assert.equal(first.session.class_id,id(321));assert.equal(second.session.class_id,id(323));assert.equal(second.session.teacher_assignment_id,id(353));assert.notEqual(first.session.id,second.session.id);
+  assert.equal((await start(db,0,'practice',{enrollment:id(374)})).session.id,second.session.id);
+  assert.equal((await start(db,0,'practice')).session.id,first.session.id);
+ }finally{await db.close();}
+});

@@ -34,7 +34,7 @@ No Edge consumer is switched to the new path in 12B, no shared Edge import chang
 
 ## Verification
 
-77 executable PGlite/PostgreSQL policy and session tests cover three chapters across two programmes, exact enrollment ownership, reciprocal subject/school boundaries, incomplete forms/pools, version changes, unsupported contracts, explicit unequal allocations, optional supporting-skill pass requirements, model/lifecycle compatibility, live-session revocation, resume provenance, permissions, atomic rollback and legacy preservation. These are isolated synthetic fixtures, not authenticated production learner acceptance.
+78 executable PGlite/PostgreSQL policy and session tests cover three chapters across two programmes, two authorized same-programme classes, exact enrollment ownership, reciprocal subject/school boundaries, incomplete forms/pools, version changes, unsupported contracts, explicit unequal allocations, optional supporting-skill pass requirements, model/lifecycle compatibility, live-session revocation, resume provenance, permissions, atomic rollback and legacy preservation. These are isolated synthetic fixtures, not authenticated production learner acceptance.
 
 The PostgreSQL 17 CI job adds 15 independent-connection cases: duplicate starts, rollback, enrollment/membership/teacher/student/year/Auth revocation, existing teacher offboarding, termination after a successful start, item retirement, form removal, expiry during a lock wait and independent chapter starts. Existing CI jobs and the aggregate Platform release checks are retained.
 
