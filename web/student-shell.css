@@ -122,6 +122,7 @@ body.amp-student-shell-active .haiedu-public-brand {
 }
 
 body.amp-student-shell-active {
+  --amp-nav-width: max(232px, 14.5rem);
   background: var(--amp-color-bg);
 }
 
@@ -188,6 +189,7 @@ body.amp-student-shell-active .amp-side-nav {
   text-decoration: none;
   font-weight: 700;
   line-height: 1.25;
+  overflow-wrap: break-word;
 }
 .amp-nav-link:hover {
   color: #fff;

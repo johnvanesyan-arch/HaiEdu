@@ -136,10 +136,12 @@ test('expanded provenance stays contained at 200 percent text size',async t=>{
     crowdedNavLinks:[...document.querySelectorAll('.amp-nav-link')].filter(el=>{
       const label=el.lastElementChild.getBoundingClientRect(), link=el.getBoundingClientRect();
       return label.top<link.top-1 || label.bottom>link.bottom+1;
-    }).length
+    }).length,
+    clippedNavLabels:[...document.querySelectorAll('.amp-nav-link > span:last-child')].filter(el=>el.scrollWidth>el.clientWidth+1).length
   }));
   await capture(page,'assessment-text-200',metrics);
   assert.ok(metrics.documentWidth<=metrics.viewport+1);
   assert.equal(metrics.crowdedNavLinks,0,'Larger text must not overlap adjacent sidebar links');
+  assert.equal(metrics.clippedNavLabels,0,'Larger Armenian labels must fit the sidebar');
   assert.deepEqual(errors,[]);
 });
