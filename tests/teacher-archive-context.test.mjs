@@ -20,12 +20,13 @@ function harness({active=true,success=true,sourceView='classes'}={}) {
     +section('async function toggleInstitutionalClassStatus()', 'async function removeStudent('),context);
   return {context,klass,window,snapshots};
 }
-test('archive clears active evidence selection before dashboard reload',async()=>{
+test('archive retains the original selection for authorized read-only history',async()=>{
   const h=harness(); await h.context.toggleInstitutionalClassStatus();
   assert.equal(h.klass.isActive,false);assert.equal(h.snapshots.length,1);
   const p=h.snapshots[0].searchParams;
   assert.equal(p.get('class'),'class-qa');assert.equal(p.get('source'),'archive');
-  for(const key of ['assignment','release','unit'])assert.equal(p.has(key),false);
+  assert.equal(p.get('assignment'),'assignment-qa');
+  assert.equal(p.get('release'),'release-qa');assert.equal(p.get('unit'),'unit-qa');
 });
 test('reactivation restores exact selected context after successful mutation',async()=>{
   const h=harness({active:false,sourceView:'archive'});await h.context.toggleInstitutionalClassStatus();
@@ -37,10 +38,11 @@ test('failed archive preserves current state and does not reload',async()=>{
   assert.equal(h.klass.isActive,true);assert.equal(h.snapshots.length,0);
   assert.equal(h.window.location.searchParams.get('assignment'),'assignment-qa');
 });
-test('archived deep links ignore stale active context while active links retain it',()=>{
+test('active and historical deep links preserve exact selectors for server authorization',()=>{
   const archived=harness({active:false,sourceView:'archive'});
-  assert.equal(archived.context.navigationSelection().selection,null);
+  assert.equal(archived.context.navigationSelection().selection.assignmentId,'assignment-qa');
   archived.context.syncNavigation(archived.klass);
-  assert.equal(archived.window.location.searchParams.has('assignment'),false);
+  assert.equal(archived.window.location.searchParams.get('assignment'),'assignment-qa');
+  assert.equal(archived.window.location.searchParams.get('source'),'archive');
   const active=harness();assert.equal(active.context.navigationSelection().selection.assignmentId,'assignment-qa');
 });
