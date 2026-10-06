@@ -107,6 +107,8 @@ jobs:
         run: node --test tests/phase3-analytics-integration.test.mjs
       - name: Verify atomic answer scoring with independent PostgreSQL 17.6 connections
         run: python tests/answer-scoring-concurrency.py
+      - name: Verify governed policy and session authorization races on PostgreSQL 17.6
+        run: python tests/governed-session-concurrency.py
 
   platform-release-checks:
     name: Platform release checks
