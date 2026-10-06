@@ -119,3 +119,79 @@ for(const [name,changes] of [
 ]) test('historical access does not bypass '+name,async()=>{
  await assert.rejects(resolve({...changes,teacher_assignments:{status:'ended',valid_to:'2026-09-22T00:00:00Z'},academic_years:{status:'closed'}}),AcademicContextDenied);
 });
+
+function batchMock(count=19,change=()=>{},onQuery=()=>{}) {
+  const data=Object.fromEntries(Object.entries(rows).map(([table,row])=>[table,[structuredClone(row)]]));
+  data.teacher_assignments=Array.from({length:count},(_,i)=>({...rows.teacher_assignments,id:'assignment-'+i,class_id:'class-'+i}));
+  data.classes=Array.from({length:count},(_,i)=>({...rows.classes,id:'class-'+i}));
+  change(data);
+  const calls=[];
+  const admin={from(table){return {select(){
+    const filters=[];const orders=[];let bounds=null;
+    const query={
+      eq(column,value){filters.push(row=>row[column]===value);return query;},
+      in(column,values){filters.push(row=>values.includes(row[column]));return query;},
+      order(column){orders.push(column);return query;},
+      range(from,to){bounds=[from,to];return query;},
+      async maybeSingle(){const result=await query;return {...result,data:result.data[0]??null};},
+      then(resolve,reject){calls.push({table,bounds,orders});onQuery(table,data);
+        let candidates=(data[table]??[]).filter(row=>filters.every(filter=>filter(row)));
+        candidates.sort((a,b)=>{for(const column of orders){const comparison=String(a[column]).localeCompare(String(b[column]));if(comparison)return comparison;}return 0;});
+        if(bounds)candidates=candidates.slice(bounds[0],bounds[1]+1);
+        return Promise.resolve({data:structuredClone(candidates),error:null}).then(resolve,reject);
+      },
+    };return query;
+  }}}};
+  return {admin,calls,selections:data.teacher_assignments.map(assignment=>({...selection,assignmentId:assignment.id}))};
+}
+const resolveBatch=async(mock,clock=()=>now)=>{
+  const {resolveTeacherAcademicContextsBatch}=await import('../supabase/functions/_shared/academic-context.ts');
+  return resolveTeacherAcademicContextsBatch(mock.admin,'teacher-a',mock.selections,clock);
+};
+
+test('19 classroom contexts share 12 inventory reads and retain selection order',async()=>{
+  const mock=batchMock();mock.selections.reverse();const contexts=await resolveBatch(mock);
+  assert.deepEqual(contexts.map(context=>context.assignmentId),mock.selections.map(selection=>selection.assignmentId));
+  assert.equal(mock.calls.length,12);
+  assert.equal(new Set(mock.calls.map(call=>call.table)).size,12);
+  assert.ok(contexts.every(context=>context.schoolId==='school-a' && context.unitCode==='PHY7-U02'));
+});
+for(const [name,change] of [
+  ['foreign-school classroom',data=>{data.classes[18].school_id='school-b';}],
+  ['foreign teacher',data=>{data.institutional_memberships[0].person_id='teacher-b';}],
+  ['revoked current grant',data=>{data.teacher_subject_authorizations[0].status='revoked';}],
+  ['suspended account',data=>{data.profiles[0].account_status='suspended';}],
+  ['duplicate subject grant',data=>{data.teacher_subject_authorizations.push({...data.teacher_subject_authorizations[0],id:'duplicate'});}],
+  ['wrong release snapshot',data=>{data.curriculum_release_units[0].unit_id='foreign';}],
+]) test('batch denies entire dashboard for '+name,async()=>{
+  await assert.rejects(resolveBatch(batchMock(19,change)),AcademicContextDenied);
+});
+
+test('batch captures expiry clock after the last inventory query',async()=>{
+  let finalRead=false;
+  const mock=batchMock(19,data=>{data.teacher_subject_authorizations[0].valid_to='2026-09-23T12:00:01Z';},table=>{if(table==='grades')finalRead=true;});
+  await assert.rejects(resolveBatch(mock,()=>{assert.equal(finalRead,true);return new Date('2026-09-23T12:00:01Z');}),AcademicContextDenied);
+});
+test('every batch request reads current grants again',async()=>{
+  let revoked=false;
+  const mock=batchMock(19,()=>{},(table,data)=>{if(table==='teacher_subject_authorizations' && revoked)data[table][0].status='revoked';});
+  assert.equal((await resolveBatch(mock)).length,19);revoked=true;
+  await assert.rejects(resolveBatch(mock),AcademicContextDenied);
+});
+test('batched ended assignments retain history only with current teacher membership',async()=>{
+  const mock=batchMock(19,data=>{data.teacher_assignments.forEach(assignment=>{assignment.status='ended';assignment.valid_to='2026-09-22T00:00:00Z';});data.academic_years[0].status='closed';});
+  assert.ok((await resolveBatch(mock)).every(context=>context.readOnlyHistory));
+  await assert.rejects(resolveBatch(batchMock(19,data=>{data.teacher_assignments[0].status='ended';data.institutional_memberships[0].status='revoked';})),AcademicContextDenied);
+});
+test('batch splits identifier lists at 100 and preserves every classroom',async()=>{
+  const mock=batchMock(101);assert.equal((await resolveBatch(mock)).length,101);
+  assert.equal(mock.calls.filter(call=>call.table==='teacher_assignments').length,2);
+  assert.equal(mock.calls.filter(call=>call.table==='classes').length,2);
+});
+test('release-unit inventory pages by release and unit without dropping selected later units',async()=>{
+  const mock=batchMock(1,data=>{data.curriculum_release_units=Array.from({length:1001},(_,i)=>({...rows.curriculum_release_units,unit_id:'unit-'+String(i).padStart(4,'0')}));data.units[0].id='unit-1000';});
+  mock.selections[0].unitId='unit-1000';assert.equal((await resolveBatch(mock))[0].unitId,'unit-1000');
+  const pages=mock.calls.filter(call=>call.table==='curriculum_release_units');
+  assert.deepEqual(pages.map(page=>page.bounds),[[0,999],[1000,1999]]);
+  assert.deepEqual(pages[0].orders,['curriculum_release_id','unit_id']);
+});

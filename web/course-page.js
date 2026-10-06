@@ -58,9 +58,14 @@ async function load() {
     root.innerHTML = `<div class="row">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['progress','Առաջընթաց']].map(([t,l])=>`<a class="button-link ghost" href="${esc(contextHref(context,t))}"${t===tab?' aria-current="page"':''}>${l}</a>`).join('')}</div><p>${data.baseline ? `Ելակետային ախտորոշիչ՝ ${data.baseline.correct}/${data.baseline.answered} · ${data.baseline.percent}%` : 'Ախտորոշիչը կսահմանի ձեր մեկնարկային մակարդակը։'}</p><p>${data.lifecycle ? `Յուրացման օգտագործված փորձեր՝ ${data.lifecycle.attemptsUsed}/${data.maximumAttempts ?? '—'}` : ''}</p>${resume}${legacyCourse ? `<p><a class="button-link ghost" href="${esc(legacyCourse)}">Դիտել դասընթացի թեմաները</a></p>` : ""}<div id="learningPlayer"></div>${tab==='progress' ? `<p class="subtle">Հմտությունների ցուցանիշները տվյալ թողարկման ուսումնական պատմությունն են։ Տարբեր կանոններով սեսիաները ներկայացվում են առանձին։</p><div class="matrix-wrap"><table><thead><tr><th>Հմտություն</th><th>Ուսումնական ապացույց</th><th>Պատրաստություն</th><th></th></tr></thead><tbody>${skills}</tbody></table></div>` : `<div class="amp-subject-grid">${active ? "" : modeCards}</div>${tab==='course'?`<h2>Հմտություններ</h2><div class="matrix-wrap"><table><tbody>${skills}</tbody></table></div>`:""}` }<h2>Ավարտված աշխատանքներ</h2><div class="matrix-wrap"><table><thead><tr><th>Տեսակ</th><th>Արդյունք</th><th>Ավարտ</th><th>Ծագում</th></tr></thead><tbody>${history || '<tr><td colspan="4">Ավարտված աշխատանք դեռ չկա։</td></tr>'}</tbody></table></div>`;
     const requestedMode = new URLSearchParams(location.search).get('action');
     if (requestedMode && Object.hasOwn(modes,requestedMode) && (data.modes[requestedMode]?.status==='configured' || active?.policyBindingId)) {
-      disposePlayer = mountLearningPlayer({root:document.getElementById('learningPlayer'),supabase,context,mode:requestedMode,targetSkillId:new URLSearchParams(location.search).get('skill'),isCurrent:valid,onComplete:()=>{ const url=new URL(location.href);url.searchParams.delete('action');url.searchParams.delete('skill');history.replaceState({},'',url);load(); }});
+      disposePlayer = mountLearningPlayer({root:document.getElementById('learningPlayer'),supabase,context,mode:requestedMode,targetSkillId:new URLSearchParams(location.search).get('skill'),isCurrent:valid,onComplete:()=>{ const url=new URL(location.href);url.searchParams.delete('action');url.searchParams.delete('skill');window.history.replaceState({},'',url);load(); }});
     }
-  } catch(error) { if (valid()) root.textContent = error.message; }
+  } catch(error) {
+    if (valid()) root.textContent = error.message === 'invalid_context_selection'
+      ? 'Ընտրեք դասընթացը գլխավոր էջից։'
+      : /[\u0531-\u0587]/.test(error.message ?? '') ? error.message
+      : 'Չհաջողվեց բեռնել դասընթացը։ Փորձեք նորից։';
+  }
   finally { if (valid()) document.getElementById('courseLoading').classList.add('hidden'); }
 }
 supabase.auth.onAuthStateChange((_event,session)=>{ ++version; clear(); if(session)setTimeout(load,0); });

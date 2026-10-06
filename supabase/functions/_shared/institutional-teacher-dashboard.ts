@@ -1,5 +1,6 @@
 import {
-  resolveAuthorizedTeacherAcademicContext,
+  authorizeTeacherAcademicRows,
+  resolveTeacherAcademicContextsBatch,
   type TeacherAcademicSelection,
 } from "./academic-context.ts";
 import { loadExactInstitutionalClassAnalytics } from "./institutional-teacher-analytics.ts";
@@ -58,7 +59,7 @@ export async function getInstitutionalTeacherDashboard(
   const now = Date.now();
   const today = new Date(now).toISOString().slice(0, 10);
   const memberships = requireRows(await admin.from("institutional_memberships")
-    .select("id,school_id,status,valid_from,valid_to")
+    .select("id,person_id,role,school_id,status,valid_from,valid_to")
     .eq("person_id", teacherId).eq("role", "teacher"))
     .filter((membership) => activeAt(membership, now));
   const membershipIds = memberships.map((membership) => membership.id);
@@ -69,7 +70,7 @@ export async function getInstitutionalTeacherDashboard(
     totals: { classes: 0, students: 0, studentsNeedingSupport: 0 },
   };
 
-  const [grantsResult, yearsResult, schoolsResult, assignmentsResult] = await Promise.all([
+  const [grantsResult, yearsResult, schoolsResult, assignmentsResult, profileResult] = await Promise.all([
     admin.from("teacher_subject_authorizations")
       .select("id,school_id,teacher_membership_id,subject_id,status,valid_from,valid_to")
       .in("teacher_membership_id", membershipIds).eq("status", "active"),
@@ -78,7 +79,10 @@ export async function getInstitutionalTeacherDashboard(
       .in("school_id", schoolIds),
     admin.from("schools").select("id,name").in("id", schoolIds),
     rowsByIds(admin,"teacher_assignments","id,school_id,academic_year_id,class_id,teacher_membership_id,subject_program_id,status,valid_from,valid_to","teacher_membership_id",membershipIds,q=>q.in("status",["active","ended"])),
+    admin.from("profiles").select("id,role,account_status").eq("id",teacherId).maybeSingle(),
   ]);
+  if(profileResult.error || !profileResult.data)throw new Error("academic_context_unavailable");
+  const profile=profileResult.data;
   const grants = requireRows(grantsResult).filter((grant) => activeAt(grant, now));
   const years = requireRows(yearsResult);
   const schools = requireRows(schoolsResult);
@@ -92,7 +96,7 @@ export async function getInstitutionalTeacherDashboard(
         .in("subject_id", subjectIds)
       : Promise.resolve({ data: [] }),
     subjectIds.length ? admin.from("subjects")
-      .select("id,name_hy,status").in("id", subjectIds) : Promise.resolve({ data: [] }),
+      .select("id,code,name_hy,status").in("id", subjectIds) : Promise.resolve({ data: [] }),
     classIds.length ? rowsByIds(admin,"classes","id,school_id,academic_year_id,teacher_id,name,is_active,subject_id,grade_id","id",classIds) : Promise.resolve({ data: [] }),
     classIds.length ? rowsByIds(admin,"institutional_class_enrollments","id,school_id,academic_year_id,class_id,student_id,student_membership_id,teacher_assignment_id,subject_program_id,status,valid_from,valid_to","class_id",classIds,q=>q.in("status",["active","ended"])) : Promise.resolve({ data: [] }),
   ]);
@@ -107,7 +111,7 @@ export async function getInstitutionalTeacherDashboard(
     : [];
   const gradeIds = [...new Set(programmes.map((programme) => programme.grade_id))];
   const grades = gradeIds.length
-    ? requireRows(await admin.from("grades").select("id,grade_number").in("id", gradeIds))
+    ? requireRows(await admin.from("grades").select("id,grade_number,label_hy").in("id", gradeIds))
     : [];
   const programmeIds = [...new Set(assignments.map((assignment) => assignment.subject_program_id))];
   const releases = programmeIds.length
@@ -214,9 +218,13 @@ export async function getInstitutionalTeacherDashboard(
     let analytics = { skills: [] as any[], students };
     let academicContext = null;
     if (selectedUnit) {
-      academicContext = await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selectedUnit, new Date(now));
+      academicContext = authorizeTeacherAcademicRows(teacherId,selectedUnit,{
+        assignment,membership,klass,year,programme,profile,grants,
+        release:releaseById.get(selectedUnit.curriculumReleaseId),unit:unitById.get(selectedUnit.unitId),
+        releaseUnitRow:releaseUnits.find(link=>link.curriculum_release_id===selectedUnit.curriculumReleaseId && link.unit_id===selectedUnit.unitId),
+        subject:subjectById.get(programme.subject_id),grade:gradeById.get(programme.grade_id),
+      },new Date(now));
       analytics = await loadExactInstitutionalClassAnalytics(admin, academicContext, students);
-      await resolveAuthorizedTeacherAcademicContext(admin, teacherId, selectedUnit);
     }
     const needingSupport = analytics.students.filter((student: any) =>
       student.weakSkills?.some((skill: any) => skill.band === "needs_support")).length;
@@ -234,13 +242,37 @@ export async function getInstitutionalTeacherDashboard(
       analyticsAvailable: Boolean(academicContext),
     };
   })).filter(Boolean);
+  // Revalidate every returned context after evidence reads. Shared rows are read
+  // once per request rather than once per classroom; ownership, grants and the
+  // final expiry clock still use the same authorization contract.
+  const contextualClasses=classPayload.filter(klass=>klass.selectedUnit);
+  const [finalContexts,finalMembershipResult,finalGrantResult]=await Promise.all([
+    resolveTeacherAcademicContextsBatch(admin,teacherId,contextualClasses.map(klass=>klass.selectedUnit)),
+    admin.from("institutional_memberships").select("id,person_id,role,school_id,status,valid_from,valid_to").in("id",membershipIds),
+    admin.from("teacher_subject_authorizations").select("id,school_id,teacher_membership_id,subject_id,status,valid_from,valid_to").in("teacher_membership_id",membershipIds),
+  ]);
+  const finalNow=Date.now();
+  const finalMemberships=requireRows(finalMembershipResult).filter(member=>member.person_id===teacherId && member.role==="teacher" && activeAt(member,finalNow));
+  const finalGrants=requireRows(finalGrantResult).filter(grant=>activeAt(grant,finalNow));
+  for(const klass of classPayload) {
+    const assignment=assignments.find(row=>row.id===klass.assignmentId);
+    const programme=programmeById.get(klass.subjectProgramId);
+    if(!finalMemberships.some(member=>member.id===assignment?.teacher_membership_id && member.school_id===klass.schoolId) ||
+      finalGrants.filter(grant=>grant.teacher_membership_id===assignment?.teacher_membership_id && grant.school_id===klass.schoolId && grant.subject_id===programme?.subject_id).length!==1)throw new Error("academic_context_unavailable");
+  }
+  contextualClasses.forEach((klass,index)=>{
+    klass.academicContext=finalContexts[index];
+    klass.isActive=klass.isActive && !finalContexts[index].readOnlyHistory;
+  });
+  const currentOptions=institutionalOptions.filter(option=>finalMemberships.some(member=>member.id===option.teacherMembershipId && member.school_id===option.schoolId) &&
+    finalGrants.filter(grant=>grant.teacher_membership_id===option.teacherMembershipId && grant.school_id===option.schoolId && grant.subject_id===programmeById.get(option.subjectProgramId)?.subject_id).length===1);
   if (requestedSelection && !classPayload.some(klass=>klass.assignmentId===requestedSelection.assignmentId)) throw new Error("academic_context_unavailable");
   const selectedClass = requestedSelection
     ? classPayload.find((klass) => klass.assignmentId === requestedSelection.assignmentId)
     : classPayload.find((klass) => klass.isActive) ?? classPayload[0];
   return {
     teacher: { id: teacherId, displayName },
-    institutionalTeacher: true, institutionalOptions, classes: classPayload,
+    institutionalTeacher: true, institutionalOptions:currentOptions, classes: classPayload,
     unitCode: selectedClass?.selectedUnit?.unitCode ?? null,
     curriculumReleaseId: selectedClass?.selectedUnit?.curriculumReleaseId ?? null,
     skills: selectedClass?.skills ?? [],
