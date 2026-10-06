@@ -268,6 +268,9 @@ export async function loadExactInstitutionalClassAnalytics(
 ) {
   const enrollmentIds = students.map((student) => student.enrollmentId);
   const studentIds = students.map((student) => student.id);
+  // No enrollment means no attributable evidence. Avoid reloading the same
+  // frozen question bank for every empty current or historical classroom.
+  if (!studentIds.length) return { skills: [], students: [] };
   const blueprintRows = requireRows(await admin.from("assessment_blueprints").select("id").eq("curriculum_release_id", context.curriculumReleaseId).eq("unit_id", context.unitId));
   const blueprintItems: any[] = [], versions: any[] = [];
   for (const ids of chunks(blueprintRows.map(row => row.id))) blueprintItems.push(...await paged((from,to) => admin.from("assessment_blueprint_items").select("assessment_blueprint_id,item_id,item_version_snapshot").in("assessment_blueprint_id",ids).range(from,to)));
@@ -340,4 +343,3 @@ export async function loadExactInstitutionalClassAnalytics(
     })),
   };
 }
-
