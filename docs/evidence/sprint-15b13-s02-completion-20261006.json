@@ -1,0 +1,1734 @@
+{
+  "sprint": "15B.13B",
+  "date": "2026-10-06",
+  "status": "second_s02_practice_batch_deployed_awaiting_human_review",
+  "scope": "Subject-aware Physics 7 Chapter II content only; no shared core, schema, API, browser, learner-policy or release activation changes.",
+  "implementation": {
+    "pullRequest": 145,
+    "head": "a59d5fe3d9aa9be4e31292c4ddd20fc07e8b7c57",
+    "main": "262aa8de89586b5fd81d1e5abe56efa1c66f9297",
+    "tree": "62976fb97c9759f16c8defa916059f3ad5e7101a",
+    "prCI": {
+      "runId": 37491567944,
+      "number": 1243,
+      "jobs": [
+        {
+          "id": 112365346898,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112365347223,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112365347316,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112365347360,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112366802597,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "nodePassed": 1224,
+      "chromiumPassed": 35
+    },
+    "mainCI": {
+      "runId": 37492075844,
+      "number": 1244,
+      "jobs": [
+        {
+          "id": 112367098331,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112367098705,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112367098828,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112367098933,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112368525398,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "nodePassed": 1224,
+      "chromiumPassed": 35
+    }
+  },
+  "migration": {
+    "file": "supabase/migrations/20261006154828_sprint_15b13_s02_practice_completion.sql",
+    "sha256": "863171ba623b16e37ac0bd6ac3f2a45a5943c58672132f98f591f0706e8582f7",
+    "cliVersion": "2.119.0",
+    "version": "20261006155942",
+    "name": "sprint_15b13_s02_practice_completion",
+    "exactSource": true
+  },
+  "authoring": {
+    "family": "PHY7-U02-S02-F03-PARTICLE-MODEL-LIMITS",
+    "template": "PHY7-U02-S02-T03-PARTICLE-MODEL-LIMITS",
+    "items": [
+      {
+        "id": "d0586f20-fdea-40fe-8882-2cde615facb5",
+        "code": "PHY7-U02-S02-I09",
+        "version": 1,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "evidencePurpose": "core_understanding",
+        "illustrationDisposition": "verbal_task_no_illustration_needed",
+        "stimulus": {}
+      },
+      {
+        "id": "1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc",
+        "code": "PHY7-U02-S02-I10",
+        "version": 1,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "evidencePurpose": "application",
+        "illustrationDisposition": "source_textbook_figure",
+        "stimulus": {
+          "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-23.png",
+          "kind": "image",
+          "altHy": "Նկար 23. երկու հենարանի միջև ամրացված պղնձե լար և դրա տակ գտնվող այրիչ։",
+          "source": {
+            "figure": 23,
+            "sha256": "538d24ea12db1075815db91bdb6a2fb14f6c2ad6b8a5ba086eb754516aa228d8",
+            "edition": "Physics 7 (2023)",
+            "printedPage": 25
+          }
+        }
+      },
+      {
+        "id": "6934b7b9-21a9-4fa3-97c6-76bc83baa106",
+        "code": "PHY7-U02-S02-I11",
+        "version": 1,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "evidencePurpose": "misconception_diagnosis",
+        "illustrationDisposition": "source_textbook_figure",
+        "stimulus": {
+          "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-22.png",
+          "kind": "image",
+          "altHy": "Նկար 22. ա՝ հեղուկով, բ՝ գազով գլաններ՝ առանց բեռի և բեռի ազդեցության տակ։",
+          "source": {
+            "figure": 22,
+            "sha256": "6b52815c60f5d3324d6c5c44c9896511d7a3e7adc1827edf1e5981c1adf9860b",
+            "edition": "Physics 7 (2023)",
+            "printedPage": 24
+          }
+        }
+      },
+      {
+        "id": "cab790d4-0920-4b58-8261-ebd6b215dc62",
+        "code": "PHY7-U02-S02-I12",
+        "version": 1,
+        "status": "draft",
+        "reviewStatus": "needs_review",
+        "evidencePurpose": "transfer_reasoning",
+        "illustrationDisposition": "verbal_task_no_illustration_needed",
+        "stimulus": {}
+      }
+    ],
+    "guide": {
+      "id": "3e34388a-f088-4ac9-bdb2-20a2de495d4b",
+      "title": "Ինչպե՞ս ստուգել մասնիկային բացատրությունը",
+      "status": "draft",
+      "version": 1
+    },
+    "guideAuthoring": [
+      {
+        "lifecycle_status": "draft",
+        "authoring_version": 1,
+        "published_runtime_version": null
+      }
+    ],
+    "answerKeys": [
+      "B",
+      "D",
+      "A",
+      "C"
+    ],
+    "distractorMappings": 12,
+    "newMisconceptions": 0,
+    "authoredS02Items": 12,
+    "approvedS02Items": 8,
+    "chapterInventory": [
+      {
+        "count": 4,
+        "status": "draft",
+        "review_status": "needs_review"
+      },
+      {
+        "count": 36,
+        "status": "published",
+        "review_status": "approved"
+      }
+    ],
+    "chapterTarget": 192,
+    "remainingUnauthored": 152
+  },
+  "source": {
+    "title": "Physics 7 (2023)",
+    "locator": "§7, printed pp.24–26; figures 22–23; p.26 question 11",
+    "sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "mediaProvenance": "chapter-ii-s02-textbook-media-20261006.json",
+    "reusedMediaVerified": [
+      {
+        "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-22.png",
+        "status": 200,
+        "sha256": "6b52815c60f5d3324d6c5c44c9896511d7a3e7adc1827edf1e5981c1adf9860b"
+      },
+      {
+        "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-23.png",
+        "status": 200,
+        "sha256": "538d24ea12db1075815db91bdb6a2fb14f6c2ad6b8a5ba086eb754516aa228d8"
+      }
+    ],
+    "prior32ItemIllustrationAuditComplete": false
+  },
+  "technicalQa": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S02-I09",
+        "itemId": "d0586f20-fdea-40fe-8882-2cde615facb5",
+        "versionNo": 1,
+        "fingerprint": "617c5e45f8ae614f0d794511a9002f9b",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S02-T03-PARTICLE-MODEL-LIMITS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "core_understanding",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "core_understanding": 1,
+                "application": 1,
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:1:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:1:core_understanding"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S02-I10",
+        "itemId": "1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc",
+        "versionNo": 1,
+        "fingerprint": "79c0826688eaeb4bcb2fd4dca293e51c",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S02-T03-PARTICLE-MODEL-LIMITS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "core_understanding": 1,
+                "application": 1,
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:1:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:1:core_understanding"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S02-I11",
+        "itemId": "6934b7b9-21a9-4fa3-97c6-76bc83baa106",
+        "versionNo": 1,
+        "fingerprint": "4452806af4106cd8da5b1101c66c21c0",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S02-T03-PARTICLE-MODEL-LIMITS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "core_understanding": 1,
+                "application": 1,
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:1:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:1:core_understanding"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S02-I12",
+        "itemId": "cab790d4-0920-4b58-8261-ebd6b215dc62",
+        "versionNo": 1,
+        "fingerprint": "ae91bdad49287b6cf5b9a6ee591e04b4",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S02-T03-PARTICLE-MODEL-LIMITS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "transfer_reasoning",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "core_understanding": 1,
+                "application": 1,
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|e81a661e-6da7-4a77-a5e1-73fdd95f6a54|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc:1:application,6934b7b9-21a9-4fa3-97c6-76bc83baa106:1:misconception_diagnosis,cab790d4-0920-4b58-8261-ebd6b215dc62:1:transfer_reasoning,d0586f20-fdea-40fe-8882-2cde615facb5:1:core_understanding"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ],
+    "deployedFunctionVersion": 11,
+    "sourceExactlyMatchesDeployed": true,
+    "recordedRunKey": "15b13b-deployed-catalogue-20261006",
+    "actor": "automated_system_technical_qa",
+    "runBy": null
+  },
+  "guideValidation": {
+    "errors": [],
+    "warnings": [],
+    "placeholders": [],
+    "checkedVariantCount": 4,
+    "variantFailures": [],
+    "method": "Deployed-identical validator evaluated against the four freshly read production drafts; not an authenticated production guide publication.",
+    "deployedFunctionVersion": 10,
+    "validatorExactlyMatchesDeployed": true
+  },
+  "preservation": {
+    "rollback": {
+      "tables": 100,
+      "changes": []
+    },
+    "afterDeploymentAndQa": {
+      "tables": 100,
+      "unchangedTables": 86,
+      "changedTables": [
+        {
+          "table": "curriculum_release_item_families",
+          "before": 163,
+          "after": 164,
+          "added": 1
+        },
+        {
+          "table": "item_answer_keys",
+          "before": 296,
+          "after": 300,
+          "added": 4
+        },
+        {
+          "table": "item_curriculum_scopes",
+          "before": 296,
+          "after": 300,
+          "added": 4
+        },
+        {
+          "table": "item_families",
+          "before": 86,
+          "after": 87,
+          "added": 1
+        },
+        {
+          "table": "item_family_curriculum_reconciliations",
+          "before": 86,
+          "after": 87,
+          "added": 1
+        },
+        {
+          "table": "item_misconception_mappings",
+          "before": 346,
+          "after": 358,
+          "added": 12
+        },
+        {
+          "table": "item_options",
+          "before": 576,
+          "after": 592,
+          "added": 16
+        },
+        {
+          "table": "item_qa_runs",
+          "before": 491,
+          "after": 495,
+          "added": 4
+        },
+        {
+          "table": "item_template_remediation_guides",
+          "before": 18,
+          "after": 19,
+          "added": 1
+        },
+        {
+          "table": "item_templates",
+          "before": 86,
+          "after": 87,
+          "added": 1
+        },
+        {
+          "table": "item_versions",
+          "before": 124,
+          "after": 128,
+          "added": 4
+        },
+        {
+          "table": "items",
+          "before": 296,
+          "after": 300,
+          "added": 4
+        },
+        {
+          "table": "remediation_guide_authoring_versions",
+          "before": 133,
+          "after": 134,
+          "added": 1
+        },
+        {
+          "table": "remediation_guide_versions",
+          "before": 63,
+          "after": 64,
+          "added": 1
+        }
+      ],
+      "modifiedOrMissingPriorRows": []
+    },
+    "tableChecksums": [
+      {
+        "table": "academic_identity_events",
+        "before": {
+          "rows": 494,
+          "md5": "438f0339dbbbd3104e5bbd0110ae6fe9"
+        },
+        "after": {
+          "rows": 494,
+          "md5": "438f0339dbbbd3104e5bbd0110ae6fe9"
+        }
+      },
+      {
+        "table": "academic_mastery_policy_activation",
+        "before": {
+          "rows": 1,
+          "md5": "6e1a63fb6eec8f81e4d1792078f49c47"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "6e1a63fb6eec8f81e4d1792078f49c47"
+        }
+      },
+      {
+        "table": "academic_mastery_policy_versions",
+        "before": {
+          "rows": 1,
+          "md5": "33b38545c0070113c573947187bc96ab"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "33b38545c0070113c573947187bc96ab"
+        }
+      },
+      {
+        "table": "academic_years",
+        "before": {
+          "rows": 2,
+          "md5": "1a1542decf778bf3de4b19bbcaa8e975"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "1a1542decf778bf3de4b19bbcaa8e975"
+        }
+      },
+      {
+        "table": "account_deletion_requests",
+        "before": {
+          "rows": 3,
+          "md5": "27f7bc851682e61b1b0543435ae15f86"
+        },
+        "after": {
+          "rows": 3,
+          "md5": "27f7bc851682e61b1b0543435ae15f86"
+        }
+      },
+      {
+        "table": "assessment_blueprint_items",
+        "before": {
+          "rows": 360,
+          "md5": "7a79e5cf149c5b81397dee836722b789"
+        },
+        "after": {
+          "rows": 360,
+          "md5": "7a79e5cf149c5b81397dee836722b789"
+        }
+      },
+      {
+        "table": "assessment_blueprints",
+        "before": {
+          "rows": 7,
+          "md5": "4c64b14184d45a2b0a74bfed3e15c2ad"
+        },
+        "after": {
+          "rows": 7,
+          "md5": "4c64b14184d45a2b0a74bfed3e15c2ad"
+        }
+      },
+      {
+        "table": "assessment_form_items",
+        "before": {
+          "rows": 80,
+          "md5": "02512d79c711fdd1ade10d8b8ba60bd5"
+        },
+        "after": {
+          "rows": 80,
+          "md5": "02512d79c711fdd1ade10d8b8ba60bd5"
+        }
+      },
+      {
+        "table": "assessment_forms",
+        "before": {
+          "rows": 4,
+          "md5": "261152bab0348edaf4fadca0385c850e"
+        },
+        "after": {
+          "rows": 4,
+          "md5": "261152bab0348edaf4fadca0385c850e"
+        }
+      },
+      {
+        "table": "assessment_policy_bindings",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "assessment_pool_curriculum_reconciliations",
+        "before": {
+          "rows": 3,
+          "md5": "38739fa3103681ea60cee54e7a138569"
+        },
+        "after": {
+          "rows": 3,
+          "md5": "38739fa3103681ea60cee54e7a138569"
+        }
+      },
+      {
+        "table": "assessment_pool_items",
+        "before": {
+          "rows": 280,
+          "md5": "bc60f679991a95387749629e7a2759cd"
+        },
+        "after": {
+          "rows": 280,
+          "md5": "bc60f679991a95387749629e7a2759cd"
+        }
+      },
+      {
+        "table": "assessment_pools",
+        "before": {
+          "rows": 4,
+          "md5": "c957e610a262f61bd1e50d9c715b6973"
+        },
+        "after": {
+          "rows": 4,
+          "md5": "c957e610a262f61bd1e50d9c715b6973"
+        }
+      },
+      {
+        "table": "assignment_skills",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "assignments",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "attempts",
+        "before": {
+          "rows": 42,
+          "md5": "34d7f71a2768a1afe6f357721e668393"
+        },
+        "after": {
+          "rows": 42,
+          "md5": "34d7f71a2768a1afe6f357721e668393"
+        }
+      },
+      {
+        "table": "calibration_analysis_scopes",
+        "before": {
+          "rows": 1,
+          "md5": "66a320758699f273bbb063911d160789"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "66a320758699f273bbb063911d160789"
+        }
+      },
+      {
+        "table": "calibration_change_decisions",
+        "before": {
+          "rows": 1,
+          "md5": "8b0c4bf4e83fce4a7e200da3dbd07129"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "8b0c4bf4e83fce4a7e200da3dbd07129"
+        }
+      },
+      {
+        "table": "calibration_decision_protocols",
+        "before": {
+          "rows": 1,
+          "md5": "4ca5dc7272d02d37a44484f34a20d01a"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "4ca5dc7272d02d37a44484f34a20d01a"
+        }
+      },
+      {
+        "table": "calibration_evidence_contracts",
+        "before": {
+          "rows": 2,
+          "md5": "daa564081564e197fd9aeea97ba1719f"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "daa564081564e197fd9aeea97ba1719f"
+        }
+      },
+      {
+        "table": "calibration_metric_sets",
+        "before": {
+          "rows": 2,
+          "md5": "996427ab7940c882c6e8a73af7183da2"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "996427ab7940c882c6e8a73af7183da2"
+        }
+      },
+      {
+        "table": "chapter_mastery_states",
+        "before": {
+          "rows": 1,
+          "md5": "9029019bf1569cae15fd93aa8b4ecff0"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "9029019bf1569cae15fd93aa8b4ecff0"
+        }
+      },
+      {
+        "table": "chapter_review_cycles",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "chapter_review_item_exposures",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "chapter_review_requirements",
+        "before": {
+          "rows": 1,
+          "md5": "88e05bc404e2045c5cfcbc2c8c5a8729"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "88e05bc404e2045c5cfcbc2c8c5a8729"
+        }
+      },
+      {
+        "table": "chapter_review_sessions",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "class_memberships",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "classes",
+        "before": {
+          "rows": 51,
+          "md5": "d912f0264d84d26d27652d742dd163bb"
+        },
+        "after": {
+          "rows": 51,
+          "md5": "d912f0264d84d26d27652d742dd163bb"
+        }
+      },
+      {
+        "table": "curriculum_authorities",
+        "before": {
+          "rows": 2,
+          "md5": "f00891e16d79dfa59fd01aa81703c4e7"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "f00891e16d79dfa59fd01aa81703c4e7"
+        }
+      },
+      {
+        "table": "curriculum_frameworks",
+        "before": {
+          "rows": 1,
+          "md5": "0638e3ed36e82f0798ffacfa0dab576f"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "0638e3ed36e82f0798ffacfa0dab576f"
+        }
+      },
+      {
+        "table": "curriculum_reconciliation_runs",
+        "before": {
+          "rows": 2,
+          "md5": "83b2a609e871b1a76ee7f4923ebf9dcf"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "83b2a609e871b1a76ee7f4923ebf9dcf"
+        }
+      },
+      {
+        "table": "curriculum_release_gate_checks",
+        "before": {
+          "rows": 14,
+          "md5": "e264300d5ca77755f1dab01f403be695"
+        },
+        "after": {
+          "rows": 14,
+          "md5": "e264300d5ca77755f1dab01f403be695"
+        }
+      },
+      {
+        "table": "curriculum_release_item_families",
+        "before": {
+          "rows": 163,
+          "md5": "d748da088c7e287bfac46451fac19b2f"
+        },
+        "after": {
+          "rows": 164,
+          "md5": "9cafd2d405f6865f1dc2a81ad46ae75c"
+        }
+      },
+      {
+        "table": "curriculum_release_outcomes",
+        "before": {
+          "rows": 19,
+          "md5": "75afa262e17160f068317076108f6a9e"
+        },
+        "after": {
+          "rows": 19,
+          "md5": "75afa262e17160f068317076108f6a9e"
+        }
+      },
+      {
+        "table": "curriculum_release_reconciliations",
+        "before": {
+          "rows": 3,
+          "md5": "23348377961931265b74f17eebb20505"
+        },
+        "after": {
+          "rows": 3,
+          "md5": "23348377961931265b74f17eebb20505"
+        }
+      },
+      {
+        "table": "curriculum_release_skills",
+        "before": {
+          "rows": 28,
+          "md5": "2bdc962e3ce06ad52373af19516a1147"
+        },
+        "after": {
+          "rows": 28,
+          "md5": "2bdc962e3ce06ad52373af19516a1147"
+        }
+      },
+      {
+        "table": "curriculum_release_units",
+        "before": {
+          "rows": 4,
+          "md5": "f69aedad164621e7739d0ccd6ee18ee9"
+        },
+        "after": {
+          "rows": 4,
+          "md5": "f69aedad164621e7739d0ccd6ee18ee9"
+        }
+      },
+      {
+        "table": "curriculum_releases",
+        "before": {
+          "rows": 3,
+          "md5": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+        },
+        "after": {
+          "rows": 3,
+          "md5": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+        }
+      },
+      {
+        "table": "curriculum_source_documents",
+        "before": {
+          "rows": 3,
+          "md5": "d9bcea03118cbabd2fa60ce5c6c66a76"
+        },
+        "after": {
+          "rows": 3,
+          "md5": "d9bcea03118cbabd2fa60ce5c6c66a76"
+        }
+      },
+      {
+        "table": "grades",
+        "before": {
+          "rows": 12,
+          "md5": "c0b7399ce2a7aa1462c2f2c5ae92209e"
+        },
+        "after": {
+          "rows": 12,
+          "md5": "c0b7399ce2a7aa1462c2f2c5ae92209e"
+        }
+      },
+      {
+        "table": "institutional_class_enrollments",
+        "before": {
+          "rows": 3,
+          "md5": "2bcd347d4f1247a630450995cb6794df"
+        },
+        "after": {
+          "rows": 3,
+          "md5": "2bcd347d4f1247a630450995cb6794df"
+        }
+      },
+      {
+        "table": "institutional_invitations",
+        "before": {
+          "rows": 44,
+          "md5": "a314346dccd5b0e17ef7951ddd93ac5b"
+        },
+        "after": {
+          "rows": 44,
+          "md5": "a314346dccd5b0e17ef7951ddd93ac5b"
+        }
+      },
+      {
+        "table": "institutional_join_codes",
+        "before": {
+          "rows": 25,
+          "md5": "d1d989db201d4cd1858fba855ff69c3d"
+        },
+        "after": {
+          "rows": 25,
+          "md5": "d1d989db201d4cd1858fba855ff69c3d"
+        }
+      },
+      {
+        "table": "institutional_memberships",
+        "before": {
+          "rows": 28,
+          "md5": "0008566a942b4d7eaf65c4804fc1d1d0"
+        },
+        "after": {
+          "rows": 28,
+          "md5": "0008566a942b4d7eaf65c4804fc1d1d0"
+        }
+      },
+      {
+        "table": "item_answer_keys",
+        "before": {
+          "rows": 296,
+          "md5": "cfc69c9633fa25e646ccd2c3d9f34b1b"
+        },
+        "after": {
+          "rows": 300,
+          "md5": "c8d438c44b320cec24eafd1e4ea5fbad"
+        }
+      },
+      {
+        "table": "item_curriculum_scopes",
+        "before": {
+          "rows": 296,
+          "md5": "707c7adb42815de7b2812b092dcd98ca"
+        },
+        "after": {
+          "rows": 300,
+          "md5": "4556a3fef1d74a73f291959a4dc88938"
+        }
+      },
+      {
+        "table": "item_families",
+        "before": {
+          "rows": 86,
+          "md5": "d169aa44d4b08497196f27a72532a2be"
+        },
+        "after": {
+          "rows": 87,
+          "md5": "a255497f8dcc609c001c9cd18c9fa282"
+        }
+      },
+      {
+        "table": "item_family_curriculum_reconciliations",
+        "before": {
+          "rows": 86,
+          "md5": "f8fae8eaed141bd8003aa327cb68a225"
+        },
+        "after": {
+          "rows": 87,
+          "md5": "0350a2fb9efe9ddb50943e2cef1e8173"
+        }
+      },
+      {
+        "table": "item_misconception_mappings",
+        "before": {
+          "rows": 346,
+          "md5": "f9b3e7a1fd56f33f6e723b9e7ecdf1b9"
+        },
+        "after": {
+          "rows": 358,
+          "md5": "bdb9b4e31bdc0b3b2f140bd5245606e9"
+        }
+      },
+      {
+        "table": "item_options",
+        "before": {
+          "rows": 576,
+          "md5": "b59af18e0d8f7b54cc7fa364f16f3f6f"
+        },
+        "after": {
+          "rows": 592,
+          "md5": "939467e32b7c06901d4ba4f4e91fb53b"
+        }
+      },
+      {
+        "table": "item_qa_runs",
+        "before": {
+          "rows": 491,
+          "md5": "df256a5ba70beb7ebbe7e327adc65e12"
+        },
+        "after": {
+          "rows": 495,
+          "md5": "c3e3f6852d8332c9955ddf15d5692be6"
+        }
+      },
+      {
+        "table": "item_reviews",
+        "before": {
+          "rows": 563,
+          "md5": "7433bcf3976a8b282b425593bac6a182"
+        },
+        "after": {
+          "rows": 563,
+          "md5": "7433bcf3976a8b282b425593bac6a182"
+        }
+      },
+      {
+        "table": "item_template_remediation_guides",
+        "before": {
+          "rows": 18,
+          "md5": "4c94f861a2e3590edd2eb7f67235f683"
+        },
+        "after": {
+          "rows": 19,
+          "md5": "a769d5ccf748ca28b3dcc0f852326bf1"
+        }
+      },
+      {
+        "table": "item_templates",
+        "before": {
+          "rows": 86,
+          "md5": "49cfc046c052be21bfa22d2588da582b"
+        },
+        "after": {
+          "rows": 87,
+          "md5": "ffbac32a4c2ee7d4fe3e39389c9955e5"
+        }
+      },
+      {
+        "table": "item_versions",
+        "before": {
+          "rows": 124,
+          "md5": "0b1df55ad28f642b81112f4b73139f46"
+        },
+        "after": {
+          "rows": 128,
+          "md5": "60ad2f3f47c2b11d859c613ed63eb2cd"
+        }
+      },
+      {
+        "table": "items",
+        "before": {
+          "rows": 296,
+          "md5": "193531781988c052fb006a7c1eb3ec4a"
+        },
+        "after": {
+          "rows": 300,
+          "md5": "745d7157fb541a3cca04329cb03d845c"
+        }
+      },
+      {
+        "table": "learning_model_configurations",
+        "before": {
+          "rows": 1,
+          "md5": "aa979267d2449ba3a083dfc983f41c7b"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "aa979267d2449ba3a083dfc983f41c7b"
+        }
+      },
+      {
+        "table": "learning_model_runtime_bindings",
+        "before": {
+          "rows": 1,
+          "md5": "140ad5194c426a009a1691a0b174d28c"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "140ad5194c426a009a1691a0b174d28c"
+        }
+      },
+      {
+        "table": "learning_outcome_normative_mappings",
+        "before": {
+          "rows": 13,
+          "md5": "bd3f64e9c18740200398ac1667556f6f"
+        },
+        "after": {
+          "rows": 13,
+          "md5": "bd3f64e9c18740200398ac1667556f6f"
+        }
+      },
+      {
+        "table": "learning_outcomes",
+        "before": {
+          "rows": 13,
+          "md5": "e9f873ec7283e478cebc6eed27be25b8"
+        },
+        "after": {
+          "rows": 13,
+          "md5": "e9f873ec7283e478cebc6eed27be25b8"
+        }
+      },
+      {
+        "table": "learning_session_items",
+        "before": {
+          "rows": 79,
+          "md5": "dbbb19423c945d8f0ccb85d2312a7800"
+        },
+        "after": {
+          "rows": 79,
+          "md5": "dbbb19423c945d8f0ccb85d2312a7800"
+        }
+      },
+      {
+        "table": "learning_sessions",
+        "before": {
+          "rows": 7,
+          "md5": "e4759e4e1bce4966032782547033e231"
+        },
+        "after": {
+          "rows": 7,
+          "md5": "e4759e4e1bce4966032782547033e231"
+        }
+      },
+      {
+        "table": "legacy_learning_blueprint_mappings",
+        "before": {
+          "rows": 7,
+          "md5": "57efa30bbcff4c536f428f490071af7a"
+        },
+        "after": {
+          "rows": 7,
+          "md5": "57efa30bbcff4c536f428f490071af7a"
+        }
+      },
+      {
+        "table": "mastery_check_attempts",
+        "before": {
+          "rows": 1,
+          "md5": "792e2f317f1c2e2ddf41daa4af787800"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "792e2f317f1c2e2ddf41daa4af787800"
+        }
+      },
+      {
+        "table": "misconception_review_events",
+        "before": {
+          "rows": 44,
+          "md5": "b67911dbfe7c2056725b15e9e52da31d"
+        },
+        "after": {
+          "rows": 44,
+          "md5": "b67911dbfe7c2056725b15e9e52da31d"
+        }
+      },
+      {
+        "table": "misconceptions",
+        "before": {
+          "rows": 53,
+          "md5": "9b113211e4e1988f7a74ca6a2f957dda"
+        },
+        "after": {
+          "rows": 53,
+          "md5": "9b113211e4e1988f7a74ca6a2f957dda"
+        }
+      },
+      {
+        "table": "pilot_evidence_classifications",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "pilot_gate_checks",
+        "before": {
+          "rows": 11,
+          "md5": "3e41b79199790e11902129d4a9904e67"
+        },
+        "after": {
+          "rows": 11,
+          "md5": "3e41b79199790e11902129d4a9904e67"
+        }
+      },
+      {
+        "table": "pilot_participant_events",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "pilot_participants",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "pilot_runs",
+        "before": {
+          "rows": 1,
+          "md5": "585ce8b9927e4db5865e2b08b06c76bb"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "585ce8b9927e4db5865e2b08b06c76bb"
+        }
+      },
+      {
+        "table": "privacy_preferences",
+        "before": {
+          "rows": 2,
+          "md5": "2973d89d91d51e1ffdb58c236077bd45"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "2973d89d91d51e1ffdb58c236077bd45"
+        }
+      },
+      {
+        "table": "profiles",
+        "before": {
+          "rows": 11,
+          "md5": "172990109533e720e9eb026819eae3a1"
+        },
+        "after": {
+          "rows": 11,
+          "md5": "172990109533e720e9eb026819eae3a1"
+        }
+      },
+      {
+        "table": "recommendation_events",
+        "before": {
+          "rows": 820,
+          "md5": "fa2bbe9f9742f0ef760bf7d700599c6f"
+        },
+        "after": {
+          "rows": 820,
+          "md5": "fa2bbe9f9742f0ef760bf7d700599c6f"
+        }
+      },
+      {
+        "table": "remediation_events",
+        "before": {
+          "rows": 3,
+          "md5": "07b9cad8f63900c6ff583713d134541f"
+        },
+        "after": {
+          "rows": 3,
+          "md5": "07b9cad8f63900c6ff583713d134541f"
+        }
+      },
+      {
+        "table": "remediation_guide_authoring_versions",
+        "before": {
+          "rows": 133,
+          "md5": "e03d1e52d3dbe18c22feb7c0f20d604e"
+        },
+        "after": {
+          "rows": 134,
+          "md5": "f4e75dec2a44d650dbb7fe181afda2e7"
+        }
+      },
+      {
+        "table": "remediation_guide_versions",
+        "before": {
+          "rows": 63,
+          "md5": "915c4735d972b9f977d2b4e7df616297"
+        },
+        "after": {
+          "rows": 64,
+          "md5": "6003d418f36685fbbe2e8e36d550fd8e"
+        }
+      },
+      {
+        "table": "runtime_builds",
+        "before": {
+          "rows": 23,
+          "md5": "5ed4421927adee887cc3678d283fa9ba"
+        },
+        "after": {
+          "rows": 23,
+          "md5": "5ed4421927adee887cc3678d283fa9ba"
+        }
+      },
+      {
+        "table": "schools",
+        "before": {
+          "rows": 2,
+          "md5": "9865da797be602b85b211d112a007b60"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "9865da797be602b85b211d112a007b60"
+        }
+      },
+      {
+        "table": "security_audit_log",
+        "before": {
+          "rows": 34,
+          "md5": "709dd2f00d574bae5f7a3b4c09399835"
+        },
+        "after": {
+          "rows": 34,
+          "md5": "709dd2f00d574bae5f7a3b4c09399835"
+        }
+      },
+      {
+        "table": "skill_curriculum_reconciliations",
+        "before": {
+          "rows": 18,
+          "md5": "da993b9b2b52e950abb94d7164716d8b"
+        },
+        "after": {
+          "rows": 18,
+          "md5": "da993b9b2b52e950abb94d7164716d8b"
+        }
+      },
+      {
+        "table": "skill_outcome_curriculum_mappings",
+        "before": {
+          "rows": 20,
+          "md5": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+        },
+        "after": {
+          "rows": 20,
+          "md5": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+        }
+      },
+      {
+        "table": "skill_outcomes",
+        "before": {
+          "rows": 20,
+          "md5": "6bf2a6b0b3e913d3979fff7f20e778c7"
+        },
+        "after": {
+          "rows": 20,
+          "md5": "6bf2a6b0b3e913d3979fff7f20e778c7"
+        }
+      },
+      {
+        "table": "skill_prerequisites",
+        "before": {
+          "rows": 17,
+          "md5": "29495957b75eeb48e09d6e19e18fac35"
+        },
+        "after": {
+          "rows": 17,
+          "md5": "29495957b75eeb48e09d6e19e18fac35"
+        }
+      },
+      {
+        "table": "skill_remediation_guides",
+        "before": {
+          "rows": 10,
+          "md5": "3a51fc6e3a850044cd5c01d3a1919b49"
+        },
+        "after": {
+          "rows": 10,
+          "md5": "3a51fc6e3a850044cd5c01d3a1919b49"
+        }
+      },
+      {
+        "table": "skills",
+        "before": {
+          "rows": 19,
+          "md5": "39cb5c0425998f0c9580a50f1d1fef42"
+        },
+        "after": {
+          "rows": 19,
+          "md5": "39cb5c0425998f0c9580a50f1d1fef42"
+        }
+      },
+      {
+        "table": "staff_account_provisioning",
+        "before": {
+          "rows": 5,
+          "md5": "3e4f0bc3bf46ed82df1b85b9ae777a51"
+        },
+        "after": {
+          "rows": 5,
+          "md5": "3e4f0bc3bf46ed82df1b85b9ae777a51"
+        }
+      },
+      {
+        "table": "student_account_acceptances",
+        "before": {
+          "rows": 1,
+          "md5": "0bb495a0246142dba06a3cab138ee6b8"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "0bb495a0246142dba06a3cab138ee6b8"
+        }
+      },
+      {
+        "table": "student_item_exposure_events",
+        "before": {
+          "rows": 42,
+          "md5": "9c2421c9dfc40827b348e6adf7efd681"
+        },
+        "after": {
+          "rows": 42,
+          "md5": "9c2421c9dfc40827b348e6adf7efd681"
+        }
+      },
+      {
+        "table": "student_skill_mastery",
+        "before": {
+          "rows": 13,
+          "md5": "46440fe2dcdb54ec21804d679701e8ee"
+        },
+        "after": {
+          "rows": 13,
+          "md5": "46440fe2dcdb54ec21804d679701e8ee"
+        }
+      },
+      {
+        "table": "student_skill_mastery_by_release",
+        "before": {
+          "rows": 13,
+          "md5": "2f4adfd4245382d10ee42fa849245706"
+        },
+        "after": {
+          "rows": 13,
+          "md5": "2f4adfd4245382d10ee42fa849245706"
+        }
+      },
+      {
+        "table": "subject_program_source_bindings",
+        "before": {
+          "rows": 2,
+          "md5": "db5a2e5a6eeaf3ebb8f495ba168b46cc"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "db5a2e5a6eeaf3ebb8f495ba168b46cc"
+        }
+      },
+      {
+        "table": "subject_programs",
+        "before": {
+          "rows": 2,
+          "md5": "059c338eb8b61dd1a145e7f0e939d88b"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "059c338eb8b61dd1a145e7f0e939d88b"
+        }
+      },
+      {
+        "table": "subjects",
+        "before": {
+          "rows": 2,
+          "md5": "6933185fb385a4a08dbc33da9ae34508"
+        },
+        "after": {
+          "rows": 2,
+          "md5": "6933185fb385a4a08dbc33da9ae34508"
+        }
+      },
+      {
+        "table": "teacher_assignments",
+        "before": {
+          "rows": 51,
+          "md5": "54fce030a767633f71359a7ea5c4eb57"
+        },
+        "after": {
+          "rows": 51,
+          "md5": "54fce030a767633f71359a7ea5c4eb57"
+        }
+      },
+      {
+        "table": "teacher_subject_authorizations",
+        "before": {
+          "rows": 23,
+          "md5": "8d7efac22a036118be6edceba540fcf0"
+        },
+        "after": {
+          "rows": 23,
+          "md5": "8d7efac22a036118be6edceba540fcf0"
+        }
+      },
+      {
+        "table": "textbook_mappings",
+        "before": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        "after": {
+          "rows": 0,
+          "md5": "d41d8cd98f00b204e9800998ecf8427e"
+        }
+      },
+      {
+        "table": "textbooks",
+        "before": {
+          "rows": 1,
+          "md5": "2bc41205920960439a10b062b665430e"
+        },
+        "after": {
+          "rows": 1,
+          "md5": "2bc41205920960439a10b062b665430e"
+        }
+      },
+      {
+        "table": "topics",
+        "before": {
+          "rows": 10,
+          "md5": "151157285282fb209680de90a905753c"
+        },
+        "after": {
+          "rows": 10,
+          "md5": "151157285282fb209680de90a905753c"
+        }
+      },
+      {
+        "table": "units",
+        "before": {
+          "rows": 3,
+          "md5": "56e3ac546c3eb249032bbfb6b7657801"
+        },
+        "after": {
+          "rows": 3,
+          "md5": "56e3ac546c3eb249032bbfb6b7657801"
+        }
+      }
+    ]
+  },
+  "advisors": {
+    "securityFindingsUnchanged": true,
+    "performanceFindingsUnchanged": true
+  },
+  "frontend": {
+    "deploymentId": "dpl_HoYqQZX9KpPNo7DKX4syTSUc6uyH",
+    "status": "READY",
+    "commit": "262aa8de89586b5fd81d1e5abe56efa1c66f9297",
+    "http": {
+      "status": 200,
+      "release": {
+        "schemaVersion": 1,
+        "commit": "262aa8de89586b5fd81d1e5abe56efa1c66f9297"
+      }
+    },
+    "changedBrowserFiles": 0
+  },
+  "release": {
+    "candidate": {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "status": "draft"
+    },
+    "newItemPoolLinks": 0,
+    "newBlueprints": 0,
+    "newModelOrPolicyBindings": 0,
+    "humanReviewApproved": false,
+    "externalSmeApproved": false,
+    "learnerActivated": false
+  },
+  "verificationLimits": [
+    "PGlite/auth-query doubles are isolated tests, not authenticated live browser acceptance.",
+    "Technical QA uses the actual deployed evaluator with a read-only production-snapshot adapter; no human content approval is attributed to the agent.",
+    "The bank count is authored content, not learner-release readiness."
+  ]
+}

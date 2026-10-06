@@ -1,9 +1,9 @@
 # Chapter II S02 — second practice/review expansion
 
 **Sprint:** 15B.13, second bounded S02 batch (15B.13B). **Date:** 2026-10-06.
-**Status:** Prepared and technically validated; deployment and human review pending.
+**Status:** Deployed and technically validated; human review pending.
 
-John approved continuing the sprint map after the first S02 expansion's four questions and guide were reviewed. This slice adds **I09–I12**, completing the authored S02 practice/review target of twelve questions, subject to review of these four drafts. The chapter's Option B contract is unchanged: 96 practice/review, 32 diagnostic and 64 protected mastery questions, 192 total. After deployment, the chapter inventory will be **40 authored: 36 approved and four drafts**, with **152 still to author**.
+John approved continuing the sprint map after the first S02 expansion's four questions and guide were reviewed. This slice adds **I09–I12**, completing the authored S02 practice/review target of twelve questions, subject to review of these four drafts. The chapter's Option B contract is unchanged: 96 practice/review, 32 diagnostic and 64 protected mastery questions, 192 total. The deployed chapter inventory is **40 authored: 36 approved and four drafts**, with **152 still to author**.
 
 ## Evidence design and textbook grounding
 
@@ -26,4 +26,22 @@ This is a subject-aware content extension to the existing governed schema. It ch
 
 The migration fails closed if the eight predecessor questions lack current approval/passing QA, the preceding guide is not published, the approved misconceptions are unavailable, the candidate is no longer draft or the new family already exists. Every mutation is scoped to the new family/template.
 
-Two isolated PGlite tests execute the migration and actual content-QA handler with auth/query doubles: four technically valid drafts; twelve distractor mappings; balanced keys; valid media hashes; guide validation across all four variants; preservation of every pre-existing fixture row; complete rollback; duplicate rejection; seven predecessor/governance denials; no assessment-pool or blueprint changes. They are not authenticated production browser acceptance. The actual production transaction probe also executed the complete migration followed by rollback and preserved all **100 public-table checksums**. The deployed v11 content-QA source matches the repository exactly. Required PR/main CI and deployed catalogue readback remain to be recorded before handoff.
+Two isolated PGlite tests execute the migration and actual content-QA handler with auth/query doubles: four technically valid drafts; twelve distractor mappings; balanced keys; valid media hashes; guide validation across all four variants; preservation of every pre-existing fixture row; complete rollback; duplicate rejection; seven predecessor/governance denials; no assessment-pool or blueprint changes. They are not authenticated production browser acceptance. The actual production transaction probe also executed the complete migration followed by rollback and preserved all **100 public-table checksums**. The deployed v11 content-QA source matches the repository exactly. PR CI #1243 and independent main CI #1244 passed all five required jobs: 1,224 Node tests, 35 native Chromium tests, both PostgreSQL jobs and aggregate Platform release checks.
+
+## Deployment and review handoff
+
+[PR #145](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/145) merged as `262aa8de89586b5fd81d1e5abe56efa1c66f9297`. Migration `sprint_15b13_s02_practice_completion` is applied at production version `20261006155942`; the recorded statement exactly matches the reviewed repository SQL (SHA-256 `863171ba623b16e37ac0bd6ac3f2a45a5943c58672132f98f591f0706e8582f7`). The local filename uses the CLI-generated version `20261006154828`; both identifiers are recorded for traceability.
+
+Fresh production readback passes the deployed v11 content-QA evaluator for all four version-1 drafts, without errors or warnings. Four append-only technical QA records explicitly identify an automated system actor and the read-only production-snapshot evaluator method; this was not an authenticated live Edge invocation. The deployed-identical guide validator also passes all four variants without errors or warnings. No human approval was created.
+
+After deployment and QA, exactly the expected additions occurred in 14 tables; every prior row and the other 86 complete tables are unchanged. Security/performance advisor findings are unchanged. Both reused image URLs returned HTTP 200 with the recorded hashes. Production deployment metadata and an independent HTTP 200 `release.json` read confirm implementation main `262aa8de89586b5fd81d1e5abe56efa1c66f9297`. No browser source or Edge bundle changed. [Deployment evidence](evidence/sprint-15b13-s02-completion-20261006.json).
+
+Review the questions first, then the separate guide:
+
+- [S02 I09](https://www.haiedu.am/content-item.html?id=d0586f20-fdea-40fe-8882-2cde615facb5)
+- [S02 I10](https://www.haiedu.am/content-item.html?id=1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc)
+- [S02 I11](https://www.haiedu.am/content-item.html?id=6934b7b9-21a9-4fa3-97c6-76bc83baa106)
+- [S02 I12](https://www.haiedu.am/content-item.html?id=cab790d4-0920-4b58-8261-ebd6b215dc62)
+- [Ինչպե՞ս ստուգել մասնիկային բացատրությունը](https://www.haiedu.am/content-guides.html?id=template%3A3e34388a-f088-4ac9-bdb2-20a2de495d4b)
+
+Question approval and guide publication are separate human actions. The existing S02 questions/guides retain their approved/published versions. Chapter II stays draft, and the 192-question expansion remains open.
