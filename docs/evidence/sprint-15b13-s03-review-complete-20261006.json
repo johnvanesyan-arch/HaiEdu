@@ -1,0 +1,420 @@
+{
+  "checkpoint": "15B.13D human review complete",
+  "observedAt": "2026-10-06T20:03:42.955399+00:00",
+  "approvedItems": [
+    {
+      "code": "PHY7-U02-S03-I01",
+      "versionNo": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "lastReviewedAt": "2026-10-01T13:21:57.416+00:00"
+    },
+    {
+      "code": "PHY7-U02-S03-I02",
+      "versionNo": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "lastReviewedAt": "2026-10-01T16:16:27.985+00:00"
+    },
+    {
+      "code": "PHY7-U02-S03-I03",
+      "versionNo": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "lastReviewedAt": "2026-10-01T16:16:55.376+00:00"
+    },
+    {
+      "code": "PHY7-U02-S03-I04",
+      "versionNo": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "lastReviewedAt": "2026-10-01T16:17:14.906+00:00"
+    },
+    {
+      "code": "PHY7-U02-S03-I05",
+      "versionNo": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "lastReviewedAt": "2026-10-06T19:15:32.654975+00:00"
+    },
+    {
+      "code": "PHY7-U02-S03-I06",
+      "versionNo": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "lastReviewedAt": "2026-10-06T19:19:03.779236+00:00"
+    },
+    {
+      "code": "PHY7-U02-S03-I07",
+      "versionNo": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "lastReviewedAt": "2026-10-06T19:33:13.095689+00:00"
+    },
+    {
+      "code": "PHY7-U02-S03-I08",
+      "versionNo": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "lastReviewedAt": "2026-10-06T19:40:25.514294+00:00"
+    }
+  ],
+  "misconceptions": [
+    {
+      "code": "atom_element_confusion",
+      "status": "active"
+    },
+    {
+      "code": "atom_molecule_confusion",
+      "status": "active"
+    },
+    {
+      "code": "element_molecule_confusion",
+      "status": "active"
+    },
+    {
+      "code": "molecule_atom_composition_confusion",
+      "status": "active"
+    },
+    {
+      "code": "atom_identity_changes_in_molecule",
+      "status": "active"
+    },
+    {
+      "code": "different_elements_atoms_identical",
+      "status": "active"
+    },
+    {
+      "code": "particle_count_levels_confusion",
+      "status": "active"
+    },
+    {
+      "code": "each_substance_requires_new_element",
+      "status": "active"
+    },
+    {
+      "code": "molecular_properties_assigned_to_atom",
+      "status": "active"
+    },
+    {
+      "code": "unjoined_atoms_as_molecule",
+      "status": "active"
+    }
+  ],
+  "newGuide": {
+    "id": "ca38d70c-8ba6-4b7d-96a4-21bf9ed7e033",
+    "status": "published",
+    "runtimeVersion": 2,
+    "authoringVersion": 4,
+    "immutableRuntimeContentMatches": true
+  },
+  "oldGuideRuntimeVersion": 3,
+  "technicalQa": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S03-I05",
+        "itemId": "6b53c545-ff31-4139-87cc-1d2cf2e0b785",
+        "versionNo": 2,
+        "fingerprint": "842af8e374aabca32d260e008a004dcb",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S03-T02-ATOMIC-MODELS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "core_understanding",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "core_understanding": 1,
+                "application": 1,
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:2:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:2:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:2:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S03-I06",
+        "itemId": "e027ee39-2b63-4d5f-8ec0-ec66dbe064db",
+        "versionNo": 1,
+        "fingerprint": "abe51c1bbe47ab042d82b4ab47033413",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S03-T02-ATOMIC-MODELS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "core_understanding": 1,
+                "application": 1,
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:2:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:2:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:2:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S03-I07",
+        "itemId": "fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda",
+        "versionNo": 2,
+        "fingerprint": "9ad6b792f5d16e6310e56ba8e0286741",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S03-T02-ATOMIC-MODELS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "core_understanding": 1,
+                "application": 1,
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:2:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:2:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:2:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S03-I08",
+        "itemId": "7fbf21c8-7e75-422c-a822-3f85a7dd9775",
+        "versionNo": 2,
+        "fingerprint": "61d37a412ccacf622500c09b0f214036",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S03-T02-ATOMIC-MODELS",
+              "familyItemCount": 4,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.25,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "transfer_reasoning",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "core_understanding": 1,
+                "application": 1,
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|f20da9ad-4b9b-47d9-b866-c9dbbfa55406|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis,transfer_reasoning|1|6b53c545-ff31-4139-87cc-1d2cf2e0b785:2:core_understanding,7fbf21c8-7e75-422c-a822-3f85a7dd9775:2:transfer_reasoning,e027ee39-2b63-4d5f-8ec0-ec66dbe064db:1:application,fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda:2:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "guideValidation": {
+    "guideId": "ca38d70c-8ba6-4b7d-96a4-21bf9ed7e033",
+    "status": "published",
+    "version": 2,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 4,
+      "variantFailures": []
+    }
+  },
+  "qaRefresh": {
+    "runKey": "15b13d-review-complete-20261006",
+    "recordsAppended": 4,
+    "runBy": null,
+    "actorType": "automated_system_technical_qa",
+    "method": "actual deployed v11 evaluator with production catalogue and read-only adapter; not authenticated live Edge invocation",
+    "freshnessGuard": "538689370bd5b7d9579284dde5c41416",
+    "contentEdits": 0,
+    "humanApprovalsCreated": 0
+  },
+  "semanticReview": "I05 and I07 prompt wording, I08 prompt/options and one misconception wording improved; demands, answer keys and distractor mapping semantics retained. Guide edits preserved and validated. Options compared by item and option key, not recreated row IDs.",
+  "planning": {
+    "s03Approved": 8,
+    "s03OpenSlots": 4,
+    "chapterIIApproved": 44,
+    "unAuthoredTo192": 148
+  },
+  "releaseGate": "Chapter II remains draft and learner-inactive; this checkpoint is not external SME or release authorization."
+}
