@@ -34,7 +34,7 @@ export const slot=(scopeIndex,mode)=>700+scopeIndex*100+({diagnostic:0,practice:
 export const itemIds=(scopeIndex,mode='diagnostic')=>[id(slot(scopeIndex,mode)+1),id(slot(scopeIndex,mode)+2),id(slot(scopeIndex,mode)+3)];
 export const blueprintId=(scopeIndex,mode='diagnostic')=>id(slot(scopeIndex,mode)+40);
 export const formId=scopeIndex=>id(slot(scopeIndex,'diagnostic')+60);
-export async function seed(db){
+export async function seed(db,curriculumScopes=scopes){
  const exec=(sql,params=[])=>db.query(sql,params);
  for(const [n,role] of [[10,'student'],[11,'student'],[20,'teacher'],[21,'teacher']])await exec('insert into profiles values($1,$2,\'active\')',[id(n),role]);
  for(const n of [10,11]){await exec('insert into auth.users(id) values($1)',[id(n)]);await exec('insert into auth.sessions values($1,$2,null)',[id(n+391),id(n)]);}
@@ -54,9 +54,9 @@ export async function seed(db){
  await exec("insert into institutional_class_enrollments values($1,$2,$3,$4,$5,$6,$7,$8,'active','2020-01-01',null)",[id(373),id(10),id(302),id(312),id(322),id(333),id(352),id(202)]);
  await exec("insert into academic_mastery_policy_versions values($1,'active','2020-01-01',3)",[id(601)]);
  await exec('insert into runtime_builds values($1)',[id(621)]);
- for(const m of [611,612])await exec("insert into learning_model_configurations values($1,'approved',$2,$3)",[id(m),id(m===611?501:502),JSON.stringify({assessmentPolicyContracts:scopes.filter(s=>s.model===m).flatMap(s=>['diagnostic','practice','mastery_check','chapter_review'].map(mode=>policy(s,mode)))})]);
- for(let idx=0;idx<scopes.length;idx++){
-  const s=scopes[idx];await exec('insert into units values($1,$2)',[id(s.unit),id(s.programme)]);
+ for(const m of [611,612])await exec("insert into learning_model_configurations values($1,'approved',$2,$3)",[id(m),id(m===611?501:502),JSON.stringify({assessmentPolicyContracts:curriculumScopes.filter(s=>s.model===m).flatMap(s=>['diagnostic','practice','mastery_check','chapter_review'].map(mode=>policy(s,mode)))})]);
+ for(let idx=0;idx<curriculumScopes.length;idx++){
+  const s=curriculumScopes[idx];await exec('insert into units values($1,$2)',[id(s.unit),id(s.programme)]);
   await exec('insert into curriculum_release_units values($1,$2,$3)',[id(s.release),id(s.unit),s.code]);
   for(const k of s.skills){await exec('insert into skills values($1)',[id(k)]);await exec('insert into curriculum_release_skills values($1,$2)',[id(s.release),id(k)]);}
   await exec("insert into learning_model_runtime_bindings values($1,$2,$3,$4,'active',$5)",[id(631+idx),id(s.release),s.code,id(s.model),id(621)]);
@@ -73,6 +73,6 @@ export async function seed(db){
   }
  }
 }
-export async function database({migrated=true}={}){const db=new PGlite();try{await db.exec(predecessorSQL());await db.exec(legacyGuardsSQL());if(migrated)await db.exec(readFileSync(migrationPath,'utf8'));await seed(db);return db;}catch(e){await db.close();throw e;}}
+export async function database({migrated=true,client=null,curriculumScopes=scopes}={}){const db=client??new PGlite();try{await db.exec(predecessorSQL());await db.exec(legacyGuardsSQL());if(migrated)await db.exec(readFileSync(migrationPath,'utf8'));await seed(db,curriculumScopes);return db;}catch(e){await db.close();throw e;}}
 export async function bind(db,idx=0,mode='diagnostic'){return(await db.query('select service_bind_assessment_policy($1) id',[blueprintId(idx,mode)])).rows[0].id;}
 export async function start(db,idx=0,mode='diagnostic',overrides={}){const s=scopes[idx],binding=overrides.binding??await bind(db,idx,mode);return(await db.query('select service_start_governed_session_atomic($1,$2,$3,$4,$5,$6,$7) result',[overrides.student??id(10),overrides.auth??id(401),overrides.enrollment??id(s.enrollment),binding,overrides.form===undefined?(mode==='diagnostic'?formId(idx):null):overrides.form,overrides.skill??null,overrides.items??itemIds(idx,mode)])).rows[0].result;}
