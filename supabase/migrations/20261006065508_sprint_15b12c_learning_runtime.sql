@@ -147,6 +147,22 @@ begin
  or not ((c#>'{recommendation,corePolicy}') ?& array['default','insufficientEvidence','weakWithUnmetPrerequisite','secureWithNextSkill'])
  or c#>'{recommendation,corePolicy}' is null
  then raise exception 'unsupported_learning_model_contract'; end if;
+ if exists(select 1 from jsonb_array_elements(p->'desiredDifficultyBands') band
+   where jsonb_typeof(band) is distinct from 'object' or jsonb_typeof(band->'difficulty') is distinct from 'number'
+   or not (band->>'difficulty' ~ '^[0-9]+$')
+   or (band->>'difficulty')::integer not between (m#>>'{difficultyWeight,difficultyMin}')::integer and (m#>>'{difficultyWeight,difficultyMax}')::integer
+   or (band ? 'masteryBelow')=(band ? 'masteryAtOrAbove')
+   or jsonb_typeof(coalesce(band->'masteryBelow',band->'masteryAtOrAbove')) is distinct from 'number'
+   or coalesce(band->>'masteryBelow',band->>'masteryAtOrAbove')::numeric not between 0 and 1)
+ or exists(select 1 from unnest(array['oneWrong','twoOrMoreWrong']) k
+   where jsonb_typeof(p->'consecutiveWrongAdjustment'->k) is distinct from 'number'
+   or not (p->'consecutiveWrongAdjustment'->>k ~ '^-[0-9]+$'))
+ or (p#>>'{consecutiveWrongAdjustment,twoOrMoreWrong}')::integer>(p#>>'{consecutiveWrongAdjustment,oneWrong}')::integer
+ or c#>>'{recommendation,corePolicy,default}' is distinct from 'continue_current_skill'
+ or c#>>'{recommendation,corePolicy,insufficientEvidence}' is distinct from 'collect_more_evidence'
+ or c#>>'{recommendation,corePolicy,weakWithUnmetPrerequisite}' is distinct from 'review_prerequisite'
+ or c#>>'{recommendation,corePolicy,secureWithNextSkill}' is distinct from 'advance_skill'
+ then raise exception 'unsupported_learning_model_contract'; end if;
 end;
 $$;
 
