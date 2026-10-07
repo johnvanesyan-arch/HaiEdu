@@ -52,3 +52,7 @@ After verified deployment, review the two S05 questions, the two definitions, th
 - [PHY7-U02-S05-I06 v1](https://www.haiedu.am/content-item.html?id=23d9df58-9745-44b6-bba3-92f765b7759f&from=review)
 - Review the two new S05 definitions in [Թյուր պատկերացումներ](https://www.haiedu.am/content-misconceptions.html).
 - After publishing the questions, review [the separate draft guide](https://www.haiedu.am/content-guides.html?id=template%3A7d5e2e67-a1e8-4168-b4f5-4a3b73505679).
+
+## Combined-review update — 2026-10-07 08:09 UTC
+
+I05 is now edited and approved at v2; I06 remains draft v1. The two new definitions and separate guide are still draft. Both current-family technical QA refreshes and guide validation pass, preserving the human edit/approval. John authorized preparing S06 while reviewing both batches together. [Combined review links and S06 checkpoint](chapter-ii-s06-whole-bank-review.md#deployment-checkpoint--2026-10-07-0809-utc). This supersedes the earlier two-pending-question handoff, without closing S05's six-slot planning gap.
