@@ -1,5 +1,5 @@
 {
-  "observedAt": "2026-10-07T20:54:40.779837+00:00",
+  "observedAt": "2026-10-07T20:55:38.20223+00:00",
   "guardTables": [
     "items",
     "item_options",
@@ -1145,5 +1145,12 @@
     "policyBindings": 0,
     "review_exposure_links": 0
   },
-  "decisionBoundary": "The approved 96/32/64 plan and sixteen-question assessments remain unchanged. No new bank count, numerical model, pool, form, blueprint or learner release is approved by this reconciliation."
+  "decisionBoundary": "The approved 96/32/64 plan and sixteen-question assessments remain unchanged. No new bank count, numerical model, pool, form, blueprint or learner release is approved by this reconciliation.",
+  "observationTimes": {
+    "humanReviewAndHistoryReadAt": "2026-10-07T20:53:52.098159+00:00",
+    "catalogueAndCorpusFingerprintReadAt": "2026-10-07T20:54:40.779837+00:00",
+    "technicalQaAppendCreatedAt": "2026-10-07 20:55:33.260541+00",
+    "latestQaAndReleaseGatesReadAt": "2026-10-07T20:55:38.20223+00:00",
+    "compositionNote": "Evidence combines separately timestamped reads. The top-level observedAt is the latest captured data-read time, not a claim of one atomic snapshot. The same 18-table content fingerprint was also confirmed after the QA append."
+  }
 }

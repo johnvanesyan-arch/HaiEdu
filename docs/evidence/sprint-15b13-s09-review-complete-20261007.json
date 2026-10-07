@@ -1,6 +1,6 @@
 {
   "sprint": "15B.13J review closure",
-  "observedAt": "2026-10-07T20:53:52.098159+00:00",
+  "observedAt": "2026-10-07T20:55:38.20223+00:00",
   "author": "Codex automated verification; actual human decisions read from governed records",
   "sourceCommit": "2e3f5712d0abd2a65a592252f0574a47f9ee7f62",
   "sourceMainCI": {
@@ -494,5 +494,12 @@
     "fingerprint": "62e63168d5d9ab9beecc8a9ff818a3a8",
     "activated_at": null
   },
-  "boundary": "S09 human decisions are verified complete; this does not assert final chapter content-QA, SME, assessment validity or release approval."
+  "boundary": "S09 human decisions are verified complete; this does not assert final chapter content-QA, SME, assessment validity or release approval.",
+  "observationTimes": {
+    "humanReviewAndHistoryReadAt": "2026-10-07T20:53:52.098159+00:00",
+    "catalogueAndCorpusFingerprintReadAt": "2026-10-07T20:54:40.779837+00:00",
+    "technicalQaAppendCreatedAt": "2026-10-07 20:55:33.260541+00",
+    "latestQaAndReleaseGatesReadAt": "2026-10-07T20:55:38.20223+00:00",
+    "compositionNote": "Evidence combines separately timestamped reads. The top-level observedAt is the latest captured data-read time, not a claim of one atomic snapshot. The same 18-table content fingerprint was also confirmed after the QA append."
+  }
 }
