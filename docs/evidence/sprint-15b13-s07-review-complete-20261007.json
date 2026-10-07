@@ -1,0 +1,213 @@
+{
+  "sprint": "15B.13H",
+  "observedAt": "2026-10-07T16:33:32.11317+00:00",
+  "state": "human_review_complete",
+  "items": [
+    {
+      "code": "PHY7-U02-S07-I01",
+      "id": "d93a2f4c-8373-4196-be73-d4a171c9af72",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-10-05 07:59:42.150756+00"
+    },
+    {
+      "code": "PHY7-U02-S07-I02",
+      "id": "bcc7d9b4-e053-4b6a-973b-f03e8eb26166",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-10-05 08:00:22.357548+00"
+    },
+    {
+      "code": "PHY7-U02-S07-I03",
+      "id": "f3ae5421-1bb8-41ee-9e6d-283a6738fd51",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-10-05 08:00:46.53947+00"
+    },
+    {
+      "code": "PHY7-U02-S07-I04",
+      "id": "0877aecf-2d1c-4917-8ecf-e689154b1694",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-10-05 08:01:14.99131+00"
+    },
+    {
+      "code": "PHY7-U02-S07-I05",
+      "id": "8736e373-a291-4cb4-ae38-cb88a67f9ca1",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "reviewedAt": "2026-10-07 16:29:00.534173+00"
+    }
+  ],
+  "recordedReviews": [
+    {
+      "id": "2221c6c6-7aa7-4d48-b4bf-0a84aaedee06",
+      "itemId": "d93a2f4c-8373-4196-be73-d4a171c9af72",
+      "version": 1,
+      "decision": "approved",
+      "type": "content",
+      "createdAt": "2026-10-05T07:59:42.150756+00:00"
+    },
+    {
+      "id": "8b19a8bc-3cae-4312-8a57-bc7e285c6515",
+      "itemId": "bcc7d9b4-e053-4b6a-973b-f03e8eb26166",
+      "version": 1,
+      "decision": "approved",
+      "type": "content",
+      "createdAt": "2026-10-05T08:00:22.357548+00:00"
+    },
+    {
+      "id": "07ffba12-aefe-4337-adfe-eef11987f97a",
+      "itemId": "f3ae5421-1bb8-41ee-9e6d-283a6738fd51",
+      "version": 1,
+      "decision": "approved",
+      "type": "content",
+      "createdAt": "2026-10-05T08:00:46.53947+00:00"
+    },
+    {
+      "id": "67331ea5-d498-4bc5-958c-394e6da8626e",
+      "itemId": "0877aecf-2d1c-4917-8ecf-e689154b1694",
+      "version": 1,
+      "decision": "approved",
+      "type": "content",
+      "createdAt": "2026-10-05T08:01:14.99131+00:00"
+    },
+    {
+      "id": "7f73193a-7747-44a2-b2e2-6035c45a7692",
+      "itemId": "8736e373-a291-4cb4-ae38-cb88a67f9ca1",
+      "version": 1,
+      "decision": "approved",
+      "type": "content",
+      "createdAt": "2026-10-07T16:29:00.534173+00:00"
+    }
+  ],
+  "definitions": [
+    {
+      "code": "diffusion_waits_for_observation_period",
+      "status": "active"
+    },
+    {
+      "code": "solid_diffusion_requires_melting",
+      "status": "active"
+    }
+  ],
+  "guide": {
+    "id": "a8e09d7e-a94a-4963-bf48-ea15d5f4f19b",
+    "runtimeVersion": 2,
+    "authoringVersion": 4,
+    "status": "published",
+    "allContentMatchesImmutableSnapshots": true,
+    "contentSha256": "5e80086db0255a8d57bc3f2aa4ac53b1587c67a90166303c5864b620dc06b825"
+  },
+  "qa": {
+    "sourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S07-I05",
+        "itemId": "8736e373-a291-4cb4-ae38-cb88a67f9ca1",
+        "versionNo": 1,
+        "fingerprint": "ab79d87c066a1ec83e1d9d17a4a0c30b",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S07-T02-SLOW-DIFFUSION",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 0,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "B",
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|9db8aa01-548c-425c-a4f4-1966ee1b7910|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|8736e373-a291-4cb4-ae38-cb88a67f9ca1:1:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "guideValidation": {
+    "guideId": "a8e09d7e-a94a-4963-bf48-ea15d5f4f19b",
+    "status": "published",
+    "version": 2,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 1,
+      "variantFailures": []
+    }
+  },
+  "writes": "Read-only review verification; no duplicate QA rows or human content/approval mutations",
+  "evidenceMerge": {
+    "pr": 162,
+    "head": "ae46e53371d058a3c73af96f923447a3d211fd92",
+    "main": "14f5a98fcf262c22987cf9312778c56bcb99dd09",
+    "tree": "1119ebe9e551ad5116e1a6097dc1db0391b953ac",
+    "ci": 1283,
+    "allFiveJobsPassed": true
+  },
+  "notion": {
+    "version": "3.13",
+    "exactTargetedContentVerified": true,
+    "nativePageTagsBefore": 12,
+    "nativePageTagsAfter": 12,
+    "rolloverOccurrencesBefore": 19,
+    "rolloverOccurrencesAfter": 19
+  },
+  "remaining": [
+    "seven S07 planning slots",
+    "all Chapter II assessment/model/SME/pilot/release gates"
+  ],
+  "release": "draft; activation not authorized"
+}
