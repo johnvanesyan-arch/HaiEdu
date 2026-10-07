@@ -1,0 +1,491 @@
+{
+  "slice": "15B.13M",
+  "author": "Codex automated author and comparison reviewer",
+  "scope": "Read-only candidate refinement and human-content-review handoff; no production writes",
+  "authorization": {
+    "userMessage": "okay, all good. we can continue then",
+    "submittedAt": "2026-10-08T02:01:31+04:00",
+    "interpretation": "Approved recommended bounded refinement of three conditional leads at unchanged targets; not human question approval, staging or release",
+    "precedingProposal": {
+      "speaker": "assistant",
+      "exactText": "`AGENTS.md` requires your bank-plan decision after a shortfall. Approve refining these three candidates while keeping all targets unchanged?",
+      "proposalScope": "Bounded refinement/review of the three conditional S02 leads at unchanged targets, before any staging proposal; unresolved slots remain explicit."
+    },
+    "interveningClarification": {
+      "userQuestions": [
+        "Only 4 diagnostic questions?\nand Mastery 8?",
+        "how many questions will the students have for chapter 2 overall?"
+      ],
+      "clarificationProvided": "The 4 diagnostic / 8 mastery targets are per skill. Chapter II has eight skills and a 96 practice / 32 diagnostic / 64 mastery = 192 question-bank target. Student diagnostic/mastery sittings contain 16 questions each; the diagnostic has two bank forms and mastery supports up to three attempts plus reserves. The assistant distinguished the 56 currently approved practice items from the planned bank.",
+      "effectOnProposal": "Clarified counts; did not replace the pending recommended refinement with the alternative pause plan or change targets."
+    },
+    "decisionBasis": "The explicit pending proposal was to refine the three candidates at unchanged targets. After clarification of those targets, John replied “okay, all good. we can continue then.” This continuation authorizes that bounded refinement; it does not approve question content, staging, a smaller bank or release."
+  },
+  "baselineMain": "f97a1f7628b5b75290a11b0fd74c4dc44f2292c5",
+  "observationTimes": {
+    "reusedContentSnapshot": "2026-10-07T21:14:25.046222+00:00",
+    "priorFinalGuard": "2026-10-07T21:25:49.095429+00:00",
+    "refinementBefore": "2026-10-07T22:02:50.068835+00:00",
+    "refinementAfter": "2026-10-07T22:07:48.008455+00:00"
+  },
+  "guardMethod": "Per table MD5 of concatenated sorted full-row MD5s using to_jsonb(row)::text; row counts also match. Separate observation times; unchanged corpus reused rather than freshly fetched.",
+  "matchesPriorFinalGuard": true,
+  "all38TablesUnchanged": true,
+  "beforeTables": [
+    {
+      "row_count": 7,
+      "table_name": "assessment_blueprints",
+      "fingerprint": "4c64b14184d45a2b0a74bfed3e15c2ad"
+    },
+    {
+      "row_count": 80,
+      "table_name": "assessment_form_items",
+      "fingerprint": "02512d79c711fdd1ade10d8b8ba60bd5"
+    },
+    {
+      "row_count": 4,
+      "table_name": "assessment_forms",
+      "fingerprint": "261152bab0348edaf4fadca0385c850e"
+    },
+    {
+      "row_count": 0,
+      "table_name": "assessment_policy_bindings",
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "row_count": 280,
+      "table_name": "assessment_pool_items",
+      "fingerprint": "bc60f679991a95387749629e7a2759cd"
+    },
+    {
+      "row_count": 4,
+      "table_name": "assessment_pools",
+      "fingerprint": "c957e610a262f61bd1e50d9c715b6973"
+    },
+    {
+      "row_count": 42,
+      "table_name": "attempts",
+      "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+    },
+    {
+      "row_count": 0,
+      "table_name": "chapter_review_item_exposures",
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "row_count": 14,
+      "table_name": "curriculum_release_gate_checks",
+      "fingerprint": "e264300d5ca77755f1dab01f403be695"
+    },
+    {
+      "row_count": 171,
+      "table_name": "curriculum_release_item_families",
+      "fingerprint": "1a2f26ca00245124c4c4945e1718b58c"
+    },
+    {
+      "row_count": 28,
+      "table_name": "curriculum_release_skills",
+      "fingerprint": "2bdc962e3ce06ad52373af19516a1147"
+    },
+    {
+      "row_count": 3,
+      "table_name": "curriculum_releases",
+      "fingerprint": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+    },
+    {
+      "row_count": 3,
+      "table_name": "curriculum_source_documents",
+      "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+    },
+    {
+      "row_count": 316,
+      "table_name": "item_answer_keys",
+      "fingerprint": "1c69f7da2f946807f70699e6d92afcf4"
+    },
+    {
+      "row_count": 316,
+      "table_name": "item_curriculum_scopes",
+      "fingerprint": "921f5c8864fbf0e7807180b1cf4a4916"
+    },
+    {
+      "row_count": 94,
+      "table_name": "item_families",
+      "fingerprint": "fecc2b2d198d8060becc4880ca9aceb2"
+    },
+    {
+      "row_count": 94,
+      "table_name": "item_family_curriculum_reconciliations",
+      "fingerprint": "6f0779894d4b7f9050096b90b2e537b5"
+    },
+    {
+      "row_count": 406,
+      "table_name": "item_misconception_mappings",
+      "fingerprint": "1d9f9bc47e16308e490bc8fbff06fcfa"
+    },
+    {
+      "row_count": 656,
+      "table_name": "item_options",
+      "fingerprint": "866366d9e85dfad2058eca062e3e0557"
+    },
+    {
+      "row_count": 555,
+      "table_name": "item_qa_runs",
+      "fingerprint": "f77ea4e42c63b3ea57b19f605f5d3fb6"
+    },
+    {
+      "row_count": 585,
+      "table_name": "item_reviews",
+      "fingerprint": "f8357bccf44e56f6fa197b2a71fbd32e"
+    },
+    {
+      "row_count": 26,
+      "table_name": "item_template_remediation_guides",
+      "fingerprint": "bcd8d89b80c0d759f236b5d7ec00e848"
+    },
+    {
+      "row_count": 94,
+      "table_name": "item_templates",
+      "fingerprint": "e61019f00919d956aebfad3fa6f8e910"
+    },
+    {
+      "row_count": 163,
+      "table_name": "item_versions",
+      "fingerprint": "bb2c35df53408a3ae3082c4716013700"
+    },
+    {
+      "row_count": 316,
+      "table_name": "items",
+      "fingerprint": "f907ed0d566e6b2e93a8f2b670128270"
+    },
+    {
+      "row_count": 1,
+      "table_name": "learning_model_runtime_bindings",
+      "fingerprint": "140ad5194c426a009a1691a0b174d28c"
+    },
+    {
+      "row_count": 13,
+      "table_name": "learning_outcomes",
+      "fingerprint": "e9f873ec7283e478cebc6eed27be25b8"
+    },
+    {
+      "row_count": 79,
+      "table_name": "learning_session_items",
+      "fingerprint": "dbbb19423c945d8f0ccb85d2312a7800"
+    },
+    {
+      "row_count": 68,
+      "table_name": "misconception_review_events",
+      "fingerprint": "5b58b4fe447968ad0a50bb7a50ef3065"
+    },
+    {
+      "row_count": 76,
+      "table_name": "misconceptions",
+      "fingerprint": "20451f752ddf2f84e2620bba87afd38a"
+    },
+    {
+      "row_count": 164,
+      "table_name": "remediation_guide_authoring_versions",
+      "fingerprint": "c7e9d247bf8e86c4caf7d10757f0639e"
+    },
+    {
+      "row_count": 79,
+      "table_name": "remediation_guide_versions",
+      "fingerprint": "cd1eb19ae8e630582287731bdda99979"
+    },
+    {
+      "row_count": 18,
+      "table_name": "skill_curriculum_reconciliations",
+      "fingerprint": "da993b9b2b52e950abb94d7164716d8b"
+    },
+    {
+      "row_count": 20,
+      "table_name": "skill_outcome_curriculum_mappings",
+      "fingerprint": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+    },
+    {
+      "row_count": 20,
+      "table_name": "skill_outcomes",
+      "fingerprint": "6bf2a6b0b3e913d3979fff7f20e778c7"
+    },
+    {
+      "row_count": 10,
+      "table_name": "skill_remediation_guides",
+      "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+    },
+    {
+      "row_count": 19,
+      "table_name": "skills",
+      "fingerprint": "39cb5c0425998f0c9580a50f1d1fef42"
+    },
+    {
+      "row_count": 42,
+      "table_name": "student_item_exposure_events",
+      "fingerprint": "9c2421c9dfc40827b348e6adf7efd681"
+    }
+  ],
+  "afterTables": [
+    {
+      "row_count": 7,
+      "table_name": "assessment_blueprints",
+      "fingerprint": "4c64b14184d45a2b0a74bfed3e15c2ad"
+    },
+    {
+      "row_count": 80,
+      "table_name": "assessment_form_items",
+      "fingerprint": "02512d79c711fdd1ade10d8b8ba60bd5"
+    },
+    {
+      "row_count": 4,
+      "table_name": "assessment_forms",
+      "fingerprint": "261152bab0348edaf4fadca0385c850e"
+    },
+    {
+      "row_count": 0,
+      "table_name": "assessment_policy_bindings",
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "row_count": 280,
+      "table_name": "assessment_pool_items",
+      "fingerprint": "bc60f679991a95387749629e7a2759cd"
+    },
+    {
+      "row_count": 4,
+      "table_name": "assessment_pools",
+      "fingerprint": "c957e610a262f61bd1e50d9c715b6973"
+    },
+    {
+      "row_count": 42,
+      "table_name": "attempts",
+      "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+    },
+    {
+      "row_count": 0,
+      "table_name": "chapter_review_item_exposures",
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "row_count": 14,
+      "table_name": "curriculum_release_gate_checks",
+      "fingerprint": "e264300d5ca77755f1dab01f403be695"
+    },
+    {
+      "row_count": 171,
+      "table_name": "curriculum_release_item_families",
+      "fingerprint": "1a2f26ca00245124c4c4945e1718b58c"
+    },
+    {
+      "row_count": 28,
+      "table_name": "curriculum_release_skills",
+      "fingerprint": "2bdc962e3ce06ad52373af19516a1147"
+    },
+    {
+      "row_count": 3,
+      "table_name": "curriculum_releases",
+      "fingerprint": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+    },
+    {
+      "row_count": 3,
+      "table_name": "curriculum_source_documents",
+      "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+    },
+    {
+      "row_count": 316,
+      "table_name": "item_answer_keys",
+      "fingerprint": "1c69f7da2f946807f70699e6d92afcf4"
+    },
+    {
+      "row_count": 316,
+      "table_name": "item_curriculum_scopes",
+      "fingerprint": "921f5c8864fbf0e7807180b1cf4a4916"
+    },
+    {
+      "row_count": 94,
+      "table_name": "item_families",
+      "fingerprint": "fecc2b2d198d8060becc4880ca9aceb2"
+    },
+    {
+      "row_count": 94,
+      "table_name": "item_family_curriculum_reconciliations",
+      "fingerprint": "6f0779894d4b7f9050096b90b2e537b5"
+    },
+    {
+      "row_count": 406,
+      "table_name": "item_misconception_mappings",
+      "fingerprint": "1d9f9bc47e16308e490bc8fbff06fcfa"
+    },
+    {
+      "row_count": 656,
+      "table_name": "item_options",
+      "fingerprint": "866366d9e85dfad2058eca062e3e0557"
+    },
+    {
+      "row_count": 555,
+      "table_name": "item_qa_runs",
+      "fingerprint": "f77ea4e42c63b3ea57b19f605f5d3fb6"
+    },
+    {
+      "row_count": 585,
+      "table_name": "item_reviews",
+      "fingerprint": "f8357bccf44e56f6fa197b2a71fbd32e"
+    },
+    {
+      "row_count": 26,
+      "table_name": "item_template_remediation_guides",
+      "fingerprint": "bcd8d89b80c0d759f236b5d7ec00e848"
+    },
+    {
+      "row_count": 94,
+      "table_name": "item_templates",
+      "fingerprint": "e61019f00919d956aebfad3fa6f8e910"
+    },
+    {
+      "row_count": 163,
+      "table_name": "item_versions",
+      "fingerprint": "bb2c35df53408a3ae3082c4716013700"
+    },
+    {
+      "row_count": 316,
+      "table_name": "items",
+      "fingerprint": "f907ed0d566e6b2e93a8f2b670128270"
+    },
+    {
+      "row_count": 1,
+      "table_name": "learning_model_runtime_bindings",
+      "fingerprint": "140ad5194c426a009a1691a0b174d28c"
+    },
+    {
+      "row_count": 13,
+      "table_name": "learning_outcomes",
+      "fingerprint": "e9f873ec7283e478cebc6eed27be25b8"
+    },
+    {
+      "row_count": 79,
+      "table_name": "learning_session_items",
+      "fingerprint": "dbbb19423c945d8f0ccb85d2312a7800"
+    },
+    {
+      "row_count": 68,
+      "table_name": "misconception_review_events",
+      "fingerprint": "5b58b4fe447968ad0a50bb7a50ef3065"
+    },
+    {
+      "row_count": 76,
+      "table_name": "misconceptions",
+      "fingerprint": "20451f752ddf2f84e2620bba87afd38a"
+    },
+    {
+      "row_count": 164,
+      "table_name": "remediation_guide_authoring_versions",
+      "fingerprint": "c7e9d247bf8e86c4caf7d10757f0639e"
+    },
+    {
+      "row_count": 79,
+      "table_name": "remediation_guide_versions",
+      "fingerprint": "cd1eb19ae8e630582287731bdda99979"
+    },
+    {
+      "row_count": 18,
+      "table_name": "skill_curriculum_reconciliations",
+      "fingerprint": "da993b9b2b52e950abb94d7164716d8b"
+    },
+    {
+      "row_count": 20,
+      "table_name": "skill_outcome_curriculum_mappings",
+      "fingerprint": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+    },
+    {
+      "row_count": 20,
+      "table_name": "skill_outcomes",
+      "fingerprint": "6bf2a6b0b3e913d3979fff7f20e778c7"
+    },
+    {
+      "row_count": 10,
+      "table_name": "skill_remediation_guides",
+      "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+    },
+    {
+      "row_count": 19,
+      "table_name": "skills",
+      "fingerprint": "39cb5c0425998f0c9580a50f1d1fef42"
+    },
+    {
+      "row_count": 42,
+      "table_name": "student_item_exposure_events",
+      "fingerprint": "9c2421c9dfc40827b348e6adf7efd681"
+    }
+  ],
+  "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+  "outcomeId": "c244a6e8-8f15-4e99-b209-1035c56971da",
+  "corpusReference": "sprint-15b13-s02-feasibility-20261007.json",
+  "corpusCounts": {
+    "currentItems": 316,
+    "historicalItemVersions": 163,
+    "S02CurrentItems": 12,
+    "S02HistoricalVersions": 23,
+    "S03CurrentItems": 8,
+    "S03HistoricalVersions": 14
+  },
+  "inspectionScope": "Refresh guards/source hash; reread all S02 questions/options/keys and three guides, superseded I10 v1, related Chapter I content, relevant source pages; updated candidate-to-corpus and within-pair comparisons. No fresh certification of all unrelated historical content.",
+  "candidates": [
+    {
+      "id": "S02-F-D01",
+      "revision": 2,
+      "proposedPurpose": "diagnostic",
+      "slot": "A1",
+      "decision": "retain_for_human_content_review",
+      "classification": "new_reasoning_coverage_candidate",
+      "previousSpecSha256": "75bf4371e7c5ad8bde78c5b0ce841728b96b387bd0aa579b214d27301f5bb2fe",
+      "specSha256": "f814b5977549b6430a7204762684769f081d3b3847d0cf4f6d8ca376a97dc339"
+    },
+    {
+      "id": "S02-F-M01",
+      "revision": 2,
+      "proposedPurpose": "mastery",
+      "slot": "M1",
+      "decision": "retain_for_human_content_review",
+      "classification": "new_reasoning_coverage_candidate",
+      "previousSpecSha256": "ca7e8d3d1e4a34d4497264218b551be927559d223281ef525f65f725c30570e6",
+      "specSha256": "faf5ff43d91d0590235a83ad8d8ba9ccef3dde471204892546f858bfd17aad8c"
+    },
+    {
+      "id": "S02-F-D02",
+      "revision": 2,
+      "proposedPurpose": "diagnostic",
+      "slot": "B1",
+      "decision": "omit_from_protected_reserve",
+      "classification": "redundant_rework_omit",
+      "previousSpecSha256": "122d04ae0dac1c75458279e75670f2780c0c07a62d24dcdfa0f75418a4857b68",
+      "specSha256": "61bf97cf4f3856c1ebc0e8edddcb234b9ccb8ab8809facb66e20fdc92bca789e"
+    }
+  ],
+  "candidateHashMethod": "SHA-256 UTF-8 JSON, sorted keys, comma/colon separators, Unicode preserved, specSha256 omitted. Revision is a planning-spec revision, not a governed item version.",
+  "counts": {
+    "diagnosticTarget": 4,
+    "masteryTarget": 8,
+    "diagnosticRetainedForReview": 1,
+    "masteryRetainedForReview": 1,
+    "diagnosticWithoutCandidate": 3,
+    "masteryWithoutCandidate": 7,
+    "governedItemsAdded": 0,
+    "assessmentEligibleItemsAdded": 0,
+    "chapterPracticeApproved": 56,
+    "chapterActiveDefinitions": 66,
+    "chapterPublishedGuides": 17,
+    "chapterBankTarget": 192,
+    "chapterUnauthored": 136
+  },
+  "privateEvidenceByteHashes": {
+    "refined-specs.json": "12e64fa573c198872f0736e183dedbacaf320ac217272a1ce2a1bf43a907b9f2",
+    "state-before.json": "7c45fbe5c64ae05adcd0cfd3783f8562223d2491047bc013006b862abc0f8cb0",
+    "state-after.json": "14e42084a63ccab775c8501ee1215ddc29a56117d9aee45d027496eeddf12d7d",
+    "output/pdf/HaiEdu-S02-Candidate-Refinement.pdf": "44f7da0bf353cb7023b7ef62839efdf8992a7e95b0e47312528bdfb0dfc4fd23"
+  },
+  "privatePacketPages": 11,
+  "reviewPages": [
+    3,
+    6
+  ],
+  "decision": "Two revised prototypes retained for human content review; one omitted after attempted repairs; ten slots without a candidate. All targets, delivery/scoring/readiness and release gates unchanged.",
+  "nextHandoff": "Human reviewer: accept for governed-draft proposal, revise or omit each prototype, with reasons. No further bank-target approval requested for the same accepted plan; content, SME and staging gates remain."
+}
