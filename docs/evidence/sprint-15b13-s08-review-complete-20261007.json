@@ -1,0 +1,294 @@
+{
+  "sprint": "15B.13I",
+  "observedAt": "2026-10-07T18:43:48.550331+00:00",
+  "humanReviewComplete": true,
+  "items": [
+    {
+      "id": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+      "code": "PHY7-U02-S08-I06",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "contentSha256": "9a06f0dd2aaedcb1fc49c8593895a004d624116f0803935bc664befb8aa7e8ce"
+    },
+    {
+      "id": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+      "code": "PHY7-U02-S08-I05",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "contentSha256": "bf03cb1af503634d921f7a09cd7455f23ca7a1b1a56633486919411345a77057"
+    }
+  ],
+  "reviewDecisions": [
+    {
+      "id": "18f013e4-b8e3-4520-aef1-d7db9b53812e",
+      "itemId": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+      "version": 2,
+      "decision": "approved",
+      "createdAt": "2026-10-07T18:29:27.575043+00:00"
+    },
+    {
+      "id": "68d89eea-9dcb-41ba-a22a-61e0e0a0619a",
+      "itemId": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+      "version": 2,
+      "decision": "approved",
+      "createdAt": "2026-10-07T18:33:18.133737+00:00"
+    }
+  ],
+  "activeDefinitions": [
+    "thermal_motion_is_directed",
+    "heating_slows_motion",
+    "thermal_speed_is_bulk_motion",
+    "temperature_unrelated_to_motion",
+    "equal_temperature_implies_equal_speed",
+    "same_gas_temperature_requires_equal_speeds",
+    "zero_celsius_stops_motion",
+    "diffusion_requires_stirring",
+    "evaporation_requires_boiling",
+    "temperature_effect_on_diffusion_reversed",
+    "different_substances_speed_orders_temperature"
+  ],
+  "guide": {
+    "id": "43c51f8b-5371-4cab-9fa1-719bfc9f4730",
+    "status": "published",
+    "runtimeVersion": 2,
+    "publishedAuthoringVersion": 4,
+    "currentRuntimeAuthoringContentMatches": true,
+    "sha256": "13a25cc60c26c840ea6de24bad95ac5b39f99f3b2876eac098979faebbb416ba"
+  },
+  "qaReplay": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S08-I06",
+        "itemId": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+        "versionNo": 2,
+        "fingerprint": "bbaa2c70129f471ecfec3b1783818f0d",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S08-T02-THERMAL-SPEED-INTERPRETATION",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [
+                "A",
+                "B"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis",
+                "application"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|363c505e-f28e-4210-8649-549aad722d6a|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis,application|1|06c995bb-7dca-4d31-8732-a96b090ae97c:2:application,3abbf485-6ff6-4116-acd7-0d750dc763d5:2:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S08-I05",
+        "itemId": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+        "versionNo": 2,
+        "fingerprint": "7666e5b17b1db92bdcdc687fa4658839",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S08-T02-THERMAL-SPEED-INTERPRETATION",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [
+                "A",
+                "B"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis",
+                "application"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|363c505e-f28e-4210-8649-549aad722d6a|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis,application|1|06c995bb-7dca-4d31-8732-a96b090ae97c:2:application,3abbf485-6ff6-4116-acd7-0d750dc763d5:2:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "guideValidation": {
+    "guideId": "43c51f8b-5371-4cab-9fa1-719bfc9f4730",
+    "status": "published",
+    "version": 2,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 2,
+      "variantFailures": []
+    }
+  },
+  "oneStaleQaRefreshed": [
+    {
+      "id": "c9a89f96-70fa-4ee5-b5ea-0f60b4165456",
+      "item_id": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+      "version_no": 2,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15B13J-s08-review-complete-20261007",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 0,
+            "C": 1,
+            "D": 1
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U02-S08-T02-THERMAL-SPEED-INTERPRETATION",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 2,
+          "missingPositions": [
+            "A",
+            "B"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 0.5
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionCorpusFingerprint": "a49a4a7a63672be82348818109c6be71",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1,
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "misconception_diagnosis",
+          "familyStateFingerprint": "haiedu-family-state-v1|363c505e-f28e-4210-8649-549aad722d6a|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis,application|1|06c995bb-7dca-4d31-8732-a96b090ae97c:2:application,3abbf485-6ff6-4116-acd7-0d750dc763d5:2:misconception_diagnosis",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "misconception_diagnosis",
+            "application"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-07 18:53:29.417418+00"
+    }
+  ],
+  "existingI06CurrentFamilyQaPreserved": "ce9da9e0-e6aa-49eb-be3e-4034d00c0c26",
+  "humanContentUnmodified": true,
+  "evidenceMain": "062d2e2bacbc4dad7931bf811b310e70378a8c2d",
+  "mainCI": {
+    "runId": 37661978202,
+    "number": 1290,
+    "allFiveJobsPassed": true
+  },
+  "nextSlice": "S09 source and whole-bank comparison"
+}

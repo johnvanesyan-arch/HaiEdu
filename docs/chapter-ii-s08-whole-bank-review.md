@@ -64,3 +64,7 @@ All 1,238 local Node tests pass, including two focused S08 migration/quality tes
 - After approving/publishing the questions, review [the separate draft guide](https://www.haiedu.am/content-guides.html?id=template%3A43c51f8b-5371-4cab-9fa1-719bfc9f4730).
 
 S08 has six authored questions and six open planning slots. Chapter II has 54 authored questions: 52 approved and these two drafts, with 138 unauthored toward the unchanged 192 plan. All original questions, definitions, guides and approvals are preserved. Chapter II remains draft, with zero pool/form/learner/exposure links and no release activation. After human review, proceed to S09 textbook/whole-bank comparison.
+
+## Human review completed — 2026-10-07
+
+Both expansion questions are user-edited v2 and approved; all three new definitions are active. The edited guide is published at runtime v2 / authoring v4 with matching immutable content. Both current questions pass the deployed evaluator; one stale I05 family-QA record was refreshed with an explicitly automated actor-null result. I06 already had current-family QA. No human content or approvals were rewritten. [Completion evidence](evidence/sprint-15b13-s08-review-complete-20261007.json). Proceed to S09 source/whole-bank comparison; S08 remains six authored with six open planning slots.
