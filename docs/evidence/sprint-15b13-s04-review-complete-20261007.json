@@ -1,0 +1,313 @@
+{
+  "observedAt": "2026-10-07T06:45:57.774226+00:00",
+  "reviewComplete": true,
+  "items": [
+    {
+      "code": "PHY7-U02-S04-I01",
+      "version": 1,
+      "reviewStatus": "approved",
+      "fingerprint": "8b39d815a8261012f42dfc0424007ca1"
+    },
+    {
+      "code": "PHY7-U02-S04-I02",
+      "version": 3,
+      "reviewStatus": "approved",
+      "fingerprint": "ca1c538b4ab5cbc583dde1b0b1e3e4bf"
+    },
+    {
+      "code": "PHY7-U02-S04-I03",
+      "version": 2,
+      "reviewStatus": "approved",
+      "fingerprint": "b2959434f867b905530e936e7a0706bd"
+    },
+    {
+      "code": "PHY7-U02-S04-I04",
+      "version": 2,
+      "reviewStatus": "approved",
+      "fingerprint": "4e0cd5c07855989621e4f2f38e30fbe7"
+    },
+    {
+      "code": "PHY7-U02-S04-I05",
+      "version": 3,
+      "reviewStatus": "approved",
+      "fingerprint": "d71a546df3f77e242f71e2042ccefd0b"
+    },
+    {
+      "code": "PHY7-U02-S04-I06",
+      "version": 2,
+      "reviewStatus": "approved",
+      "fingerprint": "ff291c39c5e9e879f6b5515649049b68"
+    },
+    {
+      "code": "PHY7-U02-S04-I07",
+      "version": 3,
+      "reviewStatus": "approved",
+      "fingerprint": "81c7095ab2d027a54535471b3e185f48"
+    }
+  ],
+  "misconceptions": {
+    "active": 8,
+    "newlyReviewed": 4
+  },
+  "guides": [
+    {
+      "id": "404bad98-2404-4a5c-8f0c-dc716d5a354d",
+      "status": "published",
+      "runtimeVersion": 3
+    },
+    {
+      "id": "144c3de5-63ed-4e1f-b7a8-e5831140301e",
+      "status": "published",
+      "runtimeVersion": 2
+    }
+  ],
+  "expansionGuideHistory": {
+    "runtimeVersion": 2,
+    "authoringVersion": 3,
+    "publishedSnapshotMatchesCurrent": true,
+    "contentUnchangedFromDraft": true
+  },
+  "semanticReview": {
+    "I05": "Editorial revision preserves row-gap overestimation; options retain same errors and correct key.",
+    "I06": "Uses source photograph wording; explicit conditional 2 mm at 100000x remains provided, not screen-measured. Answer and inference unchanged.",
+    "I07": "Editorial/notation revision preserves tiny-particle/large-count inference.",
+    "bankComparison": "Reassessed against fresh 307-item, 147-snapshot catalogue; no substantive new overlap."
+  },
+  "technicalQa": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S04-I05",
+        "itemId": "0344876f-ee7e-4d92-9ef9-db284a223ae0",
+        "versionNo": 3,
+        "fingerprint": "d71a546df3f77e242f71e2042ccefd0b",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S04-T02-SIZE-MEASUREMENT",
+              "familyItemCount": 3,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 0
+              },
+              "missingPositions": [
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.3333333333333333,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1,
+                "application": 1,
+                "core_understanding": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|9a3694be-2de9-4cb2-8d31-03e1bf06551f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis|1|0344876f-ee7e-4d92-9ef9-db284a223ae0:3:misconception_diagnosis,2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8:3:core_understanding,7ec27342-5cbc-49c0-9625-5698eccf562e:2:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S04-I06",
+        "itemId": "7ec27342-5cbc-49c0-9625-5698eccf562e",
+        "versionNo": 2,
+        "fingerprint": "ff291c39c5e9e879f6b5515649049b68",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S04-T02-SIZE-MEASUREMENT",
+              "familyItemCount": 3,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 0
+              },
+              "missingPositions": [
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.3333333333333333,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1,
+                "application": 1,
+                "core_understanding": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|9a3694be-2de9-4cb2-8d31-03e1bf06551f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis|1|0344876f-ee7e-4d92-9ef9-db284a223ae0:3:misconception_diagnosis,2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8:3:core_understanding,7ec27342-5cbc-49c0-9625-5698eccf562e:2:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S04-I07",
+        "itemId": "2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8",
+        "versionNo": 3,
+        "fingerprint": "81c7095ab2d027a54535471b3e185f48",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S04-T02-SIZE-MEASUREMENT",
+              "familyItemCount": 3,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 1,
+                "D": 0
+              },
+              "missingPositions": [
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.3333333333333333,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "core_understanding",
+              "requiredEvidencePurposes": [
+                "core_understanding",
+                "application",
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1,
+                "application": 1,
+                "core_understanding": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|9a3694be-2de9-4cb2-8d31-03e1bf06551f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|core_understanding,application,misconception_diagnosis|1|0344876f-ee7e-4d92-9ef9-db284a223ae0:3:misconception_diagnosis,2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8:3:core_understanding,7ec27342-5cbc-49c0-9625-5698eccf562e:2:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "qaAppend": {
+    "createdAt": "2026-10-07T06:53:00.077129Z",
+    "rows": 3,
+    "runKey": "15b13f-s04-reviewed-20261007",
+    "runBy": null,
+    "actorType": "automated_system_technical_qa",
+    "humanReviewRecordsWritten": 0
+  },
+  "guideValidation": {
+    "guideId": "144c3de5-63ed-4e1f-b7a8-e5831140301e",
+    "status": "published",
+    "version": 2,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 3,
+      "variantFailures": []
+    }
+  },
+  "planning": {
+    "authoredAndApproved": 7,
+    "target": 12,
+    "shortfall": 5,
+    "reducedTargetApproved": false
+  },
+  "learnerRelease": "Chapter II remains draft/inactive"
+}
