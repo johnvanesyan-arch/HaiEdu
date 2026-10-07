@@ -1,0 +1,1149 @@
+{
+  "observedAt": "2026-10-07T20:54:40.779837+00:00",
+  "guardTables": [
+    "items",
+    "item_options",
+    "item_answer_keys",
+    "item_misconception_mappings",
+    "item_versions",
+    "item_templates",
+    "misconceptions",
+    "skills",
+    "skill_outcomes",
+    "item_template_remediation_guides",
+    "skill_outcome_curriculum_mappings",
+    "learning_outcomes",
+    "assessment_pool_items",
+    "assessment_form_items",
+    "assessment_pools",
+    "assessment_forms",
+    "item_families",
+    "item_family_curriculum_reconciliations"
+  ],
+  "corpusFingerprint": "f4e22cfd1219e7114c60b0ac0880343a",
+  "scope": "Live inventory reconciliation plus synthesis of committed S02-S09 source/whole-bank reviews; not a fresh semantic clearance for an unauthored assessment batch.",
+  "author": "Codex automated analysis",
+  "skills": [
+    {
+      "skillCode": "PHY7-U02-S02",
+      "skillName": "Justify particulate structure using evidence",
+      "practiceTarget": 12,
+      "authoredApproved": 12,
+      "practiceGap": 0,
+      "diagnosticTarget": 4,
+      "diagnosticAuthored": 0,
+      "masteryTarget": 8,
+      "masteryAuthored": 0,
+      "activeDefinitions": 4,
+      "publishedGuides": 3
+    },
+    {
+      "skillCode": "PHY7-U02-S03",
+      "skillName": "Distinguish atom, molecule and chemical element",
+      "practiceTarget": 12,
+      "authoredApproved": 8,
+      "practiceGap": 4,
+      "diagnosticTarget": 4,
+      "diagnosticAuthored": 0,
+      "masteryTarget": 8,
+      "masteryAuthored": 0,
+      "activeDefinitions": 10,
+      "publishedGuides": 2
+    },
+    {
+      "skillCode": "PHY7-U02-S04",
+      "skillName": "Compare molecular sizes with familiar scales",
+      "practiceTarget": 12,
+      "authoredApproved": 7,
+      "practiceGap": 5,
+      "diagnosticTarget": 4,
+      "diagnosticAuthored": 0,
+      "masteryTarget": 8,
+      "masteryAuthored": 0,
+      "activeDefinitions": 8,
+      "publishedGuides": 2
+    },
+    {
+      "skillCode": "PHY7-U02-S05",
+      "skillName": "Describe atomic and molecular motion in matter",
+      "practiceTarget": 12,
+      "authoredApproved": 6,
+      "practiceGap": 6,
+      "diagnosticTarget": 4,
+      "diagnosticAuthored": 0,
+      "masteryTarget": 8,
+      "masteryAuthored": 0,
+      "activeDefinitions": 6,
+      "publishedGuides": 2
+    },
+    {
+      "skillCode": "PHY7-U02-S06",
+      "skillName": "Explain diffusion using examples",
+      "practiceTarget": 12,
+      "authoredApproved": 6,
+      "practiceGap": 6,
+      "diagnosticTarget": 4,
+      "diagnosticAuthored": 0,
+      "masteryTarget": 8,
+      "masteryAuthored": 0,
+      "activeDefinitions": 7,
+      "publishedGuides": 2
+    },
+    {
+      "skillCode": "PHY7-U02-S07",
+      "skillName": "Compare diffusion rates across states of matter",
+      "practiceTarget": 12,
+      "authoredApproved": 5,
+      "practiceGap": 7,
+      "diagnosticTarget": 4,
+      "diagnosticAuthored": 0,
+      "masteryTarget": 8,
+      "masteryAuthored": 0,
+      "activeDefinitions": 8,
+      "publishedGuides": 2
+    },
+    {
+      "skillCode": "PHY7-U02-S08",
+      "skillName": "Relate temperature to particle motion",
+      "practiceTarget": 12,
+      "authoredApproved": 6,
+      "practiceGap": 6,
+      "diagnosticTarget": 4,
+      "diagnosticAuthored": 0,
+      "masteryTarget": 8,
+      "masteryAuthored": 0,
+      "activeDefinitions": 11,
+      "publishedGuides": 2
+    },
+    {
+      "skillCode": "PHY7-U02-S09",
+      "skillName": "Explain how a thermometer works",
+      "practiceTarget": 12,
+      "authoredApproved": 6,
+      "practiceGap": 6,
+      "diagnosticTarget": 4,
+      "diagnosticAuthored": 0,
+      "masteryTarget": 8,
+      "masteryAuthored": 0,
+      "activeDefinitions": 12,
+      "publishedGuides": 2
+    }
+  ],
+  "totals": {
+    "practiceTarget": 96,
+    "practiceApproved": 56,
+    "practiceGap": 40,
+    "diagnosticTarget": 32,
+    "diagnosticAuthored": 0,
+    "masteryTarget": 64,
+    "masteryAuthored": 0,
+    "totalTarget": 192,
+    "totalAuthored": 56,
+    "totalGap": 136,
+    "activeDefinitions": 66,
+    "publishedGuides": 17
+  },
+  "currentVersions": [
+    {
+      "id": "4cef02a0-4f2a-4fc2-9645-380c31fc7825",
+      "code": "PHY7-U02-S02-I01",
+      "version": 2,
+      "fingerprint": "480f6d216baffb0ee2831be7fa0ac216",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "3ce95a43-1024-4bc2-b9bd-9ea014e645a6",
+      "code": "PHY7-U02-S02-I02",
+      "version": 2,
+      "fingerprint": "aa0eeaa73d8739cd9c0343d5a65defd6",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "a1c91b20-9b5a-49da-972c-ac0289f1bb0d",
+      "code": "PHY7-U02-S02-I03",
+      "version": 4,
+      "fingerprint": "07a0af373a06bf15d8ade8dd903d8e8c",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "8ce98d90-d2ca-416c-acc5-1d814d970766",
+      "code": "PHY7-U02-S02-I04",
+      "version": 3,
+      "fingerprint": "7735705e7b68aa9fbcffba37ad0c7a69",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "9f3d884d-2e79-4183-8823-4395c9dea482",
+      "code": "PHY7-U02-S02-I05",
+      "version": 1,
+      "fingerprint": "f018a00e6640499639082fc531c8065f",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "75377509-1dd5-4c0a-b25e-413381325d4f",
+      "code": "PHY7-U02-S02-I06",
+      "version": 1,
+      "fingerprint": "c600d557cf848416d9ec77c7ec05ec93",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "348cfa21-26ca-4352-b7e7-1073408c0a9d",
+      "code": "PHY7-U02-S02-I07",
+      "version": 1,
+      "fingerprint": "156283ba397a71061e2ad01d16312baa",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "cb09d26d-665e-4634-99ec-baf98ea06cb8",
+      "code": "PHY7-U02-S02-I08",
+      "version": 1,
+      "fingerprint": "75ab2c1c8a5c4d82d26d996285484f7e",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "d0586f20-fdea-40fe-8882-2cde615facb5",
+      "code": "PHY7-U02-S02-I09",
+      "version": 2,
+      "fingerprint": "bd5e0f41344939c51c6e1e0e294dbb49",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc",
+      "code": "PHY7-U02-S02-I10",
+      "version": 4,
+      "fingerprint": "81c9bb969370d5893f3fcb349df9c1dd",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "6934b7b9-21a9-4fa3-97c6-76bc83baa106",
+      "code": "PHY7-U02-S02-I11",
+      "version": 1,
+      "fingerprint": "4452806af4106cd8da5b1101c66c21c0",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "cab790d4-0920-4b58-8261-ebd6b215dc62",
+      "code": "PHY7-U02-S02-I12",
+      "version": 1,
+      "fingerprint": "ae91bdad49287b6cf5b9a6ee591e04b4",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "b36afe62-d479-4464-b839-d7ce0b819ec8",
+      "code": "PHY7-U02-S03-I01",
+      "version": 1,
+      "fingerprint": "8fb9924466c5c553db1c86b56ae7145b",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "270aebf8-a8fa-4535-8984-0a98b29afdd2",
+      "code": "PHY7-U02-S03-I02",
+      "version": 2,
+      "fingerprint": "7040e0478086dbdbd59a5689357b5867",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "55497027-ec32-4d32-afd4-a35f7d8c08ab",
+      "code": "PHY7-U02-S03-I03",
+      "version": 2,
+      "fingerprint": "ffbba82a55af21680844b51f9985e795",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "f9865e43-5335-4856-af1f-e0ec484d4c94",
+      "code": "PHY7-U02-S03-I04",
+      "version": 2,
+      "fingerprint": "804c7fb45792d256a02a0129eaa29c40",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "6b53c545-ff31-4139-87cc-1d2cf2e0b785",
+      "code": "PHY7-U02-S03-I05",
+      "version": 2,
+      "fingerprint": "842af8e374aabca32d260e008a004dcb",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "e027ee39-2b63-4d5f-8ec0-ec66dbe064db",
+      "code": "PHY7-U02-S03-I06",
+      "version": 1,
+      "fingerprint": "abe51c1bbe47ab042d82b4ab47033413",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda",
+      "code": "PHY7-U02-S03-I07",
+      "version": 2,
+      "fingerprint": "9ad6b792f5d16e6310e56ba8e0286741",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "7fbf21c8-7e75-422c-a822-3f85a7dd9775",
+      "code": "PHY7-U02-S03-I08",
+      "version": 2,
+      "fingerprint": "61d37a412ccacf622500c09b0f214036",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "f5f7e590-3c12-41c7-9a92-afdf329cc5be",
+      "code": "PHY7-U02-S04-I01",
+      "version": 1,
+      "fingerprint": "8b39d815a8261012f42dfc0424007ca1",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "77ae6d0c-5e8b-4d10-a352-e7f3be865a14",
+      "code": "PHY7-U02-S04-I02",
+      "version": 3,
+      "fingerprint": "ca1c538b4ab5cbc583dde1b0b1e3e4bf",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "e4f2b81e-da40-46e9-a995-f76006c5f011",
+      "code": "PHY7-U02-S04-I03",
+      "version": 2,
+      "fingerprint": "b2959434f867b905530e936e7a0706bd",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "c5fd7a56-8105-4779-8ecc-a1a66f7bb8bf",
+      "code": "PHY7-U02-S04-I04",
+      "version": 2,
+      "fingerprint": "4e0cd5c07855989621e4f2f38e30fbe7",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "0344876f-ee7e-4d92-9ef9-db284a223ae0",
+      "code": "PHY7-U02-S04-I05",
+      "version": 3,
+      "fingerprint": "d71a546df3f77e242f71e2042ccefd0b",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "7ec27342-5cbc-49c0-9625-5698eccf562e",
+      "code": "PHY7-U02-S04-I06",
+      "version": 2,
+      "fingerprint": "ff291c39c5e9e879f6b5515649049b68",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8",
+      "code": "PHY7-U02-S04-I07",
+      "version": 3,
+      "fingerprint": "81c7095ab2d027a54535471b3e185f48",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "8ec57954-3af7-4b88-86cd-5927e461dcba",
+      "code": "PHY7-U02-S05-I01",
+      "version": 1,
+      "fingerprint": "4e938e0b97455731ccbb007957aa6b97",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "95a2124c-d2fc-4f9d-ba24-cff282819e4a",
+      "code": "PHY7-U02-S05-I02",
+      "version": 1,
+      "fingerprint": "32111de8d20d111b3cec1286998cc493",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "c0b26cb9-f020-4fc7-a74f-08cf7ee1a30d",
+      "code": "PHY7-U02-S05-I03",
+      "version": 1,
+      "fingerprint": "c5aa9562a5bb5903c070ef3b446e0835",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "c0ead7e1-32ca-45a1-a5bc-a6f916b084e2",
+      "code": "PHY7-U02-S05-I04",
+      "version": 1,
+      "fingerprint": "4dcc6896d45a768930f7c9f0cb8d0ee5",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "12e86241-becd-43b3-bf81-f0d28025a8ab",
+      "code": "PHY7-U02-S05-I05",
+      "version": 2,
+      "fingerprint": "35ba809acae8b9de116c116a22164d18",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "23d9df58-9745-44b6-bba3-92f765b7759f",
+      "code": "PHY7-U02-S05-I06",
+      "version": 2,
+      "fingerprint": "24acd9b65862741b0de5f5cdb8d12de3",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "62ff143c-00d3-47dc-ad15-710e528387e6",
+      "code": "PHY7-U02-S06-I01",
+      "version": 1,
+      "fingerprint": "3b69186d62e35cd19baeb83292a79e02",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "ee3807ee-567d-480d-b330-80ce11d18efa",
+      "code": "PHY7-U02-S06-I02",
+      "version": 1,
+      "fingerprint": "e2717fa2ea52ff5d55f959e6babea206",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "8fcb3821-bf6e-4b4f-8027-c5127ed94ca8",
+      "code": "PHY7-U02-S06-I03",
+      "version": 1,
+      "fingerprint": "5364407b20c0733b20394bc2f1c35dff",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "660f6de2-cba0-4236-a148-4103cf07897f",
+      "code": "PHY7-U02-S06-I04",
+      "version": 1,
+      "fingerprint": "bdc655a6828e9eb22088f83f2fdf94a7",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "d94454da-af21-48a5-aae9-4d09b1543b67",
+      "code": "PHY7-U02-S06-I05",
+      "version": 2,
+      "fingerprint": "f03c1afb705928cfe1a4b09e3804d901",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "1bf9f08f-8bcc-4ca1-8261-85a39e0f9218",
+      "code": "PHY7-U02-S06-I06",
+      "version": 1,
+      "fingerprint": "d49e4ea2a0eb6bd581abfd33027d92ed",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "d93a2f4c-8373-4196-be73-d4a171c9af72",
+      "code": "PHY7-U02-S07-I01",
+      "version": 1,
+      "fingerprint": "2c95a27a248d3d172b75105175539334",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "bcc7d9b4-e053-4b6a-973b-f03e8eb26166",
+      "code": "PHY7-U02-S07-I02",
+      "version": 1,
+      "fingerprint": "c23c8a93b75c412e276595c2f6c35ab4",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "f3ae5421-1bb8-41ee-9e6d-283a6738fd51",
+      "code": "PHY7-U02-S07-I03",
+      "version": 1,
+      "fingerprint": "cd63ddbb6b31f10cb30fe451a659a095",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "0877aecf-2d1c-4917-8ecf-e689154b1694",
+      "code": "PHY7-U02-S07-I04",
+      "version": 1,
+      "fingerprint": "c4777fcd172ce0fd7c47ba211d220a1e",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "8736e373-a291-4cb4-ae38-cb88a67f9ca1",
+      "code": "PHY7-U02-S07-I05",
+      "version": 1,
+      "fingerprint": "ab79d87c066a1ec83e1d9d17a4a0c30b",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "f0ee7d39-d922-4463-9703-0c8565da31ab",
+      "code": "PHY7-U02-S08-I01",
+      "version": 1,
+      "fingerprint": "bb85ef7562f0af9ea01958a619afc12e",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "76d5fe46-411e-4b58-b950-03ba3984845d",
+      "code": "PHY7-U02-S08-I02",
+      "version": 1,
+      "fingerprint": "38baeb8120c1e6f81192b5b6217bac2b",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "f73aa214-ae3f-4653-a19f-3de251e95102",
+      "code": "PHY7-U02-S08-I03",
+      "version": 1,
+      "fingerprint": "bd6bd807d3c2d698a4e61051f666e1f1",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "f2773a3c-95ce-4b50-85e7-dda5415d5e54",
+      "code": "PHY7-U02-S08-I04",
+      "version": 1,
+      "fingerprint": "82a46cc24ba849e7bb4f91a613f22b60",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+      "code": "PHY7-U02-S08-I05",
+      "version": 2,
+      "fingerprint": "7666e5b17b1db92bdcdc687fa4658839",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+      "code": "PHY7-U02-S08-I06",
+      "version": 2,
+      "fingerprint": "bbaa2c70129f471ecfec3b1783818f0d",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "108a14e9-7460-4491-9454-f8359e1c238f",
+      "code": "PHY7-U02-S09-I01",
+      "version": 1,
+      "fingerprint": "02fee777861e64cb8c826144cce9f8bd",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "ab1d35ba-76a4-403d-8d0c-147234aad143",
+      "code": "PHY7-U02-S09-I02",
+      "version": 1,
+      "fingerprint": "e9c2844274a8c1e4972ce5ca8a1c2509",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "19120410-872d-437c-9f18-229f01c69fcc",
+      "code": "PHY7-U02-S09-I03",
+      "version": 1,
+      "fingerprint": "4e162399129d9d84452075789d19fa00",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "a3aa8e20-aff6-4b18-866a-47e01920a00a",
+      "code": "PHY7-U02-S09-I04",
+      "version": 1,
+      "fingerprint": "b805ddcefccaa9cb33d04d9e46241525",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "a5453c78-6a31-46cb-8449-0b4fdbc117e1",
+      "code": "PHY7-U02-S09-I05",
+      "version": 2,
+      "fingerprint": "bdb179e7560077ba07d79aa2dd5cf76f",
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "id": "526bbcbc-dfbe-4fa9-82ff-b2c55b577997",
+      "code": "PHY7-U02-S09-I06",
+      "version": 2,
+      "fingerprint": "b1592f86cbdd2ddd85a40937e08565ff",
+      "status": "published",
+      "reviewStatus": "approved"
+    }
+  ],
+  "latestMatchingVersionQA": [
+    {
+      "itemId": "0344876f-ee7e-4d92-9ef9-db284a223ae0",
+      "id": "c95260f6-1a4a-401e-a0fb-ce98fc6334aa",
+      "version": 3,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+      "id": "ce9da9e0-e6aa-49eb-be3e-4034d00c0c26",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "0877aecf-2d1c-4917-8ecf-e689154b1694",
+      "id": "e42ce95f-74cd-477a-bcd0-862656fd256b",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "108a14e9-7460-4491-9454-f8359e1c238f",
+      "id": "991173f4-2d71-462c-af54-aa13178cc5dd",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "12e86241-becd-43b3-bf81-f0d28025a8ab",
+      "id": "75f84363-3f55-46fb-922a-e0368b63055c",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "19120410-872d-437c-9f18-229f01c69fcc",
+      "id": "86016f82-d695-479d-be2f-d768fb403dc6",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc",
+      "id": "44cad5d1-cf1c-4d01-a634-a35c0d477075",
+      "version": 4,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "1bf9f08f-8bcc-4ca1-8261-85a39e0f9218",
+      "id": "58963d24-85fb-4abd-8600-6be8ee7a6435",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8",
+      "id": "67148b66-594d-40f1-9858-a7ae505c39af",
+      "version": 3,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "23d9df58-9745-44b6-bba3-92f765b7759f",
+      "id": "8b1365e9-35ef-46e9-97d7-704aac0d3b86",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "270aebf8-a8fa-4535-8984-0a98b29afdd2",
+      "id": "e872c92a-33de-4d10-8d5d-8cce0e5fdde2",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "348cfa21-26ca-4352-b7e7-1073408c0a9d",
+      "id": "a9f9f103-5b35-493d-b589-6f1917b1e585",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+      "id": "c9a89f96-70fa-4ee5-b5ea-0f60b4165456",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "3ce95a43-1024-4bc2-b9bd-9ea014e645a6",
+      "id": "e880d069-6887-4973-9e9e-6bedf5f7e6b7",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "4cef02a0-4f2a-4fc2-9645-380c31fc7825",
+      "id": "cea720fb-4a51-447c-9cbd-63436961f27e",
+      "version": 2,
+      "passed": true,
+      "warnings": [
+        "content_review_not_approved",
+        "sme_review_pending"
+      ]
+    },
+    {
+      "itemId": "526bbcbc-dfbe-4fa9-82ff-b2c55b577997",
+      "id": "6e93522c-20c6-4119-8069-7682b92b1ce5",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "55497027-ec32-4d32-afd4-a35f7d8c08ab",
+      "id": "9033dd30-798f-4a53-b654-3d3cc8acbd77",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "62ff143c-00d3-47dc-ad15-710e528387e6",
+      "id": "b79c2234-b8c0-4d60-94c2-1caea2ad6e85",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "660f6de2-cba0-4236-a148-4103cf07897f",
+      "id": "96d431c7-a451-4f34-bd05-f673fb240c3a",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "6934b7b9-21a9-4fa3-97c6-76bc83baa106",
+      "id": "3f6719b0-7ca9-4dca-a8ee-c341cdcb2e76",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "6b53c545-ff31-4139-87cc-1d2cf2e0b785",
+      "id": "c2e0ff71-233e-4be8-853e-1a183e2764b5",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "75377509-1dd5-4c0a-b25e-413381325d4f",
+      "id": "e5976f5f-95d1-47b5-80c6-1107b05aac9b",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "76d5fe46-411e-4b58-b950-03ba3984845d",
+      "id": "ee78a87b-e8dd-4ee8-b092-240703a6357e",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "77ae6d0c-5e8b-4d10-a352-e7f3be865a14",
+      "id": "2bcb8feb-65f5-41ad-9654-30967bc60512",
+      "version": 3,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "7ec27342-5cbc-49c0-9625-5698eccf562e",
+      "id": "9d4c8791-0c87-49b0-b4da-b597cee776bc",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "7fbf21c8-7e75-422c-a822-3f85a7dd9775",
+      "id": "96bb9669-ae38-4018-9060-710d68ad9693",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "8736e373-a291-4cb4-ae38-cb88a67f9ca1",
+      "id": "d2cd8255-7aad-4eeb-a6c4-b8d389f81e45",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "8ce98d90-d2ca-416c-acc5-1d814d970766",
+      "id": "7b9a6895-b93f-4d38-8d80-9638463786b2",
+      "version": 3,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "8ec57954-3af7-4b88-86cd-5927e461dcba",
+      "id": "e1611ad2-0fc2-41f7-b272-60f23b186410",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "8fcb3821-bf6e-4b4f-8027-c5127ed94ca8",
+      "id": "b0803225-5a2f-4a9c-83ea-710d747e2947",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "95a2124c-d2fc-4f9d-ba24-cff282819e4a",
+      "id": "ea468174-ad42-483b-b8cf-d050a4538658",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "9f3d884d-2e79-4183-8823-4395c9dea482",
+      "id": "36c48a20-d922-4bee-9b50-bcf9fb53fd8e",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "a1c91b20-9b5a-49da-972c-ac0289f1bb0d",
+      "id": "e49cdac7-7d58-48c1-a2f6-cb41d675a5ac",
+      "version": 4,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "a3aa8e20-aff6-4b18-866a-47e01920a00a",
+      "id": "5dffe206-d941-4c4e-9dd6-3664a1ca1994",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "a5453c78-6a31-46cb-8449-0b4fdbc117e1",
+      "id": "d19f0208-d3d3-49c6-be81-094ca35a335c",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "ab1d35ba-76a4-403d-8d0c-147234aad143",
+      "id": "6b02e2c5-b635-4f5f-926f-e63d016ba630",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "b36afe62-d479-4464-b839-d7ce0b819ec8",
+      "id": "96b40882-b389-4d4f-b136-9dba3af0f901",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "bcc7d9b4-e053-4b6a-973b-f03e8eb26166",
+      "id": "018c6091-7581-4c87-afde-f15a5266ad64",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "c0b26cb9-f020-4fc7-a74f-08cf7ee1a30d",
+      "id": "2666fa0b-9ce4-45ea-a5f8-a44c8efc06d2",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "c0ead7e1-32ca-45a1-a5bc-a6f916b084e2",
+      "id": "2527f27b-37fb-4355-b53a-d0498d2e504e",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "c5fd7a56-8105-4779-8ecc-a1a66f7bb8bf",
+      "id": "4359247e-4ddb-421f-98ed-8935d0eea2eb",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "cab790d4-0920-4b58-8261-ebd6b215dc62",
+      "id": "1de51acc-70ee-409f-b614-4b2539e95ada",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "cb09d26d-665e-4634-99ec-baf98ea06cb8",
+      "id": "5aa4a75d-fe6d-410c-bdf5-49ed012f6140",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "d0586f20-fdea-40fe-8882-2cde615facb5",
+      "id": "55357831-4990-493e-b31b-4adce05c461a",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "d93a2f4c-8373-4196-be73-d4a171c9af72",
+      "id": "0c50f741-8ae4-436d-bbb2-0f0a2f1ff2a0",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "d94454da-af21-48a5-aae9-4d09b1543b67",
+      "id": "68ccd418-b479-49d9-bc1d-b23918808356",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "e027ee39-2b63-4d5f-8ec0-ec66dbe064db",
+      "id": "06002ae0-3887-47f0-afc4-04226573f39c",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "e4f2b81e-da40-46e9-a995-f76006c5f011",
+      "id": "75e9e3f0-2674-4e61-86f1-13a3b9b5116c",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "ee3807ee-567d-480d-b330-80ce11d18efa",
+      "id": "c38aa353-36d7-4b87-9496-c0693461eea7",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "f0ee7d39-d922-4463-9703-0c8565da31ab",
+      "id": "4800b052-0d9b-42ed-b4e9-efd82e6052b9",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "f2773a3c-95ce-4b50-85e7-dda5415d5e54",
+      "id": "942eeec5-41a5-48f9-8161-dae443ba1463",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "f3ae5421-1bb8-41ee-9e6d-283a6738fd51",
+      "id": "197b8073-f6c6-490f-bc24-728a10b168ca",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "f5f7e590-3c12-41c7-9a92-afdf329cc5be",
+      "id": "2cee1895-5707-4003-90e1-87103fcb89d2",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "f73aa214-ae3f-4653-a19f-3de251e95102",
+      "id": "0320155a-887e-43fc-a1e5-541d616b913f",
+      "version": 1,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "f9865e43-5335-4856-af1f-e0ec484d4c94",
+      "id": "aa7ed420-8114-4daa-afdd-7be291b99988",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    },
+    {
+      "itemId": "fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda",
+      "id": "9dbf7088-22a3-424e-a093-b1b238f695bd",
+      "version": 2,
+      "passed": true,
+      "warnings": []
+    }
+  ],
+  "gates": {
+    "release": {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "status": "draft",
+      "fingerprint": "62e63168d5d9ab9beecc8a9ff818a3a8",
+      "activated_at": null
+    },
+    "blueprints": 0,
+    "form_links": 0,
+    "gateChecks": [
+      {
+        "notes": "Գործող N 40-Ն ծրագիրը՝ N 36-Ն փոփոխությամբ, գրանցված և կապված է թողարկման թեկնածուին։",
+        "status": "passed",
+        "evidence": {
+          "programmeDocumentKey": "am_physics_grade7_programme_40n_36n",
+          "programmeAttachmentSha256": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478"
+        },
+        "gate_code": "official_programme_identified",
+        "checked_at": "2026-09-30T21:40:31.093879+00:00",
+        "checked_by": null,
+        "updated_at": "2026-09-30T21:40:31.093879+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Պետական չափորոշիչը, ֆիզիկայի առարկայական չափորոշիչը և 7-րդ դասարանի ծրագիրը գրանցված են որպես ղեկավարող աղբյուրներ։ Դասագիրքը միայն օժանդակ աղբյուր է։",
+        "status": "passed",
+        "evidence": {
+          "governingLayers": 3,
+          "supportingTextbookChapter": "Գլուխ II, էջեր 23–41"
+        },
+        "gate_code": "normative_sources_registered",
+        "checked_at": "2026-09-30T21:40:31.093879+00:00",
+        "checked_by": null,
+        "updated_at": "2026-09-30T21:40:31.093879+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Յոթ պաշտոնական վերջնարդյունքները տառադարձված են, սակայն թեմատիկ և չափորոշչային վերջնական համադրումը սպասում է բովանդակային ու մասնագիտական հաստատմանը։",
+        "status": "pending",
+        "evidence": {},
+        "gate_code": "outcomes_reconciled",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-09-30T21:40:31.093879+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Ներքին վերանայմամբ ութ հմտությունների քարտեզը հաստատվել է հարցերի սևագիր հեղինակման համար։ Կրկնվող PHY7-U02-S01 թեկնածուն արխիվացվել է, և գործող PHY7-U01-S02 հմտությունը դարձել է միջգլխային նախապայման։ Սա արտաքին ֆիզիկայի մասնագետի հաստատում կամ թողարկման թույլտվություն չէ։",
+        "status": "passed",
+        "evidence": {
+          "prerequisiteLinks": 8,
+          "directOutcomeMappings": 7,
+          "externalSmeValidation": "pending",
+          "derivedSupportingSkills": 1,
+          "replacementPrerequisite": "PHY7-U01-S02",
+          "approvedForAuthoringSkills": 8,
+          "archivedDuplicateCandidate": "PHY7-U02-S01"
+        },
+        "gate_code": "skills_mapped",
+        "checked_at": "2026-09-30T22:07:43.605908+00:00",
+        "checked_by": null,
+        "updated_at": "2026-09-30T22:07:43.605908+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Գլուխ II-ի վեցերորդ ընտանիքը հեռանկարային ապացուցողական սխեմայով ստեղծվել է սևագիր և սովորողին անհասանելի։ Գնահատման ավազան կամ ձևանմուշ չի ստեղծվել։",
+        "status": "pending",
+        "evidence": {
+          "sprint15B9": {
+            "skillCode": "PHY7-U02-S08",
+            "draftGuide": 1,
+            "draftItems": 4,
+            "reviewStatus": "pending",
+            "learnerVisible": false,
+            "draftMisconceptions": 8,
+            "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+          },
+          "sprint15B10": {
+            "skillCode": "PHY7-U02-S09",
+            "draftGuide": 1,
+            "draftItems": 4,
+            "reviewStatus": "pending",
+            "learnerVisible": false,
+            "draftMisconceptions": 9,
+            "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+          },
+          "assessmentPools": 0,
+          "assessmentBlueprints": 0,
+          "chapterIiItemFamilies": 6,
+          "sixthFamilyDraftItems": 4,
+          "sixthFamilyDraftGuides": 1,
+          "prospectiveAuthoringProfile": "haiedu-evidence-blueprint-v1"
+        },
+        "gate_code": "assessment_scope_bound",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-05T09:07:47.714385+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Ֆիզիկայի արտաքին մասնագետի հաստատումը դեռ չի ստացվել։",
+        "status": "pending",
+        "evidence": {},
+        "gate_code": "external_sme_approved",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-09-30T21:40:31.093879+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      },
+      {
+        "notes": "Առաջին հինգ ընտանիքների քսան հարցերը հաստատված են։ 15B.8-ի վեցերորդ ընտանիքի չորս հարցերը, վեց թյուրիմացությունները և օգնության ուղեցույցը սպասում են ստուգման։ 15B.7-ի օգնության ուղեցույցը և նախկին չհաստատված թյուրիմացությունները նույնպես մնում են սևագիր։",
+        "status": "pending",
+        "evidence": {
+          "sprint15B9": {
+            "skillCode": "PHY7-U02-S08",
+            "draftGuide": 1,
+            "draftItems": 4,
+            "reviewStatus": "pending",
+            "learnerVisible": false,
+            "draftMisconceptions": 8,
+            "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+          },
+          "sprint15B10": {
+            "skillCode": "PHY7-U02-S09",
+            "draftGuide": 1,
+            "draftItems": 4,
+            "reviewStatus": "pending",
+            "learnerVisible": false,
+            "draftMisconceptions": 9,
+            "authoringProfileVersion": "haiedu-evidence-blueprint-v1"
+          },
+          "approvedItems": 20,
+          "draftItemsAwaitingReview": 4,
+          "draftGuidesAwaitingReview": 2,
+          "draftFamiliesAwaitingReview": 1,
+          "prospectiveAuthoringProfile": "haiedu-evidence-blueprint-v1",
+          "draftMisconceptionsAwaitingReview": 23,
+          "questionFamiliesWithApprovedItems": 5
+        },
+        "gate_code": "content_qa_passed",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-05T09:07:47.714385+00:00",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      }
+    ],
+    "pool_links": 0,
+    "observed_at": "2026-10-07T20:55:38.20223+00:00",
+    "attempt_links": 0,
+    "modelBindings": 0,
+    "session_links": 0,
+    "exposure_links": 0,
+    "policyBindings": 0,
+    "review_exposure_links": 0
+  },
+  "decisionBoundary": "The approved 96/32/64 plan and sixteen-question assessments remain unchanged. No new bank count, numerical model, pool, form, blueprint or learner release is approved by this reconciliation."
+}

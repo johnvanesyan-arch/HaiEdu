@@ -67,3 +67,14 @@ S09 has six authored questions and six open planning slots. Chapter II has 56 au
 ## Migration-history alignment — 2026-10-07
 
 Evidence PR #166 identified that the migration runner recorded applied version `20261007191924` while the local creation timestamp was `20261007185345`. The tracked S09 file is now `supabase/migrations/20261007191924_sprint_15b13_s09_practice_expansion.sql`, and the focused test references that path. The SQL bytes still match the production migration exactly. No migration was reapplied and no remote history was rewritten. This reconciles the S09 timestamp; it does not claim an audit or repair of other historical migrations.
+
+
+## Human review completed — 2026-10-07 UTC
+
+Both expansion questions are approved at user-edited v2. All six S09 questions are approved and all twelve definitions are active. The edited expansion guide is published at runtime v2 / authoring v4; its instructional content matches both immutable histories. Current item content, options, answer keys and mappings match their v2 snapshots. Human wording/option edits preserve the source-backed demands and B/A answer keys.
+
+The deployed v11 evaluator passes both current questions, and structural guide validation passes both variants. I05's older QA became stale when I06 changed; one actor-null technical QA row refreshes I05. I06's existing current-family QA is retained. The eighteen-table content fingerprint is unchanged across the refresh, and no human content or approval was written. Evidence PR #166's independent main CI #1296 also passed all five jobs. [Review evidence](evidence/sprint-15b13-s09-review-complete-20261007.json).
+
+Two editorial/content follow-ups remain distinct from the recorded human approvals: I06's option D contains an embedded `D.` label that can disagree with shuffled positions, and the edited guide's worked example repeats the erased-scale situation from I06, requiring manual analogous-example/answer-disclosure review. Preserve these approved records; corrections use the governed revision/review workflow. A structural QA pass does not close either finding.
+
+Chapter II now has 56 approved questions, 66 active definitions and 17 published template guides. S09 remains 6/12 with six open slots. The next roadmap part, chapter bank reconciliation, is recorded in [the current inventory and next-slice plan](chapter-ii-bank-reconciliation.md). This closes the human-review handoff, not the chapter content, assessment, model, SME, pilot or release gates.
