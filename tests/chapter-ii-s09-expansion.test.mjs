@@ -6,7 +6,7 @@ import {PGlite} from '@electric-sql/pglite';
 import {endpoint} from './fixtures/phase3-endpoint-harness.mjs';
 import {validateGuideVariants} from '../supabase/functions/_shared/remediation-authoring-validation.mjs';
 
-const productionMigration=readFileSync('supabase/migrations/20261007185345_sprint_15b13_s09_practice_expansion.sql','utf8');
+const productionMigration=readFileSync('supabase/migrations/20261007191924_sprint_15b13_s09_practice_expansion.sql','utf8');
 const guard=productionMigration.match(/if \((md5\(jsonb_build_object[\s\S]+?\))\) is distinct from '([a-f0-9]{32})'/);
 assert.ok(guard,'migration must contain full-catalogue stale-evidence guard');
 async function fixture(t) {

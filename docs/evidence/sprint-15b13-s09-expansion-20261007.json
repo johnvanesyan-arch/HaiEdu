@@ -1,0 +1,618 @@
+{
+  "sprint": "15B.13J",
+  "observedAt": "2026-10-07T19:19:49.098566+00:00",
+  "state": "deployed_draft_human_review_pending",
+  "scope": "Subject-aware S09 practice content; no core/runtime/schema/dashboard changes.",
+  "source": {
+    "pdfSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "printedPages": "36–37, section 12",
+    "outcome": "Theme 2 additional 2(2)",
+    "illustrationDisposition": "verbal_task_no_illustration_needed"
+  },
+  "comparison": {
+    "currentItems": 314,
+    "historicalSnapshots": 159,
+    "corpusFingerprint": "bd5e058cd9d80e9b840be2939d9bfb4c",
+    "guardTables": [
+      "items",
+      "item_options",
+      "item_answer_keys",
+      "item_misconception_mappings",
+      "item_versions",
+      "item_templates",
+      "misconceptions",
+      "skills",
+      "skill_outcomes",
+      "item_template_remediation_guides",
+      "skill_outcome_curriculum_mappings",
+      "learning_outcomes",
+      "assessment_pool_items",
+      "assessment_form_items",
+      "assessment_pools",
+      "assessment_forms",
+      "item_families",
+      "item_family_curriculum_reconciliations"
+    ],
+    "preApply": {
+      "observed_at": "2026-10-07T19:18:32.976065+00:00",
+      "corpus_fingerprint": "bd5e058cd9d80e9b840be2939d9bfb4c"
+    },
+    "evidence": "docs/chapter-ii-s09-whole-bank-review.md",
+    "author": "Codex automated author and semantic comparison; human/SME approval remains separate",
+    "dispositions": {
+      "I05": "new_reasoning_coverage_in_question_bank",
+      "I06": "intentional_practice_variant"
+    },
+    "assessmentPurposeGuard": "Family records/reconciliations, pool/form memberships and purpose/protection/status headers are locked and fingerprinted, with stale-evidence regressions"
+  },
+  "ownerStagingDecision": {
+    "owner": "John",
+    "decision": "approved",
+    "userWords": "I approve",
+    "approvedAt": "2026-10-07T23:13:37+04:00",
+    "approvedProposal": "Deploy the two S09 drafts, three definitions and guide for human review; retain twelve as the S09 question target and leave six slots open.",
+    "PR": 165,
+    "reviewedHead": "16197e6152ea9deb18b623436b6846f08371848a",
+    "humanContentApproval": false,
+    "smallerOverallBankApproved": false,
+    "chapterReleaseActivationApproved": false
+  },
+  "implementation": {
+    "pr": 165,
+    "head": "16197e6152ea9deb18b623436b6846f08371848a",
+    "tree": "eeb52db4b74b0e75388e8cf1b43ab301793f464b",
+    "main": "e65839d0602c7837a0cf68face803b2b8424f70c",
+    "ci": {
+      "id": 37672130111,
+      "number": 1292,
+      "jobs": [
+        {
+          "id": 112966272759,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112966272996,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112966273004,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112966273081,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112967865220,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "mainCi": {
+      "id": 37672967129,
+      "number": 1293,
+      "jobs": [
+        {
+          "id": 112969139137,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112969139226,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112969139248,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112969139440,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112970951350,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    }
+  },
+  "migration": {
+    "version": "20261007191924",
+    "name": "sprint_15b13_s09_practice_expansion",
+    "exactReviewedSql": true,
+    "sqlSha256": "7ac00dc767980cbbfb471d7651e9823b6fa71da4035a09c52bd373523a31daeb",
+    "historyAlignment": {
+      "remoteVersion": "20261007191924",
+      "reviewedOriginalFile": "supabase/migrations/20261007185345_sprint_15b13_s09_practice_expansion.sql",
+      "trackedFile": "supabase/migrations/20261007191924_sprint_15b13_s09_practice_expansion.sql",
+      "trackedVersionMatchesRemote": true,
+      "sqlBytesUnchanged": true,
+      "migrationReapplied": false,
+      "remoteHistoryRewritten": false,
+      "scope": "S09 migration only; no claim of repository-wide historical migration reconciliation"
+    }
+  },
+  "qa": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S09-I05",
+        "itemId": "a5453c78-6a31-46cb-8449-0b4fdbc117e1",
+        "versionNo": 1,
+        "fingerprint": "b78a0c9a1bb14dbcbac2af22de8c26d5",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S09-T02-THERMOMETER-LIMITS-AND-READOUT",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "application",
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|3284eb69-81fc-43df-a21b-ab436ff64745|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application,misconception_diagnosis|1|526bbcbc-dfbe-4fa9-82ff-b2c55b577997:1:misconception_diagnosis,a5453c78-6a31-46cb-8449-0b4fdbc117e1:1:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S09-I06",
+        "itemId": "526bbcbc-dfbe-4fa9-82ff-b2c55b577997",
+        "versionNo": 1,
+        "fingerprint": "0cbc5162067a4da8eedb6e0062ee0a80",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S09-T02-THERMOMETER-LIMITS-AND-READOUT",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "application",
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|3284eb69-81fc-43df-a21b-ab436ff64745|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application,misconception_diagnosis|1|526bbcbc-dfbe-4fa9-82ff-b2c55b577997:1:misconception_diagnosis,a5453c78-6a31-46cb-8449-0b4fdbc117e1:1:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "appendedQa": [
+    {
+      "id": "46f80537-35e7-44bc-92ec-69cfce3a80d0",
+      "item_id": "526bbcbc-dfbe-4fa9-82ff-b2c55b577997",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15B13J-s09-expansion-20261007",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 1,
+            "B": 1,
+            "C": 0,
+            "D": 0
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U02-S09-T02-THERMOMETER-LIMITS-AND-READOUT",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 2,
+          "missingPositions": [
+            "C",
+            "D"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 0.5
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionCorpusFingerprint": "9745d49be2a17b31e17eb1a4bcfff99f",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1,
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "misconception_diagnosis",
+          "familyStateFingerprint": "haiedu-family-state-v1|3284eb69-81fc-43df-a21b-ab436ff64745|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application,misconception_diagnosis|1|526bbcbc-dfbe-4fa9-82ff-b2c55b577997:1:misconception_diagnosis,a5453c78-6a31-46cb-8449-0b4fdbc117e1:1:application",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "application",
+            "misconception_diagnosis"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-07 19:20:14.195226+00"
+    },
+    {
+      "id": "68f9d85b-5c23-4e04-bfd8-03b500256bbd",
+      "item_id": "a5453c78-6a31-46cb-8449-0b4fdbc117e1",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15B13J-s09-expansion-20261007",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 1,
+            "B": 1,
+            "C": 0,
+            "D": 0
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U02-S09-T02-THERMOMETER-LIMITS-AND-READOUT",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 2,
+          "missingPositions": [
+            "C",
+            "D"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 0.5
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionCorpusFingerprint": "9745d49be2a17b31e17eb1a4bcfff99f",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1,
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "application",
+          "familyStateFingerprint": "haiedu-family-state-v1|3284eb69-81fc-43df-a21b-ab436ff64745|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application,misconception_diagnosis|1|526bbcbc-dfbe-4fa9-82ff-b2c55b577997:1:misconception_diagnosis,a5453c78-6a31-46cb-8449-0b4fdbc117e1:1:application",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "application",
+            "misconception_diagnosis"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-07 19:20:14.195226+00"
+    }
+  ],
+  "guideValidation": {
+    "guideId": "cf474b91-5383-46c4-a5cd-3e261ab5a76c",
+    "status": "draft",
+    "version": 1,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 2,
+      "variantFailures": []
+    }
+  },
+  "preservation": {
+    "tableCount": 100,
+    "allPreexistingRowsPreserved": true,
+    "expectedAdditions": {
+      "items": 2,
+      "item_options": 8,
+      "item_qa_runs": 2,
+      "item_families": 1,
+      "item_versions": 2,
+      "item_templates": 1,
+      "misconceptions": 3,
+      "item_answer_keys": 2,
+      "item_curriculum_scopes": 2,
+      "remediation_guide_versions": 1,
+      "item_misconception_mappings": 6,
+      "curriculum_release_item_families": 1,
+      "item_template_remediation_guides": 1,
+      "remediation_guide_authoring_versions": 1,
+      "item_family_curriculum_reconciliations": 1
+    },
+    "unchangedTables": 85
+  },
+  "advisors": {
+    "security": {
+      "unchanged": true,
+      "groups": 2,
+      "findings": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 36
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "level": "WARN",
+          "count": 1
+        }
+      ]
+    },
+    "performance": {
+      "unchanged": true,
+      "groups": 4,
+      "findings": [
+        {
+          "name": "unindexed_foreign_keys",
+          "level": "INFO",
+          "count": 39
+        },
+        {
+          "name": "auth_rls_initplan",
+          "level": "WARN",
+          "count": 16
+        },
+        {
+          "name": "unused_index",
+          "level": "INFO",
+          "count": 102
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "level": "WARN",
+          "count": 14
+        }
+      ]
+    }
+  },
+  "publicReadback": {
+    "url": "https://www.haiedu.am/release.json?verify=s09-deployed-20261007",
+    "status": 200,
+    "release": {
+      "schemaVersion": 1,
+      "commit": "e65839d0602c7837a0cf68face803b2b8424f70c"
+    }
+  },
+  "governance": {
+    "release": {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "status": "draft",
+      "fingerprint": "62e63168d5d9ab9beecc8a9ff818a3a8",
+      "activated_at": null
+    },
+    "blueprints": 0,
+    "form_links": 0,
+    "pool_links": 0,
+    "observed_at": "2026-10-07T19:20:16.552212+00:00",
+    "attempt_links": 0,
+    "session_links": 0,
+    "exposure_links": 0,
+    "review_exposure_links": 0
+  },
+  "inventory": {
+    "chapterIIAuthored": 56,
+    "approved": 54,
+    "drafts": 2,
+    "planningTarget": 192,
+    "unauthored": 136,
+    "S09Authored": 6,
+    "S09OpenSlots": 6,
+    "priorOpenSlots": {
+      "S03": 4,
+      "S04": 5,
+      "S05": 6,
+      "S06": 6,
+      "S07": 7,
+      "S08": 6
+    },
+    "smallerBankPlanApproved": false
+  },
+  "reviewItems": [
+    {
+      "id": "a5453c78-6a31-46cb-8449-0b4fdbc117e1",
+      "code": "PHY7-U02-S09-I05",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "disposition": "new_reasoning_coverage",
+      "url": "https://www.haiedu.am/content-item.html?id=a5453c78-6a31-46cb-8449-0b4fdbc117e1&from=review"
+    },
+    {
+      "id": "526bbcbc-dfbe-4fa9-82ff-b2c55b577997",
+      "code": "PHY7-U02-S09-I06",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "disposition": "intentional_practice_variant",
+      "url": "https://www.haiedu.am/content-item.html?id=526bbcbc-dfbe-4fa9-82ff-b2c55b577997&from=review"
+    }
+  ],
+  "newDefinitions": [
+    {
+      "id": "896c440c-4da5-4f54-84f9-cae749bfe1ee",
+      "code": "all_thermometer_liquids_freeze_at_zero",
+      "status": "draft"
+    },
+    {
+      "id": "039482f2-3c96-4d2f-80c6-eccc91343aef",
+      "code": "column_height_gives_temperature_without_calibration",
+      "status": "draft"
+    },
+    {
+      "id": "3b17fe0b-d49d-4c56-a6cd-ca15bc0f7258",
+      "code": "solidified_thermometer_liquid_still_works",
+      "status": "draft"
+    }
+  ],
+  "reviewGuideUrl": "https://www.haiedu.am/content-guides.html?id=template%3Acf474b91-5383-46c4-a5cd-3e261ab5a76c",
+  "precedingReviewCompletion": "docs/evidence/sprint-15b13-s08-review-complete-20261007.json",
+  "limitations": [
+    "Technical QA uses the actual deployed v11 evaluator with fresh production readback and a read-only adapter; no authenticated live Edge or new production-browser acceptance is claimed.",
+    "Isolated CI browser checks do not establish a production Deployment Check configuration.",
+    "Human content review, protected banks, model approval, older illustration audit, external SME, pilot and release authorization remain open."
+  ],
+  "immutableValidation": {
+    "itemSnapshots": 2,
+    "fullItemOptionsAnswerMatch": true,
+    "runtimeGuideVersions": 1,
+    "authoringGuideVersions": 1,
+    "allGuideContentMatches": true,
+    "technicalQaRows": 2,
+    "bothQaFamilyFingerprintsCurrent": true,
+    "humanActorFabricated": false
+  },
+  "reviewFindings": {
+    "familyGuard": {
+      "comment": 4210837835,
+      "resolvedBy": "16197e6152ea9deb18b623436b6846f08371848a",
+      "eighteenTableGuard": true
+    },
+    "shortfallDecision": {
+      "comment": 4210837840,
+      "recordedBeforeMerge": true,
+      "evidence": "docs/evidence/sprint-15b13-s09-staging-decision-20261007.json"
+    },
+    "migrationTimestamp": {
+      "comment": 4211054723,
+      "resolution": "Rename tracked S09 migration and update the focused test path to observed applied version 20261007191924; preserve SQL bytes and production history."
+    }
+  }
+}
