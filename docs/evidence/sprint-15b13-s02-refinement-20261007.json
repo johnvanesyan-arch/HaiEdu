@@ -5,7 +5,21 @@
   "authorization": {
     "userMessage": "okay, all good. we can continue then",
     "submittedAt": "2026-10-08T02:01:31+04:00",
-    "interpretation": "Approved recommended bounded refinement of three conditional leads at unchanged targets; not human question approval, staging or release"
+    "interpretation": "Approved recommended bounded refinement of three conditional leads at unchanged targets; not human question approval, staging or release",
+    "precedingProposal": {
+      "speaker": "assistant",
+      "exactText": "`AGENTS.md` requires your bank-plan decision after a shortfall. Approve refining these three candidates while keeping all targets unchanged?",
+      "proposalScope": "Bounded refinement/review of the three conditional S02 leads at unchanged targets, before any staging proposal; unresolved slots remain explicit."
+    },
+    "interveningClarification": {
+      "userQuestions": [
+        "Only 4 diagnostic questions?\nand Mastery 8?",
+        "how many questions will the students have for chapter 2 overall?"
+      ],
+      "clarificationProvided": "The 4 diagnostic / 8 mastery targets are per skill. Chapter II has eight skills and a 96 practice / 32 diagnostic / 64 mastery = 192 question-bank target. Student diagnostic/mastery sittings contain 16 questions each; the diagnostic has two bank forms and mastery supports up to three attempts plus reserves. The assistant distinguished the 56 currently approved practice items from the planned bank.",
+      "effectOnProposal": "Clarified counts; did not replace the pending recommended refinement with the alternative pause plan or change targets."
+    },
+    "decisionBasis": "The explicit pending proposal was to refine the three candidates at unchanged targets. After clarification of those targets, John replied “okay, all good. we can continue then.” This continuation authorizes that bounded refinement; it does not approve question content, staging, a smaller bank or release."
   },
   "baselineMain": "f97a1f7628b5b75290a11b0fd74c4dc44f2292c5",
   "observationTimes": {
