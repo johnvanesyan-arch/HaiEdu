@@ -82,6 +82,8 @@ test('S09 migration rolls back and rejects stale sibling, related-bank, history,
     ["insert into assessment_form_items (form_id,item_id,slot_order) select gen_random_uuid(),id,1 from items where code='PHY7-U02-S09-I02'",'whole_bank_comparison_stale'],
     ["update assessment_pools set is_protected=not is_protected",'whole_bank_comparison_stale'],
     ["update assessment_forms set status='retired'",'whole_bank_comparison_stale'],
+    ["update item_families set description=description||' changed'",'whole_bank_comparison_stale'],
+    ["update item_family_curriculum_reconciliations set rationale=rationale||' changed'",'whole_bank_comparison_stale'],
     ["update item_qa_runs set passed=false",'existing_S09_review_incomplete'],
     ["update curriculum_releases set status='pilot',activated_at=now()",'candidate_not_draft']
   ]) {

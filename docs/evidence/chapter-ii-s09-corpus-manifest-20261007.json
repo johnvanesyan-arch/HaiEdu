@@ -1,7 +1,7 @@
 {
   "policy": "haiedu-whole-skill-review-v1",
   "observedAt": "2026-10-07T18:43:48.550331+00:00",
-  "corpusFingerprint": "6876b02512208d053e017603303fbdac",
+  "corpusFingerprint": "bd5e058cd9d80e9b840be2939d9bfb4c",
   "guardTables": [
     "items",
     "item_options",
@@ -18,7 +18,9 @@
     "assessment_pool_items",
     "assessment_form_items",
     "assessment_pools",
-    "assessment_forms"
+    "assessment_forms",
+    "item_families",
+    "item_family_curriculum_reconciliations"
   ],
   "counts": {
     "currentItems": 314,
@@ -26,7 +28,9 @@
     "skills": 19,
     "templates": 93,
     "poolMemberships": 280,
-    "formMemberships": 80
+    "formMemberships": 80,
+    "familyRecords": 93,
+    "familyReconciliations": 93
   },
   "currentItems": [
     {
@@ -8937,6 +8941,2443 @@
     "addedHeaders": [
       "assessment_pools",
       "assessment_forms"
-    ]
-  }
+    ],
+    "familyGuardRefresh": {
+      "at": "2026-10-07T19:04:41.95862+00:00",
+      "prior16TableFingerprint": "6876b02512208d053e017603303fbdac",
+      "unchangedPriorCorpus": true,
+      "unchanged93FamilyRows": true,
+      "reviewed93FamilyReconciliations": true,
+      "noAdditionalEquivalentS09Mapping": true
+    }
+  },
+  "familyRecords": [
+    {
+      "id": "58794119-b788-44ab-a7ed-484ef7bebdce",
+      "code": "PHY7-U01-S01-I01-F01",
+      "name_hy": "PHY7-U01-S01-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "77103a13-81e5-4953-9f47-0eebed0b7191",
+      "code": "PHY7-U01-S01-I02-F01",
+      "name_hy": "PHY7-U01-S01-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "0c0f8052-3070-493f-9ead-710c2cb9aee9",
+      "code": "PHY7-U01-S02-I02-F01",
+      "name_hy": "PHY7-U01-S02-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "b4785842-852c-4305-b7ca-973defb1c8db",
+      "code": "PHY7-U01-S02-I01-F01",
+      "name_hy": "PHY7-U01-S02-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "25fb5937-74ba-4bff-9ab1-66b4c2c3089e",
+      "code": "PHY7-U01-S03-I02-F01",
+      "name_hy": "PHY7-U01-S03-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "7ba15da3-cde0-48ec-9ee6-bf2386a5686a",
+      "code": "PHY7-U01-S03-I01-F01",
+      "name_hy": "PHY7-U01-S03-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "7363c819-6740-442b-a3d7-876be55d306b",
+      "code": "PHY7-U01-S04-I02-F01",
+      "name_hy": "PHY7-U01-S04-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "1c5fd549-3be7-4b42-8cf3-b2431d833e41",
+      "code": "PHY7-U01-S04-I01-F01",
+      "name_hy": "PHY7-U01-S04-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "f6f4ece0-dc3e-4d05-b4a1-1cc64aad981a",
+      "code": "PHY7-U01-S05-I02-F01",
+      "name_hy": "PHY7-U01-S05-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "617b00f5-0259-46d1-8d3d-8b3df9311e41",
+      "code": "PHY7-U01-S05-I01-F01",
+      "name_hy": "PHY7-U01-S05-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "a90e553e-cbe1-48f9-ba43-df2e735f7ea2",
+      "code": "PHY7-U01-S06-I02-F01",
+      "name_hy": "PHY7-U01-S06-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "f0ba8204-8a18-47aa-b668-001b9f6ba5f9",
+      "code": "PHY7-U01-S06-I01-F01",
+      "name_hy": "PHY7-U01-S06-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "11e4e3cc-f7bc-4233-949f-8e935554c498",
+      "code": "PHY7-U01-S07-I03-F01",
+      "name_hy": "PHY7-U01-S07-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "f1a1b778-e580-4637-acac-3b13a9d21c6b",
+      "code": "PHY7-U01-S07-I02-F01",
+      "name_hy": "PHY7-U01-S07-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "2f36b3af-7ea3-4bc4-9b28-56e0af8c3f8e",
+      "code": "PHY7-U01-S07-I01-F01",
+      "name_hy": "PHY7-U01-S07-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "2a7b6619-55e4-4e45-83d3-003863110263",
+      "code": "PHY7-U01-S08-I03-F01",
+      "name_hy": "PHY7-U01-S08-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "45ce531c-d38f-43f2-8f32-fe4a8713ba93",
+      "code": "PHY7-U01-S02-I04-F01",
+      "name_hy": "PHY7-U01-S02-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "41e725c1-9fd5-45df-abc9-fb353a63f494",
+      "code": "PHY7-U01-S01-I03-F01",
+      "name_hy": "PHY7-U01-S01-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "abb6f996-e854-4b8d-8bc4-2d811e43e36a",
+      "code": "PHY7-U01-S08-I02-F01",
+      "name_hy": "PHY7-U01-S08-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "7db46bc5-4aec-4d7a-a525-d2d92bf6aad9",
+      "code": "PHY7-U01-S08-I01-F01",
+      "name_hy": "PHY7-U01-S08-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "7a64d503-4cd2-479a-b4ae-31fdf1265ba7",
+      "code": "PHY7-U01-S09-I03-F01",
+      "name_hy": "PHY7-U01-S09-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "b0cb2164-8b1b-421e-9fd5-c6c762b0ae46",
+      "code": "PHY7-U01-S09-I02-F01",
+      "name_hy": "PHY7-U01-S09-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "87a04057-ac1b-4e21-9fa5-ab7d04c50eb6",
+      "code": "PHY7-U01-S09-I01-F01",
+      "name_hy": "PHY7-U01-S09-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "000cb332-1008-4a0b-80ed-747adfecf855",
+      "code": "PHY7-U01-S10-I03-F01",
+      "name_hy": "PHY7-U01-S10-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "2b91a481-42d4-4085-8b45-24fc20e97a8a",
+      "code": "PHY7-U01-S10-I02-F01",
+      "name_hy": "PHY7-U01-S10-I02 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "20552ac2-49d5-4f1f-86e8-f764ee0406d5",
+      "code": "PHY7-U01-S10-I01-F01",
+      "name_hy": "PHY7-U01-S10-I01 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "unspecified"
+      },
+      "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "305ba246-f409-47f3-a549-9a31e252c2b5",
+      "code": "PHY7-U01-S01-I06-F01",
+      "name_hy": "PHY7-U01-S01-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "79dd241f-1617-4a6c-a2cb-643e29acc40c",
+      "code": "PHY7-U01-S01-I05-F01",
+      "name_hy": "PHY7-U01-S01-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "1f99295e-e840-440f-bcc2-b1c55091d5dd",
+      "code": "PHY7-U01-S01-I04-F01",
+      "name_hy": "PHY7-U01-S01-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "f9d3a23f-8e9c-4ca7-8d51-f31f7ab57738",
+      "code": "PHY7-U01-S02-I06-F01",
+      "name_hy": "PHY7-U01-S02-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "9368aefd-a64c-4d4e-9a5a-81f964fee42e",
+      "code": "PHY7-U01-S02-I05-F01",
+      "name_hy": "PHY7-U01-S02-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "knowledge"
+      },
+      "skill_id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "aea442d7-15f6-44cf-a5ea-c3ad63273d4a",
+      "code": "PHY7-U01-S02-I03-F01",
+      "name_hy": "PHY7-U01-S02-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "d94383f2-8c1d-4fb5-bfdf-ef9dfab20e60",
+      "code": "PHY7-U01-S03-I06-F01",
+      "name_hy": "PHY7-U01-S03-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "knowledge"
+      },
+      "skill_id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "873752e6-6222-449d-b01a-d6a82fad9a9d",
+      "code": "PHY7-U01-S03-I05-F01",
+      "name_hy": "PHY7-U01-S03-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "knowledge"
+      },
+      "skill_id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "969a611a-8ac5-4f6c-9e12-190fe7d9a4e9",
+      "code": "PHY7-U01-S03-I04-F01",
+      "name_hy": "PHY7-U01-S03-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "knowledge"
+      },
+      "skill_id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "3d1de668-ffa2-4a74-9de9-3872a6e91a21",
+      "code": "PHY7-U01-S03-I03-F01",
+      "name_hy": "PHY7-U01-S03-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "knowledge"
+      },
+      "skill_id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "5a2a5255-fbf8-4d72-9bf8-c4c093980fbb",
+      "code": "PHY7-U01-S04-I06-F01",
+      "name_hy": "PHY7-U01-S04-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "379d7b9a-a4ae-47c6-a763-ecfe148d1706",
+      "code": "PHY7-U01-S04-I05-F01",
+      "name_hy": "PHY7-U01-S04-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "reasoning"
+      },
+      "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "a8ea8e4d-dbc2-476b-b0f9-d63dab6fc6c7",
+      "code": "PHY7-U01-S04-I04-F01",
+      "name_hy": "PHY7-U01-S04-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "57ffb526-ecaa-492c-a065-4b4485d33a9e",
+      "code": "PHY7-U01-S04-I03-F01",
+      "name_hy": "PHY7-U01-S04-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "3ade0106-3df1-4e3c-b8a7-baf08c3baa99",
+      "code": "PHY7-U01-S05-I06-F01",
+      "name_hy": "PHY7-U01-S05-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "reasoning"
+      },
+      "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "3b11f781-c188-48ac-bf58-1f0276bf4c96",
+      "code": "PHY7-U01-S05-I05-F01",
+      "name_hy": "PHY7-U01-S05-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "reasoning"
+      },
+      "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "60d83b13-3be4-4129-92fd-5e7a917989fd",
+      "code": "PHY7-U01-S05-I04-F01",
+      "name_hy": "PHY7-U01-S05-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "reasoning"
+      },
+      "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "68543856-793c-482e-afd9-8116d69a754a",
+      "code": "PHY7-U01-S05-I03-F01",
+      "name_hy": "PHY7-U01-S05-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "reasoning"
+      },
+      "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "6536c45f-9a7a-4d63-89ba-53a3037caeb7",
+      "code": "PHY7-U01-S06-I06-F01",
+      "name_hy": "PHY7-U01-S06-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "74c0bf83-8e15-4195-940c-361091a0b525",
+      "code": "PHY7-U01-S06-I05-F01",
+      "name_hy": "PHY7-U01-S06-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "9903f2c3-2131-4109-9d88-fc6cbc790c74",
+      "code": "PHY7-U01-S06-I04-F01",
+      "name_hy": "PHY7-U01-S06-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "knowledge"
+      },
+      "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "b70f2641-db73-4db2-ab35-90bb20da3f21",
+      "code": "PHY7-U01-S06-I03-F01",
+      "name_hy": "PHY7-U01-S06-I03 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "knowledge"
+      },
+      "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "dea049c6-8f61-463d-a10c-155d9b938c1b",
+      "code": "PHY7-U01-S07-I06-F01",
+      "name_hy": "PHY7-U01-S07-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "73751d6e-6630-4dee-8894-e774510309bc",
+      "code": "PHY7-U01-S07-I05-F01",
+      "name_hy": "PHY7-U01-S07-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "805951a9-3006-4d0b-a9e6-f3c682b8a4c9",
+      "code": "PHY7-U01-S07-I04-F01",
+      "name_hy": "PHY7-U01-S07-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "58e15bfb-f51b-4ea6-bf59-e1d4aa9398d3",
+      "code": "PHY7-U01-S08-I06-F01",
+      "name_hy": "PHY7-U01-S08-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "1966f58d-71b5-4e27-b350-060030e25c41",
+      "code": "PHY7-U01-S08-I05-F01",
+      "name_hy": "PHY7-U01-S08-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "477656cc-03ff-4ab4-b53d-08943f06cce9",
+      "code": "PHY7-U01-S08-I04-F01",
+      "name_hy": "PHY7-U01-S08-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "application"
+      },
+      "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "eba497ce-d623-4e23-a166-1f5b262334a8",
+      "code": "PHY7-U01-S09-I06-F01",
+      "name_hy": "PHY7-U01-S09-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "reasoning"
+      },
+      "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "fac7ea54-497f-4aa7-9544-9949fa0c41ae",
+      "code": "PHY7-U01-S09-I05-F01",
+      "name_hy": "PHY7-U01-S09-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "reasoning"
+      },
+      "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "f99f1b54-3b74-4fbc-8174-1fa23e918887",
+      "code": "PHY7-U01-S09-I04-F01",
+      "name_hy": "PHY7-U01-S09-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "reasoning"
+      },
+      "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "e9bf0bcd-476e-4a95-bb51-49b189512dde",
+      "code": "PHY7-U01-S10-I06-F01",
+      "name_hy": "PHY7-U01-S10-I06 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "transfer"
+      },
+      "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "6715dcc9-d0a6-4c8c-a65b-642887c9fc37",
+      "code": "PHY7-U01-S10-I05-F01",
+      "name_hy": "PHY7-U01-S10-I05 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "transfer"
+      },
+      "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "6c575459-a7d7-4b54-bd10-26b0d918f451",
+      "code": "PHY7-U01-S10-I04-F01",
+      "name_hy": "PHY7-U01-S10-I04 — սկզբնական ընտանիք",
+      "metadata": {
+        "source": "sprint_11a_backfill",
+        "legacyItemFamilyTag": "transfer"
+      },
+      "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+      "created_at": "2026-09-15T20:09:31.73068+00:00",
+      "updated_at": "2026-09-15T20:09:31.73068+00:00",
+      "description": "Sprint 11A singleton baseline family; regroup only after explicit content review."
+    },
+    {
+      "id": "6d15f68f-87d1-45d9-a750-c81908622551",
+      "code": "PHY7-U01-S07-F-LENGTH-CONVERSION",
+      "name_hy": "Երկարության միավորների փոխարկում",
+      "metadata": {
+        "phase": "11C",
+        "construct": "unit_conversion"
+      },
+      "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Deterministic parameterised length-to-metre conversion family."
+    },
+    {
+      "id": "8b9dd289-ea8d-4856-b2fa-27b4320be385",
+      "code": "PHY7-U01-S07-F-TIME-CONVERSION",
+      "name_hy": "Ժամանակի միավորների փոխարկում",
+      "metadata": {
+        "phase": "11C",
+        "construct": "unit_conversion"
+      },
+      "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Deterministic parameterised time-to-second conversion family."
+    },
+    {
+      "id": "a13e11fc-7701-4c73-beb7-5287cfb26928",
+      "code": "PHY7-U01-S07-F-VOLUME-CONVERSION",
+      "name_hy": "Ծավալի միավորների փոխարկում",
+      "metadata": {
+        "phase": "11C",
+        "construct": "unit_conversion"
+      },
+      "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Deterministic parameterised millilitre-to-litre conversion family."
+    },
+    {
+      "id": "d6421202-0c05-46ca-b172-3e6d5f709963",
+      "code": "PHY7-U01-S08-F-SCALE-DIVISION",
+      "name_hy": "Սանդղակի բաժանման արժեք",
+      "metadata": {
+        "phase": "11C",
+        "construct": "scale_division"
+      },
+      "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Deterministic parameterised scale-division family."
+    },
+    {
+      "id": "4bb550d4-79c3-4c80-a809-4617365a625a",
+      "code": "PHY7-U01-S08-F-SCALE-READING",
+      "name_hy": "Սանդղակի ցուցմունքի ընթերցում",
+      "metadata": {
+        "phase": "11C",
+        "construct": "scale_reading"
+      },
+      "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Deterministic parameterised scale-reading family."
+    },
+    {
+      "id": "d0797d91-493c-4870-9c31-9d13f6520fdc",
+      "code": "PHY7-U01-S09-F-MEASUREMENT-ERROR",
+      "name_hy": "Չափման սխալի գնահատում",
+      "metadata": {
+        "phase": "11C",
+        "construct": "measurement_error"
+      },
+      "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Deterministic parameterised half-division measurement-error family."
+    },
+    {
+      "id": "0080bb96-8c8f-4a8b-8e5d-334ea61e9d9e",
+      "code": "PHY7-U01-S10-F-DISPLACEMENT-VOLUME",
+      "name_hy": "Ծավալը ջրի տեղահանմամբ",
+      "metadata": {
+        "phase": "11C",
+        "construct": "displacement_volume"
+      },
+      "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Deterministic parameterised displacement-volume family."
+    },
+    {
+      "id": "4ea712b1-74ac-4749-aa70-dd5c4f46b550",
+      "code": "PHY7-U01-S10-F-SHEET-THICKNESS",
+      "name_hy": "Մեկ թերթի հաստության անուղղակի չափում",
+      "metadata": {
+        "phase": "11C",
+        "construct": "indirect_measurement"
+      },
+      "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Deterministic parameterised indirect-measurement family."
+    },
+    {
+      "id": "f89658bf-9eaa-4171-a8ae-69ab48b04139",
+      "code": "PHY7-U01-S04-F-OBSERVATION-EXPERIMENT-PARALLEL",
+      "name_hy": "Դիտում և փորձ — զուգահեռ համատեքստեր",
+      "metadata": {
+        "phase": "11C",
+        "construct": "observation_vs_experiment"
+      },
+      "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Parallel-context family varying scenario rather than numbers."
+    },
+    {
+      "id": "3b241a8a-3ec9-457e-97b1-ebd49cd37613",
+      "code": "PHY7-U01-S05-F-HYPOTHESIS-TEST-PARALLEL",
+      "name_hy": "Վարկածի ստուգում — զուգահեռ համատեքստեր",
+      "metadata": {
+        "phase": "11C",
+        "construct": "hypothesis_test_design"
+      },
+      "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+      "created_at": "2026-09-15T20:55:42.244559+00:00",
+      "updated_at": "2026-09-15T20:55:42.244559+00:00",
+      "description": "Parallel reasoning contexts for selecting a controlled hypothesis test."
+    },
+    {
+      "id": "e01c6ff0-d08f-46d7-af9c-a3303b21391a",
+      "code": "PHY7-U01-S01-F-11D-PARALLEL",
+      "name_hy": "Ֆիզիկական երևույթների ճանաչում և դասակարգում — 11D զուգահեռ առաջադրանքներ",
+      "metadata": {
+        "phase": "11D",
+        "reviewBasis": "structured_internal_content_review",
+        "smeValidation": "pending"
+      },
+      "skill_id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+      "created_at": "2026-09-15T21:14:45.223016+00:00",
+      "updated_at": "2026-09-15T21:14:45.223016+00:00",
+      "description": "Sprint 11D parallel item family"
+    },
+    {
+      "id": "e3e51d9b-7bdf-4d11-90f5-b334073f8038",
+      "code": "PHY7-U01-S02-F-11D-PARALLEL",
+      "name_hy": "Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը — 11D զուգահեռ առաջադրանքներ",
+      "metadata": {
+        "phase": "11D",
+        "reviewBasis": "structured_internal_content_review",
+        "smeValidation": "pending"
+      },
+      "skill_id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+      "created_at": "2026-09-15T21:14:45.223016+00:00",
+      "updated_at": "2026-09-15T21:14:45.223016+00:00",
+      "description": "Sprint 11D parallel item family"
+    },
+    {
+      "id": "7018f4b9-9df2-494a-9d91-3b6f3806aefe",
+      "code": "PHY7-U01-S03-F-11D-PARALLEL",
+      "name_hy": "Ֆիզիկոսներ և հայ ֆիզիկոսներ — 11D զուգահեռ առաջադրանքներ",
+      "metadata": {
+        "phase": "11D",
+        "reviewBasis": "structured_internal_content_review",
+        "smeValidation": "pending"
+      },
+      "skill_id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+      "created_at": "2026-09-15T21:14:45.223016+00:00",
+      "updated_at": "2026-09-15T21:14:45.223016+00:00",
+      "description": "Sprint 11D parallel item family"
+    },
+    {
+      "id": "24e3cc36-1bf5-4619-affc-001de14d8d9c",
+      "code": "PHY7-U01-S04-F-11D-PARALLEL",
+      "name_hy": "Դիտումը և փորձը տարբերակելը — 11D զուգահեռ առաջադրանքներ",
+      "metadata": {
+        "phase": "11D",
+        "reviewBasis": "structured_internal_content_review",
+        "smeValidation": "pending"
+      },
+      "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+      "created_at": "2026-09-15T21:14:45.223016+00:00",
+      "updated_at": "2026-09-15T21:14:45.223016+00:00",
+      "description": "Sprint 11D parallel item family"
+    },
+    {
+      "id": "6d2e75ce-a33b-46fc-80fd-746b12255cca",
+      "code": "PHY7-U01-S05-F-11D-PARALLEL",
+      "name_hy": "Վարկած–փորձ–տվյալ–եզրակացություն շղթան — 11D զուգահեռ առաջադրանքներ",
+      "metadata": {
+        "phase": "11D",
+        "reviewBasis": "structured_internal_content_review",
+        "smeValidation": "pending"
+      },
+      "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+      "created_at": "2026-09-15T21:14:45.223016+00:00",
+      "updated_at": "2026-09-15T21:14:45.223016+00:00",
+      "description": "Sprint 11D parallel item family"
+    },
+    {
+      "id": "b2099aff-d355-4df2-8955-bb2644e4a816",
+      "code": "PHY7-U01-S06-F-11D-PARALLEL",
+      "name_hy": "Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր — 11D զուգահեռ առաջադրանքներ",
+      "metadata": {
+        "phase": "11D",
+        "reviewBasis": "structured_internal_content_review",
+        "smeValidation": "pending"
+      },
+      "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+      "created_at": "2026-09-15T21:14:45.223016+00:00",
+      "updated_at": "2026-09-15T21:14:45.223016+00:00",
+      "description": "Sprint 11D parallel item family"
+    },
+    {
+      "id": "312ad707-15b1-4879-b8f9-066c0a8cac53",
+      "code": "PHY7-U01-S09-F-11D-PARALLEL",
+      "name_hy": "Չափման սխալ և ճշգրտության գնահատում — 11D զուգահեռ առաջադրանքներ",
+      "metadata": {
+        "phase": "11D",
+        "reviewBasis": "structured_internal_content_review",
+        "smeValidation": "pending"
+      },
+      "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+      "created_at": "2026-09-15T21:14:45.223016+00:00",
+      "updated_at": "2026-09-15T21:14:45.223016+00:00",
+      "description": "Sprint 11D parallel item family"
+    },
+    {
+      "id": "15e09d92-7586-421e-b1b0-b0c22946668f",
+      "code": "PHY7-U02-S02-F01-PARTICULATE-EVIDENCE",
+      "name_hy": "Փորձարարական դիտումից նյութի մասնիկային կառուցվածքի եզրակացություն",
+      "metadata": {
+        "sprint": "15B.2",
+        "construct": "particulate_structure_from_evidence",
+        "learnerVisible": false,
+        "authoringStatus": "draft",
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §7, տպագիր էջեր 23-26",
+        "externalSmeValidation": "pending",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+        "internalSkillMapDisposition": "approved_for_authoring"
+      },
+      "skill_id": "bfd0b199-55ab-4933-acfd-7eeb4142fd4c",
+      "created_at": "2026-09-30T22:07:43.605908+00:00",
+      "updated_at": "2026-09-30T22:07:43.605908+00:00",
+      "description": "Տրված փորձարարական դիտումից ընտրել այն բացատրությունը, որը նյութի վարքը կապում է մասնիկների և նրանց միջև եղած ազատ տարածությունների հետ։"
+    },
+    {
+      "id": "443c2c97-48b9-47b7-a010-4f35aa5436e5",
+      "code": "PHY7-U02-S03-F01-ATOM-MOLECULE-ELEMENT",
+      "name_hy": "Ատոմի, մոլեկուլի և քիմիական տարրի տարբերակում",
+      "metadata": {
+        "sprint": "15B.4",
+        "construct": "atom_molecule_element_classification",
+        "learnerVisible": false,
+        "authoringStatus": "draft",
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §8, տպագիր էջեր 26-28",
+        "externalSmeValidation": "pending",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+        "internalSkillMapDisposition": "approved_for_authoring"
+      },
+      "skill_id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+      "created_at": "2026-10-01T13:14:29.2027+00:00",
+      "updated_at": "2026-10-01T13:14:29.2027+00:00",
+      "description": "Տրված նկարագրությունից կամ պարզ բանաձևից տարբերակել առանձին ատոմը, երկու կամ ավելի ատոմներից կազմված մոլեկուլը և միևնույն տեսակի ատոմներից բաղկացած քիմիական տարրը։"
+    },
+    {
+      "id": "628431a8-770f-4fe7-86e0-a40844f9657d",
+      "code": "PHY7-U02-S04-F01-MOLECULAR-SCALE-MEASUREMENT",
+      "name_hy": "Մոլեկուլների չափերի համեմատում և փոքր մասնիկների չափում",
+      "metadata": {
+        "sprint": "15B.5",
+        "construct": "molecular_scale_comparison_and_measurement",
+        "learnerVisible": false,
+        "authoringStatus": "draft",
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §8-9, տպագիր էջեր 27-29",
+        "externalSmeValidation": "pending",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+        "internalSkillMapDisposition": "approved_for_authoring"
+      },
+      "skill_id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+      "created_at": "2026-10-01T14:50:34.004096+00:00",
+      "updated_at": "2026-10-01T14:50:34.004096+00:00",
+      "description": "Անգստրեմը կապել մետրի հետ, համեմատել մոլեկուլների չափերը տրված տվյալներով և մեկ փոքր մասնիկի չափը որոշել շարքի ընդհանուր երկարությունը մասնիկների թվին բաժանելով։"
+    },
+    {
+      "id": "3445dd21-4ddb-4578-8cd0-48c70ab6cba5",
+      "code": "PHY7-U02-S05-F01-CONTINUOUS-CHAOTIC-MOTION",
+      "name_hy": "Մասնիկների անընդհատ և անկանոն շարժում",
+      "metadata": {
+        "sprint": "15B.6",
+        "construct": "continuous_chaotic_particle_motion",
+        "learnerVisible": false,
+        "authoringStatus": "draft",
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 30-33, Խնդիր 3՝ էջ 40",
+        "externalSmeValidation": "pending",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+        "internalSkillMapDisposition": "approved_for_authoring"
+      },
+      "skill_id": "678beb6a-4654-40c2-a5b2-53cc97b2551b",
+      "created_at": "2026-10-01T16:37:11.896953+00:00",
+      "updated_at": "2026-10-01T16:37:11.896953+00:00",
+      "description": "Նկարագրել նյութի ատոմների և մոլեկուլների անընդհատ, անկանոն շարժումը, բախումներից առաջացող ուղղության փոփոխությունները և մասնիկի ակնթարթային արագության ու նրա ընդհանուր տեղաշարժի տարբերությունը։"
+    },
+    {
+      "id": "8b9614d9-3ebe-4102-8ade-a5feeef80608",
+      "code": "PHY7-U02-S06-F01-DIFFUSION-EXAMPLES",
+      "name_hy": "Դիֆուզիայի ճանաչում և մասնիկային բացատրություն",
+      "metadata": {
+        "sprint": "15B.7",
+        "construct": "diffusion_examples",
+        "learnerVisible": false,
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "S07_state_rate_comparison",
+          "S08_temperature_speed_relation",
+          "S09_thermometer_operation"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 30-32, նկարներ 30-31",
+        "externalSmeValidation": "pending",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+        "internalSkillMapDisposition": "approved_for_authoring"
+      },
+      "skill_id": "b7caca8c-d222-4715-a39f-80883f995471",
+      "created_at": "2026-10-01T17:10:21.840085+00:00",
+      "updated_at": "2026-10-01T17:10:21.840085+00:00",
+      "description": "Դիֆուզիան ճանաչել որպես նյութերի ինքնաբերական խառնման երևույթ և առօրյա, փորձարարական ու բնության օրինակները բացատրել մոլեկուլների անկանոն շարժմամբ ու փոխադարձ ներթափանցմամբ։"
+    },
+    {
+      "id": "e05c19e7-07d8-4c50-83ff-e72f6c764665",
+      "code": "PHY7-U02-S07-F01-DIFFUSION-RATE-COMPARISON",
+      "name_hy": "Դիֆուզիայի արագության համեմատում տարբեր ագրեգատային վիճակներում",
+      "metadata": {
+        "sprint": "15B.8",
+        "construct": "diffusion_rate_comparison_across_states",
+        "learnerVisible": false,
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "S06_diffusion_definition_and_examples",
+          "S08_temperature_speed_relation",
+          "S09_thermometer_operation"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 30-32, նկարներ 30-32",
+        "evidenceBlueprint": [
+          {
+            "purpose": "core_understanding",
+            "itemCode": "PHY7-U02-S07-I01"
+          },
+          {
+            "purpose": "application",
+            "itemCode": "PHY7-U02-S07-I02"
+          },
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S07-I03"
+          },
+          {
+            "purpose": "transfer_reasoning",
+            "itemCode": "PHY7-U02-S07-I04"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "c1e57a2d-d843-45ea-adf1-891837d12d6c",
+      "created_at": "2026-10-02T07:29:09.081662+00:00",
+      "updated_at": "2026-10-02T07:29:09.081662+00:00",
+      "description": "Համեմատել դիֆուզիայի արագությունը գազերում, հեղուկներում և պինդ մարմիններում, ճանաչել պինդ մարմիններում դանդաղ դիֆուզիայի փաստը և համեմատությունը բացատրել մասնիկների դասավորությամբ։"
+    },
+    {
+      "id": "c5e65ada-a56c-4570-a59c-ae1d6e25d508",
+      "code": "PHY7-U02-S08-F01-TEMPERATURE-PARTICLE-MOTION",
+      "name_hy": "Ջերմաստիճանը և մասնիկների ջերմային շարժումը",
+      "metadata": {
+        "sprint": "15B.9",
+        "construct": "temperature_particle_motion",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "S07_diffusion_rate_comparison_across_states",
+          "quantitative_kinetic_theory_and_gas_laws",
+          "S09_thermometer_operation"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջ 32; §11, տպագիր էջեր 33-35",
+        "evidenceBlueprint": [
+          {
+            "purpose": "core_understanding",
+            "itemCode": "PHY7-U02-S08-I01"
+          },
+          {
+            "purpose": "application",
+            "itemCode": "PHY7-U02-S08-I02"
+          },
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S08-I03"
+          },
+          {
+            "purpose": "transfer_reasoning",
+            "itemCode": "PHY7-U02-S08-I04"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "c2463f0b-9d96-4ae6-a814-0495db8a3872",
+      "created_at": "2026-10-05T08:30:17.903344+00:00",
+      "updated_at": "2026-10-05T08:30:17.903344+00:00",
+      "description": "Նույն նյութի ջերմաստիճանի փոփոխությունը կապել մասնիկների անկանոն շարժման բնորոշ արագության հետ, կիրառել կապը դիֆուզիայի օրինակում և տարբերակել նույն ու տարբեր նյութերի համեմատությունները։"
+    },
+    {
+      "id": "0353798e-419e-4caa-9439-1988b83aa0be",
+      "code": "PHY7-U02-S09-F01-LIQUID-THERMOMETER",
+      "name_hy": "Հեղուկային ջերմաչափի աշխատանքի սկզբունքը",
+      "metadata": {
+        "sprint": "15B.10",
+        "construct": "liquid_thermometer_operation",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "S08_temperature_particle_motion",
+          "temperature_scale_conversion",
+          "electronic_and_infrared_thermometers",
+          "clinical_thermometer_retention_mechanisms"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §12, տպագիր էջեր 36-37, նկար 34",
+        "evidenceBlueprint": [
+          {
+            "purpose": "core_understanding",
+            "itemCode": "PHY7-U02-S09-I01"
+          },
+          {
+            "purpose": "application",
+            "itemCode": "PHY7-U02-S09-I02"
+          },
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S09-I03"
+          },
+          {
+            "purpose": "transfer_reasoning",
+            "itemCode": "PHY7-U02-S09-I04"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "802bce7e-7ede-4138-b2b2-35c4c1b68a32",
+      "created_at": "2026-10-05T09:07:47.714385+00:00",
+      "updated_at": "2026-10-05T09:07:47.714385+00:00",
+      "description": "Հեղուկային ջերմաչափի աշխատանքը բացատրել հեղուկի ջերմային ընդարձակմամբ, կանխատեսել սյան փոփոխությունը սառչելիս և հիմնավորել նեղ խողովակի դերը։"
+    },
+    {
+      "id": "70b2bdcb-2057-4b77-a894-9ea5fd38ba39",
+      "code": "PHY7-U02-S07-F02-SLOW-DIFFUSION",
+      "name_hy": "Շատ դանդաղ դիֆուզիայի դիտարկման մեկնաբանումը",
+      "metadata": {
+        "sprint": "15B.13H",
+        "construct": "slow_diffusion_observation",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "temperature_speed_relation",
+          "diffusion_coefficients",
+          "diffusion_depth_time_law",
+          "linear_extrapolation",
+          "melting_point_recall"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 30-33, նկար 32",
+        "evidenceBlueprint": [
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S07-I05"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "c1e57a2d-d843-45ea-adf1-891837d12d6c",
+      "created_at": "2026-10-07T13:44:37.924794+00:00",
+      "updated_at": "2026-10-07T13:44:37.924794+00:00",
+      "description": "Դասագրքի պինդ մարմինների դիֆուզիայի օրինակը կիրառել կարճ դիտարկման արդյունքը գնահատելիս։"
+    },
+    {
+      "id": "1aebb4e7-76d6-4bb9-9ce2-747cb6df4aed",
+      "code": "PHY7-U02-S02-F02-PARTICLE-OBSERVATIONS",
+      "name_hy": "Դիտումից դեպի մասնիկային բացատրություն",
+      "metadata": {
+        "sprint": "15B.13",
+        "construct": "particle_structure_observations",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "S03_atomic_composition",
+          "S04_molecular_size_estimation",
+          "S08_particle_speed",
+          "quantitative_gas_laws"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §7, տպագիր էջեր 24-26, նկարներ 22-24",
+        "evidenceBlueprint": [
+          {
+            "purpose": "core_understanding",
+            "itemCode": "PHY7-U02-S02-I05"
+          },
+          {
+            "purpose": "application",
+            "itemCode": "PHY7-U02-S02-I06"
+          },
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S02-I07"
+          },
+          {
+            "purpose": "transfer_reasoning",
+            "itemCode": "PHY7-U02-S02-I08"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "bfd0b199-55ab-4933-acfd-7eeb4142fd4c",
+      "created_at": "2026-10-06T14:03:36.096791+00:00",
+      "updated_at": "2026-10-06T14:03:36.096791+00:00",
+      "description": "Սեղմման և ջերմային ընդարձակման դիտումները կապել մասնիկների միջև տարածությունների փոփոխության հետ՝ տարբերակելով դիտված արդյունքը մասնիկային մոդելի բացատրությունից։"
+    },
+    {
+      "id": "5c867a45-d62a-4fe7-b15a-7f5b0cd7694c",
+      "code": "PHY7-U02-S02-F03-PARTICLE-MODEL-LIMITS",
+      "name_hy": "Մասնիկային մոդել. հիմնավորումներ և սահմաններ",
+      "metadata": {
+        "sprint": "15B.13B",
+        "construct": "particle_model_limits",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "S03_atomic_composition",
+          "S04_molecular_size_estimation",
+          "S08_particle_speed",
+          "quantitative_gas_laws"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §7, տպագիր էջեր 24-26, նկարներ 22-23, էջ 26-ի հարց 11",
+        "evidenceBlueprint": [
+          {
+            "purpose": "core_understanding",
+            "itemCode": "PHY7-U02-S02-I09"
+          },
+          {
+            "purpose": "application",
+            "itemCode": "PHY7-U02-S02-I10"
+          },
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S02-I11"
+          },
+          {
+            "purpose": "transfer_reasoning",
+            "itemCode": "PHY7-U02-S02-I12"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "bfd0b199-55ab-4933-acfd-7eeb4142fd4c",
+      "created_at": "2026-10-06T15:59:42.550267+00:00",
+      "updated_at": "2026-10-06T15:59:42.550267+00:00",
+      "description": "Համադրել մակրոսկոպական դիտումները մասնիկային մոդելի հետ՝ տարբերակելով տեսանելիությունը, ծավալը և համակարգում նյութի քանակը։"
+    },
+    {
+      "id": "a32cfa34-4944-4656-bedd-6ea1f2ef8aa0",
+      "code": "PHY7-U02-S03-F02-ATOMIC-MODELS",
+      "name_hy": "Ատոմների մոդելները և մոլեկուլի հատկությունները",
+      "metadata": {
+        "sprint": "15B.13D",
+        "construct": "atomic_models_and_properties",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "S04_molecular_size_estimation",
+          "S08_particle_speed",
+          "chemical_reaction_equations",
+          "ions_isotopes_and_bonding_theory"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §8, տպագիր էջեր 27-28, նկարներ 25-27",
+        "evidenceBlueprint": [
+          {
+            "purpose": "core_understanding",
+            "itemCode": "PHY7-U02-S03-I05"
+          },
+          {
+            "purpose": "application",
+            "itemCode": "PHY7-U02-S03-I06"
+          },
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S03-I07"
+          },
+          {
+            "purpose": "transfer_reasoning",
+            "itemCode": "PHY7-U02-S03-I08"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+      "created_at": "2026-10-06T19:00:37.944449+00:00",
+      "updated_at": "2026-10-06T19:00:37.944449+00:00",
+      "description": "Տարբերակել ատոմի տեսակը, առանձին ատոմը, մոլեկուլ կազմող միավորումը և մոլեկուլի քիմիական հատկությունները՝ դասագրքի պատկերներով ու կառուցման համեմատությամբ։"
+    },
+    {
+      "id": "a91e8798-f806-45dc-86f1-481df95e6eae",
+      "code": "PHY7-U02-S04-F02-SIZE-MEASUREMENT",
+      "name_hy": "Փոքր մասնիկների չափերը և չափման մեկնաբանությունը",
+      "metadata": {
+        "sprint": "15B.13E",
+        "construct": "size_measurement_reasoning",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "molecular_mass_calculation",
+          "virus_biology",
+          "optical_instrument_theory",
+          "uncalibrated_screen_measurement"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §8-9, տպագիր էջեր 28-30, նկարներ 28-29",
+        "evidenceBlueprint": [
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S04-I05"
+          },
+          {
+            "purpose": "application",
+            "itemCode": "PHY7-U02-S04-I06"
+          },
+          {
+            "purpose": "core_understanding",
+            "itemCode": "PHY7-U02-S04-I07"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+      "created_at": "2026-10-06T20:22:05.725248+00:00",
+      "updated_at": "2026-10-06T20:22:05.725248+00:00",
+      "description": "Գնահատել շարքով չափման բացերի ազդեցությունը, խոշորացված պատկերից որոշել իրական չափը և բացատրել փոքր մարմնում մասնիկների մեծ թիվը։"
+    },
+    {
+      "id": "17234ee0-15f8-4815-81b6-7624850e0478",
+      "code": "PHY7-U02-S05-F02-MOTION-AND-MIXING",
+      "name_hy": "Մասնիկների անկանոն շարժումը և խառնուրդի տեսանելի վիճակը",
+      "metadata": {
+        "sprint": "15B.13F",
+        "construct": "random_motion_and_bulk_observation",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "brownian_motion",
+          "kinetic_theory_equations",
+          "diffusion_coefficients",
+          "random_walk_calculation",
+          "chemical_dissociation"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 30-33, նկարներ 30-31",
+        "evidenceBlueprint": [
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S05-I05"
+          },
+          {
+            "purpose": "transfer_reasoning",
+            "itemCode": "PHY7-U02-S05-I06"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "678beb6a-4654-40c2-a5b2-53cc97b2551b",
+      "created_at": "2026-10-07T07:11:49.313675+00:00",
+      "updated_at": "2026-10-07T07:11:49.313675+00:00",
+      "description": "Տարբերակել մասնիկների անընդհատ անկանոն շարժումը խառնուրդի համաչափ տեսքից և շերտերի միջև ընդհանուր անցման ուղղությունից։"
+    },
+    {
+      "id": "480d5f71-c4eb-43f2-a58e-10cd64b23f50",
+      "code": "PHY7-U02-S06-F02-DIFFUSION-EVIDENCE",
+      "name_hy": "Դիֆուզիայի փորձարարական ապացույցը և մասնիկների անցման պայմանը",
+      "metadata": {
+        "sprint": "15B.13G",
+        "construct": "diffusion_evidence_and_transfer_conditions",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "diffusion_rate_ranking",
+          "temperature_speed_relation",
+          "osmosis",
+          "membrane_transport_physiology",
+          "diffusion_coefficients",
+          "chemical_dissociation"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 30-33, նկարներ 30-31",
+        "evidenceBlueprint": [
+          {
+            "purpose": "application",
+            "itemCode": "PHY7-U02-S06-I05"
+          },
+          {
+            "purpose": "transfer_reasoning",
+            "itemCode": "PHY7-U02-S06-I06"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "b7caca8c-d222-4715-a39f-80883f995471",
+      "created_at": "2026-10-07T08:08:10.726233+00:00",
+      "updated_at": "2026-10-07T08:08:10.726233+00:00",
+      "description": "Ընտրել ինքնաբերական խառնումը ցուցադրող փորձի եղանակը և հստակ տրված միջնորմի պայմանով գնահատել մասնիկների անցման հնարավորությունը։"
+    },
+    {
+      "id": "b560353e-fe94-4121-bce4-ec6b1b025348",
+      "code": "PHY7-U02-S08-F02-THERMAL-SPEED-INTERPRETATION",
+      "name_hy": "Բնորոշ ջերմային արագության մեկնաբանումը և կիրառումը",
+      "metadata": {
+        "sprint": "15B.13I",
+        "construct": "thermal_speed_interpretation",
+        "learnerVisible": false,
+        "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "authoringStatus": "draft",
+        "scopeExclusions": [
+          "speed_temperature_formula",
+          "kinetic_energy_formula",
+          "probability_distribution_calculations",
+          "thermometer_operation",
+          "evaporation_rate_law",
+          "cross_substance_speed_ranking"
+        ],
+        "textbookLocator": "Ֆիզիկա 7 (2023), Գլուխ II, §11, տպագիր էջեր 34-35",
+        "evidenceBlueprint": [
+          {
+            "purpose": "misconception_diagnosis",
+            "itemCode": "PHY7-U02-S08-I05"
+          },
+          {
+            "purpose": "application",
+            "itemCode": "PHY7-U02-S08-I06"
+          }
+        ],
+        "externalSmeValidation": "pending",
+        "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+        "evidenceBlueprintPolicy": "distinct-purpose-v1",
+        "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+        "internalSkillMapDisposition": "approved_for_authoring",
+        "enforceUniqueEvidencePurposes": true
+      },
+      "skill_id": "c2463f0b-9d96-4ae6-a814-0495db8a3872",
+      "created_at": "2026-10-07T17:38:58.999723+00:00",
+      "updated_at": "2026-10-07T17:38:58.999723+00:00",
+      "description": "Տարբերակել բնորոշ և առանձին մոլեկուլի արագությունները և ջերմաստիճան–շարժում կապը կիրառել գոլորշիացման նկատմամբ։"
+    }
+  ],
+  "familyReconciliations": [
+    {
+      "rationale": "This family applies the named units through programme-supported transformations. Family code: PHY7-U01-S07-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "11e4e3cc-f7bc-4233-949f-8e935554c498",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family applies the named units through programme-supported transformations. Family code: PHY7-U01-S07-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "f1a1b778-e580-4637-acac-3b13a9d21c6b",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family applies the named units through programme-supported transformations. Family code: PHY7-U01-S07-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "2f36b3af-7ea3-4bc4-9b28-56e0af8c3f8e",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family applies the named units through programme-supported transformations. Family code: PHY7-U01-S07-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "dea049c6-8f61-463d-a10c-155d9b938c1b",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family applies the named units through programme-supported transformations. Family code: PHY7-U01-S07-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "73751d6e-6630-4dee-8894-e774510309bc",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family applies the named units through programme-supported transformations. Family code: PHY7-U01-S07-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "805951a9-3006-4d0b-a9e6-f3c682b8a4c9",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family applies the named units through programme-supported transformations. Family code: PHY7-U01-S07-F-LENGTH-CONVERSION.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "6d15f68f-87d1-45d9-a750-c81908622551",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family applies the named units through programme-supported transformations. Family code: PHY7-U01-S07-F-TIME-CONVERSION.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "8b9dd289-ea8d-4856-b2fa-27b4320be385",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family applies the named units through programme-supported transformations. Family code: PHY7-U01-S07-F-VOLUME-CONVERSION.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "a13e11fc-7701-4c73-beb7-5287cfb26928",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family assesses quantities, instruments and the named SI-unit content. Family code: PHY7-U01-S06-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "a90e553e-cbe1-48f9-ba43-df2e735f7ea2",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family assesses quantities, instruments and the named SI-unit content. Family code: PHY7-U01-S06-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "f0ba8204-8a18-47aa-b668-001b9f6ba5f9",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family assesses quantities, instruments and the named SI-unit content. Family code: PHY7-U01-S06-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "6536c45f-9a7a-4d63-89ba-53a3037caeb7",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family assesses quantities, instruments and the named SI-unit content. Family code: PHY7-U01-S06-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "74c0bf83-8e15-4195-940c-361091a0b525",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family assesses quantities, instruments and the named SI-unit content. Family code: PHY7-U01-S06-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "9903f2c3-2131-4109-9d88-fc6cbc790c74",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family assesses quantities, instruments and the named SI-unit content. Family code: PHY7-U01-S06-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "b70f2641-db73-4db2-ab35-90bb20da3f21",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family assesses quantities, instruments and the named SI-unit content. Family code: PHY7-U01-S06-F-11D-PARALLEL.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "b2099aff-d355-4df2-8955-bb2644e4a816",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+    },
+    {
+      "rationale": "This family assesses the textbook-grounded distinction that supports the official subject-matter outcome. Family code: PHY7-U01-S02-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "0c0f8052-3070-493f-9ead-710c2cb9aee9",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015"
+    },
+    {
+      "rationale": "This family assesses the textbook-grounded distinction that supports the official subject-matter outcome. Family code: PHY7-U01-S02-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "b4785842-852c-4305-b7ca-973defb1c8db",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015"
+    },
+    {
+      "rationale": "This family assesses the textbook-grounded distinction that supports the official subject-matter outcome. Family code: PHY7-U01-S02-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "45ce531c-d38f-43f2-8f32-fe4a8713ba93",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015"
+    },
+    {
+      "rationale": "This family assesses the textbook-grounded distinction that supports the official subject-matter outcome. Family code: PHY7-U01-S02-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "f9d3a23f-8e9c-4ca7-8d51-f31f7ab57738",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015"
+    },
+    {
+      "rationale": "This family assesses the textbook-grounded distinction that supports the official subject-matter outcome. Family code: PHY7-U01-S02-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "9368aefd-a64c-4d4e-9a5a-81f964fee42e",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015"
+    },
+    {
+      "rationale": "This family assesses the textbook-grounded distinction that supports the official subject-matter outcome. Family code: PHY7-U01-S02-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "aea442d7-15f6-44cf-a5ea-c3ad63273d4a",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015"
+    },
+    {
+      "rationale": "This family assesses the textbook-grounded distinction that supports the official subject-matter outcome. Family code: PHY7-U01-S02-F-11D-PARALLEL.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "e3e51d9b-7bdf-4d11-90f5-b334073f8038",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015"
+    },
+    {
+      "rationale": "This family assesses the explicit Armenian-physicists outcome. Family code: PHY7-U01-S03-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "25fb5937-74ba-4bff-9ab1-66b4c2c3089e",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6f57618c-f172-4adc-a12a-c71404be47b8"
+    },
+    {
+      "rationale": "This family assesses the explicit Armenian-physicists outcome. Family code: PHY7-U01-S03-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "7ba15da3-cde0-48ec-9ee6-bf2386a5686a",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6f57618c-f172-4adc-a12a-c71404be47b8"
+    },
+    {
+      "rationale": "This family assesses the explicit Armenian-physicists outcome. Family code: PHY7-U01-S03-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "d94383f2-8c1d-4fb5-bfdf-ef9dfab20e60",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6f57618c-f172-4adc-a12a-c71404be47b8"
+    },
+    {
+      "rationale": "This family assesses the explicit Armenian-physicists outcome. Family code: PHY7-U01-S03-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "873752e6-6222-449d-b01a-d6a82fad9a9d",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6f57618c-f172-4adc-a12a-c71404be47b8"
+    },
+    {
+      "rationale": "This family assesses the explicit Armenian-physicists outcome. Family code: PHY7-U01-S03-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "969a611a-8ac5-4f6c-9e12-190fe7d9a4e9",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6f57618c-f172-4adc-a12a-c71404be47b8"
+    },
+    {
+      "rationale": "This family assesses the explicit Armenian-physicists outcome. Family code: PHY7-U01-S03-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "3d1de668-ffa2-4a74-9de9-3872a6e91a21",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6f57618c-f172-4adc-a12a-c71404be47b8"
+    },
+    {
+      "rationale": "This family assesses the explicit Armenian-physicists outcome. Family code: PHY7-U01-S03-F-11D-PARALLEL.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "7018f4b9-9df2-494a-9d91-3b6f3806aefe",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6f57618c-f172-4adc-a12a-c71404be47b8"
+    },
+    {
+      "rationale": "This family inherits the verified S01 physical-phenomena construct. Family code: PHY7-U01-S01-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "58794119-b788-44ab-a7ed-484ef7bebdce",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436"
+    },
+    {
+      "rationale": "This family inherits the verified S01 physical-phenomena construct. Family code: PHY7-U01-S01-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "77103a13-81e5-4953-9f47-0eebed0b7191",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436"
+    },
+    {
+      "rationale": "This family inherits the verified S01 physical-phenomena construct. Family code: PHY7-U01-S01-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "41e725c1-9fd5-45df-abc9-fb353a63f494",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436"
+    },
+    {
+      "rationale": "This family inherits the verified S01 physical-phenomena construct. Family code: PHY7-U01-S01-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "305ba246-f409-47f3-a549-9a31e252c2b5",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436"
+    },
+    {
+      "rationale": "This family inherits the verified S01 physical-phenomena construct. Family code: PHY7-U01-S01-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "79dd241f-1617-4a6c-a2cb-643e29acc40c",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436"
+    },
+    {
+      "rationale": "This family inherits the verified S01 physical-phenomena construct. Family code: PHY7-U01-S01-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "1f99295e-e840-440f-bcc2-b1c55091d5dd",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436"
+    },
+    {
+      "rationale": "This family inherits the verified S01 physical-phenomena construct. Family code: PHY7-U01-S01-F-11D-PARALLEL.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "e01c6ff0-d08f-46d7-af9c-a3303b21391a",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436"
+    },
+    {
+      "rationale": "This family assesses bounded simple laboratory measurement and volume procedures. Family code: PHY7-U01-S10-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "000cb332-1008-4a0b-80ed-747adfecf855",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses bounded simple laboratory measurement and volume procedures. Family code: PHY7-U01-S10-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "2b91a481-42d4-4085-8b45-24fc20e97a8a",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses bounded simple laboratory measurement and volume procedures. Family code: PHY7-U01-S10-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "20552ac2-49d5-4f1f-86e8-f764ee0406d5",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses bounded simple laboratory measurement and volume procedures. Family code: PHY7-U01-S10-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "e9bf0bcd-476e-4a95-bb51-49b189512dde",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses bounded simple laboratory measurement and volume procedures. Family code: PHY7-U01-S10-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "6715dcc9-d0a6-4c8c-a65b-642887c9fc37",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses bounded simple laboratory measurement and volume procedures. Family code: PHY7-U01-S10-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "6c575459-a7d7-4b54-bd10-26b0d918f451",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses bounded simple laboratory measurement and volume procedures. Family code: PHY7-U01-S10-F-DISPLACEMENT-VOLUME.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "0080bb96-8c8f-4a8b-8e5d-334ea61e9d9e",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses bounded simple laboratory measurement and volume procedures. Family code: PHY7-U01-S10-F-SHEET-THICKNESS.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "4ea712b1-74ac-4749-aa70-dd5c4f46b550",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses explicit scale-division and instrument-reading work. Family code: PHY7-U01-S08-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "2a7b6619-55e4-4e45-83d3-003863110263",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses explicit scale-division and instrument-reading work. Family code: PHY7-U01-S08-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "abb6f996-e854-4b8d-8bc4-2d811e43e36a",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses explicit scale-division and instrument-reading work. Family code: PHY7-U01-S08-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "7db46bc5-4aec-4d7a-a525-d2d92bf6aad9",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses explicit scale-division and instrument-reading work. Family code: PHY7-U01-S08-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "58e15bfb-f51b-4ea6-bf59-e1d4aa9398d3",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses explicit scale-division and instrument-reading work. Family code: PHY7-U01-S08-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "1966f58d-71b5-4e27-b350-060030e25c41",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses explicit scale-division and instrument-reading work. Family code: PHY7-U01-S08-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "477656cc-03ff-4ab4-b53d-08943f06cce9",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses explicit scale-division and instrument-reading work. Family code: PHY7-U01-S08-F-SCALE-DIVISION.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "d6421202-0c05-46ca-b172-3e6d5f709963",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses explicit scale-division and instrument-reading work. Family code: PHY7-U01-S08-F-SCALE-READING.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "4bb550d4-79c3-4c80-a809-4617365a625a",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports valid simple experimentation through bounded inquiry reasoning. Family code: PHY7-U01-S05-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "f6f4ece0-dc3e-4d05-b4a1-1cc64aad981a",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports valid simple experimentation through bounded inquiry reasoning. Family code: PHY7-U01-S05-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "617b00f5-0259-46d1-8d3d-8b3df9311e41",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports valid simple experimentation through bounded inquiry reasoning. Family code: PHY7-U01-S05-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "3ade0106-3df1-4e3c-b8a7-baf08c3baa99",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports valid simple experimentation through bounded inquiry reasoning. Family code: PHY7-U01-S05-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "3b11f781-c188-48ac-bf58-1f0276bf4c96",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports valid simple experimentation through bounded inquiry reasoning. Family code: PHY7-U01-S05-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "60d83b13-3be4-4129-92fd-5e7a917989fd",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports valid simple experimentation through bounded inquiry reasoning. Family code: PHY7-U01-S05-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "68543856-793c-482e-afd9-8116d69a754a",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports valid simple experimentation through bounded inquiry reasoning. Family code: PHY7-U01-S05-F-HYPOTHESIS-TEST-PARALLEL.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "3b241a8a-3ec9-457e-97b1-ebd49cd37613",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports valid simple experimentation through bounded inquiry reasoning. Family code: PHY7-U01-S05-F-11D-PARALLEL.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "6d2e75ce-a33b-46fc-80fd-746b12255cca",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports the official observation/experiment performance outcome. Family code: PHY7-U01-S04-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "7363c819-6740-442b-a3d7-876be55d306b",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports the official observation/experiment performance outcome. Family code: PHY7-U01-S04-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "1c5fd549-3be7-4b42-8cf3-b2431d833e41",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports the official observation/experiment performance outcome. Family code: PHY7-U01-S04-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "5a2a5255-fbf8-4d72-9bf8-c4c093980fbb",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports the official observation/experiment performance outcome. Family code: PHY7-U01-S04-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "379d7b9a-a4ae-47c6-a763-ecfe148d1706",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports the official observation/experiment performance outcome. Family code: PHY7-U01-S04-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "a8ea8e4d-dbc2-476b-b0f9-d63dab6fc6c7",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports the official observation/experiment performance outcome. Family code: PHY7-U01-S04-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "57ffb526-ecaa-492c-a065-4b4485d33a9e",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports the official observation/experiment performance outcome. Family code: PHY7-U01-S04-F-OBSERVATION-EXPERIMENT-PARALLEL.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "f89658bf-9eaa-4171-a8ae-69ab48b04139",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family supports the official observation/experiment performance outcome. Family code: PHY7-U01-S04-F-11D-PARALLEL.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "24e3cc36-1bf5-4619-affc-001de14d8d9c",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+    },
+    {
+      "rationale": "This family assesses measurement error, precision and measurement-quality reasoning. Family code: PHY7-U01-S09-I03-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "7a64d503-4cd2-479a-b4ae-31fdf1265ba7",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+    },
+    {
+      "rationale": "This family assesses measurement error, precision and measurement-quality reasoning. Family code: PHY7-U01-S09-I02-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "b0cb2164-8b1b-421e-9fd5-c6c762b0ae46",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+    },
+    {
+      "rationale": "This family assesses measurement error, precision and measurement-quality reasoning. Family code: PHY7-U01-S09-I01-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "87a04057-ac1b-4e21-9fa5-ab7d04c50eb6",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+    },
+    {
+      "rationale": "This family assesses measurement error, precision and measurement-quality reasoning. Family code: PHY7-U01-S09-I06-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "eba497ce-d623-4e23-a166-1f5b262334a8",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+    },
+    {
+      "rationale": "This family assesses measurement error, precision and measurement-quality reasoning. Family code: PHY7-U01-S09-I05-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "fac7ea54-497f-4aa7-9544-9949fa0c41ae",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+    },
+    {
+      "rationale": "This family assesses measurement error, precision and measurement-quality reasoning. Family code: PHY7-U01-S09-I04-F01.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "f99f1b54-3b74-4fbc-8174-1fa23e918887",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+    },
+    {
+      "rationale": "This family assesses measurement error, precision and measurement-quality reasoning. Family code: PHY7-U01-S09-F-MEASUREMENT-ERROR.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "d0797d91-493c-4870-9c31-9d13f6520fdc",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+    },
+    {
+      "rationale": "This family assesses measurement error, precision and measurement-quality reasoning. Family code: PHY7-U01-S09-F-11D-PARALLEL.",
+      "disposition": "mapping_updated",
+      "reviewed_at": "2026-09-18T20:48:17.461311+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "312ad707-15b1-4879-b8f9-066c0a8cac53",
+      "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+      "primary_learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+    },
+    {
+      "rationale": "Ընտանիքը գնահատում է փորձարարական դիտումներից նյութի մասնիկային կառուցվածքի վերաբերյալ հիմնավորված եզրակացություն անելը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-09-30T22:07:43.605908+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "15e09d92-7586-421e-b1b0-b0c22946668f",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+    },
+    {
+      "rationale": "Ընտանիքը գնահատում է ատոմ–մոլեկուլ–քիմիական տարր հիմնարար տարբերակումը, որն աջակցում է նյութի մասնիկային կառուցվածքի ըմբռնմանը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-01T13:14:29.2027+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "443c2c97-48b9-47b7-a010-4f35aa5436e5",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է մոլեկուլների չափերի ներկայացումն ու համեմատությունը և փոքր նույնական մասնիկների չափի որոշման պարզ եղանակը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-01T14:50:34.004096+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "628431a8-770f-4fe7-86e0-a40844f9657d",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "1c03ef0b-6df7-4376-8b4b-1ebf96ec76bb"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է նյութում ատոմների և մոլեկուլների անընդհատ ու անկանոն շարժման առանձնահատկությունների նկարագրումը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-01T16:37:11.896953+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "3445dd21-4ddb-4578-8cd0-48c70ab6cba5",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "a70929ea-7b86-4ee3-9dbe-775b227976b4"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է դիֆուզիայի երևույթը օրինակներում ճանաչելու և մասնիկների անկանոն շարժմամբ բացատրելու կարողությունը՝ առանց դիֆուզիայի արագությունների կամ ջերմաստիճանային կապի գնահատման։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-01T17:10:21.840085+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "8b9614d9-3ebe-4102-8ade-a5feeef80608",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "40dd963e-2a7f-48b5-9169-2d28574b7e7d"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է գազերում, հեղուկներում և պինդ մարմիններում դիֆուզիայի արագությունների համեմատումը՝ առանց ջերմաստիճանի ազդեցության գնահատման։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-02T07:29:09.081662+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "e05c19e7-07d8-4c50-83ff-e72f6c764665",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "3078b38b-bf8e-4e3a-a9ce-019fdf13c0fd"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է մարմնի ջերմաստիճանի կապը մասնիկների անկանոն շարժման բնորոշ արագության հետ։ Դիֆուզիան ծառայում է որպես կիրառման օրինակ, իսկ տարբեր գազերի տվյալները՝ համեմատության սահմանները հիմնավորելու միջոց։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-05T08:30:17.903344+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "c5e65ada-a56c-4570-a59c-ae1d6e25d508",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "bcfca398-b568-470e-b185-61cc22d54ecf"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է հեղուկային ջերմաչափի աշխատանքի սկզբունքը՝ հեղուկի ծավալի ջերմաստիճանային փոփոխությունը կապելով մազական խողովակում սյան բարձրության փոփոխության հետ։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-05T09:07:47.714385+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "0353798e-419e-4caa-9439-1988b83aa0be",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "40e20c7c-3f60-4495-b6c7-54c9a5ca3b84"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է նյութի մասնիկային կառուցվածքը փորձերի դիտումներով հիմնավորելը՝ առանձնացնելով մակրոսկոպական չափումը և մասնիկային մոդելի բացատրությունը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-06T14:03:36.096791+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "1aebb4e7-76d6-4bb9-9ce2-747cb6df4aed",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+    },
+    {
+      "rationale": "Ընտանիքը գնահատում է մասնիկային կառուցվածքի հիմնավորումը՝ համեմատելով դիտումները, ստուգելով պնդումների սահմանները և տարբերակելով ծավալի փոփոխությունը նյութի դուրս գալուց։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-06T15:59:42.550267+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "5c867a45-d62a-4fe7-b15a-7f5b0cd7694c",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+    },
+    {
+      "rationale": "Ընտանիքը աջակցում է պարտադիր 1(1) վերջնարդյունքին՝ նյութի մասնիկային կառուցվածքի բացատրության համար տարբերակելով ատոմը, տարրը և մոլեկուլը։ Սա չի փոխում հաստատված հմտությունների քարտեզը։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-06T19:00:37.944449+00:00",
+      "mapping_type": "derived_supporting",
+      "item_family_id": "a32cfa34-4944-4656-bedd-6ea1f2ef8aa0",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է պարտադիր 1(2) վերջնարդյունքը՝ մասնիկների չափերի համեմատությամբ և §9-ի չափման եղանակների կիրառմամբ։ Հաստատված հմտությունների քարտեզը չի փոխվում։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-06T20:22:05.725248+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "a91e8798-f806-45dc-86f1-481df95e6eae",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "1c03ef0b-6df7-4376-8b4b-1ebf96ec76bb"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է պարտադիր 1(3) վերջնարդյունքը՝ մասնիկների անընդհատ անկանոն շարժումը տարբերակելով խառնուրդի ընդհանուր տեսքից և շերտերի միջև անցման ուղղությունից։ Հաստատված հմտությունների քարտեզը չի փոխվում։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-07T07:11:49.313675+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "17234ee0-15f8-4815-81b6-7624850e0478",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "a70929ea-7b86-4ee3-9dbe-775b227976b4"
+    },
+    {
+      "rationale": "Ընտանիքը ուղղակիորեն գնահատում է պարտադիր 1(4) վերջնարդյունքը՝ օրինակներում դիֆուզիայի ինքնաբերական բնույթը և մասնիկների անցման անհրաժեշտ պայմանը բացատրելով։ Դիֆուզիայի արագությունը և ջերմաստիճանային կապը չեն գնահատվում։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-07T08:08:10.726233+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "480d5f71-c4eb-43f2-a58e-10cd64b23f50",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "40dd963e-2a7f-48b5-9169-2d28574b7e7d"
+    },
+    {
+      "rationale": "Ընտանիքը լրացուցիչ 2(1) վերջնարդյունքի շրջանակում ամրապնդում է պինդ մարմիններում դիֆուզիայի շատ դանդաղ ընթացքի ըմբռնումը՝ դասագրքային օրինակի միջոցով։ Ջերմաստիճանի ազդեցությունը և դիֆուզիայի քանակական օրենքները չեն գնահատվում։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-07T13:44:37.924794+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "70b2bdcb-2057-4b77-a894-9ea5fd38ba39",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "3078b38b-bf8e-4e3a-a9ce-019fdf13c0fd"
+    },
+    {
+      "rationale": "Ընտանիքը պարտադիր 1(5) վերջնարդյունքի շրջանակում տարբերակում է բնորոշ և առանձին մոլեկուլի արագությունները և ջերմաստիճան–շարժում կապը կիրառում գոլորշիացման նկատմամբ։ Արագության բանաձևեր և հավանականության հաշվարկներ չեն պահանջվում։",
+      "disposition": "new_family",
+      "reviewed_at": "2026-10-07T17:38:58.999723+00:00",
+      "mapping_type": "direct",
+      "item_family_id": "b560353e-fe94-4121-bce4-ec6b1b025348",
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "primary_learning_outcome_id": "bcfca398-b568-470e-b185-61cc22d54ecf"
+    }
+  ]
 }
