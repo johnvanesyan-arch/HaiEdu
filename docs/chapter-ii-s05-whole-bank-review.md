@@ -56,3 +56,7 @@ After verified deployment, review the two S05 questions, the two definitions, th
 ## Combined-review update — 2026-10-07 08:09 UTC
 
 I05 is now edited and approved at v2; I06 remains draft v1. The two new definitions and separate guide are still draft. Both current-family technical QA refreshes and guide validation pass, preserving the human edit/approval. John authorized preparing S06 while reviewing both batches together. [Combined review links and S06 checkpoint](chapter-ii-s06-whole-bank-review.md#deployment-checkpoint--2026-10-07-0809-utc). This supersedes the earlier two-pending-question handoff, without closing S05's six-slot planning gap.
+
+## Review completed — 2026-10-07
+
+Fresh production readback confirms all six current questions approved, all expansion definitions active and the edited expansion guide published at runtime v2 / authoring v4 with matching immutable content. Current-family technical QA and guide validation pass while preserving human edits and approvals. The original guide remains v3. [S05/S06 completion evidence](evidence/sprint-15b13-s05-s06-review-complete-20261007.json). This closes the earlier review handoff, while the six-slot planning gap remains open.
