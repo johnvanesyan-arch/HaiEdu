@@ -20,7 +20,7 @@ The direct official mapping is Theme 2 **mandatory outcome 1(5)**, explaining wh
 
 The fresh complete catalogue contains **312 current items, 155 immutable snapshots and 19 skill records**, including draft, approved, archived/retired states, current templates, related mappings and all assessment purposes. [The manifest](evidence/chapter-ii-s08-corpus-manifest-20261007.json) records versions, snapshot hashes and protected-purpose membership without copying protected prompts. The four S08 v1 questions match their immutable prompts, ordered options and answers. Related historical versions preserve the previously reviewed scientific demands; human wording/answer-order edits and the superseded S02 I10 repetition are included in the comparison.
 
-The frozen source was read at **2026-10-07 16:39:39 UTC**, with catalogue fingerprint `068b217afaba620a4dbfb4f8d7bd80bd`. The migration checks this fingerprint under SHARE locks. A fresh read at 17:04:04 UTC confirmed the complete content fingerprint and all 280 pool / 80 form memberships unchanged. Following PR #163 review, the atomic guard was expanded to lock and fingerprint both membership tables as well as official outcome text and mappings; the 14-table fingerprint is `3e84f404e9a6b75a1ac790e79d1fad8f`. A changed bank, historical snapshot, guide, definition or mapping blocks application and requires renewed comparison. Fingerprints verify freshness, not semantic novelty.
+The frozen source was read at **2026-10-07 16:39:39 UTC**, with catalogue fingerprint `068b217afaba620a4dbfb4f8d7bd80bd`. This is the original 12-table content fingerprint. A fresh read at 17:04:04 UTC confirmed the complete content fingerprint and all 280 pool / 80 form memberships unchanged. Following PR #163 review, the atomic guard was expanded to lock and fingerprint both membership tables as well as official outcome text and mappings; the 14-table fingerprint is `3e84f404e9a6b75a1ac790e79d1fad8f`. A changed bank, historical snapshot, guide, definition or mapping blocks application and requires renewed comparison. Fingerprints verify freshness, not semantic novelty.
 
 ## Candidate comparison
 
@@ -52,3 +52,15 @@ After verified deployment, review the two questions, three new definitions and s
 ## Predeployment verification — 2026-10-07
 
 All 1,238 local Node tests pass, including two focused S08 migration/quality tests. The real production transaction rollback added the intended two drafts inside the transaction and then restored all rows/hashes across all 100 public tables. Fresh gate readback confirms zero Chapter II pool/form/session/attempt/student-exposure/review-exposure links, zero candidate blueprints and an inactive draft release. Required hosted PR/main checks and actual deployment remain separate gates.
+
+
+## Verified deployment and review handoff — 2026-10-07
+
+[PR #163](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/163), CI #1286 and independent main CI #1287 passed all five jobs. Main `a247748d29ab676c38d3f388ab6eba5c102a259d` matches the corrected, reviewed tree. The assessment-purpose membership review finding is fixed and covered by stale-evidence regressions. Production migration `20261007173858` matches the reviewed SQL exactly. Both questions pass current technical QA without errors or warnings, and the guide validates both variants. Every pre-existing row is preserved across 15 appended and 85 unchanged tables; advisors are unchanged. Production `/release.json` verifies the implementation commit. [Full evidence](evidence/sprint-15b13-s08-expansion-20261007.json).
+
+- Review [PHY7-U02-S08-I05 v1](https://www.haiedu.am/content-item.html?id=3abbf485-6ff6-4116-acd7-0d750dc763d5&from=review).
+- Review [PHY7-U02-S08-I06 v1](https://www.haiedu.am/content-item.html?id=06c995bb-7dca-4d31-8732-a96b090ae97c&from=review).
+- Review the three new definitions in [Թյուր պատկերացումներ](https://www.haiedu.am/content-misconceptions.html): `evaporation_requires_boiling`, `same_gas_temperature_requires_equal_speeds`, `thermal_speed_is_bulk_motion`.
+- After approving/publishing the questions, review [the separate draft guide](https://www.haiedu.am/content-guides.html?id=template%3A43c51f8b-5371-4cab-9fa1-719bfc9f4730).
+
+S08 has six authored questions and six open planning slots. Chapter II has 54 authored questions: 52 approved and these two drafts, with 138 unauthored toward the unchanged 192 plan. All original questions, definitions, guides and approvals are preserved. Chapter II remains draft, with zero pool/form/learner/exposure links and no release activation. After human review, proceed to S09 textbook/whole-bank comparison.

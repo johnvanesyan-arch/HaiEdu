@@ -1,0 +1,593 @@
+{
+  "sprint": "15B.13I",
+  "observedAt": "2026-10-07T17:39:42.31271+00:00",
+  "state": "deployed_draft_human_review_pending",
+  "scope": "Subject-aware S08 practice content; no core/runtime/schema/dashboard changes.",
+  "source": {
+    "pdfSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "printedPages": "34–35, section 11",
+    "outcome": "Theme 2 mandatory 1(5)",
+    "illustrationDisposition": "verbal_task_no_illustration_needed"
+  },
+  "comparison": {
+    "currentItems": 312,
+    "historicalSnapshots": 155,
+    "corpusFingerprint": "3e84f404e9a6b75a1ac790e79d1fad8f",
+    "guardTables": [
+      "items",
+      "item_options",
+      "item_answer_keys",
+      "item_misconception_mappings",
+      "item_versions",
+      "item_templates",
+      "misconceptions",
+      "skills",
+      "skill_outcomes",
+      "item_template_remediation_guides",
+      "skill_outcome_curriculum_mappings",
+      "learning_outcomes",
+      "assessment_pool_items",
+      "assessment_form_items"
+    ],
+    "preApply": {
+      "observed_at": "2026-10-07 17:38:29.987302+00",
+      "fingerprint": "3e84f404e9a6b75a1ac790e79d1fad8f"
+    },
+    "evidence": "docs/chapter-ii-s08-whole-bank-review.md",
+    "author": "Codex automated author and semantic comparison; human/SME approval remains separate",
+    "dispositions": {
+      "I05": "new_reasoning_coverage_in_question_bank",
+      "I06": "intentional_practice_variant"
+    },
+    "assessmentMembershipGuardReview": "PR163 discussion_r4209615517 addressed by commit 40d0a5057a3dd507d9e596ba9fc757a39f5e1c83 with pool/form membership regressions"
+  },
+  "implementation": {
+    "pr": 163,
+    "head": "40d0a5057a3dd507d9e596ba9fc757a39f5e1c83",
+    "tree": "bc6c99165df8a458f0d03cbf84452ad3cfec745e",
+    "main": "a247748d29ab676c38d3f388ab6eba5c102a259d",
+    "mergedAt": "2026-10-07T17:25:14Z",
+    "ci": {
+      "id": 37656453038,
+      "number": 1286,
+      "jobs": [
+        {
+          "id": 112912586199,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112912586513,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112912586555,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112912586745,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112914139457,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "mainCi": {
+      "id": 37658923931,
+      "number": 1287,
+      "attempt": 2,
+      "jobs": [
+        {
+          "id": 112926020888,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112926022777,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112926023518,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112926076129,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112926623379,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "retry": {
+        "runId": 37658923931,
+        "priorAttempt": 1,
+        "reason": "Chromium dependency installation timed out while downloading Ubuntu fonts-unifont; browser tests never started. Retry failed/cancelled jobs only; no policy or code changes."
+      }
+    },
+    "deployment": {
+      "id": "dpl_A543k2ibSUNwCjfUoNDxcYa7ckSG",
+      "state": "READY",
+      "target": "production",
+      "sha": "a247748d29ab676c38d3f388ab6eba5c102a259d",
+      "url": "armenian-mastery-platform-5moen03bv-kupershtokh-7785.vercel.app"
+    },
+    "rollback": {
+      "tables": 100,
+      "allExistingRowsAndHashesPreserved": true,
+      "includesCorrectedFourteenTableGuard": true
+    }
+  },
+  "migration": {
+    "version": "20261007173858",
+    "name": "sprint_15b13_s08_practice_expansion",
+    "exactReviewedSql": true,
+    "sqlSha256": "d846daf62aa754f20ff53aeae82dc59b8e740765ebaf31a71a52f4a2466e6094"
+  },
+  "qa": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S08-I06",
+        "itemId": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+        "versionNo": 1,
+        "fingerprint": "a114027285586ba51bb0bcd72e8c4722",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S08-T02-THERMAL-SPEED-INTERPRETATION",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [
+                "A",
+                "B"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis",
+                "application"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|363c505e-f28e-4210-8649-549aad722d6a|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis,application|1|06c995bb-7dca-4d31-8732-a96b090ae97c:1:application,3abbf485-6ff6-4116-acd7-0d750dc763d5:1:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S08-I05",
+        "itemId": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+        "versionNo": 1,
+        "fingerprint": "754d26c32d9a8fabae5496a175fceab6",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S08-T02-THERMAL-SPEED-INTERPRETATION",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 1,
+                "D": 1
+              },
+              "missingPositions": [
+                "A",
+                "B"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis",
+                "application"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|363c505e-f28e-4210-8649-549aad722d6a|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis,application|1|06c995bb-7dca-4d31-8732-a96b090ae97c:1:application,3abbf485-6ff6-4116-acd7-0d750dc763d5:1:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "appendedQa": [
+    {
+      "id": "c91b2057-06b6-429f-b7bb-08b38fab1033",
+      "item_id": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15B13I-s08-expansion-20261007",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 0,
+            "C": 1,
+            "D": 1
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U02-S08-T02-THERMAL-SPEED-INTERPRETATION",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 2,
+          "missingPositions": [
+            "A",
+            "B"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 0.5
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionCorpusFingerprint": "3a3ab284bb70260ba42a01ba0a7290e0",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1,
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "application",
+          "familyStateFingerprint": "haiedu-family-state-v1|363c505e-f28e-4210-8649-549aad722d6a|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis,application|1|06c995bb-7dca-4d31-8732-a96b090ae97c:1:application,3abbf485-6ff6-4116-acd7-0d750dc763d5:1:misconception_diagnosis",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "misconception_diagnosis",
+            "application"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-07 17:40:33.284787+00"
+    },
+    {
+      "id": "c7e75986-5724-4ce1-b6a0-d65ab024414d",
+      "item_id": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15B13I-s08-expansion-20261007",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 0,
+            "C": 1,
+            "D": 1
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U02-S08-T02-THERMAL-SPEED-INTERPRETATION",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 2,
+          "missingPositions": [
+            "A",
+            "B"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 0.5
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionCorpusFingerprint": "3a3ab284bb70260ba42a01ba0a7290e0",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1,
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "misconception_diagnosis",
+          "familyStateFingerprint": "haiedu-family-state-v1|363c505e-f28e-4210-8649-549aad722d6a|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis,application|1|06c995bb-7dca-4d31-8732-a96b090ae97c:1:application,3abbf485-6ff6-4116-acd7-0d750dc763d5:1:misconception_diagnosis",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "misconception_diagnosis",
+            "application"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-07 17:40:33.284787+00"
+    }
+  ],
+  "guideValidation": {
+    "guideId": "43c51f8b-5371-4cab-9fa1-719bfc9f4730",
+    "status": "draft",
+    "version": 1,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 2,
+      "variantFailures": []
+    }
+  },
+  "preservation": {
+    "tableCount": 100,
+    "allPreexistingRowsPreserved": true,
+    "expectedAdditions": {
+      "items": 2,
+      "item_options": 8,
+      "item_qa_runs": 2,
+      "item_families": 1,
+      "item_versions": 2,
+      "item_templates": 1,
+      "misconceptions": 3,
+      "item_answer_keys": 2,
+      "item_curriculum_scopes": 2,
+      "remediation_guide_versions": 1,
+      "item_misconception_mappings": 6,
+      "curriculum_release_item_families": 1,
+      "item_template_remediation_guides": 1,
+      "remediation_guide_authoring_versions": 1,
+      "item_family_curriculum_reconciliations": 1
+    },
+    "unchangedTables": 85
+  },
+  "advisors": {
+    "security": {
+      "unchanged": true,
+      "groups": 2,
+      "findings": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 36
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "level": "WARN",
+          "count": 1
+        }
+      ]
+    },
+    "performance": {
+      "unchanged": true,
+      "groups": 4,
+      "findings": [
+        {
+          "name": "unindexed_foreign_keys",
+          "level": "INFO",
+          "count": 39
+        },
+        {
+          "name": "auth_rls_initplan",
+          "level": "WARN",
+          "count": 16
+        },
+        {
+          "name": "unused_index",
+          "level": "INFO",
+          "count": 102
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "level": "WARN",
+          "count": 14
+        }
+      ]
+    }
+  },
+  "publicReadback": {
+    "url": "https://www.haiedu.am/release.json?verify=s08-implementation",
+    "status": 200,
+    "release": {
+      "schemaVersion": 1,
+      "commit": "a247748d29ab676c38d3f388ab6eba5c102a259d"
+    },
+    "observedAt": "2026-10-07T17:39:50.698311+00:00"
+  },
+  "governance": {
+    "release": {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "status": "draft",
+      "fingerprint": "ca3c338020ecce3eee78a2139e512b66",
+      "activated_at": null
+    },
+    "blueprints": 0,
+    "form_links": 0,
+    "pool_links": 0,
+    "observed_at": "2026-10-07T17:40:37.115615+00:00",
+    "attempt_links": 0,
+    "session_links": 0,
+    "exposure_links": 0,
+    "review_exposure_links": 0
+  },
+  "inventory": {
+    "chapterIIAuthored": 54,
+    "approved": 52,
+    "drafts": 2,
+    "planningTarget": 192,
+    "unauthored": 138,
+    "S08Authored": 6,
+    "S08OpenSlots": 6,
+    "priorOpenSlots": {
+      "S03": 4,
+      "S04": 5,
+      "S05": 6,
+      "S06": 6,
+      "S07": 7
+    },
+    "smallerBankPlanApproved": false
+  },
+  "reviewItems": [
+    {
+      "id": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+      "code": "PHY7-U02-S08-I05",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "disposition": "new_reasoning_coverage",
+      "url": "https://www.haiedu.am/content-item.html?id=3abbf485-6ff6-4116-acd7-0d750dc763d5&from=review"
+    },
+    {
+      "id": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+      "code": "PHY7-U02-S08-I06",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "disposition": "intentional_practice_variant",
+      "url": "https://www.haiedu.am/content-item.html?id=06c995bb-7dca-4d31-8732-a96b090ae97c&from=review"
+    }
+  ],
+  "newDefinitions": [
+    {
+      "id": "f134f091-1a35-48ac-8b50-89fd1078c9d3",
+      "code": "evaporation_requires_boiling",
+      "status": "draft"
+    },
+    {
+      "id": "d2188b23-e1aa-4783-8613-54d0862bf6a3",
+      "code": "same_gas_temperature_requires_equal_speeds",
+      "status": "draft"
+    },
+    {
+      "id": "3fa2e710-0ee6-4566-a08b-f9853df953c8",
+      "code": "thermal_speed_is_bulk_motion",
+      "status": "draft"
+    }
+  ],
+  "reviewGuideUrl": "https://www.haiedu.am/content-guides.html?id=template%3A43c51f8b-5371-4cab-9fa1-719bfc9f4730",
+  "precedingReviewCompletion": "docs/evidence/sprint-15b13-s07-review-complete-20261007.json",
+  "limitations": [
+    "Technical QA uses the actual deployed v11 evaluator with fresh production readback and a read-only adapter; no authenticated live Edge or new production-browser acceptance is claimed.",
+    "Isolated CI browser checks do not establish a production Deployment Check configuration.",
+    "Human content review, protected banks, model approval, older illustration audit, external SME, pilot and release authorization remain open."
+  ],
+  "newImmutableHistory": {
+    "itemSnapshots": 2,
+    "allItemFieldsOptionsAnswersAndMappingsMatch": true,
+    "runtimeGuideVersion": 1,
+    "authoringGuideVersion": 1,
+    "allGuideContentFieldsMatch": true,
+    "systemActorOnly": true
+  }
+}
