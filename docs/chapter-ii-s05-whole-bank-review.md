@@ -42,3 +42,13 @@ All accessible protected bank assignments were included in the corpus; no protec
 Isolated tests execute the real migration and quality endpoint against a pseudonymized catalogue with real column/constraint contracts. Only the expected corpus hash is substituted for the smaller fixture. Tests check additive preservation, source-media hashes, all distractor mappings, guide validation, rollback and rejection of stale current/history/guide/related-bank evidence and a non-draft release. A separate production rollback probe exercises unchanged SQL against the real schema. Automated QA is not a human approval or authenticated live Edge call.
 
 After verified deployment, review the two S05 questions, the two definitions, then the separate guide. Publish/approve the questions before publishing the guide so the workspace can load their published variants. Chapter II remains learner-inactive. Open work includes the six S05, five S04 and four S03 planning slots, S06–S09 expansion, protected banks, numeric readiness/model approval, the older 32-item illustration audit, external SME, pilot and release authorization.
+
+
+## Deployment checkpoint — 2026-10-07 07:12 UTC
+
+[PR #157](https://github.com/johnvanesyan-arch/armenian-mastery-platform/pull/157), CI #1273 and independent main CI #1274 passed all five jobs (1,232 Node / 63 Chromium). Main `fc5b91d50696798b86a26bd37964c636fedd81ef` matches the reviewed tree. Vercel is READY at that commit; `/release.json` and both public images verify the intended bytes. Production migration `20261007071149` matches reviewed SQL verbatim. Both drafts pass fresh current-family technical QA, and the guide validates both variants. All existing rows are preserved: 15 tables receive expected additions and 85 remain unchanged. Advisor findings are unchanged. Chapter II has 49 authored items (47 approved, two drafts), zero learner/pool/form/exposure links and a draft release. [Full evidence](evidence/sprint-15b13-s05-expansion-20261007.json).
+
+- [PHY7-U02-S05-I05 v1](https://www.haiedu.am/content-item.html?id=12e86241-becd-43b3-bf81-f0d28025a8ab&from=review)
+- [PHY7-U02-S05-I06 v1](https://www.haiedu.am/content-item.html?id=23d9df58-9745-44b6-bba3-92f765b7759f&from=review)
+- Review the two new S05 definitions in [Թյուր պատկերացումներ](https://www.haiedu.am/content-misconceptions.html).
+- After publishing the questions, review [the separate draft guide](https://www.haiedu.am/content-guides.html?id=template%3A7d5e2e67-a1e8-4168-b4f5-4a3b73505679).
