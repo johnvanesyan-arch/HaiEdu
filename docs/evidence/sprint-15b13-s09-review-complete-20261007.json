@@ -1,0 +1,498 @@
+{
+  "sprint": "15B.13J review closure",
+  "observedAt": "2026-10-07T20:53:52.098159+00:00",
+  "author": "Codex automated verification; actual human decisions read from governed records",
+  "sourceCommit": "2e3f5712d0abd2a65a592252f0574a47f9ee7f62",
+  "sourceMainCI": {
+    "runId": 37675284235,
+    "runNumber": 1296,
+    "jobs": [
+      {
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "name": "institutional-concurrency",
+        "conclusion": "success"
+      },
+      {
+        "name": "role-layout-browser",
+        "conclusion": "success"
+      },
+      {
+        "name": "phase3-postgres-17",
+        "conclusion": "success"
+      },
+      {
+        "name": "Platform release checks",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "items": [
+    {
+      "id": "108a14e9-7460-4491-9454-f8359e1c238f",
+      "code": "PHY7-U02-S09-I01",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "fingerprint": "02fee777861e64cb8c826144cce9f8bd",
+      "contentApprovals": [
+        {
+          "id": "493193d3-675a-454c-9f07-dba0ac25a540",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-05T09:14:21.284187+00:00",
+          "humanActorPresent": true
+        }
+      ]
+    },
+    {
+      "id": "ab1d35ba-76a4-403d-8d0c-147234aad143",
+      "code": "PHY7-U02-S09-I02",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "fingerprint": "e9c2844274a8c1e4972ce5ca8a1c2509",
+      "contentApprovals": [
+        {
+          "id": "0fcb8576-544c-45a8-9292-42a4fa46e6b6",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-05T09:15:22.856867+00:00",
+          "humanActorPresent": true
+        }
+      ]
+    },
+    {
+      "id": "19120410-872d-437c-9f18-229f01c69fcc",
+      "code": "PHY7-U02-S09-I03",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "fingerprint": "4e162399129d9d84452075789d19fa00",
+      "contentApprovals": [
+        {
+          "id": "8b9c1d4a-1cef-4b8c-8ce5-33fc96dc8f21",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-05T09:15:52.131428+00:00",
+          "humanActorPresent": true
+        }
+      ]
+    },
+    {
+      "id": "a3aa8e20-aff6-4b18-866a-47e01920a00a",
+      "code": "PHY7-U02-S09-I04",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "fingerprint": "b805ddcefccaa9cb33d04d9e46241525",
+      "contentApprovals": [
+        {
+          "id": "e23fcf60-b0bd-4584-9e12-8649b3313f6e",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-05T09:16:32.111863+00:00",
+          "humanActorPresent": true
+        }
+      ]
+    },
+    {
+      "id": "a5453c78-6a31-46cb-8449-0b4fdbc117e1",
+      "code": "PHY7-U02-S09-I05",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "fingerprint": "bdb179e7560077ba07d79aa2dd5cf76f",
+      "contentApprovals": [
+        {
+          "id": "e80da57d-65bb-49d6-a77d-5790846a2b34",
+          "version": 2,
+          "decision": "approved",
+          "createdAt": "2026-10-07T19:41:14.787821+00:00",
+          "humanActorPresent": true
+        }
+      ]
+    },
+    {
+      "id": "526bbcbc-dfbe-4fa9-82ff-b2c55b577997",
+      "code": "PHY7-U02-S09-I06",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "fingerprint": "b1592f86cbdd2ddd85a40937e08565ff",
+      "contentApprovals": [
+        {
+          "id": "3e326f6f-55d9-4a3c-87c5-2b8b78954005",
+          "version": 2,
+          "decision": "approved",
+          "createdAt": "2026-10-07T20:04:17.52878+00:00",
+          "humanActorPresent": true
+        }
+      ]
+    }
+  ],
+  "definitions": [
+    {
+      "id": "896c440c-4da5-4f54-84f9-cae749bfe1ee",
+      "code": "all_thermometer_liquids_freeze_at_zero",
+      "status": "active"
+    },
+    {
+      "id": "2d98470a-b8cc-4dfc-b32b-30d6799b4b22",
+      "code": "capillary_blocks_liquid",
+      "status": "active"
+    },
+    {
+      "id": "039482f2-3c96-4d2f-80c6-eccc91343aef",
+      "code": "column_height_gives_temperature_without_calibration",
+      "status": "active"
+    },
+    {
+      "id": "88c9c087-e4f3-4734-9041-bfa8e657576b",
+      "code": "cooling_causes_liquid_loss",
+      "status": "active"
+    },
+    {
+      "id": "9179bfdf-1bf7-4914-a794-315682df5b52",
+      "code": "heating_creates_liquid",
+      "status": "active"
+    },
+    {
+      "id": "81faba61-7248-4cff-ba8c-ac75e590a18a",
+      "code": "liquid_volume_temperature_independent",
+      "status": "active"
+    },
+    {
+      "id": "2209cd49-5f2b-47aa-90b2-37fcfef0b81e",
+      "code": "scale_moves_liquid",
+      "status": "active"
+    },
+    {
+      "id": "3b17fe0b-d49d-4c56-a6cd-ca15bc0f7258",
+      "code": "solidified_thermometer_liquid_still_works",
+      "status": "active"
+    },
+    {
+      "id": "094ebb0f-4b01-4b7c-aeee-8463910562e6",
+      "code": "thermal_expansion_reversed",
+      "status": "active"
+    },
+    {
+      "id": "650eb8aa-d9c9-4976-b0a1-16d8f0460e79",
+      "code": "thermometer_requires_boiling",
+      "status": "active"
+    },
+    {
+      "id": "b959134b-073b-4920-93c7-cef39e2772bc",
+      "code": "tube_width_irrelevant",
+      "status": "active"
+    },
+    {
+      "id": "ad04593d-b075-4a72-adbe-c3e5bbea136b",
+      "code": "wider_tube_gives_larger_rise",
+      "status": "active"
+    }
+  ],
+  "newDefinitionReviewEvents": [
+    {
+      "id": "973e9814-94bd-489b-a991-25d542bc53f2",
+      "createdAt": "2026-10-07T20:46:27.315312+00:00"
+    },
+    {
+      "id": "c911ff8c-53a9-49ea-92b6-a64ea1f2d8dd",
+      "createdAt": "2026-10-07T20:46:51.438768+00:00"
+    },
+    {
+      "id": "c9ea7f80-ebc4-42e3-8a8c-dd85621bc4c4",
+      "createdAt": "2026-10-07T20:47:02.632889+00:00"
+    }
+  ],
+  "immutableContentValidation": {
+    "items": [
+      {
+        "code": "PHY7-U02-S09-I05",
+        "version": 2,
+        "snapshotId": "2415f172-c3e5-4721-b183-d70f9301b62b",
+        "immutableItemContentOptionsAnswerMappingsMatch": true
+      },
+      {
+        "code": "PHY7-U02-S09-I06",
+        "version": 2,
+        "snapshotId": "050ec50d-36a5-433b-b5e3-a3f1ce053df9",
+        "immutableItemContentOptionsAnswerMappingsMatch": true
+      }
+    ],
+    "guide": {
+      "guideId": "cf474b91-5383-46c4-a5cd-3e261ab5a76c",
+      "runtimeVersion": 2,
+      "authoringVersion": 4,
+      "runtimeSnapshotId": "edd6204f-5972-427a-b308-9ed64398aec8",
+      "authoringSnapshotId": "99644251-3497-448d-a29a-fcc82e981ffc",
+      "publishedAt": "2026-10-07T20:45:42.444168+00:00",
+      "currentRuntimeAuthoringContentMatch": true
+    },
+    "boundary": "Immutable item instructional fields compared separately from later lifecycle metadata; no claim that review-time lifecycle fields are byte-identical."
+  },
+  "qaReplay": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S09-I05",
+        "itemId": "a5453c78-6a31-46cb-8449-0b4fdbc117e1",
+        "versionNo": 2,
+        "fingerprint": "bdb179e7560077ba07d79aa2dd5cf76f",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S09-T02-THERMOMETER-LIMITS-AND-READOUT",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "application",
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|3284eb69-81fc-43df-a21b-ab436ff64745|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application,misconception_diagnosis|1|526bbcbc-dfbe-4fa9-82ff-b2c55b577997:2:misconception_diagnosis,a5453c78-6a31-46cb-8449-0b4fdbc117e1:2:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S09-I06",
+        "itemId": "526bbcbc-dfbe-4fa9-82ff-b2c55b577997",
+        "versionNo": 2,
+        "fingerprint": "b1592f86cbdd2ddd85a40937e08565ff",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S09-T02-THERMOMETER-LIMITS-AND-READOUT",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "application",
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|3284eb69-81fc-43df-a21b-ab436ff64745|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application,misconception_diagnosis|1|526bbcbc-dfbe-4fa9-82ff-b2c55b577997:2:misconception_diagnosis,a5453c78-6a31-46cb-8449-0b4fdbc117e1:2:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "guideValidation": {
+    "guideId": "cf474b91-5383-46c4-a5cd-3e261ab5a76c",
+    "status": "published",
+    "version": 2,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 2,
+      "variantFailures": []
+    }
+  },
+  "appendedTechnicalQA": [
+    {
+      "id": "d19f0208-d3d3-49c6-be81-094ca35a335c",
+      "item_id": "a5453c78-6a31-46cb-8449-0b4fdbc117e1",
+      "version_no": 2,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15B13J-s09-review-complete-20261007",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 1,
+            "B": 1,
+            "C": 0,
+            "D": 0
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U02-S09-T02-THERMOMETER-LIMITS-AND-READOUT",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 2,
+          "missingPositions": [
+            "C",
+            "D"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 0.5
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionCorpusFingerprint": "f4e22cfd1219e7114c60b0ac0880343a",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1,
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "application",
+          "familyStateFingerprint": "haiedu-family-state-v1|3284eb69-81fc-43df-a21b-ab436ff64745|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application,misconception_diagnosis|1|526bbcbc-dfbe-4fa9-82ff-b2c55b577997:2:misconception_diagnosis,a5453c78-6a31-46cb-8449-0b4fdbc117e1:2:application",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "application",
+            "misconception_diagnosis"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-07 20:55:33.260541+00"
+    }
+  ],
+  "retainedCurrentQA": {
+    "itemCode": "PHY7-U02-S09-I06",
+    "id": "6e93522c-20c6-4119-8069-7682b92b1ce5",
+    "version": 2,
+    "reason": "Already matches the current two-v2 family state; no redundant append."
+  },
+  "contentPreservation": {
+    "beforeAndAfter18TableFingerprint": "f4e22cfd1219e7114c60b0ac0880343a",
+    "mutation": "One actor-null technical QA append only; no item, option, answer, mapping, definition, guide, approval or immutable-version write."
+  },
+  "semanticDeltaReview": {
+    "items": "Human prompt and option edits preserve the supplied ranges, -50 C comparison, expansion/readout inference, B/A keys and distractor meanings. Stored mapping content remains unchanged apart from timestamps.",
+    "sourceRationale": "The model ranges remain explicitly supplied problem data, not asserted universal commercial specifications; no new science or handling task is added.",
+    "guide": "Human-edited runtime v2 / authoring v4 retained. Structural variant validation passes; it is not independent human/SME approval."
+  },
+  "openEditorialFollowups": [
+    {
+      "itemCode": "PHY7-U02-S09-I06",
+      "field": "option D content_hy",
+      "finding": "Human-edited text starts with a literal D. label. Delivered options are shuffled; remove this embedded label through a subsequent governed content revision and review. No answer or human content was silently changed."
+    },
+    {
+      "guideId": "cf474b91-5383-46c4-a5cd-3e261ab5a76c",
+      "field": "worked_example_hy",
+      "finding": "Human-edited worked example adds the erased-scale situation used in I06. Manual analogous-example/answer-disclosure review remains a content follow-up despite structural validation passing; preserve the published record until a governed revision."
+    }
+  ],
+  "inventoryEvidence": "chapter-ii-bank-reconciliation-20261007.json",
+  "release": {
+    "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+    "status": "draft",
+    "fingerprint": "62e63168d5d9ab9beecc8a9ff818a3a8",
+    "activated_at": null
+  },
+  "boundary": "S09 human decisions are verified complete; this does not assert final chapter content-QA, SME, assessment validity or release approval."
+}
