@@ -1,0 +1,578 @@
+{
+  "sprint": "15B.13G",
+  "observedAt": "2026-10-07T08:09:08.754681+00:00",
+  "state": "deployed_drafts_combined_human_review_pending",
+  "scope": "Subject-aware S06 content under the platform-wide whole-bank policy; no runtime or schema changes.",
+  "source": {
+    "pdfSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "printedPages": "30–33, section 10",
+    "figure": 30,
+    "outcome": "Theme 2 mandatory 1(4)",
+    "noIllustrationRationale": "I06 states an impermeable-divider condition in words; book figure 31 has no such divider."
+  },
+  "comparison": {
+    "currentItems": 309,
+    "historicalSnapshots": 150,
+    "corpusFingerprint": "df450b33af4edd97a30eed0e721b602b",
+    "preApplyReconfirmedAt": "2026-10-07 08:08:01.262593+00",
+    "policy": "haiedu-whole-skill-review-v1",
+    "evidence": "docs/chapter-ii-s06-whole-bank-review.md",
+    "author": "Codex automated author; human and external SME review pending",
+    "dispositions": {
+      "PHY7-U02-S06-I05": "intentional_practice_variant",
+      "PHY7-U02-S06-I06": "new_reasoning_coverage"
+    }
+  },
+  "implementation": {
+    "pr": 159,
+    "head": "d25045a46929e1ba6b3e286e9060cd0e075026e9",
+    "tree": "c61fff1afe53aca02c5a00b91e13937be47d7c07",
+    "main": "ad951bba71ea4670ff0edacf5429c0fc02b50d63",
+    "ci": {
+      "id": 37590799076,
+      "number": 1277,
+      "jobs": [
+        {
+          "name": "institutional-concurrency",
+          "conclusion": "success",
+          "id": 112691544750
+        },
+        {
+          "name": "phase3-postgres-17",
+          "conclusion": "success",
+          "id": 112691545105
+        },
+        {
+          "name": "test",
+          "conclusion": "success",
+          "id": 112691545154
+        },
+        {
+          "name": "role-layout-browser",
+          "conclusion": "success",
+          "id": 112691545224
+        },
+        {
+          "name": "Platform release checks",
+          "conclusion": "success",
+          "id": 112692800031
+        }
+      ]
+    },
+    "mainCi": {
+      "id": 37591273108,
+      "number": 1278,
+      "jobs": [
+        {
+          "name": "phase3-postgres-17",
+          "conclusion": "success",
+          "id": 112693079780
+        },
+        {
+          "name": "test",
+          "conclusion": "success",
+          "id": 112693080054
+        },
+        {
+          "name": "institutional-concurrency",
+          "conclusion": "success",
+          "id": 112693080124
+        },
+        {
+          "name": "role-layout-browser",
+          "conclusion": "success",
+          "id": 112693080154
+        },
+        {
+          "name": "Platform release checks",
+          "conclusion": "success",
+          "id": 112694325721
+        }
+      ]
+    },
+    "localTests": 1234,
+    "browserTests": 63,
+    "rollback": {
+      "tables": 100,
+      "allRowsAndChecksumsUnchanged": true
+    },
+    "sourceGuard": {
+      "observed_at": "2026-10-07T07:43:31.482208+00:00",
+      "corpus_fingerprint": "df450b33af4edd97a30eed0e721b602b",
+      "expression": "md5(jsonb_build_object('items',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.items r),'item_options',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_options r),'item_answer_keys',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_answer_keys r),'item_misconception_mappings',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_misconception_mappings r),'item_versions',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_versions r),'item_templates',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_templates r),'misconceptions',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.misconceptions r),'skills',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.skills r),'skill_outcomes',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.skill_outcomes r),'item_template_remediation_guides',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_template_remediation_guides r))::text)",
+      "tables": [
+        "items",
+        "item_options",
+        "item_answer_keys",
+        "item_misconception_mappings",
+        "item_versions",
+        "item_templates",
+        "misconceptions",
+        "skills",
+        "skill_outcomes",
+        "item_template_remediation_guides"
+      ]
+    },
+    "preApplyGuard": {
+      "observed_at": "2026-10-07 08:08:01.262593+00",
+      "corpus_fingerprint": "df450b33af4edd97a30eed0e721b602b"
+    },
+    "migration": {
+      "version": "20261007080810",
+      "name": "sprint_15b13_s06_practice_expansion",
+      "exactSqlMatch": true
+    },
+    "vercel": {
+      "id": "dpl_77tZbbTVE4SMkJxq12xa7jxdkzpC",
+      "state": "READY",
+      "target": "production",
+      "sha": "ad951bba71ea4670ff0edacf5429c0fc02b50d63",
+      "project": "prj_qevzjLGXsZoSv7GUbO9A7e6hnSqb"
+    },
+    "qaWrites": [
+      {
+        "item_id": "1bf9f08f-8bcc-4ca1-8261-85a39e0f9218",
+        "version_no": 1,
+        "passed": true,
+        "created_at": "2026-10-07 08:09:06.546612+00",
+        "run_by": null,
+        "run_key": "15B13G-s06-expansion-20261007"
+      },
+      {
+        "item_id": "d94454da-af21-48a5-aae9-4d09b1543b67",
+        "version_no": 1,
+        "passed": true,
+        "created_at": "2026-10-07 08:09:06.546612+00",
+        "run_by": null,
+        "run_key": "15B13G-s06-expansion-20261007"
+      }
+    ]
+  },
+  "migrationSqlSha256": "76036c62b3f9f501dda78544d809d1c3ff52705e24d705a0eccc2db77521c310",
+  "qa": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S06-I05",
+        "itemId": "d94454da-af21-48a5-aae9-4d09b1543b67",
+        "versionNo": 1,
+        "fingerprint": "6c32ec43a34e24872517cc010a9f2f42",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S06-T02-DIFFUSION-EVIDENCE",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "application",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|9198be4a-053e-4f3a-905e-c836dff1e879|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application,transfer_reasoning|1|1bf9f08f-8bcc-4ca1-8261-85a39e0f9218:1:transfer_reasoning,d94454da-af21-48a5-aae9-4d09b1543b67:1:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S06-I06",
+        "itemId": "1bf9f08f-8bcc-4ca1-8261-85a39e0f9218",
+        "versionNo": 1,
+        "fingerprint": "d49e4ea2a0eb6bd581abfd33027d92ed",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S06-T02-DIFFUSION-EVIDENCE",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "transfer_reasoning",
+              "requiredEvidencePurposes": [
+                "application",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|9198be4a-053e-4f3a-905e-c836dff1e879|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application,transfer_reasoning|1|1bf9f08f-8bcc-4ca1-8261-85a39e0f9218:1:transfer_reasoning,d94454da-af21-48a5-aae9-4d09b1543b67:1:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "guideValidation": {
+    "guideId": "38358715-718f-403e-95fa-ba9a7b132c60",
+    "status": "draft",
+    "version": 1,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 2,
+      "variantFailures": []
+    }
+  },
+  "preservation": {
+    "tableCount": 100,
+    "allPreexistingRowsPreserved": true,
+    "changedTables": [
+      {
+        "table": "curriculum_release_item_families",
+        "added": 1
+      },
+      {
+        "table": "item_answer_keys",
+        "added": 2
+      },
+      {
+        "table": "item_curriculum_scopes",
+        "added": 2
+      },
+      {
+        "table": "item_families",
+        "added": 1
+      },
+      {
+        "table": "item_family_curriculum_reconciliations",
+        "added": 1
+      },
+      {
+        "table": "item_misconception_mappings",
+        "added": 6
+      },
+      {
+        "table": "item_options",
+        "added": 8
+      },
+      {
+        "table": "item_qa_runs",
+        "added": 2
+      },
+      {
+        "table": "item_template_remediation_guides",
+        "added": 1
+      },
+      {
+        "table": "item_templates",
+        "added": 1
+      },
+      {
+        "table": "item_versions",
+        "added": 2
+      },
+      {
+        "table": "items",
+        "added": 2
+      },
+      {
+        "table": "misconceptions",
+        "added": 3
+      },
+      {
+        "table": "remediation_guide_authoring_versions",
+        "added": 1
+      },
+      {
+        "table": "remediation_guide_versions",
+        "added": 1
+      }
+    ],
+    "unchangedTables": 85
+  },
+  "advisors": {
+    "security": {
+      "unchanged": true,
+      "groups": 2,
+      "findings": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 36,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "level": "WARN",
+          "count": 1,
+          "remediationUrl": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+        }
+      ]
+    },
+    "performance": {
+      "unchanged": true,
+      "groups": 4,
+      "findings": [
+        {
+          "name": "unindexed_foreign_keys",
+          "level": "INFO",
+          "count": 39,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+        },
+        {
+          "name": "auth_rls_initplan",
+          "level": "WARN",
+          "count": 16,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+        },
+        {
+          "name": "unused_index",
+          "level": "INFO",
+          "count": 102,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "level": "WARN",
+          "count": 14,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies"
+        }
+      ]
+    }
+  },
+  "publicReadback": [
+    {
+      "path": "release.json",
+      "status": 200,
+      "bytes": 72,
+      "sha256": "8e2f41ea08f030a2094d266b9fe40797076968b1db8e2c2baf2694704f00f988",
+      "observedAt": "2026-10-07T08:09:31.145586+00:00",
+      "release": {
+        "schemaVersion": 1,
+        "commit": "ad951bba71ea4670ff0edacf5429c0fc02b50d63"
+      }
+    },
+    {
+      "path": "assets/textbook/physics7-2023/figure-30.png",
+      "status": 200,
+      "bytes": 39689,
+      "sha256": "03736b74f3c81a7a696a13f6cdcde7e77ff9d3644acd559e486cdb37fd3d7f53",
+      "observedAt": "2026-10-07T08:09:31.313120+00:00",
+      "exactLocalMatch": true
+    }
+  ],
+  "governance": {
+    "inventory": [
+      {
+        "code": "PHY7-U02-S02",
+        "drafts": 0,
+        "approved": 12,
+        "authored": 12
+      },
+      {
+        "code": "PHY7-U02-S03",
+        "drafts": 0,
+        "approved": 8,
+        "authored": 8
+      },
+      {
+        "code": "PHY7-U02-S04",
+        "drafts": 0,
+        "approved": 7,
+        "authored": 7
+      },
+      {
+        "code": "PHY7-U02-S05",
+        "drafts": 1,
+        "approved": 5,
+        "authored": 6
+      },
+      {
+        "code": "PHY7-U02-S06",
+        "drafts": 2,
+        "approved": 4,
+        "authored": 6
+      },
+      {
+        "code": "PHY7-U02-S07",
+        "drafts": 0,
+        "approved": 4,
+        "authored": 4
+      },
+      {
+        "code": "PHY7-U02-S08",
+        "drafts": 0,
+        "approved": 4,
+        "authored": 4
+      },
+      {
+        "code": "PHY7-U02-S09",
+        "drafts": 0,
+        "approved": 4,
+        "authored": 4
+      }
+    ],
+    "blueprints": 0,
+    "form_links": 0,
+    "pool_links": 0,
+    "observed_at": "2026-10-07T08:09:08.754681+00:00",
+    "attempt_links": 0,
+    "session_links": 0,
+    "exposure_links": 0,
+    "review_exposure_links": 0
+  },
+  "releaseStates": {
+    "chapterI": {
+      "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+      "release_key": "physics7_u01_2026_08_14_pilot_r1",
+      "status": "pilot",
+      "activated_at": "2026-09-19T06:45:24.76571+00:00",
+      "content_fingerprint": "5dace645b5f522f5dac28ee5c524122c"
+    },
+    "candidate": {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "release_key": "physics7_u01_u02_2026_08_14_candidate_r2",
+      "status": "draft",
+      "activated_at": null,
+      "content_fingerprint": "ca3c338020ecce3eee78a2139e512b66"
+    }
+  },
+  "inventory": {
+    "chapterIIAuthored": 51,
+    "approved": 48,
+    "drafts": 3,
+    "planningTarget": 192,
+    "unauthored": 141,
+    "S06Authored": 6,
+    "S06OpenSlots": 6,
+    "S03OpenSlots": 4,
+    "S04OpenSlots": 5,
+    "S05OpenSlots": 6,
+    "smallerBankPlanApproved": false
+  },
+  "reviewItems": [
+    {
+      "code": "PHY7-U02-S06-I05",
+      "id": "d94454da-af21-48a5-aae9-4d09b1543b67",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review"
+    },
+    {
+      "code": "PHY7-U02-S06-I06",
+      "id": "1bf9f08f-8bcc-4ca1-8261-85a39e0f9218",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review"
+    }
+  ],
+  "newDefinitions": [
+    {
+      "code": "forced_mixing_proves_spontaneous_diffusion",
+      "id": "c8c0eb83-2aba-44ac-a8af-b018c1a7e82b",
+      "status": "draft"
+    },
+    {
+      "code": "diffusion_ignores_impermeable_boundary",
+      "id": "99a5d93f-ad4b-481c-9818-086065c96c3a",
+      "status": "draft"
+    },
+    {
+      "code": "partition_stops_internal_particle_motion",
+      "id": "208e1b0a-6794-4dc1-b95d-04d05a1bbfb1",
+      "status": "draft"
+    }
+  ],
+  "combinedReview": {
+    "S05ApprovedPreserved": "PHY7-U02-S05-I05 v2",
+    "S05Pending": "I06 v1, two definitions and separate guide",
+    "S06Pending": "I05–I06 v1, three definitions and separate guide",
+    "guidePublicationOrder": "Approve/publish relevant questions before publishing guides",
+    "S05Evidence": "docs/evidence/sprint-15b13-s05-partial-review-20261007.json"
+  },
+  "limitations": [
+    "No authenticated live Edge invocation or new authenticated production browser acceptance claimed.",
+    "QA replay uses exact deployed v11 evaluator SHA b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154 and fresh production catalogue with a read-only adapter.",
+    "No learner activation, protected bank allocation, assessment contract, model binding or approval changes.",
+    "Existing production Deployment Check configuration was unchanged; its separately verified 2026-10-06 evidence remains the enforcement basis, not Vercel READY or CI alone.",
+    "External SME, numeric readiness/model approval, protected banks, old 32-item illustration audit, pilot and release gates remain open."
+  ]
+}
