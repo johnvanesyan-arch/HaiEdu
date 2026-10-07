@@ -1162,6 +1162,12 @@ Improve the shared student experience across authorized subjects, grades and lea
 
 The current single-subject mockup is an illustrative proposal, not full platform-wide acceptance or implementation approval. Complete the coverage matrix and representative multi-subject, grade and year/history mockups in 16.5A. Keep implementation after Sprint 16.4, before the Sprint 17 pilot; Sprint 18.5 owns the rollover/history functionality on its existing schedule.
 
+### Saved design reference
+
+Start 16.5A by reviewing the [student dashboard mockup from 2026-10-07](design/student-dashboard/haiedu-student-mockup-2026-10-07.html); its [original editable fragment](design/student-dashboard/haiedu-student-mockup-2026-10-07.fragment.html) is preserved alongside the standalone export. This is the current mockup John asked to carry forward, not a new design or final implementation approval.
+
+The reference covers Armenian Home and Progress, desktop/phone presentation, active/new/no-enrollment learner states, skill filters and detail panels. Preserve it as the starting visual reference, then extend and review it against the mandatory platform-wide function coverage matrix. Its Physics 7 identity, account name, year, skill count, percentages and availability states are illustrative data, not curriculum policy or a restriction on future accounts, subjects, grades or years. The export retains the original mockup content; font assets may load from the approved external font service. Both files are design documentation outside the deployed web directory.
+
 ### Delivery and acceptance
 
 1. **16.5A — Audit and mockups:** produce the student-function coverage matrix, an annotated issue list and desktop/mobile mockups with realistic Armenian content and representative states. Obtain product-owner review of the concrete mockups and complete functionality mapping before implementation.
