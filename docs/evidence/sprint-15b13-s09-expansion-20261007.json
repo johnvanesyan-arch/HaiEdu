@@ -129,7 +129,17 @@
     "version": "20261007191924",
     "name": "sprint_15b13_s09_practice_expansion",
     "exactReviewedSql": true,
-    "sqlSha256": "7ac00dc767980cbbfb471d7651e9823b6fa71da4035a09c52bd373523a31daeb"
+    "sqlSha256": "7ac00dc767980cbbfb471d7651e9823b6fa71da4035a09c52bd373523a31daeb",
+    "historyAlignment": {
+      "remoteVersion": "20261007191924",
+      "reviewedOriginalFile": "supabase/migrations/20261007185345_sprint_15b13_s09_practice_expansion.sql",
+      "trackedFile": "supabase/migrations/20261007191924_sprint_15b13_s09_practice_expansion.sql",
+      "trackedVersionMatchesRemote": true,
+      "sqlBytesUnchanged": true,
+      "migrationReapplied": false,
+      "remoteHistoryRewritten": false,
+      "scope": "S09 migration only; no claim of repository-wide historical migration reconciliation"
+    }
   },
   "qa": {
     "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
@@ -599,6 +609,10 @@
       "comment": 4210837840,
       "recordedBeforeMerge": true,
       "evidence": "docs/evidence/sprint-15b13-s09-staging-decision-20261007.json"
+    },
+    "migrationTimestamp": {
+      "comment": 4211054723,
+      "resolution": "Rename tracked S09 migration and update the focused test path to observed applied version 20261007191924; preserve SQL bytes and production history."
     }
   }
 }

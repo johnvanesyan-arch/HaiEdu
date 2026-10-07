@@ -62,3 +62,8 @@ Required PR and independent main CI, exact-SQL migration readback, current QA/gu
 - After approving/publishing the questions, review [the separate draft guide](https://www.haiedu.am/content-guides.html?id=template%3Acf474b91-5383-46c4-a5cd-3e261ab5a76c).
 
 S09 has six authored questions and six open planning slots. Chapter II has 56 authored questions: 54 approved and these two drafts, with 136 unauthored toward the unchanged 192 plan. All original questions, definitions, guides and approvals are preserved. Chapter II remains draft, with zero pool/form/learner/exposure links and no release activation. After human review, close S09 and reconcile the remaining chapter bank gaps. The approved staging decision preserves the twelve-question S09 target and six open slots.
+
+
+## Migration-history alignment — 2026-10-07
+
+Evidence PR #166 identified that the migration runner recorded applied version `20261007191924` while the local creation timestamp was `20261007185345`. The tracked S09 file is now `supabase/migrations/20261007191924_sprint_15b13_s09_practice_expansion.sql`, and the focused test references that path. The SQL bytes still match the production migration exactly. No migration was reapplied and no remote history was rewritten. This reconciles the S09 timestamp; it does not claim an audit or repair of other historical migrations.
