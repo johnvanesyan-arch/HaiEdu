@@ -1,0 +1,241 @@
+{
+  "observedAt": "2026-10-07T07:44:10.606152+00:00",
+  "state": "partial_human_review_preserved",
+  "userDirection": "Prepare S06 while John reviews S05 and S06 together.",
+  "items": [
+    {
+      "code": "PHY7-U02-S05-I01",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "code": "PHY7-U02-S05-I02",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "code": "PHY7-U02-S05-I03",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "code": "PHY7-U02-S05-I04",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "code": "PHY7-U02-S05-I05",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved"
+    },
+    {
+      "code": "PHY7-U02-S05-I06",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review"
+    }
+  ],
+  "definitions": [
+    {
+      "code": "particle_motion_requires_external_activation",
+      "status": "active"
+    },
+    {
+      "code": "molecular_motion_ordered_or_predetermined",
+      "status": "active"
+    },
+    {
+      "code": "collision_stops_molecular_motion",
+      "status": "active"
+    },
+    {
+      "code": "instantaneous_speed_equals_net_travel_speed",
+      "status": "active"
+    },
+    {
+      "code": "uniform_mixture_stops_particle_motion",
+      "status": "draft"
+    },
+    {
+      "code": "random_motion_requires_equal_crossings",
+      "status": "draft"
+    }
+  ],
+  "guides": [
+    {
+      "id": "72f5367c-8ecd-4200-8d6b-41f1f59fbd8a",
+      "status": "published",
+      "runtimeVersion": 3
+    },
+    {
+      "id": "7d5e2e67-a1e8-4168-b4f5-4a3b73505679",
+      "status": "draft",
+      "runtimeVersion": 1
+    }
+  ],
+  "qa": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S05-I05",
+        "itemId": "12e86241-becd-43b3-bf81-f0d28025a8ab",
+        "versionNo": 2,
+        "fingerprint": "35ba809acae8b9de116c116a22164d18",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S05-T02-MOTION-AND-MIXING",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|07207a03-e944-4ba3-9d5a-3c656ce797e9|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis,transfer_reasoning|1|12e86241-becd-43b3-bf81-f0d28025a8ab:2:misconception_diagnosis,23d9df58-9745-44b6-bba3-92f765b7759f:1:transfer_reasoning"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U02-S05-I06",
+        "itemId": "23d9df58-9745-44b6-bba3-92f765b7759f",
+        "versionNo": 1,
+        "fingerprint": "9fb62fc7573bd7e8333a27d7e343b083",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S05-T02-MOTION-AND-MIXING",
+              "familyItemCount": 2,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 0.5,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "transfer_reasoning",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis",
+                "transfer_reasoning"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1,
+                "transfer_reasoning": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|07207a03-e944-4ba3-9d5a-3c656ce797e9|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis,transfer_reasoning|1|12e86241-becd-43b3-bf81-f0d28025a8ab:2:misconception_diagnosis,23d9df58-9745-44b6-bba3-92f765b7759f:1:transfer_reasoning"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "qaAppend": {
+    "count": 2,
+    "createdAt": "2026-10-07T07:55:05.084442Z",
+    "runBy": null,
+    "runKey": "15B13G-s05-partial-review-20261007",
+    "sourceCorpusFingerprint": "df450b33af4edd97a30eed0e721b602b"
+  },
+  "guideValidation": {
+    "guideId": "7d5e2e67-a1e8-4168-b4f5-4a3b73505679",
+    "status": "draft",
+    "version": 1,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 2,
+      "variantFailures": []
+    }
+  },
+  "preserved": "No content, approval, guide or definition writes; only two system-provenance current-family technical QA results appended."
+}
