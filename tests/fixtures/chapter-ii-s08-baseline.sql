@@ -15,3 +15,8 @@ create table public.skill_outcomes(skill_id uuid,learning_outcome_id uuid);
 insert into skill_outcomes select id,(select id from learning_outcomes limit 1) from skills;
 create table public.skill_outcome_curriculum_mappings(skill_id uuid,learning_outcome_id uuid,reconciliation_id uuid,mapping_type text,rationale text,created_at timestamptz);
 insert into skill_outcome_curriculum_mappings select * from jsonb_populate_recordset(null::public.skill_outcome_curriculum_mappings,'[{"skill_id": "8581be3b-907c-5105-a253-aaf03828bc07", "rationale": "Հմտությունը գնահատում է ջերմաստիճանի կապը մասնիկների շարժման արագության հետ։", "created_at": "2026-09-30T21:40:31.093879+00:00", "mapping_type": "direct", "reconciliation_id": "4923cb78-bda0-5ef0-a3c4-b197b6015c03", "learning_outcome_id": "1b9b6900-dcf3-540d-afb3-5c788c12aeb9"}]'::jsonb);
+-- Assessment-form membership is part of the S08 freshness contract.
+create table public.assessment_form_items (
+ form_id uuid not null, item_id uuid not null, slot_order integer not null,
+ metadata jsonb default '{}'::jsonb not null, added_at timestamptz default now() not null
+);

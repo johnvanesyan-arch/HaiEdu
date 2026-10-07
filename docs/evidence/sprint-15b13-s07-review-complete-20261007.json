@@ -105,7 +105,7 @@
     "contentSha256": "5e80086db0255a8d57bc3f2aa4ac53b1587c67a90166303c5864b620dc06b825"
   },
   "qa": {
-    "sourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
     "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
     "results": [
       {

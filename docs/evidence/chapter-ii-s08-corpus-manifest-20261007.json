@@ -1,7 +1,7 @@
 {
   "policy": "haiedu-whole-skill-review-v1",
   "observedAt": "2026-10-07T16:39:39.406406+00:00",
-  "corpusFingerprint": "068b217afaba620a4dbfb4f8d7bd80bd",
+  "corpusFingerprint": "3e84f404e9a6b75a1ac790e79d1fad8f",
   "guardTables": [
     "items",
     "item_options",
@@ -14,7 +14,9 @@
     "skill_outcomes",
     "item_template_remediation_guides",
     "skill_outcome_curriculum_mappings",
-    "learning_outcomes"
+    "learning_outcomes",
+    "assessment_pool_items",
+    "assessment_form_items"
   ],
   "counts": {
     "currentItems": 312,
@@ -8423,5 +8425,13 @@
     "exposure_links": 0,
     "review_exposure_links": 0
   },
-  "noS08HistoricalContentMismatch": true
+  "noS08HistoricalContentMismatch": true,
+  "guardRefresh": {
+    "observedAt": "2026-10-07 17:04:04.017082+00",
+    "priorContentFingerprint": "068b217afaba620a4dbfb4f8d7bd80bd",
+    "contentUnchanged": true,
+    "all280PoolMembershipsUnchanged": true,
+    "all80FormMembershipsUnchanged": true,
+    "reviewFinding": "PR163 discussion_r4209615517: lock and fingerprint assessment-purpose membership changes"
+  }
 }

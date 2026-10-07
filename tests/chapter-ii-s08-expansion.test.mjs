@@ -39,7 +39,7 @@ test('S08 adds two governed drafts and three draft definitions without changing 
   assert.equal(new Set(items.map(i=>i.variant_fingerprint)).size,2);
   assert.equal(after.misconceptions.length-before.misconceptions.length,3);
   for(const row of after.misconceptions.filter(r=>!before.misconceptions.includes(r)))assert.equal(JSON.parse(row).status,'draft');
-  for(const table of ['curriculum_releases','assessment_pool_items','assessment_blueprints'])assert.deepEqual(after[table],before[table]);
+  for(const table of ['curriculum_releases','assessment_pool_items','assessment_form_items','assessment_blueprints'])assert.deepEqual(after[table],before[table]);
   const api=await endpoint(db,'manage-content-quality');
   for(const item of items) {
     const result=await api.call({action:'run_qa',itemId:item.id});
@@ -78,6 +78,8 @@ test('S08 migration rolls back and rejects stale sibling, related-bank, history,
     ["update misconceptions set status='draft' where code='heating_slows_motion'",'whole_bank_comparison_stale'],
     ["update skill_outcome_curriculum_mappings set mapping_type='derived_supporting'",'whole_bank_comparison_stale'],
     ["update learning_outcomes set statement_hy=statement_hy||' changed'",'whole_bank_comparison_stale'],
+    ["insert into assessment_pool_items (pool_id,item_id) select gen_random_uuid(),id from items where code='PHY7-U02-S08-I01'",'whole_bank_comparison_stale'],
+    ["insert into assessment_form_items (form_id,item_id,slot_order) select gen_random_uuid(),id,1 from items where code='PHY7-U02-S08-I02'",'whole_bank_comparison_stale'],
     ["update item_qa_runs set passed=false",'existing_S08_review_incomplete'],
     ["update curriculum_releases set status='pilot',activated_at=now()",'candidate_not_draft']
   ]) {
