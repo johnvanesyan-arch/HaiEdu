@@ -1,0 +1,644 @@
+{
+  "sprint": "15B.13H",
+  "observedAt": "2026-10-07T13:46:12.567801+00:00",
+  "state": "deployed_draft_human_review_pending",
+  "scope": "Subject-aware S07 practice content under the platform-wide whole-bank policy; no runtime/schema change.",
+  "source": {
+    "pdfSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "printedPages": "30–33, section 10; figure 32 on p32",
+    "outcome": "Theme 2 additional 2(1)"
+  },
+  "comparison": {
+    "currentItems": 311,
+    "historicalSnapshots": 154,
+    "corpusFingerprint": "46d0f52d162e3dc95214f27530c4a137",
+    "preApplyReconfirmedAt": "2026-10-07T13:44:23.132164+00:00",
+    "officialMappingsReconfirmed": true,
+    "policy": "haiedu-whole-skill-review-v1",
+    "evidence": "docs/chapter-ii-s07-whole-bank-review.md",
+    "author": "Codex automated author; human and external SME review pending",
+    "disposition": "intentional_practice_variant",
+    "newIndependentReasoningPathsClaimed": 0
+  },
+  "implementation": {
+    "pr": 161,
+    "head": "0e2467096989310569f021aaf4c81acd55137f96",
+    "tree": "a2474b452b9ed3910ad06aed825b4d89c06effe6",
+    "main": "5308a2757999d5cf445169f87f80b7f62469c20c",
+    "ci": {
+      "id": 37629392510,
+      "number": 1281,
+      "jobs": [
+        {
+          "id": 112819385968,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112819386183,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112819386255,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112819386336,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112821124427,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "mainCi": {
+      "id": 37630047892,
+      "number": 1282,
+      "jobs": [
+        {
+          "id": 112821627189,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 112821627380,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 112821627577,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 112821627604,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 112823374611,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "localTests": 1236,
+    "browserTests": 63,
+    "rollback": {
+      "tables": 100,
+      "allRowsAndChecksumsUnchanged": true
+    },
+    "sourceGuard": {
+      "observed_at": "2026-10-07T13:15:02.207704+00:00",
+      "corpus_fingerprint": "46d0f52d162e3dc95214f27530c4a137",
+      "expression": "md5(jsonb_build_object('items',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.items r),'item_options',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_options r),'item_answer_keys',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_answer_keys r),'item_misconception_mappings',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_misconception_mappings r),'item_versions',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_versions r),'item_templates',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_templates r),'misconceptions',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.misconceptions r),'skills',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.skills r),'skill_outcomes',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.skill_outcomes r),'item_template_remediation_guides',(select coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),'') from public.item_template_remediation_guides r))::text)",
+      "tables": [
+        "items",
+        "item_options",
+        "item_answer_keys",
+        "item_misconception_mappings",
+        "item_versions",
+        "item_templates",
+        "misconceptions",
+        "skills",
+        "skill_outcomes",
+        "item_template_remediation_guides"
+      ]
+    },
+    "preApplyGuard": {
+      "observed_at": "2026-10-07T13:44:23.132164+00:00",
+      "official_mappings": [
+        {
+          "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+          "rationale": "Scale reading is explicitly required by the programme practical-work and problem-solving sections.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+        },
+        {
+          "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+          "rationale": "Hypothesis, data and conclusion reasoning supports valid simple experimentation and subject-standard research practice.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "derived_supporting",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+        },
+        {
+          "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+          "rationale": "Choosing quantities, units and instruments is intrinsic to simple measurement.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+        },
+        {
+          "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+          "rationale": "The skill covers the named SI-unit outcome.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+        },
+        {
+          "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+          "rationale": "Observation/experiment discrimination is a prerequisite component of performing the official practical outcome.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "derived_supporting",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+        },
+        {
+          "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+          "rationale": "Measurement-error problems are explicit programme content.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+        },
+        {
+          "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+          "rationale": "Precision and responsible reading assess the explicit measurement-quality outcome.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+        },
+        {
+          "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+          "rationale": "Conversion extends presentation of the named units into bounded application and matches the programme intersubject link.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "derived_supporting",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+        },
+        {
+          "skill_id": "678beb6a-4654-40c2-a5b2-53cc97b2551b",
+          "rationale": "Հմտությունը գնահատում է նյութում մասնիկների շարժման առանձնահատկությունների նկարագրումը։",
+          "created_at": "2026-09-30T21:40:31.093879+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+          "learning_outcome_id": "a70929ea-7b86-4ee3-9dbe-775b227976b4"
+        },
+        {
+          "skill_id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+          "rationale": "The textbook distinction supports describing what physics studies without claiming separate official-outcome status.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "derived_supporting",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015"
+        },
+        {
+          "skill_id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+          "rationale": "Ատոմ–մոլեկուլ–տարր տարբերակումը աջակցում է մասնիկային կառուցվածքի ըմբռնմանը։",
+          "created_at": "2026-09-30T21:40:31.093879+00:00",
+          "mapping_type": "derived_supporting",
+          "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+          "learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+        },
+        {
+          "skill_id": "802bce7e-7ede-4138-b2b2-35c4c1b68a32",
+          "rationale": "Հմտությունը գնահատում է ջերմաչափի աշխատանքի սկզբունքի բացատրությունը՝ հեղուկային ջերմաչափի օրինակով։",
+          "created_at": "2026-09-30T21:40:31.093879+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+          "learning_outcome_id": "40e20c7c-3f60-4495-b6c7-54c9a5ca3b84"
+        },
+        {
+          "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+          "rationale": "The family remains within simple laboratory measurement of volume and related bounded procedures.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+        },
+        {
+          "skill_id": "b7caca8c-d222-4715-a39f-80883f995471",
+          "rationale": "Հմտությունը գնահատում է դիֆուզիայի ճանաչումն ու մասնիկային բացատրությունը։",
+          "created_at": "2026-09-30T21:40:31.093879+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+          "learning_outcome_id": "40dd963e-2a7f-48b5-9169-2d28574b7e7d"
+        },
+        {
+          "skill_id": "bfd0b199-55ab-4933-acfd-7eeb4142fd4c",
+          "rationale": "Փորձարարական ապացույցների մեկնաբանումը գնահատում է վերջնարդյունքի հիմնական կառուցույթը։",
+          "created_at": "2026-09-30T21:40:31.093879+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+          "learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+        },
+        {
+          "skill_id": "c1e57a2d-d843-45ea-adf1-891837d12d6c",
+          "rationale": "Հմտությունը գնահատում է դիֆուզիայի արագության համեմատումը երեք ագրեգատային վիճակներում։",
+          "created_at": "2026-09-30T21:40:31.093879+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+          "learning_outcome_id": "3078b38b-bf8e-4e3a-a9ce-019fdf13c0fd"
+        },
+        {
+          "skill_id": "c2463f0b-9d96-4ae6-a814-0495db8a3872",
+          "rationale": "Հմտությունը գնահատում է ջերմաստիճանի կապը մասնիկների շարժման արագության հետ։",
+          "created_at": "2026-09-30T21:40:31.093879+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+          "learning_outcome_id": "bcfca398-b568-470e-b185-61cc22d54ecf"
+        },
+        {
+          "skill_id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+          "rationale": "Examples and classification tasks assess recognition of physical phenomena.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436"
+        },
+        {
+          "skill_id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+          "rationale": "Համեմատական մասշտաբը և փոքր մասնիկների չափի որոշումը գնահատում են մոլեկուլների չափերի վերջնարդյունքը։",
+          "created_at": "2026-09-30T21:40:31.093879+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+          "learning_outcome_id": "1c03ef0b-6df7-4376-8b4b-1ebf96ec76bb"
+        },
+        {
+          "skill_id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+          "rationale": "Scientist/contribution tasks assess the explicit Armenian-physicists outcome.",
+          "created_at": "2026-09-18T20:48:17.461311+00:00",
+          "mapping_type": "direct",
+          "reconciliation_id": "6a3e8053-c2a7-49bb-a4fb-dd4a7f1b2e31",
+          "learning_outcome_id": "6f57618c-f172-4adc-a12a-c71404be47b8"
+        }
+      ],
+      "corpus_fingerprint": "46d0f52d162e3dc95214f27530c4a137"
+    },
+    "migration": {
+      "version": "20261007134437",
+      "name": "sprint_15b13_s07_practice_expansion",
+      "exactSqlMatch": true
+    },
+    "vercel": {
+      "id": "dpl_ELTvf87RXNSm46RXbhXdwz21ZTT7",
+      "state": "READY",
+      "target": "production",
+      "sha": "5308a2757999d5cf445169f87f80b7f62469c20c",
+      "project": "prj_qevzjLGXsZoSv7GUbO9A7e6hnSqb"
+    },
+    "qaWrites": [
+      {
+        "item_id": "8736e373-a291-4cb4-ae38-cb88a67f9ca1",
+        "version_no": 1,
+        "run_by": null,
+        "passed": true,
+        "created_at": "2026-10-07 13:45:54.36532+00"
+      }
+    ]
+  },
+  "migrationSqlSha256": "606cfb1aab437427cce6aab816d707a6fc34502102aef2809ec6f1abff35fb41",
+  "qa": {
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U02-S07-I05",
+        "itemId": "8736e373-a291-4cb4-ae38-cb88a67f9ca1",
+        "versionNo": 1,
+        "fingerprint": "ab79d87c066a1ec83e1d9d17a4a0c30b",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U02-S07-T02-SLOW-DIFFUSION",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 0,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "B",
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|9db8aa01-548c-425c-a4f4-1966ee1b7910|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|8736e373-a291-4cb4-ae38-cb88a67f9ca1:1:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "guideValidation": {
+    "guideId": "a8e09d7e-a94a-4963-bf48-ea15d5f4f19b",
+    "status": "draft",
+    "version": 1,
+    "result": {
+      "errors": [],
+      "warnings": [],
+      "placeholders": [],
+      "checkedVariantCount": 1,
+      "variantFailures": []
+    }
+  },
+  "preservation": {
+    "tableCount": 100,
+    "allPreexistingRowsPreserved": true,
+    "changedTables": [
+      {
+        "table": "curriculum_release_item_families",
+        "added": 1
+      },
+      {
+        "table": "item_answer_keys",
+        "added": 1
+      },
+      {
+        "table": "item_curriculum_scopes",
+        "added": 1
+      },
+      {
+        "table": "item_families",
+        "added": 1
+      },
+      {
+        "table": "item_family_curriculum_reconciliations",
+        "added": 1
+      },
+      {
+        "table": "item_misconception_mappings",
+        "added": 3
+      },
+      {
+        "table": "item_options",
+        "added": 4
+      },
+      {
+        "table": "item_qa_runs",
+        "added": 1
+      },
+      {
+        "table": "item_template_remediation_guides",
+        "added": 1
+      },
+      {
+        "table": "item_templates",
+        "added": 1
+      },
+      {
+        "table": "item_versions",
+        "added": 1
+      },
+      {
+        "table": "items",
+        "added": 1
+      },
+      {
+        "table": "misconceptions",
+        "added": 2
+      },
+      {
+        "table": "remediation_guide_authoring_versions",
+        "added": 1
+      },
+      {
+        "table": "remediation_guide_versions",
+        "added": 1
+      }
+    ],
+    "unchangedTables": 85
+  },
+  "advisors": {
+    "security": {
+      "unchanged": true,
+      "groups": 2,
+      "findings": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 36,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "level": "WARN",
+          "count": 1,
+          "remediationUrl": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+        }
+      ]
+    },
+    "performance": {
+      "unchanged": true,
+      "groups": 4,
+      "findings": [
+        {
+          "name": "unindexed_foreign_keys",
+          "level": "INFO",
+          "count": 39,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+        },
+        {
+          "name": "auth_rls_initplan",
+          "level": "WARN",
+          "count": 16,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+        },
+        {
+          "name": "unused_index",
+          "level": "INFO",
+          "count": 102,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "level": "WARN",
+          "count": 14,
+          "remediationUrl": "https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies"
+        }
+      ]
+    }
+  },
+  "publicReadback": [
+    {
+      "path": "release.json",
+      "status": 200,
+      "bytes": 72,
+      "sha256": "d78e7e515a55cddfab4fdcd4d6239f194edc97cf1b45a878bb80764746ba9430",
+      "observedAt": "2026-10-07T13:46:33.001612+00:00",
+      "release": {
+        "schemaVersion": 1,
+        "commit": "5308a2757999d5cf445169f87f80b7f62469c20c"
+      }
+    },
+    {
+      "path": "assets/textbook/physics7-2023/figure-32.png",
+      "status": 200,
+      "bytes": 6719,
+      "sha256": "7fce786bf07eebbe1d4e9deece9ba9e9047ec993fdb6e828133291432593efc0",
+      "observedAt": "2026-10-07T13:46:33.011145+00:00",
+      "exactLocalMatch": true
+    }
+  ],
+  "governance": {
+    "inventory": [
+      {
+        "code": "PHY7-U02-S02",
+        "drafts": 0,
+        "approved": 12,
+        "authored": 12
+      },
+      {
+        "code": "PHY7-U02-S03",
+        "drafts": 0,
+        "approved": 8,
+        "authored": 8
+      },
+      {
+        "code": "PHY7-U02-S04",
+        "drafts": 0,
+        "approved": 7,
+        "authored": 7
+      },
+      {
+        "code": "PHY7-U02-S05",
+        "drafts": 0,
+        "approved": 6,
+        "authored": 6
+      },
+      {
+        "code": "PHY7-U02-S06",
+        "drafts": 0,
+        "approved": 6,
+        "authored": 6
+      },
+      {
+        "code": "PHY7-U02-S07",
+        "drafts": 1,
+        "approved": 4,
+        "authored": 5
+      },
+      {
+        "code": "PHY7-U02-S08",
+        "drafts": 0,
+        "approved": 4,
+        "authored": 4
+      },
+      {
+        "code": "PHY7-U02-S09",
+        "drafts": 0,
+        "approved": 4,
+        "authored": 4
+      }
+    ],
+    "blueprints": 0,
+    "form_links": 0,
+    "pool_links": 0,
+    "observed_at": "2026-10-07T13:46:12.567801+00:00",
+    "attempt_links": 0,
+    "session_links": 0,
+    "exposure_links": 0,
+    "review_exposure_links": 0
+  },
+  "releaseStates": {
+    "chapterI": {
+      "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+      "release_key": "physics7_u01_2026_08_14_pilot_r1",
+      "status": "pilot",
+      "activated_at": "2026-09-19T06:45:24.76571+00:00",
+      "content_fingerprint": "5dace645b5f522f5dac28ee5c524122c"
+    },
+    "candidate": {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "release_key": "physics7_u01_u02_2026_08_14_candidate_r2",
+      "status": "draft",
+      "activated_at": null,
+      "content_fingerprint": "ca3c338020ecce3eee78a2139e512b66"
+    }
+  },
+  "inventory": {
+    "chapterIIAuthored": 52,
+    "approved": 51,
+    "drafts": 1,
+    "planningTarget": 192,
+    "unauthored": 140,
+    "S07Authored": 5,
+    "S07OpenSlots": 7,
+    "S03OpenSlots": 4,
+    "S04OpenSlots": 5,
+    "S05OpenSlots": 6,
+    "S06OpenSlots": 6,
+    "smallerBankPlanApproved": false
+  },
+  "reviewItem": {
+    "code": "PHY7-U02-S07-I05",
+    "id": "8736e373-a291-4cb4-ae38-cb88a67f9ca1",
+    "version": 1,
+    "status": "draft",
+    "reviewStatus": "needs_review",
+    "url": "https://www.haiedu.am/content-item.html?id=8736e373-a291-4cb4-ae38-cb88a67f9ca1&from=review"
+  },
+  "newDefinitions": [
+    {
+      "code": "diffusion_waits_for_observation_period",
+      "id": "412adf02-2717-4e65-ad71-140ce514b4f6",
+      "status": "draft"
+    },
+    {
+      "code": "solid_diffusion_requires_melting",
+      "id": "1e6cebda-9bdf-458f-9c86-9ad4f8d78506",
+      "status": "draft"
+    }
+  ],
+  "reviewGuideUrl": "https://www.haiedu.am/content-guides.html?id=template%3Aa8e09d7e-a94a-4963-bf48-ea15d5f4f19b",
+  "precedingReviewCompletion": "docs/evidence/sprint-15b13-s05-s06-review-complete-20261007.json",
+  "limitations": [
+    "Automated QA is not human approval or an authenticated live Edge invocation.",
+    "QA replay uses exact deployed v11 evaluator SHA b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154 and fresh production catalogue through a read-only adapter.",
+    "Existing production Deployment Check configuration is unchanged; the separately recorded verification, not CI or Vercel READY alone, remains its enforcement evidence.",
+    "No learner activation, protected pool/form allocation, model/scoring or approval changes.",
+    "Seven S07 planning slots and earlier skill shortfalls remain open; no padding or smaller-bank approval is inferred.",
+    "Protected banks, numeric readiness/model approval, old 32-item illustration audit, SME, pilot and release gates remain open."
+  ]
+}
