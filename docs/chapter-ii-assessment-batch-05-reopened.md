@@ -46,3 +46,7 @@ Both revised candidates are staged as **v1 / draft / needs_review**: [S04-M03](h
 The [complete comparison commit](https://github.com/johnvanesyan-arch/armenian-mastery-platform/commit/161c582f45c901d3eb8e3871b0e3e60afd84caf7) and private archive preceded committed staging. Exact local/remote comparison trees were verified before staging. All 38 guards, prior-row multisets and exact additions were enforced: twelve additive tables, 26 unchanged. [Sanitized production evidence](evidence/sprint-15b13-reopened-s04-s09-20261008.json).
 
 Current inventory is **70 authored = 68 approved + two drafts**, **91 active + four draft definitions**, **17 published guides**. The unchanged target leaves **122 unauthored (40 practice / 29 diagnostic / 53 mastery)**. S05 review is complete; the pending queue is this pair and four definitions. Chapter II remains inactive and unallocated.
+
+## Human review completed — 2026-10-09 checkpoint
+
+Fresh production confirms S04-M03 and S09-M02 approved at v1 by the real content reviewer with current-version passing QA; all four associated definitions are active. Exact approved content matches the saved snapshots. [Batch06](chapter-ii-assessment-batch-06.md) continues with eight new drafts under John’s authorization. The original comparison and staging evidence above remain historical records.
