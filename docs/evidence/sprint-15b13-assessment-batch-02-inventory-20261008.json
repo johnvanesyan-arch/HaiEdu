@@ -4845,7 +4845,16 @@
         "PHY7-U02-S03-I08",
         "PHY7-U02-S02-I12"
       ],
-      "specSha256": "dcb265523af348072d051c615ab203af13dd008daee75525928238c236498d6f"
+      "specSha256": "dcb265523af348072d051c615ab203af13dd008daee75525928238c236498d6f",
+      "profileFile": "candidate-profiles/B02-C01.json",
+      "profileSha256": "2d28280141638e5f68137a1ac2fb575e50f82051c20c1e7891e98dd5468604c4",
+      "stage": "retained_exact_specification",
+      "archiveAssessmentEntry": "retainedCandidates[id=B02-C01]",
+      "governedItemId": "8d290596-373e-4415-89cb-ffe2b6ef279c",
+      "immutableItemVersionId": "0a1ef777-5e78-47c5-8910-c522df0e7938",
+      "versionNo": 1,
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=8d290596-373e-4415-89cb-ffe2b6ef279c&from=review",
+      "specBindingField": "items.config.candidateSpecSha256 and item_versions.snapshot.item.config.candidateSpecSha256"
     },
     {
       "candidate": "B02-C04",
@@ -4858,7 +4867,16 @@
         "PHY7-U02-S08-I05",
         "PHY7-U02-S08-M01"
       ],
-      "specSha256": "6e231ad82da74c0119039cda24ac9cee20377795595ef56b5177197485f90b78"
+      "specSha256": "6e231ad82da74c0119039cda24ac9cee20377795595ef56b5177197485f90b78",
+      "profileFile": "candidate-profiles/B02-C04.json",
+      "profileSha256": "3f500f2751e7329100a9761c9d49c973942481fa759d682f47f39365f009abe1",
+      "stage": "retained_exact_specification",
+      "archiveAssessmentEntry": "retainedCandidates[id=B02-C04]",
+      "governedItemId": "db1cbeb4-cf73-4322-ab64-4319d74c4048",
+      "immutableItemVersionId": "94394243-6f4d-4fd0-929a-36161aa93a24",
+      "versionNo": 1,
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=db1cbeb4-cf73-4322-ab64-4319d74c4048&from=review",
+      "specBindingField": "items.config.candidateSpecSha256 and item_versions.snapshot.item.config.candidateSpecSha256"
     },
     {
       "candidate": "B02-C05",
@@ -4872,7 +4890,16 @@
         "PHY7-U01-S08-I06",
         "B01-C07-omitted"
       ],
-      "specSha256": "73131ee1d04137d464c3f632d99dac207936a73b95b7d4c79f9a715fe1449ef2"
+      "specSha256": "73131ee1d04137d464c3f632d99dac207936a73b95b7d4c79f9a715fe1449ef2",
+      "profileFile": "candidate-profiles/B02-C05.json",
+      "profileSha256": "0d02953d5be1e3fd400f6d9ff8a4d0cadac8569281a5b41e9dbd4a837170093a",
+      "stage": "retained_exact_specification",
+      "archiveAssessmentEntry": "retainedCandidates[id=B02-C05]",
+      "governedItemId": "8aef6289-5b01-4305-bf6c-352526b772de",
+      "immutableItemVersionId": "590fb7c2-d51b-405e-8578-6b6297735bce",
+      "versionNo": 1,
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=8aef6289-5b01-4305-bf6c-352526b772de&from=review",
+      "specBindingField": "items.config.candidateSpecSha256 and item_versions.snapshot.item.config.candidateSpecSha256"
     },
     {
       "candidate": "B02-C02",
@@ -4883,7 +4910,11 @@
         "PHY7-U02-S04-M01",
         "PHY7-U02-S04-I05"
       ],
-      "specSha256": null
+      "profileFile": "candidate-profiles/B02-C02.json",
+      "profileSha256": "570f4cd173f4bdf0814e311e60b4e84abb0cfbb887498923df5ca6213da5e03c",
+      "stage": "omitted_screening_concept",
+      "archiveAssessmentEntry": "omittedCandidates[id=B02-C02]",
+      "draftingDisposition": "Rejected at scenario/response/solution screening; no complete option-level draft was authored or deployed."
     },
     {
       "candidate": "B02-C03",
@@ -4893,7 +4924,11 @@
       "nearest": [
         "PHY7-U02-S06-I06"
       ],
-      "specSha256": null
+      "profileFile": "candidate-profiles/B02-C03.json",
+      "profileSha256": "61ba372549fdbbd63b646faa2d13ee0ec0bef6dd6550c94305de42d9dfda3521",
+      "stage": "omitted_screening_concept",
+      "archiveAssessmentEntry": "omittedCandidates[id=B02-C03]",
+      "draftingDisposition": "Rejected at scenario/response/solution screening; no complete option-level draft was authored or deployed."
     },
     {
       "candidate": "B02-C06",
@@ -4905,7 +4940,11 @@
         "PHY7-U02-S02-I08",
         "PHY7-U02-S02-D01"
       ],
-      "specSha256": null
+      "profileFile": "candidate-profiles/B02-C06.json",
+      "profileSha256": "1ba5157063277dd65cb09f7b66a6bc57e70bc5fc1b3ddaf37deb623bac970370",
+      "stage": "omitted_screening_concept",
+      "archiveAssessmentEntry": "omittedCandidates[id=B02-C06]",
+      "draftingDisposition": "Rejected at scenario/response/solution screening; no complete option-level draft was authored or deployed."
     },
     {
       "candidate": "B02-C07",
@@ -4917,7 +4956,11 @@
         "PHY7-U02-S02-I06",
         "PHY7-U02-S02-I08"
       ],
-      "specSha256": null
+      "profileFile": "candidate-profiles/B02-C07.json",
+      "profileSha256": "707a51e3fb6444607fd15c0c314d87a694d7240b479c15966e6ce65b00d2075b",
+      "stage": "omitted_screening_concept",
+      "archiveAssessmentEntry": "omittedCandidates[id=B02-C07]",
+      "draftingDisposition": "Rejected at scenario/response/solution screening; no complete option-level draft was authored or deployed."
     },
     {
       "candidate": "B02-C08",
@@ -4929,7 +4972,21 @@
         "PHY7-U02-S05-I05",
         "S05 expansion guide"
       ],
-      "specSha256": null
+      "profileFile": "candidate-profiles/B02-C08.json",
+      "profileSha256": "18500c026e9e9ca4ff0608da13ef812fa6e3568cfc2cfaee4aaf436a3d5a96f3",
+      "stage": "omitted_screening_concept",
+      "archiveAssessmentEntry": "omittedCandidates[id=B02-C08]",
+      "draftingDisposition": "Rejected at scenario/response/solution screening; no complete option-level draft was authored or deployed."
     }
-  ]
+  ],
+  "privateEvidence": {
+    "artifactName": "HaiEdu-Assessment-Batch-02-Audit.zip",
+    "artifactId": "libfile_a157a05ad5d0819191426ad072b61541",
+    "artifactVersion": 0,
+    "artifactSha256": "39a96ace4c8c097125de94907175b65635f30a3fb901bb03e0e427e7532d4567",
+    "access": "Private owner-held audit; authorized reviewers obtain it from the project owner. No public access grant is implied.",
+    "bindingFile": "private-evidence-bindings.json",
+    "hashContract": "profileSha256 is SHA-256 of exact UTF-8 archive member bytes. specSha256 excludes its own field and uses Python json.dumps(sort_keys=True,separators=(comma,colon),ensure_ascii=False).",
+    "timing": "The original private assessment and specs were produced before staging. This durable binding package is created after staging and before final handoff; no retrospective persistence claim is made."
+  }
 }

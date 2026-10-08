@@ -63,7 +63,12 @@
       "status": "draft",
       "reviewStatus": "needs_review",
       "fingerprint": "608e1a44e7d61a4cc8d0199b23ed740f",
-      "reviewUrl": "https://www.haiedu.am/content-item.html?id=8d290596-373e-4415-89cb-ffe2b6ef279c&from=review"
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=8d290596-373e-4415-89cb-ffe2b6ef279c&from=review",
+      "profileFile": "candidate-profiles/B02-C01.json",
+      "profileSha256": "2d28280141638e5f68137a1ac2fb575e50f82051c20c1e7891e98dd5468604c4",
+      "specSha256": "dcb265523af348072d051c615ab203af13dd008daee75525928238c236498d6f",
+      "immutableItemVersionId": "0a1ef777-5e78-47c5-8910-c522df0e7938",
+      "specBindingField": "items.config.candidateSpecSha256 and item_versions.snapshot.item.config.candidateSpecSha256"
     },
     {
       "code": "PHY7-U02-S08-D01",
@@ -72,7 +77,12 @@
       "status": "draft",
       "reviewStatus": "needs_review",
       "fingerprint": "734731e51cf0d906a68cb4e308c75564",
-      "reviewUrl": "https://www.haiedu.am/content-item.html?id=db1cbeb4-cf73-4322-ab64-4319d74c4048&from=review"
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=db1cbeb4-cf73-4322-ab64-4319d74c4048&from=review",
+      "profileFile": "candidate-profiles/B02-C04.json",
+      "profileSha256": "3f500f2751e7329100a9761c9d49c973942481fa759d682f47f39365f009abe1",
+      "specSha256": "6e231ad82da74c0119039cda24ac9cee20377795595ef56b5177197485f90b78",
+      "immutableItemVersionId": "94394243-6f4d-4fd0-929a-36161aa93a24",
+      "specBindingField": "items.config.candidateSpecSha256 and item_versions.snapshot.item.config.candidateSpecSha256"
     },
     {
       "code": "PHY7-U02-S09-M01",
@@ -81,7 +91,12 @@
       "status": "draft",
       "reviewStatus": "needs_review",
       "fingerprint": "dafc70ee070bf4d47726104cb3ffad6b",
-      "reviewUrl": "https://www.haiedu.am/content-item.html?id=8aef6289-5b01-4305-bf6c-352526b772de&from=review"
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=8aef6289-5b01-4305-bf6c-352526b772de&from=review",
+      "profileFile": "candidate-profiles/B02-C05.json",
+      "profileSha256": "0d02953d5be1e3fd400f6d9ff8a4d0cadac8569281a5b41e9dbd4a837170093a",
+      "specSha256": "73131ee1d04137d464c3f632d99dac207936a73b95b7d4c79f9a715fe1449ef2",
+      "immutableItemVersionId": "590fb7c2-d51b-405e-8578-6b6297735bce",
+      "specBindingField": "items.config.candidateSpecSha256 and item_versions.snapshot.item.config.candidateSpecSha256"
     }
   ],
   "qa": {
@@ -121,5 +136,16 @@
     "All pools, forms, blueprints, learner records and exposure",
     "Draft release, model/policy bindings and open review/release gates",
     "All current and historical guides; both S09 follow-ups remain open"
-  ]
+  ],
+  "privateEvidence": {
+    "artifactName": "HaiEdu-Assessment-Batch-02-Audit.zip",
+    "artifactId": "libfile_a157a05ad5d0819191426ad072b61541",
+    "artifactVersion": 0,
+    "artifactSha256": "39a96ace4c8c097125de94907175b65635f30a3fb901bb03e0e427e7532d4567",
+    "access": "Private owner-held audit; authorized reviewers obtain it from the project owner. No public access grant is implied.",
+    "bindingFile": "private-evidence-bindings.json",
+    "hashContract": "profileSha256 is SHA-256 of exact UTF-8 archive member bytes. specSha256 excludes its own field and uses Python json.dumps(sort_keys=True,separators=(comma,colon),ensure_ascii=False).",
+    "timing": "The original private assessment and specs were produced before staging. This durable binding package is created after staging and before final handoff; no retrospective persistence claim is made."
+  },
+  "auditReferenceCorrection": "PR 175 identified missing durable private-evidence references. All eight original profiles are now pinned to a saved immutable audit version; all three retained specs bind exact immutable item versions. Five omitted profiles are screened concepts, not finished option-level drafts. This post-staging reference correction changes no candidate, source, production row or original comparison hash."
 }

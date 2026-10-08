@@ -58,3 +58,11 @@ Chapter II now has **64 authored questions: 61 approved and three drafts** (56 p
 | PHY7-U02-S09-M01 v1 | [Open question](https://www.haiedu.am/content-item.html?id=8aef6289-5b01-4305-bf6c-352526b772de&from=review) |
 
 Review the six new draft definitions on the [Misconceptions page](https://www.haiedu.am/content-misconceptions.html), filtering by S03, S08 and S09. This batch adds no guide and requires no separate PDF approval.
+
+## Private evidence access and version binding
+
+The initial public inventory gave opaque specification hashes without a durable private-evidence reference. PR #175 identified that audit gap. Before completing this handoff, the original eight candidate profiles, complete comparison corpus, exact retained specifications, production snapshots and technical-QA evidence were saved in **HaiEdu-Assessment-Batch-02-Audit.zip**, an owner-held private archive. The [inventory](evidence/sprint-15b13-assessment-batch-02-inventory-20261008.json) pins its artifact identity/version and byte hash, names every profile member and provides each member's hash. Authorized reviewers can obtain that archive from the project owner; this reference does not grant public access to protected answers.
+
+For the three retained candidates, the inventory additionally identifies the exact governed item and immutable `item_versions` row. The original canonical specification hash is stored in both current `items.config.candidateSpecSha256` and the immutable snapshot's corresponding field. Exact prompt/options/key and snapshot equality were checked; the private archive contains the readback and verification script. This binds each staged question to the specification assessed before staging.
+
+The five omitted candidates were rejected during scenario/response/solution screening. Their original profiles now have non-null byte hashes and private-file references; no finished four-option draft was authored or deployed for those concepts. The archive preserves their assessed scenario, response, expected reasoning, closest references and omission rationale rather than inventing an uncreated specification. The durable archive reference was added **after staging, before final handoff**; it is not retroactively described as pre-staging persistence. The earlier comparison commit and all three specification hashes remain unchanged.
