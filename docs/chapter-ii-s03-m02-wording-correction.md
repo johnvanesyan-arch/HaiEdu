@@ -25,3 +25,9 @@ Production-schema rollback restored all 38 guards. It changes this current item 
 Committed staging follows a reachable comparison commit, rechecks every guard under SHARE locks, preserves other rows, asserts exact deltas and saves the matching v2 snapshot. Production readback and current-version QA follow. No schema, frontend, image, guide, runtime, authorization, scoring, pool/form, SME or release change is included.
 
 Chapter II remains **67 authored = 66 approved + one draft**, **87 active + two draft definitions**, **17 published guides**, target **192**, unauthored gap **125**. It remains draft, inactive and unallocated. Earlier approvals, S02 retention, S09 follow-ups and assessment/SME/pilot/release gates stay intact.
+
+## Production checkpoint
+
+The [reachable comparison commit](https://github.com/johnvanesyan-arch/armenian-mastery-platform/commit/bc6153d52aa0f5e92cefe26ba393501a4278c3df) and saved private archive preceded committed staging. [S03-M02 v2](https://www.haiedu.am/content-item.html?id=02f4ec30-4071-46c5-a17d-ee7771345d57&from=review) is now draft / needs_review. The exact archived prompt/specification matches production, the immutable v2 snapshot matches the saved row, and v1 remains unchanged. Options, key and all three misconception mappings are unchanged. Current-version evaluator replay passes with zero errors/warnings, and actor-null QA record `460b3352-75d3-4625-9e82-04dbc1a642e4` is saved.
+
+Only the target current item changed; one immutable version and one QA record were appended. All other rows were preserved under guarded transactions; final readback finds **35 unchanged table fingerprints** and exact expected counts for the three affected tables. [Sanitized evidence](evidence/s03-m02-wording-correction-20261008.json) records before/after guards and version/QA provenance. Review remains required; inventory and release status are unchanged.
