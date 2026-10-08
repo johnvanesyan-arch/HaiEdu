@@ -1,0 +1,192 @@
+{
+  "sprint": "15B.13T",
+  "batch": "05",
+  "observedAt": "2026-10-08T18:34:47.09641+00:00",
+  "assessed": 8,
+  "qualified": 1,
+  "omitted": 7,
+  "author": "Codex automated author; new human content/SME review pending",
+  "comparisonCommit": "c9c1b5d5b2dfb5eadd8adabb6db4300cd18b3261",
+  "privateEvidence": {
+    "artifactName": "HaiEdu-Assessment-Batch-05-Comparison.zip",
+    "artifactId": "libfile_73570224ad0c81919a4bd124989d43ab",
+    "artifactVersion": 0,
+    "artifactSha256": "82dc43085f12b685930ac2570db03a4e3d48bc6b845b2cbbc8356f2778b22329",
+    "access": "Private owner-held comparison archive; authorized reviewers obtain it from the project owner. No public access grant is implied.",
+    "bindingFile": "private-evidence-bindings.json",
+    "timing": "Saved before committed staging and before publishing this comparison commit. Rollback-only item IDs are not production IDs.",
+    "profileHashContract": "SHA-256 of exact UTF-8 archive member bytes.",
+    "specHashContract": "SHA-256 of Python json.dumps(spec excluding specSha256,sort_keys=True,separators=(comma,colon),ensure_ascii=False).",
+    "corpusFile": "corpus.json",
+    "corpusSha256": "2c075e948db52f149d5c8c863b12eb0c37fc2c2be330d038d1a787c41f1cef16"
+  },
+  "priorReviewVerification": {
+    "itemId": "02f4ec30-4071-46c5-a17d-ee7771345d57",
+    "code": "PHY7-U02-S03-M02",
+    "version": 2,
+    "review": "approved",
+    "status": "published",
+    "immutableVersionId": "9bbf1af2-29df-4b3d-9fe1-2ffff11cf6a5",
+    "immutableAssessableContentMatches": true,
+    "qaId": "3d53a4f5-6b7f-4993-989b-e4aae006090a",
+    "qaVersion": 2,
+    "qaPassed": true,
+    "qaFamilyStateFingerprint": "haiedu-family-state-v1|49f65dc3-bde0-4ff6-bca3-970776deda7f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|transfer_reasoning|1|02f4ec30-4071-46c5-a17d-ee7771345d57:2:transfer_reasoning",
+    "definitions": [
+      {
+        "id": "322c97de-6b71-4f83-a36b-ba07eceba41e",
+        "code": "molecular_inventory_ignores_element_count",
+        "status": "active"
+      },
+      {
+        "id": "926f6c15-1f1e-4790-bd69-a10842553845",
+        "code": "shared_atom_inventory_double_counted",
+        "status": "active"
+      }
+    ],
+    "noApprovalOrQaCreated": true,
+    "reviewId": "97e97adf-e665-4506-bb05-189e82d73576",
+    "approvedAt": "2026-10-08T18:14:43.008147+00:00",
+    "definitionReviewEvents": [
+      {
+        "id": "dca7d572-81cc-42f0-b5ee-93f435dbe8e8",
+        "misconceptionId": "322c97de-6b71-4f83-a36b-ba07eceba41e",
+        "action": "approve",
+        "createdAt": "2026-10-08T18:15:11.28389+00:00"
+      },
+      {
+        "id": "c578cafa-3f04-4908-9406-f523d51bb135",
+        "misconceptionId": "926f6c15-1f1e-4790-bd69-a10842553845",
+        "action": "approve",
+        "createdAt": "2026-10-08T18:15:22.475169+00:00"
+      }
+    ],
+    "technicalQaReplay": {
+      "passed": 1,
+      "errors": 0,
+      "warnings": 0,
+      "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+      "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation"
+    },
+    "inventoryBeforeBatch05": {
+      "authored": 67,
+      "approved": 67,
+      "draft": 0,
+      "practice": 56,
+      "diagnostic": 3,
+      "mastery": 8,
+      "activeDefinitions": 89,
+      "draftDefinitions": 0,
+      "publishedGuides": 17,
+      "unauthored": 125
+    }
+  },
+  "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+  "rollbackRestoredAll38Tables": true,
+  "stagingGuard": "All 38 full-row count/fingerprint guards under SHARE locks; full prior-row multisets and exact additions enforced.",
+  "expectedRowDeltas": {
+    "items": 1,
+    "item_options": 4,
+    "item_answer_keys": 1,
+    "item_families": 1,
+    "item_templates": 1,
+    "item_versions": 1,
+    "item_curriculum_scopes": 1,
+    "misconceptions": 2,
+    "item_misconception_mappings": 3,
+    "item_family_curriculum_reconciliations": 1,
+    "curriculum_release_item_families": 1,
+    "item_qa_runs": 1
+  },
+  "unchangedTables": 26,
+  "unchangedTableNames": [
+    "assessment_blueprints",
+    "assessment_form_items",
+    "assessment_forms",
+    "assessment_policy_bindings",
+    "assessment_pool_items",
+    "assessment_pools",
+    "attempts",
+    "chapter_review_item_exposures",
+    "curriculum_release_gate_checks",
+    "curriculum_release_skills",
+    "curriculum_releases",
+    "curriculum_source_documents",
+    "item_reviews",
+    "item_template_remediation_guides",
+    "learning_model_runtime_bindings",
+    "learning_outcomes",
+    "learning_session_items",
+    "misconception_review_events",
+    "remediation_guide_authoring_versions",
+    "remediation_guide_versions",
+    "skill_curriculum_reconciliations",
+    "skill_outcome_curriculum_mappings",
+    "skill_outcomes",
+    "skill_remediation_guides",
+    "skills",
+    "student_item_exposure_events"
+  ],
+  "priorRowsPreserved": true,
+  "exactSpecificationsAndSnapshots": true,
+  "archiveProfileBindingsVerified": true,
+  "items": [
+    {
+      "id": "62457731-03e0-4ad7-9087-a6a95f4b1540",
+      "code": "PHY7-U02-S05-M01",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "fingerprint": "a12bd535ebaf05a8a4a56b3158b9dd2a",
+      "immutableItemVersionId": "61b7bce4-8bb4-4b47-b95a-4d18154a75bd",
+      "specSha256": "56daad8221c0e2021c5900e187c54a733a1d887fa2d5ba47073af8fc932e27d7",
+      "profileFile": "candidate-profiles/B05-C04.json",
+      "profileSha256": "7ca0c50d65f0127da4f53d8966bdcd0b4ffc363bb1d20232f1ee5b6cf5e6090b",
+      "specBindingField": "items.config.candidateSpecSha256 and immutable item_versions.snapshot.item.config.candidateSpecSha256",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=62457731-03e0-4ad7-9087-a6a95f4b1540&from=review"
+    }
+  ],
+  "qa": {
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "passed": 1,
+    "errors": 0,
+    "warnings": 0,
+    "runIds": [
+      "8bc858c5-9353-488c-b3e9-f3a2fdd5ba1e"
+    ],
+    "runBy": null
+  },
+  "inventory": {
+    "authored": 68,
+    "approved": 67,
+    "draft": 1,
+    "practice": 56,
+    "diagnostic": 3,
+    "mastery": 9,
+    "activeDefinitions": 89,
+    "draftDefinitions": 2,
+    "publishedGuides": 17,
+    "target": 192,
+    "unauthored": 124,
+    "unauthoredByPurpose": {
+      "practice": 40,
+      "diagnostic": 29,
+      "mastery": 55
+    }
+  },
+  "pendingReview": {
+    "questions": 1,
+    "definitions": 2,
+    "skills": [
+      "S05"
+    ]
+  },
+  "preserved": [
+    "All prior human edits, approvals, immutable histories, guides and QA",
+    "Existing active S05 motion definition reused unchanged",
+    "S02 M01 retention; both original S09 follow-ups; separate S09 M01 copyedit follow-up",
+    "All pools/forms, learner exposure, assessment/model/policy and SME/pilot/release gates",
+    "Draft inactive unallocated Chapter II"
+  ]
+}
