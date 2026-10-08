@@ -56,7 +56,8 @@
   "omittedCandidate": "S02-F-D02 remains omitted; no new slot-filling candidate",
   "comparisonEvidence": [
     "docs/chapter-ii-s02-assessment-feasibility.md",
-    "docs/chapter-ii-s02-candidate-refinement.md"
+    "docs/chapter-ii-s02-candidate-refinement.md",
+    "docs/chapter-ii-s02-accepted-comparison.md"
   ],
   "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
   "comparisonReuse": "The 26-table content snapshot observed 2026-10-07T21:14:25.046222Z and complete current/history comparison were reused after all 38 table counts/full-row fingerprints matched immediately before staging; source and both accepted specification hashes reverified. Unrelated historical content was not newly recertified.",
@@ -587,5 +588,12 @@
     "filename": "HaiEdu-S02-Draft-Staging-Audit.zip",
     "sha256": "40ddc837d98526f0bc4b2c2c5e3873db75d62f6e01f81c3d85225750be471b52",
     "savedPrivately": true
+  },
+  "comparisonInventory": "docs/evidence/sprint-15b13-s02-comparison-inventory-20261008.json",
+  "documentationReviewResolution": {
+    "pr": 171,
+    "finding": "Commit the mandatory whole-bank comparison evidence",
+    "resolution": "Added answer-neutral per-candidate scenario/solution/inference, nearest-match, disposition, source, illustration and protected findings matrix, plus all 316 current and 163 immutable item-version references. Protected prompts, options and keys remain private.",
+    "contentChanged": false
   }
 }

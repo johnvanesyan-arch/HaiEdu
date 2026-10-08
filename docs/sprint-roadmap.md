@@ -1710,4 +1710,4 @@ The fresh whole-bank/source guard matched the prior corpus; the production rollb
 
 Chapter II now has 58 authored questions: 56 approved practice plus two assessment drafts, with 66 active/four draft definitions and 17 published guides. The unchanged 96/32/64 = 192 target leaves 40/31/63 = 134 unauthored. S02 retains ten unfilled assessment slots (three diagnostic, seven mastery), and zero assessment questions are approved/eligible. Option B delivery, scoring, readiness and attempts are unchanged. No pool/form, exposure, model/policy binding or release row changed; chapter activation, source/outcome/protected-use review, empirical/SME/model/pilot gates, the older illustration audit and two S09 follow-ups remain open.
 
-[Staging and site-review handoff](chapter-ii-s02-draft-staging.md) · [Sanitized evidence](evidence/sprint-15b13-s02-draft-staging-20261008.json).
+[Staging and site-review handoff](chapter-ii-s02-draft-staging.md) · [Committed comparison matrix](chapter-ii-s02-accepted-comparison.md) · [Sanitized evidence](evidence/sprint-15b13-s02-draft-staging-20261008.json).
