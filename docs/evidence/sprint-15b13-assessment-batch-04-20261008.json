@@ -1,0 +1,298 @@
+{
+  "sprint": "15B.13S",
+  "batch": "04",
+  "observedAt": "2026-10-08T17:01:04.569005+00:00",
+  "assessed": 8,
+  "qualified": 1,
+  "omitted": 7,
+  "author": "Codex automated author; new human content/SME review pending",
+  "comparisonCommit": "cbcbab2298256230852b9c31d0362dfefa69bad3",
+  "privateEvidence": {
+    "artifactName": "HaiEdu-Assessment-Batch-04-Comparison.zip",
+    "artifactId": "libfile_ecaf64fe94b08191a686c7dc12da0a0b",
+    "artifactVersion": 0,
+    "artifactSha256": "610bb68ff825cce2a89b3eeb98f57976e5cb11418e947c64e6cd80590da65554",
+    "access": "Private owner-held comparison archive; authorized reviewers obtain it from the project owner. No public access grant is implied.",
+    "bindingFile": "private-evidence-bindings.json",
+    "timing": "Saved before committed staging and before publishing this comparison commit. Rollback-only item IDs are not production IDs.",
+    "profileHashContract": "SHA-256 of exact UTF-8 archive member bytes.",
+    "specHashContract": "SHA-256 of Python json.dumps(spec excluding specSha256,sort_keys=True,separators=(comma,colon),ensure_ascii=False).",
+    "corpusFile": "corpus.json",
+    "corpusSha256": "092dc3518ed3e8c3b5921521f8b2a9a0c5ea5349b280c6c80b0f223f2b89d29a"
+  },
+  "priorReviewVerification": {
+    "observedAt": "2026-10-08T16:44:13.121296+00:00",
+    "questions": [
+      {
+        "code": "PHY7-U02-S03-M01",
+        "id": "8d290596-373e-4415-89cb-ffe2b6ef279c",
+        "version": 2,
+        "fingerprint": "920ec720d1c99a41540a2cd84b0be4e9",
+        "immutableVersionId": "016db617-6a9d-44f9-a06f-85322b924bd0",
+        "approvedAt": "2026-10-08T15:06:51.077308+00:00",
+        "reviewId": "0ef8258e-7dc4-429a-9d0b-f87746c0d43e",
+        "currentQaRunId": "e36ed65f-830c-4fe9-a744-6b1fbb8261c5",
+        "exactSavedPromptOptionsKey": true
+      },
+      {
+        "code": "PHY7-U02-S04-M02",
+        "id": "5cdb17f8-9914-4cf2-ae74-bdc1a4f31a1f",
+        "version": 3,
+        "fingerprint": "f2d7642568b2f12bb0174397d41d0ef6",
+        "immutableVersionId": "de12a41b-051f-4be8-8530-a345f3f5652f",
+        "approvedAt": "2026-10-08T15:49:06.887147+00:00",
+        "reviewId": "83756a77-3dbc-467d-8bac-daadcb62ecb1",
+        "currentQaRunId": "54e947d8-42a7-4589-856d-798f4d08eb36",
+        "exactSavedPromptOptionsKey": true
+      },
+      {
+        "code": "PHY7-U02-S08-D01",
+        "id": "db1cbeb4-cf73-4322-ab64-4319d74c4048",
+        "version": 2,
+        "fingerprint": "33405d10ad21fe03a332099f4565b791",
+        "immutableVersionId": "1e1cde5d-1f97-4a30-8cd1-a22e0231ce5a",
+        "approvedAt": "2026-10-08T15:55:36.387584+00:00",
+        "reviewId": "b9e18c3c-f7f7-4faa-8bd2-044b8bbd3500",
+        "currentQaRunId": "6ffaff27-94b3-4968-969a-0dc2cc6d763b",
+        "exactSavedPromptOptionsKey": true
+      },
+      {
+        "code": "PHY7-U02-S09-D01",
+        "id": "16adfe1e-5e77-4a14-8695-68e7accc205b",
+        "version": 2,
+        "fingerprint": "5d3e0f0d9e6d7301b384180122bc49f2",
+        "immutableVersionId": "96ef407d-f68e-4c1b-a839-5c79fc6917b7",
+        "approvedAt": "2026-10-08T16:02:19.054479+00:00",
+        "reviewId": "7805d160-8c45-4f45-aea6-91c06f1a545a",
+        "currentQaRunId": "e32dfa2a-d74c-481f-935d-e218398fda33",
+        "exactSavedPromptOptionsKey": true
+      },
+      {
+        "code": "PHY7-U02-S09-M01",
+        "id": "8aef6289-5b01-4305-bf6c-352526b772de",
+        "version": 2,
+        "fingerprint": "11526cc2eed93e3bb1b1522880249b23",
+        "immutableVersionId": "1106b4f1-33af-4fd8-9db3-604be1dcc11f",
+        "approvedAt": "2026-10-08T16:34:45.713456+00:00",
+        "reviewId": "dec4566f-ee9b-437d-b101-3d16a3731bef",
+        "currentQaRunId": "c87af0d2-0ec4-400e-89f9-1a0579a57bb3",
+        "exactSavedPromptOptionsKey": true
+      }
+    ],
+    "humanEditedVersions": true,
+    "definitionsActive": 87,
+    "reviewedDefinitionsActivated": 11,
+    "definitionReviewEvents": [
+      {
+        "id": "4f2cbeb4-046c-4798-8734-bac32e9d0bf8",
+        "misconceptionId": "733e2d57-658c-458b-93e6-b75ee3cbb020",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:36:09.036942+00:00"
+      },
+      {
+        "id": "5df42da4-cd73-4fba-afc5-78221d1c3e86",
+        "misconceptionId": "c631c4f8-1908-49be-8039-30fb18801dec",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:36:54.297887+00:00"
+      },
+      {
+        "id": "abe10e2a-973e-4d68-8479-adc0a010df14",
+        "misconceptionId": "02c511f9-a2dd-4743-b028-8aa4a74b0574",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:37:08.347747+00:00"
+      },
+      {
+        "id": "fc46e58b-90b0-4ffc-9858-c9c57d75318d",
+        "misconceptionId": "b8b3fc70-90a9-4fce-99e2-c16e15512ec0",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:40:12.652245+00:00"
+      },
+      {
+        "id": "fbfb863e-837d-454d-bf4c-56d9a04b8339",
+        "misconceptionId": "029c9d31-e924-44bc-bbb8-4fbcaa736793",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:38:33.613811+00:00"
+      },
+      {
+        "id": "a692e5ee-6792-4e37-aa7f-a213cb035870",
+        "misconceptionId": "11c37f57-f4dd-4053-af75-0301a7fe69b2",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:38:46.002957+00:00"
+      },
+      {
+        "id": "6d6da8e5-f7e0-4d51-a8d9-dca40c6b6275",
+        "misconceptionId": "91423e13-a908-4dd2-a3bf-8c95558ad1b4",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:39:06.94515+00:00"
+      },
+      {
+        "id": "f41dffcb-c117-48ed-a33d-217e8242f3b5",
+        "misconceptionId": "e0b43fc1-fb07-462e-be6e-7a7a58ee5233",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:39:19.026524+00:00"
+      },
+      {
+        "id": "14211104-0579-4491-a289-008af714ef6d",
+        "misconceptionId": "6ea3f531-19bc-46f8-8364-4716d5ada7bb",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:39:58.201813+00:00"
+      },
+      {
+        "id": "5c7a31e5-87f9-4e25-9c1e-ccce56d04653",
+        "misconceptionId": "de052bcf-505a-42b7-8043-e3493130b5fe",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:41:31.271395+00:00"
+      },
+      {
+        "id": "f4d6b811-93f7-49d3-aa83-1f3082a7b427",
+        "misconceptionId": "05f87d60-1e87-4521-8f7d-deedb065b029",
+        "action": "approve",
+        "revision": 1,
+        "createdAt": "2026-10-08T16:42:06.014692+00:00"
+      }
+    ],
+    "technicalQaReplay": {
+      "passed": 5,
+      "errors": 0,
+      "warnings": 0,
+      "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+      "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation"
+    },
+    "qaRecordsAddedForReviewVerification": 0,
+    "inventoryBeforeBatch04": {
+      "authored": 66,
+      "approved": 66,
+      "draft": 0,
+      "practice": 56,
+      "diagnostic": 3,
+      "mastery": 7,
+      "activeDefinitions": 87,
+      "draftDefinitions": 0,
+      "publishedGuides": 17,
+      "unauthored": 126
+    },
+    "preservedFollowups": [
+      "S02 M01 v2 owner retention",
+      "S09 I06 embedded answer label and guide example reuse"
+    ],
+    "newNonblockingEditorialFollowup": "S09 M01 v2 has duplicated conjunction and sentence punctuation in the human-edited prompt; preserve its approval/history, correct only through a separate governed version and review."
+  },
+  "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+  "rollbackRestoredAll38Tables": true,
+  "stagingGuard": "All 38 full-row count/fingerprint guards under SHARE locks; complete prior-row multiset preservation and exact additions enforced inside the transaction.",
+  "expectedRowDeltas": {
+    "items": 1,
+    "item_options": 4,
+    "item_answer_keys": 1,
+    "item_families": 1,
+    "item_templates": 1,
+    "item_versions": 1,
+    "item_curriculum_scopes": 1,
+    "misconceptions": 2,
+    "item_misconception_mappings": 3,
+    "item_family_curriculum_reconciliations": 1,
+    "curriculum_release_item_families": 1,
+    "item_qa_runs": 1
+  },
+  "unchangedTables": 26,
+  "unchangedTableNames": [
+    "assessment_blueprints",
+    "assessment_form_items",
+    "assessment_forms",
+    "assessment_policy_bindings",
+    "assessment_pool_items",
+    "assessment_pools",
+    "attempts",
+    "chapter_review_item_exposures",
+    "curriculum_release_gate_checks",
+    "curriculum_release_skills",
+    "curriculum_releases",
+    "curriculum_source_documents",
+    "item_reviews",
+    "item_template_remediation_guides",
+    "learning_model_runtime_bindings",
+    "learning_outcomes",
+    "learning_session_items",
+    "misconception_review_events",
+    "remediation_guide_authoring_versions",
+    "remediation_guide_versions",
+    "skill_curriculum_reconciliations",
+    "skill_outcome_curriculum_mappings",
+    "skill_outcomes",
+    "skill_remediation_guides",
+    "skills",
+    "student_item_exposure_events"
+  ],
+  "priorRowsPreserved": true,
+  "exactSpecificationsAndSnapshots": true,
+  "archiveProfileBindingsVerified": true,
+  "items": [
+    {
+      "code": "PHY7-U02-S03-M02",
+      "id": "02f4ec30-4071-46c5-a17d-ee7771345d57",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "fingerprint": "0772718993bcd9bbfc4c7ded9800578a",
+      "immutableItemVersionId": "e4312d9b-e1e0-4133-9989-352fffe7d0eb",
+      "specSha256": "238edce2bb83d58821fab8e91d21ef5e78927670fe3ed543dec886f69ed0b0c1",
+      "profileFile": "candidate-profiles/B04-C01.json",
+      "profileSha256": "1e3701881837db51d8084272a67ba946bf0adc179a4696dd1aedc408486acf27",
+      "specBindingField": "items.config.candidateSpecSha256 and immutable item_versions.snapshot.item.config.candidateSpecSha256",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=02f4ec30-4071-46c5-a17d-ee7771345d57&from=review"
+    }
+  ],
+  "qa": {
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "passed": 1,
+    "errors": 0,
+    "warnings": 0,
+    "runIds": [
+      "0f27a7c1-60e7-4abd-9d51-c4a48e70ac63"
+    ],
+    "runBy": null
+  },
+  "inventory": {
+    "authored": 67,
+    "approved": 66,
+    "draft": 1,
+    "practice": 56,
+    "diagnostic": 3,
+    "mastery": 8,
+    "activeDefinitions": 87,
+    "draftDefinitions": 2,
+    "publishedGuides": 17,
+    "target": 192,
+    "unauthored": 125,
+    "unauthoredByPurpose": {
+      "practice": 40,
+      "diagnostic": 29,
+      "mastery": 56
+    }
+  },
+  "pendingReview": {
+    "questions": 1,
+    "definitions": 2,
+    "skills": [
+      "S03"
+    ]
+  },
+  "preserved": [
+    "All existing human edits, approvals, immutable histories, guides and QA",
+    "Existing active definition reused without change",
+    "S02 M01 v2 owner retention and both S09 follow-ups",
+    "All pools/forms, learner exposure, assessment/model/policy bindings and SME/pilot/release gates",
+    "Draft inactive Chapter II release"
+  ]
+}
