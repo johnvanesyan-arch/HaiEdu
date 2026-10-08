@@ -1,0 +1,186 @@
+{
+  "slice": "15B.13O",
+  "scope": "Read-only verification of saved user reviews and bounded next-step definition; documentation only",
+  "reportedDoneAt": "2026-10-08T06:11:15Z",
+  "observedAt": "2026-10-08T06:11:47.657263+00:00",
+  "baselineMain": "c676e4ad2fefce4be0c267154b778d0961807058",
+  "author": "Codex automated readback and comparison reviewer",
+  "items": [
+    {
+      "id": "c5837b19-b157-4151-ab13-831ccc5de7d4",
+      "code": "PHY7-U02-S02-D01",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "approvedAt": "2026-10-08T05:52:06.622684+00:00",
+      "contentApprovalId": "a776a452-67c3-4591-854a-09bbcf9299ab",
+      "currentQaId": "9d531195-c3c4-4b99-b3a3-8f67884ea7f5",
+      "qaAt": "2026-10-08T05:52:02.033308+00:00",
+      "qaPassed": true,
+      "qaErrors": [],
+      "qaWarnings": [],
+      "currentFamilyFingerprintMatchesReplay": true,
+      "immutableContentProjectionMatches": true,
+      "contentSha256": "9aa0296880931630912cf9684a8afcbeda50adf21f80142f398bd04f2d92e363",
+      "answerKeyUnchanged": true
+    },
+    {
+      "id": "620f717e-013d-4c32-9b02-c40a65a52257",
+      "code": "PHY7-U02-S02-M01",
+      "version": 2,
+      "status": "published",
+      "reviewStatus": "approved",
+      "approvedAt": "2026-10-08T06:08:17.403302+00:00",
+      "contentApprovalId": "77543687-8037-43fb-9d6d-61d9598d1adc",
+      "currentQaId": "f22593b9-bec7-4cf9-91cd-570ac7395974",
+      "qaAt": "2026-10-08T06:08:04.461693+00:00",
+      "qaPassed": true,
+      "qaErrors": [],
+      "qaWarnings": [],
+      "currentFamilyFingerprintMatchesReplay": true,
+      "immutableContentProjectionMatches": true,
+      "contentSha256": "37299c8656b2e676cba4f55b8e63a38c3145c06a795ac127cc133edb598b529d",
+      "answerKeyUnchanged": true
+    }
+  ],
+  "definitionApprovals": [
+    {
+      "id": "0105d49d-5cd8-49a9-a1c9-1ffb4aabb791",
+      "status": "active",
+      "approvedAt": "2026-10-08T06:10:09.726604+00:00",
+      "definitionWordingUnchanged": true
+    },
+    {
+      "id": "72b741a8-a68c-4ec3-98e4-e40b9893f0e4",
+      "status": "active",
+      "approvedAt": "2026-10-08T06:09:44.660242+00:00",
+      "definitionWordingUnchanged": true
+    },
+    {
+      "id": "9b22033d-e32e-4522-a7c4-8937c7cd3ab6",
+      "status": "active",
+      "approvedAt": "2026-10-08T06:09:22.718184+00:00",
+      "definitionWordingUnchanged": true
+    },
+    {
+      "id": "757447c9-d1a1-45b6-a076-cf50196b54d1",
+      "status": "active",
+      "approvedAt": "2026-10-08T06:10:22.447755+00:00",
+      "definitionWordingUnchanged": true
+    }
+  ],
+  "approvedDefinitionEvents": 4,
+  "comparison": {
+    "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "sourceRechecked": "Physics 7 (2023) chapter II section 7, printed pp24–26 / PDF pp25–27",
+    "priorComparison": "docs/chapter-ii-s02-accepted-comparison.md",
+    "unrelatedCorpusRowsUnchanged": true,
+    "d01": "User revised the prompt and three response phrasings. The explicit model context and competing representation still support the original consistency-critique demand. Source fidelity and the existing answer remain intact; no additional reasoning coverage is claimed.",
+    "m01": "Prompt and key unchanged; three response phrasings edited. One response now adds explanatory examples, preserving the intended scientific interpretation but creating avoidable detail/length asymmetry. The prior model-plus-causal-appraisal comparison remains applicable; protected-use clearance is not claimed.",
+    "mappings": "All seven semantic mapping tuples unchanged; four definitions activated without wording changes.",
+    "openIssue": {
+      "id": "S02-M01-OPTION-CUE",
+      "severity": "Editorial assessment-quality follow-up; not a demonstrated learner-effect result",
+      "recommendation": "Remove the newly added example parenthesis while retaining the reviewed wording, answer key and response demand.",
+      "proposedGovernance": "Any applied change must be a new item version with fresh QA and human content review, preserving approved v2/history.",
+      "applied": false
+    }
+  },
+  "qaVerification": {
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "deployedVersion": 11,
+    "replayPassed": 2,
+    "existingCurrentQaMatches": true,
+    "newQaRowsWritten": 0
+  },
+  "preservation": {
+    "wholeTablesUnchangedSinceStaging": 29,
+    "changedTablesFromUserReview": [
+      "item_answer_keys",
+      "item_misconception_mappings",
+      "item_options",
+      "item_qa_runs",
+      "item_reviews",
+      "item_versions",
+      "items",
+      "misconception_review_events",
+      "misconceptions"
+    ],
+    "outsideReviewedItemsAndFourDefinitionsMatchesPreStaging": true,
+    "outsideRowChecks": [
+      {
+        "row_count": 316,
+        "table_name": "item_answer_keys",
+        "fingerprint": "1c69f7da2f946807f70699e6d92afcf4"
+      },
+      {
+        "row_count": 406,
+        "table_name": "item_misconception_mappings",
+        "fingerprint": "1d9f9bc47e16308e490bc8fbff06fcfa"
+      },
+      {
+        "row_count": 656,
+        "table_name": "item_options",
+        "fingerprint": "866366d9e85dfad2058eca062e3e0557"
+      },
+      {
+        "row_count": 555,
+        "table_name": "item_qa_runs",
+        "fingerprint": "f77ea4e42c63b3ea57b19f605f5d3fb6"
+      },
+      {
+        "row_count": 585,
+        "table_name": "item_reviews",
+        "fingerprint": "f8357bccf44e56f6fa197b2a71fbd32e"
+      },
+      {
+        "row_count": 163,
+        "table_name": "item_versions",
+        "fingerprint": "bb2c35df53408a3ae3082c4716013700"
+      },
+      {
+        "row_count": 316,
+        "table_name": "items",
+        "fingerprint": "f907ed0d566e6b2e93a8f2b670128270"
+      },
+      {
+        "row_count": 68,
+        "table_name": "misconception_review_events",
+        "fingerprint": "5b58b4fe447968ad0a50bb7a50ef3065"
+      },
+      {
+        "row_count": 76,
+        "table_name": "misconceptions",
+        "fingerprint": "20451f752ddf2f84e2620bba87afd38a"
+      }
+    ],
+    "databaseWritesByThisTask": 0
+  },
+  "inventory": {
+    "authoredAndContentApproved": 58,
+    "practice": 56,
+    "diagnostic": 1,
+    "mastery": 1,
+    "activeDefinitions": 70,
+    "publishedGuides": 17,
+    "target": 192,
+    "unauthored": 134,
+    "assessmentReleaseEligible": 0,
+    "chapterPoolMemberships": 0,
+    "chapterFormMemberships": 0,
+    "releaseStatus": "draft",
+    "activatedAt": null
+  },
+  "nextBoundedStep": "Resolve M01 editorial cue through a governed revision, then assess one source-backed direct experimental-evidence diagnostic partner for S02 against the complete current/historical/teaching/protected corpus. No new candidate, staging, full-bank feasibility or smaller target is claimed.",
+  "unchangedContract": "96 practice / 32 diagnostic / 64 mastery =192; 16-question diagnostic/mastery sittings; mastery >=13/16 and >=1 correct per skill; all eight readiness skills; one diagnostic and up to three mastery attempts.",
+  "openGates": [
+    "S02-M01-OPTION-CUE",
+    "ten unauthored S02 assessment slots",
+    "source/outcome/protected-use and empirical form evidence",
+    "external SME",
+    "model/assessment/pilot/release governance",
+    "older illustration audit",
+    "two S09 follow-ups"
+  ]
+}
