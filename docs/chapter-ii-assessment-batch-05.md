@@ -16,6 +16,8 @@ The supplied *Ֆիզիկա 7* (Melikyan/Mailyan, 2023) PDF SHA-256 `d8404d572f14
 
 ## Screening decisions
 
+**Dated reopening — 2026-10-08:** John authorized reconsidering B05-C03 and B05-C08. The [15B.13U supplement](chapter-ii-assessment-batch-05-reopened.md) supersedes their original omissions with revised, staged mastery drafts. The table below preserves the original screening history; the other five omissions and original archive remain unchanged.
+
 | Candidate | Skill / bank | Comparison | Disposition |
 |---|---|---|---|
 | B05-C01 | S02 diagnostic | I09/I10/D01; prior schematic-inventory screen | **Omit.** Qualitative model scale and unsupported precise volume claims repeat exposed reasoning; an area-to-volume model adds scope. |

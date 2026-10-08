@@ -1,0 +1,364 @@
+{
+  "sprint": "15B.13U",
+  "date": "2026-10-08",
+  "author": "Codex automated author; human content and SME approval pending",
+  "authorization": "Reopen B05-C03 and B05-C08, 2026-10-08T19:02:17Z",
+  "comparisonCommit": "161c582f45c901d3eb8e3871b0e3e60afd84caf7",
+  "precomparisonTree": "5daa23600823673dd3329e67c8cf755c3f54022f",
+  "archive": {
+    "id": "libfile_4ce21b962f808191a978454e27942a02",
+    "version": 0,
+    "filename": "HaiEdu-S04-S09-Reopened-Comparison.zip",
+    "bytes": 526490,
+    "sha256": "b48973f7d1b0eb72c0c36ecb0401a606ca9ac1f1cf1c72210fcb86c05b136ada",
+    "scope": "Immutable private pre-staging corpus/comparison/specification/rollback; later production and merge evidence are separate"
+  },
+  "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+  "productionObservedAt": "2026-10-08T19:14:42.406698+00:00",
+  "drafts": [
+    {
+      "code": "PHY7-U02-S04-M03",
+      "id": "85376508-614f-45e0-b9d4-868a9be82987",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "candidateId": "B05-C03",
+      "candidateRevision": 2,
+      "specSha256": "eb3a46c1fd37e66709ef3d27a1be552ed54fbeb44bc9128c4ba5441a03cb1921",
+      "snapshotExact": true,
+      "mappingsExact": true,
+      "url": "https://www.haiedu.am/content-item.html?id=85376508-614f-45e0-b9d4-868a9be82987&from=review"
+    },
+    {
+      "code": "PHY7-U02-S09-M02",
+      "id": "a5ccbcec-5e9c-4829-8892-dd9a724ce4c3",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "candidateId": "B05-C08",
+      "candidateRevision": 2,
+      "specSha256": "901e966ac6f3b52696ccae476ced52c30a47066ca00f2e17dd494ecd92914dd6",
+      "snapshotExact": true,
+      "mappingsExact": true,
+      "url": "https://www.haiedu.am/content-item.html?id=a5ccbcec-5e9c-4829-8892-dd9a724ce4c3&from=review"
+    }
+  ],
+  "technicalQa": [
+    {
+      "id": "d03ed767-6468-4deb-89ef-f991508e5b99",
+      "itemId": "85376508-614f-45e0-b9d4-868a9be82987",
+      "version": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "actor": null,
+      "createdAt": "2026-10-08 19:15:19.494269+00",
+      "familyStateFingerprint": "haiedu-family-state-v1|17fedd31-a2aa-4d00-9c17-9f319cfcbe43|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|transfer_reasoning|1|85376508-614f-45e0-b9d4-868a9be82987:1:transfer_reasoning"
+    },
+    {
+      "id": "c6d55cbd-c749-4217-a070-123e96fd0549",
+      "itemId": "a5ccbcec-5e9c-4829-8892-dd9a724ce4c3",
+      "version": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "actor": null,
+      "createdAt": "2026-10-08 19:15:19.494269+00",
+      "familyStateFingerprint": "haiedu-family-state-v1|ae5882db-3ade-49d4-b316-d220b2ca3dfc|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|transfer_reasoning|1|a5ccbcec-5e9c-4829-8892-dd9a724ce4c3:1:transfer_reasoning"
+    }
+  ],
+  "qaMethod": "Actual deployed v11 evaluator with read-only query adapter over exact production readback; not authenticated live Edge/browser invocation",
+  "qaSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+  "newDraftDefinitions": 4,
+  "reusedActiveDefinitions": 2,
+  "preservation": {
+    "allPriorRowsEnforced": true,
+    "additiveTables": 12,
+    "unchangedTables": 26,
+    "tables": [
+      {
+        "table": "assessment_blueprints",
+        "beforeCount": 7,
+        "afterCount": 7,
+        "beforeHash": "4c64b14184d45a2b0a74bfed3e15c2ad",
+        "afterHash": "4c64b14184d45a2b0a74bfed3e15c2ad"
+      },
+      {
+        "table": "assessment_form_items",
+        "beforeCount": 80,
+        "afterCount": 80,
+        "beforeHash": "02512d79c711fdd1ade10d8b8ba60bd5",
+        "afterHash": "02512d79c711fdd1ade10d8b8ba60bd5"
+      },
+      {
+        "table": "assessment_forms",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeHash": "261152bab0348edaf4fadca0385c850e",
+        "afterHash": "261152bab0348edaf4fadca0385c850e"
+      },
+      {
+        "table": "assessment_policy_bindings",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "afterHash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table": "assessment_pool_items",
+        "beforeCount": 280,
+        "afterCount": 280,
+        "beforeHash": "bc60f679991a95387749629e7a2759cd",
+        "afterHash": "bc60f679991a95387749629e7a2759cd"
+      },
+      {
+        "table": "assessment_pools",
+        "beforeCount": 4,
+        "afterCount": 4,
+        "beforeHash": "c957e610a262f61bd1e50d9c715b6973",
+        "afterHash": "c957e610a262f61bd1e50d9c715b6973"
+      },
+      {
+        "table": "attempts",
+        "beforeCount": 42,
+        "afterCount": 42,
+        "beforeHash": "34d7f71a2768a1afe6f357721e668393",
+        "afterHash": "34d7f71a2768a1afe6f357721e668393"
+      },
+      {
+        "table": "chapter_review_item_exposures",
+        "beforeCount": 0,
+        "afterCount": 0,
+        "beforeHash": "d41d8cd98f00b204e9800998ecf8427e",
+        "afterHash": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table": "curriculum_release_gate_checks",
+        "beforeCount": 14,
+        "afterCount": 14,
+        "beforeHash": "e264300d5ca77755f1dab01f403be695",
+        "afterHash": "e264300d5ca77755f1dab01f403be695"
+      },
+      {
+        "table": "curriculum_release_item_families",
+        "beforeCount": 183,
+        "afterCount": 185,
+        "beforeHash": "729ea8333973da4339e8b95cdca2ce0e",
+        "afterHash": "735f3f42227fae50173283bb0e3fca6a"
+      },
+      {
+        "table": "curriculum_release_skills",
+        "beforeCount": 28,
+        "afterCount": 28,
+        "beforeHash": "2bdc962e3ce06ad52373af19516a1147",
+        "afterHash": "2bdc962e3ce06ad52373af19516a1147"
+      },
+      {
+        "table": "curriculum_releases",
+        "beforeCount": 3,
+        "afterCount": 3,
+        "beforeHash": "a47ffa06d3d0c1e7f438c1c4153b2cce",
+        "afterHash": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+      },
+      {
+        "table": "curriculum_source_documents",
+        "beforeCount": 3,
+        "afterCount": 3,
+        "beforeHash": "d9bcea03118cbabd2fa60ce5c6c66a76",
+        "afterHash": "d9bcea03118cbabd2fa60ce5c6c66a76"
+      },
+      {
+        "table": "item_answer_keys",
+        "beforeCount": 328,
+        "afterCount": 330,
+        "beforeHash": "a36a4bf017d1807ae45787869b54ce37",
+        "afterHash": "5a2e40bbb0840ecae0287ca71342c39f"
+      },
+      {
+        "table": "item_curriculum_scopes",
+        "beforeCount": 328,
+        "afterCount": 330,
+        "beforeHash": "fac791425651a77887584f7ff97952bc",
+        "afterHash": "d78a13d0f33c294183e887abdb24bb01"
+      },
+      {
+        "table": "item_families",
+        "beforeCount": 106,
+        "afterCount": 108,
+        "beforeHash": "8c7ae0ef2b3bb8e2ba078aafe747a168",
+        "afterHash": "5a923f2a66cd5c02ffb9a7551303c654"
+      },
+      {
+        "table": "item_family_curriculum_reconciliations",
+        "beforeCount": 106,
+        "afterCount": 108,
+        "beforeHash": "8f526fc2b00172fb2d2dd2a0f798277a",
+        "afterHash": "cbe9c7b6db91a5ae48c139e3ec31971d"
+      },
+      {
+        "table": "item_misconception_mappings",
+        "beforeCount": 443,
+        "afterCount": 449,
+        "beforeHash": "4da3d2d07007e92dd6ef7bdc13834bba",
+        "afterHash": "d6b954187373de251ad91aaf1be9c965"
+      },
+      {
+        "table": "item_options",
+        "beforeCount": 704,
+        "afterCount": 712,
+        "beforeHash": "39244125d32aad612d27010dcaaf73f0",
+        "afterHash": "f03383c56ab9e6ea36dd162d1f803d73"
+      },
+      {
+        "table": "item_qa_runs",
+        "beforeCount": 579,
+        "afterCount": 581,
+        "beforeHash": "58146c3a826997a3925c4778672639bc",
+        "afterHash": "ad8fd2a4e082387e03e692469c4cfbab"
+      },
+      {
+        "table": "item_reviews",
+        "beforeCount": 597,
+        "afterCount": 597,
+        "beforeHash": "6b9b58b6767404ec7f39eced51ba42f7",
+        "afterHash": "6b9b58b6767404ec7f39eced51ba42f7"
+      },
+      {
+        "table": "item_template_remediation_guides",
+        "beforeCount": 26,
+        "afterCount": 26,
+        "beforeHash": "bcd8d89b80c0d759f236b5d7ec00e848",
+        "afterHash": "bcd8d89b80c0d759f236b5d7ec00e848"
+      },
+      {
+        "table": "item_templates",
+        "beforeCount": 106,
+        "afterCount": 108,
+        "beforeHash": "18f26a65dee4cf93a18fa058887770b0",
+        "afterHash": "0c9c42ce11eb8fad8420204e9eb5bae6"
+      },
+      {
+        "table": "item_versions",
+        "beforeCount": 184,
+        "afterCount": 186,
+        "beforeHash": "4ae0b622f7c78241a3bea95defffb8cb",
+        "afterHash": "fc143665cd0031f35173c3dbb84c95a6"
+      },
+      {
+        "table": "items",
+        "beforeCount": 328,
+        "afterCount": 330,
+        "beforeHash": "fc768f2cf6d62594d61dbe74b8ff8690",
+        "afterHash": "41d64894d594d62171cbae181b4afc58"
+      },
+      {
+        "table": "learning_model_runtime_bindings",
+        "beforeCount": 1,
+        "afterCount": 1,
+        "beforeHash": "140ad5194c426a009a1691a0b174d28c",
+        "afterHash": "140ad5194c426a009a1691a0b174d28c"
+      },
+      {
+        "table": "learning_outcomes",
+        "beforeCount": 13,
+        "afterCount": 13,
+        "beforeHash": "e9f873ec7283e478cebc6eed27be25b8",
+        "afterHash": "e9f873ec7283e478cebc6eed27be25b8"
+      },
+      {
+        "table": "learning_session_items",
+        "beforeCount": 79,
+        "afterCount": 79,
+        "beforeHash": "dbbb19423c945d8f0ccb85d2312a7800",
+        "afterHash": "dbbb19423c945d8f0ccb85d2312a7800"
+      },
+      {
+        "table": "misconception_review_events",
+        "beforeCount": 93,
+        "afterCount": 93,
+        "beforeHash": "86a77b713ab4a8a07722110a3ce3dd17",
+        "afterHash": "86a77b713ab4a8a07722110a3ce3dd17"
+      },
+      {
+        "table": "misconceptions",
+        "beforeCount": 101,
+        "afterCount": 105,
+        "beforeHash": "eeec75e35221249eaea0310d9b2b0e34",
+        "afterHash": "9c0774abbf680885ec5a833ac4aef788"
+      },
+      {
+        "table": "remediation_guide_authoring_versions",
+        "beforeCount": 164,
+        "afterCount": 164,
+        "beforeHash": "c7e9d247bf8e86c4caf7d10757f0639e",
+        "afterHash": "c7e9d247bf8e86c4caf7d10757f0639e"
+      },
+      {
+        "table": "remediation_guide_versions",
+        "beforeCount": 79,
+        "afterCount": 79,
+        "beforeHash": "cd1eb19ae8e630582287731bdda99979",
+        "afterHash": "cd1eb19ae8e630582287731bdda99979"
+      },
+      {
+        "table": "skill_curriculum_reconciliations",
+        "beforeCount": 18,
+        "afterCount": 18,
+        "beforeHash": "da993b9b2b52e950abb94d7164716d8b",
+        "afterHash": "da993b9b2b52e950abb94d7164716d8b"
+      },
+      {
+        "table": "skill_outcome_curriculum_mappings",
+        "beforeCount": 20,
+        "afterCount": 20,
+        "beforeHash": "85c41bcc0ce687ca54ca37b8c5c8ec75",
+        "afterHash": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+      },
+      {
+        "table": "skill_outcomes",
+        "beforeCount": 20,
+        "afterCount": 20,
+        "beforeHash": "6bf2a6b0b3e913d3979fff7f20e778c7",
+        "afterHash": "6bf2a6b0b3e913d3979fff7f20e778c7"
+      },
+      {
+        "table": "skill_remediation_guides",
+        "beforeCount": 10,
+        "afterCount": 10,
+        "beforeHash": "3a51fc6e3a850044cd5c01d3a1919b49",
+        "afterHash": "3a51fc6e3a850044cd5c01d3a1919b49"
+      },
+      {
+        "table": "skills",
+        "beforeCount": 19,
+        "afterCount": 19,
+        "beforeHash": "39cb5c0425998f0c9580a50f1d1fef42",
+        "afterHash": "39cb5c0425998f0c9580a50f1d1fef42"
+      },
+      {
+        "table": "student_item_exposure_events",
+        "beforeCount": 42,
+        "afterCount": 42,
+        "beforeHash": "9c2421c9dfc40827b348e6adf7efd681",
+        "afterHash": "9c2421c9dfc40827b348e6adf7efd681"
+      }
+    ]
+  },
+  "counts": {
+    "authored": 70,
+    "approved": 68,
+    "draft": 2,
+    "practice": 56,
+    "diagnostic": 3,
+    "mastery": 11,
+    "activeDefinitions": 91,
+    "draftDefinitions": 4,
+    "guides": 17,
+    "target": 192,
+    "unauthored": 122,
+    "remainingPractice": 40,
+    "remainingDiagnostic": 29,
+    "remainingMastery": 53
+  },
+  "release": "Chapter II draft, inactive, unallocated; all human/SME/pilot/release gates remain. No runtime/schema/auth/policy/model/scoring/learner changes."
+}
