@@ -44,3 +44,17 @@ The unchanged production-schema rollback transaction passes all 38 freshness/pre
 Before this batch: **61 approved = 56 practice + 1 diagnostic + 4 mastery**, 76 active definitions, 17 published guides. Planned after staging: **64 authored = 61 approved + 3 drafts**, with 56 practice / 2 diagnostic / 6 mastery authored; 76 active + 6 draft definitions; 17 published guides. The unchanged target is **192 = 96 practice + 32 diagnostic + 64 mastery**. Remaining unauthored: **128 = 40 practice + 30 diagnostic + 58 mastery**. New drafts still need human review; numeric counts do not certify distinct coverage.
 
 Chapter II remains draft/unallocated and learner-inactive. Existing delivery lengths, scoring/readiness/attempt contracts, pools/forms, exposure, model/policy bindings, SME/pilot/release gates, S02 M01 v2 owner retention, both S09 follow-ups and the older illustration audit remain unchanged. No reduction of the bank plan is inferred from omitted candidates.
+
+## Verified staging checkpoint — 2026-10-08, 13:38 UTC
+
+All three candidates are staged at v1 / needs_review. Production readback matches the exact precommitted specifications and immutable actor-null snapshots. Current-version technical QA passes all three with no errors or warnings; three actor-null system QA records were appended with the actual evaluator provenance. The rollback restored all 38 guarded tables. Staging preserved every prior row, and the final readback confirms the exact additions in twelve tables and unchanged full-row fingerprints in the other 26. The [pre-staging comparison commit](https://github.com/johnvanesyan-arch/armenian-mastery-platform/commit/0d162a271acaa6a046b5992d3c2172b0627da220) is remotely reachable. [Sanitized production evidence](evidence/sprint-15b13-assessment-batch-02-20261008.json).
+
+Chapter II now has **64 authored questions: 61 approved and three drafts** (56 practice / 2 diagnostic / 6 mastery authored), **76 active and six draft definitions**, and **17 published guides**. The remaining unauthored inventory is **128: 40 practice, 30 diagnostic and 58 mastery**. The chapter remains draft, inactive and unallocated.
+
+| Draft | Review |
+|---|---|
+| PHY7-U02-S03-M01 v1 | [Open question](https://www.haiedu.am/content-item.html?id=8d290596-373e-4415-89cb-ffe2b6ef279c&from=review) |
+| PHY7-U02-S08-D01 v1 | [Open question](https://www.haiedu.am/content-item.html?id=db1cbeb4-cf73-4322-ab64-4319d74c4048&from=review) |
+| PHY7-U02-S09-M01 v1 | [Open question](https://www.haiedu.am/content-item.html?id=8aef6289-5b01-4305-bf6c-352526b772de&from=review) |
+
+Review the six new draft definitions on the [Misconceptions page](https://www.haiedu.am/content-misconceptions.html), filtering by S03, S08 and S09. This batch adds no guide and requires no separate PDF approval.

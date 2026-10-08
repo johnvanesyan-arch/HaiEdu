@@ -1,0 +1,125 @@
+{
+  "sprint": "15B.13Q",
+  "batch": "02",
+  "observedAt": "2026-10-08T13:37:53.029053+00:00",
+  "assessed": 8,
+  "qualified": 3,
+  "omitted": 5,
+  "author": "Codex automated author; human and SME review pending",
+  "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+  "comparisonCommit": "0d162a271acaa6a046b5992d3c2172b0627da220",
+  "rollbackRestoredAll38Tables": true,
+  "stagingGuard": "All 38 full-row count/fingerprint guards under SHARE locks; full-row multiset preservation and exact additions checked inside transaction",
+  "expectedRowDeltas": {
+    "items": 3,
+    "item_options": 12,
+    "item_answer_keys": 3,
+    "item_families": 3,
+    "item_templates": 3,
+    "item_versions": 3,
+    "item_curriculum_scopes": 3,
+    "misconceptions": 6,
+    "item_misconception_mappings": 9,
+    "item_family_curriculum_reconciliations": 3,
+    "curriculum_release_item_families": 3,
+    "item_qa_runs": 3
+  },
+  "unchangedTables": 26,
+  "unchangedTableNames": [
+    "assessment_blueprints",
+    "assessment_form_items",
+    "assessment_forms",
+    "assessment_policy_bindings",
+    "assessment_pool_items",
+    "assessment_pools",
+    "attempts",
+    "chapter_review_item_exposures",
+    "curriculum_release_gate_checks",
+    "curriculum_release_skills",
+    "curriculum_releases",
+    "curriculum_source_documents",
+    "item_reviews",
+    "item_template_remediation_guides",
+    "learning_model_runtime_bindings",
+    "learning_outcomes",
+    "learning_session_items",
+    "misconception_review_events",
+    "remediation_guide_authoring_versions",
+    "remediation_guide_versions",
+    "skill_curriculum_reconciliations",
+    "skill_outcome_curriculum_mappings",
+    "skill_outcomes",
+    "skill_remediation_guides",
+    "skills",
+    "student_item_exposure_events"
+  ],
+  "priorRowsPreserved": true,
+  "exactSpecificationsAndSnapshots": true,
+  "items": [
+    {
+      "code": "PHY7-U02-S03-M01",
+      "id": "8d290596-373e-4415-89cb-ffe2b6ef279c",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "fingerprint": "608e1a44e7d61a4cc8d0199b23ed740f",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=8d290596-373e-4415-89cb-ffe2b6ef279c&from=review"
+    },
+    {
+      "code": "PHY7-U02-S08-D01",
+      "id": "db1cbeb4-cf73-4322-ab64-4319d74c4048",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "fingerprint": "734731e51cf0d906a68cb4e308c75564",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=db1cbeb4-cf73-4322-ab64-4319d74c4048&from=review"
+    },
+    {
+      "code": "PHY7-U02-S09-M01",
+      "id": "8aef6289-5b01-4305-bf6c-352526b772de",
+      "version": 1,
+      "status": "draft",
+      "reviewStatus": "needs_review",
+      "fingerprint": "dafc70ee070bf4d47726104cb3ffad6b",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=8aef6289-5b01-4305-bf6c-352526b772de&from=review"
+    }
+  ],
+  "qa": {
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "passed": 3,
+    "errors": 0,
+    "warnings": 0,
+    "runIds": [
+      "41aa3c77-a502-444d-89ad-cdb529642e43",
+      "35262a61-3a23-44da-a6b1-71bce9cba8e1",
+      "efc5cb31-a899-4cff-9bc7-bdc30ad24e5b"
+    ],
+    "runBy": null
+  },
+  "inventory": {
+    "authored": 64,
+    "approved": 61,
+    "draft": 3,
+    "practice": 56,
+    "diagnostic": 2,
+    "mastery": 6,
+    "activeDefinitions": 76,
+    "draftDefinitions": 6,
+    "publishedGuides": 17,
+    "target": 192,
+    "unauthored": 128,
+    "unauthoredByPurpose": {
+      "practice": 40,
+      "diagnostic": 30,
+      "mastery": 58
+    }
+  },
+  "preserved": [
+    "All batch-01 approvals and activated definitions; all older approved content/history",
+    "Existing S02 M01 v2 and its owner retention",
+    "All pools, forms, blueprints, learner records and exposure",
+    "Draft release, model/policy bindings and open review/release gates",
+    "All current and historical guides; both S09 follow-ups remain open"
+  ]
+}

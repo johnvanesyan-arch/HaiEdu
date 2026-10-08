@@ -1,6 +1,6 @@
 # Chapter II assessment batch 01 — eight-candidate comparison
 
-15B.13P · 2026-10-08 · automated author: Codex · human content/SME review pending
+15B.13P · 2026-10-08 · automated author: Codex · human content review complete; external SME/release gates pending
 
 John authorized assessing **6–8 candidates across several skills per batch**, retaining question quality and sending qualifying drafts directly to the Content Reviewer workspace. This batch assesses eight candidates across S03–S09: **three mastery candidates qualify for draft staging, five are omitted**. No diagnostic candidate survives this batch. This is a candidate-screening result, not eight approvals or a reduced bank target.
 
@@ -56,3 +56,7 @@ All three drafts are staged at v1 / needs_review. The rollback rehearsal restore
 | PHY7-U02-S08-M01 v1 | [Open question](https://www.haiedu.am/content-item.html?id=c4e81f2d-26db-43a5-bde1-bd956ecf1cf2&from=review) |
 
 Review the six new draft definitions on the [misconceptions page](https://www.haiedu.am/content-misconceptions.html), filtering by S04, S07 and S08. There is no separate PDF approval or new guide in this batch.
+
+## Human review completion — 2026-10-08, 13:18 UTC
+
+John reported this batch reviewed and authorized continuing. Fresh production readback confirms all three questions approved/published at unchanged v1 and all six definitions active with unchanged wording. Their current technical QA and family fingerprints match; no replacement content version, approval or duplicate QA was created by this verification. Chapter II reached 61 approved questions and 76 active definitions before [batch 02](chapter-ii-assessment-batch-02.md). [Review completion evidence](evidence/sprint-15b13-batch-01-review-complete-20261008.json). The earlier staging counts above are historical checkpoints.
