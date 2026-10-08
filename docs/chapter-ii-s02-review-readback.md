@@ -1,6 +1,6 @@
 # Chapter II S02 — saved review verification and next step
 
-**15B.13O · 2026-10-08 UTC.** John reported the site review done. Readback confirms both user-edited questions are **content-approved/published at v2**, and all four new misconception definitions are **active**. This closes the recorded human-review actions, with one editorial assessment-quality follow-up still open. It does not release Chapter II or certify protected assessment validity.
+**15B.13O · 2026-10-08 UTC.** John reported the site review done. Readback confirms both user-edited questions are **content-approved/published at v2**, and all four new misconception definitions are **active**. This closes the recorded human-review actions. The editorial follow-up identified below was subsequently closed by explicit owner retention; see the owner disposition. It does not release Chapter II or certify protected assessment validity.
 
 | Question | Saved version | Content approval (UTC) | Current QA |
 |---|---:|---|---|
@@ -9,7 +9,13 @@
 
 The four definition approvals were saved between 06:09:22 and 06:10:22 UTC. Their wording is unchanged. The exact human review records exist in production; this verification did not create approvals or impersonate a reviewer.
 
-## Review of the edits
+## Owner disposition — 2026-10-08, 06:32:04 UTC
+
+After the recommendation to remove M01’s explanatory parenthesis, John replied **“let’s keep it.”** Retain approved **M01 v2 exactly as saved**. **S02-M01-OPTION-CUE is closed by explicit owner retention**, not by a content change or proof that the editorial concern has no effect. The original assessment below remains the historical review judgment. No new version, QA run, approval or database write is needed for this decision.
+
+The proposed wording correction is no longer a prerequisite for the next authoring step. Proceed to assessing one distinct source-backed direct experimental-evidence diagnostic partner for S02. This does not certify protected-use/empirical validity, fill the remaining ten slots or change any chapter release gate. [Owner decision record](evidence/sprint-15b13-s02-m01-retain-decision-20261008.json).
+
+## Original review of the edits
 
 The [committed whole-bank comparison](chapter-ii-s02-accepted-comparison.md) is retained as the earlier revision-2/v1 record. The v2 changes were compared with that matrix and its complete inventory after verifying unrelated bank rows are unchanged. The source PDF hash was rechecked, and §7 printed pp24–26 / PDF pp25–27 were reread.
 

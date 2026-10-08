@@ -1,0 +1,35 @@
+{
+  "scope": "Owner decision on S02-M01-OPTION-CUE; documentation only",
+  "userMessage": "let's keep it",
+  "submittedAt": "2026-10-08T06:32:04Z",
+  "localSubmittedAt": "2026-10-08T10:32:04+04:00",
+  "precedingRecommendation": "Remove the newly added parenthetical examples from an M01 response because the added detail could cue the answer; preserve approved v2 until a separate governed revision. The answer key and protected wording are intentionally omitted here.",
+  "decision": "Retain the approved M01 v2 exactly as saved, including its parenthetical examples. No corrective version is requested.",
+  "itemId": "620f717e-013d-4c32-9b02-c40a65a52257",
+  "itemCode": "PHY7-U02-S02-M01",
+  "retainedVersion": 2,
+  "retainedContentSha256": "37299c8656b2e676cba4f55b8e63a38c3145c06a795ac127cc133edb598b529d",
+  "lastVerifiedState": "Content-approved/published v2 with passing current QA, as recorded in sprint-15b13-s02-review-readback-20261008.json",
+  "followupId": "S02-M01-OPTION-CUE",
+  "followupDisposition": "Closed by explicit owner decision to retain; original editorial concern remains documented as a review judgment, not an empirically established defect.",
+  "databaseWrites": 0,
+  "newVersionCreated": false,
+  "newReviewRequiredForThisDecision": false,
+  "nextBoundedStep": "Assess one distinct source-backed direct experimental-evidence diagnostic partner for S02 against the full current/historical/teaching/protected corpus. No new candidate is created by this decision.",
+  "gatesPreserved": [
+    "source/outcome/protected-use judgment",
+    "empirical difficulty and form equivalence",
+    "external SME",
+    "model/assessment/pilot/release governance",
+    "older illustration audit",
+    "two S09 follow-ups"
+  ],
+  "countsUnchanged": {
+    "contentApprovedQuestions": 58,
+    "activeDefinitions": 70,
+    "publishedGuides": 17,
+    "unauthoredToward192": 134,
+    "s02DiagnosticGaps": 3,
+    "s02MasteryGaps": 7
+  }
+}
