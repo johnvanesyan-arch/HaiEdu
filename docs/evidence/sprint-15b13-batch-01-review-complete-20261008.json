@@ -1,0 +1,55 @@
+{
+  "observedAt": "2026-10-08T13:18:09.761891+00:00",
+  "previousBatch": "15B.13P",
+  "questions": [
+    {
+      "code": "PHY7-U02-S04-M01",
+      "id": "380d9c71-7ae5-4975-8014-ed5f3a8a742e",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "approvedAt": "2026-10-08T13:07:42.914456+00:00"
+    },
+    {
+      "code": "PHY7-U02-S07-M01",
+      "id": "4055a223-fcfe-4c61-9115-9c518df6684b",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "approvedAt": "2026-10-08T13:08:58.947705+00:00"
+    },
+    {
+      "code": "PHY7-U02-S08-M01",
+      "id": "c4e81f2d-26db-43a5-bde1-bd956ecf1cf2",
+      "version": 1,
+      "status": "published",
+      "reviewStatus": "approved",
+      "approvedAt": "2026-10-08T13:10:18.184436+00:00"
+    }
+  ],
+  "questionContentUnchanged": true,
+  "definitionsActivatedWithoutWordingChanges": 6,
+  "technicalQaReplay": {
+    "passed": 3,
+    "errors": 0,
+    "warnings": 0,
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "method": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation"
+  },
+  "existingQaCurrent": true,
+  "newQaRecordsCreatedForReviewReadback": 0,
+  "preservation": {
+    "completeTablesUnchanged": 33,
+    "outsideReviewedItemAndDefinitionRowsUnchanged": true
+  },
+  "inventoryBeforeBatch02": {
+    "approved": 61,
+    "practice": 56,
+    "diagnostic": 1,
+    "mastery": 4,
+    "activeDefinitions": 76,
+    "publishedGuides": 17,
+    "unauthored": 131
+  },
+  "releaseAndAllocationsUnchanged": true
+}
