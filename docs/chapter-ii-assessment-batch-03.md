@@ -36,3 +36,16 @@ The production-schema rollback passes and restores all 38 guards. The actual dep
 Before this batch: **64 authored = 61 approved + three batch-02 drafts**; 56 practice / 2 diagnostic / 6 mastery authored; 76 active + 6 draft definitions; 17 published guides. Planned after staging: **66 authored = 61 approved + five drafts**; 56 practice / 3 diagnostic / 7 mastery authored; 76 active + 11 draft definitions; 17 published guides. The unchanged target remains **192 = 96 practice + 32 diagnostic + 64 mastery**, leaving **126 unauthored = 40 practice + 29 diagnostic + 57 mastery**. Counts do not certify bank sufficiency or authorize padding.
 
 Chapter II remains draft, inactive and unallocated. Earlier approvals, all batch-02 drafts and their QA, S02 M01 v2 owner retention, both S09 follow-ups, current/historical guides and the older illustration audit are preserved. No pools/forms, learner exposure, model/policy binding, delivery/scoring/readiness/attempt rule or SME/pilot/release gate changes. Deferring review does not approve pending content. John’s instruction authorizes continuing this bounded batch without waiting for batch-02 decisions; it does not authorize publishing drafts to learners.
+
+## Verified staging checkpoint — 2026-10-08
+
+Both drafts are staged at v1 / needs_review. Their exact production prompts/options/keys and immutable actor-null snapshots match the specifications archived before staging. The six wrong-response mappings are intact. Current-version technical QA passes both with no errors/warnings; two actor-null system QA records preserve the actual evaluator provenance. The committed transaction preserved every prior row and enforced exact additions. Final readback confirms twelve additive tables and 26 unchanged full-row fingerprints. The [reachable pre-staging comparison commit](https://github.com/johnvanesyan-arch/armenian-mastery-platform/commit/487230ffd9380f14db34bafaa18b26f5ace87109) and private archive precede the transaction. [Sanitized production evidence and immutable version bindings](evidence/sprint-15b13-assessment-batch-03-20261008.json).
+
+Chapter II now has **66 authored = 61 approved + five drafts**, **76 active + eleven draft definitions**, and **17 published guides**. The pending queue contains three questions/six definitions from batch 02 and two questions/five definitions from this batch. The unchanged 192 target leaves 126 unauthored. The chapter remains draft, inactive and unallocated.
+
+| New draft | Review |
+|---|---|
+| PHY7-U02-S04-M02 v1 | [Open question](https://www.haiedu.am/content-item.html?id=5cdb17f8-9914-4cf2-ae74-bdc1a4f31a1f&from=review) |
+| PHY7-U02-S09-D01 v1 | [Open question](https://www.haiedu.am/content-item.html?id=16adfe1e-5e77-4a14-8695-68e7accc205b&from=review) |
+
+Five new definitions belong to S04/S09 on [Misconceptions](https://www.haiedu.am/content-misconceptions.html). Across both pending batches, eleven definitions belong to S03/S04/S08/S09; the S09 filter also includes three batch-02 definitions. Review can remain deferred. No separate PDF approval or new guide is needed.
