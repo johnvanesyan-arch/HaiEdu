@@ -50,3 +50,22 @@ Each retained candidate uses a new fixed version-1 family/template and three dis
 Expected after staging: **78 authored = 70 approved + eight drafts**, comprising **63 practice / three diagnostic / twelve mastery**; **95 active + twelve draft definitions**; **17 published + seven draft template guides**. The unchanged **192** target leaves **114 unauthored: 33 practice / 29 diagnostic / 52 mastery**. Candidate screening counts are not student delivery lengths. This larger batch makes progress without revising the assessment plan or treating targets as permission to pad.
 
 Chapter II remains draft, inactive and unallocated. Existing approvals/history, S02-M01 owner retention, original S09-I06 embedded-label and guide-overlap follow-ups, separate S09-M01 copyedit follow-up, Sprint16.5 student-dashboard work before formal pilot and rollover-summary reconciliation remain open as previously recorded. No schema, core/runtime, authorization/RLS, assessment pool/form, learning-model, scoring, attempt or learner-exposure change is included. This is a bounded subject-aware content extension under existing contracts. Human question/definition/guide review and SME/pilot/release gates remain separate.
+
+## Verified staging checkpoint — 2026-10-09
+
+All eight questions are saved as **v1 / draft / needs_review** with exact prompt/options/key/mapping and immutable-snapshot readback. Eight actor-null technical-QA records pass with zero errors/warnings. Seven draft guides have exact current, authoring and runtime-history content and passed deployed-helper validation; twelve new definitions await human review. All original rows were preserved: fifteen tables received only the expected additions; 23 protected/unchanged tables retain exact fingerprints.
+
+| Question | Bank | Review |
+|---|---|---|
+| S03-I09 | practice | [Open question](https://www.haiedu.am/content-item.html?id=f1860135-e30f-415c-88e6-e59f5e7c5065&from=review) |
+| S04-I08 | practice | [Open question](https://www.haiedu.am/content-item.html?id=47d14891-e10e-4f5b-a081-f6717b6de183&from=review) |
+| S05-I07 | practice | [Open question](https://www.haiedu.am/content-item.html?id=b25fd829-9015-4d9c-a2cd-1d0a873ff12e&from=review) |
+| S06-I07 | practice | [Open question](https://www.haiedu.am/content-item.html?id=6e2b9adc-f2fa-4485-b44b-bf8765217560&from=review) |
+| S07-I06 | practice | [Open question](https://www.haiedu.am/content-item.html?id=f41cf092-b9e6-48f7-b768-b2953f444f6f&from=review) |
+| S08-I07 | practice | [Open question](https://www.haiedu.am/content-item.html?id=57867761-7b90-477d-827b-262d33386a6a&from=review) |
+| S09-I07 | practice | [Open question](https://www.haiedu.am/content-item.html?id=fc7e5395-7f60-47b9-9b17-e73689484ddf&from=review) |
+| S09-M03 | mastery_check | [Open question](https://www.haiedu.am/content-item.html?id=f5b0e774-4411-46f7-8156-601a71cbf00f&from=review) |
+
+Review the seven guides on [Guides](https://www.haiedu.am/content-guides.html), filtered by S03–S09, and twelve definitions on [Misconceptions](https://www.haiedu.am/content-misconceptions.html), filtered by S03/S04/S05/S07/S08/S09. S06 reuses active definitions. The [review queue](https://www.haiedu.am/content-review.html) contains all eight questions.
+
+The [complete comparison commit](https://github.com/johnvanesyan-arch/armenian-mastery-platform/commit/ce5d6313a76d24bfed0753eb58a08291f74d2643) and saved private archive preceded committed staging; exact local/remote trees were verified. [Sanitized production evidence](evidence/sprint-15b13-assessment-batch-06-20261009.json). Fresh production confirms **78 authored =70 approved+8 drafts**, **63 practice/3 diagnostic/12 mastery**, **95 active+12 draft definitions**, **17 published+7 draft guides**. **114 remain unauthored toward192 (33 practice/29 diagnostic/52 mastery)**. Chapter stays inactive and unallocated.
