@@ -7,7 +7,7 @@
   "omitted": 5,
   "author": "Codex automated author; human and SME review pending",
   "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
-  "comparisonCommit": "94cdbda",
+  "comparisonCommit": "2203348d131cb567e2e30a263891358326547b8a",
   "rollbackRestoredAll38Tables": true,
   "stagingGuard": "All 38 full-row count/fingerprint guards under SHARE locks; full-row multiset preservation and exact additions checked inside transaction",
   "expectedRowDeltas": {
@@ -91,5 +91,6 @@
     "All pools, forms, blueprints, learner records and exposure",
     "Draft release, model/policy bindings and open review/release gates",
     "All current and historical guides; both S09 follow-ups remain open"
-  ]
+  ],
+  "comparisonRevisionNote": "Reachable publication of the unchanged pre-staging candidate matrix and specification hashes; the 38-table staging guard binds the frozen corpus. Earlier scratch-only local commit reference was replaced after PR review."
 }
