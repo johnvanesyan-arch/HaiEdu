@@ -54,3 +54,23 @@ The saved archive and reachable comparison commit precede committed staging. The
 Expected after staging: **96 authored =87 approved+9 drafts**, **79 practice /3 diagnostic /14 mastery**, **122 active+13 draft definitions**, **32 published+8 draft guides**. The unchanged192 target leaves **96 unauthored:17 practice /29 diagnostic /50 mastery**. Practice counts for S02–S09 are **12/11/12/9/9/7/9/10**. These are authoring-bank counts, not student delivery lengths. Quality and source feasibility remain gates; the target does not authorize padding, shortened assessments or reuse of protected content.
 
 This is a bounded subject-aware content extension. Chapter II stays draft, inactive and unallocated. All existing approvals/history and follow-ups remain: S02-M01 owner retention, S09-I06 embedded label and guide overlap, S09-M01 duplicate punctuation/word copyedit, Sprint16.5 student-dashboard work before formal pilot, and separate rollover-summary reconciliation. The freshly published **S09-I08 guide strategy contains “բանաձը”**; record **“բանաձևը”** as a pending copyedit through the versioned guide-review workflow, without overwriting approved content in this batch. No schema, shared core/runtime, auth/RLS, forms/pools, learning model, scoring, attempts or learner exposure changes are included. Human question/guide/definition and SME/pilot/release gates remain separate.
+
+## Verified staging checkpoint — 2026-10-09
+
+All nine questions are saved as **v1 / draft / needs_review** with exact current and immutable text/options/key/mapping readback. Nine actor-null current-version technical-QA records pass with zero errors/warnings. Eight guides remain draft with exact authoring/runtime snapshots and passing deployed-helper validation; thirteen definitions remain draft. All pre-existing rows were preserved: fifteen tables received only expected additions and23 stayed identical.
+
+| Question | Bank | Review |
+|---|---|---|
+| S03-I11 | practice | [Open question](https://www.haiedu.am/content-item.html?id=32f414e8-8314-4170-bde3-4ad0b2baa0b7&from=review) |
+| S04-I11 | practice | [Open question](https://www.haiedu.am/content-item.html?id=1a1381ed-2057-465d-9b58-6e9daf751371&from=review) |
+| S04-I12 | practice | [Open question](https://www.haiedu.am/content-item.html?id=da23af4d-82f2-4ff7-8995-55557d5d88ae&from=review) |
+| S05-I09 | practice | [Open question](https://www.haiedu.am/content-item.html?id=1542181b-9d51-46de-a7b5-f6bc427ab5e6&from=review) |
+| S06-I09 | practice | [Open question](https://www.haiedu.am/content-item.html?id=42261bfb-ba95-4cd6-990a-317e03fd4d2f&from=review) |
+| S08-M02 | mastery_check | [Open question](https://www.haiedu.am/content-item.html?id=f5abddad-64f2-4749-b57a-133aeb576bc8&from=review) |
+| S08-I09 | practice | [Open question](https://www.haiedu.am/content-item.html?id=b341debb-09c5-48ea-bd2e-e19f4a740f5f&from=review) |
+| S09-I09 | practice | [Open question](https://www.haiedu.am/content-item.html?id=bf7eadf0-5549-4144-a460-dfa263689349&from=review) |
+| S09-I10 | practice | [Open question](https://www.haiedu.am/content-item.html?id=e16aced5-371f-4004-ac03-2996a45177b7&from=review) |
+
+Review the eight guides on [Guides](https://www.haiedu.am/content-guides.html), filtered by S03/S04/S05/S06/S08/S09; the thirteen definitions use the same skill filters on [Misconceptions](https://www.haiedu.am/content-misconceptions.html). All nine questions are on the [review queue](https://www.haiedu.am/content-review.html).
+
+The [complete comparison commit](https://github.com/johnvanesyan-arch/armenian-mastery-platform/commit/e7010d14a4b123c7d05d8f9f68d725e96f8a62c4) and immutable private archive preceded committed staging. Exact local/remote trees were verified. [Production evidence](evidence/sprint-15b13-assessment-batch-08-20261009.json) confirms **96 authored =87 approved+9 drafts**, **79 practice/3 diagnostic/14 mastery**, **122 active+13 draft definitions**, **32 published+8 draft guides**, and **96 unauthored toward192 (17 practice/29 diagnostic/50 mastery)**. Legacy practice_review and untagged practice entries are included. Chapter II stays draft, inactive and unallocated.
