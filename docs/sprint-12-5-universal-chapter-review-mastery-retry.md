@@ -1,6 +1,8 @@
 # Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
 
-**Status:** 🟡 Closure verification — 12.5A–W deployed; 12.5X–Y awaits authenticated browser-matrix QA
+**Status:** ✅ Complete — 12.5A–Z; final closure 2026-09-23. See the [closure report](sprint-12-5-closure-report.md#final-closure--2026-09-23) and [current status register](project-status.md).
+
+**Evidence chronology:** dated implementation/QA notes below preserve their original pending gates. Those historical statements were superseded by the final lifecycle, option-presentation and authenticated 390/430 px mobile acceptance; they do not reopen Sprint 12.5 or block later sequencing.
 
 **Placement:** After Sprint 12 calibration work and before Sprint 13 Chapter I production release
 

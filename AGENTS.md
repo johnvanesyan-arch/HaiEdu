@@ -6,6 +6,10 @@ If a platform-wide change has an exception or cannot safely apply to an affected
 
 For Edge Function shared-code changes, identify every importing function, compare its deployed bundle with the intended repository source, deploy every affected stale runtime dependency, and read back the deployed files. A merged shared helper does not update already-deployed functions. Record affected consumers, verification, and any exceptions in the deployment evidence.
 
+## Documentation status policy
+
+`docs/project-status.md` is the authoritative current delivery/gate register. Update it with dated evidence when status changes, then align affected roadmap, backlog, README and API summaries in the same change. The roadmap defines scope/sequence; dated sprint reports preserve historical evidence. Do not interpret technical or sequencing closure as SME approval, empirical calibration or production release. Sync Notion summaries to the merged source commit while preserving native child pages. API descriptions must match the relevant implementation and state the scope of any deployed verification.
+
 ## Release reliability policy
 
 Every dashboard or shared browser-code release must pass the CI workflow, including its isolated Chromium regressions, and the aggregate `Platform release checks` job. Keep every required CI job in that aggregate. A successful build or a Vercel `READY` state alone does not establish that a page is usable. The persistent production Deployment Check must be configured and verified separately; do not describe release blocking as enforced from the CI job alone.

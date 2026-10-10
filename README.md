@@ -2,13 +2,19 @@
 
 A multi-subject supplementary learning platform aligned to Armenia's general education system. Physics, Mathematics, Armenian Language, English and future subjects have equal platform status and use the same subject-neutral core. The currently implemented course-content milestone is Grade 7 Physics; that delivery status gives Physics no architectural or product priority.
 
-## Current milestone
+## Project status
+
+Start with the [authoritative status register](docs/project-status.md) for current delivery stages, dated inventories and unresolved gates. The [roadmap](docs/sprint-roadmap.md) defines sequence, the [backlog](docs/backlog.md) tracks implementation checklists, and the [API contract](docs/api-contract.md) describes the current session workflow and legacy boundaries. Notion is a secondary summary; check its source-commit stamp before relying on its copy. Synchronization to this change follows merge and requires readback verification.
+
+Chapter II authoring is in progress; Chapter I remains pilot pending external Physics SME approval. Sprint 12.5 is complete, Sprint 13 is closed for sequencing, and the second authorized release remains the live acceptance dependency for Sprint 14 / 15B.12E. See the register for evidence and later planned stages.
+
+## Chapter I implemented baseline
 
 The project now has a working Chapter I learning-engine slice for:
 
 **Grade 7 Physics → Chapter I: Բնության ուսումնասիրության ֆիզիկական մեթոդները**
 
-The live Supabase database currently contains:
+The Chapter I release baseline contains:
 
 - 1 Grade 7 Physics Chapter I unit
 - 5 topics
@@ -36,7 +42,9 @@ The live student-facing learning loop uses these JWT-protected Supabase Edge Fun
 
 1. `start-learning-session` — start or resume a bounded learning session under the existing student, course-access and curriculum-release checks.
 2. `get-session-item` — retrieve an item for that session with session-bound exposure provenance.
-3. `submit-answer` — submit the session-bound response for server-side grading and evidence updates.
+3. `submit-answer` — submit the session-bound response for server-side grading and evidence updates; Mastery uses `submit-mastery-answer`.
+
+Governed contexts select an authorized enrollment/release/unit and use a published assessment policy. Existing Chapter I clients retain the registered legacy adapter. Current governed scoring supports single choice and true/false; numeric/quantity support belongs to the legacy path. See the [API contract](docs/api-contract.md) for request fields, deferred assessment responses, persisted option presentation, server-owned help and duplicate handling.
 
 `get-practice-item` is retired. Authenticated POST requests that pass its existing live-session checks receive **HTTP 410 Gone** (`legacy_practice_delivery_retired`), with `start-learning-session + get-session-item` as the replacement. It no longer serves assessable content; unauthenticated or inactive-session requests still receive their existing authorization errors.
 
@@ -80,7 +88,7 @@ The repository includes `vercel.json`, configured to deploy the static `web/` di
 
 ## Automated checks
 
-GitHub Actions runs a core-parity check, the test suite, TypeScript typecheck and JavaScript syntax validation on pushes to `main` and pull requests.
+GitHub Actions runs five required jobs on pushes to `main` and pull requests: `test` (including core parity, tests, typecheck, syntax and shared browser-QA trigger coverage), `role-layout-browser` (isolated Chromium), `institutional-concurrency`, `phase3-postgres-17`, and aggregate `Platform release checks`. See the [workflow](.github/workflows/ci.yml) for the complete gate. The following commands are only the core local subset:
 
 ```bash
 npm run check:core-parity

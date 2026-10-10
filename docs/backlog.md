@@ -1,5 +1,7 @@
 # Product backlog
 
+**Status source:** [Project status register](project-status.md), reconciled 2026-10-10. This file is a scoped implementation checklist, not a second current sprint ledger. Completed technical work is checked below; genuine external/release gates remain open. Later stages and current inventories are in the register; the [roadmap](sprint-roadmap.md) defines their sequence.
+
 ## Sprint 0 — Technical foundation
 - [x] Repository scaffold
 - [x] Initial domain model
@@ -15,10 +17,10 @@
 - [x] RLS baseline applied
 - [x] Grade/Physics structural seed applied
 - [x] `submit-answer` Edge Function deployed
-- [ ] Run security/performance advisor review
-- [ ] Create first authenticated test student
-- [ ] Insert first validated Grade 7 Physics skill/item
-- [ ] Run live answer -> attempt -> mastery integration test
+- [x] Run security/performance advisor review (subsequent 11K/preflight evidence; review completion does not imply zero findings)
+- [x] Create first authenticated test student
+- [x] Insert the first internally reviewed/pilot-eligible Grade 7 Physics skill/item (external SME validation remains open)
+- [x] Run live answer -> attempt -> mastery integration test
 
 ## Sprint 1 — Grade 7 Physics curriculum slice
 - [x] Obtain/map current official Grade 7 Physics programme
@@ -26,18 +28,21 @@
 - [x] Select first unit
 - [x] Map official outcomes
 - [x] Decompose 5–10 micro-skills
-- [ ] Validate prerequisites with Physics SME
+- [ ] Obtain external Physics SME validation of prerequisites (production gate; see register)
 - [x] Draft 20–40 deterministic items
-- [ ] Teacher QA
+- [x] Complete internal content-owner QA (11D)
+- [ ] Teacher validation under the external Physics SME/content review gate; internal owner review does not close this requirement
 
 ## Sprint 2 — First live learning loop
-- [ ] Student authentication UI
-- [ ] Item delivery endpoint/UI
-- [ ] Answer submission UI
-- [ ] Attempt history
-- [ ] Mastery display
-- [ ] Teacher class matrix
-- [ ] Small closed pilot
+- [x] Student authentication UI
+- [x] Item delivery endpoint/UI
+- [x] Answer submission UI
+- [x] Attempt history
+- [x] Mastery display
+- [x] Teacher class matrix
+- [x] Reallocate the human pilot to Sprint 11.5 and close its one-adult feasibility scope; formal school-cohort execution remains planned in Sprint 17
+
+Technical completion evidence for the early checklist: [Sprint 11 handoff](sprint-11-technical-handoff-report.md), [11F production workflow](sprint-11f-closed-pilot.md), [11K provenance/advisor hardening](sprint-11k-curriculum-versioning-provenance-release-gates.md) and [11.5 feasibility closure](sprint-11-5-pilot-closure-report.md).
 
 ## Sprint 10.5 — Student Experience & Front-End Redesign
 **Placement:** after Sprint 10 and before Sprint 11.
@@ -80,7 +85,7 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [x] Preserve attempt history and existing item versioning/retirement semantics.
 - [x] Add regression tests proving exposure data cannot leak another student's history.
 
-**Transitional bank note:** the current 60 fixed items are conservatively backfilled as singleton family/template identities until Sprint 11D content review. For each Chapter I skill, the current baseline split is 4 Practice/Diagnostic-eligible items and 2 protected Mastery-only items. This establishes the integrity boundary now but does **not** solve repetition pressure; Sprint 11B defines exposure-aware selection/cooldowns and Sprint 11C/11D expands the effective variant bank.
+**Historical 11A bank note — superseded by 11D:** the current 60 fixed items are conservatively backfilled as singleton family/template identities until Sprint 11D content review. For each Chapter I skill, the current baseline split is 4 Practice/Diagnostic-eligible items and 2 protected Mastery-only items. This establishes the integrity boundary now but does **not** solve repetition pressure; Sprint 11B defines exposure-aware selection/cooldowns and Sprint 11C/11D expands the effective variant bank.
 
 ### 11B — Repetition and selection policy
 **Status: ✅ Complete.** Selection is now cross-session exposure-aware. Practice follows unseen variant → spaced unresolved error → least-recent review → explicit pool-exhaustion fallback. Diagnostic rotates two explicit non-overlapping 20-item baseline forms. Mastery uses the protected pool with unseen-first/least-exposed selection and alternate-retest logic after failure/remediation. Detailed implementation: `docs/sprint-11b-repetition-selection-policy.md`.
@@ -94,7 +99,7 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [x] Mastery Check: after a failed attempt and required remediation, use an alternate assessment form with minimal overlap with the previous attempt.
 - [x] Add explicit pool-exhaustion behavior so the system degrades predictably rather than silently over-serving familiar items.
 
-**Current bank-capacity boundary:** the two Diagnostic forms are structurally non-overlapping but their pedagogical parallelism is still provisional pending Sprint 11D review. The protected Mastery pool currently has exactly 2 items per skill while a full Mastery Check also needs 2 per skill, so a retest can be forced to overlap with the previous form. That overlap is now explicit and auditable (`poolExhausted` / `exactRepeatFallbackUsed`) rather than silent; Sprint 11D must expand the protected pool before overlap becomes exceptional.
+**Historical 11B capacity boundary — superseded by 11D:** the two Diagnostic forms are structurally non-overlapping but their pedagogical parallelism is still provisional pending Sprint 11D review. The protected Mastery pool currently has exactly 2 items per skill while a full Mastery Check also needs 2 per skill, so a retest can be forced to overlap with the previous form. That overlap is now explicit and auditable (`poolExhausted` / `exactRepeatFallbackUsed`) rather than silent; Sprint 11D must expand the protected pool before overlap becomes exceptional.
 
 ### 11C — Parameterised and parallel item variants
 **Status: ✅ Complete.** Deterministic seed-based generation is live for safe numerical constructs and explicit parallel-context reasoning tasks. Exact prompt/parameter/answer/fingerprint reproduction is QA-checked, generated candidates enter review state only, and content-admin preview/materialisation remains behind the existing role gate. Detailed implementation: `docs/sprint-11c-parameterized-parallel-variants.md`.
@@ -106,7 +111,7 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [x] Ensure variants preserve the same construct and intended difficulty rather than merely changing wording; generated content remains provisional until Sprint 11D human review.
 - [x] Add QA rules for invalid/malformed generation, duplicate effective variants and accidental answer leakage.
 
-**11C proof-set note:** 10 active generation templates are live (8 parameterised + 2 parallel). Twenty concrete proof variants across S04, S05 and S07–S10 are materialised in `review` / `needs_review` state, reproduce exactly from template + seed, have distinct semantic fingerprints, and have zero assessment-pool memberships. They do not count toward the 11D production-bank target until reviewed and approved.
+**Historical 11C proof-set note — superseded by 11D:** 10 active generation templates were live (8 parameterised + 2 parallel). Twenty concrete proof variants across S04, S05 and S07–S10 were materialised in `review` / `needs_review` state, reproduced exactly from template + seed, had distinct semantic fingerprints, and had zero assessment-pool memberships. At this checkpoint they did not count toward the 11D production-bank target until reviewed and approved.
 
 ### 11D — Grade 7 Physics Unit 1 bank expansion and content QA
 
@@ -134,7 +139,7 @@ Detailed scope: `docs/sprint-10-5-front-end-redesign.md` and `docs/sprint-10-5F-
 - [x] Add a basic assessment-integrity report showing exact-repeat rates and protected-pool usage.
 
 ### 11F — Closed Grade 7 Physics Chapter I technical handoff readiness
-**Status: ✅ Complete for Sprint 11 technical handoff.** Technical preflight and the rendered browser-production gate are complete. 11F.2 used real rendered production browser runs with authenticated student and teacher profiles. Four authenticated repetitions — tablet/phone viewport, keyboard-only focus traversal, 200% zoom, and Firefox/Safari-class browser — were not executable with the available automation controls and were explicitly accepted by the product owner on 2026-09-16 as QA limitations rather than PASS results. The remaining gate is the finite production-workflow closure punch-list. Human cohort execution and real-user feedback are deferred to Sprint 11.5. Detailed execution plan: `docs/sprint-11f-closed-pilot.md`.
+**Status: ✅ Complete for Sprint 11 technical handoff.** Technical preflight and the rendered browser-production gate are complete. 11F.2 used real rendered production browser runs with authenticated student and teacher profiles. Four authenticated repetitions — tablet/phone viewport, keyboard-only focus traversal, 200% zoom, and Firefox/Safari-class browser — were not executable with the available automation controls and were explicitly accepted by the product owner on 2026-09-16 as QA limitations rather than PASS results. The finite production-workflow closure punch-list was subsequently completed or explicitly dispositioned in the [Sprint 11 handoff report](sprint-11-technical-handoff-report.md). Human cohort execution and real-user feedback are deferred to Sprint 11.5. Detailed execution plan: `docs/sprint-11f-closed-pilot.md`.
 
 - [x] Complete automated/source, live-database, active-bank, diagnostic-form, security/RLS and session-collision preflight QA; fix blocking defects discovered by that gate.
 - [x] Execute/disposition the deferred authenticated browser/device QA matrix from `docs/pilot-browser-qa-checklist.md`; rendered student/teacher desktop checks passed and the four remaining authenticated tool-coverage gaps have explicit product-owner acceptance.
@@ -230,7 +235,7 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 
 ## Sprint 12.5 — Universal Chapter Review & Mastery-Retry Lifecycle
-**Status: 🟡 Closure verification. 12.5A–W deployed; 12.5X–Y awaits authenticated browser-matrix QA. Sprint 13 is on hold.**
+**Status: ✅ Complete — 12.5A–Z, closed 2026-09-23.** Lifecycle branches and authenticated desktop/mobile QA passed; see the [final closure evidence](sprint-12-5-closure-report.md#final-closure--2026-09-23). Sprint 13 is closed for sequencing; its external SME production gate remains open in the [status register](project-status.md).
 
 - [x] 12.5A: create immutable platform-level Chapter Mastery & Review policy versions.
 - [x] 12.5B: implement the server-authoritative chapter mastery state machine.
@@ -243,6 +248,7 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 - [x] 12.5P–Q: enforce transactional attempt integrity and protected assessment exposure.
 - [x] 12.5R–S: integrate Hinting v2 and Review coverage analytics.
 - [x] 12.5T–W: complete normalized schema, RLS, historical migration and reporting invariants.
-- [ ] 12.5X–Y: API/race/security/CI/deployment checks pass. Authenticated desktop optional-Review and teacher reporting QA passes; mobile rendering plus required-Review/retry and final-failure browser branches remain required.
+- [x] 12.5X–Y: API/race/security/CI/deployment checks, required-Review/retry/final-failure lifecycle branches, authenticated desktop and learner/teacher mobile checks at 390/430 px passed. Mobile browser QA #2 on `0c56fa8` supplies the final mobile evidence.
+- [x] 12.5Z: persist session-item MCQ presentation, resolve displayed keys server-side and preserve historical evidence; final closure records assessment-integrity acceptance.
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
