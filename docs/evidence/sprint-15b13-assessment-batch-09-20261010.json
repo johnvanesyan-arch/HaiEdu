@@ -318,11 +318,11 @@
       "familyStateFingerprint": "haiedu-family-state-v1|de98f15b-e65b-451e-b485-1066da5f471f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|transfer_reasoning|1|f64d45bc-25a9-42cf-b65c-288a42cb8174:1:transfer_reasoning"
     }
   ],
-  "qaMethod": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation",
-  "qaSourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+  "qaMethod": "Actual deployed v11 evaluator executed against fresh production catalogue readback with a read-only in-memory query adapter; not authenticated live Edge invocation; exact deployed-source replay repeated during review and all result objects identical to the persisted technical runs.",
+  "qaSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
   "guideValidation": {
     "method": "Actual deployed guide-validation helper replay against frozen proposed specifications; not authenticated live Edge invocation",
-    "sourceSha256": "aa073f39426d8f0013a57ed27a86a3dd1d848653ebdac0a59dd437f43dcc6e89",
+    "sourceSha256": "aad5dc785f66863b30cf0d2abedd53cfc7d9006c93c2c07e463215f6122e1142",
     "results": [
       {
         "code": "PHY7-U02-S03-I12",
@@ -805,5 +805,29 @@
     "poolMemberships": 0,
     "formMemberships": 0
   },
-  "gates": "No human approvals/SME/pilot/release decisions synthesized. No schema/runtime/auth/model/scoring changes."
+  "gates": "No human approvals/SME/pilot/release decisions synthesized. No schema/runtime/auth/model/scoring changes.",
+  "qaSourceBinding": {
+    "deployedVersion": 11,
+    "deployedSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "repositorySourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "archivedReplayFileSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+    "materializationDifference": "The archived replay file contains exactly one additional trailing LF; no other byte differs.",
+    "evaluatedSourceSelectionSha256": "89589fecbada8a2b8c9bfc318cd5c8bf8e409e2c3352c866e7d59fa5df750d7b",
+    "evaluatedSourceIdentical": true,
+    "runtimeChange": false,
+    "persistedTechnicalRecordsSourceHash": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+    "exactDeployedReplayResultIdentical": true,
+    "exactDeployedReplayPassed": 9,
+    "recordPolicy": "Original actor-null technical QA rows and immutable archive preserved. Their evaluatorSourceSha256 names the archived replay artifact; this bridge binds it to the unchanged deployed source. No new human approval or runtime change."
+  },
+  "guideSourceBinding": {
+    "deployedVersion": 10,
+    "deployedHelperSha256": "aad5dc785f66863b30cf0d2abedd53cfc7d9006c93c2c07e463215f6122e1142",
+    "repositoryHelperSha256": "aad5dc785f66863b30cf0d2abedd53cfc7d9006c93c2c07e463215f6122e1142",
+    "archivedReplayFileSha256": "aa073f39426d8f0013a57ed27a86a3dd1d848653ebdac0a59dd437f43dcc6e89",
+    "materializationDifference": "The archived replay file contains exactly one additional trailing LF; no other byte differs.",
+    "runtimeChange": false,
+    "exactDeployedReplayResultIdentical": true,
+    "exactDeployedReplayPassed": 8
+  }
 }

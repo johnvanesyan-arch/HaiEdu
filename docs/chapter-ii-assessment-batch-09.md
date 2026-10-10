@@ -66,3 +66,10 @@ At **2026-10-10 10:13:16 UTC**, Chapter II has **105 authored questions: 89 cont
 The new batch contributes eight guides and 15 definitions; the earlier eight guides and 13 definitions remain pending. Question approval does not automatically approve a guide or definition. The owner can review the combined work at their convenience through the existing governed pages. No bulk approval or separate archive review is required.
 
 The bank now has 87 practice, three Diagnostic and 15 Mastery questions. Remaining targets are nine practice, 29 Diagnostic and 49 Mastery (87 total), with no guarantee that every numerical slot has defensible independent source coverage. The pending protected items remain separate from practice guides. Content approval does not activate the draft chapter or allocate assessment forms.
+
+
+## Review correction: evaluator provenance
+
+PR #185 identified that the initial `qaSourceSha256` named the saved replay artifact rather than the deployed file. The deployed v11 source and unchanged repository file both hash to `b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154`; the private archived replay file hashes to `846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2` because materialization appended exactly one trailing LF. No other byte differs. The selected evaluator code is byte-identical, SHA-256 `89589fecbada8a2b8c9bfc318cd5c8bf8e409e2c3352c866e7d59fa5df750d7b`. The deployed guide helper has the same one-trailing-LF materialization difference, also bound explicitly in production evidence.
+
+Both replays were repeated using the exact deployed bytes: all nine item result objects and all eight guide result objects are identical, with zero errors/warnings. Evidence now distinguishes deployed/repository hashes from archived replay hashes. The nine persisted technical QA rows correctly retain their original replay-artifact hash; the evidence bridge binds them to the unchanged deployed implementation. The immutable archive and all existing records are preserved. This correction changes no runtime, question, approval or release state.
