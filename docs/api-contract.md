@@ -53,6 +53,7 @@ Success is HTTP 200; fields vary by mode and adapter. These are response descrip
 | --- | --- |
 | Governed Practice / Chapter Review | `attemptId`, `itemId`, `skillId`, session/release/blueprint identity; `grading` (`correct`, `score`, `errorCode`, `feedbackCode`, `usedHelp`); `mastery` (`score`, `evidenceCount`, `status`); policy-scoped `recommendation`; nullable `chapterReview` lifecycle result. |
 | Governed Diagnostic / Mastery | `accepted: true`, `revealCorrect: false`, `attemptId`, learner-safe `session`, release/blueprint/provenance identity and nullable `finalResult`. No per-item `grading` object; session correctness is withheld during assessment. Completed Mastery may return `finalResult` containing `passed`, score totals/percent, `passCriteria`, `skillResults` and lifecycle. |
+| Legacy Mastery via `submit-mastery-answer` | The active Chapter I client receives only `accepted: true`, `revealCorrect: false`, `session` (`status`, `planned`, `answered`) and nullable `finalResult`; it does not receive top-level `attemptId` or release/blueprint/provenance identities. On completion, `finalResult` contains `passed`, `score` (`correct`, `answered`, `percent`), `passCriteria` (`overallPercent`, `minCorrectPerSkill`), `skillResults`, `failedSkills` and `lifecycle`. This adapter retains 80% overall plus one correct per skill; these are not governed platform defaults. |
 | Legacy Diagnostic via `submit-answer` | `accepted: true`, `revealCorrect: false`, `attemptId`, release/blueprint/provenance identity and session summary. No per-item `grading` object. The legacy summary still includes `correct_count`; it is not the governed learner-safe projection. |
 | Legacy Practice / Chapter Review via `submit-answer` | Grading/mastery/recommendation with provenance, optional session counts and `remediation` (`helpWasUsed`, `independentCheckNeeded`, `helpAvailableAfterMistake`, `messageHy`). Completed Review can include `chapterReview` and `reviewCoverage`. These legacy-specific fields are not promised by governed answers. |
 
@@ -60,7 +61,7 @@ Recommendations and criteria come from the bound policy/model and authorized con
 
 ## Duplicates and failures
 
-Answer recording and mastery evidence use transactional RPCs. The session path rejects repeated answers with **409 `session_item_already_answered`**; it does not promise an idempotent cached HTTP 200. A completed session can instead return `session_not_active`. After a timeout or ambiguous error, reload session state before another submission: a write may have committed before a later response/read failed. Preserve the served item identity; do not allocate a new identity to bypass duplicate protection.
+Answer recording and mastery evidence use transactional RPCs. Session-bound `submit-answer` and governed Mastery reject repeated answers with **409 `session_item_already_answered`**; they do not promise an idempotent cached HTTP 200. Legacy Mastery wraps an upstream duplicate error as `grading_failed` with `detail: "session_item_already_answered"`, retaining HTTP 409. A completed session can instead return `session_not_active`. After a timeout or ambiguous error, reload session state before another submission: a write may have committed before a later response/read or Mastery finalization failed. Preserve the served item identity; do not allocate a new identity to bypass duplicate protection.
 
 Errors use `{ "error": "<code>" }`. Representative mappings, not an exhaustive list for every endpoint:
 
@@ -75,7 +76,9 @@ Errors use `{ "error": "<code>" }`. Representative mappings, not an exhaustive l
 | 410 | Retired `get-practice-item`: `legacy_practice_delivery_retired`. |
 | 500 / 503 | Configuration/storage/service failures, including `server_not_configured`, legacy `attempt_record_failed`, governed `learning_context_service_unavailable` or unavailable legacy curriculum release. These do not authorize choosing another release or writing directly. |
 
-## Retained standalone compatibility
+## Legacy endpoint compatibility
+
+**Legacy Mastery is always session-bound.** It requires `sessionId`, `sessionItemId`, `itemId` and `response`, checks owned active Mastery mode, and forwards grading to `submit-answer` before finalizing the completed assessment. Its distinct errors include 400 `missing_required_fields`, 404 `session_not_found`, 409 `not_mastery_check` / `session_not_active`, and 500 `session_refresh_failed` / `submit_mastery_answer_failed`. Upstream failures retain their HTTP status but use `{ "error": "grading_failed", "detail": "<upstream error>" }`; the outer 500 catch can also include `detail`. Clients must not assume the governed error projection applies to this wrapper.
 
 Legacy `submit-answer` still accepts `itemId` and `response` without session IDs after its authentication, course, release and practice/diagnostic checks. If either session ID is supplied, both are required. The standalone branch uses `service_record_answer_atomic` and the client `hintUsed` boolean; it lacks session-bound presentation/help semantics. This is retained implementation behavior, not the request shape used by current browser clients or an entrance to governed contexts. Retirement of `get-practice-item` did not remove this branch.
 

@@ -4,7 +4,7 @@ A multi-subject supplementary learning platform aligned to Armenia's general edu
 
 ## Project status
 
-Start with the [authoritative status register](docs/project-status.md) for current delivery stages, dated inventories and unresolved gates. The [roadmap](docs/sprint-roadmap.md) defines sequence, the [backlog](docs/backlog.md) tracks implementation checklists, and the [API contract](docs/api-contract.md) describes the current session workflow and legacy boundaries. Notion mirrors these records.
+Start with the [authoritative status register](docs/project-status.md) for current delivery stages, dated inventories and unresolved gates. The [roadmap](docs/sprint-roadmap.md) defines sequence, the [backlog](docs/backlog.md) tracks implementation checklists, and the [API contract](docs/api-contract.md) describes the current session workflow and legacy boundaries. Notion is a secondary summary; check its source-commit stamp before relying on its copy. Synchronization to this change follows merge and requires readback verification.
 
 Chapter II authoring is in progress; Chapter I remains pilot pending external Physics SME approval. Sprint 12.5 is complete, Sprint 13 is closed for sequencing, and the second authorized release remains the live acceptance dependency for Sprint 14 / 15B.12E. See the register for evidence and later planned stages.
 
