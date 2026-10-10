@@ -1,11 +1,11 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 3.33
-**Updated:** 2026-10-09
-**Latest bounded checkpoint:** Batch08 (15B.13X) assessed twelve candidates and staged nine across S03/S04/S05/S06/S08/S09: eight intentional practice variants and one new reasoning mastery candidate. Two redundant candidates were omitted and one protected alternative deferred. All nine v1 drafts have exact production/snapshot/mapping readback and passing actor-null technical QA; eight guides and thirteen definitions remain draft. The saved whole-bank/source comparison, private archive and reachable comparison commit preceded staging. All nine batch07 questions are genuinely approved, including five edited v2 versions; fifteen definitions are active and eight guides published. Chapter II now has96 authored=87 approved+9 drafts (79 practice/3 diagnostic/14 mastery),122 active+13 draft definitions,32 published+8 draft guides, and96 unauthored toward192 (17 practice/29 diagnostic/50 mastery). Existing approvals/history, S02 retention, all S09 follow-ups plus the newly recorded S09-I08 guide copyedit, Sprint16.5, rollover reconciliation and assessment/model/SME/pilot/release gates remain. Chapter stays draft, inactive and unallocated. See [batch08 comparison and handoff](chapter-ii-assessment-batch-08.md).
-**Current programme status:** Sprints 11, 11.5, 12 and 12.5 are ✅ complete. Sprint 13 is closed for sprint sequencing by product-owner direction; the external Physics SME production release gate remains unresolved and the Chapter I release stays pilot. Sprint 14 is 🟡 in progress: 14A is deployed; 14B account/provisioning/recovery controls, the authenticated school-admin operational overview and the teacher workspace operations are deployed; and the 14C school-scoped learner onboarding, exact-context stamping, assigned-class teacher roster and teacher evidence views are deployed. Institutional teachers can create assigned classrooms, send bounded bulk email invitations, issue optional one-use join codes, separate active and archived classrooms, and rename authorized classrooms without changing their identity or evidence. Role-scoped privacy inventories and Armenian-safe responsive layouts are deployed across role dashboards. Teacher offboarding and database-enforced final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 live checks on 2026-09-28. Authenticated action acceptance also passed 141/141 checks across both schools, with 54/54 read-isolation checks before and after. Teacher navigation/rename/archive, reciprocal class/staff mutation denials and temporary-membership offboarding UI acceptance are complete for these fixtures. Sprint 14D school-wide analytics is ✅ complete: the protected aggregate-only endpoint and School Admin board are deployed, and production run 36757995069 passed 10/10 two-school tenant, privacy and authenticated-browser checks. Live multi-unit/multi-context switching remains blocked until a second authorized release exists and is the remaining Sprint 14 gate. The formal Grade 7 MVP is a four-subject gate: Physics, Mathematics, Armenian Language and English. Sprint 15A is ✅ complete: the protected Armenian authoring workspace passed authenticated Content Reviewer and Platform Admin browser acceptance, AAL1/AAL2 lifecycle checks, draft/review runtime isolation, publish/archive/fallback/history probes, wrong-role and revoked-session denial, full CI and final advisor review. Sprint 15B.1 deployed the review-only Chapter II foundation. Sprint 15B.2 reviewed the skill map, archived one duplicate candidate in favour of the existing cross-unit prerequisite, approved eight Chapter II skills for draft authoring, and added one learner-inactive family with four versioned draft items and one draft remediation guide. Sprint 15B.3 is ✅ complete: all four current question versions have passing QA and approval, the guide is published, all three explicitly approved misconception definitions are active, and the 4-item/12-mapping matrix is intact. Sprint 15B.4 and 15B.5 added the second and third learner-inactive four-item families, and the product owner approved their questions. The answer-position integrity checkpoint is ✅ complete: all seven re-keyed current versions passed technical QA and human approval, each of the three families now uses `A/B/C/D` once, and the shared server-side shuffle remains active for all 131 published single-choice items and all current assessment modes. The second and third families’ remediation guides are published at version 3 at the 15B.11 checkpoint; their misconception definitions remain draft. Sprint 15B.6 question QA is ✅ complete: its four S05 items are approved with passing current-version QA; the remediation guide is published at version 3 at the 15B.11 checkpoint, while misconception definitions remain draft. Sprint 15B.7 question QA is ✅ complete: its four S06 diffusion items are approved with passing current-version QA; its guide is now published at version 3 and misconception definitions still draft; no pool, blueprint, pilot or learner release was created. Sprint 15B.8 question QA is ✅ complete: all four S07 current versions passed technical QA and human approval on 2026-10-05; its guide is now published at version 2 and six misconception definitions remain draft. Sprint 15B.9 question QA is ✅ complete: all four S08 version-1 questions passed current-version technical QA and human approval on 2026-10-05, bringing Chapter II to 28 approved learner-inactive questions. The family uses the prospective evidence-blueprint profile with twelve distractor mappings; its guide is now published at version 2 and eight misconception definitions remain draft. Sprint 15B.10 question QA is ✅ complete: all four S09 version-1 questions passed current-version QA and human approval on 2026-10-05. The eight initial Chapter II families now have 32 approved learner-inactive questions. The 15B.11 read-only audit confirms all eight guides are now published (S02–S06 version 3; S07–S09 version 2), and production readback now confirms all 43 Chapter II misconception definitions are active, with zero drafts. Chapter-wide outcome/assessment coverage and the misconception review packet are documented. John selected Option B on 2026-10-06: Chapter II uses 16-question assessments with two questions per all eight skills; mastery requires 13/16 and at least one correct per skill; all eight skills participate in readiness. The approved 192-question plan has 96 practice/review, 32 diagnostic and 64 protected mastery items. Sprint 15B.13 deployed the first four new S02 practice questions with textbook figures; production readback on 2026-10-06 confirms all four current versions are approved, bringing Chapter II to 36 approved questions. The new template guide is published at runtime version 2, completing this bounded batch's human review; external SME review and release/model binding remain separate. The second S02 practice/review batch, I09–I12, is deployed and all four questions have now been approved (I09 at user-edited v2); its separate guide was initially draft and is now published at runtime v2. A whole-bank review found I10 v1 substantively repetitive. Sprint 15B.13C deployed I10 v2 with a different textbook-grounded inference and refreshed technical QA, preserving prior approvals/history. John subsequently revised and approved I10 at v4, activated its misconception and published the edited guide at runtime v2. All twelve S02 questions are approved and its practice/review expansion is complete. Sprint 15B.13D human review is complete: all eight S03 questions are approved, all ten definitions are active and the edited new guide is published at runtime v2. Four fresh current-family technical-QA results and guide validation pass. Chapter II has 44 approved authored questions. Sprint 15B.13E has deployed three S04 practice/review drafts after textbook and whole-bank comparison, with figures 28–29, four draft definitions and a separate guide. Implementation and independent main CI passed all five jobs (1,230 Node / 35 Chromium); exact migration, current-family QA, row preservation and image delivery are verified. Chapter II now has 47 authored questions: 44 approved and three drafts, leaving 145 un-authored. Owner review is pending, and S04 has five open planning slots. S03 has eight authored items; four planned slots remain unfilled pending a defensible source-backed expansion or a bank-plan decision. Counts do not certify distinct reasoning coverage or authorize padding. The audit confirms deployed Chapter I runtime coupling; 15B.12 authorized learning context and assessment policy is in progress: 15B.12A/B foundations and 15B.12C/D learning API, navigation/dashboard/analytics consumers are complete, deployed and verified; 15B.12E isolated connected acceptance and deployed parity are complete; authenticated governed switching remains gated on a second authorized release. Publication remains blocked by outcome/SME, assessment, content-QA, pilot and release gates. The Content Reviewer workspace has also been restructured into dedicated task pages (home, review queue, question bank, item workspace, curriculum coverage, pilot evidence and remediation guides) without changing the protected content-governance APIs or release gates.
+**Roadmap version:** 3.34
+**Updated:** 2026-10-10
+**Latest documentation checkpoint:** Current status, backlog, Sprint 12.5 closure and learning API documentation reconciled on 2026-10-10. The outstanding rollover-summary reconciliation is closed; Sprint 18.5 implementation remains planned. Current inventories and open gates are recorded once in the [project status register](project-status.md). Dated batch evidence below is preserved.
+**Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E await a second authorized release for live switching. Chapter II authoring continues, inactive and unallocated; 16–26 remain planned in the sequence below.
 
-This file is the canonical high-level sprint sequence. `docs/backlog.md` remains the detailed implementation checklist, and sprint-specific documents contain execution evidence and acceptance notes.
+This file defines the canonical high-level sprint scope and sequence. [Project status](project-status.md) is the sole current delivery/gate register; [backlog](backlog.md) is the detailed implementation checklist. The overview mirrors that register. Dated execution records, content counts and pending-review statements below are historical checkpoints; later evidenced dispositions supersede them without rewriting their original observations.
 
 ## Subject-Neutral Core and Subject-Aware Extension Invariant — 2026-09-30
 
@@ -157,9 +157,9 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 25 | Hybrid | AI boundaries/evaluation in chat; integrations, tests and telemetry in Work. |
 | 26 | Hybrid | National-scale governance/architecture in chat; scale/security implementation in Work. |
 
-### Sprint 11 current routing
+### Historical Sprint 11 routing
 
-For the current Sprint 11 state:
+Routing guidance before Sprint 11 technical handoff, preserved for history. That handoff and the later one-adult feasibility run are now complete; see the [status register](project-status.md):
 - remaining **11F–11H** QA/disposition execution defaults to **Work mode** using the frozen closure punch-list;
 - **Sprint 11 closes at technical handoff readiness**, not at completion of a human cohort;
 - the existing 11L pilot authorization/cohort gates remain fail-closed and are carried forward intact into **Sprint 11.5**;
@@ -195,7 +195,7 @@ For the current Sprint 11 state:
 | 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | ✅ | Complete. 12.5A–Z, lifecycle branches, persisted MCQ randomization, authenticated desktop QA and authenticated mobile learner/teacher QA at 390 px and 430 px all pass. Production Mobile browser QA #2 passed on GitHub head `0c56fa8`. |
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | 🟡 | 14A deployed. 14B account/provisioning/recovery controls, school-admin operations and teacher workspace operations are deployed. Institutional classroom creation, class-bound bulk invitations, optional secure join codes, dedicated active/archive views, and authorized classroom renaming are complete. The 14C school-scoped learner onboarding, exact-context session stamping and teacher roster/evidence views pass their controlled production checks. Teacher offboarding and final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 checks. Authenticated class/staff mutation-denial and teacher navigation/rename/offboarding action acceptance passed 141/141 checks, with read isolation passing 54/54 before and after. 14D school-wide analytics is complete: production acceptance passed 10/10 for both QA schools, including own-school reads, cross-school denials, aggregate-only payloads and authenticated board rendering. Multi-context switching remains blocked until a second authorized release exists and is the remaining Sprint 14 gate. |
-| 15 | Grade 7 Physics Expansion — Chapters II–VI | 🟡 | Chapter II S02–S09 bounded practice batches are human-reviewed: 56 approved questions, 66 active definitions and 17 published guides. Option B is selected: 16 questions, two per eight skills, passing 13/16 plus one correct per skill. Bank reconciliation leaves 40 practice + 32 diagnostic + 64 protected mastery questions toward 192. Source validity, protected separation, editorial/illustration, model, SME, pilot and release gates remain open. 15B.12 isolated acceptance is complete; live governed switching awaits a second authorized release. Chapters III–VI remain unmodeled. |
+| 15 | Grade 7 Physics Expansion — Chapters II–VI | 🟡 | Chapter II authoring continues under selected Option B. Current counts, remaining bank gaps and release gates are in the [status register](project-status.md#chapter-ii-inventory). 15B.12 isolated acceptance is complete; live governed switching awaits a second authorized release. Chapters III–VI remain unmodeled. |
 | 16 | Physics 7 Course Integration | ⏳ | Integrate the available Physics 7 course units through the same subject-neutral contracts and preserve unit-bound diagnostics/mastery with course-level aggregation. |
 | 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
 | 16.2 | Armenian Language 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Armenian Language 7 unit through the complete learner, teacher, governance and QA pipeline. |
@@ -204,7 +204,7 @@ For the current Sprint 11 state:
 | 16.5 | Student Dashboard Design & Usability Pass | ⏳ | Audit and redesign the shared student home, course/assessment entry points and progress views; review desktop/mobile Armenian mockups before implementation and pass browser/release acceptance before the school pilot. |
 | 17 | Grade 7 Four-Subject School MVP Pilot | ⏳ | Run the formal school-level MVP pilot only after Sprint 16.4 four-subject integration and Sprint 16.5 design/usability acceptance pass; technical QA may continue earlier. |
 | 18 | Production Hardening & Curriculum-Change Operations | ⏳ | Address scale, performance, security, observability, incident response, backup/restore, data-integrity checks, controlled rollout, safe curriculum-version migration/rollback and centralized Armenian localization architecture. |
-| 18.5 | Academic-Year Lifecycle, Rollover & Continuity | ⏳ | Implement school-admin-controlled, validated bulk rollover with persistent teacher/student accounts, new-year assignments and placements, historical preservation, recovery continuity and role-specific Armenian interfaces. |
+| 18.5 | Academic-Year Lifecycle, Rollover & Continuity | ⏳ | Approved design; implementation and acceptance pending. Headmaster approves progression and activates the year, then teachers create subject classrooms with fixed selectors; preserve account identity, eligibility checks and read-only history. Documentation reconciliation is complete. |
 | 19 | Public / Institutional Beta | ⏳ | Controlled external beta with repeatable school onboarding, support/escalation, tenant-isolated administration, controlled enrollment and explicit curriculum-release identity. |
 | 20 | Physics Grade Expansion — Physics 8–12 | ⏳ | Expand Physics vertically by mapping each grade to its applicable current programme rather than copying Physics 7 upward. |
 | 21 | Post-MVP Subject / Grade Expansion | ⏳ | Onboard the next priority subject/grade combination using the four-subject Grade 7 evidence model and verify repeatability beyond the MVP bundle. |
@@ -215,7 +215,7 @@ For the current Sprint 11 state:
 | 25 | Controlled AI Layer | ⏳ | Introduce provider-independent, bounded AI assistance while keeping official curriculum identity, grading, mastery evidence, permissions and progress deterministic/auditable. |
 | 26 | National-Scale Readiness | ⏳ | Prepare multi-school governance, large-scale operations, curriculum-update governance, regional/national administration, security and support for national deployment. |
 
-## Current sprint — Sprint 11
+## Historical delivery record — Sprint 11
 
 ### 11A — Item-bank architecture and exposure model
 
@@ -1033,7 +1033,7 @@ Production `start-learning-session` v22 matches repository source and still fixe
 
 Production readback on 2026-10-05 confirms **43 active Chapter II misconception definitions, zero drafts**, including all 40 John reviewed. This supersedes the earlier pending-review counts without changing historical inventory evidence or opening a curriculum release.
 
-15B.12A is read-only; 15B.12B adds the authoritative policy/session database foundation without switching current learning API or dashboard consumers. Existing learner evidence and release gates remain intact. 15B.12C now migrates every affected learning/help/retry/telemetry consumer and explicit legacy compatibility mapping, including all importing deployed Edge dependencies. 15B.12D now migrates student navigation, policy-driven status/instructions and original-contract role analytics. Full 15B.12 remains open for authorized live learner acceptance (15B.12E); complete isolated acceptance and deployed parity have passed. No platform-wide runtime migration completion is claimed. Chapter II assessment length, additional/supporting scoring, readiness/pass criteria and the 192-question option still need explicit decisions.
+15B.12A is read-only; 15B.12B adds the authoritative policy/session database foundation without switching current learning API or dashboard consumers. Existing learner evidence and release gates remain intact. 15B.12C now migrates every affected learning/help/retry/telemetry consumer and explicit legacy compatibility mapping, including all importing deployed Edge dependencies. 15B.12D now migrates student navigation, policy-driven status/instructions and original-contract role analytics. Full 15B.12 remains open for authorized live learner acceptance (15B.12E); complete isolated acceptance and deployed parity have passed. No platform-wide runtime migration completion is claimed. The subsequent [Option B decision](chapter-ii-option-b-and-s02-expansion.md) selected 16 Diagnostic and 16 Mastery questions, two per each of eight skills, passing 13/16 plus one correct per skill, and the 96/32/64 bank target. Numeric readiness/model parameters, governed bindings and release approval remain separate; the assessment-length/bank-option decision is no longer outstanding.
 
 **Platform-wide content requirement:** relevant source-textbook illustrations must accompany question finalization across all subjects, grades, chapters, curriculum releases and assessment modes, with source references, accuracy, mobile readability, Armenian alternative text and answer-disclosure checks. Any scope exception requires John's decision. [Illustration policy](question-illustration-policy.md).
 
@@ -1242,71 +1242,31 @@ Bad curriculum releases must be reversible without corrupting historical learner
 
 ## Sprint 18.5 — Academic-Year Lifecycle, Rollover & Continuity
 
-Implement the operational lifecycle whose data foundations are established in Sprint 14.
+**Status:** Approved design; implementation, migration execution and acceptance pending. The summary reconciliation is complete as of 2026-10-10. Current disposition is in the [status register](project-status.md); the [detailed rollover policy](academic-year-rollover-localization-policy.md), including final decisions dated 2026-10-05, governs implementation.
 
-Core invariant: **students persist; academic structures change; history is never overwritten.**
+Core invariant: **students and teachers keep their accounts; academic structures change; history is never overwritten.**
 
-Support:
+### Approved authority and order
 
-- Prepare → Preview → Validate → Confirm → Activate for a new academic year;
-- active-year operation followed by Close → Archive;
-- progression states: Promote, Repeat grade, Internal transfer/reassignment, Leaving institution, Pending/Unknown;
-- new class instances and teacher assignments for the new year rather than renaming old ones;
-- archived prior-year classrooms with preserved assessments, evidence, interventions and authorship;
-- teacher/classroom continuity and authorized handover when staff change;
-- validation for duplicate/missing enrollments, unassigned students, inactive/missing teachers, invalid transitions and missing curriculum versions;
-- auditable rollover identity, counts, exceptions and activation;
-- prior-year evidence available as prerequisite/contextual evidence without automatically satisfying new-year mastery;
-- mid-year membership changes represented as time-bounded historical memberships rather than overwritten class history.
+The School Admin / Headmaster authorizes teaching subjects, manages academic years, approves student progression and resolves exceptional conflicts/handover. Teachers create their own subject classrooms after year activation. Routine Headmaster allocation of teachers to grades/classes is not introduced. Students take no rollover action; annual progression does not use invitations intended for new arrivals or corrections.
 
-Inter-school transfer remains privacy/tenant controlled: a school losing membership must not see the learner's later activity elsewhere, and a receiving school does not automatically inherit another school's institutional records.
+1. Create the next year in **setup**. Teachers cannot create subject classrooms in a setup year.
+2. Prepare persistent school-class placements and class-continuation mappings; do not infer the school roster by unioning subject enrollments. Resolve Promote / Repeat / Internal transfer / Leaving / Pending outcomes with the Headmaster.
+3. Preview and validate the approved placement set and cutover dependencies using versioned, resumable and idempotent batches. Unresolved cases remain explicit. Missing target subject classrooms are a pending-delivery condition, not a prerequisite blocking year activation.
+4. Activate after the required placement/cutover checks. Atomically switch the school's current-year context and fence outgoing-year academic writes, moving outgoing records into read-only history. Do not archive accounts or create teacher subject classrooms during activation. Failed activation leaves the old current year intact.
+5. After activation, authorized teachers create subject classrooms with fixed subject, grade and **uppercase Latin A–E** selectors. Titles are generated; no custom names or letter-alias conversion. The system records the corresponding teacher assignment.
+6. Enroll only approved placements whose current membership, teacher subject authorization, classroom and published programme/release are all valid at commit time. Missing delivery dependencies remain pending; no forced active enrollment.
 
-### Approved rollover operating policy
+### Required implementation and acceptance
 
-The [Academic-Year Rollover, Continuity and Localization Policy](academic-year-rollover-localization-policy.md) is the canonical Sprint 18.5 implementation standard.
-
-Authority and automation:
-
-- the **School Admin / Headmaster is the sole role authorized to decide and confirm official student rollover**;
-- teachers receive new-year assignments and resulting rosters but do not approve promotion, repetition, transfer, departure or pending placement;
-- the system proposes ordinary promotion, validates dependencies and executes only the school admin's confirmed batch;
-- students take no rollover action and keep the same account, credentials and historical identity;
-- annual progression does not use student invitations; invitations remain for new arrivals, optional classes and corrections.
-
-Mandatory order:
-
-1. create the new academic year in non-public **setup** state; this need not happen months in advance;
-2. create new class instances and verify published programme/curriculum-release availability;
-3. assign existing teachers through year- and class-scoped `teacher_assignments` records without creating new teacher accounts;
-4. generate student progression proposals from the outgoing year;
-5. let the school admin resolve Promote / Repeat / Internal transfer / Leaving / Pending outcomes;
-6. validate duplicate/missing placements, class/programme readiness, teacher authorization and tenant boundaries;
-7. show a before/after preview and obtain explicit school-admin confirmation;
-8. create new year-specific student placements and enrollments through resumable, idempotent batches;
-9. activate the new year only after the approved valid set is reconciled;
-10. close and later archive the outgoing year without rewriting history.
-
-Implementation invariants:
-
-- each student's application is atomic; a large school rollover is resumable rather than one unbounded transaction;
-- retries cannot create duplicate placements, enrollments or assignments;
-- the current year/grade comes from a canonical year-specific student placement, never from a label such as `Ֆիզիկա 7`;
-- unpublished or missing target programmes produce a visible pending/blocked item and cannot be overridden into active delivery;
-- password/email loss never blocks progression because rollover uses the permanent internal identity;
-- inaccessible-email recovery updates the verified existing account, revokes prior sessions/tokens and never creates a duplicate learner;
-- `teacher_assignments` becomes authoritative through additive backfill, dual-read/write verification and controlled retirement of class-level teacher ownership;
-- historical classrooms are read-only and retain roster, assignment/authorship, evidence, interventions, curriculum release, analytics and audit history;
-- school-admin, teacher and student analytics resolve an explicit academic-year context and never mix years by default;
-- prior-year evidence may inform prerequisite context but cannot automatically satisfy new-year mastery;
-- all privileged operations are live-session checked, school-scoped, audited and tested for cross-school denial.
-
-Role surfaces:
-
-- School Admin: academic years, teacher assignments/handover, student rollover, unresolved cases, previous years/year-scoped analytics and audited account-recovery cases;
-- Teacher: current assignments/classes and authorized previous-year classes/analytics only; no rollover controls;
-- Student: prominent active academic year and grade, current classes, placement-pending notice when applicable and a dedicated read-only previous-years/learning-history page; no rollover page.
-
-All rollover navigation, controls, statuses, reports, errors, recovery messages, emails and notifications must pass the platform-wide natural Armenian localization policy before release.
+- Same-teacher retries are idempotent. Competing ordinary same-subject claims from different teachers are denied and sent to a dedicated Headmaster conflict-resolution page; co-teaching and split groups are outside this slice.
+- Each student's application is atomic; school-wide batches are resumable. Concurrency, revocation, stale preview and stale-tab writes must fail safely. Record unfinished assessment disposition without deleting or fabricating evidence.
+- `teacher_assignments` becomes authoritative through additive, reviewed legacy mappings and verified migration stages. Ambiguous class/teacher history stays unresolved until reviewed; do not invent mappings or authorship.
+- Persistent placement determines current year/grade; subject labels do not. Prior-year mastery informs context but does not automatically satisfy new-year mastery. History and analytics resolve explicit year, school and authorization scope.
+- Recovery restores the existing identity, revokes replaced credentials/sessions where required, and never creates duplicate learners. Rollover does not depend on possession of an old email/password.
+- Inter-school transfer does not grant either school unrestricted access to the other's institutional history or later learner activity.
+- Headmaster year/placement/conflict/recovery surfaces, teacher creation/current/archive views and student current-year/pending/history views require natural Armenian. Students receive no rollover controls.
+- Complete reviewed migration evidence, isolated concurrency/retry/cutover checks, authenticated two-school denials and role-specific browser acceptance before implementation closure. The approved policy alone is not a deployed feature.
 
 ## Sprint 19 — Public / Institutional Beta
 

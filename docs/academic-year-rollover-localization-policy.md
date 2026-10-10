@@ -8,6 +8,8 @@
 **Localization implementation:** Immediate cross-platform release policy; centralized localization architecture in Sprint 18  
 **Related later work:** Sprint 23 longitudinal learner profile; Sprint 24 advanced analytics
 
+**Current implementation status:** [Project status register](project-status.md). The roadmap summary was reconciled with this approved policy on 2026-10-10; implementation, migration execution and acceptance remain pending.
+
 ## Responsibility correction — 2026-10-05
 
 The Headmaster/School Admin authorizes teaching subjects and approves student progression. Teachers create their own subject classrooms, including new-year subject classrooms, within their authorized school, subject and academic-year context. The system records the corresponding teacher-to-classroom assignment during authorized creation. A `teacher_assignments` record does not imply that the Headmaster manually allocated that teacher to a grade/class.

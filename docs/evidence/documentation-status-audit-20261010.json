@@ -1,0 +1,174 @@
+{
+  "auditDate": "2026-10-10",
+  "scope": "Read-only documentation reconciliation; no runtime, content, release-gate or learner-state mutation.",
+  "repositorySourceCommit": "fca852d9b451eb4538c72d268757a7282d93fc5d",
+  "chapterII": {
+    "items": [
+      {
+        "total": 7,
+        "status": "draft",
+        "mastery": 1,
+        "practice": 6,
+        "diagnostic": 0,
+        "review_status": "needs_review"
+      },
+      {
+        "total": 89,
+        "status": "published",
+        "mastery": 13,
+        "practice": 73,
+        "diagnostic": 3,
+        "review_status": "approved"
+      }
+    ],
+    "guides": [
+      {
+        "total": 8,
+        "status": "draft"
+      },
+      {
+        "total": 32,
+        "status": "published"
+      }
+    ],
+    "releases": [
+      {
+        "status": "pilot",
+        "releaseKey": "physics7_u01_2026_08_14_pilot_r1",
+        "activatedAt": "2026-09-19T06:45:24.76571+00:00"
+      },
+      {
+        "status": "legacy",
+        "releaseKey": "physics7_u01_legacy_pre_11k",
+        "activatedAt": "2026-09-19T06:45:24.76571+00:00"
+      },
+      {
+        "status": "draft",
+        "releaseKey": "physics7_u01_u02_2026_08_14_candidate_r2",
+        "activatedAt": null
+      }
+    ],
+    "observedAt": "2026-10-10T08:57:52.844276+00:00",
+    "definitions": [
+      {
+        "total": 122,
+        "status": "active"
+      },
+      {
+        "total": 13,
+        "status": "draft"
+      }
+    ],
+    "formMemberships": 0,
+    "poolMemberships": 0
+  },
+  "sprint125MobileClosure": {
+    "runId": 35866315244,
+    "runNumber": 2,
+    "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/35866315244",
+    "headSha": "0c56fa8ba0bc79d88af85cf2583ceeeb2fb206d2",
+    "conclusion": "success",
+    "createdAt": "2026-09-23T13:19:55Z",
+    "jobId": 107198700361,
+    "widths": [
+      390,
+      430
+    ],
+    "roles": [
+      "learner",
+      "teacher"
+    ],
+    "verification": "Existing successful run re-read from GitHub API on 2026-10-10; tests were not rerun as part of documentation work."
+  },
+  "limitations": [
+    "Inventory is a dated aggregate observation, not a fresh per-item human/technical QA certification.",
+    "A passed historical mobile run establishes its bounded acceptance, not current production acceptance for every later change.",
+    "submit-answer bundle comparison is scoped to that function's twelve deployed files; other endpoint contracts were checked against repository source.",
+    "Release and empirical/SME gates are not changed by this audit."
+  ],
+  "submitAnswer": {
+    "version": 18,
+    "status": "ACTIVE",
+    "verifyJwt": true,
+    "files": [
+      {
+        "file": "submit-answer/index.ts",
+        "match": true,
+        "sha256": "d385a85ac187beaf6c2ffc9d894f89a412a9fc755f5528fd118a400f85d975b0"
+      },
+      {
+        "file": "_shared/governed-learning-runtime.mjs",
+        "match": true,
+        "sha256": "2039d2b7f76d0ad383f5e5855dc3ca82f6578f8e9cdc706db1c2e814cd10f229"
+      },
+      {
+        "file": "_shared/student-learning-context.mjs",
+        "match": true,
+        "sha256": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576"
+      },
+      {
+        "file": "_shared/assessment-policy.mjs",
+        "match": true,
+        "sha256": "d053c711f80cda7310d2c768320e677db62533f712bf71f246acbb3df947f5fe"
+      },
+      {
+        "file": "_shared/practice-diagnostic-gate.ts",
+        "match": true,
+        "sha256": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929"
+      },
+      {
+        "file": "_shared/auth.ts",
+        "match": true,
+        "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+      },
+      {
+        "file": "_shared/course-access.ts",
+        "match": true,
+        "sha256": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+      },
+      {
+        "file": "_shared/curriculum-release.ts",
+        "match": true,
+        "sha256": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+      },
+      {
+        "file": "_shared/learning-model.ts",
+        "match": true,
+        "sha256": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c"
+      },
+      {
+        "file": "_shared/recommendation-telemetry.ts",
+        "match": true,
+        "sha256": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e"
+      },
+      {
+        "file": "_shared/grading.ts",
+        "match": true,
+        "sha256": "0c317389ef634794a6a97f497caf0c5de672fbf7cecf2681753aca763a968f77"
+      },
+      {
+        "file": "_shared/recommendation.ts",
+        "match": true,
+        "sha256": "a55dddab18eb4ec72eb91d9da044c83987ac591b1767ddc14d28b11bd544a4d9"
+      }
+    ]
+  },
+  "externalSmeGateReadback": [
+    {
+      "observed_at": "2026-10-10 09:06:40.285287+00",
+      "release_key": "physics7_u01_2026_08_14_pilot_r1",
+      "release_status": "pilot",
+      "gate_code": "external_sme_approved",
+      "gate_status": "pending",
+      "checked_at": null
+    },
+    {
+      "observed_at": "2026-10-10 09:06:40.285287+00",
+      "release_key": "physics7_u01_u02_2026_08_14_candidate_r2",
+      "release_status": "draft",
+      "gate_code": "external_sme_approved",
+      "gate_status": "pending",
+      "checked_at": null
+    }
+  ]
+}

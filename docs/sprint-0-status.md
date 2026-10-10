@@ -1,5 +1,7 @@
 # Sprint 0 status
 
+**Historical checkpoint.** The tests and next milestone below describe Sprint 0 at the time, not current work. The initial authenticated learning loop was subsequently delivered; see the [current status register](project-status.md) and [Sprint 11 handoff](sprint-11-technical-handoff-report.md).
+
 ## Live infrastructure
 
 - GitHub repository: `johnvanesyan-arch/armenian-mastery-platform`

@@ -1,6 +1,8 @@
 # Sprint 12.5 Closure Report
 
-**Disposition:** Conditional — implementation complete through 12.5W; 12.5X–Y remains open for authenticated browser-matrix QA.
+**Disposition:** ✅ Complete — 12.5A–Z, closed 2026-09-23. [Current delivery and release gates](project-status.md).
+
+The September 22 sections below are historical checkpoints. Their pending gates were subsequently closed by the [final closure evidence](#final-closure--2026-09-23); the original observations are retained for chronology.
 
 ## Passed evidence
 
@@ -26,7 +28,7 @@
 | Exact Review repeats | 0 |
 | Pool-exhaustion events | 0 |
 
-## Open closure gate
+## Historical open closure gate — 2026-09-22
 
 Run authenticated learner and teacher workflows at desktop and mobile widths:
 
@@ -69,3 +71,12 @@ Two gates remain open and are not waived:
 - rendered required-Review/retry-unlock and final-failure states, because the available learner is already in the passed/optional-Review branch and no disposable seeded lifecycle account is available.
 
 Browser-extension metadata errors were excluded as harness noise. The application emits repeated Supabase `Multiple GoTrueClient instances` warnings; these did not break the tested workflows but remain a front-end cleanup item. Sprint 13 remains on hold.
+
+
+## Final closure — 2026-09-23
+
+The [detailed specification](sprint-12-5-universal-chapter-review-mastery-retry.md) records the subsequent required-Review/retry-unlock and terminal-failure closure, including satisfied Review requirements, no Attempt 4 and voluntary Review after final failure. The 12.5Z correction adds persisted MCQ presentation and server-side position resolution without rewriting historical attempts.
+
+Authenticated **[Mobile browser QA #2](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/35866315244)** passed on `0c56fa8ba0bc79d88af85cf2583ceeeb2fb206d2` on 2026-09-23. The learner/teacher projects cover **390 px and 430 px** in [Playwright configuration](../playwright.config.js); job `107198700361` (`mobile-production-smoke`) passed. [CI #691](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/35866225521) also passed for that commit. The existing Sprint 12.5 Notion closure and roadmap record A–Z complete, including assessment-integrity browser acceptance.
+
+This closes the former Sprint 12.5 browser gate. It does not approve external Physics SME review or promote the Chapter I pilot release. The historical GitHub run was re-read on 2026-10-10 during documentation reconciliation, not rerun or relabeled as fresh current-production QA. [Captured audit evidence](evidence/documentation-status-audit-20261010.json).
