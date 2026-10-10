@@ -1,8 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 3.35
+**Roadmap version:** 3.36
 **Updated:** 2026-10-10
-**Latest content checkpoint:** [Batch 09](chapter-ii-assessment-batch-09.md) adds nine drafts while unfinished human review is deferred. Current combined counts and gates are in the [project status register](project-status.md). The documentation/rollover-summary reconciliation remains complete; dated earlier snapshots are preserved.
+**Latest content checkpoint:** [Batch 10](chapter-ii-assessment-batch-10.md) adds six practice drafts after eight-candidate assessment. New question authoring pauses for the combined human review. Current counts and gates are in the [project status register](project-status.md). The documentation/rollover-summary reconciliation remains complete; dated earlier snapshots are preserved.
 **Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E await a second authorized release for live switching. Chapter II authoring continues, inactive and unallocated; 16–26 remain planned in the sequence below.
 
 This file defines the canonical high-level sprint scope and sequence. [Project status](project-status.md) is the sole current delivery/gate register; [backlog](backlog.md) is the detailed implementation checklist. The overview mirrors that register. Dated execution records, content counts and pending-review statements below are historical checkpoints; later evidenced dispositions supersede them without rewriting their original observations.
@@ -1778,3 +1778,16 @@ The 2026-10-10 10:13:16 UTC observation is **105 authored = 89 content-approved 
 Review together on [Questions](https://www.haiedu.am/content-review.html), [Guides](https://www.haiedu.am/content-guides.html) and [Misconceptions](https://www.haiedu.am/content-misconceptions.html), filtering Chapter II and pending/draft status. Existing S09 versioned editorial follow-ups remain; the rollover-summary reconciliation stays closed. No schema/runtime/API/auth/model/scoring or learner-delivery change is included.
 
 [Comparison and individual links](chapter-ii-assessment-batch-09.md) · [Production evidence](evidence/sprint-15b13-assessment-batch-09-20261010.json) · [Full version inventory](evidence/sprint-15b13-assessment-batch-09-inventory-20261010.json).
+
+
+### Sprint 15B.13Z — Final batch before combined human review
+
+**Status: staged; new question authoring paused for combined review.** The owner authorized one more batch while the prior queue remained unfinished. Eight candidates were assessed across S05–S09 against the fresh current/historical bank, related skills, guide exposure and all 28 within-batch pairs. Six intentional practice variants were retained; two proposed protected candidates were omitted for complete-chain overlap. No existing question is dropped, and no independent new reasoning coverage is claimed for these practice variants.
+
+Six exact v1 draft/needs-review questions, six draft guides and eight draft definitions are staged. Immutable snapshots/mappings and current-family technical QA match the exact specifications. Replays of the exact deployed evaluator and guide helper pass with zero errors/warnings; they are not authenticated live Edge/browser acceptance. The saved private archive and reachable comparison commit preceded guarded staging. Existing rows were preserved across 15 additive and 23 unchanged tables.
+
+At 2026-10-10 10:49:36 UTC, Chapter II has **111 authored = 89 content-approved + 22 pending**, with 93 practice, three Diagnostic and 15 protected Mastery questions. The combined queue is **22 questions, 22 guides and 36 definitions**. Eighty-one questions remain unauthored toward192: three practice, 29 Diagnostic and 49 Mastery. These are planning gaps, not an instruction to pad or proof that every slot is defensible.
+
+Review together on [Questions](https://www.haiedu.am/content-review.html), [Guides](https://www.haiedu.am/content-guides.html) and [Misconceptions](https://www.haiedu.am/content-misconceptions.html), filtered to Chapter II and pending/draft status across S03–S09. Current counts and gates belong to the [status register](project-status.md). Existing approvals, S09 versioned editorial follow-ups, the closed rollover-summary reconciliation and all SME/pilot/assessment/release gates remain intact. Chapter II remains inactive and unallocated. No schema/runtime/API/auth/model/scoring change is included.
+
+[Comparison and individual links](chapter-ii-assessment-batch-10.md) · [Production evidence](evidence/sprint-15b13-assessment-batch-10-20261010.json) · [Full version inventory](evidence/sprint-15b13-assessment-batch-10-inventory-20261010.json).

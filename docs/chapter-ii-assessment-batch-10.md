@@ -31,6 +31,40 @@ Before staging, Chapter II has **105 questions: 89 content-approved and 16 draft
 
 The rollback rehearsal restored all 38 fingerprints. All six item specifications passed a local replay of the exact deployed `manage-content-quality` v11 evaluator, and all six guides passed the exact deployed `manage-remediation-guides` v10 validation helper, with zero errors/warnings. The exact source hashes match the unchanged repository files: evaluator `b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154`; guide helper `aad5dc785f66863b30cf0d2abedd53cfc7d9006c93c2c07e463215f6122e1142`. These are local evaluator/helper replays, not authenticated live Edge/browser acceptance or semantic-diversity certification.
 
-At this comparison checkpoint, committed staging is still pending. The next transaction must reread and match all corpus guards, keep the candidate release inactive, add only version-1 draft/needs-review content and draft guides/definitions, and preserve every existing row. The subsequent production record will bind actual IDs, immutable snapshots and current-version technical QA. No human actor or approval may be synthesized.
+The reachable comparison commit [`b3a8f9ec1b148055dd1144215ff7a16c784e36f3`](https://github.com/johnvanesyan-arch/armenian-mastery-platform/commit/b3a8f9ec1b148055dd1144215ff7a16c784e36f3) preceded committed staging at **2026-10-10 10:48:52 UTC**. The transaction reread and matched all 38 full-row guards, added only version-1 draft/needs-review content and draft guides/definitions, and enforced preservation of every existing row. Exact committed readback verifies all six specifications, options, answer keys, mappings and immutable snapshots. Six actor-null technical QA records pass for the current item versions and family fingerprints. Final guards show 15 additive tables and 23 unchanged. No human actor or approval is synthesized. [Production verification](evidence/sprint-15b13-assessment-batch-10-20261010.json).
 
 The 192-question target, Option B assessment lengths, model/readiness parameters, SME, pilot and release gates remain unchanged. A successful technical check does not establish pedagogical completion. Existing S09 versioned editorial follow-ups remain in the [status register](project-status.md).
+
+
+## Combined site review and authoring pause
+
+At **2026-10-10 10:49:36 UTC**, Chapter II has **111 questions: 89 content-approved and 22 awaiting review** (20 practice and two protected Mastery). The new batch contributes six practice questions, six guides and eight definitions. The combined pending queue is **22 questions, 22 guides and 36 definitions**.
+
+Review on [Questions](https://www.haiedu.am/content-review.html), [Guides](https://www.haiedu.am/content-guides.html) and [Misconceptions](https://www.haiedu.am/content-misconceptions.html), filtered to Chapter II and pending/draft status across S03–S09. Each question, guide and definition retains its separate approval workflow. Prior approvals can be revisited in the [question bank](https://www.haiedu.am/content-bank.html). No bulk approval or archive review is required.
+
+| Question | Batch | Review |
+| --- | --- | --- |
+| S03-I11 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=32f414e8-8314-4170-bde3-4ad0b2baa0b7&from=review) |
+| S03-I12 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=a51e0daa-29fb-4b10-9af9-7781bcb1b4d6&from=review) |
+| S04-I11 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=1a1381ed-2057-465d-9b58-6e9daf751371&from=review) |
+| S04-I12 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=da23af4d-82f2-4ff7-8995-55557d5d88ae&from=review) |
+| S05-I09 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=1542181b-9d51-46de-a7b5-f6bc427ab5e6&from=review) |
+| S05-I10 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=f9dde3cf-3703-4a9c-ac3a-b4193fa66934&from=review) |
+| S05-I11 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=5cccb35d-7b21-41b2-a061-94472720af92&from=review) |
+| S05-I12 | 10 — new | [Open](https://www.haiedu.am/content-item.html?id=64674d16-230e-4cda-8e7d-c2f9aa007c55&from=review) |
+| S06-I09 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=42261bfb-ba95-4cd6-990a-317e03fd4d2f&from=review) |
+| S06-I10 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=b7a72302-2699-4f38-8b44-fd3ac0b8b5f0&from=review) |
+| S06-I11 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=75fb859b-a462-436c-ab72-2ca343048b28&from=review) |
+| S06-I12 | 10 — new | [Open](https://www.haiedu.am/content-item.html?id=0bcc4b12-fc57-4dce-8b54-267efd8c32a4&from=review) |
+| S07-I08 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=ac51d638-13c3-4565-86c4-4f3f90deb68a&from=review) |
+| S07-I09 | 10 — new | [Open](https://www.haiedu.am/content-item.html?id=d85164ea-aa4a-4e18-bca4-9f103974b69d&from=review) |
+| S08-I09 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=b341debb-09c5-48ea-bd2e-e19f4a740f5f&from=review) |
+| S08-I10 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=bc2e3194-c172-4a1b-81c2-bf287083d6cd&from=review) |
+| S08-I11 | 10 — new | [Open](https://www.haiedu.am/content-item.html?id=dd7a8937-01a5-4727-a9de-2ae1fcd3c1ce&from=review) |
+| S08-I12 | 10 — new | [Open](https://www.haiedu.am/content-item.html?id=8c7c7f63-7f54-4876-90b0-fae7f2285abe&from=review) |
+| S08-M02 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=f5abddad-64f2-4749-b57a-133aeb576bc8&from=review) |
+| S09-I11 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=cc54fda8-cb50-42de-8d52-87a5234a405e&from=review) |
+| S09-I12 | 10 — new | [Open](https://www.haiedu.am/content-item.html?id=7a354b10-618f-47c7-910c-3cd1bf5acbf4&from=review) |
+| S09-M05 | 08/09 — still pending | [Open](https://www.haiedu.am/content-item.html?id=f64d45bc-25a9-42cf-b65c-288a42cb8174&from=review) |
+
+New question authoring pauses here for the accumulated review. The bank has93 practice, three Diagnostic and15 Mastery questions; remaining targets are three practice,29 Diagnostic and49 Mastery (81total). The candidate release is still draft, with no activation timestamp and no ChapterII pool/form memberships. Content approval does not activate the chapter or close assessment, SME, pilot or release gates.
