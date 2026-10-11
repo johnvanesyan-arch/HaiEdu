@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-11 · **Slice:** 15B.13AA · **State:** eleven draft questions staged; human review pending.
 
+**Later disposition — 2026-10-12 (Asia/Yerevan):** the owner completed these reviews and authorized [batch 12](chapter-ii-assessment-batch-12.md). Production readback at 2026-10-11 20:14:08 UTC confirmed all 122 then-current Chapter II question versions approved, all 57 guides published and all 166 definitions active. The original checkpoint below remains historical; current counts and gates are in the [status register](project-status.md).
+
 This is a versioned Physics 7 Chapter II content extension under the existing subject-neutral authoring contract. The owner completed the accumulated review and authorized larger batches. The readback at 18:42:57 UTC confirms **111 published/content-approved questions, 54 published guides and 158 active misconception definitions**, with no pending Chapter II content. All 22 previously pending questions have persisted review records. Current human edits, immutable revisions and published guide changes are part of the new comparison corpus; old approvals are preserved.
 
 ## Batch decision
