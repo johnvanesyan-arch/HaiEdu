@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "incidentDate": "2026-10-11",
+  "scope": "shared reviewer dashboard; all subjects and grades",
+  "implementationCommit": "dac47ab3a3df7e191c4afc3ea981c76fcb83ec29",
+  "ci": {
+    "runId": 38168422318,
+    "runNumber": 1346,
+    "nodeTests": 1247,
+    "browserTests": 65,
+    "jobs": [
+      {
+        "name": "institutional-concurrency",
+        "conclusion": "success"
+      },
+      {
+        "name": "role-layout-browser",
+        "conclusion": "success"
+      },
+      {
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "name": "phase3-postgres-17",
+        "conclusion": "success"
+      },
+      {
+        "name": "Platform release checks",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "productionObservation": {
+    "itemCode": "PHY7-U02-S02-M02",
+    "savedVersion": 2,
+    "passingQaRuns": 4,
+    "currentVersionPassingQaRuns": 2,
+    "lastQaAt": "2026-10-11T19:16:42.37088Z",
+    "before": {
+      "qaDisplayed": "not_run",
+      "approveEnabled": false
+    },
+    "after": {
+      "qaDisplayed": "passed_v2",
+      "approveEnabled": true
+    },
+    "action": "refresh_only",
+    "approvalSubmitted": false,
+    "qaRerun": false,
+    "readbackAt": "2026-10-11T19:40:42.713801Z",
+    "reviewStatus": "needs_review",
+    "reviewCount": 0,
+    "screenshot": "reviewer-approval-enabled-20261011.jpg"
+  },
+  "transport": {
+    "bankItems": 382,
+    "qaRows": 654,
+    "previousRestUrlLengthRange": [
+      15055,
+      15070
+    ],
+    "repeatedRestAttempts": 4,
+    "exactTransportError": "not_retained_by_v6",
+    "oversizedHeaders": "probable_trigger_not_independently_confirmed",
+    "after": [
+      {
+        "date": "Sun, 11 Oct 2026 19:39:11 GMT",
+        "duration_ms": "3844",
+        "path": "/functions/v1/get-content-quality-dashboard",
+        "status": "200",
+        "version": "7"
+      }
+    ]
+  },
+  "deployment": {
+    "function": "get-content-quality-dashboard",
+    "version": 7,
+    "status": "ACTIVE",
+    "verifyJwt": true,
+    "bundleMatchesRepository": true,
+    "authHelperUnchanged": true,
+    "entrySha256": "2e0b8930a0114cd1a1828d408394aeb326c5a18732a1f0db456873e727a663a9",
+    "authSha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+  },
+  "boundaries": {
+    "productionContentWrites": 0,
+    "releaseChanges": 0,
+    "approvalMutationAcceptance": "isolated tests only; no owner decision impersonated",
+    "frontend": "modified files and merged release stamp checked after merge",
+    "vercelManagementAccess": "project scope denied; persistent Deployment Check not re-attested"
+  }
+}
