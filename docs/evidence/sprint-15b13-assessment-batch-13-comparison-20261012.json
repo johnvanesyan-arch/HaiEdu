@@ -1,0 +1,1057 @@
+{
+  "policy": "haiedu-whole-skill-review-v1",
+  "sprint": "15B.13AC",
+  "date": "2026-10-12 Asia/Yerevan",
+  "observedAt": "2026-10-11T21:13:39.362623+00:00",
+  "author": "Codex automated author; human content/definition and SME approval pending",
+  "timing": "Readable sanitized comparison and private exact archive recorded before committed staging.",
+  "scope": {
+    "method": "Complete28-table production corpus bracketed by identical38-table counts/hashes. Fresh current Chapter II bank and relevant historical items/guides reviewed; prior comparison evidence carried only for byte-unchanged rows. All protected banks accessible.",
+    "priorComparisonCommit": "a1a1d0c00e21a009af3fbd1e7c42eb219e700adb",
+    "priorReadableMatrix": "docs/chapter-ii-assessment-batch-12-comparison.md",
+    "currentItems": 391,
+    "immutableVersions": 264,
+    "priorPoststageItems": 391,
+    "priorPoststageVersions": 263,
+    "newOrChangedCurrentItems": 9,
+    "newImmutableVersions": 1,
+    "changedContent": "Only S02-D02 has a new current v2; other eight changes are saved review/publication state. All nine current prompts/options were freshly included.",
+    "chapterIIApprovedBaseline": 131,
+    "guideBaseline": 57,
+    "activeDefinitionBaseline": 178,
+    "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "sourceVerification": "Original textbook hash verified. Entire Chapter II §§7–13 and Chapter I measurement extract read. No source figure is referenced by a staged task; exact verbal premises supply the authored situations. Source Fig.28 full-row measurement cannot be reused to depict a different measured boundary.",
+    "equivalentSkillReview": "Fresh Chapter I S08–S10 current banks and current/historical guides; related Chapter I experiment-design findings carried from unchanged prior corpus for omitted C11. S02/S03 share the official particle-structure outcome and both banks are included.",
+    "historyReview": "All264 immutable versions frozen; relevant S04/S06/S09 item diffs, S04/S06/S08/S09 and U01S08–10 template guide diffs, plus all6 unique relevant U01 skill-guide historical contents inspected.",
+    "protectedSeparation": "Five protected candidates have no new learner guides. Related learner scaffolds acknowledged, including interval counting, offset cancellation and qualitative thermal contact; none supplies the complete new task with the same premises and response demand. No pool/form allocations or activation."
+  },
+  "candidates": [
+    {
+      "candidate": "B13-C01",
+      "itemCode": null,
+      "skill": "S02",
+      "bank": "diagnostic",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Infer material state from qualitative compressibility",
+      "rationale": "Omitted: existing items already assess the complete gap/compression classification and the liquid alternative.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7, printed pp.24–26",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        "PHY7-U02-S02-I05",
+        "PHY7-U02-S02-I11",
+        "PHY7-U02-S02-D01"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C02",
+      "itemCode": null,
+      "skill": "S02",
+      "bank": "mastery_check",
+      "disposition": "source_scope_omit",
+      "abstractDemand": "Predict an exact pressure relationship",
+      "rationale": "Omitted: the quantitative relation and required thermal constraints are outside the taught source.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7, printed pp.24–26",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        "PHY7-U02-S02-I05",
+        "PHY7-U02-S02-M01",
+        "PHY7-U02-S02-M02"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C03",
+      "itemCode": null,
+      "skill": "S03",
+      "bank": "diagnostic",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Distinguish molecular grouping from aggregate composition",
+      "rationale": "Omitted: the same grouping-versus-inventory judgment is already explicitly assessed.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, printed pp.27–28",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        "PHY7-U02-S03-D01",
+        "PHY7-U02-S03-I09",
+        "PHY7-U02-S03-I11",
+        "PHY7-U02-S03-M01",
+        "PHY7-U02-S03-M02"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C04",
+      "itemCode": null,
+      "skill": "S03",
+      "bank": "mastery_check",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Construct a maximum number of complete component models",
+      "rationale": "Omitted: changes only the input inventory of an existing protected limiting-component task.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, printed pp.27–28",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        "PHY7-U02-S03-M04"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C05",
+      "itemCode": "PHY7-U02-S04-D02",
+      "skill": "S04",
+      "bank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Determine what a bounded aggregate measurement includes",
+      "rationale": "Requires establishing which repeated dimensions lie inside the stated measurement boundaries before normalizing. Existing full-row tasks supply different boundaries; the related scale guide teaches interval counting but does not work this geometry.",
+      "source": "Ֆիզիկա 7, Մելիքյան և Մաիլյան, 2023, §9, printed p.29, row measurement method and Fig.28; authored centre-to-centre measurement with explicit contact/alignment premises.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "nearest": [
+        "PHY7-U02-S04-I04",
+        "PHY7-U02-S04-I08",
+        "PHY7-U02-S04-M02",
+        "PHY7-U01-S08-I01",
+        "PHY7-U01-S10-I06"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C06",
+      "itemCode": null,
+      "skill": "S04",
+      "bank": "mastery_check",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Normalize an existing film calculation by a given layer count",
+      "rationale": "Omitted: a familiar preliminary division does not create a new full reasoning chain.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §13, printed p.40",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "nearest": [
+        "PHY7-U02-S04-M01",
+        "PHY7-U02-S04-I11"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C07",
+      "itemCode": null,
+      "skill": "S05",
+      "bank": "diagnostic",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Judge whether endpoint information determines a path quantity",
+      "rationale": "Omitted: path versus net change and missing path information are already jointly covered.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §9, printed p.30; §11, printed pp.34–35",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "nearest": [
+        "PHY7-U02-S05-I07",
+        "PHY7-U02-S05-I12",
+        "PHY7-U02-S05-M02",
+        "PHY7-U02-S05-D01"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C08",
+      "itemCode": null,
+      "skill": "S05",
+      "bank": "mastery_check",
+      "disposition": "source_scope_omit",
+      "abstractDemand": "Assign an exact probability to a random-motion event",
+      "rationale": "Omitted: no probability distribution or quantitative stochastic procedure is taught.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §9, printed pp.29–30",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "nearest": [
+        "PHY7-U02-S05-I02",
+        "PHY7-U02-S05-I07",
+        "PHY7-U02-S05-I11"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C09",
+      "itemCode": "PHY7-U02-S06-D02",
+      "skill": "S06",
+      "bank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Evaluate a boundary intervention after a process has occurred",
+      "rationale": "Tests the temporal scope of an intervention after redistribution. Earlier tasks prevent the process beforehand, open access, or preserve components during it.",
+      "source": "Ֆիզիկա 7, Մելիքյան և Մաիլյան, 2023, §10, printed pp.30–33, reciprocal interpenetration and continuous molecular motion; authored post-mixing partition intervention.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "nearest": [
+        "PHY7-U02-S06-I06",
+        "PHY7-U02-S06-I09",
+        "PHY7-U02-S06-I12",
+        "PHY7-U02-S06-M01",
+        "PHY7-U02-S05-I11"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C10",
+      "itemCode": "PHY7-U02-S06-M02",
+      "skill": "S06",
+      "bank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Compose an indirect permitted route while respecting a closed boundary",
+      "rationale": "Requires combining allowed transitions through an intermediate region. Prior tasks have a single opening or explicitly no alternative path; the intermediate material is distinguished from an impermeable boundary.",
+      "source": "Ֆիզիկա 7, Մելիքյան և Մաիլյան, 2023, §10, printed pp.30–33, diffusion through available interparticle space; authored three-vessel network with explicit passable and impermeable boundaries.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "nearest": [
+        "PHY7-U02-S06-I06",
+        "PHY7-U02-S06-I12",
+        "PHY7-U02-S06-D01",
+        "PHY7-U02-S02-D01"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C11",
+      "itemCode": null,
+      "skill": "S07",
+      "bank": "mastery_check",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Select a controlled comparison from multiple trials",
+      "rationale": "Omitted: the existing protected state/temperature confound and experiment-design prerequisites already cover the demand.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, printed pp.31–33",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        "PHY7-U02-S07-M01",
+        "PHY7-U02-S07-I02",
+        "PHY7-U02-S07-I10"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C12",
+      "itemCode": null,
+      "skill": "S07",
+      "bank": "diagnostic",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Evaluate an extrapolation from a single process observation",
+      "rationale": "Omitted: the same limitation on linear extrapolation is already an explicit current item.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, printed p.31",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        "PHY7-U02-S07-I07"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C13",
+      "itemCode": null,
+      "skill": "S08",
+      "bank": "diagnostic",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Check the material-identity condition on a thermal inference",
+      "rationale": "Omitted: existing tasks already assess this condition and inference limit.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, printed pp.33–35",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "nearest": [
+        "PHY7-U02-S08-I04",
+        "PHY7-U02-S08-I08",
+        "PHY7-U02-S08-D01"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C14",
+      "itemCode": null,
+      "skill": "S08",
+      "bank": "mastery_check",
+      "disposition": "source_scope_omit",
+      "abstractDemand": "Calculate an exact equilibrium temperature for different materials",
+      "rationale": "Omitted: the required material and energy model is not taught in this source.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, printed pp.33–34",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "nearest": [
+        "PHY7-U02-S08-I03",
+        "PHY7-U02-S08-M01",
+        "PHY7-U02-S08-M02"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C15",
+      "itemCode": "PHY7-U02-S09-D04",
+      "skill": "S09",
+      "bank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Separate a measurable change from an unidentified absolute reading",
+      "rationale": "Known increments with an unknown origin create a different information structure from prior missing-scale or fully calibrated tasks. Related offset cancellation is acknowledged as a prerequisite, not credited as a separate outcome.",
+      "source": "Ֆիզիկա 7, Մելիքյան և Մաիլյան, 2023, §12, printed pp.36–38, calibrated intervals and temperature readings; Chapter I §5 scale-reading background; authored instrument with known step but unknown origin.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)",
+      "nearest": [
+        "PHY7-U02-S09-D03",
+        "PHY7-U02-S09-I06",
+        "PHY7-U02-S09-I12",
+        "PHY7-U02-S09-M01",
+        "PHY7-U01-S08-I06"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    },
+    {
+      "candidate": "B13-C16",
+      "itemCode": "PHY7-U02-S09-M07",
+      "skill": "S09",
+      "bank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Evaluate the temporal scope of a valid settled measurement",
+      "rationale": "Distinguishes a final measurement from the initial state of a sample altered during measurement. Prior sensor-settling work holds the sample state fixed; thermal-contact work supports the inference but does not validate this measurement record.",
+      "source": "Ֆիզիկա 7, Մելիքյան և Մաիլյան, 2023, §11 printed pp.33–34, thermal contact; §12 printed pp.36–37, thermometer measures its current thermal state. Authored experiment explicitly states sample cooling and common final temperature.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)",
+      "nearest": [
+        "PHY7-U02-S09-D02",
+        "PHY7-U02-S09-I01",
+        "PHY7-U02-S09-I09",
+        "PHY7-U02-S08-M01",
+        "PHY7-U02-S08-M02"
+      ],
+      "illustration": "Self-contained verbal task; no image is referenced or needed.",
+      "protection": "No new learner guide or assessment allocation; exact stimuli, values, keys and solutions are private."
+    }
+  ],
+  "pairs": [
+    {
+      "a": "B13-C01",
+      "b": "B13-C02",
+      "finding": "Qualitative compressibility classification is already covered and omitted; it does not license the quantitative pressure rule proposed by the other omitted lead.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C03",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus distinguish molecular grouping from aggregate composition. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C04",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus construct a maximum number of complete component models. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C05",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus determine what a bounded aggregate measurement includes. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C06",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus normalize an existing film calculation by a given layer count. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C07",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus judge whether endpoint information determines a path quantity. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C08",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus assign an exact probability to a random-motion event. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C09",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus evaluate a boundary intervention after a process has occurred. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C10",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus compose an indirect permitted route while respecting a closed boundary. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C11",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C12",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C13",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C14",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C15",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C01",
+      "b": "B13-C16",
+      "finding": "Compared demands: infer material state from qualitative compressibility versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C03",
+      "finding": "Compared demands: predict an exact pressure relationship versus distinguish molecular grouping from aggregate composition. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C04",
+      "finding": "Compared demands: predict an exact pressure relationship versus construct a maximum number of complete component models. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C05",
+      "finding": "Compared demands: predict an exact pressure relationship versus determine what a bounded aggregate measurement includes. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C06",
+      "finding": "Compared demands: predict an exact pressure relationship versus normalize an existing film calculation by a given layer count. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C07",
+      "finding": "Compared demands: predict an exact pressure relationship versus judge whether endpoint information determines a path quantity. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C08",
+      "finding": "Compared demands: predict an exact pressure relationship versus assign an exact probability to a random-motion event. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C09",
+      "finding": "Compared demands: predict an exact pressure relationship versus evaluate a boundary intervention after a process has occurred. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C10",
+      "finding": "Compared demands: predict an exact pressure relationship versus compose an indirect permitted route while respecting a closed boundary. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C11",
+      "finding": "Compared demands: predict an exact pressure relationship versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C12",
+      "finding": "Compared demands: predict an exact pressure relationship versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C13",
+      "finding": "Compared demands: predict an exact pressure relationship versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C14",
+      "finding": "Compared demands: predict an exact pressure relationship versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C15",
+      "finding": "Compared demands: predict an exact pressure relationship versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C02",
+      "b": "B13-C16",
+      "finding": "Compared demands: predict an exact pressure relationship versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C04",
+      "finding": "Both omitted leads involve composition bookkeeping. One interprets fixed groups and the other optimizes assembly with leftovers; each already has its own existing bank counterpart.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C05",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus determine what a bounded aggregate measurement includes. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C06",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus normalize an existing film calculation by a given layer count. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C07",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus judge whether endpoint information determines a path quantity. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C08",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus assign an exact probability to a random-motion event. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C09",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus evaluate a boundary intervention after a process has occurred. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C10",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus compose an indirect permitted route while respecting a closed boundary. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C11",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C12",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C13",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C14",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C15",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C03",
+      "b": "B13-C16",
+      "finding": "Compared demands: distinguish molecular grouping from aggregate composition versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C05",
+      "finding": "Compared demands: construct a maximum number of complete component models versus determine what a bounded aggregate measurement includes. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C06",
+      "finding": "Compared demands: construct a maximum number of complete component models versus normalize an existing film calculation by a given layer count. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C07",
+      "finding": "Compared demands: construct a maximum number of complete component models versus judge whether endpoint information determines a path quantity. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C08",
+      "finding": "Compared demands: construct a maximum number of complete component models versus assign an exact probability to a random-motion event. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C09",
+      "finding": "Compared demands: construct a maximum number of complete component models versus evaluate a boundary intervention after a process has occurred. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C10",
+      "finding": "Compared demands: construct a maximum number of complete component models versus compose an indirect permitted route while respecting a closed boundary. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C11",
+      "finding": "Compared demands: construct a maximum number of complete component models versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C12",
+      "finding": "Compared demands: construct a maximum number of complete component models versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C13",
+      "finding": "Compared demands: construct a maximum number of complete component models versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C14",
+      "finding": "Compared demands: construct a maximum number of complete component models versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C15",
+      "finding": "Compared demands: construct a maximum number of complete component models versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C04",
+      "b": "B13-C16",
+      "finding": "Compared demands: construct a maximum number of complete component models versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C06",
+      "finding": "C05 changes what the measured segment contains, requiring a boundary-to-geometry inference. C06 merely adds a stated normalization to the already protected film procedure and is omitted.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C07",
+      "finding": "Compared demands: determine what a bounded aggregate measurement includes versus judge whether endpoint information determines a path quantity. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C08",
+      "finding": "Compared demands: determine what a bounded aggregate measurement includes versus assign an exact probability to a random-motion event. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C09",
+      "finding": "Measurement boundaries determine an included aggregate in C05; a later physical boundary limits future transitions in C09. The common word boundary does not supply a shared full solution.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C10",
+      "finding": "C05 derives the included repeated dimensions of one measured segment. C10 composes allowed transitions in a network; it does not measure or normalize a geometric aggregate.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C11",
+      "finding": "Compared demands: determine what a bounded aggregate measurement includes versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C12",
+      "finding": "Compared demands: determine what a bounded aggregate measurement includes versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C13",
+      "finding": "Compared demands: determine what a bounded aggregate measurement includes versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C14",
+      "finding": "Compared demands: determine what a bounded aggregate measurement includes versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C15",
+      "finding": "Both use interval reasoning. C05 first derives how many object dimensions the stated endpoints include; C15 is given the increment and asks which quantity remains identifiable without an origin. The shared counting scaffold is explicitly acknowledged.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    },
+    {
+      "a": "B13-C05",
+      "b": "B13-C16",
+      "finding": "C05 checks spatial meaning before normalizing a measurement. C16 checks the time/state to which a correct measurement applies; no dimensional aggregation is required.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C07",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus judge whether endpoint information determines a path quantity. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C08",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus assign an exact probability to a random-motion event. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C09",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus evaluate a boundary intervention after a process has occurred. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C10",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus compose an indirect permitted route while respecting a closed boundary. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C11",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C12",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C13",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C14",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C15",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C06",
+      "b": "B13-C16",
+      "finding": "Compared demands: normalize an existing film calculation by a given layer count versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C07",
+      "b": "B13-C08",
+      "finding": "The geometric sufficiency lead is already covered; the probability lead needs an untaught distribution. Neither becomes new coverage simply by referencing random motion.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C07",
+      "b": "B13-C09",
+      "finding": "Compared demands: judge whether endpoint information determines a path quantity versus evaluate a boundary intervention after a process has occurred. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C07",
+      "b": "B13-C10",
+      "finding": "Compared demands: judge whether endpoint information determines a path quantity versus compose an indirect permitted route while respecting a closed boundary. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C07",
+      "b": "B13-C11",
+      "finding": "Compared demands: judge whether endpoint information determines a path quantity versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C07",
+      "b": "B13-C12",
+      "finding": "Compared demands: judge whether endpoint information determines a path quantity versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C07",
+      "b": "B13-C13",
+      "finding": "Compared demands: judge whether endpoint information determines a path quantity versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C07",
+      "b": "B13-C14",
+      "finding": "Compared demands: judge whether endpoint information determines a path quantity versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C07",
+      "b": "B13-C15",
+      "finding": "C07 repeats existing missing-path-information tasks. C15 supplies enough information for a change while leaving an absolute reading unknown; its positive/negative identifiability distinction is recorded against the thermometer and scale banks.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C07",
+      "b": "B13-C16",
+      "finding": "Compared demands: judge whether endpoint information determines a path quantity versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C08",
+      "b": "B13-C09",
+      "finding": "Compared demands: assign an exact probability to a random-motion event versus evaluate a boundary intervention after a process has occurred. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C08",
+      "b": "B13-C10",
+      "finding": "Compared demands: assign an exact probability to a random-motion event versus compose an indirect permitted route while respecting a closed boundary. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C08",
+      "b": "B13-C11",
+      "finding": "Compared demands: assign an exact probability to a random-motion event versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C08",
+      "b": "B13-C12",
+      "finding": "Compared demands: assign an exact probability to a random-motion event versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C08",
+      "b": "B13-C13",
+      "finding": "Compared demands: assign an exact probability to a random-motion event versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C08",
+      "b": "B13-C14",
+      "finding": "Compared demands: assign an exact probability to a random-motion event versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C08",
+      "b": "B13-C15",
+      "finding": "Compared demands: assign an exact probability to a random-motion event versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C08",
+      "b": "B13-C16",
+      "finding": "Compared demands: assign an exact probability to a random-motion event versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C09",
+      "b": "B13-C10",
+      "finding": "Same-skill retained pair: a post-process intervention versus reachability through a composite path. C09 cannot reconstruct an earlier distribution; C10 evaluates a permitted route without denying the stated closed boundary.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    },
+    {
+      "a": "B13-C09",
+      "b": "B13-C11",
+      "finding": "Compared demands: evaluate a boundary intervention after a process has occurred versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C09",
+      "b": "B13-C12",
+      "finding": "Compared demands: evaluate a boundary intervention after a process has occurred versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C09",
+      "b": "B13-C13",
+      "finding": "Compared demands: evaluate a boundary intervention after a process has occurred versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C09",
+      "b": "B13-C14",
+      "finding": "Compared demands: evaluate a boundary intervention after a process has occurred versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C09",
+      "b": "B13-C15",
+      "finding": "Both limit conclusions from stated information, but one evaluates a physical intervention over time and the other distinguishes a change from an absolute scale reading. Their complete premises and inference steps differ.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    },
+    {
+      "a": "B13-C09",
+      "b": "B13-C16",
+      "finding": "Both distinguish earlier and later states. C09 evaluates whether a boundary action sorts an existing distribution; C16 evaluates the state described by a valid instrument reading after measurement has altered the sample. Neither full task is a wording variant of the other.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    },
+    {
+      "a": "B13-C10",
+      "b": "B13-C11",
+      "finding": "Compared demands: compose an indirect permitted route while respecting a closed boundary versus select a controlled comparison from multiple trials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C10",
+      "b": "B13-C12",
+      "finding": "Compared demands: compose an indirect permitted route while respecting a closed boundary versus evaluate an extrapolation from a single process observation. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C10",
+      "b": "B13-C13",
+      "finding": "Compared demands: compose an indirect permitted route while respecting a closed boundary versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C10",
+      "b": "B13-C14",
+      "finding": "Compared demands: compose an indirect permitted route while respecting a closed boundary versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C10",
+      "b": "B13-C15",
+      "finding": "Composing permitted transitions in C10 does not establish measurement origin/increment identifiability in C15. The network and calibrated-scale demands are different.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    },
+    {
+      "a": "B13-C10",
+      "b": "B13-C16",
+      "finding": "Permitted-route reasoning in C10 is separate from the temporal validity of an instrument record in C16. Shared particle/thermal prerequisites do not duplicate the full inference.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    },
+    {
+      "a": "B13-C11",
+      "b": "B13-C12",
+      "finding": "Controlled comparison and extrapolation are distinct evidence judgments, but both have existing full-chain counterparts and are omitted.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C11",
+      "b": "B13-C13",
+      "finding": "Compared demands: select a controlled comparison from multiple trials versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C11",
+      "b": "B13-C14",
+      "finding": "Compared demands: select a controlled comparison from multiple trials versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C11",
+      "b": "B13-C15",
+      "finding": "Compared demands: select a controlled comparison from multiple trials versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C11",
+      "b": "B13-C16",
+      "finding": "Compared demands: select a controlled comparison from multiple trials versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C12",
+      "b": "B13-C13",
+      "finding": "Compared demands: evaluate an extrapolation from a single process observation versus check the material-identity condition on a thermal inference. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C12",
+      "b": "B13-C14",
+      "finding": "Compared demands: evaluate an extrapolation from a single process observation versus calculate an exact equilibrium temperature for different materials. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C12",
+      "b": "B13-C15",
+      "finding": "Compared demands: evaluate an extrapolation from a single process observation versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C12",
+      "b": "B13-C16",
+      "finding": "Compared demands: evaluate an extrapolation from a single process observation versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C13",
+      "b": "B13-C14",
+      "finding": "The existing material-identity inference condition does not provide the absent quantitative energy model. The former lead is redundant and the latter is source-unsupported.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C13",
+      "b": "B13-C15",
+      "finding": "Compared demands: check the material-identity condition on a thermal inference versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C13",
+      "b": "B13-C16",
+      "finding": "Compared demands: check the material-identity condition on a thermal inference versus evaluate the temporal scope of a valid settled measurement. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C14",
+      "b": "B13-C15",
+      "finding": "Compared demands: calculate an exact equilibrium temperature for different materials versus separate a measurable change from an unidentified absolute reading. These use different represented quantities, evidence or allowed operations. Shared particle, arithmetic or evidence-evaluation prerequisites are not counted as independent outcomes.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C14",
+      "b": "B13-C16",
+      "finding": "C14 asks for an exact untaught equilibrium calculation and is omitted. C16 supplies the final state and observed direction of sample change; it needs no material coefficient or exact initial-temperature recovery.",
+      "decision": "At least one proposal is omitted; this pair does not add two staged tasks."
+    },
+    {
+      "a": "B13-C15",
+      "b": "B13-C16",
+      "finding": "Same-skill retained pair: incomplete spatial calibration versus a fully valid final reading assigned to the wrong time/state. One concerns missing origin information; the other concerns a sample that changed during measurement.",
+      "decision": "Different complete demands; shared prerequisites and protected-source comparisons are recorded."
+    }
+  ],
+  "remainingIfStaged": {
+    "total": 136,
+    "practice": 96,
+    "diagnostic": 13,
+    "mastery": 27,
+    "unauthored": 56,
+    "remainingDiagnostic": 19,
+    "remainingMastery": 37
+  },
+  "shortfallBoundary": "Only5 of16 leads add defensible tasks in this screen. This is not proof of universal source exhaustion. Repeated S07 screens have added no new protected demand. Obtain owner decision on a coverage/feasibility checkpoint before further count-led expansion. No target, assessment length, scoring or release gate is changed."
+}
