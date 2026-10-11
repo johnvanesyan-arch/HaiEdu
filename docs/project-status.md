@@ -1,6 +1,6 @@
 # Project status register
 
-**Updated:** 2026-10-11 · **Documentation reconciliation:** complete · **Roadmap:** 3.38
+**Updated:** 2026-10-12 (Asia/Yerevan) · **Documentation reconciliation:** complete · **Roadmap:** 3.39
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
@@ -18,7 +18,7 @@ Completion describes the stated scope only. Technical completion, owner-approved
 | 13 | Closed for sequencing by owner; production release gate open | Owner directed Sprint 14 to proceed, as recorded in the [roadmap stage ledger](sprint-roadmap.md). Chapter I remains `pilot`; external Physics SME approval remains pending. Sequencing closure does not confer standards-verified production status. |
 | 14 | In progress — one live acceptance dependency remains | [Read isolation](sprint-14-authenticated-isolation.md): 54/54; [action acceptance](sprint-14-authenticated-actions.md): 141/141; [14D analytics](sprint-14d-school-performance-analytics.md): 10/10. Live switching between two authorized learning contexts remains blocked until a second release is authorized. |
 | 15A | Complete — content/hint authoring foundation | [Implementation and acceptance](sprint-15a-content-hint-authoring.md). This does not approve every subsequently authored question or guide. |
-| 15B / 15 | In progress — Chapter II authoring; Chapters III–VI not yet modeled | [Option B decision](chapter-ii-option-b-and-s02-expansion.md), [latest batch checkpoint](chapter-ii-assessment-batch-11.md), dated inventory below. Chapter II is draft, inactive and unallocated. |
+| 15B / 15 | In progress — Chapter II authoring; Chapters III–VI not yet modeled | [Option B decision](chapter-ii-option-b-and-s02-expansion.md), [latest batch checkpoint](chapter-ii-assessment-batch-12.md), dated inventory below. Chapter II is draft, inactive and unallocated. |
 | 15B.12 | A–D deployed; E isolated acceptance complete; live E open | [Acceptance boundary](sprint-15b12e-acceptance.md) and [API contract](api-contract.md). Governed runtime/navigation/analytics and deployed parity are verified; live learner switching shares Sprint 14's second-release dependency. |
 | 16, 16.1–16.4 | Planned | Physics course integration, three other subject slices, then four-subject integration; scope in the [roadmap](sprint-roadmap.md). |
 | 16.5 | Planned — required before 17 | Student dashboard design/usability acceptance remains separate from the completed 10.5 redesign. |
@@ -29,22 +29,22 @@ Completion describes the stated scope only. Technical completion, owner-approved
 
 ## Reviewer approval repair — 2026-10-11
 
-The owner reported that **Հաստատել** remained unavailable after QA. Live records confirm four passing runs for S02-M02, including two on saved v2; no approval request or review was recorded in the incident window. The shared dashboard issued whole-bank UUID filters around 15 KB, retried its related reads four times, and ignored their errors. The correction bounds requests, paginates complete results and fails visibly instead of treating unavailable QA as missing. The editor preserves refresh errors after QA/save/approval. [Incident, regression and deployment evidence](reviewer-approval-repair-20261011.md). The server correction is deployed as dashboard v7 with exact bundle readback and JWT verification enabled. Signed-in production observation confirmed the same saved v2 changed from “QA not run” / disabled approval to “QA passed” / enabled approval after one refresh, without rerunning QA or approving the item. Required CI #1346 passed all five jobs, including 1,247 Node and 65 native Chromium tests. The frontend error-display correction is included in this release; its final production commit stamp is checked after merge. No question is approved by this repair.
+The owner reported that **Հաստատել** remained unavailable after QA. Live records confirm four passing runs for S02-M02, including two on saved v2; no approval request or review was recorded in the incident window. The shared dashboard issued whole-bank UUID filters around 15 KB, retried its related reads four times, and ignored their errors. The correction bounds requests, paginates complete results and fails visibly instead of treating unavailable QA as missing. The editor preserves refresh errors after QA/save/approval. [Incident, regression and deployment evidence](reviewer-approval-repair-20261011.md). The server correction is deployed as dashboard v7 with exact bundle readback and JWT verification enabled. Signed-in production observation confirmed the same saved v2 changed from “QA not run” / disabled approval to “QA passed” / enabled approval after one refresh, without rerunning QA or approving the item. Final CI #1347 passed all five jobs, including 1,247 Node and 65 native Chromium tests. Production served merged commit `7036dd00e9136053d9cc8f2766fa923895498f20`; both changed frontend files matched that source byte for byte, and main-branch CI passed all five jobs. No question was approved by the repair; the owner's subsequent reviews are verified below.
 
 ## Chapter II inventory
 
-Read-only production observation: **2026-10-11 18:59:18 UTC**. This replaces current-summary counts, not dated batch snapshots. Approval totals can change as the reviewer continues work. [Captured batch 11 evidence](evidence/sprint-15b13-assessment-batch-11-20261011.json). The owner completed the accumulated review and authorized larger batches. The fresh baseline confirmed all 111 prior questions approved, all 54 prior guides published, and all 158 prior definitions active. Batch 11 assessed 16 candidates and staged 11; their human review remains pending.
+Read-only production observation: **2026-10-11 20:35:36 UTC** (2026-10-12 in Asia/Yerevan). This replaces current-summary counts, not dated batch snapshots. Approval totals can change as the reviewer continues work. [Captured batch 12 evidence](evidence/sprint-15b13-assessment-batch-12-20261012.json). The owner completed all prior reviews and authorized the next large batch. The fresh baseline confirmed all 122 prior questions approved on their current versions, all 57 guides published, and all 166 prior definitions active. Batch 12 assessed 16 candidates across S02–S09 and staged nine protected questions with 12 draft definitions; their human review remains pending.
 
 | Purpose | Authored | Published / content-approved | Draft / needs review | Target | Unauthored |
 | --- | ---: | ---: | ---: | ---: | ---: |
-| Practice / Review | 96 | 93 | 3 | 96 | 0 |
-| Diagnostic | 6 | 3 | 3 | 32 | 26 |
-| Protected Mastery | 20 | 15 | 5 | 64 | 44 |
-| Total | 122 | 111 | 11 | 192 | 70 |
+| Practice / Review | 96 | 96 | 0 | 96 | 0 |
+| Diagnostic | 10 | 6 | 4 | 32 | 22 |
+| Protected Mastery | 25 | 20 | 5 | 64 | 39 |
+| Total | 131 | 122 | 9 | 192 | 61 |
 
-There are **158 active and 8 draft misconception definitions**, **54 published and 3 draft guides**, and **zero assessment-pool or form memberships** for Chapter II. The candidate release `physics7_u01_u02_2026_08_14_candidate_r2` is `draft` with no activation timestamp. Publication is content approval, not learner delivery eligibility.
+There are **166 active and 12 draft misconception definitions**, **57 published guides and no draft guides**, and **zero assessment-pool or form memberships** for Chapter II. The candidate release `physics7_u01_u02_2026_08_14_candidate_r2` is `draft` with no activation timestamp. Publication is content approval, not learner delivery eligibility.
 
-The practice planning count is now authored, including declared intentional variants; it is not 96 independent reasoning paths. Remaining authoring concerns protected Diagnostic/Mastery coverage. The 70-question planning shortfall does not establish feasibility: if source-supported distinct coverage runs out, record the defensible inventory and obtain the owner's bank-plan decision before further expansion. Do not pad or weaken delivery/scoring/release gates.
+The practice planning count is authored and approved, including declared intentional variants; it is not 96 independent reasoning paths. Remaining authoring concerns protected Diagnostic/Mastery coverage. The 61-question planning shortfall does not establish feasibility: if source-supported distinct coverage runs out, record the defensible inventory and obtain the owner's bank-plan decision before further expansion. Do not pad or weaken delivery/scoring/release gates.
 
 Selected Option B delivers **16 Diagnostic and 16 Mastery questions**, two per each of eight skills. Mastery requires **13/16 and at least one correct per skill**. All eight skills participate in initial readiness. The 192-question bank target is not a per-student session length or proof that sufficient distinct, source-supported questions exist. Numeric readiness/model parameters, ordinary governed bindings and release approval remain separate.
 
