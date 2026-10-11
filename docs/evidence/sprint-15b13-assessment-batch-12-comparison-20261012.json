@@ -1,0 +1,1093 @@
+{
+  "policy": "haiedu-whole-skill-review-v1",
+  "sprint": "15B.13AB",
+  "date": "2026-10-12 Asia/Yerevan",
+  "observedAt": "2026-10-11T20:14:10.986523+00:00",
+  "author": "Codex automated author; human question/definition and SME approval remain pending",
+  "timing": "Readable sanitized comparison and source rationale are committed before committed production staging. Private exact reconstruction evidence is saved before that comparison commit.",
+  "scope": {
+    "method": "Complete28-table production snapshots bracketed by matching38-table count/hash guards. Whole current/historical bank and current/historical teaching guides available; no protected-content access gap. Prior reviewed corpus carried only for byte-unchanged rows, with explicit changed-row inventory and fresh nearest-task review.",
+    "priorComparisonCommit": "82cfd0066cac66d988860f94c5f28102d61ae402",
+    "priorReadableMatrix": "docs/chapter-ii-assessment-batch-11-comparison.md",
+    "currentItems": 382,
+    "immutableVersions": 254,
+    "priorItems": 371,
+    "priorVersions": 241,
+    "allCurrentStatuses": "published",
+    "newOrChangedCurrentItems": 11,
+    "newImmutableVersions": 13,
+    "chapterIIApprovedBaseline": 122,
+    "guideBaseline": 57,
+    "activeDefinitionBaseline": 166,
+    "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "sourcePageVerification": "Exact PDF fingerprint checked; text of §§7–13 and Chapter I measurement reference read; rendered printed27,29,37,40 inspected. Every retained task supplies its own verbal premises; no image is referenced.",
+    "equivalentSkillReview": "Chapter I S04/S05 observation and controlled experimentation; S07 conversions; S08 scale reading; S09 error/indirect measurement; S10 displacement/sheet-thickness families compared. The generic controlled-comparison lead was omitted. S02/S03 share the official particle-structure outcome and were compared across both banks.",
+    "protectedSeparation": "Nine retained tasks are protected candidates with no new learner guide. No full solution is placed in public reports; all current and historical guide content is part of the corpus. No pool/form memberships or release activation are authorized."
+  },
+  "candidates": [
+    {
+      "candidate": "B12-C01",
+      "itemCode": "PHY7-U02-S02-D02",
+      "skill": "S02",
+      "bank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Distinguish represented component volumes from the bulk quantity being modeled",
+      "rationale": "Separates a bulk physical quantity from the sum of its represented material parts. The nearest model questions explain gaps or changes in spacing; equivalent earlier measurement tasks subtract quantities with a different physical meaning.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7 և §13, խնդիր 2, տպագիր էջեր 25–26, 40։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        "S02-D01",
+        "S02-I05",
+        "S02-I08",
+        "S02-I12",
+        "S02-T02-PARTICLE-OBSERVATIONS",
+        "U01-S10 volume-displacement families"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C02",
+      "itemCode": null,
+      "skill": "S02",
+      "bank": "mastery_check",
+      "disposition": "source_scope_omit",
+      "abstractDemand": "Predict an unintroduced quantitative gas relationship",
+      "rationale": "Omitted: the proposed quantitative rule is outside the taught source. A model constraint and qualitative thermal trend do not provide that missing law.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7, §11–12, տպագիր էջեր24–26,33–38",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        "S02-M02",
+        "S02-M01",
+        "S08-I12"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C03",
+      "itemCode": null,
+      "skill": "S03",
+      "bank": "diagnostic",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Test an inventory against whole-unit composition constraints",
+      "rationale": "Omitted: the same complete composition bookkeeping is already assessed in a protected item. Replacing a solvable inventory by an inconsistent one is insufficient additional coverage.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, տպագիր էջեր27–29",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        "S03-M02",
+        "S03-M01",
+        "S03-I06"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C04",
+      "itemCode": "PHY7-U02-S03-M04",
+      "skill": "S03",
+      "bank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Construct the maximum number of complete models under component constraints",
+      "rationale": "Moves from interpreting an existing complete inventory to planning feasible assembly from finite components with permitted leftovers. The composition rule is taught; the activity is explicitly a game model, not a chemical procedure.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, մոլեկուլի կազմ և կառուցողական համեմատություն, տպագիր էջեր 27–28։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        "S03-I03",
+        "S03-I06",
+        "S03-I08",
+        "S03-M01",
+        "S03-M02",
+        "S03-M03"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C05",
+      "itemCode": "PHY7-U02-S04-D01",
+      "skill": "S04",
+      "bank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Recover an unknown image scale from a co-represented reference",
+      "rationale": "Establishes a shared scale from independent reference information before measuring a different target. Prior tasks supply the scale, calculate a planned enlargement, or correct a changed label; their guides do not work this complete calibration chain.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §9, լուսանկարից մասնիկի չափի որոշում, տպագիր էջեր 29–30։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "nearest": [
+        "S04-I06",
+        "S04-I10",
+        "S04-M03",
+        "S04-M04",
+        "S04-T02-SIZE-MEASUREMENT",
+        "S04-T08-PRACTICE-EXTENSION",
+        "U01-S08 scale-reading families"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C06",
+      "itemCode": "PHY7-U02-S04-M05",
+      "skill": "S04",
+      "bank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Isolate a measurable component after removing a known contribution",
+      "rationale": "An independent known contribution makes an otherwise mixed measurement identifiable. The nearest protected task lacks that information and changes the experimental arrangement; this one resolves the residual quantity directly.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §9, շարքերի եղանակ, տպագիր էջեր 29–30։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "nearest": [
+        "S04-I04",
+        "S04-I08",
+        "S04-I11",
+        "S04-I12",
+        "S04-M02",
+        "U01-S10 sheet-thickness families"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C07",
+      "itemCode": "PHY7-U02-S05-D01",
+      "skill": "S05",
+      "bank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Evaluate the information carried by a trajectory event count",
+      "rationale": "Tests whether an event count establishes a geometric total. Prior tasks identify trajectory shape or aggregate supplied lengths; they do not use event count as the proposed substitute for missing lengths.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10–11, բախումներ և բեկյալ հետագիծ, տպագիր էջեր 30, 34–35։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "nearest": [
+        "S05-I02",
+        "S05-I03",
+        "S05-I09",
+        "S05-I12",
+        "S05-M02",
+        "S05-T06-PRACTICE-EXTENSION",
+        "S05-T09-PRACTICE-EXTENSION"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C08",
+      "itemCode": null,
+      "skill": "S05",
+      "bank": "mastery_check",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Prepend a familiar transformation to an existing protected calculation",
+      "rationale": "Omitted: the decisive aggregate calculation and error patterns are already protected. A familiar preliminary normalization does not establish an independent full chain.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §9, §11, տպագիր էջեր29–30,34–35",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "nearest": [
+        "S05-M02",
+        "S04-M04",
+        "S04-I06",
+        "S05-I12"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C09",
+      "itemCode": "PHY7-U02-S06-M01",
+      "skill": "S06",
+      "bank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Validate a spatial mixing record against component and process constraints",
+      "rationale": "Jointly evaluates preservation of each component and the stated spatial process. Earlier tasks track one net flow or preserve identity qualitatively; none validates this complete multi-component spatial record.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, փոխադարձ ներթափանցման մասնիկային մոդել, տպագիր էջեր 30–32։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "nearest": [
+        "S06-I09",
+        "S06-I11",
+        "S06-I12",
+        "S05-I08",
+        "S05-I11",
+        "S03-M02",
+        "S06-T05-PRACTICE-EXTENSION"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C10",
+      "itemCode": null,
+      "skill": "S06",
+      "bank": "mastery_check",
+      "disposition": "source_scope_omit",
+      "abstractDemand": "Infer transport through a new selective mechanism",
+      "rationale": "Omitted: a real selective transport model cannot be inferred from a size comparison alone. Its mechanism and quantitative assumptions are outside the source; a simple closed-boundary alternative is already practiced.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, §10, տպագիր էջեր28,30–33",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "nearest": [
+        "S06-I06",
+        "S06-I12",
+        "S06-D01",
+        "S04-I02"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C11",
+      "itemCode": null,
+      "skill": "S07",
+      "bank": "diagnostic",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Infer a material category from uncontrolled process durations",
+      "rationale": "Omitted: repeats the protected limitation on attributing observed duration to one condition. The qualitative textbook comparison does not identify unspecified cases uniquely.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր32–33",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        "S07-M01",
+        "S07-I02",
+        "S07-I07",
+        "S07-I12"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C12",
+      "itemCode": null,
+      "skill": "S07",
+      "bank": "mastery_check",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Select controlled comparisons in a multi-condition table",
+      "rationale": "Omitted: equivalent experimental-design practice and the existing protected state/temperature comparison already cover the decisive reasoning. A new table arrangement is insufficient novelty.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10 և §3, տպագիր էջեր13–15,32–33",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        "S07-M01",
+        "U01-S05-T-HYPOTHESIS-TEST-PARALLEL",
+        "S08-I02"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C13",
+      "itemCode": "PHY7-U02-S08-M04",
+      "skill": "S08",
+      "bank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Predict thermal change after inferring an initial state ordering",
+      "rationale": "Coordinates an inverse inference from the taught same-material relation with a prediction of contact behavior. Existing protected tasks supply the state order or the observed changes and ask different consequences or bounds.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, ջերմային հպում և բնորոշ արագություն, տպագիր էջեր 33–35։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "nearest": [
+        "S08-I09",
+        "S08-M01",
+        "S08-M02",
+        "S08-M03",
+        "S08-T08-PRACTICE-EXTENSION"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C14",
+      "itemCode": null,
+      "skill": "S08",
+      "bank": "diagnostic",
+      "disposition": "source_scope_omit",
+      "abstractDemand": "Estimate a physical state from a small numerical sample",
+      "rationale": "Omitted: the sampling estimator and quantitative state relation are not taught. Individual variation does not license an arbitrary representative estimate.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, տպագիր էջեր34–35",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "nearest": [
+        "S08-D01",
+        "S08-I05",
+        "S08-I07",
+        "S08-I12"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C15",
+      "itemCode": "PHY7-U02-S09-D03",
+      "skill": "S09",
+      "bank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Assess whether partial calibration information is sufficient",
+      "rationale": "The origin is established but the independent conversion information is missing. Earlier cases have no recoverable scale or supply the full calibration. The task isolates the remaining identifiability issue.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §12, սանդղակի երկու հենակետ և աստիճանի սահմանում, տպագիր էջեր 36–38։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)",
+      "nearest": [
+        "S09-I06",
+        "S09-I12",
+        "S09-M02",
+        "S09-M04",
+        "S09-T02-THERMOMETER-LIMITS-AND-READOUT",
+        "U01-S08 scale-division families"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    },
+    {
+      "candidate": "B12-C16",
+      "itemCode": "PHY7-U02-S09-M06",
+      "skill": "S09",
+      "bank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Validate a proposed correction against an independent additional check",
+      "rationale": "Tests an endpoint-fitting correction against all supplied reference evidence. The nearest protected item explicitly guarantees the assumption needed for its correction; this one examines whether that assumption survives an independent check.",
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §12, սանդղակի հենակետեր և դրանց միջև բաժանումներ; §4, չափման ճշտություն, տպագիր էջեր 17–18, 37–38։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)",
+      "nearest": [
+        "S09-M04",
+        "S09-M02",
+        "U01-S04-I02",
+        "U01-S09 measurement-error families"
+      ],
+      "illustration": "Self-contained verbal task; no missing image.",
+      "protection": "No new learner guide or assessment allocation; exact protected stimuli and solutions remain in private evidence."
+    }
+  ],
+  "pairs": [
+    {
+      "a": "B12-C01",
+      "b": "B12-C02",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus predict an unintroduced quantitative gas relationship. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C03",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus test an inventory against whole-unit composition constraints. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C04",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus construct the maximum number of complete models under component constraints. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C05",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus recover an unknown image scale from a co-represented reference. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C06",
+      "finding": "Both require whole/part reasoning. C01 tests the physical meaning of a bulk modeled quantity; C06 isolates a residual identical group using an independently known contribution and then normalizes it. Shared subtraction is not treated as a separate learning outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C07",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus evaluate the information carried by a trajectory event count. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C08",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus prepend a familiar transformation to an existing protected calculation. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C09",
+      "finding": "Both use accounting, but C01 decomposes a modeled bulk quantity while C09 validates preservation of separate identities across spatial regions and a process condition. Neither full stimulus or response chain solves the other.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C10",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus infer transport through a new selective mechanism. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C11",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C12",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C13",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C14",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C15",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C01",
+      "b": "B12-C16",
+      "finding": "Compared demands: distinguish represented component volumes from the bulk quantity being modeled versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C03",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus test an inventory against whole-unit composition constraints. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C04",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus construct the maximum number of complete models under component constraints. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C05",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus recover an unknown image scale from a co-represented reference. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C06",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus isolate a measurable component after removing a known contribution. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C07",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus evaluate the information carried by a trajectory event count. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C08",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus prepend a familiar transformation to an existing protected calculation. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C09",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus validate a spatial mixing record against component and process constraints. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C10",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus infer transport through a new selective mechanism. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C11",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C12",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C13",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C14",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C15",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C02",
+      "b": "B12-C16",
+      "finding": "Compared demands: predict an unintroduced quantitative gas relationship versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C04",
+      "finding": "C03 repeats reconstruction of a complete existing inventory and is omitted. C04 requires a feasible construction limit with unused components permitted, so the unknown and governing constraint differ.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C05",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus recover an unknown image scale from a co-represented reference. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C06",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus isolate a measurable component after removing a known contribution. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C07",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus evaluate the information carried by a trajectory event count. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C08",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus prepend a familiar transformation to an existing protected calculation. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C09",
+      "finding": "Composition of already complete molecular units differs from identities distributed across regions. C03 is omitted; its existing bookkeeping cannot by itself establish the process condition in C09.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C10",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus infer transport through a new selective mechanism. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C11",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C12",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C13",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C14",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C15",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C03",
+      "b": "B12-C16",
+      "finding": "Compared demands: test an inventory against whole-unit composition constraints versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C05",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus recover an unknown image scale from a co-represented reference. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C06",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus isolate a measurable component after removing a known contribution. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C07",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus evaluate the information carried by a trajectory event count. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C08",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus prepend a familiar transformation to an existing protected calculation. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C09",
+      "finding": "Finite components in C04 are assembled into permitted representations. C09 prohibits identity changes and validates redistribution. The counting prerequisite is shared, but the legal transformations and response demands differ.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C10",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus infer transport through a new selective mechanism. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C11",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C12",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C13",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C14",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C15",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C04",
+      "b": "B12-C16",
+      "finding": "Compared demands: construct the maximum number of complete models under component constraints versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C06",
+      "finding": "Same-skill retained pair: reference-based image calibration versus residual-length isolation. One solves for a scale from an independent reference, the other for an unknown contribution after accounting for a known group.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C07",
+      "finding": "Compared demands: recover an unknown image scale from a co-represented reference versus evaluate the information carried by a trajectory event count. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C08",
+      "finding": "C08 merely prepends an already-practiced normalization to an existing full protected calculation and is omitted. C05 has an unknown reference calibration itself as the consequential new inference.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C09",
+      "finding": "Compared demands: recover an unknown image scale from a co-represented reference versus validate a spatial mixing record against component and process constraints. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C10",
+      "finding": "Compared demands: recover an unknown image scale from a co-represented reference versus infer transport through a new selective mechanism. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C11",
+      "finding": "Compared demands: recover an unknown image scale from a co-represented reference versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C12",
+      "finding": "Compared demands: recover an unknown image scale from a co-represented reference versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C13",
+      "finding": "Compared demands: recover an unknown image scale from a co-represented reference versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C14",
+      "finding": "Compared demands: recover an unknown image scale from a co-represented reference versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C15",
+      "finding": "Both concern a conversion relationship, but C05 provides independent reference information that establishes it; C15 evaluates a case missing an independent part of calibration. Neither is a changed-number copy of the other.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C05",
+      "b": "B12-C16",
+      "finding": "Reference-based recovery of a target measurement versus falsification of a proposed correction using independent checks. C05 grants uniform scaling; C16 tests consistency with a correction rather than granting it.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C07",
+      "finding": "Compared demands: isolate a measurable component after removing a known contribution versus evaluate the information carried by a trajectory event count. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C08",
+      "finding": "Residual accounting is distinct from the previously assessed trajectory aggregation. The latter is omitted despite its preliminary representation change.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C09",
+      "finding": "Compared demands: isolate a measurable component after removing a known contribution versus validate a spatial mixing record against component and process constraints. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C10",
+      "finding": "Compared demands: isolate a measurable component after removing a known contribution versus infer transport through a new selective mechanism. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C11",
+      "finding": "Compared demands: isolate a measurable component after removing a known contribution versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C12",
+      "finding": "Compared demands: isolate a measurable component after removing a known contribution versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C13",
+      "finding": "Compared demands: isolate a measurable component after removing a known contribution versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C14",
+      "finding": "Compared demands: isolate a measurable component after removing a known contribution versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C15",
+      "finding": "Compared demands: isolate a measurable component after removing a known contribution versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C06",
+      "b": "B12-C16",
+      "finding": "Compared demands: isolate a measurable component after removing a known contribution versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C07",
+      "b": "B12-C08",
+      "finding": "C07 evaluates whether a proposed observable contains enough geometric information. C08 supplies the needed lengths and repeats an existing numerical procedure, so it is omitted.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C07",
+      "b": "B12-C09",
+      "finding": "Compared demands: evaluate the information carried by a trajectory event count versus validate a spatial mixing record against component and process constraints. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C07",
+      "b": "B12-C10",
+      "finding": "Compared demands: evaluate the information carried by a trajectory event count versus infer transport through a new selective mechanism. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C07",
+      "b": "B12-C11",
+      "finding": "Compared demands: evaluate the information carried by a trajectory event count versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C07",
+      "b": "B12-C12",
+      "finding": "Compared demands: evaluate the information carried by a trajectory event count versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C07",
+      "b": "B12-C13",
+      "finding": "Compared demands: evaluate the information carried by a trajectory event count versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C07",
+      "b": "B12-C14",
+      "finding": "Both question sufficiency, but C07 stays within a taught geometric representation; C14 requires an unintroduced statistical estimator and physical law and is omitted.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C07",
+      "b": "B12-C15",
+      "finding": "Compared demands: evaluate the information carried by a trajectory event count versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C07",
+      "b": "B12-C16",
+      "finding": "Compared demands: evaluate the information carried by a trajectory event count versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C08",
+      "b": "B12-C09",
+      "finding": "Compared demands: prepend a familiar transformation to an existing protected calculation versus validate a spatial mixing record against component and process constraints. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C08",
+      "b": "B12-C10",
+      "finding": "Compared demands: prepend a familiar transformation to an existing protected calculation versus infer transport through a new selective mechanism. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C08",
+      "b": "B12-C11",
+      "finding": "Compared demands: prepend a familiar transformation to an existing protected calculation versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C08",
+      "b": "B12-C12",
+      "finding": "Compared demands: prepend a familiar transformation to an existing protected calculation versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C08",
+      "b": "B12-C13",
+      "finding": "Compared demands: prepend a familiar transformation to an existing protected calculation versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C08",
+      "b": "B12-C14",
+      "finding": "Compared demands: prepend a familiar transformation to an existing protected calculation versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C08",
+      "b": "B12-C15",
+      "finding": "Compared demands: prepend a familiar transformation to an existing protected calculation versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C08",
+      "b": "B12-C16",
+      "finding": "Compared demands: prepend a familiar transformation to an existing protected calculation versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C09",
+      "b": "B12-C10",
+      "finding": "A fully specified redistribution model is distinguishable from an unintroduced selective mechanism. C09 uses only explicit conservation and process premises; C10 is omitted for missing source support.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C09",
+      "b": "B12-C11",
+      "finding": "Compared demands: validate a spatial mixing record against component and process constraints versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C09",
+      "b": "B12-C12",
+      "finding": "Compared demands: validate a spatial mixing record against component and process constraints versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C09",
+      "b": "B12-C13",
+      "finding": "Compared demands: validate a spatial mixing record against component and process constraints versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C09",
+      "b": "B12-C14",
+      "finding": "Compared demands: validate a spatial mixing record against component and process constraints versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C09",
+      "b": "B12-C15",
+      "finding": "Compared demands: validate a spatial mixing record against component and process constraints versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C09",
+      "b": "B12-C16",
+      "finding": "Compared demands: validate a spatial mixing record against component and process constraints versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C10",
+      "b": "B12-C11",
+      "finding": "Compared demands: infer transport through a new selective mechanism versus infer a material category from uncontrolled process durations. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C10",
+      "b": "B12-C12",
+      "finding": "Compared demands: infer transport through a new selective mechanism versus select controlled comparisons in a multi-condition table. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C10",
+      "b": "B12-C13",
+      "finding": "Compared demands: infer transport through a new selective mechanism versus predict thermal change after inferring an initial state ordering. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C10",
+      "b": "B12-C14",
+      "finding": "Compared demands: infer transport through a new selective mechanism versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C10",
+      "b": "B12-C15",
+      "finding": "Compared demands: infer transport through a new selective mechanism versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C10",
+      "b": "B12-C16",
+      "finding": "Compared demands: infer transport through a new selective mechanism versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C11",
+      "b": "B12-C12",
+      "finding": "Both omitted candidates repeat the state/temperature attribution and controlled-comparison chain already covered by existing protected and related-skill work.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C11",
+      "b": "B12-C13",
+      "finding": "C11 attempts an unsupported inverse classification from uncontrolled duration. C13 uses an explicitly same-material thermal relation and the taught contact rule, with all required conditions stated.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C11",
+      "b": "B12-C14",
+      "finding": "Compared demands: infer a material category from uncontrolled process durations versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C11",
+      "b": "B12-C15",
+      "finding": "Compared demands: infer a material category from uncontrolled process durations versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C11",
+      "b": "B12-C16",
+      "finding": "Compared demands: infer a material category from uncontrolled process durations versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C12",
+      "b": "B12-C13",
+      "finding": "Controlled experiment selection and thermal prediction use different evidence. C12 already repeats prior work and is omitted; C13 does not estimate a causal effect from uncontrolled trials.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C12",
+      "b": "B12-C14",
+      "finding": "Compared demands: select controlled comparisons in a multi-condition table versus estimate a physical state from a small numerical sample. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C12",
+      "b": "B12-C15",
+      "finding": "Compared demands: select controlled comparisons in a multi-condition table versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C12",
+      "b": "B12-C16",
+      "finding": "Compared demands: select controlled comparisons in a multi-condition table versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C13",
+      "b": "B12-C14",
+      "finding": "C13 is given representative characteristic quantities and draws a qualitative consequence. C14 tries to estimate those quantities from an inadequate, ungoverned sample and is omitted.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C13",
+      "b": "B12-C15",
+      "finding": "Compared demands: predict thermal change after inferring an initial state ordering versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C13",
+      "b": "B12-C16",
+      "finding": "Compared demands: predict thermal change after inferring an initial state ordering versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    },
+    {
+      "a": "B12-C14",
+      "b": "B12-C15",
+      "finding": "Compared demands: estimate a physical state from a small numerical sample versus assess whether partial calibration information is sufficient. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C14",
+      "b": "B12-C16",
+      "finding": "Compared demands: estimate a physical state from a small numerical sample versus validate a proposed correction against an independent additional check. These require different represented quantities, allowed operations or evidence. A shared particle-model, counting or evidence-evaluation prerequisite is acknowledged and not counted as an independent outcome.",
+      "decision": "At least one lead is omitted; the pair does not create two staged tasks."
+    },
+    {
+      "a": "B12-C15",
+      "b": "B12-C16",
+      "finding": "Same-skill retained pair: incomplete information before a unique conversion can be established versus contradictory independent evidence against a proposed conversion. The information structures and required conclusions differ.",
+      "decision": "Retained as different full demands, with all source and review boundaries stated."
+    }
+  ],
+  "remainingIfStaged": {
+    "total": 131,
+    "practice": 96,
+    "diagnostic": 10,
+    "mastery": 25,
+    "unauthored": 61,
+    "remainingDiagnostic": 22,
+    "remainingMastery": 39
+  },
+  "shortfallBoundary": "No conclusion that all remaining slots are feasible. Two S07 leads are omitted; a future lead must add a different source-supported demand. No bank target, assessment length or release gate is relaxed.",
+  "privateEvidence": {
+    "artifactName": "HaiEdu-Assessment-Batch-12-Comparison.zip",
+    "artifactId": "libfile_73bdadc97acc819183c2a68e39f6d4a1",
+    "artifactVersion": 0,
+    "artifactSha256": "216535367da0e10a06820105f0b73da7feac2ca90a490c83726170d85ad5c57a",
+    "access": "Private owner-held comparison archive; authorized reviewers obtain it from the owner. No public sharing granted.",
+    "timing": "Saved before comparison commit and committed staging. Rollback-only IDs are not production IDs.",
+    "bindingFile": "private-evidence-bindings.json",
+    "profileHashContract": "SHA256 of exact candidate-profiles/<candidate>.json file bytes, UTF-8 including final newline.",
+    "specHashContract": "SHA256 of canonical JSON of the specification excluding specSha256; sort_keys=True,separators=(comma,colon),ensure_ascii=False.",
+    "corpusFile": "corpus.json",
+    "corpusSha256": "ef580dcc713ceb91059f76783ca8e0eb92ab83d604504967f6544d092639f9fd"
+  }
+}
