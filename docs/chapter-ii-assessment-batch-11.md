@@ -1,12 +1,12 @@
 # Chapter II assessment batch 11
 
-**Date:** 2026-10-11 · **Slice:** 15B.13AA · **State:** comparison and rollback rehearsal complete; committed staging pending.
+**Date:** 2026-10-11 · **Slice:** 15B.13AA · **State:** eleven draft questions staged; human review pending.
 
 This is a versioned Physics 7 Chapter II content extension under the existing subject-neutral authoring contract. The owner completed the accumulated review and authorized larger batches. The readback at 18:42:57 UTC confirms **111 published/content-approved questions, 54 published guides and 158 active misconception definitions**, with no pending Chapter II content. All 22 previously pending questions have persisted review records. Current human edits, immutable revisions and published guide changes are part of the new comparison corpus; old approvals are preserved.
 
 ## Batch decision
 
-Sixteen candidates were assessed across S02–S09. Eleven qualify for draft staging: **five protected Mastery, three protected Diagnostic, and three intentional Practice variants**. Five candidates are omitted before staging: four repeat complete existing tasks or add a familiar preliminary step to one; one imports an untaught statistical procedure. No existing question is removed or reclassified.
+Sixteen candidates were assessed across S02–S09. Eleven were staged as v1 drafts: **five protected Mastery, three protected Diagnostic, and three intentional Practice variants**. Five candidates are omitted before staging: four repeat complete existing tasks or add a familiar preliminary step to one; one imports an untaught statistical procedure. No existing question is removed or reclassified.
 
 | Skill | Practice | Diagnostic | Mastery | New guides |
 | --- | ---: | ---: | ---: | ---: |
@@ -35,7 +35,7 @@ Exact retained and omitted profiles, nearest-match reasoning, source locators, f
 - Textbook SHA-256: `d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904`.
 - Candidate/spec/profile hash contracts and private file bindings are recorded in the sanitized inventory.
 
-The archive was saved before committed staging. This comparison must be reachable from the repository before the guarded production transaction. A stale corpus, source or candidate invalidates the affected comparison.
+The archive was saved before committed staging. Comparison commit `82cfd0066cac66d988860f94c5f28102d61ae402` was reachable before the guarded production transaction at 18:58:13 UTC. A stale corpus, source or candidate invalidates the affected comparison.
 
 ## Verification scope
 
@@ -43,9 +43,15 @@ The rollback rehearsal inserted the planned eleven v1 drafts, three guide drafts
 
 The quality source SHA-256 is `b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154`; the guide helper SHA-256 is `aad5dc785f66863b30cf0d2abedd53cfc7d9006c93c2c07e463215f6122e1142`. Both were freshly read from deployment and saved without altering their returned bytes. Arithmetic answers and explicit source/model assumptions were checked independently of structural QA.
 
+## Committed staging
+
+The separate production readback exactly matches all eleven reviewed specifications, answer keys, distractor mappings and immutable item snapshots. Three guide authoring/runtime snapshots also match. The quality evaluator was replayed against that committed readback and passed 11/11; eleven actor-null technical QA rows were then stored with current version/family fingerprints. Human approval was not synthesized.
+
+The guarded transaction preserved every prior row, added only expected content rows and left 23 of the 38 guarded tables unchanged. The fifteenth additive table is technical QA. There are **54 published + 3 draft guides** and **158 active + 8 draft definitions**. [Committed production evidence](evidence/sprint-15b13-assessment-batch-11-20261011.json) records exact IDs, hashes, counts and verification scope. Repository CI and summary synchronization are recorded at handoff after their completion.
+
 ## Remaining boundary
 
-If committed unchanged, this batch would bring Chapter II to **122 authored questions: 96 Practice, 6 Diagnostic and 20 Mastery**. Eleven would await human content review. The planning shortfall would be 70 questions: 26 Diagnostic and 44 Mastery. This does not establish that every remaining slot can be filled with defensible distinct content; expansion must stop for an owner bank-plan decision if source-supported coverage runs out. The practice count includes declared variants and is not a claim of 96 independent solution paths.
+Committed readback at 18:59:18 UTC confirms Chapter II has **122 authored questions: 96 Practice, 6 Diagnostic and 20 Mastery**. Eleven await human content review. The planning shortfall is 70 questions: 26 Diagnostic and 44 Mastery. This does not establish that every remaining slot can be filled with defensible distinct content; expansion must stop for an owner bank-plan decision if source-supported coverage runs out. The practice count includes declared variants and is not a claim of 96 independent solution paths.
 
 Human question/guide/definition approval, external SME validation, assessment allocation, policy/model binding, pilot and release gates remain separate. Chapter II stays draft, inactive and unallocated. Option B remains 16 Diagnostic and 16 Mastery questions, with Mastery requiring 13/16 and at least one correct per skill. No runtime, schema, API, auth or model/scoring behavior is changed.
 
