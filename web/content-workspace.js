@@ -105,6 +105,9 @@ export async function invokeContent(name, body = {}) {
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
     if (version !== contentSessionVersion) throw new Error("content_session_ended");
+    if (name === "get-content-quality-dashboard" && (!payload?.error || payload.error === "content_quality_dashboard_failed" || payload.error.endsWith("_query_failed"))) {
+      throw new Error("Չհաջողվեց թարմացնել հարցերի և QA-ի տվյալները։ Սեղմեք «Թարմացնել»․ կրկին QA գործարկելու կարիք չկա, եթե հարցը չեք փոխել։");
+    }
     throw new Error(payload?.detail || payload?.error || data?.detail || data?.error || error.message);
   }
   if (data?.error) throw new Error(data.detail || data.error);

@@ -1,7 +1,8 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 3.37
+**Roadmap version:** 3.38
 **Updated:** 2026-10-11
+**Latest platform repair:** [Reviewer approval after passing QA](reviewer-approval-repair-20261011.md): shared dashboard reads are bounded, complete and error-checked; current implementation/deployment status is recorded in the authoritative register.
 **Latest content checkpoint:** [Batch 11](chapter-ii-assessment-batch-11.md) follows confirmed completion of the accumulated human review. Sixteen candidates assessed; eleven new drafts across all eight skills: five Mastery, three Diagnostic and three Practice, with three guides and eight definitions. Current counts and gates are in the [project status register](project-status.md). The documentation/rollover-summary reconciliation remains complete; dated earlier snapshots are preserved.
 **Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E await a second authorized release for live switching. Chapter II authoring continues, inactive and unallocated; 16–26 remain planned in the sequence below.
 

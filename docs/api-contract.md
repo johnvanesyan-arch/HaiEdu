@@ -90,3 +90,9 @@ Legacy `submit-answer` still accepts `itemId` and `response` without session IDs
 - [Runtime scope](sprint-15b12c-learning-runtime.md), [navigation/analytics](sprint-15b12d-navigation-analytics.md), [live acceptance boundary](sprint-15b12e-acceptance.md).
 
 The deployment comparison covers the `submit-answer` bundle, not a fresh deployment-parity certification of every endpoint mentioned. This reconciliation changes documentation only.
+
+## Content Reviewer dashboard reads
+
+`POST /functions/v1/get-content-quality-dashboard` is a separate reviewer API, restricted to an active signed-in `admin` or `content_admin`. Its response keeps `items`, `stats`, `catalog` and `curriculumProvenance`; `latestQa` and `latestReview` belong to the current saved item version. Complete, bounded and paginated reads are required. A related QA/review/mapping/version read failure returns HTTP 500 `content_quality_dashboard_failed` with `failedRead`; it must not be represented as an empty successful dataset. The shared browser loader does not cache failed responses. After a failed post-QA refresh, refreshing the data does not itself rerun QA or approve anything.
+
+[Repair and deployed-verification boundary](reviewer-approval-repair-20261011.md). Human approval still rechecks current technical QA and the family fingerprint atomically; SME/release eligibility is independent.
