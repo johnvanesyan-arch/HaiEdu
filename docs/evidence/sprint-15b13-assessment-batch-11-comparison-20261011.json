@@ -1,0 +1,1186 @@
+{
+  "policy": "haiedu-whole-skill-review-v1",
+  "date": "2026-10-11",
+  "author": "Codex automated educational judgment; human content/SME approval remains pending",
+  "scope": {
+    "currentItems": 371,
+    "immutableVersions": 241,
+    "corpusTables": 28,
+    "guardTables": 38,
+    "candidatePairs": 120
+  },
+  "timing": "Exact private matrix/source rationales existed before staging and are bound by the pre-staging archive and comparison commit. This sanitized, readable repository companion was added after staging in response to PR187 review. It does not claim to have existed in the pre-staging commit. No question, source, disposition or production row changed in this correction.",
+  "redactionBoundary": "Omits exact protected prompts, representations, values, options, keys, solutions and distractor explanations. The committed candidate-level source and nearest-match rationale plus every pairwise decision are reviewable here; exact reconstruction requires the restricted archive.",
+  "privateBinding": {
+    "archiveId": "libfile_88b620d01e948191b05f2aaf18c8dd4a",
+    "archiveVersion": 0,
+    "archiveSha256": "625c519ef681af449663993cf87ea3dce771decac80722d07a7001b74dce6216",
+    "preStagingCommit": "82cfd0066cac66d988860f94c5f28102d61ae402",
+    "inventoryFile": "sprint-15b13-assessment-batch-11-inventory-20261011.json"
+  },
+  "candidates": [
+    {
+      "candidate": "B11-C01",
+      "itemCode": "PHY7-U02-S02-M02",
+      "skill": "S02",
+      "intendedBank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Reconcile simultaneous model constraints with a taught thermal relationship",
+      "nearestReferences": [
+        "S02-I04",
+        "S02-I06",
+        "S02-I08",
+        "S02-M01",
+        "S08-I01",
+        "S08-I11"
+      ],
+      "decisionRationale": "Combines a stated invariant with a thermal-behaviour prerequisite. Nearest practice models an observed bulk change; the nearest protected item considers what a change alone establishes. The proposed item instead requires consistency with an imposed constraint. No pressure law is introduced.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7 և §11, տպագիր էջեր 24–26, 33–35։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C02",
+      "itemCode": "PHY7-U02-S03-D01",
+      "skill": "S03",
+      "intendedBank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Compare representations with matched bookkeeping totals but different organization",
+      "nearestReferences": [
+        "S03-I02",
+        "S03-I05",
+        "S03-I06",
+        "S03-I09",
+        "S03-M01",
+        "S03-M02"
+      ],
+      "decisionRationale": "Earlier counting practice addresses complete represented units, while existing protected inventory tasks exclude another represented category. The candidate makes organization itself relevant under matched bookkeeping data. It is not another numerical instance of either inventory task.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, տպագիր էջեր 27–29։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C03",
+      "itemCode": "PHY7-U02-S03-M03",
+      "skill": "S03",
+      "intendedBank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Track an explicit model intervention and reclassify the represented result",
+      "nearestReferences": [
+        "S03-I07",
+        "S03-I08",
+        "S03-I10",
+        "S03-I11",
+        "S03-I12",
+        "S03-M02"
+      ],
+      "decisionRationale": "Earlier items classify a supplied representation or preserve identity during an ordinary physical operation. This candidate deliberately changes a game model and requires reclassification. It does not assert a real chemical transformation or solve an unknown mixture inventory.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, կառուցողական խաղի համեմատություն և H₂/H₂O մոդելներ, տպագիր էջեր 27–28։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C04",
+      "itemCode": "PHY7-U02-S04-M04",
+      "skill": "S04",
+      "intendedBank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Compose two taught measurement transformations in one represented measurement",
+      "nearestReferences": [
+        "S04-I04",
+        "S04-I06",
+        "S04-I08",
+        "S04-I10",
+        "S04-I11",
+        "S04-I12",
+        "S04-M02",
+        "S04-M03"
+      ],
+      "decisionRationale": "Both component methods are taught separately in the lab section and existing guides. The candidate requires their composition; applying either alone is insufficient. Existing protected cases concern a different validity issue or a different change to the representation. A new numeric value alone is not the claimed difference.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §9, շարքերի եղանակ և խոշորացված պատկերից չափի որոշում, տպագիր էջեր 29–30։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C05",
+      "itemCode": "PHY7-U02-S05-M02",
+      "skill": "S05",
+      "intendedBank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Combine an aggregate trajectory quantity with the supplied observation interval",
+      "nearestReferences": [
+        "S05-I03",
+        "S05-I07",
+        "S05-I12",
+        "S05-M01",
+        "S04-I01",
+        "U01 measurement and arithmetic banks"
+      ],
+      "decisionRationale": "Practice handles the geometric distinction or the aggregation alone. The nearest protected item combines rates from separate trials. This candidate uses a single supplied record and its own full observation interval; it does not repeat the separate-trial aggregation task.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, բեկյալ հետագիծ և ճանապարհի ու ժամանակի հարաբերություն, տպագիր էջեր 34–35։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C06",
+      "itemCode": "PHY7-U02-S06-D01",
+      "skill": "S06",
+      "intendedBank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Evaluate whether an explicitly altered simulation still represents the defined mechanism",
+      "nearestReferences": [
+        "S06-I01",
+        "S06-I05",
+        "S06-I06",
+        "S06-I12",
+        "S05-I01",
+        "S02-D01"
+      ],
+      "decisionRationale": "Nearest physical-boundary questions change access while retaining the mechanism. This candidate intervenes on a different model condition and asks about model validity. The intervention is explicitly artificial and is not generalized to real substances.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, դիֆուզիայի մասնիկային մեխանիզմ, տպագիր էջեր 30–33։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C07",
+      "itemCode": null,
+      "skill": "S06",
+      "intendedBank": "mastery_check",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Separate a final observation from evidence about its cause",
+      "nearestReferences": [
+        "S06-I05",
+        "S06-I08",
+        "S06-T02-DIFFUSION-EVIDENCE",
+        "S06-T04-PRACTICE-EXTENSION"
+      ],
+      "decisionRationale": "Omit: current practice and published guidance already work the complete evidential distinction. The proposed assessment-purpose label adds no independent demand.",
+      "sourceLocator": "§10 printed30–33; the source supports this concept, but existing practice already exposes its complete solution.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C08",
+      "itemCode": "PHY7-U02-S07-I10",
+      "skill": "S07",
+      "intendedBank": "practice",
+      "disposition": "intentional_practice_variant",
+      "abstractDemand": "Distinguish a reported observation interval from process onset and termination",
+      "nearestReferences": [
+        "S07-I05",
+        "S07-I07",
+        "S07-I08",
+        "S07-I09"
+      ],
+      "decisionRationale": "Intentional practice: earlier distractors already target these interpretations. A focused consolidation is useful, but no new independent reasoning coverage is claimed. It is different from extrapolating an exact future penetration distance.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, կապարի և ոսկու փորձ, տպագիր էջեր 32–33։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "Declared practice variant; its guide does not work a protected full chain."
+    },
+    {
+      "candidate": "B11-C09",
+      "itemCode": "PHY7-U02-S07-I11",
+      "skill": "S07",
+      "intendedBank": "practice",
+      "disposition": "intentional_practice_variant",
+      "abstractDemand": "Apply the taught temperature trend in the inverse direction under fixed conditions",
+      "nearestReferences": [
+        "S07-I05",
+        "S07-I06",
+        "S07-I08",
+        "S07-M01",
+        "S08-I10"
+      ],
+      "decisionRationale": "Intentional practice: reverses the temperature direction in earlier same-material practice and consolidates slower versus absent. It is not counted as independent novelty and does not reproduce the protected multiple-variable comparison.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10 և §11, տպագիր էջեր 32–35։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "Declared practice variant; its guide does not work a protected full chain."
+    },
+    {
+      "candidate": "B11-C10",
+      "itemCode": "PHY7-U02-S07-I12",
+      "skill": "S07",
+      "intendedBank": "practice",
+      "disposition": "intentional_practice_variant",
+      "abstractDemand": "Distinguish a qualitative state ordering from an exact quantitative factor",
+      "nearestReferences": [
+        "S07-I01",
+        "S07-I04",
+        "S07-I07",
+        "S07-M01",
+        "S08-I07",
+        "S08-I12"
+      ],
+      "decisionRationale": "Intentional practice of the limits of the stated relation. Earlier practice supplies the ordering and a different extrapolation limit. The new item targets unsupported numerical precision; it is not an independent protected task.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, վիճակների որակական համեմատություն, տպագիր էջեր 32–33։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "Declared practice variant; its guide does not work a protected full chain."
+    },
+    {
+      "candidate": "B11-C11",
+      "itemCode": "PHY7-U02-S08-M03",
+      "skill": "S08",
+      "intendedBank": "mastery_check",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Coordinate two within-case changes with a between-case endpoint comparison",
+      "nearestReferences": [
+        "S08-I01",
+        "S08-I04",
+        "S08-I08",
+        "S08-I11",
+        "S08-M01",
+        "S08-M02"
+      ],
+      "decisionRationale": "Existing protected work assesses paired changes, while practice treats a fixed-state between-substance comparison. This candidate requires both judgments together and checks the boundary between them. No final-state calculation or quantitative thermal-speed law is required.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, ջերմաստիճանի փոփոխություն և տարբեր գազերի բնորոշ արագություններ, տպագիր էջեր 33–35։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C12",
+      "itemCode": "PHY7-U02-S09-D02",
+      "skill": "S09",
+      "intendedBank": "diagnostic",
+      "disposition": "new_reasoning_coverage",
+      "abstractDemand": "Decide whether a changing instrument observation supports a completed measurement",
+      "nearestReferences": [
+        "S09-I01",
+        "S09-I02",
+        "S09-I09",
+        "S09-D01",
+        "S08-M01"
+      ],
+      "decisionRationale": "Nearest practice starts from a stable observation or explains instrument operation; the existing diagnostic uses a different evidentiary basis. The proposed item adds a measurement-validity inference from explicitly supplied ongoing change and taught thermal contact. No quantitative response-time law is introduced.",
+      "sourceLocator": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11–12, տաք և սառը մարմինների հպում և ջերմաչափի հեղուկի ընդարձակում, տպագիր էջեր 33–34, 36–37։ Հեղինակային կիրառություն՝ պայմանում բացահայտ տրված ենթադրություններով։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C13",
+      "itemCode": null,
+      "skill": "S09",
+      "intendedBank": "mastery_check",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Prepend a familiar conversion to an existing protected selection procedure",
+      "nearestReferences": [
+        "S09-M05",
+        "S09-I08",
+        "U01-S09 half-division error banks"
+      ],
+      "decisionRationale": "Omit: the consequential selection and distractor logic remain the same as the nearest protected task. The conversion is already practiced and does not establish a sufficiently different full assessment chain.",
+      "sourceLocator": "§12 printed36–38 and§4 printed17–18.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C14",
+      "itemCode": null,
+      "skill": "S04",
+      "intendedBank": "diagnostic",
+      "disposition": "source_scope_omit",
+      "abstractDemand": "Calculate statistical uncertainty from repeated measurements",
+      "nearestReferences": [
+        "S04-M02",
+        "S04-I04",
+        "U01-S09 measurement-error banks"
+      ],
+      "decisionRationale": "Omit for source scope: the proposed rule needs statistical assumptions and procedures beyond the row method and taught measurement-error convention. No content is staged and no new prerequisite is silently added.",
+      "sourceLocator": "§9 printed29–30 teaches row length/count and image magnification, not standard error.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C15",
+      "itemCode": null,
+      "skill": "S02",
+      "intendedBank": "diagnostic",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Explain the reverse direction of an already-taught bulk-change observation",
+      "nearestReferences": [
+        "S02-I04",
+        "S02-I06",
+        "S02-I07",
+        "S02-T02-PARTICLE-OBSERVATIONS"
+      ],
+      "decisionRationale": "Omit: the existing question already includes the reverse direction and return, and guidance works the same model explanation. Emphasizing that direction does not make it an independent diagnostic.",
+      "sourceLocator": "§7 printed24–26.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    },
+    {
+      "candidate": "B11-C16",
+      "itemCode": null,
+      "skill": "S05",
+      "intendedBank": "diagnostic",
+      "disposition": "redundant_omit",
+      "abstractDemand": "Infer whether an intervening history is determined by matching endpoint observations",
+      "nearestReferences": [
+        "S05-I07",
+        "S05-T04-PRACTICE-EXTENSION",
+        "B11-C05"
+      ],
+      "decisionRationale": "Omit: the entire inference is already exposed in current practice and guidance. It cannot be protected by assigning a new ID or assessment purpose.",
+      "sourceLocator": "§11 printed34–35.",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "illustration": "Complete verbal task; no absent or reused figure supplies a hidden premise.",
+      "protectedBoundary": "No learner guide; exact stimulus, answer, solution and distractor logic are restricted."
+    }
+  ],
+  "pairs": [
+    {
+      "a": "B11-C01",
+      "b": "B11-C02",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; particle representations and bookkeeping.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C02 requires: compare representations with matched bookkeeping totals but different organization. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C03",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; particle representations and bookkeeping.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C03 requires: track an explicit model intervention and reclassify the represented result. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C04",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; measurement and quantitative reasoning.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C04 requires: compose two taught measurement transformations in one represented measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C05",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; motion and quantitative reasoning.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C06",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; diffusion and model validity.",
+      "finding": "Both evaluate model conditions, but constrain different parts of the model and ask different consistency questions. Neither is a numerical or wording version of the other.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C07",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; diffusion and evidential sufficiency.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C07 requires: separate a final observation from evidence about its cause. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C08",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; diffusion and evidential sufficiency.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C08 requires: distinguish a reported observation interval from process onset and termination. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C09",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; diffusion and temperature.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C10",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; diffusion and evidential sufficiency.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; thermal comparisons.",
+      "finding": "Shared thermal prerequisite; C01 coordinates a model invariant with a thermal relation, while C11 combines within-case changes and a between-case comparison. Neither supplies the other complete demand.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; thermal measurement.",
+      "finding": "Shared warming prerequisite; a model consistency decision and a measurement-completion decision use different evidence and response demands.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; measurement and quantitative reasoning.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; measurement and quantitative reasoning.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Shared broad domain: particle-model and thermal prerequisites.",
+      "finding": "C15 repeats an already-worked reversible bulk-change explanation and is omitted. C01 introduces an explicit constraint that changes which explanation is being tested.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C01",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; motion and evidential sufficiency.",
+      "finding": "B11-C01 requires: reconcile simultaneous model constraints with a taught thermal relationship. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C03",
+      "sharedPrerequisite": "Shared broad domain: particle representations and bookkeeping.",
+      "finding": "Same-skill retained pair: matched-total organization comparison versus reclassification after a declared model intervention. The first changes the comparison dimension; the second changes the represented composition. Exact representations and outcomes are restricted.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C04",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; measurement and quantitative reasoning.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C04 requires: compose two taught measurement transformations in one represented measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C05",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; motion and quantitative reasoning.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C06",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and model validity.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C07",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and evidential sufficiency.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C07 requires: separate a final observation from evidence about its cause. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C08",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and evidential sufficiency.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C08 requires: distinguish a reported observation interval from process onset and termination. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C09",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and temperature.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C10",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and evidential sufficiency.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; thermal comparisons.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; thermal measurement.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; measurement and quantitative reasoning.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; measurement and quantitative reasoning.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; particle-model and thermal prerequisites.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C02",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; motion and evidential sufficiency.",
+      "finding": "B11-C02 requires: compare representations with matched bookkeeping totals but different organization. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C04",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; measurement and quantitative reasoning.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C04 requires: compose two taught measurement transformations in one represented measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C05",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; motion and quantitative reasoning.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C06",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and model validity.",
+      "finding": "Both use deliberately altered models, but C03 asks reclassification of a representation and C06 asks whether the model still represents a defined mechanism. Artificial intervention is never asserted as a real physical process.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C07",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and evidential sufficiency.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C07 requires: separate a final observation from evidence about its cause. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C08",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and evidential sufficiency.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C08 requires: distinguish a reported observation interval from process onset and termination. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C09",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and temperature.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C10",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; diffusion and evidential sufficiency.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; thermal comparisons.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; thermal measurement.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; measurement and quantitative reasoning.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; measurement and quantitative reasoning.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; particle-model and thermal prerequisites.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C03",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: particle representations and bookkeeping; motion and evidential sufficiency.",
+      "finding": "B11-C03 requires: track an explicit model intervention and reclassify the represented result. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C05",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; motion and quantitative reasoning.",
+      "finding": "Both compose arithmetic, but C04 combines two measurement normalizations, whereas C05 combines an aggregate trajectory quantity and an interval. They use different physical quantities and distinct denominator roles; neither is a changed-number version of the other.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C06",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; diffusion and model validity.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C07",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; diffusion and evidential sufficiency.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C07 requires: separate a final observation from evidence about its cause. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C08",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; diffusion and evidential sufficiency.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C08 requires: distinguish a reported observation interval from process onset and termination. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C09",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; diffusion and temperature.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C10",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; diffusion and evidential sufficiency.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; thermal comparisons.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; thermal measurement.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Shared broad domain: measurement and quantitative reasoning.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Shared broad domain: measurement and quantitative reasoning.",
+      "finding": "C04 composes two taught methods. C14 adds an untaught uncertainty rule and is omitted. Combining taught methods does not authorize importing statistics.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; particle-model and thermal prerequisites.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C04",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; motion and evidential sufficiency.",
+      "finding": "B11-C04 requires: compose two taught measurement transformations in one represented measurement. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C06",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; diffusion and model validity.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C07",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; diffusion and evidential sufficiency.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C07 requires: separate a final observation from evidence about its cause. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C08",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; diffusion and evidential sufficiency.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C08 requires: distinguish a reported observation interval from process onset and termination. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C09",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; diffusion and temperature.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C10",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; diffusion and evidential sufficiency.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; thermal comparisons.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; thermal measurement.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; measurement and quantitative reasoning.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; measurement and quantitative reasoning.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; particle-model and thermal prerequisites.",
+      "finding": "B11-C05 requires: combine an aggregate trajectory quantity with the supplied observation interval. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C05",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: motion and quantitative reasoning; motion and evidential sufficiency.",
+      "finding": "C16 is the already-worked endpoint-history inference and is omitted. C05 supplies an intervening record and interval and requires an additional quantitative operation; answering C16 does not complete C05.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C07",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; diffusion and evidential sufficiency.",
+      "finding": "An altered-model validity judgment differs from an evidential judgment about an externally affected observation. C07 already repeats published guidance and is omitted.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C08",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; diffusion and evidential sufficiency.",
+      "finding": "C06 explicitly changes an artificial model condition; C08 interprets a real observation interval. A software intervention is not evidence that a physical observation stops a process.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C09",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; diffusion and temperature.",
+      "finding": "B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C10",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; diffusion and evidential sufficiency.",
+      "finding": "B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; thermal comparisons.",
+      "finding": "B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; thermal measurement.",
+      "finding": "B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; measurement and quantitative reasoning.",
+      "finding": "B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; measurement and quantitative reasoning.",
+      "finding": "B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; particle-model and thermal prerequisites.",
+      "finding": "B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C06",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: diffusion and model validity; motion and evidential sufficiency.",
+      "finding": "B11-C06 requires: evaluate whether an explicitly altered simulation still represents the defined mechanism. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C07",
+      "b": "B11-C08",
+      "sharedPrerequisite": "Shared broad domain: diffusion and evidential sufficiency.",
+      "finding": "B11-C07 requires: separate a final observation from evidence about its cause. B11-C08 requires: distinguish a reported observation interval from process onset and termination. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C07",
+      "b": "B11-C09",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; diffusion and temperature.",
+      "finding": "B11-C07 requires: separate a final observation from evidence about its cause. B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C07",
+      "b": "B11-C10",
+      "sharedPrerequisite": "Shared broad domain: diffusion and evidential sufficiency.",
+      "finding": "B11-C07 requires: separate a final observation from evidence about its cause. B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C07",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; thermal comparisons.",
+      "finding": "B11-C07 requires: separate a final observation from evidence about its cause. B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C07",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; thermal measurement.",
+      "finding": "B11-C07 requires: separate a final observation from evidence about its cause. B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C07",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; measurement and quantitative reasoning.",
+      "finding": "B11-C07 requires: separate a final observation from evidence about its cause. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C07",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; measurement and quantitative reasoning.",
+      "finding": "B11-C07 requires: separate a final observation from evidence about its cause. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C07",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; particle-model and thermal prerequisites.",
+      "finding": "B11-C07 requires: separate a final observation from evidence about its cause. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C07",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; motion and evidential sufficiency.",
+      "finding": "B11-C07 requires: separate a final observation from evidence about its cause. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C08",
+      "b": "B11-C09",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; diffusion and temperature.",
+      "finding": "Same-skill practice pair: interpretation of a reporting interval versus the direction of a temperature effect under fixed conditions. Both rehearse existing knowledge and neither claims new independent coverage.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C08",
+      "b": "B11-C10",
+      "sharedPrerequisite": "Shared broad domain: diffusion and evidential sufficiency.",
+      "finding": "Same-skill practice pair: process timing inference versus numerical precision of a qualitative relation. They target different overinterpretations; both are declared rehearsal.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C08",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; thermal comparisons.",
+      "finding": "B11-C08 requires: distinguish a reported observation interval from process onset and termination. B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C08",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; thermal measurement.",
+      "finding": "B11-C08 requires: distinguish a reported observation interval from process onset and termination. B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C08",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; measurement and quantitative reasoning.",
+      "finding": "B11-C08 requires: distinguish a reported observation interval from process onset and termination. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C08",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; measurement and quantitative reasoning.",
+      "finding": "B11-C08 requires: distinguish a reported observation interval from process onset and termination. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C08",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; particle-model and thermal prerequisites.",
+      "finding": "B11-C08 requires: distinguish a reported observation interval from process onset and termination. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C08",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; motion and evidential sufficiency.",
+      "finding": "B11-C08 requires: distinguish a reported observation interval from process onset and termination. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C09",
+      "b": "B11-C10",
+      "sharedPrerequisite": "Related domains: diffusion and temperature; diffusion and evidential sufficiency.",
+      "finding": "Same-skill practice pair: temperature direction for one material setting versus precision of a state comparison. Neither reproduces the protected multiple-variable comparison; neither is counted as new protected coverage.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C09",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: diffusion and temperature; thermal comparisons.",
+      "finding": "C09 is a same-material diffusion trend rehearsal. C11 adds paired thermal changes and a between-case endpoint judgment. C09 guidance contains no worked version of that protected combination.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C09",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: diffusion and temperature; thermal measurement.",
+      "finding": "B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C09",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: diffusion and temperature; measurement and quantitative reasoning.",
+      "finding": "B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C09",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: diffusion and temperature; measurement and quantitative reasoning.",
+      "finding": "B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C09",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: diffusion and temperature; particle-model and thermal prerequisites.",
+      "finding": "B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C09",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: diffusion and temperature; motion and evidential sufficiency.",
+      "finding": "B11-C09 requires: apply the taught temperature trend in the inverse direction under fixed conditions. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C10",
+      "b": "B11-C11",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; thermal comparisons.",
+      "finding": "Both limit inference, but C10 concerns an unsupported numerical factor and C11 coordinates within-case and between-case comparisons. A generic evidence-limit theme alone is not counted as novelty.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C10",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; thermal measurement.",
+      "finding": "B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C10",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; measurement and quantitative reasoning.",
+      "finding": "B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C10",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; measurement and quantitative reasoning.",
+      "finding": "B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C10",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; particle-model and thermal prerequisites.",
+      "finding": "B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C10",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: diffusion and evidential sufficiency; motion and evidential sufficiency.",
+      "finding": "B11-C10 requires: distinguish a qualitative state ordering from an exact quantitative factor. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C11",
+      "b": "B11-C12",
+      "sharedPrerequisite": "Related domains: thermal comparisons; thermal measurement.",
+      "finding": "C11 takes final measurements as supplied and coordinates comparisons. C12 evaluates whether an observation qualifies as a completed measurement. The information is used in different roles.",
+      "disposition": "Retained with the stated distinct demand or explicitly declared practice status; no complete protected chain is placed in practice."
+    },
+    {
+      "a": "B11-C11",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: thermal comparisons; measurement and quantitative reasoning.",
+      "finding": "B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C11",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: thermal comparisons; measurement and quantitative reasoning.",
+      "finding": "B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C11",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: thermal comparisons; particle-model and thermal prerequisites.",
+      "finding": "B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C11",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: thermal comparisons; motion and evidential sufficiency.",
+      "finding": "B11-C11 requires: coordinate two within-case changes with a between-case endpoint comparison. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C12",
+      "b": "B11-C13",
+      "sharedPrerequisite": "Related domains: thermal measurement; measurement and quantitative reasoning.",
+      "finding": "Instrument observation validity differs from the existing protected instrument-selection procedure. C13 is omitted; its procedure is not placed in C12 or a learner guide.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C12",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Related domains: thermal measurement; measurement and quantitative reasoning.",
+      "finding": "B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C12",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: thermal measurement; particle-model and thermal prerequisites.",
+      "finding": "B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C12",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: thermal measurement; motion and evidential sufficiency.",
+      "finding": "B11-C12 requires: decide whether a changing instrument observation supports a completed measurement. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C13",
+      "b": "B11-C14",
+      "sharedPrerequisite": "Shared broad domain: measurement and quantitative reasoning.",
+      "finding": "B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. B11-C14 requires: calculate statistical uncertainty from repeated measurements. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C13",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; particle-model and thermal prerequisites.",
+      "finding": "B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C13",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; motion and evidential sufficiency.",
+      "finding": "B11-C13 requires: prepend a familiar conversion to an existing protected selection procedure. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C14",
+      "b": "B11-C15",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; particle-model and thermal prerequisites.",
+      "finding": "B11-C14 requires: calculate statistical uncertainty from repeated measurements. B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C14",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: measurement and quantitative reasoning; motion and evidential sufficiency.",
+      "finding": "B11-C14 requires: calculate statistical uncertainty from repeated measurements. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    },
+    {
+      "a": "B11-C15",
+      "b": "B11-C16",
+      "sharedPrerequisite": "Related domains: particle-model and thermal prerequisites; motion and evidential sufficiency.",
+      "finding": "B11-C15 requires: explain the reverse direction of an already-taught bulk-change observation. B11-C16 requires: infer whether an intervening history is determined by matching endpoint observations. The stimulus role, requested operation and evidence needed differ; the shared curriculum prerequisite is not treated as a separate new outcome.",
+      "disposition": "At least one candidate omitted; no two staged tasks result from this pair."
+    }
+  ]
+}

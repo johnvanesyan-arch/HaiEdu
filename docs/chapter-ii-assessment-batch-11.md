@@ -26,7 +26,7 @@ All eleven prompts are complete verbal tasks. No question references an absent i
 
 ## Comparison and evidence
 
-The [sanitized inventory](evidence/sprint-15b13-assessment-batch-11-inventory-20261011.json) binds the complete **371 current items and 241 immutable versions**, current/historical guides, curriculum/outcome mappings and protected banks across releases to a fresh 28-table corpus. Thirty-eight full-table hashes bracket the reads and guard staging. The comparison covers all 120 candidate pairs, scenarios, required inferences, solutions and distractors. Current reviewer edits were reread; earlier semantic judgments are carried only for unchanged content, with explicit prior-evidence references. Exact-text QA is not the semantic review.
+The committed [readable comparison matrix](chapter-ii-assessment-batch-11-comparison.md) and [structured comparison record](evidence/sprint-15b13-assessment-batch-11-comparison-20261011.json) contain all 16 candidate source/nearest-match rationales and all 120 redacted pair decisions. The [sanitized inventory](evidence/sprint-15b13-assessment-batch-11-inventory-20261011.json) binds the complete **371 current items and 241 immutable versions**, current/historical guides, curriculum/outcome mappings and protected banks across releases to a fresh 28-table corpus. Thirty-eight full-table hashes bracket the reads and guard staging. The comparison covers all 120 candidate pairs, scenarios, required inferences, solutions and distractors. Current reviewer edits were reread; earlier semantic judgments are carried only for unchanged content, with explicit prior-evidence references. Exact-text QA is not the semantic review.
 
 Exact retained and omitted profiles, nearest-match reasoning, source locators, frozen corpus, candidate specifications, comparison pairs and rollback evidence are held in the private owner archive. Protected prompts and worked solutions are deliberately absent from this public report. Authorized reviewers can obtain the evidence through the owner.
 
@@ -35,7 +35,7 @@ Exact retained and omitted profiles, nearest-match reasoning, source locators, f
 - Textbook SHA-256: `d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904`.
 - Candidate/spec/profile hash contracts and private file bindings are recorded in the sanitized inventory.
 
-The archive was saved before committed staging. Comparison commit `82cfd0066cac66d988860f94c5f28102d61ae402` was reachable before the guarded production transaction at 18:58:13 UTC. A stale corpus, source or candidate invalidates the affected comparison.
+The archive was saved before committed staging. The readable sanitized repository companion was added **after staging** to address PR #187 review; the exact private matrix already existed before staging, and no content or comparison disposition changed. This corrects repository reviewability and does not retrospectively claim the sanitized companion was in the earlier commit. Comparison commit `82cfd0066cac66d988860f94c5f28102d61ae402` was reachable before the guarded production transaction at 18:58:13 UTC. A stale corpus, source or candidate invalidates the affected comparison.
 
 ## Verification scope
 
