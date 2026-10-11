@@ -1,6 +1,6 @@
 # Project status register
 
-**Updated:** 2026-10-12 (Asia/Yerevan) · **Documentation reconciliation:** complete · **Roadmap:** 3.39
+**Updated:** 2026-10-12 (Asia/Yerevan) · **Documentation reconciliation:** complete · **Roadmap:** 3.40
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
@@ -18,7 +18,7 @@ Completion describes the stated scope only. Technical completion, owner-approved
 | 13 | Closed for sequencing by owner; production release gate open | Owner directed Sprint 14 to proceed, as recorded in the [roadmap stage ledger](sprint-roadmap.md). Chapter I remains `pilot`; external Physics SME approval remains pending. Sequencing closure does not confer standards-verified production status. |
 | 14 | In progress — one live acceptance dependency remains | [Read isolation](sprint-14-authenticated-isolation.md): 54/54; [action acceptance](sprint-14-authenticated-actions.md): 141/141; [14D analytics](sprint-14d-school-performance-analytics.md): 10/10. Live switching between two authorized learning contexts remains blocked until a second release is authorized. |
 | 15A | Complete — content/hint authoring foundation | [Implementation and acceptance](sprint-15a-content-hint-authoring.md). This does not approve every subsequently authored question or guide. |
-| 15B / 15 | In progress — Chapter II authoring; Chapters III–VI not yet modeled | [Option B decision](chapter-ii-option-b-and-s02-expansion.md), [latest batch checkpoint](chapter-ii-assessment-batch-12.md), dated inventory below. Chapter II is draft, inactive and unallocated. |
+| 15B / 15 | In progress — Chapter II authoring; Chapters III–VI not yet modeled | [Option B decision](chapter-ii-option-b-and-s02-expansion.md), [latest batch checkpoint](chapter-ii-assessment-batch-13.md), dated inventory below. Chapter II is draft, inactive and unallocated. |
 | 15B.12 | A–D deployed; E isolated acceptance complete; live E open | [Acceptance boundary](sprint-15b12e-acceptance.md) and [API contract](api-contract.md). Governed runtime/navigation/analytics and deployed parity are verified; live learner switching shares Sprint 14's second-release dependency. |
 | 16, 16.1–16.4 | Planned | Physics course integration, three other subject slices, then four-subject integration; scope in the [roadmap](sprint-roadmap.md). |
 | 16.5 | Planned — required before 17 | Student dashboard design/usability acceptance remains separate from the completed 10.5 redesign. |
@@ -33,18 +33,18 @@ The owner reported that **Հաստատել** remained unavailable after QA. Live
 
 ## Chapter II inventory
 
-Read-only production observation: **2026-10-11 20:35:36 UTC** (2026-10-12 in Asia/Yerevan). This replaces current-summary counts, not dated batch snapshots. Approval totals can change as the reviewer continues work. [Captured batch 12 evidence](evidence/sprint-15b13-assessment-batch-12-20261012.json). The owner completed all prior reviews and authorized the next large batch. The fresh baseline confirmed all 122 prior questions approved on their current versions, all 57 guides published, and all 166 prior definitions active. Batch 12 assessed 16 candidates across S02–S09 and staged nine protected questions with 12 draft definitions; their human review remains pending.
+Read-only production observation: **2026-10-11 21:34:59 UTC** (2026-10-12 in Asia/Yerevan). This replaces current-summary counts, not dated batch snapshots. Approval totals can change as review continues. [Captured batch 13 evidence](evidence/sprint-15b13-assessment-batch-13-20261012.json). The owner completed the previous review and authorized continuation. Fresh baseline confirmed **all 131 prior current question versions approved, 57 guides published and 178 definitions active**. Batch 13 assessed 16 leads across S02–S09 and staged **five protected questions (three Diagnostic, two Mastery) and ten draft definitions**. Eight proposals overlapped existing reasoning and three required untaught science; no existing question was removed.
 
 | Purpose | Authored | Published / content-approved | Draft / needs review | Target | Unauthored |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Practice / Review | 96 | 96 | 0 | 96 | 0 |
-| Diagnostic | 10 | 6 | 4 | 32 | 22 |
-| Protected Mastery | 25 | 20 | 5 | 64 | 39 |
-| Total | 131 | 122 | 9 | 192 | 61 |
+| Diagnostic | 13 | 10 | 3 | 32 | 19 |
+| Protected Mastery | 27 | 25 | 2 | 64 | 37 |
+| Total | 136 | 131 | 5 | 192 | 56 |
 
-There are **166 active and 12 draft misconception definitions**, **57 published guides and no draft guides**, and **zero assessment-pool or form memberships** for Chapter II. The candidate release `physics7_u01_u02_2026_08_14_candidate_r2` is `draft` with no activation timestamp. Publication is content approval, not learner delivery eligibility.
+There are **178 active and ten draft misconception definitions**, **57 published guides and no draft guides**, and **zero assessment-pool or form memberships** for Chapter II. The candidate release `physics7_u01_u02_2026_08_14_candidate_r2` is `draft` with no activation timestamp. Publication is content approval, not learner delivery eligibility.
 
-The practice planning count is authored and approved, including declared intentional variants; it is not 96 independent reasoning paths. Remaining authoring concerns protected Diagnostic/Mastery coverage. The 61-question planning shortfall does not establish feasibility: if source-supported distinct coverage runs out, record the defensible inventory and obtain the owner's bank-plan decision before further expansion. Do not pad or weaken delivery/scoring/release gates.
+The practice count is authored and approved, including declared intentional variants; it is not 96 independent reasoning paths. The nominal protected shortfall remains 56 (19 Diagnostic, 37 Mastery), but the latest screen yielded only five distinct source-supported tasks. **Next proposed part: a source/coverage feasibility checkpoint and owner bank-plan decision before further count-led expansion.** S07 still has zero Diagnostic and one Mastery question. Across all skills, even counting the five drafts as eventually approved, completing one two per skill form would require at least five additional Diagnostic and one additional Mastery question in the underfilled skills; this is a distribution constraint, not authorization to reuse exposed content or weaken retake reserves. [Concrete coverage and decision record](chapter-ii-bank-plan-checkpoint.md). The192 target is unchanged and no universal source-exhaustion finding is claimed.
 
 Selected Option B delivers **16 Diagnostic and 16 Mastery questions**, two per each of eight skills. Mastery requires **13/16 and at least one correct per skill**. All eight skills participate in initial readiness. The 192-question bank target is not a per-student session length or proof that sufficient distinct, source-supported questions exist. Numeric readiness/model parameters, ordinary governed bindings and release approval remain separate.
 
@@ -55,7 +55,7 @@ Selected Option B delivers **16 Diagnostic and 16 Mastery questions**, two per e
 | Chapter I production release | External Physics SME review/sign-off remains outstanding. Preserve provisional validation and pilot provenance; perform the applicable current-source, security/privacy, deployment and release-day checks before promotion. Internal owner review does not substitute for external SME review. |
 | Calibration | Deferred/no change under `physics7-u01-feasibility-2026-09-21-deferred`. New eligible evidence and an authorized decision are required before parameter changes. |
 | Sprint 14 / 15B.12E live switching | Needs a second independently authorized curriculum release and authenticated multi-context acceptance. Do not activate Chapter II merely to close a test dependency. |
-| Chapter II completion and release | Finish source-supported authoring and human review, whole-bank comparisons, protected separation, illustration/source checks, assessment allocation and policy/model binding; satisfy SME, pilot and release gates. No numeric target waives these requirements. |
+| Chapter II completion and release | Review five new questions and ten definitions. Resolve the proposed coverage/feasibility checkpoint and owner bank-plan decision before further count-led expansion; then complete defensible source coverage, protected separation, assessment allocation, policy/model binding, SME, pilot and release gates. No numeric target waives these requirements. |
 | Recorded editorial work | S09-I06 embedded distractor/guide overlap, S09-M01 duplicated `ևև` / `։։`, and S09-I08 guide `բանաձը` → `բանաձևը` remain for the versioned correction/review workflow. Preserve prior approvals and evidence. S02-M01 retention was decided by the owner and is not an open omit/revise decision. See [batch 08 follow-ups](chapter-ii-assessment-batch-08.md). The current reviewer-edited S08-M02 v2 also contains two consecutive formulations of distractor A; record a versioned correction/review without overwriting its approval ([batch 11](chapter-ii-assessment-batch-11.md)). |
 | Formal school pilot | Sprint 17 remains planned after 16.4 and 16.5; earlier feasibility and isolated QA do not satisfy this gate. |
 | Rollover | Design approved, documentation aligned, implementation/migration/concurrency/two-school/browser acceptance still pending in 18.5. |
