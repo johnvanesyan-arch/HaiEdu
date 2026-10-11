@@ -2,6 +2,7 @@ import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { after, before, test } from "node:test";
 import { chromium } from "@playwright/test";
+import { dashboardFixture } from "../fixtures/content-dashboard-endpoint.mjs";
 
 // Native browser regression with real UI modules and offline auth/network doubles.
 // This covers DOM/event lifecycle, not live backend authorization or content workflows.
@@ -69,7 +70,7 @@ async function fixture(t, moduleName = "content-review-workflow.js", initial = "
       body = `<!doctype html><html><head><style>.hidden{display:none}</style></head>
         <body data-content-mode="item" data-content-item-id="fixture-item"><main>
           <button id="probe">Probe</button><output id="probeCount">0</output>
-          <button id="signOutBtn">Sign out</button><section id="authPanel"><p id="authMessage"></p></section>
+          <button id="signOutBtn">Sign out</button><button id="refreshBtn">Refresh</button><section id="authPanel"><p id="authMessage"></p></section>
           <section id="console"><section id="detailPanel"><h2>Loading</h2></section><p id="consoleMessage"></p></section>
         </main><script type="module" src="./${moduleName}"></script></body></html>`;
     } else if (url.origin === origin && sources.has(url.pathname.slice(1))) {
@@ -85,7 +86,7 @@ window.__editorFixture = { wireEditorRows, addOptionRow, selectItem,
     } else if (url.origin === origin && url.pathname === "/config.js") {
       body = 'export const SUPABASE_URL="https://fixture.invalid", SUPABASE_PUBLISHABLE_KEY="fixture-only";';
     } else if (url.origin === origin && url.pathname === "/content-workspace.js") {
-      body = "export function clearContentDashboardCache() {} export async function loadContentDashboard() { return {items: [], stats: {}}; }";
+      body = "export function clearContentDashboardCache() {} export async function loadContentDashboard() { if(window.__failDashboard) throw new Error('QA տվյալները չհաջողվեց թարմացնել'); return window.__dashboardResponse || {items: [], stats: {}}; }";
     } else if (url.href === "https://esm.sh/@supabase/supabase-js@2") {
       body = "export function createClient() { return window.__haieduSupabaseClient; }";
     } else return route.abort("blockedbyclient");
@@ -186,6 +187,53 @@ const mediaDetail = (stimulus) => ({
   options: [{key: "A", contentHy: "Առաջին տարբերակ"}, {key: "B", contentHy: "Երկրորդ տարբերակ"}],
   answerKey: {answer: "A"}, editing: {contentEditable: false},
 });
+
+for (const failedRefresh of [false, true]) {
+  test(`passed QA enables one approval after ${failedRefresh ? 'a failed read and explicit refresh' : 'a successful read'} in a large bank`, { timeout: 20_000 }, async (t) => {
+    const state = await fixture(t, 'content.js', 'active'), { page } = state;
+    // The real dashboard handler produces the 382-item response. Only transport
+    // and auth are doubles; approval below never touches production.
+    const response = await dashboardFixture().call();
+    assert.equal(response.status, 200);
+    response.body.items[0].id = 'fixture-item';
+    await page.evaluate(({ dashboard, failedRefresh, detail }) => {
+      window.__editorFixture.preview(detail);
+      window.__dashboardResponse = dashboard;
+      window.__workflowActions = [];
+      window.__haieduSupabaseClient.functions.invoke = async (_name, { body }) => {
+        window.__workflowActions.push(body.action);
+        if (body.action === 'run_qa') {
+          window.__failDashboard = failedRefresh;
+          return { data: { qa: { passed: true } }, error: null };
+        }
+        if (body.action === 'approve') {
+          await new Promise(resolve => { window.__finishApproval = resolve; });
+          dashboard.items[0].reviewStatus = 'approved';
+          return { data: { approved: true, versionNo: 2 }, error: null };
+        }
+        return { data: { detail }, error: null };
+      };
+    }, { dashboard: response.body, failedRefresh, detail: { ...mediaDetail({}), item: { ...mediaDetail({}).item, versionNo: 2 }, editing: { contentEditable: true } } });
+    await page.getByRole('button', { name: 'QA և ստուգում', exact: true }).click();
+    assert.equal(await page.locator('#approveBtn').isDisabled(), true);
+    await page.locator('#runQaBtn').click();
+    if (failedRefresh) {
+      await page.waitForFunction(() => document.getElementById('consoleMessage').textContent === 'QA տվյալները չհաջողվեց թարմացնել');
+      assert.equal(await page.locator('#approveBtn').isDisabled(), true);
+      await page.evaluate(() => { window.__failDashboard = false; });
+      await page.locator('#refreshBtn').click();
+    }
+    await page.waitForFunction(() => document.getElementById('approveBtn')?.disabled === false);
+    await page.locator('#approveBtn').click();
+    await page.locator('#approveBtn').click();
+    assert.deepEqual(await page.evaluate(() => window.__workflowActions.filter(action => action === 'approve')), ['approve']);
+    await page.evaluate(() => window.__finishApproval());
+    await page.waitForFunction(() => document.getElementById('approveBtn')?.textContent === 'Հաստատված');
+    assert.equal(await page.locator('#approveBtn').isDisabled(), true);
+    assert.equal(await page.evaluate(() => window.__workflowActions.filter(action => action === 'run_qa').length), 1);
+    await assertSettled(state);
+  });
+}
 
 test("reviewer renders the same source image and alternative text on desktop and mobile", { timeout: 20_000 }, async (t) => {
   const state = await fixture(t, "content.js", "active");

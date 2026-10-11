@@ -10,6 +10,33 @@ function json(body: unknown, status = 200) {
   return new Response(JSON.stringify(body), { status, headers: { ...corsHeaders, "Content-Type": "application/json" } });
 }
 
+const PAGE_SIZE = 500;
+const ITEM_ID_BATCH_SIZE = 80;
+
+// Keep REST URLs short and read beyond the API row cap. Every query must have
+// a stable, unique ordering; a failed page invalidates the complete result.
+async function readPages(query: () => any) {
+  const data: any[] = [];
+  for (let offset = 0; ; offset += PAGE_SIZE) {
+    const result = await query().range(offset, offset + PAGE_SIZE - 1);
+    if (result.error) return { data: null, error: result.error };
+    const page = result.data ?? [];
+    data.push(...page);
+    if (page.length < PAGE_SIZE) return { data, error: null };
+  }
+}
+
+async function readItemPages(itemIds: string[], query: (ids: string[]) => any) {
+  const data: any[] = [];
+  for (let offset = 0; offset < itemIds.length; offset += ITEM_ID_BATCH_SIZE) {
+    const ids = itemIds.slice(offset, offset + ITEM_ID_BATCH_SIZE);
+    const result = await readPages(() => query(ids));
+    if (result.error) return result;
+    data.push(...result.data!);
+  }
+  return { data, error: null };
+}
+
 Deno.serve(async (req) => {
   try {
     if (req.method === "OPTIONS") return new Response("ok", { headers: corsHeaders });
@@ -32,15 +59,15 @@ Deno.serve(async (req) => {
     if (!profile || !["admin", "content_admin"].includes(String(profile.role))) return json({ error: "content_admin_required" }, 403);
 
     const [itemResult, gradeResult, subjectResult, frameworkResult, programResult, unitResult, scopeResult] = await Promise.all([
-      admin.from("items")
+      readPages(() => admin.from("items")
         .select("id, code, skill_id, item_type, prompt_hy, difficulty, difficulty_band, item_family, source_reference, validation_state, review_status, version_no, status, retired_at, retired_reason, replacement_item_id, updated_at, skills(code, name_hy, subject_id, grade_id)")
-        .order("code", { ascending: true }),
-      admin.from("grades").select("id, grade_number, label_hy, label_en").order("grade_number", { ascending: true }),
-      admin.from("subjects").select("id, code, name_hy, name_en, status").order("name_en", { ascending: true }),
-      admin.from("curriculum_frameworks").select("id, title, version_label, effective_from, effective_to, status").order("effective_from", { ascending: false }),
-      admin.from("subject_programs").select("id, curriculum_framework_id, subject_id, grade_id, version_label, effective_from, effective_to, status"),
-      admin.from("units").select("id, subject_program_id, code, title_hy, title_en, sequence_order, status").order("sequence_order", { ascending: true }),
-      admin.from("item_curriculum_scopes").select("item_id, subject_program_id, unit_id, is_primary").eq("is_primary", true),
+        .order("code", { ascending: true }).order("id")),
+      readPages(() => admin.from("grades").select("id, grade_number, label_hy, label_en").order("grade_number", { ascending: true }).order("id")),
+      readPages(() => admin.from("subjects").select("id, code, name_hy, name_en, status").order("name_en", { ascending: true }).order("id")),
+      readPages(() => admin.from("curriculum_frameworks").select("id, title, version_label, effective_from, effective_to, status").order("effective_from", { ascending: false }).order("id")),
+      readPages(() => admin.from("subject_programs").select("id, curriculum_framework_id, subject_id, grade_id, version_label, effective_from, effective_to, status").order("id")),
+      readPages(() => admin.from("units").select("id, subject_program_id, code, title_hy, title_en, sequence_order, status").order("sequence_order", { ascending: true }).order("id")),
+      readPages(() => admin.from("item_curriculum_scopes").select("item_id, subject_program_id, unit_id, is_primary").eq("is_primary", true).order("item_id")),
     ]);
 
     if (itemResult.error) return json({ error: "items_query_failed", detail: itemResult.error.message }, 500);
@@ -65,19 +92,28 @@ Deno.serve(async (req) => {
 
     const itemIds = items.map((i: any) => i.id);
     const [qaResult, reviewResult, mappingResult, versionResult] = await Promise.all([
-      itemIds.length ? admin.from("item_qa_runs").select("item_id, version_no, passed, errors, warnings, created_at").in("item_id", itemIds).order("created_at", { ascending: false }) : Promise.resolve({ data: [] as any[] }),
-      itemIds.length ? admin.from("item_reviews").select("item_id, version_no, review_type, decision, notes, created_at").in("item_id", itemIds).order("created_at", { ascending: false }) : Promise.resolve({ data: [] as any[] }),
-      itemIds.length ? admin.from("item_misconception_mappings").select("item_id, response_key, misconceptions(code, title_hy)").in("item_id", itemIds) : Promise.resolve({ data: [] as any[] }),
-      itemIds.length ? admin.from("item_versions").select("item_id, version_no, change_summary, created_at").in("item_id", itemIds).order("version_no", { ascending: false }) : Promise.resolve({ data: [] as any[] }),
+      readItemPages(itemIds, ids => admin.from("item_qa_runs").select("item_id, version_no, passed, errors, warnings, created_at").in("item_id", ids).order("created_at", { ascending: false }).order("id", { ascending: false })),
+      readItemPages(itemIds, ids => admin.from("item_reviews").select("item_id, version_no, review_type, decision, notes, created_at").in("item_id", ids).order("created_at", { ascending: false }).order("id", { ascending: false })),
+      readItemPages(itemIds, ids => admin.from("item_misconception_mappings").select("item_id, response_key, misconceptions(code, title_hy)").in("item_id", ids).order("item_id").order("misconception_id").order("response_key")),
+      readItemPages(itemIds, ids => admin.from("item_versions").select("item_id, version_no, change_summary, created_at").in("item_id", ids).order("version_no", { ascending: false }).order("id")),
     ]);
+
+    for (const [name, result] of [["qa", qaResult], ["reviews", reviewResult], ["mappings", mappingResult], ["versions", versionResult]] as const) {
+      if (result.error) {
+        console.error(`get-content-quality-dashboard: ${name} query failed`, result.error.message);
+        return json({ error: "content_quality_dashboard_failed", failedRead: name }, 500);
+      }
+    }
 
     const latestBy = (rows: any[], key: string) => {
       const map = new Map<string, any>();
       for (const row of rows) if (!map.has(row[key])) map.set(row[key], row);
       return map;
     };
-    const latestQa = latestBy(qaResult.data ?? [], "item_id");
-    const latestReview = latestBy(reviewResult.data ?? [], "item_id");
+    const currentVersions = new Map(items.map((item: any) => [item.id, Number(item.version_no)]));
+    const isCurrentVersion = (row: any) => Number(row.version_no) === currentVersions.get(row.item_id);
+    const latestQa = latestBy((qaResult.data ?? []).filter(isCurrentVersion), "item_id");
+    const latestReview = latestBy((reviewResult.data ?? []).filter(isCurrentVersion), "item_id");
     const latestVersion = latestBy(versionResult.data ?? [], "item_id");
     const misconceptions = new Map<string, any[]>();
     for (const row of mappingResult.data ?? []) {
@@ -138,15 +174,15 @@ Deno.serve(async (req) => {
     });
 
     const [releaseResult, gateResult, blueprintResult] = await Promise.all([
-      admin.from("curriculum_releases")
+      readPages(() => admin.from("curriculum_releases")
         .select("id, release_key, version_label, release_number, status, provenance_quality, content_fingerprint, effective_from, effective_to, activated_at, reconciliation_id")
-        .order("created_at", { ascending: false }),
-      admin.from("curriculum_release_gate_checks")
+        .order("created_at", { ascending: false }).order("id")),
+      readPages(() => admin.from("curriculum_release_gate_checks")
         .select("curriculum_release_id, gate_code, status, evidence, notes, checked_at")
-        .order("gate_code", { ascending: true }),
-      admin.from("assessment_blueprints")
+        .order("gate_code", { ascending: true }).order("curriculum_release_id")),
+      readPages(() => admin.from("assessment_blueprints")
         .select("id, blueprint_key, curriculum_release_id, unit_id, assessment_pool_id, purpose, version_number, status, selection_policy_version, item_set_fingerprint, published_at")
-        .order("blueprint_key", { ascending: true }),
+        .order("blueprint_key", { ascending: true }).order("id")),
     ]);
     for (const [name, result] of [["curriculum_releases", releaseResult], ["curriculum_release_gates", gateResult], ["assessment_blueprints", blueprintResult]] as const) {
       if (result.error) return json({ error: `${name}_query_failed`, detail: result.error.message }, 500);

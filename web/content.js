@@ -703,7 +703,7 @@ async function saveRevision() {
     setMessage("Նոր տարբերակը պահպանվում է…");
     if (!(await persistCurrentRevision())) return;
     clearContentDashboardCache(activeSession?.user?.id);
-    await refresh(selectedId, { force: true });
+    if (!(await refresh(selectedId, { force: true }))) return;
     if (check !== sessionCheck || !activeSession) return;
     setMessage(`${item.code}: պահպանվեց որպես նոր տարբերակ։ Այժմ գործարկեք QA-ն, ապա հաստատեք հարցը։`);
   } catch (err) {
@@ -738,7 +738,7 @@ async function runQaCurrent() {
     const passed = await ensureQaPassed({ force: true });
     if (check !== sessionCheck || !activeSession) return;
     clearContentDashboardCache(activeSession?.user?.id);
-    await refresh(selectedId, { force: true });
+    if (!(await refresh(selectedId, { force: true }))) return;
     if (check !== sessionCheck || !activeSession) return;
     setMessage(
       passed
@@ -779,7 +779,7 @@ async function approveCurrent() {
     await invoke("manage-content-quality", { action: "approve", itemId: selectedId, reviewType: "content" });
     if (check !== sessionCheck || !activeSession) return;
     clearContentDashboardCache(activeSession?.user?.id);
-    await refresh(selectedId, { force: true });
+    if (!(await refresh(selectedId, { force: true }))) return;
     if (check !== sessionCheck || !activeSession) return;
     setMessage(`${item.code}: հարցը հաստատված է։`);
   } catch (err) {
@@ -811,7 +811,7 @@ async function action(name, extra = {}) {
     await invoke("manage-content-quality", { action: name, itemId: selectedId, ...extra });
     if (check !== sessionCheck || !activeSession) return;
     clearContentDashboardCache(activeSession?.user?.id);
-    await refresh(selectedId, { force: true });
+    if (!(await refresh(selectedId, { force: true }))) return;
     if (check !== sessionCheck || !activeSession) return;
     setMessage("Պատրաստ է։");
   } catch (err) {
