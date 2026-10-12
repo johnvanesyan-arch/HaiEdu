@@ -1,0 +1,1842 @@
+{
+  "slice": "15B.13AO",
+  "roadmapVersion": "3.52",
+  "date": "2026-10-12",
+  "author": "Codex automated educational/source/language judgment; not independent SME sign-off",
+  "sourceCommit": "a07ca548a75caa4793002b73297f9b0e68d41f68",
+  "target": {
+    "code": "PHY7-U02-S05-M05",
+    "id": "e71c7f96-9ef0-440b-97ea-e082f83a9c63",
+    "approvedVersion": 2,
+    "immutableVersionId": "14acdc96-c63a-4ba7-9712-68f23f7766aa",
+    "canonicalFingerprintContract": {
+      "encoding": "UTF-8 JSON; sorted keys; ensure_ascii=false; separators comma/colon; options ordered by display_order then option_key",
+      "itemFields": [
+        "code",
+        "skill_id",
+        "item_type",
+        "prompt_hy",
+        "prompt_en",
+        "stimulus",
+        "source_reference",
+        "difficulty",
+        "difficulty_band",
+        "config",
+        "variant_parameters"
+      ],
+      "optionFields": [
+        "option_key",
+        "display_order",
+        "content_hy",
+        "content_en"
+      ],
+      "answerFields": [
+        "answer",
+        "tolerance",
+        "feedback_code",
+        "accepted_units",
+        "canonical_unit"
+      ],
+      "misconceptions": "code, responseKey and mappingNote; ordered by responseKey then code"
+    },
+    "priorV1ContentSha256": "6020a57ef67e2a06cb00759ae320d34e8f09662cc0f555789c36802da3ef7933",
+    "approvedV2ContentSha256": "e49d4d3d0a15638868576fcdc45299ea05413efd90b8201726de353036cd596f",
+    "currentMatchesImmutableV2": true,
+    "databaseFingerprint": "8a99c4301c14b733ad12f044b028ae2a",
+    "historicalCandidateSpecSha256": "1ce78ee9449d5431bccc8c9722a00136b3bead73b4101a2400daf77e9dfbdff4",
+    "historicalSpecBoundary": "Persisted candidateSpecSha256 remains the original v1 authoring provenance. This version-specific record supersedes the comparison only, with no production config rewrite. Allocation must bind current v2 content and this evidence, never interpret the old v1 spec as v2."
+  },
+  "frozenCorpus": {
+    "tables": 28,
+    "currentItems": 416,
+    "immutableItemVersions": 290,
+    "currentGuides": 76,
+    "guideHistoryRecords": 474,
+    "sha256": "f4558aaae22779b1b9a99719ad8e14efe8cf5974ad9f57317a0c0e794c502306",
+    "readMethod": "Fresh complete-table pages for six previously completed changed tables and items; exact per-row PostgreSQL JSONB fingerprints for remaining changed tables; only tables with equal fresh count/hash guards carried. All 38 table guards bracket the read unchanged.",
+    "unchangedBaseCurrentContent": 412
+  },
+  "inspection": {
+    "s05CurrentItems": 19,
+    "s05OtherCurrentComparands": 18,
+    "s05ImmutableVersions": 23,
+    "historyContentEqualToFullyReadCurrentIncludingKeys": 19,
+    "differingHistoricalVersionsFullyRead": 4,
+    "s05CurrentGuidesFullyRead": 8,
+    "s05GuideHistoryRecords": 49,
+    "additionalDistinctHistoricalGuideTextsFullyRead": 6,
+    "relatedSkillCodes": [
+      "PHY7-U01-S04",
+      "PHY7-U01-S05",
+      "PHY7-U02-S06",
+      "PHY7-U02-S08"
+    ],
+    "relatedCurrentGuidesFullyRead": 18,
+    "withinBatchPairsCompared": 6,
+    "scopeLimits": "All S05 and all 90 identified related current prompts, full options, keys and stimuli were read, together with their differing question and guide histories. 51 related immutable versions match fully read current prompt/stimulus/options/key content. Every current and distinct historical guide in this related scope was read. The global corpus retains unrelated content without claiming a fresh semantic reread of every global row. No deployed browser/learner acceptance or independent SME review is claimed.",
+    "relatedItemsFullOptionsCompared": 90,
+    "relatedImmutableVersionsCompared": 60,
+    "relatedHistoryEqualToCurrentPromptStimulusOptionsKey": 51,
+    "differingRelatedHistoricalVersionsFullyRead": 9,
+    "relatedGuideHistoryRecords": 107,
+    "additionalDistinctRelatedHistoricalGuideTextsFullyRead": 14
+  },
+  "source": {
+    "textbookLibraryFileId": "libfile_7eeb0b62ba7481918fef347a1d52e110",
+    "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "locator": "Physics 7, E. Melikyan and G. Mailyan, 2023, Chapter II §10 printed pp30–33; §11 p34 explanation and p35 figure33. Authored one-dimensional model, not a copied textbook exercise.",
+    "programmeOutcomeId": "a70929ea-7b86-4ee3-9dbe-775b227976b4",
+    "programmeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+    "programmeBoundary": "Limited trajectory-interpretation support for S05; no claim of complete outcome mastery. Approved reconciled mapping reused, not a fresh legal-source revision audit.",
+    "assets": [
+      {
+        "path": "web/assets/textbook/physics7-2023/figure-30.png",
+        "sha256": "03736b74f3c81a7a696a13f6cdcde7e77ff9d3644acd559e486cdb37fd3d7f53",
+        "freshVisualInspection": true
+      },
+      {
+        "path": "web/assets/textbook/physics7-2023/figure-31.png",
+        "sha256": "078e4e0735143f8189a00470c49b0324a787fb974d902b2bb71e12e8d6e60c4f",
+        "freshVisualInspection": true
+      }
+    ],
+    "figure33": "Textbook printed35, accompanying explanation printed34; freshly visually inspected."
+  },
+  "freshness": {
+    "guards": [
+      {
+        "tables": [
+          {
+            "row_count": 7,
+            "table_name": "assessment_blueprints",
+            "fingerprint": "4c64b14184d45a2b0a74bfed3e15c2ad"
+          },
+          {
+            "row_count": 80,
+            "table_name": "assessment_form_items",
+            "fingerprint": "02512d79c711fdd1ade10d8b8ba60bd5"
+          },
+          {
+            "row_count": 4,
+            "table_name": "assessment_forms",
+            "fingerprint": "261152bab0348edaf4fadca0385c850e"
+          },
+          {
+            "row_count": 0,
+            "table_name": "assessment_policy_bindings",
+            "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          {
+            "row_count": 280,
+            "table_name": "assessment_pool_items",
+            "fingerprint": "bc60f679991a95387749629e7a2759cd"
+          },
+          {
+            "row_count": 4,
+            "table_name": "assessment_pools",
+            "fingerprint": "c957e610a262f61bd1e50d9c715b6973"
+          },
+          {
+            "row_count": 42,
+            "table_name": "attempts",
+            "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+          },
+          {
+            "row_count": 0,
+            "table_name": "chapter_review_item_exposures",
+            "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          {
+            "row_count": 14,
+            "table_name": "curriculum_release_gate_checks",
+            "fingerprint": "e264300d5ca77755f1dab01f403be695"
+          },
+          {
+            "row_count": 271,
+            "table_name": "curriculum_release_item_families",
+            "fingerprint": "82a56135f06c7a253da8a78501a07a6a"
+          },
+          {
+            "row_count": 28,
+            "table_name": "curriculum_release_skills",
+            "fingerprint": "2bdc962e3ce06ad52373af19516a1147"
+          },
+          {
+            "row_count": 3,
+            "table_name": "curriculum_releases",
+            "fingerprint": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+          },
+          {
+            "row_count": 3,
+            "table_name": "curriculum_source_documents",
+            "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+          },
+          {
+            "row_count": 416,
+            "table_name": "item_answer_keys",
+            "fingerprint": "4382392af3f2b1106f6ac48a7f1f5b71"
+          },
+          {
+            "row_count": 416,
+            "table_name": "item_curriculum_scopes",
+            "fingerprint": "f87c8c53dd7a5e236d8ebbad6f92d229"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_families",
+            "fingerprint": "deb5e6026bac170b4fbce42846991de9"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_family_curriculum_reconciliations",
+            "fingerprint": "65150daf17d7f18a07ad542e37605df3"
+          },
+          {
+            "row_count": 707,
+            "table_name": "item_misconception_mappings",
+            "fingerprint": "d823a42dbe6317b1adc4f4ba5e0712d9"
+          },
+          {
+            "row_count": 1056,
+            "table_name": "item_options",
+            "fingerprint": "478209b3b402ebe751117ff90e0c1b34"
+          },
+          {
+            "row_count": 691,
+            "table_name": "item_qa_runs",
+            "fingerprint": "35ce4422b407059ec7d3501a6fd78b21"
+          },
+          {
+            "row_count": 684,
+            "table_name": "item_reviews",
+            "fingerprint": "9b9a3ccbe2f07c6adda2748c7bd30235"
+          },
+          {
+            "row_count": 66,
+            "table_name": "item_template_remediation_guides",
+            "fingerprint": "31eb52fbc34173bed0ec83901da1f2d6"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_templates",
+            "fingerprint": "67f9d2ccf7cb082f4546c4a3e29ab2e2"
+          },
+          {
+            "row_count": 290,
+            "table_name": "item_versions",
+            "fingerprint": "8cc5309fe0ed7386fae9db8ec9233b13"
+          },
+          {
+            "row_count": 416,
+            "table_name": "items",
+            "fingerprint": "769c11df6dec774b1b272b7d7f4ed098"
+          },
+          {
+            "row_count": 1,
+            "table_name": "learning_model_runtime_bindings",
+            "fingerprint": "140ad5194c426a009a1691a0b174d28c"
+          },
+          {
+            "row_count": 13,
+            "table_name": "learning_outcomes",
+            "fingerprint": "e9f873ec7283e478cebc6eed27be25b8"
+          },
+          {
+            "row_count": 79,
+            "table_name": "learning_session_items",
+            "fingerprint": "dbbb19423c945d8f0ccb85d2312a7800"
+          },
+          {
+            "row_count": 218,
+            "table_name": "misconception_review_events",
+            "fingerprint": "17fe897a7b3940bdb93f2ab3f940456f"
+          },
+          {
+            "row_count": 226,
+            "table_name": "misconceptions",
+            "fingerprint": "28833e24ba869e6d87729515eeea55cf"
+          },
+          {
+            "row_count": 315,
+            "table_name": "remediation_guide_authoring_versions",
+            "fingerprint": "871ac1758f42efb0bc46842b0b99b473"
+          },
+          {
+            "row_count": 159,
+            "table_name": "remediation_guide_versions",
+            "fingerprint": "cf8750c49bd0e05144e101e46fa0f5f3"
+          },
+          {
+            "row_count": 18,
+            "table_name": "skill_curriculum_reconciliations",
+            "fingerprint": "da993b9b2b52e950abb94d7164716d8b"
+          },
+          {
+            "row_count": 20,
+            "table_name": "skill_outcome_curriculum_mappings",
+            "fingerprint": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+          },
+          {
+            "row_count": 20,
+            "table_name": "skill_outcomes",
+            "fingerprint": "6bf2a6b0b3e913d3979fff7f20e778c7"
+          },
+          {
+            "row_count": 10,
+            "table_name": "skill_remediation_guides",
+            "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+          },
+          {
+            "row_count": 19,
+            "table_name": "skills",
+            "fingerprint": "39cb5c0425998f0c9580a50f1d1fef42"
+          },
+          {
+            "row_count": 42,
+            "table_name": "student_item_exposure_events",
+            "fingerprint": "9c2421c9dfc40827b348e6adf7efd681"
+          }
+        ],
+        "observedAt": "2026-10-12T19:03:53.943479+00:00"
+      },
+      {
+        "tables": [
+          {
+            "row_count": 7,
+            "table_name": "assessment_blueprints",
+            "fingerprint": "4c64b14184d45a2b0a74bfed3e15c2ad"
+          },
+          {
+            "row_count": 80,
+            "table_name": "assessment_form_items",
+            "fingerprint": "02512d79c711fdd1ade10d8b8ba60bd5"
+          },
+          {
+            "row_count": 4,
+            "table_name": "assessment_forms",
+            "fingerprint": "261152bab0348edaf4fadca0385c850e"
+          },
+          {
+            "row_count": 0,
+            "table_name": "assessment_policy_bindings",
+            "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          {
+            "row_count": 280,
+            "table_name": "assessment_pool_items",
+            "fingerprint": "bc60f679991a95387749629e7a2759cd"
+          },
+          {
+            "row_count": 4,
+            "table_name": "assessment_pools",
+            "fingerprint": "c957e610a262f61bd1e50d9c715b6973"
+          },
+          {
+            "row_count": 42,
+            "table_name": "attempts",
+            "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+          },
+          {
+            "row_count": 0,
+            "table_name": "chapter_review_item_exposures",
+            "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          {
+            "row_count": 14,
+            "table_name": "curriculum_release_gate_checks",
+            "fingerprint": "e264300d5ca77755f1dab01f403be695"
+          },
+          {
+            "row_count": 271,
+            "table_name": "curriculum_release_item_families",
+            "fingerprint": "82a56135f06c7a253da8a78501a07a6a"
+          },
+          {
+            "row_count": 28,
+            "table_name": "curriculum_release_skills",
+            "fingerprint": "2bdc962e3ce06ad52373af19516a1147"
+          },
+          {
+            "row_count": 3,
+            "table_name": "curriculum_releases",
+            "fingerprint": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+          },
+          {
+            "row_count": 3,
+            "table_name": "curriculum_source_documents",
+            "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+          },
+          {
+            "row_count": 416,
+            "table_name": "item_answer_keys",
+            "fingerprint": "4382392af3f2b1106f6ac48a7f1f5b71"
+          },
+          {
+            "row_count": 416,
+            "table_name": "item_curriculum_scopes",
+            "fingerprint": "f87c8c53dd7a5e236d8ebbad6f92d229"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_families",
+            "fingerprint": "deb5e6026bac170b4fbce42846991de9"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_family_curriculum_reconciliations",
+            "fingerprint": "65150daf17d7f18a07ad542e37605df3"
+          },
+          {
+            "row_count": 707,
+            "table_name": "item_misconception_mappings",
+            "fingerprint": "d823a42dbe6317b1adc4f4ba5e0712d9"
+          },
+          {
+            "row_count": 1056,
+            "table_name": "item_options",
+            "fingerprint": "478209b3b402ebe751117ff90e0c1b34"
+          },
+          {
+            "row_count": 691,
+            "table_name": "item_qa_runs",
+            "fingerprint": "35ce4422b407059ec7d3501a6fd78b21"
+          },
+          {
+            "row_count": 684,
+            "table_name": "item_reviews",
+            "fingerprint": "9b9a3ccbe2f07c6adda2748c7bd30235"
+          },
+          {
+            "row_count": 66,
+            "table_name": "item_template_remediation_guides",
+            "fingerprint": "31eb52fbc34173bed0ec83901da1f2d6"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_templates",
+            "fingerprint": "67f9d2ccf7cb082f4546c4a3e29ab2e2"
+          },
+          {
+            "row_count": 290,
+            "table_name": "item_versions",
+            "fingerprint": "8cc5309fe0ed7386fae9db8ec9233b13"
+          },
+          {
+            "row_count": 416,
+            "table_name": "items",
+            "fingerprint": "769c11df6dec774b1b272b7d7f4ed098"
+          },
+          {
+            "row_count": 1,
+            "table_name": "learning_model_runtime_bindings",
+            "fingerprint": "140ad5194c426a009a1691a0b174d28c"
+          },
+          {
+            "row_count": 13,
+            "table_name": "learning_outcomes",
+            "fingerprint": "e9f873ec7283e478cebc6eed27be25b8"
+          },
+          {
+            "row_count": 79,
+            "table_name": "learning_session_items",
+            "fingerprint": "dbbb19423c945d8f0ccb85d2312a7800"
+          },
+          {
+            "row_count": 218,
+            "table_name": "misconception_review_events",
+            "fingerprint": "17fe897a7b3940bdb93f2ab3f940456f"
+          },
+          {
+            "row_count": 226,
+            "table_name": "misconceptions",
+            "fingerprint": "28833e24ba869e6d87729515eeea55cf"
+          },
+          {
+            "row_count": 315,
+            "table_name": "remediation_guide_authoring_versions",
+            "fingerprint": "871ac1758f42efb0bc46842b0b99b473"
+          },
+          {
+            "row_count": 159,
+            "table_name": "remediation_guide_versions",
+            "fingerprint": "cf8750c49bd0e05144e101e46fa0f5f3"
+          },
+          {
+            "row_count": 18,
+            "table_name": "skill_curriculum_reconciliations",
+            "fingerprint": "da993b9b2b52e950abb94d7164716d8b"
+          },
+          {
+            "row_count": 20,
+            "table_name": "skill_outcome_curriculum_mappings",
+            "fingerprint": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+          },
+          {
+            "row_count": 20,
+            "table_name": "skill_outcomes",
+            "fingerprint": "6bf2a6b0b3e913d3979fff7f20e778c7"
+          },
+          {
+            "row_count": 10,
+            "table_name": "skill_remediation_guides",
+            "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+          },
+          {
+            "row_count": 19,
+            "table_name": "skills",
+            "fingerprint": "39cb5c0425998f0c9580a50f1d1fef42"
+          },
+          {
+            "row_count": 42,
+            "table_name": "student_item_exposure_events",
+            "fingerprint": "9c2421c9dfc40827b348e6adf7efd681"
+          }
+        ],
+        "observedAt": "2026-10-12T19:08:51.036386+00:00"
+      },
+      {
+        "tables": [
+          {
+            "row_count": 7,
+            "table_name": "assessment_blueprints",
+            "fingerprint": "4c64b14184d45a2b0a74bfed3e15c2ad"
+          },
+          {
+            "row_count": 80,
+            "table_name": "assessment_form_items",
+            "fingerprint": "02512d79c711fdd1ade10d8b8ba60bd5"
+          },
+          {
+            "row_count": 4,
+            "table_name": "assessment_forms",
+            "fingerprint": "261152bab0348edaf4fadca0385c850e"
+          },
+          {
+            "row_count": 0,
+            "table_name": "assessment_policy_bindings",
+            "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          {
+            "row_count": 280,
+            "table_name": "assessment_pool_items",
+            "fingerprint": "bc60f679991a95387749629e7a2759cd"
+          },
+          {
+            "row_count": 4,
+            "table_name": "assessment_pools",
+            "fingerprint": "c957e610a262f61bd1e50d9c715b6973"
+          },
+          {
+            "row_count": 42,
+            "table_name": "attempts",
+            "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+          },
+          {
+            "row_count": 0,
+            "table_name": "chapter_review_item_exposures",
+            "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          {
+            "row_count": 14,
+            "table_name": "curriculum_release_gate_checks",
+            "fingerprint": "e264300d5ca77755f1dab01f403be695"
+          },
+          {
+            "row_count": 271,
+            "table_name": "curriculum_release_item_families",
+            "fingerprint": "82a56135f06c7a253da8a78501a07a6a"
+          },
+          {
+            "row_count": 28,
+            "table_name": "curriculum_release_skills",
+            "fingerprint": "2bdc962e3ce06ad52373af19516a1147"
+          },
+          {
+            "row_count": 3,
+            "table_name": "curriculum_releases",
+            "fingerprint": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+          },
+          {
+            "row_count": 3,
+            "table_name": "curriculum_source_documents",
+            "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+          },
+          {
+            "row_count": 416,
+            "table_name": "item_answer_keys",
+            "fingerprint": "4382392af3f2b1106f6ac48a7f1f5b71"
+          },
+          {
+            "row_count": 416,
+            "table_name": "item_curriculum_scopes",
+            "fingerprint": "f87c8c53dd7a5e236d8ebbad6f92d229"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_families",
+            "fingerprint": "deb5e6026bac170b4fbce42846991de9"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_family_curriculum_reconciliations",
+            "fingerprint": "65150daf17d7f18a07ad542e37605df3"
+          },
+          {
+            "row_count": 707,
+            "table_name": "item_misconception_mappings",
+            "fingerprint": "d823a42dbe6317b1adc4f4ba5e0712d9"
+          },
+          {
+            "row_count": 1056,
+            "table_name": "item_options",
+            "fingerprint": "478209b3b402ebe751117ff90e0c1b34"
+          },
+          {
+            "row_count": 691,
+            "table_name": "item_qa_runs",
+            "fingerprint": "35ce4422b407059ec7d3501a6fd78b21"
+          },
+          {
+            "row_count": 684,
+            "table_name": "item_reviews",
+            "fingerprint": "9b9a3ccbe2f07c6adda2748c7bd30235"
+          },
+          {
+            "row_count": 66,
+            "table_name": "item_template_remediation_guides",
+            "fingerprint": "31eb52fbc34173bed0ec83901da1f2d6"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_templates",
+            "fingerprint": "67f9d2ccf7cb082f4546c4a3e29ab2e2"
+          },
+          {
+            "row_count": 290,
+            "table_name": "item_versions",
+            "fingerprint": "8cc5309fe0ed7386fae9db8ec9233b13"
+          },
+          {
+            "row_count": 416,
+            "table_name": "items",
+            "fingerprint": "769c11df6dec774b1b272b7d7f4ed098"
+          },
+          {
+            "row_count": 1,
+            "table_name": "learning_model_runtime_bindings",
+            "fingerprint": "140ad5194c426a009a1691a0b174d28c"
+          },
+          {
+            "row_count": 13,
+            "table_name": "learning_outcomes",
+            "fingerprint": "e9f873ec7283e478cebc6eed27be25b8"
+          },
+          {
+            "row_count": 79,
+            "table_name": "learning_session_items",
+            "fingerprint": "dbbb19423c945d8f0ccb85d2312a7800"
+          },
+          {
+            "row_count": 218,
+            "table_name": "misconception_review_events",
+            "fingerprint": "17fe897a7b3940bdb93f2ab3f940456f"
+          },
+          {
+            "row_count": 226,
+            "table_name": "misconceptions",
+            "fingerprint": "28833e24ba869e6d87729515eeea55cf"
+          },
+          {
+            "row_count": 315,
+            "table_name": "remediation_guide_authoring_versions",
+            "fingerprint": "871ac1758f42efb0bc46842b0b99b473"
+          },
+          {
+            "row_count": 159,
+            "table_name": "remediation_guide_versions",
+            "fingerprint": "cf8750c49bd0e05144e101e46fa0f5f3"
+          },
+          {
+            "row_count": 18,
+            "table_name": "skill_curriculum_reconciliations",
+            "fingerprint": "da993b9b2b52e950abb94d7164716d8b"
+          },
+          {
+            "row_count": 20,
+            "table_name": "skill_outcome_curriculum_mappings",
+            "fingerprint": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+          },
+          {
+            "row_count": 20,
+            "table_name": "skill_outcomes",
+            "fingerprint": "6bf2a6b0b3e913d3979fff7f20e778c7"
+          },
+          {
+            "row_count": 10,
+            "table_name": "skill_remediation_guides",
+            "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+          },
+          {
+            "row_count": 19,
+            "table_name": "skills",
+            "fingerprint": "39cb5c0425998f0c9580a50f1d1fef42"
+          },
+          {
+            "row_count": 42,
+            "table_name": "student_item_exposure_events",
+            "fingerprint": "9c2421c9dfc40827b348e6adf7efd681"
+          }
+        ],
+        "observedAt": "2026-10-12T19:18:45.122991+00:00"
+      },
+      {
+        "tables": [
+          {
+            "row_count": 7,
+            "table_name": "assessment_blueprints",
+            "fingerprint": "4c64b14184d45a2b0a74bfed3e15c2ad"
+          },
+          {
+            "row_count": 80,
+            "table_name": "assessment_form_items",
+            "fingerprint": "02512d79c711fdd1ade10d8b8ba60bd5"
+          },
+          {
+            "row_count": 4,
+            "table_name": "assessment_forms",
+            "fingerprint": "261152bab0348edaf4fadca0385c850e"
+          },
+          {
+            "row_count": 0,
+            "table_name": "assessment_policy_bindings",
+            "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          {
+            "row_count": 280,
+            "table_name": "assessment_pool_items",
+            "fingerprint": "bc60f679991a95387749629e7a2759cd"
+          },
+          {
+            "row_count": 4,
+            "table_name": "assessment_pools",
+            "fingerprint": "c957e610a262f61bd1e50d9c715b6973"
+          },
+          {
+            "row_count": 42,
+            "table_name": "attempts",
+            "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+          },
+          {
+            "row_count": 0,
+            "table_name": "chapter_review_item_exposures",
+            "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+          },
+          {
+            "row_count": 14,
+            "table_name": "curriculum_release_gate_checks",
+            "fingerprint": "e264300d5ca77755f1dab01f403be695"
+          },
+          {
+            "row_count": 271,
+            "table_name": "curriculum_release_item_families",
+            "fingerprint": "82a56135f06c7a253da8a78501a07a6a"
+          },
+          {
+            "row_count": 28,
+            "table_name": "curriculum_release_skills",
+            "fingerprint": "2bdc962e3ce06ad52373af19516a1147"
+          },
+          {
+            "row_count": 3,
+            "table_name": "curriculum_releases",
+            "fingerprint": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+          },
+          {
+            "row_count": 3,
+            "table_name": "curriculum_source_documents",
+            "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+          },
+          {
+            "row_count": 416,
+            "table_name": "item_answer_keys",
+            "fingerprint": "4382392af3f2b1106f6ac48a7f1f5b71"
+          },
+          {
+            "row_count": 416,
+            "table_name": "item_curriculum_scopes",
+            "fingerprint": "f87c8c53dd7a5e236d8ebbad6f92d229"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_families",
+            "fingerprint": "deb5e6026bac170b4fbce42846991de9"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_family_curriculum_reconciliations",
+            "fingerprint": "65150daf17d7f18a07ad542e37605df3"
+          },
+          {
+            "row_count": 707,
+            "table_name": "item_misconception_mappings",
+            "fingerprint": "d823a42dbe6317b1adc4f4ba5e0712d9"
+          },
+          {
+            "row_count": 1056,
+            "table_name": "item_options",
+            "fingerprint": "478209b3b402ebe751117ff90e0c1b34"
+          },
+          {
+            "row_count": 691,
+            "table_name": "item_qa_runs",
+            "fingerprint": "35ce4422b407059ec7d3501a6fd78b21"
+          },
+          {
+            "row_count": 684,
+            "table_name": "item_reviews",
+            "fingerprint": "9b9a3ccbe2f07c6adda2748c7bd30235"
+          },
+          {
+            "row_count": 66,
+            "table_name": "item_template_remediation_guides",
+            "fingerprint": "31eb52fbc34173bed0ec83901da1f2d6"
+          },
+          {
+            "row_count": 194,
+            "table_name": "item_templates",
+            "fingerprint": "67f9d2ccf7cb082f4546c4a3e29ab2e2"
+          },
+          {
+            "row_count": 290,
+            "table_name": "item_versions",
+            "fingerprint": "8cc5309fe0ed7386fae9db8ec9233b13"
+          },
+          {
+            "row_count": 416,
+            "table_name": "items",
+            "fingerprint": "769c11df6dec774b1b272b7d7f4ed098"
+          },
+          {
+            "row_count": 1,
+            "table_name": "learning_model_runtime_bindings",
+            "fingerprint": "140ad5194c426a009a1691a0b174d28c"
+          },
+          {
+            "row_count": 13,
+            "table_name": "learning_outcomes",
+            "fingerprint": "e9f873ec7283e478cebc6eed27be25b8"
+          },
+          {
+            "row_count": 79,
+            "table_name": "learning_session_items",
+            "fingerprint": "dbbb19423c945d8f0ccb85d2312a7800"
+          },
+          {
+            "row_count": 218,
+            "table_name": "misconception_review_events",
+            "fingerprint": "17fe897a7b3940bdb93f2ab3f940456f"
+          },
+          {
+            "row_count": 226,
+            "table_name": "misconceptions",
+            "fingerprint": "28833e24ba869e6d87729515eeea55cf"
+          },
+          {
+            "row_count": 315,
+            "table_name": "remediation_guide_authoring_versions",
+            "fingerprint": "871ac1758f42efb0bc46842b0b99b473"
+          },
+          {
+            "row_count": 159,
+            "table_name": "remediation_guide_versions",
+            "fingerprint": "cf8750c49bd0e05144e101e46fa0f5f3"
+          },
+          {
+            "row_count": 18,
+            "table_name": "skill_curriculum_reconciliations",
+            "fingerprint": "da993b9b2b52e950abb94d7164716d8b"
+          },
+          {
+            "row_count": 20,
+            "table_name": "skill_outcome_curriculum_mappings",
+            "fingerprint": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+          },
+          {
+            "row_count": 20,
+            "table_name": "skill_outcomes",
+            "fingerprint": "6bf2a6b0b3e913d3979fff7f20e778c7"
+          },
+          {
+            "row_count": 10,
+            "table_name": "skill_remediation_guides",
+            "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+          },
+          {
+            "row_count": 19,
+            "table_name": "skills",
+            "fingerprint": "39cb5c0425998f0c9580a50f1d1fef42"
+          },
+          {
+            "row_count": 42,
+            "table_name": "student_item_exposure_events",
+            "fingerprint": "9c2421c9dfc40827b348e6adf7efd681"
+          }
+        ],
+        "observedAt": "2026-10-12T19:30:40.358698+00:00"
+      }
+    ],
+    "all38TablesUnchanged": true,
+    "s05Exposure": {
+      "observedAt": "2026-10-12T19:11:00.742762+00:00",
+      "s05Attempts": 0,
+      "s05Sessions": 0,
+      "s05ExposureEvents": 0,
+      "sameOutcomeSkills": [
+        "PHY7-U02-S05"
+      ],
+      "s05ReviewExposures": 0
+    },
+    "relatedExposure": {
+      "attempts": 6,
+      "observedAt": "2026-10-12T19:30:38.824362+00:00",
+      "sessionItems": 12,
+      "exposureEvents": 6,
+      "reviewExposures": 0,
+      "recordedExposureItemCodes": [
+        "PHY7-U01-S04-11D-D01",
+        "PHY7-U01-S04-11D-D02",
+        "PHY7-U01-S04-11D-D03",
+        "PHY7-U01-S04-11D-D04",
+        "PHY7-U01-S04-11D-M01",
+        "PHY7-U01-S04-11D-M02",
+        "PHY7-U01-S05-11D-D01",
+        "PHY7-U01-S05-11D-D02",
+        "PHY7-U01-S05-11D-D03",
+        "PHY7-U01-S05-11D-D04",
+        "PHY7-U01-S05-11D-M01",
+        "PHY7-U01-S05-11D-M02"
+      ]
+    }
+  },
+  "humanReviewAndQa": {
+    "observedAt": "2026-10-12T19:18:58.055188+00:00",
+    "review": {
+      "id": "1aec0ac0-4d17-4d5b-ae61-752f28817c9e",
+      "version_no": 2,
+      "decision": "approved",
+      "created_at": "2026-10-12T16:58:08.74507+00:00",
+      "review_type": "content"
+    },
+    "qa": {
+      "id": "e7079067-8ab3-44dd-bef6-474b97ba30ae",
+      "version_no": 2,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "created_at": "2026-10-12T16:58:01.532236+00:00"
+    },
+    "newQaRunPerformed": false,
+    "productionMutations": 0
+  },
+  "decision": {
+    "disposition": "protected_parallel_assessment_variant",
+    "retainedVersion": 2,
+    "independentNewReasoningPaths": 0,
+    "authorComparisonRefresh": "complete",
+    "humanApprovalPreserved": true,
+    "languageAndPhysics": "No blocking issue found; approved wording retained. Natural Armenian and textbook terminology are explicit standing authoring requirements.",
+    "protection": "Nearest practice/guides teach prerequisites without supplying the complete target answer. Protected near-neighbours remain subject to exposure and disjoint-allocation review.",
+    "gatesRemaining": [
+      "Independent SME/exposure review before allocation",
+      "Disjoint item/stimulus allocation and per-learner exposure controls",
+      "Defensible reserves, governed policy/model bindings, pilot and release gates",
+      "Empirical difficulty/reliability/equivalence remain unestablished"
+    ]
+  },
+  "capacity": {
+    "retainedHistoricalQuestionRecords": 156,
+    "approvedNonArchivedQuestions": 155,
+    "archivedQuestions": 1,
+    "practice": 96,
+    "diagnostic": 18,
+    "mastery": 41,
+    "target": 192,
+    "gapExcludingArchived": 37,
+    "diagnosticGap": 14,
+    "masteryGap": 23,
+    "activeDefinitions": 216,
+    "publishedGuides": 57,
+    "basis": "Unchanged nominal approved non-archived inventory. Closing the version-specific author comparison does not certify qualified protected capacity or remaining release gates."
+  },
+  "archivedItem": {
+    "code": "PHY7-U02-S07-M05",
+    "version": 1,
+    "disposition": "Archived by John; preserved and excluded from capacity; no restoration or replacement."
+  },
+  "editorialFollowup": {
+    "guideId": "a44ab261-4ab8-4884-9655-838770933f75",
+    "issue": "Mixed-script token in strategy_hy; recorded for versioned correction/review, approval preserved."
+  },
+  "restrictedEvidenceMembers": {
+    "candidate-profile.json": "eb2b774826ce3992d4bc1e5c296619d0b3f5e774ce2787f1ce0431d6eb163d65",
+    "comparison-matrix.json": "8b9a48ca73ea42fd4fd6a77cd68a2772450ebeee969320e44e71023e905ead99",
+    "corpus.json": "f4558aaae22779b1b9a99719ad8e14efe8cf5974ad9f57317a0c0e794c502306",
+    "target-approved-v2.json": "d70cbe97258cf938c2fac38a9ae71210f16600b74e8730623e6619149d12b6a0",
+    "source-and-language.json": "02230e5123bb828c600bfc2c75b20c8e21a868027ff09580389b92c71b9c5de4"
+  },
+  "restrictedArchive": {
+    "sha256": "0f72974ec846fe3d4f00d561dffa8ff15c85f3c57eb9bdc4ecd25e27903d7c0f",
+    "sizeBytes": 2328531,
+    "freshMaterializedReadback": true,
+    "allEntryCrcPassed": true,
+    "manifestMemberHashesVerified": 33,
+    "identity": {
+      "library_file_id": "libfile_a29859caae388191934b359cc9d3ead5",
+      "file_id": "file_000000009f2c81f4a428c2d4954f845b",
+      "file_name": "HaiEdu-S05-M05-v2-Comparison.zip",
+      "current_version_number": 0
+    },
+    "scope": "Initial full-S05 evidence plus related prompt/key screen; the companion related archive below supersedes that screening limitation. Original bytes preserved."
+  },
+  "relatedComparisonArchive": {
+    "sha256": "cffa2b848b627fc21b8d102901be1ee75e7ffe854d97d5851dbc5a8702c8d38e",
+    "sizeBytes": 138709,
+    "freshMaterializedReadback": true,
+    "allEntryCrcPassed": true,
+    "manifestMemberHashesVerified": 14,
+    "identity": {
+      "library_file_id": "libfile_78d99ddd89f48191984e350064fbfee0",
+      "file_id": "file_00000000509c8210aa5c187095b1d7f3",
+      "file_name": "HaiEdu-S05-M05-v2-Related-Comparison.zip",
+      "current_version_number": 0
+    },
+    "memberSha256": {
+      "related-full-comparison.json": "52186d9208e176c5625a8152e59580e83e0eb323d521d9d5df95f41956e3b103",
+      "related-expanded-inventory.json": "212d424db45c5663bd243031d2231d612edf3a56a7203985b2690e1731b2bf06",
+      "related-guide-history-normalized.json": "837bf7594cd4d6c0ce2ee38d6cb9d1fe331126037ebfadbc9a7efc61e756f270",
+      "guards-after-related-full.json": "a2a7075aecd107283d89218b665a48710cc7338c8d99b25d385d1805653288ea"
+    }
+  },
+  "reviewFollowup": {
+    "pr": 201,
+    "thread": "PRRT_kwDOUZQgcc6rmC2O",
+    "finding": "Initial related-bank prompt/key screening and selected full-option reads were insufficient to close the substantive comparison.",
+    "resolution": "Read all 90 related current items with full options, keys and stimuli, nine differing immutable versions across 60 history records, and all 14 additional distinct related historical guide texts across 107 records. Recorded per-item solution/distractor comparisons and history/guide judgments in a durable, freshly materialized companion archive.",
+    "observedAt": "2026-10-12T19:30:40.358698+00:00",
+    "result": "No complete-answer collision found; retain protected parallel disposition and zero independent new reasoning coverage. All separate SME/exposure, allocation and release gates remain.",
+    "currentRelatedVersionInventory": [
+      {
+        "id": "819720fa-2b2c-4335-bf6a-aa2915706d07",
+        "code": "PHY7-U01-S04-11D-D01",
+        "version": 1
+      },
+      {
+        "id": "d8fb86e3-9ba8-441a-bb63-ce20e04977f5",
+        "code": "PHY7-U01-S04-11D-D02",
+        "version": 1
+      },
+      {
+        "id": "f093d4b1-854a-43ef-a410-14c9db09e5bd",
+        "code": "PHY7-U01-S04-11D-D03",
+        "version": 1
+      },
+      {
+        "id": "c18747da-01be-468a-b465-82abb51a8419",
+        "code": "PHY7-U01-S04-11D-D04",
+        "version": 1
+      },
+      {
+        "id": "b6ae2bb8-c3fd-4c25-b7cf-e8410a1dcfc5",
+        "code": "PHY7-U01-S04-11D-M01",
+        "version": 1
+      },
+      {
+        "id": "281ca4cf-11ac-4cac-996b-d6b33b5482f8",
+        "code": "PHY7-U01-S04-11D-M02",
+        "version": 1
+      },
+      {
+        "id": "1d6787b1-bb5a-4543-b2c4-4da469c46be3",
+        "code": "PHY7-U01-S04-11D-M03",
+        "version": 1
+      },
+      {
+        "id": "d857cc97-3e92-4f39-a7e1-39ae14ee68d4",
+        "code": "PHY7-U01-S04-11D-M04",
+        "version": 1
+      },
+      {
+        "id": "d3571945-baaa-40da-99f4-e049506d2252",
+        "code": "PHY7-U01-S04-11D-M05",
+        "version": 1
+      },
+      {
+        "id": "cf05b804-f097-4435-9f49-9a9c2a3fe414",
+        "code": "PHY7-U01-S04-11D-M06",
+        "version": 1
+      },
+      {
+        "id": "456b8546-0d61-466b-9657-dd73a2d7df73",
+        "code": "PHY7-U01-S04-11D-P01",
+        "version": 1
+      },
+      {
+        "id": "507bb9f8-1555-4a98-9907-0f5ffeca2d75",
+        "code": "PHY7-U01-S04-11D-P02",
+        "version": 1
+      },
+      {
+        "id": "04c6e33a-e730-458f-ba52-3664bae537b9",
+        "code": "PHY7-U01-S04-11D-P03",
+        "version": 1
+      },
+      {
+        "id": "76f66f6d-48bf-46e1-b490-babb8acf5324",
+        "code": "PHY7-U01-S04-11D-P04",
+        "version": 1
+      },
+      {
+        "id": "b81791dc-4558-4d77-9b84-7fad7c6bc975",
+        "code": "PHY7-U01-S04-11D-P05",
+        "version": 1
+      },
+      {
+        "id": "92211425-ef7b-449a-b9e8-0c8414694ee7",
+        "code": "PHY7-U01-S04-11D-P06",
+        "version": 1
+      },
+      {
+        "id": "1a15fd8b-bccb-4b6c-8ce7-e2715701ce18",
+        "code": "PHY7-U01-S04-11D-P07",
+        "version": 1
+      },
+      {
+        "id": "09f72434-7472-41de-bc87-71838c58b07f",
+        "code": "PHY7-U01-S04-11D-P08",
+        "version": 1
+      },
+      {
+        "id": "d43fa39d-ef90-4c07-8be9-68ca36843cea",
+        "code": "PHY7-U01-S04-I01",
+        "version": 1
+      },
+      {
+        "id": "0db00883-31f8-4115-af2d-ae10783f5ee4",
+        "code": "PHY7-U01-S04-I02",
+        "version": 1
+      },
+      {
+        "id": "9ab3e369-201d-42b9-8cea-dbbad0c713b7",
+        "code": "PHY7-U01-S04-I03",
+        "version": 1
+      },
+      {
+        "id": "8de64aad-77f7-4061-903a-43dbf09c2079",
+        "code": "PHY7-U01-S04-I04",
+        "version": 1
+      },
+      {
+        "id": "e49a831f-bd17-4b9a-89f8-81f4c0830122",
+        "code": "PHY7-U01-S04-I05",
+        "version": 1
+      },
+      {
+        "id": "fdd8f026-055b-4103-b8c6-9b0dcdfc021b",
+        "code": "PHY7-U01-S04-I06",
+        "version": 1
+      },
+      {
+        "id": "ee89770f-26ae-4cd9-b7ff-580ee312aae6",
+        "code": "PHY7-U01-S04-T-OBS-EXP-PARALLEL-V-5ED306A15B",
+        "version": 1
+      },
+      {
+        "id": "b3b9022f-33bf-4960-9dcb-f725ef89eec4",
+        "code": "PHY7-U01-S04-T-OBS-EXP-PARALLEL-V-E2AEC5A82D",
+        "version": 1
+      },
+      {
+        "id": "0d7ff503-45af-495c-885b-9c172e4c3e2d",
+        "code": "PHY7-U01-S05-11D-D01",
+        "version": 1
+      },
+      {
+        "id": "b27d43ab-e4c1-44a1-a423-2d36a81868fe",
+        "code": "PHY7-U01-S05-11D-D02",
+        "version": 1
+      },
+      {
+        "id": "61762fca-6fec-4cb8-989c-af849a11dc47",
+        "code": "PHY7-U01-S05-11D-D03",
+        "version": 1
+      },
+      {
+        "id": "52a4c2e9-2240-4578-96ea-10870d60a7da",
+        "code": "PHY7-U01-S05-11D-D04",
+        "version": 1
+      },
+      {
+        "id": "1b1422e9-5341-439f-9e90-ad3e3f03c7fc",
+        "code": "PHY7-U01-S05-11D-M01",
+        "version": 1
+      },
+      {
+        "id": "da8dd0a1-8e07-42ac-8459-93a499231a72",
+        "code": "PHY7-U01-S05-11D-M02",
+        "version": 1
+      },
+      {
+        "id": "97753cd9-62ff-46d0-92e1-d6308e79d35a",
+        "code": "PHY7-U01-S05-11D-M03",
+        "version": 2
+      },
+      {
+        "id": "b348469d-60e5-49c5-9c67-6a38f5b7515d",
+        "code": "PHY7-U01-S05-11D-M04",
+        "version": 1
+      },
+      {
+        "id": "940555bf-74ff-45ba-899f-62409daab88e",
+        "code": "PHY7-U01-S05-11D-M05",
+        "version": 1
+      },
+      {
+        "id": "4638308a-7a4d-4eae-a0b7-436c913a81ba",
+        "code": "PHY7-U01-S05-11D-M06",
+        "version": 1
+      },
+      {
+        "id": "186d60bf-784d-4a98-8a3d-19eb4c28ce5d",
+        "code": "PHY7-U01-S05-11D-P01",
+        "version": 1
+      },
+      {
+        "id": "8c60514d-f1d9-453a-a0ba-ab082dcfc9da",
+        "code": "PHY7-U01-S05-11D-P02",
+        "version": 1
+      },
+      {
+        "id": "3983318f-af57-45af-b071-98e00fd26852",
+        "code": "PHY7-U01-S05-11D-P03",
+        "version": 1
+      },
+      {
+        "id": "c93f2782-f4a9-4f88-8ae3-a61495747bed",
+        "code": "PHY7-U01-S05-11D-P04",
+        "version": 1
+      },
+      {
+        "id": "400494da-5c31-4679-9751-47eb3751d995",
+        "code": "PHY7-U01-S05-11D-P05",
+        "version": 1
+      },
+      {
+        "id": "ce3660ab-4b15-4a4c-9738-3c1e2117eb3a",
+        "code": "PHY7-U01-S05-11D-P06",
+        "version": 1
+      },
+      {
+        "id": "60eb770a-530f-41cf-af9c-0fd41a7589df",
+        "code": "PHY7-U01-S05-11D-P07",
+        "version": 1
+      },
+      {
+        "id": "37cccea0-55f3-439e-8dbf-2f99df22e6a4",
+        "code": "PHY7-U01-S05-11D-P08",
+        "version": 1
+      },
+      {
+        "id": "6186d2ce-06ac-41a4-9e55-83ccafeb4259",
+        "code": "PHY7-U01-S05-I01",
+        "version": 1
+      },
+      {
+        "id": "efb749da-437f-4e5b-b4fa-8ebdfea3922b",
+        "code": "PHY7-U01-S05-I02",
+        "version": 1
+      },
+      {
+        "id": "71fc79dc-757e-4be8-9474-96856d6f9461",
+        "code": "PHY7-U01-S05-I03",
+        "version": 1
+      },
+      {
+        "id": "85df2893-d4c4-4033-8c57-933cf52d128f",
+        "code": "PHY7-U01-S05-I04",
+        "version": 1
+      },
+      {
+        "id": "b97a3edf-fa33-49ed-ab08-36d9474ff93c",
+        "code": "PHY7-U01-S05-I05",
+        "version": 1
+      },
+      {
+        "id": "6800cd4d-2729-47ee-9b22-029e3133c9ed",
+        "code": "PHY7-U01-S05-I06",
+        "version": 1
+      },
+      {
+        "id": "7fae1da1-cf6e-4025-8016-75da8413a84f",
+        "code": "PHY7-U01-S05-T-HYPOTHESIS-TEST-PARALLEL-V-5ED306A15B",
+        "version": 1
+      },
+      {
+        "id": "d783f7f0-c4e0-4d5e-98eb-36db18097b26",
+        "code": "PHY7-U01-S05-T-HYPOTHESIS-TEST-PARALLEL-V-E2AEC5A82D",
+        "version": 1
+      },
+      {
+        "id": "96228ed4-483f-491b-bdf6-13a162cb4333",
+        "code": "PHY7-U02-S06-D01",
+        "version": 1
+      },
+      {
+        "id": "bbdfbb0f-77e1-4048-ac6b-aa9b73476084",
+        "code": "PHY7-U02-S06-D02",
+        "version": 1
+      },
+      {
+        "id": "62ff143c-00d3-47dc-ad15-710e528387e6",
+        "code": "PHY7-U02-S06-I01",
+        "version": 1
+      },
+      {
+        "id": "ee3807ee-567d-480d-b330-80ce11d18efa",
+        "code": "PHY7-U02-S06-I02",
+        "version": 1
+      },
+      {
+        "id": "8fcb3821-bf6e-4b4f-8027-c5127ed94ca8",
+        "code": "PHY7-U02-S06-I03",
+        "version": 1
+      },
+      {
+        "id": "660f6de2-cba0-4236-a148-4103cf07897f",
+        "code": "PHY7-U02-S06-I04",
+        "version": 1
+      },
+      {
+        "id": "d94454da-af21-48a5-aae9-4d09b1543b67",
+        "code": "PHY7-U02-S06-I05",
+        "version": 2
+      },
+      {
+        "id": "1bf9f08f-8bcc-4ca1-8261-85a39e0f9218",
+        "code": "PHY7-U02-S06-I06",
+        "version": 1
+      },
+      {
+        "id": "6e2b9adc-f2fa-4485-b44b-bf8765217560",
+        "code": "PHY7-U02-S06-I07",
+        "version": 2
+      },
+      {
+        "id": "62f4726e-48bb-4cf1-a4ef-4c45be4cab68",
+        "code": "PHY7-U02-S06-I08",
+        "version": 2
+      },
+      {
+        "id": "42261bfb-ba95-4cd6-990a-317e03fd4d2f",
+        "code": "PHY7-U02-S06-I09",
+        "version": 1
+      },
+      {
+        "id": "b7a72302-2699-4f38-8b44-fd3ac0b8b5f0",
+        "code": "PHY7-U02-S06-I10",
+        "version": 1
+      },
+      {
+        "id": "75fb859b-a462-436c-ab72-2ca343048b28",
+        "code": "PHY7-U02-S06-I11",
+        "version": 1
+      },
+      {
+        "id": "0bcc4b12-fc57-4dce-8b54-267efd8c32a4",
+        "code": "PHY7-U02-S06-I12",
+        "version": 2
+      },
+      {
+        "id": "4f91b533-4a85-4bf6-b272-c92c177081f4",
+        "code": "PHY7-U02-S06-M01",
+        "version": 1
+      },
+      {
+        "id": "4966dae0-a2e0-4eb0-96c7-34b7ae52f8ae",
+        "code": "PHY7-U02-S06-M02",
+        "version": 1
+      },
+      {
+        "id": "1205ce18-2b49-4990-9689-7ec0e32304d3",
+        "code": "PHY7-U02-S06-M03",
+        "version": 1
+      },
+      {
+        "id": "08a4d700-03c2-49bd-a69f-f8bc1dbdc47d",
+        "code": "PHY7-U02-S06-M04",
+        "version": 1
+      },
+      {
+        "id": "7d406bf4-2860-42bc-8623-91f4fdb7652e",
+        "code": "PHY7-U02-S06-M05",
+        "version": 1
+      },
+      {
+        "id": "db1cbeb4-cf73-4322-ab64-4319d74c4048",
+        "code": "PHY7-U02-S08-D01",
+        "version": 2
+      },
+      {
+        "id": "91582cd9-6b25-4dac-bc55-51975f85ae43",
+        "code": "PHY7-U02-S08-D02",
+        "version": 1
+      },
+      {
+        "id": "f0ee7d39-d922-4463-9703-0c8565da31ab",
+        "code": "PHY7-U02-S08-I01",
+        "version": 1
+      },
+      {
+        "id": "76d5fe46-411e-4b58-b950-03ba3984845d",
+        "code": "PHY7-U02-S08-I02",
+        "version": 1
+      },
+      {
+        "id": "f73aa214-ae3f-4653-a19f-3de251e95102",
+        "code": "PHY7-U02-S08-I03",
+        "version": 1
+      },
+      {
+        "id": "f2773a3c-95ce-4b50-85e7-dda5415d5e54",
+        "code": "PHY7-U02-S08-I04",
+        "version": 1
+      },
+      {
+        "id": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+        "code": "PHY7-U02-S08-I05",
+        "version": 2
+      },
+      {
+        "id": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+        "code": "PHY7-U02-S08-I06",
+        "version": 2
+      },
+      {
+        "id": "57867761-7b90-477d-827b-262d33386a6a",
+        "code": "PHY7-U02-S08-I07",
+        "version": 1
+      },
+      {
+        "id": "14054457-555d-4de4-9562-462bbb8e6bac",
+        "code": "PHY7-U02-S08-I08",
+        "version": 1
+      },
+      {
+        "id": "b341debb-09c5-48ea-bd2e-e19f4a740f5f",
+        "code": "PHY7-U02-S08-I09",
+        "version": 1
+      },
+      {
+        "id": "bc2e3194-c172-4a1b-81c2-bf287083d6cd",
+        "code": "PHY7-U02-S08-I10",
+        "version": 1
+      },
+      {
+        "id": "dd7a8937-01a5-4727-a9de-2ae1fcd3c1ce",
+        "code": "PHY7-U02-S08-I11",
+        "version": 1
+      },
+      {
+        "id": "8c7c7f63-7f54-4876-90b0-fae7f2285abe",
+        "code": "PHY7-U02-S08-I12",
+        "version": 1
+      },
+      {
+        "id": "c4e81f2d-26db-43a5-bde1-bd956ecf1cf2",
+        "code": "PHY7-U02-S08-M01",
+        "version": 1
+      },
+      {
+        "id": "f5abddad-64f2-4749-b57a-133aeb576bc8",
+        "code": "PHY7-U02-S08-M02",
+        "version": 2
+      },
+      {
+        "id": "c8af569d-4e11-4d39-b3d2-190f1204efcb",
+        "code": "PHY7-U02-S08-M03",
+        "version": 1
+      },
+      {
+        "id": "998491fc-860c-4745-92c9-67c5bdd92e8a",
+        "code": "PHY7-U02-S08-M04",
+        "version": 1
+      },
+      {
+        "id": "efcdb40f-553e-4e81-8f0e-e8254ef7bbbb",
+        "code": "PHY7-U02-S08-M05",
+        "version": 1
+      }
+    ],
+    "relatedHistoricalVersionInventory": [
+      {
+        "id": "027d32b9-a800-4db5-8ad3-7e105f2f63f8",
+        "code": "PHY7-U02-S06-I04",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "02e50f35-d72d-4e8c-ba64-b68db480637c",
+        "code": "PHY7-U01-S05-I03",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "08d17af6-a469-49e8-9d8a-ea8dca2ec8ef",
+        "code": "PHY7-U02-S06-D02",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "09e3362b-f3e1-43a3-b35e-6eca934938ce",
+        "code": "PHY7-U02-S08-I07",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "1261e16c-e865-4003-b6a3-37285dba8e3d",
+        "code": "PHY7-U02-S08-M03",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "170a8ae0-963c-435f-9c22-564ad27ea0e9",
+        "code": "PHY7-U02-S06-I11",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "19b2804d-89a3-45b9-931d-1f9669391e8b",
+        "code": "PHY7-U02-S08-M01",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "1e1cde5d-1f97-4a30-8cd1-a22e0231ce5a",
+        "code": "PHY7-U02-S08-D01",
+        "version": 2,
+        "different": false
+      },
+      {
+        "id": "2f21f1d3-f9da-4077-919a-66cb63343904",
+        "code": "PHY7-U02-S06-I07",
+        "version": 2,
+        "different": false
+      },
+      {
+        "id": "307d43c4-ad59-4599-821d-d6999a459a41",
+        "code": "PHY7-U02-S06-I02",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "33116934-bcca-4f8b-8084-bec64e212f06",
+        "code": "PHY7-U02-S06-I07",
+        "version": 1,
+        "different": true
+      },
+      {
+        "id": "3602ee9d-d717-4a35-bcb1-7085239340a1",
+        "code": "PHY7-U02-S08-I05",
+        "version": 1,
+        "different": true
+      },
+      {
+        "id": "3749af0d-05d3-484f-a4c1-027b24138223",
+        "code": "PHY7-U02-S06-I08",
+        "version": 2,
+        "different": false
+      },
+      {
+        "id": "3c136491-8118-4cd1-b931-c2f779c6b9c4",
+        "code": "PHY7-U02-S08-I01",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "4469defb-b1c9-44fc-856a-bafda67058f1",
+        "code": "PHY7-U02-S08-D02",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "4eef5379-8ad1-49f0-8b23-fc4db0b79759",
+        "code": "PHY7-U02-S06-I03",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "4f8802d3-7229-461b-a5fd-760a51253bb6",
+        "code": "PHY7-U01-S05-I02",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "528b8acb-4bb6-4ddc-9138-c70164708cc7",
+        "code": "PHY7-U02-S08-I02",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "56822638-299f-4578-a7d6-4c0c9349c7ab",
+        "code": "PHY7-U02-S06-I05",
+        "version": 1,
+        "different": true
+      },
+      {
+        "id": "591fcbae-61dc-4d86-ab09-8cd7e5674a14",
+        "code": "PHY7-U01-S05-I04",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "59e048d3-0710-464f-bc33-d1fec5dd2acb",
+        "code": "PHY7-U01-S04-I01",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "631a2505-f11a-44fe-86b0-8dd3ccd20774",
+        "code": "PHY7-U02-S08-M02",
+        "version": 2,
+        "different": false
+      },
+      {
+        "id": "6ae2089b-fc16-472c-9fc9-372181e3837e",
+        "code": "PHY7-U02-S06-M03",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "6b24a4a7-bff1-42d8-8468-31764bc2e7ef",
+        "code": "PHY7-U02-S08-I06",
+        "version": 1,
+        "different": true
+      },
+      {
+        "id": "6b27dc53-4b34-4dff-ab73-a3e8b5fe44f3",
+        "code": "PHY7-U02-S08-I09",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "726e0404-e65a-457b-83db-0b9d0406d241",
+        "code": "PHY7-U02-S08-I11",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "76d19727-c9f6-47ed-9c16-9301bd14567e",
+        "code": "PHY7-U02-S06-M01",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "7b336c8c-27d7-4aca-8462-077975f21995",
+        "code": "PHY7-U02-S08-I08",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "7c4ff6b1-eadf-4684-9613-0dae1834ebd0",
+        "code": "PHY7-U02-S06-I09",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "834a518e-96bf-49ff-b98a-8085648651ab",
+        "code": "PHY7-U02-S06-M04",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "8bb20774-a40d-40c6-8910-2b2b56d722ec",
+        "code": "PHY7-U02-S08-I05",
+        "version": 2,
+        "different": false
+      },
+      {
+        "id": "8f0f3b45-1419-4277-8ee4-f406004d6a1f",
+        "code": "PHY7-U02-S06-I08",
+        "version": 1,
+        "different": true
+      },
+      {
+        "id": "94394243-6f4d-4fd0-929a-36161aa93a24",
+        "code": "PHY7-U02-S08-D01",
+        "version": 1,
+        "different": true
+      },
+      {
+        "id": "94853c78-3f44-46b7-b15b-c09f92e4e23b",
+        "code": "PHY7-U01-S04-I03",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "9f749acd-09f5-4401-ad3f-95501c98ab0d",
+        "code": "PHY7-U01-S05-11D-M03",
+        "version": 1,
+        "different": true
+      },
+      {
+        "id": "a06aff24-2d96-4280-a856-b5a5a6b6c460",
+        "code": "PHY7-U02-S08-M04",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "a3268da2-54ee-4d31-be61-d1cff13dcac3",
+        "code": "PHY7-U02-S08-I12",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "a5963be4-064b-4d5f-bd27-f354c62160d4",
+        "code": "PHY7-U02-S06-I12",
+        "version": 2,
+        "different": false
+      },
+      {
+        "id": "a956746e-6f2a-4603-90d9-5c3a6221e915",
+        "code": "PHY7-U02-S06-I01",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "ae06769b-5eb7-4670-bcde-875c5d5c5d42",
+        "code": "PHY7-U02-S06-I12",
+        "version": 1,
+        "different": true
+      },
+      {
+        "id": "b170266c-349d-4c04-b8bc-161701772dfe",
+        "code": "PHY7-U02-S06-I05",
+        "version": 2,
+        "different": false
+      },
+      {
+        "id": "b2e437f0-58a4-4b46-a4cc-3af1cd9aa99b",
+        "code": "PHY7-U01-S05-I05",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "b431fe56-97b9-4a8b-883a-818f25b18940",
+        "code": "PHY7-U02-S08-I03",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "b4c51446-d782-4b67-a18f-d84cdff08234",
+        "code": "PHY7-U01-S05-I06",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "b762b87a-5ad0-4c10-8cdd-b63010db99d4",
+        "code": "PHY7-U01-S04-I04",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "ca28874f-0cc5-43e9-88b5-81eb8cfe4444",
+        "code": "PHY7-U02-S06-I06",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "d1e5b582-3329-4c83-9f4f-290a8510e462",
+        "code": "PHY7-U02-S06-I10",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "d50b9608-c2a3-4bc1-a996-0ee38a83a02b",
+        "code": "PHY7-U02-S08-I04",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "d5faad01-ce6d-4086-9748-b7f13ef47658",
+        "code": "PHY7-U01-S04-I05",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "d6b612bc-df8a-4eef-8dda-e76d3ded7d6d",
+        "code": "PHY7-U01-S04-I02",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "ddbb1ef7-e42e-4290-aff3-c23e2f629ae7",
+        "code": "PHY7-U02-S06-D01",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "e5e5ce29-7b29-4655-975b-7d4b43c759b3",
+        "code": "PHY7-U01-S04-I06",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "f0eca72f-936d-4e6b-9c25-7ef81aac3031",
+        "code": "PHY7-U01-S05-I01",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "f46652e0-dd2a-446a-bc87-d6189cb89d67",
+        "code": "PHY7-U02-S06-M02",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "f50680fb-d32c-486d-aeab-8bed53ac36be",
+        "code": "PHY7-U02-S08-M02",
+        "version": 1,
+        "different": true
+      },
+      {
+        "id": "f7849ff8-e1dd-4aa9-ba06-140f6dfa3782",
+        "code": "PHY7-U02-S08-I06",
+        "version": 2,
+        "different": false
+      },
+      {
+        "id": "f84486ed-6ac6-49d3-87dc-e05328f67569",
+        "code": "PHY7-U01-S05-11D-M03",
+        "version": 2,
+        "different": false
+      },
+      {
+        "id": "ffce0b1b-63b3-4f11-9ef0-28663481e1e1",
+        "code": "PHY7-U02-S08-I10",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "a1a12748-f491-4803-b3b9-53e41a4eb905",
+        "code": "PHY7-U02-S08-M05",
+        "version": 1,
+        "different": false
+      },
+      {
+        "id": "334484e0-7770-458a-9c9d-6c9e09b4aa73",
+        "code": "PHY7-U02-S06-M05",
+        "version": 1,
+        "different": false
+      }
+    ]
+  }
+}
