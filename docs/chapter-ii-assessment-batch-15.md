@@ -8,7 +8,7 @@ The [comparison](chapter-ii-assessment-batch-15-comparison.md), [structured reco
 
 Source: *Ֆիզիկա 7*, Է. Մելիքյան and Գ. Մաիլյան, 2023, §10 pp.30–33, §11 pp.34–35 and prerequisite §3 pp.13–14. The original source hash, programme mappings, assumptions, solution steps and explicit no-image rationale are frozen for each candidate. No prompt refers to an absent illustration or introduces an untaught quantitative law.
 
-The immutable private archive is `libfile_9c4183b99e448191aa8d818908d1cd05`, version 1, SHA256 `058d0a967e45ed565ad4ecb576daefb3aa9bb120df40187840e644b46348cd04`. It was saved before the reachable comparison commit and committed staging. It contains protected stimuli, keys and full review evidence and has no public protected-content access grant. It is an audit artifact, not an additional ZIP review assignment.
+The immutable private archive is `libfile_9c4183b99e448191aa8d818908d1cd05`, version 0, SHA256 `058d0a967e45ed565ad4ecb576daefb3aa9bb120df40187840e644b46348cd04`. It was saved before the reachable comparison commit and committed staging. It contains protected stimuli, keys and full review evidence and has no public protected-content access grant. It is an audit artifact, not an additional ZIP review assignment.
 
 ## Verification and site review
 
