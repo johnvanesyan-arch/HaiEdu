@@ -12,10 +12,11 @@
   "productionObservedAt": "2026-10-12T12:49:16.276898+00:00",
   "archive": {
     "id": "libfile_cba16b5df76c81919edd30fb29618c10",
-    "version": 0,
+    "version": 1,
     "filename": "HaiEdu-Assessment-Batch-16-Comparison.zip",
-    "sha256": "d74c7dc5ccdd86d07cdaa5cfefd4d6dd5ba6b5e02eeeb4a9f2f7a88544c4e169",
-    "scope": "Immutable private pre-staging comparison/source/corpus/rollback evidence; production evidence separate."
+    "sha256": "1d5b15c41e3df6586e986dd94bcade3b9a65195e9b1840144fe94956215faf61",
+    "scope": "Original pre-staging comparison/source/corpus/rollback payload. Incomplete durable version 0 repaired after staging to byte-identical original version 1; production evidence separate.",
+    "persistenceRepairEvidence": "docs/evidence/sprint-15b13-assessment-batch-16-archive-repair-20261012.json"
   },
   "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
   "screening": {
