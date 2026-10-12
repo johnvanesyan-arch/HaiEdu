@@ -1,0 +1,241 @@
+{
+  "policy": "haiedu-whole-skill-review-v1",
+  "pilotProtocol": "haiedu-protected-parallel-pilot-v1",
+  "sprint": "15B.13AE",
+  "scope": {
+    "scope": "Complete 28-table applicable catalogue, all statuses, purposes and releases; 396 current items and 269 immutable item versions; 66 current template guides, 10 skill guides, 159 runtime and 315 authoring guide versions.",
+    "readContinuity": {
+      "scope": "Complete 28-table corpus carried from the same-session coverage audit after every one of the 38 fresh complete-table counts/fingerprints matched. No relevant content changed.",
+      "baselineAt": "2026-10-12T07:43:40.649455+00:00",
+      "priorAt": "2026-10-12T07:20:00.115461+00:00",
+      "priorCorpus": "/workspace/scratch/3552a7f011cb/coverage-audit-20261012/corpus.json",
+      "sourceCommit": "0a2cb9acef10ce08daff3a8ef4a11fcbc8c26540",
+      "priorComparison": "docs/chapter-ii-coverage-feasibility-audit.md",
+      "newCandidateComparisonRequired": true
+    },
+    "freshInspection": "All 30 current S03/S07 questions and their 16 template guides; S03/S07 historical text differences; Chapter I S05 experiment-design questions; nearest S06-M01, S05-I11, S08-I07 and related guides. Prior same-session whole-Chapter-II and related bank readings carried only after all 38 complete-table guards matched.",
+    "historyBoundary": "Complete histories are frozen, including retired/exposed versions. Current/historical source and guide relationships are retained. A repeated taught claim/procedure is permitted only by the approved pilot; no assertion of independent new reasoning is made.",
+    "currentItems": 396,
+    "immutableVersions": 269,
+    "tableCount": 28,
+    "guardedTables": 38,
+    "beforeAt": "2026-10-12T07:43:40.649455+00:00",
+    "afterReadAt": "2026-10-12T08:06:41.852351+00:00",
+    "sourceCommit": "0a2cb9acef10ce08daff3a8ef4a11fcbc8c26540",
+    "policyCommit": "38f3d41fa150aec91e576be47867bb5a5a81caf5",
+    "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "sourceRead": "Textbook §8 printed pp.26–28 and §10 pp.30–33, §11 p.34 freshly checked, plus unchanged Chapter II and Chapter I source evidence from the preceding same-session audit.",
+    "relatedMappings": "S02/S03 share the particle-structure outcome; S05/S06/S07/S08 address motion, diffusion and temperature. Chapter I S05 experiment reasoning is a prerequisite. All are included; no scope is excluded because its code, family, bank or release differs.",
+    "baseline": {
+      "chapterIIApproved": 136,
+      "activeDefinitions": 188,
+      "publishedGuides": 57
+    },
+    "author": "Codex automated educational judgment; human content, SME and exposure reviews remain pending."
+  },
+  "candidates": [
+    {
+      "candidate": "B14-C01",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S07-D01",
+      "skill": "S07",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Select a pair meeting two stated conditions and evaluate it",
+      "source": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 32–33, հատկապես նույն ջերմաստիճանի համեմատության հարց 5; §11, էջ 34։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S07-I01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I06",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-M01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-I02",
+          "version": 1
+        }
+      ],
+      "protection": "Exact stimulus, solution and distractor comparisons retained in private owner evidence. No new learner guide or allocation. Fresh interpretation of supplied records is required; repeated claims/procedures are explicitly permitted only within the approved four-candidate pilot."
+    },
+    {
+      "candidate": "B14-C02",
+      "revision": 2,
+      "itemCode": "PHY7-U02-S07-D02",
+      "skill": "S07",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Interpret local changes while checking a conserved total",
+      "source": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 31–33, պինդ մարմինների դիֆուզիա՝ նկար 32, էջ 32; §8, էջեր 27–28՝ մասնիկների տեսակների տարբերակում։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S07-I03",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I08",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-M01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-I09",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I11",
+          "version": 1
+        }
+      ],
+      "protection": "Exact stimulus, solution and distractor comparisons retained in private owner evidence. No new learner guide or allocation. Fresh interpretation of supplied records is required; repeated claims/procedures are explicitly permitted only within the approved four-candidate pilot."
+    },
+    {
+      "candidate": "B14-C03",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S07-M02",
+      "skill": "S07",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Combine two supported comparisons without forcing a full order",
+      "source": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 32–33՝ ագրեգատային վիճակների համեմատություն և ջերմաստիճանի ազդեցություն; §11, էջ 34։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S07-M01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I06",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I12",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-I02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-I07",
+          "version": 1
+        }
+      ],
+      "protection": "Exact stimulus, solution and distractor comparisons retained in private owner evidence. No new learner guide or allocation. Fresh interpretation of supplied records is required; repeated claims/procedures are explicitly permitted only within the approved four-candidate pilot."
+    },
+    {
+      "candidate": "B14-C04",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S03-D02",
+      "skill": "S03",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Distinguish component-type sets from complete-particle inventories",
+      "source": "Ֆիզիկա 7 (2023), Գլուխ II, §8, տպագիր էջեր 27–28, նկարներ 25–27՝ ատոմների տեսակներ և H₂/H₂O մոլեկուլների կազմ։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S03-I06",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S03-I09",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S03-I11",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S03-D01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S03-M01",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S03-M02",
+          "version": 2
+        }
+      ],
+      "protection": "Exact stimulus, solution and distractor comparisons retained in private owner evidence. No new learner guide or allocation. Fresh interpretation of supplied records is required; repeated claims/procedures are explicitly permitted only within the approved four-candidate pilot."
+    }
+  ],
+  "withinBatchPairs": [
+    {
+      "a": "B14-C01",
+      "b": "B14-C02",
+      "finding": "Shared diffusion/state curriculum. Pair selection and rate comparison versus local composition-change interpretation; neither complete stimulus/solution is duplicated.",
+      "decision": "Retain both as provisional protected parallel variants; no independent coverage or allocation approval inferred."
+    },
+    {
+      "a": "B14-C01",
+      "b": "B14-C03",
+      "finding": "Strongest within-batch overlap: state and temperature comparisons. C01 selects an equal-temperature gas/solid pair and checks its rank. C03 composes gas/liquid and warming relations into an incomplete ordering. Shared instruction is expected; the complete three-record response is not supplied by C01. SME/exposure review before allocation is mandatory.",
+      "decision": "Retain both as provisional protected parallel variants; no independent coverage or allocation approval inferred."
+    },
+    {
+      "a": "B14-C01",
+      "b": "B14-C04",
+      "finding": "Selecting records by state and temperature versus distinguishing atom-type sets from molecular inventories. No complete scenario or solution overlap.",
+      "decision": "Retain both as provisional protected parallel variants; no independent coverage or allocation approval inferred."
+    },
+    {
+      "a": "B14-C02",
+      "b": "B14-C03",
+      "finding": "Solid local redistribution versus qualitative rate ordering. Common particle theory does not supply either complete record interpretation.",
+      "decision": "Retain both as provisional protected parallel variants; no independent coverage or allocation approval inferred."
+    },
+    {
+      "a": "B14-C02",
+      "b": "B14-C04",
+      "finding": "Both use particle bookkeeping, but spatial redistribution with conserved type totals differs from molecular-type inventory versus atom-type-set classification.",
+      "decision": "Retain both as provisional protected parallel variants; no independent coverage or allocation approval inferred."
+    },
+    {
+      "a": "B14-C03",
+      "b": "B14-C04",
+      "finding": "Partial qualitative ordering versus composition/type classification; no complete stimulus or response overlap.",
+      "decision": "Retain both as provisional protected parallel variants; no independent coverage or allocation approval inferred."
+    }
+  ],
+  "screening": {
+    "assessed": 4,
+    "qualified": 4,
+    "revisedBeforeStaging": 1,
+    "omitted": 0,
+    "independentNewReasoningCoverage": 0,
+    "diagnostic": 3,
+    "mastery": 1,
+    "newDefinitions": 5,
+    "guides": 0
+  },
+  "remainingIfStaged": {
+    "total": 140,
+    "practice": 96,
+    "diagnostic": 16,
+    "mastery": 28,
+    "unauthored": 52,
+    "diagnosticGap": 16,
+    "masteryGap": 36
+  },
+  "boundary": "Four-candidate authoring pilot only. Existing omissions are not reinstated; no extra replacement leads were added. Human review, SME/exposure, allocation and release gates remain open. Wider use requires a subsequent owner decision."
+}
