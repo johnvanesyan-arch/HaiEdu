@@ -1,0 +1,23 @@
+# Chapter II assessment batch 14 — four-candidate parallel pilot
+
+**Date:** 2026-10-12 (Asia/Yerevan) · **Slice:** 15B.13AE · **Pre-staging checkpoint:** four qualifying protected drafts; no committed content writes yet.
+
+John authorized exactly four candidates: two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prospective [bounded protocol](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) was committed in `38f3d41fa150aec91e576be47867bb5a5a81caf5` before staging. It permits repeated taught claims/procedures with a substantively new stimulus requiring fresh interpretation. These four candidates add provisional bank capacity, not independent new reasoning coverage. No prior omitted proposal is automatically reinstated and no extra replacement lead was introduced.
+
+## Comparison and source evidence
+
+All four candidates qualify for draft review under that protocol. One answer was tightened before staging to require interpreting both local record changes. The [readable matrix](chapter-ii-assessment-batch-14-comparison.md), [structured comparison](evidence/sprint-15b13-assessment-batch-14-comparison-20261012.json) and [sanitized inventory](evidence/sprint-15b13-assessment-batch-14-inventory-20261012.json) bind 396 current questions, 269 immutable versions, current/historical guides and all six within-batch pairs. The complete 28-table corpus was carried from the same-session coverage audit only after all 38 fresh complete-table counts/fingerprints matched. Relevant nearest current/history questions and guides were inspected afresh.
+
+Source: *Ֆիզիկա 7*, Է. Մելիքյան and Գ. Մաիլյան, 2023, §8 printed pp.27–28, §10 pp.31–33 and §11 p.34. Each candidate records exact source and programme locators, explicit premises, solution/distractor comparison and protection judgment. Existing teaching scaffolds and overlapping claims/procedures are acknowledged. Every question is self-contained in text and refers to no missing image. No new quantitative law is introduced. These are automated author judgments for human review, not external SME certification or empirical equivalence.
+
+Exact protected content and full comparison/rehearsal evidence are frozen in the private owner archive `HaiEdu-Assessment-Batch-14-Comparison.zip`, version 0, identity `libfile_dd7d97763e4081919543bc0b27faccc9`. Archive SHA-256: `26d88aea3376c3c488415ba76501d5868ce2b168d888970d0d72c303935c18c2`. Original textbook SHA-256: `d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904`. The archive precedes committed staging and is not overwritten by later production evidence. Source, specification or relevant corpus changes invalidate the affected comparison.
+
+## Rehearsal and intended handoff
+
+The transaction inserted four draft questions and five draft misconception definitions, then rolled back. All 38 complete-table counts and hashes exactly returned to baseline. Exact deployed `manage-content-quality` v11 evaluator replay passed 4/4 with zero errors or warnings. The freshly retrieved deployed file and replay file are byte-identical, SHA-256 `b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154`. The replay uses a read-only catalogue adapter; no authenticated live Edge/browser acceptance is claimed. Explicit particle counts, molecular inventories and qualitative-order consistency were checked separately.
+
+The intended batch is three Diagnostic and one Mastery question, with five new definition drafts and no learner guides. After guarded staging and separate readback, review belongs on [Questions](https://www.haiedu.am/content-review.html) and [Misconceptions](https://www.haiedu.am/content-misconceptions.html), filtered to S03/S07 and pending/draft status. Content and SME/exposure review remain pending.
+
+The 136-question approved baseline, 188 active definitions and 57 published guides are preserved. Four staged drafts would bring the bank to 140 (96 Practice, 16 Diagnostic, 28 Mastery), leaving 52 unauthored against the unchanged 192 target. Even if these drafts pass, one two-per-skill Diagnostic form still lacks one S05 and one S08 question. Form readiness also requires review and protection eligibility, not arithmetic alone.
+
+No schema, runtime, UI, API, authorization or scoring code changes. Chapter II remains draft, inactive and unallocated. Option B remains 16 Diagnostic and 16 Mastery with 13/16 and at least one correct per skill, all-eight readiness and the existing three-attempt lifecycle. Wider use of the pilot disposition requires the owner's next decision. The [status register](project-status.md) is authoritative; this pre-staging checkpoint will be followed by separate committed evidence.
