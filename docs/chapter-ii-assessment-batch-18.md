@@ -1,8 +1,18 @@
 # Chapter II Batch 18 — four Mastery candidates
 
-**Date:** 2026-10-12 · **Slice:** 15B.13AM · **State:** four Mastery drafts and six definition drafts staged; human review pending.
+**Date:** 2026-10-12 · **Slice:** 15B.13AM · **State:** human review resolved — three questions approved, one archived, all six definitions active.
 
-John directed the next four-candidate batch at 19:34:33 Asia/Yerevan. Codex selected S05/S06/S07/S08, one Mastery each, by the established smallest-reserve priority. The skill names are an operational selection, not an enumerated owner list. Four candidates were assessed and four qualified provisionally under `haiedu-protected-parallel-pilot-v1`. Six definitions require human review. Zero independent new reasoning paths are claimed.
+## Current human review outcome
+
+Verified **2026-10-12 18:35:04 UTC** (22:35 Asia/Yerevan): S05-M05 v2, S06-M05 v1 and S08-M05 v1 have matching current human approvals and passing QA. John archived S07-M05 v1 at 22:28 Asia/Yerevan with the reason “The question doesn't make sense”. The archived item remains in history, has no content approval and does not count toward capacity. All six definitions match approved active snapshots. [Review outcome evidence](evidence/sprint-15b13-batch-18-review-outcome-20261012.json).
+
+Chapter II now has 155 approved non-archived questions (96 Practice, 18 Diagnostic, 41 Mastery), one archived record, 216 active definitions and 57 published guides. Nothing remains pending in the non-archived bank. The target gap is 37: 14 Diagnostic and 23 Mastery. No restoration, replacement or production write was performed by this review verification.
+
+The author accepts that the archived task's abstract mixing endpoint, cumbersome timing language and combined judgments obscure the intended physics assessment. Technical QA and logical consistency did not establish pedagogical quality. Human review supersedes provisional author retention; SME/exposure and release gates remain open.
+
+## Historical staging evidence
+
+John directed the next four-candidate batch at 19:34:33 Asia/Yerevan. Codex selected S05/S06/S07/S08, one Mastery each, by the established smallest-reserve priority. The skill names are an operational selection, not an enumerated owner list. Four candidates were assessed and four qualified provisionally under `haiedu-protected-parallel-pilot-v1`. Six definitions were submitted for human review. Zero independent new reasoning paths are claimed.
 
 The [comparison](chapter-ii-assessment-batch-18-comparison.md) records the complete applicable current/history/guide review and explicit continuity limits. The [inventory](evidence/sprint-15b13-assessment-batch-18-inventory-20261012.json) binds 412 current items, 285 immutable versions, 474 guide-history records and four restricted profiles. All six within-batch pairs were compared. The private evidence archive was saved and freshly materialized with matching SHA256, every ZIP-entry CRC and all profile/corpus hashes verified [before staging](evidence/sprint-15b13-assessment-batch-18-archive-verification-20261012.json).
 
@@ -10,7 +20,7 @@ Rollback rehearsal passed 4/4 with zero errors and warnings. All 38 table guards
 
 Guarded staging committed at **16:11:30 UTC** after fresh unchanged guards and reachable comparison commit `a7569320710cd68cbc7501f9935d4808a1910c7f`. Rollback and committed replay of the freshly retrieved, byte-exact deployed-v11 evaluator passed 4/4 with zero errors/warnings. Separate production readback matched exact specifications, mappings and immutable v1 snapshots. Four actor-null QA rows bind current family fingerprints and match a fresh persisted read. All prior rows and approvals were preserved; 12 tables gained rows and 26 remained unchanged. This is evaluator replay through a read-only catalogue adapter, not authenticated live Edge/browser acceptance. [Committed evidence](evidence/sprint-15b13-assessment-batch-18-20261012.json).
 
-Review **four Mastery questions** and **six misconception definitions** on [Questions](https://www.haiedu.am/content-review.html) and [Misconceptions](https://www.haiedu.am/content-misconceptions.html), filtered to **S05/S06/S07/S08** and pending/draft status. No new guides require review.
+The original handoff covered four Mastery questions and six definitions across S05/S06/S07/S08, with no new guides. Those reviews are resolved above; the links below identify the retained records, including the archive.
 
 | Question | Bank | Review |
 | --- | --- | --- |
@@ -21,6 +31,6 @@ Review **four Mastery questions** and **six misconception definitions** on [Ques
 
 At **2026-10-12 16:12:15 UTC**, Chapter II has **156 questions: 152 approved and four pending** (96 Practice, 18 Diagnostic, 42 Mastery), **210 active plus six draft definitions**, and **57 published guides**. The unchanged 192 target leaves **36 questions: 14 Diagnostic and 22 Mastery**. Including drafts, S02–S08 each have five Mastery items and S09 has seven. S02–S08 remain below the six-item arithmetic minimum for three disjoint two-question attempts. Counts do not establish protected eligibility, empirical equivalence or disjoint retake reserves. Human content/definition, SME/exposure, allocation and release gates remain; further scope needs another owner direction.
 
-Automated PR review prompted a [PR review follow-up](evidence/sprint-15b13-assessment-batch-18-review-followup-20261012.json). All 11 referenced figures and textbook figure 33 were visually checked after staging and before final handoff; current/historical asset hashes match, and all four candidates remain provisionally qualified. The original archive remains an unchanged historical record. The continuation scope was also clarified: John directed the next four-candidate batch; Codex selected the skills within that task, without claiming separately enumerated owner approval.
+Automated PR review prompted a [PR review follow-up](evidence/sprint-15b13-assessment-batch-18-review-followup-20261012.json). All 11 referenced figures and textbook figure 33 were visually checked after staging and before final handoff; current/historical asset hashes match, and all four candidates were provisionally retained at that checkpoint; the human outcome above supersedes that judgment. The original archive remains an unchanged historical record. The continuation scope was also clarified: John directed the next four-candidate batch; Codex selected the skills within that task, without claiming separately enumerated owner approval.
 
 No schema, runtime, API, UI, auth, scoring or assessment-contract change is included. No pool/form allocation or release activation is authorized. The [status register](project-status.md) remains authoritative.

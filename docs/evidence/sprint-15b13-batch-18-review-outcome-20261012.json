@@ -1,0 +1,457 @@
+{
+  "sprint": "15B.13AN",
+  "observedAt": "2026-10-12T18:35:04.956045+00:00",
+  "userReportedAt": "2026-10-12T22:33:00+04:00",
+  "sourceCommit": "999d3d2344881f848069da89120918468211e0f4",
+  "scope": "Read-only verification of Batch18 human review and owner archive decision; no production mutation, automatic approval, new QA, restoration or replacement.",
+  "outcome": {
+    "approved": 3,
+    "archived": 1,
+    "approvedDefinitions": 6,
+    "nonArchivedPending": 0
+  },
+  "items": [
+    {
+      "id": "e71c7f96-9ef0-440b-97ea-e082f83a9c63",
+      "code": "PHY7-U02-S05-M05",
+      "status": "published",
+      "version": 2,
+      "retiredAt": null,
+      "reviewStatus": "approved",
+      "retiredReason": null,
+      "latestCurrentQa": {
+        "id": "e7079067-8ab3-44dd-bef6-474b97ba30ae",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-12T16:58:01.532236+00:00"
+      },
+      "replacementItemId": null,
+      "latestContentReview": {
+        "id": "1aec0ac0-4d17-4d5b-ae61-752f28817c9e",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-12T16:58:08.74507+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "7d406bf4-2860-42bc-8623-91f4fdb7652e",
+      "code": "PHY7-U02-S06-M05",
+      "status": "published",
+      "version": 1,
+      "retiredAt": null,
+      "reviewStatus": "approved",
+      "retiredReason": null,
+      "latestCurrentQa": {
+        "id": "96a76182-3cbe-4853-8897-1f0082fa9e2d",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T16:12:11.700846+00:00"
+      },
+      "replacementItemId": null,
+      "latestContentReview": {
+        "id": "96afc0e3-dbc0-4e68-a0de-6ee1e649a6de",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T17:02:05.267284+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "bfa52a47-e608-48c1-9fec-e37bdf112bbd",
+      "code": "PHY7-U02-S07-M05",
+      "status": "archived",
+      "version": 1,
+      "retiredAt": "2026-10-12T18:28:46.204+00:00",
+      "reviewStatus": "needs_review",
+      "retiredReason": "The question doesn't make sense",
+      "latestCurrentQa": {
+        "id": "3aeeb684-2749-4a73-bc7e-8076e3365707",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T16:12:11.700846+00:00"
+      },
+      "replacementItemId": null,
+      "latestContentReview": null
+    },
+    {
+      "id": "efcdb40f-553e-4e81-8f0e-e8254ef7bbbb",
+      "code": "PHY7-U02-S08-M05",
+      "status": "published",
+      "version": 1,
+      "retiredAt": null,
+      "reviewStatus": "approved",
+      "retiredReason": null,
+      "latestCurrentQa": {
+        "id": "7b46c925-b857-401b-9196-669379519f56",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T16:12:11.700846+00:00"
+      },
+      "replacementItemId": null,
+      "latestContentReview": {
+        "id": "bab676d8-26cb-468d-93dd-4588a9f29db3",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T18:29:47.136455+00:00",
+        "hasReviewer": true
+      }
+    }
+  ],
+  "definitions": [
+    {
+      "id": "3674d059-bc18-49a2-a9f3-83168e6e950d",
+      "code": "known_speed_bounds_ignored_when_exact_values_missing",
+      "status": "active",
+      "latestReview": {
+        "id": "fcca6966-8d1d-46f7-94e2-e4ceaa52da21",
+        "revision": 1,
+        "action": "approve",
+        "hasActor": true,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T18:31:24.790635+00:00"
+      },
+      "currentDefinitionMatchesApprovedSnapshot": true,
+      "definitionSha256": "dc43abdee9c10e2054810d1cd7cfbc42a9d57471c3221a0c0a2ee697033dff1a"
+    },
+    {
+      "id": "9ed2cc1f-b0fa-4953-9ece-b02b172f054d",
+      "code": "mixed_final_state_uniquely_determines_initial_separation",
+      "status": "active",
+      "latestReview": {
+        "id": "2c3e2d93-711a-467c-a476-d7ba5bb72d55",
+        "revision": 1,
+        "action": "approve",
+        "hasActor": true,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T18:31:02.80342+00:00"
+      },
+      "currentDefinitionMatchesApprovedSnapshot": true,
+      "definitionSha256": "c31d3276332c959a5498020d188eef5b2870beac449176296aa803ba8c3cc10e"
+    },
+    {
+      "id": "b1f0409f-2ada-4dff-898d-88e0bad45f07",
+      "code": "sampled_positions_are_complete_travelled_path",
+      "status": "active",
+      "latestReview": {
+        "id": "8a3c7d19-d37b-4828-aae6-e08531dcb077",
+        "revision": 1,
+        "action": "approve",
+        "hasActor": true,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T18:30:27.262894+00:00"
+      },
+      "currentDefinitionMatchesApprovedSnapshot": true,
+      "definitionSha256": "70f37f5a4947b2515715dca4db383dd2ba7d884b8fe65af824727d2efb47bd85"
+    },
+    {
+      "id": "d58cb730-919d-41cb-b1b7-6b79650d7ecf",
+      "code": "sampling_detail_changes_physical_motion",
+      "status": "active",
+      "latestReview": {
+        "id": "b452bb98-ee03-4411-ba38-00a27d8c4479",
+        "revision": 1,
+        "action": "approve",
+        "hasActor": true,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T18:30:42.528261+00:00"
+      },
+      "currentDefinitionMatchesApprovedSnapshot": true,
+      "definitionSha256": "c16adaa60a3b31298e56add41bea195db91a6da7b3615e247b6ad70bf4fd1692"
+    },
+    {
+      "id": "21159058-c0b3-433f-8231-6a0b18757df6",
+      "code": "temperature_alone_orders_different_gas_speeds",
+      "status": "active",
+      "latestReview": {
+        "id": "f7a4b10f-b618-41c8-8f16-a8df27078c7e",
+        "revision": 1,
+        "action": "approve",
+        "hasActor": true,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T18:30:14.746898+00:00"
+      },
+      "currentDefinitionMatchesApprovedSnapshot": true,
+      "definitionSha256": "fe46a414a8456270d21ed59946c279822010aa77dd497a922b8932620671ef62"
+    },
+    {
+      "id": "0b37ec66-a440-48d4-85c8-405c485f84bb",
+      "code": "unknown_exact_times_prevent_bounded_ordering",
+      "status": "active",
+      "latestReview": {
+        "id": "09bceee4-f9a6-40d5-97a3-b7f3cfa4e2b3",
+        "revision": 1,
+        "action": "approve",
+        "hasActor": true,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T18:31:17.657266+00:00"
+      },
+      "currentDefinitionMatchesApprovedSnapshot": true,
+      "definitionSha256": "26212c89ac69edac2e66c11e7fd2a2c018d8d3d8dc393faa5f3b51a888c42d6b"
+    }
+  ],
+  "chapterII": {
+    "guides": [
+      {
+        "count": 57,
+        "status": "published"
+      }
+    ],
+    "bySkill": [
+      {
+        "purpose": "diagnostic",
+        "approved": 2,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S02",
+        "retained_records": 2
+      },
+      {
+        "purpose": "mastery_check",
+        "approved": 5,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S02",
+        "retained_records": 5
+      },
+      {
+        "purpose": "practice",
+        "approved": 12,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S02",
+        "retained_records": 12
+      },
+      {
+        "purpose": "diagnostic",
+        "approved": 2,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S03",
+        "retained_records": 2
+      },
+      {
+        "purpose": "mastery_check",
+        "approved": 5,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S03",
+        "retained_records": 5
+      },
+      {
+        "purpose": "practice",
+        "approved": 12,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S03",
+        "retained_records": 12
+      },
+      {
+        "purpose": "diagnostic",
+        "approved": 2,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S04",
+        "retained_records": 2
+      },
+      {
+        "purpose": "mastery_check",
+        "approved": 5,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S04",
+        "retained_records": 5
+      },
+      {
+        "purpose": "practice",
+        "approved": 12,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S04",
+        "retained_records": 12
+      },
+      {
+        "purpose": "diagnostic",
+        "approved": 2,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S05",
+        "retained_records": 2
+      },
+      {
+        "purpose": "mastery_check",
+        "approved": 5,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S05",
+        "retained_records": 5
+      },
+      {
+        "purpose": "practice",
+        "approved": 12,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S05",
+        "retained_records": 12
+      },
+      {
+        "purpose": "diagnostic",
+        "approved": 2,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S06",
+        "retained_records": 2
+      },
+      {
+        "purpose": "mastery_check",
+        "approved": 5,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S06",
+        "retained_records": 5
+      },
+      {
+        "purpose": "practice",
+        "approved": 12,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S06",
+        "retained_records": 12
+      },
+      {
+        "purpose": "diagnostic",
+        "approved": 2,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S07",
+        "retained_records": 2
+      },
+      {
+        "purpose": "mastery_check",
+        "approved": 4,
+        "archived": 1,
+        "skill_code": "PHY7-U02-S07",
+        "retained_records": 5
+      },
+      {
+        "purpose": "practice",
+        "approved": 12,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S07",
+        "retained_records": 12
+      },
+      {
+        "purpose": "diagnostic",
+        "approved": 2,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S08",
+        "retained_records": 2
+      },
+      {
+        "purpose": "mastery_check",
+        "approved": 5,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S08",
+        "retained_records": 5
+      },
+      {
+        "purpose": "practice",
+        "approved": 12,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S08",
+        "retained_records": 12
+      },
+      {
+        "purpose": "diagnostic",
+        "approved": 4,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S09",
+        "retained_records": 4
+      },
+      {
+        "purpose": "mastery_check",
+        "approved": 7,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S09",
+        "retained_records": 7
+      },
+      {
+        "purpose": "practice",
+        "approved": 12,
+        "archived": 0,
+        "skill_code": "PHY7-U02-S09",
+        "retained_records": 12
+      }
+    ],
+    "release": {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "status": "draft",
+      "activated_at": null
+    },
+    "byPurpose": [
+      {
+        "pending": 0,
+        "purpose": "diagnostic",
+        "approved": 18,
+        "archived": 0,
+        "non_archived": 18,
+        "retained_records": 18
+      },
+      {
+        "pending": 0,
+        "purpose": "mastery_check",
+        "approved": 41,
+        "archived": 1,
+        "non_archived": 41,
+        "retained_records": 42
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 96,
+        "archived": 0,
+        "non_archived": 96,
+        "retained_records": 96
+      }
+    ],
+    "observedAt": "2026-10-12T18:35:04.956045+00:00",
+    "definitions": [
+      {
+        "count": 216,
+        "status": "active"
+      }
+    ],
+    "archivedItems": [
+      {
+        "id": "bfa52a47-e608-48c1-9fec-e37bdf112bbd",
+        "code": "PHY7-U02-S07-M05",
+        "reason": "The question doesn't make sense",
+        "status": "archived",
+        "version": 1,
+        "retiredAt": "2026-10-12T18:28:46.204+00:00"
+      }
+    ],
+    "formMemberships": 0,
+    "poolMemberships": 0,
+    "nonArchivedPending": 0,
+    "approvedWithoutMatchingLatestHumanReview": 0
+  },
+  "capacity": {
+    "retainedHistoricalQuestionRecords": 156,
+    "approvedNonArchivedQuestions": 155,
+    "archivedQuestions": 1,
+    "practice": 96,
+    "diagnostic": 18,
+    "mastery": 41,
+    "target": 192,
+    "gapExcludingArchived": 37,
+    "diagnosticGap": 14,
+    "masteryGap": 23,
+    "activeDefinitions": 216,
+    "publishedGuides": 57
+  },
+  "authorAssessment": {
+    "item": "PHY7-U02-S07-M05",
+    "ownerDecision": "Archive; question does not make sense.",
+    "judgment": "The intended inference is logically consistent under the authored premises, but this does not establish instructional quality. The mixing endpoint is not concretely described, the checkpoint wording is cumbersome, and interval interpretation is combined with a separate causal-attribution judgment. The extra abstraction obscures the target diffusion concept.",
+    "qualityLesson": "For future candidates, require a concrete observable situation, direct Armenian wording and a coherent physics judgment. Added reading/interval complexity must provide useful skill evidence; difficulty alone is not a reason to retain a question.",
+    "disposition": "Respect the owner archive. Earlier provisional author qualification and technical QA do not override human rejection. No cosmetic restoration or automatic replacement."
+  },
+  "gates": "Batch18 human question/definition dispositions are complete. SME/exposure, defensible reserves, disjoint allocation, governed binding and release remain open; source/protection criteria and targets are unchanged.",
+  "readOnlyQuerySha256": {
+    "reviews.sql": "fb0e396f3e57371c320812344f7b0510676e810ed9dd5c10e5b7ab7eafbabcf2",
+    "counts.sql": "bc43d82153dac0f711fd341b282c543e14081a30840eddbca0eac1bf70d9a2dd"
+  }
+}
