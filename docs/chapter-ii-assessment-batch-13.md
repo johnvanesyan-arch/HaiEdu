@@ -1,6 +1,8 @@
 # Chapter II assessment batch 13
 
-**Date:** 2026-10-12 (Asia/Yerevan) · **Slice:** 15B.13AC · **State:** five questions and ten definitions staged; human review pending.
+**Date:** 2026-10-12 (Asia/Yerevan) · **Slice:** 15B.13AC · **Stage-time state:** five questions and ten definitions staged; human review pending at that checkpoint.
+
+**Review closure — 2026-10-12 07:07:55 UTC:** all five Batch 13 current versions are now content-approved and all ten definitions active. Chapter II totals are 136 approved questions, 188 active definitions and 57 published guides. The owner-authorized [coverage audit](chapter-ii-coverage-feasibility-audit.md) is complete; its bank-plan proposal awaits a separate decision. The observations below preserve the original staging checkpoint. See the [current status register](project-status.md).
 
 The owner reported the prior review complete and authorized continuation. Fresh production reads confirmed all 131 prior current question versions content-approved, 57 guides published and 178 definitions active. Current human edits, including S02-D02 v2, and all immutable history were retained. No existing question was removed, reassigned or revised by this batch.
 
