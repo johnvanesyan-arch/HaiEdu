@@ -1,6 +1,6 @@
 # Chapter II bank-plan decision packet
 
-**Updated:** 2026-10-12 (Asia/Yerevan) · **Status:** both authorized four-candidate manifests content-approved; next bounded manifest proposed for owner decision. Reserve target and assessment contract unchanged.
+**Updated:** 2026-10-12 (Asia/Yerevan) · **Status:** first two bounded manifests content-approved; third four-candidate manifest authorized for assessment/staging. Reserve target and assessment contract unchanged.
 
 **First owner decision:** John selected four candidates and then directed “ok, proceed”. The authorized scope is two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prior eight-candidate proposal and subsequent sixteen-candidate throughput suggestion are superseded. The [bounded prospective policy addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) is adopted for this pilot only.
 
@@ -45,7 +45,7 @@ These criteria are a review protocol, not an implemented semantic detector. No s
 
 ## Reserve choices and their cost after Batch 15 review
 
-All 144 approved questions are retained in these current calculations. The earlier [audit table](chapter-ii-coverage-feasibility-audit.md#capacity-arithmetic) preserves pre-pilot arithmetic. The 192 planning target and the two explicitly bounded four-candidate manifests are adopted; reserve-reduction alternatives are not.
+All 144 approved questions are retained in these current calculations. The earlier [audit table](chapter-ii-coverage-feasibility-audit.md#capacity-arithmetic) preserves pre-pilot arithmetic. The 192 planning target and three explicitly bounded four-candidate manifests are adopted; reserve-reduction alternatives are not.
 
 | Choice | Further Diagnostic / Mastery | Resulting authored bank | Consequence |
 | --- | --- | ---: | --- |
@@ -71,24 +71,24 @@ All four authorized leads qualified and were staged at v1, with one candidate re
 
 At authorization, this scope prioritized the final two single-form Diagnostic gaps and S07's demonstrated protected-capacity bottleneck. The nominal Diagnostic gaps are now filled by approved questions. This does not change the 192 target or imply the remaining 48 slots are feasible. Content approvals show reviewer acceptance of the questions, not psychometric equivalence. The owner's extension applies to these four Batch 15 slots. The [bounded addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12), referenced by `AGENTS.md`, still requires another owner decision for any further scope.
 
-## Proposed next manifest — owner decision pending
+## Third authorized manifest — Batch 16
 
-**Recommendation:** authorize four Mastery candidate slots under the same bounded acceptance criteria. S02, S05 and S06 have the smallest current Mastery reserves: two approved questions each, exactly one form's nominal capacity.
+**Owner authorization:** on 2026-10-12 at 16:18:37 Asia/Yerevan, John directed “proceed” with these four Mastery candidate slots under the same bounded acceptance criteria. S02, S05 and S06 have the smallest current Mastery reserves: two approved questions each, exactly one form's nominal capacity.
 
-| Proposed slot | Skill / purpose | Reason |
+| Authorized candidate slot | Skill / purpose | Reason |
 | --- | --- | --- |
 | B16-C01 | S02 Mastery | Begin a reserve beyond the two approved questions. |
 | B16-C02 | S02 Mastery | Continue toward a second disjoint two-question form; choose the earliest chapter skill as a tie-break among equally small reserves. |
 | B16-C03 | S05 Mastery | Begin extending this skill's two-question reserve. |
 | B16-C04 | S06 Mastery | Begin extending this skill's two-question reserve. |
 
-These are proposed candidate slots, not authored questions, promised acceptances or an approved manifest. The numerical priority does not establish source-supported supply or protection. If all four qualify and are approved, the Mastery counts would become S02: four, S05: three and S06: three; each would still fall below the six-item arithmetic minimum for three disjoint two-question attempts. The 192 target remains unchanged.
+These are authorized candidate slots, not promised acceptances. No Batch 16 question is staged at this authorization checkpoint. The numerical priority does not establish source-supported supply or protection. If all four qualify and are approved, the Mastery counts would become S02: four, S05: three and S06: three; each would still fall below the six-item arithmetic minimum for three disjoint two-question attempts. The 192 target remains unchanged.
 
-After authorization, refresh full source/current/history/guide and all within-batch comparisons before staging. Repeated taught procedures require substantively new stimuli and fresh interpretation; cosmetic variants and untaught science remain excluded. Human content/definition review, SME/exposure review, allocation and release gates remain. An unqualified slot does not authorize an extra replacement lead. The [bounded addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12), referenced by `AGENTS.md`, requires the owner's next decision before extending the two completed manifests.
+Refresh full source/current/history/guide and all within-batch comparisons before staging. Repeated taught procedures require substantively new stimuli and fresh interpretation; cosmetic variants and untaught science remain excluded. Human content/definition review, SME/exposure review, allocation and release gates remain. An unqualified slot does not authorize an extra replacement lead. The [bounded addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12), referenced by `AGENTS.md`, records this third manifest; further scope still requires the owner's next decision.
 
 ## Exact authorization boundary
 
-The approved scope is **the completed Batch 14 and Batch 15 manifests explicitly listed above**, with the 192 target retained as a planning goal. Existing Option B remains 16 Diagnostic and 16 Mastery questions, two per skill, with Mastery 13/16 and at least one correct per skill; all eight skills remain in initial readiness. One Diagnostic baseline, up to three Mastery attempts and the required review lifecycle remain unchanged. No question, guide, definition, assessment pool, release, model parameter or learner access is approved by accepting the pilot proposal.
+The approved scope is **the completed Batch 14 and Batch 15 manifests plus the four Batch 16 candidates explicitly listed above**, with the 192 target retained as a planning goal. Existing Option B remains 16 Diagnostic and 16 Mastery questions, two per skill, with Mastery 13/16 and at least one correct per skill; all eight skills remain in initial readiness. One Diagnostic baseline, up to three Mastery attempts and the required review lifecycle remain unchanged. No question, guide, definition, assessment pool, release, model parameter or learner access is approved by accepting the pilot proposal.
 
 The eight overlapping Batch 13 proposals are retained in their comparison evidence, not automatically reinstated. The three source-unsupported proposals remain omitted unless completely redesigned within taught science. No existing question has been removed.
 
