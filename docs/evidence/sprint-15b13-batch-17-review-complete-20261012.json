@@ -1,0 +1,3875 @@
+{
+  "sprint": "15B.13AL",
+  "type": "Batch 17 human review closure; read-only verification",
+  "observedAt": "2026-10-12T15:36:37.469767+00:00",
+  "countsObservedAt": "2026-10-12T15:36:41.016138+00:00",
+  "baseCommit": "9880a1b449b70d83e354697dfc3ef587c5c8ba87",
+  "ownerReport": "Done. reviewed. Proceed. \u2014 2026-10-12 19:34:33 Asia/Yerevan",
+  "productionWrites": 0,
+  "batchItems": [
+    {
+      "id": "aa29687c-42bf-4075-825e-75600537b697",
+      "code": "PHY7-U02-S02-M05",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "c386d91a-9016-40db-a355-16a2a348b6e2",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T15:15:11.365898+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b39cc551-e2d8-4aba-9ab3-022dab04fa24",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T15:29:23.568529+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "9660d5b3-70de-4204-8478-aa90721c9291",
+      "code": "PHY7-U02-S03-M05",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e737b7b4-4cc4-406a-8309-1a9e8e3ca762",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T15:15:11.365898+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "1d6cbc0f-92d7-422b-ae74-83e27a1ca03c",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T15:31:26.045302+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "1f4afb98-2bf9-4437-926e-175290b3fe8e",
+      "code": "PHY7-U02-S05-M04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "cb38e490-5d52-45a8-b174-583059318113",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T15:15:11.365898+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "06308b74-a321-4b8a-b26e-d2d5e06864b3",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T15:31:49.294995+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "08a4d700-03c2-49bd-a69f-f8bc1dbdc47d",
+      "code": "PHY7-U02-S06-M04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "6b91e6ce-c3ea-4e9e-8c6b-89fcf5d7f437",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T15:15:11.365898+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "45f8de0a-4741-45ad-a297-e6662cacb927",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T15:32:06.31088+00:00",
+        "hasReviewer": true
+      }
+    }
+  ],
+  "allCurrentChapterIIItems": [
+    {
+      "id": "c5837b19-b157-4151-ab13-831ccc5de7d4",
+      "code": "PHY7-U02-S02-D01",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "9d531195-c3c4-4b99-b3a3-8f67884ea7f5",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-08T05:52:02.033308+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "a776a452-67c3-4591-854a-09bbcf9299ab",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-08T05:52:06.622684+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "50c0b3d5-3f0f-4d7a-8c7b-82d7c6d2d4a1",
+      "code": "PHY7-U02-S02-D02",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "d19fa39e-ec79-4d5b-a16c-727959106380",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-11T20:57:29.932004+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "903f732d-8e1d-4d56-b1b7-ad9e821b5600",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:57:38.22143+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "4cef02a0-4f2a-4fc2-9645-380c31fc7825",
+      "code": "PHY7-U02-S02-I01",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "cea720fb-4a51-447c-9cbd-63436961f27e",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [
+          "content_review_not_approved",
+          "sme_review_pending"
+        ],
+        "createdAt": "2026-10-01T06:26:42.855294+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "9da6f45e-0b87-4e97-a00f-eb9491ec6b16",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-01T06:26:48.21671+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "3ce95a43-1024-4bc2-b9bd-9ea014e645a6",
+      "code": "PHY7-U02-S02-I02",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e880d069-6887-4973-9e9e-6bedf5f7e6b7",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-01T06:50:02.683389+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "74359f83-156d-4dbd-988d-5c72bdbe1612",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-01T06:50:13.413562+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "a1c91b20-9b5a-49da-972c-ac0289f1bb0d",
+      "code": "PHY7-U02-S02-I03",
+      "status": "published",
+      "version": 4,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e49cdac7-7d58-48c1-a2f6-cb41d675a5ac",
+        "errors": [],
+        "passed": true,
+        "version": 4,
+        "warnings": [],
+        "createdAt": "2026-10-01T07:51:45.25496+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "92abd47b-ec98-4df8-93d0-a4f298dcafe2",
+        "version": 4,
+        "decision": "approved",
+        "createdAt": "2026-10-01T07:51:51.150753+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "8ce98d90-d2ca-416c-acc5-1d814d970766",
+      "code": "PHY7-U02-S02-I04",
+      "status": "published",
+      "version": 3,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "7b9a6895-b93f-4d38-8d80-9638463786b2",
+        "errors": [],
+        "passed": true,
+        "version": 3,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:16:07.40178+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "eb28a911-6a2b-43db-a16a-8cb39d97189d",
+        "version": 3,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:16:10.77972+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "9f3d884d-2e79-4183-8823-4395c9dea482",
+      "code": "PHY7-U02-S02-I05",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "36c48a20-d922-4bee-9b50-bcf9fb53fd8e",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-06T14:04:38.185337+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "bd5b63b5-3de6-4288-a4d4-0fcc618a17f8",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-06T14:21:49.977003+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "75377509-1dd5-4c0a-b25e-413381325d4f",
+      "code": "PHY7-U02-S02-I06",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e5976f5f-95d1-47b5-80c6-1107b05aac9b",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-06T14:04:38.185337+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "f28184ed-8be4-4367-b4f3-13379ee1be55",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-06T15:03:09.944319+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "348cfa21-26ca-4352-b7e7-1073408c0a9d",
+      "code": "PHY7-U02-S02-I07",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "a9f9f103-5b35-493d-b589-6f1917b1e585",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-06T14:04:38.185337+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0e71b5e6-7687-4dbc-86fc-3281a8efbcba",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-06T15:03:46.026089+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "cb09d26d-665e-4634-99ec-baf98ea06cb8",
+      "code": "PHY7-U02-S02-I08",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "5aa4a75d-fe6d-410c-bdf5-49ed012f6140",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-06T14:04:38.185337+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b4e66a3e-f04e-4b9d-8ea9-05a7a346adab",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-06T15:04:26.168086+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "d0586f20-fdea-40fe-8882-2cde615facb5",
+      "code": "PHY7-U02-S02-I09",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "55357831-4990-493e-b31b-4adce05c461a",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-06T18:24:34.871315+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "ede3ab68-4640-41bc-a9f0-fa9915fddca8",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-06T16:20:16.720126+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "1a1c5d1b-aff5-441a-b7f1-3d63a4e9cadc",
+      "code": "PHY7-U02-S02-I10",
+      "status": "published",
+      "version": 4,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "44cad5d1-cf1c-4d01-a634-a35c0d477075",
+        "errors": [],
+        "passed": true,
+        "version": 4,
+        "warnings": [],
+        "createdAt": "2026-10-06T18:24:34.871315+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "2280fe5d-e614-430f-832b-d848af54368b",
+        "version": 4,
+        "decision": "approved",
+        "createdAt": "2026-10-06T18:00:51.820758+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "6934b7b9-21a9-4fa3-97c6-76bc83baa106",
+      "code": "PHY7-U02-S02-I11",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "3f6719b0-7ca9-4dca-a8ee-c341cdcb2e76",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-06T18:24:34.871315+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "2c7fd7a4-2bbd-45aa-802e-4b27c5ae3afe",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-06T16:30:04.33196+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "cab790d4-0920-4b58-8261-ebd6b215dc62",
+      "code": "PHY7-U02-S02-I12",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "1de51acc-70ee-409f-b614-4b2539e95ada",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-06T18:24:34.871315+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "5c906c03-276c-4e1d-ab2a-add9d159d3f6",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-06T16:30:49.739311+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "620f717e-013d-4c32-9b02-c40a65a52257",
+      "code": "PHY7-U02-S02-M01",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "f22593b9-bec7-4cf9-91cd-570ac7395974",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-08T06:08:04.461693+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "77543687-8037-43fb-9d6d-61d9598d1adc",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-08T06:08:17.403302+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "4ce44597-f032-46ec-a6be-31ecbd815da8",
+      "code": "PHY7-U02-S02-M02",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "ed442e1d-0f47-4d73-81c9-a43e0eb9f17f",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-11T19:16:42.37088+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "4e0e707a-7082-4d8e-a59e-b8c430c9ea1d",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-11T19:53:19.01804+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "d467bdf1-3b30-4410-99fb-9486b972fcde",
+      "code": "PHY7-U02-S02-M03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "18d8137b-6d83-4e9e-a930-4e473ce98012",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T12:48:55.883+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "f7e4a3c7-688e-4752-9653-75cd7ad70373",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T14:13:38.371786+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "0046b51d-d995-43fd-9cf6-4ec52a0c95c1",
+      "code": "PHY7-U02-S02-M04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "854e21a3-a774-4b60-946a-f18d60894f73",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T12:48:55.883+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "4a6e5c8a-e973-4d22-891a-ddcb331d140a",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T14:20:51.867216+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "aa29687c-42bf-4075-825e-75600537b697",
+      "code": "PHY7-U02-S02-M05",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "c386d91a-9016-40db-a355-16a2a348b6e2",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T15:15:11.365898+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b39cc551-e2d8-4aba-9ab3-022dab04fa24",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T15:29:23.568529+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "bd51a934-4974-4f21-8aa7-5b006d823ee5",
+      "code": "PHY7-U02-S03-D01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "77cceed1-1afc-4f1b-ab53-9b3425d21f0f",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T18:58:53.378159+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "fc56e420-323c-48d3-8799-5d6d6306b896",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T19:54:06.933518+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "8d3a35dd-2494-41d3-bfd7-5acbb9a994f1",
+      "code": "PHY7-U02-S03-D02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "64ac47e1-f816-4b91-88bd-b6da18d8fb01",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T08:13:41.483302+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "1f49ed77-3ec9-4848-bda3-001a75cf7381",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T10:17:57.018384+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "b36afe62-d479-4464-b839-d7ce0b819ec8",
+      "code": "PHY7-U02-S03-I01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "96b40882-b389-4d4f-b136-9dba3af0f901",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T13:21:49.03353+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "c0c834cc-3c9c-48de-b913-2e3e5aae81b4",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T13:21:57.477904+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "270aebf8-a8fa-4535-8984-0a98b29afdd2",
+      "code": "PHY7-U02-S03-I02",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e872c92a-33de-4d10-8d5d-8cce0e5fdde2",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:16:24.677992+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "3bfbba98-cc90-4f0c-ba21-580b9cfeae9c",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:16:28.033944+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "55497027-ec32-4d32-afd4-a35f7d8c08ab",
+      "code": "PHY7-U02-S03-I03",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "9033dd30-798f-4a53-b654-3d3cc8acbd77",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:16:52.517009+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "90f29603-5d74-4b34-968e-8783af472869",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:16:55.428119+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f9865e43-5335-4856-af1f-e0ec484d4c94",
+      "code": "PHY7-U02-S03-I04",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "aa7ed420-8114-4daa-afdd-7be291b99988",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:17:12.040341+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "a20d646c-7ae2-4949-ad9c-365092647270",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:17:14.972832+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "6b53c545-ff31-4139-87cc-1d2cf2e0b785",
+      "code": "PHY7-U02-S03-I05",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "c2e0ff71-233e-4be8-853e-1a183e2764b5",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-06T20:04:26.994989+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0ab2f062-2a26-4845-b8e3-b42acd299db9",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-06T19:15:32.654975+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "e027ee39-2b63-4d5f-8ec0-ec66dbe064db",
+      "code": "PHY7-U02-S03-I06",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "06002ae0-3887-47f0-afc4-04226573f39c",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-06T20:04:26.994989+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "eb090799-096b-43c5-88c3-3260b31f4004",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-06T19:19:03.779236+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "fd3805eb-b4b4-4c36-bb7b-bc8b88fcceda",
+      "code": "PHY7-U02-S03-I07",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "9dbf7088-22a3-424e-a093-b1b238f695bd",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-06T20:04:26.994989+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "c99f6777-1bb2-4e9c-8827-a1d938d5246d",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-06T19:33:13.095689+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "7fbf21c8-7e75-422c-a822-3f85a7dd9775",
+      "code": "PHY7-U02-S03-I08",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "96bb9669-ae38-4018-9060-710d68ad9693",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-06T20:04:26.994989+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "c2036dfd-55e0-42fe-bba1-331936c8fa05",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-06T19:40:25.514294+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f1860135-e30f-415c-88e6-e59f5e7c5065",
+      "code": "PHY7-U02-S03-I09",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "215ee209-3cbb-450a-bb8c-ebb588dc35a0",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T20:41:29.565+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "8f8fcace-4e14-4a3c-b860-fe57ea1fc4fc",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T20:53:16.097527+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "7390147f-96eb-4136-a5b8-aca80fa3047a",
+      "code": "PHY7-U02-S03-I10",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "474422bb-017c-4fd2-827c-ea13b4cf143f",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T21:37:49.353891+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "fb497e47-c2ec-4297-a3a8-d0f2db9f4764",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-09T07:46:59.827414+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "32f414e8-8314-4170-bde3-4ad0b2baa0b7",
+      "code": "PHY7-U02-S03-I11",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "5997b536-f05e-44c0-960d-879b6b541a4d",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-10T22:58:40.556589+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b53d7960-e42d-4efa-b763-f2461db6f4bc",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:58:47.321412+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "a51e0daa-29fb-4b10-9af9-7781bcb1b4d6",
+      "code": "PHY7-U02-S03-I12",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "dd4e07cc-3d3b-4e79-9d4e-1cb3e8acca91",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:12:59.423785+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "60beeebf-b7f3-40dc-b6ae-4ee27edbfa09",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:55:30.815553+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "8d290596-373e-4415-89cb-ffe2b6ef279c",
+      "code": "PHY7-U02-S03-M01",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e36ed65f-830c-4fe9-a744-6b1fbb8261c5",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-08T15:06:04.332987+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0ef8258e-7dc4-429a-9d0b-f87746c0d43e",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-08T15:06:51.077308+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "02f4ec30-4071-46c5-a17d-ee7771345d57",
+      "code": "PHY7-U02-S03-M02",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "3d53a4f5-6b7f-4993-989b-e4aae006090a",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-08T18:14:37.013879+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "97e97adf-e665-4506-bb05-189e82d73576",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-08T18:14:43.008147+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "5249d8d8-212c-44c6-88f6-f9e2bd15bb04",
+      "code": "PHY7-U02-S03-M03",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "247d0d16-6c59-45ab-ac6b-256ab28ff8ca",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-11T19:57:36.906792+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "abbf0695-2686-4181-84cf-415e2de34a3a",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-11T19:57:42.068831+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "32dbf2df-a12e-4a73-aed2-2af0ccdf6989",
+      "code": "PHY7-U02-S03-M04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "b00c343a-2cf1-4c30-9110-be2bb1e48af4",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T20:35:34.895746+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0288ceba-70d5-4aa8-a98a-baddbb61aa02",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:58:46.802261+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "9660d5b3-70de-4204-8478-aa90721c9291",
+      "code": "PHY7-U02-S03-M05",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e737b7b4-4cc4-406a-8309-1a9e8e3ca762",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T15:15:11.365898+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "1d6cbc0f-92d7-422b-ae74-83e27a1ca03c",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T15:31:26.045302+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "4b37a934-c647-4755-b8c4-8864f9606767",
+      "code": "PHY7-U02-S04-D01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "9499df2a-a8f7-49e7-b1c4-b72c8d83108a",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T20:35:34.895746+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "ebab2908-9dbd-4343-9cf7-ea2ba86c5415",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:00:25.10928+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "ad53fa64-393a-49c0-92fa-86e1be4c6b70",
+      "code": "PHY7-U02-S04-D02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "2c360ef7-05a7-4b79-9ba1-e5c0cbe8a1b8",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T21:34:24.309943+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "7fb1f8b3-00b0-4b2a-b0fc-6ef20a8157ae",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:54:25.677339+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f5f7e590-3c12-41c7-9a92-afdf329cc5be",
+      "code": "PHY7-U02-S04-I01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "2cee1895-5707-4003-90e1-87103fcb89d2",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T14:56:53.300221+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "7dba5fb3-7be3-4bc5-a0dc-1e368f4dee4e",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T14:56:59.502342+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "77ae6d0c-5e8b-4d10-a352-e7f3be865a14",
+      "code": "PHY7-U02-S04-I02",
+      "status": "published",
+      "version": 3,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "2bcb8feb-65f5-41ad-9654-30967bc60512",
+        "errors": [],
+        "passed": true,
+        "version": 3,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:17:26.310185+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "8cbaffbd-1177-49de-9c84-72ebd826e8c8",
+        "version": 3,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:17:29.168891+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "e4f2b81e-da40-46e9-a995-f76006c5f011",
+      "code": "PHY7-U02-S04-I03",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "75e9e3f0-2674-4e61-86f1-13a3b9b5116c",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:17:51.02955+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "51d4d0dc-977c-4507-a8f0-279cc6381d32",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:17:54.019482+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "c5fd7a56-8105-4779-8ecc-a1a66f7bb8bf",
+      "code": "PHY7-U02-S04-I04",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "4359247e-4ddb-421f-98ed-8935d0eea2eb",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:18:59.000985+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "23023176-d4d7-40b4-820c-cdd9e6c6ff33",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:19:04.511175+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "0344876f-ee7e-4d92-9ef9-db284a223ae0",
+      "code": "PHY7-U02-S04-I05",
+      "status": "published",
+      "version": 3,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "c95260f6-1a4a-401e-a0fb-ce98fc6334aa",
+        "errors": [],
+        "passed": true,
+        "version": 3,
+        "warnings": [],
+        "createdAt": "2026-10-07T06:53:00.077129+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b0a084b2-e13d-4ed1-8a41-cbbf930a97bc",
+        "version": 3,
+        "decision": "approved",
+        "createdAt": "2026-10-06T21:55:46.169783+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "7ec27342-5cbc-49c0-9625-5698eccf562e",
+      "code": "PHY7-U02-S04-I06",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "9d4c8791-0c87-49b0-b4da-b597cee776bc",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-07T06:53:00.077129+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "48bbf9cc-cbc3-4137-aa4a-0ff682358a7f",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-06T22:19:11.079825+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "2075e95b-3f0c-4f7e-8a2e-9fa1dbb06be8",
+      "code": "PHY7-U02-S04-I07",
+      "status": "published",
+      "version": 3,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "67148b66-594d-40f1-9858-a7ae505c39af",
+        "errors": [],
+        "passed": true,
+        "version": 3,
+        "warnings": [],
+        "createdAt": "2026-10-07T06:53:00.077129+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0fc793ff-e761-4ff1-9866-54cd818511a3",
+        "version": 3,
+        "decision": "approved",
+        "createdAt": "2026-10-06T22:30:15.728913+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "47d14891-e10e-4f5b-a081-f6717b6de183",
+      "code": "PHY7-U02-S04-I08",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "d1534fd5-96c6-49d2-906e-e549a9099c2e",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-08T20:55:22.167801+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "fafe152d-5f01-43a6-b792-f73cd6c594fd",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-08T20:56:11.763348+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "3e40948d-52d5-4632-bc6a-c8592aceac79",
+      "code": "PHY7-U02-S04-I09",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "ed90e54f-b72a-4d1b-a686-624955ba911a",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T21:37:49.353891+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0c99c05a-ddd3-4af2-8e08-b6310c989e9f",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-09T07:46:36.805408+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "4380ce6d-cc85-4479-887c-f4af0bd27cb8",
+      "code": "PHY7-U02-S04-I10",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "fbc9c7a9-b9dc-441e-bbf3-68e47924366c",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T21:37:49.353891+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "7c007514-eca6-42d5-a27f-71f93a8d6ed8",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-09T07:46:11.076357+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "1a1381ed-2057-465d-9b58-6e9daf751371",
+      "code": "PHY7-U02-S04-I11",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "7df4f9f1-d416-46d1-a26e-6f620368e413",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-09T08:43:22.907295+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "09aa8587-bc2e-4642-970a-39a02ff437d6",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:55:07.203622+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "da23af4d-82f2-4ff7-8995-55557d5d88ae",
+      "code": "PHY7-U02-S04-I12",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "6222a5e0-f098-4298-a008-29280e601cc9",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-09T08:43:22.907295+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "4de372c3-3e12-4fc4-806a-5be38513c9c7",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:54:39.507847+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "380d9c71-7ae5-4975-8014-ed5f3a8a742e",
+      "code": "PHY7-U02-S04-M01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "966f1193-49cd-4cc4-8f8c-3238cf10eba3",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T07:26:48.859965+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "9908ce4a-5898-40da-859c-baf64cb04956",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T13:07:42.914456+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "5cdb17f8-9914-4cf2-ae74-bdc1a4f31a1f",
+      "code": "PHY7-U02-S04-M02",
+      "status": "published",
+      "version": 3,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "54e947d8-42a7-4589-856d-798f4d08eb36",
+        "errors": [],
+        "passed": true,
+        "version": 3,
+        "warnings": [],
+        "createdAt": "2026-10-08T15:48:51.184992+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "83756a77-3dbc-467d-8bac-daadcb62ecb1",
+        "version": 3,
+        "decision": "approved",
+        "createdAt": "2026-10-08T15:49:06.887147+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "85376508-614f-45e0-b9d4-868a9be82987",
+      "code": "PHY7-U02-S04-M03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "28c813a3-a4fd-4af4-ba26-58e7db4b39a5",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T20:04:40.343115+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "a355814e-0673-454f-b8e8-2128fc1aadc1",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T20:04:49.273208+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "3181ee3a-c91c-4884-b119-c4e7d2a16c23",
+      "code": "PHY7-U02-S04-M04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "651f190e-40ac-4162-92d8-a792263b67d3",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T18:58:53.378159+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "f6c2bde0-9e6a-453b-89f0-61693170a205",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:02:41.243892+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "1994b72a-e2d4-40b5-8ac8-0e886ca77599",
+      "code": "PHY7-U02-S04-M05",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "25daeaac-598d-4610-b98c-1242546b5002",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T20:35:34.895746+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "ad3bf76c-ace8-4e98-ba9d-b72acc9db3fb",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:00:49.434859+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "627ae3b1-c2e2-4ec1-842d-8961975adf48",
+      "code": "PHY7-U02-S05-D01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "833568f8-0167-4c10-8d6a-e55dbb3ea00d",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T20:35:34.895746+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "cf21dabd-ab69-4e22-873f-d082349deb42",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:02:08.785856+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "06ce31da-00e3-4114-87fa-0479bb414f7a",
+      "code": "PHY7-U02-S05-D02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "8199cd73-7b78-47f2-9c18-a79a055ae4c1",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T11:07:11.024747+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "6c847ec4-a245-4c55-ae8c-0bb31d97b4e0",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T11:37:36.153092+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "8ec57954-3af7-4b88-86cd-5927e461dcba",
+      "code": "PHY7-U02-S05-I01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e1611ad2-0fc2-41f7-b272-60f23b186410",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:44:05.374938+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "6d3a696c-6897-49d8-bf3b-fe716f649090",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:44:18.844556+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "95a2124c-d2fc-4f9d-ba24-cff282819e4a",
+      "code": "PHY7-U02-S05-I02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "ea468174-ad42-483b-b8cf-d050a4538658",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:45:05.306778+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "814e5f74-fe70-46f5-a737-34fc542e75bd",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:45:10.386759+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "c0b26cb9-f020-4fc7-a74f-08cf7ee1a30d",
+      "code": "PHY7-U02-S05-I03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "2666fa0b-9ce4-45ea-a5f8-a44c8efc06d2",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:45:47.417941+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "64b38541-7b87-4a9d-adc5-538edc2b3702",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:45:52.213452+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "c0ead7e1-32ca-45a1-a5bc-a6f916b084e2",
+      "code": "PHY7-U02-S05-I04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "2527f27b-37fb-4355-b53a-d0498d2e504e",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T16:46:59.305903+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "87673590-8858-47e4-9a42-68cdb583d7ea",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T16:47:06.413199+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "12e86241-becd-43b3-bf81-f0d28025a8ab",
+      "code": "PHY7-U02-S05-I05",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "75f84363-3f55-46fb-922a-e0368b63055c",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-07T13:27:23.3869+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "829e768f-8f6e-46d9-8dea-850595f3e7d4",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-07T07:26:24.463484+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "23d9df58-9745-44b6-bba3-92f765b7759f",
+      "code": "PHY7-U02-S05-I06",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "8b1365e9-35ef-46e9-97d7-704aac0d3b86",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-07T13:27:23.3869+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "25b473f0-8ab3-48f0-bdea-8f629ce5d356",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-07T12:27:07.425559+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "b25fd829-9015-4d9c-a2cd-1d0a873ff12e",
+      "code": "PHY7-U02-S05-I07",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "f8f4d4ca-d8bd-4a92-a72f-cec574eb3362",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T20:41:29.565+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "74372034-74b5-4aeb-86c6-98835950b5d0",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T20:57:59.42055+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "82c3b429-efa8-4ea0-beea-5295c32456c1",
+      "code": "PHY7-U02-S05-I08",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "b17160f5-6ffe-486b-adba-250b9dd2f952",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-09T07:44:55.034472+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "ec3e9ecd-7797-47c8-a1cc-2516746eef33",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-09T07:45:02.103827+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "1542181b-9d51-46de-a7b5-f6bc427ab5e6",
+      "code": "PHY7-U02-S05-I09",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "b40b1e5a-2d5f-418e-925f-1414f34965a0",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-09T08:43:22.907295+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "4879c79b-27fd-43f5-aa11-e1d97e686c91",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:54:12.900976+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f9dde3cf-3703-4a9c-ac3a-b4193fa66934",
+      "code": "PHY7-U02-S05-I10",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "493cbdd5-5509-4dd8-bd9f-92da6eb79a67",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:12:59.423785+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "e67ebc34-1deb-418a-a8e5-4d5dedb5fa42",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:53:50.256212+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "5cccb35d-7b21-41b2-a061-94472720af92",
+      "code": "PHY7-U02-S05-I11",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "2072475e-069f-4e8d-9713-578b329f0081",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:12:59.423785+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "a71a4454-2a9e-4330-961a-70f634f55f98",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:53:26.118786+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "64674d16-230e-4cda-8e7d-c2f9aa007c55",
+      "code": "PHY7-U02-S05-I12",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "1eb15a1a-d9cd-4770-a04f-3e0b7ba2e4a8",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:49:22.261162+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "cdd1299f-f5c9-4432-907c-7c148ecd4a4d",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:20:31.578905+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "62457731-03e0-4ad7-9087-a6a95f4b1540",
+      "code": "PHY7-U02-S05-M01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "5b7c835e-a973-4dc8-a565-c4cae3df3817",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T18:43:31.051882+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "ef2c2f25-4926-4d6b-b257-e46bd359829c",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T18:43:37.612247+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "74447d09-605b-4084-aae4-0aa7a1d67e37",
+      "code": "PHY7-U02-S05-M02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "4afb6aa3-e2d0-4284-b0a7-8651d9e3c24f",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T18:58:53.378159+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "5d127468-4d06-4ebd-b60c-99b79cfd4a8b",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:04:24.267481+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "2231924e-e0f8-4be8-a31b-78ac7478a168",
+      "code": "PHY7-U02-S05-M03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "7a6e182f-1faf-4126-911f-2ef0291a4ab6",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T12:48:55.883+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "f1bd1bd5-6c0f-41bd-994e-3f2fbb43e538",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T14:19:24.037731+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "1f4afb98-2bf9-4437-926e-175290b3fe8e",
+      "code": "PHY7-U02-S05-M04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "cb38e490-5d52-45a8-b174-583059318113",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T15:15:11.365898+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "06308b74-a321-4b8a-b26e-d2d5e06864b3",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T15:31:49.294995+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "96228ed4-483f-491b-bdf6-13a162cb4333",
+      "code": "PHY7-U02-S06-D01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "12fefb1e-c489-4512-93cc-33c571b0e000",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T18:58:53.378159+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "c5327ae7-23c8-43ba-9ebc-25df382e036e",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:04:50.393803+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "bbdfbb0f-77e1-4048-ac6b-aa9b73476084",
+      "code": "PHY7-U02-S06-D02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "4f11e255-501d-4e90-8d03-233198ac0ca7",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T21:34:24.309943+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "f32d463d-fb0f-468f-bef6-92a06a080f42",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:54:54.238783+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "62ff143c-00d3-47dc-ad15-710e528387e6",
+      "code": "PHY7-U02-S06-I01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "b79c2234-b8c0-4d60-94c2-1caea2ad6e85",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T17:40:48.307646+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0e034760-f7fb-431e-8411-44f08e9849ec",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T17:40:54.23796+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "ee3807ee-567d-480d-b330-80ce11d18efa",
+      "code": "PHY7-U02-S06-I02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "c38aa353-36d7-4b87-9496-c0693461eea7",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T17:41:15.431093+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b1991e55-62f4-4ca1-bb63-fc53775d2e04",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T17:41:21.744578+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "8fcb3821-bf6e-4b4f-8027-c5127ed94ca8",
+      "code": "PHY7-U02-S06-I03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "b0803225-5a2f-4a9c-83ea-710d747e2947",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T17:42:00.408385+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0277b34c-1c18-4620-b505-727d439191e4",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T17:42:07.49887+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "660f6de2-cba0-4236-a148-4103cf07897f",
+      "code": "PHY7-U02-S06-I04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "96d431c7-a451-4f34-bd05-f673fb240c3a",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-01T17:42:22.389864+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "04e3876e-1b89-4568-86ec-5ca26e45f23c",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-01T17:42:28.626789+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "d94454da-af21-48a5-aae9-4d09b1543b67",
+      "code": "PHY7-U02-S06-I05",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "68ccd418-b479-49d9-bc1d-b23918808356",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-07T13:27:23.3869+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "5d156864-0365-4ff2-b17e-1647f1627f44",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-07T12:42:12.407003+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "1bf9f08f-8bcc-4ca1-8261-85a39e0f9218",
+      "code": "PHY7-U02-S06-I06",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "58963d24-85fb-4abd-8600-6be8ee7a6435",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-07T13:27:23.3869+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "6c72e286-362b-42b4-b540-fc7ebfa33e7a",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-07T12:56:42.055135+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "6e2b9adc-f2fa-4485-b44b-bf8765217560",
+      "code": "PHY7-U02-S06-I07",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "cf8ec01f-933a-4711-965f-738d8105b1c6",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-08T21:00:12.850428+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "da98efc7-3235-48eb-97d2-e09cc6271ebc",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-08T21:00:28.357596+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "62f4726e-48bb-4cf1-a4ef-4c45be4cab68",
+      "code": "PHY7-U02-S06-I08",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "ca3ada0a-e7c0-4d6a-83dc-431cca71eb35",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-09T07:41:16.862625+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "2b5895e9-74b3-4cba-bda3-731b9a2d00fb",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-09T07:41:23.169518+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "42261bfb-ba95-4cd6-990a-317e03fd4d2f",
+      "code": "PHY7-U02-S06-I09",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "dac10b32-b358-486a-a61e-d7b34148a33f",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-09T08:43:22.907295+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "04aed9bf-434b-4c03-aed9-b824c6303360",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:52:36.771227+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "b7a72302-2699-4f38-8b44-fd3ac0b8b5f0",
+      "code": "PHY7-U02-S06-I10",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "8179de10-f161-467d-8ae3-8a4769a80e8a",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:12:59.423785+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "114a0a9d-9d31-4299-810c-d067bf52b402",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:52:01.13984+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "75fb859b-a462-436c-ab72-2ca343048b28",
+      "code": "PHY7-U02-S06-I11",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "da218d4e-ee82-4da5-8dd3-51bc3e7f271c",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:12:59.423785+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "d0308cca-489d-41a3-af1b-58472b114cd1",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:51:38.486336+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "0bcc4b12-fc57-4dce-8b54-267efd8c32a4",
+      "code": "PHY7-U02-S06-I12",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "3d81d9b5-3405-4be6-8d1b-15c7d1948300",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-10T22:50:55.247775+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "fd58928f-e488-4245-9394-5a52410f2e36",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:51:04.691198+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "4f91b533-4a85-4bf6-b272-c92c177081f4",
+      "code": "PHY7-U02-S06-M01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "3791df41-e423-40ff-a3e1-fe5c51e27213",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T20:35:34.895746+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "4c0e9db7-baa3-445d-ad46-993029573667",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:03:37.169157+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "4966dae0-a2e0-4eb0-96c7-34b7ae52f8ae",
+      "code": "PHY7-U02-S06-M02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "8d20f67e-0566-43a1-8f6f-3a0908444e0b",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T21:34:24.309943+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b38d77ed-7334-4920-878c-62f906f58632",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:57:25.767777+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "1205ce18-2b49-4990-9689-7ec0e32304d3",
+      "code": "PHY7-U02-S06-M03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "5842d564-cc76-409a-a926-360fd63273d8",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T12:48:55.883+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "735d23c0-690c-4d53-900e-286f0e7a5a9a",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T14:13:03.173344+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "08a4d700-03c2-49bd-a69f-f8bc1dbdc47d",
+      "code": "PHY7-U02-S06-M04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "6b91e6ce-c3ea-4e9e-8c6b-89fcf5d7f437",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T15:15:11.365898+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "45f8de0a-4741-45ad-a297-e6662cacb927",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T15:32:06.31088+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "91f8620a-dee5-44bc-8991-03d2b2303245",
+      "code": "PHY7-U02-S07-D01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "8aa0bd31-4e3b-4ef7-bed2-307871f07bdf",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T08:13:41.483302+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "16d3ef84-2551-456a-a238-341d629b6f08",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T10:18:41.260845+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "6876a7d7-cf51-48aa-b432-cec84bf0e381",
+      "code": "PHY7-U02-S07-D02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "488afa60-d533-475d-8e7b-5b24b3a13bf5",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T08:13:41.483302+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "5767f4b9-1163-4c93-852e-bae55dac5b7f",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T10:19:04.801259+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "d93a2f4c-8373-4196-be73-d4a171c9af72",
+      "code": "PHY7-U02-S07-I01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "0c50f741-8ae4-436d-bbb2-0f0a2f1ff2a0",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T07:59:34.969001+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "2221c6c6-7aa7-4d48-b4bf-0a84aaedee06",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T07:59:42.150756+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "bcc7d9b4-e053-4b6a-973b-f03e8eb26166",
+      "code": "PHY7-U02-S07-I02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "018c6091-7581-4c87-afde-f15a5266ad64",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T08:00:16.925907+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "8b19a8bc-3cae-4312-8a57-bc7e285c6515",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T08:00:22.357548+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f3ae5421-1bb8-41ee-9e6d-283a6738fd51",
+      "code": "PHY7-U02-S07-I03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "197b8073-f6c6-490f-bc24-728a10b168ca",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T08:00:39.994177+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "07ffba12-aefe-4337-adfe-eef11987f97a",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T08:00:46.53947+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "0877aecf-2d1c-4917-8ecf-e689154b1694",
+      "code": "PHY7-U02-S07-I04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e42ce95f-74cd-477a-bcd0-862656fd256b",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T08:01:09.336162+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "67331ea5-d498-4bc5-958c-394e6da8626e",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T08:01:14.99131+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "8736e373-a291-4cb4-ae38-cb88a67f9ca1",
+      "code": "PHY7-U02-S07-I05",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "d2cd8255-7aad-4eeb-a6c4-b8d389f81e45",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-07T13:45:54.36532+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "7f73193a-7747-44a2-b2e2-6035c45a7692",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-07T16:29:00.534173+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f41cf092-b9e6-48f7-b768-b2953f444f6f",
+      "code": "PHY7-U02-S07-I06",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "5000f9f4-e26a-47f5-acb5-9c385a1bca94",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T20:41:29.565+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "ec71c280-0b12-4f83-b086-e7e504c7eb68",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T21:01:02.441279+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "41522ce5-42a9-434d-8cca-4d7a5bffb295",
+      "code": "PHY7-U02-S07-I07",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "c2064d61-509d-4163-98cd-9a56a794f2f4",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-09T07:37:01.927761+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b4817a68-3f90-4b78-9830-18e210ae2ed8",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-09T07:37:08.519099+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "ac51d638-13c3-4565-86c4-4f3f90deb68a",
+      "code": "PHY7-U02-S07-I08",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "7fcd48e3-ead7-477d-a537-94efc1f3223e",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:12:59.423785+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "5940cdfb-0e18-444b-a841-508f5ec702ff",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:47:02.206231+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "d85164ea-aa4a-4e18-bca4-9f103974b69d",
+      "code": "PHY7-U02-S07-I09",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "99dcfee6-5432-4511-8ba6-87d461d4c919",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-10T22:46:09.45284+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "8635c0c7-b4ca-4759-832d-1b519b3ddc0b",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:46:18.765455+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "6c85922d-f8f1-4e4f-826c-56e97d61a051",
+      "code": "PHY7-U02-S07-I10",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "d1a449d3-fe80-4b7e-8750-1252319e1747",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T18:58:53.378159+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "599d5e54-8ad6-40a7-b255-9baf33a2abe9",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:05:09.409768+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "0c33175a-dd66-497c-8491-7f949d79e78e",
+      "code": "PHY7-U02-S07-I11",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "7d0bb609-de82-40bf-9bb1-7275ad1086e1",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T18:58:53.378159+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "62e24fc0-9f4d-497a-b22d-5bc367886419",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:05:26.257173+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "2ce7a568-6658-478c-9f88-948b616b2ce4",
+      "code": "PHY7-U02-S07-I12",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "afcee880-540e-4608-874a-509a678247ce",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T18:58:53.378159+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "6dab41c9-660f-468a-9530-4b850fdab2f0",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:05:41.516007+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "4055a223-fcfe-4c61-9115-9c518df6684b",
+      "code": "PHY7-U02-S07-M01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "eda1ea2c-1576-43a9-9273-de70d1a41828",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T13:08:51.852318+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "65dbe355-6ed6-43b5-a192-5bc0deec3f03",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T13:08:58.947705+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "6ac832b2-e5e6-4066-97b9-84b94035379e",
+      "code": "PHY7-U02-S07-M02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "69d1d924-f5b6-47aa-aff4-dc277ba263cc",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T08:13:41.483302+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b84e870c-186e-44e4-b9ea-a8c95ccc306c",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T10:21:30.273509+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "e99654f5-cd57-4841-a0ad-c79c9f930a19",
+      "code": "PHY7-U02-S07-M03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "7331c0dd-c3da-48c8-801d-2524684dab9b",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T11:07:11.024747+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "e97a6fab-0308-447f-b551-e0adefb700d2",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T11:41:52.522353+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "75ec54f8-f6a8-4227-9d4c-5da2fe9adb35",
+      "code": "PHY7-U02-S07-M04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "dc5aaed9-1e9c-49fc-ab49-d0eef52e4ab3",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T11:07:11.024747+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "709121ed-7f3a-472b-8d86-3bcaf34f8c26",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T11:42:21.91768+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "db1cbeb4-cf73-4322-ab64-4319d74c4048",
+      "code": "PHY7-U02-S08-D01",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "6ffaff27-94b3-4968-969a-0dc2cc6d763b",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-08T15:53:49.604157+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b9e18c3c-f7f7-4faa-8bd2-044b8bbd3500",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-08T15:55:36.387584+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "91582cd9-6b25-4dac-bc55-51975f85ae43",
+      "code": "PHY7-U02-S08-D02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "eb09b9d5-da33-4afc-9df1-bac21858b272",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-12T11:07:11.024747+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0ec36550-416a-44e4-b540-1a0cac48c420",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-12T11:42:58.878587+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f0ee7d39-d922-4463-9703-0c8565da31ab",
+      "code": "PHY7-U02-S08-I01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "4800b052-0d9b-42ed-b4e9-efd82e6052b9",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T08:40:08.024386+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "46da1706-9e7b-4d5d-8acf-fda76cb1fcca",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T08:40:23.320232+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "76d5fe46-411e-4b58-b950-03ba3984845d",
+      "code": "PHY7-U02-S08-I02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "ee78a87b-e8dd-4ee8-b092-240703a6357e",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T08:41:46.573129+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "91f6b105-5286-429d-b3c0-78512086a7ab",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T08:42:24.825624+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f73aa214-ae3f-4653-a19f-3de251e95102",
+      "code": "PHY7-U02-S08-I03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "0320155a-887e-43fc-a1e5-541d616b913f",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T08:43:45.346838+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b4e74e83-43e5-42b3-89bc-e8c0904c6b5a",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T08:45:18.774437+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f2773a3c-95ce-4b50-85e7-dda5415d5e54",
+      "code": "PHY7-U02-S08-I04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "942eeec5-41a5-48f9-8161-dae443ba1463",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T08:48:19.634659+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "71127cad-f5d3-4acf-a9d0-729850ca2b26",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T08:48:37.98425+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "3abbf485-6ff6-4116-acd7-0d750dc763d5",
+      "code": "PHY7-U02-S08-I05",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "c9a89f96-70fa-4ee5-b5ea-0f60b4165456",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-07T18:53:29.417418+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "18f013e4-b8e3-4520-aef1-d7db9b53812e",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-07T18:29:27.575043+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "06c995bb-7dca-4d31-8732-a96b090ae97c",
+      "code": "PHY7-U02-S08-I06",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "ce9da9e0-e6aa-49eb-be3e-4034d00c0c26",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-07T18:33:12.669714+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "68d89eea-9dcb-41ba-a22a-61e0e0a0619a",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-07T18:33:18.133737+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "57867761-7b90-477d-827b-262d33386a6a",
+      "code": "PHY7-U02-S08-I07",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "d6738bd6-f242-4257-8ae4-3fabbaf96353",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T20:41:29.565+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b73e8b98-26b8-4f0c-afec-b52e990ce14d",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T21:01:43.162677+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "14054457-555d-4de4-9562-462bbb8e6bac",
+      "code": "PHY7-U02-S08-I08",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "4ad20135-26c4-4045-bfec-e05b56223ba8",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T21:37:49.353891+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "d6ae1643-cfd8-467b-9936-b463e0015413",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-09T07:32:41.134224+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "b341debb-09c5-48ea-bd2e-e19f4a740f5f",
+      "code": "PHY7-U02-S08-I09",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "54a65560-86d6-43d1-b564-949f9d70a7a4",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-09T08:43:22.907295+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "33b5a26c-5d11-4ed5-a249-3888c3132d8f",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:42:55.578007+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "bc2e3194-c172-4a1b-81c2-bf287083d6cd",
+      "code": "PHY7-U02-S08-I10",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "5275a411-79cb-4c0e-affe-52d1f39b4af2",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:12:59.423785+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "109cd63f-5ef4-4b80-8874-fcfc33794b21",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:42:15.217563+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "dd7a8937-01a5-4727-a9de-2ae1fcd3c1ce",
+      "code": "PHY7-U02-S08-I11",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "43c45a8f-0b8f-4a08-b3f8-a652fa20e6a6",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:49:22.261162+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "ac82ef63-611e-488d-9032-b9f4016b4005",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:41:36.211637+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "8c7c7f63-7f54-4876-90b0-fae7f2285abe",
+      "code": "PHY7-U02-S08-I12",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "d1d877ed-bf58-4c1c-836b-897aa2af739b",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:49:22.261162+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "66ae9dfb-26be-4825-9805-b0350c92a39a",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:38:46.282448+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "c4e81f2d-26db-43a5-bde1-bd956ecf1cf2",
+      "code": "PHY7-U02-S08-M01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "b0a82736-277c-4305-9de7-444799be9e7f",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T07:26:48.859965+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "5ab81000-c5d5-4743-8a20-078335244c22",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T13:10:18.184436+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f5abddad-64f2-4749-b57a-133aeb576bc8",
+      "code": "PHY7-U02-S08-M02",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "fa7b0c15-c8f1-458f-83b0-8eeecc92ad46",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-10T22:36:25.130853+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "3782840f-e4b9-4625-ac9d-89877c33714f",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:36:31.03788+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "c8af569d-4e11-4d39-b3d2-190f1204efcb",
+      "code": "PHY7-U02-S08-M03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "9a70cb50-55a5-4f0c-94cd-b3bfe6d33020",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T18:58:53.378159+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b768c181-4b1b-430f-9659-f7b449de8c19",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:06:07.469833+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "998491fc-860c-4745-92c9-67c5bdd92e8a",
+      "code": "PHY7-U02-S08-M04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "8ddea64c-5558-41df-8127-5b2d361499da",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T20:35:34.895746+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "96421b59-576f-48d0-9570-7bfdddb12398",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:03:58.502344+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "16adfe1e-5e77-4a14-8695-68e7accc205b",
+      "code": "PHY7-U02-S09-D01",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "e32dfa2a-d74c-481f-935d-e218398fda33",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-08T16:02:13.283739+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "7805d160-8c45-4f45-aea6-91c06f1a545a",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-08T16:02:19.054479+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "ec7706b8-3a9d-44c9-9226-dd3d293f51fa",
+      "code": "PHY7-U02-S09-D02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "43fd0339-d0af-4bde-bc61-2a2a435b87fc",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T18:58:53.378159+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "9d04d105-65eb-4b42-b7e5-a2c0e1e515bc",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T20:06:28.091854+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "8fcbd81e-de0d-4044-aa14-9ee611edee4e",
+      "code": "PHY7-U02-S09-D03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "4e381af1-b2a3-4089-9882-78c433d7d979",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T20:35:34.895746+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "bfaf55d1-738f-418e-8635-2b6db2f37609",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:04:23.584578+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "891c9c3e-82ad-47d0-8b6d-9cc3603b1fd2",
+      "code": "PHY7-U02-S09-D04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "9e1288a4-4ffb-4377-87c5-0eac88ceb591",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T21:34:24.309943+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "aa184a45-9de1-4397-b8fd-e13d5f76fa01",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:59:12.297443+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "108a14e9-7460-4491-9454-f8359e1c238f",
+      "code": "PHY7-U02-S09-I01",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "991173f4-2d71-462c-af54-aa13178cc5dd",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T09:14:00.458112+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "493193d3-675a-454c-9f07-dba0ac25a540",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T09:14:21.284187+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "ab1d35ba-76a4-403d-8d0c-147234aad143",
+      "code": "PHY7-U02-S09-I02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "6b02e2c5-b635-4f5f-926f-e63d016ba630",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T09:15:17.498709+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0fcb8576-544c-45a8-9292-42a4fa46e6b6",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T09:15:22.856867+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "19120410-872d-437c-9f18-229f01c69fcc",
+      "code": "PHY7-U02-S09-I03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "86016f82-d695-479d-be2f-d768fb403dc6",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T09:15:46.776359+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "8b9c1d4a-1cef-4b8c-8ce5-33fc96dc8f21",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T09:15:52.131428+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "a3aa8e20-aff6-4b18-866a-47e01920a00a",
+      "code": "PHY7-U02-S09-I04",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "5dffe206-d941-4c4e-9dd6-3664a1ca1994",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-05T09:16:26.056174+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "e23fcf60-b0bd-4584-9e12-8649b3313f6e",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-05T09:16:32.111863+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "a5453c78-6a31-46cb-8449-0b4fdbc117e1",
+      "code": "PHY7-U02-S09-I05",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "d19f0208-d3d3-49c6-be81-094ca35a335c",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-07T20:55:33.260541+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "e80da57d-65bb-49d6-a77d-5790846a2b34",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-07T19:41:14.787821+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "526bbcbc-dfbe-4fa9-82ff-b2c55b577997",
+      "code": "PHY7-U02-S09-I06",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "6e93522c-20c6-4119-8069-7682b92b1ce5",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-07T20:03:38.899557+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "3e326f6f-55d9-4a3c-87c5-2b8b78954005",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-07T20:04:17.52878+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "fc7e5395-7f60-47b9-9b17-e73689484ddf",
+      "code": "PHY7-U02-S09-I07",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "96b05887-4e2e-4eeb-a745-73f291ec8338",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T20:41:29.565+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "06870163-3989-482a-8e07-159864811f7b",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T21:02:28.956422+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "bdb5baee-66ae-49af-b617-2604de26c7ab",
+      "code": "PHY7-U02-S09-I08",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "3b91c540-720b-41b6-9e69-8cdbe1a2e57c",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-09T06:51:07.480043+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "e747a06b-15a7-4252-a99e-81465c822a5a",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-09T06:51:20.50623+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "bf7eadf0-5549-4144-a460-dfa263689349",
+      "code": "PHY7-U02-S09-I09",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "9ab067e8-c2b0-4114-90b3-a1a6de744889",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-09T08:43:22.907295+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "53b7b5d1-1f35-42d1-8b52-bd91f4e86b20",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-09T11:13:15.311587+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "e16aced5-371f-4004-ac03-2996a45177b7",
+      "code": "PHY7-U02-S09-I10",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "2cd3d470-30e3-422f-9dba-851041227152",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-09T11:08:14.496277+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "b505110e-3af1-4d20-b4d4-7e10ea54a215",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-09T11:08:21.544633+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "cc54fda8-cb50-42de-8d52-87a5234a405e",
+      "code": "PHY7-U02-S09-I11",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "af6eb664-99d7-4fe2-8724-d3592d170035",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-10T22:28:22.313528+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "ac89463a-3c67-4e44-b905-287a3c0834d2",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:28:29.038929+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "7a354b10-618f-47c7-910c-3cd1bf5acbf4",
+      "code": "PHY7-U02-S09-I12",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "964fbd6b-b24e-4f27-b73e-fd71cdd8412b",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-10T10:49:22.261162+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "87a13de5-ff7b-4902-9aea-e414df1254cc",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:27:11.547342+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "8aef6289-5b01-4305-bf6c-352526b772de",
+      "code": "PHY7-U02-S09-M01",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "c87af0d2-0ec4-400e-89f9-1a0579a57bb3",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-08T16:34:38.98566+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "dec4566f-ee9b-437d-b101-3d16a3731bef",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-08T16:34:45.713456+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "a5ccbcec-5e9c-4829-8892-dd9a724ce4c3",
+      "code": "PHY7-U02-S09-M02",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "b05faf82-2c45-4889-9bae-4a44ee69d4fa",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T20:05:43.132069+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "f88a9283-8cfa-404b-ac5b-b5a7cd94e77c",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T20:06:04.228393+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f5b0e774-4411-46f7-8156-601a71cbf00f",
+      "code": "PHY7-U02-S09-M03",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "d86d77de-6a57-4981-9d4f-229993f66431",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-08T20:41:29.565+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "199b6b0e-9b05-4b16-bd68-a922eeca72e5",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-08T21:03:01.418447+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "0f38cfc8-97f5-4620-8f3e-fccc997b364d",
+      "code": "PHY7-U02-S09-M04",
+      "status": "published",
+      "version": 2,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "087b2ccf-d9f8-48d8-87e5-afe7e777afd2",
+        "errors": [],
+        "passed": true,
+        "version": 2,
+        "warnings": [],
+        "createdAt": "2026-10-09T07:31:35.859539+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "09ccb69a-c595-43f4-98aa-9e5cddd3cc13",
+        "version": 2,
+        "decision": "approved",
+        "createdAt": "2026-10-09T07:31:42.785695+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "f64d45bc-25a9-42cf-b65c-288a42cb8174",
+      "code": "PHY7-U02-S09-M05",
+      "status": "published",
+      "version": 3,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "13de2039-a486-495d-bda1-9be6163e575e",
+        "errors": [],
+        "passed": true,
+        "version": 3,
+        "warnings": [],
+        "createdAt": "2026-10-10T22:26:40.037555+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "86494ae0-e267-4cc5-b7e5-152971cc3979",
+        "version": 3,
+        "decision": "approved",
+        "createdAt": "2026-10-10T22:26:44.392124+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "9d0875f7-0ede-40d2-8ecf-bd06dc0d69d5",
+      "code": "PHY7-U02-S09-M06",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "37047663-59c8-42e5-9dbf-11b0e3d053ea",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T20:35:34.895746+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "0d5ebe43-12b1-447d-ace1-591cedb38994",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:05:58.804323+00:00",
+        "hasReviewer": true
+      }
+    },
+    {
+      "id": "e142076b-2b9c-46f5-9053-14e1a67e2484",
+      "code": "PHY7-U02-S09-M07",
+      "status": "published",
+      "version": 1,
+      "reviewStatus": "approved",
+      "latestCurrentQa": {
+        "id": "c5ccfc28-74b3-44da-9437-85fe17b2bc67",
+        "errors": [],
+        "passed": true,
+        "version": 1,
+        "warnings": [],
+        "createdAt": "2026-10-11T21:34:24.309943+00:00"
+      },
+      "validationState": "provisional_no_sme_review",
+      "latestContentReview": {
+        "id": "3df3ab28-e3c9-439b-b59b-1e69288ea88a",
+        "version": 1,
+        "decision": "approved",
+        "createdAt": "2026-10-11T21:59:53.426383+00:00",
+        "hasReviewer": true
+      }
+    }
+  ],
+  "definitions": [
+    {
+      "id": "94e7729b-c2be-42e9-89da-98c0394de607",
+      "code": "diffusion_requires_uniform_composition",
+      "status": "active",
+      "currentMatchesApprovedSnapshot": true,
+      "latestReview": {
+        "id": "7cb6c165-cb66-4d77-81bc-4cb229e0606f",
+        "action": "approve",
+        "hasActor": true,
+        "revision": 1,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T15:32:58.768843+00:00"
+      }
+    },
+    {
+      "id": "a228ade0-1b15-40db-87d6-bc07d0983737",
+      "code": "element_totals_guarantee_molecular_grouping",
+      "status": "active",
+      "currentMatchesApprovedSnapshot": true,
+      "latestReview": {
+        "id": "0a6d1c51-b629-4cc8-9b56-6e4e85f890f1",
+        "action": "approve",
+        "hasActor": true,
+        "revision": 1,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T15:32:45.537742+00:00"
+      }
+    },
+    {
+      "id": "e846af74-46f7-4a62-baa9-3f4287ce09a9",
+      "code": "equal_total_counts_imply_same_mixture_composition",
+      "status": "active",
+      "currentMatchesApprovedSnapshot": true,
+      "latestReview": {
+        "id": "77d90072-6674-4f63-9c16-2e5a4521105e",
+        "action": "approve",
+        "hasActor": true,
+        "revision": 1,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T15:33:06.924431+00:00"
+      }
+    },
+    {
+      "id": "da512b09-62dd-4f99-b91e-f381e37b6ea7",
+      "code": "gap_reduction_allows_volume_below_particle_volume",
+      "status": "active",
+      "currentMatchesApprovedSnapshot": true,
+      "latestReview": {
+        "id": "6bb55518-2e62-4e96-9635-7c17b1125ba9",
+        "action": "approve",
+        "hasActor": true,
+        "revision": 1,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T15:32:38.118313+00:00"
+      }
+    },
+    {
+      "id": "6428696f-f06b-4524-a73e-302f487518db",
+      "code": "particle_exchange_counted_in_one_direction_only",
+      "status": "active",
+      "currentMatchesApprovedSnapshot": true,
+      "latestReview": {
+        "id": "422241b7-de91-4528-8e6d-1756be528fb6",
+        "action": "approve",
+        "hasActor": true,
+        "revision": 1,
+        "actorRole": "content_admin",
+        "createdAt": "2026-10-12T15:32:52.013804+00:00"
+      }
+    }
+  ],
+  "counts": {
+    "questions": 152,
+    "approved": 152,
+    "pending": 0,
+    "practice": 96,
+    "diagnostic": 18,
+    "mastery": 38,
+    "activeDefinitions": 210,
+    "draftDefinitions": 0,
+    "publishedGuides": 57,
+    "draftGuides": 0,
+    "target": 192,
+    "remaining": 40,
+    "remainingDiagnostic": 14,
+    "remainingMastery": 26
+  },
+  "bySkill": [
+    {
+      "purpose": "diagnostic",
+      "approved": 2,
+      "authored": 2,
+      "skill_code": "PHY7-U02-S02"
+    },
+    {
+      "purpose": "mastery_check",
+      "approved": 5,
+      "authored": 5,
+      "skill_code": "PHY7-U02-S02"
+    },
+    {
+      "purpose": "practice",
+      "approved": 12,
+      "authored": 12,
+      "skill_code": "PHY7-U02-S02"
+    },
+    {
+      "purpose": "diagnostic",
+      "approved": 2,
+      "authored": 2,
+      "skill_code": "PHY7-U02-S03"
+    },
+    {
+      "purpose": "mastery_check",
+      "approved": 5,
+      "authored": 5,
+      "skill_code": "PHY7-U02-S03"
+    },
+    {
+      "purpose": "practice",
+      "approved": 12,
+      "authored": 12,
+      "skill_code": "PHY7-U02-S03"
+    },
+    {
+      "purpose": "diagnostic",
+      "approved": 2,
+      "authored": 2,
+      "skill_code": "PHY7-U02-S04"
+    },
+    {
+      "purpose": "mastery_check",
+      "approved": 5,
+      "authored": 5,
+      "skill_code": "PHY7-U02-S04"
+    },
+    {
+      "purpose": "practice",
+      "approved": 12,
+      "authored": 12,
+      "skill_code": "PHY7-U02-S04"
+    },
+    {
+      "purpose": "diagnostic",
+      "approved": 2,
+      "authored": 2,
+      "skill_code": "PHY7-U02-S05"
+    },
+    {
+      "purpose": "mastery_check",
+      "approved": 4,
+      "authored": 4,
+      "skill_code": "PHY7-U02-S05"
+    },
+    {
+      "purpose": "practice",
+      "approved": 12,
+      "authored": 12,
+      "skill_code": "PHY7-U02-S05"
+    },
+    {
+      "purpose": "diagnostic",
+      "approved": 2,
+      "authored": 2,
+      "skill_code": "PHY7-U02-S06"
+    },
+    {
+      "purpose": "mastery_check",
+      "approved": 4,
+      "authored": 4,
+      "skill_code": "PHY7-U02-S06"
+    },
+    {
+      "purpose": "practice",
+      "approved": 12,
+      "authored": 12,
+      "skill_code": "PHY7-U02-S06"
+    },
+    {
+      "purpose": "diagnostic",
+      "approved": 2,
+      "authored": 2,
+      "skill_code": "PHY7-U02-S07"
+    },
+    {
+      "purpose": "mastery_check",
+      "approved": 4,
+      "authored": 4,
+      "skill_code": "PHY7-U02-S07"
+    },
+    {
+      "purpose": "practice",
+      "approved": 12,
+      "authored": 12,
+      "skill_code": "PHY7-U02-S07"
+    },
+    {
+      "purpose": "diagnostic",
+      "approved": 2,
+      "authored": 2,
+      "skill_code": "PHY7-U02-S08"
+    },
+    {
+      "purpose": "mastery_check",
+      "approved": 4,
+      "authored": 4,
+      "skill_code": "PHY7-U02-S08"
+    },
+    {
+      "purpose": "practice",
+      "approved": 12,
+      "authored": 12,
+      "skill_code": "PHY7-U02-S08"
+    },
+    {
+      "purpose": "diagnostic",
+      "approved": 4,
+      "authored": 4,
+      "skill_code": "PHY7-U02-S09"
+    },
+    {
+      "purpose": "mastery_check",
+      "approved": 7,
+      "authored": 7,
+      "skill_code": "PHY7-U02-S09"
+    },
+    {
+      "purpose": "practice",
+      "approved": 12,
+      "authored": 12,
+      "skill_code": "PHY7-U02-S09"
+    }
+  ],
+  "release": {
+    "status": "draft",
+    "activatedAt": null,
+    "poolMemberships": 0,
+    "formMemberships": 0
+  },
+  "nextManifest": {
+    "status": "authorized_for_next_four_candidate_batch",
+    "ownerDirective": "Proceed",
+    "selectionBy": "Codex applied the established smallest-Mastery-reserve priority within the agreed four-candidate batch size; skill names were not separately enumerated by John.",
+    "slots": [
+      {
+        "slot": "B18-C01",
+        "skill": "S05",
+        "purpose": "mastery_check"
+      },
+      {
+        "slot": "B18-C02",
+        "skill": "S06",
+        "purpose": "mastery_check"
+      },
+      {
+        "slot": "B18-C03",
+        "skill": "S07",
+        "purpose": "mastery_check"
+      },
+      {
+        "slot": "B18-C04",
+        "skill": "S08",
+        "purpose": "mastery_check"
+      }
+    ],
+    "candidatesAuthored": 0,
+    "candidatesStaged": 0,
+    "qualification": "Source/current/history/guide and six within-batch comparisons required; no acceptance quota or broader future-batch permission."
+  },
+  "limits": "Content approval verified; external SME/exposure, empirical parallelism, allocation and release remain open. No approval, QA or content row was created by this verification."
+}

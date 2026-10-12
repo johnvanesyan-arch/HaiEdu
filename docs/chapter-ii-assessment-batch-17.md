@@ -1,6 +1,8 @@
 # Chapter II assessment batch 17
 
-**Date:** 2026-10-12 · **Slice:** 15B.13AK · **State:** four Mastery drafts and five definition drafts staged; human review pending.
+**Date:** 2026-10-12 · **Slice:** 15B.13AK · **Stage-time state:** four Mastery drafts and five definition drafts staged; human review was pending at that checkpoint.
+
+**Review closure — 2026-10-12 15:36:37 UTC:** all four v1 questions are human content-approved and all five definitions are active, matching approved snapshots. Chapter II has 152 approved questions, 210 active definitions and 57 published guides, with nothing pending. [Review closure evidence](evidence/sprint-15b13-batch-17-review-complete-20261012.json). Staging counts and review instructions below are historical; SME/exposure and release gates remain.
 
 John authorized one Mastery candidate each for S05, S06, S02 and S03 at **18:43:12 Asia/Yerevan**, under `haiedu-protected-parallel-pilot-v1`. Exactly four leads were assessed and all four qualified provisionally. Five new misconception definitions accompany them. No extra candidate or learner guide is added.
 
