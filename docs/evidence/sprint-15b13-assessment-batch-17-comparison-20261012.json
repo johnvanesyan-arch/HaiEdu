@@ -1,0 +1,289 @@
+{
+  "policy": "haiedu-whole-skill-review-v1",
+  "pilotProtocol": "haiedu-protected-parallel-pilot-v1",
+  "sprint": "15B.13AK",
+  "scope": {
+    "scope": "Complete 28-table catalogue across statuses, banks, families, releases, current and immutable versions: 408 current items, 281 immutable versions, complete current/runtime/authoring guides.",
+    "readContinuity": {
+      "sourceCommit": "e2b04364d8dfbcca6482e6dbeabd58e01905e5fc",
+      "baselineAt": "2026-10-12T14:44:29.987152+00:00",
+      "previousBaselineAt": "2026-10-12T12:19:56.706477+00:00",
+      "changedTables": [
+        "item_answer_keys",
+        "item_options",
+        "item_family_curriculum_reconciliations",
+        "misconceptions",
+        "item_misconception_mappings",
+        "item_curriculum_scopes",
+        "items",
+        "item_families",
+        "item_versions",
+        "curriculum_release_item_families",
+        "item_templates"
+      ],
+      "carriedTables": [
+        "assessment_form_items",
+        "curriculum_releases",
+        "skill_curriculum_reconciliations",
+        "learning_outcomes",
+        "assessment_pools",
+        "skill_outcomes",
+        "remediation_guide_versions",
+        "skill_remediation_guides",
+        "curriculum_release_gate_checks",
+        "skills",
+        "assessment_pool_items",
+        "assessment_forms",
+        "item_template_remediation_guides",
+        "curriculum_source_documents",
+        "curriculum_release_skills",
+        "skill_outcome_curriculum_mappings",
+        "remediation_guide_authoring_versions"
+      ],
+      "priorCorpusSha256": "589212a25ab06097aa3f07acb30e61262f56f9b0e41646971239689da54d172c",
+      "method": "Reload changed complete tables in deterministic pages; carry only tables with fresh count/hash equality. Bracket reconstruction with 38-table guards."
+    },
+    "freshInspection": "All 70 current S02/S03/S05/S06 items, including options, keys, sources and mappings; 28 differing historical item versions; all 25 applicable current template guides and 20 additional distinct historical guide texts. Related S04/S07/S08 and Chapter I S02/S05: 105 current prompt-and-correct-answer screens, with S07-D02 distractors also examined. Unchanged broader comparison evidence carried only under matching full-table guards. Eleven changed tables reloaded completely, including approved Batch16; seventeen unchanged tables carried with matching guards.",
+    "inspectionLimits": "Current and historical images were not separately visually re-inspected. No new candidate depends on an image. Related-item screening was at prompt/key level unless named otherwise; no claim of fresh line-by-line rereading of every unchanged unrelated record. Complete history and mapping corpus remains available for audit.",
+    "historyBoundary": "Immutable, retired and exposed history retained. Repeated taught claims/procedures qualify only as bounded protected parallel variants, never independent new reasoning.",
+    "currentItems": 408,
+    "immutableVersions": 281,
+    "tableCount": 28,
+    "guardedTables": 38,
+    "beforeAt": "2026-10-12T14:44:29.987152+00:00",
+    "afterReadAt": "2026-10-12T14:49:12.815406+00:00",
+    "sourceCommit": "e2b04364d8dfbcca6482e6dbeabd58e01905e5fc",
+    "policyCommit": "a6d89382b17ae73cc08100a2a8aeb88d5463cc31",
+    "policyAuthorization": "John approved the exact four-candidate Batch17 manifest at 2026-10-12T14:43:12Z; S05/S06/S02/S03 Mastery, one each.",
+    "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "sourceRead": "Textbook §7 pp24–26, §8 pp27–29, §10 pp30–33, §11 pp34–35; source PDF hash verified. Candidate-specific locators and limits retained.",
+    "relatedMappings": "S02/S03 share programme outcome 1(1), also mapped to S01, which has no current items. Related S04 size/gap, S07 diffusion/state, S08 motion/population and Chapter I S02 body/substance and S05 experimental reasoning were screened. All cross-skill/outcome/release mappings retained.",
+    "baseline": {
+      "chapterIIApproved": 148,
+      "activeDefinitions": 205,
+      "publishedGuides": 57
+    },
+    "author": "Codex automated educational judgment; human content, SME and exposure reviews pending."
+  },
+  "candidates": [
+    {
+      "candidate": "B17-C01",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S05-M04",
+      "skill": "S05",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Infer a bound from particle identities at two times",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §10, տպագիր էջեր 30–33՝ մասնիկների անընդհատ անկանոն շարժում և երկկողմանի անցումներ; §11, էջ 34՝ բախումներով փոխվող հետագիծ։ Հեղինակային համարակալված մասնիկների երկու գրանցում. համարները նույնականացման նշումներ են, ոչ նոր տեսակի մասնիկներ կամ իրական չափումներ։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S05-I11",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-D02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I08",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S05-I07",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-M01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-D02",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation under bounded manifest; no learner guide or allocation."
+    },
+    {
+      "candidate": "B17-C02",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S06-M04",
+      "skill": "S06",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Distinguish mixture composition from total population",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §10, տպագիր էջեր 30–32, նկարներ 30–31՝ սկզբնական շերտերից մասնիկների աստիճանական փոխադարձ ներթափանցում և խառնուրդի բաղադրության փոփոխություն։ Հեղինակային ամբողջական մասնիկային գրառում. գնահատվում է տվյալ պահի բաշխումը, ոչ հավասարակշռության հավանականություն կամ խառնման արագություն։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S06-M01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-D02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-I09",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-I11",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I06",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S05-I05",
+          "version": 2
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation under bounded manifest; no learner guide or allocation."
+    },
+    {
+      "candidate": "B17-C03",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S02-M05",
+      "skill": "S02",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Check a proposed state against a finite model budget",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §7, տպագիր էջեր 24–26՝ գազի սեղմում և մասնիկների միջև ազատ տարածություններ; §8, էջ 28՝ մասնիկների վերջավոր փոքր չափեր։ Հեղինակային գնդիկային մոդելի ներքին համատեղելիության ստուգում՝ անփոփոխ չափերով չհատվող գնդիկներով։ Իրական գազի սահմանային ծավալ, ճնշման օրենք կամ դասավորության խտություն չի հաշվարկվում։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S02-D02",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S02-I08",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S02-M04",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S02-I12",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S02-I05",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S04-I05",
+          "version": 3
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation under bounded manifest; no learner guide or allocation."
+    },
+    {
+      "candidate": "B17-C04",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S03-M05",
+      "skill": "S03",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Check an inventory claim against explicit molecular groupings",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §8, տպագիր էջեր 27–28, նկարներ 25–27՝ ատոմ, մոլեկուլ, H₂/H₂O կազմեր և կառուցողական խաղի համեմատություն։ Հեղինակային խառը հավաքածուի հաշվառում. չի նկարագրվում իրական քիմիական ռեակցիա կամ ատոմների տեսակի փոփոխություն։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S03-M02",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S03-D01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S03-M03",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S03-M04",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S03-D02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S03-I06",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S03-I09",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation under bounded manifest; no learner guide or allocation."
+    }
+  ],
+  "withinBatchPairs": [
+    {
+      "a": "B17-C01",
+      "b": "B17-C02",
+      "finding": "Infer a bound from particle identities at two times versus Distinguish mixture composition from total population. Distinct complete interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B17-C01",
+      "b": "B17-C03",
+      "finding": "Infer a bound from particle identities at two times versus Check a proposed state against a finite model budget. Distinct complete interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B17-C01",
+      "b": "B17-C04",
+      "finding": "Infer a bound from particle identities at two times versus Check an inventory claim against explicit molecular groupings. Distinct complete interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B17-C02",
+      "b": "B17-C03",
+      "finding": "Distinguish mixture composition from total population versus Check a proposed state against a finite model budget. Distinct complete interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B17-C02",
+      "b": "B17-C04",
+      "finding": "Distinguish mixture composition from total population versus Check an inventory claim against explicit molecular groupings. Distinct complete interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B17-C03",
+      "b": "B17-C04",
+      "finding": "Check a proposed state against a finite model budget versus Check an inventory claim against explicit molecular groupings. Distinct complete interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    }
+  ],
+  "screening": {
+    "assessed": 4,
+    "qualified": 4,
+    "revisedBeforeStaging": 0,
+    "omitted": 0,
+    "independentNewReasoningCoverage": 0,
+    "diagnostic": 0,
+    "mastery": 4,
+    "newDefinitions": 5,
+    "guides": 0
+  },
+  "remainingIfStaged": {
+    "total": 152,
+    "practice": 96,
+    "diagnostic": 18,
+    "mastery": 38,
+    "unauthored": 40,
+    "diagnosticGap": 14,
+    "masteryGap": 26
+  },
+  "boundary": "Exactly four authorized leads. No extra replacement or reinstated omission. Human, SME/exposure, allocation and release gates remain; further candidates require an owner decision."
+}
