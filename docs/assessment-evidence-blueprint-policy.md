@@ -21,6 +21,25 @@ The predeployment evidence record must contain: scope and complete version inven
 
 **Enforcement boundary:** this addendum is a mandatory platform-wide authoring and deployment-review gate, also recorded in `AGENTS.md`. It does not claim that the current database or QA endpoint automatically recognizes repeated scenarios or solution paths. Their structural/profile checks remain necessary but insufficient. No semantic detector, retrospective automatic rejection, learner change or universal historical-bank audit is claimed by adoption.
 
+## Bounded protected parallel assessment pilot — 2026-10-12
+
+**Protocol:** `haiedu-protected-parallel-pilot-v1` · **Authorization:** John, 2026-10-12 11:42 Asia/Yerevan, after selecting four candidates and directing continuation. This prospective authoring addendum supplements whole-bank steps 3 and 5 only within an explicitly approved bounded pilot. The existing database evidence-blueprint profile remains v1. No schema, runtime, automatic semantic detector, existing approval or learner evidence is changed.
+
+The additional disposition is **protected parallel assessment variant** (`protected_parallel_assessment_variant`). It may assess the same taught claim/procedure as another task when a substantively new stimulus requires fresh interpretation and recognition of an exposed worked example does not supply the complete answer. It adds candidate bank capacity, not a learning outcome or an independent reasoning path. A number, name, phrase, answer order, artwork or ID change alone does not qualify.
+
+Every such candidate must record:
+
+1. The authorized manifest slot, repeated taught claim/procedure, specific new stimulus interpretation, textbook/programme locators, explicit assumptions and illustration or no-image rationale.
+2. A frozen full applicable current/history bank and related/equivalent mappings, plus all within-batch pairs; nearest practice/guide and protected matches; complete solution and distractor comparisons. Inaccessible or stale evidence remains a blocking gap.
+3. A protection judgment addressing the actual complete scenario/solution, not merely different IDs. Do not reclassify existing practice into protected banks or publish the protected solution in learner guides. Item/stimulus separation, per-learner exposure controls and disjoint-form planning remain mandatory.
+4. Source-supported science and procedures only. Explicit premises may delimit a taught model; they may not introduce an untaught law, calculation or probability model to fill a slot.
+5. Ordinary current-version/family QA and explicit human content/definition review. SME/exposure review is required before allocation or release. Parallelism, difficulty, reliability and equivalence remain provisional until suitable pilot evidence exists.
+6. Actual qualified/staged/reviewed counts, rejected or reworked candidates and remaining gaps after the pilot. Further use of this disposition requires the owner's next decision; neither completion of the numerical bank target nor automatic reuse of previously omitted proposals is authorized.
+
+The criteria are subject-neutral. An owner-approved manifest supplies the curriculum scope and budget without adding subject-specific logic to shared core code. **Current sole manifest:** Chapter II Physics 7, `15B.13AE` / Batch 14, four candidates: two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. Candidate IDs `B14-C01` through `B14-C04` will be bound to the restricted comparison record. Revisions of these candidates must refresh their comparisons; unqualified slots do not authorize additional replacement candidates beyond this four-lead pilot.
+
+The [owner decision record](chapter-ii-bank-plan-checkpoint.md) retains the 192 planning target, Option B scoring/readiness and the existing lifecycle. No other reserve option is adopted. Existing approvals/history are preserved, and no retrospective automatic rejection or release waiver is created.
+
 ## Purpose
 
 Question-family planning must describe what evidence each item contributes before the family can pass technical QA. This prevents a nominally varied set of questions from repeatedly testing the same recall operation while preserving the existing authoring, review, versioning, approval, release and learner-runtime architecture.

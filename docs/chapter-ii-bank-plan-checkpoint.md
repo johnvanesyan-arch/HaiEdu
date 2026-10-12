@@ -1,6 +1,8 @@
 # Chapter II bank-plan decision packet
 
-**Updated:** 2026-10-12 (Asia/Yerevan) · **Status:** audit complete; proposal awaiting John's decision. No authoring policy, target or assessment contract changed.
+**Updated:** 2026-10-12 (Asia/Yerevan) · **Status:** four-candidate pilot authorized at 2026-10-12 11:42 Asia/Yerevan; reserve target and assessment contract unchanged.
+
+**Owner decision:** John selected four candidates and then directed “ok, proceed”. The authorized scope is two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prior eight-candidate proposal and subsequent sixteen-candidate throughput suggestion are superseded. The [bounded prospective policy addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) is adopted for this pilot only.
 
 The [coverage audit](chapter-ii-coverage-feasibility-audit.md) is complete. All 136 current questions are content-approved, 188 definitions active and 57 guides published. The main constraint is protected assessment capacity, especially S07's zero Diagnostic and one Mastery question. Repeated screens found substantial overlap with practiced reasoning; the source does not establish a supply of 56 further independent demands. This is not proof that all possible tasks are exhausted.
 
@@ -22,15 +24,15 @@ All counts below are content-approved. The final two columns show the additional
 
 Surplus questions in S09 cannot fill a different skill's slots. The agreed bank target remains 96 Practice + 32 Diagnostic + 64 Mastery = 192. The nominal shortfall is 19 Diagnostic + 37 Mastery = 56. The source-supported feasibility of all 56 slots has not been established.
 
-## Recommended decision
+## Approved bounded decision
 
-**Retain the 192 planning target for now and authorize a bounded feasibility pilot for reviewed parallel assessment variants.** Assess eight candidates across S03/S05/S07/S08, targeting six immediate gaps: one Diagnostic each for S03, S05 and S08, two Diagnostic for S07 and one Mastery for S07, with two alternate leads. Stage only candidates that qualify; neither six accepted questions nor the full remaining 56 is promised.
+**Retain the 192 planning target and run the four-candidate feasibility pilot for reviewed parallel assessment variants.** Screen two S07 Diagnostic candidates, one S07 Mastery candidate and one S03 Diagnostic candidate. Stage only candidates that qualify; four accepted questions and the full remaining 56 are not promised.
 
-This requires an **explicit prospective amendment** to the current whole-bank authoring policy before using the new disposition. The current rule permits new reasoning coverage and declared practice variants, while redundant complete demands are reworked/omitted. The proposal would allow a protected item to assess the same taught claim/procedure as another task when the learner must interpret a substantively new stimulus and the complete answer cannot be carried over by recognizing the prior worked example. It would count as bank capacity, **not** a new outcome or independent reasoning path.
+The approved prospective addendum allows the separate disposition **protected parallel assessment variant** within this manifest only. A candidate may assess the same taught claim/procedure when it requires interpretation of a substantively new stimulus and its complete answer cannot be carried over by recognizing the prior worked example. It counts as candidate bank capacity, not a new outcome or independent reasoning path. Outside this bounded pilot, the existing dispositions remain in force.
 
-This is a deliberate change to the present novelty/protection decision criteria, not a declaration that existing overlaps are safe. Approval would authorize the bounded pilot and its policy documentation, not a broad waiver for all duplicate-looking items or an automatic acceptance rule. The shared policy must remain subject-neutral; Chapter II supplies the first scoped feasibility case.
+This authorization covers the pilot and its policy documentation. It does not deem existing overlaps safe, approve a broader rollout or create an automatic acceptance rule. The criteria remain subject-neutral; Chapter II is the first scoped feasibility case.
 
-## Proposed acceptance criteria — not yet adopted
+## Adopted acceptance criteria for this pilot
 
 1. Add the explicit authoring disposition **protected parallel assessment variant**, separate from new reasoning coverage and intentional practice variant. Record the repeated taught claim/procedure and what the new stimulus requires the learner to interpret.
 2. Freeze and compare the full applicable current/history corpus and all within-batch pairs. Record nearest practice/guide and protected matches, scenario/illustration overlap, the complete solution and distractor logic, and why recognition of an exposed worked example is insufficient. A new number, name, wording, option order, artwork or ID alone fails.
@@ -56,10 +58,10 @@ Reducing a target alone does not fix S07. Removing S07 or making it nonconsequen
 
 ## Exact authorization boundary
 
-The requested decision is **only the bounded prospective authoring-policy pilot described above**, with the 192 target retained as a planning goal. Existing Option B remains 16 Diagnostic and 16 Mastery questions, two per skill, with Mastery 13/16 and at least one correct per skill; all eight skills remain in initial readiness. One Diagnostic baseline, up to three Mastery attempts and the required review lifecycle remain unchanged. No question, guide, definition, assessment pool, release, model parameter or learner access is approved by accepting the pilot proposal.
+The approved decision is **only the bounded four-candidate prospective authoring-policy pilot described above**, with the 192 target retained as a planning goal. Existing Option B remains 16 Diagnostic and 16 Mastery questions, two per skill, with Mastery 13/16 and at least one correct per skill; all eight skills remain in initial readiness. One Diagnostic baseline, up to three Mastery attempts and the required review lifecycle remain unchanged. No question, guide, definition, assessment pool, release, model parameter or learner access is approved by accepting the pilot proposal.
 
 The eight overlapping Batch 13 proposals are retained in their comparison evidence, not automatically reinstated. The three source-unsupported proposals remain omitted unless completely redesigned within taught science. No existing question has been removed.
 
-The reason a decision is needed comes from `AGENTS.md` and [whole-bank policy steps 3, 5 and 6](assessment-evidence-blueprint-policy.md): a defensible shortfall must be reported to John, and the current classifications/protection criteria cannot be silently reinterpreted to meet a numerical target. The audit and concrete proposal are complete so this decision can be made without another preliminary planning round.
+The requirement for this now-recorded owner decision comes from `AGENTS.md` and [whole-bank policy steps 3, 5 and 6](assessment-evidence-blueprint-policy.md): a defensible shortfall must be reported to John, and the current classifications/protection criteria cannot be silently reinterpreted to meet a numerical target. The decision is recorded above; a broader pilot, reserve revision or assessment-contract change requires its own explicit decision.
 
 [Authoritative status](project-status.md) · [Completed audit](chapter-ii-coverage-feasibility-audit.md) · [Observed version inventory and capacity calculations](evidence/sprint-15b13-coverage-audit-20261012.json).
