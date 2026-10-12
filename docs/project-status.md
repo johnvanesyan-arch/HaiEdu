@@ -1,6 +1,6 @@
 # Project status register
 
-**Updated:** 2026-10-12 (Asia/Yerevan) · **Documentation reconciliation:** complete · **Roadmap:** 3.48
+**Updated:** 2026-10-12 (Asia/Yerevan) · **Documentation reconciliation:** complete · **Roadmap:** 3.49
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
@@ -33,24 +33,20 @@ The owner reported that **Հաստատել** remained unavailable after QA. Live
 
 ## Chapter II inventory
 
-Production readback: **2026-10-12 15:15:45 UTC** (19:15 Asia/Yerevan). The fourth authorized four-candidate manifest is **staged and technically verified; human review pending**. Its baseline was 148 approved questions, 205 active definitions and 57 published guides, including the verified [Batch 16 review closure](evidence/sprint-15b13-batch-16-review-complete-20261012.json). Every prior row and approval was preserved. [Batch 17 handoff](chapter-ii-assessment-batch-17.md) · [Committed evidence](evidence/sprint-15b13-assessment-batch-17-20261012.json).
+Read-only production verification: **2026-10-12 15:36:37 UTC** (19:36 Asia/Yerevan). All **152 current question versions have matching human content approvals**, all **210 definitions are active**, and all **57 guides are published**. Batch 17's four questions are approved at staged v1 with passing current-version QA; its five definitions match their human-approved snapshots. No content is pending. [Review closure evidence](evidence/sprint-15b13-batch-17-review-complete-20261012.json). This verification created no production write, approval or duplicate QA.
 
 | Purpose | Authored | Published / content-approved | Draft / needs review | Target | Unauthored |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Practice / Review | 96 | 96 | 0 | 96 | 0 |
 | Diagnostic | 18 | 18 | 0 | 32 | 14 |
-| Protected Mastery | 38 | 34 | 4 | 64 | 26 |
-| Total | 152 | 148 | 4 | 192 | 40 |
+| Protected Mastery | 38 | 38 | 0 | 64 | 26 |
+| Total | 152 | 152 | 0 | 192 | 40 |
 
-There are **205 active and five draft misconception definitions**, **57 published guides and no draft guides**, and **zero assessment-pool or form memberships** for Chapter II. The candidate release `physics7_u01_u02_2026_08_14_candidate_r2` remains `draft`, without an activation timestamp. Content approval does not establish learner delivery eligibility.
+All four completed bounded manifests are content-approved. The unchanged 192 target leaves **40: 14 Diagnostic and 26 Mastery**. Approved Mastery reserves are S02/S03/S04: five each; S05/S06/S07/S08: four each; S09: seven. Counts do not certify protected eligibility or disjoint retake reserves. The 96 Practice questions include declared rehearsal variants, not 96 independent reasoning paths.
 
-**Four candidates assessed; four qualifying drafts staged:** one Mastery each for S05, S06, S02 and S03. No extra lead or earlier omission was reinstated. The bounded protocol records these as protected parallel assessment variants with **zero independent new reasoning paths claimed**. Full current/history, guide-exposure, source and six within-batch comparisons were frozen privately; the complete archive was freshly materialized and verified before staging. Comparison commit `00116b0181a7902466f47014e97f34043165ce6f` was reachable before the guarded transaction.
+**Next four-candidate batch authorized by “Proceed” — 2026-10-12 19:34:33 Asia/Yerevan.** Following the agreed batch size and smallest-reserve priority, Codex selected one Mastery candidate each for S05, S06, S07 and S08. John directed continuation; these skill names are the operational selection, not a quoted owner list. [Batch 18 manifest](chapter-ii-bank-plan-checkpoint.md#fifth-authorized-manifest--batch-18). Qualification remains subject to the full source/comparison/protection criteria. No Batch 18 drafts are staged at this authorization checkpoint, and no general future-batch exception is created.
 
-Rollback and committed replay of the byte-exact deployed-v11 evaluator passed 4/4 with zero errors/warnings. Separate production readback matched exact specifications, mappings and immutable v1 snapshots. Four actor-null QA records contain current family fingerprints; a fresh read confirmed their persisted values. Transaction guards preserved every prior row; final guards show 12 additive and 26 unchanged tables. This is evaluator replay, not authenticated live Edge/browser acceptance.
-
-Review the four questions and five definitions on the site, filtered to **S02/S03/S05/S06**. The unchanged 192 target leaves **40 questions: 14 Diagnostic and 26 Mastery**. Including these drafts, S02 and S03 each have five authored Mastery questions; S05 and S06 each have four. All four skills remain below the six-item arithmetic minimum for three disjoint two-question attempts. Counts do not certify protected eligibility or disjoint retake reserves.
-
-John authorized these exact four leads at **2026-10-12 18:43:12 Asia/Yerevan**. Authoring/staging of this manifest is complete; human question/definition, SME/exposure, allocation and release gates remain open. Further use of the bounded disposition requires another owner decision. The 96 Practice questions include declared rehearsal variants and are not 96 independent reasoning paths; difficulty, reliability and protected parallelism remain provisional.
+The candidate release remains draft, inactive and unallocated, with zero assessment-pool or form memberships. Human review for new drafts, external SME/exposure review, empirical equivalence, allocation and release remain separate gates.
 
 Selected Option B delivers **16 Diagnostic and 16 Mastery questions**, two per each of eight skills. Mastery requires **13/16 and at least one correct per skill**. All eight skills participate in initial readiness. The 192-question bank target is not a per-student session length or proof that sufficient distinct, source-supported questions exist. Numeric readiness/model parameters, ordinary governed bindings and release approval remain separate.
 
@@ -61,7 +57,7 @@ Selected Option B delivers **16 Diagnostic and 16 Mastery questions**, two per e
 | Chapter I production release | External Physics SME review/sign-off remains outstanding. Preserve provisional validation and pilot provenance; perform the applicable current-source, security/privacy, deployment and release-day checks before promotion. Internal owner review does not substitute for external SME review. |
 | Calibration | Deferred/no change under `physics7-u01-feasibility-2026-09-21-deferred`. New eligible evidence and an authorized decision are required before parameter changes. |
 | Sprint 14 / 15B.12E live switching | Needs a second independently authorized curriculum release and authenticated multi-context acceptance. Do not activate Chapter II merely to close a test dependency. |
-| Chapter II completion and release | Review four Batch 17 Mastery questions and five definitions. Batch 14–16 are content-approved; the fourth manifest is staged and technically verified. Further disposition use needs the owner’s next decision. Complete defensible reserves, exposure/separation, allocation, policy/model binding, SME, pilot and release gates. Reserve-target alternatives remain unadopted. |
+| Chapter II completion and release | Batch 14–17 human content review is complete. Assess the next authorized four-candidate Batch 18 across S05/S06/S07/S08 and stage only qualifying drafts. Complete subsequent human review, defensible reserves, exposure/separation, allocation, policy/model binding, SME, pilot and release gates. Reserve alternatives remain unadopted. |
 | Recorded editorial work | S09-I06 embedded distractor/guide overlap, S09-M01 duplicated `ևև` / `։։`, and S09-I08 guide `բանաձը` → `բանաձևը` remain for the versioned correction/review workflow. Preserve prior approvals and evidence. S02-M01 retention was decided by the owner and is not an open omit/revise decision. See [batch 08 follow-ups](chapter-ii-assessment-batch-08.md). The current reviewer-edited S08-M02 v2 also contains two consecutive formulations of distractor A; record a versioned correction/review without overwriting its approval ([batch 11](chapter-ii-assessment-batch-11.md)). |
 | Formal school pilot | Sprint 17 remains planned after 16.4 and 16.5; earlier feasibility and isolated QA do not satisfy this gate. |
 | Rollover | Design approved, documentation aligned, implementation/migration/concurrency/two-school/browser acceptance still pending in 18.5. |
