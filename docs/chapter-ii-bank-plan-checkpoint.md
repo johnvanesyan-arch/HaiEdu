@@ -1,14 +1,14 @@
 # Chapter II bank-plan decision packet
 
-**Updated:** 2026-10-12 (Asia/Yerevan) · **Status:** four-candidate pilot staged and technically verified; human review pending. Authorized at 2026-10-12 11:42 Asia/Yerevan; reserve target and assessment contract unchanged.
+**Updated:** 2026-10-12 (Asia/Yerevan) · **Status:** first four-candidate pilot content-approved; next bounded manifest proposed for owner decision. Authorized at 2026-10-12 11:42 Asia/Yerevan; reserve target and assessment contract unchanged.
 
 **Owner decision:** John selected four candidates and then directed “ok, proceed”. The authorized scope is two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prior eight-candidate proposal and subsequent sixteen-candidate throughput suggestion are superseded. The [bounded prospective policy addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) is adopted for this pilot only.
 
-The [coverage audit](chapter-ii-coverage-feasibility-audit.md) established a baseline of 136 approved questions, 188 active definitions and 57 published guides. The bounded pilot has now assessed exactly four leads and staged all four, with one answer refined before staging. [Batch 14 evidence](evidence/sprint-15b13-assessment-batch-14-20261012.json) records clean rollback, committed readback and 4/4 technical QA. These are protected parallel variants, not four new independent reasoning paths. Four questions and five definitions await human review; wider use of the disposition is not yet authorized.
+The [coverage audit](chapter-ii-coverage-feasibility-audit.md) established a baseline of 136 approved questions, 188 active definitions and 57 published guides. The bounded pilot has now assessed exactly four leads and staged all four, with one answer refined before staging. [Batch 14 evidence](evidence/sprint-15b13-assessment-batch-14-20261012.json) records clean rollback, committed readback and 4/4 technical QA. These are protected parallel variants, not four new independent reasoning paths. At 10:31 UTC, all four staged v1 questions have current human approvals and all five definitions match their approved active snapshots. All 140 questions are now content-approved, with 193 active definitions and 57 published guides. [Review closure evidence](evidence/sprint-15b13-batch-14-review-complete-20261012.json). Wider use of the disposition is not yet authorized.
 
-## Current distribution — 2026-10-12 08:13:45 UTC
+## Current distribution — 2026-10-12 10:31 UTC
 
-Counts include four drafts: S03 has one draft Diagnostic; S07 has two draft Diagnostic and one draft Mastery. All other 136 questions are content-approved. The final columns show the additional capacity needed for one two-per-skill form, not exposure suitability, retry capacity or release readiness.
+All 140 questions in this distribution are content-approved, including the four Batch 14 questions. The final columns show the additional capacity needed for one two-per-skill form, not exposure suitability, retry capacity or release readiness.
 
 | Skill | Practice | Diagnostic | Mastery | Diagnostic gap to 2 | Mastery gap to 2 |
 | --- | ---: | ---: | ---: | ---: | ---: |
@@ -26,7 +26,7 @@ Surplus questions in S09 cannot fill another skill's slots. The agreed target re
 
 ## Approved bounded decision
 
-**Retain the 192 planning target and run the four-candidate feasibility pilot for reviewed parallel assessment variants.** Screen two S07 Diagnostic candidates, one S07 Mastery candidate and one S03 Diagnostic candidate. This authorized screening/staging is complete: four qualifying drafts, with human acceptance still pending. The authorization did not promise acceptance or the complete remaining reserve.
+**Retain the 192 planning target and run the four-candidate feasibility pilot for reviewed parallel assessment variants.** Screen two S07 Diagnostic candidates, one S07 Mastery candidate and one S03 Diagnostic candidate. This authorized screening/staging and human content review are complete: all four candidates are approved at v1. The authorization did not promise acceptance or the complete remaining reserve.
 
 The approved prospective addendum allows the separate disposition **protected parallel assessment variant** within this manifest only. A candidate may assess the same taught claim/procedure when it requires interpretation of a substantively new stimulus and its complete answer cannot be carried over by recognizing the prior worked example. It counts as candidate bank capacity, not a new outcome or independent reasoning path. Outside this bounded pilot, the existing dispositions remain in force.
 
@@ -43,18 +43,33 @@ This authorization covers the pilot and its policy documentation. It does not de
 
 These criteria are a review protocol, not an implemented semantic detector. No schema/runtime/model change is included in this proposal. If recording or enforcing an approved disposition needs a governed data change, scope and verify it explicitly before the authoring handoff.
 
-## Reserve choices and their cost after the four drafts
+## Reserve choices and their cost after the first pilot
 
-All existing content and the four new drafts are retained in these current calculations. The earlier [audit table](chapter-ii-coverage-feasibility-audit.md#capacity-arithmetic) preserves pre-pilot arithmetic. Only the 192 planning target and four-candidate pilot are adopted.
+All 140 approved questions are retained in these current calculations. The earlier [audit table](chapter-ii-coverage-feasibility-audit.md#capacity-arithmetic) preserves pre-pilot arithmetic. Only the 192 planning target and four-candidate pilot are adopted.
 
 | Choice | Further Diagnostic / Mastery | Resulting authored bank | Consequence |
 | --- | --- | ---: | --- |
 | Keep agreed 4 Diagnostic / 8 Mastery per skill | 16 / 36 = 52 | 192 | Two Diagnostic forms; six Mastery questions for three disjoint attempts plus two spares per skill. Feasibility remains unproven. Recommended planning target while the bounded pilot tests the constraint. |
 | Reduce Mastery reserve to six per skill, preserve existing S09 surplus | 16 / 21 = 37 | 177 | Three disjoint attempts arithmetically possible, but no guaranteed Mastery spares per skill. Requires a separate explicit target decision and still needs source/protection qualification. |
 | Fill only one form of each purpose | 2 / 0 = 2 | 142 | Does not meet the agreed reserve or three-disjoint-attempt requirement. Not a release-complete bank plan. |
-| Pause wider use after this bounded pilot | 0 further additions | 140 | Retains these drafts and their review gates. No complete protected delivery bank yet; no broader parallel-variant authorization is inferred. |
+| Pause wider use after this bounded pilot | 0 further additions | 140 | Retains the approved content and remaining SME/exposure/release gates. No complete protected delivery bank yet; no broader parallel-variant authorization is inferred. |
 
 Reducing a target alone does not establish source support or protected eligibility. Removing S07 or making it nonconsequential would change the owner's Option B scoring/readiness decision and is not recommended here. The two Diagnostic forms are rotation/reserve, not two baselines per learner.
+
+## Proposed next manifest — owner decision pending
+
+**Recommendation:** authorize one more four-candidate batch under the same acceptance criteria, without generalizing the exception to all future batches.
+
+| Proposed slot | Skill / purpose | Reason |
+| --- | --- | --- |
+| B15-C01 | S05 Diagnostic | Fill the remaining capacity gap to two questions for this skill in one Diagnostic form. |
+| B15-C02 | S08 Diagnostic | Fill the other remaining single-form Diagnostic gap. |
+| B15-C03 | S07 Mastery | Build a reserve beyond the two approved questions currently available. |
+| B15-C04 | S07 Mastery | Continue that reserve toward disjoint retake forms; four authored Mastery items would still fall below the six-item arithmetic floor for three attempts. |
+
+These are candidate slots, not promised accepted questions or an approved second manifest. Full source/current/history/guide and within-batch comparisons must be refreshed after authorization. Repeating a taught procedure remains permissible only when the complete new stimulus requires fresh interpretation; cosmetic variants and untaught science remain excluded. Human content review, SME/exposure review and all allocation/release gates remain.
+
+This scope prioritizes the two remaining single-form Diagnostic gaps and S07's demonstrated protected-capacity bottleneck. It does not change the 192 target or imply all 52 remaining slots are feasible. The first pilot's content approvals show reviewer acceptance of these four items, not psychometric equivalence or authorization to expand the policy. The [bounded addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12), referenced by `AGENTS.md`, requires the owner's next decision before extending its manifest.
 
 ## Exact authorization boundary
 
