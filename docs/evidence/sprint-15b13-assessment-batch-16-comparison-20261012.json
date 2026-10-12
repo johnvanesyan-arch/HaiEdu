@@ -1,0 +1,279 @@
+{
+  "policy": "haiedu-whole-skill-review-v1",
+  "pilotProtocol": "haiedu-protected-parallel-pilot-v1",
+  "sprint": "15B.13AI",
+  "scope": {
+    "scope": "Complete 28-table catalogue across statuses, banks, families, releases and current/historical versions: 404 current items, 277 immutable versions, and complete current/runtime/authoring guides.",
+    "readContinuity": {
+      "sourceCommit": "366a71150023415291ee664d94f08293904b6b15",
+      "baselineAt": "2026-10-12T12:19:56.706477+00:00",
+      "previousBaselineAt": "2026-10-12T10:42:22.206863+00:00",
+      "changedTables": [
+        "item_answer_keys",
+        "item_options",
+        "item_family_curriculum_reconciliations",
+        "misconceptions",
+        "item_misconception_mappings",
+        "item_curriculum_scopes",
+        "items",
+        "item_families",
+        "item_versions",
+        "curriculum_release_item_families",
+        "item_templates"
+      ],
+      "carriedTables": [
+        "assessment_form_items",
+        "curriculum_releases",
+        "skill_curriculum_reconciliations",
+        "learning_outcomes",
+        "assessment_pools",
+        "skill_outcomes",
+        "remediation_guide_versions",
+        "skill_remediation_guides",
+        "curriculum_release_gate_checks",
+        "skills",
+        "assessment_pool_items",
+        "assessment_forms",
+        "item_template_remediation_guides",
+        "curriculum_source_documents",
+        "curriculum_release_skills",
+        "skill_outcome_curriculum_mappings",
+        "remediation_guide_authoring_versions"
+      ],
+      "priorCorpusSha256": "2d5998053c404949c99c6eb8648ea9bbe46928fb7e8ed1a43d6ef4d60c6bbc6f",
+      "method": "Reload changed complete tables in deterministic pages; carry only tables with fresh count/hash equality. Bracket the reconstruction with 38-table guards."
+    },
+    "freshInspection": "All 48 current S02/S05/S06 prompts/options/keys, 22 differing noncurrent item versions, all 19 current applicable template guides and their historical text differences (41 runtime and 81 authoring snapshots). Related S08 and Chapter I S05 records, and S07-M03 examined. Earlier complete-corpus comparisons carried only with matching full-table guards. Eleven changed tables reloaded completely, including approved Batch 15.",
+    "historyBoundary": "Immutable, retired and exposed history retained. Repeated taught claims and procedures qualify only as bounded protected parallel variants, never independent new reasoning. No inaccessible bank omitted.",
+    "currentItems": 404,
+    "immutableVersions": 277,
+    "tableCount": 28,
+    "guardedTables": 38,
+    "beforeAt": "2026-10-12T12:19:56.706477+00:00",
+    "afterReadAt": "2026-10-12T12:23:11.689157+00:00",
+    "sourceCommit": "366a71150023415291ee664d94f08293904b6b15",
+    "policyCommit": "911de5d984e3b01f6ed27ee41c8917392daadc1d",
+    "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "sourceRead": "Textbook §7 pp24–26, §8 p28, §10 pp30–33, §11 pp34–35; prerequisite §3 pp13–14. Source check rejected C03 r1: p35 is not laboratory 3 and does not explicitly teach v=s/t. C03 r2 uses path/endpoint comparison without speed calculation. §9 is the small-object laboratory, not molecular motion.",
+    "relatedMappings": "S02 structure/gaps overlaps S08 sample-count distinctions; S05 path/endpoint overlaps S06 movement; S06 boundaries overlap S05 ongoing motion. Experimental reasoning also maps to Chapter I S05 and Chapter II S07. Full cross-skill/outcome/release mappings are retained.",
+    "baseline": {
+      "chapterIIApproved": 144,
+      "activeDefinitions": 199,
+      "publishedGuides": 57
+    },
+    "author": "Codex automated educational judgment; human content, SME and exposure reviews pending."
+  },
+  "candidates": [
+    {
+      "candidate": "B16-C01",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S02-M03",
+      "skill": "S02",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Evaluate the limits of two experimental records",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §7, տպագիր էջեր 25–26՝ ջրի և սպիրտի խառնման ծավալը և միջմասնիկային տարածությունները։ Նախապայման՝ Գլուխ I, §3, էջեր 13–14՝ փորձի պայմանների և եզրակացության կապը։ Հեղինակային համեմատական փորձագրություններ, ոչ նոր չափումների հաշվետվություն։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S02-I02",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S02-I10",
+          "version": 4
+        },
+        {
+          "code": "PHY7-U02-S02-I12",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S02-M01",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U01-S05-I04",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-M03",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation required under bounded manifest; no new learner guide or allocation."
+    },
+    {
+      "candidate": "B16-C02",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S02-M04",
+      "skill": "S02",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Distinguish a within-sample change from a comparison across samples",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §7, տպագիր էջեր 24–26՝ մարմնի ծավալի կապը մասնիկների միջև տարածությունների հետ; §8, էջ 28՝ նյութում բազմաթիվ մասնիկներ։ Հեղինակային համեմատություն՝ նույն գազաքանակի փոփոխությունը տարբեր գազաքանակների համեմատությունից տարբերակելու համար. քանակական գազային օրենք չի ներմուծվում։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S02-M01",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S02-M02",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S02-I08",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S02-I12",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S02-D02",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S08-I11",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation required under bounded manifest; no new learner guide or allocation."
+    },
+    {
+      "candidate": "B16-C03",
+      "revision": 2,
+      "itemCode": "PHY7-U02-S05-M03",
+      "skill": "S05",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Use complete records to test a necessary ordering claim",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §10, տպագիր էջեր 30–31՝ անկանոն շարժում և բախումներով երկար բեկյալ ճանապարհ; §11, էջեր 34–35, նկար 33՝ հաջորդական բախումների միջև հատվածներ։ Հեղինակային ամբողջական հետագծերի համեմատություն. պայմանական երկարությունները իրական մոլեկուլների չափումներ չեն։ Արագության բանաձև կամ նոր շարժման օրենք չի պահանջվում։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S05-M02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I12",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-D01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I07",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I04",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation required under bounded manifest; no new learner guide or allocation."
+    },
+    {
+      "candidate": "B16-C04",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S06-M03",
+      "skill": "S06",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Interpret access through connections that change over time",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §10, տպագիր էջեր 30–33՝ մասնիկների անընդհատ շարժում և նյութերի փոխադարձ ներթափանցում։ Հեղինակային երկփուլ անոթային մոդել՝ բացահայտ տրված անցանելի և անանցանելի սահմաններով։ Ընտրողական թաղանթ, քանակական հոսք կամ ճնշման օրենք չի ներմուծվում։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S06-M02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-D02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-I06",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-I12",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S06-D01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I10",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation required under bounded manifest; no new learner guide or allocation."
+    }
+  ],
+  "withinBatchPairs": [
+    {
+      "a": "B16-C01",
+      "b": "B16-C02",
+      "finding": "Evaluate the limits of two experimental records versus Distinguish a within-sample change from a comparison across samples. Distinct complete record interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B16-C01",
+      "b": "B16-C03",
+      "finding": "Evaluate the limits of two experimental records versus Use complete records to test a necessary ordering claim. Distinct complete record interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B16-C01",
+      "b": "B16-C04",
+      "finding": "Evaluate the limits of two experimental records versus Interpret access through connections that change over time. Distinct complete record interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B16-C02",
+      "b": "B16-C03",
+      "finding": "Distinguish a within-sample change from a comparison across samples versus Use complete records to test a necessary ordering claim. Distinct complete record interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B16-C02",
+      "b": "B16-C04",
+      "finding": "Distinguish a within-sample change from a comparison across samples versus Interpret access through connections that change over time. Distinct complete record interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    },
+    {
+      "a": "B16-C03",
+      "b": "B16-C04",
+      "finding": "Use complete records to test a necessary ordering claim versus Interpret access through connections that change over time. Distinct complete record interpretations; repeated taught concepts disclosed.",
+      "decision": "Retain provisionally; exposure/separation review remains pending."
+    }
+  ],
+  "screening": {
+    "assessed": 4,
+    "qualified": 4,
+    "revisedBeforeStaging": 1,
+    "omitted": 0,
+    "independentNewReasoningCoverage": 0,
+    "diagnostic": 0,
+    "mastery": 4,
+    "newDefinitions": 6,
+    "guides": 0
+  },
+  "remainingIfStaged": {
+    "total": 148,
+    "practice": 96,
+    "diagnostic": 18,
+    "mastery": 34,
+    "unauthored": 44,
+    "diagnosticGap": 14,
+    "masteryGap": 30
+  },
+  "boundary": "Exactly four authorized leads. No extra replacement or reinstated omission. Human, SME/exposure, allocation and release gates remain; further use requires owner decision."
+}
