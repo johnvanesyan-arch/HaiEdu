@@ -1,0 +1,279 @@
+{
+  "policy": "haiedu-whole-skill-review-v1",
+  "pilotProtocol": "haiedu-protected-parallel-pilot-v1",
+  "sprint": "15B.13AG",
+  "scope": {
+    "scope": "Complete 28-table catalogue across statuses, banks, families, releases and current/historical versions: 400 current items, 273 immutable versions, 66 current template guides, 10 skill guides, 159 runtime and 315 authoring guide versions.",
+    "readContinuity": {
+      "sourceCommit": "d48aacc92e85bc4c0796c89ab6ec67a8729a4b0e",
+      "baselineAt": "2026-10-12T10:42:22.206863+00:00",
+      "previousBaselineAt": "2026-10-12T07:43:40.649455+00:00",
+      "changedTables": [
+        "item_answer_keys",
+        "item_options",
+        "item_family_curriculum_reconciliations",
+        "misconceptions",
+        "item_misconception_mappings",
+        "item_curriculum_scopes",
+        "items",
+        "item_families",
+        "item_versions",
+        "curriculum_release_item_families",
+        "item_templates"
+      ],
+      "carriedTables": [
+        "assessment_form_items",
+        "curriculum_releases",
+        "skill_curriculum_reconciliations",
+        "learning_outcomes",
+        "assessment_pools",
+        "skill_outcomes",
+        "remediation_guide_versions",
+        "skill_remediation_guides",
+        "curriculum_release_gate_checks",
+        "skills",
+        "assessment_pool_items",
+        "assessment_forms",
+        "item_template_remediation_guides",
+        "curriculum_source_documents",
+        "curriculum_release_skills",
+        "skill_outcome_curriculum_mappings",
+        "remediation_guide_authoring_versions"
+      ],
+      "priorCorpusSha256": "1c6b5ab512c64377401527ba255046360a101f1c26d6dc2791ceee0d64b6e18b",
+      "method": "Reload changed complete tables in deterministic pages; carry only tables with fresh count/hash equality. Bracket the complete reconstruction with 38-table guards."
+    },
+    "freshInspection": "All 48 current S05/S07/S08 questions with keys/options; their 25 template guides and nine noncurrent item versions; Chapter I S05 experimental-design bank. Earlier same-session whole-Chapter-II and related current/history guide inspection is carried only where complete-table fingerprints match. Eleven changed tables were reloaded in full, including approved Batch 14.",
+    "historyBoundary": "All immutable, retired and exposed history retained; no inaccessible bank omitted. Repeated claims and procedures qualify only as bounded protected parallel variants, never as independent new reasoning.",
+    "currentItems": 400,
+    "immutableVersions": 273,
+    "tableCount": 28,
+    "guardedTables": 38,
+    "beforeAt": "2026-10-12T10:42:22.206863+00:00",
+    "afterReadAt": "2026-10-12T10:47:11.182208+00:00",
+    "sourceCommit": "d48aacc92e85bc4c0796c89ab6ec67a8729a4b0e",
+    "policyCommit": "911de5d984e3b01f6ed27ee41c8917392daadc1d",
+    "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "sourceRead": "Textbook §10 printed pp.30–33 and §11 pp.34–35 checked afresh; Chapter I §3 pp.13–14 checked for experimental reasoning. §9 is the small-object laboratory, not molecular motion.",
+    "relatedMappings": "Motion, diffusion and temperature claims cross S05/S06/S07/S08. Chapter I S05 supplies experimental reasoning. Complete other-skill catalogues and mappings remain included; current nearest and full historical snapshots are bound below.",
+    "baseline": {
+      "chapterIIApproved": 140,
+      "activeDefinitions": 193,
+      "publishedGuides": 57
+    },
+    "author": "Codex automated educational judgment; human content, SME and exposure reviews remain pending."
+  },
+  "candidates": [
+    {
+      "candidate": "B15-C01",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S05-D02",
+      "skill": "S05",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Infer necessary events without treating snapshots as a full event log",
+      "source": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 30–33՝ մասնիկների անընդհատ անկանոն շարժում; §11, էջեր 34–35, նկար 33՝ բախումներով փոխվող հետագիծ։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S05-I07",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I08",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S05-I11",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-D01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-M02",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli, worked solutions and distractor judgments remain in private owner evidence. No learner guide or allocation. Fresh interpretation is required under the bounded authorized manifest."
+    },
+    {
+      "candidate": "B15-C02",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S08-D02",
+      "skill": "S08",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Reconcile individual observations with a characteristic comparison",
+      "source": "Ֆիզիկա 7 (2023), Գլուխ II, §11, տպագիր էջեր 34–35՝ արագությունների բազմազանությունը և հավանական (բնորոշ) արագության կապը նույն նյութի ջերմաստիճանի հետ։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S08-D01",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S08-I01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-I05",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S08-I09",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-I11",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli, worked solutions and distractor judgments remain in private owner evidence. No learner guide or allocation. Fresh interpretation is required under the bounded authorized manifest."
+    },
+    {
+      "candidate": "B15-C03",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S07-M03",
+      "skill": "S07",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Repair a comparison while retaining the condition being tested",
+      "source": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջ 32՝ պինդ մարմինների շատ դանդաղ դիֆուզիա և տաքացնելիս արագացում; §11, էջ 34։ Նախապայման՝ Գլուխ I, §3, էջեր 13–14՝ փորձի պայմաններ և վարկածի ստուգում։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S07-M01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I05",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I06",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I09",
+          "version": 2
+        },
+        {
+          "code": "PHY7-U02-S07-D01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U01-S05-I04",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U01-S05-T-HYPOTHESIS-TEST-PARALLEL-V-E2AEC5A82D",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli, worked solutions and distractor judgments remain in private owner evidence. No learner guide or allocation. Fresh interpretation is required under the bounded authorized manifest."
+    },
+    {
+      "candidate": "B15-C04",
+      "revision": 3,
+      "itemCode": "PHY7-U02-S07-M04",
+      "skill": "S07",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Check a complete history and the evidence needed for a conclusion",
+      "source": "Ֆիզիկա 7 (2023), Գլուխ II, §10, տպագիր էջեր 32–33, նկար 32՝ կապարի և ոսկու պինդ թիթեղների փոխադարձ ներթափանցում։ Նախապայման՝ Գլուխ I, §3, էջեր 13–14՝ փորձի պայմանների և դիտված արդյունքի վերլուծություն։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S07-I08",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I05",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I10",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-D02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U01-S05-I03",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U01-S05-I06",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli, worked solutions and distractor judgments remain in private owner evidence. No learner guide or allocation. Fresh interpretation is required under the bounded authorized manifest."
+    }
+  ],
+  "withinBatchPairs": [
+    {
+      "a": "B15-C01",
+      "b": "B15-C02",
+      "finding": "Both read molecular records, but an incomplete spatial history with a crossing lower bound differs from reconciling individual speeds with known temperatures.",
+      "decision": "Retain both provisionally; no independent coverage, empirical equivalence or allocation approval inferred."
+    },
+    {
+      "a": "B15-C01",
+      "b": "B15-C03",
+      "finding": "Both reject overinterpretation of incomplete observations. C01 counts necessary crossings; C03 repairs a temperature comparison with mismatched observation durations. No complete stimulus or solution is repeated.",
+      "decision": "Retain both provisionally; no independent coverage, empirical equivalence or allocation approval inferred."
+    },
+    {
+      "a": "B15-C01",
+      "b": "B15-C04",
+      "finding": "Both distinguish observations from full history. C01 reasons about unobserved extra crossings; C04 requires positive penetration and continuous solid phase. Different data, answer demand and distractor logic.",
+      "decision": "Retain both provisionally; no independent coverage, empirical equivalence or allocation approval inferred."
+    },
+    {
+      "a": "B15-C02",
+      "b": "B15-C03",
+      "finding": "C02 compares individual and characteristic speed levels. C03 tests diffusion experimentally and controls duration; their common warming premise does not supply either complete response.",
+      "decision": "Retain both provisionally; no independent coverage, empirical equivalence or allocation approval inferred."
+    },
+    {
+      "a": "B15-C02",
+      "b": "B15-C04",
+      "finding": "C02 reconciles counterordered individual speeds with known temperatures. C04 audits phase histories and positive evidence. No complete scenario or solution overlap.",
+      "decision": "Retain both provisionally; no independent coverage, empirical equivalence or allocation approval inferred."
+    },
+    {
+      "a": "B15-C03",
+      "b": "B15-C04",
+      "finding": "Strongest within-batch relation: both concern slow solid diffusion and limitations of short non-detection. C03 repairs unequal-duration temperature testing; C04 audits phase history and positive evidence, including melt/mix/refreeze. Neither complete record interpretation follows from the other answer. Separation and exposure review remain required.",
+      "decision": "Retain both provisionally; no independent coverage, empirical equivalence or allocation approval inferred."
+    }
+  ],
+  "screening": {
+    "assessed": 4,
+    "qualified": 4,
+    "revisedBeforeStaging": 1,
+    "omitted": 0,
+    "independentNewReasoningCoverage": 0,
+    "diagnostic": 2,
+    "mastery": 2,
+    "newDefinitions": 6,
+    "guides": 0
+  },
+  "remainingIfStaged": {
+    "total": 144,
+    "practice": 96,
+    "diagnostic": 18,
+    "mastery": 30,
+    "unauthored": 48,
+    "diagnosticGap": 14,
+    "masteryGap": 34
+  },
+  "boundary": "Only four authorized candidate leads. No extra replacements or reinstated omissions. Human review, SME/exposure, allocation and release remain open. Wider disposition use requires another owner decision."
+}

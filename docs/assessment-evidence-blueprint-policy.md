@@ -36,7 +36,14 @@ Every such candidate must record:
 5. Ordinary current-version/family QA and explicit human content/definition review. SME/exposure review is required before allocation or release. Parallelism, difficulty, reliability and equivalence remain provisional until suitable pilot evidence exists.
 6. Actual qualified/staged/reviewed counts, rejected or reworked candidates and remaining gaps after the pilot. Further use of this disposition requires the owner's next decision; neither completion of the numerical bank target nor automatic reuse of previously omitted proposals is authorized.
 
-The criteria are subject-neutral. An owner-approved manifest supplies the curriculum scope and budget without adding subject-specific logic to shared core code. **Current sole manifest:** Chapter II Physics 7, `15B.13AE` / Batch 14, four candidates: two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. Candidate IDs `B14-C01` through `B14-C04` will be bound to the restricted comparison record. Revisions of these candidates must refresh their comparisons; unqualified slots do not authorize additional replacement candidates beyond this four-lead pilot.
+The criteria are subject-neutral. An owner-approved manifest supplies the curriculum scope and budget without adding subject-specific logic to shared core code. **Authorized manifests:**
+
+| Manifest | Scope | Owner authorization / state |
+| --- | --- | --- |
+| Chapter II Physics 7, `15B.13AE` / Batch 14, `B14-C01`–`B14-C04` | Two S07 Diagnostic, one S07 Mastery, one S03 Diagnostic | 2026-10-12 11:42 Asia/Yerevan; all four human content-approved, verified at 14:31. |
+| Chapter II Physics 7, `15B.13AG` / Batch 15, `B15-C01`–`B15-C04` | One S05 Diagnostic, one S08 Diagnostic, two S07 Mastery | 2026-10-12 14:41:04 Asia/Yerevan: “Proceed with these four”; all four staged and technically verified at 15:07; human content/definition and SME/exposure review still required. |
+
+Each candidate is bound to its restricted comparison record. Revisions must refresh their comparisons; an unqualified slot does not authorize an extra replacement lead outside its four-candidate manifest. Neither manifest authorizes unlimited future use or automatic reinstatement of prior omissions.
 
 The [owner decision record](chapter-ii-bank-plan-checkpoint.md) retains the 192 planning target, Option B scoring/readiness and the existing lifecycle. No other reserve option is adopted. Existing approvals/history are preserved, and no retrospective automatic rejection or release waiver is created.
 

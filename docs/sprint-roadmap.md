@@ -1,9 +1,9 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 3.43
+**Roadmap version:** 3.44
 **Updated:** 2026-10-12 (Asia/Yerevan)
 **Latest platform repair:** [Reviewer approval after passing QA](reviewer-approval-repair-20261011.md): shared dashboard reads are bounded, complete and error-checked; current implementation/deployment status is recorded in the authoritative register.
-**Latest content checkpoint:** [Batch 14 review is complete](chapter-ii-assessment-batch-14.md): all **140 current Chapter II questions are content-approved**, all **193 definitions active**, and all **57 guides published**, verified read-only at 2026-10-12 10:31 UTC. Nothing awaits content review. The bounded four-candidate pilot is complete for authoring and human content review; [one further four-candidate manifest is proposed](chapter-ii-bank-plan-checkpoint.md#proposed-next-manifest--owner-decision-pending) for the owner’s decision. No wider policy use or new batch is inferred. The [status register](project-status.md) governs current counts/gates; the 192 target and assessment/release contract remain.
+**Latest content checkpoint:** [Batch 15](chapter-ii-assessment-batch-15.md) staged four questions (two Diagnostic, two Mastery) and six definitions for review across S05/S07/S08. Chapter II has **144 questions: 140 approved and four pending**, 193 active plus six draft definitions, and 57 published guides. The second owner-authorized manifest is complete for authoring/staging; human review and all SME/exposure/release gates remain. The unchanged 192 target leaves 48 unauthored. The [status register](project-status.md) governs current counts and gates.
 **Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E await a second authorized release for live switching. Chapter II authoring continues, inactive and unallocated; 16–26 remain planned in the sequence below.
 
 This file defines the canonical high-level sprint scope and sequence. [Project status](project-status.md) is the sole current delivery/gate register; [backlog](backlog.md) is the detailed implementation checklist. The overview mirrors that register. Dated execution records, content counts and pending-review statements below are historical checkpoints; later evidenced dispositions supersede them without rewriting their original observations.
@@ -1863,4 +1863,16 @@ The first bounded pilot is complete for authoring and human content review, not 
 
 **Concrete next recommendation, awaiting owner decision:** one S05 Diagnostic, one S08 Diagnostic and two S07 Mastery candidates, under the same bounded acceptance criteria. This prioritizes single-form Diagnostic coverage and S07 retake reserves. No second manifest or broader exception is adopted by this closure; no new questions were authored/staged. Existing Option B, readiness, scoring, lifecycle and release gates remain.
 
-[Review closure evidence](evidence/sprint-15b13-batch-14-review-complete-20261012.json) · [Next proposed manifest](chapter-ii-bank-plan-checkpoint.md#proposed-next-manifest--owner-decision-pending) · [Authoritative status](project-status.md).
+[Review closure evidence](evidence/sprint-15b13-batch-14-review-complete-20261012.json) · [Next proposed manifest](chapter-ii-bank-plan-checkpoint.md#second-authorized-manifest--batch-15) · [Authoritative status](project-status.md).
+
+### Sprint 15B.13AG — Second four-candidate batch staged
+
+**Owner authorization: 2026-10-12 14:41:04 Asia/Yerevan.** John directed “Proceed with these four”: B15-C01 S05 Diagnostic, B15-C02 S08 Diagnostic, B15-C03 and B15-C04 S07 Mastery. All four qualified under `haiedu-protected-parallel-pilot-v1`; one was reworked within its original lead before staging. No extra candidate, prior-omission reinstatement or independent new reasoning claim is made.
+
+Guarded staging committed at **11:06:14 UTC**, after the immutable private source/comparison archive and reachable comparison commit `78594df085a018026da07b83439a0cadf6bd0eed`. The comparison covers 400 current items, 273 immutable versions, complete guide history and all six within-batch pairs. The 38-table baseline was fresh and unchanged before staging. Rollback and committed byte-exact deployed-v11 evaluator replay passed 4/4, zero errors/warnings. Separate readback matched specifications, mappings and immutable v1 snapshots; four actor-null QA records bind current family fingerprints. Every prior row was preserved, with 12 additive and 26 unchanged tables.
+
+At **11:07:12 UTC**, Chapter II contains **144 questions: 140 approved and four pending** (96 Practice, 18 Diagnostic, 30 Mastery), **193 active plus six draft definitions**, and **57 published guides**. Review the questions and definitions on the site, filtered to S05/S07/S08. No learner solution guides, pool/form allocation or release activation were created.
+
+The unchanged 192 target leaves 48 unauthored: 14 Diagnostic and 34 Mastery. If approved, nominal single-form two-per-skill capacity is present; protected eligibility, disjoint reserves, empirical equivalence and release readiness remain unestablished. S07 has four authored Mastery questions, two pending; the three-attempt arithmetic floor is six. Further disposition use requires a subsequent owner decision. Repository CI/merge and a verified Notion source stamp complete the documentation handoff, not human or release approval.
+
+[Batch 15 handoff](chapter-ii-assessment-batch-15.md) · [Comparison](chapter-ii-assessment-batch-15-comparison.md) · [Committed evidence](evidence/sprint-15b13-assessment-batch-15-20261012.json) · [Owner scope](chapter-ii-bank-plan-checkpoint.md#second-authorized-manifest--batch-15) · [Current status](project-status.md).
