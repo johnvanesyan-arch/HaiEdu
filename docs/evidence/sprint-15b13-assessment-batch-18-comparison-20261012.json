@@ -1,0 +1,298 @@
+{
+  "policy": "haiedu-whole-skill-review-v1",
+  "pilotProtocol": "haiedu-protected-parallel-pilot-v1",
+  "sprint": "15B.13AM",
+  "scope": {
+    "scope": "Complete 28-table catalogue across statuses, banks, families, releases, current and immutable versions: 412 current items, 285 immutable versions, 474 runtime/authoring guide versions.",
+    "readContinuity": {
+      "sourceCommit": "9880a1b449b70d83e354697dfc3ef587c5c8ba87",
+      "baselineAt": "2026-10-12T15:36:38.825742+00:00",
+      "previousBaselineAt": "2026-10-12T14:44:29.987152+00:00",
+      "changedTables": [
+        "item_answer_keys",
+        "item_options",
+        "item_family_curriculum_reconciliations",
+        "misconceptions",
+        "item_misconception_mappings",
+        "item_curriculum_scopes",
+        "items",
+        "item_families",
+        "item_versions",
+        "curriculum_release_item_families",
+        "item_templates"
+      ],
+      "carriedTables": [
+        "assessment_form_items",
+        "curriculum_releases",
+        "skill_curriculum_reconciliations",
+        "learning_outcomes",
+        "assessment_pools",
+        "skill_outcomes",
+        "remediation_guide_versions",
+        "skill_remediation_guides",
+        "curriculum_release_gate_checks",
+        "skills",
+        "assessment_pool_items",
+        "assessment_forms",
+        "item_template_remediation_guides",
+        "curriculum_source_documents",
+        "curriculum_release_skills",
+        "skill_outcome_curriculum_mappings",
+        "remediation_guide_authoring_versions"
+      ],
+      "priorCorpusSha256": "a90757e2ffe060d320cf9440c1f692c173846f1460880e3f843f64701357b46a",
+      "method": "Reload changed complete tables in deterministic pages; carry only tables with fresh count/hash equality. Bracket reconstruction with 38-table guards."
+    },
+    "substantiveContinuity": {
+      "baseCurrentItems": 408,
+      "currentItems": 412,
+      "allPreexistingPromptSourceSkillTemplateVersionFieldsIdentical": true,
+      "allPreexistingOptionsAndKeysIdentical": true,
+      "newItems": [
+        "PHY7-U02-S06-M04",
+        "PHY7-U02-S05-M04",
+        "PHY7-U02-S03-M05",
+        "PHY7-U02-S02-M05"
+      ],
+      "basis": "Carry earlier substantive S05/S06 and related-skill review only for unchanged content; new Batch17 profiles were fully reviewed during authoring and approved unchanged at v1."
+    },
+    "freshInspection": "All 36 current S07/S08 items with full prompts/options/keys/sources, six differing historical versions, 17 current guides and nine additional distinct historical guide texts. S05/S06 complete current/history/guide review carried from Batch17 only under fresh substantive equality checks; the two added Batch17 profiles were author-reviewed and human-approved unchanged at v1. Selected S05/S06 nearest full option sets were reread. All 23 S09 current prompts and correct answers plus S02-M01 full options were freshly screened. Earlier unchanged related S02/S03/S04 and Chapter I S02/S05 review is carried, not described as a fresh full reread.",
+    "inspectionLimits": "Current/historical images were not separately visually reinspected. No new task requires an image. Related screening was prompt/key level unless specified. Complete history and mappings are retained; no claim that every unchanged unrelated row was freshly read line by line.",
+    "historyBoundary": "All immutable and exposed history retained. Shared concepts/procedures qualify only as bounded protected parallel interpretations, not independent reasoning coverage.",
+    "currentItems": 412,
+    "immutableVersions": 285,
+    "tableCount": 28,
+    "guardedTables": 38,
+    "beforeAt": "2026-10-12T15:36:38.825742+00:00",
+    "afterReadAt": "2026-10-12T15:43:58.394316+00:00",
+    "sourceCommit": "9880a1b449b70d83e354697dfc3ef587c5c8ba87",
+    "policyCommit": "d9b0912f4a5673746445a7e86303acd0530d8b25",
+    "policyAuthorization": "John directed Done. reviewed. Proceed. at 2026-10-12T15:34:33Z, authorizing the next four-candidate batch. Codex selected one Mastery each for S05/S06/S07/S08 by the existing smallest-reserve priority (four each). John did not enumerate those skills in this message. No extra candidate or standing exception is inferred.",
+    "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "sourceRead": "Textbook §10 pp30–33 and §11 pp34–35, plus §3 pp13–14 experimental reasoning prerequisite. No new diffusion law, speed-temperature formula, mean-speed interpretation or probabilistic claim.",
+    "relatedMappings": "The four target programme outcomes are distinct and no other current skill_outcomes row shares them. Full skill_outcome_curriculum_mappings, release and reconciliation records retained. Related S09 temperature/calibration, S02 inverse inference, S03/S04 model reasoning and Chapter I experimental reasoning screened or carried with explicit continuity.",
+    "baseline": {
+      "chapterIIApproved": 152,
+      "activeDefinitions": 210,
+      "publishedGuides": 57
+    },
+    "author": "Codex automated educational judgment; human content, SME and exposure reviews pending."
+  },
+  "candidates": [
+    {
+      "candidate": "B18-C01",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S05-M05",
+      "skill": "S05",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Reconcile two records of one trajectory",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §10, տպագիր էջեր 30–33՝ մասնիկների անընդհատ անկանոն շարժում; §11, էջ 34՝ բախումներով ուղղությունը փոխող հետագիծ։ Հեղինակային միաչափ մոդել և դիրքերի ոչ ամբողջական գրանցումներ։ Օգտագործվում են միայն տրված հատվածների երկարությունների գումարն ու չդիտված շարժման հնարավորությունը, ոչ արագության կամ դիֆուզիայի քանակական օրենք։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S05-I12",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-D01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-D02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-M03",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-M04",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I07",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation under bounded manifest; no learner guide or allocation."
+    },
+    {
+      "candidate": "B18-C02",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S06-M05",
+      "skill": "S06",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Evaluate alternative histories of a mixture",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §10, տպագիր էջեր 30–32՝ անկանոն շարժում, փոխադարձ ներթափանցում և բաղադրիչների պահպանում խառնուրդում։ Հեղինակային փակ մասնիկային մոդել. տրված վերջնական վիճակի հետ համեմատվում են երկու բացահայտ առաջարկված նախնական բաշխումներ, ոչ դրանց հավանականությունները կամ առաջացման ժամանակները։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S06-M01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-M04",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-D02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S06-I09",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I11",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S02-M01",
+          "version": 2
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation under bounded manifest; no learner guide or allocation."
+    },
+    {
+      "candidate": "B18-C03",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S07-M05",
+      "skill": "S07",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Order bounded observations and assess attribution",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §10, տպագիր էջեր 32–33՝ դիֆուզիայի տարբեր արագություններն ագրեգատային վիճակներում և ջերմաստիճանի ազդեցությունը; §11, էջ 34։ Նախապայման՝ Գլուխ I, §3, էջեր 13–14՝ փորձերի պայմաններ և արդյունքներից եզրակացություններ։ Հեղինակային ժամանակային սահմաններ. չեն ներմուծվում իրական արագություններ, գծային դիֆուզիայի օրենք կամ խառնման ժամանակի բանաձև։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S07-M01",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-M02",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-M03",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I10",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I12",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-I07",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation under bounded manifest; no learner guide or allocation."
+    },
+    {
+      "candidate": "B18-C04",
+      "revision": 1,
+      "itemCode": "PHY7-U02-S08-M05",
+      "skill": "S08",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "abstractDemand": "Compare missing speeds using textbook anchors",
+      "source": "Ֆիզիկա 7 (Մելիքյան, Մաիլյան), 2023, Գլուխ II, §11, տպագիր էջեր 34–35՝ բնորոշ (դասագրքում՝ հավանական) ջերմային արագություն, նույն գազի տաքացման ազդեցությունը և ջրածնի/թթվածնի մոտավոր հենակետերը։ Պահանջվում է միայն հենակետերի միջոցով համեմատություն, ոչ միջին արագություն, գծային միջարկում կամ ջերմաստիճանային բանաձև։",
+      "outcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S08-I07",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-I08",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-I04",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-M03",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S08-I09",
+          "version": 1
+        },
+        {
+          "code": "PHY7-U02-S07-M02",
+          "version": 1
+        }
+      ],
+      "protection": "Full stimuli/solutions/distractor judgments restricted to private evidence. Fresh interpretation under bounded manifest; no learner guide or allocation."
+    }
+  ],
+  "withinBatchPairs": [
+    {
+      "a": "B18-C01",
+      "b": "B18-C02",
+      "finding": "Reconcile two records of one trajectory versus Evaluate alternative histories of a mixture. Bounds and inverse-inference procedures intentionally recur; complete stimuli differ.",
+      "decision": "Retain provisionally; stimulus separation and exposure review pending."
+    },
+    {
+      "a": "B18-C01",
+      "b": "B18-C03",
+      "finding": "Reconcile two records of one trajectory versus Order bounded observations and assess attribution. Bounds and inverse-inference procedures intentionally recur; complete stimuli differ.",
+      "decision": "Retain provisionally; stimulus separation and exposure review pending."
+    },
+    {
+      "a": "B18-C01",
+      "b": "B18-C04",
+      "finding": "Reconcile two records of one trajectory versus Compare missing speeds using textbook anchors. Bounds and inverse-inference procedures intentionally recur; complete stimuli differ.",
+      "decision": "Retain provisionally; stimulus separation and exposure review pending."
+    },
+    {
+      "a": "B18-C02",
+      "b": "B18-C03",
+      "finding": "Evaluate alternative histories of a mixture versus Order bounded observations and assess attribution. Bounds and inverse-inference procedures intentionally recur; complete stimuli differ.",
+      "decision": "Retain provisionally; stimulus separation and exposure review pending."
+    },
+    {
+      "a": "B18-C02",
+      "b": "B18-C04",
+      "finding": "Evaluate alternative histories of a mixture versus Compare missing speeds using textbook anchors. Bounds and inverse-inference procedures intentionally recur; complete stimuli differ.",
+      "decision": "Retain provisionally; stimulus separation and exposure review pending."
+    },
+    {
+      "a": "B18-C03",
+      "b": "B18-C04",
+      "finding": "Order bounded observations and assess attribution versus Compare missing speeds using textbook anchors. Bounds and inverse-inference procedures intentionally recur; complete stimuli differ.",
+      "decision": "Retain provisionally; stimulus separation and exposure review pending."
+    }
+  ],
+  "screening": {
+    "assessed": 4,
+    "qualified": 4,
+    "revisedBeforeStaging": 0,
+    "omitted": 0,
+    "independentNewReasoningCoverage": 0,
+    "diagnostic": 0,
+    "mastery": 4,
+    "newDefinitions": 6,
+    "guides": 0
+  },
+  "remainingIfStaged": {
+    "total": 156,
+    "practice": 96,
+    "diagnostic": 18,
+    "mastery": 42,
+    "unauthored": 36,
+    "diagnosticGap": 14,
+    "masteryGap": 22
+  },
+  "boundary": "Four directed candidate slots only; no extra candidate or reinstated omission. Human content/definition, SME/exposure, allocation and release gates remain."
+}
