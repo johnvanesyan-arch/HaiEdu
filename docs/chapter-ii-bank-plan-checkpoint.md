@@ -103,7 +103,7 @@ Full source/current/history/guide and all six within-batch comparisons were froz
 
 ## Fifth authorized manifest — Batch 18
 
-**Owner direction:** “Done. reviewed. Proceed.” at **2026-10-12 19:34:33 Asia/Yerevan**. This authorizes the next batch within the agreed four-candidate cadence. Codex selected the four smallest approved Mastery reserves using the established priority; the skill names below were not separately enumerated by John. The authorization covers this bounded batch only, not a general future rollout, guaranteed acceptance, content approval or release.
+**Owner direction:** “Done. reviewed. Proceed.” at **2026-10-12 19:34:33 Asia/Yerevan**. This authorizes the next batch within the agreed four-candidate cadence. Codex selected the four smallest approved Mastery reserves using the established priority; the skill names below were not separately enumerated by John. The authorization covers this bounded batch only, not a general future rollout, guaranteed acceptance, content approval or release. [PR review follow-up](evidence/sprint-15b13-assessment-batch-18-review-followup-20261012.json) records the scope interpretation: choosing the next four skills by the established priority is routine implementation of the directed continuation. No new owner decision or amendment to the bounded protocol is asserted.
 
 | Manifest slot | Skill / purpose | Approved Mastery at authorization | Reason |
 | --- | --- | ---: | --- |

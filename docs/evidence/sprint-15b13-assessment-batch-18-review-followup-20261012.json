@@ -1,0 +1,449 @@
+{
+  "reviewedAt": "2026-10-12T16:23:39.076188+00:00",
+  "sprint": "15B.13AM",
+  "pr": 199,
+  "originalReviewedHead": "a90a125e235e4e222b2d374d6b7e0e9bb9cf6ebd",
+  "reviewer": "Codex author follow-up; not new human content/SME approval",
+  "timing": "Visual inspection completed after draft staging and before documentation merge/final handoff. The initial pre-staging archive explicitly lacked separate visual reinspection; it is preserved unchanged. This follow-up repairs that evidence gap without backdating the check. No question, version, mapping, definition, allocation or approval was changed.",
+  "authorizationFinding": {
+    "thread": "PRRT_kwDOUZQgcc6rig9M",
+    "disposition": "Continuation context clarified; no new owner decision claimed.",
+    "ownerDirection": "Done. reviewed. Proceed.",
+    "directedAt": "2026-10-12T15:34:33Z",
+    "interpretation": "The active task is continuing the established four-candidate Chapter II assessment-authoring workflow. The direction to proceed authorizes the next bounded batch, including routine selection among remaining skills by the established smallest-reserve priority. Codex selected the exact S05/S06/S07/S08 slots and records that judgment transparently.",
+    "limits": "John did not separately enumerate the skills or approve the new content. This records one directed four-candidate batch, not an alteration of AGENTS.md, a standing exception, a change of targets or wider rollout. All substantive source/protection/review/release criteria remain."
+  },
+  "visualFinding": {
+    "thread": "PRRT_kwDOUZQgcc6rig9R",
+    "disposition": "Completed fresh visual inspection and version-to-asset hash binding.",
+    "corpus": "412 current items, 285 immutable versions and all guide tables from the unchanged pre-staging corpus.",
+    "imageAssets": 11,
+    "currentItemUses": 13,
+    "historicalItemUses": 22,
+    "allRecordedHashesMatchInspectedAssets": true,
+    "guideInlineImageReferences": 0,
+    "relatedChapterIS02S05ImageStimuli": 0,
+    "scope": "All external image assets referenced in the complete corpus were visually inspected. Applicable target/related current and historical stimuli use these same hash-bound assets. Unrelated Chapter I typed scale/measurement stimuli were not rendered and are not claimed as reviewed illustrations.",
+    "assets": [
+      {
+        "figure": 22,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-22.png",
+        "sha256": "6b52815c60f5d3324d6c5c44c9896511d7a3e7adc1827edf1e5981c1adf9860b",
+        "visualObservation": "Loaded and unloaded pistons compare liquid and gas compression; no sampled trajectory, alternative mixture history, time-window comparison or thermal-speed anchors.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S02-I11",
+            "version": 1,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-22.png",
+            "sha256": "6b52815c60f5d3324d6c5c44c9896511d7a3e7adc1827edf1e5981c1adf9860b"
+          },
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S02-I05",
+            "version": 1,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-22.png",
+            "sha256": "6b52815c60f5d3324d6c5c44c9896511d7a3e7adc1827edf1e5981c1adf9860b"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S02-I05",
+            "version": 1,
+            "historyId": "7e5bf0c5-c135-4501-a45a-d2f3fc73c881",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-22.png",
+            "sha256": "6b52815c60f5d3324d6c5c44c9896511d7a3e7adc1827edf1e5981c1adf9860b"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S02-I11",
+            "version": 1,
+            "historyId": "9d3c91a3-636d-420f-909c-bdbbb694244e",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-22.png",
+            "sha256": "6b52815c60f5d3324d6c5c44c9896511d7a3e7adc1827edf1e5981c1adf9860b"
+          }
+        ]
+      },
+      {
+        "figure": 23,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-23.png",
+        "sha256": "538d24ea12db1075815db91bdb6a2fb14f6c2ad6b8a5ba086eb754516aa228d8",
+        "visualObservation": "A heated wire sags between supports. It depicts expansion, with no ordered position samples or gas-speed comparison.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S02-I07",
+            "version": 1,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-23.png",
+            "sha256": "538d24ea12db1075815db91bdb6a2fb14f6c2ad6b8a5ba086eb754516aa228d8"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S02-I07",
+            "version": 1,
+            "historyId": "32a333fd-0064-4dd2-8bc9-58432bd93cfa",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-23.png",
+            "sha256": "538d24ea12db1075815db91bdb6a2fb14f6c2ad6b8a5ba086eb754516aa228d8"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S02-I10",
+            "version": 1,
+            "historyId": "bd5df020-c4d0-40cf-8761-6ca9c9da6f9f",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-23.png",
+            "sha256": "538d24ea12db1075815db91bdb6a2fb14f6c2ad6b8a5ba086eb754516aa228d8"
+          }
+        ]
+      },
+      {
+        "figure": 24,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-24.png",
+        "sha256": "915b9c67b2e20aad3412a34385c5b3b3644873f705824df5c96e26875f89ac94",
+        "visualObservation": "Liquid and gas expansion before/after heating, with water/gas/piston labels. It gives no cross-gas thermal-speed anchors or paired event-time bounds.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S02-I06",
+            "version": 1,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-24.png",
+            "sha256": "915b9c67b2e20aad3412a34385c5b3b3644873f705824df5c96e26875f89ac94"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S02-I06",
+            "version": 1,
+            "historyId": "4d564462-448c-4185-a413-78649a1dcb6a",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-24.png",
+            "sha256": "915b9c67b2e20aad3412a34385c5b3b3644873f705824df5c96e26875f89ac94"
+          }
+        ]
+      },
+      {
+        "figure": 25,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-25.png",
+        "sha256": "005c1776e8cc3dfcfe861c91ca968d8977de0787df0e450d58b5d092379e53d6",
+        "visualObservation": "Separate H/C/O atom-model groups distinguished by labels, size and color. It does not encode the new mixture history or molecular-speed inference.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S03-I05",
+            "version": 2,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-25.png",
+            "sha256": "005c1776e8cc3dfcfe861c91ca968d8977de0787df0e450d58b5d092379e53d6"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S03-I05",
+            "version": 1,
+            "historyId": "42f36391-e6c0-42a9-a3f7-2441e0bce2d3",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-25.png",
+            "sha256": "005c1776e8cc3dfcfe861c91ca968d8977de0787df0e450d58b5d092379e53d6"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S03-I05",
+            "version": 2,
+            "historyId": "c45c6bfa-1f85-490f-96d0-2dd068d66242",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-25.png",
+            "sha256": "005c1776e8cc3dfcfe861c91ca968d8977de0787df0e450d58b5d092379e53d6"
+          }
+        ]
+      },
+      {
+        "figure": 26,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-26.png",
+        "sha256": "8104d02f0e9160a75aea2185841793720ec5e2fbe4b158b9d68c18d630d105d3",
+        "visualObservation": "Two H atom models joined into H2. Grouping is explicit, not a two-region diffusion history or trajectory record.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S03-I06",
+            "version": 1,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-26.png",
+            "sha256": "8104d02f0e9160a75aea2185841793720ec5e2fbe4b158b9d68c18d630d105d3"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S03-I06",
+            "version": 1,
+            "historyId": "bf8f54ad-b992-45b3-bfaf-5891ce2729e2",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-26.png",
+            "sha256": "8104d02f0e9160a75aea2185841793720ec5e2fbe4b158b9d68c18d630d105d3"
+          }
+        ]
+      },
+      {
+        "figure": 27,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-27.png",
+        "sha256": "1ab9b4366eaadbefa379ed14d1f841bd5d3e25463e62a3ef949dc177078871e4",
+        "visualObservation": "H/H/O atom models joined into H2O. The molecule construction supplies no new candidate complete interpretation.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S03-I07",
+            "version": 2,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-27.png",
+            "sha256": "1ab9b4366eaadbefa379ed14d1f841bd5d3e25463e62a3ef949dc177078871e4"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S03-I07",
+            "version": 1,
+            "historyId": "66032c04-5b55-423b-a46c-64e690be03e1",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-27.png",
+            "sha256": "1ab9b4366eaadbefa379ed14d1f841bd5d3e25463e62a3ef949dc177078871e4"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S03-I07",
+            "version": 2,
+            "historyId": "6b0d0cf1-900e-4a9b-ba81-a2589d0f4e32",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-27.png",
+            "sha256": "1ab9b4366eaadbefa379ed14d1f841bd5d3e25463e62a3ef949dc177078871e4"
+          }
+        ]
+      },
+      {
+        "figure": 28,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-28.png",
+        "sha256": "1321d648a4f0e7412ae182eb1c409815f8ac945889265ba80e5f9b241cf34d4c",
+        "visualObservation": "A row of touching balls above a ruler beside a pointed rod. Its length/particle-size procedure differs from sampled position records of one moving particle.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S04-I05",
+            "version": 3,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-28.png",
+            "sha256": "1321d648a4f0e7412ae182eb1c409815f8ac945889265ba80e5f9b241cf34d4c"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S04-I05",
+            "version": 3,
+            "historyId": "4f6e1346-f04f-485f-aa44-b9f240f18d22",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-28.png",
+            "sha256": "1321d648a4f0e7412ae182eb1c409815f8ac945889265ba80e5f9b241cf34d4c"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S04-I05",
+            "version": 2,
+            "historyId": "8d50f391-1eef-4da4-b1a7-d311708d8fef",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-28.png",
+            "sha256": "1321d648a4f0e7412ae182eb1c409815f8ac945889265ba80e5f9b241cf34d4c"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S04-I05",
+            "version": 1,
+            "historyId": "b460c861-a2e5-4fa0-b85a-83ab214d360b",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-28.png",
+            "sha256": "1321d648a4f0e7412ae182eb1c409815f8ac945889265ba80e5f9b241cf34d4c"
+          }
+        ]
+      },
+      {
+        "figure": 29,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-29.png",
+        "sha256": "1cbf4db18a87b276ad2f75a2cdf345752062a0374eb9090e0b4b1b168f058805",
+        "visualObservation": "A magnified particle-lattice photograph, without a trajectory, two-time inventory or comparable event windows.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S04-I06",
+            "version": 2,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-29.png",
+            "sha256": "1cbf4db18a87b276ad2f75a2cdf345752062a0374eb9090e0b4b1b168f058805"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S04-I06",
+            "version": 2,
+            "historyId": "5be298ba-3aa7-451f-bcb2-23a3d19f6021",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-29.png",
+            "sha256": "1cbf4db18a87b276ad2f75a2cdf345752062a0374eb9090e0b4b1b168f058805"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S04-I06",
+            "version": 1,
+            "historyId": "be1c5477-5196-47a7-b677-5b5190649367",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-29.png",
+            "sha256": "1cbf4db18a87b276ad2f75a2cdf345752062a0374eb9090e0b4b1b168f058805"
+          }
+        ]
+      },
+      {
+        "figure": 30,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-30.png",
+        "sha256": "03736b74f3c81a7a696a13f6cdcde7e77ff9d3644acd559e486cdb37fd3d7f53",
+        "visualObservation": "A layered blue solution/water experiment progresses toward uniform color through ordered stages. This exposes one forward mixing history and continued motion after visual uniformity, not unique reconstruction from an isolated final record.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S05-I05",
+            "version": 2,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-30.png",
+            "sha256": "03736b74f3c81a7a696a13f6cdcde7e77ff9d3644acd559e486cdb37fd3d7f53"
+          },
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S06-I05",
+            "version": 2,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-30.png",
+            "sha256": "03736b74f3c81a7a696a13f6cdcde7e77ff9d3644acd559e486cdb37fd3d7f53"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S06-I05",
+            "version": 1,
+            "historyId": "56822638-299f-4578-a7d6-4c0c9349c7ab",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-30.png",
+            "sha256": "03736b74f3c81a7a696a13f6cdcde7e77ff9d3644acd559e486cdb37fd3d7f53"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S05-I05",
+            "version": 1,
+            "historyId": "78e82509-5880-40e8-8606-dadeec81bc78",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-30.png",
+            "sha256": "03736b74f3c81a7a696a13f6cdcde7e77ff9d3644acd559e486cdb37fd3d7f53"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S06-I05",
+            "version": 2,
+            "historyId": "b170266c-349d-4c04-b8bc-161701772dfe",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-30.png",
+            "sha256": "03736b74f3c81a7a696a13f6cdcde7e77ff9d3644acd559e486cdb37fd3d7f53"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S05-I05",
+            "version": 2,
+            "historyId": "b3585287-f330-493d-907d-b6533058a1d8",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-30.png",
+            "sha256": "03736b74f3c81a7a696a13f6cdcde7e77ff9d3644acd559e486cdb37fd3d7f53"
+          }
+        ]
+      },
+      {
+        "figure": 31,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-31.png",
+        "sha256": "078e4e0735143f8189a00470c49b0324a787fb974d902b2bb71e12e8d6e60c4f",
+        "visualObservation": "Three particle diagrams progress from blue/orange layers through partial and greater mixing. The forward arrangement and population imbalance are explicit; the new candidate instead compares two possible missing initial arrangements.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S05-I06",
+            "version": 2,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-31.png",
+            "sha256": "078e4e0735143f8189a00470c49b0324a787fb974d902b2bb71e12e8d6e60c4f"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S05-I06",
+            "version": 1,
+            "historyId": "30d33acd-3d1b-464c-8d4d-d48e335a3bf4",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-31.png",
+            "sha256": "078e4e0735143f8189a00470c49b0324a787fb974d902b2bb71e12e8d6e60c4f"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S05-I06",
+            "version": 2,
+            "historyId": "ba3637a9-f3f2-4595-a65a-5c7220e31069",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-31.png",
+            "sha256": "078e4e0735143f8189a00470c49b0324a787fb974d902b2bb71e12e8d6e60c4f"
+          }
+        ]
+      },
+      {
+        "figure": 32,
+        "repoPath": "web/assets/textbook/physics7-2023/figure-32.png",
+        "sha256": "7fce786bf07eebbe1d4e9deece9ba9e9047ec993fdb6e828133291432593efc0",
+        "visualObservation": "Lead/gold layers before and after diffusion, with a 1 mm transition zone. The corresponding item contrasts a five-year observation with a one-day negative observation, not two nonoverlapping bounded event records.",
+        "uses": [
+          {
+            "kind": "current",
+            "code": "PHY7-U02-S07-I05",
+            "version": 1,
+            "historyId": null,
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-32.png",
+            "sha256": "7fce786bf07eebbe1d4e9deece9ba9e9047ec993fdb6e828133291432593efc0"
+          },
+          {
+            "kind": "history",
+            "code": "PHY7-U02-S07-I05",
+            "version": 1,
+            "historyId": "2582e3d3-cbb6-4819-96ec-29f7a880770a",
+            "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-32.png",
+            "sha256": "7fce786bf07eebbe1d4e9deece9ba9e9047ec993fdb6e828133291432593efc0"
+          }
+        ]
+      }
+    ],
+    "textbookFigure33": {
+      "printedPage": 35,
+      "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+      "renderedPagesInspected": [
+        34,
+        35
+      ],
+      "observation": "Two schematic irregular blue broken-line molecular paths with red particle markers and direction arrows. No sampled-position timeline, coarse/fine recording comparison or numerical lower-bound task is present. The adjacent text supplies the already-reviewed approximate thermal-speed anchors."
+    },
+    "candidateRecheck": [
+      {
+        "candidate": "B18-C01",
+        "nearestVisuals": [
+          28,
+          31,
+          33
+        ],
+        "judgment": "The existing measurement row, particle arrangement and schematic paths do not supply the interpretation of two differently detailed records of the same trajectory. Path and sparse-record reasoning remain repeated concepts, not independent coverage."
+      },
+      {
+        "candidate": "B18-C02",
+        "nearestVisuals": [
+          30,
+          31
+        ],
+        "judgment": "Existing figures expose a known separated-to-mixed sequence. The new full task removes the initial record and requires evaluating explicitly different compatible beginnings; recognizing the forward mixing picture is insufficient."
+      },
+      {
+        "candidate": "B18-C03",
+        "nearestVisuals": [
+          30,
+          32
+        ],
+        "judgment": "Existing mixing stages and solid diffusion transition do not encode the paired checkpoint bounds or the combined observation/attribution judgment in the new task."
+      },
+      {
+        "candidate": "B18-C04",
+        "nearestVisuals": [
+          24,
+          25,
+          33
+        ],
+        "judgment": "Existing heating and atom-model images do not encode the new unmeasured target-temperature comparison. Figure 33 and its adjacent speed anchors were checked; repeated source anchors are disclosed and the new interpretation still requires transfer."
+      }
+    ],
+    "decision": "Retain all four provisional protected parallel candidates; zero independent new reasoning coverage. Human content/definition and SME/exposure approval remain pending."
+  },
+  "unchangedPrivateArchive": {
+    "id": "libfile_f56cf963a9188191b176c3a82d42b93d",
+    "version": 0,
+    "sha256": "8edd512e4112e2588166c525dfd7610871c1f0db6e8f828ae7e0d70b92397a9b"
+  }
+}
