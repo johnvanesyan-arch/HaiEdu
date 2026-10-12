@@ -1,6 +1,8 @@
 # Chapter II assessment batch 15
 
-**Date:** 2026-10-12 · **Slice:** 15B.13AG · **State:** four question drafts and six definition drafts staged; human review pending.
+**Date:** 2026-10-12 · **Slice:** 15B.13AG · **Stage-time state:** four question drafts and six definition drafts staged; human review pending at that checkpoint.
+
+**Review closure — 2026-10-12 11:49:52 UTC:** all four current v1 questions are human content-approved and all six definition drafts are now active, matching their approved snapshots. Chapter II totals are 144 approved questions, 199 active definitions and 57 published guides, with no pending content. [Review closure evidence](evidence/sprint-15b13-batch-15-review-complete-20261012.json). The staging observations and review instructions below are historical; external SME/exposure and release gates remain open. Further use of the bounded disposition still needs the owner’s next decision.
 
 John authorized exactly one S05 Diagnostic, one S08 Diagnostic and two S07 Mastery candidates at **14:41:04 Asia/Yerevan**, under `haiedu-protected-parallel-pilot-v1`. All four qualified provisionally; one was reworked within the original candidate lead to require stronger interpretation of complete records. Six new misconception definitions accompany them. No independent new reasoning coverage is claimed.
 
