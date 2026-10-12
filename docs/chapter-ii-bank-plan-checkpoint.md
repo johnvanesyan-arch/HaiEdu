@@ -1,6 +1,6 @@
 # Chapter II bank-plan decision packet
 
-**Updated:** 2026-10-13 (Asia/Yerevan) · **Status:** final 37-slot two-batch authoring explicitly authorized; comparison/rollback complete, staging pending. Prior review history: first four bounded manifests content-approved; fifth human review resolved with three approvals and one owner archive; S05-M05 v2 author comparison refresh complete; SME/exposure and release gates remain open. Reserve target and assessment contract unchanged.
+**Updated:** 2026-10-13 (Asia/Yerevan) · **Status:** final 37-slot two-batch authoring/staging complete; 37 questions and 47 definitions await human review. Prior review history: first four bounded manifests content-approved; fifth human review resolved with three approvals and one owner archive; S05-M05 v2 author comparison refresh complete; SME/exposure and release gates remain open. Reserve target and assessment contract unchanged.
 
 **First owner decision:** John selected four candidates and then directed “ok, proceed”. The authorized scope is two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prior eight-candidate proposal and subsequent sixteen-candidate throughput suggestion are superseded. The [bounded prospective policy addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) is adopted for this pilot only.
 
@@ -134,7 +134,7 @@ The current bank has 155 approved non-archived questions plus one archived recor
 | S09 | — / M08 | — / — | 1 |
 | Total | 7 / 12 = 19 | 7 / 11 = 18 | 37 |
 
-Exactly 37 candidate slots were drafted and provisionally qualified, with two substantive pre-staging reworks, 47 new draft definitions and no learner guides. All666 pairs across both batches were compared. The existing S07-M05 record remains archived; new codes do not reuse it. [Batch 19](chapter-ii-assessment-batch-19.md), [Batch 20](chapter-ii-assessment-batch-20.md) and [restricted-evidence bindings](evidence/sprint-15b13-assessment-batches-19-20-comparison-20261013.json) record the boundary. Production staging is pending at this preparation checkpoint; the status register remains authoritative.
+Exactly 37 candidate slots were drafted and provisionally qualified, with two substantive pre-staging reworks, 47 new draft definitions and no learner guides. All666 pairs across both batches were compared. The existing S07-M05 record remains archived; new codes do not reuse it. [Batch 19](chapter-ii-assessment-batch-19.md), [Batch 20](chapter-ii-assessment-batch-20.md) and [restricted-evidence bindings](evidence/sprint-15b13-assessment-batches-19-20-comparison-20261013.json) record the boundary. Production staging and 37/37 technical QA are complete. The bank now contains 192 non-archived questions: 155 approved + 37 pending; 47 definitions are draft. Each skill has 12 Practice, 4 Diagnostic and 8 Mastery records including drafts. This fills the nominal drafting target only; the status register governs approval and release gates.
 
 ## Exact authorization boundary
 

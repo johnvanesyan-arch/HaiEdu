@@ -1,10 +1,10 @@
 # Chapter II assessment batch 20
 
-**Sprint:** 15B.13AQ · **Date:** 2026-10-13 Asia/Yerevan · **State:** comparison and rollback verified; production staging pending.
+**Sprint:** 15B.13AQ · **Date:** 2026-10-13 Asia/Yerevan · **State:** authored, staged and technically verified; human review pending.
 
 John directed completion of all 37 remaining slots in two batches while retaining the 192-question plan. This manifest contains **18 questions**, **7 Diagnostic + 11 Mastery**, with **23 new draft misconception definitions** and no new learner guides. Candidate qualification is provisional author judgment under the bounded protected-parallel protocol; it adds zero independent reasoning coverage.
 
-The shared [comparison record](evidence/sprint-15b13-assessment-batches-19-20-comparison-20261013.json) binds both manifests, all 666 new pairs (171 within Batch 19, 153 within Batch 20, 342 across batches), source and full version/guide inventories. Frozen corpus: 416 current questions, 290 immutable versions, 76 current guides and 474 guide-history records. All156 Chapter II current records including the owner archive, all relevant historical differences, all 138 distinct guide texts, and related Chapter I S04–S10 current banks were reviewed. Other current Chapter I S01–S03 records remain in the raw corpus without a claim of fresh full reading. Two candidate slots were substantially reworked before staging; no old omitted record was restored.
+The shared [comparison record](evidence/sprint-15b13-assessment-batches-19-20-comparison-20261013.json) binds both manifests, all 666 new pairs (171 within Batch 19, 153 within Batch 20, 342 across batches), source and full version/guide inventories. Frozen corpus: 416 current questions, 290 immutable versions, 76 current guides and 474 guide-history records. All 156 Chapter II current records including the owner archive, all relevant historical differences, all 138 distinct guide texts, and related Chapter I S04–S10 current banks were reviewed. Other current Chapter I S01–S03 records remain in the raw corpus without a claim of fresh full reading. Two candidate slots were substantially reworked before staging; no old omitted record was restored.
 
 | Candidate | Item | Purpose | Abstract demand |
 | --- | --- | --- | --- |
@@ -34,3 +34,13 @@ Private artifact `libfile_2fac500f294081919747f1734a35c47c` / `HaiEdu-Assessment
 Final rollback rehearsal: **18/18 passed**, zero errors/warnings, exact specification/options/key/mapping/immutable-snapshot agreement. All 38 complete-table guards were unchanged after rollback. QA used the exact freshly retrieved deployed `manage-content-quality` v11 evaluator, byte-identical to repository source, through a read-only catalogue adapter. This is not authenticated live Edge/browser acceptance. Rehearsal IDs are temporary.
 
 The current release remains draft, inactive and unallocated. Content/definition approval, independent SME/exposure qualification, disjoint form allocation, empirical evidence and release remain open. Existing 155 approvals, the S07-M05 archive, 57 published guides and 216 active definitions are preserved. The other batch is [Batch 19](chapter-ii-assessment-batch-19.md). The [status register](project-status.md) governs actual counts.
+
+## Committed production verification
+
+Batch 20 has **18 saved v1 drafts and 23 draft definitions**, with **18/18 passing current-version/family QA records**. Independent post-commit reads exactly match prompts, all options, keys, immutable snapshots, definitions and 111 total mappings across both batches. The evaluator replay result and persisted details match; no human review was manufactured. [Production verification](evidence/sprint-15b13-assessment-batches-19-20-production-20261013.json).
+
+The two transactions preserved all prior rows and made only the declared additive catalogue changes, followed by 37 automated QA inserts. All other 38-table guard fingerprints are unchanged. Batch 20 used a fresh baseline extended only by the already compared Batch 19 records; all cross-batch judgments were committed beforehand at `cbb8a3bccc560f63281bee3e6ba2c2925d2bd61d`.
+
+Final inventory: **192 non-archived questions = 155 approved + 37 pending**, plus one archived historical S07-M05 record. Purpose totals are 96 Practice, 32 Diagnostic and 64 Mastery. There are 216 active and 47 draft definitions, 57 published guides, zero Chapter II pool/form memberships and an inactive draft release. The nominal drafting gap is zero; the approved-content gap is 37, and protected eligibility is still unestablished. Review both batches on `/content-review.html` and definitions on `/content-misconceptions.html`.
+
+Restricted production evidence: `libfile_94ee999fe26c8191a593af9de4217f58` / `HaiEdu-Assessment-Batches-19-20-Production-Verification.zip`, SHA-256 `6f6febb654339fb12cd42252e5008f42e1ff7010882411874dc5c394a01d199b`. No frontend, API, schema or learning-runtime change was made. CI and merged-source/Notion synchronization are documented in the final handoff; human content/definition, SME/exposure and release remain open.
