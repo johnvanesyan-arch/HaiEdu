@@ -1,0 +1,882 @@
+{
+  "protocol": "haiedu-protected-parallel-pilot-v1",
+  "sprints": [
+    "15B.13AP",
+    "15B.13AQ"
+  ],
+  "status": "pre-staging author comparison and rollback verified; committed production staging not yet claimed",
+  "ownerAuthorization": {
+    "at": "2026-10-12T20:04:31Z",
+    "direction": "You know what, let's do as planned. Create all the missing questions in two batches",
+    "interpretation": "Retain 192 target and author its 37 missing slots as 19+18. This explicit two-batch instruction supersedes four-candidate cadence; existing source, quality, review and release gates remain."
+  },
+  "scope": {
+    "method": "Author semantic comparison of full current prompts, options, keys, stimuli and mapped distractor logic, plus immutable-text deltas against those current records and complete distinct guide texts. Automated inventory/pair enumeration is bookkeeping, not a semantic detector.",
+    "globalFrozenCurrentItems": 416,
+    "globalImmutableVersions": 290,
+    "currentChapterIIItemsIncludingArchived": 156,
+    "chapterIIApprovedNonarchived": 155,
+    "freshFullCurrentSkillScope": [
+      "PHY7-U02-S02",
+      "PHY7-U02-S03",
+      "PHY7-U02-S04",
+      "PHY7-U02-S05",
+      "PHY7-U02-S06",
+      "PHY7-U02-S07",
+      "PHY7-U02-S08",
+      "PHY7-U02-S09",
+      "PHY7-U01-S04",
+      "PHY7-U01-S05",
+      "PHY7-U01-S06",
+      "PHY7-U01-S07",
+      "PHY7-U01-S08",
+      "PHY7-U01-S09",
+      "PHY7-U01-S10"
+    ],
+    "freshFullCurrentCount": 344,
+    "outsideFreshFullCurrentScope": "Chapter I S01–S03 current records retained in full corpus but not claimed as freshly read in full; their distinct historical text changes and all guides were included. Mapping inventory shows these outcomes are physical-world categories rather than candidate procedures.",
+    "emptySkill": "PHY7-U02-S01 has zero items and is not an extra assessment skill.",
+    "history": "All 290 immutable snapshots retained; 56 distinct historical prompt/options/key/stimulus texts relative to current content reviewed through full differing fields. Dedup excludes authoring metadata/mapping-note changes, which remain in full raw snapshots.",
+    "guides": "All 76 current plus 474 guide-history records retained; 138 distinct normalized full title/hint/strategy/worked-example texts read. No new learner guide is created.",
+    "equivalentMappings": "All 20 skill-outcome rows and curriculum reconciliation/mapping tables retained. S02/S03 share a Chapter II outcome and both complete banks are included. Chapter I S04–S10 cover experiment design, measurement and unit prerequisites and were read in full.",
+    "source": "Original Physics 7 Melikyan/Mailyan 2023 PDF hash verified; Chapter II §§7–13, printed pp24–41, and measurement/experiment prerequisites referenced per candidate. Figures22–32 inspected, but no candidate relies on an omitted image.",
+    "protectedScope": "No inaccessible protected bank in the selected scope. Archived S07-M05 and approved S05-M05 v2 are explicitly compared and preserved. No pool/form/model binding or release change is authorized.",
+    "priorOmissions": "All eleven B13 omitted leads reconsidered by full scenario/options/solution where related. No exact-pressure, stochastic-probability or heat-capacity procedure is reinstated. No omitted record is restored. New S03 grouping, S04 retained-film-volume and S07 bridge-design proposals explicitly repeat taught procedures under this new bounded manifest, with changed information structures and zero independent coverage.",
+    "sourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "corpusSha256": "f4558aaae22779b1b9a99719ad8e14efe8cf5974ad9f57317a0c0e794c502306",
+    "baselineObservedAt": "2026-10-12T20:40:55.533603+00:00",
+    "author": "Codex automated author; no independent human/SME sign-off claimed"
+  },
+  "summary": {
+    "candidates": 37,
+    "batch19": 19,
+    "batch20": 18,
+    "diagnostic": 14,
+    "mastery": 23,
+    "newDefinitions": 47,
+    "newGuides": 0,
+    "pairs": 666,
+    "sameSkillPairs": 75,
+    "crossSkillPairs": 591,
+    "batch19InternalPairs": 171,
+    "batch20InternalPairs": 153,
+    "crossBatchPairs": 342,
+    "explicitFormSeparationPairs": 12,
+    "reworkedSlots": 2,
+    "approvedBaseline": 155,
+    "nominalTotalAfterDrafting": 192,
+    "approvedGapRemains": 37,
+    "reviewedSourceSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904"
+  },
+  "candidates": [
+    {
+      "id": "B19-C01",
+      "batch": 19,
+      "code": "PHY7-U02-S02-D03",
+      "skill": "S02",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Audit competing particle representations against compression constraints",
+      "nearest": [
+        "PHY7-U02-S02-I05",
+        "PHY7-U02-S02-I08",
+        "PHY7-U02-S02-I12",
+        "PHY7-U02-S02-D02"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7, տպագիր էջեր 24–26; §13, էջ 40՝ նյութի մասնիկային կառուցվածք, մասնիկների միջև տարածություններ և նյութի զբաղեցրած ծավալ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "70ff9b2a92f762395a7055136147fb9fe4ed3962358df50ce3c3146d5145ab5a",
+      "profileSha256": "aecc68d052391e1746fb0c1e59a2c76d1f1bb6f6d9c3e49da5bfb0d320128bad",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C01",
+      "batch": 20,
+      "code": "PHY7-U02-S02-D04",
+      "skill": "S02",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Interpret occupied volume after access to an initially empty region changes",
+      "nearest": [
+        "PHY7-U02-S02-D01",
+        "PHY7-U02-S02-M01",
+        "PHY7-U02-S06-I12"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7, տպագիր էջեր 24–26; §13, էջ 40՝ նյութի մասնիկային կառուցվածք, մասնիկների միջև տարածություններ և նյութի զբաղեցրած ծավալ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "404f83afa693baf5000df5795bf7b2909e1c9d8f80c59e34df78ff8574ad8d94",
+      "profileSha256": "9bd282d210aa8111f55286f7785da321d0280af55d1eaab34c8b914bfc9d660e",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C02",
+      "batch": 19,
+      "code": "PHY7-U02-S02-M06",
+      "skill": "S02",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Identify the complete physical system before comparing occupied volumes",
+      "nearest": [
+        "PHY7-U02-S02-D02",
+        "PHY7-U02-S02-M02",
+        "PHY7-U02-S02-M04",
+        "PHY7-U02-S06-M02"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7, տպագիր էջեր 24–26; §13, էջ 40՝ նյութի մասնիկային կառուցվածք, մասնիկների միջև տարածություններ և նյութի զբաղեցրած ծավալ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "c7faaa65eceb6ee3c3deb6069bf2f0db61dfc360751e2b684ec6a7b4433b3d09",
+      "profileSha256": "ec32b3aa8bcd5f2cddf01c7aa318fecf1b716da23092db542f6fbd9801148ccb",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C03",
+      "batch": 19,
+      "code": "PHY7-U02-S02-M07",
+      "skill": "S02",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Reconcile fixed end positions with thermal extension of a curved object",
+      "nearest": [
+        "PHY7-U02-S02-I04",
+        "PHY7-U02-S02-I07",
+        "PHY7-U02-S05-I12",
+        "PHY7-U02-S05-M03"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7, տպագիր էջեր 24–26; §13, էջ 40՝ նյութի մասնիկային կառուցվածք, մասնիկների միջև տարածություններ և նյութի զբաղեցրած ծավալ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "fdeaec68489772d0641e40b527a1686e8958b7655b615f1aba76b01333d408ce",
+      "profileSha256": "1ba55b15b69f154599526f714506336256264625e72826a3ded78dc3a9f3b200",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C02",
+      "batch": 20,
+      "code": "PHY7-U02-S02-M08",
+      "skill": "S02",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Track bulk and unoccupied volume when particle inventory changes",
+      "nearest": [
+        "PHY7-U02-S02-D02",
+        "PHY7-U02-S02-I12",
+        "PHY7-U02-S02-M05"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §7, տպագիր էջեր 24–26; §13, էջ 40՝ նյութի մասնիկային կառուցվածք, մասնիկների միջև տարածություններ և նյութի զբաղեցրած ծավալ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "9c9ede03ffe2eb6044c81724cd7e78c0fbd42877b68803db13f94e6583fc1df9",
+      "profileSha256": "10b831442d0d7a7257c14aa0021e7dd89940c931b92762458035202cf9935682",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C04",
+      "batch": 19,
+      "code": "PHY7-U02-S03-D03",
+      "skill": "S03",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Decode competing representation legends against molecular composition",
+      "nearest": [
+        "PHY7-U02-S03-I05",
+        "PHY7-U02-S03-I07",
+        "PHY7-U02-S03-I11"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, տպագիր էջեր 26–28՝ ատոմ, մոլեկուլ, քիմիական տարր, H₂ և H₂O մոդելներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "39675e621b33135599737d1b50572e402b0474b82690396f19ada1ffd1e9d1e8",
+      "profileSha256": "f95e9707f2194d03a9ce2d22f877613335e893a3715eae95daf88d67f74415ef",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C03",
+      "batch": 20,
+      "code": "PHY7-U02-S03-D04",
+      "skill": "S03",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Distinguish molecular structure from elemental composition across samples",
+      "nearest": [
+        "PHY7-U02-S03-D02",
+        "PHY7-U02-S03-I02",
+        "PHY7-U02-S03-I04",
+        "PHY7-U02-S03-I09"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, տպագիր էջեր 26–28՝ ատոմ, մոլեկուլ, քիմիական տարր, H₂ և H₂O մոդելներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "831225faf4e00e5d58dc5e906d33d3a61143ff76c35cddf09c7cee6b7fe0d0a6",
+      "profileSha256": "6b1dd34885f5b6adfeb48255d7277b20bc80504915de480f8f3e36d45016b134",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C05",
+      "batch": 19,
+      "code": "PHY7-U02-S03-M06",
+      "skill": "S03",
+      "bank": "mastery_check",
+      "revision": 2,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Repair two molecular representations under a constrained exchange rule",
+      "nearest": [
+        "PHY7-U02-S03-M03",
+        "PHY7-U02-S03-M04",
+        "PHY7-U02-S03-M05"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, տպագիր էջեր 26–28՝ ատոմ, մոլեկուլ, քիմիական տարր, H₂ և H₂O մոդելներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "cc10fa503daa44c79beb5418a698a039d8b9b4228dca684cfc86bd99d1d95537",
+      "profileSha256": "a292c45dc62a236fef1d42b41596e9819266503501013fdbab1e849d2b93a490",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C06",
+      "batch": 19,
+      "code": "PHY7-U02-S03-M07",
+      "skill": "S03",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Test whether aggregate elemental inventory uniquely identifies molecular grouping",
+      "nearest": [
+        "PHY7-U02-S03-M01",
+        "PHY7-U02-S03-M02",
+        "PHY7-U02-S03-M05",
+        "PHY7-U02-S03-D02"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, տպագիր էջեր 26–28՝ ատոմ, մոլեկուլ, քիմիական տարր, H₂ և H₂O մոդելներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "78d3c43a91518ef062609276c600c80819d9aafe9349b64a0cace826e9f2bf25",
+      "profileSha256": "45f9a5b303e7b3e4e66955c5f6eda1d39c499f83052a2d5038c119c9e0e62964",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C04",
+      "batch": 20,
+      "code": "PHY7-U02-S03-M08",
+      "skill": "S03",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Track the unit of removal in a collection of molecular models",
+      "nearest": [
+        "PHY7-U02-S03-M03",
+        "PHY7-U02-S03-I10",
+        "PHY7-U02-S03-M05"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8, տպագիր էջեր 26–28՝ ատոմ, մոլեկուլ, քիմիական տարր, H₂ և H₂O մոդելներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "specSha256": "35ff9803f995f340b347c6d4d54a1a8e740e17533cfb41b262e0d6145e3c5716",
+      "profileSha256": "5297f6575dd504fc44c417df69c32eea46c95fa4cbea0b972ca12c4726038318",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C07",
+      "batch": 19,
+      "code": "PHY7-U02-S04-D03",
+      "skill": "S04",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Compare actual sizes using differently magnified records",
+      "nearest": [
+        "PHY7-U02-S04-I06",
+        "PHY7-U02-S04-I10",
+        "PHY7-U02-S04-D01",
+        "PHY7-U02-S04-M03"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8–9, տպագիր էջեր 28–30՝ փոքր չափեր, շարքերի եղանակ և խոշորացում; §13, էջ 40՝ d = V/S։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "specSha256": "738d100a0b2f957aab998919d6167f6434791fe1e0c2efb1eee64a503f4710f8",
+      "profileSha256": "e342599aa722611cc78ce265f0e6455d097e8e11c1c68c4e940f73856b308691",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C05",
+      "batch": 20,
+      "code": "PHY7-U02-S04-D04",
+      "skill": "S04",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Identify the measured increment in a repeated row measurement",
+      "nearest": [
+        "PHY7-U02-S04-I04",
+        "PHY7-U02-S04-I08",
+        "PHY7-U02-S04-I12",
+        "PHY7-U01-S10-I06"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8–9, տպագիր էջեր 28–30՝ փոքր չափեր, շարքերի եղանակ և խոշորացում; §13, էջ 40՝ d = V/S։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "specSha256": "5e81b4c9ec76a48f4ce11de57ccc416c5b825e9cc9fe048c2468b11a09f60ac5",
+      "profileSha256": "6e7980ff86e69c2cf4b6ac8bdd286873140ededd6c415954b1d7784b4a8e52ac",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C08",
+      "batch": 19,
+      "code": "PHY7-U02-S04-M06",
+      "skill": "S04",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Select the transferred material quantity for a film-size estimate",
+      "nearest": [
+        "PHY7-U02-S04-M01",
+        "PHY7-U02-S02-M03"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8–9, տպագիր էջեր 28–30՝ փոքր չափեր, շարքերի եղանակ և խոշորացում; §13, էջ 40՝ d = V/S։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "specSha256": "3c363e2ed78a571a021e0eb001b526d6642d4ba76f324890c5bd1be599959252",
+      "profileSha256": "caae0c8728d05354526763e8f2c2de1bef4ba75df0015bebdec21f96943abf69",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C09",
+      "batch": 19,
+      "code": "PHY7-U02-S04-M07",
+      "skill": "S04",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Isolate a changing subgroup in two mixed-row measurements",
+      "nearest": [
+        "PHY7-U02-S04-M02",
+        "PHY7-U02-S04-M05",
+        "PHY7-U02-S04-I11"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8–9, տպագիր էջեր 28–30՝ փոքր չափեր, շարքերի եղանակ և խոշորացում; §13, էջ 40՝ d = V/S։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "specSha256": "d9de2bb1b23f8ae6e78250620bcf7505ce975ee5c1cbe55b9fb1ba6316065328",
+      "profileSha256": "efda41d107208b5d46316eef707f9775b8b59f3f822ff239baeec56041f6394a",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C06",
+      "batch": 20,
+      "code": "PHY7-U02-S04-M08",
+      "skill": "S04",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Audit consistency of multiple film-model assumptions",
+      "nearest": [
+        "PHY7-U02-S04-M01",
+        "PHY7-U02-S04-M02",
+        "PHY7-U02-S02-I10"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §8–9, տպագիր էջեր 28–30՝ փոքր չափեր, շարքերի եղանակ և խոշորացում; §13, էջ 40՝ d = V/S։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "specSha256": "f3d5955820c387a2f45e5624e0648fb14ed224c43e6b900f95fa15c4539bfc0c",
+      "profileSha256": "5fb1ae04ceb20eedee13afcf0a65ee3c2606893de0e1557261ce90db5e4f00f6",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C10",
+      "batch": 19,
+      "code": "PHY7-U02-S05-D03",
+      "skill": "S05",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Assess a deterministic extrapolation from a short direction record",
+      "nearest": [
+        "PHY7-U02-S05-I01",
+        "PHY7-U02-S05-I02",
+        "PHY7-U02-S05-I03",
+        "PHY7-U02-S05-I09"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10–11, տպագիր էջեր 30–35՝ անընդհատ անկանոն շարժում, բախումներ և հետագիծ; §13, էջ 40՝ բեկյալ ճանապարհ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "specSha256": "15046ce6413a0eaea095b741bdc43cd235871458d01f9d38283579677b212c91",
+      "profileSha256": "2f76a58ef65e5c57a9345c263fda6981ea54b3dc7435c0858190abc8b474f0c5",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C07",
+      "batch": 20,
+      "code": "PHY7-U02-S05-D04",
+      "skill": "S05",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Distinguish repeated events from distinct particle identities",
+      "nearest": [
+        "PHY7-U02-S05-I05",
+        "PHY7-U02-S05-I06",
+        "PHY7-U02-S05-I08",
+        "PHY7-U02-S05-D02"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10–11, տպագիր էջեր 30–35՝ անընդհատ անկանոն շարժում, բախումներ և հետագիծ; §13, էջ 40՝ բեկյալ ճանապարհ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "specSha256": "7648448f1dff8fa0c523c7561a9397c11e034d4eace690570b22a85f5282d821",
+      "profileSha256": "fd3628cfa83b003ac110fcc7f9034a81daea2807ee704abdd2613711e2b509df",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C11",
+      "batch": 19,
+      "code": "PHY7-U02-S05-M06",
+      "skill": "S05",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Evaluate a speed ranking from unequal-duration path records",
+      "nearest": [
+        "PHY7-U02-S05-M01",
+        "PHY7-U02-S05-M02",
+        "PHY7-U02-S05-M03",
+        "PHY7-U02-S05-M04"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10–11, տպագիր էջեր 30–35՝ անընդհատ անկանոն շարժում, բախումներ և հետագիծ; §13, էջ 40՝ բեկյալ ճանապարհ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "specSha256": "58b9e0a276a200b5cbea1fff6fa35375125ed08d1b0cab650db50a9a18d85ba0",
+      "profileSha256": "3e84acfb67ca7217a3af3fee24ce4f9c96ac6667df2a5e614fcc70649f83a958",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C08",
+      "batch": 20,
+      "code": "PHY7-U02-S05-M07",
+      "skill": "S05",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Audit completeness of a directed particle-event record",
+      "nearest": [
+        "PHY7-U02-S05-D02",
+        "PHY7-U02-S05-M03",
+        "PHY7-U02-S05-M05"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10–11, տպագիր էջեր 30–35՝ անընդհատ անկանոն շարժում, բախումներ և հետագիծ; §13, էջ 40՝ բեկյալ ճանապարհ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "specSha256": "f7cde8b45ee80b65e832382187d865910694d0f00878890cc20594fdbbf0653a",
+      "profileSha256": "5cf936e1a9962ca4f907464c6e253c73e32977ceec8443015a9436ed70ccacdd",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C09",
+      "batch": 20,
+      "code": "PHY7-U02-S05-M08",
+      "skill": "S05",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Reconstruct redistribution and assess an inference about continuing motion",
+      "nearest": [
+        "PHY7-U02-S05-I05",
+        "PHY7-U02-S05-I06",
+        "PHY7-U02-S05-I08",
+        "PHY7-U02-S05-I11",
+        "PHY7-U02-S06-M01"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10–11, տպագիր էջեր 30–35՝ անընդհատ անկանոն շարժում, բախումներ և հետագիծ; §13, էջ 40՝ բեկյալ ճանապարհ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "specSha256": "6521d3e8c548471a7bb0f7c30d3d581452d3a478f8bbe8a71879c3ae97624870",
+      "profileSha256": "1ac1ddae8652f6a458d7e968950d4f9c2c81371854ca625e764f9bdd85ceb882",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C12",
+      "batch": 19,
+      "code": "PHY7-U02-S06-D03",
+      "skill": "S06",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Select direct observational evidence of reciprocal interpenetration",
+      "nearest": [
+        "PHY7-U02-S06-I01",
+        "PHY7-U02-S06-I02",
+        "PHY7-U02-S06-I11",
+        "PHY7-U02-S06-M01"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 30–33՝ նյութերի մասնիկների ինքնաբերական փոխադարձ ներթափանցում։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "specSha256": "12e998e49854400b3e6a3b8a3995eeeac52c4c6216f91f0ad6be6a85009c83e5",
+      "profileSha256": "1713d4aaa501f2a4b04d50572e7a06b7713252760c8ae6a2fdf96159ab43f153",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C10",
+      "batch": 20,
+      "code": "PHY7-U02-S06-D04",
+      "skill": "S06",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Track particles after a local diffusion source is closed",
+      "nearest": [
+        "PHY7-U02-S06-D02",
+        "PHY7-U02-S06-I06",
+        "PHY7-U02-S06-I07",
+        "PHY7-U02-S05-I02"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 30–33՝ նյութերի մասնիկների ինքնաբերական փոխադարձ ներթափանցում։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "specSha256": "035a6752339214ce6c108aca0146eb7f17e9c61292c23127376a52e02f6f6620",
+      "profileSha256": "0d9985bb2c3a939d9234edd52654cf3d098fbabc9c68994afd9e243c8f2a8214",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C13",
+      "batch": 19,
+      "code": "PHY7-U02-S06-M06",
+      "skill": "S06",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Evaluate an intervention across parallel permitted diffusion routes",
+      "nearest": [
+        "PHY7-U02-S06-D01",
+        "PHY7-U02-S06-M02",
+        "PHY7-U02-S06-M03"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 30–33՝ նյութերի մասնիկների ինքնաբերական փոխադարձ ներթափանցում։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "specSha256": "03f007b69012593a1518ca9235e75cded1cb45c80d6246750b68371ee9be5765",
+      "profileSha256": "65b08f41fe98b9d468cd8afca89dfce97047688dc1fddd2a9fc488e441826d06",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C11",
+      "batch": 20,
+      "code": "PHY7-U02-S06-M07",
+      "skill": "S06",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Apply both inventory and reachability constraints to a compartment record",
+      "nearest": [
+        "PHY7-U02-S06-M01",
+        "PHY7-U02-S06-M02",
+        "PHY7-U02-S06-M04",
+        "PHY7-U02-S06-M05"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 30–33՝ նյութերի մասնիկների ինքնաբերական փոխադարձ ներթափանցում։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "specSha256": "c25022f46ed997c807a9e1a624eeaf2d438c39ad87f117cf7ea707d349d0e6fb",
+      "profileSha256": "d7f0a4282f1485052a3814f3f81771807b46f2da33070d415c1b572030241f76",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C12",
+      "batch": 20,
+      "code": "PHY7-U02-S06-M08",
+      "skill": "S06",
+      "bank": "mastery_check",
+      "revision": 2,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Distinguish restricted passage from intrinsic particle immobility",
+      "nearest": [
+        "PHY7-U02-S06-I06",
+        "PHY7-U02-S06-I09",
+        "PHY7-U02-S06-D01",
+        "PHY7-U02-S06-M02"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 30–33՝ նյութերի մասնիկների ինքնաբերական փոխադարձ ներթափանցում։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "specSha256": "cb708a216d904426633b0a8bee222a765a78f1d1ce0d96403e0ca962972de6ab",
+      "profileSha256": "68e41786282d766cca4997a64d6f654f8959e0bad8c010b4c138af29f7355903",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C14",
+      "batch": 19,
+      "code": "PHY7-U02-S07-D03",
+      "skill": "S07",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Assess a temperature inference from accumulated penetration",
+      "nearest": [
+        "PHY7-U02-S07-I03",
+        "PHY7-U02-S07-I07",
+        "PHY7-U02-S07-I09",
+        "PHY7-U02-S07-M03"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 32–33՝ դիֆուզիան տարբեր ագրեգատային վիճակներում և ջերմաստիճանի ազդեցությունը; §3, էջեր 13–14՝ փորձի պայմաններ և եզրակացություն։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "specSha256": "cab551f6a8bb14c1a27ea822e1fdb7b7e337376e34742810a369ea9c8f721fe6",
+      "profileSha256": "bc6ab5b3088f4f269f77fcb25c550adeb71bbd2a941f623a5b2a0cb7e553d2a8",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C13",
+      "batch": 20,
+      "code": "PHY7-U02-S07-D04",
+      "skill": "S07",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Check comparability of the observed endpoints used in a rate claim",
+      "nearest": [
+        "PHY7-U02-S07-I02",
+        "PHY7-U02-S07-I08",
+        "PHY7-U02-S07-M01",
+        "PHY7-U02-S07-M03"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 32–33՝ դիֆուզիան տարբեր ագրեգատային վիճակներում և ջերմաստիճանի ազդեցությունը; §3, էջեր 13–14՝ փորձի պայմաններ և եզրակացություն։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "specSha256": "451dd5b437afd0532fdec3376fe353e520975f20ea31696946303991c66e1165",
+      "profileSha256": "08803955c47e5f23795cc60f8a3acaad31c83d8d8bb2d073cd2593680a90037d",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C15",
+      "batch": 19,
+      "code": "PHY7-U02-S07-M06",
+      "skill": "S07",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Complete a plan supporting two controlled comparisons",
+      "nearest": [
+        "PHY7-U02-S07-D01",
+        "PHY7-U02-S07-M01",
+        "PHY7-U02-S07-M02",
+        "PHY7-U01-S05-I06"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 32–33՝ դիֆուզիան տարբեր ագրեգատային վիճակներում և ջերմաստիճանի ազդեցությունը; §3, էջեր 13–14՝ փորձի պայմաններ և եզրակացություն։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "specSha256": "f6743bdcf41bf77f9c8d87a4d9c9461544b28c0f21c7134ef9e0a58ddcac38e4",
+      "profileSha256": "08cbf3b2487709d3a64fd2cdc45e904f97f0ffd5262bff9b61e8d293e08dafb4",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C16",
+      "batch": 19,
+      "code": "PHY7-U02-S07-M07",
+      "skill": "S07",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Distinguish a controlled condition from a time-to-target outcome",
+      "nearest": [
+        "PHY7-U02-S07-M03",
+        "PHY7-U02-S07-I07",
+        "PHY7-U02-S07-M05"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 32–33՝ դիֆուզիան տարբեր ագրեգատային վիճակներում և ջերմաստիճանի ազդեցությունը; §3, էջեր 13–14՝ փորձի պայմաններ և եզրակացություն։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "specSha256": "7049706ef04ee3f8f8b0d8cb1b97896426ca2dbe074b94a8a7764a8f14b34f1d",
+      "profileSha256": "75515c05a0d3e75dc38d949cd8734f8c32370bf6dcdfc643e660787e61e591ac",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C14",
+      "batch": 20,
+      "code": "PHY7-U02-S07-M08",
+      "skill": "S07",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Compose compatible qualitative diffusion comparisons",
+      "nearest": [
+        "PHY7-U02-S07-M02",
+        "PHY7-U02-S07-M01",
+        "PHY7-U02-S08-M05"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 32–33՝ դիֆուզիան տարբեր ագրեգատային վիճակներում և ջերմաստիճանի ազդեցությունը; §3, էջեր 13–14՝ փորձի պայմաններ և եզրակացություն։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "specSha256": "f7c708ed74ba66b8f8d9bbc15eb585346506df5d5598a64cb5574bec30f77931",
+      "profileSha256": "7a560e7f41801599153a0c058edcb1659a030fdeff1c746a0fcfbd26d51aee8a",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C15",
+      "batch": 20,
+      "code": "PHY7-U02-S07-M09",
+      "skill": "S07",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Reconcile observations with different explicit detection thresholds",
+      "nearest": [
+        "PHY7-U02-S07-M03",
+        "PHY7-U02-S07-I03",
+        "PHY7-U01-S09-I01",
+        "PHY7-U01-S08-I01"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §10, տպագիր էջեր 32–33՝ դիֆուզիան տարբեր ագրեգատային վիճակներում և ջերմաստիճանի ազդեցությունը; §3, էջեր 13–14՝ փորձի պայմաններ և եզրակացություն։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+      "specSha256": "bf44656d9a0b9a7c355c8c3c9aa07e4bf3ca52ebe99c12e3a72f2556b7154fa4",
+      "profileSha256": "8738799325ac20c39ccb116fc1a82e90a8c9e3fd191251d7c422c9e1e599ce2f",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C17",
+      "batch": 19,
+      "code": "PHY7-U02-S08-D03",
+      "skill": "S08",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Apply temperature dependence across a thermal cycle",
+      "nearest": [
+        "PHY7-U02-S08-I01",
+        "PHY7-U02-S08-I10",
+        "PHY7-U02-S08-D02"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, տպագիր էջեր 33–35՝ ջերմաստիճան, ջերմային հպում, բնորոշ արագություն; §12, էջեր 37–38՝ ջերմաստիճանային սանդղակներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "specSha256": "3c5601d13a71169a4e2c3287ae1cb2d6955474cd21d7692ccb4e8c8ba1a93f45",
+      "profileSha256": "3b943cc8aed509acb230d5e307a4589cdeeb2bebc455d402e77fb03efe0da1e0",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C16",
+      "batch": 20,
+      "code": "PHY7-U02-S08-D04",
+      "skill": "S08",
+      "bank": "diagnostic",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Distinguish final state from size of a temperature change",
+      "nearest": [
+        "PHY7-U02-S08-I10",
+        "PHY7-U02-S08-I11",
+        "PHY7-U02-S09-D02",
+        "PHY7-U02-S09-D04"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, տպագիր էջեր 33–35՝ ջերմաստիճան, ջերմային հպում, բնորոշ արագություն; §12, էջեր 37–38՝ ջերմաստիճանային սանդղակներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "specSha256": "ed14e8a4fd6191fc8ff1bcedb7547cc20c29450dd216ff94039d35007721659b",
+      "profileSha256": "25f78f0629739ad3193fdd730637e8b3b638c1df7d63b32d6098794f6b3fac23",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C18",
+      "batch": 19,
+      "code": "PHY7-U02-S08-M06",
+      "skill": "S08",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Reconcile temperature representations before interpreting thermal motion",
+      "nearest": [
+        "PHY7-U02-S08-I08",
+        "PHY7-U02-S08-I11",
+        "PHY7-U02-S09-M01",
+        "PHY7-U02-S09-I09"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, տպագիր էջեր 33–35՝ ջերմաստիճան, ջերմային հպում, բնորոշ արագություն; §12, էջեր 37–38՝ ջերմաստիճանային սանդղակներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "specSha256": "ea21e7c6741d9b9f63b7f98023bffd54cd165f99c3c21df4913b2c88919f6f34",
+      "profileSha256": "368ca9579879166c9a95b13cc6800ac2348bb9c01a8ff3d6afbad3c355e25f80",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C17",
+      "batch": 20,
+      "code": "PHY7-U02-S08-M07",
+      "skill": "S08",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Distinguish bulk response from the state governing thermal motion",
+      "nearest": [
+        "PHY7-U02-S08-I11",
+        "PHY7-U02-S08-I12",
+        "PHY7-U02-S02-M02"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, տպագիր էջեր 33–35՝ ջերմաստիճան, ջերմային հպում, բնորոշ արագություն; §12, էջեր 37–38՝ ջերմաստիճանային սանդղակներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "specSha256": "7d45e437f304314c5b074d5deb35607ebcdcfec61ef41780ae33d77723b756be",
+      "profileSha256": "72a6ceeab25bf93b27211b7ddcb53bc175692d1c4afbcf407efaad8617caeb3c",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B20-C18",
+      "batch": 20,
+      "code": "PHY7-U02-S08-M08",
+      "skill": "S08",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Combine thermal-contact evidence with a material-identity inference limit",
+      "nearest": [
+        "PHY7-U02-S08-M03",
+        "PHY7-U02-S08-M04",
+        "PHY7-U02-S08-I04",
+        "PHY7-U02-S08-D01"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §11, տպագիր էջեր 33–35՝ ջերմաստիճան, ջերմային հպում, բնորոշ արագություն; §12, էջեր 37–38՝ ջերմաստիճանային սանդղակներ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "specSha256": "143d9e4a6cedc2d6a3252719db03fa254d5947605f00245d1e9937c41f14711f",
+      "profileSha256": "dc879b20f03257494ca7f4f3c2cba509619ec35f9b2dcedf5f401cbbe921dab6",
+      "newIndependentReasoningCoverage": 0
+    },
+    {
+      "id": "B19-C19",
+      "batch": 19,
+      "code": "PHY7-U02-S09-M08",
+      "skill": "S09",
+      "bank": "mastery_check",
+      "revision": 1,
+      "disposition": "protected_parallel_assessment_variant",
+      "abstractDemand": "Assess a claimed temperature ordering with bounded measurement errors",
+      "nearest": [
+        "PHY7-U02-S09-M05",
+        "PHY7-U02-S09-M07",
+        "PHY7-U01-S09-11D-D04",
+        "PHY7-U01-S09-11D-M02",
+        "PHY7-U01-S09-11D-M06"
+      ],
+      "source": "Ֆիզիկա 7, Է. Մելիքյան, Գ. Մաիլյան, 2023։ §12, տպագիր էջեր 36–39՝ ջերմաչափ և սանդղակ; §4, տպագիր էջեր 17–19՝ բաժանման արժեք և չափման սխալ։",
+      "programmeOutcomeLocator": "7-րդ դասարան / Թեմա 2 / Վերջնարդյունքներ / Լրացուցիչ 2(2)",
+      "specSha256": "d56d2da471d23a443cbcb4dee3fc35de21d94b48fa73605b4941a9008e9bd326",
+      "profileSha256": "01546c38164bd46c3bd5153f7c9e612e46a49c6a42347272cacbd0443242a627",
+      "newIndependentReasoningCoverage": 0
+    }
+  ],
+  "durablePrivateEvidence": [
+    {
+      "batch": 19,
+      "file_id": "file_00000000d83c81fba40666b7fd479cf4",
+      "library_file_id": "libfile_1e0059eb26488191a82091635ed84eea",
+      "file_name": "HaiEdu-Assessment-Batch-19-Comparison.zip",
+      "sha256": "5a2b942aab90074b8300e5108ecb385db983857e20b9fa645ef03a4e967eb47d",
+      "bytes": 4383747,
+      "entries": 110,
+      "archiveAndAllMemberHashesMatch": true,
+      "crcPass": true,
+      "local_metadata_applied": true
+    },
+    {
+      "batch": 20,
+      "file_id": "file_000000000b1481f5b301ec6bc4a68330",
+      "library_file_id": "libfile_2fac500f294081919747f1734a35c47c",
+      "file_name": "HaiEdu-Assessment-Batch-20-Comparison.zip",
+      "sha256": "aa0c11d240d31694f8adc32951318619860d2725b9279c93adb127a6e19e9e47",
+      "bytes": 4370996,
+      "entries": 110,
+      "archiveAndAllMemberHashesMatch": true,
+      "crcPass": true,
+      "local_metadata_applied": true
+    }
+  ],
+  "rehearsal": {
+    "batches": [
+      19,
+      20
+    ],
+    "passedItems": 37,
+    "errors": 0,
+    "warnings": 0,
+    "exactSpecsSnapshotsKeysMappings": true,
+    "all38TablesUnchangedAfterRollback": true,
+    "evaluator": {
+      "function": "manage-content-quality",
+      "version": 11,
+      "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+      "exactDeployedRepositoryByteParity": true,
+      "method": "deployed evaluator replay; not authenticated live Edge invocation"
+    }
+  },
+  "protection": "No protected prompt, data, answer or worked solution is included in this public record. Full candidate profiles and 666 pair judgments are restricted in the verified archives. No guides, approvals or allocations created."
+}

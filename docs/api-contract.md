@@ -4,6 +4,10 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. It does not authorize a new release or claim completed live multi-context acceptance.
 
+## Chapter II content boundary — 2026-10-13
+
+The final two authoring batches bring Chapter II to 192 non-archived question records: 155 approved and 37 drafts. Content counts do not enable learner delivery. The release is still `draft`, has no activation timestamp and has zero pool/form memberships. No API/runtime code or delivery/scoring contract changed in this content-only update. The exact deployed `manage-content-quality` v11 evaluator was replayed against saved catalogues and 37 technical QA records were persisted; that is not a new authenticated live Edge/browser acceptance claim. [Production evidence](evidence/sprint-15b13-assessment-batches-19-20-production-20261013.json).
+
 ## Authentication and workflow
 
 Use `POST /functions/v1/<function-name>`, `Content-Type: application/json` and the signed-in learner's `Authorization: Bearer <access_token>` through the configured Supabase client. The server verifies the user and live account/session. Never put service-role credentials or answer keys in a client. `OPTIONS` is the CORS preflight; unsupported methods return 405.

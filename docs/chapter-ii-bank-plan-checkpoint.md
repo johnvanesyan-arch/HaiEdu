@@ -1,12 +1,12 @@
 # Chapter II bank-plan decision packet
 
-**Updated:** 2026-10-12 (Asia/Yerevan) · **Status:** first four bounded manifests content-approved; fifth human review resolved with three approvals and one owner archive; S05-M05 v2 author comparison refresh complete; SME/exposure and release gates remain open. Reserve target and assessment contract unchanged.
+**Updated:** 2026-10-13 (Asia/Yerevan) · **Status:** final 37-slot two-batch authoring/staging complete; 37 questions and 47 definitions await human review. Prior review history: first four bounded manifests content-approved; fifth human review resolved with three approvals and one owner archive; S05-M05 v2 author comparison refresh complete; SME/exposure and release gates remain open. Reserve target and assessment contract unchanged.
 
 **First owner decision:** John selected four candidates and then directed “ok, proceed”. The authorized scope is two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prior eight-candidate proposal and subsequent sixteen-candidate throughput suggestion are superseded. The [bounded prospective policy addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) is adopted for this pilot only.
 
 The [coverage audit](chapter-ii-coverage-feasibility-audit.md) established a baseline of 136 approved questions, 188 active definitions and 57 published guides. The bounded pilot has now assessed exactly four leads and staged all four, with one answer refined before staging. [Batch 14 evidence](evidence/sprint-15b13-assessment-batch-14-20261012.json) records clean rollback, committed readback and 4/4 technical QA. These are protected parallel variants, not four new independent reasoning paths. At 10:31 UTC, all four staged v1 questions have current human approvals and all five definitions match their approved active snapshots. At that closure all 140 questions were content-approved, with 193 active definitions and 57 published guides. [Review closure evidence](evidence/sprint-15b13-batch-14-review-complete-20261012.json). A second four-candidate manifest is now authorized below; no general wider use is inferred.
 
-## Current distribution — 2026-10-12 18:35:04 UTC
+## Approved baseline before the final two batches — 2026-10-12 18:35:04 UTC
 
 All **155 non-archived questions are content-approved**; S07-M05 is retained separately as one archived historical record. All 216 definitions are active and all 57 guides published; no non-archived content is pending. [Review outcome evidence](evidence/sprint-15b13-batch-18-review-outcome-20261012.json). The table counts approved non-archived capacity, not protected eligibility, disjoint retries or release readiness.
 
@@ -45,7 +45,7 @@ This authorization covers the pilot and its policy documentation. It does not de
 
 These criteria are a review protocol, not an implemented semantic detector. No schema/runtime/model change is included in this proposal. If recording or enforcing an approved disposition needs a governed data change, scope and verify it explicitly before the authoring handoff.
 
-## Reserve choices and their cost after Batch 18 review
+## Historical reserve choices after Batch 18 review — full plan retained
 
 All 155 approved non-archived questions are retained in these capacity calculations. One additional archived record remains in history and contributes no capacity. Earlier audit arithmetic remains historical. The 192 planning target is unchanged; reserve-reduction alternatives are not adopted.
 
@@ -116,14 +116,32 @@ Full source/current/history/guide and all six within-batch comparisons were froz
 
 Exactly four candidates were assessed and staged provisionally. Human review is now resolved: **S05-M05 v2, S06-M05 v1 and S08-M05 v1 are approved; S07-M05 v1 is archived**. All six definitions are approved and active. [Review outcome evidence](evidence/sprint-15b13-batch-18-review-outcome-20261012.json). The owner archive supersedes the earlier provisional qualification of B18-C03; structural QA did not establish its clarity or instructional value. No additional lead, restoration or replacement was created.
 
-The current bank has 155 approved non-archived questions plus one archived record. The capacity gap to 192 is 37: 14 Diagnostic and 23 Mastery. S07 retains four approved Mastery questions. Human dispositions for this batch are complete; SME/exposure, allocation and release gates remain. Further authoring scope needs the owner's next direction.
+At Batch 18 review closure, the bank had 155 approved non-archived questions plus one archived record, leaving 37 slots: 14 Diagnostic and 23 Mastery. S07 retained four approved Mastery questions. The subsequent owner direction and completed authoring scope are recorded in the final two manifests below; SME/exposure, allocation and release gates remain.
+
+## Final two authorized manifests — Batches 19 and 20
+
+**John’s explicit direction:** “You know what, let's do as planned. Create all the missing questions in two batches”, 2026-10-12 20:04:31 UTC. Retain the 192-question target and create its remaining 14 Diagnostic and 23 Mastery slots. This supersedes the earlier four-candidate cadence for these 37 slots only. The author selected a 19+18 split spanning the remaining skills. Approval of scope is not content approval or release authorization.
+
+| Skill | Batch 19 Diagnostic / Mastery | Batch 20 Diagnostic / Mastery | Added total |
+| --- | --- | --- | ---: |
+| S02 | D03 / M06,M07 | D04 / M08 | 5 |
+| S03 | D03 / M06,M07 | D04 / M08 | 5 |
+| S04 | D03 / M06,M07 | D04 / M08 | 5 |
+| S05 | D03 / M06 | D04 / M07,M08 | 5 |
+| S06 | D03 / M06 | D04 / M07,M08 | 5 |
+| S07 | D03 / M06,M07 | D04 / M08,M09 | 6 |
+| S08 | D03 / M06 | D04 / M07,M08 | 5 |
+| S09 | — / M08 | — / — | 1 |
+| Total | 7 / 12 = 19 | 7 / 11 = 18 | 37 |
+
+Exactly 37 candidate slots were drafted and provisionally qualified, with two substantive pre-staging reworks, 47 new draft definitions and no learner guides. All 666 pairs across both batches were compared. The existing S07-M05 record remains archived; new codes do not reuse it. [Batch 19](chapter-ii-assessment-batch-19.md), [Batch 20](chapter-ii-assessment-batch-20.md) and [restricted-evidence bindings](evidence/sprint-15b13-assessment-batches-19-20-comparison-20261013.json) record the boundary. Production staging and 37/37 technical QA are complete. The bank now contains 192 non-archived questions: 155 approved + 37 pending; 47 definitions are draft. Each skill has 12 Practice, 4 Diagnostic and 8 Mastery records including drafts. This fills the nominal drafting target only; the status register governs approval and release gates.
 
 ## Exact authorization boundary
 
-The approved scope is **the completed Batch 14–17 manifests plus the four Batch 18 candidate slots above, selected under John’s latest direction to proceed**, with the 192 target retained as a planning goal. Existing Option B remains 16 Diagnostic and 16 Mastery questions, two per skill, with Mastery 13/16 and at least one correct per skill; all eight skills remain in initial readiness. One Diagnostic baseline, up to three Mastery attempts and the required review lifecycle remain unchanged. No question, guide, definition, assessment pool, release, model parameter or learner access is approved by accepting the pilot proposal.
+The approved authoring scope is **the historical Batch 14–18 manifests plus the 37 explicitly authorized slots in Batches 19 and 20**, with the 192 target retained. The latest two-batch instruction is the applicable scope; earlier four-candidate limits remain historical descriptions of their own manifests. Existing Option B remains 16 Diagnostic and 16 Mastery questions, two per skill, with Mastery 13/16 and at least one correct per skill; all eight skills remain in initial readiness. One Diagnostic baseline, up to three Mastery attempts and the required review lifecycle remain unchanged. No question, guide, definition, assessment pool, release, model parameter or learner access is approved by accepting the pilot proposal.
 
 The eight overlapping Batch 13 proposals are retained in their comparison evidence, not automatically reinstated. The three source-unsupported proposals remain omitted unless completely redesigned within taught science. Question records and history are preserved; S07-M05 is archived and excluded from current capacity.
 
-The requirement for this now-recorded owner decision comes from `AGENTS.md` and [whole-bank policy steps 3, 5 and 6](assessment-evidence-blueprint-policy.md): a defensible shortfall must be reported to John, and the current classifications/protection criteria cannot be silently reinterpreted to meet a numerical target. The decision is recorded above; a broader pilot, reserve revision or assessment-contract change requires its own explicit decision.
+The requirement for this now-recorded owner decision comes from `AGENTS.md` and [whole-bank policy steps 3, 5 and 6](assessment-evidence-blueprint-policy.md): a defensible shortfall must be reported to John, and the current classifications/protection criteria cannot be silently reinterpreted to meet a numerical target. The decision is recorded above; any scope beyond the recorded final 37 slots, reserve revision or assessment-contract change requires its own explicit decision.
 
 [Authoritative status](project-status.md) · [Completed audit](chapter-ii-coverage-feasibility-audit.md) · [Observed version inventory and capacity calculations](evidence/sprint-15b13-coverage-audit-20261012.json).

@@ -252,3 +252,13 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 - [x] 12.5Z: persist session-item MCQ presentation, resolve displayed keys server-side and preserve historical evidence; final closure records assessment-integrity acceptance.
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
+
+## Chapter II final two batches — 2026-10-13
+
+- [x] Author the owner-requested 37 remaining slots in two batches of 19 and 18; retain the 192 target and existing assessment contract.
+- [x] Compare all current/applicable historical content, guides and 666 new pairs; revise overlapping candidates before staging.
+- [x] Save private evidence, commit sanitized comparison, stage 37 drafts plus 47 definitions, and verify exact readback/current-family technical QA.
+- [ ] Human content review of 37 questions and 47 definitions on the reviewer site.
+- [ ] Resolve recorded versioned editorial follow-ups, independent SME/exposure qualification, disjoint allocations and release gates.
+
+The nominal bank is 192 non-archived questions, 155 approved and 37 pending. No new guide or release activation. [Authoritative status](project-status.md) and [production verification](evidence/sprint-15b13-assessment-batches-19-20-production-20261013.json).

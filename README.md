@@ -6,7 +6,7 @@ A multi-subject supplementary learning platform aligned to Armenia's general edu
 
 Start with the [authoritative status register](docs/project-status.md) for current delivery stages, dated inventories and unresolved gates. The [roadmap](docs/sprint-roadmap.md) defines sequence, the [backlog](docs/backlog.md) tracks implementation checklists, and the [API contract](docs/api-contract.md) describes the current session workflow and legacy boundaries. Notion is a secondary summary; check its source-commit stamp before relying on its copy. Synchronization to this change follows merge and requires readback verification.
 
-Chapter II authoring is in progress; Chapter I remains pilot pending external Physics SME approval. Sprint 12.5 is complete, Sprint 13 is closed for sequencing, and the second authorized release remains the live acceptance dependency for Sprint 14 / 15B.12E. See the register for evidence and later planned stages.
+Chapter II is drafted to its 192-question target: 155 approved and 37 new drafts across the final two batches, with 47 definitions awaiting review. It remains inactive and unallocated. Chapter I remains pilot pending external Physics SME approval. Sprint 12.5 is complete, Sprint 13 is closed for sequencing, and the second authorized release remains the live acceptance dependency for Sprint 14 / 15B.12E. See the register for evidence and later planned stages.
 
 ## Chapter I implemented baseline
 

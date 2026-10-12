@@ -1,0 +1,667 @@
+{
+  "observedAt": "2026-10-12T20:53:17.648408+00:00",
+  "sprints": [
+    "15B.13AP",
+    "15B.13AQ"
+  ],
+  "batches": [
+    {
+      "batch": 19,
+      "questions": 19,
+      "diagnostic": 7,
+      "mastery": 12,
+      "definitions": 24
+    },
+    {
+      "batch": 20,
+      "questions": 18,
+      "diagnostic": 7,
+      "mastery": 11,
+      "definitions": 23
+    }
+  ],
+  "prestageComparisonCommit": "cbb8a3bccc560f63281bee3e6ba2c2925d2bd61d",
+  "durablePrestageEvidence": [
+    {
+      "batch": 19,
+      "file_id": "file_00000000d83c81fba40666b7fd479cf4",
+      "library_file_id": "libfile_1e0059eb26488191a82091635ed84eea",
+      "file_name": "HaiEdu-Assessment-Batch-19-Comparison.zip",
+      "sha256": "5a2b942aab90074b8300e5108ecb385db983857e20b9fa645ef03a4e967eb47d",
+      "bytes": 4383747,
+      "entries": 110,
+      "archiveAndAllMemberHashesMatch": true,
+      "crcPass": true,
+      "local_metadata_applied": true
+    },
+    {
+      "batch": 20,
+      "file_id": "file_000000000b1481f5b301ec6bc4a68330",
+      "library_file_id": "libfile_2fac500f294081919747f1734a35c47c",
+      "file_name": "HaiEdu-Assessment-Batch-20-Comparison.zip",
+      "sha256": "aa0c11d240d31694f8adc32951318619860d2725b9279c93adb127a6e19e9e47",
+      "bytes": 4370996,
+      "entries": 110,
+      "archiveAndAllMemberHashesMatch": true,
+      "crcPass": true,
+      "local_metadata_applied": true
+    }
+  ],
+  "exactPostcommitReadback": {
+    "items": 37,
+    "options": 148,
+    "keys": 37,
+    "immutableVersions": 37,
+    "distractorMappings": 111,
+    "newDefinitions": 47,
+    "matched": true
+  },
+  "technicalQa": {
+    "passed": 37,
+    "errors": 0,
+    "warnings": 0,
+    "persistedCurrentVersionAndFamilyDetailsMatched": true,
+    "actor": "automated system, run_by null",
+    "source": {
+      "function": "manage-content-quality",
+      "version": 11,
+      "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+      "exactDeployedRepositoryByteParity": true,
+      "method": "deployed evaluator replay; not authenticated live Edge invocation"
+    }
+  },
+  "guards": {
+    "tables": 38,
+    "priorRowsPreservedByEachTransaction": true,
+    "exactAdditiveDeltas": {
+      "item_qa_runs": 37,
+      "items": 37,
+      "item_options": 148,
+      "item_answer_keys": 37,
+      "item_families": 37,
+      "item_templates": 37,
+      "item_versions": 37,
+      "item_curriculum_scopes": 37,
+      "misconceptions": 47,
+      "item_misconception_mappings": 111,
+      "item_family_curriculum_reconciliations": 37,
+      "curriculum_release_item_families": 37,
+      "item_template_remediation_guides": 0,
+      "remediation_guide_versions": 0,
+      "remediation_guide_authoring_versions": 0
+    },
+    "unchangedOtherTableFingerprints": true,
+    "finalObservedAt": "2026-10-12T20:52:50.850034+00:00"
+  },
+  "inventory": {
+    "guides": [
+      {
+        "count": 57,
+        "status": "published"
+      }
+    ],
+    "bySkill": [
+      {
+        "pending": 2,
+        "purpose": "diagnostic",
+        "approved": 2,
+        "skill_code": "PHY7-U02-S02",
+        "nonarchived": 4
+      },
+      {
+        "pending": 3,
+        "purpose": "mastery_check",
+        "approved": 5,
+        "skill_code": "PHY7-U02-S02",
+        "nonarchived": 8
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 12,
+        "skill_code": "PHY7-U02-S02",
+        "nonarchived": 12
+      },
+      {
+        "pending": 2,
+        "purpose": "diagnostic",
+        "approved": 2,
+        "skill_code": "PHY7-U02-S03",
+        "nonarchived": 4
+      },
+      {
+        "pending": 3,
+        "purpose": "mastery_check",
+        "approved": 5,
+        "skill_code": "PHY7-U02-S03",
+        "nonarchived": 8
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 12,
+        "skill_code": "PHY7-U02-S03",
+        "nonarchived": 12
+      },
+      {
+        "pending": 2,
+        "purpose": "diagnostic",
+        "approved": 2,
+        "skill_code": "PHY7-U02-S04",
+        "nonarchived": 4
+      },
+      {
+        "pending": 3,
+        "purpose": "mastery_check",
+        "approved": 5,
+        "skill_code": "PHY7-U02-S04",
+        "nonarchived": 8
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 12,
+        "skill_code": "PHY7-U02-S04",
+        "nonarchived": 12
+      },
+      {
+        "pending": 2,
+        "purpose": "diagnostic",
+        "approved": 2,
+        "skill_code": "PHY7-U02-S05",
+        "nonarchived": 4
+      },
+      {
+        "pending": 3,
+        "purpose": "mastery_check",
+        "approved": 5,
+        "skill_code": "PHY7-U02-S05",
+        "nonarchived": 8
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 12,
+        "skill_code": "PHY7-U02-S05",
+        "nonarchived": 12
+      },
+      {
+        "pending": 2,
+        "purpose": "diagnostic",
+        "approved": 2,
+        "skill_code": "PHY7-U02-S06",
+        "nonarchived": 4
+      },
+      {
+        "pending": 3,
+        "purpose": "mastery_check",
+        "approved": 5,
+        "skill_code": "PHY7-U02-S06",
+        "nonarchived": 8
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 12,
+        "skill_code": "PHY7-U02-S06",
+        "nonarchived": 12
+      },
+      {
+        "pending": 2,
+        "purpose": "diagnostic",
+        "approved": 2,
+        "skill_code": "PHY7-U02-S07",
+        "nonarchived": 4
+      },
+      {
+        "pending": 4,
+        "purpose": "mastery_check",
+        "approved": 4,
+        "skill_code": "PHY7-U02-S07",
+        "nonarchived": 8
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 12,
+        "skill_code": "PHY7-U02-S07",
+        "nonarchived": 12
+      },
+      {
+        "pending": 2,
+        "purpose": "diagnostic",
+        "approved": 2,
+        "skill_code": "PHY7-U02-S08",
+        "nonarchived": 4
+      },
+      {
+        "pending": 3,
+        "purpose": "mastery_check",
+        "approved": 5,
+        "skill_code": "PHY7-U02-S08",
+        "nonarchived": 8
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 12,
+        "skill_code": "PHY7-U02-S08",
+        "nonarchived": 12
+      },
+      {
+        "pending": 0,
+        "purpose": "diagnostic",
+        "approved": 4,
+        "skill_code": "PHY7-U02-S09",
+        "nonarchived": 4
+      },
+      {
+        "pending": 1,
+        "purpose": "mastery_check",
+        "approved": 7,
+        "skill_code": "PHY7-U02-S09",
+        "nonarchived": 8
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 12,
+        "skill_code": "PHY7-U02-S09",
+        "nonarchived": 12
+      }
+    ],
+    "release": {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "notes": "Վերանայման թեկնածու է, ոչ թե սովորողին հասանելի թողարկում։ Գլուխ II-ի բովանդակային, գնահատման, մասնագիտական և փորձնական բոլոր դարպասները պետք է փակվեն մինչև ակտիվացումը։",
+      "status": "draft",
+      "created_at": "2026-09-30T21:40:31.093879+00:00",
+      "updated_at": "2026-09-30T21:40:31.093879+00:00",
+      "release_key": "physics7_u01_u02_2026_08_14_candidate_r2",
+      "activated_at": null,
+      "activated_by": null,
+      "effective_to": null,
+      "version_label": "Ֆիզիկա 7 — Գլուխներ I–II, 2026-08-14 թեկնածու թողարկում 2",
+      "effective_from": "2026-08-14",
+      "release_number": 2,
+      "source_snapshot": {
+        "retrieved_on": "2026-09-30",
+        "framework_url": "https://www.arlis.am/hy/acts/225446",
+        "programme_url": "https://www.arlis.am/hy/acts/229331",
+        "textbook_role": "supporting_reference",
+        "textbook_title": "Ֆիզիկա 7",
+        "textbook_sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+        "textbook_chapter": "Գլուխ II — Նյութի կառուցվածքը",
+        "subject_standard_url": "https://www.arlis.am/hy/acts/229259",
+        "textbook_edition_year": 2023,
+        "textbook_printed_pages": "23–41",
+        "programme_attachment_url": "https://www.arlis.am/acts/files/361998/966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+        "programme_attachment_sha256": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478"
+      },
+      "reconciliation_id": "6215ea83-999a-47ac-91a8-014366881edc",
+      "provenance_quality": "exact",
+      "subject_program_id": "258955e9-30e7-43ef-95c5-324a53143270",
+      "content_fingerprint": "ca3c338020ecce3eee78a2139e512b66",
+      "predecessor_release_id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb"
+    },
+    "byPurpose": [
+      {
+        "pending": 14,
+        "purpose": "diagnostic",
+        "approved": 18,
+        "archived": 0,
+        "retained": 32,
+        "nonarchived": 32
+      },
+      {
+        "pending": 23,
+        "purpose": "mastery_check",
+        "approved": 41,
+        "archived": 1,
+        "retained": 65,
+        "nonarchived": 64
+      },
+      {
+        "pending": 0,
+        "purpose": "practice",
+        "approved": 96,
+        "archived": 0,
+        "retained": 96,
+        "nonarchived": 96
+      }
+    ],
+    "observedAt": "2026-10-12T20:53:17.648408+00:00",
+    "definitions": [
+      {
+        "count": 216,
+        "status": "active"
+      },
+      {
+        "count": 47,
+        "status": "draft"
+      }
+    ],
+    "pendingItems": [
+      {
+        "id": "d9fe4508-e31c-4dfd-8583-ce231e91a8f9",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S02-D03",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "d91052ae-3afe-47e7-b35d-07988119af74",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S02-D04",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "f4353dc0-f721-4719-a2f6-e0d661aec0f0",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S02-M06",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "e98e1dee-1632-4355-a83b-57165196dd68",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S02-M07",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "07ff2447-ad6c-49d0-85a8-69736cb4dc57",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S02-M08",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "9a7e7dc5-718a-4b10-86be-4d6e3e8d16f0",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S03-D03",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "8d9c72c2-e237-4717-bdac-9bd3dcbad4e7",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S03-D04",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "6f0453af-3cc5-4f7d-be66-ec4a484b8a1a",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S03-M06",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "fb761c2b-7d74-4d46-82e2-f1ff548438c6",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S03-M07",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "e68b7d69-365d-40df-b8a8-d0320360f7d7",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S03-M08",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "1465dfc7-b6a5-429d-8730-cdbc810be2a2",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S04-D03",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "9327fa45-1e55-42ee-9cbb-118a232c6fa0",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S04-D04",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "6205907b-80c0-42d7-bb90-e4ff84051368",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S04-M06",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "a21a576a-e888-4d38-9564-83480670f09a",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S04-M07",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "b303f67a-6712-4106-86b1-fbf28c92209a",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S04-M08",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "4a94c470-9b01-493b-bec0-61ee6dfaa2e1",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S05-D03",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "c1a9f50b-99f6-4f00-8359-7646d15eb807",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S05-D04",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "a3474d77-e527-4176-9367-76f1954a3b38",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S05-M06",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "bb6a4dba-9514-42af-99bf-af3563f31960",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S05-M07",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "a675fa51-1aa0-4461-ad48-36abfd4b2e79",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S05-M08",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "ae1ab070-e7b6-41c0-bb6c-5d1b1cce9719",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S06-D03",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "2e1b9932-0321-49ec-a85a-2e2502cfae98",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S06-D04",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "ef7837fd-3dff-4b4f-a865-dcebdb36342b",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S06-M06",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "09e35e17-571a-426f-ac1e-6f76b9314196",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S06-M07",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "6717c83e-f89f-47e5-93ea-7d8f7666646b",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S06-M08",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "f685e2d9-280e-4c97-8568-f638284d41d2",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S07-D03",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "29cffd0a-6b3f-48d4-bd92-d9b0423710cb",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S07-D04",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "66c34d3b-2a69-409d-8ff0-0ea05b8d2f41",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S07-M06",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "e0d5ba19-89cb-4f20-a67e-3b6b3d4704e1",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S07-M07",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "890c6742-2f83-4a31-acbc-781ec36a248f",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S07-M08",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "0522aeef-4b59-4faf-96bf-9dae57e6023e",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S07-M09",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "4b99f68c-80a5-4743-804d-8e0a56393329",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S08-D03",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "c1e22397-3d8a-4ebb-82c4-126cbaadf0b2",
+        "bank": "diagnostic",
+        "code": "PHY7-U02-S08-D04",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "34554f4a-5e16-42ab-afe3-406db2ff7494",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S08-M06",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "a240f00f-00e2-4ecb-973b-c080ad76d5e5",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S08-M07",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "0dcd059a-061c-4372-a480-252d81fb492a",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S08-M08",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "8f0d8e75-e08c-43a1-a502-21023c8fe0fa",
+        "bank": "mastery_check",
+        "code": "PHY7-U02-S09-M08",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      }
+    ],
+    "archivedItems": [
+      {
+        "id": "bfa52a47-e608-48c1-9fec-e37bdf112bbd",
+        "code": "PHY7-U02-S07-M05",
+        "status": "archived",
+        "version": 1
+      }
+    ],
+    "formMemberships": 0,
+    "poolMemberships": 0
+  },
+  "humanContentApproval": "pending for all37 questions and47 new definitions",
+  "assessmentEligibility": "SME/exposure, disjoint allocation, empirical qualification and release remain open",
+  "newIndependentReasoningCoverage": 0,
+  "sourceAndLanguage": "Author checked textbook/programme support and natural Armenian separately; no independent SME sign-off claimed",
+  "runtimeChange": false,
+  "newGuides": 0,
+  "productionEvidence": {
+    "sha256": "6f6febb654339fb12cd42252e5008f42e1ff7010882411874dc5c394a01d199b",
+    "entries": 35,
+    "bytes": 439890,
+    "file_id": "file_00000000aac481f592baa6a89a164efd",
+    "library_file_id": "libfile_94ee999fe26c8191a593af9de4217f58",
+    "file_name": "HaiEdu-Assessment-Batches-19-20-Production-Verification.zip",
+    "local_metadata_applied": true
+  }
+}
