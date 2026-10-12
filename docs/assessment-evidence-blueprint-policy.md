@@ -44,6 +44,8 @@ The criteria are subject-neutral. An owner-approved manifest supplies the curric
 | Chapter II Physics 7, `15B.13AG` / Batch 15, `B15-C01`–`B15-C04` | One S05 Diagnostic, one S08 Diagnostic, two S07 Mastery | 2026-10-12 14:41:04 Asia/Yerevan: “Proceed with these four”; all four staged and technically verified at 15:07; all four current v1 questions content-approved and all six definitions active with matching human-approved snapshots, verified at 15:49. SME/exposure review remains required. |
 | Chapter II Physics 7, `15B.13AI` / Batch 16, `B16-C01`–`B16-C04` | Two S02 Mastery, one S05 Mastery, one S06 Mastery | 2026-10-12 16:18:37 Asia/Yerevan: “proceed”; all four staged and technically verified at 16:49; all four current v1 questions content-approved and all six definitions active with matching human-approved snapshots, verified at 18:33. SME/exposure review remains required. |
 
+| Chapter II Physics 7, `15B.13AK` / Batch 17, `B17-C01`–`B17-C04` | One S05 Mastery, one S06 Mastery, one S02 Mastery, one S03 Mastery | 2026-10-12 18:43:12 Asia/Yerevan: “I approve”; authoring/staging only, human content/definition and SME/exposure review required. |
+
 Each candidate is bound to its restricted comparison record. Revisions must refresh their comparisons; an unqualified slot does not authorize an extra replacement lead outside its four-candidate manifest. None of these manifests authorizes unlimited future use or automatic reinstatement of prior omissions.
 
 The [owner decision record](chapter-ii-bank-plan-checkpoint.md) retains the 192 planning target, Option B scoring/readiness and the existing lifecycle. No other reserve option is adopted. Existing approvals/history are preserved, and no retrospective automatic rejection or release waiver is created.

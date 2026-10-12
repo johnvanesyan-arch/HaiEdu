@@ -1,9 +1,9 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 3.47
+**Roadmap version:** 3.48
 **Updated:** 2026-10-12 (Asia/Yerevan)
 **Latest platform repair:** [Reviewer approval after passing QA](reviewer-approval-repair-20261011.md): shared dashboard reads are bounded, complete and error-checked; current implementation/deployment status is recorded in the authoritative register.
-**Latest content checkpoint:** [Batch 16 review is complete](chapter-ii-assessment-batch-16.md): all **148 current Chapter II questions are content-approved**, all **205 definitions active**, and all **57 guides published**, verified read-only at 2026-10-12 14:33 UTC. Nothing awaits content review. All three authorized four-candidate manifests are complete for authoring and human content review; [a fourth four-candidate manifest is proposed](chapter-ii-bank-plan-checkpoint.md#proposed-next-manifest--owner-decision-pending) for the owner’s decision. No further policy scope is inferred. The unchanged 192 target leaves 44 unauthored. The [status register](project-status.md) governs current counts and gates.
+**Latest content checkpoint:** all 148 current Chapter II questions are content-approved, 205 definitions active and 57 guides published at the verified baseline. John authorized [Batch 17’s four-candidate manifest](chapter-ii-bank-plan-checkpoint.md#fourth-authorized-manifest--batch-17) at 2026-10-12 18:43:12 Asia/Yerevan: one Mastery candidate each for S05/S06/S02/S03. Drafting/comparison is in progress; no new drafts are staged at this checkpoint. The bounded protocol and unchanged 192 target apply. The [status register](project-status.md) governs current counts and review/release gates.
 **Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E await a second authorized release for live switching. Chapter II authoring continues, inactive and unallocated; 16–26 remain planned in the sequence below.
 
 This file defines the canonical high-level sprint scope and sequence. [Project status](project-status.md) is the sole current delivery/gate register; [backlog](backlog.md) is the detailed implementation checklist. The overview mirrors that register. Dated execution records, content counts and pending-review statements below are historical checkpoints; later evidenced dispositions supersede them without rewriting their original observations.
@@ -1913,4 +1913,10 @@ All three authorized bounded manifests are complete for authoring and human cont
 
 **Concrete next recommendation, awaiting owner decision:** four Mastery candidate slots—one each for S05, S06, S02 and S03—under the same bounded acceptance criteria. This first extends the two smallest reserves; chapter order selects S02/S03 among the four-item reserves for the other two slots. Candidate qualification remains subject to fresh source/current/history/guide and within-batch comparison. No fourth manifest or broader exception is adopted by this closure; no new questions were authored or staged. Existing Option B, readiness, scoring, lifecycle and release gates remain.
 
-[Review closure evidence](evidence/sprint-15b13-batch-16-review-complete-20261012.json) · [Next proposed manifest](chapter-ii-bank-plan-checkpoint.md#proposed-next-manifest--owner-decision-pending) · [Authoritative status](project-status.md).
+[Review closure evidence](evidence/sprint-15b13-batch-16-review-complete-20261012.json) · [Next proposed manifest](chapter-ii-bank-plan-checkpoint.md#fourth-authorized-manifest--batch-17) · [Authoritative status](project-status.md).
+
+### Sprint 15B.13AK — Fourth four-candidate parallel-assessment batch authorized
+
+**Owner authorization: 2026-10-12 18:43:12 Asia/Yerevan.** John directed “I approve” with B17-C01 S05 Mastery, B17-C02 S06 Mastery, B17-C03 S02 Mastery and B17-C04 S03 Mastery. This is the fourth explicit manifest under `haiedu-protected-parallel-pilot-v1`. The first three manifests and their human content reviews are complete. Refresh full source/current/history/guide and all six within-batch comparisons, preserve restricted evidence, and complete rollback, exact technical QA and ordinary human review gates. Stage only qualifying candidates; no numerical quota, broader future exception, content/SME approval or release is created.
+
+Drafting/comparison is in progress. [Approved scope](chapter-ii-bank-plan-checkpoint.md#fourth-authorized-manifest--batch-17) · [Bounded policy](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) · [Current status](project-status.md).
