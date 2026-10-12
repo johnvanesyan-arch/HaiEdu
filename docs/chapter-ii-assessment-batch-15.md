@@ -1,6 +1,6 @@
 # Chapter II assessment batch 15
 
-**Date:** 2026-10-12 · **Slice:** 15B.13AG · **Pre-staging checkpoint:** four qualifying drafts; no committed content writes yet.
+**Date:** 2026-10-12 · **Slice:** 15B.13AG · **State:** four question drafts and six definition drafts staged; human review pending.
 
 John authorized exactly one S05 Diagnostic, one S08 Diagnostic and two S07 Mastery candidates at **14:41:04 Asia/Yerevan**, under `haiedu-protected-parallel-pilot-v1`. All four qualified provisionally; one was reworked within the original candidate lead to require stronger interpretation of complete records. Six new misconception definitions accompany them. No independent new reasoning coverage is claimed.
 
@@ -10,12 +10,23 @@ Source: *Ֆիզիկա 7*, Է. Մելիքյան and Գ. Մաիլյան, 2023, §1
 
 The immutable private archive is `libfile_9c4183b99e448191aa8d818908d1cd05`, version 1, SHA256 `058d0a967e45ed565ad4ecb576daefb3aa9bb120df40187840e644b46348cd04`. It was saved before the reachable comparison commit and committed staging. It contains protected stimuli, keys and full review evidence and has no public protected-content access grant. It is an audit artifact, not an additional ZIP review assignment.
 
-## Rehearsal and intended handoff
+## Verification and site review
 
 A guarded transaction rehearsed all additions and rolled them back. Every original row was preserved and all 38 complete-table counts/fingerprints matched afterward. Replaying the byte-exact deployed `manage-content-quality` v11 evaluator passed **4/4**, zero errors and warnings. Its source SHA256 is `b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154`. This was a read-only catalogue adapter replay, not authenticated live Edge or browser acceptance.
 
-The intended handoff is four questions (two Diagnostic, two Mastery), six definition drafts and no guides. Expected counts after staging are 144 questions: 140 approved and four pending; 96 Practice, 18 Diagnostic, 30 Mastery. Definitions would be 193 active plus six drafts; guides remain 57 published. The numerical gap to 192 is 48 (14 Diagnostic, 34 Mastery).
+Guarded staging committed at **11:06:14 UTC**, after fresh unchanged guards and reachable comparison commit `78594df085a018026da07b83439a0cadf6bd0eed`. Separate production readback matched exact specifications, mappings and immutable v1 snapshots. Committed evaluator replay passed all four again, zero errors/warnings; four actor-null QA records include current family fingerprints. The transaction preserved all original rows; final guards show 12 additive and 26 unchanged tables. [Committed evidence](evidence/sprint-15b13-assessment-batch-15-20261012.json).
 
-The two Diagnostic additions would supply nominal two-per-skill capacity for a single form if approved. Counts do not certify protection, disjoint reserves, empirical equivalence or release readiness. Human question/definition approval, SME/exposure review, allocation and all release gates remain required. No learner solution guide, pool/form membership or release activation is created.
+Review **four questions (two Diagnostic, two Mastery)** and **six misconception definitions** on [Questions](https://www.haiedu.am/content-review.html) and [Misconceptions](https://www.haiedu.am/content-misconceptions.html), filtered to S05/S07/S08 and pending/draft status. No new guides require review.
 
-No schema, runtime, API, UI, authentication, scoring or readiness behavior changes. The [status register](project-status.md) remains authoritative; committed readback, repository CI/merge and a verified Notion source stamp will complete the handoff.
+| Question | Bank | Review |
+| --- | --- | --- |
+| PHY7-U02-S05-D02 | Diagnostic | [Open](https://www.haiedu.am/content-item.html?id=06ce31da-00e3-4114-87fa-0479bb414f7a&from=review) |
+| PHY7-U02-S08-D02 | Diagnostic | [Open](https://www.haiedu.am/content-item.html?id=91582cd9-6b25-4dac-bc55-51975f85ae43&from=review) |
+| PHY7-U02-S07-M03 | Mastery | [Open](https://www.haiedu.am/content-item.html?id=e99654f5-cd57-4841-a0ad-c79c9f930a19&from=review) |
+| PHY7-U02-S07-M04 | Mastery | [Open](https://www.haiedu.am/content-item.html?id=75ec54f8-f6a8-4227-9d4c-5da2fe9adb35&from=review) |
+
+At **11:07:12 UTC**, Chapter II has **144 questions: 140 approved and four pending**, comprising 96 Practice, 18 Diagnostic and 30 Mastery. Definitions are 193 active plus six drafts; guides remain 57 published. The target gap is 48: 14 Diagnostic and 34 Mastery.
+
+If approved, the additions supply nominal two-per-skill capacity for one Diagnostic and one Mastery form. Counts do not certify protection, disjoint reserves, empirical equivalence or release readiness. Human question/definition review, SME/exposure review, allocation and release gates remain. No learner solution guide, pool/form membership or release activation was created. Further use of the bounded disposition needs the owner's next decision.
+
+No schema, runtime, API, UI, authentication, scoring or readiness behavior changes. The [status register](project-status.md) remains authoritative; committed readback is complete; repository CI/merge and a verified Notion source stamp complete the documentation handoff. README, backlog and API summaries already defer current counts/gates to that register; no behavior update is needed for this content-only change.
