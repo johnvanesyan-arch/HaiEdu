@@ -1,6 +1,6 @@
 # Chapter II bank-plan decision packet
 
-**Updated:** 2026-10-12 (Asia/Yerevan) · **Status:** first four bounded manifests content-approved; fifth review resolved with three approvals and one owner archive. Reserve target and assessment contract unchanged.
+**Updated:** 2026-10-12 (Asia/Yerevan) · **Status:** first four bounded manifests content-approved; fifth human review resolved with three approvals and one owner archive; S05-M05 v2 comparison/protection gate remains open. Reserve target and assessment contract unchanged.
 
 **First owner decision:** John selected four candidates and then directed “ok, proceed”. The authorized scope is two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prior eight-candidate proposal and subsequent sixteen-candidate throughput suggestion are superseded. The [bounded prospective policy addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) is adopted for this pilot only.
 
@@ -23,6 +23,8 @@ All **155 non-archived questions are content-approved**; S07-M05 is retained sep
 | Total | 96 | 18 | 41 | 1 |
 
 The target remains 96 Practice + 32 Diagnostic + 64 Mastery = 192. The capacity shortfall is 14 Diagnostic + 23 Mastery = 37. There are 156 retained question records, but the archived record contributes no capacity. One-form numerical capacity exists in the approved inventory; full protected reserves remain unestablished.
+
+**Open version-comparison gate:** S05-M05 was edited to v2 before human approval. Read-only snapshot comparison finds the prompt and four options rephrased, with the numeric observations, keyed answer, solution steps and distractor inferences preserved; current content matches immutable v2. The evidence records both content SHA-256 fingerprints. The committed specification/comparison still binds v1, so full applicable bank/history/guide-exposure, related-mapping, source and within-batch comparison must be refreshed for v2 before protected qualification or allocation. Human approval remains valid as a recorded content decision. The 155-question count and 37-question gap describe nominal inventory, not certified protected capacity.
 
 ## Approved bounded decision
 

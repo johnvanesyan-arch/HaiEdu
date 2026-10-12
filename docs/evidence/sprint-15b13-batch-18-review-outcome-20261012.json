@@ -440,7 +440,8 @@
     "diagnosticGap": 14,
     "masteryGap": 23,
     "activeDefinitions": 216,
-    "publishedGuides": 57
+    "publishedGuides": 57,
+    "basis": "Nominal approved non-archived inventory, not established qualified protected capacity. The 37-question arithmetic gap does not close S05-M05 v2 comparison/protection or other release gates."
   },
   "authorAssessment": {
     "item": "PHY7-U02-S07-M05",
@@ -449,9 +450,73 @@
     "qualityLesson": "For future candidates, require a concrete observable situation, direct Armenian wording and a coherent physics judgment. Added reading/interval complexity must provide useful skill evidence; difficulty alone is not a reason to retain a question.",
     "disposition": "Respect the owner archive. Earlier provisional author qualification and technical QA do not override human rejection. No cosmetic restoration or automatic replacement."
   },
-  "gates": "Batch18 human question/definition dispositions are complete. SME/exposure, defensible reserves, disjoint allocation, governed binding and release remain open; source/protection criteria and targets are unchanged.",
+  "gates": "Batch18 human question/definition dispositions are complete. S05-M05 v2 whole-bank/history/guide-exposure/within-batch comparison and protection qualification remain explicitly open; v1 comparison is stale for the current version. SME/exposure, defensible reserves, disjoint allocation, governed binding and release remain open. Human approval is preserved and the nominal 155-question inventory is not certified protected capacity.",
   "readOnlyQuerySha256": {
     "reviews.sql": "fb0e396f3e57371c320812344f7b0510676e810ed9dd5c10e5b7ab7eafbabcf2",
-    "counts.sql": "bc43d82153dac0f711fd341b282c543e14081a30840eddbca0eac1bf70d9a2dd"
+    "counts.sql": "bc43d82153dac0f711fd341b282c543e14081a30840eddbca0eac1bf70d9a2dd",
+    "s05-version-delta.sql": "aaeef400ea44f5f615ba5382f025d0219c3afbd6b6dc67cd6d18e35e1c5c229d"
+  },
+  "reviewerEditedVersion": {
+    "item": "PHY7-U02-S05-M05",
+    "observedAt": "2026-10-12T18:48:50.394879+00:00",
+    "approvedVersion": 2,
+    "priorComparisonVersion": 1,
+    "currentContentMatchesImmutableV2Snapshot": true,
+    "canonicalFingerprintContract": {
+      "encoding": "UTF-8 JSON; sorted keys; ensure_ascii=false; separators comma/colon; options ordered by display_order then option_key",
+      "itemFields": [
+        "code",
+        "skill_id",
+        "item_type",
+        "prompt_hy",
+        "prompt_en",
+        "stimulus",
+        "source_reference",
+        "difficulty",
+        "difficulty_band",
+        "config",
+        "variant_parameters"
+      ],
+      "optionFields": [
+        "option_key",
+        "display_order",
+        "content_hy",
+        "content_en"
+      ],
+      "answerFields": [
+        "answer",
+        "tolerance",
+        "feedback_code",
+        "accepted_units",
+        "canonical_unit"
+      ],
+      "misconceptions": "code, responseKey and mappingNote; ordered by responseKey then code"
+    },
+    "v1ContentSha256": "6020a57ef67e2a06cb00759ae320d34e8f09662cc0f555789c36802da3ef7933",
+    "v2ContentSha256": "e49d4d3d0a15638868576fcdc45299ea05413efd90b8201726de353036cd596f",
+    "v1DatabaseFingerprint": "209a19b71494dabffd37d589fd6b3816",
+    "v2DatabaseFingerprint": "8a99c4301c14b733ad12f044b028ae2a",
+    "changedContentFields": [
+      "item.prompt_hy",
+      "options.A.content_hy",
+      "options.B.content_hy",
+      "options.C.content_hy",
+      "options.D.content_hy"
+    ],
+    "unchangedContentFields": [
+      "numeric observations and unit distances",
+      "correct answer and option order",
+      "stimulus",
+      "source reference",
+      "skill and item type",
+      "difficulty metadata",
+      "misconception mappings",
+      "authoring config"
+    ],
+    "limitedDeltaAssessment": "The prompt and all four options were rephrased and reformatted. The author finds the given observations, hidden-motion possibility, solution steps, keyed answer and distractor inferences unchanged. This is a limited version-delta inspection, not refreshed full-bank, history, guide-exposure or within-batch comparison.",
+    "persistedCandidateSpecSha256StillBindsV1": "1ce78ee9449d5431bccc8c9722a00136b3bead73b4101a2400daf77e9dfbdff4",
+    "comparisonProtectionGate": "OPEN: the committed candidate comparison and specification bind v1, not current v2. Refresh full applicable skill-bank, historical and exposure comparisons, related mappings, source qualification and all within-batch comparisons involving S05-M05 v2 before treating it as a qualified protected reserve or handing it off for allocation.",
+    "humanApprovalPreserved": true,
+    "productionMutations": 0
   }
 }

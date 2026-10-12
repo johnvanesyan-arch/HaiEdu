@@ -8,6 +8,8 @@ Verified **2026-10-12 18:35:04 UTC** (22:35 Asia/Yerevan): S05-M05 v2, S06-M05 v
 
 Chapter II now has 155 approved non-archived questions (96 Practice, 18 Diagnostic, 41 Mastery), one archived record, 216 active definitions and 57 published guides. Nothing remains pending in the non-archived bank. The target gap is 37: 14 Diagnostic and 23 Mastery. No restoration, replacement or production write was performed by this review verification.
 
+**Open version-comparison gate:** S05-M05 was edited to v2 before human approval. Read-only snapshot comparison finds the prompt and four options rephrased, with the numeric observations, keyed answer, solution steps and distractor inferences preserved; current content matches immutable v2. The evidence records both content SHA-256 fingerprints. The committed specification/comparison still binds v1, so full applicable bank/history/guide-exposure, related-mapping, source and within-batch comparison must be refreshed for v2 before protected qualification or allocation. Human approval remains valid as a recorded content decision. The 155-question count and 37-question gap describe nominal inventory, not certified protected capacity.
+
 The author accepts that the archived task's abstract mixing endpoint, cumbersome timing language and combined judgments obscure the intended physics assessment. Technical QA and logical consistency did not establish pedagogical quality. Human review supersedes provisional author retention; SME/exposure and release gates remain open.
 
 ## Historical staging evidence
