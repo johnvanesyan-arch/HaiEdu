@@ -1,6 +1,8 @@
 # Chapter II assessment batch 14 — four-candidate parallel pilot
 
-**Date:** 2026-10-12 (Asia/Yerevan) · **Slice:** 15B.13AE · **State:** four question drafts and five definition drafts staged; human review pending.
+**Date:** 2026-10-12 (Asia/Yerevan) · **Slice:** 15B.13AE · **Stage-time state:** four question drafts and five definition drafts staged; human review pending at that checkpoint.
+
+**Review closure — 2026-10-12 10:31 UTC:** all four current v1 questions are human content-approved and all five definition drafts are now active, matching their approved snapshots. Chapter II totals are 140 approved questions, 193 active definitions and 57 published guides, with no pending content. [Review closure evidence](evidence/sprint-15b13-batch-14-review-complete-20261012.json). The staging observations below are historical; external SME/exposure and release gates remain open. Wider use of the bounded disposition still needs the owner’s next decision.
 
 John authorized exactly four candidates: two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prospective [bounded protocol](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) was committed in `38f3d41fa150aec91e576be47867bb5a5a81caf5` before staging. It permits repeated taught claims/procedures with a substantively new stimulus requiring fresh interpretation. These four candidates add provisional bank capacity, not independent new reasoning coverage. No prior omitted proposal is automatically reinstated and no extra replacement lead was introduced.
 
