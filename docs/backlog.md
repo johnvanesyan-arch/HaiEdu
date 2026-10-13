@@ -262,7 +262,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [ ] Complete authenticated content workflow and review the newly authored guides/definitions on site.
 - [ ] Specify Chapter III readiness/pass contract and establish protected capacity; specialist/release gates remain open.
 
-[Staging](chapter-iii-batch-01-staging.md). Chapter II retries resumed at the owner’s request; the connector remains blocked. [Latest readback](evidence/chapter-ii-pilot-resume-20261013.json).
+[Staging](chapter-iii-batch-01-staging.md). Chapter II subsequently activated through the owner-authorized browser route; authenticated production acceptance remains pending. [Activation evidence](evidence/chapter-ii-pilot-activation-20261013.json).
 
 ## Chapter III preparation — 15C.1, 2026-10-13 (historical checkpoint)
 

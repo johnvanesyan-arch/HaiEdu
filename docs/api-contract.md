@@ -95,7 +95,7 @@ The opt-in path requires Read Committed transaction isolation, as used by the AP
 
 ### Disjoint active curriculum releases
 
-The merged registry change permits active releases within one programme when their unit snapshots are disjoint; that database change remains pending deployment. A unit can belong to only one active release; activation still requires the applicable pilot/production gates. Activated release identity and unit scope cannot be rewritten to move existing sessions to another release. The deployed browser code groups courses by enrollment and programme, while chapter links and API requests retain the exact enrollment/release/unit identities. This frontend change does not expose the inactive Chapter II candidate. Clients must not infer one active release per programme or substitute another release when a context is unavailable.
+The deployed registry permits active releases within one programme when their unit snapshots are disjoint. A unit can belong to only one active release; activation still requires the applicable pilot/production gates. Activated release identity and unit scope cannot be rewritten to move existing sessions to another release. The deployed browser code groups courses by enrollment and programme, while chapter links and API requests retain the exact enrollment/release/unit identities. The committed Chapter II pilot is now available to authorized enrollments. Clients must not infer one active release per programme or substitute another release when a context is unavailable.
 
 Release-governance writes require Read Committed; this is not a new learner request requirement. Cross-release prerequisite routing remains outside this change. See [release-unit governance, consumer scope and limitations](disjoint-release-unit-governance.md).
 
@@ -130,7 +130,7 @@ Legacy `submit-answer` still accepts `itemId` and `response` without session IDs
 - Deployed and migration-history hashes verified: [whole-form Mastery selection](../supabase/migrations/20261013101825_governed_mastery_form_selection.sql) and [disjoint release-unit governance](../supabase/migrations/20261013101644_disjoint_curriculum_release_units.sql).
 - [Runtime scope](sprint-15b12c-learning-runtime.md), [navigation/analytics](sprint-15b12d-navigation-analytics.md), [live acceptance boundary](sprint-15b12e-acceptance.md).
 
-The 2026-10-10 deployment comparison covers the `submit-answer` bundle, not a fresh deployment-parity certification of every endpoint mentioned. It does not cover the merged 2026-10-13 database extensions; their deployment is blocked and their live acceptance remains pending.
+The 2026-10-10 deployment comparison covers the `submit-answer` bundle, not a fresh deployment-parity certification of every endpoint mentioned. The separate 2026-10-13 activation evidence verifies the deployed database extensions and committed pilot; authenticated production acceptance remains pending.
 
 ## Content Reviewer dashboard reads
 
