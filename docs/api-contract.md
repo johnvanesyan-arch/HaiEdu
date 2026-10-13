@@ -4,7 +4,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. The historical 2026-10-10 comparison does not authorize a release; the separate 2026-10-13 pilot activation and authenticated acceptance are recorded below.
 
-**Chapter III draft staging (2026-10-13):** [15C.2](chapter-iii-batch-01-staging.md) is committed: a Chapter III-only draft curriculum (six outcomes/eight skills), eight practice items, eight draft guides, 19 draft definitions and eight automated technical QA records. Existing reviewer endpoints expose the draft records; no endpoint contract changed. Owner acceptance of the exact offline questions is provenance, not an authenticated approval or specialist event. No scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release is added. Chapter II subsequently activated as an authorized provisional pilot; [committed readback](evidence/chapter-ii-pilot-activation-20261013.json) confirms Chapter III remains draft and unallocated.
+**Chapter III draft staging (2026-10-13):** [15C.3](chapter-iii-batch-02-staging.md) adds eight practice items, eight draft guides, fourteen draft definitions and eight automated technical QA records. Total draft inventory is 16 questions, 16 guides and 33 definitions, all awaiting ordinary human site review. Existing reviewer endpoints expose these records; no endpoint contract changed. Chapter III remains inactive and unallocated. No scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release is added; Chapter I/II pilots are preserved.
 
 ## Chapter II content boundary — 2026-10-13
 
