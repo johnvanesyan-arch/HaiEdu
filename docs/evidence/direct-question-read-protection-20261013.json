@@ -1,0 +1,714 @@
+{
+  "type": "Shared direct-question read protection repair",
+  "observedAt": "2026-10-13T06:52:26.048261+00:00",
+  "trigger": "PR 203 automated review identified a prompt-exposure concern during final content approval closure.",
+  "migration": [
+    {
+      "name": "protect_direct_question_reads",
+      "version": "20261013065104"
+    }
+  ],
+  "repositoryMigration": "supabase/migrations/20261013065104_protect_direct_question_reads.sql",
+  "sqlSha256": "2f373a1b898060b889be3cc8b65ab8aa9a7b7c4470c27b89e6c2c86216e1619a",
+  "scope": "Subject-neutral database RLS on public.items; every subject, chapter, purpose and status. No Edge/browser source change.",
+  "before": {
+    "anonymousRoleProbe": {
+      "role": "anon",
+      "visibleOptions": 0,
+      "allVisibleItems": 372,
+      "visibleAnswerKeys": 0,
+      "finalBatchVisibleItems": 37
+    },
+    "policies": [
+      {
+        "cmd": "SELECT",
+        "qual": "(private.current_user_role() = ANY (ARRAY['teacher'::user_role, 'admin'::user_role, 'content_admin'::user_role]))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "item_answer_keys",
+        "permissive": "PERMISSIVE",
+        "policyname": "answer_keys_staff_only",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "ALL",
+        "qual": "(private.current_user_role() = ANY (ARRAY['admin'::user_role, 'content_admin'::user_role]))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "item_answer_keys",
+        "permissive": "PERMISSIVE",
+        "policyname": "content_admin_answer_keys",
+        "schemaname": "public",
+        "with_check": "(private.current_user_role() = ANY (ARRAY['admin'::user_role, 'content_admin'::user_role]))"
+      },
+      {
+        "cmd": "ALL",
+        "qual": "(private.current_user_role() = ANY (ARRAY['admin'::user_role, 'content_admin'::user_role]))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "item_options",
+        "permissive": "PERMISSIVE",
+        "policyname": "content_admin_item_options",
+        "schemaname": "public",
+        "with_check": "(private.current_user_role() = ANY (ARRAY['admin'::user_role, 'content_admin'::user_role]))"
+      },
+      {
+        "cmd": "ALL",
+        "qual": "(private.current_user_role() = ANY (ARRAY['admin'::user_role, 'content_admin'::user_role]))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "items",
+        "permissive": "PERMISSIVE",
+        "policyname": "content_admin_items",
+        "schemaname": "public",
+        "with_check": "(private.current_user_role() = ANY (ARRAY['admin'::user_role, 'content_admin'::user_role]))"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "((status = 'published'::content_status) AND (retired_at IS NULL) AND (NOT private.item_is_protected(id)))",
+        "roles": [
+          "anon"
+        ],
+        "tablename": "items",
+        "permissive": "PERMISSIVE",
+        "policyname": "items_public_read_published",
+        "schemaname": "public",
+        "with_check": null
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(((status = 'published'::content_status) AND (retired_at IS NULL) AND (NOT private.item_is_protected(id))) OR (private.current_user_role() = ANY (ARRAY['teacher'::user_role, 'admin'::user_role, 'content_admin'::user_role])))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "items",
+        "permissive": "PERMISSIVE",
+        "policyname": "items_read_published",
+        "schemaname": "public",
+        "with_check": null
+      }
+    ],
+    "poolOnlyProtection": "private.item_is_protected checks enabled memberships in active protected pools; unallocated approved candidates were not covered.",
+    "correctionToAutomatedFinding": "Options had already been restricted by migration 0081; anonymous reads returned zero options and zero answer keys. The verified exposure was question prompt/stimulus/config rows."
+  },
+  "after": {
+    "policies": [
+      {
+        "cmd": "ALL",
+        "qual": "(private.current_user_role() = ANY (ARRAY['admin'::user_role, 'content_admin'::user_role]))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "items",
+        "permissive": "PERMISSIVE",
+        "policyname": "content_admin_items",
+        "schemaname": "public",
+        "with_check": "(private.current_user_role() = ANY (ARRAY['admin'::user_role, 'content_admin'::user_role]))"
+      },
+      {
+        "cmd": "SELECT",
+        "qual": "(private.current_user_role() = ANY (ARRAY['teacher'::user_role, 'admin'::user_role, 'content_admin'::user_role]))",
+        "roles": [
+          "authenticated"
+        ],
+        "tablename": "items",
+        "permissive": "PERMISSIVE",
+        "policyname": "items_staff_read",
+        "schemaname": "public",
+        "with_check": null
+      }
+    ],
+    "roleProbes": [
+      {
+        "requestedRole": [
+          "anon",
+          null
+        ],
+        "result": [
+          {
+            "data": {
+              "keys": 0,
+              "role": "anon",
+              "items": 0,
+              "options": 0
+            }
+          }
+        ]
+      },
+      {
+        "requestedRole": [
+          "authenticated",
+          "student"
+        ],
+        "result": [
+          {
+            "data": {
+              "keys": 0,
+              "role": "student",
+              "items": 0,
+              "options": 0
+            }
+          }
+        ]
+      },
+      {
+        "requestedRole": [
+          "authenticated",
+          "teacher"
+        ],
+        "result": [
+          {
+            "data": {
+              "keys": 453,
+              "role": "teacher",
+              "items": 453,
+              "options": 0
+            }
+          }
+        ]
+      },
+      {
+        "requestedRole": [
+          "authenticated",
+          "admin"
+        ],
+        "result": [
+          {
+            "data": {
+              "keys": 453,
+              "role": "admin",
+              "items": 453,
+              "options": 1204
+            }
+          }
+        ]
+      },
+      {
+        "requestedRole": [
+          "authenticated",
+          "content_admin"
+        ],
+        "result": [
+          {
+            "data": {
+              "keys": 453,
+              "role": "content_admin",
+              "items": 453,
+              "options": 1204
+            }
+          }
+        ]
+      },
+      {
+        "requestedRole": [
+          "authenticated",
+          "school_admin"
+        ],
+        "result": [
+          {
+            "data": {
+              "keys": 0,
+              "role": "school_admin",
+              "items": 0,
+              "options": 0
+            }
+          }
+        ]
+      },
+      {
+        "requestedRole": [
+          "service_role",
+          null
+        ],
+        "result": [
+          {
+            "data": {
+              "keys": 453,
+              "role": "service_role",
+              "items": 453,
+              "options": 1204
+            }
+          }
+        ]
+      }
+    ],
+    "tablesCompared": 38,
+    "contentAndEvidenceTablesUnchanged": true,
+    "beforeGuards": {
+      "tables": [
+        {
+          "row_count": 7,
+          "table_name": "assessment_blueprints",
+          "fingerprint": "4c64b14184d45a2b0a74bfed3e15c2ad"
+        },
+        {
+          "row_count": 80,
+          "table_name": "assessment_form_items",
+          "fingerprint": "02512d79c711fdd1ade10d8b8ba60bd5"
+        },
+        {
+          "row_count": 4,
+          "table_name": "assessment_forms",
+          "fingerprint": "261152bab0348edaf4fadca0385c850e"
+        },
+        {
+          "row_count": 0,
+          "table_name": "assessment_policy_bindings",
+          "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "row_count": 280,
+          "table_name": "assessment_pool_items",
+          "fingerprint": "bc60f679991a95387749629e7a2759cd"
+        },
+        {
+          "row_count": 4,
+          "table_name": "assessment_pools",
+          "fingerprint": "c957e610a262f61bd1e50d9c715b6973"
+        },
+        {
+          "row_count": 42,
+          "table_name": "attempts",
+          "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+        },
+        {
+          "row_count": 0,
+          "table_name": "chapter_review_item_exposures",
+          "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "row_count": 14,
+          "table_name": "curriculum_release_gate_checks",
+          "fingerprint": "e264300d5ca77755f1dab01f403be695"
+        },
+        {
+          "row_count": 308,
+          "table_name": "curriculum_release_item_families",
+          "fingerprint": "dfa682d6179f8f070273ae0112327818"
+        },
+        {
+          "row_count": 28,
+          "table_name": "curriculum_release_skills",
+          "fingerprint": "2bdc962e3ce06ad52373af19516a1147"
+        },
+        {
+          "row_count": 3,
+          "table_name": "curriculum_releases",
+          "fingerprint": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+        },
+        {
+          "row_count": 3,
+          "table_name": "curriculum_source_documents",
+          "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+        },
+        {
+          "row_count": 453,
+          "table_name": "item_answer_keys",
+          "fingerprint": "6429cdb1328e7333a312212ae0611e0c"
+        },
+        {
+          "row_count": 453,
+          "table_name": "item_curriculum_scopes",
+          "fingerprint": "d54bf6ab5a06e1b0cf7993c2058d0be4"
+        },
+        {
+          "row_count": 231,
+          "table_name": "item_families",
+          "fingerprint": "3e20882d29521edfd334128c215e4707"
+        },
+        {
+          "row_count": 231,
+          "table_name": "item_family_curriculum_reconciliations",
+          "fingerprint": "0bcdb6f1ae673daeeed1c3c903b15826"
+        },
+        {
+          "row_count": 818,
+          "table_name": "item_misconception_mappings",
+          "fingerprint": "e551954fe85667814d0196c67d9e5a47"
+        },
+        {
+          "row_count": 1204,
+          "table_name": "item_options",
+          "fingerprint": "58faa24ba487f9d7f39d6b736889836a"
+        },
+        {
+          "row_count": 728,
+          "table_name": "item_qa_runs",
+          "fingerprint": "ad37de941f2c922222f8085390cf6c7e"
+        },
+        {
+          "row_count": 721,
+          "table_name": "item_reviews",
+          "fingerprint": "03931a3f21800bb5c3d33de2d44563ec"
+        },
+        {
+          "row_count": 66,
+          "table_name": "item_template_remediation_guides",
+          "fingerprint": "31eb52fbc34173bed0ec83901da1f2d6"
+        },
+        {
+          "row_count": 231,
+          "table_name": "item_templates",
+          "fingerprint": "a24a3c62c6dcb5d8c1ca901765b543ab"
+        },
+        {
+          "row_count": 327,
+          "table_name": "item_versions",
+          "fingerprint": "7b488ec0774b537e89c8182f0c9d7c56"
+        },
+        {
+          "row_count": 453,
+          "table_name": "items",
+          "fingerprint": "4a108a181ff10d0464325266fd480941"
+        },
+        {
+          "row_count": 1,
+          "table_name": "learning_model_runtime_bindings",
+          "fingerprint": "140ad5194c426a009a1691a0b174d28c"
+        },
+        {
+          "row_count": 13,
+          "table_name": "learning_outcomes",
+          "fingerprint": "e9f873ec7283e478cebc6eed27be25b8"
+        },
+        {
+          "row_count": 79,
+          "table_name": "learning_session_items",
+          "fingerprint": "dbbb19423c945d8f0ccb85d2312a7800"
+        },
+        {
+          "row_count": 265,
+          "table_name": "misconception_review_events",
+          "fingerprint": "19e15a6a6c06af5f3224c2e0e75e8c45"
+        },
+        {
+          "row_count": 273,
+          "table_name": "misconceptions",
+          "fingerprint": "7c1c2f986c3438de29a642d75e8083c1"
+        },
+        {
+          "row_count": 315,
+          "table_name": "remediation_guide_authoring_versions",
+          "fingerprint": "871ac1758f42efb0bc46842b0b99b473"
+        },
+        {
+          "row_count": 159,
+          "table_name": "remediation_guide_versions",
+          "fingerprint": "cf8750c49bd0e05144e101e46fa0f5f3"
+        },
+        {
+          "row_count": 18,
+          "table_name": "skill_curriculum_reconciliations",
+          "fingerprint": "da993b9b2b52e950abb94d7164716d8b"
+        },
+        {
+          "row_count": 20,
+          "table_name": "skill_outcome_curriculum_mappings",
+          "fingerprint": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+        },
+        {
+          "row_count": 20,
+          "table_name": "skill_outcomes",
+          "fingerprint": "6bf2a6b0b3e913d3979fff7f20e778c7"
+        },
+        {
+          "row_count": 10,
+          "table_name": "skill_remediation_guides",
+          "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+        },
+        {
+          "row_count": 19,
+          "table_name": "skills",
+          "fingerprint": "39cb5c0425998f0c9580a50f1d1fef42"
+        },
+        {
+          "row_count": 42,
+          "table_name": "student_item_exposure_events",
+          "fingerprint": "9c2421c9dfc40827b348e6adf7efd681"
+        }
+      ],
+      "observedAt": "2026-10-13T06:41:49.656818+00:00"
+    },
+    "afterGuards": {
+      "tables": [
+        {
+          "row_count": 7,
+          "table_name": "assessment_blueprints",
+          "fingerprint": "4c64b14184d45a2b0a74bfed3e15c2ad"
+        },
+        {
+          "row_count": 80,
+          "table_name": "assessment_form_items",
+          "fingerprint": "02512d79c711fdd1ade10d8b8ba60bd5"
+        },
+        {
+          "row_count": 4,
+          "table_name": "assessment_forms",
+          "fingerprint": "261152bab0348edaf4fadca0385c850e"
+        },
+        {
+          "row_count": 0,
+          "table_name": "assessment_policy_bindings",
+          "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "row_count": 280,
+          "table_name": "assessment_pool_items",
+          "fingerprint": "bc60f679991a95387749629e7a2759cd"
+        },
+        {
+          "row_count": 4,
+          "table_name": "assessment_pools",
+          "fingerprint": "c957e610a262f61bd1e50d9c715b6973"
+        },
+        {
+          "row_count": 42,
+          "table_name": "attempts",
+          "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+        },
+        {
+          "row_count": 0,
+          "table_name": "chapter_review_item_exposures",
+          "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+        },
+        {
+          "row_count": 14,
+          "table_name": "curriculum_release_gate_checks",
+          "fingerprint": "e264300d5ca77755f1dab01f403be695"
+        },
+        {
+          "row_count": 308,
+          "table_name": "curriculum_release_item_families",
+          "fingerprint": "dfa682d6179f8f070273ae0112327818"
+        },
+        {
+          "row_count": 28,
+          "table_name": "curriculum_release_skills",
+          "fingerprint": "2bdc962e3ce06ad52373af19516a1147"
+        },
+        {
+          "row_count": 3,
+          "table_name": "curriculum_releases",
+          "fingerprint": "a47ffa06d3d0c1e7f438c1c4153b2cce"
+        },
+        {
+          "row_count": 3,
+          "table_name": "curriculum_source_documents",
+          "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+        },
+        {
+          "row_count": 453,
+          "table_name": "item_answer_keys",
+          "fingerprint": "6429cdb1328e7333a312212ae0611e0c"
+        },
+        {
+          "row_count": 453,
+          "table_name": "item_curriculum_scopes",
+          "fingerprint": "d54bf6ab5a06e1b0cf7993c2058d0be4"
+        },
+        {
+          "row_count": 231,
+          "table_name": "item_families",
+          "fingerprint": "3e20882d29521edfd334128c215e4707"
+        },
+        {
+          "row_count": 231,
+          "table_name": "item_family_curriculum_reconciliations",
+          "fingerprint": "0bcdb6f1ae673daeeed1c3c903b15826"
+        },
+        {
+          "row_count": 818,
+          "table_name": "item_misconception_mappings",
+          "fingerprint": "e551954fe85667814d0196c67d9e5a47"
+        },
+        {
+          "row_count": 1204,
+          "table_name": "item_options",
+          "fingerprint": "58faa24ba487f9d7f39d6b736889836a"
+        },
+        {
+          "row_count": 728,
+          "table_name": "item_qa_runs",
+          "fingerprint": "ad37de941f2c922222f8085390cf6c7e"
+        },
+        {
+          "row_count": 721,
+          "table_name": "item_reviews",
+          "fingerprint": "03931a3f21800bb5c3d33de2d44563ec"
+        },
+        {
+          "row_count": 66,
+          "table_name": "item_template_remediation_guides",
+          "fingerprint": "31eb52fbc34173bed0ec83901da1f2d6"
+        },
+        {
+          "row_count": 231,
+          "table_name": "item_templates",
+          "fingerprint": "a24a3c62c6dcb5d8c1ca901765b543ab"
+        },
+        {
+          "row_count": 327,
+          "table_name": "item_versions",
+          "fingerprint": "7b488ec0774b537e89c8182f0c9d7c56"
+        },
+        {
+          "row_count": 453,
+          "table_name": "items",
+          "fingerprint": "4a108a181ff10d0464325266fd480941"
+        },
+        {
+          "row_count": 1,
+          "table_name": "learning_model_runtime_bindings",
+          "fingerprint": "140ad5194c426a009a1691a0b174d28c"
+        },
+        {
+          "row_count": 13,
+          "table_name": "learning_outcomes",
+          "fingerprint": "e9f873ec7283e478cebc6eed27be25b8"
+        },
+        {
+          "row_count": 79,
+          "table_name": "learning_session_items",
+          "fingerprint": "dbbb19423c945d8f0ccb85d2312a7800"
+        },
+        {
+          "row_count": 265,
+          "table_name": "misconception_review_events",
+          "fingerprint": "19e15a6a6c06af5f3224c2e0e75e8c45"
+        },
+        {
+          "row_count": 273,
+          "table_name": "misconceptions",
+          "fingerprint": "7c1c2f986c3438de29a642d75e8083c1"
+        },
+        {
+          "row_count": 315,
+          "table_name": "remediation_guide_authoring_versions",
+          "fingerprint": "871ac1758f42efb0bc46842b0b99b473"
+        },
+        {
+          "row_count": 159,
+          "table_name": "remediation_guide_versions",
+          "fingerprint": "cf8750c49bd0e05144e101e46fa0f5f3"
+        },
+        {
+          "row_count": 18,
+          "table_name": "skill_curriculum_reconciliations",
+          "fingerprint": "da993b9b2b52e950abb94d7164716d8b"
+        },
+        {
+          "row_count": 20,
+          "table_name": "skill_outcome_curriculum_mappings",
+          "fingerprint": "85c41bcc0ce687ca54ca37b8c5c8ec75"
+        },
+        {
+          "row_count": 20,
+          "table_name": "skill_outcomes",
+          "fingerprint": "6bf2a6b0b3e913d3979fff7f20e778c7"
+        },
+        {
+          "row_count": 10,
+          "table_name": "skill_remediation_guides",
+          "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+        },
+        {
+          "row_count": 19,
+          "table_name": "skills",
+          "fingerprint": "39cb5c0425998f0c9580a50f1d1fef42"
+        },
+        {
+          "row_count": 42,
+          "table_name": "student_item_exposure_events",
+          "fingerprint": "9c2421c9dfc40827b348e6adf7efd681"
+        }
+      ],
+      "observedAt": "2026-10-13T06:52:26.835818+00:00"
+    }
+  },
+  "consumerAudit": {
+    "browserDirectItemTableConsumers": 0,
+    "serverItemConsumers": [
+      "get-content-quality-dashboard",
+      "get-content-review-history",
+      "manage-content-quality",
+      "manage-remediation-guides",
+      "get-teacher-student",
+      "start-learning-session",
+      "get-session-item",
+      "submit-answer",
+      "get-remediation-help"
+    ],
+    "serverBoundary": "Every direct item consumer uses a server-owned service-role client after its existing role/session/context checks; RLS restrictions do not change service-role privileges. Existing teacher/admin/content-admin item reads remain allowed.",
+    "directViews": [
+      {
+        "name": "calibration_attempt_evidence_v",
+        "options": [
+          "security_invoker=true"
+        ],
+        "anonSelect": false,
+        "authenticatedSelect": false
+      },
+      {
+        "name": "calibration_metric_sample_summary_v",
+        "options": [
+          "security_invoker=true"
+        ],
+        "anonSelect": false,
+        "authenticatedSelect": false
+      },
+      {
+        "name": "chapter_review_item_catalog_v",
+        "options": [
+          "security_invoker=true"
+        ],
+        "anonSelect": false,
+        "authenticatedSelect": false
+      }
+    ],
+    "anonCallablePublicItemFunctions": null,
+    "authenticatedCallablePublicItemFunctions": null
+  },
+  "regressions": {
+    "file": "tests/direct-question-read-protection.test.mjs",
+    "passed": 2,
+    "description": [
+      "PGlite executes predecessor RLS and reproduces anonymous/student access to published unallocated prompts, then applies the actual migration and verifies denial across two subjects and item states, preserved staff/service reads and unchanged content.",
+      "Existing governed-runtime database fixture with actual migrated SQL completes Diagnostic delivery and grading across three curriculum contexts under service_role, while anonymous/student direct reads and inactive-release launch are denied."
+    ],
+    "scope": "Isolated database/runtime integration and production database-role probes; no new authenticated browser or HTTP acceptance claim."
+  },
+  "securityAdvisors": {
+    "before": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "count": 36
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "count": 1
+      }
+    ],
+    "after": [
+      {
+        "name": "rls_enabled_no_policy",
+        "level": "INFO",
+        "count": 36
+      },
+      {
+        "name": "auth_leaked_password_protection",
+        "level": "WARN",
+        "count": 1
+      }
+    ],
+    "delta": "No new advisor finding. Existing 36 service-only/no-policy informational findings and disabled leaked-password protection warning remain unchanged."
+  },
+  "productionChanges": "Three RLS policy operations plus migration history; zero content, approval, QA, pool, form, model, release or learner-evidence row changes.",
+  "historicalExposureBoundary": "Confirmed previous anonymous-role readability is not proof of third-party retrieval, and this repair cannot establish historical non-exposure. A documented exposure-risk disposition is required before protected assessment use. Existing approvals are preserved; release and allocation gates remain open."
+}
