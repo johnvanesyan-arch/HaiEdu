@@ -275,7 +275,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [ ] Create the governed Chapter III foundation and stage qualified drafts through the established reviewer workflow after recovery.
 - [ ] Human content review, specialist review and eventual assessment/release qualification.
 
-[Preparation](chapter-iii-preparation.md). This checklist records offline preparation only; no Supabase or learner changes occurred. Chapter II was paused during preparation; the owner has since resumed release, but database deployment remains blocked.
+[Preparation](chapter-iii-preparation.md). This checklist records offline preparation only; no Supabase or learner changes occurred. Chapter II was paused during preparation; the later owner-authorized browser deployment and pilot activation supersede that historical pause.
 
 ## Chapter II final two batches — 2026-10-13
 
@@ -289,8 +289,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] 15B.14A: prepare the current-version inventory, independent Physics reviewer packet and historical exposure hold.
 - [x] Owner authorization for provisional Chapter II pilot with specialist review deferred.
 - [x] 15B.14B implementation: prepare exact protected forms and independent chapter release configuration; merge PR #206, pass all five final CI jobs and deploy the frontend.
-- [ ] 15B.14B production deployment: apply the database migrations, run the rollback rehearsal and commit the governed allocation/bindings. The owner resumed release, but a third Supabase connector attempt returned `invalid_request_state`; [fresh readback](evidence/chapter-ii-pilot-resume-20261013.json) confirms both migrations remain absent.
-- [ ] 15B.14C: activate the pilot and verify authenticated Chapter I/II navigation and preserved history.
+- [x] 15B.14B production deployment: apply both exact reviewed migrations, record matching history, pass the rollback rehearsal and commit governed allocation/bindings. [Verified activation](evidence/chapter-ii-pilot-activation-20261013.json).
+- [ ] 15B.14C: pilot activation is complete; authenticated Chapter I/II navigation and preserved-history acceptance remain pending.
 - [ ] Independent SME/protection review and final exposure disposition before production promotion.
 
-The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) and the pilot implementation are complete for their recorded scope. The frontend is deployed, but Chapter II remains draft and inactive while database deployment is blocked. Independent SME/production exposure decisions remain open. [Deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json) · [Authoritative status](project-status.md).
+The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) and the pilot implementation are complete for their recorded scope. Chapter II is active as the authorized provisional pilot; authenticated production acceptance remains pending. Independent SME/production exposure decisions remain open. [Deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json) · [Authoritative status](project-status.md).
