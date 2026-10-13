@@ -1,0 +1,74 @@
+{
+  "sprint": "15C.2",
+  "status": "rehearsed_not_committed",
+  "ownerAcceptedAt": "2026-10-13T19:19:48+04:00",
+  "privateEvidenceLibraryFileId": "libfile_8ba563d8a4188191a946f7072bb2f46d",
+  "privateEvidenceSha256": "5dafb1f329d6d53f14f52a0591cbb826ab3003aca9ae444e1627df12808e3076",
+  "foundation": {
+    "unitId": "aa824efc-b407-5143-9c92-a894d97be972",
+    "reconciliationId": "b0bfb885-dfa9-5e29-a70d-eb6d76fd91cb",
+    "releaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+    "skills": {
+      "PHY7-U03-S01": "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+      "PHY7-U03-S02": "4251bf02-d633-578a-bd36-44028b5ceecf",
+      "PHY7-U03-S03": "808be543-acae-5df9-b903-eaceaf4c149c",
+      "PHY7-U03-S04": "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+      "PHY7-U03-S05": "b04dde38-3f39-5cea-a9a1-e7c6535cf39a",
+      "PHY7-U03-S06": "8a07485e-8462-5513-a3b6-f65bc8a7cce4",
+      "PHY7-U03-S07": "4f0315c6-35ea-5573-aab5-4f9c6329b6eb",
+      "PHY7-U03-S08": "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb"
+    },
+    "outcomes": {
+      "M1": "46b049d9-a466-5b1f-975e-4eb0c3f0b474",
+      "M2": "4f982ba6-4fb2-56fe-ac7c-86004b32839f",
+      "M3": "f3660abd-d28c-54e9-bad3-202a629f60e4",
+      "M4": "020c307d-b19d-504c-b863-b8ae8c0d14ae",
+      "M5": "7e64c4ad-81c1-5491-83eb-3c4431dcc674",
+      "A1": "581807b2-fdb5-534b-8b79-303e7aaa7d66"
+    },
+    "locators": {
+      "M1": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "M2": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+      "M3": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+      "M4": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+      "M5": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+      "A1": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Լրացուցիչ 2(1)"
+    },
+    "migration": "20261013154427_sprint_15c2_chapter_iii_draft_foundation.sql"
+  },
+  "rollbackObservedAt": "2026-10-13T15:54:26.67374+00:00",
+  "qa": {
+    "deployedVersion": 11,
+    "identicalToRepository": true,
+    "sha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "transportNote": "Removed one local trailing newline introduced while saving the fetched source; fetched source matches repository bytes."
+  },
+  "qaPassed": 8,
+  "qaErrors": 0,
+  "qaWarnings": 0,
+  "reviewStates": {
+    "offlineQuestionsOwnerAccepted": 8,
+    "authenticatedItemReviewsCreated": 0,
+    "newGuidesAwaitingReview": 8,
+    "newDefinitionsAwaitingReview": 19,
+    "specialistApproval": false
+  },
+  "counts": {
+    "items": 8,
+    "item_options": 32,
+    "item_answer_keys": 8,
+    "item_families": 8,
+    "item_templates": 8,
+    "item_versions": 8,
+    "item_curriculum_scopes": 8,
+    "misconceptions": 19,
+    "item_misconception_mappings": 24,
+    "item_family_curriculum_reconciliations": 8,
+    "curriculum_release_item_families": 8,
+    "item_template_remediation_guides": 8,
+    "remediation_guide_versions": 8,
+    "remediation_guide_authoring_versions": 8
+  },
+  "chapterIIRetry": false,
+  "learnerRelease": false
+}

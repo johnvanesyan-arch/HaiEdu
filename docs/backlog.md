@@ -253,7 +253,18 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter III preparation — 15C.1, 2026-10-13
+## Chapter III governed first batch — 15C.2, 2026-10-13
+
+- [x] Record owner acceptance of the plan/budget and exact eight offline v1 questions.
+- [x] Refresh and compare all current/history/guide/related-mapping/protection evidence; retain eight for practice.
+- [x] Prepare the draft foundation and eight questions, eight guides and 19 definitions; rollback and exact-source QA pass.
+- [ ] Merge and apply the Chapter III foundation, then commit/read back the guarded practice package.
+- [ ] Complete authenticated content workflow and review the newly authored guides/definitions on site.
+- [ ] Specify Chapter III readiness/pass contract and establish protected capacity; specialist/release gates remain open.
+
+[Staging](chapter-iii-batch-01-staging.md). Chapter II retries remain paused.
+
+## Chapter III preparation — 15C.1, 2026-10-13 (historical checkpoint)
 
 - [x] Verify the supplied textbook edition and current official programme appendix; map the five mandatory and one additional Theme 3 outcomes.
 - [x] Propose eight skills, textbook/source boundaries, prerequisites and a chapter-specific 168-question planning budget.
