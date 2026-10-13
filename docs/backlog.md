@@ -262,7 +262,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [ ] Complete authenticated content workflow and review the newly authored guides/definitions on site.
 - [ ] Specify Chapter III readiness/pass contract and establish protected capacity; specialist/release gates remain open.
 
-[Staging](chapter-iii-batch-01-staging.md). Chapter II subsequently activated through the owner-authorized browser route; authenticated production acceptance remains pending. [Activation evidence](evidence/chapter-ii-pilot-activation-20261013.json).
+[Staging](chapter-iii-batch-01-staging.md). Chapter II subsequently activated through the owner-authorized browser route; authenticated production acceptance passed 91/91. [Activation evidence](evidence/chapter-ii-pilot-activation-20261013.json).
 
 ## Chapter III preparation — 15C.1, 2026-10-13 (historical checkpoint)
 
@@ -290,7 +290,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Owner authorization for provisional Chapter II pilot with specialist review deferred.
 - [x] 15B.14B implementation: prepare exact protected forms and independent chapter release configuration; merge PR #206, pass all five final CI jobs and deploy the frontend.
 - [x] 15B.14B production deployment: apply both exact reviewed migrations, record matching history, pass the rollback rehearsal and commit governed allocation/bindings. [Verified activation](evidence/chapter-ii-pilot-activation-20261013.json).
-- [ ] 15B.14C: pilot activation is complete; authenticated Chapter I/II navigation and preserved-history acceptance remain pending.
+- [x] 15B.14C: pilot activation and authenticated Chapter I/II desktop/mobile navigation, isolation and preserved-history acceptance passed 91/91. [Production acceptance](evidence/chapter-ii-pilot-read-acceptance-20261013.json).
 - [ ] Independent SME/protection review and final exposure disposition before production promotion.
 
-The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) and the pilot implementation are complete for their recorded scope. Chapter II is active as the authorized provisional pilot; authenticated production acceptance remains pending. Independent SME/production exposure decisions remain open. [Deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json) · [Authoritative status](project-status.md).
+The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) and the pilot implementation are complete for their recorded scope. Chapter II is active as the authorized provisional pilot; authenticated production acceptance passed 91/91. Independent SME/production exposure decisions remain open. [Historical deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json) · [Authoritative status](project-status.md).

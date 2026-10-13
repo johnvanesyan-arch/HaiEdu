@@ -2,7 +2,7 @@
 
 **Verified:** 2026-10-10 against repository source and deployed `submit-answer` v18 (ACTIVE, JWT verification enabled; all 12 bundle files match). [Verification evidence](evidence/documentation-status-audit-20261010.json). [Current delivery status and release gates](project-status.md) are maintained separately.
 
-This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. It does not authorize a new release or claim completed live multi-context acceptance.
+This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. The historical 2026-10-10 comparison does not authorize a release; the separate 2026-10-13 pilot activation and authenticated acceptance are recorded below.
 
 **Chapter III draft staging (2026-10-13):** [15C.2](chapter-iii-batch-01-staging.md) is committed: a Chapter III-only draft curriculum (six outcomes/eight skills), eight practice items, eight draft guides, 19 draft definitions and eight automated technical QA records. Existing reviewer endpoints expose the draft records; no endpoint contract changed. Owner acceptance of the exact offline questions is provenance, not an authenticated approval or specialist event. No scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release is added. Chapter II subsequently activated as an authorized provisional pilot; [committed readback](evidence/chapter-ii-pilot-activation-20261013.json) confirms Chapter III remains draft and unallocated.
 
@@ -12,7 +12,7 @@ The 192-question Chapter II bank is content-approved, with 263 active definition
 
 Sprint 15B.14A is a read-only qualification preflight and reviewer handoff. It creates no new endpoint, approval, QA record, SME flag, release-gate transition or runtime change. The ordinary reviewer approval flow records content approval; SME status remains separately governed, as the current interface states. No API contract, scoring or delivery rule changed.
 
-The owner authorized a provisional Chapter II pilot with specialist review deferred. Both reviewed database migrations are deployed with exact source hashes; production rollback rehearsal and committed activation passed all 53 preservation scopes. Chapter II is `pilot`, with exact form allocation and model/policy bindings. Authenticated production acceptance remains pending. The six pilot gates passed; independent SME and final exposure disposition remain production requirements. [Activation evidence](evidence/chapter-ii-pilot-activation-20261013.json). The shared RLS repair still denies direct anonymous/student reads; zero governed exposure events does not establish historical non-exposure.
+The owner authorized a provisional Chapter II pilot with specialist review deferred. Both reviewed database migrations are deployed with exact source hashes; production rollback rehearsal and committed activation passed all 53 preservation scopes. Chapter II is `pilot`, with exact form allocation and model/policy bindings. Authenticated production acceptance passed 91/91. The six pilot gates passed; independent SME and final exposure disposition remain production requirements. [Activation evidence](evidence/chapter-ii-pilot-activation-20261013.json). The shared RLS repair still denies direct anonymous/student reads; zero governed exposure events does not establish historical non-exposure.
 
 ## Authentication and workflow
 
@@ -71,7 +71,7 @@ Recommendations and criteria come from the bound policy/model and authorized con
 
 ## Deployed runtime extensions — 2026-10-13
 
-The following changes merged in PR #206 at `a64269e1ab83d2b52d1a8af0d65559bab580aeec` and passed all five final CI jobs. Both exact database migrations were subsequently applied through the owner-authorized dashboard route, with atomic migration history and matching hashes. Chapter II activation is committed and read back; authenticated production acceptance is pending. This database verification supplements the earlier Edge bundle verification; no Edge source/deployment change was needed. [Deployment evidence](evidence/chapter-ii-pilot-activation-20261013.json) · [Pilot record](chapter-ii-pilot-release.md).
+The following changes merged in PR #206 at `a64269e1ab83d2b52d1a8af0d65559bab580aeec` and passed all five final CI jobs. Both exact database migrations were subsequently applied through the owner-authorized dashboard route, with atomic migration history and matching hashes. Chapter II activation is committed and read back; authenticated production acceptance passed 91/91. This database verification supplements the earlier Edge bundle verification; no Edge source/deployment change was needed. [Deployment evidence](evidence/chapter-ii-pilot-activation-20261013.json) · [Pilot record](chapter-ii-pilot-release.md).
 
 ### Optional whole-form Mastery selection
 
@@ -130,10 +130,14 @@ Legacy `submit-answer` still accepts `itemId` and `response` without session IDs
 - Deployed and migration-history hashes verified: [whole-form Mastery selection](../supabase/migrations/20261013101825_governed_mastery_form_selection.sql) and [disjoint release-unit governance](../supabase/migrations/20261013101644_disjoint_curriculum_release_units.sql).
 - [Runtime scope](sprint-15b12c-learning-runtime.md), [navigation/analytics](sprint-15b12d-navigation-analytics.md), [live acceptance boundary](sprint-15b12e-acceptance.md).
 
-The 2026-10-10 deployment comparison covers the `submit-answer` bundle, not a fresh deployment-parity certification of every endpoint mentioned. The separate 2026-10-13 activation evidence verifies the deployed database extensions and committed pilot; authenticated production acceptance remains pending.
+The 2026-10-10 deployment comparison covers the `submit-answer` bundle, not a fresh deployment-parity certification of every endpoint mentioned. The separate 2026-10-13 activation evidence verifies the deployed database extensions and committed pilot; authenticated production acceptance passed 91/91.
 
 ## Content Reviewer dashboard reads
 
 `POST /functions/v1/get-content-quality-dashboard` is a separate reviewer API, restricted to an active signed-in `admin` or `content_admin`. Its response keeps `items`, `stats`, `catalog` and `curriculumProvenance`; `latestQa` and `latestReview` belong to the current saved item version. Complete, bounded and paginated reads are required. A related QA/review/mapping/version read failure returns HTTP 500 `content_quality_dashboard_failed` with `failedRead`; it must not be represented as an empty successful dataset. The shared browser loader does not cache failed responses. After a failed post-QA refresh, refreshing the data does not itself rerun QA or approve anything.
 
 [Repair and deployed-verification boundary](reviewer-approval-repair-20261011.md). Human approval still rechecks current technical QA and the family fingerprint atomically; SME/release eligibility is independent.
+
+## Chapter II authenticated production read acceptance — 2026-10-13
+
+**Authenticated production acceptance passed 91/91** on exact frontend revision `ed3f1c291e38e77c8469699e361205893e652327` in [workflow 38446467319](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38446467319). The six designated QA identities, reciprocal two-school controls, protected direct-read denials, exact Chapter II contract and Chapter I → II → I desktop/mobile navigation passed. The runner created no learner session, answer or exposure; before/after chapter evidence is unchanged, and only its own login sessions were closed. [Production acceptance](evidence/chapter-ii-pilot-read-acceptance-20261013.json). This closes the live switching dependency for Sprint 14 / 15B.12E and the authorized provisional Chapter II pilot slice 15B.14C. It does not grant independent specialist approval, production promotion, empirical form equivalence, cross-release prerequisite routing or full Sprint 15 course completion.

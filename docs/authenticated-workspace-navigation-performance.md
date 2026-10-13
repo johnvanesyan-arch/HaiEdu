@@ -3,7 +3,7 @@
 **Date:** 2026-10-01  
 **Status:** Deployed first-paint/navigation correction; protected authorization semantics unchanged.
 
-**2026-10-13 amendment:** the automatic cross-document animation described below caused reproducible Chromium page errors during full-shell course switching. The shared opt-in is removed by the [navigation repair](evidence/shared-navigation-transition-repair-20261013.json); native navigation, loading shells, prefetching and user-scoped caching remain. A full Home/course navigation regression replaces the old source assertion that required the animation. Production acceptance of this repair remains pending.
+**2026-10-13 amendment:** the automatic cross-document animation described below caused reproducible Chromium page errors during full-shell course switching. The shared opt-in is removed by the [navigation repair](evidence/shared-navigation-transition-repair-20261013.json); native navigation, loading shells, prefetching and user-scoped caching remain. A full Home/course navigation regression replaces the old source assertion that required the animation. Production acceptance of this repair passed; see the linked evidence for exact revision, CI and all affected live QA suites.
 
 ## Observed production problem
 

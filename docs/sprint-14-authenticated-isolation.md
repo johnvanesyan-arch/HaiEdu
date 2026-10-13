@@ -1,5 +1,9 @@
 # Sprint 14 authenticated two-school isolation
 
+**Current closure — 2026-10-13:** **Authenticated production acceptance passed 91/91** on exact frontend revision `ed3f1c291e38e77c8469699e361205893e652327` in [workflow 38446467319](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38446467319). The six designated QA identities, reciprocal two-school controls, protected direct-read denials, exact Chapter II contract and Chapter I → II → I desktop/mobile navigation passed. The runner created no learner session, answer or exposure; before/after chapter evidence is unchanged, and only its own login sessions were closed. [Production acceptance](evidence/chapter-ii-pilot-read-acceptance-20261013.json). This closes the live switching dependency for Sprint 14 / 15B.12E and the authorized provisional Chapter II pilot slice 15B.14C. It does not grant independent specialist approval, production promotion, empirical form equivalence, cross-release prerequisite routing or full Sprint 15 course completion.
+
+The dated implementation and earlier pending-gate checkpoints below are historical and are superseded only for the live second-release acceptance dependency.
+
 Status (2026-09-28): authenticated production read-isolation passed 54/54 checks. The broader tenant-isolation and Sprint 14 gates remain open as detailed below.
 
 ## Authenticated production read-isolation result — 2026-09-28
