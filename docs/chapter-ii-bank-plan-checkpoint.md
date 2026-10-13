@@ -1,6 +1,6 @@
 # Chapter II bank-plan decision packet
 
-**Updated:** 2026-10-13 (Asia/Yerevan) · **Status:** final 37-slot two-batch authoring/staging and human review complete; subsequent editorial corrections are staged for fresh review. The bank has 192 non-archived question slots: 189 current versions approved and three v3 revisions awaiting review. All 263 definitions are active; 57 runtime guides remain published, with three v5 authoring drafts awaiting review. Earlier approvals remain in history. Prior review history: first four bounded manifests content-approved; fifth human review resolved with three approvals and one owner archive; S05-M05 v2 author comparison refresh complete; SME/exposure and release gates remain open. Reserve target and assessment contract unchanged. [Current editorial checkpoint](#editorial-maintenance-checkpoint--2026-10-13).
+**Updated:** 2026-10-13 (Asia/Yerevan) · **Status:** all 192 current non-archived questions approved, all 263 definitions active and all 57 guides published. The six editorial corrections are reviewed; no content is pending. Qualification preparation is complete; independent SME/exposure and release gates remain open. Reserve target and assessment contract unchanged. [Current qualification handoff](chapter-ii-assessment-qualification.md).
 
 **First owner decision:** John selected four candidates and then directed “ok, proceed”. The authorized scope is two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prior eight-candidate proposal and subsequent sixteen-candidate throughput suggestion are superseded. The [bounded prospective policy addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) is adopted for this pilot only.
 
@@ -148,6 +148,8 @@ The requirement for this now-recorded owner decision comes from `AGENTS.md` and 
 
 [Authoritative status](project-status.md) · [Completed audit](chapter-ii-coverage-feasibility-audit.md) · [Observed version inventory and capacity calculations](evidence/sprint-15b13-coverage-audit-20261012.json).
 
-## Editorial maintenance checkpoint — 2026-10-13
+## Editorial maintenance staging checkpoint — 2026-10-13
 
 John's next-part instruction authorizes the recorded corrections without expanding the manifest. Three existing question slots now have v3 revisions awaiting fresh review; three guides have v5 authoring drafts over unchanged published runtime v2. The bank remains 192 non-archived slots (189 current versions approved, three pending), with 263 active definitions and 57 published runtime guides. Existing approval history is preserved. No reserve/assessment-contract change or new independent reasoning coverage is claimed. [Editorial handoff](chapter-ii-editorial-corrections-20261013.md).
+
+**Subsequent review closure — 2026-10-13 08:14–08:18 UTC:** all three v3 questions are approved and the three guides are published at authoring v7 / runtime v3, with unchanged reviewed content. All 192 questions are approved; no content is pending. [Qualification preparation and next gates](chapter-ii-assessment-qualification.md).
