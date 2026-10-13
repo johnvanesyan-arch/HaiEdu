@@ -1,5 +1,7 @@
 # Chapter II batch 08 — twelve candidates, nine retained drafts
 
+> **Editorial follow-up — 2026-10-13:** the recorded corrections are now staged as new question/guide versions with passing technical checks. Fresh human review remains open; previous approvals/publications remain in history. [Current editorial handoff](chapter-ii-editorial-corrections-20261013.md) and [status register](project-status.md) supersede the dated pending statements below.
+
 Date: **2026-10-09** (Asia/Yerevan). Sprint **15B.13X**. Author and comparison reviewer: **Codex automated author**. Human question, guide, definition and SME approval remain separate.
 
 John confirmed the preceding review at **2026-10-09T08:15:16Z** under the continuing larger-batch workflow. Twelve candidates were assessed across S02–S09; **nine retained across six skills: eight intentional practice variants and one new reasoning mastery candidate**. Two repeated candidates were omitted and one protected alternative deferred. No existing question is removed. Practice variants are not counted as independent reasoning paths. Routine user handoffs omit archive links as requested; the private audit evidence continues to be saved.

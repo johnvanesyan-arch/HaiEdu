@@ -1,5 +1,7 @@
 # S05-M05 v2 — comparison refresh
 
+> **Editorial follow-up — 2026-10-13:** the recorded corrections are now staged as new question/guide versions with passing technical checks. Fresh human review remains open; previous approvals/publications remain in history. [Current editorial handoff](chapter-ii-editorial-corrections-20261013.md) and [status register](project-status.md) supersede the dated pending statements below.
+
 **Date:** 2026-10-12 · **Slice:** 15B.13AO · **Author:** Codex automated educational judgment · **State:** version-specific author comparison complete; human approval preserved.
 
 John authorized this follow-up and required natural Armenian, using the textbook for language and physics facts. This work refreshes the comparison for the already approved `PHY7-U02-S05-M05` v2. It adds no question, changes no learner-facing content, and does not reopen the completed human review.
