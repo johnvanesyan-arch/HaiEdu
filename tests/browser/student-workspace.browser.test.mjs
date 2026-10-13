@@ -70,6 +70,20 @@ async function capture(page, name, metrics) {
   await writeFile(path.join(dir,name+'.json'),JSON.stringify(metrics,null,2)+'\n');
 }
 
+test('full student shell switches between course documents without browser errors or learning writes', async t => {
+  const {page,errors}=await fixture(t,{active:false});
+  for (const selected of [contexts[1],contexts[0]]) {
+    const link=page.locator(`.amp-side-nav a[href*="unit=${selected.unitId}"]`);
+    assert.equal(await link.count(),1);
+    await link.click();
+    await page.waitForFunction(title=>document.getElementById('courseTitle').textContent.includes(title),selected.unitTitleHy);
+    await page.waitForFunction(()=>document.getElementById('courseLoading').classList.contains('hidden'));
+    assert.equal(new URL(page.url()).searchParams.get('unit'),selected.unitId);
+    assert.equal(await page.evaluate(()=>window.__calls.some(c=>c.name==='start-learning-session')),false);
+  }
+  assert.deepEqual(errors,[]);
+});
+
 for(const width of [1280,768,360]) test(`full student assessment shell is readable and contained at ${width}px`,async t=>{
   const {page,errors}=await fixture(t,{width});
   const metrics=await page.evaluate(()=>{
