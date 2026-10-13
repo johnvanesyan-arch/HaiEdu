@@ -1,0 +1,82 @@
+{
+  "schemaVersion": 1,
+  "status": "blocked_before_database_migration",
+  "ownerAuthorization": "You can release Chapter II; we will do the specialist review later",
+  "implementation": {
+    "pullRequest": 206,
+    "mergedCommit": "a64269e1ab83d2b52d1a8af0d65559bab580aeec",
+    "reviewedHead": "85e1a47940a6ef0b56d701c67427ba41fdb4d5c7",
+    "ciRunId": 38386280582,
+    "ciJobs": [
+      {
+        "name": "role-layout-browser",
+        "conclusion": "success"
+      },
+      {
+        "name": "phase3-postgres-17",
+        "conclusion": "success"
+      },
+      {
+        "name": "test",
+        "conclusion": "success"
+      },
+      {
+        "name": "institutional-concurrency",
+        "conclusion": "success"
+      },
+      {
+        "name": "Platform release checks",
+        "conclusion": "success"
+      }
+    ]
+  },
+  "frontend": {
+    "deploymentId": "dpl_Hk8325a2pBBAm8CWp8q6QAzbPWDS",
+    "state": "READY",
+    "commit": "a64269e1ab83d2b52d1a8af0d65559bab580aeec",
+    "authenticatedAcceptance": "not_run"
+  },
+  "database": {
+    "projectId": "xzyjvwiiibuarpotppid",
+    "migrationAttempts": 2,
+    "error": "McpServerError: Invalid or expired requestState",
+    "errorCode": "INVALID_ARGUMENT",
+    "rpcCode": -32602,
+    "reason": "invalid_request_state",
+    "readback": [
+      {
+        "observed_at": "2026-10-13 11:05:44.641725+00",
+        "active_claims": null,
+        "mastery_form_bindings": null,
+        "releases": [
+          {
+            "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+            "status": "pilot",
+            "blueprints": 4,
+            "activatedAt": "2026-09-19T06:45:24.76571+00:00"
+          },
+          {
+            "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+            "status": "draft",
+            "blueprints": 0,
+            "activatedAt": null
+          }
+        ]
+      }
+    ],
+    "migrationsApplied": 0,
+    "activationPerformed": false,
+    "preservation": {
+      "verifiedTables": 37,
+      "changedTables": 0,
+      "scope": "Question, source, approval, QA, guide/definition and learner history tables retain the read-only preflight counts and row digests after both failed migration requests."
+    }
+  },
+  "next": [
+    "Restore a working authorized database migration path.",
+    "Apply both reviewed migrations and verify functions/privileges.",
+    "Rehearse exact activation transaction with ROLLBACK.",
+    "Commit activation, verify preservation, and run authenticated acceptance."
+  ],
+  "specialistReview": "pending"
+}

@@ -264,8 +264,9 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Human review of the three v3 question revisions and publication of the three guide corrections at authoring v7 / runtime v3, verified against unchanged reviewed content.
 - [x] 15B.14A: prepare the current-version inventory, independent Physics reviewer packet and historical exposure hold.
 - [x] Owner authorization for provisional Chapter II pilot with specialist review deferred.
-- [ ] 15B.14B: exact protected forms, independent chapter release configuration and technical verification.
+- [x] 15B.14B implementation: prepare exact protected forms and independent chapter release configuration; merge PR #206, pass all five final CI jobs and deploy the frontend.
+- [ ] 15B.14B production deployment: apply the database migrations, run the rollback rehearsal and commit the governed allocation/bindings. Blocked by Supabase connector `invalid_request_state`; readback confirms the first migration was not applied.
 - [ ] 15B.14C: activate the pilot and verify authenticated Chapter I/II navigation and preserved history.
 - [ ] Independent SME/protection review and final exposure disposition before production promotion.
 
-The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) is complete; the owner-authorized pilot is in technical preparation, and independent SME/production exposure decisions remain open. [Current evidence](evidence/chapter-ii-qualification-preflight-20261013.json) · [Authoritative status](project-status.md).
+The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) and the pilot implementation are complete for their recorded scope. The frontend is deployed, but Chapter II remains draft and inactive while database deployment is blocked. Independent SME/production exposure decisions remain open. [Deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json) · [Authoritative status](project-status.md).
