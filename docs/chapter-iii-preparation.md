@@ -1,6 +1,6 @@
 # Chapter III preparation — «Մեխանիկական շարժում»
 
-**Prepared:** 2026-10-13 · **Sprint:** 15C.1. **Current update:** John accepted the plan, planning budget and eight offline drafts; [15C.2](chapter-iii-batch-01-staging.md) records completed fresh comparison and rollback checks. Staging is pending. The original preparation proposal and its then-open gates are retained below as the historical baseline; acceptance does not create a final assessment/readiness contract.
+**Prepared:** 2026-10-13 · **Sprint:** 15C.1. **Current update:** John accepted the plan, planning budget and eight offline drafts; [15C.2](chapter-iii-batch-01-staging.md) records completed fresh comparison, committed staging and QA; ordinary site workflow remains pending. The original preparation proposal and its then-open gates are retained below as the historical baseline; acceptance does not create a final assessment/readiness contract.
 
 John authorized Chapter III preparation while Chapter II deployment is paused. The requested source policy is binding: use the supplied Physics 7 textbook for factual content and natural Armenian, and use its illustrations where the task needs them. The [current status register](project-status.md) remains authoritative.
 

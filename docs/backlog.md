@@ -258,7 +258,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Record owner acceptance of the plan/budget and exact eight offline v1 questions.
 - [x] Refresh and compare all current/history/guide/related-mapping/protection evidence; retain eight for practice.
 - [x] Prepare the draft foundation and eight questions, eight guides and 19 definitions; rollback and exact-source QA pass.
-- [ ] Merge and apply the Chapter III foundation, then commit/read back the guarded practice package.
+- [x] Merge/apply the Chapter III foundation; commit/read back the guarded practice package, record QA 8/8, verify three production image hashes, and reconcile the connector-assigned migration version.
 - [ ] Complete authenticated content workflow and review the newly authored guides/definitions on site.
 - [ ] Specify Chapter III readiness/pass contract and establish protected capacity; specialist/release gates remain open.
 
