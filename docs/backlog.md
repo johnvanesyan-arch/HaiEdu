@@ -253,6 +253,18 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III third practice batch — 15C.4, 2026-10-14
+
+- [x] Save the exact chat-approved S04-I01 worked-example correction as authoring v5; preserve runtime v2 and history.
+- [x] Refresh the full applicable corpus; compare eight candidates across seven skills and all 28 pairs.
+- [x] Commit comparison/specifications, rehearse rollback, stage eight questions/eight guides/nineteen definitions and independently verify readback.
+- [x] Verify 8/8 question QA, 8/8 guide structural checks and all 39 preservation scopes.
+- [ ] Human site review of eight new questions, eight new guides and nineteen definitions.
+- [ ] Authenticated publication of the already chat-approved S04-I01 correction; reviewer browser was signed out.
+- [ ] Continue remaining practice and prepare the explicit assessment/readiness contract; preserve specialist/release gates.
+
+[Batch 03 and guide correction](chapter-iii-batch-03-staging.md).
+
 ## Chapter III second practice batch — 15C.3, 2026-10-13
 
 - [x] Refresh the full applicable corpus and compare eight candidates, related guides and all 28 pairs.
@@ -261,7 +273,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Preserve all existing rows across 39 guarded scopes and keep Chapter III inactive and unallocated.
 - [x] Human site review of both batches: 16 questions, 16 guides and 33 definitions; verified current approvals and publication snapshots on 2026-10-14.
 - [x] Compare all eight edited guides and preserve the unchanged 16 question versions and 33 definitions.
-- [ ] Stage and freshly review the prepared S04-I01 guide clarification before learner release. [Review closure and prepared clarification](chapter-iii-review-closure-20261014.md).
+- [x] John approved the exact S04-I01 clarification in chat; save it as authoring v5 under 15C.4. Authenticated site publication remains in the checklist above.
 - [ ] Chapter III assessment/readiness contract, protected capacity, specialist and release decisions.
 
 [Verified staging](chapter-iii-batch-02-staging.md).

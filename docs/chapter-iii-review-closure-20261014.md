@@ -1,5 +1,7 @@
 # Chapter III batches 01–02 — review closure
 
+**Subsequent owner approval and staging:** John approved the exact proposed correction at 01:36 Asia/Yerevan. It is now saved as authoring v5, with runtime v2 preserved; authenticated publication remains pending. [Batch 03 and guide correction](chapter-iii-batch-03-staging.md). The observations below describe the earlier review-closure checkpoint.
+
 **2026-10-14 (Asia/Yerevan) · Sprint 15C.3R · Roadmap 3.66**
 
 John reported all reviews approved at 01:25. Read-only production verification at 01:28 confirms **16 approved practice questions, 16 published guides and 33 active misconception definitions**. All current questions have matching human content approvals and passing current-version QA with zero errors/warnings. The ordinary site-review queue is empty.
