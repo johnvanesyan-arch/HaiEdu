@@ -155,7 +155,25 @@ export async function runReadChecks({ fixture, activation, request, check }) {
   };
 }
 
-async function browserChecks({ contexts, sessions, url, check }) {
+// Keep enough diagnostics to distinguish a browser exception from a blocked
+// request without persisting credentials, request bodies, or learner data.
+export function browserErrorDiagnostic(error) {
+  const message = String(error?.message ?? '');
+  const category = /transition.*(?:skip|abort)|(?:skip|abort).*transition/i.test(message) ? 'view_transition_cancelled'
+    : /Cannot read properties of (?:null|undefined)/.test(message) ? 'null_dom_access'
+    : /(?:Failed to fetch dynamically imported module|Failed to resolve module)/.test(message) ? 'module_load'
+    : /(?:Failed to fetch|NetworkError|Load failed)/.test(message) ? 'network'
+    : 'unclassified';
+  return { category, name: ['Error', 'TypeError', 'ReferenceError', 'SyntaxError', 'AbortError'].includes(error?.name) ? error.name : 'Error',
+    messageSha256: createHash('sha256').update(message).digest('hex') };
+}
+
+export function blockedRequestDiagnostic({ pathname, method }) {
+  return { method: ['GET', 'POST', 'PATCH', 'PUT', 'DELETE', 'OPTIONS', 'HEAD'].includes(method) ? method : 'OTHER',
+    endpoint: /^\/(?:functions|rest)\/v1\/[a-z][a-z0-9_-]{0,70}$/.test(pathname) || /^\/auth\/v1\/(?:user|token|logout)$/.test(pathname) ? pathname : '/redacted' };
+}
+
+async function browserChecks({ contexts, sessions, url, check, diagnostics }) {
   const { chromium, expect: baseExpect } = await import('@playwright/test');
   const expect = baseExpect.configure({ timeout: 30000 });
   const browser = await chromium.launch({ headless: true });
@@ -166,17 +184,24 @@ async function browserChecks({ contexts, sessions, url, check }) {
         cookies: [], origins: [{ origin: site, localStorage: [{ name: `sb-${new URL(url).hostname.split('.')[0]}-auth-token`, value: JSON.stringify(session) }] }],
       } });
       let blocked = 0, pageErrors = 0;
+      const diagnostic = { side, blockedRequestCount: 0, pageErrorCount: 0, blockedRequests: [], pageErrors: [] };
+      diagnostics.push(diagnostic);
       try {
         await context.route(`${url}/**`, async route => {
           const req = route.request(), target = new URL(req.url());
           let body; try { body = req.postDataJSON(); } catch { body = null; }
           if (!allowedBrowserRequest({ pathname: target.pathname, search: target.search, method: req.method(), body })) {
-            blocked++; await route.abort(); return;
+            blocked++; diagnostic.blockedRequestCount = blocked;
+            if (diagnostic.blockedRequests.length < 20) diagnostic.blockedRequests.push(blockedRequestDiagnostic({ pathname: target.pathname, method: req.method() }));
+            await route.abort(); return;
           }
           await route.continue();
         });
         const page = await context.newPage();
-        page.on('pageerror', () => { pageErrors++; });
+        page.on('pageerror', error => {
+          pageErrors++; diagnostic.pageErrorCount = pageErrors;
+          if (diagnostic.pageErrors.length < 20) diagnostic.pageErrors.push(browserErrorDiagnostic(error));
+        });
         page.setDefaultTimeout(30000);
         await page.goto(`${site}/index.html`, { waitUntil: 'domcontentloaded' });
         // Both releases belong in the same course card after programme grouping.
@@ -216,7 +241,7 @@ async function browserChecks({ contexts, sessions, url, check }) {
 
 async function main() {
   const report = { scope: 'Chapter II pilot authenticated read-only production acceptance', schemaVersion: 1,
-    revision: process.env.GITHUB_SHA, startedAt: new Date().toISOString(), status: 'running', checks: [],
+    revision: process.env.GITHUB_SHA, startedAt: new Date().toISOString(), status: 'running', checks: [], browserDiagnostics: [],
     limitations: ['No learning sessions, answers or exposures are created.', 'Read-only switching is not a completed learner attempt or specialist approval.'] };
   const sessions = new Map();
   const check = (label, passed, httpStatus) => {
@@ -253,7 +278,7 @@ async function main() {
       check(`${actor}: authenticated expected designated QA identity`, r.status === 200 && Boolean(r.data?.access_token) && r.data?.user?.id === fixture[side][`${role}Id`], r.status);
     }
     const acceptance = await runReadChecks({ fixture, activation, request, check });
-    await browserChecks({ contexts: acceptance.contexts, sessions, url, check });
+    await browserChecks({ contexts: acceptance.contexts, sessions, url, check, diagnostics: report.browserDiagnostics });
     await acceptance.verifyPreserved();
     // A redeploy during acceptance must not inherit evidence for a different build.
     await waitForRelease({ expectedCommit: report.revision, timeoutMs: 15000 });

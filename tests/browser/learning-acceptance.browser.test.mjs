@@ -11,9 +11,9 @@ after(async()=>{await browser?.close();});
 
 async function fixture(t) {
  const f=await acceptanceFixture();t.after(()=>f.close());
- // This component harness omits the global shell/UX controller. Disable its
- // cross-document transition opt-in as well; application errors stay asserted.
- const html=(await readFile('web/course.html','utf8')).replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</head>','<style>@view-transition { navigation: none; }</style></head>').replace('</body>','<script type="module" src="./course-page.js"></script></body>');
+ // Keep the real production styles; the full-shell suite separately covers
+ // cross-document navigation. Application errors remain asserted in both.
+ const html=(await readFile('web/course.html','utf8')).replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</body>','<script type="module" src="./course-page.js"></script></body>');
  const server=createServer(async(req,res)=>{
   try{
    const url=new URL(req.url,'http://isolated.invalid');

@@ -119,11 +119,6 @@ button.ghost { background: transparent; color: #274a75; border: 1px solid #ccd7e
   .quantity-row { grid-template-columns: 1fr; }
 }
 
-/* Same-origin navigation can keep the outgoing page visible until the next document paints. */
-@view-transition { navigation: auto; }
-::view-transition-old(root),
-::view-transition-new(root) { animation-duration: 120ms; }
-@media (prefers-reduced-motion: reduce) {
-  ::view-transition-old(root),
-  ::view-transition-new(root) { animation-duration: 0ms; }
-}
+/* Keep cross-document navigation native. A global view-transition opt-in can
+   reject during stylesheet/document handoff and emit a page error even after
+   the destination has loaded successfully. Component animations are separate. */

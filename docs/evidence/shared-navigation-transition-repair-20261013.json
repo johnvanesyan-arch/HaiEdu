@@ -1,0 +1,50 @@
+{
+  "schemaVersion": 1,
+  "status": "reproduced_fix_pending_ci",
+  "productionAttempt": 38441429710,
+  "productionChecksPassed": 71,
+  "productionChecksTotal": 72,
+  "isolatedReproduction": {
+    "run": 38443735239,
+    "job": 115456607727,
+    "checksPassed": 66,
+    "checksTotal": 67,
+    "failedTest": "full student shell switches between course documents without browser errors or learning writes",
+    "errors": [
+      "Transition was aborted because of invalid state. ViewTransition opt-in disabled"
+    ]
+  },
+  "change": "Remove global automatic cross-document animation from shared styles; retain native navigation and all acceptance assertions. Remove the isolated harness override and test actual full Home/course documents.",
+  "consumers": [
+    "web/physics-7.html",
+    "web/diagnostic.html",
+    "web/content-review.html",
+    "web/progress.html",
+    "web/teacher.html",
+    "web/practice.html",
+    "web/index.html",
+    "web/account-access.html",
+    "web/content-evidence.html",
+    "web/content-misconceptions.html",
+    "web/content-bank.html",
+    "web/school-teacher.html",
+    "web/admin-security.html",
+    "web/assessment.html",
+    "web/school-admin.html",
+    "web/content-item.html",
+    "web/content-curriculum.html",
+    "web/content.html",
+    "web/privacy.html",
+    "web/join.html",
+    "web/mastery.html",
+    "web/content-guides.html",
+    "web/course.html",
+    "web/admin.html"
+  ],
+  "requiredProductionAcceptance": [
+    "Chapter II pilot read acceptance",
+    "Sprint 14 authenticated actions",
+    "Sprint 14D analytics"
+  ],
+  "edgeBundleChange": false
+}
