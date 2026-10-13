@@ -1,0 +1,105 @@
+{
+  "scope": "Chapter II recorded editorial corrections; pre-staging author comparison",
+  "date": "2026-10-13",
+  "author": "Codex automated author/comparison reviewer",
+  "sourceCommit": "46db0ed7b3023a11e36075db80e7121396294b9f",
+  "privateArchive": {
+    "libraryFileId": "libfile_7798a3efdfcc8191a6694cce94b6c97e",
+    "fileId": "file_00000000011081f5b34904cfc91674a9",
+    "filename": "HaiEdu-Chapter-II-Editorial-Comparison-20261013.zip",
+    "sha256": "0341f577d0fb29193fc577cdda9697b85996f8cebc30dabaff43b9ab48f6ddae",
+    "members": 43
+  },
+  "questionRevisions": [
+    {
+      "code": "PHY7-U02-S09-I06",
+      "fromVersion": 2,
+      "toVersion": 3,
+      "change": "Remove embedded option label",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U02-S09-M01",
+      "fromVersion": 2,
+      "toVersion": 3,
+      "change": "Remove repeated conjunction and punctuation",
+      "disposition": "retain existing candidate; no new coverage"
+    },
+    {
+      "code": "PHY7-U02-S08-M02",
+      "fromVersion": 2,
+      "toVersion": 3,
+      "change": "Remove superseded repeated option formulation",
+      "disposition": "retain existing candidate; no new coverage"
+    }
+  ],
+  "guideDrafts": [
+    {
+      "id": "a44ab261-4ab8-4884-9655-838770933f75",
+      "skill": "PHY7-U02-S06",
+      "fromAuthoringVersion": 4,
+      "toAuthoringVersion": 5,
+      "runtimeVersionPreserved": 2
+    },
+    {
+      "id": "ce3fa8e4-c375-449d-beef-8649bee52e1d",
+      "skill": "PHY7-U02-S09",
+      "fromAuthoringVersion": 4,
+      "toAuthoringVersion": 5,
+      "runtimeVersionPreserved": 2
+    },
+    {
+      "id": "cf474b91-5383-46c4-a5cd-3e261ab5a76c",
+      "skill": "PHY7-U02-S09",
+      "fromAuthoringVersion": 4,
+      "toAuthoringVersion": 5,
+      "runtimeVersionPreserved": 2
+    }
+  ],
+  "comparison": {
+    "globalCurrentItems": 453,
+    "globalImmutableItemVersions": 327,
+    "fullApplicableCurrentItems": 48,
+    "fullRelatedCurrentItems": 188,
+    "scopeImmutableVersions": 109,
+    "distinctHistoricalTextDeltas": 15,
+    "guideSources": 40,
+    "distinctFullGuideTexts": 76,
+    "withinBatchPairs": 3,
+    "allSkillOutcomeMappings": 20,
+    "newQuestions": 0,
+    "newIndependentReasoningCoverage": 0
+  },
+  "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+  "rollbackRehearsal": {
+    "observedAt": "2026-10-13T07:25:08.157485+00:00",
+    "all38TablesRestored": true,
+    "exactSpecsSnapshotsKeysAndMappings": true,
+    "questionQa": {
+      "passed": 3,
+      "errors": 0,
+      "warnings": 0
+    },
+    "guideValidation": {
+      "passedGuides": 3,
+      "checkedVariants": 4,
+      "errors": 0,
+      "warnings": 0
+    },
+    "method": "Exact deployed evaluator/helper replay over production-schema rollback readback with read-only adapter; not authenticated live Edge/browser invocation"
+  },
+  "status": "comparison_saved_before_committed_staging",
+  "openGates": [
+    "Fresh human content review for the three new question versions and three guide drafts",
+    "Historical prompt-exposure disposition",
+    "External SME/source/protection qualification",
+    "Disjoint form allocation, policy/model binding, pilot and release"
+  ],
+  "boundaries": {
+    "priorHumanApprovalsPreserved": true,
+    "publishedGuidesPreserved": true,
+    "archivedS07M05Preserved": true,
+    "releaseInactive": true,
+    "questionKeysAndMappingsUnchanged": true
+  }
+}
