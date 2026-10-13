@@ -1,0 +1,96 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-13",
+  "status": "preparation_only",
+  "allocationManifestSha256": "3855a223c78b13142b9e5d85de35c61c7f52f2600f45ef6fe7ff5d743d46c367",
+  "configurationVerification": {
+    "structure": {
+      "kind": "isolated PGlite structural validation using repository production functions and exact production metadata IDs",
+      "productionWrites": 0,
+      "checks": [
+        "Exact baseline numeric configuration clone passes production learning-model validator.",
+        "diagnostic: full current inventory, frozen policy and all eight skills accepted by production policy validator and binding function.",
+        "practice: full current inventory, frozen policy and all eight skills accepted by production policy validator and binding function.",
+        "mastery_check: full current inventory, frozen policy and all eight skills accepted by production policy validator and binding function.",
+        "chapter_review: full current inventory, frozen policy and all eight skills accepted by production policy validator and binding function.",
+        "Removing one diagnostic form item is rejected by real policy validator.",
+        "Mastery remains at least13/16 plus one correct in each of eight skills; lifecycle max3 and review12 unchanged."
+      ],
+      "limitations": [
+        "Not authenticated browser/HTTP acceptance.",
+        "Mastery opt-in whole-form extension requires its separate regression suite; current test validates v1 policy shape and diagnostic forms.",
+        "Draft configuration SQL has not been executed against production."
+      ]
+    },
+    "constraints": {
+      "kind": "Isolated PGlite insertion against freshly read production column types, NOT NULL, defaults, generated columns, CHECK, primary-key and UNIQUE constraints",
+      "tables": 13,
+      "insertedConfigurationRows": 661,
+      "forms": 5,
+      "formItems": 80,
+      "productionWrites": 0,
+      "validatedConstraints": 43,
+      "limitations": [
+        "Foreign-key and trigger/RLS/activation behavior requires root production-rollback dry run.",
+        "Reviewed implementation commit replaced only in isolated memory by inert 40-hex SHA; output SQL retains fail-closed real-commit requirement.",
+        "This validates generated row shape against production constraints; it does not execute compact INSERT SELECT source guards."
+      ]
+    },
+    "scoring": {
+      "kind": "Isolated production governed runtime + opt-in mastery extension, exact ChapterII16-question/eight-skill policy and metadata, synthetic content/keys",
+      "productionWrites": 0,
+      "baselineQuestions": 16,
+      "results": [
+        {
+          "scenario": "13 of16, each skill at least1",
+          "passed": true,
+          "correct_count": 13,
+          "planned_item_count": 16,
+          "score_percent": "81",
+          "assessmentFormId": "85c1becc-a30b-5b95-a902-765d35f059bf"
+        },
+        {
+          "scenario": "12 of16, each skill at least1",
+          "passed": false,
+          "correct_count": 12,
+          "planned_item_count": 16,
+          "score_percent": "75",
+          "assessmentFormId": "85c1becc-a30b-5b95-a902-765d35f059bf"
+        },
+        {
+          "scenario": "14 of16, one skill0of2",
+          "passed": false,
+          "correct_count": 14,
+          "planned_item_count": 16,
+          "score_percent": "88",
+          "assessmentFormId": "85c1becc-a30b-5b95-a902-765d35f059bf"
+        }
+      ],
+      "limitations": [
+        "Not production HTTP/browser acceptance.",
+        "Readiness was set through isolated fixture state; this test verifies scoring and exact whole-form selection, not the learner readiness journey."
+      ]
+    }
+  },
+  "independentTechnicalReviews": {
+    "releaseScope": "Two stale-snapshot governance races fixed; no remaining actionable issue in scoped independent review. Real PostgreSQL and Chromium CI remain required.",
+    "masteryForms": "Final independent review: no remaining actionable defect for the bounded Chapter II pilot. First-binding exposure, isolation and empty-pool races remediated. Final focused PGlite suite: 16/16 passed. Real PostgreSQL concurrency execution remains required in CI. Legacy assignment isolation is scoped to asserted nonoverlapping Chapter I/II eligibility.",
+    "activationTransaction": "FK, activation order, owner privileges, append-only model/runtime and Chapter I preservation reviewed; final live rollback rehearsal remains required."
+  },
+  "liveActivation": false,
+  "specialistReview": "pending",
+  "localRegression": {
+    "fullSuite": {
+      "tests": 1280,
+      "passed": 1278,
+      "failed": 2,
+      "failureDisposition": "Two outdated source-pattern navigation assertions corrected; related navigation/shell subset now 36/36 passes. Full final CI required."
+    },
+    "masteryFocused": {
+      "passed": 16
+    },
+    "typecheck": "passed",
+    "coreParity": "passed",
+    "browserQaDependencyCoverage": "passed"
+  }
+}

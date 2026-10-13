@@ -125,6 +125,10 @@ jobs:
         run: python tests/learning-dashboard-concurrency.py
       - name: Verify governed learning API, answer and review races on PostgreSQL 17.6
         run: python tests/governed-runtime-concurrency.py
+      - name: Verify disjoint curriculum release activation races
+        run: python tests/release-unit-concurrency.py
+      - name: Verify governed whole-form mastery selection races
+        run: python tests/governed-mastery-forms-concurrency.py
 
   platform-release-checks:
     name: Platform release checks

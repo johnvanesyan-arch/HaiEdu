@@ -10,7 +10,7 @@ The 192-question Chapter II bank is content-approved, with 263 active definition
 
 Sprint 15B.14A is a read-only qualification preflight and reviewer handoff. It creates no new endpoint, approval, QA record, SME flag, release-gate transition or runtime change. The ordinary reviewer approval flow records content approval; SME status remains separately governed, as the current interface states. No API contract, scoring or delivery rule changed.
 
-Content approval does not enable learner delivery. The candidate remains draft and inactive, with zero question pool/form memberships, blueprints, policy bindings or model bindings. All 96 Diagnostic/Mastery candidates remain pending independent SME and historical exposure disposition before protected allocation. The [shared RLS repair](direct-question-read-protection-20261013.md) denies direct anonymous/student reads; zero governed exposure events does not establish historical non-exposure through the former direct-read route. [Qualification boundary](chapter-ii-assessment-qualification.md).
+The owner subsequently authorized a provisional Chapter II pilot with specialist review deferred. The candidate remains draft while exact form allocation, model/policy bindings and nonoverlapping chapter release activation are prepared. The ordinary six pilot gates still apply; independent SME and final exposure disposition remain production requirements. [Owner decision and implementation boundary](chapter-ii-pilot-release.md). The [shared RLS repair](direct-question-read-protection-20261013.md) denies direct anonymous/student reads; zero governed exposure events does not establish historical non-exposure through the former direct-read route. [Qualification boundary](chapter-ii-assessment-qualification.md).
 
 ## Authentication and workflow
 
@@ -67,6 +67,36 @@ Success is HTTP 200; fields vary by mode and adapter. These are response descrip
 
 Recommendations and criteria come from the bound policy/model and authorized context. Do not hard-code Chapter I quantities, Chapter II Option B criteria or one recommendation action into shared clients. Content approval and an assessment plan do not create a session binding.
 
+## Prepared runtime extensions — 2026-10-13
+
+The following changes are prepared in repository source. They are outside the deployed verification dated above; deployment, activation and authenticated acceptance are tracked in the [Chapter II pilot record](chapter-ii-pilot-release.md).
+
+### Optional whole-form Mastery selection
+
+A Mastery blueprint can opt in through `assessment_blueprints.configuration_snapshot.masteryFormSelection`, alongside `assessmentPolicy`. This is server configuration, not a new session-request field or a member of the assessment-policy v1 object. Illustrative configuration, with actual form UUIDs substituted:
+
+```json
+{
+  "masteryFormSelection": {
+    "schemaVersion": "haiedu-mastery-form-selection-v1",
+    "formIds": ["<first form UUID>", "<second form UUID>", "<third form UUID>"],
+    "selectionStrategy": "ordered-unseen-whole-form-v1"
+  }
+}
+```
+
+`formIds` is an ordered list of 1–100 distinct active forms in the blueprint's protected Mastery pool, with at least as many forms as the bound maximum Mastery attempts. Every form must match the bound planned count and per-skill coverage, use the blueprint's current published item versions, and share no item with another declared form. Declared items cannot also be enabled in a Diagnostic, Practice, Review or unprotected pool. Binding saves an immutable private manifest of the ordered selection, form versions and item versions/skills. Allocation changes require a new reviewed blueprint/version; removing the opt-in field cannot silently restore dynamic selection.
+
+For a new attempt, the server selects the first declared form whose entire membership is unseen. Any recorded assignment, exposure or answer attempt for a constituent item, across purposes and releases, excludes the whole form. The complete form is assigned atomically; unused pool items and reserves are not substituted. If no declared form remains eligible, allocation fails closed. An existing matching active session resumes before new allocation. The selection is not a claim of empirical form equivalence.
+
+The opt-in path requires Read Committed transaction isolation, as used by the API. It changes neither the learner request shape nor the bound scoring, readiness or attempt-limit rules. Blueprints without this option retain their existing selection behavior, and the Chapter I legacy adapter remains unchanged. No new public error projection is introduced: unavailable or invalid form configuration passes through the existing governed `403 learning_context_unavailable` boundary.
+
+### Disjoint active curriculum releases
+
+The prepared registry permits active releases within one programme when their unit snapshots are disjoint. A unit can belong to only one active release; activation still requires the applicable pilot/production gates. Activated release identity and unit scope cannot be rewritten to move existing sessions to another release. Browser course grouping uses enrollment and programme, while chapter links and API requests retain the exact enrollment/release/unit identities. Clients must not infer one active release per programme or substitute another release when a context is unavailable.
+
+Release-governance writes require Read Committed; this is not a new learner request requirement. Cross-release prerequisite routing remains outside this change. See [release-unit governance, consumer scope and limitations](disjoint-release-unit-governance.md).
+
 ## Duplicates and failures
 
 Answer recording and mastery evidence use transactional RPCs. Session-bound `submit-answer` and governed Mastery reject repeated answers with **409 `session_item_already_answered`**; they do not promise an idempotent cached HTTP 200. Legacy Mastery wraps an upstream duplicate error as `grading_failed` with `detail: "session_item_already_answered"`, retaining HTTP 409. A completed session can instead return `session_not_active`. After a timeout or ambiguous error, reload session state before another submission: a write may have committed before a later response/read or Mastery finalization failed. Preserve the served item identity; do not allocate a new identity to bypass duplicate protection.
@@ -95,9 +125,10 @@ Legacy `submit-answer` still accepts `itemId` and `response` without session IDs
 - [Answer endpoint](../supabase/functions/submit-answer/index.ts) and [Mastery endpoint](../supabase/functions/submit-mastery-answer/index.ts).
 - [Governed router](../supabase/functions/_shared/governed-learning-runtime.mjs), [context resolver](../supabase/functions/_shared/student-learning-context.mjs), [assessment policy parser](../supabase/functions/_shared/assessment-policy.mjs).
 - [Governed transaction and response projection](../supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql).
+- Prepared [whole-form Mastery selection](../supabase/migrations/20261013101825_governed_mastery_form_selection.sql) and [disjoint release-unit governance](../supabase/migrations/20261013101644_disjoint_curriculum_release_units.sql).
 - [Runtime scope](sprint-15b12c-learning-runtime.md), [navigation/analytics](sprint-15b12d-navigation-analytics.md), [live acceptance boundary](sprint-15b12e-acceptance.md).
 
-The deployment comparison covers the `submit-answer` bundle, not a fresh deployment-parity certification of every endpoint mentioned. This reconciliation changes documentation only.
+The 2026-10-10 deployment comparison covers the `submit-answer` bundle, not a fresh deployment-parity certification of every endpoint mentioned. It does not cover the prepared 2026-10-13 runtime extensions; their deployment and acceptance remain separately tracked.
 
 ## Content Reviewer dashboard reads
 

@@ -22,7 +22,8 @@ test("Sprint 10.5F student routes remain available inside the entitlement-driven
   assert.doesNotMatch(courses, /physics-7\.html/);
   assert.match(courses, /assessment/);
   assert.match(courses, /progress/);
-  assert.match(courses, /selected\.enrollmentId === course\.enrollmentId/);
+  assert.match(courses, /import\s*\{[^}]*sameCourse[^}]*\}\s*from\s*['"]\.\/learning-navigation\.mjs['"]/);
+  assert.match(courses, /sameCourse\(selected,\s*course\)/);
   assert.match(shell, /responsive-qa\.css/);
 });
 

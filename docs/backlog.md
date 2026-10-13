@@ -263,6 +263,9 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Stage the recorded three question revisions and three guide drafts, preserve prior approvals/history and verify deployed technical QA.
 - [x] Human review of the three v3 question revisions and publication of the three guide corrections at authoring v7 / runtime v3, verified against unchanged reviewed content.
 - [x] 15B.14A: prepare the current-version inventory, independent Physics reviewer packet and historical exposure hold.
-- [ ] Historical exposure disposition, independent SME/protection qualification, disjoint allocations and release gates.
+- [x] Owner authorization for provisional Chapter II pilot with specialist review deferred.
+- [ ] 15B.14B: exact protected forms, independent chapter release configuration and technical verification.
+- [ ] 15B.14C: activate the pilot and verify authenticated Chapter I/II navigation and preserved history.
+- [ ] Independent SME/protection review and final exposure disposition before production promotion.
 
-The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) is complete; independent SME/exposure, allocation and release decisions remain open. [Current evidence](evidence/chapter-ii-qualification-preflight-20261013.json) · [Authoritative status](project-status.md).
+The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) is complete; the owner-authorized pilot is in technical preparation, and independent SME/production exposure decisions remain open. [Current evidence](evidence/chapter-ii-qualification-preflight-20261013.json) · [Authoritative status](project-status.md).

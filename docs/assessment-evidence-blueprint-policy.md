@@ -75,6 +75,10 @@ The policy is subject-neutral. A subject extension may define suitable stimulus,
 
 These values classify evidence purpose, not item type. A multiple-choice, true/false, numeric, quantity or future governed response type may serve any appropriate purpose.
 
+## Chapter II pilot release direction — 2026-10-13
+
+John explicitly directed: “You can release Chapter II; we will do the specialist review later.” For this bounded pilot of the existing 192 approved question versions, this supersedes the earlier requirement to wait for independent SME review before allocation and learner release. It does not widen the authoring manifest or certify SME approval. The six ordinary pilot release gates, current human content approval, source/comparison evidence, protected delivery and exact form checks still apply. Independent SME approval and the final historical-exposure disposition remain required for production promotion; item validation stays provisional. [Scope, exposure limitation and release evidence](chapter-ii-pilot-release.md). The current status register distinguishes preparation from completed activation.
+
 ## Prospective authoring contract
 
 Every new item template must declare:
