@@ -18,6 +18,27 @@ const denied = r => r.status === 403 && r.data?.error === 'learning_context_unav
 const noRows = r => (r.status === 403 && r.data?.code === '42501') || (r.status === 200 && Array.isArray(r.data) && r.data.length === 0);
 const digest = value => createHash('sha256').update(JSON.stringify(value)).digest('hex');
 
+export function clientHeaders(key, accessToken) {
+  // Publishable keys belong in apikey, never in the user-JWT header. In
+  // particular, anonymous RLS probes must reach the anonymous database role.
+  // https://supabase.com/docs/guides/getting-started/migrating-to-new-api-keys
+  return { apikey: key, ...(accessToken ? { Authorization: `Bearer ${accessToken}` } : {}), 'Content-Type': 'application/json' };
+}
+
+export function anonymousDashboardDenied(result) {
+  const data = result.data;
+  if (result.status !== 401 || !data || typeof data !== 'object' || Array.isArray(data)) return false;
+  if (Object.keys(data).length === 1 && data.error === 'unauthorized') return true;
+  // The gateway can reject before our handler. Accept only documented auth
+  // failure shapes; an arbitrary 401 or any extra data still fails acceptance.
+  // https://supabase.com/docs/guides/troubleshooting/edge-function-401-error-response
+  // https://supabase.com/docs/guides/functions/error-codes
+  if (Object.keys(data).sort().join(',') !== 'code,message') return false;
+  if (data.code === 401) return ['Missing authorization header', 'Invalid JWT', 'Invalid Token or Protected Header formatting'].includes(data.message);
+  return (data.code === 'UNAUTHORIZED_NO_AUTH_HEADER' && data.message === 'Missing authorization header') ||
+    (data.code === 'UNAUTHORIZED_INVALID_JWT_FORMAT' && data.message === 'Invalid JWT');
+}
+
 export function validateActivation({ activation, fixture, credentials, revision, ref }) {
   const errors = validateFixture(fixture, credentials);
   if (ref !== 'refs/heads/main') errors.push('Reviewed main branch is required');
@@ -122,7 +143,7 @@ export async function runReadChecks({ fixture, activation, request, check }) {
     check(`${actor ?? 'anonymous'}: direct ${table} reads denied or empty`, noRows(r), r.status);
   }
   const anonymous = await request(null, '/functions/v1/get-student-dashboard', selection(contexts.A[1]));
-  check('anonymous: learner dashboard requires authentication', anonymous.status === 401 && anonymous.data?.error === 'unauthorized' && Object.keys(anonymous.data).length === 1, anonymous.status);
+  check('anonymous: learner dashboard requires authentication', anonymousDashboardDenied(anonymous), anonymous.status);
   return {
     contexts,
     async verifyPreserved() {
@@ -219,9 +240,8 @@ async function main() {
     check('committed public client configuration is present', Boolean(url && key) && new URL(url).protocol === 'https:');
     request = async (actor, endpoint, body = {}, method = 'POST') => {
       try {
-        const response = await fetch(`${url}${endpoint}`, { method, redirect: 'error', headers: {
-          apikey: key, Authorization: `Bearer ${sessions.get(actor)?.access_token ?? key}`, 'Content-Type': 'application/json',
-        }, ...(method === 'GET' ? {} : { body: JSON.stringify(body) }), signal: AbortSignal.timeout(25000) });
+        const response = await fetch(`${url}${endpoint}`, { method, redirect: 'error', headers: clientHeaders(key, sessions.get(actor)?.access_token),
+          ...(method === 'GET' ? {} : { body: JSON.stringify(body) }), signal: AbortSignal.timeout(25000) });
         return { status: response.status, data: await response.json().catch(() => null) };
       } catch { return { status: 0, data: null }; }
     };

@@ -1,7 +1,7 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { chapterII, chapterIUnitId, validateActivation, allowedBrowserRequest, containsProtectedContent, chapterIIContract, runReadChecks } from '../scripts/chapter-ii-pilot-read-acceptance.mjs';
+import { chapterII, chapterIUnitId, validateActivation, allowedBrowserRequest, containsProtectedContent, chapterIIContract, runReadChecks, clientHeaders, anonymousDashboardDenied } from '../scripts/chapter-ii-pilot-read-acceptance.mjs';
 
 const id = n => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
 function inputs() {
@@ -116,6 +116,27 @@ test('foreign context, protected row and 401 substituted for authorization denia
     ({ endpoint }) => endpoint.startsWith('/rest/v1/items?') ? { status: 200, data: [{ id: id(20) }] } : null,
     ({ actor, endpoint }) => actor === 'A_admin' && endpoint.endsWith('get-student-dashboard') ? { status: 401, data: { error: 'unauthorized' } } : null,
   ]) { const input = inputs(); await assert.rejects(runReadChecks({ ...input, ...mock(input, alter) })); }
+});
+
+test('anonymous probes use apikey without a fake user JWT and accept only exact auth denial shapes', async () => {
+  assert.deepEqual(clientHeaders('sb_publishable_public'), { apikey: 'sb_publishable_public', 'Content-Type': 'application/json' });
+  assert.equal(clientHeaders('sb_publishable_public', 'user-jwt').Authorization, 'Bearer user-jwt');
+  for (const data of [{ error: 'unauthorized' }, { code: 401, message: 'Missing authorization header' },
+    { code: 401, message: 'Invalid JWT' }, { code: 'UNAUTHORIZED_NO_AUTH_HEADER', message: 'Missing authorization header' },
+    { code: 'UNAUTHORIZED_INVALID_JWT_FORMAT', message: 'Invalid JWT' }]) {
+    const input = inputs(), m = mock(input, ({ actor, endpoint }) => actor === null && endpoint.endsWith('get-student-dashboard') ? { status: 401, data } : null);
+    const result = await runReadChecks({ ...input, ...m });
+    await result.verifyPreserved();
+    assert.ok(m.checks.every(c => c.passed));
+  }
+  for (const result of [
+    { status: 401, data: { error: 'different_error' } }, { status: 401, data: null },
+    { status: 401, data: { code: 401, message: 'Missing authorization header', context: { studentId: id(1) } } },
+    { status: 401, data: { code: 401, message: 'Database unavailable' } },
+    { status: 401, data: { code: 'OTHER_ERROR', message: 'Invalid JWT' } },
+    { status: 200, data: { code: 401, message: 'Invalid JWT' } },
+    { status: 403, data: { error: 'unauthorized' } },
+  ]) assert.equal(anonymousDashboardDenied(result), false);
 });
 
 test('snapshot detects any changed Chapter I history after native switching', async () => {

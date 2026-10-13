@@ -5,6 +5,7 @@ import json
 import subprocess
 import sys
 import time
+from uuid import UUID
 import psycopg
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -82,7 +83,7 @@ with database_uri() as uri:
         assert result.get('code') == '23505', result
         print('PASS: rolled-back retirement cannot leave an unclaimed active unit', flush=True)
         assert c.execute('select to_jsonb(r) from curriculum_releases r where id=%s', [ident(10)]).fetchone()[0] == original
-        assert c.execute('select curriculum_release_id from private.active_curriculum_release_units where unit_id=%s', [ident(101)]).fetchone()[0] == ident(10)
+        assert c.execute('select curriculum_release_id from private.active_curriculum_release_units where unit_id=%s', [ident(101)]).fetchone()[0] == UUID(ident(10))
         print('PASS: the unchanged first chapter retains its original active release', flush=True)
         for isolation in ['repeatable read', 'serializable']:
             with psycopg.connect(uri) as stale:
