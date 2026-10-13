@@ -4,7 +4,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. It does not authorize a new release or claim completed live multi-context acceptance.
 
-**Chapter III draft staging (2026-10-13):** [15C.2](chapter-iii-batch-01-staging.md) is committed: a Chapter III-only draft curriculum (six outcomes/eight skills), eight practice items, eight draft guides, 19 draft definitions and eight automated technical QA records. Existing reviewer endpoints expose the draft records; no endpoint contract changed. Owner acceptance of the exact offline questions is provenance, not an authenticated approval or specialist event. No scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release is added. Chapter II deployment remains paused.
+**Chapter III draft staging (2026-10-13):** [15C.2](chapter-iii-batch-01-staging.md) is committed: a Chapter III-only draft curriculum (six outcomes/eight skills), eight practice items, eight draft guides, 19 draft definitions and eight automated technical QA records. Existing reviewer endpoints expose the draft records; no endpoint contract changed. Owner acceptance of the exact offline questions is provenance, not an authenticated approval or specialist event. No scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release is added. Chapter II deployment has resumed but remains blocked by the connector; the [latest readback](evidence/chapter-ii-pilot-resume-20261013.json) confirms no activation.
 
 ## Chapter II content boundary — 2026-10-13
 
@@ -71,7 +71,7 @@ Recommendations and criteria come from the bound policy/model and authorized con
 
 ## Merged runtime extensions — database deployment pending, 2026-10-13
 
-The following changes merged in PR #206 at `a64269e1ab83d2b52d1a8af0d65559bab580aeec` and passed all five final CI jobs. Vercel production is `READY` on that commit, but the database extensions below are not deployed: both connector migration attempts failed with `invalid_request_state`, and readback confirms the first migration is absent. They are outside the deployed verification dated above. Database deployment, Chapter II activation and authenticated acceptance are tracked in the [pilot record](chapter-ii-pilot-release.md) and [blocker evidence](evidence/chapter-ii-pilot-deployment-blocker-20261013.json).
+The following changes merged in PR #206 at `a64269e1ab83d2b52d1a8af0d65559bab580aeec` and passed all five final CI jobs. Vercel production was verified `READY` on that implementation commit, but the database extensions below are not deployed: the initial two connector migration attempts failed with `invalid_request_state`, and readback confirms the first migration is absent. A third attempt after the owner resumed release also failed; [fresh readback](evidence/chapter-ii-pilot-resume-20261013.json) confirms both migrations remain absent. They are outside the deployed verification dated above. Database deployment, Chapter II activation and authenticated acceptance are tracked in the [pilot record](chapter-ii-pilot-release.md) and [blocker evidence](evidence/chapter-ii-pilot-deployment-blocker-20261013.json).
 
 ### Optional whole-form Mastery selection
 

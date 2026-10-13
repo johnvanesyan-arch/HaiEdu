@@ -262,7 +262,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [ ] Complete authenticated content workflow and review the newly authored guides/definitions on site.
 - [ ] Specify Chapter III readiness/pass contract and establish protected capacity; specialist/release gates remain open.
 
-[Staging](chapter-iii-batch-01-staging.md). Chapter II retries remain paused.
+[Staging](chapter-iii-batch-01-staging.md). Chapter II retries resumed at the owner’s request; the connector remains blocked. [Latest readback](evidence/chapter-ii-pilot-resume-20261013.json).
 
 ## Chapter III preparation — 15C.1, 2026-10-13 (historical checkpoint)
 
@@ -275,7 +275,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [ ] Create the governed Chapter III foundation and stage qualified drafts through the established reviewer workflow after recovery.
 - [ ] Human content review, specialist review and eventual assessment/release qualification.
 
-[Preparation](chapter-iii-preparation.md). This checklist records offline preparation only; no Supabase or learner changes occurred. Chapter II remains paused at the owner's request while its database deployment is blocked.
+[Preparation](chapter-iii-preparation.md). This checklist records offline preparation only; no Supabase or learner changes occurred. Chapter II was paused during preparation; the owner has since resumed release, but database deployment remains blocked.
 
 ## Chapter II final two batches — 2026-10-13
 
@@ -289,7 +289,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] 15B.14A: prepare the current-version inventory, independent Physics reviewer packet and historical exposure hold.
 - [x] Owner authorization for provisional Chapter II pilot with specialist review deferred.
 - [x] 15B.14B implementation: prepare exact protected forms and independent chapter release configuration; merge PR #206, pass all five final CI jobs and deploy the frontend.
-- [ ] 15B.14B production deployment: apply the database migrations, run the rollback rehearsal and commit the governed allocation/bindings. Blocked by Supabase connector `invalid_request_state`; readback confirms the first migration was not applied.
+- [ ] 15B.14B production deployment: apply the database migrations, run the rollback rehearsal and commit the governed allocation/bindings. The owner resumed release, but a third Supabase connector attempt returned `invalid_request_state`; [fresh readback](evidence/chapter-ii-pilot-resume-20261013.json) confirms both migrations remain absent.
 - [ ] 15B.14C: activate the pilot and verify authenticated Chapter I/II navigation and preserved history.
 - [ ] Independent SME/protection review and final exposure disposition before production promotion.
 
