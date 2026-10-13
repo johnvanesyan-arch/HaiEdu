@@ -1,5 +1,7 @@
 # Chapter II assessment batch 11
 
+> **Editorial follow-up — 2026-10-13:** the recorded corrections are now staged as new question/guide versions with passing technical checks. Fresh human review remains open; previous approvals/publications remain in history. [Current editorial handoff](chapter-ii-editorial-corrections-20261013.md) and [status register](project-status.md) supersede the dated pending statements below.
+
 **Date:** 2026-10-11 · **Slice:** 15B.13AA · **State:** eleven draft questions staged; human review pending.
 
 **Later disposition — 2026-10-12 (Asia/Yerevan):** the owner completed these reviews and authorized [batch 12](chapter-ii-assessment-batch-12.md). Production readback at 2026-10-11 20:14:08 UTC confirmed all 122 then-current Chapter II question versions approved, all 57 guides published and all 166 definitions active. The original checkpoint below remains historical; current counts and gates are in the [status register](project-status.md).

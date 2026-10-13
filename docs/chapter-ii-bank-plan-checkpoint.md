@@ -147,3 +147,7 @@ The eight overlapping Batch 13 proposals are retained in their comparison eviden
 The requirement for this now-recorded owner decision comes from `AGENTS.md` and [whole-bank policy steps 3, 5 and 6](assessment-evidence-blueprint-policy.md): a defensible shortfall must be reported to John, and the current classifications/protection criteria cannot be silently reinterpreted to meet a numerical target. The decision is recorded above; any scope beyond the recorded final 37 slots, reserve revision or assessment-contract change requires its own explicit decision.
 
 [Authoritative status](project-status.md) · [Completed audit](chapter-ii-coverage-feasibility-audit.md) · [Observed version inventory and capacity calculations](evidence/sprint-15b13-coverage-audit-20261012.json).
+
+## Editorial maintenance checkpoint — 2026-10-13
+
+John's next-part instruction authorizes the recorded corrections without expanding the manifest. Three existing question slots now have v3 revisions awaiting fresh review; three guides have v5 authoring drafts over unchanged published runtime v2. The bank remains 192 non-archived slots (189 current versions approved, three pending), with 263 active definitions and 57 published runtime guides. Existing approval history is preserved. No reserve/assessment-contract change or new independent reasoning coverage is claimed. [Editorial handoff](chapter-ii-editorial-corrections-20261013.md).
