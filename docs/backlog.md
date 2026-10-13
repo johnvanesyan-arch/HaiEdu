@@ -259,7 +259,9 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Check textbook facts, natural Armenian, solutions, distractors and no-image rationale.
 - [x] Rehearse/rollback, commit and independently read back eight questions, eight guides and fourteen definitions; question QA and guide validation pass 8/8.
 - [x] Preserve all existing rows across 39 guarded scopes and keep Chapter III inactive and unallocated.
-- [ ] Human site review of both batches: 16 questions, 16 guides and 33 definitions.
+- [x] Human site review of both batches: 16 questions, 16 guides and 33 definitions; verified current approvals and publication snapshots on 2026-10-14.
+- [x] Compare all eight edited guides and preserve the unchanged 16 question versions and 33 definitions.
+- [ ] Stage and freshly review the prepared S04-I01 guide clarification before learner release. [Review closure and prepared clarification](chapter-iii-review-closure-20261014.md).
 - [ ] Chapter III assessment/readiness contract, protected capacity, specialist and release decisions.
 
 [Verified staging](chapter-iii-batch-02-staging.md).
@@ -270,7 +272,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Refresh and compare all current/history/guide/related-mapping/protection evidence; retain eight for practice.
 - [x] Prepare the draft foundation and eight questions, eight guides and 19 definitions; rollback and exact-source QA pass.
 - [x] Merge/apply the Chapter III foundation; commit/read back the guarded practice package, record QA 8/8, verify three production image hashes, and reconcile the connector-assigned migration version.
-- [ ] Complete authenticated content workflow and review the newly authored guides/definitions on site.
+- [x] Complete authenticated content workflow and review the newly authored guides/definitions on site; verified under 15C.3R.
 - [ ] Specify Chapter III readiness/pass contract and establish protected capacity; specialist/release gates remain open.
 
 [Staging](chapter-iii-batch-01-staging.md). Chapter II subsequently activated through the owner-authorized browser route; authenticated production acceptance passed 91/91. [Activation evidence](evidence/chapter-ii-pilot-activation-20261013.json).
@@ -284,7 +286,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Owner accepted the preparation plan and planning budget; final counts/weights and supporting/additional-skill assessment treatment remain separately open under 15C.3.
 - [x] Refresh the full applicable current/history/guide/protected corpus for practice staging under 15C.2, then again under 15C.3; protected assessment qualification remains open.
 - [x] Create the governed Chapter III draft foundation and stage the first two practice batches through 15C.2/15C.3.
-- [ ] Human content review, specialist review and eventual assessment/release qualification.
+- [x] Human content review of the first two staged batches, verified under 15C.3R.
+- [ ] Prepared guide clarification, specialist review and eventual assessment/release qualification.
 
 [Preparation](chapter-iii-preparation.md). This checklist records offline preparation only; no Supabase or learner changes occurred. Chapter II was paused during preparation; the later owner-authorized browser deployment and pilot activation supersede that historical pause.
 

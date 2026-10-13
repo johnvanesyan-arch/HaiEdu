@@ -1,5 +1,7 @@
 # Chapter III batch 02 — governed practice staging
 
+**Subsequent review closure — 2026-10-14:** all questions, guides and definitions in this batch have saved human approval/publication records. Eight guide edits across both batches were compared; one S04-I01 clarification remains prepared for a new revision. [Review closure and prepared clarification](chapter-iii-review-closure-20261014.md). Staging observations below are historical.
+
 **2026-10-13 · Sprint 15C.3 · Committed and independently verified.**
 
 **Sprint 15C.3 is staged and verified:** eight more practice questions, eight draft guides and fourteen new misconception definitions across all eight Chapter III skills. Chapter III now contains **16 practice questions, 16 draft guides and 33 draft definitions**, all awaiting the ordinary human site workflow. The new questions pass technical QA 8/8 with zero errors or warnings; the eight guides also pass exact deployed-helper validation. The comparison records seven intentional practice variants and one additional question demand, with no protected assessment qualification.
