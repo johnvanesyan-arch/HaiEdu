@@ -1,6 +1,6 @@
 # Project status register
 
-**Updated:** 2026-10-13 (Asia/Yerevan) · **Documentation reconciliation:** repository records aligned; Notion currency verified by its source-commit stamp · **Roadmap:** 3.64
+**Updated:** 2026-10-13 (Asia/Yerevan) · **Documentation reconciliation:** repository records aligned; Notion synchronization follows merge and requires source-commit readback · **Roadmap:** 3.64
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
