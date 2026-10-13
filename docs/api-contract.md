@@ -4,7 +4,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. It does not authorize a new release or claim completed live multi-context acceptance.
 
-**Chapter III draft staging (2026-10-13):** [15C.2](chapter-iii-batch-01-staging.md) is committed: a Chapter III-only draft curriculum (six outcomes/eight skills), eight practice items, eight draft guides, 19 draft definitions and eight automated technical QA records. Existing reviewer endpoints expose the draft records; no endpoint contract changed. Owner acceptance of the exact offline questions is provenance, not an authenticated approval or specialist event. No scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release is added. Chapter II deployment has resumed but remains blocked by the connector; the [latest readback](evidence/chapter-ii-pilot-resume-20261013.json) confirms no activation.
+**Chapter III draft staging (2026-10-13):** [15C.2](chapter-iii-batch-01-staging.md) is committed: a Chapter III-only draft curriculum (six outcomes/eight skills), eight practice items, eight draft guides, 19 draft definitions and eight automated technical QA records. Existing reviewer endpoints expose the draft records; no endpoint contract changed. Owner acceptance of the exact offline questions is provenance, not an authenticated approval or specialist event. No scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release is added. Chapter II subsequently activated as an authorized provisional pilot; [committed readback](evidence/chapter-ii-pilot-activation-20261013.json) confirms Chapter III remains draft and unallocated.
 
 ## Chapter II content boundary — 2026-10-13
 
@@ -12,7 +12,7 @@ The 192-question Chapter II bank is content-approved, with 263 active definition
 
 Sprint 15B.14A is a read-only qualification preflight and reviewer handoff. It creates no new endpoint, approval, QA record, SME flag, release-gate transition or runtime change. The ordinary reviewer approval flow records content approval; SME status remains separately governed, as the current interface states. No API contract, scoring or delivery rule changed.
 
-The owner subsequently authorized a provisional Chapter II pilot with specialist review deferred. Its implementation is merged, CI passed and the frontend is deployed, but a Supabase connector failure blocks the database migrations. The candidate remains draft and inactive; production form allocation, model/policy bindings, activation and authenticated acceptance are pending. The ordinary six pilot gates still apply; independent SME and final exposure disposition remain production requirements. [Owner decision and deployment boundary](chapter-ii-pilot-release.md) · [Blocker evidence](evidence/chapter-ii-pilot-deployment-blocker-20261013.json). The [shared RLS repair](direct-question-read-protection-20261013.md) denies direct anonymous/student reads; zero governed exposure events does not establish historical non-exposure through the former direct-read route. [Qualification boundary](chapter-ii-assessment-qualification.md).
+The owner authorized a provisional Chapter II pilot with specialist review deferred. Both reviewed database migrations are deployed with exact source hashes; production rollback rehearsal and committed activation passed all 53 preservation scopes. Chapter II is `pilot`, with exact form allocation and model/policy bindings. Authenticated production acceptance remains pending. The six pilot gates passed; independent SME and final exposure disposition remain production requirements. [Activation evidence](evidence/chapter-ii-pilot-activation-20261013.json). The shared RLS repair still denies direct anonymous/student reads; zero governed exposure events does not establish historical non-exposure.
 
 ## Authentication and workflow
 
@@ -69,9 +69,9 @@ Success is HTTP 200; fields vary by mode and adapter. These are response descrip
 
 Recommendations and criteria come from the bound policy/model and authorized context. Do not hard-code Chapter I quantities, Chapter II Option B criteria or one recommendation action into shared clients. Content approval and an assessment plan do not create a session binding.
 
-## Merged runtime extensions — database deployment pending, 2026-10-13
+## Deployed runtime extensions — 2026-10-13
 
-The following changes merged in PR #206 at `a64269e1ab83d2b52d1a8af0d65559bab580aeec` and passed all five final CI jobs. Vercel production was verified `READY` on that implementation commit, but the database extensions below are not deployed: the initial two connector migration attempts failed with `invalid_request_state`, and readback confirms the first migration is absent. A third attempt after the owner resumed release also failed; [fresh readback](evidence/chapter-ii-pilot-resume-20261013.json) confirms both migrations remain absent. They are outside the deployed verification dated above. Database deployment, Chapter II activation and authenticated acceptance are tracked in the [pilot record](chapter-ii-pilot-release.md) and [blocker evidence](evidence/chapter-ii-pilot-deployment-blocker-20261013.json).
+The following changes merged in PR #206 at `a64269e1ab83d2b52d1a8af0d65559bab580aeec` and passed all five final CI jobs. Both exact database migrations were subsequently applied through the owner-authorized dashboard route, with atomic migration history and matching hashes. Chapter II activation is committed and read back; authenticated production acceptance is pending. This database verification supplements the earlier Edge bundle verification; no Edge source/deployment change was needed. [Deployment evidence](evidence/chapter-ii-pilot-activation-20261013.json) · [Pilot record](chapter-ii-pilot-release.md).
 
 ### Optional whole-form Mastery selection
 
@@ -95,7 +95,7 @@ The opt-in path requires Read Committed transaction isolation, as used by the AP
 
 ### Disjoint active curriculum releases
 
-The merged registry change permits active releases within one programme when their unit snapshots are disjoint; that database change remains pending deployment. A unit can belong to only one active release; activation still requires the applicable pilot/production gates. Activated release identity and unit scope cannot be rewritten to move existing sessions to another release. The deployed browser code groups courses by enrollment and programme, while chapter links and API requests retain the exact enrollment/release/unit identities. This frontend change does not expose the inactive Chapter II candidate. Clients must not infer one active release per programme or substitute another release when a context is unavailable.
+The deployed registry permits active releases within one programme when their unit snapshots are disjoint. A unit can belong to only one active release; activation still requires the applicable pilot/production gates. Activated release identity and unit scope cannot be rewritten to move existing sessions to another release. The deployed browser code groups courses by enrollment and programme, while chapter links and API requests retain the exact enrollment/release/unit identities. The committed Chapter II pilot is now available to authorized enrollments. Clients must not infer one active release per programme or substitute another release when a context is unavailable.
 
 Release-governance writes require Read Committed; this is not a new learner request requirement. Cross-release prerequisite routing remains outside this change. See [release-unit governance, consumer scope and limitations](disjoint-release-unit-governance.md).
 
@@ -127,10 +127,10 @@ Legacy `submit-answer` still accepts `itemId` and `response` without session IDs
 - [Answer endpoint](../supabase/functions/submit-answer/index.ts) and [Mastery endpoint](../supabase/functions/submit-mastery-answer/index.ts).
 - [Governed router](../supabase/functions/_shared/governed-learning-runtime.mjs), [context resolver](../supabase/functions/_shared/student-learning-context.mjs), [assessment policy parser](../supabase/functions/_shared/assessment-policy.mjs).
 - [Governed transaction and response projection](../supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql).
-- Merged, database deployment pending: [whole-form Mastery selection](../supabase/migrations/20261013101825_governed_mastery_form_selection.sql) and [disjoint release-unit governance](../supabase/migrations/20261013101644_disjoint_curriculum_release_units.sql).
+- Deployed and migration-history hashes verified: [whole-form Mastery selection](../supabase/migrations/20261013101825_governed_mastery_form_selection.sql) and [disjoint release-unit governance](../supabase/migrations/20261013101644_disjoint_curriculum_release_units.sql).
 - [Runtime scope](sprint-15b12c-learning-runtime.md), [navigation/analytics](sprint-15b12d-navigation-analytics.md), [live acceptance boundary](sprint-15b12e-acceptance.md).
 
-The 2026-10-10 deployment comparison covers the `submit-answer` bundle, not a fresh deployment-parity certification of every endpoint mentioned. It does not cover the merged 2026-10-13 database extensions; their deployment is blocked and their live acceptance remains pending.
+The 2026-10-10 deployment comparison covers the `submit-answer` bundle, not a fresh deployment-parity certification of every endpoint mentioned. The separate 2026-10-13 activation evidence verifies the deployed database extensions and committed pilot; authenticated production acceptance remains pending.
 
 ## Content Reviewer dashboard reads
 
