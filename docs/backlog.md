@@ -253,6 +253,17 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III second practice batch — 15C.3, 2026-10-13
+
+- [x] Refresh the full applicable corpus and compare eight candidates, related guides and all 28 pairs.
+- [x] Check textbook facts, natural Armenian, solutions, distractors and no-image rationale.
+- [x] Rehearse/rollback, commit and independently read back eight questions, eight guides and fourteen definitions; question QA and guide validation pass 8/8.
+- [x] Preserve all existing rows across 39 guarded scopes and keep Chapter III inactive and unallocated.
+- [ ] Human site review of both batches: 16 questions, 16 guides and 33 definitions.
+- [ ] Chapter III assessment/readiness contract, protected capacity, specialist and release decisions.
+
+[Verified staging](chapter-iii-batch-02-staging.md).
+
 ## Chapter III governed first batch — 15C.2, 2026-10-13
 
 - [x] Record owner acceptance of the plan/budget and exact eight offline v1 questions.
@@ -270,9 +281,9 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Propose eight skills, textbook/source boundaries, prerequisites and a chapter-specific 168-question planning budget.
 - [x] Prepare eight offline practice drafts, explanations, hints and distractor rationales; extract three source illustrations with provenance and mobile readability treatment.
 - [x] Record the preliminary frozen-corpus screen, 28 within-batch comparisons and explicit qualification limits.
-- [ ] Confirm the plan, counts/weights and supporting/additional-skill assessment treatment.
-- [ ] Refresh the full applicable current/history/guide/protected corpus and complete semantic qualification before staging.
-- [ ] Create the governed Chapter III foundation and stage qualified drafts through the established reviewer workflow after recovery.
+- [x] Owner accepted the preparation plan and planning budget; final counts/weights and supporting/additional-skill assessment treatment remain separately open under 15C.3.
+- [x] Refresh the full applicable current/history/guide/protected corpus for practice staging under 15C.2, then again under 15C.3; protected assessment qualification remains open.
+- [x] Create the governed Chapter III draft foundation and stage the first two practice batches through 15C.2/15C.3.
 - [ ] Human content review, specialist review and eventual assessment/release qualification.
 
 [Preparation](chapter-iii-preparation.md). This checklist records offline preparation only; no Supabase or learner changes occurred. Chapter II was paused during preparation; the later owner-authorized browser deployment and pilot activation supersede that historical pause.
