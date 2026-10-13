@@ -1105,7 +1105,7 @@
       "totalChecks": 72,
       "failedCheck": "A: native chapter switching has no page errors or attempted mutations",
       "evidence": "chapter-ii-pilot-read-acceptance-attempt-1-20261013.json",
-      "nextStep": "Retry with redacted browser-error/request diagnostics; unchanged acceptance criteria."
+      "nextStep": "Shared CSS transition failure reproduced in isolated full-shell CI; deploy bounded fix after required checks, then rerun unchanged acceptance with redacted diagnostics."
     }
   ]
 }
