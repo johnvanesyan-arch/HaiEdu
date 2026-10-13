@@ -4,7 +4,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. It does not authorize a new release or claim completed live multi-context acceptance.
 
-**Chapter III preparation (2026-10-13):** [15C.1](chapter-iii-preparation.md) is offline source mapping, assessment planning and practice drafting only. Its proposed skill codes, 168-question budget and form weighting are not database objects or an active assessment contract. No endpoint, scoring/readiness rule, model, release, QA record or human approval changes. Chapter II deployment remains paused separately.
+**Chapter III staging preparation (2026-10-13):** [15C.2](chapter-iii-batch-01-staging.md) adds a reviewed, rollback-tested data migration for a Chapter III-only draft curriculum and a separately guarded eight-question practice package. Neither is committed yet. Owner acceptance covers the plan/budget and offline question wording; it creates no authenticated reviewer or specialist event. No endpoint, scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release changes. Chapter II deployment remains paused separately.
 
 ## Chapter II content boundary — 2026-10-13
 

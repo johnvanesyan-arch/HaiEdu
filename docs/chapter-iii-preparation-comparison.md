@@ -1,6 +1,6 @@
 # Chapter III preparation — preliminary comparison
 
-**State:** offline drafting screen only. This is not the mandatory fresh whole-bank predeployment audit and grants no staging or protected eligibility.
+**Historical state:** offline drafting screen only. Superseded for these exact eight drafts by the [fresh 15C.2 comparison](chapter-iii-batch-01-comparison.md). The original stale-corpus findings below are preserved; they grant no eligibility by themselves.
 
 The available frozen corpus is timestamped 2026-10-12T19:08:51.036386+00:00, SHA-256 `f4558aaae22779b1b9a99719ad8e14efe8cf5974ad9f57317a0c0e794c502306`: 416 current records (260 Chapter I, 156 Chapter II), 290 immutable question versions and guide history. Its counts include historical/archived material and predate the final Chapter II batch and editorial changes. Related motion/time/measurement prompts were screened and candidate demands compared; neither this screen nor keyword matching is claimed as exhaustive historical semantic review. Source exercises were also compared explicitly.
 

@@ -1,0 +1,720 @@
+{
+  "schemaVersion": 1,
+  "sprint": "15C.2",
+  "date": "2026-10-13",
+  "author": "Codex automated author; not an independent specialist",
+  "ownerAcceptance": {
+    "quote": "I read it all, it all looks good to go",
+    "at": "2026-10-13T19:19:48+04:00",
+    "scope": "Chapter III preparation plan, planning budget and exact eight offline v1 questions; no fabricated authenticated reviewer event, specialist approval or final assessment contract",
+    "acceptedManifestSha256": "811401cd71107a4e377c42d217f2bfcb6b30748dd5711aef0c82292d720b38f7"
+  },
+  "corpus": {
+    "sha256": "e682af24062ab6fc0831727cb0f631c6e67714c0e341d950d128983c5edd2f42",
+    "provenance": {
+      "readStartedAt": "2026-10-13T15:21:24.484556Z",
+      "currentRows": 453,
+      "immutableItemVersions": 330,
+      "tableGuards": [
+        {
+          "table_name": "item_answer_keys",
+          "rows": 453,
+          "digest": "3871873770e7aedf62308c2cc4792e08"
+        },
+        {
+          "table_name": "assessment_form_items",
+          "rows": 80,
+          "digest": "6eae3cc9b870cd14d8807d3d5d1af3c6"
+        },
+        {
+          "table_name": "curriculum_releases",
+          "rows": 3,
+          "digest": "8b4202ac5c5c15adbe92eb3465b11552"
+        },
+        {
+          "table_name": "skill_curriculum_reconciliations",
+          "rows": 18,
+          "digest": "910bc12133462114ff6a43ff8b0bc960"
+        },
+        {
+          "table_name": "learning_outcomes",
+          "rows": 13,
+          "digest": "f4f8869c510943ef1d3610bc549550c2"
+        },
+        {
+          "table_name": "assessment_pools",
+          "rows": 4,
+          "digest": "ca5d0942fffb2d3c71e022e348e4d06d"
+        },
+        {
+          "table_name": "skill_outcomes",
+          "rows": 20,
+          "digest": "394888f9e42d7535490fbda959e122ae"
+        },
+        {
+          "table_name": "remediation_guide_versions",
+          "rows": 162,
+          "digest": "f9955f991b57c712dd6a90fa3d0f3f8c"
+        },
+        {
+          "table_name": "item_options",
+          "rows": 1204,
+          "digest": "4818358dafa5bef817b104a3674f0999"
+        },
+        {
+          "table_name": "item_family_curriculum_reconciliations",
+          "rows": 231,
+          "digest": "72a8160d62c57fabca16b2aa17d8eb4d"
+        },
+        {
+          "table_name": "skill_remediation_guides",
+          "rows": 10,
+          "digest": "924a5a0b56da00c2f2b4b6b8935dee95"
+        },
+        {
+          "table_name": "misconceptions",
+          "rows": 273,
+          "digest": "f7b707e9aea6ebca037177c0546d9953"
+        },
+        {
+          "table_name": "curriculum_release_gate_checks",
+          "rows": 14,
+          "digest": "2033e1d1f5b1abac2b82092f5f571f6e"
+        },
+        {
+          "table_name": "skills",
+          "rows": 19,
+          "digest": "255b60237d3c76f2ac1850b14bc0f608"
+        },
+        {
+          "table_name": "assessment_pool_items",
+          "rows": 280,
+          "digest": "6e4d69bc77934595b66169828cbc795c"
+        },
+        {
+          "table_name": "assessment_forms",
+          "rows": 4,
+          "digest": "6ed5d022172c6ad6fb3d5ef978d87b6c"
+        },
+        {
+          "table_name": "item_template_remediation_guides",
+          "rows": 66,
+          "digest": "f8733506e63c5801e49f99f66f8b09bd"
+        },
+        {
+          "table_name": "item_misconception_mappings",
+          "rows": 818,
+          "digest": "dba840e0dae38039d0ffd09bab449e96"
+        },
+        {
+          "table_name": "item_curriculum_scopes",
+          "rows": 453,
+          "digest": "8d43f7e376abdb8e384ceac0a9bf1a77"
+        },
+        {
+          "table_name": "curriculum_source_documents",
+          "rows": 3,
+          "digest": "b8abcf19c4196dd58ab94e6da8ed7655"
+        },
+        {
+          "table_name": "curriculum_release_skills",
+          "rows": 28,
+          "digest": "b92fe9acbe80af6f16905e784669da31"
+        },
+        {
+          "table_name": "items",
+          "rows": 453,
+          "digest": "923f04ce8f3e3696e5f41bb11a1bcd77"
+        },
+        {
+          "table_name": "skill_outcome_curriculum_mappings",
+          "rows": 20,
+          "digest": "715d4cac2f47157957455f64c47f5838"
+        },
+        {
+          "table_name": "item_families",
+          "rows": 231,
+          "digest": "b3da7b2257e1a429b446b4eafd6a0b3d"
+        },
+        {
+          "table_name": "item_versions",
+          "rows": 330,
+          "digest": "cdec4f9582f88650446ac216c3acabad"
+        },
+        {
+          "table_name": "remediation_guide_authoring_versions",
+          "rows": 324,
+          "digest": "c0bcbebed5ca6be8b4f621c8cc720ab4"
+        },
+        {
+          "table_name": "curriculum_release_item_families",
+          "rows": 308,
+          "digest": "7ae8710552e5a15fd685a6adf415b34e"
+        },
+        {
+          "table_name": "item_templates",
+          "rows": 231,
+          "digest": "cd7d236e394ca5cbac9d1da2c7b5437b"
+        }
+      ],
+      "prePostGuardsMatch": true,
+      "scope": "Full exported content/mapping/protected allocation tables; no learner identity export."
+    },
+    "tableCounts": {
+      "item_answer_keys": 453,
+      "assessment_form_items": 80,
+      "curriculum_releases": 3,
+      "skill_curriculum_reconciliations": 18,
+      "learning_outcomes": 13,
+      "assessment_pools": 4,
+      "skill_outcomes": 20,
+      "remediation_guide_versions": 162,
+      "item_options": 1204,
+      "item_family_curriculum_reconciliations": 231,
+      "skill_remediation_guides": 10,
+      "misconceptions": 273,
+      "curriculum_release_gate_checks": 14,
+      "skills": 19,
+      "assessment_pool_items": 280,
+      "assessment_forms": 4,
+      "item_template_remediation_guides": 66,
+      "item_misconception_mappings": 818,
+      "item_curriculum_scopes": 453,
+      "curriculum_source_documents": 3,
+      "curriculum_release_skills": 28,
+      "items": 453,
+      "skill_outcome_curriculum_mappings": 20,
+      "item_families": 231,
+      "item_versions": 330,
+      "remediation_guide_authoring_versions": 324,
+      "curriculum_release_item_families": 308,
+      "item_templates": 231
+    },
+    "supplementSha256": "82b538e2ea506bca2052b3a1d395bc36b19c773cf73e82fd5a0b7397fe87c870",
+    "exposureAggregates": 42,
+    "reviewExposureAggregates": 0,
+    "scope": "All existing Chapter I/II current items, all immutable versions including archived and retired states, related outcome/family mappings, all protection allocations and releases, current and historical guide text; no Chapter III bank existed."
+  },
+  "method": "Author semantic comparison of scenarios, source illustrations, solution steps, inferences, correct answers and distractor logic. Full current prompt/answer survey and distinct historical screening; nearest current/history options and related guide examples inspected in depth. Mechanical deduplication used only to avoid re-reading identical version text, not to establish novelty. Related mappings and all release/purpose statuses retained in the private corpus.",
+  "historicalDistinctTextBundles": 59,
+  "guideDistinctTextBundles": 141,
+  "withinBatchPairs": 28,
+  "withinBatchEvidenceSha256": "561fa6dfae5818329394a18714e8d9f02c11d57a50f196e19b025ebda98a9226",
+  "records": [
+    {
+      "candidate": "U03-PREP-C01",
+      "itemCode": "PHY7-U03-S01-I01",
+      "candidateSpecSha256": "e958931e4b81ba3ed5bce94c297a45bc93ef3c542441a20e9b47bb2be334b8c0",
+      "disposition": "new_question_demand_practice_only",
+      "intendedUse": "practice_only",
+      "reason": "Named reference-body position comparison adds a question demand beyond phenomenon classification or molecular/container rest. Figure 36 remains familiar textbook practice; no protected novelty claimed.",
+      "nearest": [
+        {
+          "code": "PHY7-U01-S01-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 1
+        },
+        {
+          "code": "PHY7-U01-S04-11D-P05",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [],
+          "poolMemberships": 1
+        },
+        {
+          "code": "PHY7-U02-S05-I07",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S05-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        }
+      ],
+      "relatedGuideDemandGroups": [
+        "reference-body versus container and particle motion"
+      ],
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §14, p.43, figure 36",
+      "illustration": "Exact textbook extraction; source captions omitted; familiar practice only.",
+      "independentProtectedCoverage": false,
+      "decision": "retain_for_draft_staging",
+      "humanSiteReview": "pending",
+      "specialistReview": "pending"
+    },
+    {
+      "candidate": "U03-PREP-C02",
+      "itemCode": "PHY7-U03-S02-I01",
+      "candidateSpecSha256": "8694324ed2501c1c3bfe7c7fa35837cf1b0617be785dbc33edbab3e31782eddd",
+      "disposition": "intentional_practice_variant",
+      "intendedUse": "practice_only",
+      "reason": "Same modeling decision as the textbook train example: body dimensions matter in one task but can be neglected in the other. Changing the vehicle is an intentional practice variant, not new reasoning coverage.",
+      "nearest": [
+        {
+          "code": "PHY7-U01-S02-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 2
+        },
+        {
+          "code": "PHY7-U02-S04-I03",
+          "currentVersion": 2,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1,
+            2
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S02-I09",
+          "currentVersion": 2,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1,
+            2
+          ],
+          "poolMemberships": 0
+        }
+      ],
+      "relatedGuideDemandGroups": [
+        "body/substance and model-scale examples"
+      ],
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, pp.45–46; p.48, question 2",
+      "illustration": "Both tasks state exactly whether body length matters; a decorative bus picture supplies no needed information.",
+      "independentProtectedCoverage": false,
+      "decision": "retain_for_draft_staging",
+      "humanSiteReview": "pending",
+      "specialistReview": "pending"
+    },
+    {
+      "candidate": "U03-PREP-C03",
+      "itemCode": "PHY7-U03-S03-I01",
+      "candidateSpecSha256": "611919896d55f7e35e8b85a9123b19d5c39143a7e65b94fa7bfa32d0447301b3",
+      "disposition": "intentional_practice_variant",
+      "intendedUse": "practice_only",
+      "reason": "Whole path versus endpoint distance is already assessed across Chapter II and explained in its guides. Figure 40 directly teaches the same distinction. Retain as introductory practice; do not count as independent coverage or a protected candidate. It does not reproduce a protected scenario, full solution or hidden-motion inference.",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S05-I03",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S05-I12",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S05-M03",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S05-M05",
+          "currentVersion": 2,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1,
+            2
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S02-M07",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        }
+      ],
+      "relatedGuideDemandGroups": [
+        "whole path versus endpoint distance",
+        "partial versus full trajectory"
+      ],
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, p.47, figure 40",
+      "illustration": "Exact textbook extraction; source captions omitted; familiar practice only.",
+      "independentProtectedCoverage": false,
+      "decision": "retain_for_draft_staging",
+      "humanSiteReview": "pending",
+      "specialistReview": "pending"
+    },
+    {
+      "candidate": "U03-PREP-C04",
+      "itemCode": "PHY7-U03-S04-I01",
+      "candidateSpecSha256": "8469f20e50325bf0789369058023f16e4101bfdf48292e8d28adcd4326bb94c1",
+      "disposition": "intentional_practice_variant",
+      "intendedUse": "practice_only",
+      "reason": "Same equal-time trace interpretation as textbook p.53. Timing is explicit and the conclusion is compatibility with sampled uniform motion. Neither timing alone nor sparse observations prove all smaller intervals. Intentional practice only.",
+      "nearest": [
+        {
+          "code": "PHY7-U01-S04-11D-M06",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [],
+          "poolMemberships": 1
+        },
+        {
+          "code": "PHY7-U01-S05-11D-M05",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [],
+          "poolMemberships": 1
+        },
+        {
+          "code": "PHY7-U02-S07-I07",
+          "currentVersion": 2,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1,
+            2
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S05-M06",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        }
+      ],
+      "relatedGuideDemandGroups": [
+        "observation versus experiment",
+        "limited extrapolation"
+      ],
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, pp.49–50; p.53, question 3 diagram",
+      "illustration": "Exact textbook extraction; source captions omitted; familiar practice only.",
+      "independentProtectedCoverage": false,
+      "decision": "retain_for_draft_staging",
+      "humanSiteReview": "pending",
+      "specialistReview": "pending"
+    },
+    {
+      "candidate": "U03-PREP-C05",
+      "itemCode": "PHY7-U03-S05-I01",
+      "candidateSpecSha256": "1211b45d9ba6b6983b8e1711f3c931cfb0ca857c2259c2d126de5f4ad250a4fc",
+      "disposition": "new_question_demand_practice_only",
+      "intendedUse": "practice_only",
+      "reason": "The explicit combination of equal numerical values and opposite macroscopic directions is distinct from current/history molecular-motion claims. This is supporting textbook vocabulary for A1, not a new compulsory outcome, vector algebra or protected qualification.",
+      "nearest": [
+        {
+          "code": "PHY7-U02-S05-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S05-I09",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S05-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S08-I11",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        }
+      ],
+      "relatedGuideDemandGroups": [
+        "numerical value versus direction",
+        "characteristic molecular speed"
+      ],
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, pp.51–52, direction of speed",
+      "illustration": "The opposite directions and equal values are explicit; no diagram reading is required.",
+      "independentProtectedCoverage": false,
+      "decision": "retain_for_draft_staging",
+      "humanSiteReview": "pending",
+      "specialistReview": "pending"
+    },
+    {
+      "candidate": "U03-PREP-C06",
+      "itemCode": "PHY7-U03-S06-I01",
+      "candidateSpecSha256": "3299ca37a9fda5de32fee05f5333c3756990a1876ec6be7be358a90b081d9937",
+      "disposition": "intentional_practice_variant",
+      "intendedUse": "practice_only",
+      "reason": "Conversion and comparison procedures are already taught and exposed in prior questions and guide examples. The quotient unit is chapter-specific, but this remains an intentional practice variant, not independent reasoning coverage.",
+      "nearest": [
+        {
+          "code": "PHY7-U01-S07-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 2
+        },
+        {
+          "code": "PHY7-U01-S07-I05",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 1
+        },
+        {
+          "code": "PHY7-U02-S04-I09",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S09-I11",
+          "currentVersion": 2,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1,
+            2
+          ],
+          "poolMemberships": 0
+        }
+      ],
+      "relatedGuideDemandGroups": [
+        "time and length conversion",
+        "same-unit comparison"
+      ],
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, p.51, p.53 questions 8–9; §17, p.54 problem 1",
+      "illustration": "This task requires unit conversion; a picture would provide no additional evidence.",
+      "independentProtectedCoverage": false,
+      "decision": "retain_for_draft_staging",
+      "humanSiteReview": "pending",
+      "specialistReview": "pending"
+    },
+    {
+      "candidate": "U03-PREP-C07",
+      "itemCode": "PHY7-U03-S07-I01",
+      "candidateSpecSha256": "793f4e39eb90e5fc57360098280487fc7004a9fb97cbc48d4807937784ef540f",
+      "disposition": "intentional_practice_variant",
+      "intendedUse": "practice_only",
+      "reason": "Distance/time arithmetic and rate comparison are already represented in the bank and source. The explicit uniform-motion premise permits reuse of the rate for a new duration. Retain as two-step formula practice; no protected claim.",
+      "nearest": [
+        {
+          "code": "PHY7-U01-S10-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 1
+        },
+        {
+          "code": "PHY7-U02-S05-M01",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S05-M02",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S05-M06",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S07-I07",
+          "currentVersion": 2,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1,
+            2
+          ],
+          "poolMemberships": 0
+        }
+      ],
+      "relatedGuideDemandGroups": [
+        "indirect ratios",
+        "path versus elapsed time"
+      ],
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, pp.50–52; §17, pp.54–55",
+      "illustration": "All distances and times are supplied; a schematic would only repeat the text.",
+      "independentProtectedCoverage": false,
+      "decision": "retain_for_draft_staging",
+      "humanSiteReview": "pending",
+      "specialistReview": "pending"
+    },
+    {
+      "candidate": "U03-PREP-C08",
+      "itemCode": "PHY7-U03-S08-I01",
+      "candidateSpecSha256": "c6320c7340a1eab5730174d74baceb22c978c05a195d5c474c6c97daa387e6cc",
+      "disposition": "new_question_demand_practice_only",
+      "intendedUse": "practice_only",
+      "reason": "Earlier indirect-speed and measurement-planning tasks share the prerequisite. This item adds selection of matching distance/time boundaries when the experiment starts before A. It evaluates planning, not performed laboratory competence. No full existing scenario/distractor solution collision found.",
+      "nearest": [
+        {
+          "code": "PHY7-U01-S09-I03",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 2
+        },
+        {
+          "code": "PHY7-U01-S10-I02",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 2
+        },
+        {
+          "code": "PHY7-U02-S04-I08",
+          "currentVersion": 2,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1,
+            2
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S04-M02",
+          "currentVersion": 3,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1,
+            2,
+            3
+          ],
+          "poolMemberships": 0
+        },
+        {
+          "code": "PHY7-U02-S07-D04",
+          "currentVersion": 1,
+          "status": "published",
+          "reviewStatus": "approved",
+          "historicalVersionsIncluded": [
+            1
+          ],
+          "poolMemberships": 0
+        }
+      ],
+      "relatedGuideDemandGroups": [
+        "measurement planning",
+        "nonzero origins",
+        "matching measurement endpoints"
+      ],
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §18, pp.57–58, procedure steps 6–8",
+      "illustration": "A and B are fully defined as marks on one tube; the source section has no apparatus figure and no geometric feature is needed.",
+      "independentProtectedCoverage": false,
+      "decision": "retain_for_draft_staging",
+      "humanSiteReview": "pending",
+      "specialistReview": "pending"
+    }
+  ],
+  "summary": {
+    "retainedPractice": 8,
+    "intentionalPracticeVariants": 5,
+    "distinctQuestionDemands": 3,
+    "protectedQualified": 0,
+    "omitted": 0
+  },
+  "handoff": "Valid for these exact eight specs and the guarded frozen corpus; recheck guards immediately before staging. Any relevant content, historical, guide or protection change requires refresh.",
+  "limits": [
+    "Natural Armenian and factual author checks are separate from human/site and independent specialist reviews.",
+    "Chapter II protected-parallel and deferred-specialist exceptions do not extend to Chapter III.",
+    "168 is the owner-accepted planning budget, not established protected capacity, a student workload or active scoring contract."
+  ]
+}

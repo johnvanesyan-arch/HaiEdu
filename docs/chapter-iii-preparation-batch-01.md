@@ -1,6 +1,6 @@
 # Chapter III — first practice draft batch
 
-**Status:** eight offline v1 candidates; not staged on the review site, not approved and not learner-visible. These are practice proposals. Final author comparison, family QA and human content review remain open. [Plan and scope](chapter-iii-preparation.md).
+**Current status (15C.2):** John accepted these exact eight offline v1 questions on 2026-10-13. Fresh whole-bank comparison and rollback QA passed; database staging and authenticated site workflow remain pending. [Current staging record](chapter-iii-batch-01-staging.md). The original question wording below is unchanged. [Plan and scope](chapter-iii-preparation.md).
 
 Answer letters below are editorial reference labels. Existing server-side answer shuffling remains authoritative when items are eventually delivered.
 
