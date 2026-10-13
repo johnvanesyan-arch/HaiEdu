@@ -259,6 +259,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Compare all current/applicable historical content, guides and 666 new pairs; revise overlapping candidates before staging.
 - [x] Save private evidence, commit sanitized comparison, stage 37 drafts plus 47 definitions, and verify exact readback/current-family technical QA.
 - [x] Human content review of all 37 questions and 47 definitions, verified against current versions and approved snapshots on 2026-10-13.
-- [ ] Resolve recorded versioned editorial follow-ups, independent SME/exposure qualification, disjoint allocations and release gates.
+- [x] Close the shared direct-question read gap; deploy and verify staff/service access, anonymous/student denial and unchanged content/evidence tables.
+- [ ] Resolve recorded versioned editorial follow-ups, historical exposure disposition, independent SME/protection qualification, disjoint allocations and release gates.
 
 The bank is 192 approved non-archived questions, zero pending, 263 active definitions and 57 published guides. Each of eight skills has approved 12/4/8 Practice/Diagnostic/Mastery inventory. No new guide or release activation. [Review closure evidence](evidence/sprint-15b13-batches-19-20-review-complete-20261013.json). [Authoritative status](project-status.md) and [production verification](evidence/sprint-15b13-assessment-batches-19-20-production-20261013.json).

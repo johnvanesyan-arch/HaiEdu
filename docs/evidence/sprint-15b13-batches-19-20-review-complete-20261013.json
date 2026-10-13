@@ -6150,5 +6150,9 @@
   },
   "comparisonContinuity": "All 37 current v1 question contents, options, keys, mappings and immutable snapshots match the staged records. The existing version-bound comparison remains applicable to these unchanged contents. This does not close independent SME/exposure qualification, form separation or empirical equivalence.",
   "legacyQaBoundary": "S02-I01 retains a passing historical QA row with content_review_not_approved and sme_review_pending warnings. Its current human approval is verified; SME validation remains open. All 37 newly approved questions have zero current-QA errors/warnings.",
-  "limits": "All 192 questions remain provisional_no_sme_review. Content review closure is not external SME approval, protected eligibility, empirical validation, allocation, policy/model binding, pilot or learner release. No content version, approval, QA row, runtime or production data was written by this verification."
+  "limits": "All 192 questions remain provisional_no_sme_review. Content review closure is not external SME approval, protected eligibility, empirical validation, allocation, policy/model binding, pilot or learner release. No content version, approval, QA row, runtime or production data was written by this verification.",
+  "subsequentProtectionRepair": {
+    "evidence": "direct-question-read-protection-20261013.json",
+    "boundary": "This approval-verification record describes the read-only phase. The subsequent RLS-only repair closed a verified direct-prompt access gap, preserving all content/approval rows. Historical exposure remains unresolved; content identity does not establish non-exposure."
+  }
 }

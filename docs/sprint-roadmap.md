@@ -2,7 +2,7 @@
 
 **Roadmap version:** 3.54
 **Updated:** 2026-10-13 (Asia/Yerevan)
-**Latest platform repair:** [Reviewer approval after passing QA](reviewer-approval-repair-20261011.md): shared dashboard reads are bounded, complete and error-checked; current implementation/deployment status is recorded in the authoritative register.
+**Latest platform repair:** [Direct question-read protection](direct-question-read-protection-20261013.md) is deployed: anonymous/student direct prompt reads are denied across the platform, existing staff/service access remains, and all 38 content/evidence table fingerprints are unchanged. Historical exposure remains a protected-use gate. The prior [reviewer approval repair](reviewer-approval-repair-20261011.md) remains complete.
 **Latest content checkpoint:** All **192 non-archived Chapter II questions are human content-approved**, with **263 active definitions**, **57 published guides** and no pending content, verified read-only on 2026-10-13. The 37 final-batch questions retain unchanged v1 content and passing current-version QA; all 47 new definitions match approved snapshots. S07-M05 remains archived. Next are recorded versioned editorial corrections, independent SME/exposure qualification, disjoint assessment allocation and release gates. Chapter II remains inactive and unallocated. [Current status](project-status.md) governs counts and gates.
 **Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E await a second authorized release for live switching. Chapter II target-bank content review is complete; editorial and release work remains, inactive and unallocated; 16–26 remain planned in the sequence below.
 
@@ -1983,3 +1983,11 @@ The approved bank reaches 96 Practice + 32 Diagnostic + 64 Mastery, or 12/4/8 pe
 **Next:** complete the recorded versioned editorial corrections, then independent source/protection/SME qualification, disjoint assessment allocation, policy/model binding, pilot and release gates. All 192 questions remain `provisional_no_sme_review`; Chapter II remains draft, inactive and unallocated with zero pool/form memberships. No production write, new QA record, approval or learner-runtime change was made by this closure. The assessment delivery/scoring/readiness contract remains unchanged.
 
 [Review closure evidence](evidence/sprint-15b13-batches-19-20-review-complete-20261013.json) · [Authoritative status](project-status.md).
+
+### Sprint 15B.13AR follow-up — Shared direct question-read protection
+
+**2026-10-13 06:52 UTC (10:52 Asia/Yerevan).** Automated PR review flagged an assessment-access risk. Live evidence confirmed that the old published-item policy hid only questions already assigned to active protected pools; anonymous reads exposed 372 question rows, including all 37 final-batch questions. Options and answer keys were already blocked. The subject-neutral correction removes anonymous prompt reads and retains authenticated staff reads; student delivery remains through governed endpoints.
+
+Production role probes confirm zero prompts/options/keys for anonymous, student and school-admin roles, with existing staff/service reads retained. Two isolated database/runtime regressions passed, including three curriculum contexts and inactive-release denial. All 38 content/evidence tables remain unchanged. No Edge/browser code, content approval or release was modified; the deployed change is the RLS policy and migration record.
+
+Previous anonymous-role readability is confirmed, but third-party retrieval and historical non-exposure are unestablished. Record that exposure-risk disposition before protected assessment use. Content approvals stay valid; Chapter II remains inactive and unallocated. [Repair and scope](direct-question-read-protection-20261013.md) · [Production evidence](evidence/direct-question-read-protection-20261013.json).
