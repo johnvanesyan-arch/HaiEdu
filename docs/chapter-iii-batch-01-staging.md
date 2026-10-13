@@ -1,5 +1,7 @@
 # Chapter III batch 01 — governed staging
 
+**Subsequent review closure — 2026-10-14:** all questions, guides and definitions in this batch have saved human approval/publication records. Eight guide edits across both batches were compared; one S04-I01 clarification remains prepared for a new revision. [Review closure and prepared clarification](chapter-iii-review-closure-20261014.md). Staging observations below are historical.
+
 **2026-10-13 · Sprint 15C.2 · State: staged and verified; human site workflow and specialist review remain open.**
 
 The owner-accepted Chapter III plan and exact eight v1 questions have progressed to governed draft staging. **8 practice questions, 8 draft guides and 19 draft misconception definitions are committed**, across all eight skills. The Chapter III-only release is draft and inactive, with six official outcomes, zero pool allocations and zero fabricated human approval records. Fresh whole-bank comparison retained five intentional practice variants and three distinct question demands; no protected qualification is claimed. Exact committed snapshots and technical QA pass for all eight questions with zero errors/warnings. All three textbook assets return HTTP 200 with the approved hashes. The 168-question total remains a planning budget; readiness/pass rules, supporting/additional-skill treatment, specialist review and learner release remain open. Chapter II deployment remains paused and was not retried.

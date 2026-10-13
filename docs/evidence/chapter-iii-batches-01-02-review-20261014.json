@@ -1,0 +1,1710 @@
+{
+  "sprint": "15C.3R",
+  "roadmap": "3.66",
+  "date": "2026-10-14",
+  "baseCommit": "498f8e6a20cf6ddb1b4fab5c03015178ac541948",
+  "ownerReport": {
+    "text": "all reviewed now, and approved",
+    "at": "2026-10-14T01:25:05+04:00"
+  },
+  "observedAt": "2026-10-13T21:28:51.339103+00:00",
+  "productionWrites": 0,
+  "counts": {
+    "approvedQuestions": 16,
+    "publishedGuides": 16,
+    "activeDefinitions": 33,
+    "pendingQuestionApprovals": 0,
+    "pendingGuideAuthoringReviews": 0,
+    "pendingDefinitionReviews": 0,
+    "editedGuides": 8,
+    "preparedEditorialFollowups": 1,
+    "practicePlanningBudget": 80,
+    "remainingPracticeBudget": 64
+  },
+  "reviews": {
+    "items": [
+      {
+        "id": "8e79c9b1-0177-448e-90ed-dff118f9c99b",
+        "code": "PHY7-U03-S01-I01",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "9a761df0-4829-42d5-826a-04cbd347ef27",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T16:06:24.695598+00:00"
+        },
+        "latest_content_review": {
+          "id": "ce202008-576c-4a70-a98d-beb962cc3394",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:48:12.647749+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "2dc57b14-a240-40b5-b9b1-db2bf72b9109",
+        "code": "PHY7-U03-S01-I02",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "888a40ff-3a7d-43d8-97aa-c0ff5957e664",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T19:22:11.582687+00:00"
+        },
+        "latest_content_review": {
+          "id": "0e7b4a49-1bd1-4ca0-bd23-ffdf066dc0e9",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:48:32.539712+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "8267d126-6572-4123-a84c-7f8c9fcc9cda",
+        "code": "PHY7-U03-S02-I01",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "9317f267-8fd8-452e-a981-990659858c46",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T16:06:24.695598+00:00"
+        },
+        "latest_content_review": {
+          "id": "04ce470d-b3b3-4760-85f2-17ee525fb55e",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:49:45.432085+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "882ad261-363a-43ca-bf46-567d46c1f2f5",
+        "code": "PHY7-U03-S02-I02",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "226c1245-fdbb-4ae4-b1cb-6e2036d2e009",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T19:22:11.582687+00:00"
+        },
+        "latest_content_review": {
+          "id": "eef75224-b659-4716-9ad5-fc974914d40f",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:50:03.724976+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "c9c01ac3-97e7-4c74-ac7d-830c8dfe2850",
+        "code": "PHY7-U03-S03-I01",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "8d1163bc-07f8-4ae0-b05e-da8eaba4835e",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T16:06:24.695598+00:00"
+        },
+        "latest_content_review": {
+          "id": "61095e51-2673-456b-8cd9-7b5e2ee8bfa2",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:50:23.194003+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "9013e862-05ef-4490-a515-63b726fdbbbd",
+        "code": "PHY7-U03-S03-I02",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "4df4dcf6-77ee-4261-8da5-4ed9083c5399",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T19:22:11.582687+00:00"
+        },
+        "latest_content_review": {
+          "id": "1f514ae9-70d7-46a7-b2ba-29f9ab6eaa9a",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:51:08.441377+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "f36a3e82-6238-4b98-9dab-1eb96b590525",
+        "code": "PHY7-U03-S04-I01",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "753ddc6c-18a0-485e-8a95-8a3b4ba42480",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T16:06:24.695598+00:00"
+        },
+        "latest_content_review": {
+          "id": "ef776137-4eed-45bb-885f-0b781ebc5eed",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:51:24.726028+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "b961ef38-7827-45c3-8a62-e54f02ffe7b1",
+        "code": "PHY7-U03-S04-I02",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "b56baf67-8597-4d03-b75c-400f880240a3",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T19:22:11.582687+00:00"
+        },
+        "latest_content_review": {
+          "id": "958b2b61-9b7b-44d1-acd5-445117ccfef8",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:41:52.425006+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "7f62446a-6129-450b-8a6e-c68ebd9517d9",
+        "code": "PHY7-U03-S05-I01",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "bc295462-f9d5-4d0d-96dd-ff7452abdecb",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T16:06:24.695598+00:00"
+        },
+        "latest_content_review": {
+          "id": "993cf63d-8349-4024-82ab-432b6ad8ea17",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:51:42.214996+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "1f2acf32-1c3b-4f15-8ac9-a85b577f3174",
+        "code": "PHY7-U03-S05-I02",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "5dee5f11-4091-4730-9520-e600ee2440c0",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T19:22:11.582687+00:00"
+        },
+        "latest_content_review": {
+          "id": "c93d46de-aa33-4d13-b359-d30f7df2a148",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:51:56.44174+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "88f7c239-c4be-4243-a99f-34580d8cf729",
+        "code": "PHY7-U03-S06-I01",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "595a5246-e970-495a-bf3e-d85fdaaa7828",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T16:06:24.695598+00:00"
+        },
+        "latest_content_review": {
+          "id": "d4d2c704-6eaa-4c11-916b-bb3645ec88a4",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:52:13.732043+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "1e1370f3-a441-4fc3-aa19-f65ea3faa39a",
+        "code": "PHY7-U03-S06-I02",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "b5953f07-5335-4715-aeb0-c140bd980b33",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T19:22:11.582687+00:00"
+        },
+        "latest_content_review": {
+          "id": "8b154f4d-ab31-484b-9934-b4fa12b70e1b",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:52:29.290575+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "c9d55079-79c7-40da-a39b-f1142aa69a87",
+        "code": "PHY7-U03-S07-I01",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "64cd4c50-0e43-47fe-a3a1-610fceabeda4",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T16:06:24.695598+00:00"
+        },
+        "latest_content_review": {
+          "id": "2c974486-2327-47bf-85e2-8351f90af160",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:52:47.598627+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "f9bd562a-0f89-48b1-bc62-7d5f52514d33",
+        "code": "PHY7-U03-S07-I02",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "e149aef0-3109-4d72-86d5-bd77b3446d26",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T19:22:11.582687+00:00"
+        },
+        "latest_content_review": {
+          "id": "e3b49f17-e48e-40be-a3d9-076e12830e79",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:53:01.565133+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "9a3043fe-a4cd-44b5-81d0-386414f3edc1",
+        "code": "PHY7-U03-S08-I01",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "9a342cd8-f0e6-421c-8ff9-ba6b00a1a98b",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T16:06:24.695598+00:00"
+        },
+        "latest_content_review": {
+          "id": "d906959a-5b13-4b72-b21f-278274f29633",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:53:13.296361+00:00",
+          "hasReviewer": true
+        }
+      },
+      {
+        "id": "17593a60-fa41-4dba-923f-f922e18f06c9",
+        "code": "PHY7-U03-S08-I02",
+        "status": "published",
+        "version_no": 1,
+        "review_status": "approved",
+        "validation_state": "provisional_no_sme_review",
+        "latest_current_qa": {
+          "id": "e500157d-cf31-41ef-98ba-9a7b436d559b",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [],
+          "createdAt": "2026-10-13T19:22:11.582687+00:00"
+        },
+        "latest_content_review": {
+          "id": "6ba41bf4-1a59-4ba4-a857-c109b7101f4d",
+          "version": 1,
+          "decision": "approved",
+          "createdAt": "2026-10-13T19:47:20.551199+00:00",
+          "hasReviewer": true
+        }
+      }
+    ],
+    "releases": [
+      {
+        "id": "9f93b58d-e1a2-49ba-ba96-89e76c697884",
+        "key": "physics7_u01_legacy_pre_11k",
+        "status": "legacy",
+        "activatedAt": "2026-09-19T06:45:24.76571+00:00"
+      },
+      {
+        "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+        "key": "physics7_u01_2026_08_14_pilot_r1",
+        "status": "pilot",
+        "activatedAt": "2026-09-19T06:45:24.76571+00:00"
+      },
+      {
+        "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "key": "physics7_u02_2026_08_14_pilot_r2",
+        "status": "pilot",
+        "activatedAt": "2026-10-13T17:38:42.811795+00:00"
+      },
+      {
+        "id": "b626705a-a355-5937-b20b-38550dc5b0fe",
+        "key": "physics7_u03_2026_08_14_draft_r3",
+        "status": "draft",
+        "activatedAt": null
+      }
+    ],
+    "observedAt": "2026-10-13T21:28:51.339103+00:00",
+    "definitions": [
+      {
+        "id": "a7a9e631-eaad-4579-8e53-11167468f80e",
+        "code": "PHY7-U03-S01-M01",
+        "status": "active",
+        "latest_review": {
+          "id": "efd05a4e-d5db-43e8-a0fa-9c76acfd706f",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T20:59:28.989567+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "60b7eaeb-af10-4093-aa66-cdc1c56ef3d1",
+        "code": "PHY7-U03-S01-M02",
+        "status": "active",
+        "latest_review": {
+          "id": "4644f6a7-183c-4a37-bfe1-f9578d95b024",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T20:59:45.464937+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "cf7a83ba-9bbf-4759-a44f-d47ef4bcf8b2",
+        "code": "PHY7-U03-S01-M03",
+        "status": "active",
+        "latest_review": {
+          "id": "2b71ab55-34ce-4bba-ac92-a24c1a086eea",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T20:59:58.861542+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "bd91f798-474e-49b8-b725-b9d2e5060da7",
+        "code": "PHY7-U03-S02-M01",
+        "status": "active",
+        "latest_review": {
+          "id": "49ad2362-e68a-410e-9d3c-86134f81a41e",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:01:51.778462+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "e60f6580-663c-44f7-b7ec-408a403b62b7",
+        "code": "PHY7-U03-S02-M02",
+        "status": "active",
+        "latest_review": {
+          "id": "5e77d550-ae3c-4880-b512-5022a4a00971",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:02:52.255517+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "77df1eda-ca08-42d4-8d32-c793b9ba8542",
+        "code": "PHY7-U03-S02-M03",
+        "status": "active",
+        "latest_review": {
+          "id": "7e9cf9f1-7f42-4745-b735-938b534f1a5c",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:06:01.613315+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "a90a9f59-533e-440b-b9ea-d1396d2158bf",
+        "code": "PHY7-U03-S02-M04",
+        "status": "active",
+        "latest_review": {
+          "id": "b17e3f3c-954c-44e9-8b54-50958599fd33",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:06:38.424679+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "1ddcc0cb-9153-4f92-9a2f-646d03c21698",
+        "code": "PHY7-U03-S02-M05",
+        "status": "active",
+        "latest_review": {
+          "id": "79f06dd9-cf48-4d4a-9e8e-8d8bf9262d9b",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:06:51.626679+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "9b01d6f3-92ad-4f3e-8f0a-7aed88fa3282",
+        "code": "PHY7-U03-S03-M01",
+        "status": "active",
+        "latest_review": {
+          "id": "7498978d-cf4b-4718-a440-1505758bb2a7",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:07:05.603242+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "d201ad6f-a173-4fa3-a375-cc632b617a1e",
+        "code": "PHY7-U03-S03-M02",
+        "status": "active",
+        "latest_review": {
+          "id": "d4d51242-9682-476f-bab8-b26f3fced96f",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:08:35.790857+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "e866eec3-89e1-459e-bf11-6f9e7c58a0c1",
+        "code": "PHY7-U03-S03-M03",
+        "status": "active",
+        "latest_review": {
+          "id": "6e6bc606-bd65-470c-bd65-c20bf5479c6e",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:09:04.573769+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "ec4e1ad5-cef0-4507-8b05-7b334f6412aa",
+        "code": "PHY7-U03-S03-M04",
+        "status": "active",
+        "latest_review": {
+          "id": "45901d0b-74f5-475a-9fee-0c55095ba9ba",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:09:23.267077+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "b3914d05-5b53-4ffd-9b90-dc28ff2f53cb",
+        "code": "PHY7-U03-S04-M01",
+        "status": "active",
+        "latest_review": {
+          "id": "991cbf77-b869-4399-9fde-6d89f39b5e4c",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:11:43.810969+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "ae7f3c4e-187b-4287-b14a-c2901d5716f5",
+        "code": "PHY7-U03-S04-M02",
+        "status": "active",
+        "latest_review": {
+          "id": "cbc6f6d3-569f-4557-afa2-a1e19005af0b",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:12:02.906582+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "281eef6f-b027-46e8-b5d7-32f1d2e4d863",
+        "code": "PHY7-U03-S04-M03",
+        "status": "active",
+        "latest_review": {
+          "id": "76353d32-841c-471b-974d-484c79159155",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:16:07.710939+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "c329d910-de65-4bba-9c51-36fac99a866f",
+        "code": "PHY7-U03-S04-M04",
+        "status": "active",
+        "latest_review": {
+          "id": "00a36187-b92f-4cd0-8cb3-fabf5ea892cb",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:16:18.472894+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "c719ace1-ede9-4d2d-98fe-d974536fde0c",
+        "code": "PHY7-U03-S04-M05",
+        "status": "active",
+        "latest_review": {
+          "id": "7286f398-ac6f-460d-9aa0-dbd8c083eddb",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:16:29.994186+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "efa29326-2c86-4036-b4c8-483a7fdb1d12",
+        "code": "PHY7-U03-S05-M01",
+        "status": "active",
+        "latest_review": {
+          "id": "bfb7f2ea-faae-4bd9-b706-744c80539e8c",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:16:36.782312+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "defdd3f4-f479-4329-a49e-30f89ad74b9b",
+        "code": "PHY7-U03-S05-M02",
+        "status": "active",
+        "latest_review": {
+          "id": "f2050704-8b45-4e23-8e3d-7d4d1a6ff16c",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:16:52.471709+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "74e05827-0e7f-4862-b742-951988ebe08c",
+        "code": "PHY7-U03-S05-M03",
+        "status": "active",
+        "latest_review": {
+          "id": "2b84539a-63a8-4e31-8927-817c577f73ec",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:17:02.989565+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "0f8a9124-2334-4866-9919-c162ebd47426",
+        "code": "PHY7-U03-S05-M04",
+        "status": "active",
+        "latest_review": {
+          "id": "648bdd24-7a0b-4b22-a452-e91358fad110",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:17:18.421187+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "55d88977-c813-4cc5-986f-ede5200aa6f5",
+        "code": "PHY7-U03-S05-M05",
+        "status": "active",
+        "latest_review": {
+          "id": "b3165ab8-f7c4-40b1-9c86-7f8cbdb8593b",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:17:27.772362+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "5896313c-cea0-4198-85fe-028c34b7aa10",
+        "code": "PHY7-U03-S06-M01",
+        "status": "active",
+        "latest_review": {
+          "id": "d5882003-1cff-4107-a23e-3b3768083603",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:18:07.392665+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "a0bf2985-693e-4b92-84cc-90d4b688e9e2",
+        "code": "PHY7-U03-S06-M02",
+        "status": "active",
+        "latest_review": {
+          "id": "9c12392a-31a9-4028-a67b-c67bb45de880",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:19:20.694143+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "4fafb80a-1e46-445f-b6a4-356de1528858",
+        "code": "PHY7-U03-S07-M01",
+        "status": "active",
+        "latest_review": {
+          "id": "dced8c20-6d62-45da-83b0-337eb4507efd",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:19:32.125687+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "b807ffb9-370e-48c8-a66d-ee76dd16aeb5",
+        "code": "PHY7-U03-S07-M02",
+        "status": "active",
+        "latest_review": {
+          "id": "70233c54-9fda-4dd4-bd28-d4db058e175e",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:19:43.347656+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "820f3eac-084c-447e-b11c-e6c6220ae911",
+        "code": "PHY7-U03-S07-M03",
+        "status": "active",
+        "latest_review": {
+          "id": "c87fd112-931d-4970-99fb-11c4eae0d93d",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:19:54.124246+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "5605533f-5175-4968-bb4e-4132c04de143",
+        "code": "PHY7-U03-S07-M04",
+        "status": "active",
+        "latest_review": {
+          "id": "260b3fff-2854-4e59-b40a-7a4d95735ecc",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:22:40.545602+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "7769fcec-01d2-47e2-961a-1a1882dc1053",
+        "code": "PHY7-U03-S07-M05",
+        "status": "active",
+        "latest_review": {
+          "id": "52a29ba6-233e-459b-b71c-3754adbacbb2",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:22:29.305211+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "6262975e-76b1-4218-8262-9a0871d179b8",
+        "code": "PHY7-U03-S07-M06",
+        "status": "active",
+        "latest_review": {
+          "id": "00b505c9-e0e8-4fc6-8e75-73de700220f7",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:19:06.420601+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "60f59855-1edc-4bba-85ca-19150f276b1d",
+        "code": "PHY7-U03-S08-M01",
+        "status": "active",
+        "latest_review": {
+          "id": "db298495-9642-45a0-b9c4-997daa65fb03",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:23:14.326041+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "1b955cc8-c227-4b52-8a91-28172db089dd",
+        "code": "PHY7-U03-S08-M02",
+        "status": "active",
+        "latest_review": {
+          "id": "d9c9c265-5c53-48f3-9b5b-25923f03435a",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:23:22.788164+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      },
+      {
+        "id": "3cb063f1-ed53-4ff1-a8f2-7f6582d8a25f",
+        "code": "PHY7-U03-S08-M03",
+        "status": "active",
+        "latest_review": {
+          "id": "de03b048-375e-4568-927e-6caaacdca12d",
+          "action": "approve",
+          "hasActor": true,
+          "revision": 1,
+          "createdAt": "2026-10-13T21:23:55.498772+00:00",
+          "currentMatchesApprovedSnapshot": true
+        }
+      }
+    ],
+    "chapterPools": 0,
+    "formMemberships": 0,
+    "poolMemberships": 0
+  },
+  "questionContinuity": [
+    {
+      "code": "PHY7-U03-S01-I01",
+      "id": "8e79c9b1-0177-448e-90ed-dff118f9c99b",
+      "version": 1,
+      "stagedContentSha256": "3c658da38bb85ab66f5700ca40ff935f2f00459451803b23aae802da5d3c97d8",
+      "approvedContentSha256": "3c658da38bb85ab66f5700ca40ff935f2f00459451803b23aae802da5d3c97d8",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S02-I01",
+      "id": "8267d126-6572-4123-a84c-7f8c9fcc9cda",
+      "version": 1,
+      "stagedContentSha256": "95f7c317df22fbd2a8974619378fc545d76f9a9295548c502cc17fc9e5f56132",
+      "approvedContentSha256": "95f7c317df22fbd2a8974619378fc545d76f9a9295548c502cc17fc9e5f56132",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S03-I01",
+      "id": "c9c01ac3-97e7-4c74-ac7d-830c8dfe2850",
+      "version": 1,
+      "stagedContentSha256": "718d14198c0742d301118445e472c06cdc8bea47add49582f9866bbb45fd2803",
+      "approvedContentSha256": "718d14198c0742d301118445e472c06cdc8bea47add49582f9866bbb45fd2803",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S04-I01",
+      "id": "f36a3e82-6238-4b98-9dab-1eb96b590525",
+      "version": 1,
+      "stagedContentSha256": "40543e48a6da2693f27554d6d471335f8ee1ce9f78c1ff6e5dd5e044de799f10",
+      "approvedContentSha256": "40543e48a6da2693f27554d6d471335f8ee1ce9f78c1ff6e5dd5e044de799f10",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S05-I01",
+      "id": "7f62446a-6129-450b-8a6e-c68ebd9517d9",
+      "version": 1,
+      "stagedContentSha256": "0030d6a3326baf640c4e5ca6e6ca4e7ef7cee78ab9213b7da55bc9f06cd57180",
+      "approvedContentSha256": "0030d6a3326baf640c4e5ca6e6ca4e7ef7cee78ab9213b7da55bc9f06cd57180",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S06-I01",
+      "id": "88f7c239-c4be-4243-a99f-34580d8cf729",
+      "version": 1,
+      "stagedContentSha256": "558d03786d3556a7787b644efb5beadf08d71683e850fe25deda3b746adaf5a9",
+      "approvedContentSha256": "558d03786d3556a7787b644efb5beadf08d71683e850fe25deda3b746adaf5a9",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S07-I01",
+      "id": "c9d55079-79c7-40da-a39b-f1142aa69a87",
+      "version": 1,
+      "stagedContentSha256": "794d8b00a33881c95e34fb709755a3183b58c947e0d38925103f2acbc891e934",
+      "approvedContentSha256": "794d8b00a33881c95e34fb709755a3183b58c947e0d38925103f2acbc891e934",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S08-I01",
+      "id": "9a3043fe-a4cd-44b5-81d0-386414f3edc1",
+      "version": 1,
+      "stagedContentSha256": "b5d7f4ca86331df6fb2b3b14db3a79f75ce73796d7a2a8c4f74a2df54827aad9",
+      "approvedContentSha256": "b5d7f4ca86331df6fb2b3b14db3a79f75ce73796d7a2a8c4f74a2df54827aad9",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S01-I02",
+      "id": "2dc57b14-a240-40b5-b9b1-db2bf72b9109",
+      "version": 1,
+      "stagedContentSha256": "f5d76d0952390c39fd1028ddece0fefe6232b387522ef146a811824a2cb7c6e0",
+      "approvedContentSha256": "f5d76d0952390c39fd1028ddece0fefe6232b387522ef146a811824a2cb7c6e0",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S02-I02",
+      "id": "882ad261-363a-43ca-bf46-567d46c1f2f5",
+      "version": 1,
+      "stagedContentSha256": "17ca2efe24fd5cf33d720f92dc6238dc71f02b9895cff260b07d2cd030e8ba69",
+      "approvedContentSha256": "17ca2efe24fd5cf33d720f92dc6238dc71f02b9895cff260b07d2cd030e8ba69",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S03-I02",
+      "id": "9013e862-05ef-4490-a515-63b726fdbbbd",
+      "version": 1,
+      "stagedContentSha256": "e08ae5f9325c4d3c73c96f6a1140b3eaba68ca1ac886ef5460866846d07b4e35",
+      "approvedContentSha256": "e08ae5f9325c4d3c73c96f6a1140b3eaba68ca1ac886ef5460866846d07b4e35",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S04-I02",
+      "id": "b961ef38-7827-45c3-8a62-e54f02ffe7b1",
+      "version": 1,
+      "stagedContentSha256": "e06ba227d9a5fd16dd64e6025da5091e6e37d271da323eb33bba64c38b05ae6e",
+      "approvedContentSha256": "e06ba227d9a5fd16dd64e6025da5091e6e37d271da323eb33bba64c38b05ae6e",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S05-I02",
+      "id": "1f2acf32-1c3b-4f15-8ac9-a85b577f3174",
+      "version": 1,
+      "stagedContentSha256": "b2fe0605c04e2bc7298a3816eb2ecdd2761f3e14aba070f920f1de2fa42b7e54",
+      "approvedContentSha256": "b2fe0605c04e2bc7298a3816eb2ecdd2761f3e14aba070f920f1de2fa42b7e54",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S06-I02",
+      "id": "1e1370f3-a441-4fc3-aa19-f65ea3faa39a",
+      "version": 1,
+      "stagedContentSha256": "0c381f15487e475ec19dc0977170c015e5e59bea432f22ca9ca93490ee085cf2",
+      "approvedContentSha256": "0c381f15487e475ec19dc0977170c015e5e59bea432f22ca9ca93490ee085cf2",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S07-I02",
+      "id": "f9bd562a-0f89-48b1-bc62-7d5f52514d33",
+      "version": 1,
+      "stagedContentSha256": "22a734bbfc3f9190ced985d9002807e9579e7c234d34c3639aed80979d3db18f",
+      "approvedContentSha256": "22a734bbfc3f9190ced985d9002807e9579e7c234d34c3639aed80979d3db18f",
+      "contentAndImmutableHistoryUnchanged": true
+    },
+    {
+      "code": "PHY7-U03-S08-I02",
+      "id": "17593a60-fa41-4dba-923f-f922e18f06c9",
+      "version": 1,
+      "stagedContentSha256": "e7eeedf11361eb9cb31312c27a058ad5148029d66cdeab91e56955c06a1101a0",
+      "approvedContentSha256": "e7eeedf11361eb9cb31312c27a058ad5148029d66cdeab91e56955c06a1101a0",
+      "contentAndImmutableHistoryUnchanged": true
+    }
+  ],
+  "guideContinuityAndComparison": [
+    {
+      "itemCode": "PHY7-U03-S01-I01",
+      "guideId": "306ce365-91cc-46c6-aa66-0ad29ea375d4",
+      "runtimeVersion": 2,
+      "authoringVersion": 4,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:08:24.444993+00:00",
+      "runtimeSnapshotId": "6b913a58-b26e-4fda-a329-1e6b57188ef5",
+      "authoringSnapshotId": "bd3a1f70-6b8c-4247-bdd5-74ff9bb519dc",
+      "matchesBothSnapshots": true,
+      "changedFields": [
+        "strategy_hy",
+        "hint_1_hy",
+        "hint_2_hy",
+        "worked_example_hy"
+      ],
+      "stagedTextSha256": "b4789db9909e99c292270c5f7b89a48e870266c1094149c306fdfc90d88019cd",
+      "publishedTextSha256": "f6eb92371583ff9ad489545286989714b1b833863ece9217820d851c2065210b",
+      "comparison": "Same illustrated car/reference-body inference and train/passenger example; expanded explanation adds no new scenario or protected demand.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S02-I01",
+      "guideId": "22d29fde-b079-41ae-a909-943c19e88b91",
+      "runtimeVersion": 2,
+      "authoringVersion": 3,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:12:45.509471+00:00",
+      "runtimeSnapshotId": "30d0b1cb-0ff0-4b7a-942f-46255a582f4b",
+      "authoringSnapshotId": "fa1e4f55-dbb0-42af-97af-18b1ff755b9a",
+      "matchesBothSnapshots": true,
+      "changedFields": [],
+      "stagedTextSha256": "1803b241b0827bd2837236c514651abd3dc579bdaefd9535117a06b78d850129",
+      "publishedTextSha256": "1803b241b0827bd2837236c514651abd3dc579bdaefd9535117a06b78d850129",
+      "comparison": "All learner-facing guide text is unchanged from staging; runtime version 2 records publication.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S03-I01",
+      "guideId": "27616f98-f19c-4f20-ae16-442979324352",
+      "runtimeVersion": 2,
+      "authoringVersion": 4,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:21:03.17869+00:00",
+      "runtimeSnapshotId": "af1727f6-3a8a-46f3-b7dc-99c2a624bfcb",
+      "authoringSnapshotId": "03f4631e-d399-41d6-af54-3f70e2f1a93c",
+      "matchesBothSnapshots": true,
+      "changedFields": [
+        "strategy_hy",
+        "hint_1_hy",
+        "hint_2_hy",
+        "worked_example_hy"
+      ],
+      "stagedTextSha256": "267f6e80e734800429b6f8fab1dc289df5c54a477b6705429b8686a0c1d096b9",
+      "publishedTextSha256": "4099a4b16ff5092aaf5e0fe9f293309c4dd787395e9b1d7873c97873a2cb91f5",
+      "comparison": "Same whole-path sum, 8 m forward plus 3 m return, versus 5 m endpoint separation; emphasis and math formatting retain the procedure.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S04-I01",
+      "guideId": "5619a46c-5ae7-41c3-bbe9-18c3287acdfd",
+      "runtimeVersion": 2,
+      "authoringVersion": 4,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:33:24.20797+00:00",
+      "runtimeSnapshotId": "e1a24e52-a56f-4a23-a559-63cb22616da9",
+      "authoringSnapshotId": "94b94aa3-5991-498e-a939-e4497c5b8b77",
+      "matchesBothSnapshots": true,
+      "changedFields": [
+        "strategy_hy",
+        "hint_1_hy",
+        "hint_2_hy",
+        "worked_example_hy"
+      ],
+      "stagedTextSha256": "7c9dc97dccaeabaae542f6fd7fbbd2d3483d145b401570363fced2364d24e6ec",
+      "publishedTextSha256": "c51fab34483d01c410ff703b5623b30d8f043409859f68113d462871d768de5e",
+      "comparison": "Same equal-time cart traces, 2 s observations and 6 cm increments. No new demand; the edited worked example overstates uniformity before its smaller-interval caveat. Source-based clarification recorded separately.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S05-I01",
+      "guideId": "3a7bdb8c-02b0-45ec-935b-1f4945206ba9",
+      "runtimeVersion": 2,
+      "authoringVersion": 4,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:48:43.081682+00:00",
+      "runtimeSnapshotId": "0af99afe-d98d-41b2-8585-134fd66469cd",
+      "authoringSnapshotId": "ae88549b-1d53-4551-9e4a-80af0e289c55",
+      "matchesBothSnapshots": true,
+      "changedFields": [
+        "strategy_hy",
+        "hint_1_hy",
+        "hint_2_hy",
+        "worked_example_hy"
+      ],
+      "stagedTextSha256": "2802f3b96163d4369a2bf0a21de55575a9bac19a08ff228719d0234c3462ea66",
+      "publishedTextSha256": "7f21822e2c5d17788d19c6881126fa19a4abec9602b1aa6d621f5a36cfdb035f",
+      "comparison": "Same equal speed magnitudes with opposite directions and 1 m/s walking example; added notation does not introduce vector algebra or a new protected scenario.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S06-I01",
+      "guideId": "6cb9c28d-b77c-46e7-9535-9c9ceda97254",
+      "runtimeVersion": 2,
+      "authoringVersion": 3,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:52:17.841423+00:00",
+      "runtimeSnapshotId": "62de1835-377e-40c9-9a6d-88991f87fe27",
+      "authoringSnapshotId": "a767758f-3bd5-4829-84f7-8bc942e0c182",
+      "matchesBothSnapshots": true,
+      "changedFields": [],
+      "stagedTextSha256": "46c890407fd9edf4799d229bb35f62e06a0f01533f7e3343170bae1c6911f473",
+      "publishedTextSha256": "46c890407fd9edf4799d229bb35f62e06a0f01533f7e3343170bae1c6911f473",
+      "comparison": "All learner-facing guide text is unchanged from staging; runtime version 2 records publication.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S07-I01",
+      "guideId": "7667af0f-17a4-4ef9-9803-daf7270bfeab",
+      "runtimeVersion": 2,
+      "authoringVersion": 3,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:57:49.435964+00:00",
+      "runtimeSnapshotId": "b5b44442-50a9-46d0-a77e-aca18ca66236",
+      "authoringSnapshotId": "1349c37e-913e-47e9-a92c-c2bfed66d0c9",
+      "matchesBothSnapshots": true,
+      "changedFields": [],
+      "stagedTextSha256": "5da60a74b5f47f2ffe1732a6c24f9f1b636f05d7393ddb874df566b1e62d5e8b",
+      "publishedTextSha256": "5da60a74b5f47f2ffe1732a6c24f9f1b636f05d7393ddb874df566b1e62d5e8b",
+      "comparison": "All learner-facing guide text is unchanged from staging; runtime version 2 records publication.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S08-I01",
+      "guideId": "ace5054b-debb-4077-972b-98d80150ce96",
+      "runtimeVersion": 2,
+      "authoringVersion": 3,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:58:40.30339+00:00",
+      "runtimeSnapshotId": "b78e5ea7-37aa-4691-917a-a72b8a1cb1fa",
+      "authoringSnapshotId": "561f0aa7-0a0f-45b0-a250-bd684401125d",
+      "matchesBothSnapshots": true,
+      "changedFields": [],
+      "stagedTextSha256": "c7a10975a7fa91da67798dba571a7818c3651864cba3971138a6939339f37e26",
+      "publishedTextSha256": "c7a10975a7fa91da67798dba571a7818c3651864cba3971138a6939339f37e26",
+      "comparison": "All learner-facing guide text is unchanged from staging; runtime version 2 records publication.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S01-I02",
+      "guideId": "4d5bd5bf-ab94-4410-9cd7-eab79efe987e",
+      "runtimeVersion": 2,
+      "authoringVersion": 4,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:11:50.947243+00:00",
+      "runtimeSnapshotId": "29f117ab-2942-4553-ae10-629908fe7155",
+      "authoringSnapshotId": "1c8feca8-4d6a-4a93-ab14-6bbc7cc40ddd",
+      "matchesBothSnapshots": true,
+      "changedFields": [
+        "strategy_hy",
+        "hint_1_hy",
+        "hint_2_hy",
+        "worked_example_hy"
+      ],
+      "stagedTextSha256": "5601577729042fc02e6c997b812c377a90923951ca46d5b3f14e75b587659a91",
+      "publishedTextSha256": "849d639c80ed53eeaed31e06cbb1331a44bd3e6e7dae67237745b7755a8fa866",
+      "comparison": "Same book/table/platform and bag/bus/stop position comparisons; more explicit relative-rest language, no new demand.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S02-I02",
+      "guideId": "0de3e9f3-9038-48a0-a611-b41fa3df63bc",
+      "runtimeVersion": 2,
+      "authoringVersion": 4,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:17:59.785787+00:00",
+      "runtimeSnapshotId": "1681954d-ee0a-4bd0-b5f7-1cbd52e12933",
+      "authoringSnapshotId": "46122aa5-73c7-4ead-8f3c-e70a8f48b851",
+      "matchesBothSnapshots": true,
+      "changedFields": [
+        "strategy_hy",
+        "hint_1_hy",
+        "hint_2_hy",
+        "worked_example_hy"
+      ],
+      "stagedTextSha256": "e0325390fef27f46f3a10add7f4dfacbbf623136dc262224dcbe3bf64c7c1db0",
+      "publishedTextSha256": "943dc71a992c49264f5dcb9b0966ca04e701838fa9f312b7a31d7bfa9c9ec7a5",
+      "comparison": "Same fit-through-opening size relevance and needle/bead versus transported-box examples; compare with both material-point questions and textbook pp.45–46. No added independent coverage.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S03-I02",
+      "guideId": "6dd10a27-6c8f-457a-ad13-77972ba704cb",
+      "runtimeVersion": 2,
+      "authoringVersion": 4,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:27:14.239913+00:00",
+      "runtimeSnapshotId": "0435e549-53bf-43bb-92e5-84999f92b424",
+      "authoringSnapshotId": "975d0b4d-4d9e-41c7-b989-be5ee050b5c6",
+      "matchesBothSnapshots": true,
+      "changedFields": [
+        "strategy_hy",
+        "hint_1_hy",
+        "hint_2_hy"
+      ],
+      "stagedTextSha256": "78645842a9f68c6ba7880a079b4c02f509021bdd752bf381e7a2ac71cca9cdfb",
+      "publishedTextSha256": "df4cde6895e9043ef75a1339e78f1b41598f6cc41bebef0ea8e3287954c857d9",
+      "comparison": "Same closed-lap path length versus coincident endpoints and 300 m example; added nondecreasing-path statement remains exposed practice teaching.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S04-I02",
+      "guideId": "e9c376af-5fa7-4a94-9c62-2b30a78de9bb",
+      "runtimeVersion": 2,
+      "authoringVersion": 7,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:44:36.423409+00:00",
+      "runtimeSnapshotId": "ff3296bb-2248-4f40-b019-0fdda79e0dc3",
+      "authoringSnapshotId": "555c75a5-09d7-4614-8766-71f623e980ff",
+      "matchesBothSnapshots": true,
+      "changedFields": [
+        "strategy_hy",
+        "hint_1_hy",
+        "hint_2_hy",
+        "worked_example_hy"
+      ],
+      "stagedTextSha256": "171222b49d82c0488d4b6d6935aa60928eb9c909f9e5b0f760c93203d02bd67b",
+      "publishedTextSha256": "47322a770a40b94600c1796a9d13927692d453c789dded3c1ac89e90e4bebdd4",
+      "comparison": "Same unequal-duration equal-ratio compatibility, 4/2=6/3=2, with explicit smaller-interval limitation; current formula agrees with reviewed question and source pp.49–50.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S05-I02",
+      "guideId": "c3e0fefe-7378-4245-a41c-a98c8d2c5569",
+      "runtimeVersion": 2,
+      "authoringVersion": 3,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:50:47.17854+00:00",
+      "runtimeSnapshotId": "8d254d9e-b4a7-4138-9225-8e8623b7aec0",
+      "authoringSnapshotId": "171b51f8-d11f-4606-bf79-5615f2f98af1",
+      "matchesBothSnapshots": true,
+      "changedFields": [],
+      "stagedTextSha256": "dc9d85a9a79605c3be4074f2c5bb4fa250651b5de896c75689642c45996811aa",
+      "publishedTextSha256": "dc9d85a9a79605c3be4074f2c5bb4fa250651b5de896c75689642c45996811aa",
+      "comparison": "All learner-facing guide text is unchanged from staging; runtime version 2 records publication.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S06-I02",
+      "guideId": "ac02fb20-471f-4372-b6cb-54e9beb23af0",
+      "runtimeVersion": 2,
+      "authoringVersion": 3,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:55:56.074229+00:00",
+      "runtimeSnapshotId": "ae8725ff-c3eb-4200-ac23-e35cc600953e",
+      "authoringSnapshotId": "6f45fcc2-12b1-43e9-8afc-2c6308a1bfb3",
+      "matchesBothSnapshots": true,
+      "changedFields": [],
+      "stagedTextSha256": "f224651ec8488f6120a40f2c1fa4810a066a4c207f9e4fa50394334b66c40cf8",
+      "publishedTextSha256": "f224651ec8488f6120a40f2c1fa4810a066a4c207f9e4fa50394334b66c40cf8",
+      "comparison": "All learner-facing guide text is unchanged from staging; runtime version 2 records publication.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S07-I02",
+      "guideId": "94976a25-d288-4236-bc54-c99292b5f2e8",
+      "runtimeVersion": 2,
+      "authoringVersion": 3,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:58:20.38705+00:00",
+      "runtimeSnapshotId": "fe66f42b-386d-4b23-8453-c6b1eb087791",
+      "authoringSnapshotId": "c4e84bcb-caa1-45b4-a2af-4c8aeb4c571c",
+      "matchesBothSnapshots": true,
+      "changedFields": [],
+      "stagedTextSha256": "6956f7a76823fd76ab3647943b490d511ebd9a8eae8e2e01b7042bfbc9e8d045",
+      "publishedTextSha256": "6956f7a76823fd76ab3647943b490d511ebd9a8eae8e2e01b7042bfbc9e8d045",
+      "comparison": "All learner-facing guide text is unchanged from staging; runtime version 2 records publication.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    },
+    {
+      "itemCode": "PHY7-U03-S08-I02",
+      "guideId": "43c4349e-3462-4aa1-973e-7791c32c0335",
+      "runtimeVersion": 2,
+      "authoringVersion": 3,
+      "status": "published",
+      "hasHumanPublisher": true,
+      "publisherRole": "content_admin",
+      "publishedAt": "2026-10-13T20:59:01.249819+00:00",
+      "runtimeSnapshotId": "83753752-3d44-4954-9c9d-071c775d4e62",
+      "authoringSnapshotId": "603cad8f-21af-4095-9e00-086a9a017e04",
+      "matchesBothSnapshots": true,
+      "changedFields": [],
+      "stagedTextSha256": "bc78e7d1637a7721313543e06b05748ffa617bec033b2ff46a98bc188b36536c",
+      "publishedTextSha256": "bc78e7d1637a7721313543e06b05748ffa617bec033b2ff46a98bc188b36536c",
+      "comparison": "All learner-facing guide text is unchanged from staging; runtime version 2 records publication.",
+      "independentNewReasoningCoverage": 0,
+      "protectedQualification": false
+    }
+  ],
+  "allDefinitionsUnchangedFromStaging": true,
+  "guideStructuralValidation": {
+    "method": "Read-only replay of the saved deployed v10 guide-validation helper; no authenticated Edge call or new QA record. Structural validation does not establish physics or language quality.",
+    "helperSha256": "aa073f39426d8f0013a57ed27a86a3dd1d848653ebdac0a59dd437f43dcc6e89",
+    "results": [
+      {
+        "code": "PHY7-U03-S01-I01",
+        "guideId": "306ce365-91cc-46c6-aa66-0ad29ea375d4",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S02-I01",
+        "guideId": "22d29fde-b079-41ae-a909-943c19e88b91",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S03-I01",
+        "guideId": "27616f98-f19c-4f20-ae16-442979324352",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S04-I01",
+        "guideId": "5619a46c-5ae7-41c3-bbe9-18c3287acdfd",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S05-I01",
+        "guideId": "3a7bdb8c-02b0-45ec-935b-1f4945206ba9",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S06-I01",
+        "guideId": "6cb9c28d-b77c-46e7-9535-9c9ceda97254",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S07-I01",
+        "guideId": "7667af0f-17a4-4ef9-9803-daf7270bfeab",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S08-I01",
+        "guideId": "ace5054b-debb-4077-972b-98d80150ce96",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S01-I02",
+        "guideId": "4d5bd5bf-ab94-4410-9cd7-eab79efe987e",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S02-I02",
+        "guideId": "0de3e9f3-9038-48a0-a611-b41fa3df63bc",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S03-I02",
+        "guideId": "6dd10a27-6c8f-457a-ad13-77972ba704cb",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S04-I02",
+        "guideId": "e9c376af-5fa7-4a94-9c62-2b30a78de9bb",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S05-I02",
+        "guideId": "c3e0fefe-7378-4245-a41c-a98c8d2c5569",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S06-I02",
+        "guideId": "ac02fb20-471f-4372-b6cb-54e9beb23af0",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S07-I02",
+        "guideId": "94976a25-d288-4236-bc54-c99292b5f2e8",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S08-I02",
+        "guideId": "43c4349e-3462-4aa1-973e-7791c32c0335",
+        "runtimeVersion": 2,
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      }
+    ]
+  },
+  "unchangedTableFingerprints": {
+    "assessment_blueprints": {
+      "row_count": 11,
+      "table_name": "assessment_blueprints",
+      "fingerprint": "51b8853ae72d3be2ecd57ca01b1adc48"
+    },
+    "assessment_form_items": {
+      "row_count": 160,
+      "table_name": "assessment_form_items",
+      "fingerprint": "553d4be9faaa89ed5de52273eddac5af"
+    },
+    "assessment_forms": {
+      "row_count": 9,
+      "table_name": "assessment_forms",
+      "fingerprint": "595ff706c9068933f7bf5a5958063fa5"
+    },
+    "assessment_policy_bindings": {
+      "row_count": 4,
+      "table_name": "assessment_policy_bindings",
+      "fingerprint": "b1ce52048f635987d2210930b649e275"
+    },
+    "assessment_pool_items": {
+      "row_count": 472,
+      "table_name": "assessment_pool_items",
+      "fingerprint": "3ec05f7f1bb5e41bcaf90880d1ad5997"
+    },
+    "assessment_pools": {
+      "row_count": 7,
+      "table_name": "assessment_pools",
+      "fingerprint": "d0d60d4d5a47219be471029bdd9611c6"
+    },
+    "attempts": {
+      "row_count": 42,
+      "table_name": "attempts",
+      "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+    },
+    "chapter_review_item_exposures": {
+      "row_count": 0,
+      "table_name": "chapter_review_item_exposures",
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    "curriculum_release_gate_checks": {
+      "row_count": 21,
+      "table_name": "curriculum_release_gate_checks",
+      "fingerprint": "68e44a9b6fdbe510be2410c49cb2bdf2"
+    },
+    "curriculum_release_item_families": {
+      "row_count": 246,
+      "table_name": "curriculum_release_item_families",
+      "fingerprint": "75039af5e1ef2eb5c1abb89e18630286"
+    },
+    "curriculum_release_skills": {
+      "row_count": 26,
+      "table_name": "curriculum_release_skills",
+      "fingerprint": "59cd327812a33dd49e4391f44bfd0fcc"
+    },
+    "curriculum_release_units": {
+      "row_count": 4,
+      "table_name": "curriculum_release_units",
+      "fingerprint": "f15fc61697744acd305f9d7801c70c6c"
+    },
+    "curriculum_releases": {
+      "row_count": 4,
+      "table_name": "curriculum_releases",
+      "fingerprint": "d7a6bd620e8f2449ce18a9e4a71f8885"
+    },
+    "curriculum_source_documents": {
+      "row_count": 3,
+      "table_name": "curriculum_source_documents",
+      "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+    },
+    "item_answer_keys": {
+      "row_count": 469,
+      "table_name": "item_answer_keys",
+      "fingerprint": "37cca6d059ecc2dd0a758765a9f68b49"
+    },
+    "item_curriculum_scopes": {
+      "row_count": 469,
+      "table_name": "item_curriculum_scopes",
+      "fingerprint": "49cf5ffca547d3dbba4be95eac0808fa"
+    },
+    "item_families": {
+      "row_count": 247,
+      "table_name": "item_families",
+      "fingerprint": "21f3db3d9e63c080cce9514d92d03dc4"
+    },
+    "item_family_curriculum_reconciliations": {
+      "row_count": 247,
+      "table_name": "item_family_curriculum_reconciliations",
+      "fingerprint": "6add410bbf7bf0cce350645cdd447321"
+    },
+    "item_misconception_mappings": {
+      "row_count": 866,
+      "table_name": "item_misconception_mappings",
+      "fingerprint": "a0e15276264deb56deeeb8191d684de7"
+    },
+    "item_options": {
+      "row_count": 1268,
+      "table_name": "item_options",
+      "fingerprint": "a8702bf5d7a5a3d316671d1b3cbae42f"
+    },
+    "item_qa_runs": {
+      "row_count": 747,
+      "table_name": "item_qa_runs",
+      "fingerprint": "758ff22007aa57b4cffc468fc9ed4846"
+    },
+    "item_templates": {
+      "row_count": 247,
+      "table_name": "item_templates",
+      "fingerprint": "103f9a39a9ff547774000347a367ccb5"
+    },
+    "item_versions": {
+      "row_count": 346,
+      "table_name": "item_versions",
+      "fingerprint": "70f545189e1115df6925b641a762de5e"
+    },
+    "learning_model_runtime_bindings": {
+      "row_count": 2,
+      "table_name": "learning_model_runtime_bindings",
+      "fingerprint": "5408c8dd8d0d5e2d182d8d4c42bf4490"
+    },
+    "learning_outcomes": {
+      "row_count": 19,
+      "table_name": "learning_outcomes",
+      "fingerprint": "c589ab20e3348c5cdc7912db7ed74226"
+    },
+    "learning_session_items": {
+      "row_count": 95,
+      "table_name": "learning_session_items",
+      "fingerprint": "0b2c842f68a9f8b991c8d6621fa5d2df"
+    },
+    "skill_curriculum_reconciliations": {
+      "row_count": 26,
+      "table_name": "skill_curriculum_reconciliations",
+      "fingerprint": "6243c24c3bca7ef36533ce2e4c2398ef"
+    },
+    "skill_outcome_curriculum_mappings": {
+      "row_count": 31,
+      "table_name": "skill_outcome_curriculum_mappings",
+      "fingerprint": "de8275993062380c4757febd007f7a54"
+    },
+    "skill_outcomes": {
+      "row_count": 31,
+      "table_name": "skill_outcomes",
+      "fingerprint": "e69c6ead7130ec12a494da1ad3bf21c7"
+    },
+    "skill_remediation_guides": {
+      "row_count": 10,
+      "table_name": "skill_remediation_guides",
+      "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+    },
+    "skills": {
+      "row_count": 27,
+      "table_name": "skills",
+      "fingerprint": "276f56c290f7d3ad3a106ff8b70e4711"
+    },
+    "student_item_exposure_events": {
+      "row_count": 43,
+      "table_name": "student_item_exposure_events",
+      "fingerprint": "7ea171fcf7e3cfcf7eb29f8b64c7fb06"
+    }
+  },
+  "changedTablesSinceStaging": [
+    {
+      "table": "item_reviews",
+      "beforeCount": 724,
+      "afterCount": 740
+    },
+    {
+      "table": "item_template_remediation_guides",
+      "beforeCount": 82,
+      "afterCount": 82
+    },
+    {
+      "table": "items",
+      "beforeCount": 469,
+      "afterCount": 469
+    },
+    {
+      "table": "misconception_review_events",
+      "beforeCount": 265,
+      "afterCount": 298
+    },
+    {
+      "table": "misconceptions",
+      "beforeCount": 306,
+      "afterCount": 306
+    },
+    {
+      "table": "remediation_guide_authoring_versions",
+      "beforeCount": 340,
+      "afterCount": 383
+    },
+    {
+      "table": "remediation_guide_versions",
+      "beforeCount": 178,
+      "afterCount": 194
+    }
+  ],
+  "comparisonScope": "Version-continuity check for all 16 questions and definitions; delta comparison of eight human-edited guides against staged guide scenarios, same-skill questions, source and the recorded batch comparisons. This is not a new full protected-capacity qualification or a claim that exact hashes prove semantic diversity. Question prompts/options/keys/immutable versions and mapping/pool/form tables are unchanged. Guide edits add no independent reasoning coverage; future question batches must include all current guide versions.",
+  "editorialFollowup": {
+    "guideId": "5619a46c-5ae7-41c3-bbe9-18c3287acdfd",
+    "itemCode": "PHY7-U03-S04-I01",
+    "runtimeVersion": 2,
+    "field": "worked_example_hy",
+    "source": "Physics 7, Melikyan–Mailian, 2023, §16, printed pp.49–50",
+    "finding": "The phrase asserting uniform motion over the measurement interval is stronger than sampled equal distances establish; the following caveat does not make that assertion precise. Keep compatibility, not proof.",
+    "proposedReplacementHy": "Սայլակի դիրքը նշել են յուրաքանչյուր 2 վ-ը մեկ։ Հաջորդական նշումների միջև հեռավորությունները 6 սմ, 6 սմ և 6 սմ են։ Այս գրանցումները համապատասխանում են հավասարաչափ շարժմանը, բայց միայն դրանցով չենք կարող հաստատել, որ շարժումը հավասարաչափ է եղել նաև ավելի փոքր ժամանակամիջոցներում։",
+    "state": "Prepared documentation-only correction; not staged, not human-approved. Preserve current approval/history; stage a new guide authoring revision and obtain fresh guide review before learner release."
+  },
+  "limits": "Read-only production verification; no approval, QA, content, runtime, policy or release write. Chapter III remains draft, inactive and unallocated; specialist, assessment contract, supporting/additional-skill treatment and release gates stay open. Chapter I/II pilots are unchanged. User-approved text is preserved."
+}

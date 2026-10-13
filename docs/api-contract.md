@@ -4,7 +4,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. The historical 2026-10-10 comparison does not authorize a release; the separate 2026-10-13 pilot activation and authenticated acceptance are recorded below.
 
-**Chapter III draft staging (2026-10-13):** [15C.3](chapter-iii-batch-02-staging.md) adds eight practice items, eight draft guides, fourteen draft definitions and eight automated technical QA records. Total draft inventory is 16 questions, 16 guides and 33 definitions, all awaiting ordinary human site review. Existing reviewer endpoints expose these records; no endpoint contract changed. Chapter III remains inactive and unallocated. No scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release is added; Chapter I/II pilots are preserved.
+**Chapter III review closure (2026-10-14):** read-only verification confirms 16 approved questions, 16 published guides and 33 active definitions with current human review/publication snapshots. One edited guide has a prepared source-based clarification, not yet staged. [Review closure and prepared clarification](chapter-iii-review-closure-20261014.md). No endpoint or runtime contract changed and no approval or QA row was written by verification. Chapter III remains inactive and unallocated; Chapter I/II pilots are preserved. Assessment/readiness rules, supporting/additional-skill treatment and learner release remain separate.
 
 ## Chapter II content boundary — 2026-10-13
 
