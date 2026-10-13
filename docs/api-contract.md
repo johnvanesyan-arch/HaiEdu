@@ -4,7 +4,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. The historical 2026-10-10 comparison does not authorize a release; the separate 2026-10-13 pilot activation and authenticated acceptance are recorded below.
 
-**Chapter III review closure (2026-10-14):** read-only verification confirms 16 approved questions, 16 published guides and 33 active definitions with current human review/publication snapshots. One edited guide has a prepared source-based clarification, not yet staged. [Review closure and prepared clarification](chapter-iii-review-closure-20261014.md). No endpoint or runtime contract changed and no approval or QA row was written by verification. Chapter III remains inactive and unallocated; Chapter I/II pilots are preserved. Assessment/readiness rules, supporting/additional-skill treatment and learner release remain separate.
+**Chapter III batch 03 (2026-10-14):** content-only staging adds eight practice questions, eight guides, nineteen definitions and eight accurately labelled automated QA rows. The exact chat-approved S04-I01 guide correction is a new authoring-v5 draft; runtime v2 is preserved until authenticated publication. [Batch 03 and guide correction](chapter-iii-batch-03-staging.md). No endpoint, schema, runtime, auth, scoring/readiness or learner-access contract changed. Current inventory is 24 questions (16 approved + 8 draft); Chapter III remains inactive and unallocated, and Chapter I/II pilots are unchanged.
 
 ## Chapter II content boundary — 2026-10-13
 
