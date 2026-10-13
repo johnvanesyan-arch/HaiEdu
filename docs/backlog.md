@@ -261,7 +261,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Human content review of all 37 questions and 47 definitions, verified against current versions and approved snapshots on 2026-10-13.
 - [x] Close the shared direct-question read gap; deploy and verify staff/service access, anonymous/student denial and unchanged content/evidence tables.
 - [x] Stage the recorded three question revisions and three guide drafts, preserve prior approvals/history and verify deployed technical QA.
-- [ ] Human review of the three v3 question revisions and three authoring v5 guide drafts.
+- [x] Human review of the three v3 question revisions and publication of the three guide corrections at authoring v7 / runtime v3, verified against unchanged reviewed content.
+- [x] 15B.14A: prepare the current-version inventory, independent Physics reviewer packet and historical exposure hold.
 - [ ] Historical exposure disposition, independent SME/protection qualification, disjoint allocations and release gates.
 
-The bank retains 192 non-archived questions: 189 current versions approved and three editorial revisions awaiting review, 263 active definitions and 57 published runtime guides with three draft revisions. Each of eight skills retains 12/4/8 Practice/Diagnostic/Mastery slots. No new bank identity or release activation. [Editorial handoff](chapter-ii-editorial-corrections-20261013.md). [Review closure evidence](evidence/sprint-15b13-batches-19-20-review-complete-20261013.json). [Authoritative status](project-status.md) and [production verification](evidence/sprint-15b13-assessment-batches-19-20-production-20261013.json).
+The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) is complete; independent SME/exposure, allocation and release decisions remain open. [Current evidence](evidence/chapter-ii-qualification-preflight-20261013.json) · [Authoritative status](project-status.md).

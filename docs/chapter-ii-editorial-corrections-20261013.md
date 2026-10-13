@@ -2,6 +2,8 @@
 
 **Date:** 2026-10-13 (Asia/Yerevan). **Author/comparison reviewer:** Codex automated author at John's direction. **Scope:** three existing question revisions and three guide drafts. This is a Physics 7 content correction using the existing subject-neutral lifecycle; no shared core, schema, API, browser or release change is included.
 
+**Review closure — 2026-10-13 08:14–08:18 UTC:** all three corrected v3 questions are approved. The three guide corrections are published at authoring v7 / runtime v3, with content identical to the v5 drafts and matching runtime snapshots. The staging/review instructions below are historical. No repeat content review is required. [Verified closure and qualification preparation](chapter-ii-assessment-qualification.md).
+
 ## Scope and decisions
 
 | Record | Correction | Version and review boundary |
