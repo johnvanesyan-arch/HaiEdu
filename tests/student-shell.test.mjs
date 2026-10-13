@@ -58,7 +58,8 @@ test("student navigation is entitlement-driven while Physics routes remain subje
   assert.doesNotMatch(courses, /physics-7\.html/);
   assert.match(courses, /assessment/);
   assert.match(courses, /progress/);
-  assert.match(courses, /selected\.enrollmentId === course\.enrollmentId/);
+  assert.match(courses, /import\s*\{[^}]*sameCourse[^}]*\}\s*from\s*['"]\.\/learning-navigation\.mjs['"]/);
+  assert.match(courses, /sameCourse\(selected,\s*course\)/);
 });
 
 test("design tokens include spacing, semantic state, focus and layout primitives", async () => {

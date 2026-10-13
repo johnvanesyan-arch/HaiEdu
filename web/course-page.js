@@ -1,6 +1,6 @@
 import { createClient } from 'https://esm.sh/@supabase/supabase-js@2';
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
-import { readLearningSelection, sameContext, contextHref, courseLabel, escapeHtml as esc } from './learning-navigation.mjs';
+import { readLearningSelection, sameContext, sameCourse, contextHref, courseLabel, escapeHtml as esc } from './learning-navigation.mjs';
 import { registeredExtensionHref } from './learning-extensions.mjs';
 import { mountLearningPlayer } from './learning-player.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
@@ -70,7 +70,9 @@ async function load() {
     const learningContent = tab === 'progress'
       ? `<section class="card course-data-section"><h2>Հմտությունների առաջընթաց</h2><p class="subtle">Հմտությունների ցուցանիշները տվյալ թողարկման ուսումնական պատմությունն են։ Տարբեր կանոններով սեսիաները ներկայացվում են առանձին։</p>${skillTable}</section>`
       : `${active ? '' : `<div class="amp-subject-grid">${modeCards}</div>`}${tab === 'course' ? `<section class="card course-data-section"><h2>Հմտություններ</h2>${skillTable}</section>` : ''}`;
-    root.innerHTML = `<nav class="row course-tabs" aria-label="Դասընթացի բաժիններ">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['progress','Առաջընթաց']].map(([t,l])=>`<a class="button-link ghost" href="${esc(contextHref(context,t))}"${t===tab?' aria-current="page"':''}>${l}</a>`).join('')}</nav>
+    const chapters = navigation.contexts.filter(c=>sameCourse(c,context)).sort((a,b)=>a.unitSequence-b.unitSequence);
+    const chapterLinks = chapters.length>1 ? `<nav class="row course-chapters" aria-label="Դասընթացի գլուխներ">${chapters.map(c=>`<a class="button-link ghost" href="${esc(contextHref(c,tab))}"${sameContext(c,context)?' aria-current="page"':''}>${esc(c.unitTitleHy)}</a>`).join('')}</nav>` : '';
+    root.innerHTML = `${chapterLinks}<nav class="row course-tabs" aria-label="Դասընթացի բաժիններ">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['progress','Առաջընթաց']].map(([t,l])=>`<a class="button-link ghost" href="${esc(contextHref(context,t))}"${t===tab?' aria-current="page"':''}>${l}</a>`).join('')}</nav>
       <section class="card course-overview" aria-label="Ուսուցման ամփոփում"><p>${data.baseline ? `Ելակետային ախտորոշիչ՝ ${data.baseline.correct}/${data.baseline.answered} · ${data.baseline.percent}%` : 'Ախտորոշիչը կսահմանի ձեր մեկնարկային մակարդակը։'}</p>${data.lifecycle ? `<p>Յուրացման օգտագործված փորձեր՝ ${data.lifecycle.attemptsUsed}/${data.maximumAttempts ?? '—'}</p>` : ''}</section>
       ${resume}${legacyCourse ? `<div><a class="button-link ghost" href="${esc(legacyCourse)}">Դիտել դասընթացի թեմաները</a></div>` : ''}<div id="learningPlayer"></div>${learningContent}
       <section class="card course-data-section" aria-labelledby="courseHistoryTitle"><h2 id="courseHistoryTitle">Ավարտված աշխատանքներ</h2><div class="matrix-wrap" tabindex="0" role="region" aria-label="Ավարտված աշխատանքների պատմություն"><table class="course-table"><thead><tr><th scope="col">Տեսակ</th><th scope="col">Արդյունք</th><th scope="col">Ավարտ</th><th scope="col">Տվյալներ</th></tr></thead><tbody>${history || '<tr><td colspan="4">Ավարտված աշխատանք դեռ չկա։</td></tr>'}</tbody></table></div></section>`;

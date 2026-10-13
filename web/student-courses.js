@@ -1,4 +1,4 @@
-import { groupLearningContexts, courseLabel, contextHref, sameContext, readLearningSelection, resolveNavigationContext, escapeHtml as esc } from './learning-navigation.mjs';
+import { groupLearningContexts, courseLabel, contextHref, sameCourse, readLearningSelection, resolveNavigationContext, escapeHtml as esc } from './learning-navigation.mjs';
 const page = document.body.dataset.studentPage;
 function render(detail = {}) {
   const contexts = detail.contexts ?? [];
@@ -10,7 +10,7 @@ function render(detail = {}) {
   const items = [home];
   if (courses.length) items.push('<div class="amp-nav-section-label">Իմ առարկաները</div>');
   for (const course of courses) {
-    const active = selected && selected.enrollmentId === course.enrollmentId && selected.curriculumReleaseId === course.curriculumReleaseId;
+    const active = sameCourse(selected,course);
     const unit = active ? selected : course.units[0];
     items.push(`<a class="amp-nav-link amp-course-link" data-course-key="${esc(course.key)}" href="${esc(contextHref(unit))}"><span class="amp-nav-icon">▦</span><span>${esc(courseLabel(course))}<small>${esc(course.className)} · ${esc(course.schoolName)}</small></span></a>`);
     if (active) items.push(`<div class="amp-course-sublinks">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['progress','Առաջընթաց']].map(([tab,label]) => `<a class="amp-course-sublink" href="${esc(contextHref(unit,tab))}"${new URLSearchParams(location.search).get('tab') === tab ? ' aria-current="page"' : ''}>${label}</a>`).join('')}</div>`);

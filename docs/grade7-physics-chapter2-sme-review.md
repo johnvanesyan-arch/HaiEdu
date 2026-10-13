@@ -1,5 +1,7 @@
 # Physics 7, Chapter II — independent reviewer packet
 
+**Later owner direction — 2026-10-13:** Chapter II may be released as a provisional pilot while specialist review is deferred. The pilot is currently in technical preparation; independent SME approval and the final production exposure disposition remain pending. [Current pilot decision and activation record](chapter-ii-pilot-release.md) supersedes earlier allocation-hold language for this bounded pilot only.
+
 **Decision:** pending. **Reviewer:** unassigned. **Prepared by:** Codex, automated author, at the owner's direction on 2026-10-13. This preparation is not the independent review.
 
 **Scope:** the eight non-archived Chapter II candidate skills; seven registered programme outcomes; eight prerequisite links; 192 current questions; 263 active misconception definitions; 57 published guides; and the suitability of the 32 Diagnostic / 64 Mastery candidates. [Manifest, exact versions and item links](evidence/chapter-ii-qualification-preflight-20261013.json) · [Preparation and exposure findings](chapter-ii-assessment-qualification.md).

@@ -1,5 +1,7 @@
 # Chapter II bank-plan decision packet
 
+**Later owner direction — 2026-10-13:** Chapter II may be released as a provisional pilot while specialist review is deferred. The pilot is currently in technical preparation; independent SME approval and the final production exposure disposition remain pending. [Current pilot decision and activation record](chapter-ii-pilot-release.md) supersedes earlier allocation-hold language for this bounded pilot only.
+
 **Updated:** 2026-10-13 (Asia/Yerevan) · **Status:** all 192 current non-archived questions approved, all 263 definitions active and all 57 guides published. The six editorial corrections are reviewed; no content is pending. Qualification preparation is complete; independent SME/exposure and release gates remain open. Reserve target and assessment contract unchanged. [Current qualification handoff](chapter-ii-assessment-qualification.md).
 
 **First owner decision:** John selected four candidates and then directed “ok, proceed”. The authorized scope is two S07 Diagnostic, one S07 Mastery and one S03 Diagnostic. The prior eight-candidate proposal and subsequent sixteen-candidate throughput suggestion are superseded. The [bounded prospective policy addendum](assessment-evidence-blueprint-policy.md#bounded-protected-parallel-assessment-pilot--2026-10-12) is adopted for this pilot only.

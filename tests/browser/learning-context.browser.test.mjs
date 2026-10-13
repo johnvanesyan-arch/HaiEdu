@@ -75,7 +75,7 @@ const origin='https://learning-context.test';
 const id=n=>`71000000-0000-4000-8000-${String(n).padStart(12,'0')}`;
 const contexts=[1,2].map(n=>({enrollmentId:id(1),curriculumReleaseId:id(2),unitId:id(n+2),subjectProgramId:id(5),unitSequence:n,unitTitleHy:n===1?'Գլուխ Ա':'Գլուխ Բ',subjectNameHy:'Առարկա',gradeLabelHy:'8-րդ դասարան',gradeNumber:8,schoolName:'Դպրոց Ա',className:'8Ա',academicYearLabel:'2026–2027',releaseNumber:2}));
 const href=n=>`/course.html?enrollment=${id(1)}&release=${id(2)}&unit=${id(n+2)}`;
-async function fixture(t,{holdFirst=false,player=false,retired=false,completeAfterAnswer=false}={}) {
+async function fixture(t,{holdFirst=false,player=false,retired=false,completeAfterAnswer=false,splitReleases=false}={}) {
  const context=await browser.newContext();t.after(()=>context.close());const page=await context.newPage();const errors=[];page.on('pageerror',e=>errors.push(e.message));
  await page.addInitScript(({contexts,holdFirst,player,retired,completeAfterAnswer,id})=>{
   window.__requests=[];window.__pending=[];window.__listeners=[];
@@ -97,7 +97,7 @@ async function fixture(t,{holdFirst=false,player=false,retired=false,completeAft
     if(name==='get-remediation-help')return{data:{titleHy:'Հուշում',contentHy:'Փորձեք ևս մեկ անգամ',moreHelpAvailable:false}};
     throw Error(name);
   }}};
- },{contexts,holdFirst,player,retired,completeAfterAnswer,id:id(10)});
+ },{contexts:contexts.map((c,i)=>splitReleases&&i===1?{...c,curriculumReleaseId:id(20),releaseNumber:3}:c),holdFirst,player,retired,completeAfterAnswer,id:id(10)});
  await page.route('**/*',async route=>{
   const url=new URL(route.request().url());
   if(url.origin==='https://esm.sh')return route.fulfill({contentType:'text/javascript',body:'export const createClient=()=>window.__client;'});
@@ -108,6 +108,21 @@ async function fixture(t,{holdFirst=false,player=false,retired=false,completeAft
  });
  await page.goto(origin+href(player?2:1)+(player?'&action=practice':''));return{page,errors};
 }
+test('one course spans independently released chapters without changing either release identity',async t=>{
+ const {page,errors}=await fixture(t,{splitReleases:true});
+ await page.waitForSelector('.course-chapters a');
+ assert.equal(await page.locator('.amp-course-link').count(),1);
+ const chapters=page.locator('.course-chapters a');assert.equal(await chapters.count(),2);
+ assert.equal(new URL(await chapters.nth(0).getAttribute('href'),origin).searchParams.get('release'),id(2));
+ assert.equal(new URL(await chapters.nth(1).getAttribute('href'),origin).searchParams.get('release'),id(20));
+ await chapters.nth(1).click();
+ await page.waitForFunction(()=>document.getElementById('courseTitle').textContent.includes('Գլուխ Բ'));
+ assert.equal(new URL(page.url()).searchParams.get('release'),id(20));
+ assert.equal(await page.locator('.amp-course-link').count(),1);
+ assert.equal(await page.locator('.course-chapters a[aria-current=page]').innerText(),'Գլուխ Բ');
+ assert.equal(await page.evaluate(()=>window.__requests.filter(x=>x.name==='get-student-dashboard').at(-1).body.curriculumReleaseId),id(20));
+ assert.deepEqual(errors,[]);
+});
 test('native context switching clears old cards and rejects a late dashboard response',async t=>{
  const {page,errors}=await fixture(t,{holdFirst:true});
  await page.waitForFunction(()=>window.__pending.length===1);
