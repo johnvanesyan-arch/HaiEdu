@@ -355,9 +355,10 @@ do $$ declare g record; actual jsonb; begin
  if (select count(*) from private.active_curriculum_release_units where curriculum_release_id in ('80bbe575-ad49-4a7f-881a-e55726b1eaeb','b83dc4a4-f5c2-486a-82a6-d7489e7e6407'))<>2 then raise exception 'both_disjoint_active_chapters_required'; end if;
 end $$;
 
-select jsonb_build_object('observedAt',clock_timestamp(),'status','activated',
+select jsonb_build_object('schemaVersion',1,'observedAt',clock_timestamp(),'status','activated',
+ 'activatedAt',(select activated_at from public.curriculum_releases where id='b83dc4a4-f5c2-486a-82a6-d7489e7e6407'),'curriculumReleaseId','b83dc4a4-f5c2-486a-82a6-d7489e7e6407','unitId','beae3516-4317-4c8b-bd66-576c6f309308',
  'release',(select to_jsonb(r) from public.curriculum_releases r where id='b83dc4a4-f5c2-486a-82a6-d7489e7e6407'),
- 'preservedChapterI',(select jsonb_build_object('id',id,'status',status,'activatedAt',activated_at,'contentFingerprint',content_fingerprint) from public.curriculum_releases where id='80bbe575-ad49-4a7f-881a-e55726b1eaeb'),
+ 'preservedChapterI',(select jsonb_build_object('id',id,'curriculumReleaseId',id,'unitId','0349ffcd-8fc9-47f2-82d1-3d5cfcb3a096','status',status,'activatedAt',activated_at,'contentFingerprint',content_fingerprint) from public.curriculum_releases where id='80bbe575-ad49-4a7f-881a-e55726b1eaeb'),
  'preservation',(select jsonb_agg(jsonb_build_object('table',table_name,'predicate',predicate,'before',baseline,'after',pg_temp.release_table_digest(table_name,predicate)) order by table_name) from release_preservation),
  'gates',(select jsonb_agg(jsonb_build_object('code',gate_code,'status',status) order by gate_code) from public.curriculum_release_gate_checks where curriculum_release_id='b83dc4a4-f5c2-486a-82a6-d7489e7e6407'),
  'blueprints',(select jsonb_agg(jsonb_build_object('id',b.id,'purpose',b.purpose,'status',b.status,'itemCount',(select count(*) from public.assessment_blueprint_items i where i.assessment_blueprint_id=b.id),'policyBindingId',p.id,'policyFingerprint',p.snapshot_fingerprint,'skillCount',jsonb_array_length(p.skill_scope_snapshot))) from public.assessment_blueprints b join public.assessment_policy_bindings p on p.assessment_blueprint_id=b.id where b.curriculum_release_id='b83dc4a4-f5c2-486a-82a6-d7489e7e6407'),
