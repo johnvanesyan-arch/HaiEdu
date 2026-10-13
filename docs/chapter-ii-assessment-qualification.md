@@ -1,6 +1,6 @@
 # Chapter II assessment qualification — Sprint 15B.14A
 
-**Later owner direction — 2026-10-13:** Chapter II may be released as a provisional pilot while specialist review is deferred. The pilot is currently in technical preparation; independent SME approval and the final production exposure disposition remain pending. [Current pilot decision and activation record](chapter-ii-pilot-release.md) supersedes earlier allocation-hold language for this bounded pilot only.
+**Current notice — 2026-10-13:** The owner authorized a provisional Chapter II pilot with specialist review deferred, superseding this historical preflight's allocation hold for that bounded use. The implementation is merged, final CI passed and the frontend is deployed, but a Supabase connector failure blocks database deployment. Chapter II remains draft and inactive; production configuration, activation and authenticated acceptance are pending. Independent SME approval and final production exposure disposition remain open. [Current pilot decision and deployment record](chapter-ii-pilot-release.md) · [Blocker evidence](evidence/chapter-ii-pilot-deployment-blocker-20261013.json). The dated observations below are preserved.
 
 **Status:** preparation complete; independent Physics review and historical exposure disposition pending. **Observed:** 2026-10-13, 08:14–08:18 UTC (12:14–12:18 Asia/Yerevan). [Version-specific evidence and 192-item manifest](evidence/chapter-ii-qualification-preflight-20261013.json). The [status register](project-status.md) is authoritative.
 

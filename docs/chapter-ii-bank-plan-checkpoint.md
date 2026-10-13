@@ -1,6 +1,6 @@
 # Chapter II bank-plan decision packet
 
-**Later owner direction — 2026-10-13:** Chapter II may be released as a provisional pilot while specialist review is deferred. The pilot is currently in technical preparation; independent SME approval and the final production exposure disposition remain pending. [Current pilot decision and activation record](chapter-ii-pilot-release.md) supersedes earlier allocation-hold language for this bounded pilot only.
+**Later owner direction — 2026-10-13:** Chapter II may be released as a provisional pilot while specialist review is deferred. The implementation is merged and the frontend deployed, but a Supabase connector failure blocks database deployment and activation. Chapter II remains draft and inactive; independent SME approval and the final production exposure disposition remain pending. [Current pilot decision and activation record](chapter-ii-pilot-release.md) supersedes earlier allocation-hold language for this bounded pilot only.
 
 **Updated:** 2026-10-13 (Asia/Yerevan) · **Status:** all 192 current non-archived questions approved, all 263 definitions active and all 57 guides published. The six editorial corrections are reviewed; no content is pending. Qualification preparation is complete; independent SME/exposure and release gates remain open. Reserve target and assessment contract unchanged. [Current qualification handoff](chapter-ii-assessment-qualification.md).
 

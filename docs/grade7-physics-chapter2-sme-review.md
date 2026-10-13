@@ -1,6 +1,6 @@
 # Physics 7, Chapter II — independent reviewer packet
 
-**Later owner direction — 2026-10-13:** Chapter II may be released as a provisional pilot while specialist review is deferred. The pilot is currently in technical preparation; independent SME approval and the final production exposure disposition remain pending. [Current pilot decision and activation record](chapter-ii-pilot-release.md) supersedes earlier allocation-hold language for this bounded pilot only.
+**Current notice — 2026-10-13:** The owner authorized a provisional Chapter II pilot with specialist review deferred, superseding earlier allocation-hold language for that bounded use. The implementation is merged, final CI passed and the frontend is deployed, but a Supabase connector failure blocks database deployment. Chapter II remains draft and inactive; production configuration, activation and authenticated acceptance are pending. This packet remains awaiting independent review; no SME approval or final production exposure disposition is recorded. [Current pilot decision and deployment record](chapter-ii-pilot-release.md) · [Blocker evidence](evidence/chapter-ii-pilot-deployment-blocker-20261013.json).
 
 **Decision:** pending. **Reviewer:** unassigned. **Prepared by:** Codex, automated author, at the owner's direction on 2026-10-13. This preparation is not the independent review.
 
