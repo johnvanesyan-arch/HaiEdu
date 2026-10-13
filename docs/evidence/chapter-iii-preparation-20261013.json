@@ -1,0 +1,703 @@
+{
+  "schemaVersion": 1,
+  "status": "offline_preparation_not_staged",
+  "preparedAt": "2026-10-13",
+  "author": "Codex — automated author; not a human reviewer",
+  "chapterCodeProposal": "PHY7-U03",
+  "chapterTitleHy": "Մեխանիկական շարժում",
+  "sources": {
+    "textbook": {
+      "title": "Ֆիզիկա 7",
+      "authors": [
+        "Գագիկ Մելիքյան",
+        "Սոս Մաիլյան"
+      ],
+      "publisher": "Էդիթ Պրինտ",
+      "year": 2023,
+      "chapter": "III — Մեխանիկական շարժում",
+      "sections": "§§14–18",
+      "printedPages": [
+        42,
+        59
+      ],
+      "pdfPages": [
+        43,
+        60
+      ],
+      "sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+      "libraryFileId": "libfile_f4cf0be21a6081919cd90c8922b5396d"
+    },
+    "programme": {
+      "actUrl": "https://www.arlis.am/hy/acts/229331",
+      "attachmentUrl": "https://www.arlis.am/acts/files/362742/966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+      "sha256": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+      "version": "N 40-Ն as amended by N 36-Ն; effective 2026-08-14",
+      "locator": "7-րդ դասարան, ԹԵՄԱ 3, Վերջնարդյունքներ",
+      "verifiedDate": "2026-10-13",
+      "retrievalNote": "Search-cached attachment routes 362219 and 362206 returned 404. The link in the freshly fetched official incorporation used 362742 and returned the DOCX with the existing recorded hash."
+    }
+  },
+  "officialOutcomes": [
+    {
+      "localReference": "M1",
+      "requirementLevel": "mandatory",
+      "exactTextHy": "բերել մեխանիկական շարժման օրինակներ, տարբերակել հավասարաչափ և անհավասարաչափ շարժումները,(Հ8, Հ9),",
+      "numberingNote": "M1–M5 are local identifiers in source order; they do not replace the DOCX list numbering."
+    },
+    {
+      "localReference": "M2",
+      "requirementLevel": "mandatory",
+      "exactTextHy": "բերել շարժման հարաբերականությունը լուսաբանող օրինակներ,(Հ9, Հ30),",
+      "numberingNote": "M1–M5 are local identifiers in source order; they do not replace the DOCX list numbering."
+    },
+    {
+      "localReference": "M3",
+      "requirementLevel": "mandatory",
+      "exactTextHy": "մեկնաբանել շարժման հետագիծ և ճանապարհ հասկացությունները,(Հ8, Հ9),",
+      "numberingNote": "M1–M5 are local identifiers in source order; they do not replace the DOCX list numbering."
+    },
+    {
+      "localReference": "M4",
+      "requirementLevel": "mandatory",
+      "exactTextHy": "դասակարգել մեխանիկական շարժման տեսակները՝ ըստ հետագծի տեսքի (ուղղագիծ և կորագիծ), (Հ8, Հ29),",
+      "numberingNote": "M1–M5 are local identifiers in source order; they do not replace the DOCX list numbering."
+    },
+    {
+      "localReference": "M5",
+      "requirementLevel": "mandatory",
+      "exactTextHy": "կատարել արագության միավորների ձևափոխություններ,(Հ9, Հ29),",
+      "numberingNote": "M1–M5 are local identifiers in source order; they do not replace the DOCX list numbering."
+    },
+    {
+      "localReference": "A1",
+      "requirementLevel": "additional",
+      "exactTextHy": "1) փորձով և հաշվարկներով որոշել հավասարաչափ շարժումը բնութագրող ֆիզիկական մեծությունները՝ ճանապարհային արագություն, ճանապարհ, ժամանակ:",
+      "numberingNote": "M1–M5 are local identifiers in source order; they do not replace the DOCX list numbering."
+    }
+  ],
+  "skills": [
+    {
+      "proposedCode": "PHY7-U03-S01",
+      "nameHy": "Մեխանիկական շարժումը և հաշվարկման մարմինը",
+      "scope": "Recognize a changing position and explain rest/motion relative to an explicitly named body.",
+      "outcomeRefs": [
+        "M1",
+        "M2"
+      ],
+      "mappingType": "direct",
+      "textbook": "§14, pp.42–45",
+      "prerequisites": [
+        "PHY7-U01-S01"
+      ],
+      "proposedPracticeBudget": 10,
+      "proposedItemsPerForm": 2
+    },
+    {
+      "proposedCode": "PHY7-U03-S02",
+      "nameHy": "Մարմինը որպես նյութական կետ",
+      "scope": "Decide whether body dimensions matter for the stated question; never define a point model by small physical size alone.",
+      "outcomeRefs": [
+        "M3"
+      ],
+      "mappingType": "derived_supporting",
+      "textbook": "§15, pp.45–46, 48",
+      "prerequisites": [
+        "PHY7-U03-S01"
+      ],
+      "proposedPracticeBudget": 6,
+      "proposedItemsPerForm": 1
+    },
+    {
+      "proposedCode": "PHY7-U03-S03",
+      "nameHy": "Շարժման հետագիծը և անցած ճանապարհը",
+      "scope": "Identify straight/curved trajectories, distinguish the line from its traversed length, and distinguish path length from endpoint distance.",
+      "outcomeRefs": [
+        "M3",
+        "M4"
+      ],
+      "mappingType": "direct",
+      "textbook": "§15, pp.46–48",
+      "prerequisites": [
+        "PHY7-U03-S01",
+        "PHY7-U01-S07",
+        "PHY7-U01-S08"
+      ],
+      "proposedPracticeBudget": 12,
+      "proposedItemsPerForm": 3
+    },
+    {
+      "proposedCode": "PHY7-U03-S04",
+      "nameHy": "Հավասարաչափ և անհավասարաչափ շարժում",
+      "scope": "Use equal-time distance records and the arbitrary-equal-interval definition; distinguish compatible observations from a proof for every instant.",
+      "outcomeRefs": [
+        "M1"
+      ],
+      "mappingType": "direct",
+      "textbook": "§16, pp.49–50, 53",
+      "prerequisites": [
+        "PHY7-U03-S03"
+      ],
+      "proposedPracticeBudget": 10,
+      "proposedItemsPerForm": 2
+    },
+    {
+      "proposedCode": "PHY7-U03-S05",
+      "nameHy": "Ճանապարհային արագության իմաստը",
+      "scope": "Interpret distance per unit time. Treat the textbook introduction to direction as supporting vocabulary and distinguish numerical value from direction.",
+      "outcomeRefs": [
+        "A1",
+        "M5"
+      ],
+      "mappingType": "derived_supporting",
+      "textbook": "§16, pp.50–52",
+      "prerequisites": [
+        "PHY7-U03-S03",
+        "PHY7-U03-S04",
+        "PHY7-U01-S06"
+      ],
+      "proposedPracticeBudget": 8,
+      "proposedItemsPerForm": 2
+    },
+    {
+      "proposedCode": "PHY7-U03-S06",
+      "nameHy": "Արագության միավորների ձևափոխում",
+      "scope": "Convert m/s, km/h and cm/s, then compare speeds expressed in different units.",
+      "outcomeRefs": [
+        "M5"
+      ],
+      "mappingType": "direct",
+      "textbook": "§16, pp.51, 53; §17, p.54",
+      "prerequisites": [
+        "PHY7-U03-S05",
+        "PHY7-U01-S07"
+      ],
+      "proposedPracticeBudget": 10,
+      "proposedItemsPerForm": 2
+    },
+    {
+      "proposedCode": "PHY7-U03-S07",
+      "nameHy": "Արագության, ճանապարհի և ժամանակի հաշվում",
+      "scope": "Choose and apply v=s/t, s=vt and t=s/v with compatible units and an explicit uniform-motion premise.",
+      "outcomeRefs": [
+        "A1"
+      ],
+      "mappingType": "direct_additional",
+      "textbook": "§16, p.52; §17, pp.54–57",
+      "prerequisites": [
+        "PHY7-U03-S04",
+        "PHY7-U03-S05",
+        "PHY7-U03-S06"
+      ],
+      "proposedPracticeBudget": 14,
+      "proposedItemsPerForm": 3
+    },
+    {
+      "proposedCode": "PHY7-U03-S08",
+      "nameHy": "Արագության որոշումը չափումներով",
+      "scope": "Choose a path interval and measure its matching elapsed time; record units and interpret repeated measurements. MCQs assess planning and interpretation, not performed laboratory competence.",
+      "outcomeRefs": [
+        "A1"
+      ],
+      "mappingType": "direct_additional",
+      "textbook": "§18, pp.57–58",
+      "prerequisites": [
+        "PHY7-U03-S04",
+        "PHY7-U03-S07",
+        "PHY7-U01-S08",
+        "PHY7-U01-S09",
+        "PHY7-U01-S10"
+      ],
+      "proposedPracticeBudget": 10,
+      "proposedItemsPerForm": 1
+    }
+  ],
+  "draftBatch": [
+    {
+      "candidateCode": "U03-PREP-C01",
+      "proposedSkillCode": "PHY7-U03-S01",
+      "version": 1,
+      "purpose": "practice",
+      "status": "offline_draft",
+      "evidencePurpose": "application",
+      "promptHy": "Նկարում նույն ավտոմեքենան պատկերված է տարբեր պահերի։ Տներն ու ծառերը գետնի նկատմամբ անշարժ են։ Ո՞ր պնդումն է հաստատվում նկարով։",
+      "options": [
+        {
+          "id": "A",
+          "textHy": "Ավտոմեքենայի արագությունը գնալով մեծանում է։"
+        },
+        {
+          "id": "B",
+          "textHy": "Ավտոմեքենայի դիրքը տների նկատմամբ փոխվում է։"
+        },
+        {
+          "id": "C",
+          "textHy": "Ավտոմեքենան տների նկատմամբ դադարի վիճակում է։"
+        },
+        {
+          "id": "D",
+          "textHy": "Ավտոմեքենան բոլոր երեք պահերին նույն տան դիմաց է։"
+        }
+      ],
+      "correctOption": "B",
+      "explanationHy": "Ավտոմեքենան տարբեր պահերին տարբեր դիրքեր է զբաղեցնում տների նկատմամբ։ Ուրեմն այն շարժվում է տների նկատմամբ։ Նկարում պահերի միջև անցած ժամանակը նշված չէ, ուստի արագության փոփոխության մասին եզրակացնել չենք կարող։",
+      "hintsHy": [
+        "Հաշվարկման մարմին ընտրիր նկարում պատկերված տներից մեկը։",
+        "Համեմատիր ավտոմեքենայի դիրքն այդ տան նկատմամբ երեք պատկերներում։"
+      ],
+      "textbookReference": "§14, p.43, figure 36",
+      "outcomeRefs": [
+        "M1",
+        "M2"
+      ],
+      "proposedMisconceptions": {
+        "A": "Դիրքերի նկարից եզրակացնում է արագության փոփոխություն՝ առանց ժամանակի տվյալների։",
+        "C": "Չի նկատում դիրքի փոփոխությունը ընտրված հաշվարկման մարմնի նկատմամբ։",
+        "D": "Չի համեմատում նույն ավտոմեքենայի դիրքերը երեք պատկերներում։"
+      },
+      "imagePath": "assets/chapter-iii/figure-36-motion.png",
+      "altHy": "Նույն փողոցի երեք հաջորդական պատկեր՝ ավտոմեքենայով, տներով և ծառերով։",
+      "noImageRationale": null,
+      "authorReviewNote": "Textbook figure is familiar practice stimulus; no claim of protected novelty. The removed caption would state the answer.",
+      "humanApproval": false,
+      "independentSmeReview": false,
+      "deploymentEligible": false,
+      "outcomeMappingType": "direct"
+    },
+    {
+      "candidateCode": "U03-PREP-C02",
+      "proposedSkillCode": "PHY7-U03-S02",
+      "version": 1,
+      "purpose": "practice",
+      "status": "offline_draft",
+      "evidencePurpose": "misconception_diagnosis",
+      "promptHy": "Նույն ավտոբուսի համար լուծում են երկու խնդիր. 1) որոշել երկու քաղաքների միջև նրա շարժման ժամանակը, երբ անցած ճանապարհը շատ մեծ է ավտոբուսի երկարությունից, 2) որոշել անշարժ դիտորդի մոտով ավտոբուսի ամբողջությամբ անցնելու ժամանակը։ Ո՞ր դեպքում կարելի է ավտոբուսը համարել նյութական կետ։",
+      "options": [
+        {
+          "id": "A",
+          "textHy": "Երկու դեպքում էլ, քանի որ ավտոբուսը շարժվում է։"
+        },
+        {
+          "id": "B",
+          "textHy": "Ոչ մի դեպքում, քանի որ ավտոբուսը մեծ մարմին է։"
+        },
+        {
+          "id": "C",
+          "textHy": "Միայն երկրորդ դեպքում։"
+        },
+        {
+          "id": "D",
+          "textHy": "Միայն առաջին դեպքում։"
+        }
+      ],
+      "correctOption": "D",
+      "explanationHy": "Առաջին խնդրում ավտոբուսի երկարությունը կարելի է անտեսել։ Երկրորդ խնդրում պետք է հաշվի առնել նրա երկարությունը, քանի որ դիտորդի մոտով պետք է անցնի ամբողջ ավտոբուսը։",
+      "hintsHy": [
+        "Մարմինը նյութական կետ համարելը կախված է խնդրի պայմաններից։",
+        "Ո՞ր խնդրի պատասխանը կփոխվի, եթե ավտոբուսի երկարությունը փոխվի։"
+      ],
+      "textbookReference": "§15, pp.45–46; p.48, question 2",
+      "outcomeRefs": [
+        "M3"
+      ],
+      "proposedMisconceptions": {
+        "A": "Նյութական կետի մոդելը կապում է միայն շարժվելու հետ։",
+        "B": "Մոդելի կիրառելիությունը որոշում է միայն մարմնի մեծությամբ։",
+        "C": "Շփոթում է այն դեպքերը, երբ մարմնի երկարությունը պետք է հաշվի առնել։"
+      },
+      "imagePath": null,
+      "altHy": null,
+      "noImageRationale": "Both tasks state exactly whether body length matters; a decorative bus picture supplies no needed information.",
+      "authorReviewNote": "Intentional textbook practice variant of p.48 train example; changing vehicle does not create independent reasoning coverage.",
+      "humanApproval": false,
+      "independentSmeReview": false,
+      "deploymentEligible": false,
+      "outcomeMappingType": "derived_supporting"
+    },
+    {
+      "candidateCode": "U03-PREP-C03",
+      "proposedSkillCode": "PHY7-U03-S03",
+      "version": 1,
+      "purpose": "practice",
+      "status": "offline_draft",
+      "evidencePurpose": "core_understanding",
+      "promptHy": "Գնդիկը A կետում բախվում է գետնին, այնուհետև անցնում է C կետով և B կետում նորից բախվում գետնին։ A-ից B շարժվելիս նրա անցած ճանապարհը ո՞րն է։",
+      "options": [
+        {
+          "id": "A",
+          "textHy": "ACB կոր գծի երկարությունը։"
+        },
+        {
+          "id": "B",
+          "textHy": "A և B կետերը միացնող ուղիղ հատվածի երկարությունը։"
+        },
+        {
+          "id": "C",
+          "textHy": "C կետի բարձրությունը գետնից։"
+        },
+        {
+          "id": "D",
+          "textHy": "AC կոր գծի երկարությունը։"
+        }
+      ],
+      "correctOption": "A",
+      "explanationHy": "Անցած ճանապարհը հետագծի այն մասի երկարությունն է, որով շարժվել է մարմինը։ Գնդիկը A-ից B շարժվել է C կետով անցնող կոր գծով, ուստի պետք է վերցնել ACB կոր գծի ամբողջ երկարությունը։",
+      "hintsHy": [
+        "Նկարում հետևիր գնդիկի շարժմանը A կետից մինչև B կետը։",
+        "Անցած ճանապարհը որոշելիս հաշվի է առնվում անցած ամբողջ հետագիծը։"
+      ],
+      "textbookReference": "§15, p.47, figure 40",
+      "outcomeRefs": [
+        "M3"
+      ],
+      "proposedMisconceptions": {
+        "B": "Անցած ճանապարհը նույնացնում է սկզբնական և վերջնական կետերի հեռավորության հետ։",
+        "C": "Ճանապարհի փոխարեն ընտրում է առավելագույն բարձրությունը։",
+        "D": "Հաշվի է առնում միայն ճանապարհի մի մասը։"
+      },
+      "imagePath": "assets/chapter-iii/figure-40-path.png",
+      "altHy": "Գնդիկի հետագիծը՝ A և B կետերը գետնի վրա, C կետը՝ դրանց միջև վերևում։",
+      "noImageRationale": null,
+      "authorReviewNote": "Direct practice of the book figure and explanation. No use of untaught acceleration, flight-time or energy laws.",
+      "humanApproval": false,
+      "independentSmeReview": false,
+      "deploymentEligible": false,
+      "outcomeMappingType": "direct"
+    },
+    {
+      "candidateCode": "U03-PREP-C04",
+      "proposedSkillCode": "PHY7-U03-S04",
+      "version": 1,
+      "purpose": "practice",
+      "status": "offline_draft",
+      "evidencePurpose": "application",
+      "promptHy": "Երեք փորձերում շարժվող սայլակի կաթոցիկից կաթիլներն ընկնում են հավասար ժամանակամիջոցներով։ Նկարում երևում են դրանց հետքերը։ Ո՞ր շարքում են հետքերը համապատասխանում հավասարաչափ շարժմանը։",
+      "options": [
+        {
+          "id": "A",
+          "textHy": "Միայն բ շարքում։"
+        },
+        {
+          "id": "B",
+          "textHy": "Միայն գ շարքում։"
+        },
+        {
+          "id": "C",
+          "textHy": "Միայն ա շարքում։"
+        },
+        {
+          "id": "D",
+          "textHy": "Բոլոր երեք շարքերում։"
+        }
+      ],
+      "correctOption": "C",
+      "explanationHy": "ա շարքում հարևան հետքերի հեռավորությունները հավասար են։ Հավասար ժամանակամիջոցներում սայլակն անցել է հավասար ճանապարհներ։ բ և գ շարքերում այդ հեռավորությունները տարբեր են։",
+      "hintsHy": [
+        "Համեմատիր հարևան հետքերի միջև եղած հեռավորությունները։",
+        "Հավասար ժամանակամիջոցներին հավասարաչափ շարժման դեպքում համապատասխանում են հավասար ճանապարհներ։"
+      ],
+      "textbookReference": "§16, pp.49–50; p.53, question 3 diagram",
+      "outcomeRefs": [
+        "M1"
+      ],
+      "proposedMisconceptions": {
+        "A": "Անհավասար հեռավորություններով հետքերը համարում է հավասարաչափ շարժման նշան։",
+        "B": "Աճող հեռավորությունները շփոթում է հավասար հեռավորությունների հետ։",
+        "D": "Հավասար ժամանակամիջոցները բավարար է համարում՝ անտեսելով անցած ճանապարհները։"
+      },
+      "imagePath": "assets/chapter-iii/p53-drop-traces-stacked.svg",
+      "altHy": "Կաթիլների հետքերի երեք շարք՝ ա, բ և գ նշումներով։",
+      "noImageRationale": null,
+      "authorReviewNote": "Intentional textbook practice variant. The inference is compatibility with sampled uniform-motion evidence, not proof at all smaller intervals. Equal time is explicitly supplied.",
+      "humanApproval": false,
+      "independentSmeReview": false,
+      "deploymentEligible": false,
+      "outcomeMappingType": "direct"
+    },
+    {
+      "candidateCode": "U03-PREP-C05",
+      "proposedSkillCode": "PHY7-U03-S05",
+      "version": 1,
+      "purpose": "practice",
+      "status": "offline_draft",
+      "evidencePurpose": "misconception_diagnosis",
+      "promptHy": "Ուղիղ ճանապարհով երկու հեծանվորդ շարժվում են հավասարաչափ՝ յուրաքանչյուրը 4 մ/վ արագությամբ։ Մեկը շարժվում է դեպի արևելք, մյուսը՝ դեպի արևմուտք։ Ո՞ր պնդումն է ճիշտ։",
+      "options": [
+        {
+          "id": "A",
+          "textHy": "Արագությունների թվային արժեքները հավասար են, իսկ ուղղությունները՝ հակառակ։"
+        },
+        {
+          "id": "B",
+          "textHy": "Արագությունները հավասար են և՛ թվային արժեքով, և՛ ուղղությամբ։"
+        },
+        {
+          "id": "C",
+          "textHy": "Դեպի արևելք շարժվող հեծանվորդի արագության թվային արժեքն ավելի մեծ է։"
+        },
+        {
+          "id": "D",
+          "textHy": "Հակառակ ուղղություններով շարժվելիս արագությունների թվային արժեքները չեն կարող հավասար լինել։"
+        }
+      ],
+      "correctOption": "A",
+      "explanationHy": "Երկու հեծանվորդն էլ յուրաքանչյուր վայրկյանում անցնում են 4 մ ճանապարհ։ Արագությունների թվային արժեքները հավասար են, բայց շարժման ուղղությունները հակառակ են։",
+      "hintsHy": [
+        "Առանձին համեմատիր արագությունների թվային արժեքները և շարժման ուղղությունները։",
+        "4 մ/վ գրառումը տվյալ խնդրում երկու հեծանվորդի համար էլ նույնն է։"
+      ],
+      "textbookReference": "§16, pp.51–52, direction of speed",
+      "outcomeRefs": [
+        "A1"
+      ],
+      "proposedMisconceptions": {
+        "B": "Հավասար թվային արժեքից եզրակացնում է նաև հավասար ուղղություն։",
+        "C": "Աշխարհագրական ուղղությանը վերագրում է ավելի մեծ արագության արժեք։",
+        "D": "Թվային արժեքը և ուղղությունը չի տարբերակում։"
+      },
+      "imagePath": null,
+      "altHy": null,
+      "noImageRationale": "The opposite directions and equal values are explicit; no diagram reading is required.",
+      "authorReviewNote": "Supporting textbook extension. Not a new mandatory programme outcome; no vector addition or relative-speed calculation.",
+      "humanApproval": false,
+      "independentSmeReview": false,
+      "deploymentEligible": false,
+      "outcomeMappingType": "derived_supporting"
+    },
+    {
+      "candidateCode": "U03-PREP-C06",
+      "proposedSkillCode": "PHY7-U03-S06",
+      "version": 1,
+      "purpose": "practice",
+      "status": "offline_draft",
+      "evidencePurpose": "application",
+      "promptHy": "Առաջին հեծանվորդի արագությունը 9 մ/վ է, իսկ երկրորդինը՝ 36 կմ/ժ։ Ո՞ր հեծանվորդն է ավելի արագ շարժվում։",
+      "options": [
+        {
+          "id": "A",
+          "textHy": "Առաջինը, քանի որ 36 կմ/ժ-ը 3,6 մ/վ է։"
+        },
+        {
+          "id": "B",
+          "textHy": "Երկուսն էլ նույն արագությամբ, քանի որ 9 մ/վ-ը 36 կմ/ժ է։"
+        },
+        {
+          "id": "C",
+          "textHy": "Համեմատել հնարավոր չէ, քանի որ միավորները տարբեր են։"
+        },
+        {
+          "id": "D",
+          "textHy": "Երկրորդը, քանի որ 36 կմ/ժ-ը 10 մ/վ է։"
+        }
+      ],
+      "correctOption": "D",
+      "explanationHy": "36 կմ/ժ = 36 × 1000 մ / 3600 վ = 10 մ/վ։ Քանի որ 10 մ/վ > 9 մ/վ, երկրորդ հեծանվորդն ավելի արագ է շարժվում։",
+      "hintsHy": [
+        "Արագությունները համեմատելու համար դրանք արտահայտիր նույն միավորով։",
+        "Օգտագործիր 1 կմ = 1000 մ և 1 ժ = 3600 վ կապերը։"
+      ],
+      "textbookReference": "§16, p.51, p.53 questions 8–9; §17, p.54 problem 1",
+      "outcomeRefs": [
+        "M5"
+      ],
+      "proposedMisconceptions": {
+        "A": "Սխալ է ձևափոխում կմ/ժ միավորը մ/վ-ի։",
+        "B": "Կիրառում է սխալ փոխարկման գործակից։",
+        "C": "Տարբեր միավորները համարում է համեմատության անհաղթահարելի խոչընդոտ։"
+      },
+      "imagePath": null,
+      "altHy": null,
+      "noImageRationale": "This task requires unit conversion; a picture would provide no additional evidence.",
+      "authorReviewNote": "Intentional practice of a taught conversion-and-comparison procedure. Compared with U01 single-quantity conversion; quotient-unit conversion is the chapter-specific demand.",
+      "humanApproval": false,
+      "independentSmeReview": false,
+      "deploymentEligible": false,
+      "outcomeMappingType": "direct"
+    },
+    {
+      "candidateCode": "U03-PREP-C07",
+      "proposedSkillCode": "PHY7-U03-S07",
+      "version": 1,
+      "purpose": "practice",
+      "status": "offline_draft",
+      "evidencePurpose": "application",
+      "promptHy": "Հեծանվորդը հավասարաչափ շարժվելով՝ 15 վ-ում անցնում է 90 մ ճանապարհ։ Նույն արագությամբ շարժվելիս որքա՞ն ճանապարհ կանցնի 25 վ-ում։",
+      "options": [
+        {
+          "id": "A",
+          "textHy": "90 մ։"
+        },
+        {
+          "id": "B",
+          "textHy": "150 մ։"
+        },
+        {
+          "id": "C",
+          "textHy": "375 մ։"
+        },
+        {
+          "id": "D",
+          "textHy": "6 մ։"
+        }
+      ],
+      "correctOption": "B",
+      "explanationHy": "Նախ գտնենք արագությունը՝ v = 90 մ / 15 վ = 6 մ/վ։ Այնուհետև՝ s = 6 մ/վ × 25 վ = 150 մ։",
+      "hintsHy": [
+        "Սկզբում որոշիր, թե հեծանվորդը մեկ վայրկյանում որքան ճանապարհ է անցնում։",
+        "Գտած արագությունը բազմապատկիր նոր ժամանակամիջոցով։"
+      ],
+      "textbookReference": "§16, pp.50–52; §17, pp.54–55",
+      "outcomeRefs": [
+        "A1"
+      ],
+      "proposedMisconceptions": {
+        "A": "Տարբեր տևողությունների համար պահպանում է նույն ճանապարհը։",
+        "C": "Բազմապատկում է երկու ժամանակների թվային արժեքները։",
+        "D": "Արագության թվային արժեքը ներկայացնում է որպես ճանապարհ։"
+      },
+      "imagePath": null,
+      "altHy": null,
+      "noImageRationale": "All distances and times are supplied; a schematic would only repeat the text.",
+      "authorReviewNote": "Intentional two-step formula practice. Explicit uniform-motion premise; no average-speed or acceleration inference.",
+      "humanApproval": false,
+      "independentSmeReview": false,
+      "deploymentEligible": false,
+      "outcomeMappingType": "direct_additional"
+    },
+    {
+      "candidateCode": "U03-PREP-C08",
+      "proposedSkillCode": "PHY7-U03-S08",
+      "version": 1,
+      "purpose": "practice",
+      "status": "offline_draft",
+      "evidencePurpose": "transfer_reasoning",
+      "promptHy": "Աշակերտը ցանկանում է որոշել խողովակում հավասարաչափ շարժվող օդի պղպջակի արագությունը։ Նա խողովակի վրա նշել է A և B կետերը։ Փորձի սկզբում պղպջակը դեռ չի հասել A կետին։ Ո՞ր չափումները պետք է կատարի։",
+      "options": [
+        {
+          "id": "A",
+          "textHy": "Չափի խողովակի ամբողջ երկարությունը և A-ից B անցնելու ժամանակը։"
+        },
+        {
+          "id": "B",
+          "textHy": "Չափի A և B կետերի հեռավորությունը և փորձի սկզբից մինչև B կետ հասնելն անցած ժամանակը։"
+        },
+        {
+          "id": "C",
+          "textHy": "Չափի A և B կետերի հեռավորությունը և հենց A-ից B անցնելու ժամանակը։"
+        },
+        {
+          "id": "D",
+          "textHy": "Չափի պղպջակի երկարությունը և A-ից B անցնելու ժամանակը։"
+        }
+      ],
+      "correctOption": "C",
+      "explanationHy": "Արագությունը հաշվելու համար պետք է ճանապարհը բաժանել հենց այդ ճանապարհն անցնելու ժամանակին։ Ուստի չափվում են A և B կետերի հեռավորությունն ու պղպջակի՝ A-ից B անցնելու ժամանակը։",
+      "hintsHy": [
+        "v = s/t բանաձևում ճանապարհն ու ժամանակը պետք է վերաբերեն շարժման նույն տեղամասին։",
+        "Համեմատիր, թե յուրաքանչյուր տարբերակում որտեղից է սկսվում ժամանակի չափումը և ինչ երկարություն է չափվում։"
+      ],
+      "textbookReference": "§18, pp.57–58, procedure steps 6–8",
+      "outcomeRefs": [
+        "A1"
+      ],
+      "proposedMisconceptions": {
+        "A": "Ընտրված ժամանակամիջոցին համապատասխանեցնում է ամբողջ սարքի երկարությունը։",
+        "B": "Ընտրված ճանապարհին համապատասխանեցնում է այլ սկզբով չափված ժամանակը։",
+        "D": "Մարմնի սեփական երկարությունը շփոթում է նրա անցած ճանապարհի հետ։"
+      },
+      "imagePath": null,
+      "altHy": null,
+      "noImageRationale": "A and B are fully defined as marks on one tube; the source section has no apparatus figure and no geometric feature is needed.",
+      "authorReviewNote": "The starting position is explicit so timing the entire experiment cannot coincide with A-to-B timing. This is measurement planning, not evidence of performed practical competence.",
+      "humanApproval": false,
+      "independentSmeReview": false,
+      "deploymentEligible": false,
+      "outcomeMappingType": "direct_additional"
+    }
+  ],
+  "media": [
+    {
+      "path": "docs/assets/chapter-iii/figure-36-motion.png",
+      "printedPage": 43,
+      "pdfPage": 44,
+      "figure": "36",
+      "cropPdfPoints": [
+        65,
+        166,
+        425,
+        235
+      ],
+      "renderScale": 3,
+      "sha256": "43d35349b230e00ffba8516ec6ee3acdf492bd4c34fbf600365886b97da0b9c0",
+      "transform": "Exact source-page crop and rasterization; no redrawing, generated elements, relabeling, or scientific changes. Explanatory captions excluded.",
+      "candidateCode": "U03-PREP-C01",
+      "altHy": "Նույն փողոցի երեք հաջորդական պատկեր՝ ավտոմեքենայով, տներով և ծառերով։",
+      "captionDisclosureCheck": "Explanatory source caption excluded; original scientifically relevant labels retained."
+    },
+    {
+      "path": "docs/assets/chapter-iii/figure-40-path.png",
+      "printedPage": 47,
+      "pdfPage": 48,
+      "figure": "40",
+      "cropPdfPoints": [
+        269,
+        234,
+        425,
+        309
+      ],
+      "renderScale": 3,
+      "sha256": "8b399559383b89500d3568b0dce7b0a693b594780496c14dae32cb63a9b6c8bd",
+      "transform": "Exact source-page crop and rasterization; no redrawing, generated elements, relabeling, or scientific changes. Explanatory captions excluded.",
+      "candidateCode": "U03-PREP-C03",
+      "altHy": "Գնդիկի հետագիծը՝ A և B կետերը գետնի վրա, C կետը՝ դրանց միջև վերևում։",
+      "captionDisclosureCheck": "Explanatory source caption excluded; original scientifically relevant labels retained."
+    },
+    {
+      "path": "docs/assets/chapter-iii/p53-drop-traces-stacked.svg",
+      "printedPage": 53,
+      "pdfPage": 54,
+      "figure": "§16, question 3 (unnumbered diagram)",
+      "cropPdfPoints": [
+        85,
+        182,
+        423,
+        204
+      ],
+      "renderScale": 3,
+      "sha256": "e6726090457ded4c9bc80ad94dcaf0f429e92a0d9c49407cb613df2d573d8a1f",
+      "transform": "Source diagram cropped exactly; three original panels displayed vertically using SVG clipping and translation for mobile readability. No source pixels, labels, dot positions or scientific content redrawn. The original horizontal crop is retained.",
+      "sourceCropPath": "docs/assets/chapter-iii/p53-drop-traces.png",
+      "sourceCropSha256": "6dd18af3ebfb094ff1080df31796e5075e3cb38fb80d8e824f00f5909d090abe",
+      "candidateCode": "U03-PREP-C04",
+      "altHy": "Կաթիլների հետքերի երեք շարք՝ ա, բ և գ նշումներով։",
+      "captionDisclosureCheck": "Explanatory source caption excluded; original scientifically relevant labels retained."
+    }
+  ],
+  "assessmentProposal": {
+    "status": "proposal_not_approved_or_qualified",
+    "practiceBudget": 80,
+    "diagnosticForms": 2,
+    "itemsPerDiagnosticForm": 16,
+    "masteryForms": 3,
+    "itemsPerMasteryForm": 16,
+    "masteryReserveItemsPerSkill": 1,
+    "diagnosticBankBudget": 32,
+    "masteryBankBudget": 56,
+    "totalQuestionBudget": 168,
+    "handsOnTaskCount": 1,
+    "warning": "These are capacity planning budgets, not approved inventory, a learner contract, or a promise of protected semantic diversity. The Chapter II parallel-variant exception and pilot release authorization do not extend to Chapter III. Readiness/pass gates and support-skill treatment require an explicit Chapter III decision."
+  },
+  "releaseState": {
+    "databaseWrites": 0,
+    "questionApprovals": 0,
+    "learnerRelease": false,
+    "chapterIIPaused": true
+  },
+  "comparisonState": {
+    "status": "preliminary_offline_screen_only",
+    "frozenCorpusTimestamp": "2026-10-12T19:08:51.036386+00:00",
+    "frozenCorpusSha256": "f4558aaae22779b1b9a99719ad8e14efe8cf5974ad9f57317a0c0e794c502306",
+    "frozenCurrentItems": 416,
+    "frozenItemVersions": 290,
+    "limitation": "Frozen corpus predates the final Chapter II additions and subsequent editorial changes. Keyword/related-skill screening and within-batch author review are not a completed whole-bank semantic comparison. A fresh full current/history/guide/mapping comparison is mandatory before staging any candidate."
+  }
+}

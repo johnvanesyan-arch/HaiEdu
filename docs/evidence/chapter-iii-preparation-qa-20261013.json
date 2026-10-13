@@ -1,0 +1,50 @@
+{
+  "date": "2026-10-13",
+  "scope": "Offline author preparation only; not production or independent content approval",
+  "manifestSha256": "811401cd71107a4e377c42d217f2bfcb6b30748dd5711aef0c82292d720b38f7",
+  "checks": {
+    "draftCount": 8,
+    "uniqueSkills": 8,
+    "fourDistinctOptionsEach": true,
+    "twoHintsEach": true,
+    "allDistractorRationalesPresent": true,
+    "answerLettersBalanced": {
+      "A": 2,
+      "B": 2,
+      "C": 2,
+      "D": 2
+    },
+    "arithmeticResolved": {
+      "36_kmh_in_ms": 10,
+      "90m_15s_then_25s_m": 150
+    },
+    "exactProgrammeOutcomeTranscriptionMatched": 6,
+    "noCyrillicOrSoftHyphenInLearnerText": true,
+    "localDocumentLinksResolve": true,
+    "sourceMediaHashesMatch": true,
+    "sourceFiguresVisuallyInspected": 3,
+    "stackedSvgRenderedAndVisuallyInspected": true
+  },
+  "authorPhysicsReview": [
+    "Reference body is explicit; speed change cannot be inferred without time data.",
+    "Point-model applicability depends on the question; bus substitution is intentional practice.",
+    "A-to-B traversed path is ACB, not straight endpoint distance.",
+    "Drop traces use explicitly equal time intervals and show compatibility with uniform motion.",
+    "Numerical speed and direction are distinguished without vector algebra.",
+    "Conversions and the two-step uniform-motion calculation are solved independently.",
+    "Bubble timing starts at A; the experiment starts earlier, so the distractor is unambiguous."
+  ],
+  "authorArmenianReview": "Read all prompts, options, explanations and hints against the supplied textbook terminology. Simplified the ball-path prompt. This is author review, not a human or Armenian-specialist approval.",
+  "mediaCorrection": "Replaced nested SVG viewports, which failed the MuPDF render, with clipped translated instances of the exact original bitmap. All three original labels and dot rows are visible.",
+  "localBrowserPreview": {
+    "status": "not_run",
+    "reason": "Playwright had no installed Chromium executable; its browser download returned invalid/truncated archives. No browser or reviewer-page acceptance is claimed. Source images were inspected directly; the display SVG was independently rendered with MuPDF."
+  },
+  "openGates": [
+    "Current whole-bank/history/guide/protected semantic comparison",
+    "Owner plan/weighting and supporting-additional-skill treatment",
+    "Governed foundation and staging",
+    "Human question/guide/definition review",
+    "Specialist and eventual assessment/release qualification"
+  ]
+}
