@@ -1,7 +1,20 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import { readFile } from 'node:fs/promises';
-import { chapterII, chapterIUnitId, validateActivation, allowedBrowserRequest, containsProtectedContent, chapterIIContract, runReadChecks, clientHeaders, anonymousDashboardDenied } from '../scripts/chapter-ii-pilot-read-acceptance.mjs';
+import { chapterII, chapterIUnitId, validateActivation, allowedBrowserRequest, containsProtectedContent, chapterIIContract, runReadChecks, clientHeaders, anonymousDashboardDenied, browserErrorDiagnostic, blockedRequestDiagnostic } from '../scripts/chapter-ii-pilot-read-acceptance.mjs';
+
+test('failure diagnostics distinguish causes without leaking error messages, URLs, request bodies or arbitrary names', () => {
+  const secret = 'PRIVATE-ACCESS-TOKEN learner@example.invalid';
+  const error = browserErrorDiagnostic({ name: secret, message: `View transition was skipped ${secret}`, stack: secret });
+  assert.equal(error.category, 'view_transition_cancelled');
+  assert.equal(error.name, 'Error');
+  assert.match(error.messageSha256, /^[a-f0-9]{64}$/);
+  assert.doesNotMatch(JSON.stringify(error), /PRIVATE|learner@|stack/);
+  assert.equal(browserErrorDiagnostic({ name: 'TypeError', message: 'Cannot read properties of null' }).category, 'null_dom_access');
+  assert.equal(browserErrorDiagnostic({ message: 'Unrecognized failure' }).category, 'unclassified');
+  assert.deepEqual(blockedRequestDiagnostic({ pathname: '/functions/v1/get-remediation-help', method: 'POST', body: secret }), { endpoint: '/functions/v1/get-remediation-help', method: 'POST' });
+  assert.deepEqual(blockedRequestDiagnostic({ pathname: `/auth/v1/user/${secret}`, method: secret }), { endpoint: '/redacted', method: 'OTHER' });
+});
 
 const id = n => `00000000-0000-4000-8000-${String(n).padStart(12, '0')}`;
 function inputs() {

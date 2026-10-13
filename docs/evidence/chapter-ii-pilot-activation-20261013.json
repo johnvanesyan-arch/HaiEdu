@@ -1095,5 +1095,17 @@
     },
     "authenticatedAcceptance": "pending dedicated reviewed-main workflow",
     "specialistApproval": "pending"
-  }
+  },
+  "acceptanceAttempts": [
+    {
+      "workflowRun": 38441429710,
+      "revision": "62ad5b7194af7d0580e3c336cb7316d12599754b",
+      "status": "failed",
+      "passedChecks": 71,
+      "totalChecks": 72,
+      "failedCheck": "A: native chapter switching has no page errors or attempted mutations",
+      "evidence": "chapter-ii-pilot-read-acceptance-attempt-1-20261013.json",
+      "nextStep": "Retry with redacted browser-error/request diagnostics; unchanged acceptance criteria."
+    }
+  ]
 }
