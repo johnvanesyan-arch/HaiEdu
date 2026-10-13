@@ -4,7 +4,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. It does not authorize a new release or claim completed live multi-context acceptance.
 
-**Chapter III staging preparation (2026-10-13):** [15C.2](chapter-iii-batch-01-staging.md) adds a reviewed, rollback-tested data migration for a Chapter III-only draft curriculum and a separately guarded eight-question practice package. Neither is committed yet. Owner acceptance covers the plan/budget and offline question wording; it creates no authenticated reviewer or specialist event. No endpoint, scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release changes. Chapter II deployment remains paused separately.
+**Chapter III draft staging (2026-10-13):** [15C.2](chapter-iii-batch-01-staging.md) is committed: a Chapter III-only draft curriculum (six outcomes/eight skills), eight practice items, eight draft guides, 19 draft definitions and eight automated technical QA records. Existing reviewer endpoints expose the draft records; no endpoint contract changed. Owner acceptance of the exact offline questions is provenance, not an authenticated approval or specialist event. No scoring/readiness rule, runtime prerequisite, model/pool/form binding or learner release is added. Chapter II deployment remains paused.
 
 ## Chapter II content boundary — 2026-10-13
 

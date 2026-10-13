@@ -1,6 +1,6 @@
 {
   "sprint": "15C.2",
-  "status": "rehearsed_not_committed",
+  "status": "staged_draft_verified",
   "ownerAcceptedAt": "2026-10-13T19:19:48+04:00",
   "privateEvidenceLibraryFileId": "libfile_8ba563d8a4188191a946f7072bb2f46d",
   "privateEvidenceSha256": "5dafb1f329d6d53f14f52a0591cbb826ab3003aca9ae444e1627df12808e3076",
@@ -34,7 +34,9 @@
       "M5": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(5)",
       "A1": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Լրացուցիչ 2(1)"
     },
-    "migration": "20261013154427_sprint_15c2_chapter_iii_draft_foundation.sql"
+    "migration": "20261013160458_sprint_15c2_chapter_iii_draft_foundation.sql",
+    "initialRehearsalMigration": "20261013154427_sprint_15c2_chapter_iii_draft_foundation.sql",
+    "observedDatabaseVersion": "20261013160458"
   },
   "rollbackObservedAt": "2026-10-13T15:54:26.67374+00:00",
   "qa": {
@@ -70,5 +72,192 @@
     "remediation_guide_authoring_versions": 8
   },
   "chapterIIRetry": false,
-  "learnerRelease": false
+  "learnerRelease": false,
+  "implementation": {
+    "implementationPR": 209,
+    "merge": {
+      "sha": "2192e2bd19e49bb66f9ea85b787ba53c8b0ccab8",
+      "merged": true,
+      "message": "Pull Request successfully merged"
+    },
+    "prChecks": [
+      {
+        "name": "Platform release checks",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38426908900/job/115400439978"
+      },
+      {
+        "name": "Vercel Preview Comments",
+        "conclusion": "success",
+        "url": "https://vercel.com/github"
+      },
+      {
+        "name": "phase3-postgres-17",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38426908900/job/115398577984"
+      },
+      {
+        "name": "institutional-concurrency",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38426908900/job/115398577891"
+      },
+      {
+        "name": "test",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38426908900/job/115398577794"
+      },
+      {
+        "name": "role-layout-browser",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38426908900/job/115398577598"
+      }
+    ],
+    "mainChecks": [
+      {
+        "name": "Platform release checks",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38427504937/job/115402798872"
+      },
+      {
+        "name": "phase3-postgres-17",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38427504937/job/115400643669"
+      },
+      {
+        "name": "test",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38427504937/job/115400643545"
+      },
+      {
+        "name": "role-layout-browser",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38427504937/job/115400643431"
+      },
+      {
+        "name": "institutional-concurrency",
+        "conclusion": "success",
+        "url": "https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38427504937/job/115400642991"
+      }
+    ],
+    "deploymentStatus": [
+      {
+        "context": "Vercel",
+        "state": "success",
+        "description": "Deployment has completed",
+        "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/5jYB3WNCk12jmPaenVDVF6sT8Rk6"
+      }
+    ],
+    "vercelConnectorInspection": {
+      "status": 403,
+      "reason": "Connected Vercel scope lacks access to project team; no installed CLI fallback. GitHub deployment status and exact public asset bytes verified instead."
+    }
+  },
+  "productionReadback": {
+    "items": [
+      {
+        "id": "8e79c9b1-0177-448e-90ed-dff118f9c99b",
+        "code": "PHY7-U03-S01-I01",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "9a3043fe-a4cd-44b5-81d0-386414f3edc1",
+        "code": "PHY7-U03-S08-I01",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "8267d126-6572-4123-a84c-7f8c9fcc9cda",
+        "code": "PHY7-U03-S02-I01",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "c9c01ac3-97e7-4c74-ac7d-830c8dfe2850",
+        "code": "PHY7-U03-S03-I01",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "f36a3e82-6238-4b98-9dab-1eb96b590525",
+        "code": "PHY7-U03-S04-I01",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "7f62446a-6129-450b-8a6e-c68ebd9517d9",
+        "code": "PHY7-U03-S05-I01",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "88f7c239-c4be-4243-a99f-34580d8cf729",
+        "code": "PHY7-U03-S06-I01",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      },
+      {
+        "id": "c9d55079-79c7-40da-a39b-f1142aa69a87",
+        "code": "PHY7-U03-S07-I01",
+        "status": "draft",
+        "version": 1,
+        "reviewStatus": "needs_review"
+      }
+    ],
+    "counts": {
+      "pools": 0,
+      "guides": 8,
+      "skills": 8,
+      "outcomes": 6,
+      "approvals": 0,
+      "definitions": 19
+    },
+    "chapterII": {
+      "status": "draft",
+      "activatedAt": null
+    },
+    "chapterIII": {
+      "status": "draft",
+      "activatedAt": null
+    },
+    "observedAt": "2026-10-13T16:07:05.137827+00:00"
+  },
+  "productionAssets": [
+    {
+      "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-36-motion.png",
+      "status": 200,
+      "contentType": "image/png",
+      "sha256": "43d35349b230e00ffba8516ec6ee3acdf492bd4c34fbf600365886b97da0b9c0",
+      "expectedSha256": "43d35349b230e00ffba8516ec6ee3acdf492bd4c34fbf600365886b97da0b9c0",
+      "matches": true
+    },
+    {
+      "url": "https://www.haiedu.am/assets/textbook/physics7-2023/figure-40-path.png",
+      "status": 200,
+      "contentType": "image/png",
+      "sha256": "8b399559383b89500d3568b0dce7b0a693b594780496c14dae32cb63a9b6c8bd",
+      "expectedSha256": "8b399559383b89500d3568b0dce7b0a693b594780496c14dae32cb63a9b6c8bd",
+      "matches": true
+    },
+    {
+      "url": "https://www.haiedu.am/assets/textbook/physics7-2023/p53-drop-traces-stacked.svg",
+      "status": 200,
+      "contentType": "image/svg+xml",
+      "sha256": "e6726090457ded4c9bc80ad94dcaf0f429e92a0d9c49407cb613df2d573d8a1f",
+      "expectedSha256": "e6726090457ded4c9bc80ad94dcaf0f429e92a0d9c49407cb613df2d573d8a1f",
+      "matches": true
+    }
+  ],
+  "productionEvidenceLibraryFileId": "libfile_bb51bc9ed5608191a907789e471ad7cb",
+  "productionEvidenceSha256": "6e3fea19b6a761bfd5f3ec33463d6f6afe2cbf28c47a86ff80f184cb9c3cd950",
+  "migrationConnector": "One Chapter III apply_migration succeeded; this does not authorize retrying paused Chapter II work.",
+  "migrationFilenameReconciliation": "Connector assigned 20261013160458. Repository file renamed from CLI-created 20261013154427 to the observed database version with identical SQL; no second migration is applied.",
+  "verificationLimits": "Authenticated browser reviewer/approval acceptance not run in this slice. Exact catalogue QA and public asset availability verified. Existing reviewer APIs/UI are unchanged."
 }
