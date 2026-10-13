@@ -73,7 +73,7 @@ async function capture(page, name, metrics) {
 test('full student shell switches between course documents without browser errors or learning writes', async t => {
   const {page,errors}=await fixture(t,{active:false,route:'index.html'});
   for (const selected of [contexts[0],contexts[1],contexts[0]]) {
-    const link=page.locator(`.amp-side-nav a[href*="unit=${selected.unitId}"]`);
+    const link=page.locator(`.amp-side-nav a.amp-course-link[href*="unit=${selected.unitId}"]`);
     assert.equal(await link.count(),1);
     await link.click();
     await page.waitForFunction(title=>document.getElementById('courseTitle').textContent.includes(title),selected.unitTitleHy);
