@@ -8,6 +8,8 @@ Start with the [authoritative status register](docs/project-status.md) for curre
 
 Chapter II has 192 approved questions, 263 active definitions and 57 published guides, with no pending content. The owner has authorized a [provisional Chapter II pilot](docs/chapter-ii-pilot-release.md) with specialist review deferred. Its implementation is merged, all five final CI jobs passed, and the frontend is deployed. A [Supabase connector failure](docs/evidence/chapter-ii-pilot-deployment-blocker-20261013.json) blocks database migrations; Chapter II remains draft and inactive. Production configuration, activation and authenticated chapter-switching acceptance are still pending. Independent SME and final historical-exposure decisions remain required for production promotion. Chapter I remains on its existing pilot. Sprint 12.5 is complete, Sprint 13 is closed for sequencing, and Sprint 14 / 15B.12E retain their live switching acceptance dependency. See the register for evidence and later planned stages.
 
+Chapter III now has [offline preparation](docs/chapter-iii-preparation.md): six current official outcomes, eight proposed skills, a proposed 168-question bank and eight practice drafts with textbook illustrations. No Chapter III content is staged or approved; fresh whole-bank qualification and plan/content review remain open. Chapter II deployment retries are paused at the owner's request.
+
 ## Chapter I implemented baseline
 
 The project now has a working Chapter I learning-engine slice for:

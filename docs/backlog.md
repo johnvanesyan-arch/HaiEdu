@@ -253,6 +253,19 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III preparation — 15C.1, 2026-10-13
+
+- [x] Verify the supplied textbook edition and current official programme appendix; map the five mandatory and one additional Theme 3 outcomes.
+- [x] Propose eight skills, textbook/source boundaries, prerequisites and a chapter-specific 168-question planning budget.
+- [x] Prepare eight offline practice drafts, explanations, hints and distractor rationales; extract three source illustrations with provenance and mobile readability treatment.
+- [x] Record the preliminary frozen-corpus screen, 28 within-batch comparisons and explicit qualification limits.
+- [ ] Confirm the plan, counts/weights and supporting/additional-skill assessment treatment.
+- [ ] Refresh the full applicable current/history/guide/protected corpus and complete semantic qualification before staging.
+- [ ] Create the governed Chapter III foundation and stage qualified drafts through the established reviewer workflow after recovery.
+- [ ] Human content review, specialist review and eventual assessment/release qualification.
+
+[Preparation](chapter-iii-preparation.md). This checklist records offline preparation only; no Supabase or learner changes occurred. Chapter II remains paused at the owner's request while its database deployment is blocked.
+
 ## Chapter II final two batches — 2026-10-13
 
 - [x] Author the owner-requested 37 remaining slots in two batches of 19 and 18; retain the 192 target and existing assessment contract.

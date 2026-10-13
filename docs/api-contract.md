@@ -4,6 +4,8 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. It does not authorize a new release or claim completed live multi-context acceptance.
 
+**Chapter III preparation (2026-10-13):** [15C.1](chapter-iii-preparation.md) is offline source mapping, assessment planning and practice drafting only. Its proposed skill codes, 168-question budget and form weighting are not database objects or an active assessment contract. No endpoint, scoring/readiness rule, model, release, QA record or human approval changes. Chapter II deployment remains paused separately.
+
 ## Chapter II content boundary — 2026-10-13
 
 The 192-question Chapter II bank is content-approved, with 263 active definitions and 57 published guides; no content is pending. The owner approved the three editorial questions at unchanged v3 and published the three guide corrections at authoring v7 / runtime v3. [Review closure and qualification evidence](evidence/chapter-ii-qualification-preflight-20261013.json). Earlier approvals and immutable history remain preserved.

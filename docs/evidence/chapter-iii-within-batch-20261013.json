@@ -1,0 +1,176 @@
+{
+  "schemaVersion": 1,
+  "author": "Codex; automated author review",
+  "pairs": [
+    {
+      "a": "U03-PREP-C01",
+      "b": "U03-PREP-C02",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S01 versus S02. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C01",
+      "b": "U03-PREP-C03",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S01 versus S03. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C01",
+      "b": "U03-PREP-C04",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S01 versus S04. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C01",
+      "b": "U03-PREP-C05",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Both describe motion; C01 needs reference-position evidence, C05 separates magnitude and direction."
+    },
+    {
+      "a": "U03-PREP-C01",
+      "b": "U03-PREP-C06",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S01 versus S06. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C01",
+      "b": "U03-PREP-C07",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S01 versus S07. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C01",
+      "b": "U03-PREP-C08",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S01 versus S08. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C02",
+      "b": "U03-PREP-C03",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S02 versus S03. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C02",
+      "b": "U03-PREP-C04",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S02 versus S04. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C02",
+      "b": "U03-PREP-C05",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S02 versus S05. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C02",
+      "b": "U03-PREP-C06",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S02 versus S06. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C02",
+      "b": "U03-PREP-C07",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S02 versus S07. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C02",
+      "b": "U03-PREP-C08",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Both require attending to length, but C02 chooses a point model and C08 chooses a travel/time measurement interval."
+    },
+    {
+      "a": "U03-PREP-C03",
+      "b": "U03-PREP-C04",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Both interpret source drawings; C03 selects traversed path length and C04 compares spacing at equal times."
+    },
+    {
+      "a": "U03-PREP-C03",
+      "b": "U03-PREP-C05",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S03 versus S05. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C03",
+      "b": "U03-PREP-C06",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S03 versus S06. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C03",
+      "b": "U03-PREP-C07",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S03 versus S07. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C03",
+      "b": "U03-PREP-C08",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S03 versus S08. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C04",
+      "b": "U03-PREP-C05",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S04 versus S05. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C04",
+      "b": "U03-PREP-C06",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S04 versus S06. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C04",
+      "b": "U03-PREP-C07",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S04 versus S07. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C04",
+      "b": "U03-PREP-C08",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Both concern experiments; C04 interprets equal-time spacing while C08 plans matching distance/time measurement. No identical complete solution."
+    },
+    {
+      "a": "U03-PREP-C05",
+      "b": "U03-PREP-C06",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Both compare speeds; C05 keeps equal values and changes direction, C06 requires unit conversion before comparing magnitudes."
+    },
+    {
+      "a": "U03-PREP-C05",
+      "b": "U03-PREP-C07",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S05 versus S07. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C05",
+      "b": "U03-PREP-C08",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S05 versus S08. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C06",
+      "b": "U03-PREP-C07",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Both involve speed arithmetic; C06 transforms quotient units, C07 derives a rate and predicts distance without unit conversion."
+    },
+    {
+      "a": "U03-PREP-C06",
+      "b": "U03-PREP-C08",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Different complete response demands: S06 versus S08. Shared motion vocabulary does not supply the other answer."
+    },
+    {
+      "a": "U03-PREP-C07",
+      "b": "U03-PREP-C08",
+      "disposition": "retain_as_practice_drafts",
+      "rationale": "Both rely on v=s/t; C07 computes and reuses a rate, C08 selects consistent measurement boundaries without arithmetic. Shared procedure is disclosed."
+    }
+  ],
+  "exhaustiveWithinBatchPairs": 28,
+  "externalCorpusStatus": "preliminary_stale_corpus_screen_not_qualification"
+}
