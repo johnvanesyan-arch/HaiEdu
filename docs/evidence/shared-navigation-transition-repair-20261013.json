@@ -1,6 +1,6 @@
 {
   "schemaVersion": 1,
-  "status": "chapter_switching_passed_remaining_shared_qa",
+  "status": "verified_in_production",
   "productionAttempt": 38441429710,
   "productionChecksPassed": 71,
   "productionChecksTotal": 72,
@@ -55,28 +55,50 @@
     "mainCiRun": 38446467477,
     "chapterRun": 38446467319,
     "actionsRun": 38446467326,
-    "analyticsRun": 38446467304,
-    "prCiStatus": "passed_all_five_jobs",
-    "mainCiStatus": "passed_all_five_jobs",
+    "analyticsRun": 38449593450,
+    "cancelledAnalyticsRun": 38446467304,
+    "analyticsDispatch": "User-authorized GitHub browser workflow_dispatch on main after the shared fixture queue cleared",
     "nativeBrowserChecks": {
       "passed": 67,
       "total": 67
-    },
-    "nodeChecks": {
-      "passed": 1282,
-      "total": 1282
     },
     "chapterChecks": {
       "passed": 91,
       "total": 91
     },
-    "chapterEvidence": "chapter-ii-pilot-read-acceptance-20261013.json",
-    "analyticsStatus": "cancelled_before_job_started_by_shared_queue",
-    "analyticsRetry": {
-      "tool": "github_rerun_failed_workflow_run_jobs",
-      "httpStatus": 403,
-      "message": "This workflow run cannot be retried",
-      "browserFallbackNotYetAuthorizedForGitHub": true
-    }
+    "browserDiagnostics": [
+      {
+        "side": "A",
+        "blockedRequestCount": 0,
+        "pageErrorCount": 0,
+        "blockedRequests": [],
+        "pageErrors": []
+      },
+      {
+        "side": "B",
+        "blockedRequestCount": 0,
+        "pageErrorCount": 0,
+        "blockedRequests": [],
+        "pageErrors": []
+      }
+    ],
+    "actionsChecks": {
+      "passed": 143,
+      "total": 143
+    },
+    "analyticsChecks": {
+      "passed": 10,
+      "total": 10
+    },
+    "nodeChecks": {
+      "passed": 1282,
+      "total": 1282
+    },
+    "reports": {
+      "chapter": "chapter-ii-pilot-read-acceptance-20261013.json",
+      "actions": "sprint-14-actions-navigation-repair-20261013.json",
+      "analytics": "sprint-14d-analytics-navigation-repair-20261013.json"
+    },
+    "allFivePrAndMainCiJobsPassed": true
   }
 }
