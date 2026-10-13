@@ -49,11 +49,8 @@ test("school admin starts independent initial reads in parallel and avoids a rem
   assert.match(school, /Promise\.all\(\[[\s\S]*loadYears\(\)[\s\S]*loadTeacherSubjects[\s\S]*loadTeacherRoster\(\)[\s\S]*loadSchoolAnalytics/);
 });
 
-test("same-origin pages opt into browser document transitions where supported", () => {
-  const styles = read("web/styles.css");
-  assert.match(styles, /@view-transition\s*\{\s*navigation:\s*auto/);
-});
-
+// Cross-document navigation is exercised by the full-shell Chromium regression
+// in browser/student-workspace.browser.test.mjs, including page errors and writes.
 
 test("student routing and dashboard bootstraps coalesce duplicate auth work", () => {
   const router = read("web/role-router.js");

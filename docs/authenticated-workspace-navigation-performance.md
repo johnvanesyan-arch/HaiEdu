@@ -3,6 +3,8 @@
 **Date:** 2026-10-01  
 **Status:** Deployed first-paint/navigation correction; protected authorization semantics unchanged.
 
+**2026-10-13 amendment:** the automatic cross-document animation described below caused reproducible Chromium page errors during full-shell course switching. The shared opt-in is removed by the [navigation repair](evidence/shared-navigation-transition-repair-20261013.json); native navigation, loading shells, prefetching and user-scoped caching remain. A full Home/course navigation regression replaces the old source assertion that required the animation. Production acceptance of this repair remains pending.
+
 ## Observed production problem
 
 Authenticated role pages were full document navigations. Their static header painted immediately, but protected panels stayed hidden until session/role checks and dashboard reads completed. On Content Reviewer pages this produced a conspicuous blank page between navigation and usable content.
@@ -23,7 +25,7 @@ The duplicate bursts were consistent with pages combining an initial `getSession
 
 ### Faster navigation
 - Role-sidebar links prefetch likely next same-origin documents on hover/idle.
-- `web/styles.css` opts same-origin pages into cross-document View Transitions in supporting browsers.
+- The original `web/styles.css` opted same-origin pages into cross-document View Transitions; the 2026-10-13 amendment above supersedes that detail.
 
 ### Auth/bootstrap de-duplication
 - `web/ux.js`: the supplemental remote terminal-auth health check runs during browser idle rather than competing with first paint.
