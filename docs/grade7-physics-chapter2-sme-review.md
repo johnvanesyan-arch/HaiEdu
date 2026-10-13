@@ -2,7 +2,7 @@
 
 **Decision:** pending. **Reviewer:** unassigned. **Prepared by:** Codex, automated author, at the owner's direction on 2026-10-13. This preparation is not the independent review.
 
-**Scope:** the eight active Chapter II skills; seven registered programme outcomes; eight prerequisite links; 192 current questions; 263 active misconception definitions; 57 published guides; and the suitability of the 32 Diagnostic / 64 Mastery candidates. [Manifest, exact versions and item links](evidence/chapter-ii-qualification-preflight-20261013.json) · [Preparation and exposure findings](chapter-ii-assessment-qualification.md).
+**Scope:** the eight non-archived Chapter II candidate skills; seven registered programme outcomes; eight prerequisite links; 192 current questions; 263 active misconception definitions; 57 published guides; and the suitability of the 32 Diagnostic / 64 Mastery candidates. [Manifest, exact versions and item links](evidence/chapter-ii-qualification-preflight-20261013.json) · [Preparation and exposure findings](chapter-ii-assessment-qualification.md).
 
 ## Review on the site
 
@@ -10,6 +10,8 @@
 - [Guides](https://www.haiedu.am/content-guides.html): the same skills. The three recent corrections are already published at runtime v3.
 - [Misconception definitions](https://www.haiedu.am/content-misconceptions.html): Chapter II, S02–S09.
 - [Curriculum](https://www.haiedu.am/content-curriculum.html): review the programme/outcome/skill relationships.
+
+The manifest includes all 57 guide runtime/authoring version IDs and all 263 definition identities, row digests and available review revisions. Three legacy definitions have no review-event revision; use their recorded row digest and historical activation evidence rather than assuming a revision number. It also binds the curriculum/source records. Quote the complete `manifestSha256` in the final decision.
 
 Use an authorized reviewer account under the existing access controls. The ordinary approval button records content review; SME status is managed separately. A prior content approval is evidence to consider, not an instruction to accept the question. If a version has changed since the manifest, record the new version and refresh its affected comparisons before qualification.
 
