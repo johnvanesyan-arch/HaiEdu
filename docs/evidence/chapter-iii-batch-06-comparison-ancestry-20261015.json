@@ -1,0 +1,32 @@
+{
+  "date": "2026-10-15",
+  "finding": "PR 221 automatic review reported the preparation commit absent from a squashed revision it identified as 807db4d2. That is not the actual published merge.",
+  "decision": "No ancestry repair required: the actual published normal merge preserves the prepared comparison as an ancestor.",
+  "actualPublishedMerge": {
+    "sha": "6c9b461eb56eb0ae17d215de108dc5290d8b528f",
+    "parents": [
+      "5e9e8cc75bd6d3ea585df1a5da3a10693d83998e",
+      "099ba73ec4f16ad34fc9d9ef282a2f1b1fd5fa96"
+    ]
+  },
+  "actualAncestorCommits": [
+    {
+      "sha": "099ba73ec4f16ad34fc9d9ef282a2f1b1fd5fa96",
+      "parents": [
+        "3ee7d5b2a66602ba2383b215eaf0a93ea3550df5"
+      ],
+      "tree": "db1e4b89d8e96a998379ccf1d9ee337b987da054"
+    },
+    {
+      "sha": "3ee7d5b2a66602ba2383b215eaf0a93ea3550df5",
+      "parents": [
+        "5e9e8cc75bd6d3ea585df1a5da3a10693d83998e"
+      ],
+      "tree": "c74c5e8b73db5edee27d35f3662d4e51a6303103"
+    }
+  ],
+  "preparedComparisonReachableFromPublishedMain": true,
+  "sourceBranchDeletionWouldLosePreparedCommit": false,
+  "productionWrites": 0,
+  "method": "Fresh GitHub Git commit API parent readback; parent edge equality, not inference from branch names."
+}
