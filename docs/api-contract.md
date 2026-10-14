@@ -4,7 +4,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. The historical 2026-10-10 comparison does not authorize a release; the separate 2026-10-13 pilot activation and authenticated acceptance are recorded below.
 
-**Chapter III batch 04 (2026-10-14):** content-only staging adds eight practice questions, eight guides, seventeen definitions and eight accurately labelled automated QA rows. Earlier approvals are verified; S04-I01 corrected guide is published at authoring v7 / runtime v3. [Batch 04 staging](chapter-iii-batch-04-staging.md). No endpoint, schema, runtime, auth, scoring/readiness or learner-access contract changed. Current inventory is 32 questions (24 approved + 8 draft); Chapter III remains inactive/unallocated, and Chapter I/II pilots are unchanged.
+**Chapter III batch 05 (2026-10-15):** content-only staging adds eight practice questions, eight guides, eighteen definitions and eight accurately labelled automated QA rows; one exact textbook ruler image is served and hash-verified. All sixteen hint strings match their separately reviewed specifications. Earlier approvals are verified. [Batch 05 staging](chapter-iii-batch-05-staging.md). No endpoint, schema, runtime, auth, assessment/readiness or learner-access contract changed. Inventory: 40 questions (32 approved + 8 draft); Chapter III remains inactive/unallocated, and Chapter I/II pilots remain unchanged. Historical author-classification labels are superseded by the version-bound [Current disposition reconciliation](chapter-iii-disposition-reconciliation.md); this is an evidence-layer decision, not a runtime change or altered human approval.
 
 ## Chapter II content boundary — 2026-10-13
 
