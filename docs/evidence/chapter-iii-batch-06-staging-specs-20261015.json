@@ -1,0 +1,545 @@
+[
+  {
+    "id": "U03-B06-C01",
+    "code": "PHY7-U03-S01-I06",
+    "skill": "S01",
+    "skillId": "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+    "outcomeId": "4f982ba6-4fb2-56fe-ac7c-86004b32839f",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+    "familyCode": "PHY7-U03-S01-F06",
+    "templateCode": "PHY7-U03-S01-F06-T01",
+    "candidateRevision": 1,
+    "suffix": "I06",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Նավի ուղևորը ցանկանում է պարզել՝ նավը շարժվո՞ւմ է ափի նկատմամբ։ Ո՞ր դիտումը թույլ կտա հաստատել այդ շարժումը։",
+    "optionsHy": {
+      "A": "Լսվում է նավի շարժիչի ձայնը։",
+      "B": "Նավախցիկում մարդիկ քայլում են։",
+      "C": "Նավի դիրքը փոխվում է ափին աճող ծառի նկատմամբ։",
+      "D": "Նավի ներսում լույսը միացված է։"
+    },
+    "answer": "C",
+    "explanationHy": "Մեխանիկական շարժումը մարմնի դիրքի փոփոխությունն է այլ մարմինների նկատմամբ։ Ափին աճող ծառի նկատմամբ նավի դիրքի փոփոխությունը ցույց է տալիս նավի շարժումն ափի նկատմամբ։ Շարժիչի ձայնը, ուղևորների քայլելը կամ միացված լույսը առանձին վերցրած դա չեն հաստատում։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §14, էջեր 42–44, մեխանիկական շարժում և նավի ուղևորի օրինակը",
+    "difficulty": 1,
+    "difficultyBand": "foundation",
+    "rationaleHy": "Շարժման մասին դատիր դիրքի փոփոխությամբ։ §14, էջեր 42–44, մեխանիկական շարժում և նավի ուղևորի օրինակը",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "All required observations and quantities are explicit in the wording; no scale, geometry or unseen apparatus feature must be inferred.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional observation-choice practice: select position-change evidence rather than engine activity, passenger motion or light. S01-I01 already establishes the position criterion and I05 underdetermined frames; this is evidence selection, not new independent coverage.",
+    "workedExampleComparison": "The example rejects a light change for a stationary car; the main task selects positive ship-position evidence. It does not repeat the multiple-choice selection or ship setup.",
+    "guide": {
+      "title_hy": "Շարժման մասին դատիր դիրքի փոփոխությամբ",
+      "strategy_hy": "Ընտրիր այն մարմինը, որի նկատմամբ ուսումնասիրում ես շարժումը։ Այնուհետև հետևիր՝ ուսումնասիրվող մարմնի դիրքը ժամանակի ընթացքում փոխվո՞ւմ է դրա նկատմամբ։ Ձայնը կամ լույսը ինքնին դիրքի փոփոխություն չեն ցույց տալիս։",
+      "worked_example_hy": "Կայանված մեքենայի լուսարձակները միացնում են։ Եթե մեքենայի դիրքը ճամփեզրի սյան նկատմամբ չի փոխվում, լուսարձակների միանալը չի նշանակում, որ մեքենան սյան նկատմամբ շարժվել է։ Այստեղ փոխվել է լուսավորությունը, իսկ դիրքը մնացել է նույնը։",
+      "hint_1_hy": "Հիշիր՝ մեխանիկական շարժման սահմանման մեջ մարմնի ի՞նչ փոփոխության մասին է խոսվում։",
+      "hint_2_hy": "Նավի շարժումն ափի նկատմամբ ստուգելու համար ո՞ր դիտումն է կապվում ափին անշարժ մարմնի հետ։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S01-M09",
+        "Շարժիչի ձայնը՝ մեխանիկական շարժման ապացույց",
+        "Շարժիչի աշխատանքը կամ ձայնը բավարար է համարում փոխադրամիջոցի շարժումը գետնի կամ ափի նկատմամբ հաստատելու համար։"
+      ],
+      [
+        "PHY7-U03-S01-M10",
+        "Ուղևորի շարժման վերագրում փոխադրամիջոցին",
+        "Փոխադրամիջոցի ներսում ուղևորի քայլելուց եզրակացնում է, որ փոխադրամիջոցն էլ անպայման շարժվում է գետնի կամ ափի նկատմամբ։"
+      ],
+      [
+        "PHY7-U03-S01-M11",
+        "Լույսի միացումը՝ դիրքի փոփոխության նշան",
+        "Մարմնի վրա կամ ներսում լույսի միացումը շփոթում է այդ մարմնի դիրքի փոփոխության հետ։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S01-M09",
+        "Շարժիչի ձայնով հաստատում է նավի դիրքի փոփոխությունն ափի նկատմամբ։"
+      ],
+      "B": [
+        "PHY7-U03-S01-M10",
+        "Ուղևորների շարժումը վերագրում է նավին՝ առանց ափի նկատմամբ նրա դիրքը ստուգելու։"
+      ],
+      "D": [
+        "PHY7-U03-S01-M11",
+        "Լույսի միացումը համարում է նավի դիրքի փոփոխության վկայություն։"
+      ]
+    },
+    "specSha256": "e901100d5ed1e681b0f445f82be8317cd028a0c253706f332a534600b5203733"
+  },
+  {
+    "id": "U03-B06-C02",
+    "code": "PHY7-U03-S02-I05",
+    "skill": "S02",
+    "skillId": "4251bf02-d633-578a-bd36-44028b5ceecf",
+    "outcomeId": "f3660abd-d28c-54e9-bad3-202a629f60e4",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+    "familyCode": "PHY7-U03-S02-F05",
+    "templateCode": "PHY7-U03-S02-F05-T01",
+    "candidateRevision": 1,
+    "suffix": "I05",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Ուղևորը գնացքում փնտրում է իր նստատեղը։ Այս խնդրում կարելի՞ է ամբողջ գնացքը համարել նյութական կետ։",
+    "optionsHy": {
+      "A": "Այո՛, քանի որ գնացքը կարող է շարժվել։",
+      "B": "Ո՛չ, քանի որ պետք է տարբերել գնացքի ներսում գտնվող տեղերը։",
+      "C": "Այո՛, քանի որ նստատեղը գնացքի համեմատ փոքր է։",
+      "D": "Ո՛չ, քանի որ գնացքը ոչ մի խնդրում չի կարելի համարել նյութական կետ։"
+    },
+    "answer": "B",
+    "explanationHy": "Նստատեղը գտնելու համար պետք է իմանալ, թե այն գնացքի որ մասում է գտնվում։ Եթե ամբողջ գնացքը փոխարինենք մեկ կետով, նրա ներսում տարբեր տեղերը չենք կարող առանձնացնել։ Ուստի այս խնդրում գնացքի չափերն անտեսել չի կարելի։ Այլ խնդրում նյութական կետի մոդելը կարող է կիրառելի լինել։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 45–46, նյութական կետի մոդել; էջ 48, առաջադրանք 2՝ գնացքում նստատեղ գտնելը",
+    "difficulty": 1,
+    "difficultyBand": "foundation",
+    "rationaleHy": "Մոդելն ընտրիր ըստ խնդրի։ §15, էջեր 45–46, նյութական կետի մոդել; էջ 48, առաջադրանք 2՝ գնացքում նստատեղ գտնելը",
+    "mappingType": "derived_supporting",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "All required observations and quantities are explicit in the wording; no scale, geometry or unseen apparatus feature must be inferred.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional conditional-model practice using textbook task 2: locating an internal place rather than checking a body fitting through an opening or distinguishing rotation points. Same model-relevance reasoning, no independent coverage claim.",
+    "workedExampleComparison": "A distant aircraft route is a contrasting valid point model; the main task rejects that model for internal seat location. Different judgment and use of the model, not a train renamed.",
+    "guide": {
+      "title_hy": "Մոդելն ընտրիր ըստ խնդրի",
+      "strategy_hy": "Նախ պարզիր՝ ինչ տեղեկություն է պետք խնդիրը լուծելու համար։ Եթե կարևոր են մարմնի տարբեր մասերի տեղերը կամ չափերը, ամբողջ մարմինը մեկ նյութական կետով փոխարինելն այդ տեղեկությունը կկորցնի։",
+      "worked_example_hy": "Քարտեզի վրա երկու հեռավոր քաղաքների միջև ինքնաթիռի անցած ճանապարհը որոշելիս թևերի և պոչի առանձին դիրքերը հաշվի առնելու կարիք չկա։ Այս խնդրում ամբողջ ինքնաթիռի դիրքը կարելի է նշել մեկ կետով, քանի որ նրա չափերը շատ փոքր են անցած ճանապարհի համեմատ։",
+      "hint_1_hy": "Նստատեղը գտնելու համար բավարա՞ր է իմանալ միայն ամբողջ գնացքի գտնվելու վայրը։",
+      "hint_2_hy": "Եթե ամբողջ գնացքը նկարագրես մեկ կետով, կկարողանա՞ս տարբերել նրա ներսում գտնվող տեղերը։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S02-M11",
+        "Փոքր մասի չափերից ամբողջ մարմնի մոդելի ընտրություն",
+        "Մարմնի ներսում որևէ մասի փոքր լինելը բավարար է համարում ամբողջ մարմինը նյութական կետով ներկայացնելու համար՝ անտեսելով տարբեր մասերի տեղերը որոշելու անհրաժեշտությունը։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S02-M01",
+        "Շարժվելու հնարավորությունը համարում է նյութական կետի մոդելի բավարար պայման։"
+      ],
+      "C": [
+        "PHY7-U03-S02-M11",
+        "Նստատեղի փոքր չափերը շփոթում է ամբողջ գնացքի չափերն անտեսելու հնարավորության հետ։"
+      ],
+      "D": [
+        "PHY7-U03-S02-M05",
+        "Տվյալ խնդրում մոդելի անհարմարությունը տարածում է գնացքի մասին բոլոր խնդիրների վրա։"
+      ]
+    },
+    "specSha256": "f29895fe968635be71026fe62daac8ed0504368ed12996955cb5ff5c352bbe0c"
+  },
+  {
+    "id": "U03-B06-C03",
+    "code": "PHY7-U03-S03-I06",
+    "skill": "S03",
+    "skillId": "808be543-acae-5df9-b903-eaceaf4c149c",
+    "outcomeId": "020c307d-b19d-504c-b863-b8ae8c0d14ae",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+    "familyCode": "PHY7-U03-S03-F06",
+    "templateCode": "PHY7-U03-S03-F06-T01",
+    "candidateRevision": 1,
+    "suffix": "I06",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Աշակերտը ուղիղ ճանապարհով անցնում է 5 մ, ապա հետ է դառնում և նույն ճանապարհով անցնում 2 մ։ Որքա՞ն է նրա անցած ամբողջ ճանապարհը։",
+    "optionsHy": {
+      "A": "3 մ։",
+      "B": "5 մ։",
+      "C": "2 մ։",
+      "D": "7 մ։"
+    },
+    "answer": "D",
+    "explanationHy": "Անցած ճանապարհը ներառում է շարժման երկու մասերն էլ՝ 5 + 2 = 7 մ։ Վերջում աշակերտը մեկնարկի կետից 3 մ հեռավորության վրա է, բայց այդ հեռավորությունն իր անցած ամբողջ ճանապարհը չէ։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 46–47, հետագիծ և անցած ճանապարհ; էջ 48, առաջադրանքներ 5 և 6",
+    "difficulty": 1,
+    "difficultyBand": "foundation",
+    "rationaleHy": "Ամբողջ ճանապարհը գտնելիս հաշվի առ շարժման բոլոր մասերը։ §15, էջեր 46–47, հետագիծ և անցած ճանապարհ; էջ 48, առաջադրանքներ 5 և 6",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "All required observations and quantities are explicit in the wording; no scale, geometry or unseen apparatus feature must be inferred.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional path-addition practice with a partial retracing of an explicitly measured straight segment. Complements S03-I02 full return and I05 one-way ruler reading. Same path-versus-endpoint distinction; no new protected stimulus.",
+    "workedExampleComparison": "The example counts two complete circular laps, with zero endpoint separation; the main task has one partial straight return and nonzero separation. It uses multiplication and a different trajectory, not substituted numbers.",
+    "guide": {
+      "title_hy": "Ամբողջ ճանապարհը գտնելիս հաշվի առ շարժման բոլոր մասերը",
+      "strategy_hy": "Անցած ճանապարհը որոշելու համար հաշվի առ յուրաքանչյուր անցած տեղամասի երկարությունը։ Նույն տեղամասով նորից անցնելիս այդ ճանապարհն էլ է ավելանում ամբողջին։ Վերջնական և սկզբնական դիրքերի հեռավորությունը կարող է ավելի փոքր լինել։",
+      "worked_example_hy": "Վազորդը 300 մ երկարությամբ շրջանաձև վազքուղով կատարում է երկու լրիվ պտույտ։ Յուրաքանչյուր պտույտում անցնում է 300 մ, ուստի ամբողջ ճանապարհը 2 × 300 = 600 մ է։ Թեև վերջում նա մեկնարկի կետում է, անցած ճանապարհը զրո չէ։",
+      "hint_1_hy": "Հետ դառնալիս անցած ճանապարհը մտնո՞ւմ է շարժման ամբողջ ճանապարհի մեջ։",
+      "hint_2_hy": "Հաշվի առ շարժման երկու մասերն էլ։ Վերջնական դիրքի հեռավորությունը մեկնարկից մի՛ շփոթիր ամբողջ ճանապարհի հետ։"
+    },
+    "definitions": [],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S03-M01",
+        "Հանում է հետդարձի ճանապարհը և ստանում վերջնական ու սկզբնական դիրքերի հեռավորությունը։"
+      ],
+      "B": [
+        "PHY7-U03-S03-M03",
+        "Հաշվի է առնում միայն առաջին 5 մ-ը։"
+      ],
+      "C": [
+        "PHY7-U03-S03-M03",
+        "Հաշվի է առնում միայն հետդարձի 2 մ-ը։"
+      ]
+    },
+    "specSha256": "158adfa4d4ac667f90e5e340d8eb5cce1a42c2f164614ab976ae25a4139ef4c1"
+  },
+  {
+    "id": "U03-B06-C04",
+    "code": "PHY7-U03-S04-I06",
+    "skill": "S04",
+    "skillId": "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+    "outcomeId": "46b049d9-a466-5b1f-975e-4eb0c3f0b474",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+    "familyCode": "PHY7-U03-S04-F06",
+    "templateCode": "PHY7-U03-S04-F06-T01",
+    "candidateRevision": 1,
+    "suffix": "I06",
+    "bank": "practice",
+    "purpose": "misconception_diagnosis",
+    "promptHy": "Ուղիղ գծով շարժվող սայլակի դիրքը նշել են մի քանի պահերի։ Հարևան նշումների միջև հեռավորությունները հավասար են, բայց նշումների միջև անցած ժամանակները չեն գրանցել։ Բավարա՞ր է այս տեղեկությունը հավասարաչափ շարժման մասին եզրակացություն անելու համար։",
+    "optionsHy": {
+      "A": "Այո՛, հավասար հեռավորությունները բավարար են։",
+      "B": "Այո՛, քանի որ շարժումը ուղղագիծ է։",
+      "C": "Ո՛չ, պետք է իմանալ նաև համապատասխան ժամանակամիջոցները։",
+      "D": "Ո՛չ, ժամանակները չգրանցելը ցույց է տալիս, որ շարժումն անհավասարաչափ է։"
+    },
+    "answer": "C",
+    "explanationHy": "Հավասարաչափ շարժման դեպքում կամայական հավասար ժամանակամիջոցներում անցած ճանապարհները հավասար են։ Միայն նշումների հավասար հեռավորությունները բավարար չեն. պետք է իմանալ նաև դրանց միջև անցած ժամանակները։ Տեղեկության բացակայությունը չի ապացուցում նաև անհավասարաչափ շարժում։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 49–50, հավասար ժամանակամիջոցների պահանջը և կաթոցիկի փորձը",
+    "difficulty": 2,
+    "difficultyBand": "core",
+    "rationaleHy": "Համեմատիր և՛ ճանապարհները, և՛ ժամանակամիջոցները։ §16, էջեր 49–50, հավասար ժամանակամիջոցների պահանջը և կաթոցիկի փորձը",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "All required observations and quantities are explicit in the wording; no scale, geometry or unseen apparatus feature must be inferred.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional completeness-of-observation practice. S04-I01 supplies equal timing; this task removes timing and tests whether the criterion can be applied at all. Existing finite-sampling limits remain, not a new independent path.",
+    "workedExampleComparison": "The example has complete equal-time data and can disprove uniformity. The main task lacks timing and supports neither conclusion. Different evidence status, not the same missing-data setup.",
+    "guide": {
+      "title_hy": "Համեմատիր և՛ ճանապարհները, և՛ ժամանակամիջոցները",
+      "strategy_hy": "Դիրքերի նշումներն ուսումնասիրելիս պարզիր՝ ինչ ժամանակամիջոցներով են դրանք արվել։ Առանց այդ տեղեկության միայն հավասար հեռավորություններով հավասարաչափ շարժման մասին եզրակացություն անել չի կարելի։ Տվյալների պակասը մի՛ շփոթիր անհավասարաչափության ապացույցի հետ։",
+      "worked_example_hy": "Սայլակն առաջին 2 վ-ում անցել է 4 մ, իսկ հաջորդ 2 վ-ում՝ 7 մ։ Այստեղ ժամանակամիջոցները հայտնի են և հավասար, իսկ ճանապարհները՝ տարբեր։ Ուստի այդ ընթացքում շարժումը հավասարաչափ չի եղել։",
+      "hint_1_hy": "Հավասարաչափ շարժման սահմանման մեջ ճանապարհներից բացի ո՞ր մեծությունն է հիշատակվում։",
+      "hint_2_hy": "Նույն երկարությամբ երկու տեղամասը հնարավո՞ր է անցնել տարբեր ժամանակամիջոցներում։ Ի՞նչ տեղեկություն է պակասում այստեղ։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S04-M13",
+        "Հավասար հեռավորությունները՝ հավասարաչափության բավարար պայման",
+        "Հավասարաչափ շարժում է եզրակացնում դիրքերի հավասար հեռավորություններից՝ առանց համապատասխան ժամանակամիջոցները համեմատելու։"
+      ],
+      [
+        "PHY7-U03-S04-M14",
+        "Տվյալների պակասը՝ անհավասարաչափության ապացույց",
+        "Ժամանակի մասին տեղեկության բացակայությունը համարում է անհավասարաչափ շարժման ապացույց՝ եզրակացությունը չհիմնավորված համարելու փոխարեն։"
+      ],
+      [
+        "PHY7-U03-S04-M15",
+        "Ուղղագիծ շարժումը՝ պարտադիր հավասարաչափ",
+        "Ուղիղ հետագիծը բավարար է համարում շարժումը հավասարաչափ ճանաչելու համար՝ առանց ժամանակամիջոցներն ու ճանապարհները համեմատելու։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S04-M13",
+        "Համեմատում է միայն հեռավորությունները՝ անտեսելով ժամանակները։"
+      ],
+      "B": [
+        "PHY7-U03-S04-M15",
+        "Ուղղագիծ հետագծից եզրակացնում է հավասարաչափություն։"
+      ],
+      "D": [
+        "PHY7-U03-S04-M14",
+        "Չգրանցված ժամանակները ներկայացնում է որպես անհավասարաչափության փաստ։"
+      ]
+    },
+    "specSha256": "bf7d00446616afdf8e78c062d6d2736dd4521c78e9cc0ea45513236e784b843b"
+  },
+  {
+    "id": "U03-B06-C05",
+    "code": "PHY7-U03-S05-I06",
+    "skill": "S05",
+    "skillId": "b04dde38-3f39-5cea-a9a1-e7c6535cf39a",
+    "outcomeId": "581807b2-fdb5-534b-8b79-303e7aaa7d66",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+    "familyCode": "PHY7-U03-S05-F06",
+    "templateCode": "PHY7-U03-S05-F06-T01",
+    "candidateRevision": 1,
+    "suffix": "I06",
+    "bank": "practice",
+    "purpose": "core_understanding",
+    "promptHy": "Անցած ճանապարհն ու շարժման արագությունը ո՞ր տեսակի ֆիզիկական մեծություններ են։",
+    "optionsHy": {
+      "A": "Ճանապարհը սկալյար մեծություն է, իսկ արագությունը՝ վեկտորական։",
+      "B": "Երկուսն էլ սկալյար մեծություններ են։",
+      "C": "Երկուսն էլ վեկտորական մեծություններ են։",
+      "D": "Ճանապարհը վեկտորական մեծություն է, իսկ արագությունը՝ սկալյար։"
+    },
+    "answer": "A",
+    "explanationHy": "Անցած ճանապարհը որոշվում է թվային արժեքով և չափման միավորով. նրան ուղղություն չենք վերագրում։ Արագությունը վեկտորական մեծություն է. բացի թվային արժեքից, այն ունի նաև ուղղություն, որը համընկնում է շարժման ուղղության հետ։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 51–52, սկալյար և վեկտորական մեծություններ, արագության ուղղություն",
+    "difficulty": 1,
+    "difficultyBand": "foundation",
+    "rationaleHy": "Սկալյար և վեկտորական մեծությունները տարբերիր ուղղության դերով։ §16, էջեր 51–52, սկալյար և վեկտորական մեծություններ, արագության ուղղություն",
+    "mappingType": "derived_supporting",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "All required observations and quantities are explicit in the wording; no scale, geometry or unseen apparatus feature must be inferred.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional classification practice contrasting path and velocity. S05-I01/I04 already expose velocity direction; this adds a paired scalar/vector discrimination, not independent reasoning qualification.",
+    "workedExampleComparison": "The example classifies elapsed time, a third textbook scalar, without classifying either of the two quantities asked in the main task. It teaches the criterion rather than repeating the answer.",
+    "guide": {
+      "title_hy": "Սկալյար և վեկտորական մեծությունները տարբերիր ուղղության դերով",
+      "strategy_hy": "Ստուգիր՝ մեծությունը բնութագրելու համար թվային արժեքն ու չափման միավորը բավարար են, թե պետք է նշել նաև ուղղությունը։ Առաջին դեպքում այն սկալյար է, երկրորդում՝ վեկտորական։ Օգտվիր մեծության ֆիզիկական իմաստից, ոչ միայն նրա թվային գրառումից։",
+      "worked_example_hy": "Փորձը տևել է 25 վ։ Տևողությունը նկարագրելու համար 25 թվից ու վայրկյան միավորից բացի ուղղություն պետք չէ նշել։ Փորձի ընթացքում մարմինը կարող էր տարբեր ուղղություններով շարժվել, բայց դա տևողությանը ուղղություն չի տալիս. ժամանակը սկալյար մեծություն է։",
+      "hint_1_hy": "Ո՞ր մեծության ամբողջական նկարագրության համար է պետք նշել նաև ուղղությունը։",
+      "hint_2_hy": "Հիշիր՝ շարժման ուղղությունը փոխելիս անցած ճանապարհը չի պակասում։ Ճանապարհը նկարագրելիս ուղղություն նշո՞ւմ ենք։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S05-M14",
+        "Արագության դասում սկալյար մեծությունների շարքին",
+        "Արագությունը համարում է սկալյար մեծություն՝ անտեսելով դրա ուղղությունը։"
+      ],
+      [
+        "PHY7-U03-S05-M15",
+        "Ճանապարհին ուղղության վերագրում",
+        "Անցած ճանապարհը համարում է վեկտորական մեծություն՝ շարժման ուղղությունը վերագրելով ճանապարհին։"
+      ],
+      [
+        "PHY7-U03-S05-M16",
+        "Ճանապարհի և արագության տեսակների փոխանակում",
+        "Սկալյար ու վեկտորական մեծությունների դասակարգման մեջ ճանապարհը ներկայացնում է որպես վեկտոր, իսկ արագությունը՝ որպես սկալյար։"
+      ]
+    ],
+    "mappings": {
+      "B": [
+        "PHY7-U03-S05-M14",
+        "Ճանապարհը ճիշտ է դասում, բայց արագությունը նույնպես սկալյար է համարում։"
+      ],
+      "C": [
+        "PHY7-U03-S05-M15",
+        "Արագությունը ճիշտ է դասում, բայց ճանապարհին էլ ուղղություն է վերագրում։"
+      ],
+      "D": [
+        "PHY7-U03-S05-M16",
+        "Փոխանակում է ճանապարհի և արագության տեսակները։"
+      ]
+    },
+    "specSha256": "1a7db54e5f1d66977057a270572f02f0f9c7f5e9cc3c0bd4c1d009eee773e393"
+  },
+  {
+    "id": "U03-B06-C06",
+    "code": "PHY7-U03-S06-I06",
+    "skill": "S06",
+    "skillId": "8a07485e-8462-5513-a3b6-f65bc8a7cce4",
+    "outcomeId": "7e64c4ad-81c1-5491-83eb-3c4431dcc674",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+    "familyCode": "PHY7-U03-S06-F06",
+    "templateCode": "PHY7-U03-S06-F06-T01",
+    "candidateRevision": 1,
+    "suffix": "I06",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Երեք մարմնի արագություններն են՝ A՝ 3 մ/վ, B՝ 250 սմ/վ, C՝ 7,2 կմ/ժ։ Ո՞ր շարքում են մարմինները դասավորված ըստ արագության թվային արժեքի աճման։",
+    "optionsHy": {
+      "A": "A, C, B։",
+      "B": "C, B, A։",
+      "C": "B, C, A։",
+      "D": "A, B, C։"
+    },
+    "answer": "B",
+    "explanationHy": "Նախ արագությունները բերենք նույն միավորին՝ A՝ 3 մ/վ, B՝ 250 ÷ 100 = 2,5 մ/վ, C՝ 7,2 ÷ 3,6 = 2 մ/վ։ Քանի որ 2 < 2,5 < 3, աճման կարգը C, B, A է։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջ 51, արագության միավորներ; §17, էջ 54, խնդիր 1՝ արագությունների դասավորումը",
+    "difficulty": 2,
+    "difficultyBand": "core",
+    "rationaleHy": "Արագությունները դասավորիր նույն միավորին բերելուց հետո։ §16, էջ 51, արագության միավորներ; §17, էջ 54, խնդիր 1՝ արագությունների դասավորումը",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "All required observations and quantities are explicit in the wording; no scale, geometry or unseen apparatus feature must be inferred.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional multi-unit ordering practice, directly supported by textbook problem 1. Extends existing two-speed comparisons to three entries while reusing the same conversions; no independent coverage or protected qualification.",
+    "workedExampleComparison": "The example converts dm/s to m/s only. It neither sorts three objects nor uses the main task units cm/s and km/h; the learner must combine the taught operations independently.",
+    "guide": {
+      "title_hy": "Արագությունները դասավորիր նույն միավորին բերելուց հետո",
+      "strategy_hy": "Յուրաքանչյուր արագություն արտահայտիր ընտրված նույն միավորով։ Աճման կարգով դասավորելիս սկսիր ամենափոքր արժեքից։ Ստուգիր նաև, որ սկզբնական գրառման տառը պահել ես ճիշտ արագության կողքին։",
+      "worked_example_hy": "Արագությունը 18 դմ/վ է։ Քանի որ 10 դմ = 1 մ, մեկ վայրկյանում անցած 18 դմ ճանապարհը 1,8 մ է։ Ուրեմն 18 դմ/վ = 1,8 մ/վ։ Միավորը փոխվել է, բայց մարմնի արագությունը նույնն է մնացել։",
+      "hint_1_hy": "Տարբեր միավորներով գրված թվերը համեմատելուց առաջ ի՞նչ պետք է անել։",
+      "hint_2_hy": "Բոլոր արագություններն արտահայտիր մ/վ-ով, ապա գտիր ամենափոքր արժեքը և շարունակիր աճման կարգով։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S06-M06",
+        "Աճման և նվազման կարգերի շփոթում",
+        "Մեծությունները նույն միավորով արտահայտելուց հետո աճման փոխարեն դասավորում է նվազման կարգով։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S06-M03",
+        "Դասավորում է սկզբնական 3, 7,2 և 250 թվերով՝ առանց միավորները համաձայնեցնելու։"
+      ],
+      "C": [
+        "PHY7-U03-S06-M01",
+        "250 սմ/վ-ը սխալմամբ դարձնում է 0,25 մ/վ և դրանով սխալ է դասավորում։"
+      ],
+      "D": [
+        "PHY7-U03-S06-M06",
+        "Ճիշտ փոխարկված արժեքները դասավորում է նվազման կարգով։"
+      ]
+    },
+    "specSha256": "5c397f02f5f4e29b9f243ba8208c22431f6be43426b57d13b68077003cdf65b8"
+  },
+  {
+    "id": "U03-B06-C07",
+    "code": "PHY7-U03-S07-I07",
+    "skill": "S07",
+    "skillId": "4f0315c6-35ea-5573-aab5-4f9c6329b6eb",
+    "outcomeId": "581807b2-fdb5-534b-8b79-303e7aaa7d66",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+    "familyCode": "PHY7-U03-S07-F07",
+    "templateCode": "PHY7-U03-S07-F07-T01",
+    "candidateRevision": 1,
+    "suffix": "I07",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Առաջին հետիոտնը ճանապարհի մի տեղամաս անցնում է հավասարաչափ՝ 1,5 մ/վ արագությամբ, 40 վ-ում։ Երկրորդ հետիոտնը նույն տեղամասը հավասարաչափ անցնում է 20 վ-ում։ Որքա՞ն է երկրորդ հետիոտնի արագությունը։",
+    "optionsHy": {
+      "A": "1,5 մ/վ։",
+      "B": "1 մ/վ։",
+      "C": "0,75 մ/վ։",
+      "D": "3 մ/վ։"
+    },
+    "answer": "D",
+    "explanationHy": "Առաջին հետիոտնի տվյալներով գտնենք տեղամասի երկարությունը՝ s = vt = 1,5 × 40 = 60 մ։ Երկրորդ հետիոտնը նույն 60 մ-ն անցնում է 20 վ-ում, ուստի նրա արագությունը v = s/t = 60 ÷ 20 = 3 մ/վ է։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 50–52, v = s/t և s = vt; §17, էջ 55, խնդիր 3՝ նույն ճանապարհով երկրորդ մարմնի արագությունը",
+    "difficulty": 2,
+    "difficultyBand": "core",
+    "rationaleHy": "Մեկ մարմնի տվյալներով գտիր մյուսի համար պակասող ճանապարհը։ §16, էջեր 50–52, v = s/t և s = vt; §17, էջ 55, խնդիր 3՝ նույն ճանապարհով երկրորդ մարմնի արագությունը",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "All required observations and quantities are explicit in the wording; no scale, geometry or unseen apparatus feature must be inferred.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional chained uniform-motion calculation from textbook problem 3. Shares s=vt and v=s/t with S07-I01/I04/I05; the useful task transfers an inferred common route length between two bodies. Not new independent reasoning.",
+    "workedExampleComparison": "The example uses the inferred shared path to solve the second cyclist time, while the main task asks for the second speed. Different final unknown and inverse operation, not merely swapped numbers.",
+    "guide": {
+      "title_hy": "Մեկ մարմնի տվյալներով գտիր մյուսի համար պակասող ճանապարհը",
+      "strategy_hy": "Եթե երկու մարմին անցնում են նույն տեղամասը, նրա երկարությունը կարող ես գտնել այն մարմնի տվյալներով, որի արագությունն ու ժամանակը հայտնի են։ Հետո ստացված ճանապարհն օգտագործիր երկրորդ մարմնի անհայտ մեծությունը որոշելու համար։",
+      "worked_example_hy": "Առաջին հեծանվորդը 4 մ/վ արագությամբ 20 վ-ում անցնում է 80 մ տեղամաս։ Երկրորդը նույն տեղամասը պետք է անցնի 5 մ/վ արագությամբ։ Նրա շարժման ժամանակը կլինի t = 80 ÷ 5 = 16 վ։ Այստեղ առաջինի տվյալներով գտնված ճանապարհն օգտագործեցինք երկրորդի ժամանակը որոշելու համար։",
+      "hint_1_hy": "Առաջին հետիոտնի արագությունն ու ժամանակը հայտնի են։ Դրանցով ո՞ր պակասող մեծությունը կարող ես գտնել։",
+      "hint_2_hy": "Նույն տեղամասի երկարությունը երկու հետիոտնի համար նույնն է։ Այդ ճանապարհը բաժանիր երկրորդ հետիոտնի շարժման ժամանակին։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S07-M17",
+        "Նույն ճանապարհն անցնող մարմինների արագությունների նույնացում",
+        "Նույն տեղամասով շարժվող մարմիններին վերագրում է նույն արագությունը՝ անտեսելով նրանց շարժման տարբեր ժամանակները։"
+      ],
+      [
+        "PHY7-U03-S07-M18",
+        "Արագությունը՝ ժամանակների գումարին բաժանելու սխալ",
+        "Երկրորդ մարմնի արագությունը գտնելիս առաջինի արագությունն ու ժամանակը բազմապատկելուց հետո բաժանում է երկու մարմինների ժամանակների գումարին։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S07-M17",
+        "Երկրորդին վերագրում է առաջինի 1,5 մ/վ արագությունը՝ նույն տեղամասով շարժվելու պատճառով։"
+      ],
+      "B": [
+        "PHY7-U03-S07-M18",
+        "Նույն 60 մ ճանապարհը բաժանում է 40 + 20 = 60 վ գումարին՝ միայն երկրորդի 20 վ ժամանակի փոխարեն։"
+      ],
+      "C": [
+        "PHY7-U03-S07-M09",
+        "Արագությունը փոքրացնում է ժամանակի նվազման նույն համամասնությամբ՝ 1,5 × 20 ÷ 40։"
+      ]
+    },
+    "specSha256": "1a5da39df87f2846d25fea844b4ced595f6fcb704c1fba8224f0b12df5e1eb38"
+  },
+  {
+    "id": "U03-B06-C08",
+    "code": "PHY7-U03-S08-I06",
+    "skill": "S08",
+    "skillId": "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb",
+    "outcomeId": "581807b2-fdb5-534b-8b79-303e7aaa7d66",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+    "familyCode": "PHY7-U03-S08-F06",
+    "templateCode": "PHY7-U03-S08-F06-T01",
+    "candidateRevision": 1,
+    "suffix": "I06",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Պետք է փորձով որոշել ուղիղ խողովակում հավասարաչափ շարժվող օդի պղպջակի արագությունը։ Ո՞ր զույգ գործիքներով կարելի է կատարել դրա համար անհրաժեշտ չափումները։",
+    "optionsHy": {
+      "A": "Քանոնով և վայրկենաչափով։",
+      "B": "Քանոնով և ջերմաչափով։",
+      "C": "Կշեռքով և վայրկենաչափով։",
+      "D": "Չափագլանով և ջերմաչափով։"
+    },
+    "answer": "A",
+    "explanationHy": "Արագությունը հաշվում ենք v = s/t բանաձևով։ Քանոնով չափում ենք ընտրված տեղամասի երկարությունը, իսկ վայրկենաչափով՝ պղպջակի հենց այդ տեղամասով շարժման ժամանակը։ Մյուս զույգերից ոչ մեկը չի տալիս այս երկու չափումները։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §18, էջեր 57–58, պղպջակի արագության չափման գործիքները և փորձի ընթացքը",
+    "difficulty": 1,
+    "difficultyBand": "foundation",
+    "rationaleHy": "Գործիքներն ընտրիր ըստ չափվող մեծությունների։ §18, էջեր 57–58, պղպջակի արագության չափման գործիքները և փորձի ընթացքը",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "All required observations and quantities are explicit in the wording; no scale, geometry or unseen apparatus feature must be inferred.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional apparatus-choice practice directly grounded in the laboratory list. S08-I01 chooses matching quantities; here the learner maps those quantities to instruments. Does not establish performed experimental competence.",
+    "workedExampleComparison": "The example starts with given toy-car measurements and computes speed; it does not name the correct instrument pair or replay the bubble apparatus selection.",
+    "guide": {
+      "title_hy": "Գործիքներն ընտրիր ըստ չափվող մեծությունների",
+      "strategy_hy": "Սկզբում գրիր, թե որ մեծություններն են անհրաժեշտ հաշվարկին։ Հետո յուրաքանչյուրի համար ընտրիր համապատասխան չափիչ գործիքը։ Ճանապարհի և ժամանակի չափումները պետք է վերաբերեն շարժման նույն հատվածին։",
+      "worked_example_hy": "Խաղալիք մեքենայի համար արդեն չափված է՝ 60 սմ ճանապարհը հավասարաչափ անցել է 3 վ-ում։ Այս երկու տվյալներով արագությունը 60 ÷ 3 = 20 սմ/վ է։ Մեքենայի զանգվածը կամ սենյակի ջերմաստիճանն այս հաշվարկում պետք չեն։",
+      "hint_1_hy": "Արագությունը որոշելու բանաձևում ո՞ր երկու մեծություններն են օգտագործվում։",
+      "hint_2_hy": "Յուրաքանչյուր գործիքի համար հիշիր՝ ինչ մեծություն է այն չափում։ Ընտրված զույգը պետք է տա անհրաժեշտ երկու չափումներն էլ։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S08-M12",
+        "Ժամանակի չափման փոխարինում ջերմաստիճանի չափմամբ",
+        "Արագությունը որոշելու համար ճանապարհի հետ միասին չափում է ջերմաստիճանը՝ շարժման ժամանակի փոխարեն։"
+      ],
+      [
+        "PHY7-U03-S08-M13",
+        "Ճանապարհի չափման փոխարինում զանգվածի չափմամբ",
+        "Արագությունը որոշելու համար ժամանակի հետ միասին չափում է մարմնի զանգվածը՝ անցած ճանապարհի փոխարեն։"
+      ],
+      [
+        "PHY7-U03-S08-M14",
+        "Արագության որոշում ծավալով և ջերմաստիճանով",
+        "Շարժման արագությունը որոշելու համար ընտրում է ծավալի ու ջերմաստիճանի չափումները՝ ճանապարհի և ժամանակի փոխարեն։"
+      ]
+    ],
+    "mappings": {
+      "B": [
+        "PHY7-U03-S08-M12",
+        "Ժամանակը չափող գործիքի փոխարեն ընտրում է ջերմաչափը։"
+      ],
+      "C": [
+        "PHY7-U03-S08-M13",
+        "Ճանապարհը չափող գործիքի փոխարեն ընտրում է կշեռքը։"
+      ],
+      "D": [
+        "PHY7-U03-S08-M14",
+        "Ընտրում է ծավալն ու ջերմաստիճանը չափող գործիքներ։"
+      ]
+    },
+    "specSha256": "989c994eab6225977ffbc797ff2b249d5f4122ceecd08d70d9bcf636adcf8658"
+  }
+]
