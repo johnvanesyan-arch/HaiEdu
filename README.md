@@ -8,7 +8,7 @@ Start with the [authoritative status register](docs/project-status.md) for curre
 
 Chapter II has 192 approved questions, 263 active definitions and 57 published guides. Its owner-authorized [provisional pilot](docs/chapter-ii-pilot-release.md) is active: both reviewed migrations, production rollback rehearsal, exact forms and model/policy bindings are verified. All 53 preservation checks passed; Chapter I remains on its original pilot. Authenticated desktop/mobile chapter-switching acceptance passed 91/91. Independent specialist review and final historical-exposure disposition remain required for production promotion. Chapter III remains an inactive draft. [Activation evidence](docs/evidence/chapter-ii-pilot-activation-20261013.json) · [Authoritative status](docs/project-status.md).
 
-Chapter III's sixth practice batch is staged and verified: **48 questions (40 approved + 8 draft), 48 guides and 103 definitions**. Prior reviews are complete; eight new questions, eight guides and sixteen definitions await review. All sixteen hints and eight worked examples received focused language and pedagogical checks. Technical checks pass; Chapter III stays inactive and unallocated. [Batch 06 staging](docs/chapter-iii-batch-06-staging.md).
+Chapter III's seventh practice batch is staged and verified: **56 questions (40 approved + 16 draft), 56 guides and 117 definitions**. Batches 06 and 07 can be reviewed together: sixteen questions, sixteen guides and thirty definitions. All new hints and worked examples received focused language and pedagogical checks; question/guide technical checks pass. Chapter III remains inactive and unallocated. [Batch 07 staging](docs/chapter-iii-batch-07-staging.md).
 
 ## Chapter I implemented baseline
 
