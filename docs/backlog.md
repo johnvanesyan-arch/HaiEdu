@@ -253,6 +253,17 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III sixth practice batch — 15C.7, 2026-10-15
+
+- [x] Verify 40 approved questions, 40 published guides and 87 active definitions; compare the edited S04 example and source-check the S03 grammar flag.
+- [x] Compare eight candidates across eight skills, related current/history banks, guide exposure and all 28 pairs.
+- [x] Review all 16 hints and 8 worked examples for natural Armenian, useful help and source fidelity.
+- [x] Rehearse rollback; stage 8 questions / 8 guides / 16 definitions; verify exact readback, QA/guide checks 8/8 and all 39 preservation scopes.
+- [ ] Human site review of the new 8 questions, 8 guides and 16 definitions.
+- [ ] Continue remaining 32 practice slots and prepare the explicit assessment/readiness contract; specialist/release gates remain open.
+
+[Batch 06 staging](chapter-iii-batch-06-staging.md).
+
 ## Chapter III fifth practice batch — 15C.6, 2026-10-15
 
 - [x] Verify 32 prior questions, 32 guides and 69 definitions; compare four edited guides and reconcile historical disposition labels.
@@ -260,8 +271,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Review all 16 hints separately for natural Armenian, progressive help and answer leakage.
 - [x] Publish and verify the exact textbook ruler image; rehearse rollback and stage 8 questions / 8 guides / 18 definitions.
 - [x] Verify exact saved content, QA/guide checks 8/8 and all 39 preservation scopes.
-- [ ] Human site review of the new 8 questions, 8 guides and 18 definitions.
-- [ ] Continue remaining 40 practice slots and prepare the explicit assessment/readiness contract; specialist/release gates remain open.
+- [x] Human site review verified under 15C.6R: all 40 questions/guides and 87 definitions approved/published/active; revised S04 example checked.
+- [x] Authoring continued under 15C.7 above; 32 practice slots remain. Assessment/readiness contract and specialist/release gates remain open.
 
 [Batch 05 staging](chapter-iii-batch-05-staging.md). [Current disposition reconciliation](chapter-iii-disposition-reconciliation.md).
 

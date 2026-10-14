@@ -1,5 +1,7 @@
 # Chapter III batch 05 — staging and verification
 
+**Current review disposition, verified 2026-10-15:** all 40 prior questions/guides and 87 definitions are reviewed; S04-I05 worked-example edit verified. [Batch 05 review closure](chapter-iii-batch-05-review.md). Earlier pending statements below are historical.
+
 **2026-10-15 · Sprint 15C.6 · Roadmap 3.69**
 
 Eight practice questions across all eight skills, eight guides and eighteen misconception definitions are saved as drafts. All eight question QA checks and all eight guide structural checks pass with zero errors or warnings. Independent readback exactly matches the frozen staging specifications, including all sixteen hints, image metadata, options, answer keys, mappings and immutable snapshots.
