@@ -1,0 +1,275 @@
+{
+  "date": "2026-10-15",
+  "author": "Codex automated author; human and specialist review pending",
+  "scope": "16 exact hints and 8 worked examples, read with each full question, options, explanation and strategy. Separate language/physics and structural validation judgments.",
+  "checks": [
+    "Natural age-appropriate Armenian and textbook terms",
+    "Clear references and progressive help",
+    "No answer letter or calculated correct result in hints",
+    "Examples transfer an idea without merely renaming the question",
+    "No untaught science"
+  ],
+  "records": [
+    {
+      "code": "PHY7-U03-S01-I06",
+      "hint": 1,
+      "textHy": "Հիշիր՝ մեխանիկական շարժման սահմանման մեջ մարմնի ի՞նչ փոփոխության մասին է խոսվում։",
+      "textSha256": "a0ba906bfebaffc06c705a45f2b467f68b0f0316fb164a2387b85557a53e1d6a",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §14, էջեր 42–44, մեխանիկական շարժում և նավի ուղևորի օրինակը",
+      "languageAndPedagogyJudgment": "Recall what changes in mechanical motion.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S01-I06",
+      "hint": 2,
+      "textHy": "Նավի շարժումն ափի նկատմամբ ստուգելու համար ո՞ր դիտումն է կապվում ափին անշարժ մարմնի հետ։",
+      "textSha256": "4f2567407d484b92bffe00c6ebf46bcf5b5680fa7bb54c88494886c3ceab0227",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §14, էջեր 42–44, մեխանիկական շարժում և նավի ուղևորի օրինակը",
+      "languageAndPedagogyJudgment": "Choose evidence connected to a fixed shore reference; no answer letter or complete option quoted.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S02-I05",
+      "hint": 1,
+      "textHy": "Նստատեղը գտնելու համար բավարա՞ր է իմանալ միայն ամբողջ գնացքի գտնվելու վայրը։",
+      "textSha256": "9c28945ffeb7b26d54f9fa5b008692b3ba9e88dc74035f620d7579ac29640431",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 45–46, նյութական կետի մոդել; էջ 48, առաջադրանք 2՝ գնացքում նստատեղ գտնելը",
+      "languageAndPedagogyJudgment": "Identify whether whole-object location is sufficient.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S02-I05",
+      "hint": 2,
+      "textHy": "Եթե ամբողջ գնացքը նկարագրես մեկ կետով, կկարողանա՞ս տարբերել նրա ներսում գտնվող տեղերը։",
+      "textSha256": "1580ce83bf54a8b9b1f29f50508a1ea711313f0a0c74c3c7c327d37bacec7382",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 45–46, նյութական կետի մոդել; էջ 48, առաջադրանք 2՝ գնացքում նստատեղ գտնելը",
+      "languageAndPedagogyJudgment": "Consider information lost by collapsing internal locations to a point.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I06",
+      "hint": 1,
+      "textHy": "Հետ դառնալիս անցած ճանապարհը մտնո՞ւմ է շարժման ամբողջ ճանապարհի մեջ։",
+      "textSha256": "135936ebada42b37d1fc3cc175034caac47c18b82caba2a5bd61efb9b169e967",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 46–47, հետագիծ և անցած ճանապարհ; էջ 48, առաջադրանքներ 5 և 6",
+      "languageAndPedagogyJudgment": "Decide whether return travel contributes to path.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I06",
+      "hint": 2,
+      "textHy": "Հաշվի առ շարժման երկու մասերն էլ։ Վերջնական դիրքի հեռավորությունը մեկնարկից մի՛ շփոթիր ամբողջ ճանապարհի հետ։",
+      "textSha256": "cdad32604e5911b4e2727da793cf8f519c77b236390b43119295472cc072dc89",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 46–47, հետագիծ և անցած ճանապարհ; էջ 48, առաջադրանքներ 5 և 6",
+      "languageAndPedagogyJudgment": "Include both parts and separate distance from endpoint separation; no numeric answer.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S04-I06",
+      "hint": 1,
+      "textHy": "Հավասարաչափ շարժման սահմանման մեջ ճանապարհներից բացի ո՞ր մեծությունն է հիշատակվում։",
+      "textSha256": "762d1e8ae9888d7fe99e422e4413e669e153a23fa68b8501b086351901761cab",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 49–50, հավասար ժամանակամիջոցների պահանջը և կաթոցիկի փորձը",
+      "languageAndPedagogyJudgment": "Recall both quantities in the uniformity criterion.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S04-I06",
+      "hint": 2,
+      "textHy": "Նույն երկարությամբ երկու տեղամասը հնարավո՞ր է անցնել տարբեր ժամանակամիջոցներում։ Ի՞նչ տեղեկություն է պակասում այստեղ։",
+      "textSha256": "da2c198c4594543ea3298ab5741fa0c2d39c29ae39c27dfcd50fe7e72775065e",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 49–50, հավասար ժամանակամիջոցների պահանջը և կաթոցիկի փորձը",
+      "languageAndPedagogyJudgment": "Consider equal distances taking unequal times; no unsupported conclusion.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S05-I06",
+      "hint": 1,
+      "textHy": "Ո՞ր մեծության ամբողջական նկարագրության համար է պետք նշել նաև ուղղությունը։",
+      "textSha256": "ad4d3bc139a9fd3d92b13a53c6191e13576b72bf4ba8c5832d3fa1f4f71f730b",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 51–52, սկալյար և վեկտորական մեծություններ, արագության ուղղություն",
+      "languageAndPedagogyJudgment": "Use the definition based on direction.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S05-I06",
+      "hint": 2,
+      "textHy": "Հիշիր՝ շարժման ուղղությունը փոխելիս անցած ճանապարհը չի պակասում։ Ճանապարհը նկարագրելիս ուղղություն նշո՞ւմ ենք։",
+      "textSha256": "ecbf0211390ae1e3bfd23dae41ed6e2bf71d805c25c6d8a6c03abd88bbf581ce",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 51–52, սկալյար և վեկտորական մեծություններ, արագության ուղղություն",
+      "languageAndPedagogyJudgment": "Apply the criterion to path without giving the paired classification.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S06-I06",
+      "hint": 1,
+      "textHy": "Տարբեր միավորներով գրված թվերը համեմատելուց առաջ ի՞նչ պետք է անել։",
+      "textSha256": "e407697c19a137ca7efdd2df07ea6bc90b802c775e4cbfd24cff6609cda07381",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջ 51, արագության միավորներ; §17, էջ 54, խնդիր 1՝ արագությունների դասավորումը",
+      "languageAndPedagogyJudgment": "Recognize the need for a common unit.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S06-I06",
+      "hint": 2,
+      "textHy": "Բոլոր արագություններն արտահայտիր մ/վ-ով, ապա գտիր ամենափոքր արժեքը և շարունակիր աճման կարգով։",
+      "textSha256": "24fc0b45c3362176cf0f156fd870fed2ba4f39c2d9d02c7c9e2e2a252bd1db0c",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջ 51, արագության միավորներ; §17, էջ 54, խնդիր 1՝ արագությունների դասավորումը",
+      "languageAndPedagogyJudgment": "Convert then order, without supplying conversion values or letter sequence.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I07",
+      "hint": 1,
+      "textHy": "Առաջին հետիոտնի արագությունն ու ժամանակը հայտնի են։ Դրանցով ո՞ր պակասող մեծությունը կարող ես գտնել։",
+      "textSha256": "335a0d512cc8fc9481f83592ae4728519f7fd83cedddc3fde8cffc621affa0b2",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 50–52, v = s/t և s = vt; §17, էջ 55, խնդիր 3՝ նույն ճանապարհով երկրորդ մարմնի արագությունը",
+      "languageAndPedagogyJudgment": "Identify the intermediate missing path.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I07",
+      "hint": 2,
+      "textHy": "Նույն տեղամասի երկարությունը երկու հետիոտնի համար նույնն է։ Այդ ճանապարհը բաժանիր երկրորդ հետիոտնի շարժման ժամանակին։",
+      "textSha256": "2d8514e88eec3759695e58eb6dea1e9e67e3ae536b2ab118bc349f98a48c45d6",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 50–52, v = s/t և s = vt; §17, էջ 55, խնդիր 3՝ նույն ճանապարհով երկրորդ մարմնի արագությունը",
+      "languageAndPedagogyJudgment": "Use the shared path and the second elapsed time without a calculated result.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S08-I06",
+      "hint": 1,
+      "textHy": "Արագությունը որոշելու բանաձևում ո՞ր երկու մեծություններն են օգտագործվում։",
+      "textSha256": "baaa74fd8d663ebdee8669dd9377698faf1d5cf32f1e2f05586f4fd53a466839",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §18, էջեր 57–58, պղպջակի արագության չափման գործիքները և փորձի ընթացքը",
+      "languageAndPedagogyJudgment": "Identify the formula quantities.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S08-I06",
+      "hint": 2,
+      "textHy": "Յուրաքանչյուր գործիքի համար հիշիր՝ ինչ մեծություն է այն չափում։ Ընտրված զույգը պետք է տա անհրաժեշտ երկու չափումներն էլ։",
+      "textSha256": "74a01075209a5e01d163d53db081085f9ba68597267b94deba4cecd7bf2d369c",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §18, էջեր 57–58, պղպջակի արագության չափման գործիքները և փորձի ընթացքը",
+      "languageAndPedagogyJudgment": "Connect each quantity to its instrument without naming the correct pair.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    }
+  ],
+  "workedExamples": [
+    {
+      "code": "PHY7-U03-S01-I06",
+      "textHy": "Կայանված մեքենայի լուսարձակները միացնում են։ Եթե մեքենայի դիրքը ճամփեզրի սյան նկատմամբ չի փոխվում, լուսարձակների միանալը չի նշանակում, որ մեքենան սյան նկատմամբ շարժվել է։ Այստեղ փոխվել է լուսավորությունը, իսկ դիրքը մնացել է նույնը։",
+      "textSha256": "83b3b530e34606dd778477ba4b8df89eabc685eab0238c8ac56249a5d2d1f4d8",
+      "contrastWithMainQuestion": "The example rejects a light change for a stationary car; the main task selects positive ship-position evidence. It does not repeat the multiple-choice selection or ship setup.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S02-I05",
+      "textHy": "Քարտեզի վրա երկու հեռավոր քաղաքների միջև ինքնաթիռի անցած ճանապարհը որոշելիս թևերի և պոչի առանձին դիրքերը հաշվի առնելու կարիք չկա։ Այս խնդրում ամբողջ ինքնաթիռի դիրքը կարելի է նշել մեկ կետով, քանի որ նրա չափերը շատ փոքր են անցած ճանապարհի համեմատ։",
+      "textSha256": "bfda2449d7e1b2986e319232e4a02bec06eb86ebbceb16b6e6d02b7137edb1f4",
+      "contrastWithMainQuestion": "A distant aircraft route is a contrasting valid point model; the main task rejects that model for internal seat location. Different judgment and use of the model, not a train renamed.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S03-I06",
+      "textHy": "Վազորդը 300 մ երկարությամբ շրջանաձև վազքուղով կատարում է երկու լրիվ պտույտ։ Յուրաքանչյուր պտույտում անցնում է 300 մ, ուստի ամբողջ ճանապարհը 2 × 300 = 600 մ է։ Թեև վերջում նա մեկնարկի կետում է, անցած ճանապարհը զրո չէ։",
+      "textSha256": "7574142cb18f7a44ddd63137100058a4c4d6f7cf5e828d71da4ab9d5ffbe2ce8",
+      "contrastWithMainQuestion": "The example counts two complete circular laps, with zero endpoint separation; the main task has one partial straight return and nonzero separation. It uses multiplication and a different trajectory, not substituted numbers.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S04-I06",
+      "textHy": "Սայլակն առաջին 2 վ-ում անցել է 4 մ, իսկ հաջորդ 2 վ-ում՝ 7 մ։ Այստեղ ժամանակամիջոցները հայտնի են և հավասար, իսկ ճանապարհները՝ տարբեր։ Ուստի այդ ընթացքում շարժումը հավասարաչափ չի եղել։",
+      "textSha256": "55088227def88590e9ead9a2ac274e5f178aadad94be6cbe11c24798aeeb5e35",
+      "contrastWithMainQuestion": "The example has complete equal-time data and can disprove uniformity. The main task lacks timing and supports neither conclusion. Different evidence status, not the same missing-data setup.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S05-I06",
+      "textHy": "Փորձը տևել է 25 վ։ Տևողությունը նկարագրելու համար 25 թվից ու վայրկյան միավորից բացի ուղղություն պետք չէ նշել։ Փորձի ընթացքում մարմինը կարող էր տարբեր ուղղություններով շարժվել, բայց դա տևողությանը ուղղություն չի տալիս. ժամանակը սկալյար մեծություն է։",
+      "textSha256": "abe875aba0baf4a81d2fc1f7c05332dcb2a61c8880a65aa33a4459ae076255e5",
+      "contrastWithMainQuestion": "The example classifies elapsed time, a third textbook scalar, without classifying either of the two quantities asked in the main task. It teaches the criterion rather than repeating the answer.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S06-I06",
+      "textHy": "Արագությունը 18 դմ/վ է։ Քանի որ 10 դմ = 1 մ, մեկ վայրկյանում անցած 18 դմ ճանապարհը 1,8 մ է։ Ուրեմն 18 դմ/վ = 1,8 մ/վ։ Միավորը փոխվել է, բայց մարմնի արագությունը նույնն է մնացել։",
+      "textSha256": "01a382159f956d3883bc71d21f154163595408261f4d1db8bfb121b8d60b7bcf",
+      "contrastWithMainQuestion": "The example converts dm/s to m/s only. It neither sorts three objects nor uses the main task units cm/s and km/h; the learner must combine the taught operations independently.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S07-I07",
+      "textHy": "Առաջին հեծանվորդը 4 մ/վ արագությամբ 20 վ-ում անցնում է 80 մ տեղամաս։ Երկրորդը նույն տեղամասը պետք է անցնի 5 մ/վ արագությամբ։ Նրա շարժման ժամանակը կլինի t = 80 ÷ 5 = 16 վ։ Այստեղ առաջինի տվյալներով գտնված ճանապարհն օգտագործեցինք երկրորդի ժամանակը որոշելու համար։",
+      "textSha256": "7ff8e2e19a1616aa3348a69918a49394a58d9a00672e740ece86dd338390639d",
+      "contrastWithMainQuestion": "The example uses the inferred shared path to solve the second cyclist time, while the main task asks for the second speed. Different final unknown and inverse operation, not merely swapped numbers.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S08-I06",
+      "textHy": "Խաղալիք մեքենայի համար արդեն չափված է՝ 60 սմ ճանապարհը հավասարաչափ անցել է 3 վ-ում։ Այս երկու տվյալներով արագությունը 60 ÷ 3 = 20 սմ/վ է։ Մեքենայի զանգվածը կամ սենյակի ջերմաստիճանն այս հաշվարկում պետք չեն։",
+      "textSha256": "63ddf06abac1df731aad176e0ec2fd5ba0688abba207bc9eab47f2d20cbc8220",
+      "contrastWithMainQuestion": "The example starts with given toy-car measurements and computes speed; it does not name the correct instrument pair or replay the bubble apparatus selection.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    }
+  ],
+  "reviewedHints": 16,
+  "reviewedWorkedExamples": 8,
+  "limits": "Author judgment, not independent native-speaker/SME certification."
+}
