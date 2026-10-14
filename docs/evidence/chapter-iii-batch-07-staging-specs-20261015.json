@@ -1,0 +1,535 @@
+[
+  {
+    "id": "U03-B07-C01",
+    "code": "PHY7-U03-S01-I07",
+    "skill": "S01",
+    "skillId": "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+    "outcomeId": "4f982ba6-4fb2-56fe-ac7c-86004b32839f",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(2)",
+    "familyCode": "PHY7-U03-S01-F07",
+    "templateCode": "PHY7-U03-S01-F07-T01",
+    "candidateRevision": 1,
+    "suffix": "I07",
+    "bank": "practice",
+    "purpose": "misconception_diagnosis",
+    "promptHy": "Դիտարկում են ինքնաթիռի շարժումն ամպի նկատմամբ։ Աշակերտն ասում է. «Ամպը չի կարող հաշվարկման մարմին լինել, քանի որ ինքն էլ է շարժվում գետնի նկատմամբ»։ Ճի՞շտ է նրա պնդումը։",
+    "optionsHy": {
+      "A": "Այո՛, հաշվարկման մարմինը պետք է անշարժ լինի գետնի նկատմամբ։",
+      "B": "Ո՛չ, հաշվարկման մարմին կարելի է ընտրել նաև գետնի նկատմամբ շարժվող մարմինը։",
+      "C": "Այո՛, հաշվարկման մարմին կարող է լինել միայն Երկիրը։",
+      "D": "Ո՛չ, բայց ամպը կարելի է ընտրել միայն այն դեպքում, երբ այն շարժվում է ինքնաթիռի հետ նույն արագությամբ։"
+    },
+    "answer": "B",
+    "explanationHy": "Հաշվարկման մարմին կարելի է ընտրել ցանկացած մարմին։ Գետնի նկատմամբ ամպի շարժվելը չի խանգարում ինքնաթիռի դիրքի փոփոխությունն ամպի նկատմամբ դիտարկելուն։ Պարտադիր չէ նաև, որ ամպն ու ինքնաթիռը նույն արագությամբ շարժվեն։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §14, էջեր 43–44, ինքնաթիռն ամպերի նկատմամբ և հաշվարկման մարմնի ընտրությունը",
+    "difficulty": 1,
+    "difficultyBand": "foundation",
+    "rationaleHy": "Հաշվարկման մարմին կարող է լինել նաև շարժվող մարմինը։ §14, էջեր 43–44, ինքնաթիռն ամպերի նկատմամբ և հաշվարկման մարմնի ընտրությունը",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "Method or explicitly stated verbal quantities only; no unseen scale, curve geometry, orientation or apparatus reading is needed.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional reference-choice practice: evaluate whether a moving reference is allowed. Earlier S01-I03 gives a moving reference and asks about observed motion; this task examines the validity of selecting it, using the textbook cloud example. Same taught reference-frame reasoning, not independent coverage.",
+    "workedExampleComparison": "The example determines bag rest relative to a moving seat, rather than evaluating the cloud-selection claim. It demonstrates one valid choice through an observation without reproducing the main options.",
+    "guide": {
+      "title_hy": "Հաշվարկման մարմին կարող է լինել նաև շարժվող մարմինը",
+      "strategy_hy": "Հաշվարկման մարմինն այն մարմինն է, որի նկատմամբ դիտարկում ենք մեկ այլ մարմնի շարժումը։ Այն կարող է շարժվել գետնի նկատմամբ։ Ամեն դեպքում հստակ նշիր, թե որ մարմնի նկատմամբ ես համեմատում դիրքերը։",
+      "worked_example_hy": "Ընթացող ավտոբուսի նստարանին դրված պայուսակը չի սահում նստարանի վրայով։ Որպես հաշվարկման մարմին ընտրելով նստարանը՝ ասում ենք, որ պայուսակը նրա նկատմամբ անշարժ է։ Նստարանը միաժամանակ շարժվում է փողոցի շենքերի նկատմամբ։",
+      "hint_1_hy": "Հաշվարկման մարմնի սահմանման մեջ գետնի նկատմամբ անշարժ լինելու պահանջ կա՞։",
+      "hint_2_hy": "Գնացքի վագոնում նստած ուղևորի դիրքը կարելի՞ է նկարագրել վագոնի նկատմամբ, երբ գնացքը շարժվում է։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S01-M12",
+        "Միայն Երկիրը՝ որպես հաշվարկման մարմին",
+        "Կարծում է, թե հաշվարկման մարմին կարող է ընտրվել միայն Երկիրը՝ մերժելով մյուս մարմինների ընտրությունը։"
+      ],
+      [
+        "PHY7-U03-S01-M13",
+        "Հաշվարկման մարմնի ընտրության համար արագությունների հավասարության պահանջ",
+        "Հաշվարկման մարմնի ընտրությունը թույլատրելի է համարում միայն այն դեպքում, երբ այն և ուսումնասիրվող մարմինը նույն արագությամբ են շարժվում։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S01-M04",
+        "Գետնի նկատմամբ շարժվող ամպը մերժում է որպես հաշվարկման մարմին։"
+      ],
+      "C": [
+        "PHY7-U03-S01-M12",
+        "Հաշվարկման մարմնի ընտրությունը սահմանափակում է միայն Երկրով։"
+      ],
+      "D": [
+        "PHY7-U03-S01-M13",
+        "Ընտրության համար ավելացնում է արագությունների հավասարության չեղած պայման։"
+      ]
+    },
+    "specSha256": "608cc59395fc989da621794399d22645de40b748509e8976076e82125116a4e5"
+  },
+  {
+    "id": "U03-B07-C02",
+    "code": "PHY7-U03-S02-I06",
+    "skill": "S02",
+    "skillId": "4251bf02-d633-578a-bd36-44028b5ceecf",
+    "outcomeId": "f3660abd-d28c-54e9-bad3-202a629f60e4",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(3)",
+    "familyCode": "PHY7-U03-S02-F06",
+    "templateCode": "PHY7-U03-S02-F06-T01",
+    "candidateRevision": 1,
+    "suffix": "I06",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Չափագլանով որոշում են փոքր քարի ծավալը։ Այս խնդրում կարելի՞ է քարը համարել նյութական կետ։",
+    "optionsHy": {
+      "A": "Այո՛, քանի որ քարը փոքր է։",
+      "B": "Ո՛չ, քանի որ ոչ մի իրական մարմին չի կարելի համարել նյութական կետ։",
+      "C": "Այո՛, քանի որ չափումը կատարում են գործիքով։",
+      "D": "Ո՛չ, քանի որ չափերն էական են ծավալը որոշելու համար։"
+    },
+    "answer": "D",
+    "explanationHy": "Նյութական կետի մոդելում մարմնի չափերն անտեսում ենք միայն այն խնդիրներում, որոնցում դրանք էական չեն։ Այստեղ որոշում ենք քարի զբաղեցրած ծավալը, ուստի չափերն անտեսելը կկորցնի խնդրի համար անհրաժեշտ տեղեկությունը։ Քարի փոքր լինելը կամ գործիքով չափելը դա չեն փոխում։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 45–46, մոդելի կիրառելիությունը; էջ 48, առաջադրանք 3՝ չափագլանով ծավալի որոշում",
+    "difficulty": 1,
+    "difficultyBand": "foundation",
+    "rationaleHy": "Չափերն անտեսիր միայն երբ դրանք խնդրի համար էական չեն։ §15, էջեր 45–46, մոդելի կիրառելիությունը; էջ 48, առաջադրանք 3՝ չափագլանով ծավալի որոշում",
+    "mappingType": "derived_supporting",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "Method or explicitly stated verbal quantities only; no unseen scale, curve geometry, orientation or apparatus reading is needed.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional model-selection practice for a measured property rather than a motion description. Directly uses textbook p.48 task 3; complements fit, rotation, route and internal-location cases. Completes the six-slot S02 practice budget without claiming a new modeling principle.",
+    "workedExampleComparison": "A satellite-period problem is a valid point-model case from p.45. The main task concerns an incompatible volume measurement, so the example supplies a contrasting decision and target quantity.",
+    "guide": {
+      "title_hy": "Չափերն անտեսիր միայն երբ դրանք խնդրի համար էական չեն",
+      "strategy_hy": "Նախ որոշիր՝ ինչ տեղեկություն է պետք ստանալ։ Եթե խնդիրը վերաբերում է մարմնի չափերին կամ զբաղեցրած ծավալին, այդ տեղեկությունը մոդելից հեռացնել չի կարելի։ Մարմնի փոքր լինելն ինքնին բավարար պայման չէ։",
+      "worked_example_hy": "Արբանյակի՝ Երկրի շուրջ մեկ պտույտ կատարելու ժամանակն ուսումնասիրելիս նրա առանձին մասերի չափերը կարող ենք անտեսել։ Խնդրի համար կարևոր է արբանյակի շարժումը, իսկ նրա երկարությունն ու լայնությունն այդ հաշվարկի տվյալներ չեն։ Այս պայմաններում նյութական կետի մոդելը կիրառելի է։",
+      "hint_1_hy": "Այս խնդրում մարմնի ո՞ր հատկությունն են ուզում չափել։",
+      "hint_2_hy": "Մարմնի չափերն անտեսելը համատեղելի՞ է հենց նրա զբաղեցրած ծավալը որոշելու հետ։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S02-M12",
+        "Գործիքի օգտագործումը՝ մարմնի չափերն անտեսելու հիմք",
+        "Կարծում է, թե չափիչ գործիք օգտագործելիս կարելի է մարմինը համարել նյութական կետ՝ անկախ չափվող հատկության և մարմնի չափերի կապից։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S02-M04",
+        "Միայն փոքր չափերի պատճառով քարը համարում է նյութական կետ։"
+      ],
+      "B": [
+        "PHY7-U03-S02-M05",
+        "Մերժում է նյութական կետի մոդելը բոլոր իրական մարմինների համար։"
+      ],
+      "C": [
+        "PHY7-U03-S02-M12",
+        "Գործիքի օգտագործումը բավարար է համարում չափերն անտեսելու համար։"
+      ]
+    },
+    "specSha256": "7366986e00851b7b870ed4c5cfe8b809e01ddab7b8fec6398c034591453df9b6"
+  },
+  {
+    "id": "U03-B07-C03",
+    "code": "PHY7-U03-S03-I07",
+    "skill": "S03",
+    "skillId": "808be543-acae-5df9-b903-eaceaf4c149c",
+    "outcomeId": "020c307d-b19d-504c-b863-b8ae8c0d14ae",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(4)",
+    "familyCode": "PHY7-U03-S03-F07",
+    "templateCode": "PHY7-U03-S03-F07-T01",
+    "candidateRevision": 1,
+    "suffix": "I07",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Թղթի վրա կոր գծով պատկերված է մարմնի հետագիծը։ Պետք է չափել հենց թղթի վրա գծված կորի երկարությունը։ Ո՞ր եղանակն է հարմար։",
+    "optionsHy": {
+      "A": "Քանոնով չափել միայն կորի սկզբնակետի և վերջնակետի հեռավորությունը։",
+      "B": "Չափել միայն կորի այն մասը, որն ամենամոտն է ուղիղ գծին։",
+      "C": "Չձգվող թելը տեղադրել ամբողջ կորի երկայնքով, նշել ծայրերը, ապա թելի այդ մասը դնել ուղիղ գծով և չափել քանոնով։",
+      "D": "Համարել, որ կոր գծի երկարությունը թելով ու քանոնով չափել հնարավոր չէ։"
+    },
+    "answer": "C",
+    "explanationHy": "Կորի երկայնքով տեղադրված չձգվող թելի նշված մասը կրկնում է ամբողջ կորի երկարությունը։ Այն ուղղելուց հետո երկարությունը կարելի է չափել քանոնով։ Միայն ծայրակետերի հեռավորությունը կամ կորի մի մասը չափելիս ամբողջ կորի երկարությունը չենք ստանա։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 46–48, հետագծի երկարություն և գործնական աշխատանք 1՝ թել ու քանոն",
+    "difficulty": 2,
+    "difficultyBand": "core",
+    "rationaleHy": "Կորի երկարությունը տարբերիր նրա ծայրակետերի հեռավորությունից։ §15, էջեր 46–48, հետագծի երկարություն և գործնական աշխատանք 1՝ թել ու քանոն",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "Method or explicitly stated verbal quantities only; no unseen scale, curve geometry, orientation or apparatus reading is needed.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional measurement-method practice grounded in the textbook thread-and-ruler activity. S03-I01 identifies the relevant curved path and I05 reads a straight scale; this asks how to measure the whole drawn curve. No numeric diagram or map scale is needed because only the method for the drawing itself is asked.",
+    "workedExampleComparison": "The example sums two known straight pieces of a broken line. The main task selects a physical method for an arbitrary curve; no thread procedure or option is replayed in the example.",
+    "guide": {
+      "title_hy": "Կորի երկարությունը տարբերիր նրա ծայրակետերի հեռավորությունից",
+      "strategy_hy": "Չափումը պետք է ընդգրկի ամբողջ գիծը։ Ճկուն, չձգվող թելը կարող է կրկնել կորի ձևը, իսկ ուղղելիս պահպանել իր երկարությունը։ Չափված կորի երկարությունն ու ծայրակետերի ուղիղ հեռավորությունը տարբեր մեծություններ են։",
+      "worked_example_hy": "Բեկյալ գիծը կազմված է 3 սմ և 4 սմ երկարությամբ երկու հատվածից։ Ամբողջ գծի երկարությունը 3 + 4 = 7 սմ է։ Այդ երկարությունը գտնելու համար հաշվի ենք առնում երկու հատվածն էլ, ոչ միայն գծի ծայրակետերը միացնող ուղիղ հատվածը։",
+      "hint_1_hy": "Պետք է չափել միայն երկու ծայրակետերի հեռավորությո՞ւնը, թե՞ ամբողջ գծի երկարությունը։",
+      "hint_2_hy": "Մտածիր՝ ինչպես կարելի է կորի երկարությունը պահպանելով ստանալ քանոնով չափելու համար հարմար ուղիղ հատված։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S03-M13",
+        "Կոր գծի երկարությունը չափելու հնարավորության մերժում",
+        "Կարծում է, թե կոր գիծը թելով և քանոնով չափել հնարավոր չէ, քանի որ քանոնն ուղիղ է։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S03-M01",
+        "Կորի երկարությունը փոխարինում է նրա ծայրակետերի հեռավորությամբ։"
+      ],
+      "B": [
+        "PHY7-U03-S03-M03",
+        "Հաշվի է առնում միայն գծի մի մասը։"
+      ],
+      "D": [
+        "PHY7-U03-S03-M13",
+        "Չի օգտագործում կորի երկարությունը չձգվող թելին փոխանցելու եղանակը։"
+      ]
+    },
+    "specSha256": "c2fe6ded959c952c47c8b4447e0839eaf44f9de1f4734cc3012e2dcaa1505b1d"
+  },
+  {
+    "id": "U03-B07-C04",
+    "code": "PHY7-U03-S04-I07",
+    "skill": "S04",
+    "skillId": "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+    "outcomeId": "46b049d9-a466-5b1f-975e-4eb0c3f0b474",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+    "familyCode": "PHY7-U03-S04-F07",
+    "templateCode": "PHY7-U03-S04-F07-T01",
+    "candidateRevision": 1,
+    "suffix": "I07",
+    "bank": "practice",
+    "purpose": "misconception_diagnosis",
+    "promptHy": "Հետիոտնն առաջին 4 վ-ում անցնում է 8 մ, հաջորդ 4 վ-ում կանգնած է մնում, իսկ վերջին 4 վ-ում կրկին անցնում է 8 մ։ Ամբողջ 12 վ-ի ընթացքում նրա շարժումը հավասարաչա՞փ է։",
+    "optionsHy": {
+      "A": "Ո՛չ, քանի որ հավասար՝ 4 վ ժամանակամիջոցներում անցած ճանապարհները 8 մ, 0 մ և 8 մ են։",
+      "B": "Այո՛, կանգնած մնալու ժամանակը պետք չէ հաշվի առնել։",
+      "C": "Այո՛, քանի որ առաջին և վերջին ժամանակամիջոցներում անցած ճանապարհները հավասար են։",
+      "D": "Որոշել հնարավոր չէ, քանի որ արագությունների թվային արժեքները տրված չեն։"
+    },
+    "answer": "A",
+    "explanationHy": "Հավասարաչափ շարժման դեպքում կամայական հավասար ժամանակամիջոցներում մարմինն անցնում է հավասար ճանապարհներ։ Այստեղ երեք հավասար ժամանակամիջոցներից միջինում ճանապարհը 0 մ է, իսկ մյուսներում՝ 8-ական մ։ Ուստի ամբողջ 12 վ-ի ընթացքում շարժումը հավասարաչափ չէ. կանգառի ժամանակն էլ է մտնում դիտարկվող ժամանակամիջոցի մեջ։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 49–50, կամայական հավասար ժամանակամիջոցներում ճանապարհների համեմատում",
+    "difficulty": 2,
+    "difficultyBand": "core",
+    "rationaleHy": "Դիտարկվող ժամանակամիջոցում կանգառներն էլ հաշվի առ։ §16, էջեր 49–50, կամայական հավասար ժամանակամիջոցներում ճանապարհների համեմատում",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "Method or explicitly stated verbal quantities only; no unseen scale, curve geometry, orientation or apparatus reading is needed.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional uniformity practice specifically including a stop in the stated whole interval. S04-I03 already rejects selective/coarse evidence; this clarifies the everyday temptation to exclude rest. The three complete equal-time distances disprove uniformity without an average-speed or acceleration concept.",
+    "workedExampleComparison": "The example assumes uniform motion and predicts a later distance. The main task uses a zero-distance interval to reject uniformity; it is a different inference and has no stop in the example.",
+    "guide": {
+      "title_hy": "Դիտարկվող ժամանակամիջոցում կանգառներն էլ հաշվի առ",
+      "strategy_hy": "Հավասարաչափությունը ստուգելիս մի՛ ընտրիր միայն շարժման հարմար հատվածները։ Ամբողջ դիտարկվող ժամանակի համար համեմատիր հավասար ժամանակամիջոցներում անցած ճանապարհները։ Կանգնած մնալու ժամանակ մարմնի անցած ճանապարհը զրո է։",
+      "worked_example_hy": "Սայլակը շարժվում է հավասարաչափ և առաջին 2 վ-ում անցնում է 6 մ։ Հաջորդ 2 վ-ում էլ այն պետք է անցնի 6 մ, քանի որ ժամանակամիջոցները հավասար են։ Սա բխում է հենց հավասարաչափ շարժման սահմանումից։",
+      "hint_1_hy": "Կանգնած մնալու 4 վ-ում հետիոտնը որքա՞ն ճանապարհ է անցնում։",
+      "hint_2_hy": "Համեմատիր բոլոր երեք հավասար ժամանակամիջոցներում անցած ճանապարհները՝ ներառելով նաև կանգառը։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S04-M16",
+        "Կանգառի ժամանակի բացառում հավասարաչափության ստուգումից",
+        "Ամբողջ դիտարկվող ժամանակում շարժումը հավասարաչափ է համարում՝ համեմատությունից հանելով կանգնած մնալու ժամանակամիջոցը։"
+      ],
+      [
+        "PHY7-U03-S04-M17",
+        "Միայն առաջին և վերջին ժամանակամիջոցների համեմատում",
+        "Առաջին և վերջին հավասար ժամանակամիջոցներում ճանապարհների հավասարությունից եզրակացնում է ամբողջ շարժման հավասարաչափությունը՝ անտեսելով միջանկյալ տվյալները։"
+      ],
+      [
+        "PHY7-U03-S04-M18",
+        "Հավասարաչափության ստուգման համար պատրաստի արագությունների պահանջ",
+        "Հավասար ժամանակամիջոցների և համապատասխան ճանապարհների տվյալները բավարար չի համարում անհավասարաչափությունը պարզելու համար և պահանջում է առանձին տրված արագություններ։"
+      ]
+    ],
+    "mappings": {
+      "B": [
+        "PHY7-U03-S04-M16",
+        "Դիտարկվող 12 վ-ից բացառում է կանգառի 4 վ-ը։"
+      ],
+      "C": [
+        "PHY7-U03-S04-M17",
+        "Անտեսում է միջին ժամանակամիջոցի զրոյական ճանապարհը։"
+      ],
+      "D": [
+        "PHY7-U03-S04-M18",
+        "Չի կիրառում հավասար ճանապարհների չափանիշը՝ պահանջելով արագության պատրաստի արժեքներ։"
+      ]
+    },
+    "specSha256": "0020a9c33f1a6306c359fe516a2382b0d0751ff7fe635586d7478875a00d1ba3"
+  },
+  {
+    "id": "U03-B07-C05",
+    "code": "PHY7-U03-S05-I07",
+    "skill": "S05",
+    "skillId": "b04dde38-3f39-5cea-a9a1-e7c6535cf39a",
+    "outcomeId": "581807b2-fdb5-534b-8b79-303e7aaa7d66",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+    "familyCode": "PHY7-U03-S05-F07",
+    "templateCode": "PHY7-U03-S05-F07-T01",
+    "candidateRevision": 1,
+    "suffix": "I07",
+    "bank": "practice",
+    "purpose": "transfer_reasoning",
+    "promptHy": "Խաղալիք մեքենան հավասարաչափ շարժվում է շրջանաձև ճանապարհով։ Շարժման ընթացքում ինչպե՞ս են փոխվում նրա արագության թվային արժեքն ու ուղղությունը։",
+    "optionsHy": {
+      "A": "Թվային արժեքն ու ուղղությունը մնում են անփոփոխ։",
+      "B": "Թվային արժեքն ու ուղղությունը երկուսն էլ փոխվում են։",
+      "C": "Թվային արժեքը փոխվում է, իսկ ուղղությունը մնում է անփոփոխ։",
+      "D": "Թվային արժեքը մնում է անփոփոխ, իսկ ուղղությունը փոխվում է։"
+    },
+    "answer": "D",
+    "explanationHy": "Հավասարաչափ շարժման դեպքում միավոր ժամանակում անցած ճանապարհը նույնն է, ուստի արագության թվային արժեքը չի փոխվում։ Շրջանաձև ճանապարհով շարժվելիս մեքենայի շարժման ուղղությունն անընդհատ փոխվում է։ Արագության ուղղությունը համընկնում է շարժման ուղղության հետ։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 49–52, հավասարաչափ շարժման սահմանում, արագության թվային արժեք և ուղղություն",
+    "difficulty": 2,
+    "difficultyBand": "core",
+    "rationaleHy": "Արագության թվային արժեքն ու ուղղությունը ստուգիր առանձին։ §16, էջեր 49–52, հավասարաչափ շարժման սահմանում, արագության թվային արժեք և ուղղություն",
+    "mappingType": "derived_supporting",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "Method or explicitly stated verbal quantities only; no unseen scale, curve geometry, orientation or apparatus reading is needed.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional synthesis of S04-I04 circular uniform motion and S05-I01/I04/I06 magnitude-direction distinctions. Applies the definitions to one body over time; no acceleration, tangent construction or force law is introduced. Repeats taught claims rather than creating independent coverage.",
+    "workedExampleComparison": "The example has a changed magnitude with the same direction at two instants. The main task has constant magnitude and changing direction, so it is the contrasting component behavior rather than a renamed circular-motion task.",
+    "guide": {
+      "title_hy": "Արագության թվային արժեքն ու ուղղությունը ստուգիր առանձին",
+      "strategy_hy": "Միայն արագության թվային արժեքը համեմատելով՝ նրա ուղղության մասին եզրակացություն մի՛ արա։ Թվային արժեքը կապիր միավոր ժամանակում անցած ճանապարհի հետ, իսկ ուղղությունը՝ մարմնի շարժման ուղղության։ Դրանք կարող են տարբեր կերպ փոխվել։",
+      "worked_example_hy": "Մեքենան սկզբում շարժվում է դեպի հյուսիս՝ 2 մ/վ արագությամբ, իսկ ավելի ուշ՝ դարձյալ դեպի հյուսիս, բայց 3 մ/վ արագությամբ։ Այս երկու պահերին արագության թվային արժեքները տարբեր են, իսկ ուղղությունները՝ նույնը։",
+      "hint_1_hy": "Ի՞նչ է հավասարաչափ շարժումը հուշում միավոր ժամանակում անցած ճանապարհի մասին։",
+      "hint_2_hy": "Շրջանաձև ճանապարհով շարժվելիս մեքենան կարո՞ղ է ամբողջ ընթացքում շարժվել նույն ուղղությամբ։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S05-M17",
+        "Կոր հետագիծը՝ արագության թվային արժեքի պարտադիր փոփոխության նշան",
+        "Կարծում է, թե կոր ճանապարհով շարժվելիս արագության թվային արժեքն անպայման փոխվում է, նույնիսկ երբ շարժումը տրված է որպես հավասարաչափ։"
+      ],
+      [
+        "PHY7-U03-S05-M18",
+        "Շրջանաձև հավասարաչափ շարժման մեջ փոփոխվող բաղադրիչի շփոթում",
+        "Շրջանաձև հավասարաչափ շարժման դեպքում թվային արժեքը համարում է փոփոխվող, իսկ ուղղությունը՝ անփոփոխ։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S05-M01",
+        "Արագության անփոփոխ թվային արժեքից եզրակացնում է նաև ուղղության անփոփոխությունը։"
+      ],
+      "B": [
+        "PHY7-U03-S05-M17",
+        "Ուղղության փոփոխության հետ պարտադիր կապում է նաև թվային արժեքի փոփոխությունը։"
+      ],
+      "C": [
+        "PHY7-U03-S05-M18",
+        "Փոխանակում է անփոփոխ թվային արժեքի և փոփոխվող ուղղության դերերը։"
+      ]
+    },
+    "specSha256": "0cb4e373f80f0b2f5aba208fd88223dfb6305c3ef6542b1e4adb9aa3356ea099"
+  },
+  {
+    "id": "U03-B07-C06",
+    "code": "PHY7-U03-S06-I07",
+    "skill": "S06",
+    "skillId": "8a07485e-8462-5513-a3b6-f65bc8a7cce4",
+    "outcomeId": "7e64c4ad-81c1-5491-83eb-3c4431dcc674",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Պարտադիր 1(5)",
+    "familyCode": "PHY7-U03-S06-F07",
+    "templateCode": "PHY7-U03-S06-F07-T01",
+    "candidateRevision": 1,
+    "suffix": "I07",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Մարմնի արագությունը 0,12 կմ/րոպե է։ Որքա՞ն է այն մ/վ-ով։",
+    "optionsHy": {
+      "A": "2 մ/վ։",
+      "B": "0,12 մ/վ։",
+      "C": "120 մ/վ։",
+      "D": "7,2 մ/վ։"
+    },
+    "answer": "A",
+    "explanationHy": "Մարմինը մեկ րոպեում անցնում է 0,12 կմ = 120 մ։ Մեկ րոպեն 60 վ է, հետևաբար արագությունը 120 ÷ 60 = 2 մ/վ է։ Այստեղ փոխարկում ենք և՛ ճանապարհի, և՛ ժամանակի միավորները։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջ 51, արագության միավորներ; §17, էջեր 54–55, միավորների փոխարկում",
+    "difficulty": 2,
+    "difficultyBand": "core",
+    "rationaleHy": "Փոխարկիր և՛ ճանապարհի, և՛ ժամանակի միավորները։ §16, էջ 51, արագության միավորներ; §17, էջեր 54–55, միավորների փոխարկում",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "Method or explicitly stated verbal quantities only; no unseen scale, curve geometry, orientation or apparatus reading is needed.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional compound unit conversion involving kilometres per minute. Existing S06-I04/I05 isolate one unit and I02 converts m/s to km/h. This practices both unit factors without blindly reusing the km/h factor; same exposed conversion reasoning, no protection claim.",
+    "workedExampleComparison": "The example changes only the time unit, while the main question also requires kilometres-to-metres conversion. It teaches a component step and explicitly leaves the other conversion for the learner.",
+    "guide": {
+      "title_hy": "Փոխարկիր և՛ ճանապարհի, և՛ ժամանակի միավորները",
+      "strategy_hy": "Արագության միավորը փոխելիս առանձին ստուգիր ճանապարհի և ժամանակի միավորները։ Տրված ժամանակամիջոցում անցած ճանապարհը գրիր նոր միավորով, ժամանակն էլ՝ նոր միավորով, ապա բաժանիր։ Փոխարկումից մարմնի իրական արագությունը չի փոխվում։",
+      "worked_example_hy": "Արագությունը 72 մ/րոպե է։ Քանի որ 1 րոպեն 60 վ է, մեկ վայրկյանում մարմինն անցնում է 72 ÷ 60 = 1,2 մ։ Ուրեմն 72 մ/րոպե = 1,2 մ/վ։ Այս օրինակում մետրերը փոխարկելու կարիք չկար։",
+      "hint_1_hy": "0,12 կմ-ը քանի՞ մետր է, իսկ մեկ րոպեն՝ քանի՞ վայրկյան։",
+      "hint_2_hy": "Գտիր՝ այդքան մետրը 60 վ-ում անցնելիս մեկ վայրկյանին որքան ճանապարհ է բաժին ընկնում։"
+    },
+    "definitions": [],
+    "mappings": {
+      "B": [
+        "PHY7-U03-S06-M04",
+        "Փոխում է արագության միավորը՝ նույնը թողնելով 0,12 թվային արժեքը։"
+      ],
+      "C": [
+        "PHY7-U03-S06-M05",
+        "Կիլոմետրերը դարձնում է մետրեր, բայց րոպեն վայրկյանի փոխարկելիս թվային արժեքը չի փոխում։"
+      ],
+      "D": [
+        "PHY7-U03-S06-M01",
+        "0,12-ը բազմապատկում է 60-ով՝ միաժամանակ չկատարելով կիլոմետրից մետր և րոպեից վայրկյան ճիշտ փոխարկումները։"
+      ]
+    },
+    "specSha256": "d1a60664e13999954f469f8f399672e3e0c5c9068e407b0ad015d313c79831b4"
+  },
+  {
+    "id": "U03-B07-C07",
+    "code": "PHY7-U03-S07-I08",
+    "skill": "S07",
+    "skillId": "4f0315c6-35ea-5573-aab5-4f9c6329b6eb",
+    "outcomeId": "581807b2-fdb5-534b-8b79-303e7aaa7d66",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+    "familyCode": "PHY7-U03-S07-F08",
+    "templateCode": "PHY7-U03-S07-F08-T01",
+    "candidateRevision": 1,
+    "suffix": "I08",
+    "bank": "practice",
+    "purpose": "application",
+    "promptHy": "Հեծանվորդը ճանապարհի երկու տեղամասերն անցնում է հավասարաչափ, բայց տարբեր արագություններով։ Առաջին տեղամասում նա 20 վ շարժվում է 4 մ/վ արագությամբ, իսկ երկրորդում՝ 10 վ, 3 մ/վ արագությամբ։ Որքա՞ն ճանապարհ է նա անցնում այդ երկու տեղամասերում միասին։",
+    "optionsHy": {
+      "A": "120 մ։",
+      "B": "110 մ։",
+      "C": "90 մ։",
+      "D": "210 մ։"
+    },
+    "answer": "B",
+    "explanationHy": "Առաջին տեղամասում անցած ճանապարհը 4 × 20 = 80 մ է, իսկ երկրորդում՝ 3 × 10 = 30 մ։ Ամբողջ ճանապարհը դրանց գումարն է՝ 80 + 30 = 110 մ։ Քանի որ տեղամասերում արագությունները տարբեր են, մեկ արագությունը չի կարելի կիրառել ամբողջ 30 վ-ի համար։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջ 47, անցած ճանապարհ; §16, էջ 52, s = vt; §17, էջեր 56–57, տարբեր տեղամասերի առանձին հաշվարկման մոտեցում",
+    "difficulty": 2,
+    "difficultyBand": "core",
+    "rationaleHy": "Տարբեր արագություններով անցած տեղամասերը հաշվիր առանձին։ §15, էջ 47, անցած ճանապարհ; §16, էջ 52, s = vt; §17, էջեր 56–57, տարբեր տեղամասերի առանձին հաշվարկման մոտեցում",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "Method or explicitly stated verbal quantities only; no unseen scale, curve geometry, orientation or apparatus reading is needed.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional piecewise uniform-motion application: calculate each path with its matching speed/time and add. Existing S07-I01 extrapolates one speed and I07 transfers one common path between bodies. This uses only taught s=vt and path addition, not average-speed formulas, acceleration, meeting or pursuit extensions.",
+    "workedExampleComparison": "The example is given two distances and speeds and solves total time with t=s/v. The main question is given two times and speeds and solves total path with s=vt; the final unknown and operations differ.",
+    "guide": {
+      "title_hy": "Տարբեր արագություններով անցած տեղամասերը հաշվիր առանձին",
+      "strategy_hy": "Եթե տարբեր տեղամասերում արագությունները տարբեր են, յուրաքանչյուր տեղամասի համար օգտագործիր հենց դրա արագությունն ու ժամանակը։ Ամբողջ ճանապարհը գտնելու համար գումարիր առանձին ճանապարհները։ Նույն ձևով առանձին տևողություններից կարող ես ստանալ ամբողջ ժամանակը։",
+      "worked_example_hy": "Հետիոտնը առաջին 40 մ տեղամասը հավասարաչափ անցնում է 2 մ/վ արագությամբ, իսկ հաջորդ 60 մ-ը՝ 3 մ/վ արագությամբ։ Առաջին տեղամասի ժամանակը 40 ÷ 2 = 20 վ է, երկրորդինը՝ 60 ÷ 3 = 20 վ։ Այս երկու տեղամասերում շարժման ժամանակների գումարը 20 + 20 = 40 վ է։",
+      "hint_1_hy": "Երկու տեղամասերում արագությունները նո՞ւյնն են։ Կարելի՞ է դրանցից մեկը կիրառել ամբողջ ժամանակի համար։",
+      "hint_2_hy": "Յուրաքանչյուր տեղամասի ճանապարհը գտիր իր արագությամբ և ժամանակով, ապա միացրու ստացված ճանապարհները։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S07-M19",
+        "Մեկ տեղամասի արագության կիրառում ամբողջ ճանապարհին",
+        "Տարբեր արագություններով շարժման դեպքում ամբողջ ժամանակը բազմապատկում է տեղամասերից մեկի արագությամբ՝ անտեսելով մյուս տեղամասի արագությունը։"
+      ],
+      [
+        "PHY7-U03-S07-M20",
+        "Տարբեր տեղամասերի արագությունների և ժամանակների գումարների բազմապատկում",
+        "Ամբողջ ճանապարհը գտնելիս առանձին s = vt հաշվարկների գումարի փոխարեն արագությունների գումարը բազմապատկում է ժամանակների գումարով։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S07-M19",
+        "Ամբողջ 30 վ-ը բազմապատկում է միայն առաջին տեղամասի 4 մ/վ արագությամբ։"
+      ],
+      "C": [
+        "PHY7-U03-S07-M19",
+        "Ամբողջ 30 վ-ը բազմապատկում է միայն երկրորդ տեղամասի 3 մ/վ արագությամբ։"
+      ],
+      "D": [
+        "PHY7-U03-S07-M20",
+        "Հաշվում է (4 + 3) × (20 + 10)՝ առանձին ճանապարհների գումարի փոխարեն։"
+      ]
+    },
+    "specSha256": "937d838a6ba35b2a907347a7710ad6835a57b723a424cd5d11ffb6050d3da5c2"
+  },
+  {
+    "id": "U03-B07-C08",
+    "code": "PHY7-U03-S08-I07",
+    "skill": "S08",
+    "skillId": "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb",
+    "outcomeId": "581807b2-fdb5-534b-8b79-303e7aaa7d66",
+    "outcomeLocator": "7-րդ դասարան / Թեմա 3 / Վերջնարդյունքներ / Լրացուցիչ 2(1)",
+    "familyCode": "PHY7-U03-S08-F07",
+    "templateCode": "PHY7-U03-S08-F07-T01",
+    "candidateRevision": 1,
+    "suffix": "I07",
+    "bank": "practice",
+    "purpose": "misconception_diagnosis",
+    "promptHy": "Խողովակում հավասարաչափ շարժվող օդի պղպջակը 10 սմ տեղամասը անցել է 5 վ-ում։ Աշակերտը հաշվել է 10 ÷ 5 = 2 և գրանցել՝ «արագությունը 2 մ/վ է»։ Ո՞ր ուղղումն է պետք կատարել։",
+    "optionsHy": {
+      "A": "Բաժանման փոխարեն պետք է բազմապատկել՝ 10 × 5 = 50 սմ/վ։",
+      "B": "Պետք է ժամանակը բաժանել ճանապարհին՝ 5 ÷ 10 = 0,5 սմ/վ։",
+      "C": "2 թիվը ճիշտ է, բայց միավորը պետք է լինի սմ/վ. նույն արագությունը 0,02 մ/վ է։",
+      "D": "Ոչ մի ուղղում պետք չէ. ճանապարհի միավորը արագության միավորի վրա չի ազդում։"
+    },
+    "answer": "C",
+    "explanationHy": "Ճանապարհը տրված է սանտիմետրերով, իսկ ժամանակը՝ վայրկյաններով։ Ուստի 10 սմ ÷ 5 վ = 2 սմ/վ։ Քանի որ 2 սմ = 0,02 մ, նույն արագությունը մ/վ-ով 0,02 մ/վ է, ոչ թե 2 մ/վ։",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 50–51, v = s/t և միավորներ; §18, էջեր 57–58, պղպջակի արագության չափում և արդյունքի գրանցում",
+    "difficulty": 2,
+    "difficultyBand": "core",
+    "rationaleHy": "Չափման արդյունքի թվի հետ գրիր նաև ճիշտ միավորը։ §16, էջեր 50–51, v = s/t և միավորներ; §18, էջեր 57–58, պղպջակի արագության չափում և արդյունքի գրանցում",
+    "mappingType": "direct",
+    "disposition": "intentional_practice_variant",
+    "assessmentEligibility": "practice_only_not_protected_qualified",
+    "illustration": "Method or explicitly stated verbal quantities only; no unseen scale, curve geometry, orientation or apparatus reading is needed.",
+    "stimulus": {},
+    "comparisonRationale": "Intentional laboratory-record audit: the division is correct but its reported unit is wrong. S08-I02 calculates from readings, S08-I06 selects instruments, and S06-I04 converts units. This combines reading a recorded result with unit consistency, without adding measurement-error theory or laboratory-performance certification.",
+    "workedExampleComparison": "The example derives km/h from given car data without a wrong record or cm-to-m conversion. It demonstrates unit formation rather than repeating the bubble correction.",
+    "guide": {
+      "title_hy": "Չափման արդյունքի թվի հետ գրիր նաև ճիշտ միավորը",
+      "strategy_hy": "v = s/t հաշվարկում միավորը ստացվում է ճանապարհի միավորը ժամանակի միավորին բաժանելով։ Թվերի ճիշտ բաժանումը դեռ չի նշանակում, որ միավորն էլ ճիշտ է գրված։ Մեկ այլ միավորի անցնելիս անհրաժեշտության դեպքում փոխիր նաև թվային արժեքը։",
+      "worked_example_hy": "Ավտոմեքենան հավասարաչափ շարժվելով՝ 60 կմ ճանապարհն անցնում է 2 ժ-ում։ Արագությունը 60 ÷ 2 = 30 կմ/ժ է։ Միավորը կմ/ժ է, քանի որ ճանապարհը կիլոմետրերով էր, իսկ ժամանակը՝ ժամերով. միայն 30 թիվը գրելը դեռ ամբողջական պատասխան չէ։",
+      "hint_1_hy": "Բանաձևում տեղադրելիս ճանապարհն ու ժամանակը ի՞նչ միավորներով են տրված։",
+      "hint_2_hy": "2 թվի կողքին նախ գրիր բաժանումից ստացվող միավորը։ Եթե ուզում ես մ/վ ստանալ, պետք է փոխվի՞ նաև թվային արժեքը։"
+    },
+    "definitions": [
+      [
+        "PHY7-U03-S08-M15",
+        "Արագության հաշվարկում ճանապարհի ու ժամանակի բազմապատկում",
+        "Արագությունը գտնելիս ճանապարհը բազմապատկում է ժամանակով՝ ճանապարհը ժամանակին բաժանելու փոխարեն։"
+      ],
+      [
+        "PHY7-U03-S08-M16",
+        "Արագության հաշվարկում բաժանելիի և բաժանարարի փոխանակում",
+        "Արագությունը գտնելիս ժամանակը բաժանում է ճանապարհին և ստացված թիվը սխալմամբ ներկայացնում որպես արագություն։"
+      ],
+      [
+        "PHY7-U03-S08-M17",
+        "Արագության միավորի անկախություն չափումների միավորներից",
+        "Կարծում է, թե բաժանումից ստացված թվին կարելի է կցել ցանկացած արագության միավոր՝ առանց սկզբնական ճանապարհի և ժամանակի միավորները հաշվի առնելու։"
+      ]
+    ],
+    "mappings": {
+      "A": [
+        "PHY7-U03-S08-M15",
+        "Ճանապարհի և ժամանակի քանորդը փոխարինում է դրանց արտադրյալով։"
+      ],
+      "B": [
+        "PHY7-U03-S08-M16",
+        "Հաշվում է t/s՝ v = s/t-ի փոխարեն։"
+      ],
+      "D": [
+        "PHY7-U03-S08-M17",
+        "Սանտիմետրերով ու վայրկյաններով հաշվարկի արդյունքին կցում է մ/վ՝ առանց փոխարկման։"
+      ]
+    },
+    "specSha256": "e526cd3e5f4b2eae41754856bd21df509c0c49e62417efe0c4576c167d84918e"
+  }
+]
