@@ -1,5 +1,7 @@
 # Chapter III batch 03 — staging and guide correction
 
+**Current disposition, verified 2026-10-14 18:49 Asia/Yerevan:** all 24 prior questions/guides and 52 definitions are reviewed; the exact S04-I01 correction is published at authoring v7 / runtime v3. [Batch 03 review closure](chapter-iii-batch-03-review.md). Earlier pending statements below describe the historical checkpoint and are closed by this later evidence.
+
 **2026-10-14 · Sprint 15C.4 · Roadmap 3.67**
 
 Eight practice questions across seven skills, eight guides and nineteen misconception definitions are committed as drafts. The guarded transaction committed at **2026-10-13 21:48:49 UTC / 2026-10-14 01:48:49 Asia/Yerevan**; an independent readback matched the saved specifications, options, keys, mappings and immutable snapshots. All eight question QA checks and all eight guide structural checks passed with zero errors/warnings. QA replays the freshly fetched deployed v11 evaluator and v10 guide helper against saved data; it is not an authenticated live Edge invocation. Eight accurately labelled automated QA records were appended.
