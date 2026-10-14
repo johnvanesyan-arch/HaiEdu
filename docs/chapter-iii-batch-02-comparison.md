@@ -1,5 +1,7 @@
 # Chapter III batch 02 — whole-bank comparison
 
+**Current classification addendum (2026-10-15):** the [version-bound disposition reconciliation](chapter-iii-disposition-reconciliation.md) supersedes historical classification and independent-coverage claims below. All current approved Chapter III questions are intentional practice variants; original content and creation evidence remain unchanged.
+
 **2026-10-13 · Sprint 15C.3 · Eight practice drafts retained.**
 
 The frozen corpus contains 461 current questions, 338 immutable versions, 84 current guides, 170 runtime guide versions and 332 guide-authoring versions. Matching before/after fingerprints cover 39 content, protection, review and learner-evidence tables. The existing eight Chapter III drafts, eight guides and nineteen definitions still await site review.

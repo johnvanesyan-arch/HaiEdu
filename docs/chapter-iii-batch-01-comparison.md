@@ -1,5 +1,7 @@
 # Chapter III batch 01 — current-bank comparison
 
+**Current classification addendum (2026-10-15):** the [version-bound disposition reconciliation](chapter-iii-disposition-reconciliation.md) supersedes historical classification and independent-coverage claims below. All current approved Chapter III questions are intentional practice variants; original content and creation evidence remain unchanged.
+
 **Date:** 2026-10-13 · **Sprint:** 15C.2 · **Decision:** retain all eight exact accepted v1 questions for practice draft staging.
 
 John accepted the preparation and eight offline drafts: “I read it all, it all looks good to go” (2026-10-13, 19:19:48 Asia/Yerevan). This records that acceptance without impersonating a signed-in content reviewer. The eight new guides and 19 misconception definitions still need ordinary site review.
