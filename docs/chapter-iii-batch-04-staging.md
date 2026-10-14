@@ -1,5 +1,7 @@
 # Chapter III batch 04 — staging and verification
 
+**Current disposition, verified 2026-10-15:** all 32 prior questions/guides and 69 definitions are reviewed; four edited guides were compared. [Batch 04 review closure](chapter-iii-batch-04-review.md). Historical classification claims below are superseded by the [Current disposition reconciliation](chapter-iii-disposition-reconciliation.md). Earlier pending statements remain as checkpoint history.
+
 **2026-10-14 · Sprint 15C.5 · Roadmap 3.68**
 
 Eight practice questions across all eight skills, eight guides and seventeen misconception definitions are saved as drafts. The guarded transaction committed at **15:07:22 UTC / 19:07:22 Asia/Yerevan**. Independent readback exactly matches the specifications, options, answers, mappings and immutable snapshots. All eight question QA checks and all eight guide checks passed with zero errors or warnings.
