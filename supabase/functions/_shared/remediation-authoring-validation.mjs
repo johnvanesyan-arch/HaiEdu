@@ -109,11 +109,19 @@ function numberOccurrences(value) {
   });
 }
 
-function reusesLiveInputs(value, variant) {
+function reusesLiveInputs(value, variant, allowedKeys = []) {
   if (!variant) return false;
   const prompt = numberOccurrences(variant.prompt_hy);
   const example = numberOccurrences(value);
-  const rawNumbers = Object.values(plainObject(variant.variant_parameters))
+  // Fixed authored catalogues store provenance in variant_parameters, not
+  // generated task inputs. Only declared render inputs may narrow their
+  // prompt quantities; revision/sequence metadata must not select a constant.
+  // Retain the established parameter contract for generated variants.
+  const params = plainObject(variant.variant_parameters);
+  const allowed = new Set(allowedKeys);
+  const renderParams = Object.entries(params)
+    .filter(([key]) => allowed.size ? allowed.has(key) : params.authoredCatalog !== true).map(([, entry]) => entry);
+  const rawNumbers = renderParams
     .filter((entry) => typeof entry === "number").map(normalizeNumber);
   const contextLabels = new Set(Object.values(plainObject(variant.variant_parameters))
     .filter((entry) => typeof entry === "string").map(normalizeText));
@@ -131,7 +139,7 @@ function reusesLiveInputs(value, variant) {
   });
 }
 
-function hasObviousAnswerLeakage(value, variant) {
+function hasObviousAnswerLeakage(value, variant, allowedKeys = []) {
   const text = String(value ?? "");
   const directAnswer = /(?<![\p{L}\p{N}_])(?:ճիշտ\s+պատասխան(?:ը|ն)|պատասխան(?:ը|ն)\s+է|վերջնական\s+պատասխան|correct\s+answer|answer\s+is)(?![\p{L}\p{N}_])/iu;
   const optionAnswer = /(?<![\p{L}\p{N}_])(?:ընտրիր|ընտրի՛ր|նշիր|նշի՛ր|ճիշտ(?:ն|ը)?|պատասխան(?:ը|ն)?)(?![\p{L}\p{N}_])[^։.!?\n]{0,32}(?<![\p{L}\p{N}_])[ԱԲԳԴA-D](?![\p{L}\p{N}_])/iu;
@@ -148,7 +156,7 @@ function hasObviousAnswerLeakage(value, variant) {
     const sentenceBoundary = /[։!?\n]|(?<!\d)\.|\.(?!\d)/;
     const clause = text.slice(0, match.index).split(sentenceBoundary).at(-1)
       + text.slice(match.index).split(sentenceBoundary)[0];
-    if (reusesLiveInputs(clause, variant)) return true;
+    if (reusesLiveInputs(clause, variant, allowedKeys)) return true;
   }
   return false;
 }
@@ -210,7 +218,7 @@ export function validateGuideContent(scope, content, referenceMetadata, variant)
     for (const key of workedKeys) {
       if (typeof params[key] === "number") errors.push(`worked_example_reuses_live_numeric_value:${key}`);
     }
-    if (reusesLiveInputs(renderedWorked, variant)) errors.push("worked_example_reuses_live_task");
+    if (reusesLiveInputs(renderedWorked, variant, allowed)) errors.push("worked_example_reuses_live_task");
 
     const hasNumericVariation = promptNumbers.size > 0
       && workedNumbers.size > 0
@@ -225,8 +233,8 @@ export function validateGuideContent(scope, content, referenceMetadata, variant)
     warnings.push("preview_variant_missing");
   }
 
-  if (hasObviousAnswerLeakage(renderRawTemplate(content.hint1Hy, allowed, params), variant)) errors.push("hint_1_obvious_answer_leakage");
-  if (hasObviousAnswerLeakage(renderRawTemplate(content.hint2Hy, allowed, params), variant)) errors.push("hint_2_obvious_answer_leakage");
+  if (hasObviousAnswerLeakage(renderRawTemplate(content.hint1Hy, allowed, params), variant, allowed)) errors.push("hint_1_obvious_answer_leakage");
+  if (hasObviousAnswerLeakage(renderRawTemplate(content.hint2Hy, allowed, params), variant, allowed)) errors.push("hint_2_obvious_answer_leakage");
 
   const references = referenceMetadataPresentation(referenceMetadata);
   const hasGovernedTextbookProvenance = Boolean(references.textbookLocator && references.textbookSha256);

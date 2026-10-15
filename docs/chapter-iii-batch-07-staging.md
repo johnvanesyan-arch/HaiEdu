@@ -1,6 +1,6 @@
 # Chapter III batch 07 — staging and verification
 
-**Current queue, 2026-10-15:** this batch remains pending and can be reviewed with Batches 06/07/08. [Batch 08 staging](chapter-iii-batch-08-staging.md) records the current combined totals; earlier counts below are historical staging totals, not approval.
+**Current queue, 2026-10-15:** remaining reviews are consolidated under 15C.11: 39 questions, 40 guides and 90 definitions across Batches 06–10. S01-I06 v1 is now approved; other prior wording and approvals are unchanged. [Batches 09–10 staging](chapter-iii-batches-09-10-staging.md) records current totals; earlier counts below are historical staging observations.
 
 **2026-10-15 · Sprint 15C.8 · Roadmap 3.71**
 
