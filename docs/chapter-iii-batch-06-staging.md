@@ -1,6 +1,6 @@
 # Chapter III batch 06 — staging and verification
 
-**Current queue, 2026-10-15:** this batch remains pending and can be reviewed with Batch 07. [Batch 07 staging](chapter-iii-batch-07-staging.md) records the current combined totals; earlier counts below are the Batch 06 handoff, not current totals or approval.
+**Current queue, 2026-10-15:** this batch remains pending and can be reviewed with Batches 06/07/08. [Batch 08 staging](chapter-iii-batch-08-staging.md) records the current combined totals; earlier counts below are historical staging totals, not approval.
 
 **2026-10-15 · Sprint 15C.7 · Roadmap 3.70**
 

@@ -1,0 +1,268 @@
+{
+  "date": "2026-10-15",
+  "author": "Codex automated author; human and specialist review pending",
+  "scope": "16 exact hints and 8 worked examples read with their prompt/options/explanation/strategy; language, physics and pedagogy separate from structural validation.",
+  "records": [
+    {
+      "code": "PHY7-U03-S01-I08",
+      "hint": 1,
+      "textHy": "Շարժման սահմանման մեջ խոսվում է դիրքի՞, թե՞ միայն հեռավորության փոփոխության մասին։",
+      "textSha256": "d9dcad3a2309234c8a74365e4a48bccd40e191b2e777547099309f4ff04e9f89",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §14, էջեր 43–44, շարժումը՝ դիրքի փոփոխություն; §15, էջ 46, շրջանաձև հետագիծ; հեղինակային պարզ կիրառում",
+      "languageAndPedagogyJudgment": "Recall position change rather than distance alone.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S01-I08",
+      "hint": 2,
+      "textHy": "Ծառի շուրջը քայլելիս աշակերտը մնում է ծառի նո՞ւյն կողմում։",
+      "textSha256": "d6fd24c9e830ac9dcab123f1714e839a83ef2ef88704fb38368a0a7786e76fa2",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §14, էջեր 43–44, շարժումը՝ դիրքի փոփոխություն; §15, էջ 46, շրջանաձև հետագիծ; հեղինակային պարզ կիրառում",
+      "languageAndPedagogyJudgment": "Consider changing side of the tree without an answer letter or classification.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I08",
+      "hint": 1,
+      "textHy": "Նախ առանձին որոշիր՝ գնդիկի դիրքը փոխվո՞ւմ է վագոնի նկատմամբ, ապա՝ գետնի նկատմամբ։",
+      "textSha256": "3783e32596dbb21c9893321615fce149a3d49def4f05f2cf047deeaeda595219",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 46–47, գնդիկի հետագիծը վագոնի և գետնին կանգնած դիտորդի նկատմամբ",
+      "languageAndPedagogyJudgment": "Separate the two reference choices.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I08",
+      "hint": 2,
+      "textHy": "Հետագիծը նկարագրում է մարմնի դիրքերի հաջորդականությունը։ Ի՞նչ է ստացվում, երբ դիրքը չի փոխվում։",
+      "textSha256": "d0e885938be2d572e4452e539d25c063dbaf947f6e66a343f93603f7c907f301",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջեր 46–47, գնդիկի հետագիծը վագոնի և գետնին կանգնած դիտորդի նկատմամբ",
+      "languageAndPedagogyJudgment": "Relate fixed position to a trajectory, leaving both cases to be resolved.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I09",
+      "hint": 1,
+      "textHy": "Ո՞ր չափումն է վերաբերում ճանապարհի ամբողջ գծին, ոչ թե միայն դրա ծայրակետերի հեռավորությանը։",
+      "textSha256": "47e553f3c16a9266128b60be6aec03a9215459c0ca6515540b0b1e98911152f8",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջ 47, ճանապարհի սահմանում; էջ 48, գործնական աշխատանք 1՝ թելով չափում և պատկերի երկարության համապատասխանություն իրական ճանապարհին",
+      "languageAndPedagogyJudgment": "Choose the full path rather than endpoint separation.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I09",
+      "hint": 2,
+      "textHy": "Քարտեզի 1 սմ-ին համապատասխանում է 5 կմ։ Ինչպե՞ս կօգտագործես այդ կապն ընտրված երկարության համար։",
+      "textSha256": "af1a0a5080654af4633b0cd36bd3c9ceeb95c442418b6b64b5dda34d309f5241",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջ 47, ճանապարհի սահմանում; էջ 48, գործնական աշխատանք 1՝ թելով չափում և պատկերի երկարության համապատասխանություն իրական ճանապարհին",
+      "languageAndPedagogyJudgment": "Apply the supplied one-centimetre correspondence without the numerical answer.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S04-I08",
+      "hint": 1,
+      "textHy": "Հետագծի ձևն ու հավասար ժամանակամիջոցներում անցած ճանապարհները շարժման նո՞ւյն հատկությունն են նկարագրում։",
+      "textSha256": "7eb9d44b1830506e4ba9148defdc4970a9387f31e985352d8e78e8c329d7cf26",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջ 46, ուղղագիծ և կորագիծ շարժում; §16, էջեր 49–50, հավասարաչափ շարժման սահմանում",
+      "languageAndPedagogyJudgment": "Distinguish the two descriptive attributes.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S04-I08",
+      "hint": 2,
+      "textHy": "Առանձին որոշիր հետագծի տեսակը, ապա համեմատիր երեք մեկվայրկյանանոց ժամանակամիջոցների ճանապարհները։",
+      "textSha256": "79d20d15088526886142998420a8dfdc661e0d8eaf7c28d2eea6ee44f9c4e3b0",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §15, էջ 46, ուղղագիծ և կորագիծ շարժում; §16, էջեր 49–50, հավասարաչափ շարժման սահմանում",
+      "languageAndPedagogyJudgment": "Inspect trajectory and equal-time distances separately.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S05-I08",
+      "hint": 1,
+      "textHy": "Ավելի կարճ ժամանակը երբ է նշանակում ավելի մեծ արագություն. անցած ճանապարհների մասին ի՞նչ պետք է իմանանք։",
+      "textSha256": "eadf1979285b4aab1c8617ed03fe364cc64f6622e2f500eb3d0ab3240381aa4c",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 50–51, նույն ճանապարհի համար ժամանակների համեմատում և v = s/t",
+      "languageAndPedagogyJudgment": "Identify the premise needed for a time-only comparison.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S05-I08",
+      "hint": 2,
+      "textHy": "Հնարավո՞ր է, որ ավելի շուտ տեղ հասած հետիոտնն ավելի կարճ ճանապարհ անցած լինի։",
+      "textSha256": "5037a47954c682bab6243ff50db0f4af4a0fb7866b427dbd581d5c424a01b1ef",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջեր 50–51, նույն ճանապարհի համար ժամանակների համեմատում և v = s/t",
+      "languageAndPedagogyJudgment": "Consider a shorter path as an alternative explanation without choosing an option.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S06-I08",
+      "hint": 1,
+      "textHy": "Համեմատվող երկու թվերը նո՞ւյն միավորով են գրված։",
+      "textSha256": "784ca2e49a25e0c3e9df137e439d3021f0affb48d8d8ecb96dd294aa0e5ec8bf",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջ 51, նույն արագության արտահայտումը տարբեր միավորներով; 1 րոպե = 60 վ",
+      "languageAndPedagogyJudgment": "Check that the numerical values use different units.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S06-I08",
+      "hint": 2,
+      "textHy": "Հաշվիր՝ 2 մ/վ արագությամբ մեկ րոպեում որքան ճանապարհ կանցնի մարմինը։ Արդյո՞ք դրա համար պետք է փոխվի շարժումը։",
+      "textSha256": "c326ee92930102ddac7250bf131015e8e208621af27929925103d9419c2a4761",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջ 51, նույն արագության արտահայտումը տարբեր միավորներով; 1 րոպե = 60 վ",
+      "languageAndPedagogyJudgment": "Test the conversion using one minute; do not state the physical conclusion or final number.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I09",
+      "hint": 1,
+      "textHy": "Հարցը ամբողջ ճանապարհի ժամանակի՞, թե՞ միայն այս պահից հետո մնացած ժամանակի մասին է։",
+      "textSha256": "544d3e0db39b93b234ddc0094c74dee1d4f9f6ea422e7d21acf7dddd826c3a22",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջ 52, s = vt և t = s/v; հեղինակային կիրառում՝ ամբողջ, անցած և մնացած ժամանակներ",
+      "languageAndPedagogyJudgment": "Identify whether the unknown is total or remaining time.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I09",
+      "hint": 2,
+      "textHy": "Նախ գտիր ամբողջ 500 մ-ն անցնելու ժամանակը։ Դրա ո՞ր մասն է արդեն անցել։",
+      "textSha256": "f19e9cb5efddd16eea46bb9e58df164faf7f3aa725bd9470b0139a1974f48e12",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §16, էջ 52, s = vt և t = s/v; հեղինակային կիրառում՝ ամբողջ, անցած և մնացած ժամանակներ",
+      "languageAndPedagogyJudgment": "Compute the total and account for the elapsed portion, without 150 s.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S08-I08",
+      "hint": 1,
+      "textHy": "Յուրաքանչյուր չափման մեջ ճանապարհն ու ժամանակը նույն տեղամասի՞ն են վերաբերում։",
+      "textSha256": "6418c96276e04bf449651c0c8b3a132ffdadd11419abc1ff184b97d7fbf7197f",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §18, էջ 58, փորձի քայլ 8՝ ընտրված երկու կետերի ճանապարհի և համապատասխան ժամանակի հարաբերություն; §16, էջեր 50–51, հավասարաչափ շարժման արագություն",
+      "languageAndPedagogyJudgment": "Check matched measurement intervals.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S08-I08",
+      "hint": 2,
+      "textHy": "Առանձին կիրառիր v = s/t բանաձևը երկու զույգ տվյալների համար, ապա համեմատիր արդյունքները։",
+      "textSha256": "23227cd52c3b1e520034994fca192db1f87dfb40216e2fa83e9c2746d00c89b8",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §18, էջ 58, փորձի քայլ 8՝ ընտրված երկու կետերի ճանապարհի և համապատասխան ժամանակի հարաբերություն; §16, էջեր 50–51, հավասարաչափ շարժման արագություն",
+      "languageAndPedagogyJudgment": "Calculate both ratios without supplying their values.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    }
+  ],
+  "workedExamples": [
+    {
+      "code": "PHY7-U03-S01-I08",
+      "textHy": "Դասարանի դռնից 3 մ հեռավորության վրա երկու աթոռ կա՝ տարբեր տեղերում։ «Դռնից 3 մ հեռավորության վրա» նկարագրությունը դեռ չի ասում, թե որ աթոռի մասին է խոսքը։ Հեռավորության մեկ արժեքը բավարար չէ դիրքը միարժեք նշելու համար։",
+      "textSha256": "c8ee7211d774f3d822505e855a25bd46cf2913570d5309ba516376e11e4071ab",
+      "contrastWithMainQuestion": "The worked example is a static ambiguity with two distinct seats at the same distance. It asks what a location description determines, rather than classifying motion around a tree.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S03-I08",
+      "textHy": "Ժամացույցի րոպեասլաքի ծայրը թվատախտակի նկատմամբ շրջանագիծ է գծում։ Նույն սլաքի՝ առանցքին ամրացված կետը թվատախտակի նկատմամբ չի շարժվում, և նրա հետագիծը կետ է։ Այս օրինակում հաշվարկման մարմինը նույնն է, բայց դիտարկվող կետերն են տարբեր։",
+      "textSha256": "9108e2406b7c830e2d7babd13c02e5eccf92a6024087abc3360b576fd0af0895",
+      "contrastWithMainQuestion": "The example keeps one reference and changes the point on a rotating hand, contrasting circle and point. The main task keeps one point and changes the reference, contrasting line and point.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S03-I09",
+      "textHy": "Քարտեզի 1 սմ-ին համապատասխանում է 3 կմ։ Ուզում ենք իմանալ, թե իրական 18 կմ երկարությամբ ուղիղ ճանապարհը քանի սանտիմետրով պետք է պատկերվի։ Քանի որ յուրաքանչյուր սանտիմետրը ներկայացնում է 3 կմ, ստանում ենք 18 ÷ 3 = 6 սմ։ Այստեղ իրական երկարությունից անցանք քարտեզի երկարությանը։",
+      "textSha256": "c4f2c4da79fa550cc4b48771d8edda8c5f30111fb230e8df847b2519a264b219",
+      "contrastWithMainQuestion": "The example solves the reverse scale problem: real length to drawing length. It does not choose between curve and chord or repeat the forward multiplication.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S04-I08",
+      "textHy": "Ժամացույցի վայրկյանասլաքի ծայրը թվատախտակի նկատմամբ շրջանագծով է շարժվում և կամայական հավասար ժամանակամիջոցներում անցնում է հավասար ճանապարհներ։ Նրա շարժումը կորագիծ է և հավասարաչափ։ Հետագծի կոր լինելը չի բացառում հավասարաչափությունը։",
+      "textSha256": "d9905551859f0c4f55b0e4570f06bc36fc52a5e4de2a11c5b34c55e714387f99",
+      "contrastWithMainQuestion": "The example is the opposite classification combination: curved and uniform, using the textbook clock. It demonstrates independence of the two attributes rather than repeating unequal interval data.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S05-I08",
+      "textHy": "Առաջին սայլակը 40 մ-ն անցնում է 20 վ-ում, իսկ երկրորդը՝ 60 մ-ը 30 վ-ում։ Երկուսն էլ շարժվում են հավասարաչափ։ Նրանց արագություններն են 40 ÷ 20 = 2 մ/վ և 60 ÷ 30 = 2 մ/վ։ Այստեղ ճանապարհներն ու ժամանակները տարբեր են, բայց արագությունների թվային արժեքները հավասար են։",
+      "textSha256": "2e38513fd19f0c7912402d3dc522ab42355a4ca9f7d74067daf1d54cbd751a2c",
+      "contrastWithMainQuestion": "The example supplies both distances and times and demonstrates equal numerical rates despite different durations. The main task has missing distances and requires an information-sufficiency judgment.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S06-I08",
+      "textHy": "Սենյակի երկարությունը 5 մ է, այսինքն՝ 500 սմ։ Թվային արժեքը 5-ից դարձել է 500, բայց սենյակը չի երկարել։ Մենք նույն երկարությունն ենք արտահայտել ավելի փոքր միավորով։",
+      "textSha256": "de90c86f891d0a8599e7e004eaab37ea596c8f721e37205230177b1e5ffb11a6",
+      "contrastWithMainQuestion": "The example demonstrates unit invariance for a room length. It uses neither a speed/time conversion nor the main task numerical factor, separating the conceptual invariant from its rate calculation.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S07-I09",
+      "textHy": "Հետիոտնը 200 մ ճանապարհով շարժվում է հավասարաչափ՝ 2 մ/վ արագությամբ։ Երբ վերջնակետին մնացել է 60 մ, ուզում ենք իմանալ՝ մեկնարկից որքան ժամանակ է անցել։ Արդեն անցած ճանապարհը 200 − 60 = 140 մ է, իսկ անցած ժամանակը՝ 140 ÷ 2 = 70 վ։ Այստեղ մնացած ճանապարհից գտանք արդեն անցած ժամանակը։",
+      "textSha256": "55ecfef9bf8ba20f260242d5a723fafaeb8caa90cfd4beed232431e25cb2d5b0",
+      "contrastWithMainQuestion": "The example is given remaining distance and solves elapsed time. The main question is given elapsed time and solves remaining time; known quantities and the intermediate subtraction differ.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S08-I08",
+      "textHy": "Սայլակը A-ից C ընկած 30 սմ տեղամասը հավասարաչափ անցնում է 6 վ-ում, իսկ վերջին՝ B-ից C ընկած 10 սմ-ը՝ 2 վ-ում։ 30 սմ-ը 2 վ-ի բաժանել չի կարելի. դրանք տարբեր տեղամասերի տվյալներ են։ Ամբողջ AC տեղամասի համար պետք է օգտագործել 30 սմ և 6 վ, ուստի արագությունը 5 սմ/վ է։",
+      "textSha256": "135517b78de36ae42ddab411bab8bdeee16893b8765010677a72a1a58622ac16",
+      "contrastWithMainQuestion": "The example diagnoses a mismatched long-path/short-time pair and selects the correct interval. The main task gives two valid pairs and compares their results; it is not another equal-rate data set.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    }
+  ],
+  "reviewedHints": 16,
+  "reviewedWorkedExamples": 8,
+  "limits": "Author checks, not independent native-speaker or SME certification."
+}
