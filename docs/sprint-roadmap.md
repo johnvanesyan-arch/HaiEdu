@@ -138,7 +138,7 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 12.5 | Hybrid | Academic policy and attention-model definitions in chat; state machine, data model, APIs, UI, analytics and QA in Work. |
 | 13 | Work | Release checklist, deployment, migrations, regression and evidence reconciliation. |
 | 14 | Hybrid | Multi-tenant academic architecture first in chat; bounded implementation slices in Work. |
-| 15 | Grade 7 Physics Expansion — Chapters II–VI | 🟡 | Chapter II provisional pilot and 91/91 live switching acceptance are preserved. Chapter III all 96 questions, 80 guides and 206 definitions are content-reviewed under 15C.13R. The 15C.14 assessment/readiness proposal awaits owner decision and implementation. Chapter III remains inactive/unallocated; SME/exposure and qualified forms remain open. Chapters IV–VI remain unmodeled. [Current status](project-status.md). |
+| 15 | Hybrid | Content-governance and curriculum design in chat; reviewer editor, bulk ingestion and technical QA in Work. |
 | 16 | Work | Physics course integration and regression through the shared subject-neutral contracts. |
 | 16.1 | Hybrid | Mathematics curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
 | 16.2 | Hybrid | Armenian-language curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
