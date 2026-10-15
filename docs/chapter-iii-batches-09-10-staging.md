@@ -1,5 +1,7 @@
 # Chapter III batches 09 and 10 — staging and verification
 
+**Current queue,2026-10-15:** remaining reviews are consolidated under 15C.13: 55 questions, 40 guides and 119 definitions across Batches 06–12. Sixteen assessment candidates were added under a bounded owner instruction; the contract remains open. [Batches 11–12 staging](chapter-iii-batches-11-12-staging.md) records current totals and gates; counts and next steps below are historical staging observations.
+
 **2026-10-15 · Sprints 15C.10–15C.11 · Roadmap 3.74**
 
 **Sprints 15C.10 and 15C.11 are staged and verified:** two batches of eight practice questions, sixteen guides and forty definitions. All 32 hints and 16 worked examples received separate natural-Armenian, physics and pedagogical checks. Question QA and saved-guide validation pass 16/16; both rollback rehearsals, independent exact readbacks and all 39 preservation scopes per batch pass.

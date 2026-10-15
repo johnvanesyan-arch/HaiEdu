@@ -1,0 +1,892 @@
+{
+  "date": "2026-10-15",
+  "preparedComparisonCommit": "90e883798c3fdfd5a91ecee79750c3abfeddcb6c",
+  "batch11": {
+    "batch": 11,
+    "sprint": "15C.12",
+    "preparedComparisonCommit": "90e883798c3fdfd5a91ecee79750c3abfeddcb6c",
+    "committedAt": "2026-10-15T10:38:38.290598+00:00",
+    "readbackAt": "2026-10-15T10:38:43.267987+00:00",
+    "sourceMain": "1f058d94aa53d506b0d9bad8a2c7178fbc640383",
+    "manifest": {
+      "codes": [
+        "PHY7-U03-S01-D01",
+        "PHY7-U03-S02-D01",
+        "PHY7-U03-S03-D01",
+        "PHY7-U03-S04-D01",
+        "PHY7-U03-S05-D01",
+        "PHY7-U03-S06-D01",
+        "PHY7-U03-S07-D01",
+        "PHY7-U03-S08-D01"
+      ],
+      "templates": [
+        "PHY7-U03-S01-D01-F01-T01",
+        "PHY7-U03-S02-D01-F01-T01",
+        "PHY7-U03-S03-D01-F01-T01",
+        "PHY7-U03-S04-D01-F01-T01",
+        "PHY7-U03-S05-D01-F01-T01",
+        "PHY7-U03-S06-D01-F01-T01",
+        "PHY7-U03-S07-D01-F01-T01",
+        "PHY7-U03-S08-D01-F01-T01"
+      ],
+      "families": [
+        "PHY7-U03-S01-D01-F01",
+        "PHY7-U03-S02-D01-F01",
+        "PHY7-U03-S03-D01-F01",
+        "PHY7-U03-S04-D01-F01",
+        "PHY7-U03-S05-D01-F01",
+        "PHY7-U03-S06-D01-F01",
+        "PHY7-U03-S07-D01-F01",
+        "PHY7-U03-S08-D01-F01"
+      ],
+      "deltas": {
+        "items": 8,
+        "item_options": 32,
+        "item_answer_keys": 8,
+        "item_families": 8,
+        "item_templates": 8,
+        "item_versions": 8,
+        "item_curriculum_scopes": 8,
+        "misconceptions": 14,
+        "item_misconception_mappings": 24,
+        "item_family_curriculum_reconciliations": 8,
+        "curriculum_release_item_families": 8,
+        "item_template_remediation_guides": 0,
+        "remediation_guide_versions": 0,
+        "remediation_guide_authoring_versions": 0
+      },
+      "definitions": [
+        "PHY7-U03-S01-M23",
+        "PHY7-U03-S02-M13",
+        "PHY7-U03-S02-M14",
+        "PHY7-U03-S02-M15",
+        "PHY7-U03-S03-M28",
+        "PHY7-U03-S03-M29",
+        "PHY7-U03-S04-M23",
+        "PHY7-U03-S05-M22",
+        "PHY7-U03-S06-M13",
+        "PHY7-U03-S06-M14",
+        "PHY7-U03-S07-M38",
+        "PHY7-U03-S07-M39",
+        "PHY7-U03-S08-M25",
+        "PHY7-U03-S08-M26"
+      ],
+      "specHashes": [
+        "6ac8c22cd9be46a67f64409e78a5898c6029250fe8c35bb9f9d69eaa22af90df",
+        "7297b7ef96d3927bd1896f5835febc1e95e755bdfc86d74cb6da125956ce3eda",
+        "a689cf4a69550d394bfff2b62c9806dad8dd6e1d998eda900ba7d249ecad0cc8",
+        "0af097726fb09170694f8b8712de7427984323ca31fea331935c0b8e4954e896",
+        "6f3c2b913e2a237773da6b4d8e081b0d1dea08381a98f012fb106d2fb35332fb",
+        "5628e3819a4d7610b46290cfde656f36fbbe5b66475b8132c70c919d6bbbaa42",
+        "479e3078a03f4191246f3c0dd87015cddc1b13b4ce62f526404c9c08f31a56e7",
+        "d10942a7a4fb42c6cdb96b4347ec8f4193754a943bdd5c0a74f49ac9fc0c6d7b"
+      ]
+    },
+    "rollback": {
+      "ran": true,
+      "all39BaselineFingerprintsUnchanged": true,
+      "questionsPassed": 8,
+      "guidesAdded": 0,
+      "exactSpecsSnapshotsKeysMappings": true
+    },
+    "preservationChecks": [
+      {
+        "table": "assessment_blueprints",
+        "beforeCount": 11,
+        "finalCount": 11,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "assessment_form_items",
+        "beforeCount": 160,
+        "finalCount": 160,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "assessment_forms",
+        "beforeCount": 9,
+        "finalCount": 9,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "assessment_policy_bindings",
+        "beforeCount": 4,
+        "finalCount": 4,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "assessment_pool_items",
+        "beforeCount": 472,
+        "finalCount": 472,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "assessment_pools",
+        "beforeCount": 7,
+        "finalCount": 7,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "attempts",
+        "beforeCount": 42,
+        "finalCount": 42,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "chapter_review_item_exposures",
+        "beforeCount": 0,
+        "finalCount": 0,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "curriculum_release_gate_checks",
+        "beforeCount": 21,
+        "finalCount": 21,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "curriculum_release_item_families",
+        "beforeCount": 310,
+        "finalCount": 318,
+        "expectedDelta": 8,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "curriculum_release_skills",
+        "beforeCount": 26,
+        "finalCount": 26,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "curriculum_release_units",
+        "beforeCount": 4,
+        "finalCount": 4,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "curriculum_releases",
+        "beforeCount": 4,
+        "finalCount": 4,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "curriculum_source_documents",
+        "beforeCount": 3,
+        "finalCount": 3,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_answer_keys",
+        "beforeCount": 533,
+        "finalCount": 541,
+        "expectedDelta": 8,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_curriculum_scopes",
+        "beforeCount": 533,
+        "finalCount": 541,
+        "expectedDelta": 8,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_families",
+        "beforeCount": 311,
+        "finalCount": 319,
+        "expectedDelta": 8,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_family_curriculum_reconciliations",
+        "beforeCount": 311,
+        "finalCount": 319,
+        "expectedDelta": 8,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_misconception_mappings",
+        "beforeCount": 1058,
+        "finalCount": 1082,
+        "expectedDelta": 24,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_options",
+        "beforeCount": 1524,
+        "finalCount": 1556,
+        "expectedDelta": 32,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_qa_runs",
+        "beforeCount": 811,
+        "finalCount": 819,
+        "expectedDelta": 8,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_reviews",
+        "beforeCount": 765,
+        "finalCount": 765,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_template_remediation_guides",
+        "beforeCount": 146,
+        "finalCount": 146,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_templates",
+        "beforeCount": 311,
+        "finalCount": 319,
+        "expectedDelta": 8,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "item_versions",
+        "beforeCount": 410,
+        "finalCount": 418,
+        "expectedDelta": 8,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "items",
+        "beforeCount": 533,
+        "finalCount": 541,
+        "expectedDelta": 8,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "learning_model_runtime_bindings",
+        "beforeCount": 2,
+        "finalCount": 2,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "learning_outcomes",
+        "beforeCount": 19,
+        "finalCount": 19,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "learning_session_items",
+        "beforeCount": 96,
+        "finalCount": 96,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "misconception_review_events",
+        "beforeCount": 352,
+        "finalCount": 352,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "misconceptions",
+        "beforeCount": 450,
+        "finalCount": 464,
+        "expectedDelta": 14,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "remediation_guide_authoring_versions",
+        "beforeCount": 512,
+        "finalCount": 512,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "remediation_guide_versions",
+        "beforeCount": 283,
+        "finalCount": 283,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "skill_curriculum_reconciliations",
+        "beforeCount": 26,
+        "finalCount": 26,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "skill_outcome_curriculum_mappings",
+        "beforeCount": 31,
+        "finalCount": 31,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "skill_outcomes",
+        "beforeCount": 31,
+        "finalCount": 31,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "skill_remediation_guides",
+        "beforeCount": 10,
+        "finalCount": 10,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "skills",
+        "beforeCount": 27,
+        "finalCount": 27,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      },
+      {
+        "table": "student_item_exposure_events",
+        "beforeCount": 44,
+        "finalCount": 44,
+        "expectedDelta": 0,
+        "passed": true,
+        "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+      }
+    ],
+    "finalInventory": {
+      "pools": 0,
+      "guides": [
+        {
+          "count": 40,
+          "status": "draft"
+        },
+        {
+          "count": 40,
+          "status": "published"
+        }
+      ],
+      "bySkill": [
+        {
+          "code": "PHY7-U03-S01",
+          "draft": 5,
+          "approved": 6,
+          "questions": 11
+        },
+        {
+          "code": "PHY7-U03-S02",
+          "draft": 3,
+          "approved": 4,
+          "questions": 7
+        },
+        {
+          "code": "PHY7-U03-S03",
+          "draft": 8,
+          "approved": 5,
+          "questions": 13
+        },
+        {
+          "code": "PHY7-U03-S04",
+          "draft": 6,
+          "approved": 5,
+          "questions": 11
+        },
+        {
+          "code": "PHY7-U03-S05",
+          "draft": 4,
+          "approved": 5,
+          "questions": 9
+        },
+        {
+          "code": "PHY7-U03-S06",
+          "draft": 6,
+          "approved": 5,
+          "questions": 11
+        },
+        {
+          "code": "PHY7-U03-S07",
+          "draft": 9,
+          "approved": 6,
+          "questions": 15
+        },
+        {
+          "code": "PHY7-U03-S08",
+          "draft": 6,
+          "approved": 5,
+          "questions": 11
+        }
+      ],
+      "releases": [
+        {
+          "id": "9f93b58d-e1a2-49ba-ba96-89e76c697884",
+          "status": "legacy",
+          "release_key": "physics7_u01_legacy_pre_11k",
+          "activated_at": "2026-09-19T06:45:24.76571+00:00"
+        },
+        {
+          "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+          "status": "pilot",
+          "release_key": "physics7_u01_2026_08_14_pilot_r1",
+          "activated_at": "2026-09-19T06:45:24.76571+00:00"
+        },
+        {
+          "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+          "status": "pilot",
+          "release_key": "physics7_u02_2026_08_14_pilot_r2",
+          "activated_at": "2026-10-13T17:38:42.811795+00:00"
+        },
+        {
+          "id": "b626705a-a355-5937-b20b-38550dc5b0fe",
+          "status": "draft",
+          "release_key": "physics7_u03_2026_08_14_draft_r3",
+          "activated_at": null
+        }
+      ],
+      "observedAt": "2026-10-15T10:39:08.089467+00:00",
+      "definitions": [
+        {
+          "count": 87,
+          "status": "active"
+        },
+        {
+          "count": 104,
+          "status": "draft"
+        }
+      ],
+      "formMemberships": 0,
+      "latestAuthoring": [
+        {
+          "count": 40,
+          "lifecycle_status": "draft"
+        },
+        {
+          "count": 40,
+          "lifecycle_status": "published"
+        }
+      ],
+      "poolMemberships": 0
+    },
+    "specificationsSha256": "6dc2bd54831e092dfb5895fe956b4fa18009ce2eb9f2152a2470f80742a2963a",
+    "committedCatalogueSha256": "881775e62472df8faf9698c70bbc851bf2d4cf161bd19034a970a80e3b4a3104",
+    "humanApprovalsCreated": 0,
+    "specialistApprovalsCreated": 0,
+    "restrictedEvidenceSha256": "ff3c518cc81902c0d9000f25507a9706a0a42e8638759e41f778f4794c6fb705",
+    "questionQA": {
+      "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+      "method": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+      "results": [
+        {
+          "itemCode": "PHY7-U03-S01-D01",
+          "itemId": "66c851fd-9331-4ec5-a441-098322b2d68e",
+          "versionNo": 1,
+          "fingerprint": "624368dad354ed8f0d23033c99da4011",
+          "passed": true,
+          "errors": [],
+          "warnings": []
+        },
+        {
+          "itemCode": "PHY7-U03-S02-D01",
+          "itemId": "3aac9027-2b0e-4a83-a6d3-9bab2e5a0109",
+          "versionNo": 1,
+          "fingerprint": "7dd416a46448266b2b6a6711a28cef86",
+          "passed": true,
+          "errors": [],
+          "warnings": []
+        },
+        {
+          "itemCode": "PHY7-U03-S03-D01",
+          "itemId": "2099d164-e454-4d84-a9d2-60979d1e65b0",
+          "versionNo": 1,
+          "fingerprint": "07f2b607cfb28858b3389fb7b5794102",
+          "passed": true,
+          "errors": [],
+          "warnings": []
+        },
+        {
+          "itemCode": "PHY7-U03-S04-D01",
+          "itemId": "11689ce5-0469-4725-b073-f3a8cfc8b6c0",
+          "versionNo": 1,
+          "fingerprint": "a6bc2d8b6f72af476396e57336753ccc",
+          "passed": true,
+          "errors": [],
+          "warnings": []
+        },
+        {
+          "itemCode": "PHY7-U03-S05-D01",
+          "itemId": "07f20c27-4227-4bb2-a3c8-66a8e5a5f96a",
+          "versionNo": 1,
+          "fingerprint": "9f819e286ea52780cc9b8f8517f39b37",
+          "passed": true,
+          "errors": [],
+          "warnings": []
+        },
+        {
+          "itemCode": "PHY7-U03-S06-D01",
+          "itemId": "a45f1ff8-396d-4fce-8918-e3b7ee4044b5",
+          "versionNo": 1,
+          "fingerprint": "3771dfc51a3235ce67dd94aea3320fad",
+          "passed": true,
+          "errors": [],
+          "warnings": []
+        },
+        {
+          "itemCode": "PHY7-U03-S07-D01",
+          "itemId": "200fcff1-72a8-4a66-b1b1-c94e38fcf75e",
+          "versionNo": 1,
+          "fingerprint": "b0138501d0a1db537d5cac1c114f6240",
+          "passed": true,
+          "errors": [],
+          "warnings": []
+        },
+        {
+          "itemCode": "PHY7-U03-S08-D01",
+          "itemId": "000866c3-b459-414c-95bb-57bbefc839e9",
+          "versionNo": 1,
+          "fingerprint": "6629f3abf22f43c36c4a124682ad1ff4",
+          "passed": true,
+          "errors": [],
+          "warnings": []
+        }
+      ]
+    },
+    "storedTechnicalQaRows": [
+      {
+        "id": "8d0f850a-2d06-4a2a-ba01-7441127a5799",
+        "itemId": "000866c3-b459-414c-95bb-57bbefc839e9",
+        "version": 1,
+        "passed": true,
+        "runBy": null,
+        "createdAt": "2026-10-15 10:39:03.264343+00"
+      },
+      {
+        "id": "f91108c8-9ad0-45cd-9086-b6e0fc04d9d5",
+        "itemId": "07f20c27-4227-4bb2-a3c8-66a8e5a5f96a",
+        "version": 1,
+        "passed": true,
+        "runBy": null,
+        "createdAt": "2026-10-15 10:39:03.264343+00"
+      },
+      {
+        "id": "52ef0dab-5746-40ba-aef6-fb9baeec3bf6",
+        "itemId": "11689ce5-0469-4725-b073-f3a8cfc8b6c0",
+        "version": 1,
+        "passed": true,
+        "runBy": null,
+        "createdAt": "2026-10-15 10:39:03.264343+00"
+      },
+      {
+        "id": "ceef449a-9cfb-4b34-ba63-11ea428ee45e",
+        "itemId": "200fcff1-72a8-4a66-b1b1-c94e38fcf75e",
+        "version": 1,
+        "passed": true,
+        "runBy": null,
+        "createdAt": "2026-10-15 10:39:03.264343+00"
+      },
+      {
+        "id": "1640936d-9c85-44bc-af5d-d31c97a108c1",
+        "itemId": "2099d164-e454-4d84-a9d2-60979d1e65b0",
+        "version": 1,
+        "passed": true,
+        "runBy": null,
+        "createdAt": "2026-10-15 10:39:03.264343+00"
+      },
+      {
+        "id": "d6693a78-4e26-442a-ad59-2218a2766b80",
+        "itemId": "3aac9027-2b0e-4a83-a6d3-9bab2e5a0109",
+        "version": 1,
+        "passed": true,
+        "runBy": null,
+        "createdAt": "2026-10-15 10:39:03.264343+00"
+      },
+      {
+        "id": "f54da367-9248-4745-b2c4-d9d3f5023fbe",
+        "itemId": "66c851fd-9331-4ec5-a441-098322b2d68e",
+        "version": 1,
+        "passed": true,
+        "runBy": null,
+        "createdAt": "2026-10-15 10:39:03.264343+00"
+      },
+      {
+        "id": "b45212d4-3ce6-4551-aff9-49716ec6f8b0",
+        "itemId": "a45f1ff8-396d-4fce-8918-e3b7ee4044b5",
+        "version": 1,
+        "passed": true,
+        "runBy": null,
+        "createdAt": "2026-10-15 10:39:03.264343+00"
+      }
+    ]
+  },
+  "batch12Baseline": {
+    "tables": [
+      {
+        "row_count": 11,
+        "table_name": "assessment_blueprints",
+        "fingerprint": "51b8853ae72d3be2ecd57ca01b1adc48"
+      },
+      {
+        "row_count": 160,
+        "table_name": "assessment_form_items",
+        "fingerprint": "553d4be9faaa89ed5de52273eddac5af"
+      },
+      {
+        "row_count": 9,
+        "table_name": "assessment_forms",
+        "fingerprint": "595ff706c9068933f7bf5a5958063fa5"
+      },
+      {
+        "row_count": 4,
+        "table_name": "assessment_policy_bindings",
+        "fingerprint": "b1ce52048f635987d2210930b649e275"
+      },
+      {
+        "row_count": 472,
+        "table_name": "assessment_pool_items",
+        "fingerprint": "3ec05f7f1bb5e41bcaf90880d1ad5997"
+      },
+      {
+        "row_count": 7,
+        "table_name": "assessment_pools",
+        "fingerprint": "d0d60d4d5a47219be471029bdd9611c6"
+      },
+      {
+        "row_count": 42,
+        "table_name": "attempts",
+        "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_item_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 21,
+        "table_name": "curriculum_release_gate_checks",
+        "fingerprint": "68e44a9b6fdbe510be2410c49cb2bdf2"
+      },
+      {
+        "row_count": 318,
+        "table_name": "curriculum_release_item_families",
+        "fingerprint": "24f523ff5aaddb5c291ea1962bad759d"
+      },
+      {
+        "row_count": 26,
+        "table_name": "curriculum_release_skills",
+        "fingerprint": "59cd327812a33dd49e4391f44bfd0fcc"
+      },
+      {
+        "row_count": 4,
+        "table_name": "curriculum_release_units",
+        "fingerprint": "f15fc61697744acd305f9d7801c70c6c"
+      },
+      {
+        "row_count": 4,
+        "table_name": "curriculum_releases",
+        "fingerprint": "d7a6bd620e8f2449ce18a9e4a71f8885"
+      },
+      {
+        "row_count": 3,
+        "table_name": "curriculum_source_documents",
+        "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+      },
+      {
+        "row_count": 541,
+        "table_name": "item_answer_keys",
+        "fingerprint": "f8d82381be2b600baff33200d0b1fdf7"
+      },
+      {
+        "row_count": 541,
+        "table_name": "item_curriculum_scopes",
+        "fingerprint": "d82557def629f562d680c8ebab7c1060"
+      },
+      {
+        "row_count": 319,
+        "table_name": "item_families",
+        "fingerprint": "5efe69fd865397f8d2e3f0162fe911f3"
+      },
+      {
+        "row_count": 319,
+        "table_name": "item_family_curriculum_reconciliations",
+        "fingerprint": "bca32615e1a0abfffd80a3976dcf8f34"
+      },
+      {
+        "row_count": 1082,
+        "table_name": "item_misconception_mappings",
+        "fingerprint": "0de9c5cbd1633b002ac49621a19255f1"
+      },
+      {
+        "row_count": 1556,
+        "table_name": "item_options",
+        "fingerprint": "8b5a6f3359b3c471018aac29d638d629"
+      },
+      {
+        "row_count": 819,
+        "table_name": "item_qa_runs",
+        "fingerprint": "5d40cf298b676ec9969c40151fc92ae4"
+      },
+      {
+        "row_count": 765,
+        "table_name": "item_reviews",
+        "fingerprint": "5e1edf0a0cb2c692115d8cc404f1092d"
+      },
+      {
+        "row_count": 146,
+        "table_name": "item_template_remediation_guides",
+        "fingerprint": "6a7267e4603e0c93e60c6adfe52b24d8"
+      },
+      {
+        "row_count": 319,
+        "table_name": "item_templates",
+        "fingerprint": "1255849131b6d68f52e37b6c9fd89612"
+      },
+      {
+        "row_count": 418,
+        "table_name": "item_versions",
+        "fingerprint": "1cea6499edc2a46e599ea4e3cd372b8c"
+      },
+      {
+        "row_count": 541,
+        "table_name": "items",
+        "fingerprint": "184485bcaeb6d7eb02ab71aad50b9feb"
+      },
+      {
+        "row_count": 2,
+        "table_name": "learning_model_runtime_bindings",
+        "fingerprint": "5408c8dd8d0d5e2d182d8d4c42bf4490"
+      },
+      {
+        "row_count": 19,
+        "table_name": "learning_outcomes",
+        "fingerprint": "c589ab20e3348c5cdc7912db7ed74226"
+      },
+      {
+        "row_count": 96,
+        "table_name": "learning_session_items",
+        "fingerprint": "f73f590b4c920298a6e1a8479b6c7a74"
+      },
+      {
+        "row_count": 352,
+        "table_name": "misconception_review_events",
+        "fingerprint": "1975de40a83bd120bcdffafc6e9e9fde"
+      },
+      {
+        "row_count": 464,
+        "table_name": "misconceptions",
+        "fingerprint": "2f22f9eb3918ecbdad1916d93617d2df"
+      },
+      {
+        "row_count": 512,
+        "table_name": "remediation_guide_authoring_versions",
+        "fingerprint": "bcc1942e2ceeb73e416cc57e00d4ae7c"
+      },
+      {
+        "row_count": 283,
+        "table_name": "remediation_guide_versions",
+        "fingerprint": "b9fb0935b8d856688bf5d09bcdaece55"
+      },
+      {
+        "row_count": 26,
+        "table_name": "skill_curriculum_reconciliations",
+        "fingerprint": "6243c24c3bca7ef36533ce2e4c2398ef"
+      },
+      {
+        "row_count": 31,
+        "table_name": "skill_outcome_curriculum_mappings",
+        "fingerprint": "de8275993062380c4757febd007f7a54"
+      },
+      {
+        "row_count": 31,
+        "table_name": "skill_outcomes",
+        "fingerprint": "e69c6ead7130ec12a494da1ad3bf21c7"
+      },
+      {
+        "row_count": 10,
+        "table_name": "skill_remediation_guides",
+        "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+      },
+      {
+        "row_count": 27,
+        "table_name": "skills",
+        "fingerprint": "276f56c290f7d3ad3a106ff8b70e4711"
+      },
+      {
+        "row_count": 44,
+        "table_name": "student_item_exposure_events",
+        "fingerprint": "4807b78c602d7a75ac8d0cd747a17188"
+      }
+    ],
+    "observedAt": "2026-10-15T10:39:39.059984+00:00"
+  },
+  "newComparisonCorpus": "Batch11 exact committed specifications and full saved catalogue were already compared as all64 cross-batch pairs; all39 table changes exactly match its declared additions and8 technical QA rows. No human approvals or other content changed.",
+  "batch12SpecsSha256": "06ed1ac29a8d65263c241fa75c661d511b26965751fb5076e7b34acf7f199992",
+  "decision": "Proceed with the same8 prepared Mastery candidates; no scope expansion or qualification.",
+  "rollbackCorrection": {
+    "code": "difficulty_band_mismatch",
+    "affected": [
+      "PHY7-U03-S07-M01",
+      "PHY7-U03-S08-M01"
+    ],
+    "correction": "difficulty3 maps to core in deployed evaluator; corrected metadata before any committed Mastery write. Prompts/options/keys unchanged; rollback left all39 fingerprints unchanged.",
+    "comparison": "No semantic change; exact specification hashes refreshed."
+  },
+  "restrictedArtifact": {
+    "libraryFileId": "libfile_4088fff3ae648191901e9f31482a6325",
+    "fileName": "HaiEdu-Chapter-III-Batches-11-12-Restricted-Evidence.zip",
+    "version": 0,
+    "sha256": "acd69f73b516d29c2c1c08711f9bbe36f7e1e45532c34c1c5fd9664c3ffe3d27",
+    "bytes": 1842619,
+    "memberCount": 48,
+    "freshReadbackVerified": true,
+    "memberHashesVerified": 47,
+    "crcPassed": true,
+    "access": "Owner-held restricted evidence; not shared or published as learner material."
+  }
+}

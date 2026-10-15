@@ -1,6 +1,6 @@
 # Chapter III batch 07 — staging and verification
 
-**Current queue, 2026-10-15:** remaining reviews are consolidated under 15C.11: 39 questions, 40 guides and 90 definitions across Batches 06–10. S01-I06 v1 is now approved; other prior wording and approvals are unchanged. [Batches 09–10 staging](chapter-iii-batches-09-10-staging.md) records current totals; earlier counts below are historical staging observations.
+**Current queue,2026-10-15:** remaining reviews are consolidated under 15C.13: 55 questions, 40 guides and 119 definitions across Batches 06–12. Sixteen assessment candidates were added under a bounded owner instruction; the contract remains open. [Batches 11–12 staging](chapter-iii-batches-11-12-staging.md) records current totals and gates; counts and next steps below are historical staging observations.
 
 **2026-10-15 · Sprint 15C.8 · Roadmap 3.71**
 
