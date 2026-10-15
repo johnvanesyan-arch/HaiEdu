@@ -1,0 +1,492 @@
+{
+  "date": "2026-10-15",
+  "author": "Codex automated author; human and specialist review pending",
+  "scope": "32 exact hints and 16 worked examples read alongside their prompts/options/explanations/strategies; separate language, physics and pedagogy checks.",
+  "records": [
+    {
+      "code": "PHY7-U03-S01-I09",
+      "hint": 1,
+      "textHy": "Եթե նավակների միջև հեռավորությունը մեծանում է, կարո՞ղ է նրանց փոխադարձ դիրքը մնալ նույնը։",
+      "textSha256": "04cc04135a238eaaf6d186beb491340c7beb834256a850e8f98148ec67c89ec7",
+      "languageAndPedagogyJudgment": "Relate changed separation to mutual positions.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S01-I09",
+      "hint": 2,
+      "textHy": "Առանձին մտածիր մյուս նավակի նկատմամբ շարժման և ափի նկատմամբ շարժման մասին։ Նույն տեղեկությունն ունե՞նք երկուսի համար։",
+      "textSha256": "07630c1b62b601f81500a13253a949b052dca7501b9c53773e8f8ae4938a4598",
+      "languageAndPedagogyJudgment": "Separate the given mutual relation from unknown shore motion.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I10",
+      "hint": 1,
+      "textHy": "Հետագծի սահմանման մեջ տեսանելի հետք թողնելու պահանջ կա՞։",
+      "textSha256": "5ac47649ea10e6861f99cfe1e5efd8ddb5b1f406606b118e6decd437e57bdc19",
+      "languageAndPedagogyJudgment": "Recall whether visibility is part of the definition.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I10",
+      "hint": 2,
+      "textHy": "Մտքում հաջորդաբար նշիր թռչնի դիրքերը գետնի նկատմամբ։ Այդ դիրքերը նկարագրող գիծը կարելի՞ է պատկերացնել առանց թողած հետքի։",
+      "textSha256": "6c23559dc656bbae1d05fb245bfe8297ab2b746aa2f6540ffbae584a58030af5",
+      "languageAndPedagogyJudgment": "Imagine successive positions without assigning a trajectory shape.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I11",
+      "hint": 1,
+      "textHy": "Ի՞նչ մեծություն է ճանապարհը՝ երկարությո՞ւն, մակերե՞ս, թե՞ ծավալ։",
+      "textSha256": "d52313b20fcbd76d935359be9488e71a1d3e03e3f4f8156de44a8a5af9af2a83",
+      "languageAndPedagogyJudgment": "Identify the measured quantity before its unit.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I11",
+      "hint": 2,
+      "textHy": "Մեծության անվանումն ու միավորը պետք է համապատասխանեն։ Ո՞ր նշումն է երկարության միավորը։",
+      "textSha256": "772a3d4ad3a796f52fe421d3e12a90591fdc1c77d1c009723e24426ca271b89f",
+      "languageAndPedagogyJudgment": "Choose a length unit without repeating the correct option.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S04-I09",
+      "hint": 1,
+      "textHy": "Նոր գրանցման ժամանակամիջոցը հնի ո՞ր մասն է։",
+      "textSha256": "887bc10711f2b5930804564f313aa0d2bdb22c3bec762a10c08c8599825db54f",
+      "languageAndPedagogyJudgment": "Compare the two recording intervals.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S04-I09",
+      "hint": 2,
+      "textHy": "Հավասարաչափ շարժման դեպքում հին 2 վ-ը բաժանիր երկու հավասար մասի։ Այդ մասերում անցած ճանապարհներն ինչպե՞ս կհամեմատվեն։",
+      "textSha256": "b2d815e90d3abab710876f32bcccc15525378f584ed08d1411d40d2d7b90e6f1",
+      "languageAndPedagogyJudgment": "Partition the old interval; leave the new distance to calculate.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S06-I09",
+      "hint": 1,
+      "textHy": "Նախ որոշիր՝ մեկ ժամում քանի մետր ճանապարհ է համապատասխանում այս արագությանը։",
+      "textSha256": "40dae3a9fb6f37d2fac3c2ec8269357c12d911837c46efe0e87615dadb7bef28",
+      "languageAndPedagogyJudgment": "Convert the denominator to an hour first.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S06-I09",
+      "hint": 2,
+      "textHy": "Մ/ժ ստանալուց հետո ի՞նչ պետք է անել, որպեսզի մետրերը դառնան կիլոմետրեր։",
+      "textSha256": "6822d6fb10d3791dfdb5a0ec15ee6a11dfc0b664ae378cdd736160ce79476ebf",
+      "languageAndPedagogyJudgment": "Then convert metres to kilometres without the result.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I10",
+      "hint": 1,
+      "textHy": "Հիշիր՝ ճանապարհի բանաձևում արագությունն ու ժամանակը ինչպե՞ս են կապված։",
+      "textSha256": "9062e4bd61804de882c11346b11e9a56cb331f270cc114414dc46938c44499c3",
+      "languageAndPedagogyJudgment": "Recall that both speed and time enter the path formula.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I10",
+      "hint": 2,
+      "textHy": "Նախ պատկերացրու միայն արագության կրկնապատկումը, ապա արդեն այդ շարժման ժամանակի եռապատկումը։",
+      "textSha256": "a72ada638df521a8bbf2e32cd0c6ec33d1a83f9a291c54a3b770e05dc8a8565a",
+      "languageAndPedagogyJudgment": "Track both multiplicative changes without multiplying them for the student.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I11",
+      "hint": 1,
+      "textHy": "Տրված 20 վ-ը ո՞ր ճանապարհին է վերաբերում՝ մեկ տեղամասի՞, թե՞ երկուսի միասին։",
+      "textSha256": "344a79b979c1410d8bf4fc5e2b9ca1d11cb0ebe41d3432240e46082157506074",
+      "languageAndPedagogyJudgment": "Identify the route to which the recorded total time belongs.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I11",
+      "hint": 2,
+      "textHy": "Նախ գտիր այդ ամբողջ ժամանակում անցած ճանապարհը, հետո կիրառիր արագության բանաձևը։",
+      "textSha256": "8ebf8e4e28b443e3dea2c1d24574a7f1979e22ad47388bb449e2d987067b0045",
+      "languageAndPedagogyJudgment": "Assemble that whole path before the division.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S08-I09",
+      "hint": 1,
+      "textHy": "12 թիվը կարող է նշանակել և՛ մետրեր, և՛ սանտիմետրեր։ Դրանք նո՞ւյն ճանապարհն են։",
+      "textSha256": "d9c22b014a990d0c44d0ee48e719f502b9ece39943d81a61b997a7cb9fd1f744",
+      "languageAndPedagogyJudgment": "Recognize that the same numeral can denote different lengths.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S08-I09",
+      "hint": 2,
+      "textHy": "Բաժանման արդյունքում ստացվող միավորը ինչի՞ց է կախված։",
+      "textSha256": "0d4f468ff7264801a66568744f7943ae8ee2c2b79bcdc7cb7f0358bca17fec02",
+      "languageAndPedagogyJudgment": "Connect quotient units to measurement units.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S01-I10",
+      "hint": 1,
+      "textHy": "Լուսանկարները տեղեկություն տալի՞ս են նաև այդ երկու պահերի միջև եղած բոլոր դիրքերի մասին։",
+      "textSha256": "da3faddece0957945635a725553b3390c9acebf11b5962d7b3bf9fcc760d6fb3",
+      "languageAndPedagogyJudgment": "Check what the two records do not observe.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S01-I10",
+      "hint": 2,
+      "textHy": "Կարելի՞ է նույն տեղում հայտնվել՝ մինչ այդ ուրիշ տեղ եղած լինելով։",
+      "textSha256": "b0a75c25df5d3aae9a2651c0fb90519186511571d976c0ebd10013be8953f3f8",
+      "languageAndPedagogyJudgment": "Consider return as a possibility, not an asserted actual event.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I12",
+      "hint": 1,
+      "textHy": "Հետ շարժվելիս նախկինում անցած ճանապարհը ջնջվո՞ւմ է։",
+      "textSha256": "f66d1f1fe8497092bfc956b2ba2ae57a5749b604f9badc0351c3809a2836d6ef",
+      "languageAndPedagogyJudgment": "Check whether returning erases travelled path.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S03-I12",
+      "hint": 2,
+      "textHy": "Տարբերիր մեկնարկից հեռավորությունը և մեկնարկից ի վեր անցած ամբողջ ճանապարհը։",
+      "textSha256": "54d3528a2adf5978499bea36c90c29d042d97dc3fd9964d6b4605f21bbb07062",
+      "languageAndPedagogyJudgment": "Separate accumulated path from distance from the start.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S04-I10",
+      "hint": 1,
+      "textHy": "Եթե գտնես երկու հավասար ժամանակամիջոց, որոնցում ճանապարհները տարբեր են, պնդումը կարո՞ղ է ճիշտ լինել։",
+      "textSha256": "7c7a0a274a087c213e049b8b0a46bac62fd38591fabf63a12ee20b0b15c5da08",
+      "languageAndPedagogyJudgment": "Identify a sufficient counterexample to uniformity.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S04-I10",
+      "hint": 2,
+      "textHy": "Յուրաքանչյուր տարբերակը համեմատիր առաջին չափման հետ՝ հաշվի առնելով և՛ ճանապարհը, և՛ ժամանակը։",
+      "textSha256": "882d9104006da4da5791d144740d190f3dc533462e12ed7d87d8b13259d33433",
+      "languageAndPedagogyJudgment": "Compare both duration and path for each option.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S06-I10",
+      "hint": 1,
+      "textHy": "Երկու արագությունները նախ արտահայտիր նույն միավորով։",
+      "textSha256": "bc58b628c7fca7f9cf1159edab7c5d5536428954c8752591414acc5a5adaab34",
+      "languageAndPedagogyJudgment": "Normalize units before comparing.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S06-I10",
+      "hint": 2,
+      "textHy": "«Քանի անգամ» հարցին պատասխանելու համար նույն միավորով արտահայտված մեծ արագությունն ինչպե՞ս կհամեմատես փոքրին։",
+      "textSha256": "cf66e1ffe0a4aba8784a697a2bec04f65f135c6de8f8d41dfcd272ec143bfdfa",
+      "languageAndPedagogyJudgment": "Use division for a multiplicative comparison; no ratio supplied.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I12",
+      "hint": 1,
+      "textHy": "Յուրաքանչյուր ճանապարհի համար առանձին որոշիր անցնելու ժամանակը։",
+      "textSha256": "47446b1f619eb9d383de0607c0be853a537d04c46ffc72cc6448928fb922e1ef",
+      "languageAndPedagogyJudgment": "Calculate each route duration using its own data.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I12",
+      "hint": 2,
+      "textHy": "Ավելի շուտ տեղ հասնելը ժամանակի ավելի մե՞ծ, թե՞ ավելի փոքր արժեքին է համապատասխանում։",
+      "textSha256": "b01ddc15e899894cb20cb56f984ee84039f28e427fb5fde305f475950838210d",
+      "languageAndPedagogyJudgment": "Interpret which duration corresponds to earlier arrival.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I13",
+      "hint": 1,
+      "textHy": "Նախ հաշվիր ճանապարհի տևողությունը և արտահայտիր րոպեներով։",
+      "textSha256": "d506505f70a96f13f0a05b717db48d881b69959565ef6e3938f6b530fe078731",
+      "languageAndPedagogyJudgment": "Find and convert duration before using clock readings.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I13",
+      "hint": 2,
+      "textHy": "Տեղ հասնելու պահը գտնելու համար տևողությունը պետք է միացնես մեկնման ժամին։ Ժամը 10:00-ին հասնելիս քանի՞ րոպե կմնա։",
+      "textSha256": "1da86f0be3d14be2e0a3cf3afa341e3d2b295b64e7f508ca227e76257e4b0e5a",
+      "languageAndPedagogyJudgment": "Break clock addition at the next hour without supplying arrival time.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I14",
+      "hint": 1,
+      "textHy": "Քայլերի թիվը դեռ մետրերով ճանապարհ չէ։ Ինչպե՞ս կօգտագործես մեկ քայլի երկարությունը։",
+      "textSha256": "0ee1382bbc78acee7ef71d98c16171f9d4780ab12740941297057114dedbdcb5",
+      "languageAndPedagogyJudgment": "Convert the step count into a length.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S07-I14",
+      "hint": 2,
+      "textHy": "Մետրերով ամբողջ ճանապարհը գտնելուց հետո ո՞ր ժամանակին պետք է այն բաժանես։",
+      "textSha256": "3a589cb9a69cee79ca17801beda5bb5a213df9833a72dcb802cc237481f27bfc",
+      "languageAndPedagogyJudgment": "Pair the derived total path with its actual duration.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S08-I10",
+      "hint": 1,
+      "textHy": "Ո՞ր գծի երկայնքով է պղպջակը A-ից B շարժվում։",
+      "textSha256": "5121f063d36a2908ec1d1819127b6bd28cd014401d21820b8c897c50a91adcde",
+      "languageAndPedagogyJudgment": "Identify the direction of the actual path.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    },
+    {
+      "code": "PHY7-U03-S08-I10",
+      "hint": 2,
+      "textHy": "Քանոնի դիրքն ու չափման ծայրակետերը պետք է համապատասխանեն հենց այդ անցած տեղամասին։",
+      "textSha256": "2840927988147a8bf58c8745a5d87af3886c8719f77ff969c18752a31b7a463b",
+      "languageAndPedagogyJudgment": "Match ruler orientation and endpoints to that path.",
+      "naturalArmenianAuthorCheck": true,
+      "subjectMeaningCheckedSeparately": true,
+      "progressiveSequenceChecked": true,
+      "directAnswerLeak": false
+    }
+  ],
+  "workedExamples": [
+    {
+      "code": "PHY7-U03-S01-I09",
+      "textHy": "Երկու ավտոբուս կողք կողքի շարժվում են ուղիղ ճանապարհով և ամբողջ ընթացքում պահպանում միմյանց նկատմամբ նույն դիրքը։ Առաջինն անշարժ է երկրորդի նկատմամբ, իսկ երկրորդը՝ առաջինի նկատմամբ։ Երկուսն էլ միաժամանակ շարժվում են ճանապարհի նկատմամբ։",
+      "textSha256": "bd27cda84cbf8dc978831feff7d22ce9dcb10575bba63fc003ca214f1931d076",
+      "contrastWithMainQuestion": "The example uses mutually fixed positions and reciprocal rest, not changing separation. It also distinguishes the third reference frame. Existing I04 scaffolding is intentionally exposed.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S03-I10",
+      "textHy": "Մատիտի ծայրը թղթի վրա շրջանագիծ է գծում։ Թղթին մնացած գրաֆիտե հետքը թույլ է տալիս տեսնել ծայրի անցած գիծը։ Հետագիծը նկարագրում է շարժման ձևը, իսկ գրաֆիտը պարզապես այդ գիծը տեսանելի է դարձնում։",
+      "textSha256": "4e90a55a82c49610269f11e9fd43df7fbf11830cae3bccb022ccea9f65a105f7",
+      "contrastWithMainQuestion": "The example explains what a visible graphite trace contributes. The main question concerns an invisible trajectory and rejects a visibility requirement.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S03-I11",
+      "textHy": "Բեկյալ ճանապարհի երկու մասերն ունեն 2 դմ և 30 սմ երկարություն։ 2 դմ = 20 սմ, ուստի ամբողջ երկարությունը 20 + 30 = 50 սմ է։ Գումարելիս պահպանեցինք երկարության միավորը. արդյունքը մակերես չի դարձել։",
+      "textSha256": "da0890a7bbc1e033f42227562a4e078f32ad730ad92fea6e7c65521d58cd021d",
+      "contrastWithMainQuestion": "The example adds two path lengths after converting a length unit. It does not correct a squared-unit label or repeat the main numerical record.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S04-I09",
+      "textHy": "Երկու սայլակ ուղիղ գծով շարժվում են առանց հետ դառնալու։ Նրանց դիրքերը նշում են յուրաքանչյուր 3 վ-ը մեկ։ Առաջին սայլակի հարևան նշումների հեռավորությունը 9 սմ է, երկրորդինը՝ 15 սմ։ Քանի որ գրանցման ժամանակամիջոցները նույնն են, երկրորդ սայլակն այդ ժամանակամիջոցում ավելի մեծ ճանապարհ է անցել։ Այստեղ ժամանակամիջոցը հաստատուն պահեցինք և համեմատեցինք ճանապարհները։",
+      "textSha256": "7b5cb1c62f45db4d505c4f4c1939c8d300a1aafbe724ef311eff0408303c7b56",
+      "contrastWithMainQuestion": "The example compares two carts with the same sampling interval. The main task compares two sampling intervals for the same cart; the controlled quantity differs.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S06-I09",
+      "textHy": "Արագությունը 8 մ/վ է։ Երկարության միավորը մետրից սանտիմետր փոխելիս՝ 8 մ = 800 սմ, ստանում ենք 800 սմ/վ։ Վայրկյանը չենք փոխել։ Այս օրինակում անհրաժեշտ էր միայն երկարության միավորի փոխարկում։",
+      "textSha256": "663e0fc9d2799b5e310c599de20367c3cd0a02190f67169cbe7cdb5041a703ab",
+      "contrastWithMainQuestion": "The example changes only the length unit and retains seconds. It leaves both the minute-to-hour and metre-to-kilometre combination for the main task.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S07-I10",
+      "textHy": "Սայլակը երկու փորձում էլ շարժվում է 4 մ/վ արագությամբ։ Առաջին փորձը տևում է 5 վ, երկրորդը՝ 10 վ։ Ճանապարհներն են 20 մ և 40 մ։ Ժամանակը կրկնապատկվել է, իսկ արագությունը նույնն է մնացել, ուստի ճանապարհը միայն կրկնապատկվել է։",
+      "textSha256": "7381dca6a195df05bf7046fa1ee1da2298f6ec2af54e5f16a72b3117921a97d4",
+      "contrastWithMainQuestion": "The example changes only time at fixed speed and supplies concrete paths. The main question changes both factors and asks for their combined ratio.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S07-I11",
+      "textHy": "Սայլակը 30 մ ճանապարհն անցնում է հավասարաչափ։ Առաջին նշումից մինչև միջանկյալ նշումը անցնում է 2 վ, իսկ այնտեղից մինչև վերջինը՝ 3 վ։ Ամբողջ ճանապարհի ժամանակը 2 + 3 = 5 վ է, ուստի արագությունը 30 ÷ 5 = 6 մ/վ։ Այստեղ գումարեցինք ժամանակները, քանի որ ամբողջ ճանապարհն արդեն հայտնի էր։",
+      "textSha256": "68e25eaf5cecdf94d2f1912ede533624683095779a6cf9019237af0748ee1f2e",
+      "contrastWithMainQuestion": "The example is given one total path and must add two durations. The main task is given one duration and must add two path portions; the assembled quantity differs.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S08-I09",
+      "textHy": "Փորձագրության մեջ նշված է՝ 0,3 մ ճանապարհը անցել է 6 վ-ում։ Երկու միավորն էլ հայտնի են, ուստի արագությունը 0,3 ÷ 6 = 0,05 մ/վ է։ Այստեղ մ/վ-ն հիմնավորված է չափումների միավորներով, ոչ միայն բաժանման արդյունքով։",
+      "textSha256": "4185ab33ec25727282b5d499634e35c0daa812da31481c1dc71e8829ce28db42",
+      "contrastWithMainQuestion": "The example supplies complete measurements and calculates a valid SI speed. The main task asks whether incomplete measurements permit that calculation at all.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S01-I10",
+      "textHy": "Աշակերտն ամբողջ փորձի ընթացքում հետևում է սեղանին դրված բաժակին և արձանագրում, որ բաժակի դիրքը սեղանի նկատմամբ չի փոխվում։ Այդ դիտարկումը թույլ է տալիս ասել, որ բաժակը տվյալ ընթացքում սեղանի նկատմամբ անշարժ է։ Այստեղ տեղեկությունը վերաբերում է ամբողջ ընթացքին, ոչ միայն երկու առանձին պահի։",
+      "textSha256": "a45cf4c7470c435558b60f72f23742fd510dcafe94778c3775462d8a9206fe56",
+      "contrastWithMainQuestion": "The example gives explicit continuous observation supporting rest. The main task has only two observations and cannot support that claim. It does not repeat a return journey.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S03-I12",
+      "textHy": "Երեխան 4 մ քայլում է մինչև դարպասը, ապա նույն ճանապարհով 4 մ վերադառնում։ Նրա ամբողջ ճանապարհը 4 + 4 = 8 մ է, թեև վերջում մեկնարկից հեռավորությունը զրո է։ Հետադարձ մասը նույնպես հաշվվեց որպես անցած ճանապարհ։",
+      "textSha256": "387125e8448a6e0fbc1150c658606f70654b806bb38ae4d0a9e9bfce9c847951",
+      "contrastWithMainQuestion": "The example computes a known out-and-back route. The main question tests whether a cumulative record is possible when the actual route is unknown.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S04-I10",
+      "textHy": "Հետիոտնը առաջին րոպեում անցնում է 60 մ, երկրորդում՝ նույնպես 60 մ։ Այդ երկու գրառումը համատեղելի են հավասարաչափ շարժման հետ։ Բայց առանց ավելի մանրամասն դիտարկման չենք կարող բացառել, որ յուրաքանչյուր րոպեի մի մասում նա արագացրել, իսկ մյուս մասում դանդաղեցրել է քայլքը։",
+      "textSha256": "ecee29dcfc29845ade69c086661b813e28f4505ea9430e14e57d37b91071f806",
+      "contrastWithMainQuestion": "The example concerns matching coarse observations that cannot prove uniformity. The main task asks for a decisive incompatible observation.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S06-I10",
+      "textHy": "Մի գործողությունը տևում է 1 րոպե, մյուսը՝ 20 վ։ 1 րոպե = 60 վ, ուստի առաջին գործողությունը տևում է 60 ÷ 20 = 3 անգամ ավելի երկար։ Այստեղ նույն միավորին բերեցինք ժամանակները, ապա գտանք դրանց հարաբերությունը։",
+      "textSha256": "7d9b1a2f8a04b164bab984dfe6e5a5891b961174d2be415cf6c9b23cba86db9e",
+      "contrastWithMainQuestion": "The example compares durations, not speeds, and uses minute-to-second conversion. It teaches the shared normalization principle without reproducing the main speed calculation.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S07-I12",
+      "textHy": "Սայլակը 3 մ/վ հաստատուն արագությամբ կարող է շարժվել 40 վ։ Այդ ընթացքում հասանելի ճանապարհը s = vt բանաձևով 3 × 40 = 120 մ է։ Այստեղ ժամանակը տրված էր, և գտանք ճանապարհը։ Երթուղու անցման ժամանակը գտնելիս նույն կապից օգտվում ենք t = s/v տեսքով։",
+      "textSha256": "937b6d00a087576ba5a35417ed5f7354801f3243255967b875160024912fe4cb",
+      "contrastWithMainQuestion": "The example uses known available time to find reachable distance. It contains neither two routes nor the main comparison of arrival durations.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S07-I13",
+      "textHy": "Գործողությունը սկսվել է 13:50-ին և ավարտվել 14:10-ին։ Մինչև 14:00 անցել է 10 րոպե, դրանից հետո՝ ևս 10 րոպե։ Ընդհանուր տևողությունը 20 րոպե է։ Այստեղ ժամացույցի երկու ցուցմունքից գտանք տևողությունը։",
+      "textSha256": "51c5727f771b8bfad26d2cd9d3b75736a2ba9409152bf1dc3f717be811515f51",
+      "contrastWithMainQuestion": "The example solves the inverse clock task: two readings determine elapsed time. The main task derives a duration from motion data and advances a departure reading.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S07-I14",
+      "textHy": "Ուղիղ տեղամասի երկարությունը 12 մ է, իսկ յուրաքանչյուր քայլինը՝ 0,5 մ։ Տեղամասն անցնելու համար անհրաժեշտ քայլերի թիվը 12 ÷ 0,5 = 24 է։ Այստեղ հայտնի ճանապարհից գտանք քայլերի թիվը՝ կիրառելով նույն կապը հակառակ ուղղությամբ։",
+      "textSha256": "cbec9b77662e6b7e8a534915be840335306d3e7f17b517a39fba65388e4eb6a9",
+      "contrastWithMainQuestion": "The example is given path length and solves the count of steps. It does not calculate speed or use count and time as the main task does.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    },
+    {
+      "code": "PHY7-U03-S08-I10",
+      "textHy": "Քանոնի երկայնքով դրված ուղիղ հատվածի մի ծայրը համընկնում է 2 սմ նշման հետ, մյուսը՝ 10 սմ նշման։ Հատվածի երկարությունը 10 − 2 = 8 սմ է։ Երկրորդ ցուցմունքը միայնակ երկարություն չէր տա, քանի որ առաջին ծայրը զրոյին չէր համընկնում։",
+      "textSha256": "8ef5607c6357ac8a713d9d8ed51d04e9375d7df5ff3cd852f1a8672882649d22",
+      "contrastWithMainQuestion": "The example reads two offsets from a correctly aligned ruler. The main task chooses the physical orientation and measurement segment before any readings are available.",
+      "sameScenarioWithNumbersOrNamesOnlyChanged": false,
+      "sourceFactsAndArithmeticChecked": true
+    }
+  ],
+  "reviewedHints": 32,
+  "reviewedWorkedExamples": 16,
+  "limits": "Author judgments, not independent native-speaker or SME certification."
+}
