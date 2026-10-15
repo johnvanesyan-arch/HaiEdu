@@ -93,7 +93,8 @@ test('v2 native player and history show the 10/2/4 scales and preserve mandatory
  await page.goto(origin+href(0));await page.waitForSelector('.course-active-session');
  const query=new URL(page.url()).searchParams;
  const selected={enrollmentId:query.get('enrollment'),curriculumReleaseId:query.get('release'),unitId:query.get('unit')};
- const active={answered:0,planned:16};
+ const saved=(await f.db.query('select answered_count,planned_item_count from learning_sessions where id=$1',[baseline.session.id])).rows[0];
+ const active={answered:saved.answered_count,planned:saved.planned_item_count};
  await verifyChapterIIVisibleState({page,expect,activeSession:active,context:selected});
  // Wrong counts or routing must fail the same browser assertion used in production.
  await assert.rejects(verifyChapterIIVisibleState({page,expect:expect.configure({timeout:100}),activeSession:{...active,planned:8},context:selected}));
