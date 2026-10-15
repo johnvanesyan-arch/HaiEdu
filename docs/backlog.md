@@ -253,14 +253,25 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III eighth practice batch — 15C.9, 2026-10-15
+
+- [x] Verify all 39 prior handoff fingerprints; retain pending Batches 06/07 without inferring approval.
+- [x] Compare eight candidates across seven skills and all 28 pairs against related/current/history banks; expand comparison to the whole U02-S02 bank.
+- [x] Check all 16 hints and 8 examples for natural Armenian, source fidelity and useful help.
+- [x] Rehearse rollback; stage 8 questions / 8 guides / 20 definitions; verify exact readback, QA/guide checks 8/8 and all 39 preservation scopes.
+- [ ] Review Batches 06, 07 and 08 together: 24 questions, 24 guides and 50 definitions.
+- [ ] Continue remaining 16 practice slots within unequal skill budgets; S02 and S05 supporting budgets are filled. Prepare the explicit assessment/readiness contract; specialist/release gates remain open.
+
+[Batch 08 staging](chapter-iii-batch-08-staging.md).
+
 ## Chapter III seventh practice batch — 15C.8, 2026-10-15
 
 - [x] Verify all 39 prior handoff fingerprints; retain the pending Batch 06 queue without inferring approval.
 - [x] Compare eight candidates across S01–S08, related/current/history banks and all 28 pairs; include the whole U01-S10 measurement-method bank.
 - [x] Check all 16 hints and 8 worked examples for natural Armenian, source fidelity and useful help.
 - [x] Rehearse rollback; stage 8 questions / 8 guides / 14 definitions; verify exact readback, QA/guide checks 8/8 and all 39 preservation scopes.
-- [ ] Review Batches 06 and 07 together: 16 questions, 16 guides and 30 definitions.
-- [ ] Continue remaining 24 practice slots within the unequal skill budgets; S02's six slots are now drafted. Prepare the explicit assessment/readiness contract; specialist/release gates remain open.
+- [ ] Batches 06/07 remain pending; their review queue is included in the current 15C.9 combined queue above.
+- [x] Authoring continued under 15C.9 above; 16 practice slots remain. Assessment/readiness contract and specialist/release gates remain open.
 
 [Batch 07 staging](chapter-iii-batch-07-staging.md).
 
@@ -271,7 +282,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Review all 16 hints and 8 worked examples for natural Armenian, useful help and source fidelity.
 - [x] Rehearse rollback; stage 8 questions / 8 guides / 16 definitions; verify exact readback, QA/guide checks 8/8 and all 39 preservation scopes.
 - [ ] Human site review of Batch 06 remains pending: 8 questions, 8 guides and 16 definitions; include them in the combined queue above.
-- [x] Authoring continued under 15C.8 above; 24 practice slots remain. The assessment/readiness contract and specialist/release gates remain open.
+- [x] Authoring continued under 15C.8 and 15C.9 above; 16 practice slots remain. Assessment/readiness contract and specialist/release gates remain open.
 
 [Batch 06 staging](chapter-iii-batch-06-staging.md).
 

@@ -1,5 +1,7 @@
 # Chapter III batch 07 — staging and verification
 
+**Current queue, 2026-10-15:** this batch remains pending and can be reviewed with Batches 06/07/08. [Batch 08 staging](chapter-iii-batch-08-staging.md) records the current combined totals; earlier counts below are historical staging totals, not approval.
+
 **2026-10-15 · Sprint 15C.8 · Roadmap 3.71**
 
 Eight additional practice questions across S01–S08, eight guides and fourteen definitions are staged. Question QA and guide validation pass 8/8 with zero errors or warnings. Independent readback exactly matches all prompts, options, answer keys, mappings, guide wording and immutable snapshots.

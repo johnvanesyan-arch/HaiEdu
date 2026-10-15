@@ -1,0 +1,1719 @@
+{
+  "sprint": "15C.9",
+  "roadmap": "3.72",
+  "date": "2026-10-15",
+  "sourceMain": "5778b1f7f8f53b6be19af6c380da56c38a2ed036",
+  "preparedComparisonCommit": "e0080a4ea407b2f82f2753a32ca4f6d6dab944f8",
+  "ownerDirection": {
+    "quote": "do another batch",
+    "at": "2026-10-15T09:02:35+04:00"
+  },
+  "committedAt": "2026-10-15T05:20:04.297269+00:00",
+  "independentReadbackAt": "2026-10-15T05:20:10.131207+00:00",
+  "finalInventory": {
+    "pools": 0,
+    "guides": [
+      {
+        "count": 24,
+        "status": "draft"
+      },
+      {
+        "count": 40,
+        "status": "published"
+      }
+    ],
+    "bySkill": [
+      {
+        "code": "PHY7-U03-S01",
+        "draft": 3,
+        "approved": 5,
+        "questions": 8
+      },
+      {
+        "code": "PHY7-U03-S02",
+        "draft": 2,
+        "approved": 4,
+        "questions": 6
+      },
+      {
+        "code": "PHY7-U03-S03",
+        "draft": 4,
+        "approved": 5,
+        "questions": 9
+      },
+      {
+        "code": "PHY7-U03-S04",
+        "draft": 3,
+        "approved": 5,
+        "questions": 8
+      },
+      {
+        "code": "PHY7-U03-S05",
+        "draft": 3,
+        "approved": 5,
+        "questions": 8
+      },
+      {
+        "code": "PHY7-U03-S06",
+        "draft": 3,
+        "approved": 5,
+        "questions": 8
+      },
+      {
+        "code": "PHY7-U03-S07",
+        "draft": 3,
+        "approved": 6,
+        "questions": 9
+      },
+      {
+        "code": "PHY7-U03-S08",
+        "draft": 3,
+        "approved": 5,
+        "questions": 8
+      }
+    ],
+    "releases": [
+      {
+        "id": "9f93b58d-e1a2-49ba-ba96-89e76c697884",
+        "status": "legacy",
+        "release_key": "physics7_u01_legacy_pre_11k",
+        "activated_at": "2026-09-19T06:45:24.76571+00:00"
+      },
+      {
+        "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+        "status": "pilot",
+        "release_key": "physics7_u01_2026_08_14_pilot_r1",
+        "activated_at": "2026-09-19T06:45:24.76571+00:00"
+      },
+      {
+        "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "status": "pilot",
+        "release_key": "physics7_u02_2026_08_14_pilot_r2",
+        "activated_at": "2026-10-13T17:38:42.811795+00:00"
+      },
+      {
+        "id": "b626705a-a355-5937-b20b-38550dc5b0fe",
+        "status": "draft",
+        "release_key": "physics7_u03_2026_08_14_draft_r3",
+        "activated_at": null
+      }
+    ],
+    "observedAt": "2026-10-15T05:20:34.253638+00:00",
+    "definitions": [
+      {
+        "count": 87,
+        "status": "active"
+      },
+      {
+        "count": 50,
+        "status": "draft"
+      }
+    ],
+    "formMemberships": 0,
+    "latestAuthoring": [
+      {
+        "count": 24,
+        "lifecycle_status": "draft"
+      },
+      {
+        "count": 40,
+        "lifecycle_status": "published"
+      }
+    ],
+    "poolMemberships": 0
+  },
+  "manifest": {
+    "codes": [
+      "PHY7-U03-S01-I08",
+      "PHY7-U03-S03-I08",
+      "PHY7-U03-S03-I09",
+      "PHY7-U03-S04-I08",
+      "PHY7-U03-S05-I08",
+      "PHY7-U03-S06-I08",
+      "PHY7-U03-S07-I09",
+      "PHY7-U03-S08-I08"
+    ],
+    "templates": [
+      "PHY7-U03-S01-F08-T01",
+      "PHY7-U03-S03-F08-T01",
+      "PHY7-U03-S03-F09-T01",
+      "PHY7-U03-S04-F08-T01",
+      "PHY7-U03-S05-F08-T01",
+      "PHY7-U03-S06-F08-T01",
+      "PHY7-U03-S07-F09-T01",
+      "PHY7-U03-S08-F08-T01"
+    ],
+    "families": [
+      "PHY7-U03-S01-F08",
+      "PHY7-U03-S03-F08",
+      "PHY7-U03-S03-F09",
+      "PHY7-U03-S04-F08",
+      "PHY7-U03-S05-F08",
+      "PHY7-U03-S06-F08",
+      "PHY7-U03-S07-F09",
+      "PHY7-U03-S08-F08"
+    ],
+    "deltas": {
+      "items": 8,
+      "item_options": 32,
+      "item_answer_keys": 8,
+      "item_families": 8,
+      "item_templates": 8,
+      "item_versions": 8,
+      "item_curriculum_scopes": 8,
+      "misconceptions": 20,
+      "item_misconception_mappings": 24,
+      "item_family_curriculum_reconciliations": 8,
+      "curriculum_release_item_families": 8,
+      "item_template_remediation_guides": 8,
+      "remediation_guide_versions": 8,
+      "remediation_guide_authoring_versions": 8
+    },
+    "definitions": [
+      "PHY7-U03-S01-M14",
+      "PHY7-U03-S01-M15",
+      "PHY7-U03-S01-M16",
+      "PHY7-U03-S03-M14",
+      "PHY7-U03-S03-M15",
+      "PHY7-U03-S03-M16",
+      "PHY7-U03-S03-M17",
+      "PHY7-U03-S03-M18",
+      "PHY7-U03-S04-M19",
+      "PHY7-U03-S05-M19",
+      "PHY7-U03-S05-M20",
+      "PHY7-U03-S05-M21",
+      "PHY7-U03-S06-M07",
+      "PHY7-U03-S06-M08",
+      "PHY7-U03-S07-M21",
+      "PHY7-U03-S07-M22",
+      "PHY7-U03-S07-M23",
+      "PHY7-U03-S08-M18",
+      "PHY7-U03-S08-M19",
+      "PHY7-U03-S08-M20"
+    ],
+    "specHashes": [
+      "6128cfad34809d63d569ec3f24245967ed68a9769b34dfa5c5e1fab5355986f5",
+      "b5bf2cb306ba4b7cf3957cbb09a813e43aceac7934b00f2a32328ba471232bce",
+      "2b7855ba44c34e1ae69ea8e0a424c88e011ea54c836e351f53f126c00f3bee32",
+      "9d267296ff53648b70c43b95e9c83c0eebe0cfb571e77a95517b003c216327b5",
+      "7543d5faf8b38a8ddb9630687e864b096d4f1104162461d8da58d9f427be761a",
+      "e64dbb02b3cca5612d8c31ce0c4a1473cb1d02ed8bf34e96e59c574ef00ae58b",
+      "c37cdea0f9d28b6f00ada0f234e872f24e1cfa4c75ff6249afd9a106d63d9429",
+      "f8644bb26142498bf07bae1cc7877ae629269d2f3569259cf640d8a6db48c3e4"
+    ]
+  },
+  "rollback": {
+    "ran": true,
+    "evaluatorPassed": 8,
+    "exactSpecsSnapshotsKeysMappings": true,
+    "all39BaselineGuardsUnchangedBeforeCommit": true
+  },
+  "questionQa": {
+    "sourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+    "phase": "committed-production-readback",
+    "method": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U03-S01-I08",
+        "itemId": "d193ed0d-5cf5-4ed6-84eb-dadf7aec2328",
+        "versionNo": 1,
+        "fingerprint": "0864c1d2d9fd30957b0a22d8898d117e",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "foundation",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U03-S01-F08-T01",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "A",
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|5070da53-8592-4cda-aec5-1b68f6003eb2|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|d193ed0d-5cf5-4ed6-84eb-dadf7aec2328:1:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U03-S03-I08",
+        "itemId": "11a02914-b010-498c-8a45-c20b11b05bd6",
+        "versionNo": 1,
+        "fingerprint": "1c2e042531f439757eeda365b4e0c76a",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U03-S03-F08-T01",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 0,
+                "D": 1
+              },
+              "missingPositions": [
+                "A",
+                "B",
+                "C"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "application"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|7439c840-f73a-4b04-822e-07f7ff1c6bf5|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|11a02914-b010-498c-8a45-c20b11b05bd6:1:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U03-S03-I09",
+        "itemId": "81a914f3-0ee5-4060-b0a4-fecee65cd6c0",
+        "versionNo": 1,
+        "fingerprint": "30cd5c5e37b3e8cb10f8082907259a76",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U03-S03-F09-T01",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 1,
+                "B": 0,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "B",
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "application"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|af73f5d7-e767-4635-9c9f-122c3e433d68|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|81a914f3-0ee5-4060-b0a4-fecee65cd6c0:1:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U03-S04-I08",
+        "itemId": "5fdac51d-4281-477e-8ac9-4fcf85557161",
+        "versionNo": 1,
+        "fingerprint": "ccd489ac49d8084fdbefcb87685d3bd6",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U03-S04-F08-T01",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 1,
+                "C": 0,
+                "D": 0
+              },
+              "missingPositions": [
+                "A",
+                "C",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|95c800a0-9be5-4fc0-87b4-9c96969862e9|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|5fdac51d-4281-477e-8ac9-4fcf85557161:1:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U03-S05-I08",
+        "itemId": "337949f0-4e53-470f-9a2f-81547832e2ec",
+        "versionNo": 1,
+        "fingerprint": "1305585dfa0dc339e063a05d244312bb",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U03-S05-F08-T01",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 0,
+                "D": 1
+              },
+              "missingPositions": [
+                "A",
+                "B",
+                "C"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|eff032f0-2e45-44aa-8fc4-a06b5b7df55f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|337949f0-4e53-470f-9a2f-81547832e2ec:1:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U03-S06-I08",
+        "itemId": "7d3c6c33-2e7e-472a-bf34-6497d68888f3",
+        "versionNo": 1,
+        "fingerprint": "7a50914d7d26ddfbbeea77c28b261bd5",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U03-S06-F08-T01",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 1,
+                "D": 0
+              },
+              "missingPositions": [
+                "A",
+                "B",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "misconception_diagnosis",
+              "requiredEvidencePurposes": [
+                "misconception_diagnosis"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "misconception_diagnosis": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|d1b05ab3-a0d8-4dd2-b1f4-e07852ccfea9|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|7d3c6c33-2e7e-472a-bf34-6497d68888f3:1:misconception_diagnosis"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U03-S07-I09",
+        "itemId": "4757d248-863c-401c-8fe4-11ceebde813e",
+        "versionNo": 1,
+        "fingerprint": "1664c2ac88b77c461ffedfd9bf954379",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U03-S07-F09-T01",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 1,
+                "D": 0
+              },
+              "missingPositions": [
+                "A",
+                "B",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "application"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|e5f31efc-4b07-4179-be9c-4b2533781a18|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|4757d248-863c-401c-8fe4-11ceebde813e:1:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      },
+      {
+        "itemCode": "PHY7-U03-S08-I08",
+        "itemId": "abcf99b1-d17c-4e03-8012-a982767aef00",
+        "versionNo": 1,
+        "fingerprint": "0e0f4e64741097fe1c0abbfecd205f23",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "core",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U03-S08-F08-T01",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 0,
+                "D": 1
+              },
+              "missingPositions": [
+                "A",
+                "B",
+                "C"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "application"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|7950bbce-667f-46c4-97cf-8e90840b0c3f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|abcf99b1-d17c-4e03-8012-a982767aef00:1:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "storedQa": [
+    {
+      "id": "3e477fad-6488-417e-ba07-086464a44c35",
+      "item_id": "d193ed0d-5cf5-4ed6-84eb-dadf7aec2328",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15C9-batch08-20261015",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "foundation",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 1,
+            "C": 0,
+            "D": 0
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U03-S01-F08-T01",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 1,
+          "missingPositions": [
+            "A",
+            "C",
+            "D"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 1
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionReadbackObservedAt": "2026-10-15T05:20:04.297269+00:00",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "misconception_diagnosis",
+          "familyStateFingerprint": "haiedu-family-state-v1|5070da53-8592-4cda-aec5-1b68f6003eb2|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|d193ed0d-5cf5-4ed6-84eb-dadf7aec2328:1:misconception_diagnosis",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "misconception_diagnosis"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-15 05:20:29.346042+00"
+    },
+    {
+      "id": "329e74af-5067-45b1-a13b-3bf9e6ed1698",
+      "item_id": "11a02914-b010-498c-8a45-c20b11b05bd6",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15C9-batch08-20261015",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 1
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U03-S03-F08-T01",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 1,
+          "missingPositions": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 1
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionReadbackObservedAt": "2026-10-15T05:20:04.297269+00:00",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "application",
+          "familyStateFingerprint": "haiedu-family-state-v1|7439c840-f73a-4b04-822e-07f7ff1c6bf5|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|11a02914-b010-498c-8a45-c20b11b05bd6:1:application",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "application"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-15 05:20:29.346042+00"
+    },
+    {
+      "id": "a928f045-34b0-4963-9853-ac883ef0a95d",
+      "item_id": "81a914f3-0ee5-4060-b0a4-fecee65cd6c0",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15C9-batch08-20261015",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 1,
+            "B": 0,
+            "C": 0,
+            "D": 0
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U03-S03-F09-T01",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 1,
+          "missingPositions": [
+            "B",
+            "C",
+            "D"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 1
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionReadbackObservedAt": "2026-10-15T05:20:04.297269+00:00",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "application",
+          "familyStateFingerprint": "haiedu-family-state-v1|af73f5d7-e767-4635-9c9f-122c3e433d68|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|81a914f3-0ee5-4060-b0a4-fecee65cd6c0:1:application",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "application"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-15 05:20:29.346042+00"
+    },
+    {
+      "id": "42e9c7a4-dc2e-4eb7-8788-546cacce3c62",
+      "item_id": "5fdac51d-4281-477e-8ac9-4fcf85557161",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15C9-batch08-20261015",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 1,
+            "C": 0,
+            "D": 0
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U03-S04-F08-T01",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 1,
+          "missingPositions": [
+            "A",
+            "C",
+            "D"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 1
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionReadbackObservedAt": "2026-10-15T05:20:04.297269+00:00",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "misconception_diagnosis",
+          "familyStateFingerprint": "haiedu-family-state-v1|95c800a0-9be5-4fc0-87b4-9c96969862e9|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|5fdac51d-4281-477e-8ac9-4fcf85557161:1:misconception_diagnosis",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "misconception_diagnosis"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-15 05:20:29.346042+00"
+    },
+    {
+      "id": "fa7ffe60-0cf3-4e1d-bf44-2fe1d7044a58",
+      "item_id": "337949f0-4e53-470f-9a2f-81547832e2ec",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15C9-batch08-20261015",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 1
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U03-S05-F08-T01",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 1,
+          "missingPositions": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 1
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionReadbackObservedAt": "2026-10-15T05:20:04.297269+00:00",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "misconception_diagnosis",
+          "familyStateFingerprint": "haiedu-family-state-v1|eff032f0-2e45-44aa-8fc4-a06b5b7df55f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|337949f0-4e53-470f-9a2f-81547832e2ec:1:misconception_diagnosis",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "misconception_diagnosis"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-15 05:20:29.346042+00"
+    },
+    {
+      "id": "208dd64f-e991-465c-bdd2-7772901afda8",
+      "item_id": "7d3c6c33-2e7e-472a-bf34-6497d68888f3",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15C9-batch08-20261015",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 0,
+            "C": 1,
+            "D": 0
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U03-S06-F08-T01",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 1,
+          "missingPositions": [
+            "A",
+            "B",
+            "D"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 1
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionReadbackObservedAt": "2026-10-15T05:20:04.297269+00:00",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "misconception_diagnosis": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "misconception_diagnosis",
+          "familyStateFingerprint": "haiedu-family-state-v1|d1b05ab3-a0d8-4dd2-b1f4-e07852ccfea9|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|misconception_diagnosis|1|7d3c6c33-2e7e-472a-bf34-6497d68888f3:1:misconception_diagnosis",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "misconception_diagnosis"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-15 05:20:29.346042+00"
+    },
+    {
+      "id": "1bac1177-51f8-4687-ab68-f5ae609329a4",
+      "item_id": "4757d248-863c-401c-8fe4-11ceebde813e",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15C9-batch08-20261015",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 0,
+            "C": 1,
+            "D": 0
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U03-S07-F09-T01",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 1,
+          "missingPositions": [
+            "A",
+            "B",
+            "D"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 1
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionReadbackObservedAt": "2026-10-15T05:20:04.297269+00:00",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "application",
+          "familyStateFingerprint": "haiedu-family-state-v1|e5f31efc-4b07-4179-be9c-4b2533781a18|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|4757d248-863c-401c-8fe4-11ceebde813e:1:application",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "application"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-15 05:20:29.346042+00"
+    },
+    {
+      "id": "b55fb173-34bd-48de-83b8-126cd0835002",
+      "item_id": "abcf99b1-d17c-4e03-8012-a982767aef00",
+      "version_no": 1,
+      "passed": true,
+      "errors": [],
+      "warnings": [],
+      "details": {
+        "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality",
+        "runKey": "15C9-batch08-20261015",
+        "actorType": "automated_system_technical_qa",
+        "optionCount": 4,
+        "duplicateCodes": [],
+        "verificationMethod": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+        "evaluatorSourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+        "generatedVerification": null,
+        "misconceptionMappings": 3,
+        "expectedDifficultyBand": "core",
+        "answerPositionDistribution": {
+          "scope": "item_template",
+          "counts": {
+            "A": 0,
+            "B": 0,
+            "C": 0,
+            "D": 1
+          },
+          "severity": "warning",
+          "imbalanced": false,
+          "optionKeys": [
+            "A",
+            "B",
+            "C",
+            "D"
+          ],
+          "templateCode": "PHY7-U03-S08-F08-T01",
+          "policyVersion": "family-balanced-v1",
+          "familyItemCount": 1,
+          "missingPositions": [
+            "A",
+            "B",
+            "C"
+          ],
+          "unrecognizedAnswers": [],
+          "maximumPositionCount": 1,
+          "maximumPositionShare": 1
+        },
+        "misconceptionMappingPolicy": "all_distractors",
+        "productionReadbackObservedAt": "2026-10-15T05:20:04.297269+00:00",
+        "evidenceBlueprintVerification": {
+          "policyVersion": "haiedu-evidence-blueprint-v1",
+          "purposeCounts": {
+            "application": 1
+          },
+          "duplicatePurposes": [],
+          "itemEvidencePurpose": "application",
+          "familyStateFingerprint": "haiedu-family-state-v1|7950bbce-667f-46c4-97cf-8e90840b0c3f|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|abcf99b1-d17c-4e03-8012-a982767aef00:1:application",
+          "evidenceBlueprintPolicy": "distinct-purpose-v1",
+          "invalidPurposeItemCodes": [],
+          "missingPurposeItemCodes": [],
+          "missingRequiredPurposes": [],
+          "requiredEvidencePurposes": [
+            "application"
+          ],
+          "enforceUniqueEvidencePurposes": true
+        },
+        "missingMisconceptionResponseKeys": []
+      },
+      "run_by": null,
+      "created_at": "2026-10-15 05:20:29.346042+00"
+    }
+  ],
+  "guideValidation": {
+    "method": "Actual deployed guide-validation helper replay against frozen proposed specifications; not authenticated live Edge invocation",
+    "sourceSha256": "aa073f39426d8f0013a57ed27a86a3dd1d848653ebdac0a59dd437f43dcc6e89",
+    "results": [
+      {
+        "code": "PHY7-U03-S01-I08",
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S03-I08",
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S03-I09",
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S04-I08",
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S05-I08",
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S06-I08",
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S07-I09",
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      },
+      {
+        "code": "PHY7-U03-S08-I08",
+        "errors": [],
+        "warnings": [],
+        "placeholders": [],
+        "checkedVariantCount": 1,
+        "variantFailures": []
+      }
+    ]
+  },
+  "preservationChecks": [
+    {
+      "table": "assessment_blueprints",
+      "beforeCount": 11,
+      "finalCount": 11,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "assessment_form_items",
+      "beforeCount": 160,
+      "finalCount": 160,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "assessment_forms",
+      "beforeCount": 9,
+      "finalCount": 9,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "assessment_policy_bindings",
+      "beforeCount": 4,
+      "finalCount": 4,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "assessment_pool_items",
+      "beforeCount": 472,
+      "finalCount": 472,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "assessment_pools",
+      "beforeCount": 7,
+      "finalCount": 7,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "attempts",
+      "beforeCount": 42,
+      "finalCount": 42,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "chapter_review_item_exposures",
+      "beforeCount": 0,
+      "finalCount": 0,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "curriculum_release_gate_checks",
+      "beforeCount": 21,
+      "finalCount": 21,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "curriculum_release_item_families",
+      "beforeCount": 286,
+      "finalCount": 294,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "curriculum_release_skills",
+      "beforeCount": 26,
+      "finalCount": 26,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "curriculum_release_units",
+      "beforeCount": 4,
+      "finalCount": 4,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "curriculum_releases",
+      "beforeCount": 4,
+      "finalCount": 4,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "curriculum_source_documents",
+      "beforeCount": 3,
+      "finalCount": 3,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_answer_keys",
+      "beforeCount": 509,
+      "finalCount": 517,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_curriculum_scopes",
+      "beforeCount": 509,
+      "finalCount": 517,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_families",
+      "beforeCount": 287,
+      "finalCount": 295,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_family_curriculum_reconciliations",
+      "beforeCount": 287,
+      "finalCount": 295,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_misconception_mappings",
+      "beforeCount": 986,
+      "finalCount": 1010,
+      "expectedDelta": 24,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_options",
+      "beforeCount": 1428,
+      "finalCount": 1460,
+      "expectedDelta": 32,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_qa_runs",
+      "beforeCount": 787,
+      "finalCount": 795,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_reviews",
+      "beforeCount": 764,
+      "finalCount": 764,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_template_remediation_guides",
+      "beforeCount": 122,
+      "finalCount": 130,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_templates",
+      "beforeCount": 287,
+      "finalCount": 295,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "item_versions",
+      "beforeCount": 386,
+      "finalCount": 394,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "items",
+      "beforeCount": 509,
+      "finalCount": 517,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "learning_model_runtime_bindings",
+      "beforeCount": 2,
+      "finalCount": 2,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "learning_outcomes",
+      "beforeCount": 19,
+      "finalCount": 19,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "learning_session_items",
+      "beforeCount": 96,
+      "finalCount": 96,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "misconception_review_events",
+      "beforeCount": 352,
+      "finalCount": 352,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "misconceptions",
+      "beforeCount": 390,
+      "finalCount": 410,
+      "expectedDelta": 20,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "remediation_guide_authoring_versions",
+      "beforeCount": 488,
+      "finalCount": 496,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "remediation_guide_versions",
+      "beforeCount": 259,
+      "finalCount": 267,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "skill_curriculum_reconciliations",
+      "beforeCount": 26,
+      "finalCount": 26,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "skill_outcome_curriculum_mappings",
+      "beforeCount": 31,
+      "finalCount": 31,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "skill_outcomes",
+      "beforeCount": 31,
+      "finalCount": 31,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "skill_remediation_guides",
+      "beforeCount": 10,
+      "finalCount": 10,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "skills",
+      "beforeCount": 27,
+      "finalCount": 27,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    },
+    {
+      "table": "student_item_exposure_events",
+      "beforeCount": 44,
+      "finalCount": 44,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction checks every prior row hash; QA adds only eight system rows."
+    }
+  ],
+  "comparisonEvidence": "chapter-iii-batch-08-comparison-20261015.json",
+  "hintReviewEvidence": "chapter-iii-batch-08-hint-review-20261015.json",
+  "priorQueueEvidence": "chapter-iii-batch-08-prior-state-20261015.json",
+  "specificationsSha256": "d730d1bf1458e898f06a0c67ebeca618eb5c477236ee84f124bcb100d8cfe87f",
+  "committedCatalogueSha256": "d804cc79a5e4b107108d36fa94075760a501c73f21c55f4fa18254af7b31037a",
+  "checks": {
+    "questions": 8,
+    "guides": 8,
+    "definitions": 20,
+    "hintsSeparatelyReviewed": 16,
+    "workedExamplesComparedToMainQuestion": 8,
+    "humanApprovalsCreated": 0,
+    "specialistApprovalsCreated": 0,
+    "newSourceImagesNeeded": 0,
+    "allExistingRowsPreserved": true
+  },
+  "reviewQueue": {
+    "batches": [
+      "06",
+      "07",
+      "08"
+    ],
+    "questions": 24,
+    "guides": 24,
+    "definitions": 50
+  },
+  "limits": "Content-only practice staging. Prior queue remains pending; no human approval inferred. No code/schema/API/auth, assessment/readiness contract, allocation or learner release change. Chapter III inactive/unallocated; Chapter I/II pilots preserved."
+}
