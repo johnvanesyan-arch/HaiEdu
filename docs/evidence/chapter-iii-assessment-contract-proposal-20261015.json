@@ -1,0 +1,241 @@
+{
+  "proposalId": "physics7-chapter-iii-assessment-20261015-v1",
+  "status": "prepared_for_owner_decision_not_adopted",
+  "sprint": "15C.14",
+  "roadmap": "3.77",
+  "preparedAt": "2026-10-15",
+  "sourceMain": "b00081cf322687dcb7340ea2fe6974aac109d72d",
+  "scope": {
+    "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+    "curriculumReleaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+    "unitId": "aa824efc-b407-5143-9c92-a894d97be972"
+  },
+  "skills": [
+    {
+      "code": "PHY7-U03-S01",
+      "role": "mandatory",
+      "priorProposedPerForm": 2,
+      "proposedPerForm": 2,
+      "readinessRequired": true,
+      "passScored": true,
+      "minimumCorrect": 1,
+      "diagnosticBudget": 4,
+      "masteryBudget": 7,
+      "authoredDiagnostic": 1,
+      "authoredMastery": 1,
+      "diagnosticGap": 3,
+      "masteryGap": 6
+    },
+    {
+      "code": "PHY7-U03-S02",
+      "role": "supporting",
+      "priorProposedPerForm": 1,
+      "proposedPerForm": 1,
+      "readinessRequired": false,
+      "passScored": false,
+      "minimumCorrect": null,
+      "diagnosticBudget": 2,
+      "masteryBudget": 4,
+      "authoredDiagnostic": 1,
+      "authoredMastery": 1,
+      "diagnosticGap": 1,
+      "masteryGap": 3
+    },
+    {
+      "code": "PHY7-U03-S03",
+      "role": "mandatory",
+      "priorProposedPerForm": 3,
+      "proposedPerForm": 3,
+      "readinessRequired": true,
+      "passScored": true,
+      "minimumCorrect": 1,
+      "diagnosticBudget": 6,
+      "masteryBudget": 10,
+      "authoredDiagnostic": 1,
+      "authoredMastery": 1,
+      "diagnosticGap": 5,
+      "masteryGap": 9
+    },
+    {
+      "code": "PHY7-U03-S04",
+      "role": "mandatory",
+      "priorProposedPerForm": 2,
+      "proposedPerForm": 3,
+      "readinessRequired": true,
+      "passScored": true,
+      "minimumCorrect": 1,
+      "diagnosticBudget": 6,
+      "masteryBudget": 10,
+      "authoredDiagnostic": 1,
+      "authoredMastery": 1,
+      "diagnosticGap": 5,
+      "masteryGap": 9
+    },
+    {
+      "code": "PHY7-U03-S05",
+      "role": "supporting",
+      "priorProposedPerForm": 2,
+      "proposedPerForm": 1,
+      "readinessRequired": false,
+      "passScored": false,
+      "minimumCorrect": null,
+      "diagnosticBudget": 2,
+      "masteryBudget": 4,
+      "authoredDiagnostic": 1,
+      "authoredMastery": 1,
+      "diagnosticGap": 1,
+      "masteryGap": 3
+    },
+    {
+      "code": "PHY7-U03-S06",
+      "role": "mandatory",
+      "priorProposedPerForm": 2,
+      "proposedPerForm": 2,
+      "readinessRequired": true,
+      "passScored": true,
+      "minimumCorrect": 1,
+      "diagnosticBudget": 4,
+      "masteryBudget": 7,
+      "authoredDiagnostic": 1,
+      "authoredMastery": 1,
+      "diagnosticGap": 3,
+      "masteryGap": 6
+    },
+    {
+      "code": "PHY7-U03-S07",
+      "role": "additional",
+      "priorProposedPerForm": 3,
+      "proposedPerForm": 3,
+      "readinessRequired": false,
+      "passScored": false,
+      "minimumCorrect": null,
+      "diagnosticBudget": 6,
+      "masteryBudget": 10,
+      "authoredDiagnostic": 1,
+      "authoredMastery": 1,
+      "diagnosticGap": 5,
+      "masteryGap": 9
+    },
+    {
+      "code": "PHY7-U03-S08",
+      "role": "additional",
+      "priorProposedPerForm": 1,
+      "proposedPerForm": 1,
+      "readinessRequired": false,
+      "passScored": false,
+      "minimumCorrect": null,
+      "diagnosticBudget": 2,
+      "masteryBudget": 4,
+      "authoredDiagnostic": 1,
+      "authoredMastery": 1,
+      "diagnosticGap": 1,
+      "masteryGap": 3
+    }
+  ],
+  "delivery": {
+    "diagnosticQuestions": 16,
+    "maximumCompletedBaselines": 1,
+    "practiceQuestions": 8,
+    "masteryQuestions": 16,
+    "maximumMasteryAttempts": 3,
+    "allDeliveredQuestionsRequireResponses": true,
+    "assessmentHintsAllowed": false,
+    "chapterReviewQuestions": 12,
+    "requiredReviewBetweenFailedMasteryAttempts": true
+  },
+  "proposedPass": {
+    "scoredQuestions": 10,
+    "minimumPercent": 80,
+    "minimumCorrectOverall": 8,
+    "requiredSkillCodes": [
+      "PHY7-U03-S01",
+      "PHY7-U03-S03",
+      "PHY7-U03-S04",
+      "PHY7-U03-S06"
+    ],
+    "minimumCorrectPerRequiredSkill": 1,
+    "supportingAndAdditionalAffectPass": false,
+    "reportSupportingOutOf": 2,
+    "reportAdditionalOutOf": 4
+  },
+  "readiness": {
+    "requiredSkillCodes": [
+      "PHY7-U03-S01",
+      "PHY7-U03-S03",
+      "PHY7-U03-S04",
+      "PHY7-U03-S06"
+    ],
+    "combination": "secure_score_and_evidence_OR_existing_recent_recovery",
+    "secureAtOrAbove": 0.72,
+    "minimumEvidenceCount": 3,
+    "recentWindow": 5,
+    "minimumUniqueItems": 4,
+    "minimumIndependentCorrect": 4,
+    "hintFreeRequiredForRecovery": true,
+    "numericBaselineSourceModelId": "413d1e30-8368-5bb3-bd2d-67b0f73243d9"
+  },
+  "bank": {
+    "practiceBudget": 80,
+    "diagnosticBudget": 32,
+    "masteryBudget": 56,
+    "totalBudget": 168,
+    "diagnosticForms": 2,
+    "masteryForms": 3,
+    "masteryReservePerSkill": 1,
+    "qualifiedForms": 0,
+    "qualifiedCapacity": 0,
+    "remainingDiagnostic": 24,
+    "remainingMastery": 48
+  },
+  "sources": {
+    "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "programmeAppendixSha256": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+    "programmeCrosswalk": "docs/chapter-iii-preparation.md",
+    "mandatoryOutcomes": 5,
+    "additionalOutcomes": 1
+  },
+  "runtimeGap": {
+    "observedAt": "2026-10-15T15:44:28.313634+00:00",
+    "currentPolicySchema": "haiedu-assessment-policy-v1",
+    "currentSchemaHasSeparateScoringAndReadinessSets": false,
+    "firstAttemptReadinessUsesAllFrozenSkills": true,
+    "completionPercentUsesAllAnsweredItems": true,
+    "functionReadbacks": [
+      {
+        "schema": "private",
+        "name": "governed_skill_ready",
+        "identity": "p_student uuid, p_release uuid, p_skill uuid, p_model uuid",
+        "definitionSha256": "60ff40f2a4c63676e09ff7bc4292bde6cb20f39c77e566d54fccc0223872e0cf"
+      },
+      {
+        "schema": "private",
+        "name": "prepare_governed_lifecycle",
+        "identity": "p_student uuid, p_binding uuid",
+        "definitionSha256": "154d814c6961c7f9d927214fb717d77b5ba5001fc54c3ba510bb210ea2e48a8e"
+      },
+      {
+        "schema": "public",
+        "name": "service_governed_learning_operation",
+        "identity": "p_student_id uuid, p_auth_session_id uuid, p_session_id uuid, p_action text, p_payload jsonb",
+        "definitionSha256": "f61dc5a56b57d156ea0afd48e8158b2e545191a109d840a920243d14b63fe12c"
+      }
+    ],
+    "implementationRequired": true,
+    "versionedSubjectNeutralExtensionRequired": true,
+    "preserveV1HistoryAndExistingReleases": true
+  },
+  "authorization": {
+    "ownerDecisionReceived": false,
+    "contentApprovalDoesNotApproveContract": true,
+    "databaseWrites": 0,
+    "releaseActivated": false,
+    "additionalCandidateManifestAuthorized": false,
+    "smeDeferralAuthorized": false
+  },
+  "limits": [
+    "Planning budget is not qualified capacity.",
+    "No formal reliability or form equivalence claim.",
+    "MCQs do not establish performed laboratory competence.",
+    "Historical protected-content exposure disposition remains open."
+  ]
+}

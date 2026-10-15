@@ -1,5 +1,7 @@
 # Chapter III batches 11 and 12 — staging and verification
 
+**Current checkpoint — 2026-10-15 / 15C.13R–15C.14:** all 96 Chapter III questions are approved, all 80 guides published and 206 definitions active. Ordinary content review is closed. The [assessment/readiness proposal](chapter-iii-assessment-contract-proposal.md) is prepared for a separate owner decision; it is not adopted. Chapter III remains inactive/unallocated. [Review closure](chapter-iii-batches-06-12-review.md). All counts, queues and next steps below are dated historical staging/planning evidence.
+
 **2026-10-15 · Sprints 15C.12–15C.13 · Roadmap 3.76**
 
 **Sprints 15C.12 and 15C.13 are staged and verified:** eight Diagnostic and eight Mastery candidates, one of each per S01–S08, plus 29 draft misconception definitions. John selected this bounded candidate scope while the assessment rules remain open. Full textbook, current/history/guide/protected-bank and 120-pair comparisons are recorded. All 16 exact saved questions pass technical QA; both rollback rehearsals and 39 preservation scopes per batch pass.

@@ -1,6 +1,6 @@
 # Chapter III preparation — «Մեխանիկական շարժում»
 
-**Current checkpoint — 2026-10-15:** 80 practice questions are drafted, and the owner has selected the bounded first 8 Diagnostic + 8 Mastery candidate scope. They are staged for review under 15C.12–15C.13; no assessment weights/readiness/pass rules, SME deferral, allocation or release are adopted. This preparation remains source/planning provenance; [Batches 11–12 staging](chapter-iii-batches-11-12-staging.md) and the [status register](project-status.md) govern current counts and gates.
+**Current checkpoint — 2026-10-15 / 15C.13R–15C.14:** all 96 Chapter III questions are approved, all 80 guides published and 206 definitions active. Ordinary content review is closed. The [assessment/readiness proposal](chapter-iii-assessment-contract-proposal.md) is prepared for a separate owner decision; it is not adopted. Chapter III remains inactive/unallocated. [Review closure](chapter-iii-batches-06-12-review.md). All counts, queues and next steps below are dated historical staging/planning evidence.
 
 **Prepared:** 2026-10-13 · **Sprint:** 15C.1. **Current update:** John accepted the plan, planning budget and eight offline drafts; [15C.2](chapter-iii-batch-01-staging.md) records completed fresh comparison, committed staging and QA; ordinary site workflow remains pending. The original preparation proposal and its then-open gates are retained below as the historical baseline; acceptance does not create a final assessment/readiness contract.
 
