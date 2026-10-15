@@ -1,6 +1,6 @@
 # Versioned assessment scope — Sprint 15C.15
 
-**Owner-approved 2026-10-15 · Roadmap 3.78 · Implemented and deployed; final production acceptance in progress.**
+**Owner-approved 2026-10-15 · Roadmap 3.79 · Implemented, deployed and production-verified.**
 
 The former runtime included every answered item in the pass denominator and every frozen skill in first-attempt readiness. That could make supporting/additional knowledge compulsory. John approved the [Chapter III contract](chapter-iii-assessment-contract-proposal.md) at 20:02:38 Asia/Yerevan on 2026-10-15.
 
@@ -18,6 +18,14 @@ The [approved Chapter III configuration](evidence/chapter-iii-assessment-v2-conf
 
 Local SQL integration verifies the three approved 16-question pass/fail cases, mandatory-only readiness, all-response completion, saved/reloaded group results, required review and disjoint retry forms, unchanged v1 all-skill readiness/denominator, and a different subject with three delivered / one scored question. JS/SQL reject duplicate/missing/foreign scope and invalid grouping. Staff loaders and aggregates are exercised against saved SQL results. The new suite is also required on PostgreSQL 17.6 CI; native Chromium covers learner instructions, all 16 answers, result reload and mobile history.
 
-The shared Edge audit identifies 14 importing functions. **Deployment and exact readback are complete; final production acceptance is pending.** See the [dated deployment checkpoint](evidence/assessment-policy-v2-deployment-20261015.json). Every affected bundle must be deployed and read back exactly; the existing JWT setting is retained, including the already custom-authenticated teacher-student endpoint. Deployment will append runtime provenance and move only active implementation pointers; historical builds/sessions/models/approvals remain immutable. Authenticated production acceptance uses designated guarded QA accounts and verifies Chapter I/II access/switching without new learner evidence.
+All 14 affected Edge Functions are deployed; their 104 runtime files match the reviewed source, with all existing JWT settings retained. All nine SQL bodies and execution grants match. Two new runtime provenance records identify implementation commit `cced20d97879d9a616aaf42981e4637c365f614f`; only the two active implementation pointers and their notes/timestamps changed. All 24 older builds, frozen session provenance, learning criteria, approvals and content remain unchanged. The provenance connector returned invalid requestState; the exact guarded DML and migration-history entry were committed atomically through execute_sql after the SQL migration had succeeded through apply_migration.
 
-Required closeout: aggregate Platform release checks, deployed SQL/ACL and Edge parity, runtime provenance, production frontend commit/read acceptance, content/learner preservation, documentation merge and Notion exact-source synchronization. Chapter III stays draft/inactive; zero qualified forms and independent SME/exposure gates remain.
+## Verified release evidence
+
+Implementation PR #227 and preservation PRs #228–229 passed CI, PostgreSQL 17.6, native Chromium and aggregate Platform release checks. The final suite contains 1,293 Node tests and 68 browser tests. Isolated v2 acceptance covers the approved 16-answer cases and a different subject configuration; production acceptance preserves the currently active v1 Chapter I/II pilots. Production v2 learner completion is deliberately not claimed because Chapter III remains inactive.
+
+Authenticated production chapter acceptance passed on the exact reviewed frontend commit, including both schools, desktop/mobile Chapter I → II → I switching, protected-data denials and unchanged before/after evidence. Staff action and school analytics acceptance also passed. The initial read acceptance stopped at an obsolete pristine-account assumption: a valid unanswered diagnostic already existed from October 13. The corrected runner accepts only a valid incomplete diagnostic, verifies its resume UI instead of absent launch cards, and preserves the practice lock and exact before/after state; no learner session was deleted or created.
+
+All 49 table inventories matched after the SQL/Edge deployment. After provenance recording, 47 table inventories still match; the remaining two contain only the intended append/pointer changes, with old rows preserved. Security-advisor findings are unchanged after excluding observation timestamps. [Durable evidence](evidence/assessment-policy-v2-release-20261015.json) records source hashes, migrations, deployed versions, CI and authenticated reports.
+
+Chapter III stays draft/inactive, with zero qualified forms and independent SME/exposure gates open. No question, hint or guide wording changed. Next is a bounded authoring manifest, not automatic release. Documentation is aligned in roadmap 3.79; Notion is synced and read back against the merged documentation commit during closeout.
