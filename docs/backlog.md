@@ -258,8 +258,9 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Verify all 96 current-version human approvals and QA, all 80 guide publications/snapshots and 206 approved definition snapshots.
 - [x] Rebind unchanged S01-D01 v2 to its prior semantic comparison; preserve both immutable versions.
 - [x] Prepare the sixteen-question assessment proposal, ten-question mandatory score, four-skill readiness scope, capacity table and shared-runtime implementation/acceptance requirements.
-- [ ] Obtain the owner decision on proposed counts, readiness and pass/reporting scope.
-- [ ] Implement the accepted versioned subject-neutral contract; verify all affected consumers and preserve Chapter I/II and v1 sessions.
+- [x] Obtain the owner decision on proposed counts, readiness and pass/reporting scope — John approved 2026-10-15.
+- [x] Implement the accepted versioned subject-neutral contract and local scoring/readiness/retry/reporting regressions.
+- [ ] Complete 15C.15 CI, deployment/parity, authenticated production preservation checks and documentation/Notion closeout.
 - [ ] Decide the next bounded authoring manifest; retain independent SME/exposure, form qualification and release gates.
 
 [Review closure](chapter-iii-batches-06-12-review.md) · [Concrete proposal](chapter-iii-assessment-contract-proposal.md).

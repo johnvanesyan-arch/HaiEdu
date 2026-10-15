@@ -207,7 +207,7 @@ export function buildExactInstitutionalStudentAnalytics(args: {
   else if (["review_required_attempt_2", "review_required_attempt_3"].includes(review?.lifecycleState)) intervention = { action: "required_chapter_review", skillId: null, code: null, messageHy: "Առաջնահերթ քայլ՝ ավարտել պահանջվող Գլխի կրկնությունը։" };
   else if (["mastery_retry_2_ready", "mastery_retry_3_ready"].includes(review?.lifecycleState)) intervention = { action: "mastery_check_retry", skillId: null, code: null, messageHy: "Պահանջվող կրկնությունն ավարտված է. յուրացման ստուգման հաջորդ փորձը հասանելի է։" };
   else if (review?.lifecycleState === "mastery_failed_final") intervention = { action: "review_chapter", skillId: null, code: null, messageHy: "Յուրացման թույլատրված փորձերն ավարտված են. շարունակել Գլխի կրկնությունը։" };
-  else if (review?.lifecycleState === "mastery_passed" || passedMastery) intervention = { action: "unit_complete", skillId: null, code: null, messageHy: "Գլուխն ավարտված է․ յուրացման ստուգումն անցած է։" };
+  else if (review?.lifecycleState === "mastery_passed" || passedMastery) intervention = { action: "unit_complete", skillId: null, code: null, messageHy: passedMastery?.metadata?.assessmentResultReporting ? "Ստուգարքի պահանջները կատարված են։" : "Գլուխն ավարտված է․ յուրացման ստուգումն անցած է։" };
   else if (!latestDiagnostic) intervention = { action: "take_diagnostic", skillId: null, code: null, messageHy: "Առաջին քայլ՝ անցնել ընտրված գլխի ախտորոշիչը։" };
   else if (knownWeak) intervention = { action: "practice_skill", skillId: knownWeak.skillId, code: knownWeak.code, messageHy: `Առաջարկվող միջամտություն՝ աշխատել ${knownWeak.code} հմտության վրա։` };
   else intervention = { action: "monitor", skillId: null, code: null, messageHy: "Համեմատեք ընտրված գլխի արդյունքները և ուսումնական ապացույցները։ Յուրացման ստուգման հասանելիությունը որոշվում է ուսումնական կանոններով։" };
@@ -228,10 +228,12 @@ export function buildExactInstitutionalStudentAnalytics(args: {
       percent: Number(latestDiagnostic.answered_count)
         ? Math.round(Number(latestDiagnostic.correct_count) / Number(latestDiagnostic.answered_count) * 100) : 0,
       completedAt: latestDiagnostic.completed_at,
+      assessmentResult: latestDiagnostic.metadata?.assessmentResultReporting ?? null,
     } : null,
-    masteryCheck: passedMastery ? { passed: true, percent: Number(passedMastery.score_percent ?? 0) } : null,
+    masteryCheck: passedMastery ? { passed: true, percent: Number(passedMastery.score_percent ?? 0), assessmentResult: passedMastery.metadata?.assessmentResultReporting ?? null } : null,
     latestMasteryCheck: latestMastery ? {
       result: latestMastery.assessment_result,
+      assessmentResult: latestMastery.metadata?.assessmentResultReporting ?? null,
       percent: latestMastery.score_percent === null ? null : Number(latestMastery.score_percent),
       completedAt: latestMastery.completed_at,
     } : null,
@@ -253,6 +255,7 @@ export function buildExactInstitutionalStudentAnalytics(args: {
       id: row.id, mode: row.mode, status: row.status, answered: Number(row.answered_count),
       planned: Number(row.planned_item_count), correct: row.status === "active" && ["diagnostic","mastery_check"].includes(row.mode) ? null : Number(row.correct_count), contract: evidenceContract(row),
       assessmentResult: row.assessment_result,
+      reporting: row.status === "completed" ? row.metadata?.assessmentResultReporting ?? null : null,
       scorePercent: row.status === "active" && ["diagnostic","mastery_check"].includes(row.mode) ? null : row.score_percent == null ? null : Number(row.score_percent),
       startedAt: row.started_at, completedAt: row.completed_at,
     })),
@@ -289,7 +292,7 @@ export async function loadExactInstitutionalClassAnalytics(
   if (!studentIds.length) return { skills, students: [] };
 
   const sessions = (await paged((from, to) => admin.from("learning_sessions")
-    .select("id,student_id,unit_code,mode,status,target_skill_id,planned_item_count,answered_count,correct_count,assessment_result,score_percent,mastery_attempt_number,started_at,completed_at,institutional_class_enrollment_id,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id,curriculum_release_id,academic_context_status,governed_unit_id,assessment_blueprint_id,assessment_policy_binding_id,learning_model_configuration_id,academic_mastery_policy_id,runtime_build_id,provenance_status,model_provenance_status,runtime_provenance_status")
+    .select("id,student_id,unit_code,mode,status,target_skill_id,planned_item_count,answered_count,correct_count,assessment_result,score_percent,metadata,mastery_attempt_number,started_at,completed_at,institutional_class_enrollment_id,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id,curriculum_release_id,academic_context_status,governed_unit_id,assessment_blueprint_id,assessment_policy_binding_id,learning_model_configuration_id,academic_mastery_policy_id,runtime_build_id,provenance_status,model_provenance_status,runtime_provenance_status")
     .eq("academic_context_status", "exact")
     .eq("school_id", context.schoolId).eq("academic_year_id", context.academicYearId)
     .eq("class_id", context.classId).eq("teacher_assignment_id", context.assignmentId)

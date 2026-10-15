@@ -1,5 +1,6 @@
 // Prospective immutable blueprint contract. Missing policy has no core default.
 export const ASSESSMENT_POLICY_SCHEMA = 'haiedu-assessment-policy-v1';
+export const ASSESSMENT_POLICY_SCHEMA_V2 = 'haiedu-assessment-policy-v2';
 export class AssessmentPolicyInvalid extends Error {
   constructor() { super('assessment_policy_invalid'); }
 }
@@ -14,11 +15,35 @@ function countMap(value, allowZero = false) {
   assert(rows.length > 0 && rows.every(([id, count]) => uuid(id) && Number.isSafeInteger(count) && count >= (allowZero ? 0 : 1)));
   return rows;
 }
+function skillSet(value, scope) {
+  assert(Array.isArray(value) && value.length > 0 && new Set(value).size === value.length && value.every(id => uuid(id) && (!scope || scope.includes(id))));
+  return value;
+}
+function readV2Scope(value) {
+  const delivered = skillSet(value.deliveredSkillIds);
+  if (value.questionCountBySkill) assert(Object.keys(value.questionCountBySkill).length === delivered.length && delivered.every(id => Object.hasOwn(value.questionCountBySkill, id)));
+  assert(Array.isArray(value.reportingGroups) && value.reportingGroups.length > 0);
+  const members = [], keys = new Set();
+  for (const group of value.reportingGroups) {
+    assert(group && typeof group === 'object' && Object.keys(group).length === 3 && Object.keys(group).every(key => ['key','label','skillIds'].includes(key)));
+    assert(typeof group.key === 'string' && /^[a-z][a-z0-9_-]{0,63}$/.test(group.key) && !keys.has(group.key));
+    assert(typeof group.label === 'string' && group.label.trim().length > 0 && group.label.length <= 200);
+    keys.add(group.key); members.push(...skillSet(group.skillIds, delivered));
+  }
+  assert(members.length === delivered.length && new Set(members).size === delivered.length);
+  if (value.mode === 'mastery_check') {
+    const scored = skillSet(value.scoredSkillIds, delivered);
+    skillSet(value.readinessSkillIds, delivered);
+    assert(Object.keys(value.minimumCorrectBySkill).every(id => scored.includes(id)));
+    assert(value.reportingGroups.every(group => group.skillIds.every(id => scored.includes(id)) || group.skillIds.every(id => !scored.includes(id))));
+  } else assert(value.scoredSkillIds === undefined && value.readinessSkillIds === undefined);
+}
 export function readAssessmentPolicy(snapshot, scope) {
   const value = snapshot?.assessmentPolicy;
   if (value === undefined) return null;
   assert(value && typeof value === 'object' && !Array.isArray(value));
-  assert(value.schemaVersion === ASSESSMENT_POLICY_SCHEMA && typeof value.policyKey === 'string' && value.policyKey.trim().length > 0 && positive(value.version));
+  const v2 = value.schemaVersion === ASSESSMENT_POLICY_SCHEMA_V2;
+  assert((v2 || value.schemaVersion === ASSESSMENT_POLICY_SCHEMA) && typeof value.policyKey === 'string' && value.policyKey.trim().length > 0 && positive(value.version));
   assert(modes.has(value.mode) && value.mode === scope.mode &&
     uuid(value.subjectProgramId) && value.subjectProgramId === scope.subjectProgramId &&
     uuid(value.curriculumReleaseId) && value.curriculumReleaseId === scope.curriculumReleaseId &&
@@ -42,6 +67,10 @@ export function readAssessmentPolicy(snapshot, scope) {
     assert(value.minimumPercent === undefined && value.minimumCorrectBySkill === undefined);
   }
   const allowed = new Set(['schemaVersion','policyKey','version','mode','subjectProgramId','curriculumReleaseId','unitId','plannedQuestionCount','learningModelConfigurationId','academicMasteryPolicyId','responseTypes','scoringStrategy','hintsAllowed','baselineRequired','questionCountBySkill','maximumCompletedBaselines','minimumPercent','minimumCorrectBySkill']);
+  if (v2) {
+    for (const key of ['deliveredSkillIds','scoredSkillIds','readinessSkillIds','reportingGroups']) allowed.add(key);
+    readV2Scope(value);
+  }
   assert(Object.keys(value).every(key => allowed.has(key)));
   return structuredClone(value);
 }

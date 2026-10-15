@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "haiedu-chapter-assessment-configuration-v1",
+  "status": "approved_not_allocated_or_activated",
+  "scope": {
+    "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+    "curriculumReleaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+    "unitId": "aa824efc-b407-5143-9c92-a894d97be972"
+  },
+  "approval": {
+    "actor": "John",
+    "response": "Approved",
+    "at": "2026-10-15T20:02:38+04:00",
+    "scope": "Versioned subject-neutral scoring/readiness/reporting implementation; no Chapter III activation or SME/exposure waiver"
+  },
+  "bindingRequirements": [
+    "Qualified exact-version forms",
+    "New chapter-scoped learning model with exact assessmentPolicyContracts",
+    "Explicit active lifecycle policy binding",
+    "Independent SME/exposure disposition",
+    "Separate release authorization"
+  ],
+  "commonPolicy": {
+    "schemaVersion": "haiedu-assessment-policy-v2",
+    "version": 1,
+    "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+    "curriculumReleaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+    "unitId": "aa824efc-b407-5143-9c92-a894d97be972",
+    "responseTypes": [
+      "single_choice",
+      "true_false"
+    ],
+    "scoringStrategy": "selected-response-v1",
+    "deliveredSkillIds": [
+      "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+      "4251bf02-d633-578a-bd36-44028b5ceecf",
+      "808be543-acae-5df9-b903-eaceaf4c149c",
+      "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+      "b04dde38-3f39-5cea-a9a1-e7c6535cf39a",
+      "8a07485e-8462-5513-a3b6-f65bc8a7cce4",
+      "4f0315c6-35ea-5573-aab5-4f9c6329b6eb",
+      "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb"
+    ],
+    "reportingGroups": [
+      {
+        "key": "mandatory",
+        "label": "Պարտադիր վերջնարդյունքներ",
+        "skillIds": [
+          "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+          "808be543-acae-5df9-b903-eaceaf4c149c",
+          "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+          "8a07485e-8462-5513-a3b6-f65bc8a7cce4"
+        ]
+      },
+      {
+        "key": "supporting",
+        "label": "Օժանդակ հմտություններ",
+        "skillIds": [
+          "4251bf02-d633-578a-bd36-44028b5ceecf",
+          "b04dde38-3f39-5cea-a9a1-e7c6535cf39a"
+        ]
+      },
+      {
+        "key": "additional",
+        "label": "Լրացուցիչ վերջնարդյունքներ",
+        "skillIds": [
+          "4f0315c6-35ea-5573-aab5-4f9c6329b6eb",
+          "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb"
+        ]
+      }
+    ]
+  },
+  "modes": {
+    "diagnostic": {
+      "plannedQuestionCount": 16,
+      "questionCountBySkill": {
+        "8b4a1a66-86c0-5db6-978e-1658d32870e8": 2,
+        "4251bf02-d633-578a-bd36-44028b5ceecf": 1,
+        "808be543-acae-5df9-b903-eaceaf4c149c": 3,
+        "288461d5-40b0-5a88-8840-bdc42e3f8c4d": 3,
+        "b04dde38-3f39-5cea-a9a1-e7c6535cf39a": 1,
+        "8a07485e-8462-5513-a3b6-f65bc8a7cce4": 2,
+        "4f0315c6-35ea-5573-aab5-4f9c6329b6eb": 3,
+        "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb": 1
+      },
+      "hintsAllowed": false,
+      "baselineRequired": false,
+      "maximumCompletedBaselines": 1
+    },
+    "practice": {
+      "plannedQuestionCount": 8,
+      "hintsAllowed": true,
+      "baselineRequired": true
+    },
+    "mastery_check": {
+      "plannedQuestionCount": 16,
+      "questionCountBySkill": {
+        "8b4a1a66-86c0-5db6-978e-1658d32870e8": 2,
+        "4251bf02-d633-578a-bd36-44028b5ceecf": 1,
+        "808be543-acae-5df9-b903-eaceaf4c149c": 3,
+        "288461d5-40b0-5a88-8840-bdc42e3f8c4d": 3,
+        "b04dde38-3f39-5cea-a9a1-e7c6535cf39a": 1,
+        "8a07485e-8462-5513-a3b6-f65bc8a7cce4": 2,
+        "4f0315c6-35ea-5573-aab5-4f9c6329b6eb": 3,
+        "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb": 1
+      },
+      "hintsAllowed": false,
+      "baselineRequired": true,
+      "minimumPercent": 80,
+      "minimumCorrectBySkill": {
+        "8b4a1a66-86c0-5db6-978e-1658d32870e8": 1,
+        "808be543-acae-5df9-b903-eaceaf4c149c": 1,
+        "288461d5-40b0-5a88-8840-bdc42e3f8c4d": 1,
+        "8a07485e-8462-5513-a3b6-f65bc8a7cce4": 1
+      },
+      "scoredSkillIds": [
+        "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+        "808be543-acae-5df9-b903-eaceaf4c149c",
+        "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+        "8a07485e-8462-5513-a3b6-f65bc8a7cce4"
+      ],
+      "readinessSkillIds": [
+        "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+        "808be543-acae-5df9-b903-eaceaf4c149c",
+        "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+        "8a07485e-8462-5513-a3b6-f65bc8a7cce4"
+      ]
+    },
+    "chapter_review": {
+      "plannedQuestionCount": 12,
+      "hintsAllowed": true,
+      "baselineRequired": true
+    }
+  },
+  "readinessModel": {
+    "operator": "OR",
+    "mastery": {
+      "secureAtOrAbove": 0.72,
+      "minimumEvidenceCount": 3
+    },
+    "recentRecovery": {
+      "recentWindow": 5,
+      "minimumUniqueItems": 4,
+      "minimumIndependentCorrect": 4,
+      "hintFreeRequired": true
+    }
+  },
+  "formPlan": {
+    "diagnostic": {
+      "forms": 2,
+      "questionsPerForm": 16
+    },
+    "mastery_check": {
+      "forms": 3,
+      "questionsPerForm": 16,
+      "reserves": 8
+    }
+  },
+  "laboratoryCompetence": "Separate teacher-observed practical evidence; never inferred from selected responses"
+}

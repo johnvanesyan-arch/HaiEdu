@@ -19,7 +19,7 @@ export type SchoolAnalyticsSession = {
   academic_context_status: string | null;
   started_at: string | null;
   completed_at: string | null;
-  governed_unit_id?: string; assessment_blueprint_id?: string; assessment_policy_binding_id?: string; learning_model_configuration_id?: string; academic_mastery_policy_id?: string; runtime_build_id?: string; provenance_status?: string; model_provenance_status?: string; runtime_provenance_status?: string;
+  metadata?: any; governed_unit_id?: string; assessment_blueprint_id?: string; assessment_policy_binding_id?: string; learning_model_configuration_id?: string; academic_mastery_policy_id?: string; runtime_build_id?: string; provenance_status?: string; model_provenance_status?: string; runtime_provenance_status?: string;
   school_id?: string; academic_year_id?: string; class_id?: string; teacher_assignment_id?: string; subject_program_id?: string;
 };
 
@@ -84,9 +84,18 @@ export function aggregateSchoolPerformanceAnalytics(args: {
   const contractGroups = new Map<string, any>();
   for (const session of completed) {
     const key = evidenceContractKey(session);
-    const group = contractGroups.get(key) ?? { contract: evidenceContract(session), mode: session.mode, sessions: 0, answered: 0, correct: 0, masteryPassed: 0 };
+    const group = contractGroups.get(key) ?? { contract: evidenceContract(session), mode: session.mode, sessions: 0, answered: 0, correct: 0, masteryPassed: 0, reportingGroups: [] as any[], passScore: null as any };
     group.sessions++; group.answered += Number(session.answered_count ?? 0); group.correct += Number(session.correct_count ?? 0);
     if (session.assessment_result === "passed") group.masteryPassed++;
+    const report=session.metadata?.assessmentResultReporting;
+    if (report?.schemaVersion === 'haiedu-assessment-result-v2') {
+      for (const row of report.groups) {
+        let aggregate=group.reportingGroups.find((g:any)=>g.key===row.key);
+        if (!aggregate) { aggregate={key:row.key,label:row.label,skillIds:row.skillIds,determinesPass:row.determinesPass,correct:0,answered:0}; group.reportingGroups.push(aggregate); }
+        aggregate.correct+=row.correct; aggregate.answered+=row.answered;
+      }
+      if(report.score) { group.passScore ??= {correct:0,answered:0};group.passScore.correct+=report.score.correct;group.passScore.answered+=report.score.answered; }
+    }
     contractGroups.set(key,group);
   }
   const comparableDiagnostics = new Set(completedDiagnostics.map(row => evidenceContractKey(row))).size === 1

@@ -1,3 +1,4 @@
+import {assessmentResultMarkup} from './assessment-reporting.mjs';
 import { contractMarkup } from "./analytics-provenance.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
@@ -1013,7 +1014,7 @@ async function openStudent(studentId) {
   const modeSummary = data.modeSummary ?? {};
   const recentSessions = (data.sessions ?? []).map((session) => {
     const labels = { diagnostic: "Ախտորոշիչ", practice: "Վարժություն", chapter_review: "Գլխի կրկնություն", mastery_check: "Յուրացման ստուգում" };
-    return `<tr><td>${escapeHtml(labels[session.mode] ?? session.mode)}</td><td>${escapeHtml(session.status)}</td><td>${session.correct ?? "—"} / ${session.answered} ${contractMarkup(session.contract)}</td><td>${session.completedAt ? new Date(session.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`;
+    return `<tr><td>${escapeHtml(labels[session.mode] ?? session.mode)}</td><td>${escapeHtml(session.status)}</td><td>${assessmentResultMarkup(session.reporting) || `${session.correct ?? "—"} / ${session.answered}`} ${contractMarkup(session.contract)}</td><td>${session.completedAt ? new Date(session.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`;
   }).join("");
   const unitTitle = data.selectedUnit?.unitTitleHy ?? klass?.selectedUnit?.unitTitleHy ?? "—";
   const contextKicker = dashboard?.institutionalTeacher
@@ -1021,10 +1022,10 @@ async function openStudent(studentId) {
     : "Ֆիզիկա 7 · Գլուխ I";
   $("studentDrawerContent").innerHTML = `
     <section class="drawer-summary-grid">
-      <div class="mini-card"><span>Սկզբնական ախտորոշիչ</span><strong>${data.latestDiagnostic ? `${data.latestDiagnostic.percent}%` : "—"}</strong></div>
+      <div class="mini-card"><span>Սկզբնական ախտորոշիչ</span><strong>${data.latestDiagnostic?.assessmentResult ? assessmentResultMarkup(data.latestDiagnostic.assessmentResult) : data.latestDiagnostic ? `${data.latestDiagnostic.percent}%` : "—"}</strong></div>
       <div class="mini-card"><span>Վարժություն</span><strong>${modeSummary.practice?.completed ?? 0} ավարտված</strong></div>
       <div class="mini-card"><span>Գլխի կրկնություն</span><strong>${modeSummary.chapter_review?.completed ?? review?.totalReviewsCompleted ?? 0} ավարտված</strong></div>
-      <div class="mini-card"><span>Յուրացման ստուգում</span><strong>${data.latestMasteryCheck ? `${escapeHtml(masteryResult ?? "—")} · ${data.latestMasteryCheck.percent}%` : "—"}</strong></div>
+      <div class="mini-card"><span>Յուրացման ստուգում</span><strong>${data.latestMasteryCheck?.assessmentResult ? assessmentResultMarkup(data.latestMasteryCheck.assessmentResult) : data.latestMasteryCheck ? `${escapeHtml(masteryResult ?? "—")} · ${data.latestMasteryCheck.percent}%` : "—"}</strong></div>
     </section>
     <section class="teacher-intervention"><strong>Առաջարկվող միջամտություն</strong><p>${escapeHtml(data.recommendation?.messageHy ?? "—")}</p></section>
     <p class="mode-kicker">${escapeHtml(contextKicker)}</p>
