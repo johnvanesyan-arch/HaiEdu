@@ -1,6 +1,6 @@
 # Chapter III batch 08 — staging and verification
 
-**Current queue,2026-10-15:** remaining reviews are consolidated under 15C.13: 55 questions, 40 guides and 119 definitions across Batches 06–12. Sixteen assessment candidates were added under a bounded owner instruction; the contract remains open. [Batches 11–12 staging](chapter-iii-batches-11-12-staging.md) records current totals and gates; counts and next steps below are historical staging observations.
+**Current checkpoint — 2026-10-15 / 15C.13R–15C.14:** all 96 Chapter III questions are approved, all 80 guides published and 206 definitions active. Ordinary content review is closed. The [assessment/readiness proposal](chapter-iii-assessment-contract-proposal.md) is prepared for a separate owner decision; it is not adopted. Chapter III remains inactive/unallocated. [Review closure](chapter-iii-batches-06-12-review.md). All counts, queues and next steps below are dated historical staging/planning evidence.
 
 **2026-10-15 · Sprint 15C.9 · Roadmap 3.72**
 

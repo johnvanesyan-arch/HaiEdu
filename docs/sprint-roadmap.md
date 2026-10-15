@@ -1,9 +1,9 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
-**Roadmap version:** 3.76
+**Roadmap version:** 3.77
 **Updated:** 2026-10-15 (Asia/Yerevan)
 **Latest platform repair:** the shared guide-validator metadata correction is deployed as v11; all three bundle files read back exactly, 31 regressions and CI pass. Existing content and approvals are preserved. [Guide-validator repair evidence](evidence/remediation-guide-validator-metadata-fix-20261015.json). Earlier direct-read protection and reviewer approval repairs remain in force.
-**Latest content checkpoint:** Chapter II remains an active verified provisional pilot. **Chapter III15C.12–15C.13:** 8 Diagnostic + 8 Mastery candidates and 29 definitions staged;96 total questions (41 approved, 55 pending), 80 guides, 206 definitions. Combined review queue: 55 questions / 40 guides / 119 definitions. Inactive/unallocated; contract/SME/exposure gates remain open. [Batches 11–12 staging](chapter-iii-batches-11-12-staging.md) · [Current status](project-status.md).
+**Chapter III review is complete:** 96 approved questions (80 Practice + 8 Diagnostic candidates + 8 Mastery candidates), 80 published guides and 206 active definitions; no ordinary content-review queue remains. Current-version human approvals, snapshots and QA are verified. **Sprint 15C.14:** the [assessment/readiness proposal](chapter-iii-assessment-contract-proposal.md) is prepared for owner decision, not adopted or implemented. It recommends 16-question forms with 10 mandatory-outcome questions determining the 80% pass, four required skills, and separately reported supporting/additional results. Chapter III remains inactive/unallocated; independent SME/exposure, qualified forms and release gates remain open. [Review closure](chapter-iii-batches-06-12-review.md).
 **Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5/14 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E live switching acceptance is complete; the authorized Chapter II provisional pilot is verified. Chapter II database migrations, production configuration and activation are complete; independent SME/production gates stay open. Sprints 16–26 remain planned in the sequence below.
 
 This file defines the canonical high-level sprint scope and sequence. [Project status](project-status.md) is the sole current delivery/gate register; [backlog](backlog.md) is the detailed implementation checklist. The overview mirrors that register. Dated execution records, content counts and pending-review statements below are historical checkpoints; later evidenced dispositions supersede them without rewriting their original observations.
@@ -196,7 +196,7 @@ Routing guidance before Sprint 11 technical handoff, preserved for history. That
 | 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | ✅ | Complete. 12.5A–Z, lifecycle branches, persisted MCQ randomization, authenticated desktop QA and authenticated mobile learner/teacher QA at 390 px and 430 px all pass. Production Mobile browser QA #2 passed on GitHub head `0c56fa8`. |
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ✅ technical scope | 14A deployed. 14B account/provisioning/recovery controls, school-admin operations and teacher workspace operations are deployed. Institutional classroom creation, class-bound bulk invitations, optional secure join codes, dedicated active/archive views, and authorized classroom renaming are complete. The 14C school-scoped learner onboarding, exact-context session stamping and teacher roster/evidence views pass their controlled production checks. Teacher offboarding and final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 checks. Authenticated class/staff mutation-denial and teacher navigation/rename/offboarding action acceptance passed 141/141 checks, with read isolation passing 54/54 before and after. 14D school-wide analytics is complete: production acceptance passed 10/10 for both QA schools, including own-school reads, cross-school denials, aggregate-only payloads and authenticated board rendering. Authenticated Chapter I → II → I desktop/mobile switching passed 91/91 on the activated Chapter II pilot, closing the remaining Sprint 14 technical gate. |
-| 15 | Grade 7 Physics Expansion — Chapters II–VI | 🟡 | Chapter II content review is complete; its authorized provisional pilot is active. Live governed switching acceptance passed 91/91. Chapter III twelve governed batches are staged through 15C.13: 80 Practice + 8 Diagnostic candidates + 8 Mastery candidates (96 total; 41 approved, 55 draft), 80 guides and 206 definitions. Remaining reviews from Batches 06–12 are combined. Release is inactive/unallocated; assessment/readiness contract and SME/exposure qualification remain open. Chapters IV–VI remain unmodeled. [Current status](project-status.md). |
+| 15 | Grade 7 Physics Expansion — Chapters II–VI | 🟡 | Chapter II provisional pilot and 91/91 live switching acceptance are preserved. Chapter III all 96 questions, 80 guides and 206 definitions are content-reviewed under 15C.13R. The 15C.14 assessment/readiness proposal awaits owner decision and implementation. Chapter III remains inactive/unallocated; SME/exposure and qualified forms remain open. Chapters IV–VI remain unmodeled. [Current status](project-status.md). |
 | 16 | Physics 7 Course Integration | ⏳ | Integrate the available Physics 7 course units through the same subject-neutral contracts and preserve unit-bound diagnostics/mastery with course-level aggregation. |
 | 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
 | 16.2 | Armenian Language 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Armenian Language 7 unit through the complete learner, teacher, governance and QA pipeline. |
@@ -1080,7 +1080,15 @@ All twelve S02 questions and all **40 authored Chapter II questions** are now ap
 
 **15B.14B / 15B.14C — implementation merged; database deployment blocked.** John directed “You can release Chapter II; we will do the specialist review later.” PR #206 merged the exact disjoint form allocation, governed configuration, runtime safeguards and chapter navigation. All five final CI jobs passed; the frontend is deployed. Two Supabase connector failures prevented the first migration from applying, as confirmed by readback. Database migrations, production rollback rehearsal, committed allocation/bindings, activation and authenticated chapter switching remain pending. Chapter I stays on its original active release; Chapter II remains draft and inactive. Independent SME and final production exposure qualification remain open, and the existing six pilot gates remain required. [Scope and evidence](chapter-ii-pilot-release.md) · [Deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json).
 
+### 15C.13R–15C.14 — Review closure and assessment/readiness proposal
+
+**Chapter III review is complete:** 96 approved questions (80 Practice + 8 Diagnostic candidates + 8 Mastery candidates), 80 published guides and 206 active definitions; no ordinary content-review queue remains. Current-version human approvals, snapshots and QA are verified. **Sprint 15C.14:** the [assessment/readiness proposal](chapter-iii-assessment-contract-proposal.md) is prepared for owner decision, not adopted or implemented. It recommends 16-question forms with 10 mandatory-outcome questions determining the 80% pass, four required skills, and separately reported supporting/additional results. Chapter III remains inactive/unallocated; independent SME/exposure, qualified forms and release gates remain open. [Review closure](chapter-iii-batches-06-12-review.md).
+
+The proposal retains sixteen-question delivery and the 168-question planning budget, shifts one supporting S05 slot to mandatory S04, and requires 8/10 mandatory answers plus one correct in each required skill. The explicit implementation and acceptance scope is recorded before requesting the owner decision. No new question batch, learner release or database mutation is included.
+
 ### 15C.12–15C.13 — Chapter III first assessment-candidate batches
+
+**Historical staging checkpoint; review closed under 15C.13R above.** The pending counts and next steps below record the original handoff, not the current queue.
 
 **Sprints 15C.12 and 15C.13 are staged and verified:** eight Diagnostic and eight Mastery candidates, one of each per S01–S08, plus 29 draft misconception definitions. John selected this bounded candidate scope while the assessment rules remain open. Full textbook, current/history/guide/protected-bank and 120-pair comparisons are recorded. All 16 exact saved questions pass technical QA; both rollback rehearsals and 39 preservation scopes per batch pass.
 
@@ -1090,7 +1098,7 @@ All 16 additions are provisional protected parallel candidates: **zero new indep
 
 ### 15C.10–15C.11 — Chapter III practice inventory complete (historical checkpoint)
 
-**Superseded by 15C.13 above:** current queue 55 questions / 40 guides / 119 definitions. The owner later authorized sixteen provisional assessment candidates while rules remain open; the earlier pre-authoring sequence below is historical.
+**Historical handoff, superseded by 15C.13R–15C.14 above:** the review queue is closed and the concrete assessment/readiness proposal awaits a separate decision.
 
 **Sprints 15C.10 and 15C.11 are staged and verified:** two batches of eight practice questions, sixteen guides and forty definitions. All 32 hints and 16 worked examples received separate natural-Armenian, physics and pedagogical checks. Question QA and saved-guide validation pass 16/16; both rollback rehearsals, independent exact readbacks and all 39 preservation scopes per batch pass.
 
@@ -1102,7 +1110,7 @@ Chapter III now has **80 practice questions (41 approved + 39 draft), 80 guides 
 
 ### 15C.9 — Chapter III eighth practice batch; combined review queue (historical checkpoint)
 
-**Current queue is consolidated under 15C.13 above:** 55 questions / 40 guides / 119 definitions across Batches 06–12. Earlier counts and next steps below are historical.
+**Review closed under 15C.13R above:** all Chapter III ordinary content reviews are complete. Earlier counts and next steps below are historical.
 
 **Sprint 15C.9 is staged and verified:** eight practice questions across seven skills, eight guides and twenty definitions. Question QA and guide validation pass 8/8; rollback rehearsal, exact independent readback and all 39 preservation scopes pass. **All 16 hints and 8 worked examples received separate Armenian, physics and pedagogical checks.** Chapter III now has **64 questions (40 approved + 24 draft), 64 guides (40 published + 24 draft), and 137 definitions (87 active + 50 draft)**.
 
@@ -1112,7 +1120,7 @@ Chapter III now has **80 practice questions (41 approved + 39 draft), 80 guides 
 
 ### 15C.8 — Chapter III seventh practice batch; combined review queue (historical staging checkpoint)
 
-**Current queue is consolidated under 15C.13 above:** 55 questions / 40 guides / 119 definitions across Batches 06–12. Earlier counts and next steps below are historical.
+**Review closed under 15C.13R above:** all Chapter III ordinary content reviews are complete. Earlier counts and next steps below are historical.
 
 **Sprint 15C.8 is staged and verified:** eight more practice questions across S01–S08, eight guides and fourteen definitions. Question QA and guide validation pass 8/8; rollback rehearsal, exact independent readback and all 39 preservation scopes pass. **All 16 new hints and 8 worked examples received separate language and pedagogical checks.** Chapter III now has **56 questions (40 approved + 16 draft), 56 guides (40 published + 16 draft), and 117 definitions (87 active + 30 draft)**.
 
@@ -1122,7 +1130,7 @@ Chapter III now has **80 practice questions (41 approved + 39 draft), 80 guides 
 
 ### 15C.7 — Chapter III sixth practice batch and worked-example review (historical staging checkpoint)
 
-**Current queue is consolidated under 15C.13 above:** 55 questions / 40 guides / 119 definitions across Batches 06–12. Earlier counts and next steps below are historical.
+**Review closed under 15C.13R above:** all Chapter III ordinary content reviews are complete. Earlier counts and next steps below are historical.
 
 **Sprint 15C.7 is staged and verified:** eight new practice questions across all eight skills, eight guides and sixteen definitions. Question QA and guide validation pass 8/8; rollback rehearsal, exact independent readback and all 39 preservation scopes pass. **All 16 hints and all 8 worked examples received separate language and pedagogical checks.** Chapter III now has **48 questions (40 approved + 8 draft), 48 guides (40 published + 8 draft), and 103 definitions (87 active + 16 draft)**.
 

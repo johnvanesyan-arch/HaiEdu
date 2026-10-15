@@ -253,13 +253,24 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III review closure and assessment proposal — 15C.13R–15C.14, 2026-10-15
+
+- [x] Verify all 96 current-version human approvals and QA, all 80 guide publications/snapshots and 206 approved definition snapshots.
+- [x] Rebind unchanged S01-D01 v2 to its prior semantic comparison; preserve both immutable versions.
+- [x] Prepare the sixteen-question assessment proposal, ten-question mandatory score, four-skill readiness scope, capacity table and shared-runtime implementation/acceptance requirements.
+- [ ] Obtain the owner decision on proposed counts, readiness and pass/reporting scope.
+- [ ] Implement the accepted versioned subject-neutral contract; verify all affected consumers and preserve Chapter I/II and v1 sessions.
+- [ ] Decide the next bounded authoring manifest; retain independent SME/exposure, form qualification and release gates.
+
+[Review closure](chapter-iii-batches-06-12-review.md) · [Concrete proposal](chapter-iii-assessment-contract-proposal.md).
+
 ## Chapter III Diagnostic/Mastery candidate batches — 15C.12–15C.13, 2026-10-15
 
 - [x] Record the owner's bounded selection: eight Diagnostic and eight Mastery candidates; no assessment contract or release waiver inferred.
 - [x] Compare the entire applicable bank/history/guides and all 120 candidate pairs; separately check textbook physics and natural Armenian.
 - [x] Stage both eight-question batches with 29 definitions and no new learner guides/hints; exact readback, QA 16/16 and 39 preservation scopes per batch pass.
 - [x] Preserve 80 practice questions, all existing approvals, all guides, Chapter I/II pilots and inactive/unallocated Chapter III state.
-- [ ] Complete the combined site review:55 questions, 40 guides and 119 definitions across Batches 06–12.
+- [x] Ordinary content review verified complete under 15C.13R; all current versions are approved/published.
 - [ ] Settle Chapter III assessment counts/weights, supporting/additional-skill readiness and pass rules before allocation; independent SME/exposure and disjoint-form qualification remain required.
 - [ ] Decide the next bounded authoring scope after this 16-candidate handoff;24 Diagnostic and 48 Mastery slots remain un-authored against the planning budget.
 
@@ -272,7 +283,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Repair shared authored-catalogue metadata validation; run 31 regressions and CI; deploy the single importing consumer and verify all three bundle files.
 - [x] Rehearse and stage both eight-question batches separately; exact saved-content/guide checks and 39 preservation scopes pass for each.
 - [x] Complete 80/80 planned practice slots: 16 new questions, 16 guides and 40 definitions.
-- [ ] Earlier remaining reviews are consolidated in the current 15C.13 queue above.
+- [x] Ordinary content review verified complete under 15C.13R; all current versions are approved/published.
 - [ ] Agree the assessment/readiness contract before allocation. The later bounded 16-candidate authoring instruction supersedes the earlier authoring sequence only; SME/exposure/release gates remain open.
 
 [Batches 09–10 staging](chapter-iii-batches-09-10-staging.md).
@@ -283,7 +294,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Compare eight candidates across seven skills and all 28 pairs against related/current/history banks; expand comparison to the whole U02-S02 bank.
 - [x] Check all 16 hints and 8 examples for natural Armenian, source fidelity and useful help.
 - [x] Rehearse rollback; stage 8 questions / 8 guides / 20 definitions; verify exact readback, QA/guide checks 8/8 and all 39 preservation scopes.
-- [ ] Remaining reviews are consolidated in the current 15C.13 queue above; one S01-I06 approval is newly verified.
+- [x] Ordinary content review verified complete under 15C.13R; all current versions are approved/published.
 - [x] Remaining 16 practice slots drafted under 15C.10–15C.11. The assessment/readiness contract and specialist/release gates remain open.
 
 [Batch 08 staging](chapter-iii-batch-08-staging.md).
@@ -294,7 +305,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Compare eight candidates across S01–S08, related/current/history banks and all 28 pairs; include the whole U01-S10 measurement-method bank.
 - [x] Check all 16 hints and 8 worked examples for natural Armenian, source fidelity and useful help.
 - [x] Rehearse rollback; stage 8 questions / 8 guides / 14 definitions; verify exact readback, QA/guide checks 8/8 and all 39 preservation scopes.
-- [ ] Batches 06/07 remain pending; their remaining review queue is included in the current 15C.13 queue above.
+- [x] Ordinary content review verified complete under 15C.13R; all current versions are approved/published.
 - [x] Authoring continued under 15C.9 above; remaining practice authoring is complete under 15C.10–15C.11. Assessment/readiness contract and specialist/release gates remain open.
 
 [Batch 07 staging](chapter-iii-batch-07-staging.md).
@@ -305,7 +316,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Compare eight candidates across eight skills, related current/history banks, guide exposure and all 28 pairs.
 - [x] Review all 16 hints and 8 worked examples for natural Armenian, useful help and source fidelity.
 - [x] Rehearse rollback; stage 8 questions / 8 guides / 16 definitions; verify exact readback, QA/guide checks 8/8 and all 39 preservation scopes.
-- [ ] Batch 06 has 7 questions, 8 guides and 16 definitions pending after the authenticated S01-I06 approval; included in the current combined queue.
+- [x] Ordinary content review verified complete under 15C.13R; all current versions are approved/published.
 - [x] Authoring continued under 15C.8 and 15C.9 above; remaining practice authoring is complete under 15C.10–15C.11. Assessment/readiness contract and specialist/release gates remain open.
 
 [Batch 06 staging](chapter-iii-batch-06-staging.md).
