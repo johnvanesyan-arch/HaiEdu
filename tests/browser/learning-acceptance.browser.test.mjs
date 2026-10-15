@@ -3,7 +3,8 @@ import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
 import {readFile} from 'node:fs/promises';
-import {chromium} from '@playwright/test';
+import {chromium,expect} from '@playwright/test';
+import {verifyChapterIIVisibleState} from '../../scripts/chapter-ii-pilot-read-acceptance.mjs';
 import {acceptanceFixture,href,id} from '../fixtures/learning-acceptance.mjs';
 
 let browser;
@@ -88,7 +89,18 @@ test('native switching and revoked SQL authorization cannot expose another chapt
 test('v2 native player and history show the 10/2/4 scales and preserve mandatory-only readiness',async t=>{
  const {f,page,origin,errors}=await fixture(t);
  await installV2(f.db);const {skills,policy}=await chapterShape(f.db);
- const baseline=await launch(f.db);await finish(f.db,baseline.session.id);await makeReady(f.db,policy.readinessSkillIds);
+ const baseline=await launch(f.db);
+ await page.goto(origin+href(0));await page.waitForSelector('.course-active-session');
+ const query=new URL(page.url()).searchParams;
+ const selected={enrollmentId:query.get('enrollment'),curriculumReleaseId:query.get('release'),unitId:query.get('unit')};
+ const saved=(await f.db.query('select answered_count,planned_item_count from learning_sessions where id=$1',[baseline.session.id])).rows[0];
+ const active={answered:saved.answered_count,planned:saved.planned_item_count};
+ await verifyChapterIIVisibleState({page,expect,activeSession:active,context:selected});
+ // Wrong counts or routing must fail the same browser assertion used in production.
+ await assert.rejects(verifyChapterIIVisibleState({page,expect:expect.configure({timeout:100}),activeSession:{...active,planned:8},context:selected}));
+ await assert.rejects(verifyChapterIIVisibleState({page,expect,activeSession:active,context:{...selected,unitId:id(9999)}}));
+ assert.equal(f.calls.filter(c=>c.name==='get-session-item'||c.name==='start-learning-session').length,0);
+ await finish(f.db,baseline.session.id);await makeReady(f.db,policy.readinessSkillIds);
  await page.goto(origin+href(0));await page.waitForSelector('#courseContent article');
  const mastery=page.locator('#courseContent article').nth(2);
  assert.match(await mastery.innerText(),/գնահատվող 10 հարցից առնվազն 8/);

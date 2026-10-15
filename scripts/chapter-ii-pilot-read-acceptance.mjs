@@ -105,7 +105,7 @@ export function incompleteBaselinePreserved(data) {
 }
 
 export async function runReadChecks({ fixture, activation, request, check }) {
-  const contexts = {}, snapshots = {};
+  const contexts = {}, snapshots = {}, chapterIIActiveSessions = {};
   const hasForeignIdentity = (value, side) => {
     const other = fixture[side === 'A' ? 'B' : 'A'], text = JSON.stringify(value);
     return ['schoolId', 'classId', 'assignmentId', 'studentId', 'teacherId', 'adminId'].some(k => text.includes(other[k]));
@@ -131,6 +131,7 @@ export async function runReadChecks({ fixture, activation, request, check }) {
       if (index === 1) {
         check(`${side}: Chapter II 16/16, 80%, eight minima, practice 8 and review 12`, chapterIIContract(d, context));
         check(`${side}: incomplete Chapter II baseline retains the practice gate and any existing diagnostic`, incompleteBaselinePreserved(d));
+        chapterIIActiveSessions[side] = d.activeSession;
       }
       snapshots[side].push(digest(preservedEvidence(d)));
     }
@@ -157,7 +158,7 @@ export async function runReadChecks({ fixture, activation, request, check }) {
   const anonymous = await request(null, '/functions/v1/get-student-dashboard', selection(contexts.A[1]));
   check('anonymous: learner dashboard requires authentication', anonymousDashboardDenied(anonymous), anonymous.status);
   return {
-    contexts,
+    contexts, chapterIIActiveSessions,
     async verifyPreserved() {
       for (const side of sides) for (const [index, context] of contexts[side].entries()) {
         const current = await dashboard(side, context);
@@ -185,7 +186,33 @@ export function blockedRequestDiagnostic({ pathname, method }) {
     endpoint: /^\/(?:functions|rest)\/v1\/[a-z][a-z0-9_-]{0,70}$/.test(pathname) || /^\/auth\/v1\/(?:user|token|logout)$/.test(pathname) ? pathname : '/redacted' };
 }
 
-async function browserChecks({ contexts, sessions, url, check, diagnostics }) {
+export async function verifyChapterIIVisibleState({ page, expect, activeSession, context }) {
+  const cards = page.locator('.course-mode-card');
+  if (activeSession) {
+    // The course intentionally hides launch cards while a session is active.
+    // Inspect the existing resume link without following it or serving an item.
+    await expect(cards).toHaveCount(0);
+    const resume = page.locator('.course-active-session');
+    await expect(resume).toContainText(`Պատասխանված է ${activeSession.answered}/${activeSession.planned} հարցի`);
+    const link = resume.locator('a.course-resume');
+    await expect(link).toHaveCount(1);
+    await expect(link).toContainText('Շարունակել · Ախտորոշիչ');
+    const destination = new URL(await link.getAttribute('href'), page.url());
+    for (const [key, value] of Object.entries({ enrollment: context.enrollmentId, release: context.curriculumReleaseId, unit: context.unitId, action: 'diagnostic' })) {
+      expect(destination.searchParams.get(key)).toBe(value);
+    }
+    expect(destination.searchParams.has('skill')).toBe(false);
+  } else {
+    await expect(page.locator('.course-active-session')).toHaveCount(0);
+    await expect(cards).toHaveCount(4);
+    for (const [index, count] of [16, 8, 16, 12].entries()) await expect(cards.nth(index)).toContainText(`${count} հարց`);
+    await expect(cards.nth(2)).toContainText('80%');
+    await expect(cards.nth(1)).toContainText('Նախ ավարտեք այս գլխի ախտորոշիչը');
+    await expect(cards.nth(1).locator('a')).toHaveCount(0);
+  }
+}
+
+async function browserChecks({ contexts, chapterIIActiveSessions, sessions, url, check, diagnostics }) {
   const { chromium, expect: baseExpect } = await import('@playwright/test');
   const expect = baseExpect.configure({ timeout: 30000 });
   const browser = await chromium.launch({ headless: true });
@@ -235,13 +262,8 @@ async function browserChecks({ contexts, sessions, url, check, diagnostics }) {
           await expect(page.locator(`.course-chapters a[aria-current="page"][href*="unit=${target.unitId}"]`)).toHaveCount(1);
           check(`${side}: browser selected chapter matches navigation`, new URL(page.url()).searchParams.get('release') === target.curriculumReleaseId && new URL(page.url()).searchParams.get('unit') === target.unitId);
           if (target.unitId === chapterII.unitId) {
-            const cards = page.locator('.course-mode-card');
-            await expect(cards).toHaveCount(4);
-            for (const [index, count] of [16, 8, 16, 12].entries()) await expect(cards.nth(index)).toContainText(`${count} հարց`);
-            await expect(cards.nth(2)).toContainText('80%');
-            await expect(cards.nth(1)).toContainText('Նախ ավարտեք այս գլխի ախտորոշիչը');
-            await expect(cards.nth(1).locator('a')).toHaveCount(0);
-            check(`${side}: Chapter II learner cards show configured counts and baseline gate`, true);
+            await verifyChapterIIVisibleState({ page, expect, activeSession: chapterIIActiveSessions[side], context: target });
+            check(`${side}: Chapter II shows the preserved diagnostic or configured cards with the baseline gate`, true);
           }
           if (index > 0) check(`${side}: selected chapter has no mobile horizontal overflow`, await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth + 1));
         }
@@ -290,7 +312,7 @@ async function main() {
       check(`${actor}: authenticated expected designated QA identity`, r.status === 200 && Boolean(r.data?.access_token) && r.data?.user?.id === fixture[side][`${role}Id`], r.status);
     }
     const acceptance = await runReadChecks({ fixture, activation, request, check });
-    await browserChecks({ contexts: acceptance.contexts, sessions, url, check, diagnostics: report.browserDiagnostics });
+    await browserChecks({ contexts: acceptance.contexts, chapterIIActiveSessions: acceptance.chapterIIActiveSessions, sessions, url, check, diagnostics: report.browserDiagnostics });
     await acceptance.verifyPreserved();
     // A redeploy during acceptance must not inherit evidence for a different build.
     await waitForRelease({ expectedCommit: report.revision, timeoutMs: 15000 });
