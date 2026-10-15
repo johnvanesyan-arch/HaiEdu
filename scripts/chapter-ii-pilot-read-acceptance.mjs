@@ -92,6 +92,18 @@ function preservedEvidence(data) {
     skills: data.skills, modes: data.modes, practiceAccess: data.practiceAccess, maximumAttempts: data.maximumAttempts };
 }
 
+// Repeated acceptance may encounter a diagnostic begun before this deployment.
+// Keep the incomplete-baseline gate and snapshot the existing session rather
+// than requiring an empty account or deleting its learning history.
+export function incompleteBaselinePreserved(data) {
+  const active = data.activeSession;
+  return data.baseline === null && data.history.length === 0 &&
+    data.practiceAccess?.unlocked === false && data.practiceAccess.reason === 'chapter_diagnostic_required' &&
+    (active === null || (uuid(active?.id) && uuid(active.policyBindingId) &&
+      active.mode === 'diagnostic' && active.targetSkillId === null && active.planned === data.modes.diagnostic.questions &&
+      Number.isInteger(active.answered) && active.answered >= 0 && active.answered < active.planned));
+}
+
 export async function runReadChecks({ fixture, activation, request, check }) {
   const contexts = {}, snapshots = {};
   const hasForeignIdentity = (value, side) => {
@@ -118,7 +130,7 @@ export async function runReadChecks({ fixture, activation, request, check }) {
       check(`${side}: ${index === 0 ? 'preserved Chapter I' : 'Chapter II'} history stays in its original release`, Array.isArray(d.history) && d.history.every(s => s.curriculumReleaseId === context.curriculumReleaseId) && (!d.baseline || d.baseline.curriculumReleaseId === context.curriculumReleaseId));
       if (index === 1) {
         check(`${side}: Chapter II 16/16, 80%, eight minima, practice 8 and review 12`, chapterIIContract(d, context));
-        check(`${side}: new Chapter II baseline is untouched and practice remains locked`, d.baseline === null && d.activeSession === null && d.history.length === 0 && d.practiceAccess?.unlocked === false && d.practiceAccess.reason === 'chapter_diagnostic_required');
+        check(`${side}: incomplete Chapter II baseline retains the practice gate and any existing diagnostic`, incompleteBaselinePreserved(d));
       }
       snapshots[side].push(digest(preservedEvidence(d)));
     }

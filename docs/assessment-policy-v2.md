@@ -1,6 +1,6 @@
 # Versioned assessment scope — Sprint 15C.15
 
-**Owner-approved 2026-10-15 · Roadmap 3.78 · Implemented locally; deployment verification in progress.**
+**Owner-approved 2026-10-15 · Roadmap 3.78 · Implemented and deployed; final production acceptance in progress.**
 
 The former runtime included every answered item in the pass denominator and every frozen skill in first-attempt readiness. That could make supporting/additional knowledge compulsory. John approved the [Chapter III contract](chapter-iii-assessment-contract-proposal.md) at 20:02:38 Asia/Yerevan on 2026-10-15.
 
@@ -18,6 +18,6 @@ The [approved Chapter III configuration](evidence/chapter-iii-assessment-v2-conf
 
 Local SQL integration verifies the three approved 16-question pass/fail cases, mandatory-only readiness, all-response completion, saved/reloaded group results, required review and disjoint retry forms, unchanged v1 all-skill readiness/denominator, and a different subject with three delivered / one scored question. JS/SQL reject duplicate/missing/foreign scope and invalid grouping. Staff loaders and aggregates are exercised against saved SQL results. The new suite is also required on PostgreSQL 17.6 CI; native Chromium covers learner instructions, all 16 answers, result reload and mobile history.
 
-The shared Edge audit identifies 14 importing functions. Every affected bundle must be deployed and read back exactly; the existing JWT setting is retained, including the already custom-authenticated teacher-student endpoint. Deployment will append runtime provenance and move only active implementation pointers; historical builds/sessions/models/approvals remain immutable. Authenticated production acceptance uses designated guarded QA accounts and verifies Chapter I/II access/switching without new learner evidence.
+The shared Edge audit identifies 14 importing functions. **Deployment and exact readback are complete; final production acceptance is pending.** See the [dated deployment checkpoint](evidence/assessment-policy-v2-deployment-20261015.json). Every affected bundle must be deployed and read back exactly; the existing JWT setting is retained, including the already custom-authenticated teacher-student endpoint. Deployment will append runtime provenance and move only active implementation pointers; historical builds/sessions/models/approvals remain immutable. Authenticated production acceptance uses designated guarded QA accounts and verifies Chapter I/II access/switching without new learner evidence.
 
 Required closeout: aggregate Platform release checks, deployed SQL/ACL and Edge parity, runtime provenance, production frontend commit/read acceptance, content/learner preservation, documentation merge and Notion exact-source synchronization. Chapter III stays draft/inactive; zero qualified forms and independent SME/exposure gates remain.

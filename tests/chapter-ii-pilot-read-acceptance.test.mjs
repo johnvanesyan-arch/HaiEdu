@@ -123,6 +123,22 @@ test('positive controls cannot pass via denial and new baseline/history contamin
   ]) { const input = inputs(); await assert.rejects(runReadChecks({ ...input, ...mock(input, alter) })); }
 });
 
+test('a pre-existing diagnostic is preserved, while invalid or changing active sessions fail', async () => {
+  const input = inputs(), m = mock(input);
+  const active = { id: id(810), mode: 'diagnostic', answered: 0, planned: 16, policyBindingId: id(811), targetSkillId: null };
+  m.dashboards.A[1].activeSession = structuredClone(active);
+  const result = await runReadChecks({ ...input, ...m });
+  await result.verifyPreserved();
+  m.dashboards.A[1].activeSession.answered = 1;
+  await assert.rejects(result.verifyPreserved(), /unchanged/);
+  for (const mutate of [s => s.mode = 'practice', s => s.answered = -1, s => s.answered = 16,
+    s => s.answered = 0.5, s => s.planned = 8, s => s.policyBindingId = null, s => s.id = null, s => s.targetSkillId = id(9000)]) {
+    const bad = mock(input); bad.dashboards.A[1].activeSession = structuredClone(active);
+    mutate(bad.dashboards.A[1].activeSession);
+    await assert.rejects(runReadChecks({ ...input, ...bad }), /incomplete Chapter II baseline/);
+  }
+});
+
 test('foreign context, protected row and 401 substituted for authorization denial are failures', async () => {
   for (const alter of [
     ({ actor, endpoint, body, contexts, dashboards }) => actor === 'A_student' && endpoint.endsWith('get-student-dashboard') && body.enrollmentId === contexts.B[1].enrollmentId ? { status: 200, data: dashboards.B[1] } : null,
@@ -159,7 +175,7 @@ test('snapshot detects any changed Chapter I history after native switching', as
   await assert.rejects(result.verifyPreserved(), /Chapter I baseline, sessions, history and learning state unchanged/);
 });
 
-test('credential workflow is main-only and triggered only by verified activation evidence', async () => {
+test('credential workflow is main-only and retains verified activation and exact frontend guards', async () => {
   const workflow = await readFile('.github/workflows/chapter-ii-pilot-read-acceptance.yml', 'utf8');
   assert.match(workflow, /branches: \[main\]/);
   assert.match(workflow, /run: test "\$GITHUB_REF" = refs\/heads\/main/);

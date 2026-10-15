@@ -1,5 +1,7 @@
 # Armenian Curriculum Mastery Platform
 
+**15C.15 deployment checkpoint — 2026-10-15:** implementation PR #227 is merged; nine SQL functions and 14 Edge bundles (104 runtime files) match deployed source. Runtime provenance is recorded with two new builds; 47 content/configuration/history table digests and all 24 old builds remain unchanged. CI and school analytics passed. Repeat chapter acceptance is being corrected to preserve an existing October 13 diagnostic; final production acceptance and documentation/Notion closeout remain pending. [Deployment evidence](evidence/assessment-policy-v2-deployment-20261015.json).
+
 A multi-subject supplementary learning platform aligned to Armenia's general education system. Physics, Mathematics, Armenian Language, English and future subjects have equal platform status and use the same subject-neutral core. The currently implemented course-content milestone is Grade 7 Physics; that delivery status gives Physics no architectural or product priority.
 
 ## Project status
