@@ -1,5 +1,7 @@
 # Chapter III preparation — «Մեխանիկական շարժում»
 
+**Current checkpoint — 2026-10-15:** 80 practice questions are drafted, and the owner has selected the bounded first 8 Diagnostic + 8 Mastery candidate scope. They are staged for review under 15C.12–15C.13; no assessment weights/readiness/pass rules, SME deferral, allocation or release are adopted. This preparation remains source/planning provenance; [Batches 11–12 staging](chapter-iii-batches-11-12-staging.md) and the [status register](project-status.md) govern current counts and gates.
+
 **Prepared:** 2026-10-13 · **Sprint:** 15C.1. **Current update:** John accepted the plan, planning budget and eight offline drafts; [15C.2](chapter-iii-batch-01-staging.md) records completed fresh comparison, committed staging and QA; ordinary site workflow remains pending. The original preparation proposal and its then-open gates are retained below as the historical baseline; acceptance does not create a final assessment/readiness contract.
 
 John authorized Chapter III preparation while Chapter II deployment is paused. The requested source policy is binding: use the supplied Physics 7 textbook for factual content and natural Armenian, and use its illustrations where the task needs them. The [current status register](project-status.md) remains authoritative.

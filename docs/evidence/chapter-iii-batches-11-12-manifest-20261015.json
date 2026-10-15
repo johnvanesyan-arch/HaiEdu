@@ -1,0 +1,107 @@
+{
+  "request": "do another 2 batches",
+  "requestAt": "2026-10-15T10:08:40Z",
+  "clarificationQuestion": "With all 80 planned practice questions drafted, what should the next two batches cover?",
+  "selectedOption": "Diagnostic/Mastery candidates (Recommended)",
+  "selectedDescription": "Prepare eight diagnostic and eight mastery candidates, with assessment rules settled before release.",
+  "scope": "Exactly sixteen provisional authoring slots: one Diagnostic and one Mastery for each of S01–S08. No allocation, pass rule, form weighting, learner release or SME waiver is adopted. The existing full parallel-stimulus criteria apply without relaxation.",
+  "manifest": "chapter-iii-20261015-two-candidate-batches",
+  "slots": [
+    {
+      "id": "U03-B11-C01",
+      "code": "PHY7-U03-S01-D01",
+      "bank": "diagnostic",
+      "skill": "S01"
+    },
+    {
+      "id": "U03-B11-C02",
+      "code": "PHY7-U03-S02-D01",
+      "bank": "diagnostic",
+      "skill": "S02"
+    },
+    {
+      "id": "U03-B11-C03",
+      "code": "PHY7-U03-S03-D01",
+      "bank": "diagnostic",
+      "skill": "S03"
+    },
+    {
+      "id": "U03-B11-C04",
+      "code": "PHY7-U03-S04-D01",
+      "bank": "diagnostic",
+      "skill": "S04"
+    },
+    {
+      "id": "U03-B11-C05",
+      "code": "PHY7-U03-S05-D01",
+      "bank": "diagnostic",
+      "skill": "S05"
+    },
+    {
+      "id": "U03-B11-C06",
+      "code": "PHY7-U03-S06-D01",
+      "bank": "diagnostic",
+      "skill": "S06"
+    },
+    {
+      "id": "U03-B11-C07",
+      "code": "PHY7-U03-S07-D01",
+      "bank": "diagnostic",
+      "skill": "S07"
+    },
+    {
+      "id": "U03-B11-C08",
+      "code": "PHY7-U03-S08-D01",
+      "bank": "diagnostic",
+      "skill": "S08"
+    },
+    {
+      "id": "U03-B12-C01",
+      "code": "PHY7-U03-S01-M01",
+      "bank": "mastery_check",
+      "skill": "S01"
+    },
+    {
+      "id": "U03-B12-C02",
+      "code": "PHY7-U03-S02-M01",
+      "bank": "mastery_check",
+      "skill": "S02"
+    },
+    {
+      "id": "U03-B12-C03",
+      "code": "PHY7-U03-S03-M01",
+      "bank": "mastery_check",
+      "skill": "S03"
+    },
+    {
+      "id": "U03-B12-C04",
+      "code": "PHY7-U03-S04-M01",
+      "bank": "mastery_check",
+      "skill": "S04"
+    },
+    {
+      "id": "U03-B12-C05",
+      "code": "PHY7-U03-S05-M01",
+      "bank": "mastery_check",
+      "skill": "S05"
+    },
+    {
+      "id": "U03-B12-C06",
+      "code": "PHY7-U03-S06-M01",
+      "bank": "mastery_check",
+      "skill": "S06"
+    },
+    {
+      "id": "U03-B12-C07",
+      "code": "PHY7-U03-S07-M01",
+      "bank": "mastery_check",
+      "skill": "S07"
+    },
+    {
+      "id": "U03-B12-C08",
+      "code": "PHY7-U03-S08-M01",
+      "bank": "mastery_check",
+      "skill": "S08"
+    }
+  ]
+}
