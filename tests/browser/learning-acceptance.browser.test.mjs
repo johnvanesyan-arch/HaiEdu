@@ -13,8 +13,9 @@ after(async()=>{await browser?.close();});
 async function fixture(t) {
  const f=await acceptanceFixture();t.after(()=>f.close());
  // Keep the real production styles; the full-shell suite separately covers
- // cross-document navigation. Application errors remain asserted in both.
- const html=(await readFile('web/course.html','utf8')).replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</body>','<script type="module" src="./course-page.js"></script></body>');
+ // cross-document navigation. Include the stylesheet normally inserted by the
+ // omitted student shell. Application errors remain asserted in both.
+ const html=(await readFile('web/course.html','utf8')).replace(/<script\b[\s\S]*?<\/script>/g,'').replace('</head>','<link rel="stylesheet" href="./responsive-qa.css"></head>').replace('</body>','<script type="module" src="./course-page.js"></script></body>');
  const server=createServer(async(req,res)=>{
   try{
    const url=new URL(req.url,'http://isolated.invalid');
