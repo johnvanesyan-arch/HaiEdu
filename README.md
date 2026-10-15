@@ -1,6 +1,5 @@
 # Armenian Curriculum Mastery Platform
 
-**15C.15 deployment checkpoint — 2026-10-15:** implementation PR #227 is merged; nine SQL functions and 14 Edge bundles (104 runtime files) match deployed source. Runtime provenance is recorded with two new builds; 47 content/configuration/history table digests and all 24 old builds remain unchanged. CI and school analytics passed. Repeat chapter acceptance is being corrected to preserve an existing October 13 diagnostic; final production acceptance and documentation/Notion closeout remain pending. [Deployment evidence](evidence/assessment-policy-v2-deployment-20261015.json).
 
 A multi-subject supplementary learning platform aligned to Armenia's general education system. Physics, Mathematics, Armenian Language, English and future subjects have equal platform status and use the same subject-neutral core. The currently implemented course-content milestone is Grade 7 Physics; that delivery status gives Physics no architectural or product priority.
 
@@ -10,7 +9,7 @@ Start with the [authoritative status register](docs/project-status.md) for curre
 
 Chapter II has 192 approved questions, 263 active definitions and 57 published guides. Its owner-authorized [provisional pilot](docs/chapter-ii-pilot-release.md) is active: both reviewed migrations, production rollback rehearsal, exact forms and model/policy bindings are verified. All 53 preservation checks passed; Chapter I remains on its original pilot. Authenticated desktop/mobile chapter-switching acceptance passed 91/91. Independent specialist review and final historical-exposure disposition remain required for production promotion. Chapter III remains an inactive draft. [Activation evidence](docs/evidence/chapter-ii-pilot-activation-20261013.json) · [Authoritative status](docs/project-status.md).
 
-**Chapter III review is complete:** 96 approved questions, 80 published guides and 206 active definitions. **Sprint 15C.14 is owner-approved; 15C.15 is in implementation verification:** the versioned subject-neutral contract delivers 16 questions, scores the 10 mandatory-outcome questions for an 8/10 pass with one correct per required skill, and uses four skills for readiness. Supporting /2 and additional /4 results are separate. [Implementation](docs/assessment-policy-v2.md). Chapter III remains draft/inactive with zero qualified allocations; SME/exposure, form qualification and release gates remain open.
+**Chapter III review is complete:** 96 approved questions, 80 published guides and 206 active definitions. **Sprints 15C.14–15C.15 are approved, implemented and production-verified:** the versioned subject-neutral contract delivers 16 questions, scores the 10 mandatory-outcome questions for an 8/10 pass with one correct per required skill, and uses four skills for readiness. Supporting /2 and additional /4 results are separate. [Implementation](docs/assessment-policy-v2.md). Chapter III remains draft/inactive with zero qualified allocations; SME/exposure, form qualification and release gates remain open.
 
 ## Chapter I implemented baseline
 

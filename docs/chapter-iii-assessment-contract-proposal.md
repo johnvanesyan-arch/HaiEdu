@@ -1,6 +1,6 @@
 # Chapter III assessment and readiness proposal
 
-**2026-10-15 · Sprint 15C.14 · Roadmap 3.77 · Owner-approved 2026-10-15; implementation and deployment verification in progress**
+**2026-10-15 · Sprint 15C.14 · Roadmap 3.77 · Owner-approved 2026-10-15; implemented and verified under 15C.15 (roadmap 3.79)**
 
 All existing Chapter III content is reviewed: **96 approved questions, 80 published guides and 206 active definitions**. [Verified review closure](chapter-iii-batches-06-12-review.md). This proposal resolves the next curriculum decision before further assessment allocation. John explicitly approved this scoring/readiness proposal at 20:02:38 Asia/Yerevan on 2026-10-15. This approval authorizes the versioned shared implementation; it does not activate Chapter III or waive its remaining gates.
 
@@ -43,11 +43,11 @@ There are **zero qualified form allocations**, despite all current questions bei
 
 If qualification cannot support the budget, record the shortfall for a separate owner decision. Do not pad, silently reduce a form, reuse protected content, or lower passing/readiness criteria. The existing sixteen-slot authoring manifest remains bounded; this proposal itself does not authorize all remaining 72 questions.
 
-## Implementation required after the decision
+## Approved implementation requirements (completed under 15C.15)
 
-This is a **subject-neutral core capability with explicit chapter-scoped configuration**, not a Physics exception. The current `haiedu-assessment-policy-v1` has no separate scoring or readiness skill sets. Live readback confirms that first-attempt readiness traverses the frozen whole skill scope, and Mastery currently computes its percentage over all answered session items. Setting per-skill minima to zero does not remove those questions from the overall denominator or readiness gate.
+This is a **subject-neutral core capability with explicit chapter-scoped configuration**, not a Physics exception. The following records the pre-implementation gap, now closed by [15C.15](assessment-policy-v2.md). The former `haiedu-assessment-policy-v1` has no separate scoring or readiness skill sets. Live readback confirms that first-attempt readiness traverses the frozen whole skill scope, and Mastery currently computes its percentage over all answered session items. Setting per-skill minima to zero does not remove those questions from the overall denominator or readiness gate.
 
-The next implementation slice must introduce a versioned contract for delivered, scored and readiness-required skill sets, with declared reporting groups. Preserve v1 session snapshots and Chapter I/II behavior. Do not insert proposed fields into the closed v1 schema or put S01/S03/S04/S06 constants in the core.
+The approved implementation slice introduces a versioned contract for delivered, scored and readiness-required skill sets, with declared reporting groups. Preserve v1 session snapshots and Chapter I/II behavior. Do not insert proposed fields into the closed v1 schema or put S01/S03/S04/S06 constants in the core.
 
 Affected consumers to verify: policy validation in JavaScript and SQL; model/blueprint/session bindings; first-attempt readiness and status endpoints; completion scoring and stored lifecycle results; failed-skill/review targeting; learner dashboard, course page and player; teacher and school analytics; protected form allocation and acceptance fixtures. Edge Function consumers of any changed shared code must be deployed and read back individually. Dashboard/shared-browser changes require CI, isolated Chromium, aggregate release checks and authenticated production acceptance under the repository policy.
 
@@ -59,6 +59,6 @@ Acceptance cases must include: 8/10 with one correct in every required skill pas
 
 The simpler alternatives are a core-only Mastery assessment with separate extension activities, or scoring all sixteen. Core-only delivery changes the accepted breadth and bank plan; all-sixteen scoring can make supporting/additional knowledge necessary to pass. Neither alternative is silently adopted.
 
-**Owner decision recorded:** approved as proposed on 2026-10-15. Implement and verify the versioned contract, then choose the next bounded authoring scope. Chapter III stays draft/inactive; no SME deferral or release authorization is inferred.
+**Owner decision recorded:** approved as proposed on 2026-10-15. The versioned contract is implemented and verified; next choose the bounded authoring scope. Chapter III stays draft/inactive; no SME deferral or release authorization is inferred.
 
 [Machine-readable proposal and runtime-gap evidence](evidence/chapter-iii-assessment-contract-proposal-20261015.json).
