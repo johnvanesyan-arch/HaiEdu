@@ -12,6 +12,7 @@ on:
       - scripts/stamp-release.mjs
       # The runner exercises both pages; shared dependencies must activate it too.
       - web/teacher.*
+      - web/assessment-reporting.mjs
       - web/school-admin.*
       - web/role-layout.*
       - web/ux.*

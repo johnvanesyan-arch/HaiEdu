@@ -1,8 +1,8 @@
 # Chapter III assessment and readiness proposal
 
-**2026-10-15 · Sprint 15C.14 · Roadmap 3.77 · Prepared for owner decision; not adopted or deployed**
+**2026-10-15 · Sprint 15C.14 · Roadmap 3.77 · Owner-approved 2026-10-15; implementation and deployment verification in progress**
 
-All existing Chapter III content is reviewed: **96 approved questions, 80 published guides and 206 active definitions**. [Verified review closure](chapter-iii-batches-06-12-review.md). This proposal resolves the next curriculum decision before further assessment allocation. The owner's content approvals do not adopt these new scoring or readiness rules.
+All existing Chapter III content is reviewed: **96 approved questions, 80 published guides and 206 active definitions**. [Verified review closure](chapter-iii-batches-06-12-review.md). This proposal resolves the next curriculum decision before further assessment allocation. John explicitly approved this scoring/readiness proposal at 20:02:38 Asia/Yerevan on 2026-10-15. This approval authorizes the versioned shared implementation; it does not activate Chapter III or waive its remaining gates.
 
 ## Recommended assessment structure
 
@@ -59,6 +59,6 @@ Acceptance cases must include: 8/10 with one correct in every required skill pas
 
 The simpler alternatives are a core-only Mastery assessment with separate extension activities, or scoring all sixteen. Core-only delivery changes the accepted breadth and bank plan; all-sixteen scoring can make supporting/additional knowledge necessary to pass. Neither alternative is silently adopted.
 
-**Owner decision required before implementation:** approve or revise the distribution, four-skill readiness/pass scope and separately reported supporting/additional results. `AGENTS.md` requires an explicit decision before changing learning criteria. Once approved, record that decision, implement and verify the versioned contract, and choose the next bounded authoring scope. Chapter III stays draft/inactive; no SME deferral or release authorization is inferred.
+**Owner decision recorded:** approved as proposed on 2026-10-15. Implement and verify the versioned contract, then choose the next bounded authoring scope. Chapter III stays draft/inactive; no SME deferral or release authorization is inferred.
 
 [Machine-readable proposal and runtime-gap evidence](evidence/chapter-iii-assessment-contract-proposal-20261015.json).

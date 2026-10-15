@@ -1,3 +1,4 @@
+import {installV2,chapterShape,makeReady,launch,finish} from '../fixtures/assessment-v2-db.mjs';
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
@@ -80,4 +81,32 @@ test('native switching and revoked SQL authorization cannot expose another chapt
  assert.doesNotMatch(await page.locator('#courseContent').innerText(),/5 հարց/);
  await page.evaluate(()=>window.__listeners.forEach(fn=>fn('SIGNED_OUT',null)));
  assert.equal(await page.locator('#courseContent').innerText(),'');assert.deepEqual(errors,[]);
+});
+
+
+test('v2 native player and history show the 10/2/4 scales and preserve mandatory-only readiness',async t=>{
+ const {f,page,origin,errors}=await fixture(t);
+ await installV2(f.db);const {skills,policy}=await chapterShape(f.db);
+ const baseline=await launch(f.db);await finish(f.db,baseline.session.id);await makeReady(f.db,policy.readinessSkillIds);
+ await page.goto(origin+href(0));await page.waitForSelector('#courseContent article');
+ const mastery=page.locator('#courseContent article').nth(2);
+ assert.match(await mastery.innerText(),/գնահատվող 10 հարցից առնվազն 8/);
+ await mastery.locator('a').click();
+ const remaining=Object.fromEntries(skills.map((s,n)=>[s,[2,0,2,2,0,2,0,0][n]]));
+ for(let n=0;n<16;n++){
+  await page.waitForFunction(position=>document.querySelector('#learningPlayer h2')?.textContent.startsWith('Հարց '+position+'/'),n+1);
+  const li=(await f.db.query("select li.id,li.skill_id,o.canonical_option_order from learning_session_items li join learning_sessions s on s.id=li.session_id join private.learning_session_item_option_orders o on o.session_item_id=li.id where s.mode='mastery_check' and s.status='active' and li.answered_at is null order by li.ordinal limit 1")).rows[0];
+  const correct=remaining[li.skill_id]>0;if(correct)remaining[li.skill_id]--;
+  const value=String.fromCharCode(65+li.canonical_option_order.indexOf(correct?'A':'B'));
+  await page.locator(`#learningPlayer input[value="${value}"]`).check();await page.locator('#learningPlayer button[type=submit]').click();
+  assert.doesNotMatch(await page.locator('#learningPlayer').innerText(),/8\/10|0\/2|0\/4/);
+  await page.locator('#learningPlayer button').filter({hasText:'Հաջորդը'}).click();
+ }
+ await page.waitForSelector('#learningPlayer button');
+ await page.waitForFunction(()=>document.querySelector('#learningPlayer').textContent.includes('Ստուգարքն անցած է'));
+ const result=await page.locator('#learningPlayer').innerText();assert.match(result,/8\/10/);assert.match(result,/Օժանդակ հմտություններ՝ 0\/2/);assert.match(result,/Լրացուցիչ վերջնարդյունքներ՝ 0\/4/);
+ await page.locator('#learningPlayer button').filter({hasText:'Թարմացնել արդյունքները'}).click();await page.waitForSelector('#courseHistoryTitle');
+ assert.match(await page.locator('#courseContent').innerText(),/Պարտադիր վերջնարդյունքներ՝ 8\/10/);
+ await page.setViewportSize({width:375,height:812});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
+ assert.deepEqual(errors,[]);assert.deepEqual(f.logs,[]);
 });

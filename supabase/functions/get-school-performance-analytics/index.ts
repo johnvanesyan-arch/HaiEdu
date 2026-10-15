@@ -186,7 +186,7 @@ Deno.serve(async (req) => {
     for (const ids of chunks(enrollmentIds)) {
       sessions.push(...await paged((from, to) => {
         let query = admin.from("learning_sessions")
-          .select("id,institutional_class_enrollment_id,student_id,curriculum_release_id,unit_code,mode,status,answered_count,correct_count,assessment_result,academic_context_status,started_at,completed_at,governed_unit_id,assessment_blueprint_id,assessment_policy_binding_id,learning_model_configuration_id,academic_mastery_policy_id,runtime_build_id,provenance_status,model_provenance_status,runtime_provenance_status,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id")
+          .select("id,institutional_class_enrollment_id,student_id,curriculum_release_id,unit_code,mode,status,answered_count,correct_count,assessment_result,metadata,academic_context_status,started_at,completed_at,governed_unit_id,assessment_blueprint_id,assessment_policy_binding_id,learning_model_configuration_id,academic_mastery_policy_id,runtime_build_id,provenance_status,model_provenance_status,runtime_provenance_status,school_id,academic_year_id,class_id,teacher_assignment_id,subject_program_id")
           .eq("school_id", schoolId).eq("academic_year_id", selectedYear.id)
           .eq("academic_context_status", "exact").in("institutional_class_enrollment_id", ids);
         if (requestedReleaseId) query = query.eq("curriculum_release_id",requestedReleaseId);

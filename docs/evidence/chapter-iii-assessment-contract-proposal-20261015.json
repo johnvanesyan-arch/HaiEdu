@@ -1,6 +1,6 @@
 {
   "proposalId": "physics7-chapter-iii-assessment-20261015-v1",
-  "status": "prepared_for_owner_decision_not_adopted",
+  "status": "owner_approved_implementation_in_progress",
   "sprint": "15C.14",
   "roadmap": "3.77",
   "preparedAt": "2026-10-15",
@@ -237,5 +237,11 @@
     "No formal reliability or form equivalence claim.",
     "MCQs do not establish performed laboratory competence.",
     "Historical protected-content exposure disposition remains open."
-  ]
+  ],
+  "approval": {
+    "actor": "John",
+    "response": "Approved",
+    "at": "2026-10-15T20:02:38+04:00",
+    "scope": "Versioned subject-neutral scoring/readiness/reporting implementation; no Chapter III activation or SME/exposure waiver"
+  }
 }

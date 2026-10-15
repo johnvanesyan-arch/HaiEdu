@@ -19,7 +19,7 @@ export const selection = idx => {
 };
 export const href = (idx,action) => '/course.html?'+new URLSearchParams({...Object.fromEntries(Object.entries(selection(idx)).map(([k,v])=>[{enrollmentId:'enrollment',curriculumReleaseId:'release',unitId:'unit'}[k],v])),...(action?{action}:{})});
 
-async function postgresClient() {
+export async function postgresClient() {
   const child=spawn('python',['tests/fixtures/phase3_sql_bridge.py'],{stdio:['pipe','pipe','inherit']});
   const pending=new Map();let next=0,readyResolve,readyReject;
   const ready=new Promise((resolve,reject)=>{readyResolve=resolve;readyReject=reject;});
