@@ -5,6 +5,8 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/chapter-ii-pilot-read-acceptance.mjs
+      - .github/workflows/chapter-ii-pilot-read-acceptance.yml
       # Verify preserved pilot access after reviewed shared reporting/runtime changes.
       - web/assessment-reporting.mjs
       - web/course-page.js

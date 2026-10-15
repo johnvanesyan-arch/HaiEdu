@@ -52,6 +52,7 @@ permissions:
   contents: read
 
 concurrency:
+  # Serialize designated fixtures with the read-only chapter acceptance run.
   group: sprint-14-isolation-qa
   cancel-in-progress: false
 
