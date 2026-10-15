@@ -100,7 +100,7 @@ export function incompleteBaselinePreserved(data) {
   return data.baseline === null && data.history.length === 0 &&
     data.practiceAccess?.unlocked === false && data.practiceAccess.reason === 'chapter_diagnostic_required' &&
     (active === null || (uuid(active?.id) && uuid(active.policyBindingId) &&
-      active.mode === 'diagnostic' && active.planned === data.modes.diagnostic.questions &&
+      active.mode === 'diagnostic' && active.targetSkillId === null && active.planned === data.modes.diagnostic.questions &&
       Number.isInteger(active.answered) && active.answered >= 0 && active.answered < active.planned));
 }
 

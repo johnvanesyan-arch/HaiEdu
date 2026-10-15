@@ -132,7 +132,7 @@ test('a pre-existing diagnostic is preserved, while invalid or changing active s
   m.dashboards.A[1].activeSession.answered = 1;
   await assert.rejects(result.verifyPreserved(), /unchanged/);
   for (const mutate of [s => s.mode = 'practice', s => s.answered = -1, s => s.answered = 16,
-    s => s.answered = 0.5, s => s.planned = 8, s => s.policyBindingId = null, s => s.id = null]) {
+    s => s.answered = 0.5, s => s.planned = 8, s => s.policyBindingId = null, s => s.id = null, s => s.targetSkillId = id(9000)]) {
     const bad = mock(input); bad.dashboards.A[1].activeSession = structuredClone(active);
     mutate(bad.dashboards.A[1].activeSession);
     await assert.rejects(runReadChecks({ ...input, ...bad }), /incomplete Chapter II baseline/);

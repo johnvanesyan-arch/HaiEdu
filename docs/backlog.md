@@ -260,6 +260,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Prepare the sixteen-question assessment proposal, ten-question mandatory score, four-skill readiness scope, capacity table and shared-runtime implementation/acceptance requirements.
 - [x] Obtain the owner decision on proposed counts, readiness and pass/reporting scope — John approved 2026-10-15.
 - [x] Implement the accepted versioned subject-neutral contract and local scoring/readiness/retry/reporting regressions.
+- [x] Merge implementation, pass CI, deploy and read back nine SQL functions and all 14 affected Edge bundles; record verified runtime provenance.
 - [ ] Complete 15C.15 CI, deployment/parity, authenticated production preservation checks and documentation/Notion closeout.
 - [ ] Decide the next bounded authoring manifest; retain independent SME/exposure, form qualification and release gates.
 

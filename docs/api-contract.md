@@ -1,5 +1,7 @@
 # Learning API contract
 
+**15C.15 deployment checkpoint — 2026-10-15:** implementation PR #227 is merged; nine SQL functions and 14 Edge bundles (104 runtime files) match deployed source. Runtime provenance is recorded with two new builds; 47 content/configuration/history table digests and all 24 old builds remain unchanged. CI and school analytics passed. Repeat chapter acceptance is being corrected to preserve an existing October 13 diagnostic; final production acceptance and documentation/Notion closeout remain pending. [Deployment evidence](evidence/assessment-policy-v2-deployment-20261015.json).
+
 **Verified:** 2026-10-10 against repository source and deployed `submit-answer` v18 (ACTIVE, JWT verification enabled; all 12 bundle files match). [Verification evidence](evidence/documentation-status-audit-20261010.json). [Current delivery status and release gates](project-status.md) are maintained separately.
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. The historical 2026-10-10 comparison does not authorize a release; the separate 2026-10-13 pilot activation and authenticated acceptance are recorded below.

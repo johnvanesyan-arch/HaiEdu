@@ -1,5 +1,7 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
+**15C.15 deployment checkpoint — 2026-10-15:** implementation PR #227 is merged; nine SQL functions and 14 Edge bundles (104 runtime files) match deployed source. Runtime provenance is recorded with two new builds; 47 content/configuration/history table digests and all 24 old builds remain unchanged. CI and school analytics passed. Repeat chapter acceptance is being corrected to preserve an existing October 13 diagnostic; final production acceptance and documentation/Notion closeout remain pending. [Deployment evidence](evidence/assessment-policy-v2-deployment-20261015.json).
+
 **Roadmap version:** 3.78
 **Updated:** 2026-10-15 (Asia/Yerevan)
 **Latest platform repair:** the shared guide-validator metadata correction is deployed as v11; all three bundle files read back exactly, 31 regressions and CI pass. Existing content and approvals are preserved. [Guide-validator repair evidence](evidence/remediation-guide-validator-metadata-fix-20261015.json). Earlier direct-read protection and reviewer approval repairs remain in force.
