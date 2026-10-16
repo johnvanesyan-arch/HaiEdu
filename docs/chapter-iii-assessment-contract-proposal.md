@@ -41,7 +41,7 @@ The overall planning budget remains **168 = 80 Practice + 32 Diagnostic + 56 Mas
 
 There are **zero qualified form allocations**. The prior 96 questions are content-approved; the 24 drafts from Batches 13–15 await review. Whole-bank comparisons, exact versions, independent SME/exposure review, meaningful stimulus differences, within/across-form disjointness and release gates remain required. Repeated reasoning remains a protected parallel candidate claim, not new independent coverage. Exact question/answer evidence stays in restricted storage; repository reports contain non-reconstructive digests. The earlier private-PR object exposure limitation remains open.
 
-If qualification cannot support the budget, record the shortfall for a separate owner decision. Do not pad, silently reduce a form, reuse protected content, or lower passing/readiness criteria. The existing sixteen-slot authoring manifest remains bounded; this proposal itself does not authorize all remaining 72 questions.
+If qualification cannot support the budget, record the shortfall for a separate owner decision. Do not pad, silently reduce a form, reuse protected content, or lower passing/readiness criteria. The original sixteen-slot manifest and subsequent batch manifests each remain bounded. The contract does not itself authorize filling the remaining budget; see the current status and each separately authorized batch.
 
 ## Approved implementation requirements (completed under 15C.15)
 
