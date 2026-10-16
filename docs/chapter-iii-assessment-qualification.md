@@ -1,5 +1,7 @@
 # Chapter III qualification preflight and conditional forms
 
+**Current follow-up — 15C.24:** the owner authorized two targeted revisions; S03-D05 v2 and S03-M10 v2 are saved with passing QA and await ordinary review, together with five new definitions. The unchanged conditional form memberships now represent M1–M5 using those drafts; zero forms are independently qualified or allocated. [Current correction evidence](chapter-iii-trajectory-revisions-20261017.md). The report below preserves the pre-revision findings.
+
 **2026-10-17 Asia/Yerevan · Sprint 15C.23 · Roadmap 3.87 · Preparation complete; qualification blocked**
 
 The five-form proposal is structurally complete, but two forms lack direct evidence for mandatory outcome M4 (classify straight/curved trajectories). Numerical bank completion is therefore not qualified assessment completion. No content, approval, allocation, scoring or release record changed. The current ordinary review queue remains empty: **168 approved questions, 80 published guides and 339 active definitions**.
