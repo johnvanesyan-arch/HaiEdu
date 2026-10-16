@@ -1,5 +1,7 @@
 # Chapter III Batches 17–18 — staging and verification
 
+**Historical staging record; ordinary review is now closed.** All current questions are approved and all definitions are active, as verified under [15C.22R](chapter-iii-definition-approval-20261017.md). Counts and pending statements below retain the original handoff; independent qualification and release remain separate.
+
 **Historical Batches 17–18 checkpoint; ordinary review remains pending.** Its sixteen questions and thirty definitions are included in the current combined queue under [15C.22](chapter-iii-batch-19-staging.md). Counts and next steps below preserve the original handoff.
 
 **2026-10-16 · Sprints 15C.20–15C.21 · Roadmap 3.84 · Human review pending**

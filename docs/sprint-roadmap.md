@@ -1,10 +1,10 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
 
-**Roadmap version:** 3.85
-**Updated:** 2026-10-16 (UTC)
+**Roadmap version:** 3.86
+**Updated:** 2026-10-16 21:17 UTC / 2026-10-17 Asia/Yerevan
 **Latest platform repair:** the shared guide-validator metadata correction is deployed as v11; all three bundle files read back exactly, 31 regressions and CI pass. Existing content and approvals are preserved. [Guide-validator repair evidence](evidence/remediation-guide-validator-metadata-fix-20261015.json). Earlier direct-read protection and reviewer approval repairs remain in force.
-**Sprint 15C.22 is staged and technically verified:** all 24 remaining Chapter III Mastery drafts and 58 supporting draft definitions are saved. The planned bank is fully authored: **168 questions (120 approved, 48 awaiting review)** = 80 Practice + 32 Diagnostic + 56 Mastery; 80 published guides and 339 definitions (238 active, 101 draft). [Batch 19 evidence and combined review](chapter-iii-batch-19-staging.md). The v2 contract remains implemented. Chapter III is inactive with zero qualified allocations; human review, independent SME/exposure, form qualification and release remain open.
+**Sprint 15C.22R ordinary review closure verified:** all **168 Chapter III questions are approved**, all **80 guides are published**, and all **339 definitions are active**; the ordinary review queue is empty. John authorized Codex to approve the 101 pending definitions through the existing MFA-protected reviewer workflow. Question approvals already existed and were verified read-only on their current versions. [Delegated approval and preservation evidence](chapter-iii-definition-approval-20261017.md). All planned authoring is complete. Chapter III remains inactive/unallocated; independent SME/exposure qualification, qualified disjoint forms and release remain open.
 **Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5/14 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E live switching acceptance is complete; the authorized Chapter II provisional pilot is verified. Chapter II database migrations, production configuration and activation are complete; independent SME/production gates stay open. Sprints 16–26 remain planned in the sequence below.
 
 This file defines the canonical high-level sprint scope and sequence. [Project status](project-status.md) is the sole current delivery/gate register; [backlog](backlog.md) is the detailed implementation checklist. The overview mirrors that register. Dated execution records, content counts and pending-review statements below are historical checkpoints; later evidenced dispositions supersede them without rewriting their original observations.
@@ -1081,7 +1081,13 @@ All twelve S02 questions and all **40 authored Chapter II questions** are now ap
 
 **15B.14B / 15B.14C — implementation merged; database deployment blocked.** John directed “You can release Chapter II; we will do the specialist review later.” PR #206 merged the exact disjoint form allocation, governed configuration, runtime safeguards and chapter navigation. All five final CI jobs passed; the frontend is deployed. Two Supabase connector failures prevented the first migration from applying, as confirmed by readback. Database migrations, production rollback rehearsal, committed allocation/bindings, activation and authenticated chapter switching remain pending. Chapter I stays on its original active release; Chapter II remains draft and inactive. Independent SME and final production exposure qualification remain open, and the existing six pilot gates remain required. [Scope and evidence](chapter-ii-pilot-release.md) · [Deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json).
 
+### 15C.22R — Ordinary review closure
+
+**Sprint 15C.22R ordinary review closure verified:** all **168 Chapter III questions are approved**, all **80 guides are published**, and all **339 definitions are active**; the ordinary review queue is empty. John authorized Codex to approve the 101 pending definitions through the existing MFA-protected reviewer workflow. Question approvals already existed and were verified read-only on their current versions. [Delegated approval and preservation evidence](chapter-iii-definition-approval-20261017.md). All planned authoring is complete. Chapter III remains inactive/unallocated; independent SME/exposure qualification, qualified disjoint forms and release remain open.
+
 ### 15C.22 — Remaining Chapter III Mastery batch 19
+
+**Historical staging checkpoint:** ordinary review subsequently closed under 15C.22R; pending counts below preserve the original handoff.
 
 **Sprint 15C.22 is staged and technically verified:** all 24 remaining Chapter III Mastery drafts and 58 supporting draft definitions are saved. The planned bank is fully authored: **168 questions (120 approved, 48 awaiting review)** = 80 Practice + 32 Diagnostic + 56 Mastery; 80 published guides and 339 definitions (238 active, 101 draft). [Batch 19 evidence and combined review](chapter-iii-batch-19-staging.md). The v2 contract remains implemented. Chapter III is inactive with zero qualified allocations; human review, independent SME/exposure, form qualification and release remain open.
 

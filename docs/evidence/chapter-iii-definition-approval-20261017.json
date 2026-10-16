@@ -1,0 +1,899 @@
+{
+  "stage": "15C.22R",
+  "roadmap": "3.86",
+  "scope": "Owner-authorized delegated approval of 101 Chapter III misconception definitions; read-only verification of pre-existing question approvals.",
+  "authorization": {
+    "at": "2026-10-17T01:00:36+04:00",
+    "owner": "John",
+    "instruction": "I sanction you to approve all 101 misconception definitions on my behalf.",
+    "auditReason": "Owner-authorized delegated approval by Codex. John authorized all 101 pending Chapter III misconception definitions on 2026-10-17 at 01:00:36 Asia/Yerevan. Definitions only; no question, specialist or release approval."
+  },
+  "method": "101 individual authenticated reviewer UI approvals through the existing MFA-protected workflow; no direct SQL approval writes.",
+  "beforeAt": "2026-10-16T21:02:41.39539+00:00",
+  "verifiedAt": "2026-10-16T21:16:59.758296+00:00",
+  "questionVerificationAt": "2026-10-16T21:18:22.871905+00:00",
+  "definitions": {
+    "approved": 101,
+    "activeBefore": 238,
+    "activeAfter": 339,
+    "draftBefore": 101,
+    "draftAfter": 0,
+    "allContentUnchanged": true,
+    "matchingAuditEvents": 101,
+    "assurance": "aal2",
+    "actorRole": "content_admin",
+    "records": [
+      {
+        "code": "PHY7-U03-S01-M28",
+        "eventId": "ced82799-687c-4885-b2db-5e38eb72e14e",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:04:38.005719+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M29",
+        "eventId": "0aca2280-4cc1-491b-b338-16be5f858d2b",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:05:31.542755+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M30",
+        "eventId": "ccdbc50c-0689-4e7c-a3fe-f20585f9acea",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:05:36.406986+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M31",
+        "eventId": "f639ea49-e1e8-4257-86af-f14cad21b07b",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:05:41.033883+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M32",
+        "eventId": "8b5ee1bc-ef8f-4560-b053-ddc9b3ba3a2e",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:05:45.526053+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M33",
+        "eventId": "bde8c3f3-168b-4d5b-8e99-bb3d8af35757",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:05:50.32114+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M34",
+        "eventId": "eb0a73c4-b675-42e6-8be4-2587b660b0c3",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:06:11.592795+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M35",
+        "eventId": "00e3d990-8aa9-476a-90c9-eeba31f21408",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:06:15.981262+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M36",
+        "eventId": "f5f0c51c-3d15-4d28-b217-962ec51a83a7",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:06:26.1968+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M37",
+        "eventId": "cb1d9476-f516-4167-9588-981b7e3de32a",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:06:30.157176+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M38",
+        "eventId": "fd167f77-2729-4b68-b5fd-222240b95224",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:06:33.886343+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S01-M39",
+        "eventId": "95586863-e1ca-4582-a9b7-da89c5441b77",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:06:37.635+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S02-M17",
+        "eventId": "47972a2f-5e1a-4fe3-ae7a-9d9cf7e7941f",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:06:41.306569+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S02-M18",
+        "eventId": "00a3fab5-6095-4f19-a908-ff1083e80d7c",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:06:45.267104+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S02-M19",
+        "eventId": "35fde53d-da1a-4a62-8eb7-bd6b302fb06f",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:08:59.439534+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S02-M20",
+        "eventId": "82b77d1f-8c2a-48fd-9e33-001a384bbf8d",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:03.764821+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M39",
+        "eventId": "1c450a8d-3442-40b2-8634-9e03e280e664",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:07.152471+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M40",
+        "eventId": "c3df978e-2281-4fbd-90f5-597133f1817f",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:11.345074+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M41",
+        "eventId": "57c84aae-004b-480f-98ed-c4e2bb10fc3f",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:15.543391+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M42",
+        "eventId": "55297b5b-5d6c-4c85-9256-8bd22ee2fcfe",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:19.339131+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M43",
+        "eventId": "679cdfd2-57bf-4d12-9ec0-d9d0283e75d2",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:22.930104+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M44",
+        "eventId": "90a72b89-8a94-4fd8-84af-8dd30699f585",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:26.644116+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M45",
+        "eventId": "523a695c-c9dd-4448-997f-b6b8543c1247",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:44.908037+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M46",
+        "eventId": "c1d8b1b7-71d9-49f2-b1cf-5c8648ccff1b",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:48.222902+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M47",
+        "eventId": "9da7748e-302d-4955-a753-c2cbf4ddee29",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:51.913798+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M48",
+        "eventId": "c61dbd5a-1d6d-4547-ae08-d5e8007dc65e",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:55.461479+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M49",
+        "eventId": "5afdb5ae-7356-4694-a703-2e4ed51fc362",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:09:58.892443+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M50",
+        "eventId": "95873848-394d-4cd0-9cea-2106d3794c78",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:04.158915+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M51",
+        "eventId": "d5413f4f-408b-4d8c-b3a2-f378f36d9451",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:07.95549+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M52",
+        "eventId": "c7686a5a-fd7d-4091-b457-bb11ba341705",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:11.625398+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M53",
+        "eventId": "cf0c591c-8c10-4b50-8e9a-2e1e66631033",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:29.789285+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M54",
+        "eventId": "ff3cd271-8fc9-4aa6-9407-53efc6a0bf08",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:33.323675+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M55",
+        "eventId": "e9c6451a-62c7-4fa0-ae4b-6b26b71bfd48",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:37.127829+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M56",
+        "eventId": "e44b1c0a-2d8d-4388-8503-12b6393dfa6d",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:40.912137+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S03-M57",
+        "eventId": "ef6336f3-9002-4aaf-9f5e-2b3ae11331e1",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:44.231119+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M32",
+        "eventId": "0355e69a-29f7-4076-9f5c-5a00ad3e00d0",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:47.6348+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M33",
+        "eventId": "4bea79f6-3f87-4df6-8024-35b0c1d18c05",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:50.753572+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M34",
+        "eventId": "b7d381ef-bffc-4c0e-816a-d4fde0fec127",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:10:54.149751+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M35",
+        "eventId": "7499700b-f3c9-437c-a11e-621c669f967e",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:11:13.275267+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M36",
+        "eventId": "73c3f9b9-feca-4a50-808c-05c411de8a00",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:11:16.478816+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M37",
+        "eventId": "f97275b0-e9e1-41c4-8434-66e2b368009f",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:11:19.94491+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M38",
+        "eventId": "f34aa1e2-546a-434b-9fe0-694d05f7e1a7",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:11:23.74562+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M39",
+        "eventId": "a44f3137-cdd1-4691-b2ff-561ab42ef604",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:11:29.593122+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M40",
+        "eventId": "195fdc06-ac57-4f2e-8b8e-bee0669d2728",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:11:32.741292+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M41",
+        "eventId": "ec9f779d-3817-42e0-a9c5-a1568ffda4c0",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:11:36.665158+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M42",
+        "eventId": "6349646b-5a14-4832-a998-e41f27dd3ac9",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:11:39.820145+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M43",
+        "eventId": "f849bcef-8aae-4d5f-9874-6494e962484a",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:01.611837+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M44",
+        "eventId": "6c080362-99c2-4611-84af-9e9fcf519d28",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:05.111916+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M45",
+        "eventId": "9601834f-ebbc-4389-a123-d3def082c9fb",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:08.406237+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M46",
+        "eventId": "4703f860-2ec4-4fee-b7f3-e45f3b1ed51b",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:11.725689+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M47",
+        "eventId": "84f3b1dd-655e-4437-ac6b-6077a594b751",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:15.445168+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M48",
+        "eventId": "6429d69d-e62b-4b56-8d4d-5d17d1ea5b9d",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:19.152697+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M49",
+        "eventId": "258cc2bd-130b-412c-8c81-9c7f657af790",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:23.772537+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M50",
+        "eventId": "e07e2193-e527-45f1-b586-480d6f5c4c75",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:27.03507+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S04-M51",
+        "eventId": "b9ffe7c5-5896-40e9-b079-eecda0585ad6",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:44.657931+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S05-M25",
+        "eventId": "3f2b8e18-caf1-422c-889a-290780b88bd9",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:47.84582+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S05-M26",
+        "eventId": "18af73ac-046b-44ca-8de5-2d1a2953b86d",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:51.261172+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S05-M27",
+        "eventId": "7dd9041c-530f-4fff-800f-61670e0b1d5c",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:54.593175+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S05-M28",
+        "eventId": "c3cef7b3-2ca1-41c0-8637-9377e270fc56",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:12:57.913569+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S05-M29",
+        "eventId": "e922aed4-a002-4c15-bf2d-210da70d72ed",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:01.501314+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S05-M30",
+        "eventId": "254371b0-a73d-408f-bda6-e1f5f23435e9",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:05.339764+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M21",
+        "eventId": "e5538c2e-bd7d-4427-8743-245a4fdc6cf5",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:08.989539+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M22",
+        "eventId": "0120f2f9-c248-4d7a-8713-24d86516a48c",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:27.18262+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M23",
+        "eventId": "1ffe2d42-637a-4a1d-ab38-a77d3c147712",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:31.09925+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M24",
+        "eventId": "8c96dbb5-c5c7-4766-b332-1d9676fdfd5c",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:34.46349+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M25",
+        "eventId": "031add05-e1f5-4836-895d-7728bbc251e1",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:37.853893+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M26",
+        "eventId": "cdeec4b3-ab43-45e5-a40b-883ff920d93b",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:41.629116+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M27",
+        "eventId": "a62a3118-d8b1-4fde-a871-2baed0c92d88",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:45.332938+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M28",
+        "eventId": "7053b4eb-10e0-4dcf-bc59-f909e8e0dea9",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:48.952032+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M29",
+        "eventId": "e3b9500a-abc0-4d78-a436-3ecc0afd7beb",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:13:52.294569+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M30",
+        "eventId": "4a427468-787b-47ab-ae2d-50d5d4bf1870",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:14:15.434642+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M31",
+        "eventId": "3a1a9593-5dd8-4a6b-b617-a0116dab7300",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:14:18.850438+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M32",
+        "eventId": "0a8e06ac-a72e-4880-85c7-4c7980e84dfd",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:14:22.20847+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M33",
+        "eventId": "5f566ed2-cba3-48a6-83a8-6b13e2a13873",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:14:25.489345+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M34",
+        "eventId": "ad8bc3ed-ec20-47a0-953f-d551d7778ab9",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:14:28.491387+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S06-M35",
+        "eventId": "1feb640a-591a-41be-b0e5-5e50368e8a51",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:14:32.780186+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M52",
+        "eventId": "cd93e396-4a60-4e03-9124-5a740c806df9",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:14:35.917678+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M53",
+        "eventId": "33890542-0b1d-408f-951d-48cea6e891d4",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:14:39.395361+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M54",
+        "eventId": "5c81c102-1e8a-482d-886e-7243cf5c492e",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:05.60411+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M55",
+        "eventId": "7893ec19-c08e-47ae-afae-b94f0e187094",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:09.071555+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M56",
+        "eventId": "b857b53f-ee81-4f3c-b7b7-30af20fb1400",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:12.861106+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M57",
+        "eventId": "4cc03a56-5d0d-455a-bd6a-e0dc7be96a4e",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:17.141915+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M58",
+        "eventId": "05c9b6de-5d0b-4e65-9059-b5f8c7178286",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:20.98095+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M59",
+        "eventId": "233c1f92-b0bd-47c3-a067-2375fddb5ae5",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:24.606557+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M60",
+        "eventId": "5b349d97-2f64-4388-b10c-420711e43659",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:28.306304+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M61",
+        "eventId": "a946ff29-859d-443d-adc2-8924491d991a",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:32.069222+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M62",
+        "eventId": "b059a76b-3e9a-4e1a-ae04-5814fb517880",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:43.146799+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M63",
+        "eventId": "a7c5039c-da89-43bb-8515-6f48e9e291f9",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:46.186032+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M64",
+        "eventId": "1071b375-3ceb-4fd0-9f6b-9e56bdf3365a",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:49.739813+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M65",
+        "eventId": "7e210156-76ef-46f0-b908-3f64dfd5117a",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:53.02975+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M66",
+        "eventId": "8425da25-e208-4fcc-9956-87b02cf1f722",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:56.229233+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M67",
+        "eventId": "5c685522-fefd-411b-8182-e3e023d2eb48",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:15:59.916861+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M68",
+        "eventId": "f180ee95-8f76-4149-9c03-9e0b62b881ef",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:16:04.475112+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M69",
+        "eventId": "f7afee9a-22e6-4b32-908a-31f311fdfdc5",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:16:07.654933+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M70",
+        "eventId": "304056de-ad4b-49c6-8c0e-1515de1bf916",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:16:18.797773+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S07-M71",
+        "eventId": "028d9ec1-dec2-4475-9963-70524913afee",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:16:23.602927+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S08-M32",
+        "eventId": "d7332052-bac0-4278-b0b1-2e79fd1562e2",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:16:26.899308+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S08-M33",
+        "eventId": "768126f3-d495-4341-94d4-7bdf880332d6",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:16:34.294745+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S08-M34",
+        "eventId": "cbed47cc-b1aa-4233-9a75-6879e7844d2c",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:16:37.365473+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S08-M35",
+        "eventId": "f8b9d6c0-dfa3-4589-8ee9-f1c1fcc42321",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:16:40.635751+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      },
+      {
+        "code": "PHY7-U03-S08-M36",
+        "eventId": "ae79e208-fde3-430f-ba9e-08fb7ef25844",
+        "revision": 1,
+        "approvedAt": "2026-10-16T21:16:43.991326+00:00",
+        "contentUnchanged": true,
+        "snapshotMatches": true
+      }
+    ]
+  },
+  "questions": {
+    "count": 168,
+    "approvedBeforeThisTask": 168,
+    "approvedAfter": 168,
+    "pending": 0,
+    "currentVersionContentApprovalAndQA": 168,
+    "latestApprovalAt": "2026-10-16T20:59:56.880286+00:00",
+    "modifiedByThisTask": false
+  },
+  "preservation": {
+    "guardedScopes": 39,
+    "unchangedScopes": 37,
+    "expectedChanges": [
+      {
+        "table": "misconception_review_events",
+        "before": {
+          "row_count": 503,
+          "table_name": "misconception_review_events",
+          "fingerprint": "17a9550035985940ad911f620f4edea1"
+        },
+        "after": {
+          "row_count": 604,
+          "table_name": "misconception_review_events",
+          "fingerprint": "2c3b9cf8abdc71c253a268d6df028751"
+        }
+      },
+      {
+        "table": "misconceptions",
+        "before": {
+          "row_count": 612,
+          "table_name": "misconceptions",
+          "fingerprint": "8c22bf9df528f95e77108cca0678474f"
+        },
+        "after": {
+          "row_count": 612,
+          "table_name": "misconceptions",
+          "fingerprint": "c30629e75641ba9ee539c94c81edb675"
+        }
+      }
+    ],
+    "allOtherFingerprintsUnchanged": true
+  },
+  "inventory": {
+    "questions": 168,
+    "practice": 80,
+    "diagnostic": 32,
+    "mastery": 56,
+    "publishedGuides": 80,
+    "activeDefinitions": 339,
+    "pendingOrdinaryReview": 0
+  },
+  "remainingGates": [
+    "Independent exact-version source/protection/SME qualification",
+    "Qualified disjoint assessment forms",
+    "Separate Chapter III release authorization and gates"
+  ],
+  "release": "Chapter III remains inactive/unallocated; Chapter I/II pilots preserved.",
+  "restrictedEvidence": {
+    "filename": "HaiEdu-Chapter-III-Approval-Evidence-20261017.zip",
+    "sha256": "24218dcae842b552b3f5406222ca8f2a18ea3d04101728f1c45ec0abca38b442",
+    "libraryFileId": "libfile_7663b1b0af9c81918d9dccb04319c92f",
+    "version": 0
+  }
+}

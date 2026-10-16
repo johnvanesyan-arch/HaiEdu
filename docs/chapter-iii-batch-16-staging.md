@@ -1,5 +1,7 @@
 # Chapter III Batch 16 — staging and verification
 
+**Historical staging record; ordinary review is now closed.** All current questions are approved and all definitions are active, as verified under [15C.22R](chapter-iii-definition-approval-20261017.md). Counts and pending statements below retain the original handoff; independent qualification and release remain separate.
+
 **Historical Batch 16 checkpoint; ordinary review remains pending.** Its eight questions and thirteen definitions are included in the current combined queue under [15C.22](chapter-iii-batch-19-staging.md). Counts and pending next steps below preserve the original handoff.
 
 **2026-10-16 · Sprint 15C.19 · Roadmap 3.83 · New-content review pending**
