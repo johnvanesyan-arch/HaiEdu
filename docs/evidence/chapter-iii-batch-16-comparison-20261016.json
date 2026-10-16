@@ -1,0 +1,164 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sprint": "15C.19",
+  "roadmap": "3.83",
+  "sourceMain": "052a310591350789431dab24c9ec08c82f1d5bd2",
+  "author": "Codex automated author; one primary agent",
+  "authorization": {
+    "request": "all approved. continue with the next sprint",
+    "requestAt": "2026-10-16T13:20:34Z",
+    "scopeSelection": "Codex selected eight Diagnostic slots under the established eight-question cadence after the owner approved the assessment contract and requested one more batch. The user did not individually enumerate these codes.",
+    "manifest": "chapter-iii-20261016-diagnostic-batch16",
+    "slots": [
+      {
+        "id": "U03-B16-C01",
+        "code": "PHY7-U03-S01-D03",
+        "bank": "diagnostic",
+        "skill": "S01",
+        "specSha256": "5f5c1ed1be594438e38b0259ce98019949aaa0a6fd63b3e6acb7b4a9b1733586"
+      },
+      {
+        "id": "U03-B16-C02",
+        "code": "PHY7-U03-S02-D02",
+        "bank": "diagnostic",
+        "skill": "S02",
+        "specSha256": "a4842879cae65813fabb102e5e1f7b8a80d5549b684be2419df4fa5cbecc71a4"
+      },
+      {
+        "id": "U03-B16-C03",
+        "code": "PHY7-U03-S03-D04",
+        "bank": "diagnostic",
+        "skill": "S03",
+        "specSha256": "ae3cb149b453a6b10177dd47de1ed2468a8ca22560e7b5426a1a788b84945612"
+      },
+      {
+        "id": "U03-B16-C04",
+        "code": "PHY7-U03-S04-D04",
+        "bank": "diagnostic",
+        "skill": "S04",
+        "specSha256": "230530a8d02d942ded6436a46414db84a20de26e414a556544618e7e37246ae5"
+      },
+      {
+        "id": "U03-B16-C05",
+        "code": "PHY7-U03-S05-D02",
+        "bank": "diagnostic",
+        "skill": "S05",
+        "specSha256": "4f28704043c3f9ce766c8c529b4e687ee1440cfefa7e792d0f004af67f821367"
+      },
+      {
+        "id": "U03-B16-C06",
+        "code": "PHY7-U03-S06-D03",
+        "bank": "diagnostic",
+        "skill": "S06",
+        "specSha256": "396a0786abd0cabfef11c0c9decf03a1874c09927dd5d6a40a2a6b47045461f5"
+      },
+      {
+        "id": "U03-B16-C07",
+        "code": "PHY7-U03-S07-D04",
+        "bank": "diagnostic",
+        "skill": "S07",
+        "specSha256": "abec2f0ac37ded12f2af835161bc10c813b12c45e1c4c73cd582b1829be140af"
+      },
+      {
+        "id": "U03-B16-C08",
+        "code": "PHY7-U03-S08-D02",
+        "bank": "diagnostic",
+        "skill": "S08",
+        "specSha256": "9e039f4b88d55394686a0f95b3c779e100a44f1901edfd0760f9fca7eabf9263"
+      }
+    ],
+    "limits": "Bounded next batch only; not authorization to fill all remaining48 assessment slots, allocate forms, waive SME/exposure review or activate ChapterIII."
+  },
+  "corpusSha256": "104c612f8e55c00d92707ee5fbd638bce7f34641bebca2e86298c78ff1c1b779",
+  "corpusCounts": {
+    "items": 573,
+    "item_options": 1684,
+    "item_versions": 451,
+    "item_answer_keys": 573,
+    "item_families": 351,
+    "item_templates": 351,
+    "misconceptions": 511,
+    "skill_remediation_guides": 10,
+    "remediation_guide_versions": 323,
+    "item_misconception_mappings": 1178,
+    "item_template_remediation_guides": 146,
+    "remediation_guide_authoring_versions": 592,
+    "skills": 27,
+    "skill_outcomes": 31,
+    "assessment_forms": 9,
+    "assessment_pools": 7,
+    "learning_outcomes": 19,
+    "curriculum_releases": 4,
+    "assessment_form_items": 160,
+    "assessment_pool_items": 472,
+    "item_curriculum_scopes": 573,
+    "curriculum_release_skills": 26,
+    "curriculum_source_documents": 3,
+    "curriculum_release_gate_checks": 21,
+    "curriculum_release_item_families": 350,
+    "skill_curriculum_reconciliations": 26,
+    "skill_outcome_curriculum_mappings": 31,
+    "item_family_curriculum_reconciliations": 351
+  },
+  "scope": "All573 current items,451 immutable item versions,156 current guides,323 runtime and592 authoring guide versions indexed. All120 current ChapterIII items and related ChapterI/II skill banks included. Existing59 distinct historical item bundles and241 guide bundles retained under verified continuity. All80 ChapterIII practice guides count as exposed. New candidates compared against nearest current and protected neighbors plus every new pair.",
+  "summary": {
+    "assessed": 8,
+    "retained": 8,
+    "protectedParallel": 8,
+    "independentNewReasoningCoverage": 0,
+    "qualifiedForAllocation": 0,
+    "newGuides": 0,
+    "newDefinitions": 13,
+    "pairs": 28
+  },
+  "planningAfter": {
+    "questions": 128,
+    "practice": 80,
+    "diagnostic": 24,
+    "mastery": 24,
+    "remainingDiagnostic": 8,
+    "remainingMastery": 32,
+    "contract": "approved_v2_implemented",
+    "diagnosticDistribution": [
+      2,
+      1,
+      3,
+      3,
+      1,
+      2,
+      3,
+      1
+    ],
+    "qualifiedForms": 0
+  },
+  "sourceAndLanguageReview": {
+    "prompts": 8,
+    "options": 32,
+    "explanations": 8,
+    "newDefinitions": 13,
+    "hints": 0,
+    "naturalArmenianAuthorCheck": true,
+    "physicsCheckSeparate": true,
+    "bookTerms": [
+      "հաշվարկման մարմին",
+      "հետագիծ",
+      "անցած ճանապարհ",
+      "հավասարաչափ շարժում",
+      "ժամանակամիջոց"
+    ],
+    "limits": "Author review, not independent native-speaker or physics-specialist certification; provisional difficulty and parallelism."
+  },
+  "archive": {
+    "libraryFileId": "libfile_70499567ae1c81918fdf52397cee32c6",
+    "version": 0,
+    "archive": "HaiEdu-Chapter-III-Batch-16-Restricted-Evidence.zip",
+    "sha256": "92fb8c9c16ec8327f592407a8082093db9a17e0dcd4b9004e4766bbe53bca122",
+    "members": 24,
+    "comparisonSha256": "38e46c645dc154dd115ef5f8c5c2120dab8e0ff0bd0d3fa561729cea027f93fc",
+    "specificationsSha256": "2b4946b64c8546e8985ea6668a991335e9d032de943bc96f285818d1c3e036c3"
+  },
+  "disposition": "prepared_for_guarded_draft_staging",
+  "contentIncluded": false,
+  "qualifiedAllocationCapacity": 0
+}
