@@ -1,5 +1,7 @@
 # Chapter III Batches 17–18 — bounded comparison
 
+**Historical Batches 17–18 checkpoint; ordinary review remains pending.** Its sixteen questions and thirty definitions are included in the current combined queue under [15C.22](chapter-iii-batch-19-staging.md). Counts and next steps below preserve the original handoff.
+
 **2026-10-16 · Sprints 15C.20–15C.21 · Draft staging and technical verification complete; human review pending**
 
 John requested “do two more batches” at 22:53:20 Asia/Yerevan. Codex selected sixteen candidates under the established eight-question cadence: Batch 17 contains eight Diagnostic slots (S01-D04, S03-D05/D06, S04-D05/D06, S06-D04 and S07-D05/D06); Batch 18 contains eight Mastery slots (S01-M04, S02-M03, S03-M05, S05-M03, S06-M04, S07-M05/M06 and S08-M03). This is a bounded authoring decision, not authorization to fill the remaining twenty-four Mastery slots or release Chapter III.

@@ -253,14 +253,26 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III final Mastery batch 19 — 15C.22, 2026-10-16 UTC
+
+- [x] Verify unchanged live baseline and resolve all 24 remaining Mastery slots from the approved contract.
+- [x] Complete textbook/programme, natural Armenian, whole-bank and all 276 candidate-pair checks in one delivery.
+- [x] Stage 24 drafts and 58 definitions; exact saved-content QA 24/24, rollback and 39 preservation scopes pass.
+- [x] Complete the planned 168-question authoring inventory: 80 Practice, 32 Diagnostic and 56 Mastery.
+- [ ] Review combined Batches 16–19: 48 questions and 101 definitions on the site.
+- [ ] Complete independent source/protection/SME qualification and exact-version disjoint-form preparation; record any qualified-capacity shortfall separately.
+- [ ] Complete separate Chapter III release gates; it remains inactive and unallocated.
+
+[Batch 19 evidence and combined review](chapter-iii-batch-19-staging.md).
+
 ## Chapter III batches 17–18 — 15C.20–15C.21, 2026-10-16
 
 - [x] Verify the unchanged baseline: 128 questions, 120 approved, eight pending; 80 published guides; 238 active and thirteen draft definitions.
 - [x] Prepare eight Diagnostic and eight Mastery candidates under the owner's two-batch instruction.
 - [x] Check textbook physics, natural Armenian, existing/historical/protected content and exposed guides; compare all 120 candidate pairs.
 - [x] Stage sixteen drafts and thirty definitions; exact saved-content QA 16/16, rollback and all 39 preservation scopes pass.
-- [ ] Review the combined Batches 16–18 queue: 24 questions and 43 definitions.
-- [ ] Select a further bounded assessment batch. The remaining numerical gap is 24 Mastery questions; independent SME/exposure, disjoint-form qualification and release remain separate.
+- [ ] Review Batches 16–18 content as part of the current Batches 16–19 queue above.
+- [x] Remaining 24 Mastery slots delivered in the owner-authorized combined Batch 19 / 15C.22. Qualification and release remain separate.
 
 [Batches 17–18 evidence and review](chapter-iii-batches-17-18-staging.md).
 

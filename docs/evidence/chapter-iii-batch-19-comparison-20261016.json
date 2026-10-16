@@ -547,5 +547,14 @@
       "independentNewReasoningCoverage": false,
       "qualifiedForAllocation": false
     }
-  ]
+  ],
+  "finalRestrictedEvidence": {
+    "archive": "HaiEdu-Chapter-III-Batch-19-Restricted-Evidence.zip",
+    "sha256": "a850757f2a9e20c995948b48899784bc8f8643fc901a8d33aefc9c15f0eb4f55",
+    "members": 47,
+    "comparisonSha256": "68c0e2cedde56e7cb8efcb2493384feee4bab6cfd120ae7569e3b59838cc2eef",
+    "specificationsSha256": "0bc6dafac12aa944cf1cb9ffe2242b0f062ddec729f79921b223d820c7435520",
+    "libraryFileId": "libfile_68913546a9e08191a6bf1b7f1537154e",
+    "libraryVersion": 2
+  }
 }

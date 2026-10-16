@@ -1,5 +1,7 @@
 # Chapter III Batches 17–18 — staging and verification
 
+**Historical Batches 17–18 checkpoint; ordinary review remains pending.** Its sixteen questions and thirty definitions are included in the current combined queue under [15C.22](chapter-iii-batch-19-staging.md). Counts and next steps below preserve the original handoff.
+
 **2026-10-16 · Sprints 15C.20–15C.21 · Roadmap 3.84 · Human review pending**
 
 | Batch | Questions | Definition drafts | Technical QA |
