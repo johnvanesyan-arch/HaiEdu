@@ -10,4 +10,4 @@ The Physics 7 textbook (Մելիքյան–Մաիլյան, 2023), §§14–18, s
 
 The [sanitized evidence index](evidence/chapter-iii-batch-16-comparison-20261016.json) binds the restricted archive identity and hashes. Exact questions, answers and comparison details stay outside this repository. The source and comparison checks are author checks, not independent specialist certification. Historical exposure limitations, human review, specialist/exposure review, disjoint-form qualification and release remain open.
 
-**Prepared handoff:** restricted evidence saved and this comparison committed before guarded rollback rehearsal and staging. No content approval or allocation is inferred.
+**Completed staging handoff:** restricted evidence was saved and the comparison committed before guarded rollback rehearsal and staging. Eight v1 Diagnostic drafts and 13 definitions are saved; source-exact evaluator QA passes 8/8, exact readback and all 39 preservation scopes pass. [Staging evidence](chapter-iii-batch-16-staging.md). No approval of the new drafts or allocation is inferred.

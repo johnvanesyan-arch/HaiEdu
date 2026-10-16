@@ -151,12 +151,13 @@
   },
   "archive": {
     "libraryFileId": "libfile_70499567ae1c81918fdf52397cee32c6",
-    "version": 0,
+    "version": 1,
     "archive": "HaiEdu-Chapter-III-Batch-16-Restricted-Evidence.zip",
-    "sha256": "92fb8c9c16ec8327f592407a8082093db9a17e0dcd4b9004e4766bbe53bca122",
-    "members": 24,
+    "sha256": "fc3d1bbe2fa0678899f0b5eb1c99b02e77b9a46490877ccbcca36f8121d56ea6",
+    "members": 43,
     "comparisonSha256": "38e46c645dc154dd115ef5f8c5c2120dab8e0ff0bd0d3fa561729cea027f93fc",
-    "specificationsSha256": "2b4946b64c8546e8985ea6668a991335e9d032de943bc96f285818d1c3e036c3"
+    "specificationsSha256": "2b4946b64c8546e8985ea6668a991335e9d032de943bc96f285818d1c3e036c3",
+    "access": "restricted owner Library; answer-bearing contents excluded from GitHub"
   },
   "disposition": "prepared_for_guarded_draft_staging",
   "contentIncluded": false,

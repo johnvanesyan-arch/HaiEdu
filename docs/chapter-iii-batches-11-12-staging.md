@@ -1,6 +1,6 @@
 # Chapter III batches 11 and 12 — staging and verification
 
-**Current checkpoint — 2026-10-16 / 15C.18:** Batches 11–12 ordinary review is complete, and the v2 contract is approved and implemented. Batches 13–15 add 24 drafts and 32 definitions, bringing Chapter III to 120 questions (96 approved, 24 draft). See the [authoritative current status](project-status.md) and [Batch 15](chapter-iii-batch-15-staging.md). Counts, queues and next steps below preserve the dated historical staging checkpoint.
+**Current checkpoint — 2026-10-16 / 15C.19:** ordinary review is complete through Batch15, and the v2 contract is approved and implemented. Batch16 adds eight Diagnostic drafts and 13 definitions, bringing Chapter III to 128 questions (120 approved, eight draft), 80 published guides and 251 definitions (238 active, 13 draft). See the [authoritative current status](project-status.md), [review closure](chapter-iii-batches-13-15-review.md) and [Batch 16](chapter-iii-batch-16-staging.md). Counts and next steps below preserve the historical staging checkpoint.
 
 **2026-10-15 · Sprints 15C.12–15C.13 · Roadmap 3.76**
 

@@ -1,5 +1,7 @@
 # Chapter III Batch 15 — Mastery candidate comparison
 
+**Ordinary review verified complete — 15C.18R, 2026-10-16:** all eight current questions and this batch’s definitions are human-approved, without content changes. [Review closure](chapter-iii-batches-13-15-review.md). Counts and pending statements below preserve the original staging checkpoint; see [current status](project-status.md).
+
 **2026-10-16 · Sprint 15C.18 · Roadmap 3.82**
 
 John requested “Good, add another batch and I will check them in bulk too.” Codex selected eight Mastery candidates under the established eight-question cadence, S01-M03, S03-M03/M04, S04-M03/M04, S06-M03 and S07-M03/M04. The bounded manifest authorizes this draft batch only. The previous sixteen Diagnostic/Mastery drafts remain pending human review.
