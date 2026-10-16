@@ -1,10 +1,10 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
 
-**Roadmap version:** 3.84
-**Updated:** 2026-10-16 (Asia/Yerevan)
+**Roadmap version:** 3.85
+**Updated:** 2026-10-16 (UTC)
 **Latest platform repair:** the shared guide-validator metadata correction is deployed as v11; all three bundle files read back exactly, 31 regressions and CI pass. Existing content and approvals are preserved. [Guide-validator repair evidence](evidence/remediation-guide-validator-metadata-fix-20261015.json). Earlier direct-read protection and reviewer approval repairs remain in force.
-**Sprints 15C.20–15C.21 are staged and technically verified:** eight new Chapter III Diagnostic drafts, eight Mastery drafts and 30 draft definitions. Batch 16 remains pending and can be reviewed with these two batches. Chapter III has **144 questions (120 approved, 24 awaiting review)**: 80 Practice, 32 Diagnostic and 32 Mastery candidates; 80 published guides and 281 definitions (238 active, 43 draft). [Batches 17–18 evidence and review](chapter-iii-batches-17-18-staging.md). The approved v2 contract remains implemented and production-verified. Chapter III is inactive with zero qualified allocations; human review, SME/exposure, form qualification and release gates remain open.
+**Sprint 15C.22 is staged and technically verified:** all 24 remaining Chapter III Mastery drafts and 58 supporting draft definitions are saved. The planned bank is fully authored: **168 questions (120 approved, 48 awaiting review)** = 80 Practice + 32 Diagnostic + 56 Mastery; 80 published guides and 339 definitions (238 active, 101 draft). [Batch 19 evidence and combined review](chapter-iii-batch-19-staging.md). The v2 contract remains implemented. Chapter III is inactive with zero qualified allocations; human review, independent SME/exposure, form qualification and release remain open.
 **Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5/14 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E live switching acceptance is complete; the authorized Chapter II provisional pilot is verified. Chapter II database migrations, production configuration and activation are complete; independent SME/production gates stay open. Sprints 16–26 remain planned in the sequence below.
 
 This file defines the canonical high-level sprint scope and sequence. [Project status](project-status.md) is the sole current delivery/gate register; [backlog](backlog.md) is the detailed implementation checklist. The overview mirrors that register. Dated execution records, content counts and pending-review statements below are historical checkpoints; later evidenced dispositions supersede them without rewriting their original observations.
@@ -1081,7 +1081,17 @@ All twelve S02 questions and all **40 authored Chapter II questions** are now ap
 
 **15B.14B / 15B.14C — implementation merged; database deployment blocked.** John directed “You can release Chapter II; we will do the specialist review later.” PR #206 merged the exact disjoint form allocation, governed configuration, runtime safeguards and chapter navigation. All five final CI jobs passed; the frontend is deployed. Two Supabase connector failures prevented the first migration from applying, as confirmed by readback. Database migrations, production rollback rehearsal, committed allocation/bindings, activation and authenticated chapter switching remain pending. Chapter I stays on its original active release; Chapter II remains draft and inactive. Independent SME and final production exposure qualification remain open, and the existing six pilot gates remain required. [Scope and evidence](chapter-ii-pilot-release.md) · [Deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json).
 
+### 15C.22 — Remaining Chapter III Mastery batch 19
+
+**Sprint 15C.22 is staged and technically verified:** all 24 remaining Chapter III Mastery drafts and 58 supporting draft definitions are saved. The planned bank is fully authored: **168 questions (120 approved, 48 awaiting review)** = 80 Practice + 32 Diagnostic + 56 Mastery; 80 published guides and 339 definitions (238 active, 101 draft). [Batch 19 evidence and combined review](chapter-iii-batch-19-staging.md). The v2 contract remains implemented. Chapter III is inactive with zero qualified allocations; human review, independent SME/exposure, form qualification and release remain open.
+
+Owner authorized every remaining question in one larger delivery to reduce repeated CI. Twenty-four candidates across all eight skills were compared against the complete applicable current/history/protected bank, eighty exposed practice examples and all 276 new pairs. Natural Armenian and textbook physics were checked separately. Exact saved-content QA passes 24/24, and all 39 preservation scopes pass. No new guides, allocations or learner release. One documentation PR uses the existing required PR and main-push checks.
+
+**Next:** combined ordinary review, exact-version SME/exposure qualification and disjoint assessment-form preparation. The numerical bank is complete; zero forms are qualified.
+
 ### 15C.20–15C.21 — Two bounded assessment batches 17–18
+
+**Historical staging checkpoint; review remains pending.** Its sixteen questions and thirty definitions are included in the current Batches 16–19 queue under 15C.22 above.
 
 **Sprints 15C.20–15C.21 are staged and technically verified:** eight new Chapter III Diagnostic drafts, eight Mastery drafts and 30 draft definitions. Batch 16 remains pending and can be reviewed with these two batches. Chapter III has **144 questions (120 approved, 24 awaiting review)**: 80 Practice, 32 Diagnostic and 32 Mastery candidates; 80 published guides and 281 definitions (238 active, 43 draft). [Batches 17–18 evidence and review](chapter-iii-batches-17-18-staging.md). The approved v2 contract remains implemented and production-verified. Chapter III is inactive with zero qualified allocations; human review, SME/exposure, form qualification and release gates remain open.
 
