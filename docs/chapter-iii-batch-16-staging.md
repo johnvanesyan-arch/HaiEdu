@@ -1,5 +1,7 @@
 # Chapter III Batch 16 — staging and verification
 
+**Historical Batch 16 checkpoint; ordinary review remains pending.** Its eight questions and thirteen definitions are included in the current combined queue under [15C.20–15C.21](chapter-iii-batches-17-18-staging.md). Counts and pending next steps below preserve the original handoff.
+
 **2026-10-16 · Sprint 15C.19 · Roadmap 3.83 · New-content review pending**
 
 Eight Diagnostic candidates — S01-D03, S02-D02, S03-D04, S04-D04, S05-D02, S06-D03, S07-D04 and S08-D02 — and 13 misconception definitions are staged as new v1 drafts. All eight exact saved questions pass the deployed-v11 evaluator replay with zero errors and warnings. Independent database readback matches prompts, options, keys, mappings and immutable snapshots. This is saved-content technical verification, not authenticated live Edge or browser acceptance.

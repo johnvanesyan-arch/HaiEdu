@@ -1,5 +1,7 @@
 # Chapter III Batch 16 — Diagnostic candidate comparison
 
+**Historical Batch 16 checkpoint; ordinary review remains pending.** Its eight questions and thirteen definitions are included in the current combined queue under [15C.20–15C.21](chapter-iii-batches-17-18-staging.md). Counts and pending next steps below preserve the original handoff.
+
 **2026-10-16 · Sprint 15C.19 · Roadmap 3.83**
 
 John requested “all approved. continue with the next sprint.” Codex selected eight Diagnostic candidates under the established eight-question cadence, S01-D03, S02-D02, S03-D04, S04-D04, S05-D02, S06-D03, S07-D04 and S08-D02. The bounded manifest authorizes this draft batch only. All previous 120 questions and 238 definitions are now approved, with 80 guides published and no outstanding ordinary review.

@@ -253,14 +253,25 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III batches 17–18 — 15C.20–15C.21, 2026-10-16
+
+- [x] Verify the unchanged baseline: 128 questions, 120 approved, eight pending; 80 published guides; 238 active and thirteen draft definitions.
+- [x] Prepare eight Diagnostic and eight Mastery candidates under the owner's two-batch instruction.
+- [x] Check textbook physics, natural Armenian, existing/historical/protected content and exposed guides; compare all 120 candidate pairs.
+- [x] Stage sixteen drafts and thirty definitions; exact saved-content QA 16/16, rollback and all 39 preservation scopes pass.
+- [ ] Review the combined Batches 16–18 queue: 24 questions and 43 definitions.
+- [ ] Select a further bounded assessment batch. The remaining numerical gap is 24 Mastery questions; independent SME/exposure, disjoint-form qualification and release remain separate.
+
+[Batches 17–18 evidence and review](chapter-iii-batches-17-18-staging.md).
+
 ## Chapter III Diagnostic batch 16 — 15C.19, 2026-10-16
 
 - [x] Verify Batches 13–15 ordinary review: 120 approved questions, 238 active definitions, 80 published guides; content unchanged.
 - [x] Select eight Diagnostic slots: S01-D03, S02-D02, S03-D04, S04-D04, S05-D02, S06-D03, S07-D04 and S08-D02.
 - [x] Complete textbook/Armenian/physics and applicable current/history/guide/protected comparisons, including all 28 new pairs.
 - [x] Stage eight drafts and 13 definitions; saved-content QA 8/8, exact readback, rollback and 39 preservation scopes pass.
-- [ ] Review the eight new questions and 13 definitions.
-- [ ] Continue a separately bounded assessment batch; remaining numerical gaps are eight Diagnostic and 32 Mastery. Keep independent SME/exposure, form qualification and release gates separate.
+- [ ] Review Batch 16’s eight questions and thirteen definitions, included in the combined queue above.
+- [x] Next two bounded batches delivered as 15C.20–15C.21 / Batches 17–18. The combined pending queue and remaining budget are recorded above.
 
 [Review closure](chapter-iii-batches-13-15-review.md) · [Batch 16 evidence](chapter-iii-batch-16-staging.md).
 
