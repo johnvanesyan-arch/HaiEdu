@@ -1,5 +1,7 @@
 # Chapter III Batch 19 — final planned Mastery drafts
 
+**Historical staging record; ordinary review is now closed.** All current questions are approved and all definitions are active, as verified under [15C.22R](chapter-iii-definition-approval-20261017.md). Counts and pending statements below retain the original handoff; independent qualification and release remain separate.
+
 **2026-10-16 UTC · Sprint 15C.22 · Roadmap 3.85 · Human review pending**
 
 All 24 remaining Mastery questions are staged as v1 drafts, with 58 supporting draft definitions. The owner requested one larger delivery to save repeated CI minutes. One primary agent authored and reviewed the candidates, with three internal comparison groups and one combined documentation PR. GitHub's existing required workflows run for the PR and main push; no validation gate was skipped or CI configuration changed.

@@ -253,13 +253,23 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III ordinary review closure — 15C.22R, 2026-10-17 Asia/Yerevan
+
+- [x] Match the 101 authorized drafts against saved authoring manifests and preserve their wording.
+- [x] Save 101 delegated approvals through the existing reviewer UI and verify matching audit snapshots.
+- [x] Verify all 168 pre-existing current-version question approvals and passing QA; confirm 80 guides published and 339 definitions active.
+- [x] Preserve all 37 non-target table fingerprints and earlier approval history.
+- [ ] Complete independent qualification, exact-version disjoint forms and separate Chapter III release gates.
+
+[Approval and preservation evidence](chapter-iii-definition-approval-20261017.md).
+
 ## Chapter III final Mastery batch 19 — 15C.22, 2026-10-16 UTC
 
 - [x] Verify unchanged live baseline and resolve all 24 remaining Mastery slots from the approved contract.
 - [x] Complete textbook/programme, natural Armenian, whole-bank and all 276 candidate-pair checks in one delivery.
 - [x] Stage 24 drafts and 58 definitions; exact saved-content QA 24/24, rollback and 39 preservation scopes pass.
 - [x] Complete the planned 168-question authoring inventory: 80 Practice, 32 Diagnostic and 56 Mastery.
-- [ ] Review combined Batches 16–19: 48 questions and 101 definitions on the site.
+- [x] Verify all 168 current question approvals and QA; complete the owner-authorized delegated approval of 101 definitions through the MFA-protected site. Ordinary review is closed under [15C.22R](chapter-iii-definition-approval-20261017.md).
 - [ ] Complete independent source/protection/SME qualification and exact-version disjoint-form preparation; record any qualified-capacity shortfall separately.
 - [ ] Complete separate Chapter III release gates; it remains inactive and unallocated.
 
@@ -271,7 +281,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Prepare eight Diagnostic and eight Mastery candidates under the owner's two-batch instruction.
 - [x] Check textbook physics, natural Armenian, existing/historical/protected content and exposed guides; compare all 120 candidate pairs.
 - [x] Stage sixteen drafts and thirty definitions; exact saved-content QA 16/16, rollback and all 39 preservation scopes pass.
-- [ ] Review Batches 16–18 content as part of the current Batches 16–19 queue above.
+- [x] Review Batches 16–18 content; verified under 15C.22R above.
 - [x] Remaining 24 Mastery slots delivered in the owner-authorized combined Batch 19 / 15C.22. Qualification and release remain separate.
 
 [Batches 17–18 evidence and review](chapter-iii-batches-17-18-staging.md).
@@ -282,8 +292,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Select eight Diagnostic slots: S01-D03, S02-D02, S03-D04, S04-D04, S05-D02, S06-D03, S07-D04 and S08-D02.
 - [x] Complete textbook/Armenian/physics and applicable current/history/guide/protected comparisons, including all 28 new pairs.
 - [x] Stage eight drafts and 13 definitions; saved-content QA 8/8, exact readback, rollback and 39 preservation scopes pass.
-- [ ] Review Batch 16’s eight questions and thirteen definitions, included in the combined queue above.
-- [x] Next two bounded batches delivered as 15C.20–15C.21 / Batches 17–18. The combined pending queue and remaining budget are recorded above.
+- [x] Review Batch 16’s eight questions and thirteen definitions; verified under 15C.22R above.
+- [x] Next two bounded batches delivered as 15C.20–15C.21 / Batches 17–18. The ordinary review closure and remaining qualification gates are recorded above.
 
 [Review closure](chapter-iii-batches-13-15-review.md) · [Batch 16 evidence](chapter-iii-batch-16-staging.md).
 
