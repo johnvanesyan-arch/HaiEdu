@@ -1,33 +1,114 @@
 {
   "sprint": "15C.24",
   "roadmap": "3.88",
-  "status": "prepared_not_staged",
-  "authorization": "John, 2026-10-17 01:54:47 Asia/Yerevan: yes to two targeted existing S03 revisions",
+  "status": "two_v2_drafts_saved_technical_verification_complete_ordinary_review_pending",
+  "observedAt": "2026-10-16T22:06:58.453108+00:00",
   "sourceMain": "994e7896aa4d532bd726ba007e779144eef6ab67",
-  "targets": [
-    {
-      "code": "PHY7-U03-S03-D05",
-      "fromVersion": 1,
-      "toVersion": 2,
-      "specSha256": "71db5baa3fccc3bcf08a3c2d66e7728a347d34c489177d303fa8415deeef502a"
-    },
-    {
-      "code": "PHY7-U03-S03-M10",
-      "fromVersion": 1,
-      "toVersion": 2,
-      "specSha256": "ac8aa03cea2e1d434c96f97954f0d2d0b2015b96e8488a4ea2a2413b0d44cfaa"
-    }
+  "preparedComparisonCommit": "2585eb39a1febbef44dbf533e6f3862b049ad7f5",
+  "inventory": {
+    "questions": 168,
+    "approvedCurrentVersions": 166,
+    "awaitingQuestionReview": 2,
+    "publishedGuides": 80,
+    "activeDefinitions": 339,
+    "draftDefinitions": 5
+  },
+  "verification": {
+    "exactRevisionsSnapshots": 2,
+    "oldV1SnapshotsAndApprovalsPreserved": true,
+    "savedQaPassed": 2,
+    "qaErrors": 0,
+    "qaWarnings": 0,
+    "qaMethod": "Exact deployed manage-content-quality v11 evaluator replay, followed by actor-null audit records; not an authenticated live Edge invocation",
+    "rollbackAll39TablesRestored": true,
+    "unchangedFinalTables": 28,
+    "changedTables": [
+      {
+        "table": "curriculum_release_item_families",
+        "rowDelta": 0
+      },
+      {
+        "table": "item_answer_keys",
+        "rowDelta": 0
+      },
+      {
+        "table": "item_families",
+        "rowDelta": 0
+      },
+      {
+        "table": "item_family_curriculum_reconciliations",
+        "rowDelta": 0
+      },
+      {
+        "table": "item_misconception_mappings",
+        "rowDelta": 0
+      },
+      {
+        "table": "item_options",
+        "rowDelta": 0
+      },
+      {
+        "table": "item_qa_runs",
+        "rowDelta": 2
+      },
+      {
+        "table": "item_templates",
+        "rowDelta": 0
+      },
+      {
+        "table": "item_versions",
+        "rowDelta": 2
+      },
+      {
+        "table": "items",
+        "rowDelta": 0
+      },
+      {
+        "table": "misconceptions",
+        "rowDelta": 5
+      }
+    ],
+    "allUnrelatedRowsAndExistingHistoriesPreserved": true,
+    "humanApprovalsCreated": 0,
+    "schemaOrRuntimeChanges": 0,
+    "learnerOrReleaseChanges": 0
+  },
+  "conditionalForms": {
+    "forms": 5,
+    "questionsEach": 16,
+    "distinctSelectedIds": 80,
+    "reservesOnePerSkill": 8,
+    "membershipsUnchanged": true,
+    "updatedItemVersions": 2,
+    "directMandatoryOutcomeGapsUsingDrafts": 0,
+    "ordinaryReviewPendingForms": 2,
+    "qualifiedForms": 0,
+    "allocatedForms": 0,
+    "newRuntimeOutcomeScoringRule": false
+  },
+  "limits": [
+    "Both revised versions and five definitions require ordinary review.",
+    "Author coverage and semantic checks are not independent Physics/Armenian SME approval.",
+    "Historical exposure and cross-form dependencies remain unresolved; protected parallel items add no new independent reasoning.",
+    "No empirical form equivalence, laboratory competence certification or Chapter III release."
   ],
-  "newDraftDefinitions": 5,
-  "comparisonSha256": "63e5436bfc2c8e409d1b0834485aadca098a49ebf2de04b3d5af995af23c2795",
-  "corpusSha256": "8b2e8bc8fb9b053883440995e9e5ed32e2872a32fbc486205c3d4006c411c139",
+  "digests": {
+    "specs.json": "ea3d11627b6cc0b735dab948fae70d19f3e7ed066cbfcf748f96dea25bba6f13",
+    "comparison.json": "63e5436bfc2c8e409d1b0834485aadca098a49ebf2de04b3d5af995af23c2795",
+    "final-verification.json": "0b7ad593aeb9f4754173968070cbce55fdff1ed5da458a6102c675a92b872eba",
+    "qa-results.json": "be19708467c9f127099a0dd800d99ccfe06ed3e92e0f7f58e64948453a6cfa5c",
+    "state-final.json": "f39fa44217c0afdda692d2d753c2fdc80023d57064d7cb534000d4435739ba37",
+    "conditional-forms-v2.json": "3bddea595cb7fd67c092421782d6e14cea273cc3198a865d110a1e4f8b29263c",
+    "qualification-ledger-v2.json": "69f801ae36dc3b3932cab08c1b0189040e14fedd06e736ae8cdf9ec0f368cbcd",
+    "version-bindings-v2.json": "dd532e3091a05342ca564b1be86a8a8895e4b19e4de0bab88e488f1031a13e32"
+  },
   "restrictedEvidence": {
     "libraryFileId": "libfile_938afc9c53308191a92f4e49517bd3cb",
-    "version": 0,
-    "sha256": "ea3c7c08d295593b236f76ad32994344b0142db8bd089fdccf621aae9d71ce4c",
-    "bytes": 1654884
-  },
-  "independentNewReasoningCoverage": 0,
-  "qualifiedAllocationCapacity": 0,
-  "releaseAuthorization": false
+    "version": 1,
+    "filename": "HaiEdu-Chapter-III-Trajectory-Revisions-20261017.zip",
+    "sha256": "b16335857087d55475596473ca631dc13f21508b7a8ee0454083f1d5d8d0338c",
+    "bytes": 1903239,
+    "preparedVersion": 0,
+    "preparedSha256": "ea3c7c08d295593b236f76ad32994344b0142db8bd089fdccf621aae9d71ce4c"
+  }
 }
