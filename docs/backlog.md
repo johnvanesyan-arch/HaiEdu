@@ -253,6 +253,18 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III qualification preparation — 15C.23, 2026-10-17 Asia/Yerevan
+
+- [x] Freeze 168 current approval/QA/snapshot bindings and 88 prior protected comparison bindings.
+- [x] Prepare five disjoint offline 16-question forms and eight per-skill Mastery reserves; preserve the approved distribution and scoring groups.
+- [x] Record two M4 trajectory-classification coverage gaps, conditional form dependencies and a bounded two-question revision brief.
+- [x] Save restricted evidence, verify all 39 table fingerprints unchanged and prepare the independent review handoff.
+- [ ] Obtain the owner's bounded correction decision; version, compare and review accepted corrections.
+- [ ] Obtain independent specialist and exposure decisions; qualify exact-version forms before allocation.
+- [ ] Complete separately authorized Chapter III release and production acceptance.
+
+[Preflight and conditional forms](chapter-iii-assessment-qualification.md). No content or runtime changes were made.
+
 ## Chapter III ordinary review closure — 15C.22R, 2026-10-17 Asia/Yerevan
 
 - [x] Match the 101 authorized drafts against saved authoring manifests and preserve their wording.
