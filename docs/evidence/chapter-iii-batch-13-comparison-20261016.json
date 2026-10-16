@@ -131,15 +131,15 @@
     ],
     "qualifiedForms": 0
   },
-  "status": "prepared_not_staged",
+  "status": "staged_technically_verified_human_review_pending",
   "restrictedEvidence": {
     "archive": "HaiEdu-Chapter-III-Batch-13-Restricted-Evidence.zip",
-    "sha256": "bee59114a68ea1551ad9da0064b7ed3e265d953f787c6b86870ab4a8882a8c02",
-    "members": 21,
+    "sha256": "36c246fc8bceb40279ea0ec3fbeb748cbaa1c8b0a69e95faa7f6b2ebfd3f97d7",
+    "members": 40,
     "comparisonSha256": "e26ac5016161fd2a0ba2efbd145dafd4ebc4c2d77e294133e9037785335b1da5",
     "specificationsSha256": "b3518562135d2c4e758e54e16672d5fbbc4b327e165c998d896bc058d8c3875e",
     "libraryFileId": "libfile_1bff849f3e8081919f06daf08b629203",
-    "libraryVersion": 0
+    "libraryVersion": 1
   },
   "protection": "No answer-bearing stimuli/solutions in this repository record. Full source, scenario/solution/distractor comparisons, history inventory and all28 new pairs are in the restricted archive. Human/SME/exposure gates remain open."
 }

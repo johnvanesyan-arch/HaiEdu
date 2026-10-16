@@ -1,6 +1,6 @@
 # Chapter III Batch 13 — Diagnostic candidate comparison
 
-**2026-10-16 · Sprint 15C.16 · Roadmap 3.80 preparation**
+**2026-10-16 · Sprint 15C.16 · Roadmap 3.80**
 
 The owner directed the next sprint after approval and implementation of assessment contract v2. Codex selected a bounded eight-question Diagnostic batch under the established cadence: S01-D02, S03-D02/D03, S04-D02/D03, S06-D02 and S07-D02/D03. This does not authorize all remaining assessment slots or learner release.
 
@@ -10,4 +10,4 @@ The Physics 7 textbook (Մելիքյան–Մաիլյան, 2023), §§14–17, s
 
 Exact prompts, keys, distractor comparisons and solutions are held in the restricted evidence archive, not this repository. The [sanitized evidence index](evidence/chapter-iii-batch-13-comparison-20261016.json) binds its Library identity, version and hashes. Historical private-repository exposure limitations remain open.
 
-At this preparation checkpoint, no database content has been added. Staging requires the unchanged 39-table transaction guard, rollback rehearsal, exact evaluator QA and current-version readback. Human question/definition approval, independent SME/exposure review, disjoint-form qualification and release remain separate gates. The v2 contract is approved and implemented; it is no longer awaiting a decision.
+Staging is complete: eight drafts and nine definitions were added after the unchanged 39-table guard and rollback rehearsal; exact evaluator QA and saved-version readback pass. [Staging evidence](chapter-iii-batch-13-staging.md). Human question/definition approval, independent SME/exposure review, disjoint-form qualification and release remain separate gates. The v2 contract is approved and implemented; it is no longer awaiting a decision.

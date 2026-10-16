@@ -2,7 +2,7 @@
 
 **2026-10-15 · Sprint 15C.14 · Roadmap 3.77 · Owner-approved 2026-10-15; implemented and verified under 15C.15 (roadmap 3.79)**
 
-All existing Chapter III content is reviewed: **96 approved questions, 80 published guides and 206 active definitions**. [Verified review closure](chapter-iii-batches-06-12-review.md). This proposal resolves the next curriculum decision before further assessment allocation. John explicitly approved this scoring/readiness proposal at 20:02:38 Asia/Yerevan on 2026-10-15. This approval authorizes the versioned shared implementation; it does not activate Chapter III or waive its remaining gates.
+At the 2026-10-15 contract checkpoint, all existing Chapter III content was reviewed: **96 approved questions, 80 published guides and 206 active definitions**. [Verified review closure](chapter-iii-batches-06-12-review.md). This proposal resolves the next curriculum decision before further assessment allocation. John explicitly approved this scoring/readiness proposal at 20:02:38 Asia/Yerevan on 2026-10-15. This approval authorizes the versioned shared implementation; it does not activate Chapter III or waive its remaining gates.
 
 ## Recommended assessment structure
 
@@ -37,7 +37,7 @@ Armenian result labels proposed for implementation: «Պարտադիր վերջ�
 
 ## Bank capacity and protection
 
-The overall planning budget remains **168 = 80 Practice + 32 Diagnostic + 56 Mastery**. Mastery consists of 48 questions across three forms plus eight per-skill reserves; the reserves are not a fourth form. Current authored inventory is 80/8/8, so the numerical gaps remain **24 Diagnostic + 48 Mastery**. Only one D01 and one M01 exists per skill; the proposed shift has not invalidated an existing question or allocated form.
+The overall planning budget remains **168 = 80 Practice + 32 Diagnostic + 56 Mastery**. Mastery consists of 48 questions across three forms plus eight per-skill reserves; the reserves are not a fourth form. At approval, authored inventory was 80/8/8, leaving 24 Diagnostic +48 Mastery. Batch 13 now brings authored inventory to 80/16/8, leaving **16 Diagnostic + 48 Mastery**. The new Diagnostic candidate distribution matches 2/1/3/3/1/2/3/1 but no form is qualified. [Current status](project-status.md).
 
 There are **zero qualified form allocations**, despite all current questions being content-approved. Whole-bank comparisons, exact versions, independent SME/exposure review, meaningful stimulus differences, within/across-form disjointness and release gates remain required. Repeated reasoning remains a protected parallel candidate claim, not new independent coverage. Exact question/answer evidence stays in restricted storage; repository reports contain non-reconstructive digests. The earlier private-PR object exposure limitation remains open.
 
