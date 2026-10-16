@@ -1,0 +1,551 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sprint": "15C.22",
+  "roadmap": "3.85",
+  "sourceMain": "0719f812b0b593f6ba8a681a6b6f6c574c12c796",
+  "author": "Codex automated author; one primary agent",
+  "authorization": {
+    "request": "Okay, let's do bigger batches. I need to save minutes. Now do all the remaining questions for chapter 3",
+    "requestAt": "2026-10-16T19:31:42Z",
+    "scopeSelection": "Owner authorized all remaining Chapter III questions. The approved contract and verified live counts identify exactly 24 remaining Mastery slots across eight skills. One combined delivery and PR; three internal comparison groups of eight. No existing pending review is inferred.",
+    "manifests": [
+      {
+        "id": "chapter-iii-20261016-batch19",
+        "sprint": "15C.22",
+        "slots": [
+          {
+            "id": "U03-B19-C01",
+            "code": "PHY7-U03-S01-M05",
+            "skill": "S01",
+            "bank": "mastery_check",
+            "specSha256": "e516586471b4637516850b42a37e16fa6939ed955ebed75c1b9a9ea6824963e5"
+          },
+          {
+            "id": "U03-B19-C02",
+            "code": "PHY7-U03-S01-M06",
+            "skill": "S01",
+            "bank": "mastery_check",
+            "specSha256": "5e2b736c01f0a7c65ba3aa8e77b7556b61f77f7dfe882e854e069477a4056439"
+          },
+          {
+            "id": "U03-B19-C03",
+            "code": "PHY7-U03-S01-M07",
+            "skill": "S01",
+            "bank": "mastery_check",
+            "specSha256": "71a53aa478e0ad3a90449e926970263df679dc9dc5aeff048e271cf7323ffe74"
+          },
+          {
+            "id": "U03-B19-C04",
+            "code": "PHY7-U03-S02-M04",
+            "skill": "S02",
+            "bank": "mastery_check",
+            "specSha256": "15d70208d24c8a692999d2ad41cedb6635e30f5eafe732aab7755a20bdfa849a"
+          },
+          {
+            "id": "U03-B19-C05",
+            "code": "PHY7-U03-S03-M06",
+            "skill": "S03",
+            "bank": "mastery_check",
+            "specSha256": "168f3345472f93380d8e3676fec2c37f6557f3343737a2bcbad3078a6ee67d1a"
+          },
+          {
+            "id": "U03-B19-C06",
+            "code": "PHY7-U03-S03-M07",
+            "skill": "S03",
+            "bank": "mastery_check",
+            "specSha256": "a010824fee4e14bfa8cd4b6ef19b7ef685ce3e5e60b372cd345be61e1fc9ba75"
+          },
+          {
+            "id": "U03-B19-C07",
+            "code": "PHY7-U03-S03-M08",
+            "skill": "S03",
+            "bank": "mastery_check",
+            "specSha256": "a68d7e487161289b42163024dd6fb05d27edb040f2333602d097af91c32789e4"
+          },
+          {
+            "id": "U03-B19-C08",
+            "code": "PHY7-U03-S03-M09",
+            "skill": "S03",
+            "bank": "mastery_check",
+            "specSha256": "badeec1e1adc99583ef8bd499152737e6de3d5903dcd85b3af66c24f782d566b"
+          },
+          {
+            "id": "U03-B19-C09",
+            "code": "PHY7-U03-S03-M10",
+            "skill": "S03",
+            "bank": "mastery_check",
+            "specSha256": "a20ac4a8a23280f85f85f8c9e01c82b3666e38e7cfb0671b070dfd6ab5400fcd"
+          },
+          {
+            "id": "U03-B19-C10",
+            "code": "PHY7-U03-S04-M05",
+            "skill": "S04",
+            "bank": "mastery_check",
+            "specSha256": "946ff7415be9d5cb48ddd15cdde2f4552cda5fccb743621edf79cfeaad2e561d"
+          },
+          {
+            "id": "U03-B19-C11",
+            "code": "PHY7-U03-S04-M06",
+            "skill": "S04",
+            "bank": "mastery_check",
+            "specSha256": "1d20ca529409c09304a736fcd7342719a213dee0a80a2ffaa9ce4bdb98b25338"
+          },
+          {
+            "id": "U03-B19-C12",
+            "code": "PHY7-U03-S04-M07",
+            "skill": "S04",
+            "bank": "mastery_check",
+            "specSha256": "a0b90ceb297ff2fa4e4210d9456dd94f9dcaf915fee4e56a7e0268a52b4a9f73"
+          },
+          {
+            "id": "U03-B19-C13",
+            "code": "PHY7-U03-S04-M08",
+            "skill": "S04",
+            "bank": "mastery_check",
+            "specSha256": "af83bb252f2d24ee77d3ca865e892c40213464302b56d69f95d9f369181e5054"
+          },
+          {
+            "id": "U03-B19-C14",
+            "code": "PHY7-U03-S04-M09",
+            "skill": "S04",
+            "bank": "mastery_check",
+            "specSha256": "9d6240add439cb6b335e3b51a6010d3396f5ac139d8839ee7f66a019950cc152"
+          },
+          {
+            "id": "U03-B19-C15",
+            "code": "PHY7-U03-S04-M10",
+            "skill": "S04",
+            "bank": "mastery_check",
+            "specSha256": "b02e8b946361f2672b15b84246fa634ca4e405b3fb9bdcd6e31841c07b471c2b"
+          },
+          {
+            "id": "U03-B19-C16",
+            "code": "PHY7-U03-S05-M04",
+            "skill": "S05",
+            "bank": "mastery_check",
+            "specSha256": "1d2606c6cc8780c925a89da243d4060084d508804a2aadedd62a176590ecf61f"
+          },
+          {
+            "id": "U03-B19-C17",
+            "code": "PHY7-U03-S06-M05",
+            "skill": "S06",
+            "bank": "mastery_check",
+            "specSha256": "b01de9c92dfa3b700203a0aea8cfe4cd6c44f2209508f2752cd3cba226cec03c"
+          },
+          {
+            "id": "U03-B19-C18",
+            "code": "PHY7-U03-S06-M06",
+            "skill": "S06",
+            "bank": "mastery_check",
+            "specSha256": "5546ca16c556eff3ab262a8f3d3b10fcfbe79af6d41038f559bf1e6bbc918465"
+          },
+          {
+            "id": "U03-B19-C19",
+            "code": "PHY7-U03-S06-M07",
+            "skill": "S06",
+            "bank": "mastery_check",
+            "specSha256": "df5fac2bad370e2ad04d644f05b9181bffe2fef59da0902d34e8588296dd798d"
+          },
+          {
+            "id": "U03-B19-C20",
+            "code": "PHY7-U03-S07-M07",
+            "skill": "S07",
+            "bank": "mastery_check",
+            "specSha256": "96961fc3f8e42f9c4f5b82e92e02ba160c0e6d6c3046e02c9b642405cea044cc"
+          },
+          {
+            "id": "U03-B19-C21",
+            "code": "PHY7-U03-S07-M08",
+            "skill": "S07",
+            "bank": "mastery_check",
+            "specSha256": "b16be296a1321c0c6308103a160831426a0e87688d8c17722c48785bd708b126"
+          },
+          {
+            "id": "U03-B19-C22",
+            "code": "PHY7-U03-S07-M09",
+            "skill": "S07",
+            "bank": "mastery_check",
+            "specSha256": "6255c4dc2bdc67fde07f7f7c4e1944fc0c933e68f643dc3f221ad0b9b0128e22"
+          },
+          {
+            "id": "U03-B19-C23",
+            "code": "PHY7-U03-S07-M10",
+            "skill": "S07",
+            "bank": "mastery_check",
+            "specSha256": "374304f350b4d2c61d399ff375f82841d1ccb6efdbda043fb699642abb8e5bff"
+          },
+          {
+            "id": "U03-B19-C24",
+            "code": "PHY7-U03-S08-M04",
+            "skill": "S08",
+            "bank": "mastery_check",
+            "specSha256": "98fe29de0a4f22db2cfff729ca207d6a6c57100db2d8bd0ce7d01970e2b28c74"
+          }
+        ]
+      }
+    ],
+    "limits": "Exactly 24 remaining Mastery drafts and necessary definitions. No allocation, human approval, SME/exposure waiver, schema/runtime changes or Chapter III activation."
+  },
+  "corpusSha256": "de95f46476ab0f2e5618b057d426b0db7c21928741fb1e7f257a788995951737",
+  "corpusCounts": {
+    "items": 597,
+    "item_options": 1780,
+    "item_versions": 475,
+    "item_answer_keys": 597,
+    "item_families": 375,
+    "item_templates": 375,
+    "misconceptions": 554,
+    "skill_remediation_guides": 10,
+    "remediation_guide_versions": 323,
+    "item_misconception_mappings": 1250,
+    "item_template_remediation_guides": 146,
+    "remediation_guide_authoring_versions": 592,
+    "skills": 27,
+    "skill_outcomes": 31,
+    "assessment_forms": 9,
+    "assessment_pools": 7,
+    "learning_outcomes": 19,
+    "curriculum_releases": 4,
+    "assessment_form_items": 160,
+    "assessment_pool_items": 472,
+    "item_curriculum_scopes": 597,
+    "curriculum_release_skills": 26,
+    "curriculum_source_documents": 3,
+    "curriculum_release_gate_checks": 21,
+    "curriculum_release_item_families": 374,
+    "skill_curriculum_reconciliations": 26,
+    "skill_outcome_curriculum_mappings": 31,
+    "item_family_curriculum_reconciliations": 375
+  },
+  "corpusReconstruction": {
+    "base": "chapter3-batches17-18/comparison-corpus.json",
+    "batch16CommittedReadback": "chapter3-batches17-18/committed-readback-catalogue.json",
+    "freshMetadataSha256": "b530ff25df8307cde719148579913da726ff29b22b3a27ee87e612d39f38a421",
+    "basis": "All 39 live fingerprints exactly match the preceding final checkpoint. Merge Batches17–18 immutable saved rows and fresh family/scope/release links by full primary/composite identity. All 28 corpus table counts match live state. No previously reviewed content changed."
+  },
+  "sources": {
+    "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "programmeExtractSha256": "abd4666dcd0dcde3a38b9bb3072cc31e0ae862a7adbfb9f8b8f4b1a6ce6c7b45",
+    "sourceRegistrations": [
+      {
+        "id": "9ad48ba8-7541-408b-ba27-401efdaa6eef",
+        "notes": "ARLIS official incorporation. The current incorporated revision is in force from 22 May 2026.",
+        "grade_id": null,
+        "title_en": "Armenian General Education State Standard",
+        "title_hy": "Հանրակրթության պետական չափորոշիչ",
+        "adopted_on": "2010-04-08",
+        "created_at": "2026-09-18T07:51:20.30593+00:00",
+        "source_key": "am_general_education_standard_439n_699n",
+        "subject_id": null,
+        "updated_at": "2026-09-18T07:51:20.30593+00:00",
+        "verified_at": "2026-09-18T07:51:20.30593+00:00",
+        "verified_by": null,
+        "authority_id": "69998553-4fc8-4c1a-a83c-dd67b040d03e",
+        "effective_to": null,
+        "official_url": "https://www.arlis.am/hy/acts/225446",
+        "source_class": "normative",
+        "document_type": "national_framework",
+        "version_label": "Current official incorporation, amended 21 May 2026 by N 699-Ն",
+        "effective_from": "2026-05-22",
+        "revision_status": "current",
+        "legal_identifier": "N 439-Ն",
+        "verification_status": "verified",
+        "supersedes_document_id": null,
+        "current_amendment_identifier": "N 699-Ն",
+        "current_revision_published_on": "2026-05-21"
+      },
+      {
+        "id": "2bc14d9b-ff99-4bba-af7c-35df70255c49",
+        "notes": "ARLIS amendment record containing the current full appendix. The base order is N 42-Ն; N 37-Ն replaces its appendix.",
+        "grade_id": null,
+        "title_en": "Physics subject standard for Grades 7-12",
+        "title_hy": "«Ֆիզիկա» առարկայի 7-12-րդ դասարանների առարկայական չափորոշիչ",
+        "adopted_on": "2023-03-30",
+        "created_at": "2026-09-18T07:51:20.30593+00:00",
+        "source_key": "am_physics_standard_42n_37n",
+        "subject_id": "6e43ca6d-c7d5-44b5-98e9-2bb5fdccb7d0",
+        "updated_at": "2026-09-18T07:51:20.30593+00:00",
+        "verified_at": "2026-09-18T07:51:20.30593+00:00",
+        "verified_by": null,
+        "authority_id": "eb29fb45-9668-445b-a2dd-dc70ad207d60",
+        "effective_to": null,
+        "official_url": "https://www.arlis.am/hy/acts/229259",
+        "source_class": "normative",
+        "document_type": "subject_standard",
+        "version_label": "N 42-Ն with the appendix replaced by N 37-Ն, effective 14 August 2026",
+        "effective_from": "2026-08-14",
+        "revision_status": "current",
+        "legal_identifier": "N 42-Ն",
+        "verification_status": "verified",
+        "supersedes_document_id": null,
+        "current_amendment_identifier": "N 37-Ն",
+        "current_revision_published_on": "2026-08-13"
+      },
+      {
+        "id": "7d0c7140-3103-4ded-a670-440ff7a10ebe",
+        "notes": "ARLIS official incorporation for the Grades 7-12 Physics programmes; this row records the Grade 7 applicability.",
+        "grade_id": "7c8e33b7-0927-4820-83ca-59d88603ccc7",
+        "title_en": "Grade 7 Physics programme",
+        "title_hy": "«Ֆիզիկա» առարկայի 7-րդ դասարանի ծրագիր",
+        "adopted_on": "2024-05-07",
+        "created_at": "2026-09-18T07:51:20.30593+00:00",
+        "source_key": "am_physics_grade7_programme_40n_36n",
+        "subject_id": "6e43ca6d-c7d5-44b5-98e9-2bb5fdccb7d0",
+        "updated_at": "2026-09-18T07:51:20.30593+00:00",
+        "verified_at": "2026-09-18T07:51:20.30593+00:00",
+        "verified_by": null,
+        "authority_id": "eb29fb45-9668-445b-a2dd-dc70ad207d60",
+        "effective_to": null,
+        "official_url": "https://www.arlis.am/hy/acts/229331",
+        "source_class": "normative",
+        "document_type": "grade_programme",
+        "version_label": "N 40-Ն as amended and reissued by N 36-Ն, effective 14 August 2026",
+        "effective_from": "2026-08-14",
+        "revision_status": "current",
+        "legal_identifier": "N 40-Ն",
+        "verification_status": "verified",
+        "supersedes_document_id": null,
+        "current_amendment_identifier": "N 36-Ն",
+        "current_revision_published_on": "2026-08-13"
+      }
+    ]
+  },
+  "scope": "All 597 current items, 475 immutable versions, 156 current guides, 323 runtime and 592 authoring guide versions indexed. All 144 current Chapter III items and related Chapter I/II skill banks included. The 59 distinct historical item bundles and 241 guide bundles remain unchanged. All 80 Chapter III practice guides count as exposed. All 276 new candidate pairs, including 192 across internal eight-item groups, assessed.",
+  "exposure": "Chapter III remains inactive with no pool/form memberships; unchanged learner/exposure fingerprints carry prior aggregate evidence. Historical private-PR/Git artifact exposure limitation remains open. No historical nonexposure or empirical parallel-form equivalence claimed.",
+  "sourceAndLanguageReview": {
+    "prompts": 24,
+    "options": 96,
+    "explanations": 24,
+    "newDefinitions": 58,
+    "hints": 0,
+    "naturalArmenianAuthorCheck": true,
+    "physicsCheckSeparate": true,
+    "mathConstraintChecks": 24,
+    "mappingCorrection": "Three initially proposed existing mappings were too narrow for the new error; replaced with precise draft definitions. All reused definitions read in full. One repeated Armenian phrase corrected. The laboratory timer numbers avoid copying the exposed worked example while retaining the distinct internal-clock-omission interpretation. No existing definition changed.",
+    "bookTerms": [
+      "հաշվարկման մարմին",
+      "հետագիծ",
+      "անցած ճանապարհ",
+      "հավասարաչափ շարժում",
+      "ժամանակամիջոց"
+    ],
+    "limits": "Author review only; not independent native-speaker/physics-specialist certification."
+  },
+  "summary": {
+    "assessed": 24,
+    "retained": 24,
+    "protectedParallel": 24,
+    "independentNewReasoningCoverage": 0,
+    "qualifiedForAllocation": 0,
+    "newGuides": 0,
+    "newDefinitions": 58,
+    "pairs": 276,
+    "withinInternalGroupPairs": 84,
+    "crossInternalGroupPairs": 192
+  },
+  "planningAfter": {
+    "questions": 168,
+    "practice": 80,
+    "diagnostic": 32,
+    "mastery": 56,
+    "approvedBefore": 120,
+    "pendingQuestionQueue": 48,
+    "pendingDefinitionQueue": 101,
+    "remainingDiagnostic": 0,
+    "remainingMastery": 0,
+    "contract": "approved_v2_implemented",
+    "diagnosticPerFormDistribution": [
+      2,
+      1,
+      3,
+      3,
+      1,
+      2,
+      3,
+      1
+    ],
+    "qualifiedForms": 0
+  },
+  "handoff": "Restricted evidence durable and sanitized manifest/hash committed before DML. Exact 39-table guards at rehearsal and commit; evaluator source replay and independent saved readback. No human approvals, release, allocations or core/runtime changes.",
+  "restrictedEvidence": {
+    "archive": "HaiEdu-Chapter-III-Batch-19-Restricted-Evidence.zip",
+    "sha256": "7ccd32e1050d140a4e7182801ac3559b32e83a891a09fa0e0ced8dda64573034",
+    "members": 26,
+    "comparisonSha256": "68c0e2cedde56e7cb8efcb2493384feee4bab6cfd120ae7569e3b59838cc2eef",
+    "specificationsSha256": "0bc6dafac12aa944cf1cb9ffe2242b0f062ddec729f79921b223d820c7435520",
+    "libraryFileId": "libfile_68913546a9e08191a6bf1b7f1537154e",
+    "libraryVersion": 1,
+    "boundary": "Answer-bearing content, semantic pair judgments and protected neighbors retained only in restricted evidence."
+  },
+  "candidateHashes": [
+    {
+      "code": "PHY7-U03-S01-M05",
+      "specSha256": "e516586471b4637516850b42a37e16fa6939ed955ebed75c1b9a9ea6824963e5",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S01-M06",
+      "specSha256": "5e2b736c01f0a7c65ba3aa8e77b7556b61f77f7dfe882e854e069477a4056439",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S01-M07",
+      "specSha256": "71a53aa478e0ad3a90449e926970263df679dc9dc5aeff048e271cf7323ffe74",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S02-M04",
+      "specSha256": "15d70208d24c8a692999d2ad41cedb6635e30f5eafe732aab7755a20bdfa849a",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S03-M06",
+      "specSha256": "168f3345472f93380d8e3676fec2c37f6557f3343737a2bcbad3078a6ee67d1a",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S03-M07",
+      "specSha256": "a010824fee4e14bfa8cd4b6ef19b7ef685ce3e5e60b372cd345be61e1fc9ba75",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S03-M08",
+      "specSha256": "a68d7e487161289b42163024dd6fb05d27edb040f2333602d097af91c32789e4",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S03-M09",
+      "specSha256": "badeec1e1adc99583ef8bd499152737e6de3d5903dcd85b3af66c24f782d566b",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S03-M10",
+      "specSha256": "a20ac4a8a23280f85f85f8c9e01c82b3666e38e7cfb0671b070dfd6ab5400fcd",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S04-M05",
+      "specSha256": "946ff7415be9d5cb48ddd15cdde2f4552cda5fccb743621edf79cfeaad2e561d",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S04-M06",
+      "specSha256": "1d20ca529409c09304a736fcd7342719a213dee0a80a2ffaa9ce4bdb98b25338",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S04-M07",
+      "specSha256": "a0b90ceb297ff2fa4e4210d9456dd94f9dcaf915fee4e56a7e0268a52b4a9f73",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S04-M08",
+      "specSha256": "af83bb252f2d24ee77d3ca865e892c40213464302b56d69f95d9f369181e5054",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S04-M09",
+      "specSha256": "9d6240add439cb6b335e3b51a6010d3396f5ac139d8839ee7f66a019950cc152",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S04-M10",
+      "specSha256": "b02e8b946361f2672b15b84246fa634ca4e405b3fb9bdcd6e31841c07b471c2b",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S05-M04",
+      "specSha256": "1d2606c6cc8780c925a89da243d4060084d508804a2aadedd62a176590ecf61f",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S06-M05",
+      "specSha256": "b01de9c92dfa3b700203a0aea8cfe4cd6c44f2209508f2752cd3cba226cec03c",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S06-M06",
+      "specSha256": "5546ca16c556eff3ab262a8f3d3b10fcfbe79af6d41038f559bf1e6bbc918465",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S06-M07",
+      "specSha256": "df5fac2bad370e2ad04d644f05b9181bffe2fef59da0902d34e8588296dd798d",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S07-M07",
+      "specSha256": "96961fc3f8e42f9c4f5b82e92e02ba160c0e6d6c3046e02c9b642405cea044cc",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S07-M08",
+      "specSha256": "b16be296a1321c0c6308103a160831426a0e87688d8c17722c48785bd708b126",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S07-M09",
+      "specSha256": "6255c4dc2bdc67fde07f7f7c4e1944fc0c933e68f643dc3f221ad0b9b0128e22",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S07-M10",
+      "specSha256": "374304f350b4d2c61d399ff375f82841d1ccb6efdbda043fb699642abb8e5bff",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    },
+    {
+      "code": "PHY7-U03-S08-M04",
+      "specSha256": "98fe29de0a4f22db2cfff729ca207d6a6c57100db2d8bd0ce7d01970e2b28c74",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "qualifiedForAllocation": false
+    }
+  ]
+}
