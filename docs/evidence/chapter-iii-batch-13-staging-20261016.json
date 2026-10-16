@@ -1,0 +1,548 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sprint": "15C.16",
+  "roadmap": "3.80",
+  "sourceMain": "18c02106d0d9ab68d6a00721b84db737eb75f9e3",
+  "preparedComparisonCommit": "78fd763a85e2eeb7e69499f8500f82f21926d5c5",
+  "observedAt": "2026-10-16T06:18:33.325884+00:00",
+  "summary": {
+    "questionsAdded": 8,
+    "definitionsAdded": 9,
+    "guidesAdded": 0,
+    "qaPasses": 8,
+    "qaErrors": 0,
+    "qaWarnings": 0,
+    "humanApprovalsCreated": 0,
+    "preservationScopes": 39,
+    "priorRowsPreserved": true,
+    "chapterQuestions": 104,
+    "approved": 96,
+    "awaitingReview": 8,
+    "practice": 80,
+    "diagnostic": 16,
+    "mastery": 8,
+    "guidesPublished": 80,
+    "definitionsActive": 206,
+    "definitionsDraft": 9,
+    "qualifiedAllocations": 0,
+    "remainingDiagnostic": 16,
+    "remainingMastery": 48
+  },
+  "exactReadback": {
+    "promptsOptionsKeysMappingsSnapshots": true,
+    "specificationsSha256": "b3518562135d2c4e758e54e16672d5fbbc4b327e165c998d896bc058d8c3875e",
+    "committedCatalogueSha256": "87b84f4fcbfe6f82d437a55af4824ea0e88e9e0f4e3f834df366cc9a20a6de03"
+  },
+  "qa": {
+    "method": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "deployedVersion": 11,
+    "results": [
+      {
+        "code": "PHY7-U03-S01-D02",
+        "version": 1,
+        "fingerprint": "3640f05bccf3cda467b7ca19ade619a7",
+        "passed": true,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "code": "PHY7-U03-S03-D02",
+        "version": 1,
+        "fingerprint": "40fd50e16f04c4d54d2d3f41f1940c83",
+        "passed": true,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "code": "PHY7-U03-S03-D03",
+        "version": 1,
+        "fingerprint": "93c928729ef33f580fd847ef9396f7dd",
+        "passed": true,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "code": "PHY7-U03-S04-D02",
+        "version": 1,
+        "fingerprint": "9b3647641aa9b179b7154489f17dae4e",
+        "passed": true,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "code": "PHY7-U03-S04-D03",
+        "version": 1,
+        "fingerprint": "9d67b38645a7de607dab7de8232485d4",
+        "passed": true,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "code": "PHY7-U03-S06-D02",
+        "version": 1,
+        "fingerprint": "af4e7f474e8c856940e9105926fe7bb0",
+        "passed": true,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "code": "PHY7-U03-S07-D02",
+        "version": 1,
+        "fingerprint": "c3497b8d222d6810b1704f36e9de5e35",
+        "passed": true,
+        "errors": 0,
+        "warnings": 0
+      },
+      {
+        "code": "PHY7-U03-S07-D03",
+        "version": 1,
+        "fingerprint": "3e8ebb136c2380aa4c5eca457bfddceb",
+        "passed": true,
+        "errors": 0,
+        "warnings": 0
+      }
+    ]
+  },
+  "rollback": {
+    "ran": true,
+    "all39BaselineFingerprintsUnchanged": true,
+    "questionsPassed": 8,
+    "guidesAdded": 0,
+    "exactSpecsSnapshotsKeysMappings": true
+  },
+  "preservationChecks": [
+    {
+      "table": "assessment_blueprints",
+      "beforeCount": 11,
+      "finalCount": 11,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "assessment_form_items",
+      "beforeCount": 160,
+      "finalCount": 160,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "assessment_forms",
+      "beforeCount": 9,
+      "finalCount": 9,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "assessment_policy_bindings",
+      "beforeCount": 4,
+      "finalCount": 4,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "assessment_pool_items",
+      "beforeCount": 472,
+      "finalCount": 472,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "assessment_pools",
+      "beforeCount": 7,
+      "finalCount": 7,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "attempts",
+      "beforeCount": 42,
+      "finalCount": 42,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "chapter_review_item_exposures",
+      "beforeCount": 0,
+      "finalCount": 0,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "curriculum_release_gate_checks",
+      "beforeCount": 21,
+      "finalCount": 21,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "curriculum_release_item_families",
+      "beforeCount": 326,
+      "finalCount": 334,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "curriculum_release_skills",
+      "beforeCount": 26,
+      "finalCount": 26,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "curriculum_release_units",
+      "beforeCount": 4,
+      "finalCount": 4,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "curriculum_releases",
+      "beforeCount": 4,
+      "finalCount": 4,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "curriculum_source_documents",
+      "beforeCount": 3,
+      "finalCount": 3,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_answer_keys",
+      "beforeCount": 549,
+      "finalCount": 557,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_curriculum_scopes",
+      "beforeCount": 549,
+      "finalCount": 557,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_families",
+      "beforeCount": 327,
+      "finalCount": 335,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_family_curriculum_reconciliations",
+      "beforeCount": 327,
+      "finalCount": 335,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_misconception_mappings",
+      "beforeCount": 1106,
+      "finalCount": 1130,
+      "expectedDelta": 24,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_options",
+      "beforeCount": 1588,
+      "finalCount": 1620,
+      "expectedDelta": 32,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_qa_runs",
+      "beforeCount": 828,
+      "finalCount": 836,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_reviews",
+      "beforeCount": 820,
+      "finalCount": 820,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_template_remediation_guides",
+      "beforeCount": 146,
+      "finalCount": 146,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_templates",
+      "beforeCount": 327,
+      "finalCount": 335,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "item_versions",
+      "beforeCount": 427,
+      "finalCount": 435,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "items",
+      "beforeCount": 549,
+      "finalCount": 557,
+      "expectedDelta": 8,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "learning_model_runtime_bindings",
+      "beforeCount": 2,
+      "finalCount": 2,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "learning_outcomes",
+      "beforeCount": 19,
+      "finalCount": 19,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "learning_session_items",
+      "beforeCount": 96,
+      "finalCount": 96,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "misconception_review_events",
+      "beforeCount": 471,
+      "finalCount": 471,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "misconceptions",
+      "beforeCount": 479,
+      "finalCount": 488,
+      "expectedDelta": 9,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "remediation_guide_authoring_versions",
+      "beforeCount": 592,
+      "finalCount": 592,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "remediation_guide_versions",
+      "beforeCount": 323,
+      "finalCount": 323,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "skill_curriculum_reconciliations",
+      "beforeCount": 26,
+      "finalCount": 26,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "skill_outcome_curriculum_mappings",
+      "beforeCount": 31,
+      "finalCount": 31,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "skill_outcomes",
+      "beforeCount": 31,
+      "finalCount": 31,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "skill_remediation_guides",
+      "beforeCount": 10,
+      "finalCount": 10,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "skills",
+      "beforeCount": 27,
+      "finalCount": 27,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    },
+    {
+      "table": "student_item_exposure_events",
+      "beforeCount": 44,
+      "finalCount": 44,
+      "expectedDelta": 0,
+      "passed": true,
+      "originalRowsPreserved": "Guarded transaction compares every original full-row hash; QA inserts exactly8 system rows."
+    }
+  ],
+  "inventory": {
+    "pools": 0,
+    "guides": [
+      {
+        "count": 80,
+        "status": "published"
+      }
+    ],
+    "bySkill": [
+      {
+        "code": "PHY7-U03-S01",
+        "draft": 1,
+        "approved": 12,
+        "questions": 13
+      },
+      {
+        "code": "PHY7-U03-S02",
+        "draft": 0,
+        "approved": 8,
+        "questions": 8
+      },
+      {
+        "code": "PHY7-U03-S03",
+        "draft": 2,
+        "approved": 14,
+        "questions": 16
+      },
+      {
+        "code": "PHY7-U03-S04",
+        "draft": 2,
+        "approved": 12,
+        "questions": 14
+      },
+      {
+        "code": "PHY7-U03-S05",
+        "draft": 0,
+        "approved": 10,
+        "questions": 10
+      },
+      {
+        "code": "PHY7-U03-S06",
+        "draft": 1,
+        "approved": 12,
+        "questions": 13
+      },
+      {
+        "code": "PHY7-U03-S07",
+        "draft": 2,
+        "approved": 16,
+        "questions": 18
+      },
+      {
+        "code": "PHY7-U03-S08",
+        "draft": 0,
+        "approved": 12,
+        "questions": 12
+      }
+    ],
+    "releases": [
+      {
+        "id": "9f93b58d-e1a2-49ba-ba96-89e76c697884",
+        "status": "legacy",
+        "release_key": "physics7_u01_legacy_pre_11k",
+        "activated_at": "2026-09-19T06:45:24.76571+00:00"
+      },
+      {
+        "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+        "status": "pilot",
+        "release_key": "physics7_u01_2026_08_14_pilot_r1",
+        "activated_at": "2026-09-19T06:45:24.76571+00:00"
+      },
+      {
+        "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "status": "pilot",
+        "release_key": "physics7_u02_2026_08_14_pilot_r2",
+        "activated_at": "2026-10-13T17:38:42.811795+00:00"
+      },
+      {
+        "id": "b626705a-a355-5937-b20b-38550dc5b0fe",
+        "status": "draft",
+        "release_key": "physics7_u03_2026_08_14_draft_r3",
+        "activated_at": null
+      }
+    ],
+    "observedAt": "2026-10-16T06:18:33.325884+00:00",
+    "definitions": [
+      {
+        "count": 9,
+        "status": "draft"
+      },
+      {
+        "count": 206,
+        "status": "active"
+      }
+    ],
+    "formMemberships": 0,
+    "latestAuthoring": [
+      {
+        "count": 80,
+        "lifecycle_status": "published"
+      }
+    ],
+    "poolMemberships": 0
+  },
+  "limits": [
+    "Draft review handoff, not learner release.",
+    "No independent new reasoning coverage or qualified form capacity.",
+    "Human review, SME/exposure, disjoint-form qualification and release gates remain open.",
+    "No authenticated live Edge/UI QA claim; exact deployed evaluator replay and independent database readback."
+  ],
+  "restrictedEvidence": {
+    "archive": "HaiEdu-Chapter-III-Batch-13-Restricted-Evidence.zip",
+    "sha256": "36c246fc8bceb40279ea0ec3fbeb748cbaa1c8b0a69e95faa7f6b2ebfd3f97d7",
+    "members": 40,
+    "comparisonSha256": "e26ac5016161fd2a0ba2efbd145dafd4ebc4c2d77e294133e9037785335b1da5",
+    "specificationsSha256": "b3518562135d2c4e758e54e16672d5fbbc4b327e165c998d896bc058d8c3875e",
+    "libraryFileId": "libfile_1bff849f3e8081919f06daf08b629203",
+    "libraryVersion": 1
+  }
+}

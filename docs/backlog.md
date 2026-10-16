@@ -253,6 +253,17 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III Diagnostic batch 13 — 15C.16, 2026-10-16
+
+- [x] Select and record the bounded eight-slot Diagnostic manifest authorized by the next-sprint direction.
+- [x] Compare all applicable current/history/protected content and exposed guides, including all 28 new pairs; separately check textbook physics and natural Armenian.
+- [x] Stage eight drafts and nine definitions; exact saved-content QA 8/8, rollback and 39 preservation scopes pass. No new learner hints or guides.
+- [x] Preserve all 96 prior approvals, all 80 published guides, learner evidence, Chapter I/II pilots and inactive/unallocated Chapter III.
+- [ ] Review eight current v1 questions and nine draft definitions on the site.
+- [ ] Select the next bounded batch; remaining numerical gaps are 16 Diagnostic and 48 Mastery. Keep SME/exposure, disjoint-form qualification and release gates separate.
+
+[Batch 13 evidence and review](chapter-iii-batch-13-staging.md).
+
 ## Chapter III review closure and assessment proposal — 15C.13R–15C.14, 2026-10-15
 
 - [x] Verify all 96 current-version human approvals and QA, all 80 guide publications/snapshots and 206 approved definition snapshots.
@@ -262,7 +273,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Implement the accepted versioned subject-neutral contract and local scoring/readiness/retry/reporting regressions.
 - [x] Merge implementation, pass CI, deploy and read back nine SQL functions and all 14 affected Edge bundles; record verified runtime provenance.
 - [x] Complete 15C.15 CI, deployment/parity and authenticated production preservation checks; align merged documentation and sync Notion to the merged source commit. [Release evidence](evidence/assessment-policy-v2-release-20261015.json).
-- [ ] Decide the next bounded authoring manifest; retain independent SME/exposure, form qualification and release gates.
+- [x] The next bounded manifest was selected and delivered as 15C.16 / Batch 13. Further authoring and qualification follow the current section above.
 
 [Review closure](chapter-iii-batches-06-12-review.md) · [Concrete proposal](chapter-iii-assessment-contract-proposal.md).
 
@@ -273,8 +284,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Stage both eight-question batches with 29 definitions and no new learner guides/hints; exact readback, QA 16/16 and 39 preservation scopes per batch pass.
 - [x] Preserve 80 practice questions, all existing approvals, all guides, Chapter I/II pilots and inactive/unallocated Chapter III state.
 - [x] Ordinary content review verified complete under 15C.13R; all current versions are approved/published.
-- [ ] Settle Chapter III assessment counts/weights, supporting/additional-skill readiness and pass rules before allocation; independent SME/exposure and disjoint-form qualification remain required.
-- [ ] Decide the next bounded authoring scope after this 16-candidate handoff;24 Diagnostic and 48 Mastery slots remain un-authored against the planning budget.
+- [x] Assessment counts, reporting groups, readiness and pass rules approved under 15C.14 and implemented under 15C.15. Independent SME/exposure and disjoint-form qualification remain open.
+- [x] Next bounded scope delivered as 15C.16 / Batch 13. The dated 16-candidate checkpoint is superseded by 104 current questions; 16 Diagnostic and 48 Mastery slots remain un-authored.
 
 [Batches 11–12 staging](chapter-iii-batches-11-12-staging.md).
 
@@ -286,7 +297,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Rehearse and stage both eight-question batches separately; exact saved-content/guide checks and 39 preservation scopes pass for each.
 - [x] Complete 80/80 planned practice slots: 16 new questions, 16 guides and 40 definitions.
 - [x] Ordinary content review verified complete under 15C.13R; all current versions are approved/published.
-- [ ] Agree the assessment/readiness contract before allocation. The later bounded 16-candidate authoring instruction supersedes the earlier authoring sequence only; SME/exposure/release gates remain open.
+- [x] Assessment/readiness contract agreed under 15C.14 and implemented under 15C.15; SME/exposure/release gates remain open.
 
 [Batches 09–10 staging](chapter-iii-batches-09-10-staging.md).
 
@@ -354,7 +365,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Verify 8/8 question QA, 8/8 guide structural checks and all 39 preservation scopes.
 - [x] Human site review of eight new questions, eight new guides and nineteen definitions; exact current-version approval verified under 15C.4R.
 - [x] Authenticated publication of S04-I01 exact correction verified: authoring v7 / runtime v3. Earlier sign-out is superseded.
-- [ ] Continue remaining practice and prepare the explicit assessment/readiness contract; preserve specialist/release gates.
+- [x] All 80 practice questions reviewed under 15C.13R; contract approved/implemented under 15C.14–15C.15. Specialist/release gates remain open.
 
 [Batch 03 and guide correction](chapter-iii-batch-03-staging.md).
 
@@ -367,7 +378,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Human site review of both batches: 16 questions, 16 guides and 33 definitions; verified current approvals and publication snapshots on 2026-10-14.
 - [x] Compare all eight edited guides and preserve the unchanged 16 question versions and 33 definitions.
 - [x] John approved the exact S04-I01 clarification in chat; save it as authoring v5 under 15C.4. Authenticated site publication is verified under 15C.4R above.
-- [ ] Chapter III assessment/readiness contract, protected capacity, specialist and release decisions.
+- [x] Chapter III assessment/readiness contract approved and implemented under 15C.14–15C.15.
+- [ ] Qualify protected capacity and complete independent specialist/exposure and release gates.
 
 [Verified staging](chapter-iii-batch-02-staging.md).
 
@@ -378,7 +390,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Prepare the draft foundation and eight questions, eight guides and 19 definitions; rollback and exact-source QA pass.
 - [x] Merge/apply the Chapter III foundation; commit/read back the guarded practice package, record QA 8/8, verify three production image hashes, and reconcile the connector-assigned migration version.
 - [x] Complete authenticated content workflow and review the newly authored guides/definitions on site; verified under 15C.3R.
-- [ ] Specify Chapter III readiness/pass contract and establish protected capacity; specialist/release gates remain open.
+- [x] Readiness/pass contract approved and implemented under 15C.14–15C.15.
+- [ ] Establish qualified protected capacity; specialist/release gates remain open.
 
 [Staging](chapter-iii-batch-01-staging.md). Chapter II subsequently activated through the owner-authorized browser route; authenticated production acceptance passed 91/91. [Activation evidence](evidence/chapter-ii-pilot-activation-20261013.json).
 
