@@ -151,14 +151,22 @@
   },
   "archive": {
     "libraryFileId": "libfile_8c0785218ae08191a14c3d49bd4f20eb",
-    "version": 0,
+    "version": 1,
+    "archive": "HaiEdu-Chapter-III-Batch-14-Restricted-Evidence.zip",
+    "sha256": "69ec093e38058c243dbe54a9f52e7dd892a23634e8f191b30779e5f3252423d5",
+    "members": 41,
+    "comparisonSha256": "277e6d9a68c5a031d5ece2314cb7642ea397aa3bf9e0d8513d0f93c7381e3caa",
+    "specificationsSha256": "382668a8f1d3bff756f3a27c0a122269fa6719a50461901f1614c43d56b3c736"
+  },
+  "disposition": "staged_and_technically_verified_human_review_pending",
+  "contentIncluded": false,
+  "qualifiedAllocationCapacity": 0,
+  "preparedArchive": {
     "archive": "HaiEdu-Chapter-III-Batch-14-Restricted-Evidence.zip",
     "sha256": "8cefd3ca2d15eee3f3d78f5889ef3c370820069cf5a1d5905564c8a1017d8494",
     "members": 22,
     "comparisonSha256": "277e6d9a68c5a031d5ece2314cb7642ea397aa3bf9e0d8513d0f93c7381e3caa",
     "specificationsSha256": "382668a8f1d3bff756f3a27c0a122269fa6719a50461901f1614c43d56b3c736"
   },
-  "disposition": "prepared_for_guarded_draft_staging",
-  "contentIncluded": false,
-  "qualifiedAllocationCapacity": 0
+  "preparedComparisonCommit": "99cb900c3d8286dc8b801ee941f425fda733b3a6"
 }

@@ -253,6 +253,17 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III Mastery batch 14 — 15C.17, 2026-10-16
+
+- [x] Select the owner-authorized eight-slot Mastery manifest: one M02 per S01–S08.
+- [x] Compare all applicable current/history/protected content and exposed guides, including all 28 new pairs; separately check textbook physics and natural Armenian.
+- [x] Stage eight drafts and 12 definitions; exact saved-content QA 8/8, rollback and 39 preservation scopes pass. No learner hints or guides added.
+- [x] Preserve all 104 prior questions, 96 approvals, 80 published guides, pending Batch 13 reviews, learner evidence, Chapter I/II pilots and inactive/unallocated Chapter III.
+- [ ] Review the combined queue: 16 questions and 21 definitions across Batches 13–14.
+- [ ] Select a further bounded batch; remaining numerical gaps are 16 Diagnostic and 40 Mastery. Keep SME/exposure, disjoint-form qualification and release gates separate.
+
+[Batch 14 evidence and review](chapter-iii-batch-14-staging.md).
+
 ## Chapter III Diagnostic batch 13 — 15C.16, 2026-10-16
 
 - [x] Select and record the bounded eight-slot Diagnostic manifest authorized by the next-sprint direction.
@@ -260,7 +271,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Stage eight drafts and nine definitions; exact saved-content QA 8/8, rollback and 39 preservation scopes pass. No new learner hints or guides.
 - [x] Preserve all 96 prior approvals, all 80 published guides, learner evidence, Chapter I/II pilots and inactive/unallocated Chapter III.
 - [ ] Review eight current v1 questions and nine draft definitions on the site.
-- [ ] Select the next bounded batch; remaining numerical gaps are 16 Diagnostic and 48 Mastery. Keep SME/exposure, disjoint-form qualification and release gates separate.
+- [x] Next bounded batch delivered as 15C.17 / Batch 14. Its current combined queue and numerical gaps are recorded above; Batch 13 ordinary review remains pending.
 
 [Batch 13 evidence and review](chapter-iii-batch-13-staging.md).
 
@@ -285,7 +296,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Preserve 80 practice questions, all existing approvals, all guides, Chapter I/II pilots and inactive/unallocated Chapter III state.
 - [x] Ordinary content review verified complete under 15C.13R; all current versions are approved/published.
 - [x] Assessment counts, reporting groups, readiness and pass rules approved under 15C.14 and implemented under 15C.15. Independent SME/exposure and disjoint-form qualification remain open.
-- [x] Next bounded scope delivered as 15C.16 / Batch 13. The dated 16-candidate checkpoint is superseded by 104 current questions; 16 Diagnostic and 48 Mastery slots remain un-authored.
+- [x] Next bounded scope delivered as 15C.16 / Batch 13. That checkpoint was superseded by Batch 13 and then Batch 14; see the current inventory and remaining budget above.
 
 [Batches 11–12 staging](chapter-iii-batches-11-12-staging.md).
 
