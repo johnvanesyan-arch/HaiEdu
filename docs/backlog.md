@@ -253,6 +253,17 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III Mastery batch 15 — 15C.18, 2026-10-16
+
+- [x] Select the owner-authorized eight-slot manifest: S01-M03, S03-M03/M04, S04-M03/M04, S06-M03 and S07-M03/M04.
+- [x] Compare applicable current/history/protected content and exposed guides, including all 28 new pairs; separately check textbook physics and natural Armenian.
+- [x] Stage eight drafts and 11 definitions; exact saved-content QA 8/8, rollback and 39 preservation scopes pass. No learner hints or guides added.
+- [x] Preserve all 112 prior questions, 96 approvals, 80 published guides, pending Batches 13–14 reviews, learner evidence, Chapter I/II pilots and inactive/unallocated Chapter III.
+- [ ] Review the combined queue: 24 questions and 32 definitions across Batches 13–15.
+- [ ] Select a further bounded batch; remaining numerical gaps are 16 Diagnostic and 32 Mastery. Keep SME/exposure, disjoint-form qualification and release gates separate.
+
+[Batch 15 evidence and review](chapter-iii-batch-15-staging.md).
+
 ## Chapter III Mastery batch 14 — 15C.17, 2026-10-16
 
 - [x] Select the owner-authorized eight-slot Mastery manifest: one M02 per S01–S08.
@@ -260,7 +271,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Stage eight drafts and 12 definitions; exact saved-content QA 8/8, rollback and 39 preservation scopes pass. No learner hints or guides added.
 - [x] Preserve all 104 prior questions, 96 approvals, 80 published guides, pending Batch 13 reviews, learner evidence, Chapter I/II pilots and inactive/unallocated Chapter III.
 - [ ] Review the combined queue: 16 questions and 21 definitions across Batches 13–14.
-- [ ] Select a further bounded batch; remaining numerical gaps are 16 Diagnostic and 40 Mastery. Keep SME/exposure, disjoint-form qualification and release gates separate.
+- [x] Next bounded batch delivered as 15C.18 / Batch 15. Its current combined queue and numerical gaps are recorded above; Batches 13–14 ordinary review remains pending.
 
 [Batch 14 evidence and review](chapter-iii-batch-14-staging.md).
 

@@ -151,14 +151,15 @@
   },
   "archive": {
     "libraryFileId": "libfile_87062eab441081918a72868e6b1bf040",
-    "version": 0,
+    "version": 1,
     "archive": "HaiEdu-Chapter-III-Batch-15-Restricted-Evidence.zip",
-    "sha256": "b4e48aa065be85e9dfbdd79948fea5b5c9d82be5b94d53ddfe5d7394aac5bbc8",
-    "members": 21,
+    "sha256": "f8dc2c8205f304947622ee9220f1cc64a12d78d17ca6ac14524041d082375ab7",
+    "members": 40,
     "comparisonSha256": "4ca110fd9f1f9bc0704e41e7b7dbfad269c5e600a7fda28e1d7c291bef7bef33",
     "specificationsSha256": "ace287f7b326a978a83b5a0c2af7a07dc2acfacf7f954981ecb25e592af66fa4"
   },
-  "disposition": "prepared_for_guarded_draft_staging",
+  "disposition": "staged_and_technically_verified_pending_human_review",
   "contentIncluded": false,
-  "qualifiedAllocationCapacity": 0
+  "qualifiedAllocationCapacity": 0,
+  "preparedComparisonCommit": "7b5621f2ebe14880dd9bdb319a590e6f0a9bc7c3"
 }
