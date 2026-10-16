@@ -1,0 +1,84 @@
+{
+  "sprint": "15C.24R",
+  "roadmap": "3.89",
+  "status": "ordinary_review_complete_independent_qualification_pending",
+  "observedAt": "2026-10-16T22:23:42.539201+00:00",
+  "verificationCompletedAt": "2026-10-16T22:24:14.535023+00:00",
+  "sourceMain": "e991581c5ee0d8e506bd55dea05b4133d612c949",
+  "inventory": {
+    "approvedCurrentQuestions": 168,
+    "publishedGuides": 80,
+    "activeDefinitions": 344,
+    "pendingOrdinaryReviews": 0
+  },
+  "reviewClosure": {
+    "exactV2QuestionApprovals": 2,
+    "activeNewDefinitions": 5,
+    "definitionAuditEvents": 5,
+    "allDefinitionEventsMfaAal2": true,
+    "learnerContentUnchanged": true,
+    "v1SnapshotsAndApprovalsPreserved": true,
+    "qaRecordsReusedUnchanged": true,
+    "allCurrentQuestionQaPass": 168,
+    "technicalErrors": 0,
+    "technicalWarnings": 0,
+    "sourceAndSemanticComparisonReused": true
+  },
+  "verification": {
+    "databaseWritesByCodex": 0,
+    "unchangedTablesDuringThisReadOnlyVerification": 39,
+    "unchangedTablesSinceStaging": 35,
+    "reviewRelatedTableDeltasSinceStaging": [
+      {
+        "table": "item_reviews",
+        "rowDelta": 2
+      },
+      {
+        "table": "items",
+        "rowDelta": 0
+      },
+      {
+        "table": "misconception_review_events",
+        "rowDelta": 5
+      },
+      {
+        "table": "misconceptions",
+        "rowDelta": 0
+      }
+    ]
+  },
+  "conditionalForms": {
+    "forms": 5,
+    "selectedDistinctItems": 80,
+    "reserves": 8,
+    "membershipsAndContentDigestsUnchanged": true,
+    "approvalBindingsRefreshed": 2,
+    "authorMandatoryOutcomeGaps": 0,
+    "qualifiedForms": 0,
+    "allocatedForms": 0
+  },
+  "nextGate": "Named independent Physics/source/Armenian and exposure/dependence review; allocate accepted exact-version forms only after qualification, then separately authorized release and production acceptance.",
+  "limits": [
+    "Ordinary approval and author coverage do not constitute independent qualification.",
+    "Historical exposure and cross-form/local-dependence decisions remain pending.",
+    "No empirical form equivalence or performed laboratory competence is established.",
+    "No Chapter III release authorization is inferred."
+  ],
+  "digests": {
+    "current-catalogue.json": "0e7262e7699bda02fb05edab99007b0370e918becc685e853d1f95889c797855",
+    "inventory.json": "6c44bd028650d04c22da9b25a9e42089b2140181dcb83e0c788dc47f6733cf53",
+    "state-before.json": "417ec11dbe27643c858a86376815616bd9f1e5b892cfc0172211cc78ca30ceb9",
+    "state-after.json": "cd7b69dcc5a57565c55b8929cf4257f04e1019466b95a5e66ed05f6516b0dd3d",
+    "conditional-forms-approved.json": "50a4614b3cc1ad9e77f2bbb23ef7365037eef31fdb8a963d60dcda396fe0b511",
+    "qualification-ledger-approved.json": "50b0918650e8ed23dcf8ae57a29e8f3c6fb6dfc80f83a5d867e10db1cc7ad03c",
+    "version-bindings-approved.json": "237af0a76edcb56d47542163cfea0e038643876e192f568fcfaeb680a3f35b49"
+  },
+  "restrictedEvidence": {
+    "libraryFileId": "libfile_938afc9c53308191a92f4e49517bd3cb",
+    "version": 2,
+    "filename": "HaiEdu-Chapter-III-Trajectory-Revisions-20261017.zip",
+    "sha256": "d0ed842cfa78b0d31ab2666292574ba3e12764fc43f8f31c29366286aa28ca75",
+    "bytes": 2179517,
+    "currentHandoffDirectory": "review-closure/"
+  }
+}
