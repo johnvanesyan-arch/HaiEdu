@@ -1,5 +1,7 @@
 # Chapter III Batch 14 — staging and verification
 
+**Ordinary review verified complete — 15C.18R, 2026-10-16:** all eight current questions and this batch’s definitions are human-approved, without content changes. [Review closure](chapter-iii-batches-13-15-review.md). Counts and pending statements below preserve the original staging checkpoint; see [current status](project-status.md).
+
 **2026-10-16 · Sprint 15C.17 · Roadmap 3.81 · Human review pending**
 
 Eight Mastery candidates, PHY7-U03-S01-M02 through S08-M02, and 12 misconception definitions are staged as new v1 drafts. All eight exact saved questions pass the deployed-v11 evaluator replay with zero errors and warnings. Independent database readback matches prompts, options, keys, mappings and immutable snapshots. This is saved-content technical verification, not authenticated live Edge or browser acceptance.

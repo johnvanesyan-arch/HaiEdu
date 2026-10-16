@@ -1,5 +1,7 @@
 # Chapter III Batch 13 — staging and verification
 
+**Ordinary review verified complete — 15C.18R, 2026-10-16:** all eight current questions and this batch’s definitions are human-approved, without content changes. [Review closure](chapter-iii-batches-13-15-review.md). Counts and pending statements below preserve the original staging checkpoint; see [current status](project-status.md).
+
 **2026-10-16 · Sprint 15C.16 · Roadmap 3.80**
 
 **Sprint 15C.16 is staged and technically verified:** eight new Chapter III Diagnostic drafts and nine draft definitions. Chapter III has **104 questions (96 approved, 8 awaiting review)**: 80 Practice, 16 Diagnostic and 8 Mastery candidates; 80 published guides and 215 definitions (206 active, 9 draft). [Batch 13 evidence and review](chapter-iii-batch-13-staging.md). The approved v2 assessment contract is implemented and production-verified. Chapter III remains inactive with zero qualified allocations; human review, SME/exposure, form qualification and release gates remain open.

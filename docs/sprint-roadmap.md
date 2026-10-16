@@ -1,10 +1,10 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
 
-**Roadmap version:** 3.82
+**Roadmap version:** 3.83
 **Updated:** 2026-10-16 (Asia/Yerevan)
 **Latest platform repair:** the shared guide-validator metadata correction is deployed as v11; all three bundle files read back exactly, 31 regressions and CI pass. Existing content and approvals are preserved. [Guide-validator repair evidence](evidence/remediation-guide-validator-metadata-fix-20261015.json). Earlier direct-read protection and reviewer approval repairs remain in force.
-**Sprint 15C.18 is staged and technically verified:** eight new Chapter III Mastery drafts across S01/S03/S04/S06/S07 and 11 draft definitions. Chapter III has **120 questions (96 approved, 24 awaiting review)**: 80 Practice, 16 Diagnostic and 24 Mastery candidates; 80 published guides and 238 definitions (206 active, 32 draft). [Batch 15 evidence and review](chapter-iii-batch-15-staging.md). Batches 13–14 review remains pending and can be combined with this batch. The approved v2 contract is implemented and production-verified. Chapter III remains inactive with zero qualified allocations; human review, SME/exposure, form qualification and release gates remain open.
+**Sprint 15C.19 is staged and technically verified:** eight new Chapter III Diagnostic drafts, one per S01–S08, and 13 draft definitions. Batches 13–15 ordinary review is verified complete under [15C.18R](chapter-iii-batches-13-15-review.md). Chapter III has **128 questions (120 approved, 8 awaiting review)**: 80 Practice, 24 Diagnostic and 24 Mastery candidates; 80 published guides and 251 definitions (238 active, 13 draft). [Batch 16 evidence and review](chapter-iii-batch-16-staging.md). The approved v2 contract remains implemented and production-verified. Chapter III is inactive with zero qualified allocations; new-content review, SME/exposure, form qualification and release gates remain open.
 **Current programme status:** See the authoritative [project status register](project-status.md). Sprints 11/11.5/12/12.5/14 and 15A are complete for their recorded scope; Sprint 13 is closed for sequencing with the external SME production gate open. Sprint 14 and 15B.12E live switching acceptance is complete; the authorized Chapter II provisional pilot is verified. Chapter II database migrations, production configuration and activation are complete; independent SME/production gates stay open. Sprints 16–26 remain planned in the sequence below.
 
 This file defines the canonical high-level sprint scope and sequence. [Project status](project-status.md) is the sole current delivery/gate register; [backlog](backlog.md) is the detailed implementation checklist. The overview mirrors that register. Dated execution records, content counts and pending-review statements below are historical checkpoints; later evidenced dispositions supersede them without rewriting their original observations.
@@ -1081,7 +1081,15 @@ All twelve S02 questions and all **40 authored Chapter II questions** are now ap
 
 **15B.14B / 15B.14C — implementation merged; database deployment blocked.** John directed “You can release Chapter II; we will do the specialist review later.” PR #206 merged the exact disjoint form allocation, governed configuration, runtime safeguards and chapter navigation. All five final CI jobs passed; the frontend is deployed. Two Supabase connector failures prevented the first migration from applying, as confirmed by readback. Database migrations, production rollback rehearsal, committed allocation/bindings, activation and authenticated chapter switching remain pending. Chapter I stays on its original active release; Chapter II remains draft and inactive. Independent SME and final production exposure qualification remain open, and the existing six pilot gates remain required. [Scope and evidence](chapter-ii-pilot-release.md) · [Deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json).
 
+### 15C.18R–15C.19 — Review closure and bounded Diagnostic batch 16
+
+**Sprint 15C.19 is staged and technically verified:** eight new Chapter III Diagnostic drafts, one per S01–S08, and 13 draft definitions. Batches 13–15 ordinary review is verified complete under [15C.18R](chapter-iii-batches-13-15-review.md). Chapter III has **128 questions (120 approved, 8 awaiting review)**: 80 Practice, 24 Diagnostic and 24 Mastery candidates; 80 published guides and 251 definitions (238 active, 13 draft). [Batch 16 evidence and review](chapter-iii-batch-16-staging.md). The approved v2 contract remains implemented and production-verified. Chapter III is inactive with zero qualified allocations; new-content review, SME/exposure, form qualification and release gates remain open.
+
+The live review closure verified 24 question approvals and 32 definition approvals without content changes. Eight new Diagnostic candidates were then compared against the full applicable current/history/guide/protected bank and all 28 new pairs. Exact saved-content QA passes 8/8, rollback and all 39 preservation scopes pass. Remaining numerical budget: 8 Diagnostic + 32 Mastery. No hints, guides, runtime changes, allocations or release activation were added.
+
 ### 15C.18 — Bounded Mastery batch 15
+
+**Historical staging checkpoint; ordinary review verified complete under 15C.18R.** The pending counts below preserve the original handoff; the current queue is recorded above.
 
 **2026-10-16 · Staging and technical verification complete.** **Sprint 15C.18 is staged and technically verified:** eight new Chapter III Mastery drafts across S01/S03/S04/S06/S07 and 11 draft definitions. Chapter III has **120 questions (96 approved, 24 awaiting review)**: 80 Practice, 16 Diagnostic and 24 Mastery candidates; 80 published guides and 238 definitions (206 active, 32 draft). [Batch 15 evidence and review](chapter-iii-batch-15-staging.md). Batches 13–14 review remains pending and can be combined with this batch. The approved v2 contract is implemented and production-verified. Chapter III remains inactive with zero qualified allocations; human review, SME/exposure, form qualification and release gates remain open.
 
@@ -1089,11 +1097,15 @@ All 28 within-batch pairs and applicable current/history/guide/protected neighbo
 
 ### 15C.17 — Bounded Mastery batch 14
 
+**Historical staging checkpoint; ordinary review verified complete under 15C.18R.** The pending counts below preserve the original handoff; the current queue is recorded above.
+
 **2026-10-16 · Staging and technical verification complete.** **Sprint 15C.17 is staged and technically verified:** eight new Chapter III Mastery drafts (one M02 per S01–S08) and 12 draft definitions. Chapter III has **112 questions (96 approved, 16 awaiting review)**: 80 Practice, 16 Diagnostic and 16 Mastery candidates; 80 published guides and 227 definitions (206 active, 21 draft). [Batch 14 evidence and review](chapter-iii-batch-14-staging.md). Batch 13 review remains pending. The approved v2 contract is implemented and production-verified. Chapter III remains inactive with zero qualified allocations; human review, SME/exposure, form qualification and release gates remain open.
 
 All 28 new pairs and current/history/guide/protected neighbors were compared. Exact saved-content QA passes 8/8; the rollback and 39 preservation scopes pass. No learner hints, guides or runtime changes were added. Remaining numerical budget: 16 Diagnostic + 40 Mastery. Review may be combined with Batch 13; no approval, qualified form or release is inferred.
 
 ### 15C.16 — Bounded Diagnostic batch 13
+
+**Historical staging checkpoint; ordinary review verified complete under 15C.18R.** The pending counts below preserve the original handoff; the current queue is recorded above.
 
 **2026-10-16 · Sprint 15C.16 staged and technically verified:** eight new Chapter III Diagnostic drafts and nine draft definitions. Chapter III has **104 questions (96 approved, 8 awaiting review)**: 80 Practice, 16 Diagnostic and 8 Mastery candidates; 80 published guides and 215 definitions (206 active, 9 draft). [Batch 13 evidence and review](chapter-iii-batch-13-staging.md). The approved v2 assessment contract is implemented and production-verified. Chapter III remains inactive with zero qualified allocations; human review, SME/exposure, form qualification and release gates remain open.
 

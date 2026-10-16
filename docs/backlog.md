@@ -253,14 +253,25 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III Diagnostic batch 16 — 15C.19, 2026-10-16
+
+- [x] Verify Batches 13–15 ordinary review: 120 approved questions, 238 active definitions, 80 published guides; content unchanged.
+- [x] Select eight Diagnostic slots: S01-D03, S02-D02, S03-D04, S04-D04, S05-D02, S06-D03, S07-D04 and S08-D02.
+- [x] Complete textbook/Armenian/physics and applicable current/history/guide/protected comparisons, including all 28 new pairs.
+- [x] Stage eight drafts and 13 definitions; saved-content QA 8/8, exact readback, rollback and 39 preservation scopes pass.
+- [ ] Review the eight new questions and 13 definitions.
+- [ ] Continue a separately bounded assessment batch; remaining numerical gaps are eight Diagnostic and 32 Mastery. Keep independent SME/exposure, form qualification and release gates separate.
+
+[Review closure](chapter-iii-batches-13-15-review.md) · [Batch 16 evidence](chapter-iii-batch-16-staging.md).
+
 ## Chapter III Mastery batch 15 — 15C.18, 2026-10-16
 
 - [x] Select the owner-authorized eight-slot manifest: S01-M03, S03-M03/M04, S04-M03/M04, S06-M03 and S07-M03/M04.
 - [x] Compare applicable current/history/protected content and exposed guides, including all 28 new pairs; separately check textbook physics and natural Armenian.
 - [x] Stage eight drafts and 11 definitions; exact saved-content QA 8/8, rollback and 39 preservation scopes pass. No learner hints or guides added.
 - [x] Preserve all 112 prior questions, 96 approvals, 80 published guides, pending Batches 13–14 reviews, learner evidence, Chapter I/II pilots and inactive/unallocated Chapter III.
-- [ ] Review the combined queue: 24 questions and 32 definitions across Batches 13–15.
-- [ ] Select a further bounded batch; remaining numerical gaps are 16 Diagnostic and 32 Mastery. Keep SME/exposure, disjoint-form qualification and release gates separate.
+- [x] Review the combined queue: 24 questions and 32 definitions across Batches 13–15. Verified under [15C.18R](chapter-iii-batches-13-15-review.md).
+- [x] Next bounded batch delivered as 15C.19 / Batch 16. Current queue and remaining budget are recorded above.
 
 [Batch 15 evidence and review](chapter-iii-batch-15-staging.md).
 
@@ -270,8 +281,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Compare all applicable current/history/protected content and exposed guides, including all 28 new pairs; separately check textbook physics and natural Armenian.
 - [x] Stage eight drafts and 12 definitions; exact saved-content QA 8/8, rollback and 39 preservation scopes pass. No learner hints or guides added.
 - [x] Preserve all 104 prior questions, 96 approvals, 80 published guides, pending Batch 13 reviews, learner evidence, Chapter I/II pilots and inactive/unallocated Chapter III.
-- [ ] Review the combined queue: 16 questions and 21 definitions across Batches 13–14.
-- [x] Next bounded batch delivered as 15C.18 / Batch 15. Its current combined queue and numerical gaps are recorded above; Batches 13–14 ordinary review remains pending.
+- [x] Review the combined queue: 16 questions and 21 definitions across Batches 13–14. Verified under [15C.18R](chapter-iii-batches-13-15-review.md).
+- [x] Next bounded batch delivered as 15C.18 / Batch 15. Its current combined queue and numerical gaps are recorded above; Batches 13–14 ordinary review is now closed under 15C.18R.
 
 [Batch 14 evidence and review](chapter-iii-batch-14-staging.md).
 
@@ -281,8 +292,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Compare all applicable current/history/protected content and exposed guides, including all 28 new pairs; separately check textbook physics and natural Armenian.
 - [x] Stage eight drafts and nine definitions; exact saved-content QA 8/8, rollback and 39 preservation scopes pass. No new learner hints or guides.
 - [x] Preserve all 96 prior approvals, all 80 published guides, learner evidence, Chapter I/II pilots and inactive/unallocated Chapter III.
-- [ ] Review eight current v1 questions and nine draft definitions on the site.
-- [x] Next bounded batch delivered as 15C.17 / Batch 14. Its current combined queue and numerical gaps are recorded above; Batch 13 ordinary review remains pending.
+- [x] Review eight current v1 questions and nine draft definitions on the site. Verified under [15C.18R](chapter-iii-batches-13-15-review.md).
+- [x] Next bounded batch delivered as 15C.17 / Batch 14. Its current combined queue and numerical gaps are recorded above; Batch 13 ordinary review is now closed under 15C.18R.
 
 [Batch 13 evidence and review](chapter-iii-batch-13-staging.md).
 

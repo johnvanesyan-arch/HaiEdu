@@ -1,5 +1,7 @@
 # Chapter III Batch 13 — Diagnostic candidate comparison
 
+**Ordinary review verified complete — 15C.18R, 2026-10-16:** all eight current questions and this batch’s definitions are human-approved, without content changes. [Review closure](chapter-iii-batches-13-15-review.md). Counts and pending statements below preserve the original staging checkpoint; see [current status](project-status.md).
+
 **2026-10-16 · Sprint 15C.16 · Roadmap 3.80**
 
 The owner directed the next sprint after approval and implementation of assessment contract v2. Codex selected a bounded eight-question Diagnostic batch under the established cadence: S01-D02, S03-D02/D03, S04-D02/D03, S06-D02 and S07-D02/D03. This does not authorize all remaining assessment slots or learner release.
