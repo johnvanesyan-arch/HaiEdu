@@ -1,6 +1,6 @@
 # Chapter III Batches 17–18 — bounded comparison
 
-**Historical Batches 17–18 checkpoint; ordinary review remains pending.** Its sixteen questions and thirty definitions are included in the current combined queue under [15C.22](chapter-iii-batch-19-staging.md). Counts and next steps below preserve the original handoff.
+**Current disposition:** ordinary content/definition review is complete under [15C.22R](chapter-iii-definition-approval-20261017.md). [15C.23 qualification preparation](chapter-iii-assessment-qualification.md) records the conditional form plan and remaining gates. Counts and pending wording below preserve the original dated authoring checkpoint.
 
 **2026-10-16 · Sprints 15C.20–15C.21 · Draft staging and technical verification complete; human review pending**
 

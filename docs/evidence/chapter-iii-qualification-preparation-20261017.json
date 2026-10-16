@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "haiedu-ch3-qualification-preparation-v1",
+  "sprint": "15C.23",
+  "roadmap": "3.87",
+  "sourceMain": "7b456271efc6d380a3a0c56a2ab2a3c7931d8d06",
+  "status": "preflight_and_conditional_form_preparation_complete_qualification_blocked",
+  "observedAt": "2026-10-16T21:32:49.553172+00:00",
+  "inventory": {
+    "approvedQuestions": 168,
+    "practice": 80,
+    "diagnostic": 32,
+    "mastery": 56,
+    "publishedGuides": 80,
+    "activeDefinitions": 339
+  },
+  "checks": {
+    "currentApprovalQaSnapshotBindings": 168,
+    "protectedComparisonBindings": 88,
+    "S01D01v2LearnerPayloadUnchanged": true,
+    "proposedForms": 5,
+    "questionsPerForm": 16,
+    "distinctSelectedCandidates": 80,
+    "reservesOnePerSkill": 8,
+    "practiceInProtectedForms": 0,
+    "skillDistribution": [
+      2,
+      1,
+      3,
+      3,
+      1,
+      2,
+      3,
+      1
+    ],
+    "scoringGroups": [
+      10,
+      2,
+      4
+    ],
+    "directMandatoryOutcomeCoverageCompleteForms": 3,
+    "formsMissingDirectTrajectoryClassification": 2,
+    "qualifiedForms": 0,
+    "databaseWrites": 0,
+    "newQuestionVersions": 0,
+    "chapter3PoolOrFormMemberships": 0
+  },
+  "coverageFinding": {
+    "mandatoryOutcome": "M4: classify straight/curved trajectories",
+    "directDiagnosticCandidates": 1,
+    "diagnosticFormsRequired": 2,
+    "directMasteryCandidates": 2,
+    "masteryFormsRequired": 3,
+    "proposedTargetedRevisions": 2,
+    "newRuntimeScoringRule": false
+  },
+  "retainedLimits": [
+    "Independent Physics/Armenian specialist review pending; Codex review is not SME approval.",
+    "Historical exposure of retained private Git/PR objects unresolved; zero allocation is not proof of non-exposure.",
+    "Author difficulty estimates only; no empirical form equivalence.",
+    "MCQ does not certify laboratory performance.",
+    "Prior source version retained; no new official-programme currency verification claimed."
+  ],
+  "evidence": {
+    "version-bindings.json": "b4c8b361a436c39591bc90965379baa16da6b14070965e0fed7155eb06e24821",
+    "conditional-forms.json": "0306370828cb1beca2860b7a901fbe84ffa545d112bbfe58efcdb6d5e3966f18",
+    "candidate-qualification-ledger.json": "3b3840b5def459f3a200de8818fb90c75780d813744a68020f9c2f2adef29d3d",
+    "pair-review-index.json": "0ae42822dcadf9ec7c44c234afee284570afad8a87bb7bb0ddbda5a83533b494",
+    "frozen-comparison-reference.json": "8b2e8bc8fb9b053883440995e9e5ed32e2872a32fbc486205c3d4006c411c139",
+    "correction-brief.json": "3c4ee7a46987d375c62004a29a144039cefe8639a9330959f17c95a4485d07e5"
+  },
+  "sourceTextbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+  "decision": "Prepare bounded correction scope for owner decision; retain all content approvals, allocation/release hold and approved assessment criteria.",
+  "preservation": {
+    "tablesUnchanged": 39,
+    "observedAfter": "2026-10-16T21:43:30.898089+00:00",
+    "beforeSha256": "da04d198671ccf1d7a7360303812212cffd28c8d6214a7225216263c92b54ed4",
+    "afterSha256": "b4d00dd9364fc910f86705838dd55392f3a58339ceeb13bfeca6e269cc000725"
+  },
+  "restrictedArchive": {
+    "libraryFileId": "libfile_9ddaf5533848819194845282b5f0316b",
+    "version": 0,
+    "filename": "HaiEdu-Chapter-III-Qualification-Preparation-20261017.zip",
+    "sha256": "82ed1ae61f9f1e65f199dbae87237833a6ed57b613c4963d95974d27a37be5e3",
+    "bytes": 3233838
+  }
+}
