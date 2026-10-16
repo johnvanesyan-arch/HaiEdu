@@ -1,0 +1,145 @@
+{
+  "schemaVersion": 1,
+  "date": "2026-10-16",
+  "sprint": "15C.16",
+  "roadmap": "3.80",
+  "sourceMain": "18c02106d0d9ab68d6a00721b84db737eb75f9e3",
+  "author": "Codex automated author; one primary agent",
+  "authorization": {
+    "request": "proceed with the next sprint",
+    "requestAt": "2026-10-16T05:56:34Z",
+    "scopeSelection": "Codex selected eight Diagnostic slots under the established eight-question cadence after the owner approved the assessment contract and directed the next sprint. The user did not individually enumerate these codes.",
+    "manifest": "chapter-iii-20261016-diagnostic-batch13",
+    "slots": [
+      {
+        "id": "U03-B13-C01",
+        "code": "PHY7-U03-S01-D02",
+        "bank": "diagnostic",
+        "skill": "S01",
+        "specSha256": "1910b36bc20bbd45041ac5d0a9801aff318df8c782931abf0077878831de4ac9"
+      },
+      {
+        "id": "U03-B13-C02",
+        "code": "PHY7-U03-S03-D02",
+        "bank": "diagnostic",
+        "skill": "S03",
+        "specSha256": "d2229a115d93b5f93450f113dad4190899dc0cb3ee32f14f3dff0c231ca11d43"
+      },
+      {
+        "id": "U03-B13-C03",
+        "code": "PHY7-U03-S03-D03",
+        "bank": "diagnostic",
+        "skill": "S03",
+        "specSha256": "fa431b1445fca9250375fc3930566850fdf798e1360d4c562bc501670e522aff"
+      },
+      {
+        "id": "U03-B13-C04",
+        "code": "PHY7-U03-S04-D02",
+        "bank": "diagnostic",
+        "skill": "S04",
+        "specSha256": "6b8e812c0fcb5e81575501f7b64964f375648af04389f6d80756dc03a3176137"
+      },
+      {
+        "id": "U03-B13-C05",
+        "code": "PHY7-U03-S04-D03",
+        "bank": "diagnostic",
+        "skill": "S04",
+        "specSha256": "545315ff97996f978e228bd07c8e90997c3669384790af6321d75ec08c757c47"
+      },
+      {
+        "id": "U03-B13-C06",
+        "code": "PHY7-U03-S06-D02",
+        "bank": "diagnostic",
+        "skill": "S06",
+        "specSha256": "e99dcb27e2610a9a50e6a73412f50bc36e5388ada7d638252a96b746a9ce1bfe"
+      },
+      {
+        "id": "U03-B13-C07",
+        "code": "PHY7-U03-S07-D02",
+        "bank": "diagnostic",
+        "skill": "S07",
+        "specSha256": "bedf5cd4517bcf0054cd968cdf82567f59b964cb99660ddc0b875e70c1cebb30"
+      },
+      {
+        "id": "U03-B13-C08",
+        "code": "PHY7-U03-S07-D03",
+        "bank": "diagnostic",
+        "skill": "S07",
+        "specSha256": "f9465cee63795eef3bef70c6adfb6d4c3738a93943eee03099ed330ae33372c0"
+      }
+    ],
+    "limits": "Bounded next batch only; not authorization to fill all remaining64 assessment slots, allocate forms, waive SME/exposure review or activate ChapterIII."
+  },
+  "corpusSha256": "89243e96f1db446410f3c22123840b596ca01b3d4bd6ee6473189c794e670c0f",
+  "corpusCounts": {
+    "items": 549,
+    "item_options": 1588,
+    "item_versions": 427,
+    "item_answer_keys": 549,
+    "item_families": 327,
+    "item_templates": 327,
+    "misconceptions": 479,
+    "skill_remediation_guides": 10,
+    "remediation_guide_versions": 323,
+    "item_misconception_mappings": 1106,
+    "item_template_remediation_guides": 146,
+    "remediation_guide_authoring_versions": 592,
+    "skills": 27,
+    "skill_outcomes": 31,
+    "assessment_forms": 9,
+    "assessment_pools": 7,
+    "learning_outcomes": 19,
+    "curriculum_releases": 4,
+    "assessment_form_items": 160,
+    "assessment_pool_items": 472,
+    "item_curriculum_scopes": 549,
+    "curriculum_release_skills": 26,
+    "curriculum_source_documents": 3,
+    "curriculum_release_gate_checks": 21,
+    "curriculum_release_item_families": 326,
+    "skill_curriculum_reconciliations": 26,
+    "skill_outcome_curriculum_mappings": 31,
+    "item_family_curriculum_reconciliations": 327
+  },
+  "summary": {
+    "assessed": 8,
+    "retained": 8,
+    "protectedParallel": 8,
+    "independentNewReasoningCoverage": 0,
+    "qualifiedForAllocation": 0,
+    "newGuides": 0,
+    "newDefinitions": 9,
+    "pairs": 28
+  },
+  "planningAfter": {
+    "questions": 104,
+    "practice": 80,
+    "diagnostic": 16,
+    "mastery": 8,
+    "remainingDiagnostic": 16,
+    "remainingMastery": 48,
+    "contract": "approved_v2_implemented",
+    "diagnosticDistribution": [
+      2,
+      1,
+      3,
+      3,
+      1,
+      2,
+      3,
+      1
+    ],
+    "qualifiedForms": 0
+  },
+  "status": "prepared_not_staged",
+  "restrictedEvidence": {
+    "archive": "HaiEdu-Chapter-III-Batch-13-Restricted-Evidence.zip",
+    "sha256": "bee59114a68ea1551ad9da0064b7ed3e265d953f787c6b86870ab4a8882a8c02",
+    "members": 21,
+    "comparisonSha256": "e26ac5016161fd2a0ba2efbd145dafd4ebc4c2d77e294133e9037785335b1da5",
+    "specificationsSha256": "b3518562135d2c4e758e54e16672d5fbbc4b327e165c998d896bc058d8c3875e",
+    "libraryFileId": "libfile_1bff849f3e8081919f06daf08b629203",
+    "libraryVersion": 0
+  },
+  "protection": "No answer-bearing stimuli/solutions in this repository record. Full source, scenario/solution/distractor comparisons, history inventory and all28 new pairs are in the restricted archive. Human/SME/exposure gates remain open."
+}
