@@ -253,13 +253,22 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter III revision review closure — 15C.24R, 2026-10-17 Asia/Yerevan
+
+- [x] Verify both current v2 question approvals and all five active definitions against immutable review evidence.
+- [x] Confirm unchanged learner content and existing passing QA; all 168 questions approved, 80 guides published and 344 definitions active.
+- [x] Refresh exact approval bindings for the same five conditional forms and 88-candidate specialist ledger; no independent decisions filled.
+- [ ] Obtain named independent source/physics/Armenian and exposure/dependence dispositions before allocating accepted forms and seeking separate release authorization.
+
+[Read-only review closure](chapter-iii-revision-review-20261017.md).
+
 ## Chapter III targeted trajectory corrections — 15C.24, 2026-10-17 Asia/Yerevan
 
 - [x] Record the owner's bounded two-question revision authorization; freeze source/corpus and preserve old approvals.
 - [x] Complete source, Armenian, whole-skill/current/history/guide and related-bank comparison; discard the overlapping first Diagnostic approach.
 - [x] Save two v2 question drafts and five precise definition drafts; rollback preservation, exact readback and deployed-v11 QA 2/2 pass.
 - [x] Rebind the unchanged five conditional form memberships and eight reserves; all five now represent M1–M5 using the pending v2 drafts.
-- [ ] Review S03-D05 v2, S03-M10 v2 and S03 definitions M58–M62 on the site.
+- [x] Review S03-D05 v2, S03-M10 v2 and S03 definitions M58–M62 on the site; exact approvals verified under 15C.24R.
 - [ ] Complete independent SME/exposure qualification before allocation and separately authorized Chapter III release.
 
 [Revision and verification evidence](chapter-iii-trajectory-revisions-20261017.md).

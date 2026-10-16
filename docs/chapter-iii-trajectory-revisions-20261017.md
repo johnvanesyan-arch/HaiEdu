@@ -1,5 +1,7 @@
 # Chapter III targeted trajectory revisions
 
+**Current follow-up — 15C.24R:** both v2 questions and five definition drafts were approved without content changes. The review queue is now empty: 168 approved questions, 80 published guides and 344 active definitions. [Verified review closure](chapter-iii-revision-review-20261017.md). Staging counts and pending requests below are historical.
+
 **2026-10-17 Asia/Yerevan · Sprint 15C.24 · Two v2 drafts staged and technically verified; ordinary review pending**
 
 John approved the bounded two-question correction recommendation from [15C.23](chapter-iii-assessment-qualification.md). The scope is S03-D05 and S03-M10, each from approved v1 to a fresh v2 requiring review. The bank remains 168 questions. No ordinary approval, specialist waiver, allocation or release authorization is inferred.
