@@ -14,6 +14,6 @@ The textbook and programme references, natural Armenian review, nearest current/
 
 Review on [Questions](https://www.haiedu.am/content-review.html), filtered by Chapter III / PHY7-U03 and Diagnostic, and [Misconceptions](https://www.haiedu.am/content-misconceptions.html), filtered by S03/S04/S07. No guide review is needed for this batch.
 
-Remaining numerical budget:16 Diagnostic + 48 Mastery. Further authoring requires a bounded next instruction; human content approval, independent SME/exposure decisions, exact-version disjoint forms and release remain separate. The ChapterII specialist-review deferral does not extend to Chapter III.
+Remaining numerical budget: 16 Diagnostic + 48 Mastery. Further authoring requires a bounded next instruction; human content approval, independent SME/exposure decisions, exact-version disjoint forms and release remain separate. The Chapter II specialist-review deferral does not extend to Chapter III.
 
 [Comparison and manifest](chapter-iii-batch-13-comparison.md) · [Sanitized staging evidence](evidence/chapter-iii-batch-13-staging-20261016.json) · [Authoritative status](project-status.md).

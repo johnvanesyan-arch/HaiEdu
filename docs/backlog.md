@@ -285,7 +285,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Preserve 80 practice questions, all existing approvals, all guides, Chapter I/II pilots and inactive/unallocated Chapter III state.
 - [x] Ordinary content review verified complete under 15C.13R; all current versions are approved/published.
 - [x] Assessment counts, reporting groups, readiness and pass rules approved under 15C.14 and implemented under 15C.15. Independent SME/exposure and disjoint-form qualification remain open.
-- [x] Next bounded scope delivered as 15C.16 / Batch 13. The dated 16-candidate checkpoint is superseded by 104 current questions;16 Diagnostic and 48 Mastery slots remain un-authored.
+- [x] Next bounded scope delivered as 15C.16 / Batch 13. The dated 16-candidate checkpoint is superseded by 104 current questions; 16 Diagnostic and 48 Mastery slots remain un-authored.
 
 [Batches 11–12 staging](chapter-iii-batches-11-12-staging.md).
 

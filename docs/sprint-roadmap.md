@@ -1083,9 +1083,9 @@ All twelve S02 questions and all **40 authored Chapter II questions** are now ap
 
 ### 15C.16 — Bounded Diagnostic batch 13
 
-**2026-10-16 · Staging and technical verification complete.** **Sprint 15C.16 is staged and technically verified:** eight new Chapter III Diagnostic drafts and nine draft definitions. Chapter III has **104 questions (96 approved, 8 awaiting review)**: 80 Practice, 16 Diagnostic and 8 Mastery candidates; 80 published guides and 215 definitions (206 active, 9 draft). [Batch 13 evidence and review](chapter-iii-batch-13-staging.md). The approved v2 assessment contract is implemented and production-verified. Chapter III remains inactive with zero qualified allocations; human review, SME/exposure, form qualification and release gates remain open.
+**2026-10-16 · Sprint 15C.16 staged and technically verified:** eight new Chapter III Diagnostic drafts and nine draft definitions. Chapter III has **104 questions (96 approved, 8 awaiting review)**: 80 Practice, 16 Diagnostic and 8 Mastery candidates; 80 published guides and 215 definitions (206 active, 9 draft). [Batch 13 evidence and review](chapter-iii-batch-13-staging.md). The approved v2 assessment contract is implemented and production-verified. Chapter III remains inactive with zero qualified allocations; human review, SME/exposure, form qualification and release gates remain open.
 
-The eight slots are S01-D02, S03-D02/D03, S04-D02/D03, S06-D02 and S07-D02/D03. All 28 new pairs and current/history/guide/protected neighbors were compared. The new questions add candidate capacity only. No learner hints/guides or runtime changes were added. Remaining numerical gap:16 Diagnostic + 48 Mastery. Next: site review, followed by a separately bounded batch; qualification and release stay gated.
+The eight slots are S01-D02, S03-D02/D03, S04-D02/D03, S06-D02 and S07-D02/D03. All 28 new pairs and current/history/guide/protected neighbors were compared. The new questions add candidate capacity only. No learner hints/guides or runtime changes were added. Remaining numerical gap: 16 Diagnostic + 48 Mastery. Next: site review, followed by a separately bounded batch; qualification and release stay gated.
 
 ### 15C.15 — Versioned scoring, readiness and reporting implementation
 

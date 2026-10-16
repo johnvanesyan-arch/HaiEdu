@@ -10,7 +10,7 @@ Exact candidate profiles, solutions, distractor logic and pair judgments are bou
 
 No learner hints or guides are created for these assessment candidates. Their explanations remain staff-review content. Every necessary observation is stated in the prompt; none relies on a missing image. All Armenian prompts/options/explanations and29 definitions received author language and separate physics checks. This is not independent specialist certification.
 
-At the original comparison date, counts/weights, readiness and pass rules were open. They are now approved and implemented under 15C.14–15C.15. Human content/definition review, independent SME/exposure review, version-bound disjoint allocation and release checks remain required. Chapter III stays inactive and unallocated.
+At the original comparison date, counts/weights, readiness and pass rules were open. They are now approved and implemented under 15C.14–15C.15. Human question and definition review for Batches 11–12 is complete under 15C.13R. Independent SME/exposure review, version-bound disjoint allocation and release checks remain required. Chapter III stays inactive and unallocated.
 
 [Bounded manifest](evidence/chapter-iii-batches-11-12-manifest-20261015.json) · [Sanitized comparison hashes](evidence/chapter-iii-batches-11-12-comparison-20261015.json) · [Prior-state verification](evidence/chapter-iii-batches-11-12-prior-state-20261015.json).
 
