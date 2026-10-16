@@ -1,0 +1,33 @@
+{
+  "sprint": "15C.24",
+  "roadmap": "3.88",
+  "status": "prepared_not_staged",
+  "authorization": "John, 2026-10-17 01:54:47 Asia/Yerevan: yes to two targeted existing S03 revisions",
+  "sourceMain": "994e7896aa4d532bd726ba007e779144eef6ab67",
+  "targets": [
+    {
+      "code": "PHY7-U03-S03-D05",
+      "fromVersion": 1,
+      "toVersion": 2,
+      "specSha256": "71db5baa3fccc3bcf08a3c2d66e7728a347d34c489177d303fa8415deeef502a"
+    },
+    {
+      "code": "PHY7-U03-S03-M10",
+      "fromVersion": 1,
+      "toVersion": 2,
+      "specSha256": "ac8aa03cea2e1d434c96f97954f0d2d0b2015b96e8488a4ea2a2413b0d44cfaa"
+    }
+  ],
+  "newDraftDefinitions": 5,
+  "comparisonSha256": "63e5436bfc2c8e409d1b0834485aadca098a49ebf2de04b3d5af995af23c2795",
+  "corpusSha256": "8b2e8bc8fb9b053883440995e9e5ed32e2872a32fbc486205c3d4006c411c139",
+  "restrictedEvidence": {
+    "libraryFileId": "libfile_938afc9c53308191a92f4e49517bd3cb",
+    "version": 0,
+    "sha256": "ea3c7c08d295593b236f76ad32994344b0142db8bd089fdccf621aae9d71ce4c",
+    "bytes": 1654884
+  },
+  "independentNewReasoningCoverage": 0,
+  "qualifiedAllocationCapacity": 0,
+  "releaseAuthorization": false
+}
