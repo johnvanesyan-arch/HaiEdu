@@ -1,6 +1,6 @@
 # Chapter IV — first large candidate assessment queue
 
-**Sprint 15D.1 · 2026-10-17 · 28 unassessed candidate briefs across 14 proposed skills.** These are planning entries, not drafted MCQs or accepted families. No correct options, reviewed versions or assessment eligibility are implied. Review the [source/skill/budget plan](chapter-iv-preparation.md) first. The next slice assesses this complete set against current/historical/teaching/related banks in one batch, records retain/revise/omit decisions, and drafts only defensible survivors. The number retained may be smaller than 28.
+**Historical planning queue from 15D.1 · 2026-10-17.** Owner acceptance under 15D.2 replaces the earlier one-pass 28-brief handoff with three authorized question batches (84/86/66). The first ten briefs, S01–S05, have been assessed and developed within the saved 84-question batch; the 18 S06–S14 briefs remain planning inputs for batches 2/3. These original briefs are not approved question versions or qualified assessment capacity. [Current batch and exact evidence](chapter-iv-batch-01-staging.md).
 
 | ID | Armenian working title | Intended evidence | Required screening boundary |
 | --- | --- | --- | --- |

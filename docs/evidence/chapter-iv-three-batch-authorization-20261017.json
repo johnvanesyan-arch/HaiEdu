@@ -1,0 +1,1242 @@
+{
+  "authorizedAt": "2026-10-17T12:51:32+04:00",
+  "owner": "John",
+  "instruction": "Okay, let's break it down into three batches. You can confirm all the questions, hints, and misconceptions. I am pre-approving everything. We need to speed up this MVP, it's going too slowly",
+  "scope": "Chapter IV accepted 236-question plan; three delivery batches; delegated ordinary question, guide/hint and misconception approval after checks through the existing authenticated workflow",
+  "approvalProvenance": "Codex acts on owner's explicit delegation; do not claim John inspected future exact wording or that this is independent specialist approval",
+  "batches": [
+    {
+      "batch": 1,
+      "skills": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05"
+      ],
+      "practice": 50,
+      "diagnostic": 12,
+      "mastery": 22,
+      "total": 84
+    },
+    {
+      "batch": 2,
+      "skills": [
+        "S06",
+        "S07",
+        "S08",
+        "S09",
+        "S10"
+      ],
+      "practice": 50,
+      "diagnostic": 14,
+      "mastery": 22,
+      "total": 86
+    },
+    {
+      "batch": 3,
+      "skills": [
+        "S11",
+        "S12",
+        "S13",
+        "S14"
+      ],
+      "practice": 38,
+      "diagnostic": 12,
+      "mastery": 16,
+      "total": 66
+    }
+  ],
+  "retainedGates": [
+    "source and natural Armenian checks",
+    "whole-bank and within-batch comparison",
+    "current-version technical QA",
+    "authenticated role and MFA requirements",
+    "independent specialist/exposure qualification",
+    "separate chapter assessment contract and release decision",
+    "performed laboratory evidence cannot be inferred from MCQ answers"
+  ],
+  "manifest": "chapter-iv-20261017-three-batch",
+  "slots": [
+    {
+      "code": "PHY7-U04-S01-I01",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S01-I02",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S01-I03",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S01-I04",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S01-I05",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S01-I06",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S01-I07",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S01-I08",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S01-D01",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S01-D02",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S01-M01",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S01-M02",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S01-M03",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S01-M04",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S02-I01",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S02-I02",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S02-I03",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S02-I04",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S02-I05",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S02-I06",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S02-I07",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S02-I08",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S02-D01",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S02-D02",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S02-M01",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S02-M02",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S02-M03",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S02-M04",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S03-I01",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I02",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I03",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I04",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I05",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I06",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I07",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I08",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I09",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I10",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I11",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-I12",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S03-D01",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S03-D02",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S03-M01",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S03-M02",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S03-M03",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S03-M04",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S04-I01",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-I02",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-I03",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-I04",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-I05",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-I06",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-I07",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-I08",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-I09",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-I10",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S04-D01",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S04-D02",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S04-M01",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S04-M02",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S04-M03",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S04-M04",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S05-I01",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I02",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I03",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I04",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I05",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I06",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I07",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I08",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I09",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I10",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I11",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-I12",
+      "batch": 1,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S05-D01",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S05-D02",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S05-D03",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S05-D04",
+      "batch": 1,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S05-M01",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S05-M02",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S05-M03",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S05-M04",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S05-M05",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S05-M06",
+      "batch": 1,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S06-I01",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-I02",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-I03",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-I04",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-I05",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-I06",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-I07",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-I08",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-I09",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-I10",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S06-D01",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S06-D02",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S06-M01",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S06-M02",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S06-M03",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S06-M04",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S07-I01",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S07-I02",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S07-I03",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S07-I04",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S07-I05",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S07-I06",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S07-I07",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S07-I08",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S07-D01",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S07-D02",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S07-M01",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S07-M02",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S07-M03",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S07-M04",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S08-I01",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I02",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I03",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I04",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I05",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I06",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I07",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I08",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I09",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I10",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I11",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-I12",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S08-D01",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S08-D02",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S08-D03",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S08-D04",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S08-M01",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S08-M02",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S08-M03",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S08-M04",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S08-M05",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S08-M06",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S09-I01",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S09-I02",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S09-I03",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S09-I04",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S09-I05",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S09-I06",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S09-I07",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S09-I08",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S09-D01",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S09-D02",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S09-M01",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S09-M02",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S10-I01",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I02",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I03",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I04",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I05",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I06",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I07",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I08",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I09",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I10",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I11",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-I12",
+      "batch": 2,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S10-D01",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S10-D02",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S10-D03",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S10-D04",
+      "batch": 2,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S10-M01",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S10-M02",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S10-M03",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S10-M04",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S10-M05",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S10-M06",
+      "batch": 2,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S11-I01",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I02",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I03",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I04",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I05",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I06",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I07",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I08",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I09",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I10",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I11",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-I12",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S11-D01",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S11-D02",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S11-D03",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S11-D04",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S11-M01",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S11-M02",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S11-M03",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S11-M04",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S11-M05",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S11-M06",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S12-I01",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S12-I02",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S12-I03",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S12-I04",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S12-I05",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S12-I06",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S12-I07",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S12-I08",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S12-D01",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S12-D02",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S12-M01",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S12-M02",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S13-I01",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I02",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I03",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I04",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I05",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I06",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I07",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I08",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I09",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I10",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I11",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-I12",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S13-D01",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S13-D02",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S13-D03",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S13-D04",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S13-M01",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S13-M02",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S13-M03",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S13-M04",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S13-M05",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S13-M06",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S14-I01",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S14-I02",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S14-I03",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S14-I04",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S14-I05",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S14-I06",
+      "batch": 3,
+      "bank": "practice"
+    },
+    {
+      "code": "PHY7-U04-S14-D01",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S14-D02",
+      "batch": 3,
+      "bank": "diagnostic"
+    },
+    {
+      "code": "PHY7-U04-S14-M01",
+      "batch": 3,
+      "bank": "mastery"
+    },
+    {
+      "code": "PHY7-U04-S14-M02",
+      "batch": 3,
+      "bank": "mastery"
+    }
+  ]
+}
