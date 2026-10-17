@@ -1,0 +1,607 @@
+{
+  "sprint": "15D.2",
+  "roadmap": "3.94",
+  "observedAt": "2026-10-17T09:37:19.195571+00:00",
+  "authorization": "docs/evidence/chapter-iv-three-batch-authorization-20261017.json",
+  "foundation": {
+    "unitId": "5ebe46f5-5542-5a1e-bfbd-14e4e5b784ca",
+    "releaseId": "18eb78e8-79f7-5307-bef2-38c4baa1d809",
+    "unitStatus": "review",
+    "releaseStatus": "draft",
+    "topics": 6,
+    "skills": 14,
+    "outcomes": 13,
+    "dataOnly": true
+  },
+  "staged": {
+    "questions": 84,
+    "practice": 50,
+    "diagnostic": 12,
+    "mastery": 22,
+    "guides": 50,
+    "definitions": 65,
+    "questionVersions": 1,
+    "questionStatus": "draft",
+    "reviewStatus": "needs_review",
+    "guideStatus": "draft",
+    "definitionStatus": "draft"
+  },
+  "quality": {
+    "questionPasses": 84,
+    "guidePasses": 50,
+    "errors": 0,
+    "warnings": 0,
+    "method": "Exact deployed v11 evaluators replayed on fresh committed readback; question QA records saved as automated system runs, not authenticated Edge invocations. Primary author reviewed language/physics/overlap; no independent reviewer is claimed.",
+    "questionEvaluatorSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "guideEvaluatorSha256": "fa20227213a9acbe49ddedcbafa22551e1c8362ecd7bdce62f8d584181e04f8c"
+  },
+  "preservation": {
+    "tableCount": 59,
+    "allPreExistingCountsAndFingerprintsMatch": true,
+    "method": "Exclude only new Chapter IV identities/references, then compare full old row counts and canonical-row multiset hashes to the pre-foundation baseline."
+  },
+  "comparison": {
+    "currentItems": 621,
+    "immutableVersions": 501,
+    "templateGuides": 146,
+    "skillGuides": 10,
+    "runtimeGuideVersions": 323,
+    "authoringGuideVersions": 592,
+    "fingerprintMatchedTables": 28,
+    "pairCount": 3486,
+    "corpusSha256": "4b99a0633aad3eda3d0a01ac1143e5b609d90e374377669e4cbc4e2f0d1c8412",
+    "predeploymentRevisions": [
+      "PHY7-U04-S01-D01",
+      "PHY7-U04-S02-D02",
+      "PHY7-U04-S03-I08",
+      "PHY7-U04-S04-I10",
+      "PHY7-U04-S05-I07",
+      "PHY7-U04-S05-M02",
+      "PHY7-U04-S05-M04",
+      "PHY7-U04-S05-M05"
+    ]
+  },
+  "approval": {
+    "delegatedBy": "John",
+    "authorizedAt": "2026-10-17T12:51:32+04:00",
+    "authenticatedStoredQuestionReviews": 0,
+    "storedApprovals": 0,
+    "reasonPending": "Reviewer browser shows signed-out protected workspace; secure sign-in required. No new owner review decision required."
+  },
+  "allocation": {
+    "poolItems": 0,
+    "formItems": 0,
+    "independentlyQualified": 0,
+    "learnerRelease": false
+  },
+  "restrictedEvidence": {
+    "libraryFileId": "libfile_4bd0b2cc08848191b495e515e8e3c176",
+    "name": "HaiEdu-Chapter-IV-Batch-01-Restricted-Evidence.zip",
+    "contains": "Exact protected specifications, full comparison corpus/history/guides, profile/pair inventory and source/QA evidence."
+  },
+  "items": [
+    {
+      "code": "PHY7-U04-S01-I01",
+      "candidateRevision": 1,
+      "specSha256": "1cc829c60877a17cb908f75b8512ce202c9541cf8c7e7c4b75d1793f4dd2e2c2",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-I02",
+      "candidateRevision": 1,
+      "specSha256": "1de7bddc1745666fd4ff6bd02bd7e2441d0d0a73ac083038485a1dd3873f5d27",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-I03",
+      "candidateRevision": 1,
+      "specSha256": "ebfc040e45bd6c0aff637e094e51bd66a5c2d1f57e2727b0ed5642318e390c22",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-I04",
+      "candidateRevision": 1,
+      "specSha256": "bdad3f3e8350b624b9cf74d18e77e36f1638e7b35c2d3b04da3b0cd44c76a314",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-I05",
+      "candidateRevision": 1,
+      "specSha256": "fa29942028625da99dd6508243eb46f9e7b3aed995151897332bcfb2a159883f",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-I06",
+      "candidateRevision": 1,
+      "specSha256": "7dbe3e5794c6362bf8e3a8d396e2b1b082691ab5241a526d9ce7b86f14c48078",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-I07",
+      "candidateRevision": 1,
+      "specSha256": "9c6147871ff841c516b182ddad91e8d61761f92ff34cc44a166478e30256238e",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-I08",
+      "candidateRevision": 1,
+      "specSha256": "da11d18d499098b4001a464932b01c1694e7a4d112de91d80574895e1a7bede4",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-D01",
+      "candidateRevision": 2,
+      "specSha256": "aa06eeba0a6d28b2897f4ebabdf26a3b6dc1ff4e055dcf97251c80eaf7122a77",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-D02",
+      "candidateRevision": 1,
+      "specSha256": "faa1f46319b3111499732badb22a6628fdc409b1c02452473ef26da79ca0d3a8",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-M01",
+      "candidateRevision": 1,
+      "specSha256": "d68917d62733131e2bb95de7516771e48e8321041cd8ef8f48036d9d941a850f",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-M02",
+      "candidateRevision": 1,
+      "specSha256": "9f5a9bc569c3684eb5639d52073e4d599d27690533fa9d1a489ed181a4607beb",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-M03",
+      "candidateRevision": 1,
+      "specSha256": "88ead936b298806b8d6e0f5d4e612ec334730421c7bee64be0cf17efed496ec1",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S01-M04",
+      "candidateRevision": 1,
+      "specSha256": "e4728f9b6e40d883d7e0b92644ccd31d2e2e8b6910c0d60bd31d343457920818",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-I01",
+      "candidateRevision": 1,
+      "specSha256": "7b66d00e0b9b8840e019e6980bb61176d29bb7cbc8450538e078ed2514826e33",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-I02",
+      "candidateRevision": 1,
+      "specSha256": "771a503ddaea47008853508de02e1d776328dd8085dd069c201e16a1104737c7",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-I03",
+      "candidateRevision": 1,
+      "specSha256": "bb4e296942d97629b79ae57fc3743238a27d3330741cd1181d9bd7d072c2e1c1",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-I04",
+      "candidateRevision": 1,
+      "specSha256": "a7f9406e7faa9d3d576a78f28f1351e9c92349b73273a2ea04f453c5df5aea5f",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-I05",
+      "candidateRevision": 1,
+      "specSha256": "a20a7b4c016915fcbdc165af0d0159901c3329c55d22f3a058c6f1b62da372ff",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-I06",
+      "candidateRevision": 1,
+      "specSha256": "f84eaca6e723ae4dead394c27555171d7178fc7cd3095e7105c19d5e509dd4f9",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-I07",
+      "candidateRevision": 1,
+      "specSha256": "5e3ea7f484c2e6bb39c417309441fba9d29dc8d850257296b4f66152254e15cf",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-I08",
+      "candidateRevision": 1,
+      "specSha256": "6a7b0445873f1f8d1ccfdecc428a580a2a56e0037049e0e1228ba12c62bbe022",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-D01",
+      "candidateRevision": 1,
+      "specSha256": "430d11e20aadd001013512b429c5916b4807aa01b2c422120a7426f991eccea6",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-D02",
+      "candidateRevision": 2,
+      "specSha256": "e1038f77f46b961518ccd801bfe66ecf5de0dd5094cecc5b9467a01d2b13022d",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-M01",
+      "candidateRevision": 1,
+      "specSha256": "1177af0c386475ab68ac677cb943a6795db8edee3df68fc6902fd47e9c8c0d63",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-M02",
+      "candidateRevision": 1,
+      "specSha256": "b5cbb4a40f780cb2e9497b46f2dd131e7cf9289e55332d732b65c95d9f8fb79c",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-M03",
+      "candidateRevision": 1,
+      "specSha256": "e197f3998b3d0bf8b06fa3f83f3036f7a7584542cc91611482b661a62acf1a42",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S02-M04",
+      "candidateRevision": 1,
+      "specSha256": "facee4963bc7c46b2412c5cdb36106966f0f8043dd7570051e42c18b4dd80549",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I01",
+      "candidateRevision": 1,
+      "specSha256": "c3d2674e1d7290d3c7693d2930940d8fe652baeac45d527b821608d566debd22",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I02",
+      "candidateRevision": 1,
+      "specSha256": "c0603180fa9ad5cecd8b25b55295979b66ba72a30b32fc7e964686ae8a904e7e",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I03",
+      "candidateRevision": 1,
+      "specSha256": "2ac22a9a8f5aa28c50b8156e176c67185de3646b661239c23ea0e0df0ebc2dd1",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I04",
+      "candidateRevision": 1,
+      "specSha256": "c1073a6d19a9f748ab5b1ecd81aec5d6efccfdc9c2183f0fd9df3a25cc1f970a",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I05",
+      "candidateRevision": 1,
+      "specSha256": "84701c395149c196c3c3490688b9cb0b3696ab53ab8ad0855138fe67ffeabe7d",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I06",
+      "candidateRevision": 1,
+      "specSha256": "05120418ab6587a2eb142dbf91b53c017a36af108e61441ed32c3ae7c7c87562",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I07",
+      "candidateRevision": 1,
+      "specSha256": "234046611be741e6697ff247c77355125ba90874a42699ecaa8c42ed04ed256c",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I08",
+      "candidateRevision": 2,
+      "specSha256": "3e8f0503fcf49b293cb11468463b235192d222b1c92b34dcc44801752be463f4",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I09",
+      "candidateRevision": 1,
+      "specSha256": "016976214698da8cd1a1a01232625b5464d83e7f5b6d0bec56d3336a8e691efe",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I10",
+      "candidateRevision": 1,
+      "specSha256": "cf5977f4ffacfb8a615e58a4830d4f17afd641034f56ef68bdee08b9c6903076",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I11",
+      "candidateRevision": 1,
+      "specSha256": "8412279b47f878be51a9d7df7fab48359838cee8966edb7796f3ec3a5684cc4a",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-I12",
+      "candidateRevision": 1,
+      "specSha256": "c6a5889ebd097f9f35ee279582706a7086588ebf17108b00edf910c2e132b50a",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-D01",
+      "candidateRevision": 1,
+      "specSha256": "a7c1bd7808e32bf1502cbe47e02672c0375a122823709682415fea16dada7038",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-D02",
+      "candidateRevision": 1,
+      "specSha256": "484d00bec1ef7b15aad2f011430bbc9e5fa85ea222d58b1df3d7cd5015e3d5d5",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-M01",
+      "candidateRevision": 1,
+      "specSha256": "8b18bb5ab62dc0e1a833e56769c6d9c4f2e5291ffbbea0eb6ddfacd1d4128d40",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-M02",
+      "candidateRevision": 1,
+      "specSha256": "025c141c22e77c127e656d8ad7604f1862803ac04dd601e7305f030bb9e4a8e8",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-M03",
+      "candidateRevision": 1,
+      "specSha256": "52618073cdaa980de61c68dd1d7080d93239455e0b8607c5a3f3b7bbf12d0cd3",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S03-M04",
+      "candidateRevision": 1,
+      "specSha256": "383ddda7405fcb6592dd65c5295fb912b9a66090fcce62178669aeb4029d8f84",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I01",
+      "candidateRevision": 1,
+      "specSha256": "95cdb2b7954f8e277d45e5349d94c66a17f3449566642474aca1930a6ffac6ab",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I02",
+      "candidateRevision": 1,
+      "specSha256": "0a8bc27de1482664a013e5b554dae99f2013e504f78995253f93bd93945e789f",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I03",
+      "candidateRevision": 1,
+      "specSha256": "33ec749f1b43aef250114fc28cf5872f8f042d0d379e016d91e813e15485f940",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I04",
+      "candidateRevision": 1,
+      "specSha256": "147f50f3c66bcf3770aa3151b2c0ead17df5f8f6ccdebc02f9ceac9939fecf9c",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I05",
+      "candidateRevision": 1,
+      "specSha256": "d06c4b66fd20e85db3b2f6dd0b74066c4d0df2f451195429376eb362f22bdb50",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I06",
+      "candidateRevision": 1,
+      "specSha256": "7a6d58764dca4a946de150df8ba73c4cb11dd80ce8321e473b5fc9839c6ff4ac",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I07",
+      "candidateRevision": 1,
+      "specSha256": "8dc4b0f4dadba0908127fc68dcd4c6a0d0616a10553488c3e2ae5d6dbf40238e",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I08",
+      "candidateRevision": 1,
+      "specSha256": "d7c4637b625fa2a8f5853b2bd5e2ea934eb146f917530942ef82cd641f08cf85",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I09",
+      "candidateRevision": 1,
+      "specSha256": "31e8ef2811e4909a3bfb1585cba7cce407a5c1baaf23570f7104f5cf465e319a",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-I10",
+      "candidateRevision": 2,
+      "specSha256": "849aac91ee1b7f5add67662bac4282c87f6d386e2cbaaa9e28e3f25a625a437d",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-D01",
+      "candidateRevision": 1,
+      "specSha256": "f73b0675f5a2d31222d1ea93348fcf1ddfdff94e06ac970ef54fe40266b943c1",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-D02",
+      "candidateRevision": 1,
+      "specSha256": "fef4b69e907eec1cb79c4b11d90425359024e1c9ba1cfc904a8acb022a9e00bb",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-M01",
+      "candidateRevision": 1,
+      "specSha256": "b99fd6c43b30b9aaa6a430f3d6eaf03d77731e0e2285f17516699da25b0cb599",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-M02",
+      "candidateRevision": 1,
+      "specSha256": "b1de61fe485315024fbd69435e1da11c42d4d87f475fb931eff8ff89919ef7b8",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-M03",
+      "candidateRevision": 1,
+      "specSha256": "8994fccf263e05ea2979dd4213297cf914d3f2f9d904abd2ae562aa971c48254",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S04-M04",
+      "candidateRevision": 1,
+      "specSha256": "3e107de6336bc8c14a1925c2cbc033066697be76829c558ca1e47cebcf14413f",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I01",
+      "candidateRevision": 1,
+      "specSha256": "9e22fe59728542cd6739055573c52c502e3872978fa528f5ce705b5c7ffefaa6",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I02",
+      "candidateRevision": 1,
+      "specSha256": "9eca6b48ba450f774627ca5e9950f65f1ebc89a72933d994d218552785f081fd",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I03",
+      "candidateRevision": 1,
+      "specSha256": "edda92769327f7f547e47f3ea1be81674d9e4a948a46148cf9b3213bd4652d17",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I04",
+      "candidateRevision": 1,
+      "specSha256": "b86d1aa94ec6d6accae5234fbf6113d3dda04eb7a5c5fe12961ebdcbd32f93ac",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I05",
+      "candidateRevision": 1,
+      "specSha256": "05c28e7c941bf7962dd9394d55ade4d5ac2de238cf0643e472384c2fe81a26a2",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I06",
+      "candidateRevision": 1,
+      "specSha256": "0b973c508d6d8efa7f16a58753d8f72fd991f7f69464a115a5ea51188e2f4535",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I07",
+      "candidateRevision": 2,
+      "specSha256": "0040546f81ca9acae67fb88a4bdcbf3fbf11c2fee19bf3a5f6b1c956ffbc6802",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I08",
+      "candidateRevision": 1,
+      "specSha256": "e5ccbf6693f1d4f15896fdb0f994e3ca6386b41f10caaebb837842945573eeb3",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I09",
+      "candidateRevision": 1,
+      "specSha256": "b398b793f61e09829be29469e5cd53b9d76521649658e88e2a7458f228e22a7e",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I10",
+      "candidateRevision": 1,
+      "specSha256": "86f58da7e9c20b62a9c61607741ad96a97928ed679ffb07ca73e85b82c53c237",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I11",
+      "candidateRevision": 1,
+      "specSha256": "0822e1267d34ecbdd7661ab52e92801287fd1ac6ee795a2077931b5c58644d3b",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-I12",
+      "candidateRevision": 1,
+      "specSha256": "dad38ce9e4e760d310bed05aa330cdb2c955bda4f36940134df28532a98ae303",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-D01",
+      "candidateRevision": 1,
+      "specSha256": "d66ac5c2e7ff4f8103cad73d8a81d7445b7050cb818459e88df12116a59684c2",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-D02",
+      "candidateRevision": 1,
+      "specSha256": "6f97354fdcd59ac5e2c3737af827b0d31e2cef1e67764b007751062d22af6b28",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-D03",
+      "candidateRevision": 1,
+      "specSha256": "fb5e4d67335a9b1e4bfe8bc0c294ef326b33fe4b1296b96bdba2a4f6c8b30883",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-D04",
+      "candidateRevision": 1,
+      "specSha256": "3f0b7484734c5b6898381d6b7fda0721c22cf045af79e237b4beb6696bef1779",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-M01",
+      "candidateRevision": 1,
+      "specSha256": "b425add15e3e856e7025d1d1116af940287a1b4e5a4f55cef1ce23280fd47734",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-M02",
+      "candidateRevision": 2,
+      "specSha256": "3a3763032a9f4ef52fd2266a201bb4eef32b958a9ba591f9e090fc5507ea7bcb",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-M03",
+      "candidateRevision": 1,
+      "specSha256": "158fbb640a56ad552981e671ca5dcb2b0fc6b9399b124a5dff693220f2fab405",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-M04",
+      "candidateRevision": 2,
+      "specSha256": "6d06504faa57b20721bee2cbd3b3d00a837389045ca79cb7d2f26738d83a312b",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-M05",
+      "candidateRevision": 2,
+      "specSha256": "e745aeed905a4dd1f448edd6c0a1999693628522374979d29e810b70735f1079",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S05-M06",
+      "candidateRevision": 1,
+      "specSha256": "052a103140577d74740e9d180f0ba98ba730f1d093f701bfa6b605e8bb25f298",
+      "disposition": "protected_parallel_assessment_variant"
+    }
+  ],
+  "asset": {
+    "path": "web/assets/textbook/physics7-2023/p73-force-vector.png",
+    "sha256": "1f1d42f5381c652ce9ce249bb8195dc0d4dfacd1720c4aa4695faedaea874092",
+    "dimensions": [
+      261,
+      159
+    ],
+    "publicTextbookPracticeOnly": true
+  },
+  "remainingBatches": [
+    {
+      "batch": 2,
+      "questions": 86
+    },
+    {
+      "batch": 3,
+      "questions": 66
+    }
+  ]
+}

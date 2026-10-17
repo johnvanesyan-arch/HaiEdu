@@ -253,6 +253,20 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter IV batch 1 and remaining work — 15D.2, 2026-10-17
+
+- [x] Record the accepted 236-question scope, three batches and delegated ordinary approvals.
+- [x] Create inactive U04 foundation: one unit, six topics, 13 outcomes, 14 skills and a draft release; no policy/form/pool activation.
+- [x] Freeze/reconcile the complete comparison corpus, compare all 84 candidates and 3,486 pairs, and keep protected content in the restricted evidence archive.
+- [x] Stage 84 questions, 50 guides and 65 definitions; exact readback and 84/84 question plus 50/50 guide checks pass.
+- [x] Verify all pre-existing rows in 59 tracked public tables are unchanged.
+- [ ] Restore authenticated reviewer session and save delegated approvals of these exact versions; no new content permission is needed.
+- [ ] Complete batch 2: 86 questions across S06–S10, with guides, misconceptions and the same quality checks.
+- [ ] Complete batch 3: 66 questions across S11–S14, with guides, misconceptions and the same quality checks.
+- [ ] Finalize chapter-specific assessment/practical-evidence contracts and qualification/release under their own authorization.
+
+[Batch 1 evidence](chapter-iv-batch-01-staging.md). Merge/CI and source-commit-verified Notion sync close this documentation cycle; draft status is not approval.
+
 ## Chapter IV preparation — 15D.1, 2026-10-17
 
 - [x] Verify the current programme appendix, textbook hash and chapter boundaries; map all 11 mandatory and two additional outcomes.
@@ -260,8 +274,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Separate actual M3/M8 practical evidence from question interpretation; draft density, Hooke and friction task/rubric outlines.
 - [x] Inspect and extract five source figures; record four textbook corrections/exclusions and natural-Armenian/hint rules.
 - [x] Save source, read-only catalogue and preparation QA evidence; align repository summaries. Merge/CI and verified Notion synchronization close this documentation cycle.
-- [ ] Review/accept or revise the scope and bank budget with the owner; then prepare the inactive governed foundation under 15D.2.
-- [ ] Assess all 28 briefs against the complete current/history/guide/protected/related bank and within-batch evidence before staging survivors.
+- [x] Owner accepted the 236-slot plan and delegated ordinary approvals on 2026-10-17; inactive foundation created under 15D.2.
+- [x] Supersede the single 28-brief handoff with the explicitly authorized 84/86/66 cadence. Assess and stage the S01–S05 scope in batch 1; the remaining 18 planning briefs belong to batches 2/3.
 - [ ] Approve the chapter-specific assessment contract and the practical-evidence scope/workflow; do not import earlier chapter exceptions.
 - [ ] Complete ordinary content review, independent source/protection qualification, governed allocation, activation and authenticated release acceptance as separately authorized.
 
