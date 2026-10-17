@@ -5,9 +5,73 @@ on:
   push:
     branches: [main]
     paths:
-      # This file does not exist during preparation. Adding activation evidence
-      # after verified owner-authorized activation starts the first live check.
+      # Activated pilot: cover the runner, native pages, their API dependencies,
+      # the approved computed recipe URL, and relevant database contracts.
       - docs/evidence/chapter-iii-pilot-activation-20261017.json
+      - .github/workflows/chapter-iii-pilot-read-acceptance.yml
+      - package-lock.json
+      - package.json
+      - scripts/chapter-ii-pilot-read-acceptance.mjs
+      - scripts/chapter-iii-pilot-read-acceptance.mjs
+      - scripts/sprint-14-isolation.mjs
+      - scripts/stamp-release.mjs
+      - scripts/wait-for-production-release.mjs
+      - supabase/functions/_shared/academic-context.ts
+      - supabase/functions/_shared/analytics-evidence.mjs
+      - supabase/functions/_shared/assessment-policy.mjs
+      - supabase/functions/_shared/auth.ts
+      - supabase/functions/_shared/course-access.ts
+      - supabase/functions/_shared/curriculum-release.ts
+      - supabase/functions/_shared/governed-learning-runtime.mjs
+      - supabase/functions/_shared/initial-diagnostic.ts
+      - supabase/functions/_shared/institutional-teacher-analytics.ts
+      - supabase/functions/_shared/institutional-teacher-dashboard.ts
+      - supabase/functions/_shared/learning-model.ts
+      - supabase/functions/_shared/recommendation-telemetry.ts
+      - supabase/functions/_shared/student-dashboard-handler.mjs
+      - supabase/functions/_shared/student-learning-context.mjs
+      - supabase/functions/get-school-admin-overview/index.ts
+      - supabase/functions/get-school-teachers/index.ts
+      - supabase/functions/get-student-classes/index.ts
+      - supabase/functions/get-student-dashboard/index.ts
+      - supabase/functions/get-teacher-academic-context/index.ts
+      - supabase/functions/get-teacher-dashboard/index.ts
+      - supabase/functions/get-teacher-student/index.ts
+      - vercel.json
+      - web/account-roles.js
+      - web/app.js
+      - web/assessment-reporting.mjs
+      - web/base.css
+      - web/components.css
+      - web/config.js
+      - web/course-gate.js
+      - web/course-page.js
+      - web/course-workspace.css
+      - web/course.html
+      - web/home-class.js
+      - web/home.css
+      - web/index.html
+      - web/learning-extensions.mjs
+      - web/learning-navigation.mjs
+      - web/learning-player.mjs
+      - web/learning-stimulus.mjs
+      - web/multi-subject-home.js
+      - web/multi-subject.css
+      - web/remediation.js
+      - web/role-layout.css
+      - web/role-router.js
+      - web/session-watchdog.js
+      - web/student-courses.js
+      - web/student-shell.css
+      - web/student-shell.js
+      - web/styles.css
+      - web/tokens.css
+      - web/ux.css
+      - web/ux.js
+      - docs/evidence/chapter-iii-assessment-v2-configuration-20261015.json
+      - supabase/migrations/*assessment_policy*.sql
+      - supabase/migrations/*mastery_form*.sql
+      - supabase/migrations/*curriculum_release*.sql
 
 permissions:
   contents: read

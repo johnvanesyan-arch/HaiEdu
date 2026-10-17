@@ -1,8 +1,8 @@
 # Chapter III independent specialist review handoff
 
-Updated 2026-10-17 Asia/Yerevan · Sprint 15C.25 · Status: ordinary review complete; independent handoff/review deferred by John on October 17.
+Updated 2026-10-17 Asia/Yerevan · Sprint 15C.26 · Status: ordinary review complete; independent handoff/review deferred by John on October 17.
 
-[Technical release preparation and rollback](chapter-iii-release-preparation.md) are complete. This packet is retained for the later independent review; no reviewer decision or live activation is inferred from the deferral.
+[Technical release preparation and rollback](chapter-iii-release-preparation.md) are complete. The owner separately authorized the [provisional pilot activation](evidence/chapter-iii-pilot-activation-20261017.json), committed at 07:40 UTC. This packet is retained for later independent review; no reviewer decision or independent qualification is filled by activation. Authenticated production acceptance is pending.
 
 This packet prepares independent decisions; it does not record specialist approval. [15C.24R](chapter-iii-revision-review-20261017.md) verifies all 168 current questions approved with passing QA, 80 guides published and 344 definitions active. Both targeted v2 revisions and their five definitions were approved without content changes. Use the review-closure/conditional-forms-approved.json, qualification-ledger-approved.json and version-bindings-approved.json files in the current restricted packet. The 88-candidate ledger binds exact item/version/snapshot, technical QA and ordinary approval to the author comparison. Exact content, keys, examples, pair notes and membership remain restricted. Independent reviewer fields are still unfilled.
 
