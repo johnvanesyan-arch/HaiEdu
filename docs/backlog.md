@@ -253,6 +253,20 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter IV preparation — 15D.1, 2026-10-17
+
+- [x] Verify the current programme appendix, textbook hash and chapter boundaries; map all 11 mandatory and two additional outcomes.
+- [x] Prepare 14 skills, the proposed 236-question budget and 28 candidate briefs for one large feasibility batch.
+- [x] Separate actual M3/M8 practical evidence from question interpretation; draft density, Hooke and friction task/rubric outlines.
+- [x] Inspect and extract five source figures; record four textbook corrections/exclusions and natural-Armenian/hint rules.
+- [x] Save source, read-only catalogue and preparation QA evidence; align repository summaries. Merge/CI and verified Notion synchronization close this documentation cycle.
+- [ ] Review/accept or revise the scope and bank budget with the owner; then prepare the inactive governed foundation under 15D.2.
+- [ ] Assess all 28 briefs against the complete current/history/guide/protected/related bank and within-batch evidence before staging survivors.
+- [ ] Approve the chapter-specific assessment contract and the practical-evidence scope/workflow; do not import earlier chapter exceptions.
+- [ ] Complete ordinary content review, independent source/protection qualification, governed allocation, activation and authenticated release acceptance as separately authorized.
+
+[Preparation](chapter-iv-preparation.md) · [Candidate queue](chapter-iv-candidate-briefs.md). No questions or database foundation staged by 15D.1.
+
 ## Chapter III revision review closure — 15C.24R, 2026-10-17 Asia/Yerevan
 
 - [x] Verify both current v2 question approvals and all five active definitions against immutable review evidence.

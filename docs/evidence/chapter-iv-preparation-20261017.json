@@ -1,0 +1,817 @@
+{
+  "schema": "haiedu-chapter-preparation-v1",
+  "sprint": "15D.1",
+  "prepared_at": "2026-10-17T08:32:01.024078+00:00",
+  "status": "preparation_complete; owner_plan_review_pending",
+  "base_commit": "43410f23571ee03395e59cef244c9ffe5ff7891c",
+  "chapter": "PHY7-U04",
+  "title_hy": "Մարմինների փոխազդեցությունը",
+  "scope": "subject-aware content preparation only; no runtime/schema/database mutation",
+  "sources": {
+    "textbook": {
+      "title": "Ֆիզիկա 7",
+      "authors": [
+        "Գագիկ Մելիքյան",
+        "Սոս Մաիլյան"
+      ],
+      "publisher": "Էդիթ Պրինտ",
+      "year": 2023,
+      "library_file_id": "libfile_f4cf0be21a6081919cd90c8922b5396d",
+      "sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+      "printed_pages": [
+        60,
+        98
+      ],
+      "pdf_pages": [
+        61,
+        99
+      ],
+      "sections": [
+        19,
+        31
+      ]
+    },
+    "programme": {
+      "act_url": "https://www.arlis.am/hy/acts/229331",
+      "attachment_url": "https://www.arlis.am/acts/files/363077/966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+      "sha256": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+      "fresh_download_bytes": 248283,
+      "theme": 4,
+      "outcome_locator": "DOCX table index 4, row index 5, first unique cell (zero-based); preserve source order",
+      "legal_version": "N 40-Ն, amended N 36-Ն; effective 2026-08-14"
+    },
+    "si_correction": {
+      "url": "https://www.bipm.org/en/measurement-units/si-base-units",
+      "claim": "Current kilogram definition uses the Planck constant; the textbook artifact definition is historical"
+    }
+  },
+  "outcomes": [
+    {
+      "ref": "M1",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել  զանգվածը՝ որպես մարմնի իներտության չափ,(Հ8, Հ9)",
+      "skills": [
+        "S01"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "M2",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել խտության ֆիզիկական իմաստը, (Հ9)",
+      "skills": [
+        "S02",
+        "S03"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "M3",
+      "level": "mandatory",
+      "statement_hy": "կատարել նյութի խտության, մարմնի զանգվածի և ծավալի չափումներ, վերլուծել արդյունքները, կազմել աղյուսակներ, ներկայացնել փորձի արդյունքները,(Հ4, Հ28, Հ29)",
+      "skills": [
+        "S03",
+        "S04"
+      ],
+      "requires_performed_experiment": true
+    },
+    {
+      "ref": "M4",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել ուժը՝ որպես փոխազդեցության քանակական չափ,(Հ9)",
+      "skills": [
+        "S05"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "M5",
+      "level": "mandatory",
+      "statement_hy": "սահմանել ՄՀ-ում ուժի չափման միավորը,  բերել մեկ նյուտոն ուժի օրինակ,(Հ9)",
+      "skills": [
+        "S05",
+        "S09"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "M6",
+      "level": "mandatory",
+      "statement_hy": "հաշվել ծանրության ուժը՝ իմանալով մարմնի զանգվածը,(Հ9)",
+      "skills": [
+        "S06"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "M7",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել դեֆորմացիաների տեսակները, բերել օրինակներ,(Հ9, Հ28,Հ29)",
+      "skills": [
+        "S07"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "M8",
+      "level": "mandatory",
+      "statement_hy": "փորձով հիմնավորել Հուկի օրենքը,(Հ28, Հ29)",
+      "skills": [
+        "S08",
+        "S09"
+      ],
+      "requires_performed_experiment": true
+    },
+    {
+      "ref": "M9",
+      "level": "mandatory",
+      "statement_hy": "տարբերակել մարմնի զանգվածը, ծանրության ուժը և մարմնի կշիռը,(Հ8)",
+      "skills": [
+        "S10"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "M10",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել շփման ուժը, շփման առաջացման պատճառները, շփման տեսակները, բերել օրինակներ շփման ուժի օգտակար և վնասակար ազդեցությունների մասին, (Հ8, Հ28)",
+      "skills": [
+        "S11",
+        "S12"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "M11",
+      "level": "mandatory",
+      "statement_hy": "որոշել մի ուղղով ուղղված ուժերի համազորը,(Հ7)",
+      "skills": [
+        "S13"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "A1",
+      "level": "additional",
+      "statement_hy": "1) մեկնաբանել փոխազդեցության (ուժի) և շարժման վիճակի փոփոխության միջև պատճառահետևանքային կապերը և կիրառել դրանք շրջապատում հանդիպող շարժումները նկարագրելիս",
+      "skills": [
+        "S05",
+        "S13"
+      ],
+      "requires_performed_experiment": false
+    },
+    {
+      "ref": "A2",
+      "level": "additional",
+      "statement_hy": "2) մեկնաբանել ծանրության ուժը՝ որպես տիեզերական ձգողության ուժի օրինակ",
+      "skills": [
+        "S14"
+      ],
+      "requires_performed_experiment": false
+    }
+  ],
+  "skills": [
+    {
+      "code": "PHY7-U04-S01",
+      "short_code": "S01",
+      "name_hy": "Զանգվածը՝ որպես իներտության չափ",
+      "role": "mandatory",
+      "outcomes": [
+        "M1"
+      ],
+      "printed_pages": [
+        60,
+        63
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 4
+      }
+    },
+    {
+      "code": "PHY7-U04-S02",
+      "short_code": "S02",
+      "name_hy": "Նյութի խտության ֆիզիկական իմաստը",
+      "role": "mandatory",
+      "outcomes": [
+        "M2"
+      ],
+      "printed_pages": [
+        63,
+        67
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 4
+      }
+    },
+    {
+      "code": "PHY7-U04-S03",
+      "short_code": "S03",
+      "name_hy": "Խտության, զանգվածի և ծավալի հաշվում",
+      "role": "supporting",
+      "outcomes": [
+        "M2",
+        "M3"
+      ],
+      "printed_pages": [
+        64,
+        70
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 2,
+        "mastery": 4
+      }
+    },
+    {
+      "code": "PHY7-U04-S04",
+      "short_code": "S04",
+      "name_hy": "Խտության որոշումը չափումներով",
+      "role": "mandatory",
+      "outcomes": [
+        "M3"
+      ],
+      "printed_pages": [
+        68,
+        68
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 2,
+        "mastery": 4
+      }
+    },
+    {
+      "code": "PHY7-U04-S05",
+      "short_code": "S05",
+      "name_hy": "Մարմինների փոխազդեցությունը, ուժը և նրա միավորը",
+      "role": "mandatory",
+      "outcomes": [
+        "M4",
+        "M5",
+        "A1"
+      ],
+      "printed_pages": [
+        71,
+        74
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 6
+      }
+    },
+    {
+      "code": "PHY7-U04-S06",
+      "short_code": "S06",
+      "name_hy": "Ծանրության ուժի հաշվում",
+      "role": "mandatory",
+      "outcomes": [
+        "M6"
+      ],
+      "printed_pages": [
+        74,
+        78
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 2,
+        "mastery": 4
+      }
+    },
+    {
+      "code": "PHY7-U04-S07",
+      "short_code": "S07",
+      "name_hy": "Առաձգական և պլաստիկ դեֆորմացիաներ",
+      "role": "mandatory",
+      "outcomes": [
+        "M7"
+      ],
+      "printed_pages": [
+        79,
+        80
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 4
+      }
+    },
+    {
+      "code": "PHY7-U04-S08",
+      "short_code": "S08",
+      "name_hy": "Հուկի օրենքը և փորձի արդյունքները",
+      "role": "mandatory",
+      "outcomes": [
+        "M8"
+      ],
+      "printed_pages": [
+        80,
+        83
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 6
+      }
+    },
+    {
+      "code": "PHY7-U04-S09",
+      "short_code": "S09",
+      "name_hy": "Ուժաչափի աստիճանավորումը և ցուցմունքը",
+      "role": "supporting",
+      "outcomes": [
+        "M5",
+        "M8"
+      ],
+      "printed_pages": [
+        83,
+        84
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 2
+      }
+    },
+    {
+      "code": "PHY7-U04-S10",
+      "short_code": "S10",
+      "name_hy": "Զանգվածը, ծանրության ուժը և կշիռը",
+      "role": "mandatory",
+      "outcomes": [
+        "M9"
+      ],
+      "printed_pages": [
+        85,
+        87
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 6
+      }
+    },
+    {
+      "code": "PHY7-U04-S11",
+      "short_code": "S11",
+      "name_hy": "Շփման ուժի տեսակները, պատճառները և դերը",
+      "role": "mandatory",
+      "outcomes": [
+        "M10"
+      ],
+      "printed_pages": [
+        87,
+        91
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 6
+      }
+    },
+    {
+      "code": "PHY7-U04-S12",
+      "short_code": "S12",
+      "name_hy": "Շփման ուժի ուսումնասիրությունը փորձով",
+      "role": "supporting",
+      "outcomes": [
+        "M10"
+      ],
+      "printed_pages": [
+        92,
+        93
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 2
+      }
+    },
+    {
+      "code": "PHY7-U04-S13",
+      "short_code": "S13",
+      "name_hy": "Մի ուղղով ուղղված ուժերի համազորը",
+      "role": "mandatory",
+      "outcomes": [
+        "M11",
+        "A1"
+      ],
+      "printed_pages": [
+        93,
+        98
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 6
+      }
+    },
+    {
+      "code": "PHY7-U04-S14",
+      "short_code": "S14",
+      "name_hy": "Ծանրության ուժը և տիեզերական ձգողությունը",
+      "role": "additional",
+      "outcomes": [
+        "A2"
+      ],
+      "printed_pages": [
+        74,
+        78
+      ],
+      "planning_budget": {
+        "practice": 6,
+        "diagnostic": 2,
+        "mastery": 2
+      }
+    }
+  ],
+  "planning_budget": {
+    "practice": 138,
+    "diagnostic": 38,
+    "mastery": 60,
+    "total": 236,
+    "approved": false,
+    "qualified_capacity": 0,
+    "session_length": null,
+    "pass_rule": null,
+    "form_count": null
+  },
+  "candidate_briefs": [
+    {
+      "id": "S01-C01",
+      "skill": "S01",
+      "title_hy": "Փոխազդող մարմինների զանգվածների համեմատում",
+      "evidence_intent": "Initially stationary bodies push apart; compare their masses from the stated speed changes.",
+      "screening_boundary": "Same interaction and initial rest must be explicit; do not generalize from unrelated moving objects.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S01-C02",
+      "skill": "S01",
+      "title_hy": "Զանգվածի որոշումը կշեռքով",
+      "evidence_intent": "Read a balanced equal-arm scale, including the container mass when supplied.",
+      "screening_boundary": "Separate mass from force and from a scale-only Chapter I duplicate.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S02-C01",
+      "skill": "S02",
+      "title_hy": "Նույն ծավալը, տարբեր զանգվածներ",
+      "evidence_intent": "Compare homogeneous solid samples of equal volume from mass data.",
+      "screening_boundary": "Same conditions; no holes or composite bodies; do not confuse a larger sample with a denser material.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S02-C02",
+      "skill": "S02",
+      "title_hy": "Նույն նյութից պատրաստված տարբեր մարմիններ",
+      "evidence_intent": "Predict density when a homogeneous sample is divided without changing its state or temperature.",
+      "screening_boundary": "Mass and volume both change; distinguish reasoning from memorized density definitions.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S03-C01",
+      "skill": "S03",
+      "title_hy": "Խտության միավորների ձևափոխում",
+      "evidence_intent": "Convert a density while converting both mass and cubic-volume units.",
+      "screening_boundary": "A units-only variant overlaps U01-S07; retain only if density understanding adds evidence.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S03-C02",
+      "skill": "S03",
+      "title_hy": "Նյութի նույնականացումը խտությամբ",
+      "evidence_intent": "Calculate density from supplied mass and volume, then compare with a supplied reference table.",
+      "screening_boundary": "Describe the matching entry among given candidates; density alone need not uniquely identify every real substance.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S04-C01",
+      "skill": "S04",
+      "title_hy": "Ծավալի չափման եղանակի ընտրություն",
+      "evidence_intent": "Choose dimensions or water displacement for a specified solid, then link the result to its mass and density.",
+      "screening_boundary": "For immersion specify nonporous insoluble solid, complete submersion and no trapped air; compare U01-S10.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S04-C02",
+      "skill": "S04",
+      "title_hy": "Չափումների աղյուսակի ստուգում",
+      "evidence_intent": "Find a mistaken volume or unit in a density investigation table and explain its consequence.",
+      "screening_boundary": "MCQ interpretation does not show the student performed the measurements.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S05-C01",
+      "skill": "S05",
+      "title_hy": "Ուժի պատկերը",
+      "evidence_intent": "Read magnitude, direction and application point using textbook figure 48.",
+      "screening_boundary": "The public figure is teaching-exposed; no new protected coverage claim.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S05-C02",
+      "skill": "S05",
+      "title_hy": "Մեկ նյուտոնի իմաստը",
+      "evidence_intent": "Connect the taught one-kilogram, one-second speed-change example to the unit newton.",
+      "screening_boundary": "Use the stated one-dimensional example; do not require acceleration notation or untaught F=ma algebra.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S06-C01",
+      "skill": "S06",
+      "title_hy": "Զանգվածից՝ ծանրության ուժ",
+      "evidence_intent": "Calculate gravity force after converting grams to kilograms.",
+      "screening_boundary": "State g explicitly and check the unit N; arithmetic-only variants are not new reasoning.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S06-C02",
+      "skill": "S06",
+      "title_hy": "Ծավալից՝ ծանրության ուժ",
+      "evidence_intent": "Use supplied density and solid volume to obtain mass and then gravity force.",
+      "screening_boundary": "All units and material assumptions explicit; avoid p.69 problem 4 arithmetic.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S07-C01",
+      "skill": "S07",
+      "title_hy": "Ի՞նչ է մնում ազդեցությունը վերացնելուց հետո",
+      "evidence_intent": "Classify a deformation from the observed recovery after unloading.",
+      "screening_boundary": "Material name alone does not determine whether this particular deformation is elastic.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S07-C02",
+      "skill": "S07",
+      "title_hy": "Սեղմում և ձգում",
+      "evidence_intent": "Compare shape/size changes in a stated compression and stretching situation.",
+      "screening_boundary": "Do not confuse the geometric type with whether the deformation is reversible.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S08-C01",
+      "skill": "S08",
+      "title_hy": "Երկարացո՞ւմ, թե՞ ամբողջ երկարություն",
+      "evidence_intent": "Subtract unloaded length before applying F=kx in the stated linear range.",
+      "screening_boundary": "Use the same spring and distinguish x from final length.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S08-C02",
+      "skill": "S08",
+      "title_hy": "Հուկի օրենքի փորձնական ստուգում",
+      "evidence_intent": "Interpret several load-extension measurements and select a justified proportionality conclusion.",
+      "screening_boundary": "Finite measured agreement within instrument precision is evidence, not proof for all extensions; actual performance remains separate.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S09-C01",
+      "skill": "S09",
+      "title_hy": "Ուժաչափի զրոյական նշումը",
+      "evidence_intent": "Choose the unloaded reference and sequence for calibrating a spring gauge.",
+      "screening_boundary": "Zero position and permitted range matter; do not overload the instrument.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S09-C02",
+      "skill": "S09",
+      "title_hy": "Ուժաչափի բաժանման արժեքը",
+      "evidence_intent": "Read a calibrated gauge whose marked force intervals are supplied.",
+      "screening_boundary": "Compare U01-S08; a mere reskin of its scale question adds no distinct evidence.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S10-C01",
+      "skill": "S10",
+      "title_hy": "Ո՞ր մարմնի վրա է ազդում ուժը",
+      "evidence_intent": "Identify gravity on the body and weight on its support or suspension using figure 60.",
+      "screening_boundary": "Equal magnitudes do not make the forces identical or make them act on one object.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S10-C02",
+      "skill": "S10",
+      "title_hy": "Ընկնող ուժաչափը",
+      "evidence_intent": "Interpret the textbook situation where a falling spring gauge reads zero.",
+      "screening_boundary": "Explain idealized free fall and negligible air resistance; zero weight does not imply zero mass or gravity.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S11-C01",
+      "skill": "S11",
+      "title_hy": "Դադարի շփում",
+      "evidence_intent": "Determine friction for a block that remains at rest under a stated horizontal pull.",
+      "screening_boundary": "Specify the situation and balance; do not claim static friction is always at its maximum.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S11-C02",
+      "skill": "S11",
+      "title_hy": "Շփումը մեծացնե՞լ, թե՞ փոքրացնել",
+      "evidence_intent": "Choose a useful friction change in a familiar taught setting and justify it.",
+      "screening_boundary": "Do not imply friction is always harmful or always opposite the object’s velocity in every setting.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S12-C01",
+      "skill": "S12",
+      "title_hy": "Հպման մակերեսի ազդեցությունը",
+      "evidence_intent": "Choose a controlled comparison turning the same block onto another face on a horizontal surface.",
+      "screening_boundary": "Keep load and surface condition comparable; distinguish contact area from material/roughness changes.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S12-C02",
+      "skill": "S12",
+      "title_hy": "Ո՞ր ցուցմունքն է չափում սահքի շփման ուժը",
+      "evidence_intent": "Interpret the gauge reading during approximately uniform horizontal sliding.",
+      "screening_boundary": "A starting peak or accelerating pull cannot automatically stand for sliding friction; compare Chapter III uniform motion.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S13-C01",
+      "skill": "S13",
+      "title_hy": "Համազորի մեծությունն ու ուղղությունը",
+      "evidence_intent": "Calculate the resultant of opposite forces acting along one line on the same body.",
+      "screening_boundary": "State both magnitude and direction; do not add an interaction pair acting on different bodies.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S13-C02",
+      "skill": "S13",
+      "title_hy": "Զրոյական համազոր",
+      "evidence_intent": "Distinguish rest from uniform straight-line motion when the resultant is zero.",
+      "screening_boundary": "Initial motion must be stated; zero resultant does not alone imply rest.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S14-C01",
+      "skill": "S14",
+      "title_hy": "Ձգողությունը միայն Երկրի՞ն է հատուկ",
+      "evidence_intent": "Recognize gravity as an interaction between bodies beyond the Earth-only example.",
+      "screening_boundary": "Qualitative additional outcome; no extra mandatory mastery gate.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    },
+    {
+      "id": "S14-C02",
+      "skill": "S14",
+      "title_hy": "Բարձրությունը և ծանրության ուժը",
+      "evidence_intent": "Explain qualitatively why constant near-surface g is a limited approximation when height changes substantially.",
+      "screening_boundary": "Do not require inverse-square calculations, planetary constants or untaught orbital mechanics.",
+      "status": "unassessed_candidate_brief; not an item or approval"
+    }
+  ],
+  "assets": [
+    {
+      "id": "fig48-force-vector",
+      "path": "docs/assets/chapter-iv-preparation/fig48-force-vector.png",
+      "printed_page": 73,
+      "pdf_page": 74,
+      "pdf_crop_points": [
+        338,
+        88,
+        425,
+        141
+      ],
+      "scale": 3,
+      "dimensions": [
+        261,
+        159
+      ],
+      "sha256": "1f1d42f5381c652ce9ce249bb8195dc0d4dfacd1720c4aa4695faedaea874092",
+      "alt_hy": "Գնդի վրա ազդող ուժը. նշված են A կիրառման կետը, ուղղությունը և 4 Ն մասշտաբը։",
+      "exposure": "textbook_public; practice/guide candidate only; no protected-use qualification"
+    },
+    {
+      "id": "fig57-spring-extension",
+      "path": "docs/assets/chapter-iv-preparation/fig57-spring-extension.png",
+      "printed_page": 80,
+      "pdf_page": 81,
+      "pdf_crop_points": [
+        57,
+        372,
+        157,
+        594
+      ],
+      "scale": 3,
+      "dimensions": [
+        300,
+        666
+      ],
+      "sha256": "7abab7a94ba60c6bacbfd95e73a01e0b60c34842e488a94f8104707af5d7be1a",
+      "alt_hy": "Նույն զսպանակը՝ առանց բեռի, մեկ և երկու միատեսակ բեռներով։ Նշված են երկարացումները։",
+      "exposure": "textbook_public; practice/guide candidate only; no protected-use qualification"
+    },
+    {
+      "id": "fig60-weight-gravity",
+      "path": "docs/assets/chapter-iv-preparation/fig60-weight-gravity.png",
+      "printed_page": 85,
+      "pdf_page": 86,
+      "pdf_crop_points": [
+        165,
+        448,
+        325,
+        560
+      ],
+      "scale": 3,
+      "dimensions": [
+        480,
+        336
+      ],
+      "sha256": "97968dc3963b145c624f62d64769d1c2513d085e9ebb839a1babaa22fa17c96c",
+      "alt_hy": "Հենարանին դրված և կախոցից կախված մարմինների ծանրության ուժն ու կշիռը։",
+      "exposure": "textbook_public; practice/guide candidate only; no protected-use qualification"
+    },
+    {
+      "id": "fig64-friction-measurement",
+      "path": "docs/assets/chapter-iv-preparation/fig64-friction-measurement.png",
+      "printed_page": 92,
+      "pdf_page": 93,
+      "pdf_crop_points": [
+        141,
+        312,
+        349,
+        355
+      ],
+      "scale": 3,
+      "dimensions": [
+        624,
+        129
+      ],
+      "sha256": "05151f4011452138c82494ce891f09ec815672aead0aed223e2ee85b00502035",
+      "alt_hy": "Հորիզոնական մակերևույթի վրա չորսուն քաշում են ուժաչափով։ Նշված են քարշի և շփման ուժերի ուղղությունները։",
+      "exposure": "textbook_public; practice/guide candidate only; no protected-use qualification"
+    },
+    {
+      "id": "fig66-67-resultant",
+      "path": "docs/assets/chapter-iv-preparation/fig66-67-resultant.png",
+      "printed_page": 94,
+      "pdf_page": 95,
+      "pdf_crop_points": [
+        153,
+        368,
+        339,
+        429
+      ],
+      "scale": 3,
+      "dimensions": [
+        558,
+        183
+      ],
+      "sha256": "3ba7bdedd865b422a228d1617c34462479a43a0407ec3e890df243ca0a3c4e0f",
+      "alt_hy": "Նույն և հակառակ ուղղություններով ազդող երկու ուժերն ու դրանց համազորը։",
+      "exposure": "textbook_public; practice/guide candidate only; no protected-use qualification"
+    }
+  ],
+  "practical_tasks": [
+    {
+      "id": "LAB-DENSITY",
+      "primary_outcome": "M3",
+      "status": "draft rubric; not implemented or completed"
+    },
+    {
+      "id": "LAB-HOOKE",
+      "primary_outcome": "M8",
+      "status": "draft rubric; not implemented or completed"
+    },
+    {
+      "id": "LAB-FRICTION",
+      "primary_outcome": "M10",
+      "status": "programme practical activity; not an extra mandatory outcome"
+    }
+  ],
+  "comparison": {
+    "status": "not performed; catalogue mapping only",
+    "required_before": "new/revised question deployment",
+    "related_skills": [
+      "PHY7-U01-S02",
+      "PHY7-U01-S04",
+      "PHY7-U01-S05",
+      "PHY7-U01-S06",
+      "PHY7-U01-S07",
+      "PHY7-U01-S08",
+      "PHY7-U01-S09",
+      "PHY7-U01-S10",
+      "PHY7-U02-S02",
+      "PHY7-U02-S01 (archived)",
+      "PHY7-U03-S01",
+      "PHY7-U03-S04",
+      "PHY7-U03-S05",
+      "PHY7-U03-S06",
+      "PHY7-U03-S07",
+      "PHY7-U03-S08"
+    ]
+  },
+  "boundaries": [
+    "No live PHY7-U04 unit, skill or release existed at the read-only catalogue checkpoint.",
+    "Zero Chapter IV questions, guides or definitions staged by this sprint.",
+    "Zero content approvals, allocations, activations or learner events created.",
+    "No laboratory-performance result can be inferred from MCQ interpretation.",
+    "Chapter II/III protected-parallel and provisional-pilot exceptions are not extended to Chapter IV."
+  ]
+}

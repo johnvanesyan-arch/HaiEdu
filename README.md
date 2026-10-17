@@ -11,6 +11,8 @@ Chapter II has 192 approved questions, 263 active definitions and 57 published g
 
 **Sprint 15C.26 technical scope complete: Chapter III is active as the owner-authorized provisional pilot.** All 168 approved questions, 80 published guides and 344 active definitions are unchanged. Exact activation/readback verified 510 configuration rows, four v2 policy contracts and five forms; rollback and commit passed all 61 preservation scopes. Authenticated production acceptance passed **123/123**, including Home → Chapter I at 1365 px and Chapter I → II → III → I at 390 px, with two-school isolation **54/54**. All 59 tracked public table fingerprints remained unchanged after activation through acceptance. Chapters I/II and learner history are preserved. Independent specialist review, final exposure disposition and production promotion remain open. [Release and evidence](docs/chapter-iii-pilot-release.md).
 
+**Sprint 15D.1 preparation complete:** Chapter IV «Մարմինների փոխազդեցությունը» is mapped to 11 mandatory and two additional programme outcomes. The proposal contains 14 skills, a 236-question planning budget (138 Practice / 38 Diagnostic / 60 Mastery), 28 unassessed candidate briefs, three practical-task drafts and five verified textbook crops. Four confirmed textbook issues have explicit authoring dispositions. The plan awaits owner review; no Chapter IV content or foundation is staged, and no assessment contract or release is approved. M3/M8 require performed experiments beyond MCQ interpretation. [Preparation and evidence](docs/chapter-iv-preparation.md).
+
 ## Chapter I implemented baseline
 
 The project now has a working Chapter I learning-engine slice for:

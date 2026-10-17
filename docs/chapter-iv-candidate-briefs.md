@@ -1,0 +1,36 @@
+# Chapter IV — first large candidate assessment queue
+
+**Sprint 15D.1 · 2026-10-17 · 28 unassessed candidate briefs across 14 proposed skills.** These are planning entries, not drafted MCQs or accepted families. No correct options, reviewed versions or assessment eligibility are implied. Review the [source/skill/budget plan](chapter-iv-preparation.md) first. The next slice assesses this complete set against current/historical/teaching/related banks in one batch, records retain/revise/omit decisions, and drafts only defensible survivors. The number retained may be smaller than 28.
+
+| ID | Armenian working title | Intended evidence | Required screening boundary |
+| --- | --- | --- | --- |
+| S01-C01 | Փոխազդող մարմինների զանգվածների համեմատում | Initially stationary bodies push apart; compare their masses from the stated speed changes. | Same interaction and initial rest must be explicit; do not generalize from unrelated moving objects. |
+| S01-C02 | Զանգվածի որոշումը կշեռքով | Read a balanced equal-arm scale, including the container mass when supplied. | Separate mass from force and from a scale-only Chapter I duplicate. |
+| S02-C01 | Նույն ծավալը, տարբեր զանգվածներ | Compare homogeneous solid samples of equal volume from mass data. | Same conditions; no holes or composite bodies; do not confuse a larger sample with a denser material. |
+| S02-C02 | Նույն նյութից պատրաստված տարբեր մարմիններ | Predict density when a homogeneous sample is divided without changing its state or temperature. | Mass and volume both change; distinguish reasoning from memorized density definitions. |
+| S03-C01 | Խտության միավորների ձևափոխում | Convert a density while converting both mass and cubic-volume units. | A units-only variant overlaps U01-S07; retain only if density understanding adds evidence. |
+| S03-C02 | Նյութի նույնականացումը խտությամբ | Calculate density from supplied mass and volume, then compare with a supplied reference table. | Describe the matching entry among given candidates; density alone need not uniquely identify every real substance. |
+| S04-C01 | Ծավալի չափման եղանակի ընտրություն | Choose dimensions or water displacement for a specified solid, then link the result to its mass and density. | For immersion specify nonporous insoluble solid, complete submersion and no trapped air; compare U01-S10. |
+| S04-C02 | Չափումների աղյուսակի ստուգում | Find a mistaken volume or unit in a density investigation table and explain its consequence. | MCQ interpretation does not show the student performed the measurements. |
+| S05-C01 | Ուժի պատկերը | Read magnitude, direction and application point using textbook figure 48. | The public figure is teaching-exposed; no new protected coverage claim. |
+| S05-C02 | Մեկ նյուտոնի իմաստը | Connect the taught one-kilogram, one-second speed-change example to the unit newton. | Use the stated one-dimensional example; do not require acceleration notation or untaught F=ma algebra. |
+| S06-C01 | Զանգվածից՝ ծանրության ուժ | Calculate gravity force after converting grams to kilograms. | State g explicitly and check the unit N; arithmetic-only variants are not new reasoning. |
+| S06-C02 | Ծավալից՝ ծանրության ուժ | Use supplied density and solid volume to obtain mass and then gravity force. | All units and material assumptions explicit; avoid p.69 problem 4 arithmetic. |
+| S07-C01 | Ի՞նչ է մնում ազդեցությունը վերացնելուց հետո | Classify a deformation from the observed recovery after unloading. | Material name alone does not determine whether this particular deformation is elastic. |
+| S07-C02 | Սեղմում և ձգում | Compare shape/size changes in a stated compression and stretching situation. | Do not confuse the geometric type with whether the deformation is reversible. |
+| S08-C01 | Երկարացո՞ւմ, թե՞ ամբողջ երկարություն | Subtract unloaded length before applying F=kx in the stated linear range. | Use the same spring and distinguish x from final length. |
+| S08-C02 | Հուկի օրենքի փորձնական ստուգում | Interpret several load-extension measurements and select a justified proportionality conclusion. | Finite measured agreement within instrument precision is evidence, not proof for all extensions; actual performance remains separate. |
+| S09-C01 | Ուժաչափի զրոյական նշումը | Choose the unloaded reference and sequence for calibrating a spring gauge. | Zero position and permitted range matter; do not overload the instrument. |
+| S09-C02 | Ուժաչափի բաժանման արժեքը | Read a calibrated gauge whose marked force intervals are supplied. | Compare U01-S08; a mere reskin of its scale question adds no distinct evidence. |
+| S10-C01 | Ո՞ր մարմնի վրա է ազդում ուժը | Identify gravity on the body and weight on its support or suspension using figure 60. | Equal magnitudes do not make the forces identical or make them act on one object. |
+| S10-C02 | Ընկնող ուժաչափը | Interpret the textbook situation where a falling spring gauge reads zero. | Explain idealized free fall and negligible air resistance; zero weight does not imply zero mass or gravity. |
+| S11-C01 | Դադարի շփում | Determine friction for a block that remains at rest under a stated horizontal pull. | Specify the situation and balance; do not claim static friction is always at its maximum. |
+| S11-C02 | Շփումը մեծացնե՞լ, թե՞ փոքրացնել | Choose a useful friction change in a familiar taught setting and justify it. | Do not imply friction is always harmful or always opposite the object’s velocity in every setting. |
+| S12-C01 | Հպման մակերեսի ազդեցությունը | Choose a controlled comparison turning the same block onto another face on a horizontal surface. | Keep load and surface condition comparable; distinguish contact area from material/roughness changes. |
+| S12-C02 | Ո՞ր ցուցմունքն է չափում սահքի շփման ուժը | Interpret the gauge reading during approximately uniform horizontal sliding. | A starting peak or accelerating pull cannot automatically stand for sliding friction; compare Chapter III uniform motion. |
+| S13-C01 | Համազորի մեծությունն ու ուղղությունը | Calculate the resultant of opposite forces acting along one line on the same body. | State both magnitude and direction; do not add an interaction pair acting on different bodies. |
+| S13-C02 | Զրոյական համազոր | Distinguish rest from uniform straight-line motion when the resultant is zero. | Initial motion must be stated; zero resultant does not alone imply rest. |
+| S14-C01 | Ձգողությունը միայն Երկրի՞ն է հատուկ | Recognize gravity as an interaction between bodies beyond the Earth-only example. | Qualitative additional outcome; no extra mandatory mastery gate. |
+| S14-C02 | Բարձրությունը և ծանրության ուժը | Explain qualitatively why constant near-surface g is a limited approximation when height changes substantially. | Do not require inverse-square calculations, planetary constants or untaught orbital mechanics. |
+
+For each retained brief, the later item record must contain the exact source locator, rendered text and diagram dependency, answer and full option logic, misconception mappings, two natural Armenian hints, explanation, guide/example exposure comparison, whole-bank pair decisions and exact version hashes. Public textbook figures cannot silently become protected stimuli. No Chapter II/III parallel-variant exception is inherited.

@@ -1,0 +1,209 @@
+{
+  "units": [
+    {
+      "id": "0349ffcd-8fc9-47f2-82d1-3d5cfcb3a096",
+      "code": "PHY7-U01",
+      "status": "review",
+      "title_en": "Physical methods of studying nature",
+      "title_hy": "Բնության ուսումնասիրության ֆիզիկական մեթոդները",
+      "sequence_order": 1,
+      "subject_program_id": "258955e9-30e7-43ef-95c5-324a53143270"
+    },
+    {
+      "id": "fbebea6d-1767-4b76-b242-a5d32a4115dd",
+      "code": "MATH7-QA-U01",
+      "status": "draft",
+      "title_en": "Multi-subject architecture QA unit",
+      "title_hy": "Բազմառարկայական ճարտարապետության QA միավոր",
+      "sequence_order": 1,
+      "subject_program_id": "008814e3-fe88-46c4-a9ce-415b2fbafa27"
+    },
+    {
+      "id": "beae3516-4317-4c8b-bd66-576c6f309308",
+      "code": "PHY7-U02",
+      "status": "review",
+      "title_en": "Structure of matter",
+      "title_hy": "Նյութի կառուցվածքը",
+      "sequence_order": 2,
+      "subject_program_id": "258955e9-30e7-43ef-95c5-324a53143270"
+    },
+    {
+      "id": "aa824efc-b407-5143-9c92-a894d97be972",
+      "code": "PHY7-U03",
+      "status": "review",
+      "title_en": "Mechanical motion",
+      "title_hy": "Մեխանիկական շարժում",
+      "sequence_order": 3,
+      "subject_program_id": "258955e9-30e7-43ef-95c5-324a53143270"
+    }
+  ],
+  "skills": [
+    {
+      "code": "PHY7-U01-S01",
+      "status": "review",
+      "name_hy": "Ֆիզիկական երևույթների ճանաչում և դասակարգում"
+    },
+    {
+      "code": "PHY7-U01-S02",
+      "status": "review",
+      "name_hy": "Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը"
+    },
+    {
+      "code": "PHY7-U01-S03",
+      "status": "review",
+      "name_hy": "Ֆիզիկոսներ և հայ ֆիզիկոսներ"
+    },
+    {
+      "code": "PHY7-U01-S04",
+      "status": "review",
+      "name_hy": "Դիտումը և փորձը տարբերակելը"
+    },
+    {
+      "code": "PHY7-U01-S05",
+      "status": "review",
+      "name_hy": "Վարկած–փորձ–տվյալ–եզրակացություն շղթան"
+    },
+    {
+      "code": "PHY7-U01-S06",
+      "status": "review",
+      "name_hy": "Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր"
+    },
+    {
+      "code": "PHY7-U01-S07",
+      "status": "review",
+      "name_hy": "Չափման միավորների պարզ փոխարկումներ"
+    },
+    {
+      "code": "PHY7-U01-S08",
+      "status": "review",
+      "name_hy": "Սանդղակի բաժանման արժեքը, չափման սահմանը և ցուցմունքը"
+    },
+    {
+      "code": "PHY7-U01-S09",
+      "status": "review",
+      "name_hy": "Չափման սխալ և ճշգրտության գնահատում"
+    },
+    {
+      "code": "PHY7-U01-S10",
+      "status": "review",
+      "name_hy": "Չափման փորձի պլանավորում և անկանոն մարմնի ծավալի որոշում"
+    },
+    {
+      "code": "PHY7-U02-S02",
+      "status": "review",
+      "name_hy": "Փորձերով հիմնավորել նյութի մասնիկային կառուցվածքը"
+    },
+    {
+      "code": "PHY7-U02-S03",
+      "status": "review",
+      "name_hy": "Տարբերակել ատոմը, մոլեկուլը և քիմիական տարրը"
+    },
+    {
+      "code": "PHY7-U02-S04",
+      "status": "review",
+      "name_hy": "Մոլեկուլների չափերը համեմատել այլ մարմինների չափերի հետ"
+    },
+    {
+      "code": "PHY7-U02-S05",
+      "status": "review",
+      "name_hy": "Նկարագրել ատոմների և մոլեկուլների շարժումը նյութում"
+    },
+    {
+      "code": "PHY7-U02-S06",
+      "status": "review",
+      "name_hy": "Դիֆուզիան բացատրել օրինակներով"
+    },
+    {
+      "code": "PHY7-U02-S07",
+      "status": "review",
+      "name_hy": "Համեմատել դիֆուզիայի արագությունը նյութի տարբեր ագրեգատային վիճակներում"
+    },
+    {
+      "code": "PHY7-U02-S08",
+      "status": "review",
+      "name_hy": "Մարմնի ջերմաստիճանը կապել մասնիկների շարժման արագության հետ"
+    },
+    {
+      "code": "PHY7-U02-S09",
+      "status": "review",
+      "name_hy": "Բացատրել ջերմաչափի աշխատանքի սկզբունքը"
+    },
+    {
+      "code": "PHY7-U02-S01",
+      "status": "archived",
+      "name_hy": "Տարբերակել ֆիզիկական մարմինն ու նյութը"
+    },
+    {
+      "code": "PHY7-U03-S01",
+      "status": "review",
+      "name_hy": "Մեխանիկական շարժումը և հաշվարկման մարմինը"
+    },
+    {
+      "code": "PHY7-U03-S02",
+      "status": "review",
+      "name_hy": "Մարմինը որպես նյութական կետ"
+    },
+    {
+      "code": "PHY7-U03-S03",
+      "status": "review",
+      "name_hy": "Շարժման հետագիծը և անցած ճանապարհը"
+    },
+    {
+      "code": "PHY7-U03-S04",
+      "status": "review",
+      "name_hy": "Հավասարաչափ և անհավասարաչափ շարժում"
+    },
+    {
+      "code": "PHY7-U03-S05",
+      "status": "review",
+      "name_hy": "Ճանապարհային արագության իմաստը"
+    },
+    {
+      "code": "PHY7-U03-S06",
+      "status": "review",
+      "name_hy": "Արագության միավորների ձևափոխում"
+    },
+    {
+      "code": "PHY7-U03-S07",
+      "status": "review",
+      "name_hy": "Արագության, ճանապարհի և ժամանակի հաշվում"
+    },
+    {
+      "code": "PHY7-U03-S08",
+      "status": "review",
+      "name_hy": "Արագության որոշումը չափումներով"
+    }
+  ],
+  "sources": [
+    {
+      "source_key": "am_physics_grade7_programme_40n_36n",
+      "official_url": "https://www.arlis.am/hy/acts/229331",
+      "document_type": "grade_programme",
+      "version_label": "N 40-Ն as amended and reissued by N 36-Ն, effective 14 August 2026",
+      "verification_status": "verified"
+    }
+  ],
+  "releases": [
+    {
+      "status": "legacy",
+      "release_key": "physics7_u01_legacy_pre_11k",
+      "activated_at": "2026-09-19T06:45:24.76571+00:00"
+    },
+    {
+      "status": "pilot",
+      "release_key": "physics7_u01_2026_08_14_pilot_r1",
+      "activated_at": "2026-09-19T06:45:24.76571+00:00"
+    },
+    {
+      "status": "pilot",
+      "release_key": "physics7_u02_2026_08_14_pilot_r2",
+      "activated_at": "2026-10-13T17:38:42.811795+00:00"
+    },
+    {
+      "status": "pilot",
+      "release_key": "physics7_u03_2026_08_14_pilot_r3",
+      "activated_at": "2026-10-17T07:40:29.428154+00:00"
+    }
+  ],
+  "observed_at": "2026-10-17T08:27:09.628402+00:00"
+}
