@@ -84,6 +84,10 @@ test('three chapter contexts, cross-school and all six mixed release/unit pairs 
   const input = inputs(), m = mock(input), r = await runReadChecks({ ...input, ...m }); await r.verifyPreserved();
   assert.equal(r.contexts.A.length, 3); assert.equal(r.contexts.B.length, 3);
   assert.equal(m.checks.filter(x => x.label.includes('mixed chapter/release')).length, 12);
+  for (const actor of ['A_teacher', 'B_teacher']) {
+    const probes = m.calls.filter(x => x.actor === actor && x.endpoint.startsWith('/rest/v1/'));
+    assert.deepEqual(probes.map(x => x.endpoint), ['/rest/v1/item_options?select=item_id&limit=1']);
+  }
   assert.ok(m.checks.every(x => x.passed));
   assert.ok(m.calls.every(x => /get-student-(?:dashboard|classes)|rest\/v1\/(?:items|item_options|item_answer_keys)\?select=/.test(x.endpoint)));
   m.dashboards.A[1].history.push({ curriculumReleaseId: chapterII.curriculumReleaseId, correct: 1 });
@@ -94,6 +98,8 @@ test('fail closed on missing third chapter, mixed scope authorization or leaked 
     ({ endpoint, contexts }) => endpoint.endsWith('get-student-classes') ? { status: 200, data: { contexts: contexts.A.slice(0, 2) } } : null,
     ({ actor, endpoint, body, dashboards }) => actor === 'A_student' && endpoint.endsWith('get-student-dashboard') && body.unitId === chapterIII.unitId && body.curriculumReleaseId === chapterII.curriculumReleaseId ? { status: 200, data: dashboards.A[2] } : null,
     ({ endpoint }) => endpoint.startsWith('/rest/v1/items?') ? { status: 200, data: [{ id: id(70) }] } : null,
+    ...['A_teacher', 'B_teacher'].map(teacher =>
+      ({ actor, endpoint }) => actor === teacher && endpoint.startsWith('/rest/v1/item_options?') ? { status: 200, data: [{ item_id: id(70) }] } : null),
   ]) { const input = inputs(); await assert.rejects(runReadChecks({ ...input, ...mock(input, alter) })); }
 });
 test('pre-existing Chapter III diagnostic is preserved and changed progress fails', async () => {

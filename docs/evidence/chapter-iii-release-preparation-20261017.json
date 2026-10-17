@@ -88,5 +88,11 @@
     "version": 0,
     "filename": "HaiEdu-Chapter-III-Release-Preparation-20261017.zip",
     "sha256": "d02a55e8273618dba00040cca0863b99f9c160de7a7dfc5e1b108735d5427b80"
+  },
+  "acceptanceReviewFollowup": {
+    "finding": "Teacher role omitted from direct-table probes",
+    "disposition": "Added both teacher direct-option denial probes and regression cases. Teacher prompt/key denial would contradict current items_staff_read and answer_keys_staff_only policies; their existing access is explicitly retained and recorded as a limitation.",
+    "verification": "Read-only production pg_policies, role_table_grants and private.current_user_role inspection on 2026-10-17. No access-policy change.",
+    "restrictedPackageScope": "The original v0 package retains the verified configuration and rollback evidence; this later runner-only review correction is in the merged repository."
   }
 }

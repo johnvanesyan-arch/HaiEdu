@@ -105,7 +105,12 @@ export async function runReadChecks({ fixture, activation, request, check }) {
       check(`${side}: mixed chapter/release selection denied`, denied(mixed), mixed.status);
     }
   }
-  for (const actor of [null, 'A_student', 'B_student', 'A_admin', 'B_admin']) for (const table of ['items', 'item_options', 'item_answer_keys']) {
+  for (const table of ['items', 'item_options', 'item_answer_keys']) for (const actor of [
+    null, 'A_student', 'B_student', 'A_admin', 'B_admin',
+    // Current items_staff_read and answer_keys_staff_only explicitly retain
+    // teacher access. Options have no teacher SELECT policy; probe both sides.
+    ...(table === 'item_options' ? ['A_teacher', 'B_teacher'] : []),
+  ]) {
     // IDs alone establish visibility without fetching protected question text/keys.
     const column = table === 'items' ? 'id' : 'item_id';
     const r = await request(actor, `/rest/v1/${table}?select=${column}&limit=1`, null, 'GET');
@@ -217,7 +222,7 @@ export async function browserChecks({ contexts, chapterIIIActiveSessions, sessio
 async function main() {
   const report = { scope: 'Chapter III pilot authenticated read-only production acceptance', schemaVersion: 1,
     revision: process.env.GITHUB_SHA, startedAt: new Date().toISOString(), status: 'running', checks: [], browserDiagnostics: [],
-    limitations: ['No learning sessions, answers or exposures are created.', 'Read-only switching is not a completed learner attempt or specialist approval.', 'Chapters I and II are preserved; no student answers are submitted.'] };
+    limitations: ['No learning sessions, answers or exposures are created.', 'Read-only switching is not a completed learner attempt or specialist approval.', 'Chapters I and II are preserved; no student answers are submitted.', 'Existing teacher staff access to items and answer keys is retained; teacher direct-option denial is tested. This run does not certify teacher question-bank isolation.'] };
   const sessions = new Map();
   const check = (label, passed, httpStatus) => {
     report.checks.push({ label, status: passed ? 'passed' : 'failed', ...(httpStatus === undefined ? {} : { httpStatus }) });
