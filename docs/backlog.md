@@ -253,6 +253,17 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter IV Batch 1 approval checkpoint — 15D.4R, 2026-10-18 Asia/Yerevan
+
+- [x] Verify unchanged checked content and signed-in reviewer access.
+- [x] Approve the 64 remaining question versions through the UI; all 84 Batch 1 questions are now approved with current passing QA.
+- [x] Mark all 49 remaining guides reviewed; preserve the one previously published guide.
+- [x] Verify 64 new review events, 49 authoring events, unchanged learner content and all 59 preservation scopes.
+- [ ] Obtain explicit guide-publication authorization and complete secure MFA, then publish 49 reviewed guides and approve 65 definitions. Automatic approval review rejected the guide MFA submission as outside the explicit approval request; no bypass was attempted.
+- [ ] Return to Batches 2/3: 152 questions, 88 guides and 85 definitions remain pending.
+
+[Checkpoint](chapter-iv-batch-01-approval.md). Chapter IV remains inactive; final contracts and qualification/release are separate.
+
 ## Chapter IV three-batch delivery — 15D.4, 2026-10-18 Asia/Yerevan
 
 - [x] Record the accepted 236-question scope, three batches and owner delegation.
@@ -262,7 +273,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Complete batch 3: 66 questions, 38 guides and 39 definitions; 66/66 and 38/38 technical checks pass.
 - [x] Compare batch 3 against 791 current questions / 671 immutable versions and complete guide histories; all 28 corpus fingerprints match and 2,145 pairs retain dependencies.
 - [x] Verify all pre-existing rows in 59 tracked tables remain unchanged, including 23 review audit rows representing 20 approved questions and one published guide.
-- [ ] Return to ordinary approval batch by batch, as the owner now requests: 216 questions, 137 guides and 150 definitions remain pending. Use the existing authenticated current-version workflow; the prior browser restriction was not retried during authoring.
+- [x] Begin the ordinary batch-by-batch pass under 15D.4R above. The 15D.4 staging counts are historical; current remaining work is 152 questions, 49 guide publications, 88 guide reviews/publications and 150 definitions.
 - [ ] Finalize the chapter-specific assessment/practical contracts and qualification/release under their own authorization.
 
 [Current batch and evidence](chapter-iv-batch-03-staging.md). The 236-slot authoring manifest is fulfilled; draft creation is distinct from approval or learner release. Required CI/merge and exact-source Notion sync close the documentation cycle.
