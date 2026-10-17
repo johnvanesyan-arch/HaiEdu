@@ -1,0 +1,93 @@
+{
+  "sprint": "15D.1",
+  "verified_at": "2026-10-17T08:33:36.241560+00:00",
+  "checks": [
+    {
+      "check": "fresh programme hash equals registered source",
+      "passed": true
+    },
+    {
+      "check": "supplied textbook hash equals source manifest",
+      "passed": true
+    },
+    {
+      "check": "all 13 source outcomes transcribed in order",
+      "passed": true
+    },
+    {
+      "check": "all outcomes mapped and practical outcomes correctly identified",
+      "passed": true
+    },
+    {
+      "check": "14 skill identities unique; 10 mandatory, 3 supporting, 1 additional",
+      "passed": true
+    },
+    {
+      "check": "budget arithmetic 138+38+60=236",
+      "passed": true
+    },
+    {
+      "check": "28 briefs, exactly two per proposed skill",
+      "passed": true
+    },
+    {
+      "check": "unapproved proposal cannot imply qualified capacity or session policy",
+      "passed": true
+    },
+    {
+      "check": "all five extracted images match manifest hashes",
+      "passed": true
+    },
+    {
+      "check": "textbook arithmetic corrections independently recomputed",
+      "passed": true
+    },
+    {
+      "check": "live catalogue contains no U04 unit, skill or release",
+      "passed": true
+    },
+    {
+      "check": "new preparation document local links resolve",
+      "passed": true
+    }
+  ],
+  "automated_check_count": 12,
+  "automated_pass_count": 12,
+  "manual_review": {
+    "source_text": "Chapter IV pp.60–98 read; official Theme 4 outcome cell checked against freshly downloaded DOCX",
+    "rendered_pages": [
+      61,
+      64,
+      68,
+      69,
+      70,
+      73,
+      80,
+      82,
+      85,
+      92,
+      94
+    ],
+    "image_review": "all five actual crops inspected for intact arrows, labels and boundaries; no final learner-page/mobile QA claimed",
+    "armenian": "skill labels, candidate titles, practical task prompts, draft hint exemplars and alt text reviewed by primary author; not independent Armenian SME sign-off",
+    "physics": "four errata visually confirmed; calculations recomputed; source/model/practical boundaries explicit",
+    "whole_bank": "not performed; still required before new question deployment"
+  },
+  "scope": "documentation/source preparation only; no production writes, learner sessions, content approvals or new question technical QA",
+  "file_sha256": {
+    "docs/chapter-iv-preparation.md": "ea07ce28f8dbdb82109112078eb654d020732ea03eb9d4fb0682e7d5af91290d",
+    "docs/chapter-iv-candidate-briefs.md": "0f8541dd21dcec742790e06c339b65b86d8b35b4870821b0201c92c7ede300f3",
+    "docs/evidence/chapter-iv-preparation-20261017.json": "5f7f54218b27f107c0417a9db07ee8b44b0a17f5fd7442d6ab74d8b1f255b2c0",
+    "docs/evidence/chapter-iv-catalogue-20261017.json": "d1546f835ab0725d48557bb0fd4e12e9a1859ef543214931694afebc1ab6a6fb",
+    "README.md": "d6a869ac53711f8d0afb35a5fa41890c4d031656aeff81debb1cdb95fabb031f",
+    "docs/project-status.md": "65fa83dc8b3c5e45668e389d2aa320d40119b1d5e5cdbc56147a42f045635ea6",
+    "docs/sprint-roadmap.md": "466164e4c5de3f9487bbff3d7df5abb0415a416d0329292d07d08bdf4c126ab6",
+    "docs/backlog.md": "05cebbb87ac894587ec6488221a66b0c93340bca978bfd117b8967c4b8d4f314",
+    "docs/api-contract.md": "ce7b14e70e34d07dcd5e9bd7e2b5522c50310ba9235994ad0fb2ab8550180eca",
+    "docs/assets/chapter-iv-preparation/fig48-force-vector.png": "1f1d42f5381c652ce9ce249bb8195dc0d4dfacd1720c4aa4695faedaea874092",
+    "docs/assets/chapter-iv-preparation/fig57-spring-extension.png": "7abab7a94ba60c6bacbfd95e73a01e0b60c34842e488a94f8104707af5d7be1a",
+    "docs/assets/chapter-iv-preparation/fig60-weight-gravity.png": "97968dc3963b145c624f62d64769d1c2513d085e9ebb839a1babaa22fa17c96c",
+    "docs/assets/chapter-iv-preparation/fig64-friction-measurement.png": "05151f4011452138c82494ce891f09ec815672aead0aed223e2ee85b00502035",
+    "docs/assets/chapter-iv-preparation/fig66-67-resultant.png": "3ba7bdedd865b422a228d1617c34462479a43a0407ec3e890df243ca0a3c4e0f"
+  }
+}
