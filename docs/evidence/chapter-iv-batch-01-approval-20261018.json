@@ -1,0 +1,84 @@
+{
+  "checkpoint": "15D.4R",
+  "roadmapVersion": "3.98",
+  "observedAt": "2026-10-17T21:46:07.419443+00:00",
+  "requestedAt": "2026-10-17T21:14:16Z",
+  "scope": "Chapter IV Batch 1, S01–S05 only",
+  "actorProvenance": "Codex operating the authenticated reviewer UI under John’s dated ordinary-approval delegation; not personal John inspection or independent SME review.",
+  "questionApprovals": {
+    "before": 20,
+    "new": 64,
+    "after": 84,
+    "currentVersion": 1,
+    "auditRowsBefore": 23,
+    "auditRowsAfter": 87,
+    "newDuplicateApprovals": 0,
+    "currentQaPassed": 84,
+    "contentChanged": false
+  },
+  "guideReviews": {
+    "new": 49,
+    "reviewedAwaitingPublication": 49,
+    "previouslyPublished": 1,
+    "runtimePublicationChanges": 0,
+    "contentChanged": false,
+    "authoringNormalization": "UI normalizes unused misconceptionCode from null to empty string; all learner text and reference metadata remain exact."
+  },
+  "definitions": {
+    "draft": 65,
+    "newApprovalEvents": 0,
+    "contentChanged": false
+  },
+  "chapterTotals": {
+    "questions": 236,
+    "approvedQuestions": 84,
+    "pendingQuestions": 152,
+    "guides": 138,
+    "publishedGuides": 1,
+    "reviewedUnpublishedGuides": 49,
+    "draftAuthoringGuides": 88,
+    "draftRuntimeGuides": 137,
+    "draftDefinitions": 150
+  },
+  "preservation": {
+    "trackedTables": 59,
+    "exactlyUnchangedTables": 56,
+    "expectedChangedTables": [
+      "item_reviews",
+      "items",
+      "remediation_guide_authoring_versions"
+    ],
+    "preExistingReviewAndGuideHistoryPreserved": true,
+    "unrelatedItemsPreserved": true,
+    "learnerReleaseChanged": false
+  },
+  "blocker": {
+    "stage": "guide publication and MFA-gated definition approvals",
+    "siteRequirement": "AAL2 authenticator confirmation",
+    "automaticApprovalReview": "Rejected the secure MFA submission for guide publication because publication was judged not explicitly authorized by the request to approve Batch 1. No alternate credential entry or publication bypass attempted.",
+    "remainingBatch1": {
+      "guidePublication": 49,
+      "definitionApprovals": 65
+    }
+  },
+  "unchangedOtherBatches": {
+    "batch2": {
+      "questions": 86,
+      "guides": 50,
+      "definitions": 46
+    },
+    "batch3": {
+      "questions": 66,
+      "guides": 38,
+      "definitions": 39
+    }
+  },
+  "privateEvidence": {
+    "libraryFileId": "libfile_c69e3786766081919c562822fd58ef3d",
+    "fileName": "HaiEdu-Chapter-IV-Batch-01-Approval-Evidence.zip",
+    "frozenVersion": 0,
+    "sha256": "b3e6f0aef6ff96697c7b1ef85310f96e1ff63d688f3f6bdd1b27ea7ab5f31d60",
+    "bytes": 1617704
+  },
+  "frontendSourceCommit": "3d14311998068712d942c4a9586148cef876e61c"
+}
