@@ -1,0 +1,110 @@
+{
+  "sprint": "15D.2R",
+  "roadmap": "3.95",
+  "observedAt": "2026-10-17T10:04:32.615779+00:00",
+  "questions": {
+    "total": 84,
+    "approvedDistinct": 19,
+    "pending": 65,
+    "version": 1,
+    "reviewAuditRows": 22,
+    "repeatedUnchangedApprovals": 3
+  },
+  "guides": {
+    "draft": 50,
+    "published": 0
+  },
+  "definitions": {
+    "draft": 65,
+    "active": 0
+  },
+  "authorization": "chapter-iv-three-batch-authorization-20261017.json",
+  "approvalMethod": "Normal authenticated reviewer UI; Codex acting under owner delegation, not personal owner inspection or independent SME review. Exact review identities are retained in restricted evidence.",
+  "browserBlock": "Secure sign-in succeeded. Later browser credential protection restricted observation; permitted origin navigation did not restore access. Browser automation stopped and manual handoff is required.",
+  "checks": {
+    "itemsContentUnchanged": true,
+    "unchangedTables": [
+      {
+        "table": "item_options",
+        "unchanged": true
+      },
+      {
+        "table": "item_versions",
+        "unchanged": true
+      },
+      {
+        "table": "item_templates",
+        "unchanged": true
+      },
+      {
+        "table": "misconceptions",
+        "unchanged": true
+      },
+      {
+        "table": "item_answer_keys",
+        "unchanged": true
+      },
+      {
+        "table": "remediation_guide_versions",
+        "unchanged": true
+      },
+      {
+        "table": "item_misconception_mappings",
+        "unchanged": true
+      },
+      {
+        "table": "item_template_remediation_guides",
+        "unchanged": true
+      },
+      {
+        "table": "remediation_guide_authoring_versions",
+        "unchanged": true
+      }
+    ],
+    "old59Preserved": true
+  },
+  "allocation": {
+    "poolItems": 0,
+    "formItems": 0,
+    "learnerRelease": false
+  },
+  "approvedCodes": [
+    "PHY7-U04-S01-D01",
+    "PHY7-U04-S01-D02",
+    "PHY7-U04-S01-I01",
+    "PHY7-U04-S01-I02",
+    "PHY7-U04-S01-I03",
+    "PHY7-U04-S01-I04",
+    "PHY7-U04-S01-I05",
+    "PHY7-U04-S01-I06",
+    "PHY7-U04-S01-I07",
+    "PHY7-U04-S01-I08",
+    "PHY7-U04-S01-M01",
+    "PHY7-U04-S01-M02",
+    "PHY7-U04-S01-M03",
+    "PHY7-U04-S01-M04",
+    "PHY7-U04-S02-D01",
+    "PHY7-U04-S02-D02",
+    "PHY7-U04-S02-I01",
+    "PHY7-U04-S02-I02",
+    "PHY7-U04-S02-I03"
+  ],
+  "repeatedApprovalCodes": [
+    "PHY7-U04-S01-M03",
+    "PHY7-U04-S01-M04",
+    "PHY7-U04-S02-D01"
+  ],
+  "stagingMerge": "b1fe2c20cfada10e651356a25a1b626d77d8d1a1",
+  "stagingCi": {
+    "runId": 39022211305,
+    "passedJobs": 5
+  },
+  "productionImage": {
+    "url": "https://www.haiedu.am/assets/textbook/physics7-2023/p73-force-vector.png",
+    "httpStatus": 200,
+    "sha256": "1f1d42f5381c652ce9ce249bb8195dc0d4dfacd1720c4aa4695faedaea874092",
+    "bytes": 10889,
+    "observedAt": "2026-10-17T09:53:50.469189+00:00",
+    "matchesSource": true
+  }
+}

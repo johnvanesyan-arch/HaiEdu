@@ -260,7 +260,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Freeze/reconcile the complete comparison corpus, compare all 84 candidates and 3,486 pairs, and keep protected content in the restricted evidence archive.
 - [x] Stage 84 questions, 50 guides and 65 definitions; exact readback and 84/84 question plus 50/50 guide checks pass.
 - [x] Verify all pre-existing rows in 59 tracked public tables are unchanged.
-- [ ] Restore authenticated reviewer session and save delegated approvals of these exact versions; no new content permission is needed.
+- [x] Complete secure sign-in and record 19 distinct exact-v1 question approvals through the normal reviewer.
+- [ ] Restore reviewer browser access after credential-protection interruption, then save the remaining 65 question, 50 guide and 65 definition approvals; no new content permission is needed.
 - [ ] Complete batch 2: 86 questions across S06–S10, with guides, misconceptions and the same quality checks.
 - [ ] Complete batch 3: 66 questions across S11–S14, with guides, misconceptions and the same quality checks.
 - [ ] Finalize chapter-specific assessment/practical-evidence contracts and qualification/release under their own authorization.
