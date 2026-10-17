@@ -267,10 +267,10 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Record the owner's separate provisional-pilot activation approval with specialist review deferred.
 - [x] Rehearse and commit the identical original transaction; verify 61 preservation scopes, all 510 configuration rows and unchanged I/II history.
 - [x] Enable full dependency triggers for the prepared authenticated production runner.
-- [ ] Complete authenticated three-chapter acceptance, save evidence and sync merged documentation/Notion.
+- [x] Complete authenticated three-chapter acceptance (123/123; isolation 54/54) and save evidence; merge/required-CI and source-commit-verified Notion synchronization close this delivery cycle.
 - [ ] Complete independent specialist/exposure qualification before production promotion.
 
-[Committed activation evidence](evidence/chapter-iii-pilot-activation-20261017.json).
+[Release closure and verified production evidence](chapter-iii-pilot-release.md).
 
 ## Chapter III technical release preparation — 15C.25, 2026-10-17
 
@@ -279,7 +279,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Run full production-schema rollback: 61 preservation scopes passed; all 59 public table fingerprints restored; Chapters I/II and learner history preserved.
 - [x] Prepare/test three-chapter production read acceptance with main/fixture/activation guards; save restricted evidence.
 - [x] Record separate Chapter III provisional-pilot activation authorization; refresh preflight, rehearse/commit and verify actual activation under 15C.26.
-- [ ] Expand activation workflow dependency triggers and run authenticated three-chapter production acceptance.
+- [x] Expand activation workflow dependency triggers and run authenticated three-chapter production acceptance under 15C.26.
 - [ ] Complete deferred independent specialist/exposure review and qualification before production promotion.
 
 [Release preparation and evidence](chapter-iii-release-preparation.md). No new content, hints, schema or shared runtime. The preparation rollback was followed by the separately authorized 15C.26 activation commit. Older independent-qualification tasks remain open for production promotion; the owner authorized provisional allocation with that review deferred.
@@ -302,8 +302,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Record two M4 trajectory-classification coverage gaps, conditional form dependencies and a bounded two-question revision brief.
 - [x] Save restricted evidence, verify all 39 table fingerprints unchanged and prepare the independent review handoff.
 - [x] Obtain the owner's bounded correction decision and save compared/technically verified v2 corrections under 15C.24; ordinary review is tracked above.
-- [ ] Obtain independent specialist and exposure decisions; qualify exact-version forms before allocation.
-- [ ] Complete separately authorized Chapter III release and production acceptance.
+- [ ] Obtain independent specialist and exposure decisions before independently qualifying exact-version forms and production promotion; provisional allocation is owner-authorized under 15C.26.
+- [x] Complete separately authorized Chapter III provisional release and production acceptance under 15C.26.
 
 [Preflight and conditional forms](chapter-iii-assessment-qualification.md). No content or runtime changes were made.
 

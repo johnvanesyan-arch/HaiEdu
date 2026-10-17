@@ -2,7 +2,7 @@
 
 2026-10-17 · Sprint 15C.25 · Roadmap 3.90 · Historical preparation checkpoint
 
-**Subsequent status — 15C.26:** the owner separately approved provisional activation; the exact authorized transaction was rehearsed and committed at 07:40 UTC. All 510 configuration rows and four policy contracts match; all 61 preservation checks passed. [Activation evidence](evidence/chapter-iii-pilot-activation-20261017.json). Authenticated production acceptance remains pending. The preparation-only statements below describe the earlier checkpoint; specialist/exposure review stays deferred.
+**Subsequent status — 15C.26:** the owner separately approved provisional activation; the exact authorized transaction was rehearsed and committed at 07:40 UTC. All 510 configuration rows and four policy contracts match; all 61 preservation checks passed. [Activation evidence](evidence/chapter-iii-pilot-activation-20261017.json). Authenticated production acceptance subsequently passed 123/123; see the [release closure](chapter-iii-pilot-release.md). The preparation-only statements below describe the earlier checkpoint; specialist/exposure review stays deferred.
 
 John directed: “We will do the handoff and review later. Proceed with the next part.” This defers the independent specialist handoff/review while technical release preparation proceeds. It does not record specialist approval or a live activation decision. The separate release boundary in `AGENTS.md` remains in force.
 
@@ -29,7 +29,7 @@ The new bounded runner verifies six designated QA identities, the exact reviewed
 
 The workflow is prepared but does not run on this merge. Its first automatic trigger is the future verified activation-evidence file. It checks that file before installing browsers or loading credentials. When activation evidence is added, `check-browser-qa-triggers.mjs` requires full frontend/runner/API dependency trigger coverage in that same change. The existing shared QA queue, reviewed-main guard and exact deployed-commit check remain mandatory.
 
-## Remaining release step
+## Historical remaining release steps — completed under 15C.26
 
 1. Record the separate owner decision to activate Chapter III as a bounded provisional pilot with specialist/exposure review deferred. Independent qualification stays unclaimed; final exposure disposition and specialist approval remain required for production promotion.
 2. Refresh the current state and approved version inputs against the exact reviewed main revision; regenerate and rehearse. Any content, history, runtime or binding drift stops the transaction for reconciliation. Commit only the resulting authorized transaction, then read it back.
@@ -37,4 +37,4 @@ The workflow is prepared but does not run on this merge. Its first automatic tri
 
 The specialist handoff remains ready for later. Its reviewer fields and exposure/dependence decisions stay unfilled; retained historical Git/PR exposure limitations are not erased by this preparation. All questions, hints and examples retain their approved language and textbook references.
 
-[Sanitized evidence and restricted-package digest](evidence/chapter-iii-release-preparation-20261017.json) · [Authoritative status](project-status.md) · [Deferred specialist packet](grade7-physics-chapter3-sme-review.md). Required CI/merge and source-commit-verified Notion synchronization close this delivery cycle; they do not activate Chapter III.
+[Sanitized evidence and restricted-package digest](evidence/chapter-iii-release-preparation-20261017.json) · [Authoritative status](project-status.md) · [Deferred specialist packet](grade7-physics-chapter3-sme-review.md). Required CI/merge and source-commit-verified Notion synchronization closed the preparation delivery cycle; that preparation did not activate Chapter III. The subsequent authorized activation and acceptance are recorded in the [release closure](chapter-iii-pilot-release.md).

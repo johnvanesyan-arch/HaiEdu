@@ -1,0 +1,10 @@
+{
+  "schemaVersion": 1,
+  "status": "passed",
+  "beforeAt": "2026-10-17T07:40:51.770194+00:00",
+  "afterAt": "2026-10-17T07:57:25.141525+00:00",
+  "comparedPublicTables": 59,
+  "unchangedPublicTables": 59,
+  "changedTables": [],
+  "scope": "Post-activation through authenticated production acceptance; auth login/session tables are outside this public-table fingerprint scope."
+}
