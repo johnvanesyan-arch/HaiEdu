@@ -1,0 +1,383 @@
+{
+  "sprint": "15D.2R",
+  "roadmap": "3.95",
+  "observedAt": "2026-10-17T10:04:32.615779+00:00",
+  "questions": {
+    "total": 84,
+    "approvedDistinct": 19,
+    "pending": 65,
+    "version": 1,
+    "reviewAuditRows": 22,
+    "repeatedUnchangedApprovals": 3
+  },
+  "guides": {
+    "draft": 50,
+    "published": 0
+  },
+  "definitions": {
+    "draft": 65,
+    "active": 0
+  },
+  "authorization": "chapter-iv-three-batch-authorization-20261017.json",
+  "approvalMethod": "Normal authenticated reviewer UI; Codex acting under owner delegation, not personal owner inspection or independent SME review. Exact review identities are retained in restricted evidence.",
+  "browserBlock": "Secure sign-in succeeded. Later browser credential protection restricted observation; permitted origin navigation did not restore access. Browser automation stopped and manual handoff is required.",
+  "checks": {
+    "itemsContentUnchanged": true,
+    "unchangedTables": [
+      {
+        "table": "item_options",
+        "unchanged": true
+      },
+      {
+        "table": "item_versions",
+        "unchanged": true
+      },
+      {
+        "table": "item_templates",
+        "unchanged": true
+      },
+      {
+        "table": "misconceptions",
+        "unchanged": true
+      },
+      {
+        "table": "item_answer_keys",
+        "unchanged": true
+      },
+      {
+        "table": "remediation_guide_versions",
+        "unchanged": true
+      },
+      {
+        "table": "item_misconception_mappings",
+        "unchanged": true
+      },
+      {
+        "table": "item_template_remediation_guides",
+        "unchanged": true
+      },
+      {
+        "table": "remediation_guide_authoring_versions",
+        "unchanged": true
+      }
+    ],
+    "old59Preserved": true
+  },
+  "allocation": {
+    "poolItems": 0,
+    "formItems": 0,
+    "learnerRelease": false
+  },
+  "approvedCodes": [
+    "PHY7-U04-S01-D01",
+    "PHY7-U04-S01-D02",
+    "PHY7-U04-S01-I01",
+    "PHY7-U04-S01-I02",
+    "PHY7-U04-S01-I03",
+    "PHY7-U04-S01-I04",
+    "PHY7-U04-S01-I05",
+    "PHY7-U04-S01-I06",
+    "PHY7-U04-S01-I07",
+    "PHY7-U04-S01-I08",
+    "PHY7-U04-S01-M01",
+    "PHY7-U04-S01-M02",
+    "PHY7-U04-S01-M03",
+    "PHY7-U04-S01-M04",
+    "PHY7-U04-S02-D01",
+    "PHY7-U04-S02-D02",
+    "PHY7-U04-S02-I01",
+    "PHY7-U04-S02-I02",
+    "PHY7-U04-S02-I03"
+  ],
+  "repeatedApprovalCodes": [
+    "PHY7-U04-S01-M03",
+    "PHY7-U04-S01-M04",
+    "PHY7-U04-S02-D01"
+  ],
+  "stagingMerge": "b1fe2c20cfada10e651356a25a1b626d77d8d1a1",
+  "stagingCi": {
+    "runId": 39022211305,
+    "passedJobs": 5
+  },
+  "productionImage": {
+    "url": "https://www.haiedu.am/assets/textbook/physics7-2023/p73-force-vector.png",
+    "httpStatus": 200,
+    "sha256": "1f1d42f5381c652ce9ce249bb8195dc0d4dfacd1720c4aa4695faedaea874092",
+    "bytes": 10889,
+    "observedAt": "2026-10-17T09:53:50.469189+00:00",
+    "matchesSource": true
+  },
+  "reviewRecords": [
+    {
+      "reviewId": "a8c5ef6c-7e98-4f06-969e-bac2b68ab9a6",
+      "itemId": "8e915399-8d30-4e02-b566-c489a498707e",
+      "code": "PHY7-U04-S01-D01",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "25d10cc179a87d02c723cbf628083464",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T09:57:42.963746+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "733a1b9e-e9ca-4a13-9f0c-7d77952511e0",
+      "itemId": "d04bccae-b076-49e5-96fc-bcf447b48649",
+      "code": "PHY7-U04-S01-D02",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "44022a1b3d4cab40f7476b6e0e37c065",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T09:58:40.775145+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "932d172d-89cb-44ef-90a3-4fda425ec15a",
+      "itemId": "8e4ffed6-427d-440b-b00f-406dda580d99",
+      "code": "PHY7-U04-S01-I01",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "d47782f196e4606ebd0c6a396d6cbbdb",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T09:59:13.920883+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "81303f09-aefa-44e1-8121-07a038af9b34",
+      "itemId": "aa9744b7-7471-42bf-9340-279c9d34bc74",
+      "code": "PHY7-U04-S01-I02",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "61ee3b7bd8c84254d7aa2a6c9cf21c8b",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:00:07.294308+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "06a14860-7ab1-499c-b21f-136479356fb5",
+      "itemId": "d95c9e53-8afa-4736-8241-981e3e368f93",
+      "code": "PHY7-U04-S01-I03",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "041988f040a5ce78997b0de51ce769db",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:00:07.7218+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "b6f98ac6-9771-49fd-8940-e561387d5934",
+      "itemId": "93f969e1-fd21-4155-8f95-2cfbb063cd65",
+      "code": "PHY7-U04-S01-I04",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "fad971d002fd5633d2c9c2501c041dcd",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:00:08.702577+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "4f8d3ccd-8d97-4d16-926a-410ffcf2ae77",
+      "itemId": "e6a6ef72-7f51-4e81-a455-c52e4d7f9030",
+      "code": "PHY7-U04-S01-I05",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "2f405741f0fbcbff44660c059536b80a",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:00:58.595335+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "8f5f316b-5f6a-4675-aab2-1099f833bcd4",
+      "itemId": "1e09d330-dcde-418f-88b7-27ad8552aa39",
+      "code": "PHY7-U04-S01-I06",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "00dfdb96c70fd43b5b429b2ac4b8aa08",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:01:00.597491+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "5ada2165-1596-4557-a136-7213ae34f907",
+      "itemId": "92601f00-54f7-46d9-9356-478c26e9ebda",
+      "code": "PHY7-U04-S01-I07",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "f7d7df0d42ab390530d7efce5efe4db9",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:01:02.808227+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "480c153f-9d2f-4729-aa4a-d24d22447723",
+      "itemId": "2321985c-4079-4dd4-8eac-3f1efbd45386",
+      "code": "PHY7-U04-S01-I08",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "9a4c1a13ce56f5692dfc7c59e833286a",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:01:05.226554+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "f3d42291-e06c-4c1b-86ad-d7f27fbd48a3",
+      "itemId": "6edd4f38-6cc5-426b-9ce7-0c8c4d708ca4",
+      "code": "PHY7-U04-S01-M01",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "86504ebf12fdf10ba800819e317fbe28",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:01:06.716435+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "a872cf4b-6a33-4da8-9ed1-e6dd2fc5e2ad",
+      "itemId": "be757957-64d1-4865-900e-d290a46b7203",
+      "code": "PHY7-U04-S01-M02",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "2c5ecbfa1303575e369aaf2605f9148b",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:01:08.918588+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "f2af7e89-db00-4762-be5c-ff7639364302",
+      "itemId": "2a1fb1c7-3d6e-4a3e-ad0f-376cf6263abf",
+      "code": "PHY7-U04-S01-M03",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "3ba836f16a8d7371ce0c52c7055035ec",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:01:49.791188+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "b131275e-227f-45c8-967c-65f0f048c3ec",
+      "itemId": "912d3c61-1c1b-443c-b4ed-9a4565710951",
+      "code": "PHY7-U04-S01-M04",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "3c450b35f55b9d8db54cfdcd9bbc92c7",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:01:50.55411+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "32bbb29f-4563-41bb-b906-efefad6b2145",
+      "itemId": "80a4c6da-c062-427c-8cdd-6e939fb2ca70",
+      "code": "PHY7-U04-S02-D01",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "712f89138fd72676c3751811759d3ea2",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:01:50.90222+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "18b8d780-9a5f-41dd-8880-a2559737376d",
+      "itemId": "2a1fb1c7-3d6e-4a3e-ad0f-376cf6263abf",
+      "code": "PHY7-U04-S01-M03",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "3ba836f16a8d7371ce0c52c7055035ec",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:02:05.541905+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "53871ebd-eee2-4a32-8d09-36c3a6b1168d",
+      "itemId": "912d3c61-1c1b-443c-b4ed-9a4565710951",
+      "code": "PHY7-U04-S01-M04",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "3c450b35f55b9d8db54cfdcd9bbc92c7",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:02:07.052102+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "2ac249dd-c45a-4a7f-b5af-206937314f12",
+      "itemId": "80a4c6da-c062-427c-8cdd-6e939fb2ca70",
+      "code": "PHY7-U04-S02-D01",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "712f89138fd72676c3751811759d3ea2",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:02:08.744638+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "9de7c84f-7cb2-45ad-861d-0c2fd62c57b5",
+      "itemId": "994650e5-9e47-4b5d-8d78-616d64de090e",
+      "code": "PHY7-U04-S02-D02",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "a99f0abd733d0060ab9bab9d2fbce7be",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:02:10.122559+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "461e66e1-661d-4822-a2e6-ef51d04280e5",
+      "itemId": "d63749f1-3110-4d71-8e0e-e0a29ea57c86",
+      "code": "PHY7-U04-S02-I01",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "3d01aa0f2e4e4de84186ecd3254a2d6e",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:02:11.383076+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "4eef953f-fa05-4da3-a2ca-4c2d7a45304f",
+      "itemId": "f4962fe6-035a-4177-9bb7-670b896a8d42",
+      "code": "PHY7-U04-S02-I02",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "79d0d1263f7cf98b518fb78923329a38",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:02:13.601846+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    },
+    {
+      "reviewId": "d83287a8-3549-4afd-824b-be8e29c45e93",
+      "itemId": "3f973c2d-6d43-484d-8f7a-7d651b358882",
+      "code": "PHY7-U04-S02-I03",
+      "version": 1,
+      "currentVersion": 1,
+      "contentFingerprint": "789941496bf608bc0ce230f674d7c455",
+      "decision": "approved",
+      "reviewType": "content",
+      "createdAt": "2026-10-17T10:02:30.207442+00:00",
+      "provenance": "Codex acting under explicit owner delegation through the authenticated reviewer; UI has no note field."
+    }
+  ],
+  "restrictedEvidence": {
+    "libraryFileId": "libfile_4bd0b2cc08848191b495e515e8e3c176",
+    "archiveName": "HaiEdu-Chapter-IV-Batch-01-Restricted-Evidence.zip",
+    "component": "partial-approval-readback.json",
+    "componentSha256": "cd55189acef08c2697af36c86007097e53a54e71b63aabebc54ddc2739eb00ab",
+    "contains": "Exact immutable review records including actor IDs, plus current item/version bindings; protected content remains restricted."
+  }
+}
