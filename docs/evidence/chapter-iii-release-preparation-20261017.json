@@ -1,0 +1,98 @@
+{
+  "schemaVersion": 1,
+  "stage": "15C.25",
+  "roadmap": "3.90",
+  "status": "prepared_not_activated",
+  "verifiedAt": "2026-10-17T06:09:00.315326+00:00",
+  "sourceCommit": "8145bb05b875e9fb595df7d5da73fc7e223794ed",
+  "ownerDirection": "We will do the handoff and review later. Proceed with the next part",
+  "ownerDirectionAt": "2026-10-17T09:57:56+04:00",
+  "scope": "Technical release preparation and rollback only; independent handoff/review deferred; no live activation decision inferred",
+  "inventory": {
+    "approvedQuestions": 168,
+    "practice": 80,
+    "diagnostic": 32,
+    "mastery": 56,
+    "publishedGuides": 80,
+    "activeDefinitions": 344
+  },
+  "prepared": {
+    "forms": 5,
+    "diagnosticForms": 2,
+    "masteryForms": 3,
+    "questionsPerForm": 16,
+    "uniqueFormItems": 80,
+    "masteryReserves": 8,
+    "pools": 3,
+    "poolItems": 168,
+    "blueprintsAndPolicies": 4,
+    "blueprintItems": 248,
+    "runtimeBindings": 1,
+    "newRuntimeBuilds": 0
+  },
+  "checks": {
+    "productionSchemaRollback": "passed",
+    "productionPoliciesEqualApprovedContracts": true,
+    "preservedScopesDuringTransaction": 61,
+    "unchangedPublicTablesAfterRollback": 59,
+    "numericModelUnchanged": true,
+    "constraints": {
+      "tables": 10,
+      "constraints": 38,
+      "insertedConfigurationRows": 510
+    },
+    "isolatedTargetedTests": 16,
+    "pythonGuardCases": 4
+  },
+  "liveState": {
+    "forms": 0,
+    "blueprints": 0,
+    "chapterIII": {
+      "status": "draft",
+      "activatedAt": null
+    },
+    "observedAt": "2026-10-17T06:12:42.799203+00:00",
+    "reviewedBy": null,
+    "activeUnits": [
+      {
+        "unit_id": "0349ffcd-8fc9-47f2-82d1-3d5cfcb3a096",
+        "curriculum_release_id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb"
+      },
+      {
+        "unit_id": "beae3516-4317-4c8b-bd66-576c6f309308",
+        "curriculum_release_id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407"
+      }
+    ],
+    "policyBindings": 0,
+    "masteryFormBindings": 0
+  },
+  "formPlanSha256": "1d94f6cf453b0ccde5aeb3ae9a4853a734e1a9ee1ebd8bbd632f0dbfda3af063",
+  "files": {
+    "source.json": "70f1eb04903b9cfc3a84052a0c34cc284996ea7bba249fb77cc748ba07633017",
+    "configuration.json": "d4a63d754ddbc56970115a7a4cf28a14496834c60323cf2a5786fa503062832c",
+    "rehearse.sql": "56f441c2e0c10c495a702f802fbab47a59ddd2f771e563688c9b133aef212d9f",
+    "state-before.json": "0ccea98ac0d57094721719422306d6e039cd0874e2d23e3955b399343693520f",
+    "state-after.json": "4838a3b5ddcc91b749b7442f74a1a33a50b47f2b0310741efecac688002fe370",
+    "rollback-verification.json": "71cbeceec80719e66526bdb7e7695f5e9a2fccd4f9abf9e2efe98b20f1172a48",
+    "final-state.json": "08f332af4aa1c3358a93a729a11b2e307f1739649754a1c374944b11134bcecd"
+  },
+  "limits": [
+    "No content or Armenian wording changed; prior approved textbook/whole-bank comparisons reused.",
+    "No database transaction committed; no learner session, answer or exposure created.",
+    "Independent SME/exposure review deferred, not approved; no qualified forms or empirical equivalence claimed.",
+    "Production acceptance runner prepared and tested with synthetic inputs; Chapter III live browser acceptance awaits separate activation.",
+    "Retained historical Git/PR exposure limitations remain unresolved."
+  ],
+  "restrictedPackage": {
+    "libraryFileId": "libfile_514e356ac90881918e2fa8341d41a970",
+    "version": 0,
+    "filename": "HaiEdu-Chapter-III-Release-Preparation-20261017.zip",
+    "sha256": "d02a55e8273618dba00040cca0863b99f9c160de7a7dfc5e1b108735d5427b80"
+  },
+  "acceptanceReviewFollowup": {
+    "finding": "Teacher role omitted from direct-table probes",
+    "disposition": "Added both teacher direct-option denial probes and regression cases. Teacher prompt/key denial would contradict current items_staff_read and answer_keys_staff_only policies; their existing access is explicitly retained and recorded as a limitation.",
+    "verification": "Read-only production pg_policies, role_table_grants and private.current_user_role inspection on 2026-10-17. No access-policy change.",
+    "restrictedPackageScope": "The original v0 package retains the verified configuration and rollback evidence; this later runner-only review correction is in the merged repository."
+  }
+}

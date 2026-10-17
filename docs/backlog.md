@@ -262,6 +262,18 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 
 [Read-only review closure](chapter-iii-revision-review-20261017.md).
 
+## Chapter III technical release preparation — 15C.25, 2026-10-17
+
+- [x] Record the owner's Chapter III handoff/review deferral; preserve unfilled independent review decisions and the separate release boundary.
+- [x] Verify the 168 approved current questions and prepare five exact forms, eight reserves, three pools, four v2 policy contracts and chapter-scoped model/runtime binding.
+- [x] Run full production-schema rollback: 61 preservation scopes passed; all 59 public table fingerprints restored; Chapters I/II and learner history preserved.
+- [x] Prepare/test three-chapter production read acceptance with main/fixture/activation guards; save restricted evidence.
+- [ ] Record separate Chapter III provisional-pilot activation authorization; refresh preflight, rehearse/commit and verify actual activation.
+- [ ] Expand activation workflow dependency triggers and run authenticated three-chapter production acceptance.
+- [ ] Complete deferred independent specialist/exposure review and qualification before production promotion.
+
+[Release preparation and evidence](chapter-iii-release-preparation.md). No new content, hints, schema or shared runtime; no database commit. Older independent-qualification tasks remain open for that scope and no longer block authorized technical preparation.
+
 ## Chapter III targeted trajectory corrections — 15C.24, 2026-10-17 Asia/Yerevan
 
 - [x] Record the owner's bounded two-question revision authorization; freeze source/corpus and preserve old approvals.
