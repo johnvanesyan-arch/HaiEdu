@@ -1,6 +1,8 @@
 # Chapter III technical release preparation
 
-2026-10-17 · Sprint 15C.25 · Roadmap 3.90 · Prepared and rehearsed; not activated
+2026-10-17 · Sprint 15C.25 · Roadmap 3.90 · Historical preparation checkpoint
+
+**Subsequent status — 15C.26:** the owner separately approved provisional activation; the exact authorized transaction was rehearsed and committed at 07:40 UTC. All 510 configuration rows and four policy contracts match; all 61 preservation checks passed. [Activation evidence](evidence/chapter-iii-pilot-activation-20261017.json). Authenticated production acceptance remains pending. The preparation-only statements below describe the earlier checkpoint; specialist/exposure review stays deferred.
 
 John directed: “We will do the handoff and review later. Proceed with the next part.” This defers the independent specialist handoff/review while technical release preparation proceeds. It does not record specialist approval or a live activation decision. The separate release boundary in `AGENTS.md` remains in force.
 

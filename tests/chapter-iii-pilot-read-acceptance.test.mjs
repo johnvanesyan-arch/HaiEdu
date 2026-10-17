@@ -108,12 +108,12 @@ test('pre-existing Chapter III diagnostic is preserved and changed progress fail
   const r = await runReadChecks({ ...input, ...m }); await r.verifyPreserved();
   m.dashboards.A[2].activeSession.answered++; await assert.rejects(r.verifyPreserved(), /unchanged/);
 });
-test('prepared workflow cannot start live checks on ordinary preparation changes', async () => {
+test('activated workflow stays main-only, guarded and covers its runner and frontend dependencies', async () => {
   const workflow = await readFile('.github/workflows/chapter-iii-pilot-read-acceptance.yml', 'utf8');
   assert.doesNotMatch(workflow, /pull_request/);
   const paths = workflow.match(/    paths:([\s\S]*?)\npermissions:/)[1];
   assert.match(paths, /chapter-iii-pilot-activation-20261017.json/);
-  assert.doesNotMatch(paths, /- (?:scripts|web|\.github)/);
+  for (const path of ['scripts/chapter-iii-pilot-read-acceptance.mjs', 'web/course.html', 'web/index.html', '.github/workflows/chapter-iii-pilot-read-acceptance.yml']) assert.ok(paths.includes(path));
   assert.ok(workflow.indexOf('test -f docs/evidence/chapter-iii-pilot-activation') < workflow.indexOf('actions/setup-node'));
   assert.match(workflow, /group: sprint-14-isolation-qa/);
 });

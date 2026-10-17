@@ -258,9 +258,19 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Verify both current v2 question approvals and all five active definitions against immutable review evidence.
 - [x] Confirm unchanged learner content and existing passing QA; all 168 questions approved, 80 guides published and 344 definitions active.
 - [x] Refresh exact approval bindings for the same five conditional forms and 88-candidate specialist ledger; no independent decisions filled.
-- [ ] Obtain named independent source/physics/Armenian and exposure/dependence dispositions before allocating accepted forms and seeking separate release authorization.
+- [ ] Obtain named independent source/physics/Armenian and exposure/dependence dispositions before independently qualifying forms and production promotion; owner-authorized provisional allocation is recorded under 15C.26.
 
 [Read-only review closure](chapter-iii-revision-review-20261017.md).
+
+## Chapter III provisional activation — 15C.26, 2026-10-17
+
+- [x] Record the owner's separate provisional-pilot activation approval with specialist review deferred.
+- [x] Rehearse and commit the identical original transaction; verify 61 preservation scopes, all 510 configuration rows and unchanged I/II history.
+- [x] Enable full dependency triggers for the prepared authenticated production runner.
+- [ ] Complete authenticated three-chapter acceptance, save evidence and sync merged documentation/Notion.
+- [ ] Complete independent specialist/exposure qualification before production promotion.
+
+[Committed activation evidence](evidence/chapter-iii-pilot-activation-20261017.json).
 
 ## Chapter III technical release preparation — 15C.25, 2026-10-17
 
@@ -268,11 +278,11 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Verify the 168 approved current questions and prepare five exact forms, eight reserves, three pools, four v2 policy contracts and chapter-scoped model/runtime binding.
 - [x] Run full production-schema rollback: 61 preservation scopes passed; all 59 public table fingerprints restored; Chapters I/II and learner history preserved.
 - [x] Prepare/test three-chapter production read acceptance with main/fixture/activation guards; save restricted evidence.
-- [ ] Record separate Chapter III provisional-pilot activation authorization; refresh preflight, rehearse/commit and verify actual activation.
+- [x] Record separate Chapter III provisional-pilot activation authorization; refresh preflight, rehearse/commit and verify actual activation under 15C.26.
 - [ ] Expand activation workflow dependency triggers and run authenticated three-chapter production acceptance.
 - [ ] Complete deferred independent specialist/exposure review and qualification before production promotion.
 
-[Release preparation and evidence](chapter-iii-release-preparation.md). No new content, hints, schema or shared runtime; no database commit. Older independent-qualification tasks remain open for that scope and no longer block authorized technical preparation.
+[Release preparation and evidence](chapter-iii-release-preparation.md). No new content, hints, schema or shared runtime. The preparation rollback was followed by the separately authorized 15C.26 activation commit. Older independent-qualification tasks remain open for production promotion; the owner authorized provisional allocation with that review deferred.
 
 ## Chapter III targeted trajectory corrections — 15C.24, 2026-10-17 Asia/Yerevan
 
@@ -281,7 +291,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Save two v2 question drafts and five precise definition drafts; rollback preservation, exact readback and deployed-v11 QA 2/2 pass.
 - [x] Rebind the unchanged five conditional form memberships and eight reserves; all five now represent M1–M5 using the pending v2 drafts.
 - [x] Review S03-D05 v2, S03-M10 v2 and S03 definitions M58–M62 on the site; exact approvals verified under 15C.24R.
-- [ ] Complete independent SME/exposure qualification before allocation and separately authorized Chapter III release.
+- [ ] Complete independent SME/exposure qualification before production promotion; provisional allocation/release is separately owner-authorized under 15C.26.
 
 [Revision and verification evidence](chapter-iii-trajectory-revisions-20261017.md).
 
