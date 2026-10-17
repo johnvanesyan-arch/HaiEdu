@@ -1,6 +1,6 @@
 # Chapter IV — first large candidate assessment queue
 
-**Historical planning queue from 15D.1 · 2026-10-17.** Owner acceptance under 15D.2 replaces the earlier one-pass 28-brief handoff with three authorized question batches (84/86/66). The first ten briefs, S01–S05, have been assessed and developed within the saved 84-question batch; the 18 S06–S14 briefs remain planning inputs for batches 2/3. These original briefs are not approved question versions or qualified assessment capacity. [Current batch and exact evidence](chapter-iv-batch-01-staging.md).
+**Historical planning queue from 15D.1 · 2026-10-17.** Owner acceptance replaced the one-pass 28-brief handoff with three authorized batches (84/86/66). All 236 question slots across S01–S14 are now authored under 15D.2–15D.4. These briefs remain source planning records, not outstanding authoring work or independently qualified assessment capacity. Ordinary approval resumes batch by batch after batch 3, per the latest owner instruction. [Current delivery](chapter-iv-batch-03-staging.md).
 
 | ID | Armenian working title | Intended evidence | Required screening boundary |
 | --- | --- | --- | --- |

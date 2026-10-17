@@ -253,20 +253,19 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter IV three-batch delivery — 15D.3, 2026-10-17
+## Chapter IV three-batch delivery — 15D.4, 2026-10-18 Asia/Yerevan
 
-- [x] Record the accepted 236-question scope, three batches and delegated ordinary approvals.
-- [x] Create inactive U04 foundation: one unit, six topics, 13 outcomes, 14 skills and a draft release.
-- [x] Complete batch 1: 84 questions, 50 guides and 65 definitions, with source/comparison/QA evidence.
-- [x] Verify the updated baseline: 20 distinct approved questions and one published guide; preserve the 23 immutable question-review records, including three repeats.
-- [x] Complete batch 2: 86 questions across S06–S10, 50 guides, 46 definitions and two exact textbook crops; 86/86 and 50/50 checks pass.
-- [x] Compare against the complete 705-question / 585-version baseline with 28 matching table fingerprints; retain all 3,655 within-batch dependencies.
-- [x] Verify all pre-existing rows in 59 tracked public tables are unchanged after batch 2 and technical-QA inserts.
-- [ ] Resume authenticated delegated approval when browser credential protection is resolved: 150 questions, 99 guides and 111 definitions currently pending. No new content permission is needed.
-- [ ] Complete batch 3: 66 questions across S11–S14, with guides, misconceptions and the same quality checks.
-- [ ] Finalize chapter-specific assessment/practical-evidence contracts and qualification/release under their own authorization.
+- [x] Record the accepted 236-question scope, three batches and owner delegation.
+- [x] Create the inactive U04 foundation: one unit, six topics, 13 outcomes, 14 skills and a draft release.
+- [x] Complete batch 1: 84 questions, 50 guides and 65 definitions.
+- [x] Complete batch 2: 86 questions, 50 guides and 46 definitions.
+- [x] Complete batch 3: 66 questions, 38 guides and 39 definitions; 66/66 and 38/38 technical checks pass.
+- [x] Compare batch 3 against 791 current questions / 671 immutable versions and complete guide histories; all 28 corpus fingerprints match and 2,145 pairs retain dependencies.
+- [x] Verify all pre-existing rows in 59 tracked tables remain unchanged, including 23 review audit rows representing 20 approved questions and one published guide.
+- [ ] Return to ordinary approval batch by batch, as the owner now requests: 216 questions, 137 guides and 150 definitions remain pending. Use the existing authenticated current-version workflow; the prior browser restriction was not retried during authoring.
+- [ ] Finalize the chapter-specific assessment/practical contracts and qualification/release under their own authorization.
 
-[Batch 2 evidence](chapter-iv-batch-02-staging.md). Merge/CI and source-commit-verified Notion sync close this documentation cycle; draft status is not approval.
+[Current batch and evidence](chapter-iv-batch-03-staging.md). The 236-slot authoring manifest is fulfilled; draft creation is distinct from approval or learner release. Required CI/merge and exact-source Notion sync close the documentation cycle.
 
 ## Chapter IV preparation — 15D.1, 2026-10-17
 
