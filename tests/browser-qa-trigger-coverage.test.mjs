@@ -154,3 +154,17 @@ test("actual acceptance workflows cover their current frontend and runner depend
   const results = await checkBrowserQaTriggers(root);
   for (const result of results) assert.deepEqual(result.missing, [], `${result.workflow}: omitted dependencies`);
 });
+
+test("prepared QA requires activation-only routing; adding activation evidence restores dependency enforcement", async t => {
+  const target = { workflow: ".github/workflows/qa.yml", entries: ["web/page.html"], runner: "scripts/qa.mjs", activationEvidence: "docs/activated.json" };
+  const source = workflow([target.activationEvidence], { before: `      - run: test -f ${target.activationEvidence}\n` });
+  const root = await fixture(t, { [target.workflow]: source, "web/page.html": '<script src="./page.js"></script>', "web/page.js": "" });
+  assert.equal((await checkBrowserQaTriggers(root, [target]))[0].prepared, true);
+  await writeFile(path.join(root, target.workflow), source.replace("test -f", "echo"));
+  await assert.rejects(checkBrowserQaTriggers(root, [target]), /activation-only/);
+  await writeFile(path.join(root, target.workflow), source);
+  await mkdir(path.join(root, "docs")); await writeFile(path.join(root, target.activationEvidence), '{}');
+  const result = (await checkBrowserQaTriggers(root, [target]))[0];
+  assert.ok(result.missing.includes("web/page.js"));
+  assert.ok(result.missing.includes(target.workflow));
+});

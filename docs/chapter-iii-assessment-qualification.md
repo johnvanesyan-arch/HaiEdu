@@ -1,6 +1,8 @@
 # Chapter III qualification preflight and conditional forms
 
-**Current follow-up — 15C.24R:** S03-D05 v2, S03-M10 v2 and their five definitions are now ordinarily approved without wording edits. All 168 current questions have approvals and passing QA, 80 guides are published and 344 definitions active. The unchanged conditional form memberships represent M1–M5 in the author plan; exact approval bindings are refreshed. Zero forms are independently qualified or allocated. [Current review closure](chapter-iii-revision-review-20261017.md). The report below preserves pre-revision findings.
+**Current follow-up — 15C.25:** John deferred independent handoff/review on October 17. [Technical release configuration and production-schema rollback](chapter-iii-release-preparation.md) are complete; live activation is separately gated. The qualifications below remain unapproved.
+
+**Ordinary review closure — 15C.24R:** S03-D05 v2, S03-M10 v2 and their five definitions are now ordinarily approved without wording edits. All 168 current questions have approvals and passing QA, 80 guides are published and 344 definitions active. The unchanged conditional form memberships represent M1–M5 in the author plan; exact approval bindings are refreshed. Zero forms are independently qualified or allocated. [Current review closure](chapter-iii-revision-review-20261017.md). The report below preserves pre-revision findings.
 
 **2026-10-17 Asia/Yerevan · Sprint 15C.23 · Roadmap 3.87 · Preparation complete; qualification blocked**
 

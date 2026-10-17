@@ -7,6 +7,12 @@ import { fileURLToPath } from "node:url";
 // test, attest the deployed revision, or replace isolated browser acceptance.
 export const browserQaTargets = [
   {
+    workflow: ".github/workflows/chapter-iii-pilot-read-acceptance.yml",
+    entries: ["web/index.html", "web/course.html", "scripts/chapter-iii-pilot-read-acceptance.mjs"],
+    runner: "scripts/chapter-iii-pilot-read-acceptance.mjs",
+    activationEvidence: "docs/evidence/chapter-iii-pilot-activation-20261017.json",
+  },
+  {
     workflow: ".github/workflows/sprint-14-actions-qa.yml",
     entries: ["web/teacher.html", "web/school-admin.html", "scripts/sprint-14-actions.mjs"],
     runner: "scripts/sprint-14-actions.mjs",
@@ -130,6 +136,22 @@ export async function checkBrowserQaTriggers(root, targets = browserQaTargets) {
     if (waitCommand < 0 || runnerCommand < waitCommand) {
       throw new Error(`${target.workflow} must verify the production frontend revision before live QA`);
     }
+    // A prepared release has no live chapter to accept. Its first trigger is
+    // the verified activation record. Once that record exists, require the
+    // complete dependency graph below in the same activation change.
+    if (target.activationEvidence) {
+      let activated = true;
+      try { await readFile(path.join(root, target.activationEvidence)); }
+      catch (error) { if (error.code === 'ENOENT') activated = false; else throw error; }
+      if (!activated) {
+        const activationGuard = commands.indexOf(`run: test -f ${target.activationEvidence}`);
+        if (patterns.length !== 1 || patterns[0] !== target.activationEvidence || activationGuard < 0 || activationGuard > waitCommand) {
+          throw new Error(`${target.workflow} must remain activation-only during preparation`);
+        }
+        results.push({ workflow: target.workflow, prepared: true, dependencyCount: 0, missing: [] });
+        continue;
+      }
+    }
     const sources = await collectDependencies(root, target.entries);
     const required = new Set([...sources.keys(), target.workflow, "scripts/wait-for-production-release.mjs", "scripts/stamp-release.mjs", "package.json", "package-lock.json", "vercel.json"]);
     const apiEntries = new Set();
@@ -157,7 +179,7 @@ if (process.argv[1] && path.resolve(process.argv[1]) === fileURLToPath(import.me
       if (result.missing.length) {
         console.error(`${result.workflow} omits ${result.missing.join(", ")}`);
         process.exitCode = 1;
-      } else console.log(`${result.workflow}: ${result.dependencyCount} dependency paths covered; production QA remains main-only.`);
+      } else console.log(result.prepared ? `${result.workflow}: prepared; live QA requires verified activation and expanded dependency triggers.` : `${result.workflow}: ${result.dependencyCount} dependency paths covered; production QA remains main-only.`);
     }
   } catch (error) {
     console.error(`Browser QA trigger coverage failed: ${error.message}`);
