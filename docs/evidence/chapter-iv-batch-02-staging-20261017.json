@@ -1,0 +1,1557 @@
+{
+  "sprint": "15D.3",
+  "roadmap": "3.96",
+  "observedAt": "2026-10-17T10:53:47.658081+00:00",
+  "authorization": "chapter-iv-three-batch-authorization-20261017.json",
+  "batch": {
+    "questions": 86,
+    "practice": 50,
+    "diagnostic": 14,
+    "mastery": 22,
+    "guides": 50,
+    "definitions": 46,
+    "status": "draft"
+  },
+  "chapter": {
+    "questions": 170,
+    "approvedDistinct": 20,
+    "pendingQuestions": 150,
+    "guides": 100,
+    "publishedGuides": 1,
+    "draftGuides": 99,
+    "draftDefinitions": 111,
+    "reviewAuditRows": 23
+  },
+  "approvalsWrittenThisDelivery": 0,
+  "browserStatus": "Credential protection still blocks observation after permitted origin recovery; automation stopped and existing handoff preserved.",
+  "corpus": {
+    "currentItems": 705,
+    "immutableVersions": 585,
+    "templateGuides": 196,
+    "skillGuides": 10,
+    "runtimeGuideVersions": 374,
+    "authoringGuideVersions": 644,
+    "fingerprintMatchedTables": 28,
+    "pairCount": 3655
+  },
+  "qa": {
+    "questionPass": 86,
+    "guidePass": 50,
+    "errors": 0,
+    "warnings": 0,
+    "method": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "evaluatorSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "systemActorNull": true
+  },
+  "preservedTables": [
+    {
+      "row_count": 1,
+      "table_name": "academic_mastery_policy_activation",
+      "fingerprint": "6e1a63fb6eec8f81e4d1792078f49c47"
+    },
+    {
+      "row_count": 1,
+      "table_name": "academic_mastery_policy_versions",
+      "fingerprint": "33b38545c0070113c573947187bc96ab"
+    },
+    {
+      "row_count": 896,
+      "table_name": "assessment_blueprint_items",
+      "fingerprint": "b18a5f20750db4661e55d1a5f256e8e4"
+    },
+    {
+      "row_count": 15,
+      "table_name": "assessment_blueprints",
+      "fingerprint": "c5d72dac72ef6ed6dc17f7d6b8de2963"
+    },
+    {
+      "row_count": 240,
+      "table_name": "assessment_form_items",
+      "fingerprint": "1aecdf77234d431fce6580449a4e94d5"
+    },
+    {
+      "row_count": 14,
+      "table_name": "assessment_forms",
+      "fingerprint": "69d7f51131c27a2cc3f81949a2fa02a4"
+    },
+    {
+      "row_count": 8,
+      "table_name": "assessment_policy_bindings",
+      "fingerprint": "e5e5ca95be8c1e29e1513c23457dedf7"
+    },
+    {
+      "row_count": 9,
+      "table_name": "assessment_pool_curriculum_reconciliations",
+      "fingerprint": "aa0e51c95bb57bd02ac7c63629f7cdd8"
+    },
+    {
+      "row_count": 640,
+      "table_name": "assessment_pool_items",
+      "fingerprint": "0a30ec091fa7b25bca52f363dab52402"
+    },
+    {
+      "row_count": 10,
+      "table_name": "assessment_pools",
+      "fingerprint": "840d53268390c33e22641c3281826310"
+    },
+    {
+      "row_count": 42,
+      "table_name": "attempts",
+      "fingerprint": "34d7f71a2768a1afe6f357721e668393"
+    },
+    {
+      "row_count": 1,
+      "table_name": "chapter_mastery_states",
+      "fingerprint": "9029019bf1569cae15fd93aa8b4ecff0"
+    },
+    {
+      "row_count": 0,
+      "table_name": "chapter_review_cycles",
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "row_count": 0,
+      "table_name": "chapter_review_item_exposures",
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "row_count": 1,
+      "table_name": "chapter_review_requirements",
+      "fingerprint": "88e05bc404e2045c5cfcbc2c8c5a8729"
+    },
+    {
+      "row_count": 0,
+      "table_name": "chapter_review_sessions",
+      "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "row_count": 4,
+      "table_name": "curriculum_reconciliation_runs",
+      "fingerprint": "58f7230d052ef7f1f31912bcb046b0f4"
+    },
+    {
+      "row_count": 28,
+      "table_name": "curriculum_release_gate_checks",
+      "fingerprint": "ed7a5ebf0be98e3c597952cd12c4c69a"
+    },
+    {
+      "row_count": 482,
+      "table_name": "curriculum_release_item_families",
+      "fingerprint": "9eadf1490634e106fd46b2edf3cfd526"
+    },
+    {
+      "row_count": 32,
+      "table_name": "curriculum_release_outcomes",
+      "fingerprint": "f94886504e06d4aded978df9d3bd701d"
+    },
+    {
+      "row_count": 4,
+      "table_name": "curriculum_release_reconciliations",
+      "fingerprint": "e4deebc11d93e08a2d0777638dc16ce4"
+    },
+    {
+      "row_count": 40,
+      "table_name": "curriculum_release_skills",
+      "fingerprint": "b360c3b48ef330ace0e1bf1da54853d3"
+    },
+    {
+      "row_count": 5,
+      "table_name": "curriculum_release_units",
+      "fingerprint": "390a02dc2d38394b3d6fa526d9084d95"
+    },
+    {
+      "row_count": 5,
+      "table_name": "curriculum_releases",
+      "fingerprint": "c457d749bf5fd0af80c5eda55ce68eb1"
+    },
+    {
+      "row_count": 3,
+      "table_name": "curriculum_source_documents",
+      "fingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+    },
+    {
+      "row_count": 705,
+      "table_name": "item_answer_keys",
+      "fingerprint": "e206ecc52cd3909a5d90ec6abc3badcf"
+    },
+    {
+      "row_count": 705,
+      "table_name": "item_curriculum_scopes",
+      "fingerprint": "6d19d7eaf7eae42c43c51da593f7e0ca"
+    },
+    {
+      "row_count": 483,
+      "table_name": "item_families",
+      "fingerprint": "95f198a8ce39ee786a3469680729cb97"
+    },
+    {
+      "row_count": 483,
+      "table_name": "item_family_curriculum_reconciliations",
+      "fingerprint": "a4a79d5f279cc30305bb2b0efc109300"
+    },
+    {
+      "row_count": 1574,
+      "table_name": "item_misconception_mappings",
+      "fingerprint": "9db59c5f043e051837a47ddbaa96b6d2"
+    },
+    {
+      "row_count": 2212,
+      "table_name": "item_options",
+      "fingerprint": "669be77b7b842f15ff8c0126dd92aeae"
+    },
+    {
+      "row_count": 986,
+      "table_name": "item_qa_runs",
+      "fingerprint": "c5bfd21c234f7a1b41056edb4b305d96"
+    },
+    {
+      "row_count": 917,
+      "table_name": "item_reviews",
+      "fingerprint": "c3af800368b0de974fe406adf44890b8"
+    },
+    {
+      "row_count": 196,
+      "table_name": "item_template_remediation_guides",
+      "fingerprint": "62f4d56fb2d68a08d7f15c532e954baf"
+    },
+    {
+      "row_count": 483,
+      "table_name": "item_templates",
+      "fingerprint": "5e36c2d4b5f75df88af519c8078f4107"
+    },
+    {
+      "row_count": 585,
+      "table_name": "item_versions",
+      "fingerprint": "1782ce75f30c7b8f4fc90cccd654c659"
+    },
+    {
+      "row_count": 705,
+      "table_name": "items",
+      "fingerprint": "c5808fe676edec98e4122294348aa6af"
+    },
+    {
+      "row_count": 3,
+      "table_name": "learning_model_configurations",
+      "fingerprint": "a201b54311faa0b47a2de0b2c6ea01b9"
+    },
+    {
+      "row_count": 3,
+      "table_name": "learning_model_runtime_bindings",
+      "fingerprint": "64ea5cdea006aa6547a0b0ca36e20f67"
+    },
+    {
+      "row_count": 32,
+      "table_name": "learning_outcome_normative_mappings",
+      "fingerprint": "ea1aec1442986ebdc7e2ae0d5f339b15"
+    },
+    {
+      "row_count": 32,
+      "table_name": "learning_outcomes",
+      "fingerprint": "ebc3f4fcd7412927e9840ecf89492767"
+    },
+    {
+      "row_count": 96,
+      "table_name": "learning_session_items",
+      "fingerprint": "f73f590b4c920298a6e1a8479b6c7a74"
+    },
+    {
+      "row_count": 8,
+      "table_name": "learning_sessions",
+      "fingerprint": "86580ceeda23b08cae316f5a90b210cd"
+    },
+    {
+      "row_count": 1,
+      "table_name": "mastery_check_attempts",
+      "fingerprint": "792e2f317f1c2e2ddf41daa4af787800"
+    },
+    {
+      "row_count": 609,
+      "table_name": "misconception_review_events",
+      "fingerprint": "08b23f25f91b7b48513bcf3fd03b5594"
+    },
+    {
+      "row_count": 682,
+      "table_name": "misconceptions",
+      "fingerprint": "7ae939bb68d3cdbf316ad6227539398e"
+    },
+    {
+      "row_count": 824,
+      "table_name": "recommendation_events",
+      "fingerprint": "dc1a5f6572318abdfe6bd504f8ec6577"
+    },
+    {
+      "row_count": 6,
+      "table_name": "remediation_events",
+      "fingerprint": "6c5aa87d43e93dbd18a26c73dae4e261"
+    },
+    {
+      "row_count": 644,
+      "table_name": "remediation_guide_authoring_versions",
+      "fingerprint": "3c2d1e5a8488600872201d0413c585fd"
+    },
+    {
+      "row_count": 374,
+      "table_name": "remediation_guide_versions",
+      "fingerprint": "20068becb740f765364f1d799090face"
+    },
+    {
+      "row_count": 26,
+      "table_name": "runtime_builds",
+      "fingerprint": "1639c6c4b7543d5f96da824e5ec13b10"
+    },
+    {
+      "row_count": 40,
+      "table_name": "skill_curriculum_reconciliations",
+      "fingerprint": "cdc7383c301d6c4b3cb13e433ef74eda"
+    },
+    {
+      "row_count": 50,
+      "table_name": "skill_outcome_curriculum_mappings",
+      "fingerprint": "25980eb8dafb9e841c34ffec58ce92e7"
+    },
+    {
+      "row_count": 50,
+      "table_name": "skill_outcomes",
+      "fingerprint": "5ec0f5aa2dfea504d3e2d3d72b786a01"
+    },
+    {
+      "row_count": 17,
+      "table_name": "skill_prerequisites",
+      "fingerprint": "29495957b75eeb48e09d6e19e18fac35"
+    },
+    {
+      "row_count": 10,
+      "table_name": "skill_remediation_guides",
+      "fingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+    },
+    {
+      "row_count": 41,
+      "table_name": "skills",
+      "fingerprint": "f1049e39b220423f4dc0d133b3ba9d74"
+    },
+    {
+      "row_count": 44,
+      "table_name": "student_item_exposure_events",
+      "fingerprint": "4807b78c602d7a75ac8d0cd747a17188"
+    },
+    {
+      "row_count": 13,
+      "table_name": "student_skill_mastery_by_release",
+      "fingerprint": "2f4adfd4245382d10ee42fa849245706"
+    }
+  ],
+  "release": {
+    "status": "draft",
+    "activatedAt": null,
+    "formItems": 0,
+    "poolItems": 0
+  },
+  "restrictedEvidence": {
+    "libraryFileId": "libfile_9c22c6ee2b748191af60a8b769c77898",
+    "filename": "HaiEdu-Chapter-IV-Batch-02-Restricted-Evidence.zip",
+    "components": {
+      "specs.json": "7ef02f13f292f8307286fe00b344119eaac768f9abfc0e60230810d2f1bd56e0",
+      "comparison.json": "cbb2f4ce181409d9e1dae034e4a80ccd6dd419e8e8177b9d24b5372e306791a2",
+      "comparison-corpus.json": "7cc43b50ad723624984139460fe453ec75f8de9bc105baf8d9ed9e6b849a1b82",
+      "committed-readback-catalogue.json": "4c4fff70a6973bab821b3704a2ac3cc6fcfa9090495e7f85841011a6c30d2e64",
+      "approval-baseline.json": "8a733d307cdeb764268efded8bb799668d76e8da81b99b046ccd8fbb011ed74d",
+      "qa-record-summary.json": "540628be3e5352e9fca71dc03271252207753f229336a3468252ffff1cf3a754",
+      "final-verification.json": "f91335c16d21f476fceb4f26626b8e99e011eee9763ff6667afcb9b76898d550"
+    },
+    "frozenArchiveVersion": 2
+  },
+  "candidates": [
+    {
+      "code": "PHY7-U04-S06-I01",
+      "revision": 1,
+      "specSha256": "0d1624b5b0a154d60cef9ede5077f1bb353c3d10c006a0b160c959f0ade49d7a",
+      "itemId": "b559e5a2-42aa-42b3-9c87-21b82e953a6d",
+      "version": 1,
+      "variantFingerprint": "1f4657d7f68c7e6dcc69fd1482af26e0",
+      "qaId": "edebad2e-69ce-4561-b800-1062343e9ff8",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-I02",
+      "revision": 1,
+      "specSha256": "7f32daaede989fda4153c20c83bfbbfa60a4ff2c80364d2e57ac10ad7773e2bf",
+      "itemId": "445fe2c7-ddd9-4132-84c6-8172ead33dcb",
+      "version": 1,
+      "variantFingerprint": "eec18e8d0ca7180ae98d9535f317ca4f",
+      "qaId": "cb81d09a-32db-4e66-b2cc-b1b3421fdc47",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-I03",
+      "revision": 1,
+      "specSha256": "8a7609416776c64e82e668b53cb3f86481c185ab606a0ae18935a5146ccfd64b",
+      "itemId": "ed5da48d-ec21-47d2-9b0b-196a30980969",
+      "version": 1,
+      "variantFingerprint": "19ec6ce4d9af043590d98f1cfd1624de",
+      "qaId": "ce1aeebf-8575-415c-8efe-bd21b5ea769e",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-I04",
+      "revision": 1,
+      "specSha256": "f43f7cd301596ac49b564df4eaea945eb1db224201166d15e19e74a5969f95ed",
+      "itemId": "c4d61fd7-81d2-4d2e-b39d-9e2d072e63dd",
+      "version": 1,
+      "variantFingerprint": "316027e130debe3fec6b56e8e6f044f6",
+      "qaId": "cee948cb-e9e3-473e-9755-4a803b7a1059",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-I05",
+      "revision": 1,
+      "specSha256": "9ffea6f4658583f7f4f918f1f0f9094ae535abcfa090cbe274b591a6a9d4a4f5",
+      "itemId": "77a821d5-0a62-45ac-a4be-b79c918069a0",
+      "version": 1,
+      "variantFingerprint": "8c178a05dba8d21b5ea4d75bd634d752",
+      "qaId": "a428978d-859f-4834-8fdb-27bc40055579",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-I06",
+      "revision": 1,
+      "specSha256": "4a87ed15969ea7b1a754c6215db9472f99d60121c74ccc7331dd5f42e66f5d32",
+      "itemId": "cab47fba-634f-43f1-977c-928c378590d7",
+      "version": 1,
+      "variantFingerprint": "1a8703f9dcbd38f22aef708be7dfe95d",
+      "qaId": "3d423d9a-563e-4b32-9350-b55a50996f07",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-I07",
+      "revision": 2,
+      "specSha256": "181d896f2248ec2959c199754066c7d83eccc3aa575a73ce889bdabad3a92c16",
+      "itemId": "239df28d-f54a-408e-900a-4e7955526c17",
+      "version": 1,
+      "variantFingerprint": "a66f85c2d0d435b3ddfc320c7d1d7968",
+      "qaId": "01ed3b81-3926-4bee-afa0-d4c3a50ac64c",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-I08",
+      "revision": 1,
+      "specSha256": "554b554c794f1faddfceda79ad468637f10ba05c383892b5c3743c0a997e7f75",
+      "itemId": "fdcf23a9-0254-4e34-b8ce-e531b5277633",
+      "version": 1,
+      "variantFingerprint": "da7976533ba8ffd7609bc970eefef429",
+      "qaId": "9d9195e9-367e-444a-8ab1-203c4dddc204",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-I09",
+      "revision": 1,
+      "specSha256": "56a8c5efbb0eab85ab5efb2ac663db81cffb258e60b5047a2a29da03f0177f27",
+      "itemId": "4f3411a4-22e2-499b-8191-4d16901319e8",
+      "version": 1,
+      "variantFingerprint": "517b1f020e757b48dbac153a5ca95331",
+      "qaId": "cb037d80-3afe-43ee-9116-5501666b5328",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-I10",
+      "revision": 1,
+      "specSha256": "1d15fd08ae1c73331b06e9a91a3ec706ff72e6d008026dfd19dcbc99aa1f369c",
+      "itemId": "15657384-a138-48a0-9847-3bc04aae6f42",
+      "version": 1,
+      "variantFingerprint": "ba8bdd641c216e4080e3e373ccac1b32",
+      "qaId": "e995e8c6-e984-40e8-ad59-53a78fd09582",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-D01",
+      "revision": 1,
+      "specSha256": "ed5e9ce7711a8c9d7185b7e340243cd3d005a9bf710d467125202e18785e06c8",
+      "itemId": "44f291f9-7777-4477-9c03-0ef378d95b81",
+      "version": 1,
+      "variantFingerprint": "36470ac1388037be98eedee7043dbd61",
+      "qaId": "4498f970-9ab3-4fa9-b348-7a1b6e28ae85",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-D02",
+      "revision": 1,
+      "specSha256": "ce8523ccc5b0be3eb3d1812267b5c6d03ab90b9a22901c19c7589202dd01cc87",
+      "itemId": "c342b629-3feb-40a8-8325-58a6bb22c0f9",
+      "version": 1,
+      "variantFingerprint": "bed90bbc5b71d18cac30b197b9bea28d",
+      "qaId": "de40146f-1b59-4b8d-8bb4-b81be51e8e35",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-M01",
+      "revision": 1,
+      "specSha256": "8c1d19d870efa28acecee47495a36a3500d49188f4f5b43a8e6e62f972795462",
+      "itemId": "551b1ea9-70a8-4151-b9de-de6e12cf2ac8",
+      "version": 1,
+      "variantFingerprint": "ce6e98dc7607326c274626f9b102f472",
+      "qaId": "a9112f9f-4f81-41c2-9f0e-b554b417e5fb",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-M02",
+      "revision": 1,
+      "specSha256": "b0967f6ca474859b189afcbd8089e795b41ae6bb13cebb8399ab4dca1d439909",
+      "itemId": "bc041cb3-82a0-44e0-9614-b229cce576ef",
+      "version": 1,
+      "variantFingerprint": "266dd7907915d76c8c56207d764e4ed7",
+      "qaId": "241b1c93-daf0-46fc-8e54-f33cb0d74415",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-M03",
+      "revision": 1,
+      "specSha256": "4193937c6550929f05143eb669c2677670c17b9f4aecc8acd60a23087d77d0ba",
+      "itemId": "cd3ec814-e3f7-4e32-8acd-cb72da8ad340",
+      "version": 1,
+      "variantFingerprint": "b8737c0e6a7c674bc82d59cdea0582f3",
+      "qaId": "a0027a50-3b4d-4660-b1b0-f2898905deb0",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S06-M04",
+      "revision": 1,
+      "specSha256": "eeada86d56f87a995821af8a7c9e1c890fda19f64e5b6672261841ed92318380",
+      "itemId": "c5d00133-4684-420b-9465-5eeb6e9257ac",
+      "version": 1,
+      "variantFingerprint": "452c4d3f16207333ad24c0c55f4aa67a",
+      "qaId": "8df13601-0768-462b-95ed-2eeb5d465d08",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-I01",
+      "revision": 1,
+      "specSha256": "93691e8bf086e1c8931b49ab77413e06c11c0a52b2359de36d72a450aa5fd400",
+      "itemId": "1ebf995e-c249-40e1-979e-a2ffd72eb4da",
+      "version": 1,
+      "variantFingerprint": "165477e355909a5b9d6dfde0a73b258f",
+      "qaId": "f5e1ea1d-b1b5-4f63-8306-6da56cfe71d8",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-I02",
+      "revision": 1,
+      "specSha256": "209b59f068e933c38c623c69f61dba6f5652a20c7b64d59631c9cd026c42ff6a",
+      "itemId": "84b0c800-6371-4ec0-9ea3-5bb91d15c841",
+      "version": 1,
+      "variantFingerprint": "9000ddd29cb0af717d3d08c42e753033",
+      "qaId": "2e42cb6a-5f13-49bd-a0e1-a3a7c1a0c8e5",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-I03",
+      "revision": 1,
+      "specSha256": "23518d0a57ed430c018853d06c328fc31036bcb6d32abd37b45fe529f81c42a6",
+      "itemId": "d7cd2885-2140-46d1-8192-ea3fc455acdd",
+      "version": 1,
+      "variantFingerprint": "c5a59b566a30ee456480ef18eb3d18cd",
+      "qaId": "519f4963-e2df-420d-a0b2-6bb8ac5a3945",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-I04",
+      "revision": 1,
+      "specSha256": "6e1654d65021f4f2d6275f64e3d3fd5fc48a166fbfb5ca5d91bb21bf28be7925",
+      "itemId": "d6b5cfb7-cb40-490e-927d-ad4750237185",
+      "version": 1,
+      "variantFingerprint": "6a8ba131e5ed56b64bb1b5c3c55a728d",
+      "qaId": "b7322cc8-d8f8-4391-bede-4b2fa03698c0",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-I05",
+      "revision": 1,
+      "specSha256": "aad76323b693a03d225b01a8b536ea9c3be2f2f28dd747110b6e40bc3d57f474",
+      "itemId": "d2281619-15dd-487d-aad2-98d273fd9f77",
+      "version": 1,
+      "variantFingerprint": "cf6a1f76278b501dacc8ad1062309e95",
+      "qaId": "c54602a3-9772-41bb-9bb8-1c07634d6b77",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-I06",
+      "revision": 1,
+      "specSha256": "5bd03915c8e3572cfec895af8277aa0ed5e83cbd41260e543c0c7f69f0315d80",
+      "itemId": "95493eee-f757-4717-9448-44792b86d7b5",
+      "version": 1,
+      "variantFingerprint": "67848416deb6ad8f465ac7986c473a15",
+      "qaId": "b929d8c9-9f9b-4d51-8b7f-2148da690a33",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-I07",
+      "revision": 1,
+      "specSha256": "844af25dae521a8e0b5baaa08bc5f0d75dca2ef73fb5569084cafca3c6dc13f9",
+      "itemId": "6f3b0386-6c73-4a57-b11c-8ceb3962c126",
+      "version": 1,
+      "variantFingerprint": "5b0f0a486717675a836aecee5777e0bc",
+      "qaId": "0ea18e2f-db28-4df9-9b7a-d3f20849f6f6",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-I08",
+      "revision": 1,
+      "specSha256": "544146ab319a273d1bb767710a28775a9589e11f0d9e080557bba290c387c03e",
+      "itemId": "afdf7891-abde-43b6-8a24-a9553cde582f",
+      "version": 1,
+      "variantFingerprint": "0be34129550a4f598666cbf5a574ab03",
+      "qaId": "4293fb31-0cd2-4fef-891f-2195dfb0b813",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-D01",
+      "revision": 1,
+      "specSha256": "15e22c8d2814cfb6d1b2f3ae264e8d1314dbde350995d2d09e4b7e174ffbf0b6",
+      "itemId": "485aa7e8-d3f6-4359-bc68-254abdfdfc82",
+      "version": 1,
+      "variantFingerprint": "f4c122c9360dbef470053dc2510241ff",
+      "qaId": "ff8a1e12-538b-452c-baa2-d46e3c340492",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-D02",
+      "revision": 1,
+      "specSha256": "6a1d84480b1fb3b34f2eb6ee3edf81fd10f4022f2e2b920df522f8f933be0798",
+      "itemId": "b08217d1-84a9-46d7-bdc7-2314a9092546",
+      "version": 1,
+      "variantFingerprint": "1da09669d320eb96bbde6ecc342d7542",
+      "qaId": "3c9c86bc-2a89-427b-a801-76c88ed03ab7",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-M01",
+      "revision": 1,
+      "specSha256": "4f44a207e5bb96328fd01f3454ea2eccba10f4be38373f1b4b8e3c5eb2852f82",
+      "itemId": "99efaec8-0289-4674-9c29-fc97d425ce31",
+      "version": 1,
+      "variantFingerprint": "f322fa285d0c668655549bb1d2746a75",
+      "qaId": "e0baec71-fd2a-4ba6-b43f-1ad5a0d14e24",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-M02",
+      "revision": 1,
+      "specSha256": "6e1c5ee5432b69a1ec9e21b6322a310c5a3daad269975da5c0e4fb3e666e074e",
+      "itemId": "0ac01dd9-ec53-4968-b2e7-26a134caf6df",
+      "version": 1,
+      "variantFingerprint": "e6fc8cefbe1cb9d0e9eeeb2423e63ea8",
+      "qaId": "9a635532-c344-4baa-93e8-6b9962f9e1e5",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-M03",
+      "revision": 2,
+      "specSha256": "7fde35dedd5ede23719feea0c6c0430c0de9357a9181d78a18907f9ca414bd81",
+      "itemId": "e5e29bbb-b956-4f69-8ea6-0ab2dcad9e3e",
+      "version": 1,
+      "variantFingerprint": "b2c91c5661cf290a79b563ad2de03ea0",
+      "qaId": "b132f567-3686-483e-abca-2b0c5fa103f9",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S07-M04",
+      "revision": 1,
+      "specSha256": "dce77fe18a926941e9f0cc63ea1bfff5c9d3dd18f3578a54c3435a910e5c1f91",
+      "itemId": "14aa5a0f-2f9e-4dc8-bed9-20500582e71c",
+      "version": 1,
+      "variantFingerprint": "80662ca3c6225db34ab8f1dece11ab47",
+      "qaId": "f90777d7-0caf-4a4a-938f-298b95d1eb51",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I01",
+      "revision": 1,
+      "specSha256": "d3f4495b177a3383bc4a9120beed19ab3586155184a530609ac5f307d2720ce9",
+      "itemId": "2ffbcf63-564e-4a74-a1c0-9a1d6ecd51b1",
+      "version": 1,
+      "variantFingerprint": "70ab64fbd85daa09ca7d4175fdf58034",
+      "qaId": "871330f5-7df4-4c47-9b44-55446894db71",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I02",
+      "revision": 1,
+      "specSha256": "cca1acae1318dbf82bd4ca2d9c4187ed0c86242506f169db7b7253c451240d85",
+      "itemId": "f3b77b48-4b6f-4736-9df8-5f4f8e75d4c1",
+      "version": 1,
+      "variantFingerprint": "621b3cdabac41b3b3738317ca130ecaf",
+      "qaId": "371b23d2-8845-4be1-8e98-af8387c00f65",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I03",
+      "revision": 1,
+      "specSha256": "0c5c893ef8df4ed0e46f9aa9369e2139fce335d0832a71ab0bd370a4aa3f61d5",
+      "itemId": "e01d7769-ee5b-46cd-9226-a936d6944ffc",
+      "version": 1,
+      "variantFingerprint": "b03d918fc14d70fc845f97fe63f2c389",
+      "qaId": "745ffa45-3eda-49da-b83e-e35192c88bc3",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I04",
+      "revision": 2,
+      "specSha256": "5e79c9a48257b9c7865426398210a109395da32817ca31d208837f0f5be3441b",
+      "itemId": "06884cee-9fe8-4184-be89-74ffd841d3e6",
+      "version": 1,
+      "variantFingerprint": "3228746d32753eee5c61a7b898977990",
+      "qaId": "0884ee66-c834-486d-93da-1746a125ad3d",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I05",
+      "revision": 1,
+      "specSha256": "77ea64c840dbe86e5c918c90adfac626f5cc7ad87a6d5a4910ea9fc395a323fb",
+      "itemId": "8b41016a-4471-4e59-93f1-87607c88dbcb",
+      "version": 1,
+      "variantFingerprint": "449b81e3d49ed0eca91d5351c6d31c61",
+      "qaId": "7a8ddf41-0f79-4098-999a-2d42e3ff5c5d",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I06",
+      "revision": 1,
+      "specSha256": "6b3477a26575def54574c542ef142b1d5663690d641e6242abcff6dab8f5a904",
+      "itemId": "2c38809f-6161-4ee5-abeb-7092e9459c32",
+      "version": 1,
+      "variantFingerprint": "bcb93fd76bd5216b0045c4e6a7abe58d",
+      "qaId": "936cdf93-564d-485f-84b5-0ca0d50d4c4b",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I07",
+      "revision": 1,
+      "specSha256": "8a7849c930821245e69b27a1afe403783e0a4dd17c552b770024be7d9eba6bb6",
+      "itemId": "d9ea7791-073a-4005-b018-bbaf10f0272b",
+      "version": 1,
+      "variantFingerprint": "c1598dc98a18d0828042986ff253e35a",
+      "qaId": "03cf4796-8d4c-4ab3-9c91-2d0bddbf6dcd",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I08",
+      "revision": 1,
+      "specSha256": "24c9cf405b36f6125e20f14b6f7e03d137b9d601a110b9369dd969e977f6a5ee",
+      "itemId": "92726da3-77e0-4bf7-b541-915d003bfef6",
+      "version": 1,
+      "variantFingerprint": "0fe3d5b1cb315183983de6fd3fc234c9",
+      "qaId": "abcbb8cb-b49b-419b-9c86-9c001643652a",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I09",
+      "revision": 2,
+      "specSha256": "741c6b9f38bd3d42e95030f4e90b0469b6843c966bd34a2b56047fc7b5b3a6e1",
+      "itemId": "ec5014de-349f-49b9-85c4-4ff52a36a987",
+      "version": 1,
+      "variantFingerprint": "a58f39887a40620f5ce353d091a1aafc",
+      "qaId": "02e2c2d3-36d1-4fd6-a500-9ebe15ed23ee",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I10",
+      "revision": 1,
+      "specSha256": "3ced9091719fde5f1d3e9b58db6dfc080458d1bbb2a192047ad8d9360acb6a9c",
+      "itemId": "910557ab-b118-410b-98ac-8062ad9b5e5c",
+      "version": 1,
+      "variantFingerprint": "3881431c35db3aa53ac8a523162450cf",
+      "qaId": "12582a0c-61d3-44d3-858c-a9ec9651208b",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I11",
+      "revision": 1,
+      "specSha256": "43f5adc4f5010058bd52ca7320ae17ffff23197f10a268d4c4d8630a8315cde8",
+      "itemId": "bcdf7a80-2a42-42ef-82dc-d118df8f760e",
+      "version": 1,
+      "variantFingerprint": "b1d8d97e179befaa54de6c4223c97a8a",
+      "qaId": "85318b57-6342-4eb5-ae21-ee8a4a5e25d2",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-I12",
+      "revision": 2,
+      "specSha256": "cd2b54c51b9096b1b9389ecc11a790f0adb7e5cec6640f69d7134d6bd4a3789f",
+      "itemId": "2cac70bc-8f40-44db-a319-4e9b1e579fd5",
+      "version": 1,
+      "variantFingerprint": "37c05f7a0d78bbe9e225eb14ff77a217",
+      "qaId": "fb50c2f3-2443-475b-b959-26373a5fbc0b",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-D01",
+      "revision": 1,
+      "specSha256": "e2682803b6f5e410c21ac12ade2688ee264b90fd5bd28fe1e5bc47c5d09ad2e4",
+      "itemId": "d920eb05-11b4-4508-a911-7bb21b9f4f6e",
+      "version": 1,
+      "variantFingerprint": "7c2ff54bcd74d27b7bb7e854219a60bd",
+      "qaId": "ac053aa9-581e-429b-ab16-0e4be2f1a6c5",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-D02",
+      "revision": 1,
+      "specSha256": "a81e297267be6af0198e04bf43fdf475e4803cc93e3acd5c56c2e841b2a8c263",
+      "itemId": "63deb1dd-fa83-427c-a211-89b00150a2d6",
+      "version": 1,
+      "variantFingerprint": "835ec2bfd1b5f8c5461304e7e9cb26c7",
+      "qaId": "d4a8371a-547b-4133-8f3a-c113f9905575",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-D03",
+      "revision": 1,
+      "specSha256": "a780400167cca9a77cd373603867183a89f9b036d5159fb1b2c19e0321b98395",
+      "itemId": "ffe8e93f-5939-4da5-9d5f-5c6925420c30",
+      "version": 1,
+      "variantFingerprint": "ace855e9c67e8b2421f467814b72359e",
+      "qaId": "83625df9-8a89-4f9f-ad15-2e45e515eb66",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-D04",
+      "revision": 1,
+      "specSha256": "edc1da30d18369a8150f1c46f3d869ccf41caff385be717179f766961e447917",
+      "itemId": "681f5f1c-6a98-409e-acfb-6142b3ed06fb",
+      "version": 1,
+      "variantFingerprint": "70a4c85dfbf5d835ad9e5474f3f6f233",
+      "qaId": "9396fd87-4f40-4280-8863-9c4b42419ab9",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-M01",
+      "revision": 1,
+      "specSha256": "5ad292349514e9fa57a3a68fcf42af41e01cf16d59e8d1cb78a329d6a5bbee55",
+      "itemId": "ee7c85b1-ae16-49c7-8fed-c05b009c93c6",
+      "version": 1,
+      "variantFingerprint": "4aa83e33b2ee847c4ac8472549fe156a",
+      "qaId": "798544c5-131c-4379-ab25-712bbb21d753",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-M02",
+      "revision": 1,
+      "specSha256": "b910145779268c0dad0cbc5d0c2b37041bbcc509ba4dfbae423b783150f023f8",
+      "itemId": "e2a2e880-370b-489e-acab-2c9b024388f4",
+      "version": 1,
+      "variantFingerprint": "285f581728a4c701a519abfb97de5617",
+      "qaId": "8a17c3fe-4544-472e-8b20-293c26942129",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-M03",
+      "revision": 1,
+      "specSha256": "4f435cffe9988fc595b0ceee455f7da632ccb0a97c9706ad412ca6005fbd81f5",
+      "itemId": "7e8a49b4-635c-4ca1-80c6-a63bb55459e4",
+      "version": 1,
+      "variantFingerprint": "ac1af6380c229966d29614a0086b7310",
+      "qaId": "d8acc6cf-c91a-4b51-8e8b-475b04389e70",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-M04",
+      "revision": 1,
+      "specSha256": "c1b85057f6990366f3b113583fe8530600a0bebbaadc594974437d1b521886ff",
+      "itemId": "bb55c230-5dc8-4ffb-a707-19c726d67930",
+      "version": 1,
+      "variantFingerprint": "5dc6ee7e003e8d5e786512b8295c3ed1",
+      "qaId": "aad449dd-19e7-4657-98b0-929f17058b1a",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-M05",
+      "revision": 1,
+      "specSha256": "45d07adedc159314f8eae5f77c75a06990424a423779665b57a74f72e8ace1c9",
+      "itemId": "c5bdf453-5e4c-4a84-a3ed-8ebf9a000817",
+      "version": 1,
+      "variantFingerprint": "b472d92e1035955146bcd656aae45002",
+      "qaId": "d8af8c4d-bb0a-4001-8255-e13a89323dd1",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S08-M06",
+      "revision": 2,
+      "specSha256": "cc308ffa364f965210933d3f82e4678a826af3940e5d2d5cf57c8450b7f5a5f0",
+      "itemId": "8241d0f6-a08e-4343-b461-f321b29049a2",
+      "version": 1,
+      "variantFingerprint": "7015dbaeeb0296c1d259e1376891eb2c",
+      "qaId": "8e06966e-7385-4fbb-a53f-04e7e17145af",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-I01",
+      "revision": 1,
+      "specSha256": "32afa1d13522b467d0636b85a8ff89ac013661ae9a1f68d9278a4e0eacefd434",
+      "itemId": "947237b5-82ff-4ead-87bd-95a5cf4ad342",
+      "version": 1,
+      "variantFingerprint": "e4278ce467364dece045affbc108fdc6",
+      "qaId": "a2aa9fe0-4fde-4e0c-a558-4f3b353311b0",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-I02",
+      "revision": 1,
+      "specSha256": "5e5a7f9d2bdabfb83d2a6737910969b05676b54ca6dcd1de31558b79c98ded58",
+      "itemId": "0d22cdd8-1a3b-469d-8424-b88c0c383203",
+      "version": 1,
+      "variantFingerprint": "2efecc239560075afe2b17b117559fec",
+      "qaId": "04ee98e0-b081-4b58-905d-5e8a87f016fc",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-I03",
+      "revision": 1,
+      "specSha256": "b3085e343249d2446088e5a208c80d260efdedd5742f1171718effb935e495cc",
+      "itemId": "60b34493-b643-464c-bdbf-fbaf4cc55ecf",
+      "version": 1,
+      "variantFingerprint": "f2ca4cb7b2948480a2a98dc35e713f42",
+      "qaId": "de41cf62-5c1e-4102-b5a3-73b6f1058efa",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-I04",
+      "revision": 1,
+      "specSha256": "cc25ddfcda5d7df352915b4219d3d235dceb3eeb6436431b3e51ad3a666b9d14",
+      "itemId": "28cadf8f-4b93-402f-8d71-039910b6c872",
+      "version": 1,
+      "variantFingerprint": "740e7dbb39c6c79667f521711a0167cf",
+      "qaId": "7f8c719a-56b8-422a-9f0b-afe7c13d2b8e",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-I05",
+      "revision": 2,
+      "specSha256": "dded8f726eb16cc46ddfd019411562e2cf0887fc8f94be96cbe1434c618fdc34",
+      "itemId": "b41ef353-d2f2-445a-8f7b-e920d751fa88",
+      "version": 1,
+      "variantFingerprint": "31e7c5a7a0b6db6e17a5c6f8c123de0e",
+      "qaId": "e2b63722-4ae9-4e9e-8f24-02cc2d95203a",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-I06",
+      "revision": 1,
+      "specSha256": "2d4bbb3d8c83c27d333d78e715443d7a4923a76d756ce8fd147564f0c1ff4b28",
+      "itemId": "7f1be9fe-7c22-45c7-8913-a5657814e2c7",
+      "version": 1,
+      "variantFingerprint": "e16718d4e35347890fb2de4566edf3c7",
+      "qaId": "ccc95d0c-113d-4585-baec-b853d9bcfcf9",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-I07",
+      "revision": 1,
+      "specSha256": "4848564069d544b20f2d466b05d998f82e2023476e95db58062808fc1aed2a1f",
+      "itemId": "19e4a226-b251-467d-86e8-00ed89c65997",
+      "version": 1,
+      "variantFingerprint": "61270eb9ceb324fa5d8bbef689896953",
+      "qaId": "36797c40-ef09-42c3-b56b-26535d24a650",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-I08",
+      "revision": 1,
+      "specSha256": "ec574e01dfd82abae1ca6d62452c9a5faa5e4fc6f7861b7454f6e6f59a9fb137",
+      "itemId": "71f096c7-c874-49ca-a597-7132988a6f7a",
+      "version": 1,
+      "variantFingerprint": "2f1a64e04a7330b107538743c146caf4",
+      "qaId": "d7c9599f-cbc7-4a8d-a471-009a7bad6cf1",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-D01",
+      "revision": 1,
+      "specSha256": "9df6f2ac3d18eb67e96b2bc546cd43dcbe28c87fb2823ce4e2d88ba24b532af0",
+      "itemId": "10931f5d-d043-4bf8-aa1a-37f7a5cf3f9c",
+      "version": 1,
+      "variantFingerprint": "81cc7bea1e8a4508650868c699a7594f",
+      "qaId": "222bd8df-5082-44be-adc3-7a83f7b3f718",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-D02",
+      "revision": 2,
+      "specSha256": "caf64fa9e32ba0ad06fd56f297b9c2f516c0f2b42564b02b8a06b35c6853cc53",
+      "itemId": "8dd38b91-2669-4efe-b22f-dedbaabd6d7a",
+      "version": 1,
+      "variantFingerprint": "0049b87f0b201deba7ee50ad909e4414",
+      "qaId": "61d8873f-5b1b-4d9a-ba8a-3074c21bbb3a",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-M01",
+      "revision": 1,
+      "specSha256": "98decb760ade260ca5348fda1ee697b20aad20067558e39881c28e2c25a984dd",
+      "itemId": "50dbdbac-4a8d-440f-9a33-66c945a02b50",
+      "version": 1,
+      "variantFingerprint": "4c1b1712f3ede55f233c3e76b7417ab1",
+      "qaId": "59b9161e-e48c-47d6-b3e2-623014bd8b2d",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S09-M02",
+      "revision": 1,
+      "specSha256": "22d23d8c96b47846af037ad46b4d3891488bc91496eb54d367d4ce2706ad0006",
+      "itemId": "325f664d-6285-4403-8d83-bc42ab61c416",
+      "version": 1,
+      "variantFingerprint": "91ee40d77f140fa962843208143e9ff5",
+      "qaId": "7a8bbd17-c4fb-49c3-b118-91b3eaa58ad8",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I01",
+      "revision": 1,
+      "specSha256": "e2c031dcf79e6589c98993f8c3aa42467cef40be8c578323386169bcd307b9a4",
+      "itemId": "a2b71855-0d13-4465-ba71-56fed6ee15e9",
+      "version": 1,
+      "variantFingerprint": "ec0dd100261bd2cdc4797a84f40dc14f",
+      "qaId": "941e5408-0d32-4248-870e-7c438bdce33d",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I02",
+      "revision": 1,
+      "specSha256": "25cfb1b865bbb52d415ca8018b483cd571c6985b88e8baba88ae593e5287be02",
+      "itemId": "be64dc6c-28a3-44d6-8398-30c6e8da640b",
+      "version": 1,
+      "variantFingerprint": "661f3741499cc50a3c03f4007b5549f1",
+      "qaId": "f879e901-82e7-4dc2-8522-934d53d82ffa",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I03",
+      "revision": 1,
+      "specSha256": "de6c577de8162cbb799f7c686c6ebc6adf432b19a4fb62986744009ac4336868",
+      "itemId": "ac775112-651a-4784-9be1-7a6a3aeec60a",
+      "version": 1,
+      "variantFingerprint": "7a8086a29a019e4fa57e469e9c53ba36",
+      "qaId": "1f95bb18-0f1d-432e-8145-c24e459db3f9",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I04",
+      "revision": 1,
+      "specSha256": "a4cf8737d66b93e2d5c0ceee33db3b1eefaabc87ba4ccea057102e689723d882",
+      "itemId": "6ff746c2-bfa3-444c-91d6-9014f44d8516",
+      "version": 1,
+      "variantFingerprint": "d9b3299f02b896c95a81b7192f1e9cc9",
+      "qaId": "63d7e9ad-518e-4119-b943-ea102d54ae92",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I05",
+      "revision": 1,
+      "specSha256": "ebdb1156238d4aeaa36181afad9f43b95894949a631a10fa04ce894bf4076b79",
+      "itemId": "161a0511-bbb3-414e-a8d4-70005f38b49d",
+      "version": 1,
+      "variantFingerprint": "660543409ef562a8f62e202d08fc3062",
+      "qaId": "730e3b63-40fa-4905-b831-534dc8bdfc53",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I06",
+      "revision": 1,
+      "specSha256": "f3c4c5289c2171a7dc3a00529d0f1321a742bb9246b3b65cb1260985dd7db49c",
+      "itemId": "ede05fba-a8d3-418c-831e-e5e0bd6446fb",
+      "version": 1,
+      "variantFingerprint": "565e3790584bfbcbfb7cbf9a7b8cd012",
+      "qaId": "a6603f79-7c9c-4321-ba1e-5e6328326180",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I07",
+      "revision": 2,
+      "specSha256": "803c406b345d51d1d1c944aba19d93a51036275ff38e93f2f9c23ea481f10a19",
+      "itemId": "5ddcda90-bfd8-4377-9c13-41b7eb3833c0",
+      "version": 1,
+      "variantFingerprint": "d680daa0cc6b124622bc12fd253fde97",
+      "qaId": "6d32841e-f811-45ee-bc34-a977bbe7278c",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I08",
+      "revision": 1,
+      "specSha256": "ecdbd433bedc09ba184c48ab5d7da546e5a4dead790e404f9945fbeb2a76d5e2",
+      "itemId": "01141526-f915-41bd-8e44-13ac96d2af9d",
+      "version": 1,
+      "variantFingerprint": "8a7cbd2b577a86c98092e19224377e2f",
+      "qaId": "d3360de9-f767-4ed3-83db-acf9087dbc7b",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I09",
+      "revision": 1,
+      "specSha256": "ac7e32ca4052094ed5cb7ec37b57119a60403924ceef3d566005b0b0a3016cd0",
+      "itemId": "a99c717a-8ad2-4b14-be47-079091e3f88a",
+      "version": 1,
+      "variantFingerprint": "0338a737c70c4dd3631db58ed637050a",
+      "qaId": "2e5904ab-97b0-4a15-9a91-16e81a5d9dea",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I10",
+      "revision": 1,
+      "specSha256": "fd631837470f83ca579e0b008fd46172d33490f5cbece37a3396e911e92574d4",
+      "itemId": "8e46bc41-32ba-4e87-b7aa-b73e8510444f",
+      "version": 1,
+      "variantFingerprint": "1a43dc13fd045f95ae62168ea557b40a",
+      "qaId": "0f3f4c84-a0ec-4aaf-91cb-c7e51966a54f",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I11",
+      "revision": 1,
+      "specSha256": "714df1ed7925034c5bee747d51f7c24db10a2d706ece2424d9b9a44b7135fd90",
+      "itemId": "030131a3-8226-4d2a-b7d7-aa05c53323c8",
+      "version": 1,
+      "variantFingerprint": "d68c3945dd4a5f965de5b794abbdaf72",
+      "qaId": "ad87ab30-283d-4aa1-982a-8b0002527a48",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-I12",
+      "revision": 1,
+      "specSha256": "865e7eba3d4f6a25ecdec768dd065214eac5baae15ed5d8170202782214b72ff",
+      "itemId": "3d302941-02f2-4320-b1ce-05a3e0ae851f",
+      "version": 1,
+      "variantFingerprint": "70628ef25283e775f9d850bb6e2fcfa8",
+      "qaId": "f36022d5-c413-4ed3-9c5d-8cc85702a40d",
+      "bank": "practice",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-D01",
+      "revision": 1,
+      "specSha256": "a21ae117cc18223fcb396362d6e0d2d0ba42af3f6c95699646f2dbd5c147ee20",
+      "itemId": "038917de-4405-45ab-ad27-d6b773163d4d",
+      "version": 1,
+      "variantFingerprint": "b0a6667997a8d18e908c52f10644d2d7",
+      "qaId": "b9a69e22-9148-45f4-bacc-395363587ea0",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-D02",
+      "revision": 1,
+      "specSha256": "0c146a0fdf7cad8101fba91b279dfbcfed88807289318aa0f4ec86f4059ce6a8",
+      "itemId": "3fb8bc60-f4f2-49a0-a6ea-f2ff99484f0e",
+      "version": 1,
+      "variantFingerprint": "d9f8c9ad2412fa5a67e536c7ad00b471",
+      "qaId": "cff6820e-9d99-4481-9559-39567c3c6630",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-D03",
+      "revision": 2,
+      "specSha256": "d7c5f3f2c551659e43d2b839bb4aac16fae667f9307fb09e98cf6d54b2cebb50",
+      "itemId": "a57bb18e-5099-4457-aabf-5dd044657198",
+      "version": 1,
+      "variantFingerprint": "08780d19cdc36e9f0d81cb77a4328a76",
+      "qaId": "c6b29431-46be-45b0-ae01-8924890130ec",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-D04",
+      "revision": 1,
+      "specSha256": "5d271d6f5eefd6b8ffd7506ff200c062f909cc7fe18ab735b5d33c5036fbaf2e",
+      "itemId": "e8ca74f2-ec33-4d95-b431-eadb921b4187",
+      "version": 1,
+      "variantFingerprint": "fadc39242162e4a4e4b46eb299a35444",
+      "qaId": "4617cee6-aeaf-4a56-ae01-2c0f9d082549",
+      "bank": "diagnostic",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-M01",
+      "revision": 1,
+      "specSha256": "91bb8bc3418813fd54789a68021a53eb32ff2bb0be8532c38b17b60a5179f796",
+      "itemId": "491f622e-21c2-4625-aa68-10025bb96026",
+      "version": 1,
+      "variantFingerprint": "adc2af05d5818e509e4e611ef11335e9",
+      "qaId": "dc6b0449-dd4a-4b91-b56b-0adcb63670e7",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-M02",
+      "revision": 1,
+      "specSha256": "b3dcdb2565ea483930bd195b82fe6b025bfa0846e26a62d3e160797d5e5c42a4",
+      "itemId": "caa05b20-d400-4872-9d31-4b978d473685",
+      "version": 1,
+      "variantFingerprint": "f2a19b730e328447a774defd71ef437b",
+      "qaId": "85a5223e-e509-404e-9a42-f57a13838d20",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-M03",
+      "revision": 1,
+      "specSha256": "bd25346d6501013cb1a3f797009a04ba6c5bc106fdf4a2e566825e789e25cf23",
+      "itemId": "fa92432b-10cc-49bf-9bc1-bcefbe4ec6d7",
+      "version": 1,
+      "variantFingerprint": "d252ec65af31aa92544b6d2fefc7f1b1",
+      "qaId": "199a065a-eabc-4b18-8b0f-79a5036f0289",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-M04",
+      "revision": 2,
+      "specSha256": "5d4d63cb21dc31491297da02c317875f5f9bc99a65431389ebb565e91cdab2c8",
+      "itemId": "0ca98b5a-1769-421e-999b-d9cdef31385a",
+      "version": 1,
+      "variantFingerprint": "b018b41848b3202886a8f386557856f8",
+      "qaId": "f4abcabb-697b-40e0-b421-38beb48714c9",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-M05",
+      "revision": 1,
+      "specSha256": "6e031a339c0388f4575a2830e917a26ced208627f98ed5fe604815f75192d110",
+      "itemId": "d7de74d8-f452-4df1-abf8-4be4163e4d55",
+      "version": 1,
+      "variantFingerprint": "ed058e9a33efcf7a5e43b1c5f1b5dc3b",
+      "qaId": "52544594-e527-4983-9647-6b2527f51d6c",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U04-S10-M06",
+      "revision": 1,
+      "specSha256": "91f74ed5ed9e428df7c89fe2d68aa7b7b12a33b5fe4959d0cb8aea5df25fd19b",
+      "itemId": "7ba2ba9f-4a55-4311-95df-e907da2084ef",
+      "version": 1,
+      "variantFingerprint": "afca55b02dd8979b977f9de55f0f31bc",
+      "qaId": "e23cf983-8a22-4438-ad1e-2fef5a19df5e",
+      "bank": "mastery_check",
+      "disposition": "protected_parallel_assessment_variant"
+    }
+  ],
+  "approvedVersionBindings": [
+    {
+      "reviewId": "a8c5ef6c-7e98-4f06-969e-bac2b68ab9a6",
+      "itemId": "8e915399-8d30-4e02-b566-c489a498707e",
+      "code": "PHY7-U04-S01-D01",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T09:57:42.963746+00:00",
+      "variantFingerprint": "25d10cc179a87d02c723cbf628083464"
+    },
+    {
+      "reviewId": "733a1b9e-e9ca-4a13-9f0c-7d77952511e0",
+      "itemId": "d04bccae-b076-49e5-96fc-bcf447b48649",
+      "code": "PHY7-U04-S01-D02",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T09:58:40.775145+00:00",
+      "variantFingerprint": "44022a1b3d4cab40f7476b6e0e37c065"
+    },
+    {
+      "reviewId": "932d172d-89cb-44ef-90a3-4fda425ec15a",
+      "itemId": "8e4ffed6-427d-440b-b00f-406dda580d99",
+      "code": "PHY7-U04-S01-I01",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T09:59:13.920883+00:00",
+      "variantFingerprint": "d47782f196e4606ebd0c6a396d6cbbdb"
+    },
+    {
+      "reviewId": "81303f09-aefa-44e1-8121-07a038af9b34",
+      "itemId": "aa9744b7-7471-42bf-9340-279c9d34bc74",
+      "code": "PHY7-U04-S01-I02",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:00:07.294308+00:00",
+      "variantFingerprint": "61ee3b7bd8c84254d7aa2a6c9cf21c8b"
+    },
+    {
+      "reviewId": "06a14860-7ab1-499c-b21f-136479356fb5",
+      "itemId": "d95c9e53-8afa-4736-8241-981e3e368f93",
+      "code": "PHY7-U04-S01-I03",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:00:07.7218+00:00",
+      "variantFingerprint": "041988f040a5ce78997b0de51ce769db"
+    },
+    {
+      "reviewId": "b6f98ac6-9771-49fd-8940-e561387d5934",
+      "itemId": "93f969e1-fd21-4155-8f95-2cfbb063cd65",
+      "code": "PHY7-U04-S01-I04",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:00:08.702577+00:00",
+      "variantFingerprint": "fad971d002fd5633d2c9c2501c041dcd"
+    },
+    {
+      "reviewId": "4f8d3ccd-8d97-4d16-926a-410ffcf2ae77",
+      "itemId": "e6a6ef72-7f51-4e81-a455-c52e4d7f9030",
+      "code": "PHY7-U04-S01-I05",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:00:58.595335+00:00",
+      "variantFingerprint": "2f405741f0fbcbff44660c059536b80a"
+    },
+    {
+      "reviewId": "8f5f316b-5f6a-4675-aab2-1099f833bcd4",
+      "itemId": "1e09d330-dcde-418f-88b7-27ad8552aa39",
+      "code": "PHY7-U04-S01-I06",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:01:00.597491+00:00",
+      "variantFingerprint": "00dfdb96c70fd43b5b429b2ac4b8aa08"
+    },
+    {
+      "reviewId": "5ada2165-1596-4557-a136-7213ae34f907",
+      "itemId": "92601f00-54f7-46d9-9356-478c26e9ebda",
+      "code": "PHY7-U04-S01-I07",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:01:02.808227+00:00",
+      "variantFingerprint": "f7d7df0d42ab390530d7efce5efe4db9"
+    },
+    {
+      "reviewId": "480c153f-9d2f-4729-aa4a-d24d22447723",
+      "itemId": "2321985c-4079-4dd4-8eac-3f1efbd45386",
+      "code": "PHY7-U04-S01-I08",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:01:05.226554+00:00",
+      "variantFingerprint": "9a4c1a13ce56f5692dfc7c59e833286a"
+    },
+    {
+      "reviewId": "f3d42291-e06c-4c1b-86ad-d7f27fbd48a3",
+      "itemId": "6edd4f38-6cc5-426b-9ce7-0c8c4d708ca4",
+      "code": "PHY7-U04-S01-M01",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:01:06.716435+00:00",
+      "variantFingerprint": "86504ebf12fdf10ba800819e317fbe28"
+    },
+    {
+      "reviewId": "a872cf4b-6a33-4da8-9ed1-e6dd2fc5e2ad",
+      "itemId": "be757957-64d1-4865-900e-d290a46b7203",
+      "code": "PHY7-U04-S01-M02",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:01:08.918588+00:00",
+      "variantFingerprint": "2c5ecbfa1303575e369aaf2605f9148b"
+    },
+    {
+      "reviewId": "f2af7e89-db00-4762-be5c-ff7639364302",
+      "itemId": "2a1fb1c7-3d6e-4a3e-ad0f-376cf6263abf",
+      "code": "PHY7-U04-S01-M03",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:01:49.791188+00:00",
+      "variantFingerprint": "3ba836f16a8d7371ce0c52c7055035ec"
+    },
+    {
+      "reviewId": "b131275e-227f-45c8-967c-65f0f048c3ec",
+      "itemId": "912d3c61-1c1b-443c-b4ed-9a4565710951",
+      "code": "PHY7-U04-S01-M04",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:01:50.55411+00:00",
+      "variantFingerprint": "3c450b35f55b9d8db54cfdcd9bbc92c7"
+    },
+    {
+      "reviewId": "32bbb29f-4563-41bb-b906-efefad6b2145",
+      "itemId": "80a4c6da-c062-427c-8cdd-6e939fb2ca70",
+      "code": "PHY7-U04-S02-D01",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:01:50.90222+00:00",
+      "variantFingerprint": "712f89138fd72676c3751811759d3ea2"
+    },
+    {
+      "reviewId": "18b8d780-9a5f-41dd-8880-a2559737376d",
+      "itemId": "2a1fb1c7-3d6e-4a3e-ad0f-376cf6263abf",
+      "code": "PHY7-U04-S01-M03",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:02:05.541905+00:00",
+      "variantFingerprint": "3ba836f16a8d7371ce0c52c7055035ec"
+    },
+    {
+      "reviewId": "53871ebd-eee2-4a32-8d09-36c3a6b1168d",
+      "itemId": "912d3c61-1c1b-443c-b4ed-9a4565710951",
+      "code": "PHY7-U04-S01-M04",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:02:07.052102+00:00",
+      "variantFingerprint": "3c450b35f55b9d8db54cfdcd9bbc92c7"
+    },
+    {
+      "reviewId": "2ac249dd-c45a-4a7f-b5af-206937314f12",
+      "itemId": "80a4c6da-c062-427c-8cdd-6e939fb2ca70",
+      "code": "PHY7-U04-S02-D01",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:02:08.744638+00:00",
+      "variantFingerprint": "712f89138fd72676c3751811759d3ea2"
+    },
+    {
+      "reviewId": "9de7c84f-7cb2-45ad-861d-0c2fd62c57b5",
+      "itemId": "994650e5-9e47-4b5d-8d78-616d64de090e",
+      "code": "PHY7-U04-S02-D02",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:02:10.122559+00:00",
+      "variantFingerprint": "a99f0abd733d0060ab9bab9d2fbce7be"
+    },
+    {
+      "reviewId": "461e66e1-661d-4822-a2e6-ef51d04280e5",
+      "itemId": "d63749f1-3110-4d71-8e0e-e0a29ea57c86",
+      "code": "PHY7-U04-S02-I01",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:02:11.383076+00:00",
+      "variantFingerprint": "3d01aa0f2e4e4de84186ecd3254a2d6e"
+    },
+    {
+      "reviewId": "4eef953f-fa05-4da3-a2ca-4c2d7a45304f",
+      "itemId": "f4962fe6-035a-4177-9bb7-670b896a8d42",
+      "code": "PHY7-U04-S02-I02",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:02:13.601846+00:00",
+      "variantFingerprint": "79d0d1263f7cf98b518fb78923329a38"
+    },
+    {
+      "reviewId": "d83287a8-3549-4afd-824b-be8e29c45e93",
+      "itemId": "3f973c2d-6d43-484d-8f7a-7d651b358882",
+      "code": "PHY7-U04-S02-I03",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:02:30.207442+00:00",
+      "variantFingerprint": "789941496bf608bc0ce230f674d7c455"
+    },
+    {
+      "reviewId": "e8b6bd2f-3a7a-4a98-b518-0e70cffd8e9c",
+      "itemId": "2c7beeb9-416c-403e-8856-d96d1defaeb3",
+      "code": "PHY7-U04-S02-I04",
+      "version": 1,
+      "reviewType": "content",
+      "decision": "approved",
+      "createdAt": "2026-10-17T10:20:15.170295+00:00",
+      "variantFingerprint": "93bf1e0d360a079e8412e17339ad7a05"
+    }
+  ],
+  "sourceImages": [
+    {
+      "path": "web/assets/textbook/physics7-2023/p80-spring-extension.png",
+      "sha256": "7abab7a94ba60c6bacbfd95e73a01e0b60c34842e488a94f8104707af5d7be1a",
+      "exactTextbookCrop": true,
+      "practiceOnly": true
+    },
+    {
+      "path": "web/assets/textbook/physics7-2023/p85-weight-gravity.png",
+      "sha256": "97968dc3963b145c624f62d64769d1c2513d085e9ebb839a1babaa22fa17c96c",
+      "exactTextbookCrop": true,
+      "practiceOnly": true
+    }
+  ]
+}

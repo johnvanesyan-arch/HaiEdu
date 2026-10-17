@@ -253,20 +253,20 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter IV batch 1 and remaining work — 15D.2, 2026-10-17
+## Chapter IV three-batch delivery — 15D.3, 2026-10-17
 
 - [x] Record the accepted 236-question scope, three batches and delegated ordinary approvals.
-- [x] Create inactive U04 foundation: one unit, six topics, 13 outcomes, 14 skills and a draft release; no policy/form/pool activation.
-- [x] Freeze/reconcile the complete comparison corpus, compare all 84 candidates and 3,486 pairs, and keep protected content in the restricted evidence archive.
-- [x] Stage 84 questions, 50 guides and 65 definitions; exact readback and 84/84 question plus 50/50 guide checks pass.
-- [x] Verify all pre-existing rows in 59 tracked public tables are unchanged.
-- [x] Complete secure sign-in and record 19 distinct exact-v1 question approvals through the normal reviewer.
-- [ ] Restore reviewer browser access after credential-protection interruption, then save the remaining 65 question, 50 guide and 65 definition approvals; no new content permission is needed.
-- [ ] Complete batch 2: 86 questions across S06–S10, with guides, misconceptions and the same quality checks.
+- [x] Create inactive U04 foundation: one unit, six topics, 13 outcomes, 14 skills and a draft release.
+- [x] Complete batch 1: 84 questions, 50 guides and 65 definitions, with source/comparison/QA evidence.
+- [x] Verify the updated baseline: 20 distinct approved questions and one published guide; preserve the 23 immutable question-review records, including three repeats.
+- [x] Complete batch 2: 86 questions across S06–S10, 50 guides, 46 definitions and two exact textbook crops; 86/86 and 50/50 checks pass.
+- [x] Compare against the complete 705-question / 585-version baseline with 28 matching table fingerprints; retain all 3,655 within-batch dependencies.
+- [x] Verify all pre-existing rows in 59 tracked public tables are unchanged after batch 2 and technical-QA inserts.
+- [ ] Resume authenticated delegated approval when browser credential protection is resolved: 150 questions, 99 guides and 111 definitions currently pending. No new content permission is needed.
 - [ ] Complete batch 3: 66 questions across S11–S14, with guides, misconceptions and the same quality checks.
 - [ ] Finalize chapter-specific assessment/practical-evidence contracts and qualification/release under their own authorization.
 
-[Batch 1 evidence](chapter-iv-batch-01-staging.md). Merge/CI and source-commit-verified Notion sync close this documentation cycle; draft status is not approval.
+[Batch 2 evidence](chapter-iv-batch-02-staging.md). Merge/CI and source-commit-verified Notion sync close this documentation cycle; draft status is not approval.
 
 ## Chapter IV preparation — 15D.1, 2026-10-17
 
