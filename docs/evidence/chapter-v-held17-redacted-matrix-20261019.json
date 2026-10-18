@@ -1,0 +1,1165 @@
+{
+  "sprint": "15E.2R",
+  "manifest": "chapter-v-20261019-held17-rework",
+  "privacy": "Full protected prompts, options, exact answer keys and complete numerical solutions remain in private evidence. This matrix retains substantive per-item models and collision/protection judgments.",
+  "rows": [
+    {
+      "itemCode": "PHY7-U05-S01-D02",
+      "manifestSlot": "U05-B01-C10",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "c3915670d72eed4130c83190a44266793bd46b9907d809ce239db8a610a104e2",
+      "reworkedSpecSha256": "9cbbf2367c456dc649f633c0c51dd1c3e7d45b2c646e3017e4fd45306e3aba57",
+      "bank": "diagnostic",
+      "theme": "Counterexample to a force–time definition of work",
+      "scenarioAndRequiredInterpretation": "Two trials deliberately match force and elapsed time while changing path; distinguish a correct work unit from a proposed competing rule.",
+      "distractorReasoningDomains": "Force-only prediction; force-time product; irrelevant missing mass.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S01-I04": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I06": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-M01": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-M02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U05-S01-I08@history-v1",
+        "PHY7-U05-S01-M02@history-v1",
+        "PHY7-U05-S02-I06@current-v1",
+        "remediation_guide_versions:8f3b6671-5c2f-48d0-9f6f-bef92061466c",
+        "PHY7-U05-S02-I08@current-v1",
+        "item_template_remediation_guides:d32fdcb1-bf86-48a3-85f7-63bd56f4f8be",
+        "item_template_remediation_guides:72691890-3dc0-4568-a08a-1b3bc873245d",
+        "remediation_guide_authoring_versions:7b658238-9eb8-4696-a777-5af00591c1bd"
+      ],
+      "changeAndCollisionJudgment": "Keeps the work-unit/force-time misconception. Replaces a definition-completion question with a two-trial counterexample: the proposed rule predicts equality, while the taught rule predicts unequal work. The learner must interpret what the paired observations disprove; the complete paired stimulus is absent from the definition guide. Parallel application of taught work, not an independent outcome.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S01-M03",
+      "manifestSlot": "U05-B01-C13",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "4a5cef4740ce1451c5d6d2934f121985d6957c32fa5d8e9680154ab7a0b295e9",
+      "reworkedSpecSha256": "acdc393c256fd470bbddb47ea97e6cb5c96990fa446aed3473dc10ad4a295eeb",
+      "bank": "mastery_check",
+      "theme": "Work along a route that changes direction",
+      "scenarioAndRequiredInterpretation": "Assess local force alignment on separate straight sections; distinguish route length from endpoint distance and combine valid local calculations.",
+      "distractorReasoningDomains": "Global-direction veto; endpoint-distance substitution; unnecessary time.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S01-I07": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S04-I06": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-M02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U05-S02-I08@current-v1",
+        "remediation_guide_authoring_versions:e0085943-a981-4f7a-a551-483179bec587",
+        "item_template_remediation_guides:d1714dd6-aa5b-4570-ae47-e36cea8d152a",
+        "PHY7-U05-S01-M02@current-v1",
+        "item_template_remediation_guides:a0aae927-8df1-4f4d-a280-7ec9e2a1272a",
+        "remediation_guide_versions:cc9ef730-f80d-4d95-90a9-94d35d9cc68c",
+        "remediation_guide_authoring_versions:3b1a7361-c71e-4682-8628-58748a306b32",
+        "item_template_remediation_guides:72691890-3dc0-4568-a08a-1b3bc873245d"
+      ],
+      "changeAndCollisionJudgment": "Keeps formula applicability and direction. Replaces an omitted-direction record with explicitly changing path/force directions and asks whether local valid applications can be summed. Unlike the straight-path guide, the decision requires distinguishing local alignment from one fixed global direction and route length from endpoint distance. No angle/cosine or signed-work law introduced.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S01-M04",
+      "manifestSlot": "U05-B01-C14",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "fcf1d9b1c9688ea28c59691a7b10763da91c36a2c47cf41273b0fc0ce5bd6e3c",
+      "reworkedSpecSha256": "5b09ac6036eac7950dd273e580d44d7c5f6392355ceba34fcb13d5be3d3bea5a",
+      "bank": "mastery_check",
+      "theme": "Consistency of equal positive work",
+      "scenarioAndRequiredInterpretation": "Identify an impossible joint ordering of force and path without being given numerical magnitudes.",
+      "distractorReasoningDomains": "Treating reciprocal possibilities or identical factors as impossible.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S02-I04": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I05": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I06": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-D01": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-M02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-M02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U05-S01-D01@current-v1",
+        "PHY7-U05-S01-M02@history-v1",
+        "PHY7-U05-S02-M02@current-v1",
+        "PHY7-U05-S02-I08@history-v1",
+        "PHY7-U05-S02-I06@current-v1",
+        "item_template_remediation_guides:72691890-3dc0-4568-a08a-1b3bc873245d",
+        "remediation_guide_authoring_versions:7b658238-9eb8-4696-a777-5af00591c1bd",
+        "PHY7-U05-S01-I08@current-v1"
+      ],
+      "changeAndCollisionJudgment": "Keeps equal-work inference. Changes a directly supplied equal-force inversion into identifying a logically impossible qualitative record. An inverse example alone does not identify which of four possible orderings contradicts equal positive products. Closely dependent on exposed inverse/product practice; recorded as parallel, not independent reasoning.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S02-D01",
+      "manifestSlot": "U05-B01-C25",
+      "candidateRevision": 3,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "7e242f42b3a3c471edac5adec1608b10b29d32215deca9f22c6a25dc03d24d54",
+      "reworkedSpecSha256": "f5e770e89382fc7da1eb970a56b9dd79004752e5b628c125ed4527ecc6decefa",
+      "bank": "diagnostic",
+      "theme": "Reconstruct an erased length unit",
+      "scenarioAndRequiredInterpretation": "Use independently retained work and force to reconstruct length, then reconcile it with an unlabelled measurement.",
+      "distractorReasoningDomains": "Choosing an incompatible metric unit. A discarded cancellation-error draft is not deployed.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S02-I02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I05": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S08-I09": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S06-M05": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-M02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I09": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-I02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "remediation_guide_versions:8f3b6671-5c2f-48d0-9f6f-bef92061466c",
+        "item_template_remediation_guides:d32fdcb1-bf86-48a3-85f7-63bd56f4f8be",
+        "PHY7-U05-S02-I05@current-v1",
+        "PHY7-U05-S02-M02@history-v1",
+        "remediation_guide_authoring_versions:ed0dfa89-1233-4ca2-9390-a8d3d2e124e2",
+        "PHY7-U05-S02-I09@current-v1",
+        "PHY7-U05-S01-I02@history-v1",
+        "item_template_remediation_guides:48cd82ab-f5c1-4a8e-a16c-0ce8d2bfb76d"
+      ],
+      "changeAndCollisionJudgment": "Keeps length-unit consistency in a work record. Replaces direct conversion repair with recovering an erased unit from two independently retained physical values and an unlabelled number. Must invert the work relation, then match the reconstructed length to the printed numeral. The first rework draft using compensating conversion errors was discarded privately after the bank check located U03-S06-M05; that repeated error-audit stimulus is not staged.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S02-D02",
+      "manifestSlot": "U05-B01-C26",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "b628b141507f47aebb5f11b08c0453f3694397b0447904e55aa9e34146868b78",
+      "reworkedSpecSha256": "31b70d5e76a1d32276bbbfaabec8ca7028f987576f7e5e357df5a5b147fe84d8",
+      "bank": "diagnostic",
+      "theme": "Attribution among simultaneous contributors",
+      "scenarioAndRequiredInterpretation": "Separate the work of one named pull from the combined work of two co-directed pulls on one body.",
+      "distractorReasoningDomains": "Assigning the aggregate to one actor; subtracting co-directed pulls; omitting another contribution.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S01-D01": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I01": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U04-S13-I01": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I06": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-I04": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "item_template_remediation_guides:72691890-3dc0-4568-a08a-1b3bc873245d",
+        "remediation_guide_authoring_versions:7b658238-9eb8-4696-a777-5af00591c1bd",
+        "PHY7-U05-S02-I06@history-v1",
+        "PHY7-U05-S02-I08@current-v1",
+        "PHY7-U05-S01-D01@history-v1",
+        "remediation_guide_authoring_versions:f5f34bff-ed3e-4e82-a179-b0e16c821586",
+        "item_template_remediation_guides:7f42761e-5cea-4aea-a91f-dc26b949ba25",
+        "PHY7-U05-S01-I04@current-v1"
+      ],
+      "changeAndCollisionJudgment": "Keeps attribution of work to a named force. Replaces zero-resultant/friction duplication with two simultaneous same-direction contributors and an incorrectly attributed aggregate. Requires assigning individual and combined work to their actual actors. The S01-D01 zero-resultant explanation does not supply this allocation.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S02-M03",
+      "manifestSlot": "U05-B01-C29",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "aa2ce0829070c18f8fed57bd362c2e82566a09c08e86ac1274b96d9c8cca9946",
+      "reworkedSpecSha256": "8fd18de35aa6cfd104bc0edd29d57566ab24bfb089e87b51bdf97b4d2cc5a630",
+      "bank": "mastery_check",
+      "theme": "Lifting after part of a load is set down",
+      "scenarioAndRequiredInterpretation": "Track which bodies remain in each lifting stage before summing the named lifting forces’ work.",
+      "distractorReasoningDomains": "Extending initial/final mass across all stages; substituting mass for weight.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S02-I07": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-M02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I10": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I11": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U05-S02-I07@history-v1",
+        "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+        "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+        "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+        "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+        "PHY7-U05-S02-I10@current-v1",
+        "PHY7-U05-S03-I11@history-v1",
+        "item_template_remediation_guides:375ba55e-667e-4187-9278-fd31b3463309"
+      ],
+      "changeAndCollisionJudgment": "Keeps staged lifting. Replaces a stationary-stage duplicate with a changing set of lifted bodies. The student must update which mass belongs to each height interval, not extend either the initial or final load across the entire route. Uses mg and additive aligned work already taught; the changed load membership is the new stimulus interpretation.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S02-M04",
+      "manifestSlot": "U05-B01-C30",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "5157b0f633e0089c451f456f5e7a4289007ce6dc2ad116e7c7d8e758a687b620",
+      "reworkedSpecSha256": "274d2ba4ab600589487eab75dca7b37bea88f37e3c05f11e4ac0569c19e4fa12",
+      "bank": "mastery_check",
+      "theme": "Restore misplaced force labels",
+      "scenarioAndRequiredInterpretation": "Recover the association between force labels and routes from an equal-work constraint; validate the reconstructed records.",
+      "distractorReasoningDomains": "Wrong association; unnecessary time; claiming either assignment works.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S02-I04": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I06": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-M04": {
+          "reworkCandidateRevision": 2
+        },
+        "PHY7-U05-S02-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U04-S04-D02": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-M02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U05-S02-I06@history-v1",
+        "PHY7-U05-S02-I08@current-v1",
+        "PHY7-U04-S04-D02@history-v1",
+        "item_template_remediation_guides:bc53e527-b1e3-4733-9682-845c2231cb49",
+        "remediation_guide_authoring_versions:2a63b0a7-8e70-4a65-900f-49d56c315d3c",
+        "remediation_guide_versions:3e1f277f-aa02-41ce-8eb0-f4ac85a46e63",
+        "PHY7-U05-S02-M02@current-v1",
+        "remediation_guide_authoring_versions:8b2c1f15-c385-408c-bcc4-1e90023aa15f"
+      ],
+      "changeAndCollisionJudgment": "Keeps equal-work inverse reasoning. The new task reconstructs a lost association between two force labels and two routes, then validates both products. It is not a direct inverse calculation with all quantities already assigned. Exposed inverse/product examples remain explicit dependencies, so this is parallel capacity only.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-D01",
+      "manifestSlot": "U05-B01-C43",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "d71f3bbd819b58f0f93eb13448c62d5efd99600e93af15a117fbe1dbad1782e5",
+      "reworkedSpecSha256": "f47e0b6888931c9171b131757850a45f7dfcf765e14c55dea557fd2798f8449d",
+      "bank": "diagnostic",
+      "theme": "Power order from incomplete numerical information",
+      "scenarioAndRequiredInterpretation": "Distinguish sufficient qualitative order constraints from the exact values needed for a numerical quotient.",
+      "distractorReasoningDomains": "Demanding needless numbers; longer time means greater power; arbitrary cancellation of changes.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S03-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S01-M01": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U04-S05-M05": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I01": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U05-S03-I01@current-v1",
+        "remediation_guide_versions:4a425f10-a4a8-4c88-9453-bf2b3e3e08bf",
+        "item_template_remediation_guides:75053dcf-dafe-4834-9fc9-148f086c304e",
+        "remediation_guide_versions:aebb64a3-42b3-4a39-b464-e17723afb4b5",
+        "item_template_remediation_guides:e5651692-d07a-4346-aa83-7e582166207d",
+        "PHY7-U05-S03-I08@current-v1",
+        "item_template_remediation_guides:7058824e-3840-4f73-9521-6481d589752d",
+        "remediation_guide_versions:f2094ad8-1773-4cc1-a084-48663eb883a4"
+      ],
+      "changeAndCollisionJudgment": "Keeps sufficiency of information for a power comparison. Reverses the original missing-duration case: strict order information now suffices despite absent exact values. Requires distinguishing a numerical calculation from a justified ordering. Exposed two-ratio practice is a dependency, not the complete qualitative sufficiency decision.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-D02",
+      "manifestSlot": "U05-B01-C44",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "73e54d66605bf1c89f29d1cd3c1d30e8bedfaa1779cd88c4becc92ea803a2cd2",
+      "reworkedSpecSha256": "f26b501b2f56abd7d3a63fbbcef82abd6085afb70632490fe78483e17979fd6c",
+      "bank": "diagnostic",
+      "theme": "Power from a clock reset record",
+      "scenarioAndRequiredInterpretation": "Interpret two elapsed readings around a reset before selecting the denominator belonging to the full work.",
+      "distractorReasoningDomains": "Subtracting readings across a reset; retaining only one segment.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U03-S08-M01": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S08-M03": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S08-M04": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S03-M04": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I03": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S08-M02": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S08-D01": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U03-S08-M03@history-v1",
+        "item_template_remediation_guides:e5651692-d07a-4346-aa83-7e582166207d",
+        "remediation_guide_versions:aebb64a3-42b3-4a39-b464-e17723afb4b5",
+        "PHY7-U03-S08-M02@current-v1",
+        "remediation_guide_versions:0f0ccbca-2cdf-42c9-b31b-a997b85dfa7e",
+        "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+        "PHY7-U03-S08-D01@history-v1",
+        "PHY7-U03-S08-M04@current-v1"
+      ],
+      "changeAndCollisionJudgment": "Keeps correct association of work and elapsed time. A timer reset changes the observation model: add two elapsed readings rather than subtract two readings on one clock. U03-S03-M04 already teaches counter-reset accounting; U03-S08-M04 teaches adding uncounted elapsed time to a clock reading. These are strong shared procedures, not new reasoning. The stimulus now requires interpreting two time segments around a reset and diagnosing an invalid subtraction before associating work with that duration. Restrict as a parallel candidate, not independent form capacity.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-D03",
+      "manifestSlot": "U05-B01-C45",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "71e595b5807cb0734cff4c909df91d52491a7fe5db91d1890fff316a55d4d22b",
+      "reworkedSpecSha256": "4fcfc068a4b58f18ee6b0da95de2b84fa99d9fe26ce5e8027b351568831e3f91",
+      "bank": "diagnostic",
+      "theme": "Test constancy against subinterval observations",
+      "scenarioAndRequiredInterpretation": "Accept a correct whole-interval mean while rejecting a contradictory claim that power stayed constant throughout.",
+      "distractorReasoningDomains": "Mean implies constant rate; using only an endpoint segment for the whole interval.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S03-I03": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I10": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S07-I11": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S07-M09": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I02": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U05-S03-I02@history-v1",
+        "remediation_guide_versions:aebb64a3-42b3-4a39-b464-e17723afb4b5",
+        "item_template_remediation_guides:e5651692-d07a-4346-aa83-7e582166207d",
+        "remediation_guide_authoring_versions:ed00030d-bd7c-4061-b83f-ecab5c1b1fdd",
+        "item_template_remediation_guides:75053dcf-dafe-4834-9fc9-148f086c304e",
+        "PHY7-U05-S03-I08@current-v1",
+        "remediation_guide_authoring_versions:0d8a5014-6a60-48c7-a786-8c2cc63fe8d0",
+        "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee"
+      ],
+      "changeAndCollisionJudgment": "Keeps average-versus-constant power. The original merely lacked subinterval evidence; the revision provides observations that contradict constancy while preserving a correct whole-interval mean. The learner must accept one part of a claim and refute another using equal-duration work totals. Mean-speed dependencies are retained; no claim of instant-by-instant reconstruction.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-D04",
+      "manifestSlot": "U05-B01-C46",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "871422c2fb60484e05406ad91836c6f97e1ad32365ff37a028cd6cabea8aa033",
+      "reworkedSpecSha256": "c1a28be81cc9dd29ecec25ac91338b39a2ccaac9dfbfc45467619e87bd1b1a8c",
+      "bank": "diagnostic",
+      "theme": "Unknown scale of a duration increase",
+      "scenarioAndRequiredInterpretation": "Determine whether the direction of a rate change follows when work doubles but elapsed-time growth is unspecified.",
+      "distractorReasoningDomains": "Work-only increase; time-only decrease; assuming both changes cancel.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S03-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-D01": {
+          "reworkCandidateRevision": 2
+        },
+        "PHY7-U04-S05-M05": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "remediation_guide_authoring_versions:c9c21dd1-9dcc-4d78-8570-c1cea63f8f9e",
+        "item_template_remediation_guides:e5651692-d07a-4346-aa83-7e582166207d",
+        "PHY7-U05-S03-I08@current-v1",
+        "remediation_guide_versions:4a425f10-a4a8-4c88-9453-bf2b3e3e08bf",
+        "item_template_remediation_guides:75053dcf-dafe-4834-9fc9-148f086c304e",
+        "remediation_guide_versions:0f0ccbca-2cdf-42c9-b31b-a997b85dfa7e",
+        "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+        "remediation_guide_versions:f5476126-e9ca-45ff-b180-637778631914"
+      ],
+      "changeAndCollisionJudgment": "Keeps joint work/time scaling. Replaces specified scale factors with an unspecified increase and asks what is identifiable. Three admissible durations demonstrate all orderings; this is not a disguised number change in a ratio calculation. S03-D01 is the complementary identifiable-order case and must be recorded as a dependent pair for later form design.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-M01",
+      "manifestSlot": "U05-B01-C47",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "3720d2f407f8914767dcd119eb68529a22165ef3b17bcb4ebed8c7efbe1974d1",
+      "reworkedSpecSha256": "36259c05d99ceb3fc9f4748a1bc2635c73883f5c671773505ce60bd2dda29897",
+      "bank": "mastery_check",
+      "theme": "Duration required for a target average power",
+      "scenarioAndRequiredInterpretation": "Choose the unknown duration that affects both the total work and total time; verify the target mean.",
+      "distractorReasoningDomains": "Ignoring duration weights or confusing a stage duration with the total.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U03-S07-M09": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S07-I11": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I06": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-D03": {
+          "reworkCandidateRevision": 2
+        },
+        "PHY7-U05-S03-I07": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "remediation_guide_versions:aebb64a3-42b3-4a39-b464-e17723afb4b5",
+        "remediation_guide_versions:4a425f10-a4a8-4c88-9453-bf2b3e3e08bf",
+        "item_template_remediation_guides:75053dcf-dafe-4834-9fc9-148f086c304e",
+        "item_template_remediation_guides:e5651692-d07a-4346-aa83-7e582166207d",
+        "remediation_guide_versions:0f0ccbca-2cdf-42c9-b31b-a997b85dfa7e",
+        "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+        "PHY7-U05-S03-I07@history-v1",
+        "remediation_guide_versions:008ddf74-1081-4419-bc4b-3f829e34dd83"
+      ],
+      "changeAndCollisionJudgment": "Keeps the unequal-duration mean theme. Inverts the task into selecting the missing duration that makes an overall target mean true. The student must use a candidate duration in both total work and total time; the exposed sum-of-known-work/sum-of-known-time procedure alone does not assign the missing duration. Shared average-rate accounting remains a declared dependence.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-M02",
+      "manifestSlot": "U05-B01-C48",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "28b0dc41f5b03d8a4e99b4dd4680ef3e932b81fc226f55ed81082e4162e4ea43",
+      "reworkedSpecSha256": "e8da295e0e7f65eaca5026599bc63f751a76ed4eb5839cb96f025aea72a8e744",
+      "bank": "mastery_check",
+      "theme": "Combined work by a shared deadline",
+      "scenarioAndRequiredInterpretation": "Aggregate simultaneous work contributions without adding their overlapping elapsed times; interpret an inclusive capacity requirement.",
+      "distractorReasoningDomains": "Requiring either machine to do the entire total; adding simultaneous times; ignoring a contributor.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U03-S07-I06": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I06": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-D02": {
+          "reworkCandidateRevision": 2
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "item_template_remediation_guides:75053dcf-dafe-4834-9fc9-148f086c304e",
+        "remediation_guide_authoring_versions:ed00030d-bd7c-4061-b83f-ecab5c1b1fdd",
+        "PHY7-U05-S03-I06@current-v1",
+        "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+        "remediation_guide_authoring_versions:0d8a5014-6a60-48c7-a786-8c2cc63fe8d0",
+        "remediation_guide_versions:008ddf74-1081-4419-bc4b-3f829e34dd83",
+        "item_template_remediation_guides:a98a6ca6-09e4-43ce-a122-cd69455a3808",
+        "item_template_remediation_guides:e5651692-d07a-4346-aa83-7e582166207d"
+      ],
+      "changeAndCollisionJudgment": "Keeps deadline/capacity and inclusive boundary. Replaces independent device selection with a shared-time aggregate of two simultaneous contributions. Requires distinguishing summed work from unsummed elapsed time and accepting the boundary. The prior single-rate deadline question does not determine this aggregation interpretation.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-M03",
+      "manifestSlot": "U05-B01-C49",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "7f805ef970bf6302259cd545421b2ee4e9a50956fecddd85a6dd15c39386d9d8",
+      "reworkedSpecSha256": "5af8d3961987dcb668c181314947102d654b18284179bf934b6e831ce873d8b4",
+      "bank": "mastery_check",
+      "theme": "Equal rates within a cumulative record",
+      "scenarioAndRequiredInterpretation": "Match incremental work and elapsed time across unequal intervals including a plateau; compare interval means.",
+      "distractorReasoningDomains": "Cumulative-total/final-time pairing; ignoring a plateau; constant-rate assumption.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U03-S08-M01": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S08-M03": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I10": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-D03": {
+          "reworkCandidateRevision": 2
+        },
+        "PHY7-U05-S03-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "remediation_guide_authoring_versions:c9c21dd1-9dcc-4d78-8570-c1cea63f8f9e",
+        "item_template_remediation_guides:e5651692-d07a-4346-aa83-7e582166207d",
+        "remediation_guide_versions:4a425f10-a4a8-4c88-9453-bf2b3e3e08bf",
+        "item_template_remediation_guides:75053dcf-dafe-4834-9fc9-148f086c304e",
+        "remediation_guide_versions:0f0ccbca-2cdf-42c9-b31b-a997b85dfa7e",
+        "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+        "PHY7-U05-S03-I08@history-v1",
+        "remediation_guide_authoring_versions:fbfa2951-06b5-43ea-b01e-57d6c24bbf09"
+      ],
+      "changeAndCollisionJudgment": "Keeps cumulative readings and matched differences. Changes a single two-point quotient into finding equal nonzero interval rates across an unequal-duration record with a plateau. Work totals cannot be paired directly with final clock labels. This is a new record interpretation but a parallel use of exposed interval-rate procedures; no instantaneous power claim.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-M04",
+      "manifestSlot": "U05-B01-C50",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "20e5d77fab7e7cbb77c91f74084590c56b867741390d2c35709d1156f4d11737",
+      "reworkedSpecSha256": "85ae9f5dedc511efd62755414fb5d5d5389656b4ea049c91eb8980eb03ef41d2",
+      "bank": "mastery_check",
+      "theme": "Later start and greater power",
+      "scenarioAndRequiredInterpretation": "Find a common observation time when two accumulated works agree, using different elapsed times for the machines.",
+      "distractorReasoningDomains": "Power implies immediate lead; same duration for unequal starts; early start guarantees a permanent lead.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S03-I06": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I08": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S08-M01": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S07-M02": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S07-M03": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S07-M07": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S07-M09": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S07-M10": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I07": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U05-S03-I06@history-v1",
+        "remediation_guide_authoring_versions:d6638f22-0692-424b-84f2-27b1e80fc21a",
+        "item_template_remediation_guides:a98a6ca6-09e4-43ce-a122-cd69455a3808",
+        "remediation_guide_versions:0f0ccbca-2cdf-42c9-b31b-a997b85dfa7e",
+        "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+        "remediation_guide_authoring_versions:fbfa2951-06b5-43ea-b01e-57d6c24bbf09",
+        "item_template_remediation_guides:240e5d31-5de9-4cda-b705-4e1f683b5346",
+        "PHY7-U05-S03-I07@history-v1"
+      ],
+      "changeAndCollisionJudgment": "Keeps the distinction between larger power and larger completed work. Replaces a fixed-time comparison with finding when a later-starting faster work process catches up. Must associate different elapsed durations with a common observation time and test equality, not equate power with total work. Related motion/time comparisons remain explicit dependencies; no new motion law required.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-M05",
+      "manifestSlot": "U05-B01-C51",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "8e792d2adeb2fc53a114c18b7567a72dac65a4052b67ceaa4de90efa7437c80d",
+      "reworkedSpecSha256": "926ef79ad7b137db543f1e27419e2aec600fb7b16096398ee1cacc30c6a1a756",
+      "bank": "mastery_check",
+      "theme": "Simultaneous force and power constraints",
+      "scenarioAndRequiredInterpretation": "Check two operating modes against both explicit limits; equal calculated powers can mask a violation of the separate force limit.",
+      "distractorReasoningDomains": "Checking only power; inventing a speed limit; combining alternative modes.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S03-I09": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S03-I12": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S07-I06": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U03-S06-D02": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U04-S09-I07": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "PHY7-U05-S03-I09@current-v1",
+        "PHY7-U05-S03-I12@current-v1",
+        "remediation_guide_authoring_versions:2a8186e0-4b41-48a3-910a-ebac63ea422a",
+        "item_template_remediation_guides:f6cc5e68-06fe-4d42-a58a-4c8123a8b1a1",
+        "remediation_guide_authoring_versions:af73a24c-7ce2-4967-a60f-86ee84f6206c",
+        "item_template_remediation_guides:ec695a21-5cb5-4eea-989a-73f9e622a966",
+        "PHY7-U03-S06-D02@history-v1",
+        "PHY7-U04-S09-I07@history-v1"
+      ],
+      "changeAndCollisionJudgment": "Keeps force-speed power and device capability. Replaces one power ceiling with two explicitly supplied simultaneous constraints; equal power in both modes conceals a force-limit violation in only one. Rejects assuming a new speed limit or summing mutually exclusive modes. Both restrictions are scenario data, not a new mechanical law.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    },
+    {
+      "itemCode": "PHY7-U05-S03-M06",
+      "manifestSlot": "U05-B01-C52",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "oldHeldSpecSha256": "03b163663b75a49f0e48fd09d8e8bbade614b6abd518e1411cf19b0de614bdd4",
+      "reworkedSpecSha256": "85009908ba1d8fc298df155494e75b8cce5923fc1e472355fddd18a4c39fb45f",
+      "bank": "mastery_check",
+      "theme": "Audit a table of lifting records",
+      "scenarioAndRequiredInterpretation": "Combine each record’s mass, lifting distance and time, then identify the record inconsistent with the common power of the others.",
+      "distractorReasoningDomains": "Choosing a row from only height, mass or duration.",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "disposition": "protected_parallel_assessment_variant",
+      "independentNewReasoningCoverage": false,
+      "nearestCurrentHistoricalAndCandidateReferences": {
+        "PHY7-U05-S03-I11": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I07": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U04-S06-I05": {
+          "currentVersion": 1,
+          "currentStatus": "published",
+          "historicalVersions": [
+            1
+          ]
+        },
+        "PHY7-U05-S02-I10": {
+          "currentVersion": 1,
+          "currentStatus": "draft",
+          "historicalVersions": [
+            1
+          ]
+        }
+      },
+      "guideAndRetrievalReferences": [
+        "remediation_guide_authoring_versions:3f651b63-81ab-44f1-8bec-a1855951c9ff",
+        "item_template_remediation_guides:375ba55e-667e-4187-9278-fd31b3463309",
+        "PHY7-U05-S03-I11@current-v1",
+        "PHY7-U05-S02-I10@current-v1",
+        "PHY7-U05-S02-I07@history-v1",
+        "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+        "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+        "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e"
+      ],
+      "changeAndCollisionJudgment": "Keeps comparing lifting power. Replaces the textbook-exposed same-height/same-time mass comparison with an audit across four differently structured records, three of which encode one common power through different combinations. Requires matching all three columns and finding the inconsistent record. Repeated mgh/t procedure is declared parallel capacity, not new reasoning coverage.",
+      "imageDecision": "All force directions, bodies, intervals and tabulated records required to answer are stated in the text. No unseen picture, apparatus reading or geometrical scale is required.",
+      "protectionDecision": "Bounded rework of the 17 previously held manifest slots under the owner's current instruction. New authored stimulus and response demand; repeated taught procedures are recorded as parallel candidate capacity, not independent new reasoning coverage. No public worked guide contains the complete revised stimulus or solution. Ordinary current-version review, SME/exposure review and disjoint-form qualification remain open; no allocation or release."
+    }
+  ]
+}

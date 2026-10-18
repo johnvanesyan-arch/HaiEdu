@@ -132,3 +132,7 @@ The policy is considered adopted when:
 4. QA reports the required purposes, actual counts and any missing/invalid entries;
 5. approval re-checks the current active family and rejects stale passing QA after a family-membership change;
 6. the first adopted family remains learner-inactive until the ordinary review and release gates are completed.
+
+### Chapter V bounded rework manifest — 2026-10-19
+
+`chapter-v-20261019-held17-rework` / Sprint **15E.2R** covers exactly the 17 assessment proposals held under 15E.2: S01-D02/M03/M04; S02-D01/D02/M03/M04; S03-D01–D04/M01–M06. John’s current instruction at 00:13:33 Asia/Yerevan requested keeping these themes while paraphrasing or changing the task. This authorizes their bounded rework using the existing protected-parallel criteria; wording-only variants remain insufficient. All 17 were substantively revised, compared and staged as **protected parallel assessment candidates**, with zero new independent reasoning paths or qualified form slots claimed. S02-D01 was rewritten again after a strong cross-chapter match. This is Chapter V’s own rework manifest, not an inherited Chapter IV exception. It delegates no ordinary approval, authorizes no additional slots, and waives no source, protection, specialist, exposure, contract, allocation, practical or release requirement. [Full manifest and redacted per-item comparison](chapter-v-batch-01-rework-17.md).

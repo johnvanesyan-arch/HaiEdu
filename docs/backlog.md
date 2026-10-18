@@ -253,7 +253,7 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter V mapping and Batch 1 — 15E.1–15E.2, 2026-10-18
+## Chapter V mapping and Batch 1 — 15E.1–15E.2R, 2026-10-19 Asia/Yerevan
 
 - [x] Verify Chapter V textbook §§32–39, current programme Theme 5 and unchanged source hashes.
 - [x] Map four mandatory/two additional outcomes to ten proposed skills; preserve all component claims.
@@ -264,13 +264,14 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Record John’s plan acceptance; create the governed inactive foundation (10 skills/six outcomes).
 - [x] Freeze the exact full current/history/guide corpus and assess all 54 Batch 1 proposals, including 1,431 within-batch pairs.
 - [x] Stage 37 defensible questions, 32 guides and 35 definitions; pass exact-source technical QA and preserve earlier records.
-- [ ] Resolve the 17 held assessment proposals (7 Diagnostic/10 Mastery) with an explicit owner bank-plan decision; no prior parallel exception carries over.
-- [ ] Complete ordinary exact-version approval of the 37 questions, 32 guides and 35 definitions.
+- [x] Act on John’s 2026-10-19 request to keep the themes and change the tasks of exactly 17 held proposals; record the new bounded Chapter V rework manifest under unchanged parallel criteria.
+- [x] Rework and stage all 17 (7 Diagnostic/10 Mastery), with 19 new draft definitions, refreshed full-bank comparison, exact-source QA 17/17 and preserved prior records. One first-rework draft was replaced again after a Chapter III collision. No new independent reasoning or qualified capacity claimed.
+- [ ] Complete ordinary exact-version approval of all 54 questions, 32 guides and 54 definitions. No Chapter V approval has been delegated or fabricated.
 - [ ] Author remaining Batches 2/3 within their provisional 54/44-slot ceilings and unchanged quality rules.
 - [ ] Complete authorized authoring, current-version QA and actual ordinary approvals for all retained batches.
 - [ ] Resolve the practical delivery and assessment contract; qualify forms and obtain Chapter-V-specific release authorization.
 
-[Chapter V map](chapter-v-preparation.md) · [Batch 1](chapter-v-batch-01-comparison.md) · [Planning QA](evidence/chapter-v-preparation-qa-20261018.json). Notion synchronization is verified against the merged source separately; the completed preparation tasks do not certify that sync.
+[Chapter V map](chapter-v-preparation.md) · [Initial Batch 1](chapter-v-batch-01-comparison.md) · [17-proposal rework](chapter-v-batch-01-rework-17.md) · [Planning QA](evidence/chapter-v-preparation-qa-20261018.json). Notion synchronization is verified against the merged source separately; the completed preparation tasks do not certify that sync.
 
 ## Chapter IV knowledge-only pilot — 15D.6, 2026-10-18
 
