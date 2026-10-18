@@ -253,12 +253,25 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter IV assessment proposal — 15D.5, 2026-10-18
+
+- [x] Audit all 98 protected candidates against actual primary outcome claims and retained source/comparison evidence.
+- [x] Prepare 19-question Diagnostic / 15-question Mastery policy recipes, five conditional forms, and five exact offline revision proposals.
+- [x] Account for all protected candidates: 83 conditional form slots and 15 held Mastery items, with no deletion or automatic substitution.
+- [x] Validate four policy shapes and five scoring cases using current JS/read-only SQL; preserve all 13 reviewed content/audit tables.
+- [ ] Obtain the owner's chapter-specific assessment, bounded revision and practical/pilot-scope decisions.
+- [ ] Complete fresh whole-bank comparison, new-version technical QA and ordinary review for the five proposed revisions.
+- [ ] Complete applicable qualification/protection/exposure disposition, exact bindings, production rollback rehearsal and authorized activation.
+- [ ] Verify production access, reporting and chapter switching, save evidence and sync the merged source.
+
+[Concrete proposal and trade-offs](chapter-iv-assessment-contract-proposal.md). The prior ordinary approval closure remains valid for all live v1 content; proposed v2 content has not been saved.
+
 ## Chapter IV review closure and next contract — 15D.4R2 / 15D.5, 2026-10-18
 
 - [x] Verify all three batches: 236 approved current-v1 questions with passing QA, 138 published guides and 150 active definitions.
 - [x] Verify staged question/guide/definition wording and immutable history are unchanged; preserve prior author comparisons.
 - [x] Confirm zero U04 pool/form item allocations and the inactive draft release.
-- [ ] 15D.5: finalize Diagnostic/Mastery lengths, coverage, weighting, passing/readiness, Review, retakes and reserves.
+- [x] Prepare the concrete 15D.5 contract proposal above; owner adoption remains pending.
 - [ ] Define performed-experiment evidence and review for M3/M8, or obtain a separate bounded knowledge-only pilot decision.
 - [ ] Complete exact-version qualification/protection/exposure and disjoint allocation, configuration/rollback, release authorization and production acceptance.
 
