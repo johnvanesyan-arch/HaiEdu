@@ -1,0 +1,35 @@
+{
+  "schema": "haiedu-chapter-preparation-qa-v1",
+  "sprint": "15E.1",
+  "checks": {
+    "all_six_outcomes_mapped": true,
+    "four_mandatory_two_additional": true,
+    "ten_skills_eight_required_two_additional": true,
+    "totals_88_24_40_152": true,
+    "three_batches_54_54_44": true,
+    "batch_partition_complete": true,
+    "additional_practice_only": true,
+    "no_capacity_or_policy_claim": true,
+    "twenty_briefs": true,
+    "two_labs": true,
+    "source_hashes_verified": true,
+    "five_asset_hashes": true,
+    "current_summaries_aligned": true,
+    "roadmap_4_03": true,
+    "links_exist": true,
+    "worked_examples_recomputed": true
+  },
+  "passed": 16,
+  "failed": 0,
+  "manual_review": [
+    "Read §§32–39 and exact programme Theme 5; did not use later-grade similarly named topic.",
+    "Reviewed Armenian skill labels, candidate titles, lab wording and hint examples separately from physics conditions.",
+    "Visually inspected source pp.104,106,110,115,116 and all five final crops; source material is teaching-exposed."
+  ],
+  "limitations": [
+    "Planning checks only; no full semantic comparison, question QA, browser acceptance, specialist review or qualification claimed.",
+    "No database mutation or runtime change performed.",
+    "Horsepower supplement not retrieved; no conversion assumed."
+  ],
+  "base_commit": "16c3e96e0c1d40263719ad0be4c3e89e65a9173f"
+}

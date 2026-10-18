@@ -1,0 +1,269 @@
+{
+  "units": [
+    {
+      "code": "MATH7-QA-U01",
+      "status": "draft",
+      "title_hy": "Բազմառարկայական ճարտարապետության QA միավոր"
+    },
+    {
+      "code": "PHY7-U01",
+      "status": "review",
+      "title_hy": "Բնության ուսումնասիրության ֆիզիկական մեթոդները"
+    },
+    {
+      "code": "PHY7-U02",
+      "status": "review",
+      "title_hy": "Նյութի կառուցվածքը"
+    },
+    {
+      "code": "PHY7-U03",
+      "status": "review",
+      "title_hy": "Մեխանիկական շարժում"
+    },
+    {
+      "code": "PHY7-U04",
+      "status": "review",
+      "title_hy": "Մարմինների փոխազդեցությունը"
+    }
+  ],
+  "skills": [
+    {
+      "code": "PHY7-U01-S01",
+      "status": "review",
+      "name_hy": "Ֆիզիկական երևույթների ճանաչում և դասակարգում"
+    },
+    {
+      "code": "PHY7-U01-S02",
+      "status": "review",
+      "name_hy": "Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը"
+    },
+    {
+      "code": "PHY7-U01-S03",
+      "status": "review",
+      "name_hy": "Ֆիզիկոսներ և հայ ֆիզիկոսներ"
+    },
+    {
+      "code": "PHY7-U01-S04",
+      "status": "review",
+      "name_hy": "Դիտումը և փորձը տարբերակելը"
+    },
+    {
+      "code": "PHY7-U01-S05",
+      "status": "review",
+      "name_hy": "Վարկած–փորձ–տվյալ–եզրակացություն շղթան"
+    },
+    {
+      "code": "PHY7-U01-S06",
+      "status": "review",
+      "name_hy": "Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր"
+    },
+    {
+      "code": "PHY7-U01-S07",
+      "status": "review",
+      "name_hy": "Չափման միավորների պարզ փոխարկումներ"
+    },
+    {
+      "code": "PHY7-U01-S08",
+      "status": "review",
+      "name_hy": "Սանդղակի բաժանման արժեքը, չափման սահմանը և ցուցմունքը"
+    },
+    {
+      "code": "PHY7-U01-S09",
+      "status": "review",
+      "name_hy": "Չափման սխալ և ճշգրտության գնահատում"
+    },
+    {
+      "code": "PHY7-U01-S10",
+      "status": "review",
+      "name_hy": "Չափման փորձի պլանավորում և անկանոն մարմնի ծավալի որոշում"
+    },
+    {
+      "code": "PHY7-U02-S01",
+      "status": "archived",
+      "name_hy": "Տարբերակել ֆիզիկական մարմինն ու նյութը"
+    },
+    {
+      "code": "PHY7-U02-S02",
+      "status": "review",
+      "name_hy": "Փորձերով հիմնավորել նյութի մասնիկային կառուցվածքը"
+    },
+    {
+      "code": "PHY7-U02-S03",
+      "status": "review",
+      "name_hy": "Տարբերակել ատոմը, մոլեկուլը և քիմիական տարրը"
+    },
+    {
+      "code": "PHY7-U02-S04",
+      "status": "review",
+      "name_hy": "Մոլեկուլների չափերը համեմատել այլ մարմինների չափերի հետ"
+    },
+    {
+      "code": "PHY7-U02-S05",
+      "status": "review",
+      "name_hy": "Նկարագրել ատոմների և մոլեկուլների շարժումը նյութում"
+    },
+    {
+      "code": "PHY7-U02-S06",
+      "status": "review",
+      "name_hy": "Դիֆուզիան բացատրել օրինակներով"
+    },
+    {
+      "code": "PHY7-U02-S07",
+      "status": "review",
+      "name_hy": "Համեմատել դիֆուզիայի արագությունը նյութի տարբեր ագրեգատային վիճակներում"
+    },
+    {
+      "code": "PHY7-U02-S08",
+      "status": "review",
+      "name_hy": "Մարմնի ջերմաստիճանը կապել մասնիկների շարժման արագության հետ"
+    },
+    {
+      "code": "PHY7-U02-S09",
+      "status": "review",
+      "name_hy": "Բացատրել ջերմաչափի աշխատանքի սկզբունքը"
+    },
+    {
+      "code": "PHY7-U03-S01",
+      "status": "review",
+      "name_hy": "Մեխանիկական շարժումը և հաշվարկման մարմինը"
+    },
+    {
+      "code": "PHY7-U03-S02",
+      "status": "review",
+      "name_hy": "Մարմինը որպես նյութական կետ"
+    },
+    {
+      "code": "PHY7-U03-S03",
+      "status": "review",
+      "name_hy": "Շարժման հետագիծը և անցած ճանապարհը"
+    },
+    {
+      "code": "PHY7-U03-S04",
+      "status": "review",
+      "name_hy": "Հավասարաչափ և անհավասարաչափ շարժում"
+    },
+    {
+      "code": "PHY7-U03-S05",
+      "status": "review",
+      "name_hy": "Ճանապարհային արագության իմաստը"
+    },
+    {
+      "code": "PHY7-U03-S06",
+      "status": "review",
+      "name_hy": "Արագության միավորների ձևափոխում"
+    },
+    {
+      "code": "PHY7-U03-S07",
+      "status": "review",
+      "name_hy": "Արագության, ճանապարհի և ժամանակի հաշվում"
+    },
+    {
+      "code": "PHY7-U03-S08",
+      "status": "review",
+      "name_hy": "Արագության որոշումը չափումներով"
+    },
+    {
+      "code": "PHY7-U04-S01",
+      "status": "review",
+      "name_hy": "Զանգվածը՝ որպես իներտության չափ"
+    },
+    {
+      "code": "PHY7-U04-S02",
+      "status": "review",
+      "name_hy": "Նյութի խտության ֆիզիկական իմաստը"
+    },
+    {
+      "code": "PHY7-U04-S03",
+      "status": "review",
+      "name_hy": "Խտության, զանգվածի և ծավալի հաշվում"
+    },
+    {
+      "code": "PHY7-U04-S04",
+      "status": "review",
+      "name_hy": "Խտության որոշումը չափումներով"
+    },
+    {
+      "code": "PHY7-U04-S05",
+      "status": "review",
+      "name_hy": "Մարմինների փոխազդեցությունը, ուժը և նրա միավորը"
+    },
+    {
+      "code": "PHY7-U04-S06",
+      "status": "review",
+      "name_hy": "Ծանրության ուժի հաշվում"
+    },
+    {
+      "code": "PHY7-U04-S07",
+      "status": "review",
+      "name_hy": "Առաձգական և պլաստիկ դեֆորմացիաներ"
+    },
+    {
+      "code": "PHY7-U04-S08",
+      "status": "review",
+      "name_hy": "Հուկի օրենքը և փորձի արդյունքները"
+    },
+    {
+      "code": "PHY7-U04-S09",
+      "status": "review",
+      "name_hy": "Ուժաչափի աստիճանավորումը և ցուցմունքը"
+    },
+    {
+      "code": "PHY7-U04-S10",
+      "status": "review",
+      "name_hy": "Զանգվածը, ծանրության ուժը և կշիռը"
+    },
+    {
+      "code": "PHY7-U04-S11",
+      "status": "review",
+      "name_hy": "Շփման ուժի տեսակները, պատճառները և դերը"
+    },
+    {
+      "code": "PHY7-U04-S12",
+      "status": "review",
+      "name_hy": "Շփման ուժի ուսումնասիրությունը փորձով"
+    },
+    {
+      "code": "PHY7-U04-S13",
+      "status": "review",
+      "name_hy": "Մի ուղղով ուղղված ուժերի համազորը"
+    },
+    {
+      "code": "PHY7-U04-S14",
+      "status": "review",
+      "name_hy": "Ծանրության ուժը և տիեզերական ձգողությունը"
+    }
+  ],
+  "releases": [
+    {
+      "id": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+      "status": "pilot",
+      "release_key": "physics7_u01_2026_08_14_pilot_r1",
+      "activated_at": "2026-09-19T06:45:24.76571+00:00"
+    },
+    {
+      "id": "9f93b58d-e1a2-49ba-ba96-89e76c697884",
+      "status": "legacy",
+      "release_key": "physics7_u01_legacy_pre_11k",
+      "activated_at": "2026-09-19T06:45:24.76571+00:00"
+    },
+    {
+      "id": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+      "status": "pilot",
+      "release_key": "physics7_u02_2026_08_14_pilot_r2",
+      "activated_at": "2026-10-13T17:38:42.811795+00:00"
+    },
+    {
+      "id": "b626705a-a355-5937-b20b-38550dc5b0fe",
+      "status": "pilot",
+      "release_key": "physics7_u03_2026_08_14_pilot_r3",
+      "activated_at": "2026-10-17T07:40:29.428154+00:00"
+    },
+    {
+      "id": "18eb78e8-79f7-5307-bef2-38c4baa1d809",
+      "status": "pilot",
+      "release_key": "physics7_u04_2026_08_14_pilot_r4",
+      "activated_at": "2026-10-18T10:38:33.757642+00:00"
+    }
+  ],
+  "observed_at": "2026-10-18T19:00:05.276862+00:00"
+}
