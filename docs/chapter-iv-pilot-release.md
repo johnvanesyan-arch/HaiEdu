@@ -23,6 +23,8 @@ Two 19-item Diagnostic and three 15-item Mastery forms contain 83 distinct curre
 
 ## Activation verification
 
+Code review added a complete approved-contract SHA-256 guard, including every label, flag and scope field. Four deployed policy snapshots exactly match the approved contracts after the declared proposed-to-pilot key change; the strengthened generator produces byte-identical authorized SQL. Twenty recipe-drift cases across all four modes are rejected.
+
 The default-rollback generator guards all 236 exact approvals/QA records, the reviewed runtime, current release state, contract scope and 59 public-table fingerprints. The production rehearsal passed and restored all 59 fingerprints exactly. The owner-authorized activation then committed four blueprint/policy bindings, three pools, five forms, one chapter-scoped model and one runtime binding. All **677 inserted configuration rows** read back exactly after expected status transitions. All **61 preservation scopes** passed, including private active-release and existing whole-Mastery bindings; the other 46 public tables are unchanged. Chapters I–III and every existing learner record are preserved. The same v2 runtime is reused; no Edge function or numerical learning parameter changed.
 
 The six internal technical gates pass. The independent specialist gate remains pending with no fabricated reviewer. This is a provisional pilot, not final production promotion.

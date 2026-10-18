@@ -9,6 +9,9 @@ from pathlib import Path
 RELEASE='18eb78e8-79f7-5307-bef2-38c4baa1d809'
 UNIT='5ebe46f5-5542-5a1e-bfbd-14e4e5b784ca'
 RECON='89815172-0a05-50ba-a828-449833494c8c'
+# Complete owner-approved contract list, including labels, flags, scope and counts.
+# Deliberately independent of mutable input files; a new contract needs a new decision.
+APPROVED_CONTRACTS_SHA256='2d15c5d107b56b7489f93d854d51b65d9e1a479b7b9083a17238686147a44224'
 BASE='bf84b5bb-88a4-4f55-986f-0c06ce5b0b3f'
 RUNTIME='269cb4ff-ad87-48fc-8c05-563b803d1d2b'
 PRESERVED=['80bbe575-ad49-4a7f-881a-e55726b1eaeb','b83dc4a4-f5c2-486a-82a6-d7489e7e6407','b626705a-a355-5937-b20b-38550dc5b0fe']
@@ -22,6 +25,7 @@ def require(value,message):
  if not value: raise ValueError(message)
 
 def build(source,plan,recipe,state,source_commit,authorization=None):
+ require(hashlib.sha256(json.dumps(recipe.get('contracts'),ensure_ascii=False,sort_keys=True,separators=(',',':')).encode()).hexdigest()==APPROVED_CONTRACTS_SHA256,'Exact owner-approved contracts required')
  require(re.fullmatch('[0-9a-f]{40}',source_commit),'Exact reviewed source commit required')
  require(recipe['scope']['curriculumReleaseId']==RELEASE and recipe['scope']['unitId']==UNIT,'Wrong recipe scope')
  require(next(r for r in source['releases'] if r['id']==RELEASE)['status']=='draft','Release must still be draft')

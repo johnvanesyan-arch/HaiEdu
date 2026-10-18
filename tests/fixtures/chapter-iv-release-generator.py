@@ -27,6 +27,12 @@ class Tests(unittest.TestCase):
    with self.subTest(change=change):
     a=inputs();change(a)
     with self.assertRaises(ValueError):m.build(*a)
+ def test_pins_every_contract_field_including_learner_labels(self):
+  for mode in range(4):
+   for mutate in [lambda p:p['reportingGroups'][0].update(label='Unapproved label'),lambda p:p.update(hintsAllowed=not p['hintsAllowed']),lambda p:p.update(policyKey='unapproved'),lambda p:p.update(subjectProgramId=m.uid('wrong-program')),lambda p:p.update(extraUndeclaredField=True)]:
+    with self.subTest(mode=mode,mutation=mutate):
+     a=inputs();mutate(a[2]['contracts'][mode])
+     with self.assertRaisesRegex(ValueError,'Exact owner-approved contracts'):m.build(*a)
  def test_no_reuse(self):
   a=inputs();a[1]['forms'][1]['members'][0]=a[1]['forms'][0]['members'][0]
   with self.assertRaises(ValueError):m.build(*a)
