@@ -253,26 +253,39 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter IV assessment proposal — 15D.5, 2026-10-18
+## Chapter IV knowledge-only pilot — 15D.6, 2026-10-18
+
+- [x] Record owner approval of the exact contract, five revisions and knowledge-only pilot with specialist review deferred.
+- [x] Refresh whole-bank comparison; stage exactly five v2 revisions; preserve earlier versions and approvals.
+- [x] Pass saved-content deployed-v11 QA 5/5 and record five ordinary approvals through the authenticated reviewer UI.
+- [x] Bind all 83 form members to exact current versions/approvals/QA; exclude 15 held Mastery questions.
+- [x] Pass production rollback and activate four contracts, three pools and five forms; verify all 677 inserted configuration rows and 61 preservation scopes.
+- [ ] Complete reviewed-main authenticated production access, reporting and four-chapter switching acceptance.
+- [ ] Save final evidence, merge closure and verify exact-source Notion synchronization.
+- [ ] Independent specialist/exposure review, performed-experiment workflow and promotion beyond provisional pilot remain deferred.
+
+[Release evidence](chapter-iv-pilot-release.md).
+
+## Historical Chapter IV assessment proposal — 15D.5, 2026-10-18
 
 - [x] Audit all 98 protected candidates against actual primary outcome claims and retained source/comparison evidence.
 - [x] Prepare 19-question Diagnostic / 15-question Mastery policy recipes, five conditional forms, and five exact offline revision proposals.
 - [x] Account for all protected candidates: 83 conditional form slots and 15 held Mastery items, with no deletion or automatic substitution.
 - [x] Validate four policy shapes and five scoring cases using current JS/read-only SQL; preserve all 13 reviewed content/audit tables.
-- [ ] Obtain the owner's chapter-specific assessment, bounded revision and practical/pilot-scope decisions.
-- [ ] Complete fresh whole-bank comparison, new-version technical QA and ordinary review for the five proposed revisions.
-- [ ] Complete applicable qualification/protection/exposure disposition, exact bindings, production rollback rehearsal and authorized activation.
+- [x] Obtain the owner's chapter-specific decisions; approved and implemented under 15D.6.
+- [x] Complete comparison, v2 QA and ordinary delegated approvals under 15D.6.
+- [x] Complete bounded provisional disposition, exact bindings, rollback and authorized activation under 15D.6; independent qualification/exposure review remains deferred.
 - [ ] Verify production access, reporting and chapter switching, save evidence and sync the merged source.
 
-[Concrete proposal and trade-offs](chapter-iv-assessment-contract-proposal.md). The prior ordinary approval closure remains valid for all live v1 content; proposed v2 content has not been saved.
+[Concrete proposal and trade-offs](chapter-iv-assessment-contract-proposal.md). Historical proposal checkpoint; all five v2 revisions are now saved and approved under 15D.6.
 
 ## Chapter IV review closure and next contract — 15D.4R2 / 15D.5, 2026-10-18
 
 - [x] Verify all three batches: 236 approved current-v1 questions with passing QA, 138 published guides and 150 active definitions.
 - [x] Verify staged question/guide/definition wording and immutable history are unchanged; preserve prior author comparisons.
 - [x] Confirm zero U04 pool/form item allocations and the inactive draft release.
-- [x] Prepare the concrete 15D.5 contract proposal above; owner adoption remains pending.
-- [ ] Define performed-experiment evidence and review for M3/M8, or obtain a separate bounded knowledge-only pilot decision.
+- [x] Prepare the concrete 15D.5 contract proposal above; owner adoption and implementation are recorded under 15D.6.
+- [x] Obtain the bounded knowledge-only pilot decision; performed M3/M8 evidence remains unassessed.
 - [ ] Complete exact-version qualification/protection/exposure and disjoint allocation, configuration/rollback, release authorization and production acceptance.
 
 [Verified closure](chapter-iv-review-closure.md). No ordinary content review remains; the following earlier checkpoint retains its dated action provenance.
