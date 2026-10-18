@@ -1,5 +1,7 @@
 # Chapter IV Batch 1 approval checkpoint — 15D.4R
 
+> Historical partial checkpoint. All three batches were subsequently approved/published and verified under [15D.4R2](chapter-iv-review-closure.md) on 2026-10-18. The pending actions below describe this earlier observation only.
+
 **Verified:** 2026-10-17 21:46:07 UTC / 2026-10-18 Asia/Yerevan. **Status:** questions approved; guides reviewed; publication and definition approval pending.
 
 John requested “Let’s try to approve Batch 1” at 21:14:16 UTC. Codex performed the ordinary review actions through the signed-in HaiEdu reviewer, under the recorded owner delegation. This is delegated ordinary review, not personal inspection by John or independent SME approval.
