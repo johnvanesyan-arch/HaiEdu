@@ -889,5 +889,56 @@
     "textbook": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
     "programme": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478"
   },
-  "closure": "Repository merge/required CI and source-commit Notion readback are recorded in the private closure receipt after merge; not falsely pre-claimed here."
+  "closure": "Repository merge/required CI and source-commit Notion readback are recorded in the private closure receipt after merge; not falsely pre-claimed here.",
+  "privateEvidenceBinding": {
+    "filename": "HaiEdu-Chapter-V-Held17-Rework-Evidence.zip",
+    "libraryFileId": "libfile_31cbda519ac08191b5bfbf52ec624c09",
+    "savedAuthoringVersion": 0,
+    "archiveBytes": 6462431,
+    "archiveSha256": "7bebeddc288c34d4dac3aef64075a09bd9a446d15da3d8be95699bf5cb5dac0f",
+    "restrictedComparisonSha256": "688701fbcfc3079c4b9a153fd5b773426e7f6e09157cd68bbec62d39346c7483",
+    "members": [
+      {
+        "member": "comparison.json",
+        "bytes": 252358,
+        "sha256": "688701fbcfc3079c4b9a153fd5b773426e7f6e09157cd68bbec62d39346c7483"
+      },
+      {
+        "member": "specs.json",
+        "bytes": 194464,
+        "sha256": "415463b60d416440da540629338dbee260e0d9d86c85d88705c18ebbb12eca7d"
+      },
+      {
+        "member": "first-rework-drafts.json",
+        "bytes": 147272,
+        "sha256": "f1f69237c8531d8996af83684ab3abd79142df8b53a9c6d7afc2c624ceb4b03e"
+      },
+      {
+        "member": "comparison-corpus.json",
+        "bytes": 19112982,
+        "sha256": "81a195e67cddcf97c5c966728df928122dd24dd100e0998249c1a913ac710520"
+      },
+      {
+        "member": "redacted-matrix.json",
+        "bytes": 63251,
+        "sha256": "12983faedc257b8bbb94fda8cd6c7add8c0c930bd238036cd0b3f62985d90e18"
+      },
+      {
+        "member": "qa-results.json",
+        "bytes": 40414,
+        "sha256": "b29fdd35c4ae8eaee5e8b5f6f786bed9b04fdd465a9c8212407a16c022b661e1"
+      },
+      {
+        "member": "preservation-qa.json",
+        "bytes": 11505,
+        "sha256": "6e12383d6bc16606d3ceda50b3a6a9d2ca5d8841e94edecc2cebaa1946677811"
+      },
+      {
+        "member": "committed-readback-catalogue.json",
+        "bytes": 306803,
+        "sha256": "39c634ead2482033757ec7eb27dbc09301187f2f4dc6aff149aaf5bb15945a55"
+      }
+    ],
+    "versionRule": "This binding identifies the saved pre-merge authoring archive version 0. A later closure-only archive version may add merge/CI/Notion receipts; these bound comparison/specification/source/readback members must remain byte-identical. No public protected prompt/key disclosure."
+  }
 }
