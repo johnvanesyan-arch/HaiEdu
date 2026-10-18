@@ -1,0 +1,2367 @@
+[
+  {
+    "code": "PHY7-U05-S04-I01",
+    "candidate": "U05-B02-C01",
+    "candidateRevision": 1,
+    "specSha256": "57eaee8b0571862ea03dd3387661b565898f0753f7f5fea61bcfb05041bb144f",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "fixed pivot definition",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Intentional practice of fixed_pivot_definition. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U02-S06-I01",
+      "PHY7-U04-S10-I12",
+      "PHY7-U02-S05-I03",
+      "PHY7-U02-S02-M07",
+      "PHY7-U02-S07-D01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U02-S06-I01@history-v1",
+      "PHY7-U04-S10-I12@history-v1",
+      "PHY7-U02-S05-I03@current-v1",
+      "PHY7-U02-S02-M07@history-v1",
+      "PHY7-U02-S07-D01@history-v1",
+      "item_template_remediation_guides:71e19746-1e1f-4993-b86b-53bed5298962",
+      "remediation_guide_versions:b5cf5ece-52d8-4e92-af33-f326d7717a2b",
+      "remediation_guide_versions:87220aab-5170-47e0-afd8-92b3e0435dda"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-SUPPORT",
+      "PHY7-U05-S04-MC-SUPPORT",
+      "PHY7-U05-S04-MC-SUPPORT"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-I02",
+    "candidate": "U05-B02-C02",
+    "candidateRevision": 1,
+    "specSha256": "5ba4fd500a4d393c43f9bbea1dd4d8853c599273f5fdb9593620bb7cc9815d83",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "perpendicular definition",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Intentional practice of perpendicular_definition. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02"
+    ],
+    "currentHistoryGuideRefs": [
+      "item_template_remediation_guides:5649c7e2-1e1d-466a-b283-6a6a706fecde",
+      "remediation_guide_versions:8388c3ca-8d0e-4ccc-aeea-335e96e877b7",
+      "remediation_guide_authoring_versions:0e4e97fe-053f-45c2-972b-ab0a52e6df75",
+      "remediation_guide_authoring_versions:7a5ecc85-097e-48cf-b284-33555d54d607",
+      "item_template_remediation_guides:9244e3c7-891d-4096-96da-4b6ba9540c16",
+      "item_template_remediation_guides:f6cc5e68-06fe-4d42-a58a-4c8123a8b1a1",
+      "item_template_remediation_guides:b870f5e8-284a-4da0-aa07-5bf1ab636d3e",
+      "remediation_guide_versions:9f59771a-888f-4295-82c4-d28fe9222501"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-D01",
+      "PHY7-U05-S04-M01",
+      "PHY7-U05-S04-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-ARM",
+      "PHY7-U05-S04-MC-LINE",
+      "PHY7-U05-S04-MC-ARM"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-I03",
+    "candidate": "U05-B02-C03",
+    "candidateRevision": 1,
+    "specSha256": "6c16a4413ed4897a9cdf17ce2fe9725940d6a943bd5c154dc2f0a6fb6bcc2841",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "figure named arm",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Intentional practice of figure_named_arm. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U04-S10-I02",
+      "PHY7-U02-S02-M07"
+    ],
+    "currentHistoryGuideRefs": [
+      "item_template_remediation_guides:65b473aa-3564-471b-9c1f-9921235e2866",
+      "remediation_guide_authoring_versions:11948607-946f-4fc9-8e89-007335947d52",
+      "PHY7-U04-S10-I02@history-v1",
+      "item_template_remediation_guides:5649c7e2-1e1d-466a-b283-6a6a706fecde",
+      "remediation_guide_authoring_versions:6be25741-40dd-4708-871e-96c073f67cc2",
+      "PHY7-U02-S02-M07@current-v1",
+      "remediation_guide_versions:25f23172-0f17-4d41-97be-aa5fad02d453",
+      "item_template_remediation_guides:64c312b8-4b8a-4a17-9597-830e6c0ea44c"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-REFERENCE",
+      "PHY7-U05-S04-MC-ARM",
+      "PHY7-U05-S04-MC-ARM"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-I04",
+    "candidate": "U05-B02-C04",
+    "candidateRevision": 1,
+    "specSha256": "2c25f79f2246de93b240f19cb7f0198429227b71a1813e9bc15a201bebaf7625",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "arm si unit",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Intentional practice of arm_si_unit. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U05-S02-I02",
+      "PHY7-U05-S01-I03",
+      "PHY7-U04-S03-I07",
+      "PHY7-U04-S03-I08",
+      "PHY7-U01-S06-11D-M05",
+      "PHY7-U04-S08-I01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I02@history-v1",
+      "PHY7-U05-S01-I03@current-v1",
+      "PHY7-U04-S03-I07@current-v1",
+      "item_template_remediation_guides:baf4e96f-8687-4bf7-a9df-8492f723b459",
+      "remediation_guide_authoring_versions:a49431c2-3bd0-492d-897f-7aadde480912",
+      "PHY7-U04-S03-I08@current-v1",
+      "PHY7-U01-S06-11D-M05@current-v1",
+      "PHY7-U04-S08-I01@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-UNIT",
+      "PHY7-U05-S04-MC-UNIT",
+      "PHY7-U05-S04-MC-UNIT"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-I05",
+    "candidate": "U05-B02-C05",
+    "candidateRevision": 1,
+    "specSha256": "6279b04807f82f0eac278109fcdc31da84e9fdca2344940a25cd87e0c8c12bf6",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "zero arm through support",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Intentional practice of zero_arm_through_support. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U03-S03-M08",
+      "PHY7-U03-S03-I01",
+      "PHY7-U04-S05-I08",
+      "PHY7-U03-S03-I06"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_versions:9321ecad-9bd1-4274-b98e-e2c852f57127",
+      "item_template_remediation_guides:37c9b400-2207-498d-8a09-4d61669b033e",
+      "item_template_remediation_guides:5e61bc98-d1ae-4be9-8937-bde7a576663f",
+      "remediation_guide_authoring_versions:486075aa-85f4-4d11-a2b0-12a51db62f13",
+      "PHY7-U03-S03-M08@current-v1",
+      "PHY7-U03-S03-I01@history-v1",
+      "PHY7-U04-S05-I08@history-v1",
+      "PHY7-U03-S03-I06@history-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-ZERO",
+      "PHY7-U05-S04-MC-ARM",
+      "PHY7-U05-S04-MC-UNIT"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-I06",
+    "candidate": "U05-B02-C06",
+    "candidateRevision": 1,
+    "specSha256": "b09f8d9928ab6937a9fa1d2336147cafe612bf522745aba29c4142a8323eb8a7",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "same line same arm",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Intentional practice of same_line_same_arm. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U03-S05-D02",
+      "PHY7-U03-S05-M02"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:04dd92b0-4470-48e7-9fc5-e5842ffd38c1",
+      "item_template_remediation_guides:64c312b8-4b8a-4a17-9597-830e6c0ea44c",
+      "item_template_remediation_guides:7b6aeb6a-8543-4478-be47-d5bd6143651d",
+      "remediation_guide_authoring_versions:8a15bbdb-96ac-4cdf-81fd-6c19565dbbaa",
+      "item_template_remediation_guides:65b473aa-3564-471b-9c1f-9921235e2866",
+      "remediation_guide_authoring_versions:51111b69-07ee-404a-b9f1-ae1e438a778b",
+      "PHY7-U03-S05-D02@history-v1",
+      "PHY7-U03-S05-M02@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-LINE",
+      "PHY7-U05-S04-MC-ARM",
+      "PHY7-U05-S04-MC-LINE"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-I07",
+    "candidate": "U05-B02-C07",
+    "candidateRevision": 1,
+    "specSha256": "cf35a338a9c229caddea6067938fd569e88593b9a92fd46979277f43bd39ace4",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "pivot shift",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Intentional practice of pivot_shift. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U04-S11-I06",
+      "PHY7-U02-S09-I12",
+      "PHY7-U04-S10-I12",
+      "PHY7-U02-S04-I08",
+      "PHY7-U04-S10-I03"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S11-I06@current-v1",
+      "PHY7-U03-S08-I02@current-v1",
+      "PHY7-U02-S09-I12@current-v1",
+      "item_template_remediation_guides:5649c7e2-1e1d-466a-b283-6a6a706fecde",
+      "remediation_guide_authoring_versions:1c79aa1b-0a21-4325-84b6-91820bd54bf9",
+      "PHY7-U04-S10-I12@current-v1",
+      "PHY7-U02-S04-I08@history-v2",
+      "PHY7-U04-S10-I03@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-M03",
+      "PHY7-U05-S05-M03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-REFERENCE",
+      "PHY7-U05-S04-MC-REFERENCE",
+      "PHY7-U05-S04-MC-REFERENCE"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-I08",
+    "candidate": "U05-B02-C08",
+    "candidateRevision": 1,
+    "specSha256": "4715719ce6d4349dcea912be67942d23957be3a64dc8c31974a9884380521fe6",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "rotation direction",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Intentional practice of rotation_direction. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U04-S11-I04",
+      "PHY7-U03-S02-M04",
+      "PHY7-U04-S11-M06"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S11-I04@history-v1",
+      "PHY7-U03-S02-M04@history-v1",
+      "item_template_remediation_guides:33a68b1a-9a9e-41df-9512-b514cf07a1ef",
+      "remediation_guide_authoring_versions:0e298873-638c-41f2-b176-a79b4c7b7ab5",
+      "PHY7-U04-S11-M06@history-v1",
+      "remediation_guide_authoring_versions:1c79aa1b-0a21-4325-84b6-91820bd54bf9",
+      "item_template_remediation_guides:5649c7e2-1e1d-466a-b283-6a6a706fecde",
+      "item_template_remediation_guides:4c8196dd-1b15-41da-a8a1-6c2a7cb2eff1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-M02",
+      "PHY7-U05-S05-D03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-DIRECTION",
+      "PHY7-U05-S04-MC-DIRECTION",
+      "PHY7-U05-S04-MC-DIRECTION"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-D01",
+    "candidate": "U05-B02-C09",
+    "candidateRevision": 1,
+    "specSha256": "610853f24bd00c6ba446a5a01d9fc5fb5787e34444f9be6b57f2004355325452",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "slanted rod two distances",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "New competing measurements on a tilted rod require selecting the force-line distance; I02 definition and I07 ruler offset are exposed prerequisites, not independent new coverage.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S10-I12",
+      "PHY7-U02-S02-M07",
+      "PHY7-U03-S02-M02"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:0e4e97fe-053f-45c2-972b-ab0a52e6df75",
+      "item_template_remediation_guides:9244e3c7-891d-4096-96da-4b6ba9540c16",
+      "PHY7-U04-S10-I03@current-v1",
+      "PHY7-U04-S10-I12@history-v1",
+      "PHY7-U04-S05-D01@current-v1",
+      "PHY7-U02-S02-M07@history-v1",
+      "PHY7-U03-S02-M02@history-v1",
+      "remediation_guide_authoring_versions:7a5ecc85-097e-48cf-b284-33555d54d607"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-I02",
+      "PHY7-U05-S04-M01",
+      "PHY7-U05-S04-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-ARM",
+      "PHY7-U05-S04-MC-ARM",
+      "PHY7-U05-S04-MC-ARM"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-D02",
+    "candidate": "U05-B02-C10",
+    "candidateRevision": 2,
+    "specSha256": "9ea04cfd3ad6d38326e8442ad285517f9c10fd11ad0488f07b7d705c6b9efaf4",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "support shift parallel to force line",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Reworked after detecting full zero-arm guide exposure: now judge a support shift parallel to a fixed force line using two explicitly perpendicular measurements. Contrasts unchanged perpendicular distance with changed support position; no diagram geometry must be invented.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U04-S11-M06",
+      "PHY7-U04-S11-I06",
+      "PHY7-U03-S04-M06",
+      "PHY7-U04-S12-I01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S11-M06@history-v1",
+      "PHY7-U04-S11-I06@current-v1",
+      "item_template_remediation_guides:ebbec1e8-cc33-4bad-87f4-b308c9da3f66",
+      "remediation_guide_versions:06d1e494-34fa-4e59-9167-eea797041f4a",
+      "PHY7-U03-S04-M06@history-v1",
+      "PHY7-U04-S12-I01@current-v1",
+      "item_template_remediation_guides:e413ceb8-d129-4c48-8474-f91980072cc4",
+      "remediation_guide_authoring_versions:c3f0fe2f-8dde-4e96-b157-b08c095b77a9"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-LINE",
+      "PHY7-U05-S04-MC-ARM",
+      "PHY7-U05-S04-MC-ZERO"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-M01",
+    "candidate": "U05-B02-C11",
+    "candidateRevision": 1,
+    "specSha256": "592fe011b995ce860eecb321b87b45b0000e9980e5684a2d4ef6a95c35a6bf3f",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "measurement report missing line",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Audit measurement sufficiency in two reports; shares D01 line-versus-point inference. Keep as protected parallel dependency group, never count as independent coverage.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S05-D01@history-v1",
+      "PHY7-U04-S05-I05@history-v1",
+      "remediation_guide_versions:3123cfa8-c8c6-4d87-9531-15ed8bbc73bb",
+      "item_template_remediation_guides:9244e3c7-891d-4096-96da-4b6ba9540c16",
+      "remediation_guide_versions:5dcee39b-d8bf-4896-bc53-be5475626d8a",
+      "item_template_remediation_guides:b870f5e8-284a-4da0-aa07-5bf1ab636d3e",
+      "item_template_remediation_guides:4c8196dd-1b15-41da-a8a1-6c2a7cb2eff1",
+      "remediation_guide_authoring_versions:d4158eae-fa05-4dfc-9b8d-2cfbc9e0182d"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-D01",
+      "PHY7-U05-S04-I02",
+      "PHY7-U05-S04-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-ARM",
+      "PHY7-U05-S04-MC-INCOMPLETE",
+      "PHY7-U05-S04-MC-INCOMPLETE"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-M02",
+    "candidate": "U05-B02-C12",
+    "candidateRevision": 1,
+    "specSha256": "0e28d11fc0168c9ad4f2169d7d9d95ce150d7f7607a9f57c7fcbd44afcea401a",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "two forces same rotation",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Combines side and reversed direction for two simultaneous forces. I08 teaches one-force direction, not cancellation of misleading opposite arrows. Related U04 resultant tasks distinguished; rotational claim remains explicit.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U04-S07-I06",
+      "PHY7-U03-S02-M04",
+      "PHY7-U02-S04-I08",
+      "PHY7-U04-S07-M03",
+      "PHY7-U04-S07-I07",
+      "PHY7-U04-S11-I04"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S07-I06@history-v1",
+      "PHY7-U03-S02-M04@current-v1",
+      "PHY7-U03-S03-I03@history-v1",
+      "PHY7-U02-S04-I08@history-v1",
+      "PHY7-U04-S07-M03@history-v1",
+      "PHY7-U02-S04-I08@history-v2",
+      "PHY7-U04-S07-I07@history-v1",
+      "PHY7-U04-S11-I04@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-I08",
+      "PHY7-U05-S05-D03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-DIRECTION",
+      "PHY7-U05-S04-MC-DIRECTION",
+      "PHY7-U05-S04-MC-DIRECTION"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-M03",
+    "candidate": "U05-B02-C13",
+    "candidateRevision": 1,
+    "specSha256": "8e65add280f1886fe5a3213ba639f3f1f9ecbe5a2f0329924591cd28f4e6c762",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "shift pivot two arms",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Joint update of opposite-side distances under a shared moving reference; related I07 and U03 position-offset procedures. Protect as parallel two-output interpretation.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02",
+      "PHY7-U03-S02-M02",
+      "PHY7-U01-S08-I05",
+      "PHY7-U04-S10-I12",
+      "PHY7-U03-S01-D01",
+      "PHY7-U02-S09-I12"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U03-S02-M02@current-v1",
+      "PHY7-U03-S08-I02@current-v1",
+      "PHY7-U01-S08-I05@history-v1",
+      "PHY7-U04-S10-I12@history-v1",
+      "PHY7-U03-S01-D01@current-v2",
+      "PHY7-U02-S09-I12@history-v1",
+      "item_template_remediation_guides:b9d9a4d5-d8f7-4ecf-afd0-9e1e886991a5",
+      "remediation_guide_versions:2495a833-0cdc-42f1-a692-d3e97c74d695"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-I07",
+      "PHY7-U05-S05-M03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-REFERENCE",
+      "PHY7-U05-S04-MC-REFERENCE",
+      "PHY7-U05-S04-MC-LINE"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S04-M04",
+    "candidate": "U05-B02-C14",
+    "candidateRevision": 1,
+    "specSha256": "803326ac07aa9017324866a8f6a661250e019a9062089ef62daee78f4c3e5e4f",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "incomplete sketch repair",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107։",
+    "semanticJudgment": "Repair an incomplete representation rather than select a supplied length; D01/M01 strong same-definition dependency and general data-sufficiency corpus retained.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S05-I05",
+      "PHY7-U04-S05-D01",
+      "PHY7-U04-S05-M02",
+      "PHY7-U03-S03-I03",
+      "PHY7-U03-S08-I02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S05-M02@current-v1",
+      "PHY7-U04-S05-I05@current-v1",
+      "PHY7-U04-S05-D01@current-v1",
+      "item_template_remediation_guides:4c8196dd-1b15-41da-a8a1-6c2a7cb2eff1",
+      "remediation_guide_versions:a822b7a1-98ad-4379-acce-1b151e5caf3b",
+      "remediation_guide_versions:3123cfa8-c8c6-4d87-9531-15ed8bbc73bb",
+      "remediation_guide_authoring_versions:a3fb9014-a35a-4174-8361-7903778ea815",
+      "item_template_remediation_guides:9244e3c7-891d-4096-96da-4b6ba9540c16"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-D01",
+      "PHY7-U05-S04-I02",
+      "PHY7-U05-S04-M01"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S04-MC-INCOMPLETE",
+      "PHY7-U05-S04-MC-INCOMPLETE",
+      "PHY7-U05-S04-MC-ARM"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I01",
+    "candidate": "U05-B02-C15",
+    "candidateRevision": 1,
+    "specSha256": "2bb806a9db829daf77c58996e625697c09742bfe6ad59422e6d5c82ab4ca5b9b",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "lever inverse rule",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of lever_inverse_rule. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U05-S01-I08",
+      "PHY7-U03-S05-M04",
+      "PHY7-U04-S05-I11",
+      "PHY7-U03-S07-D06",
+      "PHY7-U04-S06-I05",
+      "PHY7-U04-S13-I04",
+      "PHY7-U04-S02-I05",
+      "PHY7-U03-S08-I03"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-I08@history-v1",
+      "PHY7-U03-S05-M04@history-v1",
+      "PHY7-U04-S05-I11@history-v1",
+      "PHY7-U03-S07-D06@history-v1",
+      "PHY7-U04-S06-I05@current-v1",
+      "PHY7-U04-S13-I04@current-v1",
+      "PHY7-U04-S02-I05@current-v1",
+      "PHY7-U03-S08-I03@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-DIRECT",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-MISSING"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I02",
+    "candidate": "U05-B02-C16",
+    "candidateRevision": 1,
+    "specSha256": "515e961435755f95a9d1fe361253ac2751c2cbd6ffa9baef8722f26bbf9e0619",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "solve effort",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of solve_effort. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S13-I12"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S13-I12@history-v1",
+      "remediation_guide_authoring_versions:09064da0-2330-460d-b1c9-6655fa0cf02d",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "remediation_guide_versions:617eed37-f0c2-433d-a187-247b0f0dd2e9",
+      "remediation_guide_versions:d8a5e182-03e3-4dd2-b2f5-fdd1cefb4f73",
+      "item_template_remediation_guides:6502a6f5-bb80-4b8a-8c4d-994648f0a04a",
+      "item_template_remediation_guides:33234767-625c-459f-a121-66e56daab5a6",
+      "remediation_guide_authoring_versions:8babf408-075b-43d0-85fe-7b5bc90bf0ca"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-DIRECT",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-PAIR"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I03",
+    "candidate": "U05-B02-C17",
+    "candidateRevision": 1,
+    "specSha256": "f3cec178d8941259002c47f280c652482008e45c90a72dd082d30f2bf6cef39c",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "solve arm",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of solve_arm. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S13-I04",
+      "PHY7-U05-S02-I09",
+      "PHY7-U05-S02-I06"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S13-I04@current-v1",
+      "remediation_guide_authoring_versions:a83dd82f-bfb0-4d8b-8b1d-2377b35718a0",
+      "item_template_remediation_guides:a200157b-5902-4084-8404-32daf81b2dde",
+      "item_template_remediation_guides:33234767-625c-459f-a121-66e56daab5a6",
+      "remediation_guide_versions:07e5b498-8844-474b-91f3-9af809f4ebe4",
+      "PHY7-U05-S02-I09@history-v1",
+      "PHY7-U05-S02-I06@history-v1",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-DIRECT",
+      "PHY7-U05-S05-MC-PAIR"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I04",
+    "candidate": "U05-B02-C18",
+    "candidateRevision": 1,
+    "specSha256": "b6c6970263ca447b5faab1abc0e29a81da9488a545ee2547caef876e23ebae0c",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "compare products",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of compare_products. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S13-I04",
+      "PHY7-U04-S11-I04"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S13-I04@history-v1",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "remediation_guide_authoring_versions:3816df30-2c38-4436-aca7-7f8a7ab30f16",
+      "remediation_guide_authoring_versions:aceac553-f721-437a-ad53-154544d9d05c",
+      "item_template_remediation_guides:33234767-625c-459f-a121-66e56daab5a6",
+      "PHY7-U04-S11-I04@current-v1",
+      "remediation_guide_versions:4907264b-f9d0-4cad-b684-54ec063dfc13",
+      "item_template_remediation_guides:a200157b-5902-4084-8404-32daf81b2dde"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-D01",
+      "PHY7-U05-S05-D02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-DIRECTION"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I05",
+    "candidate": "U05-B02-C19",
+    "candidateRevision": 1,
+    "specSha256": "e450b580110fdfdf138218d7637dcc180b344c9f03d135faee6b76dac4f9e6c2",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "mixed length units",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of mixed_length_units. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U05-S02-I02",
+      "PHY7-U04-S13-I12",
+      "PHY7-U04-S11-I04",
+      "PHY7-U05-S02-I01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I02@history-v1",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "remediation_guide_authoring_versions:3816df30-2c38-4436-aca7-7f8a7ab30f16",
+      "PHY7-U04-S13-I12@current-v1",
+      "item_template_remediation_guides:33234767-625c-459f-a121-66e56daab5a6",
+      "remediation_guide_authoring_versions:aceac553-f721-437a-ad53-154544d9d05c",
+      "PHY7-U04-S11-I04@current-v1",
+      "PHY7-U05-S02-I01@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-UNITS",
+      "PHY7-U05-S05-MC-DIRECT",
+      "PHY7-U05-S05-MC-EQUALFORCE"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I06",
+    "candidate": "U05-B02-C20",
+    "candidateRevision": 1,
+    "specSha256": "b2733a2283d0fde122d8d1293a7e123cf340ecd3048898f01d10ad53e224d9c0",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "rod total split",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of rod_total_split. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S07-I06",
+      "PHY7-U03-S02-M04",
+      "PHY7-U04-S11-M06",
+      "PHY7-U04-S11-I04"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S07-I06@current-v1",
+      "PHY7-U03-S02-M04@history-v1",
+      "PHY7-U04-S11-M06@current-v1",
+      "PHY7-U04-S11-I04@history-v1",
+      "remediation_guide_authoring_versions:6903446e-c430-447e-8326-6851a3b4a3c9",
+      "item_template_remediation_guides:e413ceb8-d129-4c48-8474-f91980072cc4",
+      "remediation_guide_authoring_versions:09064da0-2330-460d-b1c9-6655fa0cf02d",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-D04",
+      "PHY7-U05-S05-M01"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-LENGTH",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-DIRECT"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I07",
+    "candidate": "U05-B02-C21",
+    "candidateRevision": 1,
+    "specSha256": "960435e9fac1aaf3597a81f165c4965c3804c85f0ae1adf38079067c4c8b119b",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "restore by arm",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of restore_by_arm. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U05-S02-M01",
+      "PHY7-U05-S03-I12",
+      "PHY7-U03-S07-I10",
+      "PHY7-U02-S08-I12",
+      "PHY7-U03-S07-D06",
+      "PHY7-U04-S05-I11"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-M01@history-v1",
+      "PHY7-U05-S03-I12@history-v1",
+      "remediation_guide_authoring_versions:fabfb5b3-eeaf-4a7a-8c29-ff8b8335f342",
+      "item_template_remediation_guides:39b84d2c-eb7f-4231-9cc4-85e427613085",
+      "PHY7-U03-S07-I10@current-v1",
+      "PHY7-U02-S08-I12@current-v1",
+      "PHY7-U03-S07-D06@history-v1",
+      "PHY7-U04-S05-I11@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-CHANGE",
+      "PHY7-U05-S05-MC-CHANGE",
+      "PHY7-U05-S05-MC-CHANGE"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I08",
+    "candidate": "U05-B02-C22",
+    "candidateRevision": 1,
+    "specSha256": "b62cdc0ebc4790bf6431e00bb99feedd95d9736676e79e60aab6bdb1811cb793",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "mass to force balance",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of mass_to_force_balance. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S10-D03",
+      "PHY7-U04-S09-I05",
+      "PHY7-U05-S02-M03",
+      "PHY7-U04-S11-I04",
+      "PHY7-U04-S12-I01",
+      "PHY7-U04-S10-I09"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:7d0c285a-95d2-42f0-84f0-90ae0b1feb29",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "PHY7-U04-S10-D03@current-v1",
+      "PHY7-U04-S09-I05@history-v1",
+      "PHY7-U05-S02-M03@current-v1",
+      "PHY7-U04-S11-I04@history-v1",
+      "PHY7-U04-S12-I01@current-v1",
+      "PHY7-U04-S10-I09@history-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-MASS",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-DIRECT"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I09",
+    "candidate": "U05-B02-C23",
+    "candidateRevision": 1,
+    "specSha256": "cbed15f8aada65c879c67966a13639a84b067b76ee546186e95b9a1a173a64a8",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "select balancing pair",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of select_balancing_pair. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S13-I02",
+      "PHY7-U04-S06-I08"
+    ],
+    "currentHistoryGuideRefs": [
+      "item_template_remediation_guides:33234767-625c-459f-a121-66e56daab5a6",
+      "remediation_guide_authoring_versions:61e24bec-4afa-41d4-a145-153594184f82",
+      "remediation_guide_authoring_versions:8babf408-075b-43d0-85fe-7b5bc90bf0ca",
+      "item_template_remediation_guides:a200157b-5902-4084-8404-32daf81b2dde",
+      "PHY7-U04-S13-I02@current-v1",
+      "item_template_remediation_guides:6502a6f5-bb80-4b8a-8c4d-994648f0a04a",
+      "remediation_guide_authoring_versions:a96c73af-e956-4690-83eb-8ab87249b313",
+      "PHY7-U04-S06-I08@history-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-PAIR",
+      "PHY7-U05-S05-MC-DIRECT"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-I10",
+    "candidate": "U05-B02-C24",
+    "candidateRevision": 1,
+    "specSha256": "e653292451700e0cba642a8c5b9f62483b7b5cff6a119fee3d2bc895e08f5f45",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "equal load unequal arms",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Intentional practice of equal_load_unequal_arms. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S10-D03",
+      "PHY7-U04-S12-I01",
+      "PHY7-U04-S12-I07",
+      "PHY7-U03-S04-I06"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S10-D03@history-v1",
+      "remediation_guide_authoring_versions:3816df30-2c38-4436-aca7-7f8a7ab30f16",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "PHY7-U04-S12-I01@current-v1",
+      "PHY7-U04-S12-I07@current-v1",
+      "PHY7-U03-S04-I06@current-v1",
+      "remediation_guide_authoring_versions:94b94aa3-5991-498e-a939-e4497c5b8b77",
+      "item_template_remediation_guides:e413ceb8-d129-4c48-8474-f91980072cc4"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-CHANGE",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-CHANGE"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-D01",
+    "candidate": "U05-B02-C25",
+    "candidateRevision": 1,
+    "specSha256": "c1b35399fd7ceda7abc5966ae8fe61bfb25b72562ec4135ff523f752d2aafbc4",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "crosspaired equation error",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Audit an explicitly cross-paired working rather than solve a fresh numerical substitution; I04 and source force-arm association exposed. Related U04 density/ratio pairing errors retained.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S10-D03",
+      "PHY7-U03-S02-M02",
+      "PHY7-U05-S01-D01",
+      "PHY7-U04-S05-D02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-M04@current-v1",
+      "PHY7-U04-S13-D03@current-v1",
+      "PHY7-U04-S10-D03@history-v1",
+      "PHY7-U03-S02-M02@current-v1",
+      "remediation_guide_versions:087b619b-a03b-4958-9aca-0f3292c40be8",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "PHY7-U05-S01-D01@history-v1",
+      "PHY7-U04-S05-D02@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-D02",
+      "PHY7-U05-S05-I04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-PAIR",
+      "PHY7-U05-S05-MC-PAIR"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-D02",
+    "candidate": "U05-B02-C26",
+    "candidateRevision": 1,
+    "specSha256": "e219dc9f3834152dec8760ead1e0e7464f0d45cd533bc070f416979d1ffa3b41",
+    "bank": "diagnostic",
+    "disposition": "redundant_rework_or_omit",
+    "stimulusAndClaim": "force equality false test",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "The experimental wrapper does not change the complete equal-products inference taught by S05-I04 and its guide. A number/name/claim-wrapper change is insufficient for protected-parallel staging.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S01-M04",
+      "PHY7-U04-S13-I04",
+      "PHY7-U03-S04-I06",
+      "PHY7-U04-S13-D02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S01-M04@history-v1",
+      "PHY7-U05-S02-M04@history-v1",
+      "remediation_guide_authoring_versions:7d0c285a-95d2-42f0-84f0-90ae0b1feb29",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "PHY7-U04-S13-I04@history-v1",
+      "PHY7-U03-S04-I06@history-v1",
+      "PHY7-U04-S13-D02@history-v1",
+      "remediation_guide_authoring_versions:8b2c1f15-c385-408c-bcc4-1e90023aa15f"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-D01",
+      "PHY7-U05-S05-I04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-DIRECT",
+      "PHY7-U05-S05-MC-EQUALFORCE"
+    ],
+    "protectionJudgment": "Held: complete reasoning is exposed by listed practice/guide dependency; must substantively rework or revise bank plan. No item is created.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-D03",
+    "candidate": "U05-B02-C27",
+    "candidateRevision": 1,
+    "specSha256": "148d8a2f38aeeb4f109b128db4e2b6ba2f82a0b6e4f8177ede38fc6281b31988",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "equal products same rotation",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Requires checking domain condition before algebra; links S04-M02 direction task and S05-I04 products. Avoid same form/exposure with those full dependencies.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S01-M04",
+      "PHY7-U04-S11-I04",
+      "PHY7-U04-S12-I01",
+      "PHY7-U04-S12-I07",
+      "PHY7-U04-S13-I04"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S01-M04@current-v1",
+      "PHY7-U04-S11-I04@current-v1",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "remediation_guide_versions:7fb6e1ba-13e0-45ec-a9ee-8b7b9149332b",
+      "PHY7-U04-S12-I01@history-v1",
+      "PHY7-U04-S12-I07@current-v1",
+      "PHY7-U04-S13-I04@current-v1",
+      "remediation_guide_authoring_versions:a83dd82f-bfb0-4d8b-8b1d-2377b35718a0"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-I08",
+      "PHY7-U05-S04-M02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-DIRECTION"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-D04",
+    "candidate": "U05-B02-C28",
+    "candidateRevision": 1,
+    "specSha256": "21dbef498022dd2881ffab806d09227d842233ccf1a3536fc932e5945be7b490",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "total length used in solution",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Find the hidden geometry substitution error in a worked solution; I06 exposes total-minus-part procedure. Keep parallel only, separate protected stimulus.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U03-S02-M04",
+      "PHY7-U04-S11-I04",
+      "PHY7-U05-S01-D01",
+      "PHY7-U04-S10-D03"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U03-S02-M04@history-v1",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "remediation_guide_authoring_versions:7d0c285a-95d2-42f0-84f0-90ae0b1feb29",
+      "PHY7-U04-S11-I04@history-v1",
+      "item_template_remediation_guides:ebbec1e8-cc33-4bad-87f4-b308c9da3f66",
+      "remediation_guide_versions:0ffb3ac0-f43f-4f73-9adb-67c94e3fb789",
+      "PHY7-U05-S01-D01@current-v1",
+      "PHY7-U04-S10-D03@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-I06",
+      "PHY7-U05-S05-M01"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-LENGTH",
+      "PHY7-U05-S05-MC-LENGTH",
+      "PHY7-U05-S05-MC-EQUALFORCE"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-M01",
+    "candidate": "U05-B02-C29",
+    "candidateRevision": 1,
+    "specSha256": "2e065812f1e62f55d562ae55383abf9796ef5ec2e45138506303c8d5550cd763",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "support location inverse",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Infer pivot under simultaneous sum and inverse-ratio constraints; I06 supplies pivot instead. Related U04 ratio/sum records checked. No new independent outcome claimed.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U03-S06-I04",
+      "PHY7-U04-S11-M06",
+      "PHY7-U04-S12-I01",
+      "PHY7-U03-S02-M04",
+      "PHY7-U03-S08-I02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U03-S06-I04@current-v1",
+      "PHY7-U04-S11-M06@current-v1",
+      "PHY7-U04-S12-I01@current-v1",
+      "remediation_guide_versions:223ac7aa-d742-4d96-bc86-2555d53f571f",
+      "item_template_remediation_guides:e413ceb8-d129-4c48-8474-f91980072cc4",
+      "PHY7-U03-S02-M04@current-v1",
+      "PHY7-U03-S08-I02@history-v1",
+      "remediation_guide_versions:0ffb3ac0-f43f-4f73-9adb-67c94e3fb789"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-D04",
+      "PHY7-U05-S05-I06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-DIRECT",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-PAIR"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-M02",
+    "candidate": "U05-B02-C30",
+    "candidateRevision": 1,
+    "specSha256": "a7748468493b54359f3fca33140fdbf6f0af49bc76260ec07a1af44a40c94d84",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "hidden load ratio g cancels",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Missing shared factor does not prevent inference; mass-to-weight practice gives g explicitly. Cross-chapter cancellation dependency retained, not new independent reasoning.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S12-I01",
+      "PHY7-U04-S12-I07",
+      "PHY7-U04-S01-M01",
+      "PHY7-U04-S09-I05"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S12-I01@history-v1",
+      "item_template_remediation_guides:1612d5b7-3f2f-46d7-8786-e20b5fef9ac4",
+      "remediation_guide_versions:37edb41d-8c81-4c1e-8509-6c38af075e4d",
+      "PHY7-U04-S12-I07@history-v1",
+      "PHY7-U04-S01-M01@current-v1",
+      "PHY7-U04-S09-I05@current-v1",
+      "remediation_guide_authoring_versions:2ece7c8a-dcbe-433d-bacd-b0762bec52cb",
+      "item_template_remediation_guides:5e91ace2-d7cd-4f53-aa2d-00d637586109"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-MISSING",
+      "PHY7-U05-S05-MC-DIRECT",
+      "PHY7-U05-S05-MC-EQUALFORCE"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-M03",
+    "candidate": "U05-B02-C31",
+    "candidateRevision": 2,
+    "specSha256": "d93fe9dd9b858ea7f12840e3781c905937271c99ffab5069ec75202ceb157e6a",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "pivot shift and load swap",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Reworked from pure compensating-factor arithmetic to a spatial two-operation record: relocate the pivot and swap unequal endpoint loads, recomputing both force-arm associations. S04-M03 covers pivot distances only; U05 product scaling remains shared prerequisite, not full-answer exposure.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U03-S02-M04",
+      "PHY7-U04-S10-I12",
+      "PHY7-U04-S07-I06",
+      "PHY7-U04-S12-I01",
+      "PHY7-U04-S08-I10",
+      "PHY7-U04-S07-M03"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U03-S02-M04@history-v1",
+      "PHY7-U04-S10-I12@history-v1",
+      "item_template_remediation_guides:8d72c87b-5ca6-4498-a048-f3ed6a8a4768",
+      "remediation_guide_versions:7fb6e1ba-13e0-45ec-a9ee-8b7b9149332b",
+      "PHY7-U04-S07-I06@history-v1",
+      "PHY7-U04-S12-I01@history-v1",
+      "PHY7-U04-S08-I10@current-v1",
+      "PHY7-U04-S07-M03@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S04-I07",
+      "PHY7-U05-S04-M03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-CHANGE",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-CHANGE"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-M04",
+    "candidate": "U05-B02-C32",
+    "candidateRevision": 1,
+    "specSha256": "eb44617eab68ecad103e32892571e59d9146e1e6cbf7832a9383a03cc3b0bbea",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "read trial invariant then predict",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Recover an invariant from two experimental records before predicting a third; I03 gives opposite-side product directly. Guide exposure and generic table-invariant analogues retained.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U05-S01-D02",
+      "PHY7-U03-S02-M02",
+      "PHY7-U04-S11-I04",
+      "PHY7-U04-S13-I10",
+      "PHY7-U04-S11-M03",
+      "PHY7-U04-S13-I12"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:aceac553-f721-437a-ad53-154544d9d05c",
+      "item_template_remediation_guides:33234767-625c-459f-a121-66e56daab5a6",
+      "PHY7-U05-S01-D02@history-v1",
+      "PHY7-U03-S02-M02@current-v1",
+      "PHY7-U04-S11-I04@history-v1",
+      "PHY7-U04-S13-I10@history-v1",
+      "PHY7-U04-S11-M03@current-v1",
+      "PHY7-U04-S13-I12@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-I03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-DIRECT",
+      "PHY7-U05-S05-MC-CHANGE",
+      "PHY7-U05-S05-MC-PAIR"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-M05",
+    "candidate": "U05-B02-C33",
+    "candidateRevision": 1,
+    "specSha256": "2a0e0d362a6abdf313e7966ecea0ab02af6576e9ae56c339e8e5f5d9dca72c26",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "prebalance experiment control",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Source-supported preparation judgment from §35; not proof of performed apparatus skill. General fair-test/error controls in U01 remain shared dependencies.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S12-I07",
+      "PHY7-U04-S12-I01",
+      "PHY7-U04-S11-M06"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S13-I09@current-v1",
+      "item_template_remediation_guides:df762b46-5817-481c-860a-b48e25dd58ea",
+      "remediation_guide_versions:01b45f36-ecc3-4b3d-82c7-2e247129a743",
+      "item_template_remediation_guides:e413ceb8-d129-4c48-8474-f91980072cc4",
+      "remediation_guide_versions:2a5a8191-9d88-4d12-9032-a5798762f615",
+      "PHY7-U04-S12-I07@current-v1",
+      "PHY7-U04-S12-I01@current-v1",
+      "PHY7-U04-S11-M06@history-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-CONTROL",
+      "PHY7-U05-S05-MC-CONTROL",
+      "PHY7-U05-S05-MC-CONTROL"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S05-M06",
+    "candidate": "U05-B02-C34",
+    "candidateRevision": 1,
+    "specSha256": "1f976941eed0f962d7ade8a4bdd62eaeb25642c98464043c9e0fae19be467c86",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "bounded arm feasibility",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109, §38, էջ 115։",
+    "semanticJudgment": "Feasibility under two simultaneous bounds rather than direct equality; U05-S03-M05 force/power limits and U04 bound tasks are dependencies. Protected parallel, not independent capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U04-S11-D01",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-M05",
+      "PHY7-U01-S04-11D-P04",
+      "PHY7-U04-S11-M01",
+      "PHY7-U05-S02-M02",
+      "PHY7-U04-S10-D03",
+      "PHY7-U04-S03-M02",
+      "PHY7-U04-S09-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S11-D01@current-v1",
+      "PHY7-U04-S11-M01@current-v1",
+      "PHY7-U05-S02-M02@history-v1",
+      "PHY7-U05-S03-M05@current-v1",
+      "PHY7-U04-S10-D03@history-v1",
+      "PHY7-U04-S03-M02@current-v1",
+      "PHY7-U04-S09-I07@history-v1",
+      "remediation_guide_authoring_versions:769052ec-25c2-4ebf-889c-8229015f8378"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-M03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-MISSING",
+      "PHY7-U05-S05-MC-PAIR"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I01",
+    "candidate": "U05-B02-C35",
+    "candidateRevision": 1,
+    "specSha256": "be926c44671603466125fb26f759e5d3809c7ab2b743c4ac4818504ca6ed21fa",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "fixed axle not stationary wheel",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of fixed_axle_not_stationary_wheel. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U03-S02-I03",
+      "PHY7-U04-S11-M05",
+      "PHY7-U04-S11-D02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U03-S02-I03@history-v1",
+      "item_template_remediation_guides:63742d34-c286-4dcc-85b0-33b3189af2d8",
+      "remediation_guide_versions:3117c5dd-ebf6-4842-aee1-0a1ea3f6a292",
+      "remediation_guide_versions:4bb03156-7fa5-4e53-b049-27cdb2b8d79f",
+      "PHY7-U04-S11-M05@history-v1",
+      "PHY7-U03-S03-I03@current-v1",
+      "PHY7-U04-S11-D02@current-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D01",
+      "PHY7-U05-S06-I03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-AXIS",
+      "PHY7-U05-S06-MC-AXIS",
+      "PHY7-U05-S06-MC-AXIS"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I02",
+    "candidate": "U05-B02-C36",
+    "candidateRevision": 1,
+    "specSha256": "14c778de18d14daf94eafaa8ea1bcd16fe9a307d4d9ab5fcd6f8def65ff3eacd",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "fixed figure direction",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of fixed_figure_direction. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U04-S07-I06",
+      "PHY7-U04-S07-M03",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S02-I10"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S07-I06@current-v1",
+      "PHY7-U04-S07-M03@history-v1",
+      "PHY7-U05-S02-I07@history-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "PHY7-U05-S02-M03@current-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D02",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-M02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DIRECTION",
+      "PHY7-U05-S06-MC-DIRECTION",
+      "PHY7-U05-S06-MC-AXIS"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I03",
+    "candidate": "U05-B02-C37",
+    "candidateRevision": 1,
+    "specSha256": "5566b535071cebbe9166f6681bcd9d888460aebb59af22e32b8a3acaad2d98e5",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "movable axis identification",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of movable_axis_identification. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S02-I10",
+      "PHY7-U04-S10-M01",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-M03@history-v1",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "PHY7-U05-S02-I10@history-v1",
+      "PHY7-U04-S10-M01@current-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "PHY7-U05-S02-I07@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D01",
+      "PHY7-U05-S06-I01"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-AXIS",
+      "PHY7-U05-S06-MC-AXIS",
+      "PHY7-U05-S06-MC-AXIS"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I04",
+    "candidate": "U05-B02-C38",
+    "candidateRevision": 1,
+    "specSha256": "53095131ee70ff5587faceb8124544dc0da53438bec208a032140fd84875d903",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "movable half weight",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of movable_half_weight. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S01-I06",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S01-I02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-I06@history-v1",
+      "remediation_guide_authoring_versions:d28a1a70-3922-4840-8a8b-e61a1013e568",
+      "item_template_remediation_guides:0f69513f-4c43-4e89-b40d-d7799b5a825b",
+      "PHY7-U05-S02-I10@current-v1",
+      "PHY7-U05-S02-I07@history-v1",
+      "item_template_remediation_guides:372bf2f1-d266-4472-b59e-c42fc6d6d99a",
+      "PHY7-U05-S01-I02@history-v1",
+      "remediation_guide_versions:f5b38021-1e16-4be6-adfb-0e1cf3d19956"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D04",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-MOVABLE",
+      "PHY7-U05-S06-MC-MOVABLE",
+      "PHY7-U05-S06-MC-MOVABLE"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I05",
+    "candidate": "U05-B02-C39",
+    "candidateRevision": 1,
+    "specSha256": "4b520e67c8b61bd9f89073817a547fd97c558adb225124b1a1d149f442916911",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "fixed equal weight",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of fixed_equal_weight. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S02-I07",
+      "PHY7-U04-S10-I07",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S01-D01",
+      "PHY7-U04-S10-I08",
+      "PHY7-U05-S03-I11"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U04-S10-I07@current-v1",
+      "PHY7-U05-S02-I10@current-v1",
+      "PHY7-U05-S01-D01@current-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "PHY7-U04-S10-I08@history-v1",
+      "PHY7-U05-S03-I11@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D02",
+      "PHY7-U05-S06-I02",
+      "PHY7-U05-S06-M02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-FIXEDGAIN",
+      "PHY7-U05-S06-MC-FIXEDGAIN",
+      "PHY7-U05-S06-MC-FIXEDGAIN"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I06",
+    "candidate": "U05-B02-C40",
+    "candidateRevision": 1,
+    "specSha256": "3678f9251618158b86a9a588ce9abcd791569dd447d3ba82e672e6bfdbfdebef",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "movable rope travel",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of movable_rope_travel. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S01-I06",
+      "PHY7-U05-S01-I02",
+      "PHY7-U03-S02-M04",
+      "PHY7-U05-S01-M01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-I06@current-v1",
+      "item_template_remediation_guides:0f69513f-4c43-4e89-b40d-d7799b5a825b",
+      "remediation_guide_authoring_versions:d28a1a70-3922-4840-8a8b-e61a1013e568",
+      "PHY7-U05-S01-I02@history-v1",
+      "PHY7-U03-S02-M04@history-v1",
+      "PHY7-U05-S01-M01@current-v1",
+      "remediation_guide_authoring_versions:7287e408-2885-4db6-8e73-7779cf296c24",
+      "item_template_remediation_guides:b168671b-0cbc-420d-b4c3-428db864fc6b"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-DISTANCE"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I07",
+    "candidate": "U05-B02-C41",
+    "candidateRevision": 1,
+    "specSha256": "fc64b17caf81c907b135b8cd28bee315699fa1b69cfd85f51fdc7e956f947c55",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "fixed rope travel",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of fixed_rope_travel. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S01-I06",
+      "PHY7-U04-S08-I10",
+      "PHY7-U04-S10-I08",
+      "PHY7-U04-S10-D03"
+    ],
+    "currentHistoryGuideRefs": [
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "PHY7-U05-S02-I10@current-v1",
+      "PHY7-U05-S01-I06@history-v1",
+      "PHY7-U05-S02-M03@history-v1",
+      "PHY7-U04-S08-I10@history-v1",
+      "PHY7-U04-S10-I08@history-v1",
+      "PHY7-U04-S10-D03@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-DIRECTION"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I08",
+    "candidate": "U05-B02-C42",
+    "candidateRevision": 1,
+    "specSha256": "302bbe5a080ace401f94a750f1fbac12a24ad01022b27334ec5e1704f7140084",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "movable mass to effort",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of movable_mass_to_effort. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S02-I07",
+      "PHY7-U04-S10-D03",
+      "PHY7-U05-S03-I11",
+      "PHY7-U05-S01-D01",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S01-I06",
+      "PHY7-U04-S10-M01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U04-S10-D03@history-v1",
+      "PHY7-U05-S03-I11@history-v1",
+      "PHY7-U05-S01-D01@history-v1",
+      "PHY7-U05-S02-M03@current-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "PHY7-U05-S01-I06@current-v1",
+      "PHY7-U04-S10-M01@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-MASS",
+      "PHY7-U05-S06-MC-MOVABLE",
+      "PHY7-U05-S06-MC-MOVABLE"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I09",
+    "candidate": "U05-B02-C43",
+    "candidateRevision": 1,
+    "specSha256": "19912e12d28b5fa615c6d3306b4bb80cd1b56083626d16ba87d5449a43402007",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "fixed radius no gain",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of fixed_radius_no_gain. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U03-S07-D06",
+      "PHY7-U05-S01-I08",
+      "PHY7-U05-S02-I07",
+      "PHY7-U04-S05-I11",
+      "PHY7-U05-S01-D01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U03-S07-D06@history-v1",
+      "PHY7-U05-S01-I08@current-v1",
+      "PHY7-U05-S02-I07@history-v1",
+      "PHY7-U04-S05-I11@history-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "PHY7-U05-S02-M03@current-v1",
+      "PHY7-U05-S01-D01@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-FIXEDGAIN",
+      "PHY7-U05-S06-MC-FIXEDGAIN",
+      "PHY7-U05-S06-MC-FIXEDGAIN"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-I10",
+    "candidate": "U05-B02-C44",
+    "candidateRevision": 1,
+    "specSha256": "1efa897db1051a316194529aa5803c2b52cb15fac84563befce90edd843bc987",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "movable input work",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intentional practice of movable_input_work. Related measurement, force, product/ratio or mechanism prerequisites and its worked guide are exposed. No new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S03-I11",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S01-D01",
+      "PHY7-U05-S02-I01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I07@history-v1",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S03-I11@history-v1",
+      "PHY7-U05-S02-M03@history-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "PHY7-U05-S01-D01@current-v1",
+      "PHY7-U05-S02-I01@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D03",
+      "PHY7-U05-S06-M05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-WORK",
+      "PHY7-U05-S06-MC-WORK"
+    ],
+    "protectionJudgment": "Teaching-exposed practice with deliberate reinforcement and no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-D01",
+    "candidate": "U05-B02-C45",
+    "candidateRevision": 2,
+    "specSha256": "7fdc51e57e6c4f64a92afa3fa572f8809a97390a34d5f6a8ee04698d17d78590",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "two frame axle rise rim orientation",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Reworked from direct fixed-axis identification to two-frame conflicting cues: unchanged wheel-mark orientation versus changed axle height relative to floor. Fresh observation interpretation; U03 moving reference/point histories remain dependencies. All observations are stated; no missing photographs.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U03-S01-D02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U03-S01-D02@current-v1",
+      "item_template_remediation_guides:65c51711-86c1-414b-8add-397366dcf8c4",
+      "remediation_guide_authoring_versions:79d20dd9-e20b-4bab-9a4f-d80cf2bb51f5",
+      "remediation_guide_authoring_versions:3e192a6e-1837-49e9-b0b6-421d8cd5f25c",
+      "item_template_remediation_guides:688d2661-9aa6-4ecd-9ce0-262e5e0a6b88",
+      "remediation_guide_authoring_versions:88e035d4-9dfc-4e4c-a62a-4293679a4503",
+      "item_template_remediation_guides:134d1f35-a2bf-40af-a26f-64805d8c2613",
+      "remediation_guide_authoring_versions:fa063239-b231-43da-9b81-a0d1a3c9d7e9"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-I01",
+      "PHY7-U05-S06-I03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-AXIS",
+      "PHY7-U05-S06-MC-AXIS",
+      "PHY7-U05-S06-MC-DATA"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-D02",
+    "candidate": "U05-B02-C46",
+    "candidateRevision": 1,
+    "specSha256": "eb3114ee2baf9e24b6cee412ab30a3453ad0efe74e0c087212412185468c51af",
+    "bank": "diagnostic",
+    "disposition": "redundant_rework_or_omit",
+    "stimulusAndClaim": "fixed changed direction false gain",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Same complete fixed-pulley direction/no-force-gain claim is already taught by I02/I05 and guides. Student-error wording adds no fresh stimulus interpretation.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S03-I11"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I07@history-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "PHY7-U05-S02-M03@history-v1",
+      "PHY7-U05-S03-I11@history-v1",
+      "item_template_remediation_guides:4c8196dd-1b15-41da-a8a1-6c2a7cb2eff1",
+      "remediation_guide_authoring_versions:d4158eae-fa05-4dfc-9b8d-2cfbc9e0182d"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-I02",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-M02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-FIXEDGAIN",
+      "PHY7-U05-S06-MC-FIXEDGAIN",
+      "PHY7-U05-S06-MC-CONDITIONS"
+    ],
+    "protectionJudgment": "Held: complete reasoning is exposed by listed practice/guide dependency; must substantively rework or revise bank plan. No item is created.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-D03",
+    "candidate": "U05-B02-C47",
+    "candidateRevision": 1,
+    "specSha256": "0a2bfef8e8e06e5911e6a6591db50bdce8241cf9a2f34e6a2a0b81edfae8e9f9",
+    "bank": "diagnostic",
+    "disposition": "redundant_rework_or_omit",
+    "stimulusAndClaim": "wrong path work association",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Complete named-force/free-end travel association is directly taught in I10 and its guide; the wrong multiplication wrapper is insufficient stimulus change.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S01-I06",
+      "PHY7-U05-S01-I02",
+      "PHY7-U05-S01-M01",
+      "PHY7-U03-S02-M04",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S01-D01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-I06@current-v1",
+      "PHY7-U05-S01-I02@history-v1",
+      "remediation_guide_authoring_versions:aef02024-56c1-4c65-a0fd-0e81d86219fd",
+      "item_template_remediation_guides:0f69513f-4c43-4e89-b40d-d7799b5a825b",
+      "PHY7-U05-S01-M01@current-v1",
+      "PHY7-U03-S02-M04@history-v1",
+      "PHY7-U05-S02-I07@history-v1",
+      "PHY7-U05-S01-D01@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-WORK"
+    ],
+    "protectionJudgment": "Held: complete reasoning is exposed by listed practice/guide dependency; must substantively rework or revise bank plan. No item is created.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-D04",
+    "candidate": "U05-B02-C48",
+    "candidateRevision": 1,
+    "specSha256": "4d2976ea1e0202a336a78f4d89a45f2d97f050d4d58b0127a83ac79a7265a273",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "total lifted weight error",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Explicitly non-negligible moving pulley weight changes boundary of lifted system; ideal guide assumes zero pulley weight. Uses taught combined weights/force balance, no friction formula.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S02-I10",
+      "PHY7-U04-S10-D03",
+      "PHY7-U05-S03-I11",
+      "PHY7-U05-S01-I06",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I10@current-v1",
+      "PHY7-U04-S10-D03@current-v1",
+      "PHY7-U05-S03-I11@history-v1",
+      "PHY7-U05-S02-M03@current-v1",
+      "PHY7-U05-S01-I06@history-v1",
+      "PHY7-U05-S02-I07@current-v1",
+      "remediation_guide_versions:40eeb894-f684-4ff4-8a38-ca37f4e86c6b",
+      "item_template_remediation_guides:0f69513f-4c43-4e89-b40d-d7799b5a825b"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-I04",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-WEIGHT",
+      "PHY7-U05-S06-MC-WEIGHT",
+      "PHY7-U05-S06-MC-MOVABLE"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-M01",
+    "candidate": "U05-B02-C49",
+    "candidateRevision": 1,
+    "specSha256": "8edc45b1d2ac4ad93e606f45952e61c789fbe348a7f4cc14effc682d857334fb",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "infer setup from force and travel",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Reconstruct two hidden setups using paired force and travel observations; teaching tasks give apparatus first. Related U05 work equivalence and inverse inference remain dependencies.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U03-S04-M06",
+      "PHY7-U03-S07-I10",
+      "PHY7-U05-S02-M01",
+      "PHY7-U03-S04-M07"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:7f52f6f4-6849-4a06-a1ba-b7ea56e828ea",
+      "item_template_remediation_guides:39b84d2c-eb7f-4231-9cc4-85e427613085",
+      "PHY7-U03-S04-M06@history-v1",
+      "remediation_guide_authoring_versions:ddd05f87-44f2-488b-a6f9-763182a01d81",
+      "PHY7-U03-S07-I10@current-v1",
+      "PHY7-U05-S02-M01@current-v1",
+      "PHY7-U03-S04-M07@history-v1",
+      "item_template_remediation_guides:48cd82ab-f5c1-4a8e-a16c-0ce8d2bfb76d"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D04",
+      "PHY7-U05-S06-I04",
+      "PHY7-U05-S06-M06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DATA",
+      "PHY7-U05-S06-MC-FIXEDGAIN",
+      "PHY7-U05-S06-MC-MOVABLE"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-M02",
+    "candidate": "U05-B02-C50",
+    "candidateRevision": 1,
+    "specSha256": "7f0b358a8bd2f7af74f1a98bc9409a153bfa42c64618b00c3c3d7a49420e185b",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "fixed redirector no extra gain",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Trace a fully specified combined rope route and distinguish direction changer from load support; textbook §34 permits combinations, §36 each role. No general block-and-tackle formula presumed.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U04-S07-M03",
+      "PHY7-U05-S01-I06",
+      "PHY7-U03-S05-I07",
+      "PHY7-U05-S02-I07",
+      "PHY7-U04-S10-M01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S07-M03@history-v1",
+      "PHY7-U05-S02-M03@current-v1",
+      "PHY7-U04-S10-I02@history-v1",
+      "PHY7-U05-S01-I06@current-v1",
+      "PHY7-U03-S05-I07@current-v1",
+      "PHY7-U05-S02-I07@history-v1",
+      "item_template_remediation_guides:372bf2f1-d266-4472-b59e-c42fc6d6d99a",
+      "PHY7-U04-S10-M01@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D02",
+      "PHY7-U05-S06-I02",
+      "PHY7-U05-S06-I05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-COUNT",
+      "PHY7-U05-S06-MC-COUNT",
+      "PHY7-U05-S06-MC-COUNT"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-M03",
+    "candidate": "U05-B02-C51",
+    "candidateRevision": 1,
+    "specSha256": "bb3ed7673ba9a3e74ef0a0c9d01bab272cc58825b4c0960f2a316411b528b5b3",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "force and travel limits",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Intersect force and travel constraints to reject both candidate mechanisms; shared feasibility reasoning with S05-M06/U05-S03-M05 remains a form-separation dependency.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U03-S04-I06",
+      "PHY7-U05-S01-D01",
+      "PHY7-U03-S02-M04"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S03-M05@current-v1",
+      "item_template_remediation_guides:1e497249-9abc-41ab-b57d-8a393b40928d",
+      "remediation_guide_versions:3c838b28-fdf1-4aee-bec5-9440e4ea9182",
+      "PHY7-U03-S04-I06@history-v1",
+      "item_template_remediation_guides:e9c376af-5fa7-4a94-9c62-2b30a78de9bb",
+      "remediation_guide_authoring_versions:64c6d507-7010-4eb2-9199-82889f4ab8cd",
+      "PHY7-U05-S01-D01@current-v1",
+      "PHY7-U03-S02-M04@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-M06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DATA",
+      "PHY7-U05-S06-MC-DATA",
+      "PHY7-U05-S06-MC-CONDITIONS"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-M04",
+    "candidate": "U05-B02-C52",
+    "candidateRevision": 1,
+    "specSha256": "cf7ed53b3101470eeaddfe38fbcda8554080a647922f01322d8ed3b0429149c3",
+    "bank": "mastery_check",
+    "disposition": "redundant_rework_or_omit",
+    "stimulusAndClaim": "faulty log joint consistency",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "With two fields explicitly declared correct, this reduces to I06 travel doubling; the log wrapper adds no defensible demand.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "PHY7-U05-S02-M03@history-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S02-I07@current-v1",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:375ba55e-667e-4187-9278-fd31b3463309"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-I06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-MOVABLE",
+      "PHY7-U05-S06-MC-DATA",
+      "PHY7-U05-S06-MC-DISTANCE"
+    ],
+    "protectionJudgment": "Held: complete reasoning is exposed by listed practice/guide dependency; must substantively rework or revise bank plan. No item is created.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-M05",
+    "candidate": "U05-B02-C53",
+    "candidateRevision": 1,
+    "specSha256": "444f3e180e7b73feb1f1a2481e1fa37c69b94f350d502ae50d28111a5730a35d",
+    "bank": "mastery_check",
+    "disposition": "redundant_rework_or_omit",
+    "stimulusAndClaim": "equal work unequal force",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Same golden-rule compensation explanation is fully exposed by I10 and its explanation, as well as prior work-product guides. No fresh stimulus beyond changing labels.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S01-I08",
+      "PHY7-U05-S01-D01",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-I08@current-v1",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "PHY7-U05-S01-D01@history-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U05-S02-M03@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D03",
+      "PHY7-U05-S06-I10"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-WORK",
+      "PHY7-U05-S06-MC-WORK",
+      "PHY7-U05-S06-MC-WORK"
+    ],
+    "protectionJudgment": "Held: complete reasoning is exposed by listed practice/guide dependency; must substantively rework or revise bank plan. No item is created.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  },
+  {
+    "code": "PHY7-U05-S06-M06",
+    "candidate": "U05-B02-C54",
+    "candidateRevision": 1,
+    "specSha256": "ac3d21739413577460c5911dcdcb33ccb02e40c662ddd0866ba1de3167138559",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "mass constraint missing g in comparison",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §36, էջեր 109–111; պարանի ճանապարհը՝ §37, էջեր 112–113։",
+    "semanticJudgment": "Use first mechanism as an indirect weight measurement before transferring to another; direct F=P/2 practice and S05-M02 missing-g logic remain dependencies. New linked experimental stimulus.",
+    "nearestExistingCodes": [
+      "PHY7-U03-S03-I03",
+      "PHY7-U04-S10-I02",
+      "PHY7-U04-S10-I03",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S03-M05",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S03-I11"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U05-S02-M03@history-v1",
+      "PHY7-U05-S02-I10@current-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:375ba55e-667e-4187-9278-fd31b3463309",
+      "remediation_guide_versions:dedc58f4-8c84-4bf9-9a35-97834ddb1086",
+      "PHY7-U05-S03-I11@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D04",
+      "PHY7-U05-S06-I04",
+      "PHY7-U05-S06-M01"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DATA",
+      "PHY7-U05-S06-MC-MOVABLE",
+      "PHY7-U05-S06-MC-MOVABLE"
+    ],
+    "protectionJudgment": "Restricted parallel draft under the current bounded Batch 2 instruction. New stimulus interpretation is recorded; repeated taught claim/procedure does not add independent reasoning. Ordinary current-version review, SME, historical exposure, dependency-based separation and form allocation remain open.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0
+  }
+]
