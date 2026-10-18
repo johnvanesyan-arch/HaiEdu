@@ -1,5 +1,7 @@
 # Chapter V Batch 1 — comparison and staged delivery
 
+> **Subsequent disposition — 15E.2R, 2026-10-19 Asia/Yerevan:** John requested same-theme task revisions for the 17 held proposals. All 17 revised candidates are now draft-staged with 19 new definitions; Batch 1 totals 54 questions, 32 guides and 54 definitions. The original comparison and holds below remain historical, not the current queue. [Rework and fresh comparison](chapter-v-batch-01-rework-17.md).
+
 **Sprint 15E.2 · 2026-10-18 · ordinary review pending.** John’s “proceed” accepted the Chapter V plan and inactive first-batch authoring. It did not extend another chapter’s delegated-approval, protected-parallel or pilot-release exception.
 
 All **54 proposals** were drafted and assessed. **37 questions, 32 guides and 35 definitions** are staged as review drafts. **17 assessment proposals remain held**, not counted as usable capacity and not deleted from an existing bank.

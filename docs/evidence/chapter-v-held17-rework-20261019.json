@@ -1,0 +1,944 @@
+{
+  "sprint": "15E.2R",
+  "manifest": "chapter-v-20261019-held17-rework",
+  "ownerInstruction": "maybe you could keep the theme for those 17 proposals but paraphrase or change the task >",
+  "ownerInstructionAt": "2026-10-19T00:13:33+04:00",
+  "scope": "Exactly the 17 previously held Batch 1 slots; unchanged themes, substantive stimulus/task revisions. No additional slots.",
+  "authorization": "Current instruction authorizes this bounded rework using the existing protected-parallel criteria. This is a new Chapter V manifest; no Chapter IV approval/release exception is inherited.",
+  "author": "Codex primary automated author and reviewer; no subagents or independent specialist review",
+  "protocols": [
+    "haiedu-whole-skill-review-v1",
+    "haiedu-protected-parallel-pilot-v1"
+  ],
+  "corpusObservedAt": "2026-10-18T20:20:26.211409+00:00",
+  "corpusFingerprintSha256": "81a195e67cddcf97c5c966728df928122dd24dd100e0998249c1a913ac710520",
+  "corpusProof": [
+    {
+      "table": "items",
+      "rows": 894,
+      "hash": "233e0d0a953da0b974351b7625ced1a8",
+      "exact": true
+    },
+    {
+      "table": "item_options",
+      "rows": 2968,
+      "hash": "5c8989f9d484360c5f7482c7f4f1723f",
+      "exact": true
+    },
+    {
+      "table": "item_versions",
+      "rows": 779,
+      "hash": "b20aaba6a2f10c6832e063766fa9fdb2",
+      "exact": true
+    },
+    {
+      "table": "item_answer_keys",
+      "rows": 894,
+      "hash": "48891802dfadc0ce22358b16bce173ad",
+      "exact": true
+    },
+    {
+      "table": "item_families",
+      "rows": 672,
+      "hash": "243d4b1516b3e59e7984a56598178836",
+      "exact": true
+    },
+    {
+      "table": "item_templates",
+      "rows": 672,
+      "hash": "9e0b269343965cb86535162078d8501c",
+      "exact": true
+    },
+    {
+      "table": "misconceptions",
+      "rows": 802,
+      "hash": "d0022efd9015b27513217ce4646165c6",
+      "exact": true
+    },
+    {
+      "table": "skill_remediation_guides",
+      "rows": 10,
+      "hash": "3a51fc6e3a850044cd5c01d3a1919b49",
+      "exact": true
+    },
+    {
+      "table": "remediation_guide_versions",
+      "rows": 631,
+      "hash": "e9a6103e7e618a60f044fda0edead849",
+      "exact": true
+    },
+    {
+      "table": "item_misconception_mappings",
+      "rows": 2141,
+      "hash": "92658e115979f02bbb0c223727cd4306",
+      "exact": true
+    },
+    {
+      "table": "item_template_remediation_guides",
+      "rows": 316,
+      "hash": "c278115f63d2ce3563297508ffb64584",
+      "exact": true
+    },
+    {
+      "table": "remediation_guide_authoring_versions",
+      "rows": 1038,
+      "hash": "01e337a70ef0534004ee4500f9bb52e9",
+      "exact": true
+    },
+    {
+      "table": "skills",
+      "rows": 51,
+      "hash": "8ae0b3b4e40a64827f9859f3e9da9be8",
+      "exact": true
+    },
+    {
+      "table": "skill_outcomes",
+      "rows": 60,
+      "hash": "4cd3e5c236ac0819748eae0062f2c7a2",
+      "exact": true
+    },
+    {
+      "table": "assessment_forms",
+      "rows": 19,
+      "hash": "6b9c11d311a0bb6ce4fd2ee4596e0992",
+      "exact": true
+    },
+    {
+      "table": "assessment_pools",
+      "rows": 13,
+      "hash": "a538c2c8a5702df1516cb19f969bb3b4",
+      "exact": true
+    },
+    {
+      "table": "learning_outcomes",
+      "rows": 38,
+      "hash": "4fb9faf0e67d5f01ca6abee00ccbbdcb",
+      "exact": true
+    },
+    {
+      "table": "curriculum_releases",
+      "rows": 6,
+      "hash": "d4008f50da81bfd06414dc43d7ae7146",
+      "exact": true
+    },
+    {
+      "table": "assessment_form_items",
+      "rows": 323,
+      "hash": "88f00b356a7506bd11edcdbde6bf585c",
+      "exact": true
+    },
+    {
+      "table": "assessment_pool_items",
+      "rows": 861,
+      "hash": "152c378db1ca416cfcb7bd14e65697b5",
+      "exact": true
+    },
+    {
+      "table": "item_curriculum_scopes",
+      "rows": 894,
+      "hash": "361e92a8b4878072b69ee08d1efc7b40",
+      "exact": true
+    },
+    {
+      "table": "curriculum_release_skills",
+      "rows": 50,
+      "hash": "470c72713d36187e5ca2e7a328d2d172",
+      "exact": true
+    },
+    {
+      "table": "curriculum_source_documents",
+      "rows": 3,
+      "hash": "d9bcea03118cbabd2fa60ce5c6c66a76",
+      "exact": true
+    },
+    {
+      "table": "curriculum_release_gate_checks",
+      "rows": 35,
+      "hash": "816194e0cf0bee563aa7cb4fad455827",
+      "exact": true
+    },
+    {
+      "table": "curriculum_release_item_families",
+      "rows": 671,
+      "hash": "c3e45564d7a7dbe5e81645be2bcfc8e6",
+      "exact": true
+    },
+    {
+      "table": "skill_curriculum_reconciliations",
+      "rows": 50,
+      "hash": "d94686c522e99d86ba5bbd704633b6d4",
+      "exact": true
+    },
+    {
+      "table": "skill_outcome_curriculum_mappings",
+      "rows": 60,
+      "hash": "263d71da5cea991198c4f61fa9ff2461",
+      "exact": true
+    },
+    {
+      "table": "item_family_curriculum_reconciliations",
+      "rows": 672,
+      "hash": "7c0dc0841de1851191646ba087aa6bf9",
+      "exact": true
+    }
+  ],
+  "corpusInventory": {
+    "items": 894,
+    "item_options": 2968,
+    "item_versions": 779,
+    "item_answer_keys": 894,
+    "item_families": 672,
+    "item_templates": 672,
+    "misconceptions": 802,
+    "skill_remediation_guides": 10,
+    "remediation_guide_versions": 631,
+    "item_misconception_mappings": 2141,
+    "item_template_remediation_guides": 316,
+    "remediation_guide_authoring_versions": 1038,
+    "skills": 51,
+    "skill_outcomes": 60,
+    "assessment_forms": 19,
+    "assessment_pools": 13,
+    "learning_outcomes": 38,
+    "curriculum_releases": 6,
+    "assessment_form_items": 323,
+    "assessment_pool_items": 861,
+    "item_curriculum_scopes": 894,
+    "curriculum_release_skills": 50,
+    "curriculum_source_documents": 3,
+    "curriculum_release_gate_checks": 35,
+    "curriculum_release_item_families": 671,
+    "skill_curriculum_reconciliations": 50,
+    "skill_outcome_curriculum_mappings": 60,
+    "item_family_curriculum_reconciliations": 672
+  },
+  "comparisonMethod": "Complete current/history/guide corpus retained and re-fingerprinted. All 22 changed tables since the prior frozen corpus reconstructed from exact canonical new rows; all previous rows unchanged. Primary-agent semantic inspection of relevant full questions, options, keys, explanations, current/historical guide examples and cross-chapter analogues; lexical retrieval only retrieves neighbors. Unchanged unrelated content uses the previous verified scope inventory. All 136 rework pairs indexed, substantive shared groups explicitly noted. All 37 existing Batch 1 items/guides included in current corpus. No automated semantic detector or independent reliability claim.",
+  "proposals": 17,
+  "stagingCandidates": 17,
+  "diagnostic": 7,
+  "mastery": 10,
+  "newDefinitions": 19,
+  "newGuides": 0,
+  "newReasoningCoverageClaimed": 0,
+  "qualifiedFormCapacity": 0,
+  "discardedPrivateDraft": "S02-D01 first rework used compensating conversion errors; U03-S06-M05 was a strong complete error-audit match, so the candidate was rewritten again to erased-unit reconstruction before staging.",
+  "chapterTarget": 152,
+  "batch1AfterProposedStaging": 54,
+  "remainingPlannedBatches": 98,
+  "gates": [
+    "ordinary question and definition approval",
+    "independent specialist/exposure qualification",
+    "Chapter V assessment/practical contract",
+    "disjoint form/pool qualification",
+    "Chapter V release authorization"
+  ],
+  "baseSourceCommit": "561d0bffb402086d2cc2c32b96ff4fffbd4c9f0f",
+  "chapterReadback": {
+    "guides": 32,
+    "release": {
+      "id": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+      "status": "draft",
+      "activatedAt": null
+    },
+    "questions": 54,
+    "bankCounts": {
+      "practice": 32,
+      "diagnostic": 8,
+      "mastery_check": 14
+    },
+    "observedAt": "2026-10-18T20:31:55.249437+00:00",
+    "definitions": 54,
+    "draftGuides": 32,
+    "draftQuestions": 54,
+    "draftDefinitions": 54,
+    "qaPassingCurrentVersion": 54
+  },
+  "committedExactReadbackAt": "2026-10-18T20:31:16.396661+00:00",
+  "itemQa": {
+    "passed": 17,
+    "errors": 0,
+    "warnings": 0,
+    "method": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "evaluatorVersion": 11,
+    "sourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "runKey": "15E2R-held17-20261019",
+    "savedRows": 17
+  },
+  "preservation": {
+    "method": "59-table before/after inventory; rollback and committed transaction guards compared every pre-existing row hash. QA insert separately guarded all59 fingerprints and added17 system technical-QA records only.",
+    "tables": [
+      {
+        "table": "academic_mastery_policy_activation",
+        "before": 1,
+        "after": 1,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "academic_mastery_policy_versions",
+        "before": 1,
+        "after": 1,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "assessment_blueprint_items",
+        "before": 1255,
+        "after": 1255,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "assessment_blueprints",
+        "before": 19,
+        "after": 19,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "assessment_form_items",
+        "before": 323,
+        "after": 323,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "assessment_forms",
+        "before": 19,
+        "after": 19,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "assessment_policy_bindings",
+        "before": 12,
+        "after": 12,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "assessment_pool_curriculum_reconciliations",
+        "before": 12,
+        "after": 12,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "assessment_pool_items",
+        "before": 861,
+        "after": 861,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "assessment_pools",
+        "before": 13,
+        "after": 13,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "attempts",
+        "before": 42,
+        "after": 42,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "chapter_mastery_states",
+        "before": 1,
+        "after": 1,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "chapter_review_cycles",
+        "before": 0,
+        "after": 0,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "chapter_review_item_exposures",
+        "before": 0,
+        "after": 0,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "chapter_review_requirements",
+        "before": 1,
+        "after": 1,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "chapter_review_sessions",
+        "before": 0,
+        "after": 0,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "curriculum_reconciliation_runs",
+        "before": 5,
+        "after": 5,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "curriculum_release_gate_checks",
+        "before": 35,
+        "after": 35,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "curriculum_release_item_families",
+        "before": 671,
+        "after": 688,
+        "expectedDelta": 17,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "curriculum_release_outcomes",
+        "before": 38,
+        "after": 38,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "curriculum_release_reconciliations",
+        "before": 5,
+        "after": 5,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "curriculum_release_skills",
+        "before": 50,
+        "after": 50,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "curriculum_release_units",
+        "before": 6,
+        "after": 6,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "curriculum_releases",
+        "before": 6,
+        "after": 6,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "curriculum_source_documents",
+        "before": 3,
+        "after": 3,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_answer_keys",
+        "before": 894,
+        "after": 911,
+        "expectedDelta": 17,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_curriculum_scopes",
+        "before": 894,
+        "after": 911,
+        "expectedDelta": 17,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_families",
+        "before": 672,
+        "after": 689,
+        "expectedDelta": 17,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_family_curriculum_reconciliations",
+        "before": 672,
+        "after": 689,
+        "expectedDelta": 17,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_misconception_mappings",
+        "before": 2141,
+        "after": 2192,
+        "expectedDelta": 51,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_options",
+        "before": 2968,
+        "after": 3036,
+        "expectedDelta": 68,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_qa_runs",
+        "before": 1180,
+        "after": 1197,
+        "expectedDelta": 17,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_reviews",
+        "before": 1138,
+        "after": 1138,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_template_remediation_guides",
+        "before": 316,
+        "after": 316,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_templates",
+        "before": 672,
+        "after": 689,
+        "expectedDelta": 17,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "item_versions",
+        "before": 779,
+        "after": 796,
+        "expectedDelta": 17,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "items",
+        "before": 894,
+        "after": 911,
+        "expectedDelta": 17,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "learning_model_configurations",
+        "before": 4,
+        "after": 4,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "learning_model_runtime_bindings",
+        "before": 4,
+        "after": 4,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "learning_outcome_normative_mappings",
+        "before": 38,
+        "after": 38,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "learning_outcomes",
+        "before": 38,
+        "after": 38,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "learning_session_items",
+        "before": 96,
+        "after": 96,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "learning_sessions",
+        "before": 8,
+        "after": 8,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "mastery_check_attempts",
+        "before": 1,
+        "after": 1,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "misconception_review_events",
+        "before": 760,
+        "after": 760,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "misconceptions",
+        "before": 802,
+        "after": 821,
+        "expectedDelta": 19,
+        "fingerprintUnchanged": false,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "recommendation_events",
+        "before": 824,
+        "after": 824,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "remediation_events",
+        "before": 6,
+        "after": 6,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "remediation_guide_authoring_versions",
+        "before": 1038,
+        "after": 1038,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "remediation_guide_versions",
+        "before": 631,
+        "after": 631,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "runtime_builds",
+        "before": 26,
+        "after": 26,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "skill_curriculum_reconciliations",
+        "before": 50,
+        "after": 50,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "skill_outcome_curriculum_mappings",
+        "before": 60,
+        "after": 60,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "skill_outcomes",
+        "before": 60,
+        "after": 60,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "skill_prerequisites",
+        "before": 17,
+        "after": 17,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "skill_remediation_guides",
+        "before": 10,
+        "after": 10,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "skills",
+        "before": 51,
+        "after": 51,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "student_item_exposure_events",
+        "before": 44,
+        "after": 44,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      },
+      {
+        "table": "student_skill_mastery_by_release",
+        "before": 13,
+        "after": 13,
+        "expectedDelta": 0,
+        "fingerprintUnchanged": true,
+        "priorRowsPreserved": true
+      }
+    ],
+    "unchangedTables": 47,
+    "allPriorRowsPreserved": true
+  },
+  "pairInventoryCount": 136,
+  "redactedMatrix": "docs/evidence/chapter-v-held17-redacted-matrix-20261019.json",
+  "itemEvidence": [
+    {
+      "code": "PHY7-U05-S01-D02",
+      "slot": "U05-B01-C10",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "9cbbf2367c456dc649f633c0c51dd1c3e7d45b2c646e3017e4fd45306e3aba57",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-M03",
+      "slot": "U05-B01-C13",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "acdc393c256fd470bbddb47ea97e6cb5c96990fa446aed3473dc10ad4a295eeb",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-M04",
+      "slot": "U05-B01-C14",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "5b09ac6036eac7950dd273e580d44d7c5f6392355ceba34fcb13d5be3d3bea5a",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-D01",
+      "slot": "U05-B01-C25",
+      "candidateRevision": 3,
+      "firstStagedVersion": 1,
+      "specSha256": "f5e770e89382fc7da1eb970a56b9dd79004752e5b628c125ed4527ecc6decefa",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-D02",
+      "slot": "U05-B01-C26",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "31b70d5e76a1d32276bbbfaabec8ca7028f987576f7e5e357df5a5b147fe84d8",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-M03",
+      "slot": "U05-B01-C29",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "8fd18de35aa6cfd104bc0edd29d57566ab24bfb089e87b51bdf97b4d2cc5a630",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-M04",
+      "slot": "U05-B01-C30",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "274d2ba4ab600589487eab75dca7b37bea88f37e3c05f11e4ac0569c19e4fa12",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-D01",
+      "slot": "U05-B01-C43",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "f47e0b6888931c9171b131757850a45f7dfcf765e14c55dea557fd2798f8449d",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-D02",
+      "slot": "U05-B01-C44",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "f26b501b2f56abd7d3a63fbbcef82abd6085afb70632490fe78483e17979fd6c",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-D03",
+      "slot": "U05-B01-C45",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "4fcfc068a4b58f18ee6b0da95de2b84fa99d9fe26ce5e8027b351568831e3f91",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-D04",
+      "slot": "U05-B01-C46",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "c1a28be81cc9dd29ecec25ac91338b39a2ccaac9dfbfc45467619e87bd1b1a8c",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-M01",
+      "slot": "U05-B01-C47",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "36259c05d99ceb3fc9f4748a1bc2635c73883f5c671773505ce60bd2dda29897",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-M02",
+      "slot": "U05-B01-C48",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "e8da295e0e7f65eaca5026599bc63f751a76ed4eb5839cb96f025aea72a8e744",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-M03",
+      "slot": "U05-B01-C49",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "5af8d3961987dcb668c181314947102d654b18284179bf934b6e831ce873d8b4",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-M04",
+      "slot": "U05-B01-C50",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "85ae9f5dedc511efd62755414fb5d5d5389656b4ea049c91eb8980eb03ef41d2",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-M05",
+      "slot": "U05-B01-C51",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "926ef79ad7b137db543f1e27419e2aec600fb7b16096398ee1cacc30c6a1a756",
+      "disposition": "protected_parallel_assessment_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-M06",
+      "slot": "U05-B01-C52",
+      "candidateRevision": 2,
+      "firstStagedVersion": 1,
+      "specSha256": "85009908ba1d8fc298df155494e75b8cce5923fc1e472355fddd18a4c39fb45f",
+      "disposition": "protected_parallel_assessment_variant"
+    }
+  ],
+  "privateEvidence": "HaiEdu-Chapter-V-Held17-Rework-Evidence.zip; full protected text/keys and canonical corpus remain private; not an additional reviewer task.",
+  "deploymentScope": "Content-only draft additions plus documentation; no application, schema, Edge, guide or asset changes. No fresh browser acceptance claimed.",
+  "sourceHashes": {
+    "textbook": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "programme": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478"
+  },
+  "closure": "Repository merge/required CI and source-commit Notion readback are recorded in the private closure receipt after merge; not falsely pre-claimed here.",
+  "privateEvidenceBinding": {
+    "filename": "HaiEdu-Chapter-V-Held17-Rework-Evidence.zip",
+    "libraryFileId": "libfile_31cbda519ac08191b5bfbf52ec624c09",
+    "savedAuthoringVersion": 0,
+    "archiveBytes": 6462431,
+    "archiveSha256": "7bebeddc288c34d4dac3aef64075a09bd9a446d15da3d8be95699bf5cb5dac0f",
+    "restrictedComparisonSha256": "688701fbcfc3079c4b9a153fd5b773426e7f6e09157cd68bbec62d39346c7483",
+    "members": [
+      {
+        "member": "comparison.json",
+        "bytes": 252358,
+        "sha256": "688701fbcfc3079c4b9a153fd5b773426e7f6e09157cd68bbec62d39346c7483"
+      },
+      {
+        "member": "specs.json",
+        "bytes": 194464,
+        "sha256": "415463b60d416440da540629338dbee260e0d9d86c85d88705c18ebbb12eca7d"
+      },
+      {
+        "member": "first-rework-drafts.json",
+        "bytes": 147272,
+        "sha256": "f1f69237c8531d8996af83684ab3abd79142df8b53a9c6d7afc2c624ceb4b03e"
+      },
+      {
+        "member": "comparison-corpus.json",
+        "bytes": 19112982,
+        "sha256": "81a195e67cddcf97c5c966728df928122dd24dd100e0998249c1a913ac710520"
+      },
+      {
+        "member": "redacted-matrix.json",
+        "bytes": 63251,
+        "sha256": "12983faedc257b8bbb94fda8cd6c7add8c0c930bd238036cd0b3f62985d90e18"
+      },
+      {
+        "member": "qa-results.json",
+        "bytes": 40414,
+        "sha256": "b29fdd35c4ae8eaee5e8b5f6f786bed9b04fdd465a9c8212407a16c022b661e1"
+      },
+      {
+        "member": "preservation-qa.json",
+        "bytes": 11505,
+        "sha256": "6e12383d6bc16606d3ceda50b3a6a9d2ca5d8841e94edecc2cebaa1946677811"
+      },
+      {
+        "member": "committed-readback-catalogue.json",
+        "bytes": 306803,
+        "sha256": "39c634ead2482033757ec7eb27dbc09301187f2f4dc6aff149aaf5bb15945a55"
+      }
+    ],
+    "versionRule": "This binding identifies the saved pre-merge authoring archive version 0. A later closure-only archive version may add merge/CI/Notion receipts; these bound comparison/specification/source/readback members must remain byte-identical. No public protected prompt/key disclosure."
+  }
+}
