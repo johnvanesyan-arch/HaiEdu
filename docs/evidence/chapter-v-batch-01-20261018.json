@@ -36,9 +36,11 @@
     "fingerprintMatchedTables": 28,
     "withinBatchPairs": 1431,
     "corpusSha256": "b59c34ea7d66ddfb84f782f193aba36b13171d7e54e497e3743f70069aebfba0",
-    "restrictedComparisonSha256": "1a0ee4d734f26ece07ba3a21782d82d2ee4a08b9e24395c45170c1027022b886",
+    "restrictedComparisonSha256": "d134061d8bbd4737b4993d6361d81a8faf854dd7bfacdd6f5460909c6130fe66",
     "restrictedArchive": "HaiEdu-Chapter-V-Batch-01-Evidence.zip",
-    "method": "Full frozen 28-table current/history/guide corpus; exhaustive current/history retrieval with char n-gram ranking used only to retrieve neighbors; primary-agent source and semantic inspection of relevant complete records, candidate solutions, guide examples and explicit cross-chapter collisions. All 1431 within-batch pairs indexed conservatively by claims/dependencies. No claim that ranking or matrix automatically establishes semantic validity. Unchanged unrelated particle/thermal/reference-frame scopes reuse the prior verified source/skill inventory; discovered thermometer range and experiment comparators included."
+    "method": "Full frozen 28-table current/history/guide corpus; exhaustive current/history retrieval with char n-gram ranking used only to retrieve neighbors; primary-agent source and semantic inspection of relevant complete records, candidate solutions, guide examples and explicit cross-chapter collisions. All 1431 within-batch pairs indexed conservatively by claims/dependencies. No claim that ranking or matrix automatically establishes semantic validity. Unchanged unrelated particle/thermal/reference-frame scopes reuse the prior verified source/skill inventory; discovered thermometer range and experiment comparators included.",
+    "committedRedactedMatrix": "docs/evidence/chapter-v-batch-01-redacted-matrix-20261018.json",
+    "redactedMatrixSha256": "3aa34f55c56430d200a6827310a028e3d4f8fc579bcbbb6f18c0ba6983bc225c"
   },
   "qa": {
     "questionsPassed": 37,
@@ -422,7 +424,7 @@
     {
       "code": "PHY7-U05-S03-M01",
       "bank": "mastery_check",
-      "specSha256": "ed7452ce5b69a9067b74e44b1254937cc22b3d70e4641fcb41f4a16c87808c38",
+      "specSha256": "3720d2f407f8914767dcd119eb68529a22165ef3b17bcb4ebed8c7efbe1974d1",
       "disposition": "redundant_rework_or_omit"
     },
     {

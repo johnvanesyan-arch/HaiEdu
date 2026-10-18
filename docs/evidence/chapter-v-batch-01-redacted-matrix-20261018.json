@@ -1,0 +1,2278 @@
+{
+  "schema": "haiedu-redacted-semantic-comparison-v1",
+  "sprint": "15E.2",
+  "author": "Codex primary author/reviewer; not independent SME",
+  "corpusSha256": "b59c34ea7d66ddfb84f782f193aba36b13171d7e54e497e3743f70069aebfba0",
+  "restrictedComparisonSha256": "d134061d8bbd4737b4993d6361d81a8faf854dd7bfacdd6f5460909c6130fe66",
+  "redaction": "Actual numerical/stimulus records, full stems/options, answer keys and worked solutions remain restricted. This committed matrix exposes substantive models, inference profiles, source/outcome locators, nearest current/history/guide/batch references, specific practice benefits, dispositions and protection decisions. It does not replace the exact restricted record or establish item independence.",
+  "rows": [
+    {
+      "code": "PHY7-U05-S01-I01",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "5a7c0516a34b1f39c3e9e987385f970254566420390504cbc58c6b2f90834a1e",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Pushing a stationary object",
+      "solutionAndInferenceProfileRedacted": "Apply the zero-path work condition; distinguish exertion from displacement.",
+      "specificPracticeBenefitOrDispositionReason": "Rehearse the zero-path condition against force-only and effort distractors.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S11-I04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S11-I04",
+          "guideId": "ebbec1e8-cc33-4bad-87f4-b308c9da3f66",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I05",
+        "PHY7-U05-S01-M02"
+      ],
+      "distractorDomainsRedacted": [
+        "effort",
+        "force",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-I02",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "c12fead3c7a5f04e51348e0b586aeeb4d97802c9102545b1a897009c22ce4ebb",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Pulling an object with a stated aligned constant force",
+      "solutionAndInferenceProfileRedacted": "Identify the two measurements required by the work product.",
+      "specificPracticeBenefitOrDispositionReason": "Practise selecting force and path instead of time or motion alone.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S09-I03",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I01",
+        "PHY7-U05-S01-M01"
+      ],
+      "distractorDomainsRedacted": [
+        "force",
+        "motion",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-I03",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "5dd25b7fe4f9720f22b54e08f9237f3e5223bb7af4be4cb6487d85011e0ea0c7",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Naming the SI work unit",
+      "solutionAndInferenceProfileRedacted": "Distinguish a physical quantity from adjacent quantities and units.",
+      "specificPracticeBenefitOrDispositionReason": "Establish work-unit vocabulary before calculation.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S06-I04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I04",
+        "PHY7-U05-S01-D02",
+        "PHY7-U05-S09-I01"
+      ],
+      "distractorDomainsRedacted": [
+        "unit"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-I04",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "07198b55a91348d66649c8e8a2c9d5ef43ef53a79fbbb41a5c7ac23e68d232fd",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Interpreting the physical meaning of one joule",
+      "solutionAndInferenceProfileRedacted": "Check force, aligned distance and distance unit together.",
+      "specificPracticeBenefitOrDispositionReason": "Translate the unit definition into a concrete force-distance situation.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S06-I04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U01-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I03",
+        "PHY7-U05-S01-D02"
+      ],
+      "distractorDomainsRedacted": [
+        "motion",
+        "unitmeaning"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-I05",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "65bdb19b5f4b68a99fc51989a97e3a755a270eac62b1d8b359dbb409e2b0a2df",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Holding a load at fixed position",
+      "solutionAndInferenceProfileRedacted": "Check the load path rather than the holder’s fatigue.",
+      "specificPracticeBenefitOrDispositionReason": "Intentional stationary-work reinforcement in a holding context; not independent coverage.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S06-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U04-S11-I04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S06-I01",
+          "guideId": "f27470d6-27a9-4585-be56-f56873ec7155",
+          "guideVersion": 2
+        },
+        {
+          "itemCode": "PHY7-U04-S11-I04",
+          "guideId": "ebbec1e8-cc33-4bad-87f4-b308c9da3f66",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I01",
+        "PHY7-U05-S01-M02"
+      ],
+      "distractorDomainsRedacted": [
+        "effort",
+        "time",
+        "unitmeaning"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-I06",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "47e78bf502b589172bbf9b55f98b67916d23fc8867f611c21d94f763211c3651",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Object motion after a named pulling force ceases",
+      "solutionAndInferenceProfileRedacted": "Keep work attribution attached to the specified force.",
+      "specificPracticeBenefitOrDispositionReason": "Rehearse that motion alone does not establish work by an absent force.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S05-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U04-S13-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S05-I01",
+          "guideId": "3a7bdb8c-02b0-45ec-935b-1f4945206ba9",
+          "guideVersion": 2
+        },
+        {
+          "itemCode": "PHY7-U04-S13-I01",
+          "guideId": "c992e53a-8817-4270-bc3c-42e488571cff",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I01",
+        "PHY7-U05-S01-D01"
+      ],
+      "distractorDomainsRedacted": [
+        "motion",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-I07",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "00f957d97e2e8f207514851304357453c2f8974a4acbb4c38415a6ffb8a34dbc",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Conditions for the simple work formula",
+      "solutionAndInferenceProfileRedacted": "Check force constancy and alignment before using total path.",
+      "specificPracticeBenefitOrDispositionReason": "Practise the model boundary without introducing signed or angular work.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S13-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U03-S05-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S13-I10",
+          "guideId": "408aee16-f0da-4e7e-9280-b959951e2773",
+          "guideVersion": 2
+        },
+        {
+          "itemCode": "PHY7-U03-S05-I01",
+          "guideId": "3a7bdb8c-02b0-45ec-935b-1f4945206ba9",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-M03",
+        "PHY7-U05-S02-I01"
+      ],
+      "distractorDomainsRedacted": [
+        "direction",
+        "motion",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-I08",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "6b502aec6b4fc3c1f261d13e60e4a5e80d58da4aed36e45508dd4fee2c93f4d1",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Same pulling force over different paths",
+      "solutionAndInferenceProfileRedacted": "Compare the path factor while keeping force fixed.",
+      "specificPracticeBenefitOrDispositionReason": "Practise direct proportionality in work; shared product reasoning remains exposed.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I06",
+        "PHY7-U05-S01-M04"
+      ],
+      "distractorDomainsRedacted": [
+        "force",
+        "missing",
+        "multiply"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-D01",
+      "state": "staged_draft_v1",
+      "bank": "diagnostic",
+      "candidateSpecSha256": "6e2b9c6a5967521fafb2d06563ef6dfdfe4a2cb88d7d8308b2811949b2d925a7",
+      "disposition": "new_reasoning_coverage",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Work attribution in balanced-force motion",
+      "solutionAndInferenceProfileRedacted": "Separate an individual force from the resultant when evaluating work.",
+      "specificPracticeBenefitOrDispositionReason": "New physical attribution distinction; prior balance tasks do not ask for individual-force work.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S13-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U04-S11-I04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S13-I01",
+          "guideId": "c992e53a-8817-4270-bc3c-42e488571cff",
+          "guideVersion": 2
+        },
+        {
+          "itemCode": "PHY7-U04-S11-I04",
+          "guideId": "ebbec1e8-cc33-4bad-87f4-b308c9da3f66",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I06",
+        "PHY7-U05-S02-D02"
+      ],
+      "distractorDomainsRedacted": [
+        "attribution",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Restricted draft only: nearest complete scenarios and worked procedures reviewed; shared prerequisites retained. Allocation, form separation, historical-exposure review and SME qualification remain open.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-D02",
+      "state": "held_unstaged",
+      "bank": "diagnostic",
+      "candidateSpecSha256": "c3915670d72eed4130c83190a44266793bd46b9907d809ce239db8a610a104e2",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Auditing a work-unit definition",
+      "solutionAndInferenceProfileRedacted": "Distinguish the dimensions used in the definition.",
+      "specificPracticeBenefitOrDispositionReason": "Held: the complete teaching claim is already supplied by work-unit practice and its guide.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S06-I04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I03",
+        "PHY7-U05-S01-I04"
+      ],
+      "distractorDomainsRedacted": [
+        "force",
+        "unit",
+        "unitmeaning"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-M01",
+      "state": "staged_draft_v1",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "5ae252b36c29f3c2366348a3e90ca3511ac325fb4e54dd23bdcace7e6036e2eb",
+      "disposition": "new_reasoning_coverage",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Sufficiency of evidence for a claimed work value",
+      "solutionAndInferenceProfileRedacted": "Test whether supplied force conditions justify the work claim; reject irrelevant substitutes.",
+      "specificPracticeBenefitOrDispositionReason": "Evidence sufficiency adds force alignment/constancy to exposed inverse calculation; dependence remains.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S13-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U01-S09-I03",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S13-I10",
+          "guideId": "408aee16-f0da-4e7e-9280-b959951e2773",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I02",
+        "PHY7-U05-S02-I04"
+      ],
+      "distractorDomainsRedacted": [
+        "missing",
+        "motion",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Restricted draft only: nearest complete scenarios and worked procedures reviewed; shared prerequisites retained. Allocation, form separation, historical-exposure review and SME qualification remain open.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-M02",
+      "state": "staged_draft_v1",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "cb6be6cb71c001dfa628110c24d85f4cb830b52cb1581d7567975d72fe183780",
+      "disposition": "new_reasoning_coverage",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Comparing an interrupted action with an uninterrupted action",
+      "solutionAndInferenceProfileRedacted": "Evaluate the contributions of the separate action stages to total work.",
+      "specificPracticeBenefitOrDispositionReason": "Retained physical distinction from a prior pause-time task: elapsed-time accounting does not determine work accounting.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-D01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U04-S11-M03",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I01",
+        "PHY7-U05-S01-I05",
+        "PHY7-U05-S02-M03"
+      ],
+      "distractorDomainsRedacted": [
+        "partwhole",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Restricted draft only: nearest complete scenarios and worked procedures reviewed; shared prerequisites retained. Allocation, form separation, historical-exposure review and SME qualification remain open.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-M03",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "4a5cef4740ce1451c5d6d2934f121985d6957c32fa5d8e9680154ab7a0b295e9",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Two records with different completeness of direction data",
+      "solutionAndInferenceProfileRedacted": "Check applicability of the work model before calculating.",
+      "specificPracticeBenefitOrDispositionReason": "Held: repeats the model-condition inference and routine product taught in Practice.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S13-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S13-I10",
+          "guideId": "408aee16-f0da-4e7e-9280-b959951e2773",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I07",
+        "PHY7-U05-S02-I01"
+      ],
+      "distractorDomainsRedacted": [
+        "direction",
+        "missing"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S01-M04",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "fcf1d9b1c9688ea28c59691a7b10763da91c36a2c47cf41273b0fc0ce5bd6e3c",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Inferring an unreported quantity from equal work and force",
+      "solutionAndInferenceProfileRedacted": "Use the inverse relationship and equality constraints.",
+      "specificPracticeBenefitOrDispositionReason": "Held: inverse-distance reasoning is already completely exposed in Practice.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I05",
+        "PHY7-U05-S02-M04"
+      ],
+      "distractorDomainsRedacted": [
+        "missing",
+        "multiply",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I01",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "103b744846829e12216074522dd673c1ad0f9cffb0529dc946e15ef78b1dd514",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Work from aligned constant force and path",
+      "solutionAndInferenceProfileRedacted": "Use the direct work product with consistent units.",
+      "specificPracticeBenefitOrDispositionReason": "Baseline procedural fluency; not an independent assessment variant.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I02",
+        "PHY7-U05-S02-I02",
+        "PHY7-U05-S02-I03"
+      ],
+      "distractorDomainsRedacted": [
+        "operation"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I02",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "849a8c7634c849d13bb9d1061aec2c03b3596c42f9d605829433fd140a356336",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Work with a non-SI distance unit",
+      "solutionAndInferenceProfileRedacted": "Convert distance, then evaluate the force-distance product.",
+      "specificPracticeBenefitOrDispositionReason": "Target distance-unit mistakes before multiplication.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I01",
+        "PHY7-U05-S02-D01"
+      ],
+      "distractorDomainsRedacted": [
+        "lengthunit",
+        "operation"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I03",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "a9c3a20f3686153c770571072f84cadc67570ed5f5601403abd1d663fd29f883",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Work with a prefixed force unit",
+      "solutionAndInferenceProfileRedacted": "Convert force, then evaluate the product.",
+      "specificPracticeBenefitOrDispositionReason": "Intentional unit-prefix practice; shares the conversion/product procedure with I02.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U04-S06-I03",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S06-I03",
+          "guideId": "b519ffdc-3c31-477f-83ba-1f34e6cf94e0",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I01",
+        "PHY7-U05-S02-I02"
+      ],
+      "distractorDomainsRedacted": [
+        "operation",
+        "prefix"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I04",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "4f14ac23f5c8ca77b585e9e2416c85cfb017f3fac443d8453725f9e6b89b4cb5",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Unknown aligned force from work and path",
+      "solutionAndInferenceProfileRedacted": "Rearrange the work relationship for force.",
+      "specificPracticeBenefitOrDispositionReason": "Practise inverse-force calculation and check operation order.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I12",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I12",
+          "guideId": "2da2305e-a1a7-43be-a89a-fd387f95b4d1",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I05",
+        "PHY7-U05-S02-M04",
+        "PHY7-U05-S01-M01"
+      ],
+      "distractorDomainsRedacted": [
+        "inverse"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I05",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "8f856a7cc33d8c320f86ad100be740519503cd31f10d88934c1ad3ba639f5baa",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Unknown path from force and work",
+      "solutionAndInferenceProfileRedacted": "Rearrange the work relationship for path.",
+      "specificPracticeBenefitOrDispositionReason": "Practise inverse-distance calculation; do not count inverse forms as independent outcomes.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I12",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I12",
+          "guideId": "2da2305e-a1a7-43be-a89a-fd387f95b4d1",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I04",
+        "PHY7-U05-S01-M04"
+      ],
+      "distractorDomainsRedacted": [
+        "inverse"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I06",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "98883e739d68899d4822ae7d978494f77e6fa74f363ea91b0d02cc5dc8ba0cc5",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Comparing different force-path combinations",
+      "solutionAndInferenceProfileRedacted": "Compare both products rather than one factor.",
+      "specificPracticeBenefitOrDispositionReason": "Rehearse compensating changes and equal-work cases.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-I08",
+        "PHY7-U05-S02-M04"
+      ],
+      "distractorDomainsRedacted": [
+        "onefactor"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I07",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "aa9d8c6de9076c7e0cac727efe61aeaf8ebe5f68d7752d9ef6cc26598f09d5eb",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Uniform vertical lifting",
+      "solutionAndInferenceProfileRedacted": "Determine the lifting force from mass and supplied g, then calculate work.",
+      "specificPracticeBenefitOrDispositionReason": "Integrate the taught gravity relation with named lifting-force work.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S06-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U04-S06-I03",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S06-I01",
+          "guideId": "f27470d6-27a9-4585-be56-f56873ec7155",
+          "guideVersion": 2
+        },
+        {
+          "itemCode": "PHY7-U04-S06-I03",
+          "guideId": "b519ffdc-3c31-477f-83ba-1f34e6cf94e0",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I10",
+        "PHY7-U05-S03-I11",
+        "PHY7-U05-S02-M03"
+      ],
+      "distractorDomainsRedacted": [
+        "massforce",
+        "onefactor",
+        "operation"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I08",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "d97139d0ec0f4d0f0533434bd56c22aa4570a86b85ff9f964030df58a66c9a57",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Successive paths with different stated forces",
+      "solutionAndInferenceProfileRedacted": "Calculate each segment’s work and combine the contributions.",
+      "specificPracticeBenefitOrDispositionReason": "Practise piecewise accounting without treating one force as constant over the whole path.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-D01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I01",
+        "PHY7-U05-S02-M03"
+      ],
+      "distractorDomainsRedacted": [
+        "stages"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I09",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "bffe3764255f4330ed12c403db9d3c3ef40e28e6a3d3f93678c8e7b213c95dcd",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Uniform motion specified by speed and duration",
+      "solutionAndInferenceProfileRedacted": "Find path from the motion record, then calculate the named force’s work.",
+      "specificPracticeBenefitOrDispositionReason": "Integrate an exposed motion procedure into work calculation.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U03-S07-I12",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        },
+        {
+          "itemCode": "PHY7-U03-S07-I12",
+          "guideId": "2da2305e-a1a7-43be-a89a-fd387f95b4d1",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I01",
+        "PHY7-U05-S03-I09"
+      ],
+      "distractorDomainsRedacted": [
+        "speed"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-I10",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "242e539e7ffa70e5f9bf815fed83177399baa6d708f6df6063fa2973c0a32b25",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Lifting between two height references",
+      "solutionAndInferenceProfileRedacted": "Find actual vertical rise, determine lifting force and work.",
+      "specificPracticeBenefitOrDispositionReason": "Distinguish reference height from the path of this lift.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S06-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U01-S10-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S06-I01",
+          "guideId": "f27470d6-27a9-4585-be56-f56873ec7155",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I07",
+        "PHY7-U05-S02-M03"
+      ],
+      "distractorDomainsRedacted": [
+        "height",
+        "massforce"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-D01",
+      "state": "held_unstaged",
+      "bank": "diagnostic",
+      "candidateSpecSha256": "7e242f42b3a3c471edac5adec1608b10b29d32215deca9f22c6a25dc03d24d54",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Repairing a distance-unit calculation error",
+      "solutionAndInferenceProfileRedacted": "Locate the unit conversion before applying the work formula.",
+      "specificPracticeBenefitOrDispositionReason": "Held: identical conversion/product inference to the corresponding Practice and guide.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I02"
+      ],
+      "distractorDomainsRedacted": [
+        "lengthunit",
+        "operation"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-D02",
+      "state": "held_unstaged",
+      "bank": "diagnostic",
+      "candidateSpecSha256": "b628b141507f47aebb5f11b08c0453f3694397b0447904e55aa9e34146868b78",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Calculation using the wrong force in balanced motion",
+      "solutionAndInferenceProfileRedacted": "Choose the named force rather than a combined force.",
+      "specificPracticeBenefitOrDispositionReason": "Held: duplicates the retained force-attribution Diagnostic, with routine arithmetic added.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S13-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S13-I01",
+          "guideId": "c992e53a-8817-4270-bc3c-42e488571cff",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-D01",
+        "PHY7-U05-S02-I01"
+      ],
+      "distractorDomainsRedacted": [
+        "forcechoice",
+        "operation"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-M01",
+      "state": "staged_draft_v1",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "932f5b52e1d1d92887623d60f5311ae9ad9b57c182d581a9409af4be19ed30dc",
+      "disposition": "new_reasoning_coverage",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Selecting a controlled work comparison",
+      "solutionAndInferenceProfileRedacted": "Select a test that isolates the requested factor while preserving the control.",
+      "specificPracticeBenefitOrDispositionReason": "Retained planning demand: existing experiment/observation and two-factor calculation tasks do not select this work-specific control.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S04-11D-P04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": []
+        },
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I06",
+        "PHY7-U05-S01-I08"
+      ],
+      "distractorDomainsRedacted": [
+        "control"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Restricted draft only: nearest complete scenarios and worked procedures reviewed; shared prerequisites retained. Allocation, form separation, historical-exposure review and SME qualification remain open.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-M02",
+      "state": "staged_draft_v1",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "7ee225a7885dac08294b275ba8214667263b61394f20cc3eee009511986d62f9",
+      "disposition": "new_reasoning_coverage",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Work inference from a bounded measurement",
+      "solutionAndInferenceProfileRedacted": "Propagate supplied measurement bounds through the taught relation without inventing a point value.",
+      "specificPracticeBenefitOrDispositionReason": "Retained bounds-to-work inference; older thermometer tasks compare overlapping ranges rather than transform both bounds.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U02-S09-M08",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U01-S09-I03",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I01"
+      ],
+      "distractorDomainsRedacted": [
+        "precision"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Restricted draft only: nearest complete scenarios and worked procedures reviewed; shared prerequisites retained. Allocation, form separation, historical-exposure review and SME qualification remain open.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-M03",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "aa2ce0829070c18f8fed57bd362c2e82566a09c08e86ac1274b96d9c8cca9946",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Successive lifts with an intervening stationary stage",
+      "solutionAndInferenceProfileRedacted": "Determine stage contributions and combine work.",
+      "specificPracticeBenefitOrDispositionReason": "Held: repeats retained stage-accounting inference plus already exposed lifting substitutions.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S06-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U03-S07-D01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S06-I01",
+          "guideId": "f27470d6-27a9-4585-be56-f56873ec7155",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S01-M02",
+        "PHY7-U05-S02-I07",
+        "PHY7-U05-S02-I08"
+      ],
+      "distractorDomainsRedacted": [
+        "stages",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S02-M04",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "5157b0f633e0089c451f456f5e7a4289007ce6dc2ad116e7c7d8e758a687b620",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §32, էջեր 99–101, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Force comparison under equal-work constraints",
+      "solutionAndInferenceProfileRedacted": "Use inverse quantities and compare the resulting forces.",
+      "specificPracticeBenefitOrDispositionReason": "Held: complete inverse/compensation reasoning is taught by Practice.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I04",
+        "PHY7-U05-S02-I06",
+        "PHY7-U05-S01-M04"
+      ],
+      "distractorDomainsRedacted": [
+        "inverse",
+        "onefactor"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I01",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "74fe4871163bc60fa0e404cfc2863f6e45a8c25e4b8740e61922eaae431d4a88",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Same work completed in different durations",
+      "solutionAndInferenceProfileRedacted": "Compare work rate while holding total work fixed.",
+      "specificPracticeBenefitOrDispositionReason": "Establish qualitative power meaning; prior speed comparisons remain a mathematical prerequisite.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I12",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I12",
+          "guideId": "2da2305e-a1a7-43be-a89a-fd387f95b4d1",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I03",
+        "PHY7-U05-S03-I08"
+      ],
+      "distractorDomainsRedacted": [
+        "meaning",
+        "time"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I02",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "c623265fe84466e81ecc9d4fe98a54468ac44332a8e05d7bd26f6f7ef27b40c6",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Meaning of a stated constant power",
+      "solutionAndInferenceProfileRedacted": "Interpret power as work per time unit.",
+      "specificPracticeBenefitOrDispositionReason": "Practise watt meaning without confusing total work, force or speed.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S06-I04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I06",
+        "PHY7-U05-S03-D03"
+      ],
+      "distractorDomainsRedacted": [
+        "meaning"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I03",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "8336e7471110368b3052969d945f80b9c9651fbcc23c0fde10d196bd04899bd2",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Average power from interval totals",
+      "solutionAndInferenceProfileRedacted": "Divide corresponding work by duration.",
+      "specificPracticeBenefitOrDispositionReason": "Baseline power-calculation fluency.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I12",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I12",
+          "guideId": "2da2305e-a1a7-43be-a89a-fd387f95b4d1",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I04",
+        "PHY7-U05-S03-I08",
+        "PHY7-U05-S03-D02"
+      ],
+      "distractorDomainsRedacted": [
+        "operation"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I04",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "13dda59330506c3b27c87123671bd8757f8cd216d2a4131be237e7140bb70fe9",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Power with duration in minutes",
+      "solutionAndInferenceProfileRedacted": "Convert time, then form the rate.",
+      "specificPracticeBenefitOrDispositionReason": "Practise time conversion rather than confuse per-minute and per-second rates.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U01-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I06",
+          "guideId": "548684cc-7d93-4b10-b500-1484e270a081",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I03"
+      ],
+      "distractorDomainsRedacted": [
+        "operation",
+        "timeunit"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I05",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "0fb27be4ed738d9324d43f4de73dd5ebe65fef293b3949f32e213a8280216942",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Conversion of a power prefix",
+      "solutionAndInferenceProfileRedacted": "Apply the stated SI prefix relation.",
+      "specificPracticeBenefitOrDispositionReason": "Reinforce power-unit vocabulary; the generic conversion procedure is already exposed.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I03",
+        "PHY7-U05-S03-I02"
+      ],
+      "distractorDomainsRedacted": [
+        "prefix"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I06",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "2532e37218ca37e08d3ac4aa530d158cc4f93e8ef61e306ebbd1afc66e2c5797",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Work over a stated interval at constant power",
+      "solutionAndInferenceProfileRedacted": "Use power and duration to calculate total work.",
+      "specificPracticeBenefitOrDispositionReason": "Practise the inverse form of the power relationship with constancy stated.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I02",
+        "PHY7-U05-S03-I07",
+        "PHY7-U05-S03-M04"
+      ],
+      "distractorDomainsRedacted": [
+        "inverse"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I07",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "cb68812d9d95de274d50b73879e954c2902cdd998f3c05aaa19215649cbb5bad",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Duration for a task at constant power",
+      "solutionAndInferenceProfileRedacted": "Use required work and constant rate to determine time.",
+      "specificPracticeBenefitOrDispositionReason": "Rehearse inverse-time calculation before more constrained tasks.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I06",
+          "guideId": "548684cc-7d93-4b10-b500-1484e270a081",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I06",
+        "PHY7-U05-S03-M02"
+      ],
+      "distractorDomainsRedacted": [
+        "inverse"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I08",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "f169c3ce76b2e1a6e5e1b82b5a232197d39d4b05666303f816e2f50dfdcd6378",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Ranking devices with different work and duration",
+      "solutionAndInferenceProfileRedacted": "Calculate both rates before comparing.",
+      "specificPracticeBenefitOrDispositionReason": "Target one-variable-only comparisons; not independent from other ratio procedures.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I12",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I12",
+          "guideId": "2da2305e-a1a7-43be-a89a-fd387f95b4d1",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I01",
+        "PHY7-U05-S03-D01",
+        "PHY7-U05-S03-D04"
+      ],
+      "distractorDomainsRedacted": [
+        "meaning",
+        "time",
+        "work"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I09",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "eea6fd03e883721323e387a34a801b8799f9b43fb6fe84f32a049102d8384c04",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Power of a named force in uniform motion",
+      "solutionAndInferenceProfileRedacted": "Check the aligned-force model, then use force and speed.",
+      "specificPracticeBenefitOrDispositionReason": "Practise the textbook’s force-speed expression within its stated conditions.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S05-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U04-S13-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S05-I01",
+          "guideId": "3a7bdb8c-02b0-45ec-935b-1f4945206ba9",
+          "guideVersion": 2
+        },
+        {
+          "itemCode": "PHY7-U04-S13-I01",
+          "guideId": "c992e53a-8817-4270-bc3c-42e488571cff",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I09",
+        "PHY7-U05-S03-I12",
+        "PHY7-U05-S03-M05"
+      ],
+      "distractorDomainsRedacted": [
+        "forcevelocity"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I10",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "ced27f41dd967a566453365b0728cefd17f8d4b8a0021d508228392fce1a7cb1",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "The published textbook work-time graph",
+      "solutionAndInferenceProfileRedacted": "Read matching work/time coordinates and interpret the graph.",
+      "specificPracticeBenefitOrDispositionReason": "Deliberately source-exposed graph-reading Practice; never protected stimulus capacity.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S08-M01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I03",
+        "PHY7-U05-S03-M03"
+      ],
+      "distractorDomainsRedacted": [
+        "graph",
+        "operation"
+      ],
+      "illustration": "Exact public textbook graph; teaching-exposed Practice only.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I11",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "97164106d6df0356d51b9627adf2908eb27f5ba9b4a7893df493eca00ca2731c",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Power during a uniform lift",
+      "solutionAndInferenceProfileRedacted": "Determine lifting work and relate it to the lift duration.",
+      "specificPracticeBenefitOrDispositionReason": "Combine previously taught lifting work and power; mass-to-force errors get a dedicated definition.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S06-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S06-I01",
+          "guideId": "f27470d6-27a9-4585-be56-f56873ec7155",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I07",
+        "PHY7-U05-S03-I03",
+        "PHY7-U05-S03-M06"
+      ],
+      "distractorDomainsRedacted": [
+        "massforce",
+        "meaning",
+        "operation"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-I12",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "2c4781dede321b4c3adfb5a3e9cfeb2a6af4359f5a5f633d51f60c61c5e4df66",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Fixed positive power with a changed pulling force",
+      "solutionAndInferenceProfileRedacted": "Use the force-speed constraint to compare required speeds.",
+      "specificPracticeBenefitOrDispositionReason": "Intentional inverse-factor practice in the taught power model.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I09",
+        "PHY7-U05-S03-M05"
+      ],
+      "distractorDomainsRedacted": [
+        "forcevelocity"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-D01",
+      "state": "held_unstaged",
+      "bank": "diagnostic",
+      "candidateSpecSha256": "d71f3bbd819b58f0f93eb13448c62d5efd99600e93af15a117fbe1dbad1782e5",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "A power claim from work totals alone",
+      "solutionAndInferenceProfileRedacted": "Evaluate whether the necessary rate data are supplied.",
+      "specificPracticeBenefitOrDispositionReason": "Held: complete work-versus-rate contrast is already exposed by Practice.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I12",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I12",
+          "guideId": "2da2305e-a1a7-43be-a89a-fd387f95b4d1",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I08",
+        "PHY7-U05-S03-I01"
+      ],
+      "distractorDomainsRedacted": [
+        "missing",
+        "work"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-D02",
+      "state": "held_unstaged",
+      "bank": "diagnostic",
+      "candidateSpecSha256": "73e54d66605bf1c89f29d1cd3c1d30e8bedfaa1779cd88c4becc92ea803a2cd2",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Power calculation from offset clock readings",
+      "solutionAndInferenceProfileRedacted": "Match the work interval to elapsed time, then calculate the rate.",
+      "specificPracticeBenefitOrDispositionReason": "Held: the complete clock-difference/rate procedure is exposed in Chapter III; a power label is not enough novelty.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S08-M03",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U03-S08-M01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I03",
+        "PHY7-U05-S03-M03"
+      ],
+      "distractorDomainsRedacted": [
+        "interval",
+        "operation"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-D03",
+      "state": "held_unstaged",
+      "bank": "diagnostic",
+      "candidateSpecSha256": "71e595b5807cb0734cff4c909df91d52491a7fe5db91d1890fff316a55d4d22b",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "What an interval total can establish about a rate",
+      "solutionAndInferenceProfileRedacted": "Distinguish interval-average evidence from a stronger claim about subintervals.",
+      "specificPracticeBenefitOrDispositionReason": "Held: Chapter III already exposes the same average-versus-constant inference.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S04-I02",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U03-S04-M10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S04-I02",
+          "guideId": "e9c376af-5fa7-4a94-9c62-2b30a78de9bb",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I02",
+        "PHY7-U05-S03-I03"
+      ],
+      "distractorDomainsRedacted": [
+        "rate"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-D04",
+      "state": "held_unstaged",
+      "bank": "diagnostic",
+      "candidateSpecSha256": "871422c2fb60484e05406ad91836c6f97e1ad32365ff37a028cd6cabea8aa033",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Joint change of work and duration",
+      "solutionAndInferenceProfileRedacted": "Compare both factors in the rate relationship.",
+      "specificPracticeBenefitOrDispositionReason": "Held: scaling/ratio inference is already taught in Practice and prior rate tasks.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I10",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I10",
+          "guideId": "39b84d2c-eb7f-4231-9cc4-85e427613085",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I08",
+        "PHY7-U05-S03-M04"
+      ],
+      "distractorDomainsRedacted": [
+        "operation",
+        "scaling",
+        "work"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-M01",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "3720d2f407f8914767dcd119eb68529a22165ef3b17bcb4ebed8c7efbe1974d1",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Combining intervals of unequal duration",
+      "solutionAndInferenceProfileRedacted": "Relate the total numerator to the total denominator instead of averaging separate rates without weights.",
+      "specificPracticeBenefitOrDispositionReason": "Conservative hold: combined-total accounting is exposed; the unequal-rate trap needs additional-demand review rather than an unsupported claim of exact duplication.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I11",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U03-S07-M09",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I11",
+          "guideId": "bdb2e5fc-fbf9-4fe5-aaa5-59de0a7903e3",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S02-I08",
+        "PHY7-U05-S03-I03",
+        "PHY7-U05-S03-I08"
+      ],
+      "distractorDomainsRedacted": [
+        "average"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-M02",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "28b0dc41f5b03d8a4e99b4dd4680ef3e932b81fc226f55ed81082e4162e4ea43",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Selecting devices under a completion-time limit",
+      "solutionAndInferenceProfileRedacted": "Determine each duration and apply the same feasibility boundary.",
+      "specificPracticeBenefitOrDispositionReason": "Held: prior deadline/rate Practice supplies the complete solution architecture.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U03-S07-D04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I06",
+          "guideId": "548684cc-7d93-4b10-b500-1484e270a081",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I07",
+        "PHY7-U05-S03-M05"
+      ],
+      "distractorDomainsRedacted": [
+        "inverse"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-M03",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "7f805ef970bf6302259cd545421b2ee4e9a50956fecddd85a6dd15c39386d9d8",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Power from a subsection of cumulative records",
+      "solutionAndInferenceProfileRedacted": "Associate interval differences before forming the rate.",
+      "specificPracticeBenefitOrDispositionReason": "Held: existing position/clock tasks already expose the complete two-offset procedure.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S08-M01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        },
+        {
+          "code": "PHY7-U04-S05-M05",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I10",
+        "PHY7-U05-S03-D02"
+      ],
+      "distractorDomainsRedacted": [
+        "interval"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-M04",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "20e5d77fab7e7cbb77c91f74084590c56b867741390d2c35709d1156f4d11737",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Comparing power order and total-work order",
+      "solutionAndInferenceProfileRedacted": "Keep the rate and its accumulated total distinct.",
+      "specificPracticeBenefitOrDispositionReason": "Held: complete product/rate contrast is already taught by Practice; reversing the response demand is insufficient.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I12",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I12",
+          "guideId": "2da2305e-a1a7-43be-a89a-fd387f95b4d1",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I06",
+        "PHY7-U05-S03-I08"
+      ],
+      "distractorDomainsRedacted": [
+        "meaning",
+        "work"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-M05",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "8e792d2adeb2fc53a114c18b7567a72dac65a4052b67ceaa4de90efa7437c80d",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "A required motion compared with a device capacity",
+      "solutionAndInferenceProfileRedacted": "Calculate the model’s power demand and test the given constraint.",
+      "specificPracticeBenefitOrDispositionReason": "Held: combines the fully exposed force-speed product with another proposed threshold task.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U03-S07-I06",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U03-S07-I06",
+          "guideId": "548684cc-7d93-4b10-b500-1484e270a081",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I09",
+        "PHY7-U05-S03-M02"
+      ],
+      "distractorDomainsRedacted": [
+        "forcevelocity",
+        "unit"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S03-M06",
+      "state": "held_unstaged",
+      "bank": "mastery_check",
+      "candidateSpecSha256": "03b163663b75a49f0e48fd09d8e8bbade614b6abd518e1411cf19b0de614bdd4",
+      "disposition": "redundant_rework_or_omit",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104, §38, էջեր 114–115։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Պարտադիր 1(1)",
+      "scenarioModelRedacted": "Comparing lift power when a single load factor changes",
+      "solutionAndInferenceProfileRedacted": "Use proportionality with shared conditions.",
+      "specificPracticeBenefitOrDispositionReason": "Held: near-equivalent to the public textbook p.104 question and the lifting-power guide.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U04-S06-I01",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [
+        {
+          "itemCode": "PHY7-U04-S06-I01",
+          "guideId": "f27470d6-27a9-4585-be56-f56873ec7155",
+          "guideVersion": 2
+        }
+      ],
+      "nearestWithinBatch": [
+        "PHY7-U05-S03-I11"
+      ],
+      "distractorDomainsRedacted": [
+        "missing",
+        "scaling"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Not staged. Repeated complete inference/procedure or source-exposed task. Requires rework or an explicit bounded bank-plan decision, with unchanged source/stimulus/protection criteria. Not automatically eligible for protected-parallel use.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S09-I01",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "8a9ab38d9a822ceab2bf51985929df3f5680fdf50391b9af698ab745b3e964a0",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104 (հզորության իմաստը). ձիաուժը՝ պաշտոնական ծրագրի Թեմա 5, լրացուցիչ վերջնարդյունք 1։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Լրացուցիչ (1)",
+      "scenarioModelRedacted": "Recognizing a horsepower label",
+      "solutionAndInferenceProfileRedacted": "Associate the named unit with its physical quantity.",
+      "specificPracticeBenefitOrDispositionReason": "Optional unit recognition; no conversion factor or required assessment gate.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S06-I04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S09-I02",
+        "PHY7-U05-S03-I02"
+      ],
+      "distractorDomainsRedacted": [
+        "force",
+        "speed",
+        "work"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    },
+    {
+      "code": "PHY7-U05-S09-I02",
+      "state": "staged_draft_v1",
+      "bank": "practice",
+      "candidateSpecSha256": "1b08202c7a660bfb6b3f6396170f2630f4fe320cc79ebd5d78bc1066ae1d0570",
+      "disposition": "intentional_practice_variant",
+      "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §33, էջեր 102–104 (հզորության իմաստը). ձիաուժը՝ պաշտոնական ծրագրի Թեմա 5, լրացուցիչ վերջնարդյունք 1։",
+      "programmeOutcome": "7-րդ դասարան / Թեմա 5 / Վերջնարդյունքներ / Լրացուցիչ (1)",
+      "scenarioModelRedacted": "Repairing a quantity/unit heading mismatch",
+      "solutionAndInferenceProfileRedacted": "Check that the quantity heading matches the stated unit.",
+      "specificPracticeBenefitOrDispositionReason": "Intentional optional reinforcement of I01; not independent coverage.",
+      "nearestExisting": [
+        {
+          "code": "PHY7-U01-S06-I04",
+          "currentVersion": 1,
+          "status": "published",
+          "historicalVersionsIncluded": [
+            1
+          ]
+        }
+      ],
+      "nearestGuideSources": [],
+      "nearestWithinBatch": [
+        "PHY7-U05-S09-I01",
+        "PHY7-U05-S03-I05"
+      ],
+      "distractorDomainsRedacted": [
+        "force",
+        "speed",
+        "work"
+      ],
+      "illustration": "All observations, directions and measurements needed are stated in words; no unseen diagram or apparatus reading is required.",
+      "protectionDecision": "Teaching-exposed practice; guide and textbook dependencies intentional.",
+      "independentFormCapacityClaim": false
+    }
+  ]
+}
