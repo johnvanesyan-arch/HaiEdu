@@ -1,0 +1,489 @@
+{
+  "schema": "haiedu-authoring-delivery-evidence-v1",
+  "sprint": "15E.2",
+  "observedAt": "2026-10-18T19:36:45.386691+00:00",
+  "sourceBaseCommit": "409ebd82ab33d76e1c96471320797e780a4aa059",
+  "ownerAuthoringAt": "2026-10-18T23:12:24+04:00",
+  "scope": "Chapter V inactive foundation and Batch 1; no learner release",
+  "foundation": {
+    "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364",
+    "reconciliationId": "a5958cd1-0d6d-5486-99fb-f44ae4f83421",
+    "releaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324"
+  },
+  "counts": {
+    "skills": 10,
+    "mandatoryOutcomes": 4,
+    "additionalOutcomes": 2,
+    "proposals": 54,
+    "stagedQuestions": 37,
+    "practice": 32,
+    "diagnostic": 1,
+    "mastery": 4,
+    "guides": 32,
+    "definitions": 35,
+    "heldDiagnostic": 7,
+    "heldMastery": 10,
+    "ordinaryApprovals": 0,
+    "qualifiedAssessmentItems": 0
+  },
+  "comparison": {
+    "corpusObservedAt": "2026-10-18T19:14:10.958919+00:00",
+    "currentItems": 857,
+    "immutableVersions": 742,
+    "currentTemplateGuides": 284,
+    "runtimeGuideVersions": 599,
+    "authoringGuideVersions": 1006,
+    "fingerprintMatchedTables": 28,
+    "withinBatchPairs": 1431,
+    "corpusSha256": "b59c34ea7d66ddfb84f782f193aba36b13171d7e54e497e3743f70069aebfba0",
+    "restrictedComparisonSha256": "d134061d8bbd4737b4993d6361d81a8faf854dd7bfacdd6f5460909c6130fe66",
+    "restrictedArchive": "HaiEdu-Chapter-V-Batch-01-Evidence.zip",
+    "method": "Full frozen 28-table current/history/guide corpus; exhaustive current/history retrieval with char n-gram ranking used only to retrieve neighbors; primary-agent source and semantic inspection of relevant complete records, candidate solutions, guide examples and explicit cross-chapter collisions. All 1431 within-batch pairs indexed conservatively by claims/dependencies. No claim that ranking or matrix automatically establishes semantic validity. Unchanged unrelated particle/thermal/reference-frame scopes reuse the prior verified source/skill inventory; discovered thermometer range and experiment comparators included.",
+    "committedRedactedMatrix": "docs/evidence/chapter-v-batch-01-redacted-matrix-20261018.json",
+    "redactedMatrixSha256": "3aa34f55c56430d200a6827310a028e3d4f8fc579bcbbb6f18c0ba6983bc225c"
+  },
+  "qa": {
+    "questionsPassed": 37,
+    "guidesPassed": 32,
+    "errors": 0,
+    "warnings": 0,
+    "method": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "itemEvaluatorSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "guideValidatorSha256": "fa20227213a9acbe49ddedcbafa22551e1c8362ecd7bdce62f8d584181e04f8c",
+    "savedQaRows": 37,
+    "foundationGuardedTables": 63,
+    "contentGuardedTables": 59,
+    "existingRowsPreserved": true,
+    "unchangedFinalTableFingerprints": 31
+  },
+  "candidateManifest": [
+    {
+      "code": "PHY7-U05-S01-I01",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "5a7c0516a34b1f39c3e9e987385f970254566420390504cbc58c6b2f90834a1e",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-I02",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "c12fead3c7a5f04e51348e0b586aeeb4d97802c9102545b1a897009c22ce4ebb",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-I03",
+      "bank": "practice",
+      "candidateRevision": 2,
+      "version": 1,
+      "specSha256": "5dd25b7fe4f9720f22b54e08f9237f3e5223bb7af4be4cb6487d85011e0ea0c7",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-I04",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "07198b55a91348d66649c8e8a2c9d5ef43ef53a79fbbb41a5c7ac23e68d232fd",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-I05",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "65bdb19b5f4b68a99fc51989a97e3a755a270eac62b1d8b359dbb409e2b0a2df",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-I06",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "47e78bf502b589172bbf9b55f98b67916d23fc8867f611c21d94f763211c3651",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-I07",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "00f957d97e2e8f207514851304357453c2f8974a4acbb4c38415a6ffb8a34dbc",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-I08",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "6b502aec6b4fc3c1f261d13e60e4a5e80d58da4aed36e45508dd4fee2c93f4d1",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S01-D01",
+      "bank": "diagnostic",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "6e2b9c6a5967521fafb2d06563ef6dfdfe4a2cb88d7d8308b2811949b2d925a7",
+      "disposition": "new_reasoning_coverage"
+    },
+    {
+      "code": "PHY7-U05-S01-M01",
+      "bank": "mastery_check",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "5ae252b36c29f3c2366348a3e90ca3511ac325fb4e54dd23bdcace7e6036e2eb",
+      "disposition": "new_reasoning_coverage"
+    },
+    {
+      "code": "PHY7-U05-S01-M02",
+      "bank": "mastery_check",
+      "candidateRevision": 2,
+      "version": 1,
+      "specSha256": "cb6be6cb71c001dfa628110c24d85f4cb830b52cb1581d7567975d72fe183780",
+      "disposition": "new_reasoning_coverage"
+    },
+    {
+      "code": "PHY7-U05-S02-I01",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "103b744846829e12216074522dd673c1ad0f9cffb0529dc946e15ef78b1dd514",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-I02",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "849a8c7634c849d13bb9d1061aec2c03b3596c42f9d605829433fd140a356336",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-I03",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "a9c3a20f3686153c770571072f84cadc67570ed5f5601403abd1d663fd29f883",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-I04",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "4f14ac23f5c8ca77b585e9e2416c85cfb017f3fac443d8453725f9e6b89b4cb5",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-I05",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "8f856a7cc33d8c320f86ad100be740519503cd31f10d88934c1ad3ba639f5baa",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-I06",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "98883e739d68899d4822ae7d978494f77e6fa74f363ea91b0d02cc5dc8ba0cc5",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-I07",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "aa9d8c6de9076c7e0cac727efe61aeaf8ebe5f68d7752d9ef6cc26598f09d5eb",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-I08",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "d97139d0ec0f4d0f0533434bd56c22aa4570a86b85ff9f964030df58a66c9a57",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-I09",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "bffe3764255f4330ed12c403db9d3c3ef40e28e6a3d3f93678c8e7b213c95dcd",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-I10",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "242e539e7ffa70e5f9bf815fed83177399baa6d708f6df6063fa2973c0a32b25",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S02-M01",
+      "bank": "mastery_check",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "932f5b52e1d1d92887623d60f5311ae9ad9b57c182d581a9409af4be19ed30dc",
+      "disposition": "new_reasoning_coverage"
+    },
+    {
+      "code": "PHY7-U05-S02-M02",
+      "bank": "mastery_check",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "7ee225a7885dac08294b275ba8214667263b61394f20cc3eee009511986d62f9",
+      "disposition": "new_reasoning_coverage"
+    },
+    {
+      "code": "PHY7-U05-S03-I01",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "74fe4871163bc60fa0e404cfc2863f6e45a8c25e4b8740e61922eaae431d4a88",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I02",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "c623265fe84466e81ecc9d4fe98a54468ac44332a8e05d7bd26f6f7ef27b40c6",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I03",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "8336e7471110368b3052969d945f80b9c9651fbcc23c0fde10d196bd04899bd2",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I04",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "13dda59330506c3b27c87123671bd8757f8cd216d2a4131be237e7140bb70fe9",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I05",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "0fb27be4ed738d9324d43f4de73dd5ebe65fef293b3949f32e213a8280216942",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I06",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "2532e37218ca37e08d3ac4aa530d158cc4f93e8ef61e306ebbd1afc66e2c5797",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I07",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "cb68812d9d95de274d50b73879e954c2902cdd998f3c05aaa19215649cbb5bad",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I08",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "f169c3ce76b2e1a6e5e1b82b5a232197d39d4b05666303f816e2f50dfdcd6378",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I09",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "eea6fd03e883721323e387a34a801b8799f9b43fb6fe84f32a049102d8384c04",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I10",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "ced27f41dd967a566453365b0728cefd17f8d4b8a0021d508228392fce1a7cb1",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I11",
+      "bank": "practice",
+      "candidateRevision": 2,
+      "version": 1,
+      "specSha256": "97164106d6df0356d51b9627adf2908eb27f5ba9b4a7893df493eca00ca2731c",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S03-I12",
+      "bank": "practice",
+      "candidateRevision": 2,
+      "version": 1,
+      "specSha256": "2c4781dede321b4c3adfb5a3e9cfeb2a6af4359f5a5f633d51f60c61c5e4df66",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S09-I01",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "8a9ab38d9a822ceab2bf51985929df3f5680fdf50391b9af698ab745b3e964a0",
+      "disposition": "intentional_practice_variant"
+    },
+    {
+      "code": "PHY7-U05-S09-I02",
+      "bank": "practice",
+      "candidateRevision": 1,
+      "version": 1,
+      "specSha256": "1b08202c7a660bfb6b3f6396170f2630f4fe320cc79ebd5d78bc1066ae1d0570",
+      "disposition": "intentional_practice_variant"
+    }
+  ],
+  "heldManifest": [
+    {
+      "code": "PHY7-U05-S01-D02",
+      "bank": "diagnostic",
+      "specSha256": "c3915670d72eed4130c83190a44266793bd46b9907d809ce239db8a610a104e2",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S01-M03",
+      "bank": "mastery_check",
+      "specSha256": "4a5cef4740ce1451c5d6d2934f121985d6957c32fa5d8e9680154ab7a0b295e9",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S01-M04",
+      "bank": "mastery_check",
+      "specSha256": "fcf1d9b1c9688ea28c59691a7b10763da91c36a2c47cf41273b0fc0ce5bd6e3c",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S02-D01",
+      "bank": "diagnostic",
+      "specSha256": "7e242f42b3a3c471edac5adec1608b10b29d32215deca9f22c6a25dc03d24d54",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S02-D02",
+      "bank": "diagnostic",
+      "specSha256": "b628b141507f47aebb5f11b08c0453f3694397b0447904e55aa9e34146868b78",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S02-M03",
+      "bank": "mastery_check",
+      "specSha256": "aa2ce0829070c18f8fed57bd362c2e82566a09c08e86ac1274b96d9c8cca9946",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S02-M04",
+      "bank": "mastery_check",
+      "specSha256": "5157b0f633e0089c451f456f5e7a4289007ce6dc2ad116e7c7d8e758a687b620",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-D01",
+      "bank": "diagnostic",
+      "specSha256": "d71f3bbd819b58f0f93eb13448c62d5efd99600e93af15a117fbe1dbad1782e5",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-D02",
+      "bank": "diagnostic",
+      "specSha256": "73e54d66605bf1c89f29d1cd3c1d30e8bedfaa1779cd88c4becc92ea803a2cd2",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-D03",
+      "bank": "diagnostic",
+      "specSha256": "71e595b5807cb0734cff4c909df91d52491a7fe5db91d1890fff316a55d4d22b",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-D04",
+      "bank": "diagnostic",
+      "specSha256": "871422c2fb60484e05406ad91836c6f97e1ad32365ff37a028cd6cabea8aa033",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-M01",
+      "bank": "mastery_check",
+      "specSha256": "3720d2f407f8914767dcd119eb68529a22165ef3b17bcb4ebed8c7efbe1974d1",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-M02",
+      "bank": "mastery_check",
+      "specSha256": "28b0dc41f5b03d8a4e99b4dd4680ef3e932b81fc226f55ed81082e4162e4ea43",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-M03",
+      "bank": "mastery_check",
+      "specSha256": "7f805ef970bf6302259cd545421b2ee4e9a50956fecddd85a6dd15c39386d9d8",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-M04",
+      "bank": "mastery_check",
+      "specSha256": "20e5d77fab7e7cbb77c91f74084590c56b867741390d2c35709d1156f4d11737",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-M05",
+      "bank": "mastery_check",
+      "specSha256": "8e792d2adeb2fc53a114c18b7567a72dac65a4052b67ceaa4de90efa7437c80d",
+      "disposition": "redundant_rework_or_omit"
+    },
+    {
+      "code": "PHY7-U05-S03-M06",
+      "bank": "mastery_check",
+      "specSha256": "03b163663b75a49f0e48fd09d8e8bbade614b6abd518e1411cf19b0de614bdd4",
+      "disposition": "redundant_rework_or_omit"
+    }
+  ],
+  "sourceHashes": {
+    "textbook": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "programme": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478"
+  },
+  "asset": {
+    "path": "assets/textbook/physics7-2023/p104-work-time-graph.png",
+    "printedPage": 104,
+    "source": "Exact textbook graph, unchanged labels and scales",
+    "sha256": "d55bdf2138ccc07981f7d696a0ce67942fd3add7360ce8e2f280d50bce2381c2",
+    "visualInspection": "336×228 source crop: all labels, axes and endpoints legible at phone-column width",
+    "exposure": "public Practice only",
+    "productionHttpVerification": "post-merge closure step, not established by staging QA"
+  },
+  "gates": [
+    "ordinary exact-version question/guide/definition review",
+    "bank-plan decision on assessment shortfall",
+    "independent SME/exposure qualification",
+    "chapter assessment/practical contract",
+    "form/pool allocation",
+    "Chapter V release authorization"
+  ],
+  "authorizationLimits": [
+    "No prior question, approval or learner row modified.",
+    "No Chapter V allocation, approval, prerequisites, model binding, pass threshold, session length or release authorized.",
+    "17 unqualified proposals preserve the numerical shortfall; no silent assessment-plan reduction.",
+    "Two optional horsepower questions are practice only; no memorized conversion factor.",
+    "Performed laboratory tasks remain outstanding."
+  ]
+}

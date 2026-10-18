@@ -1,5 +1,7 @@
 # Chapter V map — «Աշխատանք և հզորություն»
 
+> **Execution update — 15E.2, 2026-10-18:** John accepted this plan. The inactive foundation and 37 Batch 1 drafts (32 Practice/1 Diagnostic/4 Mastery), 32 guides and 35 definitions are staged. Seventeen assessment proposals remain held; ordinary review and the bank-plan decision are open. The preparation-time zero-write observations below remain historical. [Current delivery](chapter-v-batch-01-comparison.md).
+
 **Sprint 15E.1 · 2026-10-18 · Preparation complete; proposed plan awaiting owner acceptance.** The proposal is **10 skills, 152 questions in three large batches, and two separately tracked laboratory activities**. This is subject-aware content planning. No content has been staged or approved and no database, shared-core, API or learner-runtime change is included. The [project status register](project-status.md) remains authoritative.
 
 ## Source scope
@@ -175,4 +177,4 @@ Before authoring/deployment, freeze the full applicable current, draft, archived
 
 Priority related scopes: Chapter I S04–S10 (experiments, quantities, units, scale reading, errors); Chapter III S03–S08 (path, motion, speed and measurements); Chapter IV S01/S03/S05/S06/S09–S13 (balance, density calculations, forces, gravity, gauge, weight, friction and resultant). The manifest preserves exact codes. Include all historical versions and any additional equivalent mappings discovered during the freeze. A changed number in a ratio, a relabelled graph or a new context for the same inference is not automatically new reasoning.
 
-**Next: 15E.2 — plan acceptance, governed inactive foundation and Batch 1.** Start with the 54-slot work/power scope, refresh comparison evidence and assess the briefs before writing complete Armenian questions/options/explanations/guides and useful definitions. The next two proposed batches are 54 and 44. Keep assessment qualification, practical delivery, final policy and Chapter-V-specific release authorization separate. Mapping is complete; authoring, approvals and release are not.
+**Preparation handoff: 15E.2 — plan acceptance, governed inactive foundation and Batch 1 (now recorded in the execution update above).** Start with the 54-slot work/power scope, refresh comparison evidence and assess the briefs before writing complete Armenian questions/options/explanations/guides and useful definitions. The next two proposed batches are 54 and 44. Keep assessment qualification, practical delivery, final policy and Chapter-V-specific release authorization separate. At this preparation checkpoint only mapping was complete. The execution update above records subsequent authoring; approvals and release remain open.
