@@ -261,10 +261,12 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Bind all 83 form members to exact current versions/approvals/QA; exclude 15 held Mastery questions.
 - [x] Pass production rollback and activate four contracts, three pools and five forms; verify all 677 inserted configuration rows and 61 preservation scopes.
 - [x] Complete reviewed-main production access, reporting and four-chapter switching: 155/155; two-school isolation 54/54.
-- [x] Save production acceptance and preservation evidence and align repository closure. Notion synchronization follows merge and requires exact-source readback.
+- [x] Save production acceptance and preservation evidence and align repository closure.
 - [ ] Independent specialist/exposure review, performed-experiment workflow and promotion beyond provisional pilot remain deferred.
 
 [Release evidence](chapter-iv-pilot-release.md).
+
+Notion synchronization follows the documentation merge and requires readback of the exact source-commit stamp. Record that receipt with the release evidence; the checked production-verification tasks above do not certify synchronization.
 
 ## Historical Chapter IV assessment proposal — 15D.5, 2026-10-18
 
@@ -275,7 +277,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Obtain the owner's chapter-specific decisions; approved and implemented under 15D.6.
 - [x] Complete comparison, v2 QA and ordinary delegated approvals under 15D.6.
 - [x] Complete bounded provisional disposition, exact bindings, rollback and authorized activation under 15D.6; independent qualification/exposure review remains deferred.
-- [x] Verify production access, reporting and chapter switching under 15D.6; save evidence and sync the merged closure source.
+- [x] Verify production access, reporting and chapter switching under 15D.6 and save the evidence.
 
 [Concrete proposal and trade-offs](chapter-iv-assessment-contract-proposal.md). Historical proposal checkpoint; all five v2 revisions are now saved and approved under 15D.6.
 
