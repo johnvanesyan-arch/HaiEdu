@@ -31,8 +31,12 @@ The six internal technical gates pass. The independent specialist gate remains p
 
 ## Production acceptance and closure
 
-Authenticated acceptance is pending the reviewed-main workflow. The bounded runner checks both schools, all four chapters and mixed release/unit denials, direct-read protections, desktop/mobile switching and unchanged learner state. It creates no learning sessions, answers or exposures. Existing teacher prompt/key access is retained; only direct-option denial is certified.
+Authenticated production acceptance passed **155/155**, plus two-school isolation **54/54**, on exact frontend `230925d0271bfaf55fc2973731650fe38ffeb99a`. Home → I at 1365 px, then I → II → III → IV → I at 390 px passed for both schools without page errors or attempted learning mutations. All 59 tracked public tables remain unchanged through acceptance. [Workflow 39121049292](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39121049292) and [redacted acceptance evidence](evidence/chapter-iv-pilot-read-acceptance-20261018.json) record exact contracts, cross-school/role and every mixed release/unit denial, protected direct reads and unchanged chapter evidence. The journey combines two viewport widths; it is not a separate full journey at each width. Existing teacher prompt/key access is retained; teacher direct-option denial is tested. The initial activation record retains the historical pre-acceptance status; this dated readback closes it.
 
-The shared assessment guidance now mentions unscored questions only when the contract actually has them. Both the course page and learner player consume this helper; teacher result markup is unchanged. Targeted contract and generator regressions pass; required CI and exact-main production acceptance remain part of closure.
+The shared assessment guidance now mentions unscored questions only when the contract actually has them. Both the course page and learner player consume this helper; teacher result markup is unchanged. Targeted contract and generator regressions pass; all five required PR CI jobs and exact-main production acceptance passed. The code-review recipe guard finding was fixed and resolved before merge.
 
 [Approved configuration](evidence/chapter-iv-assessment-v2-configuration-20261018.json) · [Activation record](evidence/chapter-iv-pilot-activation-20261018.json) · [Authoritative status](project-status.md).
+
+## Next sprint
+
+Chapter V preparation is next in the Chapter II–VI expansion. Specialist/exposure review and a governed performed-experiment workflow remain separate deferred work; this pilot does not certify practical performance.
