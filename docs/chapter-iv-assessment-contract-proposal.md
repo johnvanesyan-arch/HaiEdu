@@ -1,6 +1,6 @@
 # Chapter IV assessment and practical-evidence proposal — 15D.5
 
-**2026-10-18 · Roadmap 4.00 · Prepared for owner decision; not approved, staged or released.**
+**Historical proposal checkpoint: 2026-10-18 · Roadmap 4.00. Subsequently approved and implemented under [15D.6](chapter-iv-pilot-release.md).**
 
 John directed “do chapter 4” after confirming that Chapter III is live. This completes the next concrete assessment-planning slice. The live bank remains 236 approved v1 questions, 138 published guides and 150 active definitions. All 13 scoped content/audit tables exactly match the recent review closure; no production mutation was made.
 

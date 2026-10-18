@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "status": "activated",
+  "activatedAt": "2026-10-18T10:38:33.757642+00:00",
+  "curriculumReleaseId": "18eb78e8-79f7-5307-bef2-38c4baa1d809",
+  "unitId": "5ebe46f5-5542-5a1e-bfbd-14e4e5b784ca",
+  "assessmentPolicyVersion": "haiedu-assessment-policy-v2",
+  "ownerAuthorization": {
+    "curriculumReleaseId": "18eb78e8-79f7-5307-bef2-38c4baa1d809",
+    "owner": "John",
+    "ownerDirection": "yes",
+    "at": "2026-10-18T14:09:27+04:00",
+    "inReplyTo": "Do you approve this plan, the five revisions, and a knowledge-only pilot with specialist review deferred?",
+    "action": "activate_provisional_pilot",
+    "assessmentContract": "Diagnostic 19 / Practice 8 / Mastery 15 / Review 12; 12/15 and at least one correct per required skill; three Mastery attempts",
+    "revisionCodes": [
+      "PHY7-U04-S05-D02",
+      "PHY7-U04-S05-M03",
+      "PHY7-U04-S05-M04",
+      "PHY7-U04-S13-D02",
+      "PHY7-U04-S13-M06"
+    ],
+    "specialistReview": "deferred",
+    "practicalPerformance": "unassessed",
+    "scope": "Prepared Chapter IV proposal approved. Preserve all ordinary version/review safeguards. Specialist review deferred; independent qualification and historical non-exposure not claimed.",
+    "proposalCommit": "df573cd3750210881bfb54206dbb2180617295b2"
+  },
+  "practicalPerformance": "unassessed",
+  "specialistReview": "deferred",
+  "qualifiedForms": 0,
+  "questions": 236,
+  "practiceQuestions": 138,
+  "diagnosticQuestions": 38,
+  "masteryQuestions": 60,
+  "selectedMasteryQuestions": 45,
+  "heldMasteryQuestions": 15,
+  "forms": 5,
+  "formItems": 83,
+  "blueprintItems": 359,
+  "preservedScopes": 61,
+  "runtimeBuildId": "269cb4ff-ad87-48fc-8c05-563b803d1d2b",
+  "sourceCommit": "df573cd3750210881bfb54206dbb2180617295b2",
+  "verification": {
+    "transaction": "passed",
+    "rollback": "59 table fingerprints unchanged",
+    "exactConfigurationReadback": "passed",
+    "numericModelUnchanged": true,
+    "productionAuthenticatedAcceptance": "pending"
+  },
+  "preservedChapterI": {
+    "curriculumReleaseId": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+    "unitId": "0349ffcd-8fc9-47f2-82d1-3d5cfcb3a096"
+  },
+  "preservedChapterII": {
+    "curriculumReleaseId": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+    "unitId": "beae3516-4317-4c8b-bd66-576c6f309308"
+  },
+  "preservedChapterIII": {
+    "curriculumReleaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+    "unitId": "aa824efc-b407-5143-9c92-a894d97be972"
+  }
+}
