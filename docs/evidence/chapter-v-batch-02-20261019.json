@@ -1,0 +1,759 @@
+{
+  "sprint": "15E.3",
+  "manifest": "chapter-v-20261019-batch-02",
+  "ownerAuthoringAt": "2026-10-19T00:46:27+04:00",
+  "ownerInstruction": "Proceed, following explicit Batch 2 scope 54 candidates: S04/S05/S06, 28 Practice, 10 Diagnostic, 16 Mastery.",
+  "boundedAuthorization": "This current Chapter V Batch 2 instruction bounds up to26 assessment proposals; it delegates no ordinary approval and no release/SME exception.",
+  "corpusObservedAt": "2026-10-18T20:49:47.13298+00:00",
+  "corpusSha256": "a0b1f39b3634ab0f6580e7ee5170537f9d8c278489a0f79061fd9e3de633d13b",
+  "corpusProof": [
+    {
+      "table": "skill_remediation_guides",
+      "rows": 10,
+      "hash": "3a51fc6e3a850044cd5c01d3a1919b49",
+      "exact": true
+    },
+    {
+      "table": "remediation_guide_versions",
+      "rows": 631,
+      "hash": "e9a6103e7e618a60f044fda0edead849",
+      "exact": true
+    },
+    {
+      "table": "item_template_remediation_guides",
+      "rows": 316,
+      "hash": "c278115f63d2ce3563297508ffb64584",
+      "exact": true
+    },
+    {
+      "table": "remediation_guide_authoring_versions",
+      "rows": 1038,
+      "hash": "01e337a70ef0534004ee4500f9bb52e9",
+      "exact": true
+    },
+    {
+      "table": "skills",
+      "rows": 51,
+      "hash": "8ae0b3b4e40a64827f9859f3e9da9be8",
+      "exact": true
+    },
+    {
+      "table": "skill_outcomes",
+      "rows": 60,
+      "hash": "4cd3e5c236ac0819748eae0062f2c7a2",
+      "exact": true
+    },
+    {
+      "table": "assessment_forms",
+      "rows": 19,
+      "hash": "6b9c11d311a0bb6ce4fd2ee4596e0992",
+      "exact": true
+    },
+    {
+      "table": "assessment_pools",
+      "rows": 13,
+      "hash": "a538c2c8a5702df1516cb19f969bb3b4",
+      "exact": true
+    },
+    {
+      "table": "learning_outcomes",
+      "rows": 38,
+      "hash": "4fb9faf0e67d5f01ca6abee00ccbbdcb",
+      "exact": true
+    },
+    {
+      "table": "curriculum_releases",
+      "rows": 6,
+      "hash": "d4008f50da81bfd06414dc43d7ae7146",
+      "exact": true
+    },
+    {
+      "table": "assessment_form_items",
+      "rows": 323,
+      "hash": "88f00b356a7506bd11edcdbde6bf585c",
+      "exact": true
+    },
+    {
+      "table": "assessment_pool_items",
+      "rows": 861,
+      "hash": "152c378db1ca416cfcb7bd14e65697b5",
+      "exact": true
+    },
+    {
+      "table": "curriculum_release_skills",
+      "rows": 50,
+      "hash": "470c72713d36187e5ca2e7a328d2d172",
+      "exact": true
+    },
+    {
+      "table": "curriculum_source_documents",
+      "rows": 3,
+      "hash": "d9bcea03118cbabd2fa60ce5c6c66a76",
+      "exact": true
+    },
+    {
+      "table": "curriculum_release_gate_checks",
+      "rows": 35,
+      "hash": "816194e0cf0bee563aa7cb4fad455827",
+      "exact": true
+    },
+    {
+      "table": "skill_curriculum_reconciliations",
+      "rows": 50,
+      "hash": "d94686c522e99d86ba5bbd704633b6d4",
+      "exact": true
+    },
+    {
+      "table": "skill_outcome_curriculum_mappings",
+      "rows": 60,
+      "hash": "263d71da5cea991198c4f61fa9ff2461",
+      "exact": true
+    },
+    {
+      "table": "item_curriculum_scopes",
+      "rows": 911,
+      "hash": "91e49d72590278a39a56da22528b872f",
+      "exact": true
+    },
+    {
+      "table": "items",
+      "rows": 911,
+      "hash": "c488803ba2547ec8eb4c66a8d3a80ae2",
+      "exact": true
+    },
+    {
+      "table": "item_misconception_mappings",
+      "rows": 2192,
+      "hash": "79b9f3c1b38f335660905014274630d6",
+      "exact": true
+    },
+    {
+      "table": "item_versions",
+      "rows": 796,
+      "hash": "bbd6a68b85dc2e44d259ea838b741ad6",
+      "exact": true
+    },
+    {
+      "table": "item_family_curriculum_reconciliations",
+      "rows": 689,
+      "hash": "a9f99491d7282248735b06834ddd7b3c",
+      "exact": true
+    },
+    {
+      "table": "item_options",
+      "rows": 3036,
+      "hash": "0a172299670fc7060ceda89647759ff1",
+      "exact": true
+    },
+    {
+      "table": "item_templates",
+      "rows": 689,
+      "hash": "dbb3ce045825fcfb08c10f1c520a715c",
+      "exact": true
+    },
+    {
+      "table": "item_families",
+      "rows": 689,
+      "hash": "4f3bca6931f3b5e76b0fada6ee11ace4",
+      "exact": true
+    },
+    {
+      "table": "item_answer_keys",
+      "rows": 911,
+      "hash": "7868fb77400322d62fba1c728a64cda1",
+      "exact": true
+    },
+    {
+      "table": "curriculum_release_item_families",
+      "rows": 688,
+      "hash": "5c778fd876c98561a137493692571759",
+      "exact": true
+    },
+    {
+      "table": "misconceptions",
+      "rows": 821,
+      "hash": "89cbdf4fd8057a9f971a04e51396b645",
+      "exact": true
+    }
+  ],
+  "counts": {
+    "items": 911,
+    "item_options": 3036,
+    "item_versions": 796,
+    "item_answer_keys": 911,
+    "item_families": 689,
+    "item_templates": 689,
+    "misconceptions": 821,
+    "skill_remediation_guides": 10,
+    "remediation_guide_versions": 631,
+    "item_misconception_mappings": 2192,
+    "item_template_remediation_guides": 316,
+    "remediation_guide_authoring_versions": 1038,
+    "skills": 51,
+    "skill_outcomes": 60,
+    "assessment_forms": 19,
+    "assessment_pools": 13,
+    "learning_outcomes": 38,
+    "curriculum_releases": 6,
+    "assessment_form_items": 323,
+    "assessment_pool_items": 861,
+    "item_curriculum_scopes": 911,
+    "curriculum_release_skills": 50,
+    "curriculum_source_documents": 3,
+    "curriculum_release_gate_checks": 35,
+    "curriculum_release_item_families": 688,
+    "skill_curriculum_reconciliations": 50,
+    "skill_outcome_curriculum_mappings": 60,
+    "item_family_curriculum_reconciliations": 689
+  },
+  "assessed": 54,
+  "staged": 49,
+  "practice": 28,
+  "diagnostic": 7,
+  "mastery": 14,
+  "guides": 28,
+  "definitions": 29,
+  "held": 5,
+  "independentNewReasoningClaims": 0,
+  "qualifiedFormCapacity": 0,
+  "method": "Freeze all28 applicable current/history/guide/curriculum/assessment tables. Character ngram retrieval is a neighbor search only. Primary author reviewed source pages, complete relevant neighbors and curated cross-skill records, candidate solutions, all28 new guides, and explicit within-batch dependency groups. All1431 pairs indexed; no numerical similarity or pair label alone is a semantic decision. No prior lever/pulley item existed; prior force/measurement/product/rate procedures remain dependencies.",
+  "languageReview": "Primary automated author checked Armenian separately from physics against textbook terms; no independent native-language approval claimed.",
+  "heldCodes": [
+    "PHY7-U05-S05-D02",
+    "PHY7-U05-S06-D02",
+    "PHY7-U05-S06-D03",
+    "PHY7-U05-S06-M04",
+    "PHY7-U05-S06-M05"
+  ],
+  "gates": [
+    "ordinary exact-version question/guide/definition review",
+    "decision on five held slots; provisional152 ceiling unchanged",
+    "independent SME/exposure qualification",
+    "assessment and practical contract",
+    "form/pool allocation",
+    "Chapter V release authorization"
+  ],
+  "practicalBoundary": "§35 planning/record interpretation MCQs do not certify performed LAB-LEVER; both practical tasks remain outstanding.",
+  "authoringBaseCommit": "499791aac5c5dc9b85df40a0fde9080d332bfe8e",
+  "privateEvidenceBinding": {
+    "libraryFileId": "libfile_fea60a4214b88191b60d550b3a6a0b0c",
+    "savedVersion": 2,
+    "archiveFile": "HaiEdu-Chapter-V-Batch-02-Evidence.zip",
+    "archiveBytes": 4222678,
+    "archiveSha256": "ddc9f5f829056542b4aa8301ed18aad0d8e1f20b344cd972ce69d22796339d66",
+    "comparisonSha256": "77e2b2f3919b01406e9c081125de161741567bb76d8de5910b1c239346c288a3",
+    "members": {
+      "comparison.json": {
+        "bytes": 922584,
+        "sha256": "77e2b2f3919b01406e9c081125de161741567bb76d8de5910b1c239346c288a3"
+      },
+      "comparison-corpus.json": {
+        "bytes": 19485455,
+        "sha256": "a0b1f39b3634ab0f6580e7ee5170537f9d8c278489a0f79061fd9e3de633d13b"
+      },
+      "corpus-proof.json": {
+        "bytes": 3644,
+        "sha256": "cbb011edeba621fe0cce067000e8573c21081772a2537d7c5475735068a0753f"
+      },
+      "specs.json": {
+        "bytes": 339964,
+        "sha256": "ec6180cefdea637eb5e3d10990576a68538bdad0990b2ad346a8bb239cf4cc10"
+      },
+      "held-specs.json": {
+        "bytes": 35889,
+        "sha256": "e03298f49219b0e1d330f1569ea72cd3de17d5f11a49d7448699cfcb2e469d76"
+      },
+      "committed-readback-catalogue.json": {
+        "bytes": 878516,
+        "sha256": "0e2ca3af1d83d3660d3219699412eb74d8df3354734c1f193179a707d82b28ba"
+      },
+      "qa-results.json": {
+        "bytes": 114738,
+        "sha256": "9c92d4075ecc5e664f3b5156f999c824339733bd4853f4ed3a2c2d5944b72e1a"
+      },
+      "guide-qa-results.json": {
+        "bytes": 6815,
+        "sha256": "2b5f63e26ac593d9820552ad926ba68313a4fc1af796247fe4e42e21241d262a"
+      }
+    }
+  },
+  "preservation": {
+    "before": "2026-10-18T21:05:16.384224+00:00",
+    "after": "2026-10-18T21:07:22.900844+00:00",
+    "scopes": 59,
+    "unchangedTables": 44,
+    "allPriorRowsPreserved": "Both rollback and committed guarded transaction performed multiset row-hash EXCEPT ALL checks against every original row in all59 scopes; no exception. QA-only transaction checked all59 pre-insert fingerprints.",
+    "checks": [
+      {
+        "table": "academic_mastery_policy_activation",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "6e1a63fb6eec8f81e4d1792078f49c47",
+        "afterFingerprint": "6e1a63fb6eec8f81e4d1792078f49c47"
+      },
+      {
+        "table": "academic_mastery_policy_versions",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "33b38545c0070113c573947187bc96ab",
+        "afterFingerprint": "33b38545c0070113c573947187bc96ab"
+      },
+      {
+        "table": "assessment_blueprint_items",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "3b7936a0065707a4cde734cbebb29a61",
+        "afterFingerprint": "3b7936a0065707a4cde734cbebb29a61"
+      },
+      {
+        "table": "assessment_blueprints",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "54ebd1ba3065b66664c49183a9d33ff5",
+        "afterFingerprint": "54ebd1ba3065b66664c49183a9d33ff5"
+      },
+      {
+        "table": "assessment_form_items",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "88f00b356a7506bd11edcdbde6bf585c",
+        "afterFingerprint": "88f00b356a7506bd11edcdbde6bf585c"
+      },
+      {
+        "table": "assessment_forms",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "6b9c11d311a0bb6ce4fd2ee4596e0992",
+        "afterFingerprint": "6b9c11d311a0bb6ce4fd2ee4596e0992"
+      },
+      {
+        "table": "assessment_policy_bindings",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "2eb7132450e5ee557757e39ce9f47658",
+        "afterFingerprint": "2eb7132450e5ee557757e39ce9f47658"
+      },
+      {
+        "table": "assessment_pool_curriculum_reconciliations",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "acb048f19d06fa5ec1973531b35443d9",
+        "afterFingerprint": "acb048f19d06fa5ec1973531b35443d9"
+      },
+      {
+        "table": "assessment_pool_items",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "152c378db1ca416cfcb7bd14e65697b5",
+        "afterFingerprint": "152c378db1ca416cfcb7bd14e65697b5"
+      },
+      {
+        "table": "assessment_pools",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "a538c2c8a5702df1516cb19f969bb3b4",
+        "afterFingerprint": "a538c2c8a5702df1516cb19f969bb3b4"
+      },
+      {
+        "table": "attempts",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "34d7f71a2768a1afe6f357721e668393",
+        "afterFingerprint": "34d7f71a2768a1afe6f357721e668393"
+      },
+      {
+        "table": "chapter_mastery_states",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "9029019bf1569cae15fd93aa8b4ecff0",
+        "afterFingerprint": "9029019bf1569cae15fd93aa8b4ecff0"
+      },
+      {
+        "table": "chapter_review_cycles",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "d41d8cd98f00b204e9800998ecf8427e",
+        "afterFingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table": "chapter_review_item_exposures",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "d41d8cd98f00b204e9800998ecf8427e",
+        "afterFingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table": "chapter_review_requirements",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "88e05bc404e2045c5cfcbc2c8c5a8729",
+        "afterFingerprint": "88e05bc404e2045c5cfcbc2c8c5a8729"
+      },
+      {
+        "table": "chapter_review_sessions",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "d41d8cd98f00b204e9800998ecf8427e",
+        "afterFingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "table": "curriculum_reconciliation_runs",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "2a6453cfebdbe8886d431983c7b9375f",
+        "afterFingerprint": "2a6453cfebdbe8886d431983c7b9375f"
+      },
+      {
+        "table": "curriculum_release_gate_checks",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "816194e0cf0bee563aa7cb4fad455827",
+        "afterFingerprint": "816194e0cf0bee563aa7cb4fad455827"
+      },
+      {
+        "table": "curriculum_release_item_families",
+        "delta": 49,
+        "unchanged": false,
+        "beforeFingerprint": "5c778fd876c98561a137493692571759",
+        "afterFingerprint": "dc48fff4a8cfca185a16fae77edc010c"
+      },
+      {
+        "table": "curriculum_release_outcomes",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "70af787704dc949a9bdad890fe5b148c",
+        "afterFingerprint": "70af787704dc949a9bdad890fe5b148c"
+      },
+      {
+        "table": "curriculum_release_reconciliations",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "0e6cc7ef5e30c0dda40459c843560eea",
+        "afterFingerprint": "0e6cc7ef5e30c0dda40459c843560eea"
+      },
+      {
+        "table": "curriculum_release_skills",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "470c72713d36187e5ca2e7a328d2d172",
+        "afterFingerprint": "470c72713d36187e5ca2e7a328d2d172"
+      },
+      {
+        "table": "curriculum_release_units",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "2f0bb624969682910f95373d14304f39",
+        "afterFingerprint": "2f0bb624969682910f95373d14304f39"
+      },
+      {
+        "table": "curriculum_releases",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "d4008f50da81bfd06414dc43d7ae7146",
+        "afterFingerprint": "d4008f50da81bfd06414dc43d7ae7146"
+      },
+      {
+        "table": "curriculum_source_documents",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76",
+        "afterFingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76"
+      },
+      {
+        "table": "item_answer_keys",
+        "delta": 49,
+        "unchanged": false,
+        "beforeFingerprint": "7868fb77400322d62fba1c728a64cda1",
+        "afterFingerprint": "c832c869cb72406d5db648fb18985d70"
+      },
+      {
+        "table": "item_curriculum_scopes",
+        "delta": 49,
+        "unchanged": false,
+        "beforeFingerprint": "91e49d72590278a39a56da22528b872f",
+        "afterFingerprint": "03b4a0713d471a1c8936fbbf7a9a8eaa"
+      },
+      {
+        "table": "item_families",
+        "delta": 49,
+        "unchanged": false,
+        "beforeFingerprint": "4f3bca6931f3b5e76b0fada6ee11ace4",
+        "afterFingerprint": "ac3d434ec13d40de6c7b4aa0c8b66c98"
+      },
+      {
+        "table": "item_family_curriculum_reconciliations",
+        "delta": 49,
+        "unchanged": false,
+        "beforeFingerprint": "a9f99491d7282248735b06834ddd7b3c",
+        "afterFingerprint": "08774b8d7c585c92d38f75341fd8a424"
+      },
+      {
+        "table": "item_misconception_mappings",
+        "delta": 147,
+        "unchanged": false,
+        "beforeFingerprint": "79b9f3c1b38f335660905014274630d6",
+        "afterFingerprint": "2f14611d6d939e93da9bfd79c842a3fc"
+      },
+      {
+        "table": "item_options",
+        "delta": 196,
+        "unchanged": false,
+        "beforeFingerprint": "0a172299670fc7060ceda89647759ff1",
+        "afterFingerprint": "2ea93c44e62386c11b540dfbf4369585"
+      },
+      {
+        "table": "item_qa_runs",
+        "delta": 49,
+        "unchanged": false,
+        "beforeFingerprint": "3e9574638516a91726a6aef8f6760b69",
+        "afterFingerprint": "bb808ba1ba9d11c7bf48c6d1bbd93d9a"
+      },
+      {
+        "table": "item_reviews",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "78fb4856468a28beda01161ea9003a40",
+        "afterFingerprint": "78fb4856468a28beda01161ea9003a40"
+      },
+      {
+        "table": "item_template_remediation_guides",
+        "delta": 28,
+        "unchanged": false,
+        "beforeFingerprint": "c278115f63d2ce3563297508ffb64584",
+        "afterFingerprint": "08a473bb3f8609f9989840c0ec4eea09"
+      },
+      {
+        "table": "item_templates",
+        "delta": 49,
+        "unchanged": false,
+        "beforeFingerprint": "dbb3ce045825fcfb08c10f1c520a715c",
+        "afterFingerprint": "1e5ba6d5d992c78bcfbf0301a38701ea"
+      },
+      {
+        "table": "item_versions",
+        "delta": 49,
+        "unchanged": false,
+        "beforeFingerprint": "bbd6a68b85dc2e44d259ea838b741ad6",
+        "afterFingerprint": "b51159f7c08d74bd8a9b30901387bf9d"
+      },
+      {
+        "table": "items",
+        "delta": 49,
+        "unchanged": false,
+        "beforeFingerprint": "c488803ba2547ec8eb4c66a8d3a80ae2",
+        "afterFingerprint": "a5973be9d30e3927a9f7bd73db6d63dc"
+      },
+      {
+        "table": "learning_model_configurations",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "2733b3aa848d6411fc46e7a678ae773f",
+        "afterFingerprint": "2733b3aa848d6411fc46e7a678ae773f"
+      },
+      {
+        "table": "learning_model_runtime_bindings",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "ab99efabbf9eff6c5e9fbb19db6bf2f5",
+        "afterFingerprint": "ab99efabbf9eff6c5e9fbb19db6bf2f5"
+      },
+      {
+        "table": "learning_outcome_normative_mappings",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "e7cea90d2473c222732a999b0f7c5593",
+        "afterFingerprint": "e7cea90d2473c222732a999b0f7c5593"
+      },
+      {
+        "table": "learning_outcomes",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "4fb9faf0e67d5f01ca6abee00ccbbdcb",
+        "afterFingerprint": "4fb9faf0e67d5f01ca6abee00ccbbdcb"
+      },
+      {
+        "table": "learning_session_items",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "f73f590b4c920298a6e1a8479b6c7a74",
+        "afterFingerprint": "f73f590b4c920298a6e1a8479b6c7a74"
+      },
+      {
+        "table": "learning_sessions",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "86580ceeda23b08cae316f5a90b210cd",
+        "afterFingerprint": "86580ceeda23b08cae316f5a90b210cd"
+      },
+      {
+        "table": "mastery_check_attempts",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "792e2f317f1c2e2ddf41daa4af787800",
+        "afterFingerprint": "792e2f317f1c2e2ddf41daa4af787800"
+      },
+      {
+        "table": "misconception_review_events",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "f124b2c1a25c7455bc9cdbf42bb7844b",
+        "afterFingerprint": "f124b2c1a25c7455bc9cdbf42bb7844b"
+      },
+      {
+        "table": "misconceptions",
+        "delta": 29,
+        "unchanged": false,
+        "beforeFingerprint": "89cbdf4fd8057a9f971a04e51396b645",
+        "afterFingerprint": "1a24e5be4976690a5f440d15d02f8185"
+      },
+      {
+        "table": "recommendation_events",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "dc1a5f6572318abdfe6bd504f8ec6577",
+        "afterFingerprint": "dc1a5f6572318abdfe6bd504f8ec6577"
+      },
+      {
+        "table": "remediation_events",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "6c5aa87d43e93dbd18a26c73dae4e261",
+        "afterFingerprint": "6c5aa87d43e93dbd18a26c73dae4e261"
+      },
+      {
+        "table": "remediation_guide_authoring_versions",
+        "delta": 28,
+        "unchanged": false,
+        "beforeFingerprint": "01e337a70ef0534004ee4500f9bb52e9",
+        "afterFingerprint": "0e0a9afb47767487faad4de28301ad09"
+      },
+      {
+        "table": "remediation_guide_versions",
+        "delta": 28,
+        "unchanged": false,
+        "beforeFingerprint": "e9a6103e7e618a60f044fda0edead849",
+        "afterFingerprint": "77d3b8bcef5a58df8aa2b88a2f7a16ff"
+      },
+      {
+        "table": "runtime_builds",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "1639c6c4b7543d5f96da824e5ec13b10",
+        "afterFingerprint": "1639c6c4b7543d5f96da824e5ec13b10"
+      },
+      {
+        "table": "skill_curriculum_reconciliations",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "d94686c522e99d86ba5bbd704633b6d4",
+        "afterFingerprint": "d94686c522e99d86ba5bbd704633b6d4"
+      },
+      {
+        "table": "skill_outcome_curriculum_mappings",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "263d71da5cea991198c4f61fa9ff2461",
+        "afterFingerprint": "263d71da5cea991198c4f61fa9ff2461"
+      },
+      {
+        "table": "skill_outcomes",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "4cd3e5c236ac0819748eae0062f2c7a2",
+        "afterFingerprint": "4cd3e5c236ac0819748eae0062f2c7a2"
+      },
+      {
+        "table": "skill_prerequisites",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "29495957b75eeb48e09d6e19e18fac35",
+        "afterFingerprint": "29495957b75eeb48e09d6e19e18fac35"
+      },
+      {
+        "table": "skill_remediation_guides",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "3a51fc6e3a850044cd5c01d3a1919b49",
+        "afterFingerprint": "3a51fc6e3a850044cd5c01d3a1919b49"
+      },
+      {
+        "table": "skills",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "8ae0b3b4e40a64827f9859f3e9da9be8",
+        "afterFingerprint": "8ae0b3b4e40a64827f9859f3e9da9be8"
+      },
+      {
+        "table": "student_item_exposure_events",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "4807b78c602d7a75ac8d0cd747a17188",
+        "afterFingerprint": "4807b78c602d7a75ac8d0cd747a17188"
+      },
+      {
+        "table": "student_skill_mastery_by_release",
+        "delta": 0,
+        "unchanged": true,
+        "beforeFingerprint": "2f4adfd4245382d10ee42fa849245706",
+        "afterFingerprint": "2f4adfd4245382d10ee42fa849245706"
+      }
+    ]
+  },
+  "chapterCounts": {
+    "observedAt": "2026-10-18T21:07:43.662262+00:00",
+    "questions": 103,
+    "practice": 60,
+    "diagnostic": 15,
+    "mastery": 28,
+    "guides": 60,
+    "definitions": 83,
+    "ordinaryReview": "all draft/pending",
+    "release": "draft",
+    "activatedAt": null
+  },
+  "technicalQa": {
+    "questionPassed": 49,
+    "guidePassed": 28,
+    "errors": 0,
+    "warnings": 0,
+    "questionSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "guideSourceSha256": "fa20227213a9acbe49ddedcbafa22551e1c8362ecd7bdce62f8d584181e04f8c",
+    "method": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "committedReadbackAt": "2026-10-18T21:06:57.760973+00:00",
+    "runKey": "15E3-batch02-20261019"
+  },
+  "assets": [
+    {
+      "file": "p106-fig71-lever.png",
+      "printedPage": 106,
+      "pdfPage": 107,
+      "cropPdfPoints": [
+        42,
+        286,
+        186,
+        360
+      ],
+      "scale": 3,
+      "sha256": "e8cf95e430a21d1b67e0206d57865b87fa6d4817e5baa186e0cf659f6852ac96",
+      "bytes": 5620,
+      "target": "web/assets/textbook/physics7-2023/p106-fig71-lever.png"
+    },
+    {
+      "file": "p110-fig75-fixed.png",
+      "printedPage": 110,
+      "pdfPage": 111,
+      "cropPdfPoints": [
+        66,
+        316,
+        231,
+        455
+      ],
+      "scale": 3,
+      "sha256": "f20bd86d2f492507262711df9f4ef6a367e30be21341cec8157ecd721aa332ab",
+      "bytes": 37391,
+      "target": "web/assets/textbook/physics7-2023/p110-fig75-fixed.png"
+    }
+  ],
+  "imageVerification": "Source page/crops inspected; exact figures rendered at358px content width and visually checked. No authenticated frontend acceptance claimed. Postmerge HTTP/content-hash results stored in delivery closure.",
+  "sharedCoreChanges": false
+}
