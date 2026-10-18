@@ -1,0 +1,100 @@
+{
+  "sprint": "15D.5",
+  "roadmapVersion": "4.00",
+  "status": "proposal_prepared_owner_decisions_pending",
+  "observedAt": "2026-10-18T09:50:57.789622+00:00",
+  "sourceCommit": "2510ae06715d2ecf124b0441aaf1ccea9dd7256b",
+  "inventory": {
+    "questions": 236,
+    "approved": 236,
+    "guidesPublished": 138,
+    "definitionsActive": 150
+  },
+  "proposal": {
+    "diagnosticQuestions": 19,
+    "diagnosticForms": 2,
+    "masteryQuestions": 15,
+    "masteryForms": 3,
+    "masteryPassCorrect": 12,
+    "masteryRequiredSkills": 10,
+    "practiceLength": 8,
+    "reviewLength": 12,
+    "targetedRevisions": 5,
+    "newQuestionIdentities": 0,
+    "bankTotalAfterRevisions": 236,
+    "heldMasteryQuestions": 15,
+    "automaticReserves": 0,
+    "exactConditionalSlots": 83,
+    "unchangedApprovedSlots": 78,
+    "proposedVersionSlots": 5
+  },
+  "conditionalFormSummaries": [
+    {
+      "planId": "D-A",
+      "questions": 19,
+      "pendingRevisions": 2,
+      "missingMandatoryKnowledgeOutcomes": [],
+      "performedOutcomesAssessed": []
+    },
+    {
+      "planId": "D-B",
+      "questions": 19,
+      "pendingRevisions": 0,
+      "missingMandatoryKnowledgeOutcomes": [],
+      "performedOutcomesAssessed": []
+    },
+    {
+      "planId": "M-A",
+      "questions": 15,
+      "pendingRevisions": 1,
+      "missingMandatoryKnowledgeOutcomes": [],
+      "performedOutcomesAssessed": []
+    },
+    {
+      "planId": "M-B",
+      "questions": 15,
+      "pendingRevisions": 1,
+      "missingMandatoryKnowledgeOutcomes": [],
+      "performedOutcomesAssessed": []
+    },
+    {
+      "planId": "M-C",
+      "questions": 15,
+      "pendingRevisions": 1,
+      "missingMandatoryKnowledgeOutcomes": [],
+      "performedOutcomesAssessed": []
+    }
+  ],
+  "contentPreserved": true,
+  "productionWrites": 0,
+  "configuredLiveForms": 0,
+  "releaseStatus": "draft",
+  "recipeSha256": "94a702feae04cda7ade717fc3ad05035fb49e5bfa8793b38e76f89ec9704d969",
+  "formPlanSha256": "8190c352a5905fc1c247bee22011dfea3482cced3ba0736aa46320d3bc6f3c24",
+  "revisionPlanSha256": "0b5f2db85ad7d1ceabe70e3fcf5d8ae9e4831a1cd40e5aee63aa45daa7483d07",
+  "decisionRequired": [
+    "Assessment lengths, readiness/pass and retry scope",
+    "Five bounded current-item revisions through normal new-version review",
+    "Chapter-IV-specific knowledge-only provisional scope, practical workflow and specialist/exposure deferral if desired"
+  ],
+  "notClaims": [
+    "independent SME qualification",
+    "empirical form equivalence",
+    "performed experiment completion",
+    "live activation or production acceptance"
+  ],
+  "privateEvidence": {
+    "fileName": "HaiEdu-Chapter-IV-Assessment-Proposal-Evidence.zip",
+    "sha256": "e057f669cac5823506fff2260cc823a4c1a76b20509553f376d60c4c6e49a567",
+    "bytes": 891223,
+    "frozenVersion": 0,
+    "libraryFileId": "libfile_e3849f9076188191875c40314e72d713"
+  },
+  "validation": {
+    "jsPolicyShapesPassed": 4,
+    "sqlScopeChecksPassed": 4,
+    "sqlScoringCasesPassed": 5,
+    "fullReleaseRehearsal": false,
+    "newRevisionQa": false
+  }
+}
