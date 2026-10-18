@@ -1,0 +1,101 @@
+{
+  "checkpoint": "15D.4R2",
+  "roadmapVersion": "3.99",
+  "observedAt": "2026-10-18T09:34:46.956814+00:00",
+  "sourceCommit": "7bf88730d78ab91ff25af210c2d09a9d566fb0f5",
+  "ownerStatement": "All batches are approved. What’s next on the sprint map?",
+  "scope": "Read-only verification of Chapter IV ordinary review closure; no production mutations, new approvals or release actions by this verification.",
+  "batches": [
+    {
+      "batch": 1,
+      "questions": 84,
+      "guides": 50,
+      "definitions": 65
+    },
+    {
+      "batch": 2,
+      "questions": 86,
+      "guides": 50,
+      "definitions": 46
+    },
+    {
+      "batch": 3,
+      "questions": 66,
+      "guides": 38,
+      "definitions": 39
+    }
+  ],
+  "totals": {
+    "approvedQuestions": 236,
+    "practice": 138,
+    "diagnostic": 38,
+    "mastery": 60,
+    "publishedGuides": 138,
+    "activeDefinitions": 150,
+    "pendingOrdinaryReviews": 0
+  },
+  "verification": {
+    "unchangedQuestionVersions": 236,
+    "currentPassingQa": 236,
+    "currentQuestionContentApprovals": 236,
+    "questionReviewEvents": 239,
+    "guideRuntimeVersion": 2,
+    "guideAuthoringVersion": 3,
+    "definitionApprovalEvents": 151,
+    "currentDefinitionSnapshotsMatch": 150,
+    "learnerContentUnchangedFromStaging": true,
+    "stagedImmutableHistoryPreserved": true,
+    "guideNormalization": "Unused misconceptionCode normalized to an empty string by the ordinary UI; learner text and source metadata unchanged.",
+    "lifecycleFieldsChangedSinceStaging": {
+      "items": {
+        "last_reviewed_by": 236,
+        "last_reviewed_at": 236,
+        "status": 236,
+        "review_status": 236
+      },
+      "item_options": {},
+      "item_versions": {},
+      "item_templates": {},
+      "misconceptions": {
+        "updated_at": 150,
+        "status": 150
+      },
+      "item_answer_keys": {},
+      "remediation_guide_versions": {},
+      "item_misconception_mappings": {},
+      "item_template_remediation_guides": {
+        "updated_at": 138,
+        "status": 138,
+        "guide_version": 138
+      },
+      "remediation_guide_authoring_versions": {}
+    }
+  },
+  "provenance": "Owner reported manual completion after the earlier delegated approval checkpoint. Existing delegated approvals and historical repeated audit events are preserved; this record does not relabel all approvals as personal inspection or independent SME review.",
+  "release": {
+    "status": "draft",
+    "activatedAt": null,
+    "releaseKey": "physics7_u04_2026_08_14_draft_r4",
+    "poolItemRows": 0,
+    "formItemRows": 0
+  },
+  "next": "15D.5 — finalize Chapter IV assessment and practical-evidence contract; not approved or implemented by this closure.",
+  "remainingGates": [
+    "Assessment lengths, weighting, passing, readiness, Review and retake rules",
+    "M3 density measurement and M8 Hooke’s-law performed-experiment evidence workflow, or separately authorized bounded knowledge-only pilot",
+    "Exact-version qualification/protection/exposure and disjoint allocation",
+    "Release configuration, authorization and production acceptance"
+  ],
+  "limitations": [
+    "Scoped content and audit readback, not a full production browser acceptance or a new whole-bank semantic comparison",
+    "Existing comparisons retained because staged question/guide/definition content is unchanged",
+    "No Chapter II/III pilot or specialist exception inherited"
+  ],
+  "privateEvidence": {
+    "fileName": "HaiEdu-Chapter-IV-Review-Closure-Evidence.zip",
+    "sha256": "329f6b879f4df8b3449fd1447901030e0b6e3be82f30981727c35f95c806f2a4",
+    "bytes": 1123278,
+    "libraryFileId": "libfile_8c2db9b9bfbc81918b7651be962f3334",
+    "version": 0
+  }
+}
