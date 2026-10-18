@@ -1,0 +1,711 @@
+{
+  "schema": "haiedu-chapter-preparation-v1",
+  "sprint": "15E.1",
+  "prepared_at": "2026-10-18T19:04:09.701254+00:00",
+  "base_commit": "16c3e96e0c1d40263719ad0be4c3e89e65a9173f",
+  "chapter": "PHY7-U05",
+  "title_hy": "Աշխատանք և հզորություն",
+  "status": "preparation complete; proposed plan not yet accepted for execution",
+  "scope": "subject-aware content planning; no database, shared-core or runtime mutation",
+  "sources": {
+    "textbook": {
+      "title": "Ֆիզիկա 7",
+      "authors": [
+        "Գագիկ Մելիքյան",
+        "Սոս Մաիլյան"
+      ],
+      "publisher": "Էդիթ Պրինտ",
+      "year": 2023,
+      "library_file_id": "libfile_f4cf0be21a6081919cd90c8922b5396d",
+      "sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+      "sections": [
+        32,
+        39
+      ],
+      "printed_pages": [
+        99,
+        117
+      ],
+      "pdf_pages": [
+        100,
+        118
+      ]
+    },
+    "programme": {
+      "act_url": "https://www.arlis.am/hy/acts/229331",
+      "attachment_url": "https://www.arlis.am/acts/files/363077/966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+      "sha256": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+      "bytes": 248283,
+      "theme": 5,
+      "outcome_locator": "DOCX table 5, row 5, cell 0 (zero-based); M1 spans the following (Հ4) line",
+      "legal_version": "N 40-Ն as amended by N 36-Ն; current incorporation effective 2026-08-14",
+      "freshly_downloaded": true,
+      "raw_outcome_cell": "Թեմայի նպատակին հասնելու համար սովորողը պետք է կարողանա՝\n1.Պարտադիր\nներկայացնել «մեխանիկական աշխատանք»,  «հզորություն», մեծությունների ֆիզիկական իմաստը, հաշվարկման բանաձևը, չափման միավորները \n(Հ4)\nբացատրել պարզ մեխանիզմների (լծակ, անշարժ և շարժական ճախարակներ, թեք հարթություն) կառուցվածքը և աշխատանքի սկզբունքը,(Հ8, Հ10)\nսահմանել լծակի կանոնը, գրել նրա հավասարակշռության պայմանը,(Հ9, Հ10)\nհաշվարկել պարզ մեխանիզմների օգտակար գործողության գործակիցը (Հ7, Հ30)\nԼրացուցիչ\n1) ներկայացնել ձիաուժը՝ որպես հզորության չափման միավոր,\n2) բերել կենցաղում և տեխնիկայում, կենդանի օրգանիզմների հենաշարժողական համակարգում պարզ մեխանիզմների օգտագործման օրինակներ:"
+    }
+  },
+  "outcomes": [
+    {
+      "ref": "M1",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել «մեխանիկական աշխատանք»,  «հզորություն», մեծությունների ֆիզիկական իմաստը, հաշվարկման բանաձևը, չափման միավորները \n(Հ4)",
+      "skills": [
+        "S01",
+        "S02",
+        "S03"
+      ]
+    },
+    {
+      "ref": "M2",
+      "level": "mandatory",
+      "statement_hy": "բացատրել պարզ մեխանիզմների (լծակ, անշարժ և շարժական ճախարակներ, թեք հարթություն) կառուցվածքը և աշխատանքի սկզբունքը,(Հ8, Հ10)",
+      "skills": [
+        "S04",
+        "S06",
+        "S07"
+      ]
+    },
+    {
+      "ref": "M3",
+      "level": "mandatory",
+      "statement_hy": "սահմանել լծակի կանոնը, գրել նրա հավասարակշռության պայմանը,(Հ9, Հ10)",
+      "skills": [
+        "S05"
+      ]
+    },
+    {
+      "ref": "M4",
+      "level": "mandatory",
+      "statement_hy": "հաշվարկել պարզ մեխանիզմների օգտակար գործողության գործակիցը (Հ7, Հ30)",
+      "skills": [
+        "S08"
+      ]
+    },
+    {
+      "ref": "A1",
+      "level": "additional",
+      "statement_hy": "1) ներկայացնել ձիաուժը՝ որպես հզորության չափման միավոր,",
+      "skills": [
+        "S09"
+      ]
+    },
+    {
+      "ref": "A2",
+      "level": "additional",
+      "statement_hy": "2) բերել կենցաղում և տեխնիկայում, կենդանի օրգանիզմների հենաշարժողական համակարգում պարզ մեխանիզմների օգտագործման օրինակներ:",
+      "skills": [
+        "S10"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "code": "PHY7-U05-S01",
+      "short_code": "S01",
+      "name_hy": "Մեխանիկական աշխատանքի իմաստը և միավորը",
+      "role": "mandatory",
+      "outcomes": [
+        "M1"
+      ],
+      "printed_page_ranges": [
+        [
+          99,
+          101
+        ]
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 4
+      },
+      "batch": 1,
+      "budget_rationale": "Work/no-work with a named force and motion; the meaning of one joule."
+    },
+    {
+      "code": "PHY7-U05-S02",
+      "short_code": "S02",
+      "name_hy": "Մեխանիկական աշխատանքի հաշվում",
+      "role": "mandatory",
+      "outcomes": [
+        "M1"
+      ],
+      "printed_page_ranges": [
+        [
+          99,
+          101
+        ],
+        [
+          114,
+          115
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 2,
+        "mastery": 4
+      },
+      "batch": 1,
+      "budget_rationale": "Direct/inverse A=Fs, comparisons and lifting; integration with previously taught units and speed."
+    },
+    {
+      "code": "PHY7-U05-S03",
+      "short_code": "S03",
+      "name_hy": "Հզորության իմաստը, միավորը և հաշվումը",
+      "role": "mandatory",
+      "outcomes": [
+        "M1"
+      ],
+      "printed_page_ranges": [
+        [
+          102,
+          104
+        ],
+        [
+          114,
+          115
+        ]
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 6
+      },
+      "batch": 1,
+      "budget_rationale": "Meaning of watt, A/t, comparison with both variables changing, work-time graph, and taught N=Fv."
+    },
+    {
+      "code": "PHY7-U05-S04",
+      "short_code": "S04",
+      "name_hy": "Լծակի կառուցվածքը և ուժի բազուկը",
+      "role": "mandatory",
+      "outcomes": [
+        "M2"
+      ],
+      "printed_page_ranges": [
+        [
+          105,
+          107
+        ]
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 4
+      },
+      "batch": 2,
+      "budget_rationale": "Support, force/application line, perpendicular arm and how position affects required force."
+    },
+    {
+      "code": "PHY7-U05-S05",
+      "short_code": "S05",
+      "name_hy": "Լծակի հավասարակշռության պայմանը",
+      "role": "mandatory",
+      "outcomes": [
+        "M3"
+      ],
+      "printed_page_ranges": [
+        [
+          106,
+          109
+        ],
+        [
+          115,
+          115
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 4,
+        "mastery": 6
+      },
+      "batch": 2,
+      "budget_rationale": "F1l1=F2l2, inverse relationships, unknown arm/force and interpretation of measured balances."
+    },
+    {
+      "code": "PHY7-U05-S06",
+      "short_code": "S06",
+      "name_hy": "Անշարժ և շարժական ճախարակներ",
+      "role": "mandatory",
+      "outcomes": [
+        "M2"
+      ],
+      "printed_page_ranges": [
+        [
+          109,
+          111
+        ],
+        [
+          115,
+          115
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 4,
+        "mastery": 6
+      },
+      "batch": 2,
+      "budget_rationale": "Fixed versus moving axle, direction change, ideal force ratio and corresponding rope travel."
+    },
+    {
+      "code": "PHY7-U05-S07",
+      "short_code": "S07",
+      "name_hy": "Թեք հարթությունը և մեխանիկայի «ոսկի կանոնը»",
+      "role": "mandatory",
+      "outcomes": [
+        "M2"
+      ],
+      "printed_page_ranges": [
+        [
+          111,
+          113
+        ],
+        [
+          116,
+          117
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 2,
+        "mastery": 4
+      },
+      "batch": 3,
+      "budget_rationale": "Same-height ramp comparisons, force-distance trade-off and ideal work balance."
+    },
+    {
+      "code": "PHY7-U05-S08",
+      "short_code": "S08",
+      "name_hy": "Օգտակար գործողության գործակիցը",
+      "role": "mandatory",
+      "outcomes": [
+        "M4"
+      ],
+      "printed_page_ranges": [
+        [
+          112,
+          117
+        ]
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 6
+      },
+      "batch": 3,
+      "budget_rationale": "Useful versus total work, ratio/percent, inverse calculations and measured incline efficiency."
+    },
+    {
+      "code": "PHY7-U05-S09",
+      "short_code": "S09",
+      "name_hy": "Ձիաուժը՝ որպես հզորության միավոր",
+      "role": "additional",
+      "outcomes": [
+        "A1"
+      ],
+      "printed_page_ranges": [],
+      "planning_budget": {
+        "practice": 2,
+        "diagnostic": 0,
+        "mastery": 0
+      },
+      "batch": 1,
+      "budget_rationale": "Small optional unit-recognition strand; no memorized conversion or new assessment gate."
+    },
+    {
+      "code": "PHY7-U05-S10",
+      "short_code": "S10",
+      "name_hy": "Պարզ մեխանիզմների կիրառությունները",
+      "role": "additional",
+      "outcomes": [
+        "A2"
+      ],
+      "printed_page_ranges": [
+        [
+          105,
+          107
+        ],
+        [
+          109,
+          111
+        ]
+      ],
+      "planning_budget": {
+        "practice": 6,
+        "diagnostic": 0,
+        "mastery": 0
+      },
+      "batch": 3,
+      "budget_rationale": "Optional familiar applications in household/technology and a supplied musculoskeletal model."
+    }
+  ],
+  "planning_budget": {
+    "practice": 88,
+    "diagnostic": 24,
+    "mastery": 40,
+    "total": 152,
+    "approved": false,
+    "qualified_capacity": 0,
+    "session_length": null,
+    "pass_rule": null,
+    "form_count": null
+  },
+  "batches": [
+    {
+      "batch": 1,
+      "skills": [
+        "S01",
+        "S02",
+        "S03",
+        "S09"
+      ],
+      "practice": 32,
+      "diagnostic": 8,
+      "mastery": 14,
+      "total": 54
+    },
+    {
+      "batch": 2,
+      "skills": [
+        "S04",
+        "S05",
+        "S06"
+      ],
+      "practice": 28,
+      "diagnostic": 10,
+      "mastery": 16,
+      "total": 54
+    },
+    {
+      "batch": 3,
+      "skills": [
+        "S07",
+        "S08",
+        "S10"
+      ],
+      "practice": 28,
+      "diagnostic": 6,
+      "mastery": 10,
+      "total": 44
+    }
+  ],
+  "candidate_briefs": [
+    {
+      "id": "S01-C01",
+      "skill": "S01",
+      "title_hy": "Ուժ կա, իսկ աշխատանք կա՞",
+      "evidence_intent": "Distinguish pushing a stationary cabinet from moving a body along a stated force.",
+      "screening_boundary": "Name the force and body; effort or fatigue alone is not mechanical work.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S01-C02",
+      "skill": "S01",
+      "title_hy": "Ի՞նչ է նշանակում մեկ ջոուլը",
+      "evidence_intent": "Interpret the force-distance meaning of 1 J.",
+      "screening_boundary": "Unit recall alone overlaps U01-S06; record intentional practice variants separately.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S02-C01",
+      "skill": "S02",
+      "title_hy": "Տարբեր ուժեր, նույն աշխատանքը",
+      "evidence_intent": "Compare two force-distance products, including inverse reasoning for equal work.",
+      "screening_boundary": "Constant force in the direction of motion; changed numbers are not new reasoning.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S02-C02",
+      "skill": "S02",
+      "title_hy": "Որքա՞ն աշխատանք է պետք բեռը բարձրացնելու համար",
+      "evidence_intent": "Combine a supplied mass, g and vertical rise for uniform lifting.",
+      "screening_boundary": "Name the lifting force; no signed gravity-work or energy-theorem prerequisite.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S03-C01",
+      "skill": "S03",
+      "title_hy": "Նույն աշխատանքը՝ տարբեր ժամանակներում",
+      "evidence_intent": "Compare power, then distinguish equal power from equal total work.",
+      "screening_boundary": "Specify the work/time interval; a nameplate maximum does not state actual output.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S03-C02",
+      "skill": "S03",
+      "title_hy": "Հզորությունը՝ աշխատանքի գրաֆիկից",
+      "evidence_intent": "Read a supplied straight work-time graph and calculate A/t.",
+      "screening_boundary": "Source graph is practice-exposed; compare U03 graph/proportional reasoning and retain the work claim.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S04-C01",
+      "skill": "S04",
+      "title_hy": "Որտե՞ղ է հենման կետը",
+      "evidence_intent": "Identify the support and the two forces in a clearly labelled lever.",
+      "screening_boundary": "Attach the diagram; identifying a tool by appearance alone does not explain its mechanism.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S04-C02",
+      "skill": "S04",
+      "title_hy": "Ո՞ր հատվածն է ուժի բազուկը",
+      "evidence_intent": "Choose the perpendicular distance from support to line of action.",
+      "screening_boundary": "Use right-angle geometry from the source; no trigonometry or inferred diagram scale.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S05-C01",
+      "skill": "S05",
+      "title_hy": "Կհավասարակշռվի՞ լծակը",
+      "evidence_intent": "Compare force-arm products and decide a balance condition.",
+      "screening_boundary": "State opposing turning effects and a balanced/negligible lever weight; force equality alone is insufficient.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S05-C02",
+      "skill": "S05",
+      "title_hy": "Փորձի գրառումներն ի՞նչ են ցույց տալիս",
+      "evidence_intent": "Check a table from several measured lever balances.",
+      "screening_boundary": "Instrument tolerance and actual observations matter; answering cannot certify doing the experiment.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S06-C01",
+      "skill": "S06",
+      "title_hy": "Ո՞ր ճախարակն է շարժվում բեռի հետ",
+      "evidence_intent": "Distinguish the two pulley arrangements and explain their use.",
+      "screening_boundary": "Include a complete rope path and attachment points; do not infer advantage from wheel count.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S06-C02",
+      "skill": "S06",
+      "title_hy": "Ուժի շահումը և պարանի ճանապարհը",
+      "evidence_intent": "Link a single movable pulley to half the load force and twice the rope travel.",
+      "screening_boundary": "State negligible friction, rope/pulley weight, two parallel supporting segments and uniform lifting; no general compound-pulley formula.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S07-C01",
+      "skill": "S07",
+      "title_hy": "Նույն բարձրությունը՝ տարբեր ճանապարհներով",
+      "evidence_intent": "Compare ideal ramps reaching the same height.",
+      "screening_boundary": "Keep load and height the same; pull parallel to the plane and neglect friction explicitly.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S07-C02",
+      "skill": "S07",
+      "title_hy": "Ուժի մեջ շահելը աշխատանքի մեջ շահե՞լ է",
+      "evidence_intent": "Evaluate a claim that a simple machine reduces both input force and input distance for the same useful task.",
+      "screening_boundary": "Exact force-distance reciprocity belongs to the ideal model; real losses do not create useful work.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S08-C01",
+      "skill": "S08",
+      "title_hy": "Ո՞ր աշխատանքն է օգտակար",
+      "evidence_intent": "Identify useful lifting work and total pulling work before calculating efficiency.",
+      "screening_boundary": "Use vertical rise for mgh and travel along the pull for Fl; distinguish fraction from percentage.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S08-C02",
+      "skill": "S08",
+      "title_hy": "Ինչո՞ւ է ստացվել 100%-ից մեծ ՕԳԳ",
+      "evidence_intent": "Audit supplied incline measurements and identify a specified recording/calculation error.",
+      "screening_boundary": "Do not force real measurements to an expected answer; finite precision and multiple possible errors need explicit data.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S09-C01",
+      "skill": "S09",
+      "title_hy": "Ձիաուժով ի՞նչ են չափում",
+      "evidence_intent": "Identify horsepower as a power unit from the official additional outcome.",
+      "screening_boundary": "Programme-backed; the printed chapter does not give a horsepower conversion. Do not invent one.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S09-C02",
+      "skill": "S09",
+      "title_hy": "Միավորի սխալ ընտրությունը",
+      "evidence_intent": "Correct a statement confusing a power unit with a force or work unit.",
+      "screening_boundary": "Intentional practice reinforcement of C01, not a second independent reasoning claim; omit if unhelpful.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S10-C01",
+      "skill": "S10",
+      "title_hy": "Ինչպե՞ս է աշխատում մկրատը",
+      "evidence_intent": "Locate support and applied forces in a supplied scissors or balance illustration.",
+      "screening_boundary": "Explain mechanism, not only name the object; screen against S04/S05 and U04-S01.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S10-C02",
+      "skill": "S10",
+      "title_hy": "Լծակը մարդու ձեռքում",
+      "evidence_intent": "Interpret a supplied arm model with joint, muscle force and load already labelled.",
+      "screening_boundary": "No untaught anatomy, muscle-force calculation or mandatory pass condition; use textbook terminology and a complete image.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    }
+  ],
+  "assets": [
+    {
+      "id": "work-time-graph",
+      "printed_page": 104,
+      "pdf_page": 105,
+      "crop_pdf_points": [
+        309,
+        291,
+        421,
+        367
+      ],
+      "render_scale": 3,
+      "pixels": [
+        336,
+        228
+      ],
+      "sha256": "d55bdf2138ccc07981f7d696a0ce67942fd3add7360ce8e2f280d50bce2381c2",
+      "alt_hy": "Աշխատանքի կախումը ժամանակից․ A առանցքը՝ ջոուլներով, t առանցքը՝ վայրկյաններով։",
+      "path": "docs/assets/chapter-v-preparation/work-time-graph.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "fig71-lever",
+      "printed_page": 106,
+      "pdf_page": 107,
+      "crop_pdf_points": [
+        42,
+        286,
+        186,
+        360
+      ],
+      "render_scale": 3,
+      "pixels": [
+        432,
+        222
+      ],
+      "sha256": "e8cf95e430a21d1b67e0206d57865b87fa6d4817e5baa186e0cf659f6852ac96",
+      "alt_hy": "Լծակի սխեման՝ O հենման կետով, F₁ և F₂ ուժերով ու l₁ և l₂ բազուկներով։",
+      "path": "docs/assets/chapter-v-preparation/fig71-lever.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "fig75-76-pulleys",
+      "printed_page": 110,
+      "pdf_page": 111,
+      "crop_pdf_points": [
+        66,
+        316,
+        406,
+        455
+      ],
+      "render_scale": 3,
+      "pixels": [
+        1020,
+        417
+      ],
+      "sha256": "2053192e54492be7532901035f49f3dec2e92351d1402790aae89d0f66d60426",
+      "alt_hy": "Անշարժ և շարժական ճախարակների սխեմաները՝ բեռով, պարանով և ուժերի ուղղություններով։",
+      "path": "docs/assets/chapter-v-preparation/fig75-76-pulleys.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "fig78-incline",
+      "printed_page": 116,
+      "pdf_page": 117,
+      "crop_pdf_points": [
+        43,
+        173,
+        167,
+        251
+      ],
+      "render_scale": 3,
+      "pixels": [
+        372,
+        234
+      ],
+      "sha256": "0c7e26eeb60257db9d9e75f36565a7ef8b4e661f2ed25b307dc0ca836b92e4cb",
+      "alt_hy": "Թեք հարթության սխեման՝ F քարշի ուժով, mg ծանրության ուժով, l ճանապարհով և h բարձրությամբ։",
+      "path": "docs/assets/chapter-v-preparation/fig78-incline.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "fig79-incline-lab",
+      "printed_page": 116,
+      "pdf_page": 117,
+      "crop_pdf_points": [
+        43,
+        434,
+        221,
+        525
+      ],
+      "render_scale": 3,
+      "pixels": [
+        534,
+        273
+      ],
+      "sha256": "99e33544e5d88ab0f59cb04cf0a12882205ebca212eba314b1bc7983d8969460",
+      "alt_hy": "Ուժաչափով չորսուն թեք հարթության երկայնքով քաշելու փորձասարքը։",
+      "path": "docs/assets/chapter-v-preparation/fig79-incline-lab.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    }
+  ],
+  "practical_tasks": [
+    {
+      "id": "LAB-LEVER",
+      "source": "§35, printed pp.108–109; programme table 5 row 9",
+      "supports": [
+        "M2",
+        "M3"
+      ],
+      "status": "draft performance rubric; no implementation or learner performance"
+    },
+    {
+      "id": "LAB-INCLINE",
+      "source": "§39, printed pp.116–117; programme table 5 row 9",
+      "supports": [
+        "M2",
+        "M4"
+      ],
+      "status": "draft performance rubric; no implementation or learner performance"
+    }
+  ],
+  "comparison": {
+    "status": "not performed; source and catalogue mapping only",
+    "related_skills": [
+      "PHY7-U01-S04",
+      "PHY7-U01-S05",
+      "PHY7-U01-S06",
+      "PHY7-U01-S07",
+      "PHY7-U01-S08",
+      "PHY7-U01-S09",
+      "PHY7-U01-S10",
+      "PHY7-U03-S03",
+      "PHY7-U03-S04",
+      "PHY7-U03-S05",
+      "PHY7-U03-S06",
+      "PHY7-U03-S07",
+      "PHY7-U03-S08",
+      "PHY7-U04-S01",
+      "PHY7-U04-S03",
+      "PHY7-U04-S05",
+      "PHY7-U04-S06",
+      "PHY7-U04-S09",
+      "PHY7-U04-S10",
+      "PHY7-U04-S11",
+      "PHY7-U04-S12",
+      "PHY7-U04-S13"
+    ],
+    "required_before": "any new/revised question deployment"
+  },
+  "boundaries": [
+    "No Chapter V unit, skill or release at the read-only catalogue checkpoint.",
+    "Zero questions, guides, definitions, content approvals, allocations, activations or learner events created by this sprint.",
+    "No session lengths, pass thresholds, attempt count or form allocations proposed as approved.",
+    "No Chapter II/III/IV protected-parallel or provisional-pilot exception extends to Chapter V.",
+    "Additional A1/A2 have practice-only budgets; no mandatory assessment slots.",
+    "Both laboratory activities remain in scope as practical work; MCQs cannot certify performed experiments."
+  ]
+}

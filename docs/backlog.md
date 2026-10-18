@@ -253,6 +253,20 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
+## Chapter V mapping and next authoring — 15E.1, 2026-10-18
+
+- [x] Verify Chapter V textbook §§32–39, current programme Theme 5 and unchanged source hashes.
+- [x] Map four mandatory/two additional outcomes to ten proposed skills; preserve all component claims.
+- [x] Prepare the 152-slot provisional budget (88/24/40), three large batches (54/54/44) and 20 unassessed briefs.
+- [x] Draft two separate laboratory-performance rubrics and natural Armenian hint/physics boundaries.
+- [x] Extract and visually verify five exact source images with provenance and alt text.
+- [x] Verify read-only catalogue, source crosswalk, totals, asset hashes and document alignment; save planning evidence.
+- [ ] Accept the proposed plan and start 15E.2: governed inactive foundation, fresh whole-bank comparison and Batch 1.
+- [ ] Complete authorized authoring, current-version QA and actual ordinary approvals for all retained batches.
+- [ ] Resolve the practical delivery and assessment contract; qualify forms and obtain Chapter-V-specific release authorization.
+
+[Chapter V map](chapter-v-preparation.md) · [Planning QA](evidence/chapter-v-preparation-qa-20261018.json). Notion synchronization is verified against the merged source separately; the completed preparation tasks do not certify that sync.
+
 ## Chapter IV knowledge-only pilot — 15D.6, 2026-10-18
 
 - [x] Record owner approval of the exact contract, five revisions and knowledge-only pilot with specialist review deferred.
