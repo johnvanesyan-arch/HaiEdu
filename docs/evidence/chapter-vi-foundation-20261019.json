@@ -1,0 +1,105 @@
+{
+  "schema": "haiedu-chapter-foundation-staging-v1",
+  "sprint": "15F.2",
+  "chapter": "PHY7-U06",
+  "base_commit": "e57ce889ba2ce94330a129df1ae03bcc9e103bf4",
+  "executed_at": "2026-10-19T16:18:58.900661Z",
+  "project_ref": "xzyjvwiiibuarpotppid",
+  "identities": {
+    "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6",
+    "reconciliationId": "d47c56a2-736e-591d-bb06-26c9776fe1a5",
+    "releaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+    "topicIds": {
+      "PHY7-U06-T01": "9a6fa6a9-1268-59d4-a780-81bc3b923ca9",
+      "PHY7-U06-T02": "e7c41a4b-a927-5ece-a6d0-951bbcc4fe0e",
+      "PHY7-U06-T03": "7a462014-a5bb-5013-b5dc-41dc3829e8f4",
+      "PHY7-U06-T04": "0f5e2a99-18b8-5626-9af0-5801578795d5",
+      "PHY7-U06-T05": "1485281a-ee9b-5e26-8712-d21799e07a3f",
+      "PHY7-U06-T06": "e9c6472e-9f2d-5d64-8612-0e71bdb65478"
+    },
+    "outcomeIds": {
+      "M1": "c23dccbf-f749-5c95-90d9-e9ecaef6b7ba",
+      "M2": "285aa52a-322a-5c32-89d2-f2605f9da2b7",
+      "M3": "62629243-050d-5f76-93e4-5baa49ca1819",
+      "M4": "fbff07e4-6c6f-5af6-be89-a42789804dd4",
+      "M5": "5c653ac9-d780-5905-be7d-89cf0eb769af",
+      "M6": "881a2978-a264-5fc8-bd39-bddde1161e28",
+      "M7": "3f268847-a92d-55b3-b5db-6f4f71f13b51",
+      "M8": "f98163c5-cf15-5009-8f2c-6628b709e8c1",
+      "M9": "39b26739-b195-5228-8a37-9185fc9f801d",
+      "M10": "a8823fdb-6fbf-5297-9bca-ae35c7f15a01",
+      "M11": "aa814130-3a53-5fdc-9bbd-71f919d7feff",
+      "A1": "8fe2d070-812a-59a5-bd06-925c2d03737b",
+      "A2": "3636e1cb-b8f2-54fc-a450-7065e720e685",
+      "A3": "0eefb081-3c08-56e9-a92a-421070e55f3b",
+      "A4": "98a87092-bf2a-557e-8545-c87f9ea92e37"
+    },
+    "skillIds": {
+      "PHY7-U06-S01": "df096120-4696-535e-8e14-4354667056cc",
+      "PHY7-U06-S02": "2172d40e-4589-5330-a3ad-7c81dd9245db",
+      "PHY7-U06-S03": "1714925e-656e-52b1-89d3-c32dadb159f1",
+      "PHY7-U06-S04": "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+      "PHY7-U06-S05": "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+      "PHY7-U06-S06": "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+      "PHY7-U06-S07": "71155603-a474-5eaf-afce-31028bcc58b1",
+      "PHY7-U06-S08": "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+      "PHY7-U06-S09": "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+      "PHY7-U06-S10": "60c60768-b1ae-506a-be1a-f9f0b453f083",
+      "PHY7-U06-S11": "0db94e18-7eba-5440-8bab-c3069deafa1a",
+      "PHY7-U06-S12": "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed",
+      "PHY7-U06-S13": "1f2fa89e-ea77-5a63-a960-9724a155156a",
+      "PHY7-U06-S14": "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+      "PHY7-U06-S15": "23619b6a-59c4-5e90-bb51-592b97438441",
+      "PHY7-U06-S16": "c82de1f3-13d8-5cc1-86e7-34e205cadc8d"
+    },
+    "expectedDeltas": {
+      "units": 1,
+      "topics": 6,
+      "learning_outcomes": 15,
+      "curriculum_reconciliation_runs": 1,
+      "learning_outcome_normative_mappings": 15,
+      "skills": 16,
+      "skill_curriculum_reconciliations": 16,
+      "skill_outcome_curriculum_mappings": 24,
+      "skill_outcomes": 24,
+      "curriculum_releases": 1,
+      "curriculum_release_units": 1,
+      "curriculum_release_reconciliations": 1,
+      "curriculum_release_outcomes": 15,
+      "curriculum_release_skills": 16,
+      "curriculum_release_gate_checks": 7
+    }
+  },
+  "source": {
+    "textbook_sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "preparation_evidence_sha256": "dddf0cae079c06cb19abc9cdf9baa9f6d70b513e59472760c090952e7cf55f97",
+    "preparation_qa_sha256": "c7f84e4e62b4481eab9a42ebff35d94df1b21c1e87ef11113d9420aa5649519a"
+  },
+  "transaction": {
+    "rollback_rehearsal": "passed",
+    "guarded_commit": "passed",
+    "guarded_public_tables": 63,
+    "prior_rows_preserved": true,
+    "sql_sha256": "3dc8edcb5646f03b41c5812329bc503c20cb1d388dc7764b8124e951f177415c"
+  },
+  "foundation_counts": {
+    "unit": 1,
+    "topics": 6,
+    "learning_outcomes": 15,
+    "skills": 16,
+    "skill_outcome_mappings": 24,
+    "draft_release": 1,
+    "release_gate_checks": 7,
+    "passed_gates": 2,
+    "pending_gates": 5
+  },
+  "runtime_isolation": {
+    "items": 0,
+    "assessment_pools": 0,
+    "assessment_forms": 0,
+    "assessment_policy_bindings": 0,
+    "learning_model_runtime_bindings": 0,
+    "activated_release": false
+  },
+  "status": "inactive governed authoring foundation; no content approval, allocation or learner release"
+}

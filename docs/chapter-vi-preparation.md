@@ -1,6 +1,6 @@
 # Chapter VI map — «Ճնշում։ Ճնշումն առօրյա կյանքում և տեխնիկայում»
 
-**Sprint 15F.1 · 2026-10-19 · Preparation complete; proposed plan awaiting owner acceptance after the gas-buoyancy scope decision.** The retained proposal is **16 skills, 242 question slots in three large batches and five separately tracked practical activities**. This is subject-aware content planning. No content has been staged or approved, and no database, shared-core, API or learner-runtime change is included. The [project status register](project-status.md) remains authoritative.
+**Sprint 15F.1 preparation accepted and advanced under 15F.2 · 2026-10-19.** The owner accepted **16 skills, a 242-question ceiling in three batches of 70/90/82, four Practice-only non-gating skills and five separately tracked practical activities**. Sprint 15F.2 created the inactive governed foundation and staged Batch 1 for ordinary review. No assessment contract, allocation, activation or learner release is included. The [project status register](project-status.md) remains authoritative.
 
 ## Source scope
 
@@ -8,7 +8,7 @@ The approved *Ֆիզիկա 7*, Գագիկ Մելիքյան / Սոս Մաիլյա
 
 The [current official programme](https://www.arlis.am/hy/acts/229331), N 40-Ն as amended by N 36-Ն, is the incorporation effective 14 August 2026. Its [appendix](https://www.arlis.am/acts/files/363077/966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478) was downloaded and hash-verified for Chapter V on 18 October, then reused byte-for-byte: 248,283 bytes, SHA-256 `966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478`. Grade 7 Theme 6 has **eleven mandatory and four additional outcomes**. The programme also lists three laboratory activities and demonstrations. Later-grade pressure/fluids outcomes, including Bernoulli’s equation, are outside this Grade 7 map.
 
-The [read-only catalogue](evidence/chapter-vi-catalogue-20261019.json) at **2026-10-19T15:04:26.750918+00:00** contains Physics units I–V and their existing releases. No `PHY7-U06` unit, skill, item or release-unit record exists. This is an identity/scope checkpoint, not a whole-bank semantic comparison or fresh production acceptance. [Structured planning evidence](evidence/chapter-vi-preparation-20261019.json) preserves the exact outcome cell, source hashes, page ranges, budgets and crop provenance.
+The [read-only catalogue](evidence/chapter-vi-catalogue-20261019.json) at **2026-10-19T15:04:26.750918+00:00** is the historical pre-staging checkpoint: it contained Physics units I–V and no `PHY7-U06` row. Sprint 15F.2 subsequently created the inactive U06 foundation and staged Batch 1. [Structured planning evidence](evidence/chapter-vi-preparation-20261019.json) preserves the exact outcome cell, source hashes, page ranges, budgets and crop provenance; [staging evidence](chapter-vi-batch-01-staging.md) records the current catalogue boundary.
 
 ## Outcome crosswalk
 
@@ -162,6 +162,7 @@ Nine exact crops were visually inspected. They are teaching-exposed source refer
 
 Freeze the complete current, draft, retired, historical, guide and exposure corpus for the proposed skills and related skills. Compare scenarios, diagrams, solution steps, required inference, answer and distractor logic, including within-batch pairs. The read-only catalogue does not close this gate. Intentional Practice reinforcement must be labelled; overlapping Diagnostic/Mastery candidates must be reworked or held. Untaught later-grade fluid mechanics is excluded.
 
-## Remaining acceptance needed for 15F.2
+## 15F.2 execution checkpoint
 
-The 2026-10-19 owner decision closes only the gas-buoyancy procedure follow-up. Before Sprint 15F.2 creates the inactive Chapter VI foundation or stages Batch 1, the owner must still accept or revise the retained 16-skill crosswalk, 242-slot ceiling, 70/90/82 batch split, S13/S14–S16 non-gating roles and five practical records. That later step would still create no learner release or assessment contract.
+The owner accepted the retained 16-skill crosswalk, 242-slot ceiling, 70/90/82 batch split, S13/S14–S16 Practice-only non-gating roles and five practical records. The inactive foundation is committed. The frozen whole-bank comparison assessed all 70 Batch 1 candidates, and the defensible final set—44 Practice, 10 Diagnostic and 16 Mastery—was staged with 44 guides and 44 misconception definitions. Exact-source technical QA passed 70/70 questions and 44/44 guides. Ordinary exact-version review remains pending. No assessment contract, allocation, scoring rule, activation or learner release is authorized. [Comparison](chapter-vi-batch-01-comparison.md) · [Staging](chapter-vi-batch-01-staging.md).
+

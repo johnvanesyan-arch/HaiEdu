@@ -1,0 +1,192 @@
+{
+  "schema": "haiedu-content-batch-staging-v1",
+  "sprint": "15F.2",
+  "chapter": "PHY7-U06",
+  "batch": 1,
+  "base_commit": "e57ce889ba2ce94330a129df1ae03bcc9e103bf4",
+  "staged_at": "2026-10-19T16:23:16.791842Z",
+  "verified_at": "2026-10-19T16:25:48.966029+00:00",
+  "project_ref": "xzyjvwiiibuarpotppid",
+  "owner_authorization_evidence": "docs/evidence/chapter-vi-plan-acceptance-20261019.json",
+  "inventory": {
+    "questions": 70,
+    "practice": 44,
+    "diagnostic": 10,
+    "mastery": 16,
+    "practice_guides": 44,
+    "misconception_definitions": 44,
+    "distractor_mappings": 210,
+    "options": 280,
+    "immutable_item_versions": 70,
+    "image_backed_practice_questions": 2,
+    "protected_candidates": 26
+  },
+  "skill_allocation": {
+    "S01": {
+      "practice": 12,
+      "diagnostic": 4,
+      "mastery_check": 4
+    },
+    "S02": {
+      "practice": 8,
+      "diagnostic": 2,
+      "mastery_check": 4
+    },
+    "S03": {
+      "practice": 10,
+      "diagnostic": 2,
+      "mastery_check": 4
+    },
+    "S04": {
+      "practice": 8,
+      "diagnostic": 2,
+      "mastery_check": 4
+    },
+    "S14": {
+      "practice": 6,
+      "diagnostic": 0,
+      "mastery_check": 0
+    }
+  },
+  "whole_bank_comparison": {
+    "corpus_sha256": "bb405fdc43d93854a21faf0755ea542f5645277ce83234302a4d5e667c4ef71e",
+    "proof_sha256": "9dbd09d428b3b3ee33a8f447a7b94397f35c696d618f85610ef22dbffeb496cc",
+    "current_items": 1009,
+    "historical_item_versions": 894,
+    "current_template_guides": 372,
+    "runtime_guide_versions": 775,
+    "authoring_guide_versions": 1270,
+    "misconceptions": 875,
+    "exposure_identities": 44,
+    "retrieval_profiles": 5195,
+    "within_batch_pairs": 2415,
+    "substantive_overlaps": 0,
+    "untaught_science": 0,
+    "four_candidates_reworked_before_staging": true,
+    "method": "Lexical retrieval ranked neighbors; the primary agent separately compared scenario, steps, inference, answer, distractors, explanation, stimulus and guide."
+  },
+  "technical_qa": {
+    "questions": {
+      "passed": 70,
+      "errors": 0,
+      "warnings": 0,
+      "deployed_evaluator_sha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2"
+    },
+    "guides": {
+      "passed": 44,
+      "errors": 0,
+      "warnings": 0,
+      "deployed_validator_sha256": "e19ecbe9b6113f536617ce538832c460d3f37d79c8c47757c04dd908a119561d"
+    },
+    "method": "Exact deployed v11 source replay against rollback and committed readback catalogues; actor-null technical QA rows saved after guarded readback."
+  },
+  "database_verification": {
+    "guarded_tables": 63,
+    "modified_tables": 15,
+    "untouched_table_fingerprints_exact": true,
+    "count_deltas_exact": true,
+    "prior_row_multisets_verified_by_staging_transaction": true,
+    "final_readback": {
+      "content": {
+        "items": 70,
+        "guides": 44,
+        "scopes": 70,
+        "options": 280,
+        "families": 70,
+        "mappings": 210,
+        "practice": 44,
+        "qaErrors": 0,
+        "qaPassed": 70,
+        "templates": 70,
+        "answerKeys": 70,
+        "diagnostic": 10,
+        "draftItems": 70,
+        "qaWarnings": 0,
+        "itemVersions": 70,
+        "masteryCheck": 16,
+        "misconceptions": 44,
+        "qaNonNullActors": 0,
+        "needsReviewItems": 70,
+        "provisionalItems": 70,
+        "learnerVisibleItems": 0,
+        "protectedCandidates": 26,
+        "runtimeGuideVersions": 44,
+        "allocationAllowedItems": 0,
+        "authoringGuideVersions": 44
+      },
+      "foundation": {
+        "unit": {
+          "id": "32fef232-5c51-56f0-85ec-274b9de712c6",
+          "code": "PHY7-U06",
+          "status": "review",
+          "sequenceOrder": 6
+        },
+        "gates": {
+          "skills_mapped": "pending",
+          "content_qa_passed": "pending",
+          "outcomes_reconciled": "pending",
+          "external_sme_approved": "pending",
+          "assessment_scope_bound": "pending",
+          "normative_sources_registered": "passed",
+          "official_programme_identified": "passed"
+        },
+        "skills": 16,
+        "topics": 6,
+        "release": {
+          "id": "44e5e99a-43bc-5937-8793-b2c614e38700",
+          "status": "draft",
+          "releaseKey": "physics7_u06_2026_08_14_draft_r6",
+          "activatedAt": null,
+          "predecessorReleaseId": null
+        },
+        "reviewSkills": 16,
+        "programmeOutcomes": 15,
+        "skillOutcomeMappings": 24
+      },
+      "observedAt": "2026-10-19T16:25:48.966029+00:00",
+      "runtimeIsolation": {
+        "itemReviews": 0,
+        "formItemLinks": 0,
+        "modelBindings": 0,
+        "poolItemLinks": 0,
+        "policyBindings": 0,
+        "poolDefinitions": 0,
+        "studentExposures": 0,
+        "learningSessionItems": 0,
+        "chapterReviewExposures": 0
+      }
+    }
+  },
+  "images": [
+    {
+      "path": "web/assets/textbook/physics7-2023/p118-pressure-contact.png",
+      "printed_page": 118,
+      "sha256": "1d210d0408c36c3b1fa3a337cadf67e13d4b7c17a257b531d346c76238ea0763"
+    },
+    {
+      "path": "web/assets/textbook/physics7-2023/p126-pascal-law.png",
+      "printed_page": 126,
+      "sha256": "b07e44cdfa379a005bee8b5f8dc02218a09c2ba3d751e0b7912018784d0ad5c4"
+    }
+  ],
+  "review": {
+    "status": "pending ordinary authenticated exact-version review",
+    "questions": "https://www.haiedu.am/content-review.html",
+    "guides": "https://www.haiedu.am/content-guides.html",
+    "misconceptions": "https://www.haiedu.am/content-misconceptions.html",
+    "filter": "PHY7-U06 / S01, S02, S03, S04, S14"
+  },
+  "runtime_boundary": {
+    "release_status": "draft",
+    "learner_visible_items": 0,
+    "allocation_allowed_items": 0,
+    "pool_links": 0,
+    "form_links": 0,
+    "policy_bindings": 0,
+    "model_bindings": 0,
+    "learner_exposures": 0,
+    "assessment_contract": "not created",
+    "activation": "not authorized"
+  },
+  "protected_content_handling": "Diagnostic/Mastery prompts, options and keys are stored in the protected database and restricted evidence package; public repository evidence records counts, codes, hashes and decisions only."
+}
