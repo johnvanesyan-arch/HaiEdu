@@ -19,7 +19,12 @@ Physics 7 (Melikyan–Mailyan, 2023), §§36–39, printed pp.111–117 / PDF pp
 
 Armenian questions, distractors, explanations, hints and examples were checked separately from physics. Tasks distinguish path along the plane from vertical rise, reconstruct displacement from endpoints when necessary, pair each force with its point’s travel, and state ideal assumptions explicitly. Real losses imply useful work below total work; 100% is reserved for an explicit loss-free model. The combined-trials task defines its requested ratio of summed works, without assuming an untaught averaging rule. The arm model supplies its pivot and arms and does not require anatomy. No friction coefficients, cosine work, energy theorem, rotational acceleration or untaught pulley formula is required.
 
-Two exact public textbook crops accompany Practice only: figure 78 (incline geometry) and figure 79 (lab setup), both printed p.116. No gauge value is inferred from the lab illustration. Required values are in the question. Complete arrows/labels and Armenian alt text are retained. Exact PDF crops were inspected at 358px content width and are published under `web/assets/textbook/physics7-2023/`. Postmerge HTTP/source-hash/commit verification is saved in the closure receipt. No authenticated runtime/browser acceptance is claimed for this content-only change.
+Two exact public textbook crops accompany Practice only: figure 78 (incline geometry) and figure 79 (lab setup), both printed p.116. No gauge value is inferred from the lab illustration. Required values are in the question. Complete arrows/labels and Armenian alt text are retained. Exact PDF crops were inspected at 358px content width and are published under `web/assets/textbook/physics7-2023/`. Postmerge HTTP/source-hash/commit verification is saved in the closure receipt. No authenticated runtime/browser acceptance is claimed for this content-only change. The per-candidate matrix records an illustration decision for all 49 candidates, including asset URL/hash/alt text for the two image tasks and a task-specific no-image rationale for every verbal task.
+
+| Question | Source illustration | Required interpretation |
+| --- | --- | --- |
+| PHY7-U05-S07-I06 | [Figure 78, printed p.116](../web/assets/textbook/physics7-2023/p116-fig78-incline.png) | Distinguish the labelled along-plane path from vertical rise. |
+| PHY7-U05-S08-I10 | [Figure 79, printed p.116](../web/assets/textbook/physics7-2023/p116-fig79-incline-lab.png) | Recognize the parallel pull arrangement; no gauge value is requested. |
 
 ## Comparison and rework decisions
 

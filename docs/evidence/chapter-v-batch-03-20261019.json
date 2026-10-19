@@ -411,5 +411,15 @@
     }
   ],
   "imageVerification": "Exact PDF source crops inspected at358px content width; no authenticated browser acceptance claimed. Postmerge production HTTP/hash and release-commit verification are recorded in the delivery closure.",
-  "sharedCoreChanges": false
+  "sharedCoreChanges": false,
+  "illustrationDecisionCoverage": {
+    "candidateCount": 49,
+    "textbookImageQuestions": [
+      "PHY7-U05-S07-I06",
+      "PHY7-U05-S08-I10"
+    ],
+    "selfContainedVerbalQuestions": 47,
+    "perCandidateMatrix": "chapter-v-batch-03-redacted-matrix-20261019.json",
+    "decisionSource": "Already-staged immutable private candidate profiles; public traceability expanded without any item/spec/approval mutation."
+  }
 }
