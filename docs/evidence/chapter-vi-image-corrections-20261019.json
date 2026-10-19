@@ -4,6 +4,11 @@
   "sprint": "15F.5",
   "recordedDate": "2026-10-19",
   "sourceMainSha": "f34ee753d62e3cb140aef2352972badef419c767",
+  "implementationPr": 271,
+  "implementationMergeSha": "f64deec141f4825e51b8c12f1d264882178f4b28",
+  "prCiRun": 39329592155,
+  "postMergeCiRun": 39330077092,
+  "repositoryChecksPassed": true,
   "database": {
     "rollbackRehearsalAt": "2026-10-19T21:33:39.496043+00:00",
     "committedAt": "2026-10-19T21:34:05.515786+00:00",
@@ -25,7 +30,17 @@
     "formLinks": 0,
     "learningSessionItems": 0,
     "studentExposures": 0,
-    "chapterReviewExposures": 0
+    "chapterReviewExposures": 0,
+    "qaRecordedAt": "2026-10-19T21:54:39.465066+00:00",
+    "finalReadbackAt": "2026-10-19T21:56:27.280971+00:00",
+    "allTargetsVersion2": true,
+    "allTargetsPendingReview": true,
+    "allOptionsPreserved": true,
+    "allAnswerKeysPreserved": true,
+    "allConfigsAndHintsPreserved": true,
+    "allSourceReferencesPreserved": true,
+    "allMisconceptionMappingsPreserved": true,
+    "promptChangedCodes": ["PHY7-U06-S13-I05"]
   },
   "comparison": {
     "target": "PHY7-U06-S13-I05",
@@ -73,18 +88,32 @@
     {"itemCode":"PHY7-U06-S13-I05","path":"web/assets/textbook/physics7-2023/p152-liquid-density-comparison-v2.png","width":928,"height":622,"bytes":251801,"sha256":"8e3d02ffa9b5e836881ea887b6b45dd3fd0610bec3f08d29e8ad3b547c08d8d6"}
   ],
   "productionAssetVerification": {
-    "status": "pending_repository_deployment",
-    "verifiedAt": null,
-    "verifiedCount": 0
+    "status": "passed",
+    "verifiedAt": "2026-10-19T21:56:31.371919Z",
+    "verifiedCount": 9,
+    "failureCount": 0,
+    "releaseMarkerCommit": "f64deec141f4825e51b8c12f1d264882178f4b28",
+    "deploymentId": "dpl_Dto2eoyvMmgjGnojsvbi9SBVRUzZ",
+    "deploymentUrl": "armenian-mastery-platform-jf3oo0zry-kupershtokh-7785.vercel.app",
+    "productionAlias": "www.haiedu.am",
+    "productionAliasUpdatedAt": "2026-10-19T21:50:56.049Z",
+    "exactByteCounts": true,
+    "exactSha256": true,
+    "exactDimensions": true,
+    "contentType": "image/png"
   },
   "technicalQa": {
-    "status": "pending_live_asset_verification",
+    "status": "passed",
     "runKey": "15F5-image-corrections-20261019",
     "expectedRows": 9,
-    "recordedRows": 0
+    "recordedRows": 9,
+    "passedRows": 9,
+    "errors": 0,
+    "warnings": 0,
+    "observedAt": "2026-10-19T21:54:39.465066+00:00"
   },
   "artifactHashes": {
-    "manifestSha256": "a66008f295468552f630ce10db0baa415a42f98059e7dde10c612e952ca5b1ee",
+    "manifestSha256": "dbe86ba8583aadd523511f4fcaa230e1f2ac47e44b0d1ca3646e1772745636b3",
     "contentSqlSha256": "4b3af572fa12be0a510103c4aa50ff1e9af35a80c9d862379b55f9b6878a8a28",
     "qaSqlSha256": "21e67048f075b4c2aa66ec0508f62477c12050cefeb41a062e49495cb44d4d04",
     "comparisonJsonSha256": "437c36fc936e0ac3460d6559df95ff813718db0dc5752fa7f4fde6e276d8638b",

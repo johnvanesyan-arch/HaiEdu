@@ -178,7 +178,7 @@ At this checkpoint, the cumulative inactive catalogue contained **160 questions:
 
 Production now has 233 approved questions and nine owner-selected v2 questions awaiting exact-version review. All nine use replacement illustrations supplied for their exact prompts and saved under new `-v2.png` paths. Eight retain all learner text; `PHY7-U06-S13-I05` clarifies the pictured balance arrangement while retaining answer `C`, all choices, explanation, hints and misconception mappings.
 
-The S13 wording refresh covered 5,991 comparison profiles and related manual checks. It remains an intentional Practice variant with no independent-capacity claim, substantive duplicate or untaught science. The guarded transaction preserved v1 history and the inactive release boundary. Live asset readback, nine v2 technical-QA rows and exact-version human review remain before those nine revisions can be approved. [Correction record](chapter-vi-image-corrections.md).
+The S13 wording refresh covered 5,991 comparison profiles and related manual checks. It remains an intentional Practice variant with no independent-capacity claim, substantive duplicate or untaught science. The guarded transaction preserved v1 history and the inactive release boundary. Merge `f64deec141f4825e51b8c12f1d264882178f4b28` is live; all nine asset hashes/dimensions and nine v2 technical-QA records pass. Exact-version human review remains before those nine revisions can be approved. [Correction record](chapter-vi-image-corrections.md).
 
 ## 15F.4 execution checkpoint
 

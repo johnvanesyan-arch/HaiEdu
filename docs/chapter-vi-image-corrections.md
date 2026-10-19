@@ -40,5 +40,5 @@ The guarded transaction was rehearsed with rollback and then committed. It chang
 
 At the write checkpoint Chapter VI contained **233 approved questions and these nine review-pending v2 questions**, for 242 total. The 146 guides and 158 misconception definitions remain drafts. Release `physics7_u06_2026_08_14_draft_r6` remains inactive; U06 still has zero pools, form links, learning-session items, or recorded learner exposures. This correction does not authorize assessment allocation, activation, or learner release.
 
-Production asset readback and the nine v2 technical-QA records are completed only after the repository deployment serves every new path with its expected byte hash. See the dated evidence record for the exact asset and database receipts.
+PR #271 merged at `f64deec141f4825e51b8c12f1d264882178f4b28` after every PR and post-merge release check passed. The exact commit is live on `www.haiedu.am`. All nine public PNGs returned their expected byte counts, SHA-256 hashes and dimensions. The follow-up QA transaction recorded **9/9 passes, zero errors and zero warnings**; final database readback confirms all nine v2 items are still review-pending, all supporting content is preserved, and the inactive zero-allocation/zero-exposure boundary remains intact. See the dated evidence record for the exact receipts.
 
