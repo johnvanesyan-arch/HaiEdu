@@ -1,0 +1,488 @@
+{
+  "schemaVersion": 1,
+  "scope": "Chapter V production acceptance database preservation",
+  "sourceCommit": "9f73f75146961119b3a22a0b98ce9ce2ff620ded",
+  "workflowRun": 39267457694,
+  "status": "passed",
+  "evidenceSource": "Separate service-side read-only SQL readbacks; not inferred from browser/dashboard checks",
+  "beforeObservedAt": "2026-10-19T14:07:56.104162+00:00",
+  "afterObservedAt": "2026-10-19T14:24:42.690405+00:00",
+  "tableCount": 59,
+  "fingerprintAlgorithm": "MD5 of sorted row-MD5 multiset over PostgreSQL to_jsonb(row)::text",
+  "beforeReadbackSha256": "232d4b009b49cf9229eb928d730245f4f8e2e48f2279f8e4ef0a99ab80b4ba55",
+  "afterReadbackSha256": "061bbc59a314745c4e8648d2eef8040db62d97bbeb7c2e35606f62177ac111c2",
+  "tables": [
+    {
+      "table": "academic_mastery_policy_activation",
+      "beforeCount": 1,
+      "afterCount": 1,
+      "beforeFingerprint": "6e1a63fb6eec8f81e4d1792078f49c47",
+      "afterFingerprint": "6e1a63fb6eec8f81e4d1792078f49c47",
+      "unchanged": true
+    },
+    {
+      "table": "academic_mastery_policy_versions",
+      "beforeCount": 1,
+      "afterCount": 1,
+      "beforeFingerprint": "33b38545c0070113c573947187bc96ab",
+      "afterFingerprint": "33b38545c0070113c573947187bc96ab",
+      "unchanged": true
+    },
+    {
+      "table": "assessment_blueprint_items",
+      "beforeCount": 1491,
+      "afterCount": 1491,
+      "beforeFingerprint": "a653f78cbe5a361bfa7fdc72ba7ce56a",
+      "afterFingerprint": "a653f78cbe5a361bfa7fdc72ba7ce56a",
+      "unchanged": true
+    },
+    {
+      "table": "assessment_blueprints",
+      "beforeCount": 23,
+      "afterCount": 23,
+      "beforeFingerprint": "ca53b2ae2467e24cab6d7ce48088d9f9",
+      "afterFingerprint": "ca53b2ae2467e24cab6d7ce48088d9f9",
+      "unchanged": true
+    },
+    {
+      "table": "assessment_form_items",
+      "beforeCount": 383,
+      "afterCount": 383,
+      "beforeFingerprint": "a373b375994d7a860636934dbd0b8097",
+      "afterFingerprint": "a373b375994d7a860636934dbd0b8097",
+      "unchanged": true
+    },
+    {
+      "table": "assessment_forms",
+      "beforeCount": 24,
+      "afterCount": 24,
+      "beforeFingerprint": "b5364a09df318ae6be6c676f0b80e05b",
+      "afterFingerprint": "b5364a09df318ae6be6c676f0b80e05b",
+      "unchanged": true
+    },
+    {
+      "table": "assessment_policy_bindings",
+      "beforeCount": 16,
+      "afterCount": 16,
+      "beforeFingerprint": "59bde6e71fda5e91b050bd6f6c3b315a",
+      "afterFingerprint": "59bde6e71fda5e91b050bd6f6c3b315a",
+      "unchanged": true
+    },
+    {
+      "table": "assessment_pool_curriculum_reconciliations",
+      "beforeCount": 15,
+      "afterCount": 15,
+      "beforeFingerprint": "f5ba1e54ced43272345ec01764c7ec98",
+      "afterFingerprint": "f5ba1e54ced43272345ec01764c7ec98",
+      "unchanged": true
+    },
+    {
+      "table": "assessment_pool_items",
+      "beforeCount": 1009,
+      "afterCount": 1009,
+      "beforeFingerprint": "3c02b9c5e941cac263b7010ba6795860",
+      "afterFingerprint": "3c02b9c5e941cac263b7010ba6795860",
+      "unchanged": true
+    },
+    {
+      "table": "assessment_pools",
+      "beforeCount": 16,
+      "afterCount": 16,
+      "beforeFingerprint": "d02c1fe60137a6200fb6e124660f58cf",
+      "afterFingerprint": "d02c1fe60137a6200fb6e124660f58cf",
+      "unchanged": true
+    },
+    {
+      "table": "attempts",
+      "beforeCount": 42,
+      "afterCount": 42,
+      "beforeFingerprint": "34d7f71a2768a1afe6f357721e668393",
+      "afterFingerprint": "34d7f71a2768a1afe6f357721e668393",
+      "unchanged": true
+    },
+    {
+      "table": "chapter_mastery_states",
+      "beforeCount": 1,
+      "afterCount": 1,
+      "beforeFingerprint": "9029019bf1569cae15fd93aa8b4ecff0",
+      "afterFingerprint": "9029019bf1569cae15fd93aa8b4ecff0",
+      "unchanged": true
+    },
+    {
+      "table": "chapter_review_cycles",
+      "beforeCount": 0,
+      "afterCount": 0,
+      "beforeFingerprint": "d41d8cd98f00b204e9800998ecf8427e",
+      "afterFingerprint": "d41d8cd98f00b204e9800998ecf8427e",
+      "unchanged": true
+    },
+    {
+      "table": "chapter_review_item_exposures",
+      "beforeCount": 0,
+      "afterCount": 0,
+      "beforeFingerprint": "d41d8cd98f00b204e9800998ecf8427e",
+      "afterFingerprint": "d41d8cd98f00b204e9800998ecf8427e",
+      "unchanged": true
+    },
+    {
+      "table": "chapter_review_requirements",
+      "beforeCount": 1,
+      "afterCount": 1,
+      "beforeFingerprint": "88e05bc404e2045c5cfcbc2c8c5a8729",
+      "afterFingerprint": "88e05bc404e2045c5cfcbc2c8c5a8729",
+      "unchanged": true
+    },
+    {
+      "table": "chapter_review_sessions",
+      "beforeCount": 0,
+      "afterCount": 0,
+      "beforeFingerprint": "d41d8cd98f00b204e9800998ecf8427e",
+      "afterFingerprint": "d41d8cd98f00b204e9800998ecf8427e",
+      "unchanged": true
+    },
+    {
+      "table": "curriculum_reconciliation_runs",
+      "beforeCount": 5,
+      "afterCount": 5,
+      "beforeFingerprint": "28584a9199da31137c9a32854b0db8ec",
+      "afterFingerprint": "28584a9199da31137c9a32854b0db8ec",
+      "unchanged": true
+    },
+    {
+      "table": "curriculum_release_gate_checks",
+      "beforeCount": 35,
+      "afterCount": 35,
+      "beforeFingerprint": "8dddabcdc54a97bb7e9fbf720959b334",
+      "afterFingerprint": "8dddabcdc54a97bb7e9fbf720959b334",
+      "unchanged": true
+    },
+    {
+      "table": "curriculum_release_item_families",
+      "beforeCount": 786,
+      "afterCount": 786,
+      "beforeFingerprint": "29c55d0859525890a5766965169cebd3",
+      "afterFingerprint": "29c55d0859525890a5766965169cebd3",
+      "unchanged": true
+    },
+    {
+      "table": "curriculum_release_outcomes",
+      "beforeCount": 38,
+      "afterCount": 38,
+      "beforeFingerprint": "70af787704dc949a9bdad890fe5b148c",
+      "afterFingerprint": "70af787704dc949a9bdad890fe5b148c",
+      "unchanged": true
+    },
+    {
+      "table": "curriculum_release_reconciliations",
+      "beforeCount": 5,
+      "afterCount": 5,
+      "beforeFingerprint": "0e6cc7ef5e30c0dda40459c843560eea",
+      "afterFingerprint": "0e6cc7ef5e30c0dda40459c843560eea",
+      "unchanged": true
+    },
+    {
+      "table": "curriculum_release_skills",
+      "beforeCount": 50,
+      "afterCount": 50,
+      "beforeFingerprint": "470c72713d36187e5ca2e7a328d2d172",
+      "afterFingerprint": "470c72713d36187e5ca2e7a328d2d172",
+      "unchanged": true
+    },
+    {
+      "table": "curriculum_release_units",
+      "beforeCount": 6,
+      "afterCount": 6,
+      "beforeFingerprint": "2f0bb624969682910f95373d14304f39",
+      "afterFingerprint": "2f0bb624969682910f95373d14304f39",
+      "unchanged": true
+    },
+    {
+      "table": "curriculum_releases",
+      "beforeCount": 6,
+      "afterCount": 6,
+      "beforeFingerprint": "d54f3e85ebda7d201814b50d0a442e94",
+      "afterFingerprint": "d54f3e85ebda7d201814b50d0a442e94",
+      "unchanged": true
+    },
+    {
+      "table": "curriculum_source_documents",
+      "beforeCount": 3,
+      "afterCount": 3,
+      "beforeFingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76",
+      "afterFingerprint": "d9bcea03118cbabd2fa60ce5c6c66a76",
+      "unchanged": true
+    },
+    {
+      "table": "item_answer_keys",
+      "beforeCount": 1009,
+      "afterCount": 1009,
+      "beforeFingerprint": "9f9f390a9ca816bd79554aa9614e2123",
+      "afterFingerprint": "9f9f390a9ca816bd79554aa9614e2123",
+      "unchanged": true
+    },
+    {
+      "table": "item_curriculum_scopes",
+      "beforeCount": 1009,
+      "afterCount": 1009,
+      "beforeFingerprint": "ab1857591ee686fb8f66c123fba4beb3",
+      "afterFingerprint": "ab1857591ee686fb8f66c123fba4beb3",
+      "unchanged": true
+    },
+    {
+      "table": "item_families",
+      "beforeCount": 787,
+      "afterCount": 787,
+      "beforeFingerprint": "218eb7ec77399d7b046e11d7a4d0d5c1",
+      "afterFingerprint": "218eb7ec77399d7b046e11d7a4d0d5c1",
+      "unchanged": true
+    },
+    {
+      "table": "item_family_curriculum_reconciliations",
+      "beforeCount": 787,
+      "afterCount": 787,
+      "beforeFingerprint": "fb91cf4c9568305b4d77bf1351f5d3e8",
+      "afterFingerprint": "fb91cf4c9568305b4d77bf1351f5d3e8",
+      "unchanged": true
+    },
+    {
+      "table": "item_misconception_mappings",
+      "beforeCount": 2486,
+      "afterCount": 2486,
+      "beforeFingerprint": "26df66441fbf15b201ace2fe211a3f63",
+      "afterFingerprint": "26df66441fbf15b201ace2fe211a3f63",
+      "unchanged": true
+    },
+    {
+      "table": "item_options",
+      "beforeCount": 3428,
+      "afterCount": 3428,
+      "beforeFingerprint": "a55e734e087520c717bce5a0720630a6",
+      "afterFingerprint": "a55e734e087520c717bce5a0720630a6",
+      "unchanged": true
+    },
+    {
+      "table": "item_qa_runs",
+      "beforeCount": 1295,
+      "afterCount": 1295,
+      "beforeFingerprint": "8309a099eb891f6442095865c2ee4453",
+      "afterFingerprint": "8309a099eb891f6442095865c2ee4453",
+      "unchanged": true
+    },
+    {
+      "table": "item_reviews",
+      "beforeCount": 1290,
+      "afterCount": 1290,
+      "beforeFingerprint": "1c1523643b39682ab6550bc10293ae36",
+      "afterFingerprint": "1c1523643b39682ab6550bc10293ae36",
+      "unchanged": true
+    },
+    {
+      "table": "item_template_remediation_guides",
+      "beforeCount": 372,
+      "afterCount": 372,
+      "beforeFingerprint": "49222717b50563a77c1b929fb87a33a9",
+      "afterFingerprint": "49222717b50563a77c1b929fb87a33a9",
+      "unchanged": true
+    },
+    {
+      "table": "item_templates",
+      "beforeCount": 787,
+      "afterCount": 787,
+      "beforeFingerprint": "f8d562a582a916223b51034be5f2f5e7",
+      "afterFingerprint": "f8d562a582a916223b51034be5f2f5e7",
+      "unchanged": true
+    },
+    {
+      "table": "item_versions",
+      "beforeCount": 894,
+      "afterCount": 894,
+      "beforeFingerprint": "658ae22927855567baf5405765dc44bc",
+      "afterFingerprint": "658ae22927855567baf5405765dc44bc",
+      "unchanged": true
+    },
+    {
+      "table": "items",
+      "beforeCount": 1009,
+      "afterCount": 1009,
+      "beforeFingerprint": "10f386565e9d1363fc7372fc6c35dc93",
+      "afterFingerprint": "10f386565e9d1363fc7372fc6c35dc93",
+      "unchanged": true
+    },
+    {
+      "table": "learning_model_configurations",
+      "beforeCount": 5,
+      "afterCount": 5,
+      "beforeFingerprint": "c1cb2956d97c252cf344fee85abe1cfe",
+      "afterFingerprint": "c1cb2956d97c252cf344fee85abe1cfe",
+      "unchanged": true
+    },
+    {
+      "table": "learning_model_runtime_bindings",
+      "beforeCount": 5,
+      "afterCount": 5,
+      "beforeFingerprint": "ce56ef7bf0fa3170d48df00ce9e68fa1",
+      "afterFingerprint": "ce56ef7bf0fa3170d48df00ce9e68fa1",
+      "unchanged": true
+    },
+    {
+      "table": "learning_outcome_normative_mappings",
+      "beforeCount": 38,
+      "afterCount": 38,
+      "beforeFingerprint": "e7cea90d2473c222732a999b0f7c5593",
+      "afterFingerprint": "e7cea90d2473c222732a999b0f7c5593",
+      "unchanged": true
+    },
+    {
+      "table": "learning_outcomes",
+      "beforeCount": 38,
+      "afterCount": 38,
+      "beforeFingerprint": "4fb9faf0e67d5f01ca6abee00ccbbdcb",
+      "afterFingerprint": "4fb9faf0e67d5f01ca6abee00ccbbdcb",
+      "unchanged": true
+    },
+    {
+      "table": "learning_session_items",
+      "beforeCount": 96,
+      "afterCount": 96,
+      "beforeFingerprint": "f73f590b4c920298a6e1a8479b6c7a74",
+      "afterFingerprint": "f73f590b4c920298a6e1a8479b6c7a74",
+      "unchanged": true
+    },
+    {
+      "table": "learning_sessions",
+      "beforeCount": 8,
+      "afterCount": 8,
+      "beforeFingerprint": "86580ceeda23b08cae316f5a90b210cd",
+      "afterFingerprint": "86580ceeda23b08cae316f5a90b210cd",
+      "unchanged": true
+    },
+    {
+      "table": "mastery_check_attempts",
+      "beforeCount": 1,
+      "afterCount": 1,
+      "beforeFingerprint": "792e2f317f1c2e2ddf41daa4af787800",
+      "afterFingerprint": "792e2f317f1c2e2ddf41daa4af787800",
+      "unchanged": true
+    },
+    {
+      "table": "misconception_review_events",
+      "beforeCount": 868,
+      "afterCount": 868,
+      "beforeFingerprint": "5f4fa46bb9634d54e1b86f01601cb083",
+      "afterFingerprint": "5f4fa46bb9634d54e1b86f01601cb083",
+      "unchanged": true
+    },
+    {
+      "table": "misconceptions",
+      "beforeCount": 875,
+      "afterCount": 875,
+      "beforeFingerprint": "288e4a8e4486ec97f1369168b8c8e1eb",
+      "afterFingerprint": "288e4a8e4486ec97f1369168b8c8e1eb",
+      "unchanged": true
+    },
+    {
+      "table": "recommendation_events",
+      "beforeCount": 824,
+      "afterCount": 824,
+      "beforeFingerprint": "dc1a5f6572318abdfe6bd504f8ec6577",
+      "afterFingerprint": "dc1a5f6572318abdfe6bd504f8ec6577",
+      "unchanged": true
+    },
+    {
+      "table": "remediation_events",
+      "beforeCount": 6,
+      "afterCount": 6,
+      "beforeFingerprint": "6c5aa87d43e93dbd18a26c73dae4e261",
+      "afterFingerprint": "6c5aa87d43e93dbd18a26c73dae4e261",
+      "unchanged": true
+    },
+    {
+      "table": "remediation_guide_authoring_versions",
+      "beforeCount": 1270,
+      "afterCount": 1270,
+      "beforeFingerprint": "c725e6082b0d517b8a4a87b05883c8d8",
+      "afterFingerprint": "c725e6082b0d517b8a4a87b05883c8d8",
+      "unchanged": true
+    },
+    {
+      "table": "remediation_guide_versions",
+      "beforeCount": 775,
+      "afterCount": 775,
+      "beforeFingerprint": "d1305913fe4f78cad871917e41370c6c",
+      "afterFingerprint": "d1305913fe4f78cad871917e41370c6c",
+      "unchanged": true
+    },
+    {
+      "table": "runtime_builds",
+      "beforeCount": 26,
+      "afterCount": 26,
+      "beforeFingerprint": "1639c6c4b7543d5f96da824e5ec13b10",
+      "afterFingerprint": "1639c6c4b7543d5f96da824e5ec13b10",
+      "unchanged": true
+    },
+    {
+      "table": "skill_curriculum_reconciliations",
+      "beforeCount": 50,
+      "afterCount": 50,
+      "beforeFingerprint": "d94686c522e99d86ba5bbd704633b6d4",
+      "afterFingerprint": "d94686c522e99d86ba5bbd704633b6d4",
+      "unchanged": true
+    },
+    {
+      "table": "skill_outcome_curriculum_mappings",
+      "beforeCount": 60,
+      "afterCount": 60,
+      "beforeFingerprint": "263d71da5cea991198c4f61fa9ff2461",
+      "afterFingerprint": "263d71da5cea991198c4f61fa9ff2461",
+      "unchanged": true
+    },
+    {
+      "table": "skill_outcomes",
+      "beforeCount": 60,
+      "afterCount": 60,
+      "beforeFingerprint": "4cd3e5c236ac0819748eae0062f2c7a2",
+      "afterFingerprint": "4cd3e5c236ac0819748eae0062f2c7a2",
+      "unchanged": true
+    },
+    {
+      "table": "skill_prerequisites",
+      "beforeCount": 17,
+      "afterCount": 17,
+      "beforeFingerprint": "29495957b75eeb48e09d6e19e18fac35",
+      "afterFingerprint": "29495957b75eeb48e09d6e19e18fac35",
+      "unchanged": true
+    },
+    {
+      "table": "skill_remediation_guides",
+      "beforeCount": 10,
+      "afterCount": 10,
+      "beforeFingerprint": "3a51fc6e3a850044cd5c01d3a1919b49",
+      "afterFingerprint": "3a51fc6e3a850044cd5c01d3a1919b49",
+      "unchanged": true
+    },
+    {
+      "table": "skills",
+      "beforeCount": 51,
+      "afterCount": 51,
+      "beforeFingerprint": "8ae0b3b4e40a64827f9859f3e9da9be8",
+      "afterFingerprint": "8ae0b3b4e40a64827f9859f3e9da9be8",
+      "unchanged": true
+    },
+    {
+      "table": "student_item_exposure_events",
+      "beforeCount": 44,
+      "afterCount": 44,
+      "beforeFingerprint": "4807b78c602d7a75ac8d0cd747a17188",
+      "afterFingerprint": "4807b78c602d7a75ac8d0cd747a17188",
+      "unchanged": true
+    },
+    {
+      "table": "student_skill_mastery_by_release",
+      "beforeCount": 13,
+      "afterCount": 13,
+      "beforeFingerprint": "2f4adfd4245382d10ee42fa849245706",
+      "afterFingerprint": "2f4adfd4245382d10ee42fa849245706",
+      "unchanged": true
+    }
+  ]
+}
