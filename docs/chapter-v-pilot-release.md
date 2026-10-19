@@ -1,6 +1,6 @@
 # Chapter V knowledge-only provisional pilot — 15E.6
 
-Owner approval: 2026-10-19T17:11:56+04:00, adopting the exact proposal from `21857537b15ad4d5959fa3476ab00e2b91274fd4`. Activation committed at **2026-10-19T14:01:19.796321+00:00**. Authenticated production acceptance remains pending until the main-only workflow passes on its exact deployed commit.
+Owner approval: 2026-10-19T17:11:56+04:00, adopting the exact proposal from `21857537b15ad4d5959fa3476ab00e2b91274fd4`. Activation committed at **2026-10-19T14:01:19.796321+00:00**. Authenticated production acceptance passed **191/191**, plus two-school isolation **54/54**, on exact deployed main `9f73f75146961119b3a22a0b98ce9ce2ff620ded` in [workflow 39267457694](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39267457694).
 
 ## Active contract
 
@@ -20,4 +20,4 @@ Two initial oversized connector requests returned `invalid_request_state`. Readb
 
 Specialist/exposure review and assessment of performed laboratory work are owner-deferred. This release assesses knowledge only and makes no practical-completion claim. The approved learner label is `Գիտելիքներ․ լաբորատոր աշխատանքների կատարումը չի գնահատվում`.
 
-The new main-only acceptance flow retains designated QA fixtures and verifies all five chapter contracts, reciprocal school isolation, mixed release/unit denials, protected direct-read controls and desktop/mobile switching without starting learning sessions or submitting answers. Its result must be recorded before 15E.6 is closed. The next content sprint is Chapter VI mapping.
+The new main-only acceptance flow retains designated QA fixtures and verifies all five chapter contracts, reciprocal school isolation, mixed release/unit denials, protected direct-read controls and desktop/mobile switching without starting learning sessions or submitting answers. Home → I at 1365 px and I → II → III → IV → V → I at 390 px passed for both schools without page errors or attempted learning mutations. Existing baselines/history/session state were unchanged; all 59 tracked public table fingerprints matched the post-activation baseline. Only login sessions created by the runner were closed. [Acceptance evidence](evidence/chapter-v-pilot-read-acceptance-20261019.json) · [Separate database preservation readbacks](evidence/chapter-v-pilot-database-preservation-20261019.json). 15E.6 is complete for this technical scope. The next content sprint is Chapter VI mapping; specialist/exposure and practical gates remain separate.
