@@ -6,7 +6,7 @@
     "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
     "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364"
   },
-  "ownerRequest": "All of Chapter 5 has been checked and approved. Proceed with the next sprint.",
+  "ownerRequest": "Owner approved the exact contract and Chapter V knowledge-only provisional pilot on 2026-10-19.",
   "approval": {
     "owner": "John",
     "at": "2026-10-19T17:11:56+04:00",
@@ -300,13 +300,13 @@
     }
   },
   "practicalEvidence": {
-    "recommendedMvp": "knowledge_only_pilot_pending_chapter_v_owner_decision",
+    "recommendedMvp": "owner_authorized_knowledge_only_pilot",
     "LAB-LEVER": "performed experiment not assessed by MCQ; supports M2/M3",
     "LAB-INCLINE": "performed experiment not assessed by MCQ; supports M2/M4",
     "teacherWorkflow": "not implemented; separate rubric/provenance required"
   },
-  "specialistReview": "pending_not_waived",
-  "exposureDisposition": "pending_not_waived",
+  "specialistReview": "owner_deferred_not_waived",
+  "exposureDisposition": "owner_deferred_not_waived",
   "liveActivationAuthorized": true,
   "referenceModelConfiguration": {
     "hinting": {
@@ -422,5 +422,5 @@
       }
     }
   },
-  "referenceOnlyModelWarning": "Reference defaults are historical model values; chapter-specific four contracts govern eventual session lengths. No new model is installed."
+  "referenceOnlyModelWarning": "Reference defaults are historical model values; the four active chapter-specific contracts govern session lengths. The chapter model binding reuses unchanged numerical parameters and the existing governed runtime."
 }
