@@ -276,7 +276,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Reconcile stale Chapter V current checkpoints in status/roadmap and align API/README/preparation summaries; preserve historical staging evidence.
 - [x] Owner adopts the exact Chapter V contract and knowledge-only provisional pilot, deferring specialist/exposure review and performed laboratory assessment (2026-10-19).
 - [x] 15E.6: guarded rollback restores all 59 table fingerprints; activate the authorized pilot and verify 458 exact configuration rows, 61 preservation scopes and unchanged earlier chapters.
-- [ ] 15E.6: verify authenticated production access/reporting/chapter switching on reviewed main; save evidence, merge closure documentation and sync Notion.
+- [x] 15E.6: verify authenticated production access/reporting/chapter switching on reviewed main (191/191; isolation 54/54) and save evidence; all 59 tables unchanged.
+- [x] Align closure documentation and retain evidence in this change. Notion synchronization is a separate post-merge action and is complete only when its readback receipt is saved.
 - [ ] Complete separately governed LAB-LEVER/LAB-INCLINE performed-evidence workflow and independent qualification before any claim of full practical/standards-verified completion.
 
 [15E.5 assessment/practical proposal](chapter-v-assessment-contract-proposal.md).
