@@ -79,14 +79,14 @@
   },
   "technicalQa": {
     "status": "pending_live_asset_verification",
-    "runKey": "15F4-image-corrections-20261019",
+    "runKey": "15F5-image-corrections-20261019",
     "expectedRows": 9,
     "recordedRows": 0
   },
   "artifactHashes": {
     "manifestSha256": "a66008f295468552f630ce10db0baa415a42f98059e7dde10c612e952ca5b1ee",
     "contentSqlSha256": "4b3af572fa12be0a510103c4aa50ff1e9af35a80c9d862379b55f9b6878a8a28",
-    "qaSqlSha256": "5928d364619461f94857ea9e56002dd31841687aa453d93edc8d077f95cca3e0",
+    "qaSqlSha256": "21e67048f075b4c2aa66ec0508f62477c12050cefeb41a062e49495cb44d4d04",
     "comparisonJsonSha256": "437c36fc936e0ac3460d6559df95ff813718db0dc5752fa7f4fde6e276d8638b",
     "comparisonScriptSha256": "c3ee1538e5c574d7cf6f4e2905ef61d5e39488b0247f09feeff05bd2b8ad295c"
   }

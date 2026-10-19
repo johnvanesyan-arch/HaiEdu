@@ -42,7 +42,7 @@ begin
          '[]'::jsonb,
          '[]'::jsonb,
          jsonb_build_object(
-           'runKey','15F4-image-corrections-20261019',
+           'runKey','15F5-image-corrections-20261019',
            'scope','owner-selected textbook image replacements',
            'assetUrl',i.stimulus->>'url',
            'assetSha256',i.stimulus#>>'{source,sha256}',
@@ -71,7 +71,7 @@ begin
     ])
       and q.version_no=2
       and q.passed=true
-      and q.details->>'runKey'='15F4-image-corrections-20261019'
+      and q.details->>'runKey'='15F5-image-corrections-20261019'
   ) <> 9 then
     raise exception 'chapter_vi_image_correction_qa_insert_incomplete';
   end if;
@@ -80,7 +80,7 @@ $qa$;
 
 select jsonb_build_object(
   'observedAt',clock_timestamp(),
-  'runKey','15F4-image-corrections-20261019',
+  'runKey','15F5-image-corrections-20261019',
   'passed',count(*) filter(where q.passed),
   'errors',sum(jsonb_array_length(q.errors)),
   'warnings',sum(jsonb_array_length(q.warnings))
@@ -93,6 +93,6 @@ where i.code = any(array[
   'PHY7-U06-S11-I01','PHY7-U06-S12-I01','PHY7-U06-S13-I05'
 ])
   and q.version_no=2
-  and q.details->>'runKey'='15F4-image-corrections-20261019';
+  and q.details->>'runKey'='15F5-image-corrections-20261019';
 
 commit;
