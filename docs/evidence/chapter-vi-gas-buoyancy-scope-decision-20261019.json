@@ -14,27 +14,15 @@
       "The five separately governed practical records remain unchanged."
     ]
   },
-  "plan_acceptance": {
-    "basis": "The owner's standing instruction to proceed with Chapter VI plus this explicit scope revision.",
-    "disposition": "15F.1 plan accepted with revision; 15F.2 may create the inactive governed foundation, freeze the related bank and assess Batch 1.",
-    "retained_plan": {
-      "skills": 16,
-      "candidate_ceiling": 242,
-      "practice": 146,
-      "diagnostic": 38,
-      "mastery": 58,
-      "batch_totals": [
-        70,
-        90,
-        82
-      ],
-      "practical_records": 5
-    }
-  },
   "preserved_boundaries": [
     "No question can by itself establish that a learner physically performed an experiment.",
     "No U06 database, release, API or runtime state was changed by this documentation decision.",
     "Whole-bank comparison remains mandatory before question staging.",
     "No session length, scoring rule, form allocation or learner release is approved by this decision."
-  ]
+  ],
+  "remaining_plan_gate": {
+    "status": "pending owner acceptance or revision",
+    "clarification": "This gas-buoyancy scope decision does not by itself approve the retained 16-skill crosswalk, 242-slot ceiling, 70/90/82 batch split, non-gating roles or five practical records.",
+    "required_before": "Creating the inactive U06 foundation or staging Batch 1."
+  }
 }
