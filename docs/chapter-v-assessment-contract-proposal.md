@@ -1,5 +1,7 @@
 # Chapter V assessment and practical-work proposal — 15E.5
 
+> **Adopted 2026-10-19:** John approved this exact contract and knowledge-only provisional pilot, with specialist/exposure review and performed laboratory assessment deferred. Activation is verified under [15E.6](chapter-v-pilot-release.md); the preparation-time statements below are historical.
+
 **2026-10-19 · Roadmap 4.08 · Ordinary review complete; assessment contract awaiting owner decision.**
 
 The live readback at **12:49:29 UTC** verifies **152 approved questions (88 Practice / 24 Diagnostic / 40 Mastery), 88 published guides and 108 active misconception definitions**. Every question has a current-v1 approval and passing technical QA. All learner wording, options, keys, mappings, hints, examples and definition text are unchanged from staging. Guide publication is authoring v3/runtime v2; all latest definition approval snapshots match. Existing immutable history is preserved. No repeat ordinary review is needed for these unchanged versions.
