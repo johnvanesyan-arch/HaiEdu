@@ -1,14 +1,14 @@
 # Chapter VI map — «Ճնշում։ Ճնշումն առօրյա կյանքում և տեխնիկայում»
 
-**Sprint 15F.1 preparation accepted and advanced under 15F.2 · 2026-10-19.** The owner accepted **16 skills, a 242-question ceiling in three batches of 70/90/82, four Practice-only non-gating skills and five separately tracked practical activities**. Sprint 15F.2 created the inactive governed foundation and staged Batch 1 for ordinary review. No assessment contract, allocation, activation or learner release is included. The [project status register](project-status.md) remains authoritative.
+**Sprint 15F.1 preparation accepted and advanced through 15F.3 · 2026-10-19.** The owner accepted **16 skills, a 242-question ceiling in three batches of 70/90/82, four Practice-only non-gating skills and five separately tracked practical activities**. Sprint 15F.2 created the inactive governed foundation and staged Batch 1; Sprint 15F.3 staged Batch 2. Both batches remain pending ordinary exact-version review. No assessment contract, allocation, activation or learner release is included. The [project status register](project-status.md) remains authoritative.
 
 ## Source scope
 
-The approved *Ֆիզիկա 7*, Գագիկ Մելիքյան / Սոս Մաիլյան, Էդիթ Պրինտ, 2023, covers Chapter VI in **§§40–55, printed pp.118–163 / PDF pp.119–164**. PDF SHA-256: `d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904`. The chapter terminology, formulas, examples and all nine prepared source crops come from this exact file.
+The approved *Ֆիզիկա 7*, Գագիկ Մելիքյան / Սոս Մաիլյան, Էդիթ Պրինտ, 2023, covers Chapter VI in **§§40–55, printed pp.118–163 / PDF pp.119–164**. PDF SHA-256: `d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904`. The chapter terminology, formulas, examples and all eleven available source crops come from this exact file; nine were prepared at planning and two more were added for Batch 2.
 
 The [current official programme](https://www.arlis.am/hy/acts/229331), N 40-Ն as amended by N 36-Ն, is the incorporation effective 14 August 2026. Its [appendix](https://www.arlis.am/acts/files/363077/966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478) was downloaded and hash-verified for Chapter V on 18 October, then reused byte-for-byte: 248,283 bytes, SHA-256 `966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478`. Grade 7 Theme 6 has **eleven mandatory and four additional outcomes**. The programme also lists three laboratory activities and demonstrations. Later-grade pressure/fluids outcomes, including Bernoulli’s equation, are outside this Grade 7 map.
 
-The [read-only catalogue](evidence/chapter-vi-catalogue-20261019.json) at **2026-10-19T15:04:26.750918+00:00** is the historical pre-staging checkpoint: it contained Physics units I–V and no `PHY7-U06` row. Sprint 15F.2 subsequently created the inactive U06 foundation and staged Batch 1. [Structured planning evidence](evidence/chapter-vi-preparation-20261019.json) preserves the exact outcome cell, source hashes, page ranges, budgets and crop provenance; [staging evidence](chapter-vi-batch-01-staging.md) records the current catalogue boundary.
+The [read-only catalogue](evidence/chapter-vi-catalogue-20261019.json) at **2026-10-19T15:04:26.750918+00:00** is the historical pre-staging checkpoint: it contained Physics units I–V and no `PHY7-U06` row. Sprint 15F.2 subsequently created the inactive U06 foundation and staged Batch 1; Sprint 15F.3 staged Batch 2. [Structured planning evidence](evidence/chapter-vi-preparation-20261019.json) preserves the exact outcome cell, source hashes, page ranges, budgets and crop provenance; [Batch 2 staging evidence](chapter-vi-batch-02-staging.md) records the current catalogue boundary.
 
 ## Outcome crosswalk
 
@@ -143,7 +143,7 @@ These **33 briefs** are planning prompts, not drafted questions or promised uniq
 
 ## Textbook media
 
-Nine exact crops were visually inspected. They are teaching-exposed source references for explanations and Practice only. They are **not protected assessment stimuli**. Diagnostic/Mastery diagrams must be independently authored and compared for structural equivalence; changing labels or colors is insufficient.
+Eleven exact crops were visually inspected: the nine planning assets plus the Batch 2 manometer and piston-pump crops. They are teaching-exposed source references for explanations and Practice only. They are **not protected assessment stimuli**. Diagnostic/Mastery diagrams must be independently authored and compared for structural equivalence; changing labels or colors is insufficient.
 
 | Asset | Printed page | Use |
 | --- | ---: | --- |
@@ -152,6 +152,8 @@ Nine exact crops were visually inspected. They are teaching-exposed source refer
 | [communicating-vessels](assets/chapter-vi-preparation/communicating-vessels.png) | 131 | Նկ. 91 և 92․ հաղորդակից անոթներում համասեռ հեղուկի ազատ մակերևույթների նույն մակարդակը՝ անկախ անոթների ձևից։ |
 | [hydraulic-press](assets/chapter-vi-preparation/hydraulic-press.png) | 135 | Նկ. 99․ ջրաբաշխական մամլիչի սխեման՝ տարբեր մակերեսներով մխոցներով և նրանց վրա ազդող ուժերով։ |
 | [torricelli](assets/chapter-vi-preparation/torricelli.png) | 143 | Նկ. 105 և 106․ Տորիչելիի փորձը և գործող սնդիկային բարոմետրը։ |
+| [manometer](../web/assets/textbook/physics7-2023/p123-manometer.png) | 123 | Նկ. 84․ թաղանթավոր ճնշաչափի ամբողջական սխեման։ |
+| [piston-pump](../web/assets/textbook/physics7-2023/p147-piston-pump.png) | 147 | Նկ. 108․ մխոցավոր հեղուկային պոմպի ամբողջական սխեման և կափույրները։ |
 | [buoyant-force-measurement](assets/chapter-vi-preparation/buoyant-force-measurement.png) | 148 | Նկ. 109․ ուժաչափի ցուցմունքի փոփոխությունը մարմինը ջրում ընկղմելիս։ |
 | [liquid-density-comparison](assets/chapter-vi-preparation/liquid-density-comparison.png) | 152 | Ուժաչափի/կշեռքի օգնությամբ ջրում և կերոսինում մարմնի վրա ազդող արքիմեդյան ուժերի համեմատման սխեման։ |
 | [floating-conditions](assets/chapter-vi-preparation/floating-conditions.png) | 156 | Նկ. 113 և 114․ հեղուկում մարմնի վրա ազդող ուժերի և լողալու պայմանների պատկերումները։ |
@@ -165,4 +167,11 @@ Freeze the complete current, draft, retired, historical, guide and exposure corp
 ## 15F.2 execution checkpoint
 
 The owner accepted the retained 16-skill crosswalk, 242-slot ceiling, 70/90/82 batch split, S13/S14–S16 Practice-only non-gating roles and five practical records. The inactive foundation is committed. The frozen whole-bank comparison assessed all 70 Batch 1 candidates, and the defensible final set—44 Practice, 10 Diagnostic and 16 Mastery—was staged with 44 guides and 44 misconception definitions. Exact-source technical QA passed 70/70 questions and 44/44 guides. Ordinary exact-version review remains pending. No assessment contract, allocation, scoring rule, activation or learner release is authorized. [Comparison](chapter-vi-batch-01-comparison.md) · [Staging](chapter-vi-batch-01-staging.md).
+
+## 15F.3 execution checkpoint
+
+Batch 2 is committed as **90 draft candidates: 54 Practice, 14 Diagnostic and 22 Mastery** across S05, S06, S07, S08, S15 and S16, with 54 Practice guides and 56 misconception definitions. The post-Batch-1 complete corpus supplied 5,511 retrieval profiles; all 4,005 within-batch pairs were assessed. After editorial rework, the final set has zero substantive overlaps and zero untaught-science holds. Exact deployed-source QA passed 90/90 questions and 54/54 guides with zero errors or warnings. Five exact textbook crops support Practice items only.
+
+The cumulative inactive catalogue is **160 questions: 98 Practice, 24 Diagnostic and 38 Mastery**, with 98 guides and 100 definitions. All remain draft, review-pending, provisional, non-visible and non-allocatable. Batch 1’s exact catalogue projections are unchanged. Batch 3 retains 82 authoring slots. No assessment contract, allocation, scoring rule, activation or learner release is authorized. [Comparison](chapter-vi-batch-02-comparison.md) · [Staging](chapter-vi-batch-02-staging.md).
+
 
