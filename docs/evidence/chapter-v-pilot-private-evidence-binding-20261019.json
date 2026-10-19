@@ -1,0 +1,25 @@
+{
+  "schemaVersion": 1,
+  "scope": "Chapter V restricted pilot preparation/activation evidence",
+  "libraryFileId": "libfile_1528371e47a88191b609280d61346c75",
+  "immutableVersion": 0,
+  "archiveSha256": "ed27e4fb3307c4ca984c34237eece41eebc2bebf56e56f219e3fcb425810e6c5",
+  "archiveBytes": 1083814,
+  "members": {
+    "source.json": "808fbd3cbb0132cb5054b11d95428494e5931d2d339e96492a2e43fb61e33396",
+    "forms.json": "949a3189b6088b7694fa68cc8e7da686a10ca120566ce6b53594895cd11a556c",
+    "recipe.json": "fe98a6d7586aee207ebf19cc3d2440097f91d57715bd72aa69b0be6105e6d030",
+    "owner-authorization.json": "da33797e7ccdb951cd6ae9fa9d9c85db969d1ede27b904b887e905e2a6b6c3d7",
+    "configuration.json": "6fb996c0e8d34c9186eb31c89cf396496f583a943ec023f0389a321d454e4703",
+    "rehearse-compact.sql": "de8e98804bb9b6051d853ea740810a12693463fb9d3759aea84484580ab2adf2",
+    "activate-compact.sql": "7cd4a75b94659287f4ac447fa8bb82d68a24a8ee400393f3add3f5f6aab28e1b",
+    "release-rehearsal-result.json": "eaefc119eea5d6db454116e13258ab14832afcab0b02f7f280bab2dd570c50f2",
+    "release-state-after-rollback.json": "63f5b84f530fa6b3a7842fe5ab73cc7c422b0dff6bd5d4e1b2e15d87b8dbf6da",
+    "activation-result.json": "aec00f713fac3b384d0ce9365365fd528bbc15033efe6509fe5b9852984a2bc3",
+    "configuration-readback.json": "393a9981bc6cb6bf28eaa706aa534b6e5c0f6611b7383197e6ab3699084d9bd0",
+    "activation-verification.json": "b5e5118a7e80bd5b96eee4ee37065450aa795cf6531ed3e298ef284123f96a14",
+    "content-preservation.json": "25115b6535740ff3b1dacd5b945c0d7381ab5bc7fb6decf2bd2333798aadb20c"
+  },
+  "protectedContent": "not published in repository",
+  "laterClosureReceipts": "may be added without altering these bound members"
+}

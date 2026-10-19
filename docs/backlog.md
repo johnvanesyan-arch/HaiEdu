@@ -253,7 +253,7 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter V authoring, review closure and contract — 15E.1–15E.5, 2026-10-19 Asia/Yerevan
+## Chapter V authoring, review closure and contract — 15E.1–15E.6, 2026-10-19 Asia/Yerevan
 
 - [x] Verify Chapter V textbook §§32–39, current programme Theme 5 and unchanged source hashes.
 - [x] Map four mandatory/two additional outcomes to ten proposed skills; preserve all component claims.
@@ -274,8 +274,9 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Prepare four Chapter V policy contracts and five conditional forms: D12/P8/M12/R12, 10/12 plus eight required-skill minima, three Mastery attempts; 60 disjoint approved versions and four retained Mastery items.
 - [x] Pass four JS validations, four live read-only SQL scope checks and five scoring cases; verify all 59 tracked table fingerprints unchanged.
 - [x] Reconcile stale Chapter V current checkpoints in status/roadmap and align API/README/preparation summaries; preserve historical staging evidence.
-- [ ] Owner adopts or revises the proposed contract and Chapter-V-specific knowledge-only provisional scope, including explicit specialist/exposure disposition, or completes those gates first.
-- [ ] 15E.6: prepare guarded configuration/rollback, verify exact membership, activate the authorized pilot and verify production access/reporting/chapter switching.
+- [x] Owner adopts the exact Chapter V contract and knowledge-only provisional pilot, deferring specialist/exposure review and performed laboratory assessment (2026-10-19).
+- [x] 15E.6: guarded rollback restores all 59 table fingerprints; activate the authorized pilot and verify 458 exact configuration rows, 61 preservation scopes and unchanged earlier chapters.
+- [ ] 15E.6: verify authenticated production access/reporting/chapter switching on reviewed main; save evidence, merge closure documentation and sync Notion.
 - [ ] Complete separately governed LAB-LEVER/LAB-INCLINE performed-evidence workflow and independent qualification before any claim of full practical/standards-verified completion.
 
 [15E.5 assessment/practical proposal](chapter-v-assessment-contract-proposal.md).

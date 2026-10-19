@@ -1,0 +1,128 @@
+name: Chapter V pilot read acceptance
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      # Activated pilot: cover the runner, native pages, their API dependencies,
+      # the approved computed recipe URL, and relevant database contracts.
+      - docs/evidence/chapter-v-pilot-activation-20261019.json
+      - .github/workflows/chapter-v-pilot-read-acceptance.yml
+      - package-lock.json
+      - package.json
+      - scripts/chapter-ii-pilot-read-acceptance.mjs
+      - scripts/chapter-iii-pilot-read-acceptance.mjs
+      - scripts/chapter-v-pilot-read-acceptance.mjs
+      - scripts/chapter-iv-pilot-read-acceptance.mjs
+      - scripts/sprint-14-isolation.mjs
+      - scripts/stamp-release.mjs
+      - scripts/wait-for-production-release.mjs
+      - supabase/functions/_shared/academic-context.ts
+      - supabase/functions/_shared/analytics-evidence.mjs
+      - supabase/functions/_shared/assessment-policy.mjs
+      - supabase/functions/_shared/auth.ts
+      - supabase/functions/_shared/course-access.ts
+      - supabase/functions/_shared/curriculum-release.ts
+      - supabase/functions/_shared/governed-learning-runtime.mjs
+      - supabase/functions/_shared/initial-diagnostic.ts
+      - supabase/functions/_shared/institutional-teacher-analytics.ts
+      - supabase/functions/_shared/institutional-teacher-dashboard.ts
+      - supabase/functions/_shared/learning-model.ts
+      - supabase/functions/_shared/recommendation-telemetry.ts
+      - supabase/functions/_shared/student-dashboard-handler.mjs
+      - supabase/functions/_shared/student-learning-context.mjs
+      - supabase/functions/get-school-admin-overview/index.ts
+      - supabase/functions/get-school-teachers/index.ts
+      - supabase/functions/get-student-classes/index.ts
+      - supabase/functions/get-student-dashboard/index.ts
+      - supabase/functions/get-teacher-academic-context/index.ts
+      - supabase/functions/get-teacher-dashboard/index.ts
+      - supabase/functions/get-teacher-student/index.ts
+      - vercel.json
+      - web/account-roles.js
+      - web/app.js
+      - web/assessment-reporting.mjs
+      - web/base.css
+      - web/components.css
+      - web/config.js
+      - web/course-gate.js
+      - web/course-page.js
+      - web/course-workspace.css
+      - web/course.html
+      - web/home-class.js
+      - web/home.css
+      - web/index.html
+      - web/learning-extensions.mjs
+      - web/learning-navigation.mjs
+      - web/learning-player.mjs
+      - web/learning-stimulus.mjs
+      - web/multi-subject-home.js
+      - web/multi-subject.css
+      - web/remediation.js
+      - web/role-layout.css
+      - web/role-router.js
+      - web/session-watchdog.js
+      - web/student-courses.js
+      - web/student-shell.css
+      - web/student-shell.js
+      - web/styles.css
+      - web/tokens.css
+      - web/ux.css
+      - web/ux.js
+      - docs/evidence/chapter-iii-assessment-v2-configuration-20261015.json
+      - docs/evidence/chapter-v-assessment-v2-configuration-20261019.json
+      - docs/evidence/chapter-iv-assessment-v2-configuration-20261018.json
+      - supabase/migrations/*assessment_policy*.sql
+      - supabase/migrations/*mastery_form*.sql
+      - supabase/migrations/*curriculum_release*.sql
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sprint-14-isolation-qa
+  cancel-in-progress: false
+
+jobs:
+  authenticated-read-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Require reviewed main branch
+        run: test "$GITHUB_REF" = refs/heads/main
+      - uses: actions/checkout@v4
+      - name: Require recorded activation before installing browsers or loading credentials
+        run: test -f docs/evidence/chapter-v-pilot-activation-20261019.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - run: npx playwright install --with-deps chromium
+      - name: Wait for this frontend revision on production
+        run: node scripts/wait-for-production-release.mjs
+      - name: Verify Chapter V and preserved Chapters I/II/III without creating learning records
+        run: node scripts/chapter-v-pilot-read-acceptance.mjs
+        env:
+          QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
+          QA_SCHOOL_A_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_A_ADMIN_EMAIL }}
+          QA_SCHOOL_A_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_A_ADMIN_PASSWORD }}
+          QA_SCHOOL_A_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_A_TEACHER_EMAIL }}
+          QA_SCHOOL_A_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_A_TEACHER_PASSWORD }}
+          QA_SCHOOL_A_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_A_STUDENT_EMAIL }}
+          QA_SCHOOL_A_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_A_STUDENT_PASSWORD }}
+          QA_SCHOOL_B_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_B_ADMIN_EMAIL }}
+          QA_SCHOOL_B_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_B_ADMIN_PASSWORD }}
+          QA_SCHOOL_B_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_B_TEACHER_EMAIL }}
+          QA_SCHOOL_B_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_B_TEACHER_PASSWORD }}
+          QA_SCHOOL_B_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_B_STUDENT_EMAIL }}
+          QA_SCHOOL_B_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_B_STUDENT_PASSWORD }}
+      - name: Upload redacted acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: chapter-v-pilot-read-acceptance
+          path: qa-results/chapter-v-pilot-read-acceptance.json
+          if-no-files-found: warn
+          retention-days: 14

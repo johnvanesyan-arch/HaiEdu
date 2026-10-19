@@ -1,6 +1,6 @@
 # Chapter V map — «Աշխատանք և հզորություն»
 
-> **Execution update — 15E.5, 2026-10-19:** all 152 questions are approved, all 88 guides published and all 108 definitions active, with unchanged content and exact current-version bindings. Ordinary review is complete. The [assessment/practical proposal](chapter-v-assessment-contract-proposal.md) recommends D12/P8/M12/R12, 10/12 plus eight skill minima and three attempts. Adoption, practical/specialist/exposure disposition, allocation and explicit Chapter V release remain open. The preparation-time zero-write observations and proposal status below are historical.
+> **Execution update — 15E.6, 2026-10-19:** the owner adopted the exact contract and knowledge-only pilot. All 152 questions remain approved, 88 guides published and 108 definitions active. Five forms and four v2 contracts are provisionally activated; rollback and exact 458-row readback pass. Authenticated acceptance is pending. Specialist/exposure review and performed laboratory assessment are deferred. [Current release](chapter-v-pilot-release.md). The preparation-time observations below are historical.
 
 **Sprint 15E.1 · 2026-10-18 · Preparation complete; proposed plan awaiting owner acceptance.** The proposal is **10 skills, 152 questions in three large batches, and two separately tracked laboratory activities**. This is subject-aware content planning. No content has been staged or approved and no database, shared-core, API or learner-runtime change is included. The [project status register](project-status.md) remains authoritative.
 
