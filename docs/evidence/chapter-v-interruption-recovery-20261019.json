@@ -1,0 +1,124 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-19T14:42:53.185Z",
+  "sourceCommit": "f37f7d9436c7538f7e20280a21cb09305aa044b5",
+  "scope": "Read-only interruption recovery; documentation drift correction only",
+  "finding": {
+    "pr": 264,
+    "reviewedCommit": "f5ac7a44077fbf7c0e6fd88093df7f3095b1e212",
+    "reviewCreatedAt": "2026-10-19T14:35:42Z",
+    "affectedSummaries": [
+      "README.md",
+      "docs/sprint-roadmap.md"
+    ],
+    "description": "Final review found present-tense Notion synchronization pending statements after synchronization and readback had completed.",
+    "interruptionCause": "The available records do not establish why the chat process interrupted."
+  },
+  "release": {
+    "status": "pilot",
+    "activatedAt": "2026-10-19T14:01:19.796321+00:00",
+    "observedAt": "2026-10-19T14:41:51.477061+00:00",
+    "questions": [
+      {
+        "n": 152,
+        "status": "published",
+        "review_status": "approved"
+      }
+    ],
+    "forms": [
+      {
+        "code": "PHY7-U05-D-A-20261019",
+        "items": 12,
+        "status": "active"
+      },
+      {
+        "code": "PHY7-U05-D-B-20261019",
+        "items": 12,
+        "status": "active"
+      },
+      {
+        "code": "PHY7-U05-M-A-20261019",
+        "items": 12,
+        "status": "active"
+      },
+      {
+        "code": "PHY7-U05-M-B-20261019",
+        "items": 12,
+        "status": "active"
+      },
+      {
+        "code": "PHY7-U05-M-C-20261019",
+        "items": 12,
+        "status": "active"
+      }
+    ],
+    "externalSmeGate": "pending"
+  },
+  "verification": {
+    "mainCi": {
+      "runId": 39270092103,
+      "conclusion": "success",
+      "jobs": [
+        {
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "deployment": {
+      "context": "Vercel",
+      "state": "success"
+    },
+    "publicRelease": {
+      "url": "https://www.haiedu.am/release.json",
+      "httpStatus": 200,
+      "schemaVersion": 1,
+      "commit": "f37f7d9436c7538f7e20280a21cb09305aa044b5"
+    },
+    "notion": {
+      "pageId": "3df355a4-72bf-8135-85aa-c229c27f8f9c",
+      "roadmapVersion": "4.10",
+      "sourceCommit": "f37f7d9436c7538f7e20280a21cb09305aa044b5",
+      "nativeChildPages": 11,
+      "sourceStampVerified": true,
+      "children": [
+        "https://app.notion.com/p/3e0355a472bf81ceaeb2da136989cb1b",
+        "https://app.notion.com/p/3e0355a472bf81539ca9fdffd48ce43a",
+        "https://app.notion.com/p/3e1355a472bf81c5b493f7cc5a2b1b47",
+        "https://app.notion.com/p/3e1355a472bf81dab994d8f61e7e79ec",
+        "https://app.notion.com/p/3e1355a472bf817ba00dceb5a089320b",
+        "https://app.notion.com/p/3e1355a472bf81fc9074fbf9e4570cf4",
+        "https://app.notion.com/p/3e2355a472bf81f08d03efce86532330",
+        "https://app.notion.com/p/3e4355a472bf81a18f78ffb000551d93",
+        "https://app.notion.com/p/3e4355a472bf81bca43bd8557727ca7f",
+        "https://app.notion.com/p/3eb355a472bf814b9d25e587f26c22b4",
+        "https://app.notion.com/p/3eb355a472bf8143afe1d330b2bc7683"
+      ]
+    }
+  },
+  "repair": "Replace stale pending-sync wording with the evidenced completed checkpoint; retain historical receipts, roadmap 4.10, release scope and deferred gates.",
+  "deliveryBoundary": "This record verifies the pre-repair merged source. The repair commit's CI, merge and refreshed Notion stamp are recorded separately in the recovery closeout; this record does not pre-certify them.",
+  "changesExcluded": [
+    "database writes",
+    "release reactivation",
+    "learner-content edits",
+    "runtime or frontend changes",
+    "new production acceptance runs"
+  ]
+}
