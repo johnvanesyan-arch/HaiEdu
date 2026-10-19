@@ -278,7 +278,7 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] 15E.6: guarded rollback restores all 59 table fingerprints; activate the authorized pilot and verify 458 exact configuration rows, 61 preservation scopes and unchanged earlier chapters.
 - [x] 15E.6: verify authenticated production access/reporting/chapter switching on reviewed main (191/191; isolation 54/54) and save evidence; all 59 tables unchanged.
 - [x] Align closure documentation and retain the production acceptance and separate database-preservation evidence.
-- [ ] Sync Notion to the merged 15E.6 closure source and save the readback receipt, preserving all native child pages.
+- [x] Sync Notion to the merged 15E.6 closure source and save the verified readback receipt; all 11 native child pages are preserved. [Sync receipt](evidence/chapter-v-notion-sync-20261019.json).
 - [ ] Complete separately governed LAB-LEVER/LAB-INCLINE performed-evidence workflow and independent qualification before any claim of full practical/standards-verified completion.
 
 [15E.5 assessment/practical proposal](chapter-v-assessment-contract-proposal.md).

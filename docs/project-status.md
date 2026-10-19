@@ -1,7 +1,7 @@
 # Project status register
 
 
-**Updated:** 2026-10-19 Asia/Yerevan · 15E.6 Chapter V provisional pilot and authenticated acceptance complete · **Documentation reconciliation:** current checkpoints aligned; Notion synchronization follows merge and requires source-commit readback · **Roadmap:** 4.10
+**Updated:** 2026-10-19 Asia/Yerevan · 15E.6 Chapter V provisional pilot and authenticated acceptance complete · **Documentation reconciliation:** current checkpoints aligned; merged 15E.6 closure synchronized to Notion with verified source and 11 preserved native child pages · **Roadmap:** 4.10
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
@@ -96,7 +96,7 @@ Earlier connector failures (three `invalid_request_state` responses) are histori
 
 **Sprint 15E.6 complete for the knowledge-only provisional pilot:** Chapter V is active with **152 approved questions, 88 published guides and 108 active definitions**. D12/P8/M12/R12; Mastery **10/12 plus one correct in each of eight required skills**, three attempts. Five disjoint forms contain 60 approved versions; four retained Mastery questions remain unallocated. Rollback/458-row readback and 61 preservation scopes pass. Authenticated production acceptance passed **191/191**, plus two-school isolation **54/54**, with desktop/mobile switching across Chapters I–V and all 59 tracked tables unchanged through QA. Specialist/exposure review and performed laboratory assessment remain deferred. **Next: Chapter VI mapping.** [Release](chapter-v-pilot-release.md).
 
-Ordinary approval, QA, source/language comparisons and exact content remain unchanged. S01–S08 form the required Diagnostic/Mastery/readiness scope; S09/S10 remain Practice/Review only. The existing numerical learning model and runtime are reused. LAB-LEVER and LAB-INCLINE have no performed-work credit. The external SME gate remains pending. Authenticated production acceptance and its evidence closure are verified. Next: map Chapter VI. Notion synchronization remains open until the merged closure source and native child pages are verified by readback. [Activation evidence](evidence/chapter-v-pilot-activation-20261019.json).
+Ordinary approval, QA, source/language comparisons and exact content remain unchanged. S01–S08 form the required Diagnostic/Mastery/readiness scope; S09/S10 remain Practice/Review only. The existing numerical learning model and runtime are reused. LAB-LEVER and LAB-INCLINE have no performed-work credit. The external SME gate remains pending. Authenticated production acceptance and its evidence closure are verified. Next: map Chapter VI. Notion roadmap 4.10 synchronization is verified against merged closure source `02652e7d491b036554ac9cc70499f0eb9200ed1f`, with all 11 native child pages preserved. [Sync receipt](evidence/chapter-v-notion-sync-20261019.json). The final receipt commit receives a separately verified source-stamp refresh. [Activation evidence](evidence/chapter-v-pilot-activation-20261019.json).
 
 ## Chapter IV current checkpoint — 2026-10-18 Asia/Yerevan
 
