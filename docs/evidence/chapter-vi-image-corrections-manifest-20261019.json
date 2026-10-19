@@ -1,0 +1,112 @@
+{
+  "chapter": "PHY7-U06",
+  "status": "database_committed_assets_pending_deployment",
+  "deploymentStrategy": "single_combined_release",
+  "replacements": [
+    {
+      "itemCode": "PHY7-U06-S02-I01",
+      "promptHy": "Նկարում նույն սեղանիկի վրա դրված է նույն կշռաքարը։ Ո՞ր դիրքում է ավազի վրա ճնշումն ավելի փոքր։",
+      "currentUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p118-pressure-contact.png",
+      "replacementAsset": "assets/p118-pressure-contact-v2.png",
+      "replacementDimensions": "1676x664",
+      "replacementSha256": "01a5dbc2e2f693ef96c4c1e3b75ea927028e454ba84d6e2a2096f017ae566c1b",
+      "altHy": "Նկ. 80․ նույն սեղանիկը նույն կշռաքարով ավազի վրա է դրված երկու դիրքով՝ լայն հարթակով և ոտքերով։",
+      "contentChange": false,
+      "queued": true
+    },
+    {
+      "itemCode": "PHY7-U06-S04-I01",
+      "promptHy": "Պասկալի գնդի մխոցը սեղմելիս ջրի շիթերը դուրս են գալիս տարբեր ուղղություններով բացված անցքերից։ Ի՞նչ է ցույց տալիս փորձը։",
+      "currentUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p126-pascal-law.png",
+      "replacementAsset": "assets/p126-pascal-law-v2.png",
+      "replacementDimensions": "1248x906",
+      "replacementSha256": "3b70cbe742bb3806ec9bc2be7236d8217adac5c95c438227ea5e7108232c1dc7",
+      "altHy": "Պասկալի գունդ․ մխոցը սեղմելիս ծխի կամ ջրի շիթերը դուրս են գալիս գնդի տարբեր ուղղություններով բացված անցքերից։",
+      "contentChange": false,
+      "queued": true
+    },
+    {
+      "itemCode": "PHY7-U06-S06-I01",
+      "promptHy": "Նկարում տարբեր ձևի և լայնության հաղորդակից անոթներում նույն ջուրն է, ազատ մակերևույթները բաց են մթնոլորտի առաջ։ Ի՞նչ է ցույց տալիս նկարը։",
+      "currentUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p131-communicating-vessels.png",
+      "replacementAsset": "assets/p131-communicating-vessels-v2.png",
+      "replacementDimensions": "1206x684",
+      "replacementSha256": "899157965d74badcfe40e8efd86cd925db10f98d6f51dd33364c7c6f87c88768",
+      "altHy": "Նկ. 91 և 92․ տարբեր լայնությամբ ու ձևով հաղորդակից անոթներում նույն հեղուկի ազատ մակերևույթները նույն հորիզոնական մակարդակի վրա են։",
+      "contentChange": false,
+      "queued": true
+    },
+    {
+      "itemCode": "PHY7-U06-S07-I01",
+      "promptHy": "Նկարում պատկերված ջրաբաշխական մամլիչում S₁<S₂ է։ Իդեալական դեպքում փոքր մխոցին F₁ ուժով սեղմելիս ինչո՞ւ է մեծ մխոցի վրա ստացվում ավելի մեծ F₂ ուժ։",
+      "currentUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p135-hydraulic-press.png",
+      "replacementAsset": "assets/p135-hydraulic-press-v2.png",
+      "replacementDimensions": "1470x506",
+      "replacementSha256": "19ac97d235046f6c1bf241737e4f07516b86a8d3105031014ee8073db90b7e57",
+      "altHy": "Նկ. 99․ հեղուկով միացված երկու գլաններում փոքր S₁ և մեծ S₂ մակերեսներով մխոցներ, որոնց վրա ազդում են F₁ և F₂ ուժերը։",
+      "contentChange": false,
+      "queued": true
+    },
+    {
+      "itemCode": "PHY7-U06-S08-I04",
+      "promptHy": "Տորիչելիի փորձի նկարում խողովակի սնդիկի և անոթի սնդիկի մակարդակների ուղղաձիգ տարբերությունը 76 սմ է։ Ի՞նչ է ներկայացնում այդ բարձրությունը։",
+      "currentUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p143-torricelli.png",
+      "replacementAsset": "assets/p143-torricelli-v2.png",
+      "replacementDimensions": "826x994",
+      "replacementSha256": "51380c75cc7736a702afb9ff8eff862f8dfdf2db9d3f58dbe312d8b42b997d11",
+      "altHy": "Տորիչելիի փորձը․ շրջված խողովակում սնդիկի սյան և անոթի սնդիկի մակարդակների ուղղաձիգ տարբերությունը 76 սմ է, իսկ սնդիկի վերևում վակուում է։",
+      "altTextChange": true,
+      "contentChange": false,
+      "queued": true
+    },
+    {
+      "itemCode": "PHY7-U06-S09-I01",
+      "promptHy": "Պատկերում նույն բեռը նախ կախված է օդում, ապա լրիվ ընկղմված է ջրում։ Ինչո՞ւ է ջրում ուժաչափի ցուցմունքը փոքրանում։",
+      "currentUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p148-buoyant-force-measurement.png",
+      "replacementAsset": "assets/p148-buoyant-force-measurement-v2.png",
+      "replacementDimensions": "1130x738",
+      "replacementSha256": "261cf5a1870b6fba36a79e43f96e6638def180bf20435b507471bbad9cbacaa7",
+      "altHy": "Նկ. 109․ նույն բեռը կախված է ուժաչափից՝ նախ օդում, ապա լրիվ ընկղմված ջրում։ Ջրում ուժաչափի ցուցմունքը փոքր է։",
+      "contentChange": false,
+      "queued": true
+    },
+    {
+      "itemCode": "PHY7-U06-S11-I01",
+      "promptHy": "Պատկերում ո՞ր ուժային պայմանին է համապատասխանում այն դեպքը, երբ լրիվ ընկղմված մարմինը հեղուկի ներսում մնում է հավասարակշռության մեջ։",
+      "currentUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p156-floating-conditions.png",
+      "replacementAsset": "assets/p156-floating-conditions-v2.png",
+      "replacementDimensions": "1824x862",
+      "replacementSha256": "7ba03337f8cd14ec2f55a3573bd7faae90a8c11d300344a30f94df2a7fa6fdf6",
+      "altHy": "Լրիվ ընկղմված մարմնի երեք դեպք․ Fծ>FԱ դեպքում մարմինը սուզվում է, Fծ=FԱ դեպքում մնում է հավասարակշռության մեջ, իսկ Fծ<FԱ դեպքում բարձրանում է։",
+      "altTextChange": true,
+      "contentChange": false,
+      "queued": true
+    },
+    {
+      "itemCode": "PHY7-U06-S12-I01",
+      "promptHy": "Պատկերում նավի իրանի վրա սպիտակ գծով ջրագիծն է նշված։ Ի՞նչ է ցույց տալիս այն։",
+      "currentUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p159-ship-displacement.png",
+      "replacementAsset": "assets/p159-ship-displacement-v2.png",
+      "replacementDimensions": "1106x582",
+      "replacementSha256": "0c43f21dc422e3e91b2fb958ed4e7aab8918570c5064ad2a5229291c3868afdc",
+      "altHy": "Նկ. 117․ նավի իրանի վրա սպիտակ գծով նշված է թույլատրելի խորասուզումը ցույց տվող ջրագիծը։",
+      "contentChange": false,
+      "queued": true
+    },
+    {
+      "itemCode": "PHY7-U06-S13-I05",
+      "promptHyBefore": "Պատկերում հավասար բեռներից մեկը լրիվ ընկղմված է ջրում, մյուսը՝ կերոսինում։ Ո՞ր լրացուցիչ պայմանն է կարևոր հեղուկների ազդեցությունը ճիշտ համեմատելու համար։",
+      "promptHy": "Պատկերում կշեռքի երկու կողմերում կախված են հավասար բեռներ, որոնց տակ դրված են ջրով և կերոսինով անոթներ։ Բեռները հեղուկների մեջ լրիվ ընկղմելիս ո՞ր լրացուցիչ պայմանն է կարևոր հեղուկների ազդեցությունը ճիշտ համեմատելու համար։",
+      "currentUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p152-liquid-density-comparison.png",
+      "replacementAsset": "assets/p152-liquid-density-comparison-v2.png",
+      "replacementDimensions": "928x622",
+      "replacementSha256": "8e3d02ffa9b5e836881ea887b6b45dd3fd0610bec3f08d29e8ad3b547c08d8d6",
+      "altHy": "Կշեռքի երկու կողմերում կախված են հավասար բեռներ, որոնց տակ դրված են ջրով և կերոսինով անոթներ՝ բեռները հեղուկների մեջ ընկղմելով համեմատություն կատարելու համար։",
+      "promptChange": true,
+      "altTextChange": true,
+      "answerUnchanged": "C",
+      "contentChange": true,
+      "queued": true
+    }
+  ]
+}

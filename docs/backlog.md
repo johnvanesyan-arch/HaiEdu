@@ -253,7 +253,7 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter VI preparation and execution — 15F.1–15F.4, 2026-10-19 Asia/Yerevan
+## Chapter VI preparation and execution — 15F.1–15F.5, 2026-10-19 Asia/Yerevan
 
 - [x] Verify the approved *Ֆիզիկա 7* Chapter VI scope (§§40–55, printed pp.118–163) and current programme Theme 6 source identity.
 - [x] Map 11 mandatory and four additional outcomes to 16 proposed skills without importing later-grade fluid mechanics.
@@ -273,10 +273,14 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Freeze the post-Batch-2 complete bank, assess all 82 Batch 3 candidates and all 3,321 within-batch pairs, and rewrite the two substantive near-duplicates before staging.
 - [x] Stage 82 Batch 3 drafts (48 Practice/14 Diagnostic/20 Mastery), 48 guides and 58 definitions; pass exact deployed-source QA at 82/82 and 48/48 with zero errors or warnings.
 - [x] Rehearse rollback across all 63 governed tables, commit only the planned content deltas plus 82 technical-QA rows, and verify that all pre-existing rows are preserved.
-- [ ] Complete ordinary exact-version review for Batch 1, Batch 2 and Batch 3 questions, guides and definitions.
+- [x] Verify ordinary approval for 233 current question versions; preserve the nine owner-selected image-corrected v2 questions as a separate exact-version review queue.
+- [x] Rehearse and commit the guarded nine-item v2 correction while preserving options, keys, explanations, hints, misconception mappings and all v1 snapshots.
+- [x] Add the nine replacement images at versioned `-v2.png` paths and refresh the substantive comparison for clarified `PHY7-U06-S13-I05`.
+- [ ] Verify all nine deployed production assets byte-for-byte, record the nine v2 technical-QA rows, and complete exact-version review for those nine questions.
+- [ ] Publish/review the 146 guides and approve/review the 158 misconception definitions.
 - [ ] Propose and approve any later Chapter VI assessment contract, qualification, allocation, activation and learner release under separate evidence and authorization; do not infer them from the planning budget.
 
-[Chapter VI map](chapter-vi-preparation.md) · [Batch 1 comparison](chapter-vi-batch-01-comparison.md) · [Batch 1 staging](chapter-vi-batch-01-staging.md) · [Batch 2 comparison](chapter-vi-batch-02-comparison.md) · [Batch 2 staging](chapter-vi-batch-02-staging.md) · [Batch 3 comparison](chapter-vi-batch-03-comparison.md) · [Batch 3 staging](chapter-vi-batch-03-staging.md) · [Foundation evidence](evidence/chapter-vi-foundation-20261019.json) · [Batch 3 evidence](evidence/chapter-vi-batch-03-staging-20261019.json).
+[Chapter VI map](chapter-vi-preparation.md) · [Image corrections](chapter-vi-image-corrections.md) · [Batch 1 comparison](chapter-vi-batch-01-comparison.md) · [Batch 1 staging](chapter-vi-batch-01-staging.md) · [Batch 2 comparison](chapter-vi-batch-02-comparison.md) · [Batch 2 staging](chapter-vi-batch-02-staging.md) · [Batch 3 comparison](chapter-vi-batch-03-comparison.md) · [Batch 3 staging](chapter-vi-batch-03-staging.md) · [Foundation evidence](evidence/chapter-vi-foundation-20261019.json) · [Correction evidence](evidence/chapter-vi-image-corrections-20261019.json).
 
 ## Chapter V authoring, review closure and contract — 15E.1–15E.6, 2026-10-19 Asia/Yerevan
 
