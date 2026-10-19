@@ -1,0 +1,422 @@
+{
+  "schemaVersion": "haiedu-chapter-assessment-configuration-v1",
+  "status": "proposal_not_approved_not_deployed",
+  "scope": {
+    "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+    "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+    "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364"
+  },
+  "ownerRequest": "All of Chapter 5 has been checked and approved. Proceed with the next sprint.",
+  "approval": null,
+  "contracts": [
+    {
+      "schemaVersion": "haiedu-assessment-policy-v2",
+      "version": 1,
+      "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+      "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+      "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "scoringStrategy": "selected-response-v1",
+      "policyKey": "physics7-u05-proposed-20261019-diagnostic",
+      "mode": "diagnostic",
+      "plannedQuestionCount": 12,
+      "learningModelConfigurationId": "a57c0430-7f37-5eaf-820f-b7c0711da2ad",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "hintsAllowed": false,
+      "baselineRequired": false,
+      "deliveredSkillIds": [
+        "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+        "f49578d7-0728-5a2d-b042-46c2609d54a9",
+        "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+        "6361692a-0026-5cd5-ac67-b9999a54f012",
+        "c7c50e44-4f94-5522-a237-ad88a13a7600",
+        "c342bfdc-fd31-5e55-915c-bb3722954f23",
+        "3b3836b1-1171-5d57-b78e-dd08af74273d",
+        "96bee62d-2e14-51ff-8f16-5d2eb41704e0"
+      ],
+      "reportingGroups": [
+        {
+          "key": "knowledge",
+          "label": "Գիտելիքներ․ լաբորատոր աշխատանքների կատարումը չի գնահատվում",
+          "skillIds": [
+            "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+            "f49578d7-0728-5a2d-b042-46c2609d54a9",
+            "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+            "6361692a-0026-5cd5-ac67-b9999a54f012",
+            "c7c50e44-4f94-5522-a237-ad88a13a7600",
+            "c342bfdc-fd31-5e55-915c-bb3722954f23",
+            "3b3836b1-1171-5d57-b78e-dd08af74273d",
+            "96bee62d-2e14-51ff-8f16-5d2eb41704e0"
+          ]
+        }
+      ],
+      "questionCountBySkill": {
+        "5218a327-8621-588d-9d42-2f1b8ec25ccd": 1,
+        "f49578d7-0728-5a2d-b042-46c2609d54a9": 1,
+        "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75": 2,
+        "6361692a-0026-5cd5-ac67-b9999a54f012": 1,
+        "c7c50e44-4f94-5522-a237-ad88a13a7600": 2,
+        "c342bfdc-fd31-5e55-915c-bb3722954f23": 2,
+        "3b3836b1-1171-5d57-b78e-dd08af74273d": 1,
+        "96bee62d-2e14-51ff-8f16-5d2eb41704e0": 2
+      },
+      "maximumCompletedBaselines": 1
+    },
+    {
+      "schemaVersion": "haiedu-assessment-policy-v2",
+      "version": 1,
+      "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+      "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+      "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "scoringStrategy": "selected-response-v1",
+      "policyKey": "physics7-u05-proposed-20261019-practice",
+      "mode": "practice",
+      "plannedQuestionCount": 8,
+      "learningModelConfigurationId": "a57c0430-7f37-5eaf-820f-b7c0711da2ad",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "hintsAllowed": true,
+      "baselineRequired": true,
+      "deliveredSkillIds": [
+        "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+        "f49578d7-0728-5a2d-b042-46c2609d54a9",
+        "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+        "6361692a-0026-5cd5-ac67-b9999a54f012",
+        "c7c50e44-4f94-5522-a237-ad88a13a7600",
+        "c342bfdc-fd31-5e55-915c-bb3722954f23",
+        "3b3836b1-1171-5d57-b78e-dd08af74273d",
+        "96bee62d-2e14-51ff-8f16-5d2eb41704e0",
+        "270751b7-3838-5487-9a56-5682ad24f647",
+        "e8ef6e09-017e-5458-9165-4b9be4faa6f8"
+      ],
+      "reportingGroups": [
+        {
+          "key": "knowledge",
+          "label": "Գիտելիքներ․ լաբորատոր աշխատանքների կատարումը չի գնահատվում",
+          "skillIds": [
+            "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+            "f49578d7-0728-5a2d-b042-46c2609d54a9",
+            "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+            "6361692a-0026-5cd5-ac67-b9999a54f012",
+            "c7c50e44-4f94-5522-a237-ad88a13a7600",
+            "c342bfdc-fd31-5e55-915c-bb3722954f23",
+            "3b3836b1-1171-5d57-b78e-dd08af74273d",
+            "96bee62d-2e14-51ff-8f16-5d2eb41704e0"
+          ]
+        },
+        {
+          "key": "additional",
+          "label": "Լրացուցիչ վերջնարդյունքներ",
+          "skillIds": [
+            "270751b7-3838-5487-9a56-5682ad24f647",
+            "e8ef6e09-017e-5458-9165-4b9be4faa6f8"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "haiedu-assessment-policy-v2",
+      "version": 1,
+      "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+      "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+      "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "scoringStrategy": "selected-response-v1",
+      "policyKey": "physics7-u05-proposed-20261019-mastery_check",
+      "mode": "mastery_check",
+      "plannedQuestionCount": 12,
+      "learningModelConfigurationId": "a57c0430-7f37-5eaf-820f-b7c0711da2ad",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "hintsAllowed": false,
+      "baselineRequired": true,
+      "deliveredSkillIds": [
+        "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+        "f49578d7-0728-5a2d-b042-46c2609d54a9",
+        "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+        "6361692a-0026-5cd5-ac67-b9999a54f012",
+        "c7c50e44-4f94-5522-a237-ad88a13a7600",
+        "c342bfdc-fd31-5e55-915c-bb3722954f23",
+        "3b3836b1-1171-5d57-b78e-dd08af74273d",
+        "96bee62d-2e14-51ff-8f16-5d2eb41704e0"
+      ],
+      "reportingGroups": [
+        {
+          "key": "knowledge",
+          "label": "Գիտելիքներ․ լաբորատոր աշխատանքների կատարումը չի գնահատվում",
+          "skillIds": [
+            "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+            "f49578d7-0728-5a2d-b042-46c2609d54a9",
+            "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+            "6361692a-0026-5cd5-ac67-b9999a54f012",
+            "c7c50e44-4f94-5522-a237-ad88a13a7600",
+            "c342bfdc-fd31-5e55-915c-bb3722954f23",
+            "3b3836b1-1171-5d57-b78e-dd08af74273d",
+            "96bee62d-2e14-51ff-8f16-5d2eb41704e0"
+          ]
+        }
+      ],
+      "questionCountBySkill": {
+        "5218a327-8621-588d-9d42-2f1b8ec25ccd": 1,
+        "f49578d7-0728-5a2d-b042-46c2609d54a9": 1,
+        "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75": 2,
+        "6361692a-0026-5cd5-ac67-b9999a54f012": 1,
+        "c7c50e44-4f94-5522-a237-ad88a13a7600": 2,
+        "c342bfdc-fd31-5e55-915c-bb3722954f23": 2,
+        "3b3836b1-1171-5d57-b78e-dd08af74273d": 1,
+        "96bee62d-2e14-51ff-8f16-5d2eb41704e0": 2
+      },
+      "minimumPercent": 80,
+      "minimumCorrectBySkill": {
+        "5218a327-8621-588d-9d42-2f1b8ec25ccd": 1,
+        "f49578d7-0728-5a2d-b042-46c2609d54a9": 1,
+        "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75": 1,
+        "6361692a-0026-5cd5-ac67-b9999a54f012": 1,
+        "c7c50e44-4f94-5522-a237-ad88a13a7600": 1,
+        "c342bfdc-fd31-5e55-915c-bb3722954f23": 1,
+        "3b3836b1-1171-5d57-b78e-dd08af74273d": 1,
+        "96bee62d-2e14-51ff-8f16-5d2eb41704e0": 1
+      },
+      "scoredSkillIds": [
+        "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+        "f49578d7-0728-5a2d-b042-46c2609d54a9",
+        "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+        "6361692a-0026-5cd5-ac67-b9999a54f012",
+        "c7c50e44-4f94-5522-a237-ad88a13a7600",
+        "c342bfdc-fd31-5e55-915c-bb3722954f23",
+        "3b3836b1-1171-5d57-b78e-dd08af74273d",
+        "96bee62d-2e14-51ff-8f16-5d2eb41704e0"
+      ],
+      "readinessSkillIds": [
+        "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+        "f49578d7-0728-5a2d-b042-46c2609d54a9",
+        "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+        "6361692a-0026-5cd5-ac67-b9999a54f012",
+        "c7c50e44-4f94-5522-a237-ad88a13a7600",
+        "c342bfdc-fd31-5e55-915c-bb3722954f23",
+        "3b3836b1-1171-5d57-b78e-dd08af74273d",
+        "96bee62d-2e14-51ff-8f16-5d2eb41704e0"
+      ]
+    },
+    {
+      "schemaVersion": "haiedu-assessment-policy-v2",
+      "version": 1,
+      "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+      "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+      "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "scoringStrategy": "selected-response-v1",
+      "policyKey": "physics7-u05-proposed-20261019-chapter_review",
+      "mode": "chapter_review",
+      "plannedQuestionCount": 12,
+      "learningModelConfigurationId": "a57c0430-7f37-5eaf-820f-b7c0711da2ad",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "hintsAllowed": true,
+      "baselineRequired": true,
+      "deliveredSkillIds": [
+        "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+        "f49578d7-0728-5a2d-b042-46c2609d54a9",
+        "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+        "6361692a-0026-5cd5-ac67-b9999a54f012",
+        "c7c50e44-4f94-5522-a237-ad88a13a7600",
+        "c342bfdc-fd31-5e55-915c-bb3722954f23",
+        "3b3836b1-1171-5d57-b78e-dd08af74273d",
+        "96bee62d-2e14-51ff-8f16-5d2eb41704e0",
+        "270751b7-3838-5487-9a56-5682ad24f647",
+        "e8ef6e09-017e-5458-9165-4b9be4faa6f8"
+      ],
+      "reportingGroups": [
+        {
+          "key": "knowledge",
+          "label": "Գիտելիքներ․ լաբորատոր աշխատանքների կատարումը չի գնահատվում",
+          "skillIds": [
+            "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+            "f49578d7-0728-5a2d-b042-46c2609d54a9",
+            "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+            "6361692a-0026-5cd5-ac67-b9999a54f012",
+            "c7c50e44-4f94-5522-a237-ad88a13a7600",
+            "c342bfdc-fd31-5e55-915c-bb3722954f23",
+            "3b3836b1-1171-5d57-b78e-dd08af74273d",
+            "96bee62d-2e14-51ff-8f16-5d2eb41704e0"
+          ]
+        },
+        {
+          "key": "additional",
+          "label": "Լրացուցիչ վերջնարդյունքներ",
+          "skillIds": [
+            "270751b7-3838-5487-9a56-5682ad24f647",
+            "e8ef6e09-017e-5458-9165-4b9be4faa6f8"
+          ]
+        }
+      ]
+    }
+  ],
+  "readinessModel": {
+    "operator": "OR",
+    "mastery": {
+      "secureAtOrAbove": 0.72,
+      "minimumEvidenceCount": 3
+    },
+    "recentRecovery": {
+      "recentWindow": 5,
+      "minimumUniqueItems": 4,
+      "minimumIndependentCorrect": 4,
+      "hintFreeRequired": true
+    }
+  },
+  "readinessScope": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08"
+  ],
+  "formPlan": {
+    "diagnostic": {
+      "forms": 2,
+      "questionsPerForm": 12,
+      "completedAttempts": 1
+    },
+    "mastery_check": {
+      "forms": 3,
+      "questionsPerForm": 12,
+      "maximumAttempts": 3,
+      "minimumCorrect": 10,
+      "minimumCorrectPerRequiredSkill": 1
+    }
+  },
+  "practicalEvidence": {
+    "recommendedMvp": "knowledge_only_pilot_pending_chapter_v_owner_decision",
+    "LAB-LEVER": "performed experiment not assessed by MCQ; supports M2/M3",
+    "LAB-INCLINE": "performed experiment not assessed by MCQ; supports M2/M4",
+    "teacherWorkflow": "not implemented; separate rubric/provenance required"
+  },
+  "specialistReview": "pending_not_waived",
+  "exposureDisposition": "pending_not_waived",
+  "liveActivationAuthorized": false,
+  "referenceModelConfiguration": {
+    "hinting": {
+      "levels": [
+        "orient",
+        "strategy",
+        "analogous_worked_example"
+      ],
+      "practiceOnly": true,
+      "resolverOrder": [
+        "error_specific_template",
+        "default_template",
+        "skill_fallback"
+      ],
+      "liveAiGeneration": false,
+      "postErrorHelpAllowed": true,
+      "independentConfirmationRequired": true,
+      "preAnswerHelpRequiresBlankDraft": true
+    },
+    "mastery": {
+      "priorBeta": 2,
+      "priorAlpha": 2,
+      "initialScore": 0.5,
+      "secureAtOrAbove": 0.72,
+      "difficultyWeight": {
+        "formula": "0.8 + 0.1*difficulty",
+        "weightMax": 1.3,
+        "weightMin": 0.9,
+        "difficultyMax": 5,
+        "difficultyMin": 1
+      },
+      "needsSupportBelow": 0.45,
+      "minimumEvidenceCount": 3,
+      "hintedPositiveMultiplier": 0.65,
+      "incorrectEvidenceHintReduction": false
+    },
+    "practice": {
+      "selectionPreference": [
+        "unseen",
+        "spaced_unresolved_error",
+        "least_recent_review",
+        "explicit_pool_exhaustion_repeat"
+      ],
+      "plannedSessionLength": 8,
+      "desiredDifficultyBands": [
+        {
+          "difficulty": 1,
+          "masteryBelow": 0.35
+        },
+        {
+          "difficulty": 2,
+          "masteryBelow": 0.55
+        },
+        {
+          "difficulty": 3,
+          "masteryBelow": 0.72
+        },
+        {
+          "difficulty": 4,
+          "masteryAtOrAbove": 0.72
+        }
+      ],
+      "selectionPolicyVersion": "11B-v1",
+      "consecutiveWrongAdjustment": {
+        "oneWrong": -1,
+        "twoOrMoreWrong": -2
+      },
+      "exactVariantCooldownRecentDistinctVariants": 3
+    },
+    "diagnostic": {
+      "bands": {
+        "strong": "2/2",
+        "developing": "1/2",
+        "not_assessed": "no evidence",
+        "needs_support": "0/2"
+      },
+      "feedbackMode": "deferred",
+      "itemsPerSkill": 2
+    },
+    "masteryCheck": {
+      "selection": "protected unseen-first / least-exposed",
+      "hintsAllowed": false,
+      "itemsPerSkill": 2,
+      "overallPassPercent": 80,
+      "minimumCorrectPerSkill": 1,
+      "failedRetestRequiresRemediation": true
+    },
+    "recentRecovery": {
+      "recentWindow": 5,
+      "hintFreeRequired": true,
+      "minimumUniqueItems": 4,
+      "minimumIndependentCorrect": 4
+    },
+    "recommendation": {
+      "scopeMode": "dual_scope_baseline",
+      "corePolicy": {
+        "default": "continue_current_skill",
+        "secureWithNextSkill": "advance_skill",
+        "insufficientEvidence": "collect_more_evidence",
+        "weakWithUnmetPrerequisite": "review_prerequisite"
+      },
+      "disposition": "intentionally separate scopes pending later policy-abstraction decision",
+      "dashboardPolicy": {
+        "priorityOrder": [
+          "resume_active_session",
+          "take_diagnostic_if_missing",
+          "needs_support_unfinished_skill",
+          "developing_unfinished_skill",
+          "first_unfinished_skill",
+          "unit_complete"
+        ],
+        "prerequisiteResolution": "recurse to earliest unmet prerequisite unless prerequisite diagnostic band is strong"
+      }
+    }
+  },
+  "referenceOnlyModelWarning": "Reference defaults are historical model values; chapter-specific four contracts govern eventual session lengths. No new model is installed."
+}

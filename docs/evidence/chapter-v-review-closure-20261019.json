@@ -1,0 +1,65 @@
+{
+  "sprint": "15E.5",
+  "roadmapVersion": "4.08",
+  "observedAt": "2026-10-19T12:49:29.998371+00:00",
+  "sourceCommit": "457bec4484f32918b006b49bae6ce6f921bf92f3",
+  "ownerStatement": "All of Chapter 5 has been checked and approved. Proceed with the next sprint.",
+  "counts": {
+    "approvedQuestions": 152,
+    "practice": 88,
+    "diagnostic": 24,
+    "mastery": 40,
+    "publishedGuides": 88,
+    "activeDefinitions": 108,
+    "pendingOrdinaryReviews": 0
+  },
+  "exactVersionApprovals": 152,
+  "passingVersionQa": 152,
+  "guideRuntimeVersion": 2,
+  "guideAuthoringVersion": 3,
+  "definitionSnapshotsMatch": 108,
+  "learnerContentUnchangedFromStaging": true,
+  "immutableHistoryPreserved": true,
+  "allowedLifecycleChanges": {
+    "items": {
+      "last_reviewed_at": 152,
+      "review_status": 152,
+      "last_reviewed_by": 152,
+      "status": 152
+    },
+    "item_options": {},
+    "item_versions": {},
+    "item_templates": {},
+    "misconceptions": {
+      "status": 108,
+      "updated_at": 108
+    },
+    "item_answer_keys": {},
+    "remediation_guide_versions": {},
+    "item_misconception_mappings": {},
+    "item_template_remediation_guides": {
+      "guide_version": 88,
+      "status": 88,
+      "updated_at": 88
+    },
+    "remediation_guide_authoring_versions": {}
+  },
+  "guideNormalization": "Unused misconceptionCode normalized to an empty string by the ordinary UI; all learner text and reference metadata unchanged.",
+  "provenance": "Authenticated site content approvals/publications and definition approval events verified; owner reports review. No new approvals written by this audit. This is not independent specialist approval.",
+  "legacyMetadata": "Authoring-time pending flags in immutable/config provenance remain historical; current review events and current lifecycle columns establish ordinary approval. No metadata was rewritten.",
+  "existingComparisonReuse": "All 152 exact question snapshots and all 88 guide texts are unchanged; reuse the four saved authoring comparisons. No fresh whole-bank qualification or non-exposure claim.",
+  "productionWrites": 0,
+  "preservation": {
+    "before": "2026-10-19T12:51:28.764606+00:00",
+    "after": "2026-10-19T12:56:25.877033+00:00",
+    "unchangedTables": 59,
+    "productionWrites": 0,
+    "scope": "All 59 tracked public tables have identical counts and canonical row-multiset fingerprints."
+  },
+  "allocation": {
+    "formItems": 0,
+    "poolItems": 0,
+    "observedAt": "2026-10-19T12:56:30.662395+00:00",
+    "releaseStatus": "draft"
+  }
+}
