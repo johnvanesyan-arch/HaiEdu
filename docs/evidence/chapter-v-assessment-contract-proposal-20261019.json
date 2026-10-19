@@ -1,0 +1,130 @@
+{
+  "sprint": "15E.5",
+  "roadmapVersion": "4.08",
+  "status": "ordinary_review_verified_contract_prepared_owner_decision_pending",
+  "sourceCommit": "457bec4484f32918b006b49bae6ce6f921bf92f3",
+  "inventory": {
+    "approvedQuestions": 152,
+    "practice": 88,
+    "diagnostic": 24,
+    "mastery": 40,
+    "publishedGuides": 88,
+    "activeDefinitions": 108,
+    "pendingOrdinaryReviews": 0
+  },
+  "proposal": {
+    "diagnosticQuestions": 12,
+    "diagnosticForms": 2,
+    "masteryQuestions": 12,
+    "masteryForms": 3,
+    "masteryPassCorrect": 10,
+    "minimumPercent": 80,
+    "masteryRequiredSkills": 8,
+    "practiceLength": 8,
+    "reviewLength": 12,
+    "targetedRevisions": 0,
+    "retainedUnallocatedMasteryQuestions": 4,
+    "automaticReserves": 0,
+    "exactConditionalSlots": 60,
+    "approvedCurrentVersionSlots": 60
+  },
+  "formSummaries": [
+    {
+      "planId": "D-A",
+      "questionCount": 12,
+      "mandatoryOutcomeKnowledgeRepresented": [
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "performedActivitiesAssessed": []
+    },
+    {
+      "planId": "D-B",
+      "questionCount": 12,
+      "mandatoryOutcomeKnowledgeRepresented": [
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "performedActivitiesAssessed": []
+    },
+    {
+      "planId": "M-A",
+      "questionCount": 12,
+      "mandatoryOutcomeKnowledgeRepresented": [
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "performedActivitiesAssessed": []
+    },
+    {
+      "planId": "M-B",
+      "questionCount": 12,
+      "mandatoryOutcomeKnowledgeRepresented": [
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "performedActivitiesAssessed": []
+    },
+    {
+      "planId": "M-C",
+      "questionCount": 12,
+      "mandatoryOutcomeKnowledgeRepresented": [
+        "M1",
+        "M2",
+        "M3",
+        "M4"
+      ],
+      "performedActivitiesAssessed": []
+    }
+  ],
+  "recipeSha256": "5d5bc3d2a372d7622ee0eb32832bdfc08efaaf27ab856b34706e3c0408400fe8",
+  "formPlanSha256": "de640683e4dfbf0281f4dd2e18e5ab22d05efc4ad91cabe1465730491cf9adcb",
+  "contentPreserved": true,
+  "productionWrites": 0,
+  "configuredLiveForms": 0,
+  "qualifiedForms": 0,
+  "releaseStatus": "draft",
+  "ownerDecisionRequired": [
+    "Adopt or revise the proposed assessment contract",
+    "Chapter-V-specific knowledge-only provisional pilot and explicit specialist/exposure deferral, or complete those gates before activation"
+  ],
+  "nextAfterDecision": "15E.6 — guarded configuration/rollback, authorized pilot activation and production access/chapter-switching acceptance; preserve all approved content.",
+  "validation": {
+    "jsPolicies": 4,
+    "liveSqlScopeChecks": 4,
+    "liveSqlScoringCases": 5,
+    "fullRuntimeBindingValidated": false
+  },
+  "preservation": {
+    "before": "2026-10-19T12:51:28.764606+00:00",
+    "after": "2026-10-19T12:56:25.877033+00:00",
+    "unchangedTables": 59,
+    "productionWrites": 0,
+    "scope": "All 59 tracked public tables have identical counts and canonical row-multiset fingerprints."
+  },
+  "privateEvidence": {
+    "libraryFileId": "libfile_1956aac6847081919ef7c5243aedb275",
+    "immutablePreparationVersion": 0,
+    "archiveBytes": 1351039,
+    "archiveSha256": "2c0d67e18f9d628a0e7657611766220c721453f8c9ff94399e411ff2621d51f1",
+    "boundMembers": {
+      "current-catalogue.json": "95143fcfa80b087c5eac25566a046b73ea50176882d6f3188b4e8f9acbfedb69",
+      "approval-bindings.json": "c2dd36deb4fa064f7358bd54ffba0ffaeebf6b7d325553017684461554b9450a",
+      "review-verification.json": "9863cd4ab85cedb0cdc4fd43ec2fe93d9a712428e9fbded43b24075aa1d6fbc9",
+      "assessment-configuration-proposal.json": "fe98a6d7586aee207ebf19cc3d2440097f91d57715bd72aa69b0be6105e6d030",
+      "conditional-forms.json": "39be4d82dc91869684f0700b972f0eff52fd95fa277f673b1c89378c028ff2af",
+      "js-policy-validation.json": "43bb85b6836c745f86659741e8a587f2e5efb6ae964d5c697ebd3b70a5204c14",
+      "sql-policy-validation.json": "82896ff99db0c8e4123fe1904fe3335277c0db76418ffc92660932500e20ac09",
+      "preservation.json": "db3ed250a4cf78f1b61a2693603edd57d917200949f8cee5a70e05c55902ef74"
+    },
+    "note": "Restricted question/approval/form evidence. Later closure versions may add receipts while these members stay unchanged."
+  }
+}
