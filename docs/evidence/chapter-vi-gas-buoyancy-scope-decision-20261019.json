@@ -1,0 +1,28 @@
+{
+  "schema": "haiedu-owner-scope-decision-v1",
+  "sprint": "15F.1",
+  "recorded_at": "2026-10-19T15:42:36Z",
+  "timezone": "Asia/Yerevan",
+  "source_commit_before_decision": "dea468f80a9388427cb22c439d6eb22a6153001c",
+  "owner_decision": {
+    "context": "Chapter VI preparation had recorded the lack of a formal textbook learner procedure for a gas-buoyancy experiment as a follow-up gap.",
+    "decision": "No separate learner procedure or teacher-observed gas-buoyancy workflow is required for the Chapter VI MVP.",
+    "effect": [
+      "Gas buoyancy remains available for textbook-supported conceptual, comparison, planning and supplied-data questions.",
+      "The selected-response pilot will not claim performed-work completion for the gas portion of programme outcome M9.",
+      "The earlier procedure follow-up is reclassified as an explicit knowledge-only product-scope boundary and is not a Chapter VI authoring or release blocker.",
+      "The five separately governed practical records remain unchanged."
+    ]
+  },
+  "preserved_boundaries": [
+    "No question can by itself establish that a learner physically performed an experiment.",
+    "No U06 database, release, API or runtime state was changed by this documentation decision.",
+    "Whole-bank comparison remains mandatory before question staging.",
+    "No session length, scoring rule, form allocation or learner release is approved by this decision."
+  ],
+  "remaining_plan_gate": {
+    "status": "pending owner acceptance or revision",
+    "clarification": "This gas-buoyancy scope decision does not by itself approve the retained 16-skill crosswalk, 242-slot ceiling, 70/90/82 batch split, non-gating roles or five practical records.",
+    "required_before": "Creating the inactive U06 foundation or staging Batch 1."
+  }
+}

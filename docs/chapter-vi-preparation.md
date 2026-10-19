@@ -1,6 +1,6 @@
 # Chapter VI map — «Ճնշում։ Ճնշումն առօրյա կյանքում և տեխնիկայում»
 
-**Sprint 15F.1 · 2026-10-19 · Preparation complete; proposed plan awaiting owner acceptance.** The proposal is **16 skills, 242 question slots in three large batches, five separately tracked practical activities and one explicit source/procedure gap**. This is subject-aware content planning. No content has been staged or approved, and no database, shared-core, API or learner-runtime change is included. The [project status register](project-status.md) remains authoritative.
+**Sprint 15F.1 · 2026-10-19 · Preparation complete; proposed plan awaiting owner acceptance after the gas-buoyancy scope decision.** The retained proposal is **16 skills, 242 question slots in three large batches and five separately tracked practical activities**. This is subject-aware content planning. No content has been staged or approved, and no database, shared-core, API or learner-runtime change is included. The [project status register](project-status.md) remains authoritative.
 
 ## Source scope
 
@@ -85,7 +85,7 @@ The **96 Diagnostic/Mastery slots are unqualified**. They do not yet prove two D
 | S13 | Measurement, dynamometer reading and uncertainty | Questions assess planning/data interpretation only. |
 | S14–S16 | Relevant core skill first | Additional practice cannot become a hidden required gate. |
 
-## Practical work and an unresolved source gap
+## Practical work and gas-buoyancy scope decision
 
 | ID | Source | Programme support | Current boundary |
 | --- | --- | --- | --- |
@@ -96,9 +96,9 @@ The **96 Diagnostic/Mastery slots are unqualified**. They do not yet prove two D
 | LAB-LIQUID-DENSITY | §52, printed p.154; programme Theme 6 practical work 3 | M9 | Draft outline/rubric only; no learner performance. |
 
 
-**Recorded gap — GAP-BUOYANT-FORCE-IN-GAS:** The programme requires designing and performing buoyant-force experiments in liquids and gases. The textbook shows a gas-buoyancy demonstration in §50, but §§40–55 provide no equivalent formal learner laboratory procedure for the gas part. Do not fabricate a gas-performance procedure or certify M9 from questions. A specialist-reviewed learner procedure and teacher evidence workflow are required before performance assessment.
+**Owner scope decision — gas buoyancy (2026-10-19):** No separate learner procedure or teacher-observed gas-buoyancy workflow will be added to the Chapter VI MVP. The §50 demonstration may support conceptual, comparison, planning and supplied-data questions. The selected-response pilot will not claim that those questions establish physical performance of the gas portion of M9. This is a declared product-scope boundary, not an unresolved authoring or release gap. [Decision evidence](evidence/chapter-vi-gas-buoyancy-scope-decision-20261019.json).
 
-A future knowledge-only provisional pilot must label these limits plainly. It may assess concepts, plans and supplied data; it may not record practical completion for M6/M9. No multiple-choice response can substitute for teacher-observed performed work.
+The knowledge-only provisional pilot may assess concepts, plans and supplied data; it does not record practical completion for M6/M9.
 
 ## Candidate-brief queue
 
@@ -162,6 +162,6 @@ Nine exact crops were visually inspected. They are teaching-exposed source refer
 
 Freeze the complete current, draft, retired, historical, guide and exposure corpus for the proposed skills and related skills. Compare scenarios, diagrams, solution steps, required inference, answer and distractor logic, including within-batch pairs. The read-only catalogue does not close this gate. Intentional Practice reinforcement must be labelled; overlapping Diagnostic/Mastery candidates must be reworked or held. Untaught later-grade fluid mechanics is excluded.
 
-## Acceptance needed for 15F.2
+## Remaining acceptance needed for 15F.2
 
-Accept or revise the 16-skill crosswalk, 242-slot ceiling, 70/90/82 batch split, S13/S14–S16 non-gating roles, five practical records and the gas-experiment gap. After acceptance, create the inactive Chapter VI foundation, freeze the whole related corpus, assess Batch 1 candidates and stage only defensible content with guides, hints and useful misconception definitions. That step still creates no learner release or assessment contract.
+The 2026-10-19 owner decision closes only the gas-buoyancy procedure follow-up. Before Sprint 15F.2 creates the inactive Chapter VI foundation or stages Batch 1, the owner must still accept or revise the retained 16-skill crosswalk, 242-slot ceiling, 70/90/82 batch split, S13/S14–S16 non-gating roles and five practical records. That later step would still create no learner release or assessment contract.
