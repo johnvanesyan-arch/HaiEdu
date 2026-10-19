@@ -253,7 +253,7 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter VI preparation and execution — 15F.1 onward, 2026-10-19 Asia/Yerevan
+## Chapter VI preparation and execution — 15F.1–15F.2, 2026-10-19 Asia/Yerevan
 
 - [x] Verify the approved *Ֆիզիկա 7* Chapter VI scope (§§40–55, printed pp.118–163) and current programme Theme 6 source identity.
 - [x] Map 11 mandatory and four additional outcomes to 16 proposed skills without importing later-grade fluid mechanics.
@@ -262,11 +262,15 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Record five separately governed practical activities and the owner’s knowledge-only gas-buoyancy scope decision; no separate learner or teacher-observed procedure is planned.
 - [x] Extract and visually inspect nine exact textbook crops for teaching-exposed Practice/reference use only.
 - [x] Verify source hashes, outcome coverage, totals, batch partition, asset hashes and zero-write production catalogue; pass 19/19 planning checks.
-- [ ] Obtain owner acceptance or revision of the retained map, authoring ceiling, batch split, non-gating roles and practical records; the gas-buoyancy procedure is already excluded by owner decision.
-- [ ] 15F.2: after full-plan acceptance, create the inactive governed U06 foundation; freeze the complete related bank and assess Batch 1 before staging.
-- [ ] Author, review, qualify and release later Chapter VI stages under separate evidence and authorization; do not infer assessment policy from the planning budget.
+- [x] Record owner acceptance of the 16-skill map, 242-slot ceiling, 70/90/82 split, S13/S14–S16 Practice-only non-gating roles and five practical records.
+- [x] Create the inactive governed U06 foundation with six topics, 15 outcomes, 16 skills, 24 mappings and a never-activated draft release; verify rollback and guarded commit across 63 public tables.
+- [x] Freeze the complete related bank, assess all 70 Batch 1 candidates and complete the within-batch comparison; rework four close drafts before staging.
+- [x] Stage 70 draft questions (44 Practice/10 Diagnostic/16 Mastery), 44 guides and 44 definitions; pass exact deployed-source QA at 70/70 and 44/44 with zero errors or warnings.
+- [ ] Complete ordinary exact-version review for Batch 1 questions, guides and definitions.
+- [ ] Author and stage Batches 2 and 3 under separate whole-bank comparison and staging evidence.
+- [ ] Propose and approve any later Chapter VI assessment contract, qualification, allocation, activation and learner release under separate evidence and authorization; do not infer them from the planning budget.
 
-[Chapter VI map](chapter-vi-preparation.md) · [Structured preparation evidence](evidence/chapter-vi-preparation-20261019.json) · [Planning QA](evidence/chapter-vi-preparation-qa-20261019.json).
+[Chapter VI map](chapter-vi-preparation.md) · [Batch 1 comparison](chapter-vi-batch-01-comparison.md) · [Batch 1 staging](chapter-vi-batch-01-staging.md) · [Foundation evidence](evidence/chapter-vi-foundation-20261019.json) · [Batch evidence](evidence/chapter-vi-batch-01-staging-20261019.json).
 
 ## Chapter V authoring, review closure and contract — 15E.1–15E.6, 2026-10-19 Asia/Yerevan
 
@@ -671,3 +675,4 @@ Notion synchronization follows the documentation merge and requires readback of 
 - [ ] Independent SME/protection review and final exposure disposition before production promotion.
 
 The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) and the pilot implementation are complete for their recorded scope. Chapter II is active as the authorized provisional pilot; authenticated production acceptance passed 91/91. Independent SME/production exposure decisions remain open. [Historical deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json) · [Authoritative status](project-status.md).
+

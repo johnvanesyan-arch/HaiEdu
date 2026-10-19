@@ -1,0 +1,52 @@
+{
+  "schema": "haiedu-owner-plan-acceptance-v1",
+  "sprint": "15F.2",
+  "recorded_at": "2026-10-19T15:54:22Z",
+  "timezone": "Asia/Yerevan",
+  "base_commit": "e57ce889ba2ce94330a129df1ae03bcc9e103bf4",
+  "chapter": "PHY7-U06",
+  "owner_authorization": {
+    "decision": "accept retained Chapter VI plan and proceed",
+    "source": "explicit owner approval in the project session",
+    "accepted": {
+      "skills": 16,
+      "candidate_ceiling": 242,
+      "banks": {
+        "practice": 146,
+        "diagnostic": 38,
+        "mastery": 58
+      },
+      "batch_sizes": [
+        70,
+        90,
+        82
+      ],
+      "batch_1": {
+        "skills": [
+          "S01",
+          "S02",
+          "S03",
+          "S04",
+          "S14"
+        ],
+        "practice": 44,
+        "diagnostic": 10,
+        "mastery": 16,
+        "total": 70
+      },
+      "non_gating_practice_only": [
+        "S13",
+        "S14",
+        "S15",
+        "S16"
+      ],
+      "separate_practical_records": 5
+    }
+  },
+  "preserved_boundaries": [
+    "Plan acceptance authorizes the inactive U06 foundation, frozen whole-bank assessment and draft staging of Batch 1.",
+    "Ordinary exact-version question, guide and misconception approval remains pending.",
+    "No assessment contract, form/pool allocation, scoring/pass rule, model binding, activation or learner release is authorized.",
+    "The gas-buoyancy procedure and teacher-observed workflow remain excluded; no selected-response item claims performed-work evidence for that part of M9."
+  ]
+}
