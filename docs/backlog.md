@@ -262,8 +262,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Record five separately governed practical activities and the owner’s knowledge-only gas-buoyancy scope decision; no separate learner or teacher-observed procedure is planned.
 - [x] Extract and visually inspect nine exact textbook crops for teaching-exposed Practice/reference use only.
 - [x] Verify source hashes, outcome coverage, totals, batch partition, asset hashes and zero-write production catalogue; pass 19/19 planning checks.
-- [x] Record owner acceptance of the exact map, authoring ceiling, batch split, non-gating roles and practical records, with gas buoyancy retained as knowledge-only content.
-- [ ] 15F.2: create the inactive governed U06 foundation; freeze the complete related bank and assess Batch 1 before staging.
+- [ ] Obtain owner acceptance or revision of the retained map, authoring ceiling, batch split, non-gating roles and practical records; the gas-buoyancy procedure is already excluded by owner decision.
+- [ ] 15F.2: after full-plan acceptance, create the inactive governed U06 foundation; freeze the complete related bank and assess Batch 1 before staging.
 - [ ] Author, review, qualify and release later Chapter VI stages under separate evidence and authorization; do not infer assessment policy from the planning budget.
 
 [Chapter VI map](chapter-vi-preparation.md) · [Structured preparation evidence](evidence/chapter-vi-preparation-20261019.json) · [Planning QA](evidence/chapter-vi-preparation-qa-20261019.json).
