@@ -1,6 +1,6 @@
 # Chapter VI map — «Ճնշում։ Ճնշումն առօրյա կյանքում և տեխնիկայում»
 
-**Sprint 15F.1 · 2026-10-19 · Preparation complete; plan accepted with the owner’s gas-buoyancy scope revision.** The accepted plan is **16 skills, 242 question slots in three large batches and five separately tracked practical activities**. This is subject-aware content planning. No content has been staged or approved, and no database, shared-core, API or learner-runtime change is included. The [project status register](project-status.md) remains authoritative.
+**Sprint 15F.1 · 2026-10-19 · Preparation complete; proposed plan awaiting owner acceptance after the gas-buoyancy scope decision.** The retained proposal is **16 skills, 242 question slots in three large batches and five separately tracked practical activities**. This is subject-aware content planning. No content has been staged or approved, and no database, shared-core, API or learner-runtime change is included. The [project status register](project-status.md) remains authoritative.
 
 ## Source scope
 
@@ -162,6 +162,6 @@ Nine exact crops were visually inspected. They are teaching-exposed source refer
 
 Freeze the complete current, draft, retired, historical, guide and exposure corpus for the proposed skills and related skills. Compare scenarios, diagrams, solution steps, required inference, answer and distractor logic, including within-batch pairs. The read-only catalogue does not close this gate. Intentional Practice reinforcement must be labelled; overlapping Diagnostic/Mastery candidates must be reworked or held. Untaught later-grade fluid mechanics is excluded.
 
-## Accepted scope and next step for 15F.2
+## Remaining acceptance needed for 15F.2
 
-The owner’s instruction to proceed with Chapter VI, together with the 2026-10-19 gas-buoyancy scope revision above, closes the 15F.1 planning gate. Sprint 15F.2 may create the inactive Chapter VI foundation, freeze the whole related corpus, assess Batch 1 candidates and stage only defensible content with guides, hints and useful misconception definitions. That step still creates no learner release or assessment contract.
+The 2026-10-19 owner decision closes only the gas-buoyancy procedure follow-up. Before Sprint 15F.2 creates the inactive Chapter VI foundation or stages Batch 1, the owner must still accept or revise the retained 16-skill crosswalk, 242-slot ceiling, 70/90/82 batch split, S13/S14–S16 non-gating roles and five practical records. That later step would still create no learner release or assessment contract.
