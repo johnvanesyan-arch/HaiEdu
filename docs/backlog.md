@@ -253,7 +253,7 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter V mapping and Batches 1–2 — 15E.1–15E.3, 2026-10-19 Asia/Yerevan
+## Chapter V mapping and Batches 1–3 — 15E.1–15E.4, 2026-10-19 Asia/Yerevan
 
 - [x] Verify Chapter V textbook §§32–39, current programme Theme 5 and unchanged source hashes.
 - [x] Map four mandatory/two additional outcomes to ten proposed skills; preserve all component claims.
@@ -267,13 +267,14 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Act on John’s 2026-10-19 request to keep the themes and change the tasks of exactly 17 held proposals; record the new bounded Chapter V rework manifest under unchanged parallel criteria.
 - [x] Rework and stage all 17 (7 Diagnostic/10 Mastery), with 19 new draft definitions, refreshed full-bank comparison, exact-source QA 17/17 and preserved prior records. One first-rework draft was replaced again after a Chapter III collision. No new independent reasoning or qualified capacity claimed.
 - [x] Assess 54 Batch 2 proposals against the complete frozen current/history/guide corpus; rework three and hold five repeated proposals. Stage49 questions,28 guides,29 definitions; pass49/49 question and 28/28 guide technical checks.
-- [ ] Complete ordinary exact-version approval of all 103 questions,60 guides and 83 definitions. No Chapter V approval has been delegated or fabricated.
-- [ ] Obtain the bank-plan decision for five held Batch 2 slots (S05-D02; S06-D02/D03/M04/M05): substantive same-theme rework or a reduced target. Existing152 ceiling stays unchanged.
-- [ ] Author Batch 3 within its provisional44-slot ceiling and unchanged quality rules.
-- [ ] Complete authorized authoring, current-version QA and actual ordinary approvals for all retained batches.
+- [ ] Complete ordinary exact-version approval of all 152 questions, 88 guides and 108 definitions. No Chapter V approval has been delegated or fabricated.
+- [x] Act on John’s 2026-10-19 continuation: substantively rework all five held Batch 2 themes (S05-D02; S06-D02/D03/M04/M05), compare and stage them at first database v1. The 152-slot plan is retained.
+- [x] Author all 44 Batch 3 slots plus the five bounded reworks in one delivery: 49 questions, 28 guides and 25 definitions; all technical checks pass. Chapter V planned authoring is complete at 152 questions.
+- [x] Complete authorized authoring and current-version technical QA for all retained batches.
+- [ ] Complete actual ordinary approvals; technical completion does not count as approval.
 - [ ] Resolve the practical delivery and assessment contract; qualify forms and obtain Chapter-V-specific release authorization.
 
-[Chapter V map](chapter-v-preparation.md) · [Initial Batch 1](chapter-v-batch-01-comparison.md) · [17-proposal rework](chapter-v-batch-01-rework-17.md) · [Batch 2](chapter-v-batch-02-comparison.md) · [Planning QA](evidence/chapter-v-preparation-qa-20261018.json). Notion synchronization is verified against the merged source separately; the completed preparation tasks do not certify that sync.
+[Chapter V map](chapter-v-preparation.md) · [Initial Batch 1](chapter-v-batch-01-comparison.md) · [17-proposal rework](chapter-v-batch-01-rework-17.md) · [Batch 2](chapter-v-batch-02-comparison.md) · [Batch 3](chapter-v-batch-03-comparison.md) · [Planning QA](evidence/chapter-v-preparation-qa-20261018.json). Notion synchronization is verified against the merged source separately; the completed preparation tasks do not certify that sync.
 
 ## Chapter IV knowledge-only pilot — 15D.6, 2026-10-18
 

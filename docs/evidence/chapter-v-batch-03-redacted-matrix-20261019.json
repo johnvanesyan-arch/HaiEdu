@@ -1,0 +1,2370 @@
+[
+  {
+    "code": "PHY7-U05-S07-I01",
+    "candidate": "U05-B03-C01",
+    "candidateRevision": 1,
+    "specSha256": "2f3151fae50a1f0fb631ce87fd0eb664163f2fb32fa9aebdac2d4eae9cef2d3b",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "incline identification",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of incline_identification. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U03-S08-I10",
+      "PHY7-U01-S06-11D-D02",
+      "PHY7-U01-S06-11D-P08"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "item_template_remediation_guides:e01c864f-0f5d-4553-88f1-624c5691d507",
+      "remediation_guide_authoring_versions:a0d9881d-a364-4e4f-8d5c-7118843de813",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "PHY7-U03-S08-I10@history-v1",
+      "PHY7-U01-S06-11D-D02@current-v1",
+      "PHY7-U01-S06-11D-P08@history-v2"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-PATH",
+      "PHY7-U05-S07-MC-GEOMETRY",
+      "PHY7-U05-S07-MC-GEOMETRY"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for incline identification are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-I02",
+    "candidate": "U05-B03-C02",
+    "candidateRevision": 1,
+    "specSha256": "cfaf728f860ed8c068ea1295a633c6cd4acb766f47a85df92b35feb4c0bd9eb8",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "same rise longer plane",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of same_rise_longer_plane. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U03-S07-D06"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "PHY7-U03-S07-D06@history-v1",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "item_template_remediation_guides:457f357d-070e-40d5-9261-b13644d100c9",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:42fa5652-c194-4323-8ec9-deebf25606b0"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-D01",
+      "PHY7-U05-S07-I03",
+      "PHY7-U05-S10-I04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-RATIO",
+      "PHY7-U05-S07-MC-GAIN",
+      "PHY7-U05-S07-MC-GAIN"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for same rise longer plane are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-I03",
+    "candidate": "U05-B03-C03",
+    "candidateRevision": 1,
+    "specSha256": "e62b4fd2fdd9ba7adfbdfd89786f82c753021a3239178fbe1b12e6659088ed64",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "incline force product",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of incline_force_product. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S06-I08",
+      "PHY7-U05-S06-D04",
+      "PHY7-U05-S05-I08",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I10@history-v1",
+      "PHY7-U05-S06-I08@current-v1",
+      "PHY7-U05-S06-M01@current-v1",
+      "PHY7-U05-S06-D04@history-v1",
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "PHY7-U05-S02-I10@current-v1",
+      "PHY7-U05-S05-I08@current-v1",
+      "PHY7-U05-S02-I07@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-M04",
+      "PHY7-U05-S07-D01",
+      "PHY7-U05-S07-I02",
+      "PHY7-U05-S07-M01",
+      "PHY7-U05-S10-I04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-RATIO",
+      "PHY7-U05-S07-MC-PATH",
+      "PHY7-U05-S07-MC-GAIN"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for incline force product are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-I04",
+    "candidate": "U05-B03-C04",
+    "candidateRevision": 1,
+    "specSha256": "1049dc7c2a18b0096498826728225c773764341dca82fd857d88026bbc3c44b2",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "incline path from force gain",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of incline_path_from_force_gain. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S01-I08",
+      "PHY7-U03-S07-I10",
+      "PHY7-U03-S05-M04",
+      "PHY7-U05-S06-I08",
+      "PHY7-U03-S07-D06"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I10@history-v1",
+      "PHY7-U05-S01-I08@history-v1",
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "PHY7-U03-S07-I10@history-v1",
+      "PHY7-U03-S05-M04@current-v1",
+      "PHY7-U05-S06-I08@history-v1",
+      "PHY7-U03-S07-D06@history-v1",
+      "PHY7-U05-S02-I10@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-M05",
+      "PHY7-U05-S07-I10"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-RATIO",
+      "PHY7-U05-S07-MC-PATH",
+      "PHY7-U05-S07-MC-PAIR"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for incline path from force gain are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-I05",
+    "candidate": "U05-B03-C05",
+    "candidateRevision": 1,
+    "specSha256": "3819ea72d1cefebf6b2b202605e211749385fe1ca9bbe96914e1ced095c349dc",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "incline work equal",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of incline_work_equal. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S02-I01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I10@current-v1",
+      "PHY7-U05-S02-I07@current-v1",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "PHY7-U05-S02-I01@current-v1",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "PHY7-U05-S02-M03@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-M02",
+      "PHY7-U05-S08-M01"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-PATH",
+      "PHY7-U05-S07-MC-GAIN",
+      "PHY7-U05-S07-MC-GAIN"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for incline work equal are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-I06",
+    "candidate": "U05-B03-C06",
+    "candidateRevision": 1,
+    "specSha256": "cba82761391342e1d87ce9dd6c369cdc540a94f564f8ed5f095a5fc9b45abe48",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "incline read source geometry",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of incline_read_source_geometry. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S06-I10@current-v1",
+      "PHY7-U05-S02-M03@history-v1",
+      "PHY7-U05-S02-I07@history-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-PATH",
+      "PHY7-U05-S07-MC-PAIR",
+      "PHY7-U05-S07-MC-RATIO"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "exact_textbook_practice_image",
+      "rationale": "Exact public textbook figure; teaching-exposed Practice only.",
+      "assetUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p116-fig78-incline.png",
+      "assetSha256": "0c7e26eeb60257db9d9e75f36565a7ef8b4e661f2ed25b307dc0ca836b92e4cb",
+      "printedPage": 116,
+      "altHy": "Դասագրքի նկար 78. թեք հարթություն, քաշող F ուժ, l ճանապարհ և h ուղղաձիգ բարձրացում։",
+      "protectedUse": false
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-I07",
+    "candidate": "U05-B03-C07",
+    "candidateRevision": 1,
+    "specSha256": "cd125d1d5048ce90f40a0432e073d32b74ced7050fbad80643c9396a71c08764",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "incline mass to force",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of incline_mass_to_force. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S03-I11",
+      "PHY7-U05-S06-I08"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U05-S03-I11@current-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "PHY7-U05-S02-M03@history-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "PHY7-U05-S06-I08@history-v1",
+      "PHY7-U05-S06-I10@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-WEIGHT",
+      "PHY7-U05-S07-MC-GAIN",
+      "PHY7-U05-S07-MC-RATIO"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for incline mass to force are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-I08",
+    "candidate": "U05-B03-C08",
+    "candidateRevision": 1,
+    "specSha256": "a64b6e7878e2c5d468ebacb0b24b46c7a88c9b2bf7534add4c7d1b2584eb7a18",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "incline equal slope scaled",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of incline_equal_slope_scaled. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "item_template_remediation_guides:d0e4a7ba-8b27-449e-ba16-fd1b7a104042",
+      "remediation_guide_versions:a5003b01-8f65-4246-9a77-b2f93b01e607",
+      "PHY7-U05-S06-M01@history-v1",
+      "item_template_remediation_guides:e01c864f-0f5d-4553-88f1-624c5691d507",
+      "remediation_guide_authoring_versions:43e6fba1-0ba0-40b4-859c-62d41a574560",
+      "PHY7-U05-S06-I10@history-v1",
+      "PHY7-U05-S02-M03@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-D02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-GEOMETRY",
+      "PHY7-U05-S07-MC-GEOMETRY",
+      "PHY7-U05-S07-MC-RATIO"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for incline equal slope scaled are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-I09",
+    "candidate": "U05-B03-C09",
+    "candidateRevision": 1,
+    "specSha256": "7920a39afbab8bb1297567b5b931eeb442ba00de9a2c6c3c1020d2463df0ae7a",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "real vs ideal work",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of real_vs_ideal_work. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:42fa5652-c194-4323-8ec9-deebf25606b0",
+      "item_template_remediation_guides:457f357d-070e-40d5-9261-b13644d100c9",
+      "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+      "remediation_guide_authoring_versions:7b658238-9eb8-4696-a777-5af00591c1bd"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-D01",
+      "PHY7-U05-S08-I12"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-CONDITIONS",
+      "PHY7-U05-S07-MC-CONDITIONS",
+      "PHY7-U05-S07-MC-GAIN"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for real vs ideal work are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-I10",
+    "candidate": "U05-B03-C10",
+    "candidateRevision": 1,
+    "specSha256": "4c7799c7c6adc9bf3598b548729ad6c1c2f6b93a2f7d9a33bab92beb7610fe08",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "golden rule force tradeoff",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Intentional practice of golden_rule_force_tradeoff. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S06-I05",
+      "PHY7-U04-S02-I05",
+      "PHY7-U05-S01-I08"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I05@history-v1",
+      "item_template_remediation_guides:3b846954-38b4-40fb-a683-d33e90f1bf80",
+      "remediation_guide_authoring_versions:5d2b809e-0f01-4311-92b8-b29851519362",
+      "PHY7-U04-S02-I05@current-v1",
+      "PHY7-U05-S01-I08@current-v1",
+      "remediation_guide_versions:a822b7a1-98ad-4379-acce-1b151e5caf3b",
+      "item_template_remediation_guides:4c8196dd-1b15-41da-a8a1-6c2a7cb2eff1",
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-M05",
+      "PHY7-U05-S07-I04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-RATIO",
+      "PHY7-U05-S07-MC-PATH",
+      "PHY7-U05-S07-MC-RATIO"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for golden rule force tradeoff are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-D01",
+    "candidate": "U05-B03-C11",
+    "candidateRevision": 1,
+    "specSha256": "e89303d5517cd73b8e07a0d28eb7c606c3799cf2384e1a0b56eae67895cbeaee",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "unequal loads counterexample",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Contradict a one-variable causal claim using jointly changed load and path, not direct same-load practice. Related I02/I03 and cross-chapter controlled-comparison guides remain dependencies; both force computations plus causal correction are required.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S03-I11",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-M01@history-v1",
+      "PHY7-U05-S06-I10@current-v1",
+      "PHY7-U05-S02-I10@current-v1",
+      "PHY7-U05-S03-I11@history-v1",
+      "PHY7-U05-S02-M03@current-v1",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "PHY7-U05-S02-I07@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-I02",
+      "PHY7-U05-S07-I03",
+      "PHY7-U05-S10-I04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-WEIGHT",
+      "PHY7-U05-S07-MC-WEIGHT",
+      "PHY7-U05-S07-MC-PAIR"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for unequal loads counterexample are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-D02",
+    "candidate": "U05-B03-C12",
+    "candidateRevision": 1,
+    "specSha256": "f64b6fb3e9aa6c8c9c74419cda7d6dd2a361f74ec208307544aac3aba7f181cb",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "two dimension redesign",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Interpret a redesign changing height and length by unequal factors; I08 teaches equal-factor scaling. Requires rejecting two plausible one-factor predictions. No independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S06-I07",
+      "PHY7-U04-S02-I05"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I07@current-v1",
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "PHY7-U04-S02-I05@current-v1",
+      "PHY7-U05-S02-M03@history-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "item_template_remediation_guides:e67b289f-11a3-4ad9-913b-5340cb548a93"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-I08"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-GEOMETRY",
+      "PHY7-U05-S07-MC-GEOMETRY",
+      "PHY7-U05-S07-MC-WEIGHT"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for two dimension redesign are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-M01",
+    "candidate": "U05-B03-C13",
+    "candidateRevision": 1,
+    "specSha256": "ca960fe80b90fefffdc52412f1b387b5cb422002736d563c09cfb2c748bfc30f",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "reconstruct swapped ramp labels",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Recover an unknown correspondence from two observed forces and a shared work invariant; prior S02-M04 shuffled records is an explicit cross-purpose dependency. New physical stimulus, protected parallel only.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-M03@current-v1",
+      "PHY7-U05-S02-I07@history-v1",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "PHY7-U05-S02-I10@current-v1",
+      "PHY7-U05-S02-M04@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-M04",
+      "PHY7-U05-S07-I03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-RATIO",
+      "PHY7-U05-S07-MC-PAIR",
+      "PHY7-U05-S07-MC-WEIGHT"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for reconstruct swapped ramp labels are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-M02",
+    "candidate": "U05-B03-C14",
+    "candidateRevision": 1,
+    "specSha256": "31e43d202bea6b9ac49e8dc8cdfc61e64e49cac81fa5fb0b89caa28d32a44ae1",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "two stage ramp total rise",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Reconstruct total rise from two different ramp segments with separate force/path pairs and connected endpoints. Prior S02 staged accounting and S07 direct products are dependencies; a single taught example does not identify the combined rise.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S03-M01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-M03@history-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U05-S03-M01@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-I05",
+      "PHY7-U05-S08-M01"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-PATH",
+      "PHY7-U05-S07-MC-SUM",
+      "PHY7-U05-S07-MC-PAIR"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for two stage ramp total rise are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-M03",
+    "candidate": "U05-B03-C15",
+    "candidateRevision": 1,
+    "specSha256": "628556a056f23dc035faafb00c98670654187d0d428b03f7e9bd1a453dc5f8c6",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "one dynamometer two ramps missing weight",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Use one trial as an indirect load calibration before predicting changed rise. Related S06-M06 calibration and S05-M02 missing-g inference are explicit dependencies; this is not independent coverage.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-M06@history-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "PHY7-U05-S06-I10@history-v1",
+      "PHY7-U05-S02-M03@current-v1",
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "PHY7-U05-S02-I07@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-GEOMETRY",
+      "PHY7-U05-S07-MC-RATIO",
+      "PHY7-U05-S07-MC-WEIGHT"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for one dynamometer two ramps missing weight are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S07-M04",
+    "candidate": "U05-B03-C16",
+    "candidateRevision": 1,
+    "specSha256": "cd3a3cf85b2f3c7d2b185947be0e55bcb662dd4bed53e53af67fc80385a10bc1",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "same force different work unlabelled records",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 111–113; §39, էջ 116։",
+    "semanticJudgment": "Recover a missing rise through equal-force but unequal-work records; must distinguish force equality from work equality and transfer a shared load. Dependency with M03 and prior equal-work tasks requires form separation.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M06",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S02-M03@history-v1",
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "PHY7-U05-S06-I10@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-M03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S07-MC-GEOMETRY",
+      "PHY7-U05-S07-MC-PAIR",
+      "PHY7-U05-S07-MC-RATIO"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for same force different work unlabelled records are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I01",
+    "candidate": "U05-B03-C17",
+    "candidateRevision": 1,
+    "specSha256": "f9cbbff7f68230c79af45a0c2f17e1f5dd445a3afd8ff203627c47f68e0c6157",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "useful work purpose",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of useful_work_purpose. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S02-I07@history-v1",
+      "PHY7-U05-S02-M03@current-v1",
+      "remediation_guide_authoring_versions:d4158eae-fa05-4dfc-9b8d-2cfbc9e0182d",
+      "item_template_remediation_guides:4c8196dd-1b15-41da-a8a1-6c2a7cb2eff1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-D02",
+      "PHY7-U05-S08-I04",
+      "PHY7-U05-S08-M02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-LOSS",
+      "PHY7-U05-S08-MC-LOSS",
+      "PHY7-U05-S08-MC-TOTAL"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for useful work purpose are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I02",
+    "candidate": "U05-B03-C18",
+    "candidateRevision": 1,
+    "specSha256": "f2e6eada6ca882d80426473056f77f0ec2583b71598a38a0af69017b73d3c440",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "efficiency direct ratio",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of efficiency_direct_ratio. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S03-M04"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S03-M04@history-v1",
+      "remediation_guide_versions:8f3b6671-5c2f-48d0-9f6f-bef92061466c",
+      "item_template_remediation_guides:d32fdcb1-bf86-48a3-85f7-63bd56f4f8be",
+      "item_template_remediation_guides:72691890-3dc0-4568-a08a-1b3bc873245d",
+      "remediation_guide_authoring_versions:7b658238-9eb8-4696-a777-5af00591c1bd",
+      "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+      "item_template_remediation_guides:75053dcf-dafe-4834-9fc9-148f086c304e",
+      "remediation_guide_authoring_versions:cdf254b9-a961-4245-9ece-ed347ab2a716"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-I03",
+      "PHY7-U05-S08-I05",
+      "PHY7-U05-S08-I06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-LOSS",
+      "PHY7-U05-S08-MC-REVERSE",
+      "PHY7-U05-S08-MC-PERCENT"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for efficiency direct ratio are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I03",
+    "candidate": "U05-B03-C19",
+    "candidateRevision": 1,
+    "specSha256": "9ac04e64fe5d312cc4f4922fbd46e02103eb1030900ddff7fc527a62f2f260bd",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "efficiency fraction to percent",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of efficiency_fraction_to_percent. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S01-I03",
+      "PHY7-U04-S01-I07",
+      "PHY7-U05-S01-I04"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-I03@history-v1",
+      "item_template_remediation_guides:72691890-3dc0-4568-a08a-1b3bc873245d",
+      "remediation_guide_versions:f4a5d0de-bbc1-4c88-8e9c-ec985831a790",
+      "PHY7-U04-S01-I07@current-v1",
+      "item_template_remediation_guides:457f357d-070e-40d5-9261-b13644d100c9",
+      "remediation_guide_authoring_versions:42fa5652-c194-4323-8ec9-deebf25606b0",
+      "PHY7-U05-S01-I04@history-v1",
+      "remediation_guide_authoring_versions:7cd1bd08-27e7-4e4d-8e84-f6d3852d2d31"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-I02",
+      "PHY7-U05-S08-I05",
+      "PHY7-U05-S08-I06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-PERCENT",
+      "PHY7-U05-S08-MC-PERCENT",
+      "PHY7-U05-S08-MC-PERCENT"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for efficiency fraction to percent are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I04",
+    "candidate": "U05-B03-C20",
+    "candidateRevision": 1,
+    "specSha256": "41022f0ec46b9a1b1f540f987eeea5372b0d1c996fbfaecdd5a4353f9c9b4663",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "useful plus loss",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of useful_plus_loss. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-M03@current-v1",
+      "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+      "remediation_guide_authoring_versions:0d8a5014-6a60-48c7-a786-8c2cc63fe8d0",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:cdf254b9-a961-4245-9ece-ed347ab2a716"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-D02",
+      "PHY7-U05-S08-I01",
+      "PHY7-U05-S08-M02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-TOTAL",
+      "PHY7-U05-S08-MC-LOSS",
+      "PHY7-U05-S08-MC-TOTAL"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for useful plus loss are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I05",
+    "candidate": "U05-B03-C21",
+    "candidateRevision": 1,
+    "specSha256": "c9b70c8c3c9f1a970970ea0066aa401f5f80e543d81d0a7a369bcf7ce8079a89",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "useful from efficiency",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of useful_from_efficiency. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S03-M04"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S03-M04@history-v1",
+      "item_template_remediation_guides:72691890-3dc0-4568-a08a-1b3bc873245d",
+      "remediation_guide_authoring_versions:7b658238-9eb8-4696-a777-5af00591c1bd",
+      "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+      "remediation_guide_versions:0f0ccbca-2cdf-42c9-b31b-a997b85dfa7e",
+      "remediation_guide_authoring_versions:7cd1bd08-27e7-4e4d-8e84-f6d3852d2d31",
+      "item_template_remediation_guides:457f357d-070e-40d5-9261-b13644d100c9",
+      "remediation_guide_versions:fa5b4882-c90f-42c2-b5f0-c7109bdc2998"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-I02",
+      "PHY7-U05-S08-I03",
+      "PHY7-U05-S08-I06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-LOSS",
+      "PHY7-U05-S08-MC-REVERSE",
+      "PHY7-U05-S08-MC-PERCENT"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for useful from efficiency are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I06",
+    "candidate": "U05-B03-C22",
+    "candidateRevision": 1,
+    "specSha256": "73dc29edbd48221239483e6c0852afa944e6dc1b801ab19f33f237ad595b9d35",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "total from efficiency",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of total_from_efficiency. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "remediation_guide_authoring_versions:7cd1bd08-27e7-4e4d-8e84-f6d3852d2d31",
+      "remediation_guide_versions:5cc9c0ac-491a-4769-9aa6-196ad6cd6fe9",
+      "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+      "remediation_guide_versions:f4a5d0de-bbc1-4c88-8e9c-ec985831a790"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-I02",
+      "PHY7-U05-S08-I03",
+      "PHY7-U05-S08-I05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-REVERSE",
+      "PHY7-U05-S08-MC-PERCENT",
+      "PHY7-U05-S08-MC-IDEAL"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for total from efficiency are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I07",
+    "candidate": "U05-B03-C23",
+    "candidateRevision": 1,
+    "specSha256": "5810124ca86ccc5f725a4477c5369e13b4b662c7e08b9123d636ac8feaa33e05",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "incline efficiency full measurements",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of incline_efficiency_full_measurements. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-I07",
+      "PHY7-U05-S03-I11"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "PHY7-U05-S06-I10@history-v1",
+      "item_template_remediation_guides:e01c864f-0f5d-4553-88f1-624c5691d507",
+      "remediation_guide_authoring_versions:a0d9881d-a364-4e4f-8d5c-7118843de813",
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U05-S03-I11@history-v1",
+      "PHY7-U05-S02-I10@current-v1",
+      "PHY7-U05-S02-M03@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D03",
+      "PHY7-U05-S08-D01",
+      "PHY7-U05-S08-D04",
+      "PHY7-U05-S08-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-LOSS",
+      "PHY7-U05-S08-MC-REVERSE",
+      "PHY7-U05-S08-MC-PATH"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for incline efficiency full measurements are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I08",
+    "candidate": "U05-B03-C24",
+    "candidateRevision": 1,
+    "specSha256": "ecde91a710c67e0a5b8af6a2c00bed40e072504fcca17fd62bced7d280eeca86",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "efficiency work units",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of efficiency_work_units. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S02-I03",
+      "PHY7-U05-S03-M02",
+      "PHY7-U05-S03-I06",
+      "PHY7-U05-S03-I11",
+      "PHY7-U05-S03-M04",
+      "PHY7-U05-S02-I06"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I03@current-v1",
+      "PHY7-U05-S06-I10@history-v1",
+      "PHY7-U05-S03-M02@current-v1",
+      "PHY7-U05-S03-I06@history-v1",
+      "PHY7-U05-S03-I11@current-v1",
+      "PHY7-U05-S03-M04@current-v1",
+      "remediation_guide_authoring_versions:7cd1bd08-27e7-4e4d-8e84-f6d3852d2d31",
+      "PHY7-U05-S02-I06@current-v1"
+    ],
+    "withinBatchDependencies": [],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-UNITS",
+      "PHY7-U05-S08-MC-REVERSE",
+      "PHY7-U05-S08-MC-LOSS"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for efficiency work units are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I09",
+    "candidate": "U05-B03-C25",
+    "candidateRevision": 1,
+    "specSha256": "c722f330b1e7564510f7f4cc71b0c71cfada460a06089a2b75884b29ca8422c7",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "loss reduction same task",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of loss_reduction_same_task. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S02-M03@current-v1",
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U05-S02-I10@history-v1",
+      "remediation_guide_authoring_versions:77829a4f-4c95-493c-8357-0cc5a70fb38a"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-I11",
+      "PHY7-U05-S08-M03",
+      "PHY7-U05-S08-M05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-ABSOLUTE",
+      "PHY7-U05-S08-MC-ABSOLUTE",
+      "PHY7-U05-S08-MC-IDEAL"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for loss reduction same task are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I10",
+    "candidate": "U05-B03-C26",
+    "candidateRevision": 1,
+    "specSha256": "64a9b3e16e1d446d7c962a4d51ffb909229e1f345c993a9951a1e8d37ad7450a",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "lab force reading condition",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of lab_force_reading_condition. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S01-D01",
+      "PHY7-U04-S12-D01",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-I01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-D01@history-v1",
+      "PHY7-U04-S12-D01@current-v1",
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "item_template_remediation_guides:f6cc5e68-06fe-4d42-a58a-4c8123a8b1a1",
+      "remediation_guide_versions:9f59771a-888f-4295-82c4-d28fe9222501",
+      "PHY7-U05-S02-I01@current-v1",
+      "item_template_remediation_guides:e01c864f-0f5d-4553-88f1-624c5691d507",
+      "remediation_guide_authoring_versions:1a2546ff-f742-4c46-8ef1-b18c439f8867"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-M06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-CONTROL",
+      "PHY7-U05-S08-MC-PATH",
+      "PHY7-U05-S08-MC-DATA"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "exact_textbook_practice_image",
+      "rationale": "Exact public textbook figure; teaching-exposed Practice only.",
+      "assetUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p116-fig79-incline-lab.png",
+      "assetSha256": "99e33544e5d88ab0f59cb04cf0a12882205ebca212eba314b1bc7983d8969460",
+      "printedPage": 116,
+      "altHy": "Դասագրքի նկար 79. ուժաչափով չորսուի ձգումը թեք հարթության երկայնքով։",
+      "protectedUse": false
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I11",
+    "candidate": "U05-B03-C27",
+    "candidateRevision": 1,
+    "specSha256": "7c1b374df2b5fac6806c2cd9ae42a586af09310ec37fc65fafc126efb086e5ea",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "same useful compare total",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of same_useful_compare_total. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U04-S02-I03",
+      "PHY7-U05-S03-M04"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S02-I03@current-v1",
+      "PHY7-U05-S03-M04@current-v1",
+      "item_template_remediation_guides:e5651692-d07a-4346-aa83-7e582166207d",
+      "remediation_guide_versions:aebb64a3-42b3-4a39-b464-e17723afb4b5",
+      "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+      "remediation_guide_authoring_versions:0d8a5014-6a60-48c7-a786-8c2cc63fe8d0",
+      "remediation_guide_versions:f4a5d0de-bbc1-4c88-8e9c-ec985831a790",
+      "item_template_remediation_guides:a98a6ca6-09e4-43ce-a122-cd69455a3808"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-I09",
+      "PHY7-U05-S08-M03",
+      "PHY7-U05-S08-M05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-REVERSE",
+      "PHY7-U05-S08-MC-ABSOLUTE",
+      "PHY7-U05-S08-MC-ABSOLUTE"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for same useful compare total are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-I12",
+    "candidate": "U05-B03-C28",
+    "candidateRevision": 1,
+    "specSha256": "750b0cd0276b78b24a77827408efa65ab43ee660d2bad82f2885521c778d1701",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "real efficiency plausibility",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Intentional practice of real_efficiency_plausibility. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S01-I03",
+      "PHY7-U04-S01-I05",
+      "PHY7-U04-S01-M02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-I03@history-v1",
+      "remediation_guide_authoring_versions:42fa5652-c194-4323-8ec9-deebf25606b0",
+      "PHY7-U04-S01-I05@current-v1",
+      "item_template_remediation_guides:457f357d-070e-40d5-9261-b13644d100c9",
+      "remediation_guide_versions:ff3af2dc-b126-40ac-b3f8-f0c77e2f72d6",
+      "PHY7-U04-S01-M02@current-v1",
+      "remediation_guide_authoring_versions:7b658238-9eb8-4696-a777-5af00591c1bd",
+      "remediation_guide_versions:f8490a20-9461-4e78-838e-acb80e0e2d16"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-I09",
+      "PHY7-U05-S08-D01"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-IDEAL",
+      "PHY7-U05-S08-MC-IDEAL",
+      "PHY7-U05-S08-MC-REVERSE"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for real efficiency plausibility are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-D01",
+    "candidate": "U05-B03-C29",
+    "candidateRevision": 1,
+    "specSha256": "a31e0673040c9157a9e7d0788a9958ca69f4bb71e263b0874ba200dc9b22e8b4",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "absolute height wrong origin",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Diagnose an impossible efficiency by reconstructing vertical change from nonzero endpoints; prior S02 height-origin tasks are retained dependencies. Not a bare efficiency substitution.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "PHY7-U05-S02-I10@history-v1",
+      "PHY7-U05-S02-M03@history-v1",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U05-S06-I10@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D03",
+      "PHY7-U05-S07-I09",
+      "PHY7-U05-S08-D04",
+      "PHY7-U05-S08-I07",
+      "PHY7-U05-S08-I12",
+      "PHY7-U05-S08-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-DATA",
+      "PHY7-U05-S08-MC-REFERENCE",
+      "PHY7-U05-S08-MC-IDEAL"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for absolute height wrong origin are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-D02",
+    "candidate": "U05-B03-C30",
+    "candidateRevision": 1,
+    "specSha256": "914bf4ebad8b6f26af8a784ca60207767eabb05b2158414ca7c7af5760669cca",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "expense categories not all loss",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Audit a three-category ledger with goal-defined useful output and omitted non-friction overhead; practice I01/I04 expose principles but not this classification/omission combination.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S02-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "PHY7-U05-S02-M03@current-v1",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S02-I07@current-v1",
+      "PHY7-U05-S02-I10@current-v1",
+      "item_template_remediation_guides:4c8196dd-1b15-41da-a8a1-6c2a7cb2eff1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-I01",
+      "PHY7-U05-S08-I04",
+      "PHY7-U05-S08-M02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-LOSS",
+      "PHY7-U05-S08-MC-TOTAL",
+      "PHY7-U05-S08-MC-TOTAL"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for expense categories not all loss are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-D03",
+    "candidate": "U05-B03-C31",
+    "candidateRevision": 1,
+    "specSha256": "607c622aa39d5dad305741b117e97682f43a315da17f22a029fc39ea562afc2f",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "equal efficiency unequal losses",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Distinguish intensive ratio equality from unequal absolute losses using two complete scaled records. Related density/rate ratio-vs-total comparisons explicitly included; no new independent reasoning claim.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S01-M04",
+      "PHY7-U05-S03-M04",
+      "PHY7-U05-S01-D02",
+      "PHY7-U05-S03-M02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-M04@current-v1",
+      "PHY7-U05-S03-M04@current-v1",
+      "PHY7-U05-S03-M03@current-v1",
+      "PHY7-U05-S01-D02@history-v1",
+      "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+      "remediation_guide_authoring_versions:0d8a5014-6a60-48c7-a786-8c2cc63fe8d0",
+      "remediation_guide_versions:f4a5d0de-bbc1-4c88-8e9c-ec985831a790",
+      "PHY7-U05-S03-M02@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-M06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-ABSOLUTE",
+      "PHY7-U05-S08-MC-ABSOLUTE",
+      "PHY7-U05-S08-MC-LOSS"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for equal efficiency unequal losses are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-D04",
+    "candidate": "U05-B03-C32",
+    "candidateRevision": 1,
+    "specSha256": "216674769b0caacaaf43a7f7425bfeb4c5be4bcc4fec8e67cf073759044702c6",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "mismatched segment force log",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Reconcile measurement interval with a full apparatus dimension; stimulus supplies distinct start/mid/end and matched vertical rise, not generic path-label substitution. Prior interval/path guides remain dependencies.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "remediation_guide_authoring_versions:cdf254b9-a961-4245-9ece-ed347ab2a716",
+      "item_template_remediation_guides:72691890-3dc0-4568-a08a-1b3bc873245d",
+      "remediation_guide_authoring_versions:7b658238-9eb8-4696-a777-5af00591c1bd",
+      "item_template_remediation_guides:c1d18194-ffa7-4be0-97da-1c73f55021e7",
+      "item_template_remediation_guides:457f357d-070e-40d5-9261-b13644d100c9",
+      "remediation_guide_versions:fa5b4882-c90f-42c2-b5f0-c7109bdc2998"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D03",
+      "PHY7-U05-S08-D01",
+      "PHY7-U05-S08-I07",
+      "PHY7-U05-S08-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-DATA",
+      "PHY7-U05-S08-MC-PATH",
+      "PHY7-U05-S08-MC-IDEAL"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for mismatched segment force log are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-M01",
+    "candidate": "U05-B03-C33",
+    "candidateRevision": 1,
+    "specSha256": "505ee74b2d950466b025cfb8037c8fee6b816121016f4e1ec963a0d9d1227c67",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "two lifts combined efficiency",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Explicit aggregate-work definition avoids untaught averaging rule; requires summing differently sized trial works before ratio. I02 and prior multi-stage rate tasks are dependencies; no statistics prerequisite presumed.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "PHY7-U05-S02-M03@history-v1",
+      "remediation_guide_authoring_versions:2caf62f9-f97b-49ce-a15d-d171b7bed46f",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "item_template_remediation_guides:b165d5bd-4c54-4be8-a6c4-e36d96ba62ee",
+      "PHY7-U05-S03-M03@history-v1",
+      "remediation_guide_authoring_versions:0d8a5014-6a60-48c7-a786-8c2cc63fe8d0"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-I05",
+      "PHY7-U05-S07-M02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-DATA",
+      "PHY7-U05-S08-MC-TOTAL",
+      "PHY7-U05-S08-MC-TOTAL"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for two lifts combined efficiency are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-M02",
+    "candidate": "U05-B03-C34",
+    "candidateRevision": 1,
+    "specSha256": "33d18b80cd0f67e4fa3a3398af7aef106a3d414d90525a36673cbe6d1bd50d2d",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "recover erased force from loss",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Restore a missing force from a mixed measurement/loss ledger, reversing the full efficiency experiment workflow. I04/I07/I06 expose components but no guide supplies this complete reconstruction.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S01-D01",
+      "PHY7-U05-S02-I07",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U05-S02-D01",
+      "PHY7-U05-S02-I01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S01-D01@history-v1",
+      "PHY7-U05-S06-I10@history-v1",
+      "PHY7-U05-S02-I07@history-v1",
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "remediation_guide_versions:b6132c74-6de9-4e1c-9135-7f25dd71fbd4",
+      "item_template_remediation_guides:8071c342-232a-4731-88c0-b1d352960c49",
+      "PHY7-U05-S02-D01@history-v1",
+      "PHY7-U05-S02-I01@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-D02",
+      "PHY7-U05-S08-I01",
+      "PHY7-U05-S08-I04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-TOTAL",
+      "PHY7-U05-S08-MC-LOSS",
+      "PHY7-U05-S08-MC-PATH"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for recover erased force from loss are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-M03",
+    "candidate": "U05-B03-C35",
+    "candidateRevision": 1,
+    "specSha256": "5bfc461561b088e94e1f7d80a2635c9f4bf5c7c78d7cb4f081726770b82c9836",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "smaller output higher efficiency",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Interpret unequal output/input changes and limit generalisation across loads; contrast with I09 fixed useful output and D03 equal-ratio scaling. Multiple conclusions must be checked against two paired records.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U04-S07-M01",
+      "PHY7-U05-S05-M05",
+      "PHY7-U04-S08-I08"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:5b99d77b-1aad-4136-a848-9b340fae191f",
+      "remediation_guide_authoring_versions:515f5d4e-ca6e-42e8-8042-df45c7f8696f",
+      "item_template_remediation_guides:698d3fcf-b6e2-4d01-afd6-c39dd746432a",
+      "PHY7-U04-S07-M01@history-v1",
+      "PHY7-U05-S05-M05@history-v1",
+      "PHY7-U04-S08-I08@current-v1",
+      "skill_remediation_guides:609b4b98-aa7d-4ac6-bb0a-2eb766796816",
+      "remediation_guide_authoring_versions:b6dbf521-bfc2-4012-a9a2-a475329b8b18"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-I09",
+      "PHY7-U05-S08-I11",
+      "PHY7-U05-S08-M05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-ABSOLUTE",
+      "PHY7-U05-S08-MC-ABSOLUTE",
+      "PHY7-U05-S08-MC-CONTROL"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for smaller output higher efficiency are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-M04",
+    "candidate": "U05-B03-C36",
+    "candidateRevision": 1,
+    "specSha256": "5c50aa075eea66ac10641d6803bf7a819b783462ec068a4ebef3c169a31e91bb",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "two nonzero ruler origins",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Recover both travel and rise from independent nonzero ruler origins with unit conversion; D01 changes only height origin and D04 interval selection. Related U01 measurement-origin histories and S07 geometry explicitly separated in form planning.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S02-I02",
+      "PHY7-U05-S04-I04",
+      "PHY7-U01-S04-11D-M06",
+      "PHY7-U03-S06-I04",
+      "PHY7-U03-S04-D03"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S02-I02@current-v1",
+      "PHY7-U05-S04-I04@history-v1",
+      "PHY7-U01-S04-11D-M06@current-v1",
+      "PHY7-U05-S02-I10@current-v1",
+      "remediation_guide_authoring_versions:b482a548-0fff-4345-a6fa-1f57865e7233",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "PHY7-U03-S06-I04@history-v1",
+      "PHY7-U03-S04-D03@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D03",
+      "PHY7-U05-S08-D01",
+      "PHY7-U05-S08-D04",
+      "PHY7-U05-S08-I07"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-REFERENCE",
+      "PHY7-U05-S08-MC-DATA",
+      "PHY7-U05-S08-MC-REFERENCE"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for two nonzero ruler origins are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-M05",
+    "candidate": "U05-B03-C37",
+    "candidateRevision": 1,
+    "specSha256": "de987fd4bc8f2617274978b9814b15c334845adbf6f573482c728a4b34667fc6",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "compare loss not force gain",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Rank actual ramps by reconstructed input products despite opposite force ranking; I11 gives input totals outright, while S07 ideal same-load ramp rules are deliberately inapplicable. Explicit ideal/real and force/work discrimination.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:7cd1bd08-27e7-4e4d-8e84-f6d3852d2d31",
+      "item_template_remediation_guides:d32fdcb1-bf86-48a3-85f7-63bd56f4f8be",
+      "remediation_guide_versions:b3392e7f-c88d-4595-ba46-f8f898317f49",
+      "item_template_remediation_guides:11f219a5-8026-4523-ada6-73efba0af79e",
+      "item_template_remediation_guides:72691890-3dc0-4568-a08a-1b3bc873245d",
+      "remediation_guide_versions:f4a5d0de-bbc1-4c88-8e9c-ec985831a790",
+      "remediation_guide_authoring_versions:ed0dfa89-1233-4ca2-9390-a8d3d2e124e2",
+      "remediation_guide_authoring_versions:cdf254b9-a961-4245-9ece-ed347ab2a716"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-I09",
+      "PHY7-U05-S08-I11",
+      "PHY7-U05-S08-M03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-ABSOLUTE",
+      "PHY7-U05-S08-MC-ABSOLUTE",
+      "PHY7-U05-S08-MC-IDEAL"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for compare loss not force gain are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S08-M06",
+    "candidate": "U05-B03-C38",
+    "candidateRevision": 1,
+    "specSha256": "e9c3c0522c468184d216abbdc731ed56c4513f2eac760ab16b559b55d291cf5f",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "choose complete lab record",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§37–39, էջեր 112–117։",
+    "semanticJudgment": "Reconstruct matched four-field lab records and reject cross-trial ratios, including a superficially plausible mismatch. D03 supplies already paired work totals; prior force/path shuffled tasks are exposure dependencies.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S02-M03",
+      "PHY7-U05-S02-M04",
+      "PHY7-U05-S03-D01",
+      "PHY7-U05-S03-M03",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S05-D01",
+      "PHY7-U05-S02-I08",
+      "PHY7-U04-S12-M02"
+    ],
+    "currentHistoryGuideRefs": [
+      "item_template_remediation_guides:df762b46-5817-481c-860a-b48e25dd58ea",
+      "remediation_guide_authoring_versions:fc480dbb-442b-4aab-9543-87b09d0403b1",
+      "PHY7-U05-S03-D01@current-v1",
+      "item_template_remediation_guides:d0e4a7ba-8b27-449e-ba16-fd1b7a104042",
+      "remediation_guide_authoring_versions:ed06674b-8519-4580-9b1f-eec5915c8d62",
+      "PHY7-U05-S05-D01@history-v1",
+      "PHY7-U05-S02-I08@history-v1",
+      "PHY7-U04-S12-M02@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S08-D03",
+      "PHY7-U05-S08-I10"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S08-MC-DATA",
+      "PHY7-U05-S08-MC-DATA",
+      "PHY7-U05-S08-MC-ABSOLUTE"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for choose complete lab record are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S10-I01",
+    "candidate": "U05-B03-C39",
+    "candidateRevision": 1,
+    "specSha256": "533032d25887964577683fc523371c1511aca0c202ce5d71d7bc6c6f55be5b8c",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "scissors cut near pivot",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107; §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Optional practical application of S04/S05 taught lever claims; intentional practice, no independent coverage.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S04-I03",
+      "PHY7-U05-S05-I01",
+      "PHY7-U05-S05-I02",
+      "PHY7-U05-S06-I02",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S05-M04",
+      "PHY7-U04-S05-I10"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S05-M04@current-v1",
+      "remediation_guide_versions:6de2053f-7cda-42c5-94ef-cf0de7d6ec1d",
+      "PHY7-U04-S05-I10@current-v1",
+      "item_template_remediation_guides:0592d6ac-8470-4099-95af-ff08a6817bc4",
+      "remediation_guide_authoring_versions:5d7d58b1-8e99-4780-ab97-e3e14e4f3f78",
+      "remediation_guide_authoring_versions:b924d6c8-8828-4f3d-9036-5bd1986cc277",
+      "item_template_remediation_guides:a7010e29-7e1e-4d2b-8395-0e6a422b8497",
+      "item_template_remediation_guides:9c716d7b-bb71-4626-aadf-61dab7d0af09"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-D02",
+      "PHY7-U05-S10-I02",
+      "PHY7-U05-S10-I05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S10-MC-ARM",
+      "PHY7-U05-S10-MC-ARM",
+      "PHY7-U05-S10-MC-ARM"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for scissors cut near pivot are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S10-I02",
+    "candidate": "U05-B03-C40",
+    "candidateRevision": 1,
+    "specSha256": "4aded85ee374a03d4827cbf71c78d0821a02d11ffd1ddf5b8c496fbf714d09f3",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "crowbar support placement",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107; §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Intentional practice of crowbar_support_placement. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S04-I03",
+      "PHY7-U05-S05-I01",
+      "PHY7-U05-S05-I02",
+      "PHY7-U05-S06-I02",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S04-D01",
+      "PHY7-U05-S01-I05"
+    ],
+    "currentHistoryGuideRefs": [
+      "item_template_remediation_guides:8d319fa8-a2bf-44d8-a4c8-72fd6d947932",
+      "remediation_guide_authoring_versions:f9cadd0e-48c8-4f54-a172-3d17c0cb93b7",
+      "item_template_remediation_guides:a7010e29-7e1e-4d2b-8395-0e6a422b8497",
+      "remediation_guide_versions:85ddc174-86f6-4f6f-9a65-7b065e192cde",
+      "PHY7-U05-S04-D01@current-v1",
+      "item_template_remediation_guides:202a4b34-398a-40f1-86b3-e85f384fa9ff",
+      "remediation_guide_versions:a44da565-66f1-41f2-b6d9-0ef37039624c",
+      "PHY7-U05-S01-I05@history-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-D02",
+      "PHY7-U05-S10-I01",
+      "PHY7-U05-S10-I05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S10-MC-ARM",
+      "PHY7-U05-S10-MC-MODEL",
+      "PHY7-U05-S10-MC-ARM"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for crowbar support placement are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S10-I03",
+    "candidate": "U05-B03-C41",
+    "candidateRevision": 1,
+    "specSha256": "4223959f125172f126735b2b0c279d385c16575723d91a83bc7e1b8febd59fd2",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "flagpole direction use",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107; §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Intentional practice of flagpole_direction_use. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S04-I03",
+      "PHY7-U05-S05-I01",
+      "PHY7-U05-S05-I02",
+      "PHY7-U05-S06-I02",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M02"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I05@current-v1",
+      "PHY7-U05-S06-M02@current-v1",
+      "remediation_guide_versions:3bfc1e32-bae0-4232-affb-c5876f5f5025",
+      "remediation_guide_versions:4b2a853d-c3d3-452c-9c8d-2d2d1848bbfc",
+      "item_template_remediation_guides:fac155ff-472a-46eb-8604-cc9670e84d5d",
+      "item_template_remediation_guides:5852c52a-ee0e-4bc8-8b8f-4aa09f129475",
+      "remediation_guide_versions:306ad643-943f-4810-b6e1-fbf1c3ef4b93",
+      "item_template_remediation_guides:fcef52e1-dbe5-404b-b5ed-cb8d022de6f7"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D02",
+      "PHY7-U05-S10-I06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S10-MC-ROLE",
+      "PHY7-U05-S10-MC-WORK",
+      "PHY7-U05-S10-MC-MODEL"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for flagpole direction use are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S10-I04",
+    "candidate": "U05-B03-C42",
+    "candidateRevision": 1,
+    "specSha256": "ce5a859981e9ddf27fa860038533353833fd3709d5da19052c39000fd9b4e36f",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "loading ramp choice",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107; §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Intentional practice of loading_ramp_choice. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S04-I03",
+      "PHY7-U05-S05-I01",
+      "PHY7-U05-S05-I02",
+      "PHY7-U05-S06-I02",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I10",
+      "PHY7-U04-S12-D02",
+      "PHY7-U04-S12-M01",
+      "PHY7-U03-S02-M02",
+      "PHY7-U04-S11-I04",
+      "PHY7-U05-S03-I01",
+      "PHY7-U03-S07-I12",
+      "PHY7-U05-S01-D01"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U04-S12-D02@current-v1",
+      "PHY7-U04-S12-M01@current-v1",
+      "PHY7-U03-S02-M02@history-v1",
+      "PHY7-U04-S11-I04@current-v1",
+      "PHY7-U05-S03-I01@history-v1",
+      "PHY7-U03-S07-I12@current-v1",
+      "PHY7-U05-S01-D01@current-v1",
+      "remediation_guide_authoring_versions:cdf254b9-a961-4245-9ece-ed347ab2a716"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S07-D01",
+      "PHY7-U05-S07-I02",
+      "PHY7-U05-S07-I03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S10-MC-WORK",
+      "PHY7-U05-S10-MC-WORK",
+      "PHY7-U05-S10-MC-ROLE"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for loading ramp choice are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S10-I05",
+    "candidate": "U05-B03-C43",
+    "candidateRevision": 1,
+    "specSha256": "bd3a505870f48dd926f3a43e0d3e770e6ec1bc4e9541f1dda4dae2bbe581c97a",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "forearm explicit lever model",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107; §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Textbook arm-as-lever application with every anatomical/model assumption supplied; no untaught biomechanics. Optional practice only.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S04-I03",
+      "PHY7-U05-S05-I01",
+      "PHY7-U05-S05-I02",
+      "PHY7-U05-S06-I02",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S05-I10",
+      "PHY7-U02-S05-I12",
+      "PHY7-U05-S05-I04"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_authoring_versions:551e9005-ad45-452c-8540-d85865977414",
+      "remediation_guide_versions:064f0782-70fe-4e4c-bc19-36a0c588f3c4",
+      "item_template_remediation_guides:6b7fd2e5-0265-4e68-b4d8-e32ac898c29e",
+      "item_template_remediation_guides:3912090d-2532-4ec1-9bbb-79a09fb04ce8",
+      "PHY7-U05-S05-I10@history-v1",
+      "PHY7-U02-S05-I12@current-v1",
+      "PHY7-U05-S05-I04@current-v1",
+      "remediation_guide_authoring_versions:ed06674b-8519-4580-9b1f-eec5915c8d62"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S05-D02",
+      "PHY7-U05-S10-I01",
+      "PHY7-U05-S10-I02"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S10-MC-ARM",
+      "PHY7-U05-S10-MC-MODEL",
+      "PHY7-U05-S10-MC-ARM"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for forearm explicit lever model are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S10-I06",
+    "candidate": "U05-B03-C44",
+    "candidateRevision": 1,
+    "specSha256": "859b4c4c854c1c945de0659ba3c424891fd155d2c624038ebbcda4063ccaab9d",
+    "bank": "practice",
+    "disposition": "intentional_practice_variant",
+    "stimulusAndClaim": "two task mechanism selection",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §34, էջեր 105–107; §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Intentional practice of two_task_mechanism_selection. Its taught procedure and worked guide are exposed; reinforcement is useful but adds no independent reasoning or protected capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S04-I03",
+      "PHY7-U05-S05-I01",
+      "PHY7-U05-S05-I02",
+      "PHY7-U05-S06-I02",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I10",
+      "PHY7-U03-S07-I12"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U03-S07-I12@current-v1",
+      "item_template_remediation_guides:4c8196dd-1b15-41da-a8a1-6c2a7cb2eff1",
+      "remediation_guide_authoring_versions:d4158eae-fa05-4dfc-9b8d-2cfbc9e0182d",
+      "PHY7-U05-S06-I02@current-v1",
+      "remediation_guide_versions:e3d3882e-03e7-4c4a-aabb-2d15e762607e",
+      "PHY7-U05-S06-I05@current-v1",
+      "item_template_remediation_guides:2da2305e-a1a7-43be-a89a-fd387f95b4d1",
+      "remediation_guide_versions:01c22b70-7890-405b-9992-7bd70fac00da"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D02",
+      "PHY7-U05-S10-I03"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S10-MC-ROLE",
+      "PHY7-U05-S10-MC-ROLE",
+      "PHY7-U05-S10-MC-WORK"
+    ],
+    "protectionJudgment": "Public textbook/teaching-exposed practice only; no protected capacity.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for two task mechanism selection are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S05-D02",
+    "candidate": "U05-B03-C45",
+    "candidateRevision": 2,
+    "specSha256": "b217b2ed33634eaaba18e88c97d9f6efe70de9d21dd763ee9d428f0fa50045a0",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "two loads one arm unequal resultants",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§34–35, էջեր 106–109։",
+    "semanticJudgment": "Rework of held S05-D02: reconstruct the combined force from two co-located loads before testing unequal-force equilibrium. Earlier I04 gives two forces directly; new stimulus requires selecting the system and summing only the right-side loads. Related U04 resultant-force and S05-M04 invariant-product reasoning are explicit dependencies.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S05-I04",
+      "PHY7-U05-S05-I09",
+      "PHY7-U05-S05-M04",
+      "PHY7-U04-S13-I09",
+      "PHY7-U04-S13-D03",
+      "PHY7-U05-S05-M03",
+      "PHY7-U05-S05-I10",
+      "PHY7-U05-S05-D03"
+    ],
+    "currentHistoryGuideRefs": [
+      "remediation_guide_versions:a5003b01-8f65-4246-9a77-b2f93b01e607",
+      "item_template_remediation_guides:d0e4a7ba-8b27-449e-ba16-fd1b7a104042",
+      "PHY7-U05-S05-M03@history-v1",
+      "PHY7-U05-S05-I10@current-v1",
+      "PHY7-U05-S05-I04@history-v1",
+      "PHY7-U05-S05-D03@current-v1",
+      "remediation_guide_authoring_versions:771edbd0-b4a1-487c-a560-794d1c84eee4",
+      "item_template_remediation_guides:d789176a-b9e5-477b-adc5-a7cdf43418f0"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S10-I01",
+      "PHY7-U05-S10-I02",
+      "PHY7-U05-S10-I05"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-EQUALFORCE",
+      "PHY7-U05-S05-MC-COMBINED"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for two loads one arm unequal resultants are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S06-D02",
+    "candidate": "U05-B03-C46",
+    "candidateRevision": 2,
+    "specSha256": "dddbc09d55a1ad3f947cfe93f5a720b1a70c83a4086eba951d5966b1f03ca941",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "fixed pulley instrument offset",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Rework of held S06-D02: distinguish apparatus behaviour from a supplied instrument offset, using a no-load check. Prior fixed-pulley guides do not resolve the uncorrected reading. U01 calibration histories remain strong dependencies; correction rule is explicitly supplied, no new instrumentation law.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S06-I04",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I06",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M03",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S06-M02",
+      "PHY7-U05-S06-D04",
+      "PHY7-U05-S06-I07",
+      "PHY7-U05-S06-I09"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I05@history-v1",
+      "PHY7-U05-S06-I04@current-v1",
+      "PHY7-U05-S06-M02@current-v1",
+      "remediation_guide_versions:3bfc1e32-bae0-4232-affb-c5876f5f5025",
+      "item_template_remediation_guides:fac155ff-472a-46eb-8604-cc9670e84d5d",
+      "PHY7-U05-S06-D04@history-v1",
+      "PHY7-U05-S06-I07@history-v1",
+      "PHY7-U05-S06-I09@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S10-I03",
+      "PHY7-U05-S10-I06"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-OFFSET",
+      "PHY7-U05-S06-MC-OFFSET",
+      "PHY7-U05-S06-MC-FIXEDGAIN"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for fixed pulley instrument offset are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S06-D03",
+    "candidate": "U05-B03-C47",
+    "candidateRevision": 2,
+    "specSha256": "52d080562bfd58a9ac18f964e7c1a7896e2ef7fe6373085e710d95e7571e60c5",
+    "bank": "diagnostic",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "two rope markers same lift",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Rework of held S06-D03: identify the correct moving point and reconstruct its travel from a nonzero marker origin; earlier I10 and held r1 give travel directly. Explicit dependencies with U01 endpoint readings and S08-M04 prevent independent-coverage claims.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S06-I04",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I06",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M03",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S06-D04",
+      "PHY7-U05-S06-I08",
+      "PHY7-U05-S06-M02",
+      "PHY7-U05-S06-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I04@history-v1",
+      "PHY7-U05-S06-I06@current-v1",
+      "PHY7-U05-S06-I10@history-v1",
+      "PHY7-U05-S06-D04@history-v1",
+      "PHY7-U05-S06-I08@current-v1",
+      "PHY7-U05-S06-M02@history-v1",
+      "PHY7-U05-S06-I07@current-v1",
+      "PHY7-U05-S06-M03@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-M04",
+      "PHY7-U05-S06-M05",
+      "PHY7-U05-S08-D01",
+      "PHY7-U05-S08-D04",
+      "PHY7-U05-S08-I07",
+      "PHY7-U05-S08-M04"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-DATA",
+      "PHY7-U05-S06-MC-DATA"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for two rope markers same lift are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S06-M04",
+    "candidate": "U05-B03-C48",
+    "candidateRevision": 2,
+    "specSha256": "c773e8432a48384d833c287cd271064f7315d1f520f5839d2c668f109c4a3181",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "recover pulley log permuted columns",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Rework of held S06-M04: restore lost column identities and use an independent work checksum; no two fields are declared correct to trivialise repair. Dependencies with S06-M01, S02-M04 shuffled data and S07-M01 are explicit; protected only, not independent capacity.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S06-I04",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I06",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M03",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S06-D04",
+      "PHY7-U05-S06-M02",
+      "PHY7-U05-S06-I08",
+      "PHY7-U05-S06-I07"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I04@history-v1",
+      "PHY7-U05-S06-D04@current-v1",
+      "PHY7-U05-S06-I06@history-v1",
+      "PHY7-U05-S06-I10@current-v1",
+      "PHY7-U05-S06-M02@history-v1",
+      "PHY7-U05-S06-I08@current-v1",
+      "PHY7-U05-S06-I07@history-v1",
+      "PHY7-U05-S06-M01@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D03",
+      "PHY7-U05-S06-M05",
+      "PHY7-U05-S07-I03",
+      "PHY7-U05-S07-M01"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-MOVABLE",
+      "PHY7-U05-S06-MC-DATA"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for recover pulley log permuted columns are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  },
+  {
+    "code": "PHY7-U05-S06-M05",
+    "candidate": "U05-B03-C49",
+    "candidateRevision": 2,
+    "specSha256": "1b99684c1e2e00d5398abb9542c5d3f4331f19fd8d5c4a5ef359d2e3e82cde49",
+    "bank": "mastery_check",
+    "disposition": "protected_parallel_assessment_variant",
+    "stimulusAndClaim": "same lift three ledger proposals",
+    "source": "Ֆիզիկա 7, Մելիքյան–Մաիլյան, 2023, §§36–37, էջեր 109–113։",
+    "semanticJudgment": "Rework of held S06-M05: audit three work proposals and identify that apparent work saving performs only half the target lift. Earlier I10 generic equal-work statement does not identify task completion. Related S06-M03 feasibility and S07/S08 force-vs-work dependencies remain recorded.",
+    "nearestExistingCodes": [
+      "PHY7-U05-S06-I04",
+      "PHY7-U05-S06-I05",
+      "PHY7-U05-S06-I06",
+      "PHY7-U05-S06-I10",
+      "PHY7-U05-S06-M01",
+      "PHY7-U05-S06-M03",
+      "PHY7-U05-S02-I10",
+      "PHY7-U05-S06-M02",
+      "PHY7-U05-S06-D04",
+      "PHY7-U05-S06-I08"
+    ],
+    "currentHistoryGuideRefs": [
+      "PHY7-U05-S06-I06@history-v1",
+      "PHY7-U05-S06-M02@current-v1",
+      "PHY7-U05-S06-M01@history-v1",
+      "PHY7-U05-S06-I04@current-v1",
+      "PHY7-U05-S06-I10@history-v1",
+      "PHY7-U05-S06-M03@current-v1",
+      "PHY7-U05-S06-D04@history-v1",
+      "PHY7-U05-S06-I08@current-v1"
+    ],
+    "withinBatchDependencies": [
+      "PHY7-U05-S06-D03",
+      "PHY7-U05-S06-M04",
+      "PHY7-U05-S07-I04",
+      "PHY7-U05-S07-I10"
+    ],
+    "distractorLogic": [
+      "PHY7-U05-S06-MC-WORK",
+      "PHY7-U05-S06-MC-DISTANCE",
+      "PHY7-U05-S06-MC-MOVABLE"
+    ],
+    "protectionJudgment": "Retained under the current bounded manifest: requires the specific new record interpretation described in the semantic judgment. Existing procedures remain dependencies; no independent reasoning or qualified form capacity claimed. Ordinary exact-version review, SME/exposure review, item/stimulus separation, per-learner exposure and disjoint allocation remain pending. No protected solution is copied into a new guide.",
+    "independentNewReasoning": false,
+    "qualifiedFormCapacity": 0,
+    "illustrationDecision": {
+      "disposition": "self_contained_verbal_task",
+      "rationale": "All required positions, directions, force application points and measurements for same lift three ledger proposals are supplied in the verbal task. No question refers to an unseen illustration or requires an unprovided scale/gauge reading."
+    }
+  }
+]
