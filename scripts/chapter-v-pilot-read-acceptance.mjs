@@ -23,6 +23,13 @@ const digest = value => createHash('sha256').update(JSON.stringify(value)).diges
 const recipe = JSON.parse(await readFile(new URL('../docs/evidence/chapter-v-assessment-v2-configuration-20261019.json', import.meta.url), 'utf8'));
 const sameSet = (a, b) => Array.isArray(a) && a.length === b.length && new Set(a).size === b.length && b.every(x => a.includes(x));
 const sameMap = (a, b) => a && Object.keys(a).length === Object.keys(b).length && Object.entries(b).every(([k, v]) => a[k] === v);
+const canonical = value => JSON.stringify(value, (_, v) => v && typeof v === 'object' && !Array.isArray(v)
+  ? Object.fromEntries(Object.entries(v).sort(([a], [b]) => a.localeCompare(b))) : v);
+// Exact projection exposed by service_student_learning_dashboard; null fields
+// are intentional and must not hide an unexpected rule in another mode.
+const policyFields = ['schemaVersion', 'hintsAllowed', 'responseTypes', 'scoringStrategy', 'minimumPercent',
+  'deliveredSkillIds', 'scoredSkillIds', 'readinessSkillIds', 'reportingGroups', 'questionCountBySkill',
+  'minimumCorrectBySkill', 'learningModelConfigurationId', 'academicMasteryPolicyId'];
 
 export function validateActivation(input) {
   const { activation } = input;
@@ -44,6 +51,8 @@ export function chapterVContract(data, context) {
   if (data.skills.some(s => s.requiredForReadiness !== required.includes(s.id))) return false;
   for (const [mode, expected] of Object.entries(byMode)) {
     const spec = data.modes?.[mode];
+    if (policyFields.some(key => !Object.hasOwn(spec ?? {}, key) || canonical(spec[key]) !== canonical(expected[key] ?? null))) return false;
+    if (spec.policyVersion !== expected.version) return false;
     if (spec?.status !== 'configured' || spec.schemaVersion !== common.schemaVersion || spec.questions !== expected.plannedQuestionCount || spec.hintsAllowed !== expected.hintsAllowed) return false;
     if (!sameSet(spec.deliveredSkillIds, expected.deliveredSkillIds) || spec.reportingGroups?.length !== expected.reportingGroups.length) return false;
     for (const group of expected.reportingGroups) {

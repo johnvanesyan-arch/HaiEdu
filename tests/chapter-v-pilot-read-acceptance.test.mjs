@@ -49,7 +49,7 @@ function mock(input, alter = () => null) {
     fourth.modes = Object.fromEntries(Object.entries(fourthContracts).map(([mode,spec]) => [mode, {...structuredClone(spec), status:'configured',questions:spec.plannedQuestionCount}]));
     const d = dashboards[side][4], expected = contracts.mastery_check;
     d.skills = contracts.practice.deliveredSkillIds.map(id => ({ id, requiredForReadiness: expected.readinessSkillIds.includes(id), ready: false }));
-    d.modes = Object.fromEntries(Object.entries(contracts).map(([mode, spec]) => [mode, { ...structuredClone(spec), status: 'configured', questions: spec.plannedQuestionCount }]));
+    d.modes = Object.fromEntries(Object.entries(contracts).map(([mode, spec]) => [mode, { scoredSkillIds:null,readinessSkillIds:null,questionCountBySkill:null,minimumCorrectBySkill:null,minimumPercent:null, ...structuredClone(spec), policyVersion:spec.version, status: 'configured', questions: spec.plannedQuestionCount }]));
     // Preserved Chapter II may already have a completed baseline.
     dashboards[side][1].baseline = { id: id(801), curriculumReleaseId: chapterII.curriculumReleaseId };
   }
@@ -142,4 +142,13 @@ test('optional skills remain visible in Practice but excluded from Diagnostic, M
   const m = mock(inputs()), d=m.dashboards.A[4], c=m.contexts.A[4];
   assert.equal(d.skills.length,10); assert.equal(contracts.diagnostic.deliveredSkillIds.length,8); assert.equal(chapterVContract(d,c),true);
   d.skills=d.skills.slice(0,8); assert.equal(chapterVContract(d,c),false);
+});
+
+test('every mode rejects missing or changed exposed policy and model fields', () => {
+  const m=mock(inputs()),d=m.dashboards.A[4],c=m.contexts.A[4];
+  const fields=['schemaVersion','hintsAllowed','responseTypes','scoringStrategy','minimumPercent','deliveredSkillIds','scoredSkillIds','readinessSkillIds','reportingGroups','questionCountBySkill','minimumCorrectBySkill','learningModelConfigurationId','academicMasteryPolicyId','policyVersion','questions'];
+  for(const mode of Object.keys(contracts)) for(const key of fields) {
+    const changed=structuredClone(d);changed.modes[mode][key]='incorrect-deployed-contract';assert.equal(chapterVContract(changed,c),false,`${mode}.${key}`);
+    const missing=structuredClone(d);delete missing.modes[mode][key];assert.equal(chapterVContract(missing,c),false,`missing ${mode}.${key}`);
+  }
 });
