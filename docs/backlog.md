@@ -276,7 +276,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Verify ordinary approval for 233 current question versions; preserve the nine owner-selected image-corrected v2 questions as a separate exact-version review queue.
 - [x] Rehearse and commit the guarded nine-item v2 correction while preserving options, keys, explanations, hints, misconception mappings and all v1 snapshots.
 - [x] Add the nine replacement images at versioned `-v2.png` paths and refresh the substantive comparison for clarified `PHY7-U06-S13-I05`.
-- [ ] Verify all nine deployed production assets byte-for-byte, record the nine v2 technical-QA rows, and complete exact-version review for those nine questions.
+- [x] Verify all nine deployed production assets byte-for-byte and by exact dimensions; record nine v2 technical-QA passes with zero errors or warnings.
+- [ ] Complete exact-version review for the nine corrected v2 questions.
 - [ ] Publish/review the 146 guides and approve/review the 158 misconception definitions.
 - [ ] Propose and approve any later Chapter VI assessment contract, qualification, allocation, activation and learner release under separate evidence and authorization; do not infer them from the planning budget.
 
