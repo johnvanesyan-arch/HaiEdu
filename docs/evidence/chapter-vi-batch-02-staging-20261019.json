@@ -1,0 +1,246 @@
+{
+  "schema": "haiedu-content-batch-staging-v1",
+  "sprint": "15F.3",
+  "roadmap_version": "4.14",
+  "chapter": "PHY7-U06",
+  "batch": 2,
+  "base_commit": "94b8eb9ee0f6d110af648b1c8813fdec7be82ca2",
+  "staged_at": "2026-10-19T17:18:34.319404Z",
+  "verified_at": "2026-10-19T17:21:45.844064+00:00",
+  "project_ref": "xzyjvwiiibuarpotppid",
+  "owner_direction": "Do 90-question Chapter VI Batch 2",
+  "approval_boundary": "The batch was authorized for authoring and staging; no ordinary exact-version approval was inferred.",
+  "inventory": {
+    "questions": 90,
+    "practice": 54,
+    "diagnostic": 14,
+    "mastery": 22,
+    "practice_guides": 54,
+    "misconception_definitions": 56,
+    "distractor_mappings": 270,
+    "options": 360,
+    "immutable_item_versions": 90,
+    "image_backed_practice_questions": 5,
+    "protected_candidates": 36
+  },
+  "skill_allocation": {
+    "S05": {
+      "practice": 12,
+      "diagnostic": 4,
+      "mastery_check": 6
+    },
+    "S06": {
+      "practice": 10,
+      "diagnostic": 4,
+      "mastery_check": 6
+    },
+    "S07": {
+      "practice": 10,
+      "diagnostic": 4,
+      "mastery_check": 6
+    },
+    "S08": {
+      "practice": 10,
+      "diagnostic": 2,
+      "mastery_check": 4
+    },
+    "S15": {
+      "practice": 6,
+      "diagnostic": 0,
+      "mastery_check": 0,
+      "role": "practice_only_non_gating"
+    },
+    "S16": {
+      "practice": 6,
+      "diagnostic": 0,
+      "mastery_check": 0,
+      "role": "practice_only_non_gating"
+    }
+  },
+  "whole_bank_comparison": {
+    "corpus_sha256": "7da46cff2efe678f5b2fa5ffc6b999aab221ec10bc72f84b7b102e4a6e16239a",
+    "corpus_proof_file_sha256": "487dc6815ccebd50dbce4222fe2706ba4003e78ee0b65d7c66c5326f0205ae98",
+    "state_fingerprint_set_sha256": "9e0f2c6a885da3ea373f68ff62871ae7a32d8f9e73e91250986a371cbbf6de18",
+    "current_items": 1079,
+    "historical_item_versions": 964,
+    "current_template_guides": 416,
+    "runtime_guide_versions": 819,
+    "authoring_guide_versions": 1314,
+    "misconceptions": 919,
+    "exposure_identities": 44,
+    "retrieval_profiles": 5511,
+    "within_batch_pairs": 4005,
+    "substantive_overlaps": 0,
+    "untaught_science": 0,
+    "final_editorial_pass": "Close or ambiguous pressure, vessel, hydraulic, Torricelli, instrument and pump drafts were separated or clarified; one numerical key and one answer-leaking hint were corrected before final replay.",
+    "method": "Lexical retrieval ranked neighbors; the primary agent separately compared scenario, steps, inference, answer, distractors, explanation, stimulus and guide."
+  },
+  "authoring_audit": {
+    "unique_prompts": 90,
+    "unique_correct_answers": 90,
+    "unique_worked_examples": 54,
+    "answer_positions": {
+      "A": 23,
+      "B": 23,
+      "C": 22,
+      "D": 22
+    },
+    "guide_answer_leaks": 0,
+    "same_prompt_example_number_sets": 0,
+    "hidden_characters": 0,
+    "checked_numerical_keys": 15,
+    "authoring_summary_sha256": "b614b86669284ab0986828b18c2a8e286c8cc960dfbbd584b8376ac7b6e1bcee",
+    "authoring_audit_sha256": "28fa516a3dcc5a348ef5706414c5fbf9201b84c371a19f9c398e691d61bcd364",
+    "comparison_sha256": "afbb3452367f78cdd3584dcb41511d2a887625e00d0a5533363769fd390ca45e",
+    "within_batch_pairs_sha256": "8761b0cd9d65babb55961ee2005f34e9a8d8b68b587cd0fec0d888a187798231"
+  },
+  "technical_qa": {
+    "questions": {
+      "passed": 90,
+      "errors": 0,
+      "warnings": 0,
+      "deployed_evaluator_sha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+      "rollback_result_sha256": "527430f9c7f1b181e8954a8fec30c1672f695d838bdf5ea4c17226bf9eb034e6",
+      "production_result_sha256": "5bbb0c11ba170003c11327551f210cbb85489ad6d9f8cad54c0dfd83b89a5377"
+    },
+    "guides": {
+      "passed": 54,
+      "errors": 0,
+      "warnings": 0,
+      "deployed_validator_sha256": "e19ecbe9b6113f536617ce538832c460d3f37d79c8c47757c04dd908a119561d",
+      "rollback_result_sha256": "7bdb33fe400b6cdd46a26f70a764c7418efe02799a4c7f432c4753f6de9bd365",
+      "production_result_sha256": "870cd24813a673d1e4b324ec5563bdae86a9152affdbdb15c8014867f8ee3299"
+    },
+    "method": "Exact deployed v11 source replay against rollback and committed readback catalogues; actor-null technical QA rows saved after guarded readback."
+  },
+  "database_verification": {
+    "guarded_tables": 63,
+    "content_modified_tables": 14,
+    "qa_modified_tables": 1,
+    "rollback_restored_all_fingerprints": true,
+    "count_deltas_exact": true,
+    "prior_row_multisets_verified_by_staging_transaction": true,
+    "transaction_sha256": {
+      "rollback": "b882d3333b79b8161bc4e0a7ec7c70fae4c0631bb9407fcb17f0440f72907d98",
+      "commit": "bfb41547917910c95c12b91bb5075d9c366d06f44ce5aff2556f21680f0ba002"
+    },
+    "state_sha256": {
+      "before": "97d47d26b2868b2ab42f0c5f098ce2d51ae0e51022dc63984bb3170fdd60d3f9",
+      "staged": "b4f2392411402d0a34aa505afadd196e06f6a72dec6438030f23060d48526f5b",
+      "after_qa": "382fccc98373553e71fed2d3e23cf3d6f6b1d02d5bdd2ebec7a4d8915edf4f5c"
+    },
+    "final_readback": {
+      "batch2": {
+        "items": 90,
+        "practice": 54,
+        "diagnostic": 14,
+        "mastery": 22,
+        "guides": 54,
+        "misconceptions": 56,
+        "mappings": 270,
+        "qa_passed": 90,
+        "qa_errors": 0,
+        "qa_warnings": 0,
+        "draft_items": 90,
+        "needs_review_items": 90,
+        "provisional_items": 90,
+        "learner_visible_items": 0,
+        "allocation_allowed_items": 0,
+        "protected_candidates": 36
+      },
+      "chapter6": {
+        "items": 160,
+        "practice": 98,
+        "diagnostic": 24,
+        "mastery": 38,
+        "guides": 98,
+        "misconceptions": 100,
+        "draft_items": 160,
+        "needs_review_items": 160,
+        "learner_visible_items": 0,
+        "allocation_allowed_items": 0
+      },
+      "release": {
+        "id": "44e5e99a-43bc-5937-8793-b2c614e38700",
+        "release_key": "physics7_u06_2026_08_14_draft_r6",
+        "status": "draft",
+        "activated_at": null
+      },
+      "runtime_isolation": {
+        "pool_definitions": 0,
+        "pool_item_links": 0,
+        "form_item_links": 0,
+        "learning_session_items": 0,
+        "item_reviews": 0,
+        "student_exposures": 0,
+        "chapter_review_exposures": 0
+      }
+    }
+  },
+  "batch1_preservation": {
+    "exact": true,
+    "checked_catalogue_projections": 10,
+    "items": 70,
+    "options": 280,
+    "templates": 70,
+    "item_versions": 70,
+    "mappings": 210,
+    "misconceptions": 44,
+    "guides": 44,
+    "evidence_sha256": "1d4e7f6d809f4cc4b87de317afcd0d465dad981b98fbcccc12d8d2967986851e"
+  },
+  "source": {
+    "textbook": "Ֆիզիկա 7, Գագիկ Մելիքյան / Սոս Մաիլյան, Էդիթ Պրինտ, 2023",
+    "textbook_sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "locators": [
+      "§41, pp.123–124",
+      "§43–§49, pp.128–147"
+    ]
+  },
+  "images": [
+    {
+      "path": "web/assets/textbook/physics7-2023/p131-communicating-vessels.png",
+      "printed_page": 131,
+      "sha256": "f53b12e44de3836b33968a7612cb002493c7b4cdae14182cd58437de0cff694a"
+    },
+    {
+      "path": "web/assets/textbook/physics7-2023/p135-hydraulic-press.png",
+      "printed_page": 135,
+      "sha256": "b2a0b9dbfed82c14cbb8b8b1dd9cb6ee94fe9db1b642fb7525ff7edcb046c362"
+    },
+    {
+      "path": "web/assets/textbook/physics7-2023/p143-torricelli.png",
+      "printed_page": 143,
+      "sha256": "ffdeaa4183b089da1e72d380932500b04a39229b9d200adb3010254e32f7aa35"
+    },
+    {
+      "path": "web/assets/textbook/physics7-2023/p123-manometer.png",
+      "printed_page": 123,
+      "sha256": "ea53d97d35e7e896a05cd09b9535b5b55cf3df2e43c6f584cde2b573ca9504eb"
+    },
+    {
+      "path": "web/assets/textbook/physics7-2023/p147-piston-pump.png",
+      "printed_page": 147,
+      "sha256": "752594f6a0562f27dce4ba73e998561b5904c0c1c4f3a9cb61848cc54a279a8a"
+    }
+  ],
+  "review": {
+    "status": "pending ordinary authenticated exact-version review",
+    "questions": "https://www.haiedu.am/content-review.html",
+    "guides": "https://www.haiedu.am/content-guides.html",
+    "misconceptions": "https://www.haiedu.am/content-misconceptions.html",
+    "filter": "PHY7-U06 / S05, S06, S07, S08, S15, S16"
+  },
+  "runtime_boundary": {
+    "release_status": "draft",
+    "learner_visible_items": 0,
+    "allocation_allowed_items": 0,
+    "pool_links": 0,
+    "form_links": 0,
+    "learner_exposures": 0,
+    "assessment_contract": "not created",
+    "activation": "not authorized"
+  },
+  "protected_content_handling": "Diagnostic/Mastery prompts, options and keys are stored in the protected database and restricted evidence package; public repository evidence records counts, hashes and decisions only."
+}
+
