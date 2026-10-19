@@ -1,0 +1,93 @@
+{
+  "schemaVersion": 1,
+  "chapter": "PHY7-U06",
+  "sprint": "15F.5",
+  "recordedDate": "2026-10-19",
+  "sourceMainSha": "f34ee753d62e3cb140aef2352972badef419c767",
+  "database": {
+    "rollbackRehearsalAt": "2026-10-19T21:33:39.496043+00:00",
+    "committedAt": "2026-10-19T21:34:05.515786+00:00",
+    "targetDigest": "e96d1353eda9d71d21acc5c7ced59907",
+    "targetCount": 9,
+    "versionAfterCommit": 2,
+    "statusAfterCommit": "draft",
+    "reviewStatusAfterCommit": "needs_review",
+    "validationState": "provisional_no_sme_review",
+    "approvedQuestionCount": 233,
+    "pendingQuestionCount": 9,
+    "totalQuestionCount": 242,
+    "guideCount": 146,
+    "definitionCount": 158,
+    "releaseKey": "physics7_u06_2026_08_14_draft_r6",
+    "releaseStatus": "draft",
+    "releaseActivatedAt": null,
+    "poolLinks": 0,
+    "formLinks": 0,
+    "learningSessionItems": 0,
+    "studentExposures": 0,
+    "chapterReviewExposures": 0
+  },
+  "comparison": {
+    "target": "PHY7-U06-S13-I05",
+    "profileCount": 5991,
+    "frozenBaseProfileCount": 5909,
+    "addedBatch3CandidateCount": 82,
+    "selfHistoryScore": 0.878942,
+    "nearestNonSelf": {
+      "code": "PHY7-U06-S11-I01",
+      "score": 0.331627,
+      "disposition": "different reasoning demand"
+    },
+    "manualRelatedChecks": [
+      "PHY7-U06-S09-M02",
+      "PHY7-U06-S10-I07",
+      "PHY7-U06-S13-I01",
+      "PHY7-U06-S13-I08"
+    ],
+    "disposition": "intentional_practice_variant",
+    "independentCapacityClaim": 0,
+    "substantiveDuplicate": false,
+    "untaughtScience": false
+  },
+  "contentBoundary": {
+    "imageOnlyItemCount": 8,
+    "clarifiedPromptItem": "PHY7-U06-S13-I05",
+    "clarifiedPrompt": "Պատկերում կշեռքի երկու կողմերում կախված են հավասար բեռներ, որոնց տակ դրված են ջրով և կերոսինով անոթներ։ Բեռները հեղուկների մեջ լրիվ ընկղմելիս ո՞ր լրացուցիչ պայմանն է կարևոր հեղուկների ազդեցությունը ճիշտ համեմատելու համար։",
+    "correctAnswer": "C",
+    "optionsChanged": false,
+    "answerKeysChanged": false,
+    "explanationsChanged": false,
+    "hintsChanged": false,
+    "misconceptionMappingsChanged": false,
+    "approvalsCreated": false
+  },
+  "assets": [
+    {"itemCode":"PHY7-U06-S02-I01","path":"web/assets/textbook/physics7-2023/p118-pressure-contact-v2.png","width":1676,"height":664,"bytes":868949,"sha256":"01a5dbc2e2f693ef96c4c1e3b75ea927028e454ba84d6e2a2096f017ae566c1b"},
+    {"itemCode":"PHY7-U06-S04-I01","path":"web/assets/textbook/physics7-2023/p126-pascal-law-v2.png","width":1248,"height":906,"bytes":658288,"sha256":"3b70cbe742bb3806ec9bc2be7236d8217adac5c95c438227ea5e7108232c1dc7"},
+    {"itemCode":"PHY7-U06-S06-I01","path":"web/assets/textbook/physics7-2023/p131-communicating-vessels-v2.png","width":1206,"height":684,"bytes":361711,"sha256":"899157965d74badcfe40e8efd86cd925db10f98d6f51dd33364c7c6f87c88768"},
+    {"itemCode":"PHY7-U06-S07-I01","path":"web/assets/textbook/physics7-2023/p135-hydraulic-press-v2.png","width":1470,"height":506,"bytes":313514,"sha256":"19ac97d235046f6c1bf241737e4f07516b86a8d3105031014ee8073db90b7e57"},
+    {"itemCode":"PHY7-U06-S08-I04","path":"web/assets/textbook/physics7-2023/p143-torricelli-v2.png","width":826,"height":994,"bytes":217397,"sha256":"51380c75cc7736a702afb9ff8eff862f8dfdf2db9d3f58dbe312d8b42b997d11"},
+    {"itemCode":"PHY7-U06-S09-I01","path":"web/assets/textbook/physics7-2023/p148-buoyant-force-measurement-v2.png","width":1130,"height":738,"bytes":367699,"sha256":"261cf5a1870b6fba36a79e43f96e6638def180bf20435b507471bbad9cbacaa7"},
+    {"itemCode":"PHY7-U06-S11-I01","path":"web/assets/textbook/physics7-2023/p156-floating-conditions-v2.png","width":1824,"height":862,"bytes":728812,"sha256":"7ba03337f8cd14ec2f55a3573bd7faae90a8c11d300344a30f94df2a7fa6fdf6"},
+    {"itemCode":"PHY7-U06-S12-I01","path":"web/assets/textbook/physics7-2023/p159-ship-displacement-v2.png","width":1106,"height":582,"bytes":799869,"sha256":"0c43f21dc422e3e91b2fb958ed4e7aab8918570c5064ad2a5229291c3868afdc"},
+    {"itemCode":"PHY7-U06-S13-I05","path":"web/assets/textbook/physics7-2023/p152-liquid-density-comparison-v2.png","width":928,"height":622,"bytes":251801,"sha256":"8e3d02ffa9b5e836881ea887b6b45dd3fd0610bec3f08d29e8ad3b547c08d8d6"}
+  ],
+  "productionAssetVerification": {
+    "status": "pending_repository_deployment",
+    "verifiedAt": null,
+    "verifiedCount": 0
+  },
+  "technicalQa": {
+    "status": "pending_live_asset_verification",
+    "runKey": "15F4-image-corrections-20261019",
+    "expectedRows": 9,
+    "recordedRows": 0
+  },
+  "artifactHashes": {
+    "manifestSha256": "a66008f295468552f630ce10db0baa415a42f98059e7dde10c612e952ca5b1ee",
+    "contentSqlSha256": "4b3af572fa12be0a510103c4aa50ff1e9af35a80c9d862379b55f9b6878a8a28",
+    "qaSqlSha256": "5928d364619461f94857ea9e56002dd31841687aa453d93edc8d077f95cca3e0",
+    "comparisonJsonSha256": "437c36fc936e0ac3460d6559df95ff813718db0dc5752fa7f4fde6e276d8638b",
+    "comparisonScriptSha256": "c3ee1538e5c574d7cf6f4e2905ef61d5e39488b0247f09feeff05bd2b8ad295c"
+  }
+}

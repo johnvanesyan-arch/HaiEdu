@@ -1,6 +1,6 @@
 # Chapter VI map — «Ճնշում։ Ճնշումն առօրյա կյանքում և տեխնիկայում»
 
-**Sprint 15F.1 preparation accepted and advanced through 15F.4 · 2026-10-19.** The owner accepted **16 skills, a 242-question ceiling in three batches of 70/90/82, four Practice-only non-gating skills and five separately tracked practical activities**. Sprint 15F.2 created the inactive governed foundation and staged Batch 1; Sprint 15F.3 staged Batch 2; Sprint 15F.4 staged Batch 3 and completed the accepted authoring ceiling. All three batches remain pending ordinary exact-version review. No assessment contract, allocation, activation or learner release is included. The [project status register](project-status.md) remains authoritative.
+**Sprint 15F.1 preparation accepted and advanced through 15F.5 · 2026-10-19.** The owner accepted **16 skills, a 242-question ceiling in three batches of 70/90/82, four Practice-only non-gating skills and five separately tracked practical activities**. Sprints 15F.2–15F.4 created the inactive governed foundation and completed all three authoring batches. Subsequent ordinary review approved 233 question versions; Sprint 15F.5 records nine owner-selected image-corrected v2 drafts awaiting exact-version review. The 146 guides and 158 definitions remain drafts. No assessment contract, allocation, activation or learner release is included. The [project status register](project-status.md) remains authoritative.
 
 ## Source scope
 
@@ -173,6 +173,12 @@ The owner accepted the retained 16-skill crosswalk, 242-slot ceiling, 70/90/82 b
 **Historical checkpoint; superseded by 15F.4.** Batch 2 was committed as **90 draft candidates: 54 Practice, 14 Diagnostic and 22 Mastery** across S05, S06, S07, S08, S15 and S16, with 54 Practice guides and 56 misconception definitions. The post-Batch-1 complete corpus supplied 5,511 retrieval profiles; all 4,005 within-batch pairs were assessed. After editorial rework, the final set has zero substantive overlaps and zero untaught-science holds. Exact deployed-source QA passed 90/90 questions and 54/54 guides with zero errors or warnings. Five exact textbook crops support Practice items only.
 
 At this checkpoint, the cumulative inactive catalogue contained **160 questions: 98 Practice, 24 Diagnostic and 38 Mastery**, with 98 guides and 100 definitions. All remained draft, review-pending, provisional, non-visible and non-allocatable. Batch 1’s exact catalogue projections were unchanged, and Batch 3 retained 82 authoring slots. No assessment contract, allocation, scoring rule, activation or learner release is authorized. [Comparison](chapter-vi-batch-02-comparison.md) · [Staging](chapter-vi-batch-02-staging.md).
+
+## 15F.5 review and image-correction checkpoint
+
+Production now has 233 approved questions and nine owner-selected v2 questions awaiting exact-version review. All nine use replacement illustrations supplied for their exact prompts and saved under new `-v2.png` paths. Eight retain all learner text; `PHY7-U06-S13-I05` clarifies the pictured balance arrangement while retaining answer `C`, all choices, explanation, hints and misconception mappings.
+
+The S13 wording refresh covered 5,991 comparison profiles and related manual checks. It remains an intentional Practice variant with no independent-capacity claim, substantive duplicate or untaught science. The guarded transaction preserved v1 history and the inactive release boundary. Live asset readback, nine v2 technical-QA rows and exact-version human review remain before those nine revisions can be approved. [Correction record](chapter-vi-image-corrections.md).
 
 ## 15F.4 execution checkpoint
 
