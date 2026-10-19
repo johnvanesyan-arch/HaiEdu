@@ -1,0 +1,415 @@
+{
+  "sprint": "15E.4",
+  "manifest": "chapter-v-20261019-batch-03-rework5",
+  "ownerAuthoringAt": "2026-10-19T12:43:37+04:00",
+  "ownerInstruction": "Proceed following Batch 3 plus substantive rework of the five held Batch 2 proposals.",
+  "boundedAuthorization": "Exactly44 Batch3 proposals (S07:16,S08:22,S10:6) plus five previously unstaged slots S05-D02,S06-D02/D03/M04/M05;21 assessment proposals maximum. No ordinary approval or release delegated.",
+  "corpusObservedAt": "2026-10-19T08:49:21.296873+00:00",
+  "corpusSha256": "d3e3b534e4b6bb9a6ebba23c1021e6d8d59afe71c45a83f75a655d69506d2ad1",
+  "corpusProof": [
+    {
+      "table": "items",
+      "rows": 960,
+      "hash": "a5973be9d30e3927a9f7bd73db6d63dc",
+      "exact": true
+    },
+    {
+      "table": "item_options",
+      "rows": 3232,
+      "hash": "2ea93c44e62386c11b540dfbf4369585",
+      "exact": true
+    },
+    {
+      "table": "item_versions",
+      "rows": 845,
+      "hash": "b51159f7c08d74bd8a9b30901387bf9d",
+      "exact": true
+    },
+    {
+      "table": "item_answer_keys",
+      "rows": 960,
+      "hash": "c832c869cb72406d5db648fb18985d70",
+      "exact": true
+    },
+    {
+      "table": "item_families",
+      "rows": 738,
+      "hash": "ac3d434ec13d40de6c7b4aa0c8b66c98",
+      "exact": true
+    },
+    {
+      "table": "item_templates",
+      "rows": 738,
+      "hash": "1e5ba6d5d992c78bcfbf0301a38701ea",
+      "exact": true
+    },
+    {
+      "table": "misconceptions",
+      "rows": 850,
+      "hash": "1a24e5be4976690a5f440d15d02f8185",
+      "exact": true
+    },
+    {
+      "table": "skill_remediation_guides",
+      "rows": 10,
+      "hash": "3a51fc6e3a850044cd5c01d3a1919b49",
+      "exact": true
+    },
+    {
+      "table": "remediation_guide_versions",
+      "rows": 659,
+      "hash": "77d3b8bcef5a58df8aa2b88a2f7a16ff",
+      "exact": true
+    },
+    {
+      "table": "item_misconception_mappings",
+      "rows": 2339,
+      "hash": "2f14611d6d939e93da9bfd79c842a3fc",
+      "exact": true
+    },
+    {
+      "table": "item_template_remediation_guides",
+      "rows": 344,
+      "hash": "08a473bb3f8609f9989840c0ec4eea09",
+      "exact": true
+    },
+    {
+      "table": "remediation_guide_authoring_versions",
+      "rows": 1066,
+      "hash": "0e0a9afb47767487faad4de28301ad09",
+      "exact": true
+    },
+    {
+      "table": "skills",
+      "rows": 51,
+      "hash": "8ae0b3b4e40a64827f9859f3e9da9be8",
+      "exact": true
+    },
+    {
+      "table": "skill_outcomes",
+      "rows": 60,
+      "hash": "4cd3e5c236ac0819748eae0062f2c7a2",
+      "exact": true
+    },
+    {
+      "table": "assessment_forms",
+      "rows": 19,
+      "hash": "6b9c11d311a0bb6ce4fd2ee4596e0992",
+      "exact": true
+    },
+    {
+      "table": "assessment_pools",
+      "rows": 13,
+      "hash": "a538c2c8a5702df1516cb19f969bb3b4",
+      "exact": true
+    },
+    {
+      "table": "learning_outcomes",
+      "rows": 38,
+      "hash": "4fb9faf0e67d5f01ca6abee00ccbbdcb",
+      "exact": true
+    },
+    {
+      "table": "curriculum_releases",
+      "rows": 6,
+      "hash": "d4008f50da81bfd06414dc43d7ae7146",
+      "exact": true
+    },
+    {
+      "table": "assessment_form_items",
+      "rows": 323,
+      "hash": "88f00b356a7506bd11edcdbde6bf585c",
+      "exact": true
+    },
+    {
+      "table": "assessment_pool_items",
+      "rows": 861,
+      "hash": "152c378db1ca416cfcb7bd14e65697b5",
+      "exact": true
+    },
+    {
+      "table": "item_curriculum_scopes",
+      "rows": 960,
+      "hash": "03b4a0713d471a1c8936fbbf7a9a8eaa",
+      "exact": true
+    },
+    {
+      "table": "curriculum_release_skills",
+      "rows": 50,
+      "hash": "470c72713d36187e5ca2e7a328d2d172",
+      "exact": true
+    },
+    {
+      "table": "curriculum_source_documents",
+      "rows": 3,
+      "hash": "d9bcea03118cbabd2fa60ce5c6c66a76",
+      "exact": true
+    },
+    {
+      "table": "curriculum_release_gate_checks",
+      "rows": 35,
+      "hash": "816194e0cf0bee563aa7cb4fad455827",
+      "exact": true
+    },
+    {
+      "table": "curriculum_release_item_families",
+      "rows": 737,
+      "hash": "dc48fff4a8cfca185a16fae77edc010c",
+      "exact": true
+    },
+    {
+      "table": "skill_curriculum_reconciliations",
+      "rows": 50,
+      "hash": "d94686c522e99d86ba5bbd704633b6d4",
+      "exact": true
+    },
+    {
+      "table": "skill_outcome_curriculum_mappings",
+      "rows": 60,
+      "hash": "263d71da5cea991198c4f61fa9ff2461",
+      "exact": true
+    },
+    {
+      "table": "item_family_curriculum_reconciliations",
+      "rows": 738,
+      "hash": "08774b8d7c585c92d38f75341fd8a424",
+      "exact": true
+    }
+  ],
+  "counts": {
+    "items": 960,
+    "item_options": 3232,
+    "item_versions": 845,
+    "item_answer_keys": 960,
+    "item_families": 738,
+    "item_templates": 738,
+    "misconceptions": 850,
+    "skill_remediation_guides": 10,
+    "remediation_guide_versions": 659,
+    "item_misconception_mappings": 2339,
+    "item_template_remediation_guides": 344,
+    "remediation_guide_authoring_versions": 1066,
+    "skills": 51,
+    "skill_outcomes": 60,
+    "assessment_forms": 19,
+    "assessment_pools": 13,
+    "learning_outcomes": 38,
+    "curriculum_releases": 6,
+    "assessment_form_items": 323,
+    "assessment_pool_items": 861,
+    "item_curriculum_scopes": 960,
+    "curriculum_release_skills": 50,
+    "curriculum_source_documents": 3,
+    "curriculum_release_gate_checks": 35,
+    "curriculum_release_item_families": 737,
+    "skill_curriculum_reconciliations": 50,
+    "skill_outcome_curriculum_mappings": 60,
+    "item_family_curriculum_reconciliations": 738
+  },
+  "assessed": 49,
+  "staged": 49,
+  "practice": 28,
+  "diagnostic": 9,
+  "mastery": 12,
+  "guides": 28,
+  "definitions": 25,
+  "held": 0,
+  "independentNewReasoningClaims": 0,
+  "qualifiedFormCapacity": 0,
+  "method": "Freeze28 complete current/history/guide/curriculum/assessment tables, refreshed by canonical PostgreSQL row hashes; all59 preservation-table fingerprints unchanged since prior handoff. Review textbook pages and all existing S05/S06 current questions/guides; no prior S07/S08/S10 questions. Include related/equivalent outcome mappings, current/history/guide retrieval and curated measurement/product/ratio/force dependencies. Character ngram search retrieves neighbors, not acceptance. Primary author separately checked all49 candidate solutions/distractors and28 guides; all1176 within-batch pairs indexed with explicit dependency groups. New stimulus interpretation is individually recorded for21 protected parallel candidates. Retain teaching variants as practice without claiming independent coverage.",
+  "languageReview": "Primary automated author checked Armenian prompts/options/hints/examples separately from physics against approved Physics7 terminology. No independent native-speaker approval claimed.",
+  "reworkDecision": "All five held themes retained in substantively changed tasks, candidate revision2, first database v1. Existing103 items untouched.",
+  "gates": [
+    "ordinary exact-version question/guide/definition review",
+    "independent SME/exposure qualification",
+    "assessment and practical contract",
+    "form/pool allocation",
+    "Chapter V release authorization"
+  ],
+  "practicalBoundary": "Lab planning/record interpretation does not certify performed LAB-LEVER or LAB-INCLINE. S10 optional practice is not a mandatory pass gate.",
+  "authoringBaseCommit": "14c02162dbb1997d4941205eda6b8f0f066fee93",
+  "privateEvidenceBinding": {
+    "libraryFileId": "libfile_4d943a638c0c819191be41b01e2835d9",
+    "authoringVersion": 0,
+    "archiveSha256": "0e9e33b658eac31a2b6ec8fd7492b5d08e23a7b40e08032d485361ba4afe8bdf",
+    "archiveBytes": 4373541,
+    "members": {
+      "comparison.json": {
+        "sha256": "a3bd51835e90676043728d4d3ece5cc86e31280dcecaeadc128e8cb13abbd3a4",
+        "bytes": 877778
+      },
+      "comparison-corpus.json": {
+        "sha256": "d3e3b534e4b6bb9a6ebba23c1021e6d8d59afe71c45a83f75a655d69506d2ad1",
+        "bytes": 20560303
+      },
+      "corpus-proof.json": {
+        "sha256": "e1e91f91623b83a584f9ff099c643c1b75b4da7eef5a5b1414704bbab574d59b",
+        "bytes": 3644
+      },
+      "specs.json": {
+        "sha256": "c29a4dfa57949901957cdc80a2bb9c82e1c9d37771d3a00ac1d429b6afcf686c",
+        "bytes": 348113
+      },
+      "held-specs.json": {
+        "sha256": "37517e5f3dc66819f61f5a7bb8ace1921282415f10551d2defa5c3eb0985b570",
+        "bytes": 3
+      },
+      "committed-readback-catalogue.json": {
+        "sha256": "3bfe67aa88df5c5436f9f2ed9469deaa0c44d96a88d269078dbf49524fbcc3d6",
+        "bytes": 897375
+      },
+      "qa-results.json": {
+        "sha256": "99847dcdc0f39601142cf01adc939ede01b7050834b503f0adcf6563decf4a8f",
+        "bytes": 114788
+      },
+      "guide-qa-results.json": {
+        "sha256": "e77f19cc6144db441fc6143ee708db0f4092b826c0c3bd043d2193657c3d9b9a",
+        "bytes": 6815
+      }
+    },
+    "scope": "Immutable authoring snapshot. Later archive versions may append closure evidence without changing these members."
+  },
+  "preservation": {
+    "beforeAt": "2026-10-19T09:05:51.045274+00:00",
+    "afterAt": "2026-10-19T09:07:29.606768+00:00",
+    "guardedTables": 59,
+    "transactionOriginalRowMultisetGuard": "Passed for every original row in each of59 tables inside rollback and commit; additive inserts only. SQL raises and rolls back on any missing prior hash.",
+    "rollbackRestoredAll59Fingerprints": true,
+    "exactAdditiveDeltas": {
+      "items": 49,
+      "item_options": 196,
+      "item_answer_keys": 49,
+      "item_families": 49,
+      "item_templates": 49,
+      "item_versions": 49,
+      "item_curriculum_scopes": 49,
+      "misconceptions": 25,
+      "item_misconception_mappings": 147,
+      "item_family_curriculum_reconciliations": 49,
+      "curriculum_release_item_families": 49,
+      "item_template_remediation_guides": 28,
+      "remediation_guide_versions": 28,
+      "remediation_guide_authoring_versions": 28,
+      "item_qa_runs": 49
+    },
+    "unchangedWholeTables": [
+      "academic_mastery_policy_activation",
+      "academic_mastery_policy_versions",
+      "assessment_blueprint_items",
+      "assessment_blueprints",
+      "assessment_form_items",
+      "assessment_forms",
+      "assessment_policy_bindings",
+      "assessment_pool_curriculum_reconciliations",
+      "assessment_pool_items",
+      "assessment_pools",
+      "attempts",
+      "chapter_mastery_states",
+      "chapter_review_cycles",
+      "chapter_review_item_exposures",
+      "chapter_review_requirements",
+      "chapter_review_sessions",
+      "curriculum_reconciliation_runs",
+      "curriculum_release_gate_checks",
+      "curriculum_release_outcomes",
+      "curriculum_release_reconciliations",
+      "curriculum_release_skills",
+      "curriculum_release_units",
+      "curriculum_releases",
+      "curriculum_source_documents",
+      "item_reviews",
+      "learning_model_configurations",
+      "learning_model_runtime_bindings",
+      "learning_outcome_normative_mappings",
+      "learning_outcomes",
+      "learning_session_items",
+      "learning_sessions",
+      "mastery_check_attempts",
+      "misconception_review_events",
+      "recommendation_events",
+      "remediation_events",
+      "runtime_builds",
+      "skill_curriculum_reconciliations",
+      "skill_outcome_curriculum_mappings",
+      "skill_outcomes",
+      "skill_prerequisites",
+      "skill_remediation_guides",
+      "skills",
+      "student_item_exposure_events",
+      "student_skill_mastery_by_release"
+    ],
+    "committedReadbackEqualsTransactionCatalogue": true,
+    "immutableSnapshotSpecCheck": true,
+    "questionQaPassed": 49,
+    "guideValidationPassed": 28,
+    "errors": 0,
+    "warnings": 0,
+    "ordinaryApprovalChanges": 0,
+    "releaseActivationChanges": 0,
+    "learnerChanges": 0
+  },
+  "chapterCounts": {
+    "observedAt": "2026-10-19T09:08:42.554401+00:00",
+    "questions": 152,
+    "practice": 88,
+    "diagnostic": 24,
+    "mastery": 40,
+    "guides": 88,
+    "definitions": 108,
+    "ordinaryReview": "all draft/pending",
+    "release": "draft",
+    "activatedAt": null
+  },
+  "technicalQa": {
+    "questionPassed": 49,
+    "guidePassed": 28,
+    "errors": 0,
+    "warnings": 0,
+    "questionSourceSha256": "b93d0311e73bd1b2f62d3c88abf98526c268c258b10926be3ffd823c0de82154",
+    "guideSourceSha256": "fa20227213a9acbe49ddedcbafa22551e1c8362ecd7bdce62f8d584181e04f8c",
+    "method": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "committedReadbackAt": "2026-10-19T09:06:56.793076+00:00",
+    "runKey": "15E4-batch03-20261019",
+    "arithmeticChecks": 36
+  },
+  "assets": [
+    {
+      "url": "https://www.haiedu.am/assets/textbook/physics7-2023/p116-fig78-incline.png",
+      "sha256": "0c7e26eeb60257db9d9e75f36565a7ef8b4e661f2ed25b307dc0ca836b92e4cb",
+      "bytes": 11030,
+      "width": 372,
+      "height": 234,
+      "printedPage": 116,
+      "pdfPage": 117,
+      "clip": [
+        43,
+        173,
+        167,
+        251
+      ],
+      "scale": 3,
+      "transformation": "Exact source crop, no redrawing.",
+      "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904"
+    },
+    {
+      "url": "https://www.haiedu.am/assets/textbook/physics7-2023/p116-fig79-incline-lab.png",
+      "sha256": "99e33544e5d88ab0f59cb04cf0a12882205ebca212eba314b1bc7983d8969460",
+      "bytes": 30800,
+      "width": 534,
+      "height": 273,
+      "printedPage": 116,
+      "pdfPage": 117,
+      "clip": [
+        43,
+        434,
+        221,
+        525
+      ],
+      "scale": 3,
+      "transformation": "Exact source crop, no redrawing.",
+      "textbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904"
+    }
+  ],
+  "imageVerification": "Exact PDF source crops inspected at358px content width; no authenticated browser acceptance claimed. Postmerge production HTTP/hash and release-commit verification are recorded in the delivery closure.",
+  "sharedCoreChanges": false
+}

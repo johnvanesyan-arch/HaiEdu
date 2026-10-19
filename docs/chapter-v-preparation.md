@@ -1,6 +1,6 @@
 # Chapter V map — «Աշխատանք և հզորություն»
 
-> **Execution update — 15E.3, 2026-10-19 Asia/Yerevan:** Batches1/2 now contain 103 draft questions,60 guides and 83 definitions. Batch 2 retained 49/54 proposals; five held assessment slots still need substantive rework or a bank-plan decision. Batch 3 has44 provisional slots. The 152 ceiling and all ordinary review, specialist, assessment/practical and release gates remain open. Preparation-time zero-write observations below are historical. [Current delivery](chapter-v-batch-02-comparison.md).
+> **Execution update — 15E.4, 2026-10-19 Asia/Yerevan:** all 152 planned question slots are draft-staged, with 88 guides and 108 definitions. Batch 3 adds its 44 slots and substantive reworks of all five held Batch 2 proposals. All are awaiting ordinary review; no further authoring shortfall is recorded. The assessment/practical contract, specialist/exposure qualification, allocation and release remain open. Preparation-time zero-write observations and pending proposal status below are historical. [Current delivery](chapter-v-batch-03-comparison.md).
 
 **Sprint 15E.1 · 2026-10-18 · Preparation complete; proposed plan awaiting owner acceptance.** The proposal is **10 skills, 152 questions in three large batches, and two separately tracked laboratory activities**. This is subject-aware content planning. No content has been staged or approved and no database, shared-core, API or learner-runtime change is included. The [project status register](project-status.md) remains authoritative.
 
