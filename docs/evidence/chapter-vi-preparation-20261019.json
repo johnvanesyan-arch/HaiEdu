@@ -1,7 +1,7 @@
 {
   "schema": "haiedu-chapter-preparation-v1",
   "sprint": "15F.1",
-  "prepared_at": "2026-10-19T15:11:49.183090+00:00",
+  "prepared_at": "2026-10-19T15:22:31.690849+00:00",
   "base_commit": "ce10ee7e56458e7be61168a402bd27e88a7d0d95",
   "chapter": "PHY7-U06",
   "title_hy": "Ճնշում։ Ճնշումն առօրյա կյանքում և տեխնիկայում",
@@ -1036,17 +1036,17 @@
       "printed_page": 156,
       "pdf_page": 157,
       "crop_pdf_points": [
-        255,
-        55,
-        435,
-        525
+        0,
+        35,
+        442,
+        440
       ],
       "render_scale": 3,
       "pixels": [
-        540,
-        1410
+        1326,
+        1215
       ],
-      "sha256": "25f0ac14ee7dc9d5ac6d9d1458d4694062d17fe329d3c9119e12a679b7b3083d",
+      "sha256": "67a05e937fcac04676bd687e9d4221e5eca7c65de61992a7e060046abfea3ef1",
       "alt_hy": "Նկ. 113 և 114․ հեղուկում մարմնի վրա ազդող ուժերի և լողալու պայմանների պատկերումները։",
       "path": "docs/assets/chapter-vi-preparation/floating-conditions.png",
       "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
