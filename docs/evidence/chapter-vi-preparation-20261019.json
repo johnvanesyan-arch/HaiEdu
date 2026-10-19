@@ -1,0 +1,1163 @@
+{
+  "schema": "haiedu-chapter-preparation-v1",
+  "sprint": "15F.1",
+  "prepared_at": "2026-10-19T15:22:31.690849+00:00",
+  "base_commit": "ce10ee7e56458e7be61168a402bd27e88a7d0d95",
+  "chapter": "PHY7-U06",
+  "title_hy": "Ճնշում։ Ճնշումն առօրյա կյանքում և տեխնիկայում",
+  "status": "preparation complete; proposed plan not yet accepted for execution",
+  "scope": "subject-aware content planning; no database, shared-core or runtime mutation",
+  "sources": {
+    "textbook": {
+      "title": "Ֆիզիկա 7",
+      "authors": [
+        "Գագիկ Մելիքյան",
+        "Սոս Մաիլյան"
+      ],
+      "publisher": "Էդիթ Պրինտ",
+      "year": 2023,
+      "library_file_id": "libfile_f4cf0be21a6081919cd90c8922b5396d",
+      "sha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+      "sections": [
+        40,
+        55
+      ],
+      "printed_pages": [
+        118,
+        163
+      ],
+      "pdf_pages": [
+        119,
+        164
+      ]
+    },
+    "programme": {
+      "act_url": "https://www.arlis.am/hy/acts/229331",
+      "attachment_url": "https://www.arlis.am/acts/files/363077/966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+      "sha256": "966f79b4570fa3c6cee0263bd3776ac4aff0fcea6242d2c48121256309f53478",
+      "bytes": 248283,
+      "theme": 6,
+      "outcome_locator": "DOCX table 6, row 5, cell 0 (zero-based)",
+      "legal_version": "N 40-Ն as amended by N 36-Ն; incorporation effective 2026-08-14",
+      "source_reused_from_verified_2026_10_18_download": true,
+      "raw_outcome_cell": "Թեմայի նպատակին հասնելու համար սովորողը պետք է կարողանա՝\n1.Պարտադիր\nներկայացնել ճնշման ֆիզիկական իմաստը և հաշվարկել այն պարզ իրավիճակներում,(Հ4,Հ7,Հ9)\nներկայացնել ճնշման մեծացման և փոքրացման եղանակները, բերել օրինակներ, (Հ4,Հ9)\nբացատրել առօրյա կյանքում գազի և հեղուկի ճնշման դերը, (Հ29,Հ30)\nներկայացնել Պասկալի և հաղորդակից անոթների օրենքները և կիրառել դրանք պարզ իրավիճակներում,(Հ9)\nնկարագրել ջրաբաշխական մամլիչի կառուցվածքը, աշխատանքի սկզբունքը և կիրառությունները, կատարել հաշվարկներ ուժի շահումը որոշելու համար,(Հ10,Հ29)\nփորձի միջոցով հիմնավորել մթնոլորտային ճնշման գոյությունը, բացատրել դրա առաջացման պատճառը,   (Հ4,Հ28)\nբերել արքիմեդյան ուժի դրսևորման օրինակներ, (Հ9)\nներկայացնել Արքիմեդի օրենքը,(Հ9)\nնախագծել և իրականացնել հեղուկներում և գազերում արքիմեդյան ուժի որոշման փորձեր,(Հ4,Հ28,Հ29)\nարտածել հեղուկներում մարմինների լողալու պայմանները,(Հ9)\nներկայացնել արքիմեդյան ուժի դրսևորումները կենդանական աշխարհում,     նավագնացության և օդագնացության ոլորտներում:(Հ29,Հ30,Հ31)\n2.Լրացուցիչ\n1) նշել ճնշման առաջացման մեխանիզմները պինդ, հեղուկ և գազային մարմիններում,\n2) բացատրել անոթի պատերի վրա ազդող գազի և հեղուկի ճնշման պատճառը,\n3) չափել գազի և հեղուկի ճնշումը,\n4) նկարագրել մխոցավոր հեղուկային պոմպի աշխատանքը"
+    }
+  },
+  "outcomes": [
+    {
+      "ref": "M1",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել ճնշման ֆիզիկական իմաստը և հաշվարկել այն պարզ իրավիճակներում,(Հ4,Հ7,Հ9)",
+      "skills": [
+        "S01",
+        "S05"
+      ]
+    },
+    {
+      "ref": "M2",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել ճնշման մեծացման և փոքրացման եղանակները, բերել օրինակներ, (Հ4,Հ9)",
+      "skills": [
+        "S02"
+      ]
+    },
+    {
+      "ref": "M3",
+      "level": "mandatory",
+      "statement_hy": "բացատրել առօրյա կյանքում գազի և հեղուկի ճնշման դերը, (Հ29,Հ30)",
+      "skills": [
+        "S03",
+        "S05"
+      ]
+    },
+    {
+      "ref": "M4",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել Պասկալի և հաղորդակից անոթների օրենքները և կիրառել դրանք պարզ իրավիճակներում,(Հ9)",
+      "skills": [
+        "S04",
+        "S06"
+      ]
+    },
+    {
+      "ref": "M5",
+      "level": "mandatory",
+      "statement_hy": "նկարագրել ջրաբաշխական մամլիչի կառուցվածքը, աշխատանքի սկզբունքը և կիրառությունները, կատարել հաշվարկներ ուժի շահումը որոշելու համար,(Հ10,Հ29)",
+      "skills": [
+        "S07"
+      ]
+    },
+    {
+      "ref": "M6",
+      "level": "mandatory",
+      "statement_hy": "փորձի միջոցով հիմնավորել մթնոլորտային ճնշման գոյությունը, բացատրել դրա առաջացման պատճառը,   (Հ4,Հ28)",
+      "skills": [
+        "S08"
+      ]
+    },
+    {
+      "ref": "M7",
+      "level": "mandatory",
+      "statement_hy": "բերել արքիմեդյան ուժի դրսևորման օրինակներ, (Հ9)",
+      "skills": [
+        "S09"
+      ]
+    },
+    {
+      "ref": "M8",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել Արքիմեդի օրենքը,(Հ9)",
+      "skills": [
+        "S09",
+        "S10"
+      ]
+    },
+    {
+      "ref": "M9",
+      "level": "mandatory",
+      "statement_hy": "նախագծել և իրականացնել հեղուկներում և գազերում արքիմեդյան ուժի որոշման փորձեր,(Հ4,Հ28,Հ29)",
+      "skills": [
+        "S13"
+      ]
+    },
+    {
+      "ref": "M10",
+      "level": "mandatory",
+      "statement_hy": "արտածել հեղուկներում մարմինների լողալու պայմանները,(Հ9)",
+      "skills": [
+        "S11"
+      ]
+    },
+    {
+      "ref": "M11",
+      "level": "mandatory",
+      "statement_hy": "ներկայացնել արքիմեդյան ուժի դրսևորումները կենդանական աշխարհում,     նավագնացության և օդագնացության ոլորտներում:(Հ29,Հ30,Հ31)",
+      "skills": [
+        "S12"
+      ]
+    },
+    {
+      "ref": "A1",
+      "level": "additional",
+      "statement_hy": "1) նշել ճնշման առաջացման մեխանիզմները պինդ, հեղուկ և գազային մարմիններում,",
+      "skills": [
+        "S03",
+        "S05",
+        "S14"
+      ]
+    },
+    {
+      "ref": "A2",
+      "level": "additional",
+      "statement_hy": "2) բացատրել անոթի պատերի վրա ազդող գազի և հեղուկի ճնշման պատճառը,",
+      "skills": [
+        "S03",
+        "S05",
+        "S14"
+      ]
+    },
+    {
+      "ref": "A3",
+      "level": "additional",
+      "statement_hy": "3) չափել գազի և հեղուկի ճնշումը,",
+      "skills": [
+        "S08",
+        "S15"
+      ]
+    },
+    {
+      "ref": "A4",
+      "level": "additional",
+      "statement_hy": "4) նկարագրել մխոցավոր հեղուկային պոմպի աշխատանքը",
+      "skills": [
+        "S16"
+      ]
+    }
+  ],
+  "skills": [
+    {
+      "code": "PHY7-U06-S01",
+      "short_code": "S01",
+      "name_hy": "Ճնշման ֆիզիկական իմաստը, միավորը և հաշվումը",
+      "role": "mandatory",
+      "outcomes": [
+        "M1"
+      ],
+      "printed_page_ranges": [
+        [
+          118,
+          120
+        ],
+        [
+          137,
+          138
+        ]
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 4
+      },
+      "batch": 1,
+      "budget_rationale": "Definition p=F/S, pascal, direct/inverse calculations and unit alignment."
+    },
+    {
+      "code": "PHY7-U06-S02",
+      "short_code": "S02",
+      "name_hy": "Ճնշումը մեծացնելու և փոքրացնելու եղանակները",
+      "role": "mandatory",
+      "outcomes": [
+        "M2"
+      ],
+      "printed_page_ranges": [
+        [
+          118,
+          120
+        ]
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 4
+      },
+      "batch": 1,
+      "budget_rationale": "Reason separately about force and contact area in familiar applications."
+    },
+    {
+      "code": "PHY7-U06-S03",
+      "short_code": "S03",
+      "name_hy": "Գազի ճնշումը և դրա կախումը ծավալից",
+      "role": "mandatory",
+      "outcomes": [
+        "M3",
+        "A1",
+        "A2"
+      ],
+      "printed_page_ranges": [
+        [
+          121,
+          124
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 2,
+        "mastery": 4
+      },
+      "batch": 1,
+      "budget_rationale": "Molecular-collision explanation, all-direction pressure and qualitative compression at comparable conditions."
+    },
+    {
+      "code": "PHY7-U06-S04",
+      "short_code": "S04",
+      "name_hy": "Պասկալի օրենքը և ճնշման հաղորդումը",
+      "role": "mandatory",
+      "outcomes": [
+        "M4"
+      ],
+      "printed_page_ranges": [
+        [
+          125,
+          127
+        ]
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 4
+      },
+      "batch": 1,
+      "budget_rationale": "Transmit an externally applied pressure through a liquid or gas in all directions without change."
+    },
+    {
+      "code": "PHY7-U06-S05",
+      "short_code": "S05",
+      "name_hy": "Հիդրոստատիկ ճնշումը և p=ρgh կապը",
+      "role": "mandatory",
+      "outcomes": [
+        "M1",
+        "M3",
+        "A1",
+        "A2"
+      ],
+      "printed_page_ranges": [
+        [
+          128,
+          130
+        ],
+        [
+          137,
+          138
+        ]
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 6
+      },
+      "batch": 2,
+      "budget_rationale": "Depth, density and g dependencies; equal-depth comparisons; force normal to walls/bottom."
+    },
+    {
+      "code": "PHY7-U06-S06",
+      "short_code": "S06",
+      "name_hy": "Հաղորդակից անոթները և հեղուկների հավասարակշռությունը",
+      "role": "mandatory",
+      "outcomes": [
+        "M4"
+      ],
+      "printed_page_ranges": [
+        [
+          131,
+          133
+        ],
+        [
+          137,
+          140
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 4,
+        "mastery": 6
+      },
+      "batch": 2,
+      "budget_rationale": "Same-liquid levels, vessel-shape independence and two-liquid ρ₁h₁=ρ₂h₂ equilibrium."
+    },
+    {
+      "code": "PHY7-U06-S07",
+      "short_code": "S07",
+      "name_hy": "Ջրաբաշխական մամլիչի կառուցվածքը և ուժի շահումը",
+      "role": "mandatory",
+      "outcomes": [
+        "M5"
+      ],
+      "printed_page_ranges": [
+        [
+          134,
+          139
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 4,
+        "mastery": 6
+      },
+      "batch": 2,
+      "budget_rationale": "Connected pistons, Pascal law and F₂/F₁=S₂/S₁ in the ideal model."
+    },
+    {
+      "code": "PHY7-U06-S08",
+      "short_code": "S08",
+      "name_hy": "Մթնոլորտային ճնշումը, դրա գոյության փորձերը և չափումը",
+      "role": "mandatory",
+      "outcomes": [
+        "M6",
+        "A3"
+      ],
+      "printed_page_ranges": [
+        [
+          140,
+          145
+        ],
+        [
+          162,
+          163
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 2,
+        "mastery": 4
+      },
+      "batch": 2,
+      "budget_rationale": "Air-weight cause, experimental evidence, Torricelli column and barometer interpretation."
+    },
+    {
+      "code": "PHY7-U06-S09",
+      "short_code": "S09",
+      "name_hy": "Արքիմեդյան ուժի առաջացումը և Արքիմեդի օրենքը",
+      "role": "mandatory",
+      "outcomes": [
+        "M7",
+        "M8"
+      ],
+      "printed_page_ranges": [
+        [
+          148,
+          151
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 4,
+        "mastery": 4
+      },
+      "batch": 3,
+      "budget_rationale": "Pressure-force difference, upward direction and equality to displaced fluid/gas weight."
+    },
+    {
+      "code": "PHY7-U06-S10",
+      "short_code": "S10",
+      "name_hy": "Արքիմեդյան ուժի հաշվումը և ուժաչափի ցուցմունքը",
+      "role": "mandatory",
+      "outcomes": [
+        "M8"
+      ],
+      "printed_page_ranges": [
+        [
+          148,
+          154
+        ],
+        [
+          162,
+          163
+        ]
+      ],
+      "planning_budget": {
+        "practice": 12,
+        "diagnostic": 4,
+        "mastery": 6
+      },
+      "batch": 3,
+      "budget_rationale": "F_A=ρgV_submerged, partial immersion and apparent-weight readings."
+    },
+    {
+      "code": "PHY7-U06-S11",
+      "short_code": "S11",
+      "name_hy": "Մարմինների լողալու պայմանները",
+      "role": "mandatory",
+      "outcomes": [
+        "M10"
+      ],
+      "printed_page_ranges": [
+        [
+          155,
+          157
+        ]
+      ],
+      "planning_budget": {
+        "practice": 10,
+        "diagnostic": 4,
+        "mastery": 6
+      },
+      "batch": 3,
+      "budget_rationale": "Compare buoyant and gravitational forces and relate equilibrium to body/fluid density."
+    },
+    {
+      "code": "PHY7-U06-S12",
+      "short_code": "S12",
+      "name_hy": "Արքիմեդյան ուժը բնության մեջ, նավագնացությունում և օդագնացությունում",
+      "role": "mandatory",
+      "outcomes": [
+        "M11"
+      ],
+      "printed_page_ranges": [
+        [
+          155,
+          161
+        ],
+        [
+          162,
+          163
+        ]
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 2,
+        "mastery": 4
+      },
+      "batch": 3,
+      "budget_rationale": "Animal, ship and balloon applications with explicit force/volume/density evidence."
+    },
+    {
+      "code": "PHY7-U06-S13",
+      "short_code": "S13",
+      "name_hy": "Արքիմեդյան ուժի փորձերի պլանավորումը և տվյալների մեկնաբանումը",
+      "role": "performance-supporting",
+      "outcomes": [
+        "M9"
+      ],
+      "printed_page_ranges": [
+        [
+          152,
+          154
+        ]
+      ],
+      "planning_budget": {
+        "practice": 8,
+        "diagnostic": 0,
+        "mastery": 0
+      },
+      "batch": 3,
+      "budget_rationale": "Preparation, variable control and data interpretation for the liquid experiments; no performance certification."
+    },
+    {
+      "code": "PHY7-U06-S14",
+      "short_code": "S14",
+      "name_hy": "Ճնշման առաջացման մեխանիզմները տարբեր միջավայրերում",
+      "role": "additional",
+      "outcomes": [
+        "A1",
+        "A2"
+      ],
+      "printed_page_ranges": [
+        [
+          118,
+          130
+        ]
+      ],
+      "planning_budget": {
+        "practice": 6,
+        "diagnostic": 0,
+        "mastery": 0
+      },
+      "batch": 1,
+      "budget_rationale": "Optional comparison of solid contact and molecular/hydrostatic pressure mechanisms."
+    },
+    {
+      "code": "PHY7-U06-S15",
+      "short_code": "S15",
+      "name_hy": "Գազի և հեղուկի ճնշման չափումը",
+      "role": "additional",
+      "outcomes": [
+        "A3"
+      ],
+      "printed_page_ranges": [
+        [
+          123,
+          124
+        ],
+        [
+          137,
+          145
+        ],
+        [
+          162,
+          163
+        ]
+      ],
+      "planning_budget": {
+        "practice": 6,
+        "diagnostic": 0,
+        "mastery": 0
+      },
+      "batch": 2,
+      "budget_rationale": "Optional instrument/scale interpretation with supplied manometer or barometer information."
+    },
+    {
+      "code": "PHY7-U06-S16",
+      "short_code": "S16",
+      "name_hy": "Մխոցավոր հեղուկային պոմպի աշխատանքը",
+      "role": "additional",
+      "outcomes": [
+        "A4"
+      ],
+      "printed_page_ranges": [
+        [
+          146,
+          147
+        ]
+      ],
+      "planning_budget": {
+        "practice": 6,
+        "diagnostic": 0,
+        "mastery": 0
+      },
+      "batch": 2,
+      "budget_rationale": "Optional valve-and-piston sequence in intake and delivery strokes."
+    }
+  ],
+  "planning_budget": {
+    "practice": 146,
+    "diagnostic": 38,
+    "mastery": 58,
+    "total": 242,
+    "approved": false,
+    "qualified_capacity": 0,
+    "session_length": null,
+    "pass_rule": null,
+    "form_count": null
+  },
+  "batches": [
+    {
+      "batch": 1,
+      "skills": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S14"
+      ],
+      "practice": 44,
+      "diagnostic": 10,
+      "mastery": 16,
+      "total": 70
+    },
+    {
+      "batch": 2,
+      "skills": [
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S15",
+        "S16"
+      ],
+      "practice": 54,
+      "diagnostic": 14,
+      "mastery": 22,
+      "total": 90
+    },
+    {
+      "batch": 3,
+      "skills": [
+        "S09",
+        "S10",
+        "S11",
+        "S12",
+        "S13"
+      ],
+      "practice": 48,
+      "diagnostic": 14,
+      "mastery": 20,
+      "total": 82
+    }
+  ],
+  "candidate_briefs": [
+    {
+      "id": "S01-C01",
+      "skill": "S01",
+      "title_hy": "Նույն ուժը՝ տարբեր մակերեսների վրա",
+      "evidence_intent": "Compare pressure for the same normal force over different contact areas.",
+      "screening_boundary": "Identify the actual contact area; do not treat object orientation as changing weight.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S01-C02",
+      "skill": "S01",
+      "title_hy": "Ճնշումը հաշվելիս ո՞ր մակերեսն է պետք",
+      "evidence_intent": "Calculate p, F or S after converting supplied units.",
+      "screening_boundary": "Use only the surface actually in contact; avoid untaught compound-shape inference.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S02-C01",
+      "skill": "S02",
+      "title_hy": "Ինչո՞ւ են դահուկները լայն",
+      "evidence_intent": "Explain pressure reduction through greater support area with force held comparable.",
+      "screening_boundary": "Do not rely on a memorized object name; require the force/area relationship.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S02-C02",
+      "skill": "S02",
+      "title_hy": "Ո՞ր կողմով դնել չորսուն",
+      "evidence_intent": "Choose an orientation that increases or decreases pressure.",
+      "screening_boundary": "State that the same body and support conditions keep the pressure force unchanged.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S03-C01",
+      "skill": "S03",
+      "title_hy": "Ինչո՞ւ է գազը ճնշում անոթի պատերին",
+      "evidence_intent": "Connect irregular molecular motion and wall collisions to pressure.",
+      "screening_boundary": "Do not introduce ideal-gas equations or microscopic quantities not supplied.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S03-C02",
+      "skill": "S03",
+      "title_hy": "Ի՞նչ է փոխվում գազը սեղմելիս",
+      "evidence_intent": "Predict the qualitative pressure change when the same enclosed gas occupies less volume.",
+      "screening_boundary": "Hold other relevant conditions comparable; do not claim an exact inverse law from the Grade 7 text.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S04-C01",
+      "skill": "S04",
+      "title_hy": "Ո՞ր ուղղություններով է հաղորդվում ճնշումը",
+      "evidence_intent": "Apply Pascal’s law to a supplied closed-fluid setup.",
+      "screening_boundary": "Distinguish the added pressure from hydrostatic pressure differences.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S04-C02",
+      "skill": "S04",
+      "title_hy": "Ի՞նչ ճնշում է հաղորդվել մյուս մխոցին",
+      "evidence_intent": "Compare the transmitted pressure at linked points before converting it to force.",
+      "screening_boundary": "Equal pressure does not imply equal force when piston areas differ.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S05-C01",
+      "skill": "S05",
+      "title_hy": "Ո՞ր կետում է ճնշումն ավելի մեծ",
+      "evidence_intent": "Compare liquid pressure at labelled depths in one liquid.",
+      "screening_boundary": "Use vertical depth below the free surface, not distance along a sloping wall.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S05-C02",
+      "skill": "S05",
+      "title_hy": "Խորությունն ու խտությունը միասին",
+      "evidence_intent": "Compare or calculate p=ρgh when depth and density both vary.",
+      "screening_boundary": "State whether atmospheric pressure is excluded; use the textbook’s hydrostatic pressure convention.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S06-C01",
+      "skill": "S06",
+      "title_hy": "Տարբեր ձև, նույն մակարդակ",
+      "evidence_intent": "Predict free-surface levels in communicating vessels containing the same stationary liquid.",
+      "screening_boundary": "Require open/comparable surface pressure and a connected liquid; capillarity is outside scope.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S06-C02",
+      "skill": "S06",
+      "title_hy": "Երկու հեղուկի սյուները հավասարակշռված են",
+      "evidence_intent": "Use column heights and one density to determine the other density.",
+      "screening_boundary": "Measure both heights from the common interface and keep the liquids immiscible.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S07-C01",
+      "skill": "S07",
+      "title_hy": "Փոքր մխոցից՝ մեծ ուժ",
+      "evidence_intent": "Explain why the larger piston produces a larger force at equal transmitted pressure.",
+      "screening_boundary": "Force gain comes from area ratio, not pressure multiplication.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S07-C02",
+      "skill": "S07",
+      "title_hy": "Ուժի շահումը ո՞ր հարաբերությամբ գտնել",
+      "evidence_intent": "Calculate an unknown force or area from the hydraulic-press relation.",
+      "screening_boundary": "State ideal/comparable-height assumptions when the supplied diagram requires them.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S08-C01",
+      "skill": "S08",
+      "title_hy": "Ինչո՞ւ ջուրը չի թափվում թղթով փակված բաժակից",
+      "evidence_intent": "Use inside/outside pressure differences to explain the textbook atmospheric-pressure demonstration.",
+      "screening_boundary": "Name all relevant sides and avoid saying that “vacuum pulls”.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S08-C02",
+      "skill": "S08",
+      "title_hy": "Ի՞նչ է ցույց տալիս սնդիկի սյան բարձրությունը",
+      "evidence_intent": "Interpret a supplied Torricelli/barometer reading.",
+      "screening_boundary": "Do not convert units unless the relation/data are supplied; distinguish height from tube length.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S09-C01",
+      "skill": "S09",
+      "title_hy": "Ինչո՞ւ է համազոր ուժը դեպի վեր",
+      "evidence_intent": "Explain buoyant-force direction from the pressure difference between lower and upper surfaces.",
+      "screening_boundary": "Use a supplied simple body model; avoid requiring calculus or arbitrary-shape derivation.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S09-C02",
+      "skill": "S09",
+      "title_hy": "Ի՞նչ հեղուկ կամ գազ է արտամղել մարմինը",
+      "evidence_intent": "Identify the displaced fluid/gas whose weight equals the buoyant force.",
+      "screening_boundary": "Do not substitute body weight or body density for the displaced-medium term.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S10-C01",
+      "skill": "S10",
+      "title_hy": "Արքիմեդյան ուժը՝ ընկղմված ծավալից",
+      "evidence_intent": "Calculate buoyant force from medium density and submerged volume.",
+      "screening_boundary": "Use submerged volume, not automatically the body’s full volume.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S10-C02",
+      "skill": "S10",
+      "title_hy": "Ինչո՞ւ է ուժաչափի ցուցմունքը փոքրանում",
+      "evidence_intent": "Relate the air and liquid dynamometer readings to buoyant force.",
+      "screening_boundary": "Specify equilibrium and neglect air buoyancy only when stated or appropriate to the model.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S11-C01",
+      "skill": "S11",
+      "title_hy": "Կլողա՞, կմնա՞, թե՞ կսուզվի",
+      "evidence_intent": "Decide initial motion from F_A versus F_g or density comparison.",
+      "screening_boundary": "Separate initial fully submerged motion from the final partially floating equilibrium.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S11-C02",
+      "skill": "S11",
+      "title_hy": "Լողացող մարմնի ո՞ր մասն է ընկղմված",
+      "evidence_intent": "Use F_A=F_g for a floating body to reason about submerged fraction.",
+      "screening_boundary": "Require a homogeneous body or supply the needed average density; no shape-based guess.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S12-C01",
+      "skill": "S12",
+      "title_hy": "Ինչո՞ւ է բեռնված նավն ավելի խոր նստում",
+      "evidence_intent": "Connect greater total weight to the displaced-water volume required for equilibrium.",
+      "screening_boundary": "Do not attribute floating to hollow space alone; use the whole ship’s average behavior.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S12-C02",
+      "skill": "S12",
+      "title_hy": "Օդապարիկը ե՞րբ կբարձրանա",
+      "evidence_intent": "Compare buoyant force in air with the total weight of gas, envelope, basket and load.",
+      "screening_boundary": "Use supplied densities/volume; hot-air thermodynamics beyond the text is excluded.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S12-C03",
+      "skill": "S12",
+      "title_hy": "Ձուկն ինչպե՞ս է փոխում իր լողալու վիճակը",
+      "evidence_intent": "Interpret a textbook-supported animal example through buoyancy and average density.",
+      "screening_boundary": "Avoid untaught anatomy; provide all biological function information needed in the prompt.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S13-C01",
+      "skill": "S13",
+      "title_hy": "Ուժաչափի երկու ցուցմունքից՝ արքիմեդյան ուժ",
+      "evidence_intent": "Plan/interpret the air-versus-liquid dynamometer method.",
+      "screening_boundary": "A selected answer can assess the plan or data only; it cannot certify that the learner performed the experiment.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S13-C02",
+      "skill": "S13",
+      "title_hy": "Ինչպե՞ս որոշել անհայտ հեղուկի խտությունը",
+      "evidence_intent": "Select measurements and calculate density using a verified liquid-lab method.",
+      "screening_boundary": "Preserve instrument precision and distinguish an experimental result from an expected value.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S14-C01",
+      "skill": "S14",
+      "title_hy": "Պինդ մարմնի և գազի ճնշումը նույնպե՞ս է առաջանում",
+      "evidence_intent": "Compare the source-level mechanisms without erasing their differences.",
+      "screening_boundary": "Intentional synthesis only; screen heavily against S01, S03 and S05.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S14-C02",
+      "skill": "S14",
+      "title_hy": "Ինչո՞ւ է հեղուկը ճնշում անոթի պատերին",
+      "evidence_intent": "Connect liquid weight/depth and force normal to a supplied wall segment.",
+      "screening_boundary": "Do not use molecular explanations beyond the chapter’s stated model as a required claim.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S15-C01",
+      "skill": "S15",
+      "title_hy": "Բարոմետրի ցուցմունքը կարդալը",
+      "evidence_intent": "Read a labelled barometer or aneroid scale and report the value with its unit.",
+      "screening_boundary": "The instrument image must be complete and legible; no memorized weather rule.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S15-C02",
+      "skill": "S15",
+      "title_hy": "Ո՞ր սարքով չափել ճնշումը",
+      "evidence_intent": "Choose a suitable supplied instrument/setup for a stated gas or liquid measurement.",
+      "screening_boundary": "Do not require apparatus absent from the source without fully describing it.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S16-C01",
+      "skill": "S16",
+      "title_hy": "Պոմպի ո՞ր փականն է բացվում ներծծման ժամանակ",
+      "evidence_intent": "Trace valve states during a labelled piston stroke.",
+      "screening_boundary": "Attach a complete pump diagram; avoid asking students to infer hidden connections.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    },
+    {
+      "id": "S16-C02",
+      "skill": "S16",
+      "title_hy": "Մխոցը բարձրանալիս ջուրն ո՞ւր է շարժվում",
+      "evidence_intent": "Follow the liquid path and pressure change through one operating step.",
+      "screening_boundary": "Assess the textbook pump, not an unspecified modern pump design.",
+      "status": "unassessed candidate brief; not a drafted, approved or qualified question"
+    }
+  ],
+  "assets": [
+    {
+      "id": "pressure-contact",
+      "printed_page": 118,
+      "pdf_page": 119,
+      "crop_pdf_points": [
+        105,
+        415,
+        375,
+        545
+      ],
+      "render_scale": 3,
+      "pixels": [
+        810,
+        390
+      ],
+      "sha256": "1d210d0408c36c3b1fa3a337cadf67e13d4b7c17a257b531d346c76238ea0763",
+      "alt_hy": "Նկ. 80․ նույն ճնշման ուժի դեպքում հպման տարբեր մակերեսներով սեղանիկների ազդեցությունը ավազի վրա։",
+      "path": "docs/assets/chapter-vi-preparation/pressure-contact.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "pascal-law",
+      "printed_page": 126,
+      "pdf_page": 127,
+      "crop_pdf_points": [
+        30,
+        65,
+        190,
+        250
+      ],
+      "render_scale": 3,
+      "pixels": [
+        480,
+        555
+      ],
+      "sha256": "b07e44cdfa379a005bee8b5f8dc02218a09c2ba3d751e0b7912018784d0ad5c4",
+      "alt_hy": "Նկ. 86․ Պասկալի օրենքը ցուցադրող փորձը՝ գնդաձև անոթի անցքերից ջրի շիթերով։",
+      "path": "docs/assets/chapter-vi-preparation/pascal-law.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "communicating-vessels",
+      "printed_page": 131,
+      "pdf_page": 132,
+      "crop_pdf_points": [
+        70,
+        250,
+        420,
+        455
+      ],
+      "render_scale": 3,
+      "pixels": [
+        1050,
+        615
+      ],
+      "sha256": "f53b12e44de3836b33968a7612cb002493c7b4cdae14182cd58437de0cff694a",
+      "alt_hy": "Նկ. 91 և 92․ հաղորդակից անոթներում համասեռ հեղուկի ազատ մակերևույթների նույն մակարդակը՝ անկախ անոթների ձևից։",
+      "path": "docs/assets/chapter-vi-preparation/communicating-vessels.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "hydraulic-press",
+      "printed_page": 135,
+      "pdf_page": 136,
+      "crop_pdf_points": [
+        55,
+        55,
+        425,
+        250
+      ],
+      "render_scale": 3,
+      "pixels": [
+        1110,
+        585
+      ],
+      "sha256": "b2a0b9dbfed82c14cbb8b8b1dd9cb6ee94fe9db1b642fb7525ff7edcb046c362",
+      "alt_hy": "Նկ. 99․ ջրաբաշխական մամլիչի սխեման՝ տարբեր մակերեսներով մխոցներով և նրանց վրա ազդող ուժերով։",
+      "path": "docs/assets/chapter-vi-preparation/hydraulic-press.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "torricelli",
+      "printed_page": 143,
+      "pdf_page": 144,
+      "crop_pdf_points": [
+        125,
+        360,
+        420,
+        555
+      ],
+      "render_scale": 3,
+      "pixels": [
+        885,
+        585
+      ],
+      "sha256": "ffdeaa4183b089da1e72d380932500b04a39229b9d200adb3010254e32f7aa35",
+      "alt_hy": "Նկ. 105 և 106․ Տորիչելիի փորձը և գործող սնդիկային բարոմետրը։",
+      "path": "docs/assets/chapter-vi-preparation/torricelli.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "buoyant-force-measurement",
+      "printed_page": 148,
+      "pdf_page": 149,
+      "crop_pdf_points": [
+        65,
+        360,
+        350,
+        550
+      ],
+      "render_scale": 3,
+      "pixels": [
+        855,
+        570
+      ],
+      "sha256": "aaec234036c945416a057c992e5dbec6538ff14243f168556a311ccba6a28cc2",
+      "alt_hy": "Նկ. 109․ ուժաչափի ցուցմունքի փոփոխությունը մարմինը ջրում ընկղմելիս։",
+      "path": "docs/assets/chapter-vi-preparation/buoyant-force-measurement.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "liquid-density-comparison",
+      "printed_page": 152,
+      "pdf_page": 153,
+      "crop_pdf_points": [
+        285,
+        135,
+        420,
+        270
+      ],
+      "render_scale": 3,
+      "pixels": [
+        405,
+        405
+      ],
+      "sha256": "c48913d62e7d23b0cac40f4f632c20e12928569ddb40158da5fd1e4e9440ae8c",
+      "alt_hy": "Ուժաչափի/կշեռքի օգնությամբ ջրում և կերոսինում մարմնի վրա ազդող արքիմեդյան ուժերի համեմատման սխեման։",
+      "path": "docs/assets/chapter-vi-preparation/liquid-density-comparison.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "floating-conditions",
+      "printed_page": 156,
+      "pdf_page": 157,
+      "crop_pdf_points": [
+        0,
+        35,
+        442,
+        440
+      ],
+      "render_scale": 3,
+      "pixels": [
+        1326,
+        1215
+      ],
+      "sha256": "67a05e937fcac04676bd687e9d4221e5eca7c65de61992a7e060046abfea3ef1",
+      "alt_hy": "Նկ. 113 և 114․ հեղուկում մարմնի վրա ազդող ուժերի և լողալու պայմանների պատկերումները։",
+      "path": "docs/assets/chapter-vi-preparation/floating-conditions.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    },
+    {
+      "id": "ship-displacement",
+      "printed_page": 159,
+      "pdf_page": 160,
+      "crop_pdf_points": [
+        185,
+        220,
+        435,
+        370
+      ],
+      "render_scale": 3,
+      "pixels": [
+        750,
+        450
+      ],
+      "sha256": "20b64be88b14cfc410c3504c0d4983ecfc01508fec59b2bb6a33bf0356a00228",
+      "alt_hy": "Նկ. 117․ նավի ընկղմված մասի ծավալը և ջրագիծը ցույց տվող լուսանկար։",
+      "path": "docs/assets/chapter-vi-preparation/ship-displacement.png",
+      "use": "reference/practice only; teaching-exposed; not a protected assessment asset"
+    }
+  ],
+  "practical_tasks": [
+    {
+      "id": "PRACTICAL-SOLID-PRESSURE",
+      "source": "§40, printed p.120",
+      "supports": [
+        "M1",
+        "M2"
+      ],
+      "status": "draft performance outline; no implementation or learner performance"
+    },
+    {
+      "id": "LAB-COMMUNICATING-DENSITY",
+      "source": "§47, printed p.139; programme Theme 6 practical work 1",
+      "supports": [
+        "M4"
+      ],
+      "status": "draft performance rubric; no implementation or learner performance"
+    },
+    {
+      "id": "PRACTICAL-ATMOSPHERIC-EVIDENCE",
+      "source": "§48, printed pp.140–145; programme M6",
+      "supports": [
+        "M6"
+      ],
+      "status": "draft performance outline; no implementation or learner performance"
+    },
+    {
+      "id": "LAB-BUOYANT-FORCE",
+      "source": "§51, printed pp.152–153; programme Theme 6 practical work 2",
+      "supports": [
+        "M9"
+      ],
+      "status": "draft performance rubric; no implementation or learner performance"
+    },
+    {
+      "id": "LAB-LIQUID-DENSITY",
+      "source": "§52, printed p.154; programme Theme 6 practical work 3",
+      "supports": [
+        "M9"
+      ],
+      "status": "draft performance rubric; no implementation or learner performance"
+    }
+  ],
+  "source_gap": {
+    "id": "GAP-BUOYANT-FORCE-IN-GAS",
+    "programme_outcome": "M9",
+    "description": "The programme requires designing and performing buoyant-force experiments in liquids and gases. The textbook shows a gas-buoyancy demonstration in §50, but §§40–55 provide no equivalent formal learner laboratory procedure for the gas part.",
+    "disposition": "Do not fabricate a gas-performance procedure or certify M9 from questions. A specialist-reviewed learner procedure and teacher evidence workflow are required before performance assessment."
+  },
+  "comparison": {
+    "status": "not performed; source and catalogue mapping only",
+    "related_skills": [
+      "PHY7-U01-S04",
+      "PHY7-U01-S05",
+      "PHY7-U01-S06",
+      "PHY7-U01-S07",
+      "PHY7-U01-S08",
+      "PHY7-U01-S09",
+      "PHY7-U01-S10",
+      "PHY7-U02-S02",
+      "PHY7-U02-S05",
+      "PHY7-U02-S08",
+      "PHY7-U04-S02",
+      "PHY7-U04-S03",
+      "PHY7-U04-S04",
+      "PHY7-U04-S05",
+      "PHY7-U04-S06",
+      "PHY7-U04-S09",
+      "PHY7-U04-S10",
+      "PHY7-U04-S13",
+      "PHY7-U04-S14",
+      "PHY7-U05-S05",
+      "PHY7-U05-S06",
+      "PHY7-U05-S07",
+      "PHY7-U05-S08",
+      "PHY7-U05-S10"
+    ],
+    "required_before": "any new/revised question deployment"
+  },
+  "boundaries": [
+    "No Chapter VI unit, skill, item or release-unit record at the read-only catalogue checkpoint.",
+    "Zero questions, guides, definitions, content approvals, allocations, activations or learner events created by this sprint.",
+    "No session lengths, pass thresholds, attempt count or form allocations proposed as approved.",
+    "No Chapter II–V protected-parallel or provisional-pilot exception extends to Chapter VI.",
+    "S13 is performance-supporting Practice only; S14–S16 are additional Practice only. None contributes qualified Diagnostic/Mastery capacity.",
+    "Questions may assess experimental preparation or data interpretation but cannot certify performed work.",
+    "The programme’s gas-phase buoyant-force experiment requirement remains a recorded source/procedure gap."
+  ]
+}
