@@ -1,0 +1,42 @@
+{
+  "schema": "haiedu-chapter-preparation-qa-v1",
+  "sprint": "15F.1",
+  "prepared_at": "2026-10-19T15:11:49.183090+00:00",
+  "base_commit": "ce10ee7e56458e7be61168a402bd27e88a7d0d95",
+  "checks": {
+    "eleven_mandatory_four_additional_outcomes": true,
+    "all_fifteen_outcomes_mapped": true,
+    "sixteen_skills": true,
+    "thirteen_mandatory_or_performance_three_additional": true,
+    "totals_146_38_58_242": true,
+    "three_batches_70_90_82": true,
+    "batch_partition_complete": true,
+    "performance_and_additional_not_diagnostic_mastery": true,
+    "no_capacity_or_policy_claim": true,
+    "thirty_three_briefs": true,
+    "five_practical_records": true,
+    "gas_learner_procedure_gap_recorded": true,
+    "source_hashes_verified": true,
+    "nine_asset_hashes": true,
+    "catalogue_has_no_chapter_vi": true,
+    "all_links_exist": true,
+    "worked_examples_recomputed": true,
+    "natural_armenian_manual_review_recorded": true,
+    "roadmap_version_4_11_planned": true
+  },
+  "passed": 19,
+  "failed": 0,
+  "manual_review": [
+    "Read §§40–55 and the exact programme Theme 6 outcome/practical cells; did not use later-grade similarly named pressure/fluid outcomes.",
+    "Reviewed Armenian skill labels, candidate titles, practical wording and future hint boundaries separately from physics conditions.",
+    "Visually inspected printed pp.118,126,131,135,143,148,152,156 and 159 and all nine final crops; source material is teaching-exposed.",
+    "Checked formula boundaries: p=F/S, p=ρgh, hydraulic area ratio, F_A=ρgV_submerged and force/density floating conditions."
+  ],
+  "limitations": [
+    "Planning checks only; no full semantic comparison, question QA, browser acceptance, specialist review or qualification claimed.",
+    "No database mutation, inactive foundation, question draft, review approval, runtime or release change performed.",
+    "Programme M9 includes experiments in gases; the textbook has a gas-buoyancy demonstration but no matched formal learner laboratory procedure, so performance coverage remains incomplete.",
+    "Question counts are ceilings and may shrink after overlap screening."
+  ],
+  "roadmap_version": "4.11"
+}

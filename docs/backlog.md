@@ -1,6 +1,6 @@
 # Product backlog
 
-**Status source:** [Project status register](project-status.md), reconciled 2026-10-10. This file is a scoped implementation checklist, not a second current sprint ledger. Completed technical work is checked below; genuine external/release gates remain open. Later stages and current inventories are in the register; the [roadmap](sprint-roadmap.md) defines their sequence.
+**Status source:** [Project status register](project-status.md), reconciled 2026-10-19. This file is a scoped implementation checklist, not a second current sprint ledger. Completed technical work is checked below; genuine external/release gates remain open. Later stages and current inventories are in the register; the [roadmap](sprint-roadmap.md) defines their sequence.
 
 ## Sprint 0 — Technical foundation
 - [x] Repository scaffold
@@ -252,6 +252,21 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 - [x] 12.5Z: persist session-item MCQ presentation, resolve displayed keys server-side and preserve historical evidence; final closure records assessment-integrity acceptance.
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
+
+## Chapter VI preparation and execution — 15F.1 onward, 2026-10-19 Asia/Yerevan
+
+- [x] Verify the approved *Ֆիզիկա 7* Chapter VI scope (§§40–55, printed pp.118–163) and current programme Theme 6 source identity.
+- [x] Map 11 mandatory and four additional outcomes to 16 proposed skills without importing later-grade fluid mechanics.
+- [x] Prepare a provisional 242-slot ceiling (146 Practice/38 Diagnostic/58 Mastery) and three large batches of 70/90/82.
+- [x] Prepare 33 candidate briefs with separate Armenian/physics/hint boundaries.
+- [x] Record five separately governed practical activities and the missing formal learner procedure for gas-buoyancy performance.
+- [x] Extract and visually inspect nine exact textbook crops for teaching-exposed Practice/reference use only.
+- [x] Verify source hashes, outcome coverage, totals, batch partition, asset hashes and zero-write production catalogue; pass 19/19 planning checks.
+- [ ] Obtain owner acceptance or revision of the exact map, authoring ceiling, batch split, non-gating roles, practical records and source/procedure gap.
+- [ ] 15F.2: create the inactive governed U06 foundation after acceptance; freeze the complete related bank and assess Batch 1 before staging.
+- [ ] Author, review, qualify and release later Chapter VI stages under separate evidence and authorization; do not infer assessment policy from the planning budget.
+
+[Chapter VI map](chapter-vi-preparation.md) · [Structured preparation evidence](evidence/chapter-vi-preparation-20261019.json) · [Planning QA](evidence/chapter-vi-preparation-qa-20261019.json).
 
 ## Chapter V authoring, review closure and contract — 15E.1–15E.6, 2026-10-19 Asia/Yerevan
 
