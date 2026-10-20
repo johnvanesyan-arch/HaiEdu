@@ -1,0 +1,79 @@
+{
+  "rollbackObservedAt": "2026-10-20T08:32:18.485558+00:00",
+  "rollbackAll59TablesRestored": true,
+  "rehearsalObservedAt": "2026-10-20T08:31:09.512566+00:00",
+  "activationObservedAt": "2026-10-20T08:33:39.378755+00:00",
+  "configurationReadback": {
+    "allEightTablesExact": true,
+    "configurationRows": 719,
+    "tables": {
+      "assessment_pools": true,
+      "assessment_pool_items": true,
+      "learning_model_configurations": true,
+      "assessment_blueprints": true,
+      "assessment_blueprint_items": true,
+      "assessment_forms": true,
+      "assessment_form_items": true,
+      "learning_model_runtime_bindings": true
+    }
+  },
+  "compactTransaction": {
+    "exactOfflineProjectionMatches": true,
+    "blueprintRows": 381,
+    "poolItems": 235,
+    "formSlots": 89,
+    "heldExcluded": 7,
+    "atomic": true,
+    "unchangedGuards": true,
+    "exactApprovalQaBindingSha256": "ebfb0a825c711c372c4aa52f97ef870d652f1f3ab6c66b3a0bcc0f29d5cd1661",
+    "bytes": 56214,
+    "sha256": "7e7068b0152c6dd0dcf7be699151660d5727555bcfee6f47bff16a8917807df9"
+  },
+  "sqlScopeValidation": {
+    "sha256": "ceeba66d84a9c37ce6ce9108ed34ab57f2182eacc52735ea76738ab374df8d51",
+    "transaction": "ROLLBACK only",
+    "updates": [
+      {
+        "table": "curriculum_reconciliation_runs",
+        "where": "id='d47c56a2-736e-591d-bb06-26c9776fe1a5' and status='draft';"
+      },
+      {
+        "table": "curriculum_release_gate_checks",
+        "where": "curriculum_release_id='44e5e99a-43bc-5937-8793-b2c614e38700' and gate_code in ('outcomes_reconciled','skills_mapped','assessment_scope_bound','content_qa_passed') and status='pending';"
+      },
+      {
+        "table": "curriculum_release_gate_checks",
+        "where": "curriculum_release_id='44e5e99a-43bc-5937-8793-b2c614e38700' and gate_code='external_sme_approved' and status='pending';"
+      },
+      {
+        "table": "assessment_pools",
+        "where": "id in ('84323113-ef8c-5f07-a0e7-b39968c72432','bca18b77-51dd-5a36-8aff-33be873f4669','dc667ce7-619d-56c6-bea4-602b93a12170');"
+      },
+      {
+        "table": "assessment_blueprints",
+        "where": "curriculum_release_id='44e5e99a-43bc-5937-8793-b2c614e38700';"
+      },
+      {
+        "table": "learning_model_runtime_bindings",
+        "where": "id='679836b9-f7aa-51d9-94dc-6edbd7580ee0';"
+      },
+      {
+        "table": "curriculum_releases",
+        "where": "id='44e5e99a-43bc-5937-8793-b2c614e38700' and status='draft';"
+      }
+    ],
+    "allActualUpdateStatementsHaveWhere": true,
+    "noDeleteTruncateDropAlterGrantRevoke": true,
+    "rowLockStatement": "perform id from public.curriculum_releases where id in ('80bbe575-ad49-4a7f-881a-e55726b1eaeb','b83dc4a4-f5c2-486a-82a6-d7489e7e6407','b626705a-a355-5937-b20b-38550dc5b0fe','18eb78e8-79f7-5307-bef2-38c4baa1d809','a2d0c2da-c04f-5900-a45d-dd325fe24324','44e5e99a-43bc-5937-8793-b2c614e38700') order by id for update;",
+    "preflightTableFingerprints": 59,
+    "preservationScopes": 61
+  },
+  "activationRoute": "Owner-authorized signed-in Supabase SQL editor; MCP requests returned invalid_request_state. All transaction guards retained.",
+  "productionAcceptance": "pending",
+  "policyValidation": {
+    "scopeChecks": 4,
+    "scoringCases": 5,
+    "allPassed": true
+  },
+  "isolatedTestsPassed": 10
+}

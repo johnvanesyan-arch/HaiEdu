@@ -1,10 +1,10 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
 
-**Roadmap version:** 4.17
-**Updated:** 2026-10-20 Asia/Yerevan · 15F.5 S06-I01 figure-92 replacement verified at v3; one question review pending
+**Roadmap version:** 4.18
+**Updated:** 2026-10-20 Asia/Yerevan · 15F.6 Chapter VI activated; production acceptance pending; English Grade 7 next subject
 **Latest platform repair:** the shared guide-validator metadata correction is deployed as v11; all three bundle files read back exactly, 31 regressions and CI pass. Existing content and approvals are preserved. [Guide-validator repair evidence](evidence/remediation-guide-validator-metadata-fix-20261015.json). Earlier direct-read protection and reviewer approval repairs remain in force.
-**2026-10-20 11:29 Asia/Yerevan checkpoint:** 242 questions — **241 approved and only `PHY7-U06-S06-I01` v3 awaiting review**; **146 published guides**; **33 active and 125 draft misconception definitions**. These counts record the observed review checkpoint. The owner supplied figure 92 alone for `PHY7-U06-S06-I01`. Version 3 uses `p131-communicating-vessels-v3.png` and an accessible description of the three connected-vessel pairs. The prompt, four choices, answer `C`, explanation, hints, mappings and v1/v2 history are preserved. The image is live and matches the supplied 1,619,301-byte PNG (1028 × 1024); the guarded save and current-version QA passed with zero errors or warnings. Release `physics7_u06_2026_08_14_draft_r6` remains draft and never activated, with zero U06 pool, form, session or exposure rows. Exact-version review of S06-I01 v3 and the remaining definitions is still open. Assessment contract, qualification, allocation and learner release remain separate. [S06 v3 evidence](evidence/chapter-vi-s06-image-v3-20261020.json) · [Correction record](chapter-vi-image-corrections.md).
+**Sprint 15F.6 — Chapter VI knowledge-only provisional pilot activated:** all **242 questions are approved, 146 guides published and 158 definitions active**. Diagnostic 19 / Practice 8 / Mastery 17 / Review 12. Mastery requires **14/17 plus one correct in each of twelve required skills**, with three attempts. Two Diagnostic and three Mastery forms contain 89 distinct approved versions; seven approved Mastery questions remain unallocated. Rollback restored all 59 tracked tables; exact readback verifies 719 configuration rows and 61 preservation scopes. Authenticated six-chapter production acceptance is pending. Specialist/exposure review and performed practical assessment remain deferred. **English Grade 7 is the next subject**, with textbook intake/preparation next; Sprint 16 Physics course integration remains open. [Release](chapter-vi-pilot-release.md).
 
 **Sprint 15D.6 — Chapter IV knowledge-only provisional pilot activated:** John approved the exact contract and five revisions on 2026-10-18. All five v2 revisions passed saved-content QA and ordinary delegated approval through the signed-in reviewer UI; all 236 current questions are approved. Diagnostic 19, Practice 8, Mastery 15 (12/15 plus one correct in each of ten required skills), and Review 12 are active. The five forms contain 83 disjoint questions; 15 other Mastery items remain held outside the pools. Rollback restored all 59 table fingerprints; activation and exact 677-row readback passed 61 preservation scopes. Chapters I–III, learner records and numerical readiness parameters are preserved. Authenticated production acceptance passed **155/155**, plus two-school isolation **54/54**, on exact frontend `230925d0271bfaf55fc2973731650fe38ffeb99a`. Home → I at 1365 px, then I → II → III → IV → I at 390 px passed for both schools without page errors or attempted learning mutations. All 59 tracked public tables remain unchanged through acceptance. Specialist/exposure review is deferred; performed density/Hooke experiments remain unassessed. [Release evidence](chapter-iv-pilot-release.md).
 **Sprint 15C.26 technical scope complete: Chapter III is active as the owner-authorized provisional pilot.** All 168 approved questions, 80 published guides and 344 active definitions are unchanged. Exact activation/readback verified 510 configuration rows, four v2 policy contracts and five forms; rollback and commit passed all 61 preservation scopes. Authenticated production acceptance passed **123/123**, including Home → Chapter I at 1365 px and Chapter I → II → III → I at 390 px, with two-school isolation **54/54**. All 59 tracked public table fingerprints remained unchanged after activation through acceptance. Chapters I/II and learner history are preserved. Independent specialist review, final exposure disposition and production promotion remain open. [Release and evidence](chapter-iii-pilot-release.md).
@@ -144,9 +144,9 @@ This roadmap also governs how ChatGPT should be used for each sprint. The mode i
 | 14 | Hybrid | Multi-tenant academic architecture first in chat; bounded implementation slices in Work. |
 | 15 | Hybrid | Content-governance and curriculum design in chat; reviewer editor, bulk ingestion and technical QA in Work. |
 | 16 | Work | Physics course integration and regression through the shared subject-neutral contracts. |
-| 16.1 | Hybrid | Mathematics curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
-| 16.2 | Hybrid | Armenian-language curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
-| 16.3 | Hybrid | English curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
+| 16.1 | Hybrid | English curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
+| 16.2 | Hybrid | Mathematics curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
+| 16.3 | Hybrid | Armenian-language curriculum/evidence design in chat; vertical-slice implementation and QA in Work. |
 | 16.4 | Work | Four-subject Grade 7 integration, regression and MVP-readiness verification. |
 | 16.5 | Hybrid | Student dashboard audit and mockup review in chat; reviewed design implementation and browser/release acceptance in Work. |
 | 17 | Hybrid | Four-subject pilot design and interpretation in chat; operational setup/QA/evidence handling in Work. |
@@ -200,11 +200,11 @@ Routing guidance before Sprint 11 technical handoff, preserved for history. That
 | 12.5 | Universal Chapter Review & Mastery-Retry Lifecycle | ✅ | Complete. 12.5A–Z, lifecycle branches, persisted MCQ randomization, authenticated desktop QA and authenticated mobile learner/teacher QA at 390 px and 430 px all pass. Production Mobile browser QA #2 passed on GitHub head `0c56fa8`. |
 | 13 | Chapter I Standards-Verified Production Release | ✅ sequencing closure; release gate open | Product owner directed Sprint 14 to proceed. External Physics SME approval is still pending and the Chapter I release remains pilot, not standards-verified production. |
 | 14 | Multi-Tenant, Multi-Grade / Multi-Subject Academic Architecture | ✅ technical scope | 14A deployed. 14B account/provisioning/recovery controls, school-admin operations and teacher workspace operations are deployed. Institutional classroom creation, class-bound bulk invitations, optional secure join codes, dedicated active/archive views, and authorized classroom renaming are complete. The 14C school-scoped learner onboarding, exact-context session stamping and teacher roster/evidence views pass their controlled production checks. Teacher offboarding and final school-administrator guards are deployed. Authenticated two-school read isolation passed 54/54 checks. Authenticated class/staff mutation-denial and teacher navigation/rename/offboarding action acceptance passed 141/141 checks, with read isolation passing 54/54 before and after. 14D school-wide analytics is complete: production acceptance passed 10/10 for both QA schools, including own-school reads, cross-school denials, aggregate-only payloads and authenticated board rendering. Authenticated Chapter I → II → I desktop/mobile switching passed 91/91 on the activated Chapter II pilot, closing the remaining Sprint 14 technical gate. |
-| 15 | Grade 7 Physics Expansion — Chapters II–VI | 🟡 | Chapters II–V remain active provisional pilots within their recorded limits. At the October 20 11:29 checkpoint, Chapter VI has 242 authored questions: 241 approved and S06-I01 v3 awaiting review, plus 146 published guides and 33 active / 125 draft definitions. The latest image and QA are verified; U06 remains inactive and unallocated. [Current status](project-status.md) · [Correction](chapter-vi-image-corrections.md). |
+| 15 | Grade 7 Physics Expansion — Chapters II–VI | 🟡 | All six chapters are active provisional pilots. 15F.6 exact activation is verified; six-chapter authenticated production acceptance is pending. Specialist/exposure/performance limits and Sprint 16 integration remain separate. [Current status](project-status.md). |
 | 16 | Physics 7 Course Integration | ⏳ | Integrate the available Physics 7 course units through the same subject-neutral contracts and preserve unit-bound diagnostics/mastery with course-level aggregation. |
-| 16.1 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
-| 16.2 | Armenian Language 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Armenian Language 7 unit through the complete learner, teacher, governance and QA pipeline. |
-| 16.3 | English 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived English 7 unit through the complete learner, teacher, governance and QA pipeline. |
+| 16.1 | English 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived English 7 unit through the complete learner, teacher, governance and QA pipeline. |
+| 16.2 | Mathematics 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Mathematics 7 unit through the complete learner, teacher, governance and QA pipeline. |
+| 16.3 | Armenian Language 7 MVP Vertical Slice | ⏳ | Build one production-ready, official-programme-derived Armenian Language 7 unit through the complete learner, teacher, governance and QA pipeline. |
 | 16.4 | Grade 7 Four-Subject MVP Integration | ⏳ | Integrate Physics, Mathematics, Armenian Language and English; verify subject isolation, shared workflows, analytics, assignments, tenant controls and release provenance. |
 | 16.5 | Student Dashboard Design & Usability Pass | ⏳ | Audit and redesign the shared student home, course/assessment entry points and progress views; review desktop/mobile Armenian mockups before implementation and pass browser/release acceptance before the school pilot. |
 | 17 | Grade 7 Four-Subject School MVP Pilot | ⏳ | Run the formal school-level MVP pilot only after Sprint 16.4 four-subject integration and Sprint 16.5 design/usability acceptance pass; technical QA may continue earlier. |
@@ -1430,6 +1430,10 @@ The numerical bank/weighting proposal is not an approved assessment policy. Supp
 
 **Historical next step, superseded by 15C.2/15C.3:** the foundation and two draft batches are now staged. Current next work is recorded in 15C.3; Chapter II pilot activation and authenticated acceptance are complete.
 
+### 15F.6 — Chapter VI provisional pilot release
+
+**Sprint 15F.6 — Chapter VI knowledge-only provisional pilot activated:** all **242 questions are approved, 146 guides published and 158 definitions active**. Diagnostic 19 / Practice 8 / Mastery 17 / Review 12. Mastery requires **14/17 plus one correct in each of twelve required skills**, with three attempts. Two Diagnostic and three Mastery forms contain 89 distinct approved versions; seven approved Mastery questions remain unallocated. Rollback restored all 59 tracked tables; exact readback verifies 719 configuration rows and 61 preservation scopes. Authenticated six-chapter production acceptance is pending. Specialist/exposure review and performed practical assessment remain deferred. **English Grade 7 is the next subject**, with textbook intake/preparation next; Sprint 16 Physics course integration remains open. [Release](chapter-vi-pilot-release.md).
+
 ## Sprint 16 — Physics 7 Course Integration
 
 The Physics 7 course includes:
@@ -1472,17 +1476,19 @@ Sprint 16.5 design/usability acceptance is an additional prerequisite for formal
 
 This is the minimum gate for testing a multi-subject institutional MVP. A subject may have additional released units when the gate is evaluated, but additional coverage does not give that subject reference, default or privileged status and does not reduce the production requirements for any other subject.
 
-## Sprint 16.1 — Mathematics 7 MVP Vertical Slice
+## Sprint 16.1 — English 7 MVP Vertical Slice
+
+**Owner sequencing decision, 2026-10-20:** English Grade 7 is the next subject. Begin with the uploaded textbook, confirm its edition and official programme, and map language outcomes and supported evidence types before authoring. Physics integration and the four-subject formal-pilot gates remain open.
+
+Model and implement one representative English 7 unit from the applicable official programme. The slice must test language-appropriate outcomes, content, localization boundaries and evidence while preserving deterministic/auditable mastery decisions.
+
+## Sprint 16.2 — Mathematics 7 MVP Vertical Slice
 
 Model and implement one representative Mathematics 7 unit from the applicable official programme. The slice must test mathematics-specific skill structure, answer representation and deterministic grading rather than reusing the existing Mathematics navigation fixture as curriculum.
 
-## Sprint 16.2 — Armenian Language 7 MVP Vertical Slice
+## Sprint 16.3 — Armenian Language 7 MVP Vertical Slice
 
 Model and implement one representative Armenian Language 7 unit from the applicable official programme. The slice must test language-appropriate outcomes, content and evidence while preserving the distinction between automatically scored evidence and any human-reviewed work.
-
-## Sprint 16.3 — English 7 MVP Vertical Slice
-
-Model and implement one representative English 7 unit from the applicable official programme. The slice must test language-appropriate outcomes, content, localization boundaries and evidence while preserving deterministic/auditable mastery decisions.
 
 ## Sprint 16.4 — Grade 7 Four-Subject MVP Integration
 
@@ -2381,5 +2387,6 @@ Both attempts to apply the first database migration through the Supabase connect
 ### Sprint 15B.14C / 15B.12E — Authenticated pilot acceptance complete
 
 **Authenticated production acceptance passed 91/91** on exact frontend revision `ed3f1c291e38e77c8469699e361205893e652327` in [workflow 38446467319](https://github.com/johnvanesyan-arch/armenian-mastery-platform/actions/runs/38446467319). The six designated QA identities, reciprocal two-school controls, protected direct-read denials, exact Chapter II contract and Chapter I → II → I desktop/mobile navigation passed. The runner created no learner session, answer or exposure; before/after chapter evidence is unchanged, and only its own login sessions were closed. [Production acceptance](evidence/chapter-ii-pilot-read-acceptance-20261013.json). This closes the live switching dependency for Sprint 14 / 15B.12E and the authorized provisional Chapter II pilot slice 15B.14C. It does not grant independent specialist approval, production promotion, empirical form equivalence, cross-release prerequisite routing or full Sprint 15 course completion.
+
 
 

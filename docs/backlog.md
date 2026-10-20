@@ -253,7 +253,7 @@ Methodology audit corrections: `docs/sprint-12a-methodology-audit-corrections.md
 
 Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry.md`.
 
-## Chapter VI preparation and execution — 15F.1–15F.5, 2026-10-20 Asia/Yerevan
+## Chapter VI preparation and execution — 15F.1–15F.6, 2026-10-20 Asia/Yerevan
 
 - [x] Verify the approved *Ֆիզիկա 7* Chapter VI scope (§§40–55, printed pp.118–163) and current programme Theme 6 source identity.
 - [x] Map 11 mandatory and four additional outcomes to 16 proposed skills without importing later-grade fluid mechanics.
@@ -279,10 +279,14 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Verify all nine deployed production assets byte-for-byte and by exact dimensions; record nine v2 technical-QA passes with zero errors or warnings.
 - [x] Verify approval of the other eight v2 corrections and preserve those approvals.
 - [x] Publish the owner's figure-92-only image for S06-I01 as v3; pass live hash/dimension verification, guarded save and version-bound QA.
-- [ ] Complete exact-version review for S06-I01 v3.
+- [x] Verify exact-version approval of S06-I01 v3; all 242 current question approvals and passing QA are present.
 - [x] Verify all 146 guides published.
-- [ ] Complete misconception-definition review; 33 active and 125 drafts at the October 20 11:29 checkpoint.
-- [ ] Propose and approve any later Chapter VI assessment contract, qualification, allocation, activation and learner release under separate evidence and authorization; do not infer them from the planning budget.
+- [x] Verify all 158 definitions active; the October 20 11:29 partial review checkpoint is superseded.
+- [x] Act on the explicit October 20 Chapter VI deployment direction: freeze D19/P8/M17/R12, 14/17 plus twelve skill minima, and knowledge-only provisional scope.
+- [x] Rehearse rollback, activate five disjoint forms/89 slots, and verify 719 exact configuration rows and 61 preservation scopes.
+- [ ] Finish authenticated six-chapter production acceptance and evidence/Notion closure.
+- [ ] Complete independent specialist/exposure review and applicable performed-practical assessment before promotion beyond the provisional scope.
+- [ ] Begin English Grade 7 textbook intake and programme mapping as the next subject (16.1); keep Physics course integration open.
 
 [Chapter VI map](chapter-vi-preparation.md) · [Image corrections](chapter-vi-image-corrections.md) · [Batch 1 comparison](chapter-vi-batch-01-comparison.md) · [Batch 1 staging](chapter-vi-batch-01-staging.md) · [Batch 2 comparison](chapter-vi-batch-02-comparison.md) · [Batch 2 staging](chapter-vi-batch-02-staging.md) · [Batch 3 comparison](chapter-vi-batch-03-comparison.md) · [Batch 3 staging](chapter-vi-batch-03-staging.md) · [Foundation evidence](evidence/chapter-vi-foundation-20261019.json) · [Correction evidence](evidence/chapter-vi-image-corrections-20261019.json).
 
@@ -689,5 +693,6 @@ Notion synchronization follows the documentation merge and requires readback of 
 - [ ] Independent SME/protection review and final exposure disposition before production promotion.
 
 The bank has 192 approved non-archived questions, 263 active definitions and 57 published guides, with no pending content. Each of eight skills has 12/4/8 Practice/Diagnostic/Mastery candidates. [Qualification preparation](chapter-ii-assessment-qualification.md) and the pilot implementation are complete for their recorded scope. Chapter II is active as the authorized provisional pilot; authenticated production acceptance passed 91/91. Independent SME/production exposure decisions remain open. [Historical deployment blocker](evidence/chapter-ii-pilot-deployment-blocker-20261013.json) · [Authoritative status](project-status.md).
+
 
 

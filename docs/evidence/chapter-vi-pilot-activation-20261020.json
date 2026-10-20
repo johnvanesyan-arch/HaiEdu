@@ -1,0 +1,62 @@
+{
+  "schemaVersion": 1,
+  "status": "activated",
+  "activatedAt": "2026-10-20T08:33:35.863599+00:00",
+  "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+  "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6",
+  "assessmentPolicyVersion": "haiedu-assessment-policy-v2",
+  "ownerAuthorization": {
+    "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+    "action": "activate_provisional_pilot",
+    "owner": "John",
+    "ownerDirection": "Chapter 6 is all approved. Deploy it.",
+    "at": "2026-10-20T11:56:28+04:00",
+    "specialistReview": "deferred",
+    "practicalPerformance": "unassessed",
+    "scopeRationale": "Explicit Chapter VI deployment direction; retain accepted knowledge-only scope and existing pilot quality boundaries. No specialist approval or empirical qualification is represented.",
+    "nextSubject": "English Grade 7"
+  },
+  "practicalPerformance": "unassessed",
+  "specialistReview": "deferred",
+  "qualifiedForms": 0,
+  "questions": 242,
+  "practiceQuestions": 146,
+  "diagnosticQuestions": 38,
+  "masteryQuestions": 58,
+  "selectedMasteryQuestions": 51,
+  "heldMasteryQuestions": 7,
+  "forms": 5,
+  "formItems": 89,
+  "blueprintItems": 381,
+  "configurationRows": 719,
+  "preservedScopes": 61,
+  "runtimeBuildId": "269cb4ff-ad87-48fc-8c05-563b803d1d2b",
+  "sourceCommit": "c3204820cc3282b6799b45c64f8a5e7c2cbfc151",
+  "verification": {
+    "transaction": "passed",
+    "rollback": "59 table fingerprints unchanged",
+    "exactConfigurationReadback": "passed",
+    "numericModelUnchanged": true,
+    "productionAuthenticatedAcceptance": "pending"
+  },
+  "preservedChapterI": {
+    "curriculumReleaseId": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+    "unitId": "0349ffcd-8fc9-47f2-82d1-3d5cfcb3a096"
+  },
+  "preservedChapterII": {
+    "curriculumReleaseId": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+    "unitId": "beae3516-4317-4c8b-bd66-576c6f309308"
+  },
+  "preservedChapterIII": {
+    "curriculumReleaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+    "unitId": "aa824efc-b407-5143-9c92-a894d97be972"
+  },
+  "preservedChapterIV": {
+    "curriculumReleaseId": "18eb78e8-79f7-5307-bef2-38c4baa1d809",
+    "unitId": "5ebe46f5-5542-5a1e-bfbd-14e4e5b784ca"
+  },
+  "preservedChapterV": {
+    "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+    "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364"
+  }
+}

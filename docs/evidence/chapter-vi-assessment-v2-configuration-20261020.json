@@ -1,0 +1,369 @@
+{
+  "schemaVersion": "haiedu-chapter-assessment-configuration-v1",
+  "scope": {
+    "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+    "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+    "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6"
+  },
+  "status": "owner_authorized_release_prepared",
+  "contracts": [
+    {
+      "schemaVersion": "haiedu-assessment-policy-v2",
+      "version": 1,
+      "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+      "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+      "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "scoringStrategy": "selected-response-v1",
+      "policyKey": "physics7-u06-pilot-20261020-diagnostic",
+      "mode": "diagnostic",
+      "plannedQuestionCount": 19,
+      "learningModelConfigurationId": "46632f38-1c09-5575-b362-ac6b81c1c3af",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "hintsAllowed": false,
+      "baselineRequired": false,
+      "deliveredSkillIds": [
+        "df096120-4696-535e-8e14-4354667056cc",
+        "2172d40e-4589-5330-a3ad-7c81dd9245db",
+        "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+        "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+        "71155603-a474-5eaf-afce-31028bcc58b1",
+        "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "60c60768-b1ae-506a-be1a-f9f0b453f083",
+        "0db94e18-7eba-5440-8bab-c3069deafa1a",
+        "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed"
+      ],
+      "reportingGroups": [
+        {
+          "key": "knowledge",
+          "label": "Գիտելիքներ․ գործնական աշխատանքների կատարումը չի գնահատվում",
+          "skillIds": [
+            "df096120-4696-535e-8e14-4354667056cc",
+            "2172d40e-4589-5330-a3ad-7c81dd9245db",
+            "1714925e-656e-52b1-89d3-c32dadb159f1",
+            "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+            "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+            "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+            "71155603-a474-5eaf-afce-31028bcc58b1",
+            "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+            "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+            "60c60768-b1ae-506a-be1a-f9f0b453f083",
+            "0db94e18-7eba-5440-8bab-c3069deafa1a",
+            "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed"
+          ]
+        }
+      ],
+      "questionCountBySkill": {
+        "df096120-4696-535e-8e14-4354667056cc": 2,
+        "2172d40e-4589-5330-a3ad-7c81dd9245db": 1,
+        "1714925e-656e-52b1-89d3-c32dadb159f1": 1,
+        "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf": 1,
+        "317e60a8-a89e-5f82-a812-0ecb43fe52a1": 2,
+        "2ad925a1-fabe-5d5d-b165-a120f867a9e4": 2,
+        "71155603-a474-5eaf-afce-31028bcc58b1": 2,
+        "40505a40-8ba6-5731-b1b5-4006e651bb7a": 1,
+        "bed9371d-bbf0-5a28-94c2-f094ceb57902": 2,
+        "60c60768-b1ae-506a-be1a-f9f0b453f083": 2,
+        "0db94e18-7eba-5440-8bab-c3069deafa1a": 2,
+        "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed": 1
+      },
+      "maximumCompletedBaselines": 1
+    },
+    {
+      "schemaVersion": "haiedu-assessment-policy-v2",
+      "version": 1,
+      "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+      "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+      "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "scoringStrategy": "selected-response-v1",
+      "policyKey": "physics7-u06-pilot-20261020-practice",
+      "mode": "practice",
+      "plannedQuestionCount": 8,
+      "learningModelConfigurationId": "46632f38-1c09-5575-b362-ac6b81c1c3af",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "hintsAllowed": true,
+      "baselineRequired": true,
+      "deliveredSkillIds": [
+        "df096120-4696-535e-8e14-4354667056cc",
+        "2172d40e-4589-5330-a3ad-7c81dd9245db",
+        "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+        "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+        "71155603-a474-5eaf-afce-31028bcc58b1",
+        "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "60c60768-b1ae-506a-be1a-f9f0b453f083",
+        "0db94e18-7eba-5440-8bab-c3069deafa1a",
+        "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed",
+        "1f2fa89e-ea77-5a63-a960-9724a155156a",
+        "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+        "23619b6a-59c4-5e90-bb51-592b97438441",
+        "c82de1f3-13d8-5cc1-86e7-34e205cadc8d"
+      ],
+      "reportingGroups": [
+        {
+          "key": "knowledge",
+          "label": "Գիտելիքներ․ գործնական աշխատանքների կատարումը չի գնահատվում",
+          "skillIds": [
+            "df096120-4696-535e-8e14-4354667056cc",
+            "2172d40e-4589-5330-a3ad-7c81dd9245db",
+            "1714925e-656e-52b1-89d3-c32dadb159f1",
+            "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+            "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+            "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+            "71155603-a474-5eaf-afce-31028bcc58b1",
+            "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+            "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+            "60c60768-b1ae-506a-be1a-f9f0b453f083",
+            "0db94e18-7eba-5440-8bab-c3069deafa1a",
+            "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed"
+          ]
+        },
+        {
+          "key": "practice_only",
+          "label": "Փորձերի պլանավորում և լրացուցիչ թեմաներ",
+          "skillIds": [
+            "1f2fa89e-ea77-5a63-a960-9724a155156a",
+            "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+            "23619b6a-59c4-5e90-bb51-592b97438441",
+            "c82de1f3-13d8-5cc1-86e7-34e205cadc8d"
+          ]
+        }
+      ]
+    },
+    {
+      "schemaVersion": "haiedu-assessment-policy-v2",
+      "version": 1,
+      "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+      "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+      "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "scoringStrategy": "selected-response-v1",
+      "policyKey": "physics7-u06-pilot-20261020-mastery_check",
+      "mode": "mastery_check",
+      "plannedQuestionCount": 17,
+      "learningModelConfigurationId": "46632f38-1c09-5575-b362-ac6b81c1c3af",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "hintsAllowed": false,
+      "baselineRequired": true,
+      "deliveredSkillIds": [
+        "df096120-4696-535e-8e14-4354667056cc",
+        "2172d40e-4589-5330-a3ad-7c81dd9245db",
+        "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+        "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+        "71155603-a474-5eaf-afce-31028bcc58b1",
+        "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "60c60768-b1ae-506a-be1a-f9f0b453f083",
+        "0db94e18-7eba-5440-8bab-c3069deafa1a",
+        "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed"
+      ],
+      "reportingGroups": [
+        {
+          "key": "knowledge",
+          "label": "Գիտելիքներ․ գործնական աշխատանքների կատարումը չի գնահատվում",
+          "skillIds": [
+            "df096120-4696-535e-8e14-4354667056cc",
+            "2172d40e-4589-5330-a3ad-7c81dd9245db",
+            "1714925e-656e-52b1-89d3-c32dadb159f1",
+            "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+            "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+            "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+            "71155603-a474-5eaf-afce-31028bcc58b1",
+            "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+            "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+            "60c60768-b1ae-506a-be1a-f9f0b453f083",
+            "0db94e18-7eba-5440-8bab-c3069deafa1a",
+            "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed"
+          ]
+        }
+      ],
+      "questionCountBySkill": {
+        "df096120-4696-535e-8e14-4354667056cc": 1,
+        "2172d40e-4589-5330-a3ad-7c81dd9245db": 1,
+        "1714925e-656e-52b1-89d3-c32dadb159f1": 1,
+        "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf": 1,
+        "317e60a8-a89e-5f82-a812-0ecb43fe52a1": 2,
+        "2ad925a1-fabe-5d5d-b165-a120f867a9e4": 2,
+        "71155603-a474-5eaf-afce-31028bcc58b1": 2,
+        "40505a40-8ba6-5731-b1b5-4006e651bb7a": 1,
+        "bed9371d-bbf0-5a28-94c2-f094ceb57902": 1,
+        "60c60768-b1ae-506a-be1a-f9f0b453f083": 2,
+        "0db94e18-7eba-5440-8bab-c3069deafa1a": 2,
+        "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed": 1
+      },
+      "minimumPercent": 80,
+      "minimumCorrectBySkill": {
+        "df096120-4696-535e-8e14-4354667056cc": 1,
+        "2172d40e-4589-5330-a3ad-7c81dd9245db": 1,
+        "1714925e-656e-52b1-89d3-c32dadb159f1": 1,
+        "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf": 1,
+        "317e60a8-a89e-5f82-a812-0ecb43fe52a1": 1,
+        "2ad925a1-fabe-5d5d-b165-a120f867a9e4": 1,
+        "71155603-a474-5eaf-afce-31028bcc58b1": 1,
+        "40505a40-8ba6-5731-b1b5-4006e651bb7a": 1,
+        "bed9371d-bbf0-5a28-94c2-f094ceb57902": 1,
+        "60c60768-b1ae-506a-be1a-f9f0b453f083": 1,
+        "0db94e18-7eba-5440-8bab-c3069deafa1a": 1,
+        "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed": 1
+      },
+      "scoredSkillIds": [
+        "df096120-4696-535e-8e14-4354667056cc",
+        "2172d40e-4589-5330-a3ad-7c81dd9245db",
+        "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+        "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+        "71155603-a474-5eaf-afce-31028bcc58b1",
+        "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "60c60768-b1ae-506a-be1a-f9f0b453f083",
+        "0db94e18-7eba-5440-8bab-c3069deafa1a",
+        "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed"
+      ],
+      "readinessSkillIds": [
+        "df096120-4696-535e-8e14-4354667056cc",
+        "2172d40e-4589-5330-a3ad-7c81dd9245db",
+        "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+        "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+        "71155603-a474-5eaf-afce-31028bcc58b1",
+        "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "60c60768-b1ae-506a-be1a-f9f0b453f083",
+        "0db94e18-7eba-5440-8bab-c3069deafa1a",
+        "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed"
+      ]
+    },
+    {
+      "schemaVersion": "haiedu-assessment-policy-v2",
+      "version": 1,
+      "subjectProgramId": "258955e9-30e7-43ef-95c5-324a53143270",
+      "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+      "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "scoringStrategy": "selected-response-v1",
+      "policyKey": "physics7-u06-pilot-20261020-chapter_review",
+      "mode": "chapter_review",
+      "plannedQuestionCount": 12,
+      "learningModelConfigurationId": "46632f38-1c09-5575-b362-ac6b81c1c3af",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "hintsAllowed": true,
+      "baselineRequired": true,
+      "deliveredSkillIds": [
+        "df096120-4696-535e-8e14-4354667056cc",
+        "2172d40e-4589-5330-a3ad-7c81dd9245db",
+        "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+        "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+        "71155603-a474-5eaf-afce-31028bcc58b1",
+        "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "60c60768-b1ae-506a-be1a-f9f0b453f083",
+        "0db94e18-7eba-5440-8bab-c3069deafa1a",
+        "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed",
+        "1f2fa89e-ea77-5a63-a960-9724a155156a",
+        "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+        "23619b6a-59c4-5e90-bb51-592b97438441",
+        "c82de1f3-13d8-5cc1-86e7-34e205cadc8d"
+      ],
+      "reportingGroups": [
+        {
+          "key": "knowledge",
+          "label": "Գիտելիքներ․ գործնական աշխատանքների կատարումը չի գնահատվում",
+          "skillIds": [
+            "df096120-4696-535e-8e14-4354667056cc",
+            "2172d40e-4589-5330-a3ad-7c81dd9245db",
+            "1714925e-656e-52b1-89d3-c32dadb159f1",
+            "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+            "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+            "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+            "71155603-a474-5eaf-afce-31028bcc58b1",
+            "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+            "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+            "60c60768-b1ae-506a-be1a-f9f0b453f083",
+            "0db94e18-7eba-5440-8bab-c3069deafa1a",
+            "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed"
+          ]
+        },
+        {
+          "key": "practice_only",
+          "label": "Փորձերի պլանավորում և լրացուցիչ թեմաներ",
+          "skillIds": [
+            "1f2fa89e-ea77-5a63-a960-9724a155156a",
+            "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+            "23619b6a-59c4-5e90-bb51-592b97438441",
+            "c82de1f3-13d8-5cc1-86e7-34e205cadc8d"
+          ]
+        }
+      ]
+    }
+  ],
+  "readinessScope": [
+    "S01",
+    "S02",
+    "S03",
+    "S04",
+    "S05",
+    "S06",
+    "S07",
+    "S08",
+    "S09",
+    "S10",
+    "S11",
+    "S12"
+  ],
+  "practiceOnlySkills": [
+    "S13",
+    "S14",
+    "S15",
+    "S16"
+  ],
+  "readinessModel": {
+    "operator": "OR",
+    "mastery": {
+      "secureAtOrAbove": 0.72,
+      "minimumEvidenceCount": 3
+    },
+    "recentRecovery": {
+      "recentWindow": 5,
+      "minimumUniqueItems": 4,
+      "minimumIndependentCorrect": 4,
+      "hintFreeRequired": true
+    }
+  },
+  "formPlan": {
+    "diagnostic": {
+      "forms": 2,
+      "questionsPerForm": 19
+    },
+    "mastery_check": {
+      "forms": 3,
+      "questionsPerForm": 17,
+      "minimumCorrect": 14,
+      "minimumCorrectPerRequiredSkill": 1,
+      "maximumAttempts": 3
+    }
+  },
+  "practicalPerformance": "unassessed",
+  "specialistReview": "deferred",
+  "qualifiedForms": 0,
+  "empiricalEquivalenceEstablished": false
+}
