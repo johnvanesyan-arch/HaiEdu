@@ -1,16 +1,16 @@
 # English 7 assessment framework — Sprint 16.1A
 
-**Status: design proposal, 2026-10-20.** The owner has excluded platform speaking assessment and assigned it to classroom teachers. The remaining framework is proposed for implementation; this document creates no English curriculum release, scoring policy, response capability or learner assessment. The applicable official programme and exact unit outcomes still need reconciliation.
+**Status: design proposal, 2026-10-20.** The owner has excluded platform speaking assessment and assigned it to classroom teachers. The remaining framework is proposed for implementation; this document creates no English curriculum release, scoring policy, response capability or learner assessment. The current standard/programme and Unit 1 outcomes are now reconciled in [16.1A.2 preparation](english-7-unit-01-preparation.md); the [concrete draft contract](english-7-unit-01-assessment-contract.md), final scoring/bank and implementation remain open.
 
 ## Scope and source
 
-The platform scope is reading, listening, vocabulary, grammar and writing. Speaking, pronunciation grading, microphone access, learner voice recording, spoken interaction and a classroom speaking-score entry workflow are outside this slice. The owner did not request recording teachers' speaking marks in the platform. Speaking remains visible in the curriculum coverage map as **classroom-assessed / not assessed by the platform**, never as passed or failed by platform evidence.
+The platform scope is reading, listening, vocabulary, grammar and writing, including written interaction under the current standard. Speaking, pronunciation grading, microphone access, learner voice recording, spoken interaction and a classroom speaking-score entry workflow are outside this slice. The owner did not request recording teachers' speaking marks in the platform. Speaking remains visible in the curriculum coverage map as **classroom-assessed / not assessed by the platform**, never as passed or failed by platform evidence.
 
-The uploaded source is Lusine Grigoryan, *English 7*, Zangak, Yerevan 2023, ISBN 978-9939-99-035-4; 176 PDF pages and six units. SHA-256: `9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9`. Initial inspection covered the contents and representative tasks, not a completed curriculum reconciliation or full editorial audit. The source PDF is not republished in this repository.
+The uploaded source is Lusine Grigoryan, *English 7*, Zangak, Yerevan 2023, ISBN 978-9939-99-035-4; 176 PDF pages and six units. SHA-256: `9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9`. The initial 16.1A inspection covered contents and representative tasks. The subsequent 16.1A.2 checkpoint maps all Unit 1 activities and the current sources, while a full-book editorial audit remains open. The source PDF is not republished in this repository.
 
-Observed examples establish the capability needs: p.6 includes matching, word-bank completion and listening; p.16 a chronological summary; p.23 categorisation and an opinion paragraph; p.65 a picture-based story and written advice. The contents list audio scripts from p.144. The book directs readers to publisher/QR-linked audiovisual materials; recording availability, exact task alignment and permitted delivery arrangements remain to be verified. A printed transcript alone does not provide listening evidence.
+Observed examples establish the capability needs: p.6 includes matching, word-bank completion and listening; p.16 a chronological summary; p.23 categorisation and an opinion paragraph; p.65 a picture-based story and written advice. The contents list audio scripts from p.144. The book directs readers to publisher/QR-linked audiovisual materials. At 16.1A.2 all five Unit 1 MP3s were retrieved and decoded; exact audio/script alignment, final delivery arrangements and production playback remain to be verified. A printed transcript alone does not provide listening evidence.
 
-Unit 1, “Me in the World,” is the proposed first implementation slice because its sampled tasks exercise several required capabilities. Its final assessable scope, prerequisite knowledge, item count and pass rules are not yet fixed.
+Unit 1, “Me in the World,” is the proposed first implementation slice because its sampled tasks exercise several required capabilities. Its proposed 14-skill map and prerequisite/extension boundaries are now recorded; final bank counts, pass rules and writing-review disposition remain open.
 
 ## Evidence areas and task formats
 
@@ -86,7 +86,7 @@ Audio requires a source/version, transcript for authorised authoring/review, tas
 
 | Stage | Concrete deliverable | Completion evidence |
 | --- | --- | --- |
-| 16.1A — sources and assessment design | Exact official-programme reconciliation, textbook/audio inventory, Unit 1 skill/evidence map, task-format shortlist, writing-review disposition and proposed assessment contract | Each intended outcome has suitable evidence or an explicit scope disposition. Final unit scope and scoring decisions are reviewed; question counts follow defensible coverage. Current status: textbook intake and this framework drafted; programme map and contract remain open. |
+| 16.1A — sources and assessment design | Exact official-programme reconciliation, textbook/audio inventory, Unit 1 skill/evidence map, task-format shortlist, writing-review disposition and proposed assessment contract | Each intended outcome has suitable evidence or an explicit scope disposition. Final unit scope and scoring decisions are reviewed; question counts follow defensible coverage. Current status: 16.1A.2 source reconciliation and Unit 1 map prepared, five MP3s technically checked and a concrete contract/rubric drafted; writing-route and final scoring/bank decisions remain open. |
 | 16.1B — reusable capabilities | The minimal required typed/matching/ordering, task-set/audio and writing-submission/rubric components across authoring, runtime and reporting | Server-authoritative grading, answer protection, accepted-variant and partial-credit cases, review-state correctness, keyboard/mobile media behaviour and regression coverage. Long-writing final grading stays disabled until its route and rubric are accepted. |
 | 16.1C — one complete English unit | Whole-bank-compared content, appropriate hints, approved source assets and a governed unit release | Content review and QA, representative assessment coverage, role/two-school/cross-subject isolation, exact deployment verification and authenticated desktop/mobile use. Existing Physics evidence/scoring must remain unchanged. Then use larger content batches for later units. |
 
@@ -94,8 +94,8 @@ No new tests or production calls are required for this documentation-only propos
 
 ## Decisions still open
 
-- Applicable official programme version and exact Unit 1 mappings.
-- Verified audio sources and delivery conditions.
+- Final item-level evidence coverage against the reconciled 2026 standard, programme and proposed Unit 1 map.
+- Audio audition, source protection, hosting/delivery conditions and production playback; five publisher files are already technically verified.
 - The first release's extended-writing review route and teacher workload.
 - Item/component counts, weights, partial credit, accepted alternatives and English mastery/readiness criteria.
 

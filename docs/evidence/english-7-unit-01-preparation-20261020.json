@@ -1,0 +1,343 @@
+{
+  "schemaVersion": 1,
+  "checkpoint": "16.1A.2",
+  "date": "2026-10-20",
+  "repositoryBaseline": "96b27a939d24d29362bc350dea7217245ed9c430",
+  "scope": "English Unit 1 source reconciliation, evidence map, media availability and proposed response/writing contract",
+  "sourceReconciliation": {
+    "standardAct": "https://www.arlis.am/hy/acts/229389",
+    "amendingAct": "https://www.arlis.am/hy/acts/229291",
+    "standardEffectiveFrom": "2026-08-14",
+    "appendixUrl": "https://www.arlis.am/acts/files/363120/44bfb23bfab1ded26c7f75d89c9252885ed58ae37aebfae876b5fb964ed3ad12",
+    "appendixSha256": "44bfb23bfab1ded26c7f75d89c9252885ed58ae37aebfae876b5fb964ed3ad12",
+    "appendixBytes": 143524,
+    "grade7CommunicationTable": {
+      "xmlTableZeroBased": 5,
+      "xmlRowZeroBased": 7,
+      "cellsInspected": 6
+    },
+    "programmeAct": "https://www.arlis.am/hy/acts/183356",
+    "programmeStatusObserved": "in force 2023-10-03 to retrieval date",
+    "programmeTopic": 1,
+    "programmeTopicTitle": "Ոճ և նորաձևություն",
+    "supplementaryArmenianContextSource": "https://fdc.am/designers/4",
+    "supplementaryPassageAuthored": false,
+    "mappingIsDesignInterpretation": true
+  },
+  "textbook": {
+    "sha256": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9",
+    "title": "English 7",
+    "author": "Lusine Grigoryan",
+    "year": 2023,
+    "isbn": "978-9939-99-035-4",
+    "unit": 1,
+    "textInspectedPages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      144
+    ],
+    "visuallyInspectedPagesThisCheckpoint": [
+      6,
+      9,
+      23,
+      24,
+      25,
+      26
+    ],
+    "numberedActivitiesWithDisposition": 30,
+    "bookUnitToProgrammeTopic": {
+      "1": 1,
+      "2": 2,
+      "3": 3,
+      "4": 5,
+      "5": 4,
+      "6": 6
+    }
+  },
+  "skills": [
+    {
+      "planningId": "ENG7-U01-S01",
+      "target": "Interpret and use clothing/style and personality vocabulary in a clear context",
+      "textbookAnchor": "pp.3–6, 17–18",
+      "route": "Choice, matching or bounded gaps; automatic after ambiguity review"
+    },
+    {
+      "planningId": "ENG7-U01-S02",
+      "target": "Form/use taught related words in context",
+      "textbookAnchor": "p.5 ex.3–4; p.15 ex.17",
+      "route": "Typed gaps or matching; explicit base word and accepted forms"
+    },
+    {
+      "planningId": "ENG7-U01-S03",
+      "target": "Report a request or positive/negative instruction with the intended meaning",
+      "textbookAnchor": "p.8; selected p.9–11 work",
+      "route": "Bounded transformation, ordering or gaps; reviewed variants"
+    },
+    {
+      "planningId": "ENG7-U01-S04",
+      "target": "Choose adjective/adverb forms appropriate to the sentence",
+      "textbookAnchor": "p.12 ex.13",
+      "route": "Contextual choice/gap; no universal word-position shortcut"
+    },
+    {
+      "planningId": "ENG7-U01-S05",
+      "target": "Distinguish an emotion from what causes it using -ed/-ing adjectives",
+      "textbookAnchor": "p.13 ex.14",
+      "route": "Contextual choice/gap"
+    },
+    {
+      "planningId": "ENG7-U01-S06",
+      "target": "Express excess or sufficiency with too/enough and correct placement",
+      "textbookAnchor": "p.14 ex.15",
+      "route": "Gap/ordering/bounded transformation"
+    },
+    {
+      "planningId": "ENG7-U01-S07",
+      "target": "Make adjective/adverb comparisons and use taught intensifiers",
+      "textbookAnchor": "p.15 ex.16; p.27 ex.30",
+      "route": "Gap/choice; comparison set and relevant context explicit"
+    },
+    {
+      "planningId": "ENG7-U01-S08",
+      "target": "Select a/an/the/zero article in taught contexts",
+      "textbookAnchor": "p.26 ex.29",
+      "route": "Explicit zero-article option or gap token; reviewed context"
+    },
+    {
+      "planningId": "ENG7-U01-S09",
+      "target": "Identify the main idea and relevant explicit details of a style text",
+      "textbookAnchor": "pp.17–18 ex.19",
+      "route": "Linked passage task set; choices, headings or short bounded extraction"
+    },
+    {
+      "planningId": "ENG7-U01-S10",
+      "target": "Follow chronology/contrast and retrieve supported cultural information",
+      "textbookAnchor": "p.16 ex.18; p.20 ex.21; Armenian supplementary source",
+      "route": "Passage sequencing and evidence questions; infer only what the text supports"
+    },
+    {
+      "planningId": "ENG7-U01-S11",
+      "target": "Identify the main message of a short fashion/style recording",
+      "textbookAnchor": "p.6 ex.8; script p.144",
+      "route": "Audio-linked choice/matching; actual audio required"
+    },
+    {
+      "planningId": "ENG7-U01-S12",
+      "target": "Identify relevant details and distinguish speakers' stated views",
+      "textbookAnchor": "same listening source",
+      "route": "Audio-linked matching/gaps; no inference from appearance or name"
+    },
+    {
+      "planningId": "ENG7-U01-S13",
+      "target": "Write an understandable 80–100-word description of a preferred style",
+      "textbookAnchor": "p.23 ex.25; programme T1.L6",
+      "route": "Extended text; rubric judgment"
+    },
+    {
+      "planningId": "ENG7-U01-S14",
+      "target": "Communicate a preference/opinion and reason to a written audience",
+      "textbookAnchor": "pp.22–23 ex.23–25; standard Փ․3",
+      "route": "Short written note/adaptation; rubric judgment; may share one response with S13"
+    }
+  ],
+  "skillsArePublished": false,
+  "speaking": "classroom-assessed; no platform speaking score",
+  "writtenInteraction": "retained; proposed task adaptation under ՕԼ7-Հ-Փ․3",
+  "requiredDescriptionWordRange": [
+    80,
+    100
+  ],
+  "media": [
+    {
+      "qr": "RTr0H",
+      "trackIndex": 1,
+      "url": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack%201.1.mp3",
+      "status": 200,
+      "bytes": 558602,
+      "sha256": "a5759adafe3cad735b558f528d4a2a41b04e592adaa73f3c6b4c37c5db47ddc1",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "23.275083"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": ""
+    },
+    {
+      "qr": "RTr0H",
+      "trackIndex": 2,
+      "url": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack%201.2.mp3",
+      "status": 200,
+      "bytes": 771135,
+      "sha256": "51047cc19a3f28cbf2c17bcbe3a73981967e76a93c7bc51b969c48b364fb88d7",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "32.130625"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": ""
+    },
+    {
+      "qr": "RTr0H",
+      "trackIndex": 3,
+      "url": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack%201.3.mp3",
+      "status": 200,
+      "bytes": 901538,
+      "sha256": "ae577f466da2b2f31efbe327fe49d7e355822c41ddfc5dc5b6f4f3d3a5a59c9e",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "37.564083"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": ""
+    },
+    {
+      "qr": "yjWzl",
+      "trackIndex": 1,
+      "url": "https://zangak.am/mediafiles/english7-2023/yjWzl/Soundtrack%202.mp3",
+      "status": 200,
+      "bytes": 5397725,
+      "sha256": "cf4b163475353e1cf452100a97d93d557ea09e5304f027c6117eaaf8b6c52116",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "135.026939"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": ""
+    },
+    {
+      "qr": "O8efJ",
+      "trackIndex": 1,
+      "url": "https://zangak.am/mediafiles/english7-2023/O8efJ/Soundtrack%203.mp3",
+      "status": 200,
+      "bytes": 1440964,
+      "sha256": "818bb1b7457ffbf67cd24ddb0870631b135dafe17b29d79c446bbf372951c118",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "36.022857"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": ""
+    }
+  ],
+  "mediaChecks": {
+    "qrCodesDecoded": 3,
+    "publisherPagesRetrieved": 3,
+    "mp3FilesRetrievedAndDecoded": 5,
+    "audioTranscriptAlignmentAuditioned": false,
+    "trackSpeakerMappingVerified": false,
+    "productionBrowserPlaybackVerified": false,
+    "hostingPermissionDisposition": "not settled by retrieval",
+    "newUnexposedFashionAssessmentAudioAvailable": false,
+    "audioRepublished": false
+  },
+  "assessmentContract": {
+    "status": "proposed, not activated",
+    "proposedWritingSubmissionsPerUnit": 1,
+    "proposedRubricCriteria": 4,
+    "proposedCriterionRange": [
+      0,
+      3
+    ],
+    "proposedRubricTotal": 12,
+    "teacherReviewRouteOwnerAccepted": false,
+    "finalMasteryThresholdApproved": false,
+    "finalBankCountsApproved": false,
+    "diagnosticBeforePracticePreserved": true
+  },
+  "validation": {
+    "documentationScopeOnly": true,
+    "newRuntimeTestsRunLocally": false,
+    "previousFrameworkCommitCI": {
+      "runId": 39399858647,
+      "jobsPassed": 5
+    },
+    "runtimeChanged": false,
+    "databaseWrites": 0,
+    "englishReleaseCreated": false,
+    "approvedQuestionsCreated": 0,
+    "fullGrade7CoverageClaimed": false
+  }
+}

@@ -7,15 +7,18 @@
 - [x] Identify the uploaded Grigoryan/Zangak 2023 textbook and record its SHA-256, edition, six-unit structure and representative task formats.
 - [x] Record the owner's speaking exclusion: classroom assessment only, without a platform recording or mark-entry feature.
 - [x] Draft the reusable reading/listening/vocabulary/grammar/writing framework and source-based capability audit.
-- [ ] Reconcile the applicable official programme and map the first unit's outcomes, prerequisites and appropriate evidence.
-- [ ] Verify the book's listening media, task links and delivery conditions.
+- [x] Reconcile the current August 2026 standard and in-force programme; map Unit 1 outcomes, prerequisites and 30 textbook activities to 14 proposed skills.
+- [x] Decode three Unit 1 QR codes, retrieve five MP3s and verify format, durations, hashes and complete error-free decoding.
+- [ ] Audition the recordings against the script, verify speaker mappings, establish hosting/delivery conditions and pass production browser playback.
+- [ ] Supply protected fashion-reading/listening assessment material; familiar textbook sources do not become unseen forms through new question IDs.
+- [x] Draft the response/scoring contract and a four-criterion writing rubric for one proposed 80–100-word task per unit.
 - [ ] Settle the first release's extended-writing assessment route and teacher workload; specify its rubric or explicit deferral.
 - [ ] Review the English-specific scoring/readiness contract, accepted-answer policies, assistance rules and defensible item counts.
 - [ ] Implement the needed response editors, media/task sets, authoring validation, private server grading and rubric/review states.
 - [ ] Verify valid language alternatives, partial credit, unsupported responses, media failures, answer retries, score protection and role/subject/tenant isolation.
 - [ ] Author and review one complete unit with textbook/programme and whole-bank comparison evidence; complete exact deployment and authenticated desktop/mobile acceptance before release.
 
-[Framework](english-7-assessment-framework.md) · [Intake/capability evidence](evidence/english-7-framework-intake-20261020.json). This checklist records design work only; no English runtime or assessment is live.
+[Framework](english-7-assessment-framework.md) · [Unit 1 preparation](english-7-unit-01-preparation.md) · [Draft contract](english-7-unit-01-assessment-contract.md) · [Preparation evidence](evidence/english-7-unit-01-preparation-20261020.json). This checklist records preparation/design only; no English runtime or assessment is live.
 
 ## Sprint 0 — Technical foundation
 - [x] Repository scaffold
