@@ -14,6 +14,7 @@
 - [x] Draft the response/scoring contract and a four-criterion writing rubric for one proposed 80–100-word task per unit.
 - [x] Authorise and implement the teacher-marked writing route: private drafts, submissions, criterion marks/feedback, returns, revisions and history (16.1B.1).
 - [x] Complete 16.1B.1 required CI, production deployment and read acceptance; current evidence and source-commit Notion status are tracked in the authoritative register.
+- [x] Re-attest the persistent Vercel production Deployment Check through the owner-authorised browser: `Platform release checks` is Production / Blocking; [evidence](evidence/vercel-deployment-check-verification-20261020.json).
 - [ ] Approve the final English writing task/rubric and workload schedule before content release.
 - [ ] Review the English-specific scoring/readiness contract, accepted-answer policies, assistance rules and defensible item counts.
 - [ ] Implement the needed response editors, media/task sets, authoring validation, private server grading and rubric/review states.

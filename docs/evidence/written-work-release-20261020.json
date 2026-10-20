@@ -248,11 +248,22 @@
     "readEvidence": "docs/evidence/written-work-production-read-20261020.json"
   },
   "deploymentCheck": {
-    "freshRead": "blocked",
-    "reason": "Vercel project management returned 403 for the explicit known project/team; no mapped CLI credential is available.",
-    "previousLimitation": "docs/evidence/reviewer-approval-repair-20261011.json",
+    "freshRead": "verified_in_browser",
     "configurationChanged": false,
-    "enforcementClaimed": false
+    "configurationVerified": true,
+    "environment": "production",
+    "behavior": "blocking",
+    "checkName": "Platform release checks",
+    "verifiedSourceCommit": "7a5571668950731d474b793cf425462c2acae145",
+    "evidence": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+    "connectorRepaired": false,
+    "initialObservation": {
+      "freshRead": "blocked",
+      "reason": "Vercel project management returned 403 for the explicit known project/team; no mapped CLI credential is available.",
+      "previousLimitation": "docs/evidence/reviewer-approval-repair-20261011.json",
+      "configurationChanged": false,
+      "enforcementClaimed": false
+    }
   },
   "rollback": {
     "frontend": "Revert the feature frontend commit; retain additive schema and immutable records.",

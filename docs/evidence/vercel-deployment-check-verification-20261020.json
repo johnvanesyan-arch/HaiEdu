@@ -1,0 +1,52 @@
+{
+  "schemaVersion": 1,
+  "observedAt": "2026-10-20T12:30:39.746Z",
+  "localTimezone": "Asia/Yerevan",
+  "scope": "Persistent production Deployment Check re-attestation; no configuration mutation",
+  "authorization": "Owner explicitly permitted browser fallback after Vercel connector failures.",
+  "project": {
+    "id": "prj_qevzjLGXsZoSv7GUbO9A7e6hnSqb",
+    "name": "armenian-mastery-platform",
+    "teamId": "team_ANGbKWoBF8n9DNpZUZZ4wI2G",
+    "scope": "kupershtokh-7785"
+  },
+  "configuration": {
+    "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/settings/build-and-deployment",
+    "checkName": "Platform release checks",
+    "provider": "GitHub",
+    "environment": "Production",
+    "behavior": "Blocking",
+    "selected": true,
+    "saveDisabled": true,
+    "changed": false
+  },
+  "deployment": {
+    "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/DTRR1MfCeE8kBY8xAFek9nUdKfZD",
+    "id": "dpl_DTRR1MfCeE8kBY8xAFek9nUdKfZD",
+    "state": "Ready",
+    "environment": "Production",
+    "current": true,
+    "sourceCommit": "7a5571668950731d474b793cf425462c2acae145",
+    "checkName": "Platform release checks",
+    "requirement": "Required",
+    "displayedDuration": "3m 46s",
+    "checkUrl": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39417827510/job/118612505677"
+  },
+  "screenshot": {
+    "path": "docs/evidence/vercel-production-blocking-20261020.jpg",
+    "sha256": "6040bfe1e4cf845455497394cdd9995d7e438e5ccb57e2ffdab4af14cd65de92"
+  },
+  "boundaries": {
+    "websiteSettingsWrites": 0,
+    "runtimeChanges": 0,
+    "connectorCredentialsChanged": false,
+    "connectorAccessRepairClaimed": false,
+    "failureInjectionOrBypassTested": false
+  },
+  "priorAccessFailure": {
+    "httpStatus": 403,
+    "reason": "Connected Vercel API authorization denied access to the explicit known project/team scope; no credentialed CLI available.",
+    "previousOccurrence": "docs/evidence/reviewer-approval-repair-20261011.json"
+  },
+  "result": "Release-check configuration attestation complete via authorised signed-in browser. Connector access remains separately unresolved."
+}
