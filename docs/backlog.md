@@ -17,7 +17,9 @@
 - [x] Re-attest the persistent Vercel production Deployment Check through the owner-authorised browser: `Platform release checks` is Production / Blocking; [evidence](evidence/vercel-deployment-check-verification-20261020.json).
 - [ ] Approve the final English writing task/rubric and workload schedule before content release.
 - [ ] Review the English-specific scoring/readiness contract, accepted-answer policies, assistance rules and defensible item counts.
-- [ ] Implement the needed response editors, media/task sets, authoring validation, private server grading and rubric/review states.
+- [x] Implement bounded typed answers/gap-filling, explicit accepted alternatives, private drafts and v3 fractional-point reporting (16.1B.2).
+- [ ] Close 16.1B.2 required CI, exact Edge readback, production preservation/read acceptance and merged-source Notion sync.
+- [ ] Implement matching/ordering and remaining media/task-set capabilities.
 - [ ] Verify valid language alternatives, partial credit, unsupported responses, media failures, answer retries, score protection and role/subject/tenant isolation.
 - [ ] Author and review one complete unit with textbook/programme and whole-bank comparison evidence; complete exact deployment and authenticated desktop/mobile acceptance before release.
 

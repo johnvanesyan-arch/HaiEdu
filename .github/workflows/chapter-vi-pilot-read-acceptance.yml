@@ -70,6 +70,8 @@ on:
       - web/learning-extensions.mjs
       - web/learning-navigation.mjs
       - web/learning-player.mjs
+      - web/typed-fields-contract.mjs
+      - web/typed-fields-ui.mjs
       - web/learning-stimulus.mjs
       - web/multi-subject-home.js
       - web/multi-subject.css

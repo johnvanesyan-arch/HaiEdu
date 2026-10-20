@@ -88,13 +88,15 @@ export function aggregateSchoolPerformanceAnalytics(args: {
     group.sessions++; group.answered += Number(session.answered_count ?? 0); group.correct += Number(session.correct_count ?? 0);
     if (session.assessment_result === "passed") group.masteryPassed++;
     const report=session.metadata?.assessmentResultReporting;
-    if (report?.schemaVersion === 'haiedu-assessment-result-v2') {
+    if (['haiedu-assessment-result-v2','haiedu-assessment-result-v3'].includes(report?.schemaVersion)) {
       for (const row of report.groups) {
         let aggregate=group.reportingGroups.find((g:any)=>g.key===row.key);
         if (!aggregate) { aggregate={key:row.key,label:row.label,skillIds:row.skillIds,determinesPass:row.determinesPass,correct:0,answered:0}; group.reportingGroups.push(aggregate); }
         aggregate.correct+=row.correct; aggregate.answered+=row.answered;
+        if(report.schemaVersion==='haiedu-assessment-result-v3') { aggregate.earned=(aggregate.earned??0)+row.earned;aggregate.possible=(aggregate.possible??0)+row.possible; }
       }
       if(report.score) { group.passScore ??= {correct:0,answered:0};group.passScore.correct+=report.score.correct;group.passScore.answered+=report.score.answered; }
+      if(report.score && report.schemaVersion==='haiedu-assessment-result-v3') { group.passScore.earned=(group.passScore.earned??0)+report.score.earned;group.passScore.possible=(group.passScore.possible??0)+report.score.possible; }
     }
     contractGroups.set(key,group);
   }

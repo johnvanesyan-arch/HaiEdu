@@ -66,3 +66,7 @@ body[data-student-page="course"].amp-student-shell-active .topbar h1 {
   .course-tabs .button-link { inline-size: 100%; }
   .course-tabs .button-link:first-child { grid-column: 1 / -1; }
 }
+
+.typed-fields { display:grid; gap:1rem; min-width:0; }
+.typed-field { display:grid; gap:.4rem; white-space:pre-wrap; overflow-wrap:anywhere; }
+.typed-field input { width:100%; min-width:0; box-sizing:border-box; font-size:1rem; }
