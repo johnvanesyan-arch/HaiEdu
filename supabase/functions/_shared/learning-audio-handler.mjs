@@ -36,7 +36,9 @@ export function createLearningAudioHandler({createAdmin,hasActiveLiveSession,env
    if(digest!==manifest.sha256||!['audio/mpeg','audio/wav'].includes(manifest.mimeType))throw new Error('audio_unavailable');
    if(!await hasActiveLiveSession(admin,token,data.user.id))return json({error:'account_or_session_inactive'},403);
    await call(preview?'preview':'fetched'); // Repeat live scope/retirement checks after I/O.
-   return new Response(bytes,{headers:{...cors,'Content-Type':manifest.mimeType,'Content-Length':String(bytes.byteLength),'Cache-Control':'private, no-store, max-age=0','X-Content-Type-Options':'nosniff'}});
+   // Supabase FunctionsClient decodes octet-stream as Blob; audio/* falls back
+   // to text. Expose the separately validated media type for the local player.
+   return new Response(bytes,{headers:{...cors,'Content-Type':'application/octet-stream','X-HaiEdu-Audio-Type':manifest.mimeType,'Access-Control-Expose-Headers':'X-HaiEdu-Audio-Type','Content-Length':String(bytes.byteLength),'Cache-Control':'private, no-store, max-age=0','X-Content-Type-Options':'nosniff'}});
   }catch(error){
    if(markFailed)await markFailed().catch(()=>{});
    const message=String(error?.message??'').replace('learning_context_unavailable','audio_access_denied');

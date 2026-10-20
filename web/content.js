@@ -6,6 +6,7 @@ import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { clearContentDashboardCache, loadContentDashboard } from "./content-workspace.js";
 import { renderLearningStimulus } from "./learning-stimulus.mjs";
+import {decodeLearningAudio} from './learning-audio.mjs';
 
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -135,7 +136,7 @@ function contentErrorHy(...values) {
 }
 
 async function invoke(name, body = {}) {
-  const { data, error } = await supabase.functions.invoke(name, { body });
+  const { data, error, response } = await supabase.functions.invoke(name, { body });
   if (error) {
     const response = error.context;
     const payload = response instanceof Response ? await response.clone().json().catch(() => null) : null;
@@ -152,7 +153,7 @@ async function invoke(name, body = {}) {
     throw new Error(contentErrorHy(payload?.detail, payload?.error, data?.detail, data?.error, error.message));
   }
   if (data?.error) throw new Error(contentErrorHy(data.detail, data.error));
-  return data;
+  return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action):data;
 }
 
 function renderStats(stats) {

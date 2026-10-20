@@ -11,17 +11,23 @@ after(async()=>{await browser?.close();});
 async function setup(t){
  const f=await fixture();t.after(()=>f.db.close());
  const context={enrollmentId:id(371),curriculumReleaseId:id(501),unitId:id(511)};
- const html=`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><main id="root"></main><script type="module">
+ const html=`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><main id="root"></main><script type="importmap">{"imports":{"tslib":"/sdk/tslib.mjs"}}</script><script type="module">
  import {mountLearningPlayer} from '/learning-player.mjs';
+ import {FunctionsClient} from '/sdk/index.js';
  window.current=true;window.created=[];window.revoked=[];
  const create=URL.createObjectURL.bind(URL),revoke=URL.revokeObjectURL.bind(URL);URL.createObjectURL=blob=>{const u=create(blob);window.created.push(u);return u;};URL.revokeObjectURL=u=>{window.revoked.push(u);revoke(u);};
- const supabase={functions:{invoke:async(name,{body})=>{const r=await fetch('/functions/'+name,{method:'POST',headers:{'Content-Type':'application/json',Authorization:'Bearer ${token()}'},body:JSON.stringify(body)});const data=r.headers.get('Content-Type')?.startsWith('audio/')?await r.blob():await r.json();return r.ok?{data}:{error:data};}}};
+ const supabase={functions:new FunctionsClient(location.origin+'/functions',{headers:{Authorization:'Bearer ${token()}'}})};
  window.dispose=mountLearningPlayer({root:document.getElementById('root'),supabase,context:${JSON.stringify(context)},mode:'practice',targetSkillId:'${id(521)}',isCurrent:()=>window.current,onComplete:()=>{}});
  </script>`;
  const server=createServer(async(req,res)=>{
   try{
    const url=new URL(req.url,'http://fixture.invalid');
    if(url.pathname==='/'){res.writeHead(200,{'Content-Type':'text/html'});res.end(html);return;}
+   if(url.pathname==='/sdk/tslib.mjs'){res.writeHead(200,{'Content-Type':'text/javascript'});res.end(await readFile('node_modules/tslib/tslib.es6.mjs'));return;}
+   if(/^\/sdk\/[a-zA-Z]+(?:\.js)?$/.test(url.pathname)){
+    const file=url.pathname.slice(5).replace(/\.js$/,'')+'.js';
+    res.writeHead(200,{'Content-Type':'text/javascript'});res.end(await readFile('node_modules/@supabase/functions-js/dist/module/'+file));return;
+   }
    if(url.pathname.startsWith('/functions/')){
     const chunks=[];for await(const c of req)chunks.push(c);
     const request=new Request('https://fixture.invalid'+url.pathname,{method:'POST',headers:{Authorization:req.headers.authorization,'Content-Type':'application/json'},body:Buffer.concat(chunks)});

@@ -1,5 +1,11 @@
 // Short private recordings are fetched through the authenticated Edge handler.
 // No object path, storage token, transcript or signed URL enters the page.
+export function decodeLearningAudio(data,response,action){
+ if(!['load','preview'].includes(action))return data;
+ const mime=response?.headers?.get('X-HaiEdu-Audio-Type');
+ if(!(data instanceof Blob)||data.type!=='application/octet-stream'||!data.size||data.size>8388608||!['audio/mpeg','audio/wav'].includes(mime))throw new Error('Ձայնագրությունը հասանելի չէ։');
+ return data.slice(0,data.size,mime);
+}
 export function mountLearningAudio({root,stimulus,invoke,context,isCurrent=()=>true,onReady=()=>{}}){
  let live=true,busy=false,url=null,serial=0,queue=Promise.resolve(),completed=stimulus.completed===true,failed=false;
  const preview=Boolean(context.itemId),valid=()=>live&&isCurrent();

@@ -1,10 +1,17 @@
 import test from 'node:test';
 import assert from 'node:assert/strict';
 import {fixture,id,token} from './fixtures/learning-audio-api.mjs';
+import {FunctionsClient} from '@supabase/functions-js';
+import {decodeLearningAudio} from '../web/learning-audio.mjs';
 test('audio Edge returns verified private bytes and scoped staff previews, with no student storage URLs',async()=>{
  const f=await fixture();try{
-  const response=await f.request(f.body);assert.equal(response.status,200);assert.equal(response.headers.get('Content-Type'),'audio/wav');assert.match(response.headers.get('Cache-Control'),/no-store/);assert.deepEqual(Buffer.from(await response.arrayBuffer()),f.bytes);
+  const response=await f.request(f.body);assert.equal(response.status,200);assert.equal(response.headers.get('Content-Type'),'application/octet-stream');assert.equal(response.headers.get('X-HaiEdu-Audio-Type'),'audio/wav');assert.match(response.headers.get('Access-Control-Expose-Headers'),/X-HaiEdu-Audio-Type/);assert.match(response.headers.get('Cache-Control'),/no-store/);assert.deepEqual(Buffer.from(await response.arrayBuffer()),f.bytes);
   assert.ok((await f.db.query('select fetched_at from learning_audio_deliveries')).rows[0].fetched_at);
+  const sdk=new FunctionsClient('https://fixture.invalid/functions',{headers:{Authorization:'Bearer '+token()},customFetch:(url,init)=>f.handle(new Request(url,init))});
+  const binary=await sdk.invoke('get-learning-audio',{body:f.body});assert.equal(binary.error,null);
+  const playable=decodeLearningAudio(binary.data,binary.response,'load');assert.equal(playable.type,'audio/wav');assert.deepEqual(Buffer.from(await playable.arrayBuffer()),f.bytes);
+  assert.throws(()=>decodeLearningAudio('corrupted text',binary.response,'load'));
+  assert.throws(()=>decodeLearningAudio(binary.data,new Response(null),'load'));
   assert.equal((await f.request({action:'preview',itemId:f.served.item.id})).status,403);
   assert.equal((await f.request({action:'preview',itemId:f.served.item.id},30)).status,200);
   const catalogue=await f.request({action:'catalog',itemId:f.served.item.id},30);assert.equal(catalogue.status,200);assert.deepEqual((await catalogue.json()).versions,[{id:f.audioId,title:'Synthetic tone',locale:'en',durationMs:300}]);

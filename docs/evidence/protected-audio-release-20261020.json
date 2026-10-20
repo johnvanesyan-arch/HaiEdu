@@ -109,7 +109,21 @@
       }
     ],
     "persistentBlockingEvidence": "docs/evidence/vercel-deployment-check-verification-20261020.json",
-    "vercelConnectorLimitation": "get_project remains 403 for the explicit known team/project; no local Vercel CLI is available; unchanged independent Production/Blocking browser attestation is reused"
+    "vercelConnectorLimitation": "get_project remains 403 for the explicit known team/project; no local Vercel CLI is available; unchanged independent Production/Blocking browser attestation is reused",
+    "sqlDefinitions": [
+      {
+        "name": "private.validate_assessment_policy_v1",
+        "md5": "b661c4a9efe2114cd26715713426f5ef"
+      },
+      {
+        "name": "public.service_record_session_answer_atomic",
+        "md5": "d2f93549382bf61f181b34f8606581e4"
+      },
+      {
+        "name": "public.service_governed_learning_operation",
+        "md5": "849c4b1bd64a053f22ec70a7dac06948"
+      }
+    ]
   },
   "localVerification": {
     "nodeTests": {
@@ -125,7 +139,14 @@
     "browserEnvironment": "Chromium 153, actual learner/reviewer modules and Edge/SQL fixtures; storage/auth doubles and synthetic WAV; no production media playback claim",
     "typecheck": true,
     "webSyntax": true,
-    "browserQATriggers": true
+    "browserQATriggers": true,
+    "sdkTransportCorrection": {
+      "sdk": "@supabase/functions-js 2.118.0",
+      "focusedChecksPassed": 16,
+      "reason": "Supabase FunctionsClient decodes audio MIME responses as text. Deliver octet-stream plus exposed validated media type; both learner and reviewer use shared Blob decoder. Native playback now exercises the actual pinned SDK.",
+      "source": "https://github.com/supabase/supabase-js/tree/master/packages/core/functions-js",
+      "anonymousProbeCorrection": "Live anonymous PostgREST permission denial is HTTP 401/code 42501; authenticated denial remains 403/code 42501. The read-only verifier accepts these exact denials, never outages."
+    }
   },
   "adoption": {
     "registeredAudioVersions": 0,
@@ -142,5 +163,39 @@
     "five English MP3 listening review and hosting/permission decision",
     "English Unit 1 content authoring/review and final assessment/release acceptance"
   ],
-  "deployment": null
+  "deployment": null,
+  "expectedSqlDefinitions": [
+    {
+      "name": "private.validate_assessment_policy_v1",
+      "md5": "c582cf4a23e9ba667eb6af350c232309"
+    },
+    {
+      "name": "public.service_record_session_answer_atomic",
+      "md5": "a34f1b26d32af62f4cddbe2df428ef1d"
+    },
+    {
+      "name": "public.service_governed_learning_operation",
+      "md5": "f2664b801ce83f08778b83b0933344f7"
+    },
+    {
+      "name": "private.guard_audio_version",
+      "md5": "4c399d24b6a68d7d78199b21036aecc8"
+    },
+    {
+      "name": "private.guard_item_audio_reference",
+      "md5": "edfc71f232519b275bdb340dc35bb3fc"
+    },
+    {
+      "name": "private.validate_audio_reference",
+      "md5": "7b6c79e294d7e414990d8acc8c5ff4c2"
+    },
+    {
+      "name": "public.service_learning_audio",
+      "md5": "7c4c787e8084c45e9560071ddc41d2cc"
+    },
+    {
+      "name": "private.guard_audio_attempt",
+      "md5": "81abce8fd2461e512347acc7ab443f17"
+    }
+  ]
 }

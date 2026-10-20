@@ -1,6 +1,7 @@
 import {assessmentRules,assessmentResultMarkup} from './assessment-reporting.mjs';
 import { escapeHtml as esc } from './learning-navigation.mjs';
 import { renderLearningStimulus } from './learning-stimulus.mjs';
+import {decodeLearningAudio} from './learning-audio.mjs';
 import {typedFieldsMarkup,collectTypedResponse} from './typed-fields-ui.mjs';
 import {arrangementMarkup,collectArrangementResponse,bindArrangement} from './arrangement-ui.mjs';
 const draftable=type=>['typed_fields','matching','ordering'].includes(type);
@@ -16,10 +17,10 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
   };
   window.addEventListener('beforeunload',guardUnsaved);
   const invoke = async(name,body) => {
-    const {data,error}=await supabase.functions.invoke(name,{body});
+    const {data,error,response}=await supabase.functions.invoke(name,{body});
     if(!valid())throw new Error('stale_context');
     if(error || data?.error){const detail=data?.error??error?.error??(error?.context instanceof Response?await error.context.clone().json().then(x=>x.error).catch(()=>null):null);throw new Error(['typed_fields_draft_conflict','response_draft_conflict'].includes(detail)?'Պատասխանը փոփոխվել է մեկ այլ պատուհանում։ Պահպանեք ձեր պատասխանի պատճենը և վերաբեռնեք էջը՝ վերջին տարբերակը տեսնելու համար։':'Այս գործողությունն այս պահին հասանելի չէ։ Ձեր պատասխանը պահպանեք և կրկին փորձեք։');}
-    return data;
+    return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action):data;
   };
   const fail = error => { if(valid()) { const p=document.createElement('p');p.textContent=error.message;root.appendChild(p); } };
   async function serve() {
