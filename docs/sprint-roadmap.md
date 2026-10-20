@@ -1,10 +1,12 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
 
-**Roadmap version:** 4.22
-**Updated:** 2026-10-20 Asia/Yerevan · 16.1B.2 typed answers/gaps deployed; production acceptance verified
+**Roadmap version:** 4.23
+**Updated:** 2026-10-20 Asia/Yerevan · 16.1B.3 matching/ordering implementation ready; release verification pending
 
-**Sprint 16.1B.2 — typed answers and gap-filling deployed and verified.** Bounded fields, reviewed alternatives, private resumable drafts, fractional item points and role-consistent reporting are available as an opt-in capability. Required PR/main CI passed (1,341 tests, 73 browser checks and PostgreSQL 17.6); exact-source production acceptance passed 268/268, with two-school isolation 54/54. All 15 SQL definitions and 16 affected Edge bundles match source; all 23 tracked content, policy and learner-data snapshots are unchanged. No English content or scoring policy is activated. Matching/ordering is next, followed by audio and task sets. [Capability contract](typed-fields-capability.md).
+**Sprint 16.1B.3 — matching and ordering implementation ready; release verification pending.** Explicit one-to-one/many-to-one matching, reviewed complete ordering sequences, private resumable drafts and normalized item scores are implemented. No content, policy or release is activated. Required CI, SQL/Edge deployment, production acceptance and Notion closure remain pending. [Capability contract](matching-ordering-capability.md).
+
+**Sprint 16.1B.2 — typed answers and gap-filling deployed and verified.** Bounded fields, reviewed alternatives, private resumable drafts, fractional item points and role-consistent reporting are available as an opt-in capability. Required PR/main CI passed (1,341 tests, 73 browser checks and PostgreSQL 17.6); exact-source production acceptance passed 268/268, with two-school isolation 54/54. All 15 SQL definitions and 16 affected Edge bundles match source; all 23 tracked content, policy and learner-data snapshots are unchanged. No English content or scoring policy is activated. Matching/ordering is tracked under 16.1B.3; audio and task sets follow. [Capability contract](typed-fields-capability.md).
 
 **Sprint 16.1B.1 — writing workspaces deployed and verified.** Students can save private drafts, submit, see feedback and revise. Teachers can mark declared rubric criteria, return work and retain regrade history. Required PR/main CI passed (1,336 tests and 70 browser checks); production read acceptance passed 264/264, including both roles and two-school denials. No English tasks or release are activated. Final English content/rubric, other response types and audio remain open. [Writing workspaces](written-work-workspaces.md) · [Release evidence](evidence/written-work-release-20261020.json).
 **Latest platform repair:** the shared guide-validator metadata correction is deployed as v11; all three bundle files read back exactly, 31 regressions and CI pass. Existing content and approvals are preserved. [Guide-validator repair evidence](evidence/remediation-guide-validator-metadata-fix-20261015.json). Earlier direct-read protection and reviewer approval repairs remain in force.

@@ -60,6 +60,8 @@ on:
       - web/learning-player.mjs
       - web/typed-fields-contract.mjs
       - web/typed-fields-ui.mjs
+      - web/arrangement-contract.mjs
+      - web/arrangement-ui.mjs
       - web/learning-stimulus.mjs
       - web/multi-subject-home.js
       - web/multi-subject.css

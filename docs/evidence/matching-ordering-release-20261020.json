@@ -1,0 +1,727 @@
+{
+  "stage": "16.1B.3",
+  "date": "2026-10-20",
+  "status": "implementation-verified-release-pending",
+  "baseCommit": "8fec677018ed777b96f15e100eed249e4dfa96d7",
+  "scope": "matching and ordering capability; no content, scoring-policy or release activation",
+  "preflight": {
+    "preservation": {
+      "items": {
+        "md5": "02a9ac127de1e789dde981167803bbf6",
+        "rows": 1251
+      },
+      "attempts": {
+        "md5": "26d44860397d32ab6023da8e72cfcb0e",
+        "rows": 42
+      },
+      "item_options": {
+        "md5": "2f762b42bec0fdeac871659af168de6e",
+        "rows": 4396
+      },
+      "written_work": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "item_versions": {
+        "md5": "b0af9e1e86807f1b8e339b90a52b03f9",
+        "rows": 1146
+      },
+      "written_reviews": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "assessment_pools": {
+        "md5": "d6450febadadd4af95b10f3a8c9a7b92",
+        "rows": 19
+      },
+      "item_answer_keys": {
+        "md5": "1054877916900dca98aa788fa67c9dd6",
+        "rows": 1251
+      },
+      "learning_sessions": {
+        "md5": "a5d0326f20b58e02773af6281ee31cdb",
+        "rows": 8
+      },
+      "curriculum_releases": {
+        "md5": "242aae0aedf8c5d85e0a2a415a2f8703",
+        "rows": 7
+      },
+      "written_submissions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "assessment_blueprints": {
+        "md5": "38fe215a14d86c322b7826724d8a7fac",
+        "rows": 27
+      },
+      "assessment_pool_items": {
+        "md5": "184285de8853be3dfc41e8f90db0dda4",
+        "rows": 1244
+      },
+      "written_task_versions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "learning_session_items": {
+        "md5": "be40162b06e91a52213d5b6fd6e810bc",
+        "rows": 96
+      },
+      "curriculum_release_units": {
+        "md5": "449c3d22acb7c1b4c92f261c1f8aaf61",
+        "rows": 7
+      },
+      "learning_response_drafts": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "curriculum_release_skills": {
+        "md5": "7bf9605a3f0222a6d4c6d08d14cc6503",
+        "rows": 66
+      },
+      "assessment_blueprint_items": {
+        "md5": "7e54e189ad648f2a3f0a4538a01f8b60",
+        "rows": 1872
+      },
+      "assessment_policy_bindings": {
+        "md5": "2c32ee0b3e126db5e47b7de55a5ebacf",
+        "rows": 20
+      },
+      "learning_model_configurations": {
+        "md5": "4254a36a7a040133d3592cd131c83c83",
+        "rows": 6
+      },
+      "learning_model_runtime_bindings": {
+        "md5": "dd95315c4395cb93457b2c5afaefc495",
+        "rows": 6
+      },
+      "academic_mastery_policy_versions": {
+        "md5": "1c69b7132347cd8b67a89268668f27ce",
+        "rows": 1
+      },
+      "student_skill_mastery_by_release": {
+        "md5": "19a0f8555ac31ac870a6cff088c9ce29",
+        "rows": 13
+      }
+    },
+    "preservationMethod": "MD5 of concatenated complete row JSON ordered by row JSON; query retained in release evidence",
+    "preservationQuery": "select jsonb_object_agg(name,snapshot) preservation from (select 'items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.items t union all select 'attempts' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.attempts t union all select 'item_options' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.item_options t union all select 'written_work' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_work t union all select 'item_versions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.item_versions t union all select 'written_reviews' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_reviews t union all select 'assessment_pools' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_pools t union all select 'item_answer_keys' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.item_answer_keys t union all select 'learning_sessions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_sessions t union all select 'curriculum_releases' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.curriculum_releases t union all select 'written_submissions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_submissions t union all select 'assessment_blueprints' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_blueprints t union all select 'assessment_pool_items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_pool_items t union all select 'written_task_versions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_task_versions t union all select 'learning_session_items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_session_items t union all select 'curriculum_release_units' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.curriculum_release_units t union all select 'curriculum_release_skills' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.curriculum_release_skills t union all select 'assessment_blueprint_items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_blueprint_items t union all select 'assessment_policy_bindings' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_policy_bindings t union all select 'learning_model_configurations' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_model_configurations t union all select 'learning_model_runtime_bindings' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_model_runtime_bindings t union all select 'academic_mastery_policy_versions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.academic_mastery_policy_versions t union all select 'student_skill_mastery_by_release' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.student_skill_mastery_by_release t union all select 'learning_response_drafts' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_response_drafts t) q;",
+    "functionHashes": {
+      "private.validate_assessment_policy_v1": "ba782a8868e130ccb089a3c20ca4f55d",
+      "public.service_governed_learning_operation": "1d5d3f9b46716fdafb9915af5eeb3988",
+      "public.service_save_item_content_revision": "d7038a85b2db4f04be7f08adf50a977d"
+    },
+    "edgeConsumers": [
+      {
+        "name": "manage-content-quality",
+        "version": 12,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/arrangement-responses.mjs",
+          "manage-content-quality/index.ts"
+        ],
+        "extra": []
+      },
+      {
+        "name": "submit-answer",
+        "version": 20,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/types.ts"
+        ],
+        "extra": []
+      },
+      {
+        "name": "start-learning-session",
+        "version": 25,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "record-recommendation-event",
+        "version": 5,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-remediation-help",
+        "version": 14,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "submit-mastery-answer",
+        "version": 9,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-chapter-mastery-lifecycle",
+        "version": 5,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-learning-context",
+        "version": 3,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-mastery-check-status",
+        "version": 13,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-student-classes",
+        "version": 10,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-session-item",
+        "version": 18,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-student-dashboard",
+        "version": 26,
+        "verify_jwt": true,
+        "baseMismatch": [],
+        "changes": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      }
+    ],
+    "bundleRepresentationNotes": [
+      "Supabase omits the type-only _shared/types.ts from submit-answer; all runtime dependencies match the baseline."
+    ],
+    "securityAdvisors": {
+      "result": {
+        "lints": [
+          {
+            "name": "rls_enabled_no_policy",
+            "title": "RLS Enabled No Policy",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+            "count": 44,
+            "findings": [
+              {
+                "detail": "Table \\`private.active_curriculum_release_units\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "active_curriculum_release_units",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`private.assessment_presentation_configuration\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "assessment_presentation_configuration",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`private.learning_session_item_option_orders\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "learning_session_item_option_orders",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`private.mastery_form_selection_bindings\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "mastery_form_selection_bindings",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`private.mastery_form_serialization_fences\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "mastery_form_serialization_fences",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.academic_identity_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "academic_identity_events",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.academic_mastery_policy_activation\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "academic_mastery_policy_activation",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.academic_mastery_policy_versions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "academic_mastery_policy_versions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.academic_years\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "academic_years",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_analysis_scopes\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_analysis_scopes",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_change_decisions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_change_decisions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_decision_protocols\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_decision_protocols",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_evidence_contracts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_evidence_contracts",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_metric_sets\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_metric_sets",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_mastery_states\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_mastery_states",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_review_cycles\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_review_cycles",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_review_item_exposures\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_review_item_exposures",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_review_requirements\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_review_requirements",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_review_sessions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_review_sessions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.institutional_class_enrollments\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "institutional_class_enrollments",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.institutional_invitations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "institutional_invitations",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.institutional_join_codes\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "institutional_join_codes",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.institutional_memberships\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "institutional_memberships",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.item_curriculum_scopes\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "item_curriculum_scopes",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.item_template_remediation_guides\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "item_template_remediation_guides",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.learning_model_configurations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "learning_model_configurations",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.learning_model_runtime_bindings\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "learning_model_runtime_bindings",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.learning_response_drafts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "learning_response_drafts",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.legacy_learning_blueprint_mappings\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "legacy_learning_blueprint_mappings",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.mastery_check_attempts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "mastery_check_attempts",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.pilot_participant_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "pilot_participant_events",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.pilot_participants\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "pilot_participants",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.recommendation_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "recommendation_events",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.remediation_guide_authoring_versions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "remediation_guide_authoring_versions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.remediation_guide_versions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "remediation_guide_versions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.runtime_builds\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "runtime_builds",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.staff_account_provisioning\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "staff_account_provisioning",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.student_account_acceptances\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "student_account_acceptances",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.teacher_assignments\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "teacher_assignments",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.teacher_subject_authorizations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "teacher_subject_authorizations",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.written_reviews\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "written_reviews",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.written_submissions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "written_submissions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.written_task_versions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "written_task_versions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              },
+              {
+                "detail": "Table \\`public.written_work\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "written_work",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:21:50.376Z"
+              }
+            ]
+          },
+          {
+            "name": "auth_leaked_password_protection",
+            "title": "Leaked Password Protection Disabled",
+            "level": "WARN",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Leaked password protection is currently disabled.",
+            "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+            "count": 1,
+            "findings": [
+              {
+                "detail": "Supabase Auth prevents the use of compromised passwords by checking against HaveIBeenPwned.org. Enable this feature to enhance security.",
+                "metadata": {
+                  "type": "auth",
+                  "entity": "Auth"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    }
+  },
+  "localChecks": {
+    "node": {
+      "passed": 1347,
+      "failed": 0
+    },
+    "focusedBrowser": {
+      "passed": 19,
+      "failed": 0,
+      "scope": "Native Chromium learner UI / real Edge handlers / isolated SQL and reviewer controls; final layout rerun recorded at release"
+    },
+    "guards": [
+      "TypeScript",
+      "core parity",
+      "browser QA dependency triggers",
+      "git diff whitespace"
+    ]
+  },
+  "release": {
+    "status": "pending"
+  },
+  "remaining": [
+    "English content/accepted alternatives and assessment policy approval",
+    "Audio and shared task sets",
+    "English release activation"
+  ],
+  "migrationSource": {
+    "path": "supabase/migrations/20261020150847_sprint_16_1b_matching_ordering.sql",
+    "sha256": "9433867d65423cc359b897dd39b37893852586302a15705896a3a0ae34d34805",
+    "expectedFunctionHashes": {
+      "private.validate_assessment_policy_v1": "b661c4a9efe2114cd26715713426f5ef",
+      "public.service_governed_learning_operation": "849c4b1bd64a053f22ec70a7dac06948",
+      "private.validate_arrangement_definition": "f9e9c482ffbb5916baea6866b5c8941c",
+      "private.grade_arrangement_response": "0753aeee6d99bf6b0c67596ee9303d90",
+      "private.validate_arrangement_response": "7c341ec8a07e7f42949dcae057c81bc5",
+      "private.validate_arrangement_key": "e645c02efc4445c54bc139f1d8765196",
+      "private.present_arrangement_definition": "6f07bc9a9110cebf46f909f9f13fc9d5",
+      "public.service_save_item_content_revision": "8b4f1d9a315e3c073d84748822dd862c"
+    }
+  }
+}

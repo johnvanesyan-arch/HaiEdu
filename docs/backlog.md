@@ -19,7 +19,9 @@
 - [ ] Review the English-specific scoring/readiness contract, accepted-answer policies, assistance rules and defensible item counts.
 - [x] Implement bounded typed answers/gap-filling, explicit accepted alternatives, private drafts and v3 fractional-point reporting (16.1B.2).
 - [x] Close 16.1B.2 required CI, exact SQL/Edge readback and production preservation/read acceptance (268/268). The Notion source stamp records the merged documentation closure; 11 native child pages are retained.
-- [ ] Implement matching/ordering and remaining media/task-set capabilities.
+- [x] Implement matching/categorisation and exact ordering with public definitions, private keys/drafts and existing v3 item points (16.1B.3).
+- [ ] Close 16.1B.3 required CI, exact deployment/readback, production preservation/acceptance and merged-source Notion sync.
+- [ ] Implement audio and shared task-set capabilities.
 - [ ] Verify valid language alternatives, partial credit, unsupported responses, media failures, answer retries, score protection and role/subject/tenant isolation.
 - [ ] Author and review one complete unit with textbook/programme and whole-bank comparison evidence; complete exact deployment and authenticated desktop/mobile acceptance before release.
 

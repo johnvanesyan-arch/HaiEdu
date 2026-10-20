@@ -58,6 +58,7 @@ test('governed learning transactions with three distinct curriculum contexts',as
 
 test('routing retains legacy requests but never falls back from an explicit invalid context',async()=>{
  const legacy=await routeGovernedLearning({admin:{},studentId:id(10),token,request:request({mode:'practice'}),operation:'start'});assert.equal(legacy,null);
+ for(const schemaVersion of ['haiedu-typed-fields-v1','haiedu-matching-v1','haiedu-ordering-v1','unknown']){const rejected=await routeGovernedLearning({admin:{},studentId:id(10),token,request:request({response:{schemaVersion}}),operation:'answer'});assert.equal(rejected.status,400);assert.equal(rejected.body.error,'invalid_session_request');}
  for(const body of [{enrollmentId:id(371)},{enrollmentId:id(371),curriculumReleaseId:id(501),unitId:id(511),mode:'practice',studentId:id(11)}]){
   const r=await routeGovernedLearning({admin:{},studentId:id(10),token,request:request(body),operation:'start'});assert.equal(r.status,400);assert.equal(r.body.error,'invalid_context_selection');
  }
