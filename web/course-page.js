@@ -4,9 +4,10 @@ import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from './config.js';
 import { readLearningSelection, sameContext, sameCourse, contextHref, courseLabel, escapeHtml as esc } from './learning-navigation.mjs';
 import { registeredExtensionHref } from './learning-extensions.mjs';
 import { mountLearningPlayer } from './learning-player.mjs';
+import { mountWrittenWork } from './written-work.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const root = document.getElementById('courseContent');
-let version = 0, disposePlayer = () => {};
+let version = 0, accountId = null, disposePlayer = () => {}, disposeWriting = () => {};
 function completionDate(value) {
   const date = new Date(value);
   if (!value || !Number.isFinite(date.getTime())) return '—';
@@ -17,8 +18,9 @@ function completionDate(value) {
   }).formatToParts(date).map(({type,value}) => [type,value]));
   return `${parts.day}.${parts.month}.${parts.year} · ${parts.hour}:${parts.minute}`;
 }
-function clear() { disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; }
+function clear() { disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; }
 async function load() {
+  if (disposeWriting.flush && !(await disposeWriting.flush())) return;
   const request = ++version;
   clear();
   root.classList.remove('hidden');
@@ -30,6 +32,7 @@ async function load() {
     const { data: auth } = await supabase.auth.getSession();
     if (!valid()) return;
     if (!auth.session) throw new Error('Մուտք գործեք ձեր հաշիվ։');
+    accountId = auth.session.user.id;
     const { data: navigation, error: accessError } = await supabase.functions.invoke('get-student-classes',{body:{}});
     if (!valid()) return;
     const context = navigation?.contexts?.find(c => sameContext(c,selection));
@@ -73,10 +76,17 @@ async function load() {
       : `${active ? '' : `<div class="amp-subject-grid">${modeCards}</div>`}${tab === 'course' ? `<section class="card course-data-section"><h2>Հմտություններ</h2>${skillTable}</section>` : ''}`;
     const chapters = navigation.contexts.filter(c=>sameCourse(c,context)).sort((a,b)=>a.unitSequence-b.unitSequence);
     const chapterLinks = chapters.length>1 ? `<nav class="row course-chapters" aria-label="Դասընթացի գլուխներ">${chapters.map(c=>`<a class="button-link ghost" href="${esc(contextHref(c,tab))}"${sameContext(c,context)?' aria-current="page"':''}>${esc(c.unitTitleHy)}</a>`).join('')}</nav>` : '';
-    root.innerHTML = `${chapterLinks}<nav class="row course-tabs" aria-label="Դասընթացի բաժիններ">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['progress','Առաջընթաց']].map(([t,l])=>`<a class="button-link ghost" href="${esc(contextHref(context,t))}"${t===tab?' aria-current="page"':''}>${l}</a>`).join('')}</nav>
+    root.innerHTML = `${chapterLinks}<nav class="row course-tabs" aria-label="Դասընթացի բաժիններ">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['progress','Առաջընթաց'],['writing','Գրավոր աշխատանքներ']].map(([t,l])=>`<a class="button-link ghost" href="${esc(contextHref(context,t))}"${t===tab?' aria-current="page"':''}>${l}</a>`).join('')}</nav>
       <section class="card course-overview" aria-label="Ուսուցման ամփոփում"><p>${data.baseline?.assessmentResult ? assessmentResultMarkup(data.baseline.assessmentResult) : data.baseline ? `Ելակետային ախտորոշիչ՝ ${data.baseline.correct}/${data.baseline.answered} · ${data.baseline.percent}%` : 'Ախտորոշիչը կսահմանի ձեր մեկնարկային մակարդակը։'}</p>${data.lifecycle ? `<p>Յուրացման օգտագործված փորձեր՝ ${data.lifecycle.attemptsUsed}/${data.maximumAttempts ?? '—'}</p>` : ''}</section>
       ${resume}${legacyCourse ? `<div><a class="button-link ghost" href="${esc(legacyCourse)}">Դիտել դասընթացի թեմաները</a></div>` : ''}<div id="learningPlayer"></div>${learningContent}
       <section class="card course-data-section" aria-labelledby="courseHistoryTitle"><h2 id="courseHistoryTitle">Ավարտված աշխատանքներ</h2><div class="matrix-wrap" tabindex="0" role="region" aria-label="Ավարտված աշխատանքների պատմություն"><table class="course-table"><thead><tr><th scope="col">Տեսակ</th><th scope="col">Արդյունք</th><th scope="col">Ավարտ</th><th scope="col">Տվյալներ</th></tr></thead><tbody>${history || '<tr><td colspan="4">Ավարտված աշխատանք դեռ չկա։</td></tr>'}</tbody></table></div></section>`;
+    if (tab === 'writing') {
+      root.querySelectorAll(':scope > :not(nav)').forEach(node => node.remove());
+      const writingRoot = document.createElement('div');
+      root.append(writingRoot);
+      disposeWriting = mountWrittenWork({root:writingRoot,supabase,context:selection,actorId:auth.session.user.id,isCurrent:valid});
+      return;
+    }
     const requestedMode = new URLSearchParams(location.search).get('action');
     if (requestedMode && Object.hasOwn(modes,requestedMode) && (data.modes[requestedMode]?.status==='configured' || active?.policyBindingId)) {
       disposePlayer = mountLearningPlayer({root:document.getElementById('learningPlayer'),supabase,context,skills:data.skills,mode:requestedMode,targetSkillId:new URLSearchParams(location.search).get('skill'),isCurrent:valid,onComplete:()=>{ const url=new URL(location.href);url.searchParams.delete('action');url.searchParams.delete('skill');window.history.replaceState({},'',url);load(); }});
@@ -89,6 +99,6 @@ async function load() {
   }
   finally { if (valid()) document.getElementById('courseLoading').classList.add('hidden'); }
 }
-supabase.auth.onAuthStateChange((_event,session)=>{ ++version; clear(); if(session)setTimeout(load,0); });
+supabase.auth.onAuthStateChange((_event,session)=>{ const next=session?.user?.id??null;if(next&&next===accountId)return;accountId=next;++version;clear();if(session)setTimeout(load,0); });
 window.addEventListener('popstate',load);
 load();

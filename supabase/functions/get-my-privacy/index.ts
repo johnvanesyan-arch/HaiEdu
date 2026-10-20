@@ -25,6 +25,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       sessions,
       mastery,
       remediation,
+      writtenWork,
     ] = await Promise.all([
       countRows(admin.from("class_memberships").select("class_id", { count: "exact", head: true }).eq("student_id", userId), "class_memberships_count_failed"),
       countRows(admin.from("institutional_class_enrollments").select("id", { count: "exact", head: true }).eq("student_id", userId), "institutional_enrollments_count_failed"),
@@ -33,6 +34,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       countRows(admin.from("learning_sessions").select("id", { count: "exact", head: true }).eq("student_id", userId), "learning_sessions_count_failed"),
       countRows(admin.from("student_skill_mastery").select("skill_id", { count: "exact", head: true }).eq("student_id", userId), "mastery_count_failed"),
       countRows(admin.from("remediation_events").select("id", { count: "exact", head: true }).eq("student_id", userId), "remediation_count_failed"),
+      countRows(admin.from("written_work").select("id", { count: "exact", head: true }).eq("student_id", userId), "written_work_count_failed"),
     ]);
     return {
       kind: "student",
@@ -42,6 +44,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       learningSessions: sessions,
       masteryRows: mastery,
       remediationEvents: remediation,
+      writtenWork,
     };
   }
 
@@ -63,15 +66,17 @@ async function getDataInventory(admin: any, role: string, userId: string) {
         "teacher_assignments_count_failed",
       )
       : 0;
-    const [emailInvitations, joinCodes] = await Promise.all([
+    const [emailInvitations, joinCodes, writtenReviews] = await Promise.all([
       countRows(admin.from("institutional_invitations").select("id", { count: "exact", head: true }).eq("issued_by", userId), "issued_invitations_count_failed"),
       countRows(admin.from("institutional_join_codes").select("id", { count: "exact", head: true }).eq("issued_by", userId), "issued_join_codes_count_failed"),
+      countRows(admin.from("written_reviews").select("id", { count: "exact", head: true }).eq("assessor_id", userId), "written_reviews_count_failed"),
     ]);
     return {
       kind: "teacher",
       institutionalMemberships: membershipIds.length,
       teachingAssignments,
       invitationRecords: emailInvitations + joinCodes,
+      writtenReviews,
       auditEvents,
     };
   }
@@ -85,14 +90,18 @@ async function getDataInventory(admin: any, role: string, userId: string) {
   }
 
   if (role === "content_admin") {
+    const writtenTaskReviews = await countRows(admin.from("written_task_versions").select("id", { count:"exact", head:true }).eq("reviewed_by",userId), "written_task_reviews_count_failed");
     const contentReviews = await countRows(
       admin.from("item_reviews").select("id", { count: "exact", head: true }).eq("reviewer_id", userId),
       "content_reviews_count_failed",
     );
-    return { kind: "content_admin", contentReviews, auditEvents };
+    return { kind: "content_admin", contentReviews, writtenTaskReviews, auditEvents };
   }
 
-  if (role === "admin") return { kind: "admin", auditEvents };
+  if (role === "admin") {
+    const writtenTaskReviews = await countRows(admin.from("written_task_versions").select("id", { count:"exact", head:true }).eq("reviewed_by",userId), "written_task_reviews_count_failed");
+    return { kind: "admin", writtenTaskReviews, auditEvents };
+  }
   return { kind: "account", auditEvents };
 }
 

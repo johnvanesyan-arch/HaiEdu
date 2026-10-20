@@ -39,6 +39,7 @@ function inventoryPresentation(role, inventory) {
         ["Ուսուցման սեսիաներ", inventory.learningSessions ?? 0],
         ["Հմտությունների առաջընթացի գրառումներ", inventory.masteryRows ?? 0],
         ["Ամրապնդման իրադարձություններ", inventory.remediationEvents ?? 0],
+        ["Գրավոր աշխատանքներ՝ սևագրերով, ներկայացված տարբերակներով և մեկնաբանություններով", inventory.writtenWork ?? 0],
       ],
     },
     teacher: {
@@ -47,6 +48,7 @@ function inventoryPresentation(role, inventory) {
       rows: [
         ["Դպրոցի անդամակցության գրառումներ", inventory.institutionalMemberships ?? 0],
         ["Դասավանդման նշանակումներ", inventory.teachingAssignments ?? 0],
+        ["Գրավոր աշխատանքների գնահատումներ և մեկնաբանություններ", inventory.writtenReviews ?? 0],
         ["Ստեղծված հրավերներ և կոդեր", inventory.invitationRecords ?? 0],
         ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
       ],
@@ -65,13 +67,14 @@ function inventoryPresentation(role, inventory) {
       description: "Բովանդակության ստուգողի պրոֆիլում պահվում են հաշվի տվյալները, կատարված ստուգումների և գործողությունների աուդիտային գրառումները։",
       rows: [
         ["Բովանդակության ստուգումներ", inventory.contentReviews ?? 0],
+        ["Գրավոր առաջադրանքների ստուգումներ", inventory.writtenTaskReviews ?? 0],
         ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
       ],
     },
     admin: {
       title: "Ինչ տվյալներ ենք պահում Master admin-ի մասին",
       description: "Master admin-ի պրոֆիլում պահվում են հաշվի տվյալները և անվտանգության ու վարչական գործողությունների աուդիտային գրառումները։",
-      rows: [["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
+      rows: [["Գրավոր առաջադրանքների ստուգումներ", inventory.writtenTaskReviews ?? 0], ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
     },
   };
   return views[role] || {

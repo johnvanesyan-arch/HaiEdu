@@ -5,6 +5,19 @@ on:
   push:
     branches: [main]
     paths:
+      - supabase/functions/manage-student-invitation/index.ts
+      - web/teacher.html
+      - web/teacher.js
+      - web/analytics-provenance.mjs
+      - web/role-layout.js
+      - web/teacher.css
+      - web/responsive-qa.css
+      - scripts/written-work-read-acceptance.mjs
+      - supabase/functions/_shared/written-work-handler.mjs
+      - supabase/functions/manage-written-work/index.ts
+      - supabase/migrations/20261020105004_sprint_16_1b_written_work.sql
+      - web/written-work.mjs
+      - web/written-work.css
       # Activated pilot: cover the runner, native pages, their API dependencies,
       # the approved computed recipe URL, and relevant database contracts.
       - docs/evidence/chapter-vi-pilot-activation-20261020.json

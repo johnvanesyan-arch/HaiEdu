@@ -5,6 +5,7 @@ import vm from "node:vm";
 import { stripTypeScriptTypes } from "node:module";
 
 const studentTables = [
+  "written_work",
   "class_memberships",
   "institutional_class_enrollments",
   "attempts",
@@ -94,6 +95,10 @@ for (const role of ["teacher", "school_admin", "content_admin", "admin"]) {
     }
     assert.equal(result.payload.dataInventory.kind, role);
     assert.ok(result.reads.includes("security_audit_log"));
+    if (["content_admin", "admin"].includes(role)) {
+      assert.ok(result.reads.includes("written_task_versions"));
+      assert.equal(result.payload.dataInventory.writtenTaskReviews, 0);
+    }
   });
 }
 
@@ -103,6 +108,7 @@ test("teacher inventory reports only teacher-owned institutional records", async
     kind: "teacher",
     institutionalMemberships: 1,
     teachingAssignments: 8,
+    writtenReviews: 0,
     invitationRecords: 12,
     auditEvents: 10,
   });

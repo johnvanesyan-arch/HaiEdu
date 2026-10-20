@@ -8,7 +8,7 @@ import { fileURLToPath } from "node:url";
 export const browserQaTargets = [
   {
     workflow: ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
-    entries: ["web/index.html", "web/course.html", "scripts/chapter-vi-pilot-read-acceptance.mjs"],
+    entries: ["web/index.html", "web/course.html", "web/teacher.html", "scripts/chapter-vi-pilot-read-acceptance.mjs"],
     runner: "scripts/chapter-vi-pilot-read-acceptance.mjs",
     activationEvidence: "docs/evidence/chapter-vi-pilot-activation-20261020.json",
   },

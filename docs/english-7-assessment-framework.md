@@ -10,7 +10,7 @@ The uploaded source is Lusine Grigoryan, *English 7*, Zangak, Yerevan 2023, ISBN
 
 Observed examples establish the capability needs: p.6 includes matching, word-bank completion and listening; p.16 a chronological summary; p.23 categorisation and an opinion paragraph; p.65 a picture-based story and written advice. The contents list audio scripts from p.144. The book directs readers to publisher/QR-linked audiovisual materials. At 16.1A.2 all five Unit 1 MP3s were retrieved and decoded; exact audio/script alignment, final delivery arrangements and production playback remain to be verified. A printed transcript alone does not provide listening evidence.
 
-Unit 1, “Me in the World,” is the proposed first implementation slice because its sampled tasks exercise several required capabilities. Its proposed 14-skill map and prerequisite/extension boundaries are now recorded; final bank counts, pass rules and writing-review disposition remain open.
+Unit 1, “Me in the World,” is the proposed first implementation slice because its sampled tasks exercise several required capabilities. Its proposed 14-skill map and prerequisite/extension boundaries are now recorded; final bank counts and pass rules remain open. Teacher review is authorised under [16.1B.1](written-work-workspaces.md).
 
 ## Owner authoring direction — 2026-10-20
 
@@ -44,7 +44,7 @@ The inspected repository baseline is `71a641350f8aed01364d0c84cfb0e7802e1d06f1`.
 | Typed gaps and short responses | Not enabled by the governed policy/player | Add a typed response contract, authoring fields, private accepted answers, server grading and evidence projection. |
 | Matching, categorisation and ordering | No native response capability in the inspected governed player | Add accessible keyboard/touch editors and stable semantic IDs. Display order must not become the answer identity. |
 | Shared passages/recordings | No complete grouped-task/audio capability in the inspected path | Add versioned stimulus sets, linked task delivery, source/exposure tracking and audio lifecycle handling. |
-| Extended-writing assessment | No governed rubric/submission/review capability established by this audit | Design submissions, rubric versions, criterion judgments, review states and separate reporting before enabling assessed writing. |
+| Extended-writing assessment | Initial audit gap; 16.1B.1 implementation now recorded separately | 16.1B.1 implements the submission/review flow; final task acceptance, English policy integration and release verification remain required. |
 
 Adding an item-type label alone is insufficient: authoring, validation, protected storage, delivery, response editor, server grading, result projection and analytics must all support it. The legacy numeric adapter is not a route around governed capability checks.
 
@@ -74,7 +74,7 @@ Keep controlled-writing results separate from extended-writing evidence. A propo
 
 The framework must be able to store a submission, its task/rubric version, criterion-level judgments, feedback and the assessor identity/provenance. Recommended initial final-grading route: an authorised teacher applies the reviewed rubric. This is a recommendation, not a teacher workload commitment approved by the owner. Automated feedback may be a later optional aid; model-generated judgments must remain distinguishable from reviewed results.
 
-Whether the first released unit includes teacher-reviewed extended writing or explicitly defers that part remains an owner decision after the unit map is concrete. If it is deferred, retain the outcome as unassessed and make no full-writing or full-English-mastery claim. A framework that stores drafts/feedback can handle writing activity without pretending it has validated writing proficiency.
+The owner authorised implementing teacher-reviewed writing on 2026-10-20. Its reusable workspace is implemented under 16.1B.1; production verification and the final English task/rubric remain separate. If it is deferred, retain the outcome as unassessed and make no full-writing or full-English-mastery claim. A framework that stores drafts/feedback can handle writing activity without pretending it has validated writing proficiency.
 
 Before any automated writing grader can determine mastery, define an agreed rubric, validate judgments against reviewed samples, test valid linguistic variants and adversarial/unreliable responses, record model/rubric versions, handle uncertainty and re-review, and bound operating cost. No model service, recurring spend, automated high-stakes decision or AI-derived final grade is enabled by this plan.
 
@@ -94,7 +94,7 @@ Audio requires a source/version, transcript for authorised authoring/review, tas
 
 | Stage | Concrete deliverable | Completion evidence |
 | --- | --- | --- |
-| 16.1A — sources and assessment design | Exact official-programme reconciliation, textbook/audio inventory, Unit 1 skill/evidence map, task-format shortlist, writing-review disposition and proposed assessment contract | Each intended outcome has suitable evidence or an explicit scope disposition. Final unit scope and scoring decisions are reviewed; question counts follow defensible coverage. Current status: 16.1A.2 source reconciliation and Unit 1 map prepared, five MP3s technically checked and a concrete contract/rubric drafted; writing-route and final scoring/bank decisions remain open. |
+| 16.1A — sources and assessment design | Exact official-programme reconciliation, textbook/audio inventory, Unit 1 skill/evidence map, task-format shortlist, writing-review disposition and proposed assessment contract | Each intended outcome has suitable evidence or an explicit scope disposition. Final unit scope and scoring decisions are reviewed; question counts follow defensible coverage. Current status: 16.1A.2 source reconciliation and Unit 1 map prepared, five MP3s technically checked and a concrete contract/rubric drafted; teacher review is now authorised; final scoring/bank decisions remain open. |
 | 16.1B — reusable capabilities | The minimal required typed/matching/ordering, task-set/audio and writing-submission/rubric components across authoring, runtime and reporting | Server-authoritative grading, answer protection, accepted-variant and partial-credit cases, review-state correctness, keyboard/mobile media behaviour and regression coverage. Long-writing final grading stays disabled until its route and rubric are accepted. |
 | 16.1C — one complete English unit | Whole-bank-compared content, appropriate hints, approved source assets and a governed unit release | Content review and QA, representative assessment coverage, role/two-school/cross-subject isolation, exact deployment verification and authenticated desktop/mobile use. Existing Physics evidence/scoring must remain unchanged. Then use larger content batches for later units. |
 
@@ -104,7 +104,7 @@ No new tests or production calls are required for this documentation-only propos
 
 - Final item-level evidence coverage against the reconciled 2026 standard, programme and proposed Unit 1 map.
 - Audio audition, source protection, hosting/delivery conditions and production playback; five publisher files are already technically verified.
-- The first release's extended-writing review route and teacher workload.
+- The first release's final writing task/rubric and workload schedule; teacher review capability is authorised under 16.1B.1.
 - Item/component counts, weights, partial credit, accepted alternatives and English mastery/readiness criteria.
 
 These decisions are prerequisites to an English learner release. They do not block drafting the framework or the source/evidence map. See the [authoritative status register](project-status.md), [roadmap](sprint-roadmap.md) and [current API contract](api-contract.md).
