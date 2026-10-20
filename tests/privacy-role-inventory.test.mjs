@@ -5,6 +5,7 @@ import vm from "node:vm";
 import { stripTypeScriptTypes } from "node:module";
 
 const studentTables = [
+  "learning_source_family_exposures",
   "written_work",
   "class_memberships",
   "institutional_class_enrollments",

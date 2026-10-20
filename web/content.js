@@ -442,7 +442,7 @@ function renderDetail() {
       <label>Հայերեն հարց<textarea id="editPromptHy" rows="4" ${disabled ? "disabled" : ""}>${esc(detail.item.promptHy ?? "")}</textarea></label>
       <label>Անգլերեն հարց <span class="subtle tiny">ըստ ցանկության</span><textarea id="editPromptEn" rows="3" ${disabled ? "disabled" : ""}>${esc(detail.item.promptEn ?? "")}</textarea></label>
       <label>Խթանիչ տվյալներ (JSON) <span class="subtle tiny">ընդլայնված</span><textarea id="editStimulus" class="code-field" rows="3" spellcheck="false" ${disabled ? "disabled" : ""}>${esc(JSON.stringify(detail.item.stimulus ?? {}, null, 2))}</textarea></label>
-      ${editable ? '<button type="button" id="chooseAudioBtn" class="secondary">Ընտրել ձայնագրություն</button><div id="audioCatalog" role="status"></div>' : ''}
+      ${editable ? '<button type="button" id="chooseAudioBtn" class="secondary">Ընտրել ձայնագրություն</button><div id="audioCatalog" role="status"></div><button type="button" id="chooseTaskSetBtn" class="secondary">Ընտրել ընդհանուր նյութով առաջադրանքաշար</button><div id="taskSetCatalog" role="status"></div>' : ''}
     </section>
 
     ${item.type === "single_choice" ? `<section class="detail-section editor-section" data-item-tab="content"><div class="section-heading"><div><h3>Պատասխանի տարբերակներ</h3><p class="subtle tiny">Տարբերակների կոդերը պետք է լինեն եզակի, և յուրաքանչյուր տարբերակ պետք է ունենա հայերեն տեքստ։</p></div>${editable ? `<button type="button" id="addOptionBtn" class="ghost">Ավելացնել տարբերակ</button>` : ""}</div><div id="optionEditor">${optionRowsHtml(detail.options, disabled)}</div></section>` : ""}
@@ -536,6 +536,21 @@ function renderDetail() {
       label.append(select);host.replaceChildren(label);
     }catch{if(selectedDetail===detail)host.textContent='Չհաջողվեց բեռնել ձայնագրությունները։ Կրկին փորձեք։';}
     finally{if(selectedDetail===detail)button.disabled=false;}
+  });
+  $("chooseTaskSetBtn")?.addEventListener("click",async()=>{
+    const button=$("chooseTaskSetBtn"),host=$("taskSetCatalog");button.disabled=true;host.textContent='Առաջադրանքաշարերը բեռնվում են…';
+    try{
+      const result=await invoke('get-learning-task-set',{action:'catalog',itemId:detail.item.id});
+      if(selectedDetail!==detail||!activeSession)return;
+      if(!result.versions?.length){host.textContent='Այս հարցի համար ստուգված առաջադրանքաշար դեռ չկա։';return;}
+      const label=document.createElement('label');label.textContent='Ընդհանուր նյութով առաջադրանքաշար';
+      const select=document.createElement('select'),empty=document.createElement('option');empty.value='';empty.textContent='Ընտրեք առաջադրանքաշարը';select.append(empty);
+      for(const set of result.versions){const option=document.createElement('option');option.value=set.id;option.textContent=`${set.title} · ${set.total} հարց`;select.append(option);}
+      select.value=detail.item.stimulus?.taskSetVersionId||'';
+      select.onchange=()=>{if(!select.value)return;const field=$("editStimulus");field.value=JSON.stringify({kind:'task_set',schemaVersion:'haiedu-task-set-v1',taskSetVersionId:select.value},null,2);field.dispatchEvent(new Event('input',{bubbles:true}));};
+      label.append(select);host.replaceChildren(label);
+    }catch{if(selectedDetail===detail&&activeSession)host.textContent='Չհաջողվեց բեռնել առաջադրանքաշարերը։ Կրկին փորձեք։';}
+    finally{if(selectedDetail===detail&&activeSession)button.disabled=false;}
   });
   $("approveBtn")?.addEventListener("click", approveCurrent);
   $("editQuestionBtn")?.addEventListener("click", () => {

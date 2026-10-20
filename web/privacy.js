@@ -42,6 +42,7 @@ function inventoryPresentation(role, inventory) {
         ["Գրավոր աշխատանքներ՝ սևագրերով, ներկայացված տարբերակներով և մեկնաբանություններով", inventory.writtenWork ?? 0],
         ["Չուղարկված պատասխանների սևագրեր", inventory.responseDrafts ?? 0],
         ["Ձայնագրությունների օգտագործման գրառումներ", inventory.audioDeliveries ?? 0],
+        ["Ընդհանուր նյութերի դիտման գրառումներ", inventory.sourceFamilyExposures ?? 0],
       ],
     },
     teacher: {
