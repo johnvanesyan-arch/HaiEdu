@@ -277,14 +277,28 @@
       "passed": 1341,
       "failed": 0
     },
-    "browserScope": "Real Chromium, actual Edge handlers and PGlite; synthetic authentication, two subjects/contexts, mobile drafts and points, failed-save retry. PostgreSQL 17.6 is a required CI job."
+    "browserScope": "Real Chromium, actual Edge handlers and PGlite; synthetic authentication, two subjects/contexts, mobile drafts and points, failed-save retry. PostgreSQL 17.6 is a required CI job.",
+    "reviewerNativeBrowser": 9
   },
   "release": {
     "ci": null,
     "migration": null,
     "edges": null,
     "productionRead": null,
-    "notionSourceCommit": null
+    "notionSourceCommit": null,
+    "ciAttempts": [
+      {
+        "runId": 39429064661,
+        "head": "50763b57a9da97a9715f2f35527e3fe37ebc3c18",
+        "result": "failed",
+        "passed": [
+          "Node 1341",
+          "PostgreSQL 17.6 including typed tests",
+          "institutional concurrency"
+        ],
+        "reason": "Reviewer browser fixture blocked new editor imports; its allowed module graph was corrected. No production deployment occurred."
+      }
+    ]
   },
   "remaining": [
     "matching/ordering",

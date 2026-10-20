@@ -6,10 +6,10 @@ import { dashboardFixture } from "../fixtures/content-dashboard-endpoint.mjs";
 
 // Native browser regression with real UI modules and offline auth/network doubles.
 // This covers DOM/event lifecycle, not live backend authorization or content workflows.
-const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js", "learning-stimulus.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
+const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js", "learning-stimulus.mjs", "learning-navigation.mjs", "typed-fields-editor.mjs", "typed-fields-contract.mjs", "typed-fields-ui.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
 const origin = "https://content-lifecycle.test";
 let browser;
-before(async () => { browser = await chromium.launch({ headless: true }); }, { timeout: 30_000 });
+before(async () => { browser = await chromium.launch({ headless: true, ...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{}) }); }, { timeout: 30_000 });
 after(async () => { await browser?.close(); });
 
 async function fixture(t, moduleName = "content-review-workflow.js", initial = "active") {
