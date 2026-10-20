@@ -8,6 +8,18 @@ import {database,configureTyped,configure,makeReady,finish,blueprintId,definitio
 test('typed alternatives are explicit; normalization never invents a grammar correction',async()=>{
  const db=await database();try{
   validateTypedKey(definition,key);
+  for(let flags=0;flags<16;flags++){
+   const rules={trim:!!(flags&1),collapseWhitespace:!!(flags&2),apostrophes:!!(flags&4),caseMode:flags&8?'ascii-insensitive':'sensitive'};
+   for(const input of ['return','train','north','r','n','t','\tReturn\r\n','  two\t\twords  ','\\treturn\\n','\u00a0return\u00a0','Don’t','\t\r\n']){
+    const sql=(await db.query('select private.normalize_typed_text($1,$2) normalized',[input,JSON.stringify(rules)])).rows[0].normalized;
+    assert.equal(sql,normalizeTypedText(input,rules),JSON.stringify({input,rules}));
+   }
+  }
+  for(const accepted of ['return','r','n','t']){
+   const edgeKey=structuredClone(key);edgeKey.fields.colour.accepted=[accepted];
+   validateTypedKey(definition,edgeKey);
+   await db.query('select private.validate_typed_key($1,$2)',[definition,edgeKey].map(x=>JSON.stringify(x)));
+  }
   for(const [input,score] of [[response(' BLUE ','more   slowly'),1],[response('bl ue','most slowly'),0],[response('blue',''),.5],[response('blue','More slowly'),.5]]){
    const result=(await db.query('select private.grade_typed_fields($1,$2,$3) g',[definition,key,input].map(x=>JSON.stringify(x)))).rows[0].g;
    assert.equal(result.score,score);assert.equal(result.correct,score===1);assert.equal(result.components.length,2);

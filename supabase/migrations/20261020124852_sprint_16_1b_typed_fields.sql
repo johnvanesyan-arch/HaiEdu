@@ -18,7 +18,7 @@ returns text language plpgsql immutable set search_path='' as $$
 begin
  if (p_rules->>'apostrophes')::boolean then p_text:=translate(p_text,'‘’',chr(39)||chr(39)); end if;
  if (p_rules->>'collapseWhitespace')::boolean then p_text:=regexp_replace(p_text,E'[ \\t\\r\\n]+',' ','g'); end if;
- if (p_rules->>'trim')::boolean then p_text:=btrim(p_text,E' \\t\\r\\n'); end if;
+ if (p_rules->>'trim')::boolean then p_text:=btrim(p_text,E' \t\r\n'); end if;
  if p_rules->>'caseMode'='ascii-insensitive' then p_text:=translate(p_text,'ABCDEFGHIJKLMNOPQRSTUVWXYZ','abcdefghijklmnopqrstuvwxyz'); end if;
  return p_text;
 end;
@@ -43,7 +43,7 @@ begin
   if jsonb_typeof(f) is distinct from 'object' then raise exception 'typed_fields_contract_invalid'; end if;
   if (select count(*) from jsonb_object_keys(f))<>3 or not(f ?& array['id','label','maxLength'])
   or jsonb_typeof(f->'id') is distinct from 'string' or coalesce(f->>'id','') !~ '^[a-z][a-z0-9_]{0,39}$' or f->>'id'=any(ids)
-  or jsonb_typeof(f->'label') is distinct from 'string' or length(btrim(coalesce(f->>'label',''),E' \\t\\r\\n'))=0 or length(f->>'label')>2000
+  or jsonb_typeof(f->'label') is distinct from 'string' or length(btrim(coalesce(f->>'label',''),E' \t\r\n'))=0 or length(f->>'label')>2000
   or jsonb_typeof(f->'maxLength') is distinct from 'number' or coalesce(f->>'maxLength','') !~ '^[1-9][0-9]*$'
   then raise exception 'typed_fields_contract_invalid'; end if;
   if (f->>'maxLength')::numeric>500 then raise exception 'typed_fields_contract_invalid'; end if;
@@ -75,7 +75,7 @@ begin
   for a in select value from jsonb_array_elements(k->'accepted') loop
    if jsonb_typeof(a)<>'string' or length(a#>>'{}')>(f->>'maxLength')::integer then raise exception 'typed_fields_contract_invalid'; end if;
    norm:=private.normalize_typed_text(a#>>'{}',rules);
-   if length(btrim(norm,E' \\t\\r\\n'))=0 or norm=any(seen) then raise exception 'typed_fields_contract_invalid'; end if;
+   if length(btrim(norm,E' \t\r\n'))=0 or norm=any(seen) then raise exception 'typed_fields_contract_invalid'; end if;
    seen:=array_append(seen,norm);
   end loop;
  end loop;
