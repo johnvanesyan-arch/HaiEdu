@@ -189,6 +189,28 @@ const mediaDetail = (stimulus) => ({
   answerKey: {answer: "A"}, editing: {contentEditable: false},
 });
 
+test('private draft passages and scripts render safely on desktop/mobile and disappear on item change or sign-out', {timeout:20_000}, async t => {
+ const state=await fixture(t,'content.js','active'),{page}=state;
+ const detail={...mediaDetail({}),authoringReview:{schemaVersion:'haiedu-authoring-review-v1',version:1,locale:'en',feedback:'Private answer explanation',optionFeedback:[{key:'A',text:'Private option explanation'}],source:{kind:'listening',format:'script',title:'Synthetic <source>',text:'Speaker One: <img src=x onerror="window.__unsafe=1">\n\nA private draft recording script.'}}};
+ for(const width of [1280,380]){
+  await page.setViewportSize({width,height:900});
+  await page.evaluate(detail=>window.__editorFixture.preview(detail),detail);
+  await expect(page.locator('.authoring-review-context')).toContainText('A private draft recording script.');
+  await expect(page.locator('.authoring-review-context')).toContainText('Private answer explanation');
+  assert.equal(await page.locator('.authoring-review-context img').count(),0);
+  assert.equal(await page.locator('#learnerPreviewStimulus').textContent(),'');
+  assert.equal(await page.locator('#approveBtn').isDisabled(),true);
+  await assertSettled(state);
+ }
+ await page.evaluate(detail=>window.__editorFixture.preview({...detail,item:{...detail.item,versionNo:2}}),detail);
+ await expect(page.locator('.authoring-review-context')).toContainText('սկզբնական նախագծի նշումներն են');
+ await page.evaluate(detail=>window.__editorFixture.preview(detail),mediaDetail({}));
+ assert.equal(await page.locator('.authoring-review-context').count(),0);
+ await page.evaluate(detail=>window.__editorFixture.preview(detail),detail);
+ await page.evaluate(()=>window.__authEvent('SIGNED_OUT',null));
+ await expect(page.locator('#detailPanel')).toBeEmpty();await assertSettled(state);
+});
+
 for (const failedRefresh of [false, true]) {
   test(`passed QA enables one approval after ${failedRefresh ? 'a failed read and explicit refresh' : 'a successful read'} in a large bank`, { timeout: 20_000 }, async (t) => {
     const state = await fixture(t, 'content.js', 'active'), { page } = state;

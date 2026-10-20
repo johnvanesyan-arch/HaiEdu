@@ -75,12 +75,39 @@ async function buildSnapshot(admin: any, item: any) {
   return { item, options: options ?? [], answerKey: answerKey ?? null, misconceptions: mappings ?? [] };
 }
 
+// Authoring attachments live in reviewer-only version history, never in learner
+// stimuli or item config. The config contains only the immutable version pointer.
+async function loadAuthoringReview(admin: any, item: any) {
+  const reference = item.config?.authoringReview;
+  if (reference === undefined) return null;
+  if (reference?.schemaVersion !== "haiedu-authoring-review-v1" ||
+      !Number.isInteger(reference.snapshotVersion) || reference.snapshotVersion < 1 ||
+      reference.snapshotVersion > Number(item.version_no)) throw new Error("authoring_review_unavailable");
+  const { data, error } = await admin.from("item_versions").select("snapshot")
+    .eq("item_id", item.id).eq("version_no", reference.snapshotVersion).maybeSingle();
+  const context = data?.snapshot?.authoringReview;
+  if (error || context?.schemaVersion !== reference.schemaVersion || context.itemCode !== item.code ||
+      context.version !== reference.snapshotVersion) throw new Error("authoring_review_unavailable");
+  return context;
+}
+
+async function authoringSourceRegistered(admin: any, item: any, context: any) {
+  if (!context?.source) return true;
+  if (item.stimulus?.kind !== "task_set") return false;
+  const { data, error } = await admin.from("learning_task_set_versions")
+    .select("source_family_id,stimulus,revoked_at").eq("id", item.stimulus.taskSetVersionId).maybeSingle();
+  return !error && Boolean(data) && !data.revoked_at &&
+    data.source_family_id === context.source.familyId &&
+    data.stimulus?.kind === (context.source.kind === "listening" ? "audio" : "text");
+}
+
 async function loadEditorDetail(admin: any, item: any) {
-  const [snapshot, templateResult, misconceptionResult, poolResult] = await Promise.all([
+  const [snapshot, templateResult, misconceptionResult, poolResult, authoringReview] = await Promise.all([
     buildSnapshot(admin, item),
     admin.from("item_templates").select("id, code, template_kind, template_version, generation_config, item_families(code, skill_id)").eq("id", item.item_template_id).maybeSingle(),
     admin.from("misconceptions").select("id, code, title_hy, description_hy, status").eq("skill_id", item.skill_id).eq("status", "active").order("code", { ascending: true }),
     admin.from("assessment_pool_items").select("enabled, metadata, assessment_pools(code, purpose, is_protected, status)").eq("item_id", item.id),
+    loadAuthoringReview(admin, item),
   ]);
 
   const template = templateResult.data ?? null;
@@ -131,6 +158,7 @@ async function loadEditorDetail(admin: any, item: any) {
       acceptedUnits: snapshot.answerKey.accepted_units ?? [],
       feedbackCode: snapshot.answerKey.feedback_code,
     } : null,
+    authoringReview: authoringReview ? { ...authoringReview, sourceRegistered: await authoringSourceRegistered(admin, item, authoringReview) } : null,
     misconceptions,
     availableMisconceptions: misconceptionResult.data ?? [],
     pools,
@@ -153,7 +181,7 @@ async function loadEditorDetail(admin: any, item: any) {
 }
 
 async function evaluateQa(admin: any, item: any) {
-  const [{ data: options }, { data: key }, { data: mappings }, { data: duplicates }, { data: template }] = await Promise.all([
+  const [{ data: options }, { data: key }, { data: mappings }, { data: duplicates }, { data: template }, authoringReview] = await Promise.all([
     admin.from("item_options").select("option_key, content_hy, display_order").eq("item_id", item.id).order("display_order", { ascending: true }),
     admin.from("item_answer_keys").select("answer, tolerance, canonical_unit, accepted_units, feedback_code").eq("item_id", item.id).maybeSingle(),
     admin.from("item_misconception_mappings").select("misconception_id, response_key").eq("item_id", item.id),
@@ -161,6 +189,7 @@ async function evaluateQa(admin: any, item: any) {
     item.item_template_id
       ? admin.from("item_templates").select("id, code, template_kind, template_version, generation_config").eq("id", item.item_template_id).maybeSingle()
       : Promise.resolve({ data: null }),
+    loadAuthoringReview(admin, item),
   ]);
 
   const errors: string[] = [];
@@ -174,6 +203,10 @@ async function evaluateQa(admin: any, item: any) {
   if (!(Number(item.difficulty) >= 1 && Number(item.difficulty) <= 5)) errors.push("invalid_difficulty");
   if (item.difficulty_band !== expectedDifficultyBand(Number(item.difficulty))) errors.push("difficulty_band_mismatch");
   if (!key) errors.push("missing_answer_key");
+
+  // Draft source text is useful for review, but is not a registered stimulus.
+  // Approval re-runs this check; a stale passing QA record cannot clear the hold.
+  if (!(await authoringSourceRegistered(admin, item, authoringReview))) errors.push("authoring_source_registration_pending");
 
   const authoringProfileVersion = String(template?.generation_config?.authoringProfileVersion ?? "");
   if (authoringProfileVersion === PROSPECTIVE_AUTHORING_PROFILE) {

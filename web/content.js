@@ -115,6 +115,7 @@ const CONTENT_ERROR_HY = {
   review_submit_failed: "Չհաջողվեց գրանցել հարցի ստուգման իրադարձությունը։",
   revision_payload_required: "Պահպանվող տարբերակի տվյալները բացակայում են։",
   server_not_configured: "Սերվերի կարգավորումը թերի է։ Դիմեք հարթակի ադմինիստրատորին։",
+  authoring_review_unavailable: "Հարցի նախագծային նյութերը չհաջողվեց բեռնել։ Թարմացրեք էջը կամ դիմեք բովանդակության պատասխանատուին։",
   sme_validation_managed_separately: "Մասնագիտական (SME) կարգավիճակը կառավարվում է առանձին գործընթացով։",
   technical_qa_must_pass_before_approval: "Հաստատելուց առաջ ընթացիկ տարբերակը պետք է անցնի տեխնիկական QA-ն։",
   technical_qa_must_pass_before_review: "Ստուգման հաջորդ փուլից առաջ ընթացիկ տարբերակը պետք է անցնի տեխնիկական QA-ն։",
@@ -271,7 +272,7 @@ async function selectItem(id) {
 function optionRowsHtml(options, disabled) {
   return (options ?? []).map((o) => `<div class="option-editor-row" data-option-row>
     <label class="option-key-field">Կոդ<input class="option-key" value="${esc(o.key)}" ${disabled ? "disabled" : ""} /></label>
-    <label>Հայերեն<textarea class="option-hy" rows="2" ${disabled ? "disabled" : ""}>${esc(o.contentHy ?? "")}</textarea></label>
+    <label>Տարբերակի տեքստ<textarea class="option-hy" rows="2" ${disabled ? "disabled" : ""}>${esc(o.contentHy ?? "")}</textarea></label>
     <label>Անգլերեն<input class="option-en" value="${esc(o.contentEn ?? "")}" ${disabled ? "disabled" : ""} /></label>
     <button type="button" class="ghost remove-option-btn" ${disabled ? "disabled" : ""}>Հեռացնել</button>
   </div>`).join("");
@@ -325,6 +326,25 @@ function learnerPreviewHtml(detail) {
   return `<section class="detail-section learner-preview" data-item-tab="preview"><h3>Սովորողի տեսքը</h3><p class="learner-preview-prompt">${esc(item.promptHy || "Հարցի տեքստ չկա")}</p><div id="learnerPreviewStimulus"></div><div class="learner-preview-options">${options}</div></section>`;
 }
 
+function authoringReviewHtml(detail) {
+  const draft = detail.authoringReview;
+  if (!draft) return "";
+  const source = draft.source;
+  const inherited = draft.version !== detail.item.versionNo;
+  const paragraphs = text => String(text || "").split(/\n\n+/).map(p => `<p style="white-space:pre-wrap">${esc(p)}</p>`).join("");
+  return `<section class="detail-section authoring-review-context" data-item-tab="preview">
+    <h3>Նախագծային նյութեր՝ ստուգողի համար</h3>
+    <p class="subtle">Լեզու՝ <strong>${esc(draft.locale)}</strong> · սկզբնական նախագիծ՝ v${esc(draft.version)}։ Այս բաժինը սովորողներին չի ցուցադրվում։</p>
+    ${inherited ? '<p class="editor-warning">Ստորև սկզբնական նախագծի նշումներն են։ Հարցի խմբագրումից հետո համեմատեք դրանք ընթացիկ տեքստի և ճիշտ պատասխանի հետ։</p>' : ''}
+    ${source ? `${draft.sourceRegistered ? '<p class="subtle">Գրանցված աղբյուրը կապակցված է։ Ստորև պահպանված է սկզբնական նախագծային նյութը։</p>' : `<div class="editor-warning"><strong>${source.kind === 'listening' ? 'Լսելու առաջադրանք․ ձայնագրության ստուգումն ու գրանցումը դեռ ավարտված չեն։' : 'Ընթերցանության նյութ․ աղբյուրի ստուգումն ու գրանցումը դեռ ավարտված չեն։'}</strong><p>Ստուգեք հարցը ստորև ներկայացված նյութի հետ։ Հաստատումը հնարավոր կլինի համապատասխան աղբյուրը գրանցելուց և հարցին կապակցելուց հետո։</p></div>`}<h4>${source.format === 'summary' ? 'Տպագիր սցենարի ամփոփում' : source.kind === 'listening' ? 'Սցենարի նախագիծ' : 'Տեքստի նախագիծ'} · ${esc(source.title)}</h4>${paragraphs(source.text)}` : ''}
+    ${draft.hint ? `<h4>Հուշման նախագիծ</h4>${paragraphs(draft.hint)}` : ''}
+    ${draft.feedback ? `<h4>Պատասխանի հիմնավորում</h4>${paragraphs(draft.feedback)}` : ''}
+    ${draft.optionFeedback?.length ? `<h4>Տարբերակների բացատրություններ</h4><ul>${draft.optionFeedback.map(o => `<li><strong>${esc(o.key)}</strong> — ${esc(o.text)}</li>`).join('')}</ul>` : ''}
+    ${draft.fieldFeedback?.length ? `<h4>Դաշտերի բացատրություններ</h4><ul>${draft.fieldFeedback.map(f => `<li><strong>${esc(f.id)}</strong> — ${esc(f.text)}</li>`).join('')}</ul>` : ''}
+    <p class="subtle">${esc(draft.sourceReference || '')}</p>
+  </section>`;
+}
+
 function activateItemTab(tab) {
   itemTab = tab;
   document.body.dataset.contentActiveTab = tab;
@@ -349,7 +369,8 @@ window.addEventListener("haiedu:content-tab-refresh", () => activateItemTab(item
 
 const QA_MESSAGE_HY = {
   missing_item_code: "Հարցի կոդը բացակայում է։",
-  empty_prompt: "Հայերեն հարցի տեքստը բացակայում է։",
+  empty_prompt: "Հարցի տեքստը բացակայում է։",
+  authoring_source_registration_pending: "Նախագծային աղբյուրը դեռ գրանցված և հարցին կապակցված չէ։ Նախադիտման բաժնում կարող եք ստուգել տեքստը կամ սցենարը։",
   invalid_difficulty: "Դժվարության արժեքը պետք է լինի 1-ից 5 միջակայքում։",
   difficulty_band_mismatch: "Դժվարության մակարդակը չի համապատասխանում թվային դժվարությանը։",
   missing_answer_key: "Ճիշտ պատասխանը նշված չէ։",
@@ -436,16 +457,17 @@ function renderDetail() {
       <button type="button" class="item-tab-button" data-item-tab-button="history">Պատմություն</button>
     </nav>
     ${learnerPreviewHtml(detail)}
+    ${authoringReviewHtml(detail)}
 
     <section class="detail-section editor-section" data-item-tab="content">
       <div class="section-heading"><div><h3>Հարցի բովանդակություն</h3><p class="subtle tiny">Հարցի կոդը, հմտությունը և հարցի տեսակը այստեղ չեն փոխվում։</p></div></div>
-      <label>Հայերեն հարց<textarea id="editPromptHy" rows="4" ${disabled ? "disabled" : ""}>${esc(detail.item.promptHy ?? "")}</textarea></label>
+      <label>Հարցի տեքստ<textarea id="editPromptHy" rows="4" ${disabled ? "disabled" : ""}>${esc(detail.item.promptHy ?? "")}</textarea></label>
       <label>Անգլերեն հարց <span class="subtle tiny">ըստ ցանկության</span><textarea id="editPromptEn" rows="3" ${disabled ? "disabled" : ""}>${esc(detail.item.promptEn ?? "")}</textarea></label>
       <label>Խթանիչ տվյալներ (JSON) <span class="subtle tiny">ընդլայնված</span><textarea id="editStimulus" class="code-field" rows="3" spellcheck="false" ${disabled ? "disabled" : ""}>${esc(JSON.stringify(detail.item.stimulus ?? {}, null, 2))}</textarea></label>
       ${editable ? '<button type="button" id="chooseAudioBtn" class="secondary">Ընտրել ձայնագրություն</button><div id="audioCatalog" role="status"></div><button type="button" id="chooseTaskSetBtn" class="secondary">Ընտրել ընդհանուր նյութով առաջադրանքաշար</button><div id="taskSetCatalog" role="status"></div>' : ''}
     </section>
 
-    ${item.type === "single_choice" ? `<section class="detail-section editor-section" data-item-tab="content"><div class="section-heading"><div><h3>Պատասխանի տարբերակներ</h3><p class="subtle tiny">Տարբերակների կոդերը պետք է լինեն եզակի, և յուրաքանչյուր տարբերակ պետք է ունենա հայերեն տեքստ։</p></div>${editable ? `<button type="button" id="addOptionBtn" class="ghost">Ավելացնել տարբերակ</button>` : ""}</div><div id="optionEditor">${optionRowsHtml(detail.options, disabled)}</div></section>` : ""}
+    ${item.type === "single_choice" ? `<section class="detail-section editor-section" data-item-tab="content"><div class="section-heading"><div><h3>Պատասխանի տարբերակներ</h3><p class="subtle tiny">Տարբերակների կոդերը պետք է լինեն եզակի, և յուրաքանչյուր տարբերակ պետք է ունենա տեքստ՝ հարցի լեզվով։</p></div>${editable ? `<button type="button" id="addOptionBtn" class="ghost">Ավելացնել տարբերակ</button>` : ""}</div><div id="optionEditor">${optionRowsHtml(detail.options, disabled)}</div></section>` : ""}
 
     <section class="detail-section editor-section" data-item-tab="content"><h3>Ճիշտ պատասխան</h3>${answerEditorHtml(detail, disabled)}</section>
 
@@ -729,7 +751,7 @@ function buildRevisionPayload(item, defaultSummary = "Content editor revision") 
     confirmEmptyMisconceptions: removedAllMisconceptions,
     changeSummary: $("changeSummary")?.value.trim() || defaultSummary,
   };
-  if (!payload.promptHy) throw new Error("Հայերեն հարցի տեքստը պարտադիր է։");
+  if (!payload.promptHy) throw new Error("Հարցի տեքստը պարտադիր է։");
   if (!payload.itemFamily) throw new Error("Հարցերի ընտանիքը պարտադիր է։");
   return payload;
 }

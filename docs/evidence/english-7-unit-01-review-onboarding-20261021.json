@@ -1,0 +1,1613 @@
+{
+  "schemaVersion": "haiedu-review-onboarding-evidence-v1",
+  "checkpoint": "16.1C.6",
+  "date": "2026-10-21",
+  "timezone": "Asia/Yerevan",
+  "baselineCommit": "e10faea8099fdc3ada21d201dea922be6ee04a2a",
+  "authorization": "John asked why the questions were absent from the reviewer page and explicitly authorized making them reviewable. No human content approval or learner activation authorized by this slice.",
+  "scope": "Existing 116 automatic question drafts, generic reviewer-only authoring attachments and source-registration approval hold. No new questions.",
+  "state": {
+    "observed_at": "2026-10-20 22:00:50.024548+00",
+    "banks": {
+      "mastery": 28,
+      "practice": 60,
+      "diagnostic": 28
+    },
+    "drafts": 116,
+    "human_reviews": 0,
+    "pool_links": 0,
+    "audio_versions": 0,
+    "task_sets": 0,
+    "release": {
+      "key": "english7_u01_review_r1",
+      "status": "draft",
+      "activatedAt": null
+    },
+    "pending_gates": 7
+  },
+  "preservation": {
+    "guardedTables": 70,
+    "rollbackRestoredAll": true,
+    "priorRowsPreservedInCommit": true,
+    "unchangedTables": 54,
+    "appendedTables": 16,
+    "before": [
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_activation",
+        "fingerprint": "1df4787f0c2eece89b4611327af6aff4"
+      },
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_versions",
+        "fingerprint": "1c69b7132347cd8b67a89268668f27ce"
+      },
+      {
+        "row_count": 1872,
+        "table_name": "assessment_blueprint_items",
+        "fingerprint": "7e54e189ad648f2a3f0a4538a01f8b60"
+      },
+      {
+        "row_count": 27,
+        "table_name": "assessment_blueprints",
+        "fingerprint": "38fe215a14d86c322b7826724d8a7fac"
+      },
+      {
+        "row_count": 472,
+        "table_name": "assessment_form_items",
+        "fingerprint": "d84f089091319cf04fa637dd4589dbd9"
+      },
+      {
+        "row_count": 29,
+        "table_name": "assessment_forms",
+        "fingerprint": "ec31ac543009ef35e098ac7a64e23908"
+      },
+      {
+        "row_count": 20,
+        "table_name": "assessment_policy_bindings",
+        "fingerprint": "2c32ee0b3e126db5e47b7de55a5ebacf"
+      },
+      {
+        "row_count": 18,
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "fingerprint": "7383871bb98ea2a76ff9cb30689c643a"
+      },
+      {
+        "row_count": 1244,
+        "table_name": "assessment_pool_items",
+        "fingerprint": "184285de8853be3dfc41e8f90db0dda4"
+      },
+      {
+        "row_count": 19,
+        "table_name": "assessment_pools",
+        "fingerprint": "d6450febadadd4af95b10f3a8c9a7b92"
+      },
+      {
+        "row_count": 42,
+        "table_name": "attempts",
+        "fingerprint": "26d44860397d32ab6023da8e72cfcb0e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_mastery_states",
+        "fingerprint": "1b6fb3231d34474d6422795bcb484b2c"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_cycles",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_item_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_review_requirements",
+        "fingerprint": "2e1caa3798ff3b8199f848152602ba13"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_sessions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "curriculum_frameworks",
+        "fingerprint": "cc95b05470c26da89674830c44573e7e"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_reconciliation_runs",
+        "fingerprint": "86fa5040c5e4315a2eaa1b56024973c0"
+      },
+      {
+        "row_count": 42,
+        "table_name": "curriculum_release_gate_checks",
+        "fingerprint": "242e7fd248cea52cd6b8b26b7c15397f"
+      },
+      {
+        "row_count": 1028,
+        "table_name": "curriculum_release_item_families",
+        "fingerprint": "254bf21f349ebd320e8c42a80f48a611"
+      },
+      {
+        "row_count": 53,
+        "table_name": "curriculum_release_outcomes",
+        "fingerprint": "79555766bcc8fca1e084ff76c77475ef"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_release_reconciliations",
+        "fingerprint": "01701c1671482c73cdf5ab848dcb87aa"
+      },
+      {
+        "row_count": 66,
+        "table_name": "curriculum_release_skills",
+        "fingerprint": "7bf9605a3f0222a6d4c6d08d14cc6503"
+      },
+      {
+        "row_count": 7,
+        "table_name": "curriculum_release_units",
+        "fingerprint": "449c3d22acb7c1b4c92f261c1f8aaf61"
+      },
+      {
+        "row_count": 7,
+        "table_name": "curriculum_releases",
+        "fingerprint": "242aae0aedf8c5d85e0a2a415a2f8703"
+      },
+      {
+        "row_count": 3,
+        "table_name": "curriculum_source_documents",
+        "fingerprint": "d4b3cde546d8cacbda028fbb3256e6d8"
+      },
+      {
+        "row_count": 12,
+        "table_name": "grades",
+        "fingerprint": "62cb5fdf3ecc14c7279c2484156cc000"
+      },
+      {
+        "row_count": 1251,
+        "table_name": "item_answer_keys",
+        "fingerprint": "1054877916900dca98aa788fa67c9dd6"
+      },
+      {
+        "row_count": 1251,
+        "table_name": "item_curriculum_scopes",
+        "fingerprint": "1eee51d3305af9e0d56e729401f5063f"
+      },
+      {
+        "row_count": 1029,
+        "table_name": "item_families",
+        "fingerprint": "6f4d62855b6b87ba997a4771305f6b84"
+      },
+      {
+        "row_count": 1029,
+        "table_name": "item_family_curriculum_reconciliations",
+        "fingerprint": "ea002e478aebb9afc8ef309377d36051"
+      },
+      {
+        "row_count": 3212,
+        "table_name": "item_misconception_mappings",
+        "fingerprint": "0630d067b0596adb53124c132bb4dee1"
+      },
+      {
+        "row_count": 4396,
+        "table_name": "item_options",
+        "fingerprint": "2f762b42bec0fdeac871659af168de6e"
+      },
+      {
+        "row_count": 1556,
+        "table_name": "item_qa_runs",
+        "fingerprint": "44357e38125b5ba66de806a644fa3ad9"
+      },
+      {
+        "row_count": 1532,
+        "table_name": "item_reviews",
+        "fingerprint": "9a2e01de34943bf124cb1da3ecd740ec"
+      },
+      {
+        "row_count": 518,
+        "table_name": "item_template_remediation_guides",
+        "fingerprint": "e603af7f4dc742b0e53f996eeee86627"
+      },
+      {
+        "row_count": 1029,
+        "table_name": "item_templates",
+        "fingerprint": "c1df9b02dfb0012a759682cdbf87cac3"
+      },
+      {
+        "row_count": 1146,
+        "table_name": "item_versions",
+        "fingerprint": "b0af9e1e86807f1b8e339b90a52b03f9"
+      },
+      {
+        "row_count": 1251,
+        "table_name": "items",
+        "fingerprint": "02a9ac127de1e789dde981167803bbf6"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_audio_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_configurations",
+        "fingerprint": "4254a36a7a040133d3592cd131c83c83"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_runtime_bindings",
+        "fingerprint": "dd95315c4395cb93457b2c5afaefc495"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcome_normative_mappings",
+        "fingerprint": "f0affa67ef267421fa3368c30011a7e7"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcomes",
+        "fingerprint": "d0063216634a4cea234e80ae5aa63ad1"
+      },
+      {
+        "row_count": 96,
+        "table_name": "learning_session_items",
+        "fingerprint": "34f74f2134c35958e0e4b8ab6420137a"
+      },
+      {
+        "row_count": 8,
+        "table_name": "learning_sessions",
+        "fingerprint": "a5d0326f20b58e02773af6281ee31cdb"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_source_family_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_task_set_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "mastery_check_attempts",
+        "fingerprint": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+      },
+      {
+        "row_count": 1026,
+        "table_name": "misconception_review_events",
+        "fingerprint": "b453094e23e087c502ea133a8e25e053"
+      },
+      {
+        "row_count": 1033,
+        "table_name": "misconceptions",
+        "fingerprint": "b399278d2c2bb11a9e0e07cf3e32906c"
+      },
+      {
+        "row_count": 824,
+        "table_name": "recommendation_events",
+        "fingerprint": "bb3fe105ac2571f227284db74a10591f"
+      },
+      {
+        "row_count": 6,
+        "table_name": "remediation_events",
+        "fingerprint": "e5001e648bb95efe0dd4a0c163f8fd2c"
+      },
+      {
+        "row_count": 1708,
+        "table_name": "remediation_guide_authoring_versions",
+        "fingerprint": "ad66c5fa1f9ed7d37f52e14da1f9303c"
+      },
+      {
+        "row_count": 1067,
+        "table_name": "remediation_guide_versions",
+        "fingerprint": "904a28da2d3e95fc1d420cac3f0915b4"
+      },
+      {
+        "row_count": 26,
+        "table_name": "runtime_builds",
+        "fingerprint": "de52aa09cfe3faf6405ea630a9842850"
+      },
+      {
+        "row_count": 66,
+        "table_name": "skill_curriculum_reconciliations",
+        "fingerprint": "fda1e906882d49718a03f650ffe6e601"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcome_curriculum_mappings",
+        "fingerprint": "1a2a3f9398ebd328e65ac1f3c565667c"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcomes",
+        "fingerprint": "938bbad8c1f7dde57c694cd0d117d6bd"
+      },
+      {
+        "row_count": 17,
+        "table_name": "skill_prerequisites",
+        "fingerprint": "2163f87101e252337a68d16de849d8d4"
+      },
+      {
+        "row_count": 10,
+        "table_name": "skill_remediation_guides",
+        "fingerprint": "0c0a4b6b5a5fb2e78a4e9707d5c28366"
+      },
+      {
+        "row_count": 67,
+        "table_name": "skills",
+        "fingerprint": "4065bd232ae5398a0b5aa86d6d8ed95b"
+      },
+      {
+        "row_count": 44,
+        "table_name": "student_item_exposure_events",
+        "fingerprint": "b9b739a7d235b2a8ebb837003baef8b6"
+      },
+      {
+        "row_count": 13,
+        "table_name": "student_skill_mastery_by_release",
+        "fingerprint": "19a0f8555ac31ac870a6cff088c9ce29"
+      },
+      {
+        "row_count": 2,
+        "table_name": "subject_program_source_bindings",
+        "fingerprint": "7cefb9c48c14a2b02a5e4ae0660edd92"
+      },
+      {
+        "row_count": 2,
+        "table_name": "subject_programs",
+        "fingerprint": "0f6aa4f7f30e95a187a19ca8be0dd7d1"
+      },
+      {
+        "row_count": 2,
+        "table_name": "subjects",
+        "fingerprint": "015207b62ec4b483229bb237d00a9546"
+      },
+      {
+        "row_count": 30,
+        "table_name": "topics",
+        "fingerprint": "c7f40d5f22a7f50ede9ac6c952d5e7dc"
+      },
+      {
+        "row_count": 7,
+        "table_name": "units",
+        "fingerprint": "735aabd708dcc04ed6c659b658832e7b"
+      },
+      {
+        "row_count": 0,
+        "table_name": "written_task_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ],
+    "after": [
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_activation",
+        "fingerprint": "1df4787f0c2eece89b4611327af6aff4"
+      },
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_versions",
+        "fingerprint": "1c69b7132347cd8b67a89268668f27ce"
+      },
+      {
+        "row_count": 1872,
+        "table_name": "assessment_blueprint_items",
+        "fingerprint": "7e54e189ad648f2a3f0a4538a01f8b60"
+      },
+      {
+        "row_count": 27,
+        "table_name": "assessment_blueprints",
+        "fingerprint": "38fe215a14d86c322b7826724d8a7fac"
+      },
+      {
+        "row_count": 472,
+        "table_name": "assessment_form_items",
+        "fingerprint": "d84f089091319cf04fa637dd4589dbd9"
+      },
+      {
+        "row_count": 29,
+        "table_name": "assessment_forms",
+        "fingerprint": "ec31ac543009ef35e098ac7a64e23908"
+      },
+      {
+        "row_count": 20,
+        "table_name": "assessment_policy_bindings",
+        "fingerprint": "2c32ee0b3e126db5e47b7de55a5ebacf"
+      },
+      {
+        "row_count": 18,
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "fingerprint": "7383871bb98ea2a76ff9cb30689c643a"
+      },
+      {
+        "row_count": 1244,
+        "table_name": "assessment_pool_items",
+        "fingerprint": "184285de8853be3dfc41e8f90db0dda4"
+      },
+      {
+        "row_count": 19,
+        "table_name": "assessment_pools",
+        "fingerprint": "d6450febadadd4af95b10f3a8c9a7b92"
+      },
+      {
+        "row_count": 42,
+        "table_name": "attempts",
+        "fingerprint": "26d44860397d32ab6023da8e72cfcb0e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_mastery_states",
+        "fingerprint": "1b6fb3231d34474d6422795bcb484b2c"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_cycles",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_item_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_review_requirements",
+        "fingerprint": "2e1caa3798ff3b8199f848152602ba13"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_sessions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "curriculum_frameworks",
+        "fingerprint": "cc95b05470c26da89674830c44573e7e"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_reconciliation_runs",
+        "fingerprint": "86fa5040c5e4315a2eaa1b56024973c0"
+      },
+      {
+        "row_count": 49,
+        "table_name": "curriculum_release_gate_checks",
+        "fingerprint": "76bc56c09f6aad078d83826e1919c828"
+      },
+      {
+        "row_count": 1028,
+        "table_name": "curriculum_release_item_families",
+        "fingerprint": "254bf21f349ebd320e8c42a80f48a611"
+      },
+      {
+        "row_count": 53,
+        "table_name": "curriculum_release_outcomes",
+        "fingerprint": "79555766bcc8fca1e084ff76c77475ef"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_release_reconciliations",
+        "fingerprint": "01701c1671482c73cdf5ab848dcb87aa"
+      },
+      {
+        "row_count": 80,
+        "table_name": "curriculum_release_skills",
+        "fingerprint": "b79050797c48be0273a3705599972579"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_release_units",
+        "fingerprint": "3081bda61e74df4d3902ae0c21988407"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_releases",
+        "fingerprint": "bcaaa4a76a9ee95f0d8b16430086c669"
+      },
+      {
+        "row_count": 3,
+        "table_name": "curriculum_source_documents",
+        "fingerprint": "d4b3cde546d8cacbda028fbb3256e6d8"
+      },
+      {
+        "row_count": 12,
+        "table_name": "grades",
+        "fingerprint": "62cb5fdf3ecc14c7279c2484156cc000"
+      },
+      {
+        "row_count": 1367,
+        "table_name": "item_answer_keys",
+        "fingerprint": "7c190b8a905030b1196cd4d13ae6ba12"
+      },
+      {
+        "row_count": 1367,
+        "table_name": "item_curriculum_scopes",
+        "fingerprint": "f2279dccf6bff0b4b4505e3155d16d1d"
+      },
+      {
+        "row_count": 1145,
+        "table_name": "item_families",
+        "fingerprint": "31c3ae8976a540c7a7a29d98fc10fcce"
+      },
+      {
+        "row_count": 1029,
+        "table_name": "item_family_curriculum_reconciliations",
+        "fingerprint": "ea002e478aebb9afc8ef309377d36051"
+      },
+      {
+        "row_count": 3212,
+        "table_name": "item_misconception_mappings",
+        "fingerprint": "0630d067b0596adb53124c132bb4dee1"
+      },
+      {
+        "row_count": 4617,
+        "table_name": "item_options",
+        "fingerprint": "2a88a7847831f871c857b370e63dc1ac"
+      },
+      {
+        "row_count": 1672,
+        "table_name": "item_qa_runs",
+        "fingerprint": "9e26117dfbc6905c1e0fe5bbceba50ea"
+      },
+      {
+        "row_count": 1532,
+        "table_name": "item_reviews",
+        "fingerprint": "9a2e01de34943bf124cb1da3ecd740ec"
+      },
+      {
+        "row_count": 518,
+        "table_name": "item_template_remediation_guides",
+        "fingerprint": "e603af7f4dc742b0e53f996eeee86627"
+      },
+      {
+        "row_count": 1145,
+        "table_name": "item_templates",
+        "fingerprint": "c25ace49bc007b847c98fdd23da52104"
+      },
+      {
+        "row_count": 1262,
+        "table_name": "item_versions",
+        "fingerprint": "97226a357478f5641b81bd7eb1ea6772"
+      },
+      {
+        "row_count": 1367,
+        "table_name": "items",
+        "fingerprint": "0fb949f01f7f686be002936a95326eb7"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_audio_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_configurations",
+        "fingerprint": "4254a36a7a040133d3592cd131c83c83"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_runtime_bindings",
+        "fingerprint": "dd95315c4395cb93457b2c5afaefc495"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcome_normative_mappings",
+        "fingerprint": "f0affa67ef267421fa3368c30011a7e7"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcomes",
+        "fingerprint": "d0063216634a4cea234e80ae5aa63ad1"
+      },
+      {
+        "row_count": 96,
+        "table_name": "learning_session_items",
+        "fingerprint": "34f74f2134c35958e0e4b8ab6420137a"
+      },
+      {
+        "row_count": 8,
+        "table_name": "learning_sessions",
+        "fingerprint": "a5d0326f20b58e02773af6281ee31cdb"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_source_family_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_task_set_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "mastery_check_attempts",
+        "fingerprint": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+      },
+      {
+        "row_count": 1026,
+        "table_name": "misconception_review_events",
+        "fingerprint": "b453094e23e087c502ea133a8e25e053"
+      },
+      {
+        "row_count": 1033,
+        "table_name": "misconceptions",
+        "fingerprint": "b399278d2c2bb11a9e0e07cf3e32906c"
+      },
+      {
+        "row_count": 824,
+        "table_name": "recommendation_events",
+        "fingerprint": "bb3fe105ac2571f227284db74a10591f"
+      },
+      {
+        "row_count": 6,
+        "table_name": "remediation_events",
+        "fingerprint": "e5001e648bb95efe0dd4a0c163f8fd2c"
+      },
+      {
+        "row_count": 1708,
+        "table_name": "remediation_guide_authoring_versions",
+        "fingerprint": "ad66c5fa1f9ed7d37f52e14da1f9303c"
+      },
+      {
+        "row_count": 1067,
+        "table_name": "remediation_guide_versions",
+        "fingerprint": "904a28da2d3e95fc1d420cac3f0915b4"
+      },
+      {
+        "row_count": 26,
+        "table_name": "runtime_builds",
+        "fingerprint": "de52aa09cfe3faf6405ea630a9842850"
+      },
+      {
+        "row_count": 66,
+        "table_name": "skill_curriculum_reconciliations",
+        "fingerprint": "fda1e906882d49718a03f650ffe6e601"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcome_curriculum_mappings",
+        "fingerprint": "1a2a3f9398ebd328e65ac1f3c565667c"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcomes",
+        "fingerprint": "938bbad8c1f7dde57c694cd0d117d6bd"
+      },
+      {
+        "row_count": 17,
+        "table_name": "skill_prerequisites",
+        "fingerprint": "2163f87101e252337a68d16de849d8d4"
+      },
+      {
+        "row_count": 10,
+        "table_name": "skill_remediation_guides",
+        "fingerprint": "0c0a4b6b5a5fb2e78a4e9707d5c28366"
+      },
+      {
+        "row_count": 81,
+        "table_name": "skills",
+        "fingerprint": "ff8d0bf2159893c6586861f31e37c29e"
+      },
+      {
+        "row_count": 44,
+        "table_name": "student_item_exposure_events",
+        "fingerprint": "b9b739a7d235b2a8ebb837003baef8b6"
+      },
+      {
+        "row_count": 13,
+        "table_name": "student_skill_mastery_by_release",
+        "fingerprint": "19a0f8555ac31ac870a6cff088c9ce29"
+      },
+      {
+        "row_count": 2,
+        "table_name": "subject_program_source_bindings",
+        "fingerprint": "7cefb9c48c14a2b02a5e4ae0660edd92"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subject_programs",
+        "fingerprint": "ee9738a90126520ed8427ca0ddfd570d"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subjects",
+        "fingerprint": "e02963c95d7856a55b57175a81ae7def"
+      },
+      {
+        "row_count": 30,
+        "table_name": "topics",
+        "fingerprint": "c7f40d5f22a7f50ede9ac6c952d5e7dc"
+      },
+      {
+        "row_count": 8,
+        "table_name": "units",
+        "fingerprint": "c2b8d4ce2b2f9dd4d16d2d56adef7685"
+      },
+      {
+        "row_count": 0,
+        "table_name": "written_task_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ]
+  },
+  "exactReadback": {
+    "tables": [
+      {
+        "table_name": "subjects",
+        "expected": 1,
+        "matched": 1
+      },
+      {
+        "table_name": "subject_programs",
+        "expected": 1,
+        "matched": 1
+      },
+      {
+        "table_name": "units",
+        "expected": 1,
+        "matched": 1
+      },
+      {
+        "table_name": "skills",
+        "expected": 14,
+        "matched": 14
+      },
+      {
+        "table_name": "item_families",
+        "expected": 116,
+        "matched": 116
+      },
+      {
+        "table_name": "item_templates",
+        "expected": 116,
+        "matched": 116
+      },
+      {
+        "table_name": "items",
+        "expected": 116,
+        "matched": 116
+      },
+      {
+        "table_name": "item_options",
+        "expected": 221,
+        "matched": 221
+      },
+      {
+        "table_name": "item_answer_keys",
+        "expected": 116,
+        "matched": 116
+      },
+      {
+        "table_name": "item_curriculum_scopes",
+        "expected": 116,
+        "matched": 116
+      },
+      {
+        "table_name": "curriculum_releases",
+        "expected": 1,
+        "matched": 1
+      },
+      {
+        "table_name": "curriculum_release_units",
+        "expected": 1,
+        "matched": 1
+      },
+      {
+        "table_name": "curriculum_release_skills",
+        "expected": 14,
+        "matched": 14
+      },
+      {
+        "table_name": "curriculum_release_gate_checks",
+        "expected": 7,
+        "matched": 7
+      },
+      {
+        "table_name": "item_qa_runs",
+        "expected": 116,
+        "matched": 116
+      },
+      {
+        "table_name": "item_versions",
+        "expected": 116,
+        "matched": 116
+      }
+    ],
+    "matchedRows": 1073,
+    "comparison": "Exact values of every supplied column; full initial item/options/key snapshots and private authoring context; primary-key scoped readback."
+  },
+  "qa": {
+    "passed": 81,
+    "held": 35,
+    "readingHeld": 17,
+    "listeningHeld": 18,
+    "actor": null,
+    "scope": "Actual deployed-v14 evaluateQa source executed against a read-only materialized-row adapter; every supplied QA result and input verified against saved rows. Not an authenticated live QA invocation or human review.",
+    "heldError": "authoring_source_registration_pending",
+    "expectedWarning": "misconception_mapping_missing; reviewer explanations retained without inventing misconception definitions",
+    "contentEvidenceReused": [
+      "english-7-unit-01-authoring-20261020.json",
+      "english-7-unit-01-practice-additions-20261021.json",
+      "english-7-unit-01-assessment-batch-a-20261021.json"
+    ],
+    "baselineWholeBankRecheck": {
+      "counts": {
+        "items": 1251,
+        "history": 1146,
+        "releases": 7,
+        "taskSets": 0,
+        "writingTasks": 0,
+        "audioVersions": 0,
+        "sourceExposures": 0
+      },
+      "skills": [
+        {
+          "id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+          "code": "PHY7-U01-S01",
+          "status": "review",
+          "name_en": "Recognise and classify physical phenomena",
+          "name_hy": "Ֆիզիկական երևույթների ճանաչում և դասակարգում",
+          "subject": "physics",
+          "description_en": "Recognise physical phenomena and, where appropriate, classify familiar examples by broad type."
+        },
+        {
+          "id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+          "code": "PHY7-U01-S02",
+          "status": "review",
+          "name_en": "Distinguish body, material, and phenomenon",
+          "name_hy": "Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը",
+          "subject": "physics",
+          "description_en": "Distinguish a physical body/object, the material it is made from, and a phenomenon/process."
+        },
+        {
+          "id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+          "code": "PHY7-U01-S03",
+          "status": "review",
+          "name_en": "Physicists and Armenian physicists",
+          "name_hy": "Ֆիզիկոսներ և հայ ֆիզիկոսներ",
+          "subject": "physics",
+          "description_en": "Associate selected textbook scientists with their broad scientific contributions, with particular attention to Armenian scientists."
+        },
+        {
+          "id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+          "code": "PHY7-U01-S04",
+          "status": "review",
+          "name_en": "Distinguish observation and experiment",
+          "name_hy": "Դիտումը և փորձը տարբերակելը",
+          "subject": "physics",
+          "description_en": "Given a scenario, determine whether it is observation or experiment and explain the essential difference."
+        },
+        {
+          "id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+          "code": "PHY7-U01-S05",
+          "status": "review",
+          "name_en": "Hypothesis–test–data–conclusion chain",
+          "name_hy": "Վարկած–փորձ–տվյալ–եզրակացություն շղթան",
+          "subject": "physics",
+          "description_en": "Use the inquiry chain: observation/problem, hypothesis, experimental test, evidence/data, and conclusion."
+        },
+        {
+          "id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+          "code": "PHY7-U01-S06",
+          "status": "review",
+          "name_en": "Physical quantities, units, and instruments",
+          "name_hy": "Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր",
+          "subject": "physics",
+          "description_en": "Match common physical quantities to appropriate units and measuring instruments; identify the core SI units introduced in the chapter."
+        },
+        {
+          "id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+          "code": "PHY7-U01-S07",
+          "status": "review",
+          "name_en": "Simple unit conversions",
+          "name_hy": "Չափման միավորների պարզ փոխարկումներ",
+          "subject": "physics",
+          "description_en": "Perform simple length, time, and volume unit conversions used in Chapter I measurement tasks."
+        },
+        {
+          "id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+          "code": "PHY7-U01-S08",
+          "status": "review",
+          "name_en": "Scale division, measurement limit, and reading",
+          "name_hy": "Սանդղակի բաժանման արժեքը, չափման սահմանը և ցուցմունքը",
+          "subject": "physics",
+          "description_en": "Determine an instrument scale division value, measurement limit, and reading from a labelled scale or diagram."
+        },
+        {
+          "id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+          "code": "PHY7-U01-S09",
+          "status": "review",
+          "name_en": "Measurement error and precision",
+          "name_hy": "Չափման սխալ և ճշգրտության գնահատում",
+          "subject": "physics",
+          "description_en": "Use the textbook half-division error convention, compare precision, detect poor reading/positioning, and distinguish direct from indirect measurement."
+        },
+        {
+          "id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+          "code": "PHY7-U01-S10",
+          "status": "review",
+          "name_en": "Plan a measurement investigation and determine irregular volume",
+          "name_hy": "Չափման փորձի պլանավորում և անկանոն մարմնի ծավալի որոշում",
+          "subject": "physics",
+          "description_en": "Plan/interpret a simple measurement procedure, record results, and determine irregular-object volume by displacement using V=V2−V1, including transfer to a new setup."
+        },
+        {
+          "id": "0f6e2b25-72b3-4a72-8748-2b3143c1d374",
+          "code": "PHY7-U02-S01",
+          "status": "archived",
+          "name_en": "Distinguish a physical body from a substance",
+          "name_hy": "Տարբերակել ֆիզիկական մարմինն ու նյութը",
+          "subject": "physics",
+          "description_en": null
+        },
+        {
+          "id": "bfd0b199-55ab-4933-acfd-7eeb4142fd4c",
+          "code": "PHY7-U02-S02",
+          "status": "review",
+          "name_en": "Justify particulate structure using evidence",
+          "name_hy": "Փորձերով հիմնավորել նյութի մասնիկային կառուցվածքը",
+          "subject": "physics",
+          "description_en": null
+        },
+        {
+          "id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+          "code": "PHY7-U02-S03",
+          "status": "review",
+          "name_en": "Distinguish atom, molecule and chemical element",
+          "name_hy": "Տարբերակել ատոմը, մոլեկուլը և քիմիական տարրը",
+          "subject": "physics",
+          "description_en": null
+        },
+        {
+          "id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+          "code": "PHY7-U02-S04",
+          "status": "review",
+          "name_en": "Compare molecular sizes with familiar scales",
+          "name_hy": "Մոլեկուլների չափերը համեմատել այլ մարմինների չափերի հետ",
+          "subject": "physics",
+          "description_en": null
+        },
+        {
+          "id": "678beb6a-4654-40c2-a5b2-53cc97b2551b",
+          "code": "PHY7-U02-S05",
+          "status": "review",
+          "name_en": "Describe atomic and molecular motion in matter",
+          "name_hy": "Նկարագրել ատոմների և մոլեկուլների շարժումը նյութում",
+          "subject": "physics",
+          "description_en": null
+        },
+        {
+          "id": "b7caca8c-d222-4715-a39f-80883f995471",
+          "code": "PHY7-U02-S06",
+          "status": "review",
+          "name_en": "Explain diffusion using examples",
+          "name_hy": "Դիֆուզիան բացատրել օրինակներով",
+          "subject": "physics",
+          "description_en": null
+        },
+        {
+          "id": "c1e57a2d-d843-45ea-adf1-891837d12d6c",
+          "code": "PHY7-U02-S07",
+          "status": "review",
+          "name_en": "Compare diffusion rates across states of matter",
+          "name_hy": "Համեմատել դիֆուզիայի արագությունը նյութի տարբեր ագրեգատային վիճակներում",
+          "subject": "physics",
+          "description_en": null
+        },
+        {
+          "id": "c2463f0b-9d96-4ae6-a814-0495db8a3872",
+          "code": "PHY7-U02-S08",
+          "status": "review",
+          "name_en": "Relate temperature to particle motion",
+          "name_hy": "Մարմնի ջերմաստիճանը կապել մասնիկների շարժման արագության հետ",
+          "subject": "physics",
+          "description_en": null
+        },
+        {
+          "id": "802bce7e-7ede-4138-b2b2-35c4c1b68a32",
+          "code": "PHY7-U02-S09",
+          "status": "review",
+          "name_en": "Explain how a thermometer works",
+          "name_hy": "Բացատրել ջերմաչափի աշխատանքի սկզբունքը",
+          "subject": "physics",
+          "description_en": null
+        },
+        {
+          "id": "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+          "code": "PHY7-U03-S01",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Մեխանիկական շարժումը և հաշվարկման մարմինը",
+          "subject": "physics",
+          "description_en": "Recognize a changing position and explain rest/motion relative to an explicitly named body."
+        },
+        {
+          "id": "4251bf02-d633-578a-bd36-44028b5ceecf",
+          "code": "PHY7-U03-S02",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Մարմինը որպես նյութական կետ",
+          "subject": "physics",
+          "description_en": "Decide whether body dimensions matter for the stated question; never define a point model by small physical size alone."
+        },
+        {
+          "id": "808be543-acae-5df9-b903-eaceaf4c149c",
+          "code": "PHY7-U03-S03",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Շարժման հետագիծը և անցած ճանապարհը",
+          "subject": "physics",
+          "description_en": "Identify straight/curved trajectories, distinguish the line from its traversed length, and distinguish path length from endpoint distance."
+        },
+        {
+          "id": "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+          "code": "PHY7-U03-S04",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Հավասարաչափ և անհավասարաչափ շարժում",
+          "subject": "physics",
+          "description_en": "Use equal-time distance records and the arbitrary-equal-interval definition; distinguish compatible observations from a proof for every instant."
+        },
+        {
+          "id": "b04dde38-3f39-5cea-a9a1-e7c6535cf39a",
+          "code": "PHY7-U03-S05",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Ճանապարհային արագության իմաստը",
+          "subject": "physics",
+          "description_en": "Interpret distance per unit time. Treat the textbook introduction to direction as supporting vocabulary and distinguish numerical value from direction."
+        },
+        {
+          "id": "8a07485e-8462-5513-a3b6-f65bc8a7cce4",
+          "code": "PHY7-U03-S06",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Արագության միավորների ձևափոխում",
+          "subject": "physics",
+          "description_en": "Convert m/s, km/h and cm/s, then compare speeds expressed in different units."
+        },
+        {
+          "id": "4f0315c6-35ea-5573-aab5-4f9c6329b6eb",
+          "code": "PHY7-U03-S07",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Արագության, ճանապարհի և ժամանակի հաշվում",
+          "subject": "physics",
+          "description_en": "Choose and apply v=s/t, s=vt and t=s/v with compatible units and an explicit uniform-motion premise."
+        },
+        {
+          "id": "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb",
+          "code": "PHY7-U03-S08",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Արագության որոշումը չափումներով",
+          "subject": "physics",
+          "description_en": "Choose a path interval and measure its matching elapsed time; record units and interpret repeated measurements. MCQs assess planning and interpretation, not performed laboratory competence."
+        },
+        {
+          "id": "e50673ec-767a-51c8-9936-9cfe31c438dd",
+          "code": "PHY7-U04-S01",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Զանգվածը՝ որպես իներտության չափ",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "15aabee0-a1b4-55f9-aa85-050c02baeb4b",
+          "code": "PHY7-U04-S02",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Նյութի խտության ֆիզիկական իմաստը",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "81e71d34-04bf-5fcb-ace8-41f7e78e33c8",
+          "code": "PHY7-U04-S03",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Խտության, զանգվածի և ծավալի հաշվում",
+          "subject": "physics",
+          "description_en": "Chapter IV supporting curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "8f63124a-f78e-51d5-86a4-2d30df2b039b",
+          "code": "PHY7-U04-S04",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Խտության որոշումը չափումներով",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "43734dc0-44fd-5e1d-9924-d94db5383a18",
+          "code": "PHY7-U04-S05",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Մարմինների փոխազդեցությունը, ուժը և նրա միավորը",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "356028b3-ad67-5f97-a340-568473d378e3",
+          "code": "PHY7-U04-S06",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Ծանրության ուժի հաշվում",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "cabe4921-4a09-5312-ba67-b50e5eddd8fd",
+          "code": "PHY7-U04-S07",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Առաձգական և պլաստիկ դեֆորմացիաներ",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "debbb0d7-e49a-5bf1-b85c-17ecc4024650",
+          "code": "PHY7-U04-S08",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Հուկի օրենքը և փորձի արդյունքները",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "382b5279-9c50-5765-b916-8eaa14f050e7",
+          "code": "PHY7-U04-S09",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Ուժաչափի աստիճանավորումը և ցուցմունքը",
+          "subject": "physics",
+          "description_en": "Chapter IV supporting curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "dfb69d6c-690e-5b60-8d66-1289d8f6865a",
+          "code": "PHY7-U04-S10",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Զանգվածը, ծանրության ուժը և կշիռը",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "ff9e438a-6741-5c57-9825-06e1d01912df",
+          "code": "PHY7-U04-S11",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Շփման ուժի տեսակները, պատճառները և դերը",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "6373b7a6-74fe-53a0-b759-3a3a5f618061",
+          "code": "PHY7-U04-S12",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Շփման ուժի ուսումնասիրությունը փորձով",
+          "subject": "physics",
+          "description_en": "Chapter IV supporting curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "78b7bde8-69d1-53aa-8553-16001cf86e5c",
+          "code": "PHY7-U04-S13",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Մի ուղղով ուղղված ուժերի համազորը",
+          "subject": "physics",
+          "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "d3aa893b-07f9-591e-89a4-ecce14306ecf",
+          "code": "PHY7-U04-S14",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Ծանրության ուժը և տիեզերական ձգողությունը",
+          "subject": "physics",
+          "description_en": "Chapter IV additional curriculum scope; performed experiments are not certified by MCQs."
+        },
+        {
+          "id": "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+          "code": "PHY7-U05-S01",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Մեխանիկական աշխատանքի իմաստը և միավորը",
+          "subject": "physics",
+          "description_en": "Work/no-work with a named force and motion; the meaning of one joule."
+        },
+        {
+          "id": "f49578d7-0728-5a2d-b042-46c2609d54a9",
+          "code": "PHY7-U05-S02",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Մեխանիկական աշխատանքի հաշվում",
+          "subject": "physics",
+          "description_en": "Direct/inverse A=Fs, comparisons and lifting; integration with previously taught units and speed."
+        },
+        {
+          "id": "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+          "code": "PHY7-U05-S03",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Հզորության իմաստը, միավորը և հաշվումը",
+          "subject": "physics",
+          "description_en": "Meaning of watt, A/t, comparison with both variables changing, work-time graph, and taught N=Fv."
+        },
+        {
+          "id": "6361692a-0026-5cd5-ac67-b9999a54f012",
+          "code": "PHY7-U05-S04",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Լծակի կառուցվածքը և ուժի բազուկը",
+          "subject": "physics",
+          "description_en": "Support, force/application line, perpendicular arm and how position affects required force."
+        },
+        {
+          "id": "c7c50e44-4f94-5522-a237-ad88a13a7600",
+          "code": "PHY7-U05-S05",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Լծակի հավասարակշռության պայմանը",
+          "subject": "physics",
+          "description_en": "F1l1=F2l2, inverse relationships, unknown arm/force and interpretation of measured balances."
+        },
+        {
+          "id": "c342bfdc-fd31-5e55-915c-bb3722954f23",
+          "code": "PHY7-U05-S06",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Անշարժ և շարժական ճախարակներ",
+          "subject": "physics",
+          "description_en": "Fixed versus moving axle, direction change, ideal force ratio and corresponding rope travel."
+        },
+        {
+          "id": "3b3836b1-1171-5d57-b78e-dd08af74273d",
+          "code": "PHY7-U05-S07",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Թեք հարթությունը և մեխանիկայի «ոսկի կանոնը»",
+          "subject": "physics",
+          "description_en": "Same-height ramp comparisons, force-distance trade-off and ideal work balance."
+        },
+        {
+          "id": "96bee62d-2e14-51ff-8f16-5d2eb41704e0",
+          "code": "PHY7-U05-S08",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Օգտակար գործողության գործակիցը",
+          "subject": "physics",
+          "description_en": "Useful versus total work, ratio/percent, inverse calculations and measured incline efficiency."
+        },
+        {
+          "id": "270751b7-3838-5487-9a56-5682ad24f647",
+          "code": "PHY7-U05-S09",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Ձիաուժը՝ որպես հզորության միավոր",
+          "subject": "physics",
+          "description_en": "Small optional unit-recognition strand; no memorized conversion or new assessment gate."
+        },
+        {
+          "id": "e8ef6e09-017e-5458-9165-4b9be4faa6f8",
+          "code": "PHY7-U05-S10",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Պարզ մեխանիզմների կիրառությունները",
+          "subject": "physics",
+          "description_en": "Optional familiar applications in household/technology and a supplied musculoskeletal model."
+        },
+        {
+          "id": "df096120-4696-535e-8e14-4354667056cc",
+          "code": "PHY7-U06-S01",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Ճնշման ֆիզիկական իմաստը, միավորը և հաշվումը",
+          "subject": "physics",
+          "description_en": "Definition p=F/S, pascal, direct/inverse calculations and unit alignment."
+        },
+        {
+          "id": "2172d40e-4589-5330-a3ad-7c81dd9245db",
+          "code": "PHY7-U06-S02",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Ճնշումը մեծացնելու և փոքրացնելու եղանակները",
+          "subject": "physics",
+          "description_en": "Reason separately about force and contact area in familiar applications."
+        },
+        {
+          "id": "1714925e-656e-52b1-89d3-c32dadb159f1",
+          "code": "PHY7-U06-S03",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Գազի ճնշումը և դրա կախումը ծավալից",
+          "subject": "physics",
+          "description_en": "Molecular-collision explanation, all-direction pressure and qualitative compression at comparable conditions."
+        },
+        {
+          "id": "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+          "code": "PHY7-U06-S04",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Պասկալի օրենքը և ճնշման հաղորդումը",
+          "subject": "physics",
+          "description_en": "Transmit an externally applied pressure through a liquid or gas in all directions without change."
+        },
+        {
+          "id": "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+          "code": "PHY7-U06-S05",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Հիդրոստատիկ ճնշումը և p=ρgh կապը",
+          "subject": "physics",
+          "description_en": "Depth, density and g dependencies; equal-depth comparisons; force normal to walls/bottom."
+        },
+        {
+          "id": "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+          "code": "PHY7-U06-S06",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Հաղորդակից անոթները և հեղուկների հավասարակշռությունը",
+          "subject": "physics",
+          "description_en": "Same-liquid levels, vessel-shape independence and two-liquid ρ₁h₁=ρ₂h₂ equilibrium."
+        },
+        {
+          "id": "71155603-a474-5eaf-afce-31028bcc58b1",
+          "code": "PHY7-U06-S07",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Ջրաբաշխական մամլիչի կառուցվածքը և ուժի շահումը",
+          "subject": "physics",
+          "description_en": "Connected pistons, Pascal law and F₂/F₁=S₂/S₁ in the ideal model."
+        },
+        {
+          "id": "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+          "code": "PHY7-U06-S08",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Մթնոլորտային ճնշումը, դրա գոյության փորձերը և չափումը",
+          "subject": "physics",
+          "description_en": "Air-weight cause, experimental evidence, Torricelli column and barometer interpretation."
+        },
+        {
+          "id": "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+          "code": "PHY7-U06-S09",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Արքիմեդյան ուժի առաջացումը և Արքիմեդի օրենքը",
+          "subject": "physics",
+          "description_en": "Pressure-force difference, upward direction and equality to displaced fluid/gas weight."
+        },
+        {
+          "id": "60c60768-b1ae-506a-be1a-f9f0b453f083",
+          "code": "PHY7-U06-S10",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Արքիմեդյան ուժի հաշվումը և ուժաչափի ցուցմունքը",
+          "subject": "physics",
+          "description_en": "F_A=ρgV_submerged, partial immersion and apparent-weight readings."
+        },
+        {
+          "id": "0db94e18-7eba-5440-8bab-c3069deafa1a",
+          "code": "PHY7-U06-S11",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Մարմինների լողալու պայմանները",
+          "subject": "physics",
+          "description_en": "Compare buoyant and gravitational forces and relate equilibrium to body/fluid density."
+        },
+        {
+          "id": "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed",
+          "code": "PHY7-U06-S12",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Արքիմեդյան ուժը բնության մեջ, նավագնացությունում և օդագնացությունում",
+          "subject": "physics",
+          "description_en": "Animal, ship and balloon applications with explicit force/volume/density evidence."
+        },
+        {
+          "id": "1f2fa89e-ea77-5a63-a960-9724a155156a",
+          "code": "PHY7-U06-S13",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Արքիմեդյան ուժի փորձերի պլանավորումը և տվյալների մեկնաբանումը",
+          "subject": "physics",
+          "description_en": "Preparation, variable control and data interpretation for the liquid experiments; no performance certification."
+        },
+        {
+          "id": "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+          "code": "PHY7-U06-S14",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Ճնշման առաջացման մեխանիզմները տարբեր միջավայրերում",
+          "subject": "physics",
+          "description_en": "Optional comparison of solid contact and molecular/hydrostatic pressure mechanisms."
+        },
+        {
+          "id": "23619b6a-59c4-5e90-bb51-592b97438441",
+          "code": "PHY7-U06-S15",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Գազի և հեղուկի ճնշման չափումը",
+          "subject": "physics",
+          "description_en": "Optional instrument/scale interpretation with supplied manometer or barometer information."
+        },
+        {
+          "id": "c82de1f3-13d8-5cc1-86e7-34e205cadc8d",
+          "code": "PHY7-U06-S16",
+          "status": "review",
+          "name_en": null,
+          "name_hy": "Մխոցավոր հեղուկային պոմպի աշխատանքը",
+          "subject": "physics",
+          "description_en": "Optional valve-and-piston sequence in intake and delivery strokes."
+        }
+      ],
+      "english": {
+        "items": 0,
+        "skills": 0,
+        "subjects": 0,
+        "releaseReferences": 0,
+        "historicalCodeReferences": 0
+      },
+      "subjects": [
+        {
+          "id": "f5965c68-7a7d-478d-9374-50f4a80335f3",
+          "code": "mathematics",
+          "status": "draft",
+          "name_en": "Mathematics"
+        },
+        {
+          "id": "6e43ca6d-c7d5-44b5-98e9-2bb5fdccb7d0",
+          "code": "physics",
+          "status": "published",
+          "name_en": "Physics"
+        }
+      ],
+      "observedAt": "2026-10-20T21:42:57.484211+00:00",
+      "programmes": [
+        {
+          "id": "008814e3-fe88-46c4-a9ce-415b2fbafa27",
+          "status": "draft",
+          "grade_id": "7c8e33b7-0927-4820-83ca-59d88603ccc7",
+          "source_url": null,
+          "subject_id": "f5965c68-7a7d-478d-9374-50f4a80335f3",
+          "effective_to": null,
+          "version_label": "Sprint 11G architecture fixture",
+          "effective_from": null,
+          "curriculum_framework_id": "45adf723-7e0f-44e7-9000-be9820b92509"
+        },
+        {
+          "id": "258955e9-30e7-43ef-95c5-324a53143270",
+          "status": "published",
+          "grade_id": "7c8e33b7-0927-4820-83ca-59d88603ccc7",
+          "source_url": "https://www.arlis.am/hy/acts/229331",
+          "subject_id": "6e43ca6d-c7d5-44b5-98e9-2bb5fdccb7d0",
+          "effective_to": null,
+          "version_label": "2026-08-14 / N 40-Ն as amended by N 36-Ն",
+          "effective_from": "2026-08-14",
+          "curriculum_framework_id": "45adf723-7e0f-44e7-9000-be9820b92509"
+        }
+      ],
+      "fingerprints": {
+        "items": "02a9ac127de1e789dde981167803bbf6",
+        "history": "b0af9e1e86807f1b8e339b90a52b03f9"
+      }
+    }
+  },
+  "runtime": {
+    "manageContentQuality": {
+      "version": 14,
+      "verifyJwt": true,
+      "files": [
+        "manage-content-quality/index.ts",
+        "_shared/arrangement-responses.mjs",
+        "_shared/typed-fields.mjs",
+        "_shared/auth.ts"
+      ],
+      "exactMatch": true,
+      "ezbr_sha256": "99ac2d84e08fc5b6dd0094bb750274db81d3233de08205e349065fcf542a37a0"
+    },
+    "dashboard": {
+      "version": 7,
+      "verifyJwt": true,
+      "files": [
+        "get-content-quality-dashboard/index.ts",
+        "_shared/auth.ts"
+      ],
+      "exactMatch": true
+    },
+    "sharedHelpersChanged": false,
+    "affectedEdgeConsumers": [
+      "manage-content-quality"
+    ],
+    "schemaChanges": 0,
+    "rlsChanges": 0
+  },
+  "tests": {
+    "nativeBrowser": {
+      "file": "tests/browser/content-observer.browser.test.mjs",
+      "passed": 14,
+      "scope": "Native Chromium with actual UI modules and offline network/Auth doubles; includes 1280/380px private-source escaping, inherited-note warning, item change/sign-out clearing and existing preview/observer/approval regressions."
+    },
+    "isolatedSqlAndHandlers": {
+      "files": [
+        "tests/authoring-review-context.test.mjs",
+        "tests/typed-fields-authoring.test.mjs",
+        "tests/arrangement-authoring.test.mjs"
+      ],
+      "passed": 3,
+      "scope": "Actual handlers and SQL with synthetic Auth/live-session inputs; checks roles, stale QA approval rejection, exact source family/modality, revocation and immutable revision attachments."
+    },
+    "browserDependencyTriggersPassed": true
+  },
+  "productionBrowser": {
+    "page": "https://www.haiedu.am/content-review.html",
+    "observed": "Sign-in wall; no authenticated reviewer session available.",
+    "authenticatedLiveReviewerAcceptanceClaimed": false
+  },
+  "release": {
+    "requiredChecks": "All five main CI jobs, including native Chromium and Platform release checks; exact public release stamp and content.js hash checked before final handoff.",
+    "persistentProductionBlockingAttestation": "vercel-deployment-check-verification-20261020.json",
+    "attestationReused": true,
+    "vercelConnector": "Known project/scope still returns 403; unchanged blocking evidence reused. No settings/authentication changes."
+  },
+  "boundaries": {
+    "humanApprovals": 0,
+    "qualifiedForms": 0,
+    "poolLinks": 0,
+    "learnerActivation": false,
+    "actualAudioRegistered": false,
+    "sourceRegistryPopulated": false,
+    "sourceTextLocation": "item_versions.snapshot.authoringReview, restricted to admin/content_admin by existing RLS; items.config holds only a version pointer.",
+    "existingTeacherPromptKeyAccessUnchanged": true,
+    "remainingQuestions": 84,
+    "nineGuidesAndWritingPackage": "Remain in canonical authoring packet; not registered by this question-review slice.",
+    "skillLayerAndDifficulty": "Provisional review classifications only; no readiness/scoring inference.",
+    "formalOutcomeReconciliation": "Pending; all seven new release gates pending.",
+    "speaking": "Classroom-assessed."
+  },
+  "notion": {
+    "pageId": "3df355a4-72bf-8135-85aa-c229c27f8f9c",
+    "version": "4.31",
+    "sourceRule": "The merged commit containing this evidence is the synchronization source; stamp and read back after required CI/production verification, preserving all 11 native child pages."
+  },
+  "artifacts": {
+    "docs/data/english-7-unit-01-review-onboarding-20261021.sql": {
+      "sha256": "23a544110afbb0804bb687c1864ea7fe60d54f951d02917e618ed50fa81125d3",
+      "bytes": 1014288
+    },
+    "scripts/content/prepare-english-7-unit-01-review.mjs": {
+      "sha256": "28de7f97210f114b080be3de54aee148e33c10b2fa07e42e7dda1a311b4e80fa",
+      "bytes": 10050
+    },
+    "supabase/functions/manage-content-quality/index.ts": {
+      "sha256": "eff4f28780b0bdc618485a481acf41df7495c7d5945c4d55e6fc572ccffbc82a",
+      "bytes": 34372
+    },
+    "web/content.js": {
+      "sha256": "9540a38eace734a3428105254e2b792b03e3d07f13d441da9a07d9cecc62ded1",
+      "bytes": 66261
+    },
+    "docs/content/english-7-unit-01-draft.json": {
+      "sha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+      "bytes": 184313
+    },
+    "docs/content/english-7-unit-01-practice-additions.json": {
+      "sha256": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+      "bytes": 55253
+    },
+    "docs/content/english-7-unit-01-assessment-batch-a.json": {
+      "sha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+      "bytes": 260669
+    }
+  }
+}
