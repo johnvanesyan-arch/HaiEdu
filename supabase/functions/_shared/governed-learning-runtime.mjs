@@ -32,7 +32,7 @@ export async function routeGovernedLearning({admin,studentId,token,request,opera
       if (result.error || result.data !== true) return {status:403,body:{error:'learning_context_unavailable'}};
     }
   }
-  if (!governed) return null;
+  if (!governed) return body.saveDraft !== undefined || body.draftRevision !== undefined || body.response?.schemaVersion === 'haiedu-typed-fields-v1' ? {status:400,body:{error:'invalid_session_request'}} : null;
   const authSessionId = verifiedSessionClaim(token);
   if (!authSessionId) return {status:403,body:{error:'account_or_session_inactive'}};
   try {
@@ -60,11 +60,12 @@ export async function routeGovernedLearning({admin,studentId,token,request,opera
       return {status:200,body:result};
     }
     if (!uuid(body.sessionId)) return {status:400,body:{error:'session_context_required'}};
-    const action = {item:'serve',answer:'answer',mastery:'answer',help:'help',status:'status',lifecycle:'status'}[operation];
+    const action = body.saveDraft === true && ['answer','mastery'].includes(operation) ? 'draft' : {item:'serve',answer:'answer',mastery:'answer',help:'help',status:'status',lifecycle:'status'}[operation];
     if (!action) throw new Error('unsupported_governed_operation');
     if (['answer','mastery','help'].includes(operation) && !uuid(body.sessionItemId)) return {status:400,body:{error:'session_item_required'}};
     if (['answer','mastery'].includes(operation) && (!uuid(body.itemId) || !body.response || typeof body.response !== 'object' || Array.isArray(body.response))) return {status:400,body:{error:'answer_required'}};
-    const allowed = ['sessionId','sessionItemId','itemId','response','responseTimeMs','hintUsed'];
+    const allowed = ['sessionId','sessionItemId','itemId','response','responseTimeMs','hintUsed','saveDraft','draftRevision'];
+    if ((body.saveDraft !== undefined && (typeof body.saveDraft !== 'boolean' || !['answer','mastery'].includes(operation))) || (body.draftRevision !== undefined && (!Number.isSafeInteger(body.draftRevision) || body.draftRevision < 0))) return {status:400,body:{error:'invalid_session_request'}};
     if (Object.keys(body).some(key=>!allowed.includes(key))) return {status:400,body:{error:'invalid_session_request'}};
     return {status:200,body:await rpc(admin,'service_governed_learning_operation',{
       p_student_id:studentId,p_auth_session_id:authSessionId,p_session_id:body.sessionId,p_action:action,
@@ -73,7 +74,7 @@ export async function routeGovernedLearning({admin,studentId,token,request,opera
   } catch (error) {
     const message = String(error?.message ?? '');
     // Never expose tenant/catalogue details or raw SQL errors.
-    const code = ['chapter_diagnostic_required','skills_not_ready','mastery_check_not_allowed','chapter_review_not_available','assessment_policy_unconfigured','session_item_already_answered','invalid_option_presentation_key','help_not_available_in_assessment','remediation_guide_missing','session_not_active'].find(value=>message.includes(value));
+    const code = ['chapter_diagnostic_required','skills_not_ready','mastery_check_not_allowed','chapter_review_not_available','assessment_policy_unconfigured','session_item_already_answered','invalid_option_presentation_key','help_not_available_in_assessment','remediation_guide_missing','session_not_active','typed_fields_response_invalid','typed_fields_draft_conflict'].find(value=>message.includes(value));
     return {status:code ? 409 : 403,body:{error:code ?? 'learning_context_unavailable'}};
   }
 }

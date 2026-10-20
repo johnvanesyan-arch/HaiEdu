@@ -1,3 +1,4 @@
+import { validateTypedKey } from '../_shared/typed-fields.mjs';
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
 
@@ -252,6 +253,10 @@ async function evaluateQa(admin: any, item: any) {
       if (!shuffleOptions && !optionOrderRationale) {
         errors.push("shuffle_disabled_without_option_order_rationale");
       }
+    } else if (item.item_type === "typed_fields") {
+      try { validateTypedKey(item.config?.responseDefinition, key.answer); }
+      catch { errors.push("typed_fields_contract_invalid"); }
+      if ((options ?? []).length) errors.push("typed_fields_contract_invalid");
     } else if (item.item_type === "true_false") {
       if (typeof key.answer !== "boolean") errors.push("true_false_answer_not_boolean");
     } else if (item.item_type === "numeric") {

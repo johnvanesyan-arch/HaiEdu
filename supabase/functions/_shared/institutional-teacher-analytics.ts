@@ -225,8 +225,8 @@ export function buildExactInstitutionalStudentAnalytics(args: {
     recentAccuracy: new Set(recentAttempts.map(row => evidenceContractKey(row.originalSession ?? {}))).size === 1 && recentAttempts.length ? Math.round((recentCorrect / recentAttempts.length) * 100) : null,
     latestDiagnostic: latestDiagnostic ? {
       correct: Number(latestDiagnostic.correct_count), answered: Number(latestDiagnostic.answered_count),
-      percent: Number(latestDiagnostic.answered_count)
-        ? Math.round(Number(latestDiagnostic.correct_count) / Number(latestDiagnostic.answered_count) * 100) : 0,
+      percent: latestDiagnostic.metadata?.assessmentResultReporting?.overallScore?.percent ?? (Number(latestDiagnostic.answered_count)
+        ? Math.round(Number(latestDiagnostic.correct_count) / Number(latestDiagnostic.answered_count) * 100) : 0),
       completedAt: latestDiagnostic.completed_at,
       assessmentResult: latestDiagnostic.metadata?.assessmentResultReporting ?? null,
     } : null,

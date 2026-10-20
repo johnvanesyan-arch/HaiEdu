@@ -1,7 +1,7 @@
 # Project status register
 
 
-**Updated:** 2026-10-20 Asia/Yerevan · 16.1B.1 writing workspaces deployed and verified · **Roadmap:** 4.21
+**Updated:** 2026-10-20 Asia/Yerevan · 16.1B.2 typed-field implementation; release checks pending · **Roadmap:** 4.22
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
@@ -13,6 +13,7 @@ Completion describes the stated scope only. Technical completion, owner-approved
 
 | Stage | Current disposition | Evidence and remaining boundary |
 | --- | --- | --- |
+| 16.1B.2 | Implementation ready; CI/production verification pending | Short answers/gaps, private drafts and v3 points reporting. No content/policy activation. [Contract](typed-fields-capability.md). |
 | 16.1B.1 | Writing capability deployed; live workspace/read acceptance verified | Student drafts/submissions, teacher rubric marking, revisions and privacy lifecycle. No production tasks or English activation. [Implementation](written-work-workspaces.md). |
 | 16.1A.2 | Source reconciliation and Unit 1 map complete at preparation level; contract proposed | Current 2026 standard, 14 skills, 30 activity dispositions and five technically verified MP3s. Teacher review route authorised under 16.1B.1; final policy/bank, audio audition/protection and remaining capabilities stay open. [Preparation](english-7-unit-01-preparation.md) · [Contract](english-7-unit-01-assessment-contract.md). |
 | 16.1A | Framework proposal and owner speaking exclusion recorded; advanced under 16.1A.2 | [Framework](english-7-assessment-framework.md). Design does not create runtime capabilities or a learner release. |
@@ -84,6 +85,8 @@ Completion describes the stated scope only. Technical completion, owner-approved
 | 19–26, including 24.5 | Planned | Scope and order remain in the [roadmap](sprint-roadmap.md). No beta, national-scale readiness or later workflow closure is inferred from earlier technical work. |
 
 ## English 7 current checkpoint — 2026-10-20
+
+**Sprint 16.1B.2 — typed answers and gap-filling implementation ready; rollout verification pending.** Bounded fields, reviewed alternatives, private resumable drafts, fractional item points and role-consistent reporting are implemented as an opt-in capability. No English content or scoring policy is activated. Matching/ordering, audio and task sets remain next. [Capability contract](typed-fields-capability.md).
 
 **Sprint 16.1B.1 — writing workspaces deployed and verified.** Students can save private drafts, submit, see feedback and revise. Teachers can mark declared rubric criteria, return work and retain regrade history. Required PR/main CI passed (1,336 tests and 70 browser checks); production read acceptance passed 264/264, including both roles and two-school denials. No English tasks or release are activated. Final English content/rubric, other response types and audio remain open. [Writing workspaces](written-work-workspaces.md) · [Release evidence](evidence/written-work-release-20261020.json).
 

@@ -1,3 +1,5 @@
+import {typedEditorMarkup,bindTypedEditor,collectTypedEditor} from './typed-fields-editor.mjs';
+import {typedFieldsMarkup} from './typed-fields-ui.mjs';
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
 import { clearContentDashboardCache, loadContentDashboard } from "./content-workspace.js";
@@ -30,6 +32,7 @@ function setMessage(text, bad = false) {
 function itemTypeLabel(value) {
   return ({
     single_choice: "Ընտրովի պատասխան",
+    typed_fields: "Մուտքագրվող պատասխան / բացթողումներ",
     true_false: "Ճիշտ / սխալ",
     numeric: "Թվային պատասխան",
     quantity: "Թվային պատասխան և միավոր",
@@ -288,6 +291,7 @@ function misconceptionRowsHtml(detail, disabled) {
 function answerEditorHtml(detail, disabled) {
   const item = detail.item;
   const key = detail.answerKey ?? {};
+  if (item.type === 'typed_fields') return typedEditorMarkup(detail,disabled);
   if (item.type === "single_choice") {
     return `<div class="answer-grid"><label>Ճիշտ տարբերակ<select id="answerSingleChoice" ${disabled ? "disabled" : ""}></select></label><label>Հետադարձ կապի կոդ<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label></div>`;
   }
@@ -309,7 +313,7 @@ function learnerPreviewHtml(detail) {
     ? (detail.options ?? []).map((option) => `<div class="learner-preview-option"><strong>${esc(option.key)}.</strong> ${esc(option.contentHy || "")}</div>`).join("")
     : item.type === "true_false"
       ? '<div class="learner-preview-option">Ճիշտ</div><div class="learner-preview-option">Սխալ</div>'
-      : '<div class="learner-preview-option subtle">Սովորողը այստեղ մուտքագրում է իր պատասխանը։</div>';
+      : item.type === 'typed_fields' ? typedFieldsMarkup(item.config.responseDefinition,null,true) : '<div class="learner-preview-option subtle">Սովորողը այստեղ մուտքագրում է իր պատասխանը։</div>';
   return `<section class="detail-section learner-preview" data-item-tab="preview"><h3>Սովորողի տեսքը</h3><p class="learner-preview-prompt">${esc(item.promptHy || "Հարցի տեքստ չկա")}</p><div id="learnerPreviewStimulus"></div><div class="learner-preview-options">${options}</div></section>`;
 }
 
@@ -349,6 +353,7 @@ const QA_MESSAGE_HY = {
   quantity_unit_metadata_missing: "Չափման հարցի համար չափման միավորների տվյալները ամբողջական չեն։",
   canonical_unit_not_in_accepted_units: "Հիմնական չափման միավորը ներառված չէ ընդունվող միավորների ցանկում։",
   unsupported_item_type: "Այս հարցի տեսակը տեխնիկական QA-ն դեռ չի սպասարկում։",
+  typed_fields_contract_invalid: "Պատասխանի դաշտերը կամ ընդունվող տարբերակները վավեր չեն։ Ստուգեք կայուն կոդերը, պիտակները և գնահատման կանոնները։",
   source_reference_missing: "Հարցի աղբյուրի հղումը կամ նշումը բացակայում է։",
   item_family_unspecified: "Հարցերի ընտանիքը նշված չէ։",
   misconception_mapping_missing: "Հարցի համար սխալ պատկերացման կապակցում նշված չէ։",
@@ -518,6 +523,7 @@ function renderDetail() {
   $("addMisconceptionBtn")?.addEventListener("click", addMisconceptionRow);
   wireEditorRows();
   syncSingleChoiceAnswer(detail.answerKey?.answer);
+  if (item.type === 'typed_fields') bindTypedEditor($('typedFieldsEditor'));
   wireEditorDirtyTracking();
   editorDirty = false;
   updateEditorDirtyUi();
@@ -634,6 +640,7 @@ function collectMisconceptions() {
 }
 
 function collectAnswerKey(type) {
+  if (type === 'typed_fields') return {answer:collectTypedEditor($('typedFieldsEditor')).key,feedbackCode:selectedDetail?.answerKey?.feedbackCode??null};
   const feedbackCode = $("answerFeedbackCode")?.value.trim() || null;
   if (type === "single_choice") return { answer: $("answerSingleChoice").value, feedbackCode };
   if (type === "true_false") return { answer: $("answerTrueFalse").value === "true", feedbackCode };
@@ -665,6 +672,7 @@ function buildRevisionPayload(item, defaultSummary = "Content editor revision") 
   }
 
   const payload = {
+    ...(item.type === 'typed_fields' ? {responseDefinition:collectTypedEditor($('typedFieldsEditor')).definition} : {}),
     promptHy: $("editPromptHy").value.trim(),
     promptEn: $("editPromptEn").value.trim() || null,
     stimulus,

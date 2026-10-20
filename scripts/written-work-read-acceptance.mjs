@@ -23,8 +23,9 @@ export async function writtenWorkReadAcceptance({fixture,contexts,sessions,url,r
     check(`${side}: writing denies foreign enrollment`,foreign.status===403&&foreign.data?.error==='written_context_unavailable',foreign.status);
     const foreignTeacher=await call(`${side}_teacher`,'queue',{assignmentId:fixture[side==='A'?'B':'A'].assignmentId,curriculumReleaseId:own.curriculumReleaseId,unitId:own.unitId});
     check(`${side}: writing denies foreign teacher assignment`,foreignTeacher.status===403&&foreignTeacher.data?.error==='written_context_unavailable',foreignTeacher.status);
-    for(const role of ['student','teacher'])for(const table of ['written_task_versions','written_work','written_submissions','written_reviews']){
-      const r=await request(`${side}_${role}`,`/rest/v1/${table}?select=id&limit=1`,null,'GET');
+    for(const role of ['student','teacher'])for(const table of ['written_task_versions','written_work','written_submissions','written_reviews','learning_response_drafts']){
+      const column=table==='learning_response_drafts'?'session_item_id':'id';
+      const r=await request(`${side}_${role}`,`/rest/v1/${table}?select=${column}&limit=1`,null,'GET');
       check(`${side}_${role}: direct ${table} read denied`,r.status===403&&r.data?.code==='42501',r.status);
     }
   }

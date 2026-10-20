@@ -26,6 +26,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       mastery,
       remediation,
       writtenWork,
+      responseDrafts,
     ] = await Promise.all([
       countRows(admin.from("class_memberships").select("class_id", { count: "exact", head: true }).eq("student_id", userId), "class_memberships_count_failed"),
       countRows(admin.from("institutional_class_enrollments").select("id", { count: "exact", head: true }).eq("student_id", userId), "institutional_enrollments_count_failed"),
@@ -35,6 +36,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       countRows(admin.from("student_skill_mastery").select("skill_id", { count: "exact", head: true }).eq("student_id", userId), "mastery_count_failed"),
       countRows(admin.from("remediation_events").select("id", { count: "exact", head: true }).eq("student_id", userId), "remediation_count_failed"),
       countRows(admin.from("written_work").select("id", { count: "exact", head: true }).eq("student_id", userId), "written_work_count_failed"),
+      countRows(admin.from("learning_response_drafts").select("session_item_id", {count:"exact",head:true}).eq("student_id",userId),"response_drafts_count_failed"),
     ]);
     return {
       kind: "student",
@@ -45,6 +47,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       masteryRows: mastery,
       remediationEvents: remediation,
       writtenWork,
+      responseDrafts,
     };
   }
 

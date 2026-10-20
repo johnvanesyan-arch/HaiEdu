@@ -5,6 +5,8 @@ A multi-subject supplementary learning platform aligned to Armenia's general edu
 
 ## Project status
 
+**Sprint 16.1B.2 — typed answers and gap-filling implementation ready; rollout verification pending.** Bounded fields, reviewed alternatives, private resumable drafts, fractional item points and role-consistent reporting are implemented as an opt-in capability. No English content or scoring policy is activated. Matching/ordering, audio and task sets remain next. [Capability contract](docs/typed-fields-capability.md).
+
 **Sprint 16.1B.1 — writing workspaces deployed and verified.** Students can save private drafts, submit, see feedback and revise. Teachers can mark declared rubric criteria, return work and retain regrade history. Required PR/main CI passed (1,336 tests and 70 browser checks); production read acceptance passed 264/264, including both roles and two-school denials. No English tasks or release are activated. Final English content/rubric, other response types and audio remain open. [Writing workspaces](docs/written-work-workspaces.md) · [Release evidence](docs/evidence/written-work-release-20261020.json).
 
 **Deployment-check follow-up closed — 2026-10-20:** owner-authorised signed-in browser inspection verified `Platform release checks` as **Production / Blocking** in persistent Vercel settings. The current deployment of `7a5571668950731d474b793cf425462c2acae145` lists the same check as **Required**. No settings were changed. The connector's earlier 403 remains a separate access limitation; browser verification closes the release-check attestation gap. [Evidence](docs/evidence/vercel-deployment-check-verification-20261020.json).

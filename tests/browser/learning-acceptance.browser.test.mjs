@@ -2,13 +2,14 @@ import {installV2,chapterShape,makeReady,launch,finish} from '../fixtures/assess
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
 import {createServer} from 'node:http';
-import {readFile} from 'node:fs/promises';
+import {readFile,mkdir} from 'node:fs/promises';
 import {chromium,expect} from '@playwright/test';
 import {verifyChapterIIVisibleState} from '../../scripts/chapter-ii-pilot-read-acceptance.mjs';
 import {acceptanceFixture,href,id} from '../fixtures/learning-acceptance.mjs';
+import {installTyped,configureTyped} from '../fixtures/typed-fields-db.mjs';
 
 let browser;
-before(async()=>{browser=await chromium.launch({headless:true});});
+before(async()=>{browser=await chromium.launch({headless:true,...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{})});});
 after(async()=>{await browser?.close();});
 
 async function fixture(t) {
@@ -122,4 +123,64 @@ test('v2 native player and history show the 10/2/4 scales and preserve mandatory
  assert.match(await page.locator('#courseContent').innerText(),/Պարտադիր վերջնարդյունքներ՝ 8\/10/);
  await page.setViewportSize({width:375,height:812});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
  assert.deepEqual(errors,[]);assert.deepEqual(f.logs,[]);
+});
+
+test('typed fields save and resume through real Edge/SQL, submit once, and report partial points on mobile',async t=>{
+ const {f,page,origin,errors}=await fixture(t);
+ await installV2(f.db);await installTyped(f.db);await configureTyped(f.db);
+ await page.setViewportSize({width:390,height:844});await page.goto(origin+href(0,'diagnostic'));
+ const colour=page.locator('[data-typed-field="colour"]'),manner=page.locator('[data-typed-field="manner"]');
+ await colour.fill(' BLUE ');await manner.fill('most slowly');
+ await page.waitForFunction(()=>document.querySelector('[data-draft-status]')?.textContent==='Սևագիրը պահպանված է։');
+ assert.equal((await f.db.query('select count(*) n from attempts')).rows[0].n,0);
+ await page.reload();await colour.waitFor();assert.equal(await colour.inputValue(),' BLUE ');assert.equal(await manner.inputValue(),'most slowly');
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await page.locator('#learningPlayer').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/typed-fields-resumed-mobile.png'});}
+ // Enter twice during the pending request cannot create two attempts.
+ await page.evaluate(()=>{const form=document.querySelector('#learningPlayer form');form.requestSubmit();form.requestSubmit();});
+ await page.getByRole('button',{name:'Հաջորդը',exact:true}).waitFor();
+ assert.equal((await f.db.query('select count(*) n from attempts')).rows[0].n,1);
+ assert.doesNotMatch(await page.locator('[data-feedback]').innerText(),/միավոր|1\/2/);
+ await page.getByRole('button',{name:'Հաջորդը',exact:true}).click();
+ for(let n=1;n<3;n++){
+  await colour.fill('blue');await manner.fill('');
+  await page.getByRole('button',{name:'Ուղարկել պատասխանը',exact:true}).click();
+  await page.getByRole('button',{name:'Հաջորդը',exact:true}).click();
+ }
+ await page.getByRole('button',{name:'Թարմացնել արդյունքները',exact:true}).waitFor();
+ assert.match(await page.locator('#learningPlayer').innerText(),/միավոր.*50%/);
+  if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await page.locator('#learningPlayer').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/typed-fields-points-mobile.png'});
+ await page.getByRole('button',{name:'Թարմացնել արդյունքները',exact:true}).click();
+ await page.waitForSelector('#courseHistoryTitle');assert.match(await page.locator('#courseContent').innerText(),/միավոր.*50%/);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
+ assert.equal((await f.db.query('select count(*) n from learning_response_drafts')).rows[0].n,0);
+ assert.deepEqual(errors,[]);assert.deepEqual(f.logs,[]);
+});
+
+test('failed typed draft save keeps text and a retry submits the same text once',async t=>{
+ const {f,page,origin,errors}=await fixture(t);await installV2(f.db);await installTyped(f.db);await configureTyped(f.db);
+ let failNext=true;await page.route('**/functions/v1/submit-answer',async route=>{
+  if(failNext&&route.request().postDataJSON().saveDraft){failNext=false;await route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({error:'temporary_failure'})});}else await route.continue();
+ });
+ await page.goto(origin+href(0,'diagnostic'));await page.locator('[data-typed-field="colour"]').fill('blue');await page.locator('[data-typed-field="manner"]').fill('more slowly');
+ await page.waitForFunction(()=>document.querySelector('[data-draft-status]')?.textContent.startsWith('Սևագիրը չի պահպանվել'));
+ assert.equal(await page.locator('[data-typed-field="manner"]').inputValue(),'more slowly');assert.equal((await f.db.query('select count(*) n from attempts')).rows[0].n,0);
+ await page.getByRole('button',{name:'Ուղարկել պատասխանը',exact:true}).click();await page.getByRole('button',{name:'Հաջորդը',exact:true}).waitFor();
+ const rows=(await f.db.query('select response,score from attempts')).rows;assert.equal(rows.length,1);assert.equal(rows[0].response.fields.manner,'more slowly');assert.equal(Number(rows[0].score),1);assert.deepEqual(errors,[]);
+});
+
+test('typed content controls preserve explicit alternatives and render escaped learner labels',async t=>{
+ const {page,origin,errors}=await fixture(t);
+ await page.goto(origin+'/course.html');
+ const value=await page.evaluate(async()=>{
+  const {typedEditorMarkup,bindTypedEditor,collectTypedEditor}=await import('./typed-fields-editor.mjs');
+  const {typedFieldsMarkup}=await import('./typed-fields-ui.mjs');
+  const detail={item:{config:{responseDefinition:{schemaVersion:'haiedu-typed-fields-v1',layout:'short_answer',locale:'en',fields:[{id:'word',label:'<img src=x onerror=alert(1)>',maxLength:50}]}}},answerKey:{answer:{schemaVersion:'haiedu-typed-fields-v1',fields:{word:{accepted:['do not',"don't"],normalization:{trim:true,collapseWhitespace:false,apostrophes:true,caseMode:'sensitive'}}}}}};
+  const root=document.createElement('section');document.body.appendChild(root);root.innerHTML=typedEditorMarkup(detail);bindTypedEditor(root);
+  const saved=collectTypedEditor(root),preview=document.createElement('section');preview.innerHTML=typedFieldsMarkup(saved.definition,null,true);root.appendChild(preview);
+  const escaped=preview.querySelector('img')===null&&preview.textContent.includes('<img');
+  root.querySelector('[data-add-typed]').click();const added=root.querySelectorAll('[data-typed-editor-row]').length;
+  root.querySelectorAll('[data-remove-typed]')[1].click();
+  return {saved,escaped,added,rows:root.querySelectorAll('[data-typed-editor-row]').length};
+ });
+ assert.deepEqual(value.saved.key.fields.word.accepted,['do not',"don't"]);assert.equal(value.escaped,true);assert.equal(value.added,2);assert.equal(value.rows,1);assert.deepEqual(errors,[]);
 });

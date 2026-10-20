@@ -1,0 +1,309 @@
+{
+  "stage": "16.1B.2",
+  "date": "2026-10-20",
+  "status": "implementation_verified_locally_release_pending",
+  "baseCommit": "4fe6e78c336220cca4169b3dfb93fdf2ac183ba1",
+  "scope": "Typed answers and gap-filling; opt-in policy v3; no content/policy activation",
+  "migrationSource": "supabase/migrations/20261020124852_sprint_16_1b_typed_fields.sql",
+  "preflight": {
+    "preservation": {
+      "items": {
+        "md5": "46969d7043427f9b8a749bbf507507be",
+        "rows": 1251
+      },
+      "attempts": {
+        "md5": "e406815ba4637fe35b45e9ea2085a013",
+        "rows": 42
+      },
+      "item_options": {
+        "md5": "b567c348528b34f3a6b4fe0f2f911ccb",
+        "rows": 4396
+      },
+      "written_work": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "item_versions": {
+        "md5": "6bca3b505a00f66caef0b431826f6398",
+        "rows": 1146
+      },
+      "written_reviews": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "assessment_pools": {
+        "md5": "fef6cd40eb912c5910bb47486c1b6372",
+        "rows": 19
+      },
+      "item_answer_keys": {
+        "md5": "e5096cdaf3c72e94b630e55279ebc14a",
+        "rows": 1251
+      },
+      "learning_sessions": {
+        "md5": "e6f7b5490e1a524912bbdb13278a6847",
+        "rows": 8
+      },
+      "curriculum_releases": {
+        "md5": "a462a5defa846fff10a9ae5876aa10f0",
+        "rows": 7
+      },
+      "written_submissions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "assessment_blueprints": {
+        "md5": "cfde61b11458ed99e59007de3d97d325",
+        "rows": 27
+      },
+      "assessment_pool_items": {
+        "md5": "7704d7d5ab6a48d2947451cc18bddb1c",
+        "rows": 1244
+      },
+      "written_task_versions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "learning_session_items": {
+        "md5": "4f336be22e9389e13217cb919fb218d0",
+        "rows": 96
+      },
+      "curriculum_release_units": {
+        "md5": "66bc277f8e7d0ab39a4a330d04597efd",
+        "rows": 7
+      },
+      "curriculum_release_skills": {
+        "md5": "ef1b6831cd69922111e4fd39b4666cd1",
+        "rows": 66
+      },
+      "assessment_blueprint_items": {
+        "md5": "20a8200aa7f1a79f5358465f1734993f",
+        "rows": 1872
+      },
+      "assessment_policy_bindings": {
+        "md5": "82e6fc923ad06330e22110ca7c05aaf6",
+        "rows": 20
+      },
+      "learning_model_configurations": {
+        "md5": "9f8fdd694d4706a88e7dc07578fbb979",
+        "rows": 6
+      },
+      "learning_model_runtime_bindings": {
+        "md5": "c25206caec72926b79b5df70a4f80c54",
+        "rows": 6
+      },
+      "academic_mastery_policy_versions": {
+        "md5": "1c69b7132347cd8b67a89268668f27ce",
+        "rows": 1
+      },
+      "student_skill_mastery_by_release": {
+        "md5": "cc854b433dad5245b13fbb32572bf22a",
+        "rows": 13
+      }
+    },
+    "functionHashes": {
+      "private.assessment_result_v2": "b8622a18e195c303d4fe076ace7210ef",
+      "private.prepare_governed_lifecycle": "3c528e5195165af91c78143154ee0404",
+      "public.finalize_mastery_check_atomic": "719bbc6e5925abb6bd61a729cfa17c9c",
+      "private.validate_assessment_policy_v1": "17da6a625796e3b933feaf053f7b566a",
+      "public.service_launch_governed_learning": "303e65ecf2af54295d3c45fefe7da825",
+      "public.service_save_item_content_revision": "5d485fe71ffafb22f79b0ca76b7c4a59",
+      "public.service_student_learning_dashboard": "54e572d5e3552b5b4115cf34b3d34f7c",
+      "public.service_governed_learning_operation": "11dbb7680f9f906a346d2222d4ca0570",
+      "public.service_record_session_answer_atomic": "107a7b64e15dbb119e86abde0db83582"
+    },
+    "eightRuntimeDefinitionsMatchRepository": true,
+    "edgeConsumers": [
+      {
+        "name": "manage-content-quality",
+        "version": 11,
+        "changed": [
+          "_shared/typed-fields.mjs",
+          "manage-content-quality/index.ts"
+        ],
+        "extra": []
+      },
+      {
+        "name": "submit-answer",
+        "version": 19,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/types.ts"
+        ],
+        "extra": []
+      },
+      {
+        "name": "start-learning-session",
+        "version": 24,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "record-recommendation-event",
+        "version": 4,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-school-performance-analytics",
+        "version": 3,
+        "changed": [
+          "_shared/school-performance-analytics.ts"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-remediation-help",
+        "version": 13,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-teacher-dashboard",
+        "version": 20,
+        "changed": [
+          "_shared/institutional-teacher-analytics.ts"
+        ],
+        "extra": []
+      },
+      {
+        "name": "submit-mastery-answer",
+        "version": 8,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-chapter-mastery-lifecycle",
+        "version": 4,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-learning-context",
+        "version": 2,
+        "changed": [
+          "_shared/assessment-policy.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-my-privacy",
+        "version": 3,
+        "changed": [
+          "get-my-privacy/index.ts"
+        ],
+        "extra": [
+          "index.ts"
+        ]
+      },
+      {
+        "name": "get-teacher-student",
+        "version": 15,
+        "changed": [
+          "_shared/institutional-teacher-analytics.ts"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-mastery-check-status",
+        "version": 12,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-student-classes",
+        "version": 9,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-session-item",
+        "version": 17,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      },
+      {
+        "name": "get-student-dashboard",
+        "version": 25,
+        "changed": [
+          "_shared/assessment-policy.mjs",
+          "_shared/governed-learning-runtime.mjs"
+        ],
+        "extra": []
+      }
+    ],
+    "securityAdvisors": {
+      "errors": 0,
+      "existingWarnings": [
+        "auth_leaked_password_protection"
+      ],
+      "intentionalRlsNoPolicyTables": 43
+    },
+    "bundleRepresentationNotes": [
+      "Supabase omits type-only _shared/types.ts from submit-answer; it has no runtime body.",
+      "get-my-privacy currently uses index.ts as its entrypoint; deployment uses the equivalent explicit folder entrypoint."
+    ]
+  },
+  "localChecks": {
+    "typedSqlAndAuthoring": 5,
+    "nativeLearningBrowser": 6,
+    "qaLabels": 13,
+    "fullSuite": {
+      "tests": 1341,
+      "passed": 1341,
+      "failed": 0
+    },
+    "browserScope": "Real Chromium, actual Edge handlers and PGlite; synthetic authentication, two subjects/contexts, mobile drafts and points, failed-save retry. PostgreSQL 17.6 is a required CI job.",
+    "reviewerNativeBrowser": 9
+  },
+  "release": {
+    "ci": null,
+    "migration": null,
+    "edges": null,
+    "productionRead": null,
+    "notionSourceCommit": null,
+    "ciAttempts": [
+      {
+        "runId": 39429064661,
+        "head": "50763b57a9da97a9715f2f35527e3fe37ebc3c18",
+        "result": "failed",
+        "passed": [
+          "Node 1341",
+          "PostgreSQL 17.6 including typed tests",
+          "institutional concurrency"
+        ],
+        "reason": "Reviewer browser fixture blocked new editor imports; its allowed module graph was corrected. No production deployment occurred."
+      }
+    ]
+  },
+  "remaining": [
+    "matching/ordering",
+    "audio/shared task sets",
+    "final English content and assessment policy",
+    "English learner activation"
+  ]
+}
