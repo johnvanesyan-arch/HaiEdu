@@ -30,6 +30,7 @@ async function pageFixture(t,f,teacher=false,{mobile=false}={}){
    else if(name==='get-teacher-dashboard')data={teacher:{id:id(20),displayName:'Փորձնական ուսուցիչ'},institutionalTeacher:true,institutionalOptions:[],totals:{classes:1,students:1,studentsNeedingSupport:0},classes:[{id:id(321),assignmentId:id(351),name:'7Ա',isActive:true,schoolId:id(301),academicYear:'2026–2027',gradeNumber:7,schoolName:'Փորձնական դպրոց',subjectName:'Փորձնական առարկա',studentCount:1,students:[],skills:[],unitOptions:[{assignmentId:id(351),curriculumReleaseId:id(501),unitId:id(511),unitSequence:1,unitTitleHy:'Փորձնական բաժին',releaseNumber:1}],selectedUnit:{curriculumReleaseId:id(501),unitId:id(511),unitSequence:1,unitTitleHy:'Փորձնական բաժին',releaseNumber:1},analyticsAvailable:true}]};
    else if(name==='manage-student-invitation')data={invitations:[],joinCodes:[]};
    else throw Error('Unexpected fixture API '+name);
+   if(name==='get-teacher-dashboard')data.classes[0].unitOptions.push({...data.classes[0].unitOptions[0],unitId:id(512),unitSequence:2,unitTitleHy:'Երկրորդ փորձնական բաժին'});
    return route.fulfill({status,contentType:'application/json',body:JSON.stringify(data)});
   }
   if(url.origin===origin&&/\.(html|css|js|mjs)$/.test(url.pathname)){
@@ -54,6 +55,9 @@ test('actual student and teacher workspaces complete draft, submit, return, revi
  await s.waitForSelector('.written-response');assert.equal((await f.db.query('select count(*) n from written_submissions')).rows[0].n,1);
  await m.locator('[data-writing-refresh]').click();await m.locator('[data-writing-open]').click();await m.locator('[data-writing-feedback]').fill('Add a reason for your choice.');
  m.once('dialog',d=>d.dismiss());await m.locator('#teacherOpenWrittenWork').click();assert.equal(await m.locator('[data-writing-feedback]').inputValue(),'Add a reason for your choice.');
+ m.once('dialog',d=>d.dismiss());await m.locator('#teacherUnitFilter').selectOption(id(501)+':'+id(512));
+ assert.equal(await m.locator('#teacherUnitFilter').inputValue(),id(501)+':'+id(511));
+ assert.equal(await m.locator('[data-writing-feedback]').inputValue(),'Add a reason for your choice.');
  await m.locator('[data-writing-return]').click();await m.waitForFunction(()=>document.querySelector('[data-writing-message]').textContent.includes('վերադարձվել'));
  await s.reload();await s.locator('[data-writing-open]').click();await s.locator('[data-writing-text]').fill('My revised description explains that the blue jacket is comfortable and suitable for school.');await s.locator('[data-writing-submit]').click();await s.waitForSelector('.written-response');
  await m.locator('[data-writing-back]').click();await m.locator('[data-writing-open]').click();for(const [key,value] of Object.entries({task:3,organisation:2,vocabulary:2,grammar:2}))await m.locator(`[data-writing-score="${key}"]`).selectOption(String(value));

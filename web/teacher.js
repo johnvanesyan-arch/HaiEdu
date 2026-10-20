@@ -523,6 +523,12 @@ async function changeInstitutionalUnit(event) {
     `${unit.curriculumReleaseId}:${unit.unitId}` === event.target.value);
   if (!option || (option.unitId === klass.selectedUnit?.unitId
     && option.curriculumReleaseId === klass.selectedUnit?.curriculumReleaseId)) return;
+  // Decide before invalidating the current writer or changing dashboard data.
+  if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) {
+    event.target.value = `${klass.selectedUnit.curriculumReleaseId}:${klass.selectedUnit.unitId}`;
+    return;
+  }
+  disposeWriting(); disposeWriting = () => {};
   const request = ++institutionalUnitLoadVersion;
   const dashboardVersion = dashboardLoadVersion;
   closeDrawer();

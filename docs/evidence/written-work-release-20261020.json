@@ -1,0 +1,278 @@
+{
+  "schemaVersion": 1,
+  "stage": "16.1B.1",
+  "status": "deployed_production_read_verified",
+  "ownerAuthorization": {
+    "date": "2026-10-20",
+    "request": "okay, let's do it",
+    "scope": "Implement student writing submissions and teacher marking"
+  },
+  "implementation": {
+    "pr": 274,
+    "commit": "61fb2ba94e653a4cc0863c88511798f4f1f29e0c",
+    "prHead": "31c4188a6ede205e2bdb98fea605142227cbb9c0"
+  },
+  "scope": {
+    "capability": "extended-text-v1",
+    "responseEnvelope": "written-work-v1",
+    "englishReleaseActivated": false,
+    "productionTasksCreated": 0,
+    "automaticMasteryPolicyChanged": false
+  },
+  "localVerification": {
+    "regressionTests": 1335,
+    "additionalReadGuardTests": 1,
+    "focusedSqlEdgePrivacyTests": 13,
+    "nativeWritingBrowserTests": 2,
+    "browser": "Chromium 153.0.8010.0 (separate local test runtime)",
+    "credentialVerification": "Synthetic getUser double; real Edge handler and SQL; actual student/teacher pages"
+  },
+  "ci": {
+    "prRun": 39414994530,
+    "requiredJobs": [
+      "test",
+      "role-layout-browser",
+      "institutional-concurrency",
+      "phase3-postgres-17",
+      "Platform release checks"
+    ],
+    "prStatus": "passed",
+    "writingConcurrencyCases": [
+      "one concurrent initial draft",
+      "duplicate submission creates one immutable version",
+      "competing marks cannot overwrite",
+      "teacher grant revocation after lock wait",
+      "session expiry after lock wait"
+    ],
+    "mainRun": 39415420305,
+    "mainStatus": "passed",
+    "regressionTests": 1336,
+    "browserTests": 70
+  },
+  "database": {
+    "migration": "20261020112724_sprint_16_1b_written_work.sql",
+    "applied": true,
+    "functionReadback": [
+      {
+        "schema": "private",
+        "name": "lock_written_teacher_context",
+        "definition_md5": "f9aea5723881c844d2d0ba8208cc6df1",
+        "security_definer": false,
+        "configuration": [
+          "search_path=\"\"",
+          "TimeZone=UTC"
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": false
+      },
+      {
+        "schema": "private",
+        "name": "service_written_work",
+        "definition_md5": "d5677e2a712161c8ea9a6f4864812df6",
+        "security_definer": true,
+        "configuration": [
+          "search_path=\"\"",
+          "TimeZone=UTC"
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      },
+      {
+        "schema": "private",
+        "name": "validate_written_task",
+        "definition_md5": "c33014fb3f259f2d576eedd2e12ad0cc",
+        "security_definer": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": false
+      },
+      {
+        "schema": "private",
+        "name": "written_evidence_immutable",
+        "definition_md5": "a05222d84aedd08d9c5791c329117c30",
+        "security_definer": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": false
+      },
+      {
+        "schema": "private",
+        "name": "written_word_count",
+        "definition_md5": "caf92be40f00a6428b49fecde7846f50",
+        "security_definer": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": false
+      },
+      {
+        "schema": "public",
+        "name": "service_written_work",
+        "definition_md5": "9b88445167d6219b5ff57d655910cfae",
+        "security_definer": false,
+        "configuration": [
+          "search_path=\"\""
+        ],
+        "anon_execute": false,
+        "authenticated_execute": false,
+        "service_execute": true
+      }
+    ],
+    "rlsReadback": [
+      {
+        "relname": "written_reviews",
+        "relrowsecurity": true,
+        "anon_read": false,
+        "authenticated_read": false
+      },
+      {
+        "relname": "written_submissions",
+        "relrowsecurity": true,
+        "anon_read": false,
+        "authenticated_read": false
+      },
+      {
+        "relname": "written_task_versions",
+        "relrowsecurity": true,
+        "anon_read": false,
+        "authenticated_read": false
+      },
+      {
+        "relname": "written_work",
+        "relrowsecurity": true,
+        "anon_read": false,
+        "authenticated_read": false
+      }
+    ],
+    "catalogueCounts": {
+      "tasks": 0,
+      "works": 0,
+      "submissions": 0,
+      "reviews": 0,
+      "releases": 7,
+      "items": 1251,
+      "attempts": 42
+    },
+    "initialPRFilename": "20261020105004_sprint_16_1b_written_work.sql",
+    "appliedVersion": "20261020112724",
+    "filenameReconciliation": "Renamed after apply_migration to match its server-assigned version; body unchanged."
+  },
+  "edge": [
+    {
+      "name": "manage-written-work",
+      "version": 1,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "exactSourceFiles": [
+        "manage-written-work/index.ts",
+        "_shared/auth.ts",
+        "_shared/written-work-handler.mjs"
+      ],
+      "bundleSha256": "d0bdc3c9a9e8df82f6023c27c08f73697a533b2ecac46416709d1d4dc57172d4"
+    },
+    {
+      "name": "get-my-privacy",
+      "version": 3,
+      "status": "ACTIVE",
+      "verifyJwt": true,
+      "exactSourceFiles": [
+        "index.ts"
+      ],
+      "bundleSha256": "ed57c1b8c6360841e1a1ce47b625af2a994703646ca5e086e2e034b32355df60"
+    }
+  ],
+  "securityAdvisors": {
+    "newWarnings": 0,
+    "newInfoNotices": 4,
+    "reason": "RLS enabled without browser policies is intentional service-only access; table grants and public/private RPC grants are denied to anon/authenticated.",
+    "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+    "preexistingLeakedPasswordProtectionWarningUnchanged": true
+  },
+  "production": {
+    "frontendCommit": "61fb2ba94e653a4cc0863c88511798f4f1f29e0c",
+    "writingReadAcceptanceRun": 39415420520,
+    "status": "passed",
+    "realWritingTaskSubmission": "Not exercised in production: no reviewed production writing tasks are published; full workflow verified in isolated fixtures.",
+    "passed": 264,
+    "total": 264,
+    "writingSpecificChecks": 33,
+    "twoSchoolIsolationChecks": 54,
+    "savedArtifact": {
+      "id": 12261523838,
+      "sha256": "299442364993e9274729f421b073cf2d266e4a30c3900a804cea1ea8d4e96747"
+    },
+    "publicFileReadback": [
+      {
+        "path": "release.json",
+        "release": {
+          "schemaVersion": 1,
+          "commit": "61fb2ba94e653a4cc0863c88511798f4f1f29e0c"
+        }
+      },
+      {
+        "path": "written-work.mjs",
+        "sha256": "4f2fca19e117420d432c50ab87827c698d422bd53e1bf5353c7f3b392cccb2ce",
+        "matchesSource": true
+      },
+      {
+        "path": "written-work.css",
+        "sha256": "5698d4f13bf95fdc895ad5478a2bc4f7ea7fd5447f1b49f7e916b81118a0ceac",
+        "matchesSource": true
+      },
+      {
+        "path": "course-page.js",
+        "sha256": "e5e2f6c7ce7758615b4d80d87d5d3a84db7ee68683e2bcf2d8cb90fcf77ca613",
+        "matchesSource": true
+      },
+      {
+        "path": "teacher.js",
+        "sha256": "87cd60bd164f523d00b2415bbe6d957d730a464506625c4f616221fbe79c06be",
+        "matchesSource": true
+      },
+      {
+        "path": "privacy.js",
+        "sha256": "423ca485130be9df16c8fb6dffb366bfe191f813c76990daf62e83b9e0346378",
+        "matchesSource": true
+      }
+    ],
+    "readEvidence": "docs/evidence/written-work-production-read-20261020.json"
+  },
+  "deploymentCheck": {
+    "freshRead": "blocked",
+    "reason": "Vercel project management returned 403 for the explicit known project/team; no mapped CLI credential is available.",
+    "previousLimitation": "docs/evidence/reviewer-approval-repair-20261011.json",
+    "configurationChanged": false,
+    "enforcementClaimed": false
+  },
+  "rollback": {
+    "frontend": "Revert the feature frontend commit; retain additive schema and immutable records.",
+    "backend": "Remove published task availability if necessary; do not delete submissions or reviews as rollback."
+  },
+  "performanceAdvisors": [
+    {
+      "name": "unused_index",
+      "level": "INFO",
+      "count": 16,
+      "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+    }
+  ],
+  "followUp": {
+    "changes": [
+      "Preserve unsaved teacher review when canceling a unit change",
+      "Align migration filename with server-assigned version"
+    ],
+    "nativeBrowserRegression": "2/2 passed, includes cancel-and-continue marking path",
+    "gate": "The closure source commit is subject to the same CI/aggregate and exact production read acceptance; final source/result is recorded in Notion.",
+    "teacherSourceSha256": "49abdcdc8298ebbc3ad903f8c529ecdfc5eb621167a9454d04de8dc23a8d1cc2"
+  }
+}

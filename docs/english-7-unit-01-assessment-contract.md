@@ -77,7 +77,7 @@ No single 'English mastered' badge is proposed while a required writing/listenin
 
 ## Implementation and verification boundary
 
-First implement the reusable contracts and editors needed by the mapped tasks; the owner-authorised writing queue is implemented under 16.1B.1 with production verification pending. Use the existing versioned subject extension boundary and server authority. Shared APIs must carry explicit locale, response type/version, stimulus/task-set version and result/review state without branching on an English ID. Preserve the legacy Armenian content adapter and all active Physics policies/evidence.
+First implement the reusable contracts and editors needed by the mapped tasks; the owner-authorised writing queue is deployed and verified under 16.1B.1. Use the existing versioned subject extension boundary and server authority. Shared APIs must carry explicit locale, response type/version, stimulus/task-set version and result/review state without branching on an English ID. Preserve the legacy Armenian content adapter and all active Physics policies/evidence.
 
 Required implementation checks: accepted/rejected linguistic variants; stable IDs under option shuffling; mapping cardinality; partial-credit arithmetic; duplicate submission/resume without lost text; protected keys; unavailable audio and replay limits; transcript assistance; teacher authorization/reassignment/revocation; pending-review and regrade projection; two-school and cross-subject isolation; authenticated desktop/mobile operation on the exact deployed source. Existing production-release gates remain applicable. No runtime test suite is newly written or run locally for this design document.
 

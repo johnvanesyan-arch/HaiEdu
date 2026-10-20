@@ -1,6 +1,6 @@
 # Written work in student and teacher workspaces
 
-**16.1B.1 · 2026-10-20 · Implemented; production release verification pending.** John authorised implementation after reviewing the dashboard gap. This is the reusable writing capability slice of 16.1B. English content, final rubric/pass rules, automatic response formats and audio delivery remain separate work.
+**16.1B.1 · 2026-10-20 · Deployed; production read acceptance verified.** John authorised implementation after reviewing the dashboard gap. This is the reusable writing capability slice of 16.1B. English content, final rubric/pass rules, automatic response formats and audio delivery remain separate work.
 
 ## Student and teacher mechanics
 
@@ -8,7 +8,7 @@ The governed course page has a **Գրավոր աշխատանքներ** tab. Appr
 
 The assigned teacher opens **Գրավոր աշխատանքների ստուգում** in the existing institutional class workspace, filtered to the selected release/unit. The queue offers submitted, returned, reviewed and all submitted work. The teacher can record one integer level for each declared rubric criterion with feedback, or return the response for revision without assigning marks. The student sees feedback, edits a new draft and submits a new version. Regrading requires a reason and retains the original judgment. History includes the exact submitted text and every review.
 
-Teacher feedback is saved when the teacher submits the review; it is not autosaved. Leaving an unsaved review prompts before discarding it. Student drafts are stored on the server, never as plaintext in local storage. The interface prevents duplicate submissions and ignores late responses after disposal/account changes. Repeated same-account auth refresh does not discard the current draft. Conflicts from another tab preserve the visible text and ask the user to refresh after keeping a copy.
+Teacher feedback is saved when the teacher submits the review; it is not autosaved. Leaving an unsaved review prompts before discarding it. Canceling a unit change preserves the selected unit and keeps the review editable. Student drafts are stored on the server, never as plaintext in local storage. The interface prevents duplicate submissions and ignores late responses after disposal/account changes. Repeated same-account auth refresh does not discard the current draft. Conflicts from another tab preserve the visible text and ask the user to refresh after keeping a copy.
 
 Word count uses `unicode-whitespace-v1`: whitespace-separated tokens, with contractions and hyphenated expressions counted as one token. The declared min/max length is guidance, not an automatic failing grade. The UI does not enable spelling assistance unless the reviewed task explicitly declares it; a browser setting cannot guarantee that external help was absent.
 
@@ -48,4 +48,8 @@ The local full regression run passed **1,335 tests**; the new read-only acceptan
 
 Production acceptance extends the existing reviewed-main, designated-two-school read workflow: authorised empty task/queue responses, cross-school denials, direct-table denials and native student/teacher empty states. It creates no tasks, student text, marks or learning attempts. End-to-end writing submissions are verified in the isolated fixtures; production content-specific acceptance belongs to the first published writing task. This feature does not declare an English unit mastered or activated.
 
-Release checklist: passing required CI/aggregate; applied migration and exact function readback; both affected Edge bundles (`manage-written-work`, `get-my-privacy`) verified; exact production frontend revision; guarded production read acceptance; aligned status and merged-source Notion sync. [Current status](project-status.md) is authoritative.
+Release verification: [implementation PR #274](https://github.com/johnvanesyan-arch/HaiEdu/pull/274), PR CI 39414994530 and main CI 39415420305 passed all five required jobs. Main serves `61fb2ba94e653a4cc0863c88511798f4f1f29e0c`. Six SQL definitions/privilege projections and all four files across `manage-written-work` v1 and `get-my-privacy` v3 match source, with JWT verification enabled. [Production read acceptance](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39415420520) passed **264/264**. The four tables remain empty; seven releases, 1,251 questions and 42 existing attempts are preserved. [Evidence](evidence/written-work-release-20261020.json) records scope and hashes. [Current status](project-status.md) is authoritative.
+
+The closure change adds the tested canceled-unit navigation guard and renames the unchanged migration body to `20261020112724_sprint_16_1b_written_work.sql`, matching the version assigned by the migration connector. Its exact main CI/deployment acceptance and source stamp are recorded in Notion after verification.
+
+The Vercel project-management connector returned 403 for the known project/team, and no credentialed CLI fallback was available. As already recorded on 2026-10-11, the persistent Deployment Check setting could not be freshly re-attested; it was not changed, and CI success alone is not claimed as proof of enforced blocking.

@@ -15,7 +15,7 @@ on:
       - scripts/written-work-read-acceptance.mjs
       - supabase/functions/_shared/written-work-handler.mjs
       - supabase/functions/manage-written-work/index.ts
-      - supabase/migrations/20261020105004_sprint_16_1b_written_work.sql
+      - supabase/migrations/20261020112724_sprint_16_1b_written_work.sql
       - web/written-work.mjs
       - web/written-work.css
       # Activated pilot: cover the runner, native pages, their API dependencies,
