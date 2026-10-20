@@ -1,7 +1,7 @@
 {
   "stage": "16.1B.3",
   "date": "2026-10-20",
-  "status": "implementation-verified-release-pending",
+  "status": "deployed-and-production-verified",
   "baseCommit": "8fec677018ed777b96f15e100eed249e4dfa96d7",
   "scope": "matching and ordering capability; no content, scoring-policy or release activation",
   "preflight": {
@@ -700,10 +700,1184 @@
       "core parity",
       "browser QA dependency triggers",
       "git diff whitespace"
-    ]
+    ],
+    "finalMobile": {
+      "passed": 2,
+      "failed": 0
+    },
+    "focusedSqlRouting": {
+      "passed": 44,
+      "failed": 0
+    }
   },
   "release": {
-    "status": "pending"
+    "phase": "database, Edge and frontend deployed; exact-source production acceptance passed",
+    "mergeSha": "cc00ace03a1c9b3a6bc3c2beac44cd018fc465fd",
+    "pr": 276,
+    "head": "d52168f587a226f7326c101b73faa5962cf9c660",
+    "ci": {
+      "pr": 39448504970,
+      "jobs": [
+        {
+          "id": 118716714739,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 118716715194,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 118716715379,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 118716715409,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 118719074502,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "migration": {
+      "version": "20261020153856",
+      "name": "sprint_16_1b_matching_ordering",
+      "sha256": "9433867d65423cc359b897dd39b37893852586302a15705896a3a0ae34d34805",
+      "path": "supabase/migrations/20261020153856_sprint_16_1b_matching_ordering.sql"
+    },
+    "functionHashes": [
+      {
+        "name": "private.grade_arrangement_response",
+        "md5": "0753aeee6d99bf6b0c67596ee9303d90",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "private.present_arrangement_definition",
+        "md5": "6f07bc9a9110cebf46f909f9f13fc9d5",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "private.validate_arrangement_definition",
+        "md5": "f9e9c482ffbb5916baea6866b5c8941c",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "private.validate_arrangement_key",
+        "md5": "e645c02efc4445c54bc139f1d8765196",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "private.validate_arrangement_response",
+        "md5": "7c341ec8a07e7f42949dcae057c81bc5",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "private.validate_assessment_policy_v1",
+        "md5": "b661c4a9efe2114cd26715713426f5ef",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "public.service_governed_learning_operation",
+        "md5": "849c4b1bd64a053f22ec70a7dac06948",
+        "anon_execute": false,
+        "authenticated_execute": false
+      },
+      {
+        "name": "public.service_save_item_content_revision",
+        "md5": "8b4f1d9a315e3c073d84748822dd862c",
+        "anon_execute": false,
+        "authenticated_execute": false
+      }
+    ],
+    "edges": [
+      {
+        "name": "manage-content-quality",
+        "version": 13,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "manage-content-quality/index.ts",
+          "_shared/arrangement-responses.mjs",
+          "_shared/typed-fields.mjs",
+          "_shared/auth.ts"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "manage-content-quality/index.ts": "e4762be05a2a31190eb6bb5bc8a64dce8d5e5bfe7d2788df6f2e286fee5f568a",
+          "_shared/arrangement-responses.mjs": "e1e09b133d815020a9ff20279251a86b84b405a411c2d1f670838ae3a87cbd66",
+          "_shared/typed-fields.mjs": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      },
+      {
+        "name": "submit-answer",
+        "version": 21,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "submit-answer/index.ts",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs",
+          "_shared/practice-diagnostic-gate.ts",
+          "_shared/auth.ts",
+          "_shared/course-access.ts",
+          "_shared/curriculum-release.ts",
+          "_shared/learning-model.ts",
+          "_shared/recommendation-telemetry.ts",
+          "_shared/grading.ts",
+          "_shared/recommendation.ts"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "submit-answer/index.ts": "d385a85ac187beaf6c2ffc9d894f89a412a9fc755f5528fd118a400f85d975b0",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad",
+          "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+          "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "_shared/grading.ts": "0c317389ef634794a6a97f497caf0c5de672fbf7cecf2681753aca763a968f77",
+          "_shared/recommendation.ts": "a55dddab18eb4ec72eb91d9da044c83987ac591b1767ddc14d28b11bd544a4d9"
+        }
+      },
+      {
+        "name": "start-learning-session",
+        "version": 26,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "start-learning-session/index.ts",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs",
+          "_shared/practice-diagnostic-gate.ts",
+          "_shared/initial-diagnostic.ts",
+          "_shared/auth.ts",
+          "_shared/course-access.ts",
+          "_shared/recommendation-telemetry.ts",
+          "_shared/curriculum-release.ts",
+          "_shared/assessment-integrity.ts"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "start-learning-session/index.ts": "a3ebb9df342d0813711007ddfb4befdb9cf58132ce588aaef288be2c30f108e2",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad",
+          "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6"
+        }
+      },
+      {
+        "name": "record-recommendation-event",
+        "version": 6,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "record-recommendation-event/index.ts",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs",
+          "_shared/auth.ts"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "record-recommendation-event/index.ts": "378c6eb3e8eba7138ce36070389dde7d8f1898572b55997411564ca69af20bc2",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      },
+      {
+        "name": "get-remediation-help",
+        "version": 15,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "get-remediation-help/index.ts",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs",
+          "_shared/practice-diagnostic-gate.ts",
+          "_shared/auth.ts",
+          "_shared/course-access.ts"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "get-remediation-help/index.ts": "223f778b79dc346dc0b421d86edb457279426a2f54c247c5ddb756be0397814f",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad",
+          "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      },
+      {
+        "name": "submit-mastery-answer",
+        "version": 10,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "submit-mastery-answer/index.ts",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs",
+          "_shared/auth.ts",
+          "_shared/course-access.ts"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "submit-mastery-answer/index.ts": "b186abc58ea67452daf63eeb0a6a7a8e9d6dd523f9a037e59b6b3c7079d73671",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      },
+      {
+        "name": "get-chapter-mastery-lifecycle",
+        "version": 6,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "get-chapter-mastery-lifecycle/index.ts",
+          "_shared/curriculum-release.ts",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs",
+          "_shared/auth.ts",
+          "_shared/course-access.ts"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "get-chapter-mastery-lifecycle/index.ts": "21cafb9dfcc52011ed021e37e1398994f9db5e3f2ef88a836c25904a2d179edc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      },
+      {
+        "name": "get-learning-context",
+        "version": 4,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "get-learning-context/index.ts",
+          "_shared/auth.ts",
+          "_shared/learning-context-handler.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "get-learning-context/index.ts": "07e4bf30c856a0a7a4ff9c23157481ff25effad0d20cbd00948a4ea030aed3cd",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/learning-context-handler.mjs": "405f1074ddfc3fb58ae84bf5f95343aae542ff05633a02742d4a103cfe27cc4a",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad"
+        }
+      },
+      {
+        "name": "get-mastery-check-status",
+        "version": 14,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "get-mastery-check-status/index.ts",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs",
+          "_shared/auth.ts",
+          "_shared/course-access.ts",
+          "_shared/curriculum-release.ts"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "get-mastery-check-status/index.ts": "4a1ffbd05b51cbf944242db3ed5158e767a4b803266561282816816ed21d054a",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        }
+      },
+      {
+        "name": "get-student-classes",
+        "version": 11,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "get-student-classes/index.ts",
+          "_shared/auth.ts",
+          "_shared/course-access.ts",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "get-student-classes/index.ts": "7a0611c7b52e777c513384bc83805381c07238f44a2a1b910f9f71df6fb2f281",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad"
+        }
+      },
+      {
+        "name": "get-session-item",
+        "version": 19,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "get-session-item/index.ts",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs",
+          "_shared/practice-diagnostic-gate.ts",
+          "_shared/auth.ts",
+          "_shared/course-access.ts",
+          "_shared/curriculum-release.ts",
+          "_shared/assessment-integrity.ts"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "get-session-item/index.ts": "14bd9e9f59de8375134de49ad5bdce503598969364edd6a0ab75be3616d13a67",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad",
+          "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6"
+        }
+      },
+      {
+        "name": "get-student-dashboard",
+        "version": 27,
+        "verify_jwt": true,
+        "status": "ACTIVE",
+        "files": [
+          "get-student-dashboard/index.ts",
+          "_shared/auth.ts",
+          "_shared/course-access.ts",
+          "_shared/curriculum-release.ts",
+          "_shared/learning-model.ts",
+          "_shared/recommendation-telemetry.ts",
+          "_shared/student-dashboard-handler.mjs",
+          "_shared/governed-learning-runtime.mjs",
+          "_shared/student-learning-context.mjs",
+          "_shared/assessment-policy.mjs"
+        ],
+        "exactRuntimeMatch": true,
+        "fileSha256": {
+          "get-student-dashboard/index.ts": "73fba3251eccf15b432cda4e2436fe01fbfa9069c5121b346295a7ea8454652d",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+          "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "_shared/student-dashboard-handler.mjs": "6c6a8cb71a11bee135d5971bee96aba9886d192d282c06e824db4b7847c8dcaf",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "ef1b54e862e51068cdefc23b184a921da98207f93820c058c168f9d89297c8ad"
+        }
+      }
+    ],
+    "preservationAfterMigration": {
+      "items": {
+        "md5": "02a9ac127de1e789dde981167803bbf6",
+        "rows": 1251
+      },
+      "attempts": {
+        "md5": "26d44860397d32ab6023da8e72cfcb0e",
+        "rows": 42
+      },
+      "item_options": {
+        "md5": "2f762b42bec0fdeac871659af168de6e",
+        "rows": 4396
+      },
+      "written_work": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "item_versions": {
+        "md5": "b0af9e1e86807f1b8e339b90a52b03f9",
+        "rows": 1146
+      },
+      "written_reviews": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "assessment_pools": {
+        "md5": "d6450febadadd4af95b10f3a8c9a7b92",
+        "rows": 19
+      },
+      "item_answer_keys": {
+        "md5": "1054877916900dca98aa788fa67c9dd6",
+        "rows": 1251
+      },
+      "learning_sessions": {
+        "md5": "a5d0326f20b58e02773af6281ee31cdb",
+        "rows": 8
+      },
+      "curriculum_releases": {
+        "md5": "242aae0aedf8c5d85e0a2a415a2f8703",
+        "rows": 7
+      },
+      "written_submissions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "assessment_blueprints": {
+        "md5": "38fe215a14d86c322b7826724d8a7fac",
+        "rows": 27
+      },
+      "assessment_pool_items": {
+        "md5": "184285de8853be3dfc41e8f90db0dda4",
+        "rows": 1244
+      },
+      "written_task_versions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "learning_session_items": {
+        "md5": "be40162b06e91a52213d5b6fd6e810bc",
+        "rows": 96
+      },
+      "curriculum_release_units": {
+        "md5": "449c3d22acb7c1b4c92f261c1f8aaf61",
+        "rows": 7
+      },
+      "learning_response_drafts": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "curriculum_release_skills": {
+        "md5": "7bf9605a3f0222a6d4c6d08d14cc6503",
+        "rows": 66
+      },
+      "assessment_blueprint_items": {
+        "md5": "7e54e189ad648f2a3f0a4538a01f8b60",
+        "rows": 1872
+      },
+      "assessment_policy_bindings": {
+        "md5": "2c32ee0b3e126db5e47b7de55a5ebacf",
+        "rows": 20
+      },
+      "learning_model_configurations": {
+        "md5": "4254a36a7a040133d3592cd131c83c83",
+        "rows": 6
+      },
+      "learning_model_runtime_bindings": {
+        "md5": "dd95315c4395cb93457b2c5afaefc495",
+        "rows": 6
+      },
+      "academic_mastery_policy_versions": {
+        "md5": "1c69b7132347cd8b67a89268668f27ce",
+        "rows": 1
+      },
+      "student_skill_mastery_by_release": {
+        "md5": "19a0f8555ac31ac870a6cff088c9ce29",
+        "rows": 13
+      }
+    },
+    "smoke": {
+      "pg_version": "17.6",
+      "matching_partial": {
+        "score": 0.5,
+        "correct": false,
+        "errorCode": "incorrect_matching",
+        "components": [
+          {
+            "id": "red",
+            "score": 1,
+            "correct": true
+          },
+          {
+            "id": "blue",
+            "score": 0,
+            "correct": false
+          }
+        ],
+        "correctComponents": 1,
+        "normalizedResponse": {
+          "pairs": {
+            "red": "warm",
+            "blue": ""
+          },
+          "components": [
+            {
+              "id": "red",
+              "score": 1,
+              "correct": true
+            },
+            {
+              "id": "blue",
+              "score": 0,
+              "correct": false
+            }
+          ],
+          "schemaVersion": "haiedu-matching-v1"
+        },
+        "requiredComponents": 2
+      },
+      "ordering_complete": {
+        "score": 1,
+        "correct": true,
+        "errorCode": null,
+        "components": [
+          {
+            "id": "sequence",
+            "score": 1,
+            "correct": true
+          }
+        ],
+        "correctComponents": 1,
+        "normalizedResponse": {
+          "sequence": [
+            "a",
+            "b",
+            "c"
+          ],
+          "components": [
+            {
+              "id": "sequence",
+              "score": 1,
+              "correct": true
+            }
+          ],
+          "schemaVersion": "haiedu-ordering-v1"
+        },
+        "requiredComponents": 1
+      },
+      "activated_items": 0,
+      "adopting_blueprints": 0,
+      "drafts": 0
+    },
+    "advisors": {
+      "result": {
+        "lints": [
+          {
+            "name": "rls_enabled_no_policy",
+            "title": "RLS Enabled No Policy",
+            "level": "INFO",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Detects cases where row level security (RLS) has been enabled on a table but no RLS policies have been created.",
+            "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy",
+            "count": 44,
+            "findings": [
+              {
+                "detail": "Table \\`private.active_curriculum_release_units\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "active_curriculum_release_units",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`private.assessment_presentation_configuration\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "assessment_presentation_configuration",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`private.learning_session_item_option_orders\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "learning_session_item_option_orders",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`private.mastery_form_selection_bindings\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "mastery_form_selection_bindings",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`private.mastery_form_serialization_fences\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "mastery_form_serialization_fences",
+                  "type": "table",
+                  "schema": "private"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.academic_identity_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "academic_identity_events",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.academic_mastery_policy_activation\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "academic_mastery_policy_activation",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.academic_mastery_policy_versions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "academic_mastery_policy_versions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.academic_years\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "academic_years",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_analysis_scopes\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_analysis_scopes",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_change_decisions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_change_decisions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_decision_protocols\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_decision_protocols",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_evidence_contracts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_evidence_contracts",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.calibration_metric_sets\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "calibration_metric_sets",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_mastery_states\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_mastery_states",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_review_cycles\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_review_cycles",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_review_item_exposures\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_review_item_exposures",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_review_requirements\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_review_requirements",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.chapter_review_sessions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "chapter_review_sessions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.institutional_class_enrollments\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "institutional_class_enrollments",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.institutional_invitations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "institutional_invitations",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.institutional_join_codes\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "institutional_join_codes",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.institutional_memberships\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "institutional_memberships",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.item_curriculum_scopes\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "item_curriculum_scopes",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.item_template_remediation_guides\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "item_template_remediation_guides",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.learning_model_configurations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "learning_model_configurations",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.learning_model_runtime_bindings\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "learning_model_runtime_bindings",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.learning_response_drafts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "learning_response_drafts",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.legacy_learning_blueprint_mappings\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "legacy_learning_blueprint_mappings",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.mastery_check_attempts\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "mastery_check_attempts",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.pilot_participant_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "pilot_participant_events",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.pilot_participants\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "pilot_participants",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.recommendation_events\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "recommendation_events",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.remediation_guide_authoring_versions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "remediation_guide_authoring_versions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.remediation_guide_versions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "remediation_guide_versions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.runtime_builds\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "runtime_builds",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.staff_account_provisioning\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "staff_account_provisioning",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.student_account_acceptances\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "student_account_acceptances",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.teacher_assignments\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "teacher_assignments",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.teacher_subject_authorizations\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "teacher_subject_authorizations",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.written_reviews\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "written_reviews",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.written_submissions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "written_submissions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.written_task_versions\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "written_task_versions",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              },
+              {
+                "detail": "Table \\`public.written_work\\` has RLS enabled, but no policies exist",
+                "metadata": {
+                  "name": "written_work",
+                  "type": "table",
+                  "schema": "public"
+                },
+                "observed_at": "2026-10-20T15:41:45.436Z"
+              }
+            ]
+          },
+          {
+            "name": "auth_leaked_password_protection",
+            "title": "Leaked Password Protection Disabled",
+            "level": "WARN",
+            "facing": "EXTERNAL",
+            "categories": [
+              "SECURITY"
+            ],
+            "description": "Leaked password protection is currently disabled.",
+            "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection",
+            "count": 1,
+            "findings": [
+              {
+                "detail": "Supabase Auth prevents the use of compromised passwords by checking against HaveIBeenPwned.org. Enable this feature to enhance security.",
+                "metadata": {
+                  "type": "auth",
+                  "entity": "Auth"
+                }
+              }
+            ]
+          }
+        ]
+      }
+    },
+    "connectorRetry": {
+      "initialError": "Invalid or expired requestState",
+      "absentBeforeRetry": {
+        "migrations": [],
+        "new_function": null
+      },
+      "retrySucceeded": true
+    },
+    "mainCi": {
+      "run": 39450805494,
+      "status": "passed",
+      "tests": 1347,
+      "browserChecks": 77,
+      "postgresVersion": "17.6",
+      "aggregate": "Platform release checks"
+    },
+    "vercel": {
+      "deploymentId": "dpl_3UFhtZnE9kjcauMYXQQQyZWqvbhq",
+      "sourceCommit": "cc00ace03a1c9b3a6bc3c2beac44cd018fc465fd",
+      "state": "READY",
+      "environment": "Production",
+      "productionDomain": "www.haiedu.am",
+      "requiredCheck": "Platform release checks",
+      "blockedPromotionObserved": true,
+      "readyWithCurrentDomainsObserved": true,
+      "persistentBlockingEvidence": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+      "verificationMethod": "owner-authorized signed-in browser; connector project calls previously denied"
+    },
+    "preservationAfterAcceptance": {
+      "items": {
+        "md5": "02a9ac127de1e789dde981167803bbf6",
+        "rows": 1251
+      },
+      "attempts": {
+        "md5": "26d44860397d32ab6023da8e72cfcb0e",
+        "rows": 42
+      },
+      "item_options": {
+        "md5": "2f762b42bec0fdeac871659af168de6e",
+        "rows": 4396
+      },
+      "written_work": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "item_versions": {
+        "md5": "b0af9e1e86807f1b8e339b90a52b03f9",
+        "rows": 1146
+      },
+      "written_reviews": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "assessment_pools": {
+        "md5": "d6450febadadd4af95b10f3a8c9a7b92",
+        "rows": 19
+      },
+      "item_answer_keys": {
+        "md5": "1054877916900dca98aa788fa67c9dd6",
+        "rows": 1251
+      },
+      "learning_sessions": {
+        "md5": "a5d0326f20b58e02773af6281ee31cdb",
+        "rows": 8
+      },
+      "curriculum_releases": {
+        "md5": "242aae0aedf8c5d85e0a2a415a2f8703",
+        "rows": 7
+      },
+      "written_submissions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "assessment_blueprints": {
+        "md5": "38fe215a14d86c322b7826724d8a7fac",
+        "rows": 27
+      },
+      "assessment_pool_items": {
+        "md5": "184285de8853be3dfc41e8f90db0dda4",
+        "rows": 1244
+      },
+      "written_task_versions": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "learning_session_items": {
+        "md5": "be40162b06e91a52213d5b6fd6e810bc",
+        "rows": 96
+      },
+      "curriculum_release_units": {
+        "md5": "449c3d22acb7c1b4c92f261c1f8aaf61",
+        "rows": 7
+      },
+      "learning_response_drafts": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "rows": 0
+      },
+      "curriculum_release_skills": {
+        "md5": "7bf9605a3f0222a6d4c6d08d14cc6503",
+        "rows": 66
+      },
+      "assessment_blueprint_items": {
+        "md5": "7e54e189ad648f2a3f0a4538a01f8b60",
+        "rows": 1872
+      },
+      "assessment_policy_bindings": {
+        "md5": "2c32ee0b3e126db5e47b7de55a5ebacf",
+        "rows": 20
+      },
+      "learning_model_configurations": {
+        "md5": "4254a36a7a040133d3592cd131c83c83",
+        "rows": 6
+      },
+      "learning_model_runtime_bindings": {
+        "md5": "dd95315c4395cb93457b2c5afaefc495",
+        "rows": 6
+      },
+      "academic_mastery_policy_versions": {
+        "md5": "1c69b7132347cd8b67a89268668f27ce",
+        "rows": 1
+      },
+      "student_skill_mastery_by_release": {
+        "md5": "19a0f8555ac31ac870a6cff088c9ce29",
+        "rows": 13
+      }
+    },
+    "preservationVerifiedScopes": 24,
+    "actionsAcceptance": {
+      "run": 39450805301,
+      "checksPassed": 143,
+      "file": "docs/evidence/matching-ordering-production-actions-20261020.json",
+      "sha256": "ec98a6fe2a12646e2a3cd927c3dcabd19ad429bada94d45e17084e72ad044306",
+      "beforeIsolationPassed": 54,
+      "afterIsolationPassed": 54,
+      "disposableCleanup": {
+        "classesArchived": 4,
+        "membershipsEnded": 2
+      },
+      "artifactDigest": "sha256:b42cf6ea6a877ff3ac4b9b25a5bf4646bcac97d2a74cd68a48a35ff1e960ad11"
+    },
+    "productionReadAcceptance": {
+      "run": 39450805306,
+      "attempt": 2,
+      "checksPassed": 268,
+      "revision": "cc00ace03a1c9b3a6bc3c2beac44cd018fc465fd",
+      "file": "docs/evidence/matching-ordering-production-read-20261020.json",
+      "sha256": "63de25239f4bf0be2869d054e689506f70c461c3c2495be0de78d984b4f666e5",
+      "queueNote": "First attempt displaced in shared production-QA concurrency group before any job; unchanged attempt 2 passed.",
+      "twoSchoolIsolationPassed": 54,
+      "artifactDigest": "sha256:25486022097f737799b3d9d4237f0b1c32465544e3e17e83a3789fb37229ef31"
+    },
+    "verificationBoundary": "New response submission/scoring uses isolated real-SQL/native-browser fixtures. Production verification covers exact code, read-only grading, existing chapter/workspace reads and designated disposable authenticated actions; no English content or adopting policies were activated.",
+    "browserProof": {
+      "file": "docs/evidence/matching-ordering-production-qa-20261020.jpg",
+      "sha256": "833970ed2236a2d877f283ef7dafe418e6cb364d19fa6edaecf915b5f81c21e3",
+      "scope": "Completed exact-revision production read-acceptance workflow after UI requeue"
+    }
   },
   "remaining": [
     "English content/accepted alternatives and assessment policy approval",
@@ -711,7 +1885,7 @@
     "English release activation"
   ],
   "migrationSource": {
-    "path": "supabase/migrations/20261020150847_sprint_16_1b_matching_ordering.sql",
+    "path": "supabase/migrations/20261020153856_sprint_16_1b_matching_ordering.sql",
     "sha256": "9433867d65423cc359b897dd39b37893852586302a15705896a3a0ae34d34805",
     "expectedFunctionHashes": {
       "private.validate_assessment_policy_v1": "b661c4a9efe2114cd26715713426f5ef",
@@ -722,6 +1896,11 @@
       "private.validate_arrangement_key": "e645c02efc4445c54bc139f1d8765196",
       "private.present_arrangement_definition": "6f07bc9a9110cebf46f909f9f13fc9d5",
       "public.service_save_item_content_revision": "8b4f1d9a315e3c073d84748822dd862c"
-    }
+    },
+    "implementationPath": "supabase/migrations/20261020150847_sprint_16_1b_matching_ordering.sql"
+  },
+  "documentationClosure": {
+    "roadmapVersion": "4.23",
+    "requiredFollowThrough": "Merge this evidence and aligned status/API/roadmap/backlog, source-stamp Notion to that commit and verify closure CI/production. Final attestation belongs in Notion to avoid a self-referential commit."
   }
 }

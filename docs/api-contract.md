@@ -5,7 +5,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. The historical 2026-10-10 comparison does not authorize a release; the separate 2026-10-13 pilot activation and authenticated acceptance are recorded below.
 
-**Matching/ordering API (16.1B.3, implemented; release verification pending):** `haiedu-matching-v1` and `haiedu-ordering-v1` extend governed delivery/drafts/submission and opt-in policy v3. Matching normalizes per-pair credit; ordering requires an accepted complete sequence. [Complete capability/API contract](matching-ordering-capability.md). No content/policy activation.
+**Matching/ordering API (16.1B.3, deployed and read-verified):** `haiedu-matching-v1` and `haiedu-ordering-v1` extend governed delivery/drafts/submission and opt-in policy v3. Matching normalizes per-pair credit; ordering requires an accepted complete sequence. [Complete capability/API contract](matching-ordering-capability.md). No content/policy activation.
 
 **Typed response API (16.1B.2, deployed and read-verified):** governed item delivery, revision-checked private drafts and submission use `haiedu-typed-fields-v1`; opt-in policy v3 reports normalized item points separately from fully correct item counts. [Complete capability/API contract](typed-fields-capability.md). No English content/policy activation.
 

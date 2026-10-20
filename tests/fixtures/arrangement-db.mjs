@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {database as typedDatabase,configure,blueprintId,id,scopes} from './typed-fields-db.mjs';
 export * from './typed-fields-db.mjs';
-export const arrangementMigration='supabase/migrations/20261020150847_sprint_16_1b_matching_ordering.sql';
+export const arrangementMigration='supabase/migrations/20261020153856_sprint_16_1b_matching_ordering.sql';
 export const matchingDefinition={schemaVersion:'haiedu-matching-v1',locale:'en',cardinality:'one_to_one',sources:[{id:'red',label:'Red'},{id:'blue',label:'Blue'}],targets:[{id:'warm',label:'A warm colour'},{id:'cool',label:'A cool colour'},{id:'neutral',label:'A neutral colour'}]};
 export const matchingKey={schemaVersion:matchingDefinition.schemaVersion,pairs:{red:'warm',blue:'cool'}};
 export const matchingResponse=(red='warm',blue='')=>({schemaVersion:matchingDefinition.schemaVersion,pairs:{red,blue}});
