@@ -1,0 +1,159 @@
+{
+  "schemaVersion": "haiedu-english-assessment-batch-validation-v1",
+  "checkpoint": "16.1C.5",
+  "packetSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+  "acceptanceSha256": "8cce70d7ff396cc8f90ba1df5478b5ac2b4d12ad78ee4cc2fe42d18621a237d7",
+  "counts": {
+    "items": 56,
+    "choiceItems": 46,
+    "choiceOptions": 138,
+    "choiceOrderKeyChecks": 276,
+    "typedItems": 10,
+    "typedFields": 13,
+    "sqlGradeCases": 95,
+    "acceptedNormalizations": 13,
+    "rejectedOrBlankFields": 52,
+    "allBlankCases": 10,
+    "malformedResponseRejections": 10,
+    "textItems": 48,
+    "audioHeldItems": 8,
+    "sourceSets": 8
+  },
+  "forms": [
+    {
+      "form": "DA",
+      "items": 28,
+      "text": 24,
+      "audioHeld": 4,
+      "maximumItemPoints": 28,
+      "sourceSets": 4,
+      "responseComponents": 30
+    },
+    {
+      "form": "MA",
+      "items": 28,
+      "text": 24,
+      "audioHeld": 4,
+      "maximumItemPoints": 28,
+      "sourceSets": 4,
+      "responseComponents": 29
+    }
+  ],
+  "sources": [
+    {
+      "id": "ENG7-U01-DA-READ-A",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DA-22"
+      ],
+      "wordCount": 82,
+      "contentSha256": "8bea90f2234e3bd3a740c538b6c643cf3dd98bd5f59d55a9fa7714f1ee42902f"
+    },
+    {
+      "id": "ENG7-U01-DA-READ-B",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "wordCount": 71,
+      "contentSha256": "3f98e1d7277787ce606d90e4b0c488af3e1cb41ad73242185eed7c584fb27664"
+    },
+    {
+      "id": "ENG7-U01-DA-AUDIO-A",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DA-27"
+      ],
+      "wordCount": 59,
+      "contentSha256": "23cb2b6df72ff2baf068de1ff02ea26cc4985ab601e9336823094b5c59a531f7"
+    },
+    {
+      "id": "ENG7-U01-DA-AUDIO-B",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-DA-26",
+        "ENG7-U01-DA-28"
+      ],
+      "wordCount": 102,
+      "contentSha256": "75378f3137ac2a342ecc42538fbb8a958e09dfe4aa7d1523394e0d20ed3c7a97"
+    },
+    {
+      "id": "ENG7-U01-MA-READ-A",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-MA-21",
+        "ENG7-U01-MA-22"
+      ],
+      "wordCount": 73,
+      "contentSha256": "dfd34b7c83562637fbe61b7e22823f4b1769454d53b88e64afc11be748a26316"
+    },
+    {
+      "id": "ENG7-U01-MA-READ-B",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-MA-23",
+        "ENG7-U01-MA-24"
+      ],
+      "wordCount": 76,
+      "contentSha256": "9a270ffca7fc2a65710d9add91f93b7b7b9a226d38a603506241dbee1320dc78"
+    },
+    {
+      "id": "ENG7-U01-MA-AUDIO-A",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-MA-25",
+        "ENG7-U01-MA-27"
+      ],
+      "wordCount": 61,
+      "contentSha256": "28269e5fa84985570f3a4ba36deb7bd73ea605ed0c891e2919d2918ad3b3f25e"
+    },
+    {
+      "id": "ENG7-U01-MA-AUDIO-B",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-MA-26",
+        "ENG7-U01-MA-28"
+      ],
+      "wordCount": 85,
+      "contentSha256": "e695f388e3d2db5089d4039c8bcab7ca4f5f1474bffea077c34fe46f19988356"
+    }
+  ],
+  "sourceInputSha256": {
+    "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15",
+    "supabase/functions/_shared/typed-fields.mjs": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc"
+  },
+  "reusedEvidence": [
+    {
+      "path": "docs/evidence/english-7-unit-01-draft-validation-20261020.json",
+      "sqlGradeCases": 169,
+      "rerun": false
+    },
+    {
+      "path": "docs/evidence/english-7-unit-01-practice-validation-20261021.json",
+      "sqlGradeCases": 57,
+      "rerun": false
+    }
+  ],
+  "checks": {
+    "accepted56Slots": true,
+    "practice60Unchanged": true,
+    "typedJsAndSqlContracts": true,
+    "partialCreditAndBlanks": true,
+    "malformedExtraIdsRejected": true,
+    "choiceStableIdOrderInvariant": true,
+    "sourceMembershipAndGrouping": true,
+    "conditionalAudioKeys": true,
+    "numberedSpeakers": true,
+    "protectedPurposeSeparation": true,
+    "zeroApprovedOrQualifiedCapacity": true
+  },
+  "limits": [
+    "Choice permutation checks are content/key checks, not a rerun of runtime choice grading or browser shuffling.",
+    "Source/semantic judgments are automated-author judgments awaiting human and SME/exposure review, not automatic semantic-test results.",
+    "Listening is checked against unrecorded scripts only; no audition, rights, playback or assessment policy acceptance is claimed.",
+    "No production writes, registration, allocation or learner release."
+  ]
+}

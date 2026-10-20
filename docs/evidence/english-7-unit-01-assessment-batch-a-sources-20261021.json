@@ -1,0 +1,154 @@
+{
+  "schemaVersion": "haiedu-english-assessment-source-review-v1",
+  "checkpoint": "16.1C.5",
+  "author": "Codex automated author",
+  "humanReview": "pending",
+  "textbook": {
+    "edition": "Grigoryan, English 7, Zangak 2023",
+    "isbn": "978-9939-99-035-4",
+    "sha256": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9",
+    "pagesReadThisSlice": [
+      4,
+      5,
+      6,
+      8,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      20,
+      21,
+      26,
+      27,
+      144
+    ],
+    "preservedScope": "Activity sequence and topics remain the original Unit 1 map; these are additional assessment sources with page/outcome anchors, not replacement lessons."
+  },
+  "externalPrimarySources": [
+    {
+      "url": "https://www.fdc.am/designers/3",
+      "retrievedDate": "2026-10-21 Asia/Yerevan",
+      "retrievalReference": "turn10view0",
+      "locations": [
+        "lines 24–29"
+      ],
+      "factsUsed": [
+        "Vahan Khachatryan grew up in Yerevan surrounded by his grandfather’s artwork.",
+        "His childhood interest preceded study in Florence and graduation in 2011.",
+        "He founded his studio in 2013.",
+        "The profile connects inspiration with family art and cultures encountered through travel."
+      ],
+      "limits": "Short original factual paraphrase, not reproduction of marketing claims, photographs or quoted prose. No website or audio hosting licence inferred.",
+      "factProjectionSha256": "518e923ae97ef84d81dc8226367e1a56bb87e7b3f7be786d0c43e9336b7d245c"
+    },
+    {
+      "url": "https://www.fdc.am/designers/34",
+      "retrievedDate": "2026-10-21 Asia/Yerevan",
+      "retrievalReference": "turn10view1",
+      "locations": [
+        "lines 23–28"
+      ],
+      "factsUsed": [
+        "FAINA began in 2007; the second brand f by faina launched in 2016.",
+        "The profile describes simple/elegant clothing with noticeable details and individual expression."
+      ],
+      "limits": "Heading and body spell the designer’s surname differently. The learner passage uses stable brand names and tests neither spelling nor celebrity date recall. Promotional rankings and gender ideals are omitted.",
+      "factProjectionSha256": "8805f647c9cd6a64895dbf09bc94d514ef83c349b96b9a89b76b06aeea3cab96"
+    }
+  ],
+  "authoredSourceContent": [
+    {
+      "id": "ENG7-U01-DA-READ-A",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DA-22"
+      ],
+      "wordCount": 82,
+      "contentSha256": "8bea90f2234e3bd3a740c538b6c643cf3dd98bd5f59d55a9fa7714f1ee42902f"
+    },
+    {
+      "id": "ENG7-U01-DA-READ-B",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "wordCount": 71,
+      "contentSha256": "3f98e1d7277787ce606d90e4b0c488af3e1cb41ad73242185eed7c584fb27664"
+    },
+    {
+      "id": "ENG7-U01-DA-AUDIO-A",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DA-27"
+      ],
+      "wordCount": 59,
+      "contentSha256": "23cb2b6df72ff2baf068de1ff02ea26cc4985ab601e9336823094b5c59a531f7"
+    },
+    {
+      "id": "ENG7-U01-DA-AUDIO-B",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-DA-26",
+        "ENG7-U01-DA-28"
+      ],
+      "wordCount": 102,
+      "contentSha256": "75378f3137ac2a342ecc42538fbb8a958e09dfe4aa7d1523394e0d20ed3c7a97"
+    },
+    {
+      "id": "ENG7-U01-MA-READ-A",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-MA-21",
+        "ENG7-U01-MA-22"
+      ],
+      "wordCount": 73,
+      "contentSha256": "dfd34b7c83562637fbe61b7e22823f4b1769454d53b88e64afc11be748a26316"
+    },
+    {
+      "id": "ENG7-U01-MA-READ-B",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-MA-23",
+        "ENG7-U01-MA-24"
+      ],
+      "wordCount": 76,
+      "contentSha256": "9a270ffca7fc2a65710d9add91f93b7b7b9a226d38a603506241dbee1320dc78"
+    },
+    {
+      "id": "ENG7-U01-MA-AUDIO-A",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-MA-25",
+        "ENG7-U01-MA-27"
+      ],
+      "wordCount": 61,
+      "contentSha256": "28269e5fa84985570f3a4ba36deb7bd73ea605ed0c891e2919d2918ad3b3f25e"
+    },
+    {
+      "id": "ENG7-U01-MA-AUDIO-B",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-MA-26",
+        "ENG7-U01-MA-28"
+      ],
+      "wordCount": 85,
+      "contentSha256": "e695f388e3d2db5089d4039c8bcab7ca4f5f1474bffea077c34fe46f19988356"
+    }
+  ],
+  "audioStatus": {
+    "newScripts": 4,
+    "recordingsProduced": 0,
+    "auditionsCompleted": 0,
+    "voiceRightsVerified": false,
+    "assessedPlaybackImplemented": false
+  },
+  "protection": "All eight sources are private, form-reserved candidates. Public availability of factual reference pages does not establish that a learner is unexposed; family/exposure review must qualify the actual source versions before use.",
+  "noNewFactualClaimsOutsideSources": true,
+  "noImagesUsed": true
+}

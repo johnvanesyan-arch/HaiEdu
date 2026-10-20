@@ -819,7 +819,7 @@
     {
       "code": "DA",
       "purpose": "diagnostic",
-      "status": "accepted_authoring_manifest_unfilled",
+      "status": "authored_draft_not_qualified",
       "itemCount": 28,
       "sourceSets": [
         {
@@ -833,7 +833,10 @@
           "memberSlots": [
             "ENG7-U01-PLAN-DA-21",
             "ENG7-U01-PLAN-DA-22"
-          ]
+          ],
+          "draftSourceId": "ENG7-U01-DA-READ-A",
+          "draftPacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "status": "text_drafted"
         },
         {
           "plannedCode": "ENG7-U01-PLAN-DA-READ-B",
@@ -846,7 +849,10 @@
           "memberSlots": [
             "ENG7-U01-PLAN-DA-23",
             "ENG7-U01-PLAN-DA-24"
-          ]
+          ],
+          "draftSourceId": "ENG7-U01-DA-READ-B",
+          "draftPacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "status": "text_drafted"
         },
         {
           "plannedCode": "ENG7-U01-PLAN-DA-AUDIO-A",
@@ -859,7 +865,10 @@
           "memberSlots": [
             "ENG7-U01-PLAN-DA-25",
             "ENG7-U01-PLAN-DA-27"
-          ]
+          ],
+          "draftSourceId": "ENG7-U01-DA-AUDIO-A",
+          "draftPacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "status": "script_drafted_recording_missing"
         },
         {
           "plannedCode": "ENG7-U01-PLAN-DA-AUDIO-B",
@@ -872,7 +881,10 @@
           "memberSlots": [
             "ENG7-U01-PLAN-DA-26",
             "ENG7-U01-PLAN-DA-28"
-          ]
+          ],
+          "draftSourceId": "ENG7-U01-DA-AUDIO-B",
+          "draftPacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "status": "script_drafted_recording_missing"
         }
       ],
       "slots": [
@@ -882,9 +894,9 @@
           "demandId": "S01-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-01",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -893,9 +905,9 @@
           "demandId": "S01-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-02",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -904,9 +916,9 @@
           "demandId": "S01-03",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-03",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -915,9 +927,9 @@
           "demandId": "S02-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-04",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -926,9 +938,9 @@
           "demandId": "S02-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-05",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -937,9 +949,9 @@
           "demandId": "S03-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-06",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -948,9 +960,9 @@
           "demandId": "S03-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-07",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -959,9 +971,9 @@
           "demandId": "S04-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-08",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -970,9 +982,9 @@
           "demandId": "S04-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-09",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -981,9 +993,9 @@
           "demandId": "S05-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-10",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -992,9 +1004,9 @@
           "demandId": "S05-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-11",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1003,9 +1015,9 @@
           "demandId": "S06-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-12",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1014,9 +1026,9 @@
           "demandId": "S06-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-13",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1025,9 +1037,9 @@
           "demandId": "S06-03",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-14",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1036,9 +1048,9 @@
           "demandId": "S07-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-15",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1047,9 +1059,9 @@
           "demandId": "S07-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-16",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1058,9 +1070,9 @@
           "demandId": "S07-03",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-17",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1069,9 +1081,9 @@
           "demandId": "S08-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-18",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1080,9 +1092,9 @@
           "demandId": "S08-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-19",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1091,9 +1103,9 @@
           "demandId": "S08-03",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-20",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1102,9 +1114,9 @@
           "demandId": "S09-01",
           "modality": "text",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-A",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-21",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1113,9 +1125,9 @@
           "demandId": "S09-02",
           "modality": "text",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-A",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-22",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1124,9 +1136,9 @@
           "demandId": "S10-01",
           "modality": "text",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-B",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-23",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1135,9 +1147,9 @@
           "demandId": "S10-02",
           "modality": "text",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-B",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-24",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1146,9 +1158,9 @@
           "demandId": "S11-01",
           "modality": "audio",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-A",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-25",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1157,9 +1169,9 @@
           "demandId": "S11-02",
           "modality": "audio",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-B",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-26",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1168,9 +1180,9 @@
           "demandId": "S12-01",
           "modality": "audio",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-A",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-27",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1179,12 +1191,13 @@
           "demandId": "S12-02",
           "modality": "audio",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-B",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-DA-28",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         }
-      ]
+      ],
+      "packet": "docs/content/english-7-unit-01-assessment-batch-a.json"
     },
     {
       "code": "DB",
@@ -1559,7 +1572,7 @@
     {
       "code": "MA",
       "purpose": "mastery",
-      "status": "accepted_authoring_manifest_unfilled",
+      "status": "authored_draft_not_qualified",
       "itemCount": 28,
       "sourceSets": [
         {
@@ -1573,7 +1586,10 @@
           "memberSlots": [
             "ENG7-U01-PLAN-MA-21",
             "ENG7-U01-PLAN-MA-22"
-          ]
+          ],
+          "draftSourceId": "ENG7-U01-MA-READ-A",
+          "draftPacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "status": "text_drafted"
         },
         {
           "plannedCode": "ENG7-U01-PLAN-MA-READ-B",
@@ -1586,7 +1602,10 @@
           "memberSlots": [
             "ENG7-U01-PLAN-MA-23",
             "ENG7-U01-PLAN-MA-24"
-          ]
+          ],
+          "draftSourceId": "ENG7-U01-MA-READ-B",
+          "draftPacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "status": "text_drafted"
         },
         {
           "plannedCode": "ENG7-U01-PLAN-MA-AUDIO-A",
@@ -1599,7 +1618,10 @@
           "memberSlots": [
             "ENG7-U01-PLAN-MA-25",
             "ENG7-U01-PLAN-MA-27"
-          ]
+          ],
+          "draftSourceId": "ENG7-U01-MA-AUDIO-A",
+          "draftPacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "status": "script_drafted_recording_missing"
         },
         {
           "plannedCode": "ENG7-U01-PLAN-MA-AUDIO-B",
@@ -1612,7 +1634,10 @@
           "memberSlots": [
             "ENG7-U01-PLAN-MA-26",
             "ENG7-U01-PLAN-MA-28"
-          ]
+          ],
+          "draftSourceId": "ENG7-U01-MA-AUDIO-B",
+          "draftPacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "status": "script_drafted_recording_missing"
         }
       ],
       "slots": [
@@ -1622,9 +1647,9 @@
           "demandId": "S01-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-01",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1633,9 +1658,9 @@
           "demandId": "S01-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-02",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1644,9 +1669,9 @@
           "demandId": "S01-03",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-03",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1655,9 +1680,9 @@
           "demandId": "S02-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-04",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1666,9 +1691,9 @@
           "demandId": "S02-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-05",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1677,9 +1702,9 @@
           "demandId": "S03-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-06",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1688,9 +1713,9 @@
           "demandId": "S03-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-07",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1699,9 +1724,9 @@
           "demandId": "S04-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-08",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1710,9 +1735,9 @@
           "demandId": "S04-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-09",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1721,9 +1746,9 @@
           "demandId": "S05-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-10",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1732,9 +1757,9 @@
           "demandId": "S05-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-11",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1743,9 +1768,9 @@
           "demandId": "S06-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-12",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1754,9 +1779,9 @@
           "demandId": "S06-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-13",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1765,9 +1790,9 @@
           "demandId": "S06-03",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-14",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1776,9 +1801,9 @@
           "demandId": "S07-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-15",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1787,9 +1812,9 @@
           "demandId": "S07-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-16",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1798,9 +1823,9 @@
           "demandId": "S07-03",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-17",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1809,9 +1834,9 @@
           "demandId": "S08-01",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-18",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1820,9 +1845,9 @@
           "demandId": "S08-02",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-19",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1831,9 +1856,9 @@
           "demandId": "S08-03",
           "modality": "text",
           "sourceSetPlaceholder": null,
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-20",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1842,9 +1867,9 @@
           "demandId": "S09-01",
           "modality": "text",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-A",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-21",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1853,9 +1878,9 @@
           "demandId": "S09-02",
           "modality": "text",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-A",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-22",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1864,9 +1889,9 @@
           "demandId": "S10-01",
           "modality": "text",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-B",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-23",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1875,9 +1900,9 @@
           "demandId": "S10-02",
           "modality": "text",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-B",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-24",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1886,9 +1911,9 @@
           "demandId": "S11-01",
           "modality": "audio",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-A",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-25",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1897,9 +1922,9 @@
           "demandId": "S11-02",
           "modality": "audio",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-B",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-26",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1908,9 +1933,9 @@
           "demandId": "S12-01",
           "modality": "audio",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-A",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-27",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         },
         {
@@ -1919,12 +1944,13 @@
           "demandId": "S12-02",
           "modality": "audio",
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-B",
-          "itemCode": null,
-          "itemVersion": null,
-          "status": "unfilled_authorized_slot",
+          "itemCode": "ENG7-U01-MA-28",
+          "itemVersion": 1,
+          "status": "authored_draft_not_staged",
           "approvedBy": null
         }
-      ]
+      ],
+      "packet": "docs/content/english-7-unit-01-assessment-batch-a.json"
     },
     {
       "code": "MB",
@@ -2734,7 +2760,7 @@
     "productionWrite": false,
     "audioUploaded": false,
     "humanApprovalManufactured": false,
-    "productionReadScope": "16.1C.4 refresh of content-only corpus metadata; no writes"
+    "productionReadScope": "16.1C.5 fresh content corpus and related-outcome projections; read-only, no user data or writes"
   },
   "guards": [
     "Authoring ceiling subject to review; no padding or silent shortfall waiver",
@@ -2751,16 +2777,23 @@
     "practice": 60,
     "practiceText": 50,
     "practiceAudioHeld": 10,
-    "diagnostic": 0,
-    "mastery": 0,
-    "unfilledAssessmentSlots": 140,
-    "sourceSetProposals": 7,
+    "diagnostic": 28,
+    "mastery": 28,
+    "unfilledAssessmentSlots": 84,
+    "sourceSetProposals": 15,
     "approvedItems": 0,
     "stagedItems": 0,
-    "liveAudioAssets": 0
+    "liveAudioAssets": 0,
+    "assessmentText": 48,
+    "assessmentAudioHeld": 8,
+    "totalDrafts": 116,
+    "qualifiedForms": 0
   },
   "currentPracticePackets": [
     "docs/content/english-7-unit-01-draft.json",
     "docs/content/english-7-unit-01-practice-additions.json"
+  ],
+  "currentAssessmentPackets": [
+    "docs/content/english-7-unit-01-assessment-batch-a.json"
   ]
 }

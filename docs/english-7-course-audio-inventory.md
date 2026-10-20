@@ -1,5 +1,7 @@
 # English 7 — course audio inventory and inclusion plan
 
+**16.1C.5 protected-source update — 2026-10-21:** Four additional original assessment scripts are drafted privately for DA/MA, supporting eight held questions. These are prospective recordings, not additional publisher MP3s or live assets. All 20 publisher files and the inclusion plan below are unchanged. Recording/voice rights, audition, speaker/transcript alignment, protected delivery and the final assessed-listening contract remain open. [Private assessment packet](english-7-unit-01-assessment-batch-a.md).
+
 **16.1C.4 acceptance and authoring update — 2026-10-21:** John accepted the 60/56/84 bank, bounded assessment authoring manifest and playable-audio integration plan. The [15 Practice additions](english-7-unit-01-practice-additions.md) bring the draft bank to 60 (50 text / ten audio-held); original content is preserved. The next accepted batch is 56 questions for DA + MA. Actual content/SME review, source/voice rights, audio audition, final assessed-playback/scoring policy and English release remain separate. Earlier proposal/acceptance statements below describe their dated checkpoints.
 
 **16.1C.3 · 2026-10-21 Asia/Yerevan · Source inventory and course direction; recordings not activated.**
