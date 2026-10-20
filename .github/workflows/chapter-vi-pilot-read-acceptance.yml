@@ -16,7 +16,7 @@ on:
       - scripts/learning-audio-read-acceptance.mjs
       - supabase/functions/get-learning-audio/index.ts
       - supabase/functions/_shared/learning-audio-handler.mjs
-      - supabase/migrations/20261020163251_sprint_16_1b_protected_audio.sql
+      - supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql
       - supabase/functions/_shared/written-work-handler.mjs
       - supabase/functions/manage-written-work/index.ts
       - supabase/migrations/20261020112724_sprint_16_1b_written_work.sql

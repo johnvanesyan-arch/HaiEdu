@@ -3,7 +3,7 @@
   "date": "2026-10-20",
   "baseCommit": "305855cb523cd18941f8c437863b64819aa61952",
   "scope": "16.1B.4 protected replayable Practice/Chapter Review audio; no content or policy adoption",
-  "phase": "local implementation verified; required remote CI and production verification pending",
+  "phase": "Database, Edge and frontend deployed; required PR/main CI and exact-source production acceptance passed",
   "preflight": {
     "preservationQuery": "select jsonb_object_agg(name,snapshot) preservation from (select 'items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.items t union all select 'attempts' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.attempts t union all select 'item_options' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.item_options t union all select 'written_work' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_work t union all select 'item_versions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.item_versions t union all select 'written_reviews' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_reviews t union all select 'assessment_pools' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_pools t union all select 'item_answer_keys' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.item_answer_keys t union all select 'learning_sessions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_sessions t union all select 'curriculum_releases' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.curriculum_releases t union all select 'written_submissions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_submissions t union all select 'assessment_blueprints' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_blueprints t union all select 'assessment_pool_items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_pool_items t union all select 'written_task_versions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_task_versions t union all select 'learning_session_items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_session_items t union all select 'curriculum_release_units' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.curriculum_release_units t union all select 'curriculum_release_skills' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.curriculum_release_skills t union all select 'assessment_blueprint_items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_blueprint_items t union all select 'assessment_policy_bindings' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_policy_bindings t union all select 'learning_model_configurations' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_model_configurations t union all select 'learning_model_runtime_bindings' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_model_runtime_bindings t union all select 'academic_mastery_policy_versions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.academic_mastery_policy_versions t union all select 'student_skill_mastery_by_release' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.student_skill_mastery_by_release t union all select 'learning_response_drafts' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_response_drafts t) q;",
     "snapshots": [
@@ -163,7 +163,553 @@
     "five English MP3 listening review and hosting/permission decision",
     "English Unit 1 content authoring/review and final assessment/release acceptance"
   ],
-  "deployment": null,
+  "deployment": {
+    "pullRequest": 277,
+    "prHead": "acc0beb3911385db0e9762103f4f4db858de0bc3",
+    "prCI": {
+      "runId": 39462258064,
+      "conclusion": "success",
+      "nodeTests": 1353,
+      "nativeBrowserTests": 80,
+      "jobs": [
+        {
+          "name": "test",
+          "id": 118764472020,
+          "conclusion": "success"
+        },
+        {
+          "name": "institutional-concurrency",
+          "id": 118764472194,
+          "conclusion": "success"
+        },
+        {
+          "name": "phase3-postgres-17",
+          "id": 118764472400,
+          "conclusion": "success"
+        },
+        {
+          "name": "role-layout-browser",
+          "id": 118764472411,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 118766409556,
+          "conclusion": "success"
+        }
+      ]
+    },
+    "mergedCommit": "d8a0c40db78c5bffceb407b52aa42d0fa149e106",
+    "migration": {
+      "version": "20261020170445",
+      "name": "sprint_16_1b_protected_audio",
+      "statement_count": 1,
+      "statement_md5": "77ce97c36c6b86b7ea7734c56ed0a737",
+      "statement_length": 64741,
+      "path": "supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql",
+      "implementationPath": "supabase/migrations/20261020163251_sprint_16_1b_protected_audio.sql",
+      "bodySha256": "c96e909e872ed9081a581e3799062d2632ce030b9941abd6270463b996f1d053",
+      "canonicalFilenameReconciliation": "Server-assigned version reconciled in closure; SQL body unchanged and server statement MD5 exactly matched."
+    },
+    "databaseReadback": {
+      "counts": {
+        "audioItems": 0,
+        "deliveries": 0,
+        "audioVersions": 0
+      },
+      "tables": [
+        {
+          "rls": true,
+          "name": "learning_audio_deliveries",
+          "anonSelect": false,
+          "authenticatedInsert": false,
+          "authenticatedSelect": false,
+          "authenticatedUpdate": false
+        },
+        {
+          "rls": true,
+          "name": "learning_audio_versions",
+          "anonSelect": false,
+          "authenticatedInsert": false,
+          "authenticatedSelect": false,
+          "authenticatedUpdate": false
+        }
+      ],
+      "triggers": [
+        {
+          "name": "item_audio_reference",
+          "enabled": "O"
+        },
+        {
+          "name": "audio_attempt_guard",
+          "enabled": "O"
+        },
+        {
+          "name": "learning_audio_version_immutable",
+          "enabled": "O"
+        }
+      ],
+      "functions": [
+        {
+          "md5": "81abce8fd2461e512347acc7ab443f17",
+          "name": "private.guard_audio_attempt",
+          "anonExecute": false,
+          "serviceExecute": false,
+          "authenticatedExecute": false
+        },
+        {
+          "md5": "4c399d24b6a68d7d78199b21036aecc8",
+          "name": "private.guard_audio_version",
+          "anonExecute": false,
+          "serviceExecute": false,
+          "authenticatedExecute": false
+        },
+        {
+          "md5": "edfc71f232519b275bdb340dc35bb3fc",
+          "name": "private.guard_item_audio_reference",
+          "anonExecute": false,
+          "serviceExecute": false,
+          "authenticatedExecute": false
+        },
+        {
+          "md5": "f2664b801ce83f08778b83b0933344f7",
+          "name": "public.service_governed_learning_operation",
+          "anonExecute": false,
+          "serviceExecute": true,
+          "authenticatedExecute": false
+        },
+        {
+          "md5": "7c4c787e8084c45e9560071ddc41d2cc",
+          "name": "public.service_learning_audio",
+          "anonExecute": false,
+          "serviceExecute": true,
+          "authenticatedExecute": false
+        },
+        {
+          "md5": "a34f1b26d32af62f4cddbe2df428ef1d",
+          "name": "public.service_record_session_answer_atomic",
+          "anonExecute": false,
+          "serviceExecute": true,
+          "authenticatedExecute": false
+        },
+        {
+          "md5": "c582cf4a23e9ba667eb6af350c232309",
+          "name": "private.validate_assessment_policy_v1",
+          "anonExecute": false,
+          "serviceExecute": false,
+          "authenticatedExecute": false
+        },
+        {
+          "md5": "7b6c79e294d7e414990d8acc8c5ff4c2",
+          "name": "private.validate_audio_reference",
+          "anonExecute": false,
+          "serviceExecute": false,
+          "authenticatedExecute": false
+        }
+      ],
+      "migration": [
+        {
+          "name": "sprint_16_1b_protected_audio",
+          "version": "20261020170445"
+        }
+      ]
+    },
+    "edgeReadback": [
+      {
+        "id": "0664c017-2f62-476c-b182-34b1570bdc4d",
+        "slug": "get-learning-audio",
+        "name": "get-learning-audio",
+        "status": "ACTIVE",
+        "version": 1,
+        "created_at": 1792515898028,
+        "updated_at": 1792515898028,
+        "verify_jwt": true,
+        "import_map": false,
+        "entrypoint_path": "/tmp/user_fn_xzyjvwiiibuarpotppid_0664c017-2f62-476c-b182-34b1570bdc4d_1/source/get-learning-audio/index.ts",
+        "ezbr_sha256": "56834baaf6cc8dbb3fca352b8bc9d56f24ef3750d1deb092c01fe923bf6a1b2f",
+        "files": [
+          {
+            "name": "get-learning-audio/index.ts",
+            "sha256": "22794f72ffb42d8239e7f460ebb75c2db6b9729f3b33f1eb097ec30dc6b22239",
+            "exactMatch": true
+          },
+          {
+            "name": "_shared/auth.ts",
+            "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+            "exactMatch": true
+          },
+          {
+            "name": "_shared/learning-audio-handler.mjs",
+            "sha256": "0a65d8d51e60321a5d465b76a5f8c58dae36aa1cb7f5da5a7005ed794f7b1d9f",
+            "exactMatch": true
+          }
+        ]
+      },
+      {
+        "id": "7f1f403f-5ad9-465a-903b-1d2d93bcd27d",
+        "slug": "get-my-privacy",
+        "name": "get-my-privacy",
+        "status": "ACTIVE",
+        "version": 5,
+        "created_at": 1789405619127,
+        "updated_at": 1792515911568,
+        "verify_jwt": true,
+        "import_map": false,
+        "entrypoint_path": "/tmp/user_fn_xzyjvwiiibuarpotppid_7f1f403f-5ad9-465a-903b-1d2d93bcd27d_5/source/get-my-privacy/index.ts",
+        "ezbr_sha256": "2faba346d902f3952fb0675f2e3abdf54882e93f8dbc1fa9d7cf9831106e99bc",
+        "files": [
+          {
+            "name": "get-my-privacy/index.ts",
+            "sha256": "20712fec9cdcd4d84f54ffe0c901a5e4346584b6d9b924059215e9a39dfa7d5f",
+            "exactMatch": true
+          }
+        ]
+      }
+    ],
+    "preservationAfterBackend": [
+      {
+        "preservation": {
+          "items": {
+            "md5": "02a9ac127de1e789dde981167803bbf6",
+            "rows": 1251
+          },
+          "attempts": {
+            "md5": "26d44860397d32ab6023da8e72cfcb0e",
+            "rows": 42
+          },
+          "item_options": {
+            "md5": "2f762b42bec0fdeac871659af168de6e",
+            "rows": 4396
+          },
+          "written_work": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "item_versions": {
+            "md5": "b0af9e1e86807f1b8e339b90a52b03f9",
+            "rows": 1146
+          },
+          "written_reviews": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "assessment_pools": {
+            "md5": "d6450febadadd4af95b10f3a8c9a7b92",
+            "rows": 19
+          },
+          "item_answer_keys": {
+            "md5": "1054877916900dca98aa788fa67c9dd6",
+            "rows": 1251
+          },
+          "learning_sessions": {
+            "md5": "a5d0326f20b58e02773af6281ee31cdb",
+            "rows": 8
+          },
+          "curriculum_releases": {
+            "md5": "242aae0aedf8c5d85e0a2a415a2f8703",
+            "rows": 7
+          },
+          "written_submissions": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "assessment_blueprints": {
+            "md5": "38fe215a14d86c322b7826724d8a7fac",
+            "rows": 27
+          },
+          "assessment_pool_items": {
+            "md5": "184285de8853be3dfc41e8f90db0dda4",
+            "rows": 1244
+          },
+          "written_task_versions": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "learning_session_items": {
+            "md5": "be40162b06e91a52213d5b6fd6e810bc",
+            "rows": 96
+          },
+          "curriculum_release_units": {
+            "md5": "449c3d22acb7c1b4c92f261c1f8aaf61",
+            "rows": 7
+          },
+          "learning_response_drafts": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "curriculum_release_skills": {
+            "md5": "7bf9605a3f0222a6d4c6d08d14cc6503",
+            "rows": 66
+          },
+          "assessment_blueprint_items": {
+            "md5": "7e54e189ad648f2a3f0a4538a01f8b60",
+            "rows": 1872
+          },
+          "assessment_policy_bindings": {
+            "md5": "2c32ee0b3e126db5e47b7de55a5ebacf",
+            "rows": 20
+          },
+          "learning_model_configurations": {
+            "md5": "4254a36a7a040133d3592cd131c83c83",
+            "rows": 6
+          },
+          "learning_model_runtime_bindings": {
+            "md5": "dd95315c4395cb93457b2c5afaefc495",
+            "rows": 6
+          },
+          "academic_mastery_policy_versions": {
+            "md5": "1c69b7132347cd8b67a89268668f27ce",
+            "rows": 1
+          },
+          "student_skill_mastery_by_release": {
+            "md5": "19a0f8555ac31ac870a6cff088c9ce29",
+            "rows": 13
+          }
+        }
+      }
+    ],
+    "edgeDependencyAudit": {
+      "changedExistingConsumers": [
+        "get-my-privacy"
+      ],
+      "newEndpoint": "get-learning-audio",
+      "unchangedSharedHelper": "_shared/auth.ts",
+      "unchangedPriorConsumersEvidence": "docs/evidence/matching-ordering-release-20261020.json",
+      "reason": "New audio handler is imported only by the new endpoint. No existing shared Edge helper changed. Prior delivery/answer bundles call updated SQL without source changes."
+    },
+    "securityAdvisors": {
+      "before": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 44
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "level": "WARN",
+          "count": 1
+        }
+      ],
+      "after": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 46
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "level": "WARN",
+          "count": 1
+        }
+      ],
+      "newFindingsDisposition": "Two expected INFO no-policy entries for service-only audio tables. RLS is enabled and direct client grants are revoked. No new WARN/ERROR; existing leaked-password-protection warning unchanged.",
+      "remediationReference": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+    },
+    "vercel": {
+      "state": "success",
+      "description": "Deployment has completed",
+      "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/J5ZrPvGjkWnzN8W2p3itg9nkZSiU",
+      "persistentBlockingEvidence": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+      "configChanged": false,
+      "verification": "GitHub Vercel status success; exact public release stamp and five browser file hashes; persistent unchanged blocking configuration reused"
+    },
+    "anonymousReadback": [
+      {
+        "table": "learning_audio_versions",
+        "status": 401,
+        "code": "42501"
+      },
+      {
+        "table": "learning_audio_deliveries",
+        "status": 401,
+        "code": "42501"
+      }
+    ],
+    "mainCI": {
+      "runId": 39463019355,
+      "conclusion": "success",
+      "nodeTests": 1353,
+      "nativeBrowserTests": 80,
+      "jobs": [
+        {
+          "name": "institutional-concurrency",
+          "id": 118767043078,
+          "conclusion": "success"
+        },
+        {
+          "name": "phase3-postgres-17",
+          "id": 118767043330,
+          "conclusion": "success"
+        },
+        {
+          "name": "test",
+          "id": 118767043368,
+          "conclusion": "success"
+        },
+        {
+          "name": "role-layout-browser",
+          "id": 118767043490,
+          "conclusion": "success"
+        },
+        {
+          "name": "Platform release checks",
+          "id": 118772995870,
+          "conclusion": "success"
+        }
+      ]
+    },
+    "productionAcceptance": {
+      "runId": 39463019236,
+      "artifactId": 12285495362,
+      "passed": 289,
+      "total": 289,
+      "isolationPassed": 54,
+      "revision": "d8a0c40db78c5bffceb407b52aa42d0fa149e106",
+      "evidencePath": "docs/evidence/protected-audio-production-read-20261020.json"
+    },
+    "preservationAfterAcceptance": [
+      {
+        "preservation": {
+          "items": {
+            "md5": "02a9ac127de1e789dde981167803bbf6",
+            "rows": 1251
+          },
+          "attempts": {
+            "md5": "26d44860397d32ab6023da8e72cfcb0e",
+            "rows": 42
+          },
+          "item_options": {
+            "md5": "2f762b42bec0fdeac871659af168de6e",
+            "rows": 4396
+          },
+          "written_work": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "item_versions": {
+            "md5": "b0af9e1e86807f1b8e339b90a52b03f9",
+            "rows": 1146
+          },
+          "written_reviews": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "assessment_pools": {
+            "md5": "d6450febadadd4af95b10f3a8c9a7b92",
+            "rows": 19
+          },
+          "item_answer_keys": {
+            "md5": "1054877916900dca98aa788fa67c9dd6",
+            "rows": 1251
+          },
+          "learning_sessions": {
+            "md5": "a5d0326f20b58e02773af6281ee31cdb",
+            "rows": 8
+          },
+          "curriculum_releases": {
+            "md5": "242aae0aedf8c5d85e0a2a415a2f8703",
+            "rows": 7
+          },
+          "written_submissions": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "assessment_blueprints": {
+            "md5": "38fe215a14d86c322b7826724d8a7fac",
+            "rows": 27
+          },
+          "assessment_pool_items": {
+            "md5": "184285de8853be3dfc41e8f90db0dda4",
+            "rows": 1244
+          },
+          "written_task_versions": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "learning_session_items": {
+            "md5": "be40162b06e91a52213d5b6fd6e810bc",
+            "rows": 96
+          },
+          "curriculum_release_units": {
+            "md5": "449c3d22acb7c1b4c92f261c1f8aaf61",
+            "rows": 7
+          },
+          "learning_response_drafts": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "curriculum_release_skills": {
+            "md5": "7bf9605a3f0222a6d4c6d08d14cc6503",
+            "rows": 66
+          },
+          "assessment_blueprint_items": {
+            "md5": "7e54e189ad648f2a3f0a4538a01f8b60",
+            "rows": 1872
+          },
+          "assessment_policy_bindings": {
+            "md5": "2c32ee0b3e126db5e47b7de55a5ebacf",
+            "rows": 20
+          },
+          "learning_model_configurations": {
+            "md5": "4254a36a7a040133d3592cd131c83c83",
+            "rows": 6
+          },
+          "learning_model_runtime_bindings": {
+            "md5": "dd95315c4395cb93457b2c5afaefc495",
+            "rows": 6
+          },
+          "academic_mastery_policy_versions": {
+            "md5": "1c69b7132347cd8b67a89268668f27ce",
+            "rows": 1
+          },
+          "student_skill_mastery_by_release": {
+            "md5": "19a0f8555ac31ac870a6cff088c9ce29",
+            "rows": 13
+          }
+        }
+      }
+    ],
+    "publicFrontendReadback": {
+      "observedAt": "2026-10-20T17:17:59.632Z",
+      "release": {
+        "schemaVersion": 1,
+        "commit": "d8a0c40db78c5bffceb407b52aa42d0fa149e106"
+      },
+      "files": [
+        {
+          "path": "learning-audio.mjs",
+          "status": 200,
+          "sha256": "8ee208ec48623a682cf5f8944ed038bbe51f3d339bff366ef4617c13da929b78",
+          "exactMatch": true
+        },
+        {
+          "path": "learning-player.mjs",
+          "status": 200,
+          "sha256": "875f8147ab5b3e675001e09832186dd4a6153a1e02462fb9c428aa15688ef0cb",
+          "exactMatch": true
+        },
+        {
+          "path": "learning-stimulus.mjs",
+          "status": 200,
+          "sha256": "538d208ee42e04585ccab717a2f6f9dbbb8f86529a963f4ae4004f863ad4b966",
+          "exactMatch": true
+        },
+        {
+          "path": "content.js",
+          "status": 200,
+          "sha256": "2708c0e2d5fe5e0b81695d9e70a19b0da0be87fba3e3ad95455d13a08911d0a4",
+          "exactMatch": true
+        },
+        {
+          "path": "privacy.js",
+          "status": 200,
+          "sha256": "a11d2843373fdf4af8cba33da5d5965b8b7c5712793ef0bb1788920d840feadd",
+          "exactMatch": true
+        }
+      ]
+    },
+    "verificationBoundary": "Actual protected-audio playback and submission use isolated SQL/native browser fixtures with the real Functions SDK. Production checks verify exact source, denied audio access, preserved six-chapter and writing flows. No production recording or English content/policy was activated."
+  },
   "expectedSqlDefinitions": [
     {
       "name": "private.validate_assessment_policy_v1",

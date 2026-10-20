@@ -10,7 +10,7 @@ This keeps the programme's real writing outcome and limits the initial review qu
 
 ## Response capabilities
 
-This table records the proposed English contract. Teacher-marked writing is deployed under 16.1B.1. Bounded typed fields have an implemented [16.1B.2 capability/API contract](typed-fields-capability.md), deployed with exact source and production read verification. Matching/ordering are deployed under [16.1B.3](matching-ordering-capability.md); protected replayable audio is implemented under [16.1B.4](protected-audio-capability.md), with release checks pending. Shared task sets and final English listening conditions remain proposals. Use the existing governed choices through their current contract. New response/scoring capabilities require a versioned policy and compatible authoring, validation, delivery, grading and reporting before activation.
+This table records the proposed English contract. Teacher-marked writing is deployed under 16.1B.1. Bounded typed fields have an implemented [16.1B.2 capability/API contract](typed-fields-capability.md), deployed with exact source and production read verification. Matching/ordering are deployed under [16.1B.3](matching-ordering-capability.md); protected replayable audio is deployed and verified under [16.1B.4](protected-audio-capability.md). Shared task sets and final English listening conditions remain proposals. Use the existing governed choices through their current contract. New response/scoring capabilities require a versioned policy and compatible authoring, validation, delivery, grading and reporting before activation.
 
 | Capability | Student response | Private grading information | Proposed score handling |
 | --- | --- | --- | --- |

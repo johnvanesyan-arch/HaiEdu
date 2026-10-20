@@ -5,7 +5,7 @@
 
 This replaces the standalone `submit-answer v0.1` example with the current session workflow and retained legacy behavior. The historical 2026-10-10 comparison does not authorize a release; the separate 2026-10-13 pilot activation and authenticated acceptance are recorded below.
 
-**Protected audio API (16.1B.4, implemented; deployment verification pending):** `get-learning-audio` delivers verified private bytes for scoped replayable Practice/Chapter Review and saved reviewer previews. Closed immutable references, a private completion ledger and server-side answer guards are subject-neutral. Diagnostic/Mastery audio and transcript reveal are unavailable. [Complete capability/API contract](protected-audio-capability.md). No media/content/policy activation.
+**Protected audio API (16.1B.4, deployed and read-verified):** `get-learning-audio` delivers verified private bytes for scoped replayable Practice/Chapter Review and saved reviewer previews. Closed immutable references, a private completion ledger and server-side answer guards are subject-neutral. Diagnostic/Mastery audio and transcript reveal are unavailable. [Complete capability/API contract](protected-audio-capability.md). No media/content/policy activation.
 
 **Matching/ordering API (16.1B.3, deployed and read-verified):** `haiedu-matching-v1` and `haiedu-ordering-v1` extend governed delivery/drafts/submission and opt-in policy v3. Matching normalizes per-pair credit; ordering requires an accepted complete sequence. [Complete capability/API contract](matching-ordering-capability.md). No content/policy activation.
 

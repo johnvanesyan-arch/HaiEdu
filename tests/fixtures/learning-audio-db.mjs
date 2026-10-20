@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {database as arrangementDatabase,id,scopes,launch,finish,operation} from './arrangement-db.mjs';
 export * from './arrangement-db.mjs';
-export const audioMigration='supabase/migrations/20261020163251_sprint_16_1b_protected_audio.sql';
+export const audioMigration='supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql';
 export async function installAudio(db){await db.exec(readFileSync('supabase/migrations/0012_live_session_gate.sql','utf8'));await db.exec(readFileSync(audioMigration,'utf8'));}
 export async function database(options={}){const db=await arrangementDatabase(options);try{await installAudio(db);return db;}catch(e){await db.close();throw e;}}
 export function wav(){const samples=2400,buffer=Buffer.alloc(44+samples*2);buffer.write('RIFF',0);buffer.writeUInt32LE(buffer.length-8,4);buffer.write('WAVEfmt ',8);buffer.writeUInt32LE(16,16);buffer.writeUInt16LE(1,20);buffer.writeUInt16LE(1,22);buffer.writeUInt32LE(8000,24);buffer.writeUInt32LE(16000,28);buffer.writeUInt16LE(2,32);buffer.writeUInt16LE(16,34);buffer.write('data',36);buffer.writeUInt32LE(samples*2,40);for(let n=0;n<samples;n++)buffer.writeInt16LE(Math.round(2000*Math.sin(2*Math.PI*440*n/8000)),44+n*2);return buffer;}
