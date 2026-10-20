@@ -1,5 +1,7 @@
 # English 7 — course audio inventory and inclusion plan
 
+**16.1C.4 acceptance and authoring update — 2026-10-21:** John accepted the 60/56/84 bank, bounded assessment authoring manifest and playable-audio integration plan. The [15 Practice additions](english-7-unit-01-practice-additions.md) bring the draft bank to 60 (50 text / ten audio-held); original content is preserved. The next accepted batch is 56 questions for DA + MA. Actual content/SME review, source/voice rights, audio audition, final assessed-playback/scoring policy and English release remain separate. Earlier proposal/acceptance statements below describe their dated checkpoints.
+
 **16.1C.3 · 2026-10-21 Asia/Yerevan · Source inventory and course direction; recordings not activated.**
 
 John requires all possible and strategically relevant recordings/audio to be included across the course. The supplied edition links to **20 MP3 files through 18 QR routes**. The earlier five-file count covered **Unit 1 only**. All 20 are retained for planned playable integration: **12 core-listening candidates and eight support/enrichment candidates**. These are instructional dispositions, not final content approvals or new question counts.
@@ -78,4 +80,4 @@ Proceed in textbook order, beginning with Unit 1 source audition/permission and 
 
 The proposed two-play Diagnostic/Mastery conditions, set-wide playback accounting and simultaneous question visibility are **not implemented/adopted**. Current audio is replayable Practice/Chapter Review, one question at a time with per-question completion. Protected assessment recordings require their own reviewed unseen families and an accepted implemented contract.
 
-John’s audio-inclusion direction does not accept the separately proposed [60/56/84 bank and English protected-parallel manifest](english-7-unit-01-bank-plan.md), scoring thresholds or learner activation. Speaking stays classroom-assessed. This slice creates no production assets, content records, question revisions or runtime/API changes. Human/SME review and all existing release gates remain in force; the [status register](project-status.md) is authoritative.
+John’s later 16.1C.4 acceptance covers the [60/56/84 bank and bounded English protected-parallel authoring manifest](english-7-unit-01-bank-plan.md), as well as this playable-audio plan. Scoring thresholds, actual question/asset approval, final assessed-playback policy and learner activation remain separate. Speaking stays classroom-assessed. This slice creates no production assets, content records, question revisions or runtime/API changes. Human/SME review and all existing release gates remain in force; the [status register](project-status.md) is authoritative.

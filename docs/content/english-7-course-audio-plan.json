@@ -89,7 +89,7 @@
     "speakingClassroomAssessed": true,
     "originalsAndDerivativesShareExposure": true,
     "familiarTextbookSourcesSupplyUnseenAssessment": false,
-    "bankProposalAccepted": false,
+    "bankProposalAccepted": true,
     "questionCountsChanged": false
   },
   "records": [
@@ -664,5 +664,11 @@
     "Integrate the remaining textbook media in unit/activity order; resolve the p.74/p.75 mappings and the oversized song before its unit ships.",
     "Map Units 5–6 listening outcomes and source gaps; use suitable licensed/original recordings where needed.",
     "Provide separately reviewed protected assessment material and adopt/implement assessed-playback conditions before Diagnostic/Mastery listening."
-  ]
+  ],
+  "ownerAcceptance": {
+    "acceptedBy": "John",
+    "date": "2026-10-21",
+    "evidence": "docs/evidence/english-7-unit-01-owner-acceptance-20261021.json",
+    "scope": "Playable-audio inclusion/integration plan; no recording permission, content approval or assessment-playback policy inferred"
+  }
 }

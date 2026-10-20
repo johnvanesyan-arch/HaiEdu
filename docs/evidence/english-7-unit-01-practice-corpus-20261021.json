@@ -1,0 +1,692 @@
+{
+  "schemaVersion": "haiedu-english-practice-additions-corpus-v1",
+  "checkpoint": "16.1C.4",
+  "baselineCommit": "84b069cf34bf0fde1db975a0f243b8517320bebd",
+  "observedAt": "2026-10-20T20:30:24.518592+00:00",
+  "readOnly": true,
+  "query": "select jsonb_build_object(\n'observedAt',clock_timestamp(),\n'subjects',(select jsonb_agg(jsonb_build_object('id',id,'code',code,'name_en',name_en,'status',status) order by code) from public.subjects),\n'skills',(select jsonb_agg(jsonb_build_object('id',s.id,'code',s.code,'status',s.status,'name_en',s.name_en,'name_hy',s.name_hy,'subject',su.code,'description_en',s.description_en) order by s.code,s.id) from public.skills s join public.subjects su on su.id=s.subject_id),\n'programmes',(select coalesce(jsonb_agg(to_jsonb(p) order by id),'[]') from public.subject_programs p),\n'counts',jsonb_build_object('items',(select count(*) from public.items),'history',(select count(*) from public.item_versions),'releases',(select count(*) from public.curriculum_releases),'taskSets',(select count(*) from public.learning_task_set_versions),'audioVersions',(select count(*) from public.learning_audio_versions),'writingTasks',(select count(*) from public.written_task_versions),'sourceExposures',(select count(*) from public.learning_source_family_exposures)),\n'english',jsonb_build_object('subjects',(select count(*) from public.subjects where code ilike 'eng%' or name_en ilike '%english%'),'skills',(select count(*) from public.skills s join public.subjects su on su.id=s.subject_id where su.code ilike 'eng%' or su.name_en ilike '%english%' or s.code ilike 'ENG7%'),'items',(select count(*) from public.items i join public.skills s on s.id=i.skill_id join public.subjects su on su.id=s.subject_id where su.code ilike 'eng%' or su.name_en ilike '%english%' or i.code ilike 'ENG7%'),'historicalCodeReferences',(select count(*) from public.item_versions where snapshot::text ~* 'ENG7-U'),'releaseReferences',(select count(*) from public.curriculum_releases r join public.subject_programs p on p.id=r.subject_program_id join public.subjects su on su.id=p.subject_id where su.code ilike 'eng%' or su.name_en ilike '%english%')),\n'fingerprints',jsonb_build_object('items',(select md5(coalesce(string_agg(to_jsonb(i)::text,'' order by id),'')) from public.items i),'history',(select md5(coalesce(string_agg(to_jsonb(v)::text,'' order by id),'')) from public.item_versions v))\n) as snapshot;",
+  "snapshot": {
+    "counts": {
+      "items": 1251,
+      "history": 1146,
+      "releases": 7,
+      "taskSets": 0,
+      "writingTasks": 0,
+      "audioVersions": 0,
+      "sourceExposures": 0
+    },
+    "skills": [
+      {
+        "id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+        "code": "PHY7-U01-S01",
+        "status": "review",
+        "name_en": "Recognise and classify physical phenomena",
+        "name_hy": "Ֆիզիկական երևույթների ճանաչում և դասակարգում",
+        "subject": "physics",
+        "description_en": "Recognise physical phenomena and, where appropriate, classify familiar examples by broad type."
+      },
+      {
+        "id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+        "code": "PHY7-U01-S02",
+        "status": "review",
+        "name_en": "Distinguish body, material, and phenomenon",
+        "name_hy": "Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը",
+        "subject": "physics",
+        "description_en": "Distinguish a physical body/object, the material it is made from, and a phenomenon/process."
+      },
+      {
+        "id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+        "code": "PHY7-U01-S03",
+        "status": "review",
+        "name_en": "Physicists and Armenian physicists",
+        "name_hy": "Ֆիզիկոսներ և հայ ֆիզիկոսներ",
+        "subject": "physics",
+        "description_en": "Associate selected textbook scientists with their broad scientific contributions, with particular attention to Armenian scientists."
+      },
+      {
+        "id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+        "code": "PHY7-U01-S04",
+        "status": "review",
+        "name_en": "Distinguish observation and experiment",
+        "name_hy": "Դիտումը և փորձը տարբերակելը",
+        "subject": "physics",
+        "description_en": "Given a scenario, determine whether it is observation or experiment and explain the essential difference."
+      },
+      {
+        "id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+        "code": "PHY7-U01-S05",
+        "status": "review",
+        "name_en": "Hypothesis–test–data–conclusion chain",
+        "name_hy": "Վարկած–փորձ–տվյալ–եզրակացություն շղթան",
+        "subject": "physics",
+        "description_en": "Use the inquiry chain: observation/problem, hypothesis, experimental test, evidence/data, and conclusion."
+      },
+      {
+        "id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+        "code": "PHY7-U01-S06",
+        "status": "review",
+        "name_en": "Physical quantities, units, and instruments",
+        "name_hy": "Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր",
+        "subject": "physics",
+        "description_en": "Match common physical quantities to appropriate units and measuring instruments; identify the core SI units introduced in the chapter."
+      },
+      {
+        "id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+        "code": "PHY7-U01-S07",
+        "status": "review",
+        "name_en": "Simple unit conversions",
+        "name_hy": "Չափման միավորների պարզ փոխարկումներ",
+        "subject": "physics",
+        "description_en": "Perform simple length, time, and volume unit conversions used in Chapter I measurement tasks."
+      },
+      {
+        "id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+        "code": "PHY7-U01-S08",
+        "status": "review",
+        "name_en": "Scale division, measurement limit, and reading",
+        "name_hy": "Սանդղակի բաժանման արժեքը, չափման սահմանը և ցուցմունքը",
+        "subject": "physics",
+        "description_en": "Determine an instrument scale division value, measurement limit, and reading from a labelled scale or diagram."
+      },
+      {
+        "id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+        "code": "PHY7-U01-S09",
+        "status": "review",
+        "name_en": "Measurement error and precision",
+        "name_hy": "Չափման սխալ և ճշգրտության գնահատում",
+        "subject": "physics",
+        "description_en": "Use the textbook half-division error convention, compare precision, detect poor reading/positioning, and distinguish direct from indirect measurement."
+      },
+      {
+        "id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+        "code": "PHY7-U01-S10",
+        "status": "review",
+        "name_en": "Plan a measurement investigation and determine irregular volume",
+        "name_hy": "Չափման փորձի պլանավորում և անկանոն մարմնի ծավալի որոշում",
+        "subject": "physics",
+        "description_en": "Plan/interpret a simple measurement procedure, record results, and determine irregular-object volume by displacement using V=V2−V1, including transfer to a new setup."
+      },
+      {
+        "id": "0f6e2b25-72b3-4a72-8748-2b3143c1d374",
+        "code": "PHY7-U02-S01",
+        "status": "archived",
+        "name_en": "Distinguish a physical body from a substance",
+        "name_hy": "Տարբերակել ֆիզիկական մարմինն ու նյութը",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "bfd0b199-55ab-4933-acfd-7eeb4142fd4c",
+        "code": "PHY7-U02-S02",
+        "status": "review",
+        "name_en": "Justify particulate structure using evidence",
+        "name_hy": "Փորձերով հիմնավորել նյութի մասնիկային կառուցվածքը",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+        "code": "PHY7-U02-S03",
+        "status": "review",
+        "name_en": "Distinguish atom, molecule and chemical element",
+        "name_hy": "Տարբերակել ատոմը, մոլեկուլը և քիմիական տարրը",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+        "code": "PHY7-U02-S04",
+        "status": "review",
+        "name_en": "Compare molecular sizes with familiar scales",
+        "name_hy": "Մոլեկուլների չափերը համեմատել այլ մարմինների չափերի հետ",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "678beb6a-4654-40c2-a5b2-53cc97b2551b",
+        "code": "PHY7-U02-S05",
+        "status": "review",
+        "name_en": "Describe atomic and molecular motion in matter",
+        "name_hy": "Նկարագրել ատոմների և մոլեկուլների շարժումը նյութում",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "b7caca8c-d222-4715-a39f-80883f995471",
+        "code": "PHY7-U02-S06",
+        "status": "review",
+        "name_en": "Explain diffusion using examples",
+        "name_hy": "Դիֆուզիան բացատրել օրինակներով",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "c1e57a2d-d843-45ea-adf1-891837d12d6c",
+        "code": "PHY7-U02-S07",
+        "status": "review",
+        "name_en": "Compare diffusion rates across states of matter",
+        "name_hy": "Համեմատել դիֆուզիայի արագությունը նյութի տարբեր ագրեգատային վիճակներում",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "c2463f0b-9d96-4ae6-a814-0495db8a3872",
+        "code": "PHY7-U02-S08",
+        "status": "review",
+        "name_en": "Relate temperature to particle motion",
+        "name_hy": "Մարմնի ջերմաստիճանը կապել մասնիկների շարժման արագության հետ",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "802bce7e-7ede-4138-b2b2-35c4c1b68a32",
+        "code": "PHY7-U02-S09",
+        "status": "review",
+        "name_en": "Explain how a thermometer works",
+        "name_hy": "Բացատրել ջերմաչափի աշխատանքի սկզբունքը",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+        "code": "PHY7-U03-S01",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մեխանիկական շարժումը և հաշվարկման մարմինը",
+        "subject": "physics",
+        "description_en": "Recognize a changing position and explain rest/motion relative to an explicitly named body."
+      },
+      {
+        "id": "4251bf02-d633-578a-bd36-44028b5ceecf",
+        "code": "PHY7-U03-S02",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մարմինը որպես նյութական կետ",
+        "subject": "physics",
+        "description_en": "Decide whether body dimensions matter for the stated question; never define a point model by small physical size alone."
+      },
+      {
+        "id": "808be543-acae-5df9-b903-eaceaf4c149c",
+        "code": "PHY7-U03-S03",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Շարժման հետագիծը և անցած ճանապարհը",
+        "subject": "physics",
+        "description_en": "Identify straight/curved trajectories, distinguish the line from its traversed length, and distinguish path length from endpoint distance."
+      },
+      {
+        "id": "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+        "code": "PHY7-U03-S04",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հավասարաչափ և անհավասարաչափ շարժում",
+        "subject": "physics",
+        "description_en": "Use equal-time distance records and the arbitrary-equal-interval definition; distinguish compatible observations from a proof for every instant."
+      },
+      {
+        "id": "b04dde38-3f39-5cea-a9a1-e7c6535cf39a",
+        "code": "PHY7-U03-S05",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ճանապարհային արագության իմաստը",
+        "subject": "physics",
+        "description_en": "Interpret distance per unit time. Treat the textbook introduction to direction as supporting vocabulary and distinguish numerical value from direction."
+      },
+      {
+        "id": "8a07485e-8462-5513-a3b6-f65bc8a7cce4",
+        "code": "PHY7-U03-S06",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արագության միավորների ձևափոխում",
+        "subject": "physics",
+        "description_en": "Convert m/s, km/h and cm/s, then compare speeds expressed in different units."
+      },
+      {
+        "id": "4f0315c6-35ea-5573-aab5-4f9c6329b6eb",
+        "code": "PHY7-U03-S07",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արագության, ճանապարհի և ժամանակի հաշվում",
+        "subject": "physics",
+        "description_en": "Choose and apply v=s/t, s=vt and t=s/v with compatible units and an explicit uniform-motion premise."
+      },
+      {
+        "id": "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb",
+        "code": "PHY7-U03-S08",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արագության որոշումը չափումներով",
+        "subject": "physics",
+        "description_en": "Choose a path interval and measure its matching elapsed time; record units and interpret repeated measurements. MCQs assess planning and interpretation, not performed laboratory competence."
+      },
+      {
+        "id": "e50673ec-767a-51c8-9936-9cfe31c438dd",
+        "code": "PHY7-U04-S01",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Զանգվածը՝ որպես իներտության չափ",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "15aabee0-a1b4-55f9-aa85-050c02baeb4b",
+        "code": "PHY7-U04-S02",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Նյութի խտության ֆիզիկական իմաստը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "81e71d34-04bf-5fcb-ace8-41f7e78e33c8",
+        "code": "PHY7-U04-S03",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Խտության, զանգվածի և ծավալի հաշվում",
+        "subject": "physics",
+        "description_en": "Chapter IV supporting curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "8f63124a-f78e-51d5-86a4-2d30df2b039b",
+        "code": "PHY7-U04-S04",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Խտության որոշումը չափումներով",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "43734dc0-44fd-5e1d-9924-d94db5383a18",
+        "code": "PHY7-U04-S05",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մարմինների փոխազդեցությունը, ուժը և նրա միավորը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "356028b3-ad67-5f97-a340-568473d378e3",
+        "code": "PHY7-U04-S06",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ծանրության ուժի հաշվում",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "cabe4921-4a09-5312-ba67-b50e5eddd8fd",
+        "code": "PHY7-U04-S07",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Առաձգական և պլաստիկ դեֆորմացիաներ",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "debbb0d7-e49a-5bf1-b85c-17ecc4024650",
+        "code": "PHY7-U04-S08",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հուկի օրենքը և փորձի արդյունքները",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "382b5279-9c50-5765-b916-8eaa14f050e7",
+        "code": "PHY7-U04-S09",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ուժաչափի աստիճանավորումը և ցուցմունքը",
+        "subject": "physics",
+        "description_en": "Chapter IV supporting curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "dfb69d6c-690e-5b60-8d66-1289d8f6865a",
+        "code": "PHY7-U04-S10",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Զանգվածը, ծանրության ուժը և կշիռը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "ff9e438a-6741-5c57-9825-06e1d01912df",
+        "code": "PHY7-U04-S11",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Շփման ուժի տեսակները, պատճառները և դերը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "6373b7a6-74fe-53a0-b759-3a3a5f618061",
+        "code": "PHY7-U04-S12",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Շփման ուժի ուսումնասիրությունը փորձով",
+        "subject": "physics",
+        "description_en": "Chapter IV supporting curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "78b7bde8-69d1-53aa-8553-16001cf86e5c",
+        "code": "PHY7-U04-S13",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մի ուղղով ուղղված ուժերի համազորը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "d3aa893b-07f9-591e-89a4-ecce14306ecf",
+        "code": "PHY7-U04-S14",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ծանրության ուժը և տիեզերական ձգողությունը",
+        "subject": "physics",
+        "description_en": "Chapter IV additional curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+        "code": "PHY7-U05-S01",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մեխանիկական աշխատանքի իմաստը և միավորը",
+        "subject": "physics",
+        "description_en": "Work/no-work with a named force and motion; the meaning of one joule."
+      },
+      {
+        "id": "f49578d7-0728-5a2d-b042-46c2609d54a9",
+        "code": "PHY7-U05-S02",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մեխանիկական աշխատանքի հաշվում",
+        "subject": "physics",
+        "description_en": "Direct/inverse A=Fs, comparisons and lifting; integration with previously taught units and speed."
+      },
+      {
+        "id": "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+        "code": "PHY7-U05-S03",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հզորության իմաստը, միավորը և հաշվումը",
+        "subject": "physics",
+        "description_en": "Meaning of watt, A/t, comparison with both variables changing, work-time graph, and taught N=Fv."
+      },
+      {
+        "id": "6361692a-0026-5cd5-ac67-b9999a54f012",
+        "code": "PHY7-U05-S04",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Լծակի կառուցվածքը և ուժի բազուկը",
+        "subject": "physics",
+        "description_en": "Support, force/application line, perpendicular arm and how position affects required force."
+      },
+      {
+        "id": "c7c50e44-4f94-5522-a237-ad88a13a7600",
+        "code": "PHY7-U05-S05",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Լծակի հավասարակշռության պայմանը",
+        "subject": "physics",
+        "description_en": "F1l1=F2l2, inverse relationships, unknown arm/force and interpretation of measured balances."
+      },
+      {
+        "id": "c342bfdc-fd31-5e55-915c-bb3722954f23",
+        "code": "PHY7-U05-S06",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Անշարժ և շարժական ճախարակներ",
+        "subject": "physics",
+        "description_en": "Fixed versus moving axle, direction change, ideal force ratio and corresponding rope travel."
+      },
+      {
+        "id": "3b3836b1-1171-5d57-b78e-dd08af74273d",
+        "code": "PHY7-U05-S07",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Թեք հարթությունը և մեխանիկայի «ոսկի կանոնը»",
+        "subject": "physics",
+        "description_en": "Same-height ramp comparisons, force-distance trade-off and ideal work balance."
+      },
+      {
+        "id": "96bee62d-2e14-51ff-8f16-5d2eb41704e0",
+        "code": "PHY7-U05-S08",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Օգտակար գործողության գործակիցը",
+        "subject": "physics",
+        "description_en": "Useful versus total work, ratio/percent, inverse calculations and measured incline efficiency."
+      },
+      {
+        "id": "270751b7-3838-5487-9a56-5682ad24f647",
+        "code": "PHY7-U05-S09",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ձիաուժը՝ որպես հզորության միավոր",
+        "subject": "physics",
+        "description_en": "Small optional unit-recognition strand; no memorized conversion or new assessment gate."
+      },
+      {
+        "id": "e8ef6e09-017e-5458-9165-4b9be4faa6f8",
+        "code": "PHY7-U05-S10",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Պարզ մեխանիզմների կիրառությունները",
+        "subject": "physics",
+        "description_en": "Optional familiar applications in household/technology and a supplied musculoskeletal model."
+      },
+      {
+        "id": "df096120-4696-535e-8e14-4354667056cc",
+        "code": "PHY7-U06-S01",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ճնշման ֆիզիկական իմաստը, միավորը և հաշվումը",
+        "subject": "physics",
+        "description_en": "Definition p=F/S, pascal, direct/inverse calculations and unit alignment."
+      },
+      {
+        "id": "2172d40e-4589-5330-a3ad-7c81dd9245db",
+        "code": "PHY7-U06-S02",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ճնշումը մեծացնելու և փոքրացնելու եղանակները",
+        "subject": "physics",
+        "description_en": "Reason separately about force and contact area in familiar applications."
+      },
+      {
+        "id": "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "code": "PHY7-U06-S03",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Գազի ճնշումը և դրա կախումը ծավալից",
+        "subject": "physics",
+        "description_en": "Molecular-collision explanation, all-direction pressure and qualitative compression at comparable conditions."
+      },
+      {
+        "id": "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+        "code": "PHY7-U06-S04",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Պասկալի օրենքը և ճնշման հաղորդումը",
+        "subject": "physics",
+        "description_en": "Transmit an externally applied pressure through a liquid or gas in all directions without change."
+      },
+      {
+        "id": "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "code": "PHY7-U06-S05",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հիդրոստատիկ ճնշումը և p=ρgh կապը",
+        "subject": "physics",
+        "description_en": "Depth, density and g dependencies; equal-depth comparisons; force normal to walls/bottom."
+      },
+      {
+        "id": "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+        "code": "PHY7-U06-S06",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հաղորդակից անոթները և հեղուկների հավասարակշռությունը",
+        "subject": "physics",
+        "description_en": "Same-liquid levels, vessel-shape independence and two-liquid ρ₁h₁=ρ₂h₂ equilibrium."
+      },
+      {
+        "id": "71155603-a474-5eaf-afce-31028bcc58b1",
+        "code": "PHY7-U06-S07",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ջրաբաշխական մամլիչի կառուցվածքը և ուժի շահումը",
+        "subject": "physics",
+        "description_en": "Connected pistons, Pascal law and F₂/F₁=S₂/S₁ in the ideal model."
+      },
+      {
+        "id": "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "code": "PHY7-U06-S08",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մթնոլորտային ճնշումը, դրա գոյության փորձերը և չափումը",
+        "subject": "physics",
+        "description_en": "Air-weight cause, experimental evidence, Torricelli column and barometer interpretation."
+      },
+      {
+        "id": "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "code": "PHY7-U06-S09",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արքիմեդյան ուժի առաջացումը և Արքիմեդի օրենքը",
+        "subject": "physics",
+        "description_en": "Pressure-force difference, upward direction and equality to displaced fluid/gas weight."
+      },
+      {
+        "id": "60c60768-b1ae-506a-be1a-f9f0b453f083",
+        "code": "PHY7-U06-S10",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արքիմեդյան ուժի հաշվումը և ուժաչափի ցուցմունքը",
+        "subject": "physics",
+        "description_en": "F_A=ρgV_submerged, partial immersion and apparent-weight readings."
+      },
+      {
+        "id": "0db94e18-7eba-5440-8bab-c3069deafa1a",
+        "code": "PHY7-U06-S11",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մարմինների լողալու պայմանները",
+        "subject": "physics",
+        "description_en": "Compare buoyant and gravitational forces and relate equilibrium to body/fluid density."
+      },
+      {
+        "id": "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed",
+        "code": "PHY7-U06-S12",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արքիմեդյան ուժը բնության մեջ, նավագնացությունում և օդագնացությունում",
+        "subject": "physics",
+        "description_en": "Animal, ship and balloon applications with explicit force/volume/density evidence."
+      },
+      {
+        "id": "1f2fa89e-ea77-5a63-a960-9724a155156a",
+        "code": "PHY7-U06-S13",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արքիմեդյան ուժի փորձերի պլանավորումը և տվյալների մեկնաբանումը",
+        "subject": "physics",
+        "description_en": "Preparation, variable control and data interpretation for the liquid experiments; no performance certification."
+      },
+      {
+        "id": "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+        "code": "PHY7-U06-S14",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ճնշման առաջացման մեխանիզմները տարբեր միջավայրերում",
+        "subject": "physics",
+        "description_en": "Optional comparison of solid contact and molecular/hydrostatic pressure mechanisms."
+      },
+      {
+        "id": "23619b6a-59c4-5e90-bb51-592b97438441",
+        "code": "PHY7-U06-S15",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Գազի և հեղուկի ճնշման չափումը",
+        "subject": "physics",
+        "description_en": "Optional instrument/scale interpretation with supplied manometer or barometer information."
+      },
+      {
+        "id": "c82de1f3-13d8-5cc1-86e7-34e205cadc8d",
+        "code": "PHY7-U06-S16",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մխոցավոր հեղուկային պոմպի աշխատանքը",
+        "subject": "physics",
+        "description_en": "Optional valve-and-piston sequence in intake and delivery strokes."
+      }
+    ],
+    "english": {
+      "items": 0,
+      "skills": 0,
+      "subjects": 0,
+      "releaseReferences": 0,
+      "historicalCodeReferences": 0
+    },
+    "subjects": [
+      {
+        "id": "f5965c68-7a7d-478d-9374-50f4a80335f3",
+        "code": "mathematics",
+        "status": "draft",
+        "name_en": "Mathematics"
+      },
+      {
+        "id": "6e43ca6d-c7d5-44b5-98e9-2bb5fdccb7d0",
+        "code": "physics",
+        "status": "published",
+        "name_en": "Physics"
+      }
+    ],
+    "observedAt": "2026-10-20T20:30:24.518592+00:00",
+    "programmes": [
+      {
+        "id": "008814e3-fe88-46c4-a9ce-415b2fbafa27",
+        "status": "draft",
+        "grade_id": "7c8e33b7-0927-4820-83ca-59d88603ccc7",
+        "source_url": null,
+        "subject_id": "f5965c68-7a7d-478d-9374-50f4a80335f3",
+        "effective_to": null,
+        "version_label": "Sprint 11G architecture fixture",
+        "effective_from": null,
+        "curriculum_framework_id": "45adf723-7e0f-44e7-9000-be9820b92509"
+      },
+      {
+        "id": "258955e9-30e7-43ef-95c5-324a53143270",
+        "status": "published",
+        "grade_id": "7c8e33b7-0927-4820-83ca-59d88603ccc7",
+        "source_url": "https://www.arlis.am/hy/acts/229331",
+        "subject_id": "6e43ca6d-c7d5-44b5-98e9-2bb5fdccb7d0",
+        "effective_to": null,
+        "version_label": "2026-08-14 / N 40-Ն as amended by N 36-Ն",
+        "effective_from": "2026-08-14",
+        "curriculum_framework_id": "45adf723-7e0f-44e7-9000-be9820b92509"
+      }
+    ],
+    "fingerprints": {
+      "items": "02a9ac127de1e789dde981167803bbf6",
+      "history": "b0af9e1e86807f1b8e339b90a52b03f9"
+    }
+  },
+  "relatedOutcomeAudit": {
+    "all67SelectedSkillProjectionsUnchanged": true,
+    "sourceEvidence": "docs/evidence/english-7-unit-01-corpus-20261020.json",
+    "sourceEvidenceSha256": "307b30120561f4816d0546a38028c9394d61813a4026383b90c3d5ccea84fd21",
+    "equivalentEnglishOutcomes": [],
+    "scope": "The existing all-skill outcome audit is reused after exact selected-field equality; no reapproval of Physics is claimed."
+  },
+  "applicableAuthoredCorpus": {
+    "basePacket": "docs/content/english-7-unit-01-draft.json",
+    "sha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+    "items": 45,
+    "guides": 9,
+    "sourceSets": 6,
+    "writingPackage": true,
+    "acceptedUnfilledAssessmentSlots": 140,
+    "assessmentQuestionsExist": false
+  },
+  "deploymentGuard": "Refresh the corpus immediately before actual staging/registration. This snapshot only supports this draft authoring comparison; no production writes or approval are performed."
+}

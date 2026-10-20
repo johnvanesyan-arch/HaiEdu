@@ -1,0 +1,1521 @@
+{
+  "schemaVersion": "haiedu-english-practice-additions-v1",
+  "checkpoint": "16.1C.4",
+  "version": 1,
+  "date": "2026-10-21",
+  "author": "Codex automated author; one primary agent",
+  "status": "draft_for_review_not_staged",
+  "ownerAcceptance": "docs/evidence/english-7-unit-01-owner-acceptance-20261021.json",
+  "unit": "ENG7-U01",
+  "basePacket": "docs/content/english-7-unit-01-draft.json",
+  "basePacketSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+  "sourceTextbookSha256": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9",
+  "items": [
+    {
+      "code": "ENG7-U01-P32",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S01",
+      "activity": 2,
+      "pages": [
+        4
+      ],
+      "locale": "en",
+      "prompt": "Complete the description with sociable, shy or absent-minded. Use one word.",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          4
+        ],
+        "activities": [
+          2
+        ],
+        "programme": [
+          "T1.K1"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Choose the word supported by the described behaviour.",
+      "feedback": "Sociable fits enjoying group activities and meeting new people. This describes one stated aspect of Lilit, not her whole personality.",
+      "comparison": {
+        "claim": "personality_word_in_context",
+        "scenario": "Complete the description with sociable, shy or absent-minded. Use one word.",
+        "requiredInference": "Select the personality word supported by the stated social behaviour.",
+        "solution": "Sociable fits enjoying group activities and meeting new people. This describes one stated aspect of Lilit, not her whole personality.",
+        "nearest": [
+          "ENG7-U01-P01",
+          "ENG7-U01-P02"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P01 matches other behaviour descriptions and P02 separates appearance from behaviour. This supplies controlled contextual use of sociable; it remains intentional rehearsal of the same inference.",
+        "guideRelationship": "G01 teaches evidence-based descriptions; its polite example does not give this answer.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "typed_fields",
+      "definition": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "layout": "gap_fill",
+        "locale": "en",
+        "fields": [
+          {
+            "id": "f1",
+            "label": "Lilit enjoys joining group activities and meeting new people. In this description, she is ____.",
+            "maxLength": 30
+          }
+        ]
+      },
+      "key": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "fields": {
+          "f1": {
+            "accepted": [
+              "sociable"
+            ],
+            "normalization": {
+              "trim": true,
+              "collapseWhitespace": true,
+              "apostrophes": true,
+              "caseMode": "ascii-insensitive"
+            }
+          }
+        }
+      },
+      "fieldReview": {
+        "f1": {
+          "reject": [
+            "shy",
+            "absent-minded"
+          ],
+          "feedback": "Enjoying social contact supports sociable; forgetfulness or nervousness is not described."
+        }
+      },
+      "scoring": "correct_required_fields_divided_by_required_fields"
+    },
+    {
+      "code": "ENG7-U01-P33",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S02",
+      "activity": 4,
+      "pages": [
+        5
+      ],
+      "locale": "en",
+      "prompt": "Which pair completes both lines?\nAram: Please ____ the jacket to me.\nMari: Here is a short ____ of it.",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          5
+        ],
+        "activities": [
+          4
+        ],
+        "programme": [
+          "T1.K3"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Decide which gap needs an action word and which needs the name of something.",
+      "feedback": "Please describe the jacket; a short description of it. The first gap needs a verb and the second a noun.",
+      "comparison": {
+        "claim": "base_and_derived_word_class",
+        "scenario": "Which pair completes both lines?\nAram: Please ____ the jacket to me.\nMari: Here is a short ____ of it.",
+        "requiredInference": "Distinguish a request for an action from a noun phrase naming the result.",
+        "solution": "Please describe the jacket; a short description of it. The first gap needs a verb and the second a noun.",
+        "nearest": [
+          "ENG7-U01-P05",
+          "ENG7-U01-P06",
+          "ENG7-U01-P22"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P05 produces description from describe. This reverses between base and derived forms in an exchange and tests both functions; it is a practice variant, not a new independent claim.",
+        "guideRelationship": "G02 explains word-class choice with educate/education; no new guide is needed.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "single_choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "describe / description",
+          "feedback": "Describe expresses the requested action; description names the account."
+        },
+        {
+          "id": "b",
+          "text": "description / describe",
+          "feedback": "This reverses the noun and verb positions."
+        },
+        {
+          "id": "c",
+          "text": "describe / describe",
+          "feedback": "The second gap follows a short and needs a noun."
+        },
+        {
+          "id": "d",
+          "text": "description / description",
+          "feedback": "The first gap follows please and needs the verb."
+        }
+      ],
+      "key": {
+        "optionId": "a"
+      },
+      "scoring": "one_correct_option_one_item_point"
+    },
+    {
+      "code": "ENG7-U01-P31",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S01",
+      "activity": 7,
+      "pages": [
+        5,
+        6
+      ],
+      "locale": "en",
+      "prompt": "Complete the clothing description with casual, flashy or retro. Use one word.",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          5,
+          6
+        ],
+        "activities": [
+          7
+        ],
+        "programme": [
+          "T1.K1"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Use the details about the clothes, rather than judging the person wearing them.",
+      "feedback": "Flashy describes a look designed to attract attention.",
+      "comparison": {
+        "claim": "clothing_style_in_context",
+        "scenario": "Complete the clothing description with casual, flashy or retro. Use one word.",
+        "requiredInference": "Connect the stated visual features and intention with the supplied style word.",
+        "solution": "Flashy describes a look designed to attract attention.",
+        "nearest": [
+          "ENG7-U01-P01",
+          "ENG7-U01-P02",
+          "ENG7-U01-P03",
+          "ENG7-U01-P04",
+          "ENG7-U01-R04",
+          "ENG7-U01-R05",
+          "ENG7-U01-R06"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P03/R06 recognise style definitions; this deliberately rehearses applying a style word to a concrete verbal description. It is bounded vocabulary production, not independent new reasoning.",
+        "guideRelationship": "G03 teaches these style meanings; its retro example is not this jacket description.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "typed_fields",
+      "definition": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "layout": "gap_fill",
+        "locale": "en",
+        "fields": [
+          {
+            "id": "f1",
+            "label": "With its bright colours and large shiny decorations, the stage jacket is designed to attract attention. It has a ____ style.",
+            "maxLength": 30
+          }
+        ]
+      },
+      "key": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "fields": {
+          "f1": {
+            "accepted": [
+              "flashy"
+            ],
+            "normalization": {
+              "trim": true,
+              "collapseWhitespace": true,
+              "apostrophes": true,
+              "caseMode": "ascii-insensitive"
+            }
+          }
+        }
+      },
+      "fieldReview": {
+        "f1": {
+          "reject": [
+            "casual",
+            "retro"
+          ],
+          "feedback": "The stated intention is to attract attention, not an earlier period or everyday informality."
+        }
+      },
+      "scoring": "correct_required_fields_divided_by_required_fields"
+    },
+    {
+      "code": "ENG7-U01-L07",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S11",
+      "activity": 8,
+      "pages": [
+        6,
+        144
+      ],
+      "locale": "en",
+      "prompt": "Listen to all three speakers. What are they mainly discussing?",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          6,
+          144
+        ],
+        "activities": [
+          8
+        ],
+        "programme": [
+          "T1.L1"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Think about what connects all three turns.",
+      "feedback": "They give different ideas about clothing for a class photo.",
+      "comparison": {
+        "claim": "combined_speaker_listening",
+        "scenario": "Listen to all three speakers. What are they mainly discussing?",
+        "requiredInference": "Identify the shared purpose across the three viewpoints.",
+        "solution": "They give different ideas about clothing for a class photo.",
+        "nearest": [
+          "ENG7-U01-L01",
+          "ENG7-U01-L03",
+          "ENG7-U01-L05"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "The existing L01/L03/L05 ask for individual gist. This rehearses gist across a short discussion, using a new original practice source; no protected/unseen or independent coverage is claimed.",
+        "guideRelationship": "The familiar book activity teaches listening for clothing choices. Existing scripts and all new item feedback were included in the exposure comparison; no protected capacity is claimed.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "sourceSet": "LISTEN-PRACTICE-GROUP-01",
+      "audioHold": "No recording exists yet. Keys are conditional on this exact script; actual speaker/turn alignment, clarity, permission and playback must pass review.",
+      "responseType": "single_choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Which pictures should go in a school magazine?",
+          "feedback": "They discuss their clothes for a photo, not selecting pictures."
+        },
+        {
+          "id": "b",
+          "text": "What should they wear for a class photo?",
+          "feedback": "All three discuss clothing choices for the photo."
+        },
+        {
+          "id": "c",
+          "text": "Which new uniform must everyone buy?",
+          "feedback": "No uniform purchase is required; the speakers propose different choices."
+        }
+      ],
+      "key": {
+        "optionId": "b"
+      },
+      "scoring": "one_correct_option_one_item_point"
+    },
+    {
+      "code": "ENG7-U01-L08",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S12",
+      "activity": 8,
+      "pages": [
+        6,
+        144
+      ],
+      "locale": "en",
+      "prompt": "Which item does Speaker Two plan to wear?",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          6,
+          144
+        ],
+        "activities": [
+          8
+        ],
+        "programme": [
+          "T1.L1"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Listen for the clothing item mentioned in the second turn.",
+      "feedback": "Speaker Two says they want to wear a green top.",
+      "comparison": {
+        "claim": "combined_speaker_listening",
+        "scenario": "Which item does Speaker Two plan to wear?",
+        "requiredInference": "Retrieve the explicit clothing detail from the correct numbered turn.",
+        "solution": "Speaker Two says they want to wear a green top.",
+        "nearest": [
+          "ENG7-U01-L02",
+          "ENG7-U01-L04",
+          "ENG7-U01-L06"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "L02/L04/L06 retrieve details from named separate clips. This locates a detail in a combined recording; the detail operation remains familiar practice.",
+        "guideRelationship": "The familiar book activity teaches listening for clothing choices. Existing scripts and all new item feedback were included in the exposure comparison; no protected capacity is claimed.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "sourceSet": "LISTEN-PRACTICE-GROUP-01",
+      "audioHold": "No recording exists yet. Keys are conditional on this exact script; actual speaker/turn alignment, clarity, permission and playback must pass review.",
+      "responseType": "single_choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "a blue shirt",
+          "feedback": "Speaker One mentions a blue shirt."
+        },
+        {
+          "id": "b",
+          "text": "a warm coat",
+          "feedback": "Speaker Three mentions a warm coat."
+        },
+        {
+          "id": "c",
+          "text": "a green top",
+          "feedback": "Speaker Two explicitly names a green top."
+        }
+      ],
+      "key": {
+        "optionId": "c"
+      },
+      "scoring": "one_correct_option_one_item_point"
+    },
+    {
+      "code": "ENG7-U01-L09",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S12",
+      "activity": 8,
+      "pages": [
+        6,
+        144
+      ],
+      "locale": "en",
+      "prompt": "Who suggests that the group should choose one colour?",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          6,
+          144
+        ],
+        "activities": [
+          8
+        ],
+        "programme": [
+          "T1.L1"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Follow the numbered turns and note each speaker’s proposal.",
+      "feedback": "Speaker One suggests that everyone choose blue, while allowing different shirts.",
+      "comparison": {
+        "claim": "combined_speaker_listening",
+        "scenario": "Who suggests that the group should choose one colour?",
+        "requiredInference": "Attribute the shared-colour proposal to its numbered speaker.",
+        "solution": "Speaker One suggests that everyone choose blue, while allowing different shirts.",
+        "nearest": [
+          "ENG7-U01-L02",
+          "ENG7-U01-L04",
+          "ENG7-U01-L06",
+          "ENG7-U01-L10"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "The old six questions use separately named clips, so they do not establish speaker discrimination. This directly rehearses attribution within one recording. L10 tests the same attribution operation on another stated view; these are not independent source samples.",
+        "guideRelationship": "The familiar book activity teaches listening for clothing choices. Existing scripts and all new item feedback were included in the exposure comparison; no protected capacity is claimed.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "sourceSet": "LISTEN-PRACTICE-GROUP-01",
+      "audioHold": "No recording exists yet. Keys are conditional on this exact script; actual speaker/turn alignment, clarity, permission and playback must pass review.",
+      "responseType": "single_choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Speaker One",
+          "feedback": "Speaker One suggests choosing blue."
+        },
+        {
+          "id": "b",
+          "text": "Speaker Two",
+          "feedback": "Speaker Two wants people to choose their own colour."
+        },
+        {
+          "id": "c",
+          "text": "Speaker Three",
+          "feedback": "Speaker Three focuses on comfort and a warm coat."
+        }
+      ],
+      "key": {
+        "optionId": "a"
+      },
+      "scoring": "one_correct_option_one_item_point"
+    },
+    {
+      "code": "ENG7-U01-L10",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S12",
+      "activity": 8,
+      "pages": [
+        6,
+        144
+      ],
+      "locale": "en",
+      "prompt": "Who wants everyone to choose their own colour?",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          6,
+          144
+        ],
+        "activities": [
+          8
+        ],
+        "programme": [
+          "T1.L1"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Distinguish each speaker’s own view from the other suggestions.",
+      "feedback": "Speaker Two says they would rather let everyone choose their own colour.",
+      "comparison": {
+        "claim": "combined_speaker_listening",
+        "scenario": "Who wants everyone to choose their own colour?",
+        "requiredInference": "Attribute the individual-colour preference to its numbered speaker.",
+        "solution": "Speaker Two says they would rather let everyone choose their own colour.",
+        "nearest": [
+          "ENG7-U01-L02",
+          "ENG7-U01-L04",
+          "ENG7-U01-L06",
+          "ENG7-U01-L09"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "This is deliberate second practice of L09’s attribution operation within the same source family, using the contrasting view. It is not a second independent reasoning dimension or unseen sample.",
+        "guideRelationship": "The familiar book activity teaches listening for clothing choices. Existing scripts and all new item feedback were included in the exposure comparison; no protected capacity is claimed.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "sourceSet": "LISTEN-PRACTICE-GROUP-01",
+      "audioHold": "No recording exists yet. Keys are conditional on this exact script; actual speaker/turn alignment, clarity, permission and playback must pass review.",
+      "responseType": "single_choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Speaker One",
+          "feedback": "Speaker One suggests the same colour for everyone."
+        },
+        {
+          "id": "b",
+          "text": "Speaker Two",
+          "feedback": "Speaker Two explicitly favours each person choosing a colour."
+        },
+        {
+          "id": "c",
+          "text": "Speaker Three",
+          "feedback": "Speaker Three states a comfort preference rather than this colour proposal."
+        }
+      ],
+      "key": {
+        "optionId": "b"
+      },
+      "scoring": "one_correct_option_one_item_point"
+    },
+    {
+      "code": "ENG7-U01-P35",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S03",
+      "activity": 9,
+      "pages": [
+        8,
+        9
+      ],
+      "locale": "en",
+      "prompt": "Mariam told Aram not to wear his coat indoors. Which direct instruction preserves her meaning?",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          8,
+          9
+        ],
+        "activities": [
+          9
+        ],
+        "programme": [
+          "T1.K3"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Keep both the action and the place where it is prohibited.",
+      "feedback": "Do not wear your coat indoors preserves the negative instruction and its location.",
+      "comparison": {
+        "claim": "interpret_negative_instruction",
+        "scenario": "Mariam told Aram not to wear his coat indoors. Which direct instruction preserves her meaning?",
+        "requiredInference": "Recover the prohibited action and its scope from a reported instruction.",
+        "solution": "Do not wear your coat indoors preserves the negative instruction and its location.",
+        "nearest": [
+          "ENG7-U01-P07",
+          "ENG7-U01-P08",
+          "ENG7-U01-P09"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P08 supplies a negative infinitive and P09 recognises a reporting pattern. This asks for meaning preservation in the reverse direction; no independent reasoning coverage is claimed.",
+        "guideRelationship": "G04 teaches the same negative pattern; its positive door example does not resolve the contrast.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "single_choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "Wear your coat indoors.",
+          "feedback": "This reverses the prohibition."
+        },
+        {
+          "id": "b",
+          "text": "Do not wear your coat indoors.",
+          "feedback": "This preserves both the prohibition and indoors."
+        },
+        {
+          "id": "c",
+          "text": "Do not wear your coat outdoors.",
+          "feedback": "This changes the place where the instruction applies."
+        }
+      ],
+      "key": {
+        "optionId": "b"
+      },
+      "scoring": "one_correct_option_one_item_point"
+    },
+    {
+      "code": "ENG7-U01-P36",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S04",
+      "activity": 13,
+      "pages": [
+        12
+      ],
+      "locale": "en",
+      "prompt": "Choose good or well to complete the sentence.",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          12
+        ],
+        "activities": [
+          13
+        ],
+        "programme": [
+          "T1.K3"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Ask whether the word describes the plan or how someone performs an action.",
+      "feedback": "Good describes the plan after sounds.",
+      "comparison": {
+        "claim": "adjective_linking_complement",
+        "scenario": "Choose good or well to complete the sentence.",
+        "requiredInference": "Identify sounds as linking the plan to a quality, rather than an action being performed well.",
+        "solution": "Good describes the plan after sounds.",
+        "nearest": [
+          "ENG7-U01-P12",
+          "ENG7-U01-P13"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P12/P13 contrast feels/looks with action adverbs. This rehearses the textbook sounds pattern and the good/well contrast; it is not additional independent coverage.",
+        "guideRelationship": "G05 explains linking-verb complements without using this plan sentence.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "typed_fields",
+      "definition": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "layout": "gap_fill",
+        "locale": "en",
+        "fields": [
+          {
+            "id": "f1",
+            "label": "Your plan sounds ____ to me.",
+            "maxLength": 30
+          }
+        ]
+      },
+      "key": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "fields": {
+          "f1": {
+            "accepted": [
+              "good"
+            ],
+            "normalization": {
+              "trim": true,
+              "collapseWhitespace": true,
+              "apostrophes": true,
+              "caseMode": "ascii-insensitive"
+            }
+          }
+        }
+      },
+      "fieldReview": {
+        "f1": {
+          "reject": [
+            "well"
+          ],
+          "feedback": "In this sentence sounds links plan to an assessment of its quality; good is the adjective."
+        }
+      },
+      "scoring": "correct_required_fields_divided_by_required_fields"
+    },
+    {
+      "code": "ENG7-U01-P37",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S04",
+      "activity": 13,
+      "pages": [
+        12
+      ],
+      "locale": "en",
+      "prompt": "Complete the second sentence with careful or carefully so that it keeps the first sentence’s meaning.",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          12
+        ],
+        "activities": [
+          13
+        ],
+        "programme": [
+          "T1.K3"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "The second sentence describes how the action was performed.",
+      "feedback": "Ani explained her choice carefully preserves the meaning of a careful explanation.",
+      "comparison": {
+        "claim": "adverb_action_modifier",
+        "scenario": "Complete the second sentence with careful or carefully so that it keeps the first sentence’s meaning.",
+        "requiredInference": "Convert an adjective-noun description into an adverb modifying the action.",
+        "solution": "Ani explained her choice carefully preserves the meaning of a careful explanation.",
+        "nearest": [
+          "ENG7-U01-P12",
+          "ENG7-U01-P13",
+          "ENG7-U01-P19",
+          "ENG7-U01-P20"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P12/P13 select modifiers and P19 forms a comparative adverb. This rehearses the uninflected action modifier through a short paraphrase, without claiming a new reasoning path.",
+        "guideRelationship": "G05 teaches adjective/action distinctions; comparison forms from G06 are not required.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "typed_fields",
+      "definition": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "layout": "gap_fill",
+        "locale": "en",
+        "fields": [
+          {
+            "id": "f1",
+            "label": "Ani gave a careful explanation of her choice.\nAni explained her choice ____.",
+            "maxLength": 30
+          }
+        ]
+      },
+      "key": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "fields": {
+          "f1": {
+            "accepted": [
+              "carefully"
+            ],
+            "normalization": {
+              "trim": true,
+              "collapseWhitespace": true,
+              "apostrophes": true,
+              "caseMode": "ascii-insensitive"
+            }
+          }
+        }
+      },
+      "fieldReview": {
+        "f1": {
+          "reject": [
+            "careful",
+            "more carefully"
+          ],
+          "feedback": "Carefully modifies explained; no comparison is supplied, so more carefully changes the meaning."
+        }
+      },
+      "scoring": "correct_required_fields_divided_by_required_fields"
+    },
+    {
+      "code": "ENG7-U01-P38",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S05",
+      "activity": 14,
+      "pages": [
+        13
+      ],
+      "locale": "en",
+      "prompt": "Use surprised or surprising in each gap.",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          13
+        ],
+        "activities": [
+          14
+        ],
+        "programme": [
+          "T1.K3"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Distinguish the cause of the feeling from the person experiencing it.",
+      "feedback": "The result was surprising; Tatev was surprised.",
+      "comparison": {
+        "claim": "contrast_feeling_and_cause",
+        "scenario": "Use surprised or surprising in each gap.",
+        "requiredInference": "Keep the unexpected result and its experiencer distinct across one linked context.",
+        "solution": "The result was surprising; Tatev was surprised.",
+        "nearest": [
+          "ENG7-U01-P14",
+          "ENG7-U01-P15"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P14 uses interested/boring and P15 treats a person as a cause. This applies another taught pair to two linked statements. G05 already teaches the complete procedure; this is deliberate rehearsal only.",
+        "guideRelationship": "G05 uses exciting/excited; this mini-context is not that worked example.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "typed_fields",
+      "definition": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "layout": "gap_fill",
+        "locale": "en",
+        "fields": [
+          {
+            "id": "f1",
+            "label": "No one expected the plain hat to win the design competition. The result was ____.",
+            "maxLength": 30
+          },
+          {
+            "id": "f2",
+            "label": "Tatev was ____ when she heard that the plain hat had won.",
+            "maxLength": 30
+          }
+        ]
+      },
+      "key": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "fields": {
+          "f1": {
+            "accepted": [
+              "surprising"
+            ],
+            "normalization": {
+              "trim": true,
+              "collapseWhitespace": true,
+              "apostrophes": true,
+              "caseMode": "ascii-insensitive"
+            }
+          },
+          "f2": {
+            "accepted": [
+              "surprised"
+            ],
+            "normalization": {
+              "trim": true,
+              "collapseWhitespace": true,
+              "apostrophes": true,
+              "caseMode": "ascii-insensitive"
+            }
+          }
+        }
+      },
+      "fieldReview": {
+        "f1": {
+          "reject": [
+            "surprised"
+          ],
+          "feedback": "The result causes the feeling, so surprising describes it."
+        },
+        "f2": {
+          "reject": [
+            "surprising"
+          ],
+          "feedback": "Tatev experiences the feeling, so surprised describes her here."
+        }
+      },
+      "scoring": "correct_required_fields_divided_by_required_fields"
+    },
+    {
+      "code": "ENG7-U01-P39",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S06",
+      "activity": 15,
+      "pages": [
+        14
+      ],
+      "locale": "en",
+      "prompt": "One button is missing from each of three coats. We have two buttons to use. Which sentence correctly describes the situation?",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          14
+        ],
+        "activities": [
+          15
+        ],
+        "programme": [
+          "T1.K3"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Compare the available number with what is needed for all three coats.",
+      "feedback": "Three buttons are needed but only two are available, so there are not enough for all three coats.",
+      "comparison": {
+        "claim": "interpret_sufficiency",
+        "scenario": "One button is missing from each of three coats. We have two buttons to use. Which sentence correctly describes the situation?",
+        "requiredInference": "Use the stated requirement to distinguish shortage from sufficiency and excess.",
+        "solution": "Three buttons are needed but only two are available, so there are not enough for all three coats.",
+        "nearest": [
+          "ENG7-U01-P16",
+          "ENG7-U01-P17",
+          "ENG7-U01-P18"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P16/P17 complete or order enough constructions; P18 selects much/many. This gives the language a small explicit sufficiency decision. The count is supplied and no mathematical outcome or new independent coverage is claimed.",
+        "guideRelationship": "G06 explains sufficiency; its warm-room example does not supply this answer.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "single_choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "We have too many buttons for all three coats.",
+          "feedback": "Two is fewer than the three required, so this is not an excess."
+        },
+        {
+          "id": "b",
+          "text": "We have exactly enough buttons for all three coats.",
+          "feedback": "Exactly enough would require three buttons."
+        },
+        {
+          "id": "c",
+          "text": "We do not have enough buttons for all three coats.",
+          "feedback": "The available two buttons cannot replace all three missing buttons."
+        }
+      ],
+      "key": {
+        "optionId": "c"
+      },
+      "scoring": "one_correct_option_one_item_point"
+    },
+    {
+      "code": "ENG7-U01-P40",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S07",
+      "activity": 16,
+      "pages": [
+        15
+      ],
+      "locale": "en",
+      "prompt": "Ani says, “This coat is far warmer than my old one.” What does far add to the comparison?",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          15
+        ],
+        "activities": [
+          16
+        ],
+        "programme": [
+          "T1.K3"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Consider the job of far in this whole phrase.",
+      "feedback": "Far strengthens warmer: Ani describes a large difference in warmth, not a distance.",
+      "comparison": {
+        "claim": "interpret_comparative_intensifier",
+        "scenario": "Ani says, “This coat is far warmer than my old one.” What does far add to the comparison?",
+        "requiredInference": "Interpret far as a degree modifier rather than its literal distance meaning.",
+        "solution": "Far strengthens warmer: Ani describes a large difference in warmth, not a distance.",
+        "nearest": [
+          "ENG7-U01-P19",
+          "ENG7-U01-P20",
+          "ENG7-U01-P21",
+          "ENG7-U01-P28",
+          "ENG7-U01-P29",
+          "ENG7-U01-P30"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P21 recognises a grammatical intensifier phrase and P19/P20/P28–P30 form comparisons. This rehearses the meaning of a taught intensifier; the same taught comparison procedure remains shared.",
+        "guideRelationship": "G06 teaches much/far with comparatives. No precise temperature or scientific inference is required.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "single_choice",
+      "options": [
+        {
+          "id": "a",
+          "text": "The difference in warmth is large.",
+          "feedback": "Far strengthens the comparison."
+        },
+        {
+          "id": "b",
+          "text": "The coat is a long distance away.",
+          "feedback": "Far modifies warmer here, rather than giving a location."
+        },
+        {
+          "id": "c",
+          "text": "The two coats are equally warm.",
+          "feedback": "Warmer expresses a difference, and far strengthens it."
+        }
+      ],
+      "key": {
+        "optionId": "a"
+      },
+      "scoring": "one_correct_option_one_item_point"
+    },
+    {
+      "code": "ENG7-U01-P34",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S02",
+      "activity": 17,
+      "pages": [
+        15
+      ],
+      "locale": "en",
+      "prompt": "Add the suffix -ful to use to complete the sentence with an adjective.",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          15
+        ],
+        "activities": [
+          17
+        ],
+        "programme": [
+          "T1.K3"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Check the spelling of the taught suffix.",
+      "feedback": "The adjective is useful, with one final l.",
+      "comparison": {
+        "claim": "produce_taught_derived_adjective",
+        "scenario": "Add the suffix -ful to use to complete the sentence with an adjective.",
+        "requiredInference": "Build and spell the explicitly taught adjective from its base and suffix.",
+        "solution": "The adjective is useful, with one final l.",
+        "nearest": [
+          "ENG7-U01-P05",
+          "ENG7-U01-P06",
+          "ENG7-U01-P22"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P22 identifies the word class of colourful; this produces the taught useful form in context. The suffix is specified to exclude other valid derivatives of use from this bounded task.",
+        "guideRelationship": "G02 covers formation; the cited p.15 explicitly gives useful as a -ful adjective.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "typed_fields",
+      "definition": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "layout": "gap_fill",
+        "locale": "en",
+        "fields": [
+          {
+            "id": "f1",
+            "label": "A bag with several pockets is ____ for keeping small things organised.",
+            "maxLength": 30
+          }
+        ]
+      },
+      "key": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "fields": {
+          "f1": {
+            "accepted": [
+              "useful"
+            ],
+            "normalization": {
+              "trim": true,
+              "collapseWhitespace": true,
+              "apostrophes": true,
+              "caseMode": "ascii-insensitive"
+            }
+          }
+        }
+      },
+      "fieldReview": {
+        "f1": {
+          "reject": [
+            "usefull",
+            "usefully",
+            "use"
+          ],
+          "feedback": "Useful is the requested adjective; usefull is misspelled, usefully is an adverb and use is the base."
+        }
+      },
+      "scoring": "correct_required_fields_divided_by_required_fields"
+    },
+    {
+      "code": "ENG7-U01-P41",
+      "version": 1,
+      "status": "draft_not_staged",
+      "purpose": "practice",
+      "skill": "ENG7-U01-S08",
+      "activity": 29,
+      "pages": [
+        26
+      ],
+      "locale": "en",
+      "prompt": "Complete the exchange with a, an, the or zero. Ani has not chosen a particular scarf. Type zero explicitly if no article is needed.",
+      "source": {
+        "book": "Grigoryan, English 7, Zangak 2023",
+        "pages": [
+          26
+        ],
+        "activities": [
+          29
+        ],
+        "programme": [
+          "T1.K3"
+        ],
+        "sourceFidelity": "Original everyday application of the cited taught vocabulary/grammar/listening target; no novel factual claim."
+      },
+      "hint": "Track when a particular scarf becomes identifiable to both speakers.",
+      "feedback": "A scarf introduces an unspecified singular scarf. The scarf on the table identifies the particular one the seller has put there.",
+      "comparison": {
+        "claim": "first_and_identified_reference",
+        "scenario": "Complete the exchange with a, an, the or zero. Ani has not chosen a particular scarf. Type zero explicitly if no article is needed.",
+        "requiredInference": "Move from an unspecified request to a shared identifiable referent in an exchange.",
+        "solution": "A scarf introduces an unspecified singular scarf. The scarf on the table identifies the particular one the seller has put there.",
+        "nearest": [
+          "ENG7-U01-P25",
+          "ENG7-U01-P26",
+          "ENG7-U01-P27"
+        ],
+        "disposition": "intentional_practice_variant",
+        "rationale": "P25 already introduces and refers back to an object; P26 identifies a scarf by location. This intentionally combines those familiar uses across a dialogue. It is not claimed as new independent article coverage.",
+        "guideRelationship": "G09 teaches the same first/subsequent reference procedure; changing the scene alone creates no novelty claim.",
+        "existingProductionEnglishMatches": [],
+        "independentNewReasoningClaimed": false
+      },
+      "illustration": {
+        "use": false,
+        "rationale": "The target is verbal English meaning/form or actual listening. A picture would add irrelevant inference or reveal the answer."
+      },
+      "review": {
+        "author": "Codex automated author",
+        "humanContent": "pending",
+        "languageAndSME": "pending",
+        "approvedBy": null
+      },
+      "responseType": "typed_fields",
+      "definition": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "layout": "gap_fill",
+        "locale": "en",
+        "fields": [
+          {
+            "id": "f1",
+            "label": "Ani: “I would like ____ scarf, please.”",
+            "maxLength": 30
+          },
+          {
+            "id": "f2",
+            "label": "The seller puts one scarf on an otherwise empty table.\nAni: “How much is ____ scarf on the table?”",
+            "maxLength": 30
+          }
+        ]
+      },
+      "key": {
+        "schemaVersion": "haiedu-typed-fields-v1",
+        "fields": {
+          "f1": {
+            "accepted": [
+              "a"
+            ],
+            "normalization": {
+              "trim": true,
+              "collapseWhitespace": true,
+              "apostrophes": true,
+              "caseMode": "ascii-insensitive"
+            }
+          },
+          "f2": {
+            "accepted": [
+              "the"
+            ],
+            "normalization": {
+              "trim": true,
+              "collapseWhitespace": true,
+              "apostrophes": true,
+              "caseMode": "ascii-insensitive"
+            }
+          }
+        }
+      },
+      "fieldReview": {
+        "f1": {
+          "reject": [
+            "an",
+            "the",
+            "zero"
+          ],
+          "feedback": "No particular scarf is yet identified, and scarf begins with a consonant sound."
+        },
+        "f2": {
+          "reject": [
+            "a",
+            "an",
+            "zero"
+          ],
+          "feedback": "There is one identifiable scarf on the table, shared by both speakers."
+        }
+      },
+      "scoring": "correct_required_fields_divided_by_required_fields"
+    }
+  ],
+  "sourceSets": [
+    {
+      "id": "LISTEN-PRACTICE-GROUP-01",
+      "kind": "audio_pending",
+      "version": 1,
+      "title": "Listening practice: three speakers",
+      "locale": "en",
+      "family": "ENG7-U01-PLAN-P-AUDIO-COMBINED",
+      "sourceFamilyProposedId": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+      "status": "draft_not_registered",
+      "members": [
+        "ENG7-U01-L07",
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-L10"
+      ],
+      "pages": [
+        6,
+        144
+      ],
+      "activities": [
+        8
+      ],
+      "exposure": "familiar_source_not_protected",
+      "permittedPurposeProposal": [
+        "practice",
+        "chapter_review"
+      ],
+      "script": [
+        {
+          "speaker": "narrator",
+          "spoken": "Listen to three students. You will hear each speaker’s number."
+        },
+        {
+          "speaker": "speaker_1",
+          "spoken": "Speaker One. For our class photo, I’d like us to wear the same colour. We don’t need to buy anything. I already have a blue shirt, and I can wear that. Different shirts are fine if we all choose blue."
+        },
+        {
+          "speaker": "speaker_2",
+          "spoken": "Speaker Two. I’d rather let everyone choose their own colour for the photo. I want to wear my green top. We can look like a group without wearing the same thing."
+        },
+        {
+          "speaker": "speaker_3",
+          "spoken": "Speaker Three. For me, the important thing is to feel comfortable. We’ll be standing outside for a while. I’m going to wear my warm coat over my shirt."
+        }
+      ],
+      "scriptProvenance": "Original fictional practice dialogue by Codex, following the Unit 1 clothing/preference and gist/detail/speaker targets; not copied from publisher audio.",
+      "approval": null,
+      "permissionReference": null,
+      "audioAssetVersionId": null,
+      "speakerMappingVerified": false,
+      "transcriptLearnerDelivery": false,
+      "recordingBrief": {
+        "turnOrder": [
+          "narrator",
+          "speaker_1",
+          "speaker_2",
+          "speaker_3"
+        ],
+        "delivery": "One file with three clearly distinguishable voices and spoken speaker numbers; keep the reviewed text and turn order. No music, effects or accent stereotypes.",
+        "pace": "Natural, clear age-appropriate speech; duration remains unmeasured until actual recording.",
+        "replays": "Existing replayable Practice/Chapter Review per-question completion; no capped or set-wide semantics invented.",
+        "voiceRights": "Obtain actual voice/asset permission; plan acceptance is not a rights attestation. No provider, API spend or voice cloning is enabled.",
+        "review": "Listen to the whole final file, verify every word and speaker number, complete a key-to-time/turn check and mobile/desktop playback verification.",
+        "metadata": "Use the neutral public title and hash-based filename, not a title, filename or labels that give away answers."
+      },
+      "dependencyNote": "All four questions share one source and may teach one another through practice feedback. Count four item responses, one source observation; retain this family across derivatives and re-recordings."
+    }
+  ],
+  "activityAdditions": [
+    {
+      "activity": 2,
+      "itemCodes": [
+        "ENG7-U01-P32"
+      ]
+    },
+    {
+      "activity": 4,
+      "itemCodes": [
+        "ENG7-U01-P33"
+      ]
+    },
+    {
+      "activity": 7,
+      "itemCodes": [
+        "ENG7-U01-P31"
+      ]
+    },
+    {
+      "activity": 8,
+      "itemCodes": [
+        "ENG7-U01-L07",
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-L10"
+      ]
+    },
+    {
+      "activity": 9,
+      "itemCodes": [
+        "ENG7-U01-P35"
+      ]
+    },
+    {
+      "activity": 13,
+      "itemCodes": [
+        "ENG7-U01-P36",
+        "ENG7-U01-P37"
+      ]
+    },
+    {
+      "activity": 14,
+      "itemCodes": [
+        "ENG7-U01-P38"
+      ]
+    },
+    {
+      "activity": 15,
+      "itemCodes": [
+        "ENG7-U01-P39"
+      ]
+    },
+    {
+      "activity": 16,
+      "itemCodes": [
+        "ENG7-U01-P40"
+      ]
+    },
+    {
+      "activity": 17,
+      "itemCodes": [
+        "ENG7-U01-P34"
+      ]
+    },
+    {
+      "activity": 29,
+      "itemCodes": [
+        "ENG7-U01-P41"
+      ]
+    }
+  ],
+  "existingGuideIds": [
+    "G01",
+    "G02",
+    "G03",
+    "G04",
+    "G05",
+    "G06",
+    "G09"
+  ],
+  "currentCombinedInventory": {
+    "practice": 60,
+    "practiceText": 50,
+    "practiceAudioHeld": 10,
+    "diagnostic": 0,
+    "mastery": 0,
+    "unfilledAssessmentSlots": 140,
+    "sourceSetProposals": 7,
+    "approvedItems": 0,
+    "stagedItems": 0,
+    "liveAudioAssets": 0
+  },
+  "permissions": {
+    "importEnabled": false,
+    "learnerPublishAllowed": false,
+    "audioUploadPerformed": false,
+    "productionWritePerformed": false
+  },
+  "preservation": "All 45 baseline questions, nine guides, six original source sets and the writing package remain byte-for-byte unchanged in their original file. This delta supplies the accepted fifteen additions only."
+}

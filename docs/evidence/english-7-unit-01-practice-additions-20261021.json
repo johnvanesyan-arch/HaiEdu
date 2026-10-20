@@ -1,0 +1,279 @@
+{
+  "schemaVersion": "haiedu-english-practice-additions-delivery-v1",
+  "checkpoint": "16.1C.4",
+  "date": "2026-10-21",
+  "timezone": "Asia/Yerevan",
+  "baselineCommit": "84b069cf34bf0fde1db975a0f243b8517320bebd",
+  "baselineTree": "ca29144f4bb7c3266b69cd15635a337be0607004",
+  "author": "Codex automated author; one primary agent",
+  "scope": "Record owner bank/audio acceptance and author the first fifteen Practice additions; no staging or learner release",
+  "ownerAcceptance": "docs/evidence/english-7-unit-01-owner-acceptance-20261021.json",
+  "sourcePacket": "docs/content/english-7-unit-01-practice-additions.json",
+  "sourcePacketSha256": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+  "reviewPacket": "docs/english-7-unit-01-practice-additions.md",
+  "corpusEvidence": "docs/evidence/english-7-unit-01-practice-corpus-20261021.json",
+  "comparison": {
+    "applicableExistingDraftItems": 45,
+    "newCandidates": 15,
+    "withinBatchPairsInReviewScope": 105,
+    "candidateToBasePairsInReviewScope": 675,
+    "intentionalPracticeVariants": 15,
+    "newIndependentReasoningClaimed": 0,
+    "semanticReview": "Automated-author educational judgment, not an automated pairwise novelty detector or human SME approval"
+  },
+  "currentInventory": {
+    "practice": 60,
+    "practiceText": 50,
+    "practiceAudioHeld": 10,
+    "diagnostic": 0,
+    "mastery": 0,
+    "unfilledAssessmentSlots": 140,
+    "sourceSetProposals": 7,
+    "approvedItems": 0,
+    "stagedItems": 0,
+    "liveAudioAssets": 0
+  },
+  "technicalValidation": {
+    "path": "docs/evidence/english-7-unit-01-practice-validation-20261021.json",
+    "newSqlCases": 57,
+    "reusedOriginalSqlCases": 169,
+    "priorCasesRerun": false,
+    "typedItems": 7,
+    "typedFields": 9,
+    "choiceItems": 8,
+    "choiceOptions": 25,
+    "firstHarnessRun": "Malformed-response assertion initially expected an incomplete error name. It was corrected to the actual existing typed_fields_response_invalid error; runtime behaviour was unchanged.",
+    "finalExactEvidenceCheck": "passed"
+  },
+  "validation": {
+    "passed": true,
+    "checkCount": 45,
+    "checks": [
+      "Exact accepted pre-update bank manifest is pinned",
+      "Exact accepted pre-update audio plan is pinned",
+      "John authorizes 60/56/84, not human content approval or learner release",
+      "Accepted bank targets and per-skill/form distribution are unchanged",
+      "Exact 140 accepted assessment slot IDs preserve original order",
+      "Assessment demands, mappings and placeholders remain unchanged",
+      "All assessment slots remain unfilled and unapproved",
+      "All 20 course audio records are unchanged",
+      "Audio plan now explicitly records owner acceptance",
+      "Current base packet is exactly preserved",
+      "Source PDF bytes still match the mapped edition",
+      "New packet has exactly accepted P31–P41 and L07–L10",
+      "All 15 authored specs point to the draft delta and have no content approval",
+      "All new content remains draft Practice with pending human review",
+      "All 15 are explicit intentional practice variants, with zero independent novelty claim",
+      "Original 45 plus fifteen additions give exactly 60 unique codes",
+      "Practice inventory is 50 text and ten audio-held",
+      "Per-skill totals exactly reach the accepted Practice budget",
+      "57 new isolated SQL cases and 169 unchanged cases are accurately distinguished",
+      "Validation is bound to the exact new packet and owner record",
+      "Partial-credit, blank and malformed cases are present",
+      "One original script has four linked questions, no asset or reviewed speaker mapping",
+      "Recording title does not reveal the class-photo/clothing answers",
+      "Script explicitly labels all three numbered speakers",
+      "Activity additions retain textbook order and supported placements",
+      "Fresh read-only corpus reports zero current/historical English references",
+      "Prior related-outcome audit is reused only after exact selected-field equality",
+      "New script text and every complete prompt/choice/field/key appear in the review packet",
+      "Question ceiling acceptance does not adopt capped-audio, scoring or release policy",
+      "Unchanged baseline artifact: docs/content/english-7-unit-01-draft.json",
+      "Unchanged baseline artifact: docs/english-7-unit-01-review-packet.md",
+      "Unchanged baseline artifact: docs/english-7-unit-01-whole-bank-review.md",
+      "Unchanged baseline artifact: docs/evidence/english-7-unit-01-corpus-20261020.json",
+      "Unchanged baseline artifact: docs/evidence/english-7-unit-01-draft-validation-20261020.json",
+      "Unchanged baseline artifact: scripts/content/validate-english-7-unit-01.mjs",
+      "Unchanged baseline artifact: scripts/content/render-english-7-unit-01-review.mjs",
+      "Historical evidence preserved: docs/evidence/english-7-unit-01-authoring-20261020.json",
+      "Historical evidence preserved: docs/evidence/english-7-unit-01-preparation-20261020.json",
+      "Historical evidence preserved: docs/evidence/english-7-unit-01-bank-plan-20261020.json",
+      "Historical evidence preserved: docs/evidence/english-7-course-audio-inventory-20261021.json",
+      "Prior scoring source inputs remain identical",
+      "Only content/docs and the new offline validator change",
+      "All local links resolve",
+      "Whitespace diff passes",
+      "Status and roadmap consistently advance to 4.29"
+    ]
+  },
+  "files": {
+    "README.md": "e65f4efd0d049ccdecd47be73eb85ac094df95e468d46fa61a5c0ded3d765acc",
+    "docs/assessment-evidence-blueprint-policy.md": "c1344ca77d610b6b789592e85355cd7588d1c0917934c02a9882d441d1858d71",
+    "docs/backlog.md": "f9806259febd0e5ad1f2ef49cf4d833ce009bebf80aa3e26566b592c64684012",
+    "docs/content/english-7-course-audio-plan.json": "6028684de578244293ce18506e97005e78fb956fb37e1cebb374cb39cd882dbe",
+    "docs/content/english-7-unit-01-bank-plan.json": "9dff41c6448646a7acc3194a8fc5fda6de3cd7fb640f8bad1447e9445300202e",
+    "docs/content/english-7-unit-01-practice-additions.json": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+    "docs/english-7-assessment-framework.md": "39e1bb2b6f664d88a60ad41568b15da53981f7510d842f7542365e8aed879daf",
+    "docs/english-7-course-audio-inventory.md": "6497a04ed54cab4043117c99e957dd752a9146fa996f8b2c06fe45a96fe22e2e",
+    "docs/english-7-unit-01-assessment-contract.md": "a5b0480dd8b89cbc9f80bc312727e6ae596312d73d6df9fbef01811613d64085",
+    "docs/english-7-unit-01-authoring-review.md": "eaf4ad0f752aebedfc9be7c6a1df0798e83230545d1753ac0881f8181a4793e6",
+    "docs/english-7-unit-01-bank-plan.md": "27c899108f93c0f0d149ad27ba0897be49364014741024005436751eeae64457",
+    "docs/english-7-unit-01-practice-additions.md": "8213a6b7e8abfec62438a252d30ef2d80c8b27e8195b94126f23d8a39993105a",
+    "docs/english-7-unit-01-preparation.md": "60edea013bb2921b6c70d6d6cb1229dd7f823754546986a5f8943925684ce156",
+    "docs/evidence/english-7-unit-01-owner-acceptance-20261021.json": "8cce70d7ff396cc8f90ba1df5478b5ac2b4d12ad78ee4cc2fe42d18621a237d7",
+    "docs/evidence/english-7-unit-01-practice-corpus-20261021.json": "336802124c72a6134a895eb53025768c0ae4f0a3e5b217a3a53a01baaf66bd95",
+    "docs/evidence/english-7-unit-01-practice-validation-20261021.json": "3afc6133404b6e0ef4ed9da374fb7d5819594503e02a0ee9ebb4fd9668224342",
+    "docs/project-status.md": "c26f15453588f25e29f2eaca770b62ca810da69e6642e5528eca404a2097e8ff",
+    "docs/sprint-roadmap.md": "8aa1e141caec4e417917326279fa6d93a22f7a88f1437e12315eb23273c887d5",
+    "scripts/content/validate-english-7-unit-01-practice-additions.mjs": "b95589e16e5b9b6fa9e68b1afd81a8f1113a5a0d052079a1feaae8c1f5816a33"
+  },
+  "reusedArtifacts": {
+    "docs/content/english-7-unit-01-draft.json": {
+      "sha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+      "unchanged": true
+    },
+    "docs/english-7-unit-01-review-packet.md": {
+      "sha256": "b20602c267b4f3373c43ef6705343ca1f768a629ab6abc06e05838619edb0eb6",
+      "unchanged": true
+    },
+    "docs/english-7-unit-01-whole-bank-review.md": {
+      "sha256": "c1dfedeb56717583bb80ffab0c32b506d238c5be7c04265bbdc6cd2dac3b8b99",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-corpus-20261020.json": {
+      "sha256": "307b30120561f4816d0546a38028c9394d61813a4026383b90c3d5ccea84fd21",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-draft-validation-20261020.json": {
+      "sha256": "ac58240b139786af304f81fa33ad10c6251ff7d321415a8ed841210d039210d8",
+      "unchanged": true
+    },
+    "scripts/content/validate-english-7-unit-01.mjs": {
+      "sha256": "46eba130ff5a6ec82b5541edbc05d106faa07803a1bbeedeaaf4ac3b7dec700e",
+      "unchanged": true
+    },
+    "scripts/content/render-english-7-unit-01-review.mjs": {
+      "sha256": "0ae18e5b779605cecc765f14b8a9f5a4ad44e97c8bdb67d666a4cd65bfb1d80d",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-authoring-20261020.json": {
+      "sha256": "99eeb2fc0407f9e5f1e4d8f2d0ed923ceaf6619d89fa0e09405806557a0c0172",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-preparation-20261020.json": {
+      "sha256": "c815712746f341742c13f2897f040c3cdad7b3512e1b0f6c54df7ce4bc7466d6",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-bank-plan-20261020.json": {
+      "sha256": "b5ef54dd7bb0e239ca514872de7e4f35935ea6d21063bd21032b7c17013f8988",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-course-audio-inventory-20261021.json": {
+      "sha256": "f1ab93cae8b829b88824cfcfa6bbb0bf2f3db68c1c003e0c8416c546e3828521",
+      "unchanged": true
+    }
+  },
+  "runtimeBaseline": [
+    {
+      "path": ".env.example",
+      "sha": "592f40953fa1255c745341db6752d5b03dde9488",
+      "unchanged": true
+    },
+    {
+      "path": ".github",
+      "sha": "81dd633cea8ea4e9b20cb03091ba3d42abdf14f2",
+      "unchanged": true
+    },
+    {
+      "path": ".gitignore",
+      "sha": "4ab8ee1cace081e4360dad20d429748023fc8470",
+      "unchanged": true
+    },
+    {
+      "path": "AGENTS.md",
+      "sha": "5bd4c83e2d1ba626363d6f611e86faf8490d8aa2",
+      "unchanged": true
+    },
+    {
+      "path": "backend",
+      "sha": "40c475b4c64b9fe49361e927ca132aadeef104a2",
+      "unchanged": true
+    },
+    {
+      "path": "e2e",
+      "sha": "61535703565835ee5328e684f40e482c92c82682",
+      "unchanged": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "7d22085ba85115c80760885bb6fdb6d4b8e36932",
+      "unchanged": true
+    },
+    {
+      "path": "package.json",
+      "sha": "577509895cb09863969aa3f2cf092b3689c36dea",
+      "unchanged": true
+    },
+    {
+      "path": "playwright.config.js",
+      "sha": "94cd2d5ead5734e8a0e25be83280a07f64184768",
+      "unchanged": true
+    },
+    {
+      "path": "supabase",
+      "sha": "cc72f4323fe21417da4fb601e1ecdfdfbe1c21c5",
+      "unchanged": true
+    },
+    {
+      "path": "tests",
+      "sha": "81b694806c1783785b6d90aaef55f73d45f65a21",
+      "unchanged": true
+    },
+    {
+      "path": "tsconfig.json",
+      "sha": "645da7331a2e0389a8cbc07b6bf1294c3bf15d38",
+      "unchanged": true
+    },
+    {
+      "path": "vercel.json",
+      "sha": "3c305e4cc7b2f564851a4f8260065de40776742f",
+      "unchanged": true
+    },
+    {
+      "path": "web",
+      "sha": "e38e330a22ab225e901c936c25daf211fc3e21c6",
+      "unchanged": true
+    }
+  ],
+  "scriptsDisposition": "Only the new offline content validator is added; all existing scripts and runtime consumers are preserved.",
+  "reusedRuntimeEvidence": {
+    "path": "docs/evidence/shared-task-sets-release-20261020.json",
+    "productionReadChecks": 310,
+    "twoSchoolIsolationChecks": 54,
+    "preservationScopes": 29,
+    "newEnglishBrowserAcceptanceClaimed": false
+  },
+  "preservation": {
+    "original45Changed": false,
+    "writingPackageChanged": false,
+    "runtimeOrApiChanged": false,
+    "productionRead": "Content-only corpus metadata refresh",
+    "productionWrite": false,
+    "audioCreatedOrUploaded": false,
+    "sourceRegistered": false,
+    "approvalManufactured": false
+  },
+  "apiDocumentationDisposition": "No API behaviour change; existing capability/mode constraints remain authoritative.",
+  "closure": {
+    "publication": "One batched update from the real remote base tree",
+    "notionTargetVersion": "4.29",
+    "notionSourceRule": "Verify exact merged source, targeted Notion content and all eleven native children",
+    "ciRule": "Observe required CI and live release stamp before final closure; IDs/results are recorded in source-stamped Notion."
+  },
+  "next": {
+    "acceptedBatch": "DA + MA",
+    "questions": 56,
+    "protectedReadingSourcesRequired": 4,
+    "protectedListeningSourcesRequired": 4,
+    "subsequentBatch": "DB + MB + MC",
+    "subsequentQuestions": 84
+  },
+  "remainingGates": [
+    "Human English/content/SME review of all sixty Practice drafts",
+    "Actual publisher/voice permissions and recording audition/alignment",
+    "Record the original practice dialogue; preserve source families",
+    "Author 140 assessment questions and qualify their twenty protected sources",
+    "Accepted implemented assessed-audio contract, final scoring/readiness and writing/workload rules",
+    "Governed source/content registration and exact English release acceptance"
+  ]
+}

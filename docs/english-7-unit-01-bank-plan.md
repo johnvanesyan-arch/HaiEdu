@@ -1,21 +1,21 @@
-# English 7 Unit 1 — question-bank and form proposal
+# English 7 Unit 1 — accepted bank and authoring plan
 
-**16.1C.2 · 2026-10-20 · Proposed authoring budget; not an adopted assessment policy.**
+**Proposed under 16.1C.2 on 2026-10-20; owner accepted under 16.1C.4 on 2026-10-21. Authoring scope accepted; final assessment policy/release remain open.**
 
-Recommend **200 automatically scored questions: 60 Practice, 56 Diagnostic and 84 Mastery**. The Diagnostic bank supplies **two forms of 28**; the Mastery bank supplies **three forms of 28**. These are bank totals, not 200 compulsory answers per learner. The recommendation comes from the Unit 1 demands below and a proposed reserve/retry arrangement; it is not a ministry requirement, a Physics default or a validated test length.
+John accepted **200 automatically scored questions: 60 Practice, 56 Diagnostic and 84 Mastery**. The Diagnostic bank supplies **two forms of 28**; the Mastery bank supplies **three forms of 28**. These are bank totals, not 200 compulsory answers per learner. The recommendation comes from the Unit 1 demands below and a proposed reserve/retry arrangement; it is not a ministry requirement, a Physics default or a validated test length.
 
-John's instruction to continue authorises preparation of this concrete plan. It does not record acceptance of these newly proposed numbers, the English protected-parallel manifest, a scoring threshold, a final audio contract or learner activation. The [status register](project-status.md) remains authoritative.
+John explicitly accepted the bank and audio plan on 2026-10-21. The [owner record](evidence/english-7-unit-01-owner-acceptance-20261021.json) binds the exact 56 Diagnostic / 84 Mastery slots and original proposal fingerprint. This accepts the bounded English protected-parallel authoring scope under unchanged comparison/protection criteria; it does not delegate final question approval, grant publisher/voice rights, adopt scoring/capped-playback rules or activate learners. The [status register](project-status.md) remains authoritative.
 
 ## Inventory, target and remaining work
 
-| Purpose | Existing automatic drafts | Proposed bank | Proposed learner use | Additional questions to author |
+| Purpose | Current automatic drafts | Accepted bank | Planned learner use, pending final policy | Additional questions to author |
 | --- | ---: | ---: | --- | ---: |
-| Practice | 45 | 60 | Short blocks in textbook order; source sets kept together | 15 |
+| Practice | 60 | 60 | Short blocks in textbook order; source sets kept together | 0 |
 | Diagnostic | 0 | 56 | One 28-question completed form; the other is a controlled alternate | 56 |
 | Mastery | 0 | 84 | 28 per attempt; up to three distinct forms if the retry contract is adopted | 84 |
-| **Total** | **45** | **200** | Writing remains separate | **155** |
+| **Total** | **60** | **200** | Writing remains separate | **140** |
 
-The existing 45 remain draft-only: 39 text questions and six provisional listening questions. The proposed 60 contain **50 text and ten listening questions**, including the two existing optional reporting extensions P10/P11; those two stay outside mandatory core coverage. Nine shared-reading questions are already included in the text count. P23/P24 support writing preparation but do not earn S13/S14 production evidence. No question is counted again because it has several fields or belongs to a source set.
+The original 45 remain unchanged and draft-only: 39 text questions and six provisional listening questions. The [15 additions](english-7-unit-01-practice-additions.md) now complete the 60-question Practice draft, containing **50 text and ten listening questions**, including the two existing optional reporting extensions P10/P11; those two stay outside mandatory core coverage. Nine shared-reading questions are already included in the text count. P23/P24 support writing preparation but do not earn S13/S14 production evidence. No question is counted again because it has several fields or belongs to a source set.
 
 Keep **one separate writing practice prompt and one teacher-reviewed 80–100-word note**, with its model and proposed rubric, outside the 200-question automatic bank. The reviewed note gives linked S13/S14 evidence, not two independently assessed samples. A separately tracked, non-gating writing baseline remains a possible later decision; it is not an additional required marking task in this budget. Speaking remains classroom-assessed.
 
@@ -25,7 +25,7 @@ Across all six English 7 units there is **no defensible final total yet**. Map U
 
 Counts below are items, not response components or claims of independent reasoning. The two Diagnostic and three Mastery columns are bank totals. The last column defines the same proposed coverage blueprint for each 28-item form; matching that blueprint does not establish equal difficulty between forms.
 
-| Skill | Existing Practice | Proposed Practice | Diagnostic bank | Mastery bank | Each assessment form |
+| Skill | Original 45-item baseline | Accepted Practice target (now drafted) | Diagnostic bank | Mastery bank | Each assessment form |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | S01 — clothing, style and personality vocabulary | 4 | 6 | 6 | 9 | 3 |
 | S02 — word formation | 3 | 5 | 4 | 6 | 2 |
@@ -69,7 +69,7 @@ Use brief, clear tasks. A short bounded field may capture production; recognitio
 
 ## The 15 Practice additions
 
-These are **specifications, not authored questions**. IDs are reserved in the proposal only. They target useful rehearsal and an explicit listening gap. They must not be labelled independent new reasoning merely because their wording or answer controls differ.
+These accepted specifications are now **15 authored drafts**, with complete prompts/keys/feedback and comparison in the [Practice additions packet](english-7-unit-01-practice-additions.md). The existing 45 are preserved. All additions are intentional practice variants, with no independent new reasoning or protected capacity claimed.
 
 | Reserved codes | Skill | Specific addition and comparison focus |
 | --- | --- | --- |
@@ -85,7 +85,7 @@ These are **specifications, not authored questions**. IDs are reserved in the pr
 | L08 | S12 | Retrieve one explicitly stated detail from that recording. |
 | L09–L10 | S12 | Two view-to-speaker attribution tasks using voices/numbered turns, not separately named clip files. Compare L01–L06 and each other; no inference from identity, accent, appearance or personality. |
 
-L07–L10 share one new **Practice-only** source family. The author must supply a script, reviewed recording and actual speaker alignment; those assets do not exist in this planning delivery. A new practice dialogue avoids depending on permission to edit publisher audio. It still needs its own voice/asset rights and listening review. Combining or re-recording the textbook script would remain the existing textbook family, not a new independent source.
+L07–L10 share one new **Practice-only** source family. 16.1C.4 supplies the original three-speaker script and four conditional questions; the reviewed recording and actual speaker alignment do not yet exist. A new practice dialogue avoids depending on permission to edit publisher audio. It still needs its own voice/asset rights and listening review. Combining or re-recording the textbook script would remain the existing textbook family, not a new independent source.
 
 The eleven text additions attach to their original activity positions; the four listening additions sit at activity 8. They do not reorder the textbook path. Additional practice prompts can be removed or reworked if the comparison finds no useful benefit. Report the resulting shortfall rather than padding to 60.
 
@@ -110,16 +110,16 @@ Recommend one completed Diagnostic before Practice, preserving the platform-wide
 
 ## Bounded authoring and acceptance
 
-The machine-readable manifest reserves exactly **56 Diagnostic and 84 Mastery slots** under Unit 1, version 1 of this proposal. It is a **proposed** English manifest, with `approvedBy: null`. Repeated language procedures are expected across forms, so the plan explicitly requests a bounded protected-parallel scope under the existing [evidence policy](assessment-evidence-blueprint-policy.md); no Physics authorization is inherited and no new reasoning coverage is claimed from parallelism. Do not apply that disposition, stage it as qualified assessment content or manufacture approvals until the English scope is accepted.
+The machine-readable manifest reserves exactly **56 Diagnostic and 84 Mastery slots** under Unit 1, version 1 of this proposal. John accepted this exact English authoring manifest under 16.1C.4; its scope authorization records `approvedBy: John`, while all unfilled slot/content approvals remain null. Repeated language procedures are expected across forms, so the accepted plan explicitly authorizes a bounded protected-parallel scope under the existing [evidence policy](assessment-evidence-blueprint-policy.md); no Physics authorization is inherited and no new reasoning coverage is claimed from parallelism. Use that disposition only for these accepted slots after the complete source/stimulus/comparison/protection checks. Scope acceptance creates no qualified assessment content or question approval.
 
-Suggested delivery batches after the bounded scope decision are **15 Practice additions**, **56 questions for DA + MA**, and **84 for DB + MB + MC**. Keep each batch's content and documentation in one delivery; text preparation can proceed while audio recording is pending, but missing audio contributes zero qualified listening capacity. Review the existing 45 in parallel with preparation, without changing their approval status.
+The accepted delivery sequence is **15 Practice additions**, **56 questions for DA + MA**, and **84 for DB + MB + MC**. The first batch is now drafted and technically checked under 16.1C.4; next author the 56 DA + MA questions. Keep each batch’s content and documentation in one delivery; text preparation can proceed while audio recording is pending, but missing audio contributes zero qualified listening capacity. All 60 Practice drafts still need genuine review.
 
 Before staging any new batch: refresh the full current/historical English corpus, equivalent mappings, guides, releases and exposures; compare all candidate scenarios/solutions/distractors; record retain/rework/omit decisions; verify sources and valid English alternatives; run current-version structural/scoring QA; obtain the real required content reviews. The 16.1C.1 corpus snapshot is historical evidence, not a fresh pre-staging guard.
 
-The target is an authoring ceiling subject to quality, not a claim that 200 defensible items or five qualified forms already exist. Rejected items and missing rights/recordings leave visible gaps. Final counts, scoring, rubric/workload, audio conditions, qualification and exact learner-release acceptance remain separate from this planning delivery.
+The target is an authoring ceiling subject to quality, not a claim that 200 defensible items or five qualified forms already exist. Rejected items and missing rights/recordings leave visible gaps. The 60/56/84 authoring ceiling is accepted. Any defensible-content shortfall must be reported; scoring, rubric/workload, assessed-audio conditions, qualification and exact learner-release acceptance remain separate.
 
 ## Verification and preservation
 
-The [planning evidence](evidence/english-7-unit-01-bank-plan-20261020.json) checks current draft counts against the canonical JSON, the 60/56/84 totals, all 15 additional Practice specifications, the five 28-slot forms, per-skill and per-modality distributions, unique planned slot IDs and the twenty disjoint proposed source families. This is arithmetic and reference validation, not semantic review or test calibration.
+The historical [16.1C.2 planning evidence](evidence/english-7-unit-01-bank-plan-20261020.json) checks its original 45-item draft counts against the canonical JSON, the 60/56/84 totals, all 15 additional Practice specifications, the five 28-slot forms, per-skill and per-modality distributions, unique planned slot IDs and the twenty disjoint proposed source families. This is arithmetic and reference validation, not semantic review or test calibration. The [16.1C.4 delivery evidence](evidence/english-7-unit-01-practice-additions-20261021.json) records the current accepted manifest and 60-item Practice inventory.
 
-The canonical 45-question draft, review packet, whole-bank comparison, writing package and validation utilities remain unchanged. Their 169-case scoring evidence is reused after hash verification. No API, runtime, migration, catalogue, asset, policy or learner record is changed; no production database call is needed for a non-staging plan. Existing runtime acceptance evidence remains applicable to the unchanged code. Required checks still run for the single batched main update; Notion is synchronized only after reading the exact merged source, preserving all native children.
+The canonical 45-question draft, review packet, whole-bank comparison, writing package and validation utilities remain unchanged. Their 169-case scoring evidence is reused after hash verification. No API, runtime, migration, catalogue, asset, active policy or learner record is changed. 16.1C.4 performs a fresh read-only content-corpus check for the new authoring batch. Existing runtime acceptance evidence remains applicable to the unchanged code. Required checks still run for the single batched main update; Notion is synchronized only after reading the exact merged source, preserving all native children.

@@ -1,0 +1,111 @@
+{
+  "schemaVersion": "haiedu-english-practice-additions-validation-v1",
+  "checkpoint": "16.1C.4",
+  "packetSha256": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+  "basePacketSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+  "acceptanceSha256": "8cce70d7ff396cc8f90ba1df5478b5ac2b4d12ad78ee4cc2fe42d18621a237d7",
+  "counts": {
+    "items": 15,
+    "textItems": 11,
+    "audioHeldItems": 4,
+    "typedItems": 7,
+    "typedFields": 9,
+    "choiceItems": 8,
+    "choiceOptions": 25,
+    "sqlGradeCases": 57,
+    "acceptedNormalizations": 9,
+    "rejectedOrBlankFields": 27,
+    "allBlankCases": 7,
+    "malformedResponseRejections": 7
+  },
+  "cumulative": [
+    {
+      "skill": "ENG7-U01-S01",
+      "practice": 6,
+      "target": 6
+    },
+    {
+      "skill": "ENG7-U01-S02",
+      "practice": 5,
+      "target": 5
+    },
+    {
+      "skill": "ENG7-U01-S03",
+      "practice": 6,
+      "target": 6
+    },
+    {
+      "skill": "ENG7-U01-S04",
+      "practice": 4,
+      "target": 4
+    },
+    {
+      "skill": "ENG7-U01-S05",
+      "practice": 3,
+      "target": 3
+    },
+    {
+      "skill": "ENG7-U01-S06",
+      "practice": 4,
+      "target": 4
+    },
+    {
+      "skill": "ENG7-U01-S07",
+      "practice": 7,
+      "target": 7
+    },
+    {
+      "skill": "ENG7-U01-S08",
+      "practice": 4,
+      "target": 4
+    },
+    {
+      "skill": "ENG7-U01-S09",
+      "practice": 7,
+      "target": 7
+    },
+    {
+      "skill": "ENG7-U01-S10",
+      "practice": 4,
+      "target": 4
+    },
+    {
+      "skill": "ENG7-U01-S11",
+      "practice": 4,
+      "target": 4
+    },
+    {
+      "skill": "ENG7-U01-S12",
+      "practice": 6,
+      "target": 6
+    }
+  ],
+  "sourceInputSha256": {
+    "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15",
+    "supabase/functions/_shared/typed-fields.mjs": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc"
+  },
+  "reusedBaseEvidence": {
+    "path": "docs/evidence/english-7-unit-01-draft-validation-20261020.json",
+    "sha256": "ac58240b139786af304f81fa33ad10c6251ff7d321415a8ed841210d039210d8",
+    "sqlCases": 169,
+    "rerun": false
+  },
+  "checks": {
+    "exactAccepted15Slots": true,
+    "base45Unchanged": true,
+    "bookActivityOrder": true,
+    "currentJsTypedContracts": true,
+    "currentSqlGrading": true,
+    "partialCreditAndBlank": true,
+    "malformedRejected": true,
+    "sourceMembership": true,
+    "speakerNumbers": true,
+    "conditionalAudioKeys": true,
+    "approvedCapacityStillZero": true
+  },
+  "limits": [
+    "Author validation is not human language/SME approval or empirical calibration.",
+    "Audio keys are conditional on the unrecorded script; there is no audio audition or playable asset.",
+    "No production staging, source registration, policy activation or learner release."
+  ]
+}

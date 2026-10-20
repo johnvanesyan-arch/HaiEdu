@@ -1,12 +1,14 @@
 # English 7 Unit 1 — authoring and review handoff
 
+**16.1C.4 acceptance and authoring update — 2026-10-21:** John accepted the 60/56/84 bank, bounded assessment authoring manifest and playable-audio integration plan. The [15 Practice additions](english-7-unit-01-practice-additions.md) bring the draft bank to 60 (50 text / ten audio-held); original content is preserved. The next accepted batch is 56 questions for DA + MA. Actual content/SME review, source/voice rights, audio audition, final assessed-playback/scoring policy and English release remain separate. Earlier proposal/acceptance statements below describe their dated checkpoints.
+
 **16.1C.1 · 2026-10-20 · Complete textbook-order draft prepared and technically checked; human review and learner release remain open.**
 
 The first Unit 1 draft is ready to review. It preserves the book’s structure, sequence and topics, while correcting ambiguous English, unsupported generalisations and defective question formats. This is an authoring delivery within 16.1C, not completion of the English MVP release.
 
-Start with the [complete review packet](english-7-unit-01-review-packet.md). It contains the actual prompts, keys, option feedback, hints, passages, teaching guides, writing prompt, model and rubric. The [structured draft](content/english-7-unit-01-draft.json) is the single editable content source. The [whole-bank comparison](english-7-unit-01-whole-bank-review.md) records nearest candidates and substantive dispositions. All files remain in the private repository, outside Vercel’s `web` output directory.
+Start with the [complete review packet](english-7-unit-01-review-packet.md). It contains the actual prompts, keys, option feedback, hints, passages, teaching guides, writing prompt, model and rubric. The [structured draft](content/english-7-unit-01-draft.json) is the editable source for the original 45; the separate [Practice additions JSON](content/english-7-unit-01-practice-additions.json) adds 15 without rewriting that baseline. The [whole-bank comparison](english-7-unit-01-whole-bank-review.md) records nearest candidates and substantive dispositions. All files remain in the private repository, outside Vercel’s `web` output directory.
 
-## Inventory and limits
+## Original 16.1C.1 inventory and limits
 
 | Deliverable | Draft inventory | Boundary |
 | --- | --- | --- |

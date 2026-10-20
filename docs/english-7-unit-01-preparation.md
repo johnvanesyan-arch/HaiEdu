@@ -1,5 +1,7 @@
 # English 7 Unit 1 — source and evidence map
 
+**16.1C.4 acceptance and authoring update — 2026-10-21:** John accepted the 60/56/84 bank, bounded assessment authoring manifest and playable-audio integration plan. The [15 Practice additions](english-7-unit-01-practice-additions.md) bring the draft bank to 60 (50 text / ten audio-held); original content is preserved. The next accepted batch is 56 questions for DA + MA. Actual content/SME review, source/voice rights, audio audition, final assessed-playback/scoring policy and English release remain separate. Earlier proposal/acceptance statements below describe their dated checkpoints.
+
 **16.1C.3 audio follow-up — 2026-10-21:** John requires all possible and strategically relevant course recordings to be included as playable audio. The [course inventory](english-7-course-audio-inventory.md) identifies 20 MP3s across 18 QR routes, including the original five for Unit 1. All are retained as core/support candidates; one needs a reviewed smaller delivery version. Audition, permissions, exact source binding and production playback remain open. No bank proposal, assessed-playback policy or English release is approved by this direction.
 
 **16.1C.2 planning follow-up — 2026-10-20:** The [bank/form proposal](english-7-unit-01-bank-plan.md) now specifies 60 Practice / 56 Diagnostic / 84 Mastery, five forms of 28 and the exact remaining slot demands. These are proposed counts, not authored/approved capacity or an adopted policy. The existing 45-question draft is unchanged.

@@ -5,17 +5,20 @@
   "proposalVersion": 1,
   "baselineCommit": "57939aadb10c18cda8180f000d279d5487b4b606",
   "author": "Codex automated author; one primary agent",
-  "status": "proposed_not_adopted",
+  "status": "accepted_authoring_scope_not_released",
   "unit": "ENG7-U01",
   "sourceDraft": "docs/content/english-7-unit-01-draft.json",
   "sourceDraftSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
   "authorization": {
     "planningRequested": true,
-    "approvedBy": null,
-    "bankPlanAccepted": false,
-    "protectedParallelManifestAccepted": false,
+    "approvedBy": "John",
+    "bankPlanAccepted": true,
+    "protectedParallelManifestAccepted": true,
     "scoringPolicyAccepted": false,
-    "learnerReleaseAuthorized": false
+    "learnerReleaseAuthorized": false,
+    "audioPlanAccepted": true,
+    "acceptanceEvidence": "docs/evidence/english-7-unit-01-owner-acceptance-20261021.json",
+    "humanContentApprovalDelegated": false
   },
   "proposedTotals": {
     "practice": 60,
@@ -434,7 +437,7 @@
       "plannedItemCode": "ENG7-U01-P31",
       "skill": "ENG7-U01-S01",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Bounded clothing description",
       "bookActivities": [
         1,
@@ -463,13 +466,14 @@
         "ENG7-U01-R06"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P32",
       "skill": "ENG7-U01-S01",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Personality word in a supplied context",
       "bookActivities": [
         1,
@@ -490,13 +494,14 @@
         "ENG7-U01-P02"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P33",
       "skill": "ENG7-U01-S02",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Choose a taught base or derived form in context",
       "bookActivities": [
         3,
@@ -514,13 +519,14 @@
         "ENG7-U01-P22"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P34",
       "skill": "ENG7-U01-S02",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Produce a taught derived adjective",
       "bookActivities": [
         17
@@ -537,13 +543,14 @@
         "ENG7-U01-P22"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P35",
       "skill": "ENG7-U01-S03",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Interpret a reported negative instruction",
       "bookActivities": [
         9,
@@ -564,13 +571,14 @@
         "ENG7-U01-P09"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P36",
       "skill": "ENG7-U01-S04",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Adjective function in a complete context",
       "bookActivities": [
         13
@@ -585,13 +593,14 @@
         "ENG7-U01-P13"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P37",
       "skill": "ENG7-U01-S04",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Adverb function in a complete context",
       "bookActivities": [
         13
@@ -608,13 +617,14 @@
         "ENG7-U01-P20"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P38",
       "skill": "ENG7-U01-S05",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Contrast feeling and cause",
       "bookActivities": [
         14
@@ -629,13 +639,14 @@
         "ENG7-U01-P15"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P39",
       "skill": "ENG7-U01-S06",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Judge sufficiency for a stated purpose",
       "bookActivities": [
         15
@@ -651,13 +662,14 @@
         "ENG7-U01-P18"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P40",
       "skill": "ENG7-U01-S07",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Interpret a taught comparative intensifier",
       "bookActivities": [
         16,
@@ -678,13 +690,14 @@
         "ENG7-U01-P30"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-P41",
       "skill": "ENG7-U01-S08",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Track first and subsequent reference in an exchange",
       "bookActivities": [
         29
@@ -700,13 +713,14 @@
         "ENG7-U01-P27"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-L07",
       "skill": "ENG7-U01-S11",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Overall message of a new multi-speaker practice recording",
       "bookActivities": [
         8
@@ -723,13 +737,14 @@
         "ENG7-U01-L05"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-L08",
       "skill": "ENG7-U01-S12",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Retrieve an explicit recording detail",
       "bookActivities": [
         8
@@ -746,13 +761,14 @@
         "ENG7-U01-L06"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-L09",
       "skill": "ENG7-U01-S12",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Attribute the first selected view to a numbered speaker",
       "bookActivities": [
         8
@@ -770,13 +786,14 @@
         "ENG7-U01-L10"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     },
     {
       "plannedItemCode": "ENG7-U01-L10",
       "skill": "ENG7-U01-S12",
       "purpose": "practice",
-      "status": "specification_only_not_authored",
+      "status": "authored_draft_not_staged",
       "demand": "Attribute a second selected view to a numbered speaker",
       "bookActivities": [
         8
@@ -794,14 +811,15 @@
         "ENG7-U01-L09"
       ],
       "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
-      "approvedBy": null
+      "approvedBy": null,
+      "draftPacket": "docs/content/english-7-unit-01-practice-additions.json"
     }
   ],
   "forms": [
     {
       "code": "DA",
       "purpose": "diagnostic",
-      "status": "proposed_not_allocated",
+      "status": "accepted_authoring_manifest_unfilled",
       "itemCount": 28,
       "sourceSets": [
         {
@@ -866,7 +884,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -877,7 +895,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -888,7 +906,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -899,7 +917,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -910,7 +928,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -921,7 +939,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -932,7 +950,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -943,7 +961,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -954,7 +972,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -965,7 +983,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -976,7 +994,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -987,7 +1005,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -998,7 +1016,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1009,7 +1027,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1020,7 +1038,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1031,7 +1049,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1042,7 +1060,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1053,7 +1071,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1064,7 +1082,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1075,7 +1093,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1086,7 +1104,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1097,7 +1115,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1108,7 +1126,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1119,7 +1137,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1130,7 +1148,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1141,7 +1159,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1152,7 +1170,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1163,7 +1181,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         }
       ]
@@ -1171,7 +1189,7 @@
     {
       "code": "DB",
       "purpose": "diagnostic",
-      "status": "proposed_not_allocated",
+      "status": "accepted_authoring_manifest_unfilled",
       "itemCount": 28,
       "sourceSets": [
         {
@@ -1236,7 +1254,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1247,7 +1265,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1258,7 +1276,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1269,7 +1287,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1280,7 +1298,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1291,7 +1309,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1302,7 +1320,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1313,7 +1331,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1324,7 +1342,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1335,7 +1353,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1346,7 +1364,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1357,7 +1375,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1368,7 +1386,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1379,7 +1397,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1390,7 +1408,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1401,7 +1419,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1412,7 +1430,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1423,7 +1441,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1434,7 +1452,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1445,7 +1463,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1456,7 +1474,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1467,7 +1485,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1478,7 +1496,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1489,7 +1507,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1500,7 +1518,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1511,7 +1529,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1522,7 +1540,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1533,7 +1551,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         }
       ]
@@ -1541,7 +1559,7 @@
     {
       "code": "MA",
       "purpose": "mastery",
-      "status": "proposed_not_allocated",
+      "status": "accepted_authoring_manifest_unfilled",
       "itemCount": 28,
       "sourceSets": [
         {
@@ -1606,7 +1624,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1617,7 +1635,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1628,7 +1646,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1639,7 +1657,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1650,7 +1668,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1661,7 +1679,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1672,7 +1690,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1683,7 +1701,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1694,7 +1712,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1705,7 +1723,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1716,7 +1734,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1727,7 +1745,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1738,7 +1756,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1749,7 +1767,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1760,7 +1778,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1771,7 +1789,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1782,7 +1800,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1793,7 +1811,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1804,7 +1822,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1815,7 +1833,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1826,7 +1844,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1837,7 +1855,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1848,7 +1866,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1859,7 +1877,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1870,7 +1888,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1881,7 +1899,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1892,7 +1910,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1903,7 +1921,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         }
       ]
@@ -1911,7 +1929,7 @@
     {
       "code": "MB",
       "purpose": "mastery",
-      "status": "proposed_not_allocated",
+      "status": "accepted_authoring_manifest_unfilled",
       "itemCount": 28,
       "sourceSets": [
         {
@@ -1976,7 +1994,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1987,7 +2005,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -1998,7 +2016,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2009,7 +2027,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2020,7 +2038,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2031,7 +2049,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2042,7 +2060,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2053,7 +2071,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2064,7 +2082,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2075,7 +2093,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2086,7 +2104,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2097,7 +2115,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2108,7 +2126,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2119,7 +2137,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2130,7 +2148,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2141,7 +2159,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2152,7 +2170,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2163,7 +2181,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2174,7 +2192,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2185,7 +2203,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2196,7 +2214,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2207,7 +2225,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2218,7 +2236,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2229,7 +2247,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2240,7 +2258,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2251,7 +2269,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2262,7 +2280,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2273,7 +2291,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         }
       ]
@@ -2281,7 +2299,7 @@
     {
       "code": "MC",
       "purpose": "mastery",
-      "status": "proposed_not_allocated",
+      "status": "accepted_authoring_manifest_unfilled",
       "itemCount": 28,
       "sourceSets": [
         {
@@ -2346,7 +2364,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2357,7 +2375,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2368,7 +2386,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2379,7 +2397,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2390,7 +2408,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2401,7 +2419,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2412,7 +2430,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2423,7 +2441,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2434,7 +2452,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2445,7 +2463,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2456,7 +2474,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2467,7 +2485,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2478,7 +2496,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2489,7 +2507,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2500,7 +2518,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2511,7 +2529,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2522,7 +2540,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2533,7 +2551,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2544,7 +2562,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2555,7 +2573,7 @@
           "sourceSetPlaceholder": null,
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2566,7 +2584,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2577,7 +2595,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-READ-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2588,7 +2606,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2599,7 +2617,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-READ-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2610,7 +2628,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2621,7 +2639,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2632,7 +2650,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-AUDIO-A",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         },
         {
@@ -2643,7 +2661,7 @@
           "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-AUDIO-B",
           "itemCode": null,
           "itemVersion": null,
-          "status": "unfilled_proposed_slot",
+          "status": "unfilled_authorized_slot",
           "approvedBy": null
         }
       ]
@@ -2712,18 +2730,37 @@
     "canonicalDraftChanged": false,
     "runtimeChanged": false,
     "apiChanged": false,
-    "productionDatabaseRead": false,
+    "productionDatabaseRead": true,
     "productionWrite": false,
     "audioUploaded": false,
-    "humanApprovalManufactured": false
+    "humanApprovalManufactured": false,
+    "productionReadScope": "16.1C.4 refresh of content-only corpus metadata; no writes"
   },
   "guards": [
     "Authoring ceiling subject to review; no padding or silent shortfall waiver",
     "No source family reused across Practice/Review or assessment forms",
     "New IDs, names, recordings or source splits do not establish unseen status",
     "Refresh applicable whole-bank current/history and exposure evidence before staging",
-    "No English protected-parallel disposition before acceptance of this bounded scope",
+    "Protected-parallel disposition is authorized only within these 140 accepted slots, under the unchanged source/comparison/protection/review criteria",
     "Missing audio, unreviewed sources or incomplete forms contribute zero qualified capacity",
     "No imported Physics scoring, per-skill count or approval/release exception"
+  ],
+  "updatedAt": "2026-10-21",
+  "acceptanceCheckpoint": "16.1C.4",
+  "currentDraftInventory": {
+    "practice": 60,
+    "practiceText": 50,
+    "practiceAudioHeld": 10,
+    "diagnostic": 0,
+    "mastery": 0,
+    "unfilledAssessmentSlots": 140,
+    "sourceSetProposals": 7,
+    "approvedItems": 0,
+    "stagedItems": 0,
+    "liveAudioAssets": 0
+  },
+  "currentPracticePackets": [
+    "docs/content/english-7-unit-01-draft.json",
+    "docs/content/english-7-unit-01-practice-additions.json"
   ]
 }
