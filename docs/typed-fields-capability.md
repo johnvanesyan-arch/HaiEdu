@@ -4,7 +4,7 @@
 
 ## Capability and authoring
 
-`typed_fields` is a registered response extension, version `haiedu-typed-fields-v1`. A single short answer and a question containing several labelled gaps share the same contract. This version supports 1–10 required fields, up to 500 Unicode code points per field, and 1–20 accepted alternatives per field. There is no word-bank, fuzzy matching or automatic semantic correction in this slice. Matching, ordering, audio and shared task sets remain separate work.
+`typed_fields` is a registered response extension, version `haiedu-typed-fields-v1`. A single short answer and a question containing several labelled gaps share the same contract. This version supports 1–10 required fields, up to 500 Unicode code points per field, and 1–20 accepted alternatives per field. There is no word-bank, fuzzy matching or automatic semantic correction in this slice. Matching and ordering are tracked separately in [16.1B.3](matching-ordering-capability.md); audio and shared task sets remain future work.
 
 The public `items.config.responseDefinition` contains only the version, explicit content locale, layout and field definitions. The existing `promptHy` transport property retains its historical name; it transports the authored prompt, including English. Field labels/inputs use the declared locale. No subject, unit or release is selected by the capability.
 

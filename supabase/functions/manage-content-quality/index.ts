@@ -1,3 +1,4 @@
+import {validateArrangementKey} from '../_shared/arrangement-responses.mjs';
 import { validateTypedKey } from '../_shared/typed-fields.mjs';
 import { createClient } from "npm:@supabase/supabase-js@2";
 import { hasActiveLiveSession } from "../_shared/auth.ts";
@@ -253,6 +254,10 @@ async function evaluateQa(admin: any, item: any) {
       if (!shuffleOptions && !optionOrderRationale) {
         errors.push("shuffle_disabled_without_option_order_rationale");
       }
+    } else if (["matching","ordering"].includes(item.item_type)) {
+      try { validateArrangementKey(item.item_type,item.config?.responseDefinition,key.answer); }
+      catch { errors.push("arrangement_contract_invalid"); }
+      if ((options ?? []).length) errors.push("arrangement_contract_invalid");
     } else if (item.item_type === "typed_fields") {
       try { validateTypedKey(item.config?.responseDefinition, key.answer); }
       catch { errors.push("typed_fields_contract_invalid"); }

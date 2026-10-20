@@ -51,13 +51,13 @@ export function readAssessmentPolicy(snapshot, scope) {
     uuid(value.curriculumReleaseId) && value.curriculumReleaseId === scope.curriculumReleaseId &&
     uuid(value.unitId) && value.unitId === scope.unitId);
   assert(positive(value.plannedQuestionCount) && uuid(value.learningModelConfigurationId) && uuid(value.academicMasteryPolicyId));
-  assert(Array.isArray(value.responseTypes) && value.responseTypes.length > 0 && new Set(value.responseTypes).size === value.responseTypes.length && value.responseTypes.every(type => responseTypes.has(type) || (v3 && type === 'typed_fields')));
+  const capabilityVersions = {typed_fields:'haiedu-typed-fields-v1',matching:'haiedu-matching-v1',ordering:'haiedu-ordering-v1'};
+  assert(Array.isArray(value.responseTypes) && value.responseTypes.length > 0 && new Set(value.responseTypes).size === value.responseTypes.length && value.responseTypes.every(type => responseTypes.has(type) || (v3 && Object.hasOwn(capabilityVersions,type))));
   assert(value.scoringStrategy === (v3 ? 'normalized-item-score-v1' : 'selected-response-v1') && typeof value.hintsAllowed === 'boolean' && typeof value.baselineRequired === 'boolean');
   if (v3) {
     assert(value.itemWeight === 1 && value.responseCapabilities && typeof value.responseCapabilities === 'object' && !Array.isArray(value.responseCapabilities));
-    assert(value.responseTypes.includes('typed_fields')
-      ? Object.keys(value.responseCapabilities).length === 1 && value.responseCapabilities.typed_fields === 'haiedu-typed-fields-v1'
-      : Object.keys(value.responseCapabilities).length === 0);
+    const capabilities=value.responseTypes.filter(type=>Object.hasOwn(capabilityVersions,type));
+    assert(Object.keys(value.responseCapabilities).length===capabilities.length && capabilities.every(type=>value.responseCapabilities[type]===capabilityVersions[type]));
   }
   if (['diagnostic', 'mastery_check'].includes(value.mode)) {
     assert(value.hintsAllowed === false);

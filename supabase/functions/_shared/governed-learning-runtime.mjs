@@ -32,7 +32,7 @@ export async function routeGovernedLearning({admin,studentId,token,request,opera
       if (result.error || result.data !== true) return {status:403,body:{error:'learning_context_unavailable'}};
     }
   }
-  if (!governed) return body.saveDraft !== undefined || body.draftRevision !== undefined || body.response?.schemaVersion === 'haiedu-typed-fields-v1' ? {status:400,body:{error:'invalid_session_request'}} : null;
+  if (!governed) return body.saveDraft !== undefined || body.draftRevision !== undefined || body.response?.schemaVersion !== undefined ? {status:400,body:{error:'invalid_session_request'}} : null;
   const authSessionId = verifiedSessionClaim(token);
   if (!authSessionId) return {status:403,body:{error:'account_or_session_inactive'}};
   try {
@@ -74,7 +74,7 @@ export async function routeGovernedLearning({admin,studentId,token,request,opera
   } catch (error) {
     const message = String(error?.message ?? '');
     // Never expose tenant/catalogue details or raw SQL errors.
-    const code = ['chapter_diagnostic_required','skills_not_ready','mastery_check_not_allowed','chapter_review_not_available','assessment_policy_unconfigured','session_item_already_answered','invalid_option_presentation_key','help_not_available_in_assessment','remediation_guide_missing','session_not_active','typed_fields_response_invalid','typed_fields_draft_conflict'].find(value=>message.includes(value));
+    const code = ['chapter_diagnostic_required','skills_not_ready','mastery_check_not_allowed','chapter_review_not_available','assessment_policy_unconfigured','session_item_already_answered','invalid_option_presentation_key','help_not_available_in_assessment','remediation_guide_missing','session_not_active','typed_fields_response_invalid','typed_fields_draft_conflict','arrangement_response_invalid','response_draft_conflict'].find(value=>message.includes(value));
     return {status:code ? 409 : 403,body:{error:code ?? 'learning_context_unavailable'}};
   }
 }

@@ -120,7 +120,7 @@ jobs:
       - name: Verify versioned scoring, readiness, reporting and preserved v1 rules
         run: node --test tests/assessment-v2.test.mjs
       - name: Verify typed-field normalization, drafts, scoring and scope on PostgreSQL 17.6
-        run: node --test tests/typed-fields.test.mjs tests/typed-fields-authoring.test.mjs
+        run: node --test tests/typed-fields.test.mjs tests/typed-fields-authoring.test.mjs tests/arrangement-responses.test.mjs tests/arrangement-authoring.test.mjs
       - name: Verify written-work submissions, marking and authorization on PostgreSQL 17.6
         run: node --test tests/written-work.test.mjs tests/written-work-handler.test.mjs
       - name: Verify written-work save, submit, mark and revocation races

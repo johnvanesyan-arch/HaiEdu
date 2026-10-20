@@ -8,7 +8,11 @@ export function assessmentRules(policy, skills = []) {
   if (policy.minimumPercent == null) return groups ? `<p>${groups}</p>` : '';
   const total=policy.scoredSkillIds.reduce((n,id)=>n+counts[id],0);
   const minima=Object.entries(policy.minimumCorrectBySkill).map(([id,n])=>`${esc(skills.find(s=>s.id===id)?.code ?? '')}՝ ${n}`).join(' · ');
-  if(points)return `<p>${groups}</p><p>Յուրաքանչյուր հարցի առավելագույն միավորը 1 է։ Մի քանի դաշտ ունեցող հարցի միավորը ճիշտ լրացված դաշտերի բաժինն է։ Ստուգարքն անցնելու համար անհրաժեշտ է գնահատվող հարցերի միավորների առնվազն ${policy.minimumPercent}%-ը։ Հմտությունների ամբողջությամբ ճիշտ պատասխանների նվազագույն քանակները՝ ${minima}։ Բոլոր հարցերին պատասխանելը պարտադիր է։</p>`;
+  if(points){
+    const partial=policy.responseTypes.some(type=>['typed_fields','matching'].includes(type));
+    const ordering=policy.responseTypes.includes('ordering');
+    return `<p>${groups}</p><p>Յուրաքանչյուր հարցի առավելագույն միավորը 1 է։${partial?' Մուտքագրվող պատասխանների և համապատասխանեցումների համար միավորը հաշվվում է ըստ ճիշտ լրացված մասերի բաժնի։':''}${ordering?' Հերթականության առաջադրանքում միավոր տրվում է միայն ամբողջությամբ ճիշտ հերթականության համար։':''} Ստուգարքն անցնելու համար անհրաժեշտ է գնահատվող հարցերի միավորների առնվազն ${policy.minimumPercent}%-ը։ Հմտությունների ամբողջությամբ ճիշտ պատասխանների նվազագույն քանակները՝ ${minima}։ Բոլոր հարցերին պատասխանելը պարտադիր է։</p>`;
+  }
   return `<p>${groups}</p><p>Ստուգարքը հանձնելու համար գնահատվող ${total} հարցից առնվազն ${Math.ceil(total*policy.minimumPercent/100)}-ին պետք է ճիշտ պատասխանել։${Object.entries(counts).some(([id,n])=>n>0 && !policy.scoredSkillIds.includes(id)) ? ' Մյուս հարցերի արդյունքները ներկայացվում են առանձին և չեն ազդում ստուգարքը հանձնելու վրա։' : ''} Բոլոր հարցերին պատասխանելը պարտադիր է։</p><p>Հմտությունների նվազագույն ճիշտ պատասխանները՝ ${minima}։</p>`;
 }
 export function assessmentResultMarkup(result) {

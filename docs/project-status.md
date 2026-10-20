@@ -1,7 +1,7 @@
 # Project status register
 
 
-**Updated:** 2026-10-20 Asia/Yerevan · 16.1B.2 typed answers/gaps deployed; production acceptance verified · **Roadmap:** 4.22
+**Updated:** 2026-10-20 Asia/Yerevan · 16.1B.3 matching/ordering implementation ready; release verification pending · **Roadmap:** 4.23
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
@@ -13,6 +13,7 @@ Completion describes the stated scope only. Technical completion, owner-approved
 
 | Stage | Current disposition | Evidence and remaining boundary |
 | --- | --- | --- |
+| 16.1B.3 | Implementation ready; release verification pending | Matching/categorisation and ordering, private drafts and v3 points. Required CI, deployment, readback and production acceptance pending. [Contract](matching-ordering-capability.md). |
 | 16.1B.2 | Deployed; exact source and production read acceptance verified | Short answers/gaps, private drafts and v3 points reporting; 268/268 live checks, 23 preservation scopes unchanged. No content/policy activation. [Contract](typed-fields-capability.md) · [Evidence](evidence/typed-fields-release-20261020.json). |
 | 16.1B.1 | Writing capability deployed; live workspace/read acceptance verified | Student drafts/submissions, teacher rubric marking, revisions and privacy lifecycle. No production tasks or English activation. [Implementation](written-work-workspaces.md). |
 | 16.1A.2 | Source reconciliation and Unit 1 map complete at preparation level; contract proposed | Current 2026 standard, 14 skills, 30 activity dispositions and five technically verified MP3s. Teacher review route authorised under 16.1B.1; final policy/bank, audio audition/protection and remaining capabilities stay open. [Preparation](english-7-unit-01-preparation.md) · [Contract](english-7-unit-01-assessment-contract.md). |
@@ -86,7 +87,9 @@ Completion describes the stated scope only. Technical completion, owner-approved
 
 ## English 7 current checkpoint — 2026-10-20
 
-**Sprint 16.1B.2 — typed answers and gap-filling deployed and verified.** Bounded fields, reviewed alternatives, private resumable drafts, fractional item points and role-consistent reporting are available as an opt-in capability. Required PR/main CI passed (1,341 tests, 73 browser checks and PostgreSQL 17.6); exact-source production acceptance passed 268/268, with two-school isolation 54/54. All 15 SQL definitions and 16 affected Edge bundles match source; all 23 tracked content, policy and learner-data snapshots are unchanged. No English content or scoring policy is activated. Matching/ordering is next, followed by audio and task sets. [Capability contract](typed-fields-capability.md).
+**Sprint 16.1B.3 — matching and ordering implementation ready; release verification pending.** Explicit one-to-one/many-to-one matching, reviewed complete ordering sequences, private resumable drafts and normalized item scores are implemented. No content, policy or release is activated. Required CI, SQL/Edge deployment, production acceptance and Notion closure remain pending. [Capability contract](matching-ordering-capability.md).
+
+**Sprint 16.1B.2 — typed answers and gap-filling deployed and verified.** Bounded fields, reviewed alternatives, private resumable drafts, fractional item points and role-consistent reporting are available as an opt-in capability. Required PR/main CI passed (1,341 tests, 73 browser checks and PostgreSQL 17.6); exact-source production acceptance passed 268/268, with two-school isolation 54/54. All 15 SQL definitions and 16 affected Edge bundles match source; all 23 tracked content, policy and learner-data snapshots are unchanged. No English content or scoring policy is activated. Matching/ordering is tracked under 16.1B.3; audio and task sets follow. [Capability contract](typed-fields-capability.md).
 
 **Sprint 16.1B.1 — writing workspaces deployed and verified.** Students can save private drafts, submit, see feedback and revise. Teachers can mark declared rubric criteria, return work and retain regrade history. Required PR/main CI passed (1,336 tests and 70 browser checks); production read acceptance passed 264/264, including both roles and two-school denials. No English tasks or release are activated. Final English content/rubric, other response types and audio remain open. [Writing workspaces](written-work-workspaces.md) · [Release evidence](evidence/written-work-release-20261020.json).
 

@@ -1,3 +1,4 @@
+import {matchingDefinition,matchingKey,orderingDefinition,orderingKey} from '../fixtures/arrangement-db.mjs';
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { after, before, test } from "node:test";
@@ -6,7 +7,7 @@ import { dashboardFixture } from "../fixtures/content-dashboard-endpoint.mjs";
 
 // Native browser regression with real UI modules and offline auth/network doubles.
 // This covers DOM/event lifecycle, not live backend authorization or content workflows.
-const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js", "learning-stimulus.mjs", "learning-navigation.mjs", "typed-fields-editor.mjs", "typed-fields-contract.mjs", "typed-fields-ui.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
+const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js", "learning-stimulus.mjs", "learning-navigation.mjs", "typed-fields-editor.mjs", "typed-fields-contract.mjs", "typed-fields-ui.mjs", "arrangement-ui.mjs", "arrangement-editor.mjs", "arrangement-contract.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
 const origin = "https://content-lifecycle.test";
 let browser;
 before(async () => { browser = await chromium.launch({ headless: true, ...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{}) }); }, { timeout: 30_000 });
@@ -76,7 +77,7 @@ async function fixture(t, moduleName = "content-review-workflow.js", initial = "
     } else if (url.origin === origin && sources.has(url.pathname.slice(1))) {
       body = sources.get(url.pathname.slice(1));
       if (url.pathname === "/content.js") body += `
-window.__editorFixture = { wireEditorRows, addOptionRow, selectItem,
+window.__editorFixture = { wireEditorRows, addOptionRow, selectItem, collect:()=>buildRevisionPayload(selectedDetail.item),
  preview(detail) {
    dashboard = {items:[{id:"fixture-item", ...detail.item, skill:{code:"QA-SKILL"}}, {id:"second-item", ...detail.item, skill:{code:"QA-SECOND-SKILL"}}]};
    selectedId = "fixture-item"; selectedDetail = detail; renderDetail();
@@ -289,3 +290,23 @@ test("late item or account responses cannot restore a previous stimulus", { time
   assert.equal(await page.locator("#learnerPreviewStimulus").count(), 0);
   await assertSettled(state);
 });
+
+for(const [type,definition,key] of [['matching',matchingDefinition,matchingKey],['ordering',orderingDefinition,orderingKey]]) {
+ test(`${type} reviewer edits structured definitions and keys without exposing them in the learner preview`,async t=>{
+  const state=await fixture(t,'content.js','active'),{page}=state;
+  const detail={...mediaDetail({}),item:{...mediaDetail({}).item,type,itemFamily:'application',config:{responseDefinition:definition}},options:[],answerKey:{answer:key},editing:{contentEditable:true}};
+  await page.evaluate(detail=>window.__editorFixture.preview(detail),detail);
+  assert.equal(await page.locator('[data-arrangement] select').count(),type==='matching'?2:3);
+  assert.deepEqual(await page.locator('[data-arrangement] select').evaluateAll(xs=>xs.map(x=>x.value)),type==='matching'?['','']:['','','']);
+  await page.getByRole('button',{name:'Բովանդակություն',exact:true}).click();
+  const rows=page.locator('[data-arr-group="'+(type==='matching'?'sources':'segments')+'"] [data-arrangement-editor-row]');
+  await rows.first().locator('[data-arr-label]').fill('Revised synthetic label');
+  const payload=await page.evaluate(()=>window.__editorFixture.collect());assert.equal(payload.responseDefinition[type==='matching'?'sources':'segments'][0].label,'Revised synthetic label');assert.deepEqual(payload.answerKey.answer,key);
+  assert.equal(await page.locator('#approveBtn').isDisabled(),true);
+  const group=type==='matching'?'targets':'segments';await page.locator('[data-add-arrangement="'+group+'"]').click();
+  assert.equal(await page.locator('[data-arr-group="'+group+'"] [data-arrangement-editor-row]').count(),4);
+  await page.locator('[data-arr-group="'+group+'"] [data-remove-arrangement]').last().click();
+  assert.deepEqual((await page.evaluate(()=>window.__editorFixture.collect())).answerKey.answer,key);
+  await assertSettled(state);
+ });
+}

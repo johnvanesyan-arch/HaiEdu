@@ -1,3 +1,4 @@
+import {installArrangement,configureArrangement} from '../fixtures/arrangement-db.mjs';
 import {installV2,chapterShape,makeReady,launch,finish} from '../fixtures/assessment-v2-db.mjs';
 import test,{before,after} from 'node:test';
 import assert from 'node:assert/strict';
@@ -183,4 +184,35 @@ test('typed content controls preserve explicit alternatives and render escaped l
   return {saved,escaped,added,rows:root.querySelectorAll('[data-typed-editor-row]').length};
  });
  assert.deepEqual(value.saved.key.fields.word.accepted,['do not',"don't"]);assert.equal(value.escaped,true);assert.equal(value.added,2);assert.equal(value.rows,1);assert.deepEqual(errors,[]);
+});
+
+test('matching mobile drafts survive reload, prevent duplicate targets, and report normalized points',async t=>{
+ const {f,page,origin,errors}=await fixture(t);await installV2(f.db);await installTyped(f.db);await installArrangement(f.db);await configureArrangement(f.db);
+ await page.setViewportSize({width:375,height:812});await page.goto(origin+href(0,'diagnostic'));
+ const red=page.locator('[data-arrangement-field="red"]'),blue=page.locator('[data-arrangement-field="blue"]');
+ await red.selectOption('warm');assert.equal(await blue.locator('option[value="warm"]').evaluate(option=>option.disabled),true,await blue.evaluate(el=>el.outerHTML));
+ await page.waitForFunction(()=>document.querySelector('[data-draft-status]')?.textContent==='Սևագիրը պահպանված է։');
+ const order=await red.locator('option').evaluateAll(xs=>xs.map(x=>x.value));await page.reload();await red.waitFor();assert.equal(await red.inputValue(),'warm');assert.equal(await blue.inputValue(),'');assert.deepEqual(await red.locator('option').evaluateAll(xs=>xs.map(x=>x.value)),order);
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await page.locator('#learningPlayer').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/matching-mobile.png'});}
+ for(let n=0;n<3;n++){
+  await red.selectOption('warm');await page.evaluate(()=>{const form=document.querySelector('#learningPlayer form');form.requestSubmit();form.requestSubmit();});
+  await page.getByRole('button',{name:'Հաջորդը',exact:true}).waitFor();assert.doesNotMatch(await page.locator('[data-feedback]').innerText(),/միավոր|1\/2/);await page.getByRole('button',{name:'Հաջորդը',exact:true}).click();
+ }
+ await page.getByRole('button',{name:'Թարմացնել արդյունքները',exact:true}).waitFor();assert.match(await page.locator('#learningPlayer').innerText(),/միավոր.*50%/);
+ assert.equal((await f.db.query('select count(*) n from attempts')).rows[0].n,3);assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);assert.deepEqual(errors,[]);assert.deepEqual(f.logs,[]);
+});
+
+test('ordering starts blank; keyboard moves, failed saves, resume and exact-sequence grading use real Edge and SQL',async t=>{
+ const {f,page,origin,errors}=await fixture(t);await installV2(f.db);await installTyped(f.db);await installArrangement(f.db);await configureArrangement(f.db,0,'diagnostic','ordering');
+ let failNext=true;await page.route('**/functions/v1/submit-answer',async route=>{if(failNext&&route.request().postDataJSON().saveDraft){failNext=false;await route.fulfill({status:503,contentType:'application/json',body:JSON.stringify({error:'temporary_failure'})});}else await route.continue();});
+ await page.setViewportSize({width:375,height:812});await page.goto(origin+href(0,'diagnostic'));
+ const fields=page.locator('[data-arrangement-field]');await fields.first().waitFor();assert.deepEqual(await fields.evaluateAll(xs=>xs.map(x=>x.value)),['','','']);
+ await fields.nth(0).selectOption('b');await fields.nth(1).selectOption('a');await fields.nth(2).selectOption('c');
+ await page.waitForFunction(()=>document.querySelector('[data-draft-status]')?.textContent.startsWith('Սևագիրը չի պահպանվել'));
+ await page.getByRole('button',{name:'Դիրք 2․ տեղափոխել վերև',exact:true}).focus();await page.keyboard.press('Enter');assert.deepEqual(await fields.evaluateAll(xs=>xs.map(x=>x.value)),['a','b','c']);
+ await page.waitForFunction(()=>document.querySelector('[data-draft-status]')?.textContent==='Սևագիրը պահպանված է։');await page.reload();await fields.first().waitFor();assert.deepEqual(await fields.evaluateAll(xs=>xs.map(x=>x.value)),['a','b','c']);
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await page.locator('#learningPlayer').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/ordering-mobile.png'});
+ await page.getByRole('button',{name:'Ուղարկել պատասխանը',exact:true}).click();await page.getByRole('button',{name:'Հաջորդը',exact:true}).waitFor();
+ const attempts=(await f.db.query('select response,score from attempts')).rows;assert.equal(attempts.length,1);assert.deepEqual(attempts[0].response.sequence,['a','b','c']);assert.equal(Number(attempts[0].score),1);assert.equal((await f.db.query('select count(*) n from learning_response_drafts')).rows[0].n,0);
+ assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=innerWidth),true);assert.deepEqual(errors,[]);assert.deepEqual(f.logs,[]);
 });
