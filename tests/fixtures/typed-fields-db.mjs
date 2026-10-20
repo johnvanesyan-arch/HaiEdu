@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {database as v2Database,configure,blueprintId,id,scopes} from './assessment-v2-db.mjs';
 export * from './assessment-v2-db.mjs';
-export const typedMigration='supabase/migrations/20261020124852_sprint_16_1b_typed_fields.sql';
+export const typedMigration='supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql';
 export const definition={schemaVersion:'haiedu-typed-fields-v1',layout:'gap_fill',locale:'en',fields:[{id:'colour',label:'The sky is ____.',maxLength:30},{id:'manner',label:'Please move ____.',maxLength:60}]};
 export const key={schemaVersion:definition.schemaVersion,fields:{colour:{accepted:['blue'],normalization:{trim:true,collapseWhitespace:false,apostrophes:false,caseMode:'ascii-insensitive'}},manner:{accepted:['more slowly'],normalization:{trim:true,collapseWhitespace:true,apostrophes:true,caseMode:'sensitive'}}}};
 export const response=(colour=' blue ',manner='most slowly')=>({schemaVersion:definition.schemaVersion,fields:{colour,manner}});
