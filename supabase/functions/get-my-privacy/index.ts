@@ -98,7 +98,10 @@ async function getDataInventory(admin: any, role: string, userId: string) {
     return { kind: "content_admin", contentReviews, writtenTaskReviews, auditEvents };
   }
 
-  if (role === "admin") return { kind: "admin", auditEvents };
+  if (role === "admin") {
+    const writtenTaskReviews = await countRows(admin.from("written_task_versions").select("id", { count:"exact", head:true }).eq("reviewed_by",userId), "written_task_reviews_count_failed");
+    return { kind: "admin", writtenTaskReviews, auditEvents };
+  }
   return { kind: "account", auditEvents };
 }
 

@@ -95,6 +95,10 @@ for (const role of ["teacher", "school_admin", "content_admin", "admin"]) {
     }
     assert.equal(result.payload.dataInventory.kind, role);
     assert.ok(result.reads.includes("security_audit_log"));
+    if (["content_admin", "admin"].includes(role)) {
+      assert.ok(result.reads.includes("written_task_versions"));
+      assert.equal(result.payload.dataInventory.writtenTaskReviews, 0);
+    }
   });
 }
 

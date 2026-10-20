@@ -74,7 +74,7 @@ function inventoryPresentation(role, inventory) {
     admin: {
       title: "Ինչ տվյալներ ենք պահում Master admin-ի մասին",
       description: "Master admin-ի պրոֆիլում պահվում են հաշվի տվյալները և անվտանգության ու վարչական գործողությունների աուդիտային գրառումները։",
-      rows: [["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
+      rows: [["Գրավոր առաջադրանքների ստուգումներ", inventory.writtenTaskReviews ?? 0], ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
     },
   };
   return views[role] || {
