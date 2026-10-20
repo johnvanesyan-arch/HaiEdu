@@ -69,11 +69,33 @@
     "preservationScopes": 61
   },
   "activationRoute": "Owner-authorized signed-in Supabase SQL editor; MCP requests returned invalid_request_state. All transaction guards retained.",
-  "productionAcceptance": "pending",
+  "productionAcceptance": {
+    "status": "passed",
+    "checks": 231,
+    "isolationChecks": 54,
+    "frontendCommit": "92ea97291d1d701605f563e8c396c486b89c3206",
+    "finishedAt": "2026-10-20T08:49:00.914Z",
+    "workflowRunId": 39394859124,
+    "all59TrackedTablesUnchanged": true,
+    "completedLearnerAttempt": false,
+    "independentSpecialistApproval": false
+  },
   "policyValidation": {
     "scopeChecks": 4,
     "scoringCases": 5,
     "allPassed": true
   },
-  "isolatedTestsPassed": 10
+  "isolatedTestsPassed": 10,
+  "ci": {
+    "runId": 39394859122,
+    "allFiveRequiredJobsPassed": true,
+    "commit": "92ea97291d1d701605f563e8c396c486b89c3206"
+  },
+  "frontendDeployment": {
+    "id": "dpl_FS34VVzyfje4kwgY35bHwG3JcT1P",
+    "state": "READY",
+    "target": "production",
+    "publicReleaseMarker": "92ea97291d1d701605f563e8c396c486b89c3206",
+    "authenticatedAcceptanceConfirmedExactRevision": true
+  }
 }

@@ -1,6 +1,6 @@
 # Chapter VI knowledge-only provisional pilot — 15F.6
 
-John explicitly directed “Chapter 6 is all approved. Deploy it.” on 2026-10-20. Activation committed at **2026-10-20T08:33:35.863599+00:00**. Authenticated six-chapter production acceptance is pending.
+John explicitly directed “Chapter 6 is all approved. Deploy it.” on 2026-10-20. Activation committed at **2026-10-20T08:33:35.863599+00:00**. Authenticated six-chapter production acceptance passed **231/231**, with two-school isolation **54/54**, desktop/mobile chapter switching and all 59 tracked tables unchanged through QA.
 
 ## Active assessment contract
 
@@ -23,9 +23,9 @@ The forms sample M1–M8/M10–M11 knowledge across S01–S12; they do not test 
 
 The signed-in Supabase SQL editor executed the bounded transaction after connector submissions returned `invalid_request_state`. All seven UPDATE statements were inspected and have explicit Chapter VI UUID predicates. There are no DELETE, TRUNCATE, DROP, ALTER, GRANT or REVOKE statements. The full rollback rehearsal passed, and an independent readback confirmed all 59 tracked table fingerprints restored. The committed transaction passed 61 preservation scopes; readback matched all **719 rows across eight configuration tables**, four policy bindings and six disjoint active chapters. Chapters I–V, approved content and learner history are preserved. No shared-core, schema, authorization or Edge runtime changes were made.
 
-The release baseline is main `c3204820cc3282b6799b45c64f8a5e7c2cbfc151`; frozen contract and form hashes accompany the generator/evidence. The original deployed v2 runtime is reused. The SME gate remains pending; no independent reviewer was fabricated. Four SQL contract validations, five scoring cases and ten isolated acceptance/generator tests pass. The main-only fixture workflow will verify exact frontend revision, six-chapter desktop/mobile switching, reciprocal tenant isolation and unchanged learning records before technical closure.
+The release baseline is main `c3204820cc3282b6799b45c64f8a5e7c2cbfc151`; frozen contract and form hashes accompany the generator/evidence. The original deployed v2 runtime is reused. The SME gate remains pending; no independent reviewer was fabricated. Four SQL contract validations, five scoring cases and ten isolated acceptance/generator tests pass. The main-only fixture workflow passed 231/231 checks on exact frontend `92ea97291d1d701605f563e8c396c486b89c3206`, including desktop/mobile switching through Chapters I–VI and back to I. The separate reciprocal two-school suite passed 54/54. No browser page errors or attempted learning mutations occurred; all 59 tracked tables stayed unchanged. CI [39394859122](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39394859122) passed all five required jobs, including the aggregate release gate. [Production acceptance run](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39394859124). The read-only checks do not represent a completed learner attempt, empirical calibration or specialist approval.
 
-[Activation](evidence/chapter-vi-pilot-activation-20261020.json) · [Configuration](evidence/chapter-vi-assessment-v2-configuration-20261020.json) · [Review closure](evidence/chapter-vi-review-closure-20261020.json) · [Verification](evidence/chapter-vi-release-verification-20261020.json).
+[Production acceptance](evidence/chapter-vi-pilot-read-acceptance-20261020.json) · [Database preservation](evidence/chapter-vi-pilot-database-preservation-20261020.json) · [Activation](evidence/chapter-vi-pilot-activation-20261020.json) · [Configuration](evidence/chapter-vi-assessment-v2-configuration-20261020.json) · [Review closure](evidence/chapter-vi-review-closure-20261020.json) · [Verification](evidence/chapter-vi-release-verification-20261020.json).
 
 ## Next work
 

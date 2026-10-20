@@ -284,7 +284,8 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Verify all 158 definitions active; the October 20 11:29 partial review checkpoint is superseded.
 - [x] Act on the explicit October 20 Chapter VI deployment direction: freeze D19/P8/M17/R12, 14/17 plus twelve skill minima, and knowledge-only provisional scope.
 - [x] Rehearse rollback, activate five disjoint forms/89 slots, and verify 719 exact configuration rows and 61 preservation scopes.
-- [ ] Finish authenticated six-chapter production acceptance and evidence/Notion closure.
+- [x] Pass authenticated six-chapter production acceptance 231/231 and two-school isolation 54/54; verify all 59 tracked tables unchanged and save the redacted evidence.
+- Notion mirrors this closure only when its roadmap 4.18 source stamp matches the merged documentation commit and the readback preserves all eleven native child pages.
 - [ ] Complete independent specialist/exposure review and applicable performed-practical assessment before promotion beyond the provisional scope.
 - [ ] Begin English Grade 7 textbook intake and programme mapping as the next subject (16.1); keep Physics course integration open.
 
