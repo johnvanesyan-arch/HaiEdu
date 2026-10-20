@@ -1,0 +1,1500 @@
+{
+  "schemaVersion": "haiedu-english-course-audio-inventory-evidence-v1",
+  "checkpoint": "16.1C.3",
+  "date": "2026-10-21",
+  "timezone": "Asia/Yerevan",
+  "baselineCommit": "ba7dc1431bc49beb6aa54f2b649ca42d9aaaf55c",
+  "baselineTree": "89e0adffd39e6e0bff8e3fd8516de9f062096aeb",
+  "scope": "Course source-media inventory and playable-inclusion direction only; no asset/content registration, question authoring or runtime changes",
+  "author": "Codex; one primary agent",
+  "ownerDirection": "Include all possible and strategically relevant recordings/audio across the English 7 course.",
+  "source": {
+    "title": "English 7",
+    "author": "Lusine Grigoryan",
+    "publisher": "Zangak",
+    "year": 2023,
+    "isbn": "978-9939-99-035-4",
+    "pages": 176,
+    "sha256": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9"
+  },
+  "method": {
+    "pdfPageCount": 176,
+    "embeddedImageInstancesScanned": 144,
+    "hyperlinkAnnotations": 0,
+    "qrDecoder": "zxingcpp on embedded images extracted by PyMuPDF",
+    "textCrosscheck": "Listening instructions through textbook learning pages and table of contents; Units 5–6 searched for listening/audio/media references",
+    "visualQrAssociationReviewedPages": [
+      39,
+      74
+    ],
+    "routeChecks": "All 18 publisher QR routes followed; HTTP/content source links captured",
+    "newMp3Checks": 15,
+    "reusedMp3Checks": 5,
+    "priorMp3Evidence": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+    "reusedBytesFetchedAgain": false,
+    "auditionClaimed": false,
+    "productionPlaybackClaimed": false
+  },
+  "counts": {
+    "qrRoutes": 18,
+    "mp3Files": 20,
+    "coreListeningCandidates": 12,
+    "supportEnrichmentCandidates": 8,
+    "newlyTechnicallyChecked": 15,
+    "priorChecksReused": 5,
+    "withinCurrentFormatByteDurationLimits": 19,
+    "requiresDeliveryPreparation": 1,
+    "registered": 0,
+    "live": 0
+  },
+  "durationSecondsTotal": 2199.390262,
+  "unitCounts": {
+    "1": 5,
+    "2": 4,
+    "3": 4,
+    "4": 7,
+    "5": 0,
+    "6": 0
+  },
+  "qrReferences": [
+    {
+      "page": 6,
+      "xref": 44,
+      "url": "https://zangak.am/api/qr/RTr0H",
+      "rects": [
+        [
+          390.61419677734375,
+          440.5039978027344,
+          433.1338806152344,
+          483.023681640625
+        ]
+      ]
+    },
+    {
+      "page": 25,
+      "xref": 158,
+      "url": "https://zangak.am/api/qr/O8efJ",
+      "rects": [
+        [
+          396.283447265625,
+          339.023681640625,
+          438.8031311035156,
+          381.5433654785156
+        ]
+      ]
+    },
+    {
+      "page": 25,
+      "xref": 160,
+      "url": "https://zangak.am/api/qr/yjWzl",
+      "rects": [
+        [
+          390.6141357421875,
+          68.31503295898438,
+          433.1338195800781,
+          110.834716796875
+        ]
+      ]
+    },
+    {
+      "page": 29,
+      "xref": 210,
+      "url": "https://zangak.am/api/qr/lLXsq",
+      "rects": [
+        [
+          390.6141357421875,
+          480.7559509277344,
+          433.1338195800781,
+          523.275634765625
+        ]
+      ]
+    },
+    {
+      "page": 39,
+      "xref": 270,
+      "url": "https://zangak.am/api/qr/X1280",
+      "rects": [
+        [
+          359.00787353515625,
+          397.1339111328125,
+          401.5275573730469,
+          439.6535949707031
+        ]
+      ]
+    },
+    {
+      "page": 39,
+      "xref": 272,
+      "url": "https://zangak.am/api/qr/nwiPc",
+      "rects": [
+        [
+          390.6141357421875,
+          68.31503295898438,
+          433.1338195800781,
+          110.834716796875
+        ]
+      ]
+    },
+    {
+      "page": 50,
+      "xref": 350,
+      "url": "https://zangak.am/api/qr/BjRzf",
+      "rects": [
+        [
+          390.61419677734375,
+          562.5355224609375,
+          433.1338806152344,
+          605.05517578125
+        ]
+      ]
+    },
+    {
+      "page": 54,
+      "xref": 402,
+      "url": "https://zangak.am/api/qr/QjIzZ",
+      "rects": [
+        [
+          390.61419677734375,
+          357.1654052734375,
+          433.1338806152344,
+          399.6850891113281
+        ]
+      ]
+    },
+    {
+      "page": 57,
+      "xref": 422,
+      "url": "https://zangak.am/api/qr/mn5ME",
+      "rects": [
+        [
+          390.6141357421875,
+          433.7008361816406,
+          433.1338195800781,
+          476.22052001953125
+        ]
+      ]
+    },
+    {
+      "page": 63,
+      "xref": 450,
+      "url": "https://zangak.am/api/qr/VroGh",
+      "rects": [
+        [
+          390.6141357421875,
+          68.17324829101562,
+          433.1338195800781,
+          110.69293212890625
+        ]
+      ]
+    },
+    {
+      "page": 69,
+      "xref": 499,
+      "url": "https://zangak.am/api/qr/c3a2s",
+      "rects": [
+        [
+          390.472412109375,
+          68.17324829101562,
+          432.9920959472656,
+          110.69293212890625
+        ]
+      ]
+    },
+    {
+      "page": 74,
+      "xref": 546,
+      "url": "https://zangak.am/api/qr/A1cCK",
+      "rects": [
+        [
+          390.68109130859375,
+          293.3858642578125,
+          433.2007751464844,
+          335.9055480957031
+        ]
+      ]
+    },
+    {
+      "page": 74,
+      "xref": 548,
+      "url": "https://zangak.am/api/qr/AyIM0",
+      "rects": [
+        [
+          390.61419677734375,
+          214.01580810546875,
+          433.1338806152344,
+          256.5354919433594
+        ]
+      ]
+    },
+    {
+      "page": 75,
+      "xref": 556,
+      "url": "https://zangak.am/api/qr/GsUOa",
+      "rects": [
+        [
+          396.4251708984375,
+          56.976470947265625,
+          438.9448547363281,
+          99.49615478515625
+        ]
+      ]
+    },
+    {
+      "page": 78,
+      "xref": 572,
+      "url": "https://zangak.am/api/qr/Cfh13",
+      "rects": [
+        [
+          390.61419677734375,
+          68.17324829101562,
+          433.1338806152344,
+          110.69293212890625
+        ]
+      ]
+    },
+    {
+      "page": 81,
+      "xref": 592,
+      "url": "https://zangak.am/api/qr/ndShD",
+      "rects": [
+        [
+          384.80316162109375,
+          380.834716796875,
+          427.3228454589844,
+          423.3544006347656
+        ]
+      ]
+    },
+    {
+      "page": 86,
+      "xref": 620,
+      "url": "https://zangak.am/api/qr/JQaUY",
+      "rects": [
+        [
+          337.8228759765625,
+          159.023681640625,
+          380.3425598144531,
+          201.54336547851562
+        ]
+      ]
+    },
+    {
+      "page": 97,
+      "xref": 674,
+      "url": "https://zangak.am/api/qr/fvtjW",
+      "rects": [
+        [
+          390.6141357421875,
+          68.28097534179688,
+          433.1338195800781,
+          110.8006591796875
+        ]
+      ]
+    }
+  ],
+  "publisherRoutes": [
+    {
+      "page": 6,
+      "url": "https://zangak.am/api/qr/RTr0H",
+      "checkedAt": "2026-10-20T20:07:05.709981+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?RTr0H",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "303dfa2707942a7bb49f66e68197d834730ea1dd2704f76414a0e00eb73f90d3",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack 1.1.mp3",
+          "type": "audio/mpeg"
+        },
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack 1.2.mp3",
+          "type": "audio/mpeg"
+        },
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack 1.3.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 25,
+      "url": "https://zangak.am/api/qr/O8efJ",
+      "checkedAt": "2026-10-20T20:07:05.711004+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?O8efJ",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "4b65c8602e2efc49d3bd298bf8f8a42cc4c4729cb79f764507acd5682b83c448",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/O8efJ/Soundtrack 3.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 25,
+      "url": "https://zangak.am/api/qr/yjWzl",
+      "checkedAt": "2026-10-20T20:07:05.711683+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?yjWzl",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "376f692b0e11a8209f950419aa15be3081300dae568ec10b13b3b36096fca335",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/yjWzl/Soundtrack 2.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 29,
+      "url": "https://zangak.am/api/qr/lLXsq",
+      "checkedAt": "2026-10-20T20:07:05.712530+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?lLXsq",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "a16058f411f543f96bc49641714aa2abcaa82b1853b243bec53bb17003992dde",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/lLXsq/Soundtrack 4.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 39,
+      "url": "https://zangak.am/api/qr/X1280",
+      "checkedAt": "2026-10-20T20:07:05.714078+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?X1280",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "cdc8eab82fb646fca26d69d35bd828f1e76e52d0e73649bd7033895f9ee05d06",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/X1280/Soundtrack 6.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 39,
+      "url": "https://zangak.am/api/qr/nwiPc",
+      "checkedAt": "2026-10-20T20:07:05.714928+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?nwiPc",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "907323e7bf1532ffb123f6d4215efacd30501613986b52a9183ccba5747484e1",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/nwiPc/Soundtrack 5.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 50,
+      "url": "https://zangak.am/api/qr/BjRzf",
+      "checkedAt": "2026-10-20T20:07:16.254201+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?BjRzf",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "2f787dd60db4ab079c0db1d3f631b3238caa1ab08997a6d7c8799ba5745b2536",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/BjRzf/Soundtrack 7.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 54,
+      "url": "https://zangak.am/api/qr/QjIzZ",
+      "checkedAt": "2026-10-20T20:07:16.254955+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?QjIzZ",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "8540400ba738aae6b35c3a5128662d635b86629a04ed867860cd5276ba9bca29",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/QjIzZ/Soundtrack 8.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 57,
+      "url": "https://zangak.am/api/qr/mn5ME",
+      "checkedAt": "2026-10-20T20:07:16.295831+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?mn5ME",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "aefca2e74bdce12bd9730b97c52c651efeafcb87532169b8663c272e64d34009",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/mn5ME/Soundtrack 9.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 63,
+      "url": "https://zangak.am/api/qr/VroGh",
+      "checkedAt": "2026-10-20T20:07:16.296575+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?VroGh",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "0c3c03c1450542b591f72e14d6b49efc3d3a6b790863a2ea0add4a2749053f8f",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/VroGh/Soundtrack 10.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 69,
+      "url": "https://zangak.am/api/qr/c3a2s",
+      "checkedAt": "2026-10-20T20:07:16.297325+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?c3a2s",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "f3bf89d6e270ce8e6b149d5313d5336aca6cda67217cbd5d24212c607b7ee3e1",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/c3a2s/Soundtrack 11.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 74,
+      "url": "https://zangak.am/api/qr/A1cCK",
+      "checkedAt": "2026-10-20T20:07:16.325600+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?A1cCK",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "c7445297a98d9f0a47d5519e57b2c6f2823adec6fe9a265f1dc71fea497fcc1f",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/A1cCK/Soundtrack 13.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 74,
+      "url": "https://zangak.am/api/qr/AyIM0",
+      "checkedAt": "2026-10-20T20:07:25.977266+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?AyIM0",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "3d7090f3cd8fae4be1319bb1917b9ed0bd60555429461b4658af2a1ea2c65a88",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/AyIM0/Soundtrack 12.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 75,
+      "url": "https://zangak.am/api/qr/GsUOa",
+      "checkedAt": "2026-10-20T20:07:25.985833+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?GsUOa",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "38bf168aa9e76012bd0ad7244451c829b51298925645229050eefad87111fde5",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/GsUOa/Soundtrack 14.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 78,
+      "url": "https://zangak.am/api/qr/Cfh13",
+      "checkedAt": "2026-10-20T20:07:25.990628+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?Cfh13",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "06d4df2ac75cc88032ecf20537e15e13293c60e20760e0abd969d1fb30bc3204",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/Cfh13/Soundtrack 15.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 81,
+      "url": "https://zangak.am/api/qr/ndShD",
+      "checkedAt": "2026-10-20T20:07:26.011611+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?ndShD",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "fa184163e65136e7ba30fa48b778a637606727ea5f521e449e270503c760cc2e",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/ndShD/Soundtrack 16.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 86,
+      "url": "https://zangak.am/api/qr/JQaUY",
+      "checkedAt": "2026-10-20T20:07:26.065077+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?JQaUY",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "bee676f7c6b7467db6bb383b5c1652521652ca3e774386c0a88eaf8e701439c9",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/JQaUY/Soundtrack 17.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    },
+    {
+      "page": 97,
+      "url": "https://zangak.am/api/qr/fvtjW",
+      "checkedAt": "2026-10-20T20:07:26.066217+00:00",
+      "status": 200,
+      "finalUrl": "https://zangak.am/mediafiles/?fvtjW",
+      "contentType": "text/html; charset=UTF-8",
+      "htmlSha256": "301d9b1e3e81774ce59160210438e7e938cea54f14ccdcc6f678ab063d1083a9",
+      "links": [
+        {
+          "tag": "source",
+          "attribute": "src",
+          "url": "https://zangak.am/mediafiles/english7-2023/fvtjW/Soundtrack 18.mp3",
+          "type": "audio/mpeg"
+        }
+      ]
+    }
+  ],
+  "mediaChecks": [
+    {
+      "qr": "RTr0H",
+      "page": 6,
+      "url": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack%201.1.mp3",
+      "trackLabel": "Soundtrack 1.1",
+      "trackIndex": 1,
+      "status": 200,
+      "bytes": 558602,
+      "sha256": "a5759adafe3cad735b558f528d4a2a41b04e592adaa73f3c6b4c37c5db47ddc1",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "23.275083"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "reused",
+      "evidencePath": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+      "evidenceDate": "2026-10-20",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "RTr0H",
+      "page": 6,
+      "url": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack%201.2.mp3",
+      "trackLabel": "Soundtrack 1.2",
+      "trackIndex": 2,
+      "status": 200,
+      "bytes": 771135,
+      "sha256": "51047cc19a3f28cbf2c17bcbe3a73981967e76a93c7bc51b969c48b364fb88d7",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "32.130625"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "reused",
+      "evidencePath": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+      "evidenceDate": "2026-10-20",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "RTr0H",
+      "page": 6,
+      "url": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack%201.3.mp3",
+      "trackLabel": "Soundtrack 1.3",
+      "trackIndex": 3,
+      "status": 200,
+      "bytes": 901538,
+      "sha256": "ae577f466da2b2f31efbe327fe49d7e355822c41ddfc5dc5b6f4f3d3a5a59c9e",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "37.564083"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "reused",
+      "evidencePath": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+      "evidenceDate": "2026-10-20",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "O8efJ",
+      "page": 25,
+      "url": "https://zangak.am/mediafiles/english7-2023/O8efJ/Soundtrack%203.mp3",
+      "trackLabel": "Soundtrack 3",
+      "trackIndex": 1,
+      "status": 200,
+      "bytes": 1440964,
+      "sha256": "818bb1b7457ffbf67cd24ddb0870631b135dafe17b29d79c446bbf372951c118",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "36.022857"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "reused",
+      "evidencePath": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+      "evidenceDate": "2026-10-20",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "yjWzl",
+      "page": 25,
+      "url": "https://zangak.am/mediafiles/english7-2023/yjWzl/Soundtrack%202.mp3",
+      "trackLabel": "Soundtrack 2",
+      "trackIndex": 1,
+      "status": 200,
+      "bytes": 5397725,
+      "sha256": "cf4b163475353e1cf452100a97d93d557ea09e5304f027c6117eaaf8b6c52116",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "135.026939"
+        }
+      },
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "reused",
+      "evidencePath": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+      "evidenceDate": "2026-10-20",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "lLXsq",
+      "page": 29,
+      "url": "https://zangak.am/mediafiles/english7-2023/lLXsq/Soundtrack%204.mp3",
+      "trackLabel": "Soundtrack 4",
+      "checkedAt": "2026-10-20T20:11:04.028307+00:00",
+      "status": 200,
+      "bytes": 8401702,
+      "sha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:22:43 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "350.040816"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": false,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "X1280",
+      "page": 39,
+      "url": "https://zangak.am/mediafiles/english7-2023/X1280/Soundtrack%206.mp3",
+      "trackLabel": "Soundtrack 6",
+      "checkedAt": "2026-10-20T20:11:04.028833+00:00",
+      "status": 200,
+      "bytes": 720448,
+      "sha256": "67b39fb105f74695e8809e4ef2ba6cd18adbf22560134514897b7e663c4a1d0c",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:23:01 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "29.988571"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "nwiPc",
+      "page": 39,
+      "url": "https://zangak.am/mediafiles/english7-2023/nwiPc/Soundtrack%205.mp3",
+      "trackLabel": "Soundtrack 5",
+      "checkedAt": "2026-10-20T20:11:04.029165+00:00",
+      "status": 200,
+      "bytes": 1713592,
+      "sha256": "c9b024ac43b1bc5af59bf81199f7a9497b2b800a033ee008195b4d9191426fa8",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:23:18 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "91.324082"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "BjRzf",
+      "page": 50,
+      "url": "https://zangak.am/mediafiles/english7-2023/BjRzf/Soundtrack%207.mp3",
+      "trackLabel": "Soundtrack 7",
+      "checkedAt": "2026-10-20T20:11:04.030160+00:00",
+      "status": 200,
+      "bytes": 1881534,
+      "sha256": "ebd65a0ac534d7661884ef260ab9a170f52122660b6ea80858828200bcf8ef88",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:23:14 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "47.046531"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "QjIzZ",
+      "page": 54,
+      "url": "https://zangak.am/mediafiles/english7-2023/QjIzZ/Soundtrack%208.mp3",
+      "trackLabel": "Soundtrack 8",
+      "checkedAt": "2026-10-20T20:11:11.406835+00:00",
+      "status": 200,
+      "bytes": 1106015,
+      "sha256": "bde7cd85e57604417b4514e35d589d7dd2372cddc10e5e93af972f78440a8a7c",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:22:56 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "46.053878"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "mn5ME",
+      "page": 57,
+      "url": "https://zangak.am/mediafiles/english7-2023/mn5ME/Soundtrack%209.mp3",
+      "trackLabel": "Soundtrack 9",
+      "checkedAt": "2026-10-20T20:11:11.685871+00:00",
+      "status": 200,
+      "bytes": 4466407,
+      "sha256": "9547e7040ed555d7ef1e220ce2a79feb2b45fe4434868b5182a92abe9348f819",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:22:43 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "186.070204"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "VroGh",
+      "page": 63,
+      "url": "https://zangak.am/mediafiles/english7-2023/VroGh/Soundtrack%2010.mp3",
+      "trackLabel": "Soundtrack 10",
+      "checkedAt": "2026-10-20T20:11:11.787069+00:00",
+      "status": 200,
+      "bytes": 2930606,
+      "sha256": "9a67723c05bd4a76753e9ee46d68607972c8800acaa63f3c6f08aecf6a2c8324",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:23:03 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 1
+          }
+        ],
+        "format": {
+          "duration": "244.151083"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "c3a2s",
+      "page": 69,
+      "url": "https://zangak.am/mediafiles/english7-2023/c3a2s/Soundtrack%2011.mp3",
+      "trackLabel": "Soundtrack 11",
+      "checkedAt": "2026-10-20T20:11:12.336666+00:00",
+      "status": 200,
+      "bytes": 2391918,
+      "sha256": "785f18cfd3a3f2786e28d7dd339a04f9fb125ca151327079d56835f3bd4586fa",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:22:49 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "149.472653"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "A1cCK",
+      "page": 74,
+      "url": "https://zangak.am/mediafiles/english7-2023/A1cCK/Soundtrack%2013.mp3",
+      "trackLabel": "Soundtrack 13",
+      "checkedAt": "2026-10-20T20:11:18.702306+00:00",
+      "status": 200,
+      "bytes": 3879751,
+      "sha256": "92bebcb1bf27e6dddf892beed659185bb56675cdf759320be2a86310e49c2e9f",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:23:10 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "97.044898"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "AyIM0",
+      "page": 74,
+      "url": "https://zangak.am/mediafiles/english7-2023/AyIM0/Soundtrack%2012.mp3",
+      "trackLabel": "Soundtrack 12",
+      "checkedAt": "2026-10-20T20:11:18.970146+00:00",
+      "status": 200,
+      "bytes": 1760430,
+      "sha256": "87afcd8e898fc114a32c50de657a35a4e85cd461f5bd6a9bb5dbb51734a5ea65",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:23:14 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "44.016327"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "GsUOa",
+      "page": 75,
+      "url": "https://zangak.am/mediafiles/english7-2023/GsUOa/Soundtrack%2014.mp3",
+      "trackLabel": "Soundtrack 14",
+      "checkedAt": "2026-10-20T20:11:19.092224+00:00",
+      "status": 200,
+      "bytes": 4358947,
+      "sha256": "8638af87ee82a074f646504470949fd67378519366bab14e2312452428ba2c20",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:22:32 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "109.035102"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "Cfh13",
+      "page": 78,
+      "url": "https://zangak.am/mediafiles/english7-2023/Cfh13/Soundtrack%2015.mp3",
+      "trackLabel": "Soundtrack 15",
+      "checkedAt": "2026-10-20T20:11:19.357564+00:00",
+      "status": 200,
+      "bytes": 3399508,
+      "sha256": "b3484b2432769c007e2a3aed4e3e3d6de11927c9cf421bb1e03ed545b80dec67",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:23:21 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "85.028571"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "ndShD",
+      "page": 81,
+      "url": "https://zangak.am/mediafiles/english7-2023/ndShD/Soundtrack%2016.mp3",
+      "trackLabel": "Soundtrack 16",
+      "checkedAt": "2026-10-20T20:11:26.213147+00:00",
+      "status": 200,
+      "bytes": 6996091,
+      "sha256": "e4e58e59424cb11b502f6e4ce4e0dc7da8883196d5399a546fbfd825e951ec0d",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:22:52 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "175.020408"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "JQaUY",
+      "page": 86,
+      "url": "https://zangak.am/mediafiles/english7-2023/JQaUY/Soundtrack%2017.mp3",
+      "trackLabel": "Soundtrack 17",
+      "checkedAt": "2026-10-20T20:11:26.251532+00:00",
+      "status": 200,
+      "bytes": 7915855,
+      "sha256": "70f40d39c53059bfd9769d65208af86c8e8f497f6536816122fabcc0c67b8721",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:22:36 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "198.034286"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    },
+    {
+      "qr": "fvtjW",
+      "page": 97,
+      "url": "https://zangak.am/mediafiles/english7-2023/fvtjW/Soundtrack%2018.mp3",
+      "trackLabel": "Soundtrack 18",
+      "checkedAt": "2026-10-20T20:11:26.257569+00:00",
+      "status": 200,
+      "bytes": 3320166,
+      "sha256": "0337548e8162d62e572d9233a8e71a1e5ee825a175dde36b4d23a7599f90fff8",
+      "contentType": "audio/mpeg",
+      "cors": null,
+      "acceptRanges": "bytes",
+      "lastModified": "Mon, 22 May 2023 21:23:25 GMT",
+      "probe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "mp3",
+            "sample_rate": "44100",
+            "channels": 2
+          }
+        ],
+        "format": {
+          "duration": "83.043265"
+        }
+      },
+      "probeExitCode": 0,
+      "decodeExitCode": 0,
+      "decodeErrors": "",
+      "technicalEvidence": "new",
+      "withinExistingAssetByteLimit": true,
+      "auditionCompleted": false
+    }
+  ],
+  "validation": {
+    "passed": true,
+    "checkCount": 41,
+    "checks": [
+      "Source PDF exact bytes match the recorded Library edition",
+      "176 pages and 144 image instances were scanned",
+      "PDF has no hyperlink annotations",
+      "Exactly 18 unique QR references and publisher route checks",
+      "Every observed QR route returned 200 and a publisher media page",
+      "Every publisher audio URL appears exactly once in the 20-record plan and technical evidence",
+      "Source track labels are 1.1/1.2/1.3 and 2 through 18",
+      "Book unit boundaries are continuous and match the table of contents",
+      "Every track belongs to its book page and unit",
+      "Unit counts reconcile to 5/4/4/7/0/0",
+      "Football commentary remains Unit 4 section C, not Unit 5",
+      "All 20 retained with 12 core and eight support/enrichment dispositions",
+      "Fifteen new checks and five explicitly reused checks",
+      "Five reused records match every original technical field",
+      "Fifteen newly fetched files match recorded bytes and hashes",
+      "All new/reused HTTP, MIME and full decode evidence passes",
+      "All recordings are MP3/44.1 kHz and below ten minutes",
+      "Mono/stereo distinction is preserved",
+      "Exactly track 4 exceeds the current byte limit by 13,094 bytes",
+      "Plan technical fields match the exact recording evidence",
+      "Shared familiar families cover Unit 1 speakers and both Saroyan parts",
+      "No asset registration, live playback, permission or listening review is invented",
+      "Unresolved p.74 mapping, p.75 alignment and Units 5–6 needs remain explicit",
+      "Bank acceptance and question count changes remain false",
+      "Prior bank artifact unchanged: docs/english-7-unit-01-bank-plan.md",
+      "Prior bank artifact unchanged: docs/content/english-7-unit-01-bank-plan.json",
+      "Original draft/review artifact unchanged: docs/content/english-7-unit-01-draft.json",
+      "Original draft/review artifact unchanged: docs/english-7-unit-01-review-packet.md",
+      "Original draft/review artifact unchanged: docs/english-7-unit-01-whole-bank-review.md",
+      "Original draft/review artifact unchanged: docs/english-7-unit-01-authoring-review.md",
+      "Original draft/review artifact unchanged: docs/evidence/english-7-unit-01-corpus-20261020.json",
+      "Original draft/review artifact unchanged: docs/evidence/english-7-unit-01-draft-validation-20261020.json",
+      "Original draft/review artifact unchanged: scripts/content/validate-english-7-unit-01.mjs",
+      "Original draft/review artifact unchanged: scripts/content/render-english-7-unit-01-review.mjs",
+      "Prior evidence unchanged: docs/evidence/english-7-unit-01-authoring-20261020.json",
+      "Prior evidence unchanged: docs/evidence/english-7-unit-01-preparation-20261020.json",
+      "Prior evidence unchanged: docs/evidence/english-7-unit-01-bank-plan-20261020.json",
+      "All local links in changed Markdown resolve",
+      "Diff whitespace check passes",
+      "Only the expected documentation paths changed",
+      "Status and roadmap agree on version 4.28"
+    ],
+    "meaning": "Source retrieval, technical decoding, inventory consistency and unchanged-artifact checks; not audition, semantic distinctness, legal permission or approval"
+  },
+  "files": {
+    "README.md": "d52d8a588d9dfc1dce1adf778485422d205c4a12af6f6ed6def2e4272546576e",
+    "docs/backlog.md": "16c053aa731bfe2c5b1c3f4f417e429f899a5a3265c3443faf70ce1fcdbd7e7b",
+    "docs/project-status.md": "885c15cd431a399a456cca3512970678cecf0af641fc8210276fbf6c11a7775c",
+    "docs/sprint-roadmap.md": "41ca7f06c0637535a05c70a6b7a221f23f1c9c7191ae450f111f0042327d8ace",
+    "docs/english-7-assessment-framework.md": "aca82078f196c264d46ff9c47924be7226467ecc9420c3a666deddfd3f4cb35c",
+    "docs/english-7-unit-01-preparation.md": "4ee790907a65808475022a6dde02faa7a64abb94fe6d8ee5569d5b2bc0643c9d",
+    "docs/english-7-unit-01-assessment-contract.md": "d3229edd9e0ae07f3a0ab26528f9db2c287bffbcb89f199da61160a66217d3ef",
+    "docs/english-7-course-audio-inventory.md": "e0580552043e5ffb05e9fecd302fbe18f1ecebb1407080484807bc9c6fa61354",
+    "docs/content/english-7-course-audio-plan.json": "96ea44c5d424215a4e4cd7e0602feb9befeec6250f11d002db8a9c64fa0aa801"
+  },
+  "reusedArtifacts": {
+    "docs/content/english-7-unit-01-draft.json": {
+      "sha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+      "unchanged": true
+    },
+    "docs/english-7-unit-01-review-packet.md": {
+      "sha256": "b20602c267b4f3373c43ef6705343ca1f768a629ab6abc06e05838619edb0eb6",
+      "unchanged": true
+    },
+    "docs/english-7-unit-01-whole-bank-review.md": {
+      "sha256": "c1dfedeb56717583bb80ffab0c32b506d238c5be7c04265bbdc6cd2dac3b8b99",
+      "unchanged": true
+    },
+    "docs/english-7-unit-01-authoring-review.md": {
+      "sha256": "f2eee6183595f8d5e361ff1fa5e1a6d79aa82b86fdf8e0928d4be20167cec25b",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-corpus-20261020.json": {
+      "sha256": "307b30120561f4816d0546a38028c9394d61813a4026383b90c3d5ccea84fd21",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-draft-validation-20261020.json": {
+      "sha256": "ac58240b139786af304f81fa33ad10c6251ff7d321415a8ed841210d039210d8",
+      "unchanged": true
+    },
+    "scripts/content/validate-english-7-unit-01.mjs": {
+      "sha256": "46eba130ff5a6ec82b5541edbc05d106faa07803a1bbeedeaaf4ac3b7dec700e",
+      "unchanged": true
+    },
+    "scripts/content/render-english-7-unit-01-review.mjs": {
+      "sha256": "0ae18e5b779605cecc765f14b8a9f5a4ad44e97c8bdb67d666a4cd65bfb1d80d",
+      "unchanged": true
+    },
+    "docs/english-7-unit-01-bank-plan.md": {
+      "sha256": "3b08e68067113d92e719bf0b6f630fdced404a733112593d9031145ff040e09c",
+      "unchanged": true
+    },
+    "docs/content/english-7-unit-01-bank-plan.json": {
+      "sha256": "3f80793fc42931e0cd40db03f27d45ec967ffae49062b376902a458634df397c",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-authoring-20261020.json": {
+      "sha256": "99eeb2fc0407f9e5f1e4d8f2d0ed923ceaf6619d89fa0e09405806557a0c0172",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-preparation-20261020.json": {
+      "sha256": "c815712746f341742c13f2897f040c3cdad7b3512e1b0f6c54df7ce4bc7466d6",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-bank-plan-20261020.json": {
+      "sha256": "b5ef54dd7bb0e239ca514872de7e4f35935ea6d21063bd21032b7c17013f8988",
+      "unchanged": true
+    }
+  },
+  "runtimeBaseline": [
+    {
+      "path": ".env.example",
+      "sha": "592f40953fa1255c745341db6752d5b03dde9488",
+      "unchanged": true
+    },
+    {
+      "path": ".github",
+      "sha": "81dd633cea8ea4e9b20cb03091ba3d42abdf14f2",
+      "unchanged": true
+    },
+    {
+      "path": ".gitignore",
+      "sha": "4ab8ee1cace081e4360dad20d429748023fc8470",
+      "unchanged": true
+    },
+    {
+      "path": "AGENTS.md",
+      "sha": "5bd4c83e2d1ba626363d6f611e86faf8490d8aa2",
+      "unchanged": true
+    },
+    {
+      "path": "backend",
+      "sha": "40c475b4c64b9fe49361e927ca132aadeef104a2",
+      "unchanged": true
+    },
+    {
+      "path": "e2e",
+      "sha": "61535703565835ee5328e684f40e482c92c82682",
+      "unchanged": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "7d22085ba85115c80760885bb6fdb6d4b8e36932",
+      "unchanged": true
+    },
+    {
+      "path": "package.json",
+      "sha": "577509895cb09863969aa3f2cf092b3689c36dea",
+      "unchanged": true
+    },
+    {
+      "path": "playwright.config.js",
+      "sha": "94cd2d5ead5734e8a0e25be83280a07f64184768",
+      "unchanged": true
+    },
+    {
+      "path": "scripts",
+      "sha": "b1e7baa94611fe9ff59b41794293e64e31c44b44",
+      "unchanged": true
+    },
+    {
+      "path": "supabase",
+      "sha": "cc72f4323fe21417da4fb601e1ecdfdfbe1c21c5",
+      "unchanged": true
+    },
+    {
+      "path": "tests",
+      "sha": "81b694806c1783785b6d90aaef55f73d45f65a21",
+      "unchanged": true
+    },
+    {
+      "path": "tsconfig.json",
+      "sha": "645da7331a2e0389a8cbc07b6bf1294c3bf15d38",
+      "unchanged": true
+    },
+    {
+      "path": "vercel.json",
+      "sha": "3c305e4cc7b2f564851a4f8260065de40776742f",
+      "unchanged": true
+    },
+    {
+      "path": "web",
+      "sha": "e38e330a22ab225e901c936c25daf211fc3e21c6",
+      "unchanged": true
+    }
+  ],
+  "reusedRuntimeEvidence": {
+    "path": "docs/evidence/shared-task-sets-release-20261020.json",
+    "productionReadChecks": 310,
+    "twoSchoolIsolationChecks": 54,
+    "preservationScopes": 29,
+    "newProductionDatabaseCalls": false
+  },
+  "preservation": {
+    "canonicalDraftChanged": false,
+    "bankManifestChanged": false,
+    "runtimeChanged": false,
+    "apiChanged": false,
+    "audioDerivativeCreated": false,
+    "audioUploaded": false,
+    "productionWrite": false,
+    "humanApprovalManufactured": false
+  },
+  "apiDocumentationDisposition": "No API change; current format/byte/duration/mode constraints reviewed and preserved",
+  "closure": {
+    "publication": "One batched documentation update from the real remote base tree",
+    "notionTargetVersion": "4.28",
+    "notionSourceRule": "Read back merged source, exact targeted text and all eleven native child pages",
+    "ciRule": "Observe required CI and deployed release stamp before declaring closure; resulting IDs are recorded in the source-stamped Notion update"
+  },
+  "open": [
+    "Human audition and exact speaker/script alignment",
+    "Source/recording/lyrics permissions and hosting arrangements",
+    "p.74 ex.8 mapping and p.75 ex.9 mismatch resolution",
+    "Permitted reviewed delivery version of oversized track 4",
+    "Governed asset/source/task registration and real browser playback",
+    "Units 5–6 listening-needs map and relevant supplementary sources",
+    "Separate bank/assessment-contract acceptance, protected source review and English release"
+  ]
+}

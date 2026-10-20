@@ -1,6 +1,6 @@
 # Product backlog
 
-**Status source:** [Project status register](project-status.md), reconciled 2026-10-20. This file is a scoped implementation checklist, not a second current sprint ledger. Completed technical work is checked below; genuine external/release gates remain open. Later stages and current inventories are in the register; the [roadmap](sprint-roadmap.md) defines their sequence.
+**Status source:** [Project status register](project-status.md), reconciled 2026-10-21. This file is a scoped implementation checklist, not a second current sprint ledger. Completed technical work is checked below; genuine external/release gates remain open. Later stages and current inventories are in the register; the [roadmap](sprint-roadmap.md) defines their sequence.
 
 ## English 7 framework and first unit — 16.1A–16.1C
 
@@ -9,6 +9,9 @@
 - [x] Draft the reusable reading/listening/vocabulary/grammar/writing framework and source-based capability audit.
 - [x] Reconcile the current August 2026 standard and in-force programme; map Unit 1 outcomes, prerequisites and 30 textbook activities to 14 proposed skills.
 - [x] Decode three Unit 1 QR codes, retrieve five MP3s and verify format, durations, hashes and complete error-free decoding.
+- [x] Inventory all 18 QR routes / 20 textbook MP3s and record the owner’s course-wide playable-audio inclusion direction (16.1C.3); retain 12 core and eight support/enrichment candidates, reuse five existing technical checks and verify fifteen new files.
+- [ ] Resolve the p.74 ex.8 missing separate mapping and p.75 ex.9 script mismatch by audition; prepare a permitted, reviewed delivery version of oversized track 4.
+- [ ] Map Units 5–6 listening outcomes and source suitable supplementary recordings where required; no QR-linked audio was identified in those units of this edition.
 - [ ] Audition the recordings against the script, verify speaker mappings, establish hosting/delivery conditions and pass production browser playback.
 - [ ] Supply protected fashion-reading/listening assessment material; familiar textbook sources do not become unseen forms through new question IDs.
 - [x] Draft the response/scoring contract and a four-criterion writing rubric for one proposed 80–100-word task per unit.
@@ -35,7 +38,7 @@
 - [ ] Resolve the named-clip speaker-identification gap and qualify protected English sources/forms; current protected Diagnostic/Mastery capacity is zero.
 - [ ] Adopt the accepted English policy and complete exact deployment/authenticated desktop/mobile acceptance before learner release.
 
-[Bank/form proposal](english-7-unit-01-bank-plan.md) · [Review handoff](english-7-unit-01-authoring-review.md) · [Complete draft packet](english-7-unit-01-review-packet.md) · [Framework](english-7-assessment-framework.md) · [Unit 1 preparation](english-7-unit-01-preparation.md) · [Draft contract](english-7-unit-01-assessment-contract.md) · [Preparation evidence](evidence/english-7-unit-01-preparation-20261020.json). Writing is implemented under [16.1B.1](written-work-workspaces.md), deployed and verified; no English assessment/release is live.
+[Course audio plan](english-7-course-audio-inventory.md) · [Bank/form proposal](english-7-unit-01-bank-plan.md) · [Review handoff](english-7-unit-01-authoring-review.md) · [Complete draft packet](english-7-unit-01-review-packet.md) · [Framework](english-7-assessment-framework.md) · [Unit 1 preparation](english-7-unit-01-preparation.md) · [Draft contract](english-7-unit-01-assessment-contract.md) · [Preparation evidence](evidence/english-7-unit-01-preparation-20261020.json). Writing is implemented under [16.1B.1](written-work-workspaces.md), deployed and verified; no English assessment/release is live.
 
 ## Sprint 0 — Technical foundation
 - [x] Repository scaffold

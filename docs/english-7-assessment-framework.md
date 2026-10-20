@@ -1,5 +1,7 @@
 # English 7 assessment framework — Sprint 16.1A
 
+**16.1C.3 audio follow-up — 2026-10-21:** John requires all possible and strategically relevant course recordings to be included as playable audio. The [course inventory](english-7-course-audio-inventory.md) identifies 20 MP3s across 18 QR routes, including the original five for Unit 1. All are retained as core/support candidates; one needs a reviewed smaller delivery version. Audition, permissions, exact source binding and production playback remain open. No bank proposal, assessed-playback policy or English release is approved by this direction.
+
 **Status: design proposal, 2026-10-20.** The owner has excluded platform speaking assessment and assigned it to classroom teachers. The remaining framework is proposed for implementation; this document creates no English curriculum release, scoring policy, response capability or learner assessment. The current standard/programme and Unit 1 outcomes are now reconciled in [16.1A.2 preparation](english-7-unit-01-preparation.md); the [concrete draft contract](english-7-unit-01-assessment-contract.md), final scoring/bank and implementation remain open.
 
 ## Scope and source
@@ -103,7 +105,7 @@ No new tests or production calls are required for this documentation-only propos
 ## Decisions still open
 
 - Final item-level evidence coverage against the reconciled 2026 standard, programme and proposed Unit 1 map.
-- Audio audition, source protection, hosting/delivery conditions and production playback; five publisher files are already technically verified.
+- Audio audition, source protection, hosting/delivery conditions and production playback; the 16.1C.3 inventory has technical evidence for all 20 linked files (five reused checks, fifteen new). Nineteen originals fit existing limits and one needs a reviewed delivery derivative.
 - The first release's final writing task/rubric and workload schedule; teacher review capability is authorised under 16.1B.1.
 - Item/component counts, weights, partial credit, accepted alternatives and English mastery/readiness criteria.
 

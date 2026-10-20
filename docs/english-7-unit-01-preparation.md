@@ -1,5 +1,7 @@
 # English 7 Unit 1 — source and evidence map
 
+**16.1C.3 audio follow-up — 2026-10-21:** John requires all possible and strategically relevant course recordings to be included as playable audio. The [course inventory](english-7-course-audio-inventory.md) identifies 20 MP3s across 18 QR routes, including the original five for Unit 1. All are retained as core/support candidates; one needs a reviewed smaller delivery version. Audition, permissions, exact source binding and production playback remain open. No bank proposal, assessed-playback policy or English release is approved by this direction.
+
 **16.1C.2 planning follow-up — 2026-10-20:** The [bank/form proposal](english-7-unit-01-bank-plan.md) now specifies 60 Practice / 56 Diagnostic / 84 Mastery, five forms of 28 and the exact remaining slot demands. These are proposed counts, not authored/approved capacity or an adopted policy. The existing 45-question draft is unchanged.
 
 **16.1C.1 authoring follow-up — 2026-10-20:** The [complete draft review packet](english-7-unit-01-review-packet.md), [whole-bank comparison](english-7-unit-01-whole-bank-review.md) and [review handoff](english-7-unit-01-authoring-review.md) now provide the actual Unit 1 material in textbook order. Technical content-contract checks pass; human review, audio permissions/audition, final policy and learner release remain open. No English content is staged or activated.
