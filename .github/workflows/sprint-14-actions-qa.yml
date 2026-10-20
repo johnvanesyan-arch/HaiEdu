@@ -5,6 +5,8 @@ on:
   push:
     branches: [main]
     paths:
+      - web/written-work.mjs
+      - web/written-work.css
       - scripts/sprint-14-actions.mjs
       - scripts/sprint-14-action-guards.mjs
       - scripts/sprint-14-isolation.mjs

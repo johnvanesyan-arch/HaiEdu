@@ -1,3 +1,4 @@
+import { mountWrittenWork } from './written-work.mjs';
 import {assessmentResultMarkup} from './assessment-reporting.mjs';
 import { contractMarkup } from "./analytics-provenance.mjs";
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
@@ -8,6 +9,7 @@ const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SU
 const $ = (id) => document.getElementById(id);
 
 let dashboard = null;
+let disposeWriting = () => {};
 let selectedClassId = null;
 let rosterQuery = "";
 let matrixStudentFilter = "all";
@@ -390,6 +392,9 @@ async function renameSelectedClass(event, institutional) {
 }
 
 function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
+  if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
+  disposeWriting(); disposeWriting = () => {};
+  $("teacherWrittenWorkCard")?.classList.add("hidden");
   institutionalUnitLoadVersion++;
   closeDrawer();
   selectedClassId = id;
@@ -461,6 +466,18 @@ function selectClass(id, { pushNavigation = false, navigate = true } = {}) {
       $("matrixUnitTitle").textContent = klass.selectedUnit?.unitTitleHy ?? "—";
       renderMatrix(klass);
       renderRoster(klass);
+    }
+    if ($("teacherWrittenWorkCard") && klass.selectedUnit) {
+      $("teacherWrittenWorkCard").classList.remove("hidden");
+      $("teacherOpenWrittenWork").onclick = () => {
+        if (disposeWriting.hasUnsaved?.() && !window.confirm("Չպահպանված գնահատականը չեղարկե՞լ։")) return;
+        disposeWriting();
+        const selected = klass.selectedUnit;
+        const request = institutionalUnitLoadVersion;
+        disposeWriting = mountWrittenWork({root:$("teacherWrittenWork"),supabase,teacher:true,actorId:dashboard.teacher.id,
+          context:{assignmentId:klass.assignmentId,curriculumReleaseId:selected.curriculumReleaseId,unitId:selected.unitId},
+          isCurrent:()=>request===institutionalUnitLoadVersion && selectedClassId===klass.id && Boolean(dashboard)});
+      };
     }
     void loadInstitutionalStudentInvitations(klass);
     return;
@@ -1303,6 +1320,7 @@ function bootstrapTeacherDashboard(session) {
 supabase.auth.onAuthStateChange((event, session) => {
   if (event === "SIGNED_OUT" || !session) {
     dashboardLoadVersion++;
+    disposeWriting(); disposeWriting = () => {};
     closeDrawer();
     dashboard = null;
     $("dashboardPanel").classList.add("hidden");

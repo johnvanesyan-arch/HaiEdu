@@ -5,6 +5,8 @@ on:
   push:
     branches: [main]
     paths:
+      - web/written-work.mjs
+      - web/written-work.css
       # Activated pilot: cover the runner, native pages, their API dependencies,
       # the approved computed recipe URL, and relevant database contracts.
       - docs/evidence/chapter-iii-pilot-activation-20261017.json

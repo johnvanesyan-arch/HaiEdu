@@ -1,12 +1,12 @@
 # English 7 Unit 1 — proposed assessment contract
 
-**Status: concrete design draft, 16.1A.2, 2026-10-20; not an active policy.** This specifies response handling and a reviewable writing option for the [Unit 1 map](english-7-unit-01-preparation.md). It does not approve teacher workload, set final unit mastery thresholds, create an English release, or modify the existing governed selected-response policy.
+**Status: concrete design draft, 16.1A.2, 2026-10-20; not an active policy.** This specifies response handling and a reviewable writing option for the [Unit 1 map](english-7-unit-01-preparation.md). John subsequently authorised implementation of the teacher-review route under [16.1B.1](written-work-workspaces.md). This draft still does not set the final task/rubric, unit mastery thresholds or English release.
 
 ## Recommended first-unit scope
 
 Reading, listening, vocabulary and grammar use automatically scored tasks where a reviewed key is sufficiently bounded. Include controlled writing within the language target it actually demonstrates. For extended writing, **recommend one teacher-reviewed 80–100-word response per student for the unit**, combining S13 description with S14 written communication where the prompt genuinely elicits both. The teacher records separate evidence against each target, but this remains one response, not two independent samples.
 
-This keeps the programme's real writing outcome and limits the initial review queue. It is a product recommendation awaiting the owner's decision; no teacher assignment or deadline is created by it. If teacher-reviewed writing is not selected, explicitly decide between unassessed writing practice and a separately validated automated grading route. Automatic multiple choice cannot stand in for the written outcome.
+This keeps the programme's real writing outcome and limits the initial review queue. The owner authorised the teacher-review capability on 2026-10-20; no teacher assignment or deadline is created by that implementation decision. If teacher-reviewed writing is not selected, explicitly decide between unassessed writing practice and a separately validated automated grading route. Automatic multiple choice cannot stand in for the written outcome.
 
 ## Response capabilities
 
@@ -77,8 +77,8 @@ No single 'English mastered' badge is proposed while a required writing/listenin
 
 ## Implementation and verification boundary
 
-First implement the reusable contracts and editors needed by the mapped tasks; writing's final-review queue is conditional on the owner's chosen route. Use the existing versioned subject extension boundary and server authority. Shared APIs must carry explicit locale, response type/version, stimulus/task-set version and result/review state without branching on an English ID. Preserve the legacy Armenian content adapter and all active Physics policies/evidence.
+First implement the reusable contracts and editors needed by the mapped tasks; the owner-authorised writing queue is implemented under 16.1B.1 with production verification pending. Use the existing versioned subject extension boundary and server authority. Shared APIs must carry explicit locale, response type/version, stimulus/task-set version and result/review state without branching on an English ID. Preserve the legacy Armenian content adapter and all active Physics policies/evidence.
 
 Required implementation checks: accepted/rejected linguistic variants; stable IDs under option shuffling; mapping cardinality; partial-credit arithmetic; duplicate submission/resume without lost text; protected keys; unavailable audio and replay limits; transcript assistance; teacher authorization/reassignment/revocation; pending-review and regrade projection; two-school and cross-subject isolation; authenticated desktop/mobile operation on the exact deployed source. Existing production-release gates remain applicable. No runtime test suite is newly written or run locally for this design document.
 
-**Owner decision needed before adding teacher work:** adopt the recommended single teacher-reviewed written response per unit, or choose a different explicit writing disposition. The remaining automatic-capability implementation and source preparation can proceed independently. Final content and scoring-policy acceptance still precede English learner activation.
+**Owner decision recorded:** implement student writing submissions and teacher marking (2026-10-20). The final Unit 1 task, rubric and workload schedule still need content/release acceptance. The remaining automatic-capability implementation and source preparation can proceed independently. Final content and scoring-policy acceptance still precede English learner activation.

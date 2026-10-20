@@ -5,6 +5,7 @@ import vm from "node:vm";
 import { stripTypeScriptTypes } from "node:module";
 
 const studentTables = [
+  "written_work",
   "class_memberships",
   "institutional_class_enrollments",
   "attempts",
@@ -103,6 +104,7 @@ test("teacher inventory reports only teacher-owned institutional records", async
     kind: "teacher",
     institutionalMemberships: 1,
     teachingAssignments: 8,
+    writtenReviews: 0,
     invitationRecords: 12,
     auditEvents: 10,
   });

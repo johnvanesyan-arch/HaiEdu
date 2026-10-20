@@ -119,6 +119,10 @@ jobs:
         run: node --test tests/learning-acceptance.test.mjs
       - name: Verify versioned scoring, readiness, reporting and preserved v1 rules
         run: node --test tests/assessment-v2.test.mjs
+      - name: Verify written-work submissions, marking and authorization on PostgreSQL 17.6
+        run: node --test tests/written-work.test.mjs tests/written-work-handler.test.mjs
+      - name: Verify written-work save, submit, mark and revocation races
+        run: python tests/written-work-concurrency.py
       - name: Verify atomic answer scoring with independent PostgreSQL 17.6 connections
         run: python tests/answer-scoring-concurrency.py
       - name: Verify governed policy and session authorization races on PostgreSQL 17.6
