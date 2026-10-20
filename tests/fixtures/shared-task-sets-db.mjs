@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import {database as audioDatabase,id,scopes,blueprintId} from './learning-audio-db.mjs';
 export * from './learning-audio-db.mjs';
-export const taskSetMigration='supabase/migrations/20261020175526_sprint_16_1b_shared_task_sets.sql';
+export const taskSetMigration='supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql';
 export async function installTaskSets(db){await db.exec(readFileSync(taskSetMigration,'utf8'));}
 export async function database(options={}){const db=await audioDatabase(options);try{await installTaskSets(db);return db;}catch(error){await db.close();throw error;}}
 export async function seedTaskSet(db,{idx=0,mode='diagnostic',setId=id(9800),family=id(9900),items,stimulus,attach=true,versionOffset=0}={}){

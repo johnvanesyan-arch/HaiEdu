@@ -1,6 +1,6 @@
 # Shared reading/listening task sets
 
-**16.1B.5 — implementation in progress, 2026-10-20.** This is a subject-neutral, opt-in capability. It does not author or approve English content, approve a listening policy, or activate a curriculum release.
+**16.1B.5 — deployed and verified, 2026-10-20.** This is a subject-neutral, opt-in capability. It does not author or approve English content, approve a listening policy, or activate a curriculum release.
 
 An immutable `haiedu-task-set-v1` version binds an explicit locale, one plain-text passage or protected audio version, one source-family UUID, and an ordered list of question IDs, versions and skill mappings. A reviewed source does not approve its questions. Each question retains its existing content QA, review, score and declared skill. New wording, membership or order requires a new version. Revocation is irreversible.
 
@@ -12,4 +12,28 @@ The learner sees the source and position within the set, with one question at a 
 
 Source registration is service-only and requires a recorded source review and permission reference. The content workspace offers only versions containing the selected question; choosing one still requires saving, QA and ordinary question review. Learners cannot browse the source registry, member list or other questions. Sessionless and legacy shared-source delivery fails closed.
 
-Verification and deployment evidence will be added before delivery closure. Whole-bank comparison, audio audition/permissions, final English content/scoring decisions and learner release gates remain open. Speaking stays classroom-assessed.
+Required PR/main CI passed 1,361 Node tests, 83 native Chromium checks and PostgreSQL 17.6/concurrency checks. Exact-source production read acceptance passed 310/310, including 54/54 two-school isolation checks. All 26 SQL definitions and both affected Edge bundles match source; all 29 tracked data snapshots remain unchanged. [Release evidence](evidence/shared-task-sets-release-20261020.json) and [production read artifact](evidence/shared-task-sets-production-read-20261020.json) record the result. Whole-bank comparison, audio audition/permissions, final English content/scoring decisions and learner release gates remain open. Speaking stays classroom-assessed.
+
+## Source registration and operational limits
+
+Family identity is an editorial decision backed by whole-bank/source review. Related passages, transcripts and new recordings of the same script must share one family UUID. The runtime enforces the declared relationship; it does not infer semantic equivalence from wording or audio. Source review and permission references are required, but they do not confer question approval, empirical form equivalence or learner release.
+
+Register questions and their governed primary scopes first, then a source version naming their intended final question versions. Attach the reference through the existing atomic content editor; its final version must match the registered member. The source catalog offers current/next-version matches, and stale or incomplete memberships fail closed. A later substantive edit needs a successor source-set version, new question snapshots and ordinary QA/review before rebinding a policy.
+
+Practice treats its existing planned count as a ceiling: it finishes each selected set, then applies its existing early-completion rules. If no complete block fits the remaining places after some answers, it finishes with `task_set_capacity_reached`. Chapter Review packs complete blocks to its exact budget; an impossible budget fails before allocating a session. Diagnostic/Mastery reject exposed families, including reserved or abandoned prior assignments. Different questions remain separate scored responses; they are not separate unseen source samples.
+
+The learner sees one question at a time. Listening retains verified playback completion per question and replay at normal speed. Simultaneous question display, set-wide playback accounting, transcript support and capped assessed listening require their own accepted delivery contract.
+
+Operational rollback should restore the prior eight SQL definitions and browser/Edge sources while preserving any new source/evidence rows. Withdraw an adopted source through its irreversible revocation fields; do not erase historical evidence. This delivery registers no production sources or adopting policies, so its schema and endpoints are inert until separately governed authoring and adoption.
+
+## Deployment evidence and acceptance boundary
+
+Implementation [PR #278](https://github.com/johnvanesyan-arch/HaiEdu/pull/278) merged as `07db24fb87cf7bd870ae0a605b93619c0358e598`. Required [PR CI](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39473273575) and [main CI](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39474419053) passed all four jobs and the `Platform release checks` aggregate. Four new independent-connection PostgreSQL 17.6 races verify cross-subject exposure, active reservations, transaction rollback and repeatable-read serialization.
+
+The deployed migration is canonically recorded as `20261020182309_sprint_16_1b_shared_task_sets.sql`; its 114,530-byte body is unchanged from the reviewed implementation (SHA-256 `c79545340fe4b235445e120e62281d69752d16ed274b3466d5c5414b7b9c5b4c`). `get-learning-task-set` v1 and `get-my-privacy` v6 read back byte-for-byte. No existing shared Edge helper changed; unchanged consumers retain their prior verified bundles and call the updated SQL. Security advisors add two expected INFO notices for service-only tables, with no new warning/error.
+
+Vercel held promotion until the required main checks passed, then served the exact accepted source. The unchanged persistent Production / Blocking setting is supported by the [existing attestation](evidence/vercel-deployment-check-verification-20261020.json). The required [production read acceptance](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39474418915) was rerun after the shared QA queue cancelled its first attempt before any jobs; attempt 2 passed on the implementation commit.
+
+Production acceptance exercises the six existing chapter/workspace flows and new registry/access denials. No production task set, recording, source-family exposure or adopting policy was created. The full shared-source reading/listening, authoring, answer and concurrency flows are isolated-fixture evidence, not a claim that English media was played in production. The 29 preservation scopes compare all original session-assignment fields, excluding only the three new nullable source-snapshot columns; all three have zero populated production rows.
+
+The documentation closure reconciles only the canonical migration filename and its fixture/workflow references; the SQL body and deployed runtime remain unchanged. Runtime-identical closure commits may reuse this accepted production evidence after exact tree/source comparison. Notion is synchronized only from the merged closure commit and verified by readback; the source stamp in Notion identifies that commit.

@@ -47,4 +47,4 @@ Required CI also executes the database/handler checks on PostgreSQL 17.6. Produc
 
 Rollback before any adoption restores the prior three SQL function bodies and privacy Edge bundle from `305855cb523cd18941f8c437863b64819aa61952`, and the prior frontend. The new endpoint, empty registry/ledger and audio-only guards can remain inert. After any future adoption, revocation and an explicit data-preserving rollback plan are required; deleting evidence is not a rollback procedure.
 
-Shared reading/listening sets and cross-release source-family protection are implemented in [16.1B.5](shared-task-sets-capability.md), with release verification pending. That slice preserves this audio transport and per-question completion contract; it does not accept capped assessment playback or transcript support.
+Shared reading/listening sets and cross-release source-family protection are deployed and verified in [16.1B.5](shared-task-sets-capability.md), with 310/310 production read checks and unchanged content/evidence snapshots. That slice preserves this audio transport and per-question completion contract; it does not accept capped assessment playback or transcript support.

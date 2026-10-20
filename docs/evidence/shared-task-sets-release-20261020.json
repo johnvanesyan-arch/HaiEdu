@@ -3,7 +3,7 @@
   "date": "2026-10-20 Asia/Yerevan",
   "baseCommit": "fe2ab180a879732aaf237e8b9573f9c0b9e86aa5",
   "scope": "16.1B.5 immutable shared reading/listening task sets and source-family protection",
-  "phase": "implemented; required release verification pending",
+  "phase": "deployed and verified; merged documentation is the source for verified Notion synchronization",
   "preflight": {
     "preservation": [
       {
@@ -285,7 +285,7 @@
       "passed": 17,
       "total": 17
     },
-    "concurrency": "Dedicated independent-connection regression added to required PostgreSQL 17.6 CI. Local pgserver could not provision its OS user; no production substitute used.",
+    "concurrency": "Required PR and main PostgreSQL 17.6 jobs passed all four dedicated independent-connection races. Local pgserver could not provision its OS user; no production substitute used.",
     "qaTriggers": {
       "chapterVI": 87,
       "chapterV": 70,
@@ -302,13 +302,13 @@
     "policyOrReleaseChanges": 0
   },
   "remaining": [
-    "Required CI and exact-source deployment/read acceptance",
-    "Source-verified Notion synchronization",
-    "English source audition/permissions and first-unit authoring/review",
-    "Final listening/scoring/workload and release decisions"
+    "English source audition/permissions and first-unit authoring/review in preserved textbook order",
+    "Final English task/rubric, scoring/readiness, workload and release decisions",
+    "Accepted transcript-support, set-wide playback and capped assessed-listening contracts before adoption",
+    "English learner release and formal four-subject pilot gates; speaking remains classroom-assessed"
   ],
   "deployment": {
-    "status": "pending",
+    "status": "deployed and verified",
     "edgeDependencyAudit": {
       "newEndpoint": "get-learning-task-set",
       "changedExistingConsumers": [
@@ -317,6 +317,737 @@
       "unchangedSharedHelper": "_shared/auth.ts",
       "unchangedPriorConsumersEvidence": "docs/evidence/protected-audio-release-20261020.json",
       "reason": "The new task-set handler is imported only by its new endpoint. Existing governed delivery, grading, audio and content bundles call updated SQL without source changes."
+    },
+    "implementationCommit": "07db24fb87cf7bd870ae0a605b93619c0358e598",
+    "pr": {
+      "number": 278,
+      "head": "03056c525c02d687d3b43e85e4854de2e12d9e0f",
+      "ciRun": 39473273575,
+      "jobs": [
+        {
+          "id": 118802578169,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 118802578236,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 118802578387,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 118802578609,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 118805273181,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "nodeTests": 1361,
+      "nativeBrowserTests": 83
+    },
+    "mainCI": {
+      "id": 39474419053,
+      "sha": "07db24fb87cf7bd870ae0a605b93619c0358e598",
+      "conclusion": "success",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39474419053",
+      "jobs": [
+        {
+          "id": 118806559563,
+          "name": "institutional-concurrency",
+          "conclusion": "success"
+        },
+        {
+          "id": 118806559876,
+          "name": "role-layout-browser",
+          "conclusion": "success"
+        },
+        {
+          "id": 118806559903,
+          "name": "phase3-postgres-17",
+          "conclusion": "success"
+        },
+        {
+          "id": 118806560108,
+          "name": "test",
+          "conclusion": "success"
+        },
+        {
+          "id": 118810156935,
+          "name": "Platform release checks",
+          "conclusion": "success"
+        }
+      ],
+      "nodeTests": {
+        "passed": 1361,
+        "total": 1361
+      },
+      "nativeBrowser": {
+        "passed": 83,
+        "total": 83
+      },
+      "postgres": "17.6",
+      "sourceFamilyConcurrency": {
+        "passed": 4,
+        "total": 4
+      }
+    },
+    "vercel": {
+      "status": "success",
+      "url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/DVGC4sTYAGDroyLBs7q547zzTz9M",
+      "description": "Deployment has completed",
+      "persistentBlockingAttestation": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+      "attestationReused": true
+    },
+    "qaRun": {
+      "id": 39474418915,
+      "attempt": 2,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39474418915",
+      "firstAttempt": "Cancelled by existing shared QA concurrency queue before any jobs; complete rerun requested through GitHub UI because connector exposes only failed-job/single-job retries."
+    },
+    "runtimeTree": [
+      {
+        "path": "package-lock.json",
+        "type": "blob",
+        "sha": "7d22085ba85115c80760885bb6fdb6d4b8e36932"
+      },
+      {
+        "path": "package.json",
+        "type": "blob",
+        "sha": "577509895cb09863969aa3f2cf092b3689c36dea"
+      },
+      {
+        "path": "scripts",
+        "type": "tree",
+        "sha": "0df35a4cedf6886e0cf4122d0181b45aec2f6a26"
+      },
+      {
+        "path": "supabase/functions",
+        "type": "tree",
+        "sha": "ad8d604dbfbe4385cbd2847e0ac3bf08a6405e0f"
+      },
+      {
+        "path": "web",
+        "type": "tree",
+        "sha": "e38e330a22ab225e901c936c25daf211fc3e21c6"
+      }
+    ],
+    "backend": {
+      "mergeSha": "07db24fb87cf7bd870ae0a605b93619c0358e598",
+      "pr": {
+        "number": 278,
+        "head": "03056c525c02d687d3b43e85e4854de2e12d9e0f",
+        "ciRun": 39473273575,
+        "jobs": [
+          {
+            "id": 118802578169,
+            "name": "role-layout-browser",
+            "conclusion": "success"
+          },
+          {
+            "id": 118802578236,
+            "name": "test",
+            "conclusion": "success"
+          },
+          {
+            "id": 118802578387,
+            "name": "institutional-concurrency",
+            "conclusion": "success"
+          },
+          {
+            "id": 118802578609,
+            "name": "phase3-postgres-17",
+            "conclusion": "success"
+          },
+          {
+            "id": 118805273181,
+            "name": "Platform release checks",
+            "conclusion": "success"
+          }
+        ],
+        "nodeTests": 1361,
+        "nativeBrowserTests": 83
+      },
+      "migration": {
+        "name": "sprint_16_1b_shared_task_sets",
+        "version": "20261020182309",
+        "body_md5": "56eaa31e3f74a727654588a275dda716",
+        "body_chars": 114530,
+        "sha256": "c79545340fe4b235445e120e62281d69752d16ed274b3466d5c5414b7b9c5b4c",
+        "canonicalPath": "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql"
+      },
+      "database": [
+        {
+          "name": "private.guard_audio_attempt",
+          "hash": "a3d814391a7e211f5541f330825d792e"
+        },
+        {
+          "name": "private.guard_item_task_set_reference",
+          "hash": "a5bdf1856fb361f62b127de9b3cbf32d"
+        },
+        {
+          "name": "private.guard_source_family_assignment",
+          "hash": "b10bbf146456fc16323594707415b9b3"
+        },
+        {
+          "name": "private.guard_task_set_attempt",
+          "hash": "2322b276a057b8b5e66c9921b709b504"
+        },
+        {
+          "name": "private.guard_task_set_version",
+          "hash": "be5085db88df0b1ca2ce464df04d314c"
+        },
+        {
+          "name": "private.item_source_family",
+          "hash": "0c3295da95f7fdce8fa3bbe648130011"
+        },
+        {
+          "name": "private.learner_shared_stimulus",
+          "hash": "d3c00769ef46769eeb0ba595da1b0684"
+        },
+        {
+          "name": "private.learner_task_set_context",
+          "hash": "0358eff853381b681d187f85e96df0fb"
+        },
+        {
+          "name": "private.mastery_form_item_seen",
+          "hash": "5d819f9e0d1938f63c01c5e0b057deb4"
+        },
+        {
+          "name": "private.order_task_set_items",
+          "hash": "81f0ad79709b645d1b7114e1d39108ac"
+        },
+        {
+          "name": "private.pack_task_set_items",
+          "hash": "3676d8a18a601ab8564592185584bc94"
+        },
+        {
+          "name": "private.record_source_family_exposure",
+          "hash": "3b67694249abc0430f21b89f7bd68c9a"
+        },
+        {
+          "name": "private.source_family_reserved",
+          "hash": "5be0884bc4f90f1ae2334ba6665d62dc"
+        },
+        {
+          "name": "private.source_family_seen",
+          "hash": "a660cbb59460564de47aaa2fe2a8c1ed"
+        },
+        {
+          "name": "private.task_set_item_block",
+          "hash": "7cd163ec45504798ba082bf1029cee1b"
+        },
+        {
+          "name": "private.task_set_stimulus",
+          "hash": "02a66b30fb6575d046845706f70ecd1d"
+        },
+        {
+          "name": "private.validate_assessment_policy_v1",
+          "hash": "0a821373177775b8574f660e56b39c54"
+        },
+        {
+          "name": "private.validate_assigned_source",
+          "hash": "6f6e1a27bc5f94b8c6546aeec297aaac"
+        },
+        {
+          "name": "private.validate_task_set_blueprint",
+          "hash": "860e7ac402ee31ab6a9c0ae69365f22f"
+        },
+        {
+          "name": "private.validate_task_set_reference",
+          "hash": "4b5b85fbb9abbe4ee0d0f55169c30029"
+        },
+        {
+          "name": "public.service_governed_learning_operation",
+          "hash": "116f2894529e89c00b049d21f922af4f"
+        },
+        {
+          "name": "public.service_launch_governed_learning",
+          "hash": "4eb3053490b46a0cc6aefe0dbcb6b359"
+        },
+        {
+          "name": "public.service_learning_audio",
+          "hash": "f895c52c065d63c6b8626580633f86f4"
+        },
+        {
+          "name": "public.service_learning_task_set",
+          "hash": "abd810c265ba5151d33b9d1ddf14e8ac"
+        },
+        {
+          "name": "public.service_record_session_answer_atomic",
+          "hash": "05f37dfa15ac1d71fd23624637807466"
+        },
+        {
+          "name": "public.service_start_governed_session_atomic",
+          "hash": "0285eb04dc177c6bb7a87f4db2aa47f4"
+        }
+      ],
+      "schema": {
+        "taskSets": 0,
+        "migration": {
+          "name": "sprint_16_1b_shared_task_sets",
+          "version": "20261020182309",
+          "body_md5": "56eaa31e3f74a727654588a275dda716",
+          "body_chars": 114530
+        },
+        "rpcPrivileges": {
+          "anon": false,
+          "service": true,
+          "authenticated": false
+        },
+        "familyExposures": 0,
+        "sourceAssignments": 0
+      },
+      "rls": [
+        {
+          "relname": "learning_source_family_exposures",
+          "relrowsecurity": true,
+          "anon_read": false,
+          "authenticated_read": false
+        },
+        {
+          "relname": "learning_task_set_versions",
+          "relrowsecurity": true,
+          "anon_read": false,
+          "authenticated_read": false
+        }
+      ],
+      "edge": [
+        {
+          "name": "get-learning-task-set",
+          "version": 1,
+          "verifyJwt": true,
+          "files": [
+            {
+              "name": "get-learning-task-set/index.ts",
+              "sha256": "c88dbf0fb87e9e8c3a385a8b6c2a990fda1fb698dab455fb799f56222ac6d707",
+              "exactMatch": true
+            },
+            {
+              "name": "_shared/auth.ts",
+              "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+              "exactMatch": true
+            },
+            {
+              "name": "_shared/learning-task-set-handler.mjs",
+              "sha256": "3bdf2d57aee3234ba58a534c8f52c8e14b0bfaf4df752cd8df3293c3d5d42939",
+              "exactMatch": true
+            }
+          ]
+        },
+        {
+          "name": "get-my-privacy",
+          "version": 6,
+          "verifyJwt": true,
+          "files": [
+            {
+              "name": "get-my-privacy/index.ts",
+              "sha256": "6c0e4dd3dcfcf878bbce34f571934da92f73909b861927b8a5a78133681da3e9",
+              "exactMatch": true
+            }
+          ]
+        }
+      ],
+      "preservationAfterMigration": [
+        {
+          "preservation": {
+            "items": {
+              "md5": "02a9ac127de1e789dde981167803bbf6",
+              "rows": 1251
+            },
+            "attempts": {
+              "md5": "26d44860397d32ab6023da8e72cfcb0e",
+              "rows": 42
+            },
+            "item_options": {
+              "md5": "2f762b42bec0fdeac871659af168de6e",
+              "rows": 4396
+            },
+            "written_work": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "item_versions": {
+              "md5": "b0af9e1e86807f1b8e339b90a52b03f9",
+              "rows": 1146
+            },
+            "written_reviews": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "assessment_forms": {
+              "md5": "ec31ac543009ef35e098ac7a64e23908",
+              "rows": 29
+            },
+            "assessment_pools": {
+              "md5": "d6450febadadd4af95b10f3a8c9a7b92",
+              "rows": 19
+            },
+            "item_answer_keys": {
+              "md5": "1054877916900dca98aa788fa67c9dd6",
+              "rows": 1251
+            },
+            "learning_sessions": {
+              "md5": "a5d0326f20b58e02773af6281ee31cdb",
+              "rows": 8
+            },
+            "curriculum_releases": {
+              "md5": "242aae0aedf8c5d85e0a2a415a2f8703",
+              "rows": 7
+            },
+            "written_submissions": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "assessment_blueprints": {
+              "md5": "38fe215a14d86c322b7826724d8a7fac",
+              "rows": 27
+            },
+            "assessment_form_items": {
+              "md5": "d84f089091319cf04fa637dd4589dbd9",
+              "rows": 472
+            },
+            "assessment_pool_items": {
+              "md5": "184285de8853be3dfc41e8f90db0dda4",
+              "rows": 1244
+            },
+            "written_task_versions": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "learning_session_items": {
+              "md5": "be40162b06e91a52213d5b6fd6e810bc",
+              "rows": 96
+            },
+            "learning_audio_versions": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "curriculum_release_units": {
+              "md5": "449c3d22acb7c1b4c92f261c1f8aaf61",
+              "rows": 7
+            },
+            "learning_response_drafts": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "curriculum_release_skills": {
+              "md5": "7bf9605a3f0222a6d4c6d08d14cc6503",
+              "rows": 66
+            },
+            "learning_audio_deliveries": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "assessment_blueprint_items": {
+              "md5": "7e54e189ad648f2a3f0a4538a01f8b60",
+              "rows": 1872
+            },
+            "assessment_policy_bindings": {
+              "md5": "2c32ee0b3e126db5e47b7de55a5ebacf",
+              "rows": 20
+            },
+            "student_item_exposure_events": {
+              "md5": "b9b739a7d235b2a8ebb837003baef8b6",
+              "rows": 44
+            },
+            "learning_model_configurations": {
+              "md5": "4254a36a7a040133d3592cd131c83c83",
+              "rows": 6
+            },
+            "learning_model_runtime_bindings": {
+              "md5": "dd95315c4395cb93457b2c5afaefc495",
+              "rows": 6
+            },
+            "academic_mastery_policy_versions": {
+              "md5": "1c69b7132347cd8b67a89268668f27ce",
+              "rows": 1
+            },
+            "student_skill_mastery_by_release": {
+              "md5": "19a0f8555ac31ac870a6cff088c9ce29",
+              "rows": 13
+            }
+          }
+        }
+      ],
+      "securityAdvisors": {
+        "before": [
+          {
+            "name": "rls_enabled_no_policy",
+            "level": "INFO",
+            "count": 46
+          },
+          {
+            "name": "auth_leaked_password_protection",
+            "level": "WARN",
+            "count": 1
+          }
+        ],
+        "after": [
+          {
+            "name": "rls_enabled_no_policy",
+            "level": "INFO",
+            "count": 48
+          },
+          {
+            "name": "auth_leaked_password_protection",
+            "level": "WARN",
+            "count": 1
+          }
+        ],
+        "disposition": "Two expected INFO findings for service-only source registries/evidence; direct client grants are revoked. Existing WARN unchanged."
+      }
+    },
+    "publicSource": {
+      "url": "https://www.haiedu.am/",
+      "releaseBefore": {
+        "schemaVersion": 1,
+        "commit": "07db24fb87cf7bd870ae0a605b93619c0358e598"
+      },
+      "releaseAfter": {
+        "schemaVersion": 1,
+        "commit": "07db24fb87cf7bd870ae0a605b93619c0358e598"
+      },
+      "files": [
+        {
+          "path": "learning-task-set.mjs",
+          "sha256": "9600b680895d668261747d5ce7fcec1b366a179dd1b1d55f5ad7e11e2dae7755",
+          "bytes": 1225,
+          "exactMatch": true
+        },
+        {
+          "path": "learning-stimulus.mjs",
+          "sha256": "2c843af3ddf9578dbd1e0fc1be213c5fdc0e67d4edcf9200477be3b67f6b6cbe",
+          "bytes": 2082,
+          "exactMatch": true
+        },
+        {
+          "path": "learning-player.mjs",
+          "sha256": "98e014a0001000b7470ab2dd2cc1cf3d3198b4e02e9ca1ebd1400ac1834a2263",
+          "bytes": 10526,
+          "exactMatch": true
+        },
+        {
+          "path": "content.js",
+          "sha256": "df20abbeea1095aa13c8a9f1b29112d8491e35eddf0b2383d628f5db58588097",
+          "bytes": 62984,
+          "exactMatch": true
+        },
+        {
+          "path": "privacy.js",
+          "sha256": "3c1db29f681a53148c133afa1cda0b89b628d4663fbced243a60493699ddd3d4",
+          "bytes": 14692,
+          "exactMatch": true
+        }
+      ]
+    },
+    "productionAcceptance": {
+      "runId": 39474418915,
+      "attempt": 2,
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39474418915",
+      "conclusion": "success",
+      "sha": "07db24fb87cf7bd870ae0a605b93619c0358e598",
+      "frontendCommit": "07db24fb87cf7bd870ae0a605b93619c0358e598",
+      "passed": 310,
+      "total": 310,
+      "readIsolation": {
+        "passed": 54,
+        "total": 54
+      },
+      "jobs": [
+        {
+          "id": 118812022947,
+          "name": "authenticated-read-acceptance",
+          "conclusion": "success"
+        }
+      ],
+      "artifactId": 12288289126,
+      "archiveSha256": "86b0387104a325dff07e437f54048f443463a3d365ea9fa1ce5b7da183607617",
+      "artifactPath": "docs/evidence/shared-task-sets-production-read-20261020.json",
+      "artifactSha256": "6a1474f2853f55e5619320e1e2e3560f6c1127233c04107571ba1f90a6948d98",
+      "startedAt": "2026-10-20T18:35:39.904Z",
+      "finishedAt": "2026-10-20T18:42:11.604Z",
+      "limitations": [
+        "No learning sessions, answers or exposures are created.",
+        "Read-only switching is not a completed learner attempt or specialist approval.",
+        "Chapters I, II, III, IV and V are preserved; no student answers are submitted.",
+        "Existing teacher staff access to items and answer keys is retained; teacher direct-option denial is tested. This run does not certify teacher question-bank isolation."
+      ]
+    },
+    "preservation": {
+      "scopes": 29,
+      "allUnchanged": true,
+      "afterAcceptance": [
+        {
+          "preservation": {
+            "items": {
+              "md5": "02a9ac127de1e789dde981167803bbf6",
+              "rows": 1251
+            },
+            "attempts": {
+              "md5": "26d44860397d32ab6023da8e72cfcb0e",
+              "rows": 42
+            },
+            "item_options": {
+              "md5": "2f762b42bec0fdeac871659af168de6e",
+              "rows": 4396
+            },
+            "written_work": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "item_versions": {
+              "md5": "b0af9e1e86807f1b8e339b90a52b03f9",
+              "rows": 1146
+            },
+            "written_reviews": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "assessment_forms": {
+              "md5": "ec31ac543009ef35e098ac7a64e23908",
+              "rows": 29
+            },
+            "assessment_pools": {
+              "md5": "d6450febadadd4af95b10f3a8c9a7b92",
+              "rows": 19
+            },
+            "item_answer_keys": {
+              "md5": "1054877916900dca98aa788fa67c9dd6",
+              "rows": 1251
+            },
+            "learning_sessions": {
+              "md5": "a5d0326f20b58e02773af6281ee31cdb",
+              "rows": 8
+            },
+            "curriculum_releases": {
+              "md5": "242aae0aedf8c5d85e0a2a415a2f8703",
+              "rows": 7
+            },
+            "written_submissions": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "assessment_blueprints": {
+              "md5": "38fe215a14d86c322b7826724d8a7fac",
+              "rows": 27
+            },
+            "assessment_form_items": {
+              "md5": "d84f089091319cf04fa637dd4589dbd9",
+              "rows": 472
+            },
+            "assessment_pool_items": {
+              "md5": "184285de8853be3dfc41e8f90db0dda4",
+              "rows": 1244
+            },
+            "written_task_versions": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "learning_session_items": {
+              "md5": "be40162b06e91a52213d5b6fd6e810bc",
+              "rows": 96
+            },
+            "learning_audio_versions": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "curriculum_release_units": {
+              "md5": "449c3d22acb7c1b4c92f261c1f8aaf61",
+              "rows": 7
+            },
+            "learning_response_drafts": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "curriculum_release_skills": {
+              "md5": "7bf9605a3f0222a6d4c6d08d14cc6503",
+              "rows": 66
+            },
+            "learning_audio_deliveries": {
+              "md5": "d41d8cd98f00b204e9800998ecf8427e",
+              "rows": 0
+            },
+            "assessment_blueprint_items": {
+              "md5": "7e54e189ad648f2a3f0a4538a01f8b60",
+              "rows": 1872
+            },
+            "assessment_policy_bindings": {
+              "md5": "2c32ee0b3e126db5e47b7de55a5ebacf",
+              "rows": 20
+            },
+            "student_item_exposure_events": {
+              "md5": "b9b739a7d235b2a8ebb837003baef8b6",
+              "rows": 44
+            },
+            "learning_model_configurations": {
+              "md5": "4254a36a7a040133d3592cd131c83c83",
+              "rows": 6
+            },
+            "learning_model_runtime_bindings": {
+              "md5": "dd95315c4395cb93457b2c5afaefc495",
+              "rows": 6
+            },
+            "academic_mastery_policy_versions": {
+              "md5": "1c69b7132347cd8b67a89268668f27ce",
+              "rows": 1
+            },
+            "student_skill_mastery_by_release": {
+              "md5": "19a0f8555ac31ac870a6cff088c9ce29",
+              "rows": 13
+            }
+          }
+        }
+      ],
+      "newRegistryAndEvidenceCounts": {
+        "audio": 0,
+        "taskSets": 0,
+        "familyExposures": 0,
+        "sourceAssignments": 0
+      },
+      "projection": "Original learning_session_items fields are compared excluding only the three new nullable source snapshot columns; all three remain null in production."
     }
+  },
+  "documentationClosure": {
+    "changes": "Aligned status/roadmap/backlog/README/API/contracts and immutable acceptance evidence; canonical migration filename and two filename references only.",
+    "migrationBodyUnchanged": true,
+    "acceptedRuntimeTree": [
+      {
+        "path": "package-lock.json",
+        "type": "blob",
+        "sha": "7d22085ba85115c80760885bb6fdb6d4b8e36932"
+      },
+      {
+        "path": "package.json",
+        "type": "blob",
+        "sha": "577509895cb09863969aa3f2cf092b3689c36dea"
+      },
+      {
+        "path": "scripts",
+        "type": "tree",
+        "sha": "0df35a4cedf6886e0cf4122d0181b45aec2f6a26"
+      },
+      {
+        "path": "supabase/functions",
+        "type": "tree",
+        "sha": "ad8d604dbfbe4385cbd2847e0ac3bf08a6405e0f"
+      },
+      {
+        "path": "web",
+        "type": "tree",
+        "sha": "e38e330a22ab225e901c936c25daf211fc3e21c6"
+      }
+    ],
+    "requiredGate": "Required main CI and Vercel apply to the closure; compare runtime trees and exact public release stamp before reusing accepted production evidence.",
+    "notionPageId": "3df355a4-72bf-8135-85aa-c229c27f8f9c",
+    "notionVersion": "4.25",
+    "notionSourceRule": "The merged commit containing this closure is the synchronization source. The Notion source stamp and content readback record completion; preserve all 11 native child pages."
   }
 }
