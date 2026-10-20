@@ -6,7 +6,7 @@ test('live audio probe is read-only and never accepts an outage or unauthorized 
   const rows=[],calls=[];await learningAudioReadAcceptance({check:(name,ok)=>rows.push({name,ok}),request:async(actor,path,body,method)=>{
    calls.push({actor,path,body,method});
    if(!allowed)return {status:503,data:{error:'unavailable'}};
-   return path.startsWith('/rest')?{status:403,data:{code:'42501'}}:{status:actor===null?401:403,data:{error:actor===null?'unauthorized':'audio_access_denied'}};
+   return path.startsWith('/rest')?{status:actor===null?401:403,data:{code:'42501'}}:{status:actor===null?401:403,data:{error:actor===null?'unauthorized':'audio_access_denied'}};
   }});
   assert.equal(rows.length,21);assert.ok(rows.every(x=>x.ok===allowed));
   assert.equal(calls.filter(x=>x.method==='GET').length,14);
