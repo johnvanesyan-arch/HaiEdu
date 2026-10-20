@@ -120,7 +120,7 @@ jobs:
       - name: Verify versioned scoring, readiness, reporting and preserved v1 rules
         run: node --test tests/assessment-v2.test.mjs
       - name: Verify typed-field normalization, drafts, scoring and scope on PostgreSQL 17.6
-        run: node --test tests/typed-fields.test.mjs tests/typed-fields-authoring.test.mjs tests/arrangement-responses.test.mjs tests/arrangement-authoring.test.mjs tests/learning-audio.test.mjs tests/learning-audio-handler.test.mjs
+        run: node --test tests/typed-fields.test.mjs tests/typed-fields-authoring.test.mjs tests/arrangement-responses.test.mjs tests/arrangement-authoring.test.mjs tests/learning-audio.test.mjs tests/learning-audio-handler.test.mjs tests/shared-task-sets.test.mjs tests/shared-task-set-handler.test.mjs tests/shared-task-set-authoring.test.mjs
       - name: Verify written-work submissions, marking and authorization on PostgreSQL 17.6
         run: node --test tests/written-work.test.mjs tests/written-work-handler.test.mjs
       - name: Verify written-work save, submit, mark and revocation races
@@ -135,6 +135,8 @@ jobs:
         run: python tests/governed-runtime-concurrency.py
       - name: Verify disjoint curriculum release activation races
         run: python tests/release-unit-concurrency.py
+      - name: Verify shared-source exposure and allocation races
+        run: python tests/shared-task-sets-concurrency.py
       - name: Verify governed whole-form mastery selection races
         run: python tests/governed-mastery-forms-concurrency.py
 

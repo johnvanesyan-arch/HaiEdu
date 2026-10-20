@@ -2,12 +2,12 @@ import {matchingDefinition,matchingKey,orderingDefinition,orderingKey} from '../
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
 import { after, before, test } from "node:test";
-import { chromium } from "@playwright/test";
+import { chromium, expect } from "@playwright/test";
 import { dashboardFixture } from "../fixtures/content-dashboard-endpoint.mjs";
 
 // Native browser regression with real UI modules and offline auth/network doubles.
 // This covers DOM/event lifecycle, not live backend authorization or content workflows.
-const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js", "learning-stimulus.mjs", "learning-audio.mjs", "learning-navigation.mjs", "typed-fields-editor.mjs", "typed-fields-contract.mjs", "typed-fields-ui.mjs", "arrangement-ui.mjs", "arrangement-editor.mjs", "arrangement-contract.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
+const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js", "learning-stimulus.mjs", "learning-audio.mjs", "learning-task-set.mjs", "learning-navigation.mjs", "typed-fields-editor.mjs", "typed-fields-contract.mjs", "typed-fields-ui.mjs", "arrangement-ui.mjs", "arrangement-editor.mjs", "arrangement-contract.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
 const origin = "https://content-lifecycle.test";
 let browser;
 before(async () => { browser = await chromium.launch({ headless: true, ...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{}) }); }, { timeout: 30_000 });
@@ -323,4 +323,22 @@ test('reviewer audio chooser binds a reviewed version and requires a new saved r
  const stimulus=JSON.parse(await page.locator('#editStimulus').inputValue());assert.deepEqual(stimulus,{kind:'audio',schemaVersion:'haiedu-audio-v1',audioVersionId:'10000000-0000-4000-8000-000000000001'});
  assert.equal(await page.locator('#audioCatalog audio').count(),0);assert.equal(await page.locator('#approveBtn').isDisabled(),true);
  await assertSettled(state);
+});
+
+test('shared-source chooser requires a saved review and late previews cannot replace the next question',async t=>{
+ const state=await fixture(t,'content.js','active'),{page}=state,setId='10000000-0000-4000-8000-000000000002';
+ const detail={...mediaDetail({}),item:{...mediaDetail({}).item,id:'fixture-item'},editing:{contentEditable:true}};
+ await page.evaluate(({detail,setId})=>{
+  window.__editorFixture.preview(detail);
+  window.__haieduSupabaseClient.functions.invoke=async(name,{body})=>({data:{versions:[{id:setId,title:'Synthetic <set>',locale:'en',total:3,modality:'text'}]}});
+ },{detail,setId});
+ await page.getByRole('button',{name:'Բովանդակություն',exact:true}).click();await page.locator('#chooseTaskSetBtn').click();await page.locator('#taskSetCatalog select').selectOption(setId);
+ assert.deepEqual(JSON.parse(await page.locator('#editStimulus').inputValue()),{kind:'task_set',schemaVersion:'haiedu-task-set-v1',taskSetVersionId:setId});assert.equal(await page.locator('#approveBtn').isDisabled(),true);
+ await page.evaluate(({detail,setId})=>{
+  window.__haieduSupabaseClient.functions.invoke=async()=>new Promise(resolve=>{window.resolveSet=()=>resolve({data:{taskSet:{id:setId,title:'Old source',position:1,total:3},stimulus:{kind:'text',schemaVersion:'haiedu-text-v1',locale:'en',content:'STALE SOURCE'}}});});
+  window.__editorFixture.preview({...detail,item:{...detail.item,stimulus:{kind:'task_set',schemaVersion:'haiedu-task-set-v1',taskSetVersionId:setId}}});
+ },{detail,setId});
+ await expect(page.locator('#learnerPreviewStimulus')).toContainText('բեռնվում');
+ await page.evaluate(detail=>{window.__editorFixture.preview({...detail,item:{...detail.item,stimulus:{kind:'text',contentHy:'Նոր նյութ'}}});window.resolveSet();},detail);
+ await expect(page.locator('#learnerPreviewStimulus')).toHaveText('Նոր նյութ');await assertSettled(state);
 });

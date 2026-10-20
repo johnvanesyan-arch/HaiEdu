@@ -8,8 +8,8 @@ import {routeGovernedLearning} from '../../supabase/functions/_shared/governed-l
 let browser;
 before(async()=>{browser=await chromium.launch({headless:true,...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{})});});
 after(async()=>{await browser?.close();});
-async function setup(t){
- const f=await fixture();t.after(()=>f.db.close());
+async function setup(t,options={}){
+ const f=await fixture(options);t.after(()=>f.db.close());
  const context={enrollmentId:id(371),curriculumReleaseId:id(501),unitId:id(511)};
  const html=`<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width"><main id="root"></main><script type="importmap">{"imports":{"tslib":"/sdk/tslib.mjs"}}</script><script type="module">
  import {mountLearningPlayer} from '/learning-player.mjs';
@@ -44,7 +44,7 @@ async function setup(t){
  await new Promise(resolve=>server.listen(0,'127.0.0.1',resolve));t.after(()=>new Promise(resolve=>{server.closeAllConnections();server.close(resolve);}));
  const bc=await browser.newContext({viewport:{width:390,height:844}});t.after(()=>bc.close());
  const page=await bc.newPage(),errors=[];page.on('pageerror',e=>errors.push(e.message));
- await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForSelector('.learning-audio');
+ await page.goto('http://127.0.0.1:'+server.address().port);await page.waitForSelector(options.reading?'[data-task-set]':'.learning-audio');
  return {f,page,errors};
 }
 
@@ -60,6 +60,27 @@ test('native private audio: failed load, actual WAV playback, normal speed, serv
  await page.setViewportSize({width:1365,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);
  await page.locator('input[name=answer]').first().check();await page.locator('button[type=submit]').click();await expect(page.locator('[data-feedback]')).toContainText('Հաջորդը');
  assert.equal(Number((await f.db.query('select count(*) n from attempts')).rows[0].n),count+1);
+ assert.deepEqual(await page.evaluate(()=>window.revoked),await page.evaluate(()=>window.created));assert.deepEqual(errors,[]);
+});
+
+test('shared reading set renders safe localized text, resumes in order and retains each question skill',async t=>{
+ const {f,page,errors}=await setup(t,{taskSet:true,reading:true});
+ await expect(page.locator('[data-task-set]')).toContainText('1/3');await expect(page.locator('#governedStimulus [lang=en]')).toContainText('<em>Plain text stays plain.</em>');
+ assert.equal(await page.locator('#governedStimulus em').count(),0);
+ for(const width of [390,1365]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);}
+ await page.locator('input[name=answer]').first().check();await page.locator('button[type=submit]').click();
+ await page.getByRole('button',{name:'Հաջորդը',exact:true}).click();await expect(page.locator('[data-task-set]')).toContainText('2/3');
+ await page.reload();await expect(page.locator('[data-task-set]')).toContainText('2/3');
+ const assignments=(await f.db.query('select item_id,skill_id from learning_session_items where session_id=$1 order by ordinal',[f.session])).rows;
+ assert.deepEqual(assignments.map(x=>x.item_id),f.set.items);assert.deepEqual(assignments.map(x=>x.skill_id),f.set.members.map(x=>x.skillId));assert.deepEqual(errors,[]);
+});
+
+test('shared listening set retains its source while each new question enforces verified playback',async t=>{
+ const {f,page,errors}=await setup(t,{taskSet:true});
+ await page.locator('.learning-audio button').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);await page.locator('audio').evaluate(a=>a.play());
+ await expect(page.locator('button[type=submit]')).toBeEnabled();await page.locator('input[name=answer]').first().check();await page.locator('button[type=submit]').click();await page.getByRole('button',{name:'Հաջորդը',exact:true}).click();
+ await expect(page.locator('[data-task-set]')).toContainText('2/3');await expect(page.locator('button[type=submit]')).toBeDisabled();
+ assert.equal((await f.db.query('select normalized_response from attempts where learning_session_id=$1',[f.session])).rows[0].normalized_response.taskSetEvidence.taskSetVersionId,f.set.setId);
  assert.deepEqual(await page.evaluate(()=>window.revoked),await page.evaluate(()=>window.created));assert.deepEqual(errors,[]);
 });
 test('native audio cleanup rejects late downloads and stops old playback on context disposal',async t=>{

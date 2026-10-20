@@ -14,6 +14,10 @@ on:
       - web/responsive-qa.css
       - scripts/written-work-read-acceptance.mjs
       - scripts/learning-audio-read-acceptance.mjs
+      - scripts/shared-task-sets-read-acceptance.mjs
+      - supabase/functions/get-learning-task-set/index.ts
+      - supabase/functions/_shared/learning-task-set-handler.mjs
+      - supabase/migrations/20261020175526_sprint_16_1b_shared_task_sets.sql
       - supabase/functions/get-learning-audio/index.ts
       - supabase/functions/_shared/learning-audio-handler.mjs
       - supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql
@@ -75,6 +79,7 @@ on:
       - web/learning-navigation.mjs
       - web/learning-player.mjs
       - web/learning-audio.mjs
+      - web/learning-task-set.mjs
       - web/typed-fields-contract.mjs
       - web/typed-fields-ui.mjs
       - web/arrangement-contract.mjs
