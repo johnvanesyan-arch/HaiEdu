@@ -1,0 +1,74 @@
+{
+  "schemaVersion": 1,
+  "scope": "English 7 source intake and framework design; no implementation or release",
+  "date": "2026-10-20",
+  "repositoryBaseline": "71a641350f8aed01364d0c84cfb0e7802e1d06f1",
+  "ownerDecision": {
+    "speaking": "classroom-assessed; excluded from platform assessment",
+    "speakingMarkEntryRequested": false
+  },
+  "proposedPlatformAreas": [
+    "reading",
+    "listening",
+    "vocabulary",
+    "grammar",
+    "writing"
+  ],
+  "textbook": {
+    "title": "English 7",
+    "author": "Lusine Grigoryan",
+    "publisher": "Zangak",
+    "year": 2023,
+    "isbn": "978-9939-99-035-4",
+    "pdfPages": 176,
+    "unitCount": 6,
+    "sha256": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9",
+    "inspection": "initial structure and representative tasks only",
+    "representativeTaskPages": [
+      6,
+      16,
+      23,
+      65
+    ],
+    "visuallyInspectedPages": [
+      6,
+      16,
+      175
+    ],
+    "officialProgrammeReconciled": false,
+    "audioAssetsVerified": false
+  },
+  "sourceAudit": [
+    {
+      "path": "supabase/functions/_shared/assessment-policy.mjs",
+      "sha256": "b8ab3ca0cc3e8426041292865b530d37f3c1a95849fdf759fc6a6f297f79bae6"
+    },
+    {
+      "path": "web/learning-player.mjs",
+      "sha256": "6d630b4dbd6f5a37a76ed48737770325ab3b4c8eafd841d86762d89873c87f36"
+    },
+    {
+      "path": "web/learning-stimulus.mjs",
+      "sha256": "b8b2680fe7080b09720e018c4f81b361a45279e76fcbe3d05a3cc326e1b74247"
+    },
+    {
+      "path": "docs/api-contract.md",
+      "sha256": "3f37e3d3f39500048486649fb0fa88b90ca2a4a9c89c0d0ad247ae1a6e02706f"
+    }
+  ],
+  "observedGovernedResponses": [
+    "single_choice",
+    "true_false"
+  ],
+  "observedGovernedStimuli": [
+    "text",
+    "image"
+  ],
+  "extendedWritingReviewRoute": "teacher rubric review recommended; owner decision pending",
+  "implementationStarted": false,
+  "runtimeChanged": false,
+  "databaseWrites": 0,
+  "englishReleaseCreated": false,
+  "newScoringPolicyActivated": false,
+  "scopeValidation": "local documentation review; no additional local runtime tests"
+}

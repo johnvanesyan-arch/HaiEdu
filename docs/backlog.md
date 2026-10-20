@@ -1,6 +1,21 @@
 # Product backlog
 
-**Status source:** [Project status register](project-status.md), reconciled 2026-10-19. This file is a scoped implementation checklist, not a second current sprint ledger. Completed technical work is checked below; genuine external/release gates remain open. Later stages and current inventories are in the register; the [roadmap](sprint-roadmap.md) defines their sequence.
+**Status source:** [Project status register](project-status.md), reconciled 2026-10-20. This file is a scoped implementation checklist, not a second current sprint ledger. Completed technical work is checked below; genuine external/release gates remain open. Later stages and current inventories are in the register; the [roadmap](sprint-roadmap.md) defines their sequence.
+
+## English 7 framework and first unit — 16.1A–16.1C
+
+- [x] Identify the uploaded Grigoryan/Zangak 2023 textbook and record its SHA-256, edition, six-unit structure and representative task formats.
+- [x] Record the owner's speaking exclusion: classroom assessment only, without a platform recording or mark-entry feature.
+- [x] Draft the reusable reading/listening/vocabulary/grammar/writing framework and source-based capability audit.
+- [ ] Reconcile the applicable official programme and map the first unit's outcomes, prerequisites and appropriate evidence.
+- [ ] Verify the book's listening media, task links and delivery conditions.
+- [ ] Settle the first release's extended-writing assessment route and teacher workload; specify its rubric or explicit deferral.
+- [ ] Review the English-specific scoring/readiness contract, accepted-answer policies, assistance rules and defensible item counts.
+- [ ] Implement the needed response editors, media/task sets, authoring validation, private server grading and rubric/review states.
+- [ ] Verify valid language alternatives, partial credit, unsupported responses, media failures, answer retries, score protection and role/subject/tenant isolation.
+- [ ] Author and review one complete unit with textbook/programme and whole-bank comparison evidence; complete exact deployment and authenticated desktop/mobile acceptance before release.
+
+[Framework](english-7-assessment-framework.md) · [Intake/capability evidence](evidence/english-7-framework-intake-20261020.json). This checklist records design work only; no English runtime or assessment is live.
 
 ## Sprint 0 — Technical foundation
 - [x] Repository scaffold
@@ -285,9 +300,9 @@ Detailed specification: `docs/sprint-12-5-universal-chapter-review-mastery-retry
 - [x] Act on the explicit October 20 Chapter VI deployment direction: freeze D19/P8/M17/R12, 14/17 plus twelve skill minima, and knowledge-only provisional scope.
 - [x] Rehearse rollback, activate five disjoint forms/89 slots, and verify 719 exact configuration rows and 61 preservation scopes.
 - [x] Pass authenticated six-chapter production acceptance 231/231 and two-school isolation 54/54; verify all 59 tracked tables unchanged and save the redacted evidence.
-- Notion mirrors this closure only when its roadmap 4.18 source stamp matches the merged documentation commit and the readback preserves all eleven native child pages.
+- Notion closure synchronization was verified at roadmap 4.18 against source `71a641350f8aed01364d0c84cfb0e7802e1d06f1`, preserving all eleven native child pages. Later checkpoints must update the mirror to their own merged source commit.
 - [ ] Complete independent specialist/exposure review and applicable performed-practical assessment before promotion beyond the provisional scope.
-- [ ] Begin English Grade 7 textbook intake and programme mapping as the next subject (16.1); keep Physics course integration open.
+- [x] Receive and initially inspect the English Grade 7 textbook; continue programme mapping and the framework under 16.1A above. Physics course integration remains open.
 
 [Chapter VI map](chapter-vi-preparation.md) · [Image corrections](chapter-vi-image-corrections.md) · [Batch 1 comparison](chapter-vi-batch-01-comparison.md) · [Batch 1 staging](chapter-vi-batch-01-staging.md) · [Batch 2 comparison](chapter-vi-batch-02-comparison.md) · [Batch 2 staging](chapter-vi-batch-02-staging.md) · [Batch 3 comparison](chapter-vi-batch-03-comparison.md) · [Batch 3 staging](chapter-vi-batch-03-staging.md) · [Foundation evidence](evidence/chapter-vi-foundation-20261019.json) · [Correction evidence](evidence/chapter-vi-image-corrections-20261019.json).
 
