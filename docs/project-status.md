@@ -1,7 +1,7 @@
 # Project status register
 
 
-**Updated:** 2026-10-20 Asia/Yerevan · 16.1B.3 matching/ordering deployed; production acceptance verified · **Roadmap:** 4.23
+**Updated:** 2026-10-20 Asia/Yerevan · 16.1B.4 protected audio implemented; release checks pending · **Roadmap:** 4.24
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
@@ -13,6 +13,7 @@ Completion describes the stated scope only. Technical completion, owner-approved
 
 | Stage | Current disposition | Evidence and remaining boundary |
 | --- | --- | --- |
+| 16.1B.4 | Implemented; remote release verification pending | Protected replayable audio and reviewer preview; local tests/browser checks pass. No media/content/policy activation. [Contract](protected-audio-capability.md). |
 | 16.1B.3 | Deployed; exact source and production read acceptance verified | Matching/categorisation and exact ordering, private drafts and v3 item points; 268/268 live checks, 24 preservation scopes unchanged. No content/policy activation. [Contract](matching-ordering-capability.md) · [Evidence](evidence/matching-ordering-release-20261020.json). |
 | 16.1B.2 | Deployed; exact source and production read acceptance verified | Short answers/gaps, private drafts and v3 points reporting; 268/268 live checks, 23 preservation scopes unchanged. No content/policy activation. [Contract](typed-fields-capability.md) · [Evidence](evidence/typed-fields-release-20261020.json). |
 | 16.1B.1 | Writing capability deployed; live workspace/read acceptance verified | Student drafts/submissions, teacher rubric marking, revisions and privacy lifecycle. No production tasks or English activation. [Implementation](written-work-workspaces.md). |
@@ -87,7 +88,9 @@ Completion describes the stated scope only. Technical completion, owner-approved
 
 ## English 7 current checkpoint — 2026-10-20
 
-**Sprint 16.1B.3 — matching and ordering deployed and verified.** One-to-one matching, categorisation with reusable targets, reviewed exact ordering sequences and private resumable drafts are available as explicit capabilities. Each question contributes at most one point; reports distinguish points from entirely correct answers. Required PR/main CI passed **1,347 tests, 77 native browser checks and PostgreSQL 17.6/concurrency checks**. All **8 SQL definitions** and **12 affected Edge bundles** match source; production acceptance passed **268/268** with two-school isolation **54/54**. All **24 tracked data snapshots** are unchanged. No English content or scoring policy is activated. Audio and shared task sets are next. [Capability contract](matching-ordering-capability.md).
+**Sprint 16.1B.4 — protected audio implemented; release verification in progress.** Reviewed immutable recordings, authenticated private-byte delivery, replayable Practice/Chapter Review playback, retry handling, reviewer selection/preview and completion evidence are implemented. All 1,353 local Node tests pass, including audio authorization/failure checks; affected native learner/reviewer checks pass. Required remote CI, deployment and exact-source production acceptance are pending. No recordings, English content or adopting policies are activated. Shared reading/listening task sets are next; transcripts and capped assessment playback remain unavailable pending their contracts. [Capability contract](protected-audio-capability.md).
+
+**Sprint 16.1B.3 — matching and ordering deployed and verified.** One-to-one matching, categorisation with reusable targets, reviewed exact ordering sequences and private resumable drafts are available as explicit capabilities. Each question contributes at most one point; reports distinguish points from entirely correct answers. Required PR/main CI passed **1,347 tests, 77 native browser checks and PostgreSQL 17.6/concurrency checks**. All **8 SQL definitions** and **12 affected Edge bundles** match source; production acceptance passed **268/268** with two-school isolation **54/54**. All **24 tracked data snapshots** are unchanged. No English content or scoring policy is activated. Protected audio follows under 16.1B.4; shared task sets remain open. [Capability contract](matching-ordering-capability.md).
 
 **Sprint 16.1B.2 — typed answers and gap-filling deployed and verified.** Bounded fields, reviewed alternatives, private resumable drafts, fractional item points and role-consistent reporting are available as an opt-in capability. Required PR/main CI passed (1,341 tests, 73 browser checks and PostgreSQL 17.6); exact-source production acceptance passed 268/268, with two-school isolation 54/54. All 15 SQL definitions and 16 affected Edge bundles match source; all 23 tracked content, policy and learner-data snapshots are unchanged. No English content or scoring policy is activated. Matching/ordering is tracked under 16.1B.3; audio and task sets follow. [Capability contract](typed-fields-capability.md).
 

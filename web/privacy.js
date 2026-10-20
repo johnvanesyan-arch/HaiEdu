@@ -41,6 +41,7 @@ function inventoryPresentation(role, inventory) {
         ["Ամրապնդման իրադարձություններ", inventory.remediationEvents ?? 0],
         ["Գրավոր աշխատանքներ՝ սևագրերով, ներկայացված տարբերակներով և մեկնաբանություններով", inventory.writtenWork ?? 0],
         ["Չուղարկված պատասխանների սևագրեր", inventory.responseDrafts ?? 0],
+        ["Ձայնագրությունների օգտագործման գրառումներ", inventory.audioDeliveries ?? 0],
       ],
     },
     teacher: {

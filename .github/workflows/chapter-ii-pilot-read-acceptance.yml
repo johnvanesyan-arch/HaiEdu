@@ -11,6 +11,7 @@ on:
       - web/assessment-reporting.mjs
       - web/course-page.js
       - web/learning-player.mjs
+      - web/learning-audio.mjs
       - supabase/migrations/*_sprint_15c15_assessment_policy_v2.sql
       # Written only after activation is verified; preparation merges do not run live QA.
       - docs/evidence/chapter-ii-pilot-activation-20261013.json

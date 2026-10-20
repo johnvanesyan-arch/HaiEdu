@@ -21,7 +21,10 @@
 - [x] Close 16.1B.2 required CI, exact SQL/Edge readback and production preservation/read acceptance (268/268). The Notion source stamp records the merged documentation closure; 11 native child pages are retained.
 - [x] Implement matching/categorisation and exact ordering with public definitions, private keys/drafts and existing v3 item points (16.1B.3).
 - [x] Close 16.1B.3 required CI, eight exact SQL definitions, twelve exact Edge bundles and production preservation/read acceptance (268/268). The authoritative register/evidence and source-stamped Notion closure record the delivery; 11 native child pages are retained.
-- [ ] Implement audio and shared task-set capabilities.
+- [x] Implement protected, immutable, replayable Practice/Chapter Review audio with private delivery, reviewer preview and failure-safe completion evidence (16.1B.4).
+- [ ] Close 16.1B.4 required CI, exact SQL/Edge deployment, production read/preservation acceptance and merged-source Notion synchronization.
+- [ ] Implement shared reading/listening task sets and source-family exposure protection (16.1B.5).
+- [ ] Accept and implement transcript-support and capped Diagnostic/Mastery audio/interruption rules before assessment adoption.
 - [ ] Verify valid language alternatives, partial credit, unsupported responses, media failures, answer retries, score protection and role/subject/tenant isolation.
 - [ ] Author and review one complete unit with textbook/programme and whole-bank comparison evidence; complete exact deployment and authenticated desktop/mobile acceptance before release.
 

@@ -1,0 +1,201 @@
+{
+  "schemaVersion": "haiedu-protected-audio-release-v1",
+  "date": "2026-10-20",
+  "baseCommit": "305855cb523cd18941f8c437863b64819aa61952",
+  "scope": "16.1B.4 protected replayable Practice/Chapter Review audio; no content or policy adoption",
+  "phase": "local implementation verified; required remote CI and production verification pending",
+  "preflight": {
+    "preservationQuery": "select jsonb_object_agg(name,snapshot) preservation from (select 'items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.items t union all select 'attempts' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.attempts t union all select 'item_options' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.item_options t union all select 'written_work' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_work t union all select 'item_versions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.item_versions t union all select 'written_reviews' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_reviews t union all select 'assessment_pools' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_pools t union all select 'item_answer_keys' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.item_answer_keys t union all select 'learning_sessions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_sessions t union all select 'curriculum_releases' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.curriculum_releases t union all select 'written_submissions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_submissions t union all select 'assessment_blueprints' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_blueprints t union all select 'assessment_pool_items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_pool_items t union all select 'written_task_versions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.written_task_versions t union all select 'learning_session_items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_session_items t union all select 'curriculum_release_units' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.curriculum_release_units t union all select 'curriculum_release_skills' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.curriculum_release_skills t union all select 'assessment_blueprint_items' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_blueprint_items t union all select 'assessment_policy_bindings' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.assessment_policy_bindings t union all select 'learning_model_configurations' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_model_configurations t union all select 'learning_model_runtime_bindings' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_model_runtime_bindings t union all select 'academic_mastery_policy_versions' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.academic_mastery_policy_versions t union all select 'student_skill_mastery_by_release' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.student_skill_mastery_by_release t union all select 'learning_response_drafts' name,jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(to_jsonb(t)::text,'' order by to_jsonb(t)::text),''))) snapshot from public.learning_response_drafts t) q;",
+    "snapshots": [
+      {
+        "preservation": {
+          "items": {
+            "md5": "02a9ac127de1e789dde981167803bbf6",
+            "rows": 1251
+          },
+          "attempts": {
+            "md5": "26d44860397d32ab6023da8e72cfcb0e",
+            "rows": 42
+          },
+          "item_options": {
+            "md5": "2f762b42bec0fdeac871659af168de6e",
+            "rows": 4396
+          },
+          "written_work": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "item_versions": {
+            "md5": "b0af9e1e86807f1b8e339b90a52b03f9",
+            "rows": 1146
+          },
+          "written_reviews": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "assessment_pools": {
+            "md5": "d6450febadadd4af95b10f3a8c9a7b92",
+            "rows": 19
+          },
+          "item_answer_keys": {
+            "md5": "1054877916900dca98aa788fa67c9dd6",
+            "rows": 1251
+          },
+          "learning_sessions": {
+            "md5": "a5d0326f20b58e02773af6281ee31cdb",
+            "rows": 8
+          },
+          "curriculum_releases": {
+            "md5": "242aae0aedf8c5d85e0a2a415a2f8703",
+            "rows": 7
+          },
+          "written_submissions": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "assessment_blueprints": {
+            "md5": "38fe215a14d86c322b7826724d8a7fac",
+            "rows": 27
+          },
+          "assessment_pool_items": {
+            "md5": "184285de8853be3dfc41e8f90db0dda4",
+            "rows": 1244
+          },
+          "written_task_versions": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "learning_session_items": {
+            "md5": "be40162b06e91a52213d5b6fd6e810bc",
+            "rows": 96
+          },
+          "curriculum_release_units": {
+            "md5": "449c3d22acb7c1b4c92f261c1f8aaf61",
+            "rows": 7
+          },
+          "learning_response_drafts": {
+            "md5": "d41d8cd98f00b204e9800998ecf8427e",
+            "rows": 0
+          },
+          "curriculum_release_skills": {
+            "md5": "7bf9605a3f0222a6d4c6d08d14cc6503",
+            "rows": 66
+          },
+          "assessment_blueprint_items": {
+            "md5": "7e54e189ad648f2a3f0a4538a01f8b60",
+            "rows": 1872
+          },
+          "assessment_policy_bindings": {
+            "md5": "2c32ee0b3e126db5e47b7de55a5ebacf",
+            "rows": 20
+          },
+          "learning_model_configurations": {
+            "md5": "4254a36a7a040133d3592cd131c83c83",
+            "rows": 6
+          },
+          "learning_model_runtime_bindings": {
+            "md5": "dd95315c4395cb93457b2c5afaefc495",
+            "rows": 6
+          },
+          "academic_mastery_policy_versions": {
+            "md5": "1c69b7132347cd8b67a89268668f27ce",
+            "rows": 1
+          },
+          "student_skill_mastery_by_release": {
+            "md5": "19a0f8555ac31ac870a6cff088c9ce29",
+            "rows": 13
+          }
+        }
+      }
+    ],
+    "persistentBlockingEvidence": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+    "vercelConnectorLimitation": "get_project remains 403 for the explicit known team/project; no local Vercel CLI is available; unchanged independent Production/Blocking browser attestation is reused",
+    "sqlDefinitions": [
+      {
+        "name": "private.validate_assessment_policy_v1",
+        "md5": "b661c4a9efe2114cd26715713426f5ef"
+      },
+      {
+        "name": "public.service_record_session_answer_atomic",
+        "md5": "d2f93549382bf61f181b34f8606581e4"
+      },
+      {
+        "name": "public.service_governed_learning_operation",
+        "md5": "849c4b1bd64a053f22ec70a7dac06948"
+      }
+    ]
+  },
+  "localVerification": {
+    "nodeTests": {
+      "pass": 1353,
+      "fail": 0,
+      "command": "node --test --test-concurrency=3 tests/*.test.mjs",
+      "environment": "Node 24.19.0; isolated embedded PostgreSQL fixtures; required Node 22/PostgreSQL 17.6 CI pending",
+      "initialRun": "Default parallel local run had two file-level process failures; both files passed focused rerun and the complete bounded-concurrency rerun passed."
+    },
+    "focusedAudioTests": 6,
+    "nativeAudioBrowserTests": 2,
+    "nativeReviewerBrowserTests": 12,
+    "browserEnvironment": "Chromium 153, actual learner/reviewer modules and Edge/SQL fixtures; storage/auth doubles and synthetic WAV; no production media playback claim",
+    "typecheck": true,
+    "webSyntax": true,
+    "browserQATriggers": true,
+    "sdkTransportCorrection": {
+      "sdk": "@supabase/functions-js 2.118.0",
+      "focusedChecksPassed": 16,
+      "reason": "Supabase FunctionsClient decodes audio MIME responses as text. Deliver octet-stream plus exposed validated media type; both learner and reviewer use shared Blob decoder. Native playback now exercises the actual pinned SDK.",
+      "source": "https://github.com/supabase/supabase-js/tree/master/packages/core/functions-js",
+      "anonymousProbeCorrection": "Live anonymous PostgREST permission denial is HTTP 401/code 42501; authenticated denial remains 403/code 42501. The read-only verifier accepts these exact denials, never outages."
+    }
+  },
+  "adoption": {
+    "registeredAudioVersions": 0,
+    "englishRecordingsUploaded": 0,
+    "englishItemsCreated": 0,
+    "contentApprovals": 0,
+    "policiesActivated": 0,
+    "transcriptsAvailable": false,
+    "diagnosticMasteryAudio": false
+  },
+  "remaining": [
+    "shared reading/listening task sets and source-family allocation/exposure",
+    "transcript assistance and accepted capped assessment/interruption policy",
+    "five English MP3 listening review and hosting/permission decision",
+    "English Unit 1 content authoring/review and final assessment/release acceptance"
+  ],
+  "deployment": null,
+  "expectedSqlDefinitions": [
+    {
+      "name": "private.validate_assessment_policy_v1",
+      "md5": "c582cf4a23e9ba667eb6af350c232309"
+    },
+    {
+      "name": "public.service_record_session_answer_atomic",
+      "md5": "a34f1b26d32af62f4cddbe2df428ef1d"
+    },
+    {
+      "name": "public.service_governed_learning_operation",
+      "md5": "f2664b801ce83f08778b83b0933344f7"
+    },
+    {
+      "name": "private.guard_audio_version",
+      "md5": "4c399d24b6a68d7d78199b21036aecc8"
+    },
+    {
+      "name": "private.guard_item_audio_reference",
+      "md5": "edfc71f232519b275bdb340dc35bb3fc"
+    },
+    {
+      "name": "private.validate_audio_reference",
+      "md5": "7b6c79e294d7e414990d8acc8c5ff4c2"
+    },
+    {
+      "name": "public.service_learning_audio",
+      "md5": "7c4c787e8084c45e9560071ddc41d2cc"
+    },
+    {
+      "name": "private.guard_audio_attempt",
+      "md5": "81abce8fd2461e512347acc7ab443f17"
+    }
+  ]
+}
