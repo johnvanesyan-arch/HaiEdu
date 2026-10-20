@@ -12,6 +12,14 @@ Observed examples establish the capability needs: p.6 includes matching, word-ba
 
 Unit 1, “Me in the World,” is the proposed first implementation slice because its sampled tasks exercise several required capabilities. Its proposed 14-skill map and prerequisite/extension boundaries are now recorded; final bank counts, pass rules and writing-review disposition remain open.
 
+## Owner authoring direction — 2026-10-20
+
+John authorises improving the English learning material's correctness, naturalness, clarity and educational quality while preserving the coursebook's structure, unit order, within-unit sequence and topics. Correct source errors and improve task wording, examples, options, explanations and hints within the taught outcomes and progression. Rewriting is permitted; copying an error merely to match the printed wording is not required.
+
+Keep every adapted task linked to its book unit, page/activity and intended outcome, with the reason for any substantive adaptation. Supplementary material must support the same topic at the relevant point in the book; it must not introduce an untaught requirement or replace the course with a different syllabus. Preserve the coursebook's sequence where official programme topic numbering differs, retaining both identifiers for traceability. Skill IDs and reporting groups organise evidence; they do not set lesson order. Speaking activities keep their classroom-assessed disposition in the source map.
+
+This authoring direction does not approve the proposed teacher-marking workload, final rubric/pass rules or runtime activation. Whole-bank comparison, content review, version history and release gates remain applicable.
+
 ## Evidence areas and task formats
 
 The five reporting areas are a design organisation, not official outcome codes. Each task must be mapped to the reconciled programme before release. A response format is separate from the skill it measures: choosing an answer can test comprehension, but does not itself demonstrate extended writing.

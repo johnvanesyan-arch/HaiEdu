@@ -7,6 +7,8 @@ This is the authoritative record of **current delivery status and unresolved gat
 
 Completion describes the stated scope only. Technical completion, owner-approved sequencing closure, content approval, pilot authorization and production release are separate decisions. No documentation update changes runtime authorization or a stored release gate.
 
+**English authoring decision — 2026-10-20:** John authorises quality improvements while preserving the coursebook's structure, sequence and topics. Adapted content retains page/activity and outcome traceability; skill/reporting groups do not reorder lessons. The [framework direction](english-7-assessment-framework.md#owner-authoring-direction--2026-10-20) and [Unit 1 map](english-7-unit-01-preparation.md) record the decision. Teacher-marked writing mechanics remain proposed and are being explained for a later decision; this clarification does not complete 16.1B, accept a teacher workload or change any API/runtime/release state. Roadmap 4.20's stage dispositions and existing summaries remain applicable.
+
 ## Delivery status
 
 | Stage | Current disposition | Evidence and remaining boundary |

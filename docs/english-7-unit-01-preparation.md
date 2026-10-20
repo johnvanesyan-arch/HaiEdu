@@ -13,6 +13,8 @@
 
 The textbook and programme use different unit/topic titles. They match by content, not by identical labels. Across the course, book Units 1/2/3/4/5/6 correspond to programme topics 1/2/3/5/4/6 respectively: the school/time and Olympics topics are in a different order. Future mapping must preserve both identifiers.
 
+**Owner authoring direction, 2026-10-20:** improve the English material while retaining the coursebook's structure, sequence and topics. The Unit 1 lesson path follows the source activity order on pp.3–27; the skill groups below are evidence labels, not a replacement teaching sequence. Corrections and rewritten tasks/hints retain their source page/activity and outcome. Supplementary cultural material belongs at the matching topic, within the taught scope. See the [framework's authoring direction](english-7-assessment-framework.md#owner-authoring-direction--2026-10-20).
+
 The current standard distinguishes oral and written interaction. The owner's speaking exclusion covers oral production/interaction; it does **not** remove written notes or correspondence. No CEFR certification is inferred from completing this unit.
 
 The mappings below are curriculum-design interpretations supported by these sources. A mapped outcome is not evidence that a learner has achieved it, and preparation does not substitute for specialist review.
