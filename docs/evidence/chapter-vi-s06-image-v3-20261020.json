@@ -1,0 +1,209 @@
+{
+  "schemaVersion": 1,
+  "scope": "15F.5 S06-I01 image-only follow-up",
+  "ownerRequestDate": "2026-10-20",
+  "itemCode": "PHY7-U06-S06-I01",
+  "fromVersion": 2,
+  "toVersion": 3,
+  "uploadedFile": "image(20261020-071519).png",
+  "asset": {
+    "path": "web/assets/textbook/physics7-2023/p131-communicating-vessels-v3.png",
+    "url": "https://www.haiedu.am/assets/textbook/physics7-2023/p131-communicating-vessels-v3.png",
+    "sha256": "26f41a879ab9302ad8303e5efb1527e9866d77528081e40f8ab972f66d57d43d",
+    "bytes": 1619301,
+    "width": 1028,
+    "height": 1024,
+    "commit": "800b4771660dcf62a9c1b2483dc45ef71bbe9276",
+    "ci": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39385891974",
+    "allFiveReleaseChecksPassed": true,
+    "productionVerifiedAt": "2026-10-20T07:26:16.612Z",
+    "publicBrowserRenderObserved": true
+  },
+  "comparison": {
+    "currentSkillQuestions": 20,
+    "priorSnapshots": 21,
+    "skillFingerprint": "f4821e7e695190eea076ea6e6381d9ef",
+    "historyFingerprint": "2c576e15b4bcb89b8b2a05a3add346aa",
+    "source": "Physics 7, Melikyan-Mailian, 2023, section 44, printed page 131, figure 92",
+    "sourceTextbookSha256": "d8404d572f145d4afe924d0b8af900b3d9ed085a37893594667ab07a2ec12904",
+    "reusedComparison": "docs/chapter-vi-batch-02-comparison.md",
+    "nearestRelated": [
+      "PHY7-U06-S06-I03",
+      "PHY7-U06-S06-I04",
+      "PHY7-U06-S06-D01",
+      "PHY7-U06-S06-M01",
+      "PHY7-U06-S06-M04"
+    ],
+    "disposition": "intentional_practice_variant",
+    "newIndependentReasoningCapacity": 0,
+    "reason": "Only figure 92 remains; the same equal-level inference and all response logic are preserved. Different pairs are separate connected systems."
+  },
+  "changes": [
+    "stimulus.url",
+    "stimulus.altHy",
+    "stimulus.source.sha256",
+    "version_no",
+    "updated_at"
+  ],
+  "preserved": [
+    "prompt",
+    "options",
+    "answer C",
+    "explanation",
+    "hints",
+    "misconception mappings",
+    "all config",
+    "v1 snapshot",
+    "v2 snapshot",
+    "other Chapter VI item rows",
+    "previous asset files"
+  ],
+  "rehearsalAt": "2026-10-20T07:27:39.984197+00:00",
+  "committedAt": "2026-10-20T07:28:15.692307+00:00",
+  "qa": {
+    "sourceSha256": "846b4c23a0c0c3ffe7bb1e89478e445f76736013b36a18ea6c07e95d7ca29db2",
+    "phase": "projected-v3",
+    "method": "Exact deployed v11 evaluator replay against transaction/readback catalogue with a read-only in-memory query adapter; not authenticated live Edge invocation",
+    "results": [
+      {
+        "itemCode": "PHY7-U06-S06-I01",
+        "itemId": "110ab8c8-9639-4522-81d4-4b463dd951b9",
+        "versionNo": 3,
+        "fingerprint": "5235717a0691d474dd4ecb82df4a7701",
+        "result": {
+          "passed": true,
+          "errors": [],
+          "warnings": [],
+          "details": {
+            "optionCount": 4,
+            "misconceptionMappings": 3,
+            "misconceptionMappingPolicy": "all_distractors",
+            "missingMisconceptionResponseKeys": [],
+            "duplicateCodes": [],
+            "expectedDifficultyBand": "foundation",
+            "generatedVerification": null,
+            "answerPositionDistribution": {
+              "scope": "item_template",
+              "templateCode": "PHY7-U06-S06-I01-F01-T01",
+              "familyItemCount": 1,
+              "optionKeys": [
+                "A",
+                "B",
+                "C",
+                "D"
+              ],
+              "counts": {
+                "A": 0,
+                "B": 0,
+                "C": 1,
+                "D": 0
+              },
+              "missingPositions": [
+                "A",
+                "B",
+                "D"
+              ],
+              "maximumPositionCount": 1,
+              "maximumPositionShare": 1,
+              "unrecognizedAnswers": [],
+              "policyVersion": "family-balanced-v1",
+              "severity": "warning",
+              "imbalanced": false
+            },
+            "evidenceBlueprintVerification": {
+              "policyVersion": "haiedu-evidence-blueprint-v1",
+              "evidenceBlueprintPolicy": "distinct-purpose-v1",
+              "itemEvidencePurpose": "application",
+              "requiredEvidencePurposes": [
+                "application"
+              ],
+              "enforceUniqueEvidencePurposes": true,
+              "purposeCounts": {
+                "application": 1
+              },
+              "missingRequiredPurposes": [],
+              "duplicatePurposes": [],
+              "missingPurposeItemCodes": [],
+              "invalidPurposeItemCodes": [],
+              "familyStateFingerprint": "haiedu-family-state-v1|bf66cfac-70a4-423e-9ce5-001f62445a37|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|110ab8c8-9639-4522-81d4-4b463dd951b9:3:application"
+            },
+            "scope": "technical_structure_metadata_generated_variant_answer_position_and_evidence_blueprint_quality"
+          }
+        }
+      }
+    ]
+  },
+  "readback": {
+    "qa": [
+      {
+        "errors": [],
+        "passed": true,
+        "runKey": "15F5-s06-image-v3-20261020",
+        "version": 3,
+        "warnings": [],
+        "familyStateFingerprint": "haiedu-family-state-v1|bf66cfac-70a4-423e-9ce5-001f62445a37|1|haiedu-evidence-blueprint-v1|distinct-purpose-v1|application|1|110ab8c8-9639-4522-81d4-4b463dd951b9:3:application"
+      }
+    ],
+    "guides": [
+      {
+        "count": 146,
+        "lifecycle_status": "published"
+      }
+    ],
+    "target": {
+      "code": "PHY7-U06-S06-I01",
+      "status": "draft",
+      "version": 3,
+      "assetUrl": "https://www.haiedu.am/assets/textbook/physics7-2023/p131-communicating-vessels-v3.png",
+      "assetSha256": "26f41a879ab9302ad8303e5efb1527e9866d77528081e40f8ab972f66d57d43d",
+      "reviewStatus": "needs_review",
+      "variantFingerprint": "5235717a0691d474dd4ecb82df4a7701"
+    },
+    "release": {
+      "status": "draft",
+      "activatedAt": null
+    },
+    "runtime": {
+      "exposures": 0,
+      "formItems": 0,
+      "poolItems": 0,
+      "sessionItems": 0
+    },
+    "observedAt": "2026-10-20T07:29:28.838279+00:00",
+    "definitions": [
+      {
+        "count": 125,
+        "status": "draft"
+      },
+      {
+        "count": 33,
+        "status": "active"
+      }
+    ],
+    "oldSnapshots": [
+      {
+        "hash": "33e9e97db61b8cc941a4243e8403a296",
+        "version": 1
+      },
+      {
+        "hash": "7cb9a361f70352f19de1330a42cf06cf",
+        "version": 2
+      }
+    ],
+    "questionInventory": [
+      {
+        "count": 1,
+        "status": "draft",
+        "review_status": "needs_review"
+      },
+      {
+        "count": 241,
+        "status": "published",
+        "review_status": "approved"
+      }
+    ]
+  },
+  "reviewerBrowser": "Signed out; authenticated reviewer-page visual acceptance was unavailable. Public image render and saved item-to-asset link were verified.",
+  "approvalPerformed": false,
+  "releaseActivationPerformed": false
+}

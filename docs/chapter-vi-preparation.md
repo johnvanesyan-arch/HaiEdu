@@ -1,6 +1,6 @@
 # Chapter VI map — «Ճնշում։ Ճնշումն առօրյա կյանքում և տեխնիկայում»
 
-**Sprint 15F.1 preparation accepted and advanced through 15F.5 · 2026-10-19.** The owner accepted **16 skills, a 242-question ceiling in three batches of 70/90/82, four Practice-only non-gating skills and five separately tracked practical activities**. Sprints 15F.2–15F.4 created the inactive governed foundation and completed all three authoring batches. Subsequent ordinary review approved 233 question versions; Sprint 15F.5 records nine owner-selected image-corrected v2 drafts awaiting exact-version review. The 146 guides and 158 definitions remain drafts. No assessment contract, allocation, activation or learner release is included. The [project status register](project-status.md) remains authoritative.
+**Sprint 15F.1 preparation accepted and advanced through 15F.5 · 2026-10-20.** The accepted plan remains 16 skills, 242 questions in batches of 70/90/82, four Practice-only non-gating skills and five separately tracked practical activities. At 11:29 Asia/Yerevan, 241 questions are approved and S06-I01 v3 awaits review; 146 guides are published and definitions are 33 active / 125 draft. No assessment contract, allocation, activation or learner release is included. The [project status register](project-status.md) remains authoritative.
 
 ## Source scope
 
@@ -176,9 +176,15 @@ At this checkpoint, the cumulative inactive catalogue contained **160 questions:
 
 ## 15F.5 review and image-correction checkpoint
 
-Production now has 233 approved questions and nine owner-selected v2 questions awaiting exact-version review. All nine use replacement illustrations supplied for their exact prompts and saved under new `-v2.png` paths. Eight retain all learner text; `PHY7-U06-S13-I05` clarifies the pictured balance arrangement while retaining answer `C`, all choices, explanation, hints and misconception mappings.
+**2026-10-20 11:29 Asia/Yerevan checkpoint:** 242 questions — **241 approved and only `PHY7-U06-S06-I01` v3 awaiting review**; **146 published guides**; **33 active and 125 draft misconception definitions**. These counts record the observed review checkpoint.
 
-The S13 wording refresh covered 5,991 comparison profiles and related manual checks. It remains an intentional Practice variant with no independent-capacity claim, substantive duplicate or untaught science. The guarded transaction preserved v1 history and the inactive release boundary. Merge `f64deec141f4825e51b8c12f1d264882178f4b28` is live; all nine asset hashes/dimensions and nine v2 technical-QA records pass. Exact-version human review remains before those nine revisions can be approved. [Correction record](chapter-vi-image-corrections.md).
+The owner supplied figure 92 alone for `PHY7-U06-S06-I01`. Version 3 uses `p131-communicating-vessels-v3.png` and an accessible description of the three connected-vessel pairs. The prompt, four choices, answer `C`, explanation, hints, mappings and v1/v2 history are preserved. The image is live and matches the supplied 1,619,301-byte PNG (1028 × 1024); the guarded save and current-version QA passed with zero errors or warnings.
+
+The original October 19 nine-image delivery and S13 comparison remain recorded in the correction history. The new S06 file preserves the prior immutable images and snapshots.
+
+Release `physics7_u06_2026_08_14_draft_r6` remains draft and never activated, with zero U06 pool, form, session or exposure rows. Exact-version review of S06-I01 v3 and the remaining definitions is still open. Assessment contract, qualification, allocation and learner release remain separate.
+
+[S06 v3 evidence](evidence/chapter-vi-s06-image-v3-20261020.json) · [Correction record](chapter-vi-image-corrections.md).
 
 ## 15F.4 execution checkpoint
 
