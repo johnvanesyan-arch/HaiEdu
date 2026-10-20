@@ -1,0 +1,176 @@
+{
+  "schemaVersion": "haiedu-english-unit-draft-validation-v1",
+  "packetSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+  "counts": {
+    "items": 45,
+    "typedFields": 34,
+    "acceptedAlternatives": 36,
+    "rejectedAlternatives": 97,
+    "sqlGradeCases": 169,
+    "matchingMappings": 32,
+    "orderingTasks": 2,
+    "choiceItems": 19,
+    "sourceSets": 6
+  },
+  "modelWords": 87,
+  "coverage": [
+    {
+      "skill": "ENG7-U01-S01",
+      "items": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P02",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S02",
+      "items": [
+        "ENG7-U01-P05",
+        "ENG7-U01-P06",
+        "ENG7-U01-P22"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S03",
+      "items": [
+        "ENG7-U01-P07",
+        "ENG7-U01-P08",
+        "ENG7-U01-P09",
+        "ENG7-U01-P10",
+        "ENG7-U01-P11"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S04",
+      "items": [
+        "ENG7-U01-P12",
+        "ENG7-U01-P13"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S05",
+      "items": [
+        "ENG7-U01-P14",
+        "ENG7-U01-P15"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S06",
+      "items": [
+        "ENG7-U01-P16",
+        "ENG7-U01-P17",
+        "ENG7-U01-P18"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S07",
+      "items": [
+        "ENG7-U01-P19",
+        "ENG7-U01-P20",
+        "ENG7-U01-P21",
+        "ENG7-U01-P28",
+        "ENG7-U01-P29",
+        "ENG7-U01-P30"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S08",
+      "items": [
+        "ENG7-U01-P25",
+        "ENG7-U01-P26",
+        "ENG7-U01-P27"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S09",
+      "items": [
+        "ENG7-U01-R02",
+        "ENG7-U01-R04",
+        "ENG7-U01-R05",
+        "ENG7-U01-R06",
+        "ENG7-U01-R09",
+        "ENG7-U01-P23",
+        "ENG7-U01-P24"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S10",
+      "items": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R03",
+        "ENG7-U01-R07",
+        "ENG7-U01-R08"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S11",
+      "items": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L03",
+        "ENG7-U01-L05"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S12",
+      "items": [
+        "ENG7-U01-L02",
+        "ENG7-U01-L04",
+        "ENG7-U01-L06"
+      ],
+      "writing": []
+    },
+    {
+      "skill": "ENG7-U01-S13",
+      "items": [],
+      "writing": [
+        "ENG7-U01-W01"
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S14",
+      "items": [],
+      "writing": [
+        "ENG7-U01-W01"
+      ]
+    }
+  ],
+  "dispositions": {
+    "new_reasoning_coverage": 26,
+    "intentional_practice_variant": 19
+  },
+  "sourceInputSha256": {
+    "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15",
+    "supabase/migrations/20261020153856_sprint_16_1b_matching_ordering.sql": "9433867d65423cc359b897dd39b37893852586302a15705896a3a0ae34d34805",
+    "supabase/migrations/20261020112724_sprint_16_1b_written_work.sql": "4a26ea5721ba8f575a3fa0bf2dad892cade5cd24f0e98fa6a87294b1a21e46c4"
+  },
+  "checks": {
+    "activityOrder": true,
+    "uniqueStableIds": true,
+    "currentJsDefinitionsAndKeys": true,
+    "isolatedCurrentSqlGrading": true,
+    "explicitZeroVersusBlank": true,
+    "britishAmericanAlternatives": true,
+    "sourceMembership": true,
+    "sharedAudioFamily": true,
+    "writingDefinitionAndApprovalGuard": true,
+    "unapprovedImportDisabled": true
+  },
+  "limits": [
+    "Automated content/contract checks, not human language/SME approval.",
+    "No production writes, asset uploads, source registration, API changes or policy adoption.",
+    "No browser audio audition or English production end-to-end acceptance.",
+    "No unseen Diagnostic or Mastery capacity; no final pass rule."
+  ]
+}

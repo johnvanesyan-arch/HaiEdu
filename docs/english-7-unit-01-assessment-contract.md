@@ -1,5 +1,7 @@
 # English 7 Unit 1 — proposed assessment contract
 
+**16.1C.1 authoring follow-up — 2026-10-20:** The [complete draft review packet](english-7-unit-01-review-packet.md), [whole-bank comparison](english-7-unit-01-whole-bank-review.md) and [review handoff](english-7-unit-01-authoring-review.md) now provide the actual Unit 1 material in textbook order. Technical content-contract checks pass; human review, audio permissions/audition, final policy and learner release remain open. No English content is staged or activated.
+
 **Status: concrete design draft, 16.1A.2, 2026-10-20; not an active policy.** This specifies response handling and a reviewable writing option for the [Unit 1 map](english-7-unit-01-preparation.md). John subsequently authorised implementation of the teacher-review route under [16.1B.1](written-work-workspaces.md). This draft still does not set the final task/rubric, unit mastery thresholds or English release.
 
 ## Recommended first-unit scope
@@ -48,7 +50,7 @@ Every response records actual assistance. Transcript-supported completion may su
 
 **Proposed task shape:** a new classmate asks about your preferred clothing style. Write an **80–100-word note** describing the clothes/style you prefer, giving reasons, and responding politely to the classmate's stated suggestion. Supply the short incoming note in the prompt. Allow an imagined preference so personal disclosure is unnecessary. Do not require the student to share or send the note to anyone.
 
-The prompt combines the programme's descriptive outcome and the current standard's written-interaction outcome. It is a task specification, not an approved final question. A source-linked model and independent practice prompt must be created and reviewed without exposing the final response. Summary and picture-story writing remain useful extension practice, not replacements for this outcome.
+The prompt combines the programme's descriptive outcome and the current standard's written-interaction outcome. It is a task specification, not an approved final question. A source-linked model and independent practice prompt are authored under 16.1C.1 and still require review. They are separate from the proposed reviewed task; no protected/unseen status is claimed. Summary and picture-story writing remain useful extension practice, not replacements for this outcome.
 
 Proposed rubric: four criteria, each **0–3**, total **0–12**. These descriptors and weights are design choices, not official ministry scoring rules. Criterion-level evidence is more informative than the total; no passing score is activated here.
 

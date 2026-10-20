@@ -1,0 +1,1341 @@
+{
+  "schemaVersion": "haiedu-english-unit-authoring-corpus-v1",
+  "observedAt": "2026-10-20T19:01:35.775124+00:00",
+  "sourceCommit": "f664f0cdfd2b8f5e4826798afc7edb79902ef286",
+  "inventory": {
+    "counts": {
+      "items": 1251,
+      "releases": 7,
+      "item_versions": 1146
+    },
+    "skills": [
+      {
+        "id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+        "code": "PHY7-U01-S01",
+        "status": "review",
+        "name_en": "Recognise and classify physical phenomena",
+        "name_hy": "Ֆիզիկական երևույթների ճանաչում և դասակարգում",
+        "subject": "physics",
+        "description_en": "Recognise physical phenomena and, where appropriate, classify familiar examples by broad type."
+      },
+      {
+        "id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+        "code": "PHY7-U01-S02",
+        "status": "review",
+        "name_en": "Distinguish body, material, and phenomenon",
+        "name_hy": "Ֆիզիկական մարմին, նյութ և երևույթ տարբերակելը",
+        "subject": "physics",
+        "description_en": "Distinguish a physical body/object, the material it is made from, and a phenomenon/process."
+      },
+      {
+        "id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+        "code": "PHY7-U01-S03",
+        "status": "review",
+        "name_en": "Physicists and Armenian physicists",
+        "name_hy": "Ֆիզիկոսներ և հայ ֆիզիկոսներ",
+        "subject": "physics",
+        "description_en": "Associate selected textbook scientists with their broad scientific contributions, with particular attention to Armenian scientists."
+      },
+      {
+        "id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+        "code": "PHY7-U01-S04",
+        "status": "review",
+        "name_en": "Distinguish observation and experiment",
+        "name_hy": "Դիտումը և փորձը տարբերակելը",
+        "subject": "physics",
+        "description_en": "Given a scenario, determine whether it is observation or experiment and explain the essential difference."
+      },
+      {
+        "id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+        "code": "PHY7-U01-S05",
+        "status": "review",
+        "name_en": "Hypothesis–test–data–conclusion chain",
+        "name_hy": "Վարկած–փորձ–տվյալ–եզրակացություն շղթան",
+        "subject": "physics",
+        "description_en": "Use the inquiry chain: observation/problem, hypothesis, experimental test, evidence/data, and conclusion."
+      },
+      {
+        "id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+        "code": "PHY7-U01-S06",
+        "status": "review",
+        "name_en": "Physical quantities, units, and instruments",
+        "name_hy": "Ֆիզիկական մեծություններ, միավորներ և չափիչ սարքեր",
+        "subject": "physics",
+        "description_en": "Match common physical quantities to appropriate units and measuring instruments; identify the core SI units introduced in the chapter."
+      },
+      {
+        "id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+        "code": "PHY7-U01-S07",
+        "status": "review",
+        "name_en": "Simple unit conversions",
+        "name_hy": "Չափման միավորների պարզ փոխարկումներ",
+        "subject": "physics",
+        "description_en": "Perform simple length, time, and volume unit conversions used in Chapter I measurement tasks."
+      },
+      {
+        "id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+        "code": "PHY7-U01-S08",
+        "status": "review",
+        "name_en": "Scale division, measurement limit, and reading",
+        "name_hy": "Սանդղակի բաժանման արժեքը, չափման սահմանը և ցուցմունքը",
+        "subject": "physics",
+        "description_en": "Determine an instrument scale division value, measurement limit, and reading from a labelled scale or diagram."
+      },
+      {
+        "id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+        "code": "PHY7-U01-S09",
+        "status": "review",
+        "name_en": "Measurement error and precision",
+        "name_hy": "Չափման սխալ և ճշգրտության գնահատում",
+        "subject": "physics",
+        "description_en": "Use the textbook half-division error convention, compare precision, detect poor reading/positioning, and distinguish direct from indirect measurement."
+      },
+      {
+        "id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+        "code": "PHY7-U01-S10",
+        "status": "review",
+        "name_en": "Plan a measurement investigation and determine irregular volume",
+        "name_hy": "Չափման փորձի պլանավորում և անկանոն մարմնի ծավալի որոշում",
+        "subject": "physics",
+        "description_en": "Plan/interpret a simple measurement procedure, record results, and determine irregular-object volume by displacement using V=V2−V1, including transfer to a new setup."
+      },
+      {
+        "id": "0f6e2b25-72b3-4a72-8748-2b3143c1d374",
+        "code": "PHY7-U02-S01",
+        "status": "archived",
+        "name_en": "Distinguish a physical body from a substance",
+        "name_hy": "Տարբերակել ֆիզիկական մարմինն ու նյութը",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "bfd0b199-55ab-4933-acfd-7eeb4142fd4c",
+        "code": "PHY7-U02-S02",
+        "status": "review",
+        "name_en": "Justify particulate structure using evidence",
+        "name_hy": "Փորձերով հիմնավորել նյութի մասնիկային կառուցվածքը",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+        "code": "PHY7-U02-S03",
+        "status": "review",
+        "name_en": "Distinguish atom, molecule and chemical element",
+        "name_hy": "Տարբերակել ատոմը, մոլեկուլը և քիմիական տարրը",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+        "code": "PHY7-U02-S04",
+        "status": "review",
+        "name_en": "Compare molecular sizes with familiar scales",
+        "name_hy": "Մոլեկուլների չափերը համեմատել այլ մարմինների չափերի հետ",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "678beb6a-4654-40c2-a5b2-53cc97b2551b",
+        "code": "PHY7-U02-S05",
+        "status": "review",
+        "name_en": "Describe atomic and molecular motion in matter",
+        "name_hy": "Նկարագրել ատոմների և մոլեկուլների շարժումը նյութում",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "b7caca8c-d222-4715-a39f-80883f995471",
+        "code": "PHY7-U02-S06",
+        "status": "review",
+        "name_en": "Explain diffusion using examples",
+        "name_hy": "Դիֆուզիան բացատրել օրինակներով",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "c1e57a2d-d843-45ea-adf1-891837d12d6c",
+        "code": "PHY7-U02-S07",
+        "status": "review",
+        "name_en": "Compare diffusion rates across states of matter",
+        "name_hy": "Համեմատել դիֆուզիայի արագությունը նյութի տարբեր ագրեգատային վիճակներում",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "c2463f0b-9d96-4ae6-a814-0495db8a3872",
+        "code": "PHY7-U02-S08",
+        "status": "review",
+        "name_en": "Relate temperature to particle motion",
+        "name_hy": "Մարմնի ջերմաստիճանը կապել մասնիկների շարժման արագության հետ",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "802bce7e-7ede-4138-b2b2-35c4c1b68a32",
+        "code": "PHY7-U02-S09",
+        "status": "review",
+        "name_en": "Explain how a thermometer works",
+        "name_hy": "Բացատրել ջերմաչափի աշխատանքի սկզբունքը",
+        "subject": "physics",
+        "description_en": null
+      },
+      {
+        "id": "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+        "code": "PHY7-U03-S01",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մեխանիկական շարժումը և հաշվարկման մարմինը",
+        "subject": "physics",
+        "description_en": "Recognize a changing position and explain rest/motion relative to an explicitly named body."
+      },
+      {
+        "id": "4251bf02-d633-578a-bd36-44028b5ceecf",
+        "code": "PHY7-U03-S02",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մարմինը որպես նյութական կետ",
+        "subject": "physics",
+        "description_en": "Decide whether body dimensions matter for the stated question; never define a point model by small physical size alone."
+      },
+      {
+        "id": "808be543-acae-5df9-b903-eaceaf4c149c",
+        "code": "PHY7-U03-S03",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Շարժման հետագիծը և անցած ճանապարհը",
+        "subject": "physics",
+        "description_en": "Identify straight/curved trajectories, distinguish the line from its traversed length, and distinguish path length from endpoint distance."
+      },
+      {
+        "id": "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+        "code": "PHY7-U03-S04",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հավասարաչափ և անհավասարաչափ շարժում",
+        "subject": "physics",
+        "description_en": "Use equal-time distance records and the arbitrary-equal-interval definition; distinguish compatible observations from a proof for every instant."
+      },
+      {
+        "id": "b04dde38-3f39-5cea-a9a1-e7c6535cf39a",
+        "code": "PHY7-U03-S05",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ճանապարհային արագության իմաստը",
+        "subject": "physics",
+        "description_en": "Interpret distance per unit time. Treat the textbook introduction to direction as supporting vocabulary and distinguish numerical value from direction."
+      },
+      {
+        "id": "8a07485e-8462-5513-a3b6-f65bc8a7cce4",
+        "code": "PHY7-U03-S06",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արագության միավորների ձևափոխում",
+        "subject": "physics",
+        "description_en": "Convert m/s, km/h and cm/s, then compare speeds expressed in different units."
+      },
+      {
+        "id": "4f0315c6-35ea-5573-aab5-4f9c6329b6eb",
+        "code": "PHY7-U03-S07",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արագության, ճանապարհի և ժամանակի հաշվում",
+        "subject": "physics",
+        "description_en": "Choose and apply v=s/t, s=vt and t=s/v with compatible units and an explicit uniform-motion premise."
+      },
+      {
+        "id": "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb",
+        "code": "PHY7-U03-S08",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արագության որոշումը չափումներով",
+        "subject": "physics",
+        "description_en": "Choose a path interval and measure its matching elapsed time; record units and interpret repeated measurements. MCQs assess planning and interpretation, not performed laboratory competence."
+      },
+      {
+        "id": "e50673ec-767a-51c8-9936-9cfe31c438dd",
+        "code": "PHY7-U04-S01",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Զանգվածը՝ որպես իներտության չափ",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "15aabee0-a1b4-55f9-aa85-050c02baeb4b",
+        "code": "PHY7-U04-S02",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Նյութի խտության ֆիզիկական իմաստը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "81e71d34-04bf-5fcb-ace8-41f7e78e33c8",
+        "code": "PHY7-U04-S03",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Խտության, զանգվածի և ծավալի հաշվում",
+        "subject": "physics",
+        "description_en": "Chapter IV supporting curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "8f63124a-f78e-51d5-86a4-2d30df2b039b",
+        "code": "PHY7-U04-S04",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Խտության որոշումը չափումներով",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "43734dc0-44fd-5e1d-9924-d94db5383a18",
+        "code": "PHY7-U04-S05",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մարմինների փոխազդեցությունը, ուժը և նրա միավորը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "356028b3-ad67-5f97-a340-568473d378e3",
+        "code": "PHY7-U04-S06",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ծանրության ուժի հաշվում",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "cabe4921-4a09-5312-ba67-b50e5eddd8fd",
+        "code": "PHY7-U04-S07",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Առաձգական և պլաստիկ դեֆորմացիաներ",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "debbb0d7-e49a-5bf1-b85c-17ecc4024650",
+        "code": "PHY7-U04-S08",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հուկի օրենքը և փորձի արդյունքները",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "382b5279-9c50-5765-b916-8eaa14f050e7",
+        "code": "PHY7-U04-S09",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ուժաչափի աստիճանավորումը և ցուցմունքը",
+        "subject": "physics",
+        "description_en": "Chapter IV supporting curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "dfb69d6c-690e-5b60-8d66-1289d8f6865a",
+        "code": "PHY7-U04-S10",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Զանգվածը, ծանրության ուժը և կշիռը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "ff9e438a-6741-5c57-9825-06e1d01912df",
+        "code": "PHY7-U04-S11",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Շփման ուժի տեսակները, պատճառները և դերը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "6373b7a6-74fe-53a0-b759-3a3a5f618061",
+        "code": "PHY7-U04-S12",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Շփման ուժի ուսումնասիրությունը փորձով",
+        "subject": "physics",
+        "description_en": "Chapter IV supporting curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "78b7bde8-69d1-53aa-8553-16001cf86e5c",
+        "code": "PHY7-U04-S13",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մի ուղղով ուղղված ուժերի համազորը",
+        "subject": "physics",
+        "description_en": "Chapter IV mandatory curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "d3aa893b-07f9-591e-89a4-ecce14306ecf",
+        "code": "PHY7-U04-S14",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ծանրության ուժը և տիեզերական ձգողությունը",
+        "subject": "physics",
+        "description_en": "Chapter IV additional curriculum scope; performed experiments are not certified by MCQs."
+      },
+      {
+        "id": "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+        "code": "PHY7-U05-S01",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մեխանիկական աշխատանքի իմաստը և միավորը",
+        "subject": "physics",
+        "description_en": "Work/no-work with a named force and motion; the meaning of one joule."
+      },
+      {
+        "id": "f49578d7-0728-5a2d-b042-46c2609d54a9",
+        "code": "PHY7-U05-S02",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մեխանիկական աշխատանքի հաշվում",
+        "subject": "physics",
+        "description_en": "Direct/inverse A=Fs, comparisons and lifting; integration with previously taught units and speed."
+      },
+      {
+        "id": "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+        "code": "PHY7-U05-S03",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հզորության իմաստը, միավորը և հաշվումը",
+        "subject": "physics",
+        "description_en": "Meaning of watt, A/t, comparison with both variables changing, work-time graph, and taught N=Fv."
+      },
+      {
+        "id": "6361692a-0026-5cd5-ac67-b9999a54f012",
+        "code": "PHY7-U05-S04",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Լծակի կառուցվածքը և ուժի բազուկը",
+        "subject": "physics",
+        "description_en": "Support, force/application line, perpendicular arm and how position affects required force."
+      },
+      {
+        "id": "c7c50e44-4f94-5522-a237-ad88a13a7600",
+        "code": "PHY7-U05-S05",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Լծակի հավասարակշռության պայմանը",
+        "subject": "physics",
+        "description_en": "F1l1=F2l2, inverse relationships, unknown arm/force and interpretation of measured balances."
+      },
+      {
+        "id": "c342bfdc-fd31-5e55-915c-bb3722954f23",
+        "code": "PHY7-U05-S06",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Անշարժ և շարժական ճախարակներ",
+        "subject": "physics",
+        "description_en": "Fixed versus moving axle, direction change, ideal force ratio and corresponding rope travel."
+      },
+      {
+        "id": "3b3836b1-1171-5d57-b78e-dd08af74273d",
+        "code": "PHY7-U05-S07",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Թեք հարթությունը և մեխանիկայի «ոսկի կանոնը»",
+        "subject": "physics",
+        "description_en": "Same-height ramp comparisons, force-distance trade-off and ideal work balance."
+      },
+      {
+        "id": "96bee62d-2e14-51ff-8f16-5d2eb41704e0",
+        "code": "PHY7-U05-S08",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Օգտակար գործողության գործակիցը",
+        "subject": "physics",
+        "description_en": "Useful versus total work, ratio/percent, inverse calculations and measured incline efficiency."
+      },
+      {
+        "id": "270751b7-3838-5487-9a56-5682ad24f647",
+        "code": "PHY7-U05-S09",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ձիաուժը՝ որպես հզորության միավոր",
+        "subject": "physics",
+        "description_en": "Small optional unit-recognition strand; no memorized conversion or new assessment gate."
+      },
+      {
+        "id": "e8ef6e09-017e-5458-9165-4b9be4faa6f8",
+        "code": "PHY7-U05-S10",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Պարզ մեխանիզմների կիրառությունները",
+        "subject": "physics",
+        "description_en": "Optional familiar applications in household/technology and a supplied musculoskeletal model."
+      },
+      {
+        "id": "df096120-4696-535e-8e14-4354667056cc",
+        "code": "PHY7-U06-S01",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ճնշման ֆիզիկական իմաստը, միավորը և հաշվումը",
+        "subject": "physics",
+        "description_en": "Definition p=F/S, pascal, direct/inverse calculations and unit alignment."
+      },
+      {
+        "id": "2172d40e-4589-5330-a3ad-7c81dd9245db",
+        "code": "PHY7-U06-S02",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ճնշումը մեծացնելու և փոքրացնելու եղանակները",
+        "subject": "physics",
+        "description_en": "Reason separately about force and contact area in familiar applications."
+      },
+      {
+        "id": "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "code": "PHY7-U06-S03",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Գազի ճնշումը և դրա կախումը ծավալից",
+        "subject": "physics",
+        "description_en": "Molecular-collision explanation, all-direction pressure and qualitative compression at comparable conditions."
+      },
+      {
+        "id": "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+        "code": "PHY7-U06-S04",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Պասկալի օրենքը և ճնշման հաղորդումը",
+        "subject": "physics",
+        "description_en": "Transmit an externally applied pressure through a liquid or gas in all directions without change."
+      },
+      {
+        "id": "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "code": "PHY7-U06-S05",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հիդրոստատիկ ճնշումը և p=ρgh կապը",
+        "subject": "physics",
+        "description_en": "Depth, density and g dependencies; equal-depth comparisons; force normal to walls/bottom."
+      },
+      {
+        "id": "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+        "code": "PHY7-U06-S06",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Հաղորդակից անոթները և հեղուկների հավասարակշռությունը",
+        "subject": "physics",
+        "description_en": "Same-liquid levels, vessel-shape independence and two-liquid ρ₁h₁=ρ₂h₂ equilibrium."
+      },
+      {
+        "id": "71155603-a474-5eaf-afce-31028bcc58b1",
+        "code": "PHY7-U06-S07",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ջրաբաշխական մամլիչի կառուցվածքը և ուժի շահումը",
+        "subject": "physics",
+        "description_en": "Connected pistons, Pascal law and F₂/F₁=S₂/S₁ in the ideal model."
+      },
+      {
+        "id": "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "code": "PHY7-U06-S08",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մթնոլորտային ճնշումը, դրա գոյության փորձերը և չափումը",
+        "subject": "physics",
+        "description_en": "Air-weight cause, experimental evidence, Torricelli column and barometer interpretation."
+      },
+      {
+        "id": "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "code": "PHY7-U06-S09",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արքիմեդյան ուժի առաջացումը և Արքիմեդի օրենքը",
+        "subject": "physics",
+        "description_en": "Pressure-force difference, upward direction and equality to displaced fluid/gas weight."
+      },
+      {
+        "id": "60c60768-b1ae-506a-be1a-f9f0b453f083",
+        "code": "PHY7-U06-S10",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արքիմեդյան ուժի հաշվումը և ուժաչափի ցուցմունքը",
+        "subject": "physics",
+        "description_en": "F_A=ρgV_submerged, partial immersion and apparent-weight readings."
+      },
+      {
+        "id": "0db94e18-7eba-5440-8bab-c3069deafa1a",
+        "code": "PHY7-U06-S11",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մարմինների լողալու պայմանները",
+        "subject": "physics",
+        "description_en": "Compare buoyant and gravitational forces and relate equilibrium to body/fluid density."
+      },
+      {
+        "id": "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed",
+        "code": "PHY7-U06-S12",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արքիմեդյան ուժը բնության մեջ, նավագնացությունում և օդագնացությունում",
+        "subject": "physics",
+        "description_en": "Animal, ship and balloon applications with explicit force/volume/density evidence."
+      },
+      {
+        "id": "1f2fa89e-ea77-5a63-a960-9724a155156a",
+        "code": "PHY7-U06-S13",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Արքիմեդյան ուժի փորձերի պլանավորումը և տվյալների մեկնաբանումը",
+        "subject": "physics",
+        "description_en": "Preparation, variable control and data interpretation for the liquid experiments; no performance certification."
+      },
+      {
+        "id": "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+        "code": "PHY7-U06-S14",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Ճնշման առաջացման մեխանիզմները տարբեր միջավայրերում",
+        "subject": "physics",
+        "description_en": "Optional comparison of solid contact and molecular/hydrostatic pressure mechanisms."
+      },
+      {
+        "id": "23619b6a-59c4-5e90-bb51-592b97438441",
+        "code": "PHY7-U06-S15",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Գազի և հեղուկի ճնշման չափումը",
+        "subject": "physics",
+        "description_en": "Optional instrument/scale interpretation with supplied manometer or barometer information."
+      },
+      {
+        "id": "c82de1f3-13d8-5cc1-86e7-34e205cadc8d",
+        "code": "PHY7-U06-S16",
+        "status": "review",
+        "name_en": null,
+        "name_hy": "Մխոցավոր հեղուկային պոմպի աշխատանքը",
+        "subject": "physics",
+        "description_en": "Optional valve-and-piston sequence in intake and delivery strokes."
+      }
+    ],
+    "subjects": [
+      {
+        "id": "f5965c68-7a7d-478d-9374-50f4a80335f3",
+        "code": "mathematics",
+        "status": "draft",
+        "name_en": "Mathematics",
+        "name_hy": "Մաթեմատիկա",
+        "created_at": "2026-09-17T11:01:37.916475+00:00"
+      },
+      {
+        "id": "6e43ca6d-c7d5-44b5-98e9-2bb5fdccb7d0",
+        "code": "physics",
+        "status": "published",
+        "name_en": "Physics",
+        "name_hy": "Ֆիզիկա",
+        "created_at": "2026-09-13T17:34:24.097252+00:00"
+      }
+    ],
+    "programmes": [
+      {
+        "id": "258955e9-30e7-43ef-95c5-324a53143270",
+        "status": "published",
+        "subject": "physics",
+        "version": "2026-08-14 / N 40-Ն as amended by N 36-Ն",
+        "grade_id": "7c8e33b7-0927-4820-83ca-59d88603ccc7"
+      },
+      {
+        "id": "008814e3-fe88-46c4-a9ce-415b2fbafa27",
+        "status": "draft",
+        "subject": "mathematics",
+        "version": "Sprint 11G architecture fixture",
+        "grade_id": "7c8e33b7-0927-4820-83ca-59d88603ccc7"
+      }
+    ],
+    "snapshot_at": "2026-10-20T19:00:59.809934+00:00",
+    "related_tables": [
+      "chapter_review_item_exposures",
+      "curriculum_release_outcomes",
+      "item_misconception_mappings",
+      "item_template_remediation_guides",
+      "item_templates",
+      "learning_outcome_normative_mappings",
+      "learning_outcomes",
+      "learning_source_family_exposures",
+      "learning_task_set_versions",
+      "legacy_learning_blueprint_mappings",
+      "skill_outcome_curriculum_mappings",
+      "skill_outcomes",
+      "student_item_exposure_events",
+      "textbook_mappings",
+      "written_task_versions"
+    ]
+  },
+  "freeze": {
+    "inventories": [
+      {
+        "items": 1251,
+        "history": 1146,
+        "subject": "physics",
+        "releases": 7
+      },
+      {
+        "items": 0,
+        "history": 0,
+        "subject": "mathematics",
+        "releases": 0
+      }
+    ],
+    "snapshot_at": "2026-10-20T19:01:35.775124+00:00",
+    "global_guards": {
+      "items": {
+        "md5": "bc81a46330f7e549c1daaedf12ce414e",
+        "count": 1251
+      },
+      "source_sets": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "item_versions": {
+        "md5": "949badf240183d479b4457c15ad6629e",
+        "count": 1146
+      },
+      "writing_tasks": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "item_exposures": {
+        "md5": "4807b78c602d7a75ac8d0cd747a17188",
+        "count": 44
+      },
+      "source_exposures": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      }
+    },
+    "english_references": {
+      "items": 0,
+      "history": 0,
+      "releases": 0
+    }
+  },
+  "scopeDecision": {
+    "applicableEnglishBank": [],
+    "relatedEquivalentSkillCodes": [],
+    "rationale": "All 67 registered skills are Physics outcomes; their names and descriptions were reviewed against the 14 proposed English outcomes. Mathematics is an empty draft fixture. No equivalent English language outcome is registered. No English programme/release/current or historic item reference was found. This is an empty applicable corpus, not a semantic audit or reapproval of Physics.",
+    "protectedCorpus": "No registered English bank; no protected English material obtained from another store. Proposed Unit 1 practice sources are familiar/exposed and supply no protected capacity.",
+    "deploymentGuard": "Read all applicable English items, history, outcomes, releases and exposures again immediately before staging/registration. This observation is not a reusable authorization to deploy."
+  },
+  "relatedOutcomeAudit": {
+    "observedAt": "2026-10-20T19:21:56.11417+00:00",
+    "counts": {
+      "outcomes": 53,
+      "skill_outcomes": 84,
+      "release_outcomes": 53,
+      "normative_mappings": 53,
+      "curriculum_mappings": 84
+    },
+    "fullSnapshotSha256": "e19cf62480b2a0255d2e5f63733cf771635c26d4efc1c895e94e679399e71902",
+    "outcomes": [
+      {
+        "id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015",
+        "statementHy": "ներկայացնել ֆիզիկայի ուսումնասիրության առարկան (Հ9),",
+        "statementEn": null
+      },
+      {
+        "id": "6f57618c-f172-4adc-a12a-c71404be47b8",
+        "statementHy": "ներկայացնել հայ անվանի ֆիզիկոսներին (Հ30),",
+        "statementEn": null
+      },
+      {
+        "id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436",
+        "statementHy": "բերել ֆիզիկական երևույթների օրինակներ (Հ9),",
+        "statementEn": null
+      },
+      {
+        "id": "6723b374-4edc-4f76-83c4-75faa227af99",
+        "statementHy": "կատարել պարզագույն դիտումներ, չափումներ և փորձեր,(Հ4, Հ28),",
+        "statementEn": null
+      },
+      {
+        "id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc",
+        "statementHy": "չափումներ կատարելիս դրսևորել պատասխանատու վերաբերմունք, անհրաժեշտ հետևողականություն և ճշգրտություն,(Հ4, 28),",
+        "statementEn": null
+      },
+      {
+        "id": "08235981-cfa0-4c13-912a-024842197b55",
+        "statementHy": "ներկայացնել ժամանակի, հեռավորության, ծավալի, զանգվածի չափման միավորները ՄՀ համակարգում",
+        "statementEn": null
+      },
+      {
+        "id": "c244a6e8-8f15-4e99-b209-1035c56971da",
+        "statementHy": "օրինակներով հիմնավորել նյութի մասնիկային կառուցվածքը (Հ29, Հ30)",
+        "statementEn": null
+      },
+      {
+        "id": "1c03ef0b-6df7-4376-8b4b-1ebf96ec76bb",
+        "statementHy": "ներկայացնել մոլեկուլների չափերը՝ համեմատելով այլ մարմինների չափերի հետ (Հ4, Հ9, Հ28)",
+        "statementEn": null
+      },
+      {
+        "id": "3078b38b-bf8e-4e3a-a9ce-019fdf13c0fd",
+        "statementHy": "բնութագրել դիֆուզիայի արագությունը գազերում, հեղուկներում և պինդ մարմիններում, բերել օրինակներ",
+        "statementEn": null
+      },
+      {
+        "id": "40dd963e-2a7f-48b5-9169-2d28574b7e7d",
+        "statementHy": "օրինակներով լուսաբանել դիֆուզիայի երևույթը (Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "a70929ea-7b86-4ee3-9dbe-775b227976b4",
+        "statementHy": "նկարագրել ատոմների, մոլեկուլների շարժման առանձնահատկությունները նյութում (Հ8, Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "bcfca398-b568-470e-b185-61cc22d54ecf",
+        "statementHy": "բացատրել, թե ինչով է պայմանավորված մարմնի ջերմաստիճանը (Հ9, Հ29)",
+        "statementEn": null
+      },
+      {
+        "id": "40e20c7c-3f60-4495-b6c7-54c9a5ca3b84",
+        "statementHy": "բացատրել ջերմաչափի աշխատանքի սկզբունքը",
+        "statementEn": null
+      },
+      {
+        "id": "46b049d9-a466-5b1f-975e-4eb0c3f0b474",
+        "statementHy": "բերել մեխանիկական շարժման օրինակներ, տարբերակել հավասարաչափ և անհավասարաչափ շարժումները,(Հ8, Հ9),",
+        "statementEn": null
+      },
+      {
+        "id": "4f982ba6-4fb2-56fe-ac7c-86004b32839f",
+        "statementHy": "բերել շարժման հարաբերականությունը լուսաբանող օրինակներ,(Հ9, Հ30),",
+        "statementEn": null
+      },
+      {
+        "id": "f3660abd-d28c-54e9-bad3-202a629f60e4",
+        "statementHy": "մեկնաբանել շարժման հետագիծ և ճանապարհ հասկացությունները,(Հ8, Հ9),",
+        "statementEn": null
+      },
+      {
+        "id": "020c307d-b19d-504c-b863-b8ae8c0d14ae",
+        "statementHy": "դասակարգել մեխանիկական շարժման տեսակները՝ ըստ հետագծի տեսքի (ուղղագիծ և կորագիծ), (Հ8, Հ29),",
+        "statementEn": null
+      },
+      {
+        "id": "7e64c4ad-81c1-5491-83eb-3c4431dcc674",
+        "statementHy": "կատարել արագության միավորների ձևափոխություններ,(Հ9, Հ29),",
+        "statementEn": null
+      },
+      {
+        "id": "581807b2-fdb5-534b-8b79-303e7aaa7d66",
+        "statementHy": "1) փորձով և հաշվարկներով որոշել հավասարաչափ շարժումը բնութագրող ֆիզիկական մեծությունները՝ ճանապարհային արագություն, ճանապարհ, ժամանակ:",
+        "statementEn": null
+      },
+      {
+        "id": "098363d6-ff2f-5cd8-a4c6-5ab754c40641",
+        "statementHy": "ներկայացնել  զանգվածը՝ որպես մարմնի իներտության չափ,(Հ8, Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "28eadb23-f7e7-5430-be35-bf6e6f5996c0",
+        "statementHy": "ներկայացնել խտության ֆիզիկական իմաստը, (Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "d48221b8-6ebf-5dd0-820c-9462ee901d07",
+        "statementHy": "կատարել նյութի խտության, մարմնի զանգվածի և ծավալի չափումներ, վերլուծել արդյունքները, կազմել աղյուսակներ, ներկայացնել փորձի արդյունքները,(Հ4, Հ28, Հ29)",
+        "statementEn": null
+      },
+      {
+        "id": "a04edb0b-3361-5147-8714-45143f770f03",
+        "statementHy": "ներկայացնել ուժը՝ որպես փոխազդեցության քանակական չափ,(Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "0fc177a7-f758-5b9f-bc1c-4ffca33ffd4f",
+        "statementHy": "սահմանել ՄՀ-ում ուժի չափման միավորը,  բերել մեկ նյուտոն ուժի օրինակ,(Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "d9188f19-2b96-5c49-bd20-f030be820b88",
+        "statementHy": "հաշվել ծանրության ուժը՝ իմանալով մարմնի զանգվածը,(Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "002a438b-16a6-58de-858f-42c690c83715",
+        "statementHy": "ներկայացնել դեֆորմացիաների տեսակները, բերել օրինակներ,(Հ9, Հ28,Հ29)",
+        "statementEn": null
+      },
+      {
+        "id": "01dbef81-3004-5a48-b767-85283a6e7b31",
+        "statementHy": "փորձով հիմնավորել Հուկի օրենքը,(Հ28, Հ29)",
+        "statementEn": null
+      },
+      {
+        "id": "67efab8c-7962-541a-802f-e3a915bcb4cd",
+        "statementHy": "տարբերակել մարմնի զանգվածը, ծանրության ուժը և մարմնի կշիռը,(Հ8)",
+        "statementEn": null
+      },
+      {
+        "id": "9a693f1e-41d9-5f7c-ab6f-3354353af7a7",
+        "statementHy": "ներկայացնել շփման ուժը, շփման առաջացման պատճառները, շփման տեսակները, բերել օրինակներ շփման ուժի օգտակար և վնասակար ազդեցությունների մասին, (Հ8, Հ28)",
+        "statementEn": null
+      },
+      {
+        "id": "730a1e94-b966-5e22-a065-a89428371935",
+        "statementHy": "որոշել մի ուղղով ուղղված ուժերի համազորը,(Հ7)",
+        "statementEn": null
+      },
+      {
+        "id": "0d42979e-17b7-5b10-b8b7-d7b29121924b",
+        "statementHy": "1) մեկնաբանել փոխազդեցության (ուժի) և շարժման վիճակի փոփոխության միջև պատճառահետևանքային կապերը և կիրառել դրանք շրջապատում հանդիպող շարժումները նկարագրելիս",
+        "statementEn": null
+      },
+      {
+        "id": "6485598f-fd87-5518-9563-86abe483b386",
+        "statementHy": "2) մեկնաբանել ծանրության ուժը՝ որպես տիեզերական ձգողության ուժի օրինակ",
+        "statementEn": null
+      },
+      {
+        "id": "34fe9e95-0e16-5f72-ac1d-2d3265ae90f1",
+        "statementHy": "ներկայացնել «մեխանիկական աշխատանք»,  «հզորություն», մեծությունների ֆիզիկական իմաստը, հաշվարկման բանաձևը, չափման միավորները \n(Հ4)",
+        "statementEn": null
+      },
+      {
+        "id": "dc9f1058-054a-5352-9cf7-64db66634c04",
+        "statementHy": "բացատրել պարզ մեխանիզմների (լծակ, անշարժ և շարժական ճախարակներ, թեք հարթություն) կառուցվածքը և աշխատանքի սկզբունքը,(Հ8, Հ10)",
+        "statementEn": null
+      },
+      {
+        "id": "274a1a62-511f-5416-a8d7-3d32558d9698",
+        "statementHy": "սահմանել լծակի կանոնը, գրել նրա հավասարակշռության պայմանը,(Հ9, Հ10)",
+        "statementEn": null
+      },
+      {
+        "id": "aa831d29-c6f5-5d36-8c17-2641e38bc895",
+        "statementHy": "հաշվարկել պարզ մեխանիզմների օգտակար գործողության գործակիցը (Հ7, Հ30)",
+        "statementEn": null
+      },
+      {
+        "id": "cadf8c95-6cc9-57ca-9a17-3c68bc5df3ea",
+        "statementHy": "1) ներկայացնել ձիաուժը՝ որպես հզորության չափման միավոր,",
+        "statementEn": null
+      },
+      {
+        "id": "a4ea5363-d926-5630-a339-ba6909ed30c2",
+        "statementHy": "2) բերել կենցաղում և տեխնիկայում, կենդանի օրգանիզմների հենաշարժողական համակարգում պարզ մեխանիզմների օգտագործման օրինակներ:",
+        "statementEn": null
+      },
+      {
+        "id": "c23dccbf-f749-5c95-90d9-e9ecaef6b7ba",
+        "statementHy": "ներկայացնել ճնշման ֆիզիկական իմաստը և հաշվարկել այն պարզ իրավիճակներում,(Հ4,Հ7,Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "285aa52a-322a-5c32-89d2-f2605f9da2b7",
+        "statementHy": "ներկայացնել ճնշման մեծացման և փոքրացման եղանակները, բերել օրինակներ, (Հ4,Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "62629243-050d-5f76-93e4-5baa49ca1819",
+        "statementHy": "բացատրել առօրյա կյանքում գազի և հեղուկի ճնշման դերը, (Հ29,Հ30)",
+        "statementEn": null
+      },
+      {
+        "id": "fbff07e4-6c6f-5af6-be89-a42789804dd4",
+        "statementHy": "ներկայացնել Պասկալի և հաղորդակից անոթների օրենքները և կիրառել դրանք պարզ իրավիճակներում,(Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "5c653ac9-d780-5905-be7d-89cf0eb769af",
+        "statementHy": "նկարագրել ջրաբաշխական մամլիչի կառուցվածքը, աշխատանքի սկզբունքը և կիրառությունները, կատարել հաշվարկներ ուժի շահումը որոշելու համար,(Հ10,Հ29)",
+        "statementEn": null
+      },
+      {
+        "id": "881a2978-a264-5fc8-bd39-bddde1161e28",
+        "statementHy": "փորձի միջոցով հիմնավորել մթնոլորտային ճնշման գոյությունը, բացատրել դրա առաջացման պատճառը,   (Հ4,Հ28)",
+        "statementEn": null
+      },
+      {
+        "id": "3f268847-a92d-55b3-b5db-6f4f71f13b51",
+        "statementHy": "բերել արքիմեդյան ուժի դրսևորման օրինակներ, (Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "f98163c5-cf15-5009-8f2c-6628b709e8c1",
+        "statementHy": "ներկայացնել Արքիմեդի օրենքը,(Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "39b26739-b195-5228-8a37-9185fc9f801d",
+        "statementHy": "նախագծել և իրականացնել հեղուկներում և գազերում արքիմեդյան ուժի որոշման փորձեր,(Հ4,Հ28,Հ29)",
+        "statementEn": null
+      },
+      {
+        "id": "a8823fdb-6fbf-5297-9bca-ae35c7f15a01",
+        "statementHy": "արտածել հեղուկներում մարմինների լողալու պայմանները,(Հ9)",
+        "statementEn": null
+      },
+      {
+        "id": "aa814130-3a53-5fdc-9bbd-71f919d7feff",
+        "statementHy": "ներկայացնել արքիմեդյան ուժի դրսևորումները կենդանական աշխարհում,     նավագնացության և օդագնացության ոլորտներում:(Հ29,Հ30,Հ31)",
+        "statementEn": null
+      },
+      {
+        "id": "8fe2d070-812a-59a5-bd06-925c2d03737b",
+        "statementHy": "1) նշել ճնշման առաջացման մեխանիզմները պինդ, հեղուկ և գազային մարմիններում,",
+        "statementEn": null
+      },
+      {
+        "id": "3636e1cb-b8f2-54fc-a450-7065e720e685",
+        "statementHy": "2) բացատրել անոթի պատերի վրա ազդող գազի և հեղուկի ճնշման պատճառը,",
+        "statementEn": null
+      },
+      {
+        "id": "0eefb081-3c08-56e9-a92a-421070e55f3b",
+        "statementHy": "3) չափել գազի և հեղուկի ճնշումը,",
+        "statementEn": null
+      },
+      {
+        "id": "98a87092-bf2a-557e-8545-c87f9ea92e37",
+        "statementHy": "4) նկարագրել մխոցավոր հեղուկային պոմպի աշխատանքը",
+        "statementEn": null
+      }
+    ],
+    "skillOutcomeLinks": [
+      {
+        "skill_id": "0db94e18-7eba-5440-8bab-c3069deafa1a",
+        "learning_outcome_id": "a8823fdb-6fbf-5297-9bca-ae35c7f15a01"
+      },
+      {
+        "skill_id": "15aabee0-a1b4-55f9-aa85-050c02baeb4b",
+        "learning_outcome_id": "28eadb23-f7e7-5430-be35-bf6e6f5996c0"
+      },
+      {
+        "skill_id": "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "learning_outcome_id": "3636e1cb-b8f2-54fc-a450-7065e720e685"
+      },
+      {
+        "skill_id": "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "learning_outcome_id": "62629243-050d-5f76-93e4-5baa49ca1819"
+      },
+      {
+        "skill_id": "1714925e-656e-52b1-89d3-c32dadb159f1",
+        "learning_outcome_id": "8fe2d070-812a-59a5-bd06-925c2d03737b"
+      },
+      {
+        "skill_id": "1f2fa89e-ea77-5a63-a960-9724a155156a",
+        "learning_outcome_id": "39b26739-b195-5228-8a37-9185fc9f801d"
+      },
+      {
+        "skill_id": "2172d40e-4589-5330-a3ad-7c81dd9245db",
+        "learning_outcome_id": "285aa52a-322a-5c32-89d2-f2605f9da2b7"
+      },
+      {
+        "skill_id": "23619b6a-59c4-5e90-bb51-592b97438441",
+        "learning_outcome_id": "0eefb081-3c08-56e9-a92a-421070e55f3b"
+      },
+      {
+        "skill_id": "26ac01f1-e222-4123-ba11-be3ddd150964",
+        "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+      },
+      {
+        "skill_id": "270751b7-3838-5487-9a56-5682ad24f647",
+        "learning_outcome_id": "cadf8c95-6cc9-57ca-9a17-3c68bc5df3ea"
+      },
+      {
+        "skill_id": "288461d5-40b0-5a88-8840-bdc42e3f8c4d",
+        "learning_outcome_id": "46b049d9-a466-5b1f-975e-4eb0c3f0b474"
+      },
+      {
+        "skill_id": "2ad925a1-fabe-5d5d-b165-a120f867a9e4",
+        "learning_outcome_id": "fbff07e4-6c6f-5af6-be89-a42789804dd4"
+      },
+      {
+        "skill_id": "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "learning_outcome_id": "3636e1cb-b8f2-54fc-a450-7065e720e685"
+      },
+      {
+        "skill_id": "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "learning_outcome_id": "62629243-050d-5f76-93e4-5baa49ca1819"
+      },
+      {
+        "skill_id": "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "learning_outcome_id": "8fe2d070-812a-59a5-bd06-925c2d03737b"
+      },
+      {
+        "skill_id": "317e60a8-a89e-5f82-a812-0ecb43fe52a1",
+        "learning_outcome_id": "c23dccbf-f749-5c95-90d9-e9ecaef6b7ba"
+      },
+      {
+        "skill_id": "356028b3-ad67-5f97-a340-568473d378e3",
+        "learning_outcome_id": "d9188f19-2b96-5c49-bd20-f030be820b88"
+      },
+      {
+        "skill_id": "378d070d-708d-4c44-bc51-249c2fa5f4d3",
+        "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+      },
+      {
+        "skill_id": "382b5279-9c50-5765-b916-8eaa14f050e7",
+        "learning_outcome_id": "01dbef81-3004-5a48-b767-85283a6e7b31"
+      },
+      {
+        "skill_id": "382b5279-9c50-5765-b916-8eaa14f050e7",
+        "learning_outcome_id": "0fc177a7-f758-5b9f-bc1c-4ffca33ffd4f"
+      },
+      {
+        "skill_id": "3b3836b1-1171-5d57-b78e-dd08af74273d",
+        "learning_outcome_id": "dc9f1058-054a-5352-9cf7-64db66634c04"
+      },
+      {
+        "skill_id": "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "learning_outcome_id": "0eefb081-3c08-56e9-a92a-421070e55f3b"
+      },
+      {
+        "skill_id": "40505a40-8ba6-5731-b1b5-4006e651bb7a",
+        "learning_outcome_id": "881a2978-a264-5fc8-bd39-bddde1161e28"
+      },
+      {
+        "skill_id": "4251bf02-d633-578a-bd36-44028b5ceecf",
+        "learning_outcome_id": "f3660abd-d28c-54e9-bad3-202a629f60e4"
+      },
+      {
+        "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+        "learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+      },
+      {
+        "skill_id": "431b5dd4-51ce-4115-b9f0-7d41ad366e20",
+        "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+      },
+      {
+        "skill_id": "43734dc0-44fd-5e1d-9924-d94db5383a18",
+        "learning_outcome_id": "0d42979e-17b7-5b10-b8b7-d7b29121924b"
+      },
+      {
+        "skill_id": "43734dc0-44fd-5e1d-9924-d94db5383a18",
+        "learning_outcome_id": "0fc177a7-f758-5b9f-bc1c-4ffca33ffd4f"
+      },
+      {
+        "skill_id": "43734dc0-44fd-5e1d-9924-d94db5383a18",
+        "learning_outcome_id": "a04edb0b-3361-5147-8714-45143f770f03"
+      },
+      {
+        "skill_id": "43f25da2-909d-5ef2-bdfb-4bf15f7f8d75",
+        "learning_outcome_id": "34fe9e95-0e16-5f72-ac1d-2d3265ae90f1"
+      },
+      {
+        "skill_id": "44a09bd7-15e0-470b-94dc-7057a703f96e",
+        "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+      },
+      {
+        "skill_id": "4f0315c6-35ea-5573-aab5-4f9c6329b6eb",
+        "learning_outcome_id": "581807b2-fdb5-534b-8b79-303e7aaa7d66"
+      },
+      {
+        "skill_id": "5218a327-8621-588d-9d42-2f1b8ec25ccd",
+        "learning_outcome_id": "34fe9e95-0e16-5f72-ac1d-2d3265ae90f1"
+      },
+      {
+        "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+        "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+      },
+      {
+        "skill_id": "5609ea1b-dafe-449a-8783-4786bedd298a",
+        "learning_outcome_id": "d677693d-7d80-4e8e-b4f1-0fe66f98f3bc"
+      },
+      {
+        "skill_id": "5e06341e-5ef9-5ffd-9024-84dbfef4ddfb",
+        "learning_outcome_id": "581807b2-fdb5-534b-8b79-303e7aaa7d66"
+      },
+      {
+        "skill_id": "60c60768-b1ae-506a-be1a-f9f0b453f083",
+        "learning_outcome_id": "f98163c5-cf15-5009-8f2c-6628b709e8c1"
+      },
+      {
+        "skill_id": "632ba449-4d11-4c74-8b88-cc94c79a944f",
+        "learning_outcome_id": "08235981-cfa0-4c13-912a-024842197b55"
+      },
+      {
+        "skill_id": "6361692a-0026-5cd5-ac67-b9999a54f012",
+        "learning_outcome_id": "dc9f1058-054a-5352-9cf7-64db66634c04"
+      },
+      {
+        "skill_id": "6373b7a6-74fe-53a0-b759-3a3a5f618061",
+        "learning_outcome_id": "9a693f1e-41d9-5f7c-ab6f-3354353af7a7"
+      },
+      {
+        "skill_id": "678beb6a-4654-40c2-a5b2-53cc97b2551b",
+        "learning_outcome_id": "a70929ea-7b86-4ee3-9dbe-775b227976b4"
+      },
+      {
+        "skill_id": "6c636713-3507-44ce-9d96-aec69372cfa9",
+        "learning_outcome_id": "6a8e29a5-75bb-41b2-9b77-9fb3be4ad015"
+      },
+      {
+        "skill_id": "71155603-a474-5eaf-afce-31028bcc58b1",
+        "learning_outcome_id": "5c653ac9-d780-5905-be7d-89cf0eb769af"
+      },
+      {
+        "skill_id": "739d70f3-d0d9-49d5-8ef9-f0cb85a9cf3d",
+        "learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+      },
+      {
+        "skill_id": "78b7bde8-69d1-53aa-8553-16001cf86e5c",
+        "learning_outcome_id": "0d42979e-17b7-5b10-b8b7-d7b29121924b"
+      },
+      {
+        "skill_id": "78b7bde8-69d1-53aa-8553-16001cf86e5c",
+        "learning_outcome_id": "730a1e94-b966-5e22-a065-a89428371935"
+      },
+      {
+        "skill_id": "7f1f2343-bc56-5ad0-b5cc-3a2da5d6c6cf",
+        "learning_outcome_id": "fbff07e4-6c6f-5af6-be89-a42789804dd4"
+      },
+      {
+        "skill_id": "802bce7e-7ede-4138-b2b2-35c4c1b68a32",
+        "learning_outcome_id": "40e20c7c-3f60-4495-b6c7-54c9a5ca3b84"
+      },
+      {
+        "skill_id": "808be543-acae-5df9-b903-eaceaf4c149c",
+        "learning_outcome_id": "020c307d-b19d-504c-b863-b8ae8c0d14ae"
+      },
+      {
+        "skill_id": "808be543-acae-5df9-b903-eaceaf4c149c",
+        "learning_outcome_id": "f3660abd-d28c-54e9-bad3-202a629f60e4"
+      },
+      {
+        "skill_id": "81e71d34-04bf-5fcb-ace8-41f7e78e33c8",
+        "learning_outcome_id": "28eadb23-f7e7-5430-be35-bf6e6f5996c0"
+      },
+      {
+        "skill_id": "81e71d34-04bf-5fcb-ace8-41f7e78e33c8",
+        "learning_outcome_id": "d48221b8-6ebf-5dd0-820c-9462ee901d07"
+      },
+      {
+        "skill_id": "8a07485e-8462-5513-a3b6-f65bc8a7cce4",
+        "learning_outcome_id": "7e64c4ad-81c1-5491-83eb-3c4431dcc674"
+      },
+      {
+        "skill_id": "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+        "learning_outcome_id": "46b049d9-a466-5b1f-975e-4eb0c3f0b474"
+      },
+      {
+        "skill_id": "8b4a1a66-86c0-5db6-978e-1658d32870e8",
+        "learning_outcome_id": "4f982ba6-4fb2-56fe-ac7c-86004b32839f"
+      },
+      {
+        "skill_id": "8f63124a-f78e-51d5-86a4-2d30df2b039b",
+        "learning_outcome_id": "d48221b8-6ebf-5dd0-820c-9462ee901d07"
+      },
+      {
+        "skill_id": "96bee62d-2e14-51ff-8f16-5d2eb41704e0",
+        "learning_outcome_id": "aa831d29-c6f5-5d36-8c17-2641e38bc895"
+      },
+      {
+        "skill_id": "a5c84a0a-7ff9-42cc-b656-55490135bc0e",
+        "learning_outcome_id": "6723b374-4edc-4f76-83c4-75faa227af99"
+      },
+      {
+        "skill_id": "b04dde38-3f39-5cea-a9a1-e7c6535cf39a",
+        "learning_outcome_id": "581807b2-fdb5-534b-8b79-303e7aaa7d66"
+      },
+      {
+        "skill_id": "b04dde38-3f39-5cea-a9a1-e7c6535cf39a",
+        "learning_outcome_id": "7e64c4ad-81c1-5491-83eb-3c4431dcc674"
+      },
+      {
+        "skill_id": "b7caca8c-d222-4715-a39f-80883f995471",
+        "learning_outcome_id": "40dd963e-2a7f-48b5-9169-2d28574b7e7d"
+      },
+      {
+        "skill_id": "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "learning_outcome_id": "3f268847-a92d-55b3-b5db-6f4f71f13b51"
+      },
+      {
+        "skill_id": "bed9371d-bbf0-5a28-94c2-f094ceb57902",
+        "learning_outcome_id": "f98163c5-cf15-5009-8f2c-6628b709e8c1"
+      },
+      {
+        "skill_id": "bfd0b199-55ab-4933-acfd-7eeb4142fd4c",
+        "learning_outcome_id": "c244a6e8-8f15-4e99-b209-1035c56971da"
+      },
+      {
+        "skill_id": "c1e57a2d-d843-45ea-adf1-891837d12d6c",
+        "learning_outcome_id": "3078b38b-bf8e-4e3a-a9ce-019fdf13c0fd"
+      },
+      {
+        "skill_id": "c2463f0b-9d96-4ae6-a814-0495db8a3872",
+        "learning_outcome_id": "bcfca398-b568-470e-b185-61cc22d54ecf"
+      },
+      {
+        "skill_id": "c342bfdc-fd31-5e55-915c-bb3722954f23",
+        "learning_outcome_id": "dc9f1058-054a-5352-9cf7-64db66634c04"
+      },
+      {
+        "skill_id": "c7c50e44-4f94-5522-a237-ad88a13a7600",
+        "learning_outcome_id": "274a1a62-511f-5416-a8d7-3d32558d9698"
+      },
+      {
+        "skill_id": "c82de1f3-13d8-5cc1-86e7-34e205cadc8d",
+        "learning_outcome_id": "98a87092-bf2a-557e-8545-c87f9ea92e37"
+      },
+      {
+        "skill_id": "cabe4921-4a09-5312-ba67-b50e5eddd8fd",
+        "learning_outcome_id": "002a438b-16a6-58de-858f-42c690c83715"
+      },
+      {
+        "skill_id": "cebf3c89-a0ce-4fd7-baf0-dd7a40873ec0",
+        "learning_outcome_id": "85463daa-4c0a-4b4b-9ee3-ac22423fb436"
+      },
+      {
+        "skill_id": "d3aa893b-07f9-591e-89a4-ecce14306ecf",
+        "learning_outcome_id": "6485598f-fd87-5518-9563-86abe483b386"
+      },
+      {
+        "skill_id": "debbb0d7-e49a-5bf1-b85c-17ecc4024650",
+        "learning_outcome_id": "01dbef81-3004-5a48-b767-85283a6e7b31"
+      },
+      {
+        "skill_id": "df096120-4696-535e-8e14-4354667056cc",
+        "learning_outcome_id": "c23dccbf-f749-5c95-90d9-e9ecaef6b7ba"
+      },
+      {
+        "skill_id": "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+        "learning_outcome_id": "3636e1cb-b8f2-54fc-a450-7065e720e685"
+      },
+      {
+        "skill_id": "df24a296-7f00-59d7-8e63-ccdef61aa6d7",
+        "learning_outcome_id": "8fe2d070-812a-59a5-bd06-925c2d03737b"
+      },
+      {
+        "skill_id": "dfb69d6c-690e-5b60-8d66-1289d8f6865a",
+        "learning_outcome_id": "67efab8c-7962-541a-802f-e3a915bcb4cd"
+      },
+      {
+        "skill_id": "e50673ec-767a-51c8-9936-9cfe31c438dd",
+        "learning_outcome_id": "098363d6-ff2f-5cd8-a4c6-5ab754c40641"
+      },
+      {
+        "skill_id": "e8ef6e09-017e-5458-9165-4b9be4faa6f8",
+        "learning_outcome_id": "a4ea5363-d926-5630-a339-ba6909ed30c2"
+      },
+      {
+        "skill_id": "f2aa6c2f-df22-4645-aba0-11946b05a7d0",
+        "learning_outcome_id": "1c03ef0b-6df7-4376-8b4b-1ebf96ec76bb"
+      },
+      {
+        "skill_id": "f49578d7-0728-5a2d-b042-46c2609d54a9",
+        "learning_outcome_id": "34fe9e95-0e16-5f72-ac1d-2d3265ae90f1"
+      },
+      {
+        "skill_id": "f60b4fc2-6ea2-5f68-8a24-db4bcc41d8ed",
+        "learning_outcome_id": "aa814130-3a53-5fdc-9bbd-71f919d7feff"
+      },
+      {
+        "skill_id": "fedbe115-0107-4843-991f-1d82f922d5c7",
+        "learning_outcome_id": "6f57618c-f172-4adc-a12a-c71404be47b8"
+      },
+      {
+        "skill_id": "ff9e438a-6741-5c57-9825-06e1d01912df",
+        "learning_outcome_id": "9a693f1e-41d9-5f7c-ab6f-3354353af7a7"
+      }
+    ],
+    "decision": "All 53 outcome statements concern Physics; all 84 skill-outcome and 84 reconciled curriculum links connect those Physics skills/outcomes. The 53 normative mappings and 53 frozen release outcomes contain no English target. General school competencies shared across subjects do not make these tasks equivalent English-language outcomes."
+  }
+}

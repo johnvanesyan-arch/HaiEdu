@@ -1,5 +1,7 @@
 # English 7 Unit 1 — source and evidence map
 
+**16.1C.1 authoring follow-up — 2026-10-20:** The [complete draft review packet](english-7-unit-01-review-packet.md), [whole-bank comparison](english-7-unit-01-whole-bank-review.md) and [review handoff](english-7-unit-01-authoring-review.md) now provide the actual Unit 1 material in textbook order. Technical content-contract checks pass; human review, audio permissions/audition, final policy and learner release remain open. No English content is staged or activated.
+
 **Checkpoint: 16.1A.2, 2026-10-20.** Source reconciliation and the first-unit map are complete at preparation level. The assessment contract is proposed, not approved or deployed. There is no English learner release or approved question bank yet. [Framework](english-7-assessment-framework.md) · [Draft contract](english-7-unit-01-assessment-contract.md) · [Evidence](evidence/english-7-unit-01-preparation-20261020.json).
 
 ## Sources and reconciliation

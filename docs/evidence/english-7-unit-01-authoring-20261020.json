@@ -1,0 +1,218 @@
+{
+  "schemaVersion": "haiedu-english-unit-authoring-evidence-v1",
+  "checkpoint": "16.1C.1",
+  "date": "2026-10-20",
+  "baselineCommit": "f664f0cdfd2b8f5e4826798afc7edb79902ef286",
+  "author": "Codex automated author; one primary agent",
+  "scope": "Complete textbook-order draft and review handoff; no production authoring/staging or learner release",
+  "packetSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+  "files": {
+    "docs/content/english-7-unit-01-draft.json": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+    "docs/english-7-unit-01-review-packet.md": "b20602c267b4f3373c43ef6705343ca1f768a629ab6abc06e05838619edb0eb6",
+    "docs/english-7-unit-01-whole-bank-review.md": "c1dfedeb56717583bb80ffab0c32b506d238c5be7c04265bbdc6cd2dac3b8b99",
+    "docs/english-7-unit-01-authoring-review.md": "f2eee6183595f8d5e361ff1fa5e1a6d79aa82b86fdf8e0928d4be20167cec25b",
+    "docs/evidence/english-7-unit-01-corpus-20261020.json": "307b30120561f4816d0546a38028c9394d61813a4026383b90c3d5ccea84fd21",
+    "docs/evidence/english-7-unit-01-draft-validation-20261020.json": "ac58240b139786af304f81fa33ad10c6251ff7d321415a8ed841210d039210d8",
+    "scripts/content/validate-english-7-unit-01.mjs": "46eba130ff5a6ec82b5541edbc05d106faa07803a1bbeedeaaf4ac3b7dec700e",
+    "scripts/content/render-english-7-unit-01-review.mjs": "0ae18e5b779605cecc765f14b8a9f5a4ad44e97c8bdb67d666a4cd65bfb1d80d"
+  },
+  "sourceRead": {
+    "libraryFileId": "libfile_b68d5ddab6388191bdd66153ab3c6fe8",
+    "title": "English 7.pdf",
+    "currentReadPages": [
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      144
+    ],
+    "byteSha256ReusedFromPreparation": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9",
+    "newByteDownload": false,
+    "currentOfficialSourcesOpened": [
+      "https://www.arlis.am/hy/acts/229389",
+      "https://www.arlis.am/hy/acts/183356",
+      "https://fdc.am/designers/4"
+    ],
+    "fiveMp3TechnicalEvidenceReused": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+    "audioAuditionPerformed": false
+  },
+  "inventory": {
+    "automaticPracticeDrafts": 45,
+    "textDrafts": 39,
+    "optionalReportingExtensionsWithinText": 2,
+    "audioHeldDrafts": 6,
+    "readingSets": 3,
+    "listeningSetProposals": 3,
+    "teachingGuides": 9,
+    "writingTaskProposals": 1,
+    "writingPracticePrompts": 1,
+    "writingModels": 1,
+    "modelWords": 87,
+    "activityDispositions": 30,
+    "proposedSkills": 14,
+    "approvedItems": 0,
+    "stagedItems": 0,
+    "protectedDiagnosticCapacity": 0,
+    "protectedMasteryCapacity": 0
+  },
+  "validation": {
+    "command": "node scripts/content/validate-english-7-unit-01.mjs",
+    "passed": true,
+    "items": 45,
+    "typedFields": 34,
+    "acceptedAlternatives": 36,
+    "rejectedAlternatives": 97,
+    "sqlGradeCases": 169,
+    "matchingMappings": 32,
+    "orderingTasks": 2,
+    "choiceItems": 19,
+    "sourceSets": 6,
+    "comparisonDispositions": {
+      "new_reasoning_coverage": 26,
+      "intentional_practice_variant": 19
+    },
+    "meaning": "Existing JS and exact source SQL definitions/keys/grading in isolated PGlite; writing trigger uses synthetic context; no human correctness approval."
+  },
+  "productionFinalRead": {
+    "guards": {
+      "items": {
+        "md5": "bc81a46330f7e549c1daaedf12ce414e",
+        "count": 1251
+      },
+      "source_sets": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "item_versions": {
+        "md5": "949badf240183d479b4457c15ad6629e",
+        "count": 1146
+      },
+      "writing_tasks": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "item_exposures": {
+        "md5": "4807b78c602d7a75ac8d0cd747a17188",
+        "count": 44
+      },
+      "source_exposures": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      }
+    },
+    "observed_at": "2026-10-20T19:23:27.9662+00:00",
+    "english_subjects": 0
+  },
+  "preservation": {
+    "items": {
+      "before": {
+        "md5": "bc81a46330f7e549c1daaedf12ce414e",
+        "count": 1251
+      },
+      "after": {
+        "md5": "bc81a46330f7e549c1daaedf12ce414e",
+        "count": 1251
+      },
+      "equal": true
+    },
+    "source_sets": {
+      "before": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "after": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "equal": true
+    },
+    "item_versions": {
+      "before": {
+        "md5": "949badf240183d479b4457c15ad6629e",
+        "count": 1146
+      },
+      "after": {
+        "md5": "949badf240183d479b4457c15ad6629e",
+        "count": 1146
+      },
+      "equal": true
+    },
+    "writing_tasks": {
+      "before": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "after": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "equal": true
+    },
+    "item_exposures": {
+      "before": {
+        "md5": "4807b78c602d7a75ac8d0cd747a17188",
+        "count": 44
+      },
+      "after": {
+        "md5": "4807b78c602d7a75ac8d0cd747a17188",
+        "count": 44
+      },
+      "equal": true
+    },
+    "source_exposures": {
+      "before": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "after": {
+        "md5": "d41d8cd98f00b204e9800998ecf8427e",
+        "count": 0
+      },
+      "equal": true
+    }
+  },
+  "unchangedRuntimeEvidence": {
+    "reference": "docs/evidence/shared-task-sets-release-20261020.json",
+    "acceptedProductionRead": "docs/evidence/shared-task-sets-production-read-20261020.json",
+    "productionChecks": 310,
+    "isolationChecks": 54,
+    "reason": "No web/core/Supabase/migration/API/workflow/package changes. Only private authoring content, review documentation and offline content utilities change. Do not rerun live QA merely to relabel the same runtime.",
+    "newEnglishProductionFlowVerified": false
+  },
+  "notionClosure": {
+    "targetVersion": "4.26",
+    "required": "Read changed source blobs from merged main, sync targeted summary with exact source commit and read back; preserve 11 native child pages. Actual source/CI readback is recorded in Notion after this commit exists."
+  },
+  "openGates": [
+    "Human English language/content and SME review of the exact candidate versions",
+    "Writing task/rubric and teacher workload acceptance",
+    "Publisher listening audition, exact speaker/track alignment and hosting permission",
+    "S12 speaker-discrimination coverage beyond separately named clips",
+    "Approved English bank/form/scoring/readiness plan; no protected parallel manifest authorized",
+    "Accepted capped assessment audio/transcript/interruption contract before that capability is adopted",
+    "Inactive governed catalogue onboarding with fresh corpus and genuine immutable source/writing approvals",
+    "Exact English production desktop/mobile, role/subject/tenant and release acceptance"
+  ],
+  "productionWritesPerformed": false
+}

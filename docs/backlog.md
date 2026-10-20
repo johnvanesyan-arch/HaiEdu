@@ -27,9 +27,13 @@
 - [x] Close 16.1B.5 required CI, 26 exact SQL definitions/two Edge bundles, 310/310 production read acceptance and 29 unchanged preservation snapshots. The merged closure source is the Notion synchronization target; the copy is current only after its source stamp and content readback match, with 11 native child pages retained.
 - [ ] Accept and implement transcript-support and capped Diagnostic/Mastery audio/interruption rules before assessment adoption.
 - [ ] Verify valid language alternatives, partial credit, unsupported responses, media failures, answer retries, score protection and role/subject/tenant isolation.
-- [ ] Author and review one complete unit with textbook/programme and whole-bank comparison evidence; complete exact deployment and authenticated desktop/mobile acceptance before release.
+- [x] Prepare the complete textbook-order Unit 1 draft: 45 practice items, six source-set proposals, nine guides and the writing task/practice/model/rubric, with source and whole-bank evidence (16.1C.1).
+- [x] Validate all response definitions/keys, 169 isolated SQL grading cases, writing definition/approval guard, source memberships, activity/skill mappings and 87-word model. Preserve runtime/API sources and reuse unchanged 16.1B.5 acceptance evidence.
+- [ ] Complete human language/content/SME review of exact Unit 1 versions, then onboard inactive English catalogue records and stage through existing controls with a refreshed corpus. Source/writing registration requires genuine review and permission references.
+- [ ] Resolve the named-clip speaker-identification gap and qualify protected English sources/forms; current protected Diagnostic/Mastery capacity is zero.
+- [ ] Adopt the accepted English policy and complete exact deployment/authenticated desktop/mobile acceptance before learner release.
 
-[Framework](english-7-assessment-framework.md) · [Unit 1 preparation](english-7-unit-01-preparation.md) · [Draft contract](english-7-unit-01-assessment-contract.md) · [Preparation evidence](evidence/english-7-unit-01-preparation-20261020.json). Writing is implemented under [16.1B.1](written-work-workspaces.md), deployed and verified; no English assessment/release is live.
+[Review handoff](english-7-unit-01-authoring-review.md) · [Complete draft packet](english-7-unit-01-review-packet.md) · [Framework](english-7-assessment-framework.md) · [Unit 1 preparation](english-7-unit-01-preparation.md) · [Draft contract](english-7-unit-01-assessment-contract.md) · [Preparation evidence](evidence/english-7-unit-01-preparation-20261020.json). Writing is implemented under [16.1B.1](written-work-workspaces.md), deployed and verified; no English assessment/release is live.
 
 ## Sprint 0 — Technical foundation
 - [x] Repository scaffold
