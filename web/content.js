@@ -19,6 +19,7 @@ let editorDirty = false;
 let workflowBusy = false;
 let activeSession = null;
 let bootstrapPromise = null;
+let disposePreviewStimulus;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -236,6 +237,7 @@ function renderRows() {
   });
 }
 function renderLoadingDetail() {
+  disposePreviewStimulus?.();disposePreviewStimulus=null;
   if ($("detailPanel")) $("detailPanel").innerHTML = `<h2>Բեռնվում է…</h2><p class="subtle">Հարցի աշխատանքային էջը բեռնվում է։</p>`;
 }
 
@@ -390,6 +392,7 @@ function qaMessageHy(code) {
 }
 
 function renderDetail() {
+  disposePreviewStimulus?.();disposePreviewStimulus=null;
   const item = dashboard?.items?.find((i) => i.id === selectedId);
   const detail = selectedDetail;
   if (!item || !detail) return;
@@ -438,6 +441,7 @@ function renderDetail() {
       <label>Հայերեն հարց<textarea id="editPromptHy" rows="4" ${disabled ? "disabled" : ""}>${esc(detail.item.promptHy ?? "")}</textarea></label>
       <label>Անգլերեն հարց <span class="subtle tiny">ըստ ցանկության</span><textarea id="editPromptEn" rows="3" ${disabled ? "disabled" : ""}>${esc(detail.item.promptEn ?? "")}</textarea></label>
       <label>Խթանիչ տվյալներ (JSON) <span class="subtle tiny">ընդլայնված</span><textarea id="editStimulus" class="code-field" rows="3" spellcheck="false" ${disabled ? "disabled" : ""}>${esc(JSON.stringify(detail.item.stimulus ?? {}, null, 2))}</textarea></label>
+      ${editable ? '<button type="button" id="chooseAudioBtn" class="secondary">Ընտրել ձայնագրություն</button><div id="audioCatalog" role="status"></div>' : ''}
     </section>
 
     ${item.type === "single_choice" ? `<section class="detail-section editor-section" data-item-tab="content"><div class="section-heading"><div><h3>Պատասխանի տարբերակներ</h3><p class="subtle tiny">Տարբերակների կոդերը պետք է լինեն եզակի, և յուրաքանչյուր տարբերակ պետք է ունենա հայերեն տեքստ։</p></div>${editable ? `<button type="button" id="addOptionBtn" class="ghost">Ավելացնել տարբերակ</button>` : ""}</div><div id="optionEditor">${optionRowsHtml(detail.options, disabled)}</div></section>` : ""}
@@ -509,7 +513,7 @@ function renderDetail() {
 
   const stimulusRoot = $("learnerPreviewStimulus");
   try {
-    renderLearningStimulus(stimulusRoot, detail.item.stimulus);
+    disposePreviewStimulus=renderLearningStimulus(stimulusRoot, detail.item.stimulus,{invoke,context:{itemId:detail.item.id},isCurrent:()=>selectedDetail===detail&&Boolean(activeSession)});
   } catch (err) {
     stimulusRoot.textContent = err.message;
     stimulusRoot.classList.add("message", "bad");
@@ -517,6 +521,21 @@ function renderDetail() {
   }
 
   $("runQaBtn")?.addEventListener("click", runQaCurrent);
+  $("chooseAudioBtn")?.addEventListener("click",async()=>{
+    const button=$("chooseAudioBtn"),host=$("audioCatalog");button.disabled=true;host.textContent='Ձայնագրությունները բեռնվում են…';
+    try{
+      const result=await invoke('get-learning-audio',{action:'catalog',itemId:detail.item.id});
+      if(selectedDetail!==detail||!activeSession)return;
+      if(!result.versions?.length){host.textContent='Այս բաժնի համար ստուգված ձայնագրություն դեռ չկա։';return;}
+      const label=document.createElement('label');label.textContent='Ստուգված ձայնագրություն';
+      const select=document.createElement('select');const empty=document.createElement('option');empty.value='';empty.textContent='Ընտրեք ձայնագրությունը';select.append(empty);
+      for(const audio of result.versions){const option=document.createElement('option');option.value=audio.id;option.textContent=`${audio.title} · ${Math.round(audio.durationMs/1000)} վ`;select.append(option);}
+      select.value=detail.item.stimulus?.audioVersionId||'';
+      select.onchange=()=>{if(!select.value)return;const field=$("editStimulus");field.value=JSON.stringify({kind:'audio',schemaVersion:'haiedu-audio-v1',audioVersionId:select.value},null,2);field.dispatchEvent(new Event('input',{bubbles:true}));};
+      label.append(select);host.replaceChildren(label);
+    }catch{if(selectedDetail===detail)host.textContent='Չհաջողվեց բեռնել ձայնագրությունները։ Կրկին փորձեք։';}
+    finally{if(selectedDetail===detail)button.disabled=false;}
+  });
   $("approveBtn")?.addEventListener("click", approveCurrent);
   $("editQuestionBtn")?.addEventListener("click", () => {
     activateItemTab("content");
@@ -884,6 +903,7 @@ async function showForSession(session, { force = false } = {}) {
   $("console").classList.add("hidden");
   const userChanged = activeSession && activeSession.user.id !== session?.user?.id;
   if (!session || userChanged) {
+    disposePreviewStimulus?.();disposePreviewStimulus=null;
     bootstrapPromise = null;
     clearContentDashboardCache(activeSession?.user?.id);
     detailLoadToken += 1;

@@ -9,6 +9,7 @@ import { chapterIV, chapterIVContract } from './chapter-iv-pilot-read-acceptance
 import { chapterV, chapterVContract } from './chapter-v-pilot-read-acceptance.mjs';
 import { waitForRelease } from './wait-for-production-release.mjs';
 import { writtenWorkReadAcceptance } from './written-work-read-acceptance.mjs';
+import { learningAudioReadAcceptance } from './learning-audio-read-acceptance.mjs';
 
 // Deliberately bounded production acceptance, not a reusable release mechanism.
 // No answers, sessions, exposures, invitations, memberships or content are written.
@@ -283,6 +284,7 @@ async function main() {
     const acceptance = await runReadChecks({ fixture, activation, request, check });
     await browserChecks({ contexts: acceptance.contexts, chapterVIActiveSessions: acceptance.chapterVIActiveSessions, sessions, url, check, diagnostics: report.browserDiagnostics });
     await writtenWorkReadAcceptance({fixture,contexts:acceptance.contexts,sessions,url,request,check});
+    await learningAudioReadAcceptance({request,check});
     await acceptance.verifyPreserved();
     // A redeploy during acceptance must not inherit evidence for a different build.
     await waitForRelease({ expectedCommit: report.revision, timeoutMs: 15000 });

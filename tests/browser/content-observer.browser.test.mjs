@@ -7,7 +7,7 @@ import { dashboardFixture } from "../fixtures/content-dashboard-endpoint.mjs";
 
 // Native browser regression with real UI modules and offline auth/network doubles.
 // This covers DOM/event lifecycle, not live backend authorization or content workflows.
-const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js", "learning-stimulus.mjs", "learning-navigation.mjs", "typed-fields-editor.mjs", "typed-fields-contract.mjs", "typed-fields-ui.mjs", "arrangement-ui.mjs", "arrangement-editor.mjs", "arrangement-contract.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
+const sources = new Map(await Promise.all(["content.js", "content-review-workflow.js", "learning-stimulus.mjs", "learning-audio.mjs", "learning-navigation.mjs", "typed-fields-editor.mjs", "typed-fields-contract.mjs", "typed-fields-ui.mjs", "arrangement-ui.mjs", "arrangement-editor.mjs", "arrangement-contract.mjs"].map(async (name) => [name, await readFile(new URL(`../../web/${name}`, import.meta.url), "utf8")])));
 const origin = "https://content-lifecycle.test";
 let browser;
 before(async () => { browser = await chromium.launch({ headless: true, ...(process.env.WRITING_QA_CHROMIUM?{executablePath:process.env.WRITING_QA_CHROMIUM}:{}) }); }, { timeout: 30_000 });
@@ -310,3 +310,17 @@ for(const [type,definition,key] of [['matching',matchingDefinition,matchingKey],
   await assertSettled(state);
  });
 }
+
+test('reviewer audio chooser binds a reviewed version and requires a new saved review',async t=>{
+ const state=await fixture(t,'content.js','active'),{page}=state;
+ const detail={...mediaDetail({}),editing:{contentEditable:true}};
+ await page.evaluate(detail=>{
+  window.__editorFixture.preview(detail);
+  window.__haieduSupabaseClient.functions.invoke=async(name,{body})=>{window.__contentProbe.requests.push({name,body});return {data:{versions:[{id:'10000000-0000-4000-8000-000000000001',title:'Synthetic <audio> title',locale:'en',durationMs:300}]}};};
+ },detail);
+ await page.getByRole('button',{name:'Բովանդակություն',exact:true}).click();await page.locator('#chooseAudioBtn').click();
+ await page.locator('#audioCatalog select').selectOption('10000000-0000-4000-8000-000000000001');
+ const stimulus=JSON.parse(await page.locator('#editStimulus').inputValue());assert.deepEqual(stimulus,{kind:'audio',schemaVersion:'haiedu-audio-v1',audioVersionId:'10000000-0000-4000-8000-000000000001'});
+ assert.equal(await page.locator('#audioCatalog audio').count(),0);assert.equal(await page.locator('#approveBtn').isDisabled(),true);
+ await assertSettled(state);
+});

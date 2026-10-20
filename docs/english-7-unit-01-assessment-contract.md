@@ -10,7 +10,7 @@ This keeps the programme's real writing outcome and limits the initial review qu
 
 ## Response capabilities
 
-This table records the proposed English contract. Teacher-marked writing is deployed under 16.1B.1. Bounded typed fields have an implemented [16.1B.2 capability/API contract](typed-fields-capability.md), deployed with exact source and production read verification; the other new capabilities remain proposals. Use the existing governed choices through their current contract. New response/scoring capabilities require a versioned policy and compatible authoring, validation, delivery, grading and reporting before activation.
+This table records the proposed English contract. Teacher-marked writing is deployed under 16.1B.1. Bounded typed fields have an implemented [16.1B.2 capability/API contract](typed-fields-capability.md), deployed with exact source and production read verification. Matching/ordering are deployed under [16.1B.3](matching-ordering-capability.md); protected replayable audio is implemented under [16.1B.4](protected-audio-capability.md), with release checks pending. Shared task sets and final English listening conditions remain proposals. Use the existing governed choices through their current contract. New response/scoring capabilities require a versioned policy and compatible authoring, validation, delivery, grading and reporting before activation.
 
 | Capability | Student response | Private grading information | Proposed score handling |
 | --- | --- | --- | --- |
@@ -39,6 +39,8 @@ Illustrative engineering checks, not authored assessment questions: with trim en
 Bind a task set to one immutable passage/recording version, with source-family and exposure identifiers. Linked questions share the stimulus but keep declared skill mappings. Allocation must protect the entire source family across Practice, Diagnostic and Mastery, not just item IDs. A learner who has read a transcript has encountered the source even if the later item plays audio.
 
 Proposed listening conditions for the first pilot: Practice permits replay and reveals the transcript only through an explicitly recorded support action; Diagnostic/Mastery allow two complete plays at normal speed, questions visible, no transcript or translation. These are recommendations awaiting the assessment contract's acceptance. The runtime must distinguish a failed start from a completed play and declare the technical-interruption/resumption rule before use; otherwise restart with equivalent unexposed material without charging a failed attempt. Browser seeking, playback rate, refresh and retry must not silently alter recorded conditions.
+
+The 16.1B.4 infrastructure permits replayable Practice/Chapter Review only, with transcript reveal disabled. It rejects assessment audio rather than implementing these proposed two-play conditions. It preserves source-family identity; cross-task-set allocation/exposure protection belongs to the next slice. No English recording or item is activated.
 
 Every response records actual assistance. Transcript-supported completion may support reading/language practice; it cannot satisfy an audio-only listening target. Hints guide the process without exposing the target word, answer-bearing phrase or required inference. Content and task language are explicit; shared Armenian navigation is retained.
 

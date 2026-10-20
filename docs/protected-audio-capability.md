@@ -1,0 +1,48 @@
+# Protected audio — 16.1B.4
+
+2026-10-20. This subject-neutral capability delivers reviewed short recordings to an authorized learner or content reviewer without publishing storage addresses. It is the next bounded slice after writing, typed fields and matching/ordering. Local implementation is verified; required remote CI, deployment and exact-source production acceptance are tracked in the [status register](project-status.md) and release evidence. Shared reading/listening task sets follow separately. This slice creates no media, English items, approvals, adopting policies or learner release.
+
+## Immutable recording and authoring contract
+
+An item stores exactly `{ "kind": "audio", "schemaVersion": "haiedu-audio-v1", "audioVersionId": "<UUID>" }` in its stimulus. Raw URLs, paths, transcripts, extra fields and unknown versions fail closed. The reference must belong to the item's primary programme, release skill and unit. Create the draft and its primary curriculum scope before attaching a recording; saving still uses the existing versioning, QA and approval controls.
+
+`learning_audio_versions` is service-only, with RLS enabled and no direct anonymous/authenticated access. An immutable version records release/unit, source-family UUID, locale/title, SHA-256, private bucket, hash-derived filename, MIME type, byte length, duration and source/permission/listening-review references. Insertion requires an active content administrator or administrator as the recorded reviewer. This is an audited registration prerequisite, not an automatic determination of copyright permission or editorial quality. No uploader or media approval bypass is introduced. Files are limited to MP3/WAV, 8 MiB and ten minutes. Changed media requires a new version and renewed review; revocation is irreversible. Reviewer deletion anonymizes the reviewer reference while retaining evidence.
+
+The content editor offers a scoped list of registered, unrevoked recordings. Choosing a recording edits the stimulus and requires saving, QA and normal content review. Preview fetches the saved item's recording through the same protected delivery endpoint. Labels are rendered as text. No storage locator appears in the learner or reviewer payload.
+
+## Delivery and API
+
+`POST /functions/v1/get-learning-audio` requires the authenticated token and a current live session. Request fields are closed:
+
+| Use | Request | Result |
+| --- | --- | --- |
+| Learner load | `action: load`, `sessionId`, `sessionItemId` | Verified `audio/mpeg` or `audio/wav` bytes |
+| Learner events | `action: started / completed / failed`, same IDs | `{ recorded: true, action }` |
+| Content reviewer catalog | `action: catalog`, `itemId` | Scoped `versions` with id, title, locale and duration |
+| Content reviewer preview | `action: preview`, `itemId` | Verified audio bytes for the saved item |
+
+The Edge handler validates the user and live session, then calls a service-only SQL function. Learner access requires the owned active governed Practice/Chapter Review session, current unanswered and already-served assignment, current published item version, enabled active pool, matching release/unit and unrevoked recording. A client cannot call the internal `fetched` action. Content previews/catalogs require the existing admin/content-admin role; teacher and school-admin roles receive no extra content privileges.
+
+The handler confirms the bucket is private, downloads the bounded whole object, verifies exact byte length and SHA-256, and rechecks live authorization and SQL scope after I/O before returning bytes. Responses use `private, no-store` and `nosniff`; no signed URL or bearer storage URL is returned. Each network fetch is authorized anew. This first slice uses whole-file delivery; HTTP range streaming and byte-resume are not supported. Ordinary short-file replay occurs from an in-memory object URL, which is discarded on navigation/sign-out. An authorized user can retain delivered bytes: this is access control, not DRM.
+
+Malformed requests return 400, absent/invalid authentication 401, denied scope/mode 403, incomplete playback 409, and unavailable media 503. Unavailable media never creates an answer, zero score or charged assessment attempt. Retrying does not bypass version, release or live-session checks.
+
+## Replayable practice boundary
+
+`get-session-item` projects only recording ID/version, title, locale, duration, `replayable-practice-v1`, `transcriptAvailable: false` and server-observed completion. Replay/seek are available in Practice/Chapter Review; the native player resets playback speed to normal. The server records fetched/started/completed/failed state per assigned item and rejects completion earlier than the declared duration less a 100 ms event tolerance. These events establish the delivery protocol, not proof of attention or tamper-resistant listening conditions.
+
+Submission is disabled until completion, and SQL independently requires successful recorded completion. A trigger also blocks historical sessionless grading of audio items. A successful attempt records `haiedu-audio-evidence-v1`, recording version, source family, replay policy, `transcriptUsed: false` and observed completion time alongside the existing normalized response. Existing scoring, item weight, reporting and readiness semantics remain unchanged. Resume retains the same assigned version and completion; a delivery failure clears completion and requires another successful play. Duplicate answers retain the existing atomic behavior.
+
+Diagnostic/Mastery policies containing audio are rejected before launch and independently rejected on delivery/submission. Their proposed two-play, interruption and equivalent-unexposed replacement rules are not accepted by this capability. Transcript reveal is disabled; supported reading must not be mislabeled as independent listening. Shared task-set grouping, source-family allocation/exposure protection, transcript assistance and capped assessment playback remain separate work. No listening-mastery claim or final English assessment policy is created here. Speaking remains classroom-assessed.
+
+## Privacy, consumers and verification
+
+The service-only `learning_audio_deliveries` ledger is included in the learner's privacy inventory and deleted with the learner/session assignment. No answers, transcripts, device fingerprints or recording URLs are stored there. The immutable recording registry is content evidence, not learner history.
+
+Affected browser consumers are the shared learner player, stimulus renderer, content editor and privacy page. Their imports and all impacted production-QA triggers include the new audio module. New Edge code is isolated to `get-learning-audio`; the existing shared auth helper is unchanged. `get-my-privacy` is the only changed existing Edge bundle. Existing submit/delivery Edge bundles call replaced SQL functions but contain no changed imported source, so their previously verified bytes are reused.
+
+Local evidence: 1,353 Node tests pass. Focused SQL/handler tests cover immutable and scoped references, raw-table denial, wrong schools/subjects/roles, session/account revocation, altered/missing/public-bucket media, revocation during download, failure/retry/resume, duplicate submission, legacy-grader denial and exact evidence. Native Chromium uses the actual shared learner and reviewer modules, actual Edge handlers and isolated SQL, with auth/storage doubles and a synthetic 0.3-second WAV. It verifies actual playback, 390/1365 px layout, retry without scoring and disposal of delayed media. The affected reviewer suite passes 12 checks. This is isolated fixture evidence, not an audition or production playback of the five English MP3s.
+
+Required CI also executes the database/handler checks on PostgreSQL 17.6. Production read acceptance adds 21 read-only denial checks across anonymous and both schools' student/teacher/admin identities, using reserved nonexistent assignment IDs. It cannot register, upload, load a real recording or mutate a genuine learner assignment. Exact SQL/Edge readback, preserved data and exact frontend source must be verified before closure. The unchanged persistent Vercel Production / Blocking attestation is reused from [the existing evidence](evidence/vercel-deployment-check-verification-20261020.json).
+
+Rollback before any adoption restores the prior three SQL function bodies and privacy Edge bundle from `305855cb523cd18941f8c437863b64819aa61952`, and the prior frontend. The new endpoint, empty registry/ledger and audio-only guards can remain inert. After any future adoption, revocation and an explicit data-preserving rollback plan are required; deleting evidence is not a rollback procedure.

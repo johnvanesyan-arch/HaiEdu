@@ -58,6 +58,7 @@ on:
       - web/learning-extensions.mjs
       - web/learning-navigation.mjs
       - web/learning-player.mjs
+      - web/learning-audio.mjs
       - web/typed-fields-contract.mjs
       - web/typed-fields-ui.mjs
       - web/arrangement-contract.mjs
