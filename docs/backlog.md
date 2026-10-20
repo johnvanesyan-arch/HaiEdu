@@ -28,12 +28,14 @@
 - [ ] Accept and implement transcript-support and capped Diagnostic/Mastery audio/interruption rules before assessment adoption.
 - [ ] Verify valid language alternatives, partial credit, unsupported responses, media failures, answer retries, score protection and role/subject/tenant isolation.
 - [x] Prepare the complete textbook-order Unit 1 draft: 45 practice items, six source-set proposals, nine guides and the writing task/practice/model/rubric, with source and whole-bank evidence (16.1C.1).
+- [x] Prepare the concrete Unit 1 bank/form proposal: 60 Practice / 56 Diagnostic / 84 Mastery, 15 additional Practice specifications, 140 unfilled assessment slots and 20 protected source-family placeholders (16.1C.2). Arithmetic and coverage references verified; original draft/evidence unchanged.
+- [ ] Accept the bounded English bank/parallel-assessment scope, then author the remaining 155 questions with fresh comparison and source evidence; no approval or qualified capacity is conferred by the plan.
 - [x] Validate all response definitions/keys, 169 isolated SQL grading cases, writing definition/approval guard, source memberships, activity/skill mappings and 87-word model. Preserve runtime/API sources and reuse unchanged 16.1B.5 acceptance evidence.
 - [ ] Complete human language/content/SME review of exact Unit 1 versions, then onboard inactive English catalogue records and stage through existing controls with a refreshed corpus. Source/writing registration requires genuine review and permission references.
 - [ ] Resolve the named-clip speaker-identification gap and qualify protected English sources/forms; current protected Diagnostic/Mastery capacity is zero.
 - [ ] Adopt the accepted English policy and complete exact deployment/authenticated desktop/mobile acceptance before learner release.
 
-[Review handoff](english-7-unit-01-authoring-review.md) · [Complete draft packet](english-7-unit-01-review-packet.md) · [Framework](english-7-assessment-framework.md) · [Unit 1 preparation](english-7-unit-01-preparation.md) · [Draft contract](english-7-unit-01-assessment-contract.md) · [Preparation evidence](evidence/english-7-unit-01-preparation-20261020.json). Writing is implemented under [16.1B.1](written-work-workspaces.md), deployed and verified; no English assessment/release is live.
+[Bank/form proposal](english-7-unit-01-bank-plan.md) · [Review handoff](english-7-unit-01-authoring-review.md) · [Complete draft packet](english-7-unit-01-review-packet.md) · [Framework](english-7-assessment-framework.md) · [Unit 1 preparation](english-7-unit-01-preparation.md) · [Draft contract](english-7-unit-01-assessment-contract.md) · [Preparation evidence](evidence/english-7-unit-01-preparation-20261020.json). Writing is implemented under [16.1B.1](written-work-workspaces.md), deployed and verified; no English assessment/release is live.
 
 ## Sprint 0 — Technical foundation
 - [x] Repository scaffold

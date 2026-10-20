@@ -1,5 +1,7 @@
 # English 7 Unit 1 — proposed assessment contract
 
+**16.1C.2 planning follow-up — 2026-10-20:** The [bank/form proposal](english-7-unit-01-bank-plan.md) now specifies 60 Practice / 56 Diagnostic / 84 Mastery, five forms of 28 and the exact remaining slot demands. These are proposed counts, not authored/approved capacity or an adopted policy. The existing 45-question draft is unchanged.
+
 **16.1C.1 authoring follow-up — 2026-10-20:** The [complete draft review packet](english-7-unit-01-review-packet.md), [whole-bank comparison](english-7-unit-01-whole-bank-review.md) and [review handoff](english-7-unit-01-authoring-review.md) now provide the actual Unit 1 material in textbook order. Technical content-contract checks pass; human review, audio permissions/audition, final policy and learner release remain open. No English content is staged or activated.
 
 **Status: concrete design draft, 16.1A.2, 2026-10-20; not an active policy.** This specifies response handling and a reviewable writing option for the [Unit 1 map](english-7-unit-01-preparation.md). John subsequently authorised implementation of the teacher-review route under [16.1B.1](written-work-workspaces.md). This draft still does not set the final task/rubric, unit mastery thresholds or English release.

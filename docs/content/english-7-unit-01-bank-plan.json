@@ -1,0 +1,2729 @@
+{
+  "schemaVersion": "haiedu-english-bank-plan-v1",
+  "checkpoint": "16.1C.2",
+  "date": "2026-10-20",
+  "proposalVersion": 1,
+  "baselineCommit": "57939aadb10c18cda8180f000d279d5487b4b606",
+  "author": "Codex automated author; one primary agent",
+  "status": "proposed_not_adopted",
+  "unit": "ENG7-U01",
+  "sourceDraft": "docs/content/english-7-unit-01-draft.json",
+  "sourceDraftSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+  "authorization": {
+    "planningRequested": true,
+    "approvedBy": null,
+    "bankPlanAccepted": false,
+    "protectedParallelManifestAccepted": false,
+    "scoringPolicyAccepted": false,
+    "learnerReleaseAuthorized": false
+  },
+  "proposedTotals": {
+    "practice": 60,
+    "diagnostic": 56,
+    "mastery": 84,
+    "automaticBank": 200,
+    "practiceText": 50,
+    "practiceAudio": 10,
+    "diagnosticForms": 2,
+    "masteryForms": 3,
+    "questionsPerAssessmentForm": 28,
+    "assessmentText": 120,
+    "assessmentAudio": 20,
+    "newPracticeSpecifications": 15,
+    "unfilledAssessmentSlots": 140,
+    "additionalItemsToAuthor": 155
+  },
+  "existingDraftInventory": {
+    "practice": 45,
+    "practiceText": 39,
+    "practiceAudio": 6,
+    "diagnostic": 0,
+    "mastery": 0,
+    "approvedCapacity": 0,
+    "stagedItems": 0
+  },
+  "sourcePlan": {
+    "protectedReadingSets": 10,
+    "protectedListeningSets": 10,
+    "protectedFamilyPlaceholders": 20,
+    "additionalPracticeAudioSets": 1,
+    "additionalPracticeAudioAssets": 1,
+    "assetVersionsRegisteredByThisPlan": 0,
+    "familySeparation": "Proposed disjoint ownership; semantic distinctness and protection unverified"
+  },
+  "skills": [
+    {
+      "skill": "ENG7-U01-S01",
+      "name": "Clothing, style and personality vocabulary",
+      "bookPages": [
+        3,
+        4,
+        5,
+        6,
+        17,
+        18
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P02",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04"
+      ],
+      "currentPractice": 4,
+      "proposedPractice": 6,
+      "additionalPractice": 2,
+      "perAssessmentForm": 3,
+      "diagnosticBank": 6,
+      "masteryBank": 9,
+      "demands": [
+        {
+          "id": "S01-01",
+          "description": "Personality meaning from stated behaviour"
+        },
+        {
+          "id": "S01-02",
+          "description": "Appearance or clothing description"
+        },
+        {
+          "id": "S01-03",
+          "description": "Style meaning in context"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S02",
+      "name": "Word formation",
+      "bookPages": [
+        5,
+        15
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-P05",
+        "ENG7-U01-P06",
+        "ENG7-U01-P22"
+      ],
+      "currentPractice": 3,
+      "proposedPractice": 5,
+      "additionalPractice": 2,
+      "perAssessmentForm": 2,
+      "diagnosticBank": 4,
+      "masteryBank": 6,
+      "demands": [
+        {
+          "id": "S02-01",
+          "description": "Produce a taught derived word in context"
+        },
+        {
+          "id": "S02-02",
+          "description": "Interpret a taught ending and its word-class function"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S03",
+      "name": "Reported instructions and requests",
+      "bookPages": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-P07",
+        "ENG7-U01-P08",
+        "ENG7-U01-P09",
+        "ENG7-U01-P10",
+        "ENG7-U01-P11"
+      ],
+      "currentPractice": 5,
+      "proposedPractice": 6,
+      "additionalPractice": 1,
+      "perAssessmentForm": 2,
+      "diagnosticBank": 4,
+      "masteryBank": 6,
+      "demands": [
+        {
+          "id": "S03-01",
+          "description": "Preserve a positive request or instruction"
+        },
+        {
+          "id": "S03-02",
+          "description": "Preserve a negative request or instruction"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S04",
+      "name": "Adjective and adverb functions",
+      "bookPages": [
+        12
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-P12",
+        "ENG7-U01-P13"
+      ],
+      "currentPractice": 2,
+      "proposedPractice": 4,
+      "additionalPractice": 2,
+      "perAssessmentForm": 2,
+      "diagnosticBank": 4,
+      "masteryBank": 6,
+      "demands": [
+        {
+          "id": "S04-01",
+          "description": "Adjective for a property or state"
+        },
+        {
+          "id": "S04-02",
+          "description": "Adverb modifying an action"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S05",
+      "name": "Feelings and their causes: -ed / -ing",
+      "bookPages": [
+        13
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-P14",
+        "ENG7-U01-P15"
+      ],
+      "currentPractice": 2,
+      "proposedPractice": 3,
+      "additionalPractice": 1,
+      "perAssessmentForm": 2,
+      "diagnosticBank": 4,
+      "masteryBank": 6,
+      "demands": [
+        {
+          "id": "S05-01",
+          "description": "Experiencer or feeling"
+        },
+        {
+          "id": "S05-02",
+          "description": "Cause of a feeling, including a person as cause"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S06",
+      "name": "Too and enough",
+      "bookPages": [
+        14
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-P16",
+        "ENG7-U01-P17",
+        "ENG7-U01-P18"
+      ],
+      "currentPractice": 3,
+      "proposedPractice": 4,
+      "additionalPractice": 1,
+      "perAssessmentForm": 3,
+      "diagnosticBank": 6,
+      "masteryBank": 9,
+      "demands": [
+        {
+          "id": "S06-01",
+          "description": "Excess versus sufficiency in a stated situation"
+        },
+        {
+          "id": "S06-02",
+          "description": "Enough with adjectives and nouns"
+        },
+        {
+          "id": "S06-03",
+          "description": "Too much or many in a supplied count/mass context"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S07",
+      "name": "Comparison and intensifiers",
+      "bookPages": [
+        15,
+        27
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-P19",
+        "ENG7-U01-P20",
+        "ENG7-U01-P21",
+        "ENG7-U01-P28",
+        "ENG7-U01-P29",
+        "ENG7-U01-P30"
+      ],
+      "currentPractice": 6,
+      "proposedPractice": 7,
+      "additionalPractice": 1,
+      "perAssessmentForm": 3,
+      "diagnosticBank": 6,
+      "masteryBank": 9,
+      "demands": [
+        {
+          "id": "S07-01",
+          "description": "Adjective comparison with an explicit set"
+        },
+        {
+          "id": "S07-02",
+          "description": "Adverb comparison"
+        },
+        {
+          "id": "S07-03",
+          "description": "A taught comparative intensifier"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S08",
+      "name": "Articles and explicit zero article",
+      "bookPages": [
+        26
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-P25",
+        "ENG7-U01-P26",
+        "ENG7-U01-P27"
+      ],
+      "currentPractice": 3,
+      "proposedPractice": 4,
+      "additionalPractice": 1,
+      "perAssessmentForm": 3,
+      "diagnosticBank": 6,
+      "masteryBank": 9,
+      "demands": [
+        {
+          "id": "S08-01",
+          "description": "A/an by sound"
+        },
+        {
+          "id": "S08-02",
+          "description": "Definite/indefinite reference in a clear context"
+        },
+        {
+          "id": "S08-03",
+          "description": "Explicit zero article"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S09",
+      "name": "Reading main ideas and details",
+      "bookPages": [
+        17,
+        18
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-R02",
+        "ENG7-U01-R04",
+        "ENG7-U01-R05",
+        "ENG7-U01-R06",
+        "ENG7-U01-R09",
+        "ENG7-U01-P23",
+        "ENG7-U01-P24"
+      ],
+      "currentPractice": 7,
+      "proposedPractice": 7,
+      "additionalPractice": 0,
+      "perAssessmentForm": 2,
+      "diagnosticBank": 4,
+      "masteryBank": 6,
+      "demands": [
+        {
+          "id": "S09-01",
+          "description": "Main idea of READ-A"
+        },
+        {
+          "id": "S09-02",
+          "description": "Supported explicit detail from READ-A"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S10",
+      "name": "Reading chronology and cultural information",
+      "bookPages": [
+        16,
+        20,
+        21
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R03",
+        "ENG7-U01-R07",
+        "ENG7-U01-R08"
+      ],
+      "currentPractice": 4,
+      "proposedPractice": 4,
+      "additionalPractice": 0,
+      "perAssessmentForm": 2,
+      "diagnosticBank": 4,
+      "masteryBank": 6,
+      "demands": [
+        {
+          "id": "S10-01",
+          "description": "Chronology or contrast from READ-B"
+        },
+        {
+          "id": "S10-02",
+          "description": "Supported cultural information from READ-B"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S11",
+      "name": "Listening for the main idea",
+      "bookPages": [
+        6,
+        144
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L03",
+        "ENG7-U01-L05"
+      ],
+      "currentPractice": 3,
+      "proposedPractice": 4,
+      "additionalPractice": 1,
+      "perAssessmentForm": 2,
+      "diagnosticBank": 4,
+      "masteryBank": 6,
+      "demands": [
+        {
+          "id": "S11-01",
+          "description": "Main message of AUDIO-A"
+        },
+        {
+          "id": "S11-02",
+          "description": "Overall message of AUDIO-B"
+        }
+      ]
+    },
+    {
+      "skill": "ENG7-U01-S12",
+      "name": "Listening for details and speakers",
+      "bookPages": [
+        6,
+        144
+      ],
+      "existingPracticeCodes": [
+        "ENG7-U01-L02",
+        "ENG7-U01-L04",
+        "ENG7-U01-L06"
+      ],
+      "currentPractice": 3,
+      "proposedPractice": 6,
+      "additionalPractice": 3,
+      "perAssessmentForm": 2,
+      "diagnosticBank": 4,
+      "masteryBank": 6,
+      "demands": [
+        {
+          "id": "S12-01",
+          "description": "Relevant explicit detail from AUDIO-A"
+        },
+        {
+          "id": "S12-02",
+          "description": "Attribute a stated view to a speaker in AUDIO-B"
+        }
+      ]
+    }
+  ],
+  "practiceAdditions": [
+    {
+      "plannedItemCode": "ENG7-U01-P31",
+      "skill": "ENG7-U01-S01",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Bounded clothing description",
+      "bookActivities": [
+        1,
+        2,
+        5,
+        6,
+        7
+      ],
+      "bookPages": [
+        3,
+        4,
+        5,
+        6,
+        17,
+        18
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P02",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-R04",
+        "ENG7-U01-R05",
+        "ENG7-U01-R06"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P32",
+      "skill": "ENG7-U01-S01",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Personality word in a supplied context",
+      "bookActivities": [
+        1,
+        2
+      ],
+      "bookPages": [
+        3,
+        4,
+        5,
+        6,
+        17,
+        18
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P02"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P33",
+      "skill": "ENG7-U01-S02",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Choose a taught base or derived form in context",
+      "bookActivities": [
+        3,
+        4
+      ],
+      "bookPages": [
+        5,
+        15
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P05",
+        "ENG7-U01-P06",
+        "ENG7-U01-P22"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P34",
+      "skill": "ENG7-U01-S02",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Produce a taught derived adjective",
+      "bookActivities": [
+        17
+      ],
+      "bookPages": [
+        5,
+        15
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P05",
+        "ENG7-U01-P06",
+        "ENG7-U01-P22"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P35",
+      "skill": "ENG7-U01-S03",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Interpret a reported negative instruction",
+      "bookActivities": [
+        9,
+        11,
+        12
+      ],
+      "bookPages": [
+        8,
+        9,
+        10,
+        11
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P07",
+        "ENG7-U01-P08",
+        "ENG7-U01-P09"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P36",
+      "skill": "ENG7-U01-S04",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Adjective function in a complete context",
+      "bookActivities": [
+        13
+      ],
+      "bookPages": [
+        12
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P12",
+        "ENG7-U01-P13"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P37",
+      "skill": "ENG7-U01-S04",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Adverb function in a complete context",
+      "bookActivities": [
+        13
+      ],
+      "bookPages": [
+        12
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P12",
+        "ENG7-U01-P13",
+        "ENG7-U01-P19",
+        "ENG7-U01-P20"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P38",
+      "skill": "ENG7-U01-S05",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Contrast feeling and cause",
+      "bookActivities": [
+        14
+      ],
+      "bookPages": [
+        13
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P14",
+        "ENG7-U01-P15"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P39",
+      "skill": "ENG7-U01-S06",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Judge sufficiency for a stated purpose",
+      "bookActivities": [
+        15
+      ],
+      "bookPages": [
+        14
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P16",
+        "ENG7-U01-P17",
+        "ENG7-U01-P18"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P40",
+      "skill": "ENG7-U01-S07",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Interpret a taught comparative intensifier",
+      "bookActivities": [
+        16,
+        30
+      ],
+      "bookPages": [
+        15,
+        27
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P19",
+        "ENG7-U01-P20",
+        "ENG7-U01-P21",
+        "ENG7-U01-P28",
+        "ENG7-U01-P29",
+        "ENG7-U01-P30"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-P41",
+      "skill": "ENG7-U01-S08",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Track first and subsequent reference in an exchange",
+      "bookActivities": [
+        29
+      ],
+      "bookPages": [
+        26
+      ],
+      "modality": "text",
+      "sourceFamilyPlaceholder": null,
+      "nearestComparisonCandidates": [
+        "ENG7-U01-P25",
+        "ENG7-U01-P26",
+        "ENG7-U01-P27"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-L07",
+      "skill": "ENG7-U01-S11",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Overall message of a new multi-speaker practice recording",
+      "bookActivities": [
+        8
+      ],
+      "bookPages": [
+        6,
+        144
+      ],
+      "modality": "audio",
+      "sourceFamilyPlaceholder": "ENG7-U01-PLAN-P-AUDIO-COMBINED",
+      "nearestComparisonCandidates": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L03",
+        "ENG7-U01-L05"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-L08",
+      "skill": "ENG7-U01-S12",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Retrieve an explicit recording detail",
+      "bookActivities": [
+        8
+      ],
+      "bookPages": [
+        6,
+        144
+      ],
+      "modality": "audio",
+      "sourceFamilyPlaceholder": "ENG7-U01-PLAN-P-AUDIO-COMBINED",
+      "nearestComparisonCandidates": [
+        "ENG7-U01-L02",
+        "ENG7-U01-L04",
+        "ENG7-U01-L06"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-L09",
+      "skill": "ENG7-U01-S12",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Attribute the first selected view to a numbered speaker",
+      "bookActivities": [
+        8
+      ],
+      "bookPages": [
+        6,
+        144
+      ],
+      "modality": "audio",
+      "sourceFamilyPlaceholder": "ENG7-U01-PLAN-P-AUDIO-COMBINED",
+      "nearestComparisonCandidates": [
+        "ENG7-U01-L02",
+        "ENG7-U01-L04",
+        "ENG7-U01-L06",
+        "ENG7-U01-L10"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    },
+    {
+      "plannedItemCode": "ENG7-U01-L10",
+      "skill": "ENG7-U01-S12",
+      "purpose": "practice",
+      "status": "specification_only_not_authored",
+      "demand": "Attribute a second selected view to a numbered speaker",
+      "bookActivities": [
+        8
+      ],
+      "bookPages": [
+        6,
+        144
+      ],
+      "modality": "audio",
+      "sourceFamilyPlaceholder": "ENG7-U01-PLAN-P-AUDIO-COMBINED",
+      "nearestComparisonCandidates": [
+        "ENG7-U01-L02",
+        "ENG7-U01-L04",
+        "ENG7-U01-L06",
+        "ENG7-U01-L09"
+      ],
+      "expectedContribution": "Useful practice variant or gap coverage, subject to full comparison; no independent reasoning claim",
+      "approvedBy": null
+    }
+  ],
+  "forms": [
+    {
+      "code": "DA",
+      "purpose": "diagnostic",
+      "status": "proposed_not_allocated",
+      "itemCount": 28,
+      "sourceSets": [
+        {
+          "plannedCode": "ENG7-U01-PLAN-DA-READ-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-DA-READ-A",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-DA-21",
+            "ENG7-U01-PLAN-DA-22"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-DA-READ-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-DA-READ-B",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-DA-23",
+            "ENG7-U01-PLAN-DA-24"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-DA-AUDIO-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-DA-AUDIO-A",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-DA-25",
+            "ENG7-U01-PLAN-DA-27"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-DA-AUDIO-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-DA-AUDIO-B",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-DA-26",
+            "ENG7-U01-PLAN-DA-28"
+          ]
+        }
+      ],
+      "slots": [
+        {
+          "slotId": "ENG7-U01-PLAN-DA-01",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-02",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-03",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-04",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-05",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-06",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-07",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-08",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-09",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-10",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-11",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-12",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-13",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-14",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-15",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-16",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-17",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-18",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-19",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-20",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-21",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-22",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-23",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-24",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-25",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-26",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-27",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DA-28",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DA-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        }
+      ]
+    },
+    {
+      "code": "DB",
+      "purpose": "diagnostic",
+      "status": "proposed_not_allocated",
+      "itemCount": 28,
+      "sourceSets": [
+        {
+          "plannedCode": "ENG7-U01-PLAN-DB-READ-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-DB-READ-A",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-DB-21",
+            "ENG7-U01-PLAN-DB-22"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-DB-READ-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-DB-READ-B",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-DB-23",
+            "ENG7-U01-PLAN-DB-24"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-DB-AUDIO-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-DB-AUDIO-A",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-DB-25",
+            "ENG7-U01-PLAN-DB-27"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-DB-AUDIO-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-DB-AUDIO-B",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-DB-26",
+            "ENG7-U01-PLAN-DB-28"
+          ]
+        }
+      ],
+      "slots": [
+        {
+          "slotId": "ENG7-U01-PLAN-DB-01",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-02",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-03",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-04",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-05",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-06",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-07",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-08",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-09",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-10",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-11",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-12",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-13",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-14",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-15",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-16",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-17",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-18",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-19",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-20",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-21",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-22",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-23",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-24",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-25",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-26",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-27",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-DB-28",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-DB-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        }
+      ]
+    },
+    {
+      "code": "MA",
+      "purpose": "mastery",
+      "status": "proposed_not_allocated",
+      "itemCount": 28,
+      "sourceSets": [
+        {
+          "plannedCode": "ENG7-U01-PLAN-MA-READ-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MA-READ-A",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MA-21",
+            "ENG7-U01-PLAN-MA-22"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-MA-READ-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MA-READ-B",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MA-23",
+            "ENG7-U01-PLAN-MA-24"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-MA-AUDIO-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MA-AUDIO-A",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MA-25",
+            "ENG7-U01-PLAN-MA-27"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-MA-AUDIO-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MA-AUDIO-B",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MA-26",
+            "ENG7-U01-PLAN-MA-28"
+          ]
+        }
+      ],
+      "slots": [
+        {
+          "slotId": "ENG7-U01-PLAN-MA-01",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-02",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-03",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-04",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-05",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-06",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-07",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-08",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-09",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-10",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-11",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-12",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-13",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-14",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-15",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-16",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-17",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-18",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-19",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-20",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-21",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-22",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-23",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-24",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-25",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-26",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-27",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MA-28",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MA-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        }
+      ]
+    },
+    {
+      "code": "MB",
+      "purpose": "mastery",
+      "status": "proposed_not_allocated",
+      "itemCount": 28,
+      "sourceSets": [
+        {
+          "plannedCode": "ENG7-U01-PLAN-MB-READ-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MB-READ-A",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MB-21",
+            "ENG7-U01-PLAN-MB-22"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-MB-READ-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MB-READ-B",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MB-23",
+            "ENG7-U01-PLAN-MB-24"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-MB-AUDIO-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MB-AUDIO-A",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MB-25",
+            "ENG7-U01-PLAN-MB-27"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-MB-AUDIO-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MB-AUDIO-B",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MB-26",
+            "ENG7-U01-PLAN-MB-28"
+          ]
+        }
+      ],
+      "slots": [
+        {
+          "slotId": "ENG7-U01-PLAN-MB-01",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-02",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-03",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-04",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-05",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-06",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-07",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-08",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-09",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-10",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-11",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-12",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-13",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-14",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-15",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-16",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-17",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-18",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-19",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-20",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-21",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-22",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-23",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-24",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-25",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-26",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-27",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MB-28",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MB-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        }
+      ]
+    },
+    {
+      "code": "MC",
+      "purpose": "mastery",
+      "status": "proposed_not_allocated",
+      "itemCount": 28,
+      "sourceSets": [
+        {
+          "plannedCode": "ENG7-U01-PLAN-MC-READ-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MC-READ-A",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MC-21",
+            "ENG7-U01-PLAN-MC-22"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-MC-READ-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MC-READ-B",
+          "modality": "text",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MC-23",
+            "ENG7-U01-PLAN-MC-24"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-MC-AUDIO-A",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MC-AUDIO-A",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MC-25",
+            "ENG7-U01-PLAN-MC-27"
+          ]
+        },
+        {
+          "plannedCode": "ENG7-U01-PLAN-MC-AUDIO-B",
+          "familyPlaceholder": "ENG7-U01-PLAN-FAMILY-MC-AUDIO-B",
+          "modality": "audio",
+          "assetVersionId": null,
+          "reviewed": false,
+          "permissionVerified": false,
+          "distinctnessVerified": false,
+          "memberSlots": [
+            "ENG7-U01-PLAN-MC-26",
+            "ENG7-U01-PLAN-MC-28"
+          ]
+        }
+      ],
+      "slots": [
+        {
+          "slotId": "ENG7-U01-PLAN-MC-01",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-02",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-03",
+          "skill": "ENG7-U01-S01",
+          "demandId": "S01-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-04",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-05",
+          "skill": "ENG7-U01-S02",
+          "demandId": "S02-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-06",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-07",
+          "skill": "ENG7-U01-S03",
+          "demandId": "S03-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-08",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-09",
+          "skill": "ENG7-U01-S04",
+          "demandId": "S04-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-10",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-11",
+          "skill": "ENG7-U01-S05",
+          "demandId": "S05-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-12",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-13",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-14",
+          "skill": "ENG7-U01-S06",
+          "demandId": "S06-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-15",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-16",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-17",
+          "skill": "ENG7-U01-S07",
+          "demandId": "S07-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-18",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-01",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-19",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-02",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-20",
+          "skill": "ENG7-U01-S08",
+          "demandId": "S08-03",
+          "modality": "text",
+          "sourceSetPlaceholder": null,
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-21",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-22",
+          "skill": "ENG7-U01-S09",
+          "demandId": "S09-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-READ-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-23",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-01",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-24",
+          "skill": "ENG7-U01-S10",
+          "demandId": "S10-02",
+          "modality": "text",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-READ-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-25",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-26",
+          "skill": "ENG7-U01-S11",
+          "demandId": "S11-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-27",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-01",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-AUDIO-A",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        },
+        {
+          "slotId": "ENG7-U01-PLAN-MC-28",
+          "skill": "ENG7-U01-S12",
+          "demandId": "S12-02",
+          "modality": "audio",
+          "sourceSetPlaceholder": "ENG7-U01-PLAN-MC-AUDIO-B",
+          "itemCode": null,
+          "itemVersion": null,
+          "status": "unfilled_proposed_slot",
+          "approvedBy": null
+        }
+      ]
+    }
+  ],
+  "writing": {
+    "automaticBankContribution": 0,
+    "existingPracticePrompt": "WP01",
+    "existingReviewedTaskProposal": "W01",
+    "skills": [
+      "ENG7-U01-S13",
+      "ENG7-U01-S14"
+    ],
+    "linkedObservationCount": 1,
+    "additionalRequiredDiagnosticWritingTask": 0,
+    "baselineDecision": "Separate non-gating option, not adopted",
+    "taskRubricWorkloadApproved": false
+  },
+  "proposedLearnerUse": {
+    "completedDiagnosticForms": 1,
+    "diagnosticAlternateIsRoutineRetry": false,
+    "maximumValidMasteryAttempts": 3,
+    "reviewBetweenMasteryAttempts": true,
+    "practiceBeforeDiagnosticAllowed": false,
+    "extraFullFormFailureReserve": 0,
+    "speaking": "classroom_assessed",
+    "timerSeconds": null,
+    "passThreshold": null,
+    "skillMinima": null,
+    "readinessParameters": null,
+    "assessmentAudioImplemented": false
+  },
+  "proposedBatches": [
+    {
+      "code": "A",
+      "newPractice": 15,
+      "assessmentForms": [],
+      "newItems": 15
+    },
+    {
+      "code": "B",
+      "newPractice": 0,
+      "assessmentForms": [
+        "DA",
+        "MA"
+      ],
+      "newItems": 56
+    },
+    {
+      "code": "C",
+      "newPractice": 0,
+      "assessmentForms": [
+        "DB",
+        "MB",
+        "MC"
+      ],
+      "newItems": 84
+    }
+  ],
+  "courseTotal": {
+    "units": 6,
+    "questionBankTarget": null,
+    "unit1MultiplicationAuthorized": false
+  },
+  "preservation": {
+    "canonicalDraftChanged": false,
+    "runtimeChanged": false,
+    "apiChanged": false,
+    "productionDatabaseRead": false,
+    "productionWrite": false,
+    "audioUploaded": false,
+    "humanApprovalManufactured": false
+  },
+  "guards": [
+    "Authoring ceiling subject to review; no padding or silent shortfall waiver",
+    "No source family reused across Practice/Review or assessment forms",
+    "New IDs, names, recordings or source splits do not establish unseen status",
+    "Refresh applicable whole-bank current/history and exposure evidence before staging",
+    "No English protected-parallel disposition before acceptance of this bounded scope",
+    "Missing audio, unreviewed sources or incomplete forms contribute zero qualified capacity",
+    "No imported Physics scoring, per-skill count or approval/release exception"
+  ]
+}

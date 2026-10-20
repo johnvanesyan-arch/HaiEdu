@@ -1,0 +1,125 @@
+# English 7 Unit 1 — question-bank and form proposal
+
+**16.1C.2 · 2026-10-20 · Proposed authoring budget; not an adopted assessment policy.**
+
+Recommend **200 automatically scored questions: 60 Practice, 56 Diagnostic and 84 Mastery**. The Diagnostic bank supplies **two forms of 28**; the Mastery bank supplies **three forms of 28**. These are bank totals, not 200 compulsory answers per learner. The recommendation comes from the Unit 1 demands below and a proposed reserve/retry arrangement; it is not a ministry requirement, a Physics default or a validated test length.
+
+John's instruction to continue authorises preparation of this concrete plan. It does not record acceptance of these newly proposed numbers, the English protected-parallel manifest, a scoring threshold, a final audio contract or learner activation. The [status register](project-status.md) remains authoritative.
+
+## Inventory, target and remaining work
+
+| Purpose | Existing automatic drafts | Proposed bank | Proposed learner use | Additional questions to author |
+| --- | ---: | ---: | --- | ---: |
+| Practice | 45 | 60 | Short blocks in textbook order; source sets kept together | 15 |
+| Diagnostic | 0 | 56 | One 28-question completed form; the other is a controlled alternate | 56 |
+| Mastery | 0 | 84 | 28 per attempt; up to three distinct forms if the retry contract is adopted | 84 |
+| **Total** | **45** | **200** | Writing remains separate | **155** |
+
+The existing 45 remain draft-only: 39 text questions and six provisional listening questions. The proposed 60 contain **50 text and ten listening questions**, including the two existing optional reporting extensions P10/P11; those two stay outside mandatory core coverage. Nine shared-reading questions are already included in the text count. P23/P24 support writing preparation but do not earn S13/S14 production evidence. No question is counted again because it has several fields or belongs to a source set.
+
+Keep **one separate writing practice prompt and one teacher-reviewed 80–100-word note**, with its model and proposed rubric, outside the 200-question automatic bank. The reviewed note gives linked S13/S14 evidence, not two independently assessed samples. A separately tracked, non-gating writing baseline remains a possible later decision; it is not an additional required marking task in this budget. Speaking remains classroom-assessed.
+
+Across all six English 7 units there is **no defensible final total yet**. Map Units 2–6 before assigning their budgets; do not multiply 200 by six or apply the Unit 1 skill distribution to them. Validate the first complete unit before scaling content, as required by 16.1C.
+
+## Per-skill counts
+
+Counts below are items, not response components or claims of independent reasoning. The two Diagnostic and three Mastery columns are bank totals. The last column defines the same proposed coverage blueprint for each 28-item form; matching that blueprint does not establish equal difficulty between forms.
+
+| Skill | Existing Practice | Proposed Practice | Diagnostic bank | Mastery bank | Each assessment form |
+| --- | ---: | ---: | ---: | ---: | ---: |
+| S01 — clothing, style and personality vocabulary | 4 | 6 | 6 | 9 | 3 |
+| S02 — word formation | 3 | 5 | 4 | 6 | 2 |
+| S03 — reported requests/instructions | 5 | 6 | 4 | 6 | 2 |
+| S04 — adjective/adverb functions | 2 | 4 | 4 | 6 | 2 |
+| S05 — feelings and causes, -ed/-ing | 2 | 3 | 4 | 6 | 2 |
+| S06 — too/enough | 3 | 4 | 6 | 9 | 3 |
+| S07 — comparisons and intensifiers | 6 | 7 | 6 | 9 | 3 |
+| S08 — articles and explicit zero article | 3 | 4 | 6 | 9 | 3 |
+| S09 — reading gist/details | 7 | 7 | 4 | 6 | 2 |
+| S10 — reading chronology/cultural information | 4 | 4 | 4 | 6 | 2 |
+| S11 — listening gist | 3 | 4 | 4 | 6 | 2 |
+| S12 — listening details/speakers | 3 | 6 | 4 | 6 | 2 |
+| **Automatic total** | **45** | **60** | **56** | **84** | **28** |
+| S13/S14 — description/written interaction | Separate writing package | One practice prompt and one reviewed note | No automatic writing credit | No automatic writing credit | Separate criterion evidence |
+
+S03's proposed six Practice questions include four core tasks and the two existing optional extensions. Only positive/negative requests and instructions enter the proposed assessment blueprint. Wider statement/question reporting is not silently made compulsory.
+
+## Why 28 per form
+
+The blueprint allocates **20 language questions, four reading questions and four listening questions**. It samples two or three specified demands per automatic skill; it does not purport to measure each broad skill reliably from two observations.
+
+| Skill | Demands reserved in each form | Existing source anchors |
+| --- | --- | --- |
+| S01 | Personality meaning from stated behaviour; appearance/clothing description; style meaning in context | pp.3–6, 17–18; T1.K1 |
+| S02 | Produce a taught derived word in context; interpret a taught ending's word-class function | p.5 ex.3–4, p.15 ex.17; T1.K3 |
+| S03 | Preserve a positive request/instruction; preserve a negative request/instruction | pp.8–11; T1.K3, annual grammar list |
+| S04 | Adjective for a property/state; adverb modifying an action | p.12 ex.13; T1.K3 |
+| S05 | Experiencer/feeling; cause of the feeling, including where the cause is a person | p.13 ex.14; T1.K3 |
+| S06 | Excess versus sufficiency in a stated situation; adjective/noun placement of enough; too much/many in a supplied count/mass context | p.14 ex.15; T1.K3 |
+| S07 | Adjective comparison with an explicit comparison set; adverb comparison; a taught comparative intensifier | p.15 ex.16, p.27 ex.30; T1.K3 |
+| S08 | a/an by sound; definite/indefinite reference in a clear context; explicit zero article | p.26 ex.29; T1.K3 |
+| S09 | Main idea and one supported detail from one short unseen style text | pp.17–18 ex.19; T1.L2 |
+| S10 | Chronology or contrast from supplied source cards; supported cultural information including Armenian context | p.16 ex.18, pp.20–21 ex.21–22, mapped Armenian source; T1.K2/L2 |
+| S11 | Gist of one short individual message; gist of a distinct multi-speaker recording | p.6 ex.8, p.144 script; T1.L1 |
+| S12 | One relevant detail from the individual message; attribution of a stated view to a speaker in the multi-speaker recording | same listening anchors; T1.L1 |
+
+These anchors refer to the already verified [source/outcome map](english-7-unit-01-preparation.md). They support the taught demands, not yet-written assessment premises, keys or distractors. Each authored question still needs exact source fidelity and language review. A novel factual claim needs its own primary evidence. Fictional everyday contexts must be identified as authored and supply all necessary information.
+
+Use brief, clear tasks. A short bounded field may capture production; recognition must not be reported as unrestricted writing. Avoid making a long matching screen masquerade as one quick question. Exact response lengths, scoring weights and observed completion times will be checked on the authored forms before adopting them. No timer, pass score, per-skill minimum or English readiness parameter is set here. Fractional item points must use a compatible versioned contract; do not pass them into the old binary policy.
+
+## The 15 Practice additions
+
+These are **specifications, not authored questions**. IDs are reserved in the proposal only. They target useful rehearsal and an explicit listening gap. They must not be labelled independent new reasoning merely because their wording or answer controls differ.
+
+| Reserved codes | Skill | Specific addition and comparison focus |
+| --- | --- | --- |
+| P31–P32 | S01 | One bounded clothing description and one personality word used in a supplied context. Compare all P01–P04 and R04–R06; keep only a clear additional practice benefit. |
+| P33–P34 | S02 | Contextual choice between a taught base/derived form, then production of a taught derived adjective. Compare P05/P06/P22; verify the exact derivation is taught. |
+| P35 | S03 | Interpret whether a reported negative instruction preserves the original action/prohibition. Compare P07–P09; retain legitimate negative infinitive alternatives. |
+| P36–P37 | S04 | Rehearse adjective and adverb functions in separate complete contexts. Compare P12/P13 and S07; do not teach word order as a universal rule. |
+| P38 | S05 | Contrast a feeling with its cause in one clear mini-context. Compare P14/P15; purposeful practice, not another claimed independent dimension. |
+| P39 | S06 | Interpret whether a stated amount is sufficient for a named purpose. Compare P16–P18; require an actual meaning decision rather than only a moved gap. |
+| P40 | S07 | Interpret a taught intensifier in a supplied comparison. Compare P19–P21/P28–P30; no untaught intensifier or arbitrary precision. |
+| P41 | S08 | Track first mention versus a uniquely identified subsequent referent across a short exchange. Compare P25–P27; accept legitimate alternatives when context allows them. |
+| L07 | S11 | Overall message of a new multi-speaker practice recording. |
+| L08 | S12 | Retrieve one explicitly stated detail from that recording. |
+| L09–L10 | S12 | Two view-to-speaker attribution tasks using voices/numbered turns, not separately named clip files. Compare L01–L06 and each other; no inference from identity, accent, appearance or personality. |
+
+L07–L10 share one new **Practice-only** source family. The author must supply a script, reviewed recording and actual speaker alignment; those assets do not exist in this planning delivery. A new practice dialogue avoids depending on permission to edit publisher audio. It still needs its own voice/asset rights and listening review. Combining or re-recording the textbook script would remain the existing textbook family, not a new independent source.
+
+The eleven text additions attach to their original activity positions; the four listening additions sit at activity 8. They do not reorder the textbook path. Additional practice prompts can be removed or reworked if the comparison finds no useful benefit. Report the resulting shortfall rather than padding to 60.
+
+## Source sets, forms and exposure
+
+Each proposed form DA, DB, MA, MB and MC has four source sets:
+
+| Source slot per form | Questions | Intended stimulus |
+| --- | ---: | --- |
+| READ-A | 2, S09 | One short style/self-expression text: gist plus supported detail |
+| READ-B | 2, S10 | A short information text or pair of source cards: chronology/contrast plus supported cultural information |
+| AUDIO-A | 2, S11/S12 | One short individual message: gist plus detail |
+| AUDIO-B | 2, S11/S12 | One multi-speaker recording: overall message plus attribution of a stated view |
+
+The complete proposal therefore requires **ten protected reading sets and ten protected listening sets**, grouped into **20 separately reviewed source families** across the five forms. Each family is reserved to one form and excluded from Practice and Chapter Review. The [machine-readable plan](content/english-7-unit-01-bank-plan.json) enumerates the 140 assessment slots, their demands and their proposed source membership. Source identifiers are placeholders, not registered asset versions or proof of distinctness.
+
+Four questions from two reading texts are not four independent source observations; the same applies to listening. Review dependence at source-family level. Rewording a passage, translating it, splitting a recording or reading its script aloud does not reset exposure. Repeated familiar facts must not let learners answer a supposedly unseen question without interpreting its source. Every actual source, solution and distractor needs comparison with the complete applicable bank and within this batch.
+
+Recommend one completed Diagnostic before Practice, preserving the platform-wide sequence. DB is a controlled alternate, not an automatic second chance or permission to expose both forms. A technical interruption must follow an accepted resume/replacement rule; never charge an unavailable recording as an incorrect answer. Recommend at most three valid Mastery attempts, with review between attempts and a different qualified form each time. A consumed/exposed form cannot be recycled by changing IDs. The current budget has no extra full-form reserve for repeated technical failures; if safe resumption is impossible and no unexposed form remains, stop and resolve the capacity gap rather than award failure or silently reuse material.
+
+**Assessed listening is not currently implemented.** The deployed audio path is replayable Practice/Chapter Review with per-question completion. Two complete plays, simultaneous question visibility, set-wide playback accounting, interruption/resumption and protection against unintended seek/rate/retry behaviour still require acceptance and a reusable implementation slice. This bank plan neither enables assessment audio nor promises that these forms can run today.
+
+## Bounded authoring and acceptance
+
+The machine-readable manifest reserves exactly **56 Diagnostic and 84 Mastery slots** under Unit 1, version 1 of this proposal. It is a **proposed** English manifest, with `approvedBy: null`. Repeated language procedures are expected across forms, so the plan explicitly requests a bounded protected-parallel scope under the existing [evidence policy](assessment-evidence-blueprint-policy.md); no Physics authorization is inherited and no new reasoning coverage is claimed from parallelism. Do not apply that disposition, stage it as qualified assessment content or manufacture approvals until the English scope is accepted.
+
+Suggested delivery batches after the bounded scope decision are **15 Practice additions**, **56 questions for DA + MA**, and **84 for DB + MB + MC**. Keep each batch's content and documentation in one delivery; text preparation can proceed while audio recording is pending, but missing audio contributes zero qualified listening capacity. Review the existing 45 in parallel with preparation, without changing their approval status.
+
+Before staging any new batch: refresh the full current/historical English corpus, equivalent mappings, guides, releases and exposures; compare all candidate scenarios/solutions/distractors; record retain/rework/omit decisions; verify sources and valid English alternatives; run current-version structural/scoring QA; obtain the real required content reviews. The 16.1C.1 corpus snapshot is historical evidence, not a fresh pre-staging guard.
+
+The target is an authoring ceiling subject to quality, not a claim that 200 defensible items or five qualified forms already exist. Rejected items and missing rights/recordings leave visible gaps. Final counts, scoring, rubric/workload, audio conditions, qualification and exact learner-release acceptance remain separate from this planning delivery.
+
+## Verification and preservation
+
+The [planning evidence](evidence/english-7-unit-01-bank-plan-20261020.json) checks current draft counts against the canonical JSON, the 60/56/84 totals, all 15 additional Practice specifications, the five 28-slot forms, per-skill and per-modality distributions, unique planned slot IDs and the twenty disjoint proposed source families. This is arithmetic and reference validation, not semantic review or test calibration.
+
+The canonical 45-question draft, review packet, whole-bank comparison, writing package and validation utilities remain unchanged. Their 169-case scoring evidence is reused after hash verification. No API, runtime, migration, catalogue, asset, policy or learner record is changed; no production database call is needed for a non-staging plan. Existing runtime acceptance evidence remains applicable to the unchanged code. Required checks still run for the single batched main update; Notion is synchronized only after reading the exact merged source, preserving all native children.

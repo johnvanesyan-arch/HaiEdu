@@ -1,0 +1,192 @@
+{
+  "schemaVersion": "haiedu-english-bank-plan-evidence-v1",
+  "checkpoint": "16.1C.2",
+  "date": "2026-10-20",
+  "baselineCommit": "57939aadb10c18cda8180f000d279d5487b4b606",
+  "baselineTree": "b2c21f54560c3a2c541ee5c56807bfb77fcf61af",
+  "scope": "Documentation and unfilled slot proposal only; no question authoring, staging, approval or activation",
+  "author": "Codex automated author; one primary agent",
+  "files": {
+    "README.md": "1d88bcaed83df3bdefe39822c13bbc50301390ceef16dbe22b095b2ebe1e0667",
+    "docs/backlog.md": "3214708e8a0bb0c20e798d49ac1bdf9e1cd01cc274b2a82e2a7fc8673b3f6af8",
+    "docs/project-status.md": "701a8ee651c89359679ba3945d6da49b02484ab9b5338376b7dc65769668c4cd",
+    "docs/sprint-roadmap.md": "fd8d9d56387f3ed7ac7d74f7309c1582f3eecfcf9ce9ab673dc57c72a6237f94",
+    "docs/english-7-unit-01-preparation.md": "f5b273e421d528f69e6b79aced17346a27ecc367bed51b908c8613817b608f06",
+    "docs/english-7-unit-01-assessment-contract.md": "52327820014b9810fa7a6e6df8722b63e8cb7da7ec7b6995a0a5c1617c0afadd",
+    "docs/english-7-unit-01-bank-plan.md": "3b08e68067113d92e719bf0b6f630fdced404a733112593d9031145ff040e09c",
+    "docs/content/english-7-unit-01-bank-plan.json": "3f80793fc42931e0cd40db03f27d45ec967ffae49062b376902a458634df397c"
+  },
+  "validation": {
+    "passed": true,
+    "checks": [
+      "Current canonical 45-item draft is unchanged",
+      "Every original draft remains Practice",
+      "Existing optional reporting extensions remain two",
+      "Practice additions are 15 unique unfilled specifications",
+      "Practice additions split 11 text and four audio",
+      "Practice activities and nearest-candidate references resolve",
+      "Per-skill Practice targets reconcile to the exact existing draft plus additions",
+      "Practice bank totals 60, comprising 50 text and ten audio",
+      "Proposed forms are exactly DA, DB, MA, MB and MC",
+      "140 unique assessment slot IDs, all unfilled and unapproved",
+      "Each form has 28 slots and the exact per-skill demand distribution",
+      "Each form has 20 language, four reading and four listening questions",
+      "Diagnostic bank 56 and Mastery bank 84 reconcile to forms and per-skill table",
+      "Overall bank 200 and remaining authoring 155 reconcile",
+      "20 unique source-set and family placeholders, ten reading and ten listening",
+      "Each source-set has exactly two members in its own form, with matching modality",
+      "All proposed source bindings resolve within their own form",
+      "Practice audio family does not collide with proposed assessment families",
+      "No source review, asset registration or semantic distinctness is claimed",
+      "Three proposed batches reconcile to 155 new questions with each form used once",
+      "Writing and speaking stay outside the automatic denominator",
+      "Plan, parallel scope, scoring and release remain unapproved",
+      "Six-unit total remains unassigned",
+      "All eight original draft/review/validation artifacts retain their recorded hashes",
+      "Readable table matches machine plan for ENG7-U01-S01",
+      "Readable table matches machine plan for ENG7-U01-S02",
+      "Readable table matches machine plan for ENG7-U01-S03",
+      "Readable table matches machine plan for ENG7-U01-S04",
+      "Readable table matches machine plan for ENG7-U01-S05",
+      "Readable table matches machine plan for ENG7-U01-S06",
+      "Readable table matches machine plan for ENG7-U01-S07",
+      "Readable table matches machine plan for ENG7-U01-S08",
+      "Readable table matches machine plan for ENG7-U01-S09",
+      "Readable table matches machine plan for ENG7-U01-S10",
+      "Readable table matches machine plan for ENG7-U01-S11",
+      "Readable table matches machine plan for ENG7-U01-S12",
+      "Local documentation links resolve",
+      "Diff whitespace check passes",
+      "Changed tracked paths are documentation only"
+    ],
+    "meaning": "Arithmetic, manifest/reference consistency and preservation; not human content review, distinctness, protection qualification or calibration"
+  },
+  "inventoryUnchanged": {
+    "practice": 45,
+    "practiceText": 39,
+    "practiceAudio": 6,
+    "diagnostic": 0,
+    "mastery": 0,
+    "approvedCapacity": 0,
+    "stagedItems": 0
+  },
+  "proposal": {
+    "practice": 60,
+    "diagnostic": 56,
+    "mastery": 84,
+    "automaticBank": 200,
+    "practiceText": 50,
+    "practiceAudio": 10,
+    "diagnosticForms": 2,
+    "masteryForms": 3,
+    "questionsPerAssessmentForm": 28,
+    "assessmentText": 120,
+    "assessmentAudio": 20,
+    "newPracticeSpecifications": 15,
+    "unfilledAssessmentSlots": 140,
+    "additionalItemsToAuthor": 155
+  },
+  "reusedArtifacts": {
+    "docs/content/english-7-unit-01-draft.json": {
+      "sha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+      "unchanged": true
+    },
+    "docs/english-7-unit-01-review-packet.md": {
+      "sha256": "b20602c267b4f3373c43ef6705343ca1f768a629ab6abc06e05838619edb0eb6",
+      "unchanged": true
+    },
+    "docs/english-7-unit-01-whole-bank-review.md": {
+      "sha256": "c1dfedeb56717583bb80ffab0c32b506d238c5be7c04265bbdc6cd2dac3b8b99",
+      "unchanged": true
+    },
+    "docs/english-7-unit-01-authoring-review.md": {
+      "sha256": "f2eee6183595f8d5e361ff1fa5e1a6d79aa82b86fdf8e0928d4be20167cec25b",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-corpus-20261020.json": {
+      "sha256": "307b30120561f4816d0546a38028c9394d61813a4026383b90c3d5ccea84fd21",
+      "unchanged": true
+    },
+    "docs/evidence/english-7-unit-01-draft-validation-20261020.json": {
+      "sha256": "ac58240b139786af304f81fa33ad10c6251ff7d321415a8ed841210d039210d8",
+      "unchanged": true
+    },
+    "scripts/content/validate-english-7-unit-01.mjs": {
+      "sha256": "46eba130ff5a6ec82b5541edbc05d106faa07803a1bbeedeaaf4ac3b7dec700e",
+      "unchanged": true
+    },
+    "scripts/content/render-english-7-unit-01-review.mjs": {
+      "sha256": "0ae18e5b779605cecc765f14b8a9f5a4ad44e97c8bdb67d666a4cd65bfb1d80d",
+      "unchanged": true
+    }
+  },
+  "reusedEvidence": {
+    "scoringCases": 169,
+    "validationPath": "docs/evidence/english-7-unit-01-draft-validation-20261020.json",
+    "runtimeAcceptancePath": "docs/evidence/shared-task-sets-release-20261020.json",
+    "productionReadChecks": 310,
+    "twoSchoolIsolationChecks": 54,
+    "newProductionVerificationClaimed": false
+  },
+  "runtimeBaseline": [
+    {
+      "path": "web",
+      "sha": "e38e330a22ab225e901c936c25daf211fc3e21c6",
+      "unchanged": true
+    },
+    {
+      "path": "supabase",
+      "sha": "cc72f4323fe21417da4fb601e1ecdfdfbe1c21c5",
+      "unchanged": true
+    },
+    {
+      "path": "tests",
+      "sha": "81b694806c1783785b6d90aaef55f73d45f65a21",
+      "unchanged": true
+    },
+    {
+      "path": ".github",
+      "sha": "81dd633cea8ea4e9b20cb03091ba3d42abdf14f2",
+      "unchanged": true
+    },
+    {
+      "path": "package.json",
+      "sha": "577509895cb09863969aa3f2cf092b3689c36dea",
+      "unchanged": true
+    },
+    {
+      "path": "package-lock.json",
+      "sha": "7d22085ba85115c80760885bb6fdb6d4b8e36932",
+      "unchanged": true
+    },
+    {
+      "path": "vercel.json",
+      "sha": "3c305e4cc7b2f564851a4f8260065de40776742f",
+      "unchanged": true
+    }
+  ],
+  "preservation": {
+    "canonicalDraftChanged": false,
+    "runtimeChanged": false,
+    "apiChanged": false,
+    "productionDatabaseRead": false,
+    "productionWrite": false,
+    "audioUploaded": false,
+    "humanApprovalManufactured": false
+  },
+  "apiDocumentationDisposition": "No API behavior or contract changed; API reference reviewed and not modified",
+  "closure": {
+    "publication": "One batched main update, preserving the real remote base tree",
+    "notionTargetVersion": "4.27",
+    "notionSourceRule": "Read back exact merged commit and targeted page content; preserve all eleven native children",
+    "ciRule": "Do not claim this commit passed before observing its checks; final CI status is recorded with the source-stamped Notion closure"
+  },
+  "open": [
+    "Acceptance of the 60/56/84 proposal and bounded English protected-parallel scope",
+    "Author the 15 additional Practice and 140 assessment questions without padding",
+    "Human content/language/rubric review",
+    "Real source permission and audio audition/recording",
+    "Accepted and implemented assessed-audio conditions",
+    "Scoring/readiness policy, qualification and exact English production acceptance"
+  ]
+}
