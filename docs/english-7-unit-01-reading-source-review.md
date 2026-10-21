@@ -1,6 +1,6 @@
 # English 7 Unit 1 — seven reading passages for source review
 
-**16.1C.9 · 21 October 2026 · Reading sources registered and all 17 questions approved.** Fresh production readback confirms actual ordinary approvals and passing current-version QA for all 17 v2 reading questions. The seven C8 source registrations, exact passages and answers are unchanged. Learner release and independent SME/source qualification remain separate. [Current approval evidence](evidence/english-7-unit-01-review-audio-handoff-20261021.json).
+**16.1C.10 · 21 October 2026 · Reading approvals preserved after audio onboarding.** Fresh production readback confirms actual ordinary approvals and passing current-version QA for all 17 v2 reading questions. The seven C8 source registrations, exact passages and answers are unchanged. Learner release and independent SME/source qualification remain separate. [Current preservation/audio evidence](evidence/english-7-unit-01-audio-registration-20261021.json).
 
 [Open the consolidated Notion review page](https://app.notion.com/p/400355a472bf814ea73dcadd00447778).
 
@@ -26,11 +26,11 @@ All seven sources support their current keys. The textbook reference PDF matches
 
 Use neutral learner-facing source labels P-A/P-B/P-C for the three Practice sets. Their descriptive editorial titles stay in this review packet; showing a title such as “Clothing through time” during a main-idea question would supply a clue. The passage wording and keys remain unchanged.
 
-The bank contains 116 questions: 17 reading items at v2 and 99 others at v1, with 133 immutable snapshots. The source attachments change no wording, answers, families, scopes or ordering. Existing whole-bank and grading evidence is rebound to these v2 links. Protected-form exposure/independence qualification remains pending, especially for the two garment-reuse stories. Ordinary question reviews remain separate.
+After C10 the bank contains 116 questions: 17 reading and 12 audio-linked items at v2, 87 others at v1, and 145 immutable snapshots. The source attachments change no wording, answers, families, scopes or ordering. Existing whole-bank and grading evidence is rebound to these v2 links. Protected-form exposure/independence qualification remains pending, especially for the two garment-reuse stories. Ordinary question reviews remain separate.
 
 ### Registration result
 
-Seven immutable reading sets and 17 atomic question revisions are committed. Saved QA passes 17/17; source catalog/preview checks match every reading question. Rollback restored all 70 tracked tables, and the committed transaction preserves all unaffected rows and prior immutable history. The 18 listening holds and misconception-mapping warnings remain separate. [Production evidence](evidence/english-7-unit-01-reading-registration-20261021.json).
+Seven immutable reading sets and 17 atomic question revisions are committed. Saved QA passes 17/17; source catalog/preview checks match every reading question. Rollback restored all 70 tracked tables, and the committed transaction preserves all unaffected rows and prior immutable history. C10 subsequently clears 12 of the 18 listening holds through original-audio registration; six publisher-source holds and non-blocking misconception-mapping warnings remain separate. [Production evidence](evidence/english-7-unit-01-reading-registration-20261021.json).
 
 ## READ-HISTORY — Clothing through time
 

@@ -1,0 +1,63 @@
+{
+  "schemaVersion": "haiedu-audio-source-acceptance-v1",
+  "checkpoint": "16.1C.10",
+  "date": "2026-10-21 Asia/Yerevan",
+  "recordedAt": "2026-10-21T18:28:02.460229Z",
+  "owner": "John Vanesyan",
+  "reviewerProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "verifiedProfile": {
+    "role": "admin",
+    "accountStatus": "active",
+    "protectedOwner": true
+  },
+  "verbatimDecisions": [
+    "Speaker distinction and listening quality are top-notch.",
+    "Proceed then!"
+  ],
+  "decisionContext": "John supplied these five original recordings for the already accepted Unit 1 bank, explicitly accepted their speaker distinction/listening quality, and authorized the next audio-integration step. ElevenLabs connection is deferred. This records his decision, not a new independent audition by the implementation agent.",
+  "reviewedSourceCommit": "9abe7cc521ddca2df568cea233c2bfb9f019353d",
+  "acceptedFiles": {
+    "ENG7-U01-DA-AUDIO-A": {
+      "uploadedFilename": "ENG7-U01-DA-AUDIO-A.mp3.mp3",
+      "sha256": "9c69beb115abb61765363471832bab430343eb5383b247725f52b671919812f4",
+      "byteLength": 309508,
+      "durationMs": 18286
+    },
+    "ENG7-U01-DA-AUDIO-B": {
+      "uploadedFilename": "ENG7-U01-DA-AUDIO-B.mp3.mp3",
+      "sha256": "7f95e626885d02f21cc4b7ad2a3af75ac1c708b06aefa1178857f42419732329",
+      "byteLength": 578256,
+      "durationMs": 35082
+    },
+    "ENG7-U01-MA-AUDIO-A": {
+      "uploadedFilename": "ENG7-U01-MA-AUDIO-A.mp3.mp3",
+      "sha256": "8579b427539ad771b80b47edaea63d279ea40e40f0c8ea78b79d82f51b0dfecd",
+      "byteLength": 355483,
+      "durationMs": 21159
+    },
+    "ENG7-U01-MA-AUDIO-B": {
+      "uploadedFilename": "ENG7-U01-MA-AUDIO-B.mp3.mp3",
+      "sha256": "774de9c90e08d12c7597b98fd48fc04e866f354278329b9002f48371c41049e9",
+      "byteLength": 542311,
+      "durationMs": 32836
+    },
+    "LISTEN-PRACTICE-GROUP-01": {
+      "uploadedFilename": "LISTEN-PRACTICE-GROUP-01.mp3.mp3",
+      "sha256": "52eb842d5597c3e1bc66d141ff2918f2ae96d19358d6060f007a1a3feba9ca5e",
+      "byteLength": 592466,
+      "durationMs": 35971
+    }
+  },
+  "reuseBasis": {
+    "scope": "Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive.",
+    "basis": "John supplied the recordings specifically for use in HaiEdu and authorized integration. Their scripts are original platform-authored fiction. No publisher recording is included in this registration.",
+    "limitation": "No provider licence, voice-cloning consent or public-distribution permission is inferred. Retain actual provider/voice-use evidence in the learner-release review."
+  },
+  "boundaries": [
+    "Delegated recording/source registration on the owner’s explicit decision; not represented as an in-app click or independent specialist review.",
+    "Does not create ordinary question approvals, assessment qualification or learner release.",
+    "Existing replayable Practice/Chapter Review runtime is unchanged. Diagnostic/Mastery audio remains rejected until its assessed-playback/interruption contract is accepted and implemented.",
+    "Six questions using three publisher recordings remain held; no publisher recording approval or reuse document is invented.",
+    "Corrections require successor immutable audio/source/question versions and applicable review; uploaded originals and existing history are preserved."
+  ]
+}

@@ -1,57 +1,55 @@
-# English 7 Unit 1 — current review status and audio recording handoff
+# English 7 Unit 1 — original audio registered and review ready
 
-**16.1C.9 · 21 October 2026 · Roadmap 4.34.** Production readback at 18:44 Asia/Yerevan confirms **98 approved questions with passing current-version QA**, including all 17 reading questions at v2. There are 99 current-version approved content-review rows because P28 was approved twice; the question count is 98. The remaining 18 listening questions fail only `authoring_source_registration_pending`. Seven reading sources are registered and no English audio is registered. This update changes documentation only. [Evidence](evidence/english-7-unit-01-review-audio-handoff-20261021.json).
+**16.1C.10 · 21 October 2026 · Roadmap 4.35.** John supplied all five original recordings and explicitly accepted their speaker distinction and listening quality. The files are now in private storage and registered as five immutable audio versions and five ordered shared task sets. Their **12 questions are v2 and pass QA**. The existing **98 approvals** are preserved; the remaining **six source holds** are L01–L06, which depend on three publisher recordings. English remains draft/inactive. [Registration evidence](evidence/english-7-unit-01-audio-registration-20261021.json) · [Owner decision](evidence/english-7-unit-01-audio-owner-acceptance-20261021.json).
 
-## Accepted bank and actual progress
+## Where to review
 
-| Purpose | Accepted target | Authored and staged | Approved | Audio-held | Still to author |
-| --- | ---: | ---: | ---: | ---: | ---: |
-| Practice | 60 | 60 | 50 | 10 | 0 |
-| Diagnostic | 56 | 28 | 24 | 4 | 28 |
-| Mastery | 84 | 28 | 24 | 4 | 56 |
-| **Total** | **200** | **116** | **98** | **18** | **84** |
+Open the [review queue](https://www.haiedu.am/content-review.html) and search `ENG7-U01`. Open a question, select **Նախադիտում**, then **Բեռնել ձայնագրությունը** and the audio play control. Under **QA և ստուգում**, these 12 saved v2 questions have passing QA. The misconception-mapping message is a non-blocking warning; it is separate from the cleared source-registration error. Ordinary content approval remains a human review step.
 
-The 84 remaining questions are Diagnostic B, Mastery B and Mastery C, 28 each, within the already accepted authoring manifest. This five-recording handoff covers existing scripts only; those remaining forms also require their own source authoring, qualification and recordings. No new bank-size approval is needed for the accepted scope. Existing whole-bank/source comparison and versioning requirements still apply.
+| Recording | Linked questions | Duration | Reviewer example |
+| --- | --- | ---: | --- |
+| Original Practice group | L07–L10 | 35.97 s | [L07](https://www.haiedu.am/content-item.html?id=73bbe712-fbcf-5995-ab9d-eae8282531d3&from=review) |
+| Diagnostic A, source A | DA-25, DA-27 | 18.29 s | [DA-25](https://www.haiedu.am/content-item.html?id=c1c2b141-2b6b-5e96-aa1e-930979c25853&from=review) |
+| Diagnostic A, source B | DA-26, DA-28 | 35.08 s | [DA-26](https://www.haiedu.am/content-item.html?id=35e4d137-f3ad-5760-a511-14a4bc2485cd&from=review) |
+| Mastery A, source A | MA-25, MA-27 | 21.16 s | [MA-25](https://www.haiedu.am/content-item.html?id=bf9b27c1-9ea0-5855-ac04-fd62e826086f&from=review) |
+| Mastery A, source B | MA-26, MA-28 | 32.84 s | [MA-26](https://www.haiedu.am/content-item.html?id=2dc57892-dac2-578b-a93e-b74d8f3bf5dd&from=review) |
 
-## Publisher audio already retrieved
+Question wording, keys, source-family identities, source order and v1 history are unchanged. New versions attach the actual audio through the existing atomic content revision path. This is protected reviewer-catalogue onboarding; it does not approve the question or enable learner allocation.
 
-All **20 publisher MP3s** identified through the supplied textbook were freshly downloaded and matched the inventoried hashes and byte lengths. The unchanged successful FFmpeg decode evidence is reused. Unit counts are **5 / 4 / 4 / 7 / 0 / 0**; all 20 remain planned for playable inclusion as 12 core and eight support/enrichment candidates. No separate QR-linked recordings were identified for Units 5–6 in this edition. The source bundle is `English7_Publisher_Audio_20_Tracks.zip`.
+## Accepted bank and current counts
 
-Nineteen originals fit current delivery limits. **Unit 2 track 4, Do-Re-Mi, is 8,401,702 bytes**, exceeding the 8 MiB limit (8,388,608 bytes) by **13,094 bytes**, about **0.16%**. Preserve the original and prepare a permitted, reviewed smaller delivery copy. This Unit 2 file does not cause the 18 Unit 1 holds. The shared platform limit is unchanged.
+| Purpose | Accepted target | Authored/staged | Approved | Passing QA | Audio-linked, awaiting review | Source-held | Still to author |
+| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
+| Practice | 60 | 60 | 50 | 54 | 4 | 6 | 0 |
+| Diagnostic | 56 | 28 | 24 | 28 | 4 | 0 | 28 |
+| Mastery | 84 | 28 | 24 | 28 | 4 | 0 | 56 |
+| **Total** | **200** | **116** | **98** | **110** | **12** | **6** | **84** |
 
-Publisher-hosting permission, audition and exact speaker/script mapping remain unresolved; technical retrieval is not a rights or listening-quality attestation. [Publisher audio-rights contact](https://zangak.am/en/copyrights). The p.74 ex.8 mapping and p.75 ex.9 script mismatch still need listening review. [Complete course inventory](english-7-course-audio-inventory.md).
+The 84 remaining questions are Diagnostic B, Mastery B and Mastery C, 28 each, within the accepted authoring manifest. These forms also require their own sources and recordings. The current five files complete the existing original scripts, not the full 200-question bank. No further bank-size acceptance is needed.
 
-## Five original recordings — John producing externally
+## Verification and protection
 
-John is producing the five recordings externally and will return complete MP3s or numbered speaker segments. The handoff archive `English7_Unit1_Five_TTS_Scripts.zip` contains five exact full scripts, 14 speaker segments and production instructions. Every script matches all 12 attached live question contexts; no wording or answer changed. No returned recording or provider/voice permission is claimed yet.
+All five supplied MP3s were preserved byte for byte, fully decoded with FFmpeg and checked against the original scripts and all 12 keys. Local speech recognition supports the mapping; separate tail transcriptions resolved two recognition-boundary repetitions. This is technical/transcript evidence, not a new independent human listening review. John’s exact listening/speaker decision is recorded separately. [Script and whole-bank comparison](evidence/english-7-unit-01-audio-script-alignment-20261021.json).
 
-| Expected MP3 filename | Voices | Questions | Source |
-| --- | --- | --- | --- |
-| `LISTEN-PRACTICE-GROUP-01.mp3` | Narrator + three distinct speakers | L07–L10 | [Practice script](english-7-unit-01-practice-additions.md) |
-| `ENG7-U01-DA-AUDIO-A.mp3` | One speaker | DA-25, DA-27 | [DA-A script](english-7-unit-01-assessment-batch-a.md#eng7-u01-da-audio-a) |
-| `ENG7-U01-DA-AUDIO-B.mp3` | Narrator + three distinct speakers | DA-26, DA-28 | [DA-B script](english-7-unit-01-assessment-batch-a.md#eng7-u01-da-audio-b) |
-| `ENG7-U01-MA-AUDIO-A.mp3` | One speaker | MA-25, MA-27 | [MA-A script](english-7-unit-01-assessment-batch-a.md#eng7-u01-ma-audio-a) |
-| `ENG7-U01-MA-AUDIO-B.mp3` | Narrator + three distinct speakers | MA-26, MA-28 | [MA-B script](english-7-unit-01-assessment-batch-a.md#eng7-u01-ma-audio-b) |
+The `learning-audio` bucket is private, with the unchanged 8 MiB limit and approved audio MIME types. Hash-based filenames reveal no answers. The deployed authenticated handler verifies private-bucket state, exact byte length and SHA-256 before returning bytes; it exposes no Storage URL. No runtime code, schema, scoring rule or authorization policy changed. The existing source-family protection remains in force, including for derivatives and re-recordings.
 
-Keep exact words and turn order, spoken speaker numbers, natural clear delivery and short pauses. Do not read production labels, add music, hint at answers or rewrite a script while generating speech. If the service exports separate voices, the numbered clips can be assembled before full-file review. Retain provider/voice identifiers and the permitted-use basis; apply the provider's synthetic-voice disclosure requirement where applicable. The files are generated once and subsequently delivered as governed media; no runtime TTS feature, learner microphone or OpenAI API dependency is introduced.
+The production rollback rehearsal restored all **70 tracked public tables**. The committed registration adds five audio versions, five task sets, 12 immutable question snapshots and 12 QA runs. The atomic revision path regenerates option row IDs and answer-key update timestamps while preserving their content and ordering. All unaffected rows remain intact, and **63 table fingerprints are identical**. The 98 existing approvals, seven reading sets, learner evidence, policies, pools/forms and release gates are unchanged.
 
-The other six held questions, **L01–L06**, use the three existing publisher speaker tracks. Their Emmie/Gordon/Miriam alignment must be established by listening, not inferred from filename order. Together those three clips and the five original recordings supply **eight audio sources for 18 questions**.
+**Reviewer browser verification passed:** all five recordings loaded through the authenticated protected handler and played sequentially to their actual end without media errors at 1348×925. L07 visibly shows passing QA on v2 and an enabled approval button; no question was approved by this check. All 70 public table fingerprints remained unchanged through playback. Exact deployed frontend bytes and commit `9abe7cc521ddca2df568cea233c2bfb9f019353d` were verified before this acceptance. Learner mobile acceptance and assessed delivery are separate release work; no new two-school learner acceptance is claimed here. Existing unchanged capability/isolation evidence is retained.
 
-## Next bounded work and dependencies
+## Remaining publisher recordings
 
-| Work | Responsibility / dependency | Completion evidence |
-| --- | --- | --- |
-| Produce five exact recordings | John, external TTS/recording; in progress, uploads awaited | Five complete MP3s or 14 correctly ordered clips, voice/provider information and listening acceptance |
-| Review existing Unit 1 publisher sources | Codex preparation with genuine listening/reuse evidence | Correct speaker-to-track mapping, supported keys, permission and source-family records |
-| Integrate the 10 Practice listening questions first | Reviewed three publisher clips plus the original Practice recording; existing replayable runtime | Private exact bytes, immutable audio/task sets, ordinary versioned source attachment, current QA and authenticated reviewer/mobile/desktop playback |
-| Prepare the eight Diagnostic/Mastery sources for content review | Four original assessment recordings | Protected source registration, exact question links and current QA; ordinary question approval remains separate |
-| Complete assessed-listening delivery | Accept and implement the English assessment playback/interruption contract before allocation | Governed set-wide playback/exposure semantics, failure and retry handling, scoring protection, isolation and required browser/release evidence |
-| Author the remaining 84 questions | Already authorized; can proceed while external recordings are being produced, one primary agent and one capability slice at a time | Fresh whole-bank/protected-source comparison, versioned source-linked drafts, ordinary/SME review |
-| Onboard nine guides and the writing package | Canonical content exists; no English guide or written-task version is staged | Governed authoring, review, final writing rubric/workload acceptance and source/skill links |
-| Close remaining content and release gates | Misconception mapping, protected-form qualification, final English scoring/readiness policy, SME and source/reuse disposition | Explicit gate evidence, allocations and authenticated cross-subject/two-school desktop/mobile acceptance before learner release |
+All **20 publisher originals** are retrieved and match the course inventory. Unit counts remain **5 / 4 / 4 / 7 / 0 / 0**, with 12 core and eight support/enrichment candidates. Transcription of Unit 1 tracks 1-1, 1-2 and 1-3 supports the Emmie, Gordon and Miriam script mapping. Their **separate actual recording-review/reuse record remains pending**, so they were not registered in this batch. They supply L01–L06, the six remaining source holds. No publisher licence or listening approval is inferred from file availability or from acceptance of the five original uploads.
 
-Source registration can clear the source-specific content QA hold; it does not enable Diagnostic/Mastery audio delivery. The current runtime supports replayable Practice/Chapter Review and reviewer previews only. Proposed capped playback and transcript assistance are not adopted. Learner English remains draft/inactive, with all seven release-gate records pending, zero pool/form memberships and zero writing-task registrations. Ordinary item `published` status is not curriculum activation. Speaking stays classroom-assessed.
+Nineteen publisher originals fit the current limit. Unit 2 track 4, **Do-Re-Mi**, is 8,401,702 bytes: **13,094 bytes (0.16%) over 8 MiB**. Preserve it and prepare a permitted, reviewed smaller delivery copy. This unrelated Unit 2 file does not cause the six Unit 1 holds. The p.74 ex.8 mapping and p.75 ex.9 script mismatch also remain review work. [Course inventory](english-7-course-audio-inventory.md).
 
-## Wider sprint sequence
+## Next bounded slices
 
-16.1 completes one production-ready English Unit 1 slice; it does not require all six English units before the formal MVP. Sprints 16.2 and 16.3 cover Mathematics 7 and Armenian Language 7, then 16.4 integrates the four-subject Grade 7 product. Sprint 16 Physics course integration remains separately open. Sprint 16.5 must preserve all current/planned learner functionality and apply the accepted mockup/design direction across subjects, grades and academic years. The Sprint 17 school pilot still requires 16.4 and 16.5C acceptance. This update introduces no scope expansion, scoring change or gate waiver.
+1. Complete ordinary review of these 12 audio-linked v2 questions. Resolve the three publisher recordings’ review/reuse record, then register/link L01–L06 and verify their playback and QA.
+2. Accept and implement assessed-listening playback/interruption semantics before Diagnostic/Mastery allocation. Current runtime supports replayable Practice/Chapter Review and reviewer preview; Diagnostic/Mastery audio is still rejected. Capped playback, set-wide accounting and transcripts are not adopted by this source-registration step.
+3. Author the remaining 84 questions with fresh whole-bank/source comparisons, one primary agent and one slice at a time. Human review can proceed alongside authorized preparation.
+4. Onboard nine guides and the writing package; resolve final rubric/workload, misconception mapping, protected-form qualification, source/voice reuse evidence, SME and English release gates. Verify learner desktop/mobile and cross-subject/two-school behavior before activation.
+
+John’s supplied-recording authorization covers this bounded protected catalogue use. Actual provider/voice-use evidence belongs in the learner-release review; no provider account, runtime TTS or ElevenLabs integration is enabled. Speaking stays classroom-assessed.
+
+16.1 completes one production-ready English Unit 1 slice. Mathematics 7 follows in 16.2, Armenian Language 7 in 16.3, then four-subject integration in 16.4. Sprint 16 Physics integration remains open. Sprint 16.5 preserves functionality and applies the accepted design direction across subjects, grades and academic years; Sprint 17 still requires 16.4 and 16.5C acceptance.

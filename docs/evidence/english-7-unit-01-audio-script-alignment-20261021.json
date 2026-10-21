@@ -1,0 +1,383 @@
+{
+  "schemaVersion": "haiedu-audio-script-alignment-v1",
+  "checkpoint": "16.1C.10",
+  "method": "Local faster-whisper 1.2.1 base.en int8 transcription, full FFmpeg decode, script/key comparison and John’s explicit listening/speaker acceptance. No audio was sent to a cloud speech service. ASR is supporting evidence, not an independent human audition.",
+  "sourceCommit": "9abe7cc521ddca2df568cea233c2bfb9f019353d",
+  "files": [
+    {
+      "sourceCode": "LISTEN-PRACTICE-GROUP-01",
+      "audioSha256": "52eb842d5597c3e1bc66d141ff2918f2ae96d19358d6060f007a1a3feba9ca5e",
+      "scriptSha256": "344bd865e4a572910416a8968faeb3669238abac3139c8c976b5b5b9a0de7777",
+      "method": "local faster-whisper 1.2.1 base.en int8; no prompt or cloud audio transfer",
+      "normalizedAsrDifferences": [],
+      "asrDifferenceDisposition": "All keyed clauses and speaker numbers present. Any remaining ASR boundary artifact is not treated as an actual recording change; owner listening-quality decision is the human acceptance record.",
+      "keyMeaningSupported": true,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-L07",
+          "key": "b",
+          "keyedMeaning": "What should they wear for a class photo?"
+        },
+        {
+          "code": "ENG7-U01-L08",
+          "key": "c",
+          "keyedMeaning": "a green top"
+        },
+        {
+          "code": "ENG7-U01-L09",
+          "key": "a",
+          "keyedMeaning": "Speaker One"
+        },
+        {
+          "code": "ENG7-U01-L10",
+          "key": "b",
+          "keyedMeaning": "Speaker Two"
+        }
+      ],
+      "approximateSegments": [
+        {
+          "start": 0.0,
+          "end": 4.08,
+          "text": "Listen to three students. You will hear each speaker's number."
+        },
+        {
+          "start": 4.84,
+          "end": 9.04,
+          "text": "Speaker one, for our class photo, I'd like us to wear the same color."
+        },
+        {
+          "start": 9.66,
+          "end": 13.62,
+          "text": "We don't need to buy anything. I already have a blue shirt and I can wear that."
+        },
+        {
+          "start": 14.36,
+          "end": 16.2,
+          "text": "Different shirts are fine if we all choose blue."
+        },
+        {
+          "start": 17.14,
+          "end": 20.8,
+          "text": "Speaker two, I'd rather let everyone choose their own color for the photo."
+        },
+        {
+          "start": 21.26,
+          "end": 25.14,
+          "text": "I want to wear my green top. We can look like a group without wearing the same thing."
+        },
+        {
+          "start": 25.14,
+          "end": 31.34,
+          "text": "Speaker 3. For me, the important thing is to feel comfortable. We'll be standing"
+        },
+        {
+          "start": 31.34,
+          "end": 35.5,
+          "text": "outside for a while. I'm going to wear my warm coat over my shirt."
+        }
+      ]
+    },
+    {
+      "sourceCode": "ENG7-U01-DA-AUDIO-A",
+      "audioSha256": "9c69beb115abb61765363471832bab430343eb5383b247725f52b671919812f4",
+      "scriptSha256": "d7dbea2cd4090d1bbfffc2dd8c0761aed59a7a2084e44128976fa5f231c5635f",
+      "method": "local faster-whisper 1.2.1 base.en int8; no prompt or cloud audio transfer",
+      "normalizedAsrDifferences": [
+        {
+          "op": "insert",
+          "expected": [],
+          "observed": [
+            "problem",
+            "7"
+          ]
+        }
+      ],
+      "asrDifferenceDisposition": "Separate tail transcription resolves the boundary repetition and reproduces the canonical keyed clause. No audio edit; the owner’s listening decision remains the human acceptance record.",
+      "keyMeaningSupported": true,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-DA-25",
+          "key": "a",
+          "keyedMeaning": "A small repair allowed the speaker to wear the chosen waistcoat."
+        },
+        {
+          "code": "ENG7-U01-DA-27",
+          "key": "b",
+          "keyedMeaning": "Inside the waistcoat's small pocket."
+        }
+      ],
+      "approximateSegments": [
+        {
+          "start": 0.0,
+          "end": 3.78,
+          "text": "This morning, I found that a button was missing from my favorite waistcoat."
+        },
+        {
+          "start": 4.36,
+          "end": 5.86,
+          "text": "I almost chose a different outfit."
+        },
+        {
+          "start": 6.74,
+          "end": 10.18,
+          "text": "Then my grandmother showed me a spare button inside the small pocket."
+        },
+        {
+          "start": 10.76,
+          "end": 11.74,
+          "text": "She helped me sew it on."
+        },
+        {
+          "start": 12.32,
+          "end": 14.12,
+          "text": "I could wear the waistcoat after all."
+        },
+        {
+          "start": 14.62,
+          "end": 17.8,
+          "text": "I did not need to buy a new one just because of that small problem."
+        },
+        {
+          "start": 17.8,
+          "end": 17.96,
+          "text": "problem."
+        },
+        {
+          "start": 18.14,
+          "end": 18.26,
+          "text": "7"
+        }
+      ],
+      "boundaryConfirmation": {
+        "sourceCode": "ENG7-U01-DA-AUDIO-A",
+        "startSeconds": 14,
+        "text": "I did not need to buy a new one just because of that small problem.",
+        "purpose": "Resolve ASR segment-boundary repetition using an independently decoded tail, without modifying the source audio."
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-DA-AUDIO-B",
+      "audioSha256": "7f95e626885d02f21cc4b7ad2a3af75ac1c708b06aefa1178857f42419732329",
+      "scriptSha256": "626cd73f1459f62473efe975da5fdbe603897c6242f24ea16c7359be76940b97",
+      "method": "local faster-whisper 1.2.1 base.en int8; no prompt or cloud audio transfer",
+      "normalizedAsrDifferences": [
+        {
+          "op": "insert",
+          "expected": [],
+          "observed": [
+            "thing"
+          ]
+        }
+      ],
+      "asrDifferenceDisposition": "Separate tail transcription resolves the boundary repetition and reproduces the canonical keyed clause. No audio edit; the owner’s listening decision remains the human acceptance record.",
+      "keyMeaningSupported": true,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-DA-26",
+          "key": "b",
+          "keyedMeaning": "Preparing useful costume items for the play."
+        },
+        {
+          "code": "ENG7-U01-DA-28",
+          "key": "c",
+          "keyedMeaning": "Speaker Two."
+        }
+      ],
+      "approximateSegments": [
+        {
+          "start": 0.0,
+          "end": 1.5,
+          "text": "Listen to three students."
+        },
+        {
+          "start": 2.24,
+          "end": 4.12,
+          "text": "You will hear each speaker's number."
+        },
+        {
+          "start": 4.9,
+          "end": 6.86,
+          "text": "Speaker one, for the play,"
+        },
+        {
+          "start": 7.42,
+          "end": 9.22,
+          "text": "we need belts that everyone can see"
+        },
+        {
+          "start": 9.22,
+          "end": 10.28,
+          "text": "from the back of the room."
+        },
+        {
+          "start": 10.86,
+          "end": 13.14,
+          "text": "We can make wide paper belts and paint them."
+        },
+        {
+          "start": 13.56,
+          "end": 15.6,
+          "text": "There is plenty of paper left from our posters."
+        },
+        {
+          "start": 16.28,
+          "end": 19.36,
+          "text": "Speaker two, some students can lend hats."
+        },
+        {
+          "start": 20.02,
+          "end": 22.56,
+          "text": "We should put each owner's name inside the hat"
+        },
+        {
+          "start": 22.56,
+          "end": 25.28,
+          "text": "so that it goes back to the right person after the play."
+        },
+        {
+          "start": 25.78,
+          "end": 29.0,
+          "text": "Speaker three, before making or borrowing anything,"
+        },
+        {
+          "start": 29.0,
+          "end": 31.66,
+          "text": "thing, let's ask the actors to try the costumes on."
+        },
+        {
+          "start": 32.1,
+          "end": 34.66,
+          "text": "We need to know what fits with the clothes they already have."
+        }
+      ],
+      "boundaryConfirmation": {
+        "sourceCode": "ENG7-U01-DA-AUDIO-B",
+        "startSeconds": 25,
+        "text": "Play. Speaker 3 Before making or borrowing anything, let's ask the actors to try the costumes on. We need to know what fits with the clothes they already have.",
+        "purpose": "Resolve ASR segment-boundary repetition using an independently decoded tail, without modifying the source audio."
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-MA-AUDIO-A",
+      "audioSha256": "8579b427539ad771b80b47edaea63d279ea40e40f0c8ea78b79d82f51b0dfecd",
+      "scriptSha256": "96d641df2dec39440fc66d4127add3585e1877386ffa421ebf99e8cfc4539190",
+      "method": "local faster-whisper 1.2.1 base.en int8; no prompt or cloud audio transfer",
+      "normalizedAsrDifferences": [],
+      "asrDifferenceDisposition": "All keyed clauses and speaker numbers present. Any remaining ASR boundary artifact is not treated as an actual recording change; owner listening-quality decision is the human acceptance record.",
+      "keyMeaningSupported": true,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MA-25",
+          "key": "c",
+          "keyedMeaning": "To make clear that the coat is for display, not exchange."
+        },
+        {
+          "code": "ENG7-U01-MA-27",
+          "key": "b",
+          "keyedMeaning": "An orange card saying 'For display only'."
+        }
+      ],
+      "approximateSegments": [
+        {
+          "start": 0.0,
+          "end": 4.36,
+          "text": "At our clothes exchange, I brought a green coat to show how I had changed its collar."
+        },
+        {
+          "start": 5.16,
+          "end": 11.74,
+          "text": "I did not want to exchange it. My first label only said My Design, and someone nearly took the"
+        },
+        {
+          "start": 11.74,
+          "end": 18.32,
+          "text": "coat. I replaced the label with an orange card saying, For Display Only. After that,"
+        },
+        {
+          "start": 18.32,
+          "end": 20.78,
+          "text": "Visitors looked at it and left it on the rail."
+        }
+      ]
+    },
+    {
+      "sourceCode": "ENG7-U01-MA-AUDIO-B",
+      "audioSha256": "774de9c90e08d12c7597b98fd48fc04e866f354278329b9002f48371c41049e9",
+      "scriptSha256": "cc291a9a67933355c99561a06f844f1a99eac129e254266b6adcf097ebeaec49",
+      "method": "local faster-whisper 1.2.1 base.en int8; no prompt or cloud audio transfer",
+      "normalizedAsrDifferences": [],
+      "asrDifferenceDisposition": "All keyed clauses and speaker numbers present. Any remaining ASR boundary artifact is not treated as an actual recording change; owner listening-quality decision is the human acceptance record.",
+      "keyMeaningSupported": true,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MA-26",
+          "key": "c",
+          "keyedMeaning": "Ways to help visitors understand a clothing display."
+        },
+        {
+          "code": "ENG7-U01-MA-28",
+          "key": "c",
+          "keyedMeaning": "Speaker Three."
+        }
+      ],
+      "approximateSegments": [
+        {
+          "start": 0.0,
+          "end": 4.04,
+          "text": "Listen to three students. You will hear each speaker's number."
+        },
+        {
+          "start": 4.76,
+          "end": 9.5,
+          "text": "Speaker one, for our clothing display, let's put similar materials together."
+        },
+        {
+          "start": 9.9,
+          "end": 13.88,
+          "text": "Visitors could compare cotton clothes in one place and wool clothes in another."
+        },
+        {
+          "start": 14.42,
+          "end": 20.78,
+          "text": "Speaker two, I would put a short written story beside each item. A visitor could read where it"
+        },
+        {
+          "start": 20.78,
+          "end": 26.66,
+          "text": "came from and why someone kept it. Speaker three, I would invite the owners to stand"
+        },
+        {
+          "start": 26.66,
+          "end": 31.42,
+          "text": "beside their clothes for a short time. Visitors could ask them directly why they"
+        },
+        {
+          "start": 31.42,
+          "end": 32.32,
+          "text": "chose those items."
+        }
+      ]
+    }
+  ],
+  "wholeBankReuse": {
+    "baseline": "16.1C.8 committed readback + fresh 16.1C.10 live baseline",
+    "items": 116,
+    "historicalVersions": 133,
+    "options": 221,
+    "answerKeys": 116,
+    "templates": 116,
+    "families": 116,
+    "priorTaskSets": 7,
+    "observedChanges": "Only 98 existing item approval states and actual reviewer/timestamp fields changed. All semantic content, snapshots, options, keys, families and sources are identical; unordered arrays compared by identity.",
+    "priorComparisons": "docs/english-7-unit-01-whole-bank-review.md; docs/english-7-unit-01-practice-additions.md; docs/english-7-unit-01-assessment-batch-a.md",
+    "disposition": "Reuse unchanged semantic/whole-skill comparison evidence. No new scenario, inference, solution, distractor, illustration or independent reasoning claim; attach the exact original sources already compared. Each question retains its source family. Four Practice responses are one source observation; four DA and four MA responses are two sources per form.",
+    "approvedItemsPreserved": 98
+  },
+  "limits": [
+    "Delegated recording/source registration on the owner’s explicit decision; not represented as an in-app click or independent specialist review.",
+    "Does not create ordinary question approvals, assessment qualification or learner release.",
+    "Existing replayable Practice/Chapter Review runtime is unchanged. Diagnostic/Mastery audio remains rejected until its assessed-playback/interruption contract is accepted and implemented.",
+    "Six questions using three publisher recordings remain held; no publisher recording approval or reuse document is invented.",
+    "Corrections require successor immutable audio/source/question versions and applicable review; uploaded originals and existing history are preserved."
+  ]
+}

@@ -1,0 +1,1536 @@
+{
+  "schemaVersion": "haiedu-original-audio-registration-plan-v1",
+  "checkpoint": "16.1C.10",
+  "baselineCommit": "9abe7cc521ddca2df568cea233c2bfb9f019353d",
+  "status": "owner_authorized_protected_source_registration",
+  "identities": {
+    "subject": "c230d771-0bea-5076-a570-e440f9e05c09",
+    "programme": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "unit": "3ef44139-0053-58e6-ab0d-5901a0213683",
+    "release": "e40991ee-ca0b-5666-a9f2-a3453de8fccb"
+  },
+  "sourceFiles": {
+    "docs/content/english-7-unit-01-practice-additions.json": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+    "docs/content/english-7-unit-01-assessment-batch-a.json": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40"
+  },
+  "audioVersions": [
+    {
+      "sourceCode": "LISTEN-PRACTICE-GROUP-01",
+      "scriptSha256": "344bd865e4a572910416a8968faeb3669238abac3139c8c976b5b5b9a0de7777",
+      "proposedRow": {
+        "id": "17f2ed40-d4b9-5c64-a211-783218581c70",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+        "locale": "en",
+        "title": "Listening practice: three speakers",
+        "bucket_id": "learning-audio",
+        "object_path": "52eb842d5597c3e1bc66d141ff2918f2ae96d19358d6060f007a1a3feba9ca5e.mp3",
+        "sha256": "52eb842d5597c3e1bc66d141ff2918f2ae96d19358d6060f007a1a3feba9ca5e",
+        "mime_type": "audio/mpeg",
+        "byte_length": 592466,
+        "duration_ms": 35971,
+        "source_reference": "docs/content/english-7-unit-01-practice-additions.json#LISTEN-PRACTICE-GROUP-01; original platform-authored script sha256 344bd865e4a572910416a8968faeb3669238abac3139c8c976b5b5b9a0de7777",
+        "permission_reference": null,
+        "listening_review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-DA-AUDIO-A",
+      "scriptSha256": "d7dbea2cd4090d1bbfffc2dd8c0761aed59a7a2084e44128976fa5f231c5635f",
+      "proposedRow": {
+        "id": "a114c68b-10be-5c75-a3de-61e9d5b26313",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "918b042e-2e8c-59eb-9609-13ea411211cd",
+        "locale": "en",
+        "title": "Listening source DA-A",
+        "bucket_id": "learning-audio",
+        "object_path": "9c69beb115abb61765363471832bab430343eb5383b247725f52b671919812f4.mp3",
+        "sha256": "9c69beb115abb61765363471832bab430343eb5383b247725f52b671919812f4",
+        "mime_type": "audio/mpeg",
+        "byte_length": 309508,
+        "duration_ms": 18286,
+        "source_reference": "docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-AUDIO-A; original platform-authored script sha256 d7dbea2cd4090d1bbfffc2dd8c0761aed59a7a2084e44128976fa5f231c5635f",
+        "permission_reference": null,
+        "listening_review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-DA-AUDIO-B",
+      "scriptSha256": "626cd73f1459f62473efe975da5fdbe603897c6242f24ea16c7359be76940b97",
+      "proposedRow": {
+        "id": "cb8f6ab3-d2c4-5086-af44-998cd1742ba0",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "b0d73ed4-e5d6-5cd0-b43f-0b71bb617020",
+        "locale": "en",
+        "title": "Listening source DA-B",
+        "bucket_id": "learning-audio",
+        "object_path": "7f95e626885d02f21cc4b7ad2a3af75ac1c708b06aefa1178857f42419732329.mp3",
+        "sha256": "7f95e626885d02f21cc4b7ad2a3af75ac1c708b06aefa1178857f42419732329",
+        "mime_type": "audio/mpeg",
+        "byte_length": 578256,
+        "duration_ms": 35082,
+        "source_reference": "docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-AUDIO-B; original platform-authored script sha256 626cd73f1459f62473efe975da5fdbe603897c6242f24ea16c7359be76940b97",
+        "permission_reference": null,
+        "listening_review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-MA-AUDIO-A",
+      "scriptSha256": "96d641df2dec39440fc66d4127add3585e1877386ffa421ebf99e8cfc4539190",
+      "proposedRow": {
+        "id": "e6e43fb8-462a-5fa4-add9-094c4a7e8da7",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "cf911d87-4ce2-5c61-90c1-8953faeeefa9",
+        "locale": "en",
+        "title": "Listening source MA-A",
+        "bucket_id": "learning-audio",
+        "object_path": "8579b427539ad771b80b47edaea63d279ea40e40f0c8ea78b79d82f51b0dfecd.mp3",
+        "sha256": "8579b427539ad771b80b47edaea63d279ea40e40f0c8ea78b79d82f51b0dfecd",
+        "mime_type": "audio/mpeg",
+        "byte_length": 355483,
+        "duration_ms": 21159,
+        "source_reference": "docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-AUDIO-A; original platform-authored script sha256 96d641df2dec39440fc66d4127add3585e1877386ffa421ebf99e8cfc4539190",
+        "permission_reference": null,
+        "listening_review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-MA-AUDIO-B",
+      "scriptSha256": "cc291a9a67933355c99561a06f844f1a99eac129e254266b6adcf097ebeaec49",
+      "proposedRow": {
+        "id": "4535a51f-8daa-58c0-ac73-0db9668d301a",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "d4b44034-d3e3-5dc2-989c-d18db22476e9",
+        "locale": "en",
+        "title": "Listening source MA-B",
+        "bucket_id": "learning-audio",
+        "object_path": "774de9c90e08d12c7597b98fd48fc04e866f354278329b9002f48371c41049e9.mp3",
+        "sha256": "774de9c90e08d12c7597b98fd48fc04e866f354278329b9002f48371c41049e9",
+        "mime_type": "audio/mpeg",
+        "byte_length": 542311,
+        "duration_ms": 32836,
+        "source_reference": "docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-AUDIO-B; original platform-authored script sha256 cc291a9a67933355c99561a06f844f1a99eac129e254266b6adcf097ebeaec49",
+        "permission_reference": null,
+        "listening_review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    }
+  ],
+  "taskSets": [
+    {
+      "sourceCode": "LISTEN-PRACTICE-GROUP-01",
+      "sourcePacket": "docs/content/english-7-unit-01-practice-additions.json",
+      "proposedRow": {
+        "id": "cc7b0287-cbc9-551b-a3ed-3dd1a83463cd",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+        "locale": "en",
+        "title": "Listening practice: three speakers",
+        "stimulus": {
+          "kind": "audio",
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "17f2ed40-d4b9-5c64-a211-783218581c70"
+        },
+        "members": [
+          {
+            "itemId": "73bbe712-fbcf-5995-ab9d-eae8282531d3",
+            "version": 2,
+            "skillId": "f0967dc9-177e-5ffc-a206-d39f39452c6f"
+          },
+          {
+            "itemId": "3c05a599-565c-5e15-a5f2-e5c6b1da8cdc",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          },
+          {
+            "itemId": "db0b731b-30b7-54a4-a5e1-5a8f76a946f8",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          },
+          {
+            "itemId": "6a3b79eb-652e-5b6d-a095-cf32e1e5ff21",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          }
+        ],
+        "source_reference": "docs/content/english-7-unit-01-practice-additions.json#LISTEN-PRACTICE-GROUP-01; original platform-authored script sha256 344bd865e4a572910416a8968faeb3669238abac3139c8c976b5b5b9a0de7777",
+        "permission_reference": null,
+        "review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-DA-AUDIO-A",
+      "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+      "proposedRow": {
+        "id": "78e8a491-99e6-5a89-a7fe-36a39c5d85f8",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "918b042e-2e8c-59eb-9609-13ea411211cd",
+        "locale": "en",
+        "title": "Listening source DA-A",
+        "stimulus": {
+          "kind": "audio",
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "a114c68b-10be-5c75-a3de-61e9d5b26313"
+        },
+        "members": [
+          {
+            "itemId": "c1c2b141-2b6b-5e96-aa1e-930979c25853",
+            "version": 2,
+            "skillId": "f0967dc9-177e-5ffc-a206-d39f39452c6f"
+          },
+          {
+            "itemId": "bc2d4ff7-d73f-5ed4-a358-b4b3d4623c9d",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          }
+        ],
+        "source_reference": "docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-AUDIO-A; original platform-authored script sha256 d7dbea2cd4090d1bbfffc2dd8c0761aed59a7a2084e44128976fa5f231c5635f",
+        "permission_reference": null,
+        "review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-DA-AUDIO-B",
+      "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+      "proposedRow": {
+        "id": "dc177564-b38a-526a-a9cb-abe358a3567e",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "b0d73ed4-e5d6-5cd0-b43f-0b71bb617020",
+        "locale": "en",
+        "title": "Listening source DA-B",
+        "stimulus": {
+          "kind": "audio",
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "cb8f6ab3-d2c4-5086-af44-998cd1742ba0"
+        },
+        "members": [
+          {
+            "itemId": "35e4d137-f3ad-5760-a511-14a4bc2485cd",
+            "version": 2,
+            "skillId": "f0967dc9-177e-5ffc-a206-d39f39452c6f"
+          },
+          {
+            "itemId": "78a3fb1a-f8bd-5a3e-a4dd-b7529694eeb7",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          }
+        ],
+        "source_reference": "docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-AUDIO-B; original platform-authored script sha256 626cd73f1459f62473efe975da5fdbe603897c6242f24ea16c7359be76940b97",
+        "permission_reference": null,
+        "review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-MA-AUDIO-A",
+      "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+      "proposedRow": {
+        "id": "276a56c4-e299-53b1-a686-730d5532181a",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "cf911d87-4ce2-5c61-90c1-8953faeeefa9",
+        "locale": "en",
+        "title": "Listening source MA-A",
+        "stimulus": {
+          "kind": "audio",
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "e6e43fb8-462a-5fa4-add9-094c4a7e8da7"
+        },
+        "members": [
+          {
+            "itemId": "bf9b27c1-9ea0-5855-ac04-fd62e826086f",
+            "version": 2,
+            "skillId": "f0967dc9-177e-5ffc-a206-d39f39452c6f"
+          },
+          {
+            "itemId": "b44ca152-325f-5069-aa50-2fbc74e6c6e6",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          }
+        ],
+        "source_reference": "docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-AUDIO-A; original platform-authored script sha256 96d641df2dec39440fc66d4127add3585e1877386ffa421ebf99e8cfc4539190",
+        "permission_reference": null,
+        "review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "ENG7-U01-MA-AUDIO-B",
+      "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+      "proposedRow": {
+        "id": "cda85301-637b-50c6-a3de-aac915dba7f8",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "d4b44034-d3e3-5dc2-989c-d18db22476e9",
+        "locale": "en",
+        "title": "Listening source MA-B",
+        "stimulus": {
+          "kind": "audio",
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "4535a51f-8daa-58c0-ac73-0db9668d301a"
+        },
+        "members": [
+          {
+            "itemId": "2dc57892-dac2-578b-a93e-b74d8f3bf5dd",
+            "version": 2,
+            "skillId": "f0967dc9-177e-5ffc-a206-d39f39452c6f"
+          },
+          {
+            "itemId": "e3118404-f017-5b14-a473-adaeca0a0c17",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          }
+        ],
+        "source_reference": "docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-AUDIO-B; original platform-authored script sha256 cc291a9a67933355c99561a06f844f1a99eac129e254266b6adcf097ebeaec49",
+        "permission_reference": null,
+        "review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    }
+  ],
+  "revisions": [
+    {
+      "code": "ENG7-U01-L07",
+      "itemId": "73bbe712-fbcf-5995-ab9d-eae8282531d3",
+      "sourceCode": "LISTEN-PRACTICE-GROUP-01",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "73bbe712-fbcf-5995-ab9d-eae8282531d3",
+        "code": "ENG7-U01-L07",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-practice-additions.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+          "originalDraftSha256": "aab0ed188040767e48e12d592942228ed914faff6aa3f35c6b83a9e0c6df0992",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "intentional_practice_variant",
+          "sourceFamilyProposedId": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to all three speakers. What are they mainly discussing?",
+        "prompt_hy": "Listen to all three speakers. What are they mainly discussing?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "f00aa012-9f4d-53c7-aeea-984a0db3e0de",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-practice-additions.json#ENG7-U01-L07",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "aab0ed188040767e48e12d592942228ed914faff6aa3f35c6b83a9e0c6df0992",
+      "payload": {
+        "promptHy": "Listen to all three speakers. What are they mainly discussing?",
+        "promptEn": "Listen to all three speakers. What are they mainly discussing?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-practice-additions.json#ENG7-U01-L07",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "cc7b0287-cbc9-551b-a3ed-3dd1a83463cd"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Which pictures should go in a school magazine?",
+            "contentEn": "Which pictures should go in a school magazine?",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "What should they wear for a class photo?",
+            "contentEn": "What should they wear for a class photo?",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Which new uniform must everyone buy?",
+            "contentEn": "Which new uniform must everyone buy?",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording LISTEN-PRACTICE-GROUP-01 through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-L08",
+      "itemId": "3c05a599-565c-5e15-a5f2-e5c6b1da8cdc",
+      "sourceCode": "LISTEN-PRACTICE-GROUP-01",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "3c05a599-565c-5e15-a5f2-e5c6b1da8cdc",
+        "code": "ENG7-U01-L08",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-practice-additions.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+          "originalDraftSha256": "29221d7aa1234a2857a489bb7675895d935bdc4f5e85a044a1e6ac4749540d68",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "intentional_practice_variant",
+          "sourceFamilyProposedId": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Which item does Speaker Two plan to wear?",
+        "prompt_hy": "Which item does Speaker Two plan to wear?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "af2beb04-f158-582d-aeac-3037b829f55c",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-practice-additions.json#ENG7-U01-L08",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "29221d7aa1234a2857a489bb7675895d935bdc4f5e85a044a1e6ac4749540d68",
+      "payload": {
+        "promptHy": "Which item does Speaker Two plan to wear?",
+        "promptEn": "Which item does Speaker Two plan to wear?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-practice-additions.json#ENG7-U01-L08",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "cc7b0287-cbc9-551b-a3ed-3dd1a83463cd"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "a blue shirt",
+            "contentEn": "a blue shirt",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "a warm coat",
+            "contentEn": "a warm coat",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "a green top",
+            "contentEn": "a green top",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "c",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording LISTEN-PRACTICE-GROUP-01 through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-L09",
+      "itemId": "db0b731b-30b7-54a4-a5e1-5a8f76a946f8",
+      "sourceCode": "LISTEN-PRACTICE-GROUP-01",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "db0b731b-30b7-54a4-a5e1-5a8f76a946f8",
+        "code": "ENG7-U01-L09",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-practice-additions.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+          "originalDraftSha256": "2d404d33a761735236be87d9217349c7444e416da10dfb3543de7d0df4a15078",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "intentional_practice_variant",
+          "sourceFamilyProposedId": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Who suggests that the group should choose one colour?",
+        "prompt_hy": "Who suggests that the group should choose one colour?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "f0059915-206d-5d75-a6c4-3c2435397870",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-practice-additions.json#ENG7-U01-L09",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "2d404d33a761735236be87d9217349c7444e416da10dfb3543de7d0df4a15078",
+      "payload": {
+        "promptHy": "Who suggests that the group should choose one colour?",
+        "promptEn": "Who suggests that the group should choose one colour?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-practice-additions.json#ENG7-U01-L09",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "cc7b0287-cbc9-551b-a3ed-3dd1a83463cd"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Speaker One",
+            "contentEn": "Speaker One",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Speaker Two",
+            "contentEn": "Speaker Two",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Speaker Three",
+            "contentEn": "Speaker Three",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "a",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording LISTEN-PRACTICE-GROUP-01 through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-L10",
+      "itemId": "6a3b79eb-652e-5b6d-a095-cf32e1e5ff21",
+      "sourceCode": "LISTEN-PRACTICE-GROUP-01",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "6a3b79eb-652e-5b6d-a095-cf32e1e5ff21",
+        "code": "ENG7-U01-L10",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-practice-additions.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+          "originalDraftSha256": "c5c5d24890e23e5e76c1143812383fb607da5f7ed137109224b3278f7c2447b7",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "intentional_practice_variant",
+          "sourceFamilyProposedId": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Who wants everyone to choose their own colour?",
+        "prompt_hy": "Who wants everyone to choose their own colour?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "186d4b44-57a9-56cf-ad14-23effd190f80",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-practice-additions.json#ENG7-U01-L10",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "c5c5d24890e23e5e76c1143812383fb607da5f7ed137109224b3278f7c2447b7",
+      "payload": {
+        "promptHy": "Who wants everyone to choose their own colour?",
+        "promptEn": "Who wants everyone to choose their own colour?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-practice-additions.json#ENG7-U01-L10",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "cc7b0287-cbc9-551b-a3ed-3dd1a83463cd"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Speaker One",
+            "contentEn": "Speaker One",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Speaker Two",
+            "contentEn": "Speaker Two",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Speaker Three",
+            "contentEn": "Speaker Three",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording LISTEN-PRACTICE-GROUP-01 through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-DA-25",
+      "itemId": "c1c2b141-2b6b-5e96-aa1e-930979c25853",
+      "sourceCode": "ENG7-U01-DA-AUDIO-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "c1c2b141-2b6b-5e96-aa1e-930979c25853",
+        "code": "ENG7-U01-DA-25",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "diagnostic",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "diagnostic",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "originalDraftSha256": "0fde954a67b3bda15030b0186b8fe03ab4cd5c1e998c2b330068ee3673eddee7",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "918b042e-2e8c-59eb-9609-13ea411211cd",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Listening source DA-A. What is the main point of the message?",
+        "prompt_hy": "Listen to Listening source DA-A. What is the main point of the message?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "fd88088f-d1b6-52eb-a36a-c0d4766efb51",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-25",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "0fde954a67b3bda15030b0186b8fe03ab4cd5c1e998c2b330068ee3673eddee7",
+      "payload": {
+        "promptHy": "Listen to Listening source DA-A. What is the main point of the message?",
+        "promptEn": "Listen to Listening source DA-A. What is the main point of the message?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-25",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "78e8a491-99e6-5a89-a7fe-36a39c5d85f8"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "A small repair allowed the speaker to wear the chosen waistcoat.",
+            "contentEn": "A small repair allowed the speaker to wear the chosen waistcoat.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "The speaker bought a new waistcoat for the occasion.",
+            "contentEn": "The speaker bought a new waistcoat for the occasion.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "The speaker decided to stop wearing waistcoats.",
+            "contentEn": "The speaker decided to stop wearing waistcoats.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "a",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording ENG7-U01-DA-AUDIO-A through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-DA-27",
+      "itemId": "bc2d4ff7-d73f-5ed4-a358-b4b3d4623c9d",
+      "sourceCode": "ENG7-U01-DA-AUDIO-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "bc2d4ff7-d73f-5ed4-a358-b4b3d4623c9d",
+        "code": "ENG7-U01-DA-27",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "diagnostic",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "diagnostic",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "originalDraftSha256": "0cb0f79575fda6c2c34c4730d8cc6f9f3b8129ee7970d4265afdc4dd8ba3c4d4",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "918b042e-2e8c-59eb-9609-13ea411211cd",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Listening source DA-A. Where was the spare button found?",
+        "prompt_hy": "Listen to Listening source DA-A. Where was the spare button found?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "f3f7f493-a6ac-5dfc-a299-9f894f0cba3b",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-27",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "0cb0f79575fda6c2c34c4730d8cc6f9f3b8129ee7970d4265afdc4dd8ba3c4d4",
+      "payload": {
+        "promptHy": "Listen to Listening source DA-A. Where was the spare button found?",
+        "promptEn": "Listen to Listening source DA-A. Where was the spare button found?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-27",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "78e8a491-99e6-5a89-a7fe-36a39c5d85f8"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "In a shop window.",
+            "contentEn": "In a shop window.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Inside the waistcoat's small pocket.",
+            "contentEn": "Inside the waistcoat's small pocket.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "On the floor beside a chair.",
+            "contentEn": "On the floor beside a chair.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording ENG7-U01-DA-AUDIO-A through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-DA-26",
+      "itemId": "35e4d137-f3ad-5760-a511-14a4bc2485cd",
+      "sourceCode": "ENG7-U01-DA-AUDIO-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "35e4d137-f3ad-5760-a511-14a4bc2485cd",
+        "code": "ENG7-U01-DA-26",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "diagnostic",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "diagnostic",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "originalDraftSha256": "4ececb4b12f17b67ba35ddcde358e7930c3cbb1939521da46be683c4b9d88f4a",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "b0d73ed4-e5d6-5cd0-b43f-0b71bb617020",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Listening source DA-B. What connects the three students' suggestions?",
+        "prompt_hy": "Listen to Listening source DA-B. What connects the three students' suggestions?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "590864ac-9f4f-5ec9-a116-53cffca9c097",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-26",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "4ececb4b12f17b67ba35ddcde358e7930c3cbb1939521da46be683c4b9d88f4a",
+      "payload": {
+        "promptHy": "Listen to Listening source DA-B. What connects the three students' suggestions?",
+        "promptEn": "Listen to Listening source DA-B. What connects the three students' suggestions?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-26",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "dc177564-b38a-526a-a9cb-abe358a3567e"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Buying a new uniform for every student.",
+            "contentEn": "Buying a new uniform for every student.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Preparing useful costume items for the play.",
+            "contentEn": "Preparing useful costume items for the play.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Choosing one colour for a class photograph.",
+            "contentEn": "Choosing one colour for a class photograph.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording ENG7-U01-DA-AUDIO-B through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-DA-28",
+      "itemId": "78a3fb1a-f8bd-5a3e-a4dd-b7529694eeb7",
+      "sourceCode": "ENG7-U01-DA-AUDIO-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "78a3fb1a-f8bd-5a3e-a4dd-b7529694eeb7",
+        "code": "ENG7-U01-DA-28",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "diagnostic",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "diagnostic",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "originalDraftSha256": "466e89d6356b11354184f9ecd04963df76c28b06666787e7ad9b0e2405b42785",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "b0d73ed4-e5d6-5cd0-b43f-0b71bb617020",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Listening source DA-B. Who wants each borrowed hat to carry its owner's name?",
+        "prompt_hy": "Listen to Listening source DA-B. Who wants each borrowed hat to carry its owner's name?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "d7405242-aa45-58bf-ab4f-72d12b22db03",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-28",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "466e89d6356b11354184f9ecd04963df76c28b06666787e7ad9b0e2405b42785",
+      "payload": {
+        "promptHy": "Listen to Listening source DA-B. Who wants each borrowed hat to carry its owner's name?",
+        "promptEn": "Listen to Listening source DA-B. Who wants each borrowed hat to carry its owner's name?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-DA-28",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "dc177564-b38a-526a-a9cb-abe358a3567e"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Speaker Three.",
+            "contentEn": "Speaker Three.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Speaker One.",
+            "contentEn": "Speaker One.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Speaker Two.",
+            "contentEn": "Speaker Two.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "c",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording ENG7-U01-DA-AUDIO-B through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-MA-25",
+      "itemId": "bf9b27c1-9ea0-5855-ac04-fd62e826086f",
+      "sourceCode": "ENG7-U01-MA-AUDIO-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "bf9b27c1-9ea0-5855-ac04-fd62e826086f",
+        "code": "ENG7-U01-MA-25",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "originalDraftSha256": "5f8a3ef7401d6572582602c56ef7bbbb6f214f26ac9eee1cf8b08794d7c7c7eb",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "cf911d87-4ce2-5c61-90c1-8953faeeefa9",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Listening source MA-A. Why does the speaker change the label?",
+        "prompt_hy": "Listen to Listening source MA-A. Why does the speaker change the label?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "6572d4de-43e6-5519-abeb-13859affd59b",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-25",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "5f8a3ef7401d6572582602c56ef7bbbb6f214f26ac9eee1cf8b08794d7c7c7eb",
+      "payload": {
+        "promptHy": "Listen to Listening source MA-A. Why does the speaker change the label?",
+        "promptEn": "Listen to Listening source MA-A. Why does the speaker change the label?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-25",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "276a56c4-e299-53b1-a686-730d5532181a"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "To announce that the coat has been sold.",
+            "contentEn": "To announce that the coat has been sold.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "To persuade someone to exchange a coat for it.",
+            "contentEn": "To persuade someone to exchange a coat for it.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "To make clear that the coat is for display, not exchange.",
+            "contentEn": "To make clear that the coat is for display, not exchange.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "c",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording ENG7-U01-MA-AUDIO-A through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-MA-27",
+      "itemId": "b44ca152-325f-5069-aa50-2fbc74e6c6e6",
+      "sourceCode": "ENG7-U01-MA-AUDIO-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "b44ca152-325f-5069-aa50-2fbc74e6c6e6",
+        "code": "ENG7-U01-MA-27",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "originalDraftSha256": "2de66306a17f88355a4a9d80e13cff75ff9a1f6fe9a7420becfd3e8be639ff7d",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "cf911d87-4ce2-5c61-90c1-8953faeeefa9",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Listening source MA-A. What replaces the first label?",
+        "prompt_hy": "Listen to Listening source MA-A. What replaces the first label?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "9ecd8ba5-b505-592c-a607-03a3971f7955",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-27",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "2de66306a17f88355a4a9d80e13cff75ff9a1f6fe9a7420becfd3e8be639ff7d",
+      "payload": {
+        "promptHy": "Listen to Listening source MA-A. What replaces the first label?",
+        "promptEn": "Listen to Listening source MA-A. What replaces the first label?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-27",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "276a56c4-e299-53b1-a686-730d5532181a"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "A price tag showing the cost of the coat.",
+            "contentEn": "A price tag showing the cost of the coat.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "An orange card saying 'For display only'.",
+            "contentEn": "An orange card saying 'For display only'.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "A green card inviting an exchange.",
+            "contentEn": "A green card inviting an exchange.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording ENG7-U01-MA-AUDIO-A through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-MA-26",
+      "itemId": "2dc57892-dac2-578b-a93e-b74d8f3bf5dd",
+      "sourceCode": "ENG7-U01-MA-AUDIO-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "2dc57892-dac2-578b-a93e-b74d8f3bf5dd",
+        "code": "ENG7-U01-MA-26",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "originalDraftSha256": "a6e1d2802ed92cf7e9c1bb63cec7f9537ca342f5009b322b767f988f0f761a19",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "d4b44034-d3e3-5dc2-989c-d18db22476e9",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Listening source MA-B. What are the students mainly discussing?",
+        "prompt_hy": "Listen to Listening source MA-B. What are the students mainly discussing?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "c7325190-1e99-5779-ac47-692662c0fd69",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-26",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "a6e1d2802ed92cf7e9c1bb63cec7f9537ca342f5009b322b767f988f0f761a19",
+      "payload": {
+        "promptHy": "Listen to Listening source MA-B. What are the students mainly discussing?",
+        "promptEn": "Listen to Listening source MA-B. What are the students mainly discussing?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-26",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "cda85301-637b-50c6-a3de-aac915dba7f8"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "How to repair missing buttons before a play.",
+            "contentEn": "How to repair missing buttons before a play.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Rules about what students must wear to school.",
+            "contentEn": "Rules about what students must wear to school.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Ways to help visitors understand a clothing display.",
+            "contentEn": "Ways to help visitors understand a clothing display.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "c",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording ENG7-U01-MA-AUDIO-B through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-MA-28",
+      "itemId": "e3118404-f017-5b14-a473-adaeca0a0c17",
+      "sourceCode": "ENG7-U01-MA-AUDIO-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "e3118404-f017-5b14-a473-adaeca0a0c17",
+        "code": "ENG7-U01-MA-28",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "originalDraftSha256": "bbbe77715338ac32b65c8a41e50fc9504301b2756020049e068c70988a7c690c",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "d4b44034-d3e3-5dc2-989c-d18db22476e9",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Listening source MA-B. Who wants visitors to ask the clothes' owners questions directly?",
+        "prompt_hy": "Listen to Listening source MA-B. Who wants visitors to ask the clothes' owners questions directly?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "0b6b12db-c13a-548f-a797-711e33b8077b",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-28",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "bbbe77715338ac32b65c8a41e50fc9504301b2756020049e068c70988a7c690c",
+      "payload": {
+        "promptHy": "Listen to Listening source MA-B. Who wants visitors to ask the clothes' owners questions directly?",
+        "promptEn": "Listen to Listening source MA-B. Who wants visitors to ask the clothes' owners questions directly?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-assessment-batch-a.json#ENG7-U01-MA-28",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "cda85301-637b-50c6-a3de-aac915dba7f8"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Speaker One.",
+            "contentEn": "Speaker One.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Speaker Two.",
+            "contentEn": "Speaker Two.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Speaker Three.",
+            "contentEn": "Speaker Three.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "c",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach owner-accepted original recording ENG7-U01-MA-AUDIO-B through an immutable shared source; preserve question wording, answer key, order and source-family identity."
+      }
+    }
+  ],
+  "limits": [
+    "Delegated recording/source registration on the owner’s explicit decision; not represented as an in-app click or independent specialist review.",
+    "Does not create ordinary question approvals, assessment qualification or learner release.",
+    "Existing replayable Practice/Chapter Review runtime is unchanged. Diagnostic/Mastery audio remains rejected until its assessed-playback/interruption contract is accepted and implemented.",
+    "Six questions using three publisher recordings remain held; no publisher recording approval or reuse document is invented.",
+    "Corrections require successor immutable audio/source/question versions and applicable review; uploaded originals and existing history are preserved."
+  ]
+}
