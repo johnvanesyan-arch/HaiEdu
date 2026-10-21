@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "haiedu-publisher-audio-registration-rehearsal-v1",
+  "environment": "Isolated in-memory PGlite; real SQL and QA handler, synthetic Auth/reviewer/permission records",
+  "productionMutations": 0,
+  "sourceRows": 3,
+  "audioRows": 3,
+  "heldBefore": 6,
+  "passedAfter": 6,
+  "preservedV1": 6,
+  "preservedKeys": 6,
+  "previewSources": 6,
+  "staleRevisionRejected": true,
+  "missingReviewerRejected": true,
+  "missingPermissionRejected": true,
+  "questionApprovals": 0,
+  "manifestSha256": "808a00680507a1662cf33db90233accad31b49c496dcb58d1cd873eaeb666026",
+  "missingAudioReviewerRejected": true,
+  "passed": true
+}

@@ -1,0 +1,384 @@
+{
+  "schemaVersion": "haiedu-english-listening-registration-v1",
+  "checkpoint": "16.1C.11",
+  "date": "2026-10-22 Asia/Yerevan",
+  "baselineSourceCommit": "3bf54e4c46009faeec710e146dbacca0958598ea",
+  "scope": "Three owner-supplied recordings of textbook scripts, six unchanged Practice questions, protected reviewer catalogue only. No shared runtime or schema change.",
+  "committedAt": "2026-10-21T20:25:26.294096+00:00",
+  "independentReadbackAt": "2026-10-21T20:26:01.186955+00:00",
+  "preflight": {
+    "observedAt": "2026-10-21T20:22:21.074872+00:00",
+    "storageObservedAt": "2026-10-21 20:21:43.46688+00",
+    "unchangedTables": 68,
+    "fullyExplainedReviewChanges": 12,
+    "oldItemsAndReviewsFingerprintsReproduced": true,
+    "sqlFunctionMatches": 11,
+    "edgeBundleMatches": 2,
+    "allThreeStorageNamesBytesEtagsMatch": true,
+    "currentApproved": 110,
+    "targetSixUnchanged": 6,
+    "baselineCommit": "3bf54e4c46009faeec710e146dbacca0958598ea"
+  },
+  "storage": {
+    "bucket": "learning-audio",
+    "public": false,
+    "limitBytes": 8388608,
+    "objects": 8,
+    "verification": "Actual object names, byte lengths and MD5 ETags match the attached files; SHA-256, full decode and durations verified locally. This is not an authenticated HTTP download/playback test.",
+    "files": [
+      {
+        "source": "Emmie",
+        "sha256": "973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83",
+        "objectPath": "973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83.mp3",
+        "byteLength": 329988,
+        "durationSeconds": 19.565688,
+        "codec": "mp3",
+        "sampleRate": 44100,
+        "channels": 1,
+        "decodePassed": true,
+        "md5": "a8e424137fae7565326ad0c24cb9f6a7"
+      },
+      {
+        "source": "Gordon",
+        "sha256": "79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec",
+        "objectPath": "79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec.mp3",
+        "byteLength": 469586,
+        "durationSeconds": 28.290563,
+        "codec": "mp3",
+        "sampleRate": 44100,
+        "channels": 1,
+        "decodePassed": true,
+        "md5": "f7ebc749ccd33aef23dbeebea0c7e3eb"
+      },
+      {
+        "source": "Miriam",
+        "sha256": "6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b",
+        "objectPath": "6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b.mp3",
+        "byteLength": 536042,
+        "durationSeconds": 32.444063,
+        "codec": "mp3",
+        "sampleRate": 44100,
+        "channels": 1,
+        "decodePassed": true,
+        "md5": "1f5ecba312e8e8e925693d239260e9d0"
+      }
+    ]
+  },
+  "sourceReview": {
+    "recordingIdentity": "Owner-supplied versions; byte-different from publisher originals. Generator/transform provenance is not established.",
+    "textbook": "English 7, Grigoryan/Zangak 2023, p.6 exercise 8; scripts p.144.",
+    "answerAlignmentPassed": 6,
+    "reviewMethod": "Local ASR transcript and FFmpeg checks, with VAD-assisted tail corroboration. No independent human audition or SME claim.",
+    "ownerAuthorization": "Explicit upload/link/playback/QA authorization for the existing private bucket, followed by actual owner upload and corrected object names.",
+    "acceptanceReference": "docs/evidence/english-7-unit-01-publisher-audio-review-20261021.json#c5a5c4667b453a8a5f07dd9682ada5e4279827dec2795c713f332c205d311bca",
+    "sourceFamily": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+    "coverage": "Familiar textbook recordings retain the original shared family; no additional independent unseen assessment coverage."
+  },
+  "registration": {
+    "audioVersions": 3,
+    "taskSets": 3,
+    "itemRevisions": 6,
+    "savedAutomatedQaRows": 6,
+    "questionApprovalsCreated": 0,
+    "audioVersionIds": [
+      "862daa83-a5e5-51e1-a36d-0106882005cf",
+      "64a2a26a-fe71-5fec-a7d2-fd85fdbcbe1b",
+      "4375792c-94d4-54fe-a79c-983368f0fa5f"
+    ],
+    "taskSetVersionIds": [
+      "fcbbae2c-8616-58cd-a661-212744509f0c",
+      "ded4d589-83dd-5e83-a39a-f80234700e6c",
+      "002edcd5-07a7-5dad-a766-e0f14ca9ae86"
+    ],
+    "items": [
+      {
+        "code": "ENG7-U01-L01",
+        "id": "e83ac783-0c53-5e75-a370-413089ff8e63",
+        "version": 2,
+        "qaPassed": true,
+        "errors": [],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "reviewStatus": "needs_review"
+      },
+      {
+        "code": "ENG7-U01-L02",
+        "id": "40af678f-b912-5b45-a941-55134f9e31fa",
+        "version": 2,
+        "qaPassed": true,
+        "errors": [],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "reviewStatus": "needs_review"
+      },
+      {
+        "code": "ENG7-U01-L03",
+        "id": "5c42c2f0-ed04-5ab6-a956-51aa96660b5f",
+        "version": 2,
+        "qaPassed": true,
+        "errors": [],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "reviewStatus": "needs_review"
+      },
+      {
+        "code": "ENG7-U01-L04",
+        "id": "06726d1e-c5de-554f-a818-41b6998a124c",
+        "version": 2,
+        "qaPassed": true,
+        "errors": [],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "reviewStatus": "needs_review"
+      },
+      {
+        "code": "ENG7-U01-L05",
+        "id": "2bc6c17f-88ab-51bc-af54-90d96321703a",
+        "version": 2,
+        "qaPassed": true,
+        "errors": [],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "reviewStatus": "needs_review"
+      },
+      {
+        "code": "ENG7-U01-L06",
+        "id": "33b277c6-fd19-50f1-a5b9-8a9ffe15d0ba",
+        "version": 2,
+        "qaPassed": true,
+        "errors": [],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "reviewStatus": "needs_review"
+      }
+    ]
+  },
+  "verification": {
+    "isolated": {
+      "schemaVersion": "haiedu-publisher-audio-registration-rehearsal-v1",
+      "environment": "Isolated in-memory PGlite; real SQL and QA handler, synthetic Auth/reviewer/permission records",
+      "productionMutations": 0,
+      "sourceRows": 3,
+      "audioRows": 3,
+      "heldBefore": 6,
+      "passedAfter": 6,
+      "preservedV1": 6,
+      "preservedKeys": 6,
+      "previewSources": 6,
+      "staleRevisionRejected": true,
+      "missingReviewerRejected": true,
+      "missingPermissionRejected": true,
+      "questionApprovals": 0,
+      "manifestSha256": "808a00680507a1662cf33db90233accad31b49c496dcb58d1cd873eaeb666026",
+      "missingAudioReviewerRejected": true,
+      "passed": true
+    },
+    "productionRollback": {
+      "passed": true,
+      "restoredTableFingerprints": 70,
+      "rollbackAt": "2026-10-21T20:24:46.052219+00:00"
+    },
+    "committed": {
+      "observedAt": "2026-10-21T20:26:01.186955+00:00",
+      "projectionMatchesIndependentRead": true,
+      "qaPasses": 116,
+      "approved": 110,
+      "awaitingOrdinaryReview": 6,
+      "newSavedVersionQaMatchesDeployedEvaluator": 6,
+      "unaffectedTables": 63,
+      "changes": [
+        {
+          "table": "item_answer_keys",
+          "added": 0
+        },
+        {
+          "table": "item_options",
+          "added": 0
+        },
+        {
+          "table": "item_qa_runs",
+          "added": 6
+        },
+        {
+          "table": "item_versions",
+          "added": 6
+        },
+        {
+          "table": "items",
+          "added": 0
+        },
+        {
+          "table": "learning_audio_versions",
+          "added": 3
+        },
+        {
+          "table": "learning_task_set_versions",
+          "added": 3
+        }
+      ],
+      "release": {
+        "id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "status": "draft",
+        "activatedAt": null
+      },
+      "items": [
+        {
+          "code": "ENG7-U01-L01",
+          "id": "e83ac783-0c53-5e75-a370-413089ff8e63",
+          "version": 2,
+          "qaPassed": true,
+          "errors": [],
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "reviewStatus": "needs_review"
+        },
+        {
+          "code": "ENG7-U01-L02",
+          "id": "40af678f-b912-5b45-a941-55134f9e31fa",
+          "version": 2,
+          "qaPassed": true,
+          "errors": [],
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "reviewStatus": "needs_review"
+        },
+        {
+          "code": "ENG7-U01-L03",
+          "id": "5c42c2f0-ed04-5ab6-a956-51aa96660b5f",
+          "version": 2,
+          "qaPassed": true,
+          "errors": [],
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "reviewStatus": "needs_review"
+        },
+        {
+          "code": "ENG7-U01-L04",
+          "id": "06726d1e-c5de-554f-a818-41b6998a124c",
+          "version": 2,
+          "qaPassed": true,
+          "errors": [],
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "reviewStatus": "needs_review"
+        },
+        {
+          "code": "ENG7-U01-L05",
+          "id": "2bc6c17f-88ab-51bc-af54-90d96321703a",
+          "version": 2,
+          "qaPassed": true,
+          "errors": [],
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "reviewStatus": "needs_review"
+        },
+        {
+          "code": "ENG7-U01-L06",
+          "id": "33b277c6-fd19-50f1-a5b9-8a9ffe15d0ba",
+          "version": 2,
+          "qaPassed": true,
+          "errors": [],
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "reviewStatus": "needs_review"
+        }
+      ]
+    },
+    "qaMethod": "Exact deployed manage-content-quality v14 evaluateQa over materialized production rows through a read-only adapter, stored with run_by=null and independently read back. No new HTTP/Auth/MFA exercise.",
+    "preservation": {
+      "unchangedTableFingerprints": 63,
+      "allUnaffectedRowsPreserved": true,
+      "priorApprovalsPreserved": 110,
+      "wordingKeysOptionsOrderPreserved": true,
+      "v1HistoryPreserved": true,
+      "learnerStateAndReleaseGatesUnchanged": true,
+      "allowedDeltas": [
+        {
+          "table": "item_answer_keys",
+          "added": 0
+        },
+        {
+          "table": "item_options",
+          "added": 0
+        },
+        {
+          "table": "item_qa_runs",
+          "added": 6
+        },
+        {
+          "table": "item_versions",
+          "added": 6
+        },
+        {
+          "table": "items",
+          "added": 0
+        },
+        {
+          "table": "learning_audio_versions",
+          "added": 3
+        },
+        {
+          "table": "learning_task_set_versions",
+          "added": 3
+        }
+      ]
+    },
+    "runtime": {
+      "sqlFunctionsMatched": 11,
+      "deployedEdgeBundlesMatched": [
+        "manage-content-quality",
+        "get-learning-audio"
+      ],
+      "newRuntimeDeployment": false
+    },
+    "browser": {
+      "status": "pending_runtime_blocked",
+      "error": "Browser observation is unavailable because native credential state cannot be safely resumed. Start a new browser runtime to continue.",
+      "scope": "Actual reviewer picker visibility and protected playback of the three newly registered files remain unverified. Prior successful playback of the five C10 recordings is reused only for those unchanged files.",
+      "recovery": "Previously attempted fresh tab, session reset and documented troubleshooting; all blocked. No credential bypass or new runtime claim."
+    }
+  },
+  "currentInventory": {
+    "accepted": {
+      "practice": 60,
+      "diagnostic": 56,
+      "mastery": 84,
+      "total": 200
+    },
+    "staged": 116,
+    "qaPassed": 116,
+    "sourceHeld": 0,
+    "approved": 110,
+    "awaitingOrdinaryReview": 6,
+    "readingTaskSets": 7,
+    "audioTaskSets": 8,
+    "audioVersions": 8,
+    "immutableQuestionSnapshots": 151,
+    "stillToAuthor": 84,
+    "englishRelease": "draft/inactive; unallocated"
+  },
+  "remaining": [
+    "Authenticated reviewer playback and UI acceptance of Emmie/Gordon/Miriam; ordinary review of L01–L06.",
+    "Assessed-listening playback/interruption policy and runtime before Diagnostic/Mastery adoption.",
+    "84 DB/MB/MC questions and their own source/recording work.",
+    "Nine guides and writing onboarding; source/voice reuse, qualification, English policy, SME and learner release."
+  ],
+  "evidenceFiles": {
+    "docs/content/english-7-unit-01-publisher-audio-registration-plan.json": "808a00680507a1662cf33db90233accad31b49c496dcb58d1cd873eaeb666026",
+    "docs/evidence/english-7-unit-01-publisher-audio-review-20261021.json": "c5a5c4667b453a8a5f07dd9682ada5e4279827dec2795c713f332c205d311bca",
+    "docs/evidence/english-7-unit-01-publisher-audio-alignment-20261021.json": "77b0081896966e7777e6592b73625a67a978747d85debfe2681bee6bd6b54869",
+    "docs/evidence/english-7-unit-01-publisher-audio-rehearsal-20261021.json": "1c89020ad696d3d01637d6bf7ef9e913de5be8778869edfdad40c8e5c4ea26d0"
+  }
+}

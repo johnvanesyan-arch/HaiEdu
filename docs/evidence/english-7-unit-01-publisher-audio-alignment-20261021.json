@@ -1,0 +1,137 @@
+{
+  "schemaVersion": "haiedu-publisher-audio-alignment-v1",
+  "checkpoint": "16.1C.11",
+  "sourceCommit": "3bf54e4c46009faeec710e146dbacca0958598ea",
+  "files": [
+    {
+      "sourceCode": "LISTEN-EMMIE",
+      "sha256": "973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83",
+      "bytes": 329988,
+      "durationMs": 19566,
+      "fullDecodePassed": true,
+      "suppliedBytesUnchanged": true,
+      "publisherOriginalExactMatch": false,
+      "storageObject": "973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83.mp3",
+      "singlePartEtag": "fc1909366316b94ae32007c2dfab1a53-1",
+      "storageByteLengthAndEtagMatch": true,
+      "method": "Local faster-whisper 1.2.1 base.en int8, no prompt, cached model, no cloud audio transfer",
+      "asrText": "I dress the way I do because it's comfortable. Most of the time, I think about whether the clothes I wear match, and I usually wear makeup that matches my clothes. I know that wearing jeans with a top is casual, but I like this look. Fashion is about wearing the clothes you choose so you can be different from everyone else. Health.",
+      "boundaryCheck": {
+        "source": "Emmie",
+        "clipStartSeconds": 13.565750000000001,
+        "clipDurationSeconds": 6,
+        "method": "Same local ASR on final six seconds with VAD, no prompt; corroboration only",
+        "text": "this look. Fashion is about wearing the clothes you choose so you can be different from everyone else."
+      },
+      "keyMap": [
+        {
+          "code": "ENG7-U01-L01",
+          "key": "c",
+          "keyedMeaning": "They should be comfortable and allow her to choose her own look."
+        },
+        {
+          "code": "ENG7-U01-L02",
+          "key": "c",
+          "keyedMeaning": "jeans and a top"
+        }
+      ],
+      "keyMeaningSupported": true,
+      "asrLimitations": "First-pass trailing low-confidence words on Emmie/Gordon are not reproduced by final-six-second VAD-assisted ASR. Main transcript and all six answer meanings agree with textbook script. This is automated source comparison, not human audition.",
+      "storageMd5Etag": "a8e424137fae7565326ad0c24cb9f6a7",
+      "finalObjectNameVerified": true
+    },
+    {
+      "sourceCode": "LISTEN-GORDON",
+      "sha256": "79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec",
+      "bytes": 469586,
+      "durationMs": 28291,
+      "fullDecodePassed": true,
+      "suppliedBytesUnchanged": true,
+      "publisherOriginalExactMatch": false,
+      "storageObject": "79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec.mp3",
+      "singlePartEtag": "ed3f43995fe5fc775345abc30c7ea93f-1",
+      "storageByteLengthAndEtagMatch": true,
+      "method": "Local faster-whisper 1.2.1 base.en int8, no prompt, cached model, no cloud audio transfer",
+      "asrText": "I think fashion helps us to tell others who we are. I don't think too much about the latest fashion trends. I like the way I dress because it's my way of expressing myself. I wouldn't wear these clothes if I didn't like them. I usually pay attention to whether my clothes match or not because it makes me look better. I believe that clothes show people who you really are. Some people don't like the way I look, but I feel comfortable in what I wear, even if it looks a bit out of date. to lead a new state. 7",
+      "boundaryCheck": {
+        "source": "Gordon",
+        "clipStartSeconds": 22.290625,
+        "clipDurationSeconds": 6,
+        "method": "Same local ASR on final six seconds with VAD, no prompt; corroboration only",
+        "text": "Some people don't like the way I look, but I feel comfortable in what I wear, even if it looks a bit out of date."
+      },
+      "keyMap": [
+        {
+          "code": "ENG7-U01-L03",
+          "key": "a",
+          "keyedMeaning": "He chooses comfortable clothes that express his own style."
+        },
+        {
+          "code": "ENG7-U01-L04",
+          "key": "b",
+          "keyedMeaning": "matches his clothes"
+        }
+      ],
+      "keyMeaningSupported": true,
+      "asrLimitations": "First-pass trailing low-confidence words on Emmie/Gordon are not reproduced by final-six-second VAD-assisted ASR. Main transcript and all six answer meanings agree with textbook script. This is automated source comparison, not human audition.",
+      "storageMd5Etag": "f7ebc749ccd33aef23dbeebea0c7e3eb",
+      "finalObjectNameVerified": true
+    },
+    {
+      "sourceCode": "LISTEN-MIRIAM",
+      "sha256": "6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b",
+      "bytes": 536042,
+      "durationMs": 32444,
+      "fullDecodePassed": true,
+      "suppliedBytesUnchanged": true,
+      "publisherOriginalExactMatch": false,
+      "storageObject": "6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b.mp3",
+      "singlePartEtag": "73b9ad639ae2533e9d903e27c21c1c86-1",
+      "storageByteLengthAndEtagMatch": true,
+      "method": "Local faster-whisper 1.2.1 base.en int8, no prompt, cached model, no cloud audio transfer",
+      "asrText": "I dress the way I do because I like to be an individual. I don't think you should judge people by their clothes, though. It's only part of who they are. Sometimes I think about whether my clothes match, but it usually depends on if I'm going out somewhere special. Then I make an effort, but otherwise I just put on whatever I feel like. I think fashion can be a statement of somebody's individuality. I don't care what people think about the way I dress, but I wouldn't wear short skirts because I don't like my legs.",
+      "boundaryCheck": null,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-L05",
+          "key": "b",
+          "keyedMeaning": "Clothes express individuality but do not tell us everything about a person."
+        },
+        {
+          "code": "ENG7-U01-L06",
+          "key": "c",
+          "keyedMeaning": "for a special occasion"
+        }
+      ],
+      "keyMeaningSupported": true,
+      "asrLimitations": "First-pass trailing low-confidence words on Emmie/Gordon are not reproduced by final-six-second VAD-assisted ASR. Main transcript and all six answer meanings agree with textbook script. This is automated source comparison, not human audition.",
+      "storageMd5Etag": "1f5ecba312e8e8e925693d239260e9d0",
+      "finalObjectNameVerified": true
+    }
+  ],
+  "wholeBankComparison": {
+    "items": 116,
+    "historicalVersions": 145,
+    "verifiedUnchanged": "The full 116-question bank semantics, options, keys, immutable history and source families are unchanged. Twelve existing v2 items gained ordinary approvals; normalized whole-table fingerprints reproduce the old item and review baselines, and the other 68 table fingerprints match exactly.",
+    "reusedComparisons": [
+      "docs/english-7-unit-01-whole-bank-review.md",
+      "docs/english-7-unit-01-practice-expansion.md",
+      "docs/english-7-unit-01-assessment-batch-a.md"
+    ],
+    "disposition": "No new question, wording, key, scenario, inference, distractor or reasoning-coverage claim. Exact sources already compared are attached; all three retain c155e0af-5288-5a09-9bd2-e92116cdcaa0.",
+    "approvedItemsPreserved": 110,
+    "freshnessNote": "Observed at 2026-10-21T20:22:21.074872+00:00. Eleven deployed SQL functions and both deployed Edge bundles match previous evidence. No new question, key, scenario or source-family meaning changes."
+  },
+  "reviewLimitations": {
+    "method": "Full-file FFmpeg decode, SHA-256, duration and local faster-whisper 1.2.1 base.en transcript checks against the user-provided textbook p.144 and all six unchanged question keys. Byte lengths and computed one-part multipart ETags match the actual Supabase uploads. Boundary ASR corroboration excludes low-confidence trailing recognizer output. No cloud audio transfer or independent human audition.",
+    "disposition": "All six answer meanings are supported. Actual Storage names, sizes and ETags match the locally verified supplied files. Suitable for protected reviewer registration; ordinary content review and learner-release gates remain."
+  },
+  "boundaries": [
+    "No ordinary question approval, independent human audition, SME approval, assessment qualification or learner activation is created.",
+    "The three owner-supplied files differ from original publisher MP3s; generator and provenance are not established beyond the owner supply and matching textbook script.",
+    "All three familiar textbook scripts retain the original single source family; no new unseen assessment coverage is claimed.",
+    "Supplied MP3 bytes are preserved exactly. Only the proposed Storage filenames change.",
+    "Existing question wording, keys, options, order, approvals and immutable history remain preserved."
+  ],
+  "observedLocalDate": "2026-10-22 Asia/Yerevan"
+}

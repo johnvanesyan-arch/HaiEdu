@@ -1,0 +1,803 @@
+{
+  "schemaVersion": "haiedu-publisher-audio-registration-plan-v1",
+  "checkpoint": "16.1C.11",
+  "baselineCommit": "3bf54e4c46009faeec710e146dbacca0958598ea",
+  "status": "owner_authorized_protected_source_registration",
+  "identities": {
+    "subject": "c230d771-0bea-5076-a570-e440f9e05c09",
+    "programme": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "unit": "3ef44139-0053-58e6-ab0d-5901a0213683",
+    "release": "e40991ee-ca0b-5666-a9f2-a3453de8fccb"
+  },
+  "sourceFiles": {
+    "docs/content/english-7-unit-01-draft.json": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4"
+  },
+  "audioVersions": [
+    {
+      "sourceCode": "LISTEN-EMMIE",
+      "proposedRow": {
+        "id": "862daa83-a5e5-51e1-a36d-0106882005cf",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "locale": "en",
+        "title": "Emmie: comfort and choice",
+        "bucket_id": "learning-audio",
+        "object_path": "973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83.mp3",
+        "sha256": "973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83",
+        "mime_type": "audio/mpeg",
+        "byte_length": 329988,
+        "duration_ms": 19566,
+        "source_reference": "docs/content/english-7-unit-01-draft.json#LISTEN-EMMIE; English 7 (Grigoryan/Zangak 2023), p.6 ex.8, script p.144; owner-supplied recording libfile_7c4ab63fd0788191a5d2c0f69dcef56e sha256=973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83; recording origin unverified; differs from publisher original",
+        "permission_reference": null,
+        "listening_review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "LISTEN-GORDON",
+      "proposedRow": {
+        "id": "64a2a26a-fe71-5fec-a7d2-fd85fdbcbe1b",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "locale": "en",
+        "title": "Gordon: my own style",
+        "bucket_id": "learning-audio",
+        "object_path": "79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec.mp3",
+        "sha256": "79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec",
+        "mime_type": "audio/mpeg",
+        "byte_length": 469586,
+        "duration_ms": 28291,
+        "source_reference": "docs/content/english-7-unit-01-draft.json#LISTEN-GORDON; English 7 (Grigoryan/Zangak 2023), p.6 ex.8, script p.144; owner-supplied recording libfile_33add108221481919e5690de61e1ae62 sha256=79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec; recording origin unverified; differs from publisher original",
+        "permission_reference": null,
+        "listening_review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "LISTEN-MIRIAM",
+      "proposedRow": {
+        "id": "4375792c-94d4-54fe-a79c-983368f0fa5f",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "locale": "en",
+        "title": "Miriam: individuality",
+        "bucket_id": "learning-audio",
+        "object_path": "6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b.mp3",
+        "sha256": "6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b",
+        "mime_type": "audio/mpeg",
+        "byte_length": 536042,
+        "duration_ms": 32444,
+        "source_reference": "docs/content/english-7-unit-01-draft.json#LISTEN-MIRIAM; English 7 (Grigoryan/Zangak 2023), p.6 ex.8, script p.144; owner-supplied recording libfile_c19e1b03d4048191959ce358c31e41bc sha256=6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b; recording origin unverified; differs from publisher original",
+        "permission_reference": null,
+        "listening_review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    }
+  ],
+  "taskSets": [
+    {
+      "sourceCode": "LISTEN-EMMIE",
+      "sourcePacket": "docs/content/english-7-unit-01-draft.json",
+      "proposedRow": {
+        "id": "fcbbae2c-8616-58cd-a661-212744509f0c",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "locale": "en",
+        "title": "Emmie: comfort and choice",
+        "stimulus": {
+          "kind": "audio",
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "862daa83-a5e5-51e1-a36d-0106882005cf"
+        },
+        "members": [
+          {
+            "itemId": "e83ac783-0c53-5e75-a370-413089ff8e63",
+            "version": 2,
+            "skillId": "f0967dc9-177e-5ffc-a206-d39f39452c6f"
+          },
+          {
+            "itemId": "40af678f-b912-5b45-a941-55134f9e31fa",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          }
+        ],
+        "source_reference": "docs/content/english-7-unit-01-draft.json#LISTEN-EMMIE; English 7 (Grigoryan/Zangak 2023), p.6 ex.8, script p.144; owner-supplied recording libfile_7c4ab63fd0788191a5d2c0f69dcef56e sha256=973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83; recording origin unverified; differs from publisher original",
+        "permission_reference": null,
+        "review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "LISTEN-GORDON",
+      "sourcePacket": "docs/content/english-7-unit-01-draft.json",
+      "proposedRow": {
+        "id": "ded4d589-83dd-5e83-a39a-f80234700e6c",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "locale": "en",
+        "title": "Gordon: my own style",
+        "stimulus": {
+          "kind": "audio",
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "64a2a26a-fe71-5fec-a7d2-fd85fdbcbe1b"
+        },
+        "members": [
+          {
+            "itemId": "5c42c2f0-ed04-5ab6-a956-51aa96660b5f",
+            "version": 2,
+            "skillId": "f0967dc9-177e-5ffc-a206-d39f39452c6f"
+          },
+          {
+            "itemId": "06726d1e-c5de-554f-a818-41b6998a124c",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          }
+        ],
+        "source_reference": "docs/content/english-7-unit-01-draft.json#LISTEN-GORDON; English 7 (Grigoryan/Zangak 2023), p.6 ex.8, script p.144; owner-supplied recording libfile_33add108221481919e5690de61e1ae62 sha256=79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec; recording origin unverified; differs from publisher original",
+        "permission_reference": null,
+        "review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    },
+    {
+      "sourceCode": "LISTEN-MIRIAM",
+      "sourcePacket": "docs/content/english-7-unit-01-draft.json",
+      "proposedRow": {
+        "id": "002edcd5-07a7-5dad-a766-e0f14ca9ae86",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+        "source_family_id": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "locale": "en",
+        "title": "Miriam: individuality",
+        "stimulus": {
+          "kind": "audio",
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "4375792c-94d4-54fe-a79c-983368f0fa5f"
+        },
+        "members": [
+          {
+            "itemId": "2bc6c17f-88ab-51bc-af54-90d96321703a",
+            "version": 2,
+            "skillId": "f0967dc9-177e-5ffc-a206-d39f39452c6f"
+          },
+          {
+            "itemId": "33b277c6-fd19-50f1-a5b9-8a9ffe15d0ba",
+            "version": 2,
+            "skillId": "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          }
+        ],
+        "source_reference": "docs/content/english-7-unit-01-draft.json#LISTEN-MIRIAM; English 7 (Grigoryan/Zangak 2023), p.6 ex.8, script p.144; owner-supplied recording libfile_c19e1b03d4048191959ce358c31e41bc sha256=6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b; recording origin unverified; differs from publisher original",
+        "permission_reference": null,
+        "review_reference": null,
+        "reviewed_by": null,
+        "reviewed_at": null
+      }
+    }
+  ],
+  "revisions": [
+    {
+      "code": "ENG7-U01-L01",
+      "itemId": "e83ac783-0c53-5e75-a370-413089ff8e63",
+      "sourceCode": "LISTEN-EMMIE",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "e83ac783-0c53-5e75-a370-413089ff8e63",
+        "code": "ENG7-U01-L01",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-draft.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+          "originalDraftSha256": "ca09a00fc14416a0564c7bdac8b5869cda781f957644d1f2017d13cc402fef8f",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "new_reasoning_coverage",
+          "sourceFamilyProposedId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Emmie. Which idea best sums up her view of clothes?",
+        "prompt_hy": "Listen to Emmie. Which idea best sums up her view of clothes?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "7b697b46-e8c5-5e98-a885-66e26ac092f0",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L01",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "ca09a00fc14416a0564c7bdac8b5869cda781f957644d1f2017d13cc402fef8f",
+      "payload": {
+        "promptHy": "Listen to Emmie. Which idea best sums up her view of clothes?",
+        "promptEn": "Listen to Emmie. Which idea best sums up her view of clothes?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L01",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "fcbbae2c-8616-58cd-a661-212744509f0c"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "They must always be formal.",
+            "contentEn": "They must always be formal.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "They should make everyone look the same.",
+            "contentEn": "They should make everyone look the same.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "They should be comfortable and allow her to choose her own look.",
+            "contentEn": "They should be comfortable and allow her to choose her own look.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "c",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach the owner-supplied textbook-script recording LISTEN-EMMIE through an immutable shared source for authorized protected review; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-L02",
+      "itemId": "40af678f-b912-5b45-a941-55134f9e31fa",
+      "sourceCode": "LISTEN-EMMIE",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "40af678f-b912-5b45-a941-55134f9e31fa",
+        "code": "ENG7-U01-L02",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-draft.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+          "originalDraftSha256": "b1dc8197dd9f203d2c7ebdc4c52e7c1993f78cb1ebacf2f20f58e5b58a4c3ed3",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "new_reasoning_coverage",
+          "sourceFamilyProposedId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Emmie. Which clothes does she name as part of her casual style?",
+        "prompt_hy": "Listen to Emmie. Which clothes does she name as part of her casual style?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "f71ac375-53ad-512e-ae89-40e1f8b56a9c",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L02",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "b1dc8197dd9f203d2c7ebdc4c52e7c1993f78cb1ebacf2f20f58e5b58a4c3ed3",
+      "payload": {
+        "promptHy": "Listen to Emmie. Which clothes does she name as part of her casual style?",
+        "promptEn": "Listen to Emmie. Which clothes does she name as part of her casual style?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L02",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "fcbbae2c-8616-58cd-a661-212744509f0c"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "a suit and a tie",
+            "contentEn": "a suit and a tie",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "a long coat and boots",
+            "contentEn": "a long coat and boots",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "jeans and a top",
+            "contentEn": "jeans and a top",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "c",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach the owner-supplied textbook-script recording LISTEN-EMMIE through an immutable shared source for authorized protected review; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-L03",
+      "itemId": "5c42c2f0-ed04-5ab6-a956-51aa96660b5f",
+      "sourceCode": "LISTEN-GORDON",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "5c42c2f0-ed04-5ab6-a956-51aa96660b5f",
+        "code": "ENG7-U01-L03",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-draft.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+          "originalDraftSha256": "98bc13a2b6391010cf1896e56b2ae4cc511c813a53ca7410a7e4632647bac048",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "intentional_practice_variant",
+          "sourceFamilyProposedId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Gordon. Which statement best describes his approach to fashion?",
+        "prompt_hy": "Listen to Gordon. Which statement best describes his approach to fashion?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "191e3466-2063-595e-a584-bfa190999708",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L03",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "98bc13a2b6391010cf1896e56b2ae4cc511c813a53ca7410a7e4632647bac048",
+      "payload": {
+        "promptHy": "Listen to Gordon. Which statement best describes his approach to fashion?",
+        "promptEn": "Listen to Gordon. Which statement best describes his approach to fashion?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L03",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "ded4d589-83dd-5e83-a39a-f80234700e6c"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "He chooses comfortable clothes that express his own style.",
+            "contentEn": "He chooses comfortable clothes that express his own style.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "He follows every new trend even when it is uncomfortable.",
+            "contentEn": "He follows every new trend even when it is uncomfortable.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "He thinks everyone should choose the same clothes.",
+            "contentEn": "He thinks everyone should choose the same clothes.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "a",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach the owner-supplied textbook-script recording LISTEN-GORDON through an immutable shared source for authorized protected review; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-L04",
+      "itemId": "06726d1e-c5de-554f-a818-41b6998a124c",
+      "sourceCode": "LISTEN-GORDON",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "06726d1e-c5de-554f-a818-41b6998a124c",
+        "code": "ENG7-U01-L04",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-draft.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+          "originalDraftSha256": "838c69a0c2ddcedabe189994e9bc78352f185682f0dc0dd54ca3aed05faf66b9",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "intentional_practice_variant",
+          "sourceFamilyProposedId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Gordon. What does he say he usually does when choosing clothes?",
+        "prompt_hy": "Listen to Gordon. What does he say he usually does when choosing clothes?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "29e5a394-07c2-5dd7-a222-35495a81a90e",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L04",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "838c69a0c2ddcedabe189994e9bc78352f185682f0dc0dd54ca3aed05faf66b9",
+      "payload": {
+        "promptHy": "Listen to Gordon. What does he say he usually does when choosing clothes?",
+        "promptEn": "Listen to Gordon. What does he say he usually does when choosing clothes?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L04",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "ded4d589-83dd-5e83-a39a-f80234700e6c"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "asks everyone to approve his outfit",
+            "contentEn": "asks everyone to approve his outfit",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "matches his clothes",
+            "contentEn": "matches his clothes",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "buys the newest style every week",
+            "contentEn": "buys the newest style every week",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach the owner-supplied textbook-script recording LISTEN-GORDON through an immutable shared source for authorized protected review; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-L05",
+      "itemId": "2bc6c17f-88ab-51bc-af54-90d96321703a",
+      "sourceCode": "LISTEN-MIRIAM",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "2bc6c17f-88ab-51bc-af54-90d96321703a",
+        "code": "ENG7-U01-L05",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-draft.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+          "originalDraftSha256": "aadcf62bffc344b7d2ecda61a028e3c3aa289c5cc7c446bf3cf38e925d0d4816",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "intentional_practice_variant",
+          "sourceFamilyProposedId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Miriam. Which idea is most important in her view?",
+        "prompt_hy": "Listen to Miriam. Which idea is most important in her view?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "6ccd266a-142e-53e4-a261-1509f731eab9",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L05",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "aadcf62bffc344b7d2ecda61a028e3c3aa289c5cc7c446bf3cf38e925d0d4816",
+      "payload": {
+        "promptHy": "Listen to Miriam. Which idea is most important in her view?",
+        "promptEn": "Listen to Miriam. Which idea is most important in her view?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L05",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "002edcd5-07a7-5dad-a766-e0f14ca9ae86"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Everyone should wear the same outfit.",
+            "contentEn": "Everyone should wear the same outfit.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Clothes express individuality but do not tell us everything about a person.",
+            "contentEn": "Clothes express individuality but do not tell us everything about a person.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Clothes tell us everything about a person.",
+            "contentEn": "Clothes tell us everything about a person.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach the owner-supplied textbook-script recording LISTEN-MIRIAM through an immutable shared source for authorized protected review; preserve question wording, answer key, order and source-family identity."
+      }
+    },
+    {
+      "code": "ENG7-U01-L06",
+      "itemId": "33b277c6-fd19-50f1-a5b9-8a9ffe15d0ba",
+      "sourceCode": "LISTEN-MIRIAM",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "33b277c6-fd19-50f1-a5b9-8a9ffe15d0ba",
+        "code": "ENG7-U01-L06",
+        "config": {
+          "checkpoint": "16.1C.6",
+          "intendedBank": "practice",
+          "sourcePacket": "docs/content/english-7-unit-01-draft.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "practice",
+          "authorProvenance": "Codex automated import of existing drafts; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+          "originalDraftSha256": "335967679fc15bb75518601a8422b684b6423ab0611502679bb9f7ea4144ace4",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "intentional_practice_variant",
+          "sourceFamilyProposedId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "105feb58-3195-5940-a1df-e8b4bdceb2ce",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Listen to Miriam. When does she say she matches her clothes?",
+        "prompt_hy": "Listen to Miriam. When does she say she matches her clothes?",
+        "created_at": "2026-10-20T21:55:39.680391+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "74b53971-f1d9-59fc-ae29-581dd3753e32",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L06",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "originalDraftSha256": "335967679fc15bb75518601a8422b684b6423ab0611502679bb9f7ea4144ace4",
+      "payload": {
+        "promptHy": "Listen to Miriam. When does she say she matches her clothes?",
+        "promptEn": "Listen to Miriam. When does she say she matches her clothes?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 6, 144; activities 8; programme T1.L1; docs/content/english-7-unit-01-draft.json#ENG7-U01-L06",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "002edcd5-07a7-5dad-a766-e0f14ca9ae86"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "only when someone else tells her to",
+            "contentEn": "only when someone else tells her to",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "every day without exception",
+            "contentEn": "every day without exception",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "for a special occasion",
+            "contentEn": "for a special occasion",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "c",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "misconceptions": [],
+        "changeSummary": "Attach the owner-supplied textbook-script recording LISTEN-MIRIAM through an immutable shared source for authorized protected review; preserve question wording, answer key, order and source-family identity."
+      }
+    }
+  ],
+  "limits": [
+    "No ordinary question approval, independent human audition, SME approval, assessment qualification or learner activation is created.",
+    "The three owner-supplied files differ from original publisher MP3s; generator and provenance are not established beyond the owner supply and matching textbook script.",
+    "All three familiar textbook scripts retain the original single source family; no new unseen assessment coverage is claimed.",
+    "Supplied MP3 bytes are preserved exactly. Only the proposed Storage filenames change.",
+    "Existing question wording, keys, options, order, approvals and immutable history remain preserved."
+  ],
+  "recordingDisposition": "Owner-supplied replacement versions of the three textbook-script recordings; source origin otherwise unverified."
+}

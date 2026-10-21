@@ -1,0 +1,105 @@
+{
+  "schemaVersion": "haiedu-publisher-audio-source-review-v1",
+  "checkpoint": "16.1C.11",
+  "date": "2026-10-22 Asia/Yerevan",
+  "recordedAt": "2026-10-21T20:12:13.429577+00:00",
+  "owner": "John Vanesyan",
+  "reviewerProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "verifiedProfile": {
+    "role": "admin",
+    "accountStatus": "active",
+    "protectedOwner": true
+  },
+  "verbatimDecisions": [
+    "okay, we must include all the recordings and audio files, whichever are possible and strategically relevant in this course",
+    "We must solve this problem with these 6 questions.",
+    "Yes, answering your question: May I upload the Emmie, Gordon and Miriam MP3s to HaiEdu’s existing private Supabase `learning-audio` bucket, then complete the six question links and verify playback and QA?",
+    "I named the files respectively as you suggested. I added those files to supabase."
+  ],
+  "decisionContext": "The owner explicitly authorized linking the three named sources, uploaded three files to the exact private bucket, and supplied those same files here for hash, duration and source/key verification. These bytes replace the original publisher-byte proposal; recording origin is not established. This is delegated authorization for protected MVP registration, not independent human audition or SME approval.",
+  "reviewedSourceCommit": "3bf54e4c46009faeec710e146dbacca0958598ea",
+  "acceptedFiles": {
+    "LISTEN-EMMIE": {
+      "uploadedFilename": "a5759adafe3cad735b558f528d4a2a41b04e592adaa73f3c6b4c37c5db47ddc1.mp3.mp3",
+      "libraryFileId": "libfile_7c4ab63fd0788191a5d2c0f69dcef56e",
+      "sha256": "973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83",
+      "byteLength": 329988,
+      "durationMs": 19566,
+      "bookPages": [
+        6,
+        144
+      ],
+      "bookActivity": 8,
+      "recordingOrigin": "Owner supplied; whether regenerated or transformed not established",
+      "publisherOriginalSha256": "a5759adafe3cad735b558f528d4a2a41b04e592adaa73f3c6b4c37c5db47ddc1",
+      "publisherOriginalExactMatch": false,
+      "proposedObjectPath": "973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83.mp3",
+      "currentStorageByteLengthAndEtagMatch": true
+    },
+    "LISTEN-GORDON": {
+      "uploadedFilename": "51047cc19a3f28cbf2c17bcbe3a73981967e76a93c7bc51b969c48b364fb88d7.mp3.mp3",
+      "libraryFileId": "libfile_33add108221481919e5690de61e1ae62",
+      "sha256": "79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec",
+      "byteLength": 469586,
+      "durationMs": 28291,
+      "bookPages": [
+        6,
+        144
+      ],
+      "bookActivity": 8,
+      "recordingOrigin": "Owner supplied; whether regenerated or transformed not established",
+      "publisherOriginalSha256": "51047cc19a3f28cbf2c17bcbe3a73981967e76a93c7bc51b969c48b364fb88d7",
+      "publisherOriginalExactMatch": false,
+      "proposedObjectPath": "79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec.mp3",
+      "currentStorageByteLengthAndEtagMatch": true
+    },
+    "LISTEN-MIRIAM": {
+      "uploadedFilename": "ae577f466da2b2f31efbe327fe49d7e355822c41ddfc5dc5b6f4f3d3a5a59c9e.mp3.mp3",
+      "libraryFileId": "libfile_c19e1b03d4048191959ce358c31e41bc",
+      "sha256": "6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b",
+      "byteLength": 536042,
+      "durationMs": 32444,
+      "bookPages": [
+        6,
+        144
+      ],
+      "bookActivity": 8,
+      "recordingOrigin": "Owner supplied; whether regenerated or transformed not established",
+      "publisherOriginalSha256": "ae577f466da2b2f31efbe327fe49d7e355822c41ddfc5dc5b6f4f3d3a5a59c9e",
+      "publisherOriginalExactMatch": false,
+      "proposedObjectPath": "6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b.mp3",
+      "currentStorageByteLengthAndEtagMatch": true
+    }
+  },
+  "sourceReview": {
+    "method": "Full-file FFmpeg decode, SHA-256, duration and local faster-whisper 1.2.1 base.en transcript checks against the user-provided textbook p.144 and all six unchanged question keys. Byte lengths and computed one-part multipart ETags match the actual Supabase uploads. Boundary ASR corroboration excludes low-confidence trailing recognizer output. No cloud audio transfer or independent human audition.",
+    "disposition": "All six answer meanings are supported. Actual Storage names, sizes and ETags match the locally verified supplied files. Suitable for protected reviewer registration; ordinary content review and learner-release gates remain."
+  },
+  "reuseBasis": {
+    "scope": "Owner-authorized protected MVP reviewer catalogue; English remains draft/inactive.",
+    "basis": "Explicit three-source integration authorization plus actual owner upload to the existing private bucket and attachment of matching files. Textbook script traceability is preserved.",
+    "limitation": "No publisher-original recording identity, recording-generation origin, publisher licence or learner/public distribution right is inferred. Applicable source/recording permission remains a learner-release prerequisite."
+  },
+  "boundaries": [
+    "No ordinary question approval, independent human audition, SME approval, assessment qualification or learner activation is created.",
+    "The three owner-supplied files differ from original publisher MP3s; generator and provenance are not established beyond the owner supply and matching textbook script.",
+    "All three familiar textbook scripts retain the original single source family; no new unseen assessment coverage is claimed.",
+    "Supplied MP3 bytes are preserved exactly. Only the proposed Storage filenames change.",
+    "Existing question wording, keys, options, order, approvals and immutable history remain preserved."
+  ],
+  "explicitUploadAuthorization": {
+    "owner": "John Vanesyan",
+    "files": [
+      "Soundtrack-1-1.mp3",
+      "Soundtrack-1-2.mp3",
+      "Soundtrack-1-3.mp3"
+    ],
+    "destination": "HaiEdu existing Supabase project xzyjvwiiibuarpotppid / private learning-audio bucket",
+    "scope": "Upload, link six questions, verify playback and QA",
+    "decision": "explicitly_authorized_in_conversation",
+    "doesNotConfer": "Ordinary question approval, independent audition, publisher licence or learner activation",
+    "actualUserUpload": "Owner uploaded the supplied versions and corrected all three object names to their actual SHA-256 plus one .mp3 extension. Private-bucket names, byte lengths and single-part MD5 ETags verified at 2026-10-21 20:21:43.46688+00"
+  },
+  "preparedAt": "2026-10-21T20:12:13.429577+00:00",
+  "recordedAtMeaning": "Preparation timestamp for this supplied-byte technical review, not a human audition timestamp."
+}
