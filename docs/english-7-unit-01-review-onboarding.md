@@ -1,5 +1,7 @@
 # English 7 Unit 1 — reviewer onboarding
 
+**16.1C.7 follow-up:** [Seven reading passages and all 17 dependent questions](english-7-unit-01-reading-source-review.md) are now consolidated for exact source/reuse review. Registration/link payloads pass an isolated rehearsal; the live source holds remain until genuine review and permission records are supplied and registration is committed.
+
 **16.1C.6 · 2026-10-21 Asia/Yerevan · 116 existing questions staged for ordinary review; English remains inactive.**
 
 Open the [review queue](https://www.haiedu.am/content-review.html), sign in as a content reviewer/administrator, choose **Բոլորը** (All), and search **ENG7-U01**. Open a question to inspect its learner preview, answer key, explanations and private source material. The [question bank](https://www.haiedu.am/content-bank.html) also exposes the English / Grade 7 / Unit 1 review catalogue. Refresh an already-open page to clear its short-lived dashboard cache.

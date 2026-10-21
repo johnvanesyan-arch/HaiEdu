@@ -1,7 +1,7 @@
 # Project status register
 
 
-**Updated:** 2026-10-21 Asia/Yerevan · 16.1C.6 reviewer onboarding · **Roadmap:** 4.31
+**Updated:** 2026-10-21 Asia/Yerevan · 16.1C.7 reading-source review preparation · **Roadmap:** 4.32
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
@@ -10,6 +10,8 @@ Completion describes the stated scope only. Technical completion, owner-approved
 **English authoring decision — 2026-10-20:** John authorises quality improvements while preserving the coursebook's structure, sequence and topics. Adapted content retains page/activity and outcome traceability; skill/reporting groups do not reorder lessons. The [framework direction](english-7-assessment-framework.md#owner-authoring-direction--2026-10-20) and [Unit 1 map](english-7-unit-01-preparation.md) record the decision. John subsequently authorised implementation of student writing and teacher marking. The 16.1B.1 slice below records that work; final English task/rubric, workload scheduling and release policy remain separate.
 
 ## Delivery status
+
+**Sprint 16.1C.7 — reading-source review batch prepared.** Seven unchanged passages and all 17 linked questions (9 Practice / 4 Diagnostic / 4 Mastery) are consolidated for exact source review. The registration manifest preserves source families and question order, with neutral Practice source labels. Isolated rehearsal clears all 17 source holds after fixture registration, preserves v1/keys and rejects missing review/permission records and stale versions. Fresh production comparison matches the complete 116-question bank. Actual source acceptance and reuse records are pending: no production source, revision or approval was created; the 17 reading and 18 listening holds remain. [Review batch](english-7-unit-01-reading-source-review.md) · [Evidence](evidence/english-7-unit-01-reading-review-20261021.json).
 
 **Sprint 16.1C.6 — Unit 1 questions staged for review.** All 116 existing drafts (60 Practice / 28 Diagnostic / 28 Mastery) are now in the inactive English catalogue. Search **ENG7-U01** in the [review queue](https://www.haiedu.am/content-review.html). Private explanations and source drafts are available in question detail; 81 questions pass structural QA and 35 remain held for source registration (17 reading / 18 listening). Exact readback matches 1,073 new rows; all prior rows across 70 guarded tables are preserved. No content approval, qualified form, playable audio or learner release is claimed. Eighty-four accepted DB/MB/MC questions remain to author. [Reviewer handoff](english-7-unit-01-review-onboarding.md) · [Evidence](evidence/english-7-unit-01-review-onboarding-20261021.json).
 
@@ -25,6 +27,7 @@ Completion describes the stated scope only. Technical completion, owner-approved
 
 | Stage | Current disposition | Evidence and remaining boundary |
 | --- | --- | --- |
+| 16.1C.7 | Seven-passage / 17-question source-review packet and disabled registration payloads prepared | Isolated registration/QA rehearsal passes 17/17. Exact source review and reuse records pending; no production source registration or approval. [Packet](english-7-unit-01-reading-source-review.md). |
 | 16.1C.6 | 116 unchanged drafts staged for ordinary review; English inactive | 81 structural QA passes, 35 source holds; 1,073 exact new rows and 70 preservation scopes. Zero approvals/pool links/qualified forms/audio. [Handoff](english-7-unit-01-review-onboarding.md) · [Evidence](evidence/english-7-unit-01-review-onboarding-20261021.json). |
 | 16.1C.5 | DA/MA authored and technically checked; human/SME review pending | 56 private drafts, four reading texts, four unrecorded scripts; 95 SQL cases and 276 choice-order checks. Total 116 drafts; 84 remain. C5 zero-staging state superseded by C6; zero approved/qualified forms or live assets. [Packet](english-7-unit-01-assessment-batch-a.md) · [Evidence](evidence/english-7-unit-01-assessment-batch-a-20261021.json). |
 | 16.1C.4 | Bank/audio plan accepted; all 60 Practice items drafted, human review pending | 15 additions, one original unrecorded script, 57 new grading cases. C4 left 140 assessment questions; C5 reduces that to 84. No production content/asset changes. [Packet](english-7-unit-01-practice-additions.md) · [Acceptance](evidence/english-7-unit-01-owner-acceptance-20261021.json). |

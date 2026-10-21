@@ -1,0 +1,343 @@
+{
+  "schemaVersion": "haiedu-reading-source-review-v1",
+  "checkpoint": "16.1C.7",
+  "date": "2026-10-21 Asia/Yerevan",
+  "baselineCommit": "07cd8edcc8a5291644cccbd1d4e1baeaf11afcda",
+  "status": "review_packet_and_registration_payloads_ready; production_registration_pending",
+  "ownerDirection": "ok, do it — prepare the seven-passage review batch and registration work under existing review controls",
+  "counts": {
+    "passages": 7,
+    "questions": 17,
+    "practice": 9,
+    "diagnostic": 4,
+    "mastery": 4
+  },
+  "sourcePacketHashes": {
+    "docs/content/english-7-unit-01-draft.json": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+    "docs/content/english-7-unit-01-practice-additions.json": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+    "docs/content/english-7-unit-01-assessment-batch-a.json": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40"
+  },
+  "textbook": {
+    "sha256": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9",
+    "textInspected": [
+      16,
+      17,
+      18,
+      20
+    ],
+    "visuallyInspected": [
+      16,
+      17,
+      18,
+      20
+    ],
+    "sequenceAndTopicsPreserved": true
+  },
+  "externalSourceChecks": [
+    {
+      "url": "https://fdc.am/designers/4",
+      "method": "Direct primary-page retrieval",
+      "retrievalReference": "turn13view0",
+      "claimScope": "Aram Nikolyan / NIKOLYAN and Armenian cultural influences"
+    },
+    {
+      "url": "https://fdc.am/designers/3",
+      "method": "Direct retrieval timed out; fresh indexed primary-page text plus unchanged C5 audit",
+      "retrievalReference": "turn15search0",
+      "claimScope": "Childhood artwork/interest, Florence study, 2011 graduation, 2013 studio, travel influences"
+    },
+    {
+      "url": "https://www.fdc.am/designers/34",
+      "method": "Direct retrieval timed out; fresh primary-domain search excerpts plus unchanged C5 audit",
+      "retrievalReferences": [
+        "turn15search1",
+        "turn16search0",
+        "turn17search0"
+      ],
+      "claimScope": "2007/2016 brands, simple/elegant shapes and noticeable details, expression of personal character"
+    }
+  ],
+  "liveReadback": {
+    "observedAt": "2026-10-21T05:26:23.256127+00:00",
+    "questions": 116,
+    "immutableVersions": 116,
+    "allCurrentVersions": 1,
+    "humanQuestionReviews": 0,
+    "registeredSources": 0,
+    "exactProjection": [
+      {
+        "result": {
+          "checks": [
+            {
+              "matched": 116,
+              "section": "items",
+              "expected": 116
+            },
+            {
+              "matched": 221,
+              "section": "item_options",
+              "expected": 221
+            },
+            {
+              "matched": 116,
+              "section": "item_answer_keys",
+              "expected": 116
+            },
+            {
+              "matched": 116,
+              "section": "item_families",
+              "expected": 116
+            },
+            {
+              "matched": 116,
+              "section": "item_templates",
+              "expected": 116
+            },
+            {
+              "matched": 116,
+              "section": "item_curriculum_scopes",
+              "expected": 116
+            },
+            {
+              "matched": 116,
+              "section": "private_v1_context",
+              "expected": 116
+            }
+          ],
+          "observed_at": "2026-10-21T05:27:14.36397+00:00"
+        }
+      }
+    ],
+    "deployedQa": {
+      "version": 14,
+      "mainMatches": true
+    }
+  },
+  "comparison": {
+    "all116CurrentQuestionsUnchanged": true,
+    "all116PrivateV1NotesUnchanged": true,
+    "wholeBankEvidenceReused": [
+      "docs/english-7-unit-01-whole-bank-review.md",
+      "docs/evidence/english-7-unit-01-practice-additions-20261021.json",
+      "docs/evidence/english-7-unit-01-assessment-batch-a-corpus-20261021.json"
+    ],
+    "guideRelationship": "All nine original guides unchanged. G03 supplies known style labels; R06 remains intentional reinforcement. G07 teaches evidence-reading procedure without supplying assessment-specific answers.",
+    "sourcePairs": [
+      {
+        "sources": [
+          "READ-HISTORY",
+          "READ-STYLE"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-HISTORY",
+          "READ-DESIGNERS"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-HISTORY",
+          "ENG7-U01-DA-READ-A"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-HISTORY",
+          "ENG7-U01-DA-READ-B"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-HISTORY",
+          "ENG7-U01-MA-READ-A"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-HISTORY",
+          "ENG7-U01-MA-READ-B"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-STYLE",
+          "READ-DESIGNERS"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-STYLE",
+          "ENG7-U01-DA-READ-A"
+        ],
+        "authorJudgment": "Practice teaches trend/personal-choice distinctions. The assessment scenario requires its particular task and garment/change details; the Practice example does not supply these complete answers.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-STYLE",
+          "ENG7-U01-DA-READ-B"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-STYLE",
+          "ENG7-U01-MA-READ-A"
+        ],
+        "authorJudgment": "Practice teaches trend/personal-choice distinctions. The assessment scenario requires its particular task and garment/change details; the Practice example does not supply these complete answers.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-STYLE",
+          "ENG7-U01-MA-READ-B"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-DESIGNERS",
+          "ENG7-U01-DA-READ-A"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-DESIGNERS",
+          "ENG7-U01-DA-READ-B"
+        ],
+        "authorJudgment": "Different named profiles and source facts. Shared retrieval/chronology procedures are not independent new reasoning. No complete answer transfers from the other profile.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-DESIGNERS",
+          "ENG7-U01-MA-READ-A"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "READ-DESIGNERS",
+          "ENG7-U01-MA-READ-B"
+        ],
+        "authorJudgment": "Different named profiles and source facts. Shared retrieval/chronology procedures are not independent new reasoning. No complete answer transfers from the other profile.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "ENG7-U01-DA-READ-A",
+          "ENG7-U01-DA-READ-B"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "ENG7-U01-DA-READ-A",
+          "ENG7-U01-MA-READ-A"
+        ],
+        "authorJudgment": "Related garment-reuse theme. Magazine two-look comparison versus quick costume transition; actual invariants/details differ. Retain candidate family distinction provisionally; human exposure qualification required.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "ENG7-U01-DA-READ-A",
+          "ENG7-U01-MA-READ-B"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "ENG7-U01-DA-READ-B",
+          "ENG7-U01-MA-READ-A"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "ENG7-U01-DA-READ-B",
+          "ENG7-U01-MA-READ-B"
+        ],
+        "authorJudgment": "Different named profiles and source facts. Shared retrieval/chronology procedures are not independent new reasoning. No complete answer transfers from the other profile.",
+        "humanQualification": "pending"
+      },
+      {
+        "sources": [
+          "ENG7-U01-MA-READ-A",
+          "ENG7-U01-MA-READ-B"
+        ],
+        "authorJudgment": "Same taught clothing/design topic, but different supplied evidence and answer targets. No shared script, translated passage, direct answer substitution or claimed new independent reasoning.",
+        "humanQualification": "pending"
+      }
+    ],
+    "independentNewCoverageClaimed": false
+  },
+  "presentationFinding": {
+    "issue": "Descriptive Practice source titles could cue gist answers after registration",
+    "resolutionPrepared": "Use neutral Reading source P-A / P-B / P-C runtime labels; retain descriptive editorial titles in reviewer packet",
+    "passageWordingChanged": false
+  },
+  "rehearsal": {
+    "schemaVersion": "haiedu-reading-registration-rehearsal-v1",
+    "environment": "Isolated in-memory PGlite; real SQL and QA handler, synthetic Auth/reviewer/permission records",
+    "productionMutations": 0,
+    "sourceRows": 7,
+    "heldBefore": 17,
+    "passedAfter": 17,
+    "preservedV1": 17,
+    "preservedKeys": 17,
+    "previewSources": 17,
+    "staleRevisionRejected": true,
+    "missingReviewerRejected": true,
+    "missingPermissionRejected": true,
+    "questionApprovals": 0,
+    "manifestSha256": "a10f7e7ebbfb1e466dbf60a5b73d43aa1fd5f23127642b8bf7cfa0362f75bb55",
+    "passed": true
+  },
+  "production": {
+    "writes": 0,
+    "sourceHoldsRemain": 35,
+    "readingHolds": 17,
+    "listeningHolds": 18,
+    "passingQa": 81,
+    "humanReviewAttributionCreated": false,
+    "runtimeOrSchemaChange": false,
+    "learnerActivation": false
+  },
+  "approvalBoundary": {
+    "contract": "docs/shared-task-sets-capability.md — Source registration and operational limits",
+    "guard": "private.guard_task_set_version requires an active administrator/content reviewer and review/permission references",
+    "exactSourceAcceptance": "pending",
+    "permissionReferences": "pending; do not infer publisher permission from an uploaded textbook or a bank-plan acceptance",
+    "manifestExecutionAllowed": false
+  },
+  "reviewPage": "https://app.notion.com/p/400355a472bf814ea73dcadd00447778",
+  "artifacts": {
+    "docs/content/english-7-unit-01-reading-registration-plan.json": "a10f7e7ebbfb1e466dbf60a5b73d43aa1fd5f23127642b8bf7cfa0362f75bb55",
+    "docs/english-7-unit-01-reading-source-review.md": "204b3f6e6dd029194595ede8a8f86b50b67397f7ed0cb6585db653c3a1a8735f",
+    "scripts/content/prepare-english-7-unit-01-reading-review.mjs": "78091cd79302d878230f1f742cf52f80bf5fe6e159cac073bce84fee9b342334",
+    "scripts/content/validate-english-7-unit-01-reading-registration.mjs": "b1bfc4b826f271e846b0c162b260a1e3905849d3da1302809ad58425b8a03f00"
+  }
+}

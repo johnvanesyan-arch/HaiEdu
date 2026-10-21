@@ -1,5 +1,7 @@
 # Learning API contract
 
+**16.1C.7 registration preparation:** Seven reading sets and 17 versioned question-link payloads are prepared and rehearsed in an isolated database. Production API/schema/runtime behavior is unchanged; the existing service-only registry requires real source review and permission references before insertion. Exact-passage acceptance and reuse records are pending, so all source holds remain. [Review batch](english-7-unit-01-reading-source-review.md).
+
 
 **Historical baseline verified:** 2026-10-10 against repository source and then-deployed `submit-answer` v18 (ACTIVE, JWT verification enabled; all 12 bundle files matched). [Verification evidence](evidence/documentation-status-audit-20261010.json). [Current delivery status and release gates](project-status.md) are maintained separately.
 

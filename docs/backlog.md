@@ -1,8 +1,13 @@
 # Product backlog
 
+**Sprint 16.1C.7 — reading-source review batch prepared.** Seven unchanged passages and all 17 linked questions (9 Practice / 4 Diagnostic / 4 Mastery) are consolidated for exact source review. The registration manifest preserves source families and question order, with neutral Practice source labels. Isolated rehearsal clears all 17 source holds after fixture registration, preserves v1/keys and rejects missing review/permission records and stale versions. Fresh production comparison matches the complete 116-question bank. Actual source acceptance and reuse records are pending: no production source, revision or approval was created; the 17 reading and 18 listening holds remain. [Review batch](english-7-unit-01-reading-source-review.md) · [Evidence](evidence/english-7-unit-01-reading-review-20261021.json).
+
 **Status source:** [Project status register](project-status.md), reconciled 2026-10-21. This file is a scoped implementation checklist, not a second current sprint ledger. Completed technical work is checked below; genuine external/release gates remain open. Later stages and current inventories are in the register; the [roadmap](sprint-roadmap.md) defines their sequence.
 
 ## English 7 framework and first unit — 16.1A–16.1C
+
+- [x] Prepare the consolidated seven-passage / 17-question source review and disabled registration manifest; rehearse genuine registry/editor/QA contracts in isolation (16.1C.7).
+- [ ] Record exact human source acceptance and genuine reuse/permission references, then register/link the seven reading sets and verify the reviewer preview and QA in production.
 
 - [x] Identify the uploaded Grigoryan/Zangak 2023 textbook and record its SHA-256, edition, six-unit structure and representative task formats.
 - [x] Record the owner's speaking exclusion: classroom assessment only, without a platform recording or mark-entry feature.
