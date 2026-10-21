@@ -1,7 +1,9 @@
+import {validAssessedAudioPolicy} from './assessed-audio-policy.mjs';
 // Prospective immutable blueprint contract. Missing policy has no core default.
 export const ASSESSMENT_POLICY_SCHEMA = 'haiedu-assessment-policy-v1';
 export const ASSESSMENT_POLICY_SCHEMA_V2 = 'haiedu-assessment-policy-v2';
 export const ASSESSMENT_POLICY_SCHEMA_V3 = 'haiedu-assessment-policy-v3';
+export const ASSESSMENT_POLICY_SCHEMA_V4 = 'haiedu-assessment-policy-v4';
 export class AssessmentPolicyInvalid extends Error {
   constructor() { super('assessment_policy_invalid'); }
 }
@@ -43,7 +45,8 @@ export function readAssessmentPolicy(snapshot, scope) {
   const value = snapshot?.assessmentPolicy;
   if (value === undefined) return null;
   assert(value && typeof value === 'object' && !Array.isArray(value));
-  const v3 = value.schemaVersion === ASSESSMENT_POLICY_SCHEMA_V3;
+  const v4 = value.schemaVersion === ASSESSMENT_POLICY_SCHEMA_V4;
+  const v3 = v4 || value.schemaVersion === ASSESSMENT_POLICY_SCHEMA_V3;
   const v2 = v3 || value.schemaVersion === ASSESSMENT_POLICY_SCHEMA_V2;
   assert((v2 || value.schemaVersion === ASSESSMENT_POLICY_SCHEMA) && typeof value.policyKey === 'string' && value.policyKey.trim().length > 0 && positive(value.version));
   assert(modes.has(value.mode) && value.mode === scope.mode &&
@@ -80,6 +83,10 @@ export function readAssessmentPolicy(snapshot, scope) {
     readV2Scope(value);
   }
   if (v3) for (const key of ['responseCapabilities','itemWeight']) allowed.add(key);
+  if (v4) {
+    allowed.add('audioPlayback');
+    assert(['diagnostic','mastery_check'].includes(value.mode) && validAssessedAudioPolicy(value.audioPlayback));
+  }
   assert(Object.keys(value).every(key => allowed.has(key)));
   return structuredClone(value);
 }

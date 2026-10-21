@@ -28,6 +28,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       writtenWork,
       responseDrafts,
       audioDeliveries,
+      assessedAudioRecordings,
       sourceFamilyExposures,
     ] = await Promise.all([
       countRows(admin.from("class_memberships").select("class_id", { count: "exact", head: true }).eq("student_id", userId), "class_memberships_count_failed"),
@@ -40,6 +41,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       countRows(admin.from("written_work").select("id", { count: "exact", head: true }).eq("student_id", userId), "written_work_count_failed"),
       countRows(admin.from("learning_response_drafts").select("session_item_id", {count:"exact",head:true}).eq("student_id",userId),"response_drafts_count_failed"),
       countRows(admin.from("learning_audio_deliveries").select("session_item_id", {count:"exact",head:true}).eq("student_id",userId),"audio_deliveries_count_failed"),
+      countRows(admin.from("learning_assessed_audio").select("session_id", {count:"exact",head:true}).eq("student_id",userId),"assessed_audio_count_failed"),
       countRows(admin.from("learning_source_family_exposures").select("session_item_id", {count:"exact",head:true}).eq("student_id",userId),"source_family_exposures_count_failed"),
     ]);
     return {
@@ -53,6 +55,7 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       writtenWork,
       responseDrafts,
       audioDeliveries,
+      assessedAudioRecordings,
       sourceFamilyExposures,
     };
   }

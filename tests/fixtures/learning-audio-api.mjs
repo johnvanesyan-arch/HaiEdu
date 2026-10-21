@@ -4,11 +4,13 @@ import {compile,sqlAdmin} from './learning-acceptance.mjs';
 import {createLearningAudioHandler} from '../../supabase/functions/_shared/learning-audio-handler.mjs';
 import {installTaskSets,seedTaskSet,launch,finish,seedAudio,operation,scopes} from './shared-task-sets-db.mjs';
 import {createLearningTaskSetHandler} from '../../supabase/functions/_shared/learning-task-set-handler.mjs';
+import {assessedAudioMigration,assessedFixture} from './assessed-audio-db.mjs';
 export {id};
 export const token=(actor=10,session=actor===30?430:actor+391)=>'fixture.'+Buffer.from(JSON.stringify({session_id:id(session)})).toString('base64url')+'.'+actor;
-export async function fixture({taskSet=false,reading=false}={}){
+export async function fixture({taskSet=false,reading=false,assessed=false}={}){
  const db=await database();let f;
- if(taskSet){
+ if(assessed){await installTaskSets(db);await db.exec(readFileSync(assessedAudioMigration,'utf8'));f=await assessedFixture(db,typeof assessed==='object'?assessed:{});}
+ else if(taskSet){
   await installTaskSets(db);const baseline=await launch(db);await finish(db,baseline.session.id);
   const audio=await seedAudio(db),set=await seedTaskSet(db,{mode:'practice',family:id(9500),...(reading?{}:{stimulus:audio.stimulus}),items:[id(713),id(711),id(712)]});
   const start=await launch(db,0,'practice',{skill:id(scopes[0].skills[0])}),served=await operation(db,start.session.id,'serve');
@@ -22,5 +24,5 @@ export async function fixture({taskSet=false,reading=false}={}){
  const handle=createLearningAudioHandler({createAdmin:()=>admin,hasActiveLiveSession,env:{url:'https://fixture.invalid',key:'fixture-only'}});
  const taskSetHandle=createLearningTaskSetHandler({createAdmin:()=>admin,hasActiveLiveSession,env:{url:'https://fixture.invalid',key:'fixture-only'}});
  const request=(body,actor=10,credential=token(actor))=>handle(new Request('https://fixture.invalid/audio',{method:'POST',headers:{Authorization:'Bearer '+credential,'Content-Type':'application/json'},body:JSON.stringify(body)}));
- return {db,...f,state,admin,handle,taskSetHandle,request,body:{action:'load',sessionId:f.session,sessionItemId:f.served.sessionItemId}};
+ return {db,...f,state,admin,handle,taskSetHandle,request,body:{action:'load',sessionId:f.session,sessionItemId:f.served.sessionItemId,...(assessed?{playbackPolicy:'assessed-recording-v1'}:{})}};
 }

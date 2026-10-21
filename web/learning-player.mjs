@@ -17,7 +17,7 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
   };
   window.addEventListener('beforeunload',guardUnsaved);
   const invoke = async(name,body) => {
-    const {data,error,response}=await supabase.functions.invoke(name,{body});
+    const {data,error,response}=await supabase.functions.invoke(name,{body,...(name==='get-learning-audio'&&body.playbackPolicy==='assessed-recording-v1'?{timeout:body.action==='load'?60000:4000}:{})});
     if(!valid())throw new Error('stale_context');
     if(error || data?.error){const detail=data?.error??error?.error??(error?.context instanceof Response?await error.context.clone().json().then(x=>x.error).catch(()=>null):null);throw new Error(['typed_fields_draft_conflict','response_draft_conflict'].includes(detail)?'Պատասխանը փոփոխվել է մեկ այլ պատուհանում։ Պահպանեք ձեր պատասխանի պատճենը և վերաբեռնեք էջը՝ վերջին տարբերակը տեսնելու համար։':'Այս գործողությունն այս պահին հասանելի չէ։ Ձեր պատասխանը պահպանեք և կրկին փորձեք։');}
     return name==='get-learning-audio'?decodeLearningAudio(data,response,body.action):data;
@@ -40,6 +40,7 @@ export function mountLearningPlayer({root,supabase,context,skills=[],mode,target
     disposeStimulus=renderLearningStimulus(root.querySelector('#governedStimulus'),data.item.stimulus,{
       invoke,context:{sessionId:session.id,sessionItemId:data.sessionItemId},isCurrent:()=>valid()&&current===data,
       onReady:ready=>{data.audioReady=ready;root.querySelector('button[type="submit"]').disabled=!ready||Boolean(data.answerAccepted);},
+      onEndUnscored:()=>{disposeStimulus?.();disposeStimulus=null;current=null;root.innerHTML='<p>Աշխատանքն ավարտված է առանց գնահատման՝ ձայնագրության տեխնիկական խնդրի պատճառով։ Գնահատվող փորձ չի օգտագործվել։ Նոր փորձը հնարավոր է միայն չօգտագործված առաջադրանքաշարի առկայության դեպքում։</p><button type="button">Վերադառնալ</button>';root.querySelector('button').onclick=onComplete;},
     });
     if(['matching','ordering'].includes(type))bindArrangement(root.querySelector('[data-arrangement]'),type,data.item.responseDefinition);
     if(draftable(type))data.savedSignature=JSON.stringify(collectResponse(root,data.item));

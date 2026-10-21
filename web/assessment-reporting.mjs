@@ -1,6 +1,6 @@
 import {escapeHtml as esc} from './learning-navigation.mjs';
 export function assessmentRules(policy, skills = []) {
-  const points=policy?.schemaVersion==='haiedu-assessment-policy-v3';
+  const points=['haiedu-assessment-policy-v3','haiedu-assessment-policy-v4'].includes(policy?.schemaVersion);
   if (!points && policy?.schemaVersion !== 'haiedu-assessment-policy-v2') return '';
   if (!policy.questionCountBySkill) return '';
   const counts=policy.questionCountBySkill;

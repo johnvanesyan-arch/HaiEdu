@@ -43,6 +43,7 @@ on:
       - supabase/functions/_shared/academic-context.ts
       - supabase/functions/_shared/analytics-evidence.mjs
       - supabase/functions/_shared/assessment-policy.mjs
+      - supabase/functions/_shared/assessed-audio-policy.mjs
       - supabase/functions/_shared/auth.ts
       - supabase/functions/_shared/course-access.ts
       - supabase/functions/_shared/curriculum-release.ts
@@ -79,6 +80,7 @@ on:
       - web/learning-navigation.mjs
       - web/learning-player.mjs
       - web/learning-audio.mjs
+      - web/assessed-audio.mjs
       - web/learning-task-set.mjs
       - web/typed-fields-contract.mjs
       - web/typed-fields-ui.mjs

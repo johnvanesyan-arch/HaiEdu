@@ -17,7 +17,7 @@ async function setup(t,options={}){
  window.current=true;window.created=[];window.revoked=[];
  const create=URL.createObjectURL.bind(URL),revoke=URL.revokeObjectURL.bind(URL);URL.createObjectURL=blob=>{const u=create(blob);window.created.push(u);return u;};URL.revokeObjectURL=u=>{window.revoked.push(u);revoke(u);};
  const supabase={functions:new FunctionsClient(location.origin+'/functions',{headers:{Authorization:'Bearer ${token()}'}})};
- window.dispose=mountLearningPlayer({root:document.getElementById('root'),supabase,context:${JSON.stringify(context)},mode:'practice',targetSkillId:'${id(521)}',isCurrent:()=>window.current,onComplete:()=>{}});
+ window.dispose=mountLearningPlayer({root:document.getElementById('root'),supabase,context:${JSON.stringify(context)},mode:'${options.assessed?'diagnostic':'practice'}',${options.assessed?'':`targetSkillId:'${id(521)}',`}isCurrent:()=>window.current,onComplete:()=>{}});
  </script>`;
  const server=createServer(async(req,res)=>{
   try{
@@ -91,4 +91,49 @@ test('native audio cleanup rejects late downloads and stops old playback on cont
  await expect(page.locator('audio')).toHaveCount(0);
  await page.waitForLoadState('networkidle');assert.deepEqual(await page.evaluate(()=>window.created),[]);assert.deepEqual(errors,[]);
  assert.equal((await f.db.query('select completed_at from learning_audio_deliveries')).rows[0].completed_at,null);
+});
+
+test('assessed native player shows all questions, shares two plays across answers and persists them on refresh',async t=>{
+ const {f,page,errors}=await setup(t,{assessed:true});
+ await expect(page.locator('[data-audio-questions] > li')).toHaveCount(3);
+ await expect(page.locator('button[type=submit]')).toBeDisabled();
+ await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);
+ assert.equal(await page.locator('audio').evaluate(a=>a.controls),false);
+ await page.locator('[data-audio-play]').dblclick();await expect(page.locator('[data-audio-count]')).toContainText('1/2');
+ await expect(page.locator('button[type=submit]')).toBeEnabled();
+ await page.locator('input[name=answer]').first().check();await page.locator('button[type=submit]').click();await page.getByRole('button',{name:'Հաջորդը',exact:true}).click();
+ await expect(page.locator('[data-audio-count]')).toContainText('1/2');await expect(page.locator('button[type=submit]')).toBeEnabled();
+ await page.reload();await expect(page.locator('[data-audio-count]')).toContainText('1/2');
+ await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);await page.locator('[data-audio-play]').click();
+ await expect(page.locator('[data-audio-count]')).toContainText('2/2');await expect(page.locator('[data-audio-play]')).toBeDisabled();
+ await page.reload();await expect(page.locator('[data-audio-count]')).toContainText('2/2');await expect(page.locator('[data-audio-play]')).toBeDisabled();
+ for(const width of [390,1365]){await page.setViewportSize({width,height:900});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth>innerWidth),false);}
+ assert.equal((await f.db.query('select completed_plays from learning_assessed_audio')).rows[0].completed_plays,2);assert.deepEqual(errors,[]);
+});
+
+test('assessed native interruption resumes its checkpoint, prevents seeking/rate changes and has an unscored failure exit',async t=>{
+ const {f,page,errors}=await setup(t,{assessed:{durationMs:3000}});
+ await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);await page.locator('[data-audio-play]').click();
+ await expect.poll(async()=>Number((await f.db.query('select position_ms from learning_assessed_audio')).rows[0]?.position_ms??0)).toBeGreaterThan(500);
+ await page.locator('audio').evaluate(a=>{a.playbackRate=2;a.currentTime=0;});
+ assert.equal(await page.locator('audio').evaluate(a=>a.playbackRate),1);
+ await page.getByRole('button',{name:'Դադարեցնել',exact:true}).click();
+ const before=(await f.db.query('select play_id,position_ms,completed_plays from learning_assessed_audio')).rows[0];assert.ok(before.position_ms>=500);assert.equal(before.completed_plays,0);
+ await page.reload();await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);await page.locator('[data-audio-play]').click();
+ assert.ok(await page.locator('audio').evaluate(a=>a.currentTime)>=before.position_ms/1000);
+ await expect(page.locator('[data-audio-count]')).toContainText('1/2');
+ await page.reload();f.state.unavailable=true;await page.locator('[data-audio-play]').click();
+ await expect(page.getByRole('button',{name:'Ավարտել՝ առանց գնահատման',exact:true})).toBeVisible();
+ await page.getByRole('button',{name:'Ավարտել՝ առանց գնահատման',exact:true}).click();
+ await expect(page.locator('#root')).toContainText('Գնահատվող փորձ չի օգտագործվել');
+ assert.equal((await f.db.query('select status from learning_sessions where id=$1',[f.session])).rows[0].status,'abandoned');
+ assert.equal(Number((await f.db.query('select count(*) n from attempts where learning_session_id=$1',[f.session])).rows[0].n),0);assert.deepEqual(errors,[]);
+});
+
+test('assessed player disposal discards a late blob without recording a play',async t=>{
+ const {f,page,errors}=await setup(t,{assessed:true});let release,started;
+ const waiting=new Promise(r=>{started=r;});f.state.afterDownload=async()=>{started();await new Promise(r=>{release=r;});};
+ await page.locator('[data-audio-play]').click();await waiting;await page.evaluate(()=>{window.current=false;window.dispose();});release();
+ await page.waitForLoadState('networkidle');assert.deepEqual(await page.evaluate(()=>window.created),[]);
+ assert.equal((await f.db.query('select completed_plays from learning_assessed_audio')).rows[0].completed_plays,0);assert.deepEqual(errors,[]);
 });

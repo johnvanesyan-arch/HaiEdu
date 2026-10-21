@@ -4,13 +4,13 @@ export * from './arrangement-db.mjs';
 export const audioMigration='supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql';
 export async function installAudio(db){await db.exec(readFileSync('supabase/migrations/0012_live_session_gate.sql','utf8'));await db.exec(readFileSync(audioMigration,'utf8'));}
 export async function database(options={}){const db=await arrangementDatabase(options);try{await installAudio(db);return db;}catch(e){await db.close();throw e;}}
-export function wav(){const samples=2400,buffer=Buffer.alloc(44+samples*2);buffer.write('RIFF',0);buffer.writeUInt32LE(buffer.length-8,4);buffer.write('WAVEfmt ',8);buffer.writeUInt32LE(16,16);buffer.writeUInt16LE(1,20);buffer.writeUInt16LE(1,22);buffer.writeUInt32LE(8000,24);buffer.writeUInt32LE(16000,28);buffer.writeUInt16LE(2,32);buffer.writeUInt16LE(16,34);buffer.write('data',36);buffer.writeUInt32LE(samples*2,40);for(let n=0;n<samples;n++)buffer.writeInt16LE(Math.round(2000*Math.sin(2*Math.PI*440*n/8000)),44+n*2);return buffer;}
-export async function seedAudio(db,idx=0){
- const {createHash}=await import('node:crypto'),bytes=wav(),sha=createHash('sha256').update(bytes).digest('hex'),s=scopes[idx];
+export function wav(durationMs=300){const samples=8*durationMs,buffer=Buffer.alloc(44+samples*2);buffer.write('RIFF',0);buffer.writeUInt32LE(buffer.length-8,4);buffer.write('WAVEfmt ',8);buffer.writeUInt32LE(16,16);buffer.writeUInt16LE(1,20);buffer.writeUInt16LE(1,22);buffer.writeUInt32LE(8000,24);buffer.writeUInt32LE(16000,28);buffer.writeUInt16LE(2,32);buffer.writeUInt16LE(16,34);buffer.write('data',36);buffer.writeUInt32LE(samples*2,40);for(let n=0;n<samples;n++)buffer.writeInt16LE(Math.round(2000*Math.sin(2*Math.PI*440*n/8000)),44+n*2);return buffer;}
+export async function seedAudio(db,idx=0,{durationMs=300}={}){
+ const {createHash}=await import('node:crypto'),bytes=wav(durationMs),sha=createHash('sha256').update(bytes).digest('hex'),s=scopes[idx];
  const audioId=id(9000+idx);
  await db.query("insert into profiles values($1,'content_admin','active') on conflict do nothing",[id(30)]);
  await db.query(`insert into learning_audio_versions(id,curriculum_release_id,unit_id,source_family_id,locale,title,bucket_id,object_path,sha256,mime_type,byte_length,duration_ms,source_reference,permission_reference,listening_review_reference,reviewed_by,reviewed_at)
- values($1,$2,$3,$4,'en','Synthetic tone','fixture-audio',$5,$6,'audio/wav',$7,300,'Synthetic browser tone, not curriculum','Test fixture only','Technical fixture only; no editorial claim',$8,now())`,[audioId,id(s.release),id(s.unit),id(9500+idx),sha+'.wav',sha,bytes.length,id(30)]);
+ values($1,$2,$3,$4,'en','Synthetic tone','fixture-audio',$5,$6,'audio/wav',$7,$9,'Synthetic browser tone, not curriculum','Test fixture only','Technical fixture only; no editorial claim',$8,now())`,[audioId,id(s.release),id(s.unit),id(9500+idx),sha+'.wav',sha,bytes.length,id(30),durationMs]);
  return {audioId,bytes,sha,stimulus:{kind:'audio',schemaVersion:'haiedu-audio-v1',audioVersionId:audioId}};
 }
 export async function audioPractice(db,idx=0){
