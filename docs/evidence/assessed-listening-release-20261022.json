@@ -1,0 +1,1088 @@
+{
+  "schemaVersion": 1,
+  "sprint": "16.1C.12",
+  "observedAt": "2026-10-21T22:12:57.968868+00:00",
+  "localTimezone": "Asia/Yerevan",
+  "scope": "Owner-approved opt-in assessed listening; no course activation or question revision",
+  "ownerAcceptance": {
+    "date": "2026-10-22",
+    "statement": "I approve all that you suggested above",
+    "practiceAndReview": "unlimited",
+    "reviewerPreview": "unlimited",
+    "diagnosticAndMastery": {
+      "maximumPlays": 2,
+      "scope": "session-recording",
+      "questionVisibility": "whole-recording",
+      "playbackRate": 1,
+      "transcript": false,
+      "translation": false,
+      "seeking": false,
+      "failedDownloadCharged": false,
+      "interruption": "resume-or-unscored-v1"
+    },
+    "speaking": "classroom-assessed"
+  },
+  "implementation": {
+    "commit": "b3dafc00ed8ce5c96219a079bd86de2016742df0",
+    "testedSource": "cdfe6d45458f0b511e97ff098a44569224d0fdcb",
+    "policySchema": "haiedu-assessment-policy-v4",
+    "subjectNeutral": true,
+    "migration": {
+      "cliGeneratedPath": "supabase/migrations/20261021213231_sprint_16_1c_assessed_listening.sql",
+      "repositoryPath": "supabase/migrations/20261021220954_sprint_16_1c_assessed_listening.sql",
+      "deployedVersion": "20261021220954",
+      "sha256": "c92297f550f8094f6f9a831ddc4ab85d3c7533e75b227c2b728fa628c8aab3af",
+      "sqlBytesUnchanged": true
+    }
+  },
+  "ci": {
+    "runId": 39683475555,
+    "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39683475555",
+    "conclusion": "success",
+    "jobs": [
+      {
+        "name": "role-layout-browser",
+        "id": 119511548325,
+        "conclusion": "success"
+      },
+      {
+        "name": "institutional-concurrency",
+        "id": 119511548554,
+        "conclusion": "success"
+      },
+      {
+        "name": "test",
+        "id": 119511548646,
+        "conclusion": "success"
+      },
+      {
+        "name": "phase3-postgres-17",
+        "id": 119511548660,
+        "conclusion": "success"
+      },
+      {
+        "name": "Platform release checks",
+        "id": 119514119409,
+        "conclusion": "success"
+      }
+    ],
+    "localTests": 1368,
+    "nativeChromiumTests": 87,
+    "postgresVersion": "17.6",
+    "newNativeConcurrencyCases": 4,
+    "fixtureCorrections": [
+      "Synthetic audio object path corrected to its required hash-derived name",
+      "Offline reviewer harness serves the new assessed audio module"
+    ]
+  },
+  "verification": {
+    "functionsMatched": 16,
+    "functions": [
+      {
+        "name": "private.validate_assessed_audio_policy",
+        "matches": true
+      },
+      {
+        "name": "private.assessed_audio_policy",
+        "matches": true
+      },
+      {
+        "name": "private.assessed_audio_state",
+        "matches": true
+      },
+      {
+        "name": "private.assessed_audio_evidence",
+        "matches": true
+      },
+      {
+        "name": "public.service_assessed_audio",
+        "matches": true
+      },
+      {
+        "name": "private.assessed_audio_questions",
+        "matches": true
+      },
+      {
+        "name": "public.finalize_mastery_check_atomic",
+        "matches": true
+      },
+      {
+        "name": "public.service_record_session_answer_atomic",
+        "matches": true
+      },
+      {
+        "name": "private.validate_assessment_policy_v1",
+        "matches": true
+      },
+      {
+        "name": "private.prepare_governed_lifecycle",
+        "matches": true
+      },
+      {
+        "name": "public.service_launch_governed_learning",
+        "matches": true
+      },
+      {
+        "name": "public.service_governed_learning_operation",
+        "matches": true
+      },
+      {
+        "name": "public.service_student_learning_dashboard",
+        "matches": true
+      },
+      {
+        "name": "private.assessment_result_v2",
+        "matches": true
+      },
+      {
+        "name": "private.learner_shared_stimulus",
+        "matches": true
+      },
+      {
+        "name": "private.guard_audio_attempt",
+        "matches": true
+      }
+    ],
+    "runtimeBundlesMatched": 13,
+    "runtimeBundles": [
+      {
+        "name": "get-chapter-mastery-lifecycle",
+        "previousVersion": 6,
+        "version": 7,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "get-chapter-mastery-lifecycle/index.ts": "21cafb9dfcc52011ed021e37e1398994f9db5e3f2ef88a836c25904a2d179edc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      },
+      {
+        "name": "submit-mastery-answer",
+        "previousVersion": 10,
+        "version": 11,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "submit-mastery-answer/index.ts": "b186abc58ea67452daf63eeb0a6a7a8e9d6dd523f9a037e59b6b3c7079d73671",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      },
+      {
+        "name": "record-recommendation-event",
+        "previousVersion": 6,
+        "version": 7,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "record-recommendation-event/index.ts": "378c6eb3e8eba7138ce36070389dde7d8f1898572b55997411564ca69af20bc2",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0"
+        }
+      },
+      {
+        "name": "get-student-classes",
+        "previousVersion": 11,
+        "version": 12,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "get-student-classes/index.ts": "7a0611c7b52e777c513384bc83805381c07238f44a2a1b910f9f71df6fb2f281",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        }
+      },
+      {
+        "name": "get-mastery-check-status",
+        "previousVersion": 14,
+        "version": 15,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "get-mastery-check-status/index.ts": "4a1ffbd05b51cbf944242db3ed5158e767a4b803266561282816816ed21d054a",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031"
+        }
+      },
+      {
+        "name": "get-learning-context",
+        "previousVersion": 4,
+        "version": 5,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "get-learning-context/index.ts": "07e4bf30c856a0a7a4ff9c23157481ff25effad0d20cbd00948a4ea030aed3cd",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/learning-context-handler.mjs": "405f1074ddfc3fb58ae84bf5f95343aae542ff05633a02742d4a103cfe27cc4a",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        }
+      },
+      {
+        "name": "get-student-dashboard",
+        "previousVersion": 27,
+        "version": 28,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "get-student-dashboard/index.ts": "73fba3251eccf15b432cda4e2436fe01fbfa9069c5121b346295a7ea8454652d",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+          "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "_shared/student-dashboard-handler.mjs": "6c6a8cb71a11bee135d5971bee96aba9886d192d282c06e824db4b7847c8dcaf",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472"
+        }
+      },
+      {
+        "name": "get-session-item",
+        "previousVersion": 19,
+        "version": 20,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "get-session-item/index.ts": "14bd9e9f59de8375134de49ad5bdce503598969364edd6a0ab75be3616d13a67",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6"
+        }
+      },
+      {
+        "name": "get-learning-audio",
+        "previousVersion": 1,
+        "version": 2,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "get-learning-audio/index.ts": "22794f72ffb42d8239e7f460ebb75c2db6b9729f3b33f1eb097ec30dc6b22239",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/learning-audio-handler.mjs": "c0278a9eb5c4816d6ab28f026db37afa0a61048e0ca3632a3a0a5d67f96b31dd"
+        }
+      },
+      {
+        "name": "get-my-privacy",
+        "previousVersion": 6,
+        "version": 7,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "get-my-privacy/index.ts": "928a5b03d6f56851404dbfa124f6182b1925e3280126c793b942c35aef13d3be"
+        }
+      },
+      {
+        "name": "get-remediation-help",
+        "previousVersion": 15,
+        "version": 16,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "get-remediation-help/index.ts": "223f778b79dc346dc0b421d86edb457279426a2f54c247c5ddb756be0397814f",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc"
+        }
+      },
+      {
+        "name": "submit-answer",
+        "previousVersion": 21,
+        "version": 22,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [
+          "_shared/types.ts"
+        ],
+        "files": {
+          "submit-answer/index.ts": "d385a85ac187beaf6c2ffc9d894f89a412a9fc755f5528fd118a400f85d975b0",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/learning-model.ts": "3e36ef2fa021f540cb803a46e0c42db6544c3ed16abc7db0ae0c4daef5d66c9c",
+          "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "_shared/grading.ts": "0c317389ef634794a6a97f497caf0c5de672fbf7cecf2681753aca763a968f77",
+          "_shared/recommendation.ts": "a55dddab18eb4ec72eb91d9da044c83987ac591b1767ddc14d28b11bd544a4d9"
+        }
+      },
+      {
+        "name": "start-learning-session",
+        "previousVersion": 26,
+        "version": 27,
+        "verifyJwt": true,
+        "sourceMatched": true,
+        "buildOnlyFilesOmitted": [],
+        "files": {
+          "start-learning-session/index.ts": "a3ebb9df342d0813711007ddfb4befdb9cf58132ce588aaef288be2c30f108e2",
+          "_shared/governed-learning-runtime.mjs": "4e306006be930954aadebbc9c72a86f0ef6ba567bb296dcedb63f4ffec895ef1",
+          "_shared/student-learning-context.mjs": "b509c63114250a3f0ab059a9cb172b7efd304204c905a9d645663dfd336d4576",
+          "_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+          "_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+          "_shared/practice-diagnostic-gate.ts": "e031c1193433ce694a5b41ff6134b9a4d678313610b6fb0950379743406c5929",
+          "_shared/initial-diagnostic.ts": "d0c82d221e6bfd32fe1de126f71a7baa127de91fe2c3ebdfe86ba82a79a7bd07",
+          "_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+          "_shared/course-access.ts": "11b120dd7be983314dc9e8c72ee11119024c39f0b2fae55345034b1865c3d3cc",
+          "_shared/recommendation-telemetry.ts": "13afe6f8d836e4a016796dbbe8be7e04fbec6e55109687d4792d0e1f3564124e",
+          "_shared/curriculum-release.ts": "0872d80e13ee45b367fd188bf648bc28bfde74198764df39fed6dc2cc85aa031",
+          "_shared/assessment-integrity.ts": "8aac4251c800aee4bf060f5ee5e93a230074e2765ef8165e72a165ca921de1b6"
+        }
+      }
+    ],
+    "production": {
+      "rls": true,
+      "anonRPC": false,
+      "english": {
+        "status": "draft",
+        "activatedAt": null
+      },
+      "anonRead": false,
+      "functions": [
+        {
+          "name": "private.validate_assessed_audio_policy",
+          "matches": true
+        },
+        {
+          "name": "private.assessed_audio_policy",
+          "matches": true
+        },
+        {
+          "name": "private.assessed_audio_state",
+          "matches": true
+        },
+        {
+          "name": "private.assessed_audio_evidence",
+          "matches": true
+        },
+        {
+          "name": "public.service_assessed_audio",
+          "matches": true
+        },
+        {
+          "name": "private.assessed_audio_questions",
+          "matches": true
+        },
+        {
+          "name": "public.finalize_mastery_check_atomic",
+          "matches": true
+        },
+        {
+          "name": "public.service_record_session_answer_atomic",
+          "matches": true
+        },
+        {
+          "name": "private.validate_assessment_policy_v1",
+          "matches": true
+        },
+        {
+          "name": "private.prepare_governed_lifecycle",
+          "matches": true
+        },
+        {
+          "name": "public.service_launch_governed_learning",
+          "matches": true
+        },
+        {
+          "name": "public.service_governed_learning_operation",
+          "matches": true
+        },
+        {
+          "name": "public.service_student_learning_dashboard",
+          "matches": true
+        },
+        {
+          "name": "private.assessment_result_v2",
+          "matches": true
+        },
+        {
+          "name": "private.learner_shared_stimulus",
+          "matches": true
+        },
+        {
+          "name": "private.guard_audio_attempt",
+          "matches": true
+        }
+      ],
+      "questions": {
+        "total": 116,
+        "approved": 116,
+        "qaPassed": 116,
+        "published": 116
+      },
+      "ledgerRows": 0,
+      "v4Bindings": 0,
+      "authenticatedRPC": false,
+      "authenticatedRead": false
+    },
+    "frontend": {
+      "observedAt": "2026-10-21T22:11:34.488423+00:00",
+      "assets": [
+        {
+          "path": "assessed-audio.mjs",
+          "status": 200,
+          "sha256": "5fc9a44d636fc3251aafbe653b92073a42c76643c15c0ed58aea8c5d2707db89",
+          "matches": true
+        },
+        {
+          "path": "learning-player.mjs",
+          "status": 200,
+          "sha256": "a1bcd60d26fbcdc0971e1d21c371c3cf7be1510ee212ee06c4b8d3b7b42deb48",
+          "matches": true
+        },
+        {
+          "path": "learning-audio.mjs",
+          "status": 200,
+          "sha256": "17aef86c276681bf4ee49de7e38abf4ed9f272cde65a443f78bf70b9c2c963a9",
+          "matches": true
+        },
+        {
+          "path": "assessment-reporting.mjs",
+          "status": 200,
+          "sha256": "2912caf105daf8273e8a48bb0dda180e6804dc8568e68bfce02bc6e19958a44c",
+          "matches": true
+        },
+        {
+          "path": "privacy.js",
+          "status": 200,
+          "sha256": "53af05d292113162907b080f0ab4a38863041fa301eba0406da5076db82ad9fc",
+          "matches": true
+        }
+      ],
+      "release": {
+        "schemaVersion": 1,
+        "commit": "cdfe6d45458f0b511e97ff098a44569224d0fdcb"
+      }
+    },
+    "vercel": {
+      "sha": "cdfe6d45458f0b511e97ff098a44569224d0fdcb",
+      "state": "success",
+      "statuses": [
+        {
+          "context": "Vercel",
+          "state": "success",
+          "description": "Deployment has completed",
+          "target_url": "https://vercel.com/kupershtokh-7785/armenian-mastery-platform/B1gXtXC25aQ9CBpT9wcULCypJLoC"
+        }
+      ]
+    }
+  },
+  "preservation": {
+    "unchangedTables": 70,
+    "tables": [
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_activation",
+        "fingerprint": "1df4787f0c2eece89b4611327af6aff4"
+      },
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_versions",
+        "fingerprint": "1c69b7132347cd8b67a89268668f27ce"
+      },
+      {
+        "row_count": 1872,
+        "table_name": "assessment_blueprint_items",
+        "fingerprint": "7e54e189ad648f2a3f0a4538a01f8b60"
+      },
+      {
+        "row_count": 27,
+        "table_name": "assessment_blueprints",
+        "fingerprint": "38fe215a14d86c322b7826724d8a7fac"
+      },
+      {
+        "row_count": 472,
+        "table_name": "assessment_form_items",
+        "fingerprint": "d84f089091319cf04fa637dd4589dbd9"
+      },
+      {
+        "row_count": 29,
+        "table_name": "assessment_forms",
+        "fingerprint": "ec31ac543009ef35e098ac7a64e23908"
+      },
+      {
+        "row_count": 20,
+        "table_name": "assessment_policy_bindings",
+        "fingerprint": "2c32ee0b3e126db5e47b7de55a5ebacf"
+      },
+      {
+        "row_count": 18,
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "fingerprint": "7383871bb98ea2a76ff9cb30689c643a"
+      },
+      {
+        "row_count": 1244,
+        "table_name": "assessment_pool_items",
+        "fingerprint": "184285de8853be3dfc41e8f90db0dda4"
+      },
+      {
+        "row_count": 19,
+        "table_name": "assessment_pools",
+        "fingerprint": "d6450febadadd4af95b10f3a8c9a7b92"
+      },
+      {
+        "row_count": 42,
+        "table_name": "attempts",
+        "fingerprint": "26d44860397d32ab6023da8e72cfcb0e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_mastery_states",
+        "fingerprint": "1b6fb3231d34474d6422795bcb484b2c"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_cycles",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_item_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_review_requirements",
+        "fingerprint": "2e1caa3798ff3b8199f848152602ba13"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_sessions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "curriculum_frameworks",
+        "fingerprint": "cc95b05470c26da89674830c44573e7e"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_reconciliation_runs",
+        "fingerprint": "86fa5040c5e4315a2eaa1b56024973c0"
+      },
+      {
+        "row_count": 49,
+        "table_name": "curriculum_release_gate_checks",
+        "fingerprint": "76bc56c09f6aad078d83826e1919c828"
+      },
+      {
+        "row_count": 1028,
+        "table_name": "curriculum_release_item_families",
+        "fingerprint": "254bf21f349ebd320e8c42a80f48a611"
+      },
+      {
+        "row_count": 53,
+        "table_name": "curriculum_release_outcomes",
+        "fingerprint": "79555766bcc8fca1e084ff76c77475ef"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_release_reconciliations",
+        "fingerprint": "01701c1671482c73cdf5ab848dcb87aa"
+      },
+      {
+        "row_count": 80,
+        "table_name": "curriculum_release_skills",
+        "fingerprint": "b79050797c48be0273a3705599972579"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_release_units",
+        "fingerprint": "3081bda61e74df4d3902ae0c21988407"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_releases",
+        "fingerprint": "bcaaa4a76a9ee95f0d8b16430086c669"
+      },
+      {
+        "row_count": 3,
+        "table_name": "curriculum_source_documents",
+        "fingerprint": "d4b3cde546d8cacbda028fbb3256e6d8"
+      },
+      {
+        "row_count": 12,
+        "table_name": "grades",
+        "fingerprint": "62cb5fdf3ecc14c7279c2484156cc000"
+      },
+      {
+        "row_count": 1367,
+        "table_name": "item_answer_keys",
+        "fingerprint": "01cf5f185d60466f52732ed6f74d215b"
+      },
+      {
+        "row_count": 1367,
+        "table_name": "item_curriculum_scopes",
+        "fingerprint": "f2279dccf6bff0b4b4505e3155d16d1d"
+      },
+      {
+        "row_count": 1145,
+        "table_name": "item_families",
+        "fingerprint": "31c3ae8976a540c7a7a29d98fc10fcce"
+      },
+      {
+        "row_count": 1029,
+        "table_name": "item_family_curriculum_reconciliations",
+        "fingerprint": "ea002e478aebb9afc8ef309377d36051"
+      },
+      {
+        "row_count": 3212,
+        "table_name": "item_misconception_mappings",
+        "fingerprint": "0630d067b0596adb53124c132bb4dee1"
+      },
+      {
+        "row_count": 4617,
+        "table_name": "item_options",
+        "fingerprint": "46cc4d9a61871cb33e38e5ee7a49fd17"
+      },
+      {
+        "row_count": 1711,
+        "table_name": "item_qa_runs",
+        "fingerprint": "5dabaaac9e963e975c609b6dbf27363a"
+      },
+      {
+        "row_count": 1649,
+        "table_name": "item_reviews",
+        "fingerprint": "67a53d48813177e097ef00f52f2ffc14"
+      },
+      {
+        "row_count": 518,
+        "table_name": "item_template_remediation_guides",
+        "fingerprint": "e603af7f4dc742b0e53f996eeee86627"
+      },
+      {
+        "row_count": 1145,
+        "table_name": "item_templates",
+        "fingerprint": "c25ace49bc007b847c98fdd23da52104"
+      },
+      {
+        "row_count": 1297,
+        "table_name": "item_versions",
+        "fingerprint": "18c429eda4c90ba5763754b6bce1e12b"
+      },
+      {
+        "row_count": 1367,
+        "table_name": "items",
+        "fingerprint": "1e497078ef9f48e8792008cbdff5331b"
+      },
+      {
+        "row_count": 8,
+        "table_name": "learning_audio_versions",
+        "fingerprint": "9267c546784103ca38a9f6019d116e1c"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_configurations",
+        "fingerprint": "4254a36a7a040133d3592cd131c83c83"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_runtime_bindings",
+        "fingerprint": "dd95315c4395cb93457b2c5afaefc495"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcome_normative_mappings",
+        "fingerprint": "f0affa67ef267421fa3368c30011a7e7"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcomes",
+        "fingerprint": "d0063216634a4cea234e80ae5aa63ad1"
+      },
+      {
+        "row_count": 96,
+        "table_name": "learning_session_items",
+        "fingerprint": "34f74f2134c35958e0e4b8ab6420137a"
+      },
+      {
+        "row_count": 8,
+        "table_name": "learning_sessions",
+        "fingerprint": "a5d0326f20b58e02773af6281ee31cdb"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_source_family_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 15,
+        "table_name": "learning_task_set_versions",
+        "fingerprint": "8baa1cf52eb45d0598ce75ad840a7310"
+      },
+      {
+        "row_count": 1,
+        "table_name": "mastery_check_attempts",
+        "fingerprint": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+      },
+      {
+        "row_count": 1026,
+        "table_name": "misconception_review_events",
+        "fingerprint": "b453094e23e087c502ea133a8e25e053"
+      },
+      {
+        "row_count": 1033,
+        "table_name": "misconceptions",
+        "fingerprint": "b399278d2c2bb11a9e0e07cf3e32906c"
+      },
+      {
+        "row_count": 824,
+        "table_name": "recommendation_events",
+        "fingerprint": "bb3fe105ac2571f227284db74a10591f"
+      },
+      {
+        "row_count": 6,
+        "table_name": "remediation_events",
+        "fingerprint": "e5001e648bb95efe0dd4a0c163f8fd2c"
+      },
+      {
+        "row_count": 1708,
+        "table_name": "remediation_guide_authoring_versions",
+        "fingerprint": "ad66c5fa1f9ed7d37f52e14da1f9303c"
+      },
+      {
+        "row_count": 1067,
+        "table_name": "remediation_guide_versions",
+        "fingerprint": "904a28da2d3e95fc1d420cac3f0915b4"
+      },
+      {
+        "row_count": 26,
+        "table_name": "runtime_builds",
+        "fingerprint": "de52aa09cfe3faf6405ea630a9842850"
+      },
+      {
+        "row_count": 66,
+        "table_name": "skill_curriculum_reconciliations",
+        "fingerprint": "fda1e906882d49718a03f650ffe6e601"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcome_curriculum_mappings",
+        "fingerprint": "1a2a3f9398ebd328e65ac1f3c565667c"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcomes",
+        "fingerprint": "938bbad8c1f7dde57c694cd0d117d6bd"
+      },
+      {
+        "row_count": 17,
+        "table_name": "skill_prerequisites",
+        "fingerprint": "2163f87101e252337a68d16de849d8d4"
+      },
+      {
+        "row_count": 10,
+        "table_name": "skill_remediation_guides",
+        "fingerprint": "0c0a4b6b5a5fb2e78a4e9707d5c28366"
+      },
+      {
+        "row_count": 81,
+        "table_name": "skills",
+        "fingerprint": "ff8d0bf2159893c6586861f31e37c29e"
+      },
+      {
+        "row_count": 44,
+        "table_name": "student_item_exposure_events",
+        "fingerprint": "b9b739a7d235b2a8ebb837003baef8b6"
+      },
+      {
+        "row_count": 13,
+        "table_name": "student_skill_mastery_by_release",
+        "fingerprint": "19a0f8555ac31ac870a6cff088c9ce29"
+      },
+      {
+        "row_count": 2,
+        "table_name": "subject_program_source_bindings",
+        "fingerprint": "7cefb9c48c14a2b02a5e4ae0660edd92"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subject_programs",
+        "fingerprint": "ee9738a90126520ed8427ca0ddfd570d"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subjects",
+        "fingerprint": "e02963c95d7856a55b57175a81ae7def"
+      },
+      {
+        "row_count": 30,
+        "table_name": "topics",
+        "fingerprint": "c7f40d5f22a7f50ede9ac6c952d5e7dc"
+      },
+      {
+        "row_count": 8,
+        "table_name": "units",
+        "fingerprint": "c2b8d4ce2b2f9dd4d16d2d56adef7685"
+      },
+      {
+        "row_count": 0,
+        "table_name": "written_task_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ],
+    "unchangedVersionedPolicies": 20,
+    "policyHashes": [
+      {
+        "id": "068fff0b-ca17-5e33-a473-1414def2e61b",
+        "policyHash": "663ae9e28d1f721e457112ab3de17759"
+      },
+      {
+        "id": "0b570e04-c2d9-5692-914a-e88fc3769806",
+        "policyHash": "ffa5f7ce17cf70f4c3bc0d200e25386a"
+      },
+      {
+        "id": "20d78561-048d-5925-a77e-e716def45b3e",
+        "policyHash": "047c85fe5f7da9931e0e0990d2faac3e"
+      },
+      {
+        "id": "223e7868-4d0d-5255-9c51-be848a359b34",
+        "policyHash": "6db038da2bd56d9c453e324bcb241ee6"
+      },
+      {
+        "id": "430e6d2b-5ac3-5408-90d3-2f6d085ea76a",
+        "policyHash": "27193cd4846fac4e8950f67d09965601"
+      },
+      {
+        "id": "54d14a6b-0e2f-5222-a569-a4b2cc55edee",
+        "policyHash": "c960e05d59925c92e2e99b9381547cd4"
+      },
+      {
+        "id": "615d72f2-f973-5e11-ad25-64164d4cadbd",
+        "policyHash": "e2167a09ba16a4f0c79635e083bd235b"
+      },
+      {
+        "id": "6cc51d57-dee5-5045-a023-6ef0a55d0ead",
+        "policyHash": "1da1c26d20803f6c71f82ee5dc77837b"
+      },
+      {
+        "id": "866ca9f2-6611-5918-afa1-8b54119b381a",
+        "policyHash": "284a6a3cc4bd9d3f83e8c80b261146ec"
+      },
+      {
+        "id": "89e9f260-64e2-59f1-bfba-3176e8950aab",
+        "policyHash": "42bb41d3b53c87473e01895a8b14fed6"
+      },
+      {
+        "id": "a2a3ca7e-f9c6-5183-a3d7-12dd77db3d34",
+        "policyHash": "193a343211c780bb30ea485f30b7ccb2"
+      },
+      {
+        "id": "b98cdb98-b695-57a0-9c16-55db4a4d3fef",
+        "policyHash": "95c1ab80f7aa75921e462ffa792c8c91"
+      },
+      {
+        "id": "ce2f88d8-ddac-585a-8346-962c4667471e",
+        "policyHash": "4ca32a15030ff412bd9d8818928d664e"
+      },
+      {
+        "id": "d3fce45e-97e5-58aa-bccc-6bfce27959f1",
+        "policyHash": "81a5e8cd37811f42b8984281d3895994"
+      },
+      {
+        "id": "e4eb4c9a-a3ef-54dc-a363-5ea95f351221",
+        "policyHash": "d0d5ce8f1933f27397c3e81abf100fb5"
+      },
+      {
+        "id": "e80dc0ac-e584-57b8-ad3a-8bbedc64138c",
+        "policyHash": "997cd52241f4e682b129ddd8d1f58ef8"
+      },
+      {
+        "id": "eaad30bb-fc4e-59b3-95a2-834fec48fc43",
+        "policyHash": "441ed91de9b9da010442e724ed8b684f"
+      },
+      {
+        "id": "ebcf0382-5dd2-5e3f-b706-b01b65867326",
+        "policyHash": "ad4a8de2ce7baa0c482107993571cf9b"
+      },
+      {
+        "id": "fac2012d-e49f-5e67-be0c-082ac2b28058",
+        "policyHash": "fdefbd88d162bf7b607e6b9a4c835957"
+      },
+      {
+        "id": "ff796974-ab1b-5494-8a92-e7d95a37f81d",
+        "policyHash": "68c760374cd99916d24117d92c04cd8b"
+      }
+    ],
+    "approvedQuestions": 116,
+    "qaPassedQuestions": 116,
+    "questionRevisions": 0,
+    "courseActivations": 0,
+    "policyBindingsCreated": 0
+  },
+  "advisors": {
+    "security": {
+      "before": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 48,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "level": "WARN",
+          "count": 1,
+          "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+        }
+      ],
+      "after": [
+        {
+          "name": "rls_enabled_no_policy",
+          "level": "INFO",
+          "count": 49,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0008_rls_enabled_no_policy"
+        },
+        {
+          "name": "auth_leaked_password_protection",
+          "level": "WARN",
+          "count": 1,
+          "remediation": "https://supabase.com/docs/guides/auth/password-security#password-strength-and-leaked-password-protection"
+        }
+      ],
+      "newWarningsOrErrors": 0
+    },
+    "performance": {
+      "before": [
+        {
+          "name": "unindexed_foreign_keys",
+          "level": "INFO",
+          "count": 42,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+        },
+        {
+          "name": "auth_rls_initplan",
+          "level": "WARN",
+          "count": 16,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+        },
+        {
+          "name": "unused_index",
+          "level": "INFO",
+          "count": 110,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "level": "WARN",
+          "count": 14,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies"
+        }
+      ],
+      "after": [
+        {
+          "name": "unindexed_foreign_keys",
+          "level": "INFO",
+          "count": 42,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0001_unindexed_foreign_keys"
+        },
+        {
+          "name": "auth_rls_initplan",
+          "level": "WARN",
+          "count": 16,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0003_auth_rls_initplan"
+        },
+        {
+          "name": "unused_index",
+          "level": "INFO",
+          "count": 112,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0005_unused_index"
+        },
+        {
+          "name": "multiple_permissive_policies",
+          "level": "WARN",
+          "count": 14,
+          "remediation": "https://supabase.com/docs/guides/database/database-linter?lint=0006_multiple_permissive_policies"
+        }
+      ],
+      "newWarningsOrErrors": 0
+    }
+  },
+  "releaseControls": {
+    "requiredAggregate": "Platform release checks",
+    "persistentVercelCheckEvidenceReused": "docs/evidence/vercel-deployment-check-verification-20261020.json",
+    "persistentConfigurationMutated": false,
+    "freshVercelSettingsRead": false,
+    "vercelConnector": "Existing explicit-team 403 remains; successful Git deployment and exact public source marker verified independently",
+    "postClosureAuthenticatedProbe": "Chapter VI read acceptance, exact frontend SHA/designated fixtures/run-owned session cleanup; checks all prior pilot chapters and assessed-audio access boundaries. Results remain in GitHub Actions and Notion."
+  },
+  "boundaries": {
+    "newAssessedEnglishLearnerAcceptance": false,
+    "englishActive": false,
+    "productionV4Bindings": 0,
+    "controlsAreNotDRM": true,
+    "clientFailureReportsAreNotVerifiedEquipmentDiagnosis": true,
+    "remainingQuestions": 84,
+    "remainingForms": [
+      "Diagnostic B",
+      "Mastery B",
+      "Mastery C"
+    ],
+    "speaking": "classroom-assessed",
+    "unchangedContentEvidenceReused": [
+      "docs/evidence/english-7-unit-01-review-closure-20261022.json",
+      "docs/evidence/english-7-unit-01-listening-registration-20261022.json"
+    ],
+    "pending": [
+      "Qualified unused forms and final course policy binding",
+      "84 accepted questions with protected sources and recordings",
+      "Guides and writing onboarding",
+      "SME, reuse and English learner-release gates"
+    ]
+  },
+  "notion": {
+    "roadmapVersion": "4.38",
+    "pageId": "3df355a4-72bf-8135-85aa-c229c27f8f9c",
+    "verification": "Final merged closure SHA must be fetched from GitHub before targeted Notion synchronization; exact attestation retained in Notion",
+    "childPagesPreserved": 12,
+    "readingPassageTailPreserved": true
+  }
+}

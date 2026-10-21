@@ -2,7 +2,7 @@ import {readFileSync} from 'node:fs';
 import {database as sharedDatabase,configure,blueprintId,id,scopes,seedAudio,seedTaskSet,launch,operation,finish} from './shared-task-sets-db.mjs';
 import {ready,formItems} from './governed-mastery-forms-db.mjs';
 export * from './shared-task-sets-db.mjs';
-export const assessedAudioMigration='supabase/migrations/20261021213231_sprint_16_1c_assessed_listening.sql';
+export const assessedAudioMigration='supabase/migrations/20261021220954_sprint_16_1c_assessed_listening.sql';
 export const audioPolicy={schemaVersion:'haiedu-assessed-audio-v1',maximumPlays:2,playbackRate:1,transcriptAvailable:false,scope:'session-recording',questionVisibility:'whole-recording',interruption:'resume-or-unscored-v1'};
 export async function database(options={}) {
  const db=await sharedDatabase(options);try{await db.exec(readFileSync(assessedAudioMigration,'utf8'));return db;}catch(e){await db.close();throw e;}

@@ -1,6 +1,6 @@
 # Assessed listening — Sprint 16.1C.12
 
-**22 October 2026. Owner approved; implemented and verified in isolation. Required CI and production closure are pending.** Shared core capability; no course is implicitly opted in. English remains draft/inactive with its existing 116 approvals and 60/56/84 bank plan.
+**22 October 2026. Owner approved; deployed and source-verified after required CI.** Shared core capability; no course is implicitly opted in. English remains draft/inactive with its existing 116 approvals and 60/56/84 bank plan.
 
 ## Accepted behavior
 
@@ -8,7 +8,7 @@
 | --- | --- | --- |
 | Practice / Chapter Review | Unlimited replay; existing per-question completion gate | Existing ordered player |
 | Reviewer preview | Unlimited | Existing authoring/reviewer view |
-| Diagnostic / Mastery with v4 | English adopts 2 total plays, including the initial play; shared across every question using the recording in this assessment | All assigned questions/options for that recording appear before playback; answers remain sequential |
+| Diagnostic / Mastery with v4 | English’s approved policy specifies 2 total plays, including the initial play; shared across every question using the recording in this assessment | All assigned questions/options for that recording appear before playback; answers remain sequential |
 
 Normal speed; no assessment seeking, transcript or translation. A failed transfer consumes no play. Pause/resume retains the same play ID and position. Refresh/reopen and moving to another question cannot reset the recording allowance. After one completed listen, answers unlock; the second listen is optional. Answer submission is disabled while playing.
 
@@ -46,9 +46,9 @@ RLS and privilege revocations block anonymous/authenticated table and RPC access
 
 - Local full suite: **1,368 passing tests**; six new SQL/Edge cases cover shared counts, retry idempotency, interruption, withdrawal, unscored Mastery replacement, multiple subjects and service-only authorization.
 - Native Chromium 153: **7/7 focused audio tests**, including three new assessed cases: real WAV playback, all questions visible, count preservation across refresh/question changes, double-click handling, normal speed/no seeking, checkpoint resume, unscored exit, late response disposal and 390/1365 px layout.
-- Independent PostgreSQL concurrency checks are added to required CI. Local PostgreSQL startup is unavailable in this container; no local native-PostgreSQL result is claimed.
+- Four independent-connection PostgreSQL concurrency checks pass in required PostgreSQL 17.6 CI. Local PostgreSQL startup is unavailable in this container; no local native-PostgreSQL result is claimed.
 - Core parity, typecheck, browser syntax and browser QA dependency coverage pass. Existing unchanged question/source/audio and owner playback evidence is reused.
-- Thirteen affected Edge entrypoints must be deployed and read back; the intended import graph is recorded in the release evidence. Required CI includes the native PostgreSQL 17.6 and Chromium jobs and aggregate Platform release checks.
+- Thirteen affected Edge entrypoints are deployed and read back; their versions and hashes are recorded in the release evidence. Required CI passed and includes the native PostgreSQL 17.6 and Chromium jobs and aggregate Platform release checks.
 - No new production assessment browser acceptance or English learner readiness is claimed. New course policy binding, qualified unseen forms, remaining 84 questions, guides/writing, SME/rights and release acceptance remain separate gates. Speaking stays classroom-assessed.
 
-The delivery record will capture the exact implementation commit, CI, migration, deployed bundle hashes, preservation readback and source-verified Notion synchronization. Do not infer production delivery from this implementation checkpoint.
+The [delivery record](evidence/assessed-listening-release-20261022.json) captures the tested implementation source, required CI, migration, deployed bundle hashes and preservation readback. The final merged closure source is independently read back before synchronizing Notion. The extended authenticated production read probe remains bound to the exact deployed frontend, designated fixtures and run-owned session cleanup; its post-closure result is retained in GitHub Actions and the source-verified Notion handoff. No new assessed English learner flow is activated by these boundary probes.

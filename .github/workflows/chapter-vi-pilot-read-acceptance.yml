@@ -14,6 +14,8 @@ on:
       - web/responsive-qa.css
       - scripts/written-work-read-acceptance.mjs
       - scripts/learning-audio-read-acceptance.mjs
+      - supabase/migrations/*_sprint_16_1c_assessed_listening.sql
+      - docs/evidence/assessed-listening-release-20261022.json
       - scripts/shared-task-sets-read-acceptance.mjs
       - supabase/functions/get-learning-task-set/index.ts
       - supabase/functions/_shared/learning-task-set-handler.mjs

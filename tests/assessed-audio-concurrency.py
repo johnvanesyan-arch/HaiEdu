@@ -70,7 +70,7 @@ with database_uri() as uri:
         c.execute(forms['schema'].replace(' alter table public.curriculum_releases add column release_number integer not null default 1;',''));c.execute(forms['migration'])
         for q in forms['queries']:fixture_query(c,q)
         c.execute(shared['upgrades'])
-        c.execute((ROOT/'supabase/migrations/20261021213231_sprint_16_1c_assessed_listening.sql').read_text())
+        c.execute((ROOT/'supabase/migrations/20261021220954_sprint_16_1c_assessed_listening.sql').read_text())
         c.execute("insert into profiles values(%s,'content_admin','active')",[ident(30)])
         policy=c.execute("select configuration_snapshot->'assessmentPolicy' from assessment_blueprints where id=%s",[ident(740)]).fetchone()[0]
         policy.update(schemaVersion='haiedu-assessment-policy-v4',scoringStrategy='normalized-item-score-v1',responseCapabilities={},itemWeight=1,deliveredSkillIds=[ident(521),ident(522)],reportingGroups=[dict(key='all',label='Synthetic',skillIds=[ident(521),ident(522)])],audioPlayback=dict(schemaVersion='haiedu-assessed-audio-v1',maximumPlays=2,playbackRate=1,transcriptAvailable=False,scope='session-recording',questionVisibility='whole-recording',interruption='resume-or-unscored-v1'))
