@@ -1,0 +1,2340 @@
+{
+  "schemaVersion": 1,
+  "slice": "16.1C.11-review-closure",
+  "date": "2026-10-22",
+  "timezone": "Asia/Yerevan",
+  "roadmapVersion": "4.37",
+  "sourceCommitBeforeClosure": "47be31c28279ddf54dbba85b464fed7485e5af95",
+  "scope": "Read-only verification of current question approvals and owner-reported reviewer playback acceptance. Documentation only; no production content, policy, schema or runtime mutation.",
+  "ownerStatement": {
+    "verbatim": "I checked and approved the remaining questions; the audios worked, and everything looks good.",
+    "source": "John, current work conversation",
+    "scope": "Remaining C11 audio-linked questions and reviewer playback/inspection",
+    "evidenceKind": "owner-reported human acceptance; not a new automated browser run"
+  },
+  "totals": {
+    "staged": 116,
+    "ordinaryApproved": 116,
+    "currentVersionQaPassed": 116,
+    "sourceHolds": 0,
+    "awaitingOrdinaryReview": 0,
+    "practice": 60,
+    "diagnostic": 28,
+    "mastery": 28,
+    "acceptedBank": {
+      "practice": 60,
+      "diagnostic": 56,
+      "mastery": 84
+    },
+    "remainingToAuthor": {
+      "diagnosticB": 28,
+      "masteryB": 28,
+      "masteryC": 28
+    }
+  },
+  "currentVersionReadback": {
+    "items": [
+      {
+        "id": "1ea0570e-fb6c-58b3-aab4-2e950491baff",
+        "qa": {
+          "id": "7e83ab4a-cf2d-424a-af80-79da18f188ca",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-01",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:06:03.99715+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "38743f9f-e3e8-5aff-a3c4-9aaeb55656b2",
+        "qa": {
+          "id": "9fb81efb-6eea-4508-b7f7-d7ba7b30201e",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-02",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:10:46.114655+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "9b78f48e-9048-500a-ad52-4757d7d09f2f",
+        "qa": {
+          "id": "d3a0cff9-23c6-4b83-a83b-0565e437ce1a",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-03",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:10:51.839301+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "c07e475d-ee74-5d15-a834-fb8e14712165",
+        "qa": {
+          "id": "e0734e7e-dc13-4085-bb84-15f18ea6f556",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-04",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:10:56.174294+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "4c28c36e-19e2-5dc6-ac88-0f688b816bed",
+        "qa": {
+          "id": "c60963ef-23f8-41ac-9fd4-fdb1bd1c526a",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-05",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:11:02.030566+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "835fe7a7-c70e-59b9-af4c-d41aad2971f2",
+        "qa": {
+          "id": "14d09fba-cccf-47e8-8c27-1e738612586c",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-06",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:11:07.419992+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "fae17523-cd5b-5372-a0d2-8782cb9c1ef5",
+        "qa": {
+          "id": "d11b48e7-53fc-4fc8-bf4d-fad395aadd4c",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-07",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:11:13.652593+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "2f13a81b-e7e2-5d8e-a349-cf33056ef235",
+        "qa": {
+          "id": "4eb042b2-53a0-4eac-8834-c0321b47242b",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-08",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:11:18.072586+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "b25d90c6-6c32-566b-a354-81d8c82249e6",
+        "qa": {
+          "id": "ed3a6a31-3160-4e44-9189-43f081a57f79",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-09",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:11:22.570029+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "8351bc3c-a50b-5e7a-a292-e287eb8f0024",
+        "qa": {
+          "id": "7906ed1d-ea48-4f83-aa0e-5c91c1eca1ff",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-10",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:13:53.041869+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "87fb9c02-215e-574e-a69a-7215c1d2d2cf",
+        "qa": {
+          "id": "274b263f-6de2-4016-a42c-3a4f1ef285ab",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-11",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:13:57.505153+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "fb8abe21-e9ed-5a5d-a4c0-d489803599c3",
+        "qa": {
+          "id": "4e9413f4-611c-4407-8f6d-91f69407ca81",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-12",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:04.565528+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "2c22823c-b41e-5dc0-a6cb-f1a18de85957",
+        "qa": {
+          "id": "42515ab3-18ee-411c-b189-5991f31e7bda",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-13",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:07.276537+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "c4775125-5b62-5ccb-a49a-9f7e0ba4b50d",
+        "qa": {
+          "id": "061889a4-2cd0-4c76-9caf-cd085372c9a2",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-14",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:11.227772+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "e5e55f81-123a-5291-a04a-21c54e92a7bd",
+        "qa": {
+          "id": "f4c65b0a-b0ce-4850-8e07-d52da44fcdaf",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-15",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:14.205536+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "b6acbd7a-93d6-5fdc-aea3-afac17bd8844",
+        "qa": {
+          "id": "f3f926d4-1ee4-4fe0-9d29-d123dfe85eaa",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-16",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:17.842253+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "81580404-422c-5592-a95b-6f1f641dffda",
+        "qa": {
+          "id": "b11687d6-1933-4a6b-823c-b5af52a9caab",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-17",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:23.815554+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "c7cae165-f9fa-5d97-a792-d0aa31c72c71",
+        "qa": {
+          "id": "041ff454-22ed-4753-bce9-f8d3c2babb95",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-18",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:24.719985+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "bf02f564-6269-5ae9-abce-07c50c3ad289",
+        "qa": {
+          "id": "64d9ccb9-f054-4b55-b83a-cf087ac84b7a",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-19",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:31.001048+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "a2b15c88-1be4-5a50-a283-dcee8568a5d1",
+        "qa": {
+          "id": "cf5b9a4b-b4d7-4074-9f4a-23e8caf21d62",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-DA-20",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:34.364958+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "ba2f8992-537c-5f11-a826-6dd7c575a509",
+        "qa": {
+          "id": "94e0f73e-183e-4d84-8c2e-3d2187f76acd",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-DA-21",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:14:38.646374+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "3104137b-c3ea-58d0-a9d1-71a6979eb3df",
+        "qa": {
+          "id": "ab7d9fc1-00df-44a0-8f20-c6fb058be0e2",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-DA-22",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:23.555054+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "ce0ec976-4fc5-5b09-a3a1-e8d40b9a6ee3",
+        "qa": {
+          "id": "129ce4d5-260d-479a-ba6e-030b3a0cf3d4",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-DA-23",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:25.904557+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "9f40b4cd-a8d7-585f-a3e6-e95f8a76b8e1",
+        "qa": {
+          "id": "48093f0f-5c39-40f3-8e43-c13360aa9498",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-DA-24",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:30.498478+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "c1c2b141-2b6b-5e96-aa1e-930979c25853",
+        "qa": {
+          "id": "d861ff8e-66d9-4515-926f-ae48cd784e48",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-DA-25",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:44:45.304162+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "35e4d137-f3ad-5760-a511-14a4bc2485cd",
+        "qa": {
+          "id": "338dda9d-be20-49c9-8f54-c48af9eba550",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-DA-26",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:44:35.918333+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "bc2d4ff7-d73f-5ed4-a358-b4b3d4623c9d",
+        "qa": {
+          "id": "8fde1df2-f65c-4a53-b22b-55db7bfa8f63",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-DA-27",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:44:25.894313+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "78a3fb1a-f8bd-5a3e-a4dd-b7529694eeb7",
+        "qa": {
+          "id": "8403557a-1c85-45c1-9bff-b6d695342aef",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-DA-28",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:44:14.913542+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "e83ac783-0c53-5e75-a370-413089ff8e63",
+        "qa": {
+          "id": "0df92e50-bd04-45ba-8313-a607972a68f8",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T20:25:26.294096+00:00"
+        },
+        "code": "ENG7-U01-L01",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T20:47:06.272682+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "40af678f-b912-5b45-a941-55134f9e31fa",
+        "qa": {
+          "id": "4ed2be97-c2d8-4a2b-ba50-0328dc3d3c4c",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T20:25:26.294096+00:00"
+        },
+        "code": "ENG7-U01-L02",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T20:47:18.179004+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "5c42c2f0-ed04-5ab6-a956-51aa96660b5f",
+        "qa": {
+          "id": "ad873584-ad13-4932-b04b-b4a5ffc44560",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T20:25:26.294096+00:00"
+        },
+        "code": "ENG7-U01-L03",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T20:47:29.027675+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "06726d1e-c5de-554f-a818-41b6998a124c",
+        "qa": {
+          "id": "ac85cd7b-ae32-418c-b9ee-fbb63803cc1c",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T20:25:26.294096+00:00"
+        },
+        "code": "ENG7-U01-L04",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T20:47:44.143346+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "2bc6c17f-88ab-51bc-af54-90d96321703a",
+        "qa": {
+          "id": "21b6996e-54a1-47ce-97d7-537ba01ea126",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T20:25:26.294096+00:00"
+        },
+        "code": "ENG7-U01-L05",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T20:48:06.455958+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "33b277c6-fd19-50f1-a5b9-8a9ffe15d0ba",
+        "qa": {
+          "id": "d2bee1f4-acdd-4c46-85cb-5bc1c8df93b3",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T20:25:26.294096+00:00"
+        },
+        "code": "ENG7-U01-L06",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T20:48:24.597346+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "73bbe712-fbcf-5995-ab9d-eae8282531d3",
+        "qa": {
+          "id": "80039982-887e-499b-9267-113778512ebd",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-L07",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:44:26.785609+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "3c05a599-565c-5e15-a5f2-e5c6b1da8cdc",
+        "qa": {
+          "id": "418337a9-10f5-43a8-99ac-e958385763b6",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-L08",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:44:16.576069+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "db0b731b-30b7-54a4-a5e1-5a8f76a946f8",
+        "qa": {
+          "id": "9d13bf6e-463f-4fd3-99df-3237c05f74fb",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-L09",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:44:00.433704+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "6a3b79eb-652e-5b6d-a095-cf32e1e5ff21",
+        "qa": {
+          "id": "0379b912-2211-48dd-bbae-b5c140d74e84",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-L10",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:43:52.847568+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "4bc58881-3121-545b-a4ff-b6fc4d94fccf",
+        "qa": {
+          "id": "357f9ee5-69d9-435a-8a6b-71eb487625d4",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-01",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:33.838199+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "8d587963-b930-52b5-acc0-c12012c2b854",
+        "qa": {
+          "id": "05c79a61-acce-42da-b590-5ee45aa1f0d9",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-02",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:38.863835+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "853d15b1-5ab1-50ab-ae8a-0b7a4d7ac7fb",
+        "qa": {
+          "id": "7e18a378-bae4-486f-a4ae-7930403996b6",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-03",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:43.260566+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "9331dcd6-6a65-57a0-a415-079f9a876b12",
+        "qa": {
+          "id": "470730e3-4d94-4560-b03f-156536cf334a",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-04",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:46.357355+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "ed037fbe-7b10-5a63-ae9b-c337b81b8111",
+        "qa": {
+          "id": "e81a57a1-9d25-4df7-a256-894a658eaa19",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-05",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:51.665914+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "14ebaee7-02aa-5c94-a480-fedc1800b123",
+        "qa": {
+          "id": "0045b992-c7c4-4d4b-8c54-b790d2e7bb9e",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-06",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:53.856742+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "7febfc03-02da-55a5-a8c7-4c42b4ef9ee3",
+        "qa": {
+          "id": "11628567-709b-49a9-9222-4edcc6ef25a2",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-07",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:16:58.898638+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "8eb2d61f-498e-56c9-a997-171d9b7cfcbb",
+        "qa": {
+          "id": "2708c72c-980e-4045-adc4-af0533f88b19",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-08",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:17:11.054367+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "4ad08266-3996-5dcc-adca-0a48981e9149",
+        "qa": {
+          "id": "57d22078-0381-4600-b1c1-2cf52c3e2ad1",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-09",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:17:11.654891+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "3e56dbcc-6724-5991-a1f7-117555b3faae",
+        "qa": {
+          "id": "4b867912-d2a5-45f0-83dc-43f77a8c822a",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-10",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:24:53.71912+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "c62033df-3509-56b6-a5bb-ded1b4c12470",
+        "qa": {
+          "id": "25806063-1f72-4321-a04a-e247133ec7b7",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-11",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:24:57.771027+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "a1abf88c-9388-5c43-a26e-a0cccd64d835",
+        "qa": {
+          "id": "4256222c-8330-4413-8c82-5b8f0f2d2d23",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-12",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:25:02.804092+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "893976c1-429f-50e3-a94a-38bae53dc685",
+        "qa": {
+          "id": "ae8de52e-6d39-4eb9-80ad-9815bd30b5c6",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-13",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:25:05.399596+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "fae14fdc-144c-56a2-ae16-3b340c3fbde7",
+        "qa": {
+          "id": "bf947ba5-377e-4371-9476-54d7764b3ba1",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-14",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:25:09.016744+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "608842af-03e7-55a3-af20-d41b4f7f7f7d",
+        "qa": {
+          "id": "06e6d3e7-b096-46e3-84a2-e264a03822b2",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-15",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:05.561799+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "99a7d987-1cda-57f0-a145-9e321c0e99a8",
+        "qa": {
+          "id": "37e8f383-bb1e-41ed-aea2-f0bd6e1aa16e",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-16",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:07.221836+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "27b59002-9103-5268-aceb-6002036b208f",
+        "qa": {
+          "id": "f18001aa-a3f7-4ef9-9cd9-b3d5cdc5350e",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-17",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:11.231603+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "d68bc01c-4499-52f6-ad90-a6bb1b64c0eb",
+        "qa": {
+          "id": "0ed7fa10-f175-429a-b2d2-372749d3a613",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-18",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:14.552724+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "9f86f3d7-4e1a-51c3-a0d5-329f947442d6",
+        "qa": {
+          "id": "a3b95688-4ca3-42a9-be8c-d8965c44068a",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-19",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:20.217555+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "71242a00-6078-53cb-a1d5-dbc3e0263b7b",
+        "qa": {
+          "id": "acebd061-f31d-4112-81c3-d4b20f29f6ed",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-MA-20",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:23.895842+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "ee7fd3b7-3c62-508f-afd9-0b8030655fa6",
+        "qa": {
+          "id": "7b83dab0-c5c0-4134-a469-bbc8d2e97284",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-MA-21",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:29.651217+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "e49ef413-7894-595f-a6e4-e0a8a073dc2f",
+        "qa": {
+          "id": "7637a477-47b3-4351-b299-c8d6c2b20996",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-MA-22",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:32.697739+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "f439928b-c699-53b1-a7bb-203e20a8138e",
+        "qa": {
+          "id": "5372eb95-ff12-48e0-973c-6cd370701b72",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-MA-23",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:36.840696+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "237d7cd6-f385-5c90-a457-1666f7f7394d",
+        "qa": {
+          "id": "453c8d6e-0808-4e4c-9460-5aa998d30b01",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-MA-24",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:40.333552+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "bf9b27c1-9ea0-5855-ac04-fd62e826086f",
+        "qa": {
+          "id": "ff06152c-ea5c-4a18-af79-f4efed89b278",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-MA-25",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:43:48.453769+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "2dc57892-dac2-578b-a93e-b74d8f3bf5dd",
+        "qa": {
+          "id": "0c1f5684-ab05-4d53-a426-c3e249addc58",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-MA-26",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:43:43.896545+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "b44ca152-325f-5069-aa50-2fbc74e6c6e6",
+        "qa": {
+          "id": "a17e8847-de7a-45b6-8748-fec60616f748",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-MA-27",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:43:38.518656+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "e3118404-f017-5b14-a473-adaeca0a0c17",
+        "qa": {
+          "id": "64b687f2-bfcb-44ad-9806-1b8467533bf9",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T18:49:29.9886+00:00"
+        },
+        "code": "ENG7-U01-MA-28",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T19:43:35.63737+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "95a8c766-5b3c-59d9-a613-1e2e12c3388f",
+        "qa": {
+          "id": "e021e187-b54d-42d7-8100-34f53dd97ae4",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P01",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:43.010768+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "0e9bb94e-cea5-5326-a69c-36ceb0573f2a",
+        "qa": {
+          "id": "f2f22ec8-7b67-4a85-b68a-3c45cf0a58f0",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P02",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:26:46.7127+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "eaccb614-f3c8-5486-a313-d7ea5ecd9446",
+        "qa": {
+          "id": "4cc05450-a268-49b5-ae48-dc5f7ead7ee2",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P03",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:07.544711+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "873f3ee3-a36c-50a6-aba9-3254f27c1d63",
+        "qa": {
+          "id": "4e9425c1-2a54-4541-9c00-d05aa6258732",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P04",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:11.504561+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "5cc4d074-8020-53be-afc2-cf8ce3664fde",
+        "qa": {
+          "id": "8e02dd14-75d9-4405-bcec-7ebbb48708bd",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P05",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:15.343998+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "1bed6ad5-f532-59f6-a2aa-045cc5a71f98",
+        "qa": {
+          "id": "44a309ae-2eee-4a91-bb4b-e1844e8702d8",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P06",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:18.165651+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "418e0f3d-99ba-55e0-a0ec-0e1e9984cc46",
+        "qa": {
+          "id": "38933776-611b-4352-a88a-5e38244ca82e",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P07",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:22.552935+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "6fd62493-2964-56a4-a463-5afee5ffcb1e",
+        "qa": {
+          "id": "36ed2633-5162-49bc-9a0c-49c5e7412f6a",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P08",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:26.11358+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "6d0b535f-55bc-5fbf-a8a8-2b3bbbf28b75",
+        "qa": {
+          "id": "399174d8-4e38-431b-bb02-e9f214127692",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P09",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:31.107947+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "f4238e50-22d6-5a62-ab69-be478eef7c40",
+        "qa": {
+          "id": "7cd06f7c-c8bc-4927-8d0a-f9328f29ff90",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P10",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:33.409143+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "81309985-4bf9-529d-a100-03dd405732a5",
+        "qa": {
+          "id": "2367b707-87fd-4a1c-b509-47abab34f5fa",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P11",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:38.232409+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "93391aa2-194a-54cc-ad87-73d366ba43e2",
+        "qa": {
+          "id": "732e2f53-f71e-44f6-8eb2-bce5f5a3e853",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P12",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:41.265603+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "20788089-a1e7-57f1-af87-ef874fade1f2",
+        "qa": {
+          "id": "203b6fd4-0154-4306-a7cb-c72e3aad3897",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P13",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:45.076561+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "1b814e88-9e97-5b0c-a34d-9964eb102412",
+        "qa": {
+          "id": "ac2f6486-0954-4044-8aa4-a57d4bde713e",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P14",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:28:50.971567+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "55df5dfd-e207-57db-a870-c8c15f64ebd8",
+        "qa": {
+          "id": "552ff45d-d19a-445d-af9f-73fb7513551b",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P15",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:30:21.541754+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "0071eaf3-75f9-52a5-adba-4e9e1191358e",
+        "qa": {
+          "id": "f64a15e6-b4b1-473d-bc95-9945f8910912",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P16",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:30:25.37487+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "71f28a88-9a2c-5a7a-aad5-d2bb2c39cadf",
+        "qa": {
+          "id": "63f55609-4c63-40c2-ba72-ea9e94c73b47",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P17",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:30:41.387461+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "184273ed-cd85-5c0f-a744-d0db50ebb80d",
+        "qa": {
+          "id": "ff6302c7-ccc2-4eb7-aed4-795ec1b6c7d0",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P18",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:30:51.886696+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "8c44b623-6202-5ecf-a012-3068734294d3",
+        "qa": {
+          "id": "361f9365-9022-4501-9313-8ec650cdf080",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P19",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:30:56.511991+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "8515d2c1-bd0f-587b-af7a-964e6f60141e",
+        "qa": {
+          "id": "f2a5423a-6aa8-411c-8d0c-6c433db9d9ec",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P20",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:31:02.833446+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "73f976b7-8e14-5425-ad1e-10a53d21a2ec",
+        "qa": {
+          "id": "2849a73d-5418-45a0-a434-856a6731e771",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P21",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:31:04.695455+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "20c8d0bd-bc09-55a0-a0a6-3235c619dbbd",
+        "qa": {
+          "id": "860c51fb-70de-46e8-bfef-69bf8fcccd21",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P22",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:31:08.253087+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "0f39ed54-3a3b-5d0b-a8d9-b9f38801fed9",
+        "qa": {
+          "id": "9cd29991-c6cd-468d-9043-5a2b030c3c7c",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P23",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:31:13.192589+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "91d7a0b6-043c-5ee0-a461-412f54bba009",
+        "qa": {
+          "id": "1046b0ca-045e-4423-83aa-5cc8db52e157",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P24",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:31:19.206108+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "3ff00d0f-a4d0-570b-a4b9-ef98c4435162",
+        "qa": {
+          "id": "bd663dd2-3358-4c92-b311-aa58e4a07368",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing",
+            "duplicate_prompt_in_skill"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P25",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:31:21.211613+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "02ac1688-8305-5025-a3fd-1d0754ad49bf",
+        "qa": {
+          "id": "79e59703-d0c1-4d15-88d8-0fabeb874ded",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing",
+            "duplicate_prompt_in_skill"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P26",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:31:26.142927+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "ee4a4214-735e-5d54-ae3e-d40a3f3d5997",
+        "qa": {
+          "id": "28243114-20bf-4cbe-9dd2-f425c5a91804",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P27",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:32:21.473304+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "cb821dcd-ae7b-5ab4-a4e2-10e5bf33ca60",
+        "qa": {
+          "id": "6c90f987-d033-4c66-b44d-3ba3a846121b",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P28",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:33:14.805063+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "2829d3ce-637d-50e5-ad03-0ab3c825aeb0",
+        "qa": {
+          "id": "e720fe00-b212-4260-b366-6f54dd3dc3dd",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P29",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:32:26.295075+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "0def1d88-a292-5630-a032-50e17775152e",
+        "qa": {
+          "id": "38168d93-7067-44e7-8cd7-7092cf0f147a",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P30",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:32:33.450926+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "cd0d0361-3de0-51c6-a19d-b2845d90bef5",
+        "qa": {
+          "id": "8cc618f4-6ae0-4956-a9b7-52fcfe217dc8",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P31",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:32:35.501739+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "66dec169-854a-55d7-a0a9-18857ffae760",
+        "qa": {
+          "id": "ce40fc35-21b4-4ce4-aab7-eb97b027d531",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P32",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:32:48.276545+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "c58bfdcf-da70-57dd-aae4-6000bffc9d24",
+        "qa": {
+          "id": "651a723d-fc81-47ba-9666-5085ef73cd09",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P33",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:32:48.205581+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "a3dd12a9-db0c-5d41-add4-8b0b90a983a1",
+        "qa": {
+          "id": "7d7fa298-97de-4614-8d46-afd55a5f5aa0",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P34",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:32:49.037806+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "c10424d1-4dbe-5d0e-a1f1-6937b3cf20dd",
+        "qa": {
+          "id": "2b98d8d6-6e95-438a-844c-4cd339e16db9",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P35",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:32:54.550562+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "4f732a65-405a-54cf-aaac-6166a320a0e4",
+        "qa": {
+          "id": "a5b7686b-1be0-47a6-8f00-9fa4e821df6a",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P36",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:32:59.109627+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "6df50b22-f02b-596d-a6d0-412d4eeb07fc",
+        "qa": {
+          "id": "968b0951-f998-4130-89ea-f9ed2e62075c",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P37",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:33:07.212707+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "d54c0eb5-42c5-545b-ae39-3027c9790b97",
+        "qa": {
+          "id": "03c93274-c44a-44ac-aca4-664202741496",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P38",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:33:09.653395+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "42de83dc-b896-5dfb-a599-fdeb464ba7d5",
+        "qa": {
+          "id": "d840533c-06aa-4948-ac4f-3b60f768d196",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P39",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:34:20.330658+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "cdf9d2fa-aed4-5c3c-a1de-a4b1aa1dca98",
+        "qa": {
+          "id": "f1d8293b-cf24-498a-b1a0-f3716d7c97a6",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P40",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:34:20.690922+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "fa2119c2-ab55-51a3-a941-9ead8b053d4a",
+        "qa": {
+          "id": "10aff7c0-366f-4881-8585-21c719a278ab",
+          "errors": [],
+          "passed": true,
+          "version": 1,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-20T21:55:39.680391+00:00"
+        },
+        "code": "ENG7-U01-P41",
+        "status": "published",
+        "version": 1,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:34:25.482578+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "35b9989a-c368-5d69-a831-0f6ae9c8f259",
+        "qa": {
+          "id": "b9e222e1-0119-4880-a1e4-b915ebec0e46",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-R01",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:34:35.163591+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "06865834-6b1a-519f-ab76-0e41df50c749",
+        "qa": {
+          "id": "0dc13b28-2a94-463a-94a1-94a93551d50a",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-R02",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:34:42.922373+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "613c33ee-aebc-54ea-a125-214f63dd4d24",
+        "qa": {
+          "id": "12dab3d4-1207-44c3-967b-53847e63edb8",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-R03",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:34:46.736013+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "94bdf376-2ab4-53e8-a050-0e4e76094790",
+        "qa": {
+          "id": "31040b57-16d4-4270-9165-b22b417c8279",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-R04",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:34:48.849618+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "4a8f83bb-93c3-50da-addd-f506ff8e8cd6",
+        "qa": {
+          "id": "c9f945d7-8ba5-40ad-a5cb-111621440bce",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-R05",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:34:51.282618+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "a1b5b7e3-b5da-59a3-af05-12644f0928fe",
+        "qa": {
+          "id": "91f6ef39-d4c1-4e03-80ce-4a3561066089",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-R06",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:34:56.782819+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "61816b25-72d5-5b3a-adc8-125e7c46b706",
+        "qa": {
+          "id": "fee36ae4-b670-4371-96dc-2096bce54f66",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-R07",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:35:11.168555+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "fb94811b-6365-5203-a06e-fac76afb1153",
+        "qa": {
+          "id": "a4b19ca4-9fcc-4b10-8b32-9b5ee0434117",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-R08",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:35:18.970132+00:00",
+        "currentContentApproval": true
+      },
+      {
+        "id": "e16a1958-1645-5755-acc0-f73542782c1a",
+        "qa": {
+          "id": "3d651d8a-da51-4522-90c5-f37f7ba39abb",
+          "errors": [],
+          "passed": true,
+          "version": 2,
+          "warnings": [
+            "misconception_mapping_missing"
+          ],
+          "createdAt": "2026-10-21T12:43:40.537286+00:00"
+        },
+        "code": "ENG7-U01-R09",
+        "status": "published",
+        "version": 2,
+        "reviewStatus": "approved",
+        "lastReviewedAt": "2026-10-21T13:35:18.357007+00:00",
+        "currentContentApproval": true
+      }
+    ],
+    "release": {
+      "id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "status": "draft",
+      "activatedAt": null
+    },
+    "observedAt": "2026-10-21T20:49:37.818231+00:00"
+  },
+  "sixNewOrdinaryReviews": {
+    "reviews": [
+      {
+        "id": "a69dcd4f-e3d3-4712-a335-5ccede189a9e",
+        "notes": null,
+        "item_id": "e83ac783-0c53-5e75-a370-413089ff8e63",
+        "decision": "approved",
+        "created_at": "2026-10-21T20:47:06.272682+00:00",
+        "version_no": 2,
+        "review_type": "content",
+        "reviewer_id": "e6097c5f-fa13-49fb-bac8-c16d805ded86"
+      },
+      {
+        "id": "32f7950c-3b0f-4283-9922-db97b0bae319",
+        "notes": null,
+        "item_id": "40af678f-b912-5b45-a941-55134f9e31fa",
+        "decision": "approved",
+        "created_at": "2026-10-21T20:47:18.179004+00:00",
+        "version_no": 2,
+        "review_type": "content",
+        "reviewer_id": "e6097c5f-fa13-49fb-bac8-c16d805ded86"
+      },
+      {
+        "id": "be3fc109-f04a-434c-803c-0817e85861f7",
+        "notes": null,
+        "item_id": "5c42c2f0-ed04-5ab6-a956-51aa96660b5f",
+        "decision": "approved",
+        "created_at": "2026-10-21T20:47:29.027675+00:00",
+        "version_no": 2,
+        "review_type": "content",
+        "reviewer_id": "e6097c5f-fa13-49fb-bac8-c16d805ded86"
+      },
+      {
+        "id": "2e34cf50-97cb-44c2-95b7-3e1e7fb1ee87",
+        "notes": null,
+        "item_id": "06726d1e-c5de-554f-a818-41b6998a124c",
+        "decision": "approved",
+        "created_at": "2026-10-21T20:47:44.143346+00:00",
+        "version_no": 2,
+        "review_type": "content",
+        "reviewer_id": "e6097c5f-fa13-49fb-bac8-c16d805ded86"
+      },
+      {
+        "id": "ff25bd0b-df37-45e9-8f07-0d7326060703",
+        "notes": null,
+        "item_id": "2bc6c17f-88ab-51bc-af54-90d96321703a",
+        "decision": "approved",
+        "created_at": "2026-10-21T20:48:06.455958+00:00",
+        "version_no": 2,
+        "review_type": "content",
+        "reviewer_id": "e6097c5f-fa13-49fb-bac8-c16d805ded86"
+      },
+      {
+        "id": "1fb5fa02-12e3-49f3-b5b2-7f44ea96455b",
+        "notes": null,
+        "item_id": "33b277c6-fd19-50f1-a5b9-8a9ffe15d0ba",
+        "decision": "approved",
+        "created_at": "2026-10-21T20:48:24.597346+00:00",
+        "version_no": 2,
+        "review_type": "content",
+        "reviewer_id": "e6097c5f-fa13-49fb-bac8-c16d805ded86"
+      }
+    ],
+    "observedAt": "2026-10-21T20:52:56.391574+00:00"
+  },
+  "reusedEvidence": [
+    "docs/evidence/english-7-unit-01-listening-registration-20261022.json",
+    "docs/evidence/english-7-unit-01-audio-registration-20261021.json"
+  ],
+  "implementationSourceCi": {
+    "commit": "47be31c28279ddf54dbba85b464fed7485e5af95",
+    "runId": 39671174528,
+    "conclusion": "success",
+    "productionCommitVerified": "47be31c28279ddf54dbba85b464fed7485e5af95",
+    "newRuntimeTestsRequired": false,
+    "reason": "Documentation and read-only approval verification; implementation and source contents unchanged."
+  },
+  "boundaries": [
+    "Owner acceptance closes reviewer playback, not automated browser-runtime recovery.",
+    "No independent SME/licence, qualified assessment form or learner release is inferred.",
+    "English release remains draft/inactive.",
+    "Assessed playback/interruption/scoring policies remain unadopted.",
+    "Speaking stays classroom-assessed; ElevenLabs integration deferred."
+  ],
+  "nextSlices": [
+    "Accept and implement assessed-listening playback/interruption contract before Diagnostic/Mastery allocation.",
+    "Author remaining accepted DB/MB/MC 84 questions with protected sources/recordings and whole-bank comparison.",
+    "Onboard nine guides/writing; complete qualification, policy, permissions, learner acceptance and release controls."
+  ]
+}
