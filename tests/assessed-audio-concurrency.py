@@ -1,4 +1,4 @@
-"""Opt-in mastery form races; disposable independent PostgreSQL connections only."""
+"""Assessed listening races; disposable independent PostgreSQL connections only."""
 from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 import json
@@ -77,7 +77,7 @@ with database_uri() as uri:
         c.execute("update assessment_blueprints set configuration_snapshot=jsonb_set(configuration_snapshot,'{assessmentPolicy}',%s::jsonb) where id=%s",[json.dumps(policy),ident(740)])
         c.execute("update learning_model_configurations set configuration=jsonb_set(configuration,'{assessmentPolicyContracts}',configuration->'assessmentPolicyContracts'||jsonb_build_array(%s::jsonb)) where id=%s",[json.dumps(policy),ident(611)])
         c.execute("""insert into learning_audio_versions(id,curriculum_release_id,unit_id,source_family_id,locale,title,bucket_id,object_path,sha256,mime_type,byte_length,duration_ms,source_reference,permission_reference,listening_review_reference,reviewed_by,reviewed_at)
-          values(%s,%s,%s,%s,'en','Synthetic tone','fixture-audio','tone.wav',repeat('0',64),'audio/wav',1000,300,'Fixture','Fixture','Fixture',%s,now())""",[ident(9000),ident(501),ident(511),ident(9500),ident(30)])
+          values(%s,%s,%s,%s,'en','Synthetic tone','fixture-audio',repeat('0',64)||'.wav',repeat('0',64),'audio/wav',1000,300,'Fixture','Fixture','Fixture',%s,now())""",[ident(9000),ident(501),ident(511),ident(9500),ident(30)])
         c.execute('update items set stimulus=%s::jsonb where id=%s',[json.dumps(dict(kind='audio',schemaVersion='haiedu-audio-v1',audioVersionId=ident(9000))),ident(701)])
         session=launch(c)['session']['id'];item=operation(c,session,'serve')
         assert item['item']['id']==ident(701)
