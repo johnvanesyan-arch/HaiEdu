@@ -1,0 +1,3553 @@
+{
+  "schemaVersion": "haiedu-english-review-audio-handoff-v1",
+  "checkpoint": "16.1C.9",
+  "date": "2026-10-21",
+  "timezone": "Asia/Yerevan",
+  "scope": "Read-only production reconciliation, source-file retrieval and exact-script recording handoff; documentation/Notion refresh only.",
+  "baselineCommit": "5eabd1f204a57e299913b4fc470eb393b56a197e",
+  "roadmapVersion": "4.34",
+  "production": {
+    "items": [
+      {
+        "id": "1ea0570e-fb6c-58b3-aab4-2e950491baff",
+        "code": "ENG7-U01-DA-01",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:06:03.99715+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "38743f9f-e3e8-5aff-a3c4-9aaeb55656b2",
+        "code": "ENG7-U01-DA-02",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:10:46.114655+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "9b78f48e-9048-500a-ad52-4757d7d09f2f",
+        "code": "ENG7-U01-DA-03",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:10:51.839301+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "c07e475d-ee74-5d15-a834-fb8e14712165",
+        "code": "ENG7-U01-DA-04",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:10:56.174294+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "4c28c36e-19e2-5dc6-ac88-0f688b816bed",
+        "code": "ENG7-U01-DA-05",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:11:02.030566+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "835fe7a7-c70e-59b9-af4c-d41aad2971f2",
+        "code": "ENG7-U01-DA-06",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:11:07.419992+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "fae17523-cd5b-5372-a0d2-8782cb9c1ef5",
+        "code": "ENG7-U01-DA-07",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:11:13.652593+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "2f13a81b-e7e2-5d8e-a349-cf33056ef235",
+        "code": "ENG7-U01-DA-08",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:11:18.072586+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "b25d90c6-6c32-566b-a354-81d8c82249e6",
+        "code": "ENG7-U01-DA-09",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:11:22.570029+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "8351bc3c-a50b-5e7a-a292-e287eb8f0024",
+        "code": "ENG7-U01-DA-10",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:13:53.041869+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "87fb9c02-215e-574e-a69a-7215c1d2d2cf",
+        "code": "ENG7-U01-DA-11",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:13:57.505153+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "fb8abe21-e9ed-5a5d-a4c0-d489803599c3",
+        "code": "ENG7-U01-DA-12",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:04.565528+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "2c22823c-b41e-5dc0-a6cb-f1a18de85957",
+        "code": "ENG7-U01-DA-13",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:07.276537+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "c4775125-5b62-5ccb-a49a-9f7e0ba4b50d",
+        "code": "ENG7-U01-DA-14",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:11.227772+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "e5e55f81-123a-5291-a04a-21c54e92a7bd",
+        "code": "ENG7-U01-DA-15",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:14.205536+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "b6acbd7a-93d6-5fdc-aea3-afac17bd8844",
+        "code": "ENG7-U01-DA-16",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:17.842253+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "81580404-422c-5592-a95b-6f1f641dffda",
+        "code": "ENG7-U01-DA-17",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:23.815554+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "c7cae165-f9fa-5d97-a792-d0aa31c72c71",
+        "code": "ENG7-U01-DA-18",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:24.719985+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "bf02f564-6269-5ae9-abce-07c50c3ad289",
+        "code": "ENG7-U01-DA-19",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:31.001048+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "a2b15c88-1be4-5a50-a283-dcee8568a5d1",
+        "code": "ENG7-U01-DA-20",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:34.364958+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "ba2f8992-537c-5f11-a826-6dd7c575a509",
+        "code": "ENG7-U01-DA-21",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:14:38.646374+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "3104137b-c3ea-58d0-a9d1-71a6979eb3df",
+        "code": "ENG7-U01-DA-22",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:23.555054+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "ce0ec976-4fc5-5b09-a3a1-e8d40b9a6ee3",
+        "code": "ENG7-U01-DA-23",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:25.904557+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "9f40b4cd-a8d7-585f-a3e6-e95f8a76b8e1",
+        "code": "ENG7-U01-DA-24",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:30.498478+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "c1c2b141-2b6b-5e96-aa1e-930979c25853",
+        "code": "ENG7-U01-DA-25",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Diagnostic",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "35e4d137-f3ad-5760-a511-14a4bc2485cd",
+        "code": "ENG7-U01-DA-26",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Diagnostic",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "bc2d4ff7-d73f-5ed4-a358-b4b3d4623c9d",
+        "code": "ENG7-U01-DA-27",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Diagnostic",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "78a3fb1a-f8bd-5a3e-a4dd-b7529694eeb7",
+        "code": "ENG7-U01-DA-28",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Diagnostic",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "e83ac783-0c53-5e75-a370-413089ff8e63",
+        "code": "ENG7-U01-L01",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "40af678f-b912-5b45-a941-55134f9e31fa",
+        "code": "ENG7-U01-L02",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "5c42c2f0-ed04-5ab6-a956-51aa96660b5f",
+        "code": "ENG7-U01-L03",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "06726d1e-c5de-554f-a818-41b6998a124c",
+        "code": "ENG7-U01-L04",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "2bc6c17f-88ab-51bc-af54-90d96321703a",
+        "code": "ENG7-U01-L05",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "33b277c6-fd19-50f1-a5b9-8a9ffe15d0ba",
+        "code": "ENG7-U01-L06",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "73bbe712-fbcf-5995-ab9d-eae8282531d3",
+        "code": "ENG7-U01-L07",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "3c05a599-565c-5e15-a5f2-e5c6b1da8cdc",
+        "code": "ENG7-U01-L08",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "db0b731b-30b7-54a4-a5e1-5a8f76a946f8",
+        "code": "ENG7-U01-L09",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "6a3b79eb-652e-5b6d-a095-cf32e1e5ff21",
+        "code": "ENG7-U01-L10",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "4bc58881-3121-545b-a4ff-b6fc4d94fccf",
+        "code": "ENG7-U01-MA-01",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:33.838199+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "8d587963-b930-52b5-acc0-c12012c2b854",
+        "code": "ENG7-U01-MA-02",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:38.863835+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "853d15b1-5ab1-50ab-ae8a-0b7a4d7ac7fb",
+        "code": "ENG7-U01-MA-03",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:43.260566+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "9331dcd6-6a65-57a0-a415-079f9a876b12",
+        "code": "ENG7-U01-MA-04",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:46.357355+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "ed037fbe-7b10-5a63-ae9b-c337b81b8111",
+        "code": "ENG7-U01-MA-05",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:51.665914+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "14ebaee7-02aa-5c94-a480-fedc1800b123",
+        "code": "ENG7-U01-MA-06",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:53.856742+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "7febfc03-02da-55a5-a8c7-4c42b4ef9ee3",
+        "code": "ENG7-U01-MA-07",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:16:58.898638+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "8eb2d61f-498e-56c9-a997-171d9b7cfcbb",
+        "code": "ENG7-U01-MA-08",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:17:11.054367+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "4ad08266-3996-5dcc-adca-0a48981e9149",
+        "code": "ENG7-U01-MA-09",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:17:11.654891+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "3e56dbcc-6724-5991-a1f7-117555b3faae",
+        "code": "ENG7-U01-MA-10",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:24:53.71912+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "c62033df-3509-56b6-a5bb-ded1b4c12470",
+        "code": "ENG7-U01-MA-11",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:24:57.771027+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "a1abf88c-9388-5c43-a26e-a0cccd64d835",
+        "code": "ENG7-U01-MA-12",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:25:02.804092+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "893976c1-429f-50e3-a94a-38bae53dc685",
+        "code": "ENG7-U01-MA-13",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:25:05.399596+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "fae14fdc-144c-56a2-ae16-3b340c3fbde7",
+        "code": "ENG7-U01-MA-14",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:25:09.016744+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "608842af-03e7-55a3-af20-d41b4f7f7f7d",
+        "code": "ENG7-U01-MA-15",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:05.561799+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "99a7d987-1cda-57f0-a145-9e321c0e99a8",
+        "code": "ENG7-U01-MA-16",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:07.221836+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "27b59002-9103-5268-aceb-6002036b208f",
+        "code": "ENG7-U01-MA-17",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:11.231603+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "d68bc01c-4499-52f6-ad90-a6bb1b64c0eb",
+        "code": "ENG7-U01-MA-18",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:14.552724+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "9f86f3d7-4e1a-51c3-a0d5-329f947442d6",
+        "code": "ENG7-U01-MA-19",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:20.217555+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "71242a00-6078-53cb-a1d5-dbc3e0263b7b",
+        "code": "ENG7-U01-MA-20",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:23.895842+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "ee7fd3b7-3c62-508f-afd9-0b8030655fa6",
+        "code": "ENG7-U01-MA-21",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:29.651217+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "e49ef413-7894-595f-a6e4-e0a8a073dc2f",
+        "code": "ENG7-U01-MA-22",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:32.697739+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "f439928b-c699-53b1-a7bb-203e20a8138e",
+        "code": "ENG7-U01-MA-23",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:36.840696+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "237d7cd6-f385-5c90-a457-1666f7f7394d",
+        "code": "ENG7-U01-MA-24",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:40.333552+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "bf9b27c1-9ea0-5855-ac04-fd62e826086f",
+        "code": "ENG7-U01-MA-25",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Mastery",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "2dc57892-dac2-578b-a93e-b74d8f3bf5dd",
+        "code": "ENG7-U01-MA-26",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Mastery",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "b44ca152-325f-5069-aa50-2fbc74e6c6e6",
+        "code": "ENG7-U01-MA-27",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Mastery",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "e3118404-f017-5b14-a473-adaeca0a0c17",
+        "code": "ENG7-U01-MA-28",
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Mastery",
+        "reviews": null,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "needs_review",
+        "approved_review_rows": 0
+      },
+      {
+        "id": "95a8c766-5b3c-59d9-a613-1e2e12c3388f",
+        "code": "ENG7-U01-P01",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:43.010768+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "0e9bb94e-cea5-5326-a69c-36ceb0573f2a",
+        "code": "ENG7-U01-P02",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:26:46.7127+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "eaccb614-f3c8-5486-a313-d7ea5ecd9446",
+        "code": "ENG7-U01-P03",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:07.544711+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "873f3ee3-a36c-50a6-aba9-3254f27c1d63",
+        "code": "ENG7-U01-P04",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:11.504561+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "5cc4d074-8020-53be-afc2-cf8ce3664fde",
+        "code": "ENG7-U01-P05",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:15.343998+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "1bed6ad5-f532-59f6-a2aa-045cc5a71f98",
+        "code": "ENG7-U01-P06",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:18.165651+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "418e0f3d-99ba-55e0-a0ec-0e1e9984cc46",
+        "code": "ENG7-U01-P07",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:22.552935+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "6fd62493-2964-56a4-a463-5afee5ffcb1e",
+        "code": "ENG7-U01-P08",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:26.11358+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "6d0b535f-55bc-5fbf-a8a8-2b3bbbf28b75",
+        "code": "ENG7-U01-P09",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:31.107947+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "f4238e50-22d6-5a62-ab69-be478eef7c40",
+        "code": "ENG7-U01-P10",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:33.409143+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "81309985-4bf9-529d-a100-03dd405732a5",
+        "code": "ENG7-U01-P11",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:38.232409+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "93391aa2-194a-54cc-ad87-73d366ba43e2",
+        "code": "ENG7-U01-P12",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:41.265603+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "20788089-a1e7-57f1-af87-ef874fade1f2",
+        "code": "ENG7-U01-P13",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:45.076561+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "1b814e88-9e97-5b0c-a34d-9964eb102412",
+        "code": "ENG7-U01-P14",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:28:50.971567+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "55df5dfd-e207-57db-a870-c8c15f64ebd8",
+        "code": "ENG7-U01-P15",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:30:21.541754+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "0071eaf3-75f9-52a5-adba-4e9e1191358e",
+        "code": "ENG7-U01-P16",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:30:25.37487+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "71f28a88-9a2c-5a7a-aad5-d2bb2c39cadf",
+        "code": "ENG7-U01-P17",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:30:41.387461+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "184273ed-cd85-5c0f-a744-d0db50ebb80d",
+        "code": "ENG7-U01-P18",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:30:51.886696+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "8c44b623-6202-5ecf-a012-3068734294d3",
+        "code": "ENG7-U01-P19",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:30:56.511991+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "8515d2c1-bd0f-587b-af7a-964e6f60141e",
+        "code": "ENG7-U01-P20",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:31:02.833446+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "73f976b7-8e14-5425-ad1e-10a53d21a2ec",
+        "code": "ENG7-U01-P21",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:31:04.695455+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "20c8d0bd-bc09-55a0-a0a6-3235c619dbbd",
+        "code": "ENG7-U01-P22",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:31:08.253087+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "0f39ed54-3a3b-5d0b-a8d9-b9f38801fed9",
+        "code": "ENG7-U01-P23",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:31:13.192589+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "91d7a0b6-043c-5ee0-a461-412f54bba009",
+        "code": "ENG7-U01-P24",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:31:19.206108+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "3ff00d0f-a4d0-570b-a4b9-ef98c4435162",
+        "code": "ENG7-U01-P25",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:31:21.211613+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing",
+          "duplicate_prompt_in_skill"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "02ac1688-8305-5025-a3fd-1d0754ad49bf",
+        "code": "ENG7-U01-P26",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:31:26.142927+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing",
+          "duplicate_prompt_in_skill"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "ee4a4214-735e-5d54-ae3e-d40a3f3d5997",
+        "code": "ENG7-U01-P27",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:21.473304+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "cb821dcd-ae7b-5ab4-a4e2-10e5bf33ca60",
+        "code": "ENG7-U01-P28",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:24.961572+00:00"
+          },
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:33:14.805063+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 2
+      },
+      {
+        "id": "2829d3ce-637d-50e5-ad03-0ab3c825aeb0",
+        "code": "ENG7-U01-P29",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:26.295075+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "0def1d88-a292-5630-a032-50e17775152e",
+        "code": "ENG7-U01-P30",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:33.450926+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "cd0d0361-3de0-51c6-a19d-b2845d90bef5",
+        "code": "ENG7-U01-P31",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:35.501739+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "66dec169-854a-55d7-a0a9-18857ffae760",
+        "code": "ENG7-U01-P32",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:48.276545+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "c58bfdcf-da70-57dd-aae4-6000bffc9d24",
+        "code": "ENG7-U01-P33",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:48.205581+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "a3dd12a9-db0c-5d41-add4-8b0b90a983a1",
+        "code": "ENG7-U01-P34",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:49.037806+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "c10424d1-4dbe-5d0e-a1f1-6937b3cf20dd",
+        "code": "ENG7-U01-P35",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:54.550562+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "4f732a65-405a-54cf-aaac-6166a320a0e4",
+        "code": "ENG7-U01-P36",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:32:59.109627+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "6df50b22-f02b-596d-a6d0-412d4eeb07fc",
+        "code": "ENG7-U01-P37",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:33:07.212707+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "d54c0eb5-42c5-545b-ae39-3027c9790b97",
+        "code": "ENG7-U01-P38",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:33:09.653395+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "42de83dc-b896-5dfb-a599-fdeb464ba7d5",
+        "code": "ENG7-U01-P39",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:34:20.330658+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "cdf9d2fa-aed4-5c3c-a1de-a4b1aa1dca98",
+        "code": "ENG7-U01-P40",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:34:20.690922+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "fa2119c2-ab55-51a3-a941-9ead8b053d4a",
+        "code": "ENG7-U01-P41",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 1,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:34:25.482578+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 1,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "35b9989a-c368-5d69-a831-0f6ae9c8f259",
+        "code": "ENG7-U01-R01",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:34:35.163591+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "06865834-6b1a-519f-ab76-0e41df50c749",
+        "code": "ENG7-U01-R02",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:34:42.922373+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "613c33ee-aebc-54ea-a125-214f63dd4d24",
+        "code": "ENG7-U01-R03",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:34:46.736013+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "94bdf376-2ab4-53e8-a050-0e4e76094790",
+        "code": "ENG7-U01-R04",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:34:48.849618+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "4a8f83bb-93c3-50da-addd-f506ff8e8cd6",
+        "code": "ENG7-U01-R05",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:34:51.282618+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "a1b5b7e3-b5da-59a3-af05-12644f0928fe",
+        "code": "ENG7-U01-R06",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:34:56.782819+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "61816b25-72d5-5b3a-adc8-125e7c46b706",
+        "code": "ENG7-U01-R07",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:35:11.168555+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "fb94811b-6365-5203-a06e-fac76afb1153",
+        "code": "ENG7-U01-R08",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:35:18.970132+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      },
+      {
+        "id": "e16a1958-1645-5755-acc0-f73542782c1a",
+        "code": "ENG7-U01-R09",
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "reviews": [
+          {
+            "type": "content",
+            "version": 2,
+            "decision": "approved",
+            "createdAt": "2026-10-21T13:35:18.357007+00:00"
+          }
+        ],
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "sme_status": null,
+        "version_no": 2,
+        "review_status": "approved",
+        "approved_review_rows": 1
+      }
+    ],
+    "release": {
+      "id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "status": "draft",
+      "activatedAt": null
+    },
+    "summary": [
+      {
+        "total": 4,
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Diagnostic",
+        "version_no": 1,
+        "review_status": "needs_review"
+      },
+      {
+        "total": 20,
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "version_no": 1,
+        "review_status": "approved"
+      },
+      {
+        "total": 4,
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Diagnostic",
+        "version_no": 2,
+        "review_status": "approved"
+      },
+      {
+        "total": 4,
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Mastery",
+        "version_no": 1,
+        "review_status": "needs_review"
+      },
+      {
+        "total": 20,
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "version_no": 1,
+        "review_status": "approved"
+      },
+      {
+        "total": 4,
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Mastery",
+        "version_no": 2,
+        "review_status": "approved"
+      },
+      {
+        "total": 10,
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "status": "draft",
+        "purpose": "Practice",
+        "version_no": 1,
+        "review_status": "needs_review"
+      },
+      {
+        "total": 41,
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "version_no": 1,
+        "review_status": "approved"
+      },
+      {
+        "total": 9,
+        "errors": [],
+        "passed": true,
+        "status": "published",
+        "purpose": "Practice",
+        "version_no": 2,
+        "review_status": "approved"
+      }
+    ],
+    "checkedAt": "2026-10-21T14:44:54.183651+00:00",
+    "sourceSets": 7,
+    "registeredAudio": 0,
+    "reviewDecisions": [
+      {
+        "total": 99,
+        "decision": "approved",
+        "review_type": "content"
+      }
+    ]
+  },
+  "releaseBoundaries": {
+    "checkedAt": "2026-10-21T14:46:07.899367+00:00",
+    "gateChecks": [
+      {
+        "notes": "This reviewer import does not transition a curriculum release gate.",
+        "status": "pending",
+        "evidence": {
+          "preparation": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+          "reviewerOnboardingOnly": true
+        },
+        "gate_code": "external_sme_approved",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb"
+      },
+      {
+        "notes": "This reviewer import does not transition a curriculum release gate.",
+        "status": "pending",
+        "evidence": {
+          "preparation": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+          "reviewerOnboardingOnly": true
+        },
+        "gate_code": "official_programme_identified",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb"
+      },
+      {
+        "notes": "This reviewer import does not transition a curriculum release gate.",
+        "status": "pending",
+        "evidence": {
+          "preparation": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+          "reviewerOnboardingOnly": true
+        },
+        "gate_code": "normative_sources_registered",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb"
+      },
+      {
+        "notes": "This reviewer import does not transition a curriculum release gate.",
+        "status": "pending",
+        "evidence": {
+          "preparation": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+          "reviewerOnboardingOnly": true
+        },
+        "gate_code": "outcomes_reconciled",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb"
+      },
+      {
+        "notes": "This reviewer import does not transition a curriculum release gate.",
+        "status": "pending",
+        "evidence": {
+          "preparation": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+          "reviewerOnboardingOnly": true
+        },
+        "gate_code": "skills_mapped",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb"
+      },
+      {
+        "notes": "This reviewer import does not transition a curriculum release gate.",
+        "status": "pending",
+        "evidence": {
+          "preparation": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+          "reviewerOnboardingOnly": true
+        },
+        "gate_code": "assessment_scope_bound",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb"
+      },
+      {
+        "notes": "This reviewer import does not transition a curriculum release gate.",
+        "status": "pending",
+        "evidence": {
+          "preparation": "docs/evidence/english-7-unit-01-preparation-20261020.json",
+          "reviewerOnboardingOnly": true
+        },
+        "gate_code": "content_qa_passed",
+        "checked_at": null,
+        "checked_by": null,
+        "updated_at": "2026-10-20T21:55:39.680391+00:00",
+        "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb"
+      }
+    ],
+    "reviewColumns": [
+      "review_status",
+      "last_reviewed_at",
+      "last_reviewed_by"
+    ],
+    "formMemberships": 0,
+    "poolMemberships": 0,
+    "writtenTaskVersions": 0
+  },
+  "englishGuidesStaged": 0,
+  "approvalInterpretation": {
+    "uniqueApprovedCurrentQuestions": 98,
+    "currentVersionApprovedContentReviewRows": 99,
+    "repeatReview": "ENG7-U01-P28 v1 has two approved content-review records; counted once as an approved question.",
+    "all98HavePassingCurrentQaAndActualCurrentVersionReview": true,
+    "ordinaryApprovalDoesNotActivateCurriculum": true
+  },
+  "acceptedBank": {
+    "practice": 60,
+    "diagnostic": 56,
+    "mastery": 84,
+    "total": 200
+  },
+  "stagedBank": {
+    "practice": 60,
+    "diagnostic": 28,
+    "mastery": 28,
+    "total": 116
+  },
+  "approvedBank": {
+    "practice": 50,
+    "diagnostic": 24,
+    "mastery": 24,
+    "total": 98
+  },
+  "remainingAuthoring": {
+    "DB": 28,
+    "MB": 28,
+    "MC": 28,
+    "total": 84,
+    "includesFutureSourceAndRecordingWork": true
+  },
+  "publisherAudio": {
+    "schemaVersion": "haiedu-audio-source-access-v1",
+    "checkedAtUtc": "2026-10-21T13:55:49.215358+00:00",
+    "timezone": "Asia/Yerevan",
+    "source": "Lusine Grigoryan, English 7, Zangak 2023",
+    "scope": "All 20 publisher MP3 files identified through the supplied book. Does not include the five unrecorded original Unit 1 scripts.",
+    "inventoryEvidence": "docs/evidence/english-7-course-audio-inventory-20261021.json",
+    "summary": {
+      "retrieved": 20,
+      "hashesMatch": 20,
+      "bytes": 64312934,
+      "seconds": 2199.390262,
+      "fitsCurrentDeliveryLimits": 19
+    },
+    "records": [
+      {
+        "id": "ENG7-AUDIO-1-1",
+        "track": "1.1",
+        "unit": 1,
+        "page": 6,
+        "activity": "8",
+        "intendedBookMaterial": "Teenagers describing style",
+        "plannedUse": "core-listening",
+        "file": "Unit-01/Soundtrack-1-1.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?RTr0H",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack%201.1.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:16.901068+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 558602,
+        "sha256": "a5759adafe3cad735b558f528d4a2a41b04e592adaa73f3c6b4c37c5db47ddc1",
+        "seconds": 23.275083,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-1-2",
+        "track": "1.2",
+        "unit": 1,
+        "page": 6,
+        "activity": "8",
+        "intendedBookMaterial": "Teenagers describing style",
+        "plannedUse": "core-listening",
+        "file": "Unit-01/Soundtrack-1-2.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?RTr0H",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack%201.2.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:16.901787+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 771135,
+        "sha256": "51047cc19a3f28cbf2c17bcbe3a73981967e76a93c7bc51b969c48b364fb88d7",
+        "seconds": 32.130625,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-1-3",
+        "track": "1.3",
+        "unit": 1,
+        "page": 6,
+        "activity": "8",
+        "intendedBookMaterial": "Teenagers describing style",
+        "plannedUse": "core-listening",
+        "file": "Unit-01/Soundtrack-1-3.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?RTr0H",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/RTr0H/Soundtrack%201.3.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:16.902391+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 901538,
+        "sha256": "ae577f466da2b2f31efbe327fe49d7e355822c41ddfc5dc5b6f4f3d3a5a59c9e",
+        "seconds": 37.564083,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-2",
+        "track": "2",
+        "unit": 1,
+        "page": 25,
+        "activity": "27",
+        "intendedBookMaterial": "It’s a Small World — song",
+        "plannedUse": "support-enrichment",
+        "file": "Unit-01/Soundtrack-2.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?yjWzl",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/yjWzl/Soundtrack%202.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:16.902962+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 5397725,
+        "sha256": "cf4b163475353e1cf452100a97d93d557ea09e5304f027c6117eaaf8b6c52116",
+        "seconds": 135.026939,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-3",
+        "track": "3",
+        "unit": 1,
+        "page": 25,
+        "activity": "28",
+        "intendedBookMaterial": "Poem about contrasting preferences",
+        "plannedUse": "support-enrichment",
+        "file": "Unit-01/Soundtrack-3.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?O8efJ",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/O8efJ/Soundtrack%203.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:24.087877+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 1440964,
+        "sha256": "818bb1b7457ffbf67cd24ddb0870631b135dafe17b29d79c446bbf372951c118",
+        "seconds": 36.022857,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-4",
+        "track": "4",
+        "unit": 2,
+        "page": 29,
+        "activity": "2",
+        "intendedBookMaterial": "Do-Re-Mi — musical song",
+        "plannedUse": "support-enrichment",
+        "file": "Unit-02/Soundtrack-4.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?lLXsq",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/lLXsq/Soundtrack%204.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:24.251035+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 8401702,
+        "sha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
+        "seconds": 350.040816,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": false,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-5",
+        "track": "5",
+        "unit": 2,
+        "page": 39,
+        "activity": "16",
+        "intendedBookMaterial": "The Power of Music — talk",
+        "plannedUse": "core-listening",
+        "file": "Unit-02/Soundtrack-5.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?nwiPc",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/nwiPc/Soundtrack%205.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:24.441538+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 1713592,
+        "sha256": "c9b024ac43b1bc5af59bf81199f7a9497b2b800a033ee008195b4d9191426fa8",
+        "seconds": 91.324082,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-6",
+        "track": "6",
+        "unit": 2,
+        "page": 39,
+        "activity": "17",
+        "intendedBookMaterial": "Abilities — short dialogue",
+        "plannedUse": "support-enrichment",
+        "file": "Unit-02/Soundtrack-6.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?X1280",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/X1280/Soundtrack%206.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:24.547528+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 720448,
+        "sha256": "67b39fb105f74695e8809e4ef2ba6cd18adbf22560134514897b7e663c4a1d0c",
+        "seconds": 29.988571,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-7",
+        "track": "7",
+        "unit": 2,
+        "page": 50,
+        "activity": "29",
+        "intendedBookMaterial": "A busy day — done/not done",
+        "plannedUse": "core-listening",
+        "file": "Unit-02/Soundtrack-7.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?BjRzf",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/BjRzf/Soundtrack%207.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:30.214521+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 1881534,
+        "sha256": "ebd65a0ac534d7661884ef260ab9a170f52122660b6ea80858828200bcf8ef88",
+        "seconds": 47.046531,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-8",
+        "track": "8",
+        "unit": 3,
+        "page": 54,
+        "activity": "1",
+        "intendedBookMaterial": "I Wonder — poem",
+        "plannedUse": "support-enrichment",
+        "file": "Unit-03/Soundtrack-8.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?QjIzZ",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/QjIzZ/Soundtrack%208.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:30.372681+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 1106015,
+        "sha256": "bde7cd85e57604417b4514e35d589d7dd2372cddc10e5e93af972f78440a8a7c",
+        "seconds": 46.053878,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-9",
+        "track": "9",
+        "unit": 3,
+        "page": 57,
+        "activity": "7",
+        "intendedBookMaterial": "Environmental actions — rhyme/song",
+        "plannedUse": "support-enrichment",
+        "file": "Unit-03/Soundtrack-9.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?mn5ME",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/mn5ME/Soundtrack%209.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:30.396690+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 4466407,
+        "sha256": "9547e7040ed555d7ef1e220ce2a79feb2b45fe4434868b5182a92abe9348f819",
+        "seconds": 186.070204,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-10",
+        "track": "10",
+        "unit": 3,
+        "page": 63,
+        "activity": "16",
+        "intendedBookMaterial": "Environment — interviews",
+        "plannedUse": "core-listening",
+        "file": "Unit-03/Soundtrack-10.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?VroGh",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/VroGh/Soundtrack%2010.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:30.446723+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 2930606,
+        "sha256": "9a67723c05bd4a76753e9ee46d68607972c8800acaa63f3c6f08aecf6a2c8324",
+        "seconds": 244.151083,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-11",
+        "track": "11",
+        "unit": 3,
+        "page": 69,
+        "activity": "23",
+        "intendedBookMaterial": "What a Wonderful World — song",
+        "plannedUse": "support-enrichment",
+        "file": "Unit-03/Soundtrack-11.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?c3a2s",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/c3a2s/Soundtrack%2011.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:36.184191+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 2391918,
+        "sha256": "785f18cfd3a3f2786e28d7dd339a04f9fb125ca151327079d56835f3bd4586fa",
+        "seconds": 149.472653,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-12",
+        "track": "12",
+        "unit": 4,
+        "page": 74,
+        "activity": "6",
+        "intendedBookMaterial": "Information about foreign schools",
+        "plannedUse": "core-listening",
+        "file": "Unit-04/Soundtrack-12.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?AyIM0",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/AyIM0/Soundtrack%2012.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:36.336031+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 1760430,
+        "sha256": "87afcd8e898fc114a32c50de657a35a4e85cd461f5bd6a9bb5dbb51734a5ea65",
+        "seconds": 44.016327,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-13",
+        "track": "13",
+        "unit": 4,
+        "page": 74,
+        "activity": "7",
+        "intendedBookMaterial": "What Did You Learn in School Today? — poem/song",
+        "plannedUse": "support-enrichment",
+        "file": "Unit-04/Soundtrack-13.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?A1cCK",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/A1cCK/Soundtrack%2013.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:36.612008+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 3879751,
+        "sha256": "92bebcb1bf27e6dddf892beed659185bb56675cdf759320be2a86310e49c2e9f",
+        "seconds": 97.044898,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-14",
+        "track": "14",
+        "unit": 4,
+        "page": 75,
+        "activity": "9",
+        "intendedBookMaterial": "Students’ views of school",
+        "plannedUse": "core-listening",
+        "file": "Unit-04/Soundtrack-14.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?GsUOa",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/GsUOa/Soundtrack%2014.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:36.667612+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 4358947,
+        "sha256": "8638af87ee82a074f646504470949fd67378519366bab14e2312452428ba2c20",
+        "seconds": 109.035102,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-15",
+        "track": "15",
+        "unit": 4,
+        "page": 78,
+        "activity": "16",
+        "intendedBookMaterial": "Teacher/parent conversation",
+        "plannedUse": "core-listening",
+        "file": "Unit-04/Soundtrack-15.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?Cfh13",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/Cfh13/Soundtrack%2015.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:42.505011+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 3399508,
+        "sha256": "b3484b2432769c007e2a3aed4e3e3d6de11927c9cf421bb1e03ed545b80dec67",
+        "seconds": 85.028571,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-16",
+        "track": "16",
+        "unit": 4,
+        "page": 81,
+        "activity": "22",
+        "intendedBookMaterial": "Saroyan story — first part",
+        "plannedUse": "core-listening",
+        "file": "Unit-04/Soundtrack-16.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?ndShD",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/ndShD/Soundtrack%2016.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:42.674754+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 6996091,
+        "sha256": "e4e58e59424cb11b502f6e4ce4e0dc7da8883196d5399a546fbfd825e951ec0d",
+        "seconds": 175.020408,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-17",
+        "track": "17",
+        "unit": 4,
+        "page": 86,
+        "activity": "3 (section B)",
+        "intendedBookMaterial": "Saroyan story — continuation",
+        "plannedUse": "core-listening",
+        "file": "Unit-04/Soundtrack-17.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?JQaUY",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/JQaUY/Soundtrack%2017.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:42.933814+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 7915855,
+        "sha256": "70f40d39c53059bfd9769d65208af86c8e8f497f6536816122fabcc0c67b8721",
+        "seconds": 198.034286,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      },
+      {
+        "id": "ENG7-AUDIO-18",
+        "track": "18",
+        "unit": 4,
+        "page": 97,
+        "activity": "2 (section C)",
+        "intendedBookMaterial": "Fictional football/space-visitor commentary",
+        "plannedUse": "core-listening",
+        "file": "Unit-04/Soundtrack-18.mp3",
+        "publisherPage": "https://zangak.am/mediafiles/?fvtjW",
+        "sourceUrl": "https://zangak.am/mediafiles/english7-2023/fvtjW/Soundtrack%2018.mp3",
+        "checkedAtUtc": "2026-10-21T13:55:43.100846+00:00",
+        "httpStatus": 200,
+        "contentType": "audio/mpeg",
+        "bytes": 3320166,
+        "sha256": "0337548e8162d62e572d9233a8e71a1e5ee825a175dde36b4d23a7599f90fff8",
+        "seconds": 83.043265,
+        "matchesInventoriedBytes": true,
+        "decodingEvidence": "Reused successful complete FFmpeg decode for this exact SHA-256 from the repository technical inventory.",
+        "fitsCurrentDeliveryLimits": true,
+        "listeningReviewCompleted": false,
+        "hostingPermissionVerified": false,
+        "registeredOnPlatform": false
+      }
+    ]
+  },
+  "recordingHandoff": {
+    "sourceVerification": {
+      "schemaVersion": "haiedu-tts-handoff-v1",
+      "checkedAt": "2026-10-21 14:08:49.587247+00",
+      "wordingChanged": false,
+      "liveQuestionSourceMatches": 12,
+      "recordings": [
+        {
+          "id": "LISTEN-PRACTICE-GROUP-01",
+          "title": "Practice — Three speakers",
+          "expectedAudioFilename": "LISTEN-PRACTICE-GROUP-01.mp3",
+          "sourceVersion": 1,
+          "questionCodes": [
+            "ENG7-U01-L07",
+            "ENG7-U01-L08",
+            "ENG7-U01-L09",
+            "ENG7-U01-L10"
+          ],
+          "sourceFamilyId": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+          "sourcePacket": "docs/content/english-7-unit-01-practice-additions.json",
+          "sourcePacketSha256": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+          "spokenTextSha256": "2a406a7978aba4568a84f57f630717ed1c4ac0969ecff240d2815a270eaef295",
+          "wordCount": 109,
+          "segments": [
+            {
+              "order": 1,
+              "role": "narrator",
+              "file": "speaker_segments/LISTEN-PRACTICE-GROUP-01/01_narrator.txt"
+            },
+            {
+              "order": 2,
+              "role": "speaker_1",
+              "file": "speaker_segments/LISTEN-PRACTICE-GROUP-01/02_speaker_1.txt"
+            },
+            {
+              "order": 3,
+              "role": "speaker_2",
+              "file": "speaker_segments/LISTEN-PRACTICE-GROUP-01/03_speaker_2.txt"
+            },
+            {
+              "order": 4,
+              "role": "speaker_3",
+              "file": "speaker_segments/LISTEN-PRACTICE-GROUP-01/04_speaker_3.txt"
+            }
+          ]
+        },
+        {
+          "id": "ENG7-U01-DA-AUDIO-A",
+          "title": "Diagnostic A — Recording A",
+          "expectedAudioFilename": "ENG7-U01-DA-AUDIO-A.mp3",
+          "sourceVersion": 1,
+          "questionCodes": [
+            "ENG7-U01-DA-25",
+            "ENG7-U01-DA-27"
+          ],
+          "sourceFamilyId": "918b042e-2e8c-59eb-9609-13ea411211cd",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "spokenTextSha256": "22d9cd0ff0de145378f780dc1fe8d23fa12939cc1eceeb52b3ee432af687f14c",
+          "wordCount": 59,
+          "segments": [
+            {
+              "order": 1,
+              "role": "speaker",
+              "file": "speaker_segments/ENG7-U01-DA-AUDIO-A/01_speaker.txt"
+            }
+          ]
+        },
+        {
+          "id": "ENG7-U01-DA-AUDIO-B",
+          "title": "Diagnostic A — Recording B",
+          "expectedAudioFilename": "ENG7-U01-DA-AUDIO-B.mp3",
+          "sourceVersion": 1,
+          "questionCodes": [
+            "ENG7-U01-DA-26",
+            "ENG7-U01-DA-28"
+          ],
+          "sourceFamilyId": "b0d73ed4-e5d6-5cd0-b43f-0b71bb617020",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "spokenTextSha256": "c0c28b087de9d83c28d71e21fa043709e05001702d5044ce16b2f25f6868309e",
+          "wordCount": 102,
+          "segments": [
+            {
+              "order": 1,
+              "role": "narrator",
+              "file": "speaker_segments/ENG7-U01-DA-AUDIO-B/01_narrator.txt"
+            },
+            {
+              "order": 2,
+              "role": "speaker_1",
+              "file": "speaker_segments/ENG7-U01-DA-AUDIO-B/02_speaker_1.txt"
+            },
+            {
+              "order": 3,
+              "role": "speaker_2",
+              "file": "speaker_segments/ENG7-U01-DA-AUDIO-B/03_speaker_2.txt"
+            },
+            {
+              "order": 4,
+              "role": "speaker_3",
+              "file": "speaker_segments/ENG7-U01-DA-AUDIO-B/04_speaker_3.txt"
+            }
+          ]
+        },
+        {
+          "id": "ENG7-U01-MA-AUDIO-A",
+          "title": "Mastery A — Recording A",
+          "expectedAudioFilename": "ENG7-U01-MA-AUDIO-A.mp3",
+          "sourceVersion": 1,
+          "questionCodes": [
+            "ENG7-U01-MA-25",
+            "ENG7-U01-MA-27"
+          ],
+          "sourceFamilyId": "cf911d87-4ce2-5c61-90c1-8953faeeefa9",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "spokenTextSha256": "c4076bab0cc5a83d3ddf006380fd988a6e94b8d7520dab3acd749ed85ba459a9",
+          "wordCount": 61,
+          "segments": [
+            {
+              "order": 1,
+              "role": "speaker",
+              "file": "speaker_segments/ENG7-U01-MA-AUDIO-A/01_speaker.txt"
+            }
+          ]
+        },
+        {
+          "id": "ENG7-U01-MA-AUDIO-B",
+          "title": "Mastery A — Recording B",
+          "expectedAudioFilename": "ENG7-U01-MA-AUDIO-B.mp3",
+          "sourceVersion": 1,
+          "questionCodes": [
+            "ENG7-U01-MA-26",
+            "ENG7-U01-MA-28"
+          ],
+          "sourceFamilyId": "d4b44034-d3e3-5dc2-989c-d18db22476e9",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-a.json",
+          "sourcePacketSha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+          "spokenTextSha256": "375a8da0a617a7906244bc5fbc7f17fada214e2c8f983d3b57a87ed6421214d1",
+          "wordCount": 85,
+          "segments": [
+            {
+              "order": 1,
+              "role": "narrator",
+              "file": "speaker_segments/ENG7-U01-MA-AUDIO-B/01_narrator.txt"
+            },
+            {
+              "order": 2,
+              "role": "speaker_1",
+              "file": "speaker_segments/ENG7-U01-MA-AUDIO-B/02_speaker_1.txt"
+            },
+            {
+              "order": 3,
+              "role": "speaker_2",
+              "file": "speaker_segments/ENG7-U01-MA-AUDIO-B/03_speaker_2.txt"
+            },
+            {
+              "order": 4,
+              "role": "speaker_3",
+              "file": "speaker_segments/ENG7-U01-MA-AUDIO-B/04_speaker_3.txt"
+            }
+          ]
+        }
+      ]
+    },
+    "ownerActivity": "John is producing the five original recordings externally and will upload five complete MP3s or their numbered speaker clips.",
+    "receivedAudioFiles": 0,
+    "ttsProviderSelected": false,
+    "apiIntegrationAdded": false,
+    "scopeLimitation": "Five scripts cover only the existing 12 original-source questions; six other held questions use three publisher clips. They do not complete audio authoring for the remaining DB/MB/MC forms."
+  },
+  "artifacts": [
+    {
+      "filename": "English7_Publisher_Audio_20_Tracks.zip",
+      "bytes": 64340283,
+      "sha256": "17164341e44be71ef28399d6cb09295030847c6d89377881e85d4ab52577617d",
+      "libraryFileId": "libfile_041471c4a85c8191b15f20995f848b72"
+    },
+    {
+      "filename": "English7_Unit1_Five_TTS_Scripts.zip",
+      "bytes": 11116,
+      "sha256": "4e21f652cd78eb77ea924d3f4f94f7136ab9fd0881c2ebe3f3b59b801cddcc4f"
+    }
+  ],
+  "runtimeBoundary": "Replayable Practice/Chapter Review audio and source sets are deployed. Diagnostic/Mastery audio remains rejected until an accepted assessed-listening contract is implemented. No transcript-support or capped-playback adoption is claimed.",
+  "publisherPermission": {
+    "verified": false,
+    "reference": "https://zangak.am/en/copyrights",
+    "disposition": "Technical source access does not establish HaiEdu hosting permission; publisher audio-rights contact is documented."
+  },
+  "preservation": {
+    "productionWrites": 0,
+    "questionEdits": 0,
+    "approvalWrites": 0,
+    "sourceRegistrations": 0,
+    "policyChanges": 0,
+    "runtimeCodeChanges": 0,
+    "newDeploymentClaimed": false,
+    "speaking": "classroom_assessed"
+  },
+  "reusedEvidence": [
+    "docs/evidence/english-7-unit-01-reading-registration-20261021.json",
+    "docs/evidence/english-7-course-audio-inventory-20261021.json",
+    "docs/evidence/shared-task-sets-release-20261020.json",
+    "docs/evidence/protected-audio-release-20261020.json",
+    "docs/evidence/vercel-deployment-check-verification-20261020.json"
+  ],
+  "verification": {
+    "sourceAndArtifactHashesChecked": true,
+    "exactScriptsMatch12LiveQuestionContexts": true,
+    "currentApprovalsAndReleaseGatesReadOnlyVerified": true,
+    "mediaAuditionClaimed": false,
+    "authenticatedProductionPlaybackClaimed": false,
+    "ciDisposition": "Documentation-only batch; unchanged implementation/browser evidence reused. Required main CI outcome and source-verified Notion closure are recorded after publication in the Notion sprint map."
+  }
+}

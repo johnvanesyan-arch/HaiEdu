@@ -1,6 +1,8 @@
 # English 7 Unit 1 — reviewer onboarding
 
-**16.1C.8 reading registration — 2026-10-21:** John accepted all seven exact passages for the MVP. The sources are registered and linked to 17 v2 questions, all passing saved technical QA; source catalog/preview checks pass for all 17. The bank now has 98 passes / 18 listening holds. Unchanged wording, keys, source families and v1 history are preserved. Ordinary question review, audio and learner release remain open; bounded owner reuse authorization does not assert a publisher licence. [Acceptance](evidence/english-7-unit-01-reading-acceptance-20261021.json) · [Evidence](evidence/english-7-unit-01-reading-registration-20261021.json).
+**16.1C.9 current update — 2026-10-21:** Ordinary approval is verified for 98 questions, including all 17 reading questions at v2; 18 listening questions remain blocked by missing registered audio. All 20 publisher MP3s are downloaded and hash-verified. John is producing the five original recordings externally; 12 questions depend on those files and six use three publisher clips. The accepted bank is unchanged; 84 DB/MB/MC questions, guide/writing onboarding, assessed-playback policy/runtime and learner release remain open. [Current handoff and evidence](english-7-unit-01-audio-handoff.md).
+
+**16.1C.8 reading registration — 2026-10-21:** John accepted all seven exact passages for the MVP. The sources are registered and linked to 17 v2 questions, all passing saved technical QA; source catalog/preview checks pass for all 17. The bank now has 98 passes / 18 listening holds. Unchanged wording, keys, source families and v1 history are preserved. The 98 ordinary question approvals are now verified under C9; audio and learner release remain open; bounded owner reuse authorization does not assert a publisher licence. [Acceptance](evidence/english-7-unit-01-reading-acceptance-20261021.json) · [Evidence](evidence/english-7-unit-01-reading-registration-20261021.json).
 
 **16.1C.6 · 2026-10-21 Asia/Yerevan · 116 existing questions staged for ordinary review; English remains inactive.**
 
@@ -13,7 +15,7 @@ Open the [review queue](https://www.haiedu.am/content-review.html), sign in as a
 | Mastery | 28 | 84 | 56 |
 | Total | 116 | 200 | 84 |
 
-All 116 remain `needs_review / provisional_no_sme_review`: 17 reading questions are `review` at v2 and 99 other questions remain `draft` at v1. Ninety-eight questions pass structural QA. Eighteen listening questions retain the source-registration hold. The seven accepted reading passages now render through registered text-source links. The listening drafts/scripts or clearly labelled publisher-script summaries remain reviewer notes; they are not playable audio or evidence that a recording was auditioned. Actual recordings, permissions and protected delivery remain separate work under the accepted playable-audio plan.
+Ninety-eight questions are now `published / approved` with passing current-version QA: 81 at v1 and all 17 reading questions at v2. Eighteen listening questions remain `draft / needs_review` at v1. This ordinary content approval does not activate the English curriculum or satisfy independent SME/release gates. Those 18 listening questions retain the source-registration hold. The seven accepted reading passages now render through registered text-source links. The listening drafts/scripts or clearly labelled publisher-script summaries remain reviewer notes; they are not playable audio or evidence that a recording was auditioned. Actual recordings, permissions and protected delivery remain separate work under the accepted playable-audio plan.
 
 ## What caused the missing handoff
 

@@ -1,10 +1,10 @@
 # English 7 Unit 1 — seven reading passages for source review
 
-**16.1C.8 · 21 October 2026 · Accepted and registered.** John accepted all seven exact passages for the MVP. All 17 linked questions are now v2 and pass saved QA. Passage wording and answers remain unchanged; ordinary question approval and learner release remain separate.
+**16.1C.9 · 21 October 2026 · Reading sources registered and all 17 questions approved.** Fresh production readback confirms actual ordinary approvals and passing current-version QA for all 17 v2 reading questions. The seven C8 source registrations, exact passages and answers are unchanged. Learner release and independent SME/source qualification remain separate. [Current approval evidence](evidence/english-7-unit-01-review-audio-handoff-20261021.json).
 
 [Open the consolidated Notion review page](https://app.notion.com/p/400355a472bf814ea73dcadd00447778).
 
-Review the passage first, then its questions. Source acceptance confirms the exact text and source grouping; it does not approve the questions, certify independent assessment forms, or release English to learners. Record a correction by passage code if needed.
+Source acceptance and ordinary question approval are both complete for these exact passages/questions. They do not certify independent assessment forms or release English to learners. Record any later correction by passage code; substantive changes require versioning and fresh review.
 
 The [owner acceptance and reuse record](evidence/english-7-unit-01-reading-acceptance-20261021.json) binds these exact source hashes to John’s active administrator profile. It authorizes bounded MVP registration in the inactive protected catalogue. No publisher licence is asserted; adapted-text publication/reuse must be resolved before learner release. The registered source fields contain this genuine decision reference.
 
