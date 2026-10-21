@@ -1,0 +1,413 @@
+{
+  "schemaVersion": "haiedu-reading-registration-evidence-v1",
+  "checkpoint": "16.1C.8",
+  "date": "2026-10-21 Asia/Yerevan",
+  "baselineCommit": "3849e9aaea9797395eb1879c963ffb651a52bbca",
+  "status": "seven_reading_sources_registered_17_v2_questions_pass_saved_QA",
+  "acceptanceReference": "docs/evidence/english-7-unit-01-reading-acceptance-20261021.json",
+  "acceptanceSha256": "0732653f97790522642406b14a51bbeabaaea1752e274f9e7d4c4a9ee3ca96dc",
+  "registeredManifest": "docs/content/english-7-unit-01-reading-registration.json",
+  "registeredManifestSha256": "bb3f5a267abb0faab8687d47b47f1d9e51a014d0b141bb4f794766b1c5ec6c1c",
+  "sourceTextSha256": {
+    "READ-HISTORY": "09a7edb91bec85027739c9636afeb57b82a17d08fb3be0c0556bcf3bf1eef796",
+    "READ-STYLE": "5dc344797beb798bd1aafc63a64999faa8016e8a6ba701b099ac13fe5c4a9494",
+    "READ-DESIGNERS": "b298bdc47129bddf8072180e6aace40835a82cd38e2e664e690ea0bf8f957788",
+    "ENG7-U01-DA-READ-A": "8bea90f2234e3bd3a740c538b6c643cf3dd98bd5f59d55a9fa7714f1ee42902f",
+    "ENG7-U01-DA-READ-B": "3f98e1d7277787ce606d90e4b0c488af3e1cb41ad73242185eed7c584fb27664",
+    "ENG7-U01-MA-READ-A": "dfd34b7c83562637fbe61b7e22823f4b1769454d53b88e64afc11be748a26316",
+    "ENG7-U01-MA-READ-B": "9a270ffca7fc2a65710d9add91f93b7b7b9a226d38a603506241dbee1320dc78"
+  },
+  "recordedAt": "2026-10-21T12:36:28.973857Z",
+  "productionCommittedAt": "2026-10-21T12:43:40.537286+00:00",
+  "currentProduction": {
+    "release": {
+      "status": "draft",
+      "activatedAt": null
+    },
+    "versions": 133,
+    "checkedAt": "2026-10-21T12:44:42.02413+00:00",
+    "qaSummary": [
+      {
+        "count": 18,
+        "errors": [
+          "authoring_source_registration_pending"
+        ],
+        "passed": false,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "version_no": 1
+      },
+      {
+        "count": 17,
+        "errors": [],
+        "passed": true,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "version_no": 2
+      },
+      {
+        "count": 2,
+        "errors": [],
+        "passed": true,
+        "warnings": [
+          "misconception_mapping_missing",
+          "duplicate_prompt_in_skill"
+        ],
+        "version_no": 1
+      },
+      {
+        "count": 79,
+        "errors": [],
+        "passed": true,
+        "warnings": [
+          "misconception_mapping_missing"
+        ],
+        "version_no": 1
+      }
+    ],
+    "memberPreview": [
+      {
+        "code": "ENG7-U01-DA-21",
+        "family": "95ab6d4d-4c6c-5f13-9a25-3282a166d561",
+        "version": 2,
+        "sourceId": "9def3023-9358-5495-ade9-785b05b760ef",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-DA-22",
+        "family": "95ab6d4d-4c6c-5f13-9a25-3282a166d561",
+        "version": 2,
+        "sourceId": "9def3023-9358-5495-ade9-785b05b760ef",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-DA-23",
+        "family": "d8a06249-883b-5a8f-819a-382bd19d41f7",
+        "version": 2,
+        "sourceId": "460c33e5-97df-573d-a0e2-0ccc68c3d11a",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-DA-24",
+        "family": "d8a06249-883b-5a8f-819a-382bd19d41f7",
+        "version": 2,
+        "sourceId": "460c33e5-97df-573d-a0e2-0ccc68c3d11a",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-MA-21",
+        "family": "1bec0b74-de98-5b53-ac40-07b05e9e345b",
+        "version": 2,
+        "sourceId": "634b1764-76a0-5c2d-a825-2e66ebbb1117",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-MA-22",
+        "family": "1bec0b74-de98-5b53-ac40-07b05e9e345b",
+        "version": 2,
+        "sourceId": "634b1764-76a0-5c2d-a825-2e66ebbb1117",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-MA-23",
+        "family": "91bc24cf-9f03-5b62-a72b-b77f3923a00a",
+        "version": 2,
+        "sourceId": "1358d093-2787-575e-ae0b-c683a6d426b8",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-MA-24",
+        "family": "91bc24cf-9f03-5b62-a72b-b77f3923a00a",
+        "version": 2,
+        "sourceId": "1358d093-2787-575e-ae0b-c683a6d426b8",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-R01",
+        "family": "77aa9812-745f-577b-ba8d-8430c65b3966",
+        "version": 2,
+        "sourceId": "1e754ae1-2649-529f-a538-72c5d83d53db",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-R02",
+        "family": "77aa9812-745f-577b-ba8d-8430c65b3966",
+        "version": 2,
+        "sourceId": "1e754ae1-2649-529f-a538-72c5d83d53db",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-R03",
+        "family": "77aa9812-745f-577b-ba8d-8430c65b3966",
+        "version": 2,
+        "sourceId": "1e754ae1-2649-529f-a538-72c5d83d53db",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-R04",
+        "family": "caaf26e1-09c1-5a29-8381-f96a038041c8",
+        "version": 2,
+        "sourceId": "10cb011d-78b6-5f4d-aebc-461eeee0a5d1",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-R05",
+        "family": "caaf26e1-09c1-5a29-8381-f96a038041c8",
+        "version": 2,
+        "sourceId": "10cb011d-78b6-5f4d-aebc-461eeee0a5d1",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-R06",
+        "family": "caaf26e1-09c1-5a29-8381-f96a038041c8",
+        "version": 2,
+        "sourceId": "10cb011d-78b6-5f4d-aebc-461eeee0a5d1",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-R07",
+        "family": "027e4624-392f-5eb6-8c34-2a502d50e167",
+        "version": 2,
+        "sourceId": "a0a8d547-9ddd-5f79-a0eb-65834854dc86",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-R08",
+        "family": "027e4624-392f-5eb6-8c34-2a502d50e167",
+        "version": 2,
+        "sourceId": "a0a8d547-9ddd-5f79-a0eb-65834854dc86",
+        "catalogMatches": 1,
+        "previewMatches": true
+      },
+      {
+        "code": "ENG7-U01-R09",
+        "family": "027e4624-392f-5eb6-8c34-2a502d50e167",
+        "version": 2,
+        "sourceId": "a0a8d547-9ddd-5f79-a0eb-65834854dc86",
+        "catalogMatches": 1,
+        "previewMatches": true
+      }
+    ],
+    "registeredSets": 7,
+    "linkedQuestions": 17,
+    "questionReviews": 0,
+    "sourceRegistryAccess": {
+      "anonSelect": false,
+      "authenticatedSelect": false
+    }
+  },
+  "freshCorpusContinuity": [
+    {
+      "result": {
+        "checks": [
+          {
+            "matched": 116,
+            "section": "items",
+            "expected": 116
+          },
+          {
+            "matched": 221,
+            "section": "item_options",
+            "expected": 221
+          },
+          {
+            "matched": 116,
+            "section": "item_answer_keys",
+            "expected": 116
+          },
+          {
+            "matched": 116,
+            "section": "item_families",
+            "expected": 116
+          },
+          {
+            "matched": 116,
+            "section": "item_templates",
+            "expected": 116
+          },
+          {
+            "matched": 116,
+            "section": "item_curriculum_scopes",
+            "expected": 116
+          },
+          {
+            "matched": 116,
+            "section": "private_v1_context",
+            "expected": 116
+          }
+        ],
+        "observed_at": "2026-10-21T12:36:28.973857+00:00"
+      }
+    }
+  ],
+  "runtimeContinuity": {
+    "edgeVersion": 14,
+    "edgeFiles": [
+      {
+        "file": "manage-content-quality/index.ts",
+        "sha256": "eff4f28780b0bdc618485a481acf41df7495c7d5945c4d55e6fc572ccffbc82a",
+        "exactDeployedMatch": true
+      },
+      {
+        "file": "_shared/arrangement-responses.mjs",
+        "sha256": "e1e09b133d815020a9ff20279251a86b84b405a411c2d1f670838ae3a87cbd66",
+        "exactDeployedMatch": true
+      },
+      {
+        "file": "_shared/typed-fields.mjs",
+        "sha256": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc",
+        "exactDeployedMatch": true
+      },
+      {
+        "file": "_shared/auth.ts",
+        "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "exactDeployedMatch": true
+      }
+    ],
+    "sqlFunctions": [
+      {
+        "schema": "public",
+        "name": "service_save_item_content_revision",
+        "prosrcMd5": "a7d784ea9528a5e4599f8ace66009b17",
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "public",
+        "name": "service_learning_task_set",
+        "prosrcMd5": "65ce262ce3cfef79ac5e34efa86e724d",
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "guard_task_set_version",
+        "prosrcMd5": "b7c9a0bc80fc888cc7691425f5bdd256",
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "validate_task_set_reference",
+        "prosrcMd5": "fb6fc61a32d53ef7be0391b8e78e53e8",
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "guard_item_task_set_reference",
+        "prosrcMd5": "9020471ae9a05685c0b10529a49ebe48",
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "task_set_stimulus",
+        "prosrcMd5": "e39864111e4707c010e454420c902938",
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "item_source_family",
+        "prosrcMd5": "df52536c12a089f24cd22eb0fe273d2a",
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "order_task_set_items",
+        "prosrcMd5": "6fd612274907c9f6d2ff72ee5071c2d4",
+        "exactBodyMatch": true
+      }
+    ]
+  },
+  "rollback": {
+    "all70TableFingerprintsRestored": true,
+    "registeredSourcesInTransaction": 7,
+    "revisionsInTransaction": 17,
+    "initialPreparationAttempt": "Aborted before source insertion on a PL/pgSQL alias ambiguity; corrected transaction passed before commit.",
+    "sqlSha256": "2a4581f83eaae618ed1f70743b623370c64c015a706b87107f50a394f9449501"
+  },
+  "production": {
+    "sqlSha256": "8669e9f9cca504becd31319a25e9562648e2dbc1353987d10a0dcba8d3ef6ec4",
+    "guardedTables": 70,
+    "unchangedTables": 64,
+    "expectedTouchedTables": [
+      {
+        "table": "item_answer_keys",
+        "before": 1367,
+        "after": 1367
+      },
+      {
+        "table": "item_options",
+        "before": 4617,
+        "after": 4617
+      },
+      {
+        "table": "item_qa_runs",
+        "before": 1675,
+        "after": 1692
+      },
+      {
+        "table": "item_versions",
+        "before": 1262,
+        "after": 1279
+      },
+      {
+        "table": "items",
+        "before": 1367,
+        "after": 1367
+      },
+      {
+        "table": "learning_task_set_versions",
+        "before": 0,
+        "after": 7
+      }
+    ],
+    "preserved": "All unaffected rows; all previous immutable versions and QA/review records; original question text/config/keys/options/order/scopes and source-family identities. The ordinary editor recreates 42 option row UUIDs, retaining their stable option keys/content/order.",
+    "newRows": {
+      "learning_task_set_versions": 7,
+      "item_versions": 17,
+      "item_qa_runs": 17
+    },
+    "noNewQuestionApproval": true,
+    "noReleaseOrAllocationChange": true
+  },
+  "QA": {
+    "passed": 17,
+    "currentVersions": 2,
+    "sourceRegisteredChecks": 17,
+    "execution": "Actual deployed manage-content-quality v14 evaluateQa over materialized live rollback-transaction rows, saved with the identical guarded production registration. Automated run_by is null; no authenticated HTTP/MFA/browser acceptance is claimed.",
+    "readback": "Independent committed-row query verifies all seventeen saved current-version QA passes and all source catalog/preview matches.",
+    "warnings": [
+      "misconception_mapping_missing"
+    ]
+  },
+  "comparisonReuse": {
+    "source": "docs/evidence/english-7-unit-01-reading-review-20261021.json",
+    "scope": "All seven accepted text hashes unchanged; all 116 original content projections match. The seventeen v2 revisions attach the existing reviewed source families without changing wording, answers, skill mappings or member order. Prior whole-bank comparison and twenty-one source-pair judgments are rebound to these metadata-only versions. No independent new reasoning or form equivalence is claimed."
+  },
+  "remaining": {
+    "sourceHolds": 18,
+    "kind": "listening",
+    "questionApproval": "ordinary current-version review pending",
+    "misconceptionMappings": "warning remains",
+    "adaptedTextPublicationRights": "No publisher licence inferred. Owner authorized this bounded inactive MVP authoring registration; resolve learner publication/reuse disposition before release.",
+    "other": "Audio audition/permissions/protected delivery, assessed listening/scoring policy, protected-form qualification, SME and learner release remain open."
+  },
+  "artifactHashes": {
+    "preparationScript": "0bb4db8d28d2d97160fb462b0ab39af07923e65066d251d4639047dc79ccc805",
+    "qaResults": "2afd5c3d9918a8a11a8fe8c27e9269cc9417598acce262c41550fe37f29dba5a"
+  }
+}

@@ -1,6 +1,6 @@
 # English 7 Unit 1 — reviewer onboarding
 
-**16.1C.7 follow-up:** [Seven reading passages and all 17 dependent questions](english-7-unit-01-reading-source-review.md) are now consolidated for exact source/reuse review. Registration/link payloads pass an isolated rehearsal; the live source holds remain until genuine review and permission records are supplied and registration is committed.
+**16.1C.8 reading registration — 2026-10-21:** John accepted all seven exact passages for the MVP. The sources are registered and linked to 17 v2 questions, all passing saved technical QA; source catalog/preview checks pass for all 17. The bank now has 98 passes / 18 listening holds. Unchanged wording, keys, source families and v1 history are preserved. Ordinary question review, audio and learner release remain open; bounded owner reuse authorization does not assert a publisher licence. [Acceptance](evidence/english-7-unit-01-reading-acceptance-20261021.json) · [Evidence](evidence/english-7-unit-01-reading-registration-20261021.json).
 
 **16.1C.6 · 2026-10-21 Asia/Yerevan · 116 existing questions staged for ordinary review; English remains inactive.**
 
@@ -13,7 +13,7 @@ Open the [review queue](https://www.haiedu.am/content-review.html), sign in as a
 | Mastery | 28 | 84 | 56 |
 | Total | 116 | 200 | 84 |
 
-All 116 remain `draft / needs_review / provisional_no_sme_review`. Eighty-one standalone questions pass structural QA. The other 35 have an explicit source-registration hold: 17 reading and 18 listening questions. Their draft passages, scripts or clearly labelled publisher-script summaries are available to reviewers. The source previews are not playable audio, registered learning stimuli or evidence that a recording was auditioned. Actual recordings, permissions and protected delivery remain separate work under the accepted playable-audio plan.
+All 116 remain `needs_review / provisional_no_sme_review`: 17 reading questions are `review` at v2 and 99 other questions remain `draft` at v1. Ninety-eight questions pass structural QA. Eighteen listening questions retain the source-registration hold. The seven accepted reading passages now render through registered text-source links. The listening drafts/scripts or clearly labelled publisher-script summaries remain reviewer notes; they are not playable audio or evidence that a recording was auditioned. Actual recordings, permissions and protected delivery remain separate work under the accepted playable-audio plan.
 
 ## What caused the missing handoff
 
@@ -25,7 +25,7 @@ C1/C4/C5 saved the authoring packets in the private repository without importing
 
 The preview labels these notes as private and distinguishes an inherited original note from a later question revision. It escapes source text and clears it with the existing item/account lifecycle. Primary question/option labels now say “question text” and “option text,” allowing subject-configured language without an Armenian-only label. No English-specific branch was added to shared core logic.
 
-QA and approval revalidation require a source-backed question to reference a non-revoked registered task set with the expected source family and text/audio modality. An old passing QA record cannot bypass this check. Existing source-binding membership/version checks, ordinary content review, MFA, SME and release controls remain in force. Source registration still needs genuine review and permission evidence.
+QA and approval revalidation require a source-backed question to reference a non-revoked registered task set with the expected source family and text/audio modality. An old passing QA record cannot bypass this check. Existing source-binding membership/version checks, ordinary content review, MFA, SME and release controls remain in force. The reading source review and bounded MVP reuse authorization are recorded under C8; listening registration still needs its own reviewed recordings and permission evidence.
 
 The inactive catalogue adds one subject, programme, unit and draft release, with 14 provisional skills. Skill-layer and difficulty classifications are review metadata, not adopted scoring/readiness criteria. Each item has one fixed template/family for editing and history; these identities claim no extra reasoning coverage or source independence. Formal outcome reconciliation and all seven release gates remain pending. There are no English pool links, qualified forms, approvals or activated releases. Nine guides and the writing package remain in the canonical authoring packet; this slice imports automatic questions only. Speaking stays classroom-assessed.
 
@@ -40,3 +40,7 @@ The live browser showed the normal sign-in wall. Authenticated live reviewer acc
 The [delivery evidence](evidence/english-7-unit-01-review-onboarding-20261021.json) records saved data, hashes, preservation, source readbacks and verification limits. The merged commit is the roadmap **4.31** Notion synchronization source; post-merge CI/production evidence and exact source stamp are verified before handoff, preserving all 11 native child pages.
 
 Next: ordinary review of these questions; author the accepted 84 DB/MB/MC questions against the full now-staged bank; complete source/audio, guide/writing and formal curriculum review. Final assessed-listening/scoring policy, qualification and authenticated English learner-release acceptance remain open.
+
+## Checking the registered reading questions
+
+Refresh the review queue or reopen a reading question. R01–R09, DA-21–24 and MA-21–24 are v2 with passing saved QA. Their source is already attached; do not paste the passage into the question field or save another version merely to select it. The selector now offers the one registered matching set. Ordinary question approval remains a separate reviewer action. Future corrections must use the versioned source/question workflow.

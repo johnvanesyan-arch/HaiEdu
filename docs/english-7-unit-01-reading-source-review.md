@@ -1,12 +1,12 @@
 # English 7 Unit 1 — seven reading passages for source review
 
-**16.1C.7 · 21 October 2026 · Source review pending.** This is the exact existing seven-passage batch and its 17 dependent questions. No wording or answer has changed. Registration and learner release have not occurred.
+**16.1C.8 · 21 October 2026 · Accepted and registered.** John accepted all seven exact passages for the MVP. All 17 linked questions are now v2 and pass saved QA. Passage wording and answers remain unchanged; ordinary question approval and learner release remain separate.
 
 [Open the consolidated Notion review page](https://app.notion.com/p/400355a472bf814ea73dcadd00447778).
 
 Review the passage first, then its questions. Source acceptance confirms the exact text and source grouping; it does not approve the questions, certify independent assessment forms, or release English to learners. Record a correction by passage code if needed.
 
-The existing source-registration contract requires a real administrator/content-reviewer record and a documented reuse basis. These fields remain empty in the prepared manifest. The supplied textbook alone is not a publisher permission record. The two original fictional passages have no external passage to license; the attributed summaries and textbook adaptations have their provenance and outstanding reuse decision stated below.
+The [owner acceptance and reuse record](evidence/english-7-unit-01-reading-acceptance-20261021.json) binds these exact source hashes to John’s active administrator profile. It authorizes bounded MVP registration in the inactive protected catalogue. No publisher licence is asserted; adapted-text publication/reuse must be resolved before learner release. The registered source fields contain this genuine decision reference.
 
 | Passage | Purpose | Questions | Open on HaiEdu |
 | --- | --- | ---: | --- |
@@ -18,7 +18,7 @@ The existing source-registration contract requires a real administrator/content-
 | ENG7-U01-MA-READ-A — Reading source MA-A | mastery | 2 | [First question — Preview](https://www.haiedu.am/content-item.html?id=ee7fd3b7-3c62-508f-afd9-0b8030655fa6&from=review) |
 | ENG7-U01-MA-READ-B — Reading source MA-B | mastery | 2 | [First question — Preview](https://www.haiedu.am/content-item.html?id=f439928b-c699-53b1-a7bb-203e20a8138e&from=review) |
 
-The same source text is already available in the **Նախադիտում (Preview)** tab of each linked question, under the private reviewer materials. The site currently has a selector for registered sources; it has no separate passage-approval button. The consolidated packet makes this source review explicit.
+The source text is now attached to each question and available through **Նախադիտում (Preview)**. Each question’s selector contains its registered source. Registration and linking have already been completed; no copying into the question field is required. Source acceptance was supplied by John in this work conversation and recorded in the linked evidence.
 
 ## Review findings
 
@@ -26,17 +26,11 @@ All seven sources support their current keys. The textbook reference PDF matches
 
 Use neutral learner-facing source labels P-A/P-B/P-C for the three Practice sets. Their descriptive editorial titles stay in this review packet; showing a title such as “Clothing through time” during a main-idea question would supply a clue. The passage wording and keys remain unchanged.
 
-The live bank still contains 116 unchanged v1 questions and 116 immutable versions, with no question reviews. A fresh exact comparison matches questions, options, keys, families, templates, curriculum scopes and private source notes. Existing whole-bank and grading evidence therefore remains applicable. Source-family separation remains an editorial proposal requiring review, especially the two garment-reuse stories.
+The bank contains 116 questions: 17 reading items at v2 and 99 others at v1, with 133 immutable snapshots. The source attachments change no wording, answers, families, scopes or ordering. Existing whole-bank and grading evidence is rebound to these v2 links. Protected-form exposure/independence qualification remains pending, especially for the two garment-reuse stories. Ordinary question reviews remain separate.
 
-### What happens after source acceptance
+### Registration result
 
-1. Resolve and record the genuine review and reuse references for each accepted passage.
-2. Register its immutable text set and intended next question versions.
-3. Attach all its questions through the existing atomic editor, preserving v1 history and creating new versions that still need ordinary question approval.
-4. Re-run structural QA and verify registered-source preview, membership/order and exposure protection.
-5. Save production evidence, merge current documentation and verify the Notion source stamp.
-
-The 17 reading-source QA holds remain until these steps are completed. The 18 listening holds and the misconception-mapping warnings are separate.
+Seven immutable reading sets and 17 atomic question revisions are committed. Saved QA passes 17/17; source catalog/preview checks match every reading question. Rollback restored all 70 tracked tables, and the committed transaction preserves all unaffected rows and prior immutable history. The 18 listening holds and misconception-mapping warnings remain separate. [Production evidence](evidence/english-7-unit-01-reading-registration-20261021.json).
 
 ## READ-HISTORY — Clothing through time
 
@@ -50,7 +44,7 @@ The 17 reading-source QA holds remain until these steps are completed. The 18 li
 
 **Verification:** The three periods and the manufacturing/availability relationship agree with the supplied textbook. Questions ask only about the supplied text.
 
-**Reuse record:** Textbook adaptation; no publisher permission document is supplied. Record the actual permitted-use basis before registration.
+**Reuse record:** Owner accepts the exact condensed textbook adaptation for this bounded MVP registration. Textbook/page provenance is retained; no publisher licence or public-distribution permission is claimed.
 
 **Exposure:** Familiar Practice source. R01/R02/R03 share one passage; they are not three independent reading samples.
 
@@ -100,7 +94,7 @@ What change does the passage connect with the Industrial Revolution?
 
 **Correct answer:** C.
 
-**Source review:** Pending. Record acceptance or requested changes for this passage; question approval follows separately.
+**Source review:** Accepted by John for MVP use on 21 October 2026; registered and linked. Ordinary question approval remains separate.
 
 ## READ-STYLE — Fashion and personal style
 
@@ -114,7 +108,7 @@ What change does the passage connect with the Industrial Revolution?
 
 **Verification:** Retains the trend/personal-choice distinction and classic/retro/casual meanings. Removes universal and gender-based claims; Ani is an authored example.
 
-**Reuse record:** Adapted explanation plus original example; document the reuse basis before registration.
+**Reuse record:** Owner accepts the exact textbook-based explanation and original Ani example for this bounded MVP registration. No publisher licence or public-distribution permission is claimed.
 
 **Exposure:** Familiar Practice source. G03 and P03/P04 already teach these labels; R06 is intentional reinforcement, not new reasoning coverage.
 
@@ -162,7 +156,7 @@ Match each description from the passage to its style. Use each style once.
 - relaxed clothes for everyday activities → **casual**
 - simple designs that remain popular for a long time → **classic**
 
-**Source review:** Pending. Record acceptance or requested changes for this passage; question approval follows separately.
+**Source review:** Accepted by John for MVP use on 21 October 2026; registered and linked. Ordinary question approval remains separate.
 
 ## READ-DESIGNERS — Two sources about design
 
@@ -176,7 +170,7 @@ Match each description from the passage to its style. Use each style once.
 
 **Verification:** The textbook supports the Chanel description; the current FDC profile supports the Armenian cultural connection. No photo, quotation or promotional ranking is reused.
 
-**Reuse record:** Original attributed summaries; this records provenance, not an external publication licence. Source-review acceptance and reuse-basis confirmation remain pending.
+**Reuse record:** Owner accepts the two original attributed factual summaries. No source photograph or verbatim external passage is imported.
 
 **Exposure:** Familiar Practice source. The three questions share the same two cards; comparison and detail evidence are dependent.
 
@@ -226,7 +220,7 @@ According to Card B, what does Aram Nikolyan draw on in his designs?
 
 **Correct answer:** A.
 
-**Source review:** Pending. Record acceptance or requested changes for this passage; question approval follows separately.
+**Source review:** Accepted by John for MVP use on 21 October 2026; registered and linked. Ordinary question approval remains separate.
 
 ## ENG7-U01-DA-READ-A — Reading source DA-A
 
@@ -240,7 +234,7 @@ According to Card B, what does Aram Nikolyan draw on in his designs?
 
 **Verification:** Both answers follow from the passage. The fixed garment is the waistcoat. Buying new or expensive clothes is explicitly unnecessary.
 
-**Reuse record:** Original platform-authored fiction; record acceptance of this exact version as the source-review/reuse record.
+**Reuse record:** Owner accepts use of the original platform-authored fictional school-magazine passage.
 
 **Exposure:** Protected candidate. Compare with MA-READ-A: both retain one garment. The magazine comparison and costume-change procedure differ, but independent exposure qualification remains pending.
 
@@ -278,7 +272,7 @@ Read Reading source DA-A. Which item does Arpi keep in both looks?
 
 **Correct answer:** A.
 
-**Source review:** Pending. Record acceptance or requested changes for this passage; question approval follows separately.
+**Source review:** Accepted by John for MVP use on 21 October 2026; registered and linked. Ordinary question approval remains separate.
 
 ## ENG7-U01-DA-READ-B — Reading source DA-B
 
@@ -292,7 +286,7 @@ Read Reading source DA-A. Which item does Arpi keep in both looks?
 
 **Verification:** FDC supports the childhood artwork/interest, Florence study, 2011 graduation and 2013 studio chronology. No celebrity knowledge is required.
 
-**Reuse record:** Original attributed summary; no website text, photograph or external licence is imported. Confirm the recorded reuse basis at source review.
+**Reuse record:** Owner accepts use of the original attributed factual summary; no source photograph or verbatim external passage is imported.
 
 **Exposure:** Protected candidate. Chronology procedure repeats taught Practice; the particular childhood influence and sequence require this profile. It is not an independent new skill.
 
@@ -330,7 +324,7 @@ Read Reading source DA-B. Which childhood influence does the profile connect wit
 
 **Correct answer:** B.
 
-**Source review:** Pending. Record acceptance or requested changes for this passage; question approval follows separately.
+**Source review:** Accepted by John for MVP use on 21 October 2026; registered and linked. Ordinary question approval remains separate.
 
 ## ENG7-U01-MA-READ-A — Reading source MA-A
 
@@ -344,7 +338,7 @@ Read Reading source DA-B. Which childhood influence does the profile connect wit
 
 **Verification:** The stated problem is a quick change between characters. The jacket remains; the second character gains the belt after the collar is removed.
 
-**Reuse record:** Original platform-authored fiction; record acceptance of this exact version as the source-review/reuse record.
+**Reuse record:** Owner accepts use of the original platform-authored fictional school-play passage.
 
 **Exposure:** Protected candidate. Its garment-reuse theme resembles DA-READ-A; retain the recorded comparison and require exposure qualification before form use.
 
@@ -382,7 +376,7 @@ Read Reading source MA-A. What does Narek add for the second character?
 
 **Correct answer:** B.
 
-**Source review:** Pending. Record acceptance or requested changes for this passage; question approval follows separately.
+**Source review:** Accepted by John for MVP use on 21 October 2026; registered and linked. Ordinary question approval remains separate.
 
 ## ENG7-U01-MA-READ-B — Reading source MA-B
 
@@ -396,7 +390,7 @@ Read Reading source MA-A. What does Narek add for the second character?
 
 **Verification:** FDC supports the 2007/2016 order, simple/elegant clothing with noticeable details, and intended self-expression. Brand names avoid the profile’s inconsistent surname spelling.
 
-**Reuse record:** Original attributed summary; no photograph, quoted passage or endorsement is imported. Confirm the recorded reuse basis at source review.
+**Reuse record:** Owner accepts use of the original attributed factual summary; no source photograph or verbatim external passage is imported.
 
 **Exposure:** Protected candidate. Both questions depend on one profile. Shared date-order procedure does not establish independent reasoning or equivalent difficulty.
 
@@ -434,10 +428,10 @@ Read Reading source MA-B. What combination does the profile describe in the clot
 
 **Correct answer:** B.
 
-**Source review:** Pending. Record acceptance or requested changes for this passage; question approval follows separately.
+**Source review:** Accepted by John for MVP use on 21 October 2026; registered and linked. Ordinary question approval remains separate.
 
-## Technical preparation
+## Registration evidence
 
-[Disabled registration manifest](content/english-7-unit-01-reading-registration-plan.json) · [Delivery evidence](evidence/english-7-unit-01-reading-review-20261021.json) · [Source-registration contract](shared-task-sets-capability.md).
+[Registered source/link manifest](content/english-7-unit-01-reading-registration.json) · [Owner acceptance](evidence/english-7-unit-01-reading-acceptance-20261021.json) · [Production evidence](evidence/english-7-unit-01-reading-registration-20261021.json) · [Source contract](shared-task-sets-capability.md).
 
-The prepared payloads cover seven immutable sets and 17 atomic question revisions. Each set retains its declared source-family UUID and member order. All proposed review/permission fields are null; production execution is disabled. Any change during human review requires regenerating the manifest and revisiting the affected comparison before registration.
+The earlier disabled C7 plan remains a historical preparation artifact. The accepted source texts, source-family UUIDs and member order are unchanged. Later corrections require successor versions and applicable review.

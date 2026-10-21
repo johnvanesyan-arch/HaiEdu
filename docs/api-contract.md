@@ -1,6 +1,6 @@
 # Learning API contract
 
-**16.1C.7 registration preparation:** Seven reading sets and 17 versioned question-link payloads are prepared and rehearsed in an isolated database. Production API/schema/runtime behavior is unchanged; the existing service-only registry requires real source review and permission references before insertion. Exact-passage acceptance and reuse records are pending, so all source holds remain. [Review batch](english-7-unit-01-reading-source-review.md).
+**16.1C.8 registered reading sources:** Seven owner-accepted text sets are registered through the unchanged service-only contract and attached through the atomic editor to 17 v2 questions. Saved QA passes 17/17; source preview/catalog rows match. Current total is 98 QA passes / 18 listening holds. Deployed schema/API/Edge/browser code is unchanged; no authenticated browser acceptance or question/learner approval is claimed. [Evidence](evidence/english-7-unit-01-reading-registration-20261021.json).
 
 
 **Historical baseline verified:** 2026-10-10 against repository source and then-deployed `submit-answer` v18 (ACTIVE, JWT verification enabled; all 12 bundle files matched). [Verification evidence](evidence/documentation-status-audit-20261010.json). [Current delivery status and release gates](project-status.md) are maintained separately.

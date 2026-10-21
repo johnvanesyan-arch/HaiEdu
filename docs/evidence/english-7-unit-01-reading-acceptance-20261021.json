@@ -1,0 +1,39 @@
+{
+  "schemaVersion": "haiedu-reading-source-acceptance-v1",
+  "checkpoint": "16.1C.8",
+  "date": "2026-10-21 Asia/Yerevan",
+  "recordedAt": "2026-10-21T12:36:28.973857Z",
+  "owner": "John Vanesyan",
+  "reviewerProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "verifiedProfile": {"role":"admin","accountStatus":"active","protectedOwner":true},
+  "verbatimDecision": "I accept all of them. If there are any errors, we will correct them later; this is an MVP.",
+  "decisionContext": "Response to the seven exact reading passages and their prepared source-registration/reuse review packet. This is source acceptance and authorization to register/link the accepted MVP material.",
+  "reviewedSourceCommit": "3849e9aaea9797395eb1879c963ffb651a52bbca",
+  "reviewPacket": "docs/english-7-unit-01-reading-source-review.md",
+  "reviewPage": "https://app.notion.com/p/400355a472bf814ea73dcadd00447778",
+  "acceptedTextSha256": {
+    "READ-HISTORY": "09a7edb91bec85027739c9636afeb57b82a17d08fb3be0c0556bcf3bf1eef796",
+    "READ-STYLE": "5dc344797beb798bd1aafc63a64999faa8016e8a6ba701b099ac13fe5c4a9494",
+    "READ-DESIGNERS": "b298bdc47129bddf8072180e6aace40835a82cd38e2e664e690ea0bf8f957788",
+    "ENG7-U01-DA-READ-A": "8bea90f2234e3bd3a740c538b6c643cf3dd98bd5f59d55a9fa7714f1ee42902f",
+    "ENG7-U01-DA-READ-B": "3f98e1d7277787ce606d90e4b0c488af3e1cb41ad73242185eed7c584fb27664",
+    "ENG7-U01-MA-READ-A": "dfd34b7c83562637fbe61b7e22823f4b1769454d53b88e64afc11be748a26316",
+    "ENG7-U01-MA-READ-B": "9a270ffca7fc2a65710d9add91f93b7b7b9a226d38a603506241dbee1320dc78"
+  },
+  "reuseBasis": {
+    "scope": "Owner-authorized MVP authoring and protected reviewer-catalogue registration of these exact supplied/adapted/original texts; English remains inactive.",
+    "READ-HISTORY": "Owner accepts the exact condensed textbook adaptation for this bounded MVP registration. Textbook/page provenance is retained; no publisher licence or public-distribution permission is claimed.",
+    "READ-STYLE": "Owner accepts the exact textbook-based explanation and original Ani example for this bounded MVP registration. No publisher licence or public-distribution permission is claimed.",
+    "READ-DESIGNERS": "Owner accepts the two original attributed factual summaries. No source photograph or verbatim external passage is imported.",
+    "ENG7-U01-DA-READ-A": "Owner accepts use of the original platform-authored fictional school-magazine passage.",
+    "ENG7-U01-DA-READ-B": "Owner accepts use of the original attributed factual summary; no source photograph or verbatim external passage is imported.",
+    "ENG7-U01-MA-READ-A": "Owner accepts use of the original platform-authored fictional school-play passage.",
+    "ENG7-U01-MA-READ-B": "Owner accepts use of the original attributed factual summary; no source photograph or verbatim external passage is imported."
+  },
+  "boundaries": [
+    "The owner decision is recorded by the authorized implementation agent; it is not represented as an in-app review click or an independent specialist review.",
+    "Source acceptance does not create ordinary question approvals, audio acceptance, protected-form qualification or learner release.",
+    "This owner authorization is not a third-party copyright licence. The adapted-text publication/reuse disposition must be resolved before any learner release; the release gates remain pending.",
+    "Future corrections require successor source/question versions and applicable review; immutable history is preserved."
+  ]
+}
