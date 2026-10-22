@@ -1,0 +1,226 @@
+{
+  "schemaVersion": "haiedu-policy-proposal-evidence-v1",
+  "checkpoint": "16.1C.21",
+  "date": "2026-10-22",
+  "sourceCommit": "3c2773c0cbc2c2a5f6efcb849c7571517f063d2c",
+  "status": "proposed_awaiting_explicit_owner_policy_approval",
+  "proposalSha256": "87495e5199db44f2fe010c6bb4c02f8742cac98fcbc282147e7b059dc38009c4",
+  "generatorSha256": "4cfebbe53bf8ca536cddc8861a69547e1693f7c8349bdc2cd70d00b646ce869f",
+  "sourceHashes": {
+    "docs/content/english-7-unit-01-bank-plan.json": "3781edff4e3219e420cbc157394dbec43ffa07d99d4e922ff959d1321ad378df",
+    "docs/content/english-7-unit-01-curriculum-registration.json": "161f762b1e189f8cfc13b7259b428fb42917c9bee74f55299a7979ad4247b391",
+    "docs/content/english-7-unit-01-draft.json": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+    "docs/content/english-7-unit-01-practice-additions.json": "bd71680a031f997b5f6928208f1f7ebe2c0fa53c1490733f0de04c568e93d77e",
+    "docs/content/english-7-unit-01-assessment-batch-a.json": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+    "docs/content/english-7-unit-01-assessment-batch-bcd.json": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+    "docs/evidence/english-7-unit-01-form-preflight-20261022.json": "6a04d088139800cee683a061bb58a7285dab5114c955b5a4ef126e9deac8bfd9",
+    "docs/evidence/english-7-unit-01-exposure-decision-20261022.json": "10fbeeb73f89cb601943bb416471bccfa34849222f83cb8bf5e26b0fd34a048c",
+    "supabase/functions/_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+    "supabase/functions/_shared/assessed-audio-policy.mjs": "e01d001459359f8b0d6440104b9ef4d5c7d529158adeb79fe550656a1e251472",
+    "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15",
+    "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314",
+    "supabase/migrations/20261021220954_sprint_16_1c_assessed_listening.sql": "c92297f550f8094f6f9a831ddc4ab85d3c7533e75b227c2b728fa628c8aab3af"
+  },
+  "checks": [
+    {
+      "name": "policy_diagnostic_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "policy_practice_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "policy_mastery_check_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "policy_chapter_review_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "english_model_shape_supported",
+      "passed": true
+    },
+    {
+      "name": "28_of_28_passes",
+      "passed": true,
+      "passedDecision": true,
+      "earned": 28,
+      "possible": 28,
+      "displayPercent": 100
+    },
+    {
+      "name": "22_5_of_28_with_every_minimum_passes",
+      "passed": true,
+      "passedDecision": true,
+      "earned": 22.5,
+      "possible": 28,
+      "displayPercent": 80
+    },
+    {
+      "name": "22_of_28_fails_overall",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 22,
+      "possible": 28,
+      "displayPercent": 79
+    },
+    {
+      "name": "26_of_28_zero_reading_skill_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 26,
+      "possible": 28,
+      "displayPercent": 93
+    },
+    {
+      "name": "26_of_28_only_one_of_three_vocabulary_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 26,
+      "possible": 28,
+      "displayPercent": 93
+    },
+    {
+      "name": "27_of_28_two_half_items_do_not_satisfy_whole_item_minimum",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 27,
+      "possible": 28,
+      "displayPercent": 96
+    },
+    {
+      "name": "rounded_80_does_not_pass_below_exact_cutoff",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 22.39,
+      "possible": 28,
+      "displayPercent": 80,
+      "syntheticOffGridBoundary": true
+    },
+    {
+      "name": "diagnostic_has_no_pass_decision",
+      "passed": true
+    },
+    {
+      "name": "no_evidence_not_ready",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "model_exact_075_and_three_records_ready",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "name": "model_two_records_not_ready",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "model_below_075_not_ready",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "three_item_clean_recovery_ready",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "name": "two_distinct_items_cannot_recover",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "hint_in_recent_window_cannot_recover",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "partial_item_is_not_whole_correct_recovery",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "other_release_cannot_supply_third_item",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "prior_distinct_plus_repeated_recent_window_matches_existing_semantics",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "name": "writing_and_speaking_not_automatic_credit",
+      "passed": true
+    },
+    {
+      "name": "all_five_form_component_shapes_match_reused_preflight",
+      "passed": true,
+      "forms": 5
+    },
+    {
+      "name": "approved_bank_preserved_with_explicit_optional_scope",
+      "passed": true,
+      "approved": 60,
+      "proposedCore": 58,
+      "optional": 2
+    },
+    {
+      "name": "finite_mastery_capacity_arithmetic",
+      "passed": true,
+      "runtimeReplacementEvidenceReused": "16.1C.12",
+      "scenarios": [
+        {
+          "technicalFormsLost": 0,
+          "maxScoredMasteryAttempts": 3
+        },
+        {
+          "technicalFormsLost": 1,
+          "maxScoredMasteryAttempts": 2
+        },
+        {
+          "technicalFormsLost": 2,
+          "maxScoredMasteryAttempts": 1
+        },
+        {
+          "technicalFormsLost": 3,
+          "maxScoredMasteryAttempts": 0
+        }
+      ]
+    }
+  ],
+  "checkCount": 27,
+  "engine": "PGlite 0.5.8 in-memory; existing SQL function bodies and JS policy reader",
+  "scope": "Synthetic policy-shape, point arithmetic and readiness boundaries; not full allocator, browser, grading-key, SME or learner acceptance",
+  "productionWrites": 0,
+  "contentChanges": 0,
+  "contentApprovalAudit": false,
+  "contentQaRerun": false,
+  "preservedBank": {
+    "practice": 60,
+    "diagnostic": 56,
+    "mastery": 84
+  },
+  "proposedCorePractice": 58,
+  "optionalRetained": [
+    "ENG7-U01-P10",
+    "ENG7-U01-P11"
+  ],
+  "ownerDecisionRequired": "AGENTS.md preserves explicit learning-criteria/release gates. The next-step instruction authorizes preparation, not unreviewed numerical adoption.",
+  "runtimeAndDeploymentEvidenceReused": {
+    "checkpoint": "16.1C.20",
+    "sourceCommit": "3c2773c0cbc2c2a5f6efcb849c7571517f063d2c",
+    "ciRun": 39830453037,
+    "tests": 1385,
+    "nativeChromium": 93
+  },
+  "mergedSourceCiAndNotion": "Recorded against the final source commit in Notion after delivery checks; no policy or release activation."
+}

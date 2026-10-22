@@ -1,6 +1,8 @@
 # English 7 Unit 1 — conditional form qualification
 
-**C20 current disposition · 22 October 2026 · Roadmap 4.46:** John accepts continuing with the existing bank despite its public availability for the provisional MVP. The exposure-decision request below is closed. Formal curriculum registration is complete; independent qualification, explicit assessment policy and learner release remain separate. [Owner record](evidence/english-7-unit-01-exposure-decision-20261022.json) · [Curriculum registration](english-7-unit-01-curriculum-reconciliation.md).
+**C21 current handoff · 22 October 2026 · Roadmap 4.47:** The [explicit scoring/readiness/retry proposal](english-7-unit-01-policy-proposal.md) is prepared and passes 27 focused checks. Owner numerical and 58-core/2-optional delivery approval is next; no policy binding or allocation is performed. C20’s exposure disposition and formal registration remain complete.
+
+**C20 completed disposition · 22 October 2026 · Roadmap 4.46:** John accepts continuing with the existing bank despite its public availability for the provisional MVP. The exposure-decision request below is closed. Formal curriculum registration is complete; independent qualification, explicit assessment policy and learner release remain separate. [Owner record](evidence/english-7-unit-01-exposure-decision-20261022.json) · [Curriculum registration](english-7-unit-01-curriculum-reconciliation.md).
 
 **Historical Sprint 16.1C.19:** structural preparation and the exact-version packet below remain valid. Earlier pending exposure/reconciliation statements describe that checkpoint.
 
@@ -40,7 +42,7 @@ The current English release remains **draft**, with zero blueprints, policy bind
 
 1. Completed under C20: John authorizes continuation with the existing exposed bank for the provisional MVP; no unseen claim.
 2. Formal curriculum registration is complete. Complete independent English/source/form qualification, or record a separately authorized bounded specialist disposition without calling it independent qualification.
-3. Adopt the explicit English scoring, per-skill minima, readiness, attempt and technical-replacement contract. No Physics thresholds are copied here.
+3. Decide the C21 explicit English scoring, per-skill minima, readiness, attempt, technical-replacement and optional-delivery proposal; then prepare exact immutable bindings. The numerical choices are proposed English criteria, not inherited platform defaults.
 4. Resolve source/voice reuse for the intended learner scope where existing records cover reviewer staging only.
 5. Authorize and verify the exact learner release under the existing desktop/mobile, two-school, four-subject pilot and Sprint 16.5 gates.
 
