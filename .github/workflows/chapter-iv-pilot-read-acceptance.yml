@@ -5,6 +5,8 @@ on:
   push:
     branches: [main]
     paths:
+      - scripts/qa-programme-fixtures.mjs
+      - docs/qa/additional-programme-fixtures.json
       - web/written-work.mjs
       - web/written-work.css
       # Activated pilot: cover the runner, native pages, their API dependencies,

@@ -1,3 +1,4 @@
+import { ownStudentClasses } from './qa-programme-fixtures.mjs';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
@@ -93,7 +94,7 @@ export async function runIsolation({ fixture, credentials, url, key, fetchImpl =
       await call(`${side}: teacher own context`, teacher, 'get-teacher-academic-context', selection(f), r => ok(r) && r.data?.context?.schoolId === f.schoolId && r.data.context.classId === f.classId);
       await call(`${side}: teacher own class evidence`, teacher, 'get-teacher-dashboard', { selection: selection(f) }, r => ok(r) && r.data?.teacher?.id === f.teacherId && r.data?.classes?.some(c => c.id === f.classId && c.students?.some(s => s.id === f.studentId)) && r.data.classes.every(c => c.schoolId === f.schoolId));
       await call(`${side}: teacher own learner detail`, teacher, 'get-teacher-student', { ...selection(f), classId: f.classId, studentId: f.studentId }, r => ok(r) && r.data?.student?.id === f.studentId && r.data?.curriculumReleaseId === f.curriculumReleaseId && r.data?.selectedUnit?.unitId === f.unitId);
-      await call(`${side}: student own enrolment`, student, 'get-student-classes', {}, r => ok(r) && r.data?.classes?.length === 1 && r.data.classes[0].id === f.classId);
+      await call(`${side}: student own enrolment`, student, 'get-student-classes', {}, r => ok(r) && ownStudentClasses(r.data, f));
     }
     if (report.checks.some(c => c.status === 'failed')) return report;
     for (const side of sides) {
@@ -107,7 +108,7 @@ export async function runIsolation({ fixture, credentials, url, key, fetchImpl =
       await call(`${side}: other learner cannot be substituted into own class`, teacher, 'get-teacher-student', { ...selection(f), classId: f.classId, studentId: other.studentId }, denied('student_not_in_teacher_class'));
       await call(`${side}: other class cannot be substituted into own assignment`, teacher, 'get-teacher-student', { ...selection(f), classId: other.classId, studentId: f.studentId }, denied('academic_context_unavailable'));
       await call(`${side}: omitted context cannot expose other learner through legacy path`, teacher, 'get-teacher-student', { classId: other.classId, studentId: other.studentId }, denied('student_not_in_teacher_class'));
-      await call(`${side}: student supplied identity cannot change enrolment reads`, student, 'get-student-classes', { studentId: other.studentId, schoolId: other.schoolId, classId: other.classId }, r => ok(r) && r.data?.classes?.length === 1 && r.data.classes[0].id === f.classId);
+      await call(`${side}: student supplied identity cannot change enrolment reads`, student, 'get-student-classes', { studentId: other.studentId, schoolId: other.schoolId, classId: other.classId }, r => ok(r) && ownStudentClasses(r.data, f));
       await call(`${side}: student cannot use teacher evidence API`, student, 'get-teacher-student', { ...selection(other), classId: other.classId, studentId: other.studentId }, denied('teacher_role_required'));
       await call(`${side}: student cannot use school directory API`, student, 'get-school-teachers', { schoolId: other.schoolId }, denied('school_admin_required'));
       await call(`${side}: teacher cannot use school directory API`, teacher, 'get-school-teachers', { schoolId: other.schoolId }, denied('school_admin_required'));

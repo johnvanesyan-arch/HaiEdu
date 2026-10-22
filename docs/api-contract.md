@@ -1,5 +1,7 @@
 # Learning API contract
 
+**16.1C.25:** No API/schema/Edge implementation changes. English Unit 1 now binds the accepted four policies through the normal release validators. Exact subject-specific QA classes/enrollments exercise existing dashboard, guides and writing-list/queue APIs; shared acceptance tooling admits only committed additional contexts. Live read verification is pending. [Pilot release](english-7-unit-01-pilot-release.md).
+
 **16.1C.24:** No API/schema/Edge or product-runtime changes. The new activation-gated English read-acceptance extension consumes the existing dashboard, guide and writing-list/queue APIs. Its allowlist prohibits learning writes and audio delivery. The final source-use/pilot record and designated English enrollments are still required. [Release packet](english-7-unit-01-final-release-decision.md).
 
 **16.1C.23:** No API/schema/Edge changes. Shared UI renders assessed scope from saved policies/results and the optional assistance-policy text from approved writing definitions. Automatic and written scores remain separate. The narrow W01 delivery projection matches the accepted definition; isolated synthetic-context verification does not open live English access. [Acceptance handoff](english-7-unit-01-learner-acceptance.md).

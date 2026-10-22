@@ -5,7 +5,19 @@ on:
   push:
     branches: [main]
     paths:
-      # Preparation cannot run live QA; activation expands these dependency paths.
+      # Activated pilot: shared frontend/API dependency graph and exact recipes.
+      - web/**
+      - supabase/functions/**
+      - supabase/migrations/**
+      - scripts/**
+      - package.json
+      - package-lock.json
+      - vercel.json
+      - .github/workflows/english-unit1-pilot-read-acceptance.yml
+      - docs/qa/additional-programme-fixtures.json
+      - docs/content/english-7-unit-01-release-configuration.json
+      - docs/content/english-7-unit-01-release-decision.json
+      - docs/content/english-7-unit-01-materials.json
       - docs/evidence/english-7-unit-01-pilot-activation.json
 
 permissions:

@@ -1,0 +1,91 @@
+{
+  "schemaVersion": "haiedu-english-unit1-activation-v1",
+  "checkpoint": "16.1C.25",
+  "status": "activated",
+  "releaseStatus": "pilot",
+  "activatedAt": "2026-10-22T20:37:45.552404+00:00",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+    "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+  },
+  "preparedFromCommit": "c4545ba47fd865f47d70f65dd366b21f59e35056",
+  "configurationSha256": "858b5563b908c56f513238552ae19fefdac5c330a3f5fbb0656c2fb294354b5c",
+  "decisionManifestSha256": "5b7a913fa20c8a2a5e8599d9a74e854f46a0f7d92eae20942620813fac7d60d1",
+  "ownerAuthorization": {
+    "schemaVersion": "haiedu-english-unit1-owner-activation-v1",
+    "owner": "John",
+    "action": "activate_provisional_pilot",
+    "scope": {
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+    },
+    "decisionManifestSha256": "5b7a913fa20c8a2a5e8599d9a74e854f46a0f7d92eae20942620813fac7d60d1",
+    "configurationSha256": "858b5563b908c56f513238552ae19fefdac5c330a3f5fbb0656c2fb294354b5c",
+    "ownerDirection": "I created the audios, I also can use the textbook adaptations freely. Proceed.",
+    "recordedAt": "2026-10-22T20:35:27.926175+00:00",
+    "specialistReview": "deferred",
+    "learnerSourceUseConfirmed": true,
+    "recordingProviderVoiceUseBasis": "Owner states that he created the supplied audios and directs proceeding with the proposed enrolled-learner Unit 1 pilot. No provider plan or third-party voice licence is independently asserted.",
+    "textbookAdaptationUseBasis": "Owner states that he can use the textbook adaptations freely and directs proceeding with the proposed enrolled-learner Unit 1 pilot.",
+    "sourceUseScope": "authenticated_enrolled_unit1_learners",
+    "publicDownloadsAuthorized": false,
+    "independentSmeApproved": false,
+    "unseenAssessmentClaim": false,
+    "interpretation": "Direct response to the C24 bounded provisional activation and intended learner-use request; earlier accepted numerical, content, audio and public-exposure decisions remain in force."
+  },
+  "specialistGate": "pending",
+  "independentSmeApproved": false,
+  "unseenAssessmentClaim": false,
+  "verifiedReadback": true,
+  "verifiedAt": "2026-10-22T20:41:41.614368+00:00",
+  "configurationRows": 609,
+  "rehearsal": {
+    "normalValidatorsAndBinders": true,
+    "preservedScopes": 117,
+    "independentRollbackRestoration": 117
+  },
+  "activation": {
+    "preservedScopes": 117,
+    "independentPreservationReadback": 117,
+    "policyContractsMatched": 4,
+    "formsMatched": 5,
+    "orderedFormSlotsMatched": 140,
+    "poolSizes": [
+      58,
+      56,
+      84
+    ],
+    "corePractice": 58,
+    "optionalPracticeRetained": [
+      "ENG7-U01-P10",
+      "ENG7-U01-P11"
+    ],
+    "sourcesUnchanged": 41,
+    "contentApprovalsAndQaUnchanged": true,
+    "globalLifecyclePointerUnchanged": true,
+    "learnerHistoryUnchanged": true,
+    "edgeRuntimeChanged": false,
+    "schemaChanged": false
+  },
+  "qaSetup": {
+    "scope": "existing_six_designated_test_school_actors",
+    "newSubjectClasses": 2,
+    "newSubjectAuthorizations": 2,
+    "newTeacherAssignments": 2,
+    "newEnrollments": 2,
+    "newAccounts": 0,
+    "externalMessagesSent": 0,
+    "normalServiceFunctionsUsed": true,
+    "preservedScopes": 117,
+    "fixtureManifest": "docs/qa/additional-programme-fixtures.json",
+    "fixtureManifestSha256": "f5ba08bff0e18a6ea581b803566b1d905b8ec9582f70d6715bd52d85023e9656",
+    "independentPreservationReadback": 117
+  },
+  "liveReadAcceptance": {
+    "status": "awaiting_reviewed_main_exact_deployment",
+    "workflow": ".github/workflows/english-unit1-pilot-read-acceptance.yml"
+  },
+  "next": "Separate designated learner/audio and writing submission/teacher-marking acceptance; preserve exposures and existing evidence."
+}

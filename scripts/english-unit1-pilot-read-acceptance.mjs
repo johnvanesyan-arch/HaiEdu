@@ -1,3 +1,4 @@
+import { ownNavigation } from './qa-programme-fixtures.mjs';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -104,9 +105,9 @@ export async function runReadChecks({ fixture, request, check }) {
   };
   for (const side of sides) {
     const navigation = await request(`${side}_student`, '/functions/v1/get-student-classes', {});
-    check(`${side}: navigation restricted to designated school and class`, navigation.status === 200
+    check(`${side}: navigation restricted to designated school and programme classes`, navigation.status === 200
       && Array.isArray(navigation.data?.contexts) && navigation.data.contexts.length > 0 && !foreign(navigation.data, side)
-      && navigation.data.contexts.every(c => c.schoolId === fixture[side].schoolId && c.classId === fixture[side].classId), navigation.status);
+      && ownNavigation(navigation.data.contexts, fixture[side]), navigation.status);
     const all = navigation.data.contexts;
     const own = all.filter(c => c.curriculumReleaseId === english.curriculumReleaseId && c.unitId === english.unitId);
     const preserved = all.filter(c => c.curriculumReleaseId === fixture[side].curriculumReleaseId && c.unitId === fixture[side].unitId);

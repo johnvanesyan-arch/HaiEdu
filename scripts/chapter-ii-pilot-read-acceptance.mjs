@@ -1,3 +1,4 @@
+import { ownNavigation } from './qa-programme-fixtures.mjs';
 import { readFile, mkdir, writeFile } from 'node:fs/promises';
 import { createHash } from 'node:crypto';
 import { fileURLToPath } from 'node:url';
@@ -117,7 +118,7 @@ export async function runReadChecks({ fixture, activation, request, check }) {
   };
   for (const side of sides) {
     const r = await request(`${side}_student`, '/functions/v1/get-student-classes', {});
-    check(`${side}: navigation has only own-school contexts`, r.status === 200 && Array.isArray(r.data?.contexts) && r.data.contexts.length > 0 && !hasForeignIdentity(r.data, side) && r.data.contexts.every(c => c.schoolId === fixture[side].schoolId && c.classId === fixture[side].classId), r.status);
+    check(`${side}: navigation has only own-school contexts`, r.status === 200 && Array.isArray(r.data?.contexts) && r.data.contexts.length > 0 && !hasForeignIdentity(r.data, side) && ownNavigation(r.data.contexts, fixture[side]), r.status);
     contexts[side] = [activation.preservedChapterI, chapterII].map(target => {
       const matches = r.data.contexts.filter(c => c.curriculumReleaseId === target.curriculumReleaseId && c.unitId === target.unitId);
       check(`${side}: chapter appears once in authorized navigation`, matches.length === 1 && uuid(matches[0]?.enrollmentId));

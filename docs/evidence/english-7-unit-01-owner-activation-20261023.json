@@ -1,0 +1,23 @@
+{
+  "schemaVersion": "haiedu-english-unit1-owner-activation-v1",
+  "owner": "John",
+  "action": "activate_provisional_pilot",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+    "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+  },
+  "decisionManifestSha256": "5b7a913fa20c8a2a5e8599d9a74e854f46a0f7d92eae20942620813fac7d60d1",
+  "configurationSha256": "858b5563b908c56f513238552ae19fefdac5c330a3f5fbb0656c2fb294354b5c",
+  "ownerDirection": "I created the audios, I also can use the textbook adaptations freely. Proceed.",
+  "recordedAt": "2026-10-22T20:35:27.926175+00:00",
+  "specialistReview": "deferred",
+  "learnerSourceUseConfirmed": true,
+  "recordingProviderVoiceUseBasis": "Owner states that he created the supplied audios and directs proceeding with the proposed enrolled-learner Unit 1 pilot. No provider plan or third-party voice licence is independently asserted.",
+  "textbookAdaptationUseBasis": "Owner states that he can use the textbook adaptations freely and directs proceeding with the proposed enrolled-learner Unit 1 pilot.",
+  "sourceUseScope": "authenticated_enrolled_unit1_learners",
+  "publicDownloadsAuthorized": false,
+  "independentSmeApproved": false,
+  "unseenAssessmentClaim": false,
+  "interpretation": "Direct response to the C24 bounded provisional activation and intended learner-use request; earlier accepted numerical, content, audio and public-exposure decisions remain in force."
+}
