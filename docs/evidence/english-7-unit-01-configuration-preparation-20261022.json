@@ -1,0 +1,127 @@
+{
+  "schemaVersion": "haiedu-release-preparation-evidence-v1",
+  "checkpoint": "16.1C.22",
+  "roadmap": "4.48",
+  "date": "2026-10-22",
+  "sourceCommit": "c19e3fcf4999040eb29e564978d6833da44ad09d",
+  "status": "owner_policy_accepted_configuration_rehearsed_not_activated",
+  "ownerAcceptance": {
+    "schemaVersion": "haiedu-owner-policy-acceptance-v1",
+    "checkpoint": "16.1C.22",
+    "date": "2026-10-22",
+    "owner": "John",
+    "statement": "yes",
+    "context": "Direct acceptance of the complete C21 numerical contract, finite replacement rules and 58-core/2-optional initial delivery split.",
+    "sourceCommit": "c19e3fcf4999040eb29e564978d6833da44ad09d",
+    "proposalPath": "docs/content/english-7-unit-01-policy-proposal.json",
+    "proposalSha256": "87495e5199db44f2fe010c6bb4c02f8742cac98fcbc282147e7b059dc38009c4",
+    "approved": true,
+    "implementationPreparationAuthorized": true,
+    "learnerActivationAuthorized": false,
+    "independentSmeApproval": false,
+    "publisherReuseLicenceAsserted": false,
+    "unchangedEvidence": [
+      "C18 owner content/guide/writing acceptance",
+      "C19 exact form/version/source preflight",
+      "C20 formal curriculum registration and public-exposure disposition",
+      "C21 27 focused numerical/closed-policy checks"
+    ],
+    "scope": {
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+    }
+  },
+  "observedAt": "2026-10-22T19:02:47.018167+00:00",
+  "scope": "English Unit 1 technical configuration only; existing content, approvals and QA reused",
+  "prepared": {
+    "model": 1,
+    "runtimeProvenanceSnapshot": 1,
+    "runtimeBinding": 1,
+    "reusedLifecycleId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+    "newLifecycleRows": 0,
+    "pools": 3,
+    "poolItems": 198,
+    "corePractice": 58,
+    "optionalRetained": [
+      "ENG7-U01-P10",
+      "ENG7-U01-P11"
+    ],
+    "blueprints": 4,
+    "blueprintItems": 256,
+    "forms": 5,
+    "formItems": 140,
+    "configurationRows": 609,
+    "derivedPoolReconciliations": 3,
+    "derivedPolicyBindings": 4,
+    "derivedMasterySelectionBindings": 1
+  },
+  "verification": {
+    "checks": [
+      "reproducible_exact_rehearsed_sql",
+      "activated_release_rejected",
+      "bank_item_missing_rejected",
+      "saved_version_drift_rejected",
+      "saved_hash_drift_rejected",
+      "duplicate_form_order_rejected",
+      "wrong_form_scope_rejected",
+      "changed_lifecycle_rejected",
+      "incomplete_preservation_inventory_rejected",
+      "rollback_only_no_commit_option",
+      "four_actual_sql_policy_and_skill_snapshots_exact",
+      "actual_mastery_binding_three_forms_84_exact_items",
+      "all_117_tables_restored",
+      "zero_live_english_bindings_or_allocation",
+      "js_exact_bound_diagnostic",
+      "js_exact_bound_practice",
+      "js_exact_bound_mastery_check",
+      "js_exact_bound_chapter_review"
+    ],
+    "count": 18
+  },
+  "productionRehearsal": {
+    "actualSqlValidatorsAndTriggersPassed": true,
+    "allFourPolicySnapshotsExact": true,
+    "masteryForms": 3,
+    "masteryItemVersionSkillBindingsExact": 84,
+    "preservedScopesInTransaction": 117,
+    "tablesExactlyRestoredAfterRollback": 117,
+    "committedDataChanges": 0,
+    "contentApprovalAuditPerformed": false,
+    "contentQaRerun": false,
+    "runtimeDeployed": false,
+    "newLearnerSessionCreated": false
+  },
+  "postRollbackState": {
+    "status": "draft",
+    "policies": 0,
+    "blueprints": 0,
+    "reviewedBy": null,
+    "activatedAt": null,
+    "activeUnits": 0,
+    "pendingGates": 7,
+    "runtimeBindings": 0
+  },
+  "unchangedEvidence": [
+    "C12 deployed assessed-listening SQL/Edge source readback; current relevant source hashes match",
+    "C17 privacy inventory deployment retained; outside this scoring manifest",
+    "C18 accepted questions/materials and learner guide capability",
+    "C19 exact five-form immutable item/source preflight; all 140 assessment version hashes still match",
+    "C20 formal curriculum registration and accepted existing-bank exposure",
+    "C21 27 numerical/readiness/scoring checks"
+  ],
+  "fileSha256": {
+    "scripts/releases/prepare-english-7-unit-01-configuration.py": "765f2f01f501db6ffe9e9cfefe054b7a0f4b0af99b76b1fc26dee0749265def8",
+    "docs/content/english-7-unit-01-release-configuration.json": "858b5563b908c56f513238552ae19fefdac5c330a3f5fbb0656c2fb294354b5c",
+    "docs/data/english-7-unit-01-configuration-rehearsal-20261022.sql": "a6343a01376ad75dab936ffe75b7cf6bfbd5efefc13c782619ad2e18bbc664ed",
+    "docs/evidence/english-7-unit-01-policy-acceptance-20261022.json": "c58f3d34111304a326b388dcee7814b5ee8c86b1af8e68341829687208665975"
+  },
+  "boundaries": [
+    "Rehearsal SQL always ends in ROLLBACK and compiler has no commit option. Temporary pilot-state validation is invisible to other transactions and never authorizes learner activation.",
+    "No independent SME decision, source/voice reuse licence, unseen status or empirical form equivalence is asserted.",
+    "The existing immutable lifecycle is explicitly bound because its exact 3-attempt/12-review values match approval. Its global activation pointer and other subjects are unchanged.",
+    "No complete learner attempt or new authenticated browser/playback acceptance is claimed.",
+    "Scoped result wording, separate writing readiness, bounded learner acceptance and remaining qualification/reuse/activation decisions precede release."
+  ],
+  "releaseVerification": "Required merged-source CI, production deployment and exact-source Notion closure are recorded in the Notion sprint map after merge."
+}

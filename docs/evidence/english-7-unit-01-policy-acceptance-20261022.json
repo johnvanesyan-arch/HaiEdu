@@ -1,0 +1,27 @@
+{
+  "schemaVersion": "haiedu-owner-policy-acceptance-v1",
+  "checkpoint": "16.1C.22",
+  "date": "2026-10-22",
+  "owner": "John",
+  "statement": "yes",
+  "context": "Direct acceptance of the complete C21 numerical contract, finite replacement rules and 58-core/2-optional initial delivery split.",
+  "sourceCommit": "c19e3fcf4999040eb29e564978d6833da44ad09d",
+  "proposalPath": "docs/content/english-7-unit-01-policy-proposal.json",
+  "proposalSha256": "87495e5199db44f2fe010c6bb4c02f8742cac98fcbc282147e7b059dc38009c4",
+  "approved": true,
+  "implementationPreparationAuthorized": true,
+  "learnerActivationAuthorized": false,
+  "independentSmeApproval": false,
+  "publisherReuseLicenceAsserted": false,
+  "unchangedEvidence": [
+    "C18 owner content/guide/writing acceptance",
+    "C19 exact form/version/source preflight",
+    "C20 formal curriculum registration and public-exposure disposition",
+    "C21 27 focused numerical/closed-policy checks"
+  ],
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+    "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+  }
+}

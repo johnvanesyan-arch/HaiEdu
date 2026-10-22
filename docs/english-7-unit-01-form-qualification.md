@@ -1,6 +1,8 @@
 # English 7 Unit 1 — conditional form qualification
 
-**C21 current handoff · 22 October 2026 · Roadmap 4.47:** The [explicit scoring/readiness/retry proposal](english-7-unit-01-policy-proposal.md) is prepared and passes 27 focused checks. Owner numerical and 58-core/2-optional delivery approval is next; no policy binding or allocation is performed. C20’s exposure disposition and formal registration remain complete.
+**16.1C.22 current handoff — 2026-10-22:** John approved the complete C21 policy and 58-core/2-optional split. Exact model/lifecycle/pool/form preparation passed the actual SQL binders in a rollback-only rehearsal; all four policy snapshots and 84 Mastery bindings match, and all 117 table fingerprints are restored. Eighteen focused checks pass. The 60/56/84 bank and prior approvals/QA/audio remain unchanged. English stays draft/inactive. Next: scoped automatic-result wording and learner/writing acceptance preparation, then remaining qualification/reuse/learner-release gates. [Preparation and evidence](english-7-unit-01-release-preparation.md).
+
+**C21 historical handoff · 22 October 2026 · Roadmap 4.47:** The [explicit scoring/readiness/retry proposal](english-7-unit-01-policy-proposal.md) is prepared and passes 27 focused checks. Owner numerical and 58-core/2-optional delivery approval is next; no policy binding or allocation is performed. C20’s exposure disposition and formal registration remain complete.
 
 **C20 completed disposition · 22 October 2026 · Roadmap 4.46:** John accepts continuing with the existing bank despite its public availability for the provisional MVP. The exposure-decision request below is closed. Formal curriculum registration is complete; independent qualification, explicit assessment policy and learner release remain separate. [Owner record](evidence/english-7-unit-01-exposure-decision-20261022.json) · [Curriculum registration](english-7-unit-01-curriculum-reconciliation.md).
 
