@@ -1,6 +1,8 @@
 # English 7 Unit 1 — conditional form qualification
 
-**Sprint 16.1C.19 · 22 October 2026 · Roadmap 4.45. Structural preparation is complete; independent qualification remains held.**
+**C20 current disposition · 22 October 2026 · Roadmap 4.46:** John accepts continuing with the existing bank despite its public availability for the provisional MVP. The exposure-decision request below is closed. Formal curriculum registration is complete; independent qualification, explicit assessment policy and learner release remain separate. [Owner record](evidence/english-7-unit-01-exposure-decision-20261022.json) · [Curriculum registration](english-7-unit-01-curriculum-reconciliation.md).
+
+**Historical Sprint 16.1C.19:** structural preparation and the exact-version packet below remain valid. Earlier pending exposure/reconciliation statements describe that checkpoint.
 
 John’s acceptance of all 200 questions, recordings, nine guides and the writing package is retained. No approval audit, content QA rerun, content edit or new human decision was performed. Existing grading, language/source, whole-bank comparison and playback evidence are reused. This slice prepares exact current-version form bindings and establishes the current protection limitation.
 
@@ -26,18 +28,18 @@ The GitHub repository was public at this checkpoint. Two requests sent **without
 
 The private `learning-audio` delivery service is unchanged. Protected playback controls do not make a publicly available transcript or answer key unseen. Earlier packets labelled “private draft” describe their intended authoring use, not their current access boundary.
 
-**Current disposition: hold all five forms from protected allocation.** Ordinary content acceptance remains valid. No independent qualification or English exposure waiver is inferred from the owner’s earlier MVP/content approvals. Changing repository visibility later would not make prior exposure provably absent.
+**Historical C19 disposition: hold all five forms from protected allocation pending an explicit exposure decision.** Ordinary content acceptance remains valid. No independent qualification or English exposure waiver is inferred from the owner’s earlier MVP/content approvals. Changing repository visibility later would not make prior exposure provably absent.
 
 I recommend retaining this accepted bank for a **bounded provisional MVP with the public-exposure limitation disclosed**, while keeping future protected content private. This preserves the reviewed content investment without presenting it as an unseen or independently qualified assessment. That route needs an explicit owner exposure/SME disposition and the remaining assessment/release decisions. If unseen assessment is required for this release, approve a separate bounded replacement-authoring scope before allocating forms. No replacement batch, repository visibility change, history rewrite or content removal is authorized or performed by this preflight.
 
 The public-code/private-assessment-content boundary applies to every subject. This checkpoint establishes exact exposure for the English packets only; it does not claim a fresh audit or revoke existing decisions for other subjects.
 
-## Release prerequisites
+## Release prerequisites — updated under C20
 
-The current English release remains **draft**, with zero blueprints, policy bindings, allocated forms, pool memberships and learner sessions. Fourteen planning skills are present, but their formal outcome mappings are empty and the release has no reconciliation identity. The existing source/outcome design remains preparation evidence, not registered reconciliation.
+The current English release remains **draft**, with zero blueprints, policy bindings, allocated forms, pool memberships and learner sessions. C20 binds the fourteen existing skills to ten registered programme outcomes through seventeen links, maps 200 families and registers the release reconciliation identity. No independent specialist qualification or scoring-policy adoption follows from that technical registration.
 
-1. Record the explicit public-exposure disposition and intended provisional or protected use.
-2. Complete independent English/source/form qualification and formal curriculum reconciliation, or record a separately authorized bounded provisional disposition without calling it independent qualification.
+1. Completed under C20: John authorizes continuation with the existing exposed bank for the provisional MVP; no unseen claim.
+2. Formal curriculum registration is complete. Complete independent English/source/form qualification, or record a separately authorized bounded specialist disposition without calling it independent qualification.
 3. Adopt the explicit English scoring, per-skill minima, readiness, attempt and technical-replacement contract. No Physics thresholds are copied here.
 4. Resolve source/voice reuse for the intended learner scope where existing records cover reviewer staging only.
 5. Authorize and verify the exact learner release under the existing desktop/mobile, two-school, four-subject pilot and Sprint 16.5 gates.

@@ -1,0 +1,19 @@
+{
+  "schemaVersion": "haiedu-owner-exposure-decision-v1",
+  "checkpoint": "16.1C.20",
+  "date": "2026-10-22",
+  "statement": "Don't worry about the privacy. Continue as before. I will switch back to private as soon as the new hours take effect next month.",
+  "disposition": "Continue with the existing accepted Unit 1 bank for the provisional MVP despite its confirmed public-source exposure.",
+  "scope": "The existing English Unit 1 bank and five C19 form candidates; no replacement authoring is required for this exposure issue.",
+  "limitations": [
+    "Does not establish that the questions or source texts/scripts are unseen.",
+    "Does not constitute independent SME approval, source/voice licensing, assessment-policy adoption or learner-release activation.",
+    "Owner intends to restore private repository visibility next month; no visibility change or scheduled action is performed here.",
+    "Database, role, tenant, private audio and learner-data controls remain unchanged."
+  ],
+  "basedOn": "C19 confirmed anonymous access to 140 assessment prompts/keys and 20 source texts/scripts",
+  "priorEvidence": "english-7-unit-01-form-preflight-20261022.json",
+  "questionReviewReopened": false,
+  "exposureRechecked": false,
+  "repositoryVisibilityChanged": false
+}

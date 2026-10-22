@@ -1,6 +1,6 @@
 # Learning API contract
 
-**16.1C.19:** Read-only content/form preflight adds no API or runtime change. Five conditional English forms remain unallocated; public-source exposure disposition and existing release gates are required. The C18 learner guide API remains unchanged. [Qualification boundary](english-7-unit-01-form-qualification.md).
+**16.1C.20:** Data-only English curriculum registration uses existing source/reconciliation/release snapshot tables. No API, schema or runtime changes. The existing bank’s public-exposure disposition is owner-accepted; English remains draft with no adopted assessment policy or allocated forms. C18 learner guide delivery and all role/tenant/private-audio controls are unchanged. [Curriculum boundary](english-7-unit-01-curriculum-reconciliation.md).
 
 **16.1C.18 learner guides — read-only:** `get-unit-guides` accepts the exact enrollment/release/unit selection. It returns only approved `teaching-guide-v1` text in saved sequence after a completed baseline and outside active Diagnostic/Mastery. The service-only SQL read preserves live-session, school/year/class/teacher/subject/release authorization, and excludes staff packages and writing models. No scoring, evidence, approval or curriculum activation writes. [Contract and verification boundary](unit-guide-delivery.md).
 

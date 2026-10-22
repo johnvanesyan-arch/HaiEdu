@@ -1,6 +1,8 @@
 # English 7 Unit 1 — source and evidence map
 
-**16.1C.19 current handoff — 2026-10-22:** Five conditional 28-item forms now have exact current-version/source bindings. Public access to all 140 assessment prompts/keys and twenty source texts/scripts is confirmed; protection qualification remains held pending explicit disposition. No owner-review audit or production mutation is performed. Formal outcome mappings and reconciliation remain unregistered; final English policy/release gates stay open. [Decision brief and evidence](english-7-unit-01-form-qualification.md).
+**16.1C.20 current handoff — 2026-10-22:** John accepts continuing with the existing bank despite its public availability for the provisional MVP. Formal curriculum registration is complete: governing source chain, ten official programme outcomes, fourteen skills, seventeen mappings and 200 family traces are bound to the draft release. No approved content, QA or audio is changed or re-audited. Next is the explicit English scoring/readiness/attempt/replacement contract; independent specialist, intended-scope reuse and learner-release gates remain. [Curriculum delivery and evidence](english-7-unit-01-curriculum-reconciliation.md).
+
+**16.1C.19 historical handoff — 2026-10-22:** Five conditional 28-item forms now have exact current-version/source bindings. Public access to all 140 assessment prompts/keys and twenty source texts/scripts is confirmed; protection qualification remains held pending explicit disposition. No owner-review audit or production mutation is performed. Formal outcome mappings and reconciliation remain unregistered; final English policy/release gates stay open. [Decision brief and evidence](english-7-unit-01-form-qualification.md).
 
 **16.1C.18 accepted-material checkpoint — 2026-10-22:** John reports accepting all nine teaching guides and the writing task/rubric/workload package; his review is not repeated. All 200 questions and their unchanged source/audio evidence remain accepted. Shared learner guide delivery now follows saved lesson order, with server-enforced entitlement, diagnostic-first and active-assessment restrictions. English stays inactive pending source/form qualification and the explicit assessment/release contract. [Guide delivery](unit-guide-delivery.md). Earlier pending content-review statements describe historical checkpoints.
 
@@ -81,7 +83,7 @@ Spaces and dash typography in the source's first two listening codes have been n
 
 ## Proposed assessable skills
 
-`ENG7-U01-S01`–`S14` are **planning identifiers**, not published curriculum rows. Controlled production contributes to its stated vocabulary/grammar target; only S13–S14 establish extended-writing evidence.
+`ENG7-U01-S01`–`S14` began as planning identifiers; they are now registered in the review catalogue and formally mapped under C20. This does not publish or activate them. Controlled production contributes to its stated vocabulary/grammar target; only S13–S14 establish extended-writing evidence.
 
 | ID | Observable target | Textbook anchor | Format and grading route |
 | --- | --- | --- | --- |
