@@ -1,0 +1,217 @@
+{
+  "schemaVersion": "haiedu-form-preflight-summary-v1",
+  "checkpoint": "16.1C.19",
+  "date": "2026-10-22",
+  "state": "structural_preparation_complete_qualification_held",
+  "sourceCommit": "39a6ba4957042b23d1bfcc3aa9690c7c164f2ad2",
+  "ownerReviewReused": true,
+  "approvalAuditPerformed": false,
+  "contentQaRepeated": false,
+  "forms": [
+    {
+      "code": "DA",
+      "purpose": "diagnostic",
+      "items": 28,
+      "components": 30,
+      "responseTypes": {
+        "single_choice": 23,
+        "typed_fields": 5
+      },
+      "languageItems": 20,
+      "readingItems": 4,
+      "listeningItems": 4,
+      "readingSources": 2,
+      "audioSources": 2,
+      "twoPlayAudioSeconds": 106.736,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "DB",
+      "purpose": "diagnostic",
+      "items": 28,
+      "components": 31,
+      "responseTypes": {
+        "single_choice": 22,
+        "typed_fields": 6
+      },
+      "languageItems": 20,
+      "readingItems": 4,
+      "listeningItems": 4,
+      "readingSources": 2,
+      "audioSources": 2,
+      "twoPlayAudioSeconds": 131.972,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MA",
+      "purpose": "mastery",
+      "items": 28,
+      "components": 29,
+      "responseTypes": {
+        "single_choice": 23,
+        "typed_fields": 5
+      },
+      "languageItems": 20,
+      "readingItems": 4,
+      "listeningItems": 4,
+      "readingSources": 2,
+      "audioSources": 2,
+      "twoPlayAudioSeconds": 107.99,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MB",
+      "purpose": "mastery",
+      "items": 28,
+      "components": 31,
+      "responseTypes": {
+        "single_choice": 22,
+        "typed_fields": 6
+      },
+      "languageItems": 20,
+      "readingItems": 4,
+      "listeningItems": 4,
+      "readingSources": 2,
+      "audioSources": 2,
+      "twoPlayAudioSeconds": 123.508,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MC",
+      "purpose": "mastery",
+      "items": 28,
+      "components": 31,
+      "responseTypes": {
+        "single_choice": 23,
+        "typed_fields": 5
+      },
+      "languageItems": 20,
+      "readingItems": 4,
+      "listeningItems": 4,
+      "readingSources": 2,
+      "audioSources": 2,
+      "twoPlayAudioSeconds": 150.728,
+      "qualified": false,
+      "allocated": false
+    }
+  ],
+  "counts": {
+    "practice": 60,
+    "diagnostic": 56,
+    "mastery": 84,
+    "distinctAssessmentItems": 140,
+    "sourceFamilies": 20,
+    "registeredReadingSources": 10,
+    "registeredRecordings": 10,
+    "formalOutcomeMappings": 0,
+    "qualifiedForms": 0
+  },
+  "structuralChecks": {
+    "exactCurrentVersionBindings": 140,
+    "completeDemandCoverage": true,
+    "perSkillBlueprint": true,
+    "noRepeatedItems": true,
+    "sourceFamiliesSeparatedAcrossFormsAndPractice": true,
+    "sharedSourcesContiguous": true,
+    "currentSourceMembers": 40,
+    "recordingVersionBindings": 10,
+    "sourceIndependenceOrDifficultyEquivalenceClaimed": false
+  },
+  "exposure": {
+    "repositoryPublic": true,
+    "anonymousSourceResponses": [
+      {
+        "status": 200,
+        "sha256": "a7f65777ac4256767a84cb50dadc4086800f1ad42389a8063f028754cb28bc40",
+        "bytes": 260669,
+        "observedAt": "2026-10-22T17:29:23.963680+00:00"
+      },
+      {
+        "status": 200,
+        "sha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+        "bytes": 417423,
+        "observedAt": "2026-10-22T17:29:30.859507+00:00"
+      }
+    ],
+    "affectedCandidateItems": 140,
+    "affectedSourceTextsOrScripts": 20,
+    "actualThirdPartyRetrieval": "unknown",
+    "privateStoragePlaybackChanged": false,
+    "sourceExposureRows": 0,
+    "caution": "Zero platform exposures cannot establish non-exposure through public GitHub."
+  },
+  "governance": {
+    "releaseStatus": "draft",
+    "blueprints": 0,
+    "policyBindings": 0,
+    "forms": 0,
+    "poolMemberships": 0,
+    "learningSessions": 0
+  },
+  "privatePacket": {
+    "fileName": "English_7_Unit_1_Form_Qualification.json",
+    "sha256": "fad5b66233aaee9b53c3a55b3f13530317aa1e24c8c44f7a60506f5f58f64250",
+    "storedOutsidePublicRepository": true,
+    "archiveFileName": "English_7_Unit_1_Qualification_Packet.zip",
+    "archiveSha256": "8757cdeeccda7af330db67a1590ac3d081a057f396a16559fef8bf8ffa46419c",
+    "savedForOwner": true
+  },
+  "reusedEvidence": [
+    "english-7-unit-01-assessment-batch-a-validation-20261021.json",
+    "english-7-unit-01-assessment-batch-bcd-validation-20261022.json",
+    "english-7-unit-01-bcd-whole-bank-review-20261022.json",
+    "english-7-unit-01-bcd-audio-registration-20261022.json",
+    "english-7-unit-01-materials-20261022.json",
+    "english-7-unit-01-guide-delivery-20261022.json"
+  ],
+  "productionWrites": 0,
+  "runtimeChanged": false,
+  "gates": [
+    "explicit public-source exposure disposition",
+    "independent English/source/form qualification",
+    "formal curriculum reconciliation and outcome bindings",
+    "explicit scoring/readiness/attempt policy",
+    "source/voice reuse for intended learner scope",
+    "authorized exact-release learner acceptance"
+  ],
+  "negativeChecks": [
+    {
+      "case": "stale_member_version",
+      "rejected": true,
+      "summaryWritten": false
+    },
+    {
+      "case": "wrong_source_family",
+      "rejected": true,
+      "summaryWritten": false
+    },
+    {
+      "case": "missing_recording",
+      "rejected": true,
+      "summaryWritten": false
+    },
+    {
+      "case": "active_release",
+      "rejected": true,
+      "summaryWritten": false
+    },
+    {
+      "case": "private_output_inside_repository",
+      "rejected": true,
+      "summaryWritten": false
+    }
+  ],
+  "generatorSha256": "a895ce2461bb9b12d9601ffadd0853181fca96a7302b74edefdb1358b3b230c2",
+  "releaseEvidenceReused": {
+    "commit": "39a6ba4957042b23d1bfcc3aa9690c7c164f2ad2",
+    "ciRun": 39821661947,
+    "tests": 1385,
+    "nativeChromium": 93,
+    "postgres": "17.6",
+    "reason": "No browser, Edge, database or runtime change"
+  }
+}

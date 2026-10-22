@@ -1,5 +1,7 @@
 # Learning API contract
 
+**16.1C.19:** Read-only content/form preflight adds no API or runtime change. Five conditional English forms remain unallocated; public-source exposure disposition and existing release gates are required. The C18 learner guide API remains unchanged. [Qualification boundary](english-7-unit-01-form-qualification.md).
+
 **16.1C.18 learner guides — read-only:** `get-unit-guides` accepts the exact enrollment/release/unit selection. It returns only approved `teaching-guide-v1` text in saved sequence after a completed baseline and outside active Diagnostic/Mastery. The service-only SQL read preserves live-session, school/year/class/teacher/subject/release authorization, and excludes staff packages and writing models. No scoring, evidence, approval or curriculum activation writes. [Contract and verification boundary](unit-guide-delivery.md).
 
 **16.1C.17 shared unit-material review — backend deployed and source-verified:** `manage-unit-materials` provides staff-only list/get/revise/qa/approve/retire actions. The service derives identity, live session and AAL from the verified token, locks authorization rows, and rejects stale versions. `approve`/`retire` require AAL2. Writing approval atomically publishes the version into the existing writing runtime; staff-only models and workload notes stay outside its definition. The existing privacy endpoint reports reviewer-owned material counts through a service-only aggregate RPC. No English activation or scoring-policy change. [Exact contract](unit-material-review.md).
