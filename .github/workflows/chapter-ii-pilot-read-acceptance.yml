@@ -39,6 +39,14 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Bound Ubuntu downloads for browser acceptance
+        run: |
+          # Runner-only transport settings; package signatures and TLS verification stay enabled.
+          # Bound slow mirror downloads without changing package trust or test timeouts.
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i 's#http://azure.archive.ubuntu.com/ubuntu#https://archive.ubuntu.com/ubuntu#g' /etc/apt/apt-mirrors.txt
+          fi
+          printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80-haiedu-ci >/dev/null
       - run: npx playwright install --with-deps chromium
       - name: Wait for this frontend revision on production
         run: node scripts/wait-for-production-release.mjs

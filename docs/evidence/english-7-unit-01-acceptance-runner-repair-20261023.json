@@ -1,0 +1,38 @@
+{
+  "schemaVersion": 1,
+  "checkpoint": "16.1C.25",
+  "status": "prepared_awaiting_main_ci_and_live_acceptance",
+  "reason": "Chapter VI job 120084635557 spent more than eleven minutes retrying Azure HTTP package downloads before authenticated acceptance began. Stopped before QA credentials/learning operations.",
+  "priorRun": 39851583510,
+  "priorJob": 120084635557,
+  "supersededPendingEnglishRun": 39853759071,
+  "scope": "Runner-only apt download preparation in every existing Chromium workflow that lacked the required-CI setup.",
+  "workflows": [
+    ".github/workflows/chapter-ii-pilot-read-acceptance.yml",
+    ".github/workflows/chapter-iii-pilot-read-acceptance.yml",
+    ".github/workflows/chapter-iv-pilot-read-acceptance.yml",
+    ".github/workflows/chapter-v-pilot-read-acceptance.yml",
+    ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
+    ".github/workflows/english-unit1-pilot-read-acceptance.yml",
+    ".github/workflows/mobile-browser-qa.yml",
+    ".github/workflows/sprint-14-actions-qa.yml",
+    ".github/workflows/sprint-14d-analytics-qa.yml"
+  ],
+  "change": {
+    "mirror": "https://archive.ubuntu.com/ubuntu",
+    "retries": 2,
+    "httpTimeoutSeconds": 30,
+    "httpsTimeoutSeconds": 30,
+    "preservesPackageSignatures": true,
+    "preservesTlsVerification": true,
+    "testTimeoutsUnchanged": true,
+    "testsAndAssertionsUnchanged": true,
+    "reviewedMainFixtureExactRevisionAndCleanupGuardsUnchanged": true,
+    "productFilesChanged": 0
+  },
+  "localChecks": {
+    "yamlParses": 9,
+    "shellSyntaxPasses": 9,
+    "browserQaDependencyCoverage": "all seven configured workflows passed"
+  }
+}
