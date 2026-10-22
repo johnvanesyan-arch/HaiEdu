@@ -1,10 +1,12 @@
 # English 7 Unit 1 — final provisional release decision
 
-**16.1C.25 current handoff — 2026-10-23 Asia/Yerevan:** Unit 1 is now an owner-authorized provisional pilot. The owner-created recording and textbook-adaptation use basis is recorded, the exact C22 configuration is active, and two designated English school contexts are prepared. Independent specialist review remains pending. Next: reviewed-main/exact-deployment read verification, then the bounded learner/audio/writing sequence. [Pilot release](english-7-unit-01-pilot-release.md).
+**16.1C.25 current handoff — 2026-10-23 Asia/Yerevan:** Unit 1 is now an owner-authorized provisional pilot. The owner-created recording and textbook-adaptation use basis is recorded, the exact C22 configuration is active, and two designated English school contexts are prepared. Independent specialist review remains pending. Exact-deployment authenticated read acceptance passed 118/118, with unchanged learning state and verified two-school/cross-subject controls. Next: the bounded learner/audio/writing sequence. [Pilot release](english-7-unit-01-pilot-release.md).
 
-**Sprint 16.1C.24 · 23 October 2026 Asia/Yerevan (22 October UTC) · Roadmap 4.50 · Prepared; English remains inactive.**
+**Historical Sprint 16.1C.24 · 23 October 2026 Asia/Yerevan (22 October UTC) · Roadmap 4.50 · Prepared; English remains inactive.**
 
 The next release is the existing Unit 1 bank, recordings, guides and writing task under the already approved C22 policy. This packet closes the preparation gap between reviewer approval and learner delivery. It does not repeat John's content review or ask for numerical, playback or repository-privacy approval again.
+
+The original C24 proposal and decision prompts below are retained for history. C25 records John’s source-use/activation response, prepares the designated contexts and completes read acceptance; those prompts are resolved and do not request approval again.
 
 ## Exact proposed release
 

@@ -1,6 +1,6 @@
 # English 7 Unit 1 — result scope and learner acceptance preparation
 
-**16.1C.25 current handoff — 2026-10-23 Asia/Yerevan:** Unit 1 is now an owner-authorized provisional pilot. The owner-created recording and textbook-adaptation use basis is recorded, the exact C22 configuration is active, and two designated English school contexts are prepared. Independent specialist review remains pending. Next: reviewed-main/exact-deployment read verification, then the bounded learner/audio/writing sequence. [Pilot release](english-7-unit-01-pilot-release.md).
+**16.1C.25 current handoff — 2026-10-23 Asia/Yerevan:** Unit 1 is now an owner-authorized provisional pilot. The owner-created recording and textbook-adaptation use basis is recorded, the exact C22 configuration is active, and two designated English school contexts are prepared. Independent specialist review remains pending. Exact-deployment authenticated read acceptance passed 118/118, with unchanged learning state and verified two-school/cross-subject controls. Next: the bounded learner/audio/writing sequence. [Pilot release](english-7-unit-01-pilot-release.md).
 
 **Historical 16.1C.24 handoff — 2026-10-23 Asia/Yerevan:** The exact final provisional/source-use decision packet and activation-gated English read acceptance are prepared; 17 focused checks pass. All prior approvals stand. Fourteen recordings and 27 task sets are inventoried without re-review; zero active English assignments/enrollments were observed. Next: record the final intended-use/pilot disposition, prepare designated English QA contexts, then guarded activation and live acceptance. English remains inactive. [Final packet](english-7-unit-01-final-release-decision.md).
 
@@ -35,7 +35,7 @@ The local Chromium download returned invalid archives. The required native-brows
 
 ## Bounded live acceptance handoff
 
-This is the concrete acceptance sequence for this one release/unit after the remaining release decisions. It is not permission to run learner writes now. Use the existing reviewed-main, exact-production-revision and designated-fixture controls. The broader four-subject/two-school and Sprint 16.5 gates remain separate.
+This sequence was prepared under C23 before learner activation. C25 now records the bounded owner activation/source-use decision and verifies read access. The full learner/audio/writing sequence is the next bounded delivery and has not yet been run. Use the existing reviewed-main, exact-production-revision and designated-fixture controls. The broader four-subject/two-school and Sprint 16.5 gates remain separate.
 
 | Stage | Required observation | Boundary |
 | --- | --- | --- |
@@ -48,4 +48,4 @@ This is the concrete acceptance sequence for this one release/unit after the rem
 | Staff/isolation | Check matching teacher history and school evidence groups; a foreign enrollment/assignment must be denied; compare unchanged other-release data | Reporting must not combine distinct policy scopes or expose active assessment answers |
 | Closure | Record checks, exact frontend/configuration versions, any technical exits and run-owned cleanup; align status/roadmap and source-verified Notion | Do not describe a prepared or isolated scenario as completed live English acceptance |
 
-The remaining decision packet is bounded: retain the accepted bank and C21/C22 policy for the provisional Unit 1 MVP, record specialist/form and intended-use dispositions without overstating them, and authorize the exact learner release. No new bank, numerical, content, audio-quality or repository-privacy acceptance is requested. If live checks reveal a material defect, hold that release step and correct the specific defect rather than reopening unchanged owner reviews.
+The pre-activation decision packet below is historical; C25 records the bounded owner acceptance, so no repeated decision is requested. Its scope was: retain the accepted bank and C21/C22 policy for the provisional Unit 1 MVP, record specialist/form and intended-use dispositions without overstating them, and authorize the exact learner release. No new bank, numerical, content, audio-quality or repository-privacy acceptance is requested. If live checks reveal a material defect, hold that release step and correct the specific defect rather than reopening unchanged owner reviews.
