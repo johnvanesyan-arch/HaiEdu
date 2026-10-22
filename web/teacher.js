@@ -1027,8 +1027,8 @@ async function openStudent(studentId) {
     <tr><td>${row.qualifying ? "Պարտադիր" : "Լրացուցիչ"}</td><td>${row.cycleNumber ?? "—"} / ${row.sessionNumber ?? "—"}</td><td>${row.targetQuestions}</td><td>${row.completedAt ? new Date(row.completedAt).toLocaleString("hy-AM") : "Ընթացքի մեջ"}</td></tr>`).join("");
   const reviewSkills = (review?.skills ?? []).map((s) => `
     <tr><td>${escapeHtml(shortSkillCode(s.code, data.unitCode))}</td><td>${s.reviewObservations}</td><td>${s.independentCorrect} / ${s.independentObservations}</td><td>${s.hintAssistedResponses}</td><td>${s.failedLatestMastery ? "Այո" : "Ոչ"}</td><td>Շեմերը դեռ սահմանված չեն</td></tr>`).join("");
-  const masteryStatus = review?.masteryStatus === "confirmed" ? "Հաստատված"
-    : review?.masteryStatus === "not_demonstrated" ? "Չի հաստատվել" : "Ընթացքի մեջ";
+  const masteryStatus = review?.masteryStatus === "confirmed" ? "Ստուգարքն անցած է"
+    : review?.masteryStatus === "not_demonstrated" ? "Ստուգարքը չի անցել" : "Ընթացքի մեջ";
   const masteryResult = data.latestMasteryCheck?.result === "passed" ? "Անցած է"
     : data.latestMasteryCheck?.result === "failed" ? "Չի անցել"
     : data.latestMasteryCheck?.result ?? null;
@@ -1053,9 +1053,9 @@ async function openStudent(studentId) {
     <section class="teacher-intervention"><strong>Առաջարկվող միջամտություն</strong><p>${escapeHtml(data.recommendation?.messageHy ?? "—")}</p></section>
     <p class="mode-kicker">${escapeHtml(contextKicker)}</p>
     <p class="subtle small">${escapeHtml(unitTitle)}</p>
-    <h3>Յուրացում և կրկնություն</h3>
+    <h3>Յուրացման ստուգում և կրկնություն</h3>
     <section class="drawer-summary-grid">
-      <div class="mini-card"><span>Յուրացման վիճակ</span><strong>${escapeHtml(masteryStatus)}</strong></div>
+      <div class="mini-card"><span>Յուրացման ստուգման արդյունք</span><strong>${escapeHtml(masteryStatus)}</strong></div>
       <div class="mini-card"><span>Փորձեր</span><strong>${review ? `${review.attemptsUsed} / ${review.maximumAttempts}` : "—"}</strong></div>
       <div class="mini-card"><span>Անցած փորձ</span><strong>${review?.passedOnAttempt ?? "—"}</strong></div>
       <div class="mini-card"><span>Պարտադիր կրկնություններ</span><strong>${review?.requiredReviewsCompleted ?? 0}</strong></div>

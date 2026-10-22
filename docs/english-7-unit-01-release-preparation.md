@@ -1,6 +1,8 @@
 # English 7 Unit 1 — approved policy and exact configuration preparation
 
-**Sprint 16.1C.22 · 22 October 2026 · Roadmap 4.48 · Rehearsed; English remains inactive.**
+**16.1C.23 current handoff — 2026-10-22:** Scoped result wording and the bounded English learner/writing acceptance sequence are prepared. The accepted W01 delivery projection matches exactly; shared writing views show assistance rules and a separate score. C22 numerical approval and rollback evidence stand. No content, approval, audio, policy or production-data changes; English remains inactive. Next: remaining specialist/form and intended-scope reuse dispositions, explicit learner activation and live acceptance. [Handoff and evidence](english-7-unit-01-learner-acceptance.md).
+
+**Historical Sprint 16.1C.22 · 22 October 2026 · Roadmap 4.48 · Rehearsed; English remains inactive.**
 
 John answered **“yes”** to the complete C21 contract, including its numerical rules, finite replacement capacity and initial 58-core/2-optional delivery split. The [acceptance record](evidence/english-7-unit-01-policy-acceptance-20261022.json) binds that decision to the exact proposal hash and merged source `c19e3fcf4999040eb29e564978d6833da44ad09d`. No further numerical-policy decision is pending. Existing question, source, guide, writing, audio and public-exposure acceptances stand; no review was repeated.
 
@@ -29,10 +31,10 @@ All four returned SQL policy and skill-scope snapshots exactly match the manifes
 
 All 117 preservation scopes passed within the transaction. A separate readback after rollback found all 117 public/private table counts and fingerprints exactly restored. English is still `draft`, with no activation timestamp, policy bindings, blueprints, runtime bindings or active-unit allocation. All seven stored release gates remain pending. Existing subjects, learner evidence, approvals, recordings, material versions and the global lifecycle pointer are preserved. [Detailed evidence](evidence/english-7-unit-01-configuration-preparation-20261022.json).
 
-## Next capability slice and release boundary
+## Release boundary — updated under C23
 
-Prepare scoped automatic-result wording and the bounded English learner acceptance path, including the separate writing task/workspace. Passing automatic assessment must describe vocabulary, grammar, reading and listening; it must not imply that writing, speaking or all English outcomes were certified. Reuse the owner's existing content and playback acceptance.
+C23 completes scoped automatic-result wording and prepares the [bounded English learner acceptance path](english-7-unit-01-learner-acceptance.md), including the separate writing task/workspace. Passing automatic assessment must describe vocabulary, grammar, reading and listening; it must not imply that writing, speaking or all English outcomes were certified. Reuse the owner's existing content and playback acceptance.
 
-Before a live release transaction, record the remaining exact-form/specialist disposition and intended-scope source/voice reuse decision, finish the scoped learner acceptance preparation, and obtain the bounded learner-activation decision required by `AGENTS.md`. No new public-exposure decision or numerical-policy approval is needed. A future activation must regenerate from current state and use the normal binder; this historical rollback SQL is not an activation script. The six-unit expansion order and broader multi-subject/two-school gates remain unchanged.
+Before a live release transaction, record the remaining exact-form/specialist disposition and intended-scope source/voice reuse decision, use the prepared scoped learner acceptance sequence, and obtain the bounded learner-activation decision required by `AGENTS.md`. No new public-exposure decision or numerical-policy approval is needed. A future activation must regenerate from current state and use the normal binder; this historical rollback SQL is not an activation script. The six-unit expansion order and broader multi-subject/two-school gates remain unchanged.
 
 Required CI, exact-commit deployment and source-verified [Notion closure](https://app.notion.com/p/3df355a472bf813585aac229c27f8f9c) complete this preparation delivery. They do not open English learner access.

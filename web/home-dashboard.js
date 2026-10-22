@@ -91,7 +91,7 @@ function patchPrimaryForMastery(data) {
   if (data.eligible) {
     $("nextStepLabel").textContent = "Պատրաստ եք յուրացման ստուգմանը";
     $("nextStepSkill").textContent = "Գլուխ I · 20 հարց";
-    $("recommendationTitle").textContent = "Հաստատեք Գլուխ I-ի յուրացումը";
+    $("recommendationTitle").textContent = "Անցեք Գլուխ I-ի յուրացման ստուգումը";
     $("recommendationText").textContent = "Բոլոր ընթացիկ հմտությունները պատրաստ են անկախ ստուգման։ Անցողիկ կանոնը դեռ փորձնական է։";
     resume.disabled = false;
     resume.textContent = data.latestCheck?.result === "failed" ? "Կրկին փորձել" : "Սկսել ստուգումը";
@@ -120,8 +120,8 @@ function renderAssessment(data) {
     setAssessment("Հաջորդ փորձը հասանելի է", `Յուրացման ստուգում · Փորձ ${data.nextAttemptNumber ?? "—"} / 3`, "info", "./mastery.html", "Բացել ստուգումը");
   } else if (data.unitComplete || data.lifecycleState === "mastery_passed") {
     setAssessment(
-      "Հաստատված",
-      `Գլուխ I-ի յուրացումը հաստատված է${data.latestCheck?.percent != null ? ` · ${data.latestCheck.percent}%` : ""}։`,
+      "Ստուգարքն անցած է",
+      `Գլուխ I-ի յուրացման ստուգարքն անցած է${data.latestCheck?.percent != null ? ` · ${data.latestCheck.percent}%` : ""}։`,
       "success",
       "./assessment.html",
       "Դիտել գնահատումը",

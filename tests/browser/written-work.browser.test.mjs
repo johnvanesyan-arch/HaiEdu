@@ -75,3 +75,45 @@ test('late autosave responses cannot restore private work after sign-out; draft 
  await new Promise((resolve,reject)=>{const end=Date.now()+5000;const check=()=>held.resolve?resolve():Date.now()>end?reject(Error('No held save')):setTimeout(check,20);check();});
  await s.evaluate(()=>[...window.__writingListeners].forEach(fn=>fn('SIGNED_OUT',null)));held.resolve();await s.waitForTimeout(80);assert.equal(await s.locator('#courseContent').innerText(),'');assert.equal(await s.evaluate(()=>window.__writingXss),undefined);assert.deepEqual(learner.errors,[]);
 });
+
+test('accepted English writing definition completes separately from automatic evidence in a synthetic governed scope',async t=>{
+ const materials=JSON.parse(await readFile('docs/content/english-7-unit-01-materials.json','utf8'));
+ const accepted=materials.materials.find(m=>m.materialKey==='ENG7-U01-W01');
+ const f=await fixture({primaryTask:{definition:accepted.definition,taskKey:accepted.materialKey}});t.after(()=>f.db.close());
+ // Exact accepted content, disposable identities and synthetic reviewer only.
+ // This is not a production approval, learner session or specialist marking.
+ const evidence=async()=>({sessions:(await f.db.query('select * from learning_sessions order by id')).rows,mastery:(await f.db.query('select * from student_skill_mastery_by_release order by curriculum_release_id,student_id,skill_id')).rows});
+ const before=await evidence();
+ const learner=await pageFixture(t,f,false,{mobile:true}),marker=await pageFixture(t,f,true),s=learner.page,m=marker.page;
+ await s.locator('[data-writing-open]').click();
+ assert.equal(await s.locator('.written-work h3').first().innerText(),accepted.definition.title);
+ assert.equal(await s.locator('[data-writing-assistance]').innerText(),accepted.definition.assistance.policy);
+ assert.equal(await s.locator('[data-writing-text]').getAttribute('spellcheck'),'false');
+ assert.match(await s.locator('[data-writing-scope]').innerText(),/չի որոշում դրա արդյունքը/);
+ assert.match(await s.locator('.written-work').innerText(),/80–100 բառ/);
+ await s.locator('.written-rubric summary').click();
+ for(const criterion of accepted.definition.criteria)assert.ok((await s.locator('.written-rubric').innerText()).includes(criterion.descriptors[3]));
+ // Exercise the accepted word-count convention without publishing a model answer.
+ const text=Array(79).fill('fixture').concat("don't",'blue-green').join(' ');
+ await s.locator('[data-writing-text]').fill(text);assert.equal(await s.locator('[data-writing-count]').innerText(),'81 բառ');
+ await s.locator('[data-writing-save]').click();await s.waitForFunction(()=>document.querySelector('[data-writing-message]').textContent==='Սևագիրը պահպանված է։');
+ await m.locator('[data-writing-refresh]').click();assert.equal(await m.locator('[data-writing-open]').count(),0);
+ await s.reload();await s.locator('[data-writing-open]').click();assert.equal(await s.locator('[data-writing-text]').inputValue(),text);
+ await s.locator('[data-writing-submit]').click();await s.waitForSelector('.written-response');assert.equal(await s.locator('.written-score').count(),0);
+ assert.match(await s.locator('.written-work').innerText(),/Սպասում է ուսուցչի ստուգմանը/);
+ const foreign=await f.request({action:'inspect',context:context(2,true),payload:{workId:(await f.db.query('select id from written_work')).rows[0].id}},21);
+ assert.equal(foreign.status,403);
+ await m.locator('[data-writing-refresh]').click();await m.locator('[data-writing-open]').click();
+ assert.equal(await m.locator('[data-writing-assistance]').innerText(),accepted.definition.assistance.policy);
+ for(const criterion of accepted.definition.criteria)await m.locator(`[data-writing-score="${criterion.key}"]`).selectOption('2');
+ await m.locator('[data-writing-feedback]').fill('Synthetic workflow check; these marks do not evaluate language quality.');
+ await m.locator('[data-writing-grade]').click();await m.waitForSelector('.written-score');
+ await s.reload();await s.locator('[data-writing-open]').click();await s.waitForSelector('.written-score');
+ assert.equal(await s.locator('.written-score').innerText(),'Արդյունք՝ 8/12');
+ assert.doesNotMatch(await s.locator('.written-work').innerText(),/Ստուգարքն անցած է|Ստուգարքը չի անցել/);
+ assert.deepEqual(await evidence(),before);
+ const other=await f.request({action:'tasks',context:context(1),payload:{}});assert.ok((await other.json()).tasks.every(task=>task.title!==accepted.definition.title));
+ assert.ok(await s.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));assert.ok(await m.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));
+ if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR){await mkdir(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR,{recursive:true});await s.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/english-writing-mobile.png',fullPage:true});await m.screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/english-writing-teacher.png',fullPage:true});}
+ assert.deepEqual(learner.errors,[]);assert.deepEqual(marker.errors,[]);
+});

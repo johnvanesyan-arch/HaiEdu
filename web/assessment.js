@@ -94,8 +94,8 @@ function renderMastery(mastery) {
   const latest = mastery.latestCheck;
 
   if (mastery?.unitComplete) {
-    setBadge("masteryStatus", "Հաստատված", "success");
-    $("masterySummary").textContent = "Գլուխ I-ի յուրացումը հաստատված է անկախ ստուգմամբ։";
+    setBadge("masteryStatus", "Ստուգարքն անցած է", "success");
+    $("masterySummary").textContent = "Գլուխ I-ի յուրացման ստուգարքն անցած է։";
     action.textContent = "Դիտել արդյունքը";
   } else if (mastery?.activeSession?.mode === "mastery_check") {
     setBadge("masteryStatus", "Ընթացքի մեջ", "info");

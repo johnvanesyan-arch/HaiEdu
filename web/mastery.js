@@ -1,5 +1,6 @@
 import { createClient } from "https://esm.sh/@supabase/supabase-js@2";
 import { SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY } from "./config.js";
+import { assessmentScopeText } from './assessment-reporting.mjs';
 
 const supabase = createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const $ = (id) => document.getElementById(id);
@@ -109,7 +110,7 @@ async function prepare() {
 
     if (s.retryBlocked) {
       setStateBadge("Վերականգնում է պետք", "warning");
-      $("stateTitle").textContent = "Յուրացման ստուգումը դեռ հաստատված չէ";
+      $("stateTitle").textContent = "Յուրացման ստուգարքը չի անցել";
       $("stateText").textContent = s.messageHy ?? "Հաջորդ փորձից առաջ պետք է ավարտեք Գլխի կրկնությունը։";
       renderRequired(s.requiredSkills);
       $("blockingLink").href = "./practice.html?mode=chapter_review";
@@ -326,14 +327,14 @@ function renderFinalResult(result) {
   $("resultPanel").classList.remove("hidden");
   const finalFailure = isFinalFailure(result);
   $("resultTitle").textContent = result.passed
-    ? "Գլխի յուրացումը հաստատված է"
-    : finalFailure ? "Յուրացման ստուգման փորձերն ավարտված են" : "Յուրացման ստուգումը դեռ հաստատված չէ";
+    ? "Գլխի յուրացման ստուգարքն անցած է"
+    : finalFailure ? "Յուրացման ստուգման փորձերն ավարտված են" : "Յուրացման ստուգարքը չի անցել";
   $("resultScore").textContent = `${result.score.correct}/${result.score.answered} · ${result.score.percent}%`;
   $("resultRule").textContent = "Փորձնական անցողիկ կանոն՝ ≥80% ընդհանուր արդյունք և յուրաքանչյուր հմտությունից առնվազն 1/2։";
   renderSkillResults(result.skillResults ?? []);
 
   if (result.passed) {
-    $("resultRule").textContent += ` Յուրացումը հաստատվել է ${attemptNumber(result) || 1}-րդ փորձով։ Գլխի կրկնությունն այժմ լրացուցիչ է և չի փոխի հաստատված արդյունքը։`;
+    $("resultRule").textContent += ` Ստուգարքն անցած է ${attemptNumber(result) || 1}-րդ փորձով։ Գլխի կրկնությունն այժմ լրացուցիչ է և չի փոխի հաստատված արդյունքը։`;
     setResultActions({ primaryHref: "./physics-7.html", primaryText: "Շարունակել", showReview: true });
   } else if (finalFailure) {
     $("resultRule").textContent = "Դուք ավարտել եք այս գլխի յուրացման ստուգման բոլոր երեք փորձերը։ Կարող եք շարունակել կրկնել գլուխը և ամրապնդել ուշադրություն պահանջող հմտությունները։";
@@ -342,6 +343,7 @@ function renderFinalResult(result) {
     $("resultRule").textContent += ` Կրկին փորձելուց առաջ պետք է ավարտել Գլխի կրկնությունը։ Ավելի շատ ուշադրություն կդարձվի՝ ${result.failedSkills?.map((s) => s.code).join(", ") || "ուշադրություն պահանջող հմտություններին"}։`;
     setResultActions({ primaryHref: "./practice.html?mode=chapter_review", primaryText: "Անցնել Գլխի կրկնություն" });
   }
+  $("resultRule").textContent += ` ${assessmentScopeText}`;
 }
 
 function renderStoredResult(check, passed, statusPayload = {}) {
@@ -350,15 +352,16 @@ function renderStoredResult(check, passed, statusPayload = {}) {
   $("resultPanel").classList.remove("hidden");
   const finalFailure = !passed && isFinalFailure({ ...check, ...statusPayload });
   $("resultTitle").textContent = passed
-    ? "Գլխի յուրացումը հաստատված է"
-    : finalFailure ? "Յուրացման ստուգման փորձերն ավարտված են" : "Յուրացման ստուգումը դեռ հաստատված չէ";
+    ? "Գլխի յուրացման ստուգարքն անցած է"
+    : finalFailure ? "Յուրացման ստուգման փորձերն ավարտված են" : "Յուրացման ստուգարքը չի անցել";
   $("resultScore").textContent = `${check.correct}/${check.answered} · ${check.percent ?? 0}%`;
   $("resultRule").textContent = passed
-    ? `Այս գլխի յուրացումը հաստատված է${attemptNumber(check) ? ` ${attemptNumber(check)}-րդ փորձով` : ""}։ Գլխի կրկնությունը լրացուցիչ է և չի փոխի հաստատված արդյունքը։`
+    ? `Այս գլխի յուրացման ստուգարքն անցած է${attemptNumber(check) ? ` ${attemptNumber(check)}-րդ փորձով` : ""}։ Գլխի կրկնությունը լրացուցիչ է և չի փոխի հաստատված արդյունքը։`
     : finalFailure
       ? "Դուք ավարտել եք այս գլխի յուրացման ստուգման բոլոր երեք փորձերը։ Կարող եք շարունակել կրկնել գլուխը և ամրապնդել ուշադրություն պահանջող հմտությունները։"
       : "Հաջորդ փորձը բացվում է միայն պահանջվող Գլխի կրկնությունն ավարտելուց հետո։";
   renderSkillResults(check.skillResults ?? []);
+  $("resultRule").textContent += ` ${assessmentScopeText}`;
   if (passed) setResultActions({ primaryHref: "./physics-7.html", primaryText: "Շարունակել", showReview: true });
   else setResultActions({
     primaryHref: "./practice.html?mode=chapter_review",

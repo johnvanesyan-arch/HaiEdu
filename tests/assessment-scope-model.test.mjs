@@ -21,7 +21,7 @@ test("student assessment UI distinguishes learning guidance from unit verificati
   const mastery = await read("web/mastery.html");
 
   assert.match(assessment, /ԳԼՈՒԽ I · ՈՒՍՈՒՑՄԱՆ ՈՒՂՂՈՐԴՈՒՄ/);
-  assert.match(assessment, /ԳԼՈՒԽ I · ՅՈՒՐԱՑՄԱՆ ՀԱՍՏԱՏՈՒՄ/);
+  assert.match(assessment, /ԳԼՈՒԽ I · ՅՈՒՐԱՑՄԱՆ ՍՏՈՒԳՈՒՄ/);
   assert.match(assessment, /Դասընթացային ամփոփիչ գնահատումը.*առանձին գնահատման տեսակ/);
   assert.match(diagnostic, /Անցնել\/չանցնել արդյունք չկա/);
   assert.match(mastery, /ամբողջ Ֆիզիկա 7 դասընթացի վերջնական գնահատում չէ/);

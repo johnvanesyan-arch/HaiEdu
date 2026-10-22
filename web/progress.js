@@ -82,8 +82,8 @@ function renderSummary() {
   bar.parentElement?.setAttribute("aria-valuenow", String(progress.percent ?? 0));
 
   if (masteryStatus?.unitComplete) {
-    $("chapterState").textContent = "Հաստատված";
-    $("chapterProgressMeta").textContent = "Գլուխ I-ի յուրացումը հաստատված է անկախ ստուգմամբ։";
+    $("chapterState").textContent = "Ստուգարքն անցած է";
+    $("chapterProgressMeta").textContent = "Գլուխ I-ի յուրացման ստուգարքն անցած է։";
   } else {
     $("chapterState").textContent = `${progress.completedSkills} / ${progress.totalSkills} ընթացիկ չափանիշը բավարարած`;
     $("chapterProgressMeta").textContent = `${progress.percent}% հմտություն բավարարել է ընթացիկ առաջընթացի չափանիշը։`;
@@ -103,7 +103,7 @@ function renderSummary() {
     $("masterySummary").textContent = "Կարգավիճակը հասանելի չէ";
     $("masterySummaryMeta").textContent = "Չհաջողվեց ստուգել յուրացման կարգավիճակը։ Թարմացրեք էջի տվյալները՝ կրկին փորձելու համար։";
   } else if (masteryStatus?.unitComplete) {
-    $("masterySummary").textContent = "Հաստատված";
+    $("masterySummary").textContent = "Ստուգարքն անցած է";
     $("masterySummaryMeta").textContent = latestCheck?.percent != null
       ? `Վերջին անկախ ստուգում՝ ${latestCheck.correct}/${latestCheck.answered} · ${latestCheck.percent}%`
       : "Անկախ յուրացման ստուգումն անցած է։";

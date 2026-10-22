@@ -1,6 +1,8 @@
 # English 7 Unit 1 — conditional form qualification
 
-**16.1C.22 current handoff — 2026-10-22:** John approved the complete C21 policy and 58-core/2-optional split. Exact model/lifecycle/pool/form preparation passed the actual SQL binders in a rollback-only rehearsal; all four policy snapshots and 84 Mastery bindings match, and all 117 table fingerprints are restored. Eighteen focused checks pass. The 60/56/84 bank and prior approvals/QA/audio remain unchanged. English stays draft/inactive. Next: scoped automatic-result wording and learner/writing acceptance preparation, then remaining qualification/reuse/learner-release gates. [Preparation and evidence](english-7-unit-01-release-preparation.md).
+**16.1C.23 current handoff — 2026-10-22:** Scoped result wording and the bounded English learner/writing acceptance sequence are prepared. The accepted W01 delivery projection matches exactly; shared writing views show assistance rules and a separate score. C22 numerical approval and rollback evidence stand. No content, approval, audio, policy or production-data changes; English remains inactive. Next: remaining specialist/form and intended-scope reuse dispositions, explicit learner activation and live acceptance. [Handoff and evidence](english-7-unit-01-learner-acceptance.md).
+
+**Historical 16.1C.22 handoff — 2026-10-22:** John approved the complete C21 policy and 58-core/2-optional split. Exact model/lifecycle/pool/form preparation passed the actual SQL binders in a rollback-only rehearsal; all four policy snapshots and 84 Mastery bindings match, and all 117 table fingerprints are restored. Eighteen focused checks pass. The 60/56/84 bank and prior approvals/QA/audio remain unchanged. English stays draft/inactive. Next: scoped automatic-result wording and learner/writing acceptance preparation, then remaining qualification/reuse/learner-release gates. [Preparation and evidence](english-7-unit-01-release-preparation.md).
 
 **C21 historical handoff · 22 October 2026 · Roadmap 4.47:** The [explicit scoring/readiness/retry proposal](english-7-unit-01-policy-proposal.md) is prepared and passes 27 focused checks. Owner numerical and 58-core/2-optional delivery approval is next; no policy binding or allocation is performed. C20’s exposure disposition and formal registration remain complete.
 
@@ -38,13 +40,13 @@ I recommend retaining this accepted bank for a **bounded provisional MVP with th
 
 The public-code/private-assessment-content boundary applies to every subject. This checkpoint establishes exact exposure for the English packets only; it does not claim a fresh audit or revoke existing decisions for other subjects.
 
-## Release prerequisites — updated under C20
+## Release prerequisites — updated under C23
 
-The current English release remains **draft**, with zero blueprints, policy bindings, allocated forms, pool memberships and learner sessions. C20 binds the fourteen existing skills to ten registered programme outcomes through seventeen links, maps 200 families and registers the release reconciliation identity. No independent specialist qualification or scoring-policy adoption follows from that technical registration.
+The current English release remains **draft**, with zero blueprints, policy bindings, allocated forms, pool memberships and learner sessions. C20 binds the fourteen existing skills to ten registered programme outcomes through seventeen links, maps 200 families and registers the release reconciliation identity. C22 subsequently records numerical-policy acceptance and exact rollback rehearsal; neither grants independent specialist qualification or activation.
 
 1. Completed under C20: John authorizes continuation with the existing exposed bank for the provisional MVP; no unseen claim.
 2. Formal curriculum registration is complete. Complete independent English/source/form qualification, or record a separately authorized bounded specialist disposition without calling it independent qualification.
-3. Decide the C21 explicit English scoring, per-skill minima, readiness, attempt, technical-replacement and optional-delivery proposal; then prepare exact immutable bindings. The numerical choices are proposed English criteria, not inherited platform defaults.
+3. Completed under C22: John accepted the full C21 numerical/optional-delivery contract, and exact immutable configuration passed rollback rehearsal. C23 prepares scoped result wording and the learner/writing acceptance sequence. These are explicit English criteria, not inherited platform defaults.
 4. Resolve source/voice reuse for the intended learner scope where existing records cover reviewer staging only.
 5. Authorize and verify the exact learner release under the existing desktop/mobile, two-school, four-subject pilot and Sprint 16.5 gates.
 

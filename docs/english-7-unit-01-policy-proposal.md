@@ -1,6 +1,6 @@
 # English 7 Unit 1 — scoring, readiness and retry proposal
 
-**Current disposition — C22:** John approved this complete contract, finite replacement and 58-core/2-optional split on 22 October 2026. The [acceptance record](evidence/english-7-unit-01-policy-acceptance-20261022.json) binds the unchanged machine-readable proposal to its source hash. [Exact configuration preparation](english-7-unit-01-release-preparation.md) has passed rollback rehearsal; no learner activation occurred. The proposal and requested-decision text below are retained as the historical C21 brief, not a repeated approval request.
+**Current disposition — C22:** John approved this complete contract, finite replacement and 58-core/2-optional split on 22 October 2026. The [acceptance record](evidence/english-7-unit-01-policy-acceptance-20261022.json) binds the unchanged machine-readable proposal to its source hash. [Exact configuration preparation](english-7-unit-01-release-preparation.md) has passed rollback rehearsal; no learner activation occurred. The proposal and requested-decision text below are retained as the historical C21 brief, not a repeated approval request. C23 completes scoped result wording and prepares the [learner/writing acceptance handoff](english-7-unit-01-learner-acceptance.md).
 
 **Historical Sprint 16.1C.21 · 22 October 2026 · Roadmap 4.47 · Prepared and technically checked; owner policy approval pending.**
 

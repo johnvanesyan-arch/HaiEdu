@@ -75,7 +75,7 @@ function renderSummary() {
   const progress = dashboard?.progress ?? { completedSkills: 0, totalSkills: 10, percent: 0 };
   $("chapterProgressText").textContent = `${progress.completedSkills} / ${progress.totalSkills}`;
   $("chapterProgressMeta").textContent = masteryStatus?.unitComplete
-    ? "Գլուխ I-ի յուրացումը հաստատված է անկախ ստուգմամբ։"
+    ? "Գլուխ I-ի յուրացման ստուգարքն անցած է։"
     : "Ընթացիկ առաջընթացի չափանիշը բավարարած հմտություններ";
   $("chapterProgressBar").style.width = `${progress.percent}%`;
   $("chapterProgressBar")?.parentElement?.setAttribute("aria-valuenow", String(progress.percent));
@@ -90,7 +90,7 @@ function renderSummary() {
     assessmentTitle = "Կարգավիճակը հասանելի չէ";
     assessmentMeta = "Չհաջողվեց ստուգել պատրաստվածությունը։ Թարմացրեք էջը՝ կրկին փորձելու համար։";
   } else if (masteryStatus?.unitComplete || masteryStatus?.lifecycleState === "mastery_passed") {
-    assessmentTitle = "Գլխի յուրացումը հաստատված է";
+    assessmentTitle = "Գլխի յուրացման ստուգարքն անցած է";
     assessmentMeta = `Անցած է${masteryStatus.passedOnAttempt ? ` · փորձ ${masteryStatus.passedOnAttempt}/3` : ""}${masteryStatus.latestCheck?.percent != null ? ` · ${masteryStatus.latestCheck.percent}%` : ""}։ Գլխի կրկնությունը լրացուցիչ է։`;
   } else if (masteryStatus?.finalFailure || masteryStatus?.lifecycleState === "mastery_failed_final") {
     assessmentTitle = "Փորձերն ավարտված են";
@@ -117,7 +117,7 @@ function renderSummary() {
     chapterBadge.textContent = "Կարգավիճակը հասանելի չէ";
     chapterBadge.className = "status-badge warning";
   } else if (masteryStatus?.unitComplete || masteryStatus?.lifecycleState === "mastery_passed") {
-    chapterBadge.textContent = "Հաստատված";
+    chapterBadge.textContent = "Ստուգարքն անցած է";
     chapterBadge.className = "status-badge success";
   } else if (masteryStatus?.finalFailure || masteryStatus?.lifecycleState === "mastery_failed_final") {
     chapterBadge.textContent = "Փորձերն ավարտված են";

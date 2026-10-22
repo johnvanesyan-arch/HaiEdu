@@ -21,7 +21,7 @@ test("learner lifecycle API is authenticated and student-scoped", () => {
 });
 
 test("pass and final failure have distinct natural Armenian learner states", () => {
-  assert.match(mastery, /Գլխի յուրացումը հաստատված է/);
+  assert.match(mastery, /Գլխի յուրացման ստուգարքն անցած է/);
   assert.match(mastery, /Յուրացման ստուգման փորձերն ավարտված են/);
   assert.match(mastery, /ավարտել եք այս գլխի յուրացման ստուգման բոլոր երեք փորձերը/);
   assert.match(mastery, /Կրկնել գլուխը/);
@@ -34,7 +34,7 @@ test("required and optional Chapter Review experiences are explicit", () => {
   assert.match(practice, /Այս կրկնությունը պետք է ավարտեք՝ յուրացման ստուգումը կրկին անցնելու համար/);
   assert.match(practice, /Լրացուցիչ կրկնություն/);
   assert.match(practice, /Կրկին անցնել յուրացման ստուգումը/);
-  assert.match(practice, /արդեն հաստատված յուրացումը/);
+  assert.match(practice, /անցած ստուգարքի արդյունքը/);
 });
 
 test("learner copy does not surface internal lifecycle completion codes", () => {

@@ -1,4 +1,4 @@
-# Assessment scope model — v1.0
+# Assessment scope model — v1.1
 
 ## Purpose
 
@@ -31,17 +31,21 @@ A diagnostic:
 Practice targets one skill inside one unit. Practice evidence updates the learner model for that skill and can contribute to readiness for that unit's mastery verification.
 
 ### Mastery check = unit-bound verification
-A mastery check belongs to one unit and samples that unit's skills independently. It answers: **has the learner demonstrated sufficient independent mastery of this unit?**
+A mastery check belongs to one unit and samples the skills explicitly declared by its saved policy. It answers: **has the learner met this check's thresholds for its declared assessed skills?**
 
 A mastery check:
 - is gated by unit readiness rules;
 - has a pass/fail outcome under a provisional rule;
-- verifies the unit, not the entire course;
+- verifies the declared assessed scope within the unit, not every unit outcome or the entire course;
+- reports the saved pass/fail decision and assessed groups; a displayed rounded percentage does not override a failed skill minimum;
+- excludes separately assessed work unless an explicit future contract includes it; writing and performed outcomes are not inferred from an automatic pass;
 - must store/resolve a `unit_code`;
 - must not be used as a course-level final assessment.
 
 ### Course progress = aggregation
-Course progress aggregates evidence from its units. Example: `1 of 6 units verified`.
+Course progress aggregates evidence from its units. Example: `1 of 6 unit checks passed`. This is a count of checks, not certification of every course outcome.
+
+Shared learner results, teacher history and school evidence groups use the same scope notice. Historic policy versions retain their original denominators and groups. The registered Physics Unit I extension labels its result as a passed unit check; per-skill learning-model bands remain separate. English's approved configuration reports vocabulary, grammar, reading and listening, while its teacher-marked writing result remains separate and speaking stays classroom-assessed. No English IDs or domain names are embedded in shared UI logic. See [C23 learner acceptance preparation](english-7-unit-01-learner-acceptance.md).
 
 A future cumulative/final course assessment, if added, is a distinct assessment type that may sample skills across multiple units. It must not reuse the semantic meaning of a unit diagnostic or unit mastery check.
 

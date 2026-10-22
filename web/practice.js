@@ -587,7 +587,7 @@ function renderCompletion(data) {
     $("completionTitle").textContent = required ? "Պահանջվող Գլխի կրկնությունն ավարտված է" : "Լրացուցիչ կրկնությունն ավարտված է";
     $("completionText").textContent = required
       ? "Դուք ավարտեցիք այս կրկնությունը։ Յուրացման ստուգման հաջորդ փորձն այժմ հասանելի է։"
-      : "Արդյունքը պահպանվել է որպես Գլխի կրկնության առանձին ապացույց և չի փոխում արդեն հաստատված յուրացումը։";
+      : "Արդյունքը պահպանվել է որպես Գլխի կրկնության առանձին ապացույց և չի փոխում անցած ստուգարքի արդյունքը։";
     const coverage = data.reviewCoverage;
     $("completionReason").textContent = coverage?.current_cycle_coverage_percent == null
       ? "Շարունակեք հաջորդ քայլով, երբ պատրաստ լինեք։"

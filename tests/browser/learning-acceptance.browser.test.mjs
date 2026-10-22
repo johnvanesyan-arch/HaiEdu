@@ -120,8 +120,10 @@ test('v2 native player and history show the 10/2/4 scales and preserve mandatory
  await page.waitForSelector('#learningPlayer button');
  await page.waitForFunction(()=>document.querySelector('#learningPlayer').textContent.includes('Ստուգարքն անցած է'));
  const result=await page.locator('#learningPlayer').innerText();assert.match(result,/8\/10/);assert.match(result,/Օժանդակ հմտություններ՝ 0\/2/);assert.match(result,/Լրացուցիչ վերջնարդյունքներ՝ 0\/4/);
+ assert.match(await page.locator('#learningPlayer [data-assessment-scope]').innerText(),/միայն այս ստուգմամբ գնահատված հմտություններին/);
  await page.locator('#learningPlayer button').filter({hasText:'Թարմացնել արդյունքները'}).click();await page.waitForSelector('#courseHistoryTitle');
  assert.match(await page.locator('#courseContent').innerText(),/Պարտադիր վերջնարդյունքներ՝ 8\/10/);
+ assert.match(await page.locator('tbody [data-assessment-scope]').first().innerText(),/ամբողջ դասընթացի ընդհանուր գնահատականը չէ/);
  await page.setViewportSize({width:375,height:812});assert.equal(await page.evaluate(()=>document.documentElement.scrollWidth<=window.innerWidth),true);
  assert.deepEqual(errors,[]);assert.deepEqual(f.logs,[]);
 });
@@ -149,6 +151,7 @@ test('typed fields save and resume through real Edge/SQL, submit once, and repor
  }
  await page.getByRole('button',{name:'Թարմացնել արդյունքները',exact:true}).waitFor();
  assert.match(await page.locator('#learningPlayer').innerText(),/միավոր.*50%/);
+ assert.match(await page.locator('#learningPlayer [data-assessment-scope]').innerText(),/առանձին գնահատվող աշխատանքները/);
   if(process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR)await page.locator('#learningPlayer').screenshot({path:process.env.STUDENT_LAYOUT_SCREENSHOTS_DIR+'/typed-fields-points-mobile.png'});
  await page.getByRole('button',{name:'Թարմացնել արդյունքները',exact:true}).click();
  await page.waitForSelector('#courseHistoryTitle');assert.match(await page.locator('#courseContent').innerText(),/միավոր.*50%/);

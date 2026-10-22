@@ -1,5 +1,7 @@
 # Written work in student and teacher workspaces
 
+**16.1C.23 delivery:** Both roles see the approved optional assistance-policy text and a notice that written scores are separate from automatic checks. The accepted English W01 definition is covered by an isolated native-browser flow; English learner access remains inactive. [Bounded acceptance handoff](english-7-unit-01-learner-acceptance.md).
+
 **16.1B.1 · 2026-10-20 · Deployed; production read acceptance verified.** John authorised implementation after reviewing the dashboard gap. This is the reusable writing capability slice of 16.1B. English content, final rubric/pass rules, automatic response formats and audio delivery remain separate work.
 
 ## Student and teacher mechanics

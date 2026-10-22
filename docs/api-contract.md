@@ -1,6 +1,8 @@
 # Learning API contract
 
-**16.1C.22:** The owner-approved English contracts are compiled with a separate model and explicit existing immutable lifecycle. All four exact policy/skill snapshots and the three-form Mastery manifest pass the actual SQL binder in rollback; all 117 guarded tables are restored. No API, runtime, permissions or stored learner binding changes. English remains draft; this is not authenticated learner acceptance. [Configuration and boundary](english-7-unit-01-release-preparation.md).
+**16.1C.23:** No API/schema/Edge changes. Shared UI renders assessed scope from saved policies/results and the optional assistance-policy text from approved writing definitions. Automatic and written scores remain separate. The narrow W01 delivery projection matches the accepted definition; isolated synthetic-context verification does not open live English access. [Acceptance handoff](english-7-unit-01-learner-acceptance.md).
+
+**Historical 16.1C.22:** The owner-approved English contracts are compiled with a separate model and explicit existing immutable lifecycle. All four exact policy/skill snapshots and the three-form Mastery manifest pass the actual SQL binder in rollback; all 117 guarded tables are restored. No API, runtime, permissions or stored learner binding changes. English remains draft; this is not authenticated learner acceptance. [Configuration and boundary](english-7-unit-01-release-preparation.md).
 
 **Historical 16.1C.21:** Policy preparation only; no API/runtime or production changes. Four unbound recipes use existing v4 Diagnostic/Mastery and v3 Practice/Chapter Review contracts. Offline shape/scoring/readiness checks pass. Null model/lifecycle IDs prevent accidental adoption; owner numerical/optional-delivery approval and exact binding are still required. [Proposal and scope](english-7-unit-01-policy-proposal.md).
 

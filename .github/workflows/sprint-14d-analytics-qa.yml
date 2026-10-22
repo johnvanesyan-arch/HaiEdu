@@ -19,6 +19,7 @@ on:
       - web/account-roles.js
       - web/learning-navigation.mjs
       - web/analytics-provenance.mjs
+      - web/assessment-reporting.mjs
       - web/school-analytics-view.mjs
       - web/config.js
       - web/school-membership-status.js

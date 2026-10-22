@@ -1,0 +1,141 @@
+{
+  "schemaVersion": "delivery-evidence-v1",
+  "checkpoint": "16.1C.23",
+  "date": "2026-10-22",
+  "roadmapVersion": "4.49",
+  "sourceBaseCommit": "891d29aac5be05864273aaac9481c88e92040c59",
+  "recordType": "source checkpoint; final merged-head CI and exact-commit deployment are attested in the source-verified Notion sprint map",
+  "implementation": {
+    "sharedCore": "saved-policy/result scope notices; teacher check-passed summary/filter labels; separate written score notice and optional approved assistance text",
+    "subjectAwareExtension": "registered legacy-physics7-u01-v1 check-passed wording; no changes to criteria or extension scope",
+    "newOrChangedEdgeBundles": [],
+    "schemaChanges": [],
+    "productionDataWrites": 0
+  },
+  "consumers": {
+    "assessmentRules": [
+      "web/course-page.js",
+      "web/learning-player.mjs"
+    ],
+    "assessmentResults": [
+      "web/course-page.js",
+      "web/learning-player.mjs",
+      "web/teacher.js"
+    ],
+    "analyticsGroups": [
+      "web/teacher.js",
+      "web/school-admin.js"
+    ],
+    "writing": [
+      "student course writing tab",
+      "teacher written-work queue/detail"
+    ],
+    "registeredExtension": [
+      "web/assessment.html",
+      "web/assessment.js",
+      "web/home-dashboard.js",
+      "web/mastery.js",
+      "web/physics-7.js",
+      "web/practice.js",
+      "web/progress.html",
+      "web/progress.js"
+    ],
+    "teacherSummary": [
+      "web/teacher.html",
+      "web/teacher.js"
+    ]
+  },
+  "publishedWritingProjection": {
+    "id": "86355072-adf3-52d3-a85d-df48e6af2b4e",
+    "task_key": "ENG7-U01-W01",
+    "version_no": 1,
+    "subject_program_id": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+    "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+    "status": "approved",
+    "definitionMatchesAcceptedMaterial": true,
+    "definitionCanonicalSha256": "b1a8e19f13c6c4a1f4e7d85301d72005d0c713bb75878b2c01c9c9fc8047fa91",
+    "canonicalization": "UTF-8 JSON with sorted keys, no insignificant whitespace, unescaped Unicode",
+    "approvalAudit": false,
+    "source": "docs/content/english-7-unit-01-materials.json#ENG7-U01-W01"
+  },
+  "localChecks": {
+    "reportingNavigationAndSubmitRegression": {
+      "passed": 63,
+      "failed": 0
+    },
+    "teacherSummaryRegression": {
+      "passed": 4,
+      "failed": 0
+    },
+    "writingSqlAndEdgeRegression": {
+      "passed": 6,
+      "failed": 0
+    },
+    "acceptedWritingSqlSmoke": {
+      "saveStatus": 200,
+      "submitStatus": 200,
+      "foreignScopeInspectStatus": 403,
+      "reviewStatus": 200,
+      "criterionTotal": 8,
+      "maximum": 12,
+      "automaticLearningSessionsCreated": 0
+    },
+    "webSyntax": {
+      "checkedFiles": 66,
+      "passed": true
+    },
+    "browserTestSyntax": "passed",
+    "browserQaTriggers": "passed after adding the shared reporting helper to the school analytics workflow"
+  },
+  "nativeBrowser": {
+    "localExecution": "not run: Playwright Chromium archive download returned invalid archives",
+    "requiredGate": "role-layout-browser in CI; must succeed on merged source",
+    "addedScenario": "Exact accepted W01 definition in disposable synthetic curriculum scope: mobile draft/reload, 81-word contraction/hyphen count, spellcheck and assistance rules, draft privacy, submit, foreign-scope denial, four-criterion marking, separate 8/12 feedback, no automatic evidence changes and no horizontal overflow",
+    "extendedScenarios": [
+      "real Edge/SQL v2 completion and history show scoped results",
+      "real Edge/SQL v3 normalized-point completion shows scoped results"
+    ],
+    "authentication": "explicit synthetic auth identity double plus actual live-session gate/Edge handler/SQL",
+    "contentReview": "synthetic marks verify workflow only; not language/SME qualification"
+  },
+  "reusedEvidence": {
+    "ownerContentAndAudioAcceptances": "C11/C17/C18; no new approval audit, content QA or audio audition",
+    "numericPolicy": "C21 27 focused checks, accepted under C22",
+    "configuration": "C22 exact four-policy/84-Mastery-binding rollback rehearsal and 117 restored table fingerprints",
+    "audioRuntime": "C12 assessed listening and unchanged deployed source verification",
+    "deploymentCheck": "docs/evidence/vercel-deployment-check-verification-20261020.json"
+  },
+  "productionBoundary": {
+    "liveEnglishLearnerAcceptanceRun": false,
+    "learnerActivationAuthorized": false,
+    "databaseMutations": 0,
+    "contentEdits": 0,
+    "approvalEdits": 0,
+    "policyEdits": 0,
+    "audioEdits": 0,
+    "releaseState": "draft/inactive; C22 state reused, no transition performed"
+  },
+  "next": [
+    "remaining exact-form/specialist disposition",
+    "intended learner-scope source/voice reuse disposition",
+    "explicit bounded learner activation followed by guarded live acceptance"
+  ],
+  "closure": {
+    "notionPage": "https://app.notion.com/p/3df355a472bf813585aac229c27f8f9c",
+    "requiredCiJobs": [
+      "test",
+      "role-layout-browser",
+      "phase3-postgres-17",
+      "institutional-concurrency",
+      "Platform release checks"
+    ],
+    "persistentDeploymentCheck": "existing separately verified configuration reused; CI alone is not claimed to enforce deployment blocking"
+  },
+  "reusedSourceFileSha256": {
+    "docs/content/english-7-unit-01-release-configuration.json": "858b5563b908c56f513238552ae19fefdac5c330a3f5fbb0656c2fb294354b5c",
+    "docs/content/english-7-unit-01-materials.json": "8178cb82408866e01e58c04b26470eb6d71cf4ca791d7ee69a2e5483d8130b5c",
+    "docs/evidence/english-7-unit-01-policy-acceptance-20261022.json": "c58f3d34111304a326b388dcee7814b5ee8c86b1af8e68341829687208665975",
+    "docs/evidence/english-7-unit-01-configuration-preparation-20261022.json": "513a66c803f2d8c561e3a836380da6d168e26eef9330c277cb7090f94b651553"
+  }
+}
