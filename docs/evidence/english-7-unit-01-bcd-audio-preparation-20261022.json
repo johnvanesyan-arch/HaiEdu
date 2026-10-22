@@ -1,0 +1,1135 @@
+{
+  "schemaVersion": "haiedu-bcd-audio-preparation-v1",
+  "checkpoint": "16.1C.15",
+  "roadmapVersion": "4.41",
+  "observedAt": "2026-10-22T09:38:46.194798+00:00",
+  "reviewedSourceCommit": "526fa8eeb86380f2a522d8b0d1bba62b6a006975",
+  "disposition": "Six supplied recordings technically verified and mapped; production upload/registration remains pending. No production mutation performed.",
+  "ownerInstruction": "Here are the audios, all named as indicated by you.\nProceed with the next part of the sprint.",
+  "authorizationInterpretation": "Owner supplies these six files for the existing bounded private source integration. This does not fabricate human listening acceptance, an in-app approval, a third-party licence or learner release.",
+  "files": [
+    {
+      "filename": "eng7-u01-db-audio-a-v1.mp3.mp3",
+      "deliveryFilename": "eng7-u01-db-audio-a-v1.mp3",
+      "sha256": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140",
+      "md5": "ffdf1791de2c96e2263090ace33eec80",
+      "byteLength": 524339,
+      "durationMs": 31713,
+      "streams": [
+        {
+          "codec": "mp3",
+          "sampleRate": "44100",
+          "channels": 1
+        }
+      ],
+      "fullDecodePassed": true,
+      "decodeErrors": "",
+      "within8MiB": true,
+      "sourceCode": "ENG7-U01-DB-AUDIO-A",
+      "objectPath": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140.mp3",
+      "sourceFamilyId": "357e658b-ca9e-513b-aa1b-27cb65a74e15",
+      "scriptSha256": "65e2635926db1f198b93cc7a5fb44eeeb2cded0c5ff8c27ee4dcfcc0550dd4c9",
+      "asrText": "For my class presentation, I first chose a shirt with large shiny decorations. At rehearsal, my partner kept looking at the shirt instead of the drawings I was explaining. I wanted the drawings to get the attention, so I chose a plain dark top for the presentation. I still like the shiny shirt, and I will wear it at our club party afterwards. I put it in a separate cloth bag to keep the decorations from catching on my other clothes. Choosing the plain top was about this activity. not giving up my favorite style.",
+      "asrSegments": [
+        {
+          "start": 0.0,
+          "end": 3.0,
+          "text": " For my class presentation, I first chose a shirt",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 3.0,
+          "end": 5.68,
+          "text": " with large shiny decorations.",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 5.68,
+          "end": 8.6,
+          "text": " At rehearsal, my partner kept looking at the shirt",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 8.6,
+          "end": 11.32,
+          "text": " instead of the drawings I was explaining.",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 11.32,
+          "end": 13.64,
+          "text": " I wanted the drawings to get the attention,",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 13.64,
+          "end": 17.3,
+          "text": " so I chose a plain dark top for the presentation.",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 17.3,
+          "end": 19.0,
+          "text": " I still like the shiny shirt,",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 19.0,
+          "end": 22.0,
+          "text": " and I will wear it at our club party afterwards.",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 22.0,
+          "end": 23.76,
+          "text": " I put it in a separate cloth bag",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 23.76,
+          "end": 27.08,
+          "text": " to keep the decorations from catching on my other clothes.",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 27.08,
+          "end": 29.88,
+          "text": " Choosing the plain top was about this activity.",
+          "avg_logprob": -0.099180557374512,
+          "no_speech_prob": 0.003080527763813734
+        },
+        {
+          "start": 29.88,
+          "end": 31.88,
+          "text": " not giving up my favorite style.",
+          "avg_logprob": -0.3895674705505371,
+          "no_speech_prob": 0.0019483279902487993
+        }
+      ],
+      "normalizedSpokenTextExactMatch": true,
+      "spokenWordCount": 95,
+      "speakerNumberOrderVerified": null,
+      "voiceDistinctnessHumanVerified": false,
+      "independentHumanAudition": false,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-DB-25",
+          "itemId": "d2615e88-ffc5-5d42-aee3-a5fc7496d9db",
+          "key": "a",
+          "keyedMeaning": "To keep attention on the drawings being explained.",
+          "explanation": "The plain top helps keep the audience focused on the drawings during the presentation. The speaker still likes the other shirt.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-DB-27",
+          "itemId": "1e29cb71-f190-5c08-ab4c-d504b7ac2b2b",
+          "key": "b",
+          "keyedMeaning": "In a separate cloth bag.",
+          "explanation": "The shiny shirt is put in a separate cloth bag.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "audioBytesEdited": false,
+      "storagePresentAtReadback": false
+    },
+    {
+      "filename": "eng7-u01-db-audio-b-v1.mp3.mp3",
+      "deliveryFilename": "eng7-u01-db-audio-b-v1.mp3",
+      "sha256": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600",
+      "md5": "f22c4b467b91fc29e93efe99a8c1ffb5",
+      "byteLength": 565299,
+      "durationMs": 34273,
+      "streams": [
+        {
+          "codec": "mp3",
+          "sampleRate": "44100",
+          "channels": 1
+        }
+      ],
+      "fullDecodePassed": true,
+      "decodeErrors": "",
+      "within8MiB": true,
+      "sourceCode": "ENG7-U01-DB-AUDIO-B",
+      "objectPath": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600.mp3",
+      "sourceFamilyId": "4f04e9ff-de80-5270-b2c5-773ee0082636",
+      "scriptSha256": "51049396169326118968e16ebc19e23fa666c0ba5324fce85ca078877e745d3b",
+      "asrText": "Listen to three students planning how to welcome a new member to their design club. You will hear each speaker's number. Speaker one, I will introduce everyone at the start. We should say our names clearly so our new member does not have to guess who is speaking. Speaker two, I will explain today's task and show the materials. Knowing what we are doing may make it easier to join in. Speaker 3. Before we choose a design, I want to ask what our new member likes. We should give them a chance to suggest an idea too.",
+      "asrSegments": [
+        {
+          "start": 0.0,
+          "end": 4.96,
+          "text": " Listen to three students planning how to welcome a new member to their design club.",
+          "avg_logprob": -0.14698310525793779,
+          "no_speech_prob": 0.048315975815057755
+        },
+        {
+          "start": 4.96,
+          "end": 6.8,
+          "text": " You will hear each speaker's number.",
+          "avg_logprob": -0.14698310525793779,
+          "no_speech_prob": 0.048315975815057755
+        },
+        {
+          "start": 7.44,
+          "end": 11.44,
+          "text": " Speaker one, I will introduce everyone at the start.",
+          "avg_logprob": -0.14698310525793779,
+          "no_speech_prob": 0.048315975815057755
+        },
+        {
+          "start": 11.44,
+          "end": 16.16,
+          "text": " We should say our names clearly so our new member does not have to guess who is speaking.",
+          "avg_logprob": -0.14698310525793779,
+          "no_speech_prob": 0.048315975815057755
+        },
+        {
+          "start": 16.72,
+          "end": 21.84,
+          "text": " Speaker two, I will explain today's task and show the materials.",
+          "avg_logprob": -0.14698310525793779,
+          "no_speech_prob": 0.048315975815057755
+        },
+        {
+          "start": 21.84,
+          "end": 24.96,
+          "text": " Knowing what we are doing may make it easier to join in.",
+          "avg_logprob": -0.14698310525793779,
+          "no_speech_prob": 0.048315975815057755
+        },
+        {
+          "start": 24.96,
+          "end": 31.68,
+          "text": " Speaker 3. Before we choose a design, I want to ask what our new member likes. We",
+          "avg_logprob": -0.28053030785587096,
+          "no_speech_prob": 0.17992740869522095
+        },
+        {
+          "start": 31.68,
+          "end": 35.92,
+          "text": " should give them a chance to suggest an idea too.",
+          "avg_logprob": -0.28053030785587096,
+          "no_speech_prob": 0.17992740869522095
+        }
+      ],
+      "normalizedSpokenTextExactMatch": true,
+      "spokenWordCount": 98,
+      "speakerNumberOrderVerified": [
+        "one",
+        "two",
+        "three"
+      ],
+      "voiceDistinctnessHumanVerified": false,
+      "independentHumanAudition": false,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-DB-26",
+          "itemId": "283f8432-6fd2-543b-a636-14113dbfed07",
+          "key": "b",
+          "keyedMeaning": "Helping a new member take part in the club.",
+          "explanation": "All three suggestions help a new member understand and participate in the club.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-DB-28",
+          "itemId": "28382a44-7726-58a7-aabc-23c70b9580b8",
+          "key": "c",
+          "keyedMeaning": "Speaker Three.",
+          "explanation": "Speaker Three wants to ask what the new member likes before choosing a design.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "audioBytesEdited": false,
+      "storagePresentAtReadback": false
+    },
+    {
+      "filename": "eng7-u01-mb-audio-a-v1.mp3.mp3",
+      "deliveryFilename": "eng7-u01-mb-audio-a-v1.mp3",
+      "sha256": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987",
+      "md5": "548338f4da2751fae8bf021e6408cd29",
+      "byteLength": 446181,
+      "durationMs": 26828,
+      "streams": [
+        {
+          "codec": "mp3",
+          "sampleRate": "44100",
+          "channels": 1
+        }
+      ],
+      "fullDecodePassed": true,
+      "decodeErrors": "",
+      "within8MiB": true,
+      "sourceCode": "ENG7-U01-MB-AUDIO-A",
+      "objectPath": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987.mp3",
+      "sourceFamilyId": "f374699d-be6c-5e9b-9392-bae2ff8b4775",
+      "scriptSha256": "39db9113f1af7397b867d802b0d39b517f5bba91ef719b1864bda2450be7a9ee",
+      "asrText": "When our group met for the first time, Daniel said very little. I thought he did not want to help with our presentation. Later, he showed us a page of notes. He had written down all the jobs we needed to do and noticed that nobody had offered to prepare the introduction. He offered to do it. I realized he had been listening and thinking. Next time, I will give a quiet member time to share an idea before deciding that they are not interested.",
+      "asrSegments": [
+        {
+          "start": 0.0,
+          "end": 4.16,
+          "text": " When our group met for the first time, Daniel said very little.",
+          "avg_logprob": -0.11664599683462527,
+          "no_speech_prob": 0.024307439103722572
+        },
+        {
+          "start": 4.16,
+          "end": 7.2,
+          "text": " I thought he did not want to help with our presentation.",
+          "avg_logprob": -0.11664599683462527,
+          "no_speech_prob": 0.024307439103722572
+        },
+        {
+          "start": 7.2,
+          "end": 9.6,
+          "text": " Later, he showed us a page of notes.",
+          "avg_logprob": -0.11664599683462527,
+          "no_speech_prob": 0.024307439103722572
+        },
+        {
+          "start": 9.6,
+          "end": 12.48,
+          "text": " He had written down all the jobs we needed to do",
+          "avg_logprob": -0.11664599683462527,
+          "no_speech_prob": 0.024307439103722572
+        },
+        {
+          "start": 12.48,
+          "end": 15.92,
+          "text": " and noticed that nobody had offered to prepare the introduction.",
+          "avg_logprob": -0.11664599683462527,
+          "no_speech_prob": 0.024307439103722572
+        },
+        {
+          "start": 15.92,
+          "end": 17.44,
+          "text": " He offered to do it.",
+          "avg_logprob": -0.11664599683462527,
+          "no_speech_prob": 0.024307439103722572
+        },
+        {
+          "start": 17.44,
+          "end": 20.56,
+          "text": " I realized he had been listening and thinking.",
+          "avg_logprob": -0.11664599683462527,
+          "no_speech_prob": 0.024307439103722572
+        },
+        {
+          "start": 20.56,
+          "end": 24.4,
+          "text": " Next time, I will give a quiet member time to share an idea",
+          "avg_logprob": -0.11664599683462527,
+          "no_speech_prob": 0.024307439103722572
+        },
+        {
+          "start": 24.4,
+          "end": 26.64,
+          "text": " before deciding that they are not interested.",
+          "avg_logprob": -0.11664599683462527,
+          "no_speech_prob": 0.024307439103722572
+        }
+      ],
+      "normalizedSpokenTextExactMatch": true,
+      "spokenWordCount": 85,
+      "speakerNumberOrderVerified": null,
+      "voiceDistinctnessHumanVerified": false,
+      "independentHumanAudition": false,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MB-25",
+          "itemId": "9af24fb8-c525-54ae-a7a2-8a1010383624",
+          "key": "a",
+          "keyedMeaning": "A quiet member may be listening and preparing to contribute.",
+          "explanation": "The speaker learns to allow time for a contribution instead of judging interest from initial silence.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-MB-27",
+          "itemId": "ce88a76b-67a9-5103-a7b8-ed59d1e9e73f",
+          "key": "b",
+          "keyedMeaning": "Prepare the introduction.",
+          "explanation": "Daniel offers to prepare the introduction.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "audioBytesEdited": false,
+      "storagePresentAtReadback": false
+    },
+    {
+      "filename": "eng7-u01-mb-audio-b-v1.mp3.mp3",
+      "deliveryFilename": "eng7-u01-mb-audio-b-v1.mp3",
+      "sha256": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6",
+      "md5": "0776f474038217575abd2f4e0e8a2ed6",
+      "byteLength": 575748,
+      "durationMs": 34926,
+      "streams": [
+        {
+          "codec": "mp3",
+          "sampleRate": "44100",
+          "channels": 1
+        }
+      ],
+      "fullDecodePassed": true,
+      "decodeErrors": "",
+      "within8MiB": true,
+      "sourceCode": "ENG7-U01-MB-AUDIO-B",
+      "objectPath": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6.mp3",
+      "sourceFamilyId": "b70d3969-78c0-5551-bb5b-4fd5fc67c393",
+      "scriptSha256": "83da95ebc6e2706b3bab1f9f85e74a1b1849aa519418b2909c4c08e80fe39c11",
+      "asrText": "Listen to three students discussing how to get feedback on a club t-shirt design. You will hear each speaker's number. Speaker 1, let's give everyone a card. They can write one thing they like and one thing they would change without writing their name. Speaker 2, I want to show the design on a real t-shirt first. A small drawing may not show how the picture looks when someone wears it. Speaker 3, we should ask a clear question about the lettering. Can people read the club name from across the room? That would help us choose its size.",
+      "asrSegments": [
+        {
+          "start": 0.0,
+          "end": 5.2,
+          "text": " Listen to three students discussing how to get feedback on a club t-shirt design.",
+          "avg_logprob": -0.12952262820566401,
+          "no_speech_prob": 0.029415082186460495
+        },
+        {
+          "start": 5.2,
+          "end": 7.04,
+          "text": " You will hear each speaker's number.",
+          "avg_logprob": -0.12952262820566401,
+          "no_speech_prob": 0.029415082186460495
+        },
+        {
+          "start": 7.76,
+          "end": 13.84,
+          "text": " Speaker 1, let's give everyone a card. They can write one thing they like and one thing they would",
+          "avg_logprob": -0.12952262820566401,
+          "no_speech_prob": 0.029415082186460495
+        },
+        {
+          "start": 13.84,
+          "end": 21.2,
+          "text": " change without writing their name. Speaker 2, I want to show the design on a real t-shirt first.",
+          "avg_logprob": -0.12952262820566401,
+          "no_speech_prob": 0.029415082186460495
+        },
+        {
+          "start": 21.2,
+          "end": 27.44,
+          "text": " A small drawing may not show how the picture looks when someone wears it. Speaker 3, we should",
+          "avg_logprob": -0.12952262820566401,
+          "no_speech_prob": 0.029415082186460495
+        },
+        {
+          "start": 27.44,
+          "end": 30.28,
+          "text": " ask a clear question about the lettering.",
+          "avg_logprob": -0.19243975452014378,
+          "no_speech_prob": 0.013401963748037815
+        },
+        {
+          "start": 30.28,
+          "end": 33.24,
+          "text": " Can people read the club name from across the room?",
+          "avg_logprob": -0.19243975452014378,
+          "no_speech_prob": 0.013401963748037815
+        },
+        {
+          "start": 33.24,
+          "end": 34.72,
+          "text": " That would help us choose its size.",
+          "avg_logprob": -0.19243975452014378,
+          "no_speech_prob": 0.013401963748037815
+        }
+      ],
+      "normalizedSpokenTextExactMatch": true,
+      "spokenWordCount": 101,
+      "speakerNumberOrderVerified": [
+        "one",
+        "two",
+        "three"
+      ],
+      "voiceDistinctnessHumanVerified": false,
+      "independentHumanAudition": false,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MB-26",
+          "itemId": "75a3c76a-0cc3-59f7-a542-b5c6afcb60e6",
+          "key": "a",
+          "keyedMeaning": "Ways to collect useful feedback on a T-shirt design.",
+          "explanation": "The students plan ways to get useful responses before choosing details of the T-shirt design.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-MB-28",
+          "itemId": "e4a9c8d7-8a98-5165-a431-f0139ef0c81d",
+          "key": "a",
+          "keyedMeaning": "Speaker One.",
+          "explanation": "Speaker One proposes cards without the writer's name.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "audioBytesEdited": false,
+      "storagePresentAtReadback": false
+    },
+    {
+      "filename": "eng7-u01-mc-audio-a-v1.mp3.mp3",
+      "deliveryFilename": "eng7-u01-mc-audio-a-v1.mp3",
+      "sha256": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1",
+      "md5": "b8f5e25f80594909e6632c04b93510f8",
+      "byteLength": 575748,
+      "durationMs": 34926,
+      "streams": [
+        {
+          "codec": "mp3",
+          "sampleRate": "44100",
+          "channels": 1
+        }
+      ],
+      "fullDecodePassed": true,
+      "decodeErrors": "",
+      "within8MiB": true,
+      "sourceCode": "ENG7-U01-MC-AUDIO-A",
+      "objectPath": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1.mp3",
+      "sourceFamilyId": "5e6facc4-e703-5701-9379-33f109ef6761",
+      "scriptSha256": "0ece2dd84c99da3c2d52446ee132db965e68afc211a4f2391c181549ab158420",
+      "asrText": "For our class survey, I first asked, which clothes do you like best? Several classmates said that it depended on what they were doing. So I changed the survey. I asked about a walk, a family celebration, and a day at home separately. The answers were easier to understand because each question named an occasion. For the walk, I also left a space for people to explain their choice. many wrote about being able to move comfortably. I learned that one general question had hidden useful differences.",
+      "asrSegments": [
+        {
+          "start": 0.0,
+          "end": 4.72,
+          "text": " For our class survey, I first asked, which clothes do you like best?",
+          "avg_logprob": -0.10797404283855824,
+          "no_speech_prob": 0.0022666503209620714
+        },
+        {
+          "start": 5.44,
+          "end": 8.72,
+          "text": " Several classmates said that it depended on what they were doing.",
+          "avg_logprob": -0.10797404283855824,
+          "no_speech_prob": 0.0022666503209620714
+        },
+        {
+          "start": 9.36,
+          "end": 10.88,
+          "text": " So I changed the survey.",
+          "avg_logprob": -0.10797404283855824,
+          "no_speech_prob": 0.0022666503209620714
+        },
+        {
+          "start": 11.52,
+          "end": 16.32,
+          "text": " I asked about a walk, a family celebration, and a day at home separately.",
+          "avg_logprob": -0.10797404283855824,
+          "no_speech_prob": 0.0022666503209620714
+        },
+        {
+          "start": 16.96,
+          "end": 21.44,
+          "text": " The answers were easier to understand because each question named an occasion.",
+          "avg_logprob": -0.10797404283855824,
+          "no_speech_prob": 0.0022666503209620714
+        },
+        {
+          "start": 22.32,
+          "end": 26.4,
+          "text": " For the walk, I also left a space for people to explain their choice.",
+          "avg_logprob": -0.10797404283855824,
+          "no_speech_prob": 0.0022666503209620714
+        },
+        {
+          "start": 26.4,
+          "end": 32.0,
+          "text": " many wrote about being able to move comfortably. I learned that one general",
+          "avg_logprob": -0.28013440132141115,
+          "no_speech_prob": 0.027888117358088493
+        },
+        {
+          "start": 32.0,
+          "end": 36.44,
+          "text": " question had hidden useful differences.",
+          "avg_logprob": -0.28013440132141115,
+          "no_speech_prob": 0.027888117358088493
+        }
+      ],
+      "normalizedSpokenTextExactMatch": true,
+      "spokenWordCount": 87,
+      "speakerNumberOrderVerified": null,
+      "voiceDistinctnessHumanVerified": false,
+      "independentHumanAudition": false,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MC-25",
+          "itemId": "ca51e7a3-267e-5673-a8b8-888759fa051f",
+          "key": "b",
+          "keyedMeaning": "To understand clothing choices for different occasions.",
+          "explanation": "The revised survey makes the occasion clear, helping the speaker interpret different clothing choices.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-MC-27",
+          "itemId": "9cfaf9c8-e50a-5e10-afec-bde42c18b2ba",
+          "key": "c",
+          "keyedMeaning": "A walk.",
+          "explanation": "The explanation space is added for the walk.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "audioBytesEdited": false,
+      "storagePresentAtReadback": false
+    },
+    {
+      "filename": "eng7-u01-mc-audio-b-v1.mp3.mp3",
+      "deliveryFilename": "eng7-u01-mc-audio-b-v1.mp3",
+      "sha256": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5",
+      "md5": "fb8e6f565d16899317a1e4782c963ba5",
+      "byteLength": 663937,
+      "durationMs": 40438,
+      "streams": [
+        {
+          "codec": "mp3",
+          "sampleRate": "44100",
+          "channels": 1
+        }
+      ],
+      "fullDecodePassed": true,
+      "decodeErrors": "",
+      "within8MiB": true,
+      "sourceCode": "ENG7-U01-MC-AUDIO-B",
+      "objectPath": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5.mp3",
+      "sourceFamilyId": "3ca844ae-c14e-5420-ae24-3e0519a0316d",
+      "scriptSha256": "c0c51ad65ebb6a162f7f288d68e4bb38e23fd9446baf89b0e7565c7bd93c7dab",
+      "asrText": "Listen to three students suggesting ways to settle a disagreement about a costume for a school play. You will hear each speaker's number. Speaker one, we could try both ideas in a short rehearsal. Then we would know which one lets the actor move more easily, instead of only guessing. Speaker two, let's remember what the character needs to do in the scene. We all want the audience to understand the character, even though we prefer different designs. Speaker 3. Perhaps we can decide on the shape first and discuss the colors afterwards. Trying to settle every detail at once is making the discussion harder.",
+      "asrSegments": [
+        {
+          "start": 0.0,
+          "end": 6.32,
+          "text": " Listen to three students suggesting ways to settle a disagreement about a costume for a school play.",
+          "avg_logprob": -0.1340241224433367,
+          "no_speech_prob": 0.020385289564728737
+        },
+        {
+          "start": 6.32,
+          "end": 8.72,
+          "text": " You will hear each speaker's number.",
+          "avg_logprob": -0.1340241224433367,
+          "no_speech_prob": 0.020385289564728737
+        },
+        {
+          "start": 8.72,
+          "end": 13.52,
+          "text": " Speaker one, we could try both ideas in a short rehearsal.",
+          "avg_logprob": -0.1340241224433367,
+          "no_speech_prob": 0.020385289564728737
+        },
+        {
+          "start": 13.52,
+          "end": 18.72,
+          "text": " Then we would know which one lets the actor move more easily, instead of only guessing.",
+          "avg_logprob": -0.1340241224433367,
+          "no_speech_prob": 0.020385289564728737
+        },
+        {
+          "start": 18.72,
+          "end": 23.76,
+          "text": " Speaker two, let's remember what the character needs to do in the scene.",
+          "avg_logprob": -0.1340241224433367,
+          "no_speech_prob": 0.020385289564728737
+        },
+        {
+          "start": 23.76,
+          "end": 29.68,
+          "text": " We all want the audience to understand the character, even though we prefer different designs.",
+          "avg_logprob": -0.1340241224433367,
+          "no_speech_prob": 0.020385289564728737
+        },
+        {
+          "start": 29.68,
+          "end": 35.6,
+          "text": " Speaker 3. Perhaps we can decide on the shape first and discuss the colors afterwards.",
+          "avg_logprob": -0.21525336844580514,
+          "no_speech_prob": 0.004971959628164768
+        },
+        {
+          "start": 36.32,
+          "end": 45.6,
+          "text": " Trying to settle every detail at once is making the discussion harder.",
+          "avg_logprob": -0.21525336844580514,
+          "no_speech_prob": 0.004971959628164768
+        }
+      ],
+      "normalizedSpokenTextExactMatch": true,
+      "spokenWordCount": 105,
+      "speakerNumberOrderVerified": [
+        "one",
+        "two",
+        "three"
+      ],
+      "voiceDistinctnessHumanVerified": false,
+      "independentHumanAudition": false,
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MC-26",
+          "itemId": "b6d3e488-d2e2-5372-a1df-a768d79f8e78",
+          "key": "b",
+          "keyedMeaning": "They offer ways to move a design disagreement forward.",
+          "explanation": "All three students suggest ways to make progress despite different design preferences.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-MC-28",
+          "itemId": "829603b9-b891-5ee8-adeb-2a8a576a3d22",
+          "key": "c",
+          "keyedMeaning": "Speaker Three.",
+          "explanation": "Speaker Three suggests settling shape before discussing colours.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "audioBytesEdited": false,
+      "storagePresentAtReadback": false
+    }
+  ],
+  "verification": {
+    "decode": "FFmpeg full-file decode, exit 0 and no errors, all six files",
+    "speechRecognition": "Local faster-whisper 1.2.1, base.en int8, CPU, beam 5, VAD, no prompt, condition_on_previous_text=false; PyAV 16.0.1. No audio sent to a cloud transcription service.",
+    "textNormalization": [
+      "Ignore punctuation/case and hyphenation",
+      "Normalize spoken speaker digits 1/2/3 to one/two/three",
+      "Normalize ASR American spelling favorite/realized/colors to the equivalent authored British spellings"
+    ],
+    "exactNormalizedScripts": 6,
+    "keyMappings": 12,
+    "totalSpokenWords": 571,
+    "independentHumanAudition": false,
+    "limitations": "Automated speech/script/key comparison does not prove distinct voice quality, listening difficulty, human SME acceptance or authenticated playback.",
+    "supplyChainNote": "Ephemeral ASR environment only; no application dependency changes. PyAV 19.0.2 removed metadata_errors used by the ASR package; pinned PyAV 16.0.1 for this verification."
+  },
+  "storage": {
+    "bucketId": "learning-audio",
+    "public": false,
+    "fileSizeLimit": 8388608,
+    "allowedMimeTypes": [
+      "audio/mpeg",
+      "audio/wav"
+    ],
+    "existingObjectCount": 8,
+    "newObjectsPresent": 0,
+    "newVersionsRegistered": 0,
+    "requiredObjectName": "sha256 + .mp3, required by existing learning_audio_versions check constraint",
+    "blockedStep": "Authenticated upload of actual audio bytes",
+    "availableConnectorLimitation": "Supabase connector exposes SQL and management operations, not Storage byte upload. No task-scoped upload credential is configured.",
+    "browserEvidence": "Prior browser observation failed: native credential state cannot safely resume. Fresh-tab/reset/troubleshooting already failed under C11. No retry, bypass or new recovery claim.",
+    "safeHandoff": "Upload the six already hash-named MP3s from HaiEdu_Unit1_DB_MB_MC_Audio_Upload.zip into the existing private bucket root. No transcoding or new bucket is needed."
+  },
+  "productionReadback": {
+    "counts": [
+      {
+        "bank": "diagnostic",
+        "total": 56,
+        "approved": 48,
+        "qa_passed": 52
+      },
+      {
+        "bank": "mastery",
+        "total": 84,
+        "approved": 68,
+        "qa_passed": 76
+      },
+      {
+        "bank": "practice",
+        "total": 60,
+        "approved": 60,
+        "qa_passed": 60
+      }
+    ],
+    "sourceHolds": 12,
+    "readingApprovalActionsPending": 12,
+    "listeningApprovalActionsPending": 12,
+    "audioVersions": 8,
+    "readingTaskSets": 13,
+    "allTaskSets": 21,
+    "immutableQuestionVersions": 247,
+    "englishReleaseStatus": "draft",
+    "englishReleaseActivatedAt": null,
+    "preservedTableCount": 71,
+    "allTableFingerprintsMatchC14": true,
+    "tableFingerprints": [
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_activation",
+        "fingerprint": "1df4787f0c2eece89b4611327af6aff4"
+      },
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_versions",
+        "fingerprint": "1c69b7132347cd8b67a89268668f27ce"
+      },
+      {
+        "row_count": 1872,
+        "table_name": "assessment_blueprint_items",
+        "fingerprint": "7e54e189ad648f2a3f0a4538a01f8b60"
+      },
+      {
+        "row_count": 27,
+        "table_name": "assessment_blueprints",
+        "fingerprint": "38fe215a14d86c322b7826724d8a7fac"
+      },
+      {
+        "row_count": 472,
+        "table_name": "assessment_form_items",
+        "fingerprint": "d84f089091319cf04fa637dd4589dbd9"
+      },
+      {
+        "row_count": 29,
+        "table_name": "assessment_forms",
+        "fingerprint": "ec31ac543009ef35e098ac7a64e23908"
+      },
+      {
+        "row_count": 20,
+        "table_name": "assessment_policy_bindings",
+        "fingerprint": "2c32ee0b3e126db5e47b7de55a5ebacf"
+      },
+      {
+        "row_count": 18,
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "fingerprint": "7383871bb98ea2a76ff9cb30689c643a"
+      },
+      {
+        "row_count": 1244,
+        "table_name": "assessment_pool_items",
+        "fingerprint": "184285de8853be3dfc41e8f90db0dda4"
+      },
+      {
+        "row_count": 19,
+        "table_name": "assessment_pools",
+        "fingerprint": "d6450febadadd4af95b10f3a8c9a7b92"
+      },
+      {
+        "row_count": 42,
+        "table_name": "attempts",
+        "fingerprint": "26d44860397d32ab6023da8e72cfcb0e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_mastery_states",
+        "fingerprint": "1b6fb3231d34474d6422795bcb484b2c"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_cycles",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_item_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_review_requirements",
+        "fingerprint": "2e1caa3798ff3b8199f848152602ba13"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_sessions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "curriculum_frameworks",
+        "fingerprint": "cc95b05470c26da89674830c44573e7e"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_reconciliation_runs",
+        "fingerprint": "86fa5040c5e4315a2eaa1b56024973c0"
+      },
+      {
+        "row_count": 49,
+        "table_name": "curriculum_release_gate_checks",
+        "fingerprint": "76bc56c09f6aad078d83826e1919c828"
+      },
+      {
+        "row_count": 1028,
+        "table_name": "curriculum_release_item_families",
+        "fingerprint": "254bf21f349ebd320e8c42a80f48a611"
+      },
+      {
+        "row_count": 53,
+        "table_name": "curriculum_release_outcomes",
+        "fingerprint": "79555766bcc8fca1e084ff76c77475ef"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_release_reconciliations",
+        "fingerprint": "01701c1671482c73cdf5ab848dcb87aa"
+      },
+      {
+        "row_count": 80,
+        "table_name": "curriculum_release_skills",
+        "fingerprint": "b79050797c48be0273a3705599972579"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_release_units",
+        "fingerprint": "3081bda61e74df4d3902ae0c21988407"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_releases",
+        "fingerprint": "bcaaa4a76a9ee95f0d8b16430086c669"
+      },
+      {
+        "row_count": 3,
+        "table_name": "curriculum_source_documents",
+        "fingerprint": "d4b3cde546d8cacbda028fbb3256e6d8"
+      },
+      {
+        "row_count": 12,
+        "table_name": "grades",
+        "fingerprint": "62cb5fdf3ecc14c7279c2484156cc000"
+      },
+      {
+        "row_count": 1451,
+        "table_name": "item_answer_keys",
+        "fingerprint": "1d7322c070c82d8052f80db2dd2b272a"
+      },
+      {
+        "row_count": 1451,
+        "table_name": "item_curriculum_scopes",
+        "fingerprint": "6254aa2a1a2ccbf00049e8849e32a7d7"
+      },
+      {
+        "row_count": 1229,
+        "table_name": "item_families",
+        "fingerprint": "2f4db98387b0e0370bf0b6898c6f6261"
+      },
+      {
+        "row_count": 1029,
+        "table_name": "item_family_curriculum_reconciliations",
+        "fingerprint": "ea002e478aebb9afc8ef309377d36051"
+      },
+      {
+        "row_count": 3212,
+        "table_name": "item_misconception_mappings",
+        "fingerprint": "0630d067b0596adb53124c132bb4dee1"
+      },
+      {
+        "row_count": 4818,
+        "table_name": "item_options",
+        "fingerprint": "054d596a336254656843c8831604f2b6"
+      },
+      {
+        "row_count": 1807,
+        "table_name": "item_qa_runs",
+        "fingerprint": "0249ec97e0d7fdc11def56572f22b7c7"
+      },
+      {
+        "row_count": 1709,
+        "table_name": "item_reviews",
+        "fingerprint": "404b95234cf8be6655c84a3683ccd2d3"
+      },
+      {
+        "row_count": 518,
+        "table_name": "item_template_remediation_guides",
+        "fingerprint": "e603af7f4dc742b0e53f996eeee86627"
+      },
+      {
+        "row_count": 1229,
+        "table_name": "item_templates",
+        "fingerprint": "beb034caa80d5f15e7c14eb2451d59f8"
+      },
+      {
+        "row_count": 1393,
+        "table_name": "item_versions",
+        "fingerprint": "439eefd892af72582efc2b45ee68d8c0"
+      },
+      {
+        "row_count": 1451,
+        "table_name": "items",
+        "fingerprint": "bf4ab8ea30fd673afa2ea7206d67dcf9"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_assessed_audio",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 8,
+        "table_name": "learning_audio_versions",
+        "fingerprint": "9267c546784103ca38a9f6019d116e1c"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_configurations",
+        "fingerprint": "4254a36a7a040133d3592cd131c83c83"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_runtime_bindings",
+        "fingerprint": "dd95315c4395cb93457b2c5afaefc495"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcome_normative_mappings",
+        "fingerprint": "f0affa67ef267421fa3368c30011a7e7"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcomes",
+        "fingerprint": "d0063216634a4cea234e80ae5aa63ad1"
+      },
+      {
+        "row_count": 96,
+        "table_name": "learning_session_items",
+        "fingerprint": "34f74f2134c35958e0e4b8ab6420137a"
+      },
+      {
+        "row_count": 8,
+        "table_name": "learning_sessions",
+        "fingerprint": "a5d0326f20b58e02773af6281ee31cdb"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_source_family_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 21,
+        "table_name": "learning_task_set_versions",
+        "fingerprint": "ef950d6a3ce4d1e560ad6117a9b5c459"
+      },
+      {
+        "row_count": 1,
+        "table_name": "mastery_check_attempts",
+        "fingerprint": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+      },
+      {
+        "row_count": 1026,
+        "table_name": "misconception_review_events",
+        "fingerprint": "b453094e23e087c502ea133a8e25e053"
+      },
+      {
+        "row_count": 1033,
+        "table_name": "misconceptions",
+        "fingerprint": "b399278d2c2bb11a9e0e07cf3e32906c"
+      },
+      {
+        "row_count": 824,
+        "table_name": "recommendation_events",
+        "fingerprint": "bb3fe105ac2571f227284db74a10591f"
+      },
+      {
+        "row_count": 6,
+        "table_name": "remediation_events",
+        "fingerprint": "e5001e648bb95efe0dd4a0c163f8fd2c"
+      },
+      {
+        "row_count": 1708,
+        "table_name": "remediation_guide_authoring_versions",
+        "fingerprint": "ad66c5fa1f9ed7d37f52e14da1f9303c"
+      },
+      {
+        "row_count": 1067,
+        "table_name": "remediation_guide_versions",
+        "fingerprint": "904a28da2d3e95fc1d420cac3f0915b4"
+      },
+      {
+        "row_count": 26,
+        "table_name": "runtime_builds",
+        "fingerprint": "de52aa09cfe3faf6405ea630a9842850"
+      },
+      {
+        "row_count": 66,
+        "table_name": "skill_curriculum_reconciliations",
+        "fingerprint": "fda1e906882d49718a03f650ffe6e601"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcome_curriculum_mappings",
+        "fingerprint": "1a2a3f9398ebd328e65ac1f3c565667c"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcomes",
+        "fingerprint": "938bbad8c1f7dde57c694cd0d117d6bd"
+      },
+      {
+        "row_count": 17,
+        "table_name": "skill_prerequisites",
+        "fingerprint": "2163f87101e252337a68d16de849d8d4"
+      },
+      {
+        "row_count": 10,
+        "table_name": "skill_remediation_guides",
+        "fingerprint": "0c0a4b6b5a5fb2e78a4e9707d5c28366"
+      },
+      {
+        "row_count": 81,
+        "table_name": "skills",
+        "fingerprint": "ff8d0bf2159893c6586861f31e37c29e"
+      },
+      {
+        "row_count": 44,
+        "table_name": "student_item_exposure_events",
+        "fingerprint": "b9b739a7d235b2a8ebb837003baef8b6"
+      },
+      {
+        "row_count": 13,
+        "table_name": "student_skill_mastery_by_release",
+        "fingerprint": "19a0f8555ac31ac870a6cff088c9ce29"
+      },
+      {
+        "row_count": 2,
+        "table_name": "subject_program_source_bindings",
+        "fingerprint": "7cefb9c48c14a2b02a5e4ae0660edd92"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subject_programs",
+        "fingerprint": "ee9738a90126520ed8427ca0ddfd570d"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subjects",
+        "fingerprint": "e02963c95d7856a55b57175a81ae7def"
+      },
+      {
+        "row_count": 30,
+        "table_name": "topics",
+        "fingerprint": "c7f40d5f22a7f50ede9ac6c952d5e7dc"
+      },
+      {
+        "row_count": 8,
+        "table_name": "units",
+        "fingerprint": "c2b8d4ce2b2f9dd4d16d2d56adef7685"
+      },
+      {
+        "row_count": 0,
+        "table_name": "written_task_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ]
+  },
+  "reusedEvidence": [
+    "docs/evidence/english-7-unit-01-bcd-whole-bank-review-20261022.json",
+    "docs/evidence/english-7-unit-01-bcd-reading-registration-20261022.json",
+    "docs/evidence/assessed-listening-release-20261022.json"
+  ],
+  "wholeBankScope": "All 71 global table fingerprints match C14; the entire 200-question content bank, 247 immutable versions, source families, guides, mappings, keys, exposure and policy tables are unchanged. Reuse existing whole-bank/semantic/grading evidence; the recordings supply the exact previously compared scripts and create no independent new reasoning claim.",
+  "plan": {
+    "path": "docs/content/english-7-unit-01-bcd-audio-registration-plan.json",
+    "sha256": "bd8a9fff7f5f294cdba105f80bdc64ce94ea5595af1f19382c909962e31d3d6b",
+    "audioRows": 6,
+    "taskSetRows": 6,
+    "questionRevisions": 12,
+    "enabled": false
+  },
+  "runtimeChange": false,
+  "productionSqlWrite": false,
+  "questionApprovalCreated": false,
+  "learnerReleaseActivated": false
+}

@@ -2829,5 +2829,19 @@
     "docs/content/english-7-unit-01-assessment-batch-a.json",
     "docs/content/english-7-unit-01-assessment-batch-bcd.json"
   ],
-  "currentStatusCheckpoint": "16.1C.14"
+  "currentStatusCheckpoint": "16.1C.15",
+  "audioPreparation": {
+    "checkpoint": "16.1C.15",
+    "receivedRecordings": 6,
+    "technicalChecksPassed": 6,
+    "normalizedScriptMatches": 6,
+    "questionKeyMappingsVerified": 12,
+    "storageUploadsPending": 6,
+    "newRegisteredAudioVersions": 0,
+    "sourceHoldsRemaining": 12,
+    "inAppApproved": 176,
+    "currentQaPassed": 188,
+    "learnerReleaseActivated": false,
+    "evidence": "docs/evidence/english-7-unit-01-bcd-audio-preparation-20261022.json"
+  }
 }
