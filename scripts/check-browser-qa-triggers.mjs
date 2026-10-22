@@ -7,6 +7,12 @@ import { fileURLToPath } from "node:url";
 // test, attest the deployed revision, or replace isolated browser acceptance.
 export const browserQaTargets = [
   {
+    workflow: ".github/workflows/english-unit1-pilot-read-acceptance.yml",
+    entries: ["web/index.html", "web/course.html", "scripts/english-unit1-pilot-read-acceptance.mjs"],
+    runner: "scripts/english-unit1-pilot-read-acceptance.mjs",
+    activationEvidence: "docs/evidence/english-7-unit-01-pilot-activation.json",
+  },
+  {
     workflow: ".github/workflows/chapter-vi-pilot-read-acceptance.yml",
     entries: ["web/index.html", "web/course.html", "web/teacher.html", "scripts/chapter-vi-pilot-read-acceptance.mjs"],
     runner: "scripts/chapter-vi-pilot-read-acceptance.mjs",

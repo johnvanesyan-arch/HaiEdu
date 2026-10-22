@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "haiedu-english-final-release-preparation-v1",
+  "checkpoint": "16.1C.24",
+  "roadmap": "4.50",
+  "dateUTC": "2026-10-22",
+  "dateAsiaYerevan": "2026-10-23",
+  "preparedFromCommit": "50b0590e19569184052b126d9a288da815d95b97",
+  "status": "final_packet_and_guarded_read_acceptance_prepared",
+  "files": {
+    "scripts/english-unit1-pilot-read-acceptance.mjs": "14fe99d98c48d70d5f4af9acdffb9b0936078163ed0338d7c43c4d46d635bb5f",
+    "tests/english-unit1-pilot-read-acceptance.test.mjs": "29e789c2d0fbb2adf379069c991675562fd1650e582c0d358119ecd4c91ab6ba",
+    ".github/workflows/english-unit1-pilot-read-acceptance.yml": "46c8dc7ae46cbe36a94143aab86fd8f4fd224f89bda12729d2cddc2e0aa8e0b7",
+    "scripts/check-browser-qa-triggers.mjs": "78fe8531c44a908816dc268686e082b136ccbf83379c3960973c7b90361e7b08",
+    "docs/content/english-7-unit-01-release-decision.json": "5b7a913fa20c8a2a5e8599d9a74e854f46a0f7d92eae20942620813fac7d60d1"
+  },
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+    "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+  },
+  "sourceInventory": {
+    "observedAt": "2026-10-22T20:05:48.132318+00:00",
+    "taskSets": 27,
+    "readingSets": 13,
+    "listeningSets": 14,
+    "audioVersions": 14,
+    "allNonRevoked": true,
+    "reviewRepeated": false,
+    "newLicenceClaimed": false
+  },
+  "enrollments": {
+    "observedAt": "2026-10-22T20:06:51.856707+00:00",
+    "activeTeacherAssignments": 0,
+    "activeEnrollments": 0
+  },
+  "verification": {
+    "focusedPassed": 17,
+    "newCases": 8,
+    "existingTriggerCases": 9,
+    "runnerSyntax": "passed",
+    "workflowRouting": "activation_only_passed",
+    "productionReadAcceptance": "not_run",
+    "nativeEnglishLearnerRun": "not_run",
+    "apiTests": "synthetic responses; validates guard/check logic only"
+  },
+  "preserved": {
+    "productionWrites": 0,
+    "contentApprovalWrites": 0,
+    "qaWrites": 0,
+    "audioChanges": 0,
+    "policyChanges": 0,
+    "membershipChanges": 0,
+    "runtimeChanges": 0,
+    "learnerWrites": 0
+  },
+  "release": {
+    "status": "draft",
+    "pendingStoredGates": 7,
+    "learnerActivationAuthorized": false,
+    "specialistGate": "pending"
+  },
+  "reusedEvidence": {
+    "docs/evidence/english-7-unit-01-policy-acceptance-20261022.json": "c58f3d34111304a326b388dcee7814b5ee8c86b1af8e68341829687208665975",
+    "docs/evidence/english-7-unit-01-form-preflight-20261022.json": "6a04d088139800cee683a061bb58a7285dab5114c955b5a4ef126e9deac8bfd9",
+    "docs/evidence/english-7-unit-01-exposure-decision-20261022.json": "10fbeeb73f89cb601943bb416471bccfa34849222f83cb8bf5e26b0fd34a048c",
+    "docs/evidence/english-7-unit-01-configuration-preparation-20261022.json": "513a66c803f2d8c561e3a836380da6d168e26eef9330c277cb7090f94b651553",
+    "docs/evidence/english-7-unit-01-learner-acceptance-20261022.json": "bae1581df93c514725303a9d4be7a83073ee350ae3dd83091d513c73e943553a"
+  },
+  "remaining": [
+    "owner intended learner source/voice/textbook-use basis and bounded provisional-pilot decision",
+    "normal governed designated English QA assignment/enrollment setup",
+    "current-state activation rehearsal/commit and actual live read/learner/writing acceptance"
+  ],
+  "closure": "Required CI, production deployment and exact merged source verification are recorded in the source-stamped Notion checkpoint; this evidence does not assert those results before they finish."
+}

@@ -1,5 +1,7 @@
 # English 7 Unit 1 — result scope and learner acceptance preparation
 
+**16.1C.24 current handoff — 2026-10-23 Asia/Yerevan:** The exact final provisional/source-use decision packet and activation-gated English read acceptance are prepared; 17 focused checks pass. All prior approvals stand. Fourteen recordings and 27 task sets are inventoried without re-review; zero active English assignments/enrollments were observed. Next: record the final intended-use/pilot disposition, prepare designated English QA contexts, then guarded activation and live acceptance. English remains inactive. [Final packet](english-7-unit-01-final-release-decision.md).
+
 **Sprint 16.1C.23 · 22 October 2026 · Roadmap 4.49 · Preparation only; English remains inactive.**
 
 The learner player, course history, teacher history and school evidence groups now state that an automatic result covers only the skills assessed by that check. Teacher summary/filter labels and the registered Physics Unit I extension also say that a check was passed, rather than declaring the whole unit mastered. Scores, pass decisions, readiness, approvals and release state are unchanged.

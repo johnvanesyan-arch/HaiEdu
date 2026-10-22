@@ -1,0 +1,483 @@
+{
+  "schemaVersion": "haiedu-english-unit1-release-decision-v1",
+  "checkpoint": "16.1C.24",
+  "status": "awaiting_final_release_decision",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+    "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+  },
+  "preparedFromCommit": "50b0590e19569184052b126d9a288da815d95b97",
+  "configuration": {
+    "path": "docs/content/english-7-unit-01-release-configuration.json",
+    "sha256": "858b5563b908c56f513238552ae19fefdac5c330a3f5fbb0656c2fb294354b5c"
+  },
+  "proposal": {
+    "releaseStatus": "pilot",
+    "specialistReview": "deferred",
+    "independentSmeApproved": false,
+    "empiricalEquivalenceEstablished": false,
+    "unseenAssessmentClaim": false,
+    "sourceUseScope": "authenticated_enrolled_unit1_learners",
+    "sourceUseBasis": "owner_confirmation_required",
+    "publicDownloadsAuthorized": false,
+    "speaking": "classroom_assessed",
+    "writing": "separate_teacher_feedback_no_automatic_gate",
+    "questionBank": {
+      "practice": 60,
+      "diagnostic": 56,
+      "mastery": 84,
+      "corePractice": 58,
+      "optionalPracticeRetained": 2
+    },
+    "forms": [
+      "DA",
+      "DB",
+      "MA",
+      "MB",
+      "MC"
+    ],
+    "formSize": 28,
+    "extraMasteryReserve": 0,
+    "qaScope": "existing_designated_two_school_accounts_only",
+    "learningWrites": "separately_designated_fixture_run_only"
+  },
+  "requiredOwnerRecord": {
+    "action": "activate_provisional_pilot",
+    "scope": {
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+    },
+    "decisionManifestSha256": null,
+    "ownerDirection": null,
+    "recordedAt": null,
+    "specialistReview": "deferred",
+    "learnerSourceUseConfirmed": null,
+    "recordingProviderVoiceUseBasis": null,
+    "textbookAdaptationUseBasis": null
+  },
+  "sourceInventory": {
+    "audio": [
+      {
+        "id": "17f2ed40-d4b9-5c64-a211-783218581c70",
+        "title": "Listening practice: three speakers",
+        "sha256": "52eb842d5597c3e1bc66d141ff2918f2ae96d19358d6060f007a1a3feba9ca5e",
+        "revoked": false,
+        "rowSha256": "fde3e0680f430e59dc30c8d93b68bdfbd9f451aaacba46c310fb8e33e4c1f9fa",
+        "sourceFamilyId": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "1d0a4ee3-5db0-51d3-b2b5-4b9bc7ec830c",
+        "title": "Listening source MC-A",
+        "sha256": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1",
+        "revoked": false,
+        "rowSha256": "32831e4b3064ee1f6bcfed48162280afbfec8708e27b2f44342dcc3fed17004e",
+        "sourceFamilyId": "5e6facc4-e703-5701-9379-33f109ef6761",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "4375792c-94d4-54fe-a79c-983368f0fa5f",
+        "title": "Miriam: individuality",
+        "sha256": "6fca1acdf02e9091a065ae7fae0853591a079120c2d47662cc8a5943d6eacf0b",
+        "revoked": false,
+        "rowSha256": "8c31334fac9d14e050580ca8238d8962e3592b2410e5a2dbb700718cc7c0101d",
+        "sourceFamilyId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "permissionReference": "docs/evidence/english-7-unit-01-publisher-audio-review-20261021.json#c5a5c4667b453a8a5f07dd9682ada5e4279827dec2795c713f332c205d311bca; Owner-authorized protected MVP reviewer catalogue; English remains draft/inactive."
+      },
+      {
+        "id": "4535a51f-8daa-58c0-ac73-0db9668d301a",
+        "title": "Listening source MA-B",
+        "sha256": "774de9c90e08d12c7597b98fd48fc04e866f354278329b9002f48371c41049e9",
+        "revoked": false,
+        "rowSha256": "5350b88114c2cca6661f1448a38f60cd646446c6e0e6d7aaba7f835ef7f50b2a",
+        "sourceFamilyId": "d4b44034-d3e3-5dc2-989c-d18db22476e9",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "5669d7ab-d01e-5d12-ab26-0facd947cf34",
+        "title": "Listening source MB-A",
+        "sha256": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987",
+        "revoked": false,
+        "rowSha256": "a825eadc9f8877efffd90db011d7c4b6f9a125ded4d088bd66b791e11a357057",
+        "sourceFamilyId": "f374699d-be6c-5e9b-9392-bae2ff8b4775",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "64a2a26a-fe71-5fec-a7d2-fd85fdbcbe1b",
+        "title": "Gordon: my own style",
+        "sha256": "79797ebb86e06034ace9cdcc70e90787aaa4e604f419202658649926b1d51fec",
+        "revoked": false,
+        "rowSha256": "f421a5a7862482d1c5c4873effc0b93977e61fb398739105c4ee64a5aed38005",
+        "sourceFamilyId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "permissionReference": "docs/evidence/english-7-unit-01-publisher-audio-review-20261021.json#c5a5c4667b453a8a5f07dd9682ada5e4279827dec2795c713f332c205d311bca; Owner-authorized protected MVP reviewer catalogue; English remains draft/inactive."
+      },
+      {
+        "id": "65667f20-a702-50d3-9c97-89e7abd10300",
+        "title": "Listening source DB-B",
+        "sha256": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600",
+        "revoked": false,
+        "rowSha256": "3e5d645d95c6955efc066d4e8910298910feb08c611c4cde96f7da2778049985",
+        "sourceFamilyId": "4f04e9ff-de80-5270-b2c5-773ee0082636",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "862daa83-a5e5-51e1-a36d-0106882005cf",
+        "title": "Emmie: comfort and choice",
+        "sha256": "973d22f0b346324bd49bc1f83c4067b6adb5531ced243bcc4e63b1040ddbdf83",
+        "revoked": false,
+        "rowSha256": "225c3036f9dd5bf6f2cd41c0e8b26c36d2a8f268a738645342851e587acc6ec4",
+        "sourceFamilyId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "permissionReference": "docs/evidence/english-7-unit-01-publisher-audio-review-20261021.json#c5a5c4667b453a8a5f07dd9682ada5e4279827dec2795c713f332c205d311bca; Owner-authorized protected MVP reviewer catalogue; English remains draft/inactive."
+      },
+      {
+        "id": "a114c68b-10be-5c75-a3de-61e9d5b26313",
+        "title": "Listening source DA-A",
+        "sha256": "9c69beb115abb61765363471832bab430343eb5383b247725f52b671919812f4",
+        "revoked": false,
+        "rowSha256": "c49b339980993f3cbf108d15227284d1abd00e986f52c62cd6da8766c6b2c2b9",
+        "sourceFamilyId": "918b042e-2e8c-59eb-9609-13ea411211cd",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "cb8f6ab3-d2c4-5086-af44-998cd1742ba0",
+        "title": "Listening source DA-B",
+        "sha256": "7f95e626885d02f21cc4b7ad2a3af75ac1c708b06aefa1178857f42419732329",
+        "revoked": false,
+        "rowSha256": "f5743f147544e871c9c7fe22787f4bf4f2c2caf0be05fd31837a02c7d211201d",
+        "sourceFamilyId": "b0d73ed4-e5d6-5cd0-b43f-0b71bb617020",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "e6e43fb8-462a-5fa4-add9-094c4a7e8da7",
+        "title": "Listening source MA-A",
+        "sha256": "8579b427539ad771b80b47edaea63d279ea40e40f0c8ea78b79d82f51b0dfecd",
+        "revoked": false,
+        "rowSha256": "de1542aa617861e3e2e025bb2d45080f3b92a759a0062c0510df0c9c7edbb2b6",
+        "sourceFamilyId": "cf911d87-4ce2-5c61-90c1-8953faeeefa9",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "e78bfec9-7326-5111-9b39-bb6f0a98902e",
+        "title": "Listening source DB-A",
+        "sha256": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140",
+        "revoked": false,
+        "rowSha256": "5969504927baab4714877786f64adac764ca7e26176cb0e8cb65afe533457e06",
+        "sourceFamilyId": "357e658b-ca9e-513b-aa1b-27cb65a74e15",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "ed09dc8a-9274-5660-b13a-cfabed5ae850",
+        "title": "Listening source MC-B",
+        "sha256": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5",
+        "revoked": false,
+        "rowSha256": "8b5b67a96433145858d1a98dc30c81dc27f60823cfcf830d2534d6c032e5f3a6",
+        "sourceFamilyId": "3ca844ae-c14e-5420-ae24-3e0519a0316d",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "f0dc7338-7dd9-5b6c-9ca1-e17674cb7c5c",
+        "title": "Listening source MB-B",
+        "sha256": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6",
+        "revoked": false,
+        "rowSha256": "2515bab36cc6e37f69456cc49034a0f4a60133292088b64d97f84c8b9d9f1a31",
+        "sourceFamilyId": "b70d3969-78c0-5551-bb5b-4fd5fc67c393",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      }
+    ],
+    "taskSets": [
+      {
+        "id": "002edcd5-07a7-5dad-a766-e0f14ca9ae86",
+        "kind": "audio",
+        "title": "Miriam: individuality",
+        "revoked": false,
+        "rowSha256": "3a479caaee588f86020686a5f49bda282503527dc65970657f44ea432572453c",
+        "audioVersionId": "4375792c-94d4-54fe-a79c-983368f0fa5f",
+        "sourceFamilyId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "permissionReference": "docs/evidence/english-7-unit-01-publisher-audio-review-20261021.json#c5a5c4667b453a8a5f07dd9682ada5e4279827dec2795c713f332c205d311bca; Owner-authorized protected MVP reviewer catalogue; English remains draft/inactive."
+      },
+      {
+        "id": "0e5d7595-f034-5904-9c11-a9125326cb48",
+        "kind": "audio",
+        "title": "Listening source MB-B",
+        "revoked": false,
+        "rowSha256": "a4339fdbb3025b0e2ecf70329570a17cdd4a1db2645e78c9bc9b17c5997596de",
+        "audioVersionId": "f0dc7338-7dd9-5b6c-9ca1-e17674cb7c5c",
+        "sourceFamilyId": "b70d3969-78c0-5551-bb5b-4fd5fc67c393",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "10cb011d-78b6-5f4d-aebc-461eeee0a5d1",
+        "kind": "text",
+        "title": "Reading source P-B",
+        "revoked": false,
+        "rowSha256": "df5d1406be61c25699e24ecbccb0fb4a1e7c9c598beb789e142405f97dbdfc66",
+        "audioVersionId": null,
+        "sourceFamilyId": "caaf26e1-09c1-5a29-8381-f96a038041c8",
+        "permissionReference": "docs/evidence/english-7-unit-01-reading-acceptance-20261021.json#0732653f97790522642406b14a51bbeabaaea1752e274f9e7d4c4a9ee3ca96dc; Owner accepts the exact textbook-based explanation and original Ani example for this bounded MVP registration. No publisher licence or public-distribution permission is claimed."
+      },
+      {
+        "id": "1358d093-2787-575e-ae0b-c683a6d426b8",
+        "kind": "text",
+        "title": "Reading source MA-B",
+        "revoked": false,
+        "rowSha256": "04d12b5d658a723b4f08f6baba68b96db5e3fc883f70220274a81c3769c3d633",
+        "audioVersionId": null,
+        "sourceFamilyId": "91bc24cf-9f03-5b62-a72b-b77f3923a00a",
+        "permissionReference": "docs/evidence/english-7-unit-01-reading-acceptance-20261021.json#0732653f97790522642406b14a51bbeabaaea1752e274f9e7d4c4a9ee3ca96dc; Owner accepts use of the original attributed factual summary; no source photograph or verbatim external passage is imported."
+      },
+      {
+        "id": "1cd5d8fc-3527-5118-a817-b3f174f1a38b",
+        "kind": "audio",
+        "title": "Listening source MC-B",
+        "revoked": false,
+        "rowSha256": "f27b28e47fb7261200b78d3b37f09bb378783d7da20534a1989e394d4ecfdda5",
+        "audioVersionId": "ed09dc8a-9274-5660-b13a-cfabed5ae850",
+        "sourceFamilyId": "3ca844ae-c14e-5420-ae24-3e0519a0316d",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "1e754ae1-2649-529f-a538-72c5d83d53db",
+        "kind": "text",
+        "title": "Reading source P-A",
+        "revoked": false,
+        "rowSha256": "92020587860f01ebb866f7b77ef0837c67c8bdc5bf88c04117332be0570d2372",
+        "audioVersionId": null,
+        "sourceFamilyId": "77aa9812-745f-577b-ba8d-8430c65b3966",
+        "permissionReference": "docs/evidence/english-7-unit-01-reading-acceptance-20261021.json#0732653f97790522642406b14a51bbeabaaea1752e274f9e7d4c4a9ee3ca96dc; Owner accepts the exact condensed textbook adaptation for this bounded MVP registration. Textbook/page provenance is retained; no publisher licence or public-distribution permission is claimed."
+      },
+      {
+        "id": "276a56c4-e299-53b1-a686-730d5532181a",
+        "kind": "audio",
+        "title": "Listening source MA-A",
+        "revoked": false,
+        "rowSha256": "ba9b625c258ecc6ff23524c99fb469df49cad10f719b104a25c9ea354c521fe8",
+        "audioVersionId": "e6e43fb8-462a-5fa4-add9-094c4a7e8da7",
+        "sourceFamilyId": "cf911d87-4ce2-5c61-90c1-8953faeeefa9",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "3111fee6-e882-5963-98af-8d89407c41a9",
+        "kind": "audio",
+        "title": "Listening source MC-A",
+        "revoked": false,
+        "rowSha256": "7071a5fca9cb54b36e422173be67f4c36dbf27055c8d80673e78a30cb587809a",
+        "audioVersionId": "1d0a4ee3-5db0-51d3-b2b5-4b9bc7ec830c",
+        "sourceFamilyId": "5e6facc4-e703-5701-9379-33f109ef6761",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "3f3f27ab-3991-549a-80b0-f0d65d372f73",
+        "kind": "audio",
+        "title": "Listening source DB-A",
+        "revoked": false,
+        "rowSha256": "299c5560523799f85267b982711745953afb1bc69cf43dc0adb4f7d45b35ef74",
+        "audioVersionId": "e78bfec9-7326-5111-9b39-bb6f0a98902e",
+        "sourceFamilyId": "357e658b-ca9e-513b-aa1b-27cb65a74e15",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "4122df4c-e8c5-53eb-a399-68b4c13d511b",
+        "kind": "text",
+        "title": "Reading source DB-B",
+        "revoked": false,
+        "rowSha256": "384b16ba0a5b9b3f766edec855183ea025e093a1db6fa9c509760ebede045832",
+        "audioVersionId": null,
+        "sourceFamilyId": "e2ea2323-9ab3-59c7-ade7-9a125b781075",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original attributed factual paraphrase. Primary-source provenance is retained; no photograph, verbatim external passage, endorsement or third-party licence is imported."
+      },
+      {
+        "id": "460c33e5-97df-573d-a0e2-0ccc68c3d11a",
+        "kind": "text",
+        "title": "Reading source DA-B",
+        "revoked": false,
+        "rowSha256": "a50fa404ad029434ee212d7deac005bf3c1b396514f396c37b02f92e1c94c4cf",
+        "audioVersionId": null,
+        "sourceFamilyId": "d8a06249-883b-5a8f-819a-382bd19d41f7",
+        "permissionReference": "docs/evidence/english-7-unit-01-reading-acceptance-20261021.json#0732653f97790522642406b14a51bbeabaaea1752e274f9e7d4c4a9ee3ca96dc; Owner accepts use of the original attributed factual summary; no source photograph or verbatim external passage is imported."
+      },
+      {
+        "id": "53e03c8f-cdbd-5aa2-a60a-b8fcc65d7b8a",
+        "kind": "text",
+        "title": "Reading source DB-A",
+        "revoked": false,
+        "rowSha256": "17293b43d4fa5bca8278b0ac5dfbb262a9a5e5a2b3018643a1172ee2ec8b0eb2",
+        "audioVersionId": null,
+        "sourceFamilyId": "666623ab-ba5a-5ef1-908c-edccbd629963",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original platform-authored fictional passage within the Unit 1 topic."
+      },
+      {
+        "id": "54765dc1-54da-50a9-87a1-1c2d8cc32e85",
+        "kind": "audio",
+        "title": "Listening source DB-B",
+        "revoked": false,
+        "rowSha256": "4903aafea514c82beaeac8cee0bc837d6e65a6e344924814b8bc7d5c22bb110a",
+        "audioVersionId": "65667f20-a702-50d3-9c97-89e7abd10300",
+        "sourceFamilyId": "4f04e9ff-de80-5270-b2c5-773ee0082636",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "5c38a61c-987a-5bf1-a368-fc28711361ec",
+        "kind": "text",
+        "title": "Reading source MB-B",
+        "revoked": false,
+        "rowSha256": "e3bce3d13c911cd3cea18f9999c9b8ff6d5a9344fdb3c5a84692df13e9995e26",
+        "audioVersionId": null,
+        "sourceFamilyId": "546febe1-e048-5fc7-b66d-2023f636dc5c",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original attributed factual paraphrase. Primary-source provenance is retained; no photograph, verbatim external passage, endorsement or third-party licence is imported."
+      },
+      {
+        "id": "634b1764-76a0-5c2d-a825-2e66ebbb1117",
+        "kind": "text",
+        "title": "Reading source MA-A",
+        "revoked": false,
+        "rowSha256": "a623ec17e7125be33211c9d8bcb12579ffea49702f461cd4fd89c4f1e36708ee",
+        "audioVersionId": null,
+        "sourceFamilyId": "1bec0b74-de98-5b53-ac40-07b05e9e345b",
+        "permissionReference": "docs/evidence/english-7-unit-01-reading-acceptance-20261021.json#0732653f97790522642406b14a51bbeabaaea1752e274f9e7d4c4a9ee3ca96dc; Owner accepts use of the original platform-authored fictional school-play passage."
+      },
+      {
+        "id": "78e8a491-99e6-5a89-a7fe-36a39c5d85f8",
+        "kind": "audio",
+        "title": "Listening source DA-A",
+        "revoked": false,
+        "rowSha256": "bde5f928eb9393e5306407c9f194931a897151ecb63ff3982ce98dfa9890bfbc",
+        "audioVersionId": "a114c68b-10be-5c75-a3de-61e9d5b26313",
+        "sourceFamilyId": "918b042e-2e8c-59eb-9609-13ea411211cd",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "816bdd1f-df36-52f9-a716-e88657d4c952",
+        "kind": "audio",
+        "title": "Listening source MB-A",
+        "revoked": false,
+        "rowSha256": "86d802bcf007e12c21bf662ad266dcde026ba8adbd68616f7c15cfa61f3c0958",
+        "audioVersionId": "5669d7ab-d01e-5d12-ab26-0facd947cf34",
+        "sourceFamilyId": "f374699d-be6c-5e9b-9392-bae2ff8b4775",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json#15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4; Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only."
+      },
+      {
+        "id": "9cc705fc-47d6-5fa4-a3d9-e07e66e2a759",
+        "kind": "text",
+        "title": "Reading source MC-A",
+        "revoked": false,
+        "rowSha256": "ab9605b55a46db87ec63836d50f24e7705336bb13c9a773d292dd1b8a4f989b5",
+        "audioVersionId": null,
+        "sourceFamilyId": "a0f73378-c629-58d1-a194-2e6f443cb43f",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original platform-authored fictional passage within the Unit 1 topic."
+      },
+      {
+        "id": "9def3023-9358-5495-ade9-785b05b760ef",
+        "kind": "text",
+        "title": "Reading source DA-A",
+        "revoked": false,
+        "rowSha256": "17cc92a4aa9478ab349f351a468e8a7d8e54adeacc4237aa452814d97db45f58",
+        "audioVersionId": null,
+        "sourceFamilyId": "95ab6d4d-4c6c-5f13-9a25-3282a166d561",
+        "permissionReference": "docs/evidence/english-7-unit-01-reading-acceptance-20261021.json#0732653f97790522642406b14a51bbeabaaea1752e274f9e7d4c4a9ee3ca96dc; Owner accepts use of the original platform-authored fictional school-magazine passage."
+      },
+      {
+        "id": "a0a8d547-9ddd-5f79-a0eb-65834854dc86",
+        "kind": "text",
+        "title": "Reading source P-C",
+        "revoked": false,
+        "rowSha256": "acf898ac7ddb90e574ea66bad7bda3f6f62c4299245603eae6a6133e1bb0a289",
+        "audioVersionId": null,
+        "sourceFamilyId": "027e4624-392f-5eb6-8c34-2a502d50e167",
+        "permissionReference": "docs/evidence/english-7-unit-01-reading-acceptance-20261021.json#0732653f97790522642406b14a51bbeabaaea1752e274f9e7d4c4a9ee3ca96dc; Owner accepts the two original attributed factual summaries. No source photograph or verbatim external passage is imported."
+      },
+      {
+        "id": "a97cd981-775b-5fa5-a2eb-4ffec2a9ce2d",
+        "kind": "text",
+        "title": "Reading source MB-A",
+        "revoked": false,
+        "rowSha256": "8e09050f16ef085bbcab9c4038ea85417944ed21a7c0dd79e4b63d9e3bc7ffde",
+        "audioVersionId": null,
+        "sourceFamilyId": "4c308062-c912-5aca-8f99-1fcf33e96d75",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original platform-authored fictional passage within the Unit 1 topic."
+      },
+      {
+        "id": "cc7b0287-cbc9-551b-a3ed-3dd1a83463cd",
+        "kind": "audio",
+        "title": "Listening practice: three speakers",
+        "revoked": false,
+        "rowSha256": "89024a9c3473b1a8c9ec2af7f1b243f41e879fab16f8f56f75ed12a9d74c3083",
+        "audioVersionId": "17f2ed40-d4b9-5c64-a211-783218581c70",
+        "sourceFamilyId": "4cef63ac-2f30-5622-9de8-4c4ca483e38c",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "cda85301-637b-50c6-a3de-aac915dba7f8",
+        "kind": "audio",
+        "title": "Listening source MA-B",
+        "revoked": false,
+        "rowSha256": "23e2eae7d442c3cf5f7e1c91703e8dddfd5599bbcbb050071692e4b751ae850d",
+        "audioVersionId": "4535a51f-8daa-58c0-ac73-0db9668d301a",
+        "sourceFamilyId": "d4b44034-d3e3-5dc2-989c-d18db22476e9",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "dc177564-b38a-526a-a9cb-abe358a3567e",
+        "kind": "audio",
+        "title": "Listening source DA-B",
+        "revoked": false,
+        "rowSha256": "2db63f40dd6d889c1dedf8506806a40531906e762bee372dee2b792933cf7ef9",
+        "audioVersionId": "cb8f6ab3-d2c4-5086-af44-998cd1742ba0",
+        "sourceFamilyId": "b0d73ed4-e5d6-5cd0-b43f-0b71bb617020",
+        "permissionReference": "docs/evidence/english-7-unit-01-audio-owner-acceptance-20261021.json#c2ac5011d5e93a84c48379bd7e16de607c63a67c7f98fc030b78d87a29449c6e; Owner-supplied original recordings authorized for bounded MVP protected authoring/reviewer-catalogue use; English remains inactive."
+      },
+      {
+        "id": "ded4d589-83dd-5e83-a39a-f80234700e6c",
+        "kind": "audio",
+        "title": "Gordon: my own style",
+        "revoked": false,
+        "rowSha256": "0da3de58a1752d519f602a1cf3424c4f988f68cd10d99d11099bb42b88751ba7",
+        "audioVersionId": "64a2a26a-fe71-5fec-a7d2-fd85fdbcbe1b",
+        "sourceFamilyId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "permissionReference": "docs/evidence/english-7-unit-01-publisher-audio-review-20261021.json#c5a5c4667b453a8a5f07dd9682ada5e4279827dec2795c713f332c205d311bca; Owner-authorized protected MVP reviewer catalogue; English remains draft/inactive."
+      },
+      {
+        "id": "f6b3cc18-daf8-5808-a25d-a9c4e2f2dbfa",
+        "kind": "text",
+        "title": "Reading source MC-B",
+        "revoked": false,
+        "rowSha256": "799b807de6f0cb95fae2268feedee15c299ae4dcce627e2aeb92100ffa3b8a0a",
+        "audioVersionId": null,
+        "sourceFamilyId": "a864e540-7a9e-533f-9bca-06febf414330",
+        "permissionReference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original attributed factual paraphrase. Primary-source provenance is retained; no photograph, verbatim external passage, endorsement or third-party licence is imported."
+      },
+      {
+        "id": "fcbbae2c-8616-58cd-a661-212744509f0c",
+        "kind": "audio",
+        "title": "Emmie: comfort and choice",
+        "revoked": false,
+        "rowSha256": "58cda76dc801a321804b83dd270d2ce983e96437b8d9b171220abdbd5cacf6b5",
+        "audioVersionId": "862daa83-a5e5-51e1-a36d-0106882005cf",
+        "sourceFamilyId": "c155e0af-5288-5a09-9bd2-e92116cdcaa0",
+        "permissionReference": "docs/evidence/english-7-unit-01-publisher-audio-review-20261021.json#c5a5c4667b453a8a5f07dd9682ada5e4279827dec2795c713f332c205d311bca; Owner-authorized protected MVP reviewer catalogue; English remains draft/inactive."
+      }
+    ],
+    "observedAt": "2026-10-22T20:05:48.132318+00:00"
+  },
+  "existingEvidence": {
+    "docs/evidence/english-7-unit-01-policy-acceptance-20261022.json": "c58f3d34111304a326b388dcee7814b5ee8c86b1af8e68341829687208665975",
+    "docs/evidence/english-7-unit-01-form-preflight-20261022.json": "6a04d088139800cee683a061bb58a7285dab5114c955b5a4ef126e9deac8bfd9",
+    "docs/evidence/english-7-unit-01-exposure-decision-20261022.json": "10fbeeb73f89cb601943bb416471bccfa34849222f83cb8bf5e26b0fd34a048c",
+    "docs/evidence/english-7-unit-01-configuration-preparation-20261022.json": "513a66c803f2d8c561e3a836380da6d168e26eef9330c277cb7090f94b651553",
+    "docs/evidence/english-7-unit-01-learner-acceptance-20261022.json": "bae1581df93c514725303a9d4be7a83073ee350ae3dd83091d513c73e943553a"
+  },
+  "enrollmentObservation": {
+    "observedAt": "2026-10-22T20:06:51.856707+00:00",
+    "activeTeacherAssignments": 0,
+    "activeEnrollments": 0
+  },
+  "learnerActivationAuthorized": false,
+  "productionWrites": 0,
+  "materials": {
+    "path": "docs/content/english-7-unit-01-materials.json",
+    "sha256": "8178cb82408866e01e58c04b26470eb6d71cf4ca791d7ee69a2e5483d8130b5c",
+    "guides": 9,
+    "writingTasks": 1
+  }
+}
