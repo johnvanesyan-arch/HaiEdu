@@ -1,6 +1,6 @@
 # Unit-material review capability
 
-**16.1C.17 · 2026-10-22 Asia/Yerevan · Prepared; required CI and deployment pending.**
+**16.1C.17 · 2026-10-22 Asia/Yerevan · Implemented and CI verified; backend deployed and ten drafts staged.**
 
 Teaching guides differ from misconception-linked remediation hints. They can cover several outcomes and retain textbook sequence. Extended writing already has student and teacher workspaces; this slice supplies the missing content review/publication step. The same explicit capabilities work across programmes, releases, units and content languages.
 
@@ -29,3 +29,5 @@ Guide approval stores reviewed teaching material; learner guide placement/displa
 Affected Edge bundles: new `manage-unit-materials` and changed `get-my-privacy`; `_shared/auth.ts` is unchanged. Other audio/writing consumers reuse their unchanged verified source evidence. New SQL/Edge fixtures cover two programmes and three units, authorization/MFA, exact-version QA, stale revisions, malformed rubrics, private model separation and all ten English definitions. PostgreSQL race cases cover duplicate revisions/approvals, reviewer revocation and expiry after a lock wait. Native Chromium checks cover the real page with synthetic authentication backed by actual SQL/Edge code. They are isolated tests, not signed-in production acceptance.
 
 [Unit handoff](english-7-unit-01-materials.md) · [Evidence](evidence/english-7-unit-01-materials-20261022.json)
+
+**Verification closure:** [CI 39799180714](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39799180714) passes 1,376 tests, all 90 Chromium cases and the aggregate gate on implementation-compatible commit `4a484d64e7d71bb7730d1004a3028a080fe5375c`. An existing audio test now waits for the unchanged asynchronous resume outcome; a subsequent Ubuntu package-download timeout was resolved with a targeted job retry. The deployed migration has eight exact function bodies, and `manage-unit-materials` v1 / `get-my-privacy` v8 have four exact source files. Production staging passes a rollback rehearsal and preserves all 71 tracked existing tables. Ten exact saved QA fingerprints are independently verified; no new human approval or learner task publication is fabricated. The final documentation-only Git deployment retains the same application source and existing blocking-check controls.

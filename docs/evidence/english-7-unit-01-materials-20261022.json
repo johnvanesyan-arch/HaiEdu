@@ -2,9 +2,9 @@
   "checkpoint": "16.1C.17",
   "date": "2026-10-22",
   "timezone": "Asia/Yerevan",
-  "state": "prepared_pending_ci_deployment_and_staging",
+  "state": "implemented_verified_and_drafts_staged",
   "baseCommit": "054a0507bb72015f94f9574dfc75edf9df09f463",
-  "ownerHandoff": "All done, fixed, and approved by me. You do not have to recheck everything; proceed with the next stage.",
+  "ownerHandoff": "All done, fixed, and approved by me.\nYou don't have to recheck everything; just proceed with the next stage of the sprint map.",
   "narrowQuestionInventory": {
     "currentApproved": 200,
     "readAt": "2026-10-22T14:09:59.997066Z",
@@ -23,7 +23,7 @@
     "reviewerNavigationCases": 32,
     "typecheck": "passed",
     "browserDependencyTriggers": "passed",
-    "localChromium": "download unavailable; required native CI pending"
+    "localChromium": "download unavailable locally; all 90 native Chromium checks passed in required CI"
   },
   "affectedEdgeBundles": [
     "manage-unit-materials",
@@ -36,5 +36,294 @@
     "learner teaching-guide delivery",
     "source/form qualification",
     "existing permissions/specialist/release gates"
-  ]
+  ],
+  "implementationCommit": "1c8d8f5ddeb9085005600e3db407f0b09429fdaf",
+  "testTimingCorrectionCommit": "4a484d64e7d71bb7730d1004a3028a080fe5375c",
+  "runtime": {
+    "sourceCommit": "1c8d8f5ddeb9085005600e3db407f0b09429fdaf",
+    "edges": [
+      {
+        "name": "manage-unit-materials",
+        "version": 1,
+        "filesMatched": 3,
+        "verifyJwt": true
+      },
+      {
+        "name": "get-my-privacy",
+        "version": 8,
+        "filesMatched": 1,
+        "verifyJwt": true
+      }
+    ],
+    "sqlFunctionsMatched": 8,
+    "tables": [
+      {
+        "acl": [
+          "postgres=arwdDxtm/postgres"
+        ],
+        "rls": true,
+        "name": "unit_material_versions"
+      },
+      {
+        "acl": [
+          "postgres=arwdDxtm/postgres"
+        ],
+        "rls": true,
+        "name": "unit_material_events"
+      }
+    ]
+  },
+  "independentReadback": {
+    "exactDefinitions": 10,
+    "exactReviewPackages": 10,
+    "qaFingerprints": 10,
+    "newHumanApprovals": 0,
+    "writingPublished": 0,
+    "release": "draft",
+    "programme": "review",
+    "clientRpcsDenied": true
+  },
+  "registration": {
+    "rollback": {
+      "events": 20,
+      "materials": [
+        {
+          "id": "25308485-debf-5d99-8b21-7e647d1263fb",
+          "key": "ENG7-U01-G01",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "07f4e6a6ef1acd240fcaa78c9cdb1877c5f39848dd522a8e7765db14a2e7b853"
+        },
+        {
+          "id": "2153fc5a-a0a2-532e-a4b3-a64f3368873d",
+          "key": "ENG7-U01-G02",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "bb89c21137da2de982c9459b347f96882f9c6cd873ba6a44e7ede79fda202c15"
+        },
+        {
+          "id": "88bf8bd3-4f9f-58c0-b6f7-0b97398226c3",
+          "key": "ENG7-U01-G03",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "ceb0773863a51cd342a72506328896295515c0e54a92c5e06801c2127ce8af04"
+        },
+        {
+          "id": "c6576acc-b045-58f0-bb63-c0f386a0b82c",
+          "key": "ENG7-U01-G04",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "3eb58dffaa1f871ed3c44948232781612d98e486f3735856d20c6693a3f3da3d"
+        },
+        {
+          "id": "c6778f4b-9a8c-5509-8d1f-10f6c0f2f43d",
+          "key": "ENG7-U01-G05",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "e735e1eb719ca5953dc76b3d9ac900a0e5074bcbf6ec95ece158e7fc0190d0c2"
+        },
+        {
+          "id": "4c623c85-0bc9-59d1-a658-e37f56cd8997",
+          "key": "ENG7-U01-G06",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "161fe06b64fa25140e4179310990515317f86c7021a8665db96e13154965237d"
+        },
+        {
+          "id": "655f8fa1-ebeb-5ee2-93f6-beb1fee5cf9e",
+          "key": "ENG7-U01-G07",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "6880b6c375dc29b8ac3bcbedad9b037233cda745dc528d8bb96db6cb2b293eb4"
+        },
+        {
+          "id": "6ace69f7-a9bb-5d00-ae5a-652eca763086",
+          "key": "ENG7-U01-G08",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "6346a83c5962f33c6395f9a70ec971ce134a9cef4248cf8856b8ffd87d133af7"
+        },
+        {
+          "id": "86355072-adf3-52d3-a85d-df48e6af2b4e",
+          "key": "ENG7-U01-W01",
+          "kind": "writing",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "550de8af3524919dd52106f64d19db1f5330369f86f0c9fc6f57caf1e08db62d"
+        },
+        {
+          "id": "d1b46c81-808d-57de-bc6c-25cc19b6cb96",
+          "key": "ENG7-U01-G09",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "37ab0f6da349ecd5c9ad348445ac031564b09f853c66c1251a79eacbcd669467"
+        }
+      ],
+      "preservedTableCount": 71,
+      "writtenTasksCreated": 0,
+      "humanApprovalsCreated": 0,
+      "preservationFingerprint": "86c31b364e22100735c95c5578e58114"
+    },
+    "committed": {
+      "events": 20,
+      "materials": [
+        {
+          "id": "25308485-debf-5d99-8b21-7e647d1263fb",
+          "key": "ENG7-U01-G01",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "07f4e6a6ef1acd240fcaa78c9cdb1877c5f39848dd522a8e7765db14a2e7b853"
+        },
+        {
+          "id": "2153fc5a-a0a2-532e-a4b3-a64f3368873d",
+          "key": "ENG7-U01-G02",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "bb89c21137da2de982c9459b347f96882f9c6cd873ba6a44e7ede79fda202c15"
+        },
+        {
+          "id": "88bf8bd3-4f9f-58c0-b6f7-0b97398226c3",
+          "key": "ENG7-U01-G03",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "ceb0773863a51cd342a72506328896295515c0e54a92c5e06801c2127ce8af04"
+        },
+        {
+          "id": "c6576acc-b045-58f0-bb63-c0f386a0b82c",
+          "key": "ENG7-U01-G04",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "3eb58dffaa1f871ed3c44948232781612d98e486f3735856d20c6693a3f3da3d"
+        },
+        {
+          "id": "c6778f4b-9a8c-5509-8d1f-10f6c0f2f43d",
+          "key": "ENG7-U01-G05",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "e735e1eb719ca5953dc76b3d9ac900a0e5074bcbf6ec95ece158e7fc0190d0c2"
+        },
+        {
+          "id": "4c623c85-0bc9-59d1-a658-e37f56cd8997",
+          "key": "ENG7-U01-G06",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "161fe06b64fa25140e4179310990515317f86c7021a8665db96e13154965237d"
+        },
+        {
+          "id": "655f8fa1-ebeb-5ee2-93f6-beb1fee5cf9e",
+          "key": "ENG7-U01-G07",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "6880b6c375dc29b8ac3bcbedad9b037233cda745dc528d8bb96db6cb2b293eb4"
+        },
+        {
+          "id": "6ace69f7-a9bb-5d00-ae5a-652eca763086",
+          "key": "ENG7-U01-G08",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "6346a83c5962f33c6395f9a70ec971ce134a9cef4248cf8856b8ffd87d133af7"
+        },
+        {
+          "id": "86355072-adf3-52d3-a85d-df48e6af2b4e",
+          "key": "ENG7-U01-W01",
+          "kind": "writing",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "550de8af3524919dd52106f64d19db1f5330369f86f0c9fc6f57caf1e08db62d"
+        },
+        {
+          "id": "d1b46c81-808d-57de-bc6c-25cc19b6cb96",
+          "key": "ENG7-U01-G09",
+          "kind": "guide",
+          "status": "draft",
+          "version": 1,
+          "qaPassed": true,
+          "fingerprint": "37ab0f6da349ecd5c9ad348445ac031564b09f853c66c1251a79eacbcd669467"
+        }
+      ],
+      "preservedTableCount": 71,
+      "writtenTasksCreated": 0,
+      "humanApprovalsCreated": 0,
+      "preservationFingerprint": "86c31b364e22100735c95c5578e58114"
+    },
+    "rollbackIndependentlyEmpty": true,
+    "transaction": "docs/content/english-7-unit-01-materials-registration.sql",
+    "transactionSha256": "4dc39605e8906faee3653a28ef6ad59a2f8d78b35d5c749b0805b4418dab64dd"
+  },
+  "advisors": {
+    "newSecurityWarnings": 0,
+    "intentionalRlsWithoutPolicies": 2,
+    "reason": "Private service-only workers; all direct table grants revoked.",
+    "existingLeakedPasswordWarning": "unchanged",
+    "newPerformanceWarnings": 0,
+    "newUnusedIndexes": 4,
+    "performanceScope": "Four new indexes not yet exercised in production; other listed findings concern pre-existing tables."
+  },
+  "initialCi": {
+    "runId": 39797867607,
+    "testsPassed": 1376,
+    "newBrowserCasesPassed": 3,
+    "nativeBrowserTotal": 90,
+    "nativeBrowserPassed": 89,
+    "failedCase": "Existing assessed-audio interruption/resume case read currentTime immediately after a click that starts an asynchronous begin RPC.",
+    "correction": "Wait for the same checkpoint position with expect.poll; audio runtime unchanged.",
+    "newPostgresRaceCasesPassed": 4
+  },
+  "productionVerificationBoundary": {
+    "freshAuthenticatedBrowser": false,
+    "isolatedNativeBrowser": true,
+    "actualSourceAndSavedDataReadback": true,
+    "unchangedAudioAndQuestionEvidenceReused": true,
+    "vercelConnector": "Team-scope 403; use authorized GitHub deployment status. No access settings or credentials changed.",
+    "persistentBlockingDeploymentCheck": "Reuse verified 2026-10-20 production/blocking evidence.",
+    "frontendRelease": "Existing Git integration and blocking aggregate check apply to the documentation closure commit; final commit status and source-verified synchronization are recorded in Notion."
+  },
+  "ci": {
+    "runId": 39799180714,
+    "sourceCommit": "4a484d64e7d71bb7730d1004a3028a080fe5375c",
+    "conclusion": "success",
+    "attempt": 2,
+    "automatedTestsPassed": 1376,
+    "nativeBrowserTestsPassed": 90,
+    "postgresVersion": "17.6",
+    "newPostgresRaceCasesPassed": 4,
+    "allRequiredJobsPassed": true,
+    "infraRetry": "Ubuntu apt mirror stalled during Chromium dependency installation and hit the existing ten-minute job bound before tests. Requested retry of the browser job and dependent aggregate; no test/check was skipped."
+  }
 }

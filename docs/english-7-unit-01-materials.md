@@ -1,12 +1,12 @@
 # English 7 Unit 1: teaching guides and writing review
 
-**16.1C.17 · 2026-10-22 Asia/Yerevan · Prepared; production staging pending.**
+**16.1C.17 · 2026-10-22 Asia/Yerevan · Ten drafts registered with passing QA; capability verification complete.**
 
 John confirmed the remaining questions, corrections and audio checks complete and requested progression without repeating the full bank review. A narrow inventory records all **200 questions approved**. Prior bank, source, audio and playback evidence is reused. This delivery concerns nine guides and one writing package; it does not add or revise automatic questions.
 
 ## Where to review
 
-Open [Ուսումնական նյութեր](https://www.haiedu.am/content-materials.html) from the content-reviewer sidebar and search **ENG7-U01**. Ten drafts will be staged after the capability passes required release checks. Open each, inspect content and its proposed use, run saved QA if you change it, and select **Հաստատել նյութը**. Approval requires the actual reviewer’s MFA session. No approval is inferred for these new materials from the completed question bank.
+Open [Ուսումնական նյութեր](https://www.haiedu.am/content-materials.html) from the content-reviewer sidebar and search **ENG7-U01**. All ten drafts are staged and pass saved QA. Open each, inspect content and its proposed use, run saved QA if you change it, and select **Հաստատել նյութը**. Approval requires the actual reviewer’s MFA session. No approval is inferred for these new materials from the completed question bank.
 
 ## Unchanged teaching content
 
@@ -38,3 +38,5 @@ The reviewer package includes WP01 (picnic-note practice), WM01 (the unchanged 8
 4. Verify the first complete English unit under the authorized release scope. No complete-unit or learner-release claim is made by this onboarding slice.
 
 [Shared capability and API](unit-material-review.md) · [Delivery evidence](evidence/english-7-unit-01-materials-20261022.json)
+
+**Delivery evidence:** all 1,376 automated tests and 90 native Chromium cases pass, with PostgreSQL 17.6 and four new authorization/concurrency races. The [applied guarded transaction](content/english-7-unit-01-materials-registration.sql) adds only ten drafts and twenty automated staging/QA events; all 71 prior tracked tables are unchanged. The original source packet and all current question approvals are preserved. Eight deployed SQL bodies and both affected Edge bundles match source. Independent readback confirms exact definitions, review packages, QA fingerprints, a draft English release and the unchanged programme in review. No fresh signed-in production browser acceptance is claimed.
