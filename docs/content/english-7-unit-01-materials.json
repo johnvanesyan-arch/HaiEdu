@@ -1,0 +1,468 @@
+{
+  "schemaVersion": "unit-material-onboarding-v1",
+  "checkpoint": "16.1C.17",
+  "source": {
+    "path": "docs/content/english-7-unit-01-draft.json",
+    "sha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4",
+    "commit": "054a0507bb72015f94f9574dfc75edf9df09f463"
+  },
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+    "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+  },
+  "materials": [
+    {
+      "id": "25308485-debf-5d99-8b21-7e647d1263fb",
+      "materialKey": "ENG7-U01-G01",
+      "kind": "guide",
+      "versionNo": 1,
+      "sequenceOrder": 1,
+      "definition": {
+        "title": "Describe without judging",
+        "text": "A word can describe behaviour, such as patient, or appearance, such as curly-haired. Neither appearance nor a clothing style tells us everything about a person. Choose a word from the evidence in the sentence, not from a stereotype.",
+        "workedExample": "Someone who says “please” and thanks a helper is being polite.",
+        "locale": "en",
+        "schemaVersion": "teaching-guide-v1",
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            4
+          ],
+          "activities": [
+            1,
+            2
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S01"
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#guides/G01",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Before textbook activity 1. Preserve the printed lesson order.",
+        "comparisonNotes": "Teaching support; contributes no independent assessment capacity. Closest practice: ENG7-U01-P01, ENG7-U01-P02. Existing comparison dispositions are reused; this guide is not a new assessment item."
+      }
+    },
+    {
+      "id": "2153fc5a-a0a2-532e-a4b3-a64f3368873d",
+      "materialKey": "ENG7-U01-G02",
+      "kind": "guide",
+      "versionNo": 1,
+      "sequenceOrder": 3,
+      "definition": {
+        "title": "Build and use words",
+        "text": "A verb and its noun can have different endings and spellings. Read the sentence to decide which word class is needed, then use a learned form. Do not invent a suffix. Behaviour and behavior are British and American spellings of the same noun.",
+        "workedExample": "educate → education: Education helps people learn.",
+        "locale": "en",
+        "schemaVersion": "teaching-guide-v1",
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            5,
+            15
+          ],
+          "activities": [
+            3,
+            4,
+            17
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S02"
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#guides/G02",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Before textbook activity 3. Preserve the printed lesson order.",
+        "comparisonNotes": "Teaching support; contributes no independent assessment capacity. Closest practice: ENG7-U01-P05, ENG7-U01-P06, ENG7-U01-P22. Existing comparison dispositions are reused; this guide is not a new assessment item."
+      }
+    },
+    {
+      "id": "88bf8bd3-4f9f-58c0-b6f7-0b97398226c3",
+      "materialKey": "ENG7-U01-G03",
+      "kind": "guide",
+      "versionNo": 1,
+      "sequenceOrder": 5,
+      "definition": {
+        "title": "Style words",
+        "text": "Casual means relaxed and informal; classic describes an established lasting style; retro is inspired by the past; trendy is popular now; chic means elegant and stylish; flashy is very noticeable. Conservative suggests traditional choices; eccentric suggests unusual choices; sloppy means not neat; old-fashioned means no longer modern. These labels describe a look and are not judgments about a person’s worth.",
+        "workedExample": "A look inspired by clothes from an earlier decade can be called retro.",
+        "locale": "en",
+        "schemaVersion": "teaching-guide-v1",
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            6,
+            17,
+            18
+          ],
+          "activities": [
+            5,
+            7,
+            19
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S01",
+          "ENG7-U01-S09"
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#guides/G03",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Before textbook activity 5. Preserve the printed lesson order.",
+        "comparisonNotes": "Teaching support; contributes no independent assessment capacity. Closest practice: ENG7-U01-P03, ENG7-U01-P04, ENG7-U01-R06. Existing comparison dispositions are reused; this guide is not a new assessment item."
+      }
+    },
+    {
+      "id": "c6576acc-b045-58f0-bb63-c0f386a0b82c",
+      "materialKey": "ENG7-U01-G04",
+      "kind": "guide",
+      "versionNo": 1,
+      "sequenceOrder": 9,
+      "definition": {
+        "title": "Report a request",
+        "text": "Use asked or told + person + to + base verb for a positive request or instruction. The taught negative pattern is asked/told + person + not to + base verb. Keep the original meaning. Wider statements and reported questions are optional textbook extensions.",
+        "workedExample": "“Please close the door,” she said to Aram. → She asked Aram to close the door.",
+        "locale": "en",
+        "schemaVersion": "teaching-guide-v1",
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            8,
+            9,
+            10
+          ],
+          "activities": [
+            9,
+            11
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S03"
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#guides/G04",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Before textbook activity 9. Preserve the printed lesson order.",
+        "comparisonNotes": "Teaching support; contributes no independent assessment capacity. Closest practice: ENG7-U01-P07, ENG7-U01-P08, ENG7-U01-P09. Existing comparison dispositions are reused; this guide is not a new assessment item."
+      }
+    },
+    {
+      "id": "c6778f4b-9a8c-5509-8d1f-10f6c0f2f43d",
+      "materialKey": "ENG7-U01-G05",
+      "kind": "guide",
+      "versionNo": 1,
+      "sequenceOrder": 13,
+      "definition": {
+        "title": "Describe a thing, an action or a feeling",
+        "text": "An adjective can describe a noun after a linking verb: The tea smells pleasant. An adverb can describe how an action happens: She answered politely. With the taught feeling pairs, -ed commonly describes the person experiencing a feeling and -ing describes its cause. A person can also be the cause.",
+        "workedExample": "An exciting story makes a reader excited.",
+        "locale": "en",
+        "schemaVersion": "teaching-guide-v1",
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            12,
+            13
+          ],
+          "activities": [
+            13,
+            14
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S04",
+          "ENG7-U01-S05"
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#guides/G05",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Before textbook activity 13. Preserve the printed lesson order.",
+        "comparisonNotes": "Teaching support; contributes no independent assessment capacity. Closest practice: ENG7-U01-P12, ENG7-U01-P13, ENG7-U01-P14, ENG7-U01-P15. Existing comparison dispositions are reused; this guide is not a new assessment item."
+      }
+    },
+    {
+      "id": "4c623c85-0bc9-59d1-a658-e37f56cd8997",
+      "materialKey": "ENG7-U01-G06",
+      "kind": "guide",
+      "versionNo": 1,
+      "sequenceOrder": 15,
+      "definition": {
+        "title": "Enough, too and comparisons",
+        "text": "Enough shows sufficiency: enough time; warm enough. Too shows excess for a stated purpose: too cold to sit outside. Use too many with countable plurals and too much with an amount. Compare two things or actions with a comparative; use a superlative for the extreme in a stated group. Much and far can strengthen a comparative.",
+        "workedExample": "The room is warm enough to work in. This route is much shorter than that one.",
+        "locale": "en",
+        "schemaVersion": "teaching-guide-v1",
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            14,
+            15,
+            27
+          ],
+          "activities": [
+            15,
+            16,
+            30
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S06",
+          "ENG7-U01-S07"
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#guides/G06",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Before textbook activity 15. Preserve the printed lesson order.",
+        "comparisonNotes": "Teaching support; contributes no independent assessment capacity. Closest practice: ENG7-U01-P16, ENG7-U01-P17, ENG7-U01-P18, ENG7-U01-P19, ENG7-U01-P20, ENG7-U01-P21, ENG7-U01-P28, ENG7-U01-P29, ENG7-U01-P30. Existing comparison dispositions are reused; this guide is not a new assessment item."
+      }
+    },
+    {
+      "id": "655f8fa1-ebeb-5ee2-93f6-beb1fee5cf9e",
+      "materialKey": "ENG7-U01-G07",
+      "kind": "guide",
+      "versionNo": 1,
+      "sequenceOrder": 18,
+      "definition": {
+        "title": "Read for evidence",
+        "text": "First identify the whole topic. Then reread for the detail or time marker a question asks about. A supplied card is enough: do not guess from outside knowledge. A statement can go beyond the text even if it sounds plausible. Identify the writer’s opinion without treating it as the only acceptable opinion.",
+        "workedExample": "If a text says “some people”, it does not establish “everyone”.",
+        "locale": "en",
+        "schemaVersion": "teaching-guide-v1",
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            16,
+            17,
+            18,
+            20,
+            21,
+            22,
+            23
+          ],
+          "activities": [
+            18,
+            19,
+            21,
+            22,
+            23,
+            24
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S09",
+          "ENG7-U01-S10"
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#guides/G07",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Before textbook activity 18. Preserve the printed lesson order.",
+        "comparisonNotes": "Teaching support; contributes no independent assessment capacity. Closest practice: ENG7-U01-R01, ENG7-U01-R02, ENG7-U01-R03, ENG7-U01-R04, ENG7-U01-R05, ENG7-U01-R07, ENG7-U01-R08, ENG7-U01-R09, ENG7-U01-P23, ENG7-U01-P24. Existing comparison dispositions are reused; this guide is not a new assessment item."
+      }
+    },
+    {
+      "id": "6ace69f7-a9bb-5d00-ae5a-652eca763086",
+      "materialKey": "ENG7-U01-G08",
+      "kind": "guide",
+      "versionNo": 1,
+      "sequenceOrder": 25,
+      "definition": {
+        "title": "Plan a note for a reader",
+        "text": "Read the incoming message. Plan a greeting, your style and clothing details, reasons, and a polite response to the suggestion. Check that the reader can follow your ideas. Use your own or an invented preference. Review the rubric and count the words; do not add irrelevant sentences just to reach a number.",
+        "workedExample": "I see why you like that idea. I would choose a different colour because it goes with my jacket.",
+        "locale": "en",
+        "schemaVersion": "teaching-guide-v1",
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            23
+          ],
+          "activities": [
+            25
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S13",
+          "ENG7-U01-S14"
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#guides/G08",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Before textbook activity 25. Preserve the printed lesson order.",
+        "comparisonNotes": "Teaching support; contributes no independent assessment capacity. Closest practice: ENG7-U01-W01, ENG7-U01-WP01, ENG7-U01-WM01. Existing comparison dispositions are reused; this guide is not a new assessment item."
+      }
+    },
+    {
+      "id": "d1b46c81-808d-57de-bc6c-25cc19b6cb96",
+      "materialKey": "ENG7-U01-G09",
+      "kind": "guide",
+      "versionNo": 1,
+      "sequenceOrder": 29,
+      "definition": {
+        "title": "Choose an article from the context",
+        "text": "Use a or an for a newly introduced, unspecified singular countable noun. Choose by the next sound: a hat, an apple. Use the when the reader can identify the particular thing. General plural nouns and unspecified amounts can have no article. In these tasks type zero explicitly; an empty field means no answer.",
+        "workedExample": "I found a hat. The hat was on a chair. Hats can protect us from the sun.",
+        "locale": "en",
+        "schemaVersion": "teaching-guide-v1",
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            26
+          ],
+          "activities": [
+            29
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S08"
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#guides/G09",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Before textbook activity 29. Preserve the printed lesson order.",
+        "comparisonNotes": "Teaching support; contributes no independent assessment capacity. Closest practice: ENG7-U01-P25, ENG7-U01-P26, ENG7-U01-P27. Existing comparison dispositions are reused; this guide is not a new assessment item."
+      }
+    },
+    {
+      "id": "86355072-adf3-52d3-a85d-df48e6af2b4e",
+      "materialKey": "ENG7-U01-W01",
+      "kind": "writing",
+      "versionNo": 1,
+      "sequenceOrder": 25,
+      "definition": {
+        "schemaVersion": "extended-text-v1",
+        "title": "A note to a new classmate",
+        "prompt": "Your new classmate Sona writes:\n“Hi! We are choosing clothes for our class photo. I am thinking of a bright jacket. What kind of clothes do you like wearing? Would you choose something bright too?”\n\nWrite Sona an 80–100-word note. Describe your preferred style and give at least two clothing details. Explain your choices with reasons. Reply politely to Sona’s suggestion: you may agree, suggest another choice or combine the ideas. You may invent a preference. Do not include private personal information or send the note to anyone. Your choice of style is not graded.",
+        "locale": "en",
+        "minWords": 80,
+        "maxWords": 100,
+        "wordCountConvention": "unicode-whitespace-v1",
+        "baselineRequired": false,
+        "assistance": {
+          "policy": "No model answer or translation during the proposed reviewed submission. Record actual support; teacher-returned revisions retain their history. External assistance cannot be guaranteed absent.",
+          "spellcheck": false
+        },
+        "source": {
+          "book": "English 7, Grigoryan, Zangak 2023",
+          "pages": [
+            22,
+            23
+          ],
+          "activities": [
+            23,
+            24,
+            25
+          ],
+          "programme": [
+            "T1.L6"
+          ],
+          "standard": [
+            "ՕԼ7-Հ-Գ․1",
+            "ՕԼ7-Հ-Փ․3"
+          ]
+        },
+        "outcomes": [
+          "ENG7-U01-S13",
+          "ENG7-U01-S14"
+        ],
+        "criteria": [
+          {
+            "key": "task_audience",
+            "label": "Task and audience",
+            "descriptors": [
+              "No relevant assessable response to the task.",
+              "Partly describes a preference; important details, reasons or the reply to the classmate are missing.",
+              "Main purpose and audience are clear, with a minor omission or a length deviation that limits detail.",
+              "Describes a style with relevant details and reasons, and responds politely to the classmate’s suggestion within the intended brief."
+            ]
+          },
+          {
+            "key": "organisation",
+            "label": "Organisation",
+            "descriptors": [
+              "No assessable connection between ideas.",
+              "Ideas are mainly disconnected; the reader must reconstruct the message.",
+              "The note is generally easy to follow, with occasional abrupt links or repetition.",
+              "Ideas form a coherent note with a clear order and suitable basic links."
+            ]
+          },
+          {
+            "key": "vocabulary",
+            "label": "Vocabulary",
+            "descriptors": [
+              "Insufficient meaningful vocabulary to communicate the task.",
+              "Limited or inaccurate word choices often make meaning unclear.",
+              "Vocabulary is generally adequate; occasional inappropriate choices do not obscure the main message.",
+              "Suitable clothing and style words express the intended ideas clearly."
+            ]
+          },
+          {
+            "key": "grammar_clarity",
+            "label": "Grammar and written clarity",
+            "descriptors": [
+              "The intended message is too unclear to assess this criterion.",
+              "Frequent errors obscure parts of the message.",
+              "Meaning remains generally clear despite recurring grammar, spelling or punctuation errors.",
+              "Taught structures communicate clearly; occasional errors do not obstruct meaning."
+            ]
+          }
+        ]
+      },
+      "reviewPackage": {
+        "sourceReference": "docs/content/english-7-unit-01-draft.json#writing",
+        "comparisonReference": "docs/english-7-unit-01-whole-bank-review.md#cross-family-and-teaching-collisions",
+        "placement": "Textbook activity 25, after planning and practice. Speaking remains classroom-assessed.",
+        "comparisonNotes": "W01, WP01 and WM01 share a familiar procedure. One linked observation of S13/S14; no protected-form capacity or new reasoning claim.",
+        "assessmentNotes": [
+          "One submitted note supplies one linked observation of description and written interaction, not two independent samples.",
+          "Criterion levels 0–3 are proposed, total 0–12. No pass threshold is set.",
+          "Length is guidance and a review flag, never an automatic zero or overall failure. A strong response is not capped solely for a small word-count deviation.",
+          "Draft, missing, pending and technically failed work are states, not rubric marks.",
+          "Do not score wealth, style preference, agreement, body shape, personality or personal disclosure.",
+          "A returned revision is a continuation of the same observed task, not an independent baseline."
+        ],
+        "practice": {
+          "code": "ENG7-U01-WP01",
+          "prompt": "A classmate writes: “Our reading club is having a picnic. I thought of wearing a shirt and formal trousers. What would you wear, and why? Would you suggest anything different?” Write an 80–100-word reply with two clothing details, reasons and a polite response. You may invent your preference. Use the planning guide and rubric, then revise your note.",
+          "classification": "intentional_practice_variant",
+          "comparison": "Same description/audience/reason procedure as W01, with a different supplied occasion. Neither task is claimed as unseen or as new independent reasoning. Review before any future assessment allocation."
+        },
+        "model": {
+          "code": "ENG7-U01-WM01",
+          "incoming": "A friend asks what you would wear for a walk in the park and suggests a thick coat.",
+          "text": "Hi Ada,\nFor a walk in the park, I would choose a casual style. I would wear comfortable trousers, a cotton top and trainers because I want to move easily. I like plain clothes, but I sometimes add a colourful scarf. Your idea of a thick coat could be useful on a cold day. If the weather is warm, I would prefer a light jacket that I can carry in my bag. We can choose different clothes and still enjoy our walk together.\nSee you soon,\nNare",
+          "annotation": [
+            "The greeting and reply address a reader.",
+            "The note describes clothes and explains choices.",
+            "The response considers the friend’s suggestion politely; it need not agree completely.",
+            "This is one possible practice model, not a template whose opinions or phrases must be copied."
+          ],
+          "classification": "intentional_practice_variant",
+          "releaseRule": "Practice support only; do not show alongside W01 during a reviewed submission. Shared procedure and topic are recorded as familiar."
+        },
+        "workloadProposal": {
+          "learnerMinutes": "20–25 for planning, writing and self-check after practice; estimate to pilot, not a timed limit",
+          "teacherMinutes": "4–6 per initial submission; 120–180 minutes for 30 learners, plus any return/review time. Estimate awaiting a workload decision.",
+          "cadence": "One reviewed note for this unit, with a returned revision if needed. Do not create separate scored S13 and S14 submissions by default.",
+          "baseline": "Keep the automatic diagnostic before practice. Writing baseline is proposed as separately tracked and non-gating, but not enabled by this packet.",
+          "teacherChecklist": [
+            "Read the note for meaning before assigning levels.",
+            "Assess each criterion independently; quote a short relevant feature in feedback.",
+            "Return technically incomplete work for revision where appropriate rather than manufacturing four zeros.",
+            "Give one clear strength and one next step; retain the reviewed submission version."
+          ]
+        }
+      }
+    }
+  ]
+}

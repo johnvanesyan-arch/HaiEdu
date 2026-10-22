@@ -15,6 +15,12 @@ async function countRows(query: any, label: string) {
   return count ?? 0;
 }
 
+async function materialInventory(admin: any, userId: string) {
+  const { data, error } = await admin.rpc('service_unit_material_privacy_counts', { p_user_id: userId });
+  if (error) throw new Error('material_inventory_failed');
+  return data;
+}
+
 async function getDataInventory(admin: any, role: string, userId: string) {
   if (role === "student") {
     const [
@@ -107,12 +113,12 @@ async function getDataInventory(admin: any, role: string, userId: string) {
       admin.from("item_reviews").select("id", { count: "exact", head: true }).eq("reviewer_id", userId),
       "content_reviews_count_failed",
     );
-    return { kind: "content_admin", contentReviews, writtenTaskReviews, auditEvents };
+    return { kind: "content_admin", contentReviews, writtenTaskReviews, auditEvents, ...await materialInventory(admin, userId) };
   }
 
   if (role === "admin") {
     const writtenTaskReviews = await countRows(admin.from("written_task_versions").select("id", { count:"exact", head:true }).eq("reviewed_by",userId), "written_task_reviews_count_failed");
-    return { kind: "admin", writtenTaskReviews, auditEvents };
+    return { kind: "admin", writtenTaskReviews, auditEvents, ...await materialInventory(admin, userId) };
   }
   return { kind: "account", auditEvents };
 }

@@ -1,0 +1,40 @@
+{
+  "checkpoint": "16.1C.17",
+  "date": "2026-10-22",
+  "timezone": "Asia/Yerevan",
+  "state": "prepared_pending_ci_deployment_and_staging",
+  "baseCommit": "054a0507bb72015f94f9574dfc75edf9df09f463",
+  "ownerHandoff": "All done, fixed, and approved by me. You do not have to recheck everything; proceed with the next stage.",
+  "narrowQuestionInventory": {
+    "currentApproved": 200,
+    "readAt": "2026-10-22T14:09:59.997066Z",
+    "fullBankQaRerun": false,
+    "freshAutomatedProductionPlayback": false
+  },
+  "newMaterials": {
+    "guides": 9,
+    "writingPackages": 1,
+    "humanApproved": 0,
+    "sourcePacketSha256": "d519f2597248d75a64025e9f870cf0cedcfe7b085bf10c1f395794e222d1e1f4"
+  },
+  "localValidation": {
+    "unitMaterialSqlEdgeAndPacketCases": 7,
+    "privacyInventoryCases": 7,
+    "reviewerNavigationCases": 32,
+    "typecheck": "passed",
+    "browserDependencyTriggers": "passed",
+    "localChromium": "download unavailable; required native CI pending"
+  },
+  "affectedEdgeBundles": [
+    "manage-unit-materials",
+    "get-my-privacy"
+  ],
+  "unchangedSharedAuth": true,
+  "learnerActivation": false,
+  "remainingGates": [
+    "new material human acceptance",
+    "learner teaching-guide delivery",
+    "source/form qualification",
+    "existing permissions/specialist/release gates"
+  ]
+}

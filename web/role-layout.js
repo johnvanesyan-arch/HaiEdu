@@ -71,6 +71,7 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Ուսումնական նյութեր", "./content-materials.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -82,6 +83,7 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Ուսումնական նյութեր", "./content-materials.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -93,6 +95,7 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html", "home"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Ուսումնական նյութեր", "./content-materials.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -104,6 +107,7 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html", "home"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Ուսումնական նյութեր", "./content-materials.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -115,6 +119,7 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html", "home"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Ուսումնական նյութեր", "./content-materials.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -126,6 +131,7 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html", "home"],
+      ["Ուսումնական նյութեր", "./content-materials.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
@@ -137,6 +143,7 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Ուսումնական նյութեր", "./content-materials.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html", "home"]
     ]
@@ -148,7 +155,20 @@ const configs = {
       ["Հարցերի բանկ", "./content-bank.html"],
       ["Ուսումնական ծրագիր", "./content-curriculum.html"],
       ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Ուսումնական նյութեր", "./content-materials.html"],
       ["Օգնության ուղեցույցներ", "./content-guides.html", "home"],
+      ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
+    ]
+  },
+  contentMaterials: {
+    gate: "console", label: "Բովանդակության թիմ", links: [
+      ["Գլխավոր", "./content.html"],
+      ["Ստուգման հերթ", "./content-review.html"],
+      ["Հարցերի բանկ", "./content-bank.html"],
+      ["Ուսումնական ծրագիր", "./content-curriculum.html"],
+      ["Փորձնական տվյալներ", "./content-evidence.html"],
+      ["Ուսումնական նյութեր", "./content-materials.html", "home"],
+      ["Օգնության ուղեցույցներ", "./content-guides.html"],
       ["Թյուր պատկերացումներ", "./content-misconceptions.html"]
     ]
   }

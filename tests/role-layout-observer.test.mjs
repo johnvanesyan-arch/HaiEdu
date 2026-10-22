@@ -10,7 +10,7 @@ const workspaceGates = {
   teacher: "dashboardPanel", school: "overviewPanel", schoolTeacher: "teacherDetailPanel",
   platformSchools: "masterPanel", platform: "console", platformSecurity: "securityConsole",
   content: "console", contentReview: "console", contentBank: "console", contentItem: "console",
-  contentCurriculum: "console", contentEvidence: "console", contentGuides: "guideConsole",
+  contentCurriculum: "console", contentEvidence: "console", contentGuides: "guideConsole", contentMaterials: "console",
 };
 
 // Execute the real navigation script with a small, dependency-free DOM fixture.

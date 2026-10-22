@@ -72,13 +72,19 @@ function inventoryPresentation(role, inventory) {
       rows: [
         ["Բովանդակության ստուգումներ", inventory.contentReviews ?? 0],
         ["Գրավոր առաջադրանքների ստուգումներ", inventory.writtenTaskReviews ?? 0],
+        ["Ուսումնական նյութերի տարբերակներ", inventory.materialVersions ?? 0],
+        ["Ուսումնական նյութերի հաստատումներ", inventory.materialReviews ?? 0],
+        ["Նյութերի ստուգման գործողություններ", inventory.materialEvents ?? 0],
         ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0],
       ],
     },
     admin: {
       title: "Ինչ տվյալներ ենք պահում Master admin-ի մասին",
       description: "Master admin-ի պրոֆիլում պահվում են հաշվի տվյալները և անվտանգության ու վարչական գործողությունների աուդիտային գրառումները։",
-      rows: [["Գրավոր առաջադրանքների ստուգումներ", inventory.writtenTaskReviews ?? 0], ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
+      rows: [["Գրավոր առաջադրանքների ստուգումներ", inventory.writtenTaskReviews ?? 0],
+        ["Ուսումնական նյութերի տարբերակներ", inventory.materialVersions ?? 0],
+        ["Ուսումնական նյութերի հաստատումներ", inventory.materialReviews ?? 0],
+        ["Նյութերի ստուգման գործողություններ", inventory.materialEvents ?? 0], ["Աուդիտային գործողություններ", inventory.auditEvents ?? 0]],
     },
   };
   return views[role] || {

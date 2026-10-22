@@ -32,6 +32,11 @@ async function invokePrivacy(role) {
     item_reviews: 11,
   };
   const client = {
+    rpc: async (name, args) => {
+      assert.equal(name, 'service_unit_material_privacy_counts');
+      assert.equal(args.p_user_id, 'user-a');
+      return {data:{materialVersions:2,materialReviews:3,materialEvents:5},error:null};
+    },
     auth: {
       getUser: async () => ({
         data: { user: { id: "user-a", email: "user@example.com" } },
@@ -99,6 +104,9 @@ for (const role of ["teacher", "school_admin", "content_admin", "admin"]) {
     if (["content_admin", "admin"].includes(role)) {
       assert.ok(result.reads.includes("written_task_versions"));
       assert.equal(result.payload.dataInventory.writtenTaskReviews, 0);
+      assert.equal(result.payload.dataInventory.materialVersions, 2);
+      assert.equal(result.payload.dataInventory.materialReviews, 3);
+      assert.equal(result.payload.dataInventory.materialEvents, 5);
     }
   });
 }

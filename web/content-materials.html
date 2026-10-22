@@ -1,0 +1,20 @@
+<!doctype html>
+<html lang="hy">
+<head>
+ <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="color-scheme" content="light">
+ <title>Ուսումնական նյութեր — HaiEdu</title>
+ <link rel="stylesheet" href="./styles.css"><link rel="stylesheet" href="./content-workspace.css"><link rel="stylesheet" href="./content-materials.css"><link rel="stylesheet" href="./ux.css"><link rel="stylesheet" href="./role-layout.css">
+</head>
+<body data-role-workspace="contentMaterials">
+ <main id="mainContent" class="content-shell">
+  <header class="content-topbar"><div><p class="eyebrow">ԲՈՎԱՆԴԱԿՈՒԹՅԱՆ ԹԻՄ</p><h1>Ուսումնական նյութեր</h1><p class="subtle">Բաժնի ուղեցույցներ և գրավոր աշխատանքներ</p></div><button id="signOutBtn" class="ghost hidden" type="button">Դուրս գալ</button></header>
+  <section id="authPanel" class="card"><p>Այս բաժինը բովանդակության խմբի համար է։</p><a href="./account-access">Մուտք գործել</a><p id="authMessage" role="status"></p></section>
+  <section id="console" class="hidden">
+   <p class="card">Ստուգեք նյութը, աղբյուրը և առաջարկվող կիրառումը։ Հաստատումը վերաբերում է այս տարբերակին․ դասընթացի բացումը սովորողների համար առանձին փուլ է։</p>
+   <div class="material-filters card"><label>Փնտրել<input id="materialSearch" type="search" placeholder="Վերնագիր, կոդ, առարկա կամ բաժին"></label><label>Տեսակ<select id="kindFilter"><option value="">Բոլորը</option><option value="guide">Ուղեցույց</option><option value="writing">Գրավոր աշխատանք</option></select></label><label>Վիճակ<select id="statusFilter"><option value="">Բոլորը</option><option value="draft">Սևագիր</option><option value="approved">Հաստատված</option><option value="retired">Արխիվացված</option></select></label><button id="refreshMaterials" type="button" class="ghost">Թարմացնել</button></div>
+   <p id="materialMessage" role="status" aria-live="polite"></p>
+   <div class="material-layout"><section class="card material-bank" aria-label="Նյութերի ցանկ"><p id="materialCount"></p><div id="materialList"></div><button id="moreMaterials" type="button" class="ghost hidden">Բեռնել հաջորդ նյութերը</button></section><section id="materialEditor" class="card"><h2>Ընտրեք նյութ</h2><p>Ցանկից բացեք ուղեցույցը կամ գրավոր աշխատանքը։</p></section></div>
+  </section>
+ </main>
+ <script type="module" src="./content-materials.js"></script><script type="module" src="./ux.js"></script><script type="module" src="./role-layout.js"></script>
+</body></html>
