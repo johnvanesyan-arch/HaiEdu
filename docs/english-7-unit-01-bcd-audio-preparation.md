@@ -1,5 +1,7 @@
 # English 7 Unit 1 — DB / MB / MC audio upload and registration handoff
 
+**Superseded by Sprint 16.1C.16:** John uploaded all six files. Registration, twelve v2 attachments and saved QA are complete; the full bank has 200 QA passes and zero source holds. The preparation and disabled plan below remain historical evidence. [Completed delivery and remaining reviewer checks](english-7-unit-01-bcd-audio-registration.md).
+
 **Sprint 16.1C.15 · 22 October 2026.** John supplied all six requested recordings and authorised the next integration slice. Full-file decoding and exact normalized speech-to-script comparison pass for every file; all twelve question/key mappings agree. The audio bytes are unchanged. The registration plan is deliberately disabled because the six actual objects are not yet present in private Storage.
 
 ## Required next action

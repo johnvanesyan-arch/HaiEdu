@@ -1,0 +1,266 @@
+{
+  "schemaVersion": "haiedu-bcd-audio-owner-integration-acceptance-v1",
+  "checkpoint": "16.1C.16",
+  "recordedAt": "2026-10-22T10:11:17.342586+00:00",
+  "reviewedSourceCommit": "9d8f5b483ce23ce87f60d0d4308b50d1699dc03e",
+  "ownerInstruction": "Here are the audios, all named as indicated by you.\nProceed with the next part of the sprint.",
+  "ownerUploadConfirmation": "Done, uploaded. Everything is done correctly. Proceed",
+  "authorizedIntegration": true,
+  "reviewerProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "verifiedProfile": {
+    "role": "admin",
+    "accountStatus": "active",
+    "protectedOwner": true,
+    "observedAt": "2026-10-22T10:03:11.50119+00:00"
+  },
+  "acceptedFiles": {
+    "ENG7-U01-DB-AUDIO-A": {
+      "filename": "eng7-u01-db-audio-a-v1.mp3.mp3",
+      "sha256": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140",
+      "md5": "ffdf1791de2c96e2263090ace33eec80",
+      "byteLength": 524339,
+      "durationMs": 31713,
+      "objectPath": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140.mp3",
+      "scriptSha256": "65e2635926db1f198b93cc7a5fb44eeeb2cded0c5ff8c27ee4dcfcc0550dd4c9",
+      "keyMap": [
+        {
+          "code": "ENG7-U01-DB-25",
+          "itemId": "d2615e88-ffc5-5d42-aee3-a5fc7496d9db",
+          "key": "a",
+          "keyedMeaning": "To keep attention on the drawings being explained.",
+          "explanation": "The plain top helps keep the audience focused on the drawings during the presentation. The speaker still likes the other shirt.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-DB-27",
+          "itemId": "1e29cb71-f190-5c08-ab4c-d504b7ac2b2b",
+          "key": "b",
+          "keyedMeaning": "In a separate cloth bag.",
+          "explanation": "The shiny shirt is put in a separate cloth bag.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "storageETag": "ffcd322d6618b3556c37a5030ffe6f3c-1",
+      "storageMetadata": {
+        "eTag": "\"ffcd322d6618b3556c37a5030ffe6f3c-1\"",
+        "size": 524339,
+        "mimetype": "audio/mpeg",
+        "cacheControl": "max-age=3600",
+        "lastModified": "2026-10-22T10:00:17.000Z",
+        "contentLength": 524339,
+        "httpStatusCode": 200
+      },
+      "storedObjectIdentityVerified": true
+    },
+    "ENG7-U01-DB-AUDIO-B": {
+      "filename": "eng7-u01-db-audio-b-v1.mp3.mp3",
+      "sha256": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600",
+      "md5": "f22c4b467b91fc29e93efe99a8c1ffb5",
+      "byteLength": 565299,
+      "durationMs": 34273,
+      "objectPath": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600.mp3",
+      "scriptSha256": "51049396169326118968e16ebc19e23fa666c0ba5324fce85ca078877e745d3b",
+      "keyMap": [
+        {
+          "code": "ENG7-U01-DB-26",
+          "itemId": "283f8432-6fd2-543b-a636-14113dbfed07",
+          "key": "b",
+          "keyedMeaning": "Helping a new member take part in the club.",
+          "explanation": "All three suggestions help a new member understand and participate in the club.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-DB-28",
+          "itemId": "28382a44-7726-58a7-aabc-23c70b9580b8",
+          "key": "c",
+          "keyedMeaning": "Speaker Three.",
+          "explanation": "Speaker Three wants to ask what the new member likes before choosing a design.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "storageETag": "c0de7564e0c8f6ed778839b38a53a167-1",
+      "storageMetadata": {
+        "eTag": "\"c0de7564e0c8f6ed778839b38a53a167-1\"",
+        "size": 565299,
+        "mimetype": "audio/mpeg",
+        "cacheControl": "max-age=3600",
+        "lastModified": "2026-10-22T10:00:17.000Z",
+        "contentLength": 565299,
+        "httpStatusCode": 200
+      },
+      "storedObjectIdentityVerified": true
+    },
+    "ENG7-U01-MB-AUDIO-A": {
+      "filename": "eng7-u01-mb-audio-a-v1.mp3.mp3",
+      "sha256": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987",
+      "md5": "548338f4da2751fae8bf021e6408cd29",
+      "byteLength": 446181,
+      "durationMs": 26828,
+      "objectPath": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987.mp3",
+      "scriptSha256": "39db9113f1af7397b867d802b0d39b517f5bba91ef719b1864bda2450be7a9ee",
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MB-25",
+          "itemId": "9af24fb8-c525-54ae-a7a2-8a1010383624",
+          "key": "a",
+          "keyedMeaning": "A quiet member may be listening and preparing to contribute.",
+          "explanation": "The speaker learns to allow time for a contribution instead of judging interest from initial silence.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-MB-27",
+          "itemId": "ce88a76b-67a9-5103-a7b8-ed59d1e9e73f",
+          "key": "b",
+          "keyedMeaning": "Prepare the introduction.",
+          "explanation": "Daniel offers to prepare the introduction.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "storageETag": "315a589d963e312cb7524dd252faadcc-1",
+      "storageMetadata": {
+        "eTag": "\"315a589d963e312cb7524dd252faadcc-1\"",
+        "size": 446181,
+        "mimetype": "audio/mpeg",
+        "cacheControl": "max-age=3600",
+        "lastModified": "2026-10-22T10:00:17.000Z",
+        "contentLength": 446181,
+        "httpStatusCode": 200
+      },
+      "storedObjectIdentityVerified": true
+    },
+    "ENG7-U01-MB-AUDIO-B": {
+      "filename": "eng7-u01-mb-audio-b-v1.mp3.mp3",
+      "sha256": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6",
+      "md5": "0776f474038217575abd2f4e0e8a2ed6",
+      "byteLength": 575748,
+      "durationMs": 34926,
+      "objectPath": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6.mp3",
+      "scriptSha256": "83da95ebc6e2706b3bab1f9f85e74a1b1849aa519418b2909c4c08e80fe39c11",
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MB-26",
+          "itemId": "75a3c76a-0cc3-59f7-a542-b5c6afcb60e6",
+          "key": "a",
+          "keyedMeaning": "Ways to collect useful feedback on a T-shirt design.",
+          "explanation": "The students plan ways to get useful responses before choosing details of the T-shirt design.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-MB-28",
+          "itemId": "e4a9c8d7-8a98-5165-a431-f0139ef0c81d",
+          "key": "a",
+          "keyedMeaning": "Speaker One.",
+          "explanation": "Speaker One proposes cards without the writer's name.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "storageETag": "4b5e4580234ae4be19ab4411866a5c75-1",
+      "storageMetadata": {
+        "eTag": "\"4b5e4580234ae4be19ab4411866a5c75-1\"",
+        "size": 575748,
+        "mimetype": "audio/mpeg",
+        "cacheControl": "max-age=3600",
+        "lastModified": "2026-10-22T10:00:17.000Z",
+        "contentLength": 575748,
+        "httpStatusCode": 200
+      },
+      "storedObjectIdentityVerified": true
+    },
+    "ENG7-U01-MC-AUDIO-A": {
+      "filename": "eng7-u01-mc-audio-a-v1.mp3.mp3",
+      "sha256": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1",
+      "md5": "b8f5e25f80594909e6632c04b93510f8",
+      "byteLength": 575748,
+      "durationMs": 34926,
+      "objectPath": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1.mp3",
+      "scriptSha256": "0ece2dd84c99da3c2d52446ee132db965e68afc211a4f2391c181549ab158420",
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MC-25",
+          "itemId": "ca51e7a3-267e-5673-a8b8-888759fa051f",
+          "key": "b",
+          "keyedMeaning": "To understand clothing choices for different occasions.",
+          "explanation": "The revised survey makes the occasion clear, helping the speaker interpret different clothing choices.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-MC-27",
+          "itemId": "9cfaf9c8-e50a-5e10-afec-bde42c18b2ba",
+          "key": "c",
+          "keyedMeaning": "A walk.",
+          "explanation": "The explanation space is added for the walk.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "storageETag": "1ee7ad377e72659250216c3fd227116b-1",
+      "storageMetadata": {
+        "eTag": "\"1ee7ad377e72659250216c3fd227116b-1\"",
+        "size": 575748,
+        "mimetype": "audio/mpeg",
+        "cacheControl": "max-age=3600",
+        "lastModified": "2026-10-22T10:00:17.000Z",
+        "contentLength": 575748,
+        "httpStatusCode": 200
+      },
+      "storedObjectIdentityVerified": true
+    },
+    "ENG7-U01-MC-AUDIO-B": {
+      "filename": "eng7-u01-mc-audio-b-v1.mp3.mp3",
+      "sha256": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5",
+      "md5": "fb8e6f565d16899317a1e4782c963ba5",
+      "byteLength": 663937,
+      "durationMs": 40438,
+      "objectPath": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5.mp3",
+      "scriptSha256": "c0c51ad65ebb6a162f7f288d68e4bb38e23fd9446baf89b0e7565c7bd93c7dab",
+      "keyMap": [
+        {
+          "code": "ENG7-U01-MC-26",
+          "itemId": "b6d3e488-d2e2-5372-a1df-a768d79f8e78",
+          "key": "b",
+          "keyedMeaning": "They offer ways to move a design disagreement forward.",
+          "explanation": "All three students suggest ways to make progress despite different design preferences.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        },
+        {
+          "code": "ENG7-U01-MC-28",
+          "itemId": "829603b9-b891-5ee8-adeb-2a8a576a3d22",
+          "key": "c",
+          "keyedMeaning": "Speaker Three.",
+          "explanation": "Speaker Three suggests settling shape before discussing colours.",
+          "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+        }
+      ],
+      "storageETag": "9fb2fde03ff0ed2c4311d2043ac6b09c-1",
+      "storageMetadata": {
+        "eTag": "\"9fb2fde03ff0ed2c4311d2043ac6b09c-1\"",
+        "size": 663937,
+        "mimetype": "audio/mpeg",
+        "cacheControl": "max-age=3600",
+        "lastModified": "2026-10-22T10:00:17.000Z",
+        "contentLength": 663937,
+        "httpStatusCode": 200
+      },
+      "storedObjectIdentityVerified": true
+    }
+  },
+  "technicalReview": {
+    "evidence": "docs/evidence/english-7-unit-01-bcd-audio-preparation-20261022.json",
+    "sha256": "9df3d03fb9ab2bf78c861157a0c73035163674f1fd7089c33691f545337ed19a",
+    "completeNormalizedScriptAlignment": true,
+    "supportedKeys": 12,
+    "independentHumanAudition": false,
+    "voiceDistinctnessHumanVerified": false
+  },
+  "reuseBasis": {
+    "scope": "Owner-supplied original recordings authorized for this bounded private Unit 1 reviewer integration; six sources and twelve existing questions only.",
+    "limits": "Owner upload and continuation instructions establish this bounded integration decision. No third-party provider licence, voice-cloning consent, independent human audition or public distribution permission is inferred. Applicable provider/voice and assessed-source evidence remains part of the learner-release review."
+  },
+  "boundaries": [
+    "Delegated source integration on the exact owner-supplied files; reviewed_by records this decision, not an in-app click or independent specialist audition.",
+    "Automated full-decode, complete normalized script alignment, question/key and storage identity evidence is reused from C15 and checked against the current files.",
+    "No ordinary question approvals, learner release, assessment qualification, policy binding or learner-data change is authorized by this integration.",
+    "The existing two-play assessed-listening contract and unlimited Practice/Chapter Review/reviewer replay are unchanged.",
+    "Fresh authenticated reviewer playback of the six new sources remains unverified by the agent because its browser route is unavailable.",
+    "All prior question wording, keys, source families, approvals and immutable history are preserved; corrections require successor versions and applicable review."
+  ]
+}

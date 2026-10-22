@@ -1,0 +1,1866 @@
+{
+  "schemaVersion": "haiedu-bcd-audio-registration-evidence-v1",
+  "checkpoint": "16.1C.16",
+  "roadmapVersion": "4.42",
+  "date": "2026-10-22 Asia/Yerevan",
+  "baselineCommit": "9d8f5b483ce23ce87f60d0d4308b50d1699dc03e",
+  "status": "six_uploaded_audio_sources_registered_twelve_v2_questions_pass_QA",
+  "acceptanceReference": "docs/evidence/english-7-unit-01-bcd-audio-owner-acceptance-20261022.json",
+  "acceptanceSha256": "15c5906e53452b09673c3ac9ec7bbfda1aaeae1e23680cd6c374fada1499cde4",
+  "registeredManifest": "docs/content/english-7-unit-01-bcd-audio-registration.json",
+  "registeredManifestSha256": "e5cc5958debb9e60769d0cb88c6b7fc439442b290d3e79dbef74c8852cd98076",
+  "productionCommittedAt": "2026-10-22T10:12:24.13868+00:00",
+  "independentReadbackAt": "2026-10-22T10:13:27.073549+00:00",
+  "currentCounts": [
+    {
+      "bank": "practice",
+      "staged": 60,
+      "approved": 60,
+      "qaPassed": 60,
+      "pendingOrdinaryApproval": 0,
+      "sourceHeld": 0
+    },
+    {
+      "bank": "diagnostic",
+      "staged": 56,
+      "approved": 48,
+      "qaPassed": 56,
+      "pendingOrdinaryApproval": 8,
+      "sourceHeld": 0
+    },
+    {
+      "bank": "mastery",
+      "staged": 84,
+      "approved": 68,
+      "qaPassed": 84,
+      "pendingOrdinaryApproval": 16,
+      "sourceHeld": 0
+    }
+  ],
+  "currentProduction": {
+    "totalQuestions": 200,
+    "approved": 176,
+    "qaPassed": 200,
+    "pendingOrdinaryApproval": 24,
+    "sourceHeld": 0,
+    "registeredReadingSets": 13,
+    "registeredAudioSets": 14,
+    "registeredAudioVersions": 14,
+    "linkedListeningQuestions": 30,
+    "immutableVersions": 259,
+    "readingQuestionsPendingAuthenticatedApproval": 12,
+    "newAudioQuestionsPendingAuthenticatedApproval": 12,
+    "releaseStatus": "draft",
+    "activatedAt": null
+  },
+  "acceptanceAndWorkflowBoundary": "Owner supplied the exact recordings, confirmed completed upload and instructed continuation. Source registration records that genuine bounded decision plus automated script/key evidence. reviewed_by does not claim an in-app action or independent audition. No session/JWT/AAL is fabricated, no approval RPC is invoked and no item_reviews row is written.",
+  "storage": {
+    "bucket": {
+      "id": "learning-audio",
+      "name": "learning-audio",
+      "type": "STANDARD",
+      "owner": null,
+      "public": false,
+      "owner_id": null,
+      "created_at": "2026-10-21T18:18:16.672513+00:00",
+      "updated_at": "2026-10-21T18:18:16.672513+00:00",
+      "file_size_limit": 8388608,
+      "versioning_status": "DISABLED",
+      "allowed_mime_types": [
+        "audio/mpeg",
+        "audio/wav"
+      ],
+      "avif_autodetection": false,
+      "lifecycle_configuration": null,
+      "lifecycle_configuration_generation": null
+    },
+    "allSixObjectsVerified": true,
+    "matchingOriginalLocalSha256": 6,
+    "matchingByteLengthsMimeAndETags": 6,
+    "eTagMethod": "Single-part multipart ETag = MD5(binary local-file MD5) + -1. This matches actual Storage metadata for all six unchanged uploaded files. It is object-identity evidence, not an authenticated playback test.",
+    "files": {
+      "ENG7-U01-DB-AUDIO-A": {
+        "filename": "eng7-u01-db-audio-a-v1.mp3.mp3",
+        "sha256": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140",
+        "md5": "ffdf1791de2c96e2263090ace33eec80",
+        "byteLength": 524339,
+        "durationMs": 31713,
+        "objectPath": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140.mp3",
+        "scriptSha256": "65e2635926db1f198b93cc7a5fb44eeeb2cded0c5ff8c27ee4dcfcc0550dd4c9",
+        "keyMap": [
+          {
+            "code": "ENG7-U01-DB-25",
+            "itemId": "d2615e88-ffc5-5d42-aee3-a5fc7496d9db",
+            "key": "a",
+            "keyedMeaning": "To keep attention on the drawings being explained.",
+            "explanation": "The plain top helps keep the audience focused on the drawings during the presentation. The speaker still likes the other shirt.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          },
+          {
+            "code": "ENG7-U01-DB-27",
+            "itemId": "1e29cb71-f190-5c08-ab4c-d504b7ac2b2b",
+            "key": "b",
+            "keyedMeaning": "In a separate cloth bag.",
+            "explanation": "The shiny shirt is put in a separate cloth bag.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          }
+        ],
+        "storageETag": "ffcd322d6618b3556c37a5030ffe6f3c-1",
+        "storageMetadata": {
+          "eTag": "\"ffcd322d6618b3556c37a5030ffe6f3c-1\"",
+          "size": 524339,
+          "mimetype": "audio/mpeg",
+          "cacheControl": "max-age=3600",
+          "lastModified": "2026-10-22T10:00:17.000Z",
+          "contentLength": 524339,
+          "httpStatusCode": 200
+        },
+        "storedObjectIdentityVerified": true
+      },
+      "ENG7-U01-DB-AUDIO-B": {
+        "filename": "eng7-u01-db-audio-b-v1.mp3.mp3",
+        "sha256": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600",
+        "md5": "f22c4b467b91fc29e93efe99a8c1ffb5",
+        "byteLength": 565299,
+        "durationMs": 34273,
+        "objectPath": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600.mp3",
+        "scriptSha256": "51049396169326118968e16ebc19e23fa666c0ba5324fce85ca078877e745d3b",
+        "keyMap": [
+          {
+            "code": "ENG7-U01-DB-26",
+            "itemId": "283f8432-6fd2-543b-a636-14113dbfed07",
+            "key": "b",
+            "keyedMeaning": "Helping a new member take part in the club.",
+            "explanation": "All three suggestions help a new member understand and participate in the club.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          },
+          {
+            "code": "ENG7-U01-DB-28",
+            "itemId": "28382a44-7726-58a7-aabc-23c70b9580b8",
+            "key": "c",
+            "keyedMeaning": "Speaker Three.",
+            "explanation": "Speaker Three wants to ask what the new member likes before choosing a design.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          }
+        ],
+        "storageETag": "c0de7564e0c8f6ed778839b38a53a167-1",
+        "storageMetadata": {
+          "eTag": "\"c0de7564e0c8f6ed778839b38a53a167-1\"",
+          "size": 565299,
+          "mimetype": "audio/mpeg",
+          "cacheControl": "max-age=3600",
+          "lastModified": "2026-10-22T10:00:17.000Z",
+          "contentLength": 565299,
+          "httpStatusCode": 200
+        },
+        "storedObjectIdentityVerified": true
+      },
+      "ENG7-U01-MB-AUDIO-A": {
+        "filename": "eng7-u01-mb-audio-a-v1.mp3.mp3",
+        "sha256": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987",
+        "md5": "548338f4da2751fae8bf021e6408cd29",
+        "byteLength": 446181,
+        "durationMs": 26828,
+        "objectPath": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987.mp3",
+        "scriptSha256": "39db9113f1af7397b867d802b0d39b517f5bba91ef719b1864bda2450be7a9ee",
+        "keyMap": [
+          {
+            "code": "ENG7-U01-MB-25",
+            "itemId": "9af24fb8-c525-54ae-a7a2-8a1010383624",
+            "key": "a",
+            "keyedMeaning": "A quiet member may be listening and preparing to contribute.",
+            "explanation": "The speaker learns to allow time for a contribution instead of judging interest from initial silence.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          },
+          {
+            "code": "ENG7-U01-MB-27",
+            "itemId": "ce88a76b-67a9-5103-a7b8-ed59d1e9e73f",
+            "key": "b",
+            "keyedMeaning": "Prepare the introduction.",
+            "explanation": "Daniel offers to prepare the introduction.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          }
+        ],
+        "storageETag": "315a589d963e312cb7524dd252faadcc-1",
+        "storageMetadata": {
+          "eTag": "\"315a589d963e312cb7524dd252faadcc-1\"",
+          "size": 446181,
+          "mimetype": "audio/mpeg",
+          "cacheControl": "max-age=3600",
+          "lastModified": "2026-10-22T10:00:17.000Z",
+          "contentLength": 446181,
+          "httpStatusCode": 200
+        },
+        "storedObjectIdentityVerified": true
+      },
+      "ENG7-U01-MB-AUDIO-B": {
+        "filename": "eng7-u01-mb-audio-b-v1.mp3.mp3",
+        "sha256": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6",
+        "md5": "0776f474038217575abd2f4e0e8a2ed6",
+        "byteLength": 575748,
+        "durationMs": 34926,
+        "objectPath": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6.mp3",
+        "scriptSha256": "83da95ebc6e2706b3bab1f9f85e74a1b1849aa519418b2909c4c08e80fe39c11",
+        "keyMap": [
+          {
+            "code": "ENG7-U01-MB-26",
+            "itemId": "75a3c76a-0cc3-59f7-a542-b5c6afcb60e6",
+            "key": "a",
+            "keyedMeaning": "Ways to collect useful feedback on a T-shirt design.",
+            "explanation": "The students plan ways to get useful responses before choosing details of the T-shirt design.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          },
+          {
+            "code": "ENG7-U01-MB-28",
+            "itemId": "e4a9c8d7-8a98-5165-a431-f0139ef0c81d",
+            "key": "a",
+            "keyedMeaning": "Speaker One.",
+            "explanation": "Speaker One proposes cards without the writer's name.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          }
+        ],
+        "storageETag": "4b5e4580234ae4be19ab4411866a5c75-1",
+        "storageMetadata": {
+          "eTag": "\"4b5e4580234ae4be19ab4411866a5c75-1\"",
+          "size": 575748,
+          "mimetype": "audio/mpeg",
+          "cacheControl": "max-age=3600",
+          "lastModified": "2026-10-22T10:00:17.000Z",
+          "contentLength": 575748,
+          "httpStatusCode": 200
+        },
+        "storedObjectIdentityVerified": true
+      },
+      "ENG7-U01-MC-AUDIO-A": {
+        "filename": "eng7-u01-mc-audio-a-v1.mp3.mp3",
+        "sha256": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1",
+        "md5": "b8f5e25f80594909e6632c04b93510f8",
+        "byteLength": 575748,
+        "durationMs": 34926,
+        "objectPath": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1.mp3",
+        "scriptSha256": "0ece2dd84c99da3c2d52446ee132db965e68afc211a4f2391c181549ab158420",
+        "keyMap": [
+          {
+            "code": "ENG7-U01-MC-25",
+            "itemId": "ca51e7a3-267e-5673-a8b8-888759fa051f",
+            "key": "b",
+            "keyedMeaning": "To understand clothing choices for different occasions.",
+            "explanation": "The revised survey makes the occasion clear, helping the speaker interpret different clothing choices.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          },
+          {
+            "code": "ENG7-U01-MC-27",
+            "itemId": "9cfaf9c8-e50a-5e10-afec-bde42c18b2ba",
+            "key": "c",
+            "keyedMeaning": "A walk.",
+            "explanation": "The explanation space is added for the walk.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          }
+        ],
+        "storageETag": "1ee7ad377e72659250216c3fd227116b-1",
+        "storageMetadata": {
+          "eTag": "\"1ee7ad377e72659250216c3fd227116b-1\"",
+          "size": 575748,
+          "mimetype": "audio/mpeg",
+          "cacheControl": "max-age=3600",
+          "lastModified": "2026-10-22T10:00:17.000Z",
+          "contentLength": 575748,
+          "httpStatusCode": 200
+        },
+        "storedObjectIdentityVerified": true
+      },
+      "ENG7-U01-MC-AUDIO-B": {
+        "filename": "eng7-u01-mc-audio-b-v1.mp3.mp3",
+        "sha256": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5",
+        "md5": "fb8e6f565d16899317a1e4782c963ba5",
+        "byteLength": 663937,
+        "durationMs": 40438,
+        "objectPath": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5.mp3",
+        "scriptSha256": "c0c51ad65ebb6a162f7f288d68e4bb38e23fd9446baf89b0e7565c7bd93c7dab",
+        "keyMap": [
+          {
+            "code": "ENG7-U01-MC-26",
+            "itemId": "b6d3e488-d2e2-5372-a1df-a768d79f8e78",
+            "key": "b",
+            "keyedMeaning": "They offer ways to move a design disagreement forward.",
+            "explanation": "All three students suggest ways to make progress despite different design preferences.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          },
+          {
+            "code": "ENG7-U01-MC-28",
+            "itemId": "829603b9-b891-5ee8-adeb-2a8a576a3d22",
+            "key": "c",
+            "keyedMeaning": "Speaker Three.",
+            "explanation": "Speaker Three suggests settling shape before discussing colours.",
+            "support": "Complete normalized spoken text matches the source used for the existing key; no missing or changed answer-bearing words detected."
+          }
+        ],
+        "storageETag": "9fb2fde03ff0ed2c4311d2043ac6b09c-1",
+        "storageMetadata": {
+          "eTag": "\"9fb2fde03ff0ed2c4311d2043ac6b09c-1\"",
+          "size": 663937,
+          "mimetype": "audio/mpeg",
+          "cacheControl": "max-age=3600",
+          "lastModified": "2026-10-22T10:00:17.000Z",
+          "contentLength": 663937,
+          "httpStatusCode": 200
+        },
+        "storedObjectIdentityVerified": true
+      }
+    },
+    "allFourteenObjectsUnchangedDuringRegistration": true
+  },
+  "sourceCatalogAndPreview": {
+    "members": [
+      {
+        "code": "ENG7-U01-DB-25",
+        "family": "357e658b-ca9e-513b-aa1b-27cb65a74e15",
+        "itemId": "d2615e88-ffc5-5d42-aee3-a5fc7496d9db",
+        "sha256": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140",
+        "version": 2,
+        "sourceId": "3f3f27ab-3991-549a-80b0-f0d65d372f73",
+        "durationMs": 31713,
+        "objectPath": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "e78bfec9-7326-5111-9b39-bb6f0a98902e",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source DB-A",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 31713,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "e78bfec9-7326-5111-9b39-bb6f0a98902e",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "3f3f27ab-3991-549a-80b0-f0d65d372f73",
+          "title": "Listening source DB-A",
+          "total": 2,
+          "locale": "en",
+          "position": 1,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "357e658b-ca9e-513b-aa1b-27cb65a74e15"
+        }
+      },
+      {
+        "code": "ENG7-U01-DB-26",
+        "family": "4f04e9ff-de80-5270-b2c5-773ee0082636",
+        "itemId": "283f8432-6fd2-543b-a636-14113dbfed07",
+        "sha256": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600",
+        "version": 2,
+        "sourceId": "54765dc1-54da-50a9-87a1-1c2d8cc32e85",
+        "durationMs": 34273,
+        "objectPath": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "65667f20-a702-50d3-9c97-89e7abd10300",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source DB-B",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 34273,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "65667f20-a702-50d3-9c97-89e7abd10300",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "54765dc1-54da-50a9-87a1-1c2d8cc32e85",
+          "title": "Listening source DB-B",
+          "total": 2,
+          "locale": "en",
+          "position": 1,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "4f04e9ff-de80-5270-b2c5-773ee0082636"
+        }
+      },
+      {
+        "code": "ENG7-U01-DB-27",
+        "family": "357e658b-ca9e-513b-aa1b-27cb65a74e15",
+        "itemId": "1e29cb71-f190-5c08-ab4c-d504b7ac2b2b",
+        "sha256": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140",
+        "version": 2,
+        "sourceId": "3f3f27ab-3991-549a-80b0-f0d65d372f73",
+        "durationMs": 31713,
+        "objectPath": "f96c19f485cce44412e90ff610831e42dadc361f2357c4c1294577d15de3c140.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "e78bfec9-7326-5111-9b39-bb6f0a98902e",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source DB-A",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 31713,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "e78bfec9-7326-5111-9b39-bb6f0a98902e",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "3f3f27ab-3991-549a-80b0-f0d65d372f73",
+          "title": "Listening source DB-A",
+          "total": 2,
+          "locale": "en",
+          "position": 2,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "357e658b-ca9e-513b-aa1b-27cb65a74e15"
+        }
+      },
+      {
+        "code": "ENG7-U01-DB-28",
+        "family": "4f04e9ff-de80-5270-b2c5-773ee0082636",
+        "itemId": "28382a44-7726-58a7-aabc-23c70b9580b8",
+        "sha256": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600",
+        "version": 2,
+        "sourceId": "54765dc1-54da-50a9-87a1-1c2d8cc32e85",
+        "durationMs": 34273,
+        "objectPath": "2d984ab726c18e1c5abdc4b46aa2979254542a3c6ed236f9107a6342755cc600.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "65667f20-a702-50d3-9c97-89e7abd10300",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source DB-B",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 34273,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "65667f20-a702-50d3-9c97-89e7abd10300",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "54765dc1-54da-50a9-87a1-1c2d8cc32e85",
+          "title": "Listening source DB-B",
+          "total": 2,
+          "locale": "en",
+          "position": 2,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "4f04e9ff-de80-5270-b2c5-773ee0082636"
+        }
+      },
+      {
+        "code": "ENG7-U01-MB-25",
+        "family": "f374699d-be6c-5e9b-9392-bae2ff8b4775",
+        "itemId": "9af24fb8-c525-54ae-a7a2-8a1010383624",
+        "sha256": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987",
+        "version": 2,
+        "sourceId": "816bdd1f-df36-52f9-a716-e88657d4c952",
+        "durationMs": 26828,
+        "objectPath": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "5669d7ab-d01e-5d12-ab26-0facd947cf34",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source MB-A",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 26828,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "5669d7ab-d01e-5d12-ab26-0facd947cf34",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "816bdd1f-df36-52f9-a716-e88657d4c952",
+          "title": "Listening source MB-A",
+          "total": 2,
+          "locale": "en",
+          "position": 1,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "f374699d-be6c-5e9b-9392-bae2ff8b4775"
+        }
+      },
+      {
+        "code": "ENG7-U01-MB-26",
+        "family": "b70d3969-78c0-5551-bb5b-4fd5fc67c393",
+        "itemId": "75a3c76a-0cc3-59f7-a542-b5c6afcb60e6",
+        "sha256": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6",
+        "version": 2,
+        "sourceId": "0e5d7595-f034-5904-9c11-a9125326cb48",
+        "durationMs": 34926,
+        "objectPath": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "f0dc7338-7dd9-5b6c-9ca1-e17674cb7c5c",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source MB-B",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 34926,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "f0dc7338-7dd9-5b6c-9ca1-e17674cb7c5c",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "0e5d7595-f034-5904-9c11-a9125326cb48",
+          "title": "Listening source MB-B",
+          "total": 2,
+          "locale": "en",
+          "position": 1,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "b70d3969-78c0-5551-bb5b-4fd5fc67c393"
+        }
+      },
+      {
+        "code": "ENG7-U01-MB-27",
+        "family": "f374699d-be6c-5e9b-9392-bae2ff8b4775",
+        "itemId": "ce88a76b-67a9-5103-a7b8-ed59d1e9e73f",
+        "sha256": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987",
+        "version": 2,
+        "sourceId": "816bdd1f-df36-52f9-a716-e88657d4c952",
+        "durationMs": 26828,
+        "objectPath": "c0118ca269797040119e2e3b2bba976178501017330c6dbe353f89efed95d987.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "5669d7ab-d01e-5d12-ab26-0facd947cf34",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source MB-A",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 26828,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "5669d7ab-d01e-5d12-ab26-0facd947cf34",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "816bdd1f-df36-52f9-a716-e88657d4c952",
+          "title": "Listening source MB-A",
+          "total": 2,
+          "locale": "en",
+          "position": 2,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "f374699d-be6c-5e9b-9392-bae2ff8b4775"
+        }
+      },
+      {
+        "code": "ENG7-U01-MB-28",
+        "family": "b70d3969-78c0-5551-bb5b-4fd5fc67c393",
+        "itemId": "e4a9c8d7-8a98-5165-a431-f0139ef0c81d",
+        "sha256": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6",
+        "version": 2,
+        "sourceId": "0e5d7595-f034-5904-9c11-a9125326cb48",
+        "durationMs": 34926,
+        "objectPath": "69695294e87586d5f540738eb17f9258d8730212d9e444cc85a979d9625c3ae6.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "f0dc7338-7dd9-5b6c-9ca1-e17674cb7c5c",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source MB-B",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 34926,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "f0dc7338-7dd9-5b6c-9ca1-e17674cb7c5c",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "0e5d7595-f034-5904-9c11-a9125326cb48",
+          "title": "Listening source MB-B",
+          "total": 2,
+          "locale": "en",
+          "position": 2,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "b70d3969-78c0-5551-bb5b-4fd5fc67c393"
+        }
+      },
+      {
+        "code": "ENG7-U01-MC-25",
+        "family": "5e6facc4-e703-5701-9379-33f109ef6761",
+        "itemId": "ca51e7a3-267e-5673-a8b8-888759fa051f",
+        "sha256": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1",
+        "version": 2,
+        "sourceId": "3111fee6-e882-5963-98af-8d89407c41a9",
+        "durationMs": 34926,
+        "objectPath": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "1d0a4ee3-5db0-51d3-b2b5-4b9bc7ec830c",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source MC-A",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 34926,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "1d0a4ee3-5db0-51d3-b2b5-4b9bc7ec830c",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "3111fee6-e882-5963-98af-8d89407c41a9",
+          "title": "Listening source MC-A",
+          "total": 2,
+          "locale": "en",
+          "position": 1,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "5e6facc4-e703-5701-9379-33f109ef6761"
+        }
+      },
+      {
+        "code": "ENG7-U01-MC-26",
+        "family": "3ca844ae-c14e-5420-ae24-3e0519a0316d",
+        "itemId": "b6d3e488-d2e2-5372-a1df-a768d79f8e78",
+        "sha256": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5",
+        "version": 2,
+        "sourceId": "1cd5d8fc-3527-5118-a817-b3f174f1a38b",
+        "durationMs": 40438,
+        "objectPath": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "ed09dc8a-9274-5660-b13a-cfabed5ae850",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source MC-B",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 40438,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "ed09dc8a-9274-5660-b13a-cfabed5ae850",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "1cd5d8fc-3527-5118-a817-b3f174f1a38b",
+          "title": "Listening source MC-B",
+          "total": 2,
+          "locale": "en",
+          "position": 1,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "3ca844ae-c14e-5420-ae24-3e0519a0316d"
+        }
+      },
+      {
+        "code": "ENG7-U01-MC-27",
+        "family": "5e6facc4-e703-5701-9379-33f109ef6761",
+        "itemId": "9cfaf9c8-e50a-5e10-afec-bde42c18b2ba",
+        "sha256": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1",
+        "version": 2,
+        "sourceId": "3111fee6-e882-5963-98af-8d89407c41a9",
+        "durationMs": 34926,
+        "objectPath": "3196eb0f2dad4e281d14ca7710a430cd718225dba5878a82170802c957c331f1.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "1d0a4ee3-5db0-51d3-b2b5-4b9bc7ec830c",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source MC-A",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 34926,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "1d0a4ee3-5db0-51d3-b2b5-4b9bc7ec830c",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "3111fee6-e882-5963-98af-8d89407c41a9",
+          "title": "Listening source MC-A",
+          "total": 2,
+          "locale": "en",
+          "position": 2,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "5e6facc4-e703-5701-9379-33f109ef6761"
+        }
+      },
+      {
+        "code": "ENG7-U01-MC-28",
+        "family": "3ca844ae-c14e-5420-ae24-3e0519a0316d",
+        "itemId": "829603b9-b891-5ee8-adeb-2a8a576a3d22",
+        "sha256": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5",
+        "version": 2,
+        "sourceId": "1cd5d8fc-3527-5118-a817-b3f174f1a38b",
+        "durationMs": 40438,
+        "objectPath": "16e057f37524bec7d436f4d2a49dbe5c3eef32d5b4694f4594592c0d1422f6e5.mp3",
+        "reviewStatus": "needs_review",
+        "audioInCatalog": true,
+        "audioVersionId": "ed09dc8a-9274-5660-b13a-cfabed5ae850",
+        "catalogMatches": 1,
+        "previewMatches": true,
+        "learnerStimulus": {
+          "kind": "audio",
+          "title": "Listening source MC-B",
+          "locale": "en",
+          "completed": false,
+          "durationMs": 40438,
+          "schemaVersion": "haiedu-audio-v1",
+          "audioVersionId": "ed09dc8a-9274-5660-b13a-cfabed5ae850",
+          "playbackPolicy": "replayable-practice-v1",
+          "transcriptAvailable": false
+        },
+        "learnerSourceContext": {
+          "id": "1cd5d8fc-3527-5118-a817-b3f174f1a38b",
+          "title": "Listening source MC-B",
+          "total": 2,
+          "locale": "en",
+          "position": 2,
+          "schemaVersion": "haiedu-task-set-v1",
+          "sourceFamilyId": "3ca844ae-c14e-5420-ae24-3e0519a0316d"
+        }
+      }
+    ],
+    "observedAt": "2026-10-22T10:13:26.390213+00:00",
+    "sourceRegistryAccess": {
+      "setAnonSelect": false,
+      "audioAnonSelect": false,
+      "setAuthenticatedSelect": false,
+      "audioAuthenticatedSelect": false
+    }
+  },
+  "runtimeContinuity": {
+    "edgeFiles": [
+      {
+        "file": "manage-content-quality/index.ts",
+        "sha256": "eff4f28780b0bdc618485a481acf41df7495c7d5945c4d55e6fc572ccffbc82a",
+        "deployedMatch": true
+      },
+      {
+        "file": "_shared/arrangement-responses.mjs",
+        "sha256": "e1e09b133d815020a9ff20279251a86b84b405a411c2d1f670838ae3a87cbd66",
+        "deployedMatch": true
+      },
+      {
+        "file": "_shared/typed-fields.mjs",
+        "sha256": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc",
+        "deployedMatch": true
+      },
+      {
+        "file": "_shared/auth.ts",
+        "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "deployedMatch": true
+      },
+      {
+        "file": "get-learning-audio/index.ts",
+        "sha256": "22794f72ffb42d8239e7f460ebb75c2db6b9729f3b33f1eb097ec30dc6b22239",
+        "deployedMatch": true
+      },
+      {
+        "file": "_shared/auth.ts",
+        "sha256": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+        "deployedMatch": true
+      },
+      {
+        "file": "_shared/learning-audio-handler.mjs",
+        "sha256": "c0278a9eb5c4816d6ab28f026db37afa0a61048e0ca3632a3a0a5d67f96b31dd",
+        "deployedMatch": true
+      }
+    ],
+    "sqlFunctions": [
+      {
+        "schema": "private",
+        "name": "guard_audio_version",
+        "args": "",
+        "prosrcMd5": "2cc581fbc61d4478d8bf510d5f03c689",
+        "sourceFiles": [
+          "supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "guard_item_audio_reference",
+        "args": "",
+        "prosrcMd5": "cd9b487423cda91bb8b6746c4f9f86be",
+        "sourceFiles": [
+          "supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "guard_item_task_set_reference",
+        "args": "",
+        "prosrcMd5": "9020471ae9a05685c0b10529a49ebe48",
+        "sourceFiles": [
+          "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "guard_task_set_version",
+        "args": "",
+        "prosrcMd5": "b7c9a0bc80fc888cc7691425f5bdd256",
+        "sourceFiles": [
+          "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "hold_unactivated_11d_after_approval",
+        "args": "",
+        "prosrcMd5": "0003a6a7f7de33b383d25b08359c2dd8",
+        "sourceFiles": [
+          "supabase/migrations/0030_content_editor_11d_review_hold.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "item_source_family",
+        "args": "p_item uuid",
+        "prosrcMd5": "df52536c12a089f24cd22eb0fe273d2a",
+        "sourceFiles": [
+          "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "mark_item_revision_required",
+        "args": "",
+        "prosrcMd5": "71716bf8d2076b0f3f3fe7526ecd399d",
+        "sourceFiles": [
+          "supabase/migrations/0013_sprint_11a_item_identity_exposure_pools.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "order_task_set_items",
+        "args": "p_items uuid[], p_seed text",
+        "prosrcMd5": "6fd612274907c9f6d2ff72ee5071c2d4",
+        "sourceFiles": [
+          "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "task_set_stimulus",
+        "args": "p_stimulus jsonb, p_item uuid, p_release uuid, p_unit uuid",
+        "prosrcMd5": "e39864111e4707c010e454420c902938",
+        "sourceFiles": [
+          "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "validate_audio_reference",
+        "args": "p_stimulus jsonb, p_item_id uuid, p_release_id uuid, p_unit_id uuid",
+        "prosrcMd5": "07321cb1e8528dcca6c6db5bab17da5c",
+        "sourceFiles": [
+          "supabase/migrations/20261020170445_sprint_16_1b_protected_audio.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "private",
+        "name": "validate_task_set_reference",
+        "args": "p_stimulus jsonb, p_item uuid, p_release uuid, p_unit uuid",
+        "prosrcMd5": "fb6fc61a32d53ef7be0391b8e78e53e8",
+        "sourceFiles": [
+          "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "public",
+        "name": "enforce_item_misconception_mapping_policy",
+        "args": "",
+        "prosrcMd5": "5a32babe7ae7b00a71ead10c26f267aa",
+        "sourceFiles": [
+          "supabase/migrations/20261001071000_sprint_15b3_mapping_integrity_gate.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "public",
+        "name": "enforce_prospective_item_evidence_purpose",
+        "args": "",
+        "prosrcMd5": "3377aaa99820bf4eff04c6875c4e8366",
+        "sourceFiles": [
+          "supabase/migrations/20261002070000_sprint_15b8_prospective_evidence_blueprint.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "public",
+        "name": "lock_item_family_state_mutation",
+        "args": "",
+        "prosrcMd5": "cf364561bd56d55a16481143e5c81307",
+        "sourceFiles": [
+          "supabase/migrations/20261002080000_sprint_15b8_atomic_family_approval.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "public",
+        "name": "service_learning_audio",
+        "args": "p_actor_id uuid, p_auth_session_id uuid, p_action text, p_session_id uuid, p_session_item_id uuid, p_item_id uuid",
+        "prosrcMd5": "d68f759c432ff1519f6d61250a1e7162",
+        "sourceFiles": [
+          "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "public",
+        "name": "service_learning_task_set",
+        "args": "p_actor uuid, p_auth uuid, p_action text, p_item uuid",
+        "prosrcMd5": "65ce262ce3cfef79ac5e34efa86e724d",
+        "sourceFiles": [
+          "supabase/migrations/20261020182309_sprint_16_1b_shared_task_sets.sql"
+        ],
+        "exactBodyMatch": true
+      },
+      {
+        "schema": "public",
+        "name": "service_save_item_content_revision",
+        "args": "p_item_id uuid, p_actor_id uuid, p_payload jsonb",
+        "prosrcMd5": "a7d784ea9528a5e4599f8ace66009b17",
+        "sourceFiles": [
+          "supabase/migrations/20261020153856_sprint_16_1b_matching_ordering.sql"
+        ],
+        "exactBodyMatch": true
+      }
+    ]
+  },
+  "comparisonContinuity": {
+    "all71PreTableFingerprintsMatchC14AndC15": true,
+    "wholeBankCurrentQuestions": 200,
+    "historicalVersionsCompared": 247,
+    "wordingKeysOptionsFamiliesScopesAndPurposeUnchanged": true,
+    "newReasoningCoverageClaimed": false,
+    "boundedParallelDispositionPreserved": true,
+    "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363"
+  },
+  "rollback": {
+    "observedAt": "2026-10-22T10:11:34.394001+00:00",
+    "all71TableFingerprintsRestored": true,
+    "audioVersions": 6,
+    "taskSets": 6,
+    "revisedQuestions": 12,
+    "sqlSha256": "f9c9a0b10c4cfc97cd71d9e4740f94aec35ccb4d7e1a3f0af1213d6693c5fb28"
+  },
+  "production": {
+    "sqlSha256": "9a705db976b4051301fd1d5b11f8c9b9455b47a6a9bd572e3094b2b3f7599701",
+    "guardedTables": 71,
+    "whollyUnchangedTables": 64,
+    "changedTables": [
+      {
+        "table": "item_answer_keys",
+        "before": 1451,
+        "after": 1451
+      },
+      {
+        "table": "item_options",
+        "before": 4818,
+        "after": 4818
+      },
+      {
+        "table": "item_qa_runs",
+        "before": 1807,
+        "after": 1819
+      },
+      {
+        "table": "item_versions",
+        "before": 1393,
+        "after": 1405
+      },
+      {
+        "table": "items",
+        "before": 1451,
+        "after": 1451
+      },
+      {
+        "table": "learning_audio_versions",
+        "before": 8,
+        "after": 14
+      },
+      {
+        "table": "learning_task_set_versions",
+        "before": 21,
+        "after": 27
+      }
+    ],
+    "newRows": {
+      "learning_audio_versions": 6,
+      "learning_task_set_versions": 6,
+      "item_versions": 12,
+      "item_qa_runs": 12
+    },
+    "oldImmutableVersionsPreserved": 247,
+    "oldApprovalsPreserved": 176,
+    "other188CurrentItemsPreservedExactly": true,
+    "allPriorReviewsPreserved": true,
+    "allPriorSourceRowsPreserved": true,
+    "keysOptionsMemberOrderFamiliesAndScopesPreserved": true,
+    "allUnaffectedRowsPreservedByTransaction": true,
+    "learnerStatePolicyBindingsAndReleaseUnchanged": true,
+    "preGuards": [
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_activation",
+        "fingerprint": "1df4787f0c2eece89b4611327af6aff4"
+      },
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_versions",
+        "fingerprint": "1c69b7132347cd8b67a89268668f27ce"
+      },
+      {
+        "row_count": 1872,
+        "table_name": "assessment_blueprint_items",
+        "fingerprint": "7e54e189ad648f2a3f0a4538a01f8b60"
+      },
+      {
+        "row_count": 27,
+        "table_name": "assessment_blueprints",
+        "fingerprint": "38fe215a14d86c322b7826724d8a7fac"
+      },
+      {
+        "row_count": 472,
+        "table_name": "assessment_form_items",
+        "fingerprint": "d84f089091319cf04fa637dd4589dbd9"
+      },
+      {
+        "row_count": 29,
+        "table_name": "assessment_forms",
+        "fingerprint": "ec31ac543009ef35e098ac7a64e23908"
+      },
+      {
+        "row_count": 20,
+        "table_name": "assessment_policy_bindings",
+        "fingerprint": "2c32ee0b3e126db5e47b7de55a5ebacf"
+      },
+      {
+        "row_count": 18,
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "fingerprint": "7383871bb98ea2a76ff9cb30689c643a"
+      },
+      {
+        "row_count": 1244,
+        "table_name": "assessment_pool_items",
+        "fingerprint": "184285de8853be3dfc41e8f90db0dda4"
+      },
+      {
+        "row_count": 19,
+        "table_name": "assessment_pools",
+        "fingerprint": "d6450febadadd4af95b10f3a8c9a7b92"
+      },
+      {
+        "row_count": 42,
+        "table_name": "attempts",
+        "fingerprint": "26d44860397d32ab6023da8e72cfcb0e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_mastery_states",
+        "fingerprint": "1b6fb3231d34474d6422795bcb484b2c"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_cycles",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_item_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_review_requirements",
+        "fingerprint": "2e1caa3798ff3b8199f848152602ba13"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_sessions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "curriculum_frameworks",
+        "fingerprint": "cc95b05470c26da89674830c44573e7e"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_reconciliation_runs",
+        "fingerprint": "86fa5040c5e4315a2eaa1b56024973c0"
+      },
+      {
+        "row_count": 49,
+        "table_name": "curriculum_release_gate_checks",
+        "fingerprint": "76bc56c09f6aad078d83826e1919c828"
+      },
+      {
+        "row_count": 1028,
+        "table_name": "curriculum_release_item_families",
+        "fingerprint": "254bf21f349ebd320e8c42a80f48a611"
+      },
+      {
+        "row_count": 53,
+        "table_name": "curriculum_release_outcomes",
+        "fingerprint": "79555766bcc8fca1e084ff76c77475ef"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_release_reconciliations",
+        "fingerprint": "01701c1671482c73cdf5ab848dcb87aa"
+      },
+      {
+        "row_count": 80,
+        "table_name": "curriculum_release_skills",
+        "fingerprint": "b79050797c48be0273a3705599972579"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_release_units",
+        "fingerprint": "3081bda61e74df4d3902ae0c21988407"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_releases",
+        "fingerprint": "bcaaa4a76a9ee95f0d8b16430086c669"
+      },
+      {
+        "row_count": 3,
+        "table_name": "curriculum_source_documents",
+        "fingerprint": "d4b3cde546d8cacbda028fbb3256e6d8"
+      },
+      {
+        "row_count": 12,
+        "table_name": "grades",
+        "fingerprint": "62cb5fdf3ecc14c7279c2484156cc000"
+      },
+      {
+        "row_count": 1451,
+        "table_name": "item_answer_keys",
+        "fingerprint": "1d7322c070c82d8052f80db2dd2b272a"
+      },
+      {
+        "row_count": 1451,
+        "table_name": "item_curriculum_scopes",
+        "fingerprint": "6254aa2a1a2ccbf00049e8849e32a7d7"
+      },
+      {
+        "row_count": 1229,
+        "table_name": "item_families",
+        "fingerprint": "2f4db98387b0e0370bf0b6898c6f6261"
+      },
+      {
+        "row_count": 1029,
+        "table_name": "item_family_curriculum_reconciliations",
+        "fingerprint": "ea002e478aebb9afc8ef309377d36051"
+      },
+      {
+        "row_count": 3212,
+        "table_name": "item_misconception_mappings",
+        "fingerprint": "0630d067b0596adb53124c132bb4dee1"
+      },
+      {
+        "row_count": 4818,
+        "table_name": "item_options",
+        "fingerprint": "054d596a336254656843c8831604f2b6"
+      },
+      {
+        "row_count": 1807,
+        "table_name": "item_qa_runs",
+        "fingerprint": "0249ec97e0d7fdc11def56572f22b7c7"
+      },
+      {
+        "row_count": 1709,
+        "table_name": "item_reviews",
+        "fingerprint": "404b95234cf8be6655c84a3683ccd2d3"
+      },
+      {
+        "row_count": 518,
+        "table_name": "item_template_remediation_guides",
+        "fingerprint": "e603af7f4dc742b0e53f996eeee86627"
+      },
+      {
+        "row_count": 1229,
+        "table_name": "item_templates",
+        "fingerprint": "beb034caa80d5f15e7c14eb2451d59f8"
+      },
+      {
+        "row_count": 1393,
+        "table_name": "item_versions",
+        "fingerprint": "439eefd892af72582efc2b45ee68d8c0"
+      },
+      {
+        "row_count": 1451,
+        "table_name": "items",
+        "fingerprint": "bf4ab8ea30fd673afa2ea7206d67dcf9"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_assessed_audio",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 8,
+        "table_name": "learning_audio_versions",
+        "fingerprint": "9267c546784103ca38a9f6019d116e1c"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_configurations",
+        "fingerprint": "4254a36a7a040133d3592cd131c83c83"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_runtime_bindings",
+        "fingerprint": "dd95315c4395cb93457b2c5afaefc495"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcome_normative_mappings",
+        "fingerprint": "f0affa67ef267421fa3368c30011a7e7"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcomes",
+        "fingerprint": "d0063216634a4cea234e80ae5aa63ad1"
+      },
+      {
+        "row_count": 96,
+        "table_name": "learning_session_items",
+        "fingerprint": "34f74f2134c35958e0e4b8ab6420137a"
+      },
+      {
+        "row_count": 8,
+        "table_name": "learning_sessions",
+        "fingerprint": "a5d0326f20b58e02773af6281ee31cdb"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_source_family_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 21,
+        "table_name": "learning_task_set_versions",
+        "fingerprint": "ef950d6a3ce4d1e560ad6117a9b5c459"
+      },
+      {
+        "row_count": 1,
+        "table_name": "mastery_check_attempts",
+        "fingerprint": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+      },
+      {
+        "row_count": 1026,
+        "table_name": "misconception_review_events",
+        "fingerprint": "b453094e23e087c502ea133a8e25e053"
+      },
+      {
+        "row_count": 1033,
+        "table_name": "misconceptions",
+        "fingerprint": "b399278d2c2bb11a9e0e07cf3e32906c"
+      },
+      {
+        "row_count": 824,
+        "table_name": "recommendation_events",
+        "fingerprint": "bb3fe105ac2571f227284db74a10591f"
+      },
+      {
+        "row_count": 6,
+        "table_name": "remediation_events",
+        "fingerprint": "e5001e648bb95efe0dd4a0c163f8fd2c"
+      },
+      {
+        "row_count": 1708,
+        "table_name": "remediation_guide_authoring_versions",
+        "fingerprint": "ad66c5fa1f9ed7d37f52e14da1f9303c"
+      },
+      {
+        "row_count": 1067,
+        "table_name": "remediation_guide_versions",
+        "fingerprint": "904a28da2d3e95fc1d420cac3f0915b4"
+      },
+      {
+        "row_count": 26,
+        "table_name": "runtime_builds",
+        "fingerprint": "de52aa09cfe3faf6405ea630a9842850"
+      },
+      {
+        "row_count": 66,
+        "table_name": "skill_curriculum_reconciliations",
+        "fingerprint": "fda1e906882d49718a03f650ffe6e601"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcome_curriculum_mappings",
+        "fingerprint": "1a2a3f9398ebd328e65ac1f3c565667c"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcomes",
+        "fingerprint": "938bbad8c1f7dde57c694cd0d117d6bd"
+      },
+      {
+        "row_count": 17,
+        "table_name": "skill_prerequisites",
+        "fingerprint": "2163f87101e252337a68d16de849d8d4"
+      },
+      {
+        "row_count": 10,
+        "table_name": "skill_remediation_guides",
+        "fingerprint": "0c0a4b6b5a5fb2e78a4e9707d5c28366"
+      },
+      {
+        "row_count": 81,
+        "table_name": "skills",
+        "fingerprint": "ff8d0bf2159893c6586861f31e37c29e"
+      },
+      {
+        "row_count": 44,
+        "table_name": "student_item_exposure_events",
+        "fingerprint": "b9b739a7d235b2a8ebb837003baef8b6"
+      },
+      {
+        "row_count": 13,
+        "table_name": "student_skill_mastery_by_release",
+        "fingerprint": "19a0f8555ac31ac870a6cff088c9ce29"
+      },
+      {
+        "row_count": 2,
+        "table_name": "subject_program_source_bindings",
+        "fingerprint": "7cefb9c48c14a2b02a5e4ae0660edd92"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subject_programs",
+        "fingerprint": "ee9738a90126520ed8427ca0ddfd570d"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subjects",
+        "fingerprint": "e02963c95d7856a55b57175a81ae7def"
+      },
+      {
+        "row_count": 30,
+        "table_name": "topics",
+        "fingerprint": "c7f40d5f22a7f50ede9ac6c952d5e7dc"
+      },
+      {
+        "row_count": 8,
+        "table_name": "units",
+        "fingerprint": "c2b8d4ce2b2f9dd4d16d2d56adef7685"
+      },
+      {
+        "row_count": 0,
+        "table_name": "written_task_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ],
+    "postGuards": [
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_activation",
+        "fingerprint": "1df4787f0c2eece89b4611327af6aff4"
+      },
+      {
+        "row_count": 1,
+        "table_name": "academic_mastery_policy_versions",
+        "fingerprint": "1c69b7132347cd8b67a89268668f27ce"
+      },
+      {
+        "row_count": 1872,
+        "table_name": "assessment_blueprint_items",
+        "fingerprint": "7e54e189ad648f2a3f0a4538a01f8b60"
+      },
+      {
+        "row_count": 27,
+        "table_name": "assessment_blueprints",
+        "fingerprint": "38fe215a14d86c322b7826724d8a7fac"
+      },
+      {
+        "row_count": 472,
+        "table_name": "assessment_form_items",
+        "fingerprint": "d84f089091319cf04fa637dd4589dbd9"
+      },
+      {
+        "row_count": 29,
+        "table_name": "assessment_forms",
+        "fingerprint": "ec31ac543009ef35e098ac7a64e23908"
+      },
+      {
+        "row_count": 20,
+        "table_name": "assessment_policy_bindings",
+        "fingerprint": "2c32ee0b3e126db5e47b7de55a5ebacf"
+      },
+      {
+        "row_count": 18,
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "fingerprint": "7383871bb98ea2a76ff9cb30689c643a"
+      },
+      {
+        "row_count": 1244,
+        "table_name": "assessment_pool_items",
+        "fingerprint": "184285de8853be3dfc41e8f90db0dda4"
+      },
+      {
+        "row_count": 19,
+        "table_name": "assessment_pools",
+        "fingerprint": "d6450febadadd4af95b10f3a8c9a7b92"
+      },
+      {
+        "row_count": 42,
+        "table_name": "attempts",
+        "fingerprint": "26d44860397d32ab6023da8e72cfcb0e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_mastery_states",
+        "fingerprint": "1b6fb3231d34474d6422795bcb484b2c"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_cycles",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_item_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "chapter_review_requirements",
+        "fingerprint": "2e1caa3798ff3b8199f848152602ba13"
+      },
+      {
+        "row_count": 0,
+        "table_name": "chapter_review_sessions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 1,
+        "table_name": "curriculum_frameworks",
+        "fingerprint": "cc95b05470c26da89674830c44573e7e"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_reconciliation_runs",
+        "fingerprint": "86fa5040c5e4315a2eaa1b56024973c0"
+      },
+      {
+        "row_count": 49,
+        "table_name": "curriculum_release_gate_checks",
+        "fingerprint": "76bc56c09f6aad078d83826e1919c828"
+      },
+      {
+        "row_count": 1028,
+        "table_name": "curriculum_release_item_families",
+        "fingerprint": "254bf21f349ebd320e8c42a80f48a611"
+      },
+      {
+        "row_count": 53,
+        "table_name": "curriculum_release_outcomes",
+        "fingerprint": "79555766bcc8fca1e084ff76c77475ef"
+      },
+      {
+        "row_count": 6,
+        "table_name": "curriculum_release_reconciliations",
+        "fingerprint": "01701c1671482c73cdf5ab848dcb87aa"
+      },
+      {
+        "row_count": 80,
+        "table_name": "curriculum_release_skills",
+        "fingerprint": "b79050797c48be0273a3705599972579"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_release_units",
+        "fingerprint": "3081bda61e74df4d3902ae0c21988407"
+      },
+      {
+        "row_count": 8,
+        "table_name": "curriculum_releases",
+        "fingerprint": "bcaaa4a76a9ee95f0d8b16430086c669"
+      },
+      {
+        "row_count": 3,
+        "table_name": "curriculum_source_documents",
+        "fingerprint": "d4b3cde546d8cacbda028fbb3256e6d8"
+      },
+      {
+        "row_count": 12,
+        "table_name": "grades",
+        "fingerprint": "62cb5fdf3ecc14c7279c2484156cc000"
+      },
+      {
+        "row_count": 1451,
+        "table_name": "item_answer_keys",
+        "fingerprint": "2e04b3e53e75ad9e4705ac0049de9f25"
+      },
+      {
+        "row_count": 1451,
+        "table_name": "item_curriculum_scopes",
+        "fingerprint": "6254aa2a1a2ccbf00049e8849e32a7d7"
+      },
+      {
+        "row_count": 1229,
+        "table_name": "item_families",
+        "fingerprint": "2f4db98387b0e0370bf0b6898c6f6261"
+      },
+      {
+        "row_count": 1029,
+        "table_name": "item_family_curriculum_reconciliations",
+        "fingerprint": "ea002e478aebb9afc8ef309377d36051"
+      },
+      {
+        "row_count": 3212,
+        "table_name": "item_misconception_mappings",
+        "fingerprint": "0630d067b0596adb53124c132bb4dee1"
+      },
+      {
+        "row_count": 4818,
+        "table_name": "item_options",
+        "fingerprint": "bea2aa270834deb28d6438706518bb08"
+      },
+      {
+        "row_count": 1819,
+        "table_name": "item_qa_runs",
+        "fingerprint": "7484e0b19ea580c3d4fd3e6120d4d8f8"
+      },
+      {
+        "row_count": 1709,
+        "table_name": "item_reviews",
+        "fingerprint": "404b95234cf8be6655c84a3683ccd2d3"
+      },
+      {
+        "row_count": 518,
+        "table_name": "item_template_remediation_guides",
+        "fingerprint": "e603af7f4dc742b0e53f996eeee86627"
+      },
+      {
+        "row_count": 1229,
+        "table_name": "item_templates",
+        "fingerprint": "beb034caa80d5f15e7c14eb2451d59f8"
+      },
+      {
+        "row_count": 1405,
+        "table_name": "item_versions",
+        "fingerprint": "96b5926f8faf71f2cb4858a3a8a0365d"
+      },
+      {
+        "row_count": 1451,
+        "table_name": "items",
+        "fingerprint": "ec0b7f4e282d96d9ad942495d063ec50"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_assessed_audio",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 14,
+        "table_name": "learning_audio_versions",
+        "fingerprint": "fa69dd1e325f1e788ecd27a06bffaaa7"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_configurations",
+        "fingerprint": "4254a36a7a040133d3592cd131c83c83"
+      },
+      {
+        "row_count": 6,
+        "table_name": "learning_model_runtime_bindings",
+        "fingerprint": "dd95315c4395cb93457b2c5afaefc495"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcome_normative_mappings",
+        "fingerprint": "f0affa67ef267421fa3368c30011a7e7"
+      },
+      {
+        "row_count": 53,
+        "table_name": "learning_outcomes",
+        "fingerprint": "d0063216634a4cea234e80ae5aa63ad1"
+      },
+      {
+        "row_count": 96,
+        "table_name": "learning_session_items",
+        "fingerprint": "34f74f2134c35958e0e4b8ab6420137a"
+      },
+      {
+        "row_count": 8,
+        "table_name": "learning_sessions",
+        "fingerprint": "a5d0326f20b58e02773af6281ee31cdb"
+      },
+      {
+        "row_count": 0,
+        "table_name": "learning_source_family_exposures",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "row_count": 27,
+        "table_name": "learning_task_set_versions",
+        "fingerprint": "131fd30f3d643238bc5fa9c71939d258"
+      },
+      {
+        "row_count": 1,
+        "table_name": "mastery_check_attempts",
+        "fingerprint": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+      },
+      {
+        "row_count": 1026,
+        "table_name": "misconception_review_events",
+        "fingerprint": "b453094e23e087c502ea133a8e25e053"
+      },
+      {
+        "row_count": 1033,
+        "table_name": "misconceptions",
+        "fingerprint": "b399278d2c2bb11a9e0e07cf3e32906c"
+      },
+      {
+        "row_count": 824,
+        "table_name": "recommendation_events",
+        "fingerprint": "bb3fe105ac2571f227284db74a10591f"
+      },
+      {
+        "row_count": 6,
+        "table_name": "remediation_events",
+        "fingerprint": "e5001e648bb95efe0dd4a0c163f8fd2c"
+      },
+      {
+        "row_count": 1708,
+        "table_name": "remediation_guide_authoring_versions",
+        "fingerprint": "ad66c5fa1f9ed7d37f52e14da1f9303c"
+      },
+      {
+        "row_count": 1067,
+        "table_name": "remediation_guide_versions",
+        "fingerprint": "904a28da2d3e95fc1d420cac3f0915b4"
+      },
+      {
+        "row_count": 26,
+        "table_name": "runtime_builds",
+        "fingerprint": "de52aa09cfe3faf6405ea630a9842850"
+      },
+      {
+        "row_count": 66,
+        "table_name": "skill_curriculum_reconciliations",
+        "fingerprint": "fda1e906882d49718a03f650ffe6e601"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcome_curriculum_mappings",
+        "fingerprint": "1a2a3f9398ebd328e65ac1f3c565667c"
+      },
+      {
+        "row_count": 84,
+        "table_name": "skill_outcomes",
+        "fingerprint": "938bbad8c1f7dde57c694cd0d117d6bd"
+      },
+      {
+        "row_count": 17,
+        "table_name": "skill_prerequisites",
+        "fingerprint": "2163f87101e252337a68d16de849d8d4"
+      },
+      {
+        "row_count": 10,
+        "table_name": "skill_remediation_guides",
+        "fingerprint": "0c0a4b6b5a5fb2e78a4e9707d5c28366"
+      },
+      {
+        "row_count": 81,
+        "table_name": "skills",
+        "fingerprint": "ff8d0bf2159893c6586861f31e37c29e"
+      },
+      {
+        "row_count": 44,
+        "table_name": "student_item_exposure_events",
+        "fingerprint": "b9b739a7d235b2a8ebb837003baef8b6"
+      },
+      {
+        "row_count": 13,
+        "table_name": "student_skill_mastery_by_release",
+        "fingerprint": "19a0f8555ac31ac870a6cff088c9ce29"
+      },
+      {
+        "row_count": 2,
+        "table_name": "subject_program_source_bindings",
+        "fingerprint": "7cefb9c48c14a2b02a5e4ae0660edd92"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subject_programs",
+        "fingerprint": "ee9738a90126520ed8427ca0ddfd570d"
+      },
+      {
+        "row_count": 3,
+        "table_name": "subjects",
+        "fingerprint": "e02963c95d7856a55b57175a81ae7def"
+      },
+      {
+        "row_count": 30,
+        "table_name": "topics",
+        "fingerprint": "c7f40d5f22a7f50ede9ac6c952d5e7dc"
+      },
+      {
+        "row_count": 8,
+        "table_name": "units",
+        "fingerprint": "c2b8d4ce2b2f9dd4d16d2d56adef7685"
+      },
+      {
+        "row_count": 0,
+        "table_name": "written_task_versions",
+        "fingerprint": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ]
+  },
+  "QA": {
+    "passed": 12,
+    "currentVersion": 2,
+    "errors": [],
+    "warnings": [
+      "misconception_mapping_missing"
+    ],
+    "warningDisposition": "Nonblocking generic warning for these listening-comprehension items; no misconception diagnosis or mapping is invented.",
+    "execution": "Actual deployed manage-content-quality v14 evaluateQa over materialized rollback-transaction rows, persisted with guarded commit. Independent production readback matches every saved result. run_by is null; no HTTP/browser session or human approval is claimed.",
+    "qaResultsSha256": "ac8a24a11b79d708e7661327da9066ee59c335030d7a69652dc44899cbd4ebd0"
+  },
+  "newItems": [
+    {
+      "code": "ENG7-U01-DB-25",
+      "itemId": "d2615e88-ffc5-5d42-aee3-a5fc7496d9db",
+      "version": 2,
+      "sourceCode": "ENG7-U01-DB-AUDIO-A",
+      "sourceId": "3f3f27ab-3991-549a-80b0-f0d65d372f73",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=d2615e88-ffc5-5d42-aee3-a5fc7496d9db&from=review"
+    },
+    {
+      "code": "ENG7-U01-DB-27",
+      "itemId": "1e29cb71-f190-5c08-ab4c-d504b7ac2b2b",
+      "version": 2,
+      "sourceCode": "ENG7-U01-DB-AUDIO-A",
+      "sourceId": "3f3f27ab-3991-549a-80b0-f0d65d372f73",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=1e29cb71-f190-5c08-ab4c-d504b7ac2b2b&from=review"
+    },
+    {
+      "code": "ENG7-U01-DB-26",
+      "itemId": "283f8432-6fd2-543b-a636-14113dbfed07",
+      "version": 2,
+      "sourceCode": "ENG7-U01-DB-AUDIO-B",
+      "sourceId": "54765dc1-54da-50a9-87a1-1c2d8cc32e85",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=283f8432-6fd2-543b-a636-14113dbfed07&from=review"
+    },
+    {
+      "code": "ENG7-U01-DB-28",
+      "itemId": "28382a44-7726-58a7-aabc-23c70b9580b8",
+      "version": 2,
+      "sourceCode": "ENG7-U01-DB-AUDIO-B",
+      "sourceId": "54765dc1-54da-50a9-87a1-1c2d8cc32e85",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=28382a44-7726-58a7-aabc-23c70b9580b8&from=review"
+    },
+    {
+      "code": "ENG7-U01-MB-25",
+      "itemId": "9af24fb8-c525-54ae-a7a2-8a1010383624",
+      "version": 2,
+      "sourceCode": "ENG7-U01-MB-AUDIO-A",
+      "sourceId": "816bdd1f-df36-52f9-a716-e88657d4c952",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=9af24fb8-c525-54ae-a7a2-8a1010383624&from=review"
+    },
+    {
+      "code": "ENG7-U01-MB-27",
+      "itemId": "ce88a76b-67a9-5103-a7b8-ed59d1e9e73f",
+      "version": 2,
+      "sourceCode": "ENG7-U01-MB-AUDIO-A",
+      "sourceId": "816bdd1f-df36-52f9-a716-e88657d4c952",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=ce88a76b-67a9-5103-a7b8-ed59d1e9e73f&from=review"
+    },
+    {
+      "code": "ENG7-U01-MB-26",
+      "itemId": "75a3c76a-0cc3-59f7-a542-b5c6afcb60e6",
+      "version": 2,
+      "sourceCode": "ENG7-U01-MB-AUDIO-B",
+      "sourceId": "0e5d7595-f034-5904-9c11-a9125326cb48",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=75a3c76a-0cc3-59f7-a542-b5c6afcb60e6&from=review"
+    },
+    {
+      "code": "ENG7-U01-MB-28",
+      "itemId": "e4a9c8d7-8a98-5165-a431-f0139ef0c81d",
+      "version": 2,
+      "sourceCode": "ENG7-U01-MB-AUDIO-B",
+      "sourceId": "0e5d7595-f034-5904-9c11-a9125326cb48",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=e4a9c8d7-8a98-5165-a431-f0139ef0c81d&from=review"
+    },
+    {
+      "code": "ENG7-U01-MC-25",
+      "itemId": "ca51e7a3-267e-5673-a8b8-888759fa051f",
+      "version": 2,
+      "sourceCode": "ENG7-U01-MC-AUDIO-A",
+      "sourceId": "3111fee6-e882-5963-98af-8d89407c41a9",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=ca51e7a3-267e-5673-a8b8-888759fa051f&from=review"
+    },
+    {
+      "code": "ENG7-U01-MC-27",
+      "itemId": "9cfaf9c8-e50a-5e10-afec-bde42c18b2ba",
+      "version": 2,
+      "sourceCode": "ENG7-U01-MC-AUDIO-A",
+      "sourceId": "3111fee6-e882-5963-98af-8d89407c41a9",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=9cfaf9c8-e50a-5e10-afec-bde42c18b2ba&from=review"
+    },
+    {
+      "code": "ENG7-U01-MC-26",
+      "itemId": "b6d3e488-d2e2-5372-a1df-a768d79f8e78",
+      "version": 2,
+      "sourceCode": "ENG7-U01-MC-AUDIO-B",
+      "sourceId": "1cd5d8fc-3527-5118-a817-b3f174f1a38b",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=b6d3e488-d2e2-5372-a1df-a768d79f8e78&from=review"
+    },
+    {
+      "code": "ENG7-U01-MC-28",
+      "itemId": "829603b9-b891-5ee8-adeb-2a8a576a3d22",
+      "version": 2,
+      "sourceCode": "ENG7-U01-MC-AUDIO-B",
+      "sourceId": "1cd5d8fc-3527-5118-a817-b3f174f1a38b",
+      "reviewUrl": "https://www.haiedu.am/content-item.html?id=829603b9-b891-5ee8-adeb-2a8a576a3d22&from=review"
+    }
+  ],
+  "reusedEvidence": [
+    "docs/evidence/english-7-unit-01-bcd-audio-preparation-20261022.json",
+    "docs/evidence/english-7-unit-01-bcd-whole-bank-review-20261022.json",
+    "docs/evidence/english-7-unit-01-assessment-batch-bcd-validation-20261022.json",
+    "docs/evidence/english-7-unit-01-bcd-reading-registration-20261022.json",
+    "docs/evidence/assessed-listening-release-20261022.json",
+    "docs/evidence/vercel-deployment-check-verification-20261020.json"
+  ],
+  "limits": [
+    "No frontend, schema, Edge, scoring or replay-limit implementation changed.",
+    "No independent human audition, provider/voice licence, SME/form qualification or learner release is claimed.",
+    "Source catalog/preview predicates and validation helpers were checked directly; this is not a fresh authenticated HTTP/browser test.",
+    "New-source authenticated reviewer playback remains an owner check because the established browser route is unavailable. No repeat credential probing or access-control bypass was attempted.",
+    "Twenty-four ordinary reviewer approvals remain: twelve C14 reading and twelve C16 audio v2 questions."
+  ]
+}

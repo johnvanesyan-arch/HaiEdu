@@ -2814,12 +2814,13 @@
     "newHumanApprovedItems": 60,
     "stagedItems": 200,
     "approvedItems": 176,
-    "qaPassedItems": 188,
-    "sourceHeldItems": 12,
+    "qaPassedItems": 200,
+    "sourceHeldItems": 0,
     "pendingReviewItems": 24,
     "ownerAcceptedReadingItemsPendingInAppApproval": 12,
     "registeredReadingSets": 13,
-    "registeredAudioSets": 8
+    "registeredAudioSets": 14,
+    "newAudioItemsPendingInAppApproval": 12
   },
   "currentPracticePackets": [
     "docs/content/english-7-unit-01-draft.json",
@@ -2829,7 +2830,7 @@
     "docs/content/english-7-unit-01-assessment-batch-a.json",
     "docs/content/english-7-unit-01-assessment-batch-bcd.json"
   ],
-  "currentStatusCheckpoint": "16.1C.15",
+  "currentStatusCheckpoint": "16.1C.16",
   "audioPreparation": {
     "checkpoint": "16.1C.15",
     "receivedRecordings": 6,
@@ -2843,5 +2844,19 @@
     "currentQaPassed": 188,
     "learnerReleaseActivated": false,
     "evidence": "docs/evidence/english-7-unit-01-bcd-audio-preparation-20261022.json"
+  },
+  "audioRegistration": {
+    "checkpoint": "16.1C.16",
+    "uploadedFilesVerified": 6,
+    "newRegisteredAudioVersions": 6,
+    "newRegisteredTaskSets": 6,
+    "revisedListeningQuestions": 12,
+    "currentQaPassed": 200,
+    "sourceHoldsRemaining": 0,
+    "inAppApproved": 176,
+    "ordinaryApprovalsPending": 24,
+    "freshAuthenticatedPlaybackVerified": false,
+    "learnerReleaseActivated": false,
+    "evidence": "docs/evidence/english-7-unit-01-bcd-audio-registration-20261022.json"
   }
 }
