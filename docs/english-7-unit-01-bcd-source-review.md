@@ -1,8 +1,8 @@
 # English 7 Unit 1 — DB / MB / MC source review and recording scripts
 
-Date: 2026-10-22 · Sprint 16.1C.13 · Exact authored version 1.
+Date: 2026-10-22 · Authored under 16.1C.13; reading acceptance/registration under 16.1C.14 · Exact source text version 1.
 
-These six passages and six scripts support the remaining 84 accepted questions. They are original draft sources awaiting exact-content acceptance. The three factual profiles paraphrase primary sources linked below. No new recording has yet been supplied or auditioned. The previous eight registered recordings remain unchanged.
+John accepted the six exact reading passages and their twelve questions. All six passages are now registered, and all twelve questions pass v2 QA. Their final in-app Approve actions remain in the authenticated reviewer workflow; the chat acceptance is recorded separately. These sources belong to the 84-question DB/MB/MC batch. The three factual profiles paraphrase the primary sources linked below. The six listening scripts remain recording candidates: no new recording has been supplied or auditioned. The previous eight registered recordings remain unchanged. [Acceptance and registration evidence](english-7-unit-01-bcd-reading-registration.md).
 
 Use one recording per script, shared by its two questions. Read only the spoken text, including “Speaker One”, “Speaker Two” and “Speaker Three”. Use distinct natural voices, normal pace and no music. Do not read headings, filenames, questions or answers. Keep the files in the existing private learning-audio delivery process; full audition, permissions and registration follow receipt. The accepted two-play allowance is shared per recording in an assessment. Scripts remain private reviewer material.
 

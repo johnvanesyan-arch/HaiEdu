@@ -1,0 +1,70 @@
+{
+  "schemaVersion": "haiedu-reading-source-acceptance-v1",
+  "checkpoint": "16.1C.14",
+  "date": "2026-10-22 Asia/Yerevan",
+  "recordedAt": "2026-10-22 07:12:02.97279+00",
+  "owner": "John Vanesyan",
+  "reviewerProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "verifiedProfile": {
+    "role": "admin",
+    "accountStatus": "active",
+    "protectedOwner": true
+  },
+  "verbatimDecision": "I approve these:**12 reading questions** await acceptance and registration of six new passages.",
+  "decisionContext": "John accepts the six exact reading passages and twelve linked reading questions from the completed C13 handoff. Register these unchanged sources and attach them through the existing atomic editor. This records the chat decision; it does not fabricate a signed-in reviewer action.",
+  "reviewedSourceCommit": "0241795b8c38328215c798349f9adcfd1f27a032",
+  "reviewPacket": "docs/english-7-unit-01-bcd-source-review.md",
+  "reviewPage": "https://app.notion.com/p/401355a472bf812b99c3f2174fdcfafd",
+  "acceptedTextSha256": {
+    "ENG7-U01-DB-READ-A": "77d311e34349e52e50c0fe18f7acd6981eaeea31d2a05d954a46160058355a6b",
+    "ENG7-U01-DB-READ-B": "3ba0ded2b64e065f697c4ff410644df7b1873877e3a756ff85db07a704eb814b",
+    "ENG7-U01-MB-READ-A": "e78cfa9166da522bc98297736a6f4326bd01402ae5687dfa0b047b4bab9744fe",
+    "ENG7-U01-MB-READ-B": "6de095f56b039318a8e3b8fa175f1a4cfd2aff15c6b29703b6dec61ca5cb0bf8",
+    "ENG7-U01-MC-READ-A": "43742fd9e9d9ba9f1d553f563119c42b43223a767a4d6e29b5d2f1ca0767a8ee",
+    "ENG7-U01-MC-READ-B": "018f59e58679ce1817c8047bbb53354575effcf7c44b94a6457586cc29dff04b"
+  },
+  "acceptedQuestionCodes": [
+    "ENG7-U01-DB-21",
+    "ENG7-U01-DB-22",
+    "ENG7-U01-DB-23",
+    "ENG7-U01-DB-24",
+    "ENG7-U01-MB-21",
+    "ENG7-U01-MB-22",
+    "ENG7-U01-MB-23",
+    "ENG7-U01-MB-24",
+    "ENG7-U01-MC-21",
+    "ENG7-U01-MC-22",
+    "ENG7-U01-MC-23",
+    "ENG7-U01-MC-24"
+  ],
+  "acceptedQuestionDraftSha256": {
+    "ENG7-U01-DB-21": "a02ea8673d149787fd259bb0ac8e86f879bc9787910b5733b3626cded99e5eab",
+    "ENG7-U01-DB-22": "9278ce19528992c4c8365e91d7cca43c7edb982c8e3512e0be03c5841f60a581",
+    "ENG7-U01-DB-23": "e9e006d0ae30416a032a566463541334b8099e95df6cc6c9d1a9fbbe69d8aefb",
+    "ENG7-U01-DB-24": "f3f479af7e8325471a2da08986763535608684fd21605fe461e71e1d0b34a3f3",
+    "ENG7-U01-MB-21": "53297ea7072280b12ce014c5b1cd0fb24165a86b44379ea6b81b0851256664be",
+    "ENG7-U01-MB-22": "229ce146ae827e33b2fbb5562e7b13e0a96554c950d397a70e3b290ae21342ba",
+    "ENG7-U01-MB-23": "65bb94b65b1c07cc882ecc4c5b85ac6182874c1e1ef5b7eed92993ce74db1d3e",
+    "ENG7-U01-MB-24": "613c83b758b96a3890fbb47ea67af3d20512c326619861574bd71048d57e6114",
+    "ENG7-U01-MC-21": "03776260b91c9590403ee446a2e74801cfa98eb02060a770f3d0ecd1363e3cfd",
+    "ENG7-U01-MC-22": "5679c1d5f3f77cdfaf946eb9f99fdb200b11c21377f866632189986bbb4d4c0f",
+    "ENG7-U01-MC-23": "9f2e6a0911efb3ccd5e2541d2fdcacb476f350195c848628ceadace4429e7e77",
+    "ENG7-U01-MC-24": "37ad3ce998f7742b0715179cb80e823691c68e10adc4cc9feaf9ea2fd3aaccb9"
+  },
+  "questionApprovalDisposition": "Owner content acceptance is recorded here. Stored ordinary approval still requires the existing authenticated reviewer workflow for each final v2; no item_reviews row is inserted by this registration.",
+  "reuseBasis": {
+    "scope": "Owner-authorized bounded MVP authoring and private reviewer-catalogue registration of these exact original texts; English remains inactive.",
+    "ENG7-U01-DB-READ-A": "Owner accepts use of this original platform-authored fictional passage within the Unit 1 topic.",
+    "ENG7-U01-DB-READ-B": "Owner accepts use of this original attributed factual paraphrase. Primary-source provenance is retained; no photograph, verbatim external passage, endorsement or third-party licence is imported.",
+    "ENG7-U01-MB-READ-A": "Owner accepts use of this original platform-authored fictional passage within the Unit 1 topic.",
+    "ENG7-U01-MB-READ-B": "Owner accepts use of this original attributed factual paraphrase. Primary-source provenance is retained; no photograph, verbatim external passage, endorsement or third-party licence is imported.",
+    "ENG7-U01-MC-READ-A": "Owner accepts use of this original platform-authored fictional passage within the Unit 1 topic.",
+    "ENG7-U01-MC-READ-B": "Owner accepts use of this original attributed factual paraphrase. Primary-source provenance is retained; no photograph, verbatim external passage, endorsement or third-party licence is imported."
+  },
+  "boundaries": [
+    "Recorded by the authorized implementation agent; not represented as an in-app review click or independent specialist review.",
+    "No question-approval, audio, assessment allocation, policy binding or learner-release mutation is included.",
+    "This owner authorization is not a third-party licence; final source/form/SME and release gates remain.",
+    "Any substantive correction requires successor source/question versions and fresh applicable review."
+  ]
+}

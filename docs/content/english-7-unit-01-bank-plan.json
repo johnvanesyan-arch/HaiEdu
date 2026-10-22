@@ -2811,12 +2811,15 @@
     "qualifiedForms": 0,
     "newItemsInThisBatch": 84,
     "existingCurrentApprovedItems": 116,
-    "newHumanApprovedItems": 0,
+    "newHumanApprovedItems": 60,
     "stagedItems": 200,
-    "approvedItems": 116,
-    "qaPassedItems": 176,
-    "sourceHeldItems": 24,
-    "pendingReviewItems": 84
+    "approvedItems": 176,
+    "qaPassedItems": 188,
+    "sourceHeldItems": 12,
+    "pendingReviewItems": 24,
+    "ownerAcceptedReadingItemsPendingInAppApproval": 12,
+    "registeredReadingSets": 13,
+    "registeredAudioSets": 8
   },
   "currentPracticePackets": [
     "docs/content/english-7-unit-01-draft.json",
@@ -2825,5 +2828,6 @@
   "currentAssessmentPackets": [
     "docs/content/english-7-unit-01-assessment-batch-a.json",
     "docs/content/english-7-unit-01-assessment-batch-bcd.json"
-  ]
+  ],
+  "currentStatusCheckpoint": "16.1C.14"
 }

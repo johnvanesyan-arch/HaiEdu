@@ -1,0 +1,1391 @@
+{
+  "schemaVersion": "haiedu-reading-registration-v1",
+  "checkpoint": "16.1C.14",
+  "reviewedSourceCommit": "0241795b8c38328215c798349f9adcfd1f27a032",
+  "acceptanceReference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7",
+  "scope": "Owner-authorized bounded MVP authoring and private reviewer-catalogue registration of these exact original texts; English remains inactive.",
+  "taskSets": [
+    {
+      "id": "53e03c8f-cdbd-5aa2-a60a-b8fcc65d7b8a",
+      "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+      "source_family_id": "666623ab-ba5a-5ef1-908c-edccbd629963",
+      "locale": "en",
+      "title": "Reading source DB-A",
+      "stimulus": {
+        "kind": "text",
+        "schemaVersion": "haiedu-text-v1",
+        "locale": "en",
+        "content": "A school club planned a clothes-swap afternoon. Its first notice asked people to bring fashionable clothes. Several students were unsure: did their clothes have to be popular that month?\n\nThe club rewrote the notice. It now asked for clean clothes in good condition, with the size written on a card. People could choose according to fit and personal preference. The club did not select one winning style.\n\nStudents who had misunderstood the first notice now knew what they could bring. A clear description of the event was more useful than a vague fashion label."
+      },
+      "members": [
+        {
+          "itemId": "20494a22-562a-5b72-ab04-a317bc96ca31",
+          "version": 2,
+          "skillId": "06fbe791-0e40-5192-adcf-496f96b45bba"
+        },
+        {
+          "itemId": "48c7dcad-4c3d-5c13-a79e-8b941a39727a",
+          "version": 2,
+          "skillId": "06fbe791-0e40-5192-adcf-496f96b45bba"
+        }
+      ],
+      "source_reference": "docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-READ-A; Original authored fiction within Unit 1 topics; all facts needed to answer are supplied.",
+      "permission_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original platform-authored fictional passage within the Unit 1 topic.",
+      "review_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; owner accepted exact source for MVP; delegated registration",
+      "reviewed_by": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+      "reviewed_at": "2026-10-22 07:12:02.97279+00"
+    },
+    {
+      "id": "4122df4c-e8c5-53eb-a399-68b4c13d511b",
+      "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+      "source_family_id": "e2ea2323-9ab3-59c7-ade7-9a125b781075",
+      "locale": "en",
+      "title": "Reading source DB-B",
+      "stimulus": {
+        "kind": "text",
+        "schemaVersion": "haiedu-text-v1",
+        "locale": "en",
+        "content": "The Fashion and Design Chamber of Armenia describes Inga Manukyan's path to LOOM Weaving. During her art studies, Armenian carpet weaving gave her ideas for clothing. Later, with encouragement from her sister, she developed that idea further. The sisters started LOOM Weaving in 2014.\n\nThe profile connects their knitwear with handmade techniques and modern style. It shows one way a traditional craft can inspire clothing made for the present."
+      },
+      "members": [
+        {
+          "itemId": "306106fb-7445-504d-a45c-480f64279eb3",
+          "version": 2,
+          "skillId": "8cb750f3-24b2-5ea6-a058-054199b4fc8a"
+        },
+        {
+          "itemId": "3965e2fa-2ab5-5a0e-a3dc-7d056f7c3a0f",
+          "version": 2,
+          "skillId": "8cb750f3-24b2-5ea6-a058-054199b4fc8a"
+        }
+      ],
+      "source_reference": "docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-READ-B; Original short factual paraphrase of the cited primary FDC profile, checked 2026-10-22; no photograph, marketing ranking or endorsement reused.; https://www.fdc.am/designers/5",
+      "permission_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original attributed factual paraphrase. Primary-source provenance is retained; no photograph, verbatim external passage, endorsement or third-party licence is imported.",
+      "review_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; owner accepted exact source for MVP; delegated registration",
+      "reviewed_by": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+      "reviewed_at": "2026-10-22 07:12:02.97279+00"
+    },
+    {
+      "id": "a97cd981-775b-5fa5-a2eb-4ffec2a9ce2d",
+      "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+      "source_family_id": "4c308062-c912-5aca-8f99-1fcf33e96d75",
+      "locale": "en",
+      "title": "Reading source MB-A",
+      "stimulus": {
+        "kind": "text",
+        "schemaVersion": "haiedu-text-v1",
+        "locale": "en",
+        "content": "For a class project, Lilit photographed three people wearing the same borrowed coat. She expected their written descriptions of it to be alike. Instead, one person praised the deep pockets, another liked the bright lining, and the third said the coat was difficult to move in.\n\nLilit kept all three comments beside the photographs. The project was about people's different experiences, so she did not replace the comments with one score for the coat. Readers could see what mattered to each person."
+      },
+      "members": [
+        {
+          "itemId": "aeed9a93-bff7-573d-a9c8-7181dbd1812a",
+          "version": 2,
+          "skillId": "06fbe791-0e40-5192-adcf-496f96b45bba"
+        },
+        {
+          "itemId": "6e3f62bb-280d-5c17-aaf4-9fec555cdf87",
+          "version": 2,
+          "skillId": "06fbe791-0e40-5192-adcf-496f96b45bba"
+        }
+      ],
+      "source_reference": "docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-READ-A; Original authored fiction within Unit 1 topics; all facts needed to answer are supplied.",
+      "permission_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original platform-authored fictional passage within the Unit 1 topic.",
+      "review_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; owner accepted exact source for MVP; delegated registration",
+      "reviewed_by": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+      "reviewed_at": "2026-10-22 07:12:02.97279+00"
+    },
+    {
+      "id": "5c38a61c-987a-5bf1-a368-fc28711361ec",
+      "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+      "source_family_id": "546febe1-e048-5fc7-b66d-2023f636dc5c",
+      "locale": "en",
+      "title": "Reading source MB-B",
+      "stimulus": {
+        "kind": "text",
+        "schemaVersion": "haiedu-text-v1",
+        "locale": "en",
+        "content": "According to the Fashion and Design Chamber of Armenia, SHABEEG uses clothing to share Armenian heritage. Nature, architecture and traditional dress provide ideas for its designs. Its products include T-shirts as well as other clothes and bags.\n\nThe profile describes a clear design sequence: the pictures are first drawn by hand and then turned into digital images. Traditional sources of inspiration and a later digital step are both part of the account."
+      },
+      "members": [
+        {
+          "itemId": "ce4a9c9a-cfc0-5b5c-a1de-a755c7714d24",
+          "version": 2,
+          "skillId": "8cb750f3-24b2-5ea6-a058-054199b4fc8a"
+        },
+        {
+          "itemId": "3906ff32-0913-5ae7-a44c-2fb712a31b39",
+          "version": 2,
+          "skillId": "8cb750f3-24b2-5ea6-a058-054199b4fc8a"
+        }
+      ],
+      "source_reference": "docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-READ-B; Original short factual paraphrase of the cited primary FDC profile, checked 2026-10-22; no photograph, marketing ranking or endorsement reused.; https://www.fdc.am/designers/6",
+      "permission_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original attributed factual paraphrase. Primary-source provenance is retained; no photograph, verbatim external passage, endorsement or third-party licence is imported.",
+      "review_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; owner accepted exact source for MVP; delegated registration",
+      "reviewed_by": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+      "reviewed_at": "2026-10-22 07:12:02.97279+00"
+    },
+    {
+      "id": "9cc705fc-47d6-5fa4-a3d9-e07e66e2a759",
+      "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+      "source_family_id": "a0f73378-c629-58d1-a194-2e6f443cb43f",
+      "locale": "en",
+      "title": "Reading source MC-A",
+      "stimulus": {
+        "kind": "text",
+        "schemaVersion": "haiedu-text-v1",
+        "locale": "en",
+        "content": "A class prepared a guide to costumes for visitors who would not see the display. The first draft said only that each costume was beautiful or unusual. When a classmate read it without the photographs, those words did not help her imagine the clothes.\n\nThe writers added colours, shapes and parts such as collars and sleeves. They kept opinions in a separate final sentence. For one jacket, they described a short green body with long yellow sleeves. The revised guide gave readers concrete information before offering an opinion."
+      },
+      "members": [
+        {
+          "itemId": "5c2ee852-5f61-5659-a0e3-f5c03207eae4",
+          "version": 2,
+          "skillId": "06fbe791-0e40-5192-adcf-496f96b45bba"
+        },
+        {
+          "itemId": "beea1d76-3417-5a78-a57c-e1f6df748369",
+          "version": 2,
+          "skillId": "06fbe791-0e40-5192-adcf-496f96b45bba"
+        }
+      ],
+      "source_reference": "docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-READ-A; Original authored fiction within Unit 1 topics; all facts needed to answer are supplied.",
+      "permission_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original platform-authored fictional passage within the Unit 1 topic.",
+      "review_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; owner accepted exact source for MVP; delegated registration",
+      "reviewed_by": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+      "reviewed_at": "2026-10-22 07:12:02.97279+00"
+    },
+    {
+      "id": "f6b3cc18-daf8-5808-a25d-a9c4e2f2dbfa",
+      "curriculum_release_id": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unit_id": "3ef44139-0053-58e6-ab0d-5901a0213683",
+      "source_family_id": "a864e540-7a9e-533f-9bca-06febf414330",
+      "locale": "en",
+      "title": "Reading source MC-B",
+      "stimulus": {
+        "kind": "text",
+        "schemaVersion": "haiedu-text-v1",
+        "locale": "en",
+        "content": "The Fashion and Design Chamber of Armenia describes two connected activities at the Teryan Cultural Center. One is carefully recreating traditional Armenian clothing with advice from experts who study culture and traditions. Another is making modern clothes and accessories that use traditional elements.\n\nThe center also offers opportunities to learn traditional crafts. In this account, preserving older designs and using cultural ideas in present-day work are connected, but they are not described as exactly the same activity."
+      },
+      "members": [
+        {
+          "itemId": "2f4b61d0-d3ac-5dd4-a7ec-e5b1c6afb159",
+          "version": 2,
+          "skillId": "8cb750f3-24b2-5ea6-a058-054199b4fc8a"
+        },
+        {
+          "itemId": "72afd1f2-8f45-5e64-a1fe-d0e7ec69870a",
+          "version": 2,
+          "skillId": "8cb750f3-24b2-5ea6-a058-054199b4fc8a"
+        }
+      ],
+      "source_reference": "docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-READ-B; Original short factual paraphrase of the cited primary FDC profile, checked 2026-10-22; no photograph, marketing ranking or endorsement reused.; https://www.fdc.am/designers/45",
+      "permission_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; Owner accepts use of this original attributed factual paraphrase. Primary-source provenance is retained; no photograph, verbatim external passage, endorsement or third-party licence is imported.",
+      "review_reference": "docs/evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json#0df2795c087c5290faf07950e80ed8d2e968b85ae2f48099a12deb74a51571a7; owner accepted exact source for MVP; delegated registration",
+      "reviewed_by": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+      "reviewed_at": "2026-10-22 07:12:02.97279+00"
+    }
+  ],
+  "revisions": [
+    {
+      "code": "ENG7-U01-DB-21",
+      "itemId": "20494a22-562a-5b72-ab04-a317bc96ca31",
+      "sourceCode": "ENG7-U01-DB-READ-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "20494a22-562a-5b72-ab04-a317bc96ca31",
+        "code": "ENG7-U01-DB-21",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "diagnostic",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "diagnostic",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "726066fe6760e5379acd8efaa42d4cff7873f305e5b7b45b571b183b6f212e8f",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "666623ab-ba5a-5ef1-908c-edccbd629963",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "06fbe791-0e40-5192-adcf-496f96b45bba",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source DB-A. What is the main point of the passage?",
+        "prompt_hy": "Read Reading source DB-A. What is the main point of the passage?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "fcd6c960-0b3a-525a-ab1b-dbbe0dc06574",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-21",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source DB-A. What is the main point of the passage?",
+        "promptEn": "Read Reading source DB-A. What is the main point of the passage?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-21",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "53e03c8f-cdbd-5aa2-a60a-b8fcc65d7b8a"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "A clearer notice helped students understand a clothes-swap event.",
+            "contentEn": "A clearer notice helped students understand a clothes-swap event.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "The club found one style that everyone should wear.",
+            "contentEn": "The club found one style that everyone should wear.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Only clothes popular that month were allowed.",
+            "contentEn": "Only clothes popular that month were allowed.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "a",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-DB-READ-A; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-DB-22",
+      "itemId": "48c7dcad-4c3d-5c13-a79e-8b941a39727a",
+      "sourceCode": "ENG7-U01-DB-READ-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "48c7dcad-4c3d-5c13-a79e-8b941a39727a",
+        "code": "ENG7-U01-DB-22",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "diagnostic",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "diagnostic",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "4d05ff2b626d8ff31aae23395e7b4f5755cb7ca85b45c777c62549e89e52e7fe",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "666623ab-ba5a-5ef1-908c-edccbd629963",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "06fbe791-0e40-5192-adcf-496f96b45bba",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source DB-A. What did the revised notice ask people to write on a card?",
+        "prompt_hy": "Read Reading source DB-A. What did the revised notice ask people to write on a card?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "555f8d28-b105-5e57-a565-f91c168fa1b3",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-22",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source DB-A. What did the revised notice ask people to write on a card?",
+        "promptEn": "Read Reading source DB-A. What did the revised notice ask people to write on a card?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-22",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "53e03c8f-cdbd-5aa2-a60a-b8fcc65d7b8a"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "The month when the clothes became popular.",
+            "contentEn": "The month when the clothes became popular.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "The size of the clothes.",
+            "contentEn": "The size of the clothes.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "The name of the winning style.",
+            "contentEn": "The name of the winning style.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-DB-READ-A; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-DB-23",
+      "itemId": "306106fb-7445-504d-a45c-480f64279eb3",
+      "sourceCode": "ENG7-U01-DB-READ-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "306106fb-7445-504d-a45c-480f64279eb3",
+        "code": "ENG7-U01-DB-23",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "diagnostic",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "diagnostic",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "75438f0b2d24df04a7634bd0be96d17aeee77ff22a737719b7b7f891d3cca7fb",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "e2ea2323-9ab3-59c7-ade7-9a125b781075",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source DB-B. Which happened first in the account?",
+        "prompt_hy": "Read Reading source DB-B. Which happened first in the account?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "2684198b-463c-5de1-ad4d-87b4cff87efd",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-23",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source DB-B. Which happened first in the account?",
+        "promptEn": "Read Reading source DB-B. Which happened first in the account?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-23",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "4122df4c-e8c5-53eb-a399-68b4c13d511b"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "The sisters started LOOM Weaving.",
+            "contentEn": "The sisters started LOOM Weaving.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Carpet weaving inspired Inga during her studies.",
+            "contentEn": "Carpet weaving inspired Inga during her studies.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "The account says both happened at the same time.",
+            "contentEn": "The account says both happened at the same time.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-DB-READ-B; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-DB-24",
+      "itemId": "3965e2fa-2ab5-5a0e-a3dc-7d056f7c3a0f",
+      "sourceCode": "ENG7-U01-DB-READ-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "3965e2fa-2ab5-5a0e-a3dc-7d056f7c3a0f",
+        "code": "ENG7-U01-DB-24",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "diagnostic",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "diagnostic",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "5a9905ca7f4634cdbf33f75b2d3cd0f48249b0bf8860f3c48f1ebe8496b1938a",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "e2ea2323-9ab3-59c7-ade7-9a125b781075",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source DB-B. Which Armenian craft does the passage identify as an inspiration?",
+        "prompt_hy": "Read Reading source DB-B. Which Armenian craft does the passage identify as an inspiration?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "59a66157-89de-5964-ada1-c9d71221d325",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-24",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source DB-B. Which Armenian craft does the passage identify as an inspiration?",
+        "promptEn": "Read Reading source DB-B. Which Armenian craft does the passage identify as an inspiration?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-DB-24",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "4122df4c-e8c5-53eb-a399-68b4c13d511b"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Carpet weaving.",
+            "contentEn": "Carpet weaving.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Metalworking.",
+            "contentEn": "Metalworking.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Pottery.",
+            "contentEn": "Pottery.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "a",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-DB-READ-B; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-MB-21",
+      "itemId": "aeed9a93-bff7-573d-a9c8-7181dbd1812a",
+      "sourceCode": "ENG7-U01-MB-READ-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "aeed9a93-bff7-573d-a9c8-7181dbd1812a",
+        "code": "ENG7-U01-MB-21",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "ad87785f65c32ba5dbe570c275d9b34bb5fe8939a1500daf12bf8d870ed6b903",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "4c308062-c912-5aca-8f99-1fcf33e96d75",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "06fbe791-0e40-5192-adcf-496f96b45bba",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source MB-A. Why does Lilit keep all three comments?",
+        "prompt_hy": "Read Reading source MB-A. Why does Lilit keep all three comments?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "03fda379-3341-51ab-ae86-b8abe1e0c119",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-21",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source MB-A. Why does Lilit keep all three comments?",
+        "promptEn": "Read Reading source MB-A. Why does Lilit keep all three comments?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-21",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "a97cd981-775b-5fa5-a2eb-4ffec2a9ce2d"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "To prove that the coat is perfect for everyone.",
+            "contentEn": "To prove that the coat is perfect for everyone.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "To show that the same coat can produce different experiences.",
+            "contentEn": "To show that the same coat can produce different experiences.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "To decide which photograph has the brightest colours.",
+            "contentEn": "To decide which photograph has the brightest colours.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-MB-READ-A; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-MB-22",
+      "itemId": "6e3f62bb-280d-5c17-aaf4-9fec555cdf87",
+      "sourceCode": "ENG7-U01-MB-READ-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "6e3f62bb-280d-5c17-aaf4-9fec555cdf87",
+        "code": "ENG7-U01-MB-22",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "3f262bf682a1798f79e89ba145563aea751f2f187163f400be188094997c5aa8",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "4c308062-c912-5aca-8f99-1fcf33e96d75",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "06fbe791-0e40-5192-adcf-496f96b45bba",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source MB-A. What difficulty does the third person describe?",
+        "prompt_hy": "Read Reading source MB-A. What difficulty does the third person describe?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "4e1900e5-84a6-5bbb-a288-abfd5927cb36",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-22",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source MB-A. What difficulty does the third person describe?",
+        "promptEn": "Read Reading source MB-A. What difficulty does the third person describe?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-22",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "a97cd981-775b-5fa5-a2eb-4ffec2a9ce2d"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "The pockets are too shallow.",
+            "contentEn": "The pockets are too shallow.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "The lining is not bright enough.",
+            "contentEn": "The lining is not bright enough.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Moving in the coat is difficult.",
+            "contentEn": "Moving in the coat is difficult.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "c",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-MB-READ-A; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-MB-23",
+      "itemId": "ce4a9c9a-cfc0-5b5c-a1de-a755c7714d24",
+      "sourceCode": "ENG7-U01-MB-READ-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "ce4a9c9a-cfc0-5b5c-a1de-a755c7714d24",
+        "code": "ENG7-U01-MB-23",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "f9c7e51edbbb43f0055c66b9cfad87d49a39e8839d93b455b1813af1e0b7738d",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "546febe1-e048-5fc7-b66d-2023f636dc5c",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source MB-B. What happens before the pictures become digital images?",
+        "prompt_hy": "Read Reading source MB-B. What happens before the pictures become digital images?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "4247bc08-1120-5fe0-a053-f3d0e520ff17",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-23",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source MB-B. What happens before the pictures become digital images?",
+        "promptEn": "Read Reading source MB-B. What happens before the pictures become digital images?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-23",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "5c38a61c-987a-5bf1-a368-fc28711361ec"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "They are drawn by hand.",
+            "contentEn": "They are drawn by hand.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "They are copied from finished bags.",
+            "contentEn": "They are copied from finished bags.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "They are removed from all the clothes.",
+            "contentEn": "They are removed from all the clothes.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "a",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-MB-READ-B; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-MB-24",
+      "itemId": "3906ff32-0913-5ae7-a44c-2fb712a31b39",
+      "sourceCode": "ENG7-U01-MB-READ-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "3906ff32-0913-5ae7-a44c-2fb712a31b39",
+        "code": "ENG7-U01-MB-24",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "8a234ff899262aa0e9eaeb4a100695fafb88d03e259c116ebf2d952705984ebc",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "546febe1-e048-5fc7-b66d-2023f636dc5c",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source MB-B. Which group of influences is named?",
+        "prompt_hy": "Read Reading source MB-B. Which group of influences is named?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "2129eef5-7d8d-5b82-afd9-34914ae20fad",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-24",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source MB-B. Which group of influences is named?",
+        "promptEn": "Read Reading source MB-B. Which group of influences is named?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MB-24",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "5c38a61c-987a-5bf1-a368-fc28711361ec"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Only foreign sports teams.",
+            "contentEn": "Only foreign sports teams.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Armenian nature, architecture and traditional dress.",
+            "contentEn": "Armenian nature, architecture and traditional dress.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Only the most popular colours of one month.",
+            "contentEn": "Only the most popular colours of one month.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-MB-READ-B; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-MC-21",
+      "itemId": "5c2ee852-5f61-5659-a0e3-f5c03207eae4",
+      "sourceCode": "ENG7-U01-MC-READ-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "5c2ee852-5f61-5659-a0e3-f5c03207eae4",
+        "code": "ENG7-U01-MC-21",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "6d4f9c8c7fb8bbd918ac01e87303e561670835fdc862e3a1454dd34900b92a39",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "a0f73378-c629-58d1-a194-2e6f443cb43f",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "06fbe791-0e40-5192-adcf-496f96b45bba",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source MC-A. What improvement is central to the revised guide?",
+        "prompt_hy": "Read Reading source MC-A. What improvement is central to the revised guide?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "4af3f09c-7fc3-50bb-a7e7-632a7f950775",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-21",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source MC-A. What improvement is central to the revised guide?",
+        "promptEn": "Read Reading source MC-A. What improvement is central to the revised guide?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-21",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "9cc705fc-47d6-5fa4-a3d9-e07e66e2a759"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "It replaces every clothing detail with an opinion.",
+            "contentEn": "It replaces every clothing detail with an opinion.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "It gives concrete clothing details that readers can imagine.",
+            "contentEn": "It gives concrete clothing details that readers can imagine.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "It asks visitors to choose the most beautiful costume.",
+            "contentEn": "It asks visitors to choose the most beautiful costume.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-MC-READ-A; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-MC-22",
+      "itemId": "beea1d76-3417-5a78-a57c-e1f6df748369",
+      "sourceCode": "ENG7-U01-MC-READ-A",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "beea1d76-3417-5a78-a57c-e1f6df748369",
+        "code": "ENG7-U01-MC-22",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "51553c9f534655a59797e7fee7f7a2bf0c6eb496031cc8a4c9301e9d1c6b8d79",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "a0f73378-c629-58d1-a194-2e6f443cb43f",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "06fbe791-0e40-5192-adcf-496f96b45bba",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source MC-A. Which description is given for the jacket?",
+        "prompt_hy": "Read Reading source MC-A. Which description is given for the jacket?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "9640ba37-e647-50a1-ad2f-c7019be8a020",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-22",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source MC-A. Which description is given for the jacket?",
+        "promptEn": "Read Reading source MC-A. Which description is given for the jacket?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 17, 18; activities 19; programme T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-22",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "9cc705fc-47d6-5fa4-a3d9-e07e66e2a759"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "A long yellow body with short green sleeves.",
+            "contentEn": "A long yellow body with short green sleeves.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "A short green body with long yellow sleeves.",
+            "contentEn": "A short green body with long yellow sleeves.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "A short green body with short green sleeves.",
+            "contentEn": "A short green body with short green sleeves.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-MC-READ-A; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-MC-23",
+      "itemId": "2f4b61d0-d3ac-5dd4-a7ec-e5b1c6afb159",
+      "sourceCode": "ENG7-U01-MC-READ-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "2f4b61d0-d3ac-5dd4-a7ec-e5b1c6afb159",
+        "code": "ENG7-U01-MC-23",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "dc4c44ee69338b13626d248e35397166ce9de4bbfcb057bec8a21e4bbe6414cb",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "a864e540-7a9e-533f-9bca-06febf414330",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source MC-B. What distinction does the passage make?",
+        "prompt_hy": "Read Reading source MC-B. What distinction does the passage make?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "2877c46e-7639-5c1d-a4f6-1b1f39beb5bb",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-23",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source MC-B. What distinction does the passage make?",
+        "promptEn": "Read Reading source MC-B. What distinction does the passage make?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-23",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "f6b3cc18-daf8-5808-a25d-a9c4e2f2dbfa"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Recreating older clothing and making modern designs are connected but different activities.",
+            "contentEn": "Recreating older clothing and making modern designs are connected but different activities.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "All modern designs are exact copies of one old costume.",
+            "contentEn": "All modern designs are exact copies of one old costume.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "The center works only on modern accessories and ignores older clothes.",
+            "contentEn": "The center works only on modern accessories and ignores older clothes.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "a",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-MC-READ-B; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    },
+    {
+      "code": "ENG7-U01-MC-24",
+      "itemId": "72afd1f2-8f45-5e64-a1fe-d0e7ec69870a",
+      "sourceCode": "ENG7-U01-MC-READ-B",
+      "expectedCurrentVersion": 1,
+      "expectedNextVersion": 2,
+      "expectedCurrentItem": {
+        "id": "72afd1f2-8f45-5e64-a1fe-d0e7ec69870a",
+        "code": "ENG7-U01-MC-24",
+        "config": {
+          "checkpoint": "16.1C.13",
+          "intendedBank": "mastery",
+          "sourcePacket": "docs/content/english-7-unit-01-assessment-batch-bcd.json",
+          "contentLocale": "en",
+          "learnerVisible": false,
+          "shuffleOptions": true,
+          "authoringReview": {
+            "schemaVersion": "haiedu-authoring-review-v1",
+            "snapshotVersion": 1
+          },
+          "evidencePurpose": "application",
+          "sprint11dBucket": "mastery_check",
+          "authorProvenance": "Codex automated author and inactive draft import; human review pending",
+          "allocationAllowed": false,
+          "sourcePacketSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+          "originalDraftSha256": "62755da627ff339c6c146af82fb59745ffc8b51572b991ca43053fd36553f1f1",
+          "originalDraftVersion": 1,
+          "comparisonDisposition": "protected_parallel_assessment_variant",
+          "sourceFamilyProposedId": "a864e540-7a9e-533f-9bca-06febf414330",
+          "authoringProfileVersion": "haiedu-evidence-blueprint-v1",
+          "independentCoverageClaimed": false
+        },
+        "status": "draft",
+        "skill_id": "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+        "stimulus": {},
+        "item_type": "single_choice",
+        "prompt_en": "Read Reading source MC-B. Who advises on the careful recreation of traditional clothing?",
+        "prompt_hy": "Read Reading source MC-B. Who advises on the careful recreation of traditional clothing?",
+        "created_at": "2026-10-22T06:01:36.551971+00:00",
+        "difficulty": 2,
+        "retired_at": null,
+        "updated_at": "2026-10-22T06:01:36.551971+00:00",
+        "version_no": 1,
+        "item_family": "application",
+        "variant_key": "fixed_v1",
+        "variant_seed": null,
+        "review_status": "needs_review",
+        "retired_reason": null,
+        "difficulty_band": "core",
+        "item_template_id": "804bd333-c58c-5faf-a7f6-b775f38efa81",
+        "last_reviewed_at": null,
+        "last_reviewed_by": null,
+        "source_reference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-24",
+        "validation_state": "provisional_no_sme_review",
+        "variant_parameters": {},
+        "replacement_item_id": null,
+        "variant_fingerprint": null
+      },
+      "payload": {
+        "promptHy": "Read Reading source MC-B. Who advises on the careful recreation of traditional clothing?",
+        "promptEn": "Read Reading source MC-B. Who advises on the careful recreation of traditional clothing?",
+        "difficulty": 2,
+        "itemFamily": "application",
+        "sourceReference": "Grigoryan, English 7, Zangak 2023; pp. 16, 20, 21; activities 18, 21, 22; programme T1.K2, T1.L2; docs/content/english-7-unit-01-assessment-batch-bcd.json#ENG7-U01-MC-24",
+        "stimulus": {
+          "kind": "task_set",
+          "schemaVersion": "haiedu-task-set-v1",
+          "taskSetVersionId": "f6b3cc18-daf8-5808-a25d-a9c4e2f2dbfa"
+        },
+        "options": [
+          {
+            "key": "a",
+            "contentHy": "Visitors who vote for the brightest colours.",
+            "contentEn": "Visitors who vote for the brightest colours.",
+            "displayOrder": 1
+          },
+          {
+            "key": "b",
+            "contentHy": "Experts who study culture and traditions.",
+            "contentEn": "Experts who study culture and traditions.",
+            "displayOrder": 2
+          },
+          {
+            "key": "c",
+            "contentHy": "Only the people selling modern accessories.",
+            "contentEn": "Only the people selling modern accessories.",
+            "displayOrder": 3
+          }
+        ],
+        "answerKey": {
+          "answer": "b",
+          "tolerance": null,
+          "canonicalUnit": null,
+          "acceptedUnits": [],
+          "feedbackCode": null
+        },
+        "changeSummary": "16.1C.14 owner-accepted MVP source attachment; delegated on John Vanesyan’s explicit acceptance. Attach owner-accepted reading source ENG7-U01-MC-READ-B; preserve question wording, key, source family and member order. Chat acceptance is recorded separately; authenticated ordinary approval is still required."
+      }
+    }
+  ],
+  "limits": [
+    "Recorded by the authorized implementation agent; not represented as an in-app review click or independent specialist review.",
+    "No question-approval, audio, assessment allocation, policy binding or learner-release mutation is included.",
+    "This owner authorization is not a third-party licence; final source/form/SME and release gates remain.",
+    "Any substantive correction requires successor source/question versions and fresh applicable review."
+  ]
+}

@@ -1,21 +1,23 @@
 # English 7 Unit 1 — DB / MB / MC delivery
 
-**Sprint 16.1C.13 · 2026-10-22 · authoring and inactive reviewer onboarding complete.** The accepted bank is now fully authored and staged: **60 Practice / 56 Diagnostic / 84 Mastery = 200 questions**. The new batch contains 28 Diagnostic B, 28 Mastery B and 28 Mastery C questions. English remains draft/inactive.
+**Sprint 16.1C.14 — six accepted reading sources registered; all 12 linked questions pass QA at v2.** John accepted the exact passages and questions. The existing atomic editor attached the sources without changing wording, keys, source families or order. Independent readback verifies 12/12 QA passes and catalog/preview matches; 235 old immutable versions and all 176 current in-app approvals are preserved. The bank remains 60 Practice / 56 Diagnostic / 84 Mastery: 200 staged, 176 approved in-app, 188 QA passed and 12 listening-source holds. The 12 reading questions are owner-accepted in chat and ready for the authenticated reviewer Approve action; no in-app approval is fabricated. Thirteen reading sets and eight working audio sets are registered. English stays draft/inactive. [Reading delivery](english-7-unit-01-bcd-reading-registration.md) · [Acceptance](evidence/english-7-unit-01-bcd-reading-acceptance-20261022.json) · [Evidence](evidence/english-7-unit-01-bcd-reading-registration-20261022.json).
+
+**Historical Sprint 16.1C.13 · 2026-10-22 · authoring and inactive reviewer onboarding complete.** The accepted bank is now fully authored and staged: **60 Practice / 56 Diagnostic / 84 Mastery = 200 questions**. The new batch contains 28 Diagnostic B, 28 Mastery B and 28 Mastery C questions. English remains draft/inactive.
 
 ## Where to review
 
 Open the [reviewer page](https://www.haiedu.am/content-review.html), select English Grade 7 / Unit 1 and search `ENG7-U01-DB`, `ENG7-U01-MB` or `ENG7-U01-MC`. All 84 new drafts have private explanations, keys, comparison notes and, where applicable, the full passage or script in question detail. The [readback evidence](evidence/english-7-unit-01-bcd-review-onboarding-20261022.json) contains a direct link for every question.
 
-| Bank | Staged | Approved | Current QA passed | New review queue | Source held |
+| Bank | Staged | In-app approved | Current QA passed | Review queue | Source held |
 | --- | ---: | ---: | ---: | ---: | ---: |
 | Practice | 60 | 60 | 60 | 0 | 0 |
-| Diagnostic | 56 | 28 | 48 | 28 | 8 |
-| Mastery | 84 | 28 | 68 | 56 | 16 |
-| **Total** | **200** | **116** | **176** | **84** | **24** |
+| Diagnostic | 56 | 48 | 52 | 8 | 4 |
+| Mastery | 84 | 68 | 76 | 16 | 8 |
+| **Total** | **200** | **176** | **188** | **24** | **12** |
 
-The 24 holds are expected: **12 reading questions need six newly accepted and registered passages; 12 listening questions need six new recordings and their accepted source registration**. Their only blocking QA code is `authoring_source_registration_pending`. The private preview supplies their complete draft sources now. A script is not a playable audio asset. The existing seven reading sets, eight recordings and all 116 prior approvals/QA passes are unchanged.
+Only **twelve listening questions remain source-held**, pending six new recordings and source registration. All twelve reading questions now pass v2 QA with six accepted registered passages. Their owner acceptance is recorded in chat; final ordinary approval must still use the authenticated reviewer action. Sixty other new questions now have verified in-app approval, preserving the earlier 116 approvals. No question wording or answer changed.
 
-The misconception-mapping warning remains non-blocking under the existing authored-catalogue review policy. No inaccurate misconception was attached to silence it. New human approvals have not been manufactured; the accepted bank manifest explicitly does not delegate final question approval.
+The misconception-mapping warning remains non-blocking. No inaccurate mapping or authenticated approval record was fabricated. [Reading registration and exact preservation](english-7-unit-01-bcd-reading-registration.md).
 
 ## Sources and recordings
 
@@ -23,7 +25,7 @@ The [source review and six recording scripts](english-7-unit-01-bcd-source-revie
 
 Each form retains the accepted distribution: 20 language, four reading and four listening questions, with four shared sources. Every form has 31 response components but **28 questions**, each with maximum one item point. This does not adopt final English scoring weights, readiness, retry rules or empirical form equivalence. The approved C12 runtime already provides two plays per recording per assessment, normal speed, shared question visibility and persistent interruption handling; no further playback-count decision is required. Speaking stays classroom-assessed.
 
-## Verification and preservation
+## Historical C13 authoring verification and preservation
 
 - Whole-bank review used all 116 current questions, 151 immutable versions, nine draft guides, writing/practice/model material, all existing source sets and equivalent-skill/outcome mappings. The full corpus was re-read unchanged immediately before staging. [Comparison and rework matrix](english-7-unit-01-bcd-whole-bank-review.md).
 - Ten questions were revised before first production v1 to address repeated scenarios, missing context or legitimate answer alternatives. No old question, key, approval or historical revision was overwritten.
@@ -35,6 +37,6 @@ This slice changes governed English content, not shared core behavior. No fronte
 
 ## Next capability slice
 
-Review the 60 QA-ready new questions and the six exact reading passages. After source acceptance, register the passages and refresh the 12 linked question versions/QA. Produce the six recordings from the supplied scripts; then verify bytes, rights, speaker alignment, full listening quality, private delivery and the 12 listening links before ordinary question approval. Guides/writing onboarding can proceed as a later bounded slice while recording work is pending. Final scoring/workload, formal curriculum reconciliation, SME/exposure/form qualification and authenticated learner release acceptance remain separate gates.
+Complete the authenticated Approve action for the twelve owner-accepted reading questions. Produce the six recordings from the supplied scripts, then verify bytes, reuse permissions, speaker alignment, full listening quality, private delivery and the twelve listening links before ordinary approval. Guides/writing onboarding can proceed as the next bounded slice while recording work is pending. Final scoring/workload, formal curriculum reconciliation, SME/exposure/form qualification and authenticated learner release acceptance remain separate gates.
 
 The immutable authoring packet retains its original pre-import draft fields as provenance. The current status register, accepted manifest's current inventory and production onboarding evidence describe the staged state. Notion synchronization must use the exact merged source and preserve native child pages; prepared local edits do not constitute sync.
