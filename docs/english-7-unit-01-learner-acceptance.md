@@ -27,7 +27,7 @@ The new native-browser regression uses the exact accepted W01 definition in a di
 
 Existing real Edge/SQL browser scenarios now also assert the scope notice on completed v2/v3 results and learner history. Focused reporting cases cover the approved English 5/15/4/4 groups, Diagnostic without pass/fail, high-percentage failures, historical denominators, teacher/school grouping and escaped labels. Existing save/return/revision, stale-response, authorization, audio and form-validator evidence is retained; required CI reruns its normal gates.
 
-The local Chromium download returned invalid archives. Native-browser results are therefore established by the required `role-layout-browser` CI job against the merged source, not claimed from local execution. Final CI and production deployment are recorded with the exact source commit in the [Notion sprint map](https://app.notion.com/p/3df355a472bf813585aac229c27f8f9c). [Delivery evidence](evidence/english-7-unit-01-learner-acceptance-20261022.json).
+The local Chromium download returned invalid archives. The required native-browser CI job passed **94/94 cases**, including the accepted English writing flow, on implementation commit `72c9e31dfb056ec520d00cc1a65779e3f28cff6e`. PostgreSQL and concurrency gates also passed. The main suite found one stale teacher-heading expectation (1,390 passed, one failed); the follow-up corrects that test and records evidence, without changing production implementation. Final CI and production deployment are recorded with the exact source commit in the [Notion sprint map](https://app.notion.com/p/3df355a472bf813585aac229c27f8f9c). [Delivery evidence](evidence/english-7-unit-01-learner-acceptance-20261022.json).
 
 ## Bounded live acceptance handoff
 

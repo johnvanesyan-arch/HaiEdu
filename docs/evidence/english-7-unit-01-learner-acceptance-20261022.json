@@ -86,7 +86,11 @@
       "passed": true
     },
     "browserTestSyntax": "passed",
-    "browserQaTriggers": "passed after adding the shared reporting helper to the school analytics workflow"
+    "browserQaTriggers": "passed after adding the shared reporting helper to the school analytics workflow",
+    "teacherLocalizationCorrection": {
+      "passed": 3,
+      "failed": 0
+    }
   },
   "nativeBrowser": {
     "localExecution": "not run: Playwright Chromium archive download returned invalid archives",
@@ -97,7 +101,16 @@
       "real Edge/SQL v3 normalized-point completion shows scoped results"
     ],
     "authentication": "explicit synthetic auth identity double plus actual live-session gate/Edge handler/SQL",
-    "contentReview": "synthetic marks verify workflow only; not language/SME qualification"
+    "contentReview": "synthetic marks verify workflow only; not language/SME qualification",
+    "verifiedImplementationCi": {
+      "runId": 39841926110,
+      "jobId": 120044933306,
+      "tests": 94,
+      "passed": 94,
+      "failed": 0,
+      "skipped": 0,
+      "acceptedWritingScenario": "passed"
+    }
   },
   "reusedEvidence": {
     "ownerContentAndAudioAcceptances": "C11/C17/C18; no new approval audit, content QA or audio audition",
@@ -130,12 +143,27 @@
       "institutional-concurrency",
       "Platform release checks"
     ],
-    "persistentDeploymentCheck": "existing separately verified configuration reused; CI alone is not claimed to enforce deployment blocking"
+    "persistentDeploymentCheck": "existing separately verified configuration reused; CI alone is not claimed to enforce deployment blocking",
+    "correctionScope": "one stale test expectation plus this evidence and acceptance document; production implementation unchanged; final exact-head CI/deployment must pass and be source-stamped in Notion"
   },
   "reusedSourceFileSha256": {
     "docs/content/english-7-unit-01-release-configuration.json": "858b5563b908c56f513238552ae19fefdac5c330a3f5fbb0656c2fb294354b5c",
     "docs/content/english-7-unit-01-materials.json": "8178cb82408866e01e58c04b26470eb6d71cf4ca791d7ee69a2e5483d8130b5c",
     "docs/evidence/english-7-unit-01-policy-acceptance-20261022.json": "c58f3d34111304a326b388dcee7814b5ee8c86b1af8e68341829687208665975",
     "docs/evidence/english-7-unit-01-configuration-preparation-20261022.json": "513a66c803f2d8c561e3a836380da6d168e26eef9330c277cb7090f94b651553"
+  },
+  "implementationCommit": "72c9e31dfb056ec520d00cc1a65779e3f28cff6e",
+  "initialCi": {
+    "runId": 39841926110,
+    "sourceCommit": "72c9e31dfb056ec520d00cc1a65779e3f28cff6e",
+    "mainTests": {
+      "passed": 1390,
+      "failed": 1,
+      "failure": "teacher-localization expected the old heading; expectation corrected to the new scoped Armenian heading"
+    },
+    "nativeBrowser": "94/94 passed",
+    "postgres17": "passed",
+    "institutionalConcurrency": "passed",
+    "aggregate": "blocked by stale teacher heading test"
   }
 }
