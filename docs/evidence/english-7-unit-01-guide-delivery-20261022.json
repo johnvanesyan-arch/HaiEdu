@@ -1,0 +1,94 @@
+{
+  "schemaVersion": "delivery-evidence-v1",
+  "sprint": "16.1C.18",
+  "date": "2026-10-22",
+  "recordType": "source-and-runtime-checkpoint; final merged-head CI/deployment attested in Notion",
+  "baseCommit": "864b1f9f70693ef04c2f6d93c96287dd5a664a9d",
+  "roadmapVersion": "4.44",
+  "ownerAcceptance": {
+    "provenance": "John: I accepted them. You do not need to verify after me if I have done it properly. Proceed with the next part.",
+    "scope": "nine guides and complete writing/rubric/workload package",
+    "newApprovalAudit": false,
+    "contentQaRerun": false
+  },
+  "scope": "shared read-only learner teaching-guide delivery",
+  "runtimeReadback": {
+    "edgeVersion": 1,
+    "edgeFilesExact": [
+      "get-unit-guides/index.ts",
+      "_shared/auth.ts",
+      "_shared/unit-guides-handler.mjs"
+    ],
+    "verifyJwt": true,
+    "sqlFunctionsExact": [
+      "private.student_unit_guides",
+      "public.service_student_unit_guides"
+    ],
+    "deniedMissingContext": true,
+    "privateWorkerDefiner": true,
+    "publicWrapperInvoker": true
+  },
+  "productionMutations": [
+    "two service-only SQL functions",
+    "new get-unit-guides Edge v1 bundle"
+  ],
+  "unchangedEvidenceReused": [
+    "200 approved questions; 60 Practice/56 Diagnostic/84 Mastery",
+    "fourteen audio and thirteen reading task sets",
+    "prior owner playback acceptance",
+    "existing approval and learning records",
+    "existing inactive English release",
+    "persistent production Deployment Check configuration verified in prior delivery"
+  ],
+  "localChecks": {
+    "sqlEdgeSynthetic": {
+      "tests": 9,
+      "passed": 9,
+      "failed": 0
+    },
+    "webSyntax": "passed; 66 browser JavaScript files",
+    "coreParity": "passed; 5 modules",
+    "typecheck": "passed",
+    "favicon": "passed",
+    "browserQaTriggers": "passed; main-only guards retained",
+    "nativeBrowserSyntax": "passed",
+    "pythonSyntax": "passed"
+  },
+  "requiredReleaseChecks": {
+    "nativeChromium": "three new cases; required CI provides execution evidence",
+    "postgresConcurrency": "four new races; required PostgreSQL CI provides execution evidence",
+    "aggregate": "Platform release checks; all required jobs retained",
+    "vercel": "production deployment must complete on merged source",
+    "finalAttestation": "https://app.notion.com/p/3df355a472bf813585aac229c27f8f9c"
+  },
+  "verificationLimits": [
+    "No new audit of owner-approved materials or question/audio content",
+    "No fresh authenticated production learner acceptance",
+    "Local native Chromium download unavailable; no mocked-browser substitute claimed",
+    "Local PostgreSQL launcher cannot create its OS user; real concurrency runs in required CI",
+    "No new persistent Deployment Check configuration read"
+  ],
+  "remainingGates": [
+    "protected-source/form qualification",
+    "explicit English assessment/readiness and release contract",
+    "formal curriculum reconciliation",
+    "independent SME/form qualification",
+    "source/voice reuse",
+    "authenticated learner release"
+  ],
+  "englishActivated": false,
+  "speaking": "classroom-assessed",
+  "fileSha256": {
+    "supabase/migrations/20261022165640_sprint_16_1c_unit_guide_delivery.sql": "0f07673821113a8d104af7ddae541594fa1449f95b8af199c170024c157ec5a3",
+    "supabase/functions/get-unit-guides/index.ts": "a38520f706cb61477430b199e40cd715d71c03a3a5786ce588eab21d42e3aee8",
+    "supabase/functions/_shared/auth.ts": "5595e91bfac44077715a4401b1243b68e221930ac09ca0e2cd08009d42e62dd0",
+    "supabase/functions/_shared/unit-guides-handler.mjs": "95661914a2f6209fd0bab6b93ae3af04176435b30c096a641a60270e1f653c0d",
+    "web/unit-guides.mjs": "968ddfd2701a762a0cf80a7e0865c941fde1257395ca3b84089660b5c52b90fc",
+    "web/course-page.js": "d4f816b7e3cb8e36fcf0bf0a6bbc8041fc98443aab2005330a2ad82143977543",
+    "web/course-workspace.css": "c901a38fad6657456e80cc71546d6c27d6898104dc16933f932ae89346cb7ad5",
+    "tests/unit-guides.test.mjs": "bb4e16578b4c580be3d435c24293293fe97feb31a35f08a9eded9da8f59a2be6",
+    "tests/fixtures/unit-guides-api.mjs": "efcf0e2d7fc19e9491d9f35598343091a59e16b433333e4d7d1d0095233bab11",
+    "tests/browser/unit-guides.browser.test.mjs": "a19e4cd725c88ae7781d61ae4d0015a83ab5317ce46bc0dc030b8e4d73b78511",
+    "tests/unit-guides-concurrency.py": "b43558ca563117a00740e154dedd2131a5a229a8fba6f40490a637a1eda88fd3"
+  }
+}

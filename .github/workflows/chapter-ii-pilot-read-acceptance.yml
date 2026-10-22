@@ -10,6 +10,7 @@ on:
       # Verify preserved pilot access after reviewed shared reporting/runtime changes.
       - web/assessment-reporting.mjs
       - web/course-page.js
+      - web/unit-guides.mjs
       - web/learning-player.mjs
       - web/learning-audio.mjs
       - web/assessed-audio.mjs

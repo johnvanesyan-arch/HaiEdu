@@ -24,7 +24,7 @@ Writing approval inserts the exact definition into `written_task_versions` with 
 
 ## Delivery boundaries and evidence
 
-Guide approval stores reviewed teaching material; learner guide placement/display is a following capability slice. English remains draft/inactive. No assessment policy, scoring denominator, automatic-question approval or speaking assessment changes.
+Guide approval stores reviewed teaching material. [C18 learner delivery](unit-guide-delivery.md) adds the read-only, ordered guide view behind the existing release/context and assessment gates. John reports accepting the ten English materials; his review is not repeated. English remains draft/inactive. No assessment policy, scoring denominator, automatic-question approval or speaking assessment changes.
 
 Affected Edge bundles: new `manage-unit-materials` and changed `get-my-privacy`; `_shared/auth.ts` is unchanged. Other audio/writing consumers reuse their unchanged verified source evidence. New SQL/Edge fixtures cover two programmes and three units, authorization/MFA, exact-version QA, stale revisions, malformed rubrics, private model separation and all ten English definitions. PostgreSQL race cases cover duplicate revisions/approvals, reviewer revocation and expiry after a lock wait. Native Chromium checks cover the real page with synthetic authentication backed by actual SQL/Edge code. They are isolated tests, not signed-in production acceptance.
 

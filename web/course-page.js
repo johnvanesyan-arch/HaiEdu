@@ -5,9 +5,10 @@ import { readLearningSelection, sameContext, sameCourse, contextHref, courseLabe
 import { registeredExtensionHref } from './learning-extensions.mjs';
 import { mountLearningPlayer } from './learning-player.mjs';
 import { mountWrittenWork } from './written-work.mjs';
+import { mountUnitGuides } from './unit-guides.mjs';
 const supabase = window.__haieduSupabaseClient ||= createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY);
 const root = document.getElementById('courseContent');
-let version = 0, accountId = null, disposePlayer = () => {}, disposeWriting = () => {};
+let version = 0, accountId = null, disposePlayer = () => {}, disposeWriting = () => {}, disposeGuides = () => {};
 function completionDate(value) {
   const date = new Date(value);
   if (!value || !Number.isFinite(date.getTime())) return '—';
@@ -18,7 +19,7 @@ function completionDate(value) {
   }).formatToParts(date).map(({type,value}) => [type,value]));
   return `${parts.day}.${parts.month}.${parts.year} · ${parts.hour}:${parts.minute}`;
 }
-function clear() { disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; }
+function clear() { disposeGuides(); disposeGuides = () => {}; disposeWriting(); disposeWriting = () => {}; disposePlayer(); disposePlayer = () => {}; root.replaceChildren(); document.getElementById('courseTitle').textContent = 'Դասընթաց'; document.getElementById('courseSubtitle').textContent = ''; }
 async function load() {
   if (disposeWriting.flush && !(await disposeWriting.flush())) return;
   const request = ++version;
@@ -76,10 +77,17 @@ async function load() {
       : `${active ? '' : `<div class="amp-subject-grid">${modeCards}</div>`}${tab === 'course' ? `<section class="card course-data-section"><h2>Հմտություններ</h2>${skillTable}</section>` : ''}`;
     const chapters = navigation.contexts.filter(c=>sameCourse(c,context)).sort((a,b)=>a.unitSequence-b.unitSequence);
     const chapterLinks = chapters.length>1 ? `<nav class="row course-chapters" aria-label="Դասընթացի գլուխներ">${chapters.map(c=>`<a class="button-link ghost" href="${esc(contextHref(c,tab))}"${sameContext(c,context)?' aria-current="page"':''}>${esc(c.unitTitleHy)}</a>`).join('')}</nav>` : '';
-    root.innerHTML = `${chapterLinks}<nav class="row course-tabs" aria-label="Դասընթացի բաժիններ">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['progress','Առաջընթաց'],['writing','Գրավոր աշխատանքներ']].map(([t,l])=>`<a class="button-link ghost" href="${esc(contextHref(context,t))}"${t===tab?' aria-current="page"':''}>${l}</a>`).join('')}</nav>
+    root.innerHTML = `${chapterLinks}<nav class="row course-tabs" aria-label="Դասընթացի բաժիններ">${[['assessment','Գնահատումներ'],['course','Դասընթաց'],['guides','Ուղեցույցներ'],['progress','Առաջընթաց'],['writing','Գրավոր աշխատանքներ']].map(([t,l])=>`<a class="button-link ghost" href="${esc(contextHref(context,t))}"${t===tab?' aria-current="page"':''}>${l}</a>`).join('')}</nav>
       <section class="card course-overview" aria-label="Ուսուցման ամփոփում"><p>${data.baseline?.assessmentResult ? assessmentResultMarkup(data.baseline.assessmentResult) : data.baseline ? `Ելակետային ախտորոշիչ՝ ${data.baseline.correct}/${data.baseline.answered} · ${data.baseline.percent}%` : 'Ախտորոշիչը կսահմանի ձեր մեկնարկային մակարդակը։'}</p>${data.lifecycle ? `<p>Յուրացման օգտագործված փորձեր՝ ${data.lifecycle.attemptsUsed}/${data.maximumAttempts ?? '—'}</p>` : ''}</section>
       ${resume}${legacyCourse ? `<div><a class="button-link ghost" href="${esc(legacyCourse)}">Դիտել դասընթացի թեմաները</a></div>` : ''}<div id="learningPlayer"></div>${learningContent}
       <section class="card course-data-section" aria-labelledby="courseHistoryTitle"><h2 id="courseHistoryTitle">Ավարտված աշխատանքներ</h2><div class="matrix-wrap" tabindex="0" role="region" aria-label="Ավարտված աշխատանքների պատմություն"><table class="course-table"><thead><tr><th scope="col">Տեսակ</th><th scope="col">Արդյունք</th><th scope="col">Ավարտ</th><th scope="col">Տվյալներ</th></tr></thead><tbody>${history || '<tr><td colspan="4">Ավարտված աշխատանք դեռ չկա։</td></tr>'}</tbody></table></div></section>`;
+    if (tab === 'guides') {
+      root.querySelectorAll(':scope > :not(nav)').forEach(node => node.remove());
+      const guidesRoot = document.createElement('div');
+      root.append(guidesRoot);
+      disposeGuides = mountUnitGuides({root:guidesRoot,supabase,context:selection,isCurrent:valid});
+      return;
+    }
     if (tab === 'writing') {
       root.querySelectorAll(':scope > :not(nav)').forEach(node => node.remove());
       const writingRoot = document.createElement('div');

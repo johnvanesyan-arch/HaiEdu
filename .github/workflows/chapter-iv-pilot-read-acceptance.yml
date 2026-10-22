@@ -50,6 +50,7 @@ on:
       - web/config.js
       - web/course-gate.js
       - web/course-page.js
+      - web/unit-guides.mjs
       - web/course-workspace.css
       - web/course.html
       - web/home-class.js

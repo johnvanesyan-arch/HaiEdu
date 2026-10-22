@@ -5,6 +5,14 @@ body[data-student-page="course"].amp-student-shell-active .topbar h1 {
 }
 #courseContent { gap: var(--amp-space-4); }
 #courseContent > p { margin: 0; }
+.unit-guides-heading { display: flex; align-items: center; justify-content: space-between; gap: var(--amp-space-3); flex-wrap: wrap; }
+.unit-guides-heading h2 { margin: 0; }
+.unit-guide-list { padding-inline-start: 1.6rem; }
+.unit-guide-list > li { padding-block: var(--amp-space-2); }
+.unit-guide { border: 1px solid var(--amp-color-border); border-radius: var(--amp-radius-md); padding: var(--amp-space-3); overflow-wrap: anywhere; }
+.unit-guide summary { cursor: pointer; font-weight: 600; color: var(--amp-color-text); }
+.unit-guide-content p { white-space: pre-wrap; line-height: 1.7; }
+.unit-guide-content h3 { font-size: 1rem; margin-block: var(--amp-space-3) var(--amp-space-2); }
 .course-tabs .button-link[aria-current="page"] {
   color: var(--amp-color-primary-hover);
   background: var(--amp-color-primary-soft);

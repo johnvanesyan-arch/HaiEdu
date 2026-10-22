@@ -1,12 +1,14 @@
 # English 7 Unit 1: teaching guides and writing review
 
-**16.1C.17 · 2026-10-22 Asia/Yerevan · Ten drafts registered with passing QA; capability verification complete.**
+**16.1C.18 · 2026-10-22 Asia/Yerevan · John reports all ten materials accepted; learner guide delivery implemented.**
 
 John confirmed the remaining questions, corrections and audio checks complete and requested progression without repeating the full bank review. A narrow inventory records all **200 questions approved**. Prior bank, source, audio and playback evidence is reused. This delivery concerns nine guides and one writing package; it does not add or revise automatic questions.
 
-## Where to review
+## Review record
 
-Open [Ուսումնական նյութեր](https://www.haiedu.am/content-materials.html) from the content-reviewer sidebar and search **ENG7-U01**. All ten drafts are staged and pass saved QA. Open each, inspect content and its proposed use, run saved QA if you change it, and select **Հաստատել նյութը**. Approval requires the actual reviewer’s MFA session. No approval is inferred for these new materials from the completed question bank.
+John reports that he accepted all nine guides and the complete writing package. That confirmation closes the review handoff; no new approval audit or QA rerun of his materials is performed. [Learner guide delivery](unit-guide-delivery.md) is the next completed capability slice.
+
+Historical C17 instructions: open [Ուսումնական նյութեր](https://www.haiedu.am/content-materials.html) from the content-reviewer sidebar and search **ENG7-U01**. At the C17 checkpoint, all ten drafts were staged with saved QA. The ordinary review workflow is to open a material, inspect content and proposed use, run saved QA after a change, and select **Հաստատել նյութը**. Approval requires the actual reviewer’s MFA session. No approval is inferred for these new materials from the completed question bank.
 
 ## Unchanged teaching content
 
@@ -28,15 +30,14 @@ The [versioned onboarding manifest](content/english-7-unit-01-materials.json) pr
 
 **ENG7-U01-W01 — A note to a new classmate:** an 80–100-word reply about clothing for a class photo. It retains four criteria, each 0–3: task/audience, organisation, vocabulary, grammar/clarity. Total 0–12 has no pass threshold. Length is guidance, not an automatic failure; missing, draft, pending or technical failure states are not zeros. One response observes S13/S14 together and does not create two independent samples. Speaking remains classroom-assessed.
 
-The reviewer package includes WP01 (picnic-note practice), WM01 (the unchanged 87-word model), annotations and the workload proposal: 20–25 learner minutes, 4–6 teacher minutes per submission, 120–180 minutes for 30 learners plus revision. These are estimates for acceptance/piloting, not a timed limit. One reviewed note per unit is proposed. The writing baseline remains separately tracked and non-gating; no English policy is activated here. The model is practice support and is never copied into the reviewed learner task definition.
+The reviewer package includes WP01 (picnic-note practice), WM01 (the unchanged 87-word model), annotations and the workload proposal: 20–25 learner minutes, 4–6 teacher minutes per submission, 120–180 minutes for 30 learners plus revision. John accepted this workload proposal; the figures remain planning estimates for piloting, not a timed limit. The accepted proposal uses one reviewed note per unit. The writing baseline remains separately tracked and non-gating; no English policy is activated here. The model is practice support and is never copied into the reviewed learner task definition.
 
 ## Remaining sequence
 
-1. Accept these nine guides and the writing task/rubric/workload in the governed reviewer UI.
-2. Deliver approved teaching guides in textbook order in the learner unit workspace.
-3. Qualify the complete unit’s sources, protected forms and explicit assessment/release configuration; retain permissions, specialist and learner-release gates recorded in project status.
-4. Verify the first complete English unit under the authorized release scope. No complete-unit or learner-release claim is made by this onboarding slice.
+1. Material acceptance is complete on John’s confirmation; learner teaching-guide delivery is implemented under C18.
+2. Qualify the complete unit’s sources, protected forms and explicit assessment/release configuration; retain permissions, specialist and learner-release gates recorded in project status.
+3. Verify the first complete English unit under the authorized release scope. No complete-unit or learner-release claim is made by this onboarding slice.
 
 [Shared capability and API](unit-material-review.md) · [Delivery evidence](evidence/english-7-unit-01-materials-20261022.json)
 
-**Delivery evidence:** all 1,376 automated tests and 90 native Chromium cases pass, with PostgreSQL 17.6 and four new authorization/concurrency races. The [applied guarded transaction](content/english-7-unit-01-materials-registration.sql) adds only ten drafts and twenty automated staging/QA events; all 71 prior tracked tables are unchanged. The original source packet and all current question approvals are preserved. Eight deployed SQL bodies and both affected Edge bundles match source. Independent readback confirms exact definitions, review packages, QA fingerprints, a draft English release and the unchanged programme in review. No fresh signed-in production browser acceptance is claimed.
+**Historical C17 staging evidence:** all 1,376 automated tests and 90 native Chromium cases pass, with PostgreSQL 17.6 and four new authorization/concurrency races. The [applied guarded transaction](content/english-7-unit-01-materials-registration.sql) adds only ten drafts and twenty automated staging/QA events; all 71 prior tracked tables are unchanged. The original source packet and all current question approvals are preserved. Eight deployed SQL bodies and both affected Edge bundles match source. Independent readback confirms exact definitions, review packages, QA fingerprints, a draft English release and the unchanged programme in review. No fresh signed-in production browser acceptance is claimed.
