@@ -1,0 +1,213 @@
+{
+  "schemaVersion": "haiedu-english-assessment-batch-validation-v1",
+  "checkpoint": "16.1C.13",
+  "packetSha256": "1c3a99aef75733055f9ac0a078bbc59a44835462e7f809bdb9fb589ee57df363",
+  "acceptanceSha256": "8cce70d7ff396cc8f90ba1df5478b5ac2b4d12ad78ee4cc2fe42d18621a237d7",
+  "counts": {
+    "items": 84,
+    "choiceItems": 67,
+    "choiceOptions": 201,
+    "choiceOrderKeyChecks": 402,
+    "typedItems": 17,
+    "typedFields": 26,
+    "sqlGradeCases": 164,
+    "acceptedNormalizations": 29,
+    "rejectedOrBlankFields": 84,
+    "allBlankCases": 17,
+    "malformedResponseRejections": 17,
+    "textItems": 72,
+    "audioHeldItems": 12,
+    "sourceSets": 12
+  },
+  "forms": [
+    {
+      "form": "DB",
+      "items": 28,
+      "text": 24,
+      "audioHeld": 4,
+      "maximumItemPoints": 28,
+      "sourceSets": 4,
+      "responseComponents": 31
+    },
+    {
+      "form": "MB",
+      "items": 28,
+      "text": 24,
+      "audioHeld": 4,
+      "maximumItemPoints": 28,
+      "sourceSets": 4,
+      "responseComponents": 31
+    },
+    {
+      "form": "MC",
+      "items": 28,
+      "text": 24,
+      "audioHeld": 4,
+      "maximumItemPoints": 28,
+      "sourceSets": 4,
+      "responseComponents": 31
+    }
+  ],
+  "sources": [
+    {
+      "id": "ENG7-U01-DB-READ-A",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-DB-21",
+        "ENG7-U01-DB-22"
+      ],
+      "wordCount": 94,
+      "contentSha256": "77d311e34349e52e50c0fe18f7acd6981eaeea31d2a05d954a46160058355a6b"
+    },
+    {
+      "id": "ENG7-U01-DB-READ-B",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-DB-23",
+        "ENG7-U01-DB-24"
+      ],
+      "wordCount": 69,
+      "contentSha256": "3ba0ded2b64e065f697c4ff410644df7b1873877e3a756ff85db07a704eb814b"
+    },
+    {
+      "id": "ENG7-U01-MB-READ-A",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-MB-21",
+        "ENG7-U01-MB-22"
+      ],
+      "wordCount": 82,
+      "contentSha256": "e78cfa9166da522bc98297736a6f4326bd01402ae5687dfa0b047b4bab9744fe"
+    },
+    {
+      "id": "ENG7-U01-MB-READ-B",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-MB-23",
+        "ENG7-U01-MB-24"
+      ],
+      "wordCount": 72,
+      "contentSha256": "6de095f56b039318a8e3b8fa175f1a4cfd2aff15c6b29703b6dec61ca5cb0bf8"
+    },
+    {
+      "id": "ENG7-U01-MC-READ-A",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-MC-21",
+        "ENG7-U01-MC-22"
+      ],
+      "wordCount": 88,
+      "contentSha256": "43742fd9e9d9ba9f1d553f563119c42b43223a767a4d6e29b5d2f1ca0767a8ee"
+    },
+    {
+      "id": "ENG7-U01-MC-READ-B",
+      "kind": "passage",
+      "members": [
+        "ENG7-U01-MC-23",
+        "ENG7-U01-MC-24"
+      ],
+      "wordCount": 77,
+      "contentSha256": "018f59e58679ce1817c8047bbb53354575effcf7c44b94a6457586cc29dff04b"
+    },
+    {
+      "id": "ENG7-U01-DB-AUDIO-A",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-DB-25",
+        "ENG7-U01-DB-27"
+      ],
+      "wordCount": 95,
+      "contentSha256": "65e2635926db1f198b93cc7a5fb44eeeb2cded0c5ff8c27ee4dcfcc0550dd4c9"
+    },
+    {
+      "id": "ENG7-U01-DB-AUDIO-B",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-DB-26",
+        "ENG7-U01-DB-28"
+      ],
+      "wordCount": 98,
+      "contentSha256": "51049396169326118968e16ebc19e23fa666c0ba5324fce85ca078877e745d3b"
+    },
+    {
+      "id": "ENG7-U01-MB-AUDIO-A",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-MB-25",
+        "ENG7-U01-MB-27"
+      ],
+      "wordCount": 85,
+      "contentSha256": "39db9113f1af7397b867d802b0d39b517f5bba91ef719b1864bda2450be7a9ee"
+    },
+    {
+      "id": "ENG7-U01-MB-AUDIO-B",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-MB-26",
+        "ENG7-U01-MB-28"
+      ],
+      "wordCount": 99,
+      "contentSha256": "83da95ebc6e2706b3bab1f9f85e74a1b1849aa519418b2909c4c08e80fe39c11"
+    },
+    {
+      "id": "ENG7-U01-MC-AUDIO-A",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-MC-25",
+        "ENG7-U01-MC-27"
+      ],
+      "wordCount": 87,
+      "contentSha256": "0ece2dd84c99da3c2d52446ee132db965e68afc211a4f2391c181549ab158420"
+    },
+    {
+      "id": "ENG7-U01-MC-AUDIO-B",
+      "kind": "audio_pending",
+      "members": [
+        "ENG7-U01-MC-26",
+        "ENG7-U01-MC-28"
+      ],
+      "wordCount": 105,
+      "contentSha256": "c0c51ad65ebb6a162f7f288d68e4bb38e23fd9446baf89b0e7565c7bd93c7dab"
+    }
+  ],
+  "sourceInputSha256": {
+    "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15",
+    "supabase/functions/_shared/typed-fields.mjs": "4b8a90c112914e5f878d6545ad8870ebca1b7e22d2889215667a3aa675eb2cbc"
+  },
+  "reusedEvidence": [
+    {
+      "path": "docs/evidence/english-7-unit-01-draft-validation-20261020.json",
+      "sqlGradeCases": 169,
+      "rerun": false
+    },
+    {
+      "path": "docs/evidence/english-7-unit-01-practice-validation-20261021.json",
+      "sqlGradeCases": 57,
+      "rerun": false
+    },
+    {
+      "path": "docs/evidence/english-7-unit-01-assessment-batch-a-validation-20261021.json",
+      "sqlGradeCases": 95,
+      "rerun": false
+    }
+  ],
+  "checks": {
+    "accepted84Slots": true,
+    "existing116Unchanged": true,
+    "typedJsAndSqlContracts": true,
+    "partialCreditAndBlanks": true,
+    "malformedExtraIdsRejected": true,
+    "choiceStableIdOrderInvariant": true,
+    "sourceMembershipAndGrouping": true,
+    "conditionalAudioKeys": true,
+    "numberedSpeakers": true,
+    "protectedPurposeSeparation": true,
+    "zeroApprovedOrQualifiedCapacity": true
+  },
+  "limits": [
+    "Choice permutation checks are content/key checks, not a rerun of runtime choice grading or browser shuffling.",
+    "Source/semantic judgments are automated-author judgments awaiting human and SME/exposure review, not automatic semantic-test results.",
+    "Listening is checked against unrecorded scripts only; no audition, rights, playback or form qualification is claimed.",
+    "No production writes, registration, allocation or learner release."
+  ]
+}
