@@ -312,7 +312,7 @@
     "unchangedAudioAndQuestionEvidenceReused": true,
     "vercelConnector": "Team-scope 403; use authorized GitHub deployment status. No access settings or credentials changed.",
     "persistentBlockingDeploymentCheck": "Reuse verified 2026-10-20 production/blocking evidence.",
-    "frontendRelease": "Existing Git integration and blocking aggregate check apply to the documentation closure commit; final commit status and source-verified synchronization are recorded in Notion."
+    "frontendRelease": "Existing Git integration and blocking aggregate check apply to the final delivery commit; final commit status and source-verified synchronization are recorded in Notion."
   },
   "ci": {
     "runId": 39799180714,
@@ -325,5 +325,23 @@
     "newPostgresRaceCasesPassed": 4,
     "allRequiredJobsPassed": true,
     "infraRetry": "Ubuntu apt mirror stalled during Chromium dependency installation and hit the existing ten-minute job bound before tests. Requested retry of the browser job and dependent aggregate; no test/check was skipped."
+  },
+  "closingCiTransportRepair": {
+    "affectedJob": "CI / role-layout-browser",
+    "observedRuns": [
+      39799180714,
+      39802498606
+    ],
+    "cause": "Slow Azure Ubuntu HTTP downloads consumed almost all of the existing ten-minute budget; closing run passed its first 16 browser cases before cancellation.",
+    "change": "Temporary runner uses official Ubuntu HTTPS archive; two APT retries; 30-second HTTP/HTTPS connection/data timeouts.",
+    "preserved": [
+      "Chromium version",
+      "dependency installation",
+      "all 90 browser cases",
+      "all required jobs and aggregate dependencies",
+      "ten-minute job bound",
+      "all application/runtime source and content"
+    ],
+    "validation": "Required CI and deployment on final head; outcome recorded in source-verified Notion attestation."
   }
 }

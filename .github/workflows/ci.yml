@@ -51,6 +51,14 @@ jobs:
           node-version: 22
           cache: npm
       - run: npm ci
+      - name: Bound Ubuntu downloads for the browser gate
+        run: |
+          # Runner-only transport settings; package signatures and TLS verification stay enabled.
+          # The Azure HTTP mirror twice consumed most of this job's ten-minute bound.
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i 's#http://azure.archive.ubuntu.com/ubuntu#https://archive.ubuntu.com/ubuntu#g' /etc/apt/apt-mirrors.txt
+          fi
+          printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80-haiedu-ci >/dev/null
       - name: Install Chromium
         run: npx playwright install --with-deps chromium
       - name: Verify browser responsiveness and lifecycle regressions
