@@ -120,7 +120,8 @@ test('assessed native interruption resumes its checkpoint, prevents seeking/rate
  await page.getByRole('button',{name:'Դադարեցնել',exact:true}).click();
  const before=(await f.db.query('select play_id,position_ms,completed_plays from learning_assessed_audio')).rows[0];assert.ok(before.position_ms>=500);assert.equal(before.completed_plays,0);
  await page.reload();await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);await page.locator('[data-audio-play]').click();
- assert.ok(await page.locator('audio').evaluate(a=>a.currentTime)>=before.position_ms/1000);
+ // The click starts an asynchronous begin RPC; wait for the actual resumed position.
+ await expect.poll(()=>page.locator('audio').evaluate(a=>a.currentTime)).toBeGreaterThanOrEqual(before.position_ms/1000);
  await expect(page.locator('[data-audio-count]')).toContainText('1/2');
  await page.reload();f.state.unavailable=true;await page.locator('[data-audio-play]').click();
  await expect(page.getByRole('button',{name:'Ավարտել՝ առանց գնահատման',exact:true})).toBeVisible();
