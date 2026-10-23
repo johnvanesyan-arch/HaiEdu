@@ -1,0 +1,109 @@
+{
+  "schemaVersion": "haiedu-source-registration-evidence-v1",
+  "checkpoint": "16.1C.30",
+  "date": "2026-10-23",
+  "timezone": "Asia/Yerevan",
+  "authoringCommit": "a07d6c1890b550906a34b7b2c20508dfd2a4e639",
+  "observedAt": "2026-10-23T13:43:34.291636+00:00",
+  "ownerAcceptanceReference": "docs/evidence/english-7-unit-02-assessment-audio-owner-acceptance-20261023.json#6f69ccc3721f2339e2f6b48f21c7ddc20967252c12533ad40cfedd19ed6d8f25",
+  "scope": {
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "releaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "audioVersionsAdded": 10,
+    "taskSetsAdded": 10,
+    "questionVersionsAdded": 20,
+    "savedQaPassesAdded": 20,
+    "totalAdditiveRows": 60,
+    "questionBank": {
+      "practice": 72,
+      "diagnostic": 48,
+      "mastery": 72
+    },
+    "currentQuestionQa": {
+      "passed": 152,
+      "sourceHolds": 40,
+      "readingHolds": 30,
+      "practiceListeningHolds": 10
+    },
+    "currentQuestionReview": {
+      "needsReview": 192
+    }
+  },
+  "acceptedOwnerReview": {
+    "recordingCorrectness": true,
+    "exactScriptMatch": true,
+    "repeatedListening": false,
+    "repeatedTranscription": false,
+    "browserPlaybackRecheck": false
+  },
+  "storage": {
+    "bucket": "learning-audio",
+    "private": true,
+    "fileSizeLimit": 8388608,
+    "addedObjects": 10,
+    "existingObjectsPreserved": 15,
+    "totalObjects": 25,
+    "uploadedBytes": 6427887,
+    "method": "Owner-completed Supabase browserAuth, ordinary private-bucket dashboard upload; no credential or Storage SQL shortcut",
+    "metadataAndETagMatches": 10,
+    "audioTranscoding": false,
+    "displayFilenamesNormalized": 2
+  },
+  "verification": {
+    "rollbackPassed": true,
+    "independentRollbackRestorationTables": 117,
+    "guardedCommitPassed": true,
+    "independentCommittedReadbackPassed": true,
+    "trackedTables": 117,
+    "entirelyUnchangedTableFingerprints": 110,
+    "changedTables": [
+      "public.item_answer_keys",
+      "public.item_options",
+      "public.item_qa_runs",
+      "public.item_versions",
+      "public.items",
+      "public.learning_audio_versions",
+      "public.learning_task_set_versions"
+    ],
+    "unaffectedRowsAndAllPriorHistoryPreserved": true,
+    "questionMeaningKeysAndOptionOrderUnchanged": true,
+    "existingRevisionServiceUsed": true,
+    "optionRowIdsRegeneratedByRevisionService": 80,
+    "taskSetOrderAndSourceFamilyChecksPassed": 10,
+    "savedQaExactMatch": 20,
+    "qaHandlerVersion": 14,
+    "qaHandlerSha256": "eff4f28780b0bdc618485a481acf41df7495c7d5945c4d55e6fc572ccffbc82a",
+    "qaExecution": "Actual deployed evaluateQa and authoringSourceRegistered over exact materialized transaction rows; saved automated results with run_by null",
+    "nonblockingWarnings": [
+      "misconception_mapping_missing"
+    ],
+    "freshAuthenticatedQuestionPlaybackClaimed": false
+  },
+  "preserved": {
+    "schema": true,
+    "edgeRuntime": true,
+    "rlsAndAuthorization": true,
+    "learnerPoliciesAndPlaybackAllowances": true,
+    "unit1Evidence": true,
+    "c29WholeBankComparison": true,
+    "existingItemApprovals": true,
+    "learnerHistory": true,
+    "unit2ReleaseStatus": "draft",
+    "unit2PendingGates": 7,
+    "newHumanQuestionApprovals": 0
+  },
+  "privateEvidenceHashes": {
+    "receipt.json": "91f93a01c48bd9f2bf2e58d5092d101142321604fd348125b7ae3dccfec385cb",
+    "registration.json": "07c8ee2ad64e7d3fce5a4f75d37d097107a078ac3a54f6b2b10ab13618888e57",
+    "rollback.sql": "cb7fbbc5f82bdd969f38f8c1d42858474689da3fef9227034b7917f8d4de3b97",
+    "commit.sql": "e4b2d776e445ae114509dac176aeda48245857f1ccd23a2e08a431df62b68788",
+    "commit-result.json": "93140ad90d7d4eaae85033db8473f910e8f6a928092b1f6fb15446016fa87a1a",
+    "committed-readback.json": "ecaf831b9376d06dfb772303aa534daf217652ba99105d72a47c29e28200ea93",
+    "qa.json": "e5958ec1d4281b5b54a847ac6921e4b31922a6956268e53bdce370d92fe127e5",
+    "baseline.json": "e4dccd126e33d25d236a559574c3dfcef03b7441b7c6a3a7808266be086ce09c",
+    "baseline-after.json": "6469ed5f18766b5cfbd893008ed0a92ae6c28b38649662a381cc4d55a1bfe553",
+    "pre-guards.json": "78eab16ff444382ba23a711612a92671066b74737047f757ff1c05ee4f338d6c",
+    "post-guards.json": "8727d7c5ef96ba9bcd3c91b8b5b57785a14babde200cf710195c8a9476f44e28"
+  },
+  "next": "Accept/register fourteen reading passages and reconcile the four retained Practice listening sources; attach remaining eighteen sets and clear forty source holds. Normal content/material review, curriculum/numerical/qualification and learner-release gates remain."
+}

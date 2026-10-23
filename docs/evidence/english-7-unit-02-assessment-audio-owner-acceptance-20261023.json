@@ -1,0 +1,103 @@
+{
+  "schemaVersion": "haiedu-owner-recording-acceptance-v1",
+  "checkpoint": "16.1C.30",
+  "recordedAt": "2026-10-23T13:26:13.038391+00:00",
+  "sourceCommit": "a07d6c1890b550906a34b7b2c20508dfd2a4e639",
+  "reviewerProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "statement": "All recordings are generated. Everything is correct. I have checked. You do not have to do it again. All the scripts match.",
+  "interpretation": "Owner listening and exact script-match acceptance for the ten attached original Unit 2 assessment recordings. Bounded private upload, source registration and attachment to twenty existing draft questions. Ordinary question approval, numerical policies and learner release remain separate.",
+  "repeatedListeningReview": false,
+  "repeatedTranscription": false,
+  "files": [
+    {
+      "sourceCode": "U02-DA-AUDIO-A",
+      "uploadedName": "english7-u02-da-a.mp3",
+      "displayFilename": "english7-u02-da-a.mp3",
+      "sha256": "18531b2c6e1a662085fbb460adfe0f9c7092d671c623f929fe9a1175ab69741b",
+      "byteLength": 579510,
+      "durationMs": 35161,
+      "objectPath": "18531b2c6e1a662085fbb460adfe0f9c7092d671c623f929fe9a1175ab69741b.mp3"
+    },
+    {
+      "sourceCode": "U02-DA-AUDIO-B",
+      "uploadedName": "english7-u02-da-b.mp3",
+      "displayFilename": "english7-u02-da-b.mp3",
+      "sha256": "6f103a908e13d7b97f3ef6cb4b3571cfc0f55f8aa5de47ed89b001be05542e34",
+      "byteLength": 638442,
+      "durationMs": 38844,
+      "objectPath": "6f103a908e13d7b97f3ef6cb4b3571cfc0f55f8aa5de47ed89b001be05542e34.mp3"
+    },
+    {
+      "sourceCode": "U02-DB-AUDIO-A",
+      "uploadedName": "english7-u02-db-a.mp3",
+      "displayFilename": "english7-u02-db-a.mp3",
+      "sha256": "15df210e0d864b3b3e510b295360aaf0a5af57296405a09846fec556b9390890",
+      "byteLength": 679402,
+      "durationMs": 41404,
+      "objectPath": "15df210e0d864b3b3e510b295360aaf0a5af57296405a09846fec556b9390890.mp3"
+    },
+    {
+      "sourceCode": "U02-DB-AUDIO-B",
+      "uploadedName": "english7-u02-db-b.mp3",
+      "displayFilename": "english7-u02-db-b.mp3",
+      "sha256": "739e69f637cb72cd5fa2e696726bfb7e36e29a8973816e204770b29be9ed4324",
+      "byteLength": 634680,
+      "durationMs": 38609,
+      "objectPath": "739e69f637cb72cd5fa2e696726bfb7e36e29a8973816e204770b29be9ed4324.mp3"
+    },
+    {
+      "sourceCode": "U02-MA-AUDIO-A",
+      "uploadedName": "english7-u02-ma-a.mp3.mp3",
+      "displayFilename": "english7-u02-ma-a.mp3",
+      "sha256": "8732e295c10f73efb89a6e8832ea585158888a11429900881448e6b8b449574a",
+      "byteLength": 647219,
+      "durationMs": 39393,
+      "objectPath": "8732e295c10f73efb89a6e8832ea585158888a11429900881448e6b8b449574a.mp3"
+    },
+    {
+      "sourceCode": "U02-MA-AUDIO-B",
+      "uploadedName": "english7-u02-ma-b.mp3",
+      "displayFilename": "english7-u02-ma-b.mp3",
+      "sha256": "7b62ed3365b17cc7f64c3ffe5b04823d9ec88b46751f2fb9f6e23d56bff8ad34",
+      "byteLength": 660176,
+      "durationMs": 40202,
+      "objectPath": "7b62ed3365b17cc7f64c3ffe5b04823d9ec88b46751f2fb9f6e23d56bff8ad34.mp3"
+    },
+    {
+      "sourceCode": "U02-MB-AUDIO-A",
+      "uploadedName": "english7-u02-mb-a.mp3",
+      "displayFilename": "english7-u02-mb-a.mp3",
+      "sha256": "dd0c63ededab84689a251c4a32e5981f7d6a29ee21f043d3a1f2d9cd17289c35",
+      "byteLength": 575748,
+      "durationMs": 34926,
+      "objectPath": "dd0c63ededab84689a251c4a32e5981f7d6a29ee21f043d3a1f2d9cd17289c35.mp3"
+    },
+    {
+      "sourceCode": "U02-MB-AUDIO-B",
+      "uploadedName": "english7-u02-mb-b.mp3",
+      "displayFilename": "english7-u02-mb-b.mp3",
+      "sha256": "c806aa4bc14497b67e85406372ff4b523cd598058e772ff68b07f7db79dd9109",
+      "byteLength": 717854,
+      "durationMs": 43807,
+      "objectPath": "c806aa4bc14497b67e85406372ff4b523cd598058e772ff68b07f7db79dd9109.mp3"
+    },
+    {
+      "sourceCode": "U02-MC-AUDIO-A",
+      "uploadedName": "english7-u02-mc-a.mp3.mp3",
+      "displayFilename": "english7-u02-mc-a.mp3",
+      "sha256": "fa00d7cabd74e3b98218ad31d499fcb07ee982afaf6d437dc16bf5fe903da875",
+      "byteLength": 592466,
+      "durationMs": 35971,
+      "objectPath": "fa00d7cabd74e3b98218ad31d499fcb07ee982afaf6d437dc16bf5fe903da875.mp3"
+    },
+    {
+      "sourceCode": "U02-MC-AUDIO-B",
+      "uploadedName": "english7-u02-mc-b.mp3",
+      "displayFilename": "english7-u02-mc-b.mp3",
+      "sha256": "7dda4fe342ca4feec4770b52660e702a2d457da483bc4b9136095c8995837d71",
+      "byteLength": 702390,
+      "durationMs": 42841,
+      "objectPath": "7dda4fe342ca4feec4770b52660e702a2d457da483bc4b9136095c8995837d71.mp3"
+    }
+  ]
+}

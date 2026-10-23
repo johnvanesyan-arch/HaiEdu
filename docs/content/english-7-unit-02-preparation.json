@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.29",
+  "checkpoint": "16.1C.30",
   "date": "2026-10-23",
   "timezone": "Asia/Yerevan",
-  "status": "whole-unit-authoring-scope-accepted-inactive-drafts-staged",
+  "status": "ten-assessment-recordings-integrated-unit-remains-draft",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -584,7 +584,7 @@
       "S14"
     ],
     "newSettingProvesNovelReasoning": false,
-    "next": "Human exact source/question/material review, recordings and guarded shared-set registration; no new authoring permission required.",
+    "next": "Reuse unchanged C29 comparison; remaining reading/Practice source integration and normal question/material review.",
     "demandLevelReviewComplete": true,
     "corpusEvidence": "docs/evidence/english-7-unit-02-authoring-20261023.json",
     "reviewProvenance": "Codex automated author and semantic self-review; human/SME review pending",
@@ -599,9 +599,9 @@
       "mastery": 72
     },
     "newQuestionsAuthored": 192,
-    "productionWrites": 2116,
-    "assetsRegistered": 1,
-    "sourcesRegistered": 0,
+    "productionWrites": 2176,
+    "assetsRegistered": 11,
+    "sourcesRegistered": 10,
     "newHumanApprovals": 0,
     "newPoliciesBound": 0,
     "newFormsAllocated": 0,
@@ -617,13 +617,17 @@
     "draftUnitScopesRegistered": 1,
     "draftReleaseScopesRegistered": 1,
     "pendingReleaseGates": 7,
-    "productionWriteBasis": "11 C27B additions plus 2105 C29 inactive-draft additions; no prior rows changed",
+    "productionWriteBasis": "11 C27B + 2105 C29 + 60 C30 additive rows. C30 also revises twenty existing questions through the ordinary revision service, preserving meaning/keys and unaffected history.",
     "draftMaterialsStaged": 9,
     "newAssessmentScriptsAuthored": 10,
-    "sourceQuestionHolds": 60,
-    "standaloneQuestionQaPassed": 132
+    "sourceQuestionHolds": 40,
+    "standaloneQuestionQaPassed": 132,
+    "currentQuestionQaPassed": 152,
+    "assessmentAudioQuestionQaPassed": 20,
+    "questionVersionsRevisedForAudio": 20,
+    "acceptedAssessmentRecordings": 10
   },
-  "next": "Exact source/material acceptance, ten recordings and retained-audio reconciliation; register/link 28 task sets and rerun affected QA/playback; then qualification/numerical/release contract.",
+  "next": "Accept/register fourteen reading passages and reconcile the four retained Practice listening sources; attach remaining eighteen sets and clear forty source holds. Normal content/material review, curriculum/numerical/qualification and learner-release gates remain.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -645,7 +649,10 @@
     "unrecordedOriginalReplacements": 0,
     "plannedActivitySources": 4,
     "ownerSuppliedOriginalRecordings": 1,
-    "registeredOriginalRecordings": 1
+    "registeredOriginalRecordings": 1,
+    "ownerSuppliedAssessmentRecordings": 10,
+    "registeredAssessmentRecordings": 10,
+    "remainingAssessmentRecordingsToReceive": 0
   },
   "registrationScope": {
     "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
@@ -679,5 +686,15 @@
     },
     "humanContentApproval": false,
     "learnerRelease": false
+  },
+  "assessmentAudioIntegration": {
+    "checkpoint": "16.1C.30",
+    "ownerReviewAccepted": true,
+    "listeningReviewRepeated": false,
+    "registeredAudioVersions": 10,
+    "registeredTaskSets": 10,
+    "linkedQuestions": 20,
+    "savedQaPasses": 20,
+    "evidence": "docs/evidence/english-7-unit-02-assessment-audio-20261023.json"
   }
 }

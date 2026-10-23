@@ -1,0 +1,290 @@
+{
+  "schemaVersion": "haiedu-assessment-audio-manifest-v1",
+  "checkpoint": "16.1C.30",
+  "authoringCommit": "a07d6c1890b550906a34b7b2c20508dfd2a4e639",
+  "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+  "releaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+  "ownerAcceptanceReference": "docs/evidence/english-7-unit-02-assessment-audio-owner-acceptance-20261023.json#6f69ccc3721f2339e2f6b48f21c7ddc20967252c12533ad40cfedd19ed6d8f25",
+  "recordings": [
+    {
+      "sourceCode": "U02-DA-AUDIO-A",
+      "uploadedName": "english7-u02-da-a.mp3",
+      "displayFilename": "english7-u02-da-a.mp3",
+      "sha256": "18531b2c6e1a662085fbb460adfe0f9c7092d671c623f929fe9a1175ab69741b",
+      "byteLength": 579510,
+      "durationMs": 35161,
+      "objectPath": "18531b2c6e1a662085fbb460adfe0f9c7092d671c623f929fe9a1175ab69741b.mp3",
+      "audioVersionId": "196a74bf-e60b-58bc-99c0-a0e211c6f1cb",
+      "sourceFamilyId": "fd9b3e39-d10a-5630-acb5-575a58b09513",
+      "taskSetVersionId": "43d3614c-38e7-51b5-ba6a-cf6d62df41b4",
+      "questions": [
+        {
+          "code": "ENG7-U02-DA-21",
+          "id": "0689423f-ee51-5ce5-a316-8cb117d7aa68",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=0689423f-ee51-5ce5-a316-8cb117d7aa68&from=review"
+        },
+        {
+          "code": "ENG7-U02-DA-23",
+          "id": "295f785a-4389-5e25-abda-32feb633b4a1",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=295f785a-4389-5e25-abda-32feb633b4a1&from=review"
+        }
+      ]
+    },
+    {
+      "sourceCode": "U02-DA-AUDIO-B",
+      "uploadedName": "english7-u02-da-b.mp3",
+      "displayFilename": "english7-u02-da-b.mp3",
+      "sha256": "6f103a908e13d7b97f3ef6cb4b3571cfc0f55f8aa5de47ed89b001be05542e34",
+      "byteLength": 638442,
+      "durationMs": 38844,
+      "objectPath": "6f103a908e13d7b97f3ef6cb4b3571cfc0f55f8aa5de47ed89b001be05542e34.mp3",
+      "audioVersionId": "e759e81f-859e-5041-b1a6-2d5fc7d9a249",
+      "sourceFamilyId": "aa489b5f-6d72-5a71-aed4-db82f7380226",
+      "taskSetVersionId": "6f33fbe0-61cf-5ecd-9833-dddd36867101",
+      "questions": [
+        {
+          "code": "ENG7-U02-DA-22",
+          "id": "a748c02c-fcbe-59f8-a6d9-48ac2fc2458f",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=a748c02c-fcbe-59f8-a6d9-48ac2fc2458f&from=review"
+        },
+        {
+          "code": "ENG7-U02-DA-24",
+          "id": "85f754e1-8c59-577c-aac1-871240c9637e",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=85f754e1-8c59-577c-aac1-871240c9637e&from=review"
+        }
+      ]
+    },
+    {
+      "sourceCode": "U02-DB-AUDIO-A",
+      "uploadedName": "english7-u02-db-a.mp3",
+      "displayFilename": "english7-u02-db-a.mp3",
+      "sha256": "15df210e0d864b3b3e510b295360aaf0a5af57296405a09846fec556b9390890",
+      "byteLength": 679402,
+      "durationMs": 41404,
+      "objectPath": "15df210e0d864b3b3e510b295360aaf0a5af57296405a09846fec556b9390890.mp3",
+      "audioVersionId": "f68b8df2-7822-5dd6-91c0-5e03d6a6faf7",
+      "sourceFamilyId": "6dbe4b12-6919-518f-a4cc-e075a59c480e",
+      "taskSetVersionId": "e88d0a7d-89cd-5ebb-b180-5cc1aef1e139",
+      "questions": [
+        {
+          "code": "ENG7-U02-DB-21",
+          "id": "0ae9937a-2d3f-5279-ab2e-a660bd4fd7c5",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=0ae9937a-2d3f-5279-ab2e-a660bd4fd7c5&from=review"
+        },
+        {
+          "code": "ENG7-U02-DB-23",
+          "id": "8a3739a6-410b-58da-a292-dbe637717e9d",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=8a3739a6-410b-58da-a292-dbe637717e9d&from=review"
+        }
+      ]
+    },
+    {
+      "sourceCode": "U02-DB-AUDIO-B",
+      "uploadedName": "english7-u02-db-b.mp3",
+      "displayFilename": "english7-u02-db-b.mp3",
+      "sha256": "739e69f637cb72cd5fa2e696726bfb7e36e29a8973816e204770b29be9ed4324",
+      "byteLength": 634680,
+      "durationMs": 38609,
+      "objectPath": "739e69f637cb72cd5fa2e696726bfb7e36e29a8973816e204770b29be9ed4324.mp3",
+      "audioVersionId": "51323f59-4fd8-5738-ba75-89f7c8b64c24",
+      "sourceFamilyId": "e13869cc-2077-51f5-a4e6-cb227b71dc81",
+      "taskSetVersionId": "f7400336-f89e-5120-b41b-8c43aff1e131",
+      "questions": [
+        {
+          "code": "ENG7-U02-DB-22",
+          "id": "242ca857-e2b7-5ba8-ab30-e26c622a5d63",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=242ca857-e2b7-5ba8-ab30-e26c622a5d63&from=review"
+        },
+        {
+          "code": "ENG7-U02-DB-24",
+          "id": "fb6316f9-f7c7-5d1d-a873-e9e9fc77a3f9",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=fb6316f9-f7c7-5d1d-a873-e9e9fc77a3f9&from=review"
+        }
+      ]
+    },
+    {
+      "sourceCode": "U02-MA-AUDIO-A",
+      "uploadedName": "english7-u02-ma-a.mp3.mp3",
+      "displayFilename": "english7-u02-ma-a.mp3",
+      "sha256": "8732e295c10f73efb89a6e8832ea585158888a11429900881448e6b8b449574a",
+      "byteLength": 647219,
+      "durationMs": 39393,
+      "objectPath": "8732e295c10f73efb89a6e8832ea585158888a11429900881448e6b8b449574a.mp3",
+      "audioVersionId": "6953602d-aea4-557f-8469-0563168eaf07",
+      "sourceFamilyId": "53e426bc-3654-5448-a434-5b768add62e5",
+      "taskSetVersionId": "dac1926f-1659-575c-b827-2f95003b0500",
+      "questions": [
+        {
+          "code": "ENG7-U02-MA-21",
+          "id": "426859a9-00d7-5474-ade1-08d606a6586a",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=426859a9-00d7-5474-ade1-08d606a6586a&from=review"
+        },
+        {
+          "code": "ENG7-U02-MA-23",
+          "id": "f5000a4c-dcc1-5bb1-a09a-7e3b82dd5d40",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=f5000a4c-dcc1-5bb1-a09a-7e3b82dd5d40&from=review"
+        }
+      ]
+    },
+    {
+      "sourceCode": "U02-MA-AUDIO-B",
+      "uploadedName": "english7-u02-ma-b.mp3",
+      "displayFilename": "english7-u02-ma-b.mp3",
+      "sha256": "7b62ed3365b17cc7f64c3ffe5b04823d9ec88b46751f2fb9f6e23d56bff8ad34",
+      "byteLength": 660176,
+      "durationMs": 40202,
+      "objectPath": "7b62ed3365b17cc7f64c3ffe5b04823d9ec88b46751f2fb9f6e23d56bff8ad34.mp3",
+      "audioVersionId": "0dc8440a-5087-51aa-9615-6eef5e3c98bc",
+      "sourceFamilyId": "12c06b49-3546-5da1-a75c-ceb714c3ed44",
+      "taskSetVersionId": "0ce38014-fd2d-5f90-adf5-eec3980fce12",
+      "questions": [
+        {
+          "code": "ENG7-U02-MA-22",
+          "id": "6862839b-d6bc-5ca1-a02b-46d1ccc8b6a7",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=6862839b-d6bc-5ca1-a02b-46d1ccc8b6a7&from=review"
+        },
+        {
+          "code": "ENG7-U02-MA-24",
+          "id": "91568516-8639-5ffa-adf0-a1ac999e4af4",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=91568516-8639-5ffa-adf0-a1ac999e4af4&from=review"
+        }
+      ]
+    },
+    {
+      "sourceCode": "U02-MB-AUDIO-A",
+      "uploadedName": "english7-u02-mb-a.mp3",
+      "displayFilename": "english7-u02-mb-a.mp3",
+      "sha256": "dd0c63ededab84689a251c4a32e5981f7d6a29ee21f043d3a1f2d9cd17289c35",
+      "byteLength": 575748,
+      "durationMs": 34926,
+      "objectPath": "dd0c63ededab84689a251c4a32e5981f7d6a29ee21f043d3a1f2d9cd17289c35.mp3",
+      "audioVersionId": "2f17bb26-becd-5913-bf87-2427ae6268ea",
+      "sourceFamilyId": "46e4f33f-b3e9-50a3-a2c8-70cba7e9e771",
+      "taskSetVersionId": "e177ada7-d3f5-5904-bbed-e6dd3acda11d",
+      "questions": [
+        {
+          "code": "ENG7-U02-MB-21",
+          "id": "91001bc2-bfb0-5174-a3f7-5468a2536ccd",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=91001bc2-bfb0-5174-a3f7-5468a2536ccd&from=review"
+        },
+        {
+          "code": "ENG7-U02-MB-23",
+          "id": "832f74ea-0328-5e33-a59e-2decc77f1b65",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=832f74ea-0328-5e33-a59e-2decc77f1b65&from=review"
+        }
+      ]
+    },
+    {
+      "sourceCode": "U02-MB-AUDIO-B",
+      "uploadedName": "english7-u02-mb-b.mp3",
+      "displayFilename": "english7-u02-mb-b.mp3",
+      "sha256": "c806aa4bc14497b67e85406372ff4b523cd598058e772ff68b07f7db79dd9109",
+      "byteLength": 717854,
+      "durationMs": 43807,
+      "objectPath": "c806aa4bc14497b67e85406372ff4b523cd598058e772ff68b07f7db79dd9109.mp3",
+      "audioVersionId": "3744f76b-dc52-54a1-8282-a7e2e2002b47",
+      "sourceFamilyId": "036a60dc-7fa6-57c9-ad3e-4fa9437f0f1d",
+      "taskSetVersionId": "6363200d-edd9-5899-afc7-7c16e0264303",
+      "questions": [
+        {
+          "code": "ENG7-U02-MB-22",
+          "id": "19414866-8005-5f06-ada1-5026c0509ce7",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=19414866-8005-5f06-ada1-5026c0509ce7&from=review"
+        },
+        {
+          "code": "ENG7-U02-MB-24",
+          "id": "e7e60fa0-1c03-5e8c-a048-26afc0ab387d",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=e7e60fa0-1c03-5e8c-a048-26afc0ab387d&from=review"
+        }
+      ]
+    },
+    {
+      "sourceCode": "U02-MC-AUDIO-A",
+      "uploadedName": "english7-u02-mc-a.mp3.mp3",
+      "displayFilename": "english7-u02-mc-a.mp3",
+      "sha256": "fa00d7cabd74e3b98218ad31d499fcb07ee982afaf6d437dc16bf5fe903da875",
+      "byteLength": 592466,
+      "durationMs": 35971,
+      "objectPath": "fa00d7cabd74e3b98218ad31d499fcb07ee982afaf6d437dc16bf5fe903da875.mp3",
+      "audioVersionId": "1762af2b-8f15-552a-81ca-6dfd212d1f68",
+      "sourceFamilyId": "7ff0fe66-fb41-5b33-adc0-e8ae3b774d9a",
+      "taskSetVersionId": "cc8aae64-a205-5555-94e4-c00a6fa05069",
+      "questions": [
+        {
+          "code": "ENG7-U02-MC-21",
+          "id": "fcf22600-5078-531c-a4d1-f24aa7fbb7e6",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=fcf22600-5078-531c-a4d1-f24aa7fbb7e6&from=review"
+        },
+        {
+          "code": "ENG7-U02-MC-23",
+          "id": "52fa226c-7179-55b2-a381-72356746d46d",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=52fa226c-7179-55b2-a381-72356746d46d&from=review"
+        }
+      ]
+    },
+    {
+      "sourceCode": "U02-MC-AUDIO-B",
+      "uploadedName": "english7-u02-mc-b.mp3",
+      "displayFilename": "english7-u02-mc-b.mp3",
+      "sha256": "7dda4fe342ca4feec4770b52660e702a2d457da483bc4b9136095c8995837d71",
+      "byteLength": 702390,
+      "durationMs": 42841,
+      "objectPath": "7dda4fe342ca4feec4770b52660e702a2d457da483bc4b9136095c8995837d71.mp3",
+      "audioVersionId": "4eb19d81-752a-584a-94ec-ef9578eb2632",
+      "sourceFamilyId": "2e1a24e9-a5c0-508a-a522-dfbafb06198e",
+      "taskSetVersionId": "2ac2da39-4a64-5541-aaa4-c560e15550fb",
+      "questions": [
+        {
+          "code": "ENG7-U02-MC-22",
+          "id": "7528cff1-ad82-563d-a061-2a77cf03784a",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=7528cff1-ad82-563d-a061-2a77cf03784a&from=review"
+        },
+        {
+          "code": "ENG7-U02-MC-24",
+          "id": "455170e6-5446-5219-a327-c6a29451768b",
+          "version": 2,
+          "qaPassed": true,
+          "reviewUrl": "https://www.haiedu.am/content-item.html?id=455170e6-5446-5219-a327-c6a29451768b&from=review"
+        }
+      ]
+    }
+  ]
+}
