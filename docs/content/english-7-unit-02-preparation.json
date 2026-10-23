@@ -3,7 +3,7 @@
   "checkpoint": "16.1C.27B",
   "date": "2026-10-23",
   "timezone": "Asia/Yerevan",
-  "status": "source map retained; replacement privately registered in draft Unit 2 scope; no accepted bank budget or learner release",
+  "status": "source map and draft audio registration retained; C28 corpus comparison and 72/48/72 plus W01 proposal prepared; bounded owner decision pending",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -204,8 +204,8 @@
     {
       "activity": 2,
       "pages": "29–31",
-      "disposition": "Owner-directed replacement at the same activity position: One Song, Two Versions; optional spoken-listening recording supplied and technically verified, listening review/registration pending. Do-Re-Mi original and derivative excluded.",
-      "replacementRecordingStatus": "Owner recording received, technical/script checks passed; human listening review and registration pending."
+      "disposition": "Owner-directed replacement at the same activity position: One Song, Two Versions; optional spoken-listening recording supplied, technically verified and registered under C27B. Human listening review and authenticated playback after question attachment remain open. Do-Re-Mi original and derivative excluded.",
+      "replacementRecordingStatus": "Owner recording received, technical/script checks passed and immutable asset registered in draft scope; human listening review and authenticated playback remain open."
     },
     {
       "activity": 3,
@@ -550,7 +550,9 @@
       "S14"
     ],
     "newSettingProvesNovelReasoning": false,
-    "next": "Freeze full comparison corpus, then propose bounded counts and source families before authoring."
+    "next": "After the bounded manifest decision, author all candidates and complete per-candidate and within-batch semantic review; refresh relevant corpus immediately before deployment.",
+    "demandLevelReviewComplete": true,
+    "corpusEvidence": "docs/evidence/english-7-unit-02-bank-proposal-20261023.json"
   },
   "boundaries": {
     "speaking": "classroom-assessed",
@@ -580,7 +582,7 @@
     "draftReleaseScopesRegistered": 1,
     "pendingReleaseGates": 7
   },
-  "next": "Complete the full applicable current/history-bank comparison and bounded Unit 2 bank/assessment proposal before scored authoring; human listening review and authenticated playback follow actual question/skill attachment.",
+  "next": "One bounded owner decision on the complete 192-slot Unit 2 proposal, then whole-unit authoring, ten scripts in one handoff and per-candidate comparison; normal source/QA/approval/release controls remain.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -610,5 +612,15 @@
     "status": "draft",
     "allSevenReleaseGatesPending": true,
     "supersedesUnit1": false
+  },
+  "bankProposal": {
+    "path": "docs/content/english-7-unit-02-bank-proposal.json",
+    "checkpoint": "16.1C.28",
+    "practice": 72,
+    "diagnostic": 48,
+    "mastery": 72,
+    "writingResponses": 1,
+    "accepted": false,
+    "singleAuthoringHandoff": true
   }
 }

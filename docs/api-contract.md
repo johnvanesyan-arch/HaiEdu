@@ -1,6 +1,8 @@
 # Learning API contract
 
-**16.1C.27B:** One immutable Unit 2 audio version is registered under a new draft release/unit scope. Existing review/session/MFA, private Storage, size/duration and playback controls are unchanged. Audio catalog/preview remains item-scoped and requires the question’s primary unit and release-skill mapping; standalone registration does not make a reviewer question or playable page. No runtime/API or learner release change. [Registration and scope](english-7-unit-02-audio-registration.md).
+**16.1C.28:** The Unit 2 192-slot proposal is a subject-aware content plan. It creates no item, task set, schema, endpoint, runtime, approval or bound policy. Existing audio/question scoping, exact-version QA and release controls remain. The complete-corpus read is comparison evidence, not repeated learner/approval verification. [Whole-unit scope](english-7-unit-02-bank-proposal.md).
+
+**Historical 16.1C.27B:** One immutable Unit 2 audio version is registered under a new draft release/unit scope. Existing review/session/MFA, private Storage, size/duration and playback controls are unchanged. Audio catalog/preview remains item-scoped and requires the question’s primary unit and release-skill mapping; standalone registration does not make a reviewer question or playable page. No runtime/API or learner release change. [Registration and scope](english-7-unit-02-audio-registration.md).
 
 **Historical 16.1C.27A:** The supplied Unit 2 replacement MP3 fits existing audio limits and passes decode/script checks. No API/runtime, playback rule, registration or release changes. [Audio handoff](english-7-unit-02-replacement-audio-handoff.md).
 

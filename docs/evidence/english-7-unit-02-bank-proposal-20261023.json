@@ -1,0 +1,128 @@
+{
+  "schemaVersion": "haiedu-content-planning-evidence-v1",
+  "checkpoint": "16.1C.28",
+  "status": "planning_complete_authoring_decision_pending",
+  "baseCommit": "e86b4ca6f49a75071d2bb5f5303ddd930e454c71",
+  "readOnly": true,
+  "productionMutations": 0,
+  "observedAt": "2026-10-23T11:12:41.637573+00:00",
+  "scope": "all current English-subject skills across grades/releases/statuses plus every saved item version, registered source/material context, aggregate exposure history and equivalent-outcome search",
+  "counts": {
+    "skills": 14,
+    "currentItems": 200,
+    "immutableItemVersions": 259,
+    "additionalVersions": 59,
+    "families": 200,
+    "templates": 200,
+    "curriculumScopes": 200,
+    "taskSets": 27,
+    "audioVersions": 15,
+    "unitMaterialVersions": 10,
+    "skillGuides": 0,
+    "templateGuides": 0,
+    "guideVersions": 0,
+    "guideAuthoringVersions": 0,
+    "currentOutcomeMappings": 17,
+    "legacyOutcomeMappings": 17,
+    "distinctMappedOutcomes": 7,
+    "otherSubjectEquivalentSkills": 0,
+    "itemExposureGroups": 73,
+    "itemExposureEvents": 73,
+    "sourceExposureGroups": 10,
+    "sourceExposureEvents": 23
+  },
+  "inventoryStatuses": {
+    "published": 200
+  },
+  "existingUnit2BankItems": 0,
+  "snapshotMethod": "multi-query export, followed by complete current item/history/context readback with canonical equality; not a transaction-wide atomic snapshot",
+  "readback": {
+    "bankUnchanged": true,
+    "contextUnchanged": true,
+    "observedAt": "2026-10-23T11:12:41.637573+00:00",
+    "counts": {
+      "items": 200,
+      "versions": 259
+    }
+  },
+  "versionReview": {
+    "projectionChanges": 0,
+    "additionalVersionsCompared": 59,
+    "sourceReviewLookup": "config.authoringReview.snapshotVersion",
+    "limitations": "Registration metadata differs; current/latest snapshot is not assumed to contain the authoritative source review. The original 200 bank items do not become 259 independent questions."
+  },
+  "privateCorpus": {
+    "filename": "haiedu-unit2-comparison-corpus-20261023.zip",
+    "sha256": "4a37f720020c97b9533e583354aabbb2380f0b737c6d8c21d7e2ee4ccb966d75",
+    "bytes": 291329,
+    "fileHashes": {
+      "ENG7-U01-S01.json": "b2de90291d7bb9e6c3ad5cf85d312c49eb4f33ae169bdf8164ef3044c8293b2c",
+      "ENG7-U01-S02.json": "a6672222b9ae3dc7298bdd4bf44d58429b26c0db6b5e8477d59070192dc82908",
+      "ENG7-U01-S03.json": "b2e80cfdc682c573b90190dfc799e7345405e60624c008066803989d558c31ee",
+      "ENG7-U01-S04.json": "25ae719434d9483ee2eea945ea1b479ebbea14f3a3d692d95c04944b8057d613",
+      "ENG7-U01-S05.json": "c3874ebe43cc465e5309152213d5a7deef168e68886933313d950baae1ad70bc",
+      "ENG7-U01-S06.json": "2f49b9218843b0cd840358f667c6c1ab9e43da8e3bfc808494d686fa91159b24",
+      "ENG7-U01-S07.json": "2e5bc5e3592780e12a2e22806b8e76b98c6300a6a088965df9a036f5491e3d12",
+      "ENG7-U01-S08.json": "edf79f479bffda9c94daf4654bfdac8cc417935901f53ae89fb691f2a7dd4f8e",
+      "ENG7-U01-S09.json": "6997719ef093ca981b0f73829d05e1cd486aef9a74d9b7ac9c740786e04bf934",
+      "ENG7-U01-S10.json": "39bc9f7dd7f648f855315d6cdbc2b34e2c427fc4ac6d8fb4b72fff4183e14efc",
+      "ENG7-U01-S11.json": "73313b09556adb6c7ef4845e4aa5cb3495fa279d0963e46ccd994b87528290f0",
+      "ENG7-U01-S12.json": "d1f26e98da966a609347b99a6f126092955735bed4333b9823faa886af784cb3",
+      "authoring-review-references.json": "731ee3be682cb5f74fec352672f5e578a904b7440819acbd778b427e6277302e",
+      "inventory.json": "3adfd0f85293b04ac309a11c1e0e26357ab97bbcf996d1d1a40b1e34d33a182b",
+      "linked-context.json": "94e11df0e3f9335492dd8ede73235d12aba6c818b914a656df1986b630103bda",
+      "meaningful-history-diffs.json": "79b103727bc69ee5acffc1610b315fa4fde1d407877fb5c6e9a762785c002d21",
+      "readback-guard.json": "9a013864129863a024e24789583d6c8491605f898b650bb56e325a576893ef01",
+      "related-context.json": "3254f0a5382a6fcd155c75e020daede87d8a7eac4fbd00433d11eecece879e4b",
+      "resolved-source-texts.json": "a6944ab89e857b41884d4db08bdb0de1e52650f45a87d7cf8de2aa75a5db4d82"
+    },
+    "studentIdentifiersIncluded": false,
+    "containsProtectedItemContent": true,
+    "notCommittedToRepository": true,
+    "durableSave": "succeeded; private planning archive retained under its exact filename; not copied to Git"
+  },
+  "proposal": {
+    "path": "docs/content/english-7-unit-02-bank-proposal.json",
+    "sha256": "86068b85dea0fd03962dec6eb339ecfbe774fd6d81715c9283d9899068248487",
+    "counts": {
+      "practice": 72,
+      "diagnostic": 48,
+      "mastery": 72,
+      "automaticallyScoredBank": 192,
+      "separateWritingResponses": 1,
+      "diagnosticForms": 2,
+      "masteryForms": 3,
+      "questionsPerForm": 24,
+      "practiceCoreCandidates": 47,
+      "practiceOptionalSupportExtension": 25,
+      "newAssessmentRecordings": 10,
+      "retainedPracticeAudioSources": 4,
+      "practiceReadingSources": 4,
+      "assessmentReadingSources": 10,
+      "plannedSharedTaskSets": 28,
+      "guideDrafts": 8
+    },
+    "slotChecksPassed": true,
+    "candidateLevelReviewComplete": false
+  },
+  "reuse": [
+    "C27 PDF/programme/standard and all-34-activity preparation",
+    "C27B exact replacement audio registration",
+    "Unit 1 owner acceptance and C26 learner/audio/writing verification"
+  ],
+  "verificationScope": "planning arithmetic, unique slot IDs, source membership, per-skill/per-purpose totals, complete frozen bank and demand comparison; no new prompt/option/audio QA or live learner verification claimed",
+  "next": "single bounded owner decision, then whole-unit authoring and candidate-level comparison under unchanged approval/release controls",
+  "author": "Codex, one primary agent; automated authoring preparation, no independent specialist claim",
+  "documentationValidation": {
+    "relativeLinksResolve": true,
+    "jsonParses": true,
+    "exact192UniqueSlots": true,
+    "perSkillPerPurposeTotalsMatch": true,
+    "assessmentSourcesHaveTwoMembersEach": true,
+    "restrictedScenarioBriefsAbsentFromPublicManifest": true,
+    "proposalAndPrivateArchiveHashesMatch": true,
+    "changedFiles": 11,
+    "newFiles": 4,
+    "runtimeChecks": "unchanged evidence reused; required branch CI observed after merge, not claimed by this pre-merge record"
+  }
+}

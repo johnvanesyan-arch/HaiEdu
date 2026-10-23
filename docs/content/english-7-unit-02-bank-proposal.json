@@ -1,0 +1,4364 @@
+{
+  "schemaVersion": "haiedu-english-unit-bank-proposal-v1",
+  "checkpoint": "16.1C.28",
+  "date": "2026-10-23",
+  "timezone": "Asia/Yerevan",
+  "status": "proposed_owner_decision_pending",
+  "proposalId": "english7-u02-whole-unit-192-v1",
+  "baseCommit": "e86b4ca6f49a75071d2bb5f5303ddd930e454c71",
+  "scope": {
+    "subject": "English",
+    "grade": 7,
+    "unit": 2,
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "draftReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "subjectAwareExtension": true,
+    "runtimeChanges": false
+  },
+  "ownerDirection": {
+    "text": "Let's go. But I'll need big batch questions to complete this faster.",
+    "disposition": "authorizes this complete comparison/proposal and large-batch cadence; not numerical acceptance of a previously unspecified bank"
+  },
+  "counts": {
+    "practice": 72,
+    "diagnostic": 48,
+    "mastery": 72,
+    "automaticallyScoredBank": 192,
+    "separateWritingResponses": 1,
+    "diagnosticForms": 2,
+    "masteryForms": 3,
+    "questionsPerForm": 24,
+    "practiceCoreCandidates": 47,
+    "practiceOptionalSupportExtension": 25,
+    "newAssessmentRecordings": 10,
+    "retainedPracticeAudioSources": 4,
+    "practiceReadingSources": 4,
+    "assessmentReadingSources": 10,
+    "plannedSharedTaskSets": 28,
+    "guideDrafts": 8
+  },
+  "countRationale": "Nine core automatic targets: 3+3 vocabulary/expressions, 4 passive, 2 adjective-preposition, 4 past aspect, 4 reading and 4 listening per form. Supporting grammar and present-perfect extension remain Practice-only. Five parallel forms provide bounded alternative-source capacity, not five independent reasoning domains or established psychometric equivalence. Numbers are authoring targets/ceilings, not permission to pad.",
+  "skills": [
+    {
+      "code": "ENG7-U02-S01",
+      "label": "Music vocabulary",
+      "role": "core",
+      "practice": 6,
+      "diagnostic": 6,
+      "mastery": 9,
+      "perForm": 3,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2"
+    },
+    {
+      "code": "ENG7-U02-S02",
+      "label": "Hearing, listening and voice expressions",
+      "role": "core",
+      "practice": 6,
+      "diagnostic": 6,
+      "mastery": 9,
+      "perForm": 3,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1"
+    },
+    {
+      "code": "ENG7-U02-S03",
+      "label": "Possessive reference",
+      "role": "support",
+      "practice": 4,
+      "diagnostic": 0,
+      "mastery": 0,
+      "perForm": 0,
+      "textbookAnchor": "p.35, ex.9",
+      "outcomeLocator": "T2.K4 supporting textbook work"
+    },
+    {
+      "code": "ENG7-U02-S04",
+      "label": "Place, movement and time prepositions",
+      "role": "support",
+      "practice": 4,
+      "diagnostic": 0,
+      "mastery": 0,
+      "perForm": 0,
+      "textbookAnchor": "pp.36/51, ex.10/30",
+      "outcomeLocator": "T2.K4 supporting textbook work"
+    },
+    {
+      "code": "ENG7-U02-S05",
+      "label": "Present/past simple passive",
+      "role": "core",
+      "practice": 8,
+      "diagnostic": 8,
+      "mastery": 12,
+      "perForm": 4,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4"
+    },
+    {
+      "code": "ENG7-U02-S06",
+      "label": "Adjective/adverb functions with unchanged form",
+      "role": "support",
+      "practice": 4,
+      "diagnostic": 0,
+      "mastery": 0,
+      "perForm": 0,
+      "textbookAnchor": "p.46, ex.22",
+      "outcomeLocator": "T2.K4 supporting textbook work"
+    },
+    {
+      "code": "ENG7-U02-S07",
+      "label": "Adjective–preposition combinations",
+      "role": "core",
+      "practice": 6,
+      "diagnostic": 4,
+      "mastery": 6,
+      "perForm": 2,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4"
+    },
+    {
+      "code": "ENG7-U02-S08",
+      "label": "Present perfect and finished past",
+      "role": "extension",
+      "practice": 6,
+      "diagnostic": 0,
+      "mastery": 0,
+      "perForm": 0,
+      "textbookAnchor": "pp.48–50, ex.26–29",
+      "outcomeLocator": "textbook extension; not mandatory Unit 2 assessment"
+    },
+    {
+      "code": "ENG7-U02-S09",
+      "label": "Past simple/continuous and when/while",
+      "role": "core",
+      "practice": 8,
+      "diagnostic": 8,
+      "mastery": 12,
+      "perForm": 4,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4"
+    },
+    {
+      "code": "ENG7-U02-S10",
+      "label": "Reading main idea and purpose",
+      "role": "core",
+      "practice": 4,
+      "diagnostic": 4,
+      "mastery": 6,
+      "perForm": 2,
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3"
+    },
+    {
+      "code": "ENG7-U02-S11",
+      "label": "Reading details and connections",
+      "role": "core",
+      "practice": 6,
+      "diagnostic": 4,
+      "mastery": 6,
+      "perForm": 2,
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3"
+    },
+    {
+      "code": "ENG7-U02-S12",
+      "label": "Listening main message",
+      "role": "core",
+      "practice": 4,
+      "diagnostic": 4,
+      "mastery": 6,
+      "perForm": 2,
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1"
+    },
+    {
+      "code": "ENG7-U02-S13",
+      "label": "Listening details and speaker positions",
+      "role": "core",
+      "practice": 6,
+      "diagnostic": 4,
+      "mastery": 6,
+      "perForm": 2,
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1"
+    }
+  ],
+  "forms": [
+    {
+      "code": "DA",
+      "purpose": "diagnostic",
+      "questionCount": 24,
+      "sourceKeys": [
+        "U02-DA-READ-A",
+        "U02-DA-READ-B",
+        "U02-DA-AUDIO-A",
+        "U02-DA-AUDIO-B"
+      ],
+      "status": "proposed_unqualified",
+      "assessmentExposurePolicy": "separate source families; assess exact supplied information; no unseen claim before access/exposure review"
+    },
+    {
+      "code": "DB",
+      "purpose": "diagnostic",
+      "questionCount": 24,
+      "sourceKeys": [
+        "U02-DB-READ-A",
+        "U02-DB-READ-B",
+        "U02-DB-AUDIO-A",
+        "U02-DB-AUDIO-B"
+      ],
+      "status": "proposed_unqualified",
+      "assessmentExposurePolicy": "separate source families; assess exact supplied information; no unseen claim before access/exposure review"
+    },
+    {
+      "code": "MA",
+      "purpose": "mastery",
+      "questionCount": 24,
+      "sourceKeys": [
+        "U02-MA-READ-A",
+        "U02-MA-READ-B",
+        "U02-MA-AUDIO-A",
+        "U02-MA-AUDIO-B"
+      ],
+      "status": "proposed_unqualified",
+      "assessmentExposurePolicy": "separate source families; assess exact supplied information; no unseen claim before access/exposure review"
+    },
+    {
+      "code": "MB",
+      "purpose": "mastery",
+      "questionCount": 24,
+      "sourceKeys": [
+        "U02-MB-READ-A",
+        "U02-MB-READ-B",
+        "U02-MB-AUDIO-A",
+        "U02-MB-AUDIO-B"
+      ],
+      "status": "proposed_unqualified",
+      "assessmentExposurePolicy": "separate source families; assess exact supplied information; no unseen claim before access/exposure review"
+    },
+    {
+      "code": "MC",
+      "purpose": "mastery",
+      "questionCount": 24,
+      "sourceKeys": [
+        "U02-MC-READ-A",
+        "U02-MC-READ-B",
+        "U02-MC-AUDIO-A",
+        "U02-MC-AUDIO-B"
+      ],
+      "status": "proposed_unqualified",
+      "assessmentExposurePolicy": "separate source families; assess exact supplied information; no unseen claim before access/exposure review"
+    }
+  ],
+  "sources": [
+    {
+      "key": "U02-P-READ-WORLD-A",
+      "modality": "text",
+      "purpose": "practice",
+      "title": "World musicians, first three profiles",
+      "brief": "Bach, Beethoven, Mozart; retain this order; correct and verify supplied facts",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "status": "to_author_and_verify"
+    },
+    {
+      "key": "U02-P-READ-WORLD-B",
+      "modality": "text",
+      "purpose": "practice",
+      "title": "World musicians, next three profiles",
+      "brief": "Elvis Presley, the Beatles, Michael Jackson; retain this order; avoid unsupported superlatives",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "status": "to_author_and_verify"
+    },
+    {
+      "key": "U02-P-READ-ARMENIA-A",
+      "modality": "text",
+      "purpose": "practice",
+      "title": "Armenian musicians, first three profiles",
+      "brief": "Komitas, Sayat-Nova, Aram Khachaturian; retain this order; correct period and location inaccuracies",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "status": "to_author_and_verify"
+    },
+    {
+      "key": "U02-P-READ-ARMENIA-B",
+      "modality": "text",
+      "purpose": "practice",
+      "title": "Armenian musicians, next three profiles",
+      "brief": "Charles Aznavour, Serj Tankian, Djivan Gasparyan; retain this order; supplied factual reading, no celebrity quiz",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "status": "to_author_and_verify"
+    },
+    {
+      "key": "U02-P-AUDIO-REPLACEMENT",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "One Song, Two Versions",
+      "brief": "Optional listening at activity 2; reuse the registered owner recording; exact human listening/pace and authenticated playback review remain open",
+      "textbookAnchor": "pp.29–31, ex.2",
+      "status": "registered_draft_asset"
+    },
+    {
+      "key": "U02-P-AUDIO-POWER",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "The Power of Music",
+      "brief": "Music-topic single-speaker lecture; assess attributed claims, not whether broad learning/stress claims are scientific facts",
+      "textbookAnchor": "p.39 ex.16; script p.144",
+      "status": "candidate_recording_review_registration_pending"
+    },
+    {
+      "key": "U02-P-AUDIO-ABILITIES",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "Abilities dialogue",
+      "brief": "Optional non-music listening support; no claim of core music-topic listening evidence",
+      "textbookAnchor": "p.39 ex.17",
+      "status": "candidate_recording_review_registration_pending"
+    },
+    {
+      "key": "U02-P-AUDIO-BUSY-DAY",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "Busy-day dialogue",
+      "brief": "Optional supporting listening; reconcile the room-cleaning contradiction against the exact recording before authoring an answer",
+      "textbookAnchor": "p.50 ex.29; script p.145",
+      "status": "candidate_recording_review_registration_pending"
+    },
+    {
+      "key": "U02-DA-READ-A",
+      "modality": "text",
+      "purpose": "diagnostic",
+      "title": "Unit 2 DA-READ-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "DA",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-DA-READ-B",
+      "modality": "text",
+      "purpose": "diagnostic",
+      "title": "Unit 2 DA-READ-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "DA",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-DA-AUDIO-A",
+      "modality": "audio",
+      "purpose": "diagnostic",
+      "title": "Unit 2 DA-AUDIO-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "DA",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-DA-AUDIO-B",
+      "modality": "audio",
+      "purpose": "diagnostic",
+      "title": "Unit 2 DA-AUDIO-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "DA",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-DB-READ-A",
+      "modality": "text",
+      "purpose": "diagnostic",
+      "title": "Unit 2 DB-READ-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "DB",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-DB-READ-B",
+      "modality": "text",
+      "purpose": "diagnostic",
+      "title": "Unit 2 DB-READ-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "DB",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-DB-AUDIO-A",
+      "modality": "audio",
+      "purpose": "diagnostic",
+      "title": "Unit 2 DB-AUDIO-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "DB",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-DB-AUDIO-B",
+      "modality": "audio",
+      "purpose": "diagnostic",
+      "title": "Unit 2 DB-AUDIO-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "DB",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MA-READ-A",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "Unit 2 MA-READ-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "MA",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MA-READ-B",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "Unit 2 MA-READ-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "MA",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MA-AUDIO-A",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "Unit 2 MA-AUDIO-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "MA",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MA-AUDIO-B",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "Unit 2 MA-AUDIO-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "MA",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MB-READ-A",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "Unit 2 MB-READ-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "MB",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MB-READ-B",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "Unit 2 MB-READ-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "MB",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MB-AUDIO-A",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "Unit 2 MB-AUDIO-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "MB",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MB-AUDIO-B",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "Unit 2 MB-AUDIO-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "MB",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MC-READ-A",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "Unit 2 MC-READ-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "MC",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MC-READ-B",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "Unit 2 MC-READ-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "pp.40–43 ex.18/19 → T2.L2",
+      "status": "proposed_original_unwritten",
+      "form": "MC",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MC-AUDIO-A",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "Unit 2 MC-AUDIO-A",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "MC",
+      "sharedQuestionCount": 2
+    },
+    {
+      "key": "U02-MC-AUDIO-B",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "Unit 2 MC-AUDIO-B",
+      "brief": "Distinct original music-topic source brief retained in the restricted planning packet; exact text, evidence and protection still require authoring/review.",
+      "textbookAnchor": "p.39 ex.16 → T2.L1",
+      "status": "proposed_original_unwritten",
+      "form": "MC",
+      "sharedQuestionCount": 2
+    }
+  ],
+  "slots": [
+    {
+      "id": "ENG7-U02-P01",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S01",
+      "intent": "Match taught instrument names to supplied text descriptions; no unreviewed image dependence",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P02",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S01",
+      "intent": "Group supplied words as person, instrument or performance with an explicit criterion",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P03",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S01",
+      "intent": "Distinguish solo and ensemble using the stated number of performers",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P04",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S01",
+      "intent": "Interpret a taught musical-style word from a supplied description without taste stereotypes",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P05",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S01",
+      "intent": "Distinguish performer, composer and audience roles in a short event description",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P06",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S01",
+      "intent": "Choose the taught music term that fits a short rehearsal description",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P07",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S02",
+      "intent": "Distinguish an unintended sound heard from deliberate attention to music",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P08",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S02",
+      "intent": "Use listen to with a named sound source and explicit tense",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P09",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S02",
+      "intent": "Interpret hear of as awareness of a musician, not auditory perception",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P10",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S02",
+      "intent": "Select a low-voice expression from a context where nearby people are working",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P11",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S02",
+      "intent": "Distinguish a loud voice from a musical-style judgement using supplied context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P12",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S02",
+      "intent": "Preserve meaning when choosing a taught music/voice expression in a short message",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P13",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S03",
+      "intent": "Choose a possessive determiner before a noun with an explicit owner",
+      "sourceKey": null,
+      "textbookAnchor": "p.35, ex.9",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-MC-06",
+        "ENG7-U01-DB-06",
+        "ENG7-U01-MB-06"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P14",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S03",
+      "intent": "Choose a standalone possessive pronoun without repeating the owned noun",
+      "sourceKey": null,
+      "textbookAnchor": "p.35, ex.9",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-MC-06",
+        "ENG7-U01-DB-06",
+        "ENG7-U01-MB-06"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P15",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S03",
+      "intent": "Resolve singular and plural owners across two sentences",
+      "sourceKey": null,
+      "textbookAnchor": "p.35, ex.9",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-MC-06",
+        "ENG7-U01-DB-06",
+        "ENG7-U01-MB-06"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P16",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S03",
+      "intent": "Contrast possessive reference to two speakers without gender or name ambiguity",
+      "sourceKey": null,
+      "textbookAnchor": "p.35, ex.9",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-MC-06",
+        "ENG7-U01-DB-06",
+        "ENG7-U01-MB-06"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P17",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S04",
+      "intent": "Identify a stated static place relation using text alone",
+      "sourceKey": null,
+      "textbookAnchor": "pp.36/51, ex.10/30",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-P24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P18",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S04",
+      "intent": "Distinguish movement into, out of or across a place from a described route",
+      "sourceKey": null,
+      "textbookAnchor": "pp.36/51, ex.10/30",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-P24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P19",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S04",
+      "intent": "Choose a taught time preposition with an explicit day or clock time",
+      "sourceKey": null,
+      "textbookAnchor": "pp.36/51, ex.10/30",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-P24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P20",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S04",
+      "intent": "Interpret direction on a described staircase without requiring an absent diagram",
+      "sourceKey": null,
+      "textbookAnchor": "pp.36/51, ex.10/30",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-P24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P21",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S05",
+      "intent": "Identify actor and receiver in an active/passive pair",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P22",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S05",
+      "intent": "Form a singular present simple passive for a stated routine",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P23",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S05",
+      "intent": "Form a plural present simple passive for a stated routine",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P24",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S05",
+      "intent": "Form a singular past simple passive for a dated completed event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P25",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S05",
+      "intent": "Form a plural past simple passive with an explicit completed time",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P26",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S05",
+      "intent": "Select the taught irregular past participle with the correct be form supplied",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P27",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S05",
+      "intent": "Order a simple passive sentence while preserving time and actor/receiver roles",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P28",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S05",
+      "intent": "Distinguish an active subject from a passive receiver; do not force every gap to passive",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P29",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S06",
+      "intent": "Identify fast modifying a noun versus describing an action",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.22",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-P13",
+        "ENG7-U01-P19",
+        "ENG7-U01-P20",
+        "ENG7-U01-MC-16"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P30",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S06",
+      "intent": "Interpret hard in a noun phrase and as an adverb; exclude hardly as a synonym",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.22",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-P13",
+        "ENG7-U01-P19",
+        "ENG7-U01-P20",
+        "ENG7-U01-MC-16"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P31",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S06",
+      "intent": "Distinguish late adjective and adverb functions in full sentences",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.22",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-P13",
+        "ENG7-U01-P19",
+        "ENG7-U01-P20",
+        "ENG7-U01-MC-16"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P32",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S06",
+      "intent": "Identify the unchanged form in a supplied adjective/adverb pair without re-testing comparatives",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.22",
+      "outcomeLocator": "T2.K4 supporting textbook work",
+      "deliveryRole": "support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-P13",
+        "ENG7-U01-P19",
+        "ENG7-U01-P20",
+        "ENG7-U01-MC-16"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P33",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use interested in with an activity and no competing valid preposition",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P34",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use good at for an explicitly described activity",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P35",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use fond of in a complete preference statement",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P36",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use full of with a clearly stated container and contents",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P37",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use afraid of in a neutral everyday context without a health claim",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P38",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S07",
+      "intent": "Distinguish two taught adjective–preposition combinations while preserving the intended meaning",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P39",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S08",
+      "intent": "Recognise a completed event with an explicit finished-past time",
+      "sourceKey": null,
+      "textbookAnchor": "pp.48–50, ex.26–29",
+      "outcomeLocator": "textbook extension; not mandatory Unit 2 assessment",
+      "deliveryRole": "extension",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P40",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S08",
+      "intent": "Interpret experience up to now without implying the activity continues",
+      "sourceKey": null,
+      "textbookAnchor": "pp.48–50, ex.26–29",
+      "outcomeLocator": "textbook extension; not mandatory Unit 2 assessment",
+      "deliveryRole": "extension",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P41",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S08",
+      "intent": "Interpret a stated present result of an earlier action",
+      "sourceKey": null,
+      "textbookAnchor": "pp.48–50, ex.26–29",
+      "outcomeLocator": "textbook extension; not mandatory Unit 2 assessment",
+      "deliveryRole": "extension",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P42",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S08",
+      "intent": "Form a taught have/has plus participle pattern with a clear subject",
+      "sourceKey": null,
+      "textbookAnchor": "pp.48–50, ex.26–29",
+      "outcomeLocator": "textbook extension; not mandatory Unit 2 assessment",
+      "deliveryRole": "extension",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P43",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S08",
+      "intent": "Compare finished time with an open period from the supplied timeline in text",
+      "sourceKey": null,
+      "textbookAnchor": "pp.48–50, ex.26–29",
+      "outcomeLocator": "textbook extension; not mandatory Unit 2 assessment",
+      "deliveryRole": "extension",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P44",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S08",
+      "intent": "Repair an ambiguous signal-word-only item by using its explicit time meaning",
+      "sourceKey": null,
+      "textbookAnchor": "pp.48–50, ex.26–29",
+      "outcomeLocator": "textbook extension; not mandatory Unit 2 assessment",
+      "deliveryRole": "extension",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P45",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S09",
+      "intent": "Identify the background action in progress at a stated past moment",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P46",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S09",
+      "intent": "Identify a completed event interrupting an ongoing action",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P47",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish two simultaneous past actions",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P48",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S09",
+      "intent": "Choose past simple for a sequence of completed events",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P49",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S09",
+      "intent": "Use when with a complete event relation rather than a keyword rule",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P50",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S09",
+      "intent": "Use while for an explicitly simultaneous relation, checking valid alternatives",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P51",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S09",
+      "intent": "Form past continuous with the correct was/were agreement",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P52",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S09",
+      "intent": "Select the sentence preserving a supplied narrative timeline",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P53",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S10",
+      "intent": "Summarise the supplied Bach/Beethoven/Mozart information",
+      "sourceKey": "U02-P-READ-WORLD-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P54",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S10",
+      "intent": "Summarise the supplied Presley/Beatles/Jackson information",
+      "sourceKey": "U02-P-READ-WORLD-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P55",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main purpose of the supplied Komitas/Sayat-Nova/Khachaturian information",
+      "sourceKey": "U02-P-READ-ARMENIA-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P56",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main purpose of the supplied Aznavour/Tankian/Gasparyan information",
+      "sourceKey": "U02-P-READ-ARMENIA-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P57",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S11",
+      "intent": "Locate a stated detail in the first world-musician set",
+      "sourceKey": "U02-P-READ-WORLD-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P58",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S11",
+      "intent": "Connect two explicit details in the first world-musician set without date trivia",
+      "sourceKey": "U02-P-READ-WORLD-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P59",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S11",
+      "intent": "Locate a stated detail in the second world-musician set",
+      "sourceKey": "U02-P-READ-WORLD-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P60",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S11",
+      "intent": "Locate a stated detail in the first Armenian-musician set",
+      "sourceKey": "U02-P-READ-ARMENIA-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P61",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S11",
+      "intent": "Connect two explicit details in the first Armenian-musician set",
+      "sourceKey": "U02-P-READ-ARMENIA-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P62",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S11",
+      "intent": "Distinguish supplied fact from an attributed evaluation in the second Armenian-musician set",
+      "sourceKey": "U02-P-READ-ARMENIA-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P63",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the purpose of One Song, Two Versions",
+      "sourceKey": "U02-P-AUDIO-REPLACEMENT",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "optional_support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P64",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the lecturer’s main message in Power of Music; attribute the claims",
+      "sourceKey": "U02-P-AUDIO-POWER",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P65",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main topic of the abilities dialogue; supporting non-music practice",
+      "sourceKey": "U02-P-AUDIO-ABILITIES",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "optional_support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P66",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main topic of the busy-day dialogue; supporting non-music practice",
+      "sourceKey": "U02-P-AUDIO-BUSY-DAY",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "optional_support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P67",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S13",
+      "intent": "Identify a stated choice in One Song, Two Versions",
+      "sourceKey": "U02-P-AUDIO-REPLACEMENT",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "optional_support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P68",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S13",
+      "intent": "Attribute the reason for a music choice to the correct speaker in the replacement",
+      "sourceKey": "U02-P-AUDIO-REPLACEMENT",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "optional_support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P69",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S13",
+      "intent": "Retrieve an explicit example mentioned in Power of Music without endorsing a causal health claim",
+      "sourceKey": "U02-P-AUDIO-POWER",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P70",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S13",
+      "intent": "Retrieve a stated situation in which the lecturer recommends music; this is not a speaker-distinction item",
+      "sourceKey": "U02-P-AUDIO-POWER",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P71",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S13",
+      "intent": "Retrieve an explicitly stated ability from the abilities dialogue",
+      "sourceKey": "U02-P-AUDIO-ABILITIES",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "optional_support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-P72",
+      "purpose": "practice",
+      "skill": "ENG7-U02-S13",
+      "intent": "Retrieve an unambiguous completed activity from the busy-day dialogue after recording/script reconciliation",
+      "sourceKey": "U02-P-AUDIO-BUSY-DAY",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "optional_support",
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-01",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S01",
+      "intent": "Interpret a taught music word in a supplied event context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-02",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S01",
+      "intent": "Distinguish two taught performer/instrument/performance roles with explicit criteria",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-03",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S01",
+      "intent": "Use supplied description to identify a taught music/style term; no preference key",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-04",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S02",
+      "intent": "Distinguish unintended hearing from deliberate listening",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-05",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S02",
+      "intent": "Use the correct taught expression for attending to music or hearing of a musician",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-06",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S02",
+      "intent": "Interpret a taught voice/music expression in an explicit communicative context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-07",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a present simple passive matching receiver and current routine",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-08",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a past simple passive matching an explicitly finished event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-09",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S05",
+      "intent": "Combine number agreement and a taught participle in simple passive",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-10",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S05",
+      "intent": "Preserve actor, receiver and time across active/passive wording",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-11",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use a taught adjective–preposition combination with a unique contextual meaning",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-12",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S07",
+      "intent": "Distinguish another taught combination; review all grammatically valid alternatives",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-13",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a background action from a completed event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-14",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S09",
+      "intent": "Interpret simultaneous past actions from explicit time relations",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-15",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S09",
+      "intent": "Select the sentence preserving an interrupted-action timeline",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-16",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a completed sequence from an ongoing action; no when/while keyword shortcut",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-17",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading A",
+      "sourceKey": "U02-DA-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-18",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading B",
+      "sourceKey": "U02-DA-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-19",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading A",
+      "sourceKey": "U02-DA-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-20",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading B",
+      "sourceKey": "U02-DA-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-21",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording A",
+      "sourceKey": "U02-DA-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-22",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording B",
+      "sourceKey": "U02-DA-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-23",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S13",
+      "intent": "Retrieve an explicit detail from recording A",
+      "sourceKey": "U02-DA-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DA-24",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U02-S13",
+      "intent": "Attribute an explicit detail or position in recording B",
+      "sourceKey": "U02-DA-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-01",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S01",
+      "intent": "Interpret a taught music word in a supplied event context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-02",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S01",
+      "intent": "Distinguish two taught performer/instrument/performance roles with explicit criteria",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-03",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S01",
+      "intent": "Use supplied description to identify a taught music/style term; no preference key",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-04",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S02",
+      "intent": "Distinguish unintended hearing from deliberate listening",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-05",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S02",
+      "intent": "Use the correct taught expression for attending to music or hearing of a musician",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-06",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S02",
+      "intent": "Interpret a taught voice/music expression in an explicit communicative context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-07",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a present simple passive matching receiver and current routine",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-08",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a past simple passive matching an explicitly finished event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-09",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S05",
+      "intent": "Combine number agreement and a taught participle in simple passive",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-10",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S05",
+      "intent": "Preserve actor, receiver and time across active/passive wording",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-11",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use a taught adjective–preposition combination with a unique contextual meaning",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-12",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S07",
+      "intent": "Distinguish another taught combination; review all grammatically valid alternatives",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-13",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a background action from a completed event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-14",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S09",
+      "intent": "Interpret simultaneous past actions from explicit time relations",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-15",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S09",
+      "intent": "Select the sentence preserving an interrupted-action timeline",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-16",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a completed sequence from an ongoing action; no when/while keyword shortcut",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-17",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading A",
+      "sourceKey": "U02-DB-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-18",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading B",
+      "sourceKey": "U02-DB-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-19",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading A",
+      "sourceKey": "U02-DB-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-20",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading B",
+      "sourceKey": "U02-DB-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-21",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording A",
+      "sourceKey": "U02-DB-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-22",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording B",
+      "sourceKey": "U02-DB-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-23",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S13",
+      "intent": "Retrieve an explicit detail from recording A",
+      "sourceKey": "U02-DB-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-DB-24",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U02-S13",
+      "intent": "Attribute an explicit detail or position in recording B",
+      "sourceKey": "U02-DB-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-01",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S01",
+      "intent": "Interpret a taught music word in a supplied event context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-02",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S01",
+      "intent": "Distinguish two taught performer/instrument/performance roles with explicit criteria",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-03",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S01",
+      "intent": "Use supplied description to identify a taught music/style term; no preference key",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-04",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S02",
+      "intent": "Distinguish unintended hearing from deliberate listening",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-05",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S02",
+      "intent": "Use the correct taught expression for attending to music or hearing of a musician",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-06",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S02",
+      "intent": "Interpret a taught voice/music expression in an explicit communicative context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-07",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a present simple passive matching receiver and current routine",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-08",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a past simple passive matching an explicitly finished event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-09",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S05",
+      "intent": "Combine number agreement and a taught participle in simple passive",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-10",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S05",
+      "intent": "Preserve actor, receiver and time across active/passive wording",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-11",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use a taught adjective–preposition combination with a unique contextual meaning",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-12",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S07",
+      "intent": "Distinguish another taught combination; review all grammatically valid alternatives",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-13",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a background action from a completed event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-14",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S09",
+      "intent": "Interpret simultaneous past actions from explicit time relations",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-15",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S09",
+      "intent": "Select the sentence preserving an interrupted-action timeline",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-16",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a completed sequence from an ongoing action; no when/while keyword shortcut",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-17",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading A",
+      "sourceKey": "U02-MA-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-18",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading B",
+      "sourceKey": "U02-MA-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-19",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading A",
+      "sourceKey": "U02-MA-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-20",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading B",
+      "sourceKey": "U02-MA-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-21",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording A",
+      "sourceKey": "U02-MA-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-22",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording B",
+      "sourceKey": "U02-MA-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-23",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S13",
+      "intent": "Retrieve an explicit detail from recording A",
+      "sourceKey": "U02-MA-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MA-24",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U02-S13",
+      "intent": "Attribute an explicit detail or position in recording B",
+      "sourceKey": "U02-MA-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-01",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S01",
+      "intent": "Interpret a taught music word in a supplied event context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-02",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S01",
+      "intent": "Distinguish two taught performer/instrument/performance roles with explicit criteria",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-03",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S01",
+      "intent": "Use supplied description to identify a taught music/style term; no preference key",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-04",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S02",
+      "intent": "Distinguish unintended hearing from deliberate listening",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-05",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S02",
+      "intent": "Use the correct taught expression for attending to music or hearing of a musician",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-06",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S02",
+      "intent": "Interpret a taught voice/music expression in an explicit communicative context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-07",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a present simple passive matching receiver and current routine",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-08",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a past simple passive matching an explicitly finished event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-09",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S05",
+      "intent": "Combine number agreement and a taught participle in simple passive",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-10",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S05",
+      "intent": "Preserve actor, receiver and time across active/passive wording",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-11",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use a taught adjective–preposition combination with a unique contextual meaning",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-12",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S07",
+      "intent": "Distinguish another taught combination; review all grammatically valid alternatives",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-13",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a background action from a completed event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-14",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S09",
+      "intent": "Interpret simultaneous past actions from explicit time relations",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-15",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S09",
+      "intent": "Select the sentence preserving an interrupted-action timeline",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-16",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a completed sequence from an ongoing action; no when/while keyword shortcut",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-17",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading A",
+      "sourceKey": "U02-MB-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-18",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading B",
+      "sourceKey": "U02-MB-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-19",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading A",
+      "sourceKey": "U02-MB-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-20",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading B",
+      "sourceKey": "U02-MB-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-21",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording A",
+      "sourceKey": "U02-MB-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-22",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording B",
+      "sourceKey": "U02-MB-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-23",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S13",
+      "intent": "Retrieve an explicit detail from recording A",
+      "sourceKey": "U02-MB-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MB-24",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U02-S13",
+      "intent": "Attribute an explicit detail or position in recording B",
+      "sourceKey": "U02-MB-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-01",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S01",
+      "intent": "Interpret a taught music word in a supplied event context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-02",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S01",
+      "intent": "Distinguish two taught performer/instrument/performance roles with explicit criteria",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-03",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S01",
+      "intent": "Use supplied description to identify a taught music/style term; no preference key",
+      "sourceKey": null,
+      "textbookAnchor": "pp.28–34, ex.1/4/8",
+      "outcomeLocator": "T2.K1/K2",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P01",
+        "ENG7-U01-P03",
+        "ENG7-U01-P04",
+        "ENG7-U01-P31",
+        "ENG7-U01-DA-03"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-04",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S02",
+      "intent": "Distinguish unintended hearing from deliberate listening",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-05",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S02",
+      "intent": "Use the correct taught expression for attending to music or hearing of a musician",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-06",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S02",
+      "intent": "Interpret a taught voice/music expression in an explicit communicative context",
+      "sourceKey": null,
+      "textbookAnchor": "pp.29/32–33, ex.3/5/6",
+      "outcomeLocator": "T2.K1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P12",
+        "ENG7-U01-DA-01",
+        "ENG7-U01-DA-20",
+        "ENG7-U01-DB-09",
+        "ENG7-U01-MC-09"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-07",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a present simple passive matching receiver and current routine",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-08",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S05",
+      "intent": "Choose a past simple passive matching an explicitly finished event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-09",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S05",
+      "intent": "Combine number agreement and a taught participle in simple passive",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-10",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S05",
+      "intent": "Preserve actor, receiver and time across active/passive wording",
+      "sourceKey": null,
+      "textbookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DA-23",
+        "ENG7-U01-DA-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-11",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S07",
+      "intent": "Use a taught adjective–preposition combination with a unique contextual meaning",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-12",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S07",
+      "intent": "Distinguish another taught combination; review all grammatically valid alternatives",
+      "sourceKey": null,
+      "textbookAnchor": "p.46, ex.23",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-DB-10",
+        "ENG7-U01-MA-08"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-13",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a background action from a completed event",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-14",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S09",
+      "intent": "Interpret simultaneous past actions from explicit time relations",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-15",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S09",
+      "intent": "Select the sentence preserving an interrupted-action timeline",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-16",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S09",
+      "intent": "Distinguish a completed sequence from an ongoing action; no when/while keyword shortcut",
+      "sourceKey": null,
+      "textbookAnchor": "pp.52–53, ex.33/34",
+      "outcomeLocator": "T2.K4",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-DA-23"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-17",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading A",
+      "sourceKey": "U02-MC-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-18",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S10",
+      "intent": "Identify the main idea/purpose of reading B",
+      "sourceKey": "U02-MC-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-P23",
+        "ENG7-U01-R02",
+        "ENG7-U01-DA-21",
+        "ENG7-U01-DB-21",
+        "ENG7-U01-MC-21"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-19",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading A",
+      "sourceKey": "U02-MC-READ-A",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-20",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S11",
+      "intent": "Retrieve or connect explicit evidence from reading B",
+      "sourceKey": "U02-MC-READ-B",
+      "textbookAnchor": "pp.40–43, ex.18/19",
+      "outcomeLocator": "T2.L2/K3",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-R01",
+        "ENG7-U01-R07",
+        "ENG7-U01-DA-23",
+        "ENG7-U01-MB-24",
+        "ENG7-U01-MC-24"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-21",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording A",
+      "sourceKey": "U02-MC-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-22",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S12",
+      "intent": "Identify the main message of recording B",
+      "sourceKey": "U02-MC-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16; original music-topic parallels",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L01",
+        "ENG7-U01-L07",
+        "ENG7-U01-DA-25",
+        "ENG7-U01-DB-25",
+        "ENG7-U01-MA-26"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-23",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S13",
+      "intent": "Retrieve an explicit detail from recording A",
+      "sourceKey": "U02-MC-AUDIO-A",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U02-MC-24",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U02-S13",
+      "intent": "Attribute an explicit detail or position in recording B",
+      "sourceKey": "U02-MC-AUDIO-B",
+      "textbookAnchor": "p.39, ex.16/17; p.50, ex.29 supporting only",
+      "outcomeLocator": "T2.L1",
+      "deliveryRole": "core",
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "nearestBankItems": [
+        "ENG7-U01-L08",
+        "ENG7-U01-L09",
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MA-28",
+        "ENG7-U01-MC-28"
+      ],
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    }
+  ],
+  "writing": {
+    "id": "ENG7-U02-W01",
+    "skills": [
+      "ENG7-U02-S14",
+      "ENG7-U02-S15"
+    ],
+    "responses": 1,
+    "wordRange": [
+      80,
+      100
+    ],
+    "countBasis": "design proposal aligned to the current standard; not a Topic 2 mandated word count",
+    "task": "Use a supplied style/work fact card to write a short informational description, explain a preference and respond with a reason to one supplied differing view. An imagined preference is allowed. No external research, lyric copying or access to a paid recording is required.",
+    "factCards": 2,
+    "rubricProposal": {
+      "criteria": [
+        "task and audience, including information about style/work and a reasoned reply",
+        "organisation",
+        "vocabulary",
+        "grammar and clarity"
+      ],
+      "pointsEach": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "maximum": 12
+    },
+    "scoreRelationship": "separate teacher result; no addition to automatic denominator",
+    "status": "task_rubric_and_workload_proposal_not_authored_or_accepted"
+  },
+  "guides": [
+    {
+      "id": "ENG7-U02-G01",
+      "topic": "Music words, hearing/listening and voice expressions",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U02-G02",
+      "topic": "Supporting possessives and prepositions",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U02-G03",
+      "topic": "Simple passive: actor, receiver and time",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U02-G04",
+      "topic": "Adjective/adverb function and adjective–preposition combinations",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U02-G05",
+      "topic": "Present-perfect extension and finished past",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U02-G06",
+      "topic": "Past simple/continuous timelines",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U02-G07",
+      "topic": "Using reading and listening evidence",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U02-G08",
+      "topic": "Planning an informational music response",
+      "status": "proposed_draft"
+    }
+  ],
+  "batchExecution": [
+    "Author all 192 candidates, sources, eight guides and one writing package as one bounded unit delivery, using internal groups without per-group owner permission.",
+    "Complete candidate-level full-bank and within-batch comparison, natural English/Armenian help, answer uniqueness, feedback/misconception and source trace checks. Rework or report omissions; never fill a numeric slot with a duplicate.",
+    "Deliver all ten original assessment scripts and final ASCII filenames in one recording pack. Retain the four existing activity audio candidates; do not request the registered replacement again.",
+    "Register accepted text/audio sources and attach actual shared task sets before marking affected questions QA-ready. Stage the complete reviewer package through the existing authenticated workflow. Pending recordings may leave those rows explicitly held.",
+    "Batch documentation, required CI and source-verified Notion closure. Exact-version ordinary review, final assessment/readiness/retry/writing workload, exposure and learner-release controls remain in force."
+  ],
+  "protection": {
+    "separatePracticeAndAssessmentFamilies": true,
+    "separateAssessmentFormFamilies": true,
+    "newVoicesOrNamesDoNotCreateNewCoverage": true,
+    "assessmentKeysAndScripts": "keep full candidates/keys/scripts and per-item comparison in the restricted review delivery; public Git/Notion may carry redacted counts/IDs/source briefs only",
+    "existingPublicUnit1ExposureException": "does not apply to Unit 2; assess actual repository and delivery visibility before source/form qualification",
+    "playbackProposal": "retain unlimited Practice/reviewer playback and two shared plays per assessed source; not a newly bound Unit 2 policy",
+    "sameSetQuestions": "share a source/play allowance and evidence dependence; not independent stimuli"
+  },
+  "boundaries": {
+    "productionWrites": 0,
+    "registeredQuestions": 0,
+    "candidateComparisonComplete": false,
+    "demandLevelComparisonComplete": true,
+    "approvedQuestionCount": 0,
+    "scoringPolicyAdopted": false,
+    "learnerActivation": false,
+    "speaking": "classroom_assessed",
+    "noUnit3To6Budgets": true,
+    "unit1Evidence": "reuse unchanged owner acceptance and C26 verification; no new re-approval audit"
+  },
+  "nextDecision": "Accept this exact whole-unit authoring scope, supporting/extension treatment, 120 bounded protected-parallel proposals and writing/audio plan. Final questions, sources, scoring thresholds, workload and release remain subject to their existing controls.",
+  "restrictedBriefs": {
+    "filename": "haiedu-unit2-comparison-corpus-20261023.zip",
+    "entry": "restricted-authoring-briefs.json",
+    "sha256": "055cee1626721b99e278e0a7897509037f68fd221d7a0e65b9abe3ab6500963e",
+    "reason": "Do not publish future assessment scenarios/solutions while proposing their counts and IDs."
+  }
+}
