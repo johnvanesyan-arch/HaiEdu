@@ -1,6 +1,8 @@
 # English 7 Unit 2 source integration
 
-**16.1C.31 · 2026-10-24 Asia/Yerevan · All thirty reading and ten Practice listening questions integrated.**
+**Current C32:** John reports all Unit 2 content/material approved; no repeat review is performed. Formal curriculum registration is complete. The exact numerical/form-qualification contract is next; the unit remains draft. [Current delivery](english-7-unit-02-curriculum-reconciliation.md).
+
+**Historical 16.1C.31 · 2026-10-24 Asia/Yerevan · All thirty reading and ten Practice listening questions integrated.**
 
 The remaining fourteen reading passages and four Practice listening sources are registered as eighteen immutable shared task sets. Forty existing questions now point to them at v2 and have saved passing QA. Unit 2 now has **192 QA passes / zero source holds**, 28 registered shared sets and fourteen recordings. The bank remains **72 Practice / 48 Diagnostic / 72 Mastery**, with eight guides and W01.
 
@@ -54,7 +56,7 @@ All eighteen sets pass the deployed SQL order, source-family and stimulus-resolu
 
 Question wording, source texts, options, keys, inference requirements and source-family identities are unchanged, so C29’s full-bank and within-batch comparison is reused. No schema, Edge runtime, RLS, endpoint, learner policy, playback allowance or release gate changes are made. Fresh authenticated in-app playback is not claimed; unchanged protected-delivery evidence is reused. Unit 1 approval and C26 learner/audio/writing evidence remain intact.
 
-## Next
+## Historical C31 next — superseded by C32 above
 
 Continue ordinary question/material review, formal curriculum reconciliation and the exact Unit 2 numerical/form-qualification/release contract. Unit 2 remains draft with all seven gates pending. Speaking remains classroom-assessed; Units 3–6 remain unbudgeted. No further source-registration work or repeat C30 recording review is required for this bank.
 

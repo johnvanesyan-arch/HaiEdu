@@ -1,6 +1,6 @@
 # English 7 Unit 2 assessment audio integration
 
-**Current C31:** all remaining thirty reading and ten Practice listening questions are attached to registered sources and pass QA. Unit 2 now has 192 QA passes, zero source holds, 28 shared sets and fourteen recordings. Ordinary question/material review and seven release gates remain pending. [Current source delivery](english-7-unit-02-source-integration.md).
+**Current C32:** John reports all Unit 2 content/material approved; no repeat review is performed. Formal curriculum registration is complete. The numerical/form-qualification contract is next; Unit 2 remains draft. [Current delivery](english-7-unit-02-curriculum-reconciliation.md).
 
 **Historical 16.1C.30 · 2026-10-23 Asia/Yerevan · Ten recordings integrated into twenty draft questions.**
 

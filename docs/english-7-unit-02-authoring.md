@@ -1,8 +1,10 @@
 # English 7 Unit 2 — complete authoring and reviewer delivery
 
+**Current C32:** John reports all Unit 2 content/material approved; no repeat review is performed. Formal curriculum registration is complete. The exact numerical/form-qualification contract is next; the unit remains draft. [Current delivery](english-7-unit-02-curriculum-reconciliation.md).
+
 **Historical 16.1C.29 · 2026-10-23 Asia/Yerevan · 192 question drafts and nine materials staged.**
 
-**Current C31:** all remaining thirty reading and ten Practice listening questions are attached to registered sources and pass QA. Unit 2 now has 192 QA passes, zero source holds, 28 shared sets and fourteen recordings. Ordinary question/material review and seven release gates remain pending. [Current source delivery](english-7-unit-02-source-integration.md).
+**Historical C31:** all remaining thirty reading and ten Practice listening questions are attached to registered sources and pass QA. Unit 2 now has 192 QA passes, zero source holds, 28 shared sets and fourteen recordings. Ordinary question/material review and seven release gates remain pending. [Current source delivery](english-7-unit-02-source-integration.md).
 
 John explicitly accepts the complete whole-unit authoring scope. The [owner record](evidence/english-7-unit-02-owner-acceptance-20261023.json) pins the unchanged C28 proposal and its exact 120 protected-parallel slots. It approves preparation and the normal inactive reviewer handoff, not the newly written content, source acceptance, human audition, final numerical policies or learner release.
 
@@ -41,6 +43,6 @@ The existing curriculum governance requires read-committed isolation. An initial
 
 No schema, Edge function, API shape, Storage object, model, scoring policy, learner form or activation changes. Unit 1 and its C26 learner/audio/writing evidence are reused. The Unit 2 release remains draft and all seven gates pending. [Exact evidence](evidence/english-7-unit-02-authoring-20261023.json).
 
-## Next complete slice — updated by C31
+## Historical next slice — C31
 
 All remaining source attachments are complete. Continue ordinary question/material review, formal curriculum reconciliation and the exact Unit 2 numerical/form-qualification/release contract. No repeat generation or listening review of the ten C30 recordings is needed. The accepted whole-unit scope remains; Unit 2 is draft with seven pending gates.

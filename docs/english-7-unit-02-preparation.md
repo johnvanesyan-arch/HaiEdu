@@ -1,8 +1,8 @@
 # English 7 Unit 2 — source, activity and audio preparation
 
-**Sprint 16.1C.31 · 2026-10-24 Asia/Yerevan · All source integration complete: 192 questions pass QA, zero source holds, 28 shared sets and fourteen recordings. Normal review and release controls remain.**
+**Sprint 16.1C.32 · 2026-10-24 Asia/Yerevan · Owner reports all content/material approved; formal curriculum registration complete. Numerical/form-qualification and learner-release decisions remain.**
 
-Unit 2 is **My Interests — I Like Listening to Music**, printed/PDF pages **28–53**, corresponding to programme Topic 2, **Երաժշտությունը՝ համամարդկային լեզու**. All **34 numbered activities** retain their order and an explicit disposition. The map proposes fifteen evidence targets: nine core automatic targets, three supporting language targets, one textbook extension and two teacher-reviewed writing targets. C29 registers these fifteen as draft reviewer targets; formal outcome reconciliation and learner qualification remain pending. They do not replace the textbook lesson sequence.
+Unit 2 is **My Interests — I Like Listening to Music**, printed/PDF pages **28–53**, corresponding to programme Topic 2, **Երաժշտությունը՝ համամարդկային լեզու**. All **34 numbered activities** retain their order and an explicit disposition. The map proposes fifteen evidence targets: nine core automatic targets, three supporting language targets, one textbook extension and two teacher-reviewed writing targets. C29 registers these fifteen targets; C32 adds formal outcome reconciliation. Learner qualification remains separate. They do not replace the textbook lesson sequence.
 
 John has excluded **Do-Re-Mi**, including the compressed review file. C31 privately registers the three retained publisher recordings and attaches them with the existing [**One Song, Two Versions**](english-7-unit-02-music-replacement.md) replacement to ten Practice questions. The replacement retains its textbook activity 2 position and C27A/C27B technical/script evidence. Automated publisher reconciliation supports every linked answer; the busy-day room-cleaning inconsistency is retained as a limitation and is not tested. C30’s ten owner-accepted assessment recordings are unchanged. Independent human audition and fresh authenticated playback are not claimed. Unit 2 remains draft with seven pending gates. [Current source integration](english-7-unit-02-source-integration.md).
 
@@ -39,7 +39,7 @@ Selected current-standard links are `ՕԼ7-Հ-ՈՒ․1/3` for familiar/topic lis
 
 ## Proposed evidence targets
 
-C29 registers these identifiers as draft reviewer targets. Core means a proposed unit evidence target, not a passed release gate or adopted numerical requirement.
+C29 registers these identifiers and C32 registers their curriculum mappings. Core is the accepted authoring-scope classification, not a passed release gate or adopted numerical requirement.
 
 | Planning ID | Observable target | Book anchor | Proposed route |
 | --- | --- | --- | --- |
@@ -139,7 +139,7 @@ Use separate criterion evidence for task/audience, organisation, vocabulary and 
 
 **Retained comparison requirements for authoring.** Freeze all applicable current, draft, retired and exposed versions across releases, plus teaching guides and related mappings. At minimum compare Unit 1 S01/S02 vocabulary contexts, S04/S07 adjective/adverb/comparison demands, S09/S10 reading, S11/S12 listening and S13/S14 writing. A music setting or a new skill code alone is not new reasoning coverage. C28 completes the corpus freeze and demand comparison for this scope; the later C29 delivery adds the actual candidate-level review and records all 18,336 within-batch pairs.
 
-C29 stages the accepted 192 drafts (72/48/72), eight guides and W01 with full-bank comparison. C30 integrates ten owner-accepted assessment recordings without repeat listening. C31 registers fourteen unchanged reading passages and four Practice listening sets, then attaches thirty reading and ten listening questions at v2 with saved passing QA. The whole bank now passes QA (192/192), with zero source holds, 28 sets and fourteen recordings; all nine materials retain prior QA. Next: ordinary content/material review, formal curriculum reconciliation and the exact numerical/form-qualification/release contract. All seven stored gates remain pending. Unit 1 evidence is reused; Units 3–6 remain unbudgeted. [Source delivery](english-7-unit-02-source-integration.md).
+C29–C31 complete the accepted 192-question bank (72/48/72), eight guides, W01 and all source attachments. C31’s 192 QA passes, 28 sets and fourteen recordings are reused. John reports everything approved under C32; his review is not repeated. C32 registers ten official Topic 2 outcomes, fifteen skill reconciliations, nineteen mappings and 192 family traces. Next: the exact numerical/form-qualification/release contract for five planned 24-question forms. All seven stored gates remain pending; no policy is silently inherited from Unit 1. Units 3–6 remain unbudgeted. [Curriculum delivery](english-7-unit-02-curriculum-reconciliation.md).
 
 Replacement decision: [C27R evidence](evidence/english-7-unit-02-music-replacement-20261023.json). Current recording receipt/checks: [C27A evidence](evidence/english-7-unit-02-replacement-audio-20261023.json).
 

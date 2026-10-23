@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.31",
+  "checkpoint": "16.1C.32",
   "date": "2026-10-24",
   "timezone": "Asia/Yerevan",
-  "status": "all-sources-integrated-unit-remains-draft",
+  "status": "owner-approval-reported-curriculum-registered-unit-remains-draft",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -600,7 +600,7 @@
       "S14"
     ],
     "newSettingProvesNovelReasoning": false,
-    "next": "Reuse unchanged C29 comparison; ordinary review, formal curriculum and numerical/form-qualification/release work.",
+    "next": "Reuse unchanged C29 comparison; exact Unit 2 numerical/form-qualification/release contract.",
     "demandLevelReviewComplete": true,
     "corpusEvidence": "docs/evidence/english-7-unit-02-authoring-20261023.json",
     "reviewProvenance": "Codex automated author and semantic self-review; human/SME review pending",
@@ -615,7 +615,7 @@
       "mastery": 72
     },
     "newQuestionsAuthored": 192,
-    "productionWrites": 2277,
+    "productionWrites": 2747,
     "assetsRegistered": 14,
     "sourcesRegistered": 28,
     "newHumanApprovals": 0,
@@ -633,7 +633,7 @@
     "draftUnitScopesRegistered": 1,
     "draftReleaseScopesRegistered": 1,
     "pendingReleaseGates": 7,
-    "productionWriteBasis": "11 C27B + 2105 C29 + 60 C30 + 101 C31 additive rows; also twenty C30 and forty C31 current question revisions preserving meaning/keys and unaffected history.",
+    "productionWriteBasis": "2277 prior additive rows plus 470 C32 curriculum rows; C32 also updates fifteen draft skill snapshots and one draft release. Existing content/approval/QA/history unchanged.",
     "draftMaterialsStaged": 9,
     "newAssessmentScriptsAuthored": 10,
     "sourceQuestionHolds": 0,
@@ -644,9 +644,15 @@
     "acceptedAssessmentRecordings": 10,
     "questionVersionsRevisedForReading": 30,
     "practiceAudioQuestionQaPassed": 10,
-    "readingQuestionQaPassed": 30
+    "readingQuestionQaPassed": 30,
+    "ownerReportsAllContentApproved": true,
+    "approvalReviewRepeated": false,
+    "formalCurriculumReconciliationComplete": true,
+    "officialOutcomesRegistered": 10,
+    "skillOutcomeMappingsRegistered": 19,
+    "questionFamiliesReconciled": 192
   },
-  "next": "Ordinary question/material review, formal curriculum reconciliation and the exact Unit 2 numerical/form-qualification/release contract. All source-registration holds are cleared; seven release gates remain pending. Reuse accepted C30 audio review and Unit 1 evidence.",
+  "next": "Prepare the exact Unit 2 scoring/readiness/attempt/replacement and form-qualification contract for five planned 24-question forms; preserve the accepted 47-core/25-supporting Practice authoring split. No Unit 1 thresholds or learner activation are silently inherited.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -729,5 +735,13 @@
     "savedQaPasses": 40,
     "allUnit2SourceHoldsCleared": true,
     "evidence": "docs/evidence/english-7-unit-02-source-integration-20261024.json"
+  },
+  "curriculumRegistration": {
+    "checkpoint": "16.1C.32",
+    "reconciliationId": "15eed899-1ac6-5f00-baff-add57e642c91",
+    "manifest": "docs/content/english-7-unit-02-curriculum-registration.json",
+    "evidence": "docs/evidence/english-7-unit-02-curriculum-registration-20261024.json",
+    "ownerApprovalReportAccepted": true,
+    "independentSmeApproved": false
   }
 }
