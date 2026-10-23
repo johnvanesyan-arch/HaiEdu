@@ -1,6 +1,6 @@
 # English 7 Unit 1: retained learner verification
 
-**Sprint 16.1C.26 · 2026-10-23 · prepared; live result pending**
+**Sprint 16.1C.26 · 2026-10-23 · verified; retained learner journey complete**
 
 The owner requested full learner attempts, playback-limit verification and the writing submission/teacher-feedback cycle. C25 already activated the provisional pilot and verified the read-only learner/staff paths. Existing owner content, audio, scoring and intended-use decisions stand; this slice does not repeat those reviews or close the independent specialist gate.
 
@@ -16,7 +16,7 @@ This mutating workflow deliberately has **no push or pull-request trigger**. Exi
 
 If interrupted, the always-uploaded redacted artifact records owned session/work IDs and completed steps. An explicitly selected prior incomplete run artifact may resume only those records. A fresh run fails closed if any unrelated Unit 1 history or work exists. Completed forms are never recreated. Ambiguous writes are inspected before continuation; no blanket retry/reset is used. Reports omit credentials, tokens, response text and audio bytes; screenshots show only designated QA activity.
 
-Live results, deployment/CI identifiers and the source-verified Notion closure will be recorded here after execution. C25 remains the completed checkpoint until then.
+The results below close this bounded C26 technical delivery. The merged documentation source is the Notion synchronization target; the map is current only after its exact source stamp and content are read back.
 
 ## First live run and playback correction
 
@@ -32,4 +32,31 @@ The migration file is reconciled to its actual deployed timestamp without changi
 
 Run [39915749327](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39915749327) completed the original Diagnostic (28 answers), seven ordinary Practice sessions (17 answers, ending on readiness), and one Mastery check (28/28). All twelve skills are ready; exactly one scored Mastery attempt is used. Four assessed recordings complete two plays each, all eight per-question third-play probes return 409, and Practice completes three plays on its first recording. The writing draft, return and second submission are retained. The run passed 544 checks and stopped during writing before marking; no HTTP failure was recorded and all six authentication sessions closed.
 
-The submission wait previously accepted any visible `.written-response`, including the still-visible prior submission during revision. The runner now waits for the submission-success message and the editor to disappear before reading the next state. This explains a possible race; the redacted first failure did not retain an exact assertion stack, so it is not represented as a directly observed error code. The continuation will mark the existing second submission, verify feedback and staff projections, and retain the completed learning work without repeating it. Final closure remains pending that result.
+The submission wait previously accepted any visible `.written-response`, including the still-visible prior submission during revision. The runner now waits for the submission-success message and the editor to disappear before reading the next state. This explains a possible race; the redacted first failure did not retain an exact assertion stack, so it is not represented as a directly observed error code. The continuation will mark the existing second submission, verify feedback and staff projections, and retain the completed learning work without repeating it. The completed continuation below supersedes this pending checkpoint.
+
+## Completed retained journey
+
+The final continuation [run 39918663688](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39918663688) passed **90/90** checks on `081dbccdb226a5be41cb4119032e5c00a846ec69`. It resumes the existing records from run 39915749327; it does not recreate completed learning sessions, expose another form or repeat writing submissions. Earlier successful steps remain in their immutable reports. The two previous failed runs are retained as resolved execution history, not presented as passing runs.
+
+| Capability | Verified outcome |
+| --- | --- |
+| Diagnostic | One retained form, 28/28, all four result groups; six early answers survived the first interruption |
+| Ordinary Practice/readiness | Seven sessions, 17 correct responses, all twelve skills ready; normal early completion with no readiness override |
+| Mastery | One retained attempt, 28/28, lifecycle passed, four scoped result groups; mobile layout fits |
+| Assessed audio | Four real recordings, two completed plays each; all eight third-play probes return 409; shared counts survive item changes/reload |
+| Pause and replay | Saved positive pause checkpoint resumes successfully after the timing repair; Practice completes three real plays on one recording and normal playback on related questions |
+| Writing | Private draft/reload, no pending zero, first submission, teacher return, revised second submission, four synthetic criterion marks of 2/3, separate 8/12 score and learner feedback |
+| Staff and isolation | Teacher results match original groups; school earned/possible totals match; five explicit foreign-access denials; every preserved other-programme/School B dashboard remains identical |
+| Retention | Nine sessions and 73 answers, two writing submissions and two reviews retained; only run-created authentication sessions close |
+
+The writing marks deliberately use synthetic test text and are not a language-quality assessment. Its automatic evidence stays byte-identical through writing. The final readback shows no School B English attempts or writing. Reports contain no credentials, tokens, learner-response text or audio bytes.
+
+Required implementation CI [39918020397](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/39918020397) passes 1,410 tests, all 95 native Chromium cases, PostgreSQL 17.6, concurrency and aggregate release checks. The production revision is verified before and after the final continuation. The corrected SQL body, runtime provenance and migration-only 117-table preservation are independently verified. Documentation-only closure reuses this unchanged executable evidence and receives its own required CI/deployment; final merged-source attestation belongs to the Notion readback.
+
+[Consolidated evidence](evidence/english-7-unit-01-learner-verification-20261023.json) · [Diagnostic screenshot](evidence/english-7-unit-01-diagnostic-complete-20261023.png) · [Mastery screenshot](evidence/english-7-unit-01-mastery-complete-20261023.png) · [Writing feedback screenshot](evidence/english-7-unit-01-writing-feedback-20261023.png).
+
+## Next boundary
+
+Continue Unit 2 source/activity and audio preparation in the textbook’s six-unit order. Units 2–6 have no accepted question budgets. Reuse the twenty-recording course inventory and prepare the reviewed smaller Do-Re-Mi delivery copy when that slice needs it. Preserve the 60/56/84 Unit 1 bank and its 58-core/two-optional split. The public exposure disposition, independent specialist/form-equivalence and broader school-pilot gates remain separate. No unseen-assessment, whole-unit mastery or CEFR claim is made; speaking stays classroom-assessed.
+
+[Successful live workflow](evidence/english-7-unit-01-learner-acceptance-20261023.jpg).

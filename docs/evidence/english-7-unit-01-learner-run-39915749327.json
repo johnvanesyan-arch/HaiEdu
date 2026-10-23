@@ -1,0 +1,2972 @@
+{
+  "schemaVersion": "haiedu-english-unit1-learner-qa-v1",
+  "checkpoint": "16.1C.26",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+    "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+  },
+  "studentId": "bc3db497-d125-411f-99dd-49b1ae2466d5",
+  "workflowRunId": "39915749327",
+  "revision": "af1bcf12f2156a7c5e30716e38714da8d9d8558e",
+  "status": "failed",
+  "startedAt": "2026-10-23T07:07:55.717Z",
+  "checks": [
+    {
+      "label": "exact main, activation, owner direction and six designated identities",
+      "status": "passed"
+    },
+    {
+      "label": "manual dispatch only",
+      "status": "passed"
+    },
+    {
+      "label": "resume only a known incomplete bounded run",
+      "status": "passed"
+    },
+    {
+      "label": "public client bound to existing HaiEdu project",
+      "status": "passed"
+    },
+    {
+      "label": "A_admin: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_student: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_admin: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_student: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "no unrelated existing attempts or active work",
+      "status": "passed"
+    },
+    {
+      "label": "preflight: manage-written-work authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "no unrelated writing work",
+      "status": "passed"
+    },
+    {
+      "label": "preflight: get-student-classes authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: exact designated English enrollment",
+      "status": "passed"
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-classes authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: exact designated English enrollment",
+      "status": "passed"
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "previous preserved contexts still identical",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "resume only recorded active session",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 7: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "assessed shared recording policy and question group",
+      "status": "passed"
+    },
+    {
+      "label": "real-time audio completes at normal playback rate",
+      "status": "passed"
+    },
+    {
+      "label": "real-time audio completes at normal playback rate",
+      "status": "passed"
+    },
+    {
+      "label": "server rejects a third assessed play",
+      "status": "passed",
+      "httpStatus": 409
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 7: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 7: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 8: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "assessed shared recording policy and question group",
+      "status": "passed"
+    },
+    {
+      "label": "server rejects a third assessed play",
+      "status": "passed",
+      "httpStatus": 409
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 8: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 8: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 9: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 9: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 10: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 10: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 11: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 11: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 12: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 12: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 13: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 13: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 14: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 14: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 15: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "assessed shared recording policy and question group",
+      "status": "passed"
+    },
+    {
+      "label": "real-time audio completes at normal playback rate",
+      "status": "passed"
+    },
+    {
+      "label": "real-time audio completes at normal playback rate",
+      "status": "passed"
+    },
+    {
+      "label": "server rejects a third assessed play",
+      "status": "passed",
+      "httpStatus": 409
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 15: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 15: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 16: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "assessed shared recording policy and question group",
+      "status": "passed"
+    },
+    {
+      "label": "server rejects a third assessed play",
+      "status": "passed",
+      "httpStatus": 409
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 16: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 16: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 17: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 17: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 18: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 18: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 19: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 19: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 20: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 20: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 21: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 21: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 22: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 22: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 23: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 23: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 24: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 24: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 25: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 25: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 26: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 26: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 27: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 27: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 28: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic 28: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic: four complete original score groups",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: completion layout fits viewport",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "readiness uses bounded ordinary practice, never a database override",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "bounded normal learner session start",
+      "status": "passed"
+    },
+    {
+      "label": "practice: start-learning-session authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "new session id is unique",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 1: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 1: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 2: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 2: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice: completion layout fits viewport",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "readiness uses bounded ordinary practice, never a database override",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "bounded normal learner session start",
+      "status": "passed"
+    },
+    {
+      "label": "practice: start-learning-session authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "new session id is unique",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 1: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 1: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 2: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 2: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice: completion layout fits viewport",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "readiness uses bounded ordinary practice, never a database override",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "bounded normal learner session start",
+      "status": "passed"
+    },
+    {
+      "label": "practice: start-learning-session authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "new session id is unique",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 1: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 1: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 2: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 2: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice: completion layout fits viewport",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "readiness uses bounded ordinary practice, never a database override",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "bounded normal learner session start",
+      "status": "passed"
+    },
+    {
+      "label": "practice: start-learning-session authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "new session id is unique",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 1: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 1: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 2: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 2: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice: completion layout fits viewport",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "readiness uses bounded ordinary practice, never a database override",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "bounded normal learner session start",
+      "status": "passed"
+    },
+    {
+      "label": "practice: start-learning-session authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "new session id is unique",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 1: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 1: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 2: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "practice 2: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice: completion layout fits viewport",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "readiness uses bounded ordinary practice, never a database override",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "bounded normal learner session start",
+      "status": "passed"
+    },
+    {
+      "label": "practice: start-learning-session authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "new session id is unique",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 1: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "practice 1: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 2: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "practice 2: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 3: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "practice 3: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice: completion layout fits viewport",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "readiness uses bounded ordinary practice, never a database override",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "bounded normal learner session start",
+      "status": "passed"
+    },
+    {
+      "label": "practice: start-learning-session authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "new session id is unique",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 1: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "practice uses replayable policy",
+      "status": "passed"
+    },
+    {
+      "label": "practice replay 1: real audio at normal speed",
+      "status": "passed"
+    },
+    {
+      "label": "practice replay 2: real audio at normal speed",
+      "status": "passed"
+    },
+    {
+      "label": "practice replay 3: real audio at normal speed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "practice 1: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 2: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "practice uses replayable policy",
+      "status": "passed"
+    },
+    {
+      "label": "practice replay 1: real audio at normal speed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "practice 2: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 3: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "practice uses replayable policy",
+      "status": "passed"
+    },
+    {
+      "label": "practice replay 1: real audio at normal speed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "practice 3: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice 4: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "practice uses replayable policy",
+      "status": "passed"
+    },
+    {
+      "label": "practice replay 1: real audio at normal speed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "practice 4: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice response receives correct feedback",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "practice: completion layout fits viewport",
+      "status": "passed"
+    },
+    {
+      "label": "practice: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "all twelve skills ready through retained answers",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "bounded normal learner session start",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: start-learning-session authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "new session id is unique",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 1: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 1: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 2: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 2: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 3: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 3: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 4: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "assessed shared recording policy and question group",
+      "status": "passed"
+    },
+    {
+      "label": "real-time audio completes at normal playback rate",
+      "status": "passed"
+    },
+    {
+      "label": "real-time audio completes at normal playback rate",
+      "status": "passed"
+    },
+    {
+      "label": "server rejects a third assessed play",
+      "status": "passed",
+      "httpStatus": 409
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 4: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 4: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 5: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "assessed shared recording policy and question group",
+      "status": "passed"
+    },
+    {
+      "label": "server rejects a third assessed play",
+      "status": "passed",
+      "httpStatus": 409
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 5: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 5: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 6: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 6: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 7: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 7: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 8: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "assessed shared recording policy and question group",
+      "status": "passed"
+    },
+    {
+      "label": "real-time audio completes at normal playback rate",
+      "status": "passed"
+    },
+    {
+      "label": "real-time audio completes at normal playback rate",
+      "status": "passed"
+    },
+    {
+      "label": "server rejects a third assessed play",
+      "status": "passed",
+      "httpStatus": 409
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 8: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 8: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 9: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "assessed shared recording policy and question group",
+      "status": "passed"
+    },
+    {
+      "label": "server rejects a third assessed play",
+      "status": "passed",
+      "httpStatus": 409
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 9: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "audio player has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 9: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 10: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 10: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 11: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 11: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 12: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 12: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 13: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 13: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 14: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 14: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 15: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 15: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 16: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 16: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 17: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 17: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 18: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 18: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 19: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 19: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 20: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 20: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 21: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 21: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 22: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 22: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 23: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 23: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 24: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 24: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 25: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 25: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 26: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "shared reading passage displayed",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 26: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 27: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 27: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check 28: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check 28: answer accepted",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "assessed response withholds individual grading",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "mastery_check: four complete original score groups",
+      "status": "passed"
+    },
+    {
+      "label": "mastery passes exact 28-point approved contract",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: completion layout fits viewport",
+      "status": "passed"
+    },
+    {
+      "label": "mastery_check: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "one scored mastery attempt and passed lifecycle",
+      "status": "passed"
+    },
+    {
+      "label": "both assessed and replayable audio were exercised",
+      "status": "passed"
+    },
+    {
+      "label": "writing: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "writing: manage-written-work authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "writing: manage-written-work authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "unsubmitted draft is absent from teacher queue",
+      "status": "passed"
+    },
+    {
+      "label": "writing: manage-written-work authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "draft reload preserves synthetic text",
+      "status": "passed"
+    },
+    {
+      "label": "pending writing is not a zero score",
+      "status": "passed"
+    },
+    {
+      "label": "writing: manage-written-work authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "writing: manage-written-work authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "revised submission remains pending without zero",
+      "status": "passed"
+    },
+    {
+      "label": "writing: manage-written-work authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "writing: manage-written-work authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "writing: acceptance unfinished; raw errors withheld",
+      "status": "failed"
+    },
+    {
+      "label": "A_admin: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_teacher: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_student: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_admin: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_teacher: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_student: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    }
+  ],
+  "sessions": [
+    {
+      "id": "a7500501-98a8-4578-a6b3-7343eb4b83a1",
+      "mode": "diagnostic",
+      "targetSkillId": null,
+      "status": "completed",
+      "answered": 28,
+      "result": {
+        "groups": [
+          {
+            "key": "vocabulary",
+            "label": "Բառապաշար",
+            "earned": 5,
+            "correct": 5,
+            "percent": 100,
+            "answered": 5,
+            "possible": 5,
+            "skillIds": [
+              "c3d77d8d-93b5-50ac-a53c-1ce48953f3e3",
+              "15546b88-3e96-5cff-ab87-9cc29cb1b96c"
+            ],
+            "determinesPass": false
+          },
+          {
+            "key": "grammar",
+            "label": "Քերականություն",
+            "earned": 15,
+            "correct": 15,
+            "percent": 100,
+            "answered": 15,
+            "possible": 15,
+            "skillIds": [
+              "7bf779fa-f872-5a73-a471-4ced6268a845",
+              "d077c8a2-5acc-51bb-ae8d-a1ff4d2387db",
+              "77322a41-1e93-5734-aa79-dad6fb951932",
+              "861b8869-c18e-52ff-a535-15728cb2f9ef",
+              "9d54818f-52b4-58ed-a4a8-6a1c11f6ef18",
+              "d6060936-97d9-5b9a-a9ca-8a414028be31"
+            ],
+            "determinesPass": false
+          },
+          {
+            "key": "reading",
+            "label": "Ընթերցանություն",
+            "earned": 4,
+            "correct": 4,
+            "percent": 100,
+            "answered": 4,
+            "possible": 4,
+            "skillIds": [
+              "06fbe791-0e40-5192-adcf-496f96b45bba",
+              "8cb750f3-24b2-5ea6-a058-054199b4fc8a"
+            ],
+            "determinesPass": false
+          },
+          {
+            "key": "listening",
+            "label": "Ունկնդրում",
+            "earned": 4,
+            "correct": 4,
+            "percent": 100,
+            "answered": 4,
+            "possible": 4,
+            "skillIds": [
+              "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+              "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+            ],
+            "determinesPass": false
+          }
+        ],
+        "itemWeight": 1,
+        "overallScore": {
+          "earned": 28,
+          "correct": 28,
+          "percent": 100,
+          "answered": 28,
+          "possible": 28
+        },
+        "schemaVersion": "haiedu-assessment-result-v3",
+        "scoredSkillIds": null,
+        "scoringStrategy": "normalized-item-score-v1",
+        "readinessSkillIds": null
+      }
+    },
+    {
+      "id": "f1e6a95b-111e-4d00-bc1e-f4e3055a9d9f",
+      "mode": "practice",
+      "targetSkillId": "15546b88-3e96-5cff-ab87-9cc29cb1b96c",
+      "status": "completed",
+      "answered": 2
+    },
+    {
+      "id": "a3405037-1fc2-40f4-a611-8f22dde591a9",
+      "mode": "practice",
+      "targetSkillId": "7bf779fa-f872-5a73-a471-4ced6268a845",
+      "status": "completed",
+      "answered": 2
+    },
+    {
+      "id": "c087524c-6f6d-4416-bdcd-f3c52e4d569d",
+      "mode": "practice",
+      "targetSkillId": "d077c8a2-5acc-51bb-ae8d-a1ff4d2387db",
+      "status": "completed",
+      "answered": 2
+    },
+    {
+      "id": "feed04d8-5c49-4849-9be4-7ebc885c0a8f",
+      "mode": "practice",
+      "targetSkillId": "77322a41-1e93-5734-aa79-dad6fb951932",
+      "status": "completed",
+      "answered": 2
+    },
+    {
+      "id": "3d3132f5-f843-4771-b59d-551adf7dd333",
+      "mode": "practice",
+      "targetSkillId": "06fbe791-0e40-5192-adcf-496f96b45bba",
+      "status": "completed",
+      "answered": 2
+    },
+    {
+      "id": "0e7b7577-3418-45c1-b56a-661dd4ab07be",
+      "mode": "practice",
+      "targetSkillId": "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+      "status": "completed",
+      "answered": 3
+    },
+    {
+      "id": "50a53891-eddf-4106-90b7-d7fc24694afd",
+      "mode": "practice",
+      "targetSkillId": "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+      "status": "completed",
+      "answered": 4
+    },
+    {
+      "id": "038b72f8-ecba-4af8-b790-954ccc4d11be",
+      "mode": "mastery_check",
+      "targetSkillId": null,
+      "status": "completed",
+      "answered": 28,
+      "result": {
+        "score": {
+          "earned": 28,
+          "correct": 28,
+          "percent": 100,
+          "answered": 28,
+          "possible": 28
+        },
+        "groups": [
+          {
+            "key": "vocabulary",
+            "label": "Բառապաշար",
+            "earned": 5,
+            "correct": 5,
+            "percent": 100,
+            "answered": 5,
+            "possible": 5,
+            "skillIds": [
+              "c3d77d8d-93b5-50ac-a53c-1ce48953f3e3",
+              "15546b88-3e96-5cff-ab87-9cc29cb1b96c"
+            ],
+            "determinesPass": true
+          },
+          {
+            "key": "grammar",
+            "label": "Քերականություն",
+            "earned": 15,
+            "correct": 15,
+            "percent": 100,
+            "answered": 15,
+            "possible": 15,
+            "skillIds": [
+              "7bf779fa-f872-5a73-a471-4ced6268a845",
+              "d077c8a2-5acc-51bb-ae8d-a1ff4d2387db",
+              "77322a41-1e93-5734-aa79-dad6fb951932",
+              "861b8869-c18e-52ff-a535-15728cb2f9ef",
+              "9d54818f-52b4-58ed-a4a8-6a1c11f6ef18",
+              "d6060936-97d9-5b9a-a9ca-8a414028be31"
+            ],
+            "determinesPass": true
+          },
+          {
+            "key": "reading",
+            "label": "Ընթերցանություն",
+            "earned": 4,
+            "correct": 4,
+            "percent": 100,
+            "answered": 4,
+            "possible": 4,
+            "skillIds": [
+              "06fbe791-0e40-5192-adcf-496f96b45bba",
+              "8cb750f3-24b2-5ea6-a058-054199b4fc8a"
+            ],
+            "determinesPass": true
+          },
+          {
+            "key": "listening",
+            "label": "Ունկնդրում",
+            "earned": 4,
+            "correct": 4,
+            "percent": 100,
+            "answered": 4,
+            "possible": 4,
+            "skillIds": [
+              "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+              "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+            ],
+            "determinesPass": true
+          }
+        ],
+        "passed": true,
+        "itemWeight": 1,
+        "overallScore": {
+          "earned": 28,
+          "correct": 28,
+          "percent": 100,
+          "answered": 28,
+          "possible": 28
+        },
+        "passCriteria": {
+          "minimumPercent": 80,
+          "scoredSkillIds": [
+            "c3d77d8d-93b5-50ac-a53c-1ce48953f3e3",
+            "15546b88-3e96-5cff-ab87-9cc29cb1b96c",
+            "7bf779fa-f872-5a73-a471-4ced6268a845",
+            "d077c8a2-5acc-51bb-ae8d-a1ff4d2387db",
+            "77322a41-1e93-5734-aa79-dad6fb951932",
+            "861b8869-c18e-52ff-a535-15728cb2f9ef",
+            "9d54818f-52b4-58ed-a4a8-6a1c11f6ef18",
+            "d6060936-97d9-5b9a-a9ca-8a414028be31",
+            "06fbe791-0e40-5192-adcf-496f96b45bba",
+            "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+            "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+            "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+          ],
+          "minimumCorrectBySkill": {
+            "06fbe791-0e40-5192-adcf-496f96b45bba": 1,
+            "105feb58-3195-5940-a1df-e8b4bdceb2ce": 1,
+            "15546b88-3e96-5cff-ab87-9cc29cb1b96c": 1,
+            "77322a41-1e93-5734-aa79-dad6fb951932": 1,
+            "7bf779fa-f872-5a73-a471-4ced6268a845": 1,
+            "861b8869-c18e-52ff-a535-15728cb2f9ef": 2,
+            "8cb750f3-24b2-5ea6-a058-054199b4fc8a": 1,
+            "9d54818f-52b4-58ed-a4a8-6a1c11f6ef18": 2,
+            "c3d77d8d-93b5-50ac-a53c-1ce48953f3e3": 2,
+            "d077c8a2-5acc-51bb-ae8d-a1ff4d2387db": 1,
+            "d6060936-97d9-5b9a-a9ca-8a414028be31": 2,
+            "f0967dc9-177e-5ffc-a206-d39f39452c6f": 1
+          }
+        },
+        "schemaVersion": "haiedu-assessment-result-v3",
+        "scoredSkillIds": [
+          "c3d77d8d-93b5-50ac-a53c-1ce48953f3e3",
+          "15546b88-3e96-5cff-ab87-9cc29cb1b96c",
+          "7bf779fa-f872-5a73-a471-4ced6268a845",
+          "d077c8a2-5acc-51bb-ae8d-a1ff4d2387db",
+          "77322a41-1e93-5734-aa79-dad6fb951932",
+          "861b8869-c18e-52ff-a535-15728cb2f9ef",
+          "9d54818f-52b4-58ed-a4a8-6a1c11f6ef18",
+          "d6060936-97d9-5b9a-a9ca-8a414028be31",
+          "06fbe791-0e40-5192-adcf-496f96b45bba",
+          "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+          "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+          "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+        ],
+        "scoringStrategy": "normalized-item-score-v1",
+        "readinessSkillIds": [
+          "c3d77d8d-93b5-50ac-a53c-1ce48953f3e3",
+          "15546b88-3e96-5cff-ab87-9cc29cb1b96c",
+          "7bf779fa-f872-5a73-a471-4ced6268a845",
+          "d077c8a2-5acc-51bb-ae8d-a1ff4d2387db",
+          "77322a41-1e93-5734-aa79-dad6fb951932",
+          "861b8869-c18e-52ff-a535-15728cb2f9ef",
+          "9d54818f-52b4-58ed-a4a8-6a1c11f6ef18",
+          "d6060936-97d9-5b9a-a9ca-8a414028be31",
+          "06fbe791-0e40-5192-adcf-496f96b45bba",
+          "8cb750f3-24b2-5ea6-a058-054199b4fc8a",
+          "f0967dc9-177e-5ffc-a206-d39f39452c6f",
+          "105feb58-3195-5940-a1df-e8b4bdceb2ce"
+        ]
+      }
+    }
+  ],
+  "audio": [
+    {
+      "sessionId": "a7500501-98a8-4578-a6b3-7343eb4b83a1",
+      "audioVersionId": "e78bfec9-7326-5111-9b39-bb6f0a98902e",
+      "pauseResume": true
+    },
+    {
+      "sessionId": "a7500501-98a8-4578-a6b3-7343eb4b83a1",
+      "sessionItemId": "ed47657d-ae7a-49db-96c5-5a88e030ea58",
+      "audioVersionId": "e78bfec9-7326-5111-9b39-bb6f0a98902e",
+      "mode": "diagnostic",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 0,
+      "thirdPlayHttp": 409
+    },
+    {
+      "sessionId": "a7500501-98a8-4578-a6b3-7343eb4b83a1",
+      "sessionItemId": "0100ab83-b7a4-4227-a202-be6e60f13193",
+      "audioVersionId": "e78bfec9-7326-5111-9b39-bb6f0a98902e",
+      "mode": "diagnostic",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 2,
+      "thirdPlayHttp": 409
+    },
+    {
+      "sessionId": "a7500501-98a8-4578-a6b3-7343eb4b83a1",
+      "sessionItemId": "e2e565bd-cc56-4b0a-a977-1366b235c779",
+      "audioVersionId": "65667f20-a702-50d3-9c97-89e7abd10300",
+      "mode": "diagnostic",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 0,
+      "thirdPlayHttp": 409
+    },
+    {
+      "sessionId": "a7500501-98a8-4578-a6b3-7343eb4b83a1",
+      "sessionItemId": "ebd8a76a-5304-4d70-b0a8-a20abc82608c",
+      "audioVersionId": "65667f20-a702-50d3-9c97-89e7abd10300",
+      "mode": "diagnostic",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 2,
+      "thirdPlayHttp": 409
+    },
+    {
+      "sessionId": "50a53891-eddf-4106-90b7-d7fc24694afd",
+      "sessionItemId": "a7fb4196-f674-4c19-8d57-888a75a74056",
+      "audioVersionId": "862daa83-a5e5-51e1-a36d-0106882005cf",
+      "mode": "practice",
+      "completedPlays": 3,
+      "practiceThreePlays": true
+    },
+    {
+      "sessionId": "50a53891-eddf-4106-90b7-d7fc24694afd",
+      "sessionItemId": "9a8fe251-f680-4956-b5fd-e6eb318b4022",
+      "audioVersionId": "862daa83-a5e5-51e1-a36d-0106882005cf",
+      "mode": "practice",
+      "completedPlays": 1,
+      "practiceThreePlays": false
+    },
+    {
+      "sessionId": "50a53891-eddf-4106-90b7-d7fc24694afd",
+      "sessionItemId": "54374543-93f3-425f-8739-631c44a5c332",
+      "audioVersionId": "64a2a26a-fe71-5fec-a7d2-fd85fdbcbe1b",
+      "mode": "practice",
+      "completedPlays": 1,
+      "practiceThreePlays": false
+    },
+    {
+      "sessionId": "50a53891-eddf-4106-90b7-d7fc24694afd",
+      "sessionItemId": "d0913687-6bf9-4c41-a9bc-9ae54bc43984",
+      "audioVersionId": "64a2a26a-fe71-5fec-a7d2-fd85fdbcbe1b",
+      "mode": "practice",
+      "completedPlays": 1,
+      "practiceThreePlays": false
+    },
+    {
+      "sessionId": "038b72f8-ecba-4af8-b790-954ccc4d11be",
+      "sessionItemId": "8f747e11-5add-425a-b960-5c7853f65e7e",
+      "audioVersionId": "4535a51f-8daa-58c0-ac73-0db9668d301a",
+      "mode": "mastery_check",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 0,
+      "thirdPlayHttp": 409
+    },
+    {
+      "sessionId": "038b72f8-ecba-4af8-b790-954ccc4d11be",
+      "sessionItemId": "268a8eee-c72b-4902-a54d-f10cf76e3c70",
+      "audioVersionId": "4535a51f-8daa-58c0-ac73-0db9668d301a",
+      "mode": "mastery_check",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 2,
+      "thirdPlayHttp": 409
+    },
+    {
+      "sessionId": "038b72f8-ecba-4af8-b790-954ccc4d11be",
+      "sessionItemId": "0f447bd0-ca85-4145-b761-038a40830a3d",
+      "audioVersionId": "e6e43fb8-462a-5fa4-add9-094c4a7e8da7",
+      "mode": "mastery_check",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 0,
+      "thirdPlayHttp": 409
+    },
+    {
+      "sessionId": "038b72f8-ecba-4af8-b790-954ccc4d11be",
+      "sessionItemId": "e9325bbd-8566-41fa-8c9b-14dfc307b8f3",
+      "audioVersionId": "e6e43fb8-462a-5fa4-add9-094c4a7e8da7",
+      "mode": "mastery_check",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 2,
+      "thirdPlayHttp": 409
+    }
+  ],
+  "workId": "bd57db4c-a2d5-4b85-af54-be6b128d6a34",
+  "limitations": [
+    "Synthetic designated QA learner; not learner attainment or specialist approval.",
+    "One diagnostic and one mastery form are retained as exposed; no reset or unseen-form claim.",
+    "Existing isolated failure, concurrency, cross-subject and other form tests are reused."
+  ],
+  "resumedFrom": {
+    "runId": "39911840258",
+    "revision": "08e331142513b9d84f97965277ba429f3e7139f2",
+    "sha256": "6222284b4f20ab6dcc7d0fb12cab217b0a02205fba60f92f628b2caac533cdaf"
+  },
+  "preserved": [
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+        "unitId": "0349ffcd-8fc9-47f2-82d1-3d5cfcb3a096"
+      },
+      "sha256": "7433828f0a4d301dad6f19ffd908442cc2defa0af67fb73b0df4c1227e681ed0"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "unitId": "beae3516-4317-4c8b-bd66-576c6f309308"
+      },
+      "sha256": "3f8a3cb7ea3010083960822ec242911cf9e4466b0dcb8c09a25d1e9cf2964194"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+        "unitId": "aa824efc-b407-5143-9c92-a894d97be972"
+      },
+      "sha256": "d991cc1974d8bc68e5ab778dc4593b407485091c7b9e7bd806a815dd0bcb028b"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "18eb78e8-79f7-5307-bef2-38c4baa1d809",
+        "unitId": "5ebe46f5-5542-5a1e-bfbd-14e4e5b784ca"
+      },
+      "sha256": "0dd0c74563194bf1fadc270b4fa95ff50d22a0915970ea84e54c89cafb7a44f9"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+        "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364"
+      },
+      "sha256": "c3d38d798c3e4482a1656c7a9f173cf0fe80375dcbba1acfcbac741dcb6afb37"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+        "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6"
+      },
+      "sha256": "d5690de7208f064041d8b439560a1138d989618bb6fd90ab6d1ac2a20cffbc7e"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+        "unitId": "0349ffcd-8fc9-47f2-82d1-3d5cfcb3a096"
+      },
+      "sha256": "e8febe2ec4fa2923d656832e3af8aa8f34e31741dda9fc3d6051edbc8372b715"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "unitId": "beae3516-4317-4c8b-bd66-576c6f309308"
+      },
+      "sha256": "0c5211654a5e44916cad360ac8adbe9be67f3d3f08a42f5efdd5ee45a0c60273"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+        "unitId": "aa824efc-b407-5143-9c92-a894d97be972"
+      },
+      "sha256": "880225c7e06a5c7cfa9596554bb6c8a7ee7b5b79d9e8151096588f59e1f97799"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "18eb78e8-79f7-5307-bef2-38c4baa1d809",
+        "unitId": "5ebe46f5-5542-5a1e-bfbd-14e4e5b784ca"
+      },
+      "sha256": "ac5cc58b30929bdc0322e4d2bb909031092d71c95654d291aae85d12e9e8cd7b"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+        "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364"
+      },
+      "sha256": "cdaba5c71dbb7055ab0d92c88a8f075540513df95c7ccf9fef475e52220867e0"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+        "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6"
+      },
+      "sha256": "743ff23b55b1de461f8804b50bdc23b1cd63cf2540dfd847a29d06a7369156da"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "b78d7318-5627-4345-a190-665d5ea43b87",
+        "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+      },
+      "sha256": "466bec397ffc64cb33eb87227a71e2502b56f352e50bf18f86c16110269fab07"
+    }
+  ],
+  "initialState": {
+    "history": 0,
+    "activeSession": null,
+    "writingWork": null
+  },
+  "frontendCommit": "af1bcf12f2156a7c5e30716e38714da8d9d8558e",
+  "learningSummary": {
+    "sessionCount": 9,
+    "answered": 73,
+    "skillsReady": 12,
+    "lifecycle": {
+      "state": "mastery_passed",
+      "policyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "attemptsUsed": 1,
+      "passedOnAttempt": 1,
+      "historyProvenance": "exact"
+    }
+  },
+  "writingBaseline": "05d03ce9e000905d8566c4ccc332a2c3eb27a891a8d15df1e6b76d037735b039",
+  "writingChecks": {
+    "draftReload": true,
+    "privateDraft": true,
+    "pendingNotZero": true,
+    "returned": true,
+    "resubmitted": true
+  },
+  "failure": {
+    "stage": "writing",
+    "errorType": "Error"
+  },
+  "finishedAt": "2026-10-23T07:25:56.239Z"
+}

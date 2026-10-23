@@ -1,0 +1,856 @@
+{
+  "schemaVersion": 1,
+  "scope": "English Unit 1 provisional pilot authenticated read acceptance",
+  "revision": "081dbccdb226a5be41cb4119032e5c00a846ec69",
+  "status": "passed",
+  "startedAt": "2026-10-23T07:32:38.617Z",
+  "checks": [
+    {
+      "label": "exact activation, recorded owner decisions, reviewed main and six designated fixture guards",
+      "status": "passed"
+    },
+    {
+      "label": "exact production revision before authentication",
+      "status": "passed"
+    },
+    {
+      "label": "committed public client configuration present",
+      "status": "passed"
+    },
+    {
+      "label": "existing two-school positive and negative read controls pass",
+      "status": "passed"
+    },
+    {
+      "label": "A_admin: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_student: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_admin: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_student: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: navigation restricted to designated school and programme classes",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: exactly one designated English and preserved programme context",
+      "status": "passed"
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: exact four approved English policy projections",
+      "status": "passed"
+    },
+    {
+      "label": "A: nine exact guides or truthful diagnostic/assessment gate",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: accepted separate W01 task is available",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: matching teacher can read the English writing queue",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: navigation restricted to designated school and programme classes",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: exactly one designated English and preserved programme context",
+      "status": "passed"
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: exact four approved English policy projections",
+      "status": "passed"
+    },
+    {
+      "label": "B: nine exact guides or truthful diagnostic/assessment gate",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: accepted separate W01 task is available",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: matching teacher can read the English writing queue",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A_teacher: cannot substitute learner identity",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A_admin: cannot substitute learner identity",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign guide context denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign writing context denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "A: foreign teacher assignment denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign enrollment or mixed programme scope denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B_teacher: cannot substitute learner identity",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B_admin: cannot substitute learner identity",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign guide context denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign writing context denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "B: foreign teacher assignment denied",
+      "status": "passed",
+      "httpStatus": 403
+    },
+    {
+      "label": "anonymous English dashboard denied",
+      "status": "passed",
+      "httpStatus": 401
+    },
+    {
+      "label": "A: English home link retains exact enrollment and release",
+      "status": "passed"
+    },
+    {
+      "label": "A: desktop course has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "A: mobile writing list has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "A: native read-only course path has no errors or attempted mutations",
+      "status": "passed"
+    },
+    {
+      "label": "B: English home link retains exact enrollment and release",
+      "status": "passed"
+    },
+    {
+      "label": "B: desktop course has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "B: mobile writing list has no horizontal overflow",
+      "status": "passed"
+    },
+    {
+      "label": "B: native read-only course path has no errors or attempted mutations",
+      "status": "passed"
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "B: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: all existing programme learning state preserved",
+      "status": "passed"
+    },
+    {
+      "label": "production revision still exact after acceptance",
+      "status": "passed"
+    },
+    {
+      "label": "A_admin: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_teacher: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_student: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_admin: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_teacher: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_student: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    }
+  ],
+  "limitations": [
+    "Read-only acceptance does not complete learner attempts, play audio or create writing work.",
+    "Existing owner content/audio acceptance and isolated C23 writing verification are reused.",
+    "Independent specialist qualification, four-subject pilot closure and source licences are not established by this runner."
+  ],
+  "frontendCommit": "081dbccdb226a5be41cb4119032e5c00a846ec69",
+  "readIsolation": {
+    "scope": "Sprint 14 authenticated read isolation",
+    "revision": "081dbccdb226a5be41cb4119032e5c00a846ec69",
+    "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+    "startedAt": "2026-10-23T07:32:38.807Z",
+    "status": "passed",
+    "sprint14GateClosed": false,
+    "checks": [
+      {
+        "label": "A_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own school",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own school",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      }
+    ],
+    "finishedAt": "2026-10-23T07:33:50.771Z"
+  },
+  "finishedAt": "2026-10-23T07:36:12.946Z"
+}

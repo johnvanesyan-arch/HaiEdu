@@ -1,6 +1,8 @@
 # English 7 Unit 1 — provisional pilot release
 
-**Sprint 16.1C.25 · 23 October 2026 Asia/Yerevan (22 October UTC) · Roadmap 4.51**
+**Current follow-up:** C26 completes the retained learner/audio/writing journey. [Verified delivery](english-7-unit-01-live-learner-verification.md). Unit 2 preparation is next; the owner’s provisional scope and specialist limits are unchanged.
+
+**Historical Sprint 16.1C.25 · 23 October 2026 Asia/Yerevan (22 October UTC) · Roadmap 4.51**
 
 Unit 1 is active as the owner-authorized provisional pilot. John states: “I created the audios, I also can use the textbook adaptations freely. Proceed.” This directly answers the C24 bounded learner-use and pilot request. The [owner record](evidence/english-7-unit-01-owner-activation-20261023.json) binds the unchanged C24 manifest and C22 configuration hashes. It records the owner’s statement; it does not invent a provider plan, publisher licence, voice licence or independent rights review.
 
@@ -35,7 +37,7 @@ The browser-dependency preparation now uses the required CI job’s bounded HTTP
 
 [Verified English acceptance screenshot](evidence/english-7-unit-01-read-acceptance-20261023.jpg).
 
-## Next bounded slice
+## C25 handoff — superseded by C26
 
 Complete the designated learner/audio and writing lifecycle sequence from the [acceptance handoff](english-7-unit-01-learner-acceptance.md): Diagnostic, Practice/readiness/Mastery where eligible, capped audio and source groups, then W01 draft/submission/return/revision/teacher feedback and matching teacher/school projections. Retain attempts and exposures; do not recycle forms or manufacture readiness. Read-only checks and the earlier isolated exact-W01 test do not claim this completed live learner journey.
 

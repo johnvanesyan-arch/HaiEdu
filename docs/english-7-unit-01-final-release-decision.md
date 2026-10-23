@@ -1,6 +1,6 @@
 # English 7 Unit 1 — final provisional release decision
 
-**16.1C.25 current handoff — 2026-10-23 Asia/Yerevan:** Unit 1 is now an owner-authorized provisional pilot. The owner-created recording and textbook-adaptation use basis is recorded, the exact C22 configuration is active, and two designated English school contexts are prepared. Independent specialist review remains pending. Exact-deployment authenticated read acceptance passed 118/118, with unchanged learning state and verified two-school/cross-subject controls. Next: the bounded learner/audio/writing sequence. [Pilot release](english-7-unit-01-pilot-release.md).
+**16.1C.26 current handoff — 2026-10-23 Asia/Yerevan:** The owner-authorized Unit 1 provisional pilot has completed the designated learner/audio/writing journey: 28 Diagnostic answers, 17 ordinary Practice responses, twelve ready skills, one 28-question passed Mastery and W01 return/revision/teacher feedback. Two shared assessed plays and unlimited Practice replay are verified; the shared timing fix is deployed. All attempts, exposures and writing history are retained. Independent specialist review remains deferred; speaking stays classroom-assessed. Next: Unit 2 source/activity/audio preparation, with no unapproved bank budget. [Verified delivery](english-7-unit-01-live-learner-verification.md).
 
 **Historical Sprint 16.1C.24 · 23 October 2026 Asia/Yerevan (22 October UTC) · Roadmap 4.50 · Prepared; English remains inactive.**
 

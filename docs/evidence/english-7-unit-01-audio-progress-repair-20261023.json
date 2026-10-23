@@ -1,0 +1,2064 @@
+{
+  "schemaVersion": 1,
+  "checkpoint": "16.1C.26",
+  "firstRun": 39911840258,
+  "firstRevision": "08e331142513b9d84f97965277ba429f3e7139f2",
+  "repairRevision": "af1bcf12f2156a7c5e30716e38714da8d9d8558e",
+  "migration": {
+    "migrationSha256": "ed36024216111a7d693a1f413d2a1f715f0a6556656e8986f45abdb88435377e",
+    "functionBodySha256": "977cea189e777e43fc978adc8d7f7fd87ac29cc94b6b7bf6e7af8bf327a8afc0"
+  },
+  "preservation": {
+    "tables": 117,
+    "unchanged": true,
+    "before": [
+      {
+        "schema": "private",
+        "table_name": "active_curriculum_release_units",
+        "rows": 7,
+        "md5": "43a9463a9216c8707e709da6d322c3d9"
+      },
+      {
+        "schema": "private",
+        "table_name": "assessment_presentation_configuration",
+        "rows": 1,
+        "md5": "e882c1db3412b64c2a45ed67efe9016c"
+      },
+      {
+        "schema": "private",
+        "table_name": "learning_session_item_option_orders",
+        "rows": 62,
+        "md5": "013ba71e03834ccca4bbee46d8cfb5c4"
+      },
+      {
+        "schema": "private",
+        "table_name": "mastery_form_selection_bindings",
+        "rows": 6,
+        "md5": "9bf1b2338b4acbd36c7fb9e4dada1c1b"
+      },
+      {
+        "schema": "private",
+        "table_name": "mastery_form_serialization_fences",
+        "rows": 1211,
+        "md5": "d83e8712481921474c83ceab66af18e1"
+      },
+      {
+        "schema": "public",
+        "table_name": "academic_identity_events",
+        "rows": 814,
+        "md5": "ede09a85f49e5681d36155c2c201fa95"
+      },
+      {
+        "schema": "public",
+        "table_name": "academic_mastery_policy_activation",
+        "rows": 1,
+        "md5": "1df4787f0c2eece89b4611327af6aff4"
+      },
+      {
+        "schema": "public",
+        "table_name": "academic_mastery_policy_versions",
+        "rows": 1,
+        "md5": "1c69b7132347cd8b67a89268668f27ce"
+      },
+      {
+        "schema": "public",
+        "table_name": "academic_years",
+        "rows": 2,
+        "md5": "7379f83ecb1b19c7fea9bea7b8aa5ee0"
+      },
+      {
+        "schema": "public",
+        "table_name": "account_deletion_requests",
+        "rows": 3,
+        "md5": "fc63e153f7bcf4c503d05f14ea9f551e"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_blueprint_items",
+        "rows": 2128,
+        "md5": "f9798eb6642300386a371b2a37d52a40"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_blueprints",
+        "rows": 31,
+        "md5": "e004e1ee14608102426a5129b82d9155"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_form_items",
+        "rows": 612,
+        "md5": "8079f031beaaa74ae5510cceaeb7747f"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_forms",
+        "rows": 34,
+        "md5": "b3c249cf6406e772c88829677b83ff6f"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_policy_bindings",
+        "rows": 24,
+        "md5": "2895028673775a3014145364083875e3"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "rows": 21,
+        "md5": "cc57a81d6e22c20589b97d4b0ec19fa3"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_pool_items",
+        "rows": 1442,
+        "md5": "1e58d3c24d770830a663292006bbb5af"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_pools",
+        "rows": 22,
+        "md5": "e3acd991ba632c0032dd2f0ac40e0dd3"
+      },
+      {
+        "schema": "public",
+        "table_name": "assignment_skills",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "assignments",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "attempts",
+        "rows": 48,
+        "md5": "86a0d9ca60e3c29886a401dd44240bee"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_analysis_scopes",
+        "rows": 1,
+        "md5": "3def5257022777ca535e36ecabd78102"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_change_decisions",
+        "rows": 1,
+        "md5": "e833d4889b70d9253b271418e82e06d9"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_decision_protocols",
+        "rows": 1,
+        "md5": "525d482855ea5f27dd6aec341e40301c"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_evidence_contracts",
+        "rows": 2,
+        "md5": "f8c2a42665d49e3246850b0d8658caa2"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_metric_sets",
+        "rows": 2,
+        "md5": "edba488ea4cdf5edd95af70a34087c92"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_mastery_states",
+        "rows": 1,
+        "md5": "1b6fb3231d34474d6422795bcb484b2c"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_review_cycles",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_review_item_exposures",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_review_requirements",
+        "rows": 1,
+        "md5": "2e1caa3798ff3b8199f848152602ba13"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_review_sessions",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "class_memberships",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "classes",
+        "rows": 86,
+        "md5": "fd2527f982ea5aec917ef9938f7f23a5"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_authorities",
+        "rows": 2,
+        "md5": "c2fde7646bfd5553360b4e91718b2d95"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_frameworks",
+        "rows": 1,
+        "md5": "cc95b05470c26da89674830c44573e7e"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_reconciliation_runs",
+        "rows": 7,
+        "md5": "f0527821e9c0c34260fdaa728c2f9c5a"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_gate_checks",
+        "rows": 49,
+        "md5": "a114f1e74f172336dcfaf8f2df6cb425"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_item_families",
+        "rows": 1228,
+        "md5": "52742f9813b83ff38bc438b10f81b510"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_outcomes",
+        "rows": 63,
+        "md5": "1d90b22191d42eeea587c1f854f11f16"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_reconciliations",
+        "rows": 7,
+        "md5": "58765072239eb31d21e070fdcc1725e0"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_skills",
+        "rows": 80,
+        "md5": "5cd9eab3270fa4b3c3babd1ae6f2153f"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_units",
+        "rows": 8,
+        "md5": "3081bda61e74df4d3902ae0c21988407"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_releases",
+        "rows": 8,
+        "md5": "865fa1bc5fbf56fa701f23780f011c58"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_source_documents",
+        "rows": 5,
+        "md5": "07c137bd11f85874bc6316bcdce9d809"
+      },
+      {
+        "schema": "public",
+        "table_name": "grades",
+        "rows": 12,
+        "md5": "62cb5fdf3ecc14c7279c2484156cc000"
+      },
+      {
+        "schema": "public",
+        "table_name": "institutional_class_enrollments",
+        "rows": 5,
+        "md5": "a5c3118bb61bfcaa60ac0363f8e82f1e"
+      },
+      {
+        "schema": "public",
+        "table_name": "institutional_invitations",
+        "rows": 78,
+        "md5": "9b4cab6c5ecfec2e22d6344bc8136ca0"
+      },
+      {
+        "schema": "public",
+        "table_name": "institutional_join_codes",
+        "rows": 41,
+        "md5": "810ee2963e74d384d5f9ce73afbb56ed"
+      },
+      {
+        "schema": "public",
+        "table_name": "institutional_memberships",
+        "rows": 44,
+        "md5": "14d6105d87b5d331fcb4baee42f6aa12"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_answer_keys",
+        "rows": 1451,
+        "md5": "2e04b3e53e75ad9e4705ac0049de9f25"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_curriculum_scopes",
+        "rows": 1451,
+        "md5": "6254aa2a1a2ccbf00049e8849e32a7d7"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_families",
+        "rows": 1229,
+        "md5": "2f4db98387b0e0370bf0b6898c6f6261"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_family_curriculum_reconciliations",
+        "rows": 1229,
+        "md5": "b194f82d92ff3fb41cc10d9dc1233f6e"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_misconception_mappings",
+        "rows": 3212,
+        "md5": "0630d067b0596adb53124c132bb4dee1"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_options",
+        "rows": 4818,
+        "md5": "bea2aa270834deb28d6438706518bb08"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_qa_runs",
+        "rows": 1819,
+        "md5": "7484e0b19ea580c3d4fd3e6120d4d8f8"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_reviews",
+        "rows": 1733,
+        "md5": "fe706d1d74e78707cef7262e6801bc08"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_template_remediation_guides",
+        "rows": 518,
+        "md5": "e603af7f4dc742b0e53f996eeee86627"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_templates",
+        "rows": 1229,
+        "md5": "beb034caa80d5f15e7c14eb2451d59f8"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_versions",
+        "rows": 1405,
+        "md5": "96b5926f8faf71f2cb4858a3a8a0365d"
+      },
+      {
+        "schema": "public",
+        "table_name": "items",
+        "rows": 1451,
+        "md5": "eff07c090bdacd16a1e32a89aa695b46"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_assessed_audio",
+        "rows": 1,
+        "md5": "8b9f5844a15f2b0bd517a2b43440f92e"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_audio_deliveries",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_audio_versions",
+        "rows": 14,
+        "md5": "fa69dd1e325f1e788ecd27a06bffaaa7"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_model_configurations",
+        "rows": 7,
+        "md5": "285ee0bb76b78d18f48e810f4fda25d3"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_model_runtime_bindings",
+        "rows": 7,
+        "md5": "997d662f5d8e4e5650a1431a57d69e6c"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_outcome_normative_mappings",
+        "rows": 63,
+        "md5": "efe357358b88866b4e69de19b19f1d6d"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_outcomes",
+        "rows": 63,
+        "md5": "775a73f62f22d1116b742e513301648e"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_response_drafts",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_session_items",
+        "rows": 124,
+        "md5": "c08cea8d928261f866f528106f5ae646"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_sessions",
+        "rows": 9,
+        "md5": "135760b7d62af755ce09465212561acd"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_source_family_exposures",
+        "rows": 2,
+        "md5": "001578fa0dc9e9c0dad03aa5518ef914"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_task_set_versions",
+        "rows": 27,
+        "md5": "131fd30f3d643238bc5fa9c71939d258"
+      },
+      {
+        "schema": "public",
+        "table_name": "legacy_learning_blueprint_mappings",
+        "rows": 7,
+        "md5": "097bc8ca237f7cdbbcadd9de566cfee0"
+      },
+      {
+        "schema": "public",
+        "table_name": "mastery_check_attempts",
+        "rows": 1,
+        "md5": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+      },
+      {
+        "schema": "public",
+        "table_name": "misconception_review_events",
+        "rows": 1026,
+        "md5": "b453094e23e087c502ea133a8e25e053"
+      },
+      {
+        "schema": "public",
+        "table_name": "misconceptions",
+        "rows": 1033,
+        "md5": "b399278d2c2bb11a9e0e07cf3e32906c"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_evidence_classifications",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_gate_checks",
+        "rows": 11,
+        "md5": "a92e146144b3a944bc06c790ab819a2e"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_participant_events",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_participants",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_runs",
+        "rows": 1,
+        "md5": "36593273285ffb100f9c772357e22bc5"
+      },
+      {
+        "schema": "public",
+        "table_name": "privacy_preferences",
+        "rows": 2,
+        "md5": "71ea632b3f3aa8ecef0596b0286b264f"
+      },
+      {
+        "schema": "public",
+        "table_name": "profiles",
+        "rows": 11,
+        "md5": "80e6fa22b4e71f20cb30c036f812b98c"
+      },
+      {
+        "schema": "public",
+        "table_name": "recommendation_events",
+        "rows": 824,
+        "md5": "bb3fe105ac2571f227284db74a10591f"
+      },
+      {
+        "schema": "public",
+        "table_name": "remediation_events",
+        "rows": 6,
+        "md5": "e5001e648bb95efe0dd4a0c163f8fd2c"
+      },
+      {
+        "schema": "public",
+        "table_name": "remediation_guide_authoring_versions",
+        "rows": 1708,
+        "md5": "ad66c5fa1f9ed7d37f52e14da1f9303c"
+      },
+      {
+        "schema": "public",
+        "table_name": "remediation_guide_versions",
+        "rows": 1067,
+        "md5": "904a28da2d3e95fc1d420cac3f0915b4"
+      },
+      {
+        "schema": "public",
+        "table_name": "runtime_builds",
+        "rows": 27,
+        "md5": "9887b695789dec20613e1e3ceb12d692"
+      },
+      {
+        "schema": "public",
+        "table_name": "schools",
+        "rows": 2,
+        "md5": "9d57e11ebc85e897f150a2e5481a5167"
+      },
+      {
+        "schema": "public",
+        "table_name": "security_audit_log",
+        "rows": 34,
+        "md5": "e6bb37b9de578fd1fe9dcbd3dbe20595"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_curriculum_reconciliations",
+        "rows": 80,
+        "md5": "4173557c63b323bf756506b3ec950c3c"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_outcome_curriculum_mappings",
+        "rows": 101,
+        "md5": "60181d4c8078939c31716a8b6f0c8a5b"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_outcomes",
+        "rows": 101,
+        "md5": "9ce33c8d66ba70386424e26394bf0b2e"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_prerequisites",
+        "rows": 17,
+        "md5": "2163f87101e252337a68d16de849d8d4"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_remediation_guides",
+        "rows": 10,
+        "md5": "0c0a4b6b5a5fb2e78a4e9707d5c28366"
+      },
+      {
+        "schema": "public",
+        "table_name": "skills",
+        "rows": 81,
+        "md5": "ff8d0bf2159893c6586861f31e37c29e"
+      },
+      {
+        "schema": "public",
+        "table_name": "staff_account_provisioning",
+        "rows": 5,
+        "md5": "d95657390a541114fc9dfdf9a04d7adb"
+      },
+      {
+        "schema": "public",
+        "table_name": "student_account_acceptances",
+        "rows": 1,
+        "md5": "9995220c3e014061be4f59b9b335aca5"
+      },
+      {
+        "schema": "public",
+        "table_name": "student_item_exposure_events",
+        "rows": 52,
+        "md5": "8bd65858af50cafbe024e6254b1a60b8"
+      },
+      {
+        "schema": "public",
+        "table_name": "student_skill_mastery",
+        "rows": 18,
+        "md5": "341915680760d5ec59f4d26e3e51ef8c"
+      },
+      {
+        "schema": "public",
+        "table_name": "student_skill_mastery_by_release",
+        "rows": 18,
+        "md5": "23ff80795c3a78337d4e982bbc24e263"
+      },
+      {
+        "schema": "public",
+        "table_name": "subject_program_source_bindings",
+        "rows": 3,
+        "md5": "13ce55e9528683183064b2b032a4947a"
+      },
+      {
+        "schema": "public",
+        "table_name": "subject_programs",
+        "rows": 3,
+        "md5": "c3ec62e8677e7ef5d7e7283086481a91"
+      },
+      {
+        "schema": "public",
+        "table_name": "subjects",
+        "rows": 3,
+        "md5": "e0ca8b9c109af2e2affd11e3b8f6805a"
+      },
+      {
+        "schema": "public",
+        "table_name": "teacher_assignments",
+        "rows": 86,
+        "md5": "e6feb5cef5aa385b3d1888ddb5a1cf61"
+      },
+      {
+        "schema": "public",
+        "table_name": "teacher_subject_authorizations",
+        "rows": 41,
+        "md5": "36fbd8db8c54bc6826ce70a11f3f39d3"
+      },
+      {
+        "schema": "public",
+        "table_name": "textbook_mappings",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "textbooks",
+        "rows": 1,
+        "md5": "258ed3992a501378efe1e2a2da9ec218"
+      },
+      {
+        "schema": "public",
+        "table_name": "topics",
+        "rows": 31,
+        "md5": "34b93e610d96922016263df3985fac70"
+      },
+      {
+        "schema": "public",
+        "table_name": "unit_material_events",
+        "rows": 36,
+        "md5": "0f05d55c6712dfe52e9635665fa27cee"
+      },
+      {
+        "schema": "public",
+        "table_name": "unit_material_versions",
+        "rows": 10,
+        "md5": "920bf8d611af9d477d46371ce8a1f7dd"
+      },
+      {
+        "schema": "public",
+        "table_name": "units",
+        "rows": 8,
+        "md5": "c2b8d4ce2b2f9dd4d16d2d56adef7685"
+      },
+      {
+        "schema": "public",
+        "table_name": "written_reviews",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "written_submissions",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "written_task_versions",
+        "rows": 1,
+        "md5": "0cb173706c307eca65024b8dcda7a528"
+      },
+      {
+        "schema": "public",
+        "table_name": "written_work",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ],
+    "after": [
+      {
+        "schema": "private",
+        "table_name": "active_curriculum_release_units",
+        "rows": 7,
+        "md5": "43a9463a9216c8707e709da6d322c3d9"
+      },
+      {
+        "schema": "private",
+        "table_name": "assessment_presentation_configuration",
+        "rows": 1,
+        "md5": "e882c1db3412b64c2a45ed67efe9016c"
+      },
+      {
+        "schema": "private",
+        "table_name": "learning_session_item_option_orders",
+        "rows": 62,
+        "md5": "013ba71e03834ccca4bbee46d8cfb5c4"
+      },
+      {
+        "schema": "private",
+        "table_name": "mastery_form_selection_bindings",
+        "rows": 6,
+        "md5": "9bf1b2338b4acbd36c7fb9e4dada1c1b"
+      },
+      {
+        "schema": "private",
+        "table_name": "mastery_form_serialization_fences",
+        "rows": 1211,
+        "md5": "d83e8712481921474c83ceab66af18e1"
+      },
+      {
+        "schema": "public",
+        "table_name": "academic_identity_events",
+        "rows": 814,
+        "md5": "ede09a85f49e5681d36155c2c201fa95"
+      },
+      {
+        "schema": "public",
+        "table_name": "academic_mastery_policy_activation",
+        "rows": 1,
+        "md5": "1df4787f0c2eece89b4611327af6aff4"
+      },
+      {
+        "schema": "public",
+        "table_name": "academic_mastery_policy_versions",
+        "rows": 1,
+        "md5": "1c69b7132347cd8b67a89268668f27ce"
+      },
+      {
+        "schema": "public",
+        "table_name": "academic_years",
+        "rows": 2,
+        "md5": "7379f83ecb1b19c7fea9bea7b8aa5ee0"
+      },
+      {
+        "schema": "public",
+        "table_name": "account_deletion_requests",
+        "rows": 3,
+        "md5": "fc63e153f7bcf4c503d05f14ea9f551e"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_blueprint_items",
+        "rows": 2128,
+        "md5": "f9798eb6642300386a371b2a37d52a40"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_blueprints",
+        "rows": 31,
+        "md5": "e004e1ee14608102426a5129b82d9155"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_form_items",
+        "rows": 612,
+        "md5": "8079f031beaaa74ae5510cceaeb7747f"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_forms",
+        "rows": 34,
+        "md5": "b3c249cf6406e772c88829677b83ff6f"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_policy_bindings",
+        "rows": 24,
+        "md5": "2895028673775a3014145364083875e3"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_pool_curriculum_reconciliations",
+        "rows": 21,
+        "md5": "cc57a81d6e22c20589b97d4b0ec19fa3"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_pool_items",
+        "rows": 1442,
+        "md5": "1e58d3c24d770830a663292006bbb5af"
+      },
+      {
+        "schema": "public",
+        "table_name": "assessment_pools",
+        "rows": 22,
+        "md5": "e3acd991ba632c0032dd2f0ac40e0dd3"
+      },
+      {
+        "schema": "public",
+        "table_name": "assignment_skills",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "assignments",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "attempts",
+        "rows": 48,
+        "md5": "86a0d9ca60e3c29886a401dd44240bee"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_analysis_scopes",
+        "rows": 1,
+        "md5": "3def5257022777ca535e36ecabd78102"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_change_decisions",
+        "rows": 1,
+        "md5": "e833d4889b70d9253b271418e82e06d9"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_decision_protocols",
+        "rows": 1,
+        "md5": "525d482855ea5f27dd6aec341e40301c"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_evidence_contracts",
+        "rows": 2,
+        "md5": "f8c2a42665d49e3246850b0d8658caa2"
+      },
+      {
+        "schema": "public",
+        "table_name": "calibration_metric_sets",
+        "rows": 2,
+        "md5": "edba488ea4cdf5edd95af70a34087c92"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_mastery_states",
+        "rows": 1,
+        "md5": "1b6fb3231d34474d6422795bcb484b2c"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_review_cycles",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_review_item_exposures",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_review_requirements",
+        "rows": 1,
+        "md5": "2e1caa3798ff3b8199f848152602ba13"
+      },
+      {
+        "schema": "public",
+        "table_name": "chapter_review_sessions",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "class_memberships",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "classes",
+        "rows": 86,
+        "md5": "fd2527f982ea5aec917ef9938f7f23a5"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_authorities",
+        "rows": 2,
+        "md5": "c2fde7646bfd5553360b4e91718b2d95"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_frameworks",
+        "rows": 1,
+        "md5": "cc95b05470c26da89674830c44573e7e"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_reconciliation_runs",
+        "rows": 7,
+        "md5": "f0527821e9c0c34260fdaa728c2f9c5a"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_gate_checks",
+        "rows": 49,
+        "md5": "a114f1e74f172336dcfaf8f2df6cb425"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_item_families",
+        "rows": 1228,
+        "md5": "52742f9813b83ff38bc438b10f81b510"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_outcomes",
+        "rows": 63,
+        "md5": "1d90b22191d42eeea587c1f854f11f16"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_reconciliations",
+        "rows": 7,
+        "md5": "58765072239eb31d21e070fdcc1725e0"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_skills",
+        "rows": 80,
+        "md5": "5cd9eab3270fa4b3c3babd1ae6f2153f"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_release_units",
+        "rows": 8,
+        "md5": "3081bda61e74df4d3902ae0c21988407"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_releases",
+        "rows": 8,
+        "md5": "865fa1bc5fbf56fa701f23780f011c58"
+      },
+      {
+        "schema": "public",
+        "table_name": "curriculum_source_documents",
+        "rows": 5,
+        "md5": "07c137bd11f85874bc6316bcdce9d809"
+      },
+      {
+        "schema": "public",
+        "table_name": "grades",
+        "rows": 12,
+        "md5": "62cb5fdf3ecc14c7279c2484156cc000"
+      },
+      {
+        "schema": "public",
+        "table_name": "institutional_class_enrollments",
+        "rows": 5,
+        "md5": "a5c3118bb61bfcaa60ac0363f8e82f1e"
+      },
+      {
+        "schema": "public",
+        "table_name": "institutional_invitations",
+        "rows": 78,
+        "md5": "9b4cab6c5ecfec2e22d6344bc8136ca0"
+      },
+      {
+        "schema": "public",
+        "table_name": "institutional_join_codes",
+        "rows": 41,
+        "md5": "810ee2963e74d384d5f9ce73afbb56ed"
+      },
+      {
+        "schema": "public",
+        "table_name": "institutional_memberships",
+        "rows": 44,
+        "md5": "14d6105d87b5d331fcb4baee42f6aa12"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_answer_keys",
+        "rows": 1451,
+        "md5": "2e04b3e53e75ad9e4705ac0049de9f25"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_curriculum_scopes",
+        "rows": 1451,
+        "md5": "6254aa2a1a2ccbf00049e8849e32a7d7"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_families",
+        "rows": 1229,
+        "md5": "2f4db98387b0e0370bf0b6898c6f6261"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_family_curriculum_reconciliations",
+        "rows": 1229,
+        "md5": "b194f82d92ff3fb41cc10d9dc1233f6e"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_misconception_mappings",
+        "rows": 3212,
+        "md5": "0630d067b0596adb53124c132bb4dee1"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_options",
+        "rows": 4818,
+        "md5": "bea2aa270834deb28d6438706518bb08"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_qa_runs",
+        "rows": 1819,
+        "md5": "7484e0b19ea580c3d4fd3e6120d4d8f8"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_reviews",
+        "rows": 1733,
+        "md5": "fe706d1d74e78707cef7262e6801bc08"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_template_remediation_guides",
+        "rows": 518,
+        "md5": "e603af7f4dc742b0e53f996eeee86627"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_templates",
+        "rows": 1229,
+        "md5": "beb034caa80d5f15e7c14eb2451d59f8"
+      },
+      {
+        "schema": "public",
+        "table_name": "item_versions",
+        "rows": 1405,
+        "md5": "96b5926f8faf71f2cb4858a3a8a0365d"
+      },
+      {
+        "schema": "public",
+        "table_name": "items",
+        "rows": 1451,
+        "md5": "eff07c090bdacd16a1e32a89aa695b46"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_assessed_audio",
+        "rows": 1,
+        "md5": "8b9f5844a15f2b0bd517a2b43440f92e"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_audio_deliveries",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_audio_versions",
+        "rows": 14,
+        "md5": "fa69dd1e325f1e788ecd27a06bffaaa7"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_model_configurations",
+        "rows": 7,
+        "md5": "285ee0bb76b78d18f48e810f4fda25d3"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_model_runtime_bindings",
+        "rows": 7,
+        "md5": "997d662f5d8e4e5650a1431a57d69e6c"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_outcome_normative_mappings",
+        "rows": 63,
+        "md5": "efe357358b88866b4e69de19b19f1d6d"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_outcomes",
+        "rows": 63,
+        "md5": "775a73f62f22d1116b742e513301648e"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_response_drafts",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_session_items",
+        "rows": 124,
+        "md5": "c08cea8d928261f866f528106f5ae646"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_sessions",
+        "rows": 9,
+        "md5": "135760b7d62af755ce09465212561acd"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_source_family_exposures",
+        "rows": 2,
+        "md5": "001578fa0dc9e9c0dad03aa5518ef914"
+      },
+      {
+        "schema": "public",
+        "table_name": "learning_task_set_versions",
+        "rows": 27,
+        "md5": "131fd30f3d643238bc5fa9c71939d258"
+      },
+      {
+        "schema": "public",
+        "table_name": "legacy_learning_blueprint_mappings",
+        "rows": 7,
+        "md5": "097bc8ca237f7cdbbcadd9de566cfee0"
+      },
+      {
+        "schema": "public",
+        "table_name": "mastery_check_attempts",
+        "rows": 1,
+        "md5": "7b51fee77a2d7b6f9c3a6e5c620baf8b"
+      },
+      {
+        "schema": "public",
+        "table_name": "misconception_review_events",
+        "rows": 1026,
+        "md5": "b453094e23e087c502ea133a8e25e053"
+      },
+      {
+        "schema": "public",
+        "table_name": "misconceptions",
+        "rows": 1033,
+        "md5": "b399278d2c2bb11a9e0e07cf3e32906c"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_evidence_classifications",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_gate_checks",
+        "rows": 11,
+        "md5": "a92e146144b3a944bc06c790ab819a2e"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_participant_events",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_participants",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "pilot_runs",
+        "rows": 1,
+        "md5": "36593273285ffb100f9c772357e22bc5"
+      },
+      {
+        "schema": "public",
+        "table_name": "privacy_preferences",
+        "rows": 2,
+        "md5": "71ea632b3f3aa8ecef0596b0286b264f"
+      },
+      {
+        "schema": "public",
+        "table_name": "profiles",
+        "rows": 11,
+        "md5": "80e6fa22b4e71f20cb30c036f812b98c"
+      },
+      {
+        "schema": "public",
+        "table_name": "recommendation_events",
+        "rows": 824,
+        "md5": "bb3fe105ac2571f227284db74a10591f"
+      },
+      {
+        "schema": "public",
+        "table_name": "remediation_events",
+        "rows": 6,
+        "md5": "e5001e648bb95efe0dd4a0c163f8fd2c"
+      },
+      {
+        "schema": "public",
+        "table_name": "remediation_guide_authoring_versions",
+        "rows": 1708,
+        "md5": "ad66c5fa1f9ed7d37f52e14da1f9303c"
+      },
+      {
+        "schema": "public",
+        "table_name": "remediation_guide_versions",
+        "rows": 1067,
+        "md5": "904a28da2d3e95fc1d420cac3f0915b4"
+      },
+      {
+        "schema": "public",
+        "table_name": "runtime_builds",
+        "rows": 27,
+        "md5": "9887b695789dec20613e1e3ceb12d692"
+      },
+      {
+        "schema": "public",
+        "table_name": "schools",
+        "rows": 2,
+        "md5": "9d57e11ebc85e897f150a2e5481a5167"
+      },
+      {
+        "schema": "public",
+        "table_name": "security_audit_log",
+        "rows": 34,
+        "md5": "e6bb37b9de578fd1fe9dcbd3dbe20595"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_curriculum_reconciliations",
+        "rows": 80,
+        "md5": "4173557c63b323bf756506b3ec950c3c"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_outcome_curriculum_mappings",
+        "rows": 101,
+        "md5": "60181d4c8078939c31716a8b6f0c8a5b"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_outcomes",
+        "rows": 101,
+        "md5": "9ce33c8d66ba70386424e26394bf0b2e"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_prerequisites",
+        "rows": 17,
+        "md5": "2163f87101e252337a68d16de849d8d4"
+      },
+      {
+        "schema": "public",
+        "table_name": "skill_remediation_guides",
+        "rows": 10,
+        "md5": "0c0a4b6b5a5fb2e78a4e9707d5c28366"
+      },
+      {
+        "schema": "public",
+        "table_name": "skills",
+        "rows": 81,
+        "md5": "ff8d0bf2159893c6586861f31e37c29e"
+      },
+      {
+        "schema": "public",
+        "table_name": "staff_account_provisioning",
+        "rows": 5,
+        "md5": "d95657390a541114fc9dfdf9a04d7adb"
+      },
+      {
+        "schema": "public",
+        "table_name": "student_account_acceptances",
+        "rows": 1,
+        "md5": "9995220c3e014061be4f59b9b335aca5"
+      },
+      {
+        "schema": "public",
+        "table_name": "student_item_exposure_events",
+        "rows": 52,
+        "md5": "8bd65858af50cafbe024e6254b1a60b8"
+      },
+      {
+        "schema": "public",
+        "table_name": "student_skill_mastery",
+        "rows": 18,
+        "md5": "341915680760d5ec59f4d26e3e51ef8c"
+      },
+      {
+        "schema": "public",
+        "table_name": "student_skill_mastery_by_release",
+        "rows": 18,
+        "md5": "23ff80795c3a78337d4e982bbc24e263"
+      },
+      {
+        "schema": "public",
+        "table_name": "subject_program_source_bindings",
+        "rows": 3,
+        "md5": "13ce55e9528683183064b2b032a4947a"
+      },
+      {
+        "schema": "public",
+        "table_name": "subject_programs",
+        "rows": 3,
+        "md5": "c3ec62e8677e7ef5d7e7283086481a91"
+      },
+      {
+        "schema": "public",
+        "table_name": "subjects",
+        "rows": 3,
+        "md5": "e0ca8b9c109af2e2affd11e3b8f6805a"
+      },
+      {
+        "schema": "public",
+        "table_name": "teacher_assignments",
+        "rows": 86,
+        "md5": "e6feb5cef5aa385b3d1888ddb5a1cf61"
+      },
+      {
+        "schema": "public",
+        "table_name": "teacher_subject_authorizations",
+        "rows": 41,
+        "md5": "36fbd8db8c54bc6826ce70a11f3f39d3"
+      },
+      {
+        "schema": "public",
+        "table_name": "textbook_mappings",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "textbooks",
+        "rows": 1,
+        "md5": "258ed3992a501378efe1e2a2da9ec218"
+      },
+      {
+        "schema": "public",
+        "table_name": "topics",
+        "rows": 31,
+        "md5": "34b93e610d96922016263df3985fac70"
+      },
+      {
+        "schema": "public",
+        "table_name": "unit_material_events",
+        "rows": 36,
+        "md5": "0f05d55c6712dfe52e9635665fa27cee"
+      },
+      {
+        "schema": "public",
+        "table_name": "unit_material_versions",
+        "rows": 10,
+        "md5": "920bf8d611af9d477d46371ce8a1f7dd"
+      },
+      {
+        "schema": "public",
+        "table_name": "units",
+        "rows": 8,
+        "md5": "c2b8d4ce2b2f9dd4d16d2d56adef7685"
+      },
+      {
+        "schema": "public",
+        "table_name": "written_reviews",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "written_submissions",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      },
+      {
+        "schema": "public",
+        "table_name": "written_task_versions",
+        "rows": 1,
+        "md5": "0cb173706c307eca65024b8dcda7a528"
+      },
+      {
+        "schema": "public",
+        "table_name": "written_work",
+        "rows": 0,
+        "md5": "d41d8cd98f00b204e9800998ecf8427e"
+      }
+    ]
+  },
+  "runtime": {
+    "runtime": {
+      "timing": {
+        "sqlSha256": "ed36024216111a7d693a1f413d2a1f715f0a6556656e8986f45abdb88435377e",
+        "leaseSeconds": 5,
+        "modelChanged": false,
+        "sourceCommit": "af1bcf12f2156a7c5e30716e38714da8d9d8558e",
+        "progressBound": "elapsed-current-segment",
+        "schemaVersion": "haiedu-assessed-audio-progress-v1",
+        "allowanceChanged": false,
+        "timingToleranceMs": 250,
+        "edgeBundlesChanged": false,
+        "functionBodySha256": "977cea189e777e43fc978adc8d7f7fd87ac29cc94b6b7bf6e7af8bf327a8afc0",
+        "reviewedSourcePath": "supabase/migrations/20261023064000_sprint_16_1c_audio_progress_jitter.sql",
+        "previousRuntimeBuildId": "aa242a25-08f9-503c-8c14-2eb5b1fb2926",
+        "appliedMigrationVersion": "20261023064305"
+      },
+      "bindingId": "1e484d77-1e46-5dc1-90a8-189f7e226256",
+      "sourceCommit": "af1bcf12f2156a7c5e30716e38714da8d9d8558e",
+      "runtimeBuildId": "ae2126d8-7b45-455b-a09b-80dcea0f5586"
+    },
+    "migrations": [
+      {
+        "name": "sprint_16_1c_audio_progress_jitter",
+        "version": "20261023064305"
+      },
+      {
+        "name": "sprint_16_1c_audio_progress_provenance",
+        "version": "20261023070516"
+      }
+    ]
+  },
+  "firstAudioLogs": [
+    {
+      "time": "2026-10-23T06:32:24.167000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "605",
+      "requestLength": "166",
+      "responseLength": "226"
+    },
+    {
+      "time": "2026-10-23T06:32:23.545000",
+      "event": "POST | 409 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "623",
+      "requestLength": "284",
+      "responseLength": "54"
+    },
+    {
+      "time": "2026-10-23T06:32:22.289000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "868",
+      "requestLength": "284",
+      "responseLength": "218"
+    },
+    {
+      "time": "2026-10-23T06:32:21.285000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "611",
+      "requestLength": "284",
+      "responseLength": "218"
+    },
+    {
+      "time": "2026-10-23T06:32:20.535000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "612",
+      "requestLength": "284",
+      "responseLength": "216"
+    },
+    {
+      "time": "2026-10-23T06:32:19.148000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "632",
+      "requestLength": "281",
+      "responseLength": "216"
+    },
+    {
+      "time": "2026-10-23T06:32:18.474000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "808",
+      "requestLength": "165",
+      "responseLength": "216"
+    },
+    {
+      "time": "2026-10-23T06:32:17.258000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "1583",
+      "requestLength": "164",
+      "responseLength": "524339"
+    },
+    {
+      "time": "2026-10-23T06:32:15.656000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "806",
+      "requestLength": "165",
+      "responseLength": "216"
+    },
+    {
+      "time": "2026-10-23T06:32:05.667000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "702",
+      "requestLength": "165",
+      "responseLength": "216"
+    },
+    {
+      "time": "2026-10-23T06:32:04.455000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "583",
+      "requestLength": "281",
+      "responseLength": "216"
+    },
+    {
+      "time": "2026-10-23T06:32:03.854000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "836",
+      "requestLength": "284",
+      "responseLength": "218"
+    },
+    {
+      "time": "2026-10-23T06:32:02.905000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "635",
+      "requestLength": "283",
+      "responseLength": "217"
+    },
+    {
+      "time": "2026-10-23T06:32:01.478000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "1426",
+      "requestLength": "278",
+      "responseLength": "215"
+    },
+    {
+      "time": "2026-10-23T06:32:00.031000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "948",
+      "requestLength": "165",
+      "responseLength": "183"
+    },
+    {
+      "time": "2026-10-23T06:31:59.008000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "3269",
+      "requestLength": "164",
+      "responseLength": "524339"
+    },
+    {
+      "time": "2026-10-23T06:31:55.709000",
+      "event": "POST | 200 | https://xzyjvwiiibuarpotppid.supabase.co/functions/v1/get-learning-audio",
+      "ms": "974",
+      "requestLength": "165",
+      "responseLength": "183"
+    }
+  ],
+  "requiredCi": {
+    "runId": 39912829994,
+    "tests": 1410,
+    "browserTests": 95,
+    "jobs": [
+      {
+        "id": 120279520594,
+        "name": "institutional-concurrency",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39912829994,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Install isolated PostgreSQL test tools",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Verify administrator and teacher offboarding races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Verify isolated Phase 3 content races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Verify misconception review and existing item-write races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          }
+        ]
+      },
+      {
+        "id": 120279520829,
+        "name": "role-layout-browser",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39912829994,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Bound Ubuntu downloads for the browser gate",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Install Chromium",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Verify browser responsiveness and lifecycle regressions",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Keep isolated student interface evidence",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          }
+        ]
+      },
+      {
+        "id": 120279520905,
+        "name": "test",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39912829994,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Setup Node",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Install dependencies",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Check mirrored core parity",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Check platform favicon",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Check browser QA dependency coverage",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Run tests",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Typecheck",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Check browser JavaScript syntax",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Post Setup Node",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          },
+          {
+            "name": "Post Checkout",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          }
+        ]
+      },
+      {
+        "id": 120279520936,
+        "name": "phase3-postgres-17",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39912829994,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Initialize containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 5
+          },
+          {
+            "name": "Run npm ci",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 6
+          },
+          {
+            "name": "Run python -m pip install 'psycopg[binary]==3.2.6'",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Verify isolated Phase 3 races on PostgreSQL 17.6",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Verify misconception review and existing item-write races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          },
+          {
+            "name": "Execute analytics SQL, handler and Evidence page with PostgreSQL 17.6",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 10
+          },
+          {
+            "name": "Verify connected two-subject two-unit Edge and SQL acceptance",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 11
+          },
+          {
+            "name": "Verify versioned scoring, readiness, reporting and preserved v1 rules",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 12
+          },
+          {
+            "name": "Verify typed-field normalization, drafts, scoring and scope on PostgreSQL 17.6",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 13
+          },
+          {
+            "name": "Verify written-work submissions, marking and authorization on PostgreSQL 17.6",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 14
+          },
+          {
+            "name": "Verify material revision, approval and reviewer-session races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 15
+          },
+          {
+            "name": "Verify guide delivery, assessment start and revocation races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 16
+          },
+          {
+            "name": "Verify written-work save, submit, mark and revocation races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 17
+          },
+          {
+            "name": "Verify atomic answer scoring with independent PostgreSQL 17.6 connections",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 18
+          },
+          {
+            "name": "Verify governed policy and session authorization races on PostgreSQL 17.6",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 19
+          },
+          {
+            "name": "Verify read-only learning navigation and dashboard revocation races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 20
+          },
+          {
+            "name": "Verify governed learning API, answer and review races on PostgreSQL 17.6",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 21
+          },
+          {
+            "name": "Verify disjoint curriculum release activation races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 22
+          },
+          {
+            "name": "Verify assessed listening allowances and cancellation races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 23
+          },
+          {
+            "name": "Verify shared-source exposure and allocation races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 24
+          },
+          {
+            "name": "Verify governed whole-form mastery selection races",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 25
+          },
+          {
+            "name": "Post Run actions/setup-python@v5",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 47
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 48
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 49
+          },
+          {
+            "name": "Stop containers",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 50
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 51
+          }
+        ]
+      },
+      {
+        "id": 120280411592,
+        "name": "Platform release checks",
+        "status": "completed",
+        "conclusion": "success",
+        "run_id": 39912829994,
+        "logs_url": null,
+        "steps": [
+          {
+            "name": "Set up job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 1
+          },
+          {
+            "name": "Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 2
+          },
+          {
+            "name": "Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 3
+          },
+          {
+            "name": "Require every platform check to succeed",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 4
+          },
+          {
+            "name": "Post Run actions/setup-node@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 7
+          },
+          {
+            "name": "Post Run actions/checkout@v4",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 8
+          },
+          {
+            "name": "Complete job",
+            "status": "completed",
+            "conclusion": "success",
+            "number": 9
+          }
+        ]
+      }
+    ]
+  },
+  "notes": [
+    "The first HTTP409 does not expose its error body in Edge logs; controlled SQL reproduction confirms a request-jitter false rejection.",
+    "No Edge or web implementation changed. Existing active Diagnostic retains original runtime binding; dated delivery evidence records the patch during continuation.",
+    "Two rollback provenance requests returned connector Invalid or expired requestState; readback showed zero appended builds before applying the versioned provenance migration. No rollback success is claimed."
+  ]
+}
