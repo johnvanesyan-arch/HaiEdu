@@ -1,0 +1,573 @@
+{
+  "schemaVersion": "haiedu-english-unit-preparation-v1",
+  "checkpoint": "16.1C.27",
+  "date": "2026-10-23",
+  "timezone": "Asia/Yerevan",
+  "status": "source-activity-audio-prepared; no accepted bank budget or learner release",
+  "scope": {
+    "bookUnit": 2,
+    "programmeTopic": 2,
+    "title": "My Interests — I Like Listening to Music",
+    "programmeTitle": "Երաժշտությունը՝ համամարդկային լեզու",
+    "pages": [
+      28,
+      53
+    ],
+    "numberedActivities": 34,
+    "plannedTargets": 15,
+    "coreAutomaticTargets": 9,
+    "supportingAutomaticTargets": 3,
+    "textbookExtensionTargets": 1,
+    "teacherReviewedWritingTargets": 2
+  },
+  "source": {
+    "title": "English 7",
+    "author": "Lusine Grigoryan",
+    "publisher": "Zangak",
+    "year": 2023,
+    "isbn": "978-9939-99-035-4",
+    "pages": 176,
+    "sha256": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9"
+  },
+  "programme": {
+    "url": "https://www.arlis.am/hy/acts/183356",
+    "topic": 2,
+    "outcomeLocators": [
+      "T2.K1",
+      "T2.K2",
+      "T2.K3",
+      "T2.K4",
+      "T2.L1",
+      "T2.L2",
+      "T2.L3",
+      "T2.L4",
+      "T2.L5",
+      "T2.L6"
+    ],
+    "locatorsAreLocalDesignLabels": true,
+    "annualGrammarExplicit": [
+      "present/past simple passive",
+      "adjective + preposition",
+      "past continuous versus past simple with when/while"
+    ],
+    "presentPerfect": "textbook extension; not separately enumerated in annual list; no mandatory assessment decision"
+  },
+  "standard": {
+    "url": "https://www.arlis.am/hy/acts/229389",
+    "appendixSha256": "44bfb23bfab1ded26c7f75d89c9252885ed58ae37aebfae876b5fb964ed3ad12",
+    "gradeVIICommunicationCellsRead": [
+      0,
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "selectedCodes": [
+      "ՕԼ7-Հ-ՈՒ․1",
+      "ՕԼ7-Հ-ՈՒ․3",
+      "ՕԼ7-Հ-Ը․1",
+      "ՕԼ7-Հ-Գ․1",
+      "ՕԼ7-Հ-Փ․3"
+    ],
+    "mappingIsDesignInterpretation": true
+  },
+  "skills": [
+    {
+      "planningId": "ENG7-U02-S01",
+      "target": "Interpret music genres, instruments, people and activities in a supplied context",
+      "bookAnchor": "pp.28–34, ex.1/4/8",
+      "route": "Core automatic; choice, matching or bounded gaps; unique category criteria",
+      "category": "core-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S02",
+      "target": "Distinguish deliberate listening from hearing and use taught voice/music expressions",
+      "bookAnchor": "pp.29, 32–33, ex.3/5/6",
+      "route": "Core automatic vocabulary; meaning-based contexts, not a spelling-only contrast",
+      "category": "core-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S03",
+      "target": "Use possessive determiners/pronouns with an unambiguous referent",
+      "bookAnchor": "p.35, ex.9",
+      "route": "Supporting automatic practice; comparison language is prerequisite/reuse, not new comparison coverage",
+      "category": "supporting-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S04",
+      "target": "Interpret taught place, movement and time prepositions",
+      "bookAnchor": "pp.36/51, ex.10/30",
+      "route": "Supporting automatic practice; text or reviewed purposeful diagrams",
+      "category": "supporting-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S05",
+      "target": "Interpret and form present/past simple passive with explicit actor, receiver and time",
+      "bookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
+      "route": "Core automatic; bounded fields, choice or ordering; no untaught perfect passive",
+      "category": "core-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S06",
+      "target": "Distinguish adjective and adverb functions when the word form is unchanged",
+      "bookAnchor": "p.46, ex.22",
+      "route": "Supporting automatic practice; compare with all Unit 1 S04/S07 history",
+      "category": "supporting-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S07",
+      "target": "Use taught adjective–preposition combinations in a meaningful sentence",
+      "bookAnchor": "p.46, ex.23",
+      "route": "Core automatic; reviewed alternatives and self-contained context",
+      "category": "core-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S08",
+      "target": "Distinguish finished-past events from time-up-to-now/current-result meaning",
+      "bookAnchor": "pp.48–50, ex.26–29",
+      "route": "Textbook extension; present perfect is not separately enumerated in the annual Grade 7 list. Retain teaching and practice; mandatory Mastery inclusion needs an explicit Unit 2 scope decision.",
+      "category": "textbook-extension",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S09",
+      "target": "Distinguish background actions, completed events and simultaneous actions with when/while",
+      "bookAnchor": "pp.52–53, ex.33/34",
+      "route": "Core automatic; review all linguistically valid tense/conjunction alternatives",
+      "category": "core-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S10",
+      "target": "Identify the main idea and purpose of a simple music information text",
+      "bookAnchor": "pp.40–43, ex.18/19",
+      "route": "Core automatic reading; immutable shared text set",
+      "category": "core-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S11",
+      "target": "Retrieve and connect explicit musician/music details, distinguishing fact from evaluation",
+      "bookAnchor": "same profiles; selected supplied context",
+      "route": "Core automatic reading; evidence supplied, no celebrity knowledge prerequisite",
+      "category": "core-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S12",
+      "target": "Identify the main message of simple music-topic speech",
+      "bookAnchor": "p.39, ex.16; script p.144",
+      "route": "Core automatic listening; exact reviewed recording required",
+      "category": "core-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S13",
+      "target": "Retrieve relevant spoken details and distinguish stated positions/actions",
+      "bookAnchor": "p.39, ex.16/17; p.50, ex.29 as supporting practice",
+      "route": "Core automatic listening; music-topic sources needed for assessed T2.L1 coverage",
+      "category": "core-automatic",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S14",
+      "target": "Write an informational description of a musical style and one example work, with reasons",
+      "bookAnchor": "ex.12/14/18/19 preparation; programme T2.L4",
+      "route": "Teacher-reviewed extended writing; supplied fact card, no lyric copying or research requirement",
+      "category": "teacher-reviewed-writing",
+      "registered": false
+    },
+    {
+      "planningId": "ENG7-U02-S15",
+      "target": "Respond respectfully in writing to another view about music and explain a reason",
+      "bookAnchor": "ex.6/14/15; programme T2.L5; standard Փ․3",
+      "route": "Teacher-reviewed written interaction; can share one response with S14 but is not an independent second sample",
+      "category": "teacher-reviewed-writing",
+      "registered": false
+    }
+  ],
+  "activities": [
+    {
+      "activity": 1,
+      "pages": "28",
+      "disposition": "Instrument vocabulary. Keep meaningful visual recognition only with reviewed, labelled images/accessibility; text definitions may supply a separate vocabulary task."
+    },
+    {
+      "activity": 2,
+      "pages": "29–31",
+      "disposition": "Do-Re-Mi playable enrichment at this point in the sequence. Singing/role play stays in class; no singing marks or compulsory lyric recall."
+    },
+    {
+      "activity": 3,
+      "pages": "32",
+      "disposition": "S02 hear/listen contrasts; supply tense and meaning context, including the different expression hear of."
+    },
+    {
+      "activity": 4,
+      "pages": "32",
+      "disposition": "S01 categories; replace ambiguous odd-one-out prompts with a stated category. Several listed music groups are valid peers."
+    },
+    {
+      "activity": 5,
+      "pages": "33",
+      "disposition": "S02 voice expressions; replace the alcohol example and give enough context for a defensible volume choice."
+    },
+    {
+      "activity": 6,
+      "pages": "33",
+      "disposition": "Preference vocabulary and optional written preparation; oral exchange in class, no right/wrong taste."
+    },
+    {
+      "activity": 7,
+      "pages": "33",
+      "disposition": "Optional self-reflection. Remove expertise/enthusiasm labels inferred from ticks; owning an instrument or reading music is not a proficiency score."
+    },
+    {
+      "activity": 8,
+      "pages": "34",
+      "disposition": "S01 music terms with unique keys. Repair overlapping sound/music and group-size options; avoid contested instrument/genre trivia."
+    },
+    {
+      "activity": 9,
+      "pages": "35",
+      "disposition": "S03 possessives with explicit referents. Do not require standalone possessive its; comparisons reuse prior teaching."
+    },
+    {
+      "activity": 10,
+      "pages": "36",
+      "disposition": "S04 prepositions; specify each relation and correct broad assertions such as nobody working during holidays."
+    },
+    {
+      "activity": 11,
+      "pages": "36",
+      "disposition": "Classroom survey/interview; optionally provide fictional responses for writing preparation without collecting classmates' data."
+    },
+    {
+      "activity": 12,
+      "pages": "36",
+      "disposition": "Optional survey-report writing from supplied data. Retain its place; not a substitute for the programme's style-and-work essay."
+    },
+    {
+      "activity": 13,
+      "pages": "37",
+      "disposition": "Optional picture narrative in the original panel order. Review coercive physical handling in the cartoon; keep it a narrative, not endorsed teaching behaviour or a core writing substitute."
+    },
+    {
+      "activity": 14,
+      "pages": "38",
+      "disposition": "Preference description and S14 preparation; reasons may support any genre."
+    },
+    {
+      "activity": 15,
+      "pages": "38",
+      "disposition": "Oral interview in class; supplied written comments may prepare S15. No live peer messaging required."
+    },
+    {
+      "activity": 16,
+      "pages": "39",
+      "disposition": "Track 5 shared listening. Test attributed speaker claims; do not teach its broad learning/stress claims as established causal facts."
+    },
+    {
+      "activity": 17,
+      "pages": "39",
+      "disposition": "Track 6 optional ability/listening support. Contextualize gendered dialogue; no pronunciation or repetition score."
+    },
+    {
+      "activity": 18,
+      "pages": "40–41",
+      "disposition": "Corrected world-musician information and reading; keep six profiles' order. Speaking follow-up in class; replace photo/name guessing with supplied evidence."
+    },
+    {
+      "activity": 19,
+      "pages": "42–43",
+      "disposition": "Corrected Armenian-musician information and reading; preserve the six-profile order and cultural topic. Complete the essay/response preparation here."
+    },
+    {
+      "activity": 20,
+      "pages": "45",
+      "disposition": "S05 simple passive; use explicit singular/plural and time cues."
+    },
+    {
+      "activity": 21,
+      "pages": "45",
+      "disposition": "S05 bounded gaps; repair ambiguous times and unsupported historical/political examples. No factual knowledge is required to infer grammar."
+    },
+    {
+      "activity": 22,
+      "pages": "46",
+      "disposition": "S06 adjective/adverb function; bold the intended word and compare with Unit 1 before counting novelty."
+    },
+    {
+      "activity": 23,
+      "pages": "46",
+      "disposition": "S07 adjective–preposition combinations; remove nationality stereotypes and unnecessary health assertions."
+    },
+    {
+      "activity": 24,
+      "pages": "47",
+      "disposition": "Rewrite instructions for mixed active/passive where required. Retain the paper-history topic with verified/cautiously framed information; no forced passive for an active subject."
+    },
+    {
+      "activity": 25,
+      "pages": "47",
+      "disposition": "Instrument/auction context for S05. Remove unverified record-price claims and perfect-passive dependence; supply explicit simple-tense time anchors."
+    },
+    {
+      "activity": 26,
+      "pages": "49",
+      "disposition": "S08 tense meaning; replace signal-word-as-command rules. Multiple-selection source items must be adapted to supported choice/categorisation contracts."
+    },
+    {
+      "activity": 27,
+      "pages": "50",
+      "disposition": "S08 contextual tense practice, with S09 cases kept in their later teaching sequence; correct incomplete or factual-trivia contexts."
+    },
+    {
+      "activity": 28,
+      "pages": "50",
+      "disposition": "S08 form/meaning recognition; declare category reuse, not an unsupported checkbox response type."
+    },
+    {
+      "activity": 29,
+      "pages": "50",
+      "disposition": "Track 7 shared done/not-done listening support. Resolve the printed room-cleaning contradiction by audition before any key; retain source family across edits/re-recording."
+    },
+    {
+      "activity": 30,
+      "pages": "51",
+      "disposition": "S04 meaningful spatial/movement relations. Nine picture panels and ten terms do not imply one-to-one matching; one staircase panel illustrates two directions. Specify cardinality or split prompts."
+    },
+    {
+      "activity": 31,
+      "pages": "51",
+      "disposition": "Optional phonetic-reading/recitation in class; no new publisher audio was identified here and no pronunciation assessment is planned."
+    },
+    {
+      "activity": 32,
+      "pages": "52",
+      "disposition": "S05 house-history practice; repeated verbs permitted as printed, bounded alternatives/context required. Keep this topic at its source position."
+    },
+    {
+      "activity": 33,
+      "pages": "53",
+      "disposition": "S09 finished versus in-progress past; remove cases where duration alone cannot determine a unique aspect."
+    },
+    {
+      "activity": 34,
+      "pages": "53",
+      "disposition": "S09 when/while; accept both when valid or rebuild the context. No universal short-action/long-action shortcut."
+    }
+  ],
+  "audio": [
+    {
+      "id": "ENG7-AUDIO-4",
+      "track": "4",
+      "unit": 2,
+      "page": 29,
+      "activity": "2",
+      "intendedBookMaterial": "Do-Re-Mi — musical song",
+      "qr": "lLXsq",
+      "publisherPage": "https://zangak.am/mediafiles/?lLXsq",
+      "sourceUrl": "https://zangak.am/mediafiles/english7-2023/lLXsq/Soundtrack%204.mp3",
+      "decision": "retain-for-playable-integration",
+      "plannedUse": "support-enrichment",
+      "rationale": "Music vocabulary/theme; full song or a reviewed purposeful excerpt. Original exceeds asset limit.",
+      "sourceFamilyCandidate": "eng7-book-u02-do-re-mi",
+      "sourceFamilyReviewed": false,
+      "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
+      "seconds": 350.040816,
+      "bytes": 8401702,
+      "sha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
+      "technicalEvidence": "new",
+      "fitsCurrentFormatByteDurationLimits": false,
+      "deliveryPreparation": "reviewed derivative required",
+      "permissionStatus": "unverified",
+      "listeningReviewStatus": "pending",
+      "registered": false,
+      "live": false,
+      "originalHashVerifiedAtCheckpoint": "16.1C.27",
+      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json",
+      "deliveryCandidate": {
+        "file": "english7-u02-do-re-mi-delivery-review.mp3",
+        "bytes": 7001906,
+        "sha256": "7754742da22a14288f036c36ed8a59f5cb5219d36ae356b5a27c40b591efaa23",
+        "durationSeconds": 350.066939,
+        "sampleRate": 44100,
+        "channels": 2,
+        "targetBitrate": 160000,
+        "sourceSha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
+        "transformation": "ffmpeg: complete audio stream; libmp3lame 160k CBR, 44.1 kHz, stereo, metadata stripped; no trim or normalization",
+        "decodeErrors": 0,
+        "fullDurationWithin100ms": true,
+        "fits8MiB": true,
+        "audition": "pending",
+        "registration": "not performed"
+      }
+    },
+    {
+      "id": "ENG7-AUDIO-5",
+      "track": "5",
+      "unit": 2,
+      "page": 39,
+      "activity": "16",
+      "intendedBookMaterial": "The Power of Music — talk",
+      "qr": "nwiPc",
+      "publisherPage": "https://zangak.am/mediafiles/?nwiPc",
+      "sourceUrl": "https://zangak.am/mediafiles/english7-2023/nwiPc/Soundtrack%205.mp3",
+      "decision": "retain-for-playable-integration",
+      "plannedUse": "core-listening",
+      "rationale": "Identify the speaker’s claims; review unsupported causal/health/academic generalisations before task authoring.",
+      "sourceFamilyCandidate": "eng7-book-u02-power-of-music",
+      "sourceFamilyReviewed": false,
+      "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
+      "seconds": 91.324082,
+      "bytes": 1713592,
+      "sha256": "c9b024ac43b1bc5af59bf81199f7a9497b2b800a033ee008195b4d9191426fa8",
+      "technicalEvidence": "new",
+      "fitsCurrentFormatByteDurationLimits": true,
+      "deliveryPreparation": "original technically within limits",
+      "permissionStatus": "unverified",
+      "listeningReviewStatus": "pending",
+      "registered": false,
+      "live": false,
+      "originalHashVerifiedAtCheckpoint": "16.1C.27",
+      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+    },
+    {
+      "id": "ENG7-AUDIO-6",
+      "track": "6",
+      "unit": 2,
+      "page": 39,
+      "activity": "17",
+      "intendedBookMaterial": "Abilities — short dialogue",
+      "qr": "X1280",
+      "publisherPage": "https://zangak.am/mediafiles/?X1280",
+      "sourceUrl": "https://zangak.am/mediafiles/english7-2023/X1280/Soundtrack%206.mp3",
+      "decision": "retain-for-playable-integration",
+      "plannedUse": "support-enrichment",
+      "rationale": "Receptive modal/ability practice; review gendered framing, no imitation or speaking score.",
+      "sourceFamilyCandidate": "eng7-book-u02-abilities-dialogue",
+      "sourceFamilyReviewed": false,
+      "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
+      "seconds": 29.988571,
+      "bytes": 720448,
+      "sha256": "67b39fb105f74695e8809e4ef2ba6cd18adbf22560134514897b7e663c4a1d0c",
+      "technicalEvidence": "new",
+      "fitsCurrentFormatByteDurationLimits": true,
+      "deliveryPreparation": "original technically within limits",
+      "permissionStatus": "unverified",
+      "listeningReviewStatus": "pending",
+      "registered": false,
+      "live": false,
+      "originalHashVerifiedAtCheckpoint": "16.1C.27",
+      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+    },
+    {
+      "id": "ENG7-AUDIO-7",
+      "track": "7",
+      "unit": 2,
+      "page": 50,
+      "activity": "29",
+      "intendedBookMaterial": "A busy day — done/not done",
+      "qr": "BjRzf",
+      "publisherPage": "https://zangak.am/mediafiles/?BjRzf",
+      "sourceUrl": "https://zangak.am/mediafiles/english7-2023/BjRzf/Soundtrack%207.mp3",
+      "decision": "retain-for-playable-integration",
+      "plannedUse": "core-listening",
+      "rationale": "Listen for completed/incomplete actions in the taught present-perfect context.",
+      "sourceFamilyCandidate": "eng7-book-u02-busy-day",
+      "sourceFamilyReviewed": false,
+      "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
+      "seconds": 47.046531,
+      "bytes": 1881534,
+      "sha256": "ebd65a0ac534d7661884ef260ab9a170f52122660b6ea80858828200bcf8ef88",
+      "technicalEvidence": "new",
+      "fitsCurrentFormatByteDurationLimits": true,
+      "deliveryPreparation": "original technically within limits",
+      "permissionStatus": "unverified",
+      "listeningReviewStatus": "pending",
+      "registered": false,
+      "live": false,
+      "originalHashVerifiedAtCheckpoint": "16.1C.27",
+      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json",
+      "keyHold": "Printed p.145 room-cleaning statements conflict without separate speaker/context labels; actual audio review required.",
+      "programmeCoverageBoundary": "Supporting listening/tense practice; not sufficient by itself for music-topic listening T2.L1."
+    }
+  ],
+  "writingProposal": {
+    "taskCount": 1,
+    "wordRange": [
+      80,
+      100
+    ],
+    "wordRangeBasis": "design proposal using current descriptive-writing descriptor; Topic 2 essay outcome specifies no count",
+    "targets": [
+      "ENG7-U02-S14",
+      "ENG7-U02-S15"
+    ],
+    "taskShape": "Informational description of musical style and one supplied work, reasons and response to a supplied comment",
+    "placement": "after ex.19; prior survey/preference work stays in book order",
+    "rubricCriteria": [
+      "task/audience",
+      "organisation",
+      "vocabulary",
+      "grammar/clarity"
+    ],
+    "proposedCriterionRange": [
+      0,
+      3
+    ],
+    "accepted": false,
+    "teacherAssignmentCreated": false,
+    "separateFromAutomaticScore": true
+  },
+  "comparisonPreparation": {
+    "candidateLevelReviewComplete": false,
+    "scope": "all applicable draft/current/approved/retired/historical/exposed versions, related/equivalent mappings, guides and within-batch candidates",
+    "minimumRelatedUnit1Skills": [
+      "S01",
+      "S02",
+      "S04",
+      "S07",
+      "S09",
+      "S10",
+      "S11",
+      "S12",
+      "S13",
+      "S14"
+    ],
+    "newSettingProvesNovelReasoning": false,
+    "next": "Freeze full comparison corpus, then propose bounded counts and source families before authoring."
+  },
+  "boundaries": {
+    "speaking": "classroom-assessed",
+    "questionBudgetsAccepted": false,
+    "questionCounts": {
+      "practice": null,
+      "diagnostic": null,
+      "mastery": null
+    },
+    "newQuestionsAuthored": 0,
+    "productionWrites": 0,
+    "assetsRegistered": 0,
+    "sourcesRegistered": 0,
+    "newHumanApprovals": 0,
+    "newPoliciesBound": 0,
+    "newFormsAllocated": 0,
+    "unit1EvidenceReused": true,
+    "unit1BankAuthorizationExtendsToUnit2": false,
+    "audioAuditionClaimed": false,
+    "browserPlaybackClaimed": false,
+    "scorePolicyAdopted": false
+  },
+  "next": "Whole-skill bank comparison and concrete Unit 2 bank/assessment proposal; source-quality and asset-review work may continue without implying release approval."
+}

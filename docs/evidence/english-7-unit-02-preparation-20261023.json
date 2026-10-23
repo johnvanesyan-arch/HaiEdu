@@ -1,0 +1,251 @@
+{
+  "schemaVersion": "haiedu-english-unit-preparation-evidence-v1",
+  "checkpoint": "16.1C.27",
+  "date": "2026-10-23",
+  "timezone": "Asia/Yerevan",
+  "author": "Codex; one primary agent",
+  "baselineCommit": "d20ac00d47c0afd6d5bac706ec4e4ffb74913832",
+  "baselineTree": "cf911854b7921a78d6a6ea93bd2461f0df0e808f",
+  "scope": "Unit 2 source/activity/audio preparation only; one private technical delivery candidate; no question authoring, bank approval, registry or runtime mutation",
+  "textbook": {
+    "sha256": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9",
+    "bytes": 8834274,
+    "libraryIdentityMatchesRetainedCopy": true,
+    "textInspectedPages": [
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34,
+      35,
+      36,
+      37,
+      38,
+      39,
+      40,
+      41,
+      42,
+      43,
+      44,
+      45,
+      46,
+      47,
+      48,
+      49,
+      50,
+      51,
+      52,
+      53,
+      144,
+      145
+    ],
+    "visuallyInspectedPages": [
+      28,
+      35,
+      37,
+      39,
+      42,
+      47,
+      48,
+      49,
+      51,
+      52
+    ],
+    "numberedActivities": 34,
+    "orderedActivityIds": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ]
+  },
+  "sources": {
+    "programme": {
+      "url": "https://www.arlis.am/hy/acts/183356",
+      "topic": 2,
+      "outcomeLocators": [
+        "T2.K1",
+        "T2.K2",
+        "T2.K3",
+        "T2.K4",
+        "T2.L1",
+        "T2.L2",
+        "T2.L3",
+        "T2.L4",
+        "T2.L5",
+        "T2.L6"
+      ],
+      "locatorsAreLocalDesignLabels": true,
+      "annualGrammarExplicit": [
+        "present/past simple passive",
+        "adjective + preposition",
+        "past continuous versus past simple with when/while"
+      ],
+      "presentPerfect": "textbook extension; not separately enumerated in annual list; no mandatory assessment decision"
+    },
+    "standard": {
+      "url": "https://www.arlis.am/hy/acts/229389",
+      "appendixSha256": "44bfb23bfab1ded26c7f75d89c9252885ed58ae37aebfae876b5fb964ed3ad12",
+      "gradeVIICommunicationCellsRead": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6
+      ],
+      "selectedCodes": [
+        "ՕԼ7-Հ-ՈՒ․1",
+        "ՕԼ7-Հ-ՈՒ․3",
+        "ՕԼ7-Հ-Ը․1",
+        "ՕԼ7-Հ-Գ․1",
+        "ՕԼ7-Հ-Փ․3"
+      ],
+      "mappingIsDesignInterpretation": true
+    },
+    "officialPagesChecked": "2026-10-23",
+    "supplementaryEditorialSources": [
+      "https://dictionary.cambridge.org/uk/grammar/british-grammar/pronouns-possessive-my-mine-your-yours-",
+      "https://acu.am/?lang=en&page_id=8175",
+      "https://akhachaturianmuseum.am/en/khachaturian/biography/",
+      "https://dictionary.cambridge.org/uk/grammar/british-grammar/past-perfect",
+      "https://dictionary.cambridge.org/grammar/british-grammar/when"
+    ]
+  },
+  "audio": {
+    "originalChecks": [
+      {
+        "id": "ENG7-AUDIO-4",
+        "sha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
+        "bytes": 8401702,
+        "unchanged": true,
+        "priorDecodeEvidence": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+      },
+      {
+        "id": "ENG7-AUDIO-5",
+        "sha256": "c9b024ac43b1bc5af59bf81199f7a9497b2b800a033ee008195b4d9191426fa8",
+        "bytes": 1713592,
+        "unchanged": true,
+        "priorDecodeEvidence": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+      },
+      {
+        "id": "ENG7-AUDIO-6",
+        "sha256": "67b39fb105f74695e8809e4ef2ba6cd18adbf22560134514897b7e663c4a1d0c",
+        "bytes": 720448,
+        "unchanged": true,
+        "priorDecodeEvidence": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+      },
+      {
+        "id": "ENG7-AUDIO-7",
+        "sha256": "ebd65a0ac534d7661884ef260ab9a170f52122660b6ea80858828200bcf8ef88",
+        "bytes": 1881534,
+        "unchanged": true,
+        "priorDecodeEvidence": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+      }
+    ],
+    "derivative": {
+      "file": "english7-u02-do-re-mi-delivery-review.mp3",
+      "bytes": 7001906,
+      "sha256": "7754742da22a14288f036c36ed8a59f5cb5219d36ae356b5a27c40b591efaa23",
+      "durationSeconds": 350.066939,
+      "sampleRate": 44100,
+      "channels": 2,
+      "targetBitrate": 160000,
+      "sourceSha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
+      "transformation": "ffmpeg: complete audio stream; libmp3lame 160k CBR, 44.1 kHz, stereo, metadata stripped; no trim or normalization",
+      "decodeErrors": 0,
+      "fullDurationWithin100ms": true,
+      "fits8MiB": true,
+      "audition": "pending",
+      "registration": "not performed"
+    }
+  },
+  "privateDerivativeSaved": true,
+  "publisherBytesCommitted": false,
+  "reviewLimits": {
+    "printedIssueIsNotVerifiedRecordingDefect": true,
+    "auditionClaimed": false,
+    "productionPlaybackClaimed": false,
+    "independentSMEClaimed": false,
+    "fullBankSemanticReviewClaimed": false
+  },
+  "reusedEvidence": [
+    "docs/evidence/english-7-course-audio-inventory-20261021.json",
+    "docs/evidence/english-7-unit-01-learner-verification-20261023.json",
+    "docs/evidence/english-7-unit-01-preparation-20261020.json"
+  ],
+  "preservation": {
+    "baselineLocalTextAndBinaryMatches": 1509,
+    "absentBinaryBlobsPreservedByBaseTree": 3,
+    "productionDatabaseOrStorageCalls": 0,
+    "unit1ContentAndApprovalsChanged": false,
+    "runtimeApiSchemaChanged": false,
+    "oldAudioSourceRecordsChanged": false,
+    "existingAudioByteLimit": 8388608
+  },
+  "validation": {
+    "activitySequence": "1 through 34, exactly once",
+    "targetCount": 15,
+    "targetCategories": {
+      "core-automatic": 9,
+      "supporting-automatic": 3,
+      "textbook-extension": 1,
+      "teacher-reviewed-writing": 2
+    },
+    "originalAudioHashMatches": 4,
+    "newDerivativeFullDecode": "passes without FFmpeg errors",
+    "newDerivativeWithinByteLimit": true,
+    "newDerivativeDurationDeltaSeconds": 0.026123,
+    "fileChecks": "JSON parsing, ordered coverage, links and changed-file scope; recorded by local validation before commit",
+    "newProductTests": "not added; documentation/audio-preparation-only slice; required CI still applies"
+  },
+  "files": {
+    "preparationMarkdown": {
+      "path": "docs/english-7-unit-02-preparation.md",
+      "sha256": "5691021210cd5bc0c8df71ddf2c95707ec1b1e8df3e5e3cf2d27f308e2d46bce"
+    },
+    "manifest": {
+      "path": "docs/content/english-7-unit-02-preparation.json",
+      "sha256": "23c9af332a826008a2676ff2c89aeecba72bd70f31fc291a723e6026f7f379bc"
+    }
+  },
+  "closure": {
+    "github": "One batched documentation commit; exact merged-source readback required",
+    "notion": "Update to roadmap 4.53 from merged source; preserve all native child pages and scripts",
+    "futureResultNotClaimed": true
+  },
+  "next": "Whole-skill bank comparison and concrete Unit 2 bank/assessment proposal; source-quality and asset-review work may continue without implying release approval."
+}

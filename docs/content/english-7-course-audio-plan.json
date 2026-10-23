@@ -670,5 +670,33 @@
     "date": "2026-10-21",
     "evidence": "docs/evidence/english-7-unit-01-owner-acceptance-20261021.json",
     "scope": "Playable-audio inclusion/integration plan; no recording permission, content approval or assessment-playback policy inferred"
+  },
+  "currentHandoff": {
+    "checkpoint": "16.1C.27",
+    "date": "2026-10-23",
+    "status": "Unit 1 C26 verified; Unit 2 source/activity/audio prepared",
+    "originalInventoryAndCountsAreHistorical": true,
+    "unit2OriginalHashMatches": 4,
+    "unit2Derivative": {
+      "file": "english7-u02-do-re-mi-delivery-review.mp3",
+      "bytes": 7001906,
+      "sha256": "7754742da22a14288f036c36ed8a59f5cb5219d36ae356b5a27c40b591efaa23",
+      "durationSeconds": 350.066939,
+      "sampleRate": 44100,
+      "channels": 2,
+      "targetBitrate": 160000,
+      "sourceSha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
+      "transformation": "ffmpeg: complete audio stream; libmp3lame 160k CBR, 44.1 kHz, stereo, metadata stripped; no trim or normalization",
+      "decodeErrors": 0,
+      "fullDurationWithin100ms": true,
+      "fits8MiB": true,
+      "audition": "pending",
+      "registration": "not performed"
+    },
+    "unit2AudioRegistered": 0,
+    "unit2AudioLive": 0,
+    "unit2QuestionBudgetAccepted": false,
+    "next": "Whole-bank-supported Unit 2 proposal; audition/asset review and registration remain open",
+    "evidence": "docs/evidence/english-7-unit-02-preparation-20261023.json"
   }
 }
