@@ -1,6 +1,6 @@
 # English 7 Unit 2 — replacement for the opening song
 
-**16.1C.27A · 2026-10-23 Asia/Yerevan · Owner exclusion retained; original recording received and technically verified under C27A, not registered.**
+**16.1C.27B · 2026-10-23 Asia/Yerevan · Owner exclusion retained; original recording privately registered in a draft Unit 2 scope.**
 
 John rejected `english7-u02-do-re-mi-delivery-review.mp3` for the intended Grade 7 audience and requested a more suitable replacement. **Exclude Do-Re-Mi in both its original and compressed forms from course delivery.** Its technical preparation is historical evidence only; no further audition, upload or registration is queued. The existing private file is not deleted by this decision.
 
@@ -10,7 +10,7 @@ I recommend this scenario because choosing music for a real purpose gives the vo
 
 ## Recording script — draft v1
 
-**Recording received:** the owner-supplied MP3 matches all 135 words under automated normalization and decodes without errors. It lasts 46.99 seconds; pace and speaker distinction remain for human listening review. [Exact file and upload handoff](english-7-unit-02-replacement-audio-handoff.md).
+**Recording registered:** the owner-supplied MP3 matches all 135 words under automated normalization and decodes without errors. It lasts 46.99 seconds; pace and speaker distinction remain for human listening review. [Exact file and registration handoff](english-7-unit-02-replacement-audio-handoff.md).
 
 Read the dialogue only. Speaker labels identify voices and are not spoken.
 
@@ -38,8 +38,8 @@ Read the dialogue only. Speaker labels identify voices and are not spoken.
 - Clear, natural pace, approximately 120–145 words per minute. Allow a short pause between turns; measure the finished duration rather than treating an estimate as metadata.
 - One continuous MP3; do not read the title, role labels, directions or answer key. No background music or sound effects are needed.
 - Use the supplied script and turn order. Any wording changes require a script revision and renewed answer alignment.
-- Suggested working filename: `eng7-u02-one-song-two-versions-v1.mp3`. Registration will use the actual file hash and the existing private-audio contract.
-- After recording: check the entire file for clarity and speaker distinction, verify exact spoken content and key alignment, then complete normal review, private registration and playback acceptance. No provider call, voice cloning or API spend is authorized by this preparation.
+- Suggested working filename: `eng7-u02-one-song-two-versions-v1.mp3`. C27B registration uses the actual file hash and the existing private-audio contract.
+- C27A verifies decoding and exact spoken content; C27B completes owner-authorized private registration. Human clarity/speaker-distinction/pace review and authenticated playback after actual question attachment remain open. No provider call, voice cloning or API spend is authorized by this preparation.
 
 ## Illustrative listening checks
 
@@ -61,6 +61,6 @@ Original fictional text by Codex, authored for the owner's specific replacement 
 
 Preliminary comparison includes the Unit 1 `LISTEN-PRACTICE-GROUP-01` source: three separate preferences about clothing for a class photo. The new source instead follows a two-person decision about the sound and use of two fictional song versions. Both involve preferences and explicit details. This limited source comparison does **not** substitute for the complete current/history bank review required before any scored item is staged.
 
-Proposed source family: `eng7-original-u02-one-song-two-versions`. All recordings, transcripts, translations and revisions of this dialogue share its lineage. It has a pedagogical replacement link to textbook activity 2, but is not a derivative of Do-Re-Mi's lyrics or music. Treat it as familiar optional Practice/Chapter Review material, not protected unseen assessment capacity. The transcript here is for staff/recording preparation; it does not change learner transcript-delivery rules.
+Registered source-family identity: `eng7-original-u02-one-song-two-versions`. All recordings, transcripts, translations and revisions of this dialogue share its lineage. It has a pedagogical replacement link to textbook activity 2, but is not a derivative of Do-Re-Mi's lyrics or music. Treat it as familiar optional Practice/Chapter Review material, not protected unseen assessment capacity. The transcript here is for staff/recording preparation; it does not change learner transcript-delivery rules.
 
-Three Unit 2 publisher tracks remain candidates: The Power of Music, the abilities dialogue and the busy-day dialogue. The original replacement is now the fourth supplied activity recording, subject to normal acceptance and registration. There are **three retained publisher files plus one owner-supplied original recording**; this receipt does not register or release them. Question budgets, full-bank comparison, ordinary content/asset approvals and Unit 2 release gates remain unchanged. No production data, audio asset, reviewer row or runtime is changed.
+Three Unit 2 publisher tracks remain candidates: The Power of Music, the abilities dialogue and the busy-day dialogue. The original replacement is privately registered under C27B as audio version `641de808-3b15-59e0-b194-fd8e7ff502ed`, family `b7143aa4-9075-57b5-a9b8-9f563de967a1`, in a draft Unit 2 scope. There are **three retained publisher candidates plus one registered owner-supplied original recording**. The eleven additive rows create no skills, scored questions, task sets, approvals, policies or learner activation. All seven Unit 2 release gates remain pending. Human listening review and authenticated playback are still open; the current picker requires an actual scoped question. [Registration evidence and next step](english-7-unit-02-audio-registration.md).

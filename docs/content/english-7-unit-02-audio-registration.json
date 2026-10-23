@@ -1,0 +1,162 @@
+{
+  "schemaVersion": "haiedu-english-audio-registration-v1",
+  "checkpoint": "16.1C.27B",
+  "reviewedSourceCommit": "cd406a356fb2b02f6c0dde76826804e29ac09389",
+  "recordedAt": "2026-10-23T10:32:08.742594+00:00",
+  "ownerIntegrationReference": "docs/evidence/english-7-unit-02-audio-owner-integration-20261023.json#2bf2554d47fa691c0a71763fa7c19dac51c1a061bd2afc231589f5ee26e292a0",
+  "scope": "One original audio plus a draft Unit 2 registration scope; no questions, skills, task sets, approvals, policies or learner activation.",
+  "unit": {
+    "id": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "subject_program_id": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "code": "ENG7-U02",
+    "title_hy": "Իմ հետաքրքրությունները․ ես սիրում եմ երաժշտություն լսել",
+    "title_en": "My Interests — I Like Listening to Music",
+    "sequence_order": 2,
+    "status": "draft"
+  },
+  "release": {
+    "id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "release_key": "english7_u02_review_r1",
+    "subject_program_id": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "release_number": 2,
+    "version_label": "English Grade 7 Unit 2 — draft audio review scope",
+    "status": "draft",
+    "provenance_quality": "exact",
+    "reconciliation_id": null,
+    "predecessor_release_id": null,
+    "source_snapshot": {
+      "schemaVersion": "haiedu-draft-audio-scope-v1",
+      "checkpoint": "16.1C.27B",
+      "reviewedSourceCommit": "cd406a356fb2b02f6c0dde76826804e29ac09389",
+      "preparation": "docs/english-7-unit-02-preparation.md",
+      "replacement": "docs/content/english-7-unit-02-music-replacement.json#ENG7-U02-ACT02-REPLACEMENT",
+      "ownerIntegrationReference": "docs/evidence/english-7-unit-02-audio-owner-integration-20261023.json#2bf2554d47fa691c0a71763fa7c19dac51c1a061bd2afc231589f5ee26e292a0",
+      "scope": "Unit 2 draft audio registration only; source activity 2, pp.29–31; optional Practice/Chapter Review candidate.",
+      "wholeBankProposalPending": true,
+      "bankBudgetAccepted": false,
+      "learnerActivationAuthorized": false,
+      "unit1ReleaseUnchanged": true,
+      "supersedesUnit1": false
+    },
+    "content_fingerprint": "8aa91f1e23c73cffcc754c910c7f4d34d6a7fe469323a50fa8a0cd86da52e7c1",
+    "notes": "C27B additive draft Unit 2 audio scope. No scored items, assessment policy or learner activation; all seven release gates pending. Independent scope does not supersede the Unit 1 pilot."
+  },
+  "releaseUnit": {
+    "curriculum_release_id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unit_id": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "unit_code_snapshot": "ENG7-U02",
+    "title_hy_snapshot": "Իմ հետաքրքրությունները․ ես սիրում եմ երաժշտություն լսել",
+    "title_en_snapshot": "My Interests — I Like Listening to Music",
+    "sequence_order_snapshot": 2
+  },
+  "gateChecks": [
+    {
+      "curriculum_release_id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "gate_code": "official_programme_identified",
+      "status": "pending",
+      "evidence": {
+        "checkpoint": "16.1C.27B",
+        "scope": "Draft audio registration only; this row does not certify the gate."
+      },
+      "notes": "Pending Unit 2 reconciliation, whole-bank proposal, authoring and applicable review/release process."
+    },
+    {
+      "curriculum_release_id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "gate_code": "normative_sources_registered",
+      "status": "pending",
+      "evidence": {
+        "checkpoint": "16.1C.27B",
+        "scope": "Draft audio registration only; this row does not certify the gate."
+      },
+      "notes": "Pending Unit 2 reconciliation, whole-bank proposal, authoring and applicable review/release process."
+    },
+    {
+      "curriculum_release_id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "gate_code": "outcomes_reconciled",
+      "status": "pending",
+      "evidence": {
+        "checkpoint": "16.1C.27B",
+        "scope": "Draft audio registration only; this row does not certify the gate."
+      },
+      "notes": "Pending Unit 2 reconciliation, whole-bank proposal, authoring and applicable review/release process."
+    },
+    {
+      "curriculum_release_id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "gate_code": "skills_mapped",
+      "status": "pending",
+      "evidence": {
+        "checkpoint": "16.1C.27B",
+        "scope": "Draft audio registration only; this row does not certify the gate."
+      },
+      "notes": "Pending Unit 2 reconciliation, whole-bank proposal, authoring and applicable review/release process."
+    },
+    {
+      "curriculum_release_id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "gate_code": "assessment_scope_bound",
+      "status": "pending",
+      "evidence": {
+        "checkpoint": "16.1C.27B",
+        "scope": "Draft audio registration only; this row does not certify the gate."
+      },
+      "notes": "Pending Unit 2 reconciliation, whole-bank proposal, authoring and applicable review/release process."
+    },
+    {
+      "curriculum_release_id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "gate_code": "content_qa_passed",
+      "status": "pending",
+      "evidence": {
+        "checkpoint": "16.1C.27B",
+        "scope": "Draft audio registration only; this row does not certify the gate."
+      },
+      "notes": "Pending Unit 2 reconciliation, whole-bank proposal, authoring and applicable review/release process."
+    },
+    {
+      "curriculum_release_id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "gate_code": "external_sme_approved",
+      "status": "pending",
+      "evidence": {
+        "checkpoint": "16.1C.27B",
+        "scope": "Draft audio registration only; this row does not certify the gate."
+      },
+      "notes": "Pending Unit 2 reconciliation, whole-bank proposal, authoring and applicable review/release process."
+    }
+  ],
+  "audioVersion": {
+    "id": "641de808-3b15-59e0-b194-fd8e7ff502ed",
+    "curriculum_release_id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unit_id": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "source_family_id": "b7143aa4-9075-57b5-a9b8-9f563de967a1",
+    "locale": "en",
+    "title": "One Song, Two Versions",
+    "bucket_id": "learning-audio",
+    "object_path": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507.mp3",
+    "sha256": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507",
+    "mime_type": "audio/mpeg",
+    "byte_length": 768845,
+    "duration_ms": 46994,
+    "source_reference": "docs/content/english-7-unit-02-music-replacement.json#ENG7-U02-ACT02-REPLACEMENT; original fictional Maya–Leo dialogue; exact script sha256 e88870089724b78006f8d079d73840198daea1b575e9b3ed968ea9a908e9c036",
+    "permission_reference": "docs/evidence/english-7-unit-02-audio-owner-integration-20261023.json#2bf2554d47fa691c0a71763fa7c19dac51c1a061bd2afc231589f5ee26e292a0; owner-supplied original recording authorized for bounded private Unit 2 integration",
+    "listening_review_reference": "docs/evidence/english-7-unit-02-audio-owner-integration-20261023.json#2bf2554d47fa691c0a71763fa7c19dac51c1a061bd2afc231589f5ee26e292a0; owner supplied and confirmed upload for private integration; automated full script/illustrative-answer alignment in docs/evidence/english-7-unit-02-replacement-audio-20261023.json; no independent human audition, speaker distinction or pace acceptance claimed",
+    "reviewed_by": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+    "reviewed_at": "2026-10-23T10:32:08.742594+00:00"
+  },
+  "sourceFamilyKey": "eng7-original-u02-one-song-two-versions",
+  "uuidConvention": "UUIDv5 URL namespace; https://www.haiedu.am/eng7-u02/<entity-key>",
+  "expectedAdditions": {
+    "units": 1,
+    "curriculum_releases": 1,
+    "curriculum_release_units": 1,
+    "curriculum_release_gate_checks": 7,
+    "learning_audio_versions": 1
+  },
+  "limits": {
+    "independentHumanAudition": false,
+    "speakerDistinctionAccepted": false,
+    "paceAccepted": false,
+    "ordinaryQuestionApproval": false,
+    "authenticatedPlayback": false,
+    "questionBudgetAccepted": false,
+    "learnerRelease": false,
+    "paceObservation": "172.36 words/minute versus suggested 120–145; review observation, not automatic QA failure."
+  }
+}

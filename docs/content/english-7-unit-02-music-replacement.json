@@ -1,20 +1,21 @@
 {
   "schemaVersion": "haiedu-english-optional-audio-replacement-v1",
-  "checkpoint": "16.1C.27A",
+  "checkpoint": "16.1C.27B",
   "date": "2026-10-23",
   "timezone": "Asia/Yerevan",
   "version": 1,
   "id": "ENG7-U02-ACT02-REPLACEMENT",
   "title": "One Song, Two Versions",
   "author": "Codex automated author; one primary agent",
-  "status": "owner-recording-received-technical-script-match-unregistered",
+  "status": "original-audio-registered-in-draft-unit-scope",
   "ownerDecision": {
     "source": "John, current conversation, 2026-10-23",
     "decision": "Exclude english7-u02-do-re-mi-delivery-review.mp3 and replace the song with something more suitable for Grade 7.",
     "excludesOriginalAndDerivative": true,
     "replacementDirectionAuthorized": true,
     "exactReplacementApproved": false,
-    "recordingSuppliedForReplacement": true
+    "recordingSuppliedForReplacement": true,
+    "privateIntegrationAuthorized": true
   },
   "replaces": {
     "bookUnit": 2,
@@ -97,7 +98,7 @@
   "wordCountConvention": "Unicode word tokens; internal straight/curly apostrophe contractions count as one; labels excluded",
   "recording": {
     "exists": true,
-    "audioAssetVersionId": null,
+    "audioAssetVersionId": "641de808-3b15-59e0-b194-fd8e7ff502ed",
     "speakers": [
       "Maya",
       "Leo"
@@ -121,7 +122,11 @@
     "normalizedScriptMatch": true,
     "actualWholeFileWordsPerMinute": 172.36,
     "paceReview": "172.36 wpm exceeds suggested 120–145; review observation, not automatic QA failure; original unchanged",
-    "registered": false
+    "registered": true,
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "sourceFamilyId": "b7143aa4-9075-57b5-a9b8-9f563de967a1",
+    "registrationEvidence": "docs/evidence/english-7-unit-02-audio-registration-20261023.json"
   },
   "illustrativeChecks": [
     {
@@ -175,12 +180,12 @@
     "exactScriptReview": "recording follows the draft; human approval is not inferred from file submission",
     "recording": "received; full decode and normalized script comparison passed",
     "wholeBankScoredItemComparison": "pending if converted to scored items",
-    "assetReviewAndRegistration": "pending",
-    "playbackAcceptance": "pending",
+    "assetReviewAndRegistration": "Owner-authorized private immutable registration complete; no independent human audition, speaker-distinction or pace acceptance inferred.",
+    "playbackAcceptance": "pending actual scoped question/skill attachment and authenticated playback",
     "questionBudgetAccepted": false,
     "newMasteryGate": false,
     "speaking": "classroom-assessed",
     "listeningQuality": "pending; includes speaker distinction and pace"
   },
-  "productionWrites": 0
+  "productionWrites": 11
 }

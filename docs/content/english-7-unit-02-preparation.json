@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.27A",
+  "checkpoint": "16.1C.27B",
   "date": "2026-10-23",
   "timezone": "Asia/Yerevan",
-  "status": "source map retained; original replacement recording received and technically verified; unregistered; no accepted bank budget or learner release",
+  "status": "source map retained; replacement privately registered in draft Unit 2 scope; no accepted bank budget or learner release",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -381,7 +381,7 @@
       "sourceUrl": "https://zangak.am/mediafiles/english7-2023/lLXsq/Soundtrack%204.mp3",
       "decision": "exclude-from-delivery-owner-decision",
       "plannedUse": "excluded",
-      "rationale": "Owner rejects this song for the intended Grade 7 audience; original and delivery copy excluded. One Song, Two Versions is drafted at activity 2, recording supplied under C27A, awaiting listening review and registration.",
+      "rationale": "Owner rejects this song for the intended Grade 7 audience; original and delivery copy excluded. One Song, Two Versions replaces activity 2; recording supplied under C27A and privately registered in a draft Unit 2 scope under C27B. Human listening review and scoped playback remain open.",
       "sourceFamilyCandidate": "eng7-book-u02-do-re-mi",
       "sourceFamilyReviewed": false,
       "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
@@ -561,8 +561,8 @@
       "mastery": null
     },
     "newQuestionsAuthored": 0,
-    "productionWrites": 0,
-    "assetsRegistered": 0,
+    "productionWrites": 11,
+    "assetsRegistered": 1,
     "sourcesRegistered": 0,
     "newHumanApprovals": 0,
     "newPoliciesBound": 0,
@@ -575,18 +575,24 @@
     "originalReplacementScriptsAuthored": 1,
     "illustrativeUnscoredPromptsAuthored": 5,
     "ownerSuppliedReplacementRecordings": 1,
-    "replacementTechnicalChecksPassed": true
+    "replacementTechnicalChecksPassed": true,
+    "draftUnitScopesRegistered": 1,
+    "draftReleaseScopesRegistered": 1,
+    "pendingReleaseGates": 7
   },
-  "next": "Review exact supplied recording, upload/register through existing private-asset controls, and continue full applicable-bank comparison and the bounded Unit 2 bank/assessment proposal.",
+  "next": "Complete the full applicable current/history-bank comparison and bounded Unit 2 bank/assessment proposal before scored authoring; human listening review and authenticated playback follow actual question/skill attachment.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
       "path": "docs/content/english-7-unit-02-music-replacement.json",
-      "status": "owner-recording-received-technical-script-match-unregistered",
+      "status": "original-audio-registered-in-draft-unit-scope",
       "sourceFamilyCandidate": "eng7-original-u02-one-song-two-versions",
       "recordingExists": true,
       "recordingSha256": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507",
-      "technicalEvidence": "docs/evidence/english-7-unit-02-replacement-audio-20261023.json"
+      "technicalEvidence": "docs/evidence/english-7-unit-02-replacement-audio-20261023.json",
+      "audioAssetVersionId": "641de808-3b15-59e0-b194-fd8e7ff502ed",
+      "sourceFamilyId": "b7143aa4-9075-57b5-a9b8-9f563de967a1",
+      "registrationEvidence": "docs/evidence/english-7-unit-02-audio-registration-20261023.json"
     }
   ],
   "audioPlanCounts": {
@@ -595,6 +601,14 @@
     "excludedPublisherFiles": 1,
     "unrecordedOriginalReplacements": 0,
     "plannedActivitySources": 4,
-    "ownerSuppliedOriginalRecordings": 1
+    "ownerSuppliedOriginalRecordings": 1,
+    "registeredOriginalRecordings": 1
+  },
+  "registrationScope": {
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "status": "draft",
+    "allSevenReleaseGatesPending": true,
+    "supersedesUnit1": false
   }
 }

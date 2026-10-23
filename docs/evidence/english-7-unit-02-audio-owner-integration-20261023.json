@@ -1,0 +1,31 @@
+{
+  "schemaVersion": "haiedu-english-audio-owner-integration-v1",
+  "checkpoint": "16.1C.27B",
+  "recordedAt": "2026-10-23T10:32:08.742594+00:00",
+  "reviewedSourceCommit": "cd406a356fb2b02f6c0dde76826804e29ac09389",
+  "ownerSupplyMessage": "here it is",
+  "ownerUploadConfirmation": "done",
+  "context": "Owner supplied the Unit 2 replacement recording, received the hash-named upload package, then confirmed completion; existing proceed instruction authorizes bounded private integration.",
+  "authorizedIntegration": true,
+  "reviewerProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "verifiedProfile": {
+    "role": "admin",
+    "accountStatus": "active",
+    "protectedOwner": true
+  },
+  "audioSha256": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507",
+  "scriptSha256": "e88870089724b78006f8d079d73840198daea1b575e9b3ed968ea9a908e9c036",
+  "technicalReview": "Reuse C27A full-file decoding, 135-word normalized script match and all five illustrative answer checks; unchanged bytes.",
+  "storageVerification": "Private root object, size, MIME and single-part multipart ETag match supplied bytes; no authenticated HTTP byte download or playback claimed.",
+  "reuseBasis": "Owner-supplied original fictional dialogue and owner-authorized platform integration; no publisher musical recording or third-party provider licence inferred.",
+  "boundaries": {
+    "independentHumanAudition": false,
+    "speakerDistinctionAccepted": false,
+    "paceAccepted": false,
+    "ordinaryQuestionApproval": false,
+    "authenticatedPlayback": false,
+    "questionBudgetAccepted": false,
+    "learnerRelease": false,
+    "paceObservation": "172.36 words/minute versus suggested 120–145; review observation, not automatic QA failure."
+  }
+}
