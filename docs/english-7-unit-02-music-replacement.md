@@ -1,6 +1,6 @@
 # English 7 Unit 2 — replacement for the opening song
 
-**16.1C.27R · 2026-10-23 Asia/Yerevan · Owner exclusion recorded; original replacement drafted, not recorded or registered.**
+**16.1C.27A · 2026-10-23 Asia/Yerevan · Owner exclusion retained; original recording received and technically verified under C27A, not registered.**
 
 John rejected `english7-u02-do-re-mi-delivery-review.mp3` for the intended Grade 7 audience and requested a more suitable replacement. **Exclude Do-Re-Mi in both its original and compressed forms from course delivery.** Its technical preparation is historical evidence only; no further audition, upload or registration is queued. The existing private file is not deleted by this decision.
 
@@ -9,6 +9,8 @@ The proposed replacement is **One Song, Two Versions**: two students choosing mu
 I recommend this scenario because choosing music for a real purpose gives the vocabulary a useful context. Learners compare instruments, speed and personal preference, and follow a practical decision. The subject is accessible without knowledge of a particular artist or commercial song. The two song versions are fictional; the recording is a spoken dialogue and needs no music excerpts.
 
 ## Recording script — draft v1
+
+**Recording received:** the owner-supplied MP3 matches all 135 words under automated normalization and decodes without errors. It lasts 46.99 seconds; pace and speaker distinction remain for human listening review. [Exact file and upload handoff](english-7-unit-02-replacement-audio-handoff.md).
 
 Read the dialogue only. Speaker labels identify voices and are not spoken.
 
@@ -61,4 +63,4 @@ Preliminary comparison includes the Unit 1 `LISTEN-PRACTICE-GROUP-01` source: th
 
 Proposed source family: `eng7-original-u02-one-song-two-versions`. All recordings, transcripts, translations and revisions of this dialogue share its lineage. It has a pedagogical replacement link to textbook activity 2, but is not a derivative of Do-Re-Mi's lyrics or music. Treat it as familiar optional Practice/Chapter Review material, not protected unseen assessment capacity. The transcript here is for staff/recording preparation; it does not change learner transcript-delivery rules.
 
-Three Unit 2 publisher tracks remain candidates: The Power of Music, the abilities dialogue and the busy-day dialogue. This original replacement would be the fourth planned activity source once recorded and accepted. There are currently **three retained publisher files plus one unrecorded replacement script**, not four ready replacement MP3s. Question budgets, full-bank comparison, ordinary content/asset approvals and Unit 2 release gates remain unchanged. No production data, audio asset, reviewer row or runtime is changed.
+Three Unit 2 publisher tracks remain candidates: The Power of Music, the abilities dialogue and the busy-day dialogue. The original replacement is now the fourth supplied activity recording, subject to normal acceptance and registration. There are **three retained publisher files plus one owner-supplied original recording**; this receipt does not register or release them. Question budgets, full-bank comparison, ordinary content/asset approvals and Unit 2 release gates remain unchanged. No production data, audio asset, reviewer row or runtime is changed.

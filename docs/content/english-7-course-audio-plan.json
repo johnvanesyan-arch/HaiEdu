@@ -3,7 +3,7 @@
   "checkpoint": "16.1C.3",
   "date": "2026-10-21",
   "timezone": "Asia/Yerevan",
-  "status": "original publisher inventory retained; track 4 excluded by owner under C27R; original replacement script drafted",
+  "status": "publisher inventory retained; track 4 excluded; owner-supplied original Unit 2 replacement recording technically verified",
   "ownerDirection": "Include all possible and strategically relevant recordings/audio across the English 7 course.",
   "source": {
     "title": "English 7",
@@ -666,9 +666,9 @@
     "scope": "Playable-audio inclusion/integration plan; no recording permission, content approval or assessment-playback policy inferred"
   },
   "currentHandoff": {
-    "checkpoint": "16.1C.27R",
+    "checkpoint": "16.1C.27A",
     "date": "2026-10-23",
-    "status": "Do-Re-Mi excluded; three Unit 2 publisher candidates plus one original replacement script",
+    "status": "Do-Re-Mi excluded; three Unit 2 publisher candidates plus one supplied original recording",
     "originalInventoryAndCountsAreHistorical": true,
     "unit2OriginalHashMatches": 4,
     "unit2Derivative": {
@@ -691,15 +691,18 @@
     "unit2AudioRegistered": 0,
     "unit2AudioLive": 0,
     "unit2QuestionBudgetAccepted": false,
-    "next": "Review/record the original replacement and continue the whole-bank-supported Unit 2 proposal; no Do-Re-Mi audition/upload/registration.",
-    "evidence": "docs/evidence/english-7-unit-02-music-replacement-20261023.json",
+    "next": "Complete supplied replacement listening review and private upload/registration; continue the whole-bank-supported Unit 2 proposal. Do-Re-Mi stays excluded.",
+    "evidence": "docs/evidence/english-7-unit-02-replacement-audio-20261023.json",
     "retainedPublisherCandidatesCourseWide": 19,
     "excludedPublisherTracks": [
       "4"
     ],
     "unit2RetainedPublisherCandidates": 3,
     "unit2ReplacementScript": "ENG7-U02-ACT02-REPLACEMENT",
-    "unit2ReplacementRecordingExists": false
+    "unit2ReplacementRecordingExists": true,
+    "unit2ReplacementRecordingSha256": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507",
+    "unit2ReplacementTechnicallyVerified": true,
+    "unit2ReplacementHumanListeningApproval": false
   },
   "replacementCandidates": [
     {
@@ -707,7 +710,7 @@
       "unit": 2,
       "activity": 2,
       "path": "docs/content/english-7-unit-02-music-replacement.json",
-      "status": "original-script-draft-unrecorded-unregistered"
+      "status": "owner-recording-received-technical-script-match-unregistered"
     }
   ],
   "historicalNextDeliveryOrderAtC3": [
@@ -720,7 +723,7 @@
   ],
   "nextDeliveryOrder": [
     "Continue the Unit 2 bank/assessment proposal from the C27 source map, with the C27R owner-directed replacement at activity 2.",
-    "Review and record One Song, Two Versions; review the three retained Unit 2 publisher sources and their exact activity alignment. Do-Re-Mi original and derivative are excluded; do not audition, upload or register them.",
+    "Review the supplied One Song, Two Versions recording, including speaker distinction and pace; upload/register the exact accepted file. Review the three retained Unit 2 publisher sources and their activity alignment. Do-Re-Mi original and derivative remain excluded.",
     "Register accepted Unit 2 recordings through existing private-asset controls and verify governed playback when the relevant unit release is authorized.",
     "Continue the remaining publisher queue in textbook order, resolving the p.74/p.75 mappings and Units 5–6 supplementary needs. Reuse completed Unit 1 evidence; do not repeat its approved handoff."
   ]

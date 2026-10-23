@@ -1,19 +1,20 @@
 {
   "schemaVersion": "haiedu-english-optional-audio-replacement-v1",
-  "checkpoint": "16.1C.27R",
+  "checkpoint": "16.1C.27A",
   "date": "2026-10-23",
   "timezone": "Asia/Yerevan",
   "version": 1,
   "id": "ENG7-U02-ACT02-REPLACEMENT",
   "title": "One Song, Two Versions",
   "author": "Codex automated author; one primary agent",
-  "status": "original-script-draft-unrecorded-unregistered",
+  "status": "owner-recording-received-technical-script-match-unregistered",
   "ownerDecision": {
     "source": "John, current conversation, 2026-10-23",
     "decision": "Exclude english7-u02-do-re-mi-delivery-review.mp3 and replace the song with something more suitable for Grade 7.",
     "excludesOriginalAndDerivative": true,
     "replacementDirectionAuthorized": true,
-    "exactReplacementApproved": false
+    "exactReplacementApproved": false,
+    "recordingSuppliedForReplacement": true
   },
   "replaces": {
     "bookUnit": 2,
@@ -95,7 +96,7 @@
   "spokenWordCount": 135,
   "wordCountConvention": "Unicode word tokens; internal straight/curly apostrophe contractions count as one; labels excluded",
   "recording": {
-    "exists": false,
+    "exists": true,
     "audioAssetVersionId": null,
     "speakers": [
       "Maya",
@@ -106,10 +107,21 @@
       120,
       145
     ],
-    "measuredDurationSeconds": null,
+    "measuredDurationSeconds": 46.99425,
     "musicExcerptsRequired": false,
     "voiceCloningRequested": false,
-    "providerSpendAuthorized": false
+    "providerSpendAuthorized": false,
+    "sha256": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507",
+    "byteLength": 768845,
+    "sampleRate": 44100,
+    "channels": 1,
+    "privateStorageObjectName": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507.mp3",
+    "technicalEvidence": "docs/evidence/english-7-unit-02-replacement-audio-20261023.json",
+    "fullDecodePassed": true,
+    "normalizedScriptMatch": true,
+    "actualWholeFileWordsPerMinute": 172.36,
+    "paceReview": "172.36 wpm exceeds suggested 120–145; review observation, not automatic QA failure; original unchanged",
+    "registered": false
   },
   "illustrativeChecks": [
     {
@@ -160,14 +172,15 @@
     "requiredBeforeScoredItemStaging": true
   },
   "gates": {
-    "exactScriptReview": "pending",
-    "recording": "pending",
+    "exactScriptReview": "recording follows the draft; human approval is not inferred from file submission",
+    "recording": "received; full decode and normalized script comparison passed",
     "wholeBankScoredItemComparison": "pending if converted to scored items",
     "assetReviewAndRegistration": "pending",
     "playbackAcceptance": "pending",
     "questionBudgetAccepted": false,
     "newMasteryGate": false,
-    "speaking": "classroom-assessed"
+    "speaking": "classroom-assessed",
+    "listeningQuality": "pending; includes speaker distinction and pace"
   },
   "productionWrites": 0
 }

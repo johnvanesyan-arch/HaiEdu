@@ -1,6 +1,8 @@
 # Learning API contract
 
-**16.1C.27R:** The owner excludes Do-Re-Mi from delivery. Its replacement is an unrecorded source draft; no runtime/API, byte limit, asset registration or playback rule changes. [Replacement and scope](english-7-unit-02-music-replacement.md).
+**16.1C.27A:** The supplied Unit 2 replacement MP3 fits existing audio limits and passes decode/script checks. No API/runtime, playback rule, registration or release changes. [Audio handoff](english-7-unit-02-replacement-audio-handoff.md).
+
+**Historical 16.1C.27R:** The owner excludes Do-Re-Mi from delivery. Its replacement is an unrecorded source draft; no runtime/API, byte limit, asset registration or playback rule changes. [Replacement and scope](english-7-unit-02-music-replacement.md).
 
 **Historical 16.1C.27:** Unit 2 source/activity/audio preparation changes no endpoint, schema, runtime bundle, scoring policy or asset registration. The full-length Do-Re-Mi candidate fits the existing 8 MiB contract; no limit is raised. Unit 1 C26 acceptance is reused. [Prepared scope and evidence](english-7-unit-02-preparation.md).
 

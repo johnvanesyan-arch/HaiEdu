@@ -1,0 +1,232 @@
+{
+  "schemaVersion": "haiedu-english-audio-receipt-v1",
+  "checkpoint": "16.1C.27A",
+  "date": "2026-10-23",
+  "timezone": "Asia/Yerevan",
+  "baselineCommit": "b46bf69c31a2aae01b17b72d939dbbafeac49bca",
+  "sourceId": "ENG7-U02-ACT02-REPLACEMENT",
+  "sourceFamilyCandidate": "eng7-original-u02-one-song-two-versions",
+  "ownerSupply": {
+    "message": "here it is",
+    "recordingSuppliedForReplacement": true,
+    "humanListeningApprovalInferred": false,
+    "inAppApprovalInferred": false
+  },
+  "file": {
+    "uploadedName": "eng7-u02-one-song-two-versions-v1.mp3.mp3",
+    "deliveryName": "eng7-u02-one-song-two-versions-v1.mp3",
+    "privateStorageObjectName": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507.mp3",
+    "sha256": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507",
+    "md5": "6b750499a680316bdd71f7fd4ac4f425",
+    "bytes": 768845,
+    "durationSeconds": 46.99425,
+    "codec": "mp3",
+    "sampleRate": 44100,
+    "channels": 1,
+    "audioBytesChanged": false
+  },
+  "technical": {
+    "fullDecodePassed": true,
+    "decodeErrors": [],
+    "within8MiB": true,
+    "withinTenMinutes": true
+  },
+  "alignment": {
+    "method": "faster-whisper base.en CPU int8; local cached model; no prompt supplied",
+    "normalization": "English word tokens, lowercase, punctuation omitted; internal apostrophe contractions kept; no word substitutions",
+    "expectedWords": 135,
+    "recognizedWords": 135,
+    "fullSequenceMatches": true,
+    "scriptSha256": "e88870089724b78006f8d079d73840198daea1b575e9b3ed968ea9a908e9c036",
+    "transcript": "Which music do you want for our class video? There are two versions of the same song. The first starts with loud drums and an electric guitar. It's quite fast. That sounds good for the basketball scenes. What does the second version sound like? It's slower. There's a piano and a guitar, but no drums. The singer's voice is clearer too. I prefer that version for listening at home. But our video starts with a basketball game. So the faster one could work better. What about the next part when we explain our art project? People need to hear us speaking. We can turn the music down for that part. So the first version for the opening, then lower the volume when we speak? Yes. Let's try it and check that every sentence is clear.",
+    "segments": [
+      {
+        "start": 0.0,
+        "end": 2.8,
+        "text": " Which music do you want for our class video?",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 2.8,
+        "end": 5.36,
+        "text": " There are two versions of the same song.",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 5.36,
+        "end": 9.12,
+        "text": " The first starts with loud drums and an electric guitar.",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 9.12,
+        "end": 10.4,
+        "text": " It's quite fast.",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 10.4,
+        "end": 12.48,
+        "text": " That sounds good for the basketball scenes.",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 13.2,
+        "end": 15.6,
+        "text": " What does the second version sound like?",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 15.6,
+        "end": 16.8,
+        "text": " It's slower.",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 16.8,
+        "end": 20.0,
+        "text": " There's a piano and a guitar, but no drums.",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 20.0,
+        "end": 22.16,
+        "text": " The singer's voice is clearer too.",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 22.16,
+        "end": 24.56,
+        "text": " I prefer that version for listening at home.",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 25.2,
+        "end": 28.08,
+        "text": " But our video starts with a basketball game.",
+        "avg_logprob": -0.1073426843708397,
+        "no_speech_prob": 0.06982246786355972
+      },
+      {
+        "start": 28.08,
+        "end": 31.0,
+        "text": " So the faster one could work better.",
+        "avg_logprob": -0.1588817091549144,
+        "no_speech_prob": 0.005075682420283556
+      },
+      {
+        "start": 31.0,
+        "end": 34.48,
+        "text": " What about the next part when we explain our art project?",
+        "avg_logprob": -0.1588817091549144,
+        "no_speech_prob": 0.005075682420283556
+      },
+      {
+        "start": 34.48,
+        "end": 36.24,
+        "text": " People need to hear us speaking.",
+        "avg_logprob": -0.1588817091549144,
+        "no_speech_prob": 0.005075682420283556
+      },
+      {
+        "start": 36.24,
+        "end": 38.52,
+        "text": " We can turn the music down for that part.",
+        "avg_logprob": -0.1588817091549144,
+        "no_speech_prob": 0.005075682420283556
+      },
+      {
+        "start": 38.52,
+        "end": 40.96,
+        "text": " So the first version for the opening,",
+        "avg_logprob": -0.1588817091549144,
+        "no_speech_prob": 0.005075682420283556
+      },
+      {
+        "start": 40.96,
+        "end": 43.0,
+        "text": " then lower the volume when we speak?",
+        "avg_logprob": -0.1588817091549144,
+        "no_speech_prob": 0.005075682420283556
+      },
+      {
+        "start": 43.0,
+        "end": 43.96,
+        "text": " Yes.",
+        "avg_logprob": -0.1588817091549144,
+        "no_speech_prob": 0.005075682420283556
+      },
+      {
+        "start": 43.96,
+        "end": 47.06,
+        "text": " Let's try it and check that every sentence is clear.",
+        "avg_logprob": -0.1588817091549144,
+        "no_speech_prob": 0.005075682420283556
+      }
+    ],
+    "allFiveIllustrativeAnswersSupported": true,
+    "independentHumanAudition": false,
+    "speakerDistinctionVerified": false
+  },
+  "pace": {
+    "wholeFileWordsPerMinute": 172.36,
+    "suggestedRange": [
+      120,
+      145
+    ],
+    "withinSuggestedRange": false,
+    "status": "review observation, not an automatic file/QA failure",
+    "recommendation": "Review pace for intended learners; if the brief is retained, prefer a slower delivery of roughly 56–68 seconds plus natural pauses. Do not change playback policy or silently transform the supplied audio."
+  },
+  "handoff": {
+    "privateStoragePresence": "not checked by this local receipt",
+    "assetRegistered": false,
+    "audioAssetVersionId": null,
+    "authenticatedPlaybackVerified": false,
+    "uploadOperationPerformed": false,
+    "sourceReview": "pending",
+    "questionBudgetAccepted": false,
+    "learnerReleaseAuthorized": false,
+    "next": "Exact audio acceptance and private upload/registration; whole-bank-supported Unit 2 proposal remains the next content slice."
+  },
+  "preservation": {
+    "scriptChanged": false,
+    "illustrativePromptsChanged": false,
+    "productionWrites": 0,
+    "runtimeChanges": 0,
+    "unit1ApprovalsReused": true,
+    "doReMiStillExcluded": true
+  },
+  "artifacts": {
+    "docs/content/english-7-unit-02-music-replacement.json": {
+      "sha256": "9ae4bf30666f55d14c6aa7dddd7bda4f6e36d6b9f5b370a34d9d68d983f1c0d4"
+    },
+    "docs/english-7-unit-02-replacement-audio-handoff.md": {
+      "sha256": "71c807818806ff9f39c7f1651564a3d9397435c4125cc3f8936efed0cb4cd160"
+    }
+  },
+  "historicalEvidenceReused": [
+    "docs/evidence/english-7-unit-02-music-replacement-20261023.json",
+    "docs/evidence/english-7-unit-02-preparation-20261023.json",
+    "docs/evidence/english-7-unit-01-learner-verification-20261023.json"
+  ],
+  "closure": "Merge aligned documentation, verify source, then synchronize Notion 4.55; required CI remains unchanged.",
+  "uploadPackage": {
+    "file": "HaiEdu_Unit2_Replacement_Audio_Upload.zip",
+    "bytes": 769774,
+    "sha256": "7cf6935af1b64ce69df3d55a47ca26300d5911f3a75ec82bdb57238cc74450f2",
+    "fileCount": 2,
+    "audioBytesUnchanged": true,
+    "savedForOwner": true
+  }
+}
