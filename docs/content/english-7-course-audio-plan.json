@@ -3,7 +3,7 @@
   "checkpoint": "16.1C.3",
   "date": "2026-10-21",
   "timezone": "Asia/Yerevan",
-  "status": "inventory and inclusion direction; no asset activation",
+  "status": "original publisher inventory retained; track 4 excluded by owner under C27R; original replacement script drafted",
   "ownerDirection": "Include all possible and strategically relevant recordings/audio across the English 7 course.",
   "source": {
     "title": "English 7",
@@ -238,9 +238,9 @@
       "qr": "lLXsq",
       "publisherPage": "https://zangak.am/mediafiles/?lLXsq",
       "sourceUrl": "https://zangak.am/mediafiles/english7-2023/lLXsq/Soundtrack%204.mp3",
-      "decision": "retain-for-playable-integration",
-      "plannedUse": "support-enrichment",
-      "rationale": "Music vocabulary/theme; full song or a reviewed purposeful excerpt. Original exceeds asset limit.",
+      "decision": "exclude-from-delivery-owner-decision",
+      "plannedUse": "excluded",
+      "rationale": "Owner judges Do-Re-Mi unsuitable for this Grade 7 course and requests a more suitable replacement.",
       "sourceFamilyCandidate": "eng7-book-u02-do-re-mi",
       "sourceFamilyReviewed": false,
       "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
@@ -249,11 +249,13 @@
       "sha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
       "technicalEvidence": "new",
       "fitsCurrentFormatByteDurationLimits": false,
-      "deliveryPreparation": "reviewed derivative required",
+      "deliveryPreparation": "cancelled-owner-exclusion",
       "permissionStatus": "unverified",
-      "listeningReviewStatus": "pending",
+      "listeningReviewStatus": "not-applicable-excluded",
       "registered": false,
-      "live": false
+      "live": false,
+      "deliveryEligible": false,
+      "replacementId": "ENG7-U02-ACT02-REPLACEMENT"
     },
     {
       "id": "ENG7-AUDIO-5",
@@ -657,14 +659,6 @@
       "status": "supplementary needs unmapped"
     }
   ],
-  "nextDeliveryOrder": [
-    "Audition and obtain genuine permission/delivery evidence for the Unit 1 three-speaker family; retain the song and poem as enrichment candidates.",
-    "Resolve exact speaker/combined-source design and author reviewed source-linked tasks without altering existing verified drafts silently.",
-    "Register immutable private assets and sources through governed controls; verify authenticated desktop/mobile playback on the accepted Unit 1 release.",
-    "Integrate the remaining textbook media in unit/activity order; resolve the p.74/p.75 mappings and the oversized song before its unit ships.",
-    "Map Units 5–6 listening outcomes and source gaps; use suitable licensed/original recordings where needed.",
-    "Provide separately reviewed protected assessment material and adopt/implement assessed-playback conditions before Diagnostic/Mastery listening."
-  ],
   "ownerAcceptance": {
     "acceptedBy": "John",
     "date": "2026-10-21",
@@ -672,9 +666,9 @@
     "scope": "Playable-audio inclusion/integration plan; no recording permission, content approval or assessment-playback policy inferred"
   },
   "currentHandoff": {
-    "checkpoint": "16.1C.27",
+    "checkpoint": "16.1C.27R",
     "date": "2026-10-23",
-    "status": "Unit 1 C26 verified; Unit 2 source/activity/audio prepared",
+    "status": "Do-Re-Mi excluded; three Unit 2 publisher candidates plus one original replacement script",
     "originalInventoryAndCountsAreHistorical": true,
     "unit2OriginalHashMatches": 4,
     "unit2Derivative": {
@@ -690,13 +684,44 @@
       "decodeErrors": 0,
       "fullDurationWithin100ms": true,
       "fits8MiB": true,
-      "audition": "pending",
-      "registration": "not performed"
+      "audition": "cancelled-owner-exclusion",
+      "registration": "not performed",
+      "status": "rejected-by-owner-do-not-upload-or-register"
     },
     "unit2AudioRegistered": 0,
     "unit2AudioLive": 0,
     "unit2QuestionBudgetAccepted": false,
-    "next": "Whole-bank-supported Unit 2 proposal; audition/asset review and registration remain open",
-    "evidence": "docs/evidence/english-7-unit-02-preparation-20261023.json"
-  }
+    "next": "Review/record the original replacement and continue the whole-bank-supported Unit 2 proposal; no Do-Re-Mi audition/upload/registration.",
+    "evidence": "docs/evidence/english-7-unit-02-music-replacement-20261023.json",
+    "retainedPublisherCandidatesCourseWide": 19,
+    "excludedPublisherTracks": [
+      "4"
+    ],
+    "unit2RetainedPublisherCandidates": 3,
+    "unit2ReplacementScript": "ENG7-U02-ACT02-REPLACEMENT",
+    "unit2ReplacementRecordingExists": false
+  },
+  "replacementCandidates": [
+    {
+      "id": "ENG7-U02-ACT02-REPLACEMENT",
+      "unit": 2,
+      "activity": 2,
+      "path": "docs/content/english-7-unit-02-music-replacement.json",
+      "status": "original-script-draft-unrecorded-unregistered"
+    }
+  ],
+  "historicalNextDeliveryOrderAtC3": [
+    "Audition and obtain genuine permission/delivery evidence for the Unit 1 three-speaker family; retain the song and poem as enrichment candidates.",
+    "Resolve exact speaker/combined-source design and author reviewed source-linked tasks without altering existing verified drafts silently.",
+    "Register immutable private assets and sources through governed controls; verify authenticated desktop/mobile playback on the accepted Unit 1 release.",
+    "Integrate the remaining textbook media in unit/activity order; resolve the p.74/p.75 mappings and the oversized song before its unit ships.",
+    "Map Units 5–6 listening outcomes and source gaps; use suitable licensed/original recordings where needed.",
+    "Provide separately reviewed protected assessment material and adopt/implement assessed-playback conditions before Diagnostic/Mastery listening."
+  ],
+  "nextDeliveryOrder": [
+    "Continue the Unit 2 bank/assessment proposal from the C27 source map, with the C27R owner-directed replacement at activity 2.",
+    "Review and record One Song, Two Versions; review the three retained Unit 2 publisher sources and their exact activity alignment. Do-Re-Mi original and derivative are excluded; do not audition, upload or register them.",
+    "Register accepted Unit 2 recordings through existing private-asset controls and verify governed playback when the relevant unit release is authorized.",
+    "Continue the remaining publisher queue in textbook order, resolving the p.74/p.75 mappings and Units 5–6 supplementary needs. Reuse completed Unit 1 evidence; do not repeat its approved handoff."
+  ]
 }

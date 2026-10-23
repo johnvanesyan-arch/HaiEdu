@@ -1,0 +1,173 @@
+{
+  "schemaVersion": "haiedu-english-optional-audio-replacement-v1",
+  "checkpoint": "16.1C.27R",
+  "date": "2026-10-23",
+  "timezone": "Asia/Yerevan",
+  "version": 1,
+  "id": "ENG7-U02-ACT02-REPLACEMENT",
+  "title": "One Song, Two Versions",
+  "author": "Codex automated author; one primary agent",
+  "status": "original-script-draft-unrecorded-unregistered",
+  "ownerDecision": {
+    "source": "John, current conversation, 2026-10-23",
+    "decision": "Exclude english7-u02-do-re-mi-delivery-review.mp3 and replace the song with something more suitable for Grade 7.",
+    "excludesOriginalAndDerivative": true,
+    "replacementDirectionAuthorized": true,
+    "exactReplacementApproved": false
+  },
+  "replaces": {
+    "bookUnit": 2,
+    "pages": [
+      29,
+      30,
+      31
+    ],
+    "activity": 2,
+    "publisherTrack": "4",
+    "publisherSourceId": "ENG7-AUDIO-4",
+    "originalSha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
+    "rejectedDeliveryFile": "english7-u02-do-re-mi-delivery-review.mp3",
+    "rejectedDeliverySha256": "7754742da22a14288f036c36ed8a59f5cb5219d36ae356b5a27c40b591efaa23",
+    "retainHistoricalEvidence": true,
+    "existingPrivateFileDeleted": false
+  },
+  "sourceFamilyCandidate": "eng7-original-u02-one-song-two-versions",
+  "pedagogicalReplacementNotMusicalDerivative": true,
+  "purpose": [
+    "optional-practice",
+    "chapter-review"
+  ],
+  "protectedUnseenCapacity": false,
+  "textbookAlignment": {
+    "vocabularyPages": [
+      28,
+      29,
+      33,
+      38
+    ],
+    "planningTargets": [
+      "ENG7-U02-S01",
+      "ENG7-U02-S02",
+      "ENG7-U02-S12",
+      "ENG7-U02-S13"
+    ],
+    "position": "after the opening instruments/music word bank, at activity 2",
+    "noLaterGrammarRequired": true
+  },
+  "script": [
+    {
+      "speaker": "Maya",
+      "spoken": "Which music do you want for our class video?"
+    },
+    {
+      "speaker": "Leo",
+      "spoken": "There are two versions of the same song. The first starts with loud drums and an electric guitar. It's quite fast."
+    },
+    {
+      "speaker": "Maya",
+      "spoken": "That sounds good for the basketball scenes. What does the second version sound like?"
+    },
+    {
+      "speaker": "Leo",
+      "spoken": "It's slower. There's a piano and a guitar, but no drums. The singer's voice is clearer too."
+    },
+    {
+      "speaker": "Maya",
+      "spoken": "I prefer that version for listening at home. But our video starts with a basketball game, so the faster one could work better."
+    },
+    {
+      "speaker": "Leo",
+      "spoken": "What about the next part, when we explain our art project? People need to hear us speaking."
+    },
+    {
+      "speaker": "Maya",
+      "spoken": "We can turn the music down for that part."
+    },
+    {
+      "speaker": "Leo",
+      "spoken": "So, the first version for the opening, then lower the volume when we speak?"
+    },
+    {
+      "speaker": "Maya",
+      "spoken": "Yes. Let's try it and check that every sentence is clear."
+    }
+  ],
+  "spokenWordCount": 135,
+  "wordCountConvention": "Unicode word tokens; internal straight/curly apostrophe contractions count as one; labels excluded",
+  "recording": {
+    "exists": false,
+    "audioAssetVersionId": null,
+    "speakers": [
+      "Maya",
+      "Leo"
+    ],
+    "suggestedWorkingFilename": "eng7-u02-one-song-two-versions-v1.mp3",
+    "paceWordsPerMinute": [
+      120,
+      145
+    ],
+    "measuredDurationSeconds": null,
+    "musicExcerptsRequired": false,
+    "voiceCloningRequested": false,
+    "providerSpendAuthorized": false
+  },
+  "illustrativeChecks": [
+    {
+      "prompt": "Why are Maya and Leo choosing music?",
+      "answer": "For their class video.",
+      "supportTurns": [
+        1
+      ]
+    },
+    {
+      "prompt": "Which instruments start the first version?",
+      "answer": "Drums and an electric guitar.",
+      "supportTurns": [
+        2
+      ]
+    },
+    {
+      "prompt": "How is the second version different?",
+      "answer": "Slower; piano and guitar; no drums; clearer singing voice. Final task must state how many details it asks for.",
+      "supportTurns": [
+        4
+      ]
+    },
+    {
+      "prompt": "Which version does Maya prefer for listening at home?",
+      "answer": "The second, slower version.",
+      "supportTurns": [
+        5
+      ]
+    },
+    {
+      "prompt": "What do they decide to do with the music in the video?",
+      "answer": "Use the first version for the opening, then lower its volume when they speak.",
+      "supportTurns": [
+        7,
+        8,
+        9
+      ]
+    }
+  ],
+  "checksDisposition": "Five illustrative unscored prompts for staff lesson review only; no bank IDs, allocations or automatic grading rules.",
+  "optionalResponse": "What music would you choose for a class video, and why?",
+  "comparison": {
+    "preliminarySource": "LISTEN-PRACTICE-GROUP-01 in docs/content/english-7-unit-01-practice-additions.json",
+    "sharedDemands": "Preferences and explicit detail; intentional practice, not claimed independent new reasoning coverage.",
+    "scenarioDifference": "Two-person choice of music for a video, matching versions/volume to purpose; earlier source has three separate clothing preferences for a class photo.",
+    "completeWholeBankReview": false,
+    "requiredBeforeScoredItemStaging": true
+  },
+  "gates": {
+    "exactScriptReview": "pending",
+    "recording": "pending",
+    "wholeBankScoredItemComparison": "pending if converted to scored items",
+    "assetReviewAndRegistration": "pending",
+    "playbackAcceptance": "pending",
+    "questionBudgetAccepted": false,
+    "newMasteryGate": false,
+    "speaking": "classroom-assessed"
+  },
+  "productionWrites": 0
+}

@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.27",
+  "checkpoint": "16.1C.27R",
   "date": "2026-10-23",
   "timezone": "Asia/Yerevan",
-  "status": "source-activity-audio-prepared; no accepted bank budget or learner release",
+  "status": "source map revised: Do-Re-Mi excluded by owner; original replacement script drafted, unrecorded; no accepted bank budget or learner release",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -204,7 +204,7 @@
     {
       "activity": 2,
       "pages": "29–31",
-      "disposition": "Do-Re-Mi playable enrichment at this point in the sequence. Singing/role play stays in class; no singing marks or compulsory lyric recall."
+      "disposition": "Owner-directed replacement at the same activity position: One Song, Two Versions; optional spoken-listening script drafted, recording pending. Do-Re-Mi original and derivative excluded."
     },
     {
       "activity": 3,
@@ -378,9 +378,9 @@
       "qr": "lLXsq",
       "publisherPage": "https://zangak.am/mediafiles/?lLXsq",
       "sourceUrl": "https://zangak.am/mediafiles/english7-2023/lLXsq/Soundtrack%204.mp3",
-      "decision": "retain-for-playable-integration",
-      "plannedUse": "support-enrichment",
-      "rationale": "Music vocabulary/theme; full song or a reviewed purposeful excerpt. Original exceeds asset limit.",
+      "decision": "exclude-from-delivery-owner-decision",
+      "plannedUse": "excluded",
+      "rationale": "Owner rejects this song for the intended Grade 7 audience; original and delivery copy excluded. One Song, Two Versions is drafted at activity 2, awaiting review and recording.",
       "sourceFamilyCandidate": "eng7-book-u02-do-re-mi",
       "sourceFamilyReviewed": false,
       "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
@@ -389,9 +389,9 @@
       "sha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
       "technicalEvidence": "new",
       "fitsCurrentFormatByteDurationLimits": false,
-      "deliveryPreparation": "reviewed derivative required",
+      "deliveryPreparation": "cancelled-owner-exclusion",
       "permissionStatus": "unverified",
-      "listeningReviewStatus": "pending",
+      "listeningReviewStatus": "not-applicable-excluded",
       "registered": false,
       "live": false,
       "originalHashVerifiedAtCheckpoint": "16.1C.27",
@@ -409,9 +409,12 @@
         "decodeErrors": 0,
         "fullDurationWithin100ms": true,
         "fits8MiB": true,
-        "audition": "pending",
-        "registration": "not performed"
-      }
+        "audition": "cancelled-owner-exclusion",
+        "registration": "not performed",
+        "status": "rejected-by-owner-do-not-upload-or-register"
+      },
+      "replacementId": "ENG7-U02-ACT02-REPLACEMENT",
+      "deliveryEligible": false
     },
     {
       "id": "ENG7-AUDIO-5",
@@ -567,7 +570,25 @@
     "unit1BankAuthorizationExtendsToUnit2": false,
     "audioAuditionClaimed": false,
     "browserPlaybackClaimed": false,
-    "scorePolicyAdopted": false
+    "scorePolicyAdopted": false,
+    "originalReplacementScriptsAuthored": 1,
+    "illustrativeUnscoredPromptsAuthored": 5
   },
-  "next": "Whole-skill bank comparison and concrete Unit 2 bank/assessment proposal; source-quality and asset-review work may continue without implying release approval."
+  "next": "Whole-skill bank comparison and concrete Unit 2 bank/assessment proposal; source-quality and asset-review work may continue without implying release approval.",
+  "replacementSources": [
+    {
+      "id": "ENG7-U02-ACT02-REPLACEMENT",
+      "path": "docs/content/english-7-unit-02-music-replacement.json",
+      "status": "original-script-draft-unrecorded-unregistered",
+      "sourceFamilyCandidate": "eng7-original-u02-one-song-two-versions",
+      "recordingExists": false
+    }
+  ],
+  "audioPlanCounts": {
+    "inventoriedPublisherFiles": 4,
+    "retainedPublisherCandidates": 3,
+    "excludedPublisherFiles": 1,
+    "unrecordedOriginalReplacements": 1,
+    "plannedActivitySources": 4
+  }
 }

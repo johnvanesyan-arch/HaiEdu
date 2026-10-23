@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "haiedu-english-audio-replacement-evidence-v1",
+  "checkpoint": "16.1C.27R",
+  "date": "2026-10-23",
+  "timezone": "Asia/Yerevan",
+  "baselineCommit": "ff665a8b0616ffdabc01c1171abdb30b39bf0f94",
+  "author": "Codex; one primary agent",
+  "ownerDecision": {
+    "source": "John, current conversation, 2026-10-23",
+    "decision": "Exclude english7-u02-do-re-mi-delivery-review.mp3 and replace the song with something more suitable for Grade 7.",
+    "excludesOriginalAndDerivative": true,
+    "replacementDirectionAuthorized": true,
+    "exactReplacementApproved": false
+  },
+  "excludedSource": {
+    "bookUnit": 2,
+    "pages": [
+      29,
+      30,
+      31
+    ],
+    "activity": 2,
+    "publisherTrack": "4",
+    "publisherSourceId": "ENG7-AUDIO-4",
+    "originalSha256": "01c40b1e1fcf528b369feda57d8693883f1451973389973cb79eb024b1fdd173",
+    "rejectedDeliveryFile": "english7-u02-do-re-mi-delivery-review.mp3",
+    "rejectedDeliverySha256": "7754742da22a14288f036c36ed8a59f5cb5219d36ae356b5a27c40b591efaa23",
+    "retainHistoricalEvidence": true,
+    "existingPrivateFileDeleted": false
+  },
+  "replacementId": "ENG7-U02-ACT02-REPLACEMENT",
+  "scriptWordCount": 135,
+  "speakerTurns": 9,
+  "illustrativeUnscoredPrompts": 5,
+  "counts": {
+    "publisherInventoryRetained": 20,
+    "publisherDeliveryCandidates": 19,
+    "publisherExclusions": 1,
+    "unit2RetainedPublisherCandidates": 3,
+    "unrecordedReplacementScripts": 1,
+    "unit2PlannedActivitySources": 4,
+    "newRecordedMp3s": 0,
+    "scoredQuestionsAuthored": 0,
+    "productionWrites": 0
+  },
+  "comparison": {
+    "preliminarySource": "LISTEN-PRACTICE-GROUP-01 in docs/content/english-7-unit-01-practice-additions.json",
+    "sharedDemands": "Preferences and explicit detail; intentional practice, not claimed independent new reasoning coverage.",
+    "scenarioDifference": "Two-person choice of music for a video, matching versions/volume to purpose; earlier source has three separate clothing preferences for a class photo.",
+    "completeWholeBankReview": false,
+    "requiredBeforeScoredItemStaging": true
+  },
+  "validation": {
+    "sourceActivityRetained": 2,
+    "unit2ActivitySequence": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25,
+      26,
+      27,
+      28,
+      29,
+      30,
+      31,
+      32,
+      33,
+      34
+    ],
+    "existingAudioHashesPreserved": true,
+    "otherPublisherRecordsUnchanged": true,
+    "scriptTurnAnswerReferencesChecked": true,
+    "newRuntimeTests": "none: source/plan-only change; required CI remains unchanged"
+  },
+  "reusedEvidence": [
+    "docs/evidence/english-7-unit-02-preparation-20261023.json",
+    "docs/evidence/english-7-course-audio-inventory-20261021.json",
+    "docs/evidence/english-7-unit-01-learner-verification-20261023.json"
+  ],
+  "files": {
+    "replacementDocument": {
+      "path": "docs/english-7-unit-02-music-replacement.md",
+      "sha256": "0017e40469f757dbc59d21a34e7d82bf73cd59711441b9259a1827a8d0e93b60"
+    },
+    "replacementManifest": {
+      "path": "docs/content/english-7-unit-02-music-replacement.json",
+      "sha256": "f71d0ca58bcdcc98f2fb0b57b3449c1c4e31ed6101e0cb2adc4580e6fd08a309"
+    }
+  },
+  "notClaimed": [
+    "exact replacement approval",
+    "audio production",
+    "audio audition",
+    "whole-bank comparison completion",
+    "question budget adoption",
+    "asset registration",
+    "learner release"
+  ],
+  "closure": "Merged-source verification and Notion 4.54 synchronization required; prior C27 technical history preserved."
+}

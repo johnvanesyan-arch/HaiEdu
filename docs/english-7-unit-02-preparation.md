@@ -1,10 +1,10 @@
 # English 7 Unit 2 — source, activity and audio preparation
 
-**Sprint 16.1C.27 · 2026-10-23 Asia/Yerevan · Preparation complete; authoring budget and learner release not approved.**
+**Sprint 16.1C.27R · 2026-10-23 Asia/Yerevan · Do-Re-Mi excluded by owner; replacement source drafted. Unit 2 budget and learner release remain unapproved.**
 
 Unit 2 is **My Interests — I Like Listening to Music**, printed/PDF pages **28–53**, corresponding to programme Topic 2, **Երաժշտությունը՝ համամարդկային լեզու**. All **34 numbered activities** retain their order and an explicit disposition. The map proposes fifteen evidence targets: nine core automatic targets, three supporting language targets, one textbook extension and two teacher-reviewed writing targets. These are planning groups, not registered skills, question counts or a replacement lesson sequence.
 
-All four publisher recordings remain in scope: two core-listening candidates and two support/enrichment resources. Their original bytes match the existing technical evidence. A full-length **160 kbps Do-Re-Mi delivery candidate** is prepared and saved privately: **7,001,906 bytes**, below the unchanged 8 MiB limit. It decodes successfully and differs in container duration by only one MP3 frame; no excerpt, time cut or normalization was applied. Listening-quality review and exact asset authorization/registration remain open. No audio or question is made live by this checkpoint.
+John has excluded **Do-Re-Mi**, including the compressed review file, from delivery. Three publisher recordings remain candidates; [**One Song, Two Versions**](english-7-unit-02-music-replacement.md) is the original spoken-listening replacement proposed at activity 2. Its script, recording brief and five illustrative unscored checks are prepared; **no replacement MP3 exists yet**. The four original publisher files remain inventoried for provenance, with track 4 marked excluded. C27’s technical-copy evidence is retained as history, not queued for further review or upload.
 
 [Machine-readable map](content/english-7-unit-02-preparation.json) · [Evidence](evidence/english-7-unit-02-preparation-20261023.json) · [Authoritative status](project-status.md).
 
@@ -66,7 +66,7 @@ The annual English list explicitly includes present/past simple passive, adjecti
 | Activity | Pages | Disposition and authoring requirement |
 | --- | --- | --- |
 | 1 | 28 | Instrument vocabulary. Keep meaningful visual recognition only with reviewed, labelled images/accessibility; text definitions may supply a separate vocabulary task. |
-| 2 | 29–31 | Do-Re-Mi playable enrichment at this point in the sequence. Singing/role play stays in class; no singing marks or compulsory lyric recall. |
+| 2 | 29–31 | Owner-directed replacement: **One Song, Two Versions**, an original two-student conversation about music for a class video. Optional listening at the same lesson position; script drafted, recording pending. Do-Re-Mi original and derivative excluded. |
 | 3 | 32 | S02 hear/listen contrasts; supply tense and meaning context, including the different expression hear of. |
 | 4 | 32 | S01 categories; replace ambiguous odd-one-out prompts with a stated category. Several listed music groups are valid peers. |
 | 5 | 33 | S02 voice expressions; replace the alcohol example and give enough context for a defensible volume choice. |
@@ -106,12 +106,13 @@ Unnumbered word banks, grammar explanations and talking points stay beside their
 
 | Track | Source | Proposed use | Current result and exact next action |
 | --- | --- | --- | --- |
-| 4 | [p.29 ex.2](https://zangak.am/mediafiles/?lLXsq), Do-Re-Mi, 350.04s original | Optional playable enrichment | Original hash unchanged; original 8,401,702 bytes. Full-length delivery candidate 7,001,906 bytes / 350.07s, MP3 44.1 kHz stereo, 160 kbps; fresh complete decode passes. Audition the lossy copy and complete asset-specific reuse review before private registration. |
+| 4 | [p.29 ex.2](https://zangak.am/mediafiles/?lLXsq), Do-Re-Mi | **Excluded by owner** | Both original and compressed copy excluded from delivery; retain technical history only. No audition/upload/registration task remains. |
+| ACT02 replacement | [One Song, Two Versions](english-7-unit-02-music-replacement.md), same activity position | Optional spoken listening | Original script and five illustrative unscored checks drafted. Recording, exact source review and registration pending; no music excerpts required. |
 | 5 | [p.39 ex.16](https://zangak.am/mediafiles/?nwiPc), The Power of Music, 91.32s | Core music-topic Practice listening | Original 1,713,592 bytes fits. Compare actual speech with p.144 script, review clarity and attributed claims before keys. |
 | 6 | [p.39 ex.17](https://zangak.am/mediafiles/?X1280), abilities dialogue, 29.99s | Optional receptive support | Original 720,448 bytes fits. Review actual dialogue/speaker distinction and contextual framing; retain without creating a speaking gate. |
 | 7 | [p.50 ex.29](https://zangak.am/mediafiles/?BjRzf), busy day, 47.05s | Supporting listening/tense practice | Original 1,881,534 bytes fits. Resolve contradictory printed cleaning statements, speaker attribution and completed/not-yet-done details through actual listening. |
 
-The original four hashes were checked against C3 evidence; unchanged availability/decodability evidence is reused rather than rerunning all twenty tracks. Only the newly encoded derivative has a fresh full decode. Hash/duration checks do not establish intelligibility, exact transcript alignment or production playback. Proposed families remain `eng7-book-u02-do-re-mi`, `eng7-book-u02-power-of-music`, `eng7-book-u02-abilities-dialogue` and `eng7-book-u02-busy-day`; the derivative shares track 4's lineage.
+The original four hashes and C27 derivative decode remain historical evidence and are not repeated. Track 4 and its derivative are now excluded. Retained publisher families are `eng7-book-u02-power-of-music`, `eng7-book-u02-abilities-dialogue` and `eng7-book-u02-busy-day`. The original replacement proposes `eng7-original-u02-one-song-two-versions`, linked pedagogically to activity 2; it copies none of the song's lyrics or music. Its own recordings/transcripts/translations share that new lineage. No exact alignment, audition or production playback is claimed for the unrecorded replacement.
 
 These familiar textbook resources do not provide unseen Diagnostic/Mastery capacity. Plan independent, reviewed music-topic reading/listening sources after the Unit 2 bank proposal is accepted. A re-recording, transcript, translation or new voice does not reset exposure. Retain the existing unlimited Practice/reviewer replay and two shared plays per assessed recording when adopting an explicit compatible policy; do not silently bind Unit 1's counts or scoring thresholds to Unit 2.
 
@@ -126,7 +127,7 @@ These familiar textbook resources do not provide unseen Diagnostic/Mastery capac
 | p.50 / script p.145 | Room-cleaning statements conflict without clear separate speaker/context labels. | Printed-source observation only. Exact recording review remains open; no defective recording is asserted. |
 | pp.52–53 | When is not restricted to short events; while is not an automatic command to use a continuous form. | [Cambridge: when](https://dictionary.cambridge.org/grammar/british-grammar/when); source examples themselves include states and habitual actions. Rewrite ambiguous items or accept valid alternatives. |
 
-The authoring pass must separately check natural English, subject/source accuracy, Armenian help text and hint leakage. It must preserve approved Unit 1 content. No corrected passage or learner-facing question is authored/approved in this slice.
+The authoring pass must separately check natural English, subject/source accuracy, Armenian help text and hint leakage. It must preserve approved Unit 1 content. C27R adds one original replacement script and five illustrative unscored review prompts; no scored bank item or human approval is created. Corrected musician passages remain to author.
 
 ## Writing preparation and next bounded slice
 
@@ -137,3 +138,5 @@ Use separate criterion evidence for task/audience, organisation, vocabulary and 
 **Next: whole-skill comparison and a concrete Unit 2 bank/assessment proposal.** Freeze all applicable current, draft, retired and exposed versions across releases, plus teaching guides and related mappings. At minimum compare Unit 1 S01/S02 vocabulary contexts, S04/S07 adjective/adverb/comparison demands, S09/S10 reading, S11/S12 listening and S13/S14 writing. A music setting or a new skill code alone is not new reasoning coverage. This preparation identifies that comparison scope; it does **not** claim a completed candidate-level whole-bank review.
 
 Propose counts and separated source families only after substantive comparison; retain intentional supporting Practice variants honestly and do not pad. Decide whether S08 belongs in mandatory assessment and which supporting targets enter readiness. Units 2–6 still have **no accepted question budgets**; Unit 1's 60/56/84 authorization is not copied. Then author the accepted bounded batch, complete source/recording review and registration, stage actual questions/materials in the reviewer catalogue, and use the normal QA/approval/release path. This checkpoint adds no reviewer rows, policies, forms, assets or production data. Existing Unit 1 verification and owner acceptance remain intact.
+
+Current replacement decision and checks: [C27R evidence](evidence/english-7-unit-02-music-replacement-20261023.json).

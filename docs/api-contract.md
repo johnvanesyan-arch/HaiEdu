@@ -1,6 +1,8 @@
 # Learning API contract
 
-**16.1C.27:** Unit 2 source/activity/audio preparation changes no endpoint, schema, runtime bundle, scoring policy or asset registration. The full-length Do-Re-Mi candidate fits the existing 8 MiB contract; no limit is raised. Unit 1 C26 acceptance is reused. [Prepared scope and evidence](english-7-unit-02-preparation.md).
+**16.1C.27R:** The owner excludes Do-Re-Mi from delivery. Its replacement is an unrecorded source draft; no runtime/API, byte limit, asset registration or playback rule changes. [Replacement and scope](english-7-unit-02-music-replacement.md).
+
+**Historical 16.1C.27:** Unit 2 source/activity/audio preparation changes no endpoint, schema, runtime bundle, scoring policy or asset registration. The full-length Do-Re-Mi candidate fits the existing 8 MiB contract; no limit is raised. Unit 1 C26 acceptance is reused. [Prepared scope and evidence](english-7-unit-02-preparation.md).
 
 **16.1C.26:** Public endpoint shapes are unchanged. The shared assessed-audio SQL now bounds progress by elapsed server time since begin/resume and the saved media position, tolerating unequal checkpoint arrival delays while retaining the five-second lease, monotonic position, 250ms tolerance and two-play allowance. Two nullable internal anchor fields and an appended runtime provenance record are deployed. The retained live English journey verifies normal starts/answers, real audio controls, W01 draft/submission/return/revision/marking and matching learner/teacher/school projections. The school response remains `analytics.evidenceGroups`. [Delivery and exact evidence](english-7-unit-01-live-learner-verification.md).
 
