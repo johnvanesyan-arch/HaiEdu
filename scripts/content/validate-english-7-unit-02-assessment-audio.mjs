@@ -11,6 +11,8 @@ import {validateArrangementKey} from '../../supabase/functions/_shared/arrangeme
 const work=process.argv[2];assert.ok(work,'Pass the private registration evidence directory.');
 const read=name=>JSON.parse(readFileSync(join(work,name),'utf8'));
 const manifest=read('registration.json'),baseline=read('baseline.json');
+const expectedCount={'16.1C.30':20,'16.1C.31':40}[manifest.checkpoint];
+assert.ok(expectedCount,'Unsupported source-registration checkpoint.');
 const projection=read('transaction-readback.json').projection;
 const wrapper=read('deployed-qa.json');
 const deployed=wrapper.files?wrapper:JSON.parse(wrapper.content[0].text);
@@ -35,8 +37,8 @@ for(const revision of manifest.revisions){
   assert.deepEqual(result.errors,[],revision.code);assert.equal(result.passed,true,revision.code);
   const contextSnapshot=rows.item_versions.find(v=>v.item_id===item.id&&v.version_no===item.config.authoringReview.snapshotVersion).snapshot.authoringReview;
   assert.equal(await context.authoringSourceRegistered(admin,item,contextSnapshot),true,revision.code);
-  qa.push({item_id:item.id,version_no:2,run_by:null,...result,details:{...result.details,automatedSourceRegistrationQa:{checkpoint:'16.1C.30',handlerVersion:deployed.version,handlerSha256:createHash('sha256').update(source).digest('hex'),execution:'Actual deployed evaluateQa over exact transaction rows; no HTTP/Auth/MFA or human question-approval claim',acceptanceReference:manifest.ownerAcceptanceReference}}});
+  qa.push({item_id:item.id,version_no:2,run_by:null,...result,details:{...result.details,automatedSourceRegistrationQa:{checkpoint:manifest.checkpoint,handlerVersion:deployed.version,handlerSha256:createHash('sha256').update(source).digest('hex'),execution:'Actual deployed evaluateQa over exact transaction rows; no HTTP/Auth/MFA or human question-approval claim',acceptanceReference:manifest.ownerAcceptanceReference}}});
 }
-assert.equal(qa.length,20);
+assert.equal(qa.length,expectedCount);
 writeFileSync(join(work,'qa.json'),JSON.stringify(qa,null,2)+'\n');
 console.log(JSON.stringify({passed:qa.length,registeredSourceChecks:qa.length,warnings:[...new Set(qa.flatMap(q=>q.warnings))]}));

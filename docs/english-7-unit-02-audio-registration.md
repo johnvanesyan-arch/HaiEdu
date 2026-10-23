@@ -1,6 +1,8 @@
 # English 7 Unit 2 — replacement audio registration
 
-**Sprint 16.1C.27B · 2026-10-23 Asia/Yerevan · One private audio version registered; Unit 2 remains draft and inactive.**
+**Current C31:** all remaining thirty reading and ten Practice listening questions are attached to registered sources and pass QA. Unit 2 now has 192 QA passes, zero source holds, 28 shared sets and fourteen recordings. Ordinary question/material review and seven release gates remain pending. [Current source delivery](english-7-unit-02-source-integration.md).
+
+**Historical Sprint 16.1C.27B · 2026-10-23 Asia/Yerevan · One private audio version registered; Unit 2 remains draft and inactive.**
 
 John confirmed completion of the requested upload. **One Song, Two Versions** now has an immutable audio record under a draft Unit 2 scope. Do-Re-Mi remains excluded in both original and compressed forms. No additional upload is needed.
 

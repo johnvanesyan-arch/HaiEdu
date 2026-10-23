@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.30",
-  "date": "2026-10-23",
+  "checkpoint": "16.1C.31",
+  "date": "2026-10-24",
   "timezone": "Asia/Yerevan",
-  "status": "ten-assessment-recordings-integrated-unit-remains-draft",
+  "status": "all-sources-integrated-unit-remains-draft",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -234,8 +234,8 @@
     {
       "activity": 2,
       "pages": "29–31",
-      "disposition": "Owner-directed replacement at the same activity position: One Song, Two Versions; optional spoken-listening recording supplied, technically verified and registered under C27B. Human listening review and authenticated playback after question attachment remain open. Do-Re-Mi original and derivative excluded.",
-      "replacementRecordingStatus": "Owner recording received, technical/script checks passed and immutable asset registered in draft scope; human listening review and authenticated playback remain open."
+      "disposition": "Owner-directed replacement at the same position: One Song, Two Versions. C27B registered audio is linked to P63/P67/P68 under C31 with passing QA. Do-Re-Mi original and derivative remain excluded.",
+      "replacementRecordingStatus": "Registered and attached; C27A/C27B evidence reused. Independent human pace acceptance and fresh authenticated playback are not claimed."
     },
     {
       "activity": 3,
@@ -370,7 +370,7 @@
     {
       "activity": 29,
       "pages": "50",
-      "disposition": "Track 7 shared done/not-done listening support. Resolve the printed room-cleaning contradiction by audition before any key; retain source family across edits/re-recording."
+      "disposition": "Track 7 supporting listening. C31 automated reconciliation confirms the room-cleaning inconsistency; P66/P72 avoid that detail and their keys are supported. Preserve the limitation and source family."
     },
     {
       "activity": 30,
@@ -411,7 +411,7 @@
       "sourceUrl": "https://zangak.am/mediafiles/english7-2023/lLXsq/Soundtrack%204.mp3",
       "decision": "exclude-from-delivery-owner-decision",
       "plannedUse": "excluded",
-      "rationale": "Owner rejects this song for the intended Grade 7 audience; original and delivery copy excluded. One Song, Two Versions replaces activity 2; recording supplied under C27A and privately registered in a draft Unit 2 scope under C27B. Human listening review and scoped playback remain open.",
+      "rationale": "Owner excludes the song and delivery copy. The original replacement retains activity 2, is registered under C27B and attaches to three Practice questions under C31. Independent human pace acceptance is not claimed.",
       "sourceFamilyCandidate": "eng7-book-u02-do-re-mi",
       "sourceFamilyReviewed": false,
       "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
@@ -457,24 +457,29 @@
       "qr": "nwiPc",
       "publisherPage": "https://zangak.am/mediafiles/?nwiPc",
       "sourceUrl": "https://zangak.am/mediafiles/english7-2023/nwiPc/Soundtrack%205.mp3",
-      "decision": "retain-for-playable-integration",
+      "decision": "registered-for-private-practice-review",
       "plannedUse": "core-listening",
       "rationale": "Identify the speaker’s claims; review unsupported causal/health/academic generalisations before task authoring.",
-      "sourceFamilyCandidate": "eng7-book-u02-power-of-music",
-      "sourceFamilyReviewed": false,
-      "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
+      "sourceFamilyReviewed": true,
+      "activityMappingBasis": "C29 source and exact publisher recording reconciled under C31",
       "seconds": 91.324082,
       "bytes": 1713592,
       "sha256": "c9b024ac43b1bc5af59bf81199f7a9497b2b800a033ee008195b4d9191426fa8",
       "technicalEvidence": "new",
       "fitsCurrentFormatByteDurationLimits": true,
       "deliveryPreparation": "original technically within limits",
-      "permissionStatus": "unverified",
-      "listeningReviewStatus": "pending",
-      "registered": false,
+      "permissionStatus": "owner-directed-bounded-private-integration",
+      "listeningReviewStatus": "automated-reconciliation-owner-directed-registration-no-independent-human-audition-claim",
+      "registered": true,
       "live": false,
       "originalHashVerifiedAtCheckpoint": "16.1C.27",
-      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json",
+      "audioAssetVersionId": "27a81ff2-601e-5a04-8d7f-32891517c42f",
+      "sourceFamilyId": "4b70a272-b455-54bd-a81d-9602ae6e0605",
+      "taskSetVersionId": "b96a9bd5-4acc-56d9-9e3c-d9ff12f8e40b",
+      "reconciliation": "Automated timestamped ASR reconciles the exact publisher file with the authored source and all three answer-bearing details. Publisher instruction intro and minor can/could/if wording do not alter the keys. Questions attribute claims to the lecturer; no scientific/medical causal endorsement or independent human audition is claimed.",
+      "sourceIntegrationEvidence": "docs/evidence/english-7-unit-02-source-integration-20261024.json",
+      "sourceFamilyCandidateHistorical": "eng7-book-u02-power-of-music"
     },
     {
       "id": "ENG7-AUDIO-6",
@@ -486,24 +491,29 @@
       "qr": "X1280",
       "publisherPage": "https://zangak.am/mediafiles/?X1280",
       "sourceUrl": "https://zangak.am/mediafiles/english7-2023/X1280/Soundtrack%206.mp3",
-      "decision": "retain-for-playable-integration",
+      "decision": "registered-for-private-practice-review",
       "plannedUse": "support-enrichment",
       "rationale": "Receptive modal/ability practice; review gendered framing, no imitation or speaking score.",
-      "sourceFamilyCandidate": "eng7-book-u02-abilities-dialogue",
-      "sourceFamilyReviewed": false,
-      "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
+      "sourceFamilyReviewed": true,
+      "activityMappingBasis": "C29 source and exact publisher recording reconciled under C31",
       "seconds": 29.988571,
       "bytes": 720448,
       "sha256": "67b39fb105f74695e8809e4ef2ba6cd18adbf22560134514897b7e663c4a1d0c",
       "technicalEvidence": "new",
       "fitsCurrentFormatByteDurationLimits": true,
       "deliveryPreparation": "original technically within limits",
-      "permissionStatus": "unverified",
-      "listeningReviewStatus": "pending",
-      "registered": false,
+      "permissionStatus": "owner-directed-bounded-private-integration",
+      "listeningReviewStatus": "automated-reconciliation-owner-directed-registration-no-independent-human-audition-claim",
+      "registered": true,
       "live": false,
       "originalHashVerifiedAtCheckpoint": "16.1C.27",
-      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json",
+      "audioAssetVersionId": "1d008dbe-4aff-5bcd-8387-eaf7ffae19d9",
+      "sourceFamilyId": "9eee2921-d923-591a-adfc-b0fd84698990",
+      "taskSetVersionId": "c67f0664-6b94-51c5-bd6b-bde60c97beff",
+      "reconciliation": "Automated timestamped ASR reconciles the exact publisher file and both answer-bearing details. Practice comprehension does not endorse gender limits. No independent human audition is claimed.",
+      "sourceIntegrationEvidence": "docs/evidence/english-7-unit-02-source-integration-20261024.json",
+      "sourceFamilyCandidateHistorical": "eng7-book-u02-abilities-dialogue"
     },
     {
       "id": "ENG7-AUDIO-7",
@@ -515,26 +525,32 @@
       "qr": "BjRzf",
       "publisherPage": "https://zangak.am/mediafiles/?BjRzf",
       "sourceUrl": "https://zangak.am/mediafiles/english7-2023/BjRzf/Soundtrack%207.mp3",
-      "decision": "retain-for-playable-integration",
+      "decision": "registered-for-private-practice-review",
       "plannedUse": "core-listening",
       "rationale": "Listen for completed/incomplete actions in the taught present-perfect context.",
-      "sourceFamilyCandidate": "eng7-book-u02-busy-day",
-      "sourceFamilyReviewed": false,
-      "activityMappingBasis": "printed activity and QR position; actual recording not auditioned",
+      "sourceFamilyReviewed": true,
+      "activityMappingBasis": "C29 source and exact publisher recording reconciled under C31",
       "seconds": 47.046531,
       "bytes": 1881534,
       "sha256": "ebd65a0ac534d7661884ef260ab9a170f52122660b6ea80858828200bcf8ef88",
       "technicalEvidence": "new",
       "fitsCurrentFormatByteDurationLimits": true,
       "deliveryPreparation": "original technically within limits",
-      "permissionStatus": "unverified",
-      "listeningReviewStatus": "pending",
-      "registered": false,
+      "permissionStatus": "owner-directed-bounded-private-integration",
+      "listeningReviewStatus": "automated-reconciliation-owner-directed-registration-no-independent-human-audition-claim",
+      "registered": true,
       "live": false,
       "originalHashVerifiedAtCheckpoint": "16.1C.27",
       "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json",
-      "keyHold": "Printed p.145 room-cleaning statements conflict without separate speaker/context labels; actual audio review required.",
-      "programmeCoverageBoundary": "Supporting listening/tense practice; not sufficient by itself for music-topic listening T2.L1."
+      "programmeCoverageBoundary": "Supporting listening/tense practice; not sufficient by itself for music-topic listening T2.L1.",
+      "audioAssetVersionId": "870343e3-7027-5d13-9b41-a653bb6fbcb3",
+      "sourceFamilyId": "8559ed10-c1d8-5305-abd7-a7eb062e690b",
+      "taskSetVersionId": "00490e0d-9251-5c48-b97a-792af5543788",
+      "reconciliation": "Automated timestamped ASR reconciles the exact publisher file and both answer-bearing details. The room-cleaning inconsistency is present in the recording and remains an editorial limitation; neither P66 nor P72 tests that detail. Do not infer resolved speaker attribution. Bounded Practice attachment only; no independent human audition is claimed.",
+      "sourceIntegrationEvidence": "docs/evidence/english-7-unit-02-source-integration-20261024.json",
+      "historicalKeyHold": "Printed p.145 room-cleaning statements conflict without separate speaker/context labels; actual audio review required.",
+      "keyHoldResolvedForLinkedQuestions": true,
+      "sourceFamilyCandidateHistorical": "eng7-book-u02-busy-day"
     }
   ],
   "writingProposal": {
@@ -584,7 +600,7 @@
       "S14"
     ],
     "newSettingProvesNovelReasoning": false,
-    "next": "Reuse unchanged C29 comparison; remaining reading/Practice source integration and normal question/material review.",
+    "next": "Reuse unchanged C29 comparison; ordinary review, formal curriculum and numerical/form-qualification/release work.",
     "demandLevelReviewComplete": true,
     "corpusEvidence": "docs/evidence/english-7-unit-02-authoring-20261023.json",
     "reviewProvenance": "Codex automated author and semantic self-review; human/SME review pending",
@@ -599,9 +615,9 @@
       "mastery": 72
     },
     "newQuestionsAuthored": 192,
-    "productionWrites": 2176,
-    "assetsRegistered": 11,
-    "sourcesRegistered": 10,
+    "productionWrites": 2277,
+    "assetsRegistered": 14,
+    "sourcesRegistered": 28,
     "newHumanApprovals": 0,
     "newPoliciesBound": 0,
     "newFormsAllocated": 0,
@@ -617,29 +633,34 @@
     "draftUnitScopesRegistered": 1,
     "draftReleaseScopesRegistered": 1,
     "pendingReleaseGates": 7,
-    "productionWriteBasis": "11 C27B + 2105 C29 + 60 C30 additive rows. C30 also revises twenty existing questions through the ordinary revision service, preserving meaning/keys and unaffected history.",
+    "productionWriteBasis": "11 C27B + 2105 C29 + 60 C30 + 101 C31 additive rows; also twenty C30 and forty C31 current question revisions preserving meaning/keys and unaffected history.",
     "draftMaterialsStaged": 9,
     "newAssessmentScriptsAuthored": 10,
-    "sourceQuestionHolds": 40,
+    "sourceQuestionHolds": 0,
     "standaloneQuestionQaPassed": 132,
-    "currentQuestionQaPassed": 152,
+    "currentQuestionQaPassed": 192,
     "assessmentAudioQuestionQaPassed": 20,
-    "questionVersionsRevisedForAudio": 20,
-    "acceptedAssessmentRecordings": 10
+    "questionVersionsRevisedForAudio": 30,
+    "acceptedAssessmentRecordings": 10,
+    "questionVersionsRevisedForReading": 30,
+    "practiceAudioQuestionQaPassed": 10,
+    "readingQuestionQaPassed": 30
   },
-  "next": "Accept/register fourteen reading passages and reconcile the four retained Practice listening sources; attach remaining eighteen sets and clear forty source holds. Normal content/material review, curriculum/numerical/qualification and learner-release gates remain.",
+  "next": "Ordinary question/material review, formal curriculum reconciliation and the exact Unit 2 numerical/form-qualification/release contract. All source-registration holds are cleared; seven release gates remain pending. Reuse accepted C30 audio review and Unit 1 evidence.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
       "path": "docs/content/english-7-unit-02-music-replacement.json",
-      "status": "original-audio-registered-in-draft-unit-scope",
+      "status": "registered-and-linked-to-three-practice-questions",
       "sourceFamilyCandidate": "eng7-original-u02-one-song-two-versions",
       "recordingExists": true,
       "recordingSha256": "9d5946beb54f37b1e1368e91b889769ea0b9ff6748e25dfb60a059dc0f04a507",
       "technicalEvidence": "docs/evidence/english-7-unit-02-replacement-audio-20261023.json",
       "audioAssetVersionId": "641de808-3b15-59e0-b194-fd8e7ff502ed",
       "sourceFamilyId": "b7143aa4-9075-57b5-a9b8-9f563de967a1",
-      "registrationEvidence": "docs/evidence/english-7-unit-02-audio-registration-20261023.json"
+      "registrationEvidence": "docs/evidence/english-7-unit-02-audio-registration-20261023.json",
+      "taskSetVersionId": "a061de1b-cbce-5636-9567-3d682b0e56db",
+      "sourceIntegrationEvidence": "docs/evidence/english-7-unit-02-source-integration-20261024.json"
     }
   ],
   "audioPlanCounts": {
@@ -652,7 +673,9 @@
     "registeredOriginalRecordings": 1,
     "ownerSuppliedAssessmentRecordings": 10,
     "registeredAssessmentRecordings": 10,
-    "remainingAssessmentRecordingsToReceive": 0
+    "remainingAssessmentRecordingsToReceive": 0,
+    "registeredPublisherRecordings": 3,
+    "registeredTotalRecordings": 14
   },
   "registrationScope": {
     "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
@@ -696,5 +719,15 @@
     "linkedQuestions": 20,
     "savedQaPasses": 20,
     "evidence": "docs/evidence/english-7-unit-02-assessment-audio-20261023.json"
+  },
+  "sourceIntegration": {
+    "checkpoint": "16.1C.31",
+    "readingSets": 14,
+    "practiceListeningSets": 4,
+    "linkedReadingQuestions": 30,
+    "linkedPracticeListeningQuestions": 10,
+    "savedQaPasses": 40,
+    "allUnit2SourceHoldsCleared": true,
+    "evidence": "docs/evidence/english-7-unit-02-source-integration-20261024.json"
   }
 }

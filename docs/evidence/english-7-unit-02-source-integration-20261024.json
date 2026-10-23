@@ -1,0 +1,123 @@
+{
+  "schemaVersion": "haiedu-source-registration-evidence-v1",
+  "checkpoint": "16.1C.31",
+  "date": "2026-10-24",
+  "timezone": "Asia/Yerevan",
+  "sourceCommit": "a548cfbfe0c7680c20d68b9a4dbb1052f56be90c",
+  "observedAt": "2026-10-23T20:08:40.847533+00:00",
+  "ownerAuthorizationReference": "docs/evidence/english-7-unit-02-source-integration-authorization-20261024.json#50c7194e67cf1f148d5b7128f71a4851c5bde1d9b89623759dc6d97c45605c80",
+  "scope": {
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "releaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "audioVersionsAdded": 3,
+    "existingReplacementAudioReused": 1,
+    "taskSetsAdded": 18,
+    "readingTaskSetsAdded": 14,
+    "practiceListeningTaskSetsAdded": 4,
+    "questionVersionsAdded": 40,
+    "readingQuestionsLinked": 30,
+    "practiceListeningQuestionsLinked": 10,
+    "savedQaPassesAdded": 40,
+    "totalAdditiveRows": 101,
+    "questionBank": {
+      "practice": 72,
+      "diagnostic": 48,
+      "mastery": 72
+    },
+    "currentQuestionQa": {
+      "passed": 192,
+      "sourceHolds": 0
+    },
+    "currentQuestionReview": {
+      "needsReview": 192
+    },
+    "unit2RegisteredAudioVersions": 14,
+    "unit2RegisteredTaskSets": 28
+  },
+  "reviewProvenance": {
+    "ownerDirectedIntegration": true,
+    "independentHumanAuditionClaimed": false,
+    "automatedPublisherTrackReconciliations": 3,
+    "c29ReadingTextsAndFactualEvidenceReused": true,
+    "replacementRecordingEvidenceReused": "C27A/C27B",
+    "c30AssessmentRecordingReviewRepeated": false,
+    "questionAndMaterialApprovalClaimed": false
+  },
+  "editorialLimitations": [
+    "A busy day has inconsistent room-cleaning lines. The linked P66/P72 keys do not test them; no resolved speaker attribution is claimed.",
+    "The Power of Music questions test the lecturer’s claims, not scientific or medical validity.",
+    "Abilities dialogue does not establish gender limits.",
+    "Replacement pace is about 172 wpm; independent human pace/playback acceptance is not claimed. Do-Re-Mi remains excluded."
+  ],
+  "storage": {
+    "bucket": "learning-audio",
+    "private": true,
+    "fileSizeLimit": 8388608,
+    "addedObjects": 3,
+    "existingObjectsPreserved": 25,
+    "totalObjects": 28,
+    "uploadedBytes": 4315574,
+    "method": "Existing signed-in Supabase dashboard, normal private-bucket upload; no credentials or Storage SQL shortcut",
+    "metadataAndETagMatches": 3,
+    "audioTranscoding": false,
+    "technicalDecodeEvidenceReused": true
+  },
+  "verification": {
+    "rollbackPassed": true,
+    "independentRollbackRestorationTables": 117,
+    "guardedCommitPassed": true,
+    "independentCommittedReadbackPassed": true,
+    "trackedTables": 117,
+    "entirelyUnchangedTableFingerprints": 110,
+    "changedTables": [
+      "public.item_answer_keys",
+      "public.item_options",
+      "public.item_qa_runs",
+      "public.item_versions",
+      "public.items",
+      "public.learning_audio_versions",
+      "public.learning_task_set_versions"
+    ],
+    "unaffectedRowsAndAllPriorHistoryPreserved": true,
+    "questionMeaningKeysAndOptionOrderUnchanged": true,
+    "existingRevisionServiceUsed": true,
+    "optionRowIdsRegeneratedByRevisionService": 160,
+    "taskSetOrderAndSourceFamilyChecksPassed": 18,
+    "savedQaExactMatch": 40,
+    "qaHandlerVersion": 14,
+    "qaHandlerSha256": "eff4f28780b0bdc618485a481acf41df7495c7d5945c4d55e6fc572ccffbc82a",
+    "qaExecution": "Actual deployed evaluateQa and authoringSourceRegistered over exact materialized transaction rows; saved automated results with run_by null",
+    "nonblockingWarnings": [
+      "misconception_mapping_missing"
+    ],
+    "freshAuthenticatedQuestionPlaybackClaimed": false
+  },
+  "preserved": {
+    "schema": true,
+    "edgeRuntime": true,
+    "rlsAndAuthorization": true,
+    "learnerPoliciesAndPlaybackAllowances": true,
+    "unit1Evidence": true,
+    "c29WholeBankComparison": true,
+    "existingItemApprovals": true,
+    "learnerHistory": true,
+    "unit2ReleaseStatus": "draft",
+    "unit2PendingGates": 7,
+    "newHumanQuestionApprovals": 0
+  },
+  "privateEvidenceHashes": {
+    "receipt.json": "3a60cac7c50583cb7a24f20a252c3272f53530bf369ef67c1f7f28c1f224a8b0",
+    "registration.json": "87545874b930c8bf061a6fdb36da8de16b7088189e73527fea32d3241e5dce91",
+    "publisher-asr.json": "34fbb1464c706b908b2c356a5a15364a63427fd351ea260a77a87dc4c5238392",
+    "rollback.sql": "b8186e83fce6c05f4fc457f3d452c0a1014a6ebe55dff80fd7e7055abf344673",
+    "commit.sql": "acc972615e23fe6d67a7b1edab0b20970d927681919dc3dee03790817d8a1017",
+    "commit-result.json": "caae98cbae7c1f227f632f5193cfa0265cd7f108c3fef75b449ed09a9355c5fe",
+    "committed-readback.json": "2e1e56833405097284a0debc68ddeb36762e51f047adc46d8895b132eb01db9b",
+    "qa.json": "66bc6cb27752c2ffbd0dfedf29e8300c257ac6524f377a162ee57f250ac9ee0f",
+    "baseline.json": "c306ab8fb2cbac892d67cbd5835211e14ec2f6afbe0bfc23fd0c78727950703b",
+    "baseline-after.json": "47128e914c3eb53548db5f7900cc6e6371e8808aa0c275f7384e6055970b9405",
+    "guards.json": "8727d7c5ef96ba9bcd3c91b8b5b57785a14babde200cf710195c8a9476f44e28",
+    "post-guards.json": "9ef9a7210a47c91a5394c5ba9aba647fc35a16fa6f37b9ad041f526a181a242e"
+  },
+  "next": "Ordinary question/material review, formal curriculum reconciliation and the exact Unit 2 numerical/form-qualification/release contract. All source-registration holds are cleared; seven release gates remain pending. Reuse accepted C30 audio review and Unit 1 evidence."
+}

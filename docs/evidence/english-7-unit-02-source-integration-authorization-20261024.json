@@ -1,0 +1,256 @@
+{
+  "schemaVersion": "haiedu-owner-source-integration-authorization-v1",
+  "checkpoint": "16.1C.31",
+  "recordedAt": "2026-10-23T20:02:15.078114+00:00",
+  "sourceCommit": "a548cfbfe0c7680c20d68b9a4dbb1052f56be90c",
+  "registeredByProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "statement": "Complete source integration for the remaining 30 reading and 10 Practice listening questions. Don't forget to update the Notion sprint map",
+  "interpretation": "Owner-directed registration/attachment of the exact remaining C29 source manifest, with automated reconciliation of three publisher tracks and reuse of C27B replacement evidence. Not a fabricated independent human listening, question/material approval or learner-release decision.",
+  "permissionBasis": "Owner previously stated that textbook adaptations may be used freely, and now explicitly directs integration of the remaining source manifest. Registration is bounded to the existing private course release; no broader publisher licence is invented.",
+  "reviewProvenance": "reviewed_by records the active owner directing this bounded registration. Reconciliation was automated; it does not assert an independent human audition, question/material approval, SME approval, calibration or release activation.",
+  "reusedEvidence": [
+    "C29 exact protected source package and whole-bank comparison",
+    "C29 primary-institution factual reconciliation for four Practice reading passages",
+    "C27A/C27B replacement recording technical/text reconciliation",
+    "C30 ten owner-accepted assessment recordings unchanged"
+  ],
+  "sources": [
+    {
+      "sourceCode": "U02-P-READ-WORLD-A",
+      "kind": "passage",
+      "sourceFamilyId": "2f0ca931-06c2-5c0f-a3a6-613336a8214a",
+      "sourceTextSha256": "2bd32ecf2135ef86a8595bb3c3459aa52c7978761ba0452c20ab08c818692236",
+      "questionCodes": [
+        "ENG7-U02-P53",
+        "ENG7-U02-P57",
+        "ENG7-U02-P58"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-P-READ-WORLD-B",
+      "kind": "passage",
+      "sourceFamilyId": "5ebb9e5c-a223-5264-a16a-df1b7d3372be",
+      "sourceTextSha256": "95fa7360185876b9bdbcf3dd90b63a626c5c7eb76859b4d30a60d30ad3e0e920",
+      "questionCodes": [
+        "ENG7-U02-P54",
+        "ENG7-U02-P59"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-P-READ-ARMENIA-A",
+      "kind": "passage",
+      "sourceFamilyId": "78b4a834-f8d6-5dd9-ac36-22a00042edec",
+      "sourceTextSha256": "d48b29c48b9688ca79ecbbf7722bd1aeccdad625968a45b440dec1805ada553e",
+      "questionCodes": [
+        "ENG7-U02-P55",
+        "ENG7-U02-P60",
+        "ENG7-U02-P61"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-P-READ-ARMENIA-B",
+      "kind": "passage",
+      "sourceFamilyId": "000a6e45-da50-51ca-a48d-d36580c99d74",
+      "sourceTextSha256": "2a50e3e779bf8aed70f9b50a75fe60d659203a82ed6adf3f7f2924b60bee739f",
+      "questionCodes": [
+        "ENG7-U02-P56",
+        "ENG7-U02-P62"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-DA-READ-A",
+      "kind": "passage",
+      "sourceFamilyId": "1db63a91-47da-58c9-accc-4a6e6e472f48",
+      "sourceTextSha256": "fd4800ad7c7b9a44cba00003dc3dfc5779bf05ed538997b981df15a8c69c9c1f",
+      "questionCodes": [
+        "ENG7-U02-DA-17",
+        "ENG7-U02-DA-19"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-DA-READ-B",
+      "kind": "passage",
+      "sourceFamilyId": "d9494e13-6ca2-525a-a9e8-8a0af6d5397b",
+      "sourceTextSha256": "45352d138aae69b22feabca5d133f7d977a55de2938330bf71fd8ad9966aa4d2",
+      "questionCodes": [
+        "ENG7-U02-DA-18",
+        "ENG7-U02-DA-20"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-DB-READ-A",
+      "kind": "passage",
+      "sourceFamilyId": "06de65aa-8731-5bbb-a863-dcb72539aeba",
+      "sourceTextSha256": "4c08974ef2dda4e980f7d42a83270f5cadee4f214dfcd8e6e5dd586161ab86cc",
+      "questionCodes": [
+        "ENG7-U02-DB-17",
+        "ENG7-U02-DB-19"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-DB-READ-B",
+      "kind": "passage",
+      "sourceFamilyId": "2368c3be-b874-5336-a9a3-d7c503f92e8b",
+      "sourceTextSha256": "5af8acdf74a7522bd3cbe0abfbbf89d5b2fccec7c144f703270bb823b30b6082",
+      "questionCodes": [
+        "ENG7-U02-DB-18",
+        "ENG7-U02-DB-20"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-MA-READ-A",
+      "kind": "passage",
+      "sourceFamilyId": "17dc8e24-8e09-5345-a9ce-dabc052840fc",
+      "sourceTextSha256": "daa4e77f528e062a6ab87a930455deef0e61affc437e1e91f0305455e0edd6a4",
+      "questionCodes": [
+        "ENG7-U02-MA-17",
+        "ENG7-U02-MA-19"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-MA-READ-B",
+      "kind": "passage",
+      "sourceFamilyId": "82b54aaf-ad68-5d1e-ae08-a5877d912b8f",
+      "sourceTextSha256": "5b729f12a657c026755bf693c3b75f5c74a5b224f48ffface14b61bc15c60c2a",
+      "questionCodes": [
+        "ENG7-U02-MA-18",
+        "ENG7-U02-MA-20"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-MB-READ-A",
+      "kind": "passage",
+      "sourceFamilyId": "03f325f4-d7fb-59e3-a934-0d7044a610b5",
+      "sourceTextSha256": "9cd6e1819be10a050af458c293b2182dace0376a3b33a19a68906575150ec91d",
+      "questionCodes": [
+        "ENG7-U02-MB-17",
+        "ENG7-U02-MB-19"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-MB-READ-B",
+      "kind": "passage",
+      "sourceFamilyId": "0b3404b7-0af3-5cbb-aa9d-816feb256444",
+      "sourceTextSha256": "b7db5215f48bb018b1a31c66e0885e840c5b1dce01609d4a08a46de24cfaab14",
+      "questionCodes": [
+        "ENG7-U02-MB-18",
+        "ENG7-U02-MB-20"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-MC-READ-A",
+      "kind": "passage",
+      "sourceFamilyId": "d3095e3d-e977-55d7-a83d-13d4a1318e24",
+      "sourceTextSha256": "c3cb5139da33f0f41d83dacb25f9f4c5225706d24ab4d59ccd80f6a6e35b2c19",
+      "questionCodes": [
+        "ENG7-U02-MC-17",
+        "ENG7-U02-MC-19"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-MC-READ-B",
+      "kind": "passage",
+      "sourceFamilyId": "a5699b7d-796e-524d-a6d0-5f0833be152f",
+      "sourceTextSha256": "b80c5335c20377547ee5e83d3cef7b26f788b2c7553f281133bc3e8a5747eb6e",
+      "questionCodes": [
+        "ENG7-U02-MC-18",
+        "ENG7-U02-MC-20"
+      ],
+      "reconciliation": "Exact C29 passage retained. Existing factual/source review and comparison evidence reused; owner-directed registration only."
+    },
+    {
+      "sourceCode": "U02-P-AUDIO-REPLACEMENT",
+      "kind": "script",
+      "sourceFamilyId": "b7143aa4-9075-57b5-a9b8-9f563de967a1",
+      "sourceTextSha256": "f41c481bf734e759a1a9d70352cd40052158178222a58297983810b10f6828f9",
+      "questionCodes": [
+        "ENG7-U02-P63",
+        "ENG7-U02-P67",
+        "ENG7-U02-P68"
+      ],
+      "reconciliation": "Reuse C27A/C27B exact-file, 135-word alignment and registration evidence. No repeat audition/transcription. About 172 wpm exceeds the 120–145 brief; independent human pace/playback approval is not claimed. Owner-directed Practice attachment only; Do-Re-Mi remains excluded."
+    },
+    {
+      "sourceCode": "U02-P-AUDIO-ABILITIES",
+      "kind": "script",
+      "sourceFamilyId": "9eee2921-d923-591a-adfc-b0fd84698990",
+      "sourceTextSha256": "cc1629d18d223d042a8f10a2990049bd70097bc89c5837e332e4bea6550aeb39",
+      "questionCodes": [
+        "ENG7-U02-P65",
+        "ENG7-U02-P71"
+      ],
+      "reconciliation": "Automated timestamped ASR reconciles the exact publisher file and both answer-bearing details. Practice comprehension does not endorse gender limits. No independent human audition is claimed."
+    },
+    {
+      "sourceCode": "U02-P-AUDIO-BUSY-DAY",
+      "kind": "script",
+      "sourceFamilyId": "8559ed10-c1d8-5305-abd7-a7eb062e690b",
+      "sourceTextSha256": "926c5d2a744e7e902f20f74e35a9469d03746d4e43dcba6d78b135a0e55a609d",
+      "questionCodes": [
+        "ENG7-U02-P66",
+        "ENG7-U02-P72"
+      ],
+      "reconciliation": "Automated timestamped ASR reconciles the exact publisher file and both answer-bearing details. The room-cleaning inconsistency is present in the recording and remains an editorial limitation; neither P66 nor P72 tests that detail. Do not infer resolved speaker attribution. Bounded Practice attachment only; no independent human audition is claimed."
+    },
+    {
+      "sourceCode": "U02-P-AUDIO-POWER",
+      "kind": "script",
+      "sourceFamilyId": "4b70a272-b455-54bd-a81d-9602ae6e0605",
+      "sourceTextSha256": "ebf4d82a13e39f71be737608b92c423a6d844bcbff6173f9aaeeeb100e599d39",
+      "questionCodes": [
+        "ENG7-U02-P64",
+        "ENG7-U02-P69",
+        "ENG7-U02-P70"
+      ],
+      "reconciliation": "Automated timestamped ASR reconciles the exact publisher file with the authored source and all three answer-bearing details. Publisher instruction intro and minor can/could/if wording do not alter the keys. Questions attribute claims to the lecturer; no scientific/medical causal endorsement or independent human audition is claimed."
+    }
+  ],
+  "recordings": [
+    {
+      "sourceCode": "U02-P-AUDIO-POWER",
+      "publisherTrack": 5,
+      "displayFilename": "english7-u02-textbook-track-5.mp3",
+      "sha256": "c9b024ac43b1bc5af59bf81199f7a9497b2b800a033ee008195b4d9191426fa8",
+      "byteLength": 1713592,
+      "durationMs": 91324,
+      "objectPath": "c9b024ac43b1bc5af59bf81199f7a9497b2b800a033ee008195b4d9191426fa8.mp3",
+      "sourceUrl": "https://zangak.am/mediafiles/english7-2023/nwiPc/Soundtrack%205.mp3",
+      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+    },
+    {
+      "sourceCode": "U02-P-AUDIO-ABILITIES",
+      "publisherTrack": 6,
+      "displayFilename": "english7-u02-textbook-track-6.mp3",
+      "sha256": "67b39fb105f74695e8809e4ef2ba6cd18adbf22560134514897b7e663c4a1d0c",
+      "byteLength": 720448,
+      "durationMs": 29989,
+      "objectPath": "67b39fb105f74695e8809e4ef2ba6cd18adbf22560134514897b7e663c4a1d0c.mp3",
+      "sourceUrl": "https://zangak.am/mediafiles/english7-2023/X1280/Soundtrack%206.mp3",
+      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+    },
+    {
+      "sourceCode": "U02-P-AUDIO-BUSY-DAY",
+      "publisherTrack": 7,
+      "displayFilename": "english7-u02-textbook-track-7.mp3",
+      "sha256": "ebd65a0ac534d7661884ef260ab9a170f52122660b6ea80858828200bcf8ef88",
+      "byteLength": 1881534,
+      "durationMs": 47047,
+      "objectPath": "ebd65a0ac534d7661884ef260ab9a170f52122660b6ea80858828200bcf8ef88.mp3",
+      "sourceUrl": "https://zangak.am/mediafiles/english7-2023/BjRzf/Soundtrack%207.mp3",
+      "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json"
+    }
+  ]
+}

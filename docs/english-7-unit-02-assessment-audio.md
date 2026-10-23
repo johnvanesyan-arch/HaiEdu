@@ -1,6 +1,8 @@
 # English 7 Unit 2 assessment audio integration
 
-**16.1C.30 · 2026-10-23 Asia/Yerevan · Ten recordings integrated into twenty draft questions.**
+**Current C31:** all remaining thirty reading and ten Practice listening questions are attached to registered sources and pass QA. Unit 2 now has 192 QA passes, zero source holds, 28 shared sets and fourteen recordings. Ordinary question/material review and seven release gates remain pending. [Current source delivery](english-7-unit-02-source-integration.md).
+
+**Historical 16.1C.30 · 2026-10-23 Asia/Yerevan · Ten recordings integrated into twenty draft questions.**
 
 John confirms that all ten attached recordings are correct, checked and exactly script-matched. This delivery accepts that listening review without another audition, transcription or content comparison. The [owner record](evidence/english-7-unit-02-assessment-audio-owner-acceptance-20261023.json) is bound by hash to every registered source. It covers these ten original assessment recordings; it does not approve the fourteen reading passages, four retained Practice sources, all questions/materials, numerical policies or learner release.
 
@@ -33,7 +35,7 @@ Actual deployed `manage-content-quality` v14 source matches the repository and e
 
 Question wording, options, answers, required inference and source-family identity are unchanged, so C29’s whole-bank and within-batch comparison remains applicable. Unit 1 and its C26 learner/audio/writing verification are reused. No question is approved or learner release activated by this registration.
 
-## Current state and next slice
+## Historical C30 state and next slice — superseded by C31 above
 
 The bank remains **72 Practice / 48 Diagnostic / 72 Mastery**, plus eight guides and W01. Current question QA is **152 pass / 40 source holds**; all 192 questions remain in normal `needs_review` state. The remaining holds are thirty reading questions and ten Practice listening questions. Fourteen reading sources and four retained Practice listening sources still need the applicable acceptance/reconciliation and eighteen shared-set attachments. The ten assessment recordings require no further generation or repeat listening review.
 
