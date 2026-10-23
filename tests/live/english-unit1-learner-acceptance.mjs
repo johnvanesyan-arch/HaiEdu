@@ -131,7 +131,13 @@ async function main(){
    const context=await browser.newContext({viewport:mobile?{width:390,height:844}:{width:1365,height:950},serviceWorkers:'block',storageState:{cookies:[],origins:[{origin:site,localStorage:[{name:`sb-${new URL(url).hostname.split('.')[0]}-auth-token`,value:JSON.stringify(sessions.get(actor))}]}]}});
    await context.route(`${url}/**`,async route=>{const req=route.request(),u=new URL(req.url());let body;try{body=req.postDataJSON();}catch{body=null;}
     if(!browserAllowed({actor,pathname:u.pathname,search:u.search,method:req.method(),body,ledger:report,current})){blocked++;return route.abort();}return route.continue();});
-   const p=await context.newPage();p.on('pageerror',()=>pageErrors++);p.setDefaultTimeout(30000);return p;
+   const p=await context.newPage();p.on('pageerror',()=>pageErrors++);p.setDefaultTimeout(30000);
+   p.on('response',async response=>{
+    if(response.url().startsWith(url+'/functions/v1/')&&response.status()>=400){
+     const data=await response.json().catch(()=>null);
+     (report.httpFailures??=[]).push({stage,endpoint:new URL(response.url()).pathname,status:response.status(),errorCode:/^[a-z_]+$/.test(data?.error??'')?data.error:'unavailable'});
+    }
+   });return p;
   }
   const learner=await pageFor('A_student');
   const href=(extras={})=>`${site}/course.html?${new URLSearchParams({...{enrollment:a.enrollmentId,release:a.curriculumReleaseId,unit:a.unitId},...extras})}`;

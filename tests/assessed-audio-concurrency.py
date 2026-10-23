@@ -71,6 +71,7 @@ with database_uri() as uri:
         for q in forms['queries']:fixture_query(c,q)
         c.execute(shared['upgrades'])
         c.execute((ROOT/'supabase/migrations/20261021220954_sprint_16_1c_assessed_listening.sql').read_text())
+        c.execute((ROOT/'supabase/migrations/20261023064000_sprint_16_1c_audio_progress_jitter.sql').read_text())
         c.execute("insert into profiles values(%s,'content_admin','active')",[ident(30)])
         policy=c.execute("select configuration_snapshot->'assessmentPolicy' from assessment_blueprints where id=%s",[ident(740)]).fetchone()[0]
         policy.update(schemaVersion='haiedu-assessment-policy-v4',scoringStrategy='normalized-item-score-v1',responseCapabilities={},itemWeight=1,deliveredSkillIds=[ident(521),ident(522)],reportingGroups=[dict(key='all',label='Synthetic',skillIds=[ident(521),ident(522)])],audioPlayback=dict(schemaVersion='haiedu-assessed-audio-v1',maximumPlays=2,playbackRate=1,transcriptAvailable=False,scope='session-recording',questionVisibility='whole-recording',interruption='resume-or-unscored-v1'))
@@ -88,13 +89,13 @@ with database_uri() as uri:
         _,blocked=race(uri,lambda a:audio(a,'begin',play),lambda b:audio(b,'begin',dict(play,clientId=ident(9902))))
         assert 'audio_playback_busy' in blocked.get('error',''),blocked
         print('PASS: competing tabs serialize and cannot acquire one active play',flush=True)
-        c.execute("update learning_assessed_audio set last_event_at=clock_timestamp()-interval '1 second'")
+        c.execute("update learning_assessed_audio set playback_anchor_at=clock_timestamp()-interval '1 second',last_event_at=clock_timestamp()-interval '1 second'")
         done=dict(play,positionMs=300)
         first,second=race(uri,lambda a:audio(a,'complete',done),lambda b:audio(b,'complete',done))
         assert first['completedPlays']==second['completedPlays']==1
         print('PASS: duplicate completion transactions consume exactly one play',flush=True)
         play=dict(play,playId=ident(9903));audio(c,'begin',play)
-        c.execute("update learning_assessed_audio set last_event_at=clock_timestamp()-interval '1 second'")
+        c.execute("update learning_assessed_audio set playback_anchor_at=clock_timestamp()-interval '1 second',last_event_at=clock_timestamp()-interval '1 second'")
         first,blocked=race(uri,lambda a:audio(a,'complete',dict(play,positionMs=300)),lambda b:audio(b,'begin',dict(play,playId=ident(9904))))
         assert first['completedPlays']==2 and 'audio_play_limit_reached' in blocked.get('error',''),blocked
         print('PASS: completing the last play blocks a simultaneous third play',flush=True)

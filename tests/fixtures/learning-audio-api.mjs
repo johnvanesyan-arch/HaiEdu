@@ -4,12 +4,12 @@ import {compile,sqlAdmin} from './learning-acceptance.mjs';
 import {createLearningAudioHandler} from '../../supabase/functions/_shared/learning-audio-handler.mjs';
 import {installTaskSets,seedTaskSet,launch,finish,seedAudio,operation,scopes} from './shared-task-sets-db.mjs';
 import {createLearningTaskSetHandler} from '../../supabase/functions/_shared/learning-task-set-handler.mjs';
-import {assessedAudioMigration,assessedFixture} from './assessed-audio-db.mjs';
+import {assessedAudioMigration,audioProgressMigration,assessedFixture} from './assessed-audio-db.mjs';
 export {id};
 export const token=(actor=10,session=actor===30?430:actor+391)=>'fixture.'+Buffer.from(JSON.stringify({session_id:id(session)})).toString('base64url')+'.'+actor;
 export async function fixture({taskSet=false,reading=false,assessed=false}={}){
  const db=await database();let f;
- if(assessed){await installTaskSets(db);await db.exec(readFileSync(assessedAudioMigration,'utf8'));f=await assessedFixture(db,typeof assessed==='object'?assessed:{});}
+ if(assessed){await installTaskSets(db);await db.exec(readFileSync(assessedAudioMigration,'utf8'));await db.exec(readFileSync(audioProgressMigration,'utf8'));f=await assessedFixture(db,typeof assessed==='object'?assessed:{});}
  else if(taskSet){
   await installTaskSets(db);const baseline=await launch(db);await finish(db,baseline.session.id);
   const audio=await seedAudio(db),set=await seedTaskSet(db,{mode:'practice',family:id(9500),...(reading?{}:{stimulus:audio.stimulus}),items:[id(713),id(711),id(712)]});

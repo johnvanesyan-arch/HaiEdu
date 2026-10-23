@@ -3,9 +3,10 @@ import {database as sharedDatabase,configure,blueprintId,id,scopes,seedAudio,see
 import {ready,formItems} from './governed-mastery-forms-db.mjs';
 export * from './shared-task-sets-db.mjs';
 export const assessedAudioMigration='supabase/migrations/20261021220954_sprint_16_1c_assessed_listening.sql';
+export const audioProgressMigration='supabase/migrations/20261023064000_sprint_16_1c_audio_progress_jitter.sql';
 export const audioPolicy={schemaVersion:'haiedu-assessed-audio-v1',maximumPlays:2,playbackRate:1,transcriptAvailable:false,scope:'session-recording',questionVisibility:'whole-recording',interruption:'resume-or-unscored-v1'};
 export async function database(options={}) {
- const db=await sharedDatabase(options);try{await db.exec(readFileSync(assessedAudioMigration,'utf8'));return db;}catch(e){await db.close();throw e;}
+ const db=await sharedDatabase(options);try{await db.exec(readFileSync(assessedAudioMigration,'utf8'));await db.exec(readFileSync(audioProgressMigration,'utf8'));return db;}catch(e){await db.close();throw e;}
 }
 export async function configureAssessed(db,idx=0,mode='diagnostic',overrides={}) {
  const policy=await configure(db,idx,mode);

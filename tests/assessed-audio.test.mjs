@@ -6,7 +6,7 @@ import {readAssessmentPolicy} from '../supabase/functions/_shared/assessment-pol
 const payload=(playId=randomUUID(),clientId=randomUUID(),positionMs=0)=>({playId,clientId,positionMs});
 async function play(db,f){
  await assessedOperation(db,f,'load');await assessedOperation(db,f,'fetched');const p=payload();await assessedOperation(db,f,'begin',p);
- await db.query("update learning_assessed_audio set last_event_at=clock_timestamp()-interval '1 second' where session_id=$1",[f.session]);
+ await db.query("update learning_assessed_audio set playback_anchor_at=clock_timestamp()-interval '1 second',last_event_at=clock_timestamp()-interval '1 second' where session_id=$1",[f.session]);
  return {p:{...p,positionMs:300},state:await assessedOperation(db,f,'complete',{...p,positionMs:300})};
 }
 test('two plays belong to the shared recording, survive questions/resume and retain deferred per-question scoring',async()=>{
@@ -42,7 +42,7 @@ test('failed transfer costs no play; progress, leases and repeated completions c
   const resumed={...p,clientId:randomUUID(),positionMs:100};await assessedOperation(db,f,'begin',resumed);
   await assert.rejects(assessedOperation(db,f,'progress',{...resumed,positionMs:0}),/audio_progress_invalid/);
   await assert.rejects(assessedOperation(db,f,'complete',{...p,positionMs:300}),/audio_playback_conflict/);
-  await db.query("update learning_assessed_audio set last_event_at=clock_timestamp()-interval '1 second'");
+  await db.query("update learning_assessed_audio set playback_anchor_at=clock_timestamp()-interval '1 second',last_event_at=clock_timestamp()-interval '1 second'");
   const results=await Promise.all([assessedOperation(db,f,'complete',{...resumed,positionMs:300}),assessedOperation(db,f,'complete',{...resumed,positionMs:300})]);
   assert.ok(results.every(x=>x.completedPlays===1));
   await assessedOperation(db,f,'failed');assert.equal((await assessedOperation(db,f,'state')).completedPlays,1);
@@ -66,6 +66,28 @@ test('technical cancellation retains exposure/history and does not charge a Mast
 });
 test('source withdrawal still permits an unscored exit without undoing revocation',async()=>{
  const db=await database();try{const f=await assessedFixture(db);await db.query("update learning_audio_versions set revoked_at=now(),revocation_reason='Synthetic withdrawal' where id=$1",[f.audioId]);await assert.rejects(assessedOperation(db,f,'load'),/audio_unavailable/);await assessedOperation(db,f,'failed');assert.equal((await assessedOperation(db,f,'cancel')).endedUnscored,true);}finally{await db.close();}
+});
+
+test('variable request delay cannot reject normal playback; resume grants no paused-time or forward-seek credit',async()=>{
+ const db=await database();try{
+  const f=await assessedFixture(db,{durationMs:10000}),p=payload();
+  await assessedOperation(db,f,'load');await assessedOperation(db,f,'fetched');await assessedOperation(db,f,'begin',p);
+  // A 750ms checkpoint took longer in transit than the following 1500ms
+  // checkpoint. Only 300ms separated their server arrivals, but neither
+  // captured playback position exceeded actual time since begin.
+  await db.query("update learning_assessed_audio set position_ms=750,playback_anchor_at=clock_timestamp()-interval '1.8 seconds',last_event_at=clock_timestamp()-interval '0.3 seconds',lease_until=clock_timestamp()+interval '5 seconds' where session_id=$1",[f.session]);
+  assert.equal((await assessedOperation(db,f,'progress',{...p,positionMs:1500})).resumePositionMs,1500);
+  await assert.rejects(assessedOperation(db,f,'progress',{...p,positionMs:8000}),/audio_progress_invalid/);
+  await assert.rejects(assessedOperation(db,f,'progress',{...p,positionMs:1000}),/audio_progress_invalid/);
+  await assessedOperation(db,f,'pause',{...p,positionMs:1500});
+  await db.query("update learning_assessed_audio set playback_anchor_at=clock_timestamp()-interval '1 hour' where session_id=$1",[f.session]);
+  const resume={...p,clientId:randomUUID(),positionMs:1500};await assessedOperation(db,f,'begin',resume);
+  await assert.rejects(assessedOperation(db,f,'progress',{...resume,positionMs:8000}),/audio_progress_invalid/);
+  assert.equal((await assessedOperation(db,f,'state')).completedPlays,0);
+  const anchor=(await db.query('select playback_anchor_position_ms from learning_assessed_audio where session_id=$1',[f.session])).rows[0];assert.equal(anchor.playback_anchor_position_ms,1500);
+  await db.query("update learning_assessed_audio set lease_until=clock_timestamp()-interval '1 second' where session_id=$1",[f.session]);
+  await assert.rejects(assessedOperation(db,f,'progress',{...resume,positionMs:1500}),/audio_playback_conflict/);
+ }finally{await db.close();}
 });
 
 test('closed v4 policy, multiple subjects, live ownership and service-only ledger remain enforced',async()=>{

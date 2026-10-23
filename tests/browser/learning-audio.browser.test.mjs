@@ -33,7 +33,13 @@ async function setup(t,options={}){
     const request=new Request('https://fixture.invalid'+url.pathname,{method:'POST',headers:{Authorization:req.headers.authorization,'Content-Type':'application/json'},body:Buffer.concat(chunks)});
     const name=url.pathname.split('/').at(-1);
     let result;
-    if(name==='get-learning-audio')result=await f.handle(request);
+    if(name==='get-learning-audio'){
+     // Exercise captured media time against variable request arrival, using
+     // the real browser player, Edge handler and SQL ledger.
+     const body=JSON.parse(Buffer.concat(chunks));
+     if(options.progressJitter&&body.action==='progress'&&!f.progressDelayed){f.progressDelayed=true;await new Promise(resolve=>setTimeout(resolve,900));}
+     result=await f.handle(request);
+    }
     else{const routed=await routeGovernedLearning({admin:f.admin,studentId:id(10),token:token(),request,operation:{'start-learning-session':'start','get-mastery-check-status':'status','get-session-item':'item','submit-answer':'answer'}[name]});result=new Response(JSON.stringify(routed.body),{status:routed.status,headers:{'Content-Type':'application/json'}});}
     res.writeHead(result.status,Object.fromEntries(result.headers));res.end(Buffer.from(await result.arrayBuffer()));return;
    }
@@ -129,6 +135,15 @@ test('assessed native interruption resumes its checkpoint, prevents seeking/rate
  await expect(page.locator('#root')).toContainText('Գնահատվող փորձ չի օգտագործվել');
  assert.equal((await f.db.query('select status from learning_sessions where id=$1',[f.session])).rows[0].status,'abandoned');
  assert.equal(Number((await f.db.query('select count(*) n from attempts where learning_session_id=$1',[f.session])).rows[0].n),0);assert.deepEqual(errors,[]);
+});
+
+test('assessed native real-time playback survives unequal checkpoint arrival delays',async t=>{
+ const {f,page,errors}=await setup(t,{assessed:{durationMs:5000},progressJitter:true});
+ await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);
+ await page.locator('[data-audio-play]').click();
+ await expect(page.locator('[data-audio-count]')).toContainText('1/2',{timeout:12000});
+ const row=(await f.db.query('select completed_plays,failed_at,playback_anchor_at from learning_assessed_audio')).rows[0];
+ assert.equal(row.completed_plays,1);assert.equal(row.failed_at,null);assert.equal(row.playback_anchor_at,null);assert.equal(f.progressDelayed,true);assert.deepEqual(errors,[]);
 });
 
 test('assessed player disposal discards a late blob without recording a play',async t=>{
