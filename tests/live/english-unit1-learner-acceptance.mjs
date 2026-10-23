@@ -261,41 +261,46 @@ async function main(){
   await save();
   // Writing is a separate retained workflow; scores below are synthetic test
   // values, not a linguistic evaluation or the independent specialist gate.
-  stage='writing';report.writingBaseline??=digest(await dashboard());
+  stage='writing';await learner.setViewportSize({width:390,height:844});report.writingBaseline??=digest(await dashboard());
   const teacher=await pageFor('A_teacher');
   const workApi=(actor,action,payload={})=>api(actor,'manage-written-work',{action,context:actor==='A_student'?selection(a):staff(a),payload});
   async function studentWork(){await learner.goto(href({tab:'writing'}));await learner.locator(`[data-writing-open="${writingTaskId}"]`).click();return workApi('A_student','open',{taskId:writingTaskId});}
   async function teacherQueue(){await teacher.goto(`${site}/teacher.html?${new URLSearchParams({view:'class',class:a.classId,assignment:a.teacherAssignmentId,release:a.curriculumReleaseId,unit:a.unitId})}`);await teacher.locator('#teacherOpenWrittenWork').click();await expect(teacher.locator('.written-list')).toBeVisible();}
-  let model=await studentWork();
+  report.writingPhase='open';let model=await studentWork();
   if(!model.work||model.work.state==='draft'){
+   report.writingPhase='draft-and-submit';
    const synthetic=Array(79).fill('fixture').concat("don't",'blue-green').join(' ');
    await learner.locator('[data-writing-text]').fill(synthetic);await expect(learner.locator('[data-writing-count]')).toHaveText('81 բառ');
    await learner.locator('[data-writing-save]').click();await expect(learner.locator('[data-writing-message]')).toHaveText('Սևագիրը պահպանված է։');
    model=await workApi('A_student','open',{taskId:writingTaskId});report.workId=model.work.id;await save();
    await teacherQueue();check('unsubmitted draft is absent from teacher queue',await teacher.locator(`[data-writing-open="${report.workId}"]`).count()===0);
    await studentWork();check('draft reload preserves synthetic text',await learner.locator('[data-writing-text]').inputValue()===synthetic);
-   await learner.locator('[data-writing-submit]').click();await expect(learner.locator('.written-response')).toBeVisible();
+   await learner.locator('[data-writing-submit]').click();await expect(learner.locator('[data-writing-message]')).toHaveText('Աշխատանքը ներկայացված է ուսուցչին։');
+   await expect(learner.locator('[data-writing-text]')).toHaveCount(0);await expect(learner.locator('.written-response')).toBeVisible();
    check('pending writing is not a zero score',await learner.locator('.written-score').count()===0);report.writingChecks={draftReload:true,privateDraft:true,pendingNotZero:true};await save();
    model=await workApi('A_student','open',{taskId:writingTaskId});
   }
   if(model.work?.state==='submitted'&&model.submissions.length===1){
-   await teacherQueue();await teacher.locator(`[data-writing-open="${report.workId}"]`).click();
+   report.writingPhase='return';await teacherQueue();await teacher.locator(`[data-writing-open="${report.workId}"]`).click();
    await teacher.locator('[data-writing-feedback]').fill('Synthetic workflow check: please revise this test response. This is not an evaluation of language quality.');
    await teacher.locator('[data-writing-return]').click();await expect(teacher.locator('[data-writing-message]')).toContainText('վերադարձվել');
    report.writingChecks.returned=true;await save();model=await studentWork();
   }
   if(model.work?.state==='changes_requested'){
+   report.writingPhase='resubmit';
    await learner.locator('[data-writing-text]').fill(Array(80).fill('revised-fixture').concat("don't",'blue-green').join(' '));
-   await learner.locator('[data-writing-submit]').click();await expect(learner.locator('.written-response')).toBeVisible();
+   await learner.locator('[data-writing-submit]').click();await expect(learner.locator('[data-writing-message]')).toHaveText('Աշխատանքը ներկայացված է ուսուցչին։');
+   await expect(learner.locator('[data-writing-text]')).toHaveCount(0);await expect(learner.locator('.written-response')).toBeVisible();
    check('revised submission remains pending without zero',await learner.locator('.written-score').count()===0);report.writingChecks.resubmitted=true;await save();model=await workApi('A_student','open',{taskId:writingTaskId});
   }
   if(model.work?.state==='submitted'&&model.submissions.length===2){
+   report.writingPhase='mark';
    await teacherQueue();await teacher.locator(`[data-writing-open="${report.workId}"]`).click();
    for(const criterion of model.task.definition.criteria)await teacher.locator(`[data-writing-score="${criterion.key}"]`).selectOption('2');
    await teacher.locator('[data-writing-feedback]').fill('Synthetic workflow check; these marks do not evaluate language quality.');
    await teacher.locator('[data-writing-grade]').click();await expect(teacher.locator('.written-score')).toHaveText('Արդյունք՝ 8/12');report.writingChecks.marked=true;await save();
   }
-  model=await studentWork();await expect(learner.locator('.written-score')).toHaveText('Արդյունք՝ 8/12');
+  report.writingPhase='feedback';model=await studentWork();await expect(learner.locator('.written-score')).toHaveText('Արդյունք՝ 8/12');
   check('two retained submissions and return plus marking history',model.work.state==='reviewed'&&model.submissions.length===2&&model.submissions.reduce((n,s)=>n+s.reviews.length,0)===2);
   await expect(learner.locator('.written-feedback').first()).toContainText('Synthetic workflow check');
   check('marked writing retains four criterion scores',model.task.definition.criteria.length===4);
@@ -307,7 +312,11 @@ async function main(){
   const detail=await api('A_teacher','get-teacher-student',{...staff(a),classId:a.classId,studentId:a.studentId});
   for(const mode of ['diagnostic','mastery_check']){const own=report.sessions.find(s=>s.mode===mode);const found=detail.sessions?.find(s=>s.id===own.id);check(`${mode}: matching teacher retains identical four-group result`,equal(found?.reporting,own.result));}
   const school=await api('A_admin','get-school-performance-analytics',{schoolId:a.schoolId,subjectProgramId:a.subjectProgramId,classId:a.classId,curriculumReleaseId:a.curriculumReleaseId,unitId:a.unitId});
-  check('school evidence retains approved policy groups',Array.isArray(school.evidenceGroups)&&['diagnostic','mastery_check'].every(mode=>school.evidenceGroups.some(g=>g.contract?.releaseId===a.curriculumReleaseId&&g.mode===mode&&g.reportingGroups?.length===4)));
+  check('school evidence retains approved policy groups',Array.isArray(school.analytics?.evidenceGroups)&&['diagnostic','mastery_check'].every(mode=>school.analytics.evidenceGroups.some(g=>g.contract?.releaseId===a.curriculumReleaseId&&g.mode===mode&&g.reportingGroups?.length===4)));
+  for(const mode of ['diagnostic','mastery_check']){
+   const own=report.sessions.find(s=>s.mode===mode),group=school.analytics.evidenceGroups.find(g=>g.contract?.releaseId===a.curriculumReleaseId&&g.mode===mode);
+   check(`${mode}: school retains the same four earned/possible totals`,group.sessions===1&&own.result.groups.every(g=>group.reportingGroups.some(x=>x.key===g.key&&x.earned===g.earned&&x.possible===g.possible)));
+  }
   for(const [actor,fn,body] of [
    ['B_student','get-student-dashboard',selection(a)],
    ['B_student','manage-written-work',{action:'open',context:selection(a),payload:{taskId:writingTaskId}}],
@@ -318,7 +327,7 @@ async function main(){
   for(const preserved of report.preserved){const d=await api(preserved.actor,'get-student-dashboard',preserved.context);check('other learner and all other release dashboards remain identical',digest(d)===preserved.sha256);}
   check('native browser has no unapproved requests or JavaScript errors',blocked===0&&pageErrors===0);
   await waitForRelease({expectedCommit:report.revision,timeoutMs:15000});check('production remains on exact reviewed revision',true);
- }catch(error){report.failure={stage,errorType:error?.name??'Error'};if(!report.checks.some(c=>c.status==='failed'))report.checks.push({label:`${stage}: acceptance unfinished; raw errors withheld`,status:'failed'});}
+ }catch(error){report.failure={stage,...(stage==='writing'?{writingPhase:report.writingPhase}:{}),errorType:error?.name??'Error'};if(!report.checks.some(c=>c.status==='failed'))report.checks.push({label:`${stage}: acceptance unfinished; raw errors withheld`,status:'failed'});}
  finally{
   await browser?.close();
   for(const [actor] of sessions){const r=await request(actor,'/auth/v1/logout?scope=local');report.checks.push({label:`${actor}: close only this authentication session`,status:[200,204].includes(r.status)?'passed':'failed',httpStatus:r.status});}
