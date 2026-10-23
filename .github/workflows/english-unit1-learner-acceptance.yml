@@ -1,0 +1,85 @@
+name: English Unit 1 learner acceptance
+
+# Retained attempts consume finite forms: never run on push or pull_request.
+on:
+  workflow_dispatch:
+    inputs:
+      resume_run_id:
+        description: 'Prior incomplete learner acceptance run ID; blank for a fresh designated learner'
+        required: false
+        type: string
+
+permissions:
+  contents: read
+  actions: read
+
+concurrency:
+  group: sprint-14-isolation-qa
+  cancel-in-progress: false
+
+jobs:
+  bounded-learner-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 45
+    steps:
+      - name: Require reviewed main branch
+        run: test "$GITHUB_REF" = refs/heads/main
+      - uses: actions/checkout@v4
+      - name: Require recorded activation before installing browsers or loading credentials
+        run: test -f docs/evidence/english-7-unit-01-pilot-activation.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Bound Ubuntu downloads for browser acceptance
+        run: |
+          # Runner-only transport settings; package signatures and TLS verification stay enabled.
+          # Bound slow mirror downloads without changing package trust or test timeouts.
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i 's#http://azure.archive.ubuntu.com/ubuntu#https://archive.ubuntu.com/ubuntu#g' /etc/apt/apt-mirrors.txt
+          fi
+          printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80-haiedu-ci >/dev/null
+      - run: npx playwright install --with-deps chromium
+      - name: Wait for this frontend revision on production
+        run: node scripts/wait-for-production-release.mjs
+      - name: Validate continuation selector
+        env:
+          RESUME_RUN: ${{ inputs.resume_run_id }}
+        run: |
+          if [ -n "$RESUME_RUN" ]; then
+            case "$RESUME_RUN" in *[!0-9]*) exit 1;; esac
+          fi
+      - name: Load prior retained run ledger when explicitly selected
+        if: inputs.resume_run_id != ''
+        uses: actions/download-artifact@v4
+        with:
+          name: english-unit1-learner-acceptance
+          path: qa-resume
+          github-token: ${{ github.token }}
+          run-id: ${{ inputs.resume_run_id }}
+      - name: Complete bounded learner, audio and writing acceptance
+        run: node tests/live/english-unit1-learner-acceptance.mjs
+        env:
+          QA_RESUME_RUN_ID: ${{ inputs.resume_run_id }}
+          QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
+          QA_SCHOOL_A_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_A_ADMIN_EMAIL }}
+          QA_SCHOOL_A_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_A_ADMIN_PASSWORD }}
+          QA_SCHOOL_A_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_A_TEACHER_EMAIL }}
+          QA_SCHOOL_A_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_A_TEACHER_PASSWORD }}
+          QA_SCHOOL_A_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_A_STUDENT_EMAIL }}
+          QA_SCHOOL_A_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_A_STUDENT_PASSWORD }}
+          QA_SCHOOL_B_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_B_ADMIN_EMAIL }}
+          QA_SCHOOL_B_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_B_ADMIN_PASSWORD }}
+          QA_SCHOOL_B_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_B_TEACHER_EMAIL }}
+          QA_SCHOOL_B_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_B_TEACHER_PASSWORD }}
+          QA_SCHOOL_B_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_B_STUDENT_EMAIL }}
+          QA_SCHOOL_B_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_B_STUDENT_PASSWORD }}
+      - name: Upload redacted checks and designated QA screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: english-unit1-learner-acceptance
+          path: qa-results/
+          if-no-files-found: warn
+          retention-days: 14
