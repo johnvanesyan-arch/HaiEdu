@@ -1,0 +1,1009 @@
+{
+  "schemaVersion": "haiedu-unit-authoring-evidence-v1",
+  "checkpoint": "16.1C.29",
+  "date": "2026-10-23",
+  "timezone": "Asia/Yerevan",
+  "baselineCommit": "80e7012542bfce9403bb88d33848a9c586227db8",
+  "ownerAcceptance": "english-7-unit-02-owner-acceptance-20261023.json",
+  "scope": "Subject-aware English Grade 7 Unit 2 content extension; existing response/source/reviewer contracts; no core/runtime/schema changes.",
+  "counts": {
+    "practice": 72,
+    "diagnostic": 48,
+    "mastery": 72,
+    "automaticallyScoredBank": 192,
+    "separateWritingResponses": 1,
+    "diagnosticForms": 2,
+    "masteryForms": 3,
+    "questionsPerForm": 24,
+    "practiceCoreCandidates": 47,
+    "practiceOptionalSupportExtension": 25,
+    "newAssessmentRecordings": 10,
+    "retainedPracticeAudioSources": 4,
+    "practiceReadingSources": 4,
+    "assessmentReadingSources": 10,
+    "plannedSharedTaskSets": 28,
+    "guideDrafts": 8
+  },
+  "corpusRefresh": {
+    "observedAt": "2026-10-23T11:58:23.453767+00:00",
+    "bankUnchanged": true,
+    "contextUnchanged": true,
+    "items": 200,
+    "versions": 259,
+    "reusedCorpus": "libfile_f8de15ff776c819190ec3c29ef19eb17",
+    "comparisonScope": "all English items including retired/current versions, complete linked sources/materials/templates/families, aggregate exposure and equivalent mappings"
+  },
+  "comparison": {
+    "priorItems": 200,
+    "immutableVersions": 259,
+    "withinBatchPairs": 18336,
+    "candidateRecords": 192,
+    "sourceComparisons": 20,
+    "reworkedAssessmentCandidates": 53,
+    "guideCollisionReworked": true,
+    "independentNewReasoningClaimed": false,
+    "author": "Codex automated author and semantic self-review; no independent SME claim",
+    "shortfall": 0,
+    "qualifiedForAllocation": 0,
+    "sourceHeld": 60,
+    "historyReused": "All 59 extra versions have unchanged assessed prompt/response/key projection; full source/material/template/mapping/exposure corpus refreshed unchanged.",
+    "artifact": {
+      "filename": "haiedu-english7-unit2-review-20261023.zip",
+      "libraryFileId": "libfile_1f21807c749c81918e20625fedca4a5e",
+      "version": 0,
+      "sha256": "4209b6f157564082647900b8f4cb28b2c14f04a8bdabc5c12c0be1fe2a426987",
+      "authoringSha256": "3229a9f38930821fc3cd3e77a42983083d4d6dd24960928a0057c2c1aff5f5ed",
+      "materialsSha256": "0dd267c32c22032ddace0537cf3eece134cc5eddace105a7badb945e0066a6c6",
+      "comparisonSha256": "9bcbd028408caae8d86fa56db5aeb3547a3965e017a80b7d9d5bfe48fa7ceeae"
+    }
+  },
+  "validation": {
+    "actualContentQa": {
+      "passed": 132,
+      "readingSourceHeld": 30,
+      "listeningSourceHeld": 30,
+      "otherErrors": 0,
+      "warning": "misconception_mapping_missing under existing review_notes_only; explanatory notes retained; no fake approved definitions"
+    },
+    "multipleChoiceGrading": {
+      "singleChoiceItems": 176,
+      "choiceChecks": 704,
+      "passed": 704,
+      "structuredCases": 87,
+      "execution": "Actual unchanged gradeAnswer helper for MCQ; SQL cases prepared for actual deployed immutable graders; no learner attempt written."
+    },
+    "structuredDeployedGrading": {
+      "cases": 87,
+      "passed": 87,
+      "failures": null
+    },
+    "materials": {
+      "count": 9,
+      "actualSqlQaPassed": 9
+    },
+    "browserClaim": "No new authenticated browser or playback acceptance claimed; shared code is unchanged. Reviewer data, primary scopes, release-skill mappings and immutable snapshots are independently read back."
+  },
+  "staging": {
+    "checkpoint": "16.1C.29",
+    "currentDraftRowsExact": 1895,
+    "snapshotContextsExact": 192,
+    "snapshotsMatchSavedItemOptionsKeys": true,
+    "all117PriorRowFingerprintsPreserved": true,
+    "newRows": 2105,
+    "allowedDeltas": {
+      "public.skills": 15,
+      "public.curriculum_release_skills": 15,
+      "public.item_families": 192,
+      "public.item_templates": 192,
+      "public.items": 192,
+      "public.item_options": 704,
+      "public.item_answer_keys": 192,
+      "public.item_curriculum_scopes": 192,
+      "public.unit_material_versions": 9,
+      "public.item_qa_runs": 192,
+      "public.item_versions": 192,
+      "public.unit_material_events": 18
+    },
+    "materialQaPasses": 9,
+    "reviewStates": "192 needs_review/provisional_no_sme_review/draft; 9 draft materials; no human approval assigned",
+    "sourceHolds": {
+      "reading": 30,
+      "listening": 30
+    },
+    "questionQaPasses": 132,
+    "questionQaWarningOnly": "misconception_mapping_missing; meaningful option/field notes retained under review_notes_only; not a blocking error",
+    "rollbackReadback117Unchanged": true,
+    "transactionIsolation": "read committed as required by existing curriculum governance; all 117 tables locked and stale/hash/delta guards enforced",
+    "initialDryRun": "Repeatable-read attempt was rejected by existing governance before completion; no persisted rows. Corrected isolation passed rollback, independent restoration, commit and readback.",
+    "noRuntimeSchemaPolicyStorageOrLearnerReleaseChanges": true
+  },
+  "commitEvidence": {
+    "items": 192,
+    "materials": 9,
+    "checkpoint": "16.1C.29",
+    "observedAt": "2026-10-23T12:18:20.192074+00:00",
+    "sourceHeld": 60,
+    "allowedDeltas": {
+      "public.items": 192,
+      "public.skills": 15,
+      "public.item_options": 704,
+      "public.item_qa_runs": 192,
+      "public.item_families": 192,
+      "public.item_versions": 192,
+      "public.item_templates": 192,
+      "public.item_answer_keys": 192,
+      "public.unit_material_events": 18,
+      "public.item_curriculum_scopes": 192,
+      "public.unit_material_versions": 9,
+      "public.curriculum_release_skills": 15
+    },
+    "guardedTables": 117,
+    "materialQaPassed": 9,
+    "standaloneQaPassed": 132,
+    "allPriorRowsPreserved": true
+  },
+  "rollbackEvidence": {
+    "items": 192,
+    "materials": 9,
+    "checkpoint": "16.1C.29",
+    "observedAt": "2026-10-23T12:17:51.276959+00:00",
+    "sourceHeld": 60,
+    "allowedDeltas": {
+      "public.items": 192,
+      "public.skills": 15,
+      "public.item_options": 704,
+      "public.item_qa_runs": 192,
+      "public.item_families": 192,
+      "public.item_versions": 192,
+      "public.item_templates": 192,
+      "public.item_answer_keys": 192,
+      "public.unit_material_events": 18,
+      "public.item_curriculum_scopes": 192,
+      "public.unit_material_versions": 9,
+      "public.curriculum_release_skills": 15
+    },
+    "guardedTables": 117,
+    "materialQaPassed": 9,
+    "standaloneQaPassed": 132,
+    "allPriorRowsPreserved": true
+  },
+  "readbackFingerprints": [
+    {
+      "schema_name": "private",
+      "table_name": "active_curriculum_release_units",
+      "row_count": 7,
+      "full_hash": "433e53805d3f49ccf9cc282aebbc19ea",
+      "prior_rows_hash": "433e53805d3f49ccf9cc282aebbc19ea"
+    },
+    {
+      "schema_name": "private",
+      "table_name": "assessment_presentation_configuration",
+      "row_count": 1,
+      "full_hash": "44a36c7a982b21a2b70e8fe8cbbcbcc4",
+      "prior_rows_hash": "44a36c7a982b21a2b70e8fe8cbbcbcc4"
+    },
+    {
+      "schema_name": "private",
+      "table_name": "learning_session_item_option_orders",
+      "row_count": 93,
+      "full_hash": "d9c1855dc912a9d7af27693c310565af",
+      "prior_rows_hash": "d9c1855dc912a9d7af27693c310565af"
+    },
+    {
+      "schema_name": "private",
+      "table_name": "mastery_form_selection_bindings",
+      "row_count": 6,
+      "full_hash": "46bd0f02ea0dc7c47295014fc96f3660",
+      "prior_rows_hash": "46bd0f02ea0dc7c47295014fc96f3660"
+    },
+    {
+      "schema_name": "private",
+      "table_name": "mastery_form_serialization_fences",
+      "row_count": 1211,
+      "full_hash": "0d9865980ff824c4f3ee13242208df28",
+      "prior_rows_hash": "0d9865980ff824c4f3ee13242208df28"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "academic_identity_events",
+      "row_count": 814,
+      "full_hash": "7ce5079b33543b5497c744ccbc15543b",
+      "prior_rows_hash": "7ce5079b33543b5497c744ccbc15543b"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "academic_mastery_policy_activation",
+      "row_count": 1,
+      "full_hash": "6e1a63fb6eec8f81e4d1792078f49c47",
+      "prior_rows_hash": "6e1a63fb6eec8f81e4d1792078f49c47"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "academic_mastery_policy_versions",
+      "row_count": 1,
+      "full_hash": "33b38545c0070113c573947187bc96ab",
+      "prior_rows_hash": "33b38545c0070113c573947187bc96ab"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "academic_years",
+      "row_count": 2,
+      "full_hash": "1a1542decf778bf3de4b19bbcaa8e975",
+      "prior_rows_hash": "1a1542decf778bf3de4b19bbcaa8e975"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "account_deletion_requests",
+      "row_count": 3,
+      "full_hash": "27f7bc851682e61b1b0543435ae15f86",
+      "prior_rows_hash": "27f7bc851682e61b1b0543435ae15f86"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assessment_blueprint_items",
+      "row_count": 2128,
+      "full_hash": "7ab69784febcee045505b5eb1b3a871d",
+      "prior_rows_hash": "7ab69784febcee045505b5eb1b3a871d"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assessment_blueprints",
+      "row_count": 31,
+      "full_hash": "b4fa7268f8cc94f9b0c1e28388f9ed54",
+      "prior_rows_hash": "b4fa7268f8cc94f9b0c1e28388f9ed54"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assessment_form_items",
+      "row_count": 612,
+      "full_hash": "eaa4633f6d5134b55ac44334dc0f71b5",
+      "prior_rows_hash": "eaa4633f6d5134b55ac44334dc0f71b5"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assessment_forms",
+      "row_count": 34,
+      "full_hash": "edeac04222ed8efdf570125ca3b1a593",
+      "prior_rows_hash": "edeac04222ed8efdf570125ca3b1a593"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assessment_policy_bindings",
+      "row_count": 24,
+      "full_hash": "22ae0775996069362f9387e79d9e58f9",
+      "prior_rows_hash": "22ae0775996069362f9387e79d9e58f9"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assessment_pool_curriculum_reconciliations",
+      "row_count": 21,
+      "full_hash": "71642b545b7eb47cb2f713a187b29e9b",
+      "prior_rows_hash": "71642b545b7eb47cb2f713a187b29e9b"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assessment_pool_items",
+      "row_count": 1442,
+      "full_hash": "97302fa6cbb513316deedd2b1f030009",
+      "prior_rows_hash": "97302fa6cbb513316deedd2b1f030009"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assessment_pools",
+      "row_count": 22,
+      "full_hash": "83afb122f77bb9a14861913f3d94a9b8",
+      "prior_rows_hash": "83afb122f77bb9a14861913f3d94a9b8"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assignment_skills",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "assignments",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "attempts",
+      "row_count": 115,
+      "full_hash": "b023687f591acd139935a47d8122d8d8",
+      "prior_rows_hash": "b023687f591acd139935a47d8122d8d8"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "calibration_analysis_scopes",
+      "row_count": 1,
+      "full_hash": "66a320758699f273bbb063911d160789",
+      "prior_rows_hash": "66a320758699f273bbb063911d160789"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "calibration_change_decisions",
+      "row_count": 1,
+      "full_hash": "8b0c4bf4e83fce4a7e200da3dbd07129",
+      "prior_rows_hash": "8b0c4bf4e83fce4a7e200da3dbd07129"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "calibration_decision_protocols",
+      "row_count": 1,
+      "full_hash": "4ca5dc7272d02d37a44484f34a20d01a",
+      "prior_rows_hash": "4ca5dc7272d02d37a44484f34a20d01a"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "calibration_evidence_contracts",
+      "row_count": 2,
+      "full_hash": "daa564081564e197fd9aeea97ba1719f",
+      "prior_rows_hash": "daa564081564e197fd9aeea97ba1719f"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "calibration_metric_sets",
+      "row_count": 2,
+      "full_hash": "996427ab7940c882c6e8a73af7183da2",
+      "prior_rows_hash": "996427ab7940c882c6e8a73af7183da2"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "chapter_mastery_states",
+      "row_count": 2,
+      "full_hash": "13e48549e5b3bc151fc4dec8ee902c77",
+      "prior_rows_hash": "13e48549e5b3bc151fc4dec8ee902c77"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "chapter_review_cycles",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "chapter_review_item_exposures",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "chapter_review_requirements",
+      "row_count": 1,
+      "full_hash": "88e05bc404e2045c5cfcbc2c8c5a8729",
+      "prior_rows_hash": "88e05bc404e2045c5cfcbc2c8c5a8729"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "chapter_review_sessions",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "class_memberships",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "classes",
+      "row_count": 86,
+      "full_hash": "38e856a4bc3bb32259dad4b1144bb5b3",
+      "prior_rows_hash": "38e856a4bc3bb32259dad4b1144bb5b3"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_authorities",
+      "row_count": 2,
+      "full_hash": "f00891e16d79dfa59fd01aa81703c4e7",
+      "prior_rows_hash": "f00891e16d79dfa59fd01aa81703c4e7"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_frameworks",
+      "row_count": 1,
+      "full_hash": "0638e3ed36e82f0798ffacfa0dab576f",
+      "prior_rows_hash": "0638e3ed36e82f0798ffacfa0dab576f"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_reconciliation_runs",
+      "row_count": 7,
+      "full_hash": "0099af50ac72dc7bbb1909ff08f2980c",
+      "prior_rows_hash": "0099af50ac72dc7bbb1909ff08f2980c"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_release_gate_checks",
+      "row_count": 56,
+      "full_hash": "b0f5c8b9a71cc3453cc7324741ad924c",
+      "prior_rows_hash": "b0f5c8b9a71cc3453cc7324741ad924c"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_release_item_families",
+      "row_count": 1228,
+      "full_hash": "0d8fbf0f8ece2dd12bc8675a5b26ab3c",
+      "prior_rows_hash": "0d8fbf0f8ece2dd12bc8675a5b26ab3c"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_release_outcomes",
+      "row_count": 63,
+      "full_hash": "3d34403908e5adf72ebb64aeea547810",
+      "prior_rows_hash": "3d34403908e5adf72ebb64aeea547810"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_release_reconciliations",
+      "row_count": 7,
+      "full_hash": "cdefba005af9f4934f5e79f194dffa08",
+      "prior_rows_hash": "cdefba005af9f4934f5e79f194dffa08"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_release_skills",
+      "row_count": 95,
+      "full_hash": "c15f54e7df5f27c074006b306dad552e",
+      "prior_rows_hash": "26a68d43ac40351ea16290459911b586"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_release_units",
+      "row_count": 9,
+      "full_hash": "427e2289f45dec48fe612e54b860d85d",
+      "prior_rows_hash": "427e2289f45dec48fe612e54b860d85d"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_releases",
+      "row_count": 9,
+      "full_hash": "f57032e74aff86cf5f1c2a6bec95d76e",
+      "prior_rows_hash": "f57032e74aff86cf5f1c2a6bec95d76e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "curriculum_source_documents",
+      "row_count": 5,
+      "full_hash": "cec5af35d6f12d51947e16f78c644889",
+      "prior_rows_hash": "cec5af35d6f12d51947e16f78c644889"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "grades",
+      "row_count": 12,
+      "full_hash": "c0b7399ce2a7aa1462c2f2c5ae92209e",
+      "prior_rows_hash": "c0b7399ce2a7aa1462c2f2c5ae92209e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "institutional_class_enrollments",
+      "row_count": 5,
+      "full_hash": "457de1be8ba33c7637cf64180a06f849",
+      "prior_rows_hash": "457de1be8ba33c7637cf64180a06f849"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "institutional_invitations",
+      "row_count": 78,
+      "full_hash": "e4681124a8b739bdb88aa2ac4291147a",
+      "prior_rows_hash": "e4681124a8b739bdb88aa2ac4291147a"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "institutional_join_codes",
+      "row_count": 41,
+      "full_hash": "9d53552aa1ff49c73fab5f0de76b7556",
+      "prior_rows_hash": "9d53552aa1ff49c73fab5f0de76b7556"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "institutional_memberships",
+      "row_count": 44,
+      "full_hash": "20d7876ee7125e6fe279660c75a2ce52",
+      "prior_rows_hash": "20d7876ee7125e6fe279660c75a2ce52"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_answer_keys",
+      "row_count": 1643,
+      "full_hash": "bf7d73559d0aa7570a11992e9b72b00d",
+      "prior_rows_hash": "41db822a925bdfcd3dda327bc752315b"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_curriculum_scopes",
+      "row_count": 1643,
+      "full_hash": "9cb5817da378a95c109af445d0469818",
+      "prior_rows_hash": "7429a3c81b590ab62995966690b80acf"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_families",
+      "row_count": 1421,
+      "full_hash": "45fa38d3da3984843db7b97bcd5b5ae6",
+      "prior_rows_hash": "6e244b5c2e9acbf3828b8798779ff766"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_family_curriculum_reconciliations",
+      "row_count": 1229,
+      "full_hash": "cac67eebac2da8931b492190f8c17025",
+      "prior_rows_hash": "cac67eebac2da8931b492190f8c17025"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_misconception_mappings",
+      "row_count": 3212,
+      "full_hash": "4fc5cd2c40c3abb3929a180b70cf4336",
+      "prior_rows_hash": "4fc5cd2c40c3abb3929a180b70cf4336"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_options",
+      "row_count": 5522,
+      "full_hash": "554a8a67172a7eeb4271c29e53b98e59",
+      "prior_rows_hash": "9ffbd26f329807eab20a9c31faf96355"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_qa_runs",
+      "row_count": 2011,
+      "full_hash": "2ae3bb2b56adac1e148609d3de6ed846",
+      "prior_rows_hash": "a8152e06cb4c808496e6c7c67aae0c8e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_reviews",
+      "row_count": 1733,
+      "full_hash": "7f9054b84fac1358a947729fb0addf4c",
+      "prior_rows_hash": "7f9054b84fac1358a947729fb0addf4c"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_template_remediation_guides",
+      "row_count": 518,
+      "full_hash": "4c96c727bdf5170b824051b1403c896c",
+      "prior_rows_hash": "4c96c727bdf5170b824051b1403c896c"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_templates",
+      "row_count": 1421,
+      "full_hash": "0a006e9abd72e38deb0bbca2ee350bfb",
+      "prior_rows_hash": "6df855c81f591db8f9ae1e8667283755"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "item_versions",
+      "row_count": 1597,
+      "full_hash": "de9795ddb82e15d33b77985fbf3c8110",
+      "prior_rows_hash": "e3c11c2eafd66000c25ce95bc6feb15e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "items",
+      "row_count": 1643,
+      "full_hash": "c4c8206aac2480b42ff406c7c0ef5740",
+      "prior_rows_hash": "f3e2139fc4bda75f50362751d3a3f0a0"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_assessed_audio",
+      "row_count": 4,
+      "full_hash": "472c0079731451c4f0df7c718265c5d6",
+      "prior_rows_hash": "472c0079731451c4f0df7c718265c5d6"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_audio_deliveries",
+      "row_count": 4,
+      "full_hash": "05735362ae9375ae62b78265ae08a4c9",
+      "prior_rows_hash": "05735362ae9375ae62b78265ae08a4c9"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_audio_versions",
+      "row_count": 15,
+      "full_hash": "01ad82b1fe1c5ac419062de5dcc4d63a",
+      "prior_rows_hash": "01ad82b1fe1c5ac419062de5dcc4d63a"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_model_configurations",
+      "row_count": 7,
+      "full_hash": "1a02cf0499ed27073271239e4255dfe2",
+      "prior_rows_hash": "1a02cf0499ed27073271239e4255dfe2"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_model_runtime_bindings",
+      "row_count": 7,
+      "full_hash": "0341fafd65e0673b5f8877f626311a5d",
+      "prior_rows_hash": "0341fafd65e0673b5f8877f626311a5d"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_outcome_normative_mappings",
+      "row_count": 63,
+      "full_hash": "38ea1f17e168888b24974ff9a5a07b67",
+      "prior_rows_hash": "38ea1f17e168888b24974ff9a5a07b67"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_outcomes",
+      "row_count": 63,
+      "full_hash": "1d716a1fd0877f334a92692edb9858ef",
+      "prior_rows_hash": "1d716a1fd0877f334a92692edb9858ef"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_response_drafts",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_session_items",
+      "row_count": 169,
+      "full_hash": "2a93f75f4c6abc06ad606c477f33b50d",
+      "prior_rows_hash": "2a93f75f4c6abc06ad606c477f33b50d"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_sessions",
+      "row_count": 17,
+      "full_hash": "acd5a55f16c1fbb432aa4ff962144f5b",
+      "prior_rows_hash": "acd5a55f16c1fbb432aa4ff962144f5b"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_source_family_exposures",
+      "row_count": 23,
+      "full_hash": "1b5a2f9335c7aab8015e3acc3878292f",
+      "prior_rows_hash": "1b5a2f9335c7aab8015e3acc3878292f"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "learning_task_set_versions",
+      "row_count": 27,
+      "full_hash": "fca6971d61cc8514520ff376e7987f8d",
+      "prior_rows_hash": "fca6971d61cc8514520ff376e7987f8d"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "legacy_learning_blueprint_mappings",
+      "row_count": 7,
+      "full_hash": "57efa30bbcff4c536f428f490071af7a",
+      "prior_rows_hash": "57efa30bbcff4c536f428f490071af7a"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "mastery_check_attempts",
+      "row_count": 2,
+      "full_hash": "90264915a72415215bd57c64cb611997",
+      "prior_rows_hash": "90264915a72415215bd57c64cb611997"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "misconception_review_events",
+      "row_count": 1026,
+      "full_hash": "2f50d13afdd9bc8991867f99d5aa940f",
+      "prior_rows_hash": "2f50d13afdd9bc8991867f99d5aa940f"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "misconceptions",
+      "row_count": 1033,
+      "full_hash": "8bc62a2cc2653d8c93688e96cb8f52fe",
+      "prior_rows_hash": "8bc62a2cc2653d8c93688e96cb8f52fe"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "pilot_evidence_classifications",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "pilot_gate_checks",
+      "row_count": 11,
+      "full_hash": "3e41b79199790e11902129d4a9904e67",
+      "prior_rows_hash": "3e41b79199790e11902129d4a9904e67"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "pilot_participant_events",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "pilot_participants",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "pilot_runs",
+      "row_count": 1,
+      "full_hash": "585ce8b9927e4db5865e2b08b06c76bb",
+      "prior_rows_hash": "585ce8b9927e4db5865e2b08b06c76bb"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "privacy_preferences",
+      "row_count": 2,
+      "full_hash": "2973d89d91d51e1ffdb58c236077bd45",
+      "prior_rows_hash": "2973d89d91d51e1ffdb58c236077bd45"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "profiles",
+      "row_count": 11,
+      "full_hash": "172990109533e720e9eb026819eae3a1",
+      "prior_rows_hash": "172990109533e720e9eb026819eae3a1"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "recommendation_events",
+      "row_count": 841,
+      "full_hash": "02f80c88e32d008f87621ac9bd087a6f",
+      "prior_rows_hash": "02f80c88e32d008f87621ac9bd087a6f"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "remediation_events",
+      "row_count": 6,
+      "full_hash": "6c5aa87d43e93dbd18a26c73dae4e261",
+      "prior_rows_hash": "6c5aa87d43e93dbd18a26c73dae4e261"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "remediation_guide_authoring_versions",
+      "row_count": 1708,
+      "full_hash": "f7caff31ac6487b0e8529ab078b58584",
+      "prior_rows_hash": "f7caff31ac6487b0e8529ab078b58584"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "remediation_guide_versions",
+      "row_count": 1067,
+      "full_hash": "39cad006e92f6ef2caf04006cd424b38",
+      "prior_rows_hash": "39cad006e92f6ef2caf04006cd424b38"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "runtime_builds",
+      "row_count": 28,
+      "full_hash": "b1f5b79fb37b164609998587e03b9148",
+      "prior_rows_hash": "b1f5b79fb37b164609998587e03b9148"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "schools",
+      "row_count": 2,
+      "full_hash": "9865da797be602b85b211d112a007b60",
+      "prior_rows_hash": "9865da797be602b85b211d112a007b60"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "security_audit_log",
+      "row_count": 34,
+      "full_hash": "709dd2f00d574bae5f7a3b4c09399835",
+      "prior_rows_hash": "709dd2f00d574bae5f7a3b4c09399835"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "skill_curriculum_reconciliations",
+      "row_count": 80,
+      "full_hash": "fc82692cf9cc476f2a6a9ae535730369",
+      "prior_rows_hash": "fc82692cf9cc476f2a6a9ae535730369"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "skill_outcome_curriculum_mappings",
+      "row_count": 101,
+      "full_hash": "e384deda8fa4c5ddf2585ae7d0a5d204",
+      "prior_rows_hash": "e384deda8fa4c5ddf2585ae7d0a5d204"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "skill_outcomes",
+      "row_count": 101,
+      "full_hash": "804bd91d71f1c84bd6a734c3adfc66b1",
+      "prior_rows_hash": "804bd91d71f1c84bd6a734c3adfc66b1"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "skill_prerequisites",
+      "row_count": 17,
+      "full_hash": "29495957b75eeb48e09d6e19e18fac35",
+      "prior_rows_hash": "29495957b75eeb48e09d6e19e18fac35"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "skill_remediation_guides",
+      "row_count": 10,
+      "full_hash": "3a51fc6e3a850044cd5c01d3a1919b49",
+      "prior_rows_hash": "3a51fc6e3a850044cd5c01d3a1919b49"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "skills",
+      "row_count": 96,
+      "full_hash": "b2275d0426eef43c59eba0bc77d90e7a",
+      "prior_rows_hash": "9c6de6ad10054666cb4f60fa3cdb5af6"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "staff_account_provisioning",
+      "row_count": 5,
+      "full_hash": "3e4f0bc3bf46ed82df1b85b9ae777a51",
+      "prior_rows_hash": "3e4f0bc3bf46ed82df1b85b9ae777a51"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "student_account_acceptances",
+      "row_count": 1,
+      "full_hash": "0bb495a0246142dba06a3cab138ee6b8",
+      "prior_rows_hash": "0bb495a0246142dba06a3cab138ee6b8"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "student_item_exposure_events",
+      "row_count": 117,
+      "full_hash": "0f7634043e302be4c09a76ae113b60ba",
+      "prior_rows_hash": "0f7634043e302be4c09a76ae113b60ba"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "student_skill_mastery",
+      "row_count": 25,
+      "full_hash": "2a533c2090f607f5fd1064456068680b",
+      "prior_rows_hash": "2a533c2090f607f5fd1064456068680b"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "student_skill_mastery_by_release",
+      "row_count": 25,
+      "full_hash": "a4a04bb3999106e0568ac9c40a0c443c",
+      "prior_rows_hash": "a4a04bb3999106e0568ac9c40a0c443c"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "subject_program_source_bindings",
+      "row_count": 3,
+      "full_hash": "06309553ebfce42d9715b134e5c9cffc",
+      "prior_rows_hash": "06309553ebfce42d9715b134e5c9cffc"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "subject_programs",
+      "row_count": 3,
+      "full_hash": "d4f570f76f47e8414a48512844289d84",
+      "prior_rows_hash": "d4f570f76f47e8414a48512844289d84"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "subjects",
+      "row_count": 3,
+      "full_hash": "5b376a85ad7b36a521ed9ef1fb8c5510",
+      "prior_rows_hash": "5b376a85ad7b36a521ed9ef1fb8c5510"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "teacher_assignments",
+      "row_count": 86,
+      "full_hash": "ee4e5b74567972a1fe3ae3027a807865",
+      "prior_rows_hash": "ee4e5b74567972a1fe3ae3027a807865"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "teacher_subject_authorizations",
+      "row_count": 41,
+      "full_hash": "7ab3c3a7ada6b1e13d5fd1bbd205d6a3",
+      "prior_rows_hash": "7ab3c3a7ada6b1e13d5fd1bbd205d6a3"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "textbook_mappings",
+      "row_count": 0,
+      "full_hash": "d41d8cd98f00b204e9800998ecf8427e",
+      "prior_rows_hash": "d41d8cd98f00b204e9800998ecf8427e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "textbooks",
+      "row_count": 1,
+      "full_hash": "2bc41205920960439a10b062b665430e",
+      "prior_rows_hash": "2bc41205920960439a10b062b665430e"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "topics",
+      "row_count": 31,
+      "full_hash": "5fc9ba6b1ea784c20d037c991f011645",
+      "prior_rows_hash": "5fc9ba6b1ea784c20d037c991f011645"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "unit_material_events",
+      "row_count": 54,
+      "full_hash": "dfabd9123853388ae7fdbcd6ac7db387",
+      "prior_rows_hash": "7a6f057ad53ba4a4aa582b493f216655"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "unit_material_versions",
+      "row_count": 19,
+      "full_hash": "bffab5f11ac406da13b1412876eff05d",
+      "prior_rows_hash": "07d5270069db1c20592bd2fab76eded0"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "units",
+      "row_count": 9,
+      "full_hash": "da2c1ace77fb8c5ff5b48d809e51b177",
+      "prior_rows_hash": "da2c1ace77fb8c5ff5b48d809e51b177"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "written_reviews",
+      "row_count": 2,
+      "full_hash": "801315a5107d214497f250024f678a00",
+      "prior_rows_hash": "801315a5107d214497f250024f678a00"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "written_submissions",
+      "row_count": 2,
+      "full_hash": "40b3b3a894c79e2aea551296305d80a3",
+      "prior_rows_hash": "40b3b3a894c79e2aea551296305d80a3"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "written_task_versions",
+      "row_count": 1,
+      "full_hash": "a7cdd0491657fcef73fdd652b567e904",
+      "prior_rows_hash": "a7cdd0491657fcef73fdd652b567e904"
+    },
+    {
+      "schema_name": "public",
+      "table_name": "written_work",
+      "row_count": 1,
+      "full_hash": "4b58cd10056ab29c1f0d5f27634c113f",
+      "prior_rows_hash": "4b58cd10056ab29c1f0d5f27634c113f"
+    }
+  ],
+  "preserved": [
+    "Unit 1 content, approvals, policy bindings, learner attempts, source exposures and writing reviews",
+    "All pre-existing rows across 117 public/private tables",
+    "Seven Unit 2 release gates remain pending; draft release unchanged",
+    "Existing replacement audio, Storage objects and playback limits"
+  ],
+  "open": [
+    "Exact human source/question/material review",
+    "Ten new recordings and three retained textbook audio/script reconciliations",
+    "Fourteen reading and fourteen listening task-set registrations and question attachment",
+    "Human audition and authenticated scoped playback",
+    "Formal curriculum reconciliation, exposure/SME qualification, numerical policy and learner release"
+  ],
+  "closure": {
+    "github": "One batched commit; CI and deployment results recorded in the final source-verified closure attestation after the run.",
+    "notionTargetVersion": "4.58",
+    "notion": "Source-commit-stamped synchronization after merge; no pre-emptive completion claim."
+  }
+}

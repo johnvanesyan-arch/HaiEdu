@@ -1,6 +1,8 @@
 # Learning API contract
 
-**16.1C.28:** The Unit 2 192-slot proposal is a subject-aware content plan. It creates no item, task set, schema, endpoint, runtime, approval or bound policy. Existing audio/question scoping, exact-version QA and release controls remain. The complete-corpus read is comparison evidence, not repeated learner/approval verification. [Whole-unit scope](english-7-unit-02-bank-proposal.md).
+**16.1C.29:** Existing reviewer contracts now carry 192 inactive Unit 2 question drafts and nine material drafts, with fifteen scoped draft skills. Exact immutable authoring snapshots include source previews and comparison notes. 132 items pass QA; 60 source questions retain `authoring_source_registration_pending` until accepted task sets are attached. All nine material QA checks pass. No schema, endpoint, Edge runtime, storage, human approval, policy binding or learner release changes. [Authoring delivery](english-7-unit-02-authoring.md).
+
+**Historical 16.1C.28:** The Unit 2 192-slot proposal is a subject-aware content plan. It creates no item, task set, schema, endpoint, runtime, approval or bound policy. Existing audio/question scoping, exact-version QA and release controls remain. The complete-corpus read is comparison evidence, not repeated learner/approval verification. [Whole-unit scope](english-7-unit-02-bank-proposal.md).
 
 **Historical 16.1C.27B:** One immutable Unit 2 audio version is registered under a new draft release/unit scope. Existing review/session/MFA, private Storage, size/duration and playback controls are unchanged. Audio catalog/preview remains item-scoped and requires the question’s primary unit and release-skill mapping; standalone registration does not make a reviewer question or playable page. No runtime/API or learner release change. [Registration and scope](english-7-unit-02-audio-registration.md).
 

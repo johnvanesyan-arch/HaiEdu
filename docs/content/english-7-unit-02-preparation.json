@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.27B",
+  "checkpoint": "16.1C.29",
   "date": "2026-10-23",
   "timezone": "Asia/Yerevan",
-  "status": "source map and draft audio registration retained; C28 corpus comparison and 72/48/72 plus W01 proposal prepared; bounded owner decision pending",
+  "status": "whole-unit-authoring-scope-accepted-inactive-drafts-staged",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -80,7 +80,9 @@
       "bookAnchor": "pp.28–34, ex.1/4/8",
       "route": "Core automatic; choice, matching or bounded gaps; unique category criteria",
       "category": "core-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S02",
@@ -88,7 +90,9 @@
       "bookAnchor": "pp.29, 32–33, ex.3/5/6",
       "route": "Core automatic vocabulary; meaning-based contexts, not a spelling-only contrast",
       "category": "core-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "688de2db-562e-5bf3-ad7e-20235cb085ff",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S03",
@@ -96,7 +100,9 @@
       "bookAnchor": "p.35, ex.9",
       "route": "Supporting automatic practice; comparison language is prerequisite/reuse, not new comparison coverage",
       "category": "supporting-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "6bf8107c-bcaf-5256-aea6-a203504ff1f2",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S04",
@@ -104,7 +110,9 @@
       "bookAnchor": "pp.36/51, ex.10/30",
       "route": "Supporting automatic practice; text or reviewed purposeful diagrams",
       "category": "supporting-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "65255abf-b421-530c-a3ec-2f273cc2e181",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S05",
@@ -112,7 +120,9 @@
       "bookAnchor": "pp.44–45/47/52, ex.20/21/24/25/32",
       "route": "Core automatic; bounded fields, choice or ordering; no untaught perfect passive",
       "category": "core-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S06",
@@ -120,7 +130,9 @@
       "bookAnchor": "p.46, ex.22",
       "route": "Supporting automatic practice; compare with all Unit 1 S04/S07 history",
       "category": "supporting-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "c443dccf-49e2-5f02-a831-0af54e2f84ae",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S07",
@@ -128,7 +140,9 @@
       "bookAnchor": "p.46, ex.23",
       "route": "Core automatic; reviewed alternatives and self-contained context",
       "category": "core-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S08",
@@ -136,7 +150,9 @@
       "bookAnchor": "pp.48–50, ex.26–29",
       "route": "Textbook extension; present perfect is not separately enumerated in the annual Grade 7 list. Retain teaching and practice; mandatory Mastery inclusion needs an explicit Unit 2 scope decision.",
       "category": "textbook-extension",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "702ee3bd-bb8b-5dd4-a8dd-a30563919053",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S09",
@@ -144,7 +160,9 @@
       "bookAnchor": "pp.52–53, ex.33/34",
       "route": "Core automatic; review all linguistically valid tense/conjunction alternatives",
       "category": "core-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "bee20329-58df-58e3-ad86-4fdf215c5b04",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S10",
@@ -152,7 +170,9 @@
       "bookAnchor": "pp.40–43, ex.18/19",
       "route": "Core automatic reading; immutable shared text set",
       "category": "core-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S11",
@@ -160,7 +180,9 @@
       "bookAnchor": "same profiles; selected supplied context",
       "route": "Core automatic reading; evidence supplied, no celebrity knowledge prerequisite",
       "category": "core-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "ac2d0aec-22dd-5869-a331-2c62908cf605",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S12",
@@ -168,7 +190,9 @@
       "bookAnchor": "p.39, ex.16; script p.144",
       "route": "Core automatic listening; exact reviewed recording required",
       "category": "core-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S13",
@@ -176,7 +200,9 @@
       "bookAnchor": "p.39, ex.16/17; p.50, ex.29 as supporting practice",
       "route": "Core automatic listening; music-topic sources needed for assessed T2.L1 coverage",
       "category": "core-automatic",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "691c6c36-9946-59b7-a59e-daaa164f6c25",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S14",
@@ -184,7 +210,9 @@
       "bookAnchor": "ex.12/14/18/19 preparation; programme T2.L4",
       "route": "Teacher-reviewed extended writing; supplied fact card, no lyric copying or research requirement",
       "category": "teacher-reviewed-writing",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "1e6505e4-5822-5475-a8df-043c13eb32fb",
+      "qualificationStatus": "pending"
     },
     {
       "planningId": "ENG7-U02-S15",
@@ -192,7 +220,9 @@
       "bookAnchor": "ex.6/14/15; programme T2.L5; standard Փ․3",
       "route": "Teacher-reviewed written interaction; can share one response with S14 but is not an independent second sample",
       "category": "teacher-reviewed-writing",
-      "registered": false
+      "registered": true,
+      "draftSkillId": "73617f94-1870-5bc3-ae55-1258f4ec959c",
+      "qualificationStatus": "pending"
     }
   ],
   "activities": [
@@ -532,10 +562,14 @@
     ],
     "accepted": false,
     "teacherAssignmentCreated": false,
-    "separateFromAutomaticScore": true
+    "separateFromAutomaticScore": true,
+    "authoringScopeAccepted": true,
+    "authored": true,
+    "staged": true,
+    "materialQaPassed": true
   },
   "comparisonPreparation": {
-    "candidateLevelReviewComplete": false,
+    "candidateLevelReviewComplete": true,
     "scope": "all applicable draft/current/approved/retired/historical/exposed versions, related/equivalent mappings, guides and within-batch candidates",
     "minimumRelatedUnit1Skills": [
       "S01",
@@ -550,20 +584,22 @@
       "S14"
     ],
     "newSettingProvesNovelReasoning": false,
-    "next": "After the bounded manifest decision, author all candidates and complete per-candidate and within-batch semantic review; refresh relevant corpus immediately before deployment.",
+    "next": "Human exact source/question/material review, recordings and guarded shared-set registration; no new authoring permission required.",
     "demandLevelReviewComplete": true,
-    "corpusEvidence": "docs/evidence/english-7-unit-02-bank-proposal-20261023.json"
+    "corpusEvidence": "docs/evidence/english-7-unit-02-authoring-20261023.json",
+    "reviewProvenance": "Codex automated author and semantic self-review; human/SME review pending",
+    "withinBatchPairs": 18336
   },
   "boundaries": {
     "speaking": "classroom-assessed",
-    "questionBudgetsAccepted": false,
+    "questionBudgetsAccepted": true,
     "questionCounts": {
-      "practice": null,
-      "diagnostic": null,
-      "mastery": null
+      "practice": 72,
+      "diagnostic": 48,
+      "mastery": 72
     },
-    "newQuestionsAuthored": 0,
-    "productionWrites": 11,
+    "newQuestionsAuthored": 192,
+    "productionWrites": 2116,
     "assetsRegistered": 1,
     "sourcesRegistered": 0,
     "newHumanApprovals": 0,
@@ -580,9 +616,14 @@
     "replacementTechnicalChecksPassed": true,
     "draftUnitScopesRegistered": 1,
     "draftReleaseScopesRegistered": 1,
-    "pendingReleaseGates": 7
+    "pendingReleaseGates": 7,
+    "productionWriteBasis": "11 C27B additions plus 2105 C29 inactive-draft additions; no prior rows changed",
+    "draftMaterialsStaged": 9,
+    "newAssessmentScriptsAuthored": 10,
+    "sourceQuestionHolds": 60,
+    "standaloneQuestionQaPassed": 132
   },
-  "next": "One bounded owner decision on the complete 192-slot Unit 2 proposal, then whole-unit authoring, ten scripts in one handoff and per-candidate comparison; normal source/QA/approval/release controls remain.",
+  "next": "Exact source/material acceptance, ten recordings and retained-audio reconciliation; register/link 28 task sets and rerun affected QA/playback; then qualification/numerical/release contract.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -614,13 +655,29 @@
     "supersedesUnit1": false
   },
   "bankProposal": {
-    "path": "docs/content/english-7-unit-02-bank-proposal.json",
-    "checkpoint": "16.1C.28",
-    "practice": 72,
-    "diagnostic": 48,
-    "mastery": 72,
-    "writingResponses": 1,
-    "accepted": false,
-    "singleAuthoringHandoff": true
+    "status": "accepted_and_authored",
+    "proposal": "docs/content/english-7-unit-02-bank-proposal.json",
+    "ownerAcceptance": "docs/evidence/english-7-unit-02-owner-acceptance-20261023.json",
+    "authoredManifest": "docs/content/english-7-unit-02-authoring-manifest.json",
+    "counts": {
+      "practice": 72,
+      "diagnostic": 48,
+      "mastery": 72,
+      "automaticallyScoredBank": 192,
+      "separateWritingResponses": 1,
+      "diagnosticForms": 2,
+      "masteryForms": 3,
+      "questionsPerForm": 24,
+      "practiceCoreCandidates": 47,
+      "practiceOptionalSupportExtension": 25,
+      "newAssessmentRecordings": 10,
+      "retainedPracticeAudioSources": 4,
+      "practiceReadingSources": 4,
+      "assessmentReadingSources": 10,
+      "plannedSharedTaskSets": 28,
+      "guideDrafts": 8
+    },
+    "humanContentApproval": false,
+    "learnerRelease": false
   }
 }
