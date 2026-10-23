@@ -1,6 +1,8 @@
 # English 7 Unit 2 — formal curriculum registration
 
-**Current C33:** Unit 1 C25/C26 evidence remains verified. Unit 2 content/source approval and C32 curriculum trace are retained. C33 prepares five 24-question forms and the explicit policy proposal; 27 offline checks pass. Proposed 20/24 plus per-skill minima, readiness, 47-core/25-optional delivery and finite attempts/replacements await owner numerical acceptance. Exact configuration, form/source qualification and separate learner release follow; seven stored gates remain pending. [Policy proposal](english-7-unit-02-policy-proposal.md).
+**Current C34:** Unit 1 C25/C26 evidence and Unit 2 content/source/curriculum approval are retained. C34 records acceptance of the C33 policy and rehearses exact 47/48/72 pools, four policies and five 24-question forms. Eighteen focused checks and the actual rollback validation pass; all 117 table fingerprints are restored. No permanent bindings or learner activation. Next: final source-protection/specialist dispositions and bounded pilot release/acceptance packet; seven stored gates remain pending. [Release preparation](english-7-unit-02-release-preparation.md).
+
+**Historical C33:** Unit 1 C25/C26 evidence remains verified. Unit 2 content/source approval and C32 curriculum trace are retained. C33 prepares five 24-question forms and the explicit policy proposal; 27 offline checks pass. Proposed 20/24 plus per-skill minima, readiness, 47-core/25-optional delivery and finite attempts/replacements await owner numerical acceptance. Exact configuration, form/source qualification and separate learner release follow; seven stored gates remain pending. [Policy proposal](english-7-unit-02-policy-proposal.md).
 
 **Sprint 16.1C.32 · 24 October 2026 · Roadmap 4.61. Curriculum trace registered; unit remains draft.**
 

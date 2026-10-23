@@ -1,0 +1,417 @@
+{
+  "schemaVersion": "haiedu-english-unit-configuration-summary-v1",
+  "checkpoint": "16.1C.34",
+  "date": "2026-10-24",
+  "sourceCommit": "2e623314b9a78e78b7402bff7409a627ef173db9",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+  },
+  "status": "owner_accepted_rehearsed_not_registered_or_activated",
+  "ownerAcceptance": {
+    "schemaVersion": "haiedu-english-policy-owner-acceptance-v1",
+    "checkpoint": "16.1C.34",
+    "date": "2026-10-24",
+    "owner": "John",
+    "ownerInstruction": "yes",
+    "context": "Direct answer to approval request for the complete C33 Unit 2 policy, including documented listening readiness, finite replacement capacity and initial 47-core/25-optional treatment.",
+    "approved": true,
+    "sourceCommit": "2e623314b9a78e78b7402bff7409a627ef173db9",
+    "proposalSha256": "28122b289cd8ad5beb5e6fc46c5f10c6719d78ea339ea9a64292024e2c389ed2",
+    "learnerActivationAuthorized": false,
+    "independentSmeApproval": false,
+    "contentAudioApprovalReused": true
+  },
+  "policies": [
+    {
+      "version": 1,
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+      "learningModelConfigurationId": "1ac0186b-7421-5954-8684-6c925da80f9a",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "scoringStrategy": "normalized-item-score-v1",
+      "itemWeight": 1,
+      "deliveredSkillIds": [
+        "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+        "688de2db-562e-5bf3-ad7e-20235cb085ff",
+        "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+        "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+        "bee20329-58df-58e3-ad86-4fdf215c5b04",
+        "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+        "ac2d0aec-22dd-5869-a331-2c62908cf605",
+        "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+        "691c6c36-9946-59b7-a59e-daaa164f6c25"
+      ],
+      "reportingGroups": [
+        {
+          "key": "vocabulary",
+          "label": "Բառապաշար",
+          "skillIds": [
+            "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+            "688de2db-562e-5bf3-ad7e-20235cb085ff"
+          ]
+        },
+        {
+          "key": "grammar",
+          "label": "Քերականություն",
+          "skillIds": [
+            "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+            "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+            "bee20329-58df-58e3-ad86-4fdf215c5b04"
+          ]
+        },
+        {
+          "key": "reading",
+          "label": "Ընթերցանություն",
+          "skillIds": [
+            "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+            "ac2d0aec-22dd-5869-a331-2c62908cf605"
+          ]
+        },
+        {
+          "key": "listening",
+          "label": "Ունկնդրում",
+          "skillIds": [
+            "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+            "691c6c36-9946-59b7-a59e-daaa164f6c25"
+          ]
+        }
+      ],
+      "schemaVersion": "haiedu-assessment-policy-v4",
+      "policyKey": "eng7-u02-provisional-diagnostic-v1",
+      "mode": "diagnostic",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "responseCapabilities": {},
+      "plannedQuestionCount": 24,
+      "hintsAllowed": false,
+      "baselineRequired": false,
+      "questionCountBySkill": {
+        "a177a395-4029-5d56-a200-5a3d3a3a0fd2": 3,
+        "688de2db-562e-5bf3-ad7e-20235cb085ff": 3,
+        "72de1749-41e0-5ae8-a0c9-b8d64751a89b": 4,
+        "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2": 2,
+        "bee20329-58df-58e3-ad86-4fdf215c5b04": 4,
+        "c3278502-df3e-5f47-ab6a-958f93e55a2b": 2,
+        "ac2d0aec-22dd-5869-a331-2c62908cf605": 2,
+        "35cc97a9-8df8-5d4c-a85a-771e904e67c8": 2,
+        "691c6c36-9946-59b7-a59e-daaa164f6c25": 2
+      },
+      "audioPlayback": {
+        "schemaVersion": "haiedu-assessed-audio-v1",
+        "maximumPlays": 2,
+        "playbackRate": 1,
+        "transcriptAvailable": false,
+        "scope": "session-recording",
+        "questionVisibility": "whole-recording",
+        "interruption": "resume-or-unscored-v1"
+      },
+      "maximumCompletedBaselines": 1
+    },
+    {
+      "version": 1,
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+      "learningModelConfigurationId": "1ac0186b-7421-5954-8684-6c925da80f9a",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "scoringStrategy": "normalized-item-score-v1",
+      "itemWeight": 1,
+      "deliveredSkillIds": [
+        "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+        "688de2db-562e-5bf3-ad7e-20235cb085ff",
+        "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+        "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+        "bee20329-58df-58e3-ad86-4fdf215c5b04",
+        "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+        "ac2d0aec-22dd-5869-a331-2c62908cf605",
+        "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+        "691c6c36-9946-59b7-a59e-daaa164f6c25"
+      ],
+      "reportingGroups": [
+        {
+          "key": "vocabulary",
+          "label": "Բառապաշար",
+          "skillIds": [
+            "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+            "688de2db-562e-5bf3-ad7e-20235cb085ff"
+          ]
+        },
+        {
+          "key": "grammar",
+          "label": "Քերականություն",
+          "skillIds": [
+            "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+            "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+            "bee20329-58df-58e3-ad86-4fdf215c5b04"
+          ]
+        },
+        {
+          "key": "reading",
+          "label": "Ընթերցանություն",
+          "skillIds": [
+            "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+            "ac2d0aec-22dd-5869-a331-2c62908cf605"
+          ]
+        },
+        {
+          "key": "listening",
+          "label": "Ունկնդրում",
+          "skillIds": [
+            "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+            "691c6c36-9946-59b7-a59e-daaa164f6c25"
+          ]
+        }
+      ],
+      "schemaVersion": "haiedu-assessment-policy-v3",
+      "policyKey": "eng7-u02-provisional-practice-v1",
+      "mode": "practice",
+      "responseTypes": [
+        "single_choice",
+        "typed_fields",
+        "matching",
+        "ordering"
+      ],
+      "responseCapabilities": {
+        "typed_fields": "haiedu-typed-fields-v1",
+        "matching": "haiedu-matching-v1",
+        "ordering": "haiedu-ordering-v1"
+      },
+      "plannedQuestionCount": 8,
+      "hintsAllowed": true,
+      "baselineRequired": true
+    },
+    {
+      "version": 1,
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+      "learningModelConfigurationId": "1ac0186b-7421-5954-8684-6c925da80f9a",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "scoringStrategy": "normalized-item-score-v1",
+      "itemWeight": 1,
+      "deliveredSkillIds": [
+        "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+        "688de2db-562e-5bf3-ad7e-20235cb085ff",
+        "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+        "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+        "bee20329-58df-58e3-ad86-4fdf215c5b04",
+        "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+        "ac2d0aec-22dd-5869-a331-2c62908cf605",
+        "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+        "691c6c36-9946-59b7-a59e-daaa164f6c25"
+      ],
+      "reportingGroups": [
+        {
+          "key": "vocabulary",
+          "label": "Բառապաշար",
+          "skillIds": [
+            "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+            "688de2db-562e-5bf3-ad7e-20235cb085ff"
+          ]
+        },
+        {
+          "key": "grammar",
+          "label": "Քերականություն",
+          "skillIds": [
+            "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+            "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+            "bee20329-58df-58e3-ad86-4fdf215c5b04"
+          ]
+        },
+        {
+          "key": "reading",
+          "label": "Ընթերցանություն",
+          "skillIds": [
+            "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+            "ac2d0aec-22dd-5869-a331-2c62908cf605"
+          ]
+        },
+        {
+          "key": "listening",
+          "label": "Ունկնդրում",
+          "skillIds": [
+            "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+            "691c6c36-9946-59b7-a59e-daaa164f6c25"
+          ]
+        }
+      ],
+      "schemaVersion": "haiedu-assessment-policy-v4",
+      "policyKey": "eng7-u02-provisional-mastery_check-v1",
+      "mode": "mastery_check",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "responseCapabilities": {},
+      "plannedQuestionCount": 24,
+      "hintsAllowed": false,
+      "baselineRequired": true,
+      "questionCountBySkill": {
+        "a177a395-4029-5d56-a200-5a3d3a3a0fd2": 3,
+        "688de2db-562e-5bf3-ad7e-20235cb085ff": 3,
+        "72de1749-41e0-5ae8-a0c9-b8d64751a89b": 4,
+        "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2": 2,
+        "bee20329-58df-58e3-ad86-4fdf215c5b04": 4,
+        "c3278502-df3e-5f47-ab6a-958f93e55a2b": 2,
+        "ac2d0aec-22dd-5869-a331-2c62908cf605": 2,
+        "35cc97a9-8df8-5d4c-a85a-771e904e67c8": 2,
+        "691c6c36-9946-59b7-a59e-daaa164f6c25": 2
+      },
+      "audioPlayback": {
+        "schemaVersion": "haiedu-assessed-audio-v1",
+        "maximumPlays": 2,
+        "playbackRate": 1,
+        "transcriptAvailable": false,
+        "scope": "session-recording",
+        "questionVisibility": "whole-recording",
+        "interruption": "resume-or-unscored-v1"
+      },
+      "minimumPercent": 80,
+      "minimumCorrectBySkill": {
+        "a177a395-4029-5d56-a200-5a3d3a3a0fd2": 2,
+        "688de2db-562e-5bf3-ad7e-20235cb085ff": 2,
+        "72de1749-41e0-5ae8-a0c9-b8d64751a89b": 3,
+        "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2": 1,
+        "bee20329-58df-58e3-ad86-4fdf215c5b04": 3,
+        "c3278502-df3e-5f47-ab6a-958f93e55a2b": 1,
+        "ac2d0aec-22dd-5869-a331-2c62908cf605": 1,
+        "35cc97a9-8df8-5d4c-a85a-771e904e67c8": 1,
+        "691c6c36-9946-59b7-a59e-daaa164f6c25": 1
+      },
+      "scoredSkillIds": [
+        "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+        "688de2db-562e-5bf3-ad7e-20235cb085ff",
+        "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+        "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+        "bee20329-58df-58e3-ad86-4fdf215c5b04",
+        "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+        "ac2d0aec-22dd-5869-a331-2c62908cf605",
+        "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+        "691c6c36-9946-59b7-a59e-daaa164f6c25"
+      ],
+      "readinessSkillIds": [
+        "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+        "688de2db-562e-5bf3-ad7e-20235cb085ff",
+        "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+        "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+        "bee20329-58df-58e3-ad86-4fdf215c5b04",
+        "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+        "ac2d0aec-22dd-5869-a331-2c62908cf605",
+        "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+        "691c6c36-9946-59b7-a59e-daaa164f6c25"
+      ]
+    },
+    {
+      "version": 1,
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+      "learningModelConfigurationId": "1ac0186b-7421-5954-8684-6c925da80f9a",
+      "academicMasteryPolicyId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+      "scoringStrategy": "normalized-item-score-v1",
+      "itemWeight": 1,
+      "deliveredSkillIds": [
+        "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+        "688de2db-562e-5bf3-ad7e-20235cb085ff",
+        "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+        "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+        "bee20329-58df-58e3-ad86-4fdf215c5b04",
+        "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+        "ac2d0aec-22dd-5869-a331-2c62908cf605",
+        "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+        "691c6c36-9946-59b7-a59e-daaa164f6c25"
+      ],
+      "reportingGroups": [
+        {
+          "key": "vocabulary",
+          "label": "Բառապաշար",
+          "skillIds": [
+            "a177a395-4029-5d56-a200-5a3d3a3a0fd2",
+            "688de2db-562e-5bf3-ad7e-20235cb085ff"
+          ]
+        },
+        {
+          "key": "grammar",
+          "label": "Քերականություն",
+          "skillIds": [
+            "72de1749-41e0-5ae8-a0c9-b8d64751a89b",
+            "11f3a2ec-c06d-5ae6-ae18-4876683ce1a2",
+            "bee20329-58df-58e3-ad86-4fdf215c5b04"
+          ]
+        },
+        {
+          "key": "reading",
+          "label": "Ընթերցանություն",
+          "skillIds": [
+            "c3278502-df3e-5f47-ab6a-958f93e55a2b",
+            "ac2d0aec-22dd-5869-a331-2c62908cf605"
+          ]
+        },
+        {
+          "key": "listening",
+          "label": "Ունկնդրում",
+          "skillIds": [
+            "35cc97a9-8df8-5d4c-a85a-771e904e67c8",
+            "691c6c36-9946-59b7-a59e-daaa164f6c25"
+          ]
+        }
+      ],
+      "schemaVersion": "haiedu-assessment-policy-v3",
+      "policyKey": "eng7-u02-provisional-chapter_review-v1",
+      "mode": "chapter_review",
+      "responseTypes": [
+        "single_choice",
+        "typed_fields",
+        "matching",
+        "ordering"
+      ],
+      "responseCapabilities": {
+        "typed_fields": "haiedu-typed-fields-v1",
+        "matching": "haiedu-matching-v1",
+        "ordering": "haiedu-ordering-v1"
+      },
+      "plannedQuestionCount": 12,
+      "hintsAllowed": true,
+      "baselineRequired": true
+    }
+  ],
+  "modelId": "1ac0186b-7421-5954-8684-6c925da80f9a",
+  "runtimeBuildId": "89fa788a-0fe6-5452-8a9d-181d7f4cac69",
+  "runtimeBindingId": "a31c01cc-a68c-5282-a4e5-dce94aa62545",
+  "lifecycleId": "514229ff-31e6-406b-a92d-eedda258d4eb",
+  "poolCounts": {
+    "diagnostic": 48,
+    "practice": 47,
+    "mastery_check": 72
+  },
+  "formCounts": {
+    "ENG7-U02-DA-20261024": 24,
+    "ENG7-U02-DB-20261024": 24,
+    "ENG7-U02-MA-20261024": 24,
+    "ENG7-U02-MB-20261024": 24,
+    "ENG7-U02-MC-20261024": 24
+  },
+  "optionalRetained": 25,
+  "preparedRows": 516,
+  "protectedConfigurationSha256": "ecbc950c4224e1743d4dd183d54954a2b21ae8a0e7d86b6745077b9e4d5e2517",
+  "protectedSqlSha256": "b08d0f4b061c7c0cacb1842249d0cef98c3d988d9b0fdcdfcc54bc50eb25e224",
+  "metadataRefresh": {
+    "items": 192,
+    "forms": 5,
+    "boundAssessmentVersions": 120,
+    "sharedAssessedSources": 20,
+    "recordings": 10,
+    "approvalAudit": false
+  },
+  "qualification": {
+    "technicalBindingRehearsed": true,
+    "sourceExposureDisposition": "pending",
+    "independentSpecialistApproval": false,
+    "empiricalEquivalenceClaimed": false,
+    "learnerActivationAuthorized": false
+  },
+  "productionCommittedWrites": 0
+}

@@ -1,0 +1,119 @@
+{
+  "schemaVersion": "haiedu-english-unit-configuration-evidence-v1",
+  "checkpoint": "16.1C.34",
+  "date": "2026-10-24",
+  "sourceCommit": "2e623314b9a78e78b7402bff7409a627ef173db9",
+  "checks": [
+    {
+      "name": "exact_diagnostic_snapshot",
+      "passed": true
+    },
+    {
+      "name": "exact_practice_snapshot",
+      "passed": true
+    },
+    {
+      "name": "exact_mastery_check_snapshot",
+      "passed": true
+    },
+    {
+      "name": "exact_chapter_review_snapshot",
+      "passed": true
+    },
+    {
+      "name": "all_117_tables_restored",
+      "passed": true
+    },
+    {
+      "name": "specialist_pending",
+      "passed": true
+    },
+    {
+      "name": "global_lifecycle_unchanged",
+      "passed": true
+    },
+    {
+      "name": "three_scoped_pools",
+      "passed": true
+    },
+    {
+      "name": "167_core_pool_memberships",
+      "passed": true
+    },
+    {
+      "name": "120_assessment_form_slots",
+      "passed": true
+    },
+    {
+      "name": "five_draft_forms",
+      "passed": true
+    },
+    {
+      "name": "source_protection_pending",
+      "passed": true
+    },
+    {
+      "name": "runtime_timing_evidence_current",
+      "passed": true
+    },
+    {
+      "name": "72_mastery_versions_exact",
+      "passed": true
+    },
+    {
+      "name": "reject_active_release",
+      "passed": true
+    },
+    {
+      "name": "reject_missing_item",
+      "passed": true
+    },
+    {
+      "name": "reject_changed_version",
+      "passed": true
+    },
+    {
+      "name": "rollback_only",
+      "passed": true
+    }
+  ],
+  "checkCount": 18,
+  "rehearsal": {
+    "actualDatabaseValidatorsPassed": true,
+    "exactPolicySnapshots": 4,
+    "masteryVersions": 72,
+    "preservationTables": 117,
+    "rollbackRestored": true,
+    "specialistGate": "pending",
+    "globalLifecyclePointerUnchanged": true
+  },
+  "sourceHashes": {
+    "docs/content/english-7-unit-02-policy-proposal.json": "28122b289cd8ad5beb5e6fc46c5f10c6719d78ea339ea9a64292024e2c389ed2",
+    "docs/evidence/english-7-unit-02-policy-acceptance-20261024.json": "40cf9c04af176da883677ba6ea2da7c15b97341d4a09be86c3895ccc0334a8fd",
+    "scripts/releases/prepare-english-7-unit-02-configuration.py": "9afe3ab5932ec72c279d36702a1672630993c4546c1209638e398ea1e33eea88",
+    "docs/content/english-7-unit-02-configuration-summary.json": "ca6ac1f194e4fede3b942bd78346a72c8ff3ce492dc460cfa9895c7b1674b04f"
+  },
+  "privateEvidenceHashes": {
+    "inventory.json": "2876f029672283f28d8e614f28652399b7d487dd422c97f69c1df525f06a4f2b",
+    "preflight.json": "d183a56b5dc95d05884529a8fc90ae0a0524e4754d23b6b9afaca0ebaa3064a6",
+    "guards.json": "4a666d0e10340128d61a276590cce93db4cc3318a113ddccc31388ff1a3646dc",
+    "after-guards.json": "4a666d0e10340128d61a276590cce93db4cc3318a113ddccc31388ff1a3646dc",
+    "prepared/configuration.json": "ecbc950c4224e1743d4dd183d54954a2b21ae8a0e7d86b6745077b9e4d5e2517",
+    "prepared/rehearse.sql": "b08d0f4b061c7c0cacb1842249d0cef98c3d988d9b0fdcdfcc54bc50eb25e224",
+    "rehearsal-result.json": "139fa635e4e80ee51d7befa96fa4a17b39e365bcede0d5941ea801f757a007c5"
+  },
+  "unchangedEvidenceReused": [
+    "C29 full-bank comparison/grading",
+    "C30/C31 source/audio and saved QA",
+    "C32 curriculum and owner approval report",
+    "C33 scoring/readiness tests",
+    "C12 runtime bundles plus C26 audio timing repair and learner acceptance"
+  ],
+  "limits": [
+    "No content/audio review repeated or approval audit",
+    "No permanent policy binding/form allocation/activation",
+    "No unseen-source, independent-specialist or empirical-equivalence claim",
+    "Guarded technical rehearsal only; no new live learner acceptance"
+  ],
+  "next": "Prepare final Unit 2 source-protection/specialist dispositions and bounded pilot release/acceptance packet."
+}

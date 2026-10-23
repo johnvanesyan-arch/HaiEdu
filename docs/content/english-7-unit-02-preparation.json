@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.33",
+  "checkpoint": "16.1C.34",
   "date": "2026-10-24",
   "timezone": "Asia/Yerevan",
-  "status": "policy-and-five-forms-prepared-numerical-acceptance-pending",
+  "status": "policy-accepted-configuration-rehearsed-release-pending",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -600,7 +600,7 @@
       "S14"
     ],
     "newSettingProvesNovelReasoning": false,
-    "next": "Reuse unchanged comparison and owner review; C33 policy prepared, adoption pending.",
+    "next": "Reuse unchanged comparison and owner review; accepted policy rehearse complete, final release preparation next.",
     "demandLevelReviewComplete": true,
     "corpusEvidence": "docs/evidence/english-7-unit-02-authoring-20261023.json",
     "reviewProvenance": "Codex automated author and semantic self-review; human/SME review pending",
@@ -652,7 +652,7 @@
     "skillOutcomeMappingsRegistered": 19,
     "questionFamiliesReconciled": 192
   },
-  "next": "Owner numerical-policy decision; immutable configuration and exact form/source qualification; separate learner-release decision.",
+  "next": "Final source-protection/specialist dispositions and bounded pilot release/acceptance packet.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -750,6 +750,12 @@
     "formsPrepared": 5,
     "formsQualified": 0,
     "offlineChecks": 27,
-    "productionWrites": 0
+    "productionWrites": 0,
+    "ownerAccepted": true,
+    "acceptance": "docs/evidence/english-7-unit-02-policy-acceptance-20261024.json",
+    "configurationSummary": "docs/content/english-7-unit-02-configuration-summary.json",
+    "configurationRehearsalChecks": 18,
+    "rollbackTablesRestored": 117,
+    "productionCommittedWrites": 0
   }
 }

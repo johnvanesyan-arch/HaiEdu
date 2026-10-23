@@ -1,6 +1,8 @@
 # English 7 Unit 2 — policy and form proposal
 
-**16.1C.33 · 24 October 2026 · Roadmap 4.62. Prepared; numerical adoption pending.**
+**Current C34:** Unit 1 C25/C26 evidence and Unit 2 content/source/curriculum approval are retained. C34 records acceptance of the C33 policy and rehearses exact 47/48/72 pools, four policies and five 24-question forms. Eighteen focused checks and the actual rollback validation pass; all 117 table fingerprints are restored. No permanent bindings or learner activation. Next: final source-protection/specialist dispositions and bounded pilot release/acceptance packet; seven stored gates remain pending. [Release preparation](english-7-unit-02-release-preparation.md).
+
+**Historical C33 proposal · 24 October 2026 · Accepted under C34 above. The exact JSON proposal remains immutable for its acceptance hash.**
 
 The accepted 72 Practice / 48 Diagnostic / 72 Mastery bank and all content/audio approvals remain intact. This slice assembles five forms from retained C29/C31 immutable evidence and proposes the exact learning rules. It makes no production writes and repeats no content review, audio audition or approval audit. [Machine-readable contract](content/english-7-unit-02-policy-proposal.json) · [27-check evidence](evidence/english-7-unit-02-policy-proposal-20261024.json).
 
@@ -58,4 +60,4 @@ The offline generator verifies form sizes, skill distribution, retained exact-ve
 
 C29 comparison/grading, C30 owner audio acceptance, C31 source/QA evidence and C32 curriculum/owner-review report are reused unchanged. Model/lifecycle identities remain null; allocation and activation are false. No stored release gate changes. After the owner accepts this exact proposal, prepare and rehearse immutable configuration and qualify the exact forms/sources, then present the separate bounded learner-release decision.
 
-**Decision requested:** accept the numerical rules above, finite replacement capacity and initial 47-core/25-optional delivery treatment, including the limited listening-evidence semantics. This decision does not authorize learner activation. [AGENTS.md](../AGENTS.md) preserves the boundary: “platform-wide consistency does not authorize opening new curriculum releases or changing learning criteria.”
+**C33 decision request — accepted by John under C34:** accept the numerical rules above, finite replacement capacity and initial 47-core/25-optional delivery treatment, including the limited listening-evidence semantics. This decision does not authorize learner activation. [AGENTS.md](../AGENTS.md) preserves the boundary: “platform-wide consistency does not authorize opening new curriculum releases or changing learning criteria.”
