@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.32",
+  "checkpoint": "16.1C.33",
   "date": "2026-10-24",
   "timezone": "Asia/Yerevan",
-  "status": "owner-approval-reported-curriculum-registered-unit-remains-draft",
+  "status": "policy-and-five-forms-prepared-numerical-acceptance-pending",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -600,7 +600,7 @@
       "S14"
     ],
     "newSettingProvesNovelReasoning": false,
-    "next": "Reuse unchanged C29 comparison; exact Unit 2 numerical/form-qualification/release contract.",
+    "next": "Reuse unchanged comparison and owner review; C33 policy prepared, adoption pending.",
     "demandLevelReviewComplete": true,
     "corpusEvidence": "docs/evidence/english-7-unit-02-authoring-20261023.json",
     "reviewProvenance": "Codex automated author and semantic self-review; human/SME review pending",
@@ -652,7 +652,7 @@
     "skillOutcomeMappingsRegistered": 19,
     "questionFamiliesReconciled": 192
   },
-  "next": "Prepare the exact Unit 2 scoring/readiness/attempt/replacement and form-qualification contract for five planned 24-question forms; preserve the accepted 47-core/25-supporting Practice authoring split. No Unit 1 thresholds or learner activation are silently inherited.",
+  "next": "Owner numerical-policy decision; immutable configuration and exact form/source qualification; separate learner-release decision.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -743,5 +743,13 @@
     "evidence": "docs/evidence/english-7-unit-02-curriculum-registration-20261024.json",
     "ownerApprovalReportAccepted": true,
     "independentSmeApproved": false
+  },
+  "policyPreparation": {
+    "checkpoint": "16.1C.33",
+    "proposal": "docs/content/english-7-unit-02-policy-proposal.json",
+    "formsPrepared": 5,
+    "formsQualified": 0,
+    "offlineChecks": 27,
+    "productionWrites": 0
   }
 }

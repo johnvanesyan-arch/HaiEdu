@@ -1,6 +1,8 @@
 # English 7 Unit 2 source integration
 
-**Current C32:** John reports all Unit 2 content/material approved; no repeat review is performed. Formal curriculum registration is complete. The exact numerical/form-qualification contract is next; the unit remains draft. [Current delivery](english-7-unit-02-curriculum-reconciliation.md).
+**Current C33:** Unit 1 C25/C26 evidence remains verified. Unit 2 content/source approval and C32 curriculum trace are retained. C33 prepares five 24-question forms and the explicit policy proposal; 27 offline checks pass. Proposed 20/24 plus per-skill minima, readiness, 47-core/25-optional delivery and finite attempts/replacements await owner numerical acceptance. Exact configuration, form/source qualification and separate learner release follow; seven stored gates remain pending. [Policy proposal](english-7-unit-02-policy-proposal.md).
+
+**Historical C32:** John reports all Unit 2 content/material approved; no repeat review is performed. Formal curriculum registration is complete. The exact numerical/form-qualification contract is next; the unit remains draft. [Current delivery](english-7-unit-02-curriculum-reconciliation.md).
 
 **Historical 16.1C.31 · 2026-10-24 Asia/Yerevan · All thirty reading and ten Practice listening questions integrated.**
 

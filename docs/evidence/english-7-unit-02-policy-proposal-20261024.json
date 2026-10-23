@@ -1,0 +1,242 @@
+{
+  "checkpoint": "16.1C.33",
+  "date": "2026-10-24",
+  "sourceCommit": "2a95be70fdccd23b6edbde36c7bd0feca1bcfd0c",
+  "checks": [
+    {
+      "name": "policy_diagnostic_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "policy_practice_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "policy_mastery_check_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "policy_chapter_review_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "english_model_shape_supported",
+      "passed": true
+    },
+    {
+      "name": "24_of_24_passes",
+      "passed": true,
+      "passedDecision": true,
+      "earned": 24,
+      "possible": 24,
+      "displayPercent": 100
+    },
+    {
+      "name": "20_of_24_with_minima_passes",
+      "passed": true,
+      "passedDecision": true,
+      "earned": 20,
+      "possible": 24,
+      "displayPercent": 83
+    },
+    {
+      "name": "19_of_24_fails_overall",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 19,
+      "possible": 24,
+      "displayPercent": 79
+    },
+    {
+      "name": "22_of_24_zero_reading_skill_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 22,
+      "possible": 24,
+      "displayPercent": 92
+    },
+    {
+      "name": "22_of_24_one_of_three_vocabulary_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 22,
+      "possible": 24,
+      "displayPercent": 92
+    },
+    {
+      "name": "22_of_24_two_of_four_passive_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 22,
+      "possible": 24,
+      "displayPercent": 92
+    },
+    {
+      "name": "22_of_24_two_of_four_past_aspect_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 22,
+      "possible": 24,
+      "displayPercent": 92
+    },
+    {
+      "name": "rounded_80_below_exact_threshold_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 19.19,
+      "possible": 24,
+      "displayPercent": 80,
+      "syntheticOffGridBoundary": true
+    },
+    {
+      "name": "diagnostic_has_no_pass_decision",
+      "passed": true
+    },
+    {
+      "name": "no_evidence_not_ready",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "model_exact_075_and_three_records_ready",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "name": "model_two_records_not_ready",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "model_below_075_not_ready",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "three_item_clean_recovery_ready",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "name": "two_distinct_items_cannot_recover",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "hint_in_recent_window_cannot_recover",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "partial_item_is_not_whole_correct_recovery",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "other_release_cannot_supply_third_item",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "prior_distinct_plus_repeated_recent_window_matches_existing_semantics",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "name": "core_and_optional_partition",
+      "passed": true
+    },
+    {
+      "name": "limited_listening_capacity_explicit",
+      "passed": true
+    },
+    {
+      "name": "finite_mastery_capacity_3_2_1_0",
+      "passed": true
+    }
+  ],
+  "checkCount": 27,
+  "scope": "Offline retained-form assembly plus actual JS policy reader and extracted SQL result/readiness functions in PGlite; not live allocation, qualification, empirical calibration, approval audit or learner acceptance.",
+  "proposalSha256": "28122b289cd8ad5beb5e6fc46c5f10c6719d78ea339ea9a64292024e2c389ed2",
+  "sourceHashes": {
+    "retainedAuthoring": "3229a9f38930821fc3cd3e77a42983083d4d6dd24960928a0057c2c1aff5f5ed",
+    "retainedIntegrationSnapshot": "47128e914c3eb53548db5f7900cc6e6371e8808aa0c275f7384e6055970b9405",
+    "curriculumRegistration": "3e5737227fb3b39bf8f16a30368a9135ac7ca9302438a57034ed23014886e45f",
+    "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314",
+    "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15",
+    "supabase/functions/_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+    "scripts/content/prepare-english-7-unit-02-policy.py": "3182e2a9b0e50a8bbdda5a5d75a646ea45daa821677275381b5238a4f35fad77",
+    "scripts/content/verify-english-7-unit-02-policy.mjs": "1ec9f310d7da7e79faf1bcb4876e2c094a0470563dfb34ca6a4852dc6f5276e0"
+  },
+  "retainedEvidence": [
+    "16.1C.29 whole-bank comparison and grading",
+    "16.1C.30 owner audio acceptance",
+    "16.1C.31 source links and 192 QA passes",
+    "16.1C.32 curriculum registration and owner approval report",
+    "16.1C.26 existing learner/audio/writing runtime acceptance"
+  ],
+  "forms": [
+    {
+      "code": "DA",
+      "items": 24,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 20,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "DB",
+      "items": 24,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 20,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MA",
+      "items": 24,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 20,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MB",
+      "items": 24,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 20,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MC",
+      "items": 24,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 20,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    }
+  ],
+  "privatePreparedFormsSha256": "d1dd3d4ffe3a13eead8299d875ab52c1c1af0231122e7d70d371e0482fccdbb0",
+  "productionWrites": 0,
+  "contentChanges": 0,
+  "audioReviewRepeated": false,
+  "approvalAudit": false,
+  "learnerActivation": false,
+  "policyAdopted": false,
+  "next": "Owner decision on complete concrete proposal; then immutable configuration and exact form/source qualification, followed by separate learner-release decision."
+}

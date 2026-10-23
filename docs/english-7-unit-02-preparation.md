@@ -1,5 +1,7 @@
 # English 7 Unit 2 — source, activity and audio preparation
 
+**Current C33:** Unit 1 C25/C26 evidence remains verified. Unit 2 content/source approval and C32 curriculum trace are retained. C33 prepares five 24-question forms and the explicit policy proposal; 27 offline checks pass. Proposed 20/24 plus per-skill minima, readiness, 47-core/25-optional delivery and finite attempts/replacements await owner numerical acceptance. Exact configuration, form/source qualification and separate learner release follow; seven stored gates remain pending. [Policy proposal](english-7-unit-02-policy-proposal.md).
+
 **Sprint 16.1C.32 · 2026-10-24 Asia/Yerevan · Owner reports all content/material approved; formal curriculum registration complete. Numerical/form-qualification and learner-release decisions remain.**
 
 Unit 2 is **My Interests — I Like Listening to Music**, printed/PDF pages **28–53**, corresponding to programme Topic 2, **Երաժշտությունը՝ համամարդկային լեզու**. All **34 numbered activities** retain their order and an explicit disposition. The map proposes fifteen evidence targets: nine core automatic targets, three supporting language targets, one textbook extension and two teacher-reviewed writing targets. C29 registers these fifteen targets; C32 adds formal outcome reconciliation. Learner qualification remains separate. They do not replace the textbook lesson sequence.

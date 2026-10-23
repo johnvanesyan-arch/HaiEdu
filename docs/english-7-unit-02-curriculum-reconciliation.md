@@ -1,5 +1,7 @@
 # English 7 Unit 2 — formal curriculum registration
 
+**Current C33:** Unit 1 C25/C26 evidence remains verified. Unit 2 content/source approval and C32 curriculum trace are retained. C33 prepares five 24-question forms and the explicit policy proposal; 27 offline checks pass. Proposed 20/24 plus per-skill minima, readiness, 47-core/25-optional delivery and finite attempts/replacements await owner numerical acceptance. Exact configuration, form/source qualification and separate learner release follow; seven stored gates remain pending. [Policy proposal](english-7-unit-02-policy-proposal.md).
+
 **Sprint 16.1C.32 · 24 October 2026 · Roadmap 4.61. Curriculum trace registered; unit remains draft.**
 
 John reports that everything is approved and directs the next stage. His Unit 2 question/material review is accepted without repeating content/audio checks or auditing approval actions. The [owner report](evidence/english-7-unit-02-owner-approval-report-20261024.json) does not adopt new numerical rules, certify independent specialist review or activate learners. No approval record is fabricated or overwritten.

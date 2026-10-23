@@ -1,5 +1,7 @@
 # English 7 Unit 2 — complete batch proposal
 
+**Current C33:** Unit 1 C25/C26 evidence remains verified. Unit 2 content/source approval and C32 curriculum trace are retained. C33 prepares five 24-question forms and the explicit policy proposal; 27 offline checks pass. Proposed 20/24 plus per-skill minima, readiness, 47-core/25-optional delivery and finite attempts/replacements await owner numerical acceptance. Exact configuration, form/source qualification and separate learner release follow; seven stored gates remain pending. [Policy proposal](english-7-unit-02-policy-proposal.md).
+
 **Checkpoint:** 16.1C.28 · **Date:** 2026-10-23 Asia/Yerevan · **State at C28:** proposed. **Current:** John accepts the complete scope under [C29](english-7-unit-02-authoring.md); all 192 drafts and nine materials are staged.
 
 John requests large batches. The proposal is one complete **192-question authoring package: 72 Practice, 48 Diagnostic and 72 Mastery**, with one separate teacher-reviewed writing response. Diagnostic has two proposed 24-question forms; Mastery has three. These are bank totals, not a requirement for a learner to answer all 192 questions.
