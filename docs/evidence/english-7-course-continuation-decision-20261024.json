@@ -1,0 +1,56 @@
+{
+  "schemaVersion": "haiedu-english7-course-continuation-decision-v1",
+  "date": "2026-10-24",
+  "timezone": "Asia/Yerevan",
+  "preparedFromCommit": "96a1e6b1a3448fb6b5e282386d012d89dc89e48d",
+  "owner": "John",
+  "ownerDirection": "We should continue with the English subject",
+  "context": "Direct response to the clarification that English 7 has six units, Units 1 and 2 are implemented, and the previous roadmap would move to Mathematics after Unit 2 technical closure.",
+  "scope": {
+    "course": "English Grade 7",
+    "textbookUnits": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6
+    ],
+    "priorityBefore": "Sprint 16.2 Mathematics 7"
+  },
+  "sequence": [
+    "Unit 2 technical acceptance",
+    "Unit 3",
+    "Unit 4",
+    "Unit 5",
+    "Unit 6",
+    "English course closure",
+    "Sprint 16.2 Mathematics 7"
+  ],
+  "unit2OwnerReport": {
+    "text": "All approved. You don't have to recheck after me. What's next on the sprint map?",
+    "acceptedAs": "Outstanding owner approval step complete; no repeat content/listening review or approval-click audit.",
+    "independentApprovalStateAuditPerformed": false,
+    "newSuccessfulLearnerAcceptanceClaimed": false
+  },
+  "newUnitQuestionBudgets": null,
+  "newUnitReleaseAuthorization": false,
+  "newIndependentSmeApproval": false,
+  "workingMethod": {
+    "primaryAgents": 1,
+    "wholeUnitAuthoringHandoffs": true,
+    "oneCapabilitySliceAtATime": true,
+    "reuseUnchangedEvidence": true,
+    "preserveTextbookStructureSequenceTopics": true,
+    "speaking": "classroom-assessed"
+  },
+  "effect": "English course completion precedes Mathematics and the later subject/integration/design milestones; their scope and governance are retained.",
+  "changes": {
+    "planningAndStatusOnly": true,
+    "productionDatabaseWrites": 0,
+    "contentChanges": 0,
+    "approvalEventsCreated": 0,
+    "runtimeChanges": 0
+  },
+  "plan": "docs/english-7-course-continuation.md"
+}
