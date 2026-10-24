@@ -1,5 +1,7 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
+**Sprint 16.1C.37 preparation — Unit 2 learner actions.** A manual, exact-main QA extension now covers Diagnostic, ordinary readiness Practice, an unscored audio exit, failed Mastery → required Review → passed retake, and writing submission/return/revision/marking. Existing owner approvals and read evidence are reused. Protected answers are injected through an encrypted fixture; all attempts and source exposure are retained. Local guards and existing audio regressions pass. Live execution and closure remain pending. [Acceptance plan](english-7-unit-02-learner-acceptance.md).
+
 
 **Roadmap version:** 4.72
 **Updated:** 2026-10-24 Asia/Yerevan · English through Unit 6 prioritised; Unit 2 approvals reported complete, technical acceptance next
