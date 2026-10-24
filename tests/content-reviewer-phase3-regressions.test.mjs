@@ -27,7 +27,7 @@ async function editorHarness(mode = "item") {
   let response = deferred();
   const source = readFileSync("web/content.js", "utf8").replace(/^import .*;\n/gm, "");
   const sandbox = {
-    document: { body: { dataset: { contentMode: mode } }, getElementById: id => nodes.get(id) ?? null },
+    document: { body: { dataset: { contentMode: mode } }, getElementById: id => nodes.get(id) ?? null, querySelectorAll: () => [] },
     window: { __haieduSupabaseClient: { auth }, addEventListener() {}, dispatchEvent: event => events.push(event) },
     location: { search: "?id=question-alpha" }, URLSearchParams,
     CustomEvent: class { constructor(type, init) { this.type = type; this.detail = init.detail; } },
