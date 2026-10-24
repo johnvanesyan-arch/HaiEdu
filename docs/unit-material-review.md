@@ -6,9 +6,11 @@ Teaching guides differ from misconception-linked remediation hints. They can cov
 
 ## Review surface
 
-[Ուսումնական նյութեր](https://www.haiedu.am/content-materials.html) appears in every content-reviewer sidebar. Search and kind/status filters apply to the loaded catalogue; additional pages are explicit. Open a guide or writing package, inspect sources and the proposed use, revise text if needed, save a successor version, run QA, then approve with a real MFA session. Revisions never overwrite prior definitions. QA belongs to the exact saved fingerprint and does not substitute for human review. Approval covers the presented content, rubric and review package; curriculum activation is separate.
+[Ուսումնական նյութեր](https://www.haiedu.am/content-materials.html) appears in every content-reviewer sidebar. Search and curriculum-section, kind and status filters (including QA-passed drafts ready for approval) apply to the loaded catalogue; additional pages are explicit. Open a guide or writing package, inspect sources and the proposed use, revise text if needed, save a successor version, run QA, then approve with a real MFA session. Revisions never overwrite prior definitions. QA belongs to the exact saved fingerprint and does not substitute for human review. Approval covers the presented content, rubric and review package; curriculum activation is separate.
 
-Same-account refresh keeps edits. Dirty navigation asks before discarding them; duplicate submissions are suppressed. Selection/account generations invalidate late responses. The mobile layout preserves the complete rubric and source/support package. Historical versions remain inspectable; only the latest version can be changed, approved or retired.
+Same-account token refresh keeps edits. Explicit list refresh asks before discarding edits and keeps the selected material open; a failed list refresh retains unsaved edits. Failed material reads offer retry. Dirty navigation asks before discarding them; duplicate submissions are suppressed. Selection/account generations invalidate late responses. The mobile layout preserves the complete rubric and source/support package. Historical versions remain inspectable; only the latest version can be changed, approved or retired.
+
+The default view presents saved content and QA/approval controls. Expand editing to create a revision, or source, practice/model, workload and history sections to inspect the full package. Retirement has its own reason and confirmation. The layout and these controls are shared across every authorized programme/release/unit. See the [2026-10-24 usability QA record](materials-reviewer-ui-qa.md).
 
 ## Data and API
 
