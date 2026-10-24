@@ -3,7 +3,7 @@
   "date": "2026-10-24",
   "workflowRunId": "40093200175",
   "sourceRevision": "2c985a437fef11ae29ecc1e7e4e05c12bceadabb",
-  "scope": "Designated QA learner, Unit 2 Diagnostic, 2026-10-24T12:21:00Z\u201312:21:30Z",
+  "scope": "Designated QA learner, Unit 2 Diagnostic, 2026-10-24T12:21:00Z–12:21:30Z",
   "failure": {
     "retainedAnswers": 22,
     "retainedPositionMs": 16453,
@@ -138,14 +138,14 @@
   "sharedReadAcceptance": [
     {
       "runId": 40094712310,
-      "scope": "Chapter VI and preserved Chapters I\u2013V",
+      "scope": "Chapter VI and preserved Chapters I–V",
       "checksPassed": 324,
       "checksTotal": 324,
       "file": "shared-audio-repair-chapter-vi-read-20261024.json"
     },
     {
       "runId": 40094712356,
-      "scope": "Chapter V and preserved Chapters I\u2013III",
+      "scope": "Chapter V and preserved Chapters I–III",
       "checksPassed": 191,
       "checksTotal": 191,
       "file": "shared-audio-repair-chapter-v-read-20261024.json"
@@ -165,6 +165,33 @@
     "nativeSuccessfulStateDelayMs": 5000,
     "preciseLiveTransportCodeAvailable": false,
     "reproducedBeforeRepair": true,
-    "normalRecoveryBoundPerPlay": 2
+    "normalRecoveryBoundPerPlay": 2,
+    "mergedPullRequest": 287,
+    "mergedRevision": "73cf2cfb6347223a191965489c969e8fd9787a1a",
+    "prCiRun": 40096785813,
+    "mainCiRun": 40097066826,
+    "requiredJobsPassed": 5,
+    "requiredCiTestsPassed": 1432,
+    "requiredCiNativeBrowserCasesPassed": 127,
+    "nativeAudioCasesPassed": 13,
+    "productionDeploymentId": "AxLzsZoot7AHckmCGCn3aUbqDyco",
+    "productionDeploymentCompleted": true,
+    "blockingDeploymentCheckObserved": true
+  },
+  "postRepairReadAcceptance": {
+    "workflowRunId": 40097066832,
+    "sourceRevision": "73cf2cfb6347223a191965489c969e8fd9787a1a",
+    "checksPassed": 136,
+    "checksTotal": 136,
+    "artifactId": 12561293811,
+    "artifactSha256": "beac935a60826bd4dcbdf614080f6f484460359404c53e224f41c06f885d0bb5"
+  },
+  "successfulContinuation": {
+    "workflowRunId": 40097115949,
+    "sourceRevision": "73cf2cfb6347223a191965489c969e8fd9787a1a",
+    "checksPassed": 783,
+    "checksTotal": 783,
+    "retainedSessionCount": 8,
+    "closureEvidence": "english-7-unit-02-learner-closure-20261024.json"
   }
 }

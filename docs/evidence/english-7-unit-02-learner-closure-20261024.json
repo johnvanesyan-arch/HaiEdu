@@ -1,0 +1,240 @@
+{
+  "schemaVersion": "haiedu-english-unit2-learner-closure-v1",
+  "checkpoint": "16.1C.37",
+  "date": "2026-10-24",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "designatedStudentId": "bc3db497-d125-411f-99dd-49b1ae2466d5"
+  },
+  "evidenceMethod": "Exact-source GitHub workflow/job records and independent scoped metadata readback. This file is a closure summary, not a byte-for-byte copy of the raw workflow ledger.",
+  "execution": {
+    "workflowRunId": 40097115949,
+    "workflowJobId": 120883302893,
+    "workflowUrl": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40097115949",
+    "event": "workflow_dispatch",
+    "sourceRevision": "73cf2cfb6347223a191965489c969e8fd9787a1a",
+    "continuationRunIds": [
+      40093200175,
+      40095510169,
+      40097115949
+    ],
+    "runnerPath": "tests/live/english-unit2-learner-acceptance.mjs",
+    "runnerBlobSha": "8910dcaa4140bd9ff1956ffaf3386eb47c2c6439",
+    "status": "completed",
+    "conclusion": "success",
+    "startedAt": "2026-10-24T13:12:08Z",
+    "finishedBy": "2026-10-24T13:56:22Z",
+    "checksPassed": 783,
+    "checksTotal": 783,
+    "retainedSessions": 8,
+    "summaryLogLine": "2026-10-24T13:56:18.9896533Z English Unit 2 learner acceptance: passed; 783/783 checks; retained sessions 8.",
+    "exactFrontendLogLines": [
+      "2026-10-24T13:21:19.7870480Z Production frontend matches 73cf2cfb6347223a191965489c969e8fd9787a1a.",
+      "2026-10-24T13:21:20.9668622Z Production frontend matches 73cf2cfb6347223a191965489c969e8fd9787a1a.",
+      "2026-10-24T13:56:17.5379035Z Production frontend matches 73cf2cfb6347223a191965489c969e8fd9787a1a."
+    ],
+    "completedWorkflowSteps": [
+      {
+        "name": "Set up job",
+        "conclusion": "success"
+      },
+      {
+        "name": "Require reviewed main branch",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/checkout@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Require recorded activation before installing browsers or loading credentials",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run actions/setup-node@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npm ci",
+        "conclusion": "success"
+      },
+      {
+        "name": "Bound Ubuntu downloads for browser acceptance",
+        "conclusion": "success"
+      },
+      {
+        "name": "Run npx playwright install --with-deps chromium",
+        "conclusion": "success"
+      },
+      {
+        "name": "Wait for this frontend revision on production",
+        "conclusion": "success"
+      },
+      {
+        "name": "Validate continuation selector",
+        "conclusion": "success"
+      },
+      {
+        "name": "Load prior retained run ledger when explicitly selected",
+        "conclusion": "success"
+      },
+      {
+        "name": "Complete bounded learner, audio and writing acceptance",
+        "conclusion": "success"
+      },
+      {
+        "name": "Upload redacted checks and designated QA screenshots",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/setup-node@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Post Run actions/checkout@v4",
+        "conclusion": "success"
+      },
+      {
+        "name": "Complete job",
+        "conclusion": "success"
+      }
+    ],
+    "artifact": {
+      "id": 12562149170,
+      "name": "english-unit2-learner-acceptance",
+      "sizeInBytes": 437502,
+      "digest": "sha256:357b71bee00106b5b9a92d0a25598525b3827352eb3a25ff87c69b410bef2413",
+      "createdAt": "2026-10-24T13:56:19Z",
+      "expiresAt": "2026-11-07T13:56:19Z",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40097115949/artifacts/12562149170"
+    }
+  },
+  "implementation": {
+    "pullRequests": [
+      285,
+      286,
+      287
+    ],
+    "finalMainCiRun": 40097066826,
+    "finalPrCiRun": 40096785813,
+    "requiredJobsPassed": 5,
+    "requiredTestsPassed": 1432,
+    "requiredNativeBrowserCasesPassed": 127,
+    "focusedNativeAudioCasesPassed": 13,
+    "productionDeploymentId": "AxLzsZoot7AHckmCGCn3aUbqDyco",
+    "productionDeploymentCompleted": true,
+    "separateBlockingDeploymentCheckObserved": true,
+    "sharedConsumers": [
+      "web/assessed-audio.mjs",
+      "web/learning-audio.mjs",
+      "web/learning-stimulus.mjs",
+      "web/learning-player.mjs",
+      "web/course-page.js"
+    ],
+    "edgeOrSqlRuntimeChanged": false,
+    "serverAudioLeaseMs": 5000,
+    "controlTransportDeadlineMs": 15000,
+    "mediaDeadlineMs": 60000,
+    "assessedCompletedPlayLimit": 2,
+    "normalRecoveryBoundPerPlayPerExecution": 2,
+    "publicationPreflight": {
+      "exactApprovedMaterialCount": 9,
+      "matchingWritingProjectionRequired": true,
+      "existingPilotReactivated": false,
+      "ownerApprovalAuditRepeated": false
+    }
+  },
+  "postRepairReadAcceptance": {
+    "workflowRunId": 40097066832,
+    "workflowJobId": 120881432680,
+    "sourceRevision": "73cf2cfb6347223a191965489c969e8fd9787a1a",
+    "checksPassed": 136,
+    "checksTotal": 136,
+    "summary": "English Unit 2 read acceptance: passed; 136/136 checks.",
+    "artifact": {
+      "id": 12561293811,
+      "name": "english-unit2-pilot-read-acceptance",
+      "sizeInBytes": 2085,
+      "digest": "sha256:beac935a60826bd4dcbdf614080f6f484460359404c53e224f41c06f885d0bb5",
+      "expiresAt": "2026-11-07T13:20:12Z",
+      "url": "https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40097066832/artifacts/12561293811"
+    }
+  },
+  "limits": [
+    "Synthetic designated QA accounts; not learner attainment or language-quality evaluation.",
+    "Independent specialist review remains deferred/pending; no empirical form-equivalence claim.",
+    "Three finite Mastery forms are exposed, including the technical unscored exit; no attempt, exposure, submission, review or play-count reset.",
+    "The second Diagnostic form is not consumed; speaking remains classroom-assessed.",
+    "The raw final ledger and native writing screenshot remain in the hashed GitHub artifact until its recorded retention expiry. Local execution-environment loss prevented copying that archive into the repository; durable summary and independent metadata readback are retained here."
+  ],
+  "next": "Unit 3 whole-unit textbook activity/outcome mapping, full applicable historical/current bank comparison and question/audio/writing proposal; then Units 4, 5 and 6 and English course closure before Mathematics.",
+  "status": "passed",
+  "readback": {
+    "file": "english-7-unit-02-learner-readback-20261024.json",
+    "checksPassed": 10,
+    "scope": "Exact eight retained sessions and designated QA learner/release/unit/enrollment; exact W01 work scope; read-only metadata.",
+    "ownedSessionCount": 8,
+    "masteryFormCount": 3,
+    "masteryItemOverlap": 0,
+    "masterySourceOverlap": 0
+  },
+  "successfulRunnerCoverage": {
+    "source": "Assertions in the exact runner blob, established by the successful job and its 783/783 result.",
+    "diagnostic": {
+      "earned": 24,
+      "possible": 24,
+      "sameRetainedSession": true
+    },
+    "practice": {
+      "sessions": 3,
+      "answers": 8,
+      "readyCoreSkills": 9
+    },
+    "mastery": {
+      "technicalUnscoredExit": true,
+      "firstScoredResult": {
+        "earned": 17,
+        "possible": 24,
+        "passed": false
+      },
+      "earlyRetakeDenied": true,
+      "requiredReview": {
+        "earned": 12,
+        "possible": 12
+      },
+      "secondScoredResult": {
+        "earned": 24,
+        "possible": 24,
+        "passed": true
+      }
+    },
+    "audio": {
+      "assessedSharedLimit": 2,
+      "thirdPlayDenied": true,
+      "pauseReloadResume": true,
+      "ordinaryThreeRealPlays": true
+    },
+    "writing": {
+      "privateDraftReload": true,
+      "pendingNotZero": true,
+      "teacherReturn": true,
+      "revisionResubmitted": true,
+      "submissions": 2,
+      "reviews": 2,
+      "criteria": 4,
+      "syntheticScore": 8,
+      "possible": 12,
+      "automaticEvidenceUnchanged": true,
+      "mobileFeedbackScreenshotInArtifact": true
+    },
+    "staffAndIsolation": {
+      "teacherResultsMatch": true,
+      "schoolAggregatesMatchAndExcludeUnscoredExit": true,
+      "foreignSchoolDenials": 5,
+      "preservedOtherContextComparisons": 15,
+      "runCreatedAuthSessionsLocallyClosed": 6
+    }
+  }
+}
