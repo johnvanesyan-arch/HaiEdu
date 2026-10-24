@@ -1,7 +1,7 @@
 # Project status register
 
 
-**Updated:** 2026-10-24 Asia/Yerevan · 16.1C.36 Unit 2 pilot configuration active; material publication and live acceptance held · **Roadmap:** 4.66
+**Updated:** 2026-10-24 Asia/Yerevan · 16.1C.36 Unit 2 pilot configuration active; material publication and live acceptance held · **Roadmap:** 4.67
 
 This is the authoritative record of **current delivery status and unresolved gates**. The [roadmap](sprint-roadmap.md) defines scope and sequence; the [backlog](backlog.md) contains implementation checklists; dated sprint reports and evidence files preserve what was known at each checkpoint. README and Notion are secondary summaries. A Notion copy is current only after its merged source-commit stamp and content have been verified; prepared edits are not a completed sync. Historical “pending” statements are not current blockers when a later evidenced disposition is recorded here.
 
@@ -10,6 +10,8 @@ Completion describes the stated scope only. Technical completion, owner-approved
 **English authoring decision — 2026-10-20:** John authorises quality improvements while preserving the coursebook's structure, sequence and topics. Adapted content retains page/activity and outcome traceability; skill/reporting groups do not reorder lessons. The [framework direction](english-7-assessment-framework.md#owner-authoring-direction--2026-10-20) and [Unit 1 map](english-7-unit-01-preparation.md) record the decision. John subsequently authorised implementation of student writing and teacher marking. The 16.1B.1 slice below records that work. Under C18 John reports accepting the task/rubric/workload package; actual workload scheduling and the explicit release policy remain separate.
 
 ## Delivery status
+
+**Collapsible curriculum subjects — 2026-10-24.** At John’s narrowed request, the coverage page now starts each subject/programme card collapsed. Its subject, grade, programme version and existing summary counts stay visible; clicking the header or using Enter/Space reveals the existing units and bank links. Multiple cards can stay open. Native details/summary controls add no event handlers or storage. Two isolated Chromium cases verify desktop/mobile layout, keyboard and independent toggling, unchanged scoped links and empty programmes. All new styles target summary elements with the curriculum header class, whose only rendered consumer is this page. Browser syntax and QA dependency checks pass; required CI and the separate Production/Blocking Deployment Check govern release. No filters, counting changes, API/content changes or curriculum release decisions are included. The existing Unit 2 publication hold and Sprint 16.5 plan remain unchanged.
 
 **Materials reviewer usability pass — 2026-10-24.** The shared materials page now uses the reviewer layout stylesheet, consistent spacing and controls, title-first cards and status badges, curriculum-section/type/status/search filters, a readable content preview, and grouped editing/reference/history sections. Refresh retains selection; failed refresh preserves edits and failed material reads offer retry. Seven native Chromium regressions and 1,423 non-browser tests pass locally. Scope is the common reviewer UI for all programmes/releases/units; no content, publication, QA criteria, API or curriculum gate changes. Required CI and deployment checks govern release. The 16.1C.36 publication/live-acceptance hold remains open. [QA record](materials-reviewer-ui-qa.md).
 
