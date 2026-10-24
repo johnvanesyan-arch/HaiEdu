@@ -17,7 +17,7 @@
       <div>
         <p class="eyebrow">ԲՈՎԱՆԴԱԿՈՒԹՅԱՆ ԹԻՄ</p>
         <h1>Բովանդակության աշխատասեղան</h1>
-        <p class="subtle">Տեսեք միայն այն, ինչ հիմա ուշադրություն է պահանջում, և անցեք համապատասխան աշխատանքային էջ։</p>
+        <p class="subtle">Շարունակեք աշխատանքը կամ ընտրեք ստուգման հաջորդ հարցը։</p>
       </div>
       <button id="signOutBtn" class="ghost hidden">Դուրս գալ</button>
     </header>
@@ -33,6 +33,21 @@
       <div id="homeAttentionStats" class="content-home-grid"></div>
 
       <div class="content-home-sections">
+        <section class="card content-work-card content-resume-card" aria-labelledby="resumeTitle">
+          <span class="mode-kicker">ՎԵՐԱԴԱՐՁ ԱՇԽԱՏԱՆՔԻՆ</span>
+          <h2 id="resumeTitle">Շարունակել ստուգումը</h2>
+          <div id="reviewResume" aria-live="polite"></div>
+          <details class="content-bank-summary">
+            <summary>Բանկի ամփոփում</summary>
+          <div class="immutable-summary" style="margin-top:18px">
+            <span><strong id="bankTotal">—</strong><br/>ընդհանուր հարց</span>
+            <span><strong id="bankApproved">—</strong><br/>հաստատված</span>
+            <span><strong id="bankPublished">—</strong><br/>հրապարակված</span>
+          </div>
+          <p class="subtle small">Արխիվացված հարցեր՝ <strong id="bankRetired">—</strong></p>
+          </details>
+        </section>
+
         <section class="card content-work-card" aria-labelledby="priorityTitle">
           <div class="section-heading">
             <div>
@@ -43,24 +58,6 @@
             <a class="ghost button-link" href="./content-review.html">Բացել ամբողջ հերթը</a>
           </div>
           <div id="priorityList" class="content-priority-list"></div>
-        </section>
-
-        <section class="card content-work-card">
-          <span class="mode-kicker">ԱՐԱԳ ՄՈՒՏՔ</span>
-          <h2>Աշխատանքային բաժիններ</h2>
-          <div class="content-quick-links">
-            <a href="./content-review.html"><span>Ստուգման հերթ</span><span>→</span></a>
-            <a href="./content-bank.html"><span>Հարցերի բանկ</span><span>→</span></a>
-            <a href="./content-curriculum.html"><span>Ուսումնական ծրագիր</span><span>→</span></a>
-            <a href="./content-evidence.html"><span>Փորձնական տվյալներ</span><span>→</span></a>
-            <a href="./content-guides.html"><span>Օգնության ուղեցույցներ</span><span>→</span></a>
-          </div>
-          <div class="immutable-summary" style="margin-top:18px">
-            <span><strong id="bankTotal">—</strong><br/>ընդհանուր հարց</span>
-            <span><strong id="bankApproved">—</strong><br/>հաստատված</span>
-            <span><strong id="bankPublished">—</strong><br/>հրապարակված</span>
-          </div>
-          <p class="subtle small">Արխիվացված հարցեր՝ <strong id="bankRetired">—</strong></p>
         </section>
       </div>
     </section>

@@ -1,8 +1,10 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
 
-**Roadmap version:** 4.70
+**Roadmap version:** 4.71
 **Updated:** 2026-10-24 Asia/Yerevan · 16.1C.36 Unit 2 pilot configuration active; material publication and live acceptance held
+
+**Reviewer home resume — 2026-10-24.** The duplicate Quick access links are replaced by «Շարունակել ստուգումը», showing the last successfully opened question, curriculum context and current dashboard status. Bank totals move into a collapsed summary. New reviewers and unavailable/archived items get a clear next action; mobile priority badges sit below the question context. Account-bound browser-local history stores only navigation metadata for 30 days (up to 20 accounts), not question content. Existing same-tab filtered-list context is reused when valid; otherwise the question opens directly. Seven new native Chromium cases cover desktop/tablet/mobile, persistence, account switching, sign-out races, failed details and expired/blocked storage; all 35 relevant browser cases and 1,423 non-browser tests pass. Shared subject-neutral UI, no backend or content changes; Unit 2 publication and Sprint 16.5 scope remain unchanged. [QA record](reviewer-home-resume-qa.md).
 
 **Advanced question editing — 2026-10-24.** Raw stimulus JSON, feedback codes, question-family/misconception configuration, structured-answer locale codes and typed-answer normalization settings now use native collapsed «Ընդլայնված» sections. Question text, options, correct/accepted answers, numeric tolerance and units, ordering codes/sequences, audio/material selectors and existing hint views stay outside them. Hidden fields retain their values in the saved revision. Required settings for new structured rows open automatically; invalid JSON or a missing family opens and focuses the relevant field, and structured validation exposes its settings. Four new Chromium cases plus expanded matching/ordering checks verify all seven supported answer formats, desktop/mobile, keyboard toggling, exact payload preservation and error recovery. Existing navigation, action-panel and observer coverage remains green. Shared editors are subject-neutral; no backend, content, authorization, scoring or release-gate changes. Unit 2 publication and Sprint 16.5 scope remain unchanged. [QA record](reviewer-advanced-editing-qa.md).
 

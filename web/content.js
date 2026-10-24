@@ -1,3 +1,4 @@
+import {rememberReviewItem} from './content-review-resume.mjs';
 import * as reviewNavigation from './content-list-navigation.mjs';
 import {arrangementEditorMarkup,bindArrangementEditor,collectArrangementEditor} from './arrangement-editor.mjs';
 import {arrangementMarkup} from './arrangement-ui.mjs';
@@ -312,6 +313,9 @@ async function selectItem(id) {
     if (token !== detailLoadToken || selectedId !== id) return;
     selectedDetail = data.detail;
     renderDetail();
+    if (document.body.dataset.reviewNavigation && contentMode === 'item' && selectedDetail?.item?.id === id && activeSession?.user?.id) {
+      rememberReviewItem(activeSession.user.id, id, reviewNavigation.readNavigation(activeSession.user.id));
+    }
   } catch (err) {
     if (token !== detailLoadToken) return;
     $("detailPanel").innerHTML = `<h2>Չհաջողվեց բեռնել</h2><p class="message bad">${esc(err.message)}</p>`;
