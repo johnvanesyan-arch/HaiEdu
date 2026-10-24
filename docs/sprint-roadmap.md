@@ -1,8 +1,10 @@
 # Armenian Curriculum Mastery Platform — Sprint Roadmap
 
 
-**Roadmap version:** 4.66
+**Roadmap version:** 4.67
 **Updated:** 2026-10-24 Asia/Yerevan · 16.1C.36 Unit 2 pilot configuration active; material publication and live acceptance held
+
+**Collapsible curriculum subjects — 2026-10-24.** At John’s narrowed request, the coverage page now starts each subject/programme card collapsed. Its subject, grade, programme version and existing summary counts stay visible; clicking the header or using Enter/Space reveals the existing units and bank links. Multiple cards can stay open. Native details/summary controls add no event handlers or storage. Two isolated Chromium cases verify desktop/mobile layout, keyboard and independent toggling, unchanged scoped links and empty programmes. All new styles target summary elements with the curriculum header class, whose only rendered consumer is this page. Browser syntax and QA dependency checks pass; required CI and the separate Production/Blocking Deployment Check govern release. No filters, counting changes, API/content changes or curriculum release decisions are included. The existing Unit 2 publication hold and Sprint 16.5 plan remain unchanged.
 
 **Materials reviewer usability pass — 2026-10-24.** The shared materials page now uses the reviewer layout stylesheet, consistent spacing and controls, title-first cards and status badges, curriculum-section/type/status/search filters, a readable content preview, and grouped editing/reference/history sections. Refresh retains selection; failed refresh preserves edits and failed material reads offer retry. Seven native Chromium regressions and 1,423 non-browser tests pass locally. Scope is the common reviewer UI for all programmes/releases/units; no content, publication, QA criteria, API or curriculum gate changes. Required CI and deployment checks govern release. The 16.1C.36 publication/live-acceptance hold remains open. [QA record](materials-reviewer-ui-qa.md).
 

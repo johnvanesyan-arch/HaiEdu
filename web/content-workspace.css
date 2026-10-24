@@ -45,6 +45,12 @@
 .content-back-row{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:14px}
 .curriculum-program-list{display:grid;gap:14px}.curriculum-program-card{padding:20px}
 .curriculum-program-head{display:flex;justify-content:space-between;gap:16px;align-items:flex-start}
+summary.curriculum-program-head{position:relative;cursor:pointer;list-style:none;padding-right:30px;flex-wrap:wrap}
+summary.curriculum-program-head::-webkit-details-marker{display:none}
+summary.curriculum-program-head>div{min-width:0}
+summary.curriculum-program-head::after{content:"";position:absolute;right:5px;top:10px;width:9px;height:9px;border-right:2px solid #274a75;border-bottom:2px solid #274a75;transform:rotate(-45deg)}
+.curriculum-program-card[open]>summary.curriculum-program-head::after{transform:rotate(45deg)}
+summary.curriculum-program-head:focus-visible{outline:3px solid #8db7ed;outline-offset:6px;border-radius:4px}
 .curriculum-program-head h2{margin:.2rem 0}.curriculum-units{display:grid;gap:9px;margin-top:15px}
 .curriculum-unit-row{display:grid;grid-template-columns:minmax(0,1fr) repeat(4,minmax(86px,.35fr)) auto;gap:10px;align-items:center;padding:12px 13px;border:1px solid #e0e7ef;border-radius:11px;background:#fbfdff}
 .curriculum-unit-row span{font-size:.82rem;color:#60738c}.curriculum-unit-row strong{font-size:.9rem}
