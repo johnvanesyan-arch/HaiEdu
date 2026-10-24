@@ -1,7 +1,7 @@
 // Assessed playback uses one server ledger per session/recording. Controls enforce
 // the normal learner flow, not DRM or proof of attention. No transcript is sent.
 export function mountAssessedAudio({root,stimulus,invoke,context,isCurrent=()=>true,onReady=()=>{},onEndUnscored=()=>{}}) {
- let live=true,busy=false,running=false,url=null,timer,state=stimulus.playback,playId=null,lastTime=0,ackAt=0,pending=false;
+ let live=true,busy=false,running=false,url=null,timer,state=stimulus.playback,playId=null,lastTime=0,pending=false;
  let queue=Promise.resolve();
  const clientId=crypto.randomUUID(),valid=()=>live&&isCurrent();
  const wrapper=document.createElement('section');wrapper.className='learning-audio assessed-audio';
@@ -47,9 +47,11 @@ export function mountAssessedAudio({root,stimulus,invoke,context,isCurrent=()=>t
  const position=()=>Math.min(stimulus.durationMs,Math.max(0,Math.round(audio.currentTime*1000)));
  async function checkpoint(){
   if(!valid()||!running)return;
-  if(pending){if(performance.now()-ackAt>3000)void failure();return;}
+  // One checkpoint at a time. The server decides whether its lease expired;
+  // a slow successful response must not create a client-reported interruption.
+  if(pending)return;
   pending=true;const at=position();
-  try{const result=await serial(()=>event('progress',at));if(valid()){state=result;ackAt=performance.now();}}
+  try{const result=await serial(()=>event('progress',at));if(valid())state=result;}
   catch{if(valid())void failure();}finally{pending=false;}
  }
  button.onclick=async()=>{
@@ -65,7 +67,7 @@ export function mountAssessedAudio({root,stimulus,invoke,context,isCurrent=()=>t
    playId=state.playId??crypto.randomUUID();state=await event('begin',state.resumePositionMs);
    if(state.playId!==playId)return;
    lastTime=state.resumePositionMs/1000;audio.currentTime=lastTime;audio.playbackRate=1;
-   running=true;ackAt=performance.now();await audio.play();
+   running=true;await audio.play();
    if(!valid()){stop();return;}
    timer=setInterval(()=>void checkpoint(),750);status.textContent='Լսեք ձայնագրությունը մինչև վերջ։';
   }catch{if(valid())await failure();}finally{if(valid()){busy=false;render();}}
