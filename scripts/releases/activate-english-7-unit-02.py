@@ -62,6 +62,29 @@ def fp(schema, table, predicate='true'):
     require(schema in ('public','private') and base.re.fullmatch('[a-z_]+',table), 'Unsafe identifier')
     return f"(select jsonb_build_object('rows',count(*),'md5',md5(coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),''))) from {schema}.{table} r where {predicate})"
 
+def material_publication_guard():
+    """Technical availability is distinct from the owner's content acceptance.
+
+    Fail before activation when the exact materials are still draft/retired or
+    the normal reviewer flow has not created the matching writing projection.
+    This reads no reviewer identity and neither approves nor republishes content.
+    """
+    materials = json.loads(DECISION.read_text())['technicalObservation']['materials']
+    require(len(materials) == 9 and sum(x['kind'] == 'guide' for x in materials) == 8
+            and sum(x['kind'] == 'writing' for x in materials) == 1, 'Exact material manifest required')
+    frozen = [{k:x[k] for k in ['id','key','kind','fingerprint','version']} for x in materials]
+    return f"""if (select count(*) from jsonb_to_recordset({jsql(frozen)}) x(id uuid,"key" text,kind text,fingerprint text,version integer)
+      join public.unit_material_versions m on m.id=x.id
+      where m.fingerprint=x.fingerprint and m.version_no=x.version and m.material_key=x."key" and m.kind=x.kind
+      and m.subject_program_id='{PROGRAM}' and m.curriculum_release_id='{RELEASE}' and m.unit_id='{UNIT}' and m.status='approved')<>9
+      then raise exception 'accepted_material_publication_required';end if;
+    if not exists(select 1 from public.unit_material_versions m join public.written_task_versions w on w.id=m.id
+      where m.id='{next(x['id'] for x in materials if x['kind']=='writing')}' and m.kind='writing' and m.status='approved'
+      and w.status='approved' and w.task_key=m.material_key and w.version_no=m.version_no
+      and w.subject_program_id=m.subject_program_id and w.curriculum_release_id=m.curriculum_release_id and w.unit_id=m.unit_id
+      and w.definition=m.definition and w.review_evidence->>'fingerprint'=m.fingerprint)
+      then raise exception 'accepted_writing_projection_required';end if;"""
+
 def build(config_path, inventory, baseline, owner, commit=False, staged=False, database_guard=None):
     validate_owner(owner)
     prepared = load_configuration(config_path, inventory)
@@ -81,7 +104,7 @@ def build(config_path, inventory, baseline, owner, commit=False, staged=False, d
         return tables, compact_activation_sql(tables, source_use, database_guard, commit)
     sql = ['-- Owner-authorized bounded Unit 2 pilot. Generated; do not hand-edit.', 'begin;', "set local lock_timeout='5s';", "set local statement_timeout='120s';",
         f"do $activation$ declare prepared_tables jsonb:={jsql(tables)}; source_use jsonb:={jsql(source_use)}; saved jsonb:='[]'::jsonb; state jsonb; saved_row jsonb; actual jsonb; begin",
-        'lock table public.items,public.item_versions,public.item_templates,public.item_curriculum_scopes,public.curriculum_release_skills,public.curriculum_release_item_families,public.learning_task_set_versions,public.learning_audio_versions,public.unit_material_versions,public.academic_mastery_policy_versions in share mode;',
+        'lock table public.items,public.item_versions,public.item_templates,public.item_curriculum_scopes,public.curriculum_release_skills,public.curriculum_release_item_families,public.learning_task_set_versions,public.learning_audio_versions,public.unit_material_versions,public.written_task_versions,public.academic_mastery_policy_versions in share mode;',
         f"perform id from public.curriculum_releases where id='{RELEASE}' for update;"]
     scopes = []
     for b in baseline:
@@ -113,9 +136,7 @@ def build(config_path, inventory, baseline, owner, commit=False, staged=False, d
     sql += [f"if (select count(*) from jsonb_to_recordset({jsql(frozen)}) x(id uuid,hash text,family uuid) join public.learning_audio_versions a on a.id=x.id join storage.objects o on o.bucket_id=a.bucket_id and o.name=a.object_path where a.revoked_at is null and a.sha256=x.hash and a.source_family_id=x.family and a.curriculum_release_id='{RELEASE}' and a.unit_id='{UNIT}' and a.bucket_id='learning-audio')<>14 then raise exception 'accepted_audio_drift';end if;"]
     sources = [{'id':x['id'],'hash':x['stimulusHash'],'family':x['sourceFamilyId'],'members':x['members']} for x in inventory['sources']]
     sql += [f"if (select count(*) from jsonb_to_recordset({jsql(sources)}) x(id uuid,hash text,family uuid,members jsonb) join public.learning_task_set_versions s on s.id=x.id where s.revoked_at is null and s.source_family_id=x.family and s.members=x.members and s.curriculum_release_id='{RELEASE}' and s.unit_id='{UNIT}' and encode(extensions.digest(s.stimulus::text,'sha256'),'hex')=x.hash)<>28 then raise exception 'accepted_task_set_drift';end if;"]
-    materials = decision['technicalObservation']['materials']
-    frozen = [{'id':x['id'],'fingerprint':x['fingerprint'],'version':x['version']} for x in materials]
-    sql += [f"if (select count(*) from jsonb_to_recordset({jsql(frozen)}) x(id uuid,fingerprint text,version integer) join public.unit_material_versions m on m.id=x.id where m.fingerprint=x.fingerprint and m.version_no=x.version and m.curriculum_release_id='{RELEASE}' and m.unit_id='{UNIT}')<>9 then raise exception 'accepted_material_drift';end if;"]
+    sql += [material_publication_guard()]
     sql += [f"if not exists(select 1 from public.academic_mastery_policy_versions p where to_jsonb(p)={jsql(prepared['reusedLifecycle'])}) then raise exception 'accepted_lifecycle_drift';end if;"]
     for t, rows in tables.items():
         columns = ','.join(rows[0])
@@ -181,7 +202,7 @@ def compact_activation_sql(tables, source_use, guard, commit=False):
     aggregate="select jsonb_build_object('row_count',count(*),'fingerprint',md5(coalesce(string_agg(md5(to_jsonb(r)::text),'' order by md5(to_jsonb(r)::text)),''))) from %I.%I r"
     sql=['begin;',"set local lock_timeout='5s';","set local statement_timeout='120s';",
          f"do $activation$ declare source_use jsonb:={jsql(source_use)};inventory jsonb:='[]';saved jsonb:='[]';actual jsonb;x jsonb;guard_table record;guard_predicate text;begin",
-         'lock table public.items,public.item_versions,public.item_templates,public.item_curriculum_scopes,public.curriculum_release_skills,public.curriculum_release_item_families,public.learning_task_set_versions,public.learning_audio_versions,public.unit_material_versions,public.academic_mastery_policy_versions in share mode;',
+         'lock table public.items,public.item_versions,public.item_templates,public.item_curriculum_scopes,public.curriculum_release_skills,public.curriculum_release_item_families,public.learning_task_set_versions,public.learning_audio_versions,public.unit_material_versions,public.written_task_versions,public.academic_mastery_policy_versions in share mode;',
          f"perform id from public.curriculum_releases where id='{RELEASE}' for update;",
          "perform id from storage.buckets where id='learning-audio' for share;",
          "if not exists(select 1 from storage.buckets where id='learning-audio' and public=false) then raise exception 'private_audio_bucket_required';end if;",
@@ -195,6 +216,7 @@ def compact_activation_sql(tables, source_use, guard, commit=False):
             "saved:=saved||jsonb_build_array(jsonb_build_object('schema',guard_table.schemaname,'table',guard_table.tablename,'predicate',guard_predicate,'state',actual));end loop;",
             f"if jsonb_array_length(inventory)<>117 or encode(extensions.digest(inventory::text,'sha256'),'hex')<>'{guard['sha256']}' then raise exception 'staged_database_drift';end if;",
             f"if not exists(select 1 from public.curriculum_releases where id='{RELEASE}' and status='draft' and activated_at is null and reconciliation_id='{base.RECON}') or (select count(*) from public.assessment_blueprints where curriculum_release_id='{RELEASE}' and status='draft')<>4 then raise exception 'verified_staged_draft_required';end if;",
+            material_publication_guard(),
             f"perform private.validate_governed_learning_model('{model}');",
             f"insert into public.assessment_pool_curriculum_reconciliations(reconciliation_id,assessment_pool_id,disposition,enabled_item_count,covered_skill_count,covered_item_family_count,covered_learning_outcome_count,rationale) select '{base.RECON}',p.id,'scope_changed',count(*),count(distinct i.skill_id),count(distinct t.item_family_id),count(distinct r.primary_learning_outcome_id),'C36 owner-authorized protected provisional 47/48/72 allocation; C29-C35 evidence reused; specialist review deferred.' from public.assessment_pools p join public.assessment_pool_items pi on pi.pool_id=p.id join public.items i on i.id=pi.item_id join public.item_templates t on t.id=i.item_template_id join public.item_family_curriculum_reconciliations r on r.item_family_id=t.item_family_id and r.reconciliation_id='{base.RECON}' where p.id in ({pool_ids}) group by p.id;",
             f"update public.assessment_forms set status='active' where pool_id in ({pool_ids});",

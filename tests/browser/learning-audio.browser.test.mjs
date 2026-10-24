@@ -17,7 +17,7 @@ async function setup(t,options={}){
  window.current=true;window.created=[];window.revoked=[];
  const create=URL.createObjectURL.bind(URL),revoke=URL.revokeObjectURL.bind(URL);URL.createObjectURL=blob=>{const u=create(blob);window.created.push(u);return u;};URL.revokeObjectURL=u=>{window.revoked.push(u);revoke(u);};
  const supabase={functions:new FunctionsClient(location.origin+'/functions',{headers:{Authorization:'Bearer ${token()}'}})};
- window.dispose=mountLearningPlayer({root:document.getElementById('root'),supabase,context:${JSON.stringify(context)},mode:'${options.assessed?'diagnostic':'practice'}',${options.assessed?'':`targetSkillId:'${id(521)}',`}isCurrent:()=>window.current,onComplete:()=>{}});
+ window.mount=()=>mountLearningPlayer({root:document.getElementById('root'),supabase,context:${JSON.stringify(context)},mode:'${options.assessed?'diagnostic':'practice'}',${options.assessed?'':`targetSkillId:'${id(521)}',`}isCurrent:()=>window.current,onComplete:()=>{}});window.dispose=window.mount();
  </script>`;
  const server=createServer(async(req,res)=>{
   try{
@@ -37,7 +37,9 @@ async function setup(t,options={}){
      // Exercise captured media time against variable request arrival, using
      // the real browser player, Edge handler and SQL ledger.
      const body=JSON.parse(Buffer.concat(chunks));
-     if(options.progressJitter&&body.action==='progress'&&!f.progressDelayed){f.progressDelayed=true;await new Promise(resolve=>setTimeout(resolve,900));}
+     (f.audioActions??=[]).push(body.action);
+     if(body.action==='progress')await f.state.beforeProgress?.();
+     if(options.progressJitter&&body.action==='progress'&&!f.progressDelayed){f.progressDelayed=true;await new Promise(resolve=>setTimeout(resolve,options.progressDelayMs??900));}
      result=await f.handle(request);
     }
     else{const routed=await routeGovernedLearning({admin:f.admin,studentId:id(10),token:token(),request,operation:{'start-learning-session':'start','get-mastery-check-status':'status','get-session-item':'item','submit-answer':'answer'}[name]});result=new Response(JSON.stringify(routed.body),{status:routed.status,headers:{'Content-Type':'application/json'}});}
@@ -152,4 +154,42 @@ test('assessed player disposal discards a late blob without recording a play',as
  await page.locator('[data-audio-play]').click();await waiting;await page.evaluate(()=>{window.current=false;window.dispose();});release();
  await page.waitForLoadState('networkidle');assert.deepEqual(await page.evaluate(()=>window.created),[]);
  assert.equal((await f.db.query('select completed_plays from learning_assessed_audio')).rows[0].completed_plays,0);assert.deepEqual(errors,[]);
+});
+
+test('assessed playback accepts a successful 3.4-second checkpoint without a false interruption',async t=>{
+ const {f,page,errors}=await setup(t,{assessed:{durationMs:6000},progressJitter:true,progressDelayMs:3400});
+ await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);await page.locator('[data-audio-play]').dblclick();
+ await expect(page.locator('[data-audio-count]')).toContainText('1/2',{timeout:15000});
+ const row=(await f.db.query('select completed_plays,failed_at from learning_assessed_audio')).rows[0];
+ assert.equal(row.completed_plays,1);assert.equal(row.failed_at,null);assert.equal(f.progressDelayed,true);
+ assert.equal(f.audioActions.filter(x=>x==='begin').length,1);assert.equal(f.audioActions.filter(x=>x==='complete').length,1);assert.equal(f.audioActions.includes('failed'),false);assert.deepEqual(errors,[]);
+});
+
+test('pause during a delayed checkpoint stays paused and preserves the same uncharged play',async t=>{
+ const {f,page,errors}=await setup(t,{assessed:{durationMs:6000},progressJitter:true,progressDelayMs:3400});
+ await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);await page.locator('[data-audio-play]').click();
+ await expect.poll(()=>f.progressDelayed).toBe(true);await page.getByRole('button',{name:'Դադարեցնել',exact:true}).click();
+ await expect(page.locator('.assessed-audio [role=status]')).toContainText('Լսելը դադարեցված է',{timeout:10000});
+ const row=(await f.db.query('select completed_plays,position_ms,play_id,lease_until,failed_at from learning_assessed_audio')).rows[0];
+ assert.equal(row.completed_plays,0);assert.ok(row.position_ms>0);assert.ok(row.play_id);assert.equal(row.lease_until,null);assert.equal(row.failed_at,null);
+ assert.equal(await page.locator('audio').evaluate(a=>a.paused),true);assert.equal(f.audioActions.filter(x=>x==='pause').length,1);assert.equal(f.audioActions.includes('failed'),false);assert.deepEqual(errors,[]);
+});
+
+test('an expired server checkpoint still offers recovery without charging a play',async t=>{
+ const {f,page,errors}=await setup(t,{assessed:{durationMs:10000},progressJitter:true,progressDelayMs:5500});
+ await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);await page.locator('[data-audio-play]').click();
+ await expect(page.getByRole('button',{name:'Ավարտել՝ առանց գնահատման',exact:true})).toBeVisible({timeout:15000});
+ const row=(await f.db.query('select completed_plays,play_id,failed_at from learning_assessed_audio')).rows[0];
+ assert.equal(row.completed_plays,0);assert.ok(row.play_id);assert.ok(row.failed_at);assert.equal(await page.locator('audio').evaluate(a=>a.paused),true);
+ assert.equal(f.audioActions.filter(x=>x==='failed').length,1);assert.equal(f.audioActions.includes('complete'),false);assert.deepEqual(errors,[]);
+});
+
+test('a late assessed checkpoint cannot update a replacement player or add handlers',async t=>{
+ const {f,page,errors}=await setup(t,{assessed:{durationMs:6000}});let release,started;
+ const waiting=new Promise(resolve=>{started=resolve;});f.state.beforeProgress=async()=>{started();await new Promise(resolve=>{release=resolve;});};
+ await page.locator('[data-audio-play]').click();await expect(page.locator('audio')).toHaveAttribute('src',/^blob:/);await page.locator('[data-audio-play]').click();await waiting;
+ await page.evaluate(()=>{window.dispose();window.dispose=window.mount();});await expect(page.locator('.assessed-audio')).toHaveCount(1);release();
+ await page.waitForLoadState('networkidle');await expect(page.locator('[data-audio-count]')).toContainText('0/2');await expect(page.locator('audio')).not.toHaveAttribute('src');
+ assert.equal(f.audioActions.filter(x=>x==='begin').length,1);assert.equal(f.audioActions.filter(x=>x==='progress').length,1);assert.equal(f.audioActions.includes('failed'),false);
+ assert.deepEqual(await page.evaluate(()=>window.revoked),await page.evaluate(()=>window.created));assert.deepEqual(errors,[]);
 });

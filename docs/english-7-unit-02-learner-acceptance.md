@@ -1,6 +1,6 @@
 # English 7 Unit 2 learner acceptance — 16.1C.37
 
-Prepared 2026-10-24. Live execution is pending. This subject-aware QA extension changes no shared runtime, curriculum policy, content approval or release gate.
+In progress 2026-10-24. The subject-aware QA extension exposed a shared browser timing defect during its first live run; the bounded repair below changes no curriculum policy, content approval or release gate.
 
 John's completed Unit 2 approvals and the retained 136/136 read checks plus 54/54 nested isolation checks are reused. This slice verifies actions against the existing provisional pilot, using only the two designated QA schools and normal role authentication. It does not re-audit the owner's reviews or re-listen for content quality.
 
@@ -27,3 +27,19 @@ Local preparation: 23 focused checks passed (six new runner/fixture/publication/
 Next content delivery after technical closure: Unit 3, then Units 4–6, following textbook sequence and whole-unit batches. Mathematics 16.2 follows English course closure.
 
 CI investigation: the unchanged reviewer-home mobile layout assertion failed twice while taking two viewport measurements in separate protocol calls during native smooth scrolling. The test now measures both rectangles in one browser evaluation, retaining the original full-width and non-overlap assertions. Product layout, scrolling and production behavior are unchanged. Local browser validation and the new required CI result are recorded at closure.
+
+The activation compiler now applies a publication guard in both direct and staged transaction paths. All nine exact materials must be approved for the pinned scope; W01 must also have the matching approved writing-task identity, version, definition and material fingerprint. Four focused checks pass, including three executed SQL regressions for draft/retired materials, missing/stale/foreign writing projections and read-only behavior. The already active pilot is not reactivated, and owner approvals are not audited or modified.
+
+## First live run and shared playback repair
+
+[Run 40093200175](https://github.com/johnvanesyan-arch/HaiEdu/actions/runs/40093200175) used exact deployed frontend `2c985a437fef11ae29ecc1e7e4e05c12bceadabb` after all five required PR and merged-main CI jobs passed and the production deployment completed. It passed 203/204 executed checks, retained 22 correct answers in Diagnostic `9d88743b-1540-4cf8-8910-47929e2c8622`, and stopped at the second recording on question 23. The first recording passed pause/reload recovery, two real-time plays, shared allowance and the rejected third play. All six run-created auth sessions were locally signed out.
+
+The retained audio ledger identifies a client-reported interruption at 16,453 ms with zero completed plays. Scoped Edge logs show a successful HTTP 200 progress request taking 3,446 ms; the client independently declared failure after three seconds since the preceding acknowledgement. The player now keeps one checkpoint in flight and lets the existing server lease decide expiry. A successful slow request no longer manufactures an interruption. Genuine rejected requests still stop playback and preserve the same recovery/uncharged-exit path; only server-accepted completion can charge a play.
+
+The new native Chromium regression reproduces the original failure with a 3.4-second checkpoint before repair. Additional cases cover pausing during that request, actual server-lease expiry, and disposal/reinitialization before a late response; existing double-click, two-play, rate/seek, refresh and private-media cleanup cases remain required. These tests run the real player, Edge handler and SQL ledger against isolated fixtures, not production audio.
+
+Consumer audit: `assessed-audio.mjs` is imported by `learning-audio.mjs`, through `learning-stimulus.mjs` and `learning-player.mjs` to the shared `course-page.js`. All governed subjects/releases use that same assessed branch; ordinary Practice/Review playback remains on its existing branch. No subject-specific condition, Edge Function or SQL change is introduced. The existing QA dependency graph still covers every relevant workflow; no backend redeployment is required. The separately tested publication guard is a subject-aware Unit 2 activation extension and is not rerun against the active pilot.
+
+The first failed ledger is preserved as [interruption evidence](evidence/english-7-unit-02-learner-interruption-20261024.json). Continuation must name run `40093200175` and resume its same session/checkpoint after the repaired exact-main frontend is deployed. No attempts, answers, exposures, approvals or writing history are reset. Full learner/writing closure remains pending.
+
+Local repair validation: 12/12 native browser cases and 15/15 focused audio, publication and continuation checks pass. All 68 browser files pass syntax checks, and all eight governed QA dependency graphs remain covered.
