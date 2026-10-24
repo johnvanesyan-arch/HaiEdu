@@ -1,0 +1,68 @@
+{
+  "schemaVersion": "haiedu-english-unit2-read-contract-v1",
+  "checkpoint": "16.1C.35",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+  },
+  "guides": {
+    "count": 8,
+    "projectionSha256": "bab5cf6347502618cd9fef6a40250e3e3ecaa75b53b6035639568f8696c2f37e",
+    "hashEncoding": "SHA-256 of UTF-8 JSON; recursively lexicographically sorted object keys, compact separators, literal Unicode, array order retained",
+    "identities": [
+      {
+        "id": "2183437b-e54f-51d5-a08e-b6dd92f8f724",
+        "version": 1,
+        "sequenceOrder": 1
+      },
+      {
+        "id": "005113a1-0d6b-5da7-a26e-67e0b60f34f8",
+        "version": 1,
+        "sequenceOrder": 2
+      },
+      {
+        "id": "c65068e6-2240-5ce9-a755-d55102619719",
+        "version": 1,
+        "sequenceOrder": 3
+      },
+      {
+        "id": "fd2abf30-3c5c-5b89-a25f-5f6859861ef7",
+        "version": 1,
+        "sequenceOrder": 4
+      },
+      {
+        "id": "06fe8831-66fa-5bc2-a025-7236facdbda5",
+        "version": 1,
+        "sequenceOrder": 5
+      },
+      {
+        "id": "3fa30f1a-dcb4-5722-a9e4-ecf474935513",
+        "version": 1,
+        "sequenceOrder": 6
+      },
+      {
+        "id": "16524afd-9b6a-5e04-aa50-58210a5d0578",
+        "version": 1,
+        "sequenceOrder": 7
+      },
+      {
+        "id": "9e7cae24-b5ef-58eb-a94e-afe765738ef9",
+        "version": 1,
+        "sequenceOrder": 8
+      }
+    ]
+  },
+  "writingTask": {
+    "id": "b4c4f2c2-df58-5222-a95e-d1f90bf69516",
+    "version": 1,
+    "title": "Introduce a style and a musical work",
+    "locale": "en",
+    "baselineRequired": false
+  },
+  "preservedEnglishScope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+    "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+  }
+}

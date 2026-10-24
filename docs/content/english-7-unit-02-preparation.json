@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.34",
+  "checkpoint": "16.1C.35",
   "date": "2026-10-24",
   "timezone": "Asia/Yerevan",
-  "status": "policy-accepted-configuration-rehearsed-release-pending",
+  "status": "final-pilot-packet-prepared-activation-decision-pending",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -600,7 +600,7 @@
       "S14"
     ],
     "newSettingProvesNovelReasoning": false,
-    "next": "Reuse unchanged comparison and owner review; accepted policy rehearse complete, final release preparation next.",
+    "next": "Reuse unchanged comparison and owner acceptance; final pilot packet prepared.",
     "demandLevelReviewComplete": true,
     "corpusEvidence": "docs/evidence/english-7-unit-02-authoring-20261023.json",
     "reviewProvenance": "Codex automated author and semantic self-review; human/SME review pending",
@@ -652,7 +652,7 @@
     "skillOutcomeMappingsRegistered": 19,
     "questionFamiliesReconciled": 192
   },
-  "next": "Final source-protection/specialist dispositions and bounded pilot release/acceptance packet.",
+  "next": "Final bounded provisional-pilot authorization, then activation and guarded learner read/action acceptance.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -757,5 +757,15 @@
     "configurationRehearsalChecks": 18,
     "rollbackTablesRestored": 117,
     "productionCommittedWrites": 0
+  },
+  "finalReleasePreparation": {
+    "decision": "docs/content/english-7-unit-02-release-decision.json",
+    "readContract": "docs/content/english-7-unit-02-read-contract.json",
+    "focusedChecks": 44,
+    "initialTaskSets": 25,
+    "initialAudio": 11,
+    "liveAcceptanceExecuted": false,
+    "learnerActivationAuthorized": false,
+    "productionWrites": 0
   }
 }

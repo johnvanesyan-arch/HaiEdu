@@ -1,5 +1,7 @@
 # English 7 Unit 2 — accepted policy and release preparation
 
+**Current C35:** Unit 1 C25/C26 and Unit 2 C29–C34 evidence/owner approvals are retained. C35 prepares the final protected provisional-pilot packet and guarded Unit 2 read acceptance. Initial delivery has 47 core Practice questions, five 24-question forms, eight guides, W01 and 25 sets/11 recordings; 25 optional questions and three audio sets remain outside core allocation. Forty-four focused regressions pass. No production writes or activation; one final bounded pilot authorization remains before activation and live read/action acceptance. Independent specialist review is proposed deferred, with its gate pending. [Final decision packet](english-7-unit-02-final-release-decision.md).
+
 **16.1C.34 · 24 October 2026 · Roadmap 4.63. Exact configuration rehearsed; no learner activation.**
 
 John's “yes” accepts the complete [C33 numerical proposal](english-7-unit-02-policy-proposal.md), including limited listening-readiness evidence, finite technical replacement capacity and initial 47-core/25-optional delivery. The [acceptance record](evidence/english-7-unit-02-policy-acceptance-20261024.json) binds the exact proposal SHA-256 and source commit. Content/audio approvals are reused without repeating review or auditing approval actions.
@@ -32,6 +34,6 @@ C29 whole-bank comparison/grading, C30/C31 source/audio and saved QA, C32 curric
 
 ## Remaining release work
 
-Technical binding readiness is established; final source-protection/exposure disposition, independent specialist or explicit provisional-pilot treatment, and learner-release authorization remain separate. Unique source families and accepted audio do not prove unseen exposure or equivalent difficulty. Unit 1's public-bank exception is not inherited.
+C35 completes the [final protected pilot packet and guarded read acceptance](english-7-unit-02-final-release-decision.md), reusing this immutable configuration. The packet proposes authenticated learner delivery, preserved source-family protection and independent specialist review deferred with its gate pending. Existing owner content/audio/source-use instructions are retained; Unit 1's public-bank exception is not inherited.
 
-Next, prepare the final Unit 2 source-protection/specialist dispositions and a bounded pilot release/acceptance packet using these exact configurations. Its acceptance should cover intended learner scope and the applicable source-use/provisional-review decisions. Activation and the subsequent learner-attempt/audio/writing checks follow that decision. Seven stored release gates remain pending, and no configuration or learner allocation has been committed by this rehearsal.
+The remaining owner decision is bounded Unit 2 pilot activation. Activation, live authenticated read acceptance and the designated learner-attempt/audio/writing action run follow that decision. Seven stored release gates remain pending; C34 and C35 have committed no configuration or learner allocation.

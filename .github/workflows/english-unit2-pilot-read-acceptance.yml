@@ -1,0 +1,67 @@
+name: English Unit 2 pilot read acceptance
+
+on:
+  workflow_dispatch:
+  push:
+    branches: [main]
+    paths:
+      # Expand to the full dependency graph in the verified activation change.
+      - docs/evidence/english-7-unit-02-pilot-activation.json
+
+permissions:
+  contents: read
+
+concurrency:
+  group: sprint-14-isolation-qa
+  cancel-in-progress: false
+
+jobs:
+  authenticated-read-acceptance:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - name: Require reviewed main branch
+        run: test "$GITHUB_REF" = refs/heads/main
+      - uses: actions/checkout@v4
+      - name: Require recorded activation before installing browsers or loading credentials
+        run: test -f docs/evidence/english-7-unit-02-pilot-activation.json
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+      - run: npm ci
+      - name: Bound Ubuntu downloads for browser acceptance
+        run: |
+          # Runner-only transport settings; package signatures and TLS verification stay enabled.
+          # Bound slow mirror downloads without changing package trust or test timeouts.
+          if [ -f /etc/apt/apt-mirrors.txt ]; then
+            sudo sed -i 's#http://azure.archive.ubuntu.com/ubuntu#https://archive.ubuntu.com/ubuntu#g' /etc/apt/apt-mirrors.txt
+          fi
+          printf '%s\n' 'Acquire::Retries "2";' 'Acquire::http::Timeout "30";' 'Acquire::https::Timeout "30";' | sudo tee /etc/apt/apt.conf.d/80-haiedu-ci >/dev/null
+      - run: npx playwright install --with-deps chromium
+      - name: Wait for this frontend revision on production
+        run: node scripts/wait-for-production-release.mjs
+      - name: Verify designated English and preserved programme reads without learning writes
+        run: node scripts/english-unit2-pilot-read-acceptance.mjs
+        env:
+          QA_TENANT_FIXTURES_JSON: ${{ vars.QA_TENANT_FIXTURES_JSON }}
+          QA_SCHOOL_A_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_A_ADMIN_EMAIL }}
+          QA_SCHOOL_A_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_A_ADMIN_PASSWORD }}
+          QA_SCHOOL_A_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_A_TEACHER_EMAIL }}
+          QA_SCHOOL_A_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_A_TEACHER_PASSWORD }}
+          QA_SCHOOL_A_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_A_STUDENT_EMAIL }}
+          QA_SCHOOL_A_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_A_STUDENT_PASSWORD }}
+          QA_SCHOOL_B_ADMIN_EMAIL: ${{ secrets.QA_SCHOOL_B_ADMIN_EMAIL }}
+          QA_SCHOOL_B_ADMIN_PASSWORD: ${{ secrets.QA_SCHOOL_B_ADMIN_PASSWORD }}
+          QA_SCHOOL_B_TEACHER_EMAIL: ${{ secrets.QA_SCHOOL_B_TEACHER_EMAIL }}
+          QA_SCHOOL_B_TEACHER_PASSWORD: ${{ secrets.QA_SCHOOL_B_TEACHER_PASSWORD }}
+          QA_SCHOOL_B_STUDENT_EMAIL: ${{ secrets.QA_SCHOOL_B_STUDENT_EMAIL }}
+          QA_SCHOOL_B_STUDENT_PASSWORD: ${{ secrets.QA_SCHOOL_B_STUDENT_PASSWORD }}
+      - name: Upload redacted acceptance evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: english-unit2-pilot-read-acceptance
+          path: qa-results/english-unit2-pilot-read-acceptance.json
+          if-no-files-found: warn
+          retention-days: 14

@@ -1,7 +1,7 @@
 {
   "schemaVersion": "haiedu-designated-programme-fixtures-v1",
   "dedicatedQa": true,
-  "checkpoint": "16.1C.25",
+  "checkpoint": "16.1C.35",
   "contexts": [
     {
       "side": "A",
@@ -29,6 +29,36 @@
       "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
       "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
       "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683",
+      "classId": "07064f4c-be4b-4719-a6de-a785837f727a",
+      "teacherAssignmentId": "8f7ac428-9063-4a15-b309-0f2e422994eb",
+      "enrollmentId": "b78d7318-5627-4345-a190-665d5ea43b87"
+    },
+    {
+      "side": "A",
+      "schoolId": "e88bb74c-ab42-41a5-8943-e33a3ac4c2e6",
+      "studentId": "bc3db497-d125-411f-99dd-49b1ae2466d5",
+      "teacherId": "50e19b9c-166a-48bf-b654-c702edcff815",
+      "adminId": "df6c81bc-b92a-4a8e-aac5-cee830ad7840",
+      "baseClassId": "6f8002d4-e375-4490-91d1-ac8111c316de",
+      "baseAssignmentId": "5c95860f-7142-4d57-8751-4b650eb8ee2b",
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+      "classId": "20342530-a1f9-42cf-ab19-849506947a43",
+      "teacherAssignmentId": "95dadfac-c207-4a8a-9571-b63686f452ad",
+      "enrollmentId": "d5231fa8-baae-4efc-a5b2-9d26f8e9c895"
+    },
+    {
+      "side": "B",
+      "schoolId": "dd92dacb-7889-47f3-8f00-ce9144e3ac4a",
+      "studentId": "ae4cb419-f894-4d75-8e9f-3f08dc2fcdb7",
+      "teacherId": "61ad0552-7bcb-480a-ba27-95c635326953",
+      "adminId": "af872787-1b27-4f1f-b75c-9384d454a1b4",
+      "baseClassId": "69c3a01d-c393-4b0e-b085-23c8c89cd026",
+      "baseAssignmentId": "1ab1da84-794e-4142-b542-8ccb6169a4e6",
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
       "classId": "07064f4c-be4b-4719-a6de-a785837f727a",
       "teacherAssignmentId": "8f7ac428-9063-4a15-b309-0f2e422994eb",
       "enrollmentId": "b78d7318-5627-4345-a190-665d5ea43b87"

@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "haiedu-english-unit2-final-packet-evidence-v1",
+  "checkpoint": "16.1C.35",
+  "date": "2026-10-24",
+  "preparedFromCommit": "2d8605465b4483a0aee548b420be8954152ed93e",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+  },
+  "status": "packet_and_guarded_read_acceptance_prepared",
+  "decisionManifest": {
+    "path": "docs/content/english-7-unit-02-release-decision.json",
+    "sha256": "ec2fdcdddff3d15d8034cb5a9d9c91b667a5a5f457a1fbdfaede3f1ec60411c5"
+  },
+  "readContract": {
+    "path": "docs/content/english-7-unit-02-read-contract.json",
+    "sha256": "7c0fe05c3284bcd7d940ee26ba92679c99d7a73c7cdb169fdc5306d4465983a4"
+  },
+  "configuration": {
+    "path": "docs/content/english-7-unit-02-configuration-summary.json",
+    "sha256": "ca6ac1f194e4fede3b942bd78346a72c8ff3ce492dc460cfa9895c7b1674b04f",
+    "protectedConfigurationSha256": "ecbc950c4224e1743d4dd183d54954a2b21ae8a0e7d86b6745077b9e4d5e2517",
+    "preparedRows": 516
+  },
+  "technicalObservation": {
+    "bucket": {
+      "id": "learning-audio",
+      "public": false
+    },
+    "release": {
+      "id": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "status": "draft"
+    },
+    "materials": [
+      {
+        "id": "2183437b-e54f-51d5-a08e-b6dd92f8f724",
+        "key": "ENG7-U02-G01",
+        "kind": "guide",
+        "version": 1,
+        "fingerprint": "ac98dda1df005f25d3395e6e61839292731f21ee37c69df4cd267e414e67d692",
+        "sequenceOrder": 1
+      },
+      {
+        "id": "005113a1-0d6b-5da7-a26e-67e0b60f34f8",
+        "key": "ENG7-U02-G02",
+        "kind": "guide",
+        "version": 1,
+        "fingerprint": "44681b0ea471a3b2387e5f032acec4b5e3c70db520903b32573ecda9fd79789f",
+        "sequenceOrder": 2
+      },
+      {
+        "id": "c65068e6-2240-5ce9-a755-d55102619719",
+        "key": "ENG7-U02-G03",
+        "kind": "guide",
+        "version": 1,
+        "fingerprint": "0253a109e072666ac1506c8ff65737388ddcd4a8546e1cbd3115f6474e7d7e58",
+        "sequenceOrder": 3
+      },
+      {
+        "id": "fd2abf30-3c5c-5b89-a25f-5f6859861ef7",
+        "key": "ENG7-U02-G04",
+        "kind": "guide",
+        "version": 1,
+        "fingerprint": "b8b228b2bd380c1f8ce129d7180e2bfd9a21ba4f7b87a441fad99df820c62d03",
+        "sequenceOrder": 4
+      },
+      {
+        "id": "06fe8831-66fa-5bc2-a025-7236facdbda5",
+        "key": "ENG7-U02-G05",
+        "kind": "guide",
+        "version": 1,
+        "fingerprint": "e238337655e818b1f60ac656b45dbaada3430150b4c68914c6397966ac3aac06",
+        "sequenceOrder": 5
+      },
+      {
+        "id": "3fa30f1a-dcb4-5722-a9e4-ecf474935513",
+        "key": "ENG7-U02-G06",
+        "kind": "guide",
+        "version": 1,
+        "fingerprint": "a6d04dd809ad2b8637be9206bdbd7fe83840efc3cefd816edc96f7d53c49ce82",
+        "sequenceOrder": 6
+      },
+      {
+        "id": "16524afd-9b6a-5e04-aa50-58210a5d0578",
+        "key": "ENG7-U02-G07",
+        "kind": "guide",
+        "version": 1,
+        "fingerprint": "39291a8206c6a5172543d358043604604aab4ede49f7735509481e0b596499a6",
+        "sequenceOrder": 7
+      },
+      {
+        "id": "9e7cae24-b5ef-58eb-a94e-afe765738ef9",
+        "key": "ENG7-U02-G08",
+        "kind": "guide",
+        "version": 1,
+        "fingerprint": "99479a8437e538b314c6d9c7ddf2b06d2235daab663e0c2db902b233a4dd674b",
+        "sequenceOrder": 8
+      },
+      {
+        "id": "b4c4f2c2-df58-5222-a95e-d1f90bf69516",
+        "key": "ENG7-U02-W01",
+        "kind": "writing",
+        "version": 1,
+        "fingerprint": "f5d7e8bde2c49f4275321fa7511ed109eabaae2b28bf314163d463cedc3fdded",
+        "sequenceOrder": 9
+      }
+    ],
+    "observedAt": "2026-10-24T06:15:06.766942+00:00",
+    "audioObjectCount": 14,
+    "itemExposureCount": 0,
+    "sourceExposureCount": 0,
+    "englishActiveAssignments": 2,
+    "englishActiveEnrollments": 2
+  },
+  "materialFingerprintsMatchRetainedC29": true,
+  "guideProjectionMatchesRetainedC29": true,
+  "freshApprovalAudit": false,
+  "repeatListeningReview": false,
+  "reusedEvidence": {
+    "docs/evidence/english-7-unit-02-authoring-20261023.json": "227fb3f193ef9bf5bdf5cb9c1774132d7eb4bb3e90a12034982d83814cb9b357",
+    "docs/evidence/english-7-unit-02-assessment-audio-owner-acceptance-20261023.json": "6f69ccc3721f2339e2f6b48f21c7ddc20967252c12533ad40cfedd19ed6d8f25",
+    "docs/evidence/english-7-unit-02-source-integration-20261024.json": "46f4d5ebabe4054957192fe0c610d4cfa9ff862b941d306b4a037869beba16f5",
+    "docs/evidence/english-7-unit-02-source-integration-authorization-20261024.json": "50c7194e67cf1f148d5b7128f71a4851c5bde1d9b89623759dc6d97c45605c80",
+    "docs/evidence/english-7-unit-02-owner-approval-report-20261024.json": "5d9bbd017d77ac42aa1a510c0da4b3fcf9596a3d8def5d72f7599fba729edb87",
+    "docs/evidence/english-7-unit-02-curriculum-registration-20261024.json": "d4d5ad63ccad3ffceec8307f18313ee7d09d43258d0bba60e7682281ee2b03e9",
+    "docs/evidence/english-7-unit-02-policy-proposal-20261024.json": "d02f16ada245102784192dbf9f0e19638a0b19460342fe6049d89ec6abba6993",
+    "docs/evidence/english-7-unit-02-policy-acceptance-20261024.json": "40cf9c04af176da883677ba6ea2da7c15b97341d4a09be86c3895ccc0334a8fd",
+    "docs/evidence/english-7-unit-02-configuration-preparation-20261024.json": "db1f8eae4c88e8e203aa73a06a2214e6fee26545d2a65bc74c57e46a0c675d84"
+  },
+  "verification": {
+    "focusedRegressionTests": 25,
+    "existingConsumerRegressionTests": 19,
+    "totalFocusedRegressionTests": 44,
+    "browserQaTriggerChecker": "passed; dormant Unit 2 workflow, all existing workflows retain covered graphs",
+    "guideProjection": "eight retained guides match canonical SHA-256 contract; no guide body published",
+    "isolation": "synthetic two-school and same-programme Unit 1/Unit 2 positive/negative scope checks; all prior dashboard states preserved in read runner",
+    "liveUnit2ReadAcceptanceExecuted": false,
+    "liveUnit2LearnerActionsExecuted": false,
+    "runtimeEvidenceReused": "C26 assessed-audio timing repair; C29 grading/comparison, C30-C34 registration and policy rehearsal"
+  },
+  "qaFixtureExtension": {
+    "newPeopleOrMemberships": 0,
+    "existingEnglishEnrollmentsReused": 2,
+    "additionalReleaseContextsDesignated": 2,
+    "classProjectionDeduplicated": true,
+    "productAuthorizationChanged": false,
+    "consumers": [
+      "sprint-14-isolation",
+      "english-unit1-pilot-read-acceptance",
+      "chapter-iii/iv/v/vi-pilot-read-acceptance",
+      "sprint-14-actions",
+      "sprint-14d-analytics-qa"
+    ]
+  },
+  "pendingDecision": {
+    "action": "activate_provisional_pilot",
+    "specialistReview": "proposed_deferred_pending_owner_release_decision",
+    "independentSmeApproved": false,
+    "unseenAssessmentClaim": false,
+    "sourceUseBasis": "existing_owner_course_instructions"
+  },
+  "preservation": {
+    "productionCommittedWrites": 0,
+    "contentApprovalQaChanges": 0,
+    "configurationBindingsActivated": 0,
+    "releaseGatesChanged": 0,
+    "runtimeSchemaEdgeRlsChanges": 0,
+    "learnerActivationAuthorized": false
+  },
+  "releaseClosure": "Required CI, separate production deployment status and exact Notion source stamp are verified against the merged source commit; this preparation evidence does not pre-claim those asynchronous results."
+}

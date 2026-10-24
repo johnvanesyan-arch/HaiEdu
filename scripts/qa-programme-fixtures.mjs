@@ -18,7 +18,8 @@ export function ownNavigation(contexts, fixture, manifest = additionalFixtures) 
 }
 
 export function ownStudentClasses(data, fixture, manifest = additionalFixtures) {
-  const ids = [fixture.classId, ...additionalContexts(fixture, manifest).map(c => c.classId)];
+  // One programme class may expose several explicitly designated unit/release contexts.
+  const ids = [...new Set([fixture.classId, ...additionalContexts(fixture, manifest).map(c => c.classId)])];
   return Array.isArray(data?.classes) && data.classes.length === ids.length
     && new Set(data.classes.map(c => c.id)).size === ids.length && data.classes.every(c => ids.includes(c.id));
 }

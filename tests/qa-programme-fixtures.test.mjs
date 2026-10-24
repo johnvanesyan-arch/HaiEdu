@@ -27,3 +27,13 @@ test('existing synthetic fixtures retain the original single-class contract',()=
   assert.equal(ownStudentClasses({classes:[{id:f.classId}]},other,manifest),true);
   assert.equal(ownNavigation([c],other,manifest),false);
 });
+
+test('two releases in one programme retain exact unit scopes but count their class once',()=>{
+  const next={...c,curriculumReleaseId:'next-release',unitId:'next-unit'};
+  const multi={...manifest,contexts:[c,next]};
+  assert.equal(ownStudentClasses({classes:[{id:f.classId},{id:c.classId}]},f,multi),true);
+  assert.equal(ownStudentClasses({classes:[{id:f.classId},{id:c.classId},{id:c.classId}]},f,multi),false);
+  assert.equal(ownNavigation([c,next],f,multi),true);
+  for(const mixed of [{...c,unitId:next.unitId},{...next,unitId:c.unitId},{...next,enrollmentId:'other'},{...next,teacherAssignmentId:'other'}])
+    assert.equal(ownNavigation([c,mixed],f,multi),false);
+});
