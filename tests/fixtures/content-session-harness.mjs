@@ -1,7 +1,7 @@
 import {readFileSync} from 'node:fs';
 import vm from 'node:vm';
 export function deferred(){let resolve,reject;const promise=new Promise((a,b)=>{resolve=a;reject=b;});return{promise,resolve,reject};}
-export function node(){const classes=new Set();return{value:'',textContent:'',innerHTML:'',dataset:{},listeners:new Map(),classList:{add:(...x)=>x.forEach(v=>classes.add(v)),remove:(...x)=>x.forEach(v=>classes.delete(v)),contains:v=>classes.has(v),toggle:(v,b)=>b?classes.add(v):classes.delete(v)},addEventListener(t,f){this.listeners.set(t,f);},focus(){},setAttribute(){},getAttribute(){return null;},scrollTo(){}};}
+export function node(){const classes=new Set();return{value:'',textContent:'',innerHTML:'',dataset:{},listeners:new Map(),classList:{add:(...x)=>x.forEach(v=>classes.add(v)),remove:(...x)=>x.forEach(v=>classes.delete(v)),contains:v=>classes.has(v),toggle:(v,b)=>b?classes.add(v):classes.delete(v)},addEventListener(t,f){this.listeners.set(t,f);},focus(){},querySelectorAll(){return [];},setAttribute(){},getAttribute(){return null;},scrollTo(){}};}
 export function moduleSource(path){return readFileSync(path,'utf8').replace(/^import .*;\n/gm,'').replace(/^export /gm,'');}
 export async function itemHarness(){const nodes=new Map(),calls=[],loads=[],events=[];let authListener;const get=id=>{if(!nodes.has(id))nodes.set(id,node());return nodes.get(id);};
  const auth={getSession:async()=>({data:{session:null}}),onAuthStateChange:f=>{authListener=f;},signOut:async()=>{authListener('SIGNED_OUT',null);}};

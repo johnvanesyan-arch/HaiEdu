@@ -353,17 +353,17 @@ function answerEditorHtml(detail, disabled) {
   if (['matching','ordering'].includes(item.type)) return arrangementEditorMarkup(detail,disabled);
   if (item.type === 'typed_fields') return typedEditorMarkup(detail,disabled);
   if (item.type === "single_choice") {
-    return `<div class="answer-grid"><label>Ճիշտ տարբերակ<select id="answerSingleChoice" ${disabled ? "disabled" : ""}></select></label><label>Հետադարձ կապի կոդ<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label></div>`;
+    return `<div class="answer-grid"><label>Ճիշտ տարբերակ<select id="answerSingleChoice" ${disabled ? "disabled" : ""}></select></label></div>`;
   }
   if (item.type === "true_false") {
-    return `<div class="answer-grid"><label>Ճիշտ պատասխան<select id="answerTrueFalse" ${disabled ? "disabled" : ""}><option value="true" ${key.answer === true ? "selected" : ""}>Ճիշտ է</option><option value="false" ${key.answer === false ? "selected" : ""}>Սխալ է</option></select></label><label>Հետադարձ կապի կոդ<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label></div>`;
+    return `<div class="answer-grid"><label>Ճիշտ պատասխան<select id="answerTrueFalse" ${disabled ? "disabled" : ""}><option value="true" ${key.answer === true ? "selected" : ""}>Ճիշտ է</option><option value="false" ${key.answer === false ? "selected" : ""}>Սխալ է</option></select></label></div>`;
   }
   const quantity = item.type === "quantity";
   return `<div class="answer-grid">
     <label>Ճիշտ արժեք<input id="answerNumeric" type="number" step="any" value="${esc(key.answer ?? "")}" ${disabled ? "disabled" : ""} /></label>
     <label>Թույլատրելի շեղում<input id="answerTolerance" type="number" min="0" step="any" value="${esc(key.tolerance ?? 0)}" ${disabled ? "disabled" : ""} /></label>
     ${quantity ? `<label>Հիմնական միավոր<input id="answerCanonicalUnit" value="${esc(key.canonicalUnit ?? "")}" ${disabled ? "disabled" : ""} /></label><label>Ընդունվող միավորներ<input id="answerAcceptedUnits" value="${esc((key.acceptedUnits ?? []).join(", "))}" placeholder="m, cm, mm" ${disabled ? "disabled" : ""} /></label>` : ""}
-    <label class="wide">Հետադարձ կապի կոդ<input id="answerFeedbackCode" value="${esc(key.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label>
+
   </div>`;
 }
 
@@ -524,7 +524,6 @@ function renderDetail() {
       <div class="section-heading"><div><h3>Հարցի բովանդակություն</h3><p class="subtle tiny">Հարցի կոդը, հմտությունը և հարցի տեսակը այստեղ չեն փոխվում։</p></div></div>
       <label>Հարցի տեքստ<textarea id="editPromptHy" rows="4" ${disabled ? "disabled" : ""}>${esc(detail.item.promptHy ?? "")}</textarea></label>
       <label>Անգլերեն հարց <span class="subtle tiny">ըստ ցանկության</span><textarea id="editPromptEn" rows="3" ${disabled ? "disabled" : ""}>${esc(detail.item.promptEn ?? "")}</textarea></label>
-      <label>Խթանիչ տվյալներ (JSON) <span class="subtle tiny">ընդլայնված</span><textarea id="editStimulus" class="code-field" rows="3" spellcheck="false" ${disabled ? "disabled" : ""}>${esc(JSON.stringify(detail.item.stimulus ?? {}, null, 2))}</textarea></label>
       ${editable ? '<button type="button" id="chooseAudioBtn" class="secondary">Ընտրել ձայնագրություն</button><div id="audioCatalog" role="status"></div><button type="button" id="chooseTaskSetBtn" class="secondary">Ընտրել ընդհանուր նյութով առաջադրանքաշար</button><div id="taskSetCatalog" role="status"></div>' : ''}
     </section>
 
@@ -536,16 +535,24 @@ function renderDetail() {
       <h3>Մետատվյալներ</h3>
       <div class="metadata-grid">
         <label>Դժվարություն<select id="metaDifficulty" ${disabled ? "disabled" : ""}>${[1,2,3,4,5].map((n)=>`<option value="${n}" ${n===item.difficulty?"selected":""}>${n}</option>`).join("")}</select></label>
-        <label>Հարցերի ընտանիք<input id="metaFamily" value="${esc(item.itemFamily)}" ${disabled ? "disabled" : ""} /></label>
         <label class="wide">Աղբյուրի հղում / նշում<input id="metaSource" value="${esc(item.sourceReference ?? "")}" ${disabled ? "disabled" : ""} /></label>
         <div class="wide metadata-governance-field"><span>Մասնագիտական (SME) կարգավիճակ</span><strong>${esc(smeValidationLabel(item.validationState))}</strong><small>Այս կարգավիճակը Content Reviewer-ը չի փոխում։ Այն գրանցվում է առանձին SME գործընթացով։</small></div>
       </div>
     </section>
 
-    <section class="detail-section editor-section" data-item-tab="metadata">
+    <details class="detail-section editor-section editor-advanced" data-item-tab="metadata">
+      <summary>Ընդլայնված · ընտանիք և սխալ պատկերացումների կապակցումներ</summary>
+      <label>Հարցերի ընտանիք<input id="metaFamily" value="${esc(item.itemFamily)}" ${disabled ? "disabled" : ""} /></label>
       <div class="section-heading"><div><h3>Սխալ պատկերացումների կապակցում</h3><p class="subtle tiny">Կապակցումները սահմանափակված են ${esc(item.skill?.code)} հմտության գործող սխալ պատկերացումներով։</p></div>${editable && (detail.availableMisconceptions ?? []).length ? `<button type="button" id="addMisconceptionBtn" class="ghost">Ավելացնել կապակցում</button>` : ""}</div>
       <div id="misconceptionEditor">${misconceptionRowsHtml(detail, disabled) || `<p class="subtle tiny">Կապակցումներ չկան։</p>`}</div>
-    </section>
+    </details>
+
+    <details id="contentAdvanced" class="detail-section editor-section editor-advanced" data-item-tab="content">
+      <summary>Ընդլայնված · տեխնիկական տվյալներ</summary>
+      <p class="subtle tiny">Սովորական խմբագրման համար այս դաշտերը փոխելու կարիք չկա։ Բաժինը փակելիս դաշտերի արժեքները չեն փոխվում։</p>
+      <label>Խթանիչ տվյալներ (JSON)<textarea id="editStimulus" class="code-field" rows="6" spellcheck="false" ${disabled ? "disabled" : ""}>${esc(JSON.stringify(detail.item.stimulus ?? {}, null, 2))}</textarea></label>
+      ${!['matching','ordering','typed_fields'].includes(item.type) ? `<label>Հետադարձ կապի կոդ<input id="answerFeedbackCode" value="${esc(detail.answerKey?.feedbackCode ?? "")}" ${disabled ? "disabled" : ""} /></label>` : ''}
+    </details>
 
     ${editable ? `<section class="detail-section save-revision-section" data-item-tab="content"><label>Փոփոխության ամփոփում<input id="changeSummary" placeholder="Օրինակ՝ հստակեցվել է ձևակերպումը և ուղղվել է B տարբերակը" /></label><p class="subtle tiny">Պահպանումը ատոմային է։ Հարցն անմիջապես վերադառնում է <strong>ստուգման սպասող</strong> վիճակին․ հրապարակումից կամ ակտիվացումից առաջ ընթացիկ տարբերակի QA-ն և հաստատումը պետք է նորից կատարվեն։</p></section>` : ""}
 
@@ -830,7 +837,7 @@ function collectAnswerKey(type) {
 function buildRevisionPayload(item, defaultSummary = "Content editor revision") {
   let stimulus;
   try { stimulus = JSON.parse($("editStimulus").value || "{}"); }
-  catch { throw new Error("Խթանիչ տվյալների JSON-ը վավեր չէ։"); }
+  catch { const error = new Error("Խթանիչ տվյալների JSON-ը վավեր չէ։ Ուղղեք այն «Ընդլայնված» բաժնում։"); error.fieldId="editStimulus"; throw error; }
   const misconceptions = collectMisconceptions();
   const removedAllMisconceptions = (selectedDetail?.misconceptions?.length ?? 0) > 0 && misconceptions.length === 0;
   if (
@@ -856,7 +863,7 @@ function buildRevisionPayload(item, defaultSummary = "Content editor revision") 
     changeSummary: $("changeSummary")?.value.trim() || defaultSummary,
   };
   if (!payload.promptHy) throw new Error("Հարցի տեքստը պարտադիր է։");
-  if (!payload.itemFamily) throw new Error("Հարցերի ընտանիքը պարտադիր է։");
+  if (!payload.itemFamily) { const error=new Error("Հարցերի ընտանիքը պարտադիր է։ Լրացրեք այն մետատվյալների «Ընդլայնված» բաժնում։"); error.fieldId="metaFamily"; throw error; }
   return payload;
 }
 
@@ -872,7 +879,18 @@ async function persistCurrentRevision(defaultSummary = "Բովանդակությ
   return true;
 }
 
+function revealEditorField(id) {
+  const control = $(id);
+  if (!control) return;
+  activateItemTab(control.closest?.("[data-item-tab]")?.dataset.itemTab || "content");
+  let details = control.closest?.("details");
+  while (details) { details.open = true; details = details.parentElement?.closest("details"); }
+  control.focus();
+  control.scrollIntoView?.({block:"nearest"});
+}
+
 async function saveRevision() {
+  let invalidField = null;
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item || !selectedDetail?.editing?.contentEditable || workflowBusy || workflowNeedsRefresh || !editorDirty) return;
   const check = sessionCheck;
@@ -887,9 +905,10 @@ async function saveRevision() {
     setMessage(`${item.code}: պահպանվեց որպես նոր տարբերակ։ Այժմ գործարկեք QA-ն, ապա հաստատեք հարցը։`);
   } catch (err) {
     if (check !== sessionCheck || !activeSession) return;
+    invalidField = err.fieldId ?? null;
     setMessage(err.message, true);
   } finally {
-    if (check === sessionCheck) setWorkflowBusy(false);
+    if (check === sessionCheck) { setWorkflowBusy(false); if (invalidField) revealEditorField(invalidField); }
   }
 }
 
