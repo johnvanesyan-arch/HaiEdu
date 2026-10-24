@@ -1,3 +1,4 @@
+import {definition as typedDefinition,key as typedKey} from '../fixtures/typed-fields-db.mjs';
 import {matchingDefinition,matchingKey,orderingDefinition,orderingKey} from '../fixtures/arrangement-db.mjs';
 import assert from "node:assert/strict";
 import { readFile } from "node:fs/promises";
@@ -320,6 +321,9 @@ for(const [type,definition,key] of [['matching',matchingDefinition,matchingKey],
   assert.equal(await page.locator('[data-arrangement] select').count(),type==='matching'?2:3);
   assert.deepEqual(await page.locator('[data-arrangement] select').evaluateAll(xs=>xs.map(x=>x.value)),type==='matching'?['','']:['','','']);
   await page.getByRole('button',{name:'Բովանդակություն',exact:true}).click();
+  await expect(page.locator('[data-arr-locale]')).toBeHidden();
+  if(type==='ordering')await expect(page.locator('[data-arr-sequences]')).toBeVisible();
+  else await expect(page.locator('[data-arr-id]').first()).toBeHidden();
   const rows=page.locator('[data-arr-group="'+(type==='matching'?'sources':'segments')+'"] [data-arrangement-editor-row]');
   await rows.first().locator('[data-arr-label]').fill('Revised synthetic label');
   const payload=await page.evaluate(()=>window.__editorFixture.collect());assert.equal(payload.responseDefinition[type==='matching'?'sources':'segments'][0].label,'Revised synthetic label');assert.deepEqual(payload.answerKey.answer,key);
@@ -362,4 +366,14 @@ test('shared-source chooser requires a saved review and late previews cannot rep
  await expect(page.locator('#learnerPreviewStimulus')).toContainText('բեռնվում');
  await page.evaluate(detail=>{window.__editorFixture.preview({...detail,item:{...detail.item,stimulus:{kind:'text',contentHy:'Նոր նյութ'}}});window.resolveSet();},detail);
  await expect(page.locator('#learnerPreviewStimulus')).toHaveText('Նոր նյութ');await assertSettled(state);
+});
+
+test('typed answers remain editable with advanced normalization collapsed and preserve their exact contract',async t=>{
+ const state=await fixture(t,'content.js','active'),{page}=state;
+ const detail={...mediaDetail({}),item:{...mediaDetail({}).item,type:'typed_fields',itemFamily:'application',config:{responseDefinition:typedDefinition}},options:[],answerKey:{answer:typedKey,feedbackCode:'typed-feedback'},editing:{contentEditable:true}};
+ await page.evaluate(detail=>window.__editorFixture.preview(detail),detail);await page.getByRole('button',{name:'Բովանդակություն',exact:true}).click();await expect(page.locator('[data-typed-locale]')).toBeHidden();await expect(page.locator('[data-field-id]').first()).toBeHidden();await expect(page.locator('[data-field-label]').first()).toBeVisible();await expect(page.locator('[data-field-accepted]').first()).toBeVisible();
+ const original=await page.evaluate(()=>window.__editorFixture.collect());assert.deepEqual(original.responseDefinition,typedDefinition);assert.deepEqual(original.answerKey.answer,typedKey);assert.equal(original.answerKey.feedbackCode,'typed-feedback');
+ await page.locator('[data-field-label]').first().fill('Updated label');await expect(page.locator('#approveBtn')).toBeDisabled();const edited=await page.evaluate(()=>window.__editorFixture.collect());assert.deepEqual(edited.answerKey.answer,typedKey);assert.equal(edited.responseDefinition.fields[0].maxLength,typedDefinition.fields[0].maxLength);
+ await page.locator('[data-add-typed]').click();await expect(page.locator('[data-field-id]').last()).toBeVisible();await page.locator('[data-remove-typed]').last().click();
+ const advanced=page.locator('[data-typed-editor-row] details').first();await advanced.locator('summary').click();await page.locator('[data-field-max]').first().fill('0');await advanced.locator('summary').click();await page.evaluate(()=>{try{window.__editorFixture.collect();}catch(error){window.__validationMessage=error.message;}});await expect(page.locator('[data-field-max]').first()).toBeVisible();assert.match(await page.evaluate(()=>window.__validationMessage),/նիշերի սահմանները/);await assertSettled(state);
 });
