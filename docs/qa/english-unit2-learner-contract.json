@@ -1,0 +1,35 @@
+{
+  "schemaVersion": "haiedu-english-unit2-learner-contract-v1",
+  "checkpoint": "16.1C.37",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+  },
+  "responseFixture": {
+    "sha256": "6735cbcd5107b0bd584861df5bb0ded7d16ef873b1b1a8c2df9d616840d7b3d1",
+    "itemCount": 167,
+    "encoding": "gzip-base64",
+    "sourceBankSha256": "3229a9f38930821fc3cd3e77a42983083d4d6dd24960928a0057c2c1aff5f5ed",
+    "protectedConfigurationSha256": "ecbc950c4224e1743d4dd183d54954a2b21ae8a0e7d86b6745077b9e4d5e2517",
+    "secretName": "QA_ENGLISH_UNIT2_RESPONSES"
+  },
+  "maximumPracticeSessions": 12,
+  "assessedQuestionCount": 24,
+  "readinessSkillCount": 9,
+  "retainedSequence": [
+    "diagnostic",
+    "ordinary_practice_to_readiness",
+    "mastery_technical_unscored",
+    "mastery_failed",
+    "chapter_review",
+    "mastery_passed",
+    "writing_return_revision_mark"
+  ],
+  "maximumMasteryFormsConsumed": 3,
+  "maximumScoredMasteryAttempts": 2,
+  "maximumReviewSessions": 1,
+  "newContentApproval": false,
+  "sourceContentReaudited": false,
+  "practiceListeningSkillId": "35cc97a9-8df8-5d4c-a85a-771e904e67c8"
+}
