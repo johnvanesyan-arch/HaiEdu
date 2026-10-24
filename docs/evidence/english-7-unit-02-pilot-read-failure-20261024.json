@@ -1,0 +1,441 @@
+{
+  "schemaVersion": 1,
+  "scope": "English Unit 2 provisional pilot authenticated read acceptance",
+  "revision": "69c2c39ef1f95cf90d6c44138c3bd4d8a70b229f",
+  "status": "failed",
+  "startedAt": "2026-10-24T07:50:07.250Z",
+  "checks": [
+    {
+      "label": "exact activation, recorded owner decisions, reviewed main and six designated fixture guards",
+      "status": "passed"
+    },
+    {
+      "label": "exact production revision before authentication",
+      "status": "passed"
+    },
+    {
+      "label": "committed public client configuration present",
+      "status": "passed"
+    },
+    {
+      "label": "existing two-school positive and negative read controls pass",
+      "status": "passed"
+    },
+    {
+      "label": "A_admin: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_student: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_admin: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_student: expected designated identity authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: navigation restricted to designated school and programme classes",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: exactly one designated Unit 2, Unit 1 and preserved programme context",
+      "status": "passed"
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: own programme dashboard with exact context",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: exact four approved English policy projections",
+      "status": "passed"
+    },
+    {
+      "label": "A: eight exact guides or truthful diagnostic/assessment gate",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: accepted separate W01 task is available",
+      "status": "failed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_admin: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_teacher: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_student: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_admin: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_teacher: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_student: close only this run authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    }
+  ],
+  "limitations": [
+    "Read-only acceptance does not complete learner attempts, play audio or create writing work.",
+    "Existing Unit 2 owner content/audio acceptance, C29-C34 evidence and C26 runtime verification are reused.",
+    "Independent specialist qualification, four-subject pilot closure and source licences are not established by this runner."
+  ],
+  "frontendCommit": "69c2c39ef1f95cf90d6c44138c3bd4d8a70b229f",
+  "readIsolation": {
+    "scope": "Sprint 14 authenticated read isolation",
+    "revision": "69c2c39ef1f95cf90d6c44138c3bd4d8a70b229f",
+    "target": "https://xzyjvwiiibuarpotppid.supabase.co",
+    "startedAt": "2026-10-24T07:50:07.375Z",
+    "status": "passed",
+    "sprint14GateClosed": false,
+    "checks": [
+      {
+        "label": "A_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_admin: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_teacher: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B_student: authenticated expected QA identity",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own school",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own school",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: admin own teacher directory",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own context",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own class evidence",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher own learner detail",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: student own enrolment",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "A: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: admin cannot read other directory",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: admin cannot select other overview",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: teacher cannot select other context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot select other dashboard",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot read other learner context",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: other learner cannot be substituted into own class",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: other class cannot be substituted into own assignment",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: omitted context cannot expose other learner through legacy path",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: student supplied identity cannot change enrolment reads",
+        "status": "passed",
+        "httpStatus": 200
+      },
+      {
+        "label": "B: student cannot use teacher evidence API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: student cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B: teacher cannot use school directory API",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_admin: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_teacher: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "B_student: direct other-school enrolment read denied or empty",
+        "status": "passed",
+        "httpStatus": 403
+      },
+      {
+        "label": "A_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "A_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_admin: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_teacher: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      },
+      {
+        "label": "B_student: close only this QA session",
+        "status": "passed",
+        "httpStatus": 204
+      }
+    ],
+    "finishedAt": "2026-10-24T07:51:44.223Z"
+  },
+  "finishedAt": "2026-10-24T07:52:09.362Z"
+}

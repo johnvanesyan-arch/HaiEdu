@@ -3,7 +3,7 @@
   "checkpoint": "16.1C.36",
   "date": "2026-10-24",
   "timezone": "Asia/Yerevan",
-  "status": "provisional-pilot-active-live-read-acceptance-pending",
+  "status": "provisional-pilot-configuration-active-material-publication-held",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -583,7 +583,10 @@
     "authored": true,
     "staged": true,
     "materialQaPassed": true,
-    "acceptanceBasis": "Owner reports all materials approved; accepted without repeat review."
+    "acceptanceBasis": "Owner reports all materials approved; accepted without repeat review.",
+    "publicationStatus": "draft",
+    "learnerTaskRegistered": false,
+    "ownerAcceptanceRetained": true
   },
   "comparisonPreparation": {
     "candidateLevelReviewComplete": true,
@@ -653,7 +656,7 @@
     "skillOutcomeMappingsRegistered": 19,
     "questionFamiliesReconciled": 192
   },
-  "next": "Guarded exact-main live read acceptance, then full learner/audio/writing action acceptance.",
+  "next": "Sign in/MFA for normal publication of the eight accepted guides and W01; add publication/derived-task preflight and rerun exact-main read acceptance, then full learner actions.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -786,7 +789,11 @@
     "preservedScopes": 117,
     "technicalGatesPassed": 6,
     "specialistGate": "pending",
-    "liveReadAcceptanceExecuted": false,
-    "fullLearnerActionsExecuted": false
+    "liveReadAcceptanceExecuted": true,
+    "fullLearnerActionsExecuted": false,
+    "liveReadAcceptancePassed": false,
+    "liveReadEvidence": "docs/evidence/english-7-unit-02-pilot-read-failure-20261024.json",
+    "materialPublicationComplete": false,
+    "materialPublicationHold": "docs/evidence/english-7-unit-02-material-publication-hold-20261024.json"
   }
 }

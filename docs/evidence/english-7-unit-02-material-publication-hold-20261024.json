@@ -1,0 +1,135 @@
+{
+  "schemaVersion": "haiedu-english-unit2-material-publication-hold-v1",
+  "checkpoint": "16.1C.36",
+  "date": "2026-10-24",
+  "status": "blocked_on_existing_reviewer_sign_in_and_mfa_publication",
+  "activationRemains": "pilot_configuration_active",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+  },
+  "sourceCommit": "69c2c39ef1f95cf90d6c44138c3bd4d8a70b229f",
+  "ownerContentAcceptanceRetained": true,
+  "repeatContentReviewPerformed": false,
+  "failedReadRun": {
+    "runId": 40075103265,
+    "artifactId": 12552679573,
+    "artifactSha256": "bf51223bdfec9ba84a91616d00a36d5bc8418233b9ce87bc676b4fe7b15d4e21",
+    "report": "docs/evidence/english-7-unit-02-pilot-read-failure-20261024.json",
+    "executedOuterPassed": 29,
+    "executedOuterTotal": 30,
+    "nestedIsolationPassed": 54,
+    "nestedIsolationTotal": 54,
+    "failure": "accepted separate W01 task is available",
+    "httpStatus": 200
+  },
+  "publicationDiagnostic": {
+    "materials": [
+      {
+        "id": "2183437b-e54f-51d5-a08e-b6dd92f8f724",
+        "kind": "guide",
+        "status": "draft",
+        "version": 1,
+        "qaPassed": true,
+        "fingerprint": "ac98dda1df005f25d3395e6e61839292731f21ee37c69df4cd267e414e67d692"
+      },
+      {
+        "id": "005113a1-0d6b-5da7-a26e-67e0b60f34f8",
+        "kind": "guide",
+        "status": "draft",
+        "version": 1,
+        "qaPassed": true,
+        "fingerprint": "44681b0ea471a3b2387e5f032acec4b5e3c70db520903b32573ecda9fd79789f"
+      },
+      {
+        "id": "c65068e6-2240-5ce9-a755-d55102619719",
+        "kind": "guide",
+        "status": "draft",
+        "version": 1,
+        "qaPassed": true,
+        "fingerprint": "0253a109e072666ac1506c8ff65737388ddcd4a8546e1cbd3115f6474e7d7e58"
+      },
+      {
+        "id": "fd2abf30-3c5c-5b89-a25f-5f6859861ef7",
+        "kind": "guide",
+        "status": "draft",
+        "version": 1,
+        "qaPassed": true,
+        "fingerprint": "b8b228b2bd380c1f8ce129d7180e2bfd9a21ba4f7b87a441fad99df820c62d03"
+      },
+      {
+        "id": "06fe8831-66fa-5bc2-a025-7236facdbda5",
+        "kind": "guide",
+        "status": "draft",
+        "version": 1,
+        "qaPassed": true,
+        "fingerprint": "e238337655e818b1f60ac656b45dbaada3430150b4c68914c6397966ac3aac06"
+      },
+      {
+        "id": "3fa30f1a-dcb4-5722-a9e4-ecf474935513",
+        "kind": "guide",
+        "status": "draft",
+        "version": 1,
+        "qaPassed": true,
+        "fingerprint": "a6d04dd809ad2b8637be9206bdbd7fe83840efc3cefd816edc96f7d53c49ce82"
+      },
+      {
+        "id": "16524afd-9b6a-5e04-aa50-58210a5d0578",
+        "kind": "guide",
+        "status": "draft",
+        "version": 1,
+        "qaPassed": true,
+        "fingerprint": "39291a8206c6a5172543d358043604604aab4ede49f7735509481e0b596499a6"
+      },
+      {
+        "id": "9e7cae24-b5ef-58eb-a94e-afe765738ef9",
+        "kind": "guide",
+        "status": "draft",
+        "version": 1,
+        "qaPassed": true,
+        "fingerprint": "99479a8437e538b314c6d9c7ddf2b06d2235daab663e0c2db902b233a4dd674b"
+      },
+      {
+        "id": "b4c4f2c2-df58-5222-a95e-d1f90bf69516",
+        "kind": "writing",
+        "status": "draft",
+        "version": 1,
+        "qaPassed": true,
+        "fingerprint": "f5d7e8bde2c49f4275321fa7511ed109eabaae2b28bf314163d463cedc3fdded"
+      }
+    ],
+    "writtenTaskRows": 0
+  },
+  "browserObservation": {
+    "page": "https://www.haiedu.am/content-materials.html",
+    "signedIn": false,
+    "visibleSignInLink": true
+  },
+  "requiredExistingControl": {
+    "source": "supabase/migrations/20261022141634_sprint_16_1c_unit_material_review.sql",
+    "function": "private.service_unit_materials",
+    "activeRole": [
+      "admin",
+      "content_admin"
+    ],
+    "liveSessionRequired": true,
+    "approveRequiresAal": "aal2"
+  },
+  "cause": "Fingerprint-only preparation did not establish stored material publication or the derived written-task projection; all nine accepted versions remain draft.",
+  "changesDuringDiagnosis": {
+    "content": 0,
+    "qa": 0,
+    "approvals": 0,
+    "learningHistory": 0,
+    "schemaOrRuntime": 0,
+    "authorizationBypass": false,
+    "assertionsRelaxed": false
+  },
+  "next": [
+    "Normal signed-in MFA-protected publication of the exact nine accepted versions.",
+    "Add material-publication/derived-task preflight coverage for the handoff.",
+    "Rerun exact-main authenticated Unit 2 read acceptance.",
+    "Then perform the separate full learner/audio/writing action slice."
+  ]
+}
