@@ -19,6 +19,9 @@ let selectedDetail = null;
 let detailLoadToken = 0;
 let editorDirty = false;
 let workflowBusy = false;
+let workflowAction = "";
+let qaRerunRequired = false;
+let workflowNeedsRefresh = false;
 let navigationRestored = false;
 let activeSession = null;
 let bootstrapPromise = null;
@@ -43,7 +46,12 @@ function updateReviewNavigation() {
     button.onclick = () => { if (!workflowBusy && selectedDetail && id) location.assign(reviewNavigation.itemHref(id,context.source,context)); };
   }
 }
-function setWorkflowBusy(value) { workflowBusy = value; updateReviewNavigation(); }
+function setWorkflowBusy(value, action = "") {
+  workflowBusy = value;
+  workflowAction = value ? action : "";
+  updateReviewNavigation();
+  updateEditorDirtyUi();
+}
 function openBankItem(row) {
   if (!document.body.dataset.reviewNavigation) return location.assign(`./content-item.html?id=${encodeURIComponent(row.dataset.id)}&from=bank`);
   window.dispatchEvent(new Event('haiedu:content-scope-now'));
@@ -63,6 +71,12 @@ function setMessage(text, bad = false) {
   if (!target) return;
   target.textContent = text || "";
   target.classList.toggle("bad", Boolean(bad));
+  const feedback = $("actionStatusFeedback");
+  if (feedback) {
+    if (feedback.textContent !== target.textContent) feedback.textContent = target.textContent;
+    feedback.classList.toggle("bad", Boolean(bad));
+  }
+  target.classList.toggle("hidden", !!$("actionStatusPanel"));
 }
 
 function itemTypeLabel(value) {
@@ -284,6 +298,8 @@ async function selectItem(id) {
     }
   }
   editorDirty = false;
+  if (selectedId !== id) { qaRerunRequired = false; workflowNeedsRefresh = false; }
+  setMessage("");
   selectedId = id;
   document.body.dataset.contentItemId = id;
   selectedDetail = null;
@@ -470,7 +486,7 @@ function renderDetail() {
     changes_requested: "Փոփոխություն է պահանջվում",
     approved: "Հաստատված",
   })[item.reviewStatus] || item.reviewStatus || "—";
-  const canApprove = qaPassed && item.reviewStatus !== "approved" && !item.retiredAt;
+
   const purposes = (detail.pools ?? []).map((p) => `${purposeLabel(p.purpose)}${p.protected ? " (պաշտպանված)" : ""}${p.enabled ? "" : " · փուլային"}`).join(" · ") || purposeLabel(detail.item.config?.sprint11dBucket) || "—";
   const generatedWarning = detail.editing?.reason === "generated_variant_requires_template_edit"
     ? `<div class="editor-warning"><strong>Գեներացված տարբերակ։</strong> Այս հարցը վերարտադրվում է ձևանմուշից և seed-ից, ուստի հարցի և պատասխանի ուղղակի խմբագրումն արգելափակված է։ Փոխեք կամ վերագեներացրեք սկզբնական ձևանմուշը․ մետատվյալների և ստուգման գործողությունները հասանելի են։</div>`
@@ -482,8 +498,18 @@ function renderDetail() {
       <span class="review-chip">v${esc(item.versionNo)}</span>
     </div>
     <div class="immutable-summary"><span><strong>Տեսակ՝</strong> ${esc(itemTypeLabel(item.type))}</span><span><strong>Հմտություն՝</strong> ${esc(item.skill?.code)}</span><span><strong>Նպատակ՝</strong> ${esc(purposes)}</span></div>
+    <section id="actionStatusPanel" class="action-status-panel" aria-labelledby="actionStatusTitle">
+      <div class="action-status-heading"><div><p class="eyebrow">ՀԱՐՑԻ ԸՆԹԱՑԻԿ ՎԻՃԱԿԸ</p><h3 id="actionStatusTitle" role="status" aria-live="polite"></h3><p id="actionStatusHint"></p></div><button id="actionStatusDetails" type="button" class="ghost hidden"></button></div>
+      <div id="unsavedChangesNotice" class="hidden">Չպահպանված փոփոխություններ կան։</div>
+      <div class="action-status-steps">
+        <div id="saveStatusStep" class="action-status-step"><strong>1. Պահպանել</strong><p id="saveStatusReason"></p><button id="saveRevisionBtn" type="button" aria-describedby="saveStatusReason">Պահպանել նոր տարբերակը</button></div>
+        <div id="qaStatusStep" class="action-status-step"><strong>2. Տեխնիկական QA</strong><p id="qaStatusReason"></p><button id="runQaBtn" type="button" class="secondary" aria-describedby="qaStatusReason">Գործարկել QA</button></div>
+        <div id="reviewStatusStep" class="action-status-step"><strong>3. Բովանդակային ստուգում</strong><p id="reviewStatusReason"></p><button id="approveBtn" type="button" aria-describedby="reviewStatusReason">Հաստատել</button></div>
+      </div>
+      <p id="actionStatusGovernance" class="subtle tiny"></p>
+      <p id="actionStatusFeedback" class="message" role="status" aria-live="polite"></p>
+    </section>
     ${generatedWarning}
-    ${editable ? `<div id="unsavedChangesNotice" class="editor-warning hidden" role="status"><strong>Չպահպանված փոփոխություններ։</strong> Նախ պահպանեք նոր տարբերակը, ապա գործարկեք QA-ն։</div>` : ""}
     <nav class="item-tab-nav" aria-label="Հարցի աշխատանքային բաժիններ">
       <button type="button" class="item-tab-button" data-item-tab-button="preview">Նախադիտում</button>
       <button type="button" class="item-tab-button" data-item-tab-button="content">Բովանդակություն</button>
@@ -521,14 +547,14 @@ function renderDetail() {
       <div id="misconceptionEditor">${misconceptionRowsHtml(detail, disabled) || `<p class="subtle tiny">Կապակցումներ չկան։</p>`}</div>
     </section>
 
-    ${editable ? `<section class="detail-section save-revision-section" data-item-tab="content"><label>Փոփոխության ամփոփում<input id="changeSummary" placeholder="Օրինակ՝ հստակեցվել է ձևակերպումը և ուղղվել է B տարբերակը" /></label><div class="workflow-actions"><button id="saveRevisionBtn">Պահպանել որպես նոր տարբերակ</button></div><p class="subtle tiny">Պահպանումը ատոմային է։ Հարցն անմիջապես վերադառնում է <strong>ստուգման սպասող</strong> վիճակին․ հրապարակումից կամ ակտիվացումից առաջ ընթացիկ տարբերակի QA-ն և հաստատումը պետք է նորից կատարվեն։</p></section>` : ""}
+    ${editable ? `<section class="detail-section save-revision-section" data-item-tab="content"><label>Փոփոխության ամփոփում<input id="changeSummary" placeholder="Օրինակ՝ հստակեցվել է ձևակերպումը և ուղղվել է B տարբերակը" /></label><p class="subtle tiny">Պահպանումը ատոմային է։ Հարցն անմիջապես վերադառնում է <strong>ստուգման սպասող</strong> վիճակին․ հրապարակումից կամ ակտիվացումից առաջ ընթացիկ տարբերակի QA-ն և հաստատումը պետք է նորից կատարվեն։</p></section>` : ""}
 
-    <section class="detail-section" data-item-tab="review">
+    <section id="technicalQaSection" class="detail-section" data-item-tab="review">
       <h3>Տեխնիկական QA</h3>
       <p><strong>${!item.latestQa ? "Ընթացիկ տարբերակի համար QA դեռ չի գործարկվել։" : qaPassed ? "✓ QA անցած" : "✕ QA չի անցել"}</strong>${item.latestQa ? ` · v${esc(item.latestQa.versionNo)}` : ""}</p>
       ${qaErrors.length ? `<ul class="error-list">${qaErrors.map((x)=>`<li>${esc(qaMessageHy(x))}</li>`).join("")}</ul>` : ""}
       ${qaWarnings.length ? `<ul class="warning-list">${qaWarnings.map((x)=>`<li>${esc(qaMessageHy(x))}</li>`).join("")}</ul>` : ""}
-      <div class="workflow-actions"><button id="runQaBtn" class="secondary">${item.latestQa ? "Կրկին գործարկել QA" : "Գործարկել QA"}</button></div>
+
     </section>
     <section class="detail-section governance-status-section" data-item-tab="review">
       <h3>Կառավարման կարգավիճակ</h3>
@@ -554,7 +580,7 @@ function renderDetail() {
         : "Հաստատումը հասանելի կլինի միայն ընթացիկ տարբերակի հաջող QA-ից հետո։"}</p>
       <div class="workflow-actions">
         ${editable ? `<button id="editQuestionBtn" class="secondary">Խմբագրել հարցը</button>` : ""}
-        <button id="approveBtn" ${canApprove ? "" : "disabled"}>${item.reviewStatus === "approved" ? "Հաստատված" : "Հաստատել"}</button>
+
       </div>
     </section>
     <section class="detail-section" data-item-tab="history">
@@ -629,20 +655,63 @@ function renderDetail() {
   wireItemTabs();
 }
 
+function currentQaPassed(item) {
+  return item?.latestQa?.passed === true && !qaRerunRequired &&
+    !(item.latestQa.versionNo != null && item.versionNo != null && Number(item.latestQa.versionNo) !== Number(item.versionNo));
+}
+
+function questionActionStatus(item, detail) {
+  const editable = detail?.editing?.contentEditable === true;
+  const archived = Boolean(item?.retiredAt);
+  const passed = currentQaPassed(item);
+  const stale = qaRerunRequired || (item?.latestQa?.versionNo != null && item?.versionNo != null && Number(item.latestQa.versionNo) !== Number(item.versionNo));
+  const approved = item?.reviewStatus === "approved";
+  const busy = ({save:"Նոր տարբերակը պահպանվում է…",qa:"Տեխնիկական QA-ն գործարկվում է…",approve:"Հարցը հաստատվում է…",retire:"Հարցն արխիվացվում է…",restore:"Հարցը վերականգնվում է…"})[workflowAction] || "Գործողությունը կատարվում է…";
+  const locked = archived ? "Նախ վերականգնեք հարցը «Պատմություն» բաժնում։" : detail?.editing?.reason === "generated_variant_requires_template_edit" ? "Այս հարցը ստեղծվում է ձևանմուշից։ Փոփոխությունը կատարեք սկզբնական ձևանմուշում։" : "Այս հարցի բովանդակությունն այստեղ խմբագրման համար հասանելի չէ։";
+  const pending = workflowBusy ? busy : workflowNeedsRefresh ? "Վերջին գործողությունից հետո տվյալները չեն թարմացվել։ Թարմացրեք էջի տվյալները՝ շարունակելու համար։" : !detail ? "Հարցի տվյալները դեռ չեն բեռնվել։" : "";
+  const qaIssue = item?.latestQa?.errors?.[0] ? qaMessageHy(item.latestQa.errors[0]) : "Բացեք խնդիրների ցանկը՝ պատճառները տեսնելու համար։";
+  const qaReason = editorDirty ? "Նախ պահպանեք փոփոխությունները։ QA-ն ստուգում է միայն պահպանված տարբերակը։" : stale ? "Նախորդ QA-ն այլևս արդիական չէ։ Կրկին գործարկեք QA-ն։" : !item?.latestQa ? "Ընթացիկ տարբերակի համար QA դեռ չի գործարկվել։" : passed ? "Ընթացիկ տարբերակն անցել է QA-ն։ Ստուգումը կարող եք կրկնել։" : `QA չի անցել․ ${qaIssue}${item.latestQa.errors?.length > 1 ? ` Կա ևս ${item.latestQa.errors.length - 1} խնդիր։` : ""}`;
+  let next = editorDirty ? "save" : !passed ? "qa" : !approved ? "review" : "done";
+  let title = editorDirty ? "Հաջորդ քայլը՝ պահպանել փոփոխությունները" : stale ? "Հաջորդ քայլը՝ կրկին գործարկել QA-ն" : !item?.latestQa ? "Հաջորդ քայլը՝ գործարկել QA-ն" : !passed ? "Հաջորդ քայլը՝ ուսումնասիրել QA-ի խնդիրները" : !approved ? "Հաջորդ քայլը՝ ստուգել և հաստատել հարցը" : "Ընթացիկ տարբերակը բովանդակային հաստատում ունի";
+  let hint = editorDirty ? "Պահպանելուց հետո նոր տարբերակի համար կրկին անհրաժեշտ կլինեն QA և բովանդակային հաստատում։" : !passed ? qaReason : approved ? "Նոր խմբագրումը կպահանջի նոր տարբերակ, QA և հաստատում։" : item?.reviewStatus === "changes_requested" ? "«QA և ստուգում» բաժնում ուսումնասիրեք պահանջված փոփոխությունները, ապա որոշեք՝ հարցը պատրաստ է հաստատման, թե խմբագրման կարիք ունի։" : "Ուսումնասիրեք հարցը, պատասխանը և հուշումները։ QA-ի հաջող արդյունքը չի փոխարինում բովանդակային ստուգմանը։";
+  let destination = archived ? "history" : editorDirty ? "content" : !passed ? (item?.latestQa && !stale ? "review" : "") : !approved ? "review" : "";
+  if (archived) { next="restore"; title="Հարցն արխիվացված է"; hint=locked; }
+  if (pending) { next="pending"; title=workflowBusy ? busy : "Հաջորդ քայլը՝ թարմացնել տվյալները"; hint=pending; destination=workflowNeedsRefresh && !workflowBusy ? "refresh" : ""; }
+  return {next,title,hint,destination,
+    save:{disabled:!!pending || !editable || !editorDirty || archived,reason:pending || (!editable || archived ? locked : editorDirty ? "Կան չպահպանված փոփոխություններ։ Պահպանեք դրանք որպես նոր տարբերակ։" : "Չպահպանված փոփոխություններ չկան։")},
+    qa:{disabled:!!pending || editorDirty || archived,reason:pending || (archived ? locked : qaReason)},
+    review:{disabled:!!pending || editorDirty || !passed || approved || archived,reason:pending || (archived ? locked : editorDirty ? "Նախ պահպանեք փոփոխությունները և գործարկեք նոր տարբերակի QA-ն։" : !passed ? stale ? "Հաստատումն անհասանելի է․ նախորդ QA-ն այլևս արդիական չէ։" : "Հաստատումն անհասանելի է, քանի դեռ ընթացիկ տարբերակը չի անցել QA-ն։" : approved ? "Այս տարբերակն արդեն հաստատված է։ Կրկնակի հաստատում պետք չէ։" : "QA-ն անցած է։ Բովանդակությունը ստուգելուց հետո կարող եք հաստատել հարցը։")}};
+}
+
 function updateEditorDirtyUi() {
   $("unsavedChangesNotice")?.classList.toggle("hidden", !editorDirty);
   const item = dashboard?.items?.find((entry) => entry.id === selectedId);
-  const qaPassed = item?.latestQa?.passed === true;
-  if ($("runQaBtn")) {
-    $("runQaBtn").disabled = editorDirty;
-    $("runQaBtn").textContent = editorDirty
-      ? "Նախ պահպանեք փոփոխությունները"
-      : item?.latestQa ? "Կրկին գործարկել QA" : "Գործարկել QA";
+  const state = questionActionStatus(item, selectedDetail);
+  const text = (id, value) => { const node=$(id); if(node && node.textContent !== value) node.textContent=value; };
+  if ($("actionStatusPanel")) $("actionStatusPanel").dataset.state=state.next;
+  text("actionStatusTitle",state.title);
+  text("actionStatusHint",state.hint);
+  for (const [key,button,reason,step] of [["save","saveRevisionBtn","saveStatusReason","saveStatusStep"],["qa","runQaBtn","qaStatusReason","qaStatusStep"],["review","approveBtn","reviewStatusReason","reviewStatusStep"]]) {
+    if ($(button)) $(button).disabled=state[key].disabled;
+    text(reason,state[key].reason);
+    $(step)?.classList.toggle("is-next",state.next===key);
   }
-  if ($("approveBtn")) {
-    $("approveBtn").disabled = editorDirty || !qaPassed || item?.reviewStatus === "approved" || Boolean(item?.retiredAt);
-    $("approveBtn").textContent = item?.reviewStatus === "approved" ? "Հաստատված" : "Հաստատել";
+  text("runQaBtn",item?.latestQa ? "Կրկին գործարկել QA" : "Գործարկել QA");
+  text("approveBtn",item?.reviewStatus === "approved" ? "Հաստատված" : "Հաստատել");
+  text("actionStatusGovernance",item?.validationState === "provisional_no_sme_review" ? "Մասնագիտական (SME) ստուգումը դեռ սպասում է առանձին գործընթացի։ Այն տեխնիկական QA-ի սխալ չէ։ Բովանդակային հաստատումը ինքնին չի ակտիվացնում ուսումնական թողարկումը։" : "Բովանդակային հաստատումը ինքնին չի ակտիվացնում ուսումնական թողարկումը։");
+  const details=$("actionStatusDetails");
+  if(details){
+    details.classList.toggle("hidden",!state.destination);
+    text("actionStatusDetails",({content:"Բացել խմբագրումը",review:"Բացել QA-ն և ստուգումը",history:"Բացել պատմությունը",refresh:"Թարմացնել տվյալները"})[state.destination] || "");
+    details.onclick=()=>{ if(workflowBusy)return; if(state.destination==="refresh"){$("refreshBtn")?.click();return;} activateItemTab(state.destination); const target=state.destination==="content" ? $("editPromptHy") : state.destination==="history" ? $("restoreBtn") : $("technicalQaSection"); target?.scrollIntoView?.({block:"nearest"}); target?.focus?.(); };
   }
+  // Freeze fields during a write; editing them then could otherwise be lost on refresh.
+  document.querySelectorAll('.editor-section input, .editor-section textarea, .editor-section select, .editor-section button, #changeSummary').forEach(control=>{
+    if(workflowBusy && control.dataset.workflowDisabled === undefined){control.dataset.workflowDisabled=String(control.disabled);control.disabled=true;}
+    else if(!workflowBusy && control.dataset.workflowDisabled !== undefined){control.disabled=control.dataset.workflowDisabled==="true";delete control.dataset.workflowDisabled;}
+  });
+  for(const id of ["retireBtn","restoreBtn"]){if($(id)){$(id).disabled=workflowBusy || workflowNeedsRefresh;$(id).setAttribute("aria-describedby","actionStatusHint");}}
+  if($("refreshBtn"))$("refreshBtn").disabled=workflowBusy;
 }
 
 function markEditorDirty() {
@@ -805,12 +874,13 @@ async function persistCurrentRevision(defaultSummary = "Բովանդակությ
 
 async function saveRevision() {
   const item = dashboard.items.find((i) => i.id === selectedId);
-  if (!item || !selectedDetail?.editing?.contentEditable || workflowBusy) return;
+  if (!item || !selectedDetail?.editing?.contentEditable || workflowBusy || workflowNeedsRefresh || !editorDirty) return;
   const check = sessionCheck;
   try {
-    setWorkflowBusy(true);
+    setWorkflowBusy(true,"save");
     setMessage("Նոր տարբերակը պահպանվում է…");
     if (!(await persistCurrentRevision())) return;
+    workflowNeedsRefresh = true;
     clearContentDashboardCache(activeSession?.user?.id);
     if (!(await refresh(selectedId, { force: true }))) return;
     if (check !== sessionCheck || !activeSession) return;
@@ -832,7 +902,7 @@ async function ensureQaPassed({ force = false } = {}) {
 }
 
 async function runQaCurrent() {
-  if (workflowBusy) return;
+  if (workflowBusy || workflowNeedsRefresh) return;
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item) return;
   const check = sessionCheck;
@@ -842,10 +912,12 @@ async function runQaCurrent() {
     return;
   }
   try {
-    setWorkflowBusy(true);
+    setWorkflowBusy(true,"qa");
     setMessage("Տեխնիկական QA-ն գործարկվում է…");
     const passed = await ensureQaPassed({ force: true });
     if (check !== sessionCheck || !activeSession) return;
+    qaRerunRequired = false;
+    workflowNeedsRefresh = true;
     clearContentDashboardCache(activeSession?.user?.id);
     if (!(await refresh(selectedId, { force: true }))) return;
     if (check !== sessionCheck || !activeSession) return;
@@ -864,7 +936,7 @@ async function runQaCurrent() {
 }
 
 async function approveCurrent() {
-  if (workflowBusy) return;
+  if (workflowBusy || workflowNeedsRefresh) return;
   const item = dashboard.items.find((i) => i.id === selectedId);
   if (!item) return;
   const check = sessionCheck;
@@ -873,7 +945,7 @@ async function approveCurrent() {
     setMessage("Նախ պահպանեք փոփոխությունները որպես նոր տարբերակ։ Հաստատումը հնարավոր է միայն պահպանված և QA անցած տարբերակի համար։", true);
     return;
   }
-  if (item.latestQa?.passed !== true) {
+  if (item.latestQa?.passed !== true || !currentQaPassed(item)) {
     activateItemTab("review");
     setMessage("Հաստատելուց առաջ ընթացիկ տարբերակը պետք է հաջողությամբ անցնի տեխնիկական QA-ն։", true);
     return;
@@ -883,17 +955,18 @@ async function approveCurrent() {
     return;
   }
   try {
-    setWorkflowBusy(true);
+    setWorkflowBusy(true,"approve");
     setMessage("Հարցը հաստատվում է…");
     await invoke("manage-content-quality", { action: "approve", itemId: selectedId, reviewType: "content" });
     if (check !== sessionCheck || !activeSession) return;
+    workflowNeedsRefresh = true;
     clearContentDashboardCache(activeSession?.user?.id);
     if (!(await refresh(selectedId, { force: true }))) return;
     if (check !== sessionCheck || !activeSession) return;
     setMessage(`${item.code}: հարցը հաստատված է։`);
   } catch (err) {
     if (check !== sessionCheck || !activeSession) return;
-    if (err.requiresQaRerun) activateItemTab("review");
+    if (err.requiresQaRerun) { qaRerunRequired=true; activateItemTab("review"); }
     setMessage(err.message, true);
   } finally {
     if (check === sessionCheck) setWorkflowBusy(false);
@@ -914,13 +987,14 @@ async function retireItem() {
 }
 
 async function action(name, extra = {}) {
-  if (workflowBusy) return;
+  if (workflowBusy || workflowNeedsRefresh) return;
   const check = sessionCheck;
   try {
-    setWorkflowBusy(true);
+    setWorkflowBusy(true,name);
     setMessage("Գործողությունը կատարվում է…");
     await invoke("manage-content-quality", { action: name, itemId: selectedId, ...extra });
     if (check !== sessionCheck || !activeSession) return;
+    workflowNeedsRefresh = true;
     clearContentDashboardCache(activeSession?.user?.id);
     if (!(await refresh(selectedId, { force: true }))) return;
     if (check !== sessionCheck || !activeSession) return;
@@ -943,6 +1017,7 @@ async function refresh(reselect = selectedId, { force = false } = {}) {
       return true;
     }
     dashboard = nextDashboard;
+    workflowNeedsRefresh = false;
     window.dispatchEvent(new CustomEvent("haiedu:content-dashboard", { detail: { dashboard, userId: activeSession.user.id } }));
     if (contentMode === "item") {
       const requested = new URLSearchParams(location.search).get("id") || reselect;
@@ -997,6 +1072,8 @@ async function showForSession(session, { force = false } = {}) {
     selectedId = null;
     selectedDetail = null;
     editorDirty = false;
+    qaRerunRequired = false;
+    workflowNeedsRefresh = false;
     delete document.body.dataset.contentItemId;
     if ($("detailPanel")) $("detailPanel").innerHTML = "";
     if ($("itemRows")) $("itemRows").innerHTML = "";

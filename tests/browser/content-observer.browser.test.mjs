@@ -247,8 +247,7 @@ for (const failedRefresh of [false, true]) {
       await page.locator('#refreshBtn').click();
     }
     await page.waitForFunction(() => document.getElementById('approveBtn')?.disabled === false);
-    await page.locator('#approveBtn').click();
-    await page.locator('#approveBtn').click();
+    await page.locator('#approveBtn').evaluate(button => { button.click(); button.click(); });
     assert.deepEqual(await page.evaluate(() => window.__workflowActions.filter(action => action === 'approve')), ['approve']);
     await page.evaluate(() => window.__finishApproval());
     await page.waitForFunction(() => document.getElementById('approveBtn')?.textContent === 'Հաստատված');

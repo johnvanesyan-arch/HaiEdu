@@ -156,3 +156,22 @@ summary.curriculum-program-head:focus-visible{outline:3px solid #8db7ed;outline-
 .review-list-controls button{min-height:44px}
 #reviewListPosition{font-size:.85rem;color:#52667f}
 @media(max-width:760px){.review-list-controls{width:100%}.review-list-controls button{flex:1 1 130px}#reviewListPosition{order:-1;flex-basis:100%}}
+
+/* Shared question action guidance remains visible across editor tabs. */
+.action-status-panel{margin:18px 0;padding:18px;border:1px solid #bfd3eb;border-radius:14px;background:#f5f9ff;color:#17365e}
+.action-status-heading{display:flex;align-items:flex-start;justify-content:space-between;gap:16px;margin-bottom:14px}
+.action-status-heading h3{margin:4px 0 8px;font-size:1.12rem}
+.action-status-heading p{margin:0;line-height:1.5}
+.action-status-heading .eyebrow{font-size:.7rem}
+.action-status-steps{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.action-status-step{display:flex;flex-direction:column;align-items:stretch;padding:14px;border:1px solid #d7e3f3;border-radius:10px;background:white;min-width:0}
+.action-status-step.is-next{border-color:#537fbd;box-shadow:inset 0 3px #537fbd}
+.action-status-step p{margin:8px 0 14px;line-height:1.5;font-size:.88rem;flex:1}
+.action-status-step button{min-height:44px;white-space:normal;width:100%}
+.action-status-panel button:disabled{opacity:1;background:#edf1f5;color:#56667a;border:1px solid #ccd6e1;cursor:not-allowed;box-shadow:none}
+.action-status-panel .message:empty{display:none}
+.action-status-panel .message{margin-bottom:0;color:#244a70}
+.action-status-panel .message.bad{color:#9c2536}
+.action-status-panel[data-state="done"]{border-color:#9dcbb5}
+.action-status-panel[data-state="done"] #actionStatusTitle{color:#176443}
+@media(max-width:760px){.action-status-heading{flex-direction:column;gap:10px}.action-status-steps{grid-template-columns:1fr}.action-status-panel{padding:14px}.action-status-step{padding:12px}.action-status-heading button{width:100%;min-height:44px}}
