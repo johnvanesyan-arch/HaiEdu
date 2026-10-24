@@ -1,0 +1,170 @@
+{
+  "schemaVersion": "haiedu-assessed-audio-latency-evidence-v1",
+  "date": "2026-10-24",
+  "workflowRunId": "40093200175",
+  "sourceRevision": "2c985a437fef11ae29ecc1e7e4e05c12bceadabb",
+  "scope": "Designated QA learner, Unit 2 Diagnostic, 2026-10-24T12:21:00Z\u201312:21:30Z",
+  "failure": {
+    "retainedAnswers": 22,
+    "retainedPositionMs": 16453,
+    "completedPlays": 0,
+    "origin": "client_reported",
+    "clientWatchdogMs": 3000,
+    "slowSuccessDurationMs": 3446
+  },
+  "requestTimings": [
+    {
+      "duration_ms": "3041",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:00.503000"
+    },
+    {
+      "duration_ms": "1096",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:02.162000"
+    },
+    {
+      "duration_ms": "876",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:03.069000"
+    },
+    {
+      "duration_ms": "831",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:04.686000"
+    },
+    {
+      "duration_ms": "817",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:06.164000"
+    },
+    {
+      "duration_ms": "856",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:07.711000"
+    },
+    {
+      "duration_ms": "709",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:09.059000"
+    },
+    {
+      "duration_ms": "689",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:09.809000"
+    },
+    {
+      "duration_ms": "757",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:11.352000"
+    },
+    {
+      "duration_ms": "678",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:12.773000"
+    },
+    {
+      "duration_ms": "843",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:13.689000"
+    },
+    {
+      "duration_ms": "681",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:15.034000"
+    },
+    {
+      "duration_ms": "778",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:15.879000"
+    },
+    {
+      "duration_ms": "692",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:17.302000"
+    },
+    {
+      "duration_ms": "769",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:18.114000"
+    },
+    {
+      "duration_ms": "653",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:19.498000"
+    },
+    {
+      "duration_ms": "3446",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:23.087000"
+    },
+    {
+      "duration_ms": "916",
+      "path": "/functions/v1/get-learning-audio",
+      "status": "200",
+      "timestamp": "2026-10-24T12:21:24.023000"
+    }
+  ],
+  "repair": "Wait for the single pending progress result; existing server lease remains authoritative. No audio allowances, completion checks or stored history are reset. PR #286 merged as 73b97eca9f2061f4aae394e1b77632f88ba6d9da; all five required PR and merged-main CI jobs pass; production deployment ESMWoT9bZk1658fZgr6npWwp71Wt completed.",
+  "validation": {
+    "reproducedBeforeRepair": true,
+    "nativeBrowserCasesPassed": 12,
+    "focusedChecksPassed": 15,
+    "browserSyntaxFiles": 68,
+    "qaDependencyGraphs": 8,
+    "prCiRun": 40094439996,
+    "mainCiRun": 40094712282,
+    "requiredCiTestsPassed": 1432,
+    "requiredCiNativeBrowserCasesPassed": 126,
+    "requiredJobsPassed": 5
+  },
+  "sharedReadAcceptance": [
+    {
+      "runId": 40094712310,
+      "scope": "Chapter VI and preserved Chapters I\u2013V",
+      "checksPassed": 324,
+      "checksTotal": 324,
+      "file": "shared-audio-repair-chapter-vi-read-20261024.json"
+    },
+    {
+      "runId": 40094712356,
+      "scope": "Chapter V and preserved Chapters I\u2013III",
+      "checksPassed": 191,
+      "checksTotal": 191,
+      "file": "shared-audio-repair-chapter-v-read-20261024.json"
+    }
+  ],
+  "controlTransportCorrection": {
+    "failedContinuationRun": 40095510169,
+    "checksPassed": 49,
+    "checksTotal": 50,
+    "retainedAnswers": 22,
+    "retainedPositionMs": 16453,
+    "recordingCompletedPlays": 0,
+    "priorControlDeadlineMs": 4000,
+    "newControlDeadlineMs": 15000,
+    "mediaDeadlineMs": 60000,
+    "serverLeaseMs": 5000,
+    "nativeSuccessfulStateDelayMs": 5000,
+    "preciseLiveTransportCodeAvailable": false,
+    "reproducedBeforeRepair": true,
+    "normalRecoveryBoundPerPlay": 2
+  }
+}

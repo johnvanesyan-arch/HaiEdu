@@ -1,0 +1,558 @@
+{
+  "schemaVersion": "haiedu-english-unit2-learner-qa-v1",
+  "checkpoint": "16.1C.37",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+  },
+  "studentId": "bc3db497-d125-411f-99dd-49b1ae2466d5",
+  "workflowRunId": "40095510169",
+  "revision": "73b97eca9f2061f4aae394e1b77632f88ba6d9da",
+  "status": "failed",
+  "startedAt": "2026-10-24T12:54:02.049Z",
+  "responseFixtureSha256": "6735cbcd5107b0bd584861df5bb0ded7d16ef873b1b1a8c2df9d616840d7b3d1",
+  "checks": [
+    {
+      "label": "exact protected response fixture and configuration",
+      "status": "passed"
+    },
+    {
+      "label": "exact main, activation, owner direction and six designated identities",
+      "status": "passed"
+    },
+    {
+      "label": "manual dispatch only",
+      "status": "passed"
+    },
+    {
+      "label": "resume only a known incomplete bounded run",
+      "status": "passed"
+    },
+    {
+      "label": "public client bound to existing HaiEdu project",
+      "status": "passed"
+    },
+    {
+      "label": "A_admin: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_teacher: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A_student: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_admin: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_teacher: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B_student: exact designated account authenticated",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "no unrelated existing attempts or active work",
+      "status": "passed"
+    },
+    {
+      "label": "preflight: manage-written-work authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "published W01 has an available matching learner projection",
+      "status": "passed"
+    },
+    {
+      "label": "no unrelated writing work",
+      "status": "passed"
+    },
+    {
+      "label": "preflight: get-student-classes authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "A: exact designated English enrollment",
+      "status": "passed"
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-classes authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "B: exact designated English enrollment",
+      "status": "passed"
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "preflight: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "previous preserved contexts still identical",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic:diagnostic: get-student-dashboard authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "resume only recorded active session",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic:diagnostic: get-session-item authorized response",
+      "status": "passed",
+      "httpStatus": 200
+    },
+    {
+      "label": "diagnostic 23: served accepted question displayed",
+      "status": "passed"
+    },
+    {
+      "label": "bounded expected session count and accepted item",
+      "status": "passed"
+    },
+    {
+      "label": "audio has no transcript, source path or URL",
+      "status": "passed"
+    },
+    {
+      "label": "assessed shared recording policy and question group",
+      "status": "passed"
+    },
+    {
+      "label": "diagnostic:diagnostic: acceptance unfinished; raw errors withheld",
+      "status": "failed"
+    },
+    {
+      "label": "A_admin: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_teacher: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "A_student: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_admin: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_teacher: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    },
+    {
+      "label": "B_student: close only this authentication session",
+      "status": "passed",
+      "httpStatus": 204
+    }
+  ],
+  "sessions": [
+    {
+      "id": "9d88743b-1540-4cf8-8910-47929e2c8622",
+      "mode": "diagnostic",
+      "intent": "diagnostic",
+      "targetSkillId": null,
+      "status": "active",
+      "answered": 22,
+      "responses": [
+        {
+          "position": 1,
+          "itemId": "d6ad77b3-3d3d-50f9-a3fd-e16db83175cb",
+          "wrong": false
+        },
+        {
+          "position": 2,
+          "itemId": "a5f61ddf-f5a1-5361-aaa3-b78b986a909d",
+          "wrong": false
+        },
+        {
+          "position": 3,
+          "itemId": "67cf2c6b-c7c6-5242-aadd-9af1fba15abe",
+          "wrong": false
+        },
+        {
+          "position": 4,
+          "itemId": "1624da0d-de2e-549d-a2a2-eac83e191e4e",
+          "wrong": false
+        },
+        {
+          "position": 5,
+          "itemId": "69a59389-c799-577a-a0f7-34077de01b12",
+          "wrong": false
+        },
+        {
+          "position": 6,
+          "itemId": "ae7ab737-57aa-5a45-a307-c839467a6a90",
+          "wrong": false
+        },
+        {
+          "position": 7,
+          "itemId": "9c54efc5-f4f8-5829-a7cf-983ab6ed36ff",
+          "wrong": false
+        },
+        {
+          "position": 8,
+          "itemId": "a748c02c-fcbe-59f8-a6d9-48ac2fc2458f",
+          "wrong": false
+        },
+        {
+          "position": 9,
+          "itemId": "85f754e1-8c59-577c-aac1-871240c9637e",
+          "wrong": false
+        },
+        {
+          "position": 10,
+          "itemId": "b947e482-af7b-5891-ac79-92f11fb61676",
+          "wrong": false
+        },
+        {
+          "position": 11,
+          "itemId": "6c2a6322-481a-5302-aad2-a0d53b5d6f94",
+          "wrong": false
+        },
+        {
+          "position": 12,
+          "itemId": "04223c1e-e6a4-5a01-a2e2-8b26056768d9",
+          "wrong": false
+        },
+        {
+          "position": 13,
+          "itemId": "0f534819-13d1-5c48-a935-ba121a932a27",
+          "wrong": false
+        },
+        {
+          "position": 14,
+          "itemId": "ca9d6c86-7cab-5321-aa1c-36d375785d81",
+          "wrong": false
+        },
+        {
+          "position": 15,
+          "itemId": "7701981e-8095-5e19-acde-98655eff986a",
+          "wrong": false
+        },
+        {
+          "position": 16,
+          "itemId": "77b4d533-99ff-5c70-a767-8f3fae976868",
+          "wrong": false
+        },
+        {
+          "position": 17,
+          "itemId": "ba5b6399-5db3-52b3-add1-03c4057f0047",
+          "wrong": false
+        },
+        {
+          "position": 18,
+          "itemId": "717f5eaf-825f-5be5-af6f-59d2fcc02962",
+          "wrong": false
+        },
+        {
+          "position": 19,
+          "itemId": "916c4e6e-2d33-5aaa-ab48-0a844f9c1d5c",
+          "wrong": false
+        },
+        {
+          "position": 20,
+          "itemId": "4609c001-6ecd-5308-a4d4-7cae9cdf3442",
+          "wrong": false
+        },
+        {
+          "position": 21,
+          "itemId": "d6bccdfb-f617-5abf-a8f7-37dbef5f4240",
+          "wrong": false
+        },
+        {
+          "position": 22,
+          "itemId": "950a2e73-df18-5f32-ab9d-fa403a7161bf",
+          "wrong": false
+        }
+      ],
+      "sessionItemId": "d8527f4e-8d68-418c-95e9-2d3b4ea1adb8",
+      "itemId": "0689423f-ee51-5ce5-a316-8cb117d7aa68"
+    }
+  ],
+  "audio": [
+    {
+      "sessionId": "9d88743b-1540-4cf8-8910-47929e2c8622",
+      "audioVersionId": "e759e81f-859e-5041-b1a6-2d5fc7d9a249",
+      "pauseResume": true
+    },
+    {
+      "sessionId": "9d88743b-1540-4cf8-8910-47929e2c8622",
+      "sessionItemId": "7295e0c9-5007-4d5d-9aec-0dbc3b959a61",
+      "audioVersionId": "e759e81f-859e-5041-b1a6-2d5fc7d9a249",
+      "mode": "diagnostic",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 0,
+      "thirdPlayHttp": 409
+    },
+    {
+      "sessionId": "9d88743b-1540-4cf8-8910-47929e2c8622",
+      "sessionItemId": "d3882fb0-a87f-4811-94f8-86382e2a2d70",
+      "audioVersionId": "e759e81f-859e-5041-b1a6-2d5fc7d9a249",
+      "mode": "diagnostic",
+      "completedPlays": 2,
+      "sharedCountOnEntry": 2,
+      "thirdPlayHttp": 409
+    }
+  ],
+  "workId": null,
+  "limitations": [
+    "Synthetic designated QA learner; not learner attainment or specialist approval.",
+    "One diagnostic and three mastery forms are retained as exposed, including one technical exit; no reset or unseen-form claim.",
+    "Synthetic incorrect responses exercise failed Mastery and Review; they are not learner attainment. Existing concurrency and cross-subject checks are reused."
+  ],
+  "resumedFrom": {
+    "runId": "40093200175",
+    "revision": "2c985a437fef11ae29ecc1e7e4e05c12bceadabb",
+    "sha256": "8da53c7024bb1429cf6cc927fbfce425cdf391615b87e7a138f05c302d14eff4"
+  },
+  "preserved": [
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+        "unitId": "0349ffcd-8fc9-47f2-82d1-3d5cfcb3a096"
+      },
+      "sha256": "7433828f0a4d301dad6f19ffd908442cc2defa0af67fb73b0df4c1227e681ed0"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "unitId": "beae3516-4317-4c8b-bd66-576c6f309308"
+      },
+      "sha256": "3f8a3cb7ea3010083960822ec242911cf9e4466b0dcb8c09a25d1e9cf2964194"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+        "unitId": "aa824efc-b407-5143-9c92-a894d97be972"
+      },
+      "sha256": "d991cc1974d8bc68e5ab778dc4593b407485091c7b9e7bd806a815dd0bcb028b"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "18eb78e8-79f7-5307-bef2-38c4baa1d809",
+        "unitId": "5ebe46f5-5542-5a1e-bfbd-14e4e5b784ca"
+      },
+      "sha256": "0dd0c74563194bf1fadc270b4fa95ff50d22a0915970ea84e54c89cafb7a44f9"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+        "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364"
+      },
+      "sha256": "c3d38d798c3e4482a1656c7a9f173cf0fe80375dcbba1acfcbac741dcb6afb37"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "31505e7b-b7df-42f4-8bf7-55c4828e9944",
+        "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+        "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6"
+      },
+      "sha256": "d5690de7208f064041d8b439560a1138d989618bb6fd90ab6d1ac2a20cffbc7e"
+    },
+    {
+      "actor": "A_student",
+      "context": {
+        "enrollmentId": "d5231fa8-baae-4efc-a5b2-9d26f8e9c895",
+        "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+      },
+      "sha256": "05d03ce9e000905d8566c4ccc332a2c3eb27a891a8d15df1e6b76d037735b039"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "80bbe575-ad49-4a7f-881a-e55726b1eaeb",
+        "unitId": "0349ffcd-8fc9-47f2-82d1-3d5cfcb3a096"
+      },
+      "sha256": "e8febe2ec4fa2923d656832e3af8aa8f34e31741dda9fc3d6051edbc8372b715"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "b83dc4a4-f5c2-486a-82a6-d7489e7e6407",
+        "unitId": "beae3516-4317-4c8b-bd66-576c6f309308"
+      },
+      "sha256": "0c5211654a5e44916cad360ac8adbe9be67f3d3f08a42f5efdd5ee45a0c60273"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "b626705a-a355-5937-b20b-38550dc5b0fe",
+        "unitId": "aa824efc-b407-5143-9c92-a894d97be972"
+      },
+      "sha256": "880225c7e06a5c7cfa9596554bb6c8a7ee7b5b79d9e8151096588f59e1f97799"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "18eb78e8-79f7-5307-bef2-38c4baa1d809",
+        "unitId": "5ebe46f5-5542-5a1e-bfbd-14e4e5b784ca"
+      },
+      "sha256": "ac5cc58b30929bdc0322e4d2bb909031092d71c95654d291aae85d12e9e8cd7b"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "a2d0c2da-c04f-5900-a45d-dd325fe24324",
+        "unitId": "502f9a3e-6b4b-51a3-bf33-16d919299364"
+      },
+      "sha256": "cdaba5c71dbb7055ab0d92c88a8f075540513df95c7ccf9fef475e52220867e0"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "07871f94-c3b3-4763-97a2-129af0c66567",
+        "curriculumReleaseId": "44e5e99a-43bc-5937-8793-b2c614e38700",
+        "unitId": "32fef232-5c51-56f0-85ec-274b9de712c6"
+      },
+      "sha256": "743ff23b55b1de461f8804b50bdc23b1cd63cf2540dfd847a29d06a7369156da"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "b78d7318-5627-4345-a190-665d5ea43b87",
+        "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+        "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+      },
+      "sha256": "466bec397ffc64cb33eb87227a71e2502b56f352e50bf18f86c16110269fab07"
+    },
+    {
+      "actor": "B_student",
+      "context": {
+        "enrollmentId": "b78d7318-5627-4345-a190-665d5ea43b87",
+        "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+        "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+      },
+      "sha256": "94af025bd27155899d604999e5195865a2edb39af2b1b58a5cfbd769e03f332c"
+    }
+  ],
+  "initialState": {
+    "history": 0,
+    "activeSession": null,
+    "writingWork": null
+  },
+  "frontendCommit": "73b97eca9f2061f4aae394e1b77632f88ba6d9da",
+  "failure": {
+    "stage": "diagnostic:diagnostic",
+    "errorType": "Error"
+  },
+  "finishedAt": "2026-10-24T12:56:37.481Z"
+}
