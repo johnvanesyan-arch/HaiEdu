@@ -75,7 +75,7 @@ $('refreshMaterials').onclick=async()=>{
  if(busy||listBusy||!canLeave())return;const previous=current,e=epoch,s=++selection;busy=true;if(current){syncButtons();for(const field of $('materialEditor').querySelectorAll('input,textarea'))field.disabled=true;}
  try{await list();if(e!==epoch||s!==selection)return;busy=false;dirty=false;if(previous){const latest=rows.find(r=>r.material_key===previous.material_key&&scopeKey(r)===scopeKey(previous));await open(latest?.id??previous.id,{focus:false});if(e!==epoch||selection!==s+1||!current)return;}else $('materialEditor').innerHTML='<div class="material-empty"><h2>Ընտրեք նյութ</h2><p>Ցանկից ընտրեք նյութը։</p></div>';message('Ցանկը թարմացված է։');}
  catch(error){if(e===epoch&&s===selection)message(errorText(error),true);}
- finally{if(e===epoch){busy=false;syncListBusy();if(current){syncButtons();for(const field of $('materialEditor').querySelectorAll('input,textarea'))field.disabled=history[0]?.id!==current.id;}}}
+ finally{if(e===epoch&&(selection===s||selection===s+1)){busy=false;syncListBusy();if(current){syncButtons();for(const field of $('materialEditor').querySelectorAll('input,textarea'))field.disabled=history[0]?.id!==current.id;}}}
 };
 window.addEventListener('beforeunload',e=>{if(dirty){e.preventDefault();e.returnValue='';}});
 document.addEventListener('click',e=>{if(e.target.closest('a[href]')&&dirty&&!canLeave())e.preventDefault();});

@@ -19,7 +19,7 @@ This is the shared reviewer surface, driven by authorized programme/release/unit
 ## Verification
 
 - All 1,423 non-browser tests passed locally.
-- Six native Chromium material-reviewer cases passed using the actual HTML/CSS/JS, real Edge handler and SQL in isolated PGlite, with synthetic authentication, MFA and API transport. No production credentials or records were used.
+- Seven native Chromium material-reviewer cases passed using the actual HTML/CSS/JS, real Edge handler and SQL in isolated PGlite, with synthetic authentication, MFA and API transport. No production credentials or records were used.
 - Coverage: revision → QA → MFA approval; dirty token-refresh/navigation; late selection and sign-out isolation; duplicate actions; three curriculum scopes; composed filters and clear/reset; refresh selection retention; failed read/retry; failed refresh with unsaved edits; pending-selection cancellation and sign-out during refresh.
 - Guide and writing screenshots reviewed; horizontal overflow checks at 360, 390, 768 and 1280 pixels. Writing rubric and private support package remain available.
 - Browser syntax, QA dependency trigger coverage, typecheck, mirrored-core parity and favicon checks are required alongside the repository CI release gate. Isolated browser screenshots are emitted through the existing CI artifact path.

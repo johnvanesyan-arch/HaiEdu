@@ -77,3 +77,11 @@ test('refresh cancels pending selection, suppresses duplicate loads and cannot r
  const list=ui.holdNext('list');await p.locator('#refreshMaterials').evaluate(b=>{b.click();b.click();});await expect.poll(()=>typeof list.resolve).toBe('function');assert.equal(await p.evaluate(()=>window.__materialCalls.filter(x=>x.body.action==='list').length),3);
  await p.evaluate(()=>window.__materialListeners.forEach(fn=>fn('SIGNED_OUT',null)));list.resolve();await expect(p.locator('#console')).toBeHidden();await expect(p.locator('#materialEditor')).toBeEmpty();await expect(p.locator('#materialMessage')).toBeEmpty();assert.deepEqual(ui.errors,[]);
 });
+
+test('an old refresh response cannot unlock a pending action on a newly selected material',async t=>{
+ const f=await fixture();t.after(()=>f.db.close());const ui=await pageFixture(t,f),p=ui.page;
+ await p.locator(`#materialList [data-open="${id(2000)}"]`).click();await expect(p.locator('.material-reading')).toBeVisible();
+ const get=ui.holdNext('get');await p.locator('#refreshMaterials').click();await expect.poll(()=>typeof get.resolve).toBe('function');
+ await p.locator(`#materialList [data-open="${id(2001)}"]`).click();await expect(p.locator('.material-reading')).toContainText('Write');const qa=ui.holdNext('qa');await p.locator('[data-action=qa]').click();await expect.poll(()=>typeof qa.resolve).toBe('function');
+ const response=p.waitForResponse(r=>r.url().endsWith('/fixture-api')&&r.request().postDataJSON().body.action==='get');get.resolve();await response;await p.evaluate(()=>new Promise(resolve=>requestAnimationFrame(()=>requestAnimationFrame(resolve))));await expect(p.locator('[data-action=qa]')).toBeDisabled();await expect(p.locator('#refreshMaterials')).toBeDisabled();qa.resolve();await expect(p.locator('[data-action=approve]')).toBeEnabled();assert.deepEqual(ui.errors,[]);
+});
