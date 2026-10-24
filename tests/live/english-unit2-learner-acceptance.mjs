@@ -122,7 +122,7 @@ async function main(){
    const prior=JSON.parse(await readFile('qa-resume/english-unit2-learner-acceptance.json','utf8'));
    check('resume only a known incomplete bounded run',validResume(prior,process.env.QA_RESUME_RUN_ID));
    report.resumedFrom={runId:prior.workflowRunId,revision:prior.revision,sha256:digest(prior)};
-   for(const key of ['sessions','audio','workId','preserved','writingBaseline','writingChecks','initialState','readinessVerified'])if(prior[key]!==undefined)report[key]=prior[key];
+   for(const key of ['sessions','audio','audioRecoveries','workId','preserved','writingBaseline','writingChecks','initialState','readinessVerified'])if(prior[key]!==undefined)report[key]=prior[key];
   }
   report.frontendCommit=(await waitForRelease({expectedCommit:report.revision,timeoutMs:60000})).commit;
   const config=await readFile(new URL('web/config.js',root),'utf8');
@@ -171,6 +171,13 @@ async function main(){
      const data=await response.json().catch(()=>null);
      (report.httpFailures??=[]).push({stage,endpoint:new URL(response.url()).pathname,status:response.status(),errorCode:/^[a-z_]+$/.test(data?.error??'')?data.error:'unavailable'});
     }
+   });
+   p.on('requestfailed',req=>{
+    if(!req.url().startsWith(url+'/functions/v1/get-learning-audio'))return;
+    let action;try{action=req.postDataJSON()?.action;}catch{}
+    const code=req.failure()?.errorText;
+    const failures=report.audioTransportFailures??=[];
+    if(failures.length<20)failures.push({stage,action:['state','load','begin','progress','complete','pause','failed','cancel','started','completed'].includes(action)?action:'unknown',code:/^net::ERR_[A-Z_]+$/.test(code??'')?code:'request_failed',expectedTechnicalExit:current?.intent==='technical_exit'&&current?.faultInjected===true});
    });return p;
   }
   const learner=await pageFor('A_student');
@@ -191,10 +198,15 @@ async function main(){
     await expect(root.locator('[data-audio-questions] li')).toHaveCount(s.questions.length);
     const before=s.playback.completedPlays;
     for(let n=before;n<2;n++){
+     for(let recovery=0;;recovery++){
+      try{
      if(await media.evaluate(el=>!el.getAttribute('src'))){
+      report.playbackPhase='state-and-load';
       await root.locator('[data-audio-play]').click(); // Load real private MP3 bytes.
+      await expect(media).toHaveAttribute('src',/^blob:/,{timeout:75000});
       await expect(root.locator('[data-audio-play]')).toBeEnabled();
      }
+     report.playbackPhase='begin-or-resume';
      await root.locator('[data-audio-play]').click();
      if(!report.audio.some(x=>x.pauseResume)&&n===0){
       await learner.waitForFunction(()=>document.querySelector('#governedStimulus audio')?.currentTime>=2);
@@ -206,8 +218,21 @@ async function main(){
       await root.locator('[data-audio-play]').click();await expect(root.locator('[data-audio-play]')).toBeEnabled();await root.locator('[data-audio-play]').click();
       report.audio.push({sessionId:current.id,audioVersionId:s.audioVersionId,pauseResume:true});await save();
      }
+     report.playbackPhase='complete-real-time-play';
      await expect(root.locator('[data-audio-count]')).toContainText(`${n+1}/2`,{timeout:s.durationMs+45000});
      check('real-time audio completes at normal playback rate',await media.evaluate(el=>el.playbackRate===1));
+      break;
+      }catch(error){
+       // Exercise only the normal retained-checkpoint recovery, at most twice
+       // per play. Never manufacture completion, consume a new form or cancel.
+       if(recovery>=2||!await root.getByRole('button',{name:'Ավարտել՝ առանց գնահատման',exact:true}).isVisible()
+        ||!await root.locator('[data-audio-play]').isEnabled())throw error;
+       const state=await api('A_student','get-learning-audio',{sessionId:current.id,sessionItemId:current.sessionItemId,playbackPolicy:'assessed-recording-v1',action:'state'});
+       check('normal audio recovery preserves the uncharged play and allowance',state.canEndUnscored===true&&state.completedPlays===n&&state.maximumPlays===2);
+       (report.audioRecoveries??=[]).push({sessionId:current.id,audioVersionId:s.audioVersionId,completedPlays:state.completedPlays,resumePositionMs:state.resumePositionMs,recovery:recovery+1});await save();
+       await display(await item(),true);
+      }
+     }
     }
     await expect(root.locator('[data-audio-play]')).toBeDisabled();
     const denial=await request('A_student','/functions/v1/get-learning-audio',{sessionId:current.id,sessionItemId:current.sessionItemId,playbackPolicy:'assessed-recording-v1',action:'begin',clientId:randomUUID(),playId:randomUUID(),positionMs:0});
@@ -226,7 +251,7 @@ async function main(){
     }
     report.audio.push({sessionId:current.id,sessionItemId:current.sessionItemId,audioVersionId:s.audioVersionId,mode:current.mode,completedPlays:plays,practiceThreePlays:plays===3});
    }
-   check('audio player has no horizontal overflow',await learner.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));await save();
+   check('audio player has no horizontal overflow',await learner.evaluate(()=>document.documentElement.scrollWidth<=innerWidth+1));delete report.playbackPhase;await save();
   }
   async function technicalExit(data){
    current.faultArmed=true;await save();
@@ -417,7 +442,7 @@ async function main(){
   for(const preserved of report.preserved){const d=await api(preserved.actor,'get-student-dashboard',preserved.context);check('other learner and all other release dashboards remain identical',digest(d)===preserved.sha256);}
   check('native browser has no unapproved requests or JavaScript errors',blocked===0&&pageErrors===0);
   await waitForRelease({expectedCommit:report.revision,timeoutMs:15000});check('production remains on exact reviewed revision',true);
- }catch(error){report.failure={stage,...(stage==='writing'?{writingPhase:report.writingPhase}:{}),errorType:error?.name??'Error'};if(!report.checks.some(c=>c.status==='failed'))report.checks.push({label:`${stage}: acceptance unfinished; raw errors withheld`,status:'failed'});}
+ }catch(error){report.failure={stage,...(stage==='writing'?{writingPhase:report.writingPhase}:{}),...(report.playbackPhase?{playbackPhase:report.playbackPhase}:{}),errorType:error?.name??'Error'};if(!report.checks.some(c=>c.status==='failed'))report.checks.push({label:`${stage}: acceptance unfinished; raw errors withheld`,status:'failed'});}
  finally{
   await browser?.close();
   for(const [actor] of sessions){const r=await request(actor,'/auth/v1/logout?scope=local');report.checks.push({label:`${actor}: close only this authentication session`,status:[200,204].includes(r.status)?'passed':'failed',httpStatus:r.status});}
