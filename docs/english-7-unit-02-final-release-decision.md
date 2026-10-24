@@ -1,5 +1,7 @@
 # English 7 Unit 2 — final provisional-pilot decision
 
+**Current C36:** Unit 2 is active as the exact owner-authorized protected provisional pilot. C29–C35 content/audio/configuration evidence and owner approvals are reused. Initial delivery binds 47 core Practice questions, five 24-question forms, four policies, eight guides, separate W01 and 25 sets/11 recordings; 25 optional questions and three audio sets remain outside core allocation. Rollback and independent committed readback preserve all 117 unrelated scopes, including Unit 1 and learner history. Six technical gates pass; independent specialist review is deferred/pending. Twenty-six focused regressions pass. Live read acceptance awaits the reviewed main deployment; full learner attempts, audio-limit/resume and writing submission/teacher-feedback acceptance are next. [Pilot delivery](english-7-unit-02-pilot-release.md).
+
 **16.1C.35 · 24 October 2026 · Roadmap 4.64. Packet and guarded read acceptance prepared; learner activation awaits the final owner decision.**
 
 The accepted Unit 2 bank, sources, curriculum and numerical policy are ready for a bounded provisional pilot. This packet binds the exact C34 configuration and proposes authenticated delivery to existing authorised English-programme learners. It reuses John's completed content/audio review and existing course source-use instructions. It does not ask him to review those again.

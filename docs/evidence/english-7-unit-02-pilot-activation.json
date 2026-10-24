@@ -1,0 +1,99 @@
+{
+  "schemaVersion": "haiedu-english-unit2-activation-v1",
+  "checkpoint": "16.1C.36",
+  "status": "activated",
+  "releaseStatus": "pilot",
+  "activatedAt": "2026-10-24T07:32:11.310784+00:00",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+  },
+  "preparedFromCommit": "9f5cfd1a3cf47988e0d7de751aa680dbd3eb1826",
+  "configurationSha256": "ca6ac1f194e4fede3b942bd78346a72c8ff3ce492dc460cfa9895c7b1674b04f",
+  "protectedConfigurationSha256": "ecbc950c4224e1743d4dd183d54954a2b21ae8a0e7d86b6745077b9e4d5e2517",
+  "decisionManifestSha256": "ec2fdcdddff3d15d8034cb5a9d9c91b667a5a5f457a1fbdfaede3f1ec60411c5",
+  "readContractSha256": "7c0fe05c3284bcd7d940ee26ba92679c99d7a73c7cdb169fdc5306d4465983a4",
+  "ownerAuthorization": {
+    "schemaVersion": "haiedu-english-unit2-owner-activation-v1",
+    "checkpoint": "16.1C.36",
+    "owner": "John",
+    "action": "activate_provisional_pilot",
+    "scope": {
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+    },
+    "preparedSourceCommit": "9f5cfd1a3cf47988e0d7de751aa680dbd3eb1826",
+    "decisionManifestSha256": "ec2fdcdddff3d15d8034cb5a9d9c91b667a5a5f457a1fbdfaede3f1ec60411c5",
+    "configurationSha256": "ca6ac1f194e4fede3b942bd78346a72c8ff3ce492dc460cfa9895c7b1674b04f",
+    "protectedConfigurationSha256": "ecbc950c4224e1743d4dd183d54954a2b21ae8a0e7d86b6745077b9e4d5e2517",
+    "readContractSha256": "7c0fe05c3284bcd7d940ee26ba92679c99d7a73c7cdb169fdc5306d4465983a4",
+    "ownerDirection": "yes",
+    "recordedAt": "2026-10-24T06:33:56.508576+00:00",
+    "specialistReview": "deferred",
+    "independentSmeApproved": false,
+    "unseenAssessmentClaim": false,
+    "sourceUseBasis": "existing_owner_course_instructions",
+    "sourceUseScope": "authenticated_enrolled_unit2_learners",
+    "publicDownloadsAuthorized": false,
+    "interpretation": "Direct response to the C35 final request to activate Unit 2 for authorised learners as a protected provisional pilot, with independent specialist review deferred. Existing accepted content, audio, numerical policy and source-use instructions remain in force."
+  },
+  "specialistGate": "pending",
+  "independentSmeApproved": false,
+  "unseenAssessmentClaim": false,
+  "sourceProtectionVerified": true,
+  "verifiedReadback": true,
+  "verifiedAt": "2026-10-24T07:33:29.21102+00:00",
+  "configurationRows": 516,
+  "rehearsal": {
+    "normalValidatorsAndBinders": true,
+    "preservedScopes": 117,
+    "independentRollbackRestoration": 117,
+    "fullDatabaseGuardSha256": "d6177993fa3fd5dcc1ad273f21510eeac85f07c56b92640ffdda02072a0f8d16",
+    "correctedQueryAliasCollisionBeforeCommit": true
+  },
+  "activation": {
+    "inactiveImportBatches": 15,
+    "inactiveImportRowsExact": 516,
+    "finalActivationAtomic": true,
+    "independentPreservationReadback": 117,
+    "policyContractsMatched": 4,
+    "formsMatched": 5,
+    "orderedFormSlotsMatched": 120,
+    "masteryVersionBindingsMatched": 72,
+    "corePoolSizes": {
+      "practice": 47,
+      "diagnostic": 48,
+      "mastery_check": 72
+    },
+    "optionalPracticeRetained": 25,
+    "registeredTaskSets": 28,
+    "registeredAudio": 14,
+    "initialTaskSets": 25,
+    "initialAudio": 11,
+    "sourcesUnchanged": 42,
+    "contentApprovalsAndQaUnchanged": true,
+    "globalLifecyclePointerUnchanged": true,
+    "unit1AndOtherProgrammesUnchanged": true,
+    "learnerHistoryUnchanged": true,
+    "newEnrolmentsOrAccounts": 0,
+    "edgeRuntimeChanged": false,
+    "schemaChanged": false
+  },
+  "transport": {
+    "oversizedRehearsalRequestsExpired": 3,
+    "resolution": "Verified small inactive imports, then one compact activation transaction pinned to every row of all 117 public/private tables. Storage privacy/object presence checked separately.",
+    "transactionsDoNotWeakenReleaseValidators": true
+  },
+  "sourceHashes": {
+    "activationCompiler": "ad78ffc7389828ccad6b8f321460f99249057ce9552fbdba989b2a30c7585933",
+    "activationSqlPrivate": "8adeac56c723e6dddcd05ab31ead14b3b251ca3abafe2afefb3004ec328f6493",
+    "retainedProtectedConfiguration": "ecbc950c4224e1743d4dd183d54954a2b21ae8a0e7d86b6745077b9e4d5e2517"
+  },
+  "liveReadAcceptance": {
+    "status": "awaiting_reviewed_main_exact_deployment",
+    "workflow": ".github/workflows/english-unit2-pilot-read-acceptance.yml"
+  },
+  "next": "Guarded live read acceptance, then separate designated Unit 2 learner-attempt/audio and writing-submission/teacher-feedback acceptance."
+}

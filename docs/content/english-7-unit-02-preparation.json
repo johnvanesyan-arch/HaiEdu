@@ -1,9 +1,9 @@
 {
   "schemaVersion": "haiedu-english-unit-preparation-v1",
-  "checkpoint": "16.1C.35",
+  "checkpoint": "16.1C.36",
   "date": "2026-10-24",
   "timezone": "Asia/Yerevan",
-  "status": "final-pilot-packet-prepared-activation-decision-pending",
+  "status": "provisional-pilot-active-live-read-acceptance-pending",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -471,7 +471,7 @@
       "permissionStatus": "owner-directed-bounded-private-integration",
       "listeningReviewStatus": "automated-reconciliation-owner-directed-registration-no-independent-human-audition-claim",
       "registered": true,
-      "live": false,
+      "live": true,
       "originalHashVerifiedAtCheckpoint": "16.1C.27",
       "decodeEvidenceReused": "docs/evidence/english-7-course-audio-inventory-20261021.json",
       "audioAssetVersionId": "27a81ff2-601e-5a04-8d7f-32891517c42f",
@@ -526,7 +526,7 @@
       "publisherPage": "https://zangak.am/mediafiles/?BjRzf",
       "sourceUrl": "https://zangak.am/mediafiles/english7-2023/BjRzf/Soundtrack%207.mp3",
       "decision": "registered-for-private-practice-review",
-      "plannedUse": "core-listening",
+      "plannedUse": "support-enrichment",
       "rationale": "Listen for completed/incomplete actions in the taught present-perfect context.",
       "sourceFamilyReviewed": true,
       "activityMappingBasis": "C29 source and exact publisher recording reconciled under C31",
@@ -576,13 +576,14 @@
       0,
       3
     ],
-    "accepted": false,
+    "accepted": true,
     "teacherAssignmentCreated": false,
     "separateFromAutomaticScore": true,
     "authoringScopeAccepted": true,
     "authored": true,
     "staged": true,
-    "materialQaPassed": true
+    "materialQaPassed": true,
+    "acceptanceBasis": "Owner reports all materials approved; accepted without repeat review."
   },
   "comparisonPreparation": {
     "candidateLevelReviewComplete": true,
@@ -600,10 +601,10 @@
       "S14"
     ],
     "newSettingProvesNovelReasoning": false,
-    "next": "Reuse unchanged comparison and owner acceptance; final pilot packet prepared.",
+    "next": "Reuse unchanged C29 comparison and owner acceptance; no new content or repeat approval audit.",
     "demandLevelReviewComplete": true,
     "corpusEvidence": "docs/evidence/english-7-unit-02-authoring-20261023.json",
-    "reviewProvenance": "Codex automated author and semantic self-review; human/SME review pending",
+    "reviewProvenance": "Codex automated author and semantic self-review; owner reports acceptance; independent specialist review deferred/pending.",
     "withinBatchPairs": 18336
   },
   "boundaries": {
@@ -619,21 +620,21 @@
     "assetsRegistered": 14,
     "sourcesRegistered": 28,
     "newHumanApprovals": 0,
-    "newPoliciesBound": 0,
-    "newFormsAllocated": 0,
+    "newPoliciesBound": 4,
+    "newFormsAllocated": 5,
     "unit1EvidenceReused": true,
     "unit1BankAuthorizationExtendsToUnit2": false,
     "audioAuditionClaimed": false,
     "browserPlaybackClaimed": false,
-    "scorePolicyAdopted": false,
+    "scorePolicyAdopted": true,
     "originalReplacementScriptsAuthored": 1,
     "illustrativeUnscoredPromptsAuthored": 5,
     "ownerSuppliedReplacementRecordings": 1,
     "replacementTechnicalChecksPassed": true,
     "draftUnitScopesRegistered": 1,
     "draftReleaseScopesRegistered": 1,
-    "pendingReleaseGates": 7,
-    "productionWriteBasis": "2277 prior additive rows plus 470 C32 curriculum rows; C32 also updates fifteen draft skill snapshots and one draft release. Existing content/approval/QA/history unchanged.",
+    "pendingReleaseGates": 1,
+    "productionWriteBasis": "2277 prior additive rows plus 470 C32 curriculum rows; C32 also updates fifteen draft skill snapshots and one draft release. Existing content/approval/QA/history unchanged. Historical pre-C36 additive count only; C36 stages 516 configuration rows and activates through normal binders, separately evidenced.",
     "draftMaterialsStaged": 9,
     "newAssessmentScriptsAuthored": 10,
     "sourceQuestionHolds": 0,
@@ -652,7 +653,7 @@
     "skillOutcomeMappingsRegistered": 19,
     "questionFamiliesReconciled": 192
   },
-  "next": "Final bounded provisional-pilot authorization, then activation and guarded learner read/action acceptance.",
+  "next": "Guarded exact-main live read acceptance, then full learner/audio/writing action acceptance.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -686,9 +687,11 @@
   "registrationScope": {
     "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
     "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
-    "status": "draft",
-    "allSevenReleaseGatesPending": true,
-    "supersedesUnit1": false
+    "status": "pilot",
+    "allSevenReleaseGatesPending": false,
+    "supersedesUnit1": false,
+    "technicalGatesPassed": 6,
+    "specialistGate": "pending"
   },
   "bankProposal": {
     "status": "accepted_and_authored",
@@ -713,8 +716,9 @@
       "plannedSharedTaskSets": 28,
       "guideDrafts": 8
     },
-    "humanContentApproval": false,
-    "learnerRelease": false
+    "humanContentApproval": true,
+    "learnerRelease": true,
+    "humanContentApprovalBasis": "Existing owner report accepted without repeated audit."
   },
   "assessmentAudioIntegration": {
     "checkpoint": "16.1C.30",
@@ -766,6 +770,23 @@
     "initialAudio": 11,
     "liveAcceptanceExecuted": false,
     "learnerActivationAuthorized": false,
-    "productionWrites": 0
+    "productionWrites": 0,
+    "checkpoint": "16.1C.35",
+    "historicalPreparation": true
+  },
+  "pilotActivation": {
+    "checkpoint": "16.1C.36",
+    "evidence": "docs/evidence/english-7-unit-02-pilot-activation.json",
+    "ownerAuthorization": "docs/evidence/english-7-unit-02-owner-activation-20261024.json",
+    "learnerActivationAuthorized": true,
+    "activated": true,
+    "configurationRows": 516,
+    "formsQualified": 5,
+    "policyContracts": 4,
+    "preservedScopes": 117,
+    "technicalGatesPassed": 6,
+    "specialistGate": "pending",
+    "liveReadAcceptanceExecuted": false,
+    "fullLearnerActionsExecuted": false
   }
 }

@@ -5,7 +5,19 @@ on:
   push:
     branches: [main]
     paths:
-      # Expand to the full dependency graph in the verified activation change.
+      # Active pilot: full shared dependency graph and immutable acceptance inputs.
+      - web/**
+      - supabase/functions/**
+      - supabase/migrations/**
+      - scripts/**
+      - package.json
+      - package-lock.json
+      - vercel.json
+      - .github/workflows/english-unit2-pilot-read-acceptance.yml
+      - docs/qa/additional-programme-fixtures.json
+      - docs/content/english-7-unit-02-configuration-summary.json
+      - docs/content/english-7-unit-02-release-decision.json
+      - docs/content/english-7-unit-02-read-contract.json
       - docs/evidence/english-7-unit-02-pilot-activation.json
 
 permissions:
