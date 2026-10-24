@@ -52,5 +52,18 @@
     "approvalEventsCreated": 0,
     "runtimeChanges": 0
   },
-  "plan": "docs/english-7-course-continuation.md"
+  "plan": "docs/english-7-course-continuation.md",
+  "retainedUnit2ReadEvidence": {
+    "workflowRun": 40087394583,
+    "workflowJob": 120854490119,
+    "artifactId": 12557349955,
+    "artifactZipSha256": "7211b96a3aa1b4578a15f433724620f427c05e8c84fd7ecefba7e315e7b83920",
+    "evidence": "docs/evidence/english-7-unit-02-pilot-read-acceptance-20261024.json",
+    "evidenceSha256": "ca79683f5a5c3574fb7677ae6671fd0022bc9a083e66a036bf2a71b6fe2c9952",
+    "sourceCommit": "96a1e6b1a3448fb6b5e282386d012d89dc89e48d",
+    "checksPassed": 136,
+    "nestedIsolationChecksPassed": 54,
+    "fullLearnerActionsEstablished": false,
+    "newProductionRunPerformed": false
+  }
 }

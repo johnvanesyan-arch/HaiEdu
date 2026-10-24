@@ -3,7 +3,7 @@
   "checkpoint": "16.1C.36",
   "date": "2026-10-24",
   "timezone": "Asia/Yerevan",
-  "status": "provisional-pilot-active-owner-reports-approvals-complete-technical-acceptance-next",
+  "status": "provisional-pilot-active-read-acceptance-passed-full-actions-next",
   "scope": {
     "bookUnit": 2,
     "programmeTopic": 2,
@@ -656,7 +656,7 @@
     "skillOutcomeMappingsRegistered": 19,
     "questionFamiliesReconciled": 192
   },
-  "next": "Finish Unit 2 technical learner read/attempt/audio/writing acceptance, then English Units 3–6 in textbook order before Mathematics.",
+  "next": "Reuse passed Unit 2 read evidence; finish full attempt/audio/writing acceptance, then English Units 3–6 in textbook order before Mathematics.",
   "replacementSources": [
     {
       "id": "ENG7-U02-ACT02-REPLACEMENT",
@@ -791,13 +791,18 @@
     "specialistGate": "pending",
     "liveReadAcceptanceExecuted": true,
     "fullLearnerActionsExecuted": false,
-    "liveReadAcceptancePassed": false,
-    "liveReadEvidence": "docs/evidence/english-7-unit-02-pilot-read-failure-20261024.json",
+    "liveReadAcceptancePassed": true,
+    "liveReadEvidence": "docs/evidence/english-7-unit-02-pilot-read-acceptance-20261024.json",
     "materialPublicationHold": "docs/evidence/english-7-unit-02-material-publication-hold-20261024.json",
     "materialApprovalOwnerReportedComplete": true,
     "materialApprovalReportDate": "2026-10-24",
     "freshApprovalAuditPerformed": false,
-    "materialPublicationHoldIsHistorical": true
+    "materialPublicationHoldIsHistorical": true,
+    "historicalFailedReadEvidence": "docs/evidence/english-7-unit-02-pilot-read-failure-20261024.json",
+    "liveReadAcceptedRevision": "96a1e6b1a3448fb6b5e282386d012d89dc89e48d",
+    "liveReadChecksPassed": 136,
+    "nestedIsolationChecksPassed": 54,
+    "liveReadEvidenceReused": true
   },
   "courseContinuation": {
     "decision": "docs/evidence/english-7-course-continuation-decision-20261024.json",
