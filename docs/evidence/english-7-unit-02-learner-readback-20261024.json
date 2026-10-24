@@ -1,0 +1,274 @@
+{
+  "schemaVersion": "haiedu-english-unit2-learner-readback-v1",
+  "checkpoint": "16.1C.37",
+  "workflowRunId": 40097115949,
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+    "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9",
+    "designatedStudentId": "bc3db497-d125-411f-99dd-49b1ae2466d5"
+  },
+  "queryMode": "read-only exact owned-session and writing metadata; no response text or source content",
+  "checks": [
+    {
+      "label": "Eight exact owned sessions retained",
+      "status": "passed"
+    },
+    {
+      "label": "Diagnostic same retained ID completes 24/24",
+      "status": "passed"
+    },
+    {
+      "label": "Three normal Practice sessions retain 2,3,3 answers",
+      "status": "passed"
+    },
+    {
+      "label": "Three distinct Mastery forms without shared items or source families",
+      "status": "passed"
+    },
+    {
+      "label": "Unscored technical exit retains answered items and exposures",
+      "status": "passed"
+    },
+    {
+      "label": "Technical exit is unscored, followed by failed attempt 1 and passed attempt 2",
+      "status": "passed"
+    },
+    {
+      "label": "Passed retake links completed qualifying twelve-question required Review",
+      "status": "passed"
+    },
+    {
+      "label": "Six assessed recordings have two completed plays and technical exit has none",
+      "status": "passed"
+    },
+    {
+      "label": "Writing retains reviewed work with 81/82-word submissions",
+      "status": "passed"
+    },
+    {
+      "label": "Writing retains return and four-criterion synthetic 8/12 marking",
+      "status": "passed"
+    }
+  ],
+  "evidence": {
+    "readAt": "2026-10-24T13:56:06.145158+00:00",
+    "writing": [
+      {
+        "state": "reviewed",
+        "taskId": "b4c4f2c2-df58-5222-a95e-d1f90bf69516",
+        "workId": "c31ac901-139d-4d20-83c4-24d2b3ec4591",
+        "submissions": [
+          {
+            "reviews": [
+              {
+                "decision": "return",
+                "scoreTotal": null,
+                "criterionCount": 0
+              }
+            ],
+            "version": 1,
+            "wordCount": 81
+          },
+          {
+            "reviews": [
+              {
+                "decision": "assessed",
+                "scoreTotal": 8,
+                "criterionCount": 4
+              }
+            ],
+            "version": 2,
+            "wordCount": 82
+          }
+        ]
+      }
+    ],
+    "sessions": [
+      {
+        "id": "9d88743b-1540-4cf8-8910-47929e2c8622",
+        "mode": "diagnostic",
+        "formId": "f49bea4e-d620-5c07-a7a1-fb435f532603",
+        "status": "completed",
+        "correct": 24,
+        "planned": 24,
+        "answered": 24,
+        "itemExposureCount": 24,
+        "sourceExposureCount": 8,
+        "hasTechnicalInterruptionRecord": false
+      },
+      {
+        "id": "26b42d53-cc4a-4e60-b6dc-5fa5b68679c0",
+        "mode": "practice",
+        "formId": null,
+        "status": "completed",
+        "correct": 2,
+        "planned": 8,
+        "answered": 2,
+        "itemExposureCount": 2,
+        "sourceExposureCount": 0,
+        "hasTechnicalInterruptionRecord": false
+      },
+      {
+        "id": "8f593c45-ebff-4724-b0f9-6dd2ed44447c",
+        "mode": "practice",
+        "formId": null,
+        "status": "completed",
+        "correct": 3,
+        "planned": 8,
+        "answered": 3,
+        "itemExposureCount": 3,
+        "sourceExposureCount": 3,
+        "hasTechnicalInterruptionRecord": false
+      },
+      {
+        "id": "f0baf27c-aacb-447f-8a77-a0e93f891b9f",
+        "mode": "practice",
+        "formId": null,
+        "status": "completed",
+        "correct": 3,
+        "planned": 8,
+        "answered": 3,
+        "itemExposureCount": 3,
+        "sourceExposureCount": 3,
+        "hasTechnicalInterruptionRecord": false
+      },
+      {
+        "id": "91dc8efe-5f6d-40ab-8b2b-694182b8859e",
+        "mode": "mastery_check",
+        "formId": "58dee587-2654-54f6-961f-852863efab0b",
+        "status": "abandoned",
+        "correct": 10,
+        "planned": 24,
+        "answered": 10,
+        "itemExposureCount": 12,
+        "sourceExposureCount": 4,
+        "hasTechnicalInterruptionRecord": true
+      },
+      {
+        "id": "5bfff898-4a80-4bec-b163-a434b6cabe4a",
+        "mode": "mastery_check",
+        "formId": "9ea6e122-e8da-5d43-8cf1-64c201b101e8",
+        "status": "completed",
+        "correct": 17,
+        "planned": 24,
+        "answered": 24,
+        "itemExposureCount": 24,
+        "sourceExposureCount": 8,
+        "hasTechnicalInterruptionRecord": false
+      },
+      {
+        "id": "07576b71-010a-4963-8d75-0554af47bf66",
+        "mode": "chapter_review",
+        "formId": null,
+        "status": "completed",
+        "correct": 12,
+        "planned": 12,
+        "answered": 12,
+        "itemExposureCount": 12,
+        "sourceExposureCount": 6,
+        "hasTechnicalInterruptionRecord": false
+      },
+      {
+        "id": "763c8b46-8258-40bf-b771-b5c08d447f5d",
+        "mode": "mastery_check",
+        "formId": "0beda7f1-4905-5fcc-aaab-c4338d90c15c",
+        "status": "completed",
+        "correct": 24,
+        "planned": 24,
+        "answered": 24,
+        "itemExposureCount": 24,
+        "sourceExposureCount": 8,
+        "hasTechnicalInterruptionRecord": false
+      }
+    ],
+    "assessedAudio": [
+      {
+        "sessionId": "5bfff898-4a80-4bec-b163-a434b6cabe4a",
+        "failureOrigin": null,
+        "audioVersionId": "2f17bb26-becd-5913-bf87-2427ae6268ea",
+        "completedPlays": 2,
+        "lastCompletedPlayId": "993b7877-e56f-4a94-8e5b-d1aa19b821b2"
+      },
+      {
+        "sessionId": "5bfff898-4a80-4bec-b163-a434b6cabe4a",
+        "failureOrigin": null,
+        "audioVersionId": "3744f76b-dc52-54a1-8282-a7e2e2002b47",
+        "completedPlays": 2,
+        "lastCompletedPlayId": "8a62ee78-c0e9-4682-8ecc-d7cd874f6729"
+      },
+      {
+        "sessionId": "763c8b46-8258-40bf-b771-b5c08d447f5d",
+        "failureOrigin": null,
+        "audioVersionId": "1762af2b-8f15-552a-81ca-6dfd212d1f68",
+        "completedPlays": 2,
+        "lastCompletedPlayId": "c27234d1-1076-493e-bb1b-8cbb34155361"
+      },
+      {
+        "sessionId": "763c8b46-8258-40bf-b771-b5c08d447f5d",
+        "failureOrigin": null,
+        "audioVersionId": "4eb19d81-752a-584a-94ec-ef9578eb2632",
+        "completedPlays": 2,
+        "lastCompletedPlayId": "b7b41bf5-3d36-4d93-bffc-bcd5b6724d83"
+      },
+      {
+        "sessionId": "91dc8efe-5f6d-40ab-8b2b-694182b8859e",
+        "failureOrigin": "client_reported",
+        "audioVersionId": "0dc8440a-5087-51aa-9615-6eef5e3c98bc",
+        "completedPlays": 0,
+        "lastCompletedPlayId": null
+      },
+      {
+        "sessionId": "9d88743b-1540-4cf8-8910-47929e2c8622",
+        "failureOrigin": null,
+        "audioVersionId": "196a74bf-e60b-58bc-99c0-a0e211c6f1cb",
+        "completedPlays": 2,
+        "lastCompletedPlayId": "25a7f747-c8dc-48e3-aec9-92108f50be59"
+      },
+      {
+        "sessionId": "9d88743b-1540-4cf8-8910-47929e2c8622",
+        "failureOrigin": null,
+        "audioVersionId": "e759e81f-859e-5041-b1a6-2d5fc7d9a249",
+        "completedPlays": 2,
+        "lastCompletedPlayId": "087a6e49-a499-4631-a07e-d7c9121e9bf2"
+      }
+    ],
+    "requiredReview": [
+      {
+        "status": "completed",
+        "reviewId": "8fe60679-1e2a-4917-846f-8c4d7179db73",
+        "sessionId": "07576b71-010a-4963-8d75-0554af47bf66",
+        "qualifying": true,
+        "targetQuestions": 12,
+        "precedingMasteryAttemptNumber": 1
+      }
+    ],
+    "masteryAttempts": [
+      {
+        "result": null,
+        "status": "abandoned",
+        "sessionId": "91dc8efe-5f6d-40ab-8b2b-694182b8859e",
+        "attemptNumber": 1,
+        "precedingRequiredReviewId": null
+      },
+      {
+        "result": "failed",
+        "status": "completed",
+        "sessionId": "5bfff898-4a80-4bec-b163-a434b6cabe4a",
+        "attemptNumber": 1,
+        "precedingRequiredReviewId": null
+      },
+      {
+        "result": "passed",
+        "status": "completed",
+        "sessionId": "763c8b46-8258-40bf-b771-b5c08d447f5d",
+        "attemptNumber": 2,
+        "precedingRequiredReviewId": "8fe60679-1e2a-4917-846f-8c4d7179db73"
+      }
+    ],
+    "masteryFormCount": 3,
+    "ownedSessionCount": 8,
+    "masteryItemOverlap": 0,
+    "masterySourceOverlap": 0
+  }
+}
