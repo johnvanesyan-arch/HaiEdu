@@ -4,7 +4,7 @@
 .content-action-card span{color:#60738c;font-size:.8rem;font-weight:800}
 .content-action-card strong{font-size:1.8rem;color:#203a5f}
 .content-action-card p{margin:0;color:#64748b;font-size:.86rem;line-height:1.45}
-.content-home-sections{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(280px,.65fr);gap:16px}
+.content-home-sections{display:grid;grid-template-columns:minmax(280px,.65fr) minmax(0,1.35fr);gap:16px}
 .content-work-card{padding:22px}
 .content-work-card h2{margin:.15rem 0 .4rem}
 .content-priority-list{display:grid;gap:9px;margin-top:14px}
@@ -15,8 +15,6 @@
 .content-status-line{display:flex;gap:7px;flex-wrap:wrap;justify-content:flex-end}
 .content-chip{display:inline-flex;padding:4px 8px;border-radius:999px;background:#eef3f8;color:#52667f;font-size:.75rem;font-weight:800}
 .content-chip.fail{background:#fff0f1;color:#9a3944}.content-chip.warn{background:#fff6df;color:#8a641f}.content-chip.good{background:#e9f6ee;color:#2f7149}
-.content-quick-links{display:grid;gap:10px;margin-top:12px}
-.content-quick-links a{display:flex;justify-content:space-between;gap:10px;padding:13px 14px;border:1px solid #dfe7f0;border-radius:11px;text-decoration:none;font-weight:750;background:#fff}
 .content-queue-toolbar{display:flex;gap:10px;align-items:center;justify-content:space-between;margin-bottom:14px;flex-wrap:wrap}
 .content-queue-tabs{display:flex;gap:8px;flex-wrap:wrap}
 .content-queue-tabs button{background:#fff;color:#274a75;border:1px solid #ccd7e4}
@@ -183,3 +181,16 @@ summary.curriculum-program-head:focus-visible{outline:3px solid #8db7ed;outline-
 .editor-advanced:not([open]){padding-bottom:12px}
 .editor-advanced label{margin:12px 0}
 .editor-advanced .code-field{width:100%;box-sizing:border-box;max-width:100%}
+
+.content-resume-card{align-self:start;border-color:#c3d6ee;background:#f8fbff}
+.content-resume-code{margin:16px 0 8px;overflow-wrap:anywhere}
+.content-resume-prompt{font-weight:650;line-height:1.55;overflow-wrap:anywhere;display:-webkit-box;-webkit-line-clamp:4;-webkit-box-orient:vertical;overflow:hidden}
+.content-resume-card .content-status-line{justify-content:flex-start;margin:14px 0}
+.content-resume-card #reviewResume>.button-link{display:flex;justify-content:center;align-items:center;text-align:center;min-height:44px;white-space:normal;margin-top:16px}
+.content-bank-summary{margin-top:22px;border-top:1px solid #dce5f0;padding-top:14px}
+.content-bank-summary>summary{cursor:pointer;font-weight:700;color:#52667f;min-height:28px}
+.content-bank-summary>summary:focus-visible{outline:3px solid #8db7ed;outline-offset:4px}
+@media(max-width:1100px){.content-home-sections{grid-template-columns:minmax(0,1fr)}}
+.content-resume-card p{overflow-wrap:anywhere}
+
+@media(max-width:760px){.content-priority-row{grid-template-columns:minmax(0,1fr);gap:8px}.content-priority-row .content-status-line{justify-content:flex-start}.content-priority-row strong,.content-priority-row small{overflow-wrap:anywhere}}

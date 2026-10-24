@@ -3,9 +3,8 @@ const prefix='haiedu:review-navigation:v1:';
 const ttl=8*60*60*1000;
 function storedValue(key){try{return JSON.parse(sessionStorage.getItem(key));}catch{return null;}}
 export const bankFields=['gradeFilter','subjectFilter','programFilter','unitFilter','searchInput','skillFilter','reviewFilter','qaFilter'];
-export function readNavigation(userId,source){
+export function readNavigation(userId,source,token=new URLSearchParams(location.search).get('nav')){
  try{
-  const token=new URLSearchParams(location.search).get('nav');
   if(!userId||!token||!/^[a-zA-Z0-9-]{1,80}$/.test(token))return null;
   const value=storedValue(prefix+token);
   if(!value||value.userId!==userId||!['bank','review'].includes(value.source)||(source&&value.source!==source)||(!Number.isFinite(value.savedAt)||value.savedAt>Date.now()||Date.now()-value.savedAt>ttl)||!Array.isArray(value.ids)||!value.ids.every(id=>typeof id==='string')||!value.filters||typeof value.filters!=='object')return null;
