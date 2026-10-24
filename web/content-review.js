@@ -1,6 +1,9 @@
+import * as reviewNavigation from './content-list-navigation.mjs';
 import { $, esc, contentSupabase, curriculumContext, mountContentWorkspace, qaLabel, reviewLabel } from "./content-workspace.js";
 
 let dashboard = null;
+let navigationRestored = false;
+let visibleItemIds = [];
 let dashboardUserId = null;
 let queue = new URLSearchParams(location.search).get("queue") || "all";
 
@@ -27,13 +30,14 @@ function renderRows() {
     if (!query) return true;
     return [item.code,item.promptHy,item.skill?.code,item.skill?.nameHy,curriculumContext(item)].join(" ").toLocaleLowerCase("hy").includes(query);
   }).sort((a,b) => rank(a)-rank(b) || String(a.code).localeCompare(String(b.code)));
+  visibleItemIds = items.map(item => item.id);
   $("queueCount").textContent = `${items.length} հարց`;
   $("queueList").innerHTML = items.length ? items.map((item) => {
     const qa = qaLabel(item);
     return `<article class="content-list-row">
       <div class="content-list-main"><strong>${esc(item.code)}</strong><p>${esc(item.promptHy || "Հարցի տեքստ չկա")}</p></div>
       <div class="content-list-meta"><span>${esc(curriculumContext(item))}</span><span>Հմտություն՝ ${esc(item.skill?.code || "—")} · v${esc(item.versionNo)}</span><div class="content-status-line"><span class="content-chip">${esc(reviewLabel(item.reviewStatus))}</span><span class="content-chip ${qa.key === "fail" ? "fail" : qa.key === "pass" ? "good" : ""}">${esc(qa.text)}</span></div></div>
-      <a class="button-link" href="./content-item.html?id=${encodeURIComponent(item.id)}&from=review">Բացել հարցը</a>
+      <a class="button-link" data-review-item="${esc(item.id)}" href="./content-item.html?id=${encodeURIComponent(item.id)}&from=review">Բացել հարցը</a>
     </article>`;
   }).join("") : '<div class="card content-work-card"><strong>Այս հերթում հարց չկա։</strong><p class="subtle">Փոխեք հերթը կամ որոնման պայմանը։</p></div>';
   document.querySelectorAll("[data-queue]").forEach((button) => button.classList.toggle("active", button.dataset.queue === queue));
@@ -42,7 +46,14 @@ function renderRows() {
 function render(data, session) {
   dashboardUserId = session?.user?.id ?? null;
   dashboard = data;
+  const saved = document.body?.dataset.reviewNavigation ? reviewNavigation.readNavigation(dashboardUserId,'review') : null;
+  if (!navigationRestored && saved) {
+    queue = ['all','needs_review','changes_requested','qa_failed','unreviewed'].includes(saved.filters.queue) ? saved.filters.queue : 'all';
+    reviewNavigation.restoreFields(saved,['queueSearch']);
+  }
   renderRows();
+  if (!navigationRestored && saved) { const userId = dashboardUserId; reviewNavigation.restorePosition(saved, () => dashboardUserId === userId && !!dashboard); }
+  navigationRestored = true;
 }
 
 document.querySelectorAll("[data-queue]").forEach((button) => button.addEventListener("click", () => {
@@ -56,9 +67,19 @@ $("queueSearch").addEventListener("input", renderRows);
 contentSupabase.auth.onAuthStateChange((event, session) => {
   const nextUserId = event === "SIGNED_OUT" ? null : session?.user?.id;
   if (event !== "SIGNED_OUT" && (!nextUserId || nextUserId === dashboardUserId)) return;
+  const identityChanged = event === 'SIGNED_OUT' || !!dashboardUserId;
+  if (identityChanged && document.body?.dataset.reviewNavigation) reviewNavigation.clearNavigation(dashboardUserId);
+  navigationRestored = false;
+  if (identityChanged && document.body?.dataset.reviewNavigation) { $('queueSearch').value = ''; queue = 'all'; }
   dashboardUserId = nextUserId;
   dashboard = null;
   $("queueList").innerHTML = "";
   $("queueCount").textContent = "";
+});
+if (document.body?.dataset.reviewNavigation) $('queueList').addEventListener('click', event => {
+  const link = event.target.closest('a[data-review-item]');
+  if (!link || !dashboardUserId) return;
+  const context = reviewNavigation.saveNavigation(dashboardUserId,'review',visibleItemIds,{queue,...reviewNavigation.captureFields(['queueSearch'])});
+  link.href = reviewNavigation.itemHref(link.dataset.reviewItem,'review',context);
 });
 await mountContentWorkspace(render);

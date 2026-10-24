@@ -150,3 +150,9 @@ summary.curriculum-program-head:focus-visible{outline:3px solid #8db7ed;outline-
 }
 .metadata-governance-field>strong{color:#334155}
 .metadata-governance-field>small{color:#6b7b8d;line-height:1.45}
+
+.review-list-navigation{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;margin-bottom:14px;padding:14px;border:1px solid #d7e3f3;border-radius:12px;background:#fff}
+.review-list-controls{display:flex;align-items:center;flex-wrap:wrap;gap:10px}
+.review-list-controls button{min-height:44px}
+#reviewListPosition{font-size:.85rem;color:#52667f}
+@media(max-width:760px){.review-list-controls{width:100%}.review-list-controls button{flex:1 1 130px}#reviewListPosition{order:-1;flex-basis:100%}}

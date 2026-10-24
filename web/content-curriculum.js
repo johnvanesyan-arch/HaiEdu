@@ -1,3 +1,4 @@
+import * as reviewNavigation from './content-list-navigation.mjs';
 import { $, contentSupabase, loadContentDashboard } from "./content-workspace.js";
 let data = null;
 let initialized = false;
@@ -5,6 +6,7 @@ let observerStarted = false;
 let applyTimer = null;
 let curriculumSessionVersion = 0;
 let curriculumUserId = null;
+let restoringNavigation = false;
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -17,8 +19,9 @@ function optionHtml(value, label, selected = false) {
 
 function setOptions(select, rows, allLabel, current, labelFn) {
   const values = new Set(rows.map((row) => String(row.id)));
-  const next = current && values.has(String(current)) ? String(current) : "";
+  const next = current && (values.has(String(current)) || restoringNavigation) ? String(current) : "";
   select.innerHTML = optionHtml("", allLabel, !next) + rows.map((row) => optionHtml(row.id, labelFn(row), String(row.id) === next)).join("");
+  if (next && !values.has(next)) select.insertAdjacentHTML("beforeend", optionHtml(next,"Նախկին ընտրությունն այլևս հասանելի չէ",true));
   select.value = next;
   return next;
 }
@@ -48,7 +51,10 @@ function rebuildSelectors(source = "") {
     const params = new URLSearchParams(location.search);
     const requestedProgram = params.get("program");
     const requestedUnit = params.get("unit");
-    const preferredProgram = data.catalog.programs.find((row) => row.id === requestedProgram) ?? programsFor("", "")[0] ?? null;
+    const saved = document.body?.dataset.reviewNavigation ? reviewNavigation.readNavigation(curriculumUserId,'bank') : null;
+    restoringNavigation = !!saved;
+    if (saved) for (const id of ['gradeFilter','subjectFilter','programFilter','unitFilter']) $(id).dataset.preferred = typeof saved.filters[id] === 'string' ? saved.filters[id] : '';
+    const preferredProgram = saved ? null : data.catalog.programs.find((row) => row.id === requestedProgram) ?? programsFor("", "")[0] ?? null;
     if (preferredProgram) {
       grade.dataset.preferred = preferredProgram.gradeId;
       subject.dataset.preferred = preferredProgram.subjectId;
@@ -114,6 +120,7 @@ function rebuildSelectors(source = "") {
   delete program.dataset.preferred;
   delete unit.dataset.preferred;
   initialized = true;
+  restoringNavigation = false;
 }
 
 function itemInScope(item) {
@@ -204,7 +211,6 @@ function applyScope({ ensureSelection = false } = {}) {
   const skillReset = updateSkillFilter(items);
   if (skillReset) {
     $("skillFilter")?.dispatchEvent(new Event("change", { bubbles: true }));
-    return;
   }
 
   let visibleRendered = 0;
@@ -280,10 +286,13 @@ function start() {
   refreshData({ ensureSelection: document.body.dataset.contentMode !== "bank", rebuild: true });
 }
 
+window.addEventListener("haiedu:content-scope-now", () => applyScope());
+
 window.addEventListener("haiedu:content-dashboard", (event) => {
   const next = event.detail?.dashboard;
   if (!next) return;
   data = next;
+  if (event.detail?.userId) curriculumUserId = event.detail.userId;
   if (!initialized) rebuildSelectors();
   applyScope();
 });

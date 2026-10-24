@@ -1,3 +1,4 @@
+import * as reviewNavigation from './content-list-navigation.mjs';
 import {arrangementEditorMarkup,bindArrangementEditor,collectArrangementEditor} from './arrangement-editor.mjs';
 import {arrangementMarkup} from './arrangement-ui.mjs';
 import {typedEditorMarkup,bindTypedEditor,collectTypedEditor} from './typed-fields-editor.mjs';
@@ -18,9 +19,40 @@ let selectedDetail = null;
 let detailLoadToken = 0;
 let editorDirty = false;
 let workflowBusy = false;
+let navigationRestored = false;
 let activeSession = null;
 let bootstrapPromise = null;
 let disposePreviewStimulus;
+
+function updateReviewNavigation() {
+  if (!document.body.dataset.reviewNavigation || contentMode !== 'item') return;
+  const context = reviewNavigation.readNavigation(activeSession?.user?.id);
+  const requested = new URLSearchParams(location.search).get('id');
+  const allowed = new Set((dashboard?.items ?? []).filter(item => context?.source !== 'review' || !item.retiredAt).map(item => item.id));
+  const ids = context?.ids.filter(id => allowed.has(id)) ?? [];
+  const index = ids.indexOf(requested);
+  $('reviewListNavigation')?.classList.toggle('hidden', !context);
+  document.querySelectorAll('.content-back-row a').forEach(link => link.classList.toggle('hidden', !!context));
+  if (!context) return;
+  $('returnToReviewList').href = reviewNavigation.returnHref(context);
+  $('returnToReviewList').textContent = context.source === 'bank' ? '← Վերադառնալ ընտրված բանկին' : '← Վերադառնալ ստուգման հերթին';
+  $('reviewListPosition').textContent = index < 0 ? 'Հարցն այլևս ընտրված ցանկում չէ' : `${index + 1} / ${ids.length} · ընտրված ցանկ`;
+  for (const [control,offset] of [['previousReviewItem',-1],['nextReviewItem',1]]) {
+    const button = $(control), id = index < 0 ? null : ids[index + offset];
+    button.disabled = workflowBusy || !selectedDetail || !id;
+    button.onclick = () => { if (!workflowBusy && selectedDetail && id) location.assign(reviewNavigation.itemHref(id,context.source,context)); };
+  }
+}
+function setWorkflowBusy(value) { workflowBusy = value; updateReviewNavigation(); }
+function openBankItem(row) {
+  if (!document.body.dataset.reviewNavigation) return location.assign(`./content-item.html?id=${encodeURIComponent(row.dataset.id)}&from=bank`);
+  window.dispatchEvent(new Event('haiedu:content-scope-now'));
+  if (row.hidden) return;
+  const ids = [...document.querySelectorAll('#itemRows tr[data-id]')].filter(r => !r.hidden).map(r => r.dataset.id);
+  if (!ids.includes(row.dataset.id)) return;
+  const context = reviewNavigation.saveNavigation(activeSession?.user?.id,'bank',ids,reviewNavigation.captureFields(reviewNavigation.bankFields));
+  location.assign(reviewNavigation.itemHref(row.dataset.id,'bank',context));
+}
 
 function esc(value) {
   return String(value ?? "").replace(/[&<>'"]/g, (c) => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", "'":"&#39;", '"':"&quot;" }[c]));
@@ -227,7 +259,7 @@ function renderRows() {
     row.tabIndex = 0;
     row.setAttribute("role", "link");
     const open = () => {
-      if (contentMode === "bank") location.assign(`./content-item.html?id=${encodeURIComponent(row.dataset.id)}&from=bank`);
+      if (contentMode === "bank") openBankItem(row);
       else selectItem(row.dataset.id);
     };
     row.addEventListener("click", open);
@@ -255,6 +287,7 @@ async function selectItem(id) {
   selectedId = id;
   document.body.dataset.contentItemId = id;
   selectedDetail = null;
+  updateReviewNavigation();
   if ($("itemRows")) renderRows();
   renderLoadingDetail();
   const token = ++detailLoadToken;
@@ -266,6 +299,8 @@ async function selectItem(id) {
   } catch (err) {
     if (token !== detailLoadToken) return;
     $("detailPanel").innerHTML = `<h2>Չհաջողվեց բեռնել</h2><p class="message bad">${esc(err.message)}</p>`;
+  } finally {
+    if (token === detailLoadToken) updateReviewNavigation();
   }
 }
 
@@ -773,7 +808,7 @@ async function saveRevision() {
   if (!item || !selectedDetail?.editing?.contentEditable || workflowBusy) return;
   const check = sessionCheck;
   try {
-    workflowBusy = true;
+    setWorkflowBusy(true);
     setMessage("Նոր տարբերակը պահպանվում է…");
     if (!(await persistCurrentRevision())) return;
     clearContentDashboardCache(activeSession?.user?.id);
@@ -784,7 +819,7 @@ async function saveRevision() {
     if (check !== sessionCheck || !activeSession) return;
     setMessage(err.message, true);
   } finally {
-    if (check === sessionCheck) workflowBusy = false;
+    if (check === sessionCheck) setWorkflowBusy(false);
   }
 }
 
@@ -807,7 +842,7 @@ async function runQaCurrent() {
     return;
   }
   try {
-    workflowBusy = true;
+    setWorkflowBusy(true);
     setMessage("Տեխնիկական QA-ն գործարկվում է…");
     const passed = await ensureQaPassed({ force: true });
     if (check !== sessionCheck || !activeSession) return;
@@ -824,7 +859,7 @@ async function runQaCurrent() {
     if (check !== sessionCheck || !activeSession) return;
     setMessage(err.message, true);
   } finally {
-    if (check === sessionCheck) workflowBusy = false;
+    if (check === sessionCheck) setWorkflowBusy(false);
   }
 }
 
@@ -848,7 +883,7 @@ async function approveCurrent() {
     return;
   }
   try {
-    workflowBusy = true;
+    setWorkflowBusy(true);
     setMessage("Հարցը հաստատվում է…");
     await invoke("manage-content-quality", { action: "approve", itemId: selectedId, reviewType: "content" });
     if (check !== sessionCheck || !activeSession) return;
@@ -861,7 +896,7 @@ async function approveCurrent() {
     if (err.requiresQaRerun) activateItemTab("review");
     setMessage(err.message, true);
   } finally {
-    if (check === sessionCheck) workflowBusy = false;
+    if (check === sessionCheck) setWorkflowBusy(false);
   }
 }
 
@@ -879,8 +914,10 @@ async function retireItem() {
 }
 
 async function action(name, extra = {}) {
+  if (workflowBusy) return;
   const check = sessionCheck;
   try {
+    setWorkflowBusy(true);
     setMessage("Գործողությունը կատարվում է…");
     await invoke("manage-content-quality", { action: name, itemId: selectedId, ...extra });
     if (check !== sessionCheck || !activeSession) return;
@@ -891,6 +928,8 @@ async function action(name, extra = {}) {
   } catch (err) {
     if (check !== sessionCheck || !activeSession) return;
     setMessage(err.message, true);
+  } finally {
+    if (check === sessionCheck) setWorkflowBusy(false);
   }
 }
 
@@ -904,10 +943,11 @@ async function refresh(reselect = selectedId, { force = false } = {}) {
       return true;
     }
     dashboard = nextDashboard;
-    window.dispatchEvent(new CustomEvent("haiedu:content-dashboard", { detail: { dashboard } }));
+    window.dispatchEvent(new CustomEvent("haiedu:content-dashboard", { detail: { dashboard, userId: activeSession.user.id } }));
     if (contentMode === "item") {
       const requested = new URLSearchParams(location.search).get("id") || reselect;
       if (!requested || !dashboard.items.some((item) => item.id === requested)) {
+        selectedDetail = null; updateReviewNavigation();
         if ($("detailPanel")) $("detailPanel").innerHTML = '<h2>Հարցը չի գտնվել</h2><p class="subtle">Վերադարձեք ստուգման հերթ կամ հարցերի բանկ։</p>';
         return true;
       }
@@ -919,7 +959,12 @@ async function refresh(reselect = selectedId, { force = false } = {}) {
     populateSkillFilter(dashboard.items);
     if (contentMode === "bank") {
       selectedId = null;
+      if (document.body.dataset.reviewNavigation && !navigationRestored) {
+        reviewNavigation.restoreFields(reviewNavigation.readNavigation(activeSession.user.id,'bank'),['searchInput','skillFilter','reviewFilter','qaFilter']);
+        navigationRestored = true;
+      }
       renderRows();
+      if (document.body.dataset.reviewNavigation) window.dispatchEvent(new Event('haiedu:content-scope-now'));
       return true;
     }
     const nextId = dashboard.items.some((i) => i.id === reselect) ? reselect : dashboard.items[0]?.id ?? null;
@@ -937,10 +982,12 @@ async function refresh(reselect = selectedId, { force = false } = {}) {
 let sessionCheck = 0;
 async function showForSession(session, { force = false } = {}) {
   const check = ++sessionCheck;
-  workflowBusy = false;
+  setWorkflowBusy(false);
   $("console").classList.add("hidden");
   const userChanged = activeSession && activeSession.user.id !== session?.user?.id;
   if (!session || userChanged) {
+    if (document.body.dataset.reviewNavigation) reviewNavigation.clearNavigation(activeSession?.user?.id);
+    navigationRestored = false;
     disposePreviewStimulus?.();disposePreviewStimulus=null;
     bootstrapPromise = null;
     clearContentDashboardCache(activeSession?.user?.id);
@@ -972,6 +1019,7 @@ async function showForSession(session, { force = false } = {}) {
   }
   $("authMessage").textContent = "";
   $("console").classList.remove("hidden");
+  if (document.body.dataset.reviewNavigation && contentMode === 'bank') reviewNavigation.restorePosition(reviewNavigation.readNavigation(activeSession.user.id,'bank'), () => check === sessionCheck && !!activeSession);
 }
 
 function bootstrapSession(session, options) {
@@ -982,6 +1030,7 @@ function bootstrapSession(session, options) {
 
 $("signOutBtn")?.addEventListener("click", () => supabase.auth.signOut());
 $("refreshBtn")?.addEventListener("click", () => {
+  if (workflowBusy) return;
   if (editorDirty && !confirm("Չեղարկե՞լ չպահպանված փոփոխությունները և թարմացնել հարցերի բանկը։")) return;
   editorDirty = false;
   clearContentDashboardCache(activeSession?.user?.id);
