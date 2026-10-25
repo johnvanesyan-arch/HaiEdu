@@ -1,0 +1,3864 @@
+{
+  "schemaVersion": "haiedu-english-unit-bank-proposal-v1",
+  "checkpoint": "16.1C.38",
+  "date": "2026-10-25",
+  "timezone": "Asia/Yerevan",
+  "proposalId": "english7-u03-whole-unit-160-v1",
+  "baseCommit": "6c9315fbefc28a8d4a5f43c7b95fd7021860d955",
+  "status": "proposed_owner_decision_pending",
+  "ownerDirection": "Continue English through Unit 6; proceed with Unit 3 mapping and whole-unit proposal. Existing acceptance is not transferred to unspecified new protected slots.",
+  "scope": {
+    "subject": "English",
+    "grade": 7,
+    "unit": 3,
+    "unitTitle": "Let’s Think Green and Be Nature-wise",
+    "pages": [
+      54,
+      71
+    ],
+    "runtimeChanges": false,
+    "registeredUnit3Rows": 0
+  },
+  "sourcesOfTruth": {
+    "textbook": {
+      "title": "English 7",
+      "author": "Lusine Grigoryan",
+      "publisher": "Zangak",
+      "year": 2023,
+      "isbn": "978-9939-99-035-4",
+      "sha256": "9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9",
+      "unitPages": [
+        54,
+        71
+      ],
+      "appendixPagesRead": [
+        144,
+        150
+      ],
+      "libraryFileId": "libfile_b68d5ddab6388191bdd66153ab3c6fe8",
+      "visualInspection": "All 18 pages in contact sheets; page 65 cartoon additionally inspected at full size. Photos a–g and table on pp.66–68 inspected; no original image bytes republished."
+    },
+    "standard": {
+      "url": "https://www.arlis.am/hy/acts/229389",
+      "order": "36-N, current incorporation effective 2026-08-14",
+      "appendixSha256": "44bfb23bfab1ded26c7f75d89c9252885ed58ae37aebfae876b5fb964ed3ad12",
+      "locators": [
+        "Grade VII communication, table 5 row VII",
+        "Grade VII culture, table 6 row VII"
+      ],
+      "retrieved": "2026-10-25"
+    },
+    "programme": {
+      "url": "https://www.arlis.am/hy/acts/229425",
+      "amendmentUrl": "https://www.arlis.am/hy/acts/229284",
+      "order": "31-N (2024-05-07), amended by 60-N (2026-07-28), current incorporation effective 2026-08-14",
+      "appendixUrl": "https://www.arlis.am/acts/files/363518/122a2b00468f93bf5e0d0839014f86d629450587da11e9098aae9d6b5f2087dc",
+      "appendixSha256": "122a2b00468f93bf5e0d0839014f86d629450587da11e9098aae9d6b5f2087dc",
+      "appendixBytes": 485811,
+      "locators": [
+        "DOCX table 34, Grade 7 Topic 3",
+        "DOCX table 103, Grade 7 English grammar row"
+      ],
+      "retrieved": "2026-10-25",
+      "legacyUrl": "https://www.arlis.am/hy/acts/183356",
+      "interpretation": "Use the current consolidated programme for new Unit 3 mapping. ARLIS also still labels the 2023 order in force; do not claim it was repealed. Preserve historical Unit 1/2 source identities and approvals; reconcile source metadata separately before course-wide current-programme certification."
+    }
+  },
+  "counts": {
+    "practice": 60,
+    "diagnostic": 40,
+    "mastery": 60,
+    "automaticBank": 160,
+    "practiceCore": 52,
+    "practiceSupport": 3,
+    "practiceOptionalExtensionRevision": 2,
+    "practiceOptionalAudioEnrichment": 3,
+    "diagnosticForms": 2,
+    "masteryForms": 3,
+    "questionsPerForm": 20,
+    "languagePerForm": 10,
+    "readingPerForm": 6,
+    "listeningPerForm": 4,
+    "newRecordings": 12,
+    "newPracticeRecordings": 2,
+    "newAssessmentRecordings": 10,
+    "retainedPublisherRecordings": 4,
+    "audioSources": 16,
+    "practiceReadingSources": 4,
+    "assessmentReadingSources": 10,
+    "sharedTaskSets": 27,
+    "standaloneEnrichmentAudioItems": 3,
+    "guideDrafts": 8,
+    "separateWritingResponses": 1
+  },
+  "countRationale": "Five source-specific forms sample nine core automatic targets: 2+1 vocabulary, 2 word formation, 2 advice, 3 general condition/result decisions, 6 reading and 4 listening. Practice follows explicit taught demands; 52 core plus 8 labelled supporting/optional items. No inherited Unit 1/2 quota or psychometric equivalence claim. Counts are ceilings/targets; omit or rework unsupported slots and report any shortfall.",
+  "skills": [
+    {
+      "code": "ENG7-U03-S01",
+      "label": "Environmental vocabulary and actions",
+      "practice": 8,
+      "perForm": 2,
+      "diagnostic": 4,
+      "mastery": 6,
+      "role": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S02",
+      "label": "Natural features and descriptive vocabulary",
+      "practice": 4,
+      "perForm": 1,
+      "diagnostic": 2,
+      "mastery": 3,
+      "role": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S03",
+      "label": "Contextual word formation and compounds",
+      "practice": 8,
+      "perForm": 2,
+      "diagnostic": 4,
+      "mastery": 6,
+      "role": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S04",
+      "label": "Advice, obligation and environmental suggestions",
+      "practice": 6,
+      "perForm": 2,
+      "diagnostic": 4,
+      "mastery": 6,
+      "role": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S05",
+      "label": "Zero conditional and general relationships",
+      "practice": 6,
+      "perForm": 3,
+      "diagnostic": 6,
+      "mastery": 9,
+      "role": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S06",
+      "label": "Informational reading main idea and purpose",
+      "practice": 4,
+      "perForm": 2,
+      "diagnostic": 4,
+      "mastery": 6,
+      "role": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S07",
+      "label": "Reading detail and evidence connections",
+      "practice": 8,
+      "perForm": 4,
+      "diagnostic": 8,
+      "mastery": 12,
+      "role": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S08",
+      "label": "Listening main message",
+      "practice": 6,
+      "perForm": 2,
+      "diagnostic": 4,
+      "mastery": 6,
+      "role": "core with three optional enrichment items",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S09",
+      "label": "Listening detail and speaker attribution",
+      "practice": 5,
+      "perForm": 2,
+      "diagnostic": 4,
+      "mastery": 6,
+      "role": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S10",
+      "label": "Previously taught grammar revision",
+      "practice": 3,
+      "perForm": 0,
+      "diagnostic": 0,
+      "mastery": 0,
+      "role": "support",
+      "textbookAnchor": "pp.61/70–71, ex.12/25.14/25.19/25.21",
+      "outcomeLocator": "T3.K4 supporting",
+      "nearestBankItems": [
+        "ENG7-U01-P26",
+        "ENG7-U02-P21",
+        "ENG7-U02-P47"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S11",
+      "label": "Indirect questions and present-perfect revision",
+      "practice": 2,
+      "perForm": 0,
+      "diagnostic": 0,
+      "mastery": 0,
+      "role": "optional extension/revision",
+      "textbookAnchor": "pp.70–71, ex.25.intro/25.20",
+      "outcomeLocator": "textbook extension; Grade 6 present-perfect prerequisite",
+      "nearestBankItems": [
+        "ENG7-U01-P10",
+        "ENG7-U02-P40",
+        "ENG7-U02-P43"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S12",
+      "label": "Informational natural-wonder essay",
+      "practice": 0,
+      "diagnostic": 0,
+      "mastery": 0,
+      "perForm": 0,
+      "role": "teacher_reviewed_writing",
+      "textbookAnchor": "pp.59/65/66–68; ex.10/20/21/22",
+      "outcomeLocator": "T3.L5; ՕԼ7-Հ-Գ․1",
+      "nearestBankItems": [
+        "ENG7-U01-W01",
+        "ENG7-U02-W01"
+      ]
+    },
+    {
+      "code": "ENG7-U03-S13",
+      "label": "Reasoned written communication",
+      "practice": 0,
+      "diagnostic": 0,
+      "mastery": 0,
+      "perForm": 0,
+      "role": "teacher_reviewed_writing",
+      "textbookAnchor": "pp.63–65, ex.16/18/20; response to a supplied reader",
+      "outcomeLocator": "ՕԼ7-Հ-Փ․3; contributes to written rehearsal, not oral T3.L4",
+      "nearestBankItems": [
+        "ENG7-U01-W01",
+        "ENG7-U02-W01"
+      ]
+    }
+  ],
+  "forms": [
+    {
+      "code": "DA",
+      "purpose": "diagnostic",
+      "questionCount": 20,
+      "sourceKeys": [
+        "U03-DA-READ-A",
+        "U03-DA-READ-B",
+        "U03-DA-AUDIO-A",
+        "U03-DA-AUDIO-B"
+      ],
+      "status": "proposed_unqualified"
+    },
+    {
+      "code": "DB",
+      "purpose": "diagnostic",
+      "questionCount": 20,
+      "sourceKeys": [
+        "U03-DB-READ-A",
+        "U03-DB-READ-B",
+        "U03-DB-AUDIO-A",
+        "U03-DB-AUDIO-B"
+      ],
+      "status": "proposed_unqualified"
+    },
+    {
+      "code": "MA",
+      "purpose": "mastery",
+      "questionCount": 20,
+      "sourceKeys": [
+        "U03-MA-READ-A",
+        "U03-MA-READ-B",
+        "U03-MA-AUDIO-A",
+        "U03-MA-AUDIO-B"
+      ],
+      "status": "proposed_unqualified"
+    },
+    {
+      "code": "MB",
+      "purpose": "mastery",
+      "questionCount": 20,
+      "sourceKeys": [
+        "U03-MB-READ-A",
+        "U03-MB-READ-B",
+        "U03-MB-AUDIO-A",
+        "U03-MB-AUDIO-B"
+      ],
+      "status": "proposed_unqualified"
+    },
+    {
+      "code": "MC",
+      "purpose": "mastery",
+      "questionCount": 20,
+      "sourceKeys": [
+        "U03-MC-READ-A",
+        "U03-MC-READ-B",
+        "U03-MC-AUDIO-A",
+        "U03-MC-AUDIO-B"
+      ],
+      "status": "proposed_unqualified"
+    }
+  ],
+  "sources": [
+    {
+      "key": "U03-P-READ-EARTH",
+      "modality": "text",
+      "purpose": "practice",
+      "title": "Environmental actions",
+      "textbookAnchor": "p.57 ex.6",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 3
+    },
+    {
+      "key": "U03-P-READ-FOREST",
+      "modality": "text",
+      "purpose": "practice",
+      "title": "Tropical rainforests",
+      "textbookAnchor": "pp.60–62 ex.11/15",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 3
+    },
+    {
+      "key": "U03-P-READ-WONDERS-A",
+      "modality": "text",
+      "purpose": "practice",
+      "title": "Natural wonders, profiles 1–3",
+      "textbookAnchor": "pp.66–67 ex.21",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 3
+    },
+    {
+      "key": "U03-P-READ-WONDERS-B",
+      "modality": "text",
+      "purpose": "practice",
+      "title": "Natural wonders, profiles 4–7",
+      "textbookAnchor": "pp.67–68 ex.21",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 3
+    },
+    {
+      "key": "U03-P-AUDIO-INTERVIEW",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "Environmental interviews",
+      "textbookAnchor": "p.63 ex.16",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-P-AUDIO-WONDER-A",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "Original natural-wonder monologue",
+      "textbookAnchor": "pp.66–68 → T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-P-AUDIO-WONDER-B",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "Original natural-wonder discussion",
+      "textbookAnchor": "pp.66–68 → T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 3,
+      "newRecording": true
+    },
+    {
+      "key": "U03-P-AUDIO-POEM",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "I Wonder",
+      "textbookAnchor": "p.54 ex.1",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 1,
+      "newRecording": false,
+      "deliveryRole": "optional_enrichment",
+      "deliveryContract": "standalone haiedu-audio-v1 item; not an invalid one-member task set",
+      "publisherTrack": 8
+    },
+    {
+      "key": "U03-P-AUDIO-ACTIONS",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "Environmental actions song",
+      "textbookAnchor": "p.57 ex.7",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 1,
+      "newRecording": false,
+      "deliveryRole": "optional_enrichment",
+      "deliveryContract": "standalone haiedu-audio-v1 item; not an invalid one-member task set",
+      "publisherTrack": 9
+    },
+    {
+      "key": "U03-P-AUDIO-WORLD",
+      "modality": "audio",
+      "purpose": "practice",
+      "title": "What a Wonderful World",
+      "textbookAnchor": "p.69 ex.23",
+      "status": "proposed_not_authored_or_registered",
+      "sharedQuestionCount": 1,
+      "newRecording": false,
+      "deliveryRole": "optional_enrichment",
+      "deliveryContract": "standalone haiedu-audio-v1 item; not an invalid one-member task set",
+      "publisherTrack": 11
+    },
+    {
+      "key": "U03-DA-READ-A",
+      "modality": "text",
+      "purpose": "diagnostic",
+      "title": "DA original read A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "DA",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-DA-READ-B",
+      "modality": "text",
+      "purpose": "diagnostic",
+      "title": "DA original read B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "DA",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-DA-AUDIO-A",
+      "modality": "audio",
+      "purpose": "diagnostic",
+      "title": "DA original audio A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "DA",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-DA-AUDIO-B",
+      "modality": "audio",
+      "purpose": "diagnostic",
+      "title": "DA original audio B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "DA",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-DB-READ-A",
+      "modality": "text",
+      "purpose": "diagnostic",
+      "title": "DB original read A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "DB",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-DB-READ-B",
+      "modality": "text",
+      "purpose": "diagnostic",
+      "title": "DB original read B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "DB",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-DB-AUDIO-A",
+      "modality": "audio",
+      "purpose": "diagnostic",
+      "title": "DB original audio A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "DB",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-DB-AUDIO-B",
+      "modality": "audio",
+      "purpose": "diagnostic",
+      "title": "DB original audio B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "DB",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-MA-READ-A",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "MA original read A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MA",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-MA-READ-B",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "MA original read B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MA",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-MA-AUDIO-A",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "MA original audio A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MA",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-MA-AUDIO-B",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "MA original audio B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MA",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-MB-READ-A",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "MB original read A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MB",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-MB-READ-B",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "MB original read B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MB",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-MB-AUDIO-A",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "MB original audio A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MB",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-MB-AUDIO-B",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "MB original audio B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MB",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-MC-READ-A",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "MC original read A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MC",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-MC-READ-B",
+      "modality": "text",
+      "purpose": "mastery",
+      "title": "MC original read B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L2",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MC",
+      "sharedQuestionCount": 3,
+      "newRecording": false
+    },
+    {
+      "key": "U03-MC-AUDIO-A",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "MC original audio A",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MC",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    },
+    {
+      "key": "U03-MC-AUDIO-B",
+      "modality": "audio",
+      "purpose": "mastery",
+      "title": "MC original audio B",
+      "textbookAnchor": "Unit 3 natural-wonder theme; T3.L1",
+      "status": "proposed_not_authored_or_registered",
+      "form": "MC",
+      "sharedQuestionCount": 2,
+      "newRecording": true
+    }
+  ],
+  "slots": [
+    {
+      "id": "ENG7-U03-P01",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S01",
+      "intent": "Distinguish reduce, reuse and recycle from explicit actions",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P02",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S01",
+      "intent": "Match environmental issue words to reviewed definitions",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P03",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S01",
+      "intent": "Interpret litter versus rubbish in context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P04",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S01",
+      "intent": "Choose a natural environmental expression from its meaning",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P05",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S01",
+      "intent": "Classify a stated water problem with non-overlapping categories",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P06",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S01",
+      "intent": "Distinguish endangered from extinct without outside species knowledge",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P07",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S01",
+      "intent": "Use conservation and protection words in an explicit situation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P08",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S01",
+      "intent": "Retrieve a taught equivalent in an unambiguous English context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P09",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S02",
+      "intent": "Match natural-feature words to supplied descriptions",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P10",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S02",
+      "intent": "Distinguish a landform from a body of water using supplied features",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P11",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S02",
+      "intent": "Select descriptive words supported by a natural-wonder fact card",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P12",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S02",
+      "intent": "Interpret a location/feature description without requiring remembered geography",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P13",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S03",
+      "intent": "Infer re- in a taught environmental word",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P14",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S03",
+      "intent": "Infer de- in a taught example without universalising its meaning",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P15",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S03",
+      "intent": "Match other taught prefix examples to their contextual senses",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P16",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S03",
+      "intent": "Build a taught compound in an explicit context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P17",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S03",
+      "intent": "Choose another valid compound without false one-to-one cardinality",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P18",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S03",
+      "intent": "Choose a noun or verb form from its sentence function",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P19",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S03",
+      "intent": "Choose a natural adjective form in a stated description",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P20",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S03",
+      "intent": "Contrast reusable and recyclable using the specified action",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P21",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S04",
+      "intent": "Interpret should as advice in a supplied situation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P22",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S04",
+      "intent": "Interpret should not without reversing its scope",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P23",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S04",
+      "intent": "Use ought to plus base verb in a recommendation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P24",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S04",
+      "intent": "Distinguish an explicit rule/obligation from a suggestion",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P25",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S04",
+      "intent": "Match a suggested action to the stated problem and constraints",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P26",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S04",
+      "intent": "Give a recommendation without implying a personal habit is being graded",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P27",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S05",
+      "intent": "Interpret an explicitly supplied general condition and result",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P28",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S05",
+      "intent": "Form the present-simple condition with subject agreement",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P29",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S05",
+      "intent": "Form the present-simple result in a general relationship",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P30",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S05",
+      "intent": "Preserve meaning when the condition clause moves",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P31",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S05",
+      "intent": "Interpret a negative condition without reversing it",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P32",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S05",
+      "intent": "Distinguish a recurring general relation from a specified future prediction after teaching the contrast",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P33",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify the main purpose of the environmental actions reading",
+      "sourceKey": "U03-P-READ-EARTH",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P34",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify the whole rainforest passage message",
+      "sourceKey": "U03-P-READ-FOREST",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P35",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify the purpose of natural-wonder profiles 1–3",
+      "sourceKey": "U03-P-READ-WONDERS-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P36",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S06",
+      "intent": "Summarise natural-wonder profiles 4–7",
+      "sourceKey": "U03-P-READ-WONDERS-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P37",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S07",
+      "intent": "Find an explicit action in the environmental reading",
+      "sourceKey": "U03-P-READ-EARTH",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P38",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect a stated problem with its proposed response",
+      "sourceKey": "U03-P-READ-EARTH",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P39",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve a supported rainforest detail",
+      "sourceKey": "U03-P-READ-FOREST",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P40",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied rainforest details; no external fact key",
+      "sourceKey": "U03-P-READ-FOREST",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P41",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S07",
+      "intent": "Locate a feature in profiles 1–3",
+      "sourceKey": "U03-P-READ-WONDERS-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P42",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S07",
+      "intent": "Compare two supplied profile details in profiles 1–3",
+      "sourceKey": "U03-P-READ-WONDERS-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P43",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S07",
+      "intent": "Locate a feature in profiles 4–7",
+      "sourceKey": "U03-P-READ-WONDERS-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P44",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S07",
+      "intent": "Compare two supplied details in profiles 4–7",
+      "sourceKey": "U03-P-READ-WONDERS-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P45",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify the environmental interview main message after exact transcript review",
+      "sourceKey": "U03-P-AUDIO-INTERVIEW",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P46",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify the first original natural-wonder recording main message",
+      "sourceKey": "U03-P-AUDIO-WONDER-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P47",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify the second original natural-wonder recording main message",
+      "sourceKey": "U03-P-AUDIO-WONDER-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P48",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify the poem’s overall curiosity about nature (optional)",
+      "sourceKey": "U03-P-AUDIO-POEM",
+      "deliveryRole": "optional_enrichment",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P49",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify the environmental song’s overall action theme (optional)",
+      "sourceKey": "U03-P-AUDIO-ACTIONS",
+      "deliveryRole": "optional_enrichment",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P50",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify the world/nature song’s main message (optional)",
+      "sourceKey": "U03-P-AUDIO-WORLD",
+      "deliveryRole": "optional_enrichment",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P51",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S09",
+      "intent": "Retrieve one explicit detail from the publisher interview",
+      "sourceKey": "U03-P-AUDIO-INTERVIEW",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P52",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S09",
+      "intent": "Attribute one interview statement to the correct speaker if the recording supports it",
+      "sourceKey": "U03-P-AUDIO-INTERVIEW",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P53",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S09",
+      "intent": "Retrieve an explicit detail from the original natural-wonder monologue",
+      "sourceKey": "U03-P-AUDIO-WONDER-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P54",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S09",
+      "intent": "Retrieve a stated detail from the original natural-wonder discussion",
+      "sourceKey": "U03-P-AUDIO-WONDER-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P55",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S09",
+      "intent": "Attribute a supported observation to its speaker in that discussion",
+      "sourceKey": "U03-P-AUDIO-WONDER-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P56",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S10",
+      "intent": "Revise the article in an explicit natural-feature description",
+      "sourceKey": null,
+      "deliveryRole": "support",
+      "textbookAnchor": "pp.61/70–71, ex.12/25.14/25.19/25.21",
+      "outcomeLocator": "T3.K4 supporting",
+      "nearestBankItems": [
+        "ENG7-U01-P26",
+        "ENG7-U02-P21",
+        "ENG7-U02-P47"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P57",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S10",
+      "intent": "Revise a simple passive while preserving actor, receiver and time",
+      "sourceKey": null,
+      "deliveryRole": "support",
+      "textbookAnchor": "pp.61/70–71, ex.12/25.14/25.19/25.21",
+      "outcomeLocator": "T3.K4 supporting",
+      "nearestBankItems": [
+        "ENG7-U01-P26",
+        "ENG7-U02-P21",
+        "ENG7-U02-P47"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P58",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S10",
+      "intent": "Interpret a stated past overlap without a when/while shortcut",
+      "sourceKey": null,
+      "deliveryRole": "support",
+      "textbookAnchor": "pp.61/70–71, ex.12/25.14/25.19/25.21",
+      "outcomeLocator": "T3.K4 supporting",
+      "nearestBankItems": [
+        "ENG7-U01-P26",
+        "ENG7-U02-P21",
+        "ENG7-U02-P47"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P59",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S11",
+      "intent": "Use if and statement word order in an indirect yes/no question (optional)",
+      "sourceKey": null,
+      "deliveryRole": "optional_extension_revision",
+      "textbookAnchor": "pp.70–71, ex.25.intro/25.20",
+      "outcomeLocator": "textbook extension; Grade 6 present-perfect prerequisite",
+      "nearestBankItems": [
+        "ENG7-U01-P10",
+        "ENG7-U02-P40",
+        "ENG7-U02-P43"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-P60",
+      "purpose": "practice",
+      "skill": "ENG7-U03-S11",
+      "intent": "Interpret experience/present result versus a specified finished event (optional prior-learning revision)",
+      "sourceKey": null,
+      "deliveryRole": "optional_extension_revision",
+      "textbookAnchor": "pp.70–71, ex.25.intro/25.20",
+      "outcomeLocator": "textbook extension; Grade 6 present-perfect prerequisite",
+      "nearestBankItems": [
+        "ENG7-U01-P10",
+        "ENG7-U02-P40",
+        "ENG7-U02-P43"
+      ],
+      "comparisonDisposition": "proposed_intentional_practice_variant",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-01",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S01",
+      "intent": "Interpret an environmental action or issue in an explicit context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-02",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S01",
+      "intent": "Distinguish taught environmental meanings using the supplied constraints",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-03",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S02",
+      "intent": "Interpret a natural-feature description without outside geography recall",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-04",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S03",
+      "intent": "Infer a taught prefix or compound meaning in context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-05",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S03",
+      "intent": "Use a taught word form while preserving meaning and sentence function",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-06",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S04",
+      "intent": "Select advice appropriate to a supplied situation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-07",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S04",
+      "intent": "Distinguish advice, prohibition or stated obligation with unambiguous cues",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-08",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S05",
+      "intent": "Interpret a supplied general condition/result relationship",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-09",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S05",
+      "intent": "Form a zero conditional with correct agreement and time meaning",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-10",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S05",
+      "intent": "Preserve a general relationship across clause order or negation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-11",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading A main idea",
+      "sourceKey": "U03-DA-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-12",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading B main idea",
+      "sourceKey": "U03-DA-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-13",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading A",
+      "sourceKey": "U03-DA-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-14",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading B",
+      "sourceKey": "U03-DA-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-15",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading A",
+      "sourceKey": "U03-DA-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-16",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading B",
+      "sourceKey": "U03-DA-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-17",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio A main message",
+      "sourceKey": "U03-DA-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-18",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio B main message",
+      "sourceKey": "U03-DA-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-19",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S09",
+      "intent": "Retrieve an explicit detail from audio A",
+      "sourceKey": "U03-DA-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DA-20",
+      "purpose": "diagnostic",
+      "form": "DA",
+      "skill": "ENG7-U03-S09",
+      "intent": "Attribute or connect an explicit detail in audio B",
+      "sourceKey": "U03-DA-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-01",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S01",
+      "intent": "Interpret an environmental action or issue in an explicit context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-02",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S01",
+      "intent": "Distinguish taught environmental meanings using the supplied constraints",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-03",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S02",
+      "intent": "Interpret a natural-feature description without outside geography recall",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-04",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S03",
+      "intent": "Infer a taught prefix or compound meaning in context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-05",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S03",
+      "intent": "Use a taught word form while preserving meaning and sentence function",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-06",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S04",
+      "intent": "Select advice appropriate to a supplied situation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-07",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S04",
+      "intent": "Distinguish advice, prohibition or stated obligation with unambiguous cues",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-08",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S05",
+      "intent": "Interpret a supplied general condition/result relationship",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-09",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S05",
+      "intent": "Form a zero conditional with correct agreement and time meaning",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-10",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S05",
+      "intent": "Preserve a general relationship across clause order or negation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-11",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading A main idea",
+      "sourceKey": "U03-DB-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-12",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading B main idea",
+      "sourceKey": "U03-DB-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-13",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading A",
+      "sourceKey": "U03-DB-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-14",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading B",
+      "sourceKey": "U03-DB-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-15",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading A",
+      "sourceKey": "U03-DB-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-16",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading B",
+      "sourceKey": "U03-DB-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-17",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio A main message",
+      "sourceKey": "U03-DB-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-18",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio B main message",
+      "sourceKey": "U03-DB-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-19",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S09",
+      "intent": "Retrieve an explicit detail from audio A",
+      "sourceKey": "U03-DB-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-DB-20",
+      "purpose": "diagnostic",
+      "form": "DB",
+      "skill": "ENG7-U03-S09",
+      "intent": "Attribute or connect an explicit detail in audio B",
+      "sourceKey": "U03-DB-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-01",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S01",
+      "intent": "Interpret an environmental action or issue in an explicit context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-02",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S01",
+      "intent": "Distinguish taught environmental meanings using the supplied constraints",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-03",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S02",
+      "intent": "Interpret a natural-feature description without outside geography recall",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-04",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S03",
+      "intent": "Infer a taught prefix or compound meaning in context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-05",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S03",
+      "intent": "Use a taught word form while preserving meaning and sentence function",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-06",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S04",
+      "intent": "Select advice appropriate to a supplied situation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-07",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S04",
+      "intent": "Distinguish advice, prohibition or stated obligation with unambiguous cues",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-08",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S05",
+      "intent": "Interpret a supplied general condition/result relationship",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-09",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S05",
+      "intent": "Form a zero conditional with correct agreement and time meaning",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-10",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S05",
+      "intent": "Preserve a general relationship across clause order or negation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-11",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading A main idea",
+      "sourceKey": "U03-MA-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-12",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading B main idea",
+      "sourceKey": "U03-MA-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-13",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading A",
+      "sourceKey": "U03-MA-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-14",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading B",
+      "sourceKey": "U03-MA-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-15",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading A",
+      "sourceKey": "U03-MA-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-16",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading B",
+      "sourceKey": "U03-MA-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-17",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio A main message",
+      "sourceKey": "U03-MA-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-18",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio B main message",
+      "sourceKey": "U03-MA-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-19",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S09",
+      "intent": "Retrieve an explicit detail from audio A",
+      "sourceKey": "U03-MA-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MA-20",
+      "purpose": "mastery",
+      "form": "MA",
+      "skill": "ENG7-U03-S09",
+      "intent": "Attribute or connect an explicit detail in audio B",
+      "sourceKey": "U03-MA-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-01",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S01",
+      "intent": "Interpret an environmental action or issue in an explicit context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-02",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S01",
+      "intent": "Distinguish taught environmental meanings using the supplied constraints",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-03",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S02",
+      "intent": "Interpret a natural-feature description without outside geography recall",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-04",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S03",
+      "intent": "Infer a taught prefix or compound meaning in context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-05",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S03",
+      "intent": "Use a taught word form while preserving meaning and sentence function",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-06",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S04",
+      "intent": "Select advice appropriate to a supplied situation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-07",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S04",
+      "intent": "Distinguish advice, prohibition or stated obligation with unambiguous cues",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-08",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S05",
+      "intent": "Interpret a supplied general condition/result relationship",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-09",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S05",
+      "intent": "Form a zero conditional with correct agreement and time meaning",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-10",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S05",
+      "intent": "Preserve a general relationship across clause order or negation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-11",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading A main idea",
+      "sourceKey": "U03-MB-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-12",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading B main idea",
+      "sourceKey": "U03-MB-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-13",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading A",
+      "sourceKey": "U03-MB-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-14",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading B",
+      "sourceKey": "U03-MB-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-15",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading A",
+      "sourceKey": "U03-MB-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-16",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading B",
+      "sourceKey": "U03-MB-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-17",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio A main message",
+      "sourceKey": "U03-MB-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-18",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio B main message",
+      "sourceKey": "U03-MB-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-19",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S09",
+      "intent": "Retrieve an explicit detail from audio A",
+      "sourceKey": "U03-MB-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MB-20",
+      "purpose": "mastery",
+      "form": "MB",
+      "skill": "ENG7-U03-S09",
+      "intent": "Attribute or connect an explicit detail in audio B",
+      "sourceKey": "U03-MB-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-01",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S01",
+      "intent": "Interpret an environmental action or issue in an explicit context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-02",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S01",
+      "intent": "Distinguish taught environmental meanings using the supplied constraints",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.55–64, ex.2–5/8/13/19/25.12",
+      "outcomeLocator": "T3.K1/K2",
+      "nearestBankItems": [
+        "ENG7-U01-P03",
+        "ENG7-U02-P02",
+        "ENG7-U02-DA-03"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-03",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S02",
+      "intent": "Interpret a natural-feature description without outside geography recall",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.66–68, ex.21/22",
+      "outcomeLocator": "T3.K1/K3",
+      "nearestBankItems": [
+        "ENG7-U01-MA-02",
+        "ENG7-U02-P01",
+        "ENG7-U02-MB-02"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-04",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S03",
+      "intent": "Infer a taught prefix or compound meaning in context",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-05",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S03",
+      "intent": "Use a taught word form while preserving meaning and sentence function",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.61–63/69, ex.12–14/17/24",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-P22",
+        "ENG7-U01-MB-05",
+        "ENG7-U01-MC-04",
+        "ENG7-U02-G04"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-06",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S04",
+      "intent": "Select advice appropriate to a supplied situation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-07",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S04",
+      "intent": "Distinguish advice, prohibition or stated obligation with unambiguous cues",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.58/63/70–71, ex.8/16/25.08/25.18",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U01-DA-07",
+        "ENG7-U01-MA-07",
+        "ENG7-U02-MA-06"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-08",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S05",
+      "intent": "Interpret a supplied general condition/result relationship",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-09",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S05",
+      "intent": "Form a zero conditional with correct agreement and time meaning",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-10",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S05",
+      "intent": "Preserve a general relationship across clause order or negation",
+      "sourceKey": null,
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.70–71, ex.25.10/25.15–17; annual zero conditional",
+      "outcomeLocator": "T3.K4",
+      "nearestBankItems": [
+        "ENG7-U02-DA-13",
+        "ENG7-U02-DB-15",
+        "ENG7-U02-P49"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-11",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading A main idea",
+      "sourceKey": "U03-MC-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-12",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S06",
+      "intent": "Identify reading B main idea",
+      "sourceKey": "U03-MC-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–61/66–68, ex.6/11/21",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R02",
+        "ENG7-U01-MC-21",
+        "ENG7-U02-DA-17",
+        "ENG7-U02-P55"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-13",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading A",
+      "sourceKey": "U03-MC-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-14",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S07",
+      "intent": "Retrieve an explicit detail from reading B",
+      "sourceKey": "U03-MC-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-15",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading A",
+      "sourceKey": "U03-MC-READ-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-16",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S07",
+      "intent": "Connect two supplied details in reading B",
+      "sourceKey": "U03-MC-READ-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.57/60–62/66–68, ex.6/11/15/21/22",
+      "outcomeLocator": "T3.L2",
+      "nearestBankItems": [
+        "ENG7-U01-R08",
+        "ENG7-U01-MB-24",
+        "ENG7-U02-P58",
+        "ENG7-U02-DB-20"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-17",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio A main message",
+      "sourceKey": "U03-MC-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-18",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S08",
+      "intent": "Identify audio B main message",
+      "sourceKey": "U03-MC-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "pp.54/57/63/69, ex.1/7/16/23; original natural-wonder audio",
+      "outcomeLocator": "T3.L1; standard ՕԼ7-Հ-ՈՒ․1/3",
+      "nearestBankItems": [
+        "ENG7-U01-L07",
+        "ENG7-U01-DB-25",
+        "ENG7-U02-DA-21",
+        "ENG7-U02-MC-21"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-19",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S09",
+      "intent": "Retrieve an explicit detail from audio A",
+      "sourceKey": "U03-MC-AUDIO-A",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    },
+    {
+      "id": "ENG7-U03-MC-20",
+      "purpose": "mastery",
+      "form": "MC",
+      "skill": "ENG7-U03-S09",
+      "intent": "Attribute or connect an explicit detail in audio B",
+      "sourceKey": "U03-MC-AUDIO-B",
+      "deliveryRole": "core",
+      "textbookAnchor": "p.63, ex.16; original natural-wonder audio",
+      "outcomeLocator": "T3.L1",
+      "nearestBankItems": [
+        "ENG7-U01-DA-28",
+        "ENG7-U01-MC-28",
+        "ENG7-U02-DB-24",
+        "ENG7-U02-MC-24"
+      ],
+      "comparisonDisposition": "protected_parallel_proposal_requires_bounded_owner_decision_and_candidate_review",
+      "independentNewReasoningClaimed": false,
+      "status": "planning_slot_not_authored"
+    }
+  ],
+  "writing": {
+    "id": "ENG7-U03-W01",
+    "skills": [
+      "ENG7-U03-S12",
+      "ENG7-U03-S13"
+    ],
+    "responses": 1,
+    "wordRange": [
+      80,
+      100
+    ],
+    "task": "Choose one of two supplied natural-wonder fact cards and write an informational entry for another Grade 7 class. Introduce the place and at least two useful features, explain the choice, and include a brief reasoned reply to a supplied reader question. An invented preference is allowed; no travel, purchasing, outside research or personal disclosure is needed.",
+    "source": "Current programme T3.L5, standard ՕԼ7-Հ-Գ․1/ՕԼ7-Հ-Փ․3; textbook ex.21/22 with ex.10/20 as preparation",
+    "rubricProposal": {
+      "criteria": [
+        "task and reader, factual information and reasons",
+        "organisation",
+        "vocabulary",
+        "grammar and clarity"
+      ],
+      "pointsEach": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "maximum": 12
+    },
+    "scoreRelationship": "Separate teacher result, not added to automatic denominator; one response is one sample. Oral presentation/discussion remain classroom assessed.",
+    "status": "proposal_not_authored_or_accepted"
+  },
+  "guides": [
+    {
+      "id": "ENG7-U03-G01",
+      "topic": "Environmental words and natural features",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U03-G02",
+      "topic": "Prefixes, compounds and natural word forms",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U03-G03",
+      "topic": "Advice, obligation and supplied constraints",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U03-G04",
+      "topic": "General relationships and zero conditional",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U03-G05",
+      "topic": "Reading factual descriptions and comparing evidence",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U03-G06",
+      "topic": "Listening for message, details and speaker attribution",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U03-G07",
+      "topic": "Plan an informational natural-wonder essay",
+      "status": "proposed_draft"
+    },
+    {
+      "id": "ENG7-U03-G08",
+      "topic": "Supporting grammar, optional revision and reflection",
+      "status": "proposed_draft"
+    }
+  ],
+  "protection": {
+    "publicRepository": "Redacted IDs/intents/counts/source metadata only; complete protected prompts, keys, scripts and detailed collision matrix remain in restricted delivery.",
+    "practiceVsAssessment": "Separate source families; no familiar publisher text, translation, excerpt or re-recording becomes unseen.",
+    "betweenForms": "Twenty distinct assessed source families; each form includes all three members of each reading set and both members of each audio set.",
+    "parallelVariants": "100 proposed slots need an explicitly approved bounded manifest under haiedu-protected-parallel-pilot-v1 before authoring/staging.",
+    "unit1ExposureException": "Does not extend to Unit 3.",
+    "playbackProposal": "Reuse unlimited ordinary/reviewer playback and two shared assessed plays, normal speed and no assessed transcript; Unit 3 policy adoption is separate."
+  },
+  "boundaries": {
+    "productionWrites": 0,
+    "authoredQuestions": 0,
+    "humanApprovalsCreated": 0,
+    "candidateLevelComparisonComplete": false,
+    "demandLevelComparisonComplete": true,
+    "scoringThresholdsAdopted": false,
+    "qualifiedForms": 0,
+    "learnerActivation": false,
+    "speaking": "classroom_assessed",
+    "unit1And2AcceptedEvidence": "reused; no approval-click audit or repeat audition"
+  },
+  "nextDecision": "Accept exactly 60 Practice / 40 Diagnostic / 60 Mastery authoring slots, 12 new recordings plus four publisher candidates, eight guides and W01, including 100 bounded protected-parallel proposals and labelled optional/support scope. Actual source/question review, final numerical policy and learner release remain separate."
+}

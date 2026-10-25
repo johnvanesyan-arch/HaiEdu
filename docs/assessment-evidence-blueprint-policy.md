@@ -42,7 +42,11 @@ Every such candidate must record:
 5. Ordinary current-version/family QA and explicit human content/definition review. SME/exposure review is required before allocation or release. Parallelism, difficulty, reliability and equivalence remain provisional until suitable pilot evidence exists.
 6. Actual qualified/staged/reviewed counts, rejected or reworked candidates and remaining gaps after the pilot. Further use of this disposition requires the owner's next decision; numerical completion is authorized only when the owner explicitly includes those remaining slots, and does not waive quality; previously omitted proposals are never automatically reinstated.
 
-The criteria are subject-neutral. An owner-approved manifest supplies the curriculum scope and budget without adding subject-specific logic to shared core code. **Authorized manifests:**
+The criteria are subject-neutral. An owner-approved manifest supplies the curriculum scope and budget without adding subject-specific logic to shared core code.
+
+**Pending proposal, not an authorized manifest:** English 7 Unit 3 C38 proposes exactly 40 Diagnostic and 60 Mastery slots (DA/DB/MA/MB/MC, twenty each), sixty Practice slots, eight guides and W01. [The concrete proposal](english-7-unit-03-bank-proposal.md) and [exact slot manifest](content/english-7-unit-03-bank-proposal.json) await the owner’s bounded authoring decision. Unit 1/2 acceptance does not extend to these new slots.
+
+**Authorized manifests:**
 
 | Manifest | Scope | Owner authorization / state |
 | --- | --- | --- |
