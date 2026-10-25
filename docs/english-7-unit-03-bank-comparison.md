@@ -1,5 +1,7 @@
 # English 7 Unit 3 — complete corpus freeze and planning comparison
 
+**Current C39 disposition:** the exact C38 proposal is accepted and its 160 questions/nine materials are authored and staged. [Owner acceptance](evidence/english-7-unit-03-owner-acceptance-20261025.json) · [Candidate comparison, QA and next source batch](english-7-unit-03-authoring.md). The C38 proposal/comparison below is retained as the historical decision basis; its immutable JSON fingerprint is unchanged.
+
 **16.1C.38 · 2026-10-25 Asia/Yerevan · Codex, one primary agent.** This supports the [160-slot proposal](english-7-unit-03-bank-proposal.md). No new questions, full solutions or distractors have been authored; candidate-level qualification remains for the accepted authoring batch.
 
 The complete English-subject bank was read without grade, status, purpose or release filters: **29 skills, 392 current questions and 511 immutable versions**, spanning both implemented units. All 392 current rows happen to be published; no draft or retired content was excluded by a status predicate. There is no existing Unit 3 bank. The corpus includes 392 families/templates/primary scopes, 29 release-skill/reconciliation rows, 36 current and 36 legacy outcome mappings over sixteen outcomes, 55 shared sets, 28 audio versions and nineteen materials (seventeen guides/two writing tasks). Related-outcome search found no equivalent mapped skills outside English, and no additional skill/template remediation guides or their histories. Absence of an equivalent code is not evidence of a new reasoning demand.

@@ -1,0 +1,168 @@
+{
+  "schemaVersion": "haiedu-english-unit-authoring-evidence-v1",
+  "checkpoint": "16.1C.39",
+  "date": "2026-10-25",
+  "baselineCommit": "2d73e75b712eefa1eb063953239faa49f8c3f88b",
+  "ownerAcceptance": "english-7-unit-03-owner-acceptance-20261025.json",
+  "proposalId": "english7-u03-whole-unit-160-v1",
+  "proposalSha256": "56491a84d5ea768b8c1afa371ee6ff3eb39fb5facaccd5598911714c3690aa82",
+  "implementationScope": "English 7 Unit 3 versioned subject-aware offline content onboarding; no shared runtime/schema/API changes",
+  "scope": {
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+    "draftReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4"
+  },
+  "counts": {
+    "items": 160,
+    "practice": 60,
+    "diagnostic": 40,
+    "mastery": 60,
+    "sourceHeld": 73,
+    "readingHeld": 42,
+    "audioHeld": 31,
+    "options": 600,
+    "skills": 13,
+    "materials": 9
+  },
+  "responseFormats": {
+    "single_choice": 150,
+    "typed_fields": 5,
+    "matching": 4,
+    "ordering": 1
+  },
+  "comparison": {
+    "corpus": {
+      "observedAt": "2026-10-25",
+      "currentItems": 392,
+      "immutableVersions": 511,
+      "changedSkills": [],
+      "contexts": {
+        "live-context.json": {
+          "same": true,
+          "changedKeys": [],
+          "sha256": "f5a64b9aa176395cde2d9d2d0a6ea84862025ace87e1e4dbda37a17e2066b418"
+        },
+        "live-related.json": {
+          "same": true,
+          "changedKeys": [],
+          "sha256": "2636447cb7901fa25c2fe523220593704556493b3d135297b3981b856ed1296b"
+        }
+      },
+      "corpusSha256": "f4bd3190f0fa35d062ace05e242290c5a26353bdf69d477d65b1de384a3d2074",
+      "method": "Fresh complete skill/current/version/source/context/related-skill readback compared against C38 retained corpus, with only observedAt excluded from context equality."
+    },
+    "withinBatchPairs": 12720,
+    "candidateRecords": 160,
+    "reworkedAssessmentCandidates": 5,
+    "protectedParallelCandidates": 100,
+    "practiceVariants": 60,
+    "independentNewReasoningDomainsClaimed": 0,
+    "author": "Codex automated author and semantic self-review; one primary agent",
+    "humanReviewPending": true,
+    "privateComparisonSha256": "820a61fbc2d38291c9167fe6120db28e74c1d827c9684ec83632505c3f13b4e0",
+    "privatePairsSha256": "1b0ae9fefa616a0628b36edbcb647d5f2d0b72604ddba54d2742b2e36a2ebef6",
+    "correlation": "Shared-source members and repeated taught procedures are not independent source observations; no equivalence or unseen-capacity claim."
+  },
+  "staging": {
+    "checkpoint": "16.1C.39",
+    "observedAt": "2026-10-25T10:07:11.562518+00:00",
+    "rollbackRestoredTables": 117,
+    "independentReadback": {
+      "allManifestRowsMatch": true,
+      "all160VersionSnapshotsMatchCurrent": true,
+      "all160AuthoringPreviewsMatch": true,
+      "allPriorRowsPreservedAcrossTables": 117,
+      "materialQaPassed": 9,
+      "humanApprovalsFabricated": 0
+    },
+    "allowedDeltas": {
+      "public.units": 1,
+      "public.curriculum_releases": 1,
+      "public.curriculum_release_units": 1,
+      "public.curriculum_release_gate_checks": 7,
+      "public.skills": 13,
+      "public.curriculum_release_skills": 13,
+      "public.item_families": 160,
+      "public.item_templates": 160,
+      "public.items": 160,
+      "public.item_options": 600,
+      "public.item_answer_keys": 160,
+      "public.item_curriculum_scopes": 160,
+      "public.unit_material_versions": 9,
+      "public.item_qa_runs": 160,
+      "public.item_versions": 160,
+      "public.unit_material_events": 18
+    },
+    "counts": {
+      "items": 160,
+      "practice": 60,
+      "diagnostic": 40,
+      "mastery": 60,
+      "sourceHeld": 73,
+      "readingHeld": 42,
+      "audioHeld": 31,
+      "options": 600,
+      "skills": 13,
+      "materials": 9
+    },
+    "runtimeChanged": false,
+    "learnerActivation": false,
+    "sourceRegistration": false,
+    "qa": {
+      "standalonePassed": 87,
+      "sourceRegistrationPending": 73,
+      "otherErrors": 0,
+      "warning": "misconception_mapping_missing under existing review_notes_only policy"
+    },
+    "grading": {
+      "singleChoiceChecksPassed": 600,
+      "structuredChecksPassed": 45
+    }
+  },
+  "privateArtifacts": [
+    {
+      "name": "haiedu-english7-unit3-review-20261025.zip",
+      "bytes": 7534304,
+      "sha256": "ca0f7f70cb779effca2552be29d65723264806ab8bf47a718e0fd8a72f0d7ddf",
+      "libraryFileId": "libfile_9d69df2938c88191a5611c78101625b1",
+      "access": "owner restricted; contains protected assessment content"
+    },
+    {
+      "name": "haiedu-english7-unit3-audio-scripts-20261025.md",
+      "bytes": 8896,
+      "sha256": "1a6b667a1903010fbc9994fdf8bde31c2bb97de9b4250386a82a644acd0bc186",
+      "libraryFileId": "libfile_b6a8a1d89a008191beae59f8c1e58ef5",
+      "access": "owner restricted; contains protected assessment content"
+    }
+  ],
+  "privateAuthoringSha256": "a07d967882f5c663403abc83a7a142b6427ea29c9ce64911177359fdd7f0ef4c",
+  "privateMaterialsSha256": "a01cd063a58a48c27ee27d93ac24e2461fcd7d5b712184fe27f499665c65b34c",
+  "publisherExcerpt": {
+    "source": "retained Soundtrack-9.mp3",
+    "sourceSha256": "9547e7040ed555d7ef1e220ce2a79feb2b45fe4434868b5182a92abe9348f819",
+    "startSeconds": 0,
+    "endSeconds": 39,
+    "filename": "english7-u03-environment-actions-excerpt-review.mp3",
+    "bytes": 624893,
+    "sha256": "da1796989e7c3e3df7ab086fae6658c999929c878cea3adda4b8f67ba9baff0c",
+    "durationSeconds": 39.026939,
+    "codec": "mp3",
+    "decodePassed": true,
+    "humanCutAcceptance": "pending",
+    "registered": false
+  },
+  "editorialCorrections": [
+    "Activity22 has seven entries without a preceding profile, not five. All twelve fact cards supplied in table order.",
+    "Publisher track9 is composite; separate opening-rhyme excerpt avoids the following song. Human cut/alignment acceptance pending.",
+    "One passage/three questions and two language questions reworked after comparison; incorrect Earth article feedback repaired before staging."
+  ],
+  "pending": [
+    "ordinary question/source/material acceptance",
+    "twelve new named recordings",
+    "four publisher candidate uses and excerpt acceptance",
+    "registration and task-set/audio links for 73 questions",
+    "current-programme reconciliation",
+    "numerical policy and exact forms",
+    "source/exposure/SME disposition and bounded learner activation"
+  ],
+  "releaseVerification": "Required GitHub CI and existing persistent Production/Blocking deployment check govern the closure commit. No shared browser or Edge dependency changes. Reuse unchanged Unit1/2 acceptance; no new learner run justified. Current Vercel settings connector is inaccessible (403); retained unchanged configuration evidence is used with actual commit deployment statuses, not a new settings claim."
+}

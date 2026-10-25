@@ -4,6 +4,8 @@
 
 Unit 3 is **Let’s Think Green and Be Nature-wise**, printed/PDF pages **54–71**. All **25 numbered activities** retain their order. Activity 25 contains an opening prompt numbered 18, followed by 1–22; all **23 subprompts** have stable locators below. This planning slice changes no runtime, production content, approvals or learner release. The [whole-unit proposal](english-7-unit-03-bank-proposal.md) supplies 60/40/60 candidate slots, eight guides, W01 and the complete recording plan. Unit 1/2 acceptance is reused.
 
+**C39 correction and delivery:** activity22 has seven missing preceding profiles; all twelve fact cards are now authored. The exact whole-unit scope is owner-accepted and staged; see [C39](english-7-unit-03-authoring.md). C38 hashes refer to its original committed evidence.
+
 ## Verified sources
 
 The owner’s *English 7*, Lusine Grigoryan, Zangak 2023, ISBN 978-9939-99-035-4, has SHA-256 `9118c0f8847672eab33e4a2a78087d7097566cb347c83b5912036e091a7b9ab9`. All eighteen Unit 3 pages were read and visually inspected; the ten-panel cartoon on p.65 was also inspected at full size. The script appendix pp.144–146 contains no Unit 3 environmental-interview transcript. Pages 147–150 supply general grammar reference, not that missing script. Original PDF, publisher audio and lyrics are not copied into this public repository.
@@ -56,12 +58,12 @@ T3 locators below are local indices into the **2026 consolidated Topic 3**, not 
 | 19 | 64 | Environmental translation revision | Intentional vocabulary retrieval variants within the same budget. | No new outcome merely because the direction of translation changes. |
 | 20 | 65 | A Great Day Out cartoon | Preserve ten panels in row order; optional classroom narrative and picnic advice. | Visually inspected: searching for a clean picnic spot ends with the family leaving its own litter. Provide an accessible scene description; do not infer motives or universal fire law. |
 | 21 | 66–68 | Wonders of the World Nature | Two shared Practice readings, each with three questions; keep profiles 1–3 then 4–7. | Remove moralistic opening and unsupported Rio-largest-bay claim. Everest highest above sea level. Photo recognition is optional and requires verified image/alt-text pairings. |
-| 22 | 68 | Natural wonders table | Supply fact cards for all twelve listed places; use them for guided reading and W01 choice. | Five entries have no profile in activity 21. Do not require outside geography knowledge or travel; correct Arizona spelling. |
+| 22 | 68 | Natural wonders table | Supply fact cards for all twelve listed places; use them for guided reading and W01 choice. | Seven entries have no profile in activity 21. Do not require outside geography knowledge or travel; correct Arizona spelling. |
 | 23 | 69 | What a Wonderful World | Optional real recording; one main-message item outside core readiness. | No lyric memorisation, singing grade or full public lyric reproduction; asset-specific review remains. |
 | 24 | 69 | Noun/adjective/verb table | Natural word forms in controlled sentences. | Not every root has a common form in each column; accept legitimate forms and avoid invented words. |
 | 25 | 70–71 | Grammar revision | All 23 printed subprompts mapped below; teach zero conditional explicitly before assessed use. | Use stable 25.intro plus 25.01–25.22. The first printed 18 is not the later 18; repair ambiguity and exclude untaught periphrastic forms from core assessment. |
 
-For activity 21, preserve the printed profile order: Northern Lights, Grand Canyon, Paricutin, Victoria Falls, Everest, Great Barrier Reef, Rio harbour. The photographed examples are learning support, not a test of whether pupils recognise distant places. Before any picture question, verify the exact image identity and alternative text. For activity 22, supply facts for all twelve rows, including the five places without a preceding profile. The cartoon’s scene description should preserve panel order without giving an optional narrative task a single invented interpretation.
+For activity 21, preserve the printed profile order: Northern Lights, Grand Canyon, Paricutin, Victoria Falls, Everest, Great Barrier Reef, Rio harbour. The photographed examples are learning support, not a test of whether pupils recognise distant places. Before any picture question, verify the exact image identity and alternative text. For activity 22, supply facts for all twelve rows, including the seven places without a preceding profile. The cartoon’s scene description should preserve panel order without giving an optional narrative task a single invented interpretation.
 
 ## Activity 25: every printed prompt accounted for
 

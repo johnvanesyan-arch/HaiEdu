@@ -1,5 +1,7 @@
 # English 7 Unit 3 — whole-unit authoring proposal
 
+**Current C39 disposition:** the exact C38 proposal is accepted and its 160 questions/nine materials are authored and staged. [Owner acceptance](evidence/english-7-unit-03-owner-acceptance-20261025.json) · [Candidate comparison, QA and next source batch](english-7-unit-03-authoring.md). The C38 proposal/comparison below is retained as the historical decision basis; its immutable JSON fingerprint is unchanged.
+
 **16.1C.38 · 2026-10-25 Asia/Yerevan · `english7-u03-whole-unit-160-v1` · Owner decision pending.**
 
 Propose **60 Practice, 40 Diagnostic and 60 Mastery questions**, **eight guides** and **one separate 80–100-word teacher-reviewed writing response**. Author the entire bounded package in one delivery. This is a concrete scope proposal, not 160 existing reviewer questions or a learner release. The [source/activity map](english-7-unit-03-preparation.md) and [392-item/511-version comparison](english-7-unit-03-bank-comparison.md) determine the allocation.
