@@ -1,0 +1,41 @@
+# English 7 Unit 3 — whole-unit authoring and reviewer staging
+
+**Sprint 16.1C.39 · 2026-10-25 · one primary agent.** John’s “I approve” accepts `english7-u03-whole-unit-160-v1`, pinned to unchanged proposal SHA-256 `56491a84d5ea768b8c1afa371ee6ff3eb39fb5facaccd5598911714c3690aa82` at source `2d73e75b712eefa1eb063953239faa49f8c3f88b`. [Owner record](evidence/english-7-unit-03-owner-acceptance-20261025.json). This authorizes the bounded 100 protected-parallel assessment candidates and normal inactive staging; it does not approve newly authored content or activate learners.
+
+## Delivered and where to review
+
+All **160 v1 questions** are in the existing [question bank](https://www.haiedu.am/content-bank.html) and review workflow under English, Grade 7, Unit 3: **60 Practice / 40 Diagnostic / 60 Mastery**. Search `ENG7-U03-`. The [materials reviewer](https://www.haiedu.am/content-materials.html) contains **G01–G08 and W01**, all draft. Source-linked questions include complete passages or scripts in their existing review preview. No separate import is needed.
+
+Practice remains 52 core, three supporting grammar, two optional revision and three optional publisher-audio enrichment items. The five assessment forms are authored as twenty-slot groups, not allocated runtime forms: ten language, six reading and four listening items each. There are 150 multiple-choice, five typed, four matching and one ordering question. W01 is a separate 80–100-word teacher-reviewed natural-wonder entry with four 0–3 criteria, one observed response linked to two written targets. Word length is guidance, not an automatic zero or adopted pass threshold. Speaking stays classroom-assessed.
+
+Fourteen passage drafts, twelve original recording scripts and four publisher candidates complete the source package. G07 supplies all twelve activity-22 fact cards in printed order; **seven**, not five, have no preceding activity-21 profile. G06 accounts for all 23 revision locators; G08 preserves the ten-panel cartoon sequence and unscored reflection/debate. The current 2026 programme is explicitly referenced; existing Unit1/2 programme/history remains unchanged pending bounded metadata reconciliation.
+
+The restricted owner package contains every question/key/explanation, source, guide, W01 rubric/Practice/model, detailed comparison and recovery inputs. A separate combined recording-script document and twelve individual TXT scripts use final ASCII MP3 filenames. Public Git and Notion contain only redacted counts, identifiers, hashes and decisions.
+
+## Comparison and source quality
+
+The full C38 corpus was refreshed before staging: **392 current questions, 511 immutable versions**, all 29 English skills, linked sources/materials, historical exposures and related outcomes remain byte-equivalent after excluding context timestamps. Earlier substantive source/history review is reused. All 160 candidates have scenario, required inference, answer, distractor, nearest-bank/Practice/assessment and protection records; all **12,720 within-batch pairs** are indexed. Similarity is only a search aid. The author’s semantic self-review is not independent SME certification.
+
+Two language candidates and a passage with its three questions were substantively reworked where an existing draft or Practice explanation was too close. Every assessed item is an explicitly bounded protected parallel; none is labelled a new independent reasoning domain. Shared-source gist/detail questions remain correlated. Teaching facts and procedures are familiar, source titles do not disclose assessed gist, and unique IDs do not establish source independence or unseen capacity.
+
+Place facts use the supplied textbook and primary UNESCO/NASA/NPS/SANParks/Niagara Parks sources; invented visits, routes and classroom scenarios are labelled as invented. No outside travel or scientific calculation is needed. Factual corrections remove unsupported rankings, unqualified environmental advice, chemical-free organic claims and false balance about human-caused warming. Personal habits, income and agreement are unscored. Full primary references are retained with the restricted sources/materials.
+
+Publisher tracks 8/9/10/11 were machine-assisted against the actual retained files and book. This is not human listening approval. Track9 contains an environmental rhyme followed by the song also represented by track11; a **0–39-second opening excerpt**, 39.026939 seconds including MP3 framing, was decoded successfully and retained separately for owner cut/alignment acceptance. Original files remain unchanged. No full publisher lyrics are republished. The interview questions avoid historical corporate claims. Do-Re-Mi remains excluded.
+
+## Technical evidence and preserved controls
+
+- Actual existing reviewer QA: **87 standalone passes**, **73 expected `authoring_source_registration_pending` holds**: 42 reading and 31 listening. No other QA errors. The existing `review_notes_only` misconception warning is informational; keys and feedback are explicit.
+- Actual unchanged multiple-choice grader: **600/600 option cases**. Actual deployed structured graders: **45/45 accepted, normalized, rejected, partial, reversed and blank cases**.
+- Guarded insert-only transaction adds the Unit3 draft unit/release, thirteen skills/snapshots, 160 fixed families/templates/items/scopes/keys/version previews/QA records, 600 options and nine materials with eighteen events. The actual material validator passes **9/9**.
+- Rollback rehearsal restores **all 117 table fingerprints**. The identical commit succeeds. Independent readback matches every inserted manifest row, all 160 immutable question snapshots and authoring previews, nine material QA fingerprints and every pre-existing row across 117 tables.
+- All seven Unit3 release gates stay pending. No approval actor/MFA claim, source registration, policy, allocation, learner attempt or writing publication is fabricated. Unit1/2 accepted content and all unrelated data remain unchanged.
+
+The three offline Unit3 builders are versioned subject-aware content tooling. They do not modify shared schemas, APIs, browser code or Edge Functions. Required CI and the persistent Production/Blocking deployment check govern documentation closure. Previously verified unchanged runtime/learner evidence is reused. The current Vercel settings connector returns 403, so this delivery does not claim a new settings inspection; actual commit deployment status is checked separately against the retained blocking configuration evidence.
+
+## Next batch
+
+1. Owner review/acceptance of the new questions, fourteen passages, guides and W01; generate the twelve named recordings and accept the four publisher uses/excerpt.
+2. Register accepted reading/audio sources, attach the 27 shared sets and three standalone enrichment recordings, save immutable linked versions and rerun source QA. Expected holds are visible until this is complete.
+3. Reconcile current-programme metadata, then propose exact numerical policies/forms and source/exposure/specialist dispositions before bounded learner activation and acceptance. Unit4 follows Unit3 closure; Units5–6 and English course closure precede Mathematics.
+
+[Redacted manifest](content/english-7-unit-03-authoring-manifest.json) · [Technical evidence](evidence/english-7-unit-03-authoring-20261025.json) · [Authoritative status](project-status.md).

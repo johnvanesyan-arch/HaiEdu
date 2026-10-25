@@ -1,5 +1,7 @@
 # English 7 — complete the six-unit course before the next subject
 
+**Current Unit3 checkpoint — C39:** the accepted 60/40/60 bank and nine materials are authored and staged. New source/content acceptance and twelve recordings precede integration, policy and release. [Delivery](english-7-unit-03-authoring.md).
+
 **Owner direction:** 2026-10-24 Asia/Yerevan · **Roadmap:** 4.74 · **Scope:** English Grade 7, textbook Units 1–6
 
 John directs: “We should continue with the English subject,” after clarification that the book has six units and the existing roadmap would move to Mathematics after the two implemented English units. The delivery sequence is now **Unit 3 → Unit 4 → Unit 5 → Unit 6 → English course closure → Sprint 16.2 Mathematics 7**, with Unit 2 technical closure complete under C37. Mathematics, Armenian and four-subject integration remain planned; their execution moves after this English completion track. No delivery dates are asserted. C38 now proposes a bounded Unit 3 budget; it is not yet accepted.
