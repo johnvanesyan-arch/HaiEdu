@@ -93,6 +93,14 @@ async function loadAuthoringReview(admin: any, item: any) {
 
 async function authoringSourceRegistered(admin: any, item: any, context: any) {
   if (!context?.source) return true;
+  if (item.stimulus?.kind === "audio") {
+    if (context.source.kind !== "listening" || item.stimulus.schemaVersion !== "haiedu-audio-v1" ||
+        typeof item.stimulus.audioVersionId !== "string" ||
+        !/^[0-9a-fA-F]{8}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{4}-[0-9a-fA-F]{12}$/.test(item.stimulus.audioVersionId)) return false;
+    const { data, error } = await admin.from("learning_audio_versions")
+      .select("source_family_id,revoked_at").eq("id", item.stimulus.audioVersionId).maybeSingle();
+    return !error && Boolean(data) && !data.revoked_at && data.source_family_id === context.source.familyId;
+  }
   if (item.stimulus?.kind !== "task_set") return false;
   const { data, error } = await admin.from("learning_task_set_versions")
     .select("source_family_id,stimulus,revoked_at").eq("id", item.stimulus.taskSetVersionId).maybeSingle();

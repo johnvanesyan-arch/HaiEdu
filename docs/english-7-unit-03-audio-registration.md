@@ -1,5 +1,7 @@
 # English 7 Unit 3 — original recording integration
 
+**Current C42 · 2026-10-26:** all fourteen reading passages and sixteen recordings (twelve original, four publisher uses) are registered. The final 42 reading/six publisher-listening links now pass QA at v2; all 160 Unit3 questions pass, with zero source holds. Ordinary bank/material approval, current-programme reconciliation and the seven draft-release gates remain separate. [Delivery](english-7-unit-03-source-registration.md).
+
 **Sprint 16.1C.41 · 2026-10-26 Asia/Yerevan · one primary agent.** All twelve owner-supplied original recordings are registered in the existing private audio delivery system. Twelve immutable shared task sets now connect them to **25 questions**, each at **v2 with saved passing QA**.
 
 ## Reviewer access
