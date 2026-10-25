@@ -1,0 +1,83 @@
+{
+  "schemaVersion": "haiedu-delivery-evidence-v1",
+  "checkpoint": "16.1C.40",
+  "recordedAt": "2026-10-25T20:30:35.338861+00:00",
+  "date": "2026-10-26",
+  "timeZone": "Asia/Yerevan",
+  "sourceCommit": "a391e2765dd668639875c77396739b82c1fe4989",
+  "scope": "Twelve owner-supplied Unit 3 recordings: technical intake, immutable-filename upload handoff and 25-question source-link plan only.",
+  "ownerDirection": {
+    "statement": "Audios are ready! Do you need me to add them to Supabase? Otherwise, proceed as planned.",
+    "interpretation": "Owner supplied the twelve named Unit 3 recordings and directed integration; this records readiness/use direction without claiming an independent audition, exact-script certification or approval of other content.",
+    "ordinaryContentApprovalClaimed": false,
+    "independentListeningApprovalClaimed": false
+  },
+  "checks": {
+    "mp3Decode": {
+      "passed": 12,
+      "total": 12
+    },
+    "uniqueAudioHashes": 12,
+    "packageRecordingHashMatches": 12,
+    "existingExactStorageObjects": 0,
+    "allBelowBucketLimit": true,
+    "bucketPrivate": true,
+    "byteTotal": 7661721,
+    "durationTotalMs": 466155,
+    "minDurationMs": 34847,
+    "maxDurationMs": 42841,
+    "plannedQuestionLinks": 25,
+    "spokenScriptChanges": false,
+    "scriptDocumentOnlyChange": "Markdown hard-line-break escapes after speaker labels; spoken text matches C39",
+    "repeatAudition": false,
+    "repeatTranscription": false,
+    "transcoding": false
+  },
+  "deliveryPackage": {
+    "filename": "haiedu-english7-unit3-supabase-upload-20261026.zip",
+    "bytes": 7687928,
+    "sha256": "dca117cb81220b545a70a97a41af26f3e198153a91f13285b06f65e4ae7399d1",
+    "libraryFileId": "libfile_4edeb155141c81918a5fa0d3d058d9de",
+    "contents": "Twelve exact MP3s under upload-these-12-mp3s, README and source/question manifest; no new question wording or answer keys."
+  },
+  "uploadBlocker": {
+    "connectorStorageUpload": false,
+    "dashboardState": "ordinary sign-in page; no bot-detection block",
+    "ownerAction": "Extract archive; upload the twelve hash-named MP3s to the root of the existing private learning-audio bucket, preserving filenames."
+  },
+  "notCompleted": [
+    "object upload",
+    "audio registration",
+    "task-set registration",
+    "question source-link revision",
+    "new source QA",
+    "authenticated playback"
+  ],
+  "preservation": {
+    "databaseWrites": 0,
+    "storageWrites": 0,
+    "runtimeChanges": false,
+    "questionTextChanges": false,
+    "releaseGatesUnchanged": true
+  },
+  "reusedEvidence": [
+    "docs/evidence/english-7-unit-03-authoring-20261025.json",
+    "docs/english-7-unit-03-bank-comparison.md",
+    "docs/english-7-unit-02-learner-acceptance.md"
+  ],
+  "currentQa": {
+    "standalonePassed": 87,
+    "sourceRegistrationHolds": 73,
+    "readingHolds": 42,
+    "listeningHolds": 31,
+    "basis": "unchanged C39 evidence; no new source-QA claim"
+  },
+  "next": "Owner file upload, then bounded source registration and links with preserved question wording, new immutable revisions and source QA. Fourteen reading passages/four publisher uses and ordinary content review remain separate; policy, curriculum reconciliation and learner release follow.",
+  "release": {
+    "unitStatus": "draft",
+    "pendingGates": 7,
+    "runtimeChanges": false,
+    "requiredCi": "Run normal required PR/main checks on this documentation closure; live browser/runtime/learner acceptance evidence is reused because runtime is unchanged.",
+    "notion": "Sync to the resulting merged source commit and read back the complete expected body plus thirteen child pages."
+  }
+}

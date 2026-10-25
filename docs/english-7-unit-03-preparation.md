@@ -1,5 +1,7 @@
 # English 7 Unit 3 — source and activity preparation
 
+**Current C40 · 2026-10-26:** all twelve original recordings are received, decoded and mapped to 25 questions. A byte-identical package uses the required SHA-256 storage names. Private upload is pending; the dashboard is signed out and the connector has no upload operation. No source registration or QA change is claimed. Remaining reading/publisher acceptance and ordinary review stay separate. [Upload handoff](english-7-unit-03-audio-intake.md).
+
 **Sprint 16.1C.38 · 2026-10-25 Asia/Yerevan · Proposal complete; authoring acceptance pending.**
 
 Unit 3 is **Let’s Think Green and Be Nature-wise**, printed/PDF pages **54–71**. All **25 numbered activities** retain their order. Activity 25 contains an opening prompt numbered 18, followed by 1–22; all **23 subprompts** have stable locators below. This planning slice changes no runtime, production content, approvals or learner release. The [whole-unit proposal](english-7-unit-03-bank-proposal.md) supplies 60/40/60 candidate slots, eight guides, W01 and the complete recording plan. Unit 1/2 acceptance is reused.
@@ -117,3 +119,4 @@ Three optional enrichment recordings each have one standalone audio item, using 
 Unqualified rainforest percentages, universal claims and time-dependent loss rates are removed or held for exact primary-source verification rather than retained as quiz facts. No new scientific expertise is a prerequisite for an English question.
 
 [Whole-bank planning comparison](english-7-unit-03-bank-comparison.md) · [Proposal](english-7-unit-03-bank-proposal.md) · [Evidence](evidence/english-7-unit-03-preparation-20261025.json) · [Current status](project-status.md).
+
