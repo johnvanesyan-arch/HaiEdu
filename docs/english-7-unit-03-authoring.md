@@ -1,5 +1,7 @@
 # English 7 Unit 3 — whole-unit authoring and reviewer staging
 
+**Current C40 · 2026-10-26:** all twelve original recordings are received, decoded and mapped to 25 questions. A byte-identical package uses the required SHA-256 storage names. Private upload is pending; the dashboard is signed out and the connector has no upload operation. No source registration or QA change is claimed. Remaining reading/publisher acceptance and ordinary review stay separate. [Upload handoff](english-7-unit-03-audio-intake.md).
+
 **Sprint 16.1C.39 · 2026-10-25 · one primary agent.** John’s “I approve” accepts `english7-u03-whole-unit-160-v1`, pinned to unchanged proposal SHA-256 `56491a84d5ea768b8c1afa371ee6ff3eb39fb5facaccd5598911714c3690aa82` at source `2d73e75b712eefa1eb063953239faa49f8c3f88b`. [Owner record](evidence/english-7-unit-03-owner-acceptance-20261025.json). This authorizes the bounded 100 protected-parallel assessment candidates and normal inactive staging; it does not approve newly authored content or activate learners.
 
 ## Delivered and where to review
@@ -39,3 +41,4 @@ The three offline Unit3 builders are versioned subject-aware content tooling. Th
 3. Reconcile current-programme metadata, then propose exact numerical policies/forms and source/exposure/specialist dispositions before bounded learner activation and acceptance. Unit4 follows Unit3 closure; Units5–6 and English course closure precede Mathematics.
 
 [Redacted manifest](content/english-7-unit-03-authoring-manifest.json) · [Technical evidence](evidence/english-7-unit-03-authoring-20261025.json) · [Authoritative status](project-status.md).
+

@@ -1,0 +1,439 @@
+{
+  "schemaVersion": "haiedu-unit-audio-intake-public-v1",
+  "checkpoint": "16.1C.40",
+  "date": "2026-10-26",
+  "timeZone": "Asia/Yerevan",
+  "sourceCommit": "a391e2765dd668639875c77396739b82c1fe4989",
+  "phase": "upload_preparation_complete_integration_pending",
+  "scope": {
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+    "draftReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4"
+  },
+  "totals": {
+    "recordings": 12,
+    "practiceItems": 5,
+    "diagnosticItems": 8,
+    "masteryItems": 12,
+    "items": 25,
+    "bytes": 7661721,
+    "durationMs": 466155,
+    "decodePassed": 12,
+    "existingExactObjects": 0
+  },
+  "recordings": [
+    {
+      "sourceCode": "U03-P-AUDIO-WONDER-A",
+      "purpose": "practice",
+      "sourceFamilyId": "ae92a92f-44e1-53ae-a934-ee0bccc3e434",
+      "suppliedFilename": "english7-u03-practice-wonder-a.mp3",
+      "deliveryFilename": "english7-u03-practice-wonder-a.mp3",
+      "objectPath": "f89084ec062e62dee9e0f7ee3028331546a3078fee5bff9ff7016efb9d708352.mp3",
+      "sha256": "f89084ec062e62dee9e0f7ee3028331546a3078fee5bff9ff7016efb9d708352",
+      "byteLength": 674386,
+      "durationMs": 41091,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "2d30091f7ffdc6830b46c7f0ef34cb812ca28b7788f3ed78aa41c0cdb4610538",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "dc263803-e584-51fd-970a-5e993a69f211",
+      "taskSetVersionProposedId": "b449bbdd-a486-5532-8abc-c0be0e107948",
+      "members": [
+        {
+          "code": "ENG7-U03-P46",
+          "itemId": "3a71ae19-064d-545e-a924-788a6c26b77b",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-P53",
+          "itemId": "b35b0169-35a3-5f47-ad84-1cf6873e773b",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-P-AUDIO-WONDER-B",
+      "purpose": "practice",
+      "sourceFamilyId": "022a513b-e2d2-58be-a513-f3809cb81d51",
+      "suppliedFilename": "english7-u03-practice-wonder-b.mp3.mp3",
+      "deliveryFilename": "english7-u03-practice-wonder-b.mp3",
+      "objectPath": "8c7f0d75609670036d59d2e183ee261fb789f1f7576edad64c1388bae6e93103.mp3",
+      "sha256": "8c7f0d75609670036d59d2e183ee261fb789f1f7576edad64c1388bae6e93103",
+      "byteLength": 650981,
+      "durationMs": 39628,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "690dffe8a256277e4aaec34f94d5f0b8af5bda2591f2ec7d5a6ef5e420dcd467",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "0d19ef61-f68f-597f-870f-2f206153860d",
+      "taskSetVersionProposedId": "0ea28560-2318-5783-89b0-8101d33e8e29",
+      "members": [
+        {
+          "code": "ENG7-U03-P47",
+          "itemId": "b414631b-a506-5e56-a7de-c2ce89365b59",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-P54",
+          "itemId": "534e6fff-4e28-5bbb-a00c-e06d1a303422",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-P55",
+          "itemId": "8c5d714b-78ad-5eee-aacc-3e96b11b8bf2",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-DA-AUDIO-A",
+      "purpose": "diagnostic",
+      "sourceFamilyId": "3763a0d7-62ed-5d18-ab64-9c509bda6dbb",
+      "suppliedFilename": "english7-u03-da-listening-a.mp3",
+      "deliveryFilename": "english7-u03-da-listening-a.mp3",
+      "objectPath": "d362d014af2273a4b290fdcc5e9c679f46a28d3e03dc825810e67c2b148f8b91.mp3",
+      "sha256": "d362d014af2273a4b290fdcc5e9c679f46a28d3e03dc825810e67c2b148f8b91",
+      "byteLength": 574494,
+      "durationMs": 34847,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "3e4be10cb4c29b79203464981b91d10c5b2d7d9f9f43d21ac8a65fdc79670627",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "02750927-1dd2-5995-a42a-a5ac9835b462",
+      "taskSetVersionProposedId": "ccffcdfb-0ff7-5882-9697-7478f441420a",
+      "members": [
+        {
+          "code": "ENG7-U03-DA-17",
+          "itemId": "1052a82c-6f7d-5aa5-a5ac-70b42c62c2e7",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-DA-19",
+          "itemId": "6f394487-fca9-5533-a077-a9b34ba7d7e9",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-DA-AUDIO-B",
+      "purpose": "diagnostic",
+      "sourceFamilyId": "92ba6595-1a05-5680-ac83-4716ff55eb59",
+      "suppliedFilename": "english7-u03-da-listening-b.mp3",
+      "deliveryFilename": "english7-u03-da-listening-b.mp3",
+      "objectPath": "a18c6976c4d3b25d1a595f8b63adc71b463abb9f92c91e614d381902e0a8d58b.mp3",
+      "sha256": "a18c6976c4d3b25d1a595f8b63adc71b463abb9f92c91e614d381902e0a8d58b",
+      "byteLength": 662683,
+      "durationMs": 40359,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "06d646e64b4ae902ff516537974b236e9717bb569855239e3df730454810f180",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "ffdddbcd-07c6-5b27-9842-a2c6b25679a9",
+      "taskSetVersionProposedId": "c45230b0-ae63-58ff-861c-6b01bed1c858",
+      "members": [
+        {
+          "code": "ENG7-U03-DA-18",
+          "itemId": "2fca96da-f21a-59a2-afbc-fa6adba4e217",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-DA-20",
+          "itemId": "c63107a0-7192-5ace-aee0-c3f57800c8de",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-DB-AUDIO-A",
+      "purpose": "diagnostic",
+      "sourceFamilyId": "728d9452-4107-5610-a916-dae62893d305",
+      "suppliedFilename": "english7-u03-db-listening-a.mp3",
+      "deliveryFilename": "english7-u03-db-listening-a.mp3",
+      "objectPath": "61e71b0c9ab7b7728821e2e8a3b0b11bf9a49aed8dbb2bda7b53accd54c6bb58.mp3",
+      "sha256": "61e71b0c9ab7b7728821e2e8a3b0b11bf9a49aed8dbb2bda7b53accd54c6bb58",
+      "byteLength": 667699,
+      "durationMs": 40673,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "4d6ee985a801e97c56a0f43b53f335934bf6d16e58f953cb4e2d7cb5dd789208",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "ca6255b4-6422-5f05-8b69-969e477c98ec",
+      "taskSetVersionProposedId": "978d7116-d536-506c-a48b-167c6748177d",
+      "members": [
+        {
+          "code": "ENG7-U03-DB-17",
+          "itemId": "fc489825-80d6-5be8-a816-b8539180f757",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-DB-19",
+          "itemId": "e9e3d550-f227-53fc-a115-9755f7069378",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-DB-AUDIO-B",
+      "purpose": "diagnostic",
+      "sourceFamilyId": "853d6d40-f90c-598f-a332-9527bffae2f7",
+      "suppliedFilename": "english7-u03-db-listening-b.mp3",
+      "deliveryFilename": "english7-u03-db-listening-b.mp3",
+      "objectPath": "0fd83477a29ff19b8cf89dca935eafa2aae6aabedd886d749197a6c5cf46122d.mp3",
+      "sha256": "0fd83477a29ff19b8cf89dca935eafa2aae6aabedd886d749197a6c5cf46122d",
+      "byteLength": 702390,
+      "durationMs": 42841,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "dad16894ac7acb840f62ae2f6a6b1aee9aa3102ca13e8380f27fa4e47ab28395",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "427899eb-679d-569d-827d-af551901bb54",
+      "taskSetVersionProposedId": "889654be-65b7-5d69-8d94-0ebafef83297",
+      "members": [
+        {
+          "code": "ENG7-U03-DB-18",
+          "itemId": "be84f35e-6d59-56f1-a1c7-7051e93f6b94",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-DB-20",
+          "itemId": "16c074e2-8d28-5c5b-a55e-2fe9ed1624f6",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-MA-AUDIO-A",
+      "purpose": "mastery",
+      "sourceFamilyId": "843f9bd6-a24c-5209-afad-413402446be1",
+      "suppliedFilename": "english7-u03-ma-listening-a.mp3",
+      "deliveryFilename": "english7-u03-ma-listening-a.mp3",
+      "objectPath": "cee74f282d4cad947e77c0b708cbcd773fed99cd4e7a6d0f47fb173dcb3a91d6.mp3",
+      "sha256": "cee74f282d4cad947e77c0b708cbcd773fed99cd4e7a6d0f47fb173dcb3a91d6",
+      "byteLength": 699882,
+      "durationMs": 42684,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "224f2f3086d119e3684ce208510552a855369a748a4901751849ae4be1453828",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "edf0aede-6ad1-53fe-9084-590e31265a74",
+      "taskSetVersionProposedId": "5fea7ec6-78c4-5f49-bda1-3e815a7f837a",
+      "members": [
+        {
+          "code": "ENG7-U03-MA-17",
+          "itemId": "4d176190-15bc-5dc8-a4a7-0faeabad32f6",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-MA-19",
+          "itemId": "49540359-21e7-5856-aa31-2b14177ff499",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-MA-AUDIO-B",
+      "purpose": "mastery",
+      "sourceFamilyId": "bf87f660-d30f-5798-ab5c-c80db95b747b",
+      "suppliedFilename": "english7-u03-ma-listening-b.mp3",
+      "deliveryFilename": "english7-u03-ma-listening-b.mp3",
+      "objectPath": "1697f2c5c2c833ad6b0ec600e4d9d8cbc172dbd3365a828a9b86e420228d85f8.mp3",
+      "sha256": "1697f2c5c2c833ad6b0ec600e4d9d8cbc172dbd3365a828a9b86e420228d85f8",
+      "byteLength": 597482,
+      "durationMs": 36284,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "724abbcd5bac43e60a28de729e3e6744ab61bacda8347913f1649ea49465cc57",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "d33f9748-f7b7-597c-b760-ff3449f183d0",
+      "taskSetVersionProposedId": "36597d64-7182-5b36-8ef6-b297c4be57c2",
+      "members": [
+        {
+          "code": "ENG7-U03-MA-18",
+          "itemId": "6ff43dd3-f0e0-542c-ac7d-6417c94ee150",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-MA-20",
+          "itemId": "2805d6e7-23e1-50cb-ad46-4afd8ea12082",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-MB-AUDIO-A",
+      "purpose": "mastery",
+      "sourceFamilyId": "7f5a5a99-2d7a-5b18-a19f-4f51cccb39b7",
+      "suppliedFilename": "english7-u03-mb-listening-a.mp3",
+      "deliveryFilename": "english7-u03-mb-listening-a.mp3",
+      "objectPath": "45b3200b6c9f3a3fcf856ed294cdd7c9216893b55236790963a8feefe7f8e126.mp3",
+      "sha256": "45b3200b6c9f3a3fcf856ed294cdd7c9216893b55236790963a8feefe7f8e126",
+      "byteLength": 598736,
+      "durationMs": 36362,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "0b8474f0468e325b67d060635b412a23e0d427375fdbbf0a8783822400643965",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "0ed8551c-882a-5947-99e6-d7693640284d",
+      "taskSetVersionProposedId": "d4ac270e-2c5f-5394-a01f-52f747252f08",
+      "members": [
+        {
+          "code": "ENG7-U03-MB-17",
+          "itemId": "cd0a8640-c301-51b0-ac54-9fffba932434",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-MB-19",
+          "itemId": "59112311-8b86-53e2-a816-2e6855389013",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-MB-AUDIO-B",
+      "purpose": "mastery",
+      "sourceFamilyId": "e5778f37-5b57-53fe-a9c9-9b03d62f1574",
+      "suppliedFilename": "english7-u03-mb-listening-b.mp3",
+      "deliveryFilename": "english7-u03-mb-listening-b.mp3",
+      "objectPath": "ee68716c2cfeadff1874877f00bb90954060455b6ca46311b4dfc62d4698bf4c.mp3",
+      "sha256": "ee68716c2cfeadff1874877f00bb90954060455b6ca46311b4dfc62d4698bf4c",
+      "byteLength": 629247,
+      "durationMs": 38269,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "91e1d0ee4a800b807af08302a6f81b2a7da0abdb86ff4cfa422d11c113871e2a",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "071e829e-70d7-5fc5-bf3c-84188503c4c2",
+      "taskSetVersionProposedId": "45a7142b-c28b-5d1d-b2e3-f07707221930",
+      "members": [
+        {
+          "code": "ENG7-U03-MB-18",
+          "itemId": "a333caa0-9570-512c-a20b-4d53e1b6a112",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-MB-20",
+          "itemId": "54199282-1486-5f0b-ab33-e163c93e68af",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-MC-AUDIO-A",
+      "purpose": "mastery",
+      "sourceFamilyId": "a5abc6b8-06b7-5bea-af12-53db9380fd80",
+      "suppliedFilename": "english7-u03-mc-listening-a.mp3",
+      "deliveryFilename": "english7-u03-mc-listening-a.mp3",
+      "objectPath": "e794162ef178f5d9602a75d875ae8fa4dbf5482014d7f506d29a6d064a0f1015.mp3",
+      "sha256": "e794162ef178f5d9602a75d875ae8fa4dbf5482014d7f506d29a6d064a0f1015",
+      "byteLength": 599990,
+      "durationMs": 36441,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "7736bc950041708d04edfec8b6c1e601858fa07a4cc691e2ee06908d79075af7",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "c2ff3974-7962-51bf-9b68-6bd15dc6e191",
+      "taskSetVersionProposedId": "07fd0019-26d6-5be7-af46-74df079173cd",
+      "members": [
+        {
+          "code": "ENG7-U03-MC-17",
+          "itemId": "13295542-f525-5ede-a964-a391933e135e",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-MC-19",
+          "itemId": "807ef3ba-43c8-5d4b-aaeb-87d7596f48da",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    },
+    {
+      "sourceCode": "U03-MC-AUDIO-B",
+      "purpose": "mastery",
+      "sourceFamilyId": "68833c08-df86-53fa-a1ab-d40769e7132b",
+      "suppliedFilename": "english7-u03-mc-listening-b.mp3",
+      "deliveryFilename": "english7-u03-mc-listening-b.mp3",
+      "objectPath": "3add664c635d433fbd25c728828bb52e5de5e1d8e20f61d70e3205474a7f4046.mp3",
+      "sha256": "3add664c635d433fbd25c728828bb52e5de5e1d8e20f61d70e3205474a7f4046",
+      "byteLength": 603751,
+      "durationMs": 36676,
+      "mimeType": "audio/mpeg",
+      "sampleRate": 44100,
+      "channels": 1,
+      "decodeErrors": 0,
+      "scriptSha256": "7a3b53c9d2ecee5493c2e4f0a2bfd8c79050db63ee8328f6aaf511566d94488b",
+      "scriptHashFormat": "C39 individual UTF-8 TXT file bytes",
+      "storagePresent": false,
+      "audioVersionProposedId": "58e1efb4-1f11-5a33-8912-aed3df0f5c2f",
+      "taskSetVersionProposedId": "05ecfeb6-5a09-50dc-a11a-e3297f252dd3",
+      "members": [
+        {
+          "code": "ENG7-U03-MC-18",
+          "itemId": "99ab5a28-a8ab-526e-a5b5-c652621b2f83",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        },
+        {
+          "code": "ENG7-U03-MC-20",
+          "itemId": "58234e34-c771-5428-a342-da420bb231ce",
+          "expectedSourceVersion": 1,
+          "proposedLinkedVersion": 2
+        }
+      ]
+    }
+  ]
+}
