@@ -1,0 +1,188 @@
+{
+  "schemaVersion": "haiedu-owner-source-registration-authorization-v1",
+  "checkpoint": "16.1C.42",
+  "recordedAt": "2026-10-25T21:29:37.046028+00:00",
+  "sourceCommit": "d75d100187982c899c69ae52dccbc1a413683a1b",
+  "reviewerProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "statement": "Okay, we have the green light. Proceed with Next: source integration for 42 reading questions and 6 publisher-listening questions.",
+  "interpretation": "John gives the green light and explicitly directs source integration for the remaining 42 reading and six publisher-listening questions. This accepts the bounded fourteen unchanged prepared passages and four publisher uses, including the prepared 0–39-second opening excerpt. Record this as owner-directed source acceptance and authorization to use/upload/link this batch; no independently inspected rights-holder licence, public-domain finding, independent human audition, ordinary question/material approval or learner activation is claimed.",
+  "rightsBasis": "Owner green-light statement for the specified integration; external rights-holder documentation not supplied or independently verified.",
+  "independentRightsClearanceVerified": false,
+  "independentHumanAuditionClaimed": false,
+  "repeatAudition": false,
+  "repeatTranscription": false,
+  "sources": [
+    {
+      "sourceCode": "U03-P-READ-EARTH",
+      "kind": "passage",
+      "familyId": "5902ddaa-26d9-54b6-a138-3f085e5c352c",
+      "previewTextSha256": "1365ad2c19434c1788f9ba480290345e8b6453270f00b754540cdc60b723766a",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-P-READ-FOREST",
+      "kind": "passage",
+      "familyId": "922a547d-01b2-55b5-aa7c-d7ca2e78c24d",
+      "previewTextSha256": "2e252034b15d4631ef1bf6f13178167ce6e6534bad0798c5873edaa6d154dfd4",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-P-READ-WONDERS-A",
+      "kind": "passage",
+      "familyId": "c197ae62-4f28-56c6-af0d-40fa4b31439c",
+      "previewTextSha256": "a80d243d6b1a38f595128de3cbab65444301169b69baada672d1db6d17758e5a",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-P-READ-WONDERS-B",
+      "kind": "passage",
+      "familyId": "18ea0a3e-e716-5f57-a8f6-076be2926f7c",
+      "previewTextSha256": "aecfa09e736a54777dc38dd6a306fb1e2882dd4c6d66fbe67e32b7449b4ad224",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-DA-READ-A",
+      "kind": "passage",
+      "familyId": "1e285be4-24ab-515f-af4e-0ed1a49f97b3",
+      "previewTextSha256": "f64fdcf06ad8dc0d8e15b6a6502b1cd3484ede9faaafb06b77a1b3d8050d0dc2",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-DA-READ-B",
+      "kind": "passage",
+      "familyId": "a69153c5-53c8-50a5-ad49-ec2666f46c2c",
+      "previewTextSha256": "3b16b79f1dc507a9b6c98713dcb7ace539b2aaf170d9323f1c9802038a76d972",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-DB-READ-A",
+      "kind": "passage",
+      "familyId": "0e9d315a-5629-5ff0-a047-fe3f6c4f54c2",
+      "previewTextSha256": "9391d65e8d188f4672f3180af75dcfa4cb76542677b971ea8d7a0fdbc71fd294",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-DB-READ-B",
+      "kind": "passage",
+      "familyId": "d2915bba-6ac3-5b91-a8f9-1dc52580a12f",
+      "previewTextSha256": "9e299ccdf8a51802ce42d9d895dfbcd080bd3457ea7baf40deb6ba548aa54367",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-MA-READ-A",
+      "kind": "passage",
+      "familyId": "d61f1778-d92d-5073-a980-ceb545ec270a",
+      "previewTextSha256": "ecea7e4adfa93f7ee30897766644a72edba11f4fb73e0427266f86c71072f408",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-MA-READ-B",
+      "kind": "passage",
+      "familyId": "5fbbd84b-c971-52fc-a066-b10a657e5b4a",
+      "previewTextSha256": "06e682bf78ff7639e3d85d210710cb19dc8c5be4c258c7ac2deb0437549bb436",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-MB-READ-A",
+      "kind": "passage",
+      "familyId": "66388d84-4ca9-51b2-a7e2-bc36f1b904a3",
+      "previewTextSha256": "006043cb7939ceed14de4cdf5f701cfc18c957b1773775aa134c3cf43e00e6f1",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-MB-READ-B",
+      "kind": "passage",
+      "familyId": "be2ba318-d298-5b31-a430-89ed5eeb3447",
+      "previewTextSha256": "435b8f13022fc4aed1239f3657b006db4576a65948dae790ee83970e85f20056",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-MC-READ-A",
+      "kind": "passage",
+      "familyId": "2f27d614-9f6b-50ab-a3d5-026a3d8f5928",
+      "previewTextSha256": "b33942affd09cb9693f93d55ff4849599899fe3a4d0938ba4b8281e3423cdabb",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-MC-READ-B",
+      "kind": "passage",
+      "familyId": "adc48fb8-6e67-5550-a736-4be59ec6a8be",
+      "previewTextSha256": "9af4d48a48409c9b8742038e73485b37c4eedf7c731bd8daabe46359917e2b88",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-P-AUDIO-INTERVIEW",
+      "kind": "audio",
+      "familyId": "1c951f2a-68cc-54f7-a2e9-fe6c0e900b0d",
+      "previewTextSha256": "b65c0f89ce5e66d85963a2de390eb0f8472412c89e612b8937eff7e8f6ab7038",
+      "questionCount": 3
+    },
+    {
+      "sourceCode": "U03-P-AUDIO-POEM",
+      "kind": "audio",
+      "familyId": "5a94c341-73f0-5ffe-a14d-c310282cc0ef",
+      "previewTextSha256": "ec9e6611a10e1c4ca999452f08baf33f0f493d813e29aec1d8a41fcf948f46d0",
+      "questionCount": 1
+    },
+    {
+      "sourceCode": "U03-P-AUDIO-ACTIONS",
+      "kind": "audio",
+      "familyId": "7b36ea33-8d5b-5474-a10e-04536cad661f",
+      "previewTextSha256": "28ac2ca5f4faf07f5e24bac0295210211b26784da2b64cdbb4c68c4942889dbc",
+      "questionCount": 1
+    },
+    {
+      "sourceCode": "U03-P-AUDIO-WORLD",
+      "kind": "audio",
+      "familyId": "8e8bd4e6-7f85-5bb4-ad74-f12ce679d393",
+      "previewTextSha256": "443c71858246c8b3c96649c83d505426e1f2166e74a6675ac9b7ee38189a1b40",
+      "questionCount": 1
+    }
+  ],
+  "files": [
+    {
+      "sourceCode": "U03-P-AUDIO-POEM",
+      "publisherTrack": 8,
+      "deliveryFilename": "english7-u03-i-wonder.mp3",
+      "sha256": "bde7cd85e57604417b4514e35d589d7dd2372cddc10e5e93af972f78440a8a7c",
+      "byteLength": 1106015,
+      "durationMs": 46054,
+      "objectPath": "bde7cd85e57604417b4514e35d589d7dd2372cddc10e5e93af972f78440a8a7c.mp3",
+      "excerpt": null
+    },
+    {
+      "sourceCode": "U03-P-AUDIO-ACTIONS",
+      "publisherTrack": 9,
+      "deliveryFilename": "english7-u03-environment-actions-excerpt.mp3",
+      "sha256": "da1796989e7c3e3df7ab086fae6658c999929c878cea3adda4b8f67ba9baff0c",
+      "byteLength": 624893,
+      "durationMs": 39027,
+      "objectPath": "da1796989e7c3e3df7ab086fae6658c999929c878cea3adda4b8f67ba9baff0c.mp3",
+      "excerpt": {
+        "startSeconds": 0,
+        "endSeconds": 39,
+        "actualDurationSeconds": 39.026939
+      }
+    },
+    {
+      "sourceCode": "U03-P-AUDIO-INTERVIEW",
+      "publisherTrack": 10,
+      "deliveryFilename": "english7-u03-environmental-interviews.mp3",
+      "sha256": "9a67723c05bd4a76753e9ee46d68607972c8800acaa63f3c6f08aecf6a2c8324",
+      "byteLength": 2930606,
+      "durationMs": 244151,
+      "objectPath": "9a67723c05bd4a76753e9ee46d68607972c8800acaa63f3c6f08aecf6a2c8324.mp3",
+      "excerpt": null
+    },
+    {
+      "sourceCode": "U03-P-AUDIO-WORLD",
+      "publisherTrack": 11,
+      "deliveryFilename": "english7-u03-what-a-wonderful-world.mp3",
+      "sha256": "785f18cfd3a3f2786e28d7dd339a04f9fb125ca151327079d56835f3bd4586fa",
+      "byteLength": 2391918,
+      "durationMs": 149473,
+      "objectPath": "785f18cfd3a3f2786e28d7dd339a04f9fb125ca151327079d56835f3bd4586fa.mp3",
+      "excerpt": null
+    }
+  ]
+}

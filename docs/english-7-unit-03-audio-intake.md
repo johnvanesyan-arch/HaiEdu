@@ -1,6 +1,8 @@
 # English 7 Unit 3 — recording intake and upload handoff
 
-**Current C41 · 2026-10-26:** all twelve supplied original recordings are registered through twelve shared sets. Their 25 questions are linked at v2 with saved passing QA. Unit3 now has 112 QA passes and 48 remaining source holds (42 reading, six publisher listening). Ordinary review and all seven release gates remain separate. [Delivery](english-7-unit-03-audio-registration.md).
+**Current C42 · 2026-10-26:** all fourteen reading passages and sixteen recordings (twelve original, four publisher uses) are registered. The final 42 reading/six publisher-listening links now pass QA at v2; all 160 Unit3 questions pass, with zero source holds. Ordinary bank/material approval, current-programme reconciliation and the seven draft-release gates remain separate. [Delivery](english-7-unit-03-source-registration.md).
+
+**Historical C41 · 2026-10-26:** all twelve supplied original recordings are registered through twelve shared sets. Their 25 questions are linked at v2 with saved passing QA. Unit3 now has 112 QA passes and 48 remaining source holds (42 reading, six publisher listening). Ordinary review and all seven release gates remain separate. [Delivery](english-7-unit-03-audio-registration.md).
 
 **Historical Sprint 16.1C.40 · 2026-10-26 Asia/Yerevan · one primary agent.** All twelve new Unit3 recordings have been supplied. Technical preparation and the exact source/question map are complete. Private upload and source integration remain pending.
 

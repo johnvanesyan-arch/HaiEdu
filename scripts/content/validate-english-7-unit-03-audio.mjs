@@ -11,10 +11,11 @@ import {validateArrangementKey} from '../../supabase/functions/_shared/arrangeme
 const work=process.argv[2];assert.ok(work,'Pass the private registration evidence directory.');
 const read=name=>JSON.parse(readFileSync(join(work,name),'utf8'));
 const manifest=read('registration.json'),baseline=read('baseline.json');
-const expectedCount={'16.1C.41':25}[manifest.checkpoint];
-assert.equal(manifest.audioVersions.length,12);
-assert.equal(manifest.taskSets.length,12);
-assert.ok(expectedCount,'Unsupported source-registration checkpoint.');
+const contract={'16.1C.41':{questions:25,audio:12,sets:12},'16.1C.42':{questions:48,audio:4,sets:15}}[manifest.checkpoint];
+assert.ok(contract,'Unsupported source-registration checkpoint.');
+const expectedCount=contract.questions;
+assert.equal(manifest.audioVersions.length,contract.audio);
+assert.equal(manifest.taskSets.length,contract.sets);
 const projection=read(process.argv[3]??'transaction-readback.json').projection;
 const wrapper=read('deployed-qa.json');
 const deployed=wrapper.files?wrapper:JSON.parse(wrapper.content[0].text);

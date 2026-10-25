@@ -48,3 +48,52 @@ test('private authoring context survives revisions, rejects wrong roles and hold
   api.revoke();assert.equal((await api.call(body)).status,403);
  }finally{await db.close();}
 });
+
+test('standalone audio source registration agrees across reviewer detail, QA and approval and fails closed',async()=>{
+ const db=await database();
+ try{
+  const family='40000000-0000-4000-8000-000000000011',audio='40000000-0000-4000-8000-000000000012';
+  const context={schemaVersion:'haiedu-authoring-review-v1',itemCode:'QA-P3-Q1',version:4,locale:'en',source:{kind:'listening',familyId:family,text:'Synthetic listening script'}};
+  const stimulus={kind:'audio',schemaVersion:'haiedu-audio-v1',audioVersionId:audio};
+  await db.exec('create table learning_audio_versions(id uuid primary key,source_family_id uuid,revoked_at timestamptz); create table learning_task_set_versions(id uuid primary key,source_family_id uuid,stimulus jsonb,revoked_at timestamptz)');
+  await db.query('insert into learning_audio_versions values($1,$2,null)',[audio,family]);
+  await db.query("update items set config=config||$2::jsonb,review_status='needs_review',status='review',stimulus=$3 where id=$1",[ids.item,JSON.stringify({authoringReview:{schemaVersion:context.schemaVersion,snapshotVersion:4}}),JSON.stringify(stimulus)]);
+  await db.query('insert into item_versions(item_id,version_no,snapshot) values($1,4,$2)',[ids.item,JSON.stringify({authoringReview:context})]);
+  const api=await endpoint(db,'manage-content-quality',{validateTypedKey,validateArrangementKey});
+  const check=async(expected,label)=>{
+   const detail=await api.call({action:'get_item_detail',itemId:ids.item});
+   assert.equal(detail.status,200,label);assert.equal(detail.body.detail.authoringReview.sourceRegistered,expected,label);
+   const qa=await api.call({action:'run_qa',itemId:ids.item});
+   assert.equal(qa.status,200,label);assert.equal(qa.body.qa.passed,expected,label);
+   assert.equal(qa.body.qa.errors.includes('authoring_source_registration_pending'),!expected,label);
+   if(!expected){
+    const approval=await api.call({action:'approve',itemId:ids.item},{aal:'aal2'});
+    assert.equal(approval.status,409,label);assert.ok(approval.body.errors.includes('authoring_source_registration_pending'),label);
+    assert.equal((await db.query('select count(*)::int n from item_reviews')).rows[0].n,0);
+   }
+  };
+  await check(true,'registered standalone audio');
+  // A previous passing QA cannot authorize a revoked or mismatched recording.
+  await db.query('update learning_audio_versions set revoked_at=now()');await check(false,'revoked recording');
+  await db.query('update learning_audio_versions set revoked_at=null,source_family_id=$1',[audio]);await check(false,'wrong source family');
+  await db.query('update learning_audio_versions set source_family_id=$1',[family]);
+  for(const changed of [{...stimulus,audioVersionId:family},{...stimulus,audioVersionId:'invalid'},{...stimulus,audioVersionId:null},{...stimulus,schemaVersion:'unknown'},{kind:'audio'}]){
+   await db.query('update items set stimulus=$2 where id=$1',[ids.item,JSON.stringify(changed)]);await check(false,'missing or invalid audio reference');
+  }
+  await db.query('update items set stimulus=$2 where id=$1',[ids.item,JSON.stringify(stimulus)]);
+  await db.query("update item_versions set snapshot=jsonb_set(snapshot,'{authoringReview,source,kind}','\"reading\"') where item_id=$1 and version_no=4",[ids.item]);
+  await check(false,'reading preview cannot register as audio');
+  await db.query("update item_versions set snapshot=jsonb_set(snapshot,'{authoringReview,source,kind}','\"listening\"') where item_id=$1 and version_no=4",[ids.item]);
+  await db.exec('alter table learning_audio_versions rename to unavailable_audio_versions');await check(false,'registry lookup error');
+  await db.exec('alter table unavailable_audio_versions rename to learning_audio_versions');
+  await db.query('insert into learning_task_set_versions values($1,$2,$3,null)',[audio,family,JSON.stringify({kind:'audio'})]);
+  await db.query('update items set stimulus=$2 where id=$1',[ids.item,JSON.stringify({kind:'task_set',schemaVersion:'haiedu-task-set-v1',taskSetVersionId:audio})]);
+  await check(true,'shared listening source still supported');
+  await db.query('update items set stimulus=$2 where id=$1',[ids.item,JSON.stringify(stimulus)]);
+  assert.equal((await db.query('select review_status from items where id=$1',[ids.item])).rows[0].review_status,'needs_review','QA does not approve content');
+  const approved=await api.call({action:'approve',itemId:ids.item},{aal:'aal2'});
+  assert.equal(approved.status,200,JSON.stringify(approved.body));
+  assert.equal((await db.query('select review_status from items where id=$1',[ids.item])).rows[0].review_status,'approved');
+ }finally{await db.close();}
+});
+

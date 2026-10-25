@@ -1,0 +1,172 @@
+{
+  "schemaVersion": "haiedu-source-registration-evidence-v1",
+  "checkpoint": "16.1C.42",
+  "date": "2026-10-26",
+  "timeZone": "Asia/Yerevan",
+  "sourceCommit": "d75d100187982c899c69ae52dccbc1a413683a1b",
+  "observedAt": "2026-10-25T21:44:28.642035+00:00",
+  "ownerAcceptanceReference": "docs/evidence/english-7-unit-03-source-registration-authorization-20261026.json#cea5954b1efe6c71f413453345ad06a68cf41b4769b1fccee4dd0ae47ded54aa",
+  "scope": {
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+    "releaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "readingQuestionsLinked": 42,
+    "publisherListeningQuestionsLinked": 6,
+    "audioVersionsAdded": 4,
+    "taskSetsAdded": 15,
+    "textTaskSetsAdded": 14,
+    "audioTaskSetsAdded": 1,
+    "standaloneAudioLinks": 3,
+    "questionVersionsAdded": 48,
+    "savedQaPassesAdded": 48,
+    "totalAdditiveRows": 115,
+    "questionCoverage": {
+      "practice": 18,
+      "diagnostic": 12,
+      "mastery": 18
+    },
+    "questionBank": {
+      "practice": 60,
+      "diagnostic": 40,
+      "mastery": 60
+    },
+    "currentQuestionQa": {
+      "passed": 160,
+      "sourceHolds": 0
+    },
+    "currentQuestionReview": {
+      "needsReview": 160
+    }
+  },
+  "ownerDirection": {
+    "greenLightForBoundedSourceIntegration": true,
+    "rightsBasis": "Owner direction; no independently inspected rights-holder licence or public-domain finding claimed.",
+    "independentAuditionClaimed": false,
+    "repeatListening": false,
+    "repeatTranscription": false,
+    "ordinaryQuestionApprovalCreated": false
+  },
+  "storage": {
+    "bucket": "learning-audio",
+    "private": true,
+    "fileSizeLimit": 8388608,
+    "objectsUploaded": 4,
+    "priorObjectsPreserved": 40,
+    "totalObjects": 44,
+    "uploadedBytes": 7053432,
+    "metadataAndMultipartETagMatches": 4,
+    "uploadMethod": "Authenticated Supabase dashboard using existing owner account",
+    "existingSourceHashesReused": true,
+    "track9ExcerptSeconds": [
+      0,
+      39
+    ],
+    "doReMiIncluded": false
+  },
+  "verification": {
+    "rollbackPassed": true,
+    "rollbackRestorationTables": 117,
+    "guardedCommitPassed": true,
+    "independentCommittedReadbackPassed": true,
+    "trackedTables": 117,
+    "entirelyUnchangedTableFingerprints": 110,
+    "changedTables": [
+      "public.item_answer_keys",
+      "public.item_options",
+      "public.item_qa_runs",
+      "public.item_versions",
+      "public.items",
+      "public.learning_audio_versions",
+      "public.learning_task_set_versions"
+    ],
+    "unaffectedRowsAndAllPriorHistoryPreserved": true,
+    "questionMeaningKeysAndOptionOrderUnchanged": true,
+    "existingRevisionServiceUsed": true,
+    "optionRowIdsRegeneratedByRevisionService": 192,
+    "taskSetOrderAndSourceFamilyChecksPassed": 15,
+    "savedQaExactMatch": 48,
+    "postCommitQaReevaluationExactMatch": 48,
+    "qaHandlerVersion": 15,
+    "qaHandlerSha256": "006c7fd7c711f358cbda01775d7e124306312f806001f13fb29a58ae582dac60",
+    "deployedQaFilesMatchRepository": 4,
+    "qaWholeUnitContextItems": 160,
+    "sqlRuntimeDefinitionGuards": 9,
+    "qaExecution": "Actual deployed evaluateQa and authoringSourceRegistered over exact transaction and independent committed readback rows; saved automated results with run_by null. No HTTP/Auth/MFA claim.",
+    "nonblockingWarnings": [
+      "misconception_mapping_missing"
+    ],
+    "freshAuthenticatedPlaybackClaimed": false
+  },
+  "runtimeFix": {
+    "classification": "Subject-neutral shared-core QA registration check",
+    "function": "manage-content-quality",
+    "beforeVersion": 14,
+    "deployedVersion": 15,
+    "bug": "Standalone registered audio incorrectly failed authoring source registration because only task-set references were recognized.",
+    "consumers": [
+      "get_item_detail reviewer sourceRegistered",
+      "run_qa",
+      "approve current-source recheck"
+    ],
+    "validDirectAudioRequires": [
+      "listening source kind",
+      "haiedu-audio-v1",
+      "UUID audio reference",
+      "existing non-revoked recording",
+      "matching source family"
+    ],
+    "regressionReproducedOnOldRuntime": true,
+    "targetedTestsPassed": 18,
+    "negativeCases": [
+      "revoked recording",
+      "wrong family",
+      "missing recording",
+      "malformed or missing reference",
+      "wrong schema",
+      "wrong source modality",
+      "registry lookup error"
+    ],
+    "sharedReadingAndListeningPreserved": true,
+    "threeSharedDependenciesUnchanged": true,
+    "verifyJwt": true,
+    "browserQaTriggerCheckPassed": true,
+    "authorizationChanges": false
+  },
+  "preserved": {
+    "schema": true,
+    "sqlRuntime": true,
+    "rlsAndAuthorization": true,
+    "learnerPoliciesAndPlaybackAllowances": true,
+    "unit1And2Evidence": true,
+    "c39WholeBankComparison": true,
+    "existingApprovals": true,
+    "learnerHistory": true,
+    "unit3ReleaseStatus": "draft",
+    "unit3PendingGates": 7,
+    "newHumanQuestionApprovals": 0
+  },
+  "privateEvidenceHashes": {
+    "receipt.json": "7d1a6138ab0117a05bf95ffaf96661882a643eafd679867ea4f22276bb4e1006",
+    "registration.json": "9cefee258d30fa95d9a82c45687a36e477d9dc63122511751ef63faed3d8903d",
+    "rollback.sql": "8e4f8f048ab34cc9c7adbe9d7baff220cb3315400b09ce4efa05d9b8d089848c",
+    "rollback-restoration.json": "28f6bb29b3a930c59bc10035ce6ab27db01b3bf7f88118568ff6746ee6c151d6",
+    "commit.sql": "78531bcd9f7e2106079646a328fdb3a725cb2b26ef17ff64a60b16334630f4d4",
+    "commit-result.json": "cb9996a7614078453001910ddeb701fcbb5d8b8ce1666e8d4fb2464961b0a087",
+    "committed-readback.json": "1599593e6330450c105fe811e1352f113231ab099d3b86c6c3539702dafbe438",
+    "qa.json": "78c540379b3db640fa629a89727ef3ccfc374ed5b65a0b7e4f209a7c03c0dd59",
+    "baseline.json": "e7cfcc7f014d5d891fa68f3137c1bab45604988537817586519d09f062a7bb90",
+    "baseline-after.json": "26fc7b85bc974d7bb8354074a7139a21cf28c5bf2ae3a4056729f2b62fe0dd3c",
+    "pre-guards.json": "28f6bb29b3a930c59bc10035ce6ab27db01b3bf7f88118568ff6746ee6c151d6",
+    "post-guards.json": "09ac0d716fbf35bbbb0161d430a81002c16c3d7110101da1812de7815cb4357a",
+    "storage-final.json": "9e8486d125db9c1ec3221d2b50422e3af243c93d030efa69140ac6e666a99fa3",
+    "deployed-qa.json": "c113b3432cc6c55b0a6534ab2e0fe828a2530befba2501b1b4606f8023c16226",
+    "source-qa-regressions.log": "65c553afbd9134b2062f4779759bccadc58885285d92065528931ab11ac4645a",
+    "source-qa-regression-before.log": "326062e67ddfba1427d891074947d43d0dceb4d2412f30bd6f1579c91fa74c7a"
+  },
+  "next": "Ordinary review of the complete 160-question bank and nine materials; current-programme reconciliation and exact policy/form/qualification contract before bounded learner release.",
+  "restrictedRecoveryPackage": {
+    "filename": "haiedu-english7-unit3-source-integration-evidence-20261026.zip",
+    "byteLength": 7685923,
+    "sha256": "e7a0977f722574abe952d18af1eadfcc8c398a5aeb1cdcbaf7cbbe99290aa7a6",
+    "libraryFileId": "libfile_2b64d152a2988191b81e9c1f496682e2"
+  }
+}
