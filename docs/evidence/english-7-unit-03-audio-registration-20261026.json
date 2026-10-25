@@ -1,0 +1,129 @@
+{
+  "schemaVersion": "haiedu-source-registration-evidence-v1",
+  "checkpoint": "16.1C.41",
+  "date": "2026-10-26",
+  "timeZone": "Asia/Yerevan",
+  "sourceCommit": "a316ee14507af66e415e91672c6f5334d4c3ec5d",
+  "observedAt": "2026-10-25T20:49:52.548744+00:00",
+  "ownerAcceptanceReference": "docs/evidence/english-7-unit-03-audio-registration-authorization-20261026.json#70dc4e578948f9c8123095c2ea5c766625848ca0e62141e7759efed5fae7f22a",
+  "scope": {
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+    "releaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "audioVersionsAdded": 12,
+    "taskSetsAdded": 12,
+    "questionVersionsAdded": 25,
+    "savedQaPassesAdded": 25,
+    "totalAdditiveRows": 74,
+    "questionCoverage": {
+      "practice": 5,
+      "diagnostic": 8,
+      "mastery": 12
+    },
+    "questionBank": {
+      "practice": 60,
+      "diagnostic": 40,
+      "mastery": 60
+    },
+    "currentQuestionQa": {
+      "passed": 112,
+      "sourceHolds": 48,
+      "readingHolds": 42,
+      "publisherListeningHolds": 6
+    },
+    "currentQuestionReview": {
+      "needsReview": 160
+    }
+  },
+  "ownerDirection": {
+    "providedAsReady": true,
+    "confirmedUpload": true,
+    "independentAuditionClaimed": false,
+    "exactScriptCertificationClaimed": false,
+    "repeatListening": false,
+    "repeatTranscription": false,
+    "ordinaryQuestionApprovalCreated": false
+  },
+  "storage": {
+    "bucket": "learning-audio",
+    "private": true,
+    "fileSizeLimit": 8388608,
+    "ownerUploadedObjects": 12,
+    "priorObjectsPreserved": 28,
+    "totalObjects": 40,
+    "uploadedBytes": 7661721,
+    "metadataAndETagMatches": 12,
+    "storageMutationsByThisDelivery": 0,
+    "transcoding": false,
+    "allTwelveOriginalHashChecksReusedFromC40": true
+  },
+  "verification": {
+    "rollbackPassed": true,
+    "rollbackRestorationTables": 117,
+    "guardedCommitPassed": true,
+    "independentCommittedReadbackPassed": true,
+    "trackedTables": 117,
+    "entirelyUnchangedTableFingerprints": 110,
+    "changedTables": [
+      "public.item_answer_keys",
+      "public.item_options",
+      "public.item_qa_runs",
+      "public.item_versions",
+      "public.items",
+      "public.learning_audio_versions",
+      "public.learning_task_set_versions"
+    ],
+    "unaffectedRowsAndAllPriorHistoryPreserved": true,
+    "questionMeaningKeysAndOptionOrderUnchanged": true,
+    "existingRevisionServiceUsed": true,
+    "optionRowIdsRegeneratedByRevisionService": 100,
+    "taskSetOrderAndSourceFamilyChecksPassed": 12,
+    "savedQaExactMatch": 25,
+    "postCommitQaReevaluationExactMatch": 25,
+    "qaHandlerVersion": 14,
+    "qaHandlerSha256": "eff4f28780b0bdc618485a481acf41df7495c7d5945c4d55e6fc572ccffbc82a",
+    "deployedQaFilesMatchRepository": 4,
+    "qaWholeSkillContextItems": 31,
+    "sqlRuntimeDefinitionGuards": 9,
+    "qaExecution": "Actual deployed evaluateQa and authoringSourceRegistered over exact transaction and independent committed readback rows; saved automated results with run_by null. No HTTP/Auth/MFA claim.",
+    "nonblockingWarnings": [
+      "misconception_mapping_missing"
+    ],
+    "freshAuthenticatedPlaybackClaimed": false
+  },
+  "preserved": {
+    "schema": true,
+    "edgeRuntime": true,
+    "rlsAndAuthorization": true,
+    "learnerPoliciesAndPlaybackAllowances": true,
+    "unit1And2Evidence": true,
+    "c39WholeBankComparison": true,
+    "existingApprovals": true,
+    "learnerHistory": true,
+    "unit3ReleaseStatus": "draft",
+    "unit3PendingGates": 7,
+    "newHumanQuestionApprovals": 0
+  },
+  "privateEvidenceHashes": {
+    "receipt.json": "77e54f71f2ad1cee276632097ab50a303109f82586f1be2a2d0db5a3f304605c",
+    "registration.json": "cb1af758f9a33a4e5b7567960aecde2c66bee167633fcb265aa0ee50bbb59efa",
+    "rollback.sql": "88d5b0e9b960748f9b4879d69c4fbdcaa0026e9b5ca504ae777d8a42aaba60a6",
+    "rollback-restoration.json": "d6e03d555764b491960e0b20a60a391b88a8f4ccd963c3b02f0277ca439730a7",
+    "commit.sql": "5610a5061aeb6ecd175472aed4978d44f6616496b25be41a6a167b8a3b9cb65c",
+    "commit-result.json": "25c79eee6465f4454c93434bf18a45340d1708e8f8c6dd12d76ec005a9f39a27",
+    "committed-readback.json": "72ae867b6ead7a6442dcae501c857ac95fa97f286cf9a0f1b181a7d7eceb9e67",
+    "qa.json": "e93f718653a59595b67f2e48c9da801e7354eae99504ec29d0c8fe55009445a8",
+    "baseline.json": "8b7f6eb854bb3883e4894838fe02a9980af39150d78a0283b0b21c3baef82952",
+    "baseline-after.json": "3d31c3276175994118428bf5b489b0635db0fd564fc76779778f6385e327d6ab",
+    "pre-guards.json": "d6e03d555764b491960e0b20a60a391b88a8f4ccd963c3b02f0277ca439730a7",
+    "post-guards.json": "28f6bb29b3a930c59bc10035ce6ab27db01b3bf7f88118568ff6746ee6c151d6",
+    "storage-final.json": "741766ab36acc2e7fa9efcff55c8660943d8248ff04590d1bf1c73ba559e93a9"
+  },
+  "next": "Accept/register fourteen reading passages and four publisher sources, linking the remaining forty-two reading and six publisher-listening questions. Ordinary content/material review, curriculum reconciliation, numerical policy/form qualification and learner release remain separate.",
+  "restrictedRecoveryPackage": {
+    "filename": "haiedu-english7-unit3-audio-registration-evidence-20261026.zip",
+    "sha256": "711f525486d4edad549e45629778e20aee9e439613d3db07d4681687d2a0f322",
+    "bytes": 406450,
+    "files": 26,
+    "libraryFileId": "libfile_081931c3637c8191aec682dcaf78536f"
+  }
+}

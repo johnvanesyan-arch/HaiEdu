@@ -1,6 +1,8 @@
 # English 7 Unit 3 — whole-unit authoring and reviewer staging
 
-**Current C40 · 2026-10-26:** all twelve original recordings are received, decoded and mapped to 25 questions. A byte-identical package uses the required SHA-256 storage names. Private upload is pending; the dashboard is signed out and the connector has no upload operation. No source registration or QA change is claimed. Remaining reading/publisher acceptance and ordinary review stay separate. [Upload handoff](english-7-unit-03-audio-intake.md).
+**Current C41 · 2026-10-26:** all twelve supplied original recordings are registered through twelve shared sets. Their 25 questions are linked at v2 with saved passing QA. Unit3 now has 112 QA passes and 48 remaining source holds (42 reading, six publisher listening). Ordinary review and all seven release gates remain separate. [Delivery](english-7-unit-03-audio-registration.md).
+
+**Historical C40 · 2026-10-26:** all twelve original recordings are received, decoded and mapped to 25 questions. A byte-identical package uses the required SHA-256 storage names. Private upload is pending; the dashboard is signed out and the connector has no upload operation. No source registration or QA change is claimed. Remaining reading/publisher acceptance and ordinary review stay separate. [Upload handoff](english-7-unit-03-audio-intake.md).
 
 **Sprint 16.1C.39 · 2026-10-25 · one primary agent.** John’s “I approve” accepts `english7-u03-whole-unit-160-v1`, pinned to unchanged proposal SHA-256 `56491a84d5ea768b8c1afa371ee6ff3eb39fb5facaccd5598911714c3690aa82` at source `2d73e75b712eefa1eb063953239faa49f8c3f88b`. [Owner record](evidence/english-7-unit-03-owner-acceptance-20261025.json). This authorizes the bounded 100 protected-parallel assessment candidates and normal inactive staging; it does not approve newly authored content or activate learners.
 

@@ -1,0 +1,113 @@
+{
+  "schemaVersion": "haiedu-owner-source-registration-authorization-v1",
+  "checkpoint": "16.1C.41",
+  "recordedAt": "2026-10-25T20:45:28.351449+00:00",
+  "sourceCommit": "a316ee14507af66e415e91672c6f5334d4c3ec5d",
+  "reviewerProfileId": "67b9165f-9186-4746-a5e3-2f97c3cf0dfc",
+  "statements": [
+    "Audios are ready! Do you need me to add them to Supabase? Otherwise, proceed as planned.",
+    "uploaded"
+  ],
+  "interpretation": "John supplied these twelve recordings as ready, directed continuation and confirmed completing the requested private upload. This authorizes their bounded source registration and attachment to the existing twenty-five questions. It does not constitute independent audition or exact-script certification, ordinary question/material approval, publisher-use acceptance or learner activation.",
+  "independentListeningApprovalClaimed": false,
+  "repeatAudition": false,
+  "repeatTranscription": false,
+  "files": [
+    {
+      "sourceCode": "U03-P-AUDIO-WONDER-A",
+      "deliveryFilename": "english7-u03-practice-wonder-a.mp3",
+      "sha256": "f89084ec062e62dee9e0f7ee3028331546a3078fee5bff9ff7016efb9d708352",
+      "byteLength": 674386,
+      "durationMs": 41091,
+      "objectPath": "f89084ec062e62dee9e0f7ee3028331546a3078fee5bff9ff7016efb9d708352.mp3"
+    },
+    {
+      "sourceCode": "U03-P-AUDIO-WONDER-B",
+      "deliveryFilename": "english7-u03-practice-wonder-b.mp3",
+      "sha256": "8c7f0d75609670036d59d2e183ee261fb789f1f7576edad64c1388bae6e93103",
+      "byteLength": 650981,
+      "durationMs": 39628,
+      "objectPath": "8c7f0d75609670036d59d2e183ee261fb789f1f7576edad64c1388bae6e93103.mp3"
+    },
+    {
+      "sourceCode": "U03-DA-AUDIO-A",
+      "deliveryFilename": "english7-u03-da-listening-a.mp3",
+      "sha256": "d362d014af2273a4b290fdcc5e9c679f46a28d3e03dc825810e67c2b148f8b91",
+      "byteLength": 574494,
+      "durationMs": 34847,
+      "objectPath": "d362d014af2273a4b290fdcc5e9c679f46a28d3e03dc825810e67c2b148f8b91.mp3"
+    },
+    {
+      "sourceCode": "U03-DA-AUDIO-B",
+      "deliveryFilename": "english7-u03-da-listening-b.mp3",
+      "sha256": "a18c6976c4d3b25d1a595f8b63adc71b463abb9f92c91e614d381902e0a8d58b",
+      "byteLength": 662683,
+      "durationMs": 40359,
+      "objectPath": "a18c6976c4d3b25d1a595f8b63adc71b463abb9f92c91e614d381902e0a8d58b.mp3"
+    },
+    {
+      "sourceCode": "U03-DB-AUDIO-A",
+      "deliveryFilename": "english7-u03-db-listening-a.mp3",
+      "sha256": "61e71b0c9ab7b7728821e2e8a3b0b11bf9a49aed8dbb2bda7b53accd54c6bb58",
+      "byteLength": 667699,
+      "durationMs": 40673,
+      "objectPath": "61e71b0c9ab7b7728821e2e8a3b0b11bf9a49aed8dbb2bda7b53accd54c6bb58.mp3"
+    },
+    {
+      "sourceCode": "U03-DB-AUDIO-B",
+      "deliveryFilename": "english7-u03-db-listening-b.mp3",
+      "sha256": "0fd83477a29ff19b8cf89dca935eafa2aae6aabedd886d749197a6c5cf46122d",
+      "byteLength": 702390,
+      "durationMs": 42841,
+      "objectPath": "0fd83477a29ff19b8cf89dca935eafa2aae6aabedd886d749197a6c5cf46122d.mp3"
+    },
+    {
+      "sourceCode": "U03-MA-AUDIO-A",
+      "deliveryFilename": "english7-u03-ma-listening-a.mp3",
+      "sha256": "cee74f282d4cad947e77c0b708cbcd773fed99cd4e7a6d0f47fb173dcb3a91d6",
+      "byteLength": 699882,
+      "durationMs": 42684,
+      "objectPath": "cee74f282d4cad947e77c0b708cbcd773fed99cd4e7a6d0f47fb173dcb3a91d6.mp3"
+    },
+    {
+      "sourceCode": "U03-MA-AUDIO-B",
+      "deliveryFilename": "english7-u03-ma-listening-b.mp3",
+      "sha256": "1697f2c5c2c833ad6b0ec600e4d9d8cbc172dbd3365a828a9b86e420228d85f8",
+      "byteLength": 597482,
+      "durationMs": 36284,
+      "objectPath": "1697f2c5c2c833ad6b0ec600e4d9d8cbc172dbd3365a828a9b86e420228d85f8.mp3"
+    },
+    {
+      "sourceCode": "U03-MB-AUDIO-A",
+      "deliveryFilename": "english7-u03-mb-listening-a.mp3",
+      "sha256": "45b3200b6c9f3a3fcf856ed294cdd7c9216893b55236790963a8feefe7f8e126",
+      "byteLength": 598736,
+      "durationMs": 36362,
+      "objectPath": "45b3200b6c9f3a3fcf856ed294cdd7c9216893b55236790963a8feefe7f8e126.mp3"
+    },
+    {
+      "sourceCode": "U03-MB-AUDIO-B",
+      "deliveryFilename": "english7-u03-mb-listening-b.mp3",
+      "sha256": "ee68716c2cfeadff1874877f00bb90954060455b6ca46311b4dfc62d4698bf4c",
+      "byteLength": 629247,
+      "durationMs": 38269,
+      "objectPath": "ee68716c2cfeadff1874877f00bb90954060455b6ca46311b4dfc62d4698bf4c.mp3"
+    },
+    {
+      "sourceCode": "U03-MC-AUDIO-A",
+      "deliveryFilename": "english7-u03-mc-listening-a.mp3",
+      "sha256": "e794162ef178f5d9602a75d875ae8fa4dbf5482014d7f506d29a6d064a0f1015",
+      "byteLength": 599990,
+      "durationMs": 36441,
+      "objectPath": "e794162ef178f5d9602a75d875ae8fa4dbf5482014d7f506d29a6d064a0f1015.mp3"
+    },
+    {
+      "sourceCode": "U03-MC-AUDIO-B",
+      "deliveryFilename": "english7-u03-mc-listening-b.mp3",
+      "sha256": "3add664c635d433fbd25c728828bb52e5de5e1d8e20f61d70e3205474a7f4046",
+      "byteLength": 603751,
+      "durationMs": 36676,
+      "objectPath": "3add664c635d433fbd25c728828bb52e5de5e1d8e20f61d70e3205474a7f4046.mp3"
+    }
+  ]
+}
