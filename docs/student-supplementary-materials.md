@@ -1,0 +1,42 @@
+# Student supplementary materials — «Հավելյալ նյութեր»
+
+**Owner request:** 2026-10-27 Asia/Yerevan. John requests a section below «Իմ աշխատանքները» for additional practice materials supplied by teachers or the platform for each subject.
+
+**Status:** Added to the 16.5A review design and coverage matrix as S45. This is an accepted feature direction, not acceptance of the complete dashboard design or a live upload/delivery implementation. English remains paused after C47.
+
+## Student experience
+
+- Add a separate navigation entry, **«Հավելյալ նյութեր»**, directly below **«Իմ աշխատանքները»**. Also provide an entry from My work and the selected course. On narrow screens, the bottom navigation may show «Նյութեր» with the full accessible name and page heading.
+- Use the learner's selected authorized subject/course context. Filter by unit/topic, provider (**«Ուսուցչից» / «Հարթակից»**) and format. The context retains school, academic year, class, enrollment, grade, programme and release; a filter never grants access.
+- Show a concise title, description, subject/topic, provider and file/link type. In production, show publication/version information and file size when applicable and known. Offer preview/open and permitted download actions only for an available resource.
+- Distinguish no published materials, no filter matches, loading, failed loading, withdrawn material and lost access. Preserve filter focus and discard stale responses after context/account changes.
+- These are optional supplementary resources. Opening or downloading a file is not a completed learning attempt or mastery evidence. Required assignments, due dates, submissions and teacher feedback remain in My work through their governed workflows. Existing unit guides keep their own publication and assessment-access rules.
+
+## Recommended first delivery
+
+Start with **PDF worksheets/reference sheets and external HTTPS links**. These formats are a proposed bounded MVP default; the exact file allowlist/size limit is selected in the implementation contract. Later add audio, video or interactive resources through declared media capabilities. Existing protected listening recordings and assessed content do not become downloadable supplementary files.
+
+Teachers prepare, preview and share resources with their authorized subject classes. Teacher-shared material is visibly identified as such; it does not acquire platform-reviewed status by being uploaded. HaiEdu-authored material follows the existing platform content review/publication controls and its declared curriculum audience. The student page exposes published, currently authorized versions only. Publishing and withdrawal must be explicit, auditable operations.
+
+The student library, teacher upload/manage/share surface and platform author/reviewer surface form one capability slice. A working student menu alone does not complete the feature. Do not add student uploads, public sharing, social comments, automatic grading, badges or activity analytics to this slice.
+
+## Delivery and integration requirements
+
+This is a subject-neutral resource capability under **16.5B**, with end-to-end acceptance under **16.5C**. Its resource service and authoring surfaces must be implemented as a separate bounded slice after the dashboard design is accepted. The layout can be reviewed now; ordinary production must not expose a working materials control before authorized delivery exists. No new top-level sprint or formal-pilot gate is introduced by this design addition.
+
+The implementation contract must cover:
+
+1. Versioned resource metadata, explicit provider provenance, curriculum context and publication state. Preserve replacement/withdrawal audit history and avoid orphaned student links.
+2. Teacher assignment/class audience checks, platform publication entitlement and server-enforced list/detail/download access. An audience cannot be inferred from a filename, subject title or client filter. Cross-school and unauthorized class access must be denied.
+3. Protected file storage with a scoped upload flow, type/size validation and safe delivery. External links must have validated schemes and clear destinations; arbitrary active documents are not rendered inside the application. The final file policy belongs to the implementation review.
+4. Class/year/context changes, removal and stale-tab behavior. Prior-year availability follows the separate 18.5 history policy; this feature does not authorize historical writes or broaden access to old class files.
+5. Compatibility with existing guide visibility, learner assessment/help restrictions and content/release gates. General material sharing must not expose protected question-bank answers or assessed stimuli.
+6. Teacher and platform publication, learner filtering/opening/download, revision/withdrawal, denied access, empty/error states, Armenian labels, keyboard and 360/768/1280 px/200% zoom evidence before production acceptance.
+
+No resource table, endpoint, storage policy, upload action, notification or live resource is created in this design delivery. API names and payloads remain to be designed; the frontend must not assume an existing all-subject materials API.
+
+## Review preview and evidence
+
+The [interactive preview](design/student-dashboard/haiedu-student-review-2026-10-26.html) contains explicitly fictional English and Physics examples, three filters, material details, a My work/course shortcut and empty/withdrawn states. This illustrates the common component contract; it does not restrict the feature to those subjects. Network requests remain blocked and there are no real files, external links, credentials or learner records in the preview.
+
+The original [26 October evidence](evidence/student-dashboard-design-20261026.json) remains historical. The [27 October delta record](evidence/student-materials-design-20261027.json) covers the changed preview. Actual file delivery, teacher publishing and production isolation remain unimplemented and unverified.

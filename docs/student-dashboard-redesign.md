@@ -1,6 +1,6 @@
 # Sprint 16.5A — Student dashboard design review
 
-**Date:** 2026-10-26 Asia/Yerevan · **Status:** Concrete design and compatibility review prepared; owner design decision pending. No production interface or backend change.
+**Date:** 2026-10-26; updated 2026-10-27 Asia/Yerevan for supplementary materials · **Status:** Concrete design and compatibility review prepared; owner design decision pending. No production interface or backend change.
 
 ## Priority and subject checkpoint
 
@@ -35,6 +35,8 @@ The [7 October reference](design/student-dashboard/haiedu-student-mockup-2026-10
 
 **My work:** writing status, saved draft, returned revision and teacher feedback. The new navigation entry can index existing course-scoped routes in 16.5B without inventing a cross-context work API. An aggregate inbox/count remains conditional on a reviewed authorized projection. The preview demonstrates a fictional returned task and local draft interaction; it does not submit or grade anything.
 
+**Supplementary materials — owner request 2026-10-27:** add «Հավելյալ նյութեր» directly below My work, plus course/work shortcuts. Show authorized course/topic filters, teacher/platform provenance, format and details; handle no materials, no matching filters and withdrawn resources. Five fictional cards demonstrate the interface. PDFs/worksheets and HTTPS links are the recommended first delivery. A complete 16.5B slice must include teacher sharing, platform publication and protected resource delivery, with 16.5C acceptance. This addition does not implement uploads or change mastery. See the [scope](student-supplementary-materials.md) and S45 in the now 45-entry matrix.
+
 **Account:** current sign-in/security/privacy/join/deletion paths remain reachable. Year/history and placement use the separate 18.5 policy once implemented. No student rollover action, invented current-grade inference or school-wide history access.
 
 ## Compatibility and integration
@@ -47,7 +49,7 @@ Hide unavailable future controls in ordinary production. The design-review toolb
 
 ## Representative preview scenarios
 
-The review selector includes returning/multiple subjects; new learner/diagnostic prerequisite; one course; no enrollment; another authorized school; Grade 8 with future curriculum data; previous-year history; placement pending; subject delivery pending; loading; service error; access revoked; mastery ready; mastered unit; exhausted attempts. Future data examples are labelled in the review toolbar and are not available curriculum releases. The navigation supports Home, Courses, Progress, My work, Account and the separately enabled future History scenario. Course tabs retain Assessments → Course → Progress order. Filters, course selection, skill details, focus-task entry/exit, local draft save and error retry are interactive.
+The review selector includes returning/multiple subjects; new learner/diagnostic prerequisite; one course; no enrollment; another authorized school; Grade 8 with future curriculum data; previous-year history; placement pending; subject delivery pending; loading; service error; access revoked; mastery ready; mastered unit; exhausted attempts. Future data examples are labelled in the review toolbar and are not available curriculum releases. The navigation supports Home, Courses, Progress, My work, Supplementary materials, Account and the separately enabled future History scenario. The 27 October extension adds no-materials and withdrawn-material review scenarios; the original 15 remain. Mobile navigation uses the short visible label «Նյութեր» and full accessible name «Հավելյալ նյութեր». Course tabs retain Assessments → Course → Progress order. Filters, course selection, skill details, focus-task entry/exit, local draft save and error retry are interactive.
 
 ## Ideas for owner consideration
 
@@ -59,6 +61,8 @@ The review selector includes returning/multiple subjects; new learner/diagnostic
 These are suggestions, not silently approved gamification or new backend scope. The preview uses the first idea as a presentation of sample evidence and shows the existing writing workflow. Goals, avatars, push notifications and badges are not represented as live functionality.
 
 ## Delivery gates and next action
+
+**27 October delta evidence:** the materials extension passes 51 native Chromium layout checks (17 scenarios × 360/768/1280 px container widths) and 12 targeted interaction checks, including filters, keyboard focus, detail/Escape, work/course shortcuts and account access. A mobile filter-width overlap found during visual review was corrected; final layout checks include filter and navigation clipping. See [delta evidence](evidence/student-materials-design-20261027.json) and the [screenshot](design/student-dashboard/haiedu-student-materials-20261027.jpg). These checks do not establish live resource delivery or production acceptance; the original evidence remains historical.
 
 16.5A requires John's review of this concrete design and the matrix, as retained in [the roadmap](sprint-roadmap.md#sprint-165--student-dashboard-design--usability-pass): “Obtain product-owner review of the concrete mockups and complete functionality mapping before implementation.” The priority switch authorizes bringing the design work forward; it does not approve an unseen design. No unmapped capability or proposed removal is known from this source audit; future data availability and full four-subject rollout remain explicit dependencies.
 
