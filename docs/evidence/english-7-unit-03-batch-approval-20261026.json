@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "haiedu-mvp-bank-approval-evidence-v1",
+  "checkpoint": "16.1C.43",
+  "date": "2026-10-26",
+  "timeZone": "Asia/Yerevan",
+  "sourceCommit": "2539277ca63ac6b2063ad42624dc9d583b998d6d",
+  "observedAt": "2026-10-26T10:48:08.779059+00:00",
+  "policyVersion": "haiedu-mvp-bank-approval-v1",
+  "authorizationReference": "docs/evidence/english-7-unit-03-batch-approval-authorization-20261026.json#dc8bf0ec3e9cb98f44b6e654fed7c062b4788138021802f2aedc10ed95d3ddbf",
+  "scope": {
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+    "draftReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "bankSize": 160,
+    "bankCounts": {
+      "practice": 60,
+      "diagnostic": 40,
+      "mastery": 60
+    },
+    "newApprovals": 159,
+    "existingApprovalPreserved": 1,
+    "approvedAfter": 160,
+    "pendingQuestionApprovalsAfter": 0,
+    "currentQaPasses": 160,
+    "questionVersionCounts": {
+      "v1": 87,
+      "v2": 73
+    },
+    "newQuestionVersions": 0,
+    "newQaRows": 0,
+    "newReviewRows": 159
+  },
+  "acceptance": {
+    "origin": "Explicit owner acceptance in this conversation",
+    "recordType": "content / approved",
+    "meaning": "Expedited MVP bank acceptance with individual manual question review waived",
+    "existingIndividualApprovalPreserved": true,
+    "independentSmeValidationClaimed": false,
+    "humanItemByItemReviewClaimedForBatch": false,
+    "ordinaryPortalClickOrLiveAuthMfaClaimed": false,
+    "mechanism": "Existing service-only approve_item_if_family_qa_current invoked in one bounded administrative transaction; exact owner authorization and current versions recorded per item."
+  },
+  "verification": {
+    "qaHandlerVersion": 15,
+    "qaHandlerSha256": "006c7fd7c711f358cbda01775d7e124306312f806001f13fb29a58ae582dac60",
+    "exactDeployedFilesMatched": 4,
+    "qaAndSourceChecksPassed": 160,
+    "currentSavedQaRecordsReused": 160,
+    "familyStateFingerprintsMatched": 160,
+    "prePostApprovalQaResultsMatch": 160,
+    "qaExecution": "Exact deployed evaluateQa and authoringSourceRegistered over independently read complete current Unit3 bank; offline service projection, no HTTP/Auth/MFA claim; no repeated human content or listening review.",
+    "rollbackPassed": true,
+    "rollbackRestorationTableFingerprints": 117,
+    "guardedCommitPassed": true,
+    "independentCommittedReadbackPassed": true,
+    "trackedTables": 117,
+    "entirelyUnchangedTableFingerprints": 115,
+    "changedTables": [
+      "public.item_reviews",
+      "public.items"
+    ],
+    "allPriorRowsAndHistoryPreserved": true,
+    "newReviewNotesAndVersionBindingsVerified": 159,
+    "sqlRuntimeDefinitionsUnchanged": 4,
+    "questionMeaningKeysOptionsAndSourceLinksUnchanged": true,
+    "qaNonblockingWarnings": [
+      "misconception_mapping_missing"
+    ]
+  },
+  "preserved": {
+    "schema": true,
+    "edgeRuntime": true,
+    "rlsAndAuthorization": true,
+    "serviceOnlyApprovalGrant": true,
+    "materials": true,
+    "unit1And2": true,
+    "learnerHistory": true,
+    "playbackPolicies": true,
+    "c39WholeBankComparison": true,
+    "unit3ReleaseStatus": "draft",
+    "unit3PendingGates": 7,
+    "newLearnerActivation": false,
+    "validationState": "provisional_no_sme_review"
+  },
+  "temporaryPolicy": {
+    "appliesOnlyToExplicitlyAcceptedVersionManifests": true,
+    "newOrEditedQuestionsAutoApproved": false,
+    "laterVersionsNeedFreshAcceptanceAndQa": true,
+    "futureBanksNeedExplicitOwnerBankAcceptance": true,
+    "materialsAndLearnerReleaseSeparate": true,
+    "globalAutoApproveSwitchAdded": false,
+    "newApiOrDashboardAdded": false
+  },
+  "privateEvidenceHashes": {
+    "baseline.json": "3dfcfbd352012de09a35f19a736b605b1073e81aedbf82543e48a5c49bc79e95",
+    "baseline-after.json": "f8b9b1b100b07c02952b10691bd12f3d2e548a5d62d5c4ec6f31a2a2ecf0b66d",
+    "guards.json": "8a7a632bd4af2608a18b4e8fec367cae2c520f37ba6d4d144e4615e231cab9e7",
+    "guards-after.json": "f7867b5cc61e651a2c80e7b797405e06ebdd614c18978dffaf5deeb0e7fd5aa5",
+    "runtime.json": "80d706af98fcb0be02c9c3b36e727642ed9f6671bd18ba5868d43c6023544c1c",
+    "runtime-after.json": "80d706af98fcb0be02c9c3b36e727642ed9f6671bd18ba5868d43c6023544c1c",
+    "approval-manifest.json": "047492c2e1a5428544d153c15d19e31a0ba459e33467344f6c5737d013ec7426",
+    "owner-authorization.json": "dc8bf0ec3e9cb98f44b6e654fed7c062b4788138021802f2aedc10ed95d3ddbf",
+    "qa-evaluation.json": "7d4f826c595416ea396542b33506a3bf84ec5a49957efdefea0d3f81b756a8e9",
+    "qa-after.json": "00ded190b683c94a1cac17251ea49fb9262f610454cede8dfe78cbd9ac81f1f1",
+    "rollback.sql": "0cec37ea649381bf1c5131ff6596673d89d16055a410b9d30afe202db82fb09d",
+    "rollback-result.json": "3959c03e60ea5a7d0279a43cda78778d5a75693ea8450d8719bb615ddc337ee6",
+    "rollback-restoration.json": "8a7a632bd4af2608a18b4e8fec367cae2c520f37ba6d4d144e4615e231cab9e7",
+    "commit.sql": "f12a319c42399ac6025672f0b69e0bca0ab92aac0e51582097835bcaa60fa951",
+    "commit-result.json": "1d06b0386c89f87d29a8fcf8228aed1f128774da61ce63b776e8a0f9dc2b920b"
+  },
+  "next": "Material acceptance, current-programme reconciliation and the exact Unit3 policy/form/qualification contract, followed by separately authorized learner release and acceptance.",
+  "restrictedRecoveryPackage": {
+    "filename": "haiedu-english7-unit3-batch-approval-evidence-20261026.zip",
+    "byteLength": 954666,
+    "sha256": "a4a4e669ee7d6236ab9d46095bdaa4ba8e9858fe2874da73a36557f80dd22f3c",
+    "files": 24,
+    "libraryFileId": "libfile_d31cd69da99081918feff9c5b29f5706"
+  }
+}
