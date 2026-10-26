@@ -1,5 +1,7 @@
 # English 7 Unit 3 — accepted materials and configuration preparation
 
+**Current C46 · 2026-10-26:** the final Unit3 provisional-pilot packet binds the accepted C45 configuration and all nine published materials. Private source protection, exact retained material hashes and zero recorded exposure are confirmed; 56 focused regressions cover Unit3 and both earlier English units. Initial delivery is 52 core Practice questions, five 20-question forms, eight guides and W01; eight optional questions remain outside core delivery. The two existing QA contexts are planned for installation with activation, not added to shared fixtures yet. No production writes or learner activation; seven gates stay pending and independent specialist review is proposed deferred. Next: one bounded pilot authorization, then activation and learner acceptance. [Final decision](english-7-unit-03-final-release-decision.md).
+
 **16.1C.45 · 26 October 2026 · Roadmap 4.81.** John’s “yes” accepts the complete C44 numerical policy and the nine exact v1 materials, including W01’s prompt, four-criterion rubric and one-response teacher workload. The [acceptance record](evidence/english-7-unit-03-policy-material-acceptance-20261026.json) binds the proposal and material-manifest hashes at source `69dc34776565537a4c05f0db59e877cde83e3ee3`. It authorizes publication and configuration preparation/rehearsal, not learner activation or independent SME approval.
 
 ## Material publication completed

@@ -1,0 +1,540 @@
+{
+  "schemaVersion": "haiedu-english-unit3-release-decision-v1",
+  "checkpoint": "16.1C.46",
+  "date": "2026-10-26",
+  "status": "awaiting_final_pilot_activation_decision",
+  "preparedFromCommit": "6a9da00fa9e30e576df8a0c26422952639464440",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+  },
+  "configuration": {
+    "path": "docs/content/english-7-unit-03-configuration-summary.json",
+    "sha256": "0c6abca3966bb918138c2293155b5275cba44bba02a3bc27e237f068775c3254",
+    "protectedConfigurationSha256": "0c63602204d65c8e13a8f94b11d7552e4f1d4dfb56ace47752ebdc8d02997333",
+    "preparedRows": 471
+  },
+  "readContract": {
+    "path": "docs/content/english-7-unit-03-read-contract.json",
+    "sha256": "2240436c13519b968eecb4fb8d057e4f7a3dca1a4e62c0becf9dff195babfa04"
+  },
+  "proposal": {
+    "releaseStatus": "pilot",
+    "specialistReview": "deferred",
+    "independentSmeApproved": false,
+    "empiricalEquivalenceEstablished": false,
+    "unseenAssessmentClaim": false,
+    "sourceUseScope": "authenticated_enrolled_unit3_learners",
+    "sourceUseBasis": "existing_owner_course_instructions_and_C41_C42_source_acceptance",
+    "publicDownloadsAuthorized": false,
+    "questionBank": {
+      "practice": 60,
+      "diagnostic": 40,
+      "mastery": 60,
+      "corePractice": 52,
+      "optionalPracticeRetained": 8
+    },
+    "forms": [
+      "DA",
+      "DB",
+      "MA",
+      "MB",
+      "MC"
+    ],
+    "formSize": 20,
+    "extraMasteryReserve": 0,
+    "guides": 8,
+    "writingTasks": 1,
+    "speaking": "classroom_assessed",
+    "writing": "separate_teacher_feedback_no_automatic_gate",
+    "qaScope": "existing_designated_two_school_accounts_only",
+    "learningWrites": "separately_designated_fixture_run_only",
+    "enrollmentScope": "existing_authorized_English_programme_enrollments; no automatic membership creation"
+  },
+  "requiredOwnerRecord": {
+    "action": "activate_provisional_pilot",
+    "scope": {
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+      "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+    },
+    "decisionManifestSha256": null,
+    "ownerDirection": null,
+    "recordedAt": null,
+    "specialistReview": "deferred"
+  },
+  "sourceUse": {
+    "basis": "existing_owner_course_instructions_and_C41_C42_source_acceptance",
+    "owner": "John",
+    "instructions": [
+      {
+        "statement": "okay, we must include all the recordings and audio files, whichever are possible and strategically relevant in this course",
+        "scope": "Course recording integration direction, bounded by the Unit 3 accepted selection."
+      },
+      {
+        "statement": "I created the audios, I also can use the textbook adaptations freely.\nProceed.",
+        "scope": "Existing owner course-use representation; not independent licence verification."
+      },
+      {
+        "evidencePath": "docs/evidence/english-7-unit-03-audio-registration-authorization-20261026.json",
+        "scope": "C41 twelve original recordings supplied as ready and private upload confirmed."
+      },
+      {
+        "evidencePath": "docs/evidence/english-7-unit-03-source-registration-authorization-20261026.json",
+        "scope": "C42 fourteen passages and four publisher uses, including the exact prepared opening excerpt."
+      }
+    ],
+    "intendedDelivery": "authenticated_enrolled_unit3_learners",
+    "publicDownloadsAuthorized": false,
+    "independentPublisherOrVoiceProviderLicenceVerified": false,
+    "repeatOwnerContentAudioReviewRequired": false
+  },
+  "sourceProtection": {
+    "status": "proposed_protected_provisional_pilot",
+    "assessmentBodiesInPublicPacket": false,
+    "detailedFormMembershipInPublicPacket": false,
+    "unit1PublicBankExceptionInherited": false,
+    "privateBucketRequired": true,
+    "sourceFamilyExposureAndFormReservationEnforced": true,
+    "assessedPlayback": {
+      "maximumPlays": 2,
+      "scope": "session-recording",
+      "playbackRate": 1,
+      "transcriptAvailable": false
+    },
+    "practiceReviewReplay": "unlimited",
+    "recordedZeroExposureIsNotProofOfUnseenExternalExposure": true
+  },
+  "sourceInventory": {
+    "metadataObservedAt": "2026-10-26T12:14:50.789719+00:00",
+    "protectionObservedAt": "2026-10-26T13:49:43.415394+00:00",
+    "registeredTaskSets": 27,
+    "registeredAudio": 16,
+    "initiallyAllocatedTaskSets": [
+      {
+        "id": "024244ba-e0d8-58bb-b956-5a1f37fcaa05",
+        "sourceFamilyId": "d61f1778-d92d-5073-a980-ceb545ec270a",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "81225bf5317e71ad0200a045fb6a33df9f0c34b36d236ad5305ccee65e3671b2",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "05ecfeb6-5a09-50dc-a11a-e3297f252dd3",
+        "sourceFamilyId": "68833c08-df86-53fa-a1ab-d40769e7132b",
+        "kind": "audio",
+        "audioVersionId": "58e1efb4-1f11-5a33-8912-aed3df0f5c2f",
+        "stimulusHash": "bf5b9b002edc5317ba990cc4096a49e316f57ad3398ca02664776e58a2cdecf5",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "07fd0019-26d6-5be7-af46-74df079173cd",
+        "sourceFamilyId": "a5abc6b8-06b7-5bea-af12-53db9380fd80",
+        "kind": "audio",
+        "audioVersionId": "c2ff3974-7962-51bf-9b68-6bd15dc6e191",
+        "stimulusHash": "5ed0cc870ebe28371a57b3ff56383134e1cb9e64f024b550f374aa9750b782d8",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "0ea28560-2318-5783-89b0-8101d33e8e29",
+        "sourceFamilyId": "022a513b-e2d2-58be-a513-f3809cb81d51",
+        "kind": "audio",
+        "audioVersionId": "0d19ef61-f68f-597f-870f-2f206153860d",
+        "stimulusHash": "898e927f7e93b8d93ce0b16225c99be704558de0039bba766c45d1b10d897ed3",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "179ab89f-50dd-5dce-aba3-560b28064b6d",
+        "sourceFamilyId": "5fbbd84b-c971-52fc-a066-b10a657e5b4a",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "1fd764a5d34017c0efcb4be09ff044983ab356ae5e7bb61f5ef4e7e12c4c05fc",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "22bc081e-5d9e-5843-be78-53bf1d416af3",
+        "sourceFamilyId": "d2915bba-6ac3-5b91-a8f9-1dc52580a12f",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "b2b974aa60e974f9fdf9eed48c5be1467e7d86079f4601583c026ec7cdcee656",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "22ca723f-50fe-5261-974c-88545e6e09ca",
+        "sourceFamilyId": "adc48fb8-6e67-5550-a736-4be59ec6a8be",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "2050b1207e60a335716fdc232e329ae1d57940c98eb9328ab69d9c46860dc17d",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "36597d64-7182-5b36-8ef6-b297c4be57c2",
+        "sourceFamilyId": "bf87f660-d30f-5798-ab5c-c80db95b747b",
+        "kind": "audio",
+        "audioVersionId": "d33f9748-f7b7-597c-b760-ff3449f183d0",
+        "stimulusHash": "daa46cc153be9f934577b3fb91dfbb61db72005a0d241fe8749b1d272601e431",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "42d40d9e-2e65-5e5d-a901-4cf0e8187d95",
+        "sourceFamilyId": "18ea0a3e-e716-5f57-a8f6-076be2926f7c",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "40d8f4d0d60218c617a799b5d3ac34655f2e1a88cd3b2953abe656ccc867670a",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "451ab64c-d497-5bd1-9e06-361597713138",
+        "sourceFamilyId": "1e285be4-24ab-515f-af4e-0ed1a49f97b3",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "a1b27451d90242b4b98890b4e3a0456d970260bf52995f6db2a7fd755e76eb2b",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "45a7142b-c28b-5d1d-b2e3-f07707221930",
+        "sourceFamilyId": "e5778f37-5b57-53fe-a9c9-9b03d62f1574",
+        "kind": "audio",
+        "audioVersionId": "071e829e-70d7-5fc5-bf3c-84188503c4c2",
+        "stimulusHash": "7de298b6710ed78934dd5c97eb7571fdbf5769ab07dda4d8a5f83c5b604b3b89",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "5451210e-a260-5a3c-8cc5-b9b707fbce0d",
+        "sourceFamilyId": "1c951f2a-68cc-54f7-a2e9-fe6c0e900b0d",
+        "kind": "audio",
+        "audioVersionId": "f30d6db2-02aa-5c23-bbf5-eec37730f05d",
+        "stimulusHash": "5b26771e3df5d5e5363317a8e9eb4606c3a5623bc9e13a18814ebde33c9938a7",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "5fea7ec6-78c4-5f49-bda1-3e815a7f837a",
+        "sourceFamilyId": "843f9bd6-a24c-5209-afad-413402446be1",
+        "kind": "audio",
+        "audioVersionId": "edf0aede-6ad1-53fe-9084-590e31265a74",
+        "stimulusHash": "898587838bd6de9f4fbd585da61a5b7a4c24375b84604ce4e4d474555cd16fbc",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "6e780870-d192-5852-b658-152deaa0cd96",
+        "sourceFamilyId": "5902ddaa-26d9-54b6-a138-3f085e5c352c",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "c3fe5e9b6c8452793772f1d2b3bee807506025d353859c062382ce4f91a5d056",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "7b4e5fa1-5a58-5f2a-bd91-4ac7546da424",
+        "sourceFamilyId": "a69153c5-53c8-50a5-ad49-ec2666f46c2c",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "aa5b0370734decf0943fa5046da21aa8cc1ee9171b5ec0bc229f6ecc35d49c53",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "889654be-65b7-5d69-8d94-0ebafef83297",
+        "sourceFamilyId": "853d6d40-f90c-598f-a332-9527bffae2f7",
+        "kind": "audio",
+        "audioVersionId": "427899eb-679d-569d-827d-af551901bb54",
+        "stimulusHash": "baa08be3620bf0fca6aabb752262260668da844ab07ef35e9cb07ba68c62eeb3",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "96762cb4-6176-592b-9a80-e74f1e819063",
+        "sourceFamilyId": "922a547d-01b2-55b5-aa7c-d7ca2e78c24d",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "b6c8217849bb417078e6a52063f27b6f441ffaf600edeba321e702d8a369ef04",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "978d7116-d536-506c-a48b-167c6748177d",
+        "sourceFamilyId": "728d9452-4107-5610-a916-dae62893d305",
+        "kind": "audio",
+        "audioVersionId": "ca6255b4-6422-5f05-8b69-969e477c98ec",
+        "stimulusHash": "503cbc6b7ea9ce3a43a65c6301d9f821ea5235272f22460828b8bd9a205cdfb6",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "b449bbdd-a486-5532-8abc-c0be0e107948",
+        "sourceFamilyId": "ae92a92f-44e1-53ae-a934-ee0bccc3e434",
+        "kind": "audio",
+        "audioVersionId": "dc263803-e584-51fd-970a-5e993a69f211",
+        "stimulusHash": "61ab47f6ab6d32aaa8e3d08256df52bc6730fbcae9f8fb26dac9387b171906ba",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "b4962eb7-56a7-5143-8189-92af830e7f7e",
+        "sourceFamilyId": "0e9d315a-5629-5ff0-a047-fe3f6c4f54c2",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "b0b186fa90f4053b49c62c653652e04c84dc2b18e770c11c2054f85994c19a78",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "c45230b0-ae63-58ff-861c-6b01bed1c858",
+        "sourceFamilyId": "92ba6595-1a05-5680-ac83-4716ff55eb59",
+        "kind": "audio",
+        "audioVersionId": "ffdddbcd-07c6-5b27-9842-a2c6b25679a9",
+        "stimulusHash": "3c4938fbdc7f12e532aa4f7851ab0bec8bf486b3325b8bbbcd8e67f4bee83c9a",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "ccffcdfb-0ff7-5882-9697-7478f441420a",
+        "sourceFamilyId": "3763a0d7-62ed-5d18-ab64-9c509bda6dbb",
+        "kind": "audio",
+        "audioVersionId": "02750927-1dd2-5995-a42a-a5ac9835b462",
+        "stimulusHash": "67b861c8452e8e4a169ef3ba90f29ee5d2310f97b3afa7fda5ac388aa4559f4e",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "d4ac270e-2c5f-5394-a01f-52f747252f08",
+        "sourceFamilyId": "7f5a5a99-2d7a-5b18-a19f-4f51cccb39b7",
+        "kind": "audio",
+        "audioVersionId": "0ed8551c-882a-5947-99e6-d7693640284d",
+        "stimulusHash": "9e4bfa80b3ea68e97c26deb23011e5bfbca0ae95ee6fcde12ee15cca4efa7add",
+        "memberCount": 2,
+        "revoked": false
+      },
+      {
+        "id": "ecb44139-c601-5c95-a73e-3f9adfe2c2eb",
+        "sourceFamilyId": "2f27d614-9f6b-50ab-a3d5-026a3d8f5928",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "9d35a0f350a8e6a226c35fc3b0df200344014a4854fef8d2fb1a7d859dd201b8",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "f2f6f195-b8d1-51ba-9256-b4eb48be2059",
+        "sourceFamilyId": "be2ba318-d298-5b31-a430-89ed5eeb3447",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "da558108e74e34881b40c6df0159f1a2bc959c054a1ad9d8c762ccda61d97473",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "f49f9ea5-3e2d-524c-ba2b-37768a851183",
+        "sourceFamilyId": "c197ae62-4f28-56c6-af0d-40fa4b31439c",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "c53c3df5e796921c1b4dc2746b93a9828034791418e35d2483b845cd754b4386",
+        "memberCount": 3,
+        "revoked": false
+      },
+      {
+        "id": "ffa77117-222b-53b0-b148-c3f06f3acda1",
+        "sourceFamilyId": "66388d84-4ca9-51b2-a7e2-bc36f1b904a3",
+        "kind": "text",
+        "audioVersionId": null,
+        "stimulusHash": "1f0471fe2526ef676f667a9375d1485744e6a7a8fa5a8027380a76c5b3e40b33",
+        "memberCount": 3,
+        "revoked": false
+      }
+    ],
+    "optionalTaskSetsOutsideInitialAllocation": [],
+    "audio": [
+      {
+        "id": "02750927-1dd2-5995-a42a-a5ac9835b462",
+        "sha256": "d362d014af2273a4b290fdcc5e9c679f46a28d3e03dc825810e67c2b148f8b91",
+        "sourceFamilyId": "3763a0d7-62ed-5d18-ab64-9c509bda6dbb",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 574494
+      },
+      {
+        "id": "071e829e-70d7-5fc5-bf3c-84188503c4c2",
+        "sha256": "ee68716c2cfeadff1874877f00bb90954060455b6ca46311b4dfc62d4698bf4c",
+        "sourceFamilyId": "e5778f37-5b57-53fe-a9c9-9b03d62f1574",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 629247
+      },
+      {
+        "id": "0d19ef61-f68f-597f-870f-2f206153860d",
+        "sha256": "8c7f0d75609670036d59d2e183ee261fb789f1f7576edad64c1388bae6e93103",
+        "sourceFamilyId": "022a513b-e2d2-58be-a513-f3809cb81d51",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 650981
+      },
+      {
+        "id": "0ed8551c-882a-5947-99e6-d7693640284d",
+        "sha256": "45b3200b6c9f3a3fcf856ed294cdd7c9216893b55236790963a8feefe7f8e126",
+        "sourceFamilyId": "7f5a5a99-2d7a-5b18-a19f-4f51cccb39b7",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 598736
+      },
+      {
+        "id": "24decddb-1891-51d2-aff9-788f90a03c1f",
+        "sha256": "bde7cd85e57604417b4514e35d589d7dd2372cddc10e5e93af972f78440a8a7c",
+        "sourceFamilyId": "5a94c341-73f0-5ffe-a14d-c310282cc0ef",
+        "initiallyAllocated": false,
+        "objectPresent": true,
+        "byteLength": 1106015
+      },
+      {
+        "id": "427899eb-679d-569d-827d-af551901bb54",
+        "sha256": "0fd83477a29ff19b8cf89dca935eafa2aae6aabedd886d749197a6c5cf46122d",
+        "sourceFamilyId": "853d6d40-f90c-598f-a332-9527bffae2f7",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 702390
+      },
+      {
+        "id": "4653c181-0790-5e25-8690-56e0747299ea",
+        "sha256": "da1796989e7c3e3df7ab086fae6658c999929c878cea3adda4b8f67ba9baff0c",
+        "sourceFamilyId": "7b36ea33-8d5b-5474-a10e-04536cad661f",
+        "initiallyAllocated": false,
+        "objectPresent": true,
+        "byteLength": 624893
+      },
+      {
+        "id": "58e1efb4-1f11-5a33-8912-aed3df0f5c2f",
+        "sha256": "3add664c635d433fbd25c728828bb52e5de5e1d8e20f61d70e3205474a7f4046",
+        "sourceFamilyId": "68833c08-df86-53fa-a1ab-d40769e7132b",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 603751
+      },
+      {
+        "id": "c2ff3974-7962-51bf-9b68-6bd15dc6e191",
+        "sha256": "e794162ef178f5d9602a75d875ae8fa4dbf5482014d7f506d29a6d064a0f1015",
+        "sourceFamilyId": "a5abc6b8-06b7-5bea-af12-53db9380fd80",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 599990
+      },
+      {
+        "id": "ca6255b4-6422-5f05-8b69-969e477c98ec",
+        "sha256": "61e71b0c9ab7b7728821e2e8a3b0b11bf9a49aed8dbb2bda7b53accd54c6bb58",
+        "sourceFamilyId": "728d9452-4107-5610-a916-dae62893d305",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 667699
+      },
+      {
+        "id": "d33f9748-f7b7-597c-b760-ff3449f183d0",
+        "sha256": "1697f2c5c2c833ad6b0ec600e4d9d8cbc172dbd3365a828a9b86e420228d85f8",
+        "sourceFamilyId": "bf87f660-d30f-5798-ab5c-c80db95b747b",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 597482
+      },
+      {
+        "id": "dc263803-e584-51fd-970a-5e993a69f211",
+        "sha256": "f89084ec062e62dee9e0f7ee3028331546a3078fee5bff9ff7016efb9d708352",
+        "sourceFamilyId": "ae92a92f-44e1-53ae-a934-ee0bccc3e434",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 674386
+      },
+      {
+        "id": "edf0aede-6ad1-53fe-9084-590e31265a74",
+        "sha256": "cee74f282d4cad947e77c0b708cbcd773fed99cd4e7a6d0f47fb173dcb3a91d6",
+        "sourceFamilyId": "843f9bd6-a24c-5209-afad-413402446be1",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 699882
+      },
+      {
+        "id": "efd94406-5252-597c-91c7-31bc21985e9c",
+        "sha256": "785f18cfd3a3f2786e28d7dd339a04f9fb125ca151327079d56835f3bd4586fa",
+        "sourceFamilyId": "8e8bd4e6-7f85-5bb4-ad74-f12ce679d393",
+        "initiallyAllocated": false,
+        "objectPresent": true,
+        "byteLength": 2391918
+      },
+      {
+        "id": "f30d6db2-02aa-5c23-bbf5-eec37730f05d",
+        "sha256": "9a67723c05bd4a76753e9ee46d68607972c8800acaa63f3c6f08aecf6a2c8324",
+        "sourceFamilyId": "1c951f2a-68cc-54f7-a2e9-fe6c0e900b0d",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 2930606
+      },
+      {
+        "id": "ffdddbcd-07c6-5b27-9842-a2c6b25679a9",
+        "sha256": "a18c6976c4d3b25d1a595f8b63adc71b463abb9f92c91e614d381902e0a8d58b",
+        "sourceFamilyId": "92ba6595-1a05-5680-ac83-4716ff55eb59",
+        "initiallyAllocated": true,
+        "objectPresent": true,
+        "byteLength": 662683
+      }
+    ],
+    "optionalStandaloneAudioCount": 3
+  },
+  "materialPublication": {
+    "publishedMaterials": 9,
+    "guideCount": 8,
+    "writingTaskCount": 1,
+    "unchangedC45Fingerprints": true,
+    "derivedWritingProjectionVerified": true,
+    "approvalEvidenceReused": "16.1C.45; nine existing aal2 events, no new approval audit",
+    "observedAt": "2026-10-26T13:49:43.415394+00:00"
+  },
+  "qualification": {
+    "exactVersionBindingEvidence": "16.1C.45 actual-database rollback rehearsal",
+    "allFiveFormsPrepared": true,
+    "allFormsDisjointByItemAndSourceFamily": true,
+    "assessmentSourceFamilies": 20,
+    "assessmentAudioVersions": 10,
+    "practiceSourceFamilyOverlap": 0,
+    "independentSmeApproved": false,
+    "empiricalEquivalenceEstablished": false,
+    "activationMustRecheckExactVersionsAndSourceRevocation": true
+  },
+  "existingEvidence": {
+    "docs/evidence/english-7-unit-03-authoring-20261025.json": "82e048d50abb0c538bc89cccf189240241e936376d9b7e6ecde46d11882cac44",
+    "docs/evidence/english-7-unit-03-audio-registration-authorization-20261026.json": "70dc4e578948f9c8123095c2ea5c766625848ca0e62141e7759efed5fae7f22a",
+    "docs/evidence/english-7-unit-03-audio-registration-20261026.json": "99d2e21689772308880d3c730a327579825fdd40e7cb20625baeca6298a371a3",
+    "docs/evidence/english-7-unit-03-source-registration-authorization-20261026.json": "cea5954b1efe6c71f413453345ad06a68cf41b4769b1fccee4dd0ae47ded54aa",
+    "docs/evidence/english-7-unit-03-source-registration-20261026.json": "9a5ff7dcbffe20eff98f1e4c5d649042f1a5ed3df66a120e8077849c4778aff6",
+    "docs/evidence/english-7-unit-03-batch-approval-authorization-20261026.json": "dc8bf0ec3e9cb98f44b6e654fed7c062b4788138021802f2aedc10ed95d3ddbf",
+    "docs/evidence/english-7-unit-03-batch-approval-20261026.json": "cfa56ed028960d38dfdc6d5be733325cd640f0fcb565342fb0c53780c6ad711a",
+    "docs/evidence/english-7-unit-03-curriculum-registration-20261026.json": "7bf191f60fffabdbee92d15e6d826830755bf5e7086e9cc160432272cb9c416a",
+    "docs/evidence/english-7-unit-03-policy-proposal-20261026.json": "e1dbde54977612a7f567c29883d5a773f5e2266172dc5e366209ab7bcdeb71ab",
+    "docs/evidence/english-7-unit-03-policy-material-acceptance-20261026.json": "656de8a19047aad88e559695e3fead034004f6d6d5d4ec4711fe06807e25931c",
+    "docs/evidence/english-7-unit-03-configuration-preparation-20261026.json": "6407565528682201f8b69634a7714e4d972e40a830eb897bfbdb474c9b8512f2"
+  },
+  "learnerActivationAuthorized": false,
+  "productionWrites": 0,
+  "afterApproval": [
+    "Record bounded owner authorization against this exact manifest hash.",
+    "Recheck current accepted versions, published materials/W01, private objects and source revocation; compile and rehearse activation preserving unrelated data.",
+    "Bind and activate only Unit 3 as a provisional pilot, retaining the specialist gate as pending.",
+    "Run exact-deployed-main guarded read acceptance, then designated full learner/audio/writing verification."
+  ],
+  "qaFixturePlan": {
+    "path": "docs/qa/english-unit3-fixture-plan.json",
+    "sha256": "41d3f09711fc3e3252cf826e8f75e866795e1510286093c0d4d26ddbdccda024",
+    "contexts": 2,
+    "installWithActivation": true,
+    "sharedFixtureManifestChanged": false
+  }
+}
