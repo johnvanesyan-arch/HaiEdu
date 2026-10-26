@@ -5,7 +5,21 @@ on:
   push:
     branches: [main]
     paths:
-      # Prepared only: full dependency routing is required with verified activation.
+      # Activated pilot: retain the complete browser/API/fixture dependency graph.
+      - web/**
+      - supabase/functions/**
+      - supabase/migrations/**
+      - scripts/**
+      - package.json
+      - package-lock.json
+      - vercel.json
+      - .github/workflows/english-unit3-pilot-read-acceptance.yml
+      - docs/qa/additional-programme-fixtures.json
+      - docs/qa/english-unit3-fixture-plan.json
+      - docs/content/english-7-unit-03-configuration-summary.json
+      - docs/content/english-7-unit-03-release-decision.json
+      - docs/content/english-7-unit-03-read-contract.json
+      - docs/evidence/english-7-unit-03-owner-activation-20261026.json
       - docs/evidence/english-7-unit-03-pilot-activation.json
 
 permissions:

@@ -1,4 +1,6 @@
-# English 7 Unit 3 — authorized activation, inactive import and execution hold
+# English 7 Unit 3 — historical activation preparation and connector hold
+
+**Resolved under C47 · 26 October 2026 · Roadmap 4.84:** the owner authorized dashboard fallback and the exact transaction committed. Unit3 is now an active provisional pilot with independent readback and all 117 preservation scopes verified. See [activation delivery](english-7-unit-03-pilot-activation.md). The remainder preserves the earlier preparation/hold evidence; it is not a current execution instruction.
 
 **16.1C.47 · 26 October 2026 · Roadmap 4.83. Owner authorization is complete; learner activation has not committed.**
 
