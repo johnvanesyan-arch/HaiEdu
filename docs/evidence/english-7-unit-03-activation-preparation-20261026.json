@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "haiedu-english-unit3-activation-preparation-v1",
+  "checkpoint": "16.1C.47",
+  "date": "2026-10-26",
+  "timezone": "Asia/Yerevan",
+  "status": "owner_authorized_inactive_configuration_staged_activation_blocked_by_connector",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+  },
+  "preparedSourceCommit": "fa5dc8108f9a357a20b74e0a19b3865b8192e625",
+  "ownerAuthorizationPath": "docs/evidence/english-7-unit-03-owner-activation-20261026.json",
+  "ownerAuthorizationSha256": "e4b05f69642f7651da7a5ac117435796b4bf5a066e0a6096626d884b7f1f38b0",
+  "learnerActivationAuthorized": true,
+  "specialistReview": "owner_deferred_pending",
+  "independentSmeApproved": false,
+  "unseenAssessmentClaim": false,
+  "sourceUseBasis": "existing_owner_course_instructions",
+  "acceptedScope": {
+    "approvedBank": 160,
+    "corePractice": 52,
+    "diagnosticBank": 40,
+    "masteryBank": 60,
+    "forms": 5,
+    "questionsPerForm": 20,
+    "publishedGuides": 8,
+    "publishedWritingTasks": 1,
+    "optionalPracticeHeld": 8,
+    "speaking": "classroom_assessed"
+  },
+  "registration": {
+    "inactiveBatchesCommitted": 15,
+    "configurationRowsExact": 471,
+    "serializationFencesAddedByExistingTriggers": 160,
+    "allPriorRowsPreservedAcrossTables": 117,
+    "entirelyUnchangedTables": 107,
+    "questionSourceMaterialApprovalAndLearnerChanges": 0,
+    "newAccountsEnrollmentsClasses": 0
+  },
+  "rehearsal": {
+    "configurationRows": 471,
+    "preservedScopes": 117,
+    "rollbackRestoredTables": 117,
+    "policiesMatched": 4,
+    "masteryVersionBindingsMatched": 60,
+    "commitDiffOnlyTransactionDisposition": true,
+    "rehearsalSqlSha256": "afe5eb34846225c225ebc31a54242f2dd536a602341d81bbf9260eceb579e2d4",
+    "activationSqlSha256": "5a7d8ff05776a80414d05bf88a72ba75b4477bf6b4b587fb972e153d9735be74",
+    "transportFailuresBeforeStaging": 2,
+    "aliasCollisionCorrectedBeforeActivation": true,
+    "commitRequestExpirations": 2,
+    "finalActivationCommitted": false,
+    "finalSqlBytes": 16071,
+    "allFourPoliciesMatchAcceptedC45": true,
+    "allSixtyMasteryBindingsMatchC45DatabaseRehearsal": true,
+    "normalDatabaseValidatorsUsed": true,
+    "stagedDatabaseGuardSha256": "5ab29d64e925bca404b11dd8788ccc8de5fb24157e2085b32de1a1e33981b9c0",
+    "finalCompactTransactionBytes": 16071
+  },
+  "connectorFailure": {
+    "error": "McpServerError: Invalid or expired requestState",
+    "largeRollbackRequestsRejected": 2,
+    "commitRequestsRejected": 2,
+    "inactiveImportRequestsSucceeded": 15,
+    "compactRollbackRehearsalsSucceeded": 2,
+    "databaseAliasCollisionDetectedAndCorrectedBeforeActivation": true,
+    "commitApplied": false,
+    "rootCause": "Unresolved connector request-state expiry; no database rejection returned for commit requests.",
+    "databaseLogDiagnostic": "One SQL alias-collision error is present; no returned database error explains the connector commit expirations.",
+    "alternateExecution": "Await browser-fallback approval or restored connector execution; owner pilot authorization is already recorded."
+  },
+  "currentStoredState": {
+    "releaseStatus": "draft",
+    "activatedAt": null,
+    "activePolicyBindings": 0,
+    "passedGates": 0,
+    "pendingGates": 7,
+    "poolsFormsBlueprints": "draft",
+    "runtimeBinding": "inactive",
+    "fixturePlanInstalled": false,
+    "learnerActivationCommitted": false,
+    "liveLearnerAcceptanceRun": false
+  },
+  "verification": {
+    "focusedNodeTests": 19,
+    "newOperatorGuardCases": 43,
+    "privateAudioObjectsVerified": 16,
+    "sharedSourcesVerified": 27,
+    "publishedMaterialsVerified": 9,
+    "writingProjectionVerified": true,
+    "ownerContentAndAudioAcceptanceReused": true,
+    "qaDependencyGraphTargets": 9,
+    "schemaRuntimeRlsApiChanged": false,
+    "unchangedC46LiveEvidenceReused": {
+      "sourceCommit": "fa5dc8108f9a357a20b74e0a19b3865b8192e625",
+      "unit1": {
+        "runId": 40337512708,
+        "checks": 124,
+        "nestedIsolation": 54
+      },
+      "unit2": {
+        "runId": 40337512686,
+        "checks": 136,
+        "nestedIsolation": 54
+      }
+    }
+  },
+  "sourceHashes": {
+    "activationCompiler": "bef989d93ca5c30d589802c14f36888ff67d5ee31418303ffc05b499ddd9bcb8",
+    "activationTests": "cd834e50427941bc8c0ae751bfbb6384e42401d4807e2104826bfcbebc3ef4ee",
+    "approvedConfiguration": "0c63602204d65c8e13a8f94b11d7552e4f1d4dfb56ace47752ebdc8d02997333",
+    "decisionManifest": "66c8b6d7957398c0bda45830cbf959e0665fef7d340fb35e4b27121f5b19f99f",
+    "rehearsalSqlPrivate": "afe5eb34846225c225ebc31a54242f2dd536a602341d81bbf9260eceb579e2d4",
+    "activationSqlPrivate": "5a7d8ff05776a80414d05bf88a72ba75b4477bf6b4b587fb972e153d9735be74"
+  },
+  "next": "Finish the already-authorized guarded activation, install the two existing QA contexts and full workflow routing, then exact-deployment reads and designated learner/audio/writing actions. Units 4–6 follow before Mathematics."
+}

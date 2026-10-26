@@ -1,0 +1,26 @@
+{
+  "schemaVersion": "haiedu-english-unit3-owner-activation-v1",
+  "checkpoint": "16.1C.47",
+  "owner": "John",
+  "action": "activate_provisional_pilot",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+  },
+  "preparedSourceCommit": "fa5dc8108f9a357a20b74e0a19b3865b8192e625",
+  "configurationSha256": "0c6abca3966bb918138c2293155b5275cba44bba02a3bc27e237f068775c3254",
+  "decisionManifestSha256": "66c8b6d7957398c0bda45830cbf959e0665fef7d340fb35e4b27121f5b19f99f",
+  "readContractSha256": "2240436c13519b968eecb4fb8d057e4f7a3dca1a4e62c0becf9dff195babfa04",
+  "fixturePlanSha256": "41d3f09711fc3e3252cf826e8f75e866795e1510286093c0d4d26ddbdccda024",
+  "protectedConfigurationSha256": "0c63602204d65c8e13a8f94b11d7552e4f1d4dfb56ace47752ebdc8d02997333",
+  "ownerDirection": "I do",
+  "recordedAt": "2026-10-26T14:32:32.158436+00:00",
+  "specialistReview": "deferred",
+  "independentSmeApproved": false,
+  "unseenAssessmentClaim": false,
+  "sourceUseBasis": "existing_owner_course_instructions",
+  "sourceUseScope": "authenticated_enrolled_unit3_learners",
+  "publicDownloadsAuthorized": false,
+  "interpretation": "Direct response to the C46 final request to activate the exact Unit 3 provisional pilot for existing English learners with independent specialist review deferred. The scope is 52 core Practice questions, five 20-question assessment forms, eight guides and W01; eight optional Practice questions remain outside initial delivery. Existing accepted content, audio, numerical policy and source-use instructions remain in force."
+}

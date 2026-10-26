@@ -1,6 +1,8 @@
 # English 7 Unit 3 — final provisional-pilot decision
 
-**16.1C.46 · 26 October 2026 · Roadmap 4.82. Packet and guarded read acceptance prepared; learner activation awaits the final owner decision.**
+**Current C47 · 2026-10-26:** John authorizes the exact C46 provisional pilot with independent specialist review deferred. All 471 configuration rows are imported while inactive and independently verified; all prior rows across 117 tables are preserved. Actual four-policy/sixty-Mastery-binding rehearsal and complete rollback restoration pass. The final connector commit requests expire, so Unit3 remains draft with seven pending gates and no active policy bindings. Owner acceptance is complete; execute the already-authorized guarded transaction through a working route, then install the planned fixtures and run learner acceptance. [Execution handoff](english-7-unit-03-activation-preparation.md).
+
+**Historical 16.1C.46 · 26 October 2026 · Roadmap 4.82. Packet and guarded read acceptance prepared; the final owner decision was subsequently accepted under C47 above.**
 
 The accepted Unit 3 bank, registered sources, current-programme reconciliation, published materials and numerical policy now have an exact provisional-pilot packet. It binds the unchanged C45 configuration and proposes delivery to existing authorised English-programme learners. John's content, recording and policy acceptance is reused; this is not another request to review those materials.
 
@@ -53,7 +55,7 @@ The [fixture plan](qa/english-unit3-fixture-plan.json) reuses the two existing, 
 
 ## Final decision and delivery
 
-**Requested decision:** authorise this exact Unit 3 provisional pilot for existing authorised English enrolments, using the accepted policy and protected source plan, with independent specialist review deferred and clearly left pending. The initial scope is 52 core Practice questions, five 20-question assessment forms, eight guides and W01; the eight optional questions remain outside core delivery.
+**Historical C46 requested decision — accepted under C47:** authorise this exact Unit 3 provisional pilot for existing authorised English enrolments, using the accepted policy and protected source plan, with independent specialist review deferred and clearly left pending. The initial scope is 52 core Practice questions, five 20-question assessment forms, eight guides and W01; the eight optional questions remain outside core delivery.
 
 The repository [AGENTS.md](../AGENTS.md) states: “Existing authorization boundaries and explicit rollout/content gates remain in force; platform-wide consistency does not authorize opening new curriculum releases or changing learning criteria.” C45's material/policy acceptance explicitly excluded learner activation. This packet and its verified tooling therefore precede the separate release decision.
 
