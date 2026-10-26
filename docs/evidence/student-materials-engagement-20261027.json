@@ -1,0 +1,773 @@
+{
+  "date": "2026-10-27",
+  "timezone": "Asia/Yerevan",
+  "scope": "16.5A supplementary-materials design refinement only",
+  "baseCommit": "8b880a176e8972e2deee676987f905abda23abb6",
+  "ownerRequest": "Can we improve and make this more engaging?",
+  "status": "design_prepared; full_design_acceptance_pending; production_delivery_not_implemented",
+  "matrixEntries": 45,
+  "previewSha256": "d3cf7674cbafc8c02e939155506c786052593a800d0938643cd087bb1684f351",
+  "screenshot": "docs/design/student-dashboard/haiedu-student-materials-engaging-20261027.jpg",
+  "screenshotSha256": "5e22d6b120adce0cb378e0711a9016417ed30011d7446b007e1ebd76e1b13367",
+  "browser": {
+    "engine": "native Chromium through CUA",
+    "scenarioCount": 17,
+    "additionalLayoutCases": [
+      "active_filters_open",
+      "physics_materials"
+    ],
+    "containerWidths": [
+      360,
+      768,
+      1280
+    ],
+    "layoutChecks": 57,
+    "layoutFailures": 0,
+    "interactionChecks": [
+      {
+        "name": "live_search_and_focus",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Անգլերեն · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԻմ բնավորությունն ու ոճըԵրաժշտությունը՝ համամարդկային լեզուՄեր մոլորակըՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածու1 նյութPDFՎարժանքմոտ 12 րոպեԵրաժշտության մասին բառեր և արտահայտություններԱմրապնդիր երաժշտության մասին խոսելու բառապաշարդ։Երաժշտությունը՝ համամարդկային լեզուՀարթակիցՆախադիտել նյութը \n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [
+            "en-music"
+          ],
+          "detailsOpen": false,
+          "focused": "materialSearch",
+          "query": "երաժշտ",
+          "selectedPurpose": "all"
+        }
+      },
+      {
+        "name": "practice_chip",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Անգլերեն · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԻմ բնավորությունն ու ոճըԵրաժշտությունը՝ համամարդկային լեզուՄեր մոլորակըՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածու2 նյութPDFՎարժանքմոտ 10 րոպեԲնության մասին բառապաշարԿրկնիր բառերը և օգտագործիր դրանք քո օրինակներում։Մեր մոլորակըՈւսուցչի առաջարկըՆախադիտել նյութը PDFՎարժանքմոտ 12 րոպեԵրաժշտության մասին բառեր և արտահայտություններԱմրապնդիր երաժշտության մասին խոսելու բառապաշարդ։Երաժշտությունը՝ համամարդկային լեզուՀարթակիցՆախադիտել նյութը \n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [
+            "en-vocabulary",
+            "en-music"
+          ],
+          "detailsOpen": false,
+          "focused": "",
+          "query": "",
+          "selectedPurpose": "practice"
+        }
+      },
+      {
+        "name": "reading_chip",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Անգլերեն · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԻմ բնավորությունն ու ոճըԵրաժշտությունը՝ համամարդկային լեզուՄեր մոլորակըՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածու1 նյութՀղումԸնթերցանությունմոտ 8 րոպեՄեր մոլորակը․ լրացուցիչ ընթերցանությունԿարդա, առանձնացրու հիմնական միտքը և ձևակերպիր քո կարծիքը։Մեր մոլորակըՀարթակիցՆախադիտել նյութը \n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [
+            "en-reading"
+          ],
+          "detailsOpen": false,
+          "focused": "",
+          "query": "",
+          "selectedPurpose": "read"
+        }
+      },
+      {
+        "name": "combined_search_empty",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Անգլերեն · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԻմ բնավորությունն ու ոճըԵրաժշտությունը՝ համամարդկային լեզուՄեր մոլորակըՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածու0 նյութԸնտրված զտիչներով նյութեր չկանՓորձիր այլ բառ կամ վերականգնիր բոլոր նյութերի ցուցակը։Ցույց տալ բոլոր նյութերը\n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [],
+          "detailsOpen": false,
+          "focused": "materialSearch",
+          "query": "երաժշտ",
+          "selectedPurpose": "read"
+        }
+      },
+      {
+        "name": "clear_filters_and_focus",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Անգլերեն · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԻմ բնավորությունն ու ոճըԵրաժշտությունը՝ համամարդկային լեզուՄեր մոլորակըՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածու3 նյութPDFՎարժանքմոտ 10 րոպեԲնության մասին բառապաշարԿրկնիր բառերը և օգտագործիր դրանք քո օրինակներում։Մեր մոլորակըՈւսուցչի առաջարկըՆախադիտել նյութը ՀղումԸնթերցանությունմոտ 8 րոպեՄեր մոլորակը․ լրացուցիչ ընթերցանությունԿարդա, առանձնացրու հիմնական միտքը և ձևակերպիր քո կարծիքը։Մեր մոլորակըՀարթակիցՆախադիտել նյութը PDFՎարժանքմոտ 12 րոպեԵրաժշտության մասին բառեր և արտահայտություններԱմրապնդիր երաժշտության մասին խոսելու բառապաշարդ։Երաժշտությունը՝ համամարդկային լեզուՀարթակիցՆախադիտել նյութը \n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [
+            "en-vocabulary",
+            "en-reading",
+            "en-music"
+          ],
+          "detailsOpen": false,
+          "focused": "materialSearch",
+          "query": "",
+          "selectedPurpose": "all"
+        }
+      },
+      {
+        "name": "armenian_case_insensitive_search",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Անգլերեն · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԻմ բնավորությունն ու ոճըԵրաժշտությունը՝ համամարդկային լեզուՄեր մոլորակըՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածու1 նյութPDFՎարժանքմոտ 10 րոպեԲնության մասին բառապաշարԿրկնիր բառերը և օգտագործիր դրանք քո օրինակներում։Մեր մոլորակըՈւսուցչի առաջարկըՆախադիտել նյութը \n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [
+            "en-vocabulary"
+          ],
+          "detailsOpen": false,
+          "focused": "materialSearch",
+          "query": "ԲՆՈՒԹՅԱՆ",
+          "selectedPurpose": "all"
+        }
+      },
+      {
+        "name": "keyboard_filter_disclosure",
+        "passed": true
+      },
+      {
+        "name": "provider_format_topic_combination",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Անգլերեն · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԻմ բնավորությունն ու ոճըԵրաժշտությունը՝ համամարդկային լեզուՄեր մոլորակըՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածու1 նյութPDFՎարժանքմոտ 12 րոպեԵրաժշտության մասին բառեր և արտահայտություններԱմրապնդիր երաժշտության մասին խոսելու բառապաշարդ։Երաժշտությունը՝ համամարդկային լեզուՀարթակիցՆախադիտել նյութը \n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [
+            "en-music"
+          ],
+          "detailsOpen": true,
+          "focused": "",
+          "query": "",
+          "selectedPurpose": "all"
+        }
+      },
+      {
+        "name": "subject_switch_resets_search_and_filters",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Ֆիզիկա · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԲնության ուսումնասիրությունըՆյութի կառուցվածքըՇարժում և փոխազդեցությունՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածու2 նյութPDFՎարժանքմոտ 10 րոպեՆյութի կառուցվածքը․ կրկնության թերթիկԿրկնիր հիմնական հասկացությունները և փորձիր բացատրել քո բառերով։Նյութի կառուցվածքըՈւսուցչի առաջարկըՆախադիտել նյութը ՀղումԸնթերցանությունԴիտում և չափումԼրացուցիչ ընթերցանություն և ինքնուրույն աշխատանքի առաջարկներ։Բնության ուսումնասիրությունըՀարթակիցՆախադիտել նյութը \n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [
+            "ph-particles",
+            "ph-observation"
+          ],
+          "detailsOpen": false,
+          "focused": "",
+          "query": "",
+          "selectedPurpose": "all"
+        }
+      },
+      {
+        "name": "missing_duration_is_omitted",
+        "passed": true,
+        "detail": {
+          "text": "ՀղումԸնթերցանությունԴիտում և չափումԼրացուցիչ ընթերցանություն և ինքնուրույն աշխատանքի առաջարկներ։Բնության ուսումնասիրությունըՀարթակիցՆախադիտել նյութը ",
+          "time": false
+        }
+      },
+      {
+        "name": "preview_explains_goal_and_estimate",
+        "passed": true,
+        "detail": {
+          "open": true,
+          "text": "PDFՎարժանք · Ուսուցչիցմոտ 10 րոպեԻնչի՞ վրա կաշխատեսԿրկնիր հիմնական հասկացությունները և փորձիր բացատրել քո բառերով։Ֆիզիկա · Նյութի կառուցվածքըՏևողությունը տրամադրողի մոտավոր գնահատականն է։ Աշխատիր քեզ հարմար տեմպով։Սա նյութի նախադիտման օրինակ է։ Իրական ֆայլ կամ հղում դեռ կցված չէ։Փակել"
+        }
+      },
+      {
+        "name": "escape_restores_card_focus",
+        "passed": true,
+        "detail": {
+          "focus": "ph-particles",
+          "open": false
+        }
+      },
+      {
+        "name": "reduced_motion_preview",
+        "passed": true,
+        "detail": {
+          "calm": true,
+          "duration": "0s",
+          "transform": "none"
+        }
+      },
+      {
+        "name": "active_filter_count",
+        "passed": true
+      },
+      {
+        "name": "final_no_motion_style",
+        "passed": true
+      },
+      {
+        "name": "normal_motion_restored",
+        "passed": true,
+        "detail": {
+          "calm": false,
+          "duration": "0.18s, 0.18s, 0.18s"
+        }
+      },
+      {
+        "name": "no_motion_loading_indicator",
+        "passed": true
+      },
+      {
+        "name": "empty_state_without_materials",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Անգլերեն · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԻմ բնավորությունն ու ոճըԵրաժշտությունը՝ համամարդկային լեզուՄեր մոլորակըՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածուԱյս առարկայի համար հավելյալ նյութեր դեռ չկանԴրանք կհայտնվեն այստեղ, երբ ուսուցիչը կամ հարթակը նյութ տրամադրի։\n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [],
+          "detailsOpen": false,
+          "focused": "reducePreviewMotion",
+          "query": "",
+          "selectedPurpose": "all"
+        }
+      },
+      {
+        "name": "withdrawn_state_without_preview_action",
+        "passed": true,
+        "detail": {
+          "body": "Հավելյալ նյութերԸնտրիր քեզ հետաքրքրող նյութը և փորձիր ինքնուրույն։Դասընթաց Անգլերեն · 7-րդ դասարանՖիզիկա · 7-րդ դասարան\n Անգլերեն · Քո տեմպովԱմրապնդիր գիտելիքդ,բացահայտիր ավելին։Վարժություններ և ընթերցանություն՝ քո ուսուցչից ու հարթակից։ Ընտրիր այն, ինչի վրա ուզում ես աշխատել։Լրացուցիչ ուսուցում՝ քո ցանկությամբ\n Որոնել հավելյալ նյութերումԲոլորըՎարժանքԸնթերցանությունԶտիչներԹեմաԲոլոր թեմաներըԻմ բնավորությունն ու ոճըԵրաժշտությունը՝ համամարդկային լեզուՄեր մոլորակըՈվ է տրամադրելԲոլորըՈւսուցչիցՀարթակիցՁևաչափԲոլորըPDFՀղում\n Նյութերի հավաքածուԱյս նյութն այլևս հասանելի չէՆյութը հեռացվել է կամ դրա հասանելիությունը փոխվել է։ Այլ նյութերի համար բացիր դասընթացը։Բացել դասընթացը\n Նյութը բացելը կամ ներբեռնելը չի փոխում գնահատականդ։ Պարտադիր առաջադրանքները «Իմ աշխատանքները» բաժնում են։Դիզայնի օրինակ · Նյութերը, առաջարկները և տևողությունները օրինակային են։ Իրական ֆայլեր դեռ կցված չեն։",
+          "cards": [],
+          "detailsOpen": false,
+          "focused": "reducePreviewMotion",
+          "query": "",
+          "selectedPurpose": "all"
+        }
+      },
+      {
+        "name": "my_work_shortcut",
+        "passed": true
+      },
+      {
+        "name": "course_shortcut_keeps_context",
+        "passed": true
+      }
+    ],
+    "layoutResults": [
+      {
+        "device": "desktop",
+        "scenario": "active",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "new",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "single",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "empty",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "school",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "grade8",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "history",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Նախորդ տարիներ",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "placement",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "delivery",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "loading",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Քո ուսուցումը",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "error",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "blocked",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "ready",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "complete",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "exhausted",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "materials-empty",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "materials-unavailable",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "active_filters_open",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "desktop",
+        "scenario": "physics_materials",
+        "cards": 2,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 1280
+      },
+      {
+        "device": "tablet",
+        "scenario": "active",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "new",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "single",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "empty",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "school",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "grade8",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "history",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Նախորդ տարիներ",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "placement",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "delivery",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "loading",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Քո ուսուցումը",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "error",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "blocked",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "ready",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "complete",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "exhausted",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "materials-empty",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "materials-unavailable",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "active_filters_open",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "tablet",
+        "scenario": "physics_materials",
+        "cards": 2,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 768
+      },
+      {
+        "device": "phone",
+        "scenario": "active",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "new",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "single",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "empty",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "school",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "grade8",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "history",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Նախորդ տարիներ",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "placement",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "delivery",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "loading",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Քո ուսուցումը",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "error",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "blocked",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Իմ ուսուցումը",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "ready",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "complete",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "exhausted",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "materials-empty",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "materials-unavailable",
+        "cards": 0,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "active_filters_open",
+        "cards": 3,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      },
+      {
+        "device": "phone",
+        "scenario": "physics_materials",
+        "cards": 2,
+        "clippedControls": [],
+        "heading": "Հավելյալ նյութեր",
+        "overflow": false,
+        "width": 360
+      }
+    ]
+  },
+  "metadata": {
+    "fictionalFixtures": 5,
+    "estimates": "optional provider-supplied approximations; missing duration omitted",
+    "recommendations": "explicit teacher choice only; no automated learner profiling",
+    "missingGoal": "description fallback"
+  },
+  "motion": {
+    "osReducedMotionRespectedInCSS": true,
+    "reviewOnlyNoMotionToggleVerified": true,
+    "persistentAccountSetting": false,
+    "nativeOsPreferenceToggleTested": false
+  },
+  "boundaries": [
+    "No deployed web, API, schema, authorization, storage or curriculum changes",
+    "No real uploads, external resource links or learner data",
+    "Preview network requests blocked by connect-src none",
+    "Responsive container checks are not actual viewport zoom or production acceptance",
+    "No claim of measured improvement in engagement or learning outcomes",
+    "Teacher/platform authoring and authorized delivery remain 16.5B; acceptance remains 16.5C",
+    "English remains paused after C47; no repeat of owner content/audio acceptance"
+  ],
+  "reusedEvidence": [
+    "docs/evidence/student-dashboard-design-20261026.json",
+    "docs/evidence/student-materials-design-20261027.json"
+  ],
+  "closure": "Required CI and merged-source Notion synchronization recorded in the delivery PR after merge"
+}

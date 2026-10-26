@@ -2,13 +2,16 @@
 
 **Owner request:** 2026-10-27 Asia/Yerevan. John requests a section below «Իմ աշխատանքները» for additional practice materials supplied by teachers or the platform for each subject.
 
-**Status:** Added to the 16.5A review design and coverage matrix as S45. This is an accepted feature direction, not acceptance of the complete dashboard design or a live upload/delivery implementation. English remains paused after C47.
+**Status:** Added to the 16.5A review design and coverage matrix as S45; refined on 2026-10-27 with illustrated cards, discovery controls and restrained motion. This is an accepted feature direction, not acceptance of the complete dashboard design or a live upload/delivery implementation. English remains paused after C47.
 
 ## Student experience
 
 - Add a separate navigation entry, **«Հավելյալ նյութեր»**, directly below **«Իմ աշխատանքները»**. Also provide an entry from My work and the selected course. On narrow screens, the bottom navigation may show «Նյութեր» with the full accessible name and page heading.
 - Use the learner's selected authorized subject/course context. Filter by unit/topic, provider (**«Ուսուցչից» / «Հարթակից»**) and format. The context retains school, academic year, class, enrollment, grade, programme and release; a filter never grants access.
+- Lead with illustrated cards for the learning purpose: **«Վարժանք» / «Ընթերցանություն»**, a clear learning goal and one preview action. Search title, goal, description and topic within the selected authorized context; combine search with purpose chips and the disclosed topic/provider/format filters. Keep the active filter count visible, reset filters on course changes and retain search focus while results update.
 - Show a concise title, description, subject/topic, provider and file/link type. In production, show publication/version information and file size when applicable and known. Offer preview/open and permitted download actions only for an available resource.
+- An approximate time is shown only when the provider supplies a valid positive estimate; label it as approximate and explain its source in details. It is neither measured learner activity nor a time limit. Omit it when unknown. A teacher-recommendation badge requires an explicit teacher choice for the authorized audience, never a score-based inference or the mere fact that a teacher uploaded it. Missing goal text falls back to the description.
+- Use brief hover/focus feedback with no essential hover-only information. Respect the operating-system reduced-motion preference; the local review toolbar offers **«Առանց շարժման»** for inspection only. No persistent preference, animation reward, autoplay or engagement tracking is introduced.
 - Distinguish no published materials, no filter matches, loading, failed loading, withdrawn material and lost access. Preserve filter focus and discard stale responses after context/account changes.
 - These are optional supplementary resources. Opening or downloading a file is not a completed learning attempt or mastery evidence. Required assignments, due dates, submissions and teacher feedback remain in My work through their governed workflows. Existing unit guides keep their own publication and assessment-access rules.
 
@@ -26,7 +29,7 @@ This is a subject-neutral resource capability under **16.5B**, with end-to-end a
 
 The implementation contract must cover:
 
-1. Versioned resource metadata, explicit provider provenance, curriculum context and publication state. Preserve replacement/withdrawal audit history and avoid orphaned student links.
+1. Versioned resource metadata, explicit provider provenance, curriculum context and publication state. Include purpose and learning-goal authoring, optional validated approximate duration and an explicit provider recommendation with class/audience scope; omit unsupported optional values. These are proposed implementation fields, not an existing schema. Preserve replacement/withdrawal audit history and avoid orphaned student links.
 2. Teacher assignment/class audience checks, platform publication entitlement and server-enforced list/detail/download access. An audience cannot be inferred from a filename, subject title or client filter. Cross-school and unauthorized class access must be denied.
 3. Protected file storage with a scoped upload flow, type/size validation and safe delivery. External links must have validated schemes and clear destinations; arbitrary active documents are not rendered inside the application. The final file policy belongs to the implementation review.
 4. Class/year/context changes, removal and stale-tab behavior. Prior-year availability follows the separate 18.5 history policy; this feature does not authorize historical writes or broaden access to old class files.
@@ -37,6 +40,6 @@ No resource table, endpoint, storage policy, upload action, notification or live
 
 ## Review preview and evidence
 
-The [interactive preview](design/student-dashboard/haiedu-student-review-2026-10-26.html) contains explicitly fictional English and Physics examples, three filters, material details, a My work/course shortcut and empty/withdrawn states. This illustrates the common component contract; it does not restrict the feature to those subjects. Network requests remain blocked and there are no real files, external links, credentials or learner records in the preview.
+The [interactive preview](design/student-dashboard/haiedu-student-review-2026-10-26.html) contains five explicitly fictional English and Physics examples with illustrated cards, search, practice/reading chips, three disclosed filters, learning-goal details, optional estimates/recommendations, a My work/course shortcut and empty/withdrawn states. This illustrates the common component contract; it does not restrict the feature to those subjects. Network requests remain blocked and there are no real files, external links, credentials or learner records in the preview.
 
-The original [26 October evidence](evidence/student-dashboard-design-20261026.json) remains historical. The [27 October delta record](evidence/student-materials-design-20261027.json) covers the changed preview. Actual file delivery, teacher publishing and production isolation remain unimplemented and unverified.
+The original [26 October evidence](evidence/student-dashboard-design-20261026.json) and [27 October addition record](evidence/student-materials-design-20261027.json) remain historical. The [current refinement evidence](evidence/student-materials-engagement-20261027.json) covers 57 responsive layout checks and 21 interactions. The design aims to help students choose purposeful optional practice; no improvement in engagement or learning outcomes is claimed without student evidence. Actual file delivery, teacher publishing and production isolation remain unimplemented and unverified.
