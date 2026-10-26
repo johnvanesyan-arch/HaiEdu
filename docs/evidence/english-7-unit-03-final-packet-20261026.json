@@ -1,0 +1,274 @@
+{
+  "schemaVersion": "haiedu-english-unit3-final-packet-evidence-v1",
+  "checkpoint": "16.1C.46",
+  "date": "2026-10-26",
+  "preparedFromCommit": "6a9da00fa9e30e576df8a0c26422952639464440",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+  },
+  "status": "packet_and_guarded_read_acceptance_prepared",
+  "decisionManifest": {
+    "path": "docs/content/english-7-unit-03-release-decision.json",
+    "sha256": "66c8b6d7957398c0bda45830cbf959e0665fef7d340fb35e4b27121f5b19f99f"
+  },
+  "readContract": {
+    "path": "docs/content/english-7-unit-03-read-contract.json",
+    "sha256": "2240436c13519b968eecb4fb8d057e4f7a3dca1a4e62c0becf9dff195babfa04"
+  },
+  "configuration": {
+    "path": "docs/content/english-7-unit-03-configuration-summary.json",
+    "sha256": "0c6abca3966bb918138c2293155b5275cba44bba02a3bc27e237f068775c3254",
+    "protectedConfigurationSha256": "0c63602204d65c8e13a8f94b11d7552e4f1d4dfb56ace47752ebdc8d02997333",
+    "preparedRows": 471
+  },
+  "qaFixturePlan": {
+    "path": "docs/qa/english-unit3-fixture-plan.json",
+    "sha256": "41d3f09711fc3e3252cf826e8f75e866795e1510286093c0d4d26ddbdccda024",
+    "contexts": 2,
+    "installWithActivation": true,
+    "sharedFixtureManifestChanged": false
+  },
+  "technicalObservation": {
+    "observedAt": "2026-10-26T13:49:43.415394+00:00",
+    "bucket": {
+      "id": "learning-audio",
+      "public": false
+    },
+    "release": {
+      "id": "e17ab807-a531-5099-aeb7-d10206c26de4",
+      "status": "draft"
+    },
+    "gates": [
+      {
+        "code": "assessment_scope_bound",
+        "status": "pending"
+      },
+      {
+        "code": "content_qa_passed",
+        "status": "pending"
+      },
+      {
+        "code": "external_sme_approved",
+        "status": "pending"
+      },
+      {
+        "code": "normative_sources_registered",
+        "status": "pending"
+      },
+      {
+        "code": "official_programme_identified",
+        "status": "pending"
+      },
+      {
+        "code": "outcomes_reconciled",
+        "status": "pending"
+      },
+      {
+        "code": "skills_mapped",
+        "status": "pending"
+      }
+    ],
+    "materials": [
+      {
+        "id": "fc02bd24-dd4f-554e-abb5-7f3e9585864c",
+        "key": "ENG7-U03-G01",
+        "kind": "guide",
+        "status": "approved",
+        "version": 1,
+        "fingerprint": "a5fb5a2533be2550cf6fad0bc1292bb52ac437d600d0d596fc6c06ba00dd5fb4",
+        "sequenceOrder": 1,
+        "definitionHash": "9ce3fea0f8ea1d17024c21e4100c9f40a9485144e89aee4836fb915a07dda5e7"
+      },
+      {
+        "id": "2a2ae0a9-a792-5715-a64a-116eaf5de834",
+        "key": "ENG7-U03-G02",
+        "kind": "guide",
+        "status": "approved",
+        "version": 1,
+        "fingerprint": "a7a49d3b9e786f47cc00470c005bbac4b0018db1efaf3d0a00071811c450862d",
+        "sequenceOrder": 2,
+        "definitionHash": "218af6eb1f6953062fcdad99c553c6a1bc4c551ccafa748cef0844d824737bdf"
+      },
+      {
+        "id": "b88d7301-d8fd-528e-afd0-0d1e5b3914b9",
+        "key": "ENG7-U03-G03",
+        "kind": "guide",
+        "status": "approved",
+        "version": 1,
+        "fingerprint": "03ac60fad400a6aa140a3087b28652786c4569df9de27f69e5793e8fb1bae88c",
+        "sequenceOrder": 3,
+        "definitionHash": "06fe7a5efca09678e3448f12d37da6ac032004cf66309a4cbd8a76c77839bc5a"
+      },
+      {
+        "id": "8f0a50c3-3a95-51cc-a7fa-badb1e4c9ffd",
+        "key": "ENG7-U03-G04",
+        "kind": "guide",
+        "status": "approved",
+        "version": 1,
+        "fingerprint": "e79f01d644ff1a531be80fe87a33628a4c412b48927311521c864e5af5e4e60c",
+        "sequenceOrder": 4,
+        "definitionHash": "8b6a5c2abb86af7239944d34d8c08350c151890f66fccdacd43c642dfed9ea8f"
+      },
+      {
+        "id": "c0a27bf4-00b1-537a-aac6-081d8d65a490",
+        "key": "ENG7-U03-G05",
+        "kind": "guide",
+        "status": "approved",
+        "version": 1,
+        "fingerprint": "e6b47532b3d561b10b1092d67966a33d79d2b663d129298b88e739b7f6736e7d",
+        "sequenceOrder": 5,
+        "definitionHash": "5a4d13c677bec56b36aee6d67e18b5143b81865fd9619875a8bc5c1f4a70b498"
+      },
+      {
+        "id": "46844345-4458-5ac0-a755-85ce9b197c60",
+        "key": "ENG7-U03-G06",
+        "kind": "guide",
+        "status": "approved",
+        "version": 1,
+        "fingerprint": "f857d17a40ba17288d8cfda070f0d876ec2d2458afdc23a03d652b3ca82cf7fa",
+        "sequenceOrder": 6,
+        "definitionHash": "d1be4b53a1c9d304b2e346d7d74dd8919eb2dab4a4e0b3bec1fd915a0adf572b"
+      },
+      {
+        "id": "6663eed5-b0e9-57ba-a3c4-2a12ce82edbd",
+        "key": "ENG7-U03-G07",
+        "kind": "guide",
+        "status": "approved",
+        "version": 1,
+        "fingerprint": "06593cb209fdfabf5cab5ed9f273445d2aeb5e4242f8d31c3676360f51e312d8",
+        "sequenceOrder": 7,
+        "definitionHash": "e483aa675609469da7b451659dc31d0e37bc6d8b53169bfc9cb430c5b19647c0"
+      },
+      {
+        "id": "8ec67a77-6596-5cf8-a8e6-2eb492b2a06e",
+        "key": "ENG7-U03-G08",
+        "kind": "guide",
+        "status": "approved",
+        "version": 1,
+        "fingerprint": "4880f85d98fbe0ad030ebb31428070e3325317d5d0a125f92505f7f3a4035067",
+        "sequenceOrder": 8,
+        "definitionHash": "900905db58968414d8cab1ba13737d7b8d2ea7c7298e45f3b69bce839fefc430"
+      },
+      {
+        "id": "f0547d95-bb56-5112-a65e-fe11a0d8781d",
+        "key": "ENG7-U03-W01",
+        "kind": "writing",
+        "status": "approved",
+        "version": 1,
+        "fingerprint": "d1158d351d7ec49ebdf6a89145f77a72e679dd91629cee906056a043ac67d64a",
+        "sequenceOrder": 9,
+        "definitionHash": "e303387ab8503b9b31fb70586cd50d9e3a5f4e8d33c4536a9a246d18f116dab1"
+      }
+    ],
+    "writingTasks": [
+      {
+        "id": "f0547d95-bb56-5112-a65e-fe11a0d8781d",
+        "title": "Introduce a natural wonder",
+        "locale": "en",
+        "status": "approved",
+        "version": 1,
+        "definitionHash": "e303387ab8503b9b31fb70586cd50d9e3a5f4e8d33c4536a9a246d18f116dab1",
+        "reviewEvidence": {
+          "qaPassed": true,
+          "fingerprint": "d1158d351d7ec49ebdf6a89145f77a72e679dd91629cee906056a043ac67d64a",
+          "reviewReference": "unit-material:f0547d95-bb56-5112-a65e-fe11a0d8781d",
+          "sourceComparisonReference": "restricted candidate-comparison.json#writing"
+        },
+        "baselineRequired": false
+      }
+    ],
+    "directMediaAccess": [
+      {
+        "table": "public.learning_audio_versions",
+        "anonSelect": false,
+        "authenticatedSelect": false
+      },
+      {
+        "table": "public.learning_task_set_versions",
+        "anonSelect": false,
+        "authenticatedSelect": false
+      }
+    ],
+    "itemExposureCount": 0,
+    "sourceExposureCount": 0
+  },
+  "audioObjectCount": 16,
+  "audioObjectSizesMatchRegistered": true,
+  "registeredAudioHashesMatchC45": true,
+  "materialFingerprintsAndDefinitionHashesMatchC45": true,
+  "retainedDefinitionsMatchPostgresHashes": true,
+  "guideProjectionMatchesRetainedAcceptedContent": true,
+  "freshApprovalAudit": false,
+  "repeatListeningReview": false,
+  "reusedEvidence": {
+    "docs/evidence/english-7-unit-03-authoring-20261025.json": "82e048d50abb0c538bc89cccf189240241e936376d9b7e6ecde46d11882cac44",
+    "docs/evidence/english-7-unit-03-audio-registration-authorization-20261026.json": "70dc4e578948f9c8123095c2ea5c766625848ca0e62141e7759efed5fae7f22a",
+    "docs/evidence/english-7-unit-03-audio-registration-20261026.json": "99d2e21689772308880d3c730a327579825fdd40e7cb20625baeca6298a371a3",
+    "docs/evidence/english-7-unit-03-source-registration-authorization-20261026.json": "cea5954b1efe6c71f413453345ad06a68cf41b4769b1fccee4dd0ae47ded54aa",
+    "docs/evidence/english-7-unit-03-source-registration-20261026.json": "9a5ff7dcbffe20eff98f1e4c5d649042f1a5ed3df66a120e8077849c4778aff6",
+    "docs/evidence/english-7-unit-03-batch-approval-authorization-20261026.json": "dc8bf0ec3e9cb98f44b6e654fed7c062b4788138021802f2aedc10ed95d3ddbf",
+    "docs/evidence/english-7-unit-03-batch-approval-20261026.json": "cfa56ed028960d38dfdc6d5be733325cd640f0fcb565342fb0c53780c6ad711a",
+    "docs/evidence/english-7-unit-03-curriculum-registration-20261026.json": "7bf191f60fffabdbee92d15e6d826830755bf5e7086e9cc160432272cb9c416a",
+    "docs/evidence/english-7-unit-03-policy-proposal-20261026.json": "e1dbde54977612a7f567c29883d5a773f5e2266172dc5e366209ab7bcdeb71ab",
+    "docs/evidence/english-7-unit-03-policy-material-acceptance-20261026.json": "656de8a19047aad88e559695e3fead034004f6d6d5d4ec4711fe06807e25931c",
+    "docs/evidence/english-7-unit-03-configuration-preparation-20261026.json": "6407565528682201f8b69634a7714e4d972e40a830eb897bfbdb474c9b8512f2"
+  },
+  "qualification": {
+    "preparedForms": 5,
+    "slots": 100,
+    "distinctItems": 100,
+    "distinctAssessedSourceFamilies": 20,
+    "assessedAudioVersions": 10,
+    "practiceSourceFamilyOverlap": 0,
+    "contiguousSourceGroups": true,
+    "currentDatabaseBindingRehearsalReused": "C45 four exact policies / sixty Mastery version bindings; no repeated rehearsal",
+    "independentSmeApproved": false,
+    "empiricalEquivalenceEstablished": false
+  },
+  "verification": {
+    "newUnit3RegressionCases": 15,
+    "existingConsumerRegressionCases": 41,
+    "totalFocusedRegressionTests": 56,
+    "browserQaTriggerChecker": "passed; eight existing graphs plus dormant Unit 3 workflow",
+    "guideProjection": "eight retained guides match canonical SHA-256 read contract; no guide body published",
+    "isolation": "synthetic two-school and same-programme Unit1/Unit2/Unit3 positive/negative scope tests; prior dashboard preservation checks",
+    "liveUnit3ReadAcceptanceExecuted": false,
+    "liveUnit3LearnerActionsExecuted": false
+  },
+  "qaFixturePreparation": {
+    "newPeopleOrMemberships": 0,
+    "existingEnglishEnrollmentsVerified": 2,
+    "existingEnglishAssignmentsVerified": 2,
+    "plannedReleaseContexts": 2,
+    "sharedManifestChanged": false,
+    "installWithActivation": true,
+    "productAuthorizationChanged": false,
+    "sharedHelperChanged": false,
+    "consumersRetained": [
+      "sprint-14-isolation",
+      "english-unit1-pilot-read-acceptance",
+      "english-unit2-pilot-read-acceptance",
+      "chapter-iii/iv/v/vi-pilot-read-acceptance",
+      "sprint-14-actions",
+      "sprint-14d-analytics-qa"
+    ]
+  },
+  "pendingDecision": {
+    "action": "activate_provisional_pilot",
+    "specialistReview": "proposed_deferred_pending_owner_release_decision",
+    "independentSmeApproved": false,
+    "unseenAssessmentClaim": false,
+    "sourceUseBasis": "existing_owner_course_instructions_and_C41_C42_source_acceptance"
+  },
+  "preservation": {
+    "productionCommittedWrites": 0,
+    "contentApprovalQaChanges": 0,
+    "configurationBindingsActivated": 0,
+    "releaseGatesChanged": 0,
+    "runtimeSchemaEdgeRlsChanges": 0,
+    "learnerActivationAuthorized": false
+  },
+  "releaseClosure": "Required CI, separate production deployment status and exact Notion source stamp are verified against the merged source commit; this evidence does not pre-claim asynchronous results."
+}

@@ -28,12 +28,14 @@ test('existing synthetic fixtures retain the original single-class contract',()=
   assert.equal(ownNavigation([c],other,manifest),false);
 });
 
-test('two releases in one programme retain exact unit scopes but count their class once',()=>{
+test('three releases in one programme retain exact unit scopes but count their class once',()=>{
   const next={...c,curriculumReleaseId:'next-release',unitId:'next-unit'};
-  const multi={...manifest,contexts:[c,next]};
+  const third={...c,curriculumReleaseId:'third-release',unitId:'third-unit'};
+  const multi={...manifest,contexts:[c,next,third]};
   assert.equal(ownStudentClasses({classes:[{id:f.classId},{id:c.classId}]},f,multi),true);
   assert.equal(ownStudentClasses({classes:[{id:f.classId},{id:c.classId},{id:c.classId}]},f,multi),false);
-  assert.equal(ownNavigation([c,next],f,multi),true);
-  for(const mixed of [{...c,unitId:next.unitId},{...next,unitId:c.unitId},{...next,enrollmentId:'other'},{...next,teacherAssignmentId:'other'}])
+  assert.equal(ownNavigation([c,next,third],f,multi),true);
+  const crossUnits=[c,next,third].flatMap(left=>[c,next,third].filter(right=>right!==left).map(right=>({...left,unitId:right.unitId})));
+  for(const mixed of [...crossUnits,{...next,enrollmentId:'other'},{...third,teacherAssignmentId:'other'}])
     assert.equal(ownNavigation([c,mixed],f,multi),false);
 });

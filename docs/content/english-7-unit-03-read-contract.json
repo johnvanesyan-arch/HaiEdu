@@ -1,0 +1,75 @@
+{
+  "schemaVersion": "haiedu-english-unit3-read-contract-v1",
+  "checkpoint": "16.1C.46",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+  },
+  "guides": {
+    "count": 8,
+    "projectionSha256": "399f2ef471480fba9f32d04745876ed9d1ff9bc23a63a792285683ab0161d32e",
+    "hashEncoding": "SHA-256 of UTF-8 JSON; recursively lexicographically sorted object keys, compact separators, literal Unicode, array order retained",
+    "identities": [
+      {
+        "id": "fc02bd24-dd4f-554e-abb5-7f3e9585864c",
+        "version": 1,
+        "sequenceOrder": 1
+      },
+      {
+        "id": "2a2ae0a9-a792-5715-a64a-116eaf5de834",
+        "version": 1,
+        "sequenceOrder": 2
+      },
+      {
+        "id": "b88d7301-d8fd-528e-afd0-0d1e5b3914b9",
+        "version": 1,
+        "sequenceOrder": 3
+      },
+      {
+        "id": "8f0a50c3-3a95-51cc-a7fa-badb1e4c9ffd",
+        "version": 1,
+        "sequenceOrder": 4
+      },
+      {
+        "id": "c0a27bf4-00b1-537a-aac6-081d8d65a490",
+        "version": 1,
+        "sequenceOrder": 5
+      },
+      {
+        "id": "46844345-4458-5ac0-a755-85ce9b197c60",
+        "version": 1,
+        "sequenceOrder": 6
+      },
+      {
+        "id": "6663eed5-b0e9-57ba-a3c4-2a12ce82edbd",
+        "version": 1,
+        "sequenceOrder": 7
+      },
+      {
+        "id": "8ec67a77-6596-5cf8-a8e6-2eb492b2a06e",
+        "version": 1,
+        "sequenceOrder": 8
+      }
+    ]
+  },
+  "writingTask": {
+    "id": "f0547d95-bb56-5112-a65e-fe11a0d8781d",
+    "version": 1,
+    "title": "Introduce a natural wonder",
+    "locale": "en",
+    "baselineRequired": false
+  },
+  "preservedEnglishScopes": [
+    {
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e40991ee-ca0b-5666-a9f2-a3453de8fccb",
+      "unitId": "3ef44139-0053-58e6-ab0d-5901a0213683"
+    },
+    {
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "633ef1f7-080b-5500-9be0-9a53dadfcbf4",
+      "unitId": "94882724-418a-51c3-b28e-0e094c70e6b9"
+    }
+  ]
+}
