@@ -1,0 +1,121 @@
+{
+  "schemaVersion": "haiedu-english-unit3-activation-v1",
+  "checkpoint": "16.1C.47",
+  "status": "activated",
+  "releaseStatus": "pilot",
+  "activatedAt": "2026-10-26T16:25:36.89652+00:00",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+  },
+  "preparedFromCommit": "f6c8c99b68d6875e147f4279fe08ff22849d8e8b",
+  "configurationSha256": "0c6abca3966bb918138c2293155b5275cba44bba02a3bc27e237f068775c3254",
+  "protectedConfigurationSha256": "0c63602204d65c8e13a8f94b11d7552e4f1d4dfb56ace47752ebdc8d02997333",
+  "decisionManifestSha256": "66c8b6d7957398c0bda45830cbf959e0665fef7d340fb35e4b27121f5b19f99f",
+  "readContractSha256": "2240436c13519b968eecb4fb8d057e4f7a3dca1a4e62c0becf9dff195babfa04",
+  "fixturePlanSha256": "41d3f09711fc3e3252cf826e8f75e866795e1510286093c0d4d26ddbdccda024",
+  "fixturePlanInstalled": true,
+  "ownerAuthorization": {
+    "schemaVersion": "haiedu-english-unit3-owner-activation-v1",
+    "checkpoint": "16.1C.47",
+    "owner": "John",
+    "action": "activate_provisional_pilot",
+    "scope": {
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+      "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+    },
+    "preparedSourceCommit": "fa5dc8108f9a357a20b74e0a19b3865b8192e625",
+    "configurationSha256": "0c6abca3966bb918138c2293155b5275cba44bba02a3bc27e237f068775c3254",
+    "decisionManifestSha256": "66c8b6d7957398c0bda45830cbf959e0665fef7d340fb35e4b27121f5b19f99f",
+    "readContractSha256": "2240436c13519b968eecb4fb8d057e4f7a3dca1a4e62c0becf9dff195babfa04",
+    "fixturePlanSha256": "41d3f09711fc3e3252cf826e8f75e866795e1510286093c0d4d26ddbdccda024",
+    "protectedConfigurationSha256": "0c63602204d65c8e13a8f94b11d7552e4f1d4dfb56ace47752ebdc8d02997333",
+    "ownerDirection": "I do",
+    "recordedAt": "2026-10-26T14:32:32.158436+00:00",
+    "specialistReview": "deferred",
+    "independentSmeApproved": false,
+    "unseenAssessmentClaim": false,
+    "sourceUseBasis": "existing_owner_course_instructions",
+    "sourceUseScope": "authenticated_enrolled_unit3_learners",
+    "publicDownloadsAuthorized": false,
+    "interpretation": "Direct response to the C46 final request to activate the exact Unit 3 provisional pilot for existing English learners with independent specialist review deferred. The scope is 52 core Practice questions, five 20-question assessment forms, eight guides and W01; eight optional Practice questions remain outside initial delivery. Existing accepted content, audio, numerical policy and source-use instructions remain in force."
+  },
+  "specialistGate": "pending",
+  "independentSmeApproved": false,
+  "unseenAssessmentClaim": false,
+  "sourceProtectionVerified": true,
+  "materialPublicationVerified": true,
+  "publishedMaterialCount": 9,
+  "writingProjectionVerified": true,
+  "verifiedReadback": true,
+  "verifiedAt": "2026-10-26T16:39:44.731203+00:00",
+  "configurationRows": 471,
+  "rehearsal": {
+    "normalValidatorsAndBinders": true,
+    "preservedScopes": 117,
+    "independentRollbackRestoration": 117,
+    "fullDatabaseGuardSha256": "5ab29d64e925bca404b11dd8788ccc8de5fb24157e2085b32de1a1e33981b9c0",
+    "sameGuardVerifiedBeforeBrowserCommit": true,
+    "existingSuccessfulRehearsalsReused": true
+  },
+  "activation": {
+    "finalActivationAtomic": true,
+    "executionRoute": "owner_authorized_supabase_dashboard",
+    "exactUiSqlHashVerifiedBeforeRun": true,
+    "independentPreservationReadback": 117,
+    "wholeTableFingerprintsUnchanged": 106,
+    "policyContractsMatched": 4,
+    "formsMatched": 5,
+    "orderedFormSlotsMatched": 100,
+    "masteryVersionBindingsMatched": 60,
+    "corePoolSizes": {
+      "practice": 52,
+      "diagnostic": 40,
+      "mastery_check": 60
+    },
+    "optionalPracticeRetained": 8,
+    "registeredTaskSets": 27,
+    "registeredAudio": 16,
+    "initialTaskSets": 27,
+    "initialAudio": 13,
+    "contentApprovalsAndQaUnchanged": true,
+    "nineMaterialDefinitionsAndWritingProjectionUnchanged": true,
+    "globalLifecyclePointerUnchanged": true,
+    "unit1Unit2AndOtherProgrammesUnchanged": true,
+    "learnerHistoryUnchanged": true,
+    "newAccountsEnrollmentsClasses": 0,
+    "edgeRuntimeChanged": false,
+    "schemaChanged": false
+  },
+  "fixtureInstallation": {
+    "existingContextsRetained": 4,
+    "exactPlannedContextsAdded": 2,
+    "existingActorsReused": 6,
+    "newDatabaseRecords": 0,
+    "oldManifestSha256": "86932aa4e0dc08c7c7ff6968e174153450d44245d1b313e10f2ea8cabf2bdda4",
+    "installedManifestSha256": "8720cf039718a594ac52cbbd4cca9c91fb420256ef029a4e8a7836d4a6fe7019"
+  },
+  "transport": {
+    "priorCommitRequestsExpired": 2,
+    "priorError": "McpServerError: Invalid or expired requestState",
+    "browserFallbackAuthorized": true,
+    "ownerDirection": "yes",
+    "recordedAt": "2026-10-26T16:22:16.108968+00:00",
+    "resolution": "The unchanged 16,071-byte transaction was executed in the authenticated Supabase dashboard after the owner accepted that access route. Exact editor bytes/hash and all 117 pre-commit table fingerprints matched; independent connector reads verified the committed result. No connector repair is claimed.",
+    "sqlOrReleaseGuardsWeakened": false
+  },
+  "sourceHashes": {
+    "activationCompiler": "bef989d93ca5c30d589802c14f36888ff67d5ee31418303ffc05b499ddd9bcb8",
+    "activationSqlPrivate": "5a7d8ff05776a80414d05bf88a72ba75b4477bf6b4b587fb972e153d9735be74",
+    "retainedProtectedConfiguration": "0c63602204d65c8e13a8f94b11d7552e4f1d4dfb56ace47752ebdc8d02997333"
+  },
+  "liveReadAcceptance": {
+    "workflow": ".github/workflows/english-unit3-pilot-read-acceptance.yml",
+    "execution": "reviewed_main_exact_deployment",
+    "resultsLocation": "release pull request and source-verified Notion closure",
+    "fullLearnerAudioWritingActionAcceptanceClaimed": false
+  },
+  "next": "Full designated Unit3 learner attempts, assessed audio limits/resume/unscored handling and writing submission/teacher feedback after guarded read acceptance. Units4–6 and English closure follow before Mathematics."
+}
