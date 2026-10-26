@@ -1,5 +1,7 @@
 # English 7 Unit 3 — remaining source integration
 
+**Current C43 · 2026-10-26:** all 160 Unit3 questions are approved under the owner-accepted temporary MVP workflow: 159 expedited approvals plus one preserved earlier approval. Current QA/source checks pass 160/160; question versions and content are unchanged. Individual manual review was waived for the batch; SME validation is not claimed. Material acceptance, current-programme reconciliation and seven draft-release gates remain separate. [Delivery](english-7-unit-03-batch-approval.md) · [Policy](mvp-bank-approval-policy.md).
+
 **Sprint 16.1C.42 · 2026-10-26 Asia/Yerevan · one primary agent.** The remaining **42 reading questions and six publisher-listening questions** have registered source links at **v2 with saved passing QA**. Unit3 now has **160 QA passes and zero source-registration holds**. The 60 Practice / 40 Diagnostic / 60 Mastery bank is unchanged.
 
 ## Reviewer access

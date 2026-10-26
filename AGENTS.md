@@ -40,3 +40,8 @@ The owner-authorized `haiedu-protected-parallel-pilot-v1` addendum permits a sep
 ## Owner-approved working cadence — 2026-10-15
 
 Use one primary agent for routine work; use additional agents only when John explicitly requests them. Batch authorized work and reviewer handoffs, preserve textbook/Armenian/physics/whole-bank checks, and reuse verified unchanged evidence instead of repeating it. Run checks again for relevant changes and required release gates. Pending human reviews may coexist with authorized preparation but never confer release approval. Close each delivery cycle with evidence, aligned merged documentation and source-commit-verified Notion synchronization.
+
+
+## Owner-approved temporary MVP bank acceptance — 2026-10-26
+
+John authorizes an expedited bank-approval workflow for the MVP. For each explicitly owner-accepted, bounded bank manifest, record version-specific content approvals through the existing approval service, with an audit note that individual manual review was waived. Retain current QA, source registration, whole-bank comparison, authorization and preservation checks; preserve earlier approvals. New questions or edited versions need fresh explicit acceptance and QA. Do not claim individual review, independent SME validation or learner activation from this acceptance. Materials and release decisions stay separate. This is an administrative workflow, not a global automatic-approval setting. The current execution is the unchanged English7 Unit3 bank under C43; future banks need their own owner acceptance. See [temporary MVP bank policy](docs/mvp-bank-approval-policy.md).

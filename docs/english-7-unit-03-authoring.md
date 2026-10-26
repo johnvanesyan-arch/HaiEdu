@@ -1,6 +1,8 @@
 # English 7 Unit 3 — whole-unit authoring and reviewer staging
 
-**Current C42 · 2026-10-26:** all fourteen reading passages and sixteen recordings (twelve original, four publisher uses) are registered. The final 42 reading/six publisher-listening links now pass QA at v2; all 160 Unit3 questions pass, with zero source holds. Ordinary bank/material approval, current-programme reconciliation and the seven draft-release gates remain separate. [Delivery](english-7-unit-03-source-registration.md).
+**Current C43 · 2026-10-26:** all 160 Unit3 questions are approved under the owner-accepted temporary MVP workflow: 159 expedited approvals plus one preserved earlier approval. Current QA/source checks pass 160/160; question versions and content are unchanged. Individual manual review was waived for the batch; SME validation is not claimed. Material acceptance, current-programme reconciliation and seven draft-release gates remain separate. [Delivery](english-7-unit-03-batch-approval.md) · [Policy](mvp-bank-approval-policy.md).
+
+**Historical C42 · 2026-10-26:** all fourteen reading passages and sixteen recordings (twelve original, four publisher uses) are registered. The final 42 reading/six publisher-listening links now pass QA at v2; all 160 Unit3 questions pass, with zero source holds. Ordinary bank/material approval, current-programme reconciliation and the seven draft-release gates remain separate. [Delivery](english-7-unit-03-source-registration.md).
 
 **Historical C41 · 2026-10-26:** all twelve supplied original recordings are registered through twelve shared sets. Their 25 questions are linked at v2 with saved passing QA. Unit3 now has 112 QA passes and 48 remaining source holds (42 reading, six publisher listening). Ordinary review and all seven release gates remain separate. [Delivery](english-7-unit-03-audio-registration.md).
 
