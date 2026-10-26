@@ -1,0 +1,86 @@
+{
+  "schemaVersion": "haiedu-english-policy-material-owner-acceptance-v1",
+  "checkpoint": "16.1C.45",
+  "date": "2026-10-26",
+  "owner": "John",
+  "ownerInstruction": "yes",
+  "context": "Direct answer accepting the nine exact Unit 3 materials and the complete C44 numerical policy as one batch.",
+  "approved": true,
+  "sourceCommit": "69dc34776565537a4c05f0db59e877cde83e3ee3",
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+  },
+  "proposalSha256": "f2bfeea3c4b13c548068520ece7ad7f59bc584bede10ca9980ac174dc712bf52",
+  "materialsManifestSha256": "73559390f7b4dcce57db238e94138f8eebfd9fff68bba28edc27af75ee59ee15",
+  "materialVersions": [
+    {
+      "key": "ENG7-U03-G01",
+      "id": "fc02bd24-dd4f-554e-abb5-7f3e9585864c",
+      "version": 1,
+      "fingerprint": "a5fb5a2533be2550cf6fad0bc1292bb52ac437d600d0d596fc6c06ba00dd5fb4"
+    },
+    {
+      "key": "ENG7-U03-G02",
+      "id": "2a2ae0a9-a792-5715-a64a-116eaf5de834",
+      "version": 1,
+      "fingerprint": "a7a49d3b9e786f47cc00470c005bbac4b0018db1efaf3d0a00071811c450862d"
+    },
+    {
+      "key": "ENG7-U03-G03",
+      "id": "b88d7301-d8fd-528e-afd0-0d1e5b3914b9",
+      "version": 1,
+      "fingerprint": "03ac60fad400a6aa140a3087b28652786c4569df9de27f69e5793e8fb1bae88c"
+    },
+    {
+      "key": "ENG7-U03-G04",
+      "id": "8f0a50c3-3a95-51cc-a7fa-badb1e4c9ffd",
+      "version": 1,
+      "fingerprint": "e79f01d644ff1a531be80fe87a33628a4c412b48927311521c864e5af5e4e60c"
+    },
+    {
+      "key": "ENG7-U03-G05",
+      "id": "c0a27bf4-00b1-537a-aac6-081d8d65a490",
+      "version": 1,
+      "fingerprint": "e6b47532b3d561b10b1092d67966a33d79d2b663d129298b88e739b7f6736e7d"
+    },
+    {
+      "key": "ENG7-U03-G06",
+      "id": "46844345-4458-5ac0-a755-85ce9b197c60",
+      "version": 1,
+      "fingerprint": "f857d17a40ba17288d8cfda070f0d876ec2d2458afdc23a03d652b3ca82cf7fa"
+    },
+    {
+      "key": "ENG7-U03-G07",
+      "id": "6663eed5-b0e9-57ba-a3c4-2a12ce82edbd",
+      "version": 1,
+      "fingerprint": "06593cb209fdfabf5cab5ed9f273445d2aeb5e4242f8d31c3676360f51e312d8"
+    },
+    {
+      "key": "ENG7-U03-G08",
+      "id": "8ec67a77-6596-5cf8-a8e6-2eb492b2a06e",
+      "version": 1,
+      "fingerprint": "4880f85d98fbe0ad030ebb31428070e3325317d5d0a125f92505f7f3a4035067"
+    },
+    {
+      "key": "ENG7-U03-W01",
+      "id": "f0547d95-bb56-5112-a65e-fe11a0d8781d",
+      "version": 1,
+      "fingerprint": "d1158d351d7ec49ebdf6a89145f77a72e679dd91629cee906056a043ac67d64a"
+    }
+  ],
+  "acceptedScope": [
+    "Nine unchanged v1 materials: eight guides and W01",
+    "W01 prompt, rubric, 80–100 words and one initial teacher review per response",
+    "Full C44 numerical policy, including skill minima and the single-item S02 exception",
+    "52-core/eight-optional initial delivery and finite whole-form replacement capacity"
+  ],
+  "materialPublicationAuthorized": true,
+  "materialPublicationRoute": "Existing signed-in reviewer service with MFA; acceptance alone does not create publication or a reviewer session.",
+  "configurationPreparationAndRehearsalAuthorized": true,
+  "learnerActivationAuthorized": false,
+  "independentSmeApproval": false,
+  "contentAudioApprovalReused": true,
+  "repeatHumanReviewPerformed": false
+}
