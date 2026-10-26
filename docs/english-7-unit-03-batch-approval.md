@@ -1,5 +1,7 @@
 # English 7 Unit 3 — expedited MVP bank approval
 
+**Current C44 · 2026-10-26:** current-programme traceability is registered for Unit3; the approved 160-question bank and all source versions remain unchanged. The combined decision covers nine exact v1 materials, five prepared 20-question forms, 52 core/eight optional Practice items, proposed 16/20 pass and skill safeguards, readiness/audio/attempt rules and separate W01. Thirty-six focused policy checks pass. Material acceptance/publication, policy adoption, source/exposure/SME dispositions and learner release remain separate; seven stored gates stay pending. [Decision package](english-7-unit-03-policy-proposal.md) · [Curriculum evidence](english-7-unit-03-curriculum-registration.md).
+
 **Sprint 16.1C.43 · 2026-10-26 Asia/Yerevan · one primary agent.** All **160 questions** in the accepted **60 Practice / 40 Diagnostic / 60 Mastery** bank are now approved. One existing approval for **ENG7-U03-DA-01 v1** is preserved exactly; the other **159 current versions** receive owner-authorized expedited MVP acceptance through the existing approval service. There are no remaining Unit3 question-approval clicks.
 
 ## Where to see the result
