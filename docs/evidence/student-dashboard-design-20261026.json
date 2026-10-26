@@ -1,0 +1,335 @@
+{
+  "schemaVersion": 1,
+  "slice": "16.5A",
+  "date": "2026-10-26",
+  "timezone": "Asia/Yerevan",
+  "status": "design_review_prepared_owner_acceptance_pending",
+  "sourceCommit": "d32fede819cd077d028f7c66d90b084243961125",
+  "roadmapVersion": "4.85",
+  "subjectPause": {
+    "checkpoint": "16.1C.47 complete",
+    "resume": "Full Unit3 designated learner attempts, assessed audio limits/resume/unscored exits, W01 submission/return/revision/teacher feedback",
+    "following": "Units4-6, English closure, Mathematics/Armenian and four-subject integration",
+    "existingPilotAccess": "unchanged",
+    "ownerContentAudioAcceptance": "retained_without_recheck"
+  },
+  "prototype": {
+    "path": "docs/design/student-dashboard/haiedu-student-review-2026-10-26.html",
+    "sha256": "729524b9bb47783db0a948bf158ba85fcd79dde6f62b767ebfc7cc67d00975fc",
+    "bytes": 53628,
+    "fixtureData": "fictional local-only; not real account or released curriculum",
+    "network": "CSP connect-src none; no external assets or service calls",
+    "referencePreserved": "2026-10-07 standalone and fragment unchanged"
+  },
+  "coverage": {
+    "entries": 44,
+    "existingOrDesignIntegration": "S01-S30",
+    "plannedOwningSprintContracts": "S31-S43",
+    "optionalProposalNotApproved": "S44",
+    "knownFunctionRemoval": false
+  },
+  "browser": {
+    "scenarioLayouts": [
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "active"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "new"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "single"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "empty"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "school"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "grade8"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "history"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "placement"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "delivery"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "loading"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "error"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "blocked"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "ready"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "complete"
+      },
+      {
+        "frame": 1280,
+        "overflow": false,
+        "scenario": "exhausted"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "active"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "new"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "single"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "empty"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "school"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "grade8"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "history"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "placement"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "delivery"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "loading"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "error"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "blocked"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "ready"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "complete"
+      },
+      {
+        "frame": 768,
+        "overflow": false,
+        "scenario": "exhausted"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "active"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "new"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "single"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "empty"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "school"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "grade8"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "history"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "placement"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "delivery"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "loading"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "error"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "blocked"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "ready"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "complete"
+      },
+      {
+        "frame": 360,
+        "overflow": false,
+        "scenario": "exhausted"
+      }
+    ],
+    "interactionChecks": [
+      {
+        "name": "skill-filter-focus",
+        "pass": true
+      },
+      {
+        "name": "skill-dialog",
+        "pass": true
+      },
+      {
+        "name": "dialog-escape-focus-return",
+        "pass": true
+      },
+      {
+        "name": "local-draft-save",
+        "pass": true
+      },
+      {
+        "name": "local-draft-retained",
+        "pass": true
+      },
+      {
+        "name": "subject-switch",
+        "pass": true
+      },
+      {
+        "name": "assessment-order-and-locked-state",
+        "pass": true
+      },
+      {
+        "name": "focused-task-shell",
+        "pass": true
+      },
+      {
+        "name": "local-answer-selection",
+        "pass": true
+      },
+      {
+        "name": "safe-demo-exit",
+        "pass": true
+      },
+      {
+        "name": "error-retry",
+        "pass": true
+      },
+      {
+        "name": "history-readonly",
+        "pass": true
+      },
+      {
+        "name": "history-account-access",
+        "pass": true
+      }
+    ],
+    "mobileNavigation": {
+      "columns": 4,
+      "labelsDoNotOverlap": true,
+      "accountAccess": "header"
+    },
+    "zoomVerification": "not_verified: browser shortcut did not change observed viewport/DPR",
+    "method": "Cloud Chromium native controls; preview container widths 360/768/1280, not device viewport emulation. No production account/API calls."
+  },
+  "limits": [
+    "Source-based production-interface audit, not a new authenticated user study",
+    "Browser checks use preview container widths, not device viewport emulation",
+    "200-percent actual browser zoom remains unverified and required in 16.5C",
+    "Mockup interactions do not verify production APIs, learner writes, audio, authorization, or new account/history features",
+    "Owner design review, production implementation and full four-subject 16.5C acceptance remain pending"
+  ],
+  "release": {
+    "productionCodeChanged": false,
+    "databaseOrApiChanged": false,
+    "protectedContentChanged": false,
+    "requiredCI": "merge gate; exact run evidence in PR and Notion closure",
+    "unchangedProductionEvidence": "C47 retained, no new production behavior claimed"
+  }
+}
