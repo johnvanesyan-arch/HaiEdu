@@ -1,0 +1,77 @@
+{
+  "checkpoint": "16.1C.44",
+  "date": "2026-10-26",
+  "sourceCommit": "6bc295ccb90772fd529615154d02a54298c98ec9",
+  "scope": "Unit3 current-programme curriculum registration; question/material acceptance, numerical-policy adoption and learner activation separate.",
+  "counts": {
+    "insertedRows": 410,
+    "updatedRows": 14,
+    "programmeOutcomes": 12,
+    "standardTargets": 1,
+    "skills": 13,
+    "skillOutcomeMappings": 17,
+    "families": 160
+  },
+  "verification": {
+    "actualSchemaRollbackPassed": true,
+    "scopedInventoryRestoredAfterRollback": true,
+    "scopedTableFingerprintsRestored": 16,
+    "transactionGuardedTables": 117,
+    "guardedCommitPassed": true,
+    "independentCommittedReadbackPassed": true,
+    "existingRowsUpdated": 14,
+    "existingRowsOutsideAuthorizedUpdatesPreserved": true,
+    "tablesEntirelyUnchangedByTransaction": 103,
+    "currentProgrammeAppendixMatchesC38": true,
+    "standardAppendixMatchesC38": true,
+    "existingUnit1And2SourceIdentitiesPreserved": true,
+    "programmeWideSourceBindingPreserved": true,
+    "newMaterialOrQuestionVersions": 0,
+    "newContentApprovals": 0,
+    "learnerActivation": false,
+    "releaseStatus": "draft",
+    "pendingReleaseGates": 7,
+    "independentSmeApproved": false,
+    "postCommitMaterialFingerprintsMatch": 9,
+    "postCommitApprovedQuestions": 160
+  },
+  "concurrentActivity": "Unrelated live learner activity changed the initial global snapshot. The first attempt stopped before writes. The successful transaction retains strict scoped-input guards, captures all existing unrelated rows under transaction locks and proves their preservation; live activity before/after is not attributed to this registration.",
+  "sourceMapping": {
+    "programmeUrl": "https://www.arlis.am/hy/acts/229425",
+    "standardUrl": "https://www.arlis.am/hy/acts/229389",
+    "frameworkUrl": "https://www.arlis.am/hy/acts/225446",
+    "programmeOutcomes": 12,
+    "programmeMandatory": 10,
+    "programmeAdditional": 2,
+    "separateStandardWritingTargets": 1,
+    "skills": 13,
+    "skillOutcomeMappings": 17,
+    "itemFamilies": 160,
+    "classroomOutcomes": [
+      "T3.L3",
+      "T3.L4",
+      "T3.additional.L1"
+    ],
+    "unscoredReflection": "T3.L6",
+    "s13Route": "Standard ՕԼ7-Հ-Փ․3; not substituted for oral T3.L4"
+  },
+  "registrationManifestSha256": "a27d23fd00dbb415f0adcdb43cccf057dab2f1839abf27ca4886669f2c1f2ac1",
+  "privateEvidenceHashes": {
+    "inventory.json": "f81ca09eee294671aa9d6cb31f9d286ff944ce6bfb7b689661507ef417e506ad",
+    "schema.json": "1b4623017b2657311a6d3c3dd027daa05cdbe3343947b554275c0c6416ffe5e9",
+    "registration.json": "10dc972a62143734bcda282f9583efdac1d5ccc0b8ef1e613bdabfce2a879b4f",
+    "rollback.sql": "d9c51d67e56519b5419e2d3e6add0301c237acedaa0068be6365778f38788fd6",
+    "rollback-result.json": "ffc65f9fa136c8d4b64f5aed83800f5dcef3149d29a4d1b0152b5ef0462ad109",
+    "rollback-verification.json": "dc9fbc9dcda24b5aebf34fcb5b3959f9ca2623518fe6df053545eb1cf8b114cc",
+    "commit.sql": "819189dccfd4aa21677a7794f2813d343928aaa28157a739799281cf2abe5eab",
+    "commit-result.json": "410e5653a29f0f697fa1e49cb0e376746dc9cc385b359f51be9f4c4c8332de0c",
+    "committed-readback.json": "33bbc866fd732bbd805ca532648a44b5af0da5a293eb768cc39cfd6d4ef9a511"
+  },
+  "privateRecovery": {
+    "libraryFileId": "libfile_1dd86156a9cc8191ac27d636faac97af",
+    "filename": "haiedu-english7-unit3-curriculum-policy-evidence-20261026.zip",
+    "bytes": 724762,
+    "sha256": "29634853b519f47ecfd346d2e10a69ae28d4eee9a2474c666f4faf53c07823ca",
+    "files": 24
+  }
+}

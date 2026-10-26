@@ -1,0 +1,118 @@
+{
+  "schemaVersion": "haiedu-unit-material-acceptance-proposal-v1",
+  "checkpoint": "16.1C.44",
+  "sourceCommit": "6bc295ccb90772fd529615154d02a54298c98ec9",
+  "scope": {
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+    "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4"
+  },
+  "status": "awaiting_explicit_owner_material_acceptance",
+  "ownerAcceptance": null,
+  "reviewerUrl": "https://www.haiedu.am/content-materials.html",
+  "materialVersions": [
+    {
+      "key": "ENG7-U03-G01",
+      "id": "fc02bd24-dd4f-554e-abb5-7f3e9585864c",
+      "version": 1,
+      "title": "Environment words: meaning before labels",
+      "kind": "guide",
+      "fingerprint": "a5fb5a2533be2550cf6fad0bc1292bb52ac437d600d0d596fc6c06ba00dd5fb4",
+      "statusAtPreparation": "draft",
+      "retainedQaPassed": true,
+      "qaFingerprintMatches": true
+    },
+    {
+      "key": "ENG7-U03-G02",
+      "id": "2a2ae0a9-a792-5715-a64a-116eaf5de834",
+      "version": 1,
+      "title": "Build and recognise useful words",
+      "kind": "guide",
+      "fingerprint": "a7a49d3b9e786f47cc00470c005bbac4b0018db1efaf3d0a00071811c450862d",
+      "statusAtPreparation": "draft",
+      "retainedQaPassed": true,
+      "qaFingerprintMatches": true
+    },
+    {
+      "key": "ENG7-U03-G03",
+      "id": "b88d7301-d8fd-528e-afd0-0d1e5b3914b9",
+      "version": 1,
+      "title": "Give advice and keep requirements clear",
+      "kind": "guide",
+      "fingerprint": "03ac60fad400a6aa140a3087b28652786c4569df9de27f69e5793e8fb1bae88c",
+      "statusAtPreparation": "draft",
+      "retainedQaPassed": true,
+      "qaFingerprintMatches": true
+    },
+    {
+      "key": "ENG7-U03-G04",
+      "id": "8f0a50c3-3a95-51cc-a7fa-badb1e4c9ffd",
+      "version": 1,
+      "title": "Conditions and regular results",
+      "kind": "guide",
+      "fingerprint": "e79f01d644ff1a531be80fe87a33628a4c412b48927311521c864e5af5e4e60c",
+      "statusAtPreparation": "draft",
+      "retainedQaPassed": true,
+      "qaFingerprintMatches": true
+    },
+    {
+      "key": "ENG7-U03-G05",
+      "id": "c0a27bf4-00b1-537a-aac6-081d8d65a490",
+      "version": 1,
+      "title": "Describe natural features and use evidence",
+      "kind": "guide",
+      "fingerprint": "e6b47532b3d561b10b1092d67966a33d79d2b663d129298b88e739b7f6736e7d",
+      "statusAtPreparation": "draft",
+      "retainedQaPassed": true,
+      "qaFingerprintMatches": true
+    },
+    {
+      "key": "ENG7-U03-G06",
+      "id": "46844345-4458-5ac0-a755-85ce9b197c60",
+      "version": 1,
+      "title": "Grammar revision without extra assessment gates",
+      "kind": "guide",
+      "fingerprint": "f857d17a40ba17288d8cfda070f0d876ec2d2458afdc23a03d652b3ca82cf7fa",
+      "statusAtPreparation": "draft",
+      "retainedQaPassed": true,
+      "qaFingerprintMatches": true
+    },
+    {
+      "key": "ENG7-U03-G07",
+      "id": "6663eed5-b0e9-57ba-a3c4-2a12ce82edbd",
+      "version": 1,
+      "title": "Natural-wonder fact cards",
+      "kind": "guide",
+      "fingerprint": "06593cb209fdfabf5cab5ed9f273445d2aeb5e4242f8d31c3676360f51e312d8",
+      "statusAtPreparation": "draft",
+      "retainedQaPassed": true,
+      "qaFingerprintMatches": true
+    },
+    {
+      "key": "ENG7-U03-G08",
+      "id": "8ec67a77-6596-5cf8-a8e6-2eb492b2a06e",
+      "version": 1,
+      "title": "Discuss responsibly and plan a nature essay",
+      "kind": "guide",
+      "fingerprint": "4880f85d98fbe0ad030ebb31428070e3325317d5d0a125f92505f7f3a4035067",
+      "statusAtPreparation": "draft",
+      "retainedQaPassed": true,
+      "qaFingerprintMatches": true
+    },
+    {
+      "key": "ENG7-U03-W01",
+      "id": "f0547d95-bb56-5112-a65e-fe11a0d8781d",
+      "version": 1,
+      "title": "Introduce a natural wonder",
+      "kind": "writing",
+      "fingerprint": "d1158d351d7ec49ebdf6a89145f77a72e679dd91629cee906056a043ac67d64a",
+      "statusAtPreparation": "draft",
+      "retainedQaPassed": true,
+      "qaFingerprintMatches": true
+    }
+  ],
+  "newMaterialVersions": 0,
+  "humanReviewRepeated": false,
+  "publicationRequiredBeforeLearnerActivation": true,
+  "writingProjectionRequired": true,
+  "acceptanceMeaning": "One explicit acceptance may cover these nine exact v1 materials, W01 prompt/rubric/word count and one-response workload. Existing authenticated material publication and derived writing-task preflight remain required; no reviewer session/MFA, SME review, publication or learner release is claimed."
+}

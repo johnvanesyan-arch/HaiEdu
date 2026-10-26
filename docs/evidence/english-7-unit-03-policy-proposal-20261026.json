@@ -1,0 +1,302 @@
+{
+  "checkpoint": "16.1C.44",
+  "date": "2026-10-26",
+  "sourceCommit": "6bc295ccb90772fd529615154d02a54298c98ec9",
+  "checks": [
+    {
+      "name": "policy_diagnostic_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "policy_practice_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "policy_mastery_check_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "policy_chapter_review_closed_contract",
+      "passed": true,
+      "unboundRecipeRejected": true
+    },
+    {
+      "name": "english_model_shape_supported",
+      "passed": true
+    },
+    {
+      "name": "20_of_20_passes",
+      "passed": true,
+      "passedDecision": true,
+      "earned": 20,
+      "possible": 20,
+      "displayPercent": 100
+    },
+    {
+      "name": "16_of_20_with_minima_passes",
+      "passed": true,
+      "passedDecision": true,
+      "earned": 16,
+      "possible": 20,
+      "displayPercent": 80
+    },
+    {
+      "name": "15_of_20_fails_overall",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 15,
+      "possible": 20,
+      "displayPercent": 75
+    },
+    {
+      "name": "19_of_20_single_s02_miss_is_not_a_veto",
+      "passed": true,
+      "passedDecision": true,
+      "earned": 19,
+      "possible": 20,
+      "displayPercent": 95
+    },
+    {
+      "name": "16_of_20_s02_zero_with_other_minima_passes",
+      "passed": true,
+      "passedDecision": true,
+      "earned": 16,
+      "possible": 20,
+      "displayPercent": 80
+    },
+    {
+      "name": "zero_of_two_skill_1_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 18,
+      "possible": 20,
+      "displayPercent": 90
+    },
+    {
+      "name": "zero_of_two_skill_3_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 18,
+      "possible": 20,
+      "displayPercent": 90
+    },
+    {
+      "name": "zero_of_two_skill_4_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 18,
+      "possible": 20,
+      "displayPercent": 90
+    },
+    {
+      "name": "zero_of_two_skill_6_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 18,
+      "possible": 20,
+      "displayPercent": 90
+    },
+    {
+      "name": "zero_of_two_skill_8_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 18,
+      "possible": 20,
+      "displayPercent": 90
+    },
+    {
+      "name": "zero_of_two_skill_9_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 18,
+      "possible": 20,
+      "displayPercent": 90
+    },
+    {
+      "name": "one_of_three_conditional_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 18,
+      "possible": 20,
+      "displayPercent": 90
+    },
+    {
+      "name": "two_of_four_reading_detail_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 18,
+      "possible": 20,
+      "displayPercent": 90
+    },
+    {
+      "name": "rounded_80_below_exact_threshold_fails",
+      "passed": true,
+      "passedDecision": false,
+      "earned": 15.99,
+      "possible": 20,
+      "displayPercent": 80,
+      "syntheticOffGridBoundary": true
+    },
+    {
+      "name": "diagnostic_has_no_pass_decision",
+      "passed": true
+    },
+    {
+      "name": "no_evidence_not_ready",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "model_exact_075_and_three_records_ready",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "name": "model_two_records_not_ready",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "model_below_075_not_ready",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "three_item_clean_recovery_ready",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "name": "two_distinct_items_cannot_recover",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "hint_in_recent_window_cannot_recover",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "partial_item_is_not_whole_correct_recovery",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "other_release_cannot_supply_third_item",
+      "passed": true,
+      "ready": false
+    },
+    {
+      "name": "prior_distinct_plus_repeated_recent_window_matches_existing_semantics",
+      "passed": true,
+      "ready": true
+    },
+    {
+      "name": "core_and_optional_partition",
+      "passed": true
+    },
+    {
+      "name": "three_recording_listening_capacity_explicit",
+      "passed": true
+    },
+    {
+      "name": "single_item_skill_counts_but_has_no_standalone_veto",
+      "passed": true
+    },
+    {
+      "name": "cross_unit_policy_rejected",
+      "passed": true
+    },
+    {
+      "name": "writing_separate_and_not_zero_or_an_automatic_gate",
+      "passed": true
+    },
+    {
+      "name": "finite_mastery_capacity_3_2_1_0",
+      "passed": true
+    }
+  ],
+  "checkCount": 36,
+  "scope": "Offline retained-form assembly plus actual JS policy reader and extracted SQL result/readiness functions in PGlite; not live allocation, qualification, empirical calibration, approval audit or learner acceptance.",
+  "proposalSha256": "f2bfeea3c4b13c548068520ece7ad7f59bc584bede10ca9980ac174dc712bf52",
+  "sourceHashes": {
+    "retainedAuthoring": "a07d967882f5c663403abc83a7a142b6427ea29c9ce64911177359fdd7f0ef4c",
+    "retainedIntegrationSnapshot": "f8b9b1b100b07c02952b10691bd12f3d2e548a5d62d5c4ec6f31a2a2ecf0b66d",
+    "curriculumRegistration": "10dc972a62143734bcda282f9583efdac1d5ccc0b8ef1e613bdabfce2a879b4f",
+    "supabase/migrations/20261006065508_sprint_15b12c_learning_runtime.sql": "c3ccbd70ba33cb2668379511ccea44b78d53447bc91dc525301a8c9e770aa314",
+    "supabase/migrations/20261020140928_sprint_16_1b_typed_fields.sql": "4802ec7ec42abf6fc0c809c5a5ebc1663d12b17099061ab16af3164fd4f72b15",
+    "supabase/functions/_shared/assessment-policy.mjs": "73e71127babefc223389ca50b47ce054d85b82e41a9eb6b8f7304e9dc09f6518",
+    "scripts/content/prepare-english-7-unit-03-policy.py": "aa99eb1266dda374e81fde8492e974e76e117ac13bf899447739a27a78123e7e",
+    "scripts/content/verify-english-7-unit-03-policy.mjs": "26bb220bf3d3d9c0aa4f7b689c6016e15593dcefb3092151259336ab9dae4844"
+  },
+  "retainedEvidence": [
+    "16.1C.39 whole-bank comparison and grading",
+    "16.1C.41/C42 source links and 160 QA passes",
+    "16.1C.43 exact-version bank acceptance",
+    "16.1C.44 curriculum registration",
+    "16.1C.26/C37 existing learner/audio/writing runtime acceptance"
+  ],
+  "forms": [
+    {
+      "code": "DA",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "DB",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MA",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MB",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MC",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    }
+  ],
+  "privatePreparedFormsSha256": "5315844e6ff7c49e308405fad997a44d45208e005cfb5a1f56204073a13d471e",
+  "policyProductionWrites": 0,
+  "contentChanges": 0,
+  "audioReviewRepeated": false,
+  "approvalAudit": false,
+  "learnerActivation": false,
+  "policyAdopted": false,
+  "next": "Owner decision on complete concrete proposal; then immutable configuration and exact form/source qualification, followed by separate learner-release decision."
+}

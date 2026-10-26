@@ -1,0 +1,802 @@
+{
+  "schemaVersion": "haiedu-english-unit-policy-proposal-v1",
+  "checkpoint": "16.1C.44",
+  "version": 1,
+  "date": "2026-10-26",
+  "sourceCommit": "6bc295ccb90772fd529615154d02a54298c98ec9",
+  "status": "proposed_awaiting_explicit_owner_policy_approval",
+  "ownerApproval": null,
+  "scope": {
+    "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+    "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+    "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af"
+  },
+  "counts": [
+    {
+      "skill": "ENG7-U03-S01",
+      "skillId": "2f96987e-64aa-5121-ad7c-ba77b3432230",
+      "corePractice": 8,
+      "perAssessment": 2,
+      "minimumFullyCorrect": 1
+    },
+    {
+      "skill": "ENG7-U03-S02",
+      "skillId": "2e2cd9ec-bd8a-579e-a5b3-e10479423090",
+      "corePractice": 4,
+      "perAssessment": 1,
+      "minimumFullyCorrect": 0
+    },
+    {
+      "skill": "ENG7-U03-S03",
+      "skillId": "015e039a-d09b-5748-a32d-938cc0020ac5",
+      "corePractice": 8,
+      "perAssessment": 2,
+      "minimumFullyCorrect": 1
+    },
+    {
+      "skill": "ENG7-U03-S04",
+      "skillId": "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+      "corePractice": 6,
+      "perAssessment": 2,
+      "minimumFullyCorrect": 1
+    },
+    {
+      "skill": "ENG7-U03-S05",
+      "skillId": "f85b9516-f6c8-583e-a949-e218a69c87cf",
+      "corePractice": 6,
+      "perAssessment": 3,
+      "minimumFullyCorrect": 2
+    },
+    {
+      "skill": "ENG7-U03-S06",
+      "skillId": "d420c068-646b-549f-a6bd-1278486c8a45",
+      "corePractice": 4,
+      "perAssessment": 2,
+      "minimumFullyCorrect": 1
+    },
+    {
+      "skill": "ENG7-U03-S07",
+      "skillId": "ee56f969-604f-5d5c-ac8d-200ac524d7ad",
+      "corePractice": 8,
+      "perAssessment": 4,
+      "minimumFullyCorrect": 3
+    },
+    {
+      "skill": "ENG7-U03-S08",
+      "skillId": "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+      "corePractice": 3,
+      "perAssessment": 2,
+      "minimumFullyCorrect": 1
+    },
+    {
+      "skill": "ENG7-U03-S09",
+      "skillId": "8f98d50a-2ce6-5389-a7dd-2edb539d211b",
+      "corePractice": 5,
+      "perAssessment": 2,
+      "minimumFullyCorrect": 1
+    }
+  ],
+  "modes": {
+    "diagnostic": {
+      "version": 1,
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+      "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+      "learningModelConfigurationId": null,
+      "academicMasteryPolicyId": null,
+      "scoringStrategy": "normalized-item-score-v1",
+      "itemWeight": 1,
+      "deliveredSkillIds": [
+        "2f96987e-64aa-5121-ad7c-ba77b3432230",
+        "2e2cd9ec-bd8a-579e-a5b3-e10479423090",
+        "015e039a-d09b-5748-a32d-938cc0020ac5",
+        "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+        "f85b9516-f6c8-583e-a949-e218a69c87cf",
+        "d420c068-646b-549f-a6bd-1278486c8a45",
+        "ee56f969-604f-5d5c-ac8d-200ac524d7ad",
+        "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+        "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+      ],
+      "reportingGroups": [
+        {
+          "key": "vocabulary",
+          "label": "Բառապաշար",
+          "skillIds": [
+            "2f96987e-64aa-5121-ad7c-ba77b3432230",
+            "2e2cd9ec-bd8a-579e-a5b3-e10479423090"
+          ]
+        },
+        {
+          "key": "grammar",
+          "label": "Քերականություն",
+          "skillIds": [
+            "015e039a-d09b-5748-a32d-938cc0020ac5",
+            "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+            "f85b9516-f6c8-583e-a949-e218a69c87cf"
+          ]
+        },
+        {
+          "key": "reading",
+          "label": "Ընթերցանություն",
+          "skillIds": [
+            "d420c068-646b-549f-a6bd-1278486c8a45",
+            "ee56f969-604f-5d5c-ac8d-200ac524d7ad"
+          ]
+        },
+        {
+          "key": "listening",
+          "label": "Ունկնդրում",
+          "skillIds": [
+            "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+            "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+          ]
+        }
+      ],
+      "schemaVersion": "haiedu-assessment-policy-v4",
+      "policyKey": "eng7-u03-provisional-diagnostic-v1",
+      "mode": "diagnostic",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "responseCapabilities": {},
+      "plannedQuestionCount": 20,
+      "hintsAllowed": false,
+      "baselineRequired": false,
+      "questionCountBySkill": {
+        "2f96987e-64aa-5121-ad7c-ba77b3432230": 2,
+        "2e2cd9ec-bd8a-579e-a5b3-e10479423090": 1,
+        "015e039a-d09b-5748-a32d-938cc0020ac5": 2,
+        "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865": 2,
+        "f85b9516-f6c8-583e-a949-e218a69c87cf": 3,
+        "d420c068-646b-549f-a6bd-1278486c8a45": 2,
+        "ee56f969-604f-5d5c-ac8d-200ac524d7ad": 4,
+        "dbe38b46-0f55-5f60-add1-de80a4cc4719": 2,
+        "8f98d50a-2ce6-5389-a7dd-2edb539d211b": 2
+      },
+      "audioPlayback": {
+        "schemaVersion": "haiedu-assessed-audio-v1",
+        "maximumPlays": 2,
+        "playbackRate": 1,
+        "transcriptAvailable": false,
+        "scope": "session-recording",
+        "questionVisibility": "whole-recording",
+        "interruption": "resume-or-unscored-v1"
+      },
+      "maximumCompletedBaselines": 1
+    },
+    "practice": {
+      "version": 1,
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+      "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+      "learningModelConfigurationId": null,
+      "academicMasteryPolicyId": null,
+      "scoringStrategy": "normalized-item-score-v1",
+      "itemWeight": 1,
+      "deliveredSkillIds": [
+        "2f96987e-64aa-5121-ad7c-ba77b3432230",
+        "2e2cd9ec-bd8a-579e-a5b3-e10479423090",
+        "015e039a-d09b-5748-a32d-938cc0020ac5",
+        "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+        "f85b9516-f6c8-583e-a949-e218a69c87cf",
+        "d420c068-646b-549f-a6bd-1278486c8a45",
+        "ee56f969-604f-5d5c-ac8d-200ac524d7ad",
+        "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+        "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+      ],
+      "reportingGroups": [
+        {
+          "key": "vocabulary",
+          "label": "Բառապաշար",
+          "skillIds": [
+            "2f96987e-64aa-5121-ad7c-ba77b3432230",
+            "2e2cd9ec-bd8a-579e-a5b3-e10479423090"
+          ]
+        },
+        {
+          "key": "grammar",
+          "label": "Քերականություն",
+          "skillIds": [
+            "015e039a-d09b-5748-a32d-938cc0020ac5",
+            "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+            "f85b9516-f6c8-583e-a949-e218a69c87cf"
+          ]
+        },
+        {
+          "key": "reading",
+          "label": "Ընթերցանություն",
+          "skillIds": [
+            "d420c068-646b-549f-a6bd-1278486c8a45",
+            "ee56f969-604f-5d5c-ac8d-200ac524d7ad"
+          ]
+        },
+        {
+          "key": "listening",
+          "label": "Ունկնդրում",
+          "skillIds": [
+            "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+            "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+          ]
+        }
+      ],
+      "schemaVersion": "haiedu-assessment-policy-v3",
+      "policyKey": "eng7-u03-provisional-practice-v1",
+      "mode": "practice",
+      "responseTypes": [
+        "single_choice",
+        "typed_fields",
+        "matching",
+        "ordering"
+      ],
+      "responseCapabilities": {
+        "typed_fields": "haiedu-typed-fields-v1",
+        "matching": "haiedu-matching-v1",
+        "ordering": "haiedu-ordering-v1"
+      },
+      "plannedQuestionCount": 8,
+      "hintsAllowed": true,
+      "baselineRequired": true
+    },
+    "mastery_check": {
+      "version": 1,
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+      "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+      "learningModelConfigurationId": null,
+      "academicMasteryPolicyId": null,
+      "scoringStrategy": "normalized-item-score-v1",
+      "itemWeight": 1,
+      "deliveredSkillIds": [
+        "2f96987e-64aa-5121-ad7c-ba77b3432230",
+        "2e2cd9ec-bd8a-579e-a5b3-e10479423090",
+        "015e039a-d09b-5748-a32d-938cc0020ac5",
+        "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+        "f85b9516-f6c8-583e-a949-e218a69c87cf",
+        "d420c068-646b-549f-a6bd-1278486c8a45",
+        "ee56f969-604f-5d5c-ac8d-200ac524d7ad",
+        "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+        "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+      ],
+      "reportingGroups": [
+        {
+          "key": "vocabulary",
+          "label": "Բառապաշար",
+          "skillIds": [
+            "2f96987e-64aa-5121-ad7c-ba77b3432230",
+            "2e2cd9ec-bd8a-579e-a5b3-e10479423090"
+          ]
+        },
+        {
+          "key": "grammar",
+          "label": "Քերականություն",
+          "skillIds": [
+            "015e039a-d09b-5748-a32d-938cc0020ac5",
+            "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+            "f85b9516-f6c8-583e-a949-e218a69c87cf"
+          ]
+        },
+        {
+          "key": "reading",
+          "label": "Ընթերցանություն",
+          "skillIds": [
+            "d420c068-646b-549f-a6bd-1278486c8a45",
+            "ee56f969-604f-5d5c-ac8d-200ac524d7ad"
+          ]
+        },
+        {
+          "key": "listening",
+          "label": "Ունկնդրում",
+          "skillIds": [
+            "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+            "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+          ]
+        }
+      ],
+      "schemaVersion": "haiedu-assessment-policy-v4",
+      "policyKey": "eng7-u03-provisional-mastery_check-v1",
+      "mode": "mastery_check",
+      "responseTypes": [
+        "single_choice"
+      ],
+      "responseCapabilities": {},
+      "plannedQuestionCount": 20,
+      "hintsAllowed": false,
+      "baselineRequired": true,
+      "questionCountBySkill": {
+        "2f96987e-64aa-5121-ad7c-ba77b3432230": 2,
+        "2e2cd9ec-bd8a-579e-a5b3-e10479423090": 1,
+        "015e039a-d09b-5748-a32d-938cc0020ac5": 2,
+        "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865": 2,
+        "f85b9516-f6c8-583e-a949-e218a69c87cf": 3,
+        "d420c068-646b-549f-a6bd-1278486c8a45": 2,
+        "ee56f969-604f-5d5c-ac8d-200ac524d7ad": 4,
+        "dbe38b46-0f55-5f60-add1-de80a4cc4719": 2,
+        "8f98d50a-2ce6-5389-a7dd-2edb539d211b": 2
+      },
+      "audioPlayback": {
+        "schemaVersion": "haiedu-assessed-audio-v1",
+        "maximumPlays": 2,
+        "playbackRate": 1,
+        "transcriptAvailable": false,
+        "scope": "session-recording",
+        "questionVisibility": "whole-recording",
+        "interruption": "resume-or-unscored-v1"
+      },
+      "minimumPercent": 80,
+      "minimumCorrectBySkill": {
+        "2f96987e-64aa-5121-ad7c-ba77b3432230": 1,
+        "2e2cd9ec-bd8a-579e-a5b3-e10479423090": 0,
+        "015e039a-d09b-5748-a32d-938cc0020ac5": 1,
+        "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865": 1,
+        "f85b9516-f6c8-583e-a949-e218a69c87cf": 2,
+        "d420c068-646b-549f-a6bd-1278486c8a45": 1,
+        "ee56f969-604f-5d5c-ac8d-200ac524d7ad": 3,
+        "dbe38b46-0f55-5f60-add1-de80a4cc4719": 1,
+        "8f98d50a-2ce6-5389-a7dd-2edb539d211b": 1
+      },
+      "scoredSkillIds": [
+        "2f96987e-64aa-5121-ad7c-ba77b3432230",
+        "2e2cd9ec-bd8a-579e-a5b3-e10479423090",
+        "015e039a-d09b-5748-a32d-938cc0020ac5",
+        "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+        "f85b9516-f6c8-583e-a949-e218a69c87cf",
+        "d420c068-646b-549f-a6bd-1278486c8a45",
+        "ee56f969-604f-5d5c-ac8d-200ac524d7ad",
+        "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+        "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+      ],
+      "readinessSkillIds": [
+        "2f96987e-64aa-5121-ad7c-ba77b3432230",
+        "2e2cd9ec-bd8a-579e-a5b3-e10479423090",
+        "015e039a-d09b-5748-a32d-938cc0020ac5",
+        "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+        "f85b9516-f6c8-583e-a949-e218a69c87cf",
+        "d420c068-646b-549f-a6bd-1278486c8a45",
+        "ee56f969-604f-5d5c-ac8d-200ac524d7ad",
+        "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+        "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+      ]
+    },
+    "chapter_review": {
+      "version": 1,
+      "subjectProgramId": "a88ac34c-3b29-5c9d-a5c4-95339b71c067",
+      "curriculumReleaseId": "e17ab807-a531-5099-aeb7-d10206c26de4",
+      "unitId": "1baf6611-3a4e-52ec-a865-04eeb1dbd4af",
+      "learningModelConfigurationId": null,
+      "academicMasteryPolicyId": null,
+      "scoringStrategy": "normalized-item-score-v1",
+      "itemWeight": 1,
+      "deliveredSkillIds": [
+        "2f96987e-64aa-5121-ad7c-ba77b3432230",
+        "2e2cd9ec-bd8a-579e-a5b3-e10479423090",
+        "015e039a-d09b-5748-a32d-938cc0020ac5",
+        "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+        "f85b9516-f6c8-583e-a949-e218a69c87cf",
+        "d420c068-646b-549f-a6bd-1278486c8a45",
+        "ee56f969-604f-5d5c-ac8d-200ac524d7ad",
+        "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+        "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+      ],
+      "reportingGroups": [
+        {
+          "key": "vocabulary",
+          "label": "Բառապաշար",
+          "skillIds": [
+            "2f96987e-64aa-5121-ad7c-ba77b3432230",
+            "2e2cd9ec-bd8a-579e-a5b3-e10479423090"
+          ]
+        },
+        {
+          "key": "grammar",
+          "label": "Քերականություն",
+          "skillIds": [
+            "015e039a-d09b-5748-a32d-938cc0020ac5",
+            "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+            "f85b9516-f6c8-583e-a949-e218a69c87cf"
+          ]
+        },
+        {
+          "key": "reading",
+          "label": "Ընթերցանություն",
+          "skillIds": [
+            "d420c068-646b-549f-a6bd-1278486c8a45",
+            "ee56f969-604f-5d5c-ac8d-200ac524d7ad"
+          ]
+        },
+        {
+          "key": "listening",
+          "label": "Ունկնդրում",
+          "skillIds": [
+            "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+            "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+          ]
+        }
+      ],
+      "schemaVersion": "haiedu-assessment-policy-v3",
+      "policyKey": "eng7-u03-provisional-chapter_review-v1",
+      "mode": "chapter_review",
+      "responseTypes": [
+        "single_choice",
+        "typed_fields",
+        "matching",
+        "ordering"
+      ],
+      "responseCapabilities": {
+        "typed_fields": "haiedu-typed-fields-v1",
+        "matching": "haiedu-matching-v1",
+        "ordering": "haiedu-ordering-v1"
+      },
+      "plannedQuestionCount": 12,
+      "hintsAllowed": true,
+      "baselineRequired": true
+    }
+  },
+  "learningModel": {
+    "mastery": {
+      "priorAlpha": 2,
+      "priorBeta": 2,
+      "initialScore": 0.5,
+      "minimumEvidenceCount": 3,
+      "needsSupportBelow": 0.5,
+      "secureAtOrAbove": 0.75,
+      "difficultyWeight": {
+        "formula": "1 + 0*difficulty",
+        "difficultyMin": 1,
+        "difficultyMax": 5,
+        "weightMin": 1,
+        "weightMax": 1
+      },
+      "hintedPositiveMultiplier": 0.65,
+      "incorrectEvidenceHintReduction": false
+    },
+    "recentRecovery": {
+      "recentWindow": 3,
+      "minimumUniqueItems": 3,
+      "minimumIndependentCorrect": 3,
+      "hintFreeRequired": true
+    },
+    "practice": {
+      "plannedSessionLength": 8,
+      "selectionPolicyVersion": "11B-v1",
+      "selectionPreference": [
+        "unseen",
+        "spaced_unresolved_error",
+        "least_recent_review",
+        "explicit_pool_exhaustion_repeat"
+      ],
+      "desiredDifficultyBands": [
+        {
+          "difficulty": 1,
+          "masteryBelow": 0.35
+        },
+        {
+          "difficulty": 2,
+          "masteryBelow": 0.55
+        },
+        {
+          "difficulty": 3,
+          "masteryBelow": 0.75
+        },
+        {
+          "difficulty": 4,
+          "masteryAtOrAbove": 0.75
+        }
+      ],
+      "consecutiveWrongAdjustment": {
+        "oneWrong": -1,
+        "twoOrMoreWrong": -2
+      },
+      "exactVariantCooldownRecentDistinctVariants": 3
+    },
+    "hinting": {
+      "levels": [
+        "orient",
+        "strategy",
+        "analogous_worked_example"
+      ],
+      "practiceOnly": true,
+      "resolverOrder": [
+        "error_specific_template",
+        "default_template",
+        "skill_fallback"
+      ],
+      "liveAiGeneration": false,
+      "postErrorHelpAllowed": true,
+      "independentConfirmationRequired": true,
+      "preAnswerHelpRequiresBlankDraft": true
+    },
+    "recommendation": {
+      "corePolicy": {
+        "default": "continue_current_skill",
+        "insufficientEvidence": "collect_more_evidence",
+        "weakWithUnmetPrerequisite": "review_prerequisite",
+        "secureWithNextSkill": "advance_skill"
+      }
+    }
+  },
+  "readiness": {
+    "operator": "OR",
+    "scope": "All nine core automatic Unit 3 skills; per release/student/skill",
+    "modelRoute": "score >= 0.75 and evidenceCount >= 3",
+    "recoveryRoute": "At least three distinct items encountered in this skill/release; all latest three answers fully correct and hint-free",
+    "limitations": [
+      "The distinct-item count is lifetime within the release, not necessarily distinct items in the recent window.",
+      "Shared-source questions are dependent observations; hint-free is not proof of independent competence.",
+      "Partial credit contributes to the model route; recovery requires whole-item correctness.",
+      "Valid answered evidence retained after an unscored technical exit remains in the skill model.",
+      "Three core Practice gist and five detail items use three recordings. Shared-source questions and governed repeats are not independent listening observations."
+    ]
+  },
+  "practicePool": {
+    "approvedBank": 60,
+    "coreEligible": 52,
+    "coreItemCodes": [
+      "ENG7-U03-P01",
+      "ENG7-U03-P02",
+      "ENG7-U03-P03",
+      "ENG7-U03-P04",
+      "ENG7-U03-P05",
+      "ENG7-U03-P06",
+      "ENG7-U03-P07",
+      "ENG7-U03-P08",
+      "ENG7-U03-P09",
+      "ENG7-U03-P10",
+      "ENG7-U03-P11",
+      "ENG7-U03-P12",
+      "ENG7-U03-P13",
+      "ENG7-U03-P14",
+      "ENG7-U03-P15",
+      "ENG7-U03-P16",
+      "ENG7-U03-P17",
+      "ENG7-U03-P18",
+      "ENG7-U03-P19",
+      "ENG7-U03-P20",
+      "ENG7-U03-P21",
+      "ENG7-U03-P22",
+      "ENG7-U03-P23",
+      "ENG7-U03-P24",
+      "ENG7-U03-P25",
+      "ENG7-U03-P26",
+      "ENG7-U03-P27",
+      "ENG7-U03-P28",
+      "ENG7-U03-P29",
+      "ENG7-U03-P30",
+      "ENG7-U03-P31",
+      "ENG7-U03-P32",
+      "ENG7-U03-P33",
+      "ENG7-U03-P34",
+      "ENG7-U03-P35",
+      "ENG7-U03-P36",
+      "ENG7-U03-P37",
+      "ENG7-U03-P38",
+      "ENG7-U03-P39",
+      "ENG7-U03-P40",
+      "ENG7-U03-P41",
+      "ENG7-U03-P42",
+      "ENG7-U03-P43",
+      "ENG7-U03-P44",
+      "ENG7-U03-P45",
+      "ENG7-U03-P46",
+      "ENG7-U03-P47",
+      "ENG7-U03-P51",
+      "ENG7-U03-P52",
+      "ENG7-U03-P53",
+      "ENG7-U03-P54",
+      "ENG7-U03-P55"
+    ],
+    "optionalRetained": [
+      "ENG7-U03-P48",
+      "ENG7-U03-P49",
+      "ENG7-U03-P50",
+      "ENG7-U03-P56",
+      "ENG7-U03-P57",
+      "ENG7-U03-P58",
+      "ENG7-U03-P59",
+      "ENG7-U03-P60"
+    ],
+    "optionalDisposition": "Preserve accepted content; exclude these eight from core Practice/Review and readiness. Separate non-gating delivery remains unimplemented. Do not introduce supporting responses into the core skill model.",
+    "sessionLimit": 8,
+    "mayFinishEarly": true,
+    "itemReuse": "Unseen-first, then governed repeats; repeated source/item is not independent evidence."
+  },
+  "review": {
+    "plannedQuestions": 12,
+    "requiredAfterScoredFailures": [
+      1,
+      2
+    ],
+    "qualification": "Existing completion-based required review, including required help; no second pass percentage",
+    "eligiblePool": "The 52 core Practice items; no unused assessment sources",
+    "optionalAfterPass": true,
+    "availableAfterFinalFailure": true
+  },
+  "lifecycle": {
+    "maximumMasteryAttempts": 3,
+    "reviewRequiredAfterFailedAttempts": [
+      1,
+      2
+    ],
+    "reviewOptionalAfterPass": true,
+    "reviewAvailableAfterFinalFailure": true,
+    "additionalAttemptAfterFinalFailure": false,
+    "technicalExit": "Resume first; persistent supported audio failure can end unscored, retain earlier responses/exposures and keep the scored attempt count unchanged",
+    "technicalReplacement": "Only an unused complete qualified eligible form. No reset, exposed-form reuse, shortening or automatic failure when capacity is exhausted",
+    "replacementCapacity": {
+      "diagnosticForms": 2,
+      "masteryForms": 3,
+      "extraMasteryReserveForms": 0,
+      "maximumScoredAttemptsAfterOneMasteryFormLost": 2,
+      "threeAttemptsGuaranteed": false
+    },
+    "nonAudioFailures": "Resume saved state; existing assessed-audio cancellation is not a generic automatic invalidation or appeals capability"
+  },
+  "writing": {
+    "automaticReadinessGate": false,
+    "automaticPassGate": false,
+    "reviewedNotes": 1,
+    "minimumWords": 80,
+    "maximumWords": 100,
+    "wordCountConvention": "unicode-whitespace-v1",
+    "criteria": 4,
+    "levels": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "maximumTotal": 12,
+    "passThreshold": null,
+    "result": "Separate criterion feedback and submission/review state; never substitute an automatic result for writing competence",
+    "scope": "S12 and S13 share one W01 sample awaiting separate material acceptance; pending review is not zero/failure"
+  },
+  "reporting": {
+    "groups": [
+      {
+        "key": "vocabulary",
+        "label": "Բառապաշար",
+        "skillIds": [
+          "2f96987e-64aa-5121-ad7c-ba77b3432230",
+          "2e2cd9ec-bd8a-579e-a5b3-e10479423090"
+        ]
+      },
+      {
+        "key": "grammar",
+        "label": "Քերականություն",
+        "skillIds": [
+          "015e039a-d09b-5748-a32d-938cc0020ac5",
+          "2b9d4e20-fa58-51d0-ae6f-3f6267ba0865",
+          "f85b9516-f6c8-583e-a949-e218a69c87cf"
+        ]
+      },
+      {
+        "key": "reading",
+        "label": "Ընթերցանություն",
+        "skillIds": [
+          "d420c068-646b-549f-a6bd-1278486c8a45",
+          "ee56f969-604f-5d5c-ac8d-200ac524d7ad"
+        ]
+      },
+      {
+        "key": "listening",
+        "label": "Ունկնդրում",
+        "skillIds": [
+          "dbe38b46-0f55-5f60-add1-de80a4cc4719",
+          "8f98d50a-2ce6-5389-a7dd-2edb539d211b"
+        ]
+      }
+    ],
+    "denominators": {
+      "vocabulary": 3,
+      "grammar": 7,
+      "reading": 6,
+      "listening": 4,
+      "total": 20
+    },
+    "automaticResultScope": "Vocabulary, grammar, reading and listening for this Unit 3 provisional assessment",
+    "excludedClaims": [
+      "All English outcomes mastered",
+      "Speaking assessed",
+      "Independent unseen assessment",
+      "CEFR certification"
+    ],
+    "passRounding": "Compare unrounded points percentage; rounding is display only",
+    "timer": null,
+    "observedCompletionTimes": null
+  },
+  "binding": {
+    "activationEnabled": false,
+    "allocationEnabled": false,
+    "productionWrites": 0,
+    "requiredBeforeBinding": [
+      "Explicit owner acceptance of this numerical policy, the S02 single-item limitation and 52-core/8-optional delivery split",
+      "Compile immutable Unit 3 configuration; exact current version/source metadata qualification without repeating human content review",
+      "Resolve source protection/exposure and specialist dispositions; preserve existing rollout gates",
+      "Separate explicit learner-release decision and bounded learner acceptance"
+    ],
+    "runtimeCompatibility": "Four policy recipes validate only after synthetic test IDs are bound; null IDs deliberately prevent accidental adoption."
+  },
+  "formChecks": [
+    {
+      "code": "DA",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "DB",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MA",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MB",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    },
+    {
+      "code": "MC",
+      "items": 20,
+      "responseType": "single_choice",
+      "minimumReachablePassingPoints": 16,
+      "sourceSets": 4,
+      "recordings": 2,
+      "qualified": false,
+      "allocated": false
+    }
+  ],
+  "listeningReadiness": {
+    "corePracticeGistItems": 3,
+    "corePracticeDetailItems": 5,
+    "diagnosticItemsPerSkill": 2,
+    "recoveryDistinctCapacityGist": 5,
+    "recoveryDistinctCapacityDetails": 7,
+    "distinctPracticeAudioSources": 3,
+    "limitation": "Core Practice listening uses the publisher interview and two original natural-wonder recordings. Three gist and five detail items exist; Diagnostic adds two per skill. Shared-source answers and governed repeats remain dependent evidence. Three optional enrichment recordings are excluded from readiness."
+  },
+  "qualification": {
+    "preparedForms": 5,
+    "basis": "Retained immutable C39/C41/C42/C43 evidence and C44 curriculum mapping; no fresh human review",
+    "qualified": false,
+    "difficultyEquivalence": "not_established",
+    "sourceProtectionDecision": "pending_exact_scope_and_exposure_disposition",
+    "privatePacketSha256": "5315844e6ff7c49e308405fad997a44d45208e005cfb5a1f56204073a13d471e",
+    "canonicalSnapshotHashFormat": "UTF-8 sorted-key compact JSON; local fingerprint, not PostgreSQL jsonb::text hash"
+  },
+  "sourceHashes": {
+    "retainedAuthoring": "a07d967882f5c663403abc83a7a142b6427ea29c9ce64911177359fdd7f0ef4c",
+    "retainedIntegrationSnapshot": "f8b9b1b100b07c02952b10691bd12f3d2e548a5d62d5c4ec6f31a2a2ecf0b66d",
+    "curriculumRegistration": "10dc972a62143734bcda282f9583efdac1d5ccc0b8ef1e613bdabfce2a879b4f"
+  },
+  "singleItemSkill": {
+    "skill": "ENG7-U03-S02",
+    "assessmentItems": 1,
+    "includedInTotal": true,
+    "readinessRequired": true,
+    "minimumFullyCorrect": 0,
+    "interpretation": "The single natural-feature vocabulary item contributes to the overall score but has no stand-alone pass veto. Four Practice items support readiness; one assessed response is not a reliable separate diagnosis."
+  },
+  "materialsAcceptance": "Separate decision pending for eight guides and W01, exact v1 fingerprints in the material handoff."
+}
